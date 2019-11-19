@@ -1,5 +1,6 @@
 package Paws::SSM::OpsItemSummary;
   use Moose;
+  has Category => (is => 'ro', isa => 'Str');
   has CreatedBy => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
@@ -7,6 +8,7 @@ package Paws::SSM::OpsItemSummary;
   has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
   has OpsItemId => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
+  has Severity => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
@@ -29,20 +31,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::OpsItemSummary object:
 
-  $service_obj->Method(Att1 => { CreatedBy => $value, ..., Title => $value  });
+  $service_obj->Method(Att1 => { Category => $value, ..., Title => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::OpsItemSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedBy
+  $result->Att1->Category
 
 =head1 DESCRIPTION
 
 A count of OpsItems.
 
 =head1 ATTRIBUTES
+
+
+=head2 Category => Str
+
+  A list of OpsItems by category.
 
 
 =head2 CreatedBy => Str
@@ -82,6 +89,11 @@ about the OpsItem.
 
   The importance of this OpsItem in relation to other OpsItems in the
 system.
+
+
+=head2 Severity => Str
+
+  A list of OpsItems by severity.
 
 
 =head2 Source => Str

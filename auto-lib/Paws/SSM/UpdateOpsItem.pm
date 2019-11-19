@@ -1,6 +1,7 @@
 
 package Paws::SSM::UpdateOpsItem;
   use Moose;
+  has Category => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
   has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
@@ -8,6 +9,7 @@ package Paws::SSM::UpdateOpsItem;
   has OpsItemId => (is => 'ro', isa => 'Str', required => 1);
   has Priority => (is => 'ro', isa => 'Int');
   has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
+  has Severity => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
 
@@ -37,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $UpdateOpsItemResponse = $ssm->UpdateOpsItem(
       OpsItemId     => 'MyOpsItemId',
+      Category      => 'MyOpsItemCategory',       # OPTIONAL
       Description   => 'MyOpsItemDescription',    # OPTIONAL
       Notifications => [
         {
@@ -62,14 +65,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                              # OPTIONAL
-      Status => 'Open',               # OPTIONAL
-      Title  => 'MyOpsItemTitle',     # OPTIONAL
+      Severity => 'MyOpsItemSeverity',    # OPTIONAL
+      Status   => 'Open',                 # OPTIONAL
+      Title    => 'MyOpsItemTitle',       # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/UpdateOpsItem>
 
 =head1 ATTRIBUTES
+
+
+=head2 Category => Str
+
+Specify a new category for an OpsItem.
+
 
 
 =head2 Description => Str
@@ -143,6 +153,12 @@ One or more OpsItems that share something in common with the current
 OpsItems. For example, related OpsItems can include OpsItems with
 similar error messages, impacted resources, or statuses for the
 impacted resource.
+
+
+
+=head2 Severity => Str
+
+Specify a new severity for an OpsItem.
 
 
 

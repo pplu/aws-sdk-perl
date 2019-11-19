@@ -81,8 +81,6 @@ results.
 
 Filters to limit the request results.
 
-You can't filter using the parameter name.
-
 
 
 =head2 B<REQUIRED> Path => Str

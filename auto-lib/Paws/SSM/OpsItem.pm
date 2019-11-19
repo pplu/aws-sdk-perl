@@ -1,5 +1,6 @@
 package Paws::SSM::OpsItem;
   use Moose;
+  has Category => (is => 'ro', isa => 'Str');
   has CreatedBy => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -10,6 +11,7 @@ package Paws::SSM::OpsItem;
   has OpsItemId => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
   has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
+  has Severity => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
@@ -33,14 +35,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::OpsItem object:
 
-  $service_obj->Method(Att1 => { CreatedBy => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { Category => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::OpsItem object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedBy
+  $result->Att1->Category
 
 =head1 DESCRIPTION
 
@@ -52,6 +54,12 @@ Systems Manager OpsCenter
 in the I<AWS Systems Manager User Guide>.
 
 =head1 ATTRIBUTES
+
+
+=head2 Category => Str
+
+  An OpsItem category. Category options include: Availability, Cost,
+Performance, Recovery, Security.
 
 
 =head2 CreatedBy => Str
@@ -129,6 +137,11 @@ system.
 OpsItem. For example, related OpsItems can include OpsItems with
 similar error messages, impacted resources, or statuses for the
 impacted resource.
+
+
+=head2 Severity => Str
+
+  The severity of the OpsItem. Severity options range from 1 to 4.
 
 
 =head2 Source => Str

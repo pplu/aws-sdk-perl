@@ -1,14 +1,13 @@
-package Paws::SSM::OpsEntityItem;
+package Paws::SSM::ResourceDataSyncOrganizationalUnit;
   use Moose;
-  has CaptureTime => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsEntityItemEntry]');
+  has OrganizationalUnitId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::SSM::OpsEntityItem
+Paws::SSM::ResourceDataSyncOrganizationalUnit
 
 =head1 USAGE
 
@@ -19,32 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::SSM::OpsEntityItem object:
+As an example, if Att1 is expected to be a Paws::SSM::ResourceDataSyncOrganizationalUnit object:
 
-  $service_obj->Method(Att1 => { CaptureTime => $value, ..., Content => $value  });
+  $service_obj->Method(Att1 => { OrganizationalUnitId => $value, ..., OrganizationalUnitId => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::OpsEntityItem object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::ResourceDataSyncOrganizationalUnit object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CaptureTime
+  $result->Att1->OrganizationalUnitId
 
 =head1 DESCRIPTION
 
-The OpsItem summaries result item.
+The AWS Organizations organizational unit data source for the sync.
 
 =head1 ATTRIBUTES
 
 
-=head2 CaptureTime => Str
+=head2 OrganizationalUnitId => Str
 
-  The time OpsItem data was captured.
-
-
-=head2 Content => ArrayRef[L<Paws::SSM::OpsEntityItemEntry>]
-
-  The detailed data content for an OpsItem summaries result item.
+  The AWS Organization unit ID data source for the sync.
 
 
 

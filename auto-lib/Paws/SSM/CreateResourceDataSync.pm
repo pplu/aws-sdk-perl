@@ -1,8 +1,10 @@
 
 package Paws::SSM::CreateResourceDataSync;
   use Moose;
-  has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination', required => 1);
+  has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination');
   has SyncName => (is => 'ro', isa => 'Str', required => 1);
+  has SyncSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncSource');
+  has SyncType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,6 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateResourceDataSyncResult = $ssm->CreateResourceDataSync(
+      SyncName      => 'MyResourceDataSyncName',
       S3Destination => {
         BucketName => 'MyResourceDataSyncS3BucketName',    # min: 1, max: 2048
         Region     => 'MyResourceDataSyncS3Region',        # min: 1, max: 64
@@ -36,9 +39,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AWSKMSKeyARN =>
           'MyResourceDataSyncAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
         Prefix => 'MyResourceDataSyncS3Prefix',    # min: 1, max: 256; OPTIONAL
-      },
-      SyncName => 'MyResourceDataSyncName',
-
+      },    # OPTIONAL
+      SyncSource => {
+        SourceRegions => [
+          'MyResourceDataSyncSourceRegion', ...    # min: 1, max: 64
+        ],
+        SourceType => 'MyResourceDataSyncSourceType',    # min: 1, max: 64
+        AwsOrganizationsSource => {
+          OrganizationSourceType =>
+            'MyResourceDataSyncOrganizationSourceType',    # min: 1, max: 64
+          OrganizationalUnits => [
+            {
+              OrganizationalUnitId => 'MyResourceDataSyncOrganizationalUnitId'
+              ,    # min: 1, max: 128; OPTIONAL
+            },
+            ...
+          ],       # min: 1, max: 1000; OPTIONAL
+        },    # OPTIONAL
+        IncludeFutureRegions => 1,    # OPTIONAL
+      },    # OPTIONAL
+      SyncType => 'MyResourceDataSyncType',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -47,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
+=head2 S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
 
 Amazon S3 configuration details for the sync.
 
@@ -56,6 +76,21 @@ Amazon S3 configuration details for the sync.
 =head2 B<REQUIRED> SyncName => Str
 
 A name for the configuration.
+
+
+
+=head2 SyncSource => L<Paws::SSM::ResourceDataSyncSource>
+
+Specify information about the data sources to synchronize.
+
+
+
+=head2 SyncType => Str
+
+Specify C<SyncToDestination> to create a resource data sync that
+synchronizes data from multiple AWS Regions to an Amazon S3 bucket.
+Specify C<SyncFromSource> to synchronize data from multiple AWS
+accounts and Regions, as listed in AWS Organizations.
 
 
 

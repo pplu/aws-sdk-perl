@@ -1866,6 +1866,8 @@ tasks can start after 5 PM.
 
 =item Title => Str
 
+=item [Category => Str]
+
 =item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
 
 =item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
@@ -1873,6 +1875,8 @@ tasks can start after 5 PM.
 =item [Priority => Int]
 
 =item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+
+=item [Severity => Str]
 
 =item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
@@ -1945,9 +1949,13 @@ each supported operating system type, see PatchFilter
 
 =over
 
-=item S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
-
 =item SyncName => Str
+
+=item [S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>]
+
+=item [SyncSource => L<Paws::SSM::ResourceDataSyncSource>]
+
+=item [SyncType => Str]
 
 
 =back
@@ -1956,19 +1964,37 @@ Each argument is described in detail in: L<Paws::SSM::CreateResourceDataSync>
 
 Returns: a L<Paws::SSM::CreateResourceDataSyncResult> instance
 
-Creates a resource data sync configuration to a single bucket in Amazon
-S3. This is an asynchronous operation that returns immediately. After a
-successful initial sync is completed, the system continuously syncs
-data to the Amazon S3 bucket. To check the status of the sync, use the
+A resource data sync helps you view data from multiple sources in a
+single location. Systems Manager offers two types of resource data
+sync: C<SyncToDestination> and C<SyncFromSource>.
+
+You can configure Systems Manager Inventory to use the
+C<SyncToDestination> type to synchronize Inventory data from multiple
+AWS Regions to a single Amazon S3 bucket. For more information, see
+Configuring Resource Data Sync for Inventory
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
+in the I<AWS Systems Manager User Guide>.
+
+You can configure Systems Manager Explorer to use the
+C<SyncToDestination> type to synchronize operational work items
+(OpsItems) and operational data (OpsData) from multiple AWS Regions to
+a single Amazon S3 bucket. You can also configure Explorer to use the
+C<SyncFromSource> type. This type synchronizes OpsItems and OpsData
+from multiple AWS accounts and Regions by using AWS Organizations. For
+more information, see Setting Up Explorer to Display Data from Multiple
+Accounts and Regions
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html)
+in the I<AWS Systems Manager User Guide>.
+
+A resource data sync is an asynchronous operation that returns
+immediately. After a successful initial sync is completed, the system
+continuously syncs data. To check the status of a sync, use the
 ListResourceDataSync.
 
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy. For more information, see
-Configuring Resource Data Sync for Inventory
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
-in the I<AWS Systems Manager User Guide>.
+creating a restrictive bucket policy.
 
 
 =head2 DeleteActivation
@@ -2137,6 +2163,8 @@ Deletes a patch baseline.
 
 =item SyncName => Str
 
+=item [SyncType => Str]
+
 
 =back
 
@@ -2145,9 +2173,8 @@ Each argument is described in detail in: L<Paws::SSM::DeleteResourceDataSync>
 Returns: a L<Paws::SSM::DeleteResourceDataSyncResult> instance
 
 Deletes a Resource Data Sync configuration. After the configuration is
-deleted, changes to inventory data on managed instances are no longer
-synced with the target Amazon S3 bucket. Deleting a sync configuration
-does not delete data in the target Amazon S3 bucket.
+deleted, changes to data on managed instances are no longer synced to
+or from the target. Deleting a sync configuration does not delete data.
 
 
 =head2 DeregisterManagedInstance
@@ -3291,13 +3318,17 @@ in the I<AWS Systems Manager User Guide>.
 
 =over
 
-=item Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
+=item [Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]]
 
 =item [Filters => ArrayRef[L<Paws::SSM::OpsFilter>]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>]]
+
+=item [SyncName => Str]
 
 
 =back
@@ -3392,10 +3423,8 @@ Each argument is described in detail in: L<Paws::SSM::GetParametersByPath>
 
 Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
-Retrieve parameters in a specific hierarchy. For more information, see
-Working with Systems Manager Parameters
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html)
-in the I<AWS Systems Manager User Guide>.
+Retrieve information about one or more parameters in a specific
+hierarchy.
 
 Request results are returned on a best-effort basis. If you specify
 C<MaxResults> in the request, the response includes information up to
@@ -3405,8 +3434,6 @@ internal limit while processing the results, it stops the operation and
 returns the matching values up to that point and a C<NextToken>. You
 can specify the C<NextToken> in a subsequent call to get the next set
 of results.
-
-This API action doesn't support filtering by tags.
 
 
 =head2 GetPatchBaseline
@@ -3790,6 +3817,8 @@ specify.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SyncType => Str]
 
 
 =back
@@ -4716,6 +4745,8 @@ for the managed instance.
 
 =item OpsItemId => Str
 
+=item [Category => Str]
+
 =item [Description => Str]
 
 =item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
@@ -4727,6 +4758,8 @@ for the managed instance.
 =item [Priority => Int]
 
 =item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+
+=item [Severity => Str]
 
 =item [Status => Str]
 
@@ -5304,9 +5337,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListResourceComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllResourceDataSync(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceDataSync(sub { },[MaxResults => Int, NextToken => Str, SyncType => Str])
 
-=head2 ListAllResourceDataSync([MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceDataSync([MaxResults => Int, NextToken => Str, SyncType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

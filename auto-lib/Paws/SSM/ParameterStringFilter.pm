@@ -36,9 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Parame
 One or more filters. Use a filter to return a more specific list of
 results.
 
-The C<Name> and C<Tier> filter keys can't be used with the
-GetParametersByPath API action. Also, the C<Label> filter key can't be
-used with the DescribeParameters API action.
+The C<ParameterStringFilter> object is used by the DescribeParameters
+and GetParametersByPath API actions. However, not all of the pattern
+values listed for C<Key> can be used with both actions.
+
+For C<DescribeActions>, all of the listed patterns are valid, with the
+exception of C<Label>.
+
+For C<GetParametersByPath>, the following patterns listed for C<Key>
+are not valid: C<Name>, C<Path>, and C<Tier>.
+
+For examples of CLI commands demonstrating valid parameter filter
+constructions, see Searching for Systems Manager Parameters
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-search.html)
+in the I<AWS Systems Manager User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -50,8 +61,14 @@ used with the DescribeParameters API action.
 
 =head2 Option => Str
 
-  Valid options are Equals and BeginsWith. For Path filter, valid options
-are Recursive and OneLevel.
+  For all filters used with DescribeParameters, valid options include
+C<Equals> and C<BeginsWith>. The C<Name> filter additionally supports
+the C<Contains> option. (Exception: For filters using the key C<Path>,
+valid options include C<Recursive> and C<OneLevel>.)
+
+For filters used with GetParametersByPath, valid options include
+C<Equals> and C<BeginsWith>. (Exception: For filters using the key
+C<Label>, the only valid option is C<Equals>.)
 
 
 =head2 Values => ArrayRef[Str|Undef]

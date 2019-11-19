@@ -1,10 +1,12 @@
 
 package Paws::SSM::GetOpsSummary;
   use Moose;
-  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsAggregator]', required => 1);
+  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsAggregator]');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ResultAttributes => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsResultAttribute]');
+  has SyncName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -48,11 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TypeName => 'MyOpsDataTypeName',    # min: 1, max: 100; OPTIONAL
           Values   => {
             'MyOpsAggregatorValueKey' =>
-              'MyOpsAggregatorValue',    # key: min: 1, max: 32, value: max: 512
+              'MyOpsAggregatorValue',   # key: min: 1, max: 32, value: max: 2048
           },    # max: 5; OPTIONAL
         },
         ...
-      ],
+      ],        # OPTIONAL
       Filters => [
         {
           Key    => 'MyOpsFilterKey',               # min: 1, max: 200
@@ -62,8 +64,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      MaxResults       => 1,                # OPTIONAL
+      NextToken        => 'MyNextToken',    # OPTIONAL
+      ResultAttributes => [
+        {
+          TypeName => 'MyOpsDataTypeName',    # min: 1, max: 100; OPTIONAL
+
+        },
+        ...
+      ],                                      # OPTIONAL
+      SyncName => 'MyResourceDataSyncName',   # OPTIONAL
     );
 
     # Results:
@@ -78,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
+=head2 Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
 
 Optional aggregators that return counts of OpsItems based on one or
 more expressions.
@@ -103,6 +113,18 @@ next set of results.
 
 A token to start the list. Use this token to get the next set of
 results.
+
+
+
+=head2 ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>]
+
+The OpsItem data type to return.
+
+
+
+=head2 SyncName => Str
+
+Specify the name of a resource data sync to get.
 
 
 

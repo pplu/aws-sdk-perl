@@ -6,7 +6,10 @@ package Paws::SSM::ResourceDataSyncItem;
   has LastSyncTime => (is => 'ro', isa => 'Str');
   has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination');
   has SyncCreatedTime => (is => 'ro', isa => 'Str');
+  has SyncLastModifiedTime => (is => 'ro', isa => 'Str');
   has SyncName => (is => 'ro', isa => 'Str');
+  has SyncSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncSourceWithState');
+  has SyncType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ResourceDataSyncItem object:
 
-  $service_obj->Method(Att1 => { LastStatus => $value, ..., SyncName => $value  });
+  $service_obj->Method(Att1 => { LastStatus => $value, ..., SyncType => $value  });
 
 =head3 Results returned from an API call
 
@@ -74,9 +77,27 @@ current status and last successful sync.
   The date and time the configuration was created (UTC).
 
 
+=head2 SyncLastModifiedTime => Str
+
+  The date and time the resource data sync was changed.
+
+
 =head2 SyncName => Str
 
   The name of the Resource Data Sync.
+
+
+=head2 SyncSource => L<Paws::SSM::ResourceDataSyncSourceWithState>
+
+  Information about the source where the data was synchronized.
+
+
+=head2 SyncType => Str
+
+  The type of resource data sync. If C<SyncType> is C<SyncToDestination>,
+then the resource data sync synchronizes data to an Amazon S3 bucket.
+If the C<SyncType> is C<SyncFromSource> then the resource data sync
+synchronizes data from AWS Organizations or from multiple AWS Regions.
 
 
 
