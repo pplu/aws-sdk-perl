@@ -66,7 +66,7 @@ the number of seconds since January 1, 1970, 00:00:00 UTC.
 
 The maximum number of log events to return in the query. If the query
 string uses the C<fields> command, only the specified fields and their
-values are returned.
+values are returned. The default is 1000.
 
 
 

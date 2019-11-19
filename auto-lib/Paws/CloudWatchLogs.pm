@@ -615,7 +615,7 @@ Returns: nothing
 
 Creates a log group with the specified name.
 
-You can create up to 5000 log groups per account.
+You can create up to 20,000 log groups per account.
 
 You must use the following guidelines when naming a log group:
 
@@ -632,7 +632,8 @@ Log group names can be between 1 and 512 characters long.
 =item *
 
 Log group names consist of the following characters: a-z, A-Z, 0-9, '_'
-(underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
+(underscore), '-' (hyphen), '/' (forward slash), '.' (period), and '#'
+(number sign)
 
 =back
 
@@ -1215,11 +1216,12 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
 Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
 
-Creates or updates a destination. A destination encapsulates a physical
-resource (such as an Amazon Kinesis stream) and enables you to
-subscribe to a real-time stream of log events for a different account,
-ingested using PutLogEvents. A destination can be an Amazon Kinesis
-stream, Amazon Kinesis Data Firehose strea, or an AWS Lambda function.
+Creates or updates a destination. This operation is used only to create
+destinations for cross-account subscriptions.
+
+A destination encapsulates a physical resource (such as an Amazon
+Kinesis stream) and enables you to subscribe to a real-time stream of
+log events for a different account, ingested using PutLogEvents.
 
 Through an access policy, a destination controls what is written to it.
 By default, C<PutDestination> does not set any access policy with the

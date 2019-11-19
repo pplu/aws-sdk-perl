@@ -89,6 +89,9 @@ The name of the log stream.
 The token for the next set of items to return. (You received this token
 from a previous call.)
 
+Using this token works only when you specify C<true> for
+C<startFromHead>.
+
 
 
 =head2 StartFromHead => Bool
