@@ -1,5 +1,6 @@
 package Paws::MediaConvert::CmafGroupSettings;
   use Moose;
+  has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::CmafAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
@@ -36,14 +37,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::CmafGroupSettings object:
 
-  $service_obj->Method(Att1 => { BaseUrl => $value, ..., WriteHlsManifest => $value  });
+  $service_obj->Method(Att1 => { AdditionalManifests => $value, ..., WriteHlsManifest => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::CmafGroupSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BaseUrl
+  $result->Att1->AdditionalManifests
 
 =head1 DESCRIPTION
 
@@ -53,6 +54,17 @@ output in a CMAF Output Group may only contain a single video, audio,
 or caption output.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalManifests => ArrayRef[L<Paws::MediaConvert::CmafAdditionalManifest>]
+
+  By default, the service creates one top-level .m3u8 HLS manifest and
+one top -level .mpd DASH manifest for each CMAF output group in your
+job. These default manifests reference every output in the output
+group. To create additional top-level manifests that reference a subset
+of the outputs in the output group, specify a list of them here. For
+each additional manifest that you specify, the service creates one HLS
+manifest and one DASH manifest.
 
 
 =head2 BaseUrl => Str

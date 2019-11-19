@@ -2,6 +2,7 @@ package Paws::MediaConvert::VideoPreprocessor;
   use Moose;
   has ColorCorrector => (is => 'ro', isa => 'Paws::MediaConvert::ColorCorrector', request_name => 'colorCorrector', traits => ['NameInRequest']);
   has Deinterlacer => (is => 'ro', isa => 'Paws::MediaConvert::Deinterlacer', request_name => 'deinterlacer', traits => ['NameInRequest']);
+  has DolbyVision => (is => 'ro', isa => 'Paws::MediaConvert::DolbyVision', request_name => 'dolbyVision', traits => ['NameInRequest']);
   has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has NoiseReducer => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducer', request_name => 'noiseReducer', traits => ['NameInRequest']);
   has TimecodeBurnin => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeBurnin', request_name => 'timecodeBurnin', traits => ['NameInRequest']);
@@ -53,6 +54,12 @@ setting is disabled by default.
 
   Use Deinterlacer (Deinterlacer) to produce smoother motion and a
 clearer picture.
+
+
+=head2 DolbyVision => L<Paws::MediaConvert::DolbyVision>
+
+  Enable Dolby Vision feature to produce Dolby Vision compatible video
+output.
 
 
 =head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>

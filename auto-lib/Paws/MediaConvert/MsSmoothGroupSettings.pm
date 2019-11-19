@@ -1,5 +1,6 @@
 package Paws::MediaConvert::MsSmoothGroupSettings;
   use Moose;
+  has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::MsSmoothAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
   has AudioDeduplication => (is => 'ro', isa => 'Str', request_name => 'audioDeduplication', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::MsSmoothGroupSettings object:
 
-  $service_obj->Method(Att1 => { AudioDeduplication => $value, ..., ManifestEncoding => $value  });
+  $service_obj->Method(Att1 => { AdditionalManifests => $value, ..., ManifestEncoding => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::MsSmoothGroupSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AudioDeduplication
+  $result->Att1->AdditionalManifests
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,15 @@ Required when you set (Type) under
 (OutputGroups)E<gt>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalManifests => ArrayRef[L<Paws::MediaConvert::MsSmoothAdditionalManifest>]
+
+  By default, the service creates one .ism Microsoft Smooth Streaming
+manifest for each Microsoft Smooth Streaming output group in your job.
+This default manifest references every output in the output group. To
+create additional manifests that reference a subset of the outputs in
+the output group, specify a list of them here.
 
 
 =head2 AudioDeduplication => Str

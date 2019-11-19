@@ -6,6 +6,7 @@ package Paws::MediaConvert::ContainerSettings;
   has M3u8Settings => (is => 'ro', isa => 'Paws::MediaConvert::M3u8Settings', request_name => 'm3u8Settings', traits => ['NameInRequest']);
   has MovSettings => (is => 'ro', isa => 'Paws::MediaConvert::MovSettings', request_name => 'movSettings', traits => ['NameInRequest']);
   has Mp4Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp4Settings', request_name => 'mp4Settings', traits => ['NameInRequest']);
+  has MpdSettings => (is => 'ro', isa => 'Paws::MediaConvert::MpdSettings', request_name => 'mpdSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::ContainerSettings object:
 
-  $service_obj->Method(Att1 => { Container => $value, ..., Mp4Settings => $value  });
+  $service_obj->Method(Att1 => { Container => $value, ..., MpdSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -81,6 +82,11 @@ within the asset.
 
   Settings for MP4 container. You can create audio-only AAC outputs with
 this container.
+
+
+=head2 MpdSettings => L<Paws::MediaConvert::MpdSettings>
+
+  Settings for MP4 segments in DASH
 
 
 

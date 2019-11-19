@@ -1,5 +1,6 @@
 package Paws::MediaConvert::DashIsoGroupSettings;
   use Moose;
+  has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::DashAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
@@ -30,14 +31,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::DashIsoGroupSettings object:
 
-  $service_obj->Method(Att1 => { BaseUrl => $value, ..., WriteSegmentTimelineInRepresentation => $value  });
+  $service_obj->Method(Att1 => { AdditionalManifests => $value, ..., WriteSegmentTimelineInRepresentation => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::DashIsoGroupSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BaseUrl
+  $result->Att1->AdditionalManifests
 
 =head1 DESCRIPTION
 
@@ -45,6 +46,15 @@ Required when you set (Type) under
 (OutputGroups)E<gt>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalManifests => ArrayRef[L<Paws::MediaConvert::DashAdditionalManifest>]
+
+  By default, the service creates one .mpd DASH manifest for each DASH
+ISO output group in your job. This default manifest references every
+output in the output group. To create additional DASH manifests that
+reference a subset of the outputs in the output group, specify a list
+of them here.
 
 
 =head2 BaseUrl => Str

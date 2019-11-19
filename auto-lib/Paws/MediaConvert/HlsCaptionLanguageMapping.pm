@@ -46,7 +46,7 @@ Caption Language Mapping
 
 =head2 CustomLanguageCode => Str
 
-  Specify the language for this caption channel, using the ISO 639-2 or
+  Specify the language for this captions channel, using the ISO 639-2 or
 ISO 639-3 three-letter language code
 
 

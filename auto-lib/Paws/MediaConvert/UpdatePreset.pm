@@ -160,9 +160,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SampleRate => 1,         # min: 8000, max: 192000; OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
-            CustomLanguageCode =>
-              'My__stringMin3Max3PatternAZaZ3',    # min: 3, max: 3; OPTIONAL
-            LanguageCode => 'ENG'
+            CustomLanguageCode => 'My__stringPatternAZaZ23AZaZ',    # OPTIONAL
+            LanguageCode       => 'ENG'
             , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
             LanguageCodeControl =>
               'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
@@ -186,8 +185,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                          # OPTIONAL
         CaptionDescriptions => [
           {
-            CustomLanguageCode =>
-              'My__stringMin3Max3PatternAZaZ3',     # min: 3, max: 3; OPTIONAL
+            CustomLanguageCode  => 'My__stringPatternAZaZ23AZaZ',    # OPTIONAL
             DestinationSettings => {
               BurninDestinationSettings => {
                 Alignment => 'CENTERED',    # values: CENTERED, LEFT; OPTIONAL
@@ -253,7 +251,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               SccDestinationSettings => {
                 Framerate => 'FRAMERATE_23_97'
-                , # values: FRAMERATE_23_97, FRAMERATE_24, FRAMERATE_29_97_DROPFRAME, FRAMERATE_29_97_NON_DROPFRAME; OPTIONAL
+                , # values: FRAMERATE_23_97, FRAMERATE_24, FRAMERATE_25, FRAMERATE_29_97_DROPFRAME, FRAMERATE_29_97_NON_DROPFRAME; OPTIONAL
               },    # OPTIONAL
               TeletextDestinationSettings => {
                 PageNumber => 'My__stringMin3Max3Pattern1809aFAF09aEAE'
@@ -381,6 +379,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MoovPlacement => 'PROGRESSIVE_DOWNLOAD'
             ,    # values: PROGRESSIVE_DOWNLOAD, NORMAL; OPTIONAL
             Mp4MajorBrand => 'My__string',
+          },    # OPTIONAL
+          MpdSettings => {
+            CaptionContainerType =>
+              'RAW',    # values: RAW, FRAGMENTED_MP4; OPTIONAL
+            Scte35Esam   => 'INSERT',      # values: INSERT, NONE; OPTIONAL
+            Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         VideoDescription => {
@@ -626,6 +630,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'FORCE_ALL_FRAMES', # values: FORCE_ALL_FRAMES, NORMAL; OPTIONAL
               Mode => 'DEINTERLACE'
               ,    # values: DEINTERLACE, INVERSE_TELECINE, ADAPTIVE; OPTIONAL
+            },    # OPTIONAL
+            DolbyVision => {
+              L6Metadata => {
+                MaxCll  => 1,    # max: 65535; OPTIONAL
+                MaxFall => 1,    # max: 65535; OPTIONAL
+              },    # OPTIONAL
+              L6Mode => 'PASSTHROUGH'
+              ,     # values: PASSTHROUGH, RECALCULATE, SPECIFY; OPTIONAL
+              Profile => 'PROFILE_5',    # values: PROFILE_5; OPTIONAL
             },    # OPTIONAL
             ImageInserter => {
               InsertableImages => [
