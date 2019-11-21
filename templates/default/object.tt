@@ -21,10 +21,9 @@ package [% inner_class %];
   [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]'[% END %]
 [%- END %]
 [%- END %]
-
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
-[%- END -%]
+  [% IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+[% END -%]
 
   [%- IF (xml_attributes.size) %] 
 sub _xml_attributes {
