@@ -9,7 +9,7 @@ tests:
   - expected: somconfig
     op: eq
     path: parameters
-    key: Id
+    key: id
   - expected: GET 
     op: eq
     path: method
@@ -17,9 +17,9 @@ tests:
     path: url
   - expected: metrics=
     path: url
-  - expected: Id=somconfig
+  - expected: id=somconfig
     path: url
-  - expected: Id=somconfig
+  - expected: id=somconfig
     path: uri
   - expected: metrics=
     path: uri

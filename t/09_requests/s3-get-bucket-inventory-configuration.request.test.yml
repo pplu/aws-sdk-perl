@@ -9,19 +9,19 @@ tests:
   - expected: Test_Inventory
     op: eq
     path: parameters
-    key: Id
+    key: id
   - expected: GET 
     op: eq
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: Id=Test_Inventory
+  - expected: id=Test_Inventory
     path: url
   - expected: inventory=
     path: url
   - expected: /oneoffpaws?
     path: uri
-  - expected: Id=Test_Inventory
+  - expected: id=Test_Inventory
     path: uri
   - expected: inventory=
     path: uri

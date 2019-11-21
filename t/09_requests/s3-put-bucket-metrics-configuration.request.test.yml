@@ -12,7 +12,7 @@ tests:
   - expected: ImportantBlueDocuments
     op: eq
     path: parameters
-    key: Id
+    key: id
   - expected: priority 
     op: eq
     path: parameters
@@ -54,13 +54,13 @@ tests:
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: Id=ImportantBlueDocuments
+  - expected: id=ImportantBlueDocuments
     path: url
   - expected: metrics=
     path: url
   - expected: metrics=
     path: uri
-  - expected: Id=ImportantBlueDocuments
+  - expected: id=ImportantBlueDocuments
     path: uri   
   - expected: /oneoffpaws?
     path: uri
