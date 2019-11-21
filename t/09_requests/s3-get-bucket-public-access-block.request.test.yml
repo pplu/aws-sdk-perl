@@ -2,7 +2,8 @@
 call: GetPublicAccessBlock 
 service: S3
 tests:
-  - op: eq
+  - expected: '' 
+    op: eq
     path: content
   - expected: oneoffpaws 
     op: eq

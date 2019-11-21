@@ -1,5 +1,5 @@
 ---
-call: PutObjectLockCongigutation
+call: PutObjectLockConfiguration
 service: S3
 tests:
   - expected: <ObjectLockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><ObjectLockEnabled>Enabled</ObjectLockEnabled><Rule><DefaultRetention><Days>1</Days><Mode>GOVERNANCE</Mode><Years>1</Years></DefaultRetention></Rule></ObjectLockConfiguration>
@@ -33,7 +33,7 @@ tests:
     expected: requester
     op: eq
     path: parameters
-  - expected: Put
+  - expected: PUT
     op: eq
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws

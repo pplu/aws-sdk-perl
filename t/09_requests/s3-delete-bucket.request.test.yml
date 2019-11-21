@@ -2,11 +2,11 @@
 call: DeleteBucket
 service: S3
 tests:
-  - expected: dev.cargotel.paws.new 
+  - expected: oneoffpaws 
     op: eq
     path: parameters
     key: Bucket
-  - expected: /dev.cargotel.paws.new 
+  - expected: /oneoffpaws 
     path: uri
-  - expected: https://s3.fake_region.amazonaws.com/dev.cargotel.paws.new
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws
     path: url

@@ -1,5 +1,5 @@
 ---
-call: GetObjectLegalHold
+call: HeadObject 
 service: S3
 tests:
   - expected: oneoffpaws 
@@ -16,13 +16,6 @@ tests:
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image.jpg
     path: url
     op: eq
-  - expected: /oneoffpaws/one/to/delete/image.jpg?
+  - expected: /oneoffpaws/one/to/delete/image.jpg
     path: uri
     op: eq
-  - expected: legal-hold
-    path: url
-    op: eq
-  - expected: legal-hold
-    path: uri
-    op: eq
-

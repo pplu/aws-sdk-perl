@@ -1,5 +1,5 @@
 ---
-Bucket: dev.cargotel.paws
+Bucket: oneoffpaws
 Key: Some Key
 ACL: private 
 CacheControl: MyCacheControl

@@ -1,5 +1,5 @@
 ---
-Bucket: oneoffpaws 
+Bucket: oneoffpaws
 Key: one/to/delete/image.jpg
 AccessControlPolicy:
   Owner:

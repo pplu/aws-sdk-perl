@@ -1,5 +1,5 @@
 ---
-Bucket: dev.cargotel.paws.new
+Bucket: oneoffpaws
 CreateBucketConfiguration: 
   LocationConstraint: us-east-1
 ACL: private

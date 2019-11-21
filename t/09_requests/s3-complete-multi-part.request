@@ -6,9 +6,6 @@ RequestPayer: requester
 MultipartUpload:
   Parts:
     - ETag: MyETag
-      PartNumber:
+      PartNumber: 1
     - ETag: MyETag2
       PartNumber: 3
-MFA: MyMFA
-
-

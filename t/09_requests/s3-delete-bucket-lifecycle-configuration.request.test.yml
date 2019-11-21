@@ -1,15 +1,11 @@
 ---
-call: DeleteBucketLifecycleConfiguration 
+call: DeleteBucketLifecycle
 service: S3
 tests:
   - expected: oneoffpaws 
     op: eq
     path: parameters
     key: Bucket
-  - expected: ImportantBlueDocuments
-    op: eq
-    path: parameters
-    key: id
   - expected: DELETE 
     op: eq
     path: method
@@ -17,11 +13,7 @@ tests:
     path: url
   - expected: lifecycle
     path: url
-  - expected: id=ImportantBlueDocuments
-    path: url       
-  - expected: lifecycle=
-    path: uri
-  - expected: id=ImportantBlueDocuments
+  - expected: lifecycle
     path: uri
   - expected: /oneoffpaws?
     path: uri

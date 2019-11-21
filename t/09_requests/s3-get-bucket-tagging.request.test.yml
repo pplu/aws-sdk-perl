@@ -11,7 +11,7 @@ tests:
     path: method
   - expected: /oneoffpaws?
     path: uri
-  - expected: https://s3.amazonaws.com/oneoffpaws? 
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws? 
     path: url
   - expected: tagging
     path: uri

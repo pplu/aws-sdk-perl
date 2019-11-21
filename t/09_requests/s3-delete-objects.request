@@ -1,6 +1,5 @@
 ---
 Bucket: oneoffpaws 
-Key: one/to/delete/image.jpg
 MFA: MyMFA
 RequestPayer: requester
 BypassGovernanceRetention: 1

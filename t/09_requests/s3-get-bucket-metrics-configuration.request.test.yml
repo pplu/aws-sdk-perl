@@ -6,14 +6,22 @@ tests:
     op: eq
     path: parameters
     key: Bucket
+  - expected: somconfig
+    op: eq
+    path: parameters
+    key: Id
   - expected: GET 
     op: eq
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: metrics 
+  - expected: metrics=
+    path: url
+  - expected: Id=somconfig
+    path: url
+  - expected: Id=somconfig
     path: uri
-  - expected: metrics 
+  - expected: metrics=
     path: uri
   - expected: /oneoffpaws?
     path: uri

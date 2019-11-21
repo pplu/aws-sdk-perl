@@ -5,7 +5,7 @@ tests:
   - expected: <CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LocationConstraint>us-east-1</LocationConstraint></CreateBucketConfiguration>
     op: eq
     path: content
-  - expected: dev.cargotel.paws.new 
+  - expected: oneoffpaws 
     op: eq
     path: parameters
     key: Bucket

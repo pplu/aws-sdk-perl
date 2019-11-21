@@ -6,7 +6,7 @@ tests:
     op: eq
     path: parameters
     key: Bucket
-  - expected: MyMultipartUploadId
+  - expected: AN Id 
     op: eq
     path: parameters
     key: uploadId
@@ -21,33 +21,23 @@ tests:
   - expected: 1
     op: eq
     path: parameters
-    key: max-parts
-  - expected: 1
-    op: eq
-    path: parameters
     key: part-number-marker
   - expected: GET
     op: eq
     path: method
-  - expected: https://s3.amazonaws.com/oneoffpaws/Some%20Key?
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/Some%20Key?
     ep: eq
     path: url
-  - expected: uploadId=MyMultipartUploadId
+  - expected: uploadId=AN+Id
     ep: eq
     path: url
-  - expected: /dev.cargotel.paws/Some%20Key
+  - expected: /oneoffpaws/Some%20Key
     ep: eq
     path: uri
-  - expected: uploadId=MyMultipartUploadId
+  - expected: uploadId=AN+Id
     ep: eq
     path: uri
-  - expected: max-parts=1 
-    ep: eq
-    path: uri
-  - expected: max-parts=1
-    ep: eq
-    path: url  
-  - expected: part-number-marker=1
+  - expected: uploadId=AN+Id
     ep: eq
     path: uri
   - expected: part-number-marker=1

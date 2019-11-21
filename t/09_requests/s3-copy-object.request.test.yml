@@ -82,12 +82,12 @@ tests:
     path: headers
     op: eq
     expected: MyMetadataValue
-- expected: DELETE
+  - expected: PUT 
     op: eq
     path: method
-  - expected: https://s3.amazonaws.com/oneoffpaws/Some%20Key?
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/Some%20Key
     ep: eq
     path: url
-  - expected: /dev.cargotel.paws/Some%20Key 
+  - expected: /oneoffpaws/Some%20Key 
     ep: eq
     path: uri

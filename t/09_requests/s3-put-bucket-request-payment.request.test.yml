@@ -12,7 +12,7 @@ tests:
   - expected: Requester
     op: eq
     path: parameters
-    key: Payer
+    key: RequestPaymentConfiguration.Payer 
   - expected: PUT
     op: eq
     path: method

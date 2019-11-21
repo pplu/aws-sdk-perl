@@ -2,7 +2,7 @@
 call: SelectObjectContent 
 service: S3
 tests:
-  - expected: <InputSerialization><CompressionType>NONE</CompressionType></InputSerialization><OutputSerialization><CSV><FieldDelimiter>,</FieldDelimiter><QuoteCharacter>"</QuoteCharacter><QuoteEscapeCharacter>"</QuoteEscapeCharacter><QuoteFields>ASNEEDED</QuoteFields><RecordDelimiter>\\n</RecordDelimiter></CSV></OutputSerialization>
+  - expected: <InputSerialization><CompressionType>NONE</CompressionType></InputSerialization><OutputSerialization><CSV><FieldDelimiter>\,</FieldDelimiter><QuoteCharacter>\'</QuoteCharacter><QuoteEscapeCharacter>\"</QuoteEscapeCharacter><QuoteFields>ASNEEDED</QuoteFields><RecordDelimiter>\\n</RecordDelimiter></CSV></OutputSerialization>
     op: eq
     path: content
   - expected: oneoffpaws 
@@ -18,7 +18,7 @@ tests:
     op: eq
     path: parameters
   - key: OutputSerialization.CSV.FieldDelimiter
-    expected: ,
+    expected: \,
     op: eq
     path: parameters
   - key: Key
@@ -34,7 +34,7 @@ tests:
     op: eq
     path: parameters
   - key: OutputSerialization.CSV.QuoteCharacter
-    expected: \"
+    expected: \'
     op: eq
     path: parameters
   - key: OutputSerialization.CSV.RecordDelimiter

@@ -42,9 +42,9 @@ tests:
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: inventory
+  - expected: lifecycle
     path: url
-  - expected: inventory
+  - expected: lifecycle
     path: uri   
   - expected: /oneoffpaws?
     path: uri

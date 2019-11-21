@@ -8,8 +8,7 @@ InputSerialization:
 OutputSerialization:
   CSV:
     QuoteFields: ASNEEDED
-	RecordDelimiter: \n
-    FieldDelimiter: ,
-    QuoteCharacter: '
-    QuoteEscapeCharacter: "
-
+    RecordDelimiter: \\n
+    FieldDelimiter: \,
+    QuoteCharacter: \'
+    QuoteEscapeCharacter: \"

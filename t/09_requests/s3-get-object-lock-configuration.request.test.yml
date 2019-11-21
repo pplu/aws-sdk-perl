@@ -1,5 +1,5 @@
 ---
-call: GetObjectLegalHold
+call: GetObjectLockConfiguration
 service: S3
 tests:
   - expected: oneoffpaws 

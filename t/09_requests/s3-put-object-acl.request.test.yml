@@ -3,7 +3,7 @@ call: PutObjectAcl
 service: S3
 tests:
   - expected: <AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><AccessControlList><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><DisplayName>OwnerDisplayName</DisplayName><ID>852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID</ID></Grantee><Permission>FULL_CONTROL</Permission></Grant></AccessControlList><Owner><DisplayName>Nothing</DisplayName><ID>852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID</ID></Owner></AccessControlPolicy>
-     op: eq
+    op: eq
     path: content
   - expected: oneoffpaws 
     op: eq
@@ -52,4 +52,3 @@ tests:
   - expected: acl
     path: uri
     op: eq
-

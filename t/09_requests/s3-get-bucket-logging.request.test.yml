@@ -2,7 +2,7 @@
 call: GetBucketLogging 
 service: S3
 tests:
-  - expected: 
+  - expected: '' 
     op: eq
     path: content
   - expected: oneoffpaws 

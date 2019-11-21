@@ -2,6 +2,9 @@
 call: DeleteObjects
 service: S3
 tests:
+  - expected: <Delete xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Object><Key>MyObjectKey</Key><VersionId>MyObjectVersionId</VersionId></Object><Object><Key>MyObjectKey1</Key><VersionId>MyObjectVersionId1</VersionId></Object><Quiet>1</Quiet></Delete>
+    op: eq
+    path: content
   - expected: oneoffpaws 
     op: eq
     path: parameters
@@ -19,7 +22,7 @@ tests:
     op: eq
     path: parameters
   - key: Delete.Objects.Object.1.VersionId
-    expected: 1
+    expected: MyObjectVersionId 
     op: eq
     path: parameters
   - key: MFA
@@ -38,12 +41,9 @@ tests:
     expected: 1
     op: eq
     path: parameters
-  - expected: DELETE
+  - expected: POST
     op: eq
     path: method
-  - expected: versionId=my+version+id
-    path: url
-    op: eq
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
     op: eq

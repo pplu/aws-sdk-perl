@@ -10,9 +10,7 @@ use Test::More;
 use Test::Exception;
 use FileCaller;
 use TestFromYaml;
-
 use Paws;
-use Paws::Crawler;
 
 my $debug = $ENV{DEBUG_TESTS} || 0;
 my $aws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
@@ -36,12 +34,10 @@ done_testing;
 
 sub test_file {
   my ($file) = @_;
-#warn("test_file=$file");
   my $test_def_file = "$file.test.yml";
   my ($test, $opts);
   eval {
     $test = TestFromYaml->new(file => $test_def_file);
-#warn("file=$file,   test_def_file=".$test_def_file);
   };
   die "YAML error: $@ in file $test_def_file"
     if ($@);
@@ -50,16 +46,11 @@ sub test_file {
   };
   die "YAML error: $@ in file $file"
     if ($@);
-#use Data::Dumper;
-#warn("ops=".Dumper($opts));
-#warn("test=".Dumper($test));
 
 SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->service or not $test->method);
     local $TODO = "$test_def_file is TODO: " . $test->todo_reason if ($test->is_todo);
-
-
-	#my $s3 = Paws->service('S3', region => 'us-east-1', debug=>1);
+	
 	my $service = $aws->service($test->service,
       region => 'fake_region',
       caller => FileCaller->new(
@@ -70,14 +61,13 @@ SKIP: {
 
 	my $call_method = $test->method;
     my $call_class = $service->meta->name . '::' . $call_method;
-#	warn("call_method=$call_method, call_class=$call_class");
-#Paws->load_class($call_class);
     my $res;
-    my $passed = lives_ok {
+    
+	my $passed = lives_ok {
       $res = $service->$call_method(%{$opts})
     } "Call " . $test->service . '->' . $test->method . " from $file";
-#warn("reqst=".Dumper($res ));
-    if (not $passed or $TODO) {
+    
+	if (not $passed or $TODO) {
       ok(0, "Can't test method access because something went horribly wrong in the call to $call_method");
       next;
     }
@@ -100,10 +90,12 @@ SKIP: {
 		}
 		else {
 		  eval {
+#			warn("test=".Dumper($t));
 		    if (exists($t->{key})){
                my $hash = $res->$path;
-			   $got     = $hash->{$t->{key}};
-			   $path    = "Param Key  ".$t->{key};
+			   $got     = $hash->{$t->{key}}
+			     if (exists($hash->{$t->{key}}));
+			   $path    = "Param->key: ".$t->{key};
 		    }
 		    else {
 		       $got = $res->$path;

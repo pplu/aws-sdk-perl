@@ -3,6 +3,6 @@ Bucket: oneoffpaws
 Tagging:
   TagSet:
     - Key: Akey
-	  Value: a value
-	- Key: bkey
-	  Value: b value
+      Value: a value
+    - Key: bkey
+      Value: b value

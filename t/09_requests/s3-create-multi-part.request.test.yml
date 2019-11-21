@@ -1,5 +1,5 @@
 ---
-call: CcreateMultipartUpload 
+call: CreateMultipartUpload 
 service: S3
 tests:
   - expected: oneoffpaws 
@@ -78,26 +78,18 @@ tests:
     path: headers
     op: eq
     expected: MyMetadataValue
-- expected: DELETE
+  - expected: POST 
     op: eq
     path: method
-  - expected: https://s3.amazonaws.com/oneoffpaws/Some%20Key?
-    ep: ew
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/Some%20Key?
+    ep: eq
     path: url
-  - expected: uploadId=MyMultipartUploadId
-    ep: ew
+  - expected: uploads
+    ep: eq
     path: url
-   - expected: uploadId=MyMultipartUploadId
-    ep: ew
-    path: url
-  - expected: uploadId=MyMultipartUploadId
-    ep: ew
-    path: url
-  - expected: /dev.cargotel.paws/Some%20Keiy
-    ep: ew
+  - expected: /oneoffpaws/Some%20Key
+    ep: eq
     path: uri
-  - expected:  uploadId=MyMultipartUploadId
-    ep: ew
+  - expected: uploads 
+    ep: eq
     path: uri
-
-        ?max-parts=1&uploadId=MyMultipartUploadId&part-number-marker=1

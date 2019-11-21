@@ -3,6 +3,6 @@ Bucket: oneoffpaws
 NotificationConfiguration:
   TopicConfigurations:
     - TopicArn: arn:aws:sns:us-east-1:356671443308:s3notificationtopic2
-	  Events: 
-	    - s3:ReducedRedundancyLostObject
-	  Id: My config
+      Events:
+        - s3\:ReducedRedundancyLostObject
+      Id: My config

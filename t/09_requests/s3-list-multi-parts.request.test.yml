@@ -6,7 +6,7 @@ tests:
     op: eq
     path: parameters
     key: Bucket
-  - expected: MyMultipartUploadId
+  - expected: MyUploadIdMarker 
     op: eq
     path: parameters
     key: upload-id-marker
@@ -33,7 +33,7 @@ tests:
   - expected: GET
     op: eq
     path: method
-  - expected: https://s3.amazonaws.com/oneoffpaws?
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     ep: eq
     path: url
   - expected: prefix=MyPrefix

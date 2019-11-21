@@ -2,49 +2,54 @@
 call: PutBucketInventoryConfiguration 
 service: S3
 tests:
-  - expected: <LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><Filter><Prefix>documents</Prefix></Filter><ID>rule1</ID><Status>Enabled</Status><Transition><Days>30</Days><StorageClass>GLACIER</StorageClass></Transition></Rule><Rule><Filter><Prefix>documents</Prefix></Filter><ID>rule1</ID><Status>Enabled</Status><Transition><Days>30</Days><StorageClass>GLACIER</StorageClass></Transition></Rule></LifecycleConfiguration>
+  - expected: <InventoryConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Destination><S3BucketDestination><Bucket>arn:aws:s3:oneoffpaws</Bucket><Format>CSV</Format></S3BucketDestination></Destination><Id>Test_Inventory</Id><IncludedObjectVersions>Current</IncludedObjectVersions><IsEnabled>0</IsEnabled><Schedule><Frequency>Weekly</Frequency></Schedule></InventoryConfiguration> 
     op: eq
     path: content
   - expected: oneoffpaws 
     op: eq
     path: parameters
     key: Bucket
-  - expected: Enabled 
+  - expected: Test_Inventory 
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.2.Status
-  - expected: documents
+    key: id
+  - expected: arn:aws:s3:oneoffpaws
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.2.Filter.Prefix
-  - expected: GLACIER
+    key: InventoryConfiguration.Destination.S3BucketDestination.Bucket
+  - expected: Test_Inventory
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.2.Transitions.Transition.1.StorageClass
-  - expected: 30
+    key: InventoryConfiguration.Id
+  - expected: 0
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.1.Transitions.Transition.1.Days 
-  - expected: 30
+    key: InventoryConfiguration.IsEnabled
+  - expected: CSV
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.2.Transitions.Transition.1.Days
-  - expected: Enabled
+    key: InventoryConfiguration.Destination.S3BucketDestination.Format
+  - expected: Current
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.1.Status
-  - expected: rule1
+    key: InventoryConfiguration.IncludedObjectVersions
+  - expected: Weekly
     op: eq
     path: parameters
-    key: LifecycleConfiguration.Rules.Rule.1.ID
+    key: InventoryConfiguration.Schedule.Frequency
   - expected: PUT 
     op: eq
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: inventory
+  - expected: inventory=
     path: url
-  - expected: inventory
+  - expected: id=Test_Inventory
+    path: url
+  - expected: inventory=
     path: uri   
   - expected: /oneoffpaws?
     path: uri
+  - expected: id=Test_Inventory
+    path: uri
+

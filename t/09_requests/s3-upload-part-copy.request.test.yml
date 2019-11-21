@@ -1,5 +1,5 @@
 ---
-call: UploadParCopy 
+call: UploadPartCopy 
 service: S3
 tests:
   - expected: one/to/delete/image_copy.jpg 
@@ -28,7 +28,7 @@ tests:
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image_copy.jpg?
     path: url
     op: eq
-  - expected: /oneoffpaws/one/to/delete/image.jpg
+  - expected: /oneoffpaws/one/to/delete/image_copy.jpg
     path: uri
     op: eq
   - expected: uploadId=MyMultipartUploadId 

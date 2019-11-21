@@ -1,15 +1,11 @@
 ---
-call: GetBucketlifecyckeConfiguration 
+call: GetBucketLifecycleConfiguration
 service: S3
 tests:
   - expected: oneoffpaws 
     op: eq
     path: parameters
     key: Bucket
-  - expected: ImportantBlueDocuments
-    op: eq
-    path: parameters
-    key: Id
   - expected: GET 
     op: eq
     path: method
@@ -17,11 +13,7 @@ tests:
     path: url
   - expected: lifecycle
     path: url
-  - expected: Id=ImportantBlueDocuments
-    path: url       
-  - expected: lifecycle=
-    path: uri
-  - expected: Id=ImportantBlueDocuments
+  - expected: lifecycle
     path: uri
   - expected: /oneoffpaws?
     path: uri
