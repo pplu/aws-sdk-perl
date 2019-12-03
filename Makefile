@@ -25,11 +25,16 @@ copy-tests:
 
 dist: dist-builder dist-paws
 
-dist-builder:
+dzil-builder:
+	cpanm -n -l dzil-local Dist::Zilla
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil authordeps --missing | cpanm -n -l dzil-local/
+
+dist-builder: dzil-builder
 	cp cpanfile-ext-builder cpanfile
 	cp dist.ini-ext-builder dist.ini
-	carton exec dzil build
-dist-paws:
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil build
+
+dist-paws: dzil-builder
 	cp cpanfile-paws cpanfile
 	cp dist.ini-paws dist.ini
-	carton exec dzil build
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil build
