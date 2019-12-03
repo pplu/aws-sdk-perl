@@ -16,10 +16,14 @@ package Paws::API::Builder {
 
   use v5.10;
 
+  use Paws::API::ServiceToClass;
   use Paws::API::RegionBuilder;
   use Paws::API::ServiceToClass;
 
-  has api => (is => 'ro', required => 1);
+  has api => (is => 'ro', required => 1, lazy => 1, default => sub {
+    my $self = shift;
+    return sprintf 'Paws::%s', $self->api_ns;
+  });
 
   sub service_name {
     my $self = shift;
@@ -39,7 +43,12 @@ package Paws::API::Builder {
   has api_ns => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
     my ($service_dir) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
-    return Paws::API::ServiceToClass::service_to_class($service_dir);
+    my $ns = Paws::API::ServiceToClass::maybe_service_to_class($service_dir);
+    return $ns if (defined $ns);
+
+    my $boto_name = $self->api_struct->{ metadata }->{ serviceId };
+    die "No serviceId in API metadata" if (not defined $boto_name);
+    return $boto_name;
   });
 
   has template_path => (is => 'ro', required => 1);

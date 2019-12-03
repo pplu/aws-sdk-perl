@@ -212,10 +212,15 @@ package Paws::API::ServiceToClass;
     workspaces => 'WorkSpaces',
     xray => 'XRay',
   };
-  
+
+  sub maybe_service_to_class {
+    my $service = shift;
+    return $services_to_classes->{ $service };
+  }
+ 
   sub service_to_class {
     my $service = shift;
-    my $class = $services_to_classes->{ $service };
+    my $class = maybe_service_to_class($service);
     die "No class for $service" if (not defined $class);
     return $class;
   }

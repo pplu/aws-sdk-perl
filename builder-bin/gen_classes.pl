@@ -53,12 +53,10 @@ exit 0 if (not $gen_docu_links and not $gen_classes);
 my @failures;
 foreach my $file (@files) {
   print "Processing $file\n" if ($gen_docu_links or $gen_classes);
-  if (my ($f, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)){
-    next if ($f eq '_retry' or $f eq '_regions');
-    my $ns = Paws::API::ServiceToClass::service_to_class($f);
+  if (my ($service_dir, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)){
+    next if ($service_dir eq '_retry' or $service_dir eq '_regions');
     eval {
-      my $builder = get_builder("Paws::$ns", $file);
-      print "$f maps to $ns\n" if ($gen_class_mapping);
+      my $builder = get_builder($file, $service_dir);
       $builder->write_documentation_file if ($gen_docu_links);
       $builder->process_api if ($gen_classes);
     };
@@ -70,23 +68,23 @@ print "Summary of fails:\n" if @failures;
 print @failures;
 
 sub get_builder {
-  my ($api, $file) = @_;
+  my ($file, $service_dir) = @_;
 
   my $struct = decode_json(read_binary($file));
   my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
   # Map classes to be generated with special builders
   my $overrides = {
-    'Paws::EC2'        => 'EC2',
-    'Paws::Kinesis'    => 'Kinesis',
+    'ec2'        => 'EC2',
+    'kinesis'    => 'Kinesis',
   };
-  $type = $overrides->{ $api } if (defined $overrides->{ $api });
+  $type = $overrides->{ $service_dir } if (defined $overrides->{ $service_dir });
   $type =~ s/\-//;
 
   my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
 
-  my $c = $class_maker->new(api_file => $file, api => $api, template_path => [
+  my $c = $class_maker->new(api_file => $file, template_path => [
                                 getcwd() . "/templates/${type}",
                                 getcwd() . '/templates/default',
                             ]);
