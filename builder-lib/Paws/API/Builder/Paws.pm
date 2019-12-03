@@ -12,9 +12,45 @@ package Paws::API::Builder::Paws {
     '0.42';
   }
 
+  has boto_service_files => (is => 'ro', isa => 'ArrayRef[Str]', lazy => 1, default => sub {
+    my $self = shift;
+    my @dirs = glob('botocore/botocore/data/*') or
+      die "Cannot find botocore data files in botocore/botocore/data/*\n";
+
+    my @files;
+    foreach my $class_dir (@dirs) {
+      my @class_defs = grep { -f $_ } glob("$class_dir/*/service-2.json");
+      next if (not @class_defs);
+      @class_defs = sort @class_defs;
+      my $class_version = pop @class_defs;
+      push @files, $class_version;
+    }
+
+    return \@files;
+  });
+
+  has boto_file_information => (is => 'ro', isa => 'ArrayRef[HashRef]', lazy => 1, default => sub {
+    my $self = shift;
+    my @files = @{ $self->boto_service_files };
+    my @info;
+    foreach my $file (@files) {
+      if (my ($service_dir, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)){
+        # Discard directories that are not services (stuff in botocore dir structure
+        next if ($service_dir eq '_retry' or $service_dir eq '_regions');
+        push @info, {
+          file => $file,
+          service => $service_dir,
+          version => $version
+        };
+      }
+    }
+    return \@info;
+  });
+
   sub services {
     my $self = shift;
-    [ Paws::API::ServiceToClass::classes ];
+
+    return [ map { $_->{ service } } @{ $self->boto_file_information } ];
   }
 
   sub save_class {
