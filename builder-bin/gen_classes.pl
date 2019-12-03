@@ -14,17 +14,14 @@ use Module::Runtime qw/require_module/;
 use lib 'builder-lib', 't/lib';
 
 use Paws::API::Builder::Paws;
-use Paws::API::ServiceToClass;
 
 my $gen_paws_pm    = 0;
 my $gen_classes    = 0;
 my $gen_docu_links = 0;
-my $gen_class_mapping = 0;
 
 GetOptions ("paws_pm"    => \$gen_paws_pm,
             "classes"    => \$gen_classes,
             "docu_links" => \$gen_docu_links,
-            "class_mapping" => \$gen_class_mapping,
            )
 or die "Error in command line arguments\n";
 
@@ -51,7 +48,7 @@ if ($gen_paws_pm) {
   $p->process;
 }
 
-exit 0 if (not $gen_docu_links and not $gen_classes and not $gen_class_mapping);
+exit 0 if (not $gen_docu_links and not $gen_classes);
 
 my @failures;
 foreach my $file (@files) {
