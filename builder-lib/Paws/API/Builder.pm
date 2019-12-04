@@ -16,9 +16,7 @@ package Paws::API::Builder {
 
   use v5.10;
 
-  use Paws::API::ServiceToClass;
   use Paws::API::RegionBuilder;
-  use Paws::API::ServiceToClass;
 
   has api => (is => 'ro', required => 1, lazy => 1, default => sub {
     my $self = shift;
@@ -27,9 +25,7 @@ package Paws::API::Builder {
 
   sub service_name {
     my $self = shift;
-    my $svc = $self->api;
-    $svc =~ s/^.*\:\://;
-    return $svc;
+    $self->api_ns;
   }
 
   has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
@@ -39,18 +35,13 @@ package Paws::API::Builder {
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
   has api_file => (is => 'ro', required => 1);
-
-  has api_ns => (is => 'ro', lazy => 1, default => sub {
+  has api_file_service => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
     my $self = shift;
-    my ($service_dir) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
-    my $ns = Paws::API::ServiceToClass::maybe_service_to_class($service_dir);
-    return $ns if (defined $ns);
-
-    my $boto_name = $self->api_struct->{ metadata }->{ serviceId };
-    die "No serviceId in API metadata" if (not defined $boto_name);
-    return $boto_name;
+    my ($service) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
+    return $service;
   });
 
+  has api_ns => (is => 'ro', required => 1);
   has template_path => (is => 'ro', required => 1);
 
   has service_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
