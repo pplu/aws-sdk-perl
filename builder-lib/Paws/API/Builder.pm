@@ -128,8 +128,11 @@ package Paws::API::Builder {
   has signature_role => (
     is => 'ro', 
     lazy => 1, 
-    default => sub { 
-      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion} 
+    default => sub {
+      my $self = shift;
+      my $signature_type = $self->api_struct->{metadata}{signatureVersion};
+
+      sprintf "Paws::Net::%sSignature", ucfirst $signature_type;
     } 
   );
 
