@@ -23,13 +23,15 @@ copy-tests:
 	rm t/10_responses/cloudfront-* t/10_responses/s3-*
 	rm t/10_responses/*.json
 
-dist: dist-builder dist-paws
+dist:
+	cpanm -n -l dzil-local Dist::Zilla
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil authordeps --missing | cpanm -n -l dzil-local/
 
-dist-builder:
+dist-builder: dist
 	cp cpanfile-ext-builder cpanfile
 	cp dist.ini-ext-builder dist.ini
 	carton exec dzil build
-dist-paws:
+dist-paws: dist
 	cp cpanfile-paws cpanfile
 	cp dist.ini-paws dist.ini
 	carton exec dzil build
