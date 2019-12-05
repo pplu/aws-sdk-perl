@@ -321,7 +321,11 @@ are different.
 
 =item RoleArn => Str
 
+=item [LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>]
+
 =item [Tags => ArrayRef[L<Paws::StepFunctions::Tag>]]
+
+=item [Type => Str]
 
 
 =back
@@ -812,6 +816,8 @@ Remove a tag from a Step Functions resource
 =item StateMachineArn => Str
 
 =item [Definition => Str]
+
+=item [LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>]
 
 =item [RoleArn => Str]
 

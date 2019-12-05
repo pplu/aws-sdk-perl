@@ -2,9 +2,11 @@
 package Paws::StepFunctions::CreateStateMachine;
   use Moose;
   has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
+  has LoggingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::LoggingConfiguration', traits => ['NameInRequest'], request_name => 'loggingConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
 
   use MooseX::ClassAttribute;
 
@@ -31,16 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $states = Paws->service('StepFunctions');
     my $CreateStateMachineOutput = $states->CreateStateMachine(
-      Definition => 'MyDefinition',
-      Name       => 'MyName',
-      RoleArn    => 'MyArn',
-      Tags       => [
+      Definition           => 'MyDefinition',
+      Name                 => 'MyName',
+      RoleArn              => 'MyArn',
+      LoggingConfiguration => {
+        Destinations => [
+          {
+            CloudWatchLogsLogGroup => {
+              LogGroupArn => 'MyArn',    # min: 1, max: 256
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
+        IncludeExecutionData => 1,    # OPTIONAL
+        Level => 'ALL',               # values: ALL, ERROR, FATAL, OFF; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
       ],                            # OPTIONAL
+      Type => 'STANDARD',           # OPTIONAL
     );
 
     # Results:
@@ -60,6 +75,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 The Amazon States Language definition of the state machine. See Amazon
 States Language
 (https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
+
+
+
+=head2 LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>
+
+Defines what execution history events are logged and where they are
+logged.
 
 
 
@@ -118,6 +140,13 @@ Tags may only contain Unicode letters, digits, white space, or these
 symbols: C<_ . : / = + - @>.
 
 
+
+=head2 Type => Str
+
+Determines whether a Standard or Express state machine is created. If
+not set, Standard is created.
+
+Valid values are: C<"STANDARD">, C<"EXPRESS">
 
 
 =head1 SEE ALSO
