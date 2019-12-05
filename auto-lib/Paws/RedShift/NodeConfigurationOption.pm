@@ -1,6 +1,7 @@
 package Paws::RedShift::NodeConfigurationOption;
   use Moose;
   has EstimatedDiskUtilizationPercent => (is => 'ro', isa => 'Num');
+  has Mode => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
 1;
@@ -41,6 +42,11 @@ A list of node configurations.
 =head2 EstimatedDiskUtilizationPercent => Num
 
   The estimated disk utilizaton percentage.
+
+
+=head2 Mode => Str
+
+  The category of the node configuration recommendation.
 
 
 =head2 NodeType => Str

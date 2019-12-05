@@ -2,6 +2,7 @@
 package Paws::RedShift::DescribeNodeConfigurationOptions;
   use Moose;
   has ActionType => (is => 'ro', isa => 'Str', required => 1);
+  has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::NodeConfigurationOptionsFilter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -34,11 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $NodeConfigurationOptionsMessage =
       $redshift->DescribeNodeConfigurationOptions(
-      ActionType => 'restore-cluster',
-      Filters    => [
+      ActionType        => 'restore-cluster',
+      ClusterIdentifier => 'MyString',          # OPTIONAL
+      Filters           => [
         {
           Name => 'NodeType'
-          , # values: NodeType, NumberOfNodes, EstimatedDiskUtilizationPercent; OPTIONAL
+          , # values: NodeType, NumberOfNodes, EstimatedDiskUtilizationPercent, Mode; OPTIONAL
           Operator => 'eq',  # values: eq, lt, gt, le, ge, in, between; OPTIONAL
           Values => [ 'MyString', ... ],    # OPTIONAL
         },
@@ -65,10 +67,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 
 =head2 B<REQUIRED> ActionType => Str
 
-The action type to evaluate for possible node configurations.
-Currently, it must be "restore-cluster".
+The action type to evaluate for possible node configurations. Specify
+"restore-cluster" to get configuration combinations based on an
+existing snapshot. Specify "recommend-node-config" to get configuration
+recommendations based on an existing cluster or snapshot.
 
-Valid values are: C<"restore-cluster">
+Valid values are: C<"restore-cluster">, C<"recommend-node-config">
+
+=head2 ClusterIdentifier => Str
+
+The identifier of the cluster to evaluate for possible node
+configurations.
+
+
 
 =head2 Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>]
 
