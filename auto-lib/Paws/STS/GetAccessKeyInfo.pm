@@ -48,8 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts
 The identifier of an access key.
 
 This parameter allows (through its regex pattern) a string of
-characters that can consist of any upper- or lowercased letter or
-digit.
+characters that can consist of any upper- or lowercase letter or digit.
 
 
 

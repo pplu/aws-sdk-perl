@@ -103,18 +103,17 @@ For more information, see Session Policies
 in the I<IAM User Guide>.
 
 The plain text that you use for both inline and managed session
-policies shouldn't exceed 2048 characters. The JSON policy characters
-can be any ASCII character from the space character to the end of the
-valid character list (\u0020 through \u00FF). It can also include the
-tab (\u0009), linefeed (\u000A), and carriage return (\u000D)
-characters.
+policies can't exceed 2,048 characters. The JSON policy characters can
+be any ASCII character from the space character to the end of the valid
+character list (\u0020 through \u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
-The characters in this parameter count towards the 2048 character
-session policy guideline. However, an AWS conversion compresses the
-session policies into a packed binary format that has a separate limit.
-This is the enforced limit. The C<PackedPolicySize> response element
-indicates by percentage how close the policy is to the upper size
-limit.
+An AWS conversion compresses the passed session policies and session
+tags into a packed binary format that has a separate limit. Your
+request can fail for this limit even if your plain text meets the other
+requirements. The C<PackedPolicySize> response element indicates by
+percentage how close the policies and tags for your request are to the
+upper size limit.
 
 
 
@@ -126,17 +125,17 @@ same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
 ARNs. However, the plain text that you use for both inline and managed
-session policies shouldn't exceed 2048 characters. For more information
+session policies can't exceed 2,048 characters. For more information
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the AWS General Reference.
 
-The characters in this parameter count towards the 2048 character
-session policy guideline. However, an AWS conversion compresses the
-session policies into a packed binary format that has a separate limit.
-This is the enforced limit. The C<PackedPolicySize> response element
-indicates by percentage how close the policy is to the upper size
-limit.
+An AWS conversion compresses the passed session policies and session
+tags into a packed binary format that has a separate limit. Your
+request can fail for this limit even if your plain text meets the other
+requirements. The C<PackedPolicySize> response element indicates by
+percentage how close the policies and tags for your request are to the
+upper size limit.
 
 Passing policies to this operation returns new temporary credentials.
 The resulting session's permissions are the intersection of the role's

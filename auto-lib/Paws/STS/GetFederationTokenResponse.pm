@@ -37,9 +37,10 @@ resource-based policies, such as an Amazon S3 bucket policy.
 
 =head2 PackedPolicySize => Int
 
-A percentage value indicating the size of the policy in packed form.
-The service rejects policies for which the packed size is greater than
-100 percent of the allowed value.
+A percentage value that indicates the packed size of the session
+policies and session tags combined passed in the request. The request
+fails if the packed size is greater than 100 percent, which means the
+policies and tags exceeded the allowed space.
 
 
 =head2 _request_id => Str

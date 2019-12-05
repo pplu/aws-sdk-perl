@@ -44,7 +44,7 @@ credentials.
 credentials. For more information about ARNs and how to use them in
 policies, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
-in I<Using IAM>.
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> FederatedUserId => Str
