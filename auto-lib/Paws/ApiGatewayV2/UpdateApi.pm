@@ -3,10 +3,14 @@ package Paws::ApiGatewayV2::UpdateApi;
   use Moose;
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
   has ApiKeySelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeySelectionExpression');
+  has CorsConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::Cors', traits => ['NameInRequest'], request_name => 'corsConfiguration');
+  has CredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentialsArn');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DisableSchemaValidation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableSchemaValidation');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has RouteKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeKey');
   has RouteSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeSelectionExpression');
+  has Target => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'target');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
@@ -37,10 +41,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateApiResponse = $apigateway->UpdateApi(
       ApiId                     => 'My__string',
       ApiKeySelectionExpression => 'MySelectionExpression',    # OPTIONAL
+      CorsConfiguration         => {
+        AllowCredentials => 1,                                 # OPTIONAL
+        AllowHeaders     => [ 'My__string', ... ],             # OPTIONAL
+        AllowMethods  => [ 'MyStringWithLengthBetween1And64', ... ],  # OPTIONAL
+        AllowOrigins  => [ 'My__string', ... ],                       # OPTIONAL
+        ExposeHeaders => [ 'My__string', ... ],                       # OPTIONAL
+        MaxAge => 1,    # min: -1, max: 86400; OPTIONAL
+      },    # OPTIONAL
+      CredentialsArn          => 'MyArn',                             # OPTIONAL
       Description             => 'MyStringWithLengthBetween0And1024', # OPTIONAL
       DisableSchemaValidation => 1,                                   # OPTIONAL
       Name                    => 'MyStringWithLengthBetween1And128',  # OPTIONAL
+      RouteKey                => 'MySelectionKey',                    # OPTIONAL
       RouteSelectionExpression => 'MySelectionExpression',            # OPTIONAL
+      Target                   => 'MyUriWithLengthBetween1And2048',   # OPTIONAL
       Version                  => 'MyStringWithLengthBetween1And64',  # OPTIONAL
     );
 
@@ -49,9 +64,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ApiId       = $UpdateApiResponse->ApiId;
     my $ApiKeySelectionExpression =
       $UpdateApiResponse->ApiKeySelectionExpression;
+    my $CorsConfiguration        = $UpdateApiResponse->CorsConfiguration;
     my $CreatedDate              = $UpdateApiResponse->CreatedDate;
     my $Description              = $UpdateApiResponse->Description;
     my $DisableSchemaValidation  = $UpdateApiResponse->DisableSchemaValidation;
+    my $ImportInfo               = $UpdateApiResponse->ImportInfo;
     my $Name                     = $UpdateApiResponse->Name;
     my $ProtocolType             = $UpdateApiResponse->ProtocolType;
     my $RouteSelectionExpression = $UpdateApiResponse->RouteSelectionExpression;
@@ -75,8 +92,30 @@ The API identifier.
 
 =head2 ApiKeySelectionExpression => Str
 
-An API key selection expression. See API Key Selection Expressions
+An API key selection expression. Supported only for WebSocket APIs. See
+API Key Selection Expressions
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
+
+
+
+=head2 CorsConfiguration => L<Paws::ApiGatewayV2::Cors>
+
+A CORS configuration. Supported only for HTTP APIs.
+
+
+
+=head2 CredentialsArn => Str
+
+This property is part of quick create. It specifies the credentials
+required for the integration, if any. For a Lambda integration, three
+options are available. To specify an IAM Role for API Gateway to
+assume, use the role's Amazon Resource Name (ARN). To require that the
+caller's identity be passed through from the request, specify
+arn:aws:iam::*:user/*. To use resource-based permissions on supported
+AWS services, specify null. Currently, this property is not used for
+HTTP integrations. If provided, this value replaces the credentials
+associated with the quick create integration. Supported only for HTTP
+APIs.
 
 
 
@@ -88,7 +127,8 @@ The description of the API.
 
 =head2 DisableSchemaValidation => Bool
 
-Avoid validating models when creating a deployment.
+Avoid validating models when creating a deployment. Supported only for
+WebSocket APIs.
 
 
 
@@ -98,9 +138,32 @@ The name of the API.
 
 
 
+=head2 RouteKey => Str
+
+This property is part of quick create. If not specified, the route
+created using quick create is kept. Otherwise, this value replaces the
+route key of the quick create route. Additional routes may still be
+added after the API is updated. Supported only for HTTP APIs.
+
+
+
 =head2 RouteSelectionExpression => Str
 
-The route selection expression for the API.
+The route selection expression for the API. For HTTP APIs, the
+routeSelectionExpression must be ${request.method} ${request.path}. If
+not provided, this will be the default for HTTP APIs. This property is
+required for WebSocket APIs.
+
+
+
+=head2 Target => Str
+
+This property is part of quick create. For HTTP integrations, specify a
+fully qualified URL. For Lambda integrations, specify a function ARN.
+The type of the integration will be HTTP_PROXY or AWS_PROXY,
+respectively. The value provided updates the integration URI and
+integration type. You can update a quick-created target, but you can't
+remove it from an API. Supported only for HTTP APIs.
 
 
 

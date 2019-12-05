@@ -3,9 +3,11 @@ package Paws::ApiGatewayV2::Api;
   has ApiEndpoint => (is => 'ro', isa => 'Str', request_name => 'apiEndpoint', traits => ['NameInRequest']);
   has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
   has ApiKeySelectionExpression => (is => 'ro', isa => 'Str', request_name => 'apiKeySelectionExpression', traits => ['NameInRequest']);
+  has CorsConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::Cors', request_name => 'corsConfiguration', traits => ['NameInRequest']);
   has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DisableSchemaValidation => (is => 'ro', isa => 'Bool', request_name => 'disableSchemaValidation', traits => ['NameInRequest']);
+  has ImportInfo => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'importInfo', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has ProtocolType => (is => 'ro', isa => 'Str', request_name => 'protocolType', traits => ['NameInRequest'], required => 1);
   has RouteSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'routeSelectionExpression', traits => ['NameInRequest'], required => 1);
@@ -62,8 +64,14 @@ API stage.
 
 =head2 ApiKeySelectionExpression => Str
 
-  An API key selection expression. See API Key Selection Expressions
+  An API key selection expression. Supported only for WebSocket APIs. See
+API Key Selection Expressions
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
+
+
+=head2 CorsConfiguration => L<Paws::ApiGatewayV2::Cors>
+
+  A CORS configuration. Supported only for HTTP APIs.
 
 
 =head2 CreatedDate => Str
@@ -78,7 +86,15 @@ API stage.
 
 =head2 DisableSchemaValidation => Bool
 
-  Avoid validating models when creating a deployment.
+  Avoid validating models when creating a deployment. Supported only for
+WebSocket APIs.
+
+
+=head2 ImportInfo => ArrayRef[Str|Undef]
+
+  The validation information during API import. This may include
+particular properties of your OpenAPI definition which are ignored
+during import. Supported only for HTTP APIs.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -88,19 +104,20 @@ API stage.
 
 =head2 B<REQUIRED> ProtocolType => Str
 
-  The API protocol: Currently only WEBSOCKET is supported.
+  The API protocol.
 
 
 =head2 B<REQUIRED> RouteSelectionExpression => Str
 
-  The route selection expression for the API.
+  The route selection expression for the API. For HTTP APIs, the
+routeSelectionExpression must be ${request.method} ${request.path}. If
+not provided, this will be the default for HTTP APIs. This property is
+required for WebSocket APIs.
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>
 
-  The key-value map of strings. The valid character set is
-[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
-start with aws:. The tag value can be up to 256 characters..
+  A collection of tags associated with the API.
 
 
 =head2 Version => Str

@@ -46,7 +46,7 @@ The domain name configuration.
 
 =head2 ApiGatewayDomainName => Str
 
-  A domain name for the WebSocket API.
+  A domain name for the API.
 
 
 =head2 CertificateArn => Str

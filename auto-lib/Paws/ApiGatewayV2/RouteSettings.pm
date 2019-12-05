@@ -44,7 +44,7 @@ Represents a collection of route settings.
 
   Specifies whether (true) or not (false) data trace logging is enabled
 for this route. This property affects the log entries pushed to Amazon
-CloudWatch Logs.
+CloudWatch Logs. Supported only for WebSocket APIs.
 
 
 =head2 DetailedMetricsEnabled => Bool
@@ -54,18 +54,20 @@ CloudWatch Logs.
 
 =head2 LoggingLevel => Str
 
-  Specifies the logging level for this route: DEBUG, INFO, or WARN. This
+  Specifies the logging level for this route: INFO, ERROR, or OFF. This
 property affects the log entries pushed to Amazon CloudWatch Logs.
+Supported only for WebSocket APIs.
 
 
 =head2 ThrottlingBurstLimit => Int
 
-  Specifies the throttling burst limit.
+  Specifies the throttling burst limit. Supported only for WebSocket
+APIs.
 
 
 =head2 ThrottlingRateLimit => Num
 
-  Specifies the throttling rate limit.
+  Specifies the throttling rate limit. Supported only for WebSocket APIs.
 
 
 

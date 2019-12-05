@@ -43,9 +43,9 @@ Represents an integration response.
 
 =head2 ContentHandlingStrategy => Str
 
-  Specifies how to handle response payload content type conversions.
-Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the
-following behaviors:
+  Supported only for WebSocket APIs. Specifies how to handle response
+payload content type conversions. Supported values are
+CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
 
 CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 string to the corresponding binary blob.

@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::UpdateStageInput;
   use Moose;
   has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::AccessLogSettings', request_name => 'accessLogSettings', traits => ['NameInRequest']);
+  has AutoDeploy => (is => 'ro', isa => 'Bool', request_name => 'autoDeploy', traits => ['NameInRequest']);
   has ClientCertificateId => (is => 'ro', isa => 'Str', request_name => 'clientCertificateId', traits => ['NameInRequest']);
   has DefaultRouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettings', request_name => 'defaultRouteSettings', traits => ['NameInRequest']);
   has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
@@ -47,6 +48,12 @@ Represents the input parameters for an UpdateStage request.
   Settings for logging access in this stage.
 
 
+=head2 AutoDeploy => Bool
+
+  Specifies whether updates to an API automatically trigger a new
+deployment. The default value is false.
+
+
 =head2 ClientCertificateId => Str
 
   The identifier of a client certificate for a Stage.
@@ -59,7 +66,8 @@ Represents the input parameters for an UpdateStage request.
 
 =head2 DeploymentId => Str
 
-  The deployment identifier for the API stage.
+  The deployment identifier for the API stage. Can't be updated if
+autoDeploy is enabled.
 
 
 =head2 Description => Str
@@ -76,7 +84,7 @@ Represents the input parameters for an UpdateStage request.
 
   A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?#&=,]+.
+[A-Za-z0-9-._~:/?#&=,]+. Supported only for WebSocket APIs.
 
 
 

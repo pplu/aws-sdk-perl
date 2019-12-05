@@ -1,6 +1,7 @@
 
 package Paws::ApiGatewayV2::GetIntegrationResult;
   use Moose;
+  has ApiGatewayManaged => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiGatewayManaged');
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId');
   has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType');
   has ContentHandlingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandlingStrategy');
@@ -12,6 +13,7 @@ package Paws::ApiGatewayV2::GetIntegrationResult;
   has IntegrationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationType');
   has IntegrationUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationUri');
   has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
+  has PayloadFormatVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payloadFormatVersion');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'requestParameters');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'requestTemplates');
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
@@ -29,6 +31,14 @@ Paws::ApiGatewayV2::GetIntegrationResult
 =head1 ATTRIBUTES
 
 
+=head2 ApiGatewayManaged => Bool
+
+Specifies whether an integration is managed by API Gateway. If you
+created an API using using quick create, the resulting integration is
+managed by API Gateway. You can update a managed integration, but you
+can't delete it.
+
+
 =head2 ConnectionId => Str
 
 The connection ID.
@@ -43,9 +53,9 @@ public routable internet.
 Valid values are: C<"INTERNET">, C<"VPC_LINK">
 =head2 ContentHandlingStrategy => Str
 
-Specifies how to handle response payload content type conversions.
-Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the
-following behaviors:
+Supported only for WebSocket APIs. Specifies how to handle response
+payload content type conversions. Supported values are
+CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
 
 CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 string to the corresponding binary blob.
@@ -85,8 +95,9 @@ Specifies the integration's HTTP method type.
 
 =head2 IntegrationResponseSelectionExpression => Str
 
-The integration response selection expression for the integration. See
-Integration Response Selection Expressions
+The integration response selection expression for the integration.
+Supported only for WebSocket APIs. See Integration Response Selection
+Expressions
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions).
 
 
@@ -98,7 +109,7 @@ AWS: for integrating the route or method request with an AWS service
 action, including the Lambda function-invoking action. With the Lambda
 function-invoking action, this is referred to as the Lambda custom
 integration. With any other AWS service action, this is known as AWS
-integration.
+integration. Supported only for WebSocket APIs.
 
 AWS_PROXY: for integrating the route or method request with the Lambda
 function-invoking action with the client request passed through as-is.
@@ -106,14 +117,15 @@ This integration is also referred to as Lambda proxy integration.
 
 HTTP: for integrating the route or method request with an HTTP
 endpoint. This integration is also referred to as the HTTP custom
-integration.
+integration. Supported only for WebSocket APIs.
 
 HTTP_PROXY: for integrating route or method request with an HTTP
 endpoint, with the client request passed through as-is. This is also
 referred to as HTTP proxy integration.
 
 MOCK: for integrating the route or method request with API Gateway as a
-"loopback" endpoint without invoking any backend.
+"loopback" endpoint without invoking any backend. Supported only for
+WebSocket APIs.
 
 Valid values are: C<"AWS">, C<"HTTP">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 =head2 IntegrationUri => Str
@@ -127,7 +139,7 @@ Specifies the pass-through behavior for incoming requests based on the
 Content-Type header in the request, and the available mapping templates
 specified as the requestTemplates property on the Integration resource.
 There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
-NEVER.
+NEVER. Supported only for WebSocket APIs.
 
 WHEN_NO_MATCH passes the request body for unmapped content types
 through to the integration backend without transformation.
@@ -141,6 +153,12 @@ content type defined, unmapped content types will be rejected with the
 same HTTP 415 Unsupported Media Type response.
 
 Valid values are: C<"WHEN_NO_MATCH">, C<"NEVER">, C<"WHEN_NO_TEMPLATES">
+=head2 PayloadFormatVersion => Str
+
+Specifies the format of the payload sent to an integration. Required
+for HTTP APIs. Currently, the only supported value is 1.0.
+
+
 =head2 RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
 
 A key-value map specifying request parameters that are passed from the
@@ -150,7 +168,8 @@ value or static value that must be enclosed within single quotes and
 pre-encoded as required by the backend. The method request parameter
 value must match the pattern of method.request.{location}.{name} ,
 where {location} is querystring, path, or header; and {name} must be a
-valid and unique method request parameter name.
+valid and unique method request parameter name. Supported only for
+WebSocket APIs.
 
 
 =head2 RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>
@@ -158,18 +177,20 @@ valid and unique method request parameter name.
 Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the
 client. The content type value is the key in this map, and the template
-(as a String) is the value.
+(as a String) is the value. Supported only for WebSocket APIs.
 
 
 =head2 TemplateSelectionExpression => Str
 
-The template selection expression for the integration.
+The template selection expression for the integration. Supported only
+for WebSocket APIs.
 
 
 =head2 TimeoutInMillis => Int
 
 Custom timeout between 50 and 29,000 milliseconds. The default value is
-29,000 milliseconds or 29 seconds.
+29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
+is 5,000 milliseconds, or 5 seconds for HTTP APIs.
 
 
 =head2 _request_id => Str

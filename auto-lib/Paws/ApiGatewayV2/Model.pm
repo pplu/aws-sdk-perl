@@ -35,8 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV
 
 =head1 DESCRIPTION
 
-Represents a data model for an API. See Create Models and Mapping
-Templates for Request and Response Mappings
+Represents a data model for an API. Supported only for WebSocket APIs.
+See Create Models and Mapping Templates for Request and Response
+Mappings
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html).
 
 =head1 ATTRIBUTES

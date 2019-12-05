@@ -41,7 +41,8 @@ Represents the input parameters for an UpdateRouteResponse request.
 
 =head2 ModelSelectionExpression => Str
 
-  The model selection expression for the route response.
+  The model selection expression for the route response. Supported only
+for WebSocket APIs.
 
 
 =head2 ResponseModels => L<Paws::ApiGatewayV2::RouteModels>

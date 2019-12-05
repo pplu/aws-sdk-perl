@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV
 
 =head1 DESCRIPTION
 
-Represents the input parameters for an UpdateModel request.
+Represents the input parameters for an UpdateModel request. Supported
+only for WebSocket APIs.
 
 =head1 ATTRIBUTES
 

@@ -45,7 +45,7 @@ Represents the input parameters for a CreateApiMapping request.
 
 =head2 ApiMappingKey => Str
 
-  
+  The API mapping key.
 
 
 =head2 B<REQUIRED> Stage => Str

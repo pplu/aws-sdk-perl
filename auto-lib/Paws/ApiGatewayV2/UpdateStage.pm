@@ -3,6 +3,7 @@ package Paws::ApiGatewayV2::UpdateStage;
   use Moose;
   has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::AccessLogSettings', traits => ['NameInRequest'], request_name => 'accessLogSettings');
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
+  has AutoDeploy => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoDeploy');
   has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
   has DefaultRouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettings', traits => ['NameInRequest'], request_name => 'defaultRouteSettings');
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
@@ -43,20 +44,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DestinationArn => 'MyArn',                                # OPTIONAL
         Format         => 'MyStringWithLengthBetween1And1024',    # OPTIONAL
       },    # OPTIONAL
+      AutoDeploy           => 1,         # OPTIONAL
       ClientCertificateId  => 'MyId',    # OPTIONAL
       DefaultRouteSettings => {
-        DataTraceEnabled       => 1,     # OPTIONAL
-        DetailedMetricsEnabled => 1,     # OPTIONAL
-        LoggingLevel         => 'ERROR', # values: ERROR, INFO, false; OPTIONAL
-        ThrottlingBurstLimit => 1,       # OPTIONAL
-        ThrottlingRateLimit  => 1,       # OPTIONAL
+        DataTraceEnabled       => 1,
+        DetailedMetricsEnabled => 1,
+        LoggingLevel         => 'ERROR',  # values: ERROR, INFO, false; OPTIONAL
+        ThrottlingBurstLimit => 1,        # OPTIONAL
+        ThrottlingRateLimit  => 1,        # OPTIONAL
       },    # OPTIONAL
       DeploymentId  => 'MyId',                                 # OPTIONAL
       Description   => 'MyStringWithLengthBetween0And1024',    # OPTIONAL
       RouteSettings => {
         'My__string' => {
-          DataTraceEnabled       => 1,                         # OPTIONAL
-          DetailedMetricsEnabled => 1,                         # OPTIONAL
+          DataTraceEnabled       => 1,
+          DetailedMetricsEnabled => 1,
           LoggingLevel => 'ERROR',    # values: ERROR, INFO, false; OPTIONAL
           ThrottlingBurstLimit => 1,  # OPTIONAL
           ThrottlingRateLimit  => 1,  # OPTIONAL
@@ -68,16 +70,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AccessLogSettings    = $UpdateStageResponse->AccessLogSettings;
+    my $ApiGatewayManaged    = $UpdateStageResponse->ApiGatewayManaged;
+    my $AutoDeploy           = $UpdateStageResponse->AutoDeploy;
     my $ClientCertificateId  = $UpdateStageResponse->ClientCertificateId;
     my $CreatedDate          = $UpdateStageResponse->CreatedDate;
     my $DefaultRouteSettings = $UpdateStageResponse->DefaultRouteSettings;
     my $DeploymentId         = $UpdateStageResponse->DeploymentId;
     my $Description          = $UpdateStageResponse->Description;
-    my $LastUpdatedDate      = $UpdateStageResponse->LastUpdatedDate;
-    my $RouteSettings        = $UpdateStageResponse->RouteSettings;
-    my $StageName            = $UpdateStageResponse->StageName;
-    my $StageVariables       = $UpdateStageResponse->StageVariables;
-    my $Tags                 = $UpdateStageResponse->Tags;
+    my $LastDeploymentStatusMessage =
+      $UpdateStageResponse->LastDeploymentStatusMessage;
+    my $LastUpdatedDate = $UpdateStageResponse->LastUpdatedDate;
+    my $RouteSettings   = $UpdateStageResponse->RouteSettings;
+    my $StageName       = $UpdateStageResponse->StageName;
+    my $StageVariables  = $UpdateStageResponse->StageVariables;
+    my $Tags            = $UpdateStageResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::UpdateStageResponse> object.
 
@@ -99,6 +105,13 @@ The API identifier.
 
 
 
+=head2 AutoDeploy => Bool
+
+Specifies whether updates to an API automatically trigger a new
+deployment. The default value is false.
+
+
+
 =head2 ClientCertificateId => Str
 
 The identifier of a client certificate for a Stage.
@@ -113,7 +126,8 @@ The default route settings for the stage.
 
 =head2 DeploymentId => Str
 
-The deployment identifier for the API stage.
+The deployment identifier for the API stage. Can't be updated if
+autoDeploy is enabled.
 
 
 
@@ -131,7 +145,8 @@ Route settings for the stage.
 
 =head2 B<REQUIRED> StageName => Str
 
-The stage name.
+The stage name. Stage names can only contain alphanumeric characters,
+hyphens, and underscores. Maximum length is 128 characters.
 
 
 
@@ -139,7 +154,7 @@ The stage name.
 
 A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?#&=,]+.
+[A-Za-z0-9-._~:/?#&=,]+. Supported only for WebSocket APIs.
 
 
 

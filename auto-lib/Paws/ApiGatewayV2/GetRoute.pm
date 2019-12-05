@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ApiGatewayManaged        = $GetRouteResult->ApiGatewayManaged;
     my $ApiKeyRequired           = $GetRouteResult->ApiKeyRequired;
     my $AuthorizationScopes      = $GetRouteResult->AuthorizationScopes;
     my $AuthorizationType        = $GetRouteResult->AuthorizationType;

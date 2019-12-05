@@ -6,8 +6,8 @@ package Paws::ApiGatewayV2::UpdateAuthorizerInput;
   has AuthorizerUri => (is => 'ro', isa => 'Str', request_name => 'authorizerUri', traits => ['NameInRequest']);
   has IdentitySource => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'identitySource', traits => ['NameInRequest']);
   has IdentityValidationExpression => (is => 'ro', isa => 'Str', request_name => 'identityValidationExpression', traits => ['NameInRequest']);
+  has JwtConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::JWTConfiguration', request_name => 'jwtConfiguration', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ProviderArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'providerArns', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGatewayV2::UpdateAuthorizerInput object:
 
-  $service_obj->Method(Att1 => { AuthorizerCredentialsArn => $value, ..., ProviderArns => $value  });
+  $service_obj->Method(Att1 => { AuthorizerCredentialsArn => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,16 +53,15 @@ resource-based permissions on the Lambda function, specify null.
 
 =head2 AuthorizerResultTtlInSeconds => Int
 
-  The time to live (TTL), in seconds, of cached authorizer results. If it
-is zero, authorization caching is disabled. If it is greater than zero,
-API Gateway will cache authorizer responses. If this field is not set,
-the default value is 300. The maximum value is 3600, or 1 hour.
+  Authorizer caching is not currently supported. Don't specify this value
+for authorizers.
 
 
 =head2 AuthorizerType => Str
 
-  The authorizer type. Currently the only valid value is REQUEST, for a
-Lambda function using incoming request parameters.
+  The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
+function using incoming request parameters. For HTTP APIs, specify JWT
+to use JSON Web Tokens.
 
 
 =head2 AuthorizerUri => Str
@@ -77,41 +76,46 @@ is the same as the region hosting the Lambda function, path indicates
 that the remaining substring in the URI should be treated as the path
 to the resource, including the initial /. For Lambda functions, this is
 usually of the form /2015-03-31/functions/[FunctionARN]/invocations.
+Supported only for REQUEST authorizers.
 
 
 =head2 IdentitySource => ArrayRef[Str|Undef]
 
   The identity source for which authorization is requested.
 
-For the REQUEST authorizer, this is required when authorization caching
-is enabled. The value is a comma-separated string of one or more
-mapping expressions of the specified request parameters. For example,
-if an Auth header, a Name query string parameter are defined as
-identity sources, this value is $method.request.header.Auth,
-$method.request.querystring.Name. These parameters will be used to
-derive the authorization caching key and to perform runtime validation
-of the REQUEST authorizer by verifying all of the identity-related
-request parameters are present, not null and non-empty. Only when this
-is true does the authorizer invoke the authorizer Lambda function,
-otherwise, it returns a 401 Unauthorized response without calling the
-Lambda function. The valid value is a string of comma-separated mapping
-expressions of the specified request parameters. When the authorization
-caching is not enabled, this property is optional.
+For a REQUEST authorizer, this is optional. The value is a set of one
+or more mapping expressions of the specified request parameters.
+Currently, the identity source can be headers, query string parameters,
+stage variables, and context parameters. For example, if an Auth header
+and a Name query string parameter are defined as identity sources, this
+value is route.request.header.Auth, route.request.querystring.Name.
+These parameters will be used to perform runtime validation for
+Lambda-based authorizers by verifying all of the identity-related
+request parameters are present in the request, not null, and non-empty.
+Only when this is true does the authorizer invoke the authorizer Lambda
+function. Otherwise, it returns a 401 Unauthorized response without
+calling the Lambda function.
+
+For JWT, a single entry that specifies where to extract the JSON Web
+Token (JWT) from inbound requests. Currently only header-based and
+query parameter-based selections are supported, for example
+"$request.header.Authorization".
 
 
 =head2 IdentityValidationExpression => Str
 
-  The validation expression does not apply to the REQUEST authorizer.
+  This parameter is not used.
+
+
+=head2 JwtConfiguration => L<Paws::ApiGatewayV2::JWTConfiguration>
+
+  Represents the configuration of a JWT authorizer. Required for the JWT
+authorizer type. Supported only for HTTP APIs.
 
 
 =head2 Name => Str
 
   The name of the authorizer.
-
-
-=head2 ProviderArns => ArrayRef[Str|Undef]
-
-  For REQUEST authorizer, this is not defined.
 
 
 

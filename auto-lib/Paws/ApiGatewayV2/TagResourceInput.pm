@@ -31,16 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents the input parameters for a TagResource request.
 
 =head1 ATTRIBUTES
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>
 
-  The key-value map of strings. The valid character set is
-[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
-start with aws:. The tag value can be up to 256 characters..
+  The collection of tags. Each tag element is associated with a given
+resource.
 
 
 

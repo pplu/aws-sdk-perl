@@ -1,5 +1,5 @@
 
-package Paws::ApiGatewayV2::CreateApiResponse;
+package Paws::ApiGatewayV2::ImportApiResponse;
   use Moose;
   has ApiEndpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiEndpoint');
   has ApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiId');
@@ -23,7 +23,7 @@ package Paws::ApiGatewayV2::CreateApiResponse;
 
 =head1 NAME
 
-Paws::ApiGatewayV2::CreateApiResponse
+Paws::ApiGatewayV2::ImportApiResponse
 
 =head1 ATTRIBUTES
 

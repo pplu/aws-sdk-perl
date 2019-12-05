@@ -89,6 +89,7 @@ template as the value.
 =head2 TemplateSelectionExpression => Str
 
   The template selection expression for the integration response.
+Supported only for WebSocket APIs.
 
 
 

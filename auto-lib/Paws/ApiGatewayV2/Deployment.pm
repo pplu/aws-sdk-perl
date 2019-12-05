@@ -1,5 +1,6 @@
 package Paws::ApiGatewayV2::Deployment;
   use Moose;
+  has AutoDeployed => (is => 'ro', isa => 'Bool', request_name => 'autoDeployed', traits => ['NameInRequest']);
   has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
   has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
   has DeploymentStatus => (is => 'ro', isa => 'Str', request_name => 'deploymentStatus', traits => ['NameInRequest']);
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGatewayV2::Deployment object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., Description => $value  });
+  $service_obj->Method(Att1 => { AutoDeployed => $value, ..., Description => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV2::Deployment object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedDate
+  $result->Att1->AutoDeployed
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,11 @@ Deployment must be associated with a Stage for it to be callable over
 the internet.
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoDeployed => Bool
+
+  Specifies whether a deployment was automatically released.
 
 
 =head2 CreatedDate => Str
