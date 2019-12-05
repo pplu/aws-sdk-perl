@@ -59,6 +59,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSuppressedDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteSuppressedDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::GetAccount', @_);
@@ -114,6 +119,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::GetEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSuppressedDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetSuppressedDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListConfigurationSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::ListConfigurationSets', @_);
@@ -139,6 +149,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::ListEmailIdentities', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSuppressedDestinations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::ListSuppressedDestinations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::ListTagsForResource', @_);
@@ -154,6 +169,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutAccountSendingAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutAccountSuppressionAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::PutAccountSuppressionAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutConfigurationSetDeliveryOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutConfigurationSetDeliveryOptions', @_);
@@ -167,6 +187,11 @@ package Paws::SESv2;
   sub PutConfigurationSetSendingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutConfigurationSetSendingOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutConfigurationSetSuppressionOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::PutConfigurationSetSuppressionOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutConfigurationSetTrackingOptions {
@@ -204,6 +229,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutEmailIdentityMailFromAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutSuppressedDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::PutSuppressedDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::SendEmail', @_);
@@ -227,7 +257,7 @@ package Paws::SESv2;
   
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity DeleteSuppressedDestination GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity GetSuppressedDestination ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListSuppressedDestinations ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutAccountSuppressionAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetSuppressionOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes PutSuppressedDestination SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
 
 1;
 
@@ -305,6 +335,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 =item [ReputationOptions => L<Paws::SESv2::ReputationOptions>]
 
 =item [SendingOptions => L<Paws::SESv2::SendingOptions>]
+
+=item [SuppressionOptions => L<Paws::SESv2::SuppressionOptions>]
 
 =item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
 
@@ -517,6 +549,23 @@ Returns: a L<Paws::SESv2::DeleteEmailIdentityResponse> instance
 
 Deletes an email identity. An identity can be either an email address
 or a domain name.
+
+
+=head2 DeleteSuppressedDestination
+
+=over
+
+=item EmailAddress => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::DeleteSuppressedDestination>
+
+Returns: a L<Paws::SESv2::DeleteSuppressedDestinationResponse> instance
+
+Used to delete a suppressed email destination from your suppression
+list.
 
 
 =head2 GetAccount
@@ -735,6 +784,23 @@ identity's verification status, its DKIM authentication status, and its
 custom Mail-From settings.
 
 
+=head2 GetSuppressedDestination
+
+=over
+
+=item EmailAddress => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetSuppressedDestination>
+
+Returns: a L<Paws::SESv2::GetSuppressedDestinationResponse> instance
+
+Used to fetch a single suppressed email destination from your
+suppression list.
+
+
 =head2 ListConfigurationSets
 
 =over
@@ -849,6 +915,31 @@ those that aren't. This operation returns identities that are
 associated with Amazon SES and Amazon Pinpoint.
 
 
+=head2 ListSuppressedDestinations
+
+=over
+
+=item [EndDate => Str]
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+=item [Reasons => ArrayRef[Str|Undef]]
+
+=item [StartDate => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::ListSuppressedDestinations>
+
+Returns: a L<Paws::SESv2::ListSuppressedDestinationsResponse> instance
+
+Used to fetch a list suppressed email destinations from your
+suppression list.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -901,6 +992,22 @@ Each argument is described in detail in: L<Paws::SESv2::PutAccountSendingAttribu
 Returns: a L<Paws::SESv2::PutAccountSendingAttributesResponse> instance
 
 Enable or disable the ability of your account to send email.
+
+
+=head2 PutAccountSuppressionAttributes
+
+=over
+
+=item [SuppressedReasons => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::PutAccountSuppressionAttributes>
+
+Returns: a L<Paws::SESv2::PutAccountSuppressionAttributesResponse> instance
+
+Change your account's suppression preferences for your account.
 
 
 =head2 PutConfigurationSetDeliveryOptions
@@ -961,6 +1068,24 @@ Returns: a L<Paws::SESv2::PutConfigurationSetSendingOptionsResponse> instance
 
 Enable or disable email sending for messages that use a particular
 configuration set in a specific AWS Region.
+
+
+=head2 PutConfigurationSetSuppressionOptions
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item [SuppressedReasons => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::PutConfigurationSetSuppressionOptions>
+
+Returns: a L<Paws::SESv2::PutConfigurationSetSuppressionOptionsResponse> instance
+
+Specify your account's suppression preferences for a configuration set.
 
 
 =head2 PutConfigurationSetTrackingOptions
@@ -1119,6 +1244,24 @@ Returns: a L<Paws::SESv2::PutEmailIdentityMailFromAttributesResponse> instance
 
 Used to enable or disable the custom Mail-From domain configuration for
 an email identity.
+
+
+=head2 PutSuppressedDestination
+
+=over
+
+=item EmailAddress => Str
+
+=item Reason => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::PutSuppressedDestination>
+
+Returns: a L<Paws::SESv2::PutSuppressedDestinationResponse> instance
+
+Puts (overwrites) an email destination in your suppression list.
 
 
 =head2 SendEmail

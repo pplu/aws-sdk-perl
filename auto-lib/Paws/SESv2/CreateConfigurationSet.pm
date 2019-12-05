@@ -5,6 +5,7 @@ package Paws::SESv2::CreateConfigurationSet;
   has DeliveryOptions => (is => 'ro', isa => 'Paws::SESv2::DeliveryOptions');
   has ReputationOptions => (is => 'ro', isa => 'Paws::SESv2::ReputationOptions');
   has SendingOptions => (is => 'ro', isa => 'Paws::SESv2::SendingOptions');
+  has SuppressionOptions => (is => 'ro', isa => 'Paws::SESv2::SuppressionOptions');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
   has TrackingOptions => (is => 'ro', isa => 'Paws::SESv2::TrackingOptions');
 
@@ -45,6 +46,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       SendingOptions => {
         SendingEnabled => 1,    # OPTIONAL
+      },    # OPTIONAL
+      SuppressionOptions => {
+        SuppressedReasons => [
+          'BOUNCE', ...    # values: BOUNCE, COMPLAINT
+        ],                 # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -90,6 +96,12 @@ metrics for the emails that you send that use the configuration set.
 
 An object that defines whether or not Amazon SES can send email that
 you send using the configuration set.
+
+
+
+=head2 SuppressionOptions => L<Paws::SESv2::SuppressionOptions>
+
+
 
 
 

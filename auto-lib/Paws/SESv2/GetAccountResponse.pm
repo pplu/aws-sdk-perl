@@ -6,6 +6,7 @@ package Paws::SESv2::GetAccountResponse;
   has ProductionAccessEnabled => (is => 'ro', isa => 'Bool');
   has SendingEnabled => (is => 'ro', isa => 'Bool');
   has SendQuota => (is => 'ro', isa => 'Paws::SESv2::SendQuota');
+  has SuppressionAttributes => (is => 'ro', isa => 'Paws::SESv2::SuppressionAttributes');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -81,6 +82,12 @@ account in the current AWS Region.
 
 An object that contains information about the per-day and per-second
 sending limits for your Amazon SES account in the current AWS Region.
+
+
+=head2 SuppressionAttributes => L<Paws::SESv2::SuppressionAttributes>
+
+An object that contains information about your account's suppression
+preferences.
 
 
 =head2 _request_id => Str

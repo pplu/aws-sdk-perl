@@ -36,11 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ConfigurationSetName =
       $GetConfigurationSetResponse->ConfigurationSetName;
-    my $DeliveryOptions   = $GetConfigurationSetResponse->DeliveryOptions;
-    my $ReputationOptions = $GetConfigurationSetResponse->ReputationOptions;
-    my $SendingOptions    = $GetConfigurationSetResponse->SendingOptions;
-    my $Tags              = $GetConfigurationSetResponse->Tags;
-    my $TrackingOptions   = $GetConfigurationSetResponse->TrackingOptions;
+    my $DeliveryOptions    = $GetConfigurationSetResponse->DeliveryOptions;
+    my $ReputationOptions  = $GetConfigurationSetResponse->ReputationOptions;
+    my $SendingOptions     = $GetConfigurationSetResponse->SendingOptions;
+    my $SuppressionOptions = $GetConfigurationSetResponse->SuppressionOptions;
+    my $Tags               = $GetConfigurationSetResponse->Tags;
+    my $TrackingOptions    = $GetConfigurationSetResponse->TrackingOptions;
 
     # Returns a L<Paws::SESv2::GetConfigurationSetResponse> object.
 
