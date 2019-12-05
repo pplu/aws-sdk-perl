@@ -40,8 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-Identifier (ID) of the directory whose log subscription you want to
-delete.
+Identifier of the directory whose log subscription you want to delete.
 
 
 

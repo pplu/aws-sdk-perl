@@ -83,7 +83,7 @@ present if the directory is an AD Connector directory.
 
 =head2 Description => Str
 
-  The textual description for the directory.
+  The description for the directory.
 
 
 =head2 DesiredNumberOfDomainControllers => Int

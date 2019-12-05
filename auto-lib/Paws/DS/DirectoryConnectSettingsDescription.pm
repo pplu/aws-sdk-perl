@@ -63,7 +63,7 @@ Contains information about an AD Connector directory.
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  A list of subnet identifiers in the VPC that the AD connector is in.
+  A list of subnet identifiers in the VPC that the AD Connector is in.
 
 
 =head2 VpcId => Str

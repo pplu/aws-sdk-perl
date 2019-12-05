@@ -105,9 +105,19 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DeleteTrust', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DeregisterCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterEventTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DeregisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConditionalForwarders {
@@ -130,6 +140,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeEventTopics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeLDAPSSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeLDAPSSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSharedDirectories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeSharedDirectories', @_);
@@ -145,6 +160,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeTrusts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableLDAPS {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DisableLDAPS', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableRadius {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DisableRadius', @_);
@@ -153,6 +173,11 @@ package Paws::DS;
   sub DisableSso {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DisableSso', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableLDAPS {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::EnableLDAPS', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableRadius {
@@ -175,6 +200,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::GetSnapshotLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::ListCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListIpRoutes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ListIpRoutes', @_);
@@ -193,6 +223,11 @@ package Paws::DS;
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::RegisterCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterEventTopic {
@@ -475,7 +510,7 @@ package Paws::DS;
   }
 
 
-  sub operations { qw/AcceptSharedDirectory AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateLogSubscription CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteLogSubscription DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeSharedDirectories DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListLogSubscriptions ListSchemaExtensions ListTagsForResource RegisterEventTopic RejectSharedDirectory RemoveIpRoutes RemoveTagsFromResource ResetUserPassword RestoreFromSnapshot ShareDirectory StartSchemaExtension UnshareDirectory UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius UpdateTrust VerifyTrust / }
+  sub operations { qw/AcceptSharedDirectory AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateLogSubscription CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteLogSubscription DeleteSnapshot DeleteTrust DeregisterCertificate DeregisterEventTopic DescribeCertificate DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeLDAPSSettings DescribeSharedDirectories DescribeSnapshots DescribeTrusts DisableLDAPS DisableRadius DisableSso EnableLDAPS EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListCertificates ListIpRoutes ListLogSubscriptions ListSchemaExtensions ListTagsForResource RegisterCertificate RegisterEventTopic RejectSharedDirectory RemoveIpRoutes RemoveTagsFromResource ResetUserPassword RestoreFromSnapshot ShareDirectory StartSchemaExtension UnshareDirectory UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius UpdateTrust VerifyTrust / }
 
 1;
 
@@ -749,7 +784,10 @@ Each argument is described in detail in: L<Paws::DS::CreateDirectory>
 
 Returns: a L<Paws::DS::CreateDirectoryResult> instance
 
-Creates a Simple AD directory.
+Creates a Simple AD directory. For more information, see Simple Active
+Directory
+(https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html)
+in the I<AWS Directory Service Admin Guide>.
 
 Before you call C<CreateDirectory>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
@@ -774,9 +812,9 @@ Each argument is described in detail in: L<Paws::DS::CreateLogSubscription>
 
 Returns: a L<Paws::DS::CreateLogSubscriptionResult> instance
 
-Creates a subscription to forward real time Directory Service domain
-controller security logs to the specified CloudWatch log group in your
-AWS account.
+Creates a subscription to forward real-time Directory Service domain
+controller security logs to the specified Amazon CloudWatch log group
+in your AWS account.
 
 
 =head2 CreateMicrosoftAD
@@ -804,7 +842,10 @@ Each argument is described in detail in: L<Paws::DS::CreateMicrosoftAD>
 
 Returns: a L<Paws::DS::CreateMicrosoftADResult> instance
 
-Creates an AWS Managed Microsoft AD directory.
+Creates a Microsoft AD directory in the AWS Cloud. For more
+information, see AWS Managed Microsoft AD
+(https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html)
+in the I<AWS Directory Service Admin Guide>.
 
 Before you call I<CreateMicrosoftAD>, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
@@ -966,6 +1007,25 @@ Deletes an existing trust relationship between your AWS Managed
 Microsoft AD directory and an external domain.
 
 
+=head2 DeregisterCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item DirectoryId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::DeregisterCertificate>
+
+Returns: a L<Paws::DS::DeregisterCertificateResult> instance
+
+Deletes from the system the certificate that was registered for a
+secured LDAP connection.
+
+
 =head2 DeregisterEventTopic
 
 =over
@@ -983,6 +1043,25 @@ Returns: a L<Paws::DS::DeregisterEventTopicResult> instance
 
 Removes the specified directory as a publisher to the specified SNS
 topic.
+
+
+=head2 DescribeCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item DirectoryId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::DescribeCertificate>
+
+Returns: a L<Paws::DS::DescribeCertificateResult> instance
+
+Displays information about the certificate registered for a secured
+LDAP connection.
 
 
 =head2 DescribeConditionalForwarders
@@ -1083,6 +1162,28 @@ If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 
 
+=head2 DescribeLDAPSSettings
+
+=over
+
+=item DirectoryId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::DescribeLDAPSSettings>
+
+Returns: a L<Paws::DS::DescribeLDAPSSettingsResult> instance
+
+Describes the status of LDAP security for the specified directory.
+
+
 =head2 DescribeSharedDirectories
 
 =over
@@ -1162,6 +1263,24 @@ this request describes all the trust relationships belonging to the
 account.
 
 
+=head2 DisableLDAPS
+
+=over
+
+=item DirectoryId => Str
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::DisableLDAPS>
+
+Returns: a L<Paws::DS::DisableLDAPSResult> instance
+
+Deactivates LDAP secure calls for the specified directory.
+
+
 =head2 DisableRadius
 
 =over
@@ -1198,6 +1317,25 @@ Each argument is described in detail in: L<Paws::DS::DisableSso>
 Returns: a L<Paws::DS::DisableSsoResult> instance
 
 Disables single-sign on for a directory.
+
+
+=head2 EnableLDAPS
+
+=over
+
+=item DirectoryId => Str
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::EnableLDAPS>
+
+Returns: a L<Paws::DS::EnableLDAPSResult> instance
+
+Activates the switch for the specific directory to always use LDAP
+secure calls.
 
 
 =head2 EnableRadius
@@ -1237,7 +1375,9 @@ Each argument is described in detail in: L<Paws::DS::EnableSso>
 
 Returns: a L<Paws::DS::EnableSsoResult> instance
 
-Enables single sign-on for a directory.
+Enables single sign-on for a directory. Single sign-on allows users in
+your directory to access certain AWS services from a computer joined to
+the directory without having to enter their credentials separately.
 
 
 =head2 GetDirectoryLimits
@@ -1251,7 +1391,7 @@ Each argument is described in detail in: L<Paws::DS::GetDirectoryLimits>
 
 Returns: a L<Paws::DS::GetDirectoryLimitsResult> instance
 
-Obtains directory limit information for the current region.
+Obtains directory limit information for the current Region.
 
 
 =head2 GetSnapshotLimits
@@ -1268,6 +1408,27 @@ Each argument is described in detail in: L<Paws::DS::GetSnapshotLimits>
 Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
 
 Obtains the manual snapshot limits for a directory.
+
+
+=head2 ListCertificates
+
+=over
+
+=item DirectoryId => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::ListCertificates>
+
+Returns: a L<Paws::DS::ListCertificatesResult> instance
+
+For the specified directory, lists all the certificates registered for
+a secured LDAP connection.
 
 
 =head2 ListIpRoutes
@@ -1348,6 +1509,24 @@ Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
 Returns: a L<Paws::DS::ListTagsForResourceResult> instance
 
 Lists all tags on a directory.
+
+
+=head2 RegisterCertificate
+
+=over
+
+=item CertificateData => Str
+
+=item DirectoryId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::RegisterCertificate>
+
+Returns: a L<Paws::DS::RegisterCertificateResult> instance
+
+Registers a certificate for secured LDAP connection.
 
 
 =head2 RegisterEventTopic
@@ -1445,6 +1624,31 @@ Returns: a L<Paws::DS::ResetUserPasswordResult> instance
 
 Resets the password for any user in your AWS Managed Microsoft AD or
 Simple AD directory.
+
+You can reset the password for any user in your directory with the
+following exceptions:
+
+=over
+
+=item *
+
+For Simple AD, you cannot reset the password for any user that is a
+member of either the B<Domain Admins> or B<Enterprise Admins> group
+except for the administrator user.
+
+=item *
+
+For AWS Managed Microsoft AD, you can only reset the password for a
+user that is in an OU based off of the NetBIOS name that you typed when
+you created your directory. For example, you cannot reset the password
+for a user in the B<AWS Reserved> OU. For more information about the OU
+structure for an AWS Managed Microsoft AD directory, see What Gets
+Created
+(https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html)
+in the I<AWS Directory Service Administration Guide>.
+
+=back
+
 
 
 =head2 RestoreFromSnapshot
