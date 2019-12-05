@@ -50,8 +50,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 The full commit IDs of the commits to get information about.
 
-You must supply the full SHAs of each commit. You cannot use shortened
-SHAs.
+You must supply the full SHA IDs of each commit. You cannot use
+shortened SHA IDs.
 
 
 

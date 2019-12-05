@@ -44,7 +44,7 @@ Returns information about a specific commit.
 
 =head2 AdditionalData => Str
 
-  Any additional data associated with the specified commit.
+  Any other data associated with the specified commit.
 
 
 =head2 Author => L<Paws::CodeCommit::UserInfo>
@@ -56,7 +56,7 @@ author, and the email address for the author, as configured in Git.
 
 =head2 CommitId => Str
 
-  The full SHA of the specified commit.
+  The full SHA ID of the specified commit.
 
 
 =head2 Committer => L<Paws::CodeCommit::UserInfo>

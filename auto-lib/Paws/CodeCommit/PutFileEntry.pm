@@ -34,8 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head1 DESCRIPTION
 
-Information about a file that will be added or updated as part of a
-commit.
+Information about a file added or updated as part of a commit.
 
 =head1 ATTRIBUTES
 

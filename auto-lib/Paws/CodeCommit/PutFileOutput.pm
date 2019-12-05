@@ -23,7 +23,7 @@ The ID of the blob, which is its SHA-1 pointer.
 
 =head2 B<REQUIRED> CommitId => Str
 
-The full SHA of the commit that contains this file change.
+The full SHA ID of the commit that contains this file change.
 
 
 =head2 B<REQUIRED> TreeId => Str

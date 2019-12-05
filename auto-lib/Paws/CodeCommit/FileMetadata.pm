@@ -33,15 +33,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head1 DESCRIPTION
 
-A file that will be added, updated, or deleted as part of a commit.
+A file to be added, updated, or deleted as part of a commit.
 
 =head1 ATTRIBUTES
 
 
 =head2 AbsolutePath => Str
 
-  The full path to the file that will be added or updated, including the
-name of the file.
+  The full path to the file to be added or updated, including the name of
+the file.
 
 
 =head2 BlobId => Str

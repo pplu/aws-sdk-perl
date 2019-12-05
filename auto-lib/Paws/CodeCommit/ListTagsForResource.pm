@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 NextToken => Str
 
-An enumeration token that when provided in a request, returns the next
+An enumeration token that, when provided in a request, returns the next
 batch of the results.
 
 

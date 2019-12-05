@@ -50,11 +50,11 @@ Returns information about a specific comment.
 
 =head2 ClientRequestToken => Str
 
-  A unique, client-generated idempotency token that when provided in a
+  A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a
-token is included, the request will return information about the
-initial request that used that token.
+token is included, the request returns information about the initial
+request that used that token.
 
 
 =head2 CommentId => Str

@@ -45,25 +45,25 @@ commits.
 
 =head2 AfterBlobId => Str
 
-  The full blob ID of the commit used to establish the 'after' of the
+  The full blob ID of the commit used to establish the after of the
 comparison.
 
 
 =head2 AfterCommitId => Str
 
-  The full commit ID of the commit used to establish the 'after' of the
+  The full commit ID of the commit used to establish the after of the
 comparison.
 
 
 =head2 BeforeBlobId => Str
 
-  The full blob ID of the commit used to establish the 'before' of the
+  The full blob ID of the commit used to establish the before of the
 comparison.
 
 
 =head2 BeforeCommitId => Str
 
-  The full commit ID of the commit used to establish the 'before' of the
+  The full commit ID of the commit used to establish the before of the
 comparison.
 
 
@@ -77,7 +77,7 @@ about a comment on the comparison between commits.
 
   Location information about the comment on the comparison, including the
 file name, line number, and whether the version of the file where the
-comment was made is 'BEFORE' or 'AFTER'.
+comment was made is BEFORE or AFTER.
 
 
 =head2 RepositoryName => Str

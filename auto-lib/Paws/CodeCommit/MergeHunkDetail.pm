@@ -46,8 +46,8 @@ in a merge or pull request operation.
 
 =head2 HunkContent => Str
 
-  The base-64 encoded content of the hunk merged region that might or
-might not contain a conflict.
+  The base-64 encoded content of the hunk merged region that might
+contain a conflict.
 
 
 =head2 StartLine => Int

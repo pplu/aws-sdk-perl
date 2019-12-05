@@ -41,7 +41,7 @@ Returns information about a file in a repository.
 
 =head2 AbsolutePath => Str
 
-  The fully-qualified path to the file in the repository.
+  The fully qualified path to the file in the repository.
 
 
 =head2 BlobId => Str

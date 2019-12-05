@@ -22,25 +22,24 @@ Paws::CodeCommit::PostCommentForComparedCommitOutput
 
 =head2 AfterBlobId => Str
 
-In the directionality you established, the blob ID of the 'after' blob.
+In the directionality you established, the blob ID of the after blob.
 
 
 =head2 AfterCommitId => Str
 
-In the directionality you established, the full commit ID of the
-'after' commit.
+In the directionality you established, the full commit ID of the after
+commit.
 
 
 =head2 BeforeBlobId => Str
 
-In the directionality you established, the blob ID of the 'before'
-blob.
+In the directionality you established, the blob ID of the before blob.
 
 
 =head2 BeforeCommitId => Str
 
-In the directionality you established, the full commit ID of the
-'before' commit.
+In the directionality you established, the full commit ID of the before
+commit.
 
 
 =head2 Comment => L<Paws::CodeCommit::Comment>

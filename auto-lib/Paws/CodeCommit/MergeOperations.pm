@@ -44,8 +44,8 @@ Information about the file operation conflicts in a merge operation.
 
 =head2 Source => Str
 
-  The operation on a file (add, modify, or delete) of a file in the
-source of a merge or pull request.
+  The operation (add, modify, or delete) on a file in the source of a
+merge or pull request.
 
 
 

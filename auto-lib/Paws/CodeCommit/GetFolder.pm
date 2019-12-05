@@ -54,17 +54,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 CommitSpecifier => Str
 
-A fully-qualified reference used to identify a commit that contains the
-version of the folder's content to return. A fully-qualified reference
+A fully qualified reference used to identify a commit that contains the
+version of the folder's content to return. A fully qualified reference
 can be a commit ID, branch name, tag, or reference such as HEAD. If no
-specifier is provided, the folder content will be returned as it exists
-in the HEAD commit.
+specifier is provided, the folder content is returned as it exists in
+the HEAD commit.
 
 
 
 =head2 B<REQUIRED> FolderPath => Str
 
-The fully-qualified path to the folder whose contents will be returned,
+The fully qualified path to the folder whose contents are returned,
 including the folder name. For example, /examples is a fully-qualified
 path to a folder named examples that was created off of the root
 directory (/) of a repository.

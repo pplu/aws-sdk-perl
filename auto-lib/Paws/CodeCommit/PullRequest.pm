@@ -1,5 +1,6 @@
 package Paws::CodeCommit::PullRequest;
   use Moose;
+  has ApprovalRules => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::ApprovalRule]', request_name => 'approvalRules', traits => ['NameInRequest']);
   has AuthorArn => (is => 'ro', isa => 'Str', request_name => 'authorArn', traits => ['NameInRequest']);
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
@@ -8,6 +9,7 @@ package Paws::CodeCommit::PullRequest;
   has PullRequestId => (is => 'ro', isa => 'Str', request_name => 'pullRequestId', traits => ['NameInRequest']);
   has PullRequestStatus => (is => 'ro', isa => 'Str', request_name => 'pullRequestStatus', traits => ['NameInRequest']);
   has PullRequestTargets => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::PullRequestTarget]', request_name => 'pullRequestTargets', traits => ['NameInRequest']);
+  has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest']);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
 1;
 
@@ -28,20 +30,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeCommit::PullRequest object:
 
-  $service_obj->Method(Att1 => { AuthorArn => $value, ..., Title => $value  });
+  $service_obj->Method(Att1 => { ApprovalRules => $value, ..., Title => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit::PullRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AuthorArn
+  $result->Att1->ApprovalRules
 
 =head1 DESCRIPTION
 
 Returns information about a pull request.
 
 =head1 ATTRIBUTES
+
+
+=head2 ApprovalRules => ArrayRef[L<Paws::CodeCommit::ApprovalRule>]
+
+  The approval rules applied to the pull request.
 
 
 =head2 AuthorArn => Str
@@ -52,11 +59,11 @@ request.
 
 =head2 ClientRequestToken => Str
 
-  A unique, client-generated idempotency token that when provided in a
+  A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a
-token is included, the request will return information about the
-initial request that used that token.
+token is included, the request returns information about the initial
+request that used that token.
 
 
 =head2 CreationDate => Str
@@ -95,10 +102,15 @@ from C<OPEN> to C<CLOSED>.
 destination branch for the pull request.
 
 
+=head2 RevisionId => Str
+
+  The system-generated revision ID for the pull request.
+
+
 =head2 Title => Str
 
   The user-defined title of the pull request. This title is displayed in
-the list of pull requests to other users of the repository.
+the list of pull requests to other repository users.
 
 
 

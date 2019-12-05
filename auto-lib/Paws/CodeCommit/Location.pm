@@ -47,13 +47,13 @@ subdirectory, if any.
 
 =head2 FilePosition => Int
 
-  The position of a change within a compared file, in line number format.
+  The position of a change in a compared file, in line number format.
 
 
 =head2 RelativeFileVersion => Str
 
   In a comparison of commits or a pull request, whether the change is in
-the 'before' or 'after' of that comparison.
+the before or after of that comparison.
 
 
 

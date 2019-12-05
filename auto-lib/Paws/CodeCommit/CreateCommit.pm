@@ -92,29 +92,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 AuthorName => Str
 
-The name of the author who created the commit. This information will be
-used as both the author and committer for the commit.
+The name of the author who created the commit. This information is used
+as both the author and committer for the commit.
 
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-The name of the branch where you will create the commit.
+The name of the branch where you create the commit.
 
 
 
 =head2 CommitMessage => Str
 
-The commit message you want to include as part of creating the commit.
-Commit messages are limited to 256 KB. If no message is specified, a
-default message will be used.
+The commit message you want to include in the commit. Commit messages
+are limited to 256 KB. If no message is specified, a default message is
+used.
 
 
 
 =head2 DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]
 
-The files to delete in this commit. These files will still exist in
-prior commits.
+The files to delete in this commit. These files still exist in earlier
+commits.
 
 
 
@@ -127,16 +127,15 @@ The email address of the person who created the commit.
 =head2 KeepEmptyFolders => Bool
 
 If the commit contains deletions, whether to keep a folder or folder
-structure if the changes leave the folders empty. If this is specified
-as true, a .gitkeep file will be created for empty folders. The default
-is false.
+structure if the changes leave the folders empty. If true, a ..gitkeep
+file is created for empty folders. The default is false.
 
 
 
 =head2 ParentCommitId => Str
 
-The ID of the commit that is the parent of the commit you will create.
-If this is an empty repository, this is not required.
+The ID of the commit that is the parent of the commit you create. Not
+required if this is an empty repository.
 
 
 
@@ -148,7 +147,7 @@ The files to add or update in this commit.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository where you will create the commit.
+The name of the repository where you create the commit.
 
 
 

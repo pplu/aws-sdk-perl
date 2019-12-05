@@ -16,8 +16,7 @@ Paws::CodeCommit::MergePullRequestByFastForwardOutput
 
 =head2 PullRequest => L<Paws::CodeCommit::PullRequest>
 
-Information about the specified pull request, including information
-about the merge.
+Information about the specified pull request, including the merge.
 
 
 =head2 _request_id => Str

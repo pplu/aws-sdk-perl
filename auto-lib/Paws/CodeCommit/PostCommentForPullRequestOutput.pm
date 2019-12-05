@@ -23,19 +23,19 @@ Paws::CodeCommit::PostCommentForPullRequestOutput
 
 =head2 AfterBlobId => Str
 
-In the directionality of the pull request, the blob ID of the 'after'
+In the directionality of the pull request, the blob ID of the after
 blob.
 
 
 =head2 AfterCommitId => Str
 
 The full commit ID of the commit in the destination branch where the
-pull request will be merged.
+pull request is merged.
 
 
 =head2 BeforeBlobId => Str
 
-In the directionality of the pull request, the blob ID of the 'before'
+In the directionality of the pull request, the blob ID of the before
 blob.
 
 

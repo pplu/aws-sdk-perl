@@ -41,7 +41,7 @@ request event.
 
 =head2 DestinationReference => Str
 
-  The name of the branch that the pull request will be merged into.
+  The name of the branch that the pull request is merged into.
 
 
 =head2 MergeMetadata => L<Paws::CodeCommit::MergeMetadata>

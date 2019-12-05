@@ -63,15 +63,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> BranchName => Str
 
 The name of the branch where you want to add or update the file. If
-this is an empty repository, this branch will be created.
+this is an empty repository, this branch is created.
 
 
 
 =head2 CommitMessage => Str
 
-A message about why this file was added or updated. While optional,
-adding a message is strongly encouraged in order to provide a more
-useful commit history for your repository.
+A message about why this file was added or updated. Although it is
+optional, a message makes the commit history for your repository more
+useful.
 
 
 
@@ -90,7 +90,7 @@ The content of the file, in binary object format.
 =head2 FileMode => Str
 
 The file mode permissions of the blob. Valid file mode permissions are
-listed below.
+listed here.
 
 Valid values are: C<"EXECUTABLE">, C<"NORMAL">, C<"SYMLINK">
 
@@ -99,16 +99,16 @@ Valid values are: C<"EXECUTABLE">, C<"NORMAL">, C<"SYMLINK">
 The name of the file you want to add or update, including the relative
 path to the file in the repository.
 
-If the path does not currently exist in the repository, the path will
-be created as part of adding the file.
+If the path does not currently exist in the repository, the path is
+created as part of adding the file.
 
 
 
 =head2 Name => Str
 
-The name of the person adding or updating the file. While optional,
-adding a name is strongly encouraged in order to provide a more useful
-commit history for your repository.
+The name of the person adding or updating the file. Although it is
+optional, a name makes the commit history for your repository more
+useful.
 
 
 
@@ -119,7 +119,7 @@ add or update the file. If this is an empty repository, no commit ID is
 required. If this is not an empty repository, a commit ID is required.
 
 The commit ID must match the ID of the head commit at the time of the
-operation, or an error will occur, and the file will not be added or
+operation. Otherwise, an error occurs, and the file is not added or
 updated.
 
 

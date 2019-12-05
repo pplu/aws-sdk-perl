@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> Description => Str
 
 The updated content of the description for the pull request. This
-content will replace the existing description.
+content replaces the existing description.
 
 
 

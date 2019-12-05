@@ -41,7 +41,7 @@ Returns information about a symbolic link in a repository folder.
 
 =head2 AbsolutePath => Str
 
-  The fully-qualified path to the folder that contains the symbolic link.
+  The fully qualified path to the folder that contains the symbolic link.
 
 
 =head2 BlobId => Str

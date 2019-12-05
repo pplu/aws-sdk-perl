@@ -39,7 +39,7 @@ A trigger failed to run.
 
 =head2 FailureMessage => Str
 
-  Additional message information about the trigger that did not run.
+  Message information about the trigger that did not run.
 
 
 =head2 Trigger => Str

@@ -53,19 +53,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 CommitSpecifier => Str
 
-The fully-quaified reference that identifies the commit that contains
-the file. For example, you could specify a full commit ID, a tag, a
+The fully quaified reference that identifies the commit that contains
+the file. For example, you can specify a full commit ID, a tag, a
 branch name, or a reference such as refs/heads/master. If none is
-provided, then the head commit will be used.
+provided, the head commit is used.
 
 
 
 =head2 B<REQUIRED> FilePath => Str
 
-The fully-qualified path to the file, including the full name and
-extension of the file. For example, /examples/file.md is the
-fully-qualified path to a file named file.md in a folder named
-examples.
+The fully qualified path to the file, including the full name and
+extension of the file. For example, /examples/file.md is the fully
+qualified path to a file named file.md in a folder named examples.
 
 
 

@@ -59,19 +59,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FilePath        => 'MyPath',
             ReplacementType => 'KEEP_BASE'
             , # values: KEEP_BASE, KEEP_SOURCE, KEEP_DESTINATION, USE_NEW_CONTENT
-            Content  => 'BlobFileContent', # max: 6291456; OPTIONAL
-            FileMode => 'EXECUTABLE',      # values: EXECUTABLE, NORMAL, SYMLINK
+            Content => 'BlobFileContent',    # max: 6291456; OPTIONAL
+            FileMode =>
+              'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
           },
           ...
-        ],                                 # OPTIONAL
+        ],                     # OPTIONAL
         SetFileModes => [
           {
-            FileMode => 'EXECUTABLE',      # values: EXECUTABLE, NORMAL, SYMLINK
+            FileMode =>
+              'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
             FilePath => 'MyPath',
 
           },
           ...
-        ],                                 # OPTIONAL
+        ],                     # OPTIONAL
       },    # OPTIONAL
       ConflictResolutionStrategy => 'NONE',       # OPTIONAL
       Email                      => 'MyEmail',    # OPTIONAL
@@ -93,8 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 AuthorName => Str
 
 The name of the author who created the unreferenced commit. This
-information will be used as both the author and committer for the
-commit.
+information is used as both the author and committer for the commit.
 
 
 
@@ -107,17 +108,17 @@ The commit message for the unreferenced commit.
 =head2 ConflictDetailLevel => Str
 
 The level of conflict detail to use. If unspecified, the default
-FILE_LEVEL is used, which will return a not mergeable result if the
-same file has differences in both branches. If LINE_LEVEL is specified,
-a conflict will be considered not mergeable if the same file in both
-branches has differences on the same line.
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
+conflict is considered not mergeable if the same file in both branches
+has differences on the same line.
 
 Valid values are: C<"FILE_LEVEL">, C<"LINE_LEVEL">
 
 =head2 ConflictResolution => L<Paws::CodeCommit::ConflictResolution>
 
-A list of inputs to use when resolving conflicts during a merge if
-AUTOMERGE is chosen as the conflict resolution strategy.
+If AUTOMERGE is the conflict resolution strategy, a list of inputs to
+use when resolving conflicts during a merge.
 
 
 
@@ -126,14 +127,14 @@ AUTOMERGE is chosen as the conflict resolution strategy.
 Specifies which branch to use when resolving conflicts, or whether to
 attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
-merge operation will be successful.
+merge operation is successful.
 
 Valid values are: C<"NONE">, C<"ACCEPT_SOURCE">, C<"ACCEPT_DESTINATION">, C<"AUTOMERGE">
 
 =head2 B<REQUIRED> DestinationCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.
+identify a commit (for example, a branch name or a full commit ID).
 
 
 
@@ -147,8 +148,8 @@ The email address for the person who created the unreferenced commit.
 
 If the commit contains deletions, whether to keep a folder or folder
 structure if the changes leave the folders empty. If this is specified
-as true, a .gitkeep file will be created for empty folders. The default
-is false.
+as true, a .gitkeep file is created for empty folders. The default is
+false.
 
 
 
@@ -168,7 +169,7 @@ merge commit.
 =head2 B<REQUIRED> SourceCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.
+identify a commit (for example, a branch name or a full commit ID).
 
 
 

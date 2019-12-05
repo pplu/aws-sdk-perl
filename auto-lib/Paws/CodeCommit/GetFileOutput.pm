@@ -43,13 +43,13 @@ include strings such as EXECUTABLE and not numeric values.
 
 The file mode permissions returned by this API are not the standard
 file mode permission values, such as 100644, but rather extrapolated
-values. See below for a full list of supported return values.
+values. See the supported return values.
 
 Valid values are: C<"EXECUTABLE">, C<"NORMAL">, C<"SYMLINK">
 =head2 B<REQUIRED> FilePath => Str
 
-The fully qualified path to the specified file. This returns the name
-and extension of the file.
+The fully qualified path to the specified file. Returns the name and
+extension of the file.
 
 
 =head2 B<REQUIRED> FileSize => Int

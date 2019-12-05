@@ -51,7 +51,7 @@ commit.
 
 =head2 AfterCommitId => Str
 
-  he full commit ID of the commit that was the tip of the source branch
+  The full commit ID of the commit that was the tip of the source branch
 at the time the comment was made.
 
 
@@ -64,9 +64,9 @@ destination commit.
 =head2 BeforeCommitId => Str
 
   The full commit ID of the commit that was the tip of the destination
-branch when the pull request was created. This commit will be
-superceded by the after commit in the source branch when and if you
-merge the source branch into the destination branch.
+branch when the pull request was created. This commit is superceded by
+the after commit in the source branch when and if you merge the source
+branch into the destination branch.
 
 
 =head2 Comments => ArrayRef[L<Paws::CodeCommit::Comment>]
@@ -79,8 +79,8 @@ about a comment on the pull request.
 
   Location information about the comment on the pull request, including
 the file name, line number, and whether the version of the file where
-the comment was made is 'BEFORE' (destination branch) or 'AFTER'
-(source branch).
+the comment was made is BEFORE (destination branch) or AFTER (source
+branch).
 
 
 =head2 PullRequestId => Str

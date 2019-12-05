@@ -40,8 +40,8 @@ Returns information about a target for a pull request.
 
 =head2 DestinationReference => Str
 
-  The branch of the repository where the pull request changes will be
-merged into. Also known as the destination branch.
+  The branch of the repository where the pull request changes are merged.
+Also known as the destination branch.
 
 
 =head2 B<REQUIRED> RepositoryName => Str

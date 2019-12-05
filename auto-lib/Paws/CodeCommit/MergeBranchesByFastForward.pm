@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> DestinationCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.
+identify a commit (for example, a branch name or a full commit ID).
 
 
 
@@ -66,13 +66,13 @@ The name of the repository where you want to merge two branches.
 =head2 B<REQUIRED> SourceCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.
+identify a commit (for example, a branch name or a full commit ID).
 
 
 
 =head2 TargetBranch => Str
 
-The branch where the merge will be applied.
+The branch where the merge is applied.
 
 
 

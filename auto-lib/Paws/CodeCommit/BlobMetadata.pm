@@ -72,7 +72,7 @@ C<120000> indicates a symlink
 
 =head2 Path => Str
 
-  The path to the blob and any associated file name, if any.
+  The path to the blob and associated file name, if any.
 
 
 

@@ -40,7 +40,7 @@ Returns information about a folder in a repository.
 
 =head2 AbsolutePath => Str
 
-  The fully-qualified path of the folder in the repository.
+  The fully qualified path of the folder in the repository.
 
 
 =head2 RelativePath => Str

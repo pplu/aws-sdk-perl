@@ -55,7 +55,7 @@ ListPullRequests.
 =head2 B<REQUIRED> PullRequestStatus => Str
 
 The status of the pull request. The only valid operations are to update
-the status from C<OPEN> to C<OPEN>, C<OPEN> to C<CLOSED> or from from
+the status from C<OPEN> to C<OPEN>, C<OPEN> to C<CLOSED> or from
 C<CLOSED> to C<CLOSED>.
 
 Valid values are: C<"OPEN">, C<"CLOSED">

@@ -1,6 +1,9 @@
 package Paws::CodeCommit::PullRequestEvent;
   use Moose;
   has ActorArn => (is => 'ro', isa => 'Str', request_name => 'actorArn', traits => ['NameInRequest']);
+  has ApprovalRuleEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::ApprovalRuleEventMetadata', request_name => 'approvalRuleEventMetadata', traits => ['NameInRequest']);
+  has ApprovalRuleOverriddenEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::ApprovalRuleOverriddenEventMetadata', request_name => 'approvalRuleOverriddenEventMetadata', traits => ['NameInRequest']);
+  has ApprovalStateChangedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::ApprovalStateChangedEventMetadata', request_name => 'approvalStateChangedEventMetadata', traits => ['NameInRequest']);
   has EventDate => (is => 'ro', isa => 'Str', request_name => 'eventDate', traits => ['NameInRequest']);
   has PullRequestCreatedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestCreatedEventMetadata', request_name => 'pullRequestCreatedEventMetadata', traits => ['NameInRequest']);
   has PullRequestEventType => (is => 'ro', isa => 'Str', request_name => 'pullRequestEventType', traits => ['NameInRequest']);
@@ -46,8 +49,23 @@ Returns information about a pull request event.
 =head2 ActorArn => Str
 
   The Amazon Resource Name (ARN) of the user whose actions resulted in
-the event. Examples include updating the pull request with additional
-commits or changing the status of a pull request.
+the event. Examples include updating the pull request with more commits
+or changing the status of a pull request.
+
+
+=head2 ApprovalRuleEventMetadata => L<Paws::CodeCommit::ApprovalRuleEventMetadata>
+
+  Information about a pull request event.
+
+
+=head2 ApprovalRuleOverriddenEventMetadata => L<Paws::CodeCommit::ApprovalRuleOverriddenEventMetadata>
+
+  Information about an approval rule override event for a pull request.
+
+
+=head2 ApprovalStateChangedEventMetadata => L<Paws::CodeCommit::ApprovalStateChangedEventMetadata>
+
+  Information about an approval state change for a pull request.
 
 
 =head2 EventDate => Str
@@ -63,9 +81,9 @@ request.
 
 =head2 PullRequestEventType => Str
 
-  The type of the pull request event, for example a status change event
+  The type of the pull request event (for example, a status change event
 (PULL_REQUEST_STATUS_CHANGED) or update event
-(PULL_REQUEST_SOURCE_REFERENCE_UPDATED).
+(PULL_REQUEST_SOURCE_REFERENCE_UPDATED)).
 
 
 =head2 PullRequestId => Str

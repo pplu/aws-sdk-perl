@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head1 DESCRIPTION
 
-Information about errors in a BatchDescribeMergeConflicts operation.
+Returns information about errors in a BatchDescribeMergeConflicts
+operation.
 
 =head1 ATTRIBUTES
 

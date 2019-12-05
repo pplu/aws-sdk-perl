@@ -33,26 +33,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head1 DESCRIPTION
 
-A list of inputs to use when resolving conflicts during a merge if
-AUTOMERGE is chosen as the conflict resolution strategy.
+If AUTOMERGE is the conflict resolution strategy, a list of inputs to
+use when resolving conflicts during a merge.
 
 =head1 ATTRIBUTES
 
 
 =head2 DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]
 
-  Files that will be deleted as part of the merge conflict resolution.
+  Files to be deleted as part of the merge conflict resolution.
 
 
 =head2 ReplaceContents => ArrayRef[L<Paws::CodeCommit::ReplaceContentEntry>]
 
-  Files that will have content replaced as part of the merge conflict
+  Files to have content replaced as part of the merge conflict
 resolution.
 
 
 =head2 SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]
 
-  File modes that will be set as part of the merge conflict resolution.
+  File modes that are set as part of the merge conflict resolution.
 
 
 

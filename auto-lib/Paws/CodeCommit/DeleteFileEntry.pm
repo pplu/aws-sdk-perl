@@ -31,15 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head1 DESCRIPTION
 
-A file that will be deleted as part of a commit.
+A file that is deleted as part of a commit.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FilePath => Str
 
-  The full path of the file that will be deleted, including the name of
-the file.
+  The full path of the file to be deleted, including the name of the
+file.
 
 
 
