@@ -54,7 +54,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IntentName        = $PostContentResponse->IntentName;
     my $Message           = $PostContentResponse->Message;
     my $MessageFormat     = $PostContentResponse->MessageFormat;
+    my $SentimentResponse = $PostContentResponse->SentimentResponse;
     my $SessionAttributes = $PostContentResponse->SessionAttributes;
+    my $SessionId         = $PostContentResponse->SessionId;
     my $SlotToElicit      = $PostContentResponse->SlotToElicit;
     my $Slots             = $PostContentResponse->Slots;
 
