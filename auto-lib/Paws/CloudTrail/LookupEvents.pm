@@ -2,6 +2,7 @@
 package Paws::CloudTrail::LookupEvents;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str');
+  has EventCategory => (is => 'ro', isa => 'Str');
   has LookupAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::LookupAttribute]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $cloudtrail = Paws->service('CloudTrail');
     my $LookupEventsResponse = $cloudtrail->LookupEvents(
       EndTime          => '1970-01-01T01:00:00',    # OPTIONAL
+      EventCategory    => 'insight',                # OPTIONAL
       LookupAttributes => [
         {
           AttributeKey => 'EventId'
@@ -66,6 +68,15 @@ are returned. If the specified end time is before the specified start
 time, an error is returned.
 
 
+
+=head2 EventCategory => Str
+
+Specifies the event category. If you do not specify an event category,
+events of the category are not returned in the response. For example,
+if you do not specify C<insight> as the value of C<EventCategory>, no
+Insights events are returned.
+
+Valid values are: C<"insight">
 
 =head2 LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>]
 

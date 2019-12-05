@@ -1,6 +1,7 @@
 package Paws::CloudTrail::EventSelector;
   use Moose;
   has DataResources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::DataResource]');
+  has ExcludeManagementEventSources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IncludeManagementEvents => (is => 'ro', isa => 'Bool');
   has ReadWriteType => (is => 'ro', isa => 'Str');
 1;
@@ -60,6 +61,16 @@ For more information, see Data Events
 and Limits in AWS CloudTrail
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 in the I<AWS CloudTrail User Guide>.
+
+
+=head2 ExcludeManagementEventSources => ArrayRef[Str|Undef]
+
+  An optional list of service event sources from which you do not want
+management events to be logged on your trail. In this release, the list
+can be empty (disables the filter), or it can filter out AWS Key
+Management Service events by containing C<"kms.amazonaws.com">. By
+default, C<ExcludeManagementEventSources> is empty, and AWS KMS events
+are included in events that are logged to your trail.
 
 
 =head2 IncludeManagementEvents => Bool

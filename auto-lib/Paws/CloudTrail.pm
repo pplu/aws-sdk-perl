@@ -40,6 +40,11 @@ package Paws::CloudTrail;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetEventSelectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetInsightSelectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetInsightSelectors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTrail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrail', @_);
@@ -73,6 +78,11 @@ package Paws::CloudTrail;
   sub PutEventSelectors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::PutEventSelectors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutInsightSelectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::PutInsightSelectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -190,7 +200,7 @@ package Paws::CloudTrail;
   }
 
 
-  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetEventSelectors GetTrail GetTrailStatus ListPublicKeys ListTags ListTrails LookupEvents PutEventSelectors RemoveTags StartLogging StopLogging UpdateTrail / }
+  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetEventSelectors GetInsightSelectors GetTrail GetTrailStatus ListPublicKeys ListTags ListTrails LookupEvents PutEventSelectors PutInsightSelectors RemoveTags StartLogging StopLogging UpdateTrail / }
 
 1;
 
@@ -390,6 +400,31 @@ For more information, see Logging Data and Management Events for Trails
 in the I<AWS CloudTrail User Guide>.
 
 
+=head2 GetInsightSelectors
+
+=over
+
+=item TrailName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudTrail::GetInsightSelectors>
+
+Returns: a L<Paws::CloudTrail::GetInsightSelectorsResponse> instance
+
+Describes the settings for the Insights event selectors that you
+configured for your trail. C<GetInsightSelectors> shows if CloudTrail
+Insights event logging is enabled on the trail, and if it is, which
+insight types are enabled. If you run C<GetInsightSelectors> on a trail
+that does not have Insights events enabled, the operation throws the
+exception C<InsightNotEnabledException>
+
+For more information, see Logging CloudTrail Insights Events for Trails
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+in the I<AWS CloudTrail User Guide>.
+
+
 =head2 GetTrail
 
 =over
@@ -494,6 +529,8 @@ Lists trails that are in the current account.
 
 =item [EndTime => Str]
 
+=item [EventCategory => Str]
+
 =item [LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>]]
 
 =item [MaxResults => Int]
@@ -511,9 +548,11 @@ Returns: a L<Paws::CloudTrail::LookupEventsResponse> instance
 
 Looks up management events
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events)
-captured by CloudTrail. You can look up events that occurred in a
-region within the last 90 days. Lookup supports the following
-attributes:
+or CloudTrail Insights events
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events)
+that are captured by CloudTrail. You can look up events that occurred
+in a region within the last 90 days. Lookup supports the following
+attributes for management events:
 
 =over
 
@@ -551,16 +590,30 @@ User name
 
 =back
 
+Lookup supports the following attributes for Insights events:
+
+=over
+
+=item *
+
+Event ID
+
+=item *
+
+Event name
+
+=item *
+
+Event source
+
+=back
+
 All attributes are optional. The default number of results returned is
 50, with a maximum of 50 possible. The response includes a token that
 you can use to get the next page of results.
 
-The rate of lookup requests is limited to one per second per account.
+The rate of lookup requests is limited to two per second per account.
 If this limit is exceeded, a throttling error occurs.
-
-Events that occurred during the selected time range will not be
-available for lookup if CloudTrail logging was not enabled when the
-events occurred.
 
 
 =head2 PutEventSelectors
@@ -629,6 +682,28 @@ information, see Logging Data and Management Events for Trails
 and Limits in AWS CloudTrail
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 in the I<AWS CloudTrail User Guide>.
+
+
+=head2 PutInsightSelectors
+
+=over
+
+=item InsightSelectors => ArrayRef[L<Paws::CloudTrail::InsightSelector>]
+
+=item TrailName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudTrail::PutInsightSelectors>
+
+Returns: a L<Paws::CloudTrail::PutInsightSelectorsResponse> instance
+
+Lets you enable Insights event logging by specifying the Insights
+selectors that you want to enable on an existing trail. You also use
+C<PutInsightSelectors> to turn off Insights event logging, by passing
+an empty list of insight types. In this release, only
+C<ApiCallRateInsight> is supported as an Insights selector.
 
 
 =head2 RemoveTags
@@ -776,9 +851,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudTrail::ListTrailsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupAllEvents(sub { },[EndTime => Str, EventCategory => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
 
-=head2 LookupAllEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupAllEvents([EndTime => Str, EventCategory => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -3,6 +3,7 @@ package Paws::CloudTrail::Trail;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has HasCustomEventSelectors => (is => 'ro', isa => 'Bool');
+  has HasInsightSelectors => (is => 'ro', isa => 'Bool');
   has HomeRegion => (is => 'ro', isa => 'Str');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
@@ -65,6 +66,12 @@ to a user's log group.
 =head2 HasCustomEventSelectors => Bool
 
   Specifies if the trail has custom event selectors.
+
+
+=head2 HasInsightSelectors => Bool
+
+  Specifies whether a trail has insight types specified in an
+C<InsightSelector> list.
 
 
 =head2 HomeRegion => Str
