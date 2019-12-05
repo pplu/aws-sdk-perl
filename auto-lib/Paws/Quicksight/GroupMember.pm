@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 =head1 DESCRIPTION
 
 A member of an Amazon QuickSight group. Currently, group members must
-be users. Groups can't be members of another group.
+be users. Groups can't be members of another group. .
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) for the group member (user).
+  The Amazon Resource name (ARN) for the group member (user).
 
 
 =head2 MemberName => Str

@@ -115,7 +115,7 @@ for other scenarios, for example when you are registering an IAM user
 or an Amazon QuickSight user. You can register multiple users using the
 same IAM role if each user has a different session name. For more
 information on assuming IAM roles, see C<assume-role>
-(https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html)
+(https://docs.aws.example.com/cli/latest/reference/sts/assume-role.html)
 in the I<AWS CLI Reference.>
 
 
@@ -129,8 +129,8 @@ you are registering.
 
 =head2 B<REQUIRED> UserRole => Str
 
-The Amazon QuickSight role of the user. The user role can be one of the
-following:
+The Amazon QuickSight role for the user. The user role can be one of
+the following:
 
 =over
 
@@ -140,13 +140,21 @@ C<READER>: A user who has read-only access to dashboards.
 
 =item *
 
-C<AUTHOR>: A user who can create data sources, data sets, analyses, and
+C<AUTHOR>: A user who can create data sources, datasets, analyses, and
 dashboards.
 
 =item *
 
 C<ADMIN>: A user who is an author, who can also manage Amazon
 QuickSight settings.
+
+=item *
+
+C<RESTRICTED_READER>: This role isn't currently available for use.
+
+=item *
+
+C<RESTRICTED_AUTHOR>: This role isn't currently available for use.
 
 =back
 

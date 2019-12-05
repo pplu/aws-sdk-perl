@@ -36,12 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $quicksight = Paws->service('Quicksight');
     my $GetDashboardEmbedUrlResponse = $quicksight->GetDashboardEmbedUrl(
       AwsAccountId             => 'MyAwsAccountId',
-      DashboardId              => 'MyString',
+      DashboardId              => 'MyRestrictiveResourceId',
       IdentityType             => 'IAM',
-      ResetDisabled            => 1,                  # OPTIONAL
-      SessionLifetimeInMinutes => 1,                  # OPTIONAL
-      UndoRedoDisabled         => 1,                  # OPTIONAL
-      UserArn                  => 'MyArn',            # OPTIONAL
+      ResetDisabled            => 1,                           # OPTIONAL
+      SessionLifetimeInMinutes => 1,                           # OPTIONAL
+      UndoRedoDisabled         => 1,                           # OPTIONAL
+      UserArn                  => 'MyArn',                     # OPTIONAL
     );
 
     # Results:
@@ -71,7 +71,7 @@ The ID for the dashboard, also added to IAM policy
 
 =head2 B<REQUIRED> IdentityType => Str
 
-The authentication method the user uses to sign in (IAM only).
+The authentication method the user uses to sign in.
 
 Valid values are: C<"IAM">, C<"QUICKSIGHT">
 
@@ -98,18 +98,16 @@ FALSE, which enables the undo/redo button.
 
 =head2 UserArn => Str
 
-The Amazon QuickSight user's ARN, for use with C<QUICKSIGHT> identity
-type. You can use this for any of the following:
+The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
+C<QUICKSIGHT> identity type. You can use this for any Amazon QuickSight
+users in your account (readers, authors, or admins) authenticated as
+one of the following:
 
 =over
 
 =item *
 
-Amazon QuickSight users in your account (readers, authors, or admins)
-
-=item *
-
-AD users
+Active Directory (AD) users or group members
 
 =item *
 
@@ -117,11 +115,8 @@ Invited non-federated users
 
 =item *
 
-Federated IAM users
-
-=item *
-
-Federated IAM role-based sessions
+IAM users and IAM role-based sessions authenticated through Federated
+Single Sign-On using SAML, OpenID Connect, or IAM Federation
 
 =back
 
