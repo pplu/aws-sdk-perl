@@ -15,6 +15,21 @@ package Paws::CostExplorer;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateCostCategoryDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::CreateCostCategoryDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteCostCategoryDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::DeleteCostCategoryDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCostCategoryDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::DescribeCostCategoryDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCostAndUsage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsage', @_);
@@ -85,10 +100,20 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetUsageForecast', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCostCategoryDefinitions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::ListCostCategoryDefinitions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateCostCategoryDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::UpdateCostCategoryDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/GetCostAndUsage GetCostAndUsageWithResources GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetSavingsPlansCoverage GetSavingsPlansPurchaseRecommendation GetSavingsPlansUtilization GetSavingsPlansUtilizationDetails GetTags GetUsageForecast / }
+  sub operations { qw/CreateCostCategoryDefinition DeleteCostCategoryDefinition DescribeCostCategoryDefinition GetCostAndUsage GetCostAndUsageWithResources GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetSavingsPlansCoverage GetSavingsPlansPurchaseRecommendation GetSavingsPlansUtilization GetSavingsPlansUtilizationDetails GetTags GetUsageForecast ListCostCategoryDefinitions UpdateCostCategoryDefinition / }
 
 1;
 
@@ -142,6 +167,83 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 
 
 =head1 METHODS
+
+=head2 CreateCostCategoryDefinition
+
+=over
+
+=item Name => Str
+
+=item Rules => ArrayRef[L<Paws::CostExplorer::CostCategoryRule>]
+
+=item RuleVersion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::CreateCostCategoryDefinition>
+
+Returns: a L<Paws::CostExplorer::CreateCostCategoryDefinitionResponse> instance
+
+I<B<Cost Category is in preview release for AWS Billing and Cost
+Management and is subject to change. Your use of Cost Categories is
+subject to the Beta Service Participation terms of the AWS Service
+Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+
+Creates a new Cost Category with the requested name and rules.
+
+
+=head2 DeleteCostCategoryDefinition
+
+=over
+
+=item CostCategoryArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::DeleteCostCategoryDefinition>
+
+Returns: a L<Paws::CostExplorer::DeleteCostCategoryDefinitionResponse> instance
+
+I<B<Cost Category is in preview release for AWS Billing and Cost
+Management and is subject to change. Your use of Cost Categories is
+subject to the Beta Service Participation terms of the AWS Service
+Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+
+Deletes a Cost Category. Expenses from this month going forward will no
+longer be categorized with this Cost Category.
+
+
+=head2 DescribeCostCategoryDefinition
+
+=over
+
+=item CostCategoryArn => Str
+
+=item [EffectiveOn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::DescribeCostCategoryDefinition>
+
+Returns: a L<Paws::CostExplorer::DescribeCostCategoryDefinitionResponse> instance
+
+I<B<Cost Category is in preview release for AWS Billing and Cost
+Management and is subject to change. Your use of Cost Categories is
+subject to the Beta Service Participation terms of the AWS Service
+Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+
+Returns the name, ARN, rules, definition, and effective dates of a Cost
+Category that's defined in the account.
+
+You have the option to use C<EffectiveOn> to return a Cost Category
+that is active on a specific date. If there is no C<EffectiveOn>
+specified, youE<rsquo>ll see a Cost Category that is effective on the
+current date. If Cost Category is still effective, C<EffectiveEnd> is
+omitted in the response.
+
 
 =head2 GetCostAndUsage
 
@@ -653,6 +755,62 @@ Returns: a L<Paws::CostExplorer::GetUsageForecastResponse> instance
 Retrieves a forecast for how much Amazon Web Services predicts that you
 will use over the forecast time period that you select, based on your
 past usage.
+
+
+=head2 ListCostCategoryDefinitions
+
+=over
+
+=item [EffectiveOn => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::ListCostCategoryDefinitions>
+
+Returns: a L<Paws::CostExplorer::ListCostCategoryDefinitionsResponse> instance
+
+I<B<Cost Category is in preview release for AWS Billing and Cost
+Management and is subject to change. Your use of Cost Categories is
+subject to the Beta Service Participation terms of the AWS Service
+Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+
+Returns the name, ARN and effective dates of all Cost Categories
+defined in the account. You have the option to use C<EffectiveOn> to
+return a list of Cost Categories that were active on a specific date.
+If there is no C<EffectiveOn> specified, youE<rsquo>ll see Cost
+Categories that are effective on the current date. If Cost Category is
+still effective, C<EffectiveEnd> is omitted in the response.
+
+
+=head2 UpdateCostCategoryDefinition
+
+=over
+
+=item CostCategoryArn => Str
+
+=item Rules => ArrayRef[L<Paws::CostExplorer::CostCategoryRule>]
+
+=item RuleVersion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::UpdateCostCategoryDefinition>
+
+Returns: a L<Paws::CostExplorer::UpdateCostCategoryDefinitionResponse> instance
+
+I<B<Cost Category is in preview release for AWS Billing and Cost
+Management and is subject to change. Your use of Cost Categories is
+subject to the Beta Service Participation terms of the AWS Service
+Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+
+Updates an existing Cost Category. Changes made to the Cost Category
+rules will be used to categorize the current monthE<rsquo>s expenses
+and future expenses. This wonE<rsquo>t change categorization for the
+previous months.
 
 
 

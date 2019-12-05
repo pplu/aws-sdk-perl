@@ -1,6 +1,7 @@
 package Paws::CostExplorer::Expression;
   use Moose;
   has And => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::Expression]');
+  has CostCategories => (is => 'ro', isa => 'Paws::CostExplorer::CostCategoryValues');
   has Dimensions => (is => 'ro', isa => 'Paws::CostExplorer::DimensionValues');
   has Not => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has Or => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::Expression]');
@@ -89,6 +90,16 @@ also limited to C<LINKED_ACCOUNT>, C<REGION>, or C<RIGHTSIZING_TYPE>.
 =head2 And => ArrayRef[L<Paws::CostExplorer::Expression>]
 
   Return results that match both C<Dimension> objects.
+
+
+=head2 CostCategories => L<Paws::CostExplorer::CostCategoryValues>
+
+  I<B<Cost Category is in preview release for AWS Billing and Cost
+Management and is subject to change. Your use of Cost Categories is
+subject to the Beta Service Participation terms of the AWS Service
+Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+
+The specific C<CostCategory> used for C<Expression>.
 
 
 =head2 Dimensions => L<Paws::CostExplorer::DimensionValues>
