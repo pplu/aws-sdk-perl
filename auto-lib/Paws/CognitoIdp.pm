@@ -1483,7 +1483,10 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminUserGlobalSign
 
 Returns: a L<Paws::CognitoIdp::AdminUserGlobalSignOutResponse> instance
 
-Signs out users from all devices, as an administrator.
+Signs out users from all devices, as an administrator. It also
+invalidates all refresh tokens issued to a user. The user's current
+access and Id tokens remain valid until their expiry. Access and Id
+tokens expire one hour after they are issued.
 
 Calling this action requires developer credentials.
 
@@ -1711,6 +1714,8 @@ Creates the user import job.
 =over
 
 =item PoolName => Str
+
+=item [AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>]
 
 =item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
 
@@ -2319,7 +2324,10 @@ Each argument is described in detail in: L<Paws::CognitoIdp::GlobalSignOut>
 
 Returns: a L<Paws::CognitoIdp::GlobalSignOutResponse> instance
 
-Signs out users from all devices.
+Signs out users from all devices. It also invalidates all refresh
+tokens issued to a user. The user's current access and Id tokens remain
+valid until their expiry. Access and Id tokens expire one hour after
+they are issued.
 
 
 =head2 InitiateAuth
@@ -3021,6 +3029,8 @@ Allows a user to update a specific attribute (one at a time).
 =over
 
 =item UserPoolId => Str
+
+=item [AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>]
 
 =item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
 
