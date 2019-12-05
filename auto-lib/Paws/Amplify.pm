@@ -19,6 +19,11 @@ package Paws::Amplify;
     my $call_object = $self->new_with_coercions('Paws::Amplify::CreateApp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateBackendEnvironment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::CreateBackendEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateBranch {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::CreateBranch', @_);
@@ -42,6 +47,11 @@ package Paws::Amplify;
   sub DeleteApp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::DeleteApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBackendEnvironment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::DeleteBackendEnvironment', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBranch {
@@ -79,6 +89,11 @@ package Paws::Amplify;
     my $call_object = $self->new_with_coercions('Paws::Amplify::GetArtifactUrl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBackendEnvironment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::GetBackendEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBranch {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::GetBranch', @_);
@@ -107,6 +122,11 @@ package Paws::Amplify;
   sub ListArtifacts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::ListArtifacts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBackendEnvironments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::ListBackendEnvironments', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBranches {
@@ -274,7 +294,7 @@ package Paws::Amplify;
   }
 
 
-  sub operations { qw/CreateApp CreateBranch CreateDeployment CreateDomainAssociation CreateWebhook DeleteApp DeleteBranch DeleteDomainAssociation DeleteJob DeleteWebhook GenerateAccessLogs GetApp GetArtifactUrl GetBranch GetDomainAssociation GetJob GetWebhook ListApps ListArtifacts ListBranches ListDomainAssociations ListJobs ListTagsForResource ListWebhooks StartDeployment StartJob StopJob TagResource UntagResource UpdateApp UpdateBranch UpdateDomainAssociation UpdateWebhook / }
+  sub operations { qw/CreateApp CreateBackendEnvironment CreateBranch CreateDeployment CreateDomainAssociation CreateWebhook DeleteApp DeleteBackendEnvironment DeleteBranch DeleteDomainAssociation DeleteJob DeleteWebhook GenerateAccessLogs GetApp GetArtifactUrl GetBackendEnvironment GetBranch GetDomainAssociation GetJob GetWebhook ListApps ListArtifacts ListBackendEnvironments ListBranches ListDomainAssociations ListJobs ListTagsForResource ListWebhooks StartDeployment StartJob StopJob TagResource UntagResource UpdateApp UpdateBranch UpdateDomainAssociation UpdateWebhook / }
 
 1;
 
@@ -356,6 +376,28 @@ Each argument is described in detail in: L<Paws::Amplify::CreateApp>
 Returns: a L<Paws::Amplify::CreateAppResult> instance
 
 Creates a new Amplify App.
+
+
+=head2 CreateBackendEnvironment
+
+=over
+
+=item AppId => Str
+
+=item EnvironmentName => Str
+
+=item [DeploymentArtifacts => Str]
+
+=item [StackName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::CreateBackendEnvironment>
+
+Returns: a L<Paws::Amplify::CreateBackendEnvironmentResult> instance
+
+Creates a new backend environment for an Amplify App.
 
 
 =head2 CreateBranch
@@ -485,6 +527,24 @@ Returns: a L<Paws::Amplify::DeleteAppResult> instance
 Delete an existing Amplify App by appId.
 
 
+=head2 DeleteBackendEnvironment
+
+=over
+
+=item AppId => Str
+
+=item EnvironmentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::DeleteBackendEnvironment>
+
+Returns: a L<Paws::Amplify::DeleteBackendEnvironmentResult> instance
+
+Delete backend environment for an Amplify App.
+
+
 =head2 DeleteBranch
 
 =over
@@ -612,6 +672,24 @@ Returns: a L<Paws::Amplify::GetArtifactUrlResult> instance
 Retrieves artifact info that corresponds to a artifactId.
 
 
+=head2 GetBackendEnvironment
+
+=over
+
+=item AppId => Str
+
+=item EnvironmentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::GetBackendEnvironment>
+
+Returns: a L<Paws::Amplify::GetBackendEnvironmentResult> instance
+
+Retrieves a backend environment for an Amplify App.
+
+
 =head2 GetBranch
 
 =over
@@ -724,6 +802,28 @@ Each argument is described in detail in: L<Paws::Amplify::ListArtifacts>
 Returns: a L<Paws::Amplify::ListArtifactsResult> instance
 
 List artifacts with an app, a branch, a job and an artifact type.
+
+
+=head2 ListBackendEnvironments
+
+=over
+
+=item AppId => Str
+
+=item [EnvironmentName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::ListBackendEnvironments>
+
+Returns: a L<Paws::Amplify::ListBackendEnvironmentsResult> instance
+
+Lists backend environments for an Amplify App.
 
 
 =head2 ListBranches
