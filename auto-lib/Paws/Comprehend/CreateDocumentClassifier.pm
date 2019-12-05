@@ -108,10 +108,10 @@ Specifies the format and location of the input data for the job.
 
 =head2 B<REQUIRED> LanguageCode => Str
 
-The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend: German ("de"), English
-("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese
-("pt"). All documents must be in the same language.
+The language of the input documents. You can specify any of the
+following languages supported by Amazon Comprehend: German ("de"),
+English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
+Portuguese ("pt"). All documents must be in the same language.
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 

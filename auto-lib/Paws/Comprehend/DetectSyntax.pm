@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 =head2 B<REQUIRED> LanguageCode => Str
 
 The language code of the input documents. You can specify any of the
-primary languages supported by Amazon Comprehend: German ("de"),
+following languages supported by Amazon Comprehend: German ("de"),
 English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt").
 
