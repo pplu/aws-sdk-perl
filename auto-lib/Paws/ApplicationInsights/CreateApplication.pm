@@ -4,6 +4,7 @@ package Paws::ApplicationInsights::CreateApplication;
   has OpsCenterEnabled => (is => 'ro', isa => 'Bool');
   has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
   has ResourceGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationInsights::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceGroupName  => 'MyResourceGroupName',
       OpsCenterEnabled   => 1,                         # OPTIONAL
       OpsItemSNSTopicArn => 'MyOpsItemSNSTopicArn',    # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',                         # min: 1, max: 128
+          Value => 'MyTagValue',                       # max: 256
+
+        },
+        ...
+      ],                                               # OPTIONAL
     );
 
     # Results:
@@ -64,6 +73,14 @@ the opsItem.
 =head2 B<REQUIRED> ResourceGroupName => Str
 
 The name of the resource group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ApplicationInsights::Tag>]
+
+List of tags to add to the application. tag key (C<Key>) and an
+associated tag value (C<Value>). The maximum length of a tag key is 128
+characters. The maximum length of a tag value is 256 characters.
 
 
 
