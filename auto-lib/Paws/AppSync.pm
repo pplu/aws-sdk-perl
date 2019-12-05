@@ -14,6 +14,11 @@ package Paws::AppSync;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub CreateApiCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::CreateApiCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::CreateApiKey', @_);
@@ -44,6 +49,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::CreateType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteApiCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::DeleteApiCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::DeleteApiKey', @_);
@@ -72,6 +82,16 @@ package Paws::AppSync;
   sub DeleteType {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::DeleteType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub FlushApiCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::FlushApiCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetApiCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::GetApiCache', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDataSource {
@@ -162,6 +182,11 @@ package Paws::AppSync;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApiCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::UpdateApiCache', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApiKey {
@@ -358,7 +383,7 @@ package Paws::AppSync;
   }
 
 
-  sub operations { qw/CreateApiKey CreateDataSource CreateFunction CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteFunction DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetFunction GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListFunctions ListGraphqlApis ListResolvers ListResolversByFunction ListTagsForResource ListTypes StartSchemaCreation TagResource UntagResource UpdateApiKey UpdateDataSource UpdateFunction UpdateGraphqlApi UpdateResolver UpdateType / }
+  sub operations { qw/CreateApiCache CreateApiKey CreateDataSource CreateFunction CreateGraphqlApi CreateResolver CreateType DeleteApiCache DeleteApiKey DeleteDataSource DeleteFunction DeleteGraphqlApi DeleteResolver DeleteType FlushApiCache GetApiCache GetDataSource GetFunction GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListFunctions ListGraphqlApis ListResolvers ListResolversByFunction ListTagsForResource ListTypes StartSchemaCreation TagResource UntagResource UpdateApiCache UpdateApiKey UpdateDataSource UpdateFunction UpdateGraphqlApi UpdateResolver UpdateType / }
 
 1;
 
@@ -393,6 +418,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 
 =head1 METHODS
+
+=head2 CreateApiCache
+
+=over
+
+=item ApiCachingBehavior => Str
+
+=item ApiId => Str
+
+=item Ttl => Int
+
+=item Type => Str
+
+=item [AtRestEncryptionEnabled => Bool]
+
+=item [TransitEncryptionEnabled => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::CreateApiCache>
+
+Returns: a L<Paws::AppSync::CreateApiCacheResponse> instance
+
+Creates a cache for the GraphQL API.
+
 
 =head2 CreateApiKey
 
@@ -520,6 +571,8 @@ Creates a C<GraphqlApi> object.
 
 =item TypeName => Str
 
+=item [CachingConfig => L<Paws::AppSync::CachingConfig>]
+
 =item [DataSourceName => Str]
 
 =item [Kind => Str]
@@ -527,6 +580,8 @@ Creates a C<GraphqlApi> object.
 =item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
 
 =item [ResponseMappingTemplate => Str]
+
+=item [SyncConfig => L<Paws::AppSync::SyncConfig>]
 
 
 =back
@@ -559,6 +614,22 @@ Each argument is described in detail in: L<Paws::AppSync::CreateType>
 Returns: a L<Paws::AppSync::CreateTypeResponse> instance
 
 Creates a C<Type> object.
+
+
+=head2 DeleteApiCache
+
+=over
+
+=item ApiId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::DeleteApiCache>
+
+Returns: a L<Paws::AppSync::DeleteApiCacheResponse> instance
+
+Deletes an C<ApiCache> object.
 
 
 =head2 DeleteApiKey
@@ -667,6 +738,38 @@ Each argument is described in detail in: L<Paws::AppSync::DeleteType>
 Returns: a L<Paws::AppSync::DeleteTypeResponse> instance
 
 Deletes a C<Type> object.
+
+
+=head2 FlushApiCache
+
+=over
+
+=item ApiId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::FlushApiCache>
+
+Returns: a L<Paws::AppSync::FlushApiCacheResponse> instance
+
+Flushes an C<ApiCache> object.
+
+
+=head2 GetApiCache
+
+=over
+
+=item ApiId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::GetApiCache>
+
+Returns: a L<Paws::AppSync::GetApiCacheResponse> instance
+
+Retrieves an C<ApiCache> object.
 
 
 =head2 GetDataSource
@@ -1018,6 +1121,28 @@ Returns: a L<Paws::AppSync::UntagResourceResponse> instance
 Untags a resource.
 
 
+=head2 UpdateApiCache
+
+=over
+
+=item ApiCachingBehavior => Str
+
+=item ApiId => Str
+
+=item Ttl => Int
+
+=item Type => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::UpdateApiCache>
+
+Returns: a L<Paws::AppSync::UpdateApiCacheResponse> instance
+
+Updates the cache for the GraphQL API.
+
+
 =head2 UpdateApiKey
 
 =over
@@ -1144,6 +1269,8 @@ Updates a C<GraphqlApi> object.
 
 =item TypeName => Str
 
+=item [CachingConfig => L<Paws::AppSync::CachingConfig>]
+
 =item [DataSourceName => Str]
 
 =item [Kind => Str]
@@ -1151,6 +1278,8 @@ Updates a C<GraphqlApi> object.
 =item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
 
 =item [ResponseMappingTemplate => Str]
+
+=item [SyncConfig => L<Paws::AppSync::SyncConfig>]
 
 
 =back

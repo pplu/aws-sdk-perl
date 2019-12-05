@@ -2,12 +2,14 @@
 package Paws::AppSync::UpdateResolver;
   use Moose;
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
+  has CachingConfig => (is => 'ro', isa => 'Paws::AppSync::CachingConfig', traits => ['NameInRequest'], request_name => 'cachingConfig');
   has DataSourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSourceName');
   has FieldName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'fieldName', required => 1);
   has Kind => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kind');
   has PipelineConfig => (is => 'ro', isa => 'Paws::AppSync::PipelineConfig', traits => ['NameInRequest'], request_name => 'pipelineConfig');
   has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate', required => 1);
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'responseMappingTemplate');
+  has SyncConfig => (is => 'ro', isa => 'Paws::AppSync::SyncConfig', traits => ['NameInRequest'], request_name => 'syncConfig');
   has TypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'typeName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -40,12 +42,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FieldName              => 'MyResourceName',
       RequestMappingTemplate => 'MyMappingTemplate',
       TypeName               => 'MyResourceName',
-      DataSourceName         => 'MyResourceName',      # OPTIONAL
-      Kind                   => 'UNIT',                # OPTIONAL
-      PipelineConfig         => {
-        Functions => [ 'MyString', ... ],              # OPTIONAL
+      CachingConfig          => {
+        CachingKeys => [ 'MyString', ... ],    # OPTIONAL
+        Ttl         => 1,                      # OPTIONAL
+      },    # OPTIONAL
+      DataSourceName => 'MyResourceName',    # OPTIONAL
+      Kind           => 'UNIT',              # OPTIONAL
+      PipelineConfig => {
+        Functions => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
       ResponseMappingTemplate => 'MyMappingTemplate',    # OPTIONAL
+      SyncConfig              => {
+        ConflictDetection => 'VERSION',    # values: VERSION, NONE; OPTIONAL
+        ConflictHandler => 'OPTIMISTIC_CONCURRENCY'
+        ,    # values: OPTIMISTIC_CONCURRENCY, LAMBDA, AUTOMERGE, NONE; OPTIONAL
+        LambdaConflictHandlerConfig =>
+          { LambdaConflictHandlerArn => 'MyString', },    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -62,6 +75,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head2 B<REQUIRED> ApiId => Str
 
 The API ID.
+
+
+
+=head2 CachingConfig => L<Paws::AppSync::CachingConfig>
+
+The caching configuration for the resolver.
 
 
 
@@ -116,6 +135,12 @@ The new request mapping template.
 =head2 ResponseMappingTemplate => Str
 
 The new response mapping template.
+
+
+
+=head2 SyncConfig => L<Paws::AppSync::SyncConfig>
+
+The C<SyncConfig> for a resolver attached to a versioned datasource.
 
 
 
