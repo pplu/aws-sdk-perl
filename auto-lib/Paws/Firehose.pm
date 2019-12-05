@@ -124,6 +124,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fir
 
 =item DeliveryStreamName => Str
 
+=item [DeliveryStreamEncryptionConfigurationInput => L<Paws::Firehose::DeliveryStreamEncryptionConfigurationInput>]
+
 =item [DeliveryStreamType => Str]
 
 =item [ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>]
@@ -153,10 +155,16 @@ By default, you can create up to 50 delivery streams per AWS Region.
 
 This is an asynchronous operation that immediately returns. The initial
 status of the delivery stream is C<CREATING>. After the delivery stream
-is created, its status is C<ACTIVE> and it now accepts data. Attempts
-to send data to a delivery stream that is not in the C<ACTIVE> state
-cause an exception. To check the state of a delivery stream, use
-DescribeDeliveryStream.
+is created, its status is C<ACTIVE> and it now accepts data. If the
+delivery stream creation fails, the status transitions to
+C<CREATING_FAILED>. Attempts to send data to a delivery stream that is
+not in the C<ACTIVE> state cause an exception. To check the state of a
+delivery stream, use DescribeDeliveryStream.
+
+If the status of a delivery stream is C<CREATING_FAILED>, this status
+doesn't change, and you can't invoke C<CreateDeliveryStream> again on
+it. However, you can invoke the DeleteDeliveryStream operation to
+delete it.
 
 A Kinesis Data Firehose delivery stream can be configured to receive
 records directly from providers using PutRecord or PutRecordBatch, or
@@ -165,6 +173,12 @@ To specify a Kinesis data stream as input, set the
 C<DeliveryStreamType> parameter to C<KinesisStreamAsSource>, and
 provide the Kinesis stream Amazon Resource Name (ARN) and role ARN in
 the C<KinesisStreamSourceConfiguration> parameter.
+
+To create a delivery stream with server-side encryption (SSE) enabled,
+include DeliveryStreamEncryptionConfigurationInput in your request.
+This is optional. You can also invoke StartDeliveryStreamEncryption to
+turn on SSE for an existing delivery stream that doesn't have SSE
+enabled.
 
 A delivery stream is configured with a single destination: Amazon S3,
 Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
@@ -229,6 +243,8 @@ in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 =item DeliveryStreamName => Str
 
+=item [AllowForceDelete => Bool]
+
 
 =back
 
@@ -238,17 +254,18 @@ Returns: a L<Paws::Firehose::DeleteDeliveryStreamOutput> instance
 
 Deletes a delivery stream and its data.
 
-You can delete a delivery stream only if it is in C<ACTIVE> or
-C<DELETING> state, and not in the C<CREATING> state. While the deletion
-request is in process, the delivery stream is in the C<DELETING> state.
-
 To check the state of a delivery stream, use DescribeDeliveryStream.
+You can delete a delivery stream only if it is in one of the following
+states: C<ACTIVE>, C<DELETING>, C<CREATING_FAILED>, or
+C<DELETING_FAILED>. You can't delete a delivery stream that is in the
+C<CREATING> state. While the deletion request is in process, the
+delivery stream is in the C<DELETING> state.
 
-While the delivery stream is C<DELETING> state, the service might
-continue to accept the records, but it doesn't make any guarantees with
-respect to delivering the data. Therefore, as a best practice, you
-should first stop any applications that are sending records before
-deleting a delivery stream.
+While the delivery stream is in the C<DELETING> state, the service
+might continue to accept records, but it doesn't make any guarantees
+with respect to delivering the data. Therefore, as a best practice,
+first stop any applications that are sending records before you delete
+a delivery stream.
 
 
 =head2 DescribeDeliveryStream
@@ -268,10 +285,17 @@ Each argument is described in detail in: L<Paws::Firehose::DescribeDeliveryStrea
 
 Returns: a L<Paws::Firehose::DescribeDeliveryStreamOutput> instance
 
-Describes the specified delivery stream and gets the status. For
-example, after your delivery stream is created, call
-C<DescribeDeliveryStream> to see whether the delivery stream is
-C<ACTIVE> and therefore ready for data to be sent to it.
+Describes the specified delivery stream and its status. For example,
+after your delivery stream is created, call C<DescribeDeliveryStream>
+to see whether the delivery stream is C<ACTIVE> and therefore ready for
+data to be sent to it.
+
+If the status of a delivery stream is C<CREATING_FAILED>, this status
+doesn't change, and you can't invoke CreateDeliveryStream again on it.
+However, you can invoke the DeleteDeliveryStream operation to delete
+it. If the status is C<DELETING_FAILED>, you can force deletion by
+invoking DeleteDeliveryStream again but with
+DeleteDeliveryStreamInput$AllowForceDelete set to true.
 
 
 =head2 ListDeliveryStreams
@@ -475,6 +499,8 @@ encoding.
 
 =item DeliveryStreamName => Str
 
+=item [DeliveryStreamEncryptionConfigurationInput => L<Paws::Firehose::DeliveryStreamEncryptionConfigurationInput>]
+
 
 =back
 
@@ -485,17 +511,37 @@ Returns: a L<Paws::Firehose::StartDeliveryStreamEncryptionOutput> instance
 Enables server-side encryption (SSE) for the delivery stream.
 
 This operation is asynchronous. It returns immediately. When you invoke
-it, Kinesis Data Firehose first sets the status of the stream to
-C<ENABLING>, and then to C<ENABLED>. You can continue to read and write
-data to your stream while its status is C<ENABLING>, but the data is
-not encrypted. It can take up to 5 seconds after the encryption status
-changes to C<ENABLED> before all records written to the delivery stream
-are encrypted. To find out whether a record or a batch of records was
-encrypted, check the response elements PutRecordOutput$Encrypted and
+it, Kinesis Data Firehose first sets the encryption status of the
+stream to C<ENABLING>, and then to C<ENABLED>. The encryption status of
+a delivery stream is the C<Status> property in
+DeliveryStreamEncryptionConfiguration. If the operation fails, the
+encryption status changes to C<ENABLING_FAILED>. You can continue to
+read and write data to your delivery stream while the encryption status
+is C<ENABLING>, but the data is not encrypted. It can take up to 5
+seconds after the encryption status changes to C<ENABLED> before all
+records written to the delivery stream are encrypted. To find out
+whether a record or a batch of records was encrypted, check the
+response elements PutRecordOutput$Encrypted and
 PutRecordBatchOutput$Encrypted, respectively.
 
-To check the encryption state of a delivery stream, use
+To check the encryption status of a delivery stream, use
 DescribeDeliveryStream.
+
+Even if encryption is currently enabled for a delivery stream, you can
+still invoke this operation on it to change the ARN of the CMK or both
+its type and ARN. In this case, Kinesis Data Firehose schedules the
+grant it had on the old CMK for retirement and creates a grant that
+enables it to use the new CMK to encrypt and decrypt data and to manage
+the grant.
+
+If a delivery stream already has encryption enabled and then you invoke
+this operation to change the ARN of the CMK or both its type and ARN
+and you get C<ENABLING_FAILED>, this only means that the attempt to
+change the CMK failed. In this case, encryption remains enabled with
+the old CMK.
+
+If the encryption status of your delivery stream is C<ENABLING_FAILED>,
+you can invoke this operation again.
 
 You can only enable SSE for a delivery stream that uses C<DirectPut> as
 its source.
@@ -524,17 +570,23 @@ Returns: a L<Paws::Firehose::StopDeliveryStreamEncryptionOutput> instance
 Disables server-side encryption (SSE) for the delivery stream.
 
 This operation is asynchronous. It returns immediately. When you invoke
-it, Kinesis Data Firehose first sets the status of the stream to
-C<DISABLING>, and then to C<DISABLED>. You can continue to read and
-write data to your stream while its status is C<DISABLING>. It can take
-up to 5 seconds after the encryption status changes to C<DISABLED>
-before all records written to the delivery stream are no longer subject
-to encryption. To find out whether a record or a batch of records was
-encrypted, check the response elements PutRecordOutput$Encrypted and
-PutRecordBatchOutput$Encrypted, respectively.
+it, Kinesis Data Firehose first sets the encryption status of the
+stream to C<DISABLING>, and then to C<DISABLED>. You can continue to
+read and write data to your stream while its status is C<DISABLING>. It
+can take up to 5 seconds after the encryption status changes to
+C<DISABLED> before all records written to the delivery stream are no
+longer subject to encryption. To find out whether a record or a batch
+of records was encrypted, check the response elements
+PutRecordOutput$Encrypted and PutRecordBatchOutput$Encrypted,
+respectively.
 
 To check the encryption state of a delivery stream, use
 DescribeDeliveryStream.
+
+If SSE is enabled using a customer managed CMK and then you invoke
+C<StopDeliveryStreamEncryption>, Kinesis Data Firehose schedules the
+related KMS grant for retirement and then retires it after it ensures
+that it is finished delivering records to the destination.
 
 The C<StartDeliveryStreamEncryption> and
 C<StopDeliveryStreamEncryption> operations have a combined limit of 25

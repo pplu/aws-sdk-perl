@@ -7,6 +7,7 @@ package Paws::Firehose::DeliveryStreamDescription;
   has DeliveryStreamStatus => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamType => (is => 'ro', isa => 'Str', required => 1);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::DestinationDescription]', required => 1);
+  has FailureDescription => (is => 'ro', isa => 'Paws::Firehose::FailureDescription');
   has HasMoreDestinations => (is => 'ro', isa => 'Bool', required => 1);
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Paws::Firehose::SourceDescription');
@@ -72,7 +73,10 @@ stream.
 
 =head2 B<REQUIRED> DeliveryStreamStatus => Str
 
-  The status of the delivery stream.
+  The status of the delivery stream. If the status of a delivery stream
+is C<CREATING_FAILED>, this status doesn't change, and you can't invoke
+C<CreateDeliveryStream> again on it. However, you can invoke the
+DeleteDeliveryStream operation to delete it.
 
 
 =head2 B<REQUIRED> DeliveryStreamType => Str
@@ -98,6 +102,13 @@ stream as a source.
 =head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::Firehose::DestinationDescription>]
 
   The destinations.
+
+
+=head2 FailureDescription => L<Paws::Firehose::FailureDescription>
+
+  Provides details in case one of the following operations fails due to
+an error related to KMS: CreateDeliveryStream, DeleteDeliveryStream,
+StartDeliveryStreamEncryption, StopDeliveryStreamEncryption.
 
 
 =head2 B<REQUIRED> HasMoreDestinations => Bool

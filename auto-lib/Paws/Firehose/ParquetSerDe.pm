@@ -56,7 +56,7 @@ uses this value for padding calculations.
   The compression code to use over data blocks. The possible values are
 C<UNCOMPRESSED>, C<SNAPPY>, and C<GZIP>, with the default being
 C<SNAPPY>. Use C<SNAPPY> for higher decompression speed. Use C<GZIP> if
-the compression ration is more important than speed.
+the compression ratio is more important than speed.
 
 
 =head2 EnableDictionaryCompression => Bool

@@ -1,5 +1,8 @@
 package Paws::Firehose::DeliveryStreamEncryptionConfiguration;
   use Moose;
+  has FailureDescription => (is => 'ro', isa => 'Paws::Firehose::FailureDescription');
+  has KeyARN => (is => 'ro', isa => 'Str');
+  has KeyType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -20,27 +23,57 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::DeliveryStreamEncryptionConfiguration object:
 
-  $service_obj->Method(Att1 => { Status => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { FailureDescription => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::DeliveryStreamEncryptionConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Status
+  $result->Att1->FailureDescription
 
 =head1 DESCRIPTION
 
-Indicates the server-side encryption (SSE) status for the delivery
-stream.
+Contains information about the server-side encryption (SSE) status for
+the delivery stream, the type customer master key (CMK) in use, if any,
+and the ARN of the CMK. You can get
+C<DeliveryStreamEncryptionConfiguration> by invoking the
+DescribeDeliveryStream operation.
 
 =head1 ATTRIBUTES
 
 
+=head2 FailureDescription => L<Paws::Firehose::FailureDescription>
+
+  Provides details in case one of the following operations fails due to
+an error related to KMS: CreateDeliveryStream, DeleteDeliveryStream,
+StartDeliveryStreamEncryption, StopDeliveryStreamEncryption.
+
+
+=head2 KeyARN => Str
+
+  If C<KeyType> is C<CUSTOMER_MANAGED_CMK>, this field contains the ARN
+of the customer managed CMK. If C<KeyType> is C<AWS_OWNED_CMK>,
+C<DeliveryStreamEncryptionConfiguration> doesn't contain a value for
+C<KeyARN>.
+
+
+=head2 KeyType => Str
+
+  Indicates the type of customer master key (CMK) that is used for
+encryption. The default setting is C<AWS_OWNED_CMK>. For more
+information about CMKs, see Customer Master Keys (CMKs)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys).
+
+
 =head2 Status => Str
 
-  For a full description of the different values of this status, see
-StartDeliveryStreamEncryption and StopDeliveryStreamEncryption.
+  This is the server-side encryption (SSE) status for the delivery
+stream. For a full description of the different values of this status,
+see StartDeliveryStreamEncryption and StopDeliveryStreamEncryption. If
+this status is C<ENABLING_FAILED> or C<DISABLING_FAILED>, it is the
+status of the most recent attempt to enable or disable SSE,
+respectively.
 
 
 

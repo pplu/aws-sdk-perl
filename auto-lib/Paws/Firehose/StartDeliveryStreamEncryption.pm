@@ -1,6 +1,7 @@
 
 package Paws::Firehose::StartDeliveryStreamEncryption;
   use Moose;
+  has DeliveryStreamEncryptionConfigurationInput => (is => 'ro', isa => 'Paws::Firehose::DeliveryStreamEncryptionConfigurationInput');
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,14 +30,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $firehose = Paws->service('Firehose');
     my $StartDeliveryStreamEncryptionOutput =
       $firehose->StartDeliveryStreamEncryption(
-      DeliveryStreamName => 'MyDeliveryStreamName',
-
+      DeliveryStreamName                         => 'MyDeliveryStreamName',
+      DeliveryStreamEncryptionConfigurationInput => {
+        KeyType =>
+          'AWS_OWNED_CMK',    # values: AWS_OWNED_CMK, CUSTOMER_MANAGED_CMK
+        KeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
+      },    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/firehose/StartDeliveryStreamEncryption>
 
 =head1 ATTRIBUTES
+
+
+=head2 DeliveryStreamEncryptionConfigurationInput => L<Paws::Firehose::DeliveryStreamEncryptionConfigurationInput>
+
+Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+needed for Server-Side Encryption (SSE).
+
 
 
 =head2 B<REQUIRED> DeliveryStreamName => Str

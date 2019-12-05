@@ -1,6 +1,7 @@
 
 package Paws::Firehose::CreateDeliveryStream;
   use Moose;
+  has DeliveryStreamEncryptionConfigurationInput => (is => 'ro', isa => 'Paws::Firehose::DeliveryStreamEncryptionConfigurationInput');
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamType => (is => 'ro', isa => 'Str');
   has ElasticsearchDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationConfiguration');
@@ -36,8 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $firehose = Paws->service('Firehose');
     my $CreateDeliveryStreamOutput = $firehose->CreateDeliveryStream(
-      DeliveryStreamName                    => 'MyDeliveryStreamName',
-      DeliveryStreamType                    => 'DirectPut',           # OPTIONAL
+      DeliveryStreamName                         => 'MyDeliveryStreamName',
+      DeliveryStreamEncryptionConfigurationInput => {
+        KeyType =>
+          'AWS_OWNED_CMK',    # values: AWS_OWNED_CMK, CUSTOMER_MANAGED_CMK
+        KeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
+      },    # OPTIONAL
+      DeliveryStreamType                    => 'DirectPut',    # OPTIONAL
       ElasticsearchDestinationConfiguration => {
         IndexName       => 'MyElasticsearchIndexName',    # min: 1, max: 80
         RoleARN         => 'MyRoleARN',                   # min: 1, max: 512
@@ -57,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -130,9 +136,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               OpenXJsonSerDe => {
                 CaseInsensitive         => 1,    # OPTIONAL
                 ColumnToJsonKeyMappings => {
-                  'MyNonEmptyStringWithoutWhitespace' =>
-                    'MyNonEmptyString',          # key: OPTIONAL
-                },    # OPTIONAL
+                  'MyNonEmptyStringWithoutWhitespace' => 'MyNonEmptyString',
+                },                               # OPTIONAL
                 ConvertDotsInJsonKeysToUnderscores => 1,    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
@@ -140,11 +145,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           OutputFormatConfiguration => {
             Serializer => {
               OrcSerDe => {
-                BlockSizeBytes     => 1,    # min: 67108864; OPTIONAL
-                BloomFilterColumns => [
-                  'MyNonEmptyStringWithoutWhitespace', ...    # OPTIONAL
-                ],                                            # OPTIONAL
-                BloomFilterFalsePositiveProbability => 1,     # max: 1; OPTIONAL
+                BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
+                BloomFilterColumns =>
+                  [ 'MyNonEmptyStringWithoutWhitespace', ... ],    # OPTIONAL
+                BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL
                 Compression => 'NONE',    # values: NONE, ZLIB, SNAPPY; OPTIONAL
                 DictionaryKeyThreshold => 1,    # max: 1; OPTIONAL
                 EnablePadding          => 1,    # OPTIONAL
@@ -165,17 +169,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           SchemaConfiguration => {
-            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            Region       => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            TableName    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            VersionId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',
+            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',
+            Region       => 'MyNonEmptyStringWithoutWhitespace',
+            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',
+            TableName    => 'MyNonEmptyStringWithoutWhitespace',
+            VersionId    => 'MyNonEmptyStringWithoutWhitespace',
           },    # OPTIONAL
         },    # OPTIONAL
         EncryptionConfiguration => {
           KMSEncryptionConfig => {
-            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
           },    # OPTIONAL
           NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
@@ -217,7 +221,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -258,7 +262,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -311,7 +315,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -338,7 +342,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'UNCOMPRESSED',    # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
         EncryptionConfiguration => {
           KMSEncryptionConfig => {
-            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
           },    # OPTIONAL
           NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
@@ -366,7 +370,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -424,6 +428,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/firehose/CreateDeliveryStream>
 
 =head1 ATTRIBUTES
+
+
+=head2 DeliveryStreamEncryptionConfigurationInput => L<Paws::Firehose::DeliveryStreamEncryptionConfigurationInput>
+
+Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+needed for Server-Side Encryption (SSE).
+
 
 
 =head2 B<REQUIRED> DeliveryStreamName => Str
