@@ -8,6 +8,7 @@ package Paws::LexModels::PutBotResponse;
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DetectSentiment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'detectSentiment');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
@@ -83,12 +84,22 @@ The date that the bot was created.
 
 =head2 CreateVersion => Bool
 
-
+C<True> if a new version of the bot was created. If the
+C<createVersion> field was not specified in the request, the
+C<createVersion> field is set to false in the response.
 
 
 =head2 Description => Str
 
 A description of the bot.
+
+
+=head2 DetectSentiment => Bool
+
+C<true> if the bot is configured to send user utterances to Amazon
+Comprehend for sentiment analysis. If the C<detectSentiment> field was
+not specified in the request, the C<detectSentiment> field is C<false>
+in the response.
 
 
 =head2 FailureReason => Str
@@ -128,13 +139,20 @@ The name of the bot.
 
 When you send a request to create a bot with C<processBehavior> set to
 C<BUILD>, Amazon Lex sets the C<status> response element to
-C<BUILDING>. After Amazon Lex builds the bot, it sets C<status> to
-C<READY>. If Amazon Lex can't build the bot, Amazon Lex sets C<status>
-to C<FAILED>. Amazon Lex returns the reason for the failure in the
+C<BUILDING>.
+
+In the C<READY_BASIC_TESTING> state you can test the bot with user
+inputs that exactly match the utterances configured for the bot's
+intents and values in the slot types.
+
+If Amazon Lex can't build the bot, Amazon Lex sets C<status> to
+C<FAILED>. Amazon Lex returns the reason for the failure in the
 C<failureReason> response element.
 
-When you set C<processBehavior>to C<SAVE>, Amazon Lex sets the status
+When you set C<processBehavior> to C<SAVE>, Amazon Lex sets the status
 code to C<NOT BUILT>.
+
+When the bot is in the C<READY> state you can test and publish the bot.
 
 Valid values are: C<"BUILDING">, C<"READY">, C<"READY_BASIC_TESTING">, C<"FAILED">, C<"NOT_BUILT">
 =head2 Version => Str

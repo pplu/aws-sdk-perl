@@ -229,7 +229,9 @@ C<confirmationPrompt>, or neither.
 
 =head2 CreateVersion => Bool
 
-
+When set to C<true> a new numbered version of the intent is created.
+This is the same as calling the C<CreateIntentVersion> operation. If
+you do not specify C<createVersion>, the default is C<false>.
 
 
 

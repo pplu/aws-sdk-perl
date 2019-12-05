@@ -7,6 +7,7 @@ package Paws::LexModels::GetBotResponse;
   has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DetectSentiment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'detectSentiment');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
@@ -86,6 +87,12 @@ The date that the bot was created.
 A description of the bot.
 
 
+=head2 DetectSentiment => Bool
+
+Indicates whether user utterances should be sent to Amazon Comprehend
+for sentiment analysis.
+
+
 =head2 FailureReason => Str
 
 If C<status> is C<FAILED>, Amazon Lex explains why it failed to build
@@ -121,10 +128,19 @@ The name of the bot.
 
 =head2 Status => Str
 
-The status of the bot. If the bot is ready to run, the status is
-C<READY>. If there was a problem with building the bot, the status is
-C<FAILED> and the C<failureReason> explains why the bot did not build.
-If the bot was saved but not built, the status is C<NOT BUILT>.
+The status of the bot.
+
+When the status is C<BUILDING> Amazon Lex is building the bot for
+testing and use.
+
+If the status of the bot is C<READY_BASIC_TESTING>, you can test the
+bot using the exact utterances specified in the bot's intents. When the
+bot is ready for full testing or to run, the status is C<READY>.
+
+If there was a problem with building the bot, the status is C<FAILED>
+and the C<failureReason> field explains why the bot did not build.
+
+If the bot was saved but not built, the status is C<NOT_BUILT>.
 
 Valid values are: C<"BUILDING">, C<"READY">, C<"READY_BASIC_TESTING">, C<"FAILED">, C<"NOT_BUILT">
 =head2 Version => Str

@@ -54,7 +54,9 @@ The date that the intent was created.
 
 =head2 CreateVersion => Bool
 
-
+C<True> if a new version of the intent was created. If the
+C<createVersion> field was not specified in the request, the
+C<createVersion> field is set to false in the response.
 
 
 =head2 Description => Str

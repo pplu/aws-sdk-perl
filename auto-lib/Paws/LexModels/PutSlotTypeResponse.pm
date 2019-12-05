@@ -35,7 +35,9 @@ The date that the slot type was created.
 
 =head2 CreateVersion => Bool
 
-
+C<True> if a new version of the slot type was created. If the
+C<createVersion> field was not specified in the request, the
+C<createVersion> field is set to false in the response.
 
 
 =head2 Description => Str
