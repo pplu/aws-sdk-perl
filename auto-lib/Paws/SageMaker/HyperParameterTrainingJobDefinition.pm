@@ -2,15 +2,18 @@ package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterAlgorithmSpecification', required => 1);
   has CheckpointConfig => (is => 'ro', isa => 'Paws::SageMaker::CheckpointConfig');
+  has DefinitionName => (is => 'ro', isa => 'Str');
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
+  has HyperParameterRanges => (is => 'ro', isa => 'Paws::SageMaker::ParameterRanges');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has StaticHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
+  has TuningObjective => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobObjective');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 1;
 
@@ -59,6 +62,11 @@ launches.
   
 
 
+=head2 DefinitionName => Str
+
+  The job definition name.
+
+
 =head2 EnableInterContainerTrafficEncryption => Bool
 
   To encrypt all communications between ML compute instances in
@@ -86,6 +94,11 @@ but the training container does not have network access.
 
 The Semantic Segmentation built-in algorithm does not support network
 isolation.
+
+
+=head2 HyperParameterRanges => L<Paws::SageMaker::ParameterRanges>
+
+  
 
 
 =head2 InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
@@ -132,6 +145,11 @@ run. It also specifies how long you are willing to wait for a managed
 spot training job to complete. When the job reaches the a limit, Amazon
 SageMaker ends the training job. Use this API to cap model training
 costs.
+
+
+=head2 TuningObjective => L<Paws::SageMaker::HyperParameterTuningJobObjective>
+
+  
 
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>

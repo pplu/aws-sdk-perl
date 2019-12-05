@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PublicWorkforceTaskPrice => {
           AmountInUsd => {
             Cents                 => 1,            # max: 99; OPTIONAL
-            Dollars               => 1,            # max: 1; OPTIONAL
+            Dollars               => 1,            # max: 2; OPTIONAL
             TenthFractionsOfACent => 1,            # max: 9; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
@@ -124,8 +124,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> HumanTaskConfig => L<Paws::SageMaker::HumanTaskConfig>
 
-Configures the information required for human workers to complete a
-labeling task.
+Configures the labeling task and how it is presented to workers;
+including, but not limited to price, keywords, and batch size (task
+count).
 
 
 

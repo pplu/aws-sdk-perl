@@ -56,7 +56,7 @@ recommend using ml.m4.xlarge or C<ml.m5.large> instance types.
 =head2 VolumeKmsKeyId => Str
 
   The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt data on the storage volume attached to the ML compute
+to encrypt model data on the storage volume attached to the ML compute
 instance(s) that run the batch transform job. The C<VolumeKmsKeyId> can
 be any of the following formats:
 

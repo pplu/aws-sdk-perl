@@ -70,8 +70,7 @@ objective metric in a hyperparameter tuning job.
 =head2 SupportsDistributedTraining => Bool
 
   Indicates whether the algorithm supports distributed training. If set
-to false, buyers canE<rsquo>t request more than one instance during
-training.
+to false, buyers can't request more than one instance during training.
 
 
 =head2 B<REQUIRED> TrainingChannels => ArrayRef[L<Paws::SageMaker::ChannelSpecification>]

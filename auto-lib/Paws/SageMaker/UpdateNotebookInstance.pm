@@ -71,7 +71,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 A list of the Elastic Inference (EI) instance types to associate with
 this notebook instance. Currently only one EI instance type can be
 associated with a notebook instance. For more information, see Using
-Elastic Inference in Amazon SageMaker.
+Elastic Inference in Amazon SageMaker
+(https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 
 
 

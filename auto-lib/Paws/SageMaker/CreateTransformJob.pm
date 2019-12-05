@@ -4,6 +4,7 @@ package Paws::SageMaker::CreateTransformJob;
   has BatchStrategy => (is => 'ro', isa => 'Str');
   has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
@@ -76,6 +77,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTransformEnvironmentKey' =>
           'MyTransformEnvironmentValue',    # key: max: 1024, value: max: 10240
       },    # OPTIONAL
+      ExperimentConfig => {
+        ExperimentName => 'MyExperimentConfigName',  # min: 1, max: 64; OPTIONAL
+        TrialComponentDisplayName =>
+          'MyExperimentConfigName',                  # min: 1, max: 64; OPTIONAL
+        TrialName => 'MyExperimentConfigName',       # min: 1, max: 64; OPTIONAL
+      },    # OPTIONAL
       MaxConcurrentTransforms => 1,    # OPTIONAL
       MaxPayloadInMB          => 1,    # OPTIONAL
       Tags                    => [
@@ -140,12 +147,18 @@ to 16 key and values entries in the map.
 
 
 
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+
+
+
+
 =head2 MaxConcurrentTransforms => Int
 
 The maximum number of parallel requests that can be sent to each
 instance in a transform job. If C<MaxConcurrentTransforms> is set to
 C<0> or left unset, Amazon SageMaker checks the optional
-execution-parameters to determine the optimal settings for your chosen
+execution-parameters to determine the settings for your chosen
 algorithm. If the execution-parameters endpoint is not enabled, the
 default value is C<1>. For more information on execution-parameters,
 see How Containers Serve Requests

@@ -87,7 +87,7 @@ training algorithm requires the RecordIO format. In this case, Amazon
 SageMaker wraps each individual S3 object in a RecordIO record. If the
 input data is already in RecordIO format, you don't need to set this
 attribute. For more information, see Create a Dataset Using RecordIO
-(https://mxnet.incubator.apache.org/architecture/note_data_loading.html#data-format).
+(https://mxnet.apache.org/api/architecture/note_data_loading#data-format).
 
 In File mode, leave this field unset or set it to None.
 

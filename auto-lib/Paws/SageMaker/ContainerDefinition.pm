@@ -47,7 +47,7 @@ Describes the container, as part of model definition.
 C<PrimaryContainer>.
 
 When a C<ContainerDefinition> is part of an inference pipeline, the
-value of ths parameter uniquely identifies the container for the
+value of the parameter uniquely identifies the container for the
 purposes of logging and metrics. For information, see Use Logs and
 Metrics to Monitor an Inference Pipeline
 (https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html).
@@ -82,8 +82,7 @@ Amazon SageMaker
 
 =head2 Mode => Str
 
-  Specifies whether the container hosts a single model or multiple
-models.
+  Whether the container hosts a single model or multiple models.
 
 
 =head2 ModelDataUrl => Str

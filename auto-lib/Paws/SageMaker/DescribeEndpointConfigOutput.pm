@@ -2,6 +2,7 @@
 package Paws::SageMaker::DescribeEndpointConfigOutput;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has DataCaptureConfig => (is => 'ro', isa => 'Paws::SageMaker::DataCaptureConfig');
   has EndpointConfigArn => (is => 'ro', isa => 'Str', required => 1);
   has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -21,6 +22,11 @@ Paws::SageMaker::DescribeEndpointConfigOutput
 =head2 B<REQUIRED> CreationTime => Str
 
 A timestamp that shows when the endpoint configuration was created.
+
+
+=head2 DataCaptureConfig => L<Paws::SageMaker::DataCaptureConfig>
+
+
 
 
 =head2 B<REQUIRED> EndpointConfigArn => Str

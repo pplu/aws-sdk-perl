@@ -5,6 +5,7 @@ package Paws::SageMaker::HyperParameterTuningJobConfig;
   has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobEarlyStoppingType => (is => 'ro', isa => 'Str');
+  has TuningJobCompletionCriteria => (is => 'ro', isa => 'Paws::SageMaker::TuningJobCompletionCriteria');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HyperParameterTuningJobConfig object:
 
-  $service_obj->Method(Att1 => { HyperParameterTuningJobObjective => $value, ..., TrainingJobEarlyStoppingType => $value  });
+  $service_obj->Method(Att1 => { HyperParameterTuningJobObjective => $value, ..., TuningJobCompletionCriteria => $value  });
 
 =head3 Results returned from an API call
 
@@ -62,7 +63,7 @@ jobs and parallel training jobs for this tuning job.
 
   Specifies how hyperparameter tuning chooses the combinations of
 hyperparameter values to use for the training job it launches. To use
-the Bayesian search stategy, set this to C<Bayesian>. To randomly
+the Bayesian search strategy, set this to C<Bayesian>. To randomly
 search, set it to C<Random>. For information about search strategies,
 see How Hyperparameter Tuning Works
 (https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
@@ -91,6 +92,11 @@ Early
 
 =back
 
+
+
+=head2 TuningJobCompletionCriteria => L<Paws::SageMaker::TuningJobCompletionCriteria>
+
+  The tuning job's completion criteria.
 
 
 

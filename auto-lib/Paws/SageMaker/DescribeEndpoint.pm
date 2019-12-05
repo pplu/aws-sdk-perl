@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $CreationTime       = $DescribeEndpointOutput->CreationTime;
+    my $DataCaptureConfig  = $DescribeEndpointOutput->DataCaptureConfig;
     my $EndpointArn        = $DescribeEndpointOutput->EndpointArn;
     my $EndpointConfigName = $DescribeEndpointOutput->EndpointConfigName;
     my $EndpointName       = $DescribeEndpointOutput->EndpointName;

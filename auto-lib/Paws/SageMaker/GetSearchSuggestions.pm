@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 The name of the Amazon SageMaker resource to Search for. The only valid
 C<Resource> value is C<TrainingJob>.
 
-Valid values are: C<"TrainingJob">
+Valid values are: C<"TrainingJob">, C<"Experiment">, C<"ExperimentTrial">, C<"ExperimentTrialComponent">
 
 =head2 SuggestionQuery => L<Paws::SageMaker::SuggestionQuery>
 

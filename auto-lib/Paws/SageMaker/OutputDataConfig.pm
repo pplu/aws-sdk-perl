@@ -88,7 +88,7 @@ The KMS key policy must grant permission to the IAM role that you
 specify in your C<CreateTrainingJob>, C<CreateTransformJob>, or
 C<CreateHyperParameterTuningJob> requests. For more information, see
 Using Key Policies in AWS KMS
-(https://docs.aws.amazon.com/http:/docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 

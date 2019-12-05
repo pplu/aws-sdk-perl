@@ -192,6 +192,259 @@ are in US dollars.
 
 =back
 
+Use one of the following prices for Textract AnalyzeDocument Important
+Form Key Amazon Augmented AI review tasks. Prices are in US dollars.
+
+=over
+
+=item *
+
+2.400
+
+=item *
+
+2.280
+
+=item *
+
+2.160
+
+=item *
+
+2.040
+
+=item *
+
+1.920
+
+=item *
+
+1.800
+
+=item *
+
+1.680
+
+=item *
+
+1.560
+
+=item *
+
+1.440
+
+=item *
+
+1.320
+
+=item *
+
+1.200
+
+=item *
+
+1.080
+
+=item *
+
+0.960
+
+=item *
+
+0.840
+
+=item *
+
+0.720
+
+=item *
+
+0.600
+
+=item *
+
+0.480
+
+=item *
+
+0.360
+
+=item *
+
+0.240
+
+=item *
+
+0.120
+
+=item *
+
+0.072
+
+=item *
+
+0.060
+
+=item *
+
+0.048
+
+=item *
+
+0.036
+
+=item *
+
+0.024
+
+=item *
+
+0.012
+
+=back
+
+Use one of the following prices for Rekognition DetectModerationLabels
+Amazon Augmented AI review tasks. Prices are in US dollars.
+
+=over
+
+=item *
+
+1.200
+
+=item *
+
+1.080
+
+=item *
+
+0.960
+
+=item *
+
+0.840
+
+=item *
+
+0.720
+
+=item *
+
+0.600
+
+=item *
+
+0.480
+
+=item *
+
+0.360
+
+=item *
+
+0.240
+
+=item *
+
+0.120
+
+=item *
+
+0.072
+
+=item *
+
+0.060
+
+=item *
+
+0.048
+
+=item *
+
+0.036
+
+=item *
+
+0.024
+
+=item *
+
+0.012
+
+=back
+
+Use one of the following prices for Amazon Augmented AI custom human
+review tasks. Prices are in US dollars.
+
+=over
+
+=item *
+
+1.200
+
+=item *
+
+1.080
+
+=item *
+
+0.960
+
+=item *
+
+0.840
+
+=item *
+
+0.720
+
+=item *
+
+0.600
+
+=item *
+
+0.480
+
+=item *
+
+0.360
+
+=item *
+
+0.240
+
+=item *
+
+0.120
+
+=item *
+
+0.072
+
+=item *
+
+0.060
+
+=item *
+
+0.048
+
+=item *
+
+0.036
+
+=item *
+
+0.024
+
+=item *
+
+0.012
+
+=back
+
 
 =head1 ATTRIBUTES
 

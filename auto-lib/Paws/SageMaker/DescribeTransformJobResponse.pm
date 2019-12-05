@@ -1,10 +1,12 @@
 
 package Paws::SageMaker::DescribeTransformJobResponse;
   use Moose;
+  has AutoMLJobArn => (is => 'ro', isa => 'Str');
   has BatchStrategy => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has LabelingJobArn => (is => 'ro', isa => 'Str');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
@@ -28,6 +30,11 @@ package Paws::SageMaker::DescribeTransformJobResponse;
 Paws::SageMaker::DescribeTransformJobResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoMLJobArn => Str
+
+
 
 
 =head2 BatchStrategy => Str
@@ -55,6 +62,11 @@ A timestamp that shows when the transform Job was created.
 
 The environment variables to set in the Docker container. We support up
 to 16 key and values entries in the map.
+
+
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+
 
 
 =head2 FailureReason => Str

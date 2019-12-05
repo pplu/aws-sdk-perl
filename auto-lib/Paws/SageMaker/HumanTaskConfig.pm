@@ -55,8 +55,8 @@ Information required for human workers to complete a labeling task.
 =head2 MaxConcurrentTaskCount => Int
 
   Defines the maximum number of data objects that can be labeled by human
-workers at the same time. Each object may have more than one worker at
-one time.
+workers at the same time. Also referred to as batch size. Each object
+may have more than one worker at one time.
 
 
 =head2 B<REQUIRED> NumberOfHumanWorkersPerDataObject => Int
@@ -98,6 +98,22 @@ C<arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass>
 
 C<arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition>
 
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentSemanticSegmentation>
+
 =back
 
 B<US East (Ohio) (us-east-2):>
@@ -123,6 +139,22 @@ C<arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass>
 =item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -150,6 +182,22 @@ C<arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass>
 
 C<arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition>
 
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentSemanticSegmentation>
+
 =back
 
 B<Canada (Central) (ca-central-1):>
@@ -158,23 +206,39 @@ B<Canada (Central) (ca-central-1):>
 
 =item *
 
-C<arn:awslambda:ca-central-1:918755190332:function:PRE-BoundingBox>
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:awslambda:ca-central-1:918755190332:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClass>
 
 =item *
 
-C<arn:awslambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation>
 
 =item *
 
-C<arn:awslambda:ca-central-1:918755190332:function:PRE-TextMultiClass>
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClass>
 
 =item *
 
-C<arn:awslambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -202,6 +266,22 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-NamedEntityRecognition>
 
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentSemanticSegmentation>
+
 =back
 
 B<EU (London) (eu-west-2):>
@@ -210,23 +290,39 @@ B<EU (London) (eu-west-2):>
 
 =item *
 
-C<arn:awslambda:eu-west-2:487402164563:function:PRE-BoundingBox>
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:awslambda:eu-west-2:487402164563:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClass>
 
 =item *
 
-C<arn:awslambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation>
 
 =item *
 
-C<arn:awslambda:eu-west-2:487402164563:function:PRE-TextMultiClass>
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClass>
 
 =item *
 
-C<arn:awslambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -236,23 +332,39 @@ B<EU Frankfurt (eu-central-1):>
 
 =item *
 
-C<arn:awslambda:eu-central-1:203001061592:function:PRE-BoundingBox>
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:awslambda:eu-central-1:203001061592:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClass>
 
 =item *
 
-C<arn:awslambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation>
 
 =item *
 
-C<arn:awslambda:eu-central-1:203001061592:function:PRE-TextMultiClass>
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClass>
 
 =item *
 
-C<arn:awslambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -280,6 +392,22 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-NamedEntityRecognition>
 
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentSemanticSegmentation>
+
 =back
 
 B<Asia Pacific (Seoul) (ap-northeast-2):>
@@ -288,23 +416,39 @@ B<Asia Pacific (Seoul) (ap-northeast-2):>
 
 =item *
 
-C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-BoundingBox>
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass>
 
 =item *
 
-C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation>
 
 =item *
 
-C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass>
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass>
 
 =item *
 
-C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -314,23 +458,39 @@ B<Asia Pacific (Mumbai) (ap-south-1):>
 
 =item *
 
-C<arn:awslambda:ap-south-1:565803892007:function:PRE-BoundingBox>
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:awslambda:ap-south-1:565803892007:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClass>
 
 =item *
 
-C<arn:awslambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation>
 
 =item *
 
-C<arn:awslambda:ap-south-1:565803892007:function:PRE-TextMultiClass>
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClass>
 
 =item *
 
-C<arn:awslambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -340,23 +500,39 @@ B<Asia Pacific (Singapore) (ap-southeast-1):>
 
 =item *
 
-C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-BoundingBox>
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClass>
 
 =item *
 
-C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-SemanticSegmentation>
 
 =item *
 
-C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-TextMultiClass>
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClass>
 
 =item *
 
-C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 
@@ -383,6 +559,22 @@ C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
 =item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentSemanticSegmentation>
 
 =back
 

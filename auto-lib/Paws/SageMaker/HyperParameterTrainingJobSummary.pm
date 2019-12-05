@@ -6,6 +6,7 @@ package Paws::SageMaker::HyperParameterTrainingJobSummary;
   has ObjectiveStatus => (is => 'ro', isa => 'Str');
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
+  has TrainingJobDefinitionName => (is => 'ro', isa => 'Str');
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
@@ -111,6 +112,11 @@ jobs, this is the time when Amazon SageMaker detects a job failure.
 =head2 B<REQUIRED> TrainingJobArn => Str
 
   The Amazon Resource Name (ARN) of the training job.
+
+
+=head2 TrainingJobDefinitionName => Str
+
+  The training job definition name.
 
 
 =head2 B<REQUIRED> TrainingJobName => Str

@@ -1,6 +1,7 @@
 package Paws::SageMaker::AlgorithmSpecification;
   use Moose;
   has AlgorithmName => (is => 'ro', isa => 'Str');
+  has EnableSageMakerMetricsTimeSeries => (is => 'ro', isa => 'Bool');
   has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
   has TrainingImage => (is => 'ro', isa => 'Str');
   has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
@@ -54,6 +55,46 @@ Algorithms with Amazon SageMaker
 must be an algorithm resource that you created or subscribe to on AWS
 Marketplace. If you specify a value for this parameter, you can't
 specify a value for C<TrainingImage>.
+
+
+=head2 EnableSageMakerMetricsTimeSeries => Bool
+
+  To generate and save time-series metrics during training, set to
+C<true>. The default is C<false> and time-series metrics aren't
+generated except in the following cases:
+
+=over
+
+=item *
+
+You use one of the Amazon SageMaker built-in algorithms
+
+=item *
+
+You use one of the following prebuilt Amazon SageMaker Docker images:
+
+=over
+
+=item *
+
+Tensorflow
+
+=item *
+
+MXNet
+
+=item *
+
+PyTorch
+
+=back
+
+=item *
+
+You specify at least one MetricDefinition
+
+=back
+
 
 
 =head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]

@@ -2,12 +2,17 @@
 package Paws::SageMaker::DescribeTrainingJobResponse;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has AutoMLJobArn => (is => 'ro', isa => 'Str');
   has BillableTimeInSeconds => (is => 'ro', isa => 'Int');
   has CheckpointConfig => (is => 'ro', isa => 'Paws::SageMaker::CheckpointConfig');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has DebugHookConfig => (is => 'ro', isa => 'Paws::SageMaker::DebugHookConfig');
+  has DebugRuleConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DebugRuleConfiguration]');
+  has DebugRuleEvaluationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DebugRuleEvaluationStatus]');
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
@@ -21,6 +26,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has SecondaryStatus => (is => 'ro', isa => 'Str', required => 1);
   has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
+  has TensorBoardOutputConfig => (is => 'ro', isa => 'Paws::SageMaker::TensorBoardOutputConfig');
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
@@ -47,6 +53,11 @@ Information about the algorithm used for training, and algorithm
 metadata.
 
 
+=head2 AutoMLJobArn => Str
+
+
+
+
 =head2 BillableTimeInSeconds => Int
 
 The billable time in seconds.
@@ -65,6 +76,21 @@ C<TrainingTimeInSeconds> is 500, the savings is 80%.
 =head2 B<REQUIRED> CreationTime => Str
 
 A timestamp that indicates when the training job was created.
+
+
+=head2 DebugHookConfig => L<Paws::SageMaker::DebugHookConfig>
+
+
+
+
+=head2 DebugRuleConfigurations => ArrayRef[L<Paws::SageMaker::DebugRuleConfiguration>]
+
+Configuration information for debugging rules.
+
+
+=head2 DebugRuleEvaluationStatuses => ArrayRef[L<Paws::SageMaker::DebugRuleEvaluationStatus>]
+
+Status about the debug rule evaluation.
 
 
 =head2 EnableInterContainerTrafficEncryption => Bool
@@ -94,6 +120,11 @@ training container does not have network access.
 
 The Semantic Segmentation built-in algorithm does not support network
 isolation.
+
+
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+
 
 
 =head2 FailureReason => Str
@@ -289,6 +320,11 @@ To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
 signal, which delays job termination for 120 seconds. Algorithms can
 use this 120-second window to save the model artifacts, so the results
 of training are not lost.
+
+
+=head2 TensorBoardOutputConfig => L<Paws::SageMaker::TensorBoardOutputConfig>
+
+
 
 
 =head2 TrainingEndTime => Str

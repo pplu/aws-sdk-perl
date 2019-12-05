@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Name     => 'MyResourcePropertyName',    # min: 1, max: 255
             Operator => 'Equals'
-            , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains; OPTIONAL
+            , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains, Exists, NotExists; OPTIONAL
             Value => 'MyFilterValue',    # min: 1, max: 1024; OPTIONAL
           },
           ...
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 Name     => 'MyResourcePropertyName',    # min: 1, max: 255
                 Operator => 'Equals'
-                , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains; OPTIONAL
+                , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains, Exists, NotExists; OPTIONAL
                 Value => 'MyFilterValue',    # min: 1, max: 1024; OPTIONAL
               },
               ...
@@ -103,7 +103,7 @@ parameters.
 The name of the Amazon SageMaker resource to search for. Currently, the
 only valid C<Resource> value is C<TrainingJob>.
 
-Valid values are: C<"TrainingJob">
+Valid values are: C<"TrainingJob">, C<"Experiment">, C<"ExperimentTrial">, C<"ExperimentTrialComponent">
 
 =head2 SearchExpression => L<Paws::SageMaker::SearchExpression>
 

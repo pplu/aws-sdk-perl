@@ -1,9 +1,17 @@
 package Paws::SageMaker::TrainingJob;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification');
+  has AutoMLJobArn => (is => 'ro', isa => 'Str');
+  has BillableTimeInSeconds => (is => 'ro', isa => 'Int');
+  has CheckpointConfig => (is => 'ro', isa => 'Paws::SageMaker::CheckpointConfig');
   has CreationTime => (is => 'ro', isa => 'Str');
+  has DebugHookConfig => (is => 'ro', isa => 'Paws::SageMaker::DebugHookConfig');
+  has DebugRuleConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DebugRuleConfiguration]');
+  has DebugRuleEvaluationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DebugRuleEvaluationStatus]');
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
+  has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
@@ -18,11 +26,13 @@ package Paws::SageMaker::TrainingJob;
   has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+  has TensorBoardOutputConfig => (is => 'ro', isa => 'Paws::SageMaker::TensorBoardOutputConfig');
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingJobArn => (is => 'ro', isa => 'Str');
   has TrainingJobName => (is => 'ro', isa => 'Str');
   has TrainingJobStatus => (is => 'ro', isa => 'Str');
   has TrainingStartTime => (is => 'ro', isa => 'Str');
+  has TrainingTimeInSeconds => (is => 'ro', isa => 'Int');
   has TuningJobArn => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 1;
@@ -66,9 +76,40 @@ Contains information about a training job.
 metadata.
 
 
+=head2 AutoMLJobArn => Str
+
+  The Amazon Resource Name (ARN) of the job.
+
+
+=head2 BillableTimeInSeconds => Int
+
+  The billable time in seconds.
+
+
+=head2 CheckpointConfig => L<Paws::SageMaker::CheckpointConfig>
+
+  
+
+
 =head2 CreationTime => Str
 
   A timestamp that indicates when the training job was created.
+
+
+=head2 DebugHookConfig => L<Paws::SageMaker::DebugHookConfig>
+
+  
+
+
+=head2 DebugRuleConfigurations => ArrayRef[L<Paws::SageMaker::DebugRuleConfiguration>]
+
+  Information about the debug rule configuration.
+
+
+=head2 DebugRuleEvaluationStatuses => ArrayRef[L<Paws::SageMaker::DebugRuleEvaluationStatus>]
+
+  Information about the evaluation status of the rules for the training
+job.
 
 
 =head2 EnableInterContainerTrafficEncryption => Bool
@@ -81,11 +122,23 @@ instances, especially if you use a deep learning algorithm in
 distributed training.
 
 
+=head2 EnableManagedSpotTraining => Bool
+
+  When true, enables managed spot training using Amazon EC2 Spot
+instances to run training jobs instead of on-demand instances. For more
+information, see model-managed-spot-training.
+
+
 =head2 EnableNetworkIsolation => Bool
 
   If the C<TrainingJob> was created with network isolation, the value is
 set to C<true>. If network isolation is enabled, nodes can't
 communicate beyond the VPC they run in.
+
+
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+  
 
 
 =head2 FailureReason => Str
@@ -278,6 +331,11 @@ Allocation Tags
 in the I<AWS Billing and Cost Management User Guide>.
 
 
+=head2 TensorBoardOutputConfig => L<Paws::SageMaker::TensorBoardOutputConfig>
+
+  
+
+
 =head2 TrainingEndTime => Str
 
   Indicates the time when the training job ends on training instances.
@@ -339,6 +397,11 @@ You are billed for the time interval between this time and the value of
 C<TrainingEndTime>. The start time in CloudWatch Logs might be later
 than this time. The difference is due to the time it takes to download
 the training data and to the size of the training container.
+
+
+=head2 TrainingTimeInSeconds => Int
+
+  The training time in seconds.
 
 
 =head2 TuningJobArn => Str
