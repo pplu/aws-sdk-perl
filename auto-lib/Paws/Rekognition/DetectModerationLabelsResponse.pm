@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::DetectModerationLabelsResponse;
   use Moose;
+  has HumanLoopActivationOutput => (is => 'ro', isa => 'Paws::Rekognition::HumanLoopActivationOutput');
   has ModerationLabels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ModerationLabel]');
   has ModerationModelVersion => (is => 'ro', isa => 'Str');
 
@@ -13,6 +14,11 @@ package Paws::Rekognition::DetectModerationLabelsResponse;
 Paws::Rekognition::DetectModerationLabelsResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 HumanLoopActivationOutput => L<Paws::Rekognition::HumanLoopActivationOutput>
+
+Shows the results of the human in the loop evaluation.
 
 
 =head2 ModerationLabels => ArrayRef[L<Paws::Rekognition::ModerationLabel>]

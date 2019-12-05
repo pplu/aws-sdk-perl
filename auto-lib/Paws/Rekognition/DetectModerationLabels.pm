@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::DetectModerationLabels;
   use Moose;
+  has HumanLoopConfig => (is => 'ro', isa => 'Paws::Rekognition::HumanLoopConfig');
   has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
   has MinConfidence => (is => 'ro', isa => 'Num');
 
@@ -37,10 +38,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },
+      HumanLoopConfig => {
+        FlowDefinitionArn => 'MyFlowDefinitionArn',    # max: 256
+        HumanLoopName     => 'MyHumanLoopName',        # min: 1, max: 63
+        DataAttributes    => {
+          ContentClassifiers => [
+            'FreeOfPersonallyIdentifiableInformation',
+            ... # values: FreeOfPersonallyIdentifiableInformation, FreeOfAdultContent
+          ],    # max: 256; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
       MinConfidence => 1.0,    # OPTIONAL
     );
 
     # Results:
+    my $HumanLoopActivationOutput =
+      $DetectModerationLabelsResponse->HumanLoopActivationOutput;
     my $ModerationLabels = $DetectModerationLabelsResponse->ModerationLabels;
     my $ModerationModelVersion =
       $DetectModerationLabelsResponse->ModerationModelVersion;
@@ -51,6 +64,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/DetectModerationLabels>
 
 =head1 ATTRIBUTES
+
+
+=head2 HumanLoopConfig => L<Paws::Rekognition::HumanLoopConfig>
+
+Sets up the configuration for human evaluation, including the
+FlowDefinition the image will be sent to.
+
 
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>

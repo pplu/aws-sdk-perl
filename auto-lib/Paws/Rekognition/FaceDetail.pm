@@ -130,7 +130,7 @@ confidence level in the determination.
 
 =head2 Gender => L<Paws::Rekognition::Gender>
 
-  Gender of the face and the confidence level in the determination.
+  The predicted gender of a detected face.
 
 
 =head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]

@@ -37,10 +37,10 @@ returned are ratios of the overall image size. For example, if the
 input image is 700x200 and the operation returns X=0.5 and Y=0.25, then
 the point is at the (350,50) pixel coordinate on the image.
 
-An array of C<Point> objects, C<Polygon>, is returned by DetectText.
-C<Polygon> represents a fine-grained polygon around detected text. For
-more information, see Geometry in the Amazon Rekognition Developer
-Guide.
+An array of C<Point> objects, C<Polygon>, is returned by DetectText and
+by DetectCustomLabels. C<Polygon> represents a fine-grained polygon
+around a detected item. For more information, see Geometry in the
+Amazon Rekognition Developer Guide.
 
 =head1 ATTRIBUTES
 

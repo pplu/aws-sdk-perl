@@ -32,22 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Information about where the text detected by DetectText is located on
-an image.
+Information about where an object (DetectCustomLabels) or text
+(DetectText) is located on an image.
 
 =head1 ATTRIBUTES
 
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
 
-  An axis-aligned coarse representation of the detected text's location
+  An axis-aligned coarse representation of the detected item's location
 on the image.
 
 
 =head2 Polygon => ArrayRef[L<Paws::Rekognition::Point>]
 
   Within the bounding box, a fine-grained polygon around the detected
-text.
+item.
 
 
 
