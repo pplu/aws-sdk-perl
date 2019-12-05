@@ -66,7 +66,7 @@ between 1 and 256 characters long.
 =head2 B<REQUIRED> Platform => Str
 
 The following platforms are supported: ADM (Amazon Device Messaging),
-APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Google
+APNS (Apple Push Notification Service), APNS_SANDBOX, and FCM (Firebase
 Cloud Messaging).
 
 

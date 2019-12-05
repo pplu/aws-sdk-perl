@@ -24,46 +24,62 @@ following:
 
 =item *
 
-C<TopicArn> E<ndash> the topic's ARN
+C<DeliveryPolicy> E<ndash> The JSON serialization of the topic's
+delivery policy.
 
 =item *
 
-C<Owner> E<ndash> the AWS account ID of the topic's owner
+C<DisplayName> E<ndash> The human-readable name used in the C<From>
+field for notifications to C<email> and C<email-json> endpoints.
 
 =item *
 
-C<Policy> E<ndash> the JSON serialization of the topic's access control
-policy
+C<Owner> E<ndash> The AWS account ID of the topic's owner.
 
 =item *
 
-C<DisplayName> E<ndash> the human-readable name used in the "From"
-field for notifications to email and email-json endpoints
+C<Policy> E<ndash> The JSON serialization of the topic's access control
+policy.
 
 =item *
 
-C<SubscriptionsPending> E<ndash> the number of subscriptions pending
-confirmation on this topic
+C<SubscriptionsConfirmed> E<ndash> The number of confirmed
+subscriptions for the topic.
 
 =item *
 
-C<SubscriptionsConfirmed> E<ndash> the number of confirmed
-subscriptions on this topic
+C<SubscriptionsDeleted> E<ndash> The number of deleted subscriptions
+for the topic.
 
 =item *
 
-C<SubscriptionsDeleted> E<ndash> the number of deleted subscriptions on
-this topic
+C<SubscriptionsPending> E<ndash> The number of subscriptions pending
+confirmation for the topic.
 
 =item *
 
-C<DeliveryPolicy> E<ndash> the JSON serialization of the topic's
-delivery policy
+C<TopicArn> E<ndash> The topic's ARN.
 
 =item *
 
-C<EffectiveDeliveryPolicy> E<ndash> the JSON serialization of the
-effective delivery policy that takes into account system defaults
+C<EffectiveDeliveryPolicy> E<ndash> Yhe JSON serialization of the
+effective delivery policy, taking system defaults into account.
+
+=back
+
+The following attribute applies only to server-side-encryption
+(https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
+
+=over
+
+=item *
+
+C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
+for Amazon SNS or a custom CMK. For more information, see Key Terms
+(https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+For more examples, see KeyId
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+in the I<AWS Key Management Service API Reference>.
 
 =back
 

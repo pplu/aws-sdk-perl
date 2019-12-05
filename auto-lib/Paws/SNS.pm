@@ -462,35 +462,19 @@ mobile apps may register. You must specify PlatformPrincipal and
 PlatformCredential attributes when using the
 C<CreatePlatformApplication> action. The PlatformPrincipal is received
 from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal
-is "SSL certificate". For GCM, PlatformPrincipal is not applicable. For
+is "SSL certificate". For FCM, PlatformPrincipal is not applicable. For
 ADM, PlatformPrincipal is "client id". The PlatformCredential is also
 received from the notification service. For WNS, PlatformPrincipal is
 "Package Security Identifier". For MPNS, PlatformPrincipal is "TLS
 certificate". For Baidu, PlatformPrincipal is "API key".
 
-For APNS/APNS_SANDBOX, PlatformCredential is "private key". For GCM,
+For APNS/APNS_SANDBOX, PlatformCredential is "private key". For FCM,
 PlatformCredential is "API key". For ADM, PlatformCredential is "client
 secret". For WNS, PlatformCredential is "secret key". For MPNS,
 PlatformCredential is "private key". For Baidu, PlatformCredential is
 "secret key". The PlatformApplicationArn that is returned when using
 C<CreatePlatformApplication> is then used as an attribute for the
-C<CreatePlatformEndpoint> action. For more information, see Using
-Amazon SNS Mobile Push Notifications
-(https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html). For
-more information about obtaining the PlatformPrincipal and
-PlatformCredential for each of the supported push notification
-services, see Getting Started with Apple Push Notification Service
-(https://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html),
-Getting Started with Amazon Device Messaging
-(https://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html),
-Getting Started with Baidu Cloud Push
-(https://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html),
-Getting Started with Google Cloud Messaging for Android
-(https://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html),
-Getting Started with MPNS
-(https://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html), or
-Getting Started with WNS
-(https://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html).
+C<CreatePlatformEndpoint> action.
 
 
 =head2 CreatePlatformEndpoint
@@ -513,7 +497,7 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 Returns: a L<Paws::SNS::CreateEndpointResponse> instance
 
 Creates an endpoint for a device and mobile app on one of the supported
-push notification services, such as GCM and APNS.
+push notification services, such as FCM and APNS.
 C<CreatePlatformEndpoint> requires the PlatformApplicationArn that is
 returned from C<CreatePlatformApplication>. The EndpointArn that is
 returned when using C<CreatePlatformEndpoint> can then be used by the
@@ -592,7 +576,7 @@ Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 Returns: nothing
 
 Deletes a platform application object for one of the supported push
-notification services, such as APNS and GCM. For more information, see
+notification services, such as APNS and FCM. For more information, see
 Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
@@ -630,7 +614,7 @@ Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
 Retrieves the endpoint attributes for a device on one of the supported
-push notification services, such as GCM and APNS. For more information,
+push notification services, such as FCM and APNS. For more information,
 see Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
@@ -649,7 +633,7 @@ Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttr
 Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
 Retrieves the attributes of the platform application object for the
-supported push notification services, such as APNS and GCM. For more
+supported push notification services, such as APNS and FCM. For more
 information, see Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
@@ -721,7 +705,7 @@ Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApp
 Returns: a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance
 
 Lists the endpoints and endpoint attributes for devices in a supported
-push notification service, such as GCM and APNS. The results for
+push notification service, such as FCM and APNS. The results for
 C<ListEndpointsByPlatformApplication> are paginated and return a
 limited list of endpoints, up to 100. If additional records are
 available after the first page results, then a NextToken string will be
@@ -774,7 +758,7 @@ Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 Returns: a L<Paws::SNS::ListPlatformApplicationsResponse> instance
 
 Lists the platform application objects for the supported push
-notification services, such as APNS and GCM. The results for
+notification services, such as APNS and FCM. The results for
 C<ListPlatformApplications> are paginated and return a limited list of
 applications, up to 100. If additional records are available after the
 first page results, then a NextToken string will be returned. To
@@ -971,7 +955,7 @@ Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 Returns: nothing
 
 Sets the attributes for an endpoint for a device on one of the
-supported push notification services, such as GCM and APNS. For more
+supported push notification services, such as FCM and APNS. For more
 information, see Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
@@ -992,7 +976,7 @@ Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttr
 Returns: nothing
 
 Sets the attributes of the platform application object for the
-supported push notification services, such as APNS and GCM. For more
+supported push notification services, such as APNS and FCM. For more
 information, see Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html). For
 information on configuring attributes for message delivery status, see
@@ -1136,16 +1120,13 @@ the existing tag.
 
 =item *
 
-Tagging actions are limited to 10 TPS per AWS account. If your
-application requires a higher throughput, file a technical support
-request
+Tagging actions are limited to 10 TPS per AWS account, per AWS region.
+If your application requires a higher throughput, file a technical
+support request
 (https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
 
 =back
 
-For a full list of tag restrictions, see Limits Related to Topics
-(https://docs.aws.amazon.com/sns/latest/dg/sns-limits.html#limits-topics)
-in the I<Amazon SNS Developer Guide>.
 
 
 =head2 Unsubscribe

@@ -51,14 +51,14 @@ include the following:
 
 C<PlatformCredential> E<ndash> The credential received from the
 notification service. For APNS/APNS_SANDBOX, PlatformCredential is
-private key. For GCM, PlatformCredential is "API key". For ADM,
+private key. For FCM, PlatformCredential is "API key". For ADM,
 PlatformCredential is "client secret".
 
 =item *
 
 C<PlatformPrincipal> E<ndash> The principal received from the
 notification service. For APNS/APNS_SANDBOX, PlatformPrincipal is SSL
-certificate. For GCM, PlatformPrincipal is not applicable. For ADM,
+certificate. For FCM, PlatformPrincipal is not applicable. For ADM,
 PlatformPrincipal is "client id".
 
 =item *

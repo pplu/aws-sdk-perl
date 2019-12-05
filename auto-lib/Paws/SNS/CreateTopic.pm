@@ -112,6 +112,9 @@ between 1 and 256 characters long.
 
 The list of tags to add to a new topic.
 
+To be able to tag a topic on creation, you must have the
+C<sns:CreateTopic> and C<sns:TagResource> permissions.
+
 
 
 
