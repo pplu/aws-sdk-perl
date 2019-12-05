@@ -45,17 +45,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId = $UpdateApplicationResponse->ApplicationId;
-    my $Author        = $UpdateApplicationResponse->Author;
-    my $CreationTime  = $UpdateApplicationResponse->CreationTime;
-    my $Description   = $UpdateApplicationResponse->Description;
-    my $HomePageUrl   = $UpdateApplicationResponse->HomePageUrl;
-    my $Labels        = $UpdateApplicationResponse->Labels;
-    my $LicenseUrl    = $UpdateApplicationResponse->LicenseUrl;
-    my $Name          = $UpdateApplicationResponse->Name;
-    my $ReadmeUrl     = $UpdateApplicationResponse->ReadmeUrl;
-    my $SpdxLicenseId = $UpdateApplicationResponse->SpdxLicenseId;
-    my $Version       = $UpdateApplicationResponse->Version;
+    my $ApplicationId     = $UpdateApplicationResponse->ApplicationId;
+    my $Author            = $UpdateApplicationResponse->Author;
+    my $CreationTime      = $UpdateApplicationResponse->CreationTime;
+    my $Description       = $UpdateApplicationResponse->Description;
+    my $HomePageUrl       = $UpdateApplicationResponse->HomePageUrl;
+    my $IsVerifiedAuthor  = $UpdateApplicationResponse->IsVerifiedAuthor;
+    my $Labels            = $UpdateApplicationResponse->Labels;
+    my $LicenseUrl        = $UpdateApplicationResponse->LicenseUrl;
+    my $Name              = $UpdateApplicationResponse->Name;
+    my $ReadmeUrl         = $UpdateApplicationResponse->ReadmeUrl;
+    my $SpdxLicenseId     = $UpdateApplicationResponse->SpdxLicenseId;
+    my $VerifiedAuthorUrl = $UpdateApplicationResponse->VerifiedAuthorUrl;
+    my $Version           = $UpdateApplicationResponse->Version;
 
     # Returns a L<Paws::ServerlessRepo::UpdateApplicationResponse> object.
 

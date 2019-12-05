@@ -5,11 +5,13 @@ package Paws::ServerlessRepo::Application;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
   has HomePageUrl => (is => 'ro', isa => 'Str', request_name => 'homePageUrl', traits => ['NameInRequest']);
+  has IsVerifiedAuthor => (is => 'ro', isa => 'Bool', request_name => 'isVerifiedAuthor', traits => ['NameInRequest']);
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
   has LicenseUrl => (is => 'ro', isa => 'Str', request_name => 'licenseUrl', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
   has SpdxLicenseId => (is => 'ro', isa => 'Str', request_name => 'spdxLicenseId', traits => ['NameInRequest']);
+  has VerifiedAuthorUrl => (is => 'ro', isa => 'Str', request_name => 'verifiedAuthorUrl', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Paws::ServerlessRepo::Version', request_name => 'version', traits => ['NameInRequest']);
 1;
 
@@ -78,6 +80,14 @@ Minimum length=1. Maximum length=256
 location of your GitHub repository for the application.
 
 
+=head2 IsVerifiedAuthor => Bool
+
+  Whether the author of this application has been verified. This means
+means that AWS has made a good faith review, as a reasonable and
+prudent service provider, of the information provided by the requester
+and has confirmed that the requester's identity is as claimed.
+
+
 =head2 Labels => ArrayRef[Str|Undef]
 
   Labels to improve discovery of apps in search results.
@@ -115,6 +125,12 @@ Maximum size 5 MB
 =head2 SpdxLicenseId => Str
 
   A valid identifier from https://spdx.org/licenses/.
+
+
+=head2 VerifiedAuthorUrl => Str
+
+  The URL to the public profile of a verified author. This URL is
+submitted by the author.
 
 
 =head2 Version => L<Paws::ServerlessRepo::Version>
