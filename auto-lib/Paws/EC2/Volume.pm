@@ -5,8 +5,10 @@ package Paws::EC2::Volume;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest',]);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest',]);
   has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest',]);
+  has FastRestored => (is => 'ro', isa => 'Bool', request_name => 'fastRestored', traits => ['NameInRequest',]);
   has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest',]);
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest',]);
   has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest',]);
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
   has State => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
@@ -46,6 +48,11 @@ The time stamp when volume creation was initiated.
 Indicates whether the volume is encrypted.
 
 
+=head2 FastRestored => Bool
+
+Indicates whether the volume was created using fast snapshot restore.
+
+
 =head2 Iops => Int
 
 The number of I/O operations per second (IOPS) that the volume
@@ -73,6 +80,11 @@ or C<standard> volumes.
 The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS
 KMS) customer master key (CMK) that was used to protect the volume
 encryption key for the volume.
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 Size => Int

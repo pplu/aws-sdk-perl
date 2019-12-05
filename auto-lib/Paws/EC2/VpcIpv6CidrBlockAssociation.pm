@@ -3,6 +3,7 @@ package Paws::EC2::VpcIpv6CidrBlockAssociation;
   has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
   has Ipv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'ipv6CidrBlock', traits => ['NameInRequest']);
   has Ipv6CidrBlockState => (is => 'ro', isa => 'Paws::EC2::VpcCidrBlockState', request_name => 'ipv6CidrBlockState', traits => ['NameInRequest']);
+  has NetworkBorderGroup => (is => 'ro', isa => 'Str', request_name => 'networkBorderGroup', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::VpcIpv6CidrBlockAssociation object:
 
-  $service_obj->Method(Att1 => { AssociationId => $value, ..., Ipv6CidrBlockState => $value  });
+  $service_obj->Method(Att1 => { AssociationId => $value, ..., NetworkBorderGroup => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,11 @@ This class has no description
 =head2 Ipv6CidrBlockState => L<Paws::EC2::VpcCidrBlockState>
 
   Information about the state of the CIDR block.
+
+
+=head2 NetworkBorderGroup => Str
+
+  The name of the location from which we advertise the IPV6 CIDR block.
 
 
 

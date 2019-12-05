@@ -7,6 +7,7 @@ package Paws::EC2::Route;
   has GatewayId => (is => 'ro', isa => 'Str', request_name => 'gatewayId', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
   has InstanceOwnerId => (is => 'ro', isa => 'Str', request_name => 'instanceOwnerId', traits => ['NameInRequest']);
+  has LocalGatewayId => (is => 'ro', isa => 'Str', request_name => 'localGatewayId', traits => ['NameInRequest']);
   has NatGatewayId => (is => 'ro', isa => 'Str', request_name => 'natGatewayId', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has Origin => (is => 'ro', isa => 'Str', request_name => 'origin', traits => ['NameInRequest']);
@@ -81,6 +82,11 @@ This class has no description
 =head2 InstanceOwnerId => Str
 
   The AWS account ID of the owner of the instance.
+
+
+=head2 LocalGatewayId => Str
+
+  The ID of the local gateway.
 
 
 =head2 NatGatewayId => Str

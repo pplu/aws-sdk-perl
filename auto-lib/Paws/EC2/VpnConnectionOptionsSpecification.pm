@@ -1,5 +1,6 @@
 package Paws::EC2::VpnConnectionOptionsSpecification;
   use Moose;
+  has EnableAcceleration => (is => 'ro', isa => 'Bool');
   has StaticRoutesOnly => (is => 'ro', isa => 'Bool', request_name => 'staticRoutesOnly', traits => ['NameInRequest']);
   has TunnelOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnTunnelOptionsSpecification]');
 1;
@@ -21,20 +22,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::VpnConnectionOptionsSpecification object:
 
-  $service_obj->Method(Att1 => { StaticRoutesOnly => $value, ..., TunnelOptions => $value  });
+  $service_obj->Method(Att1 => { EnableAcceleration => $value, ..., TunnelOptions => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnConnectionOptionsSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->StaticRoutesOnly
+  $result->Att1->EnableAcceleration
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 EnableAcceleration => Bool
+
+  Indicate whether to enable acceleration for the VPN connection.
+
+Default: C<false>
 
 
 =head2 StaticRoutesOnly => Bool

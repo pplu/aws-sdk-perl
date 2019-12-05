@@ -7,6 +7,7 @@ package Paws::EC2::CreateRoute;
   has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'egressOnlyInternetGatewayId' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
+  has LocalGatewayId => (is => 'ro', isa => 'Str');
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
@@ -95,6 +96,12 @@ your VPC.
 The ID of a NAT instance in your VPC. The operation fails if you
 specify an instance ID unless exactly one network interface is
 attached.
+
+
+
+=head2 LocalGatewayId => Str
+
+The ID of the local gateway.
 
 
 

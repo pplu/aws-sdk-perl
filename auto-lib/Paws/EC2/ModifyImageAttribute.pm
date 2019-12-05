@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     $ec2->ModifyImageAttribute(
-      ImageId          => 'MyImageId',
+      ImageId          => 'MyString',
       Attribute        => 'MyString',                  # OPTIONAL
       Description      => { Value => 'MyString', },    # OPTIONAL
       DryRun           => 1,                           # OPTIONAL

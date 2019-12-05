@@ -8,6 +8,7 @@ package Paws::EC2::Subnet;
   has DefaultForAz => (is => 'ro', isa => 'Bool', request_name => 'defaultForAz', traits => ['NameInRequest']);
   has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SubnetIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
   has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', request_name => 'mapPublicIpOnLaunch', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SubnetArn => (is => 'ro', isa => 'Str', request_name => 'subnetArn', traits => ['NameInRequest']);
@@ -90,6 +91,11 @@ addresses for any stopped instances are considered unavailable.
 
   Indicates whether instances launched in this subnet receive a public
 IPv4 address.
+
+
+=head2 OutpostArn => Str
+
+  The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 OwnerId => Str

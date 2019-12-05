@@ -6,6 +6,7 @@ package Paws::EC2::CreateVolume;
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has OutpostArn => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
@@ -168,6 +169,12 @@ arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 AWS authenticates the CMK asynchronously. Therefore, if you specify an
 ID, alias, or ARN that is not valid, the action can appear to complete,
 but eventually fails.
+
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 

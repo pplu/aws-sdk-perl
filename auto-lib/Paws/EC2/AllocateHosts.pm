@@ -5,7 +5,8 @@ package Paws::EC2::AllocateHosts;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has HostRecovery => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
+  has InstanceFamily => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' );
   has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
@@ -35,15 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $AllocateHostsResult = $ec2->AllocateHosts(
       AvailabilityZone  => 'MyString',
-      InstanceType      => 'MyString',
       Quantity          => 1,
       AutoPlacement     => 'on',          # OPTIONAL
       ClientToken       => 'MyString',    # OPTIONAL
       HostRecovery      => 'on',          # OPTIONAL
+      InstanceFamily    => 'MyString',    # OPTIONAL
+      InstanceType      => 'MyString',    # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',
@@ -107,11 +109,29 @@ Default: C<off>
 
 Valid values are: C<"on">, C<"off">
 
-=head2 B<REQUIRED> InstanceType => Str
+=head2 InstanceFamily => Str
 
-Specifies the instance type for which to configure your Dedicated
-Hosts. When you specify the instance type, that is the only instance
-type that you can launch onto that host.
+Specifies the instance family to be supported by the Dedicated Hosts.
+If you specify an instance family, the Dedicated Hosts support multiple
+instance types within that instance family.
+
+If you want the Dedicated Hosts to support a specific instance type
+only, omit this parameter and specify B<InstanceType> instead. You
+cannot specify B<InstanceFamily> and B<InstanceType> in the same
+request.
+
+
+
+=head2 InstanceType => Str
+
+Specifies the instance type to be supported by the Dedicated Hosts. If
+you specify an instance type, the Dedicated Hosts support instances of
+the specified instance type only.
+
+If you want the Dedicated Hosts to support multiple instance types in a
+specific instance family, omit this parameter and specify
+B<InstanceFamily> instead. You cannot specify B<InstanceType> and
+B<InstanceFamily> in the same request.
 
 
 

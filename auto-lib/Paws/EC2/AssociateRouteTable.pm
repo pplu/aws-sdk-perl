@@ -2,8 +2,9 @@
 package Paws::EC2::AssociateRouteTable;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has GatewayId => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
+  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' );
 
   use MooseX::ClassAttribute;
 
@@ -57,13 +58,19 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 GatewayId => Str
+
+The ID of the internet gateway or virtual private gateway.
+
+
+
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table.
 
 
 
-=head2 B<REQUIRED> SubnetId => Str
+=head2 SubnetId => Str
 
 The ID of the subnet.
 

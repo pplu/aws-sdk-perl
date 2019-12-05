@@ -5,6 +5,7 @@ package Paws::EC2::InstanceStatus;
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
   has InstanceState => (is => 'ro', isa => 'Paws::EC2::InstanceState', request_name => 'instanceState', traits => ['NameInRequest']);
   has InstanceStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', request_name => 'instanceStatus', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has SystemStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', request_name => 'systemStatus', traits => ['NameInRequest']);
 1;
 
@@ -66,6 +67,11 @@ that an instance be in the C<running> state.
 
   Reports impaired functionality that stems from issues internal to the
 instance, such as impaired reachability.
+
+
+=head2 OutpostArn => Str
+
+  The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 SystemStatus => L<Paws::EC2::InstanceStatusSummary>

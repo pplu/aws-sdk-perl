@@ -44,7 +44,8 @@ This class has no description
 
 =head2 Associations => ArrayRef[L<Paws::EC2::RouteTableAssociation>]
 
-  The associations between the route table and one or more subnets.
+  The associations between the route table and one or more subnets or a
+gateway.
 
 
 =head2 OwnerId => Str

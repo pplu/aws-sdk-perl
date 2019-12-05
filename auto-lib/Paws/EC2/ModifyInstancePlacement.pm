@@ -4,6 +4,7 @@ package Paws::EC2::ModifyInstancePlacement;
   has Affinity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'affinity' );
   has GroupName => (is => 'ro', isa => 'Str');
   has HostId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostId' );
+  has HostResourceGroupArn => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
   has PartitionNumber => (is => 'ro', isa => 'Int');
   has Tenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tenancy' );
@@ -33,12 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyInstancePlacementResult = $ec2->ModifyInstancePlacement(
-      InstanceId      => 'MyInstanceId',
-      Affinity        => 'default',                 # OPTIONAL
-      GroupName       => 'MyPlacementGroupName',    # OPTIONAL
-      HostId          => 'MyHostId',                # OPTIONAL
-      PartitionNumber => 1,                         # OPTIONAL
-      Tenancy         => 'dedicated',               # OPTIONAL
+      InstanceId           => 'MyInstanceId',
+      Affinity             => 'default',                 # OPTIONAL
+      GroupName            => 'MyPlacementGroupName',    # OPTIONAL
+      HostId               => 'MyHostId',                # OPTIONAL
+      HostResourceGroupArn => 'MyString',                # OPTIONAL
+      PartitionNumber      => 1,                         # OPTIONAL
+      Tenancy              => 'dedicated',               # OPTIONAL
     );
 
     # Results:
@@ -73,6 +75,12 @@ To remove an instance from a placement group, specify an empty string
 =head2 HostId => Str
 
 The ID of the Dedicated Host with which to associate the instance.
+
+
+
+=head2 HostResourceGroupArn => Str
+
+The ARN of the host resource group in which to place the instance.
 
 
 

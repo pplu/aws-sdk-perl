@@ -9,6 +9,7 @@ package Paws::EC2::NetworkInterface;
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkInterfaceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
   has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
@@ -99,6 +100,11 @@ with the network interface.
 =head2 NetworkInterfaceId => Str
 
   The ID of the network interface.
+
+
+=head2 OutpostArn => Str
+
+  The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 OwnerId => Str

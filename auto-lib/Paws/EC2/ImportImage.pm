@@ -10,6 +10,7 @@ package Paws::EC2::ImportImage;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Hypervisor => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageLicenseConfigurationRequest]');
   has LicenseType => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
@@ -62,29 +63,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                               # OPTIONAL
-      DryRun      => 1,                # OPTIONAL
-      Encrypted   => 1,                # OPTIONAL
-      Hypervisor  => 'MyString',       # OPTIONAL
-      KmsKeyId    => 'MyKmsKeyId',     # OPTIONAL
-      LicenseType => 'MyString',       # OPTIONAL
-      Platform    => 'MyString',       # OPTIONAL
-      RoleName    => 'MyString',       # OPTIONAL
+      DryRun     => 1,                 # OPTIONAL
+      Encrypted  => 1,                 # OPTIONAL
+      Hypervisor => 'MyString',        # OPTIONAL
+      KmsKeyId   => 'MyString',        # OPTIONAL
+      LicenseSpecifications =>
+        [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
+      LicenseType => 'MyString',                                # OPTIONAL
+      Platform    => 'MyString',                                # OPTIONAL
+      RoleName    => 'MyString',                                # OPTIONAL
     );
 
     # Results:
-    my $Architecture    = $ImportImageResult->Architecture;
-    my $Description     = $ImportImageResult->Description;
-    my $Encrypted       = $ImportImageResult->Encrypted;
-    my $Hypervisor      = $ImportImageResult->Hypervisor;
-    my $ImageId         = $ImportImageResult->ImageId;
-    my $ImportTaskId    = $ImportImageResult->ImportTaskId;
-    my $KmsKeyId        = $ImportImageResult->KmsKeyId;
-    my $LicenseType     = $ImportImageResult->LicenseType;
-    my $Platform        = $ImportImageResult->Platform;
-    my $Progress        = $ImportImageResult->Progress;
-    my $SnapshotDetails = $ImportImageResult->SnapshotDetails;
-    my $Status          = $ImportImageResult->Status;
-    my $StatusMessage   = $ImportImageResult->StatusMessage;
+    my $Architecture          = $ImportImageResult->Architecture;
+    my $Description           = $ImportImageResult->Description;
+    my $Encrypted             = $ImportImageResult->Encrypted;
+    my $Hypervisor            = $ImportImageResult->Hypervisor;
+    my $ImageId               = $ImportImageResult->ImageId;
+    my $ImportTaskId          = $ImportImageResult->ImportTaskId;
+    my $KmsKeyId              = $ImportImageResult->KmsKeyId;
+    my $LicenseSpecifications = $ImportImageResult->LicenseSpecifications;
+    my $LicenseType           = $ImportImageResult->LicenseType;
+    my $Platform              = $ImportImageResult->Platform;
+    my $Progress              = $ImportImageResult->Progress;
+    my $SnapshotDetails       = $ImportImageResult->SnapshotDetails;
+    my $Status                = $ImportImageResult->Status;
+    my $StatusMessage         = $ImportImageResult->StatusMessage;
 
     # Returns a L<Paws::EC2::ImportImageResult> object.
 
@@ -199,6 +203,12 @@ This action will eventually report failure.
 
 The specified CMK must exist in the Region that the AMI is being copied
 to.
+
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationRequest>]
+
+The ARNs of the license configurations.
 
 
 

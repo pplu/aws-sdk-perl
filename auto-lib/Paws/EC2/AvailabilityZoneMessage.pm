@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Message => Str
 
-  The message about the Availability Zone.
+  The message about the Availability Zone or Local Zone.
 
 
 

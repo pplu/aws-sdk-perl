@@ -61,15 +61,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],        # OPTIONAL
-      Description        => 'MyString',       # OPTIONAL
-      DryRun             => 1,                # OPTIONAL
-      EnaSupport         => 1,                # OPTIONAL
-      ImageLocation      => 'MyString',       # OPTIONAL
-      KernelId           => 'MyKernelId',     # OPTIONAL
-      RamdiskId          => 'MyRamdiskId',    # OPTIONAL
-      RootDeviceName     => 'MyString',       # OPTIONAL
-      SriovNetSupport    => 'MyString',       # OPTIONAL
-      VirtualizationType => 'MyString',       # OPTIONAL
+      Description        => 'MyString',    # OPTIONAL
+      DryRun             => 1,             # OPTIONAL
+      EnaSupport         => 1,             # OPTIONAL
+      ImageLocation      => 'MyString',    # OPTIONAL
+      KernelId           => 'MyString',    # OPTIONAL
+      RamdiskId          => 'MyString',    # OPTIONAL
+      RootDeviceName     => 'MyString',    # OPTIONAL
+      SriovNetSupport    => 'MyString',    # OPTIONAL
+      VirtualizationType => 'MyString',    # OPTIONAL
     );
 
     # Results:

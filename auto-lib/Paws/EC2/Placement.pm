@@ -4,6 +4,7 @@ package Paws::EC2::Placement;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
+  has HostResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'hostResourceGroupArn', traits => ['NameInRequest']);
   has PartitionNumber => (is => 'ro', isa => 'Int', request_name => 'partitionNumber', traits => ['NameInRequest']);
   has SpreadDomain => (is => 'ro', isa => 'Str', request_name => 'spreadDomain', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
@@ -65,6 +66,13 @@ you based on the load balancing criteria for the Region.
 
   The ID of the Dedicated Host on which the instance resides. This
 parameter is not supported for the ImportInstance command.
+
+
+=head2 HostResourceGroupArn => Str
+
+  The ARN of the host resource group in which to launch the instances. If
+you specify a host resource group ARN, omit the B<Tenancy> parameter or
+set it to C<host>.
 
 
 =head2 PartitionNumber => Int

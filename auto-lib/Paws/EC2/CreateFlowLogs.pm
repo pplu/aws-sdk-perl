@@ -97,8 +97,11 @@ published. Flow log data can be published to a CloudWatch Logs log
 group or an Amazon S3 bucket. The value specified for this parameter
 depends on the value specified for C<LogDestinationType>.
 
-If LogDestinationType is not specified or C<cloud-watch-logs>, specify
-the Amazon Resource Name (ARN) of the CloudWatch Logs log group.
+If C<LogDestinationType> is not specified or C<cloud-watch-logs>,
+specify the Amazon Resource Name (ARN) of the CloudWatch Logs log
+group. For example, to publish to a log group called C<my-logs>,
+specify C<arn:aws:logs:us-east-1:123456789012:log-group:my-logs>.
+Alternatively, use C<LogGroupName> instead.
 
 If LogDestinationType is C<s3>, specify the ARN of the Amazon S3
 bucket. You can also specify a subfolder in the bucket. To specify a

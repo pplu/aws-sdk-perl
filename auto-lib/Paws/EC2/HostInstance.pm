@@ -2,6 +2,7 @@ package Paws::EC2::HostInstance;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::HostInstance object:
 
-  $service_obj->Method(Att1 => { InstanceId => $value, ..., InstanceType => $value  });
+  $service_obj->Method(Att1 => { InstanceId => $value, ..., OwnerId => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,13 +40,17 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  the IDs of instances that are running on the Dedicated Host.
+  The ID of instance that is running on the Dedicated Host.
 
 
 =head2 InstanceType => Str
 
-  The instance type size (for example, C<m3.medium>) of the running
-instance.
+  The instance type (for example, C<m3.medium>) of the running instance.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the instance.
 
 
 

@@ -6,6 +6,7 @@ package Paws::EC2::TransitGatewayOptions;
   has DefaultRouteTableAssociation => (is => 'ro', isa => 'Str', request_name => 'defaultRouteTableAssociation', traits => ['NameInRequest']);
   has DefaultRouteTablePropagation => (is => 'ro', isa => 'Str', request_name => 'defaultRouteTablePropagation', traits => ['NameInRequest']);
   has DnsSupport => (is => 'ro', isa => 'Str', request_name => 'dnsSupport', traits => ['NameInRequest']);
+  has MulticastSupport => (is => 'ro', isa => 'Str', request_name => 'multicastSupport', traits => ['NameInRequest']);
   has PropagationDefaultRouteTableId => (is => 'ro', isa => 'Str', request_name => 'propagationDefaultRouteTableId', traits => ['NameInRequest']);
   has VpnEcmpSupport => (is => 'ro', isa => 'Str', request_name => 'vpnEcmpSupport', traits => ['NameInRequest']);
 1;
@@ -75,6 +76,11 @@ to the default propagation route table.
 =head2 DnsSupport => Str
 
   Indicates whether DNS support is enabled.
+
+
+=head2 MulticastSupport => Str
+
+  Indicates whether multicast is enabled on the transit gateway
 
 
 =head2 PropagationDefaultRouteTableId => Str

@@ -1,5 +1,7 @@
 package Paws::EC2::RouteTableAssociation;
   use Moose;
+  has AssociationState => (is => 'ro', isa => 'Paws::EC2::RouteTableAssociationState', request_name => 'associationState', traits => ['NameInRequest']);
+  has GatewayId => (is => 'ro', isa => 'Str', request_name => 'gatewayId', traits => ['NameInRequest']);
   has Main => (is => 'ro', isa => 'Bool', request_name => 'main', traits => ['NameInRequest']);
   has RouteTableAssociationId => (is => 'ro', isa => 'Str', request_name => 'routeTableAssociationId', traits => ['NameInRequest']);
   has RouteTableId => (is => 'ro', isa => 'Str', request_name => 'routeTableId', traits => ['NameInRequest']);
@@ -23,20 +25,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::RouteTableAssociation object:
 
-  $service_obj->Method(Att1 => { Main => $value, ..., SubnetId => $value  });
+  $service_obj->Method(Att1 => { AssociationState => $value, ..., SubnetId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::RouteTableAssociation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Main
+  $result->Att1->AssociationState
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociationState => L<Paws::EC2::RouteTableAssociationState>
+
+  The state of the association.
+
+
+=head2 GatewayId => Str
+
+  The ID of the internet gateway or virtual private gateway.
 
 
 =head2 Main => Bool
@@ -46,7 +58,7 @@ This class has no description
 
 =head2 RouteTableAssociationId => Str
 
-  The ID of the association between a route table and a subnet.
+  The ID of the association.
 
 
 =head2 RouteTableId => Str

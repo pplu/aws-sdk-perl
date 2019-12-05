@@ -20,6 +20,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptReservedInstancesExchangeQuote', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AcceptTransitGatewayPeeringAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AcceptTransitGatewayPeeringAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AcceptTransitGatewayVpcAttachment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptTransitGatewayVpcAttachment', @_);
@@ -93,6 +98,11 @@ package Paws::EC2;
   sub AssociateSubnetCidrBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateSubnetCidrBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateTransitGatewayMulticastDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateTransitGatewayMulticastDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AssociateTransitGatewayRouteTable {
@@ -295,6 +305,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateLaunchTemplateVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateLocalGatewayRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateLocalGatewayRoute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateLocalGatewayRouteTableVpcAssociation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateLocalGatewayRouteTableVpcAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNatGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateNatGateway', @_);
@@ -393,6 +413,16 @@ package Paws::EC2;
   sub CreateTransitGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayMulticastDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayMulticastDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayPeeringAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayPeeringAttachment', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateTransitGatewayRoute {
@@ -515,6 +545,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteLaunchTemplateVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLocalGatewayRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteLocalGatewayRoute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteLocalGatewayRouteTableVpcAssociation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteLocalGatewayRouteTableVpcAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteNatGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNatGateway', @_);
@@ -610,6 +650,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTransitGatewayMulticastDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayMulticastDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGatewayPeeringAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayPeeringAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTransitGatewayRoute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayRoute', @_);
@@ -680,6 +730,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterTransitGatewayMulticastGroupMembers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterTransitGatewayMulticastGroupMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeregisterTransitGatewayMulticastGroupSources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterTransitGatewayMulticastGroupSources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAccountAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAccountAttributes', @_);
@@ -745,6 +805,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClientVpnTargetNetworks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCoipPools {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeCoipPools', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeConversionTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeConversionTasks', @_);
@@ -778,6 +843,11 @@ package Paws::EC2;
   sub DescribeExportTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeExportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFastSnapshotRestores {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFastSnapshotRestores', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeFleetHistory {
@@ -880,6 +950,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInstanceTypeOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceTypeOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstanceTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInternetGateways {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInternetGateways', @_);
@@ -898,6 +978,36 @@ package Paws::EC2;
   sub DescribeLaunchTemplateVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLaunchTemplateVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocalGatewayRouteTables {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGatewayRouteTables', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocalGatewayRouteTableVpcAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGatewayRouteTableVpcAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocalGateways {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGateways', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocalGatewayVirtualInterfaceGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGatewayVirtualInterfaceGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocalGatewayVirtualInterfaces {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGatewayVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMovingAddresses {
@@ -1075,6 +1185,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayAttachments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTransitGatewayMulticastDomains {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayMulticastDomains', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTransitGatewayPeeringAttachments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayPeeringAttachments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTransitGatewayRouteTables {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayRouteTables', @_);
@@ -1205,6 +1325,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableEbsEncryptionByDefault', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableFastSnapshotRestores {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableFastSnapshotRestores', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableTransitGatewayRouteTablePropagation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableTransitGatewayRouteTablePropagation', @_);
@@ -1250,6 +1375,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateSubnetCidrBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateTransitGatewayMulticastDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTransitGatewayMulticastDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateTransitGatewayRouteTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTransitGatewayRouteTable', @_);
@@ -1263,6 +1393,11 @@ package Paws::EC2;
   sub EnableEbsEncryptionByDefault {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableEbsEncryptionByDefault', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableFastSnapshotRestores {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableFastSnapshotRestores', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableTransitGatewayRouteTablePropagation {
@@ -1315,6 +1450,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetCapacityReservationUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCoipPoolUsage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetCoipPoolUsage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetConsoleOutput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleOutput', @_);
@@ -1323,6 +1463,11 @@ package Paws::EC2;
   sub GetConsoleScreenshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleScreenshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDefaultCreditSpecification {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetDefaultCreditSpecification', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetEbsDefaultKmsKeyId {
@@ -1358,6 +1503,11 @@ package Paws::EC2;
   sub GetTransitGatewayAttachmentPropagations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayAttachmentPropagations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTransitGatewayMulticastDomainAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayMulticastDomainAssociations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTransitGatewayRouteTableAssociations {
@@ -1408,6 +1558,11 @@ package Paws::EC2;
   sub ModifyClientVpnEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyClientVpnEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDefaultCreditSpecification {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyDefaultCreditSpecification', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyEbsDefaultKmsKeyId {
@@ -1625,6 +1780,21 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::RegisterImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterTransitGatewayMulticastGroupMembers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RegisterTransitGatewayMulticastGroupMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterTransitGatewayMulticastGroupSources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RegisterTransitGatewayMulticastGroupSources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RejectTransitGatewayPeeringAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RejectTransitGatewayPeeringAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RejectTransitGatewayVpcAttachment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RejectTransitGatewayVpcAttachment', @_);
@@ -1753,6 +1923,16 @@ package Paws::EC2;
   sub RunScheduledInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RunScheduledInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchLocalGatewayRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::SearchLocalGatewayRoutes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchTransitGatewayMulticastGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::SearchTransitGatewayMulticastGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SearchTransitGatewayRoutes {
@@ -2041,6 +2221,52 @@ package Paws::EC2;
         $result = $self->DescribeEgressOnlyInternetGateways(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'EgressOnlyInternetGateways') foreach (@{ $result->EgressOnlyInternetGateways });
+    }
+
+    return undef
+  }
+  sub DescribeAllExportImageTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportImageTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeExportImageTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ExportImageTasks }, @{ $next_result->ExportImageTasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ExportImageTasks') foreach (@{ $result->ExportImageTasks });
+        $result = $self->DescribeExportImageTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ExportImageTasks') foreach (@{ $result->ExportImageTasks });
+    }
+
+    return undef
+  }
+  sub DescribeAllFastSnapshotRestores {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFastSnapshotRestores(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeFastSnapshotRestores(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FastSnapshotRestores }, @{ $next_result->FastSnapshotRestores };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FastSnapshotRestores') foreach (@{ $result->FastSnapshotRestores });
+        $result = $self->DescribeFastSnapshotRestores(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FastSnapshotRestores') foreach (@{ $result->FastSnapshotRestores });
     }
 
     return undef
@@ -3407,7 +3633,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetCapacityReservationUsage GetConsoleOutput GetConsoleScreenshot GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstanceMetadataOptions ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayPeeringAttachment AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayMulticastDomain AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateLocalGatewayRoute CreateLocalGatewayRouteTableVpcAssociation CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayMulticastDomain CreateTransitGatewayPeeringAttachment CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteLocalGatewayRoute DeleteLocalGatewayRouteTableVpcAssociation DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayMulticastDomain DeleteTransitGatewayPeeringAttachment DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DeregisterTransitGatewayMulticastGroupMembers DeregisterTransitGatewayMulticastGroupSources DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeCoipPools DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFastSnapshotRestores DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInstanceTypeOfferings DescribeInstanceTypes DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeLocalGatewayRouteTables DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations DescribeLocalGatewayRouteTableVpcAssociations DescribeLocalGateways DescribeLocalGatewayVirtualInterfaceGroups DescribeLocalGatewayVirtualInterfaces DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayMulticastDomains DescribeTransitGatewayPeeringAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableFastSnapshotRestores DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayMulticastDomain DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableFastSnapshotRestores EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetCapacityReservationUsage GetCoipPoolUsage GetConsoleOutput GetConsoleScreenshot GetDefaultCreditSpecification GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayMulticastDomainAssociations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyDefaultCreditSpecification ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstanceMetadataOptions ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RegisterTransitGatewayMulticastGroupMembers RegisterTransitGatewayMulticastGroupSources RejectTransitGatewayPeeringAttachment RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchLocalGatewayRoutes SearchTransitGatewayMulticastGroups SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -3494,6 +3720,25 @@ Returns: a L<Paws::EC2::AcceptReservedInstancesExchangeQuoteResult> instance
 
 Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call.
+
+
+=head2 AcceptTransitGatewayPeeringAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AcceptTransitGatewayPeeringAttachment>
+
+Returns: a L<Paws::EC2::AcceptTransitGatewayPeeringAttachmentResult> instance
+
+Accepts a transit gateway peering attachment request. The peering
+attachment must be in the C<pendingAcceptance> state.
 
 
 =head2 AcceptTransitGatewayVpcAttachment
@@ -3603,9 +3848,13 @@ To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
 
 =item [Address => Str]
 
+=item [CustomerOwnedIpv4Pool => Str]
+
 =item [Domain => Str]
 
 =item [DryRun => Bool]
+
+=item [NetworkBorderGroup => Str]
 
 =item [PublicIpv4Pool => Str]
 
@@ -3651,8 +3900,6 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item AvailabilityZone => Str
 
-=item InstanceType => Str
-
 =item Quantity => Int
 
 =item [AutoPlacement => Str]
@@ -3660,6 +3907,10 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [ClientToken => Str]
 
 =item [HostRecovery => Str]
+
+=item [InstanceFamily => Str]
+
+=item [InstanceType => Str]
 
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
@@ -3671,8 +3922,8 @@ Each argument is described in detail in: L<Paws::EC2::AllocateHosts>
 Returns: a L<Paws::EC2::AllocateHostsResult> instance
 
 Allocates a Dedicated Host to your account. At a minimum, specify the
-instance size type, Availability Zone, and quantity of hosts to
-allocate.
+supported instance type or instance family, the Availability Zone in
+which to allocate the host, and the number of hosts to allocate.
 
 
 =head2 ApplySecurityGroupsToClientVpnTargetNetwork
@@ -3909,9 +4160,11 @@ instance.
 
 =item RouteTableId => Str
 
-=item SubnetId => Str
-
 =item [DryRun => Bool]
+
+=item [GatewayId => Str]
+
+=item [SubnetId => Str]
 
 
 =back
@@ -3920,12 +4173,12 @@ Each argument is described in detail in: L<Paws::EC2::AssociateRouteTable>
 
 Returns: a L<Paws::EC2::AssociateRouteTableResult> instance
 
-Associates a subnet with a route table. The subnet and route table must
-be in the same VPC. This association causes traffic originating from
-the subnet to be routed according to the routes in the route table. The
-action returns an association ID, which you need in order to
-disassociate the route table from the subnet later. A route table can
-be associated with multiple subnets.
+Associates a subnet in your VPC or an internet gateway or virtual
+private gateway attached to your VPC with a route table in your VPC.
+This association causes traffic from the subnet or gateway to be routed
+according to the routes in the route table. The action returns an
+association ID, which you need in order to disassociate the route table
+later. A route table can be associated with multiple subnets.
 
 For more information, see Route Tables
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
@@ -3950,6 +4203,34 @@ Returns: a L<Paws::EC2::AssociateSubnetCidrBlockResult> instance
 Associates a CIDR block with your subnet. You can only associate a
 single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
 prefix length of /64.
+
+
+=head2 AssociateTransitGatewayMulticastDomain
+
+=over
+
+=item [DryRun => Bool]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayAttachmentId => Str]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AssociateTransitGatewayMulticastDomain>
+
+Returns: a L<Paws::EC2::AssociateTransitGatewayMulticastDomainResult> instance
+
+Associates the specified subnets and transit gateway attachments with
+the specified transit gateway multicast domain.
+
+The transit gateway attachment must be in the available state before
+you can add a resource. Use DescribeTransitGatewayAttachments
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html)
+to see the state of the attachment.
 
 
 =head2 AssociateTransitGatewayRouteTable
@@ -3982,6 +4263,8 @@ route table. You can associate only one route table with an attachment.
 =item [AmazonProvidedIpv6CidrBlock => Bool]
 
 =item [CidrBlock => Str]
+
+=item [Ipv6CidrBlockNetworkBorderGroup => Str]
 
 
 =back
@@ -4051,9 +4334,10 @@ Each argument is described in detail in: L<Paws::EC2::AttachInternetGateway>
 
 Returns: nothing
 
-Attaches an internet gateway to a VPC, enabling connectivity between
-the internet and the VPC. For more information about your VPC and
-internet gateway, see the Amazon Virtual Private Cloud User Guide
+Attaches an internet gateway or a virtual private gateway to a VPC,
+enabling connectivity between the internet and the VPC. For more
+information about your VPC and internet gateway, see the Amazon Virtual
+Private Cloud User Guide
 (https://docs.aws.amazon.com/vpc/latest/userguide/).
 
 
@@ -5304,6 +5588,49 @@ created. You cannot specify, change, or replace the numbering of launch
 template versions.
 
 
+=head2 CreateLocalGatewayRoute
+
+=over
+
+=item DestinationCidrBlock => Str
+
+=item LocalGatewayRouteTableId => Str
+
+=item LocalGatewayVirtualInterfaceGroupId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateLocalGatewayRoute>
+
+Returns: a L<Paws::EC2::CreateLocalGatewayRouteResult> instance
+
+Creates a static route for the specified local gateway route table.
+
+
+=head2 CreateLocalGatewayRouteTableVpcAssociation
+
+=over
+
+=item LocalGatewayRouteTableId => Str
+
+=item VpcId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateLocalGatewayRouteTableVpcAssociation>
+
+Returns: a L<Paws::EC2::CreateLocalGatewayRouteTableVpcAssociationResult> instance
+
+Associates the specified VPC with the specified local gateway route
+table.
+
+
 =head2 CreateNatGateway
 
 =over
@@ -5575,6 +5902,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [InstanceId => Str]
 
+=item [LocalGatewayId => Str]
+
 =item [NatGatewayId => Str]
 
 =item [NetworkInterfaceId => Str]
@@ -5594,7 +5923,8 @@ Creates a route in a route table within a VPC.
 
 You must specify one of the following targets: internet gateway or
 virtual private gateway, NAT instance, NAT gateway, VPC peering
-connection, network interface, or egress-only internet gateway.
+connection, network interface, egress-only internet gateway, or transit
+gateway.
 
 When determining how to route traffic, we use the route with the most
 specific match. For example, traffic is destined for the IPv4 address
@@ -5822,6 +6152,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 =item [DryRun => Bool]
 
 =item [Ipv6CidrBlock => Str]
+
+=item [OutpostArn => Str]
 
 
 =back
@@ -6100,6 +6432,63 @@ automatic associations, you can use AssociateTransitGatewayRouteTable
 to associate a resource attachment with a transit gateway route table.
 
 
+=head2 CreateTransitGatewayMulticastDomain
+
+=over
+
+=item TransitGatewayId => Str
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayMulticastDomain>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayMulticastDomainResult> instance
+
+Creates a multicast domain using the specified transit gateway.
+
+The transit gateway must be in the available state before you create a
+domain. Use DescribeTransitGateways
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html)
+to see the state of transit gateway.
+
+
+=head2 CreateTransitGatewayPeeringAttachment
+
+=over
+
+=item PeerAccountId => Str
+
+=item PeerRegion => Str
+
+=item PeerTransitGatewayId => Str
+
+=item TransitGatewayId => Str
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayPeeringAttachment>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayPeeringAttachmentResult> instance
+
+Requests a transit gateway peering attachment between the specified
+transit gateway (requester) and a peer transit gateway (accepter). The
+transit gateways must be in different Regions. The peer transit gateway
+can be in your account or a different AWS account.
+
+After you create the peering attachment, the owner of the accepter
+transit gateway must accept the attachment request.
+
+
 =head2 CreateTransitGatewayRoute
 
 =over
@@ -6191,6 +6580,8 @@ VPC route table using CreateRoute.
 
 =item [KmsKeyId => Str]
 
+=item [OutpostArn => Str]
+
 =item [Size => Int]
 
 =item [SnapshotId => Str]
@@ -6243,6 +6634,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [DryRun => Bool]
 
 =item [InstanceTenancy => Str]
+
+=item [Ipv6CidrBlockNetworkBorderGroup => Str]
 
 
 =back
@@ -6782,6 +7175,46 @@ version for the launch template, you must delete the entire launch
 template using DeleteLaunchTemplate.
 
 
+=head2 DeleteLocalGatewayRoute
+
+=over
+
+=item DestinationCidrBlock => Str
+
+=item LocalGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteLocalGatewayRoute>
+
+Returns: a L<Paws::EC2::DeleteLocalGatewayRouteResult> instance
+
+Deletes the specified route from the specified local gateway route
+table.
+
+
+=head2 DeleteLocalGatewayRouteTableVpcAssociation
+
+=over
+
+=item LocalGatewayRouteTableVpcAssociationId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteLocalGatewayRouteTableVpcAssociation>
+
+Returns: a L<Paws::EC2::DeleteLocalGatewayRouteTableVpcAssociationResult> instance
+
+Deletes the specified association between a VPC and local gateway route
+table.
+
+
 =head2 DeleteNatGateway
 
 =over
@@ -7182,6 +7615,42 @@ Returns: a L<Paws::EC2::DeleteTransitGatewayResult> instance
 Deletes the specified transit gateway.
 
 
+=head2 DeleteTransitGatewayMulticastDomain
+
+=over
+
+=item TransitGatewayMulticastDomainId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayMulticastDomain>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayMulticastDomainResult> instance
+
+Deletes the specified transit gateway multicast domain.
+
+
+=head2 DeleteTransitGatewayPeeringAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayPeeringAttachment>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayPeeringAttachmentResult> instance
+
+Deletes a transit gateway peering attachment.
+
+
 =head2 DeleteTransitGatewayRoute
 
 =over
@@ -7493,6 +7962,52 @@ AMI, it doesn't affect the files that you uploaded to Amazon S3 when
 you created the AMI.
 
 
+=head2 DeregisterTransitGatewayMulticastGroupMembers
+
+=over
+
+=item [DryRun => Bool]
+
+=item [GroupIpAddress => Str]
+
+=item [NetworkInterfaceIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeregisterTransitGatewayMulticastGroupMembers>
+
+Returns: a L<Paws::EC2::DeregisterTransitGatewayMulticastGroupMembersResult> instance
+
+Deregisters the specified members (network interfaces) from the transit
+gateway multicast group.
+
+
+=head2 DeregisterTransitGatewayMulticastGroupSources
+
+=over
+
+=item [DryRun => Bool]
+
+=item [GroupIpAddress => Str]
+
+=item [NetworkInterfaceIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeregisterTransitGatewayMulticastGroupSources>
+
+Returns: a L<Paws::EC2::DeregisterTransitGatewayMulticastGroupSourcesResult> instance
+
+Deregisters the specified sources (network interfaces) from the transit
+gateway multicast group.
+
+
 =head2 DescribeAccountAttributes
 
 =over
@@ -7612,6 +8127,8 @@ C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 =over
 
+=item [AllAvailabilityZones => Bool]
+
 =item [DryRun => Bool]
 
 =item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
@@ -7627,12 +8144,13 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAvailabilityZones>
 
 Returns: a L<Paws::EC2::DescribeAvailabilityZonesResult> instance
 
-Describes the Availability Zones that are available to you. The results
-include zones only for the Region you're currently using. If there is
-an event impacting an Availability Zone, you can use this request to
-view the state and any provided message for that Availability Zone.
+Describes the Availability Zones and Local Zones that are available to
+you. If there is an event impacting an Availability Zone or Local Zone,
+you can use this request to view the state and any provided messages
+for that Availability Zone or Local Zone.
 
-For more information, see Regions and Availability Zones
+For more information about Availability Zones and Local Zones, see
+Regions and Availability Zones
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -7864,6 +8382,31 @@ Describes the target networks associated with the specified Client VPN
 endpoint.
 
 
+=head2 DescribeCoipPools
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PoolIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeCoipPools>
+
+Returns: a L<Paws::EC2::DescribeCoipPoolsResult> instance
+
+Describes the specified customer-owned address pools or all of your
+customer-owned address pools.
+
+
 =head2 DescribeConversionTasks
 
 =over
@@ -8031,6 +8574,28 @@ Describes the specified export instance tasks or all your export
 instance tasks.
 
 
+=head2 DescribeFastSnapshotRestores
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFastSnapshotRestores>
+
+Returns: a L<Paws::EC2::DescribeFastSnapshotRestoresResult> instance
+
+Describes the state of fast snapshot restores for your snapshots.
+
+
 =head2 DescribeFleetHistory
 
 =over
@@ -8056,6 +8621,11 @@ Returns: a L<Paws::EC2::DescribeFleetHistoryResult> instance
 
 Describes the events for the specified EC2 Fleet during the specified
 time.
+
+EC2 Fleet events are delayed by up to 30 seconds before they can be
+described. This ensures that you can query by the last evaluated time
+and not miss a recorded event. EC2 Fleet events are available for 48
+hours.
 
 
 =head2 DescribeFleetInstances
@@ -8207,8 +8777,8 @@ Returns: a L<Paws::EC2::DescribeHostReservationOfferingsResult> instance
 Describes the Dedicated Host reservations that are available to
 purchase.
 
-The results describe all the Dedicated Host reservation offerings,
-including offerings that may not match the instance family and Region
+The results describe all of the Dedicated Host reservation offerings,
+including offerings that might not match the instance family and Region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
 instance family and Region of the offering matches that of the
 Dedicated Hosts with which it is to be associated. For more information
@@ -8519,20 +9089,21 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceCreditSpec
 
 Returns: a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> instance
 
-Describes the credit option for CPU usage of the specified T2 or T3
-instances. The credit options are C<standard> and C<unlimited>.
+Describes the credit option for CPU usage of the specified burstable
+performance instances. The credit options are C<standard> and
+C<unlimited>.
 
-If you do not specify an instance ID, Amazon EC2 returns T2 and T3
-instances with the C<unlimited> credit option, as well as instances
-that were previously configured as T2 or T3 with the C<unlimited>
-credit option. For example, if you resize a T2 instance, while it is
-configured as C<unlimited>, to an M4 instance, Amazon EC2 returns the
-M4 instance.
+If you do not specify an instance ID, Amazon EC2 returns burstable
+performance instances with the C<unlimited> credit option, as well as
+instances that were previously configured as T2, T3, and T3a with the
+C<unlimited> credit option. For example, if you resize a T2 instance,
+while it is configured as C<unlimited>, to an M4 instance, Amazon EC2
+returns the M4 instance.
 
 If you specify one or more instance IDs, Amazon EC2 returns the credit
 option (C<standard> or C<unlimited>) of those instances. If you specify
-an instance ID that is not valid, such as an instance that is not a T2
-or T3 instance, an error is returned.
+an instance ID that is not valid, such as an instance that is not a
+burstable performance instance, an error is returned.
 
 Recently terminated instances might appear in the returned results.
 This interval is usually less than one hour.
@@ -8649,6 +9220,59 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
+=head2 DescribeInstanceTypeOfferings
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocationType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeInstanceTypeOfferings>
+
+Returns: a L<Paws::EC2::DescribeInstanceTypeOfferingsResult> instance
+
+Returns a list of all instance types offered. The results can be
+filtered by location (Region or Availability Zone). If no location is
+specified, the instance types offered in the current Region are
+returned.
+
+
+=head2 DescribeInstanceTypes
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [InstanceTypes => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeInstanceTypes>
+
+Returns: a L<Paws::EC2::DescribeInstanceTypesResult> instance
+
+Returns a list of all instance types offered in your current AWS
+Region. The results can be filtered by the attributes of the instance
+types.
+
+
 =head2 DescribeInternetGateways
 
 =over
@@ -8754,6 +9378,155 @@ Returns: a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> instance
 
 Describes one or more versions of a specified launch template. You can
 describe all versions, individual versions, or a range of versions.
+
+
+=head2 DescribeLocalGatewayRouteTables
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocalGatewayRouteTableIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLocalGatewayRouteTables>
+
+Returns: a L<Paws::EC2::DescribeLocalGatewayRouteTablesResult> instance
+
+Describes one or more local gateway route tables. By default, all local
+gateway route tables are described. Alternatively, you can filter the
+results.
+
+
+=head2 DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations>
+
+Returns: a L<Paws::EC2::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult> instance
+
+Describes the associations between virtual interface groups and local
+gateway route tables.
+
+
+=head2 DescribeLocalGatewayRouteTableVpcAssociations
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocalGatewayRouteTableVpcAssociationIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLocalGatewayRouteTableVpcAssociations>
+
+Returns: a L<Paws::EC2::DescribeLocalGatewayRouteTableVpcAssociationsResult> instance
+
+Describes the specified associations between VPCs and local gateway
+route tables.
+
+
+=head2 DescribeLocalGateways
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocalGatewayIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLocalGateways>
+
+Returns: a L<Paws::EC2::DescribeLocalGatewaysResult> instance
+
+Describes one or more local gateways. By default, all local gateways
+are described. Alternatively, you can filter the results.
+
+
+=head2 DescribeLocalGatewayVirtualInterfaceGroups
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocalGatewayVirtualInterfaceGroupIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLocalGatewayVirtualInterfaceGroups>
+
+Returns: a L<Paws::EC2::DescribeLocalGatewayVirtualInterfaceGroupsResult> instance
+
+Describes the specified local gateway virtual interface groups.
+
+
+=head2 DescribeLocalGatewayVirtualInterfaces
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [LocalGatewayVirtualInterfaceIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeLocalGatewayVirtualInterfaces>
+
+Returns: a L<Paws::EC2::DescribeLocalGatewayVirtualInterfacesResult> instance
+
+Describes the specified local gateway virtual interfaces.
 
 
 =head2 DescribeMovingAddresses
@@ -9828,6 +10601,54 @@ can filter the results by attachment ID, attachment state, resource ID,
 or resource owner.
 
 
+=head2 DescribeTransitGatewayMulticastDomains
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayMulticastDomainIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayMulticastDomains>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayMulticastDomainsResult> instance
+
+Describes one or more transit gateway multicast domains.
+
+
+=head2 DescribeTransitGatewayPeeringAttachments
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayAttachmentIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayPeeringAttachments>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayPeeringAttachmentsResult> instance
+
+Describes your transit gateway peering attachments.
+
+
 =head2 DescribeTransitGatewayRouteTables
 
 =over
@@ -10538,6 +11359,27 @@ For more information, see Amazon EBS Encryption
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 DisableFastSnapshotRestores
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item SourceSnapshotIds => ArrayRef[Str|Undef]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisableFastSnapshotRestores>
+
+Returns: a L<Paws::EC2::DisableFastSnapshotRestoresResult> instance
+
+Disables fast snapshot restores for the specified snapshots in the
+specified Availability Zones.
+
+
 =head2 DisableTransitGatewayRouteTablePropagation
 
 =over
@@ -10752,6 +11594,29 @@ gateways and resources that are associated with the CIDR block before
 you can disassociate it.
 
 
+=head2 DisassociateTransitGatewayMulticastDomain
+
+=over
+
+=item [DryRun => Bool]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayAttachmentId => Str]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateTransitGatewayMulticastDomain>
+
+Returns: a L<Paws::EC2::DisassociateTransitGatewayMulticastDomainResult> instance
+
+Disassociates the specified subnets from the transit gateway multicast
+domain.
+
+
 =head2 DisassociateTransitGatewayRouteTable
 
 =over
@@ -10828,6 +11693,32 @@ After you enable encryption by default, you can no longer launch
 instances using instance types that do not support encryption. For more
 information, see Supported Instance Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
+
+
+=head2 EnableFastSnapshotRestores
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item SourceSnapshotIds => ArrayRef[Str|Undef]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::EnableFastSnapshotRestores>
+
+Returns: a L<Paws::EC2::EnableFastSnapshotRestoresResult> instance
+
+Enables fast snapshot restores for the specified snapshots in the
+specified Availability Zones.
+
+You get the full benefit of fast snapshot restores after they enter the
+C<enabled> state. To get the current state of fast snapshot restores,
+use DescribeFastSnapshotRestores. To disable fast snapshot restores,
+use DisableFastSnapshotRestores.
 
 
 =head2 EnableTransitGatewayRouteTablePropagation
@@ -11061,6 +11952,31 @@ shared capacity. If the Capacity Reservation is not shared, it shows
 only the Capacity Reservation owner's usage.
 
 
+=head2 GetCoipPoolUsage
+
+=over
+
+=item PoolId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetCoipPoolUsage>
+
+Returns: a L<Paws::EC2::GetCoipPoolUsageResult> instance
+
+Describes the allocations from the specified customer-owned address
+pool.
+
+
 =head2 GetConsoleOutput
 
 =over
@@ -11120,6 +12036,29 @@ Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting.
 
 The returned content is Base64-encoded.
+
+
+=head2 GetDefaultCreditSpecification
+
+=over
+
+=item InstanceFamily => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetDefaultCreditSpecification>
+
+Returns: a L<Paws::EC2::GetDefaultCreditSpecificationResult> instance
+
+Describes the default credit option for CPU usage of a burstable
+performance instance family.
+
+For more information, see Burstable Performance Instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 GetEbsDefaultKmsKeyId
@@ -11298,6 +12237,31 @@ Lists the route tables to which the specified resource attachment
 propagates routes.
 
 
+=head2 GetTransitGatewayMulticastDomainAssociations
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetTransitGatewayMulticastDomainAssociations>
+
+Returns: a L<Paws::EC2::GetTransitGatewayMulticastDomainAssociationsResult> instance
+
+Gets information about the associations for the transit gateway
+multicast domain.
+
+
 =head2 GetTransitGatewayRouteTableAssociations
 
 =over
@@ -11394,6 +12358,8 @@ connections.
 =item [Hypervisor => Str]
 
 =item [KmsKeyId => Str]
+
+=item [LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationRequest>]]
 
 =item [LicenseType => Str]
 
@@ -11595,6 +12561,43 @@ information, DNS server, and description. Modifying the DNS server
 resets existing client connections.
 
 
+=head2 ModifyDefaultCreditSpecification
+
+=over
+
+=item CpuCredits => Str
+
+=item InstanceFamily => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyDefaultCreditSpecification>
+
+Returns: a L<Paws::EC2::ModifyDefaultCreditSpecificationResult> instance
+
+Modifies the default credit option for CPU usage of burstable
+performance instances. The default credit option is set at the account
+level per AWS Region, and is specified per instance family. All new
+burstable performance instances in the account launch using the default
+credit option.
+
+C<ModifyDefaultCreditSpecification> is an asynchronous operation, which
+works at an AWS Region level and modifies the credit option for each
+Availability Zone. All zones in a Region are updated within five
+minutes. But if instances are launched during this operation, they
+might not get the new credit option until the zone is updated. To
+verify whether the update has occurred, you can call
+C<GetDefaultCreditSpecification> and check
+C<DefaultCreditSpecification> for updates.
+
+For more information, see Burstable Performance Instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 ModifyEbsDefaultKmsKeyId
 
 =over
@@ -11725,6 +12728,10 @@ Modifies the specified attribute of the specified Amazon FPGA Image
 
 =item [HostRecovery => Str]
 
+=item [InstanceFamily => Str]
+
+=item [InstanceType => Str]
+
 
 =back
 
@@ -11739,6 +12746,10 @@ Dedicated Host in your account that has auto-placement enabled. When
 auto-placement is disabled, you need to provide a host ID to have the
 instance launch onto a specific host. If no host ID is provided, the
 instance is launched onto a suitable host with auto-placement enabled.
+
+You can also use this API action to modify a Dedicated Host to support
+either multiple instance types in an instance family, or to support a
+specific instance type only.
 
 
 =head2 ModifyIdentityIdFormat
@@ -11979,8 +12990,9 @@ Each argument is described in detail in: L<Paws::EC2::ModifyInstanceCreditSpecif
 
 Returns: a L<Paws::EC2::ModifyInstanceCreditSpecificationResult> instance
 
-Modifies the credit option for CPU usage on a running or stopped T2 or
-T3 instance. The credit options are C<standard> and C<unlimited>.
+Modifies the credit option for CPU usage on a running or stopped
+burstable performance instance. The credit options are C<standard> and
+C<unlimited>.
 
 For more information, see Burstable Performance Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
@@ -12053,6 +13065,8 @@ Instance Metadata and User Data
 =item [GroupName => Str]
 
 =item [HostId => Str]
+
+=item [HostResourceGroupArn => Str]
 
 =item [PartitionNumber => Int]
 
@@ -13193,6 +14207,89 @@ registration. If you make changes to an image, deregister the previous
 image and register the new image.
 
 
+=head2 RegisterTransitGatewayMulticastGroupMembers
+
+=over
+
+=item [DryRun => Bool]
+
+=item [GroupIpAddress => Str]
+
+=item [NetworkInterfaceIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RegisterTransitGatewayMulticastGroupMembers>
+
+Returns: a L<Paws::EC2::RegisterTransitGatewayMulticastGroupMembersResult> instance
+
+Registers members (network interfaces) with the transit gateway
+multicast group. A member is a network interface associated with a
+supported EC2 instance that receives multicast traffic. For information
+about supported instances, see Multicast Consideration
+(https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits)
+in I<Amazon VPC Transit Gateways>.
+
+After you add the members, use SearchTransitGatewayMulticastGroups
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html)
+to verify that the members were added to the transit gateway multicast
+group.
+
+
+=head2 RegisterTransitGatewayMulticastGroupSources
+
+=over
+
+=item [DryRun => Bool]
+
+=item [GroupIpAddress => Str]
+
+=item [NetworkInterfaceIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RegisterTransitGatewayMulticastGroupSources>
+
+Returns: a L<Paws::EC2::RegisterTransitGatewayMulticastGroupSourcesResult> instance
+
+Registers sources (network interfaces) with the specified transit
+gateway multicast group.
+
+A multicast source is a network interface attached to a supported
+instance that sends multicast traffic. For information about supported
+instances, see Multicast Considerations
+(https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits)
+in I<Amazon VPC Transit Gateways>.
+
+After you add the source, use SearchTransitGatewayMulticastGroups
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html)
+to verify that the source was added to the multicast group.
+
+
+=head2 RejectTransitGatewayPeeringAttachment
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RejectTransitGatewayPeeringAttachment>
+
+Returns: a L<Paws::EC2::RejectTransitGatewayPeeringAttachmentResult> instance
+
+Rejects a transit gateway peering attachment request.
+
+
 =head2 RejectTransitGatewayVpcAttachment
 
 =over
@@ -13267,6 +14364,8 @@ initiated, use DeleteVpcPeeringConnection.
 =item [AllocationId => Str]
 
 =item [DryRun => Bool]
+
+=item [NetworkBorderGroup => Str]
 
 =item [PublicIp => Str]
 
@@ -13430,6 +14529,10 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 =item [InstanceId => Str]
 
+=item [LocalGatewayId => Str]
+
+=item [LocalTarget => Bool]
+
 =item [NatGatewayId => Str]
 
 =item [NetworkInterfaceId => Str]
@@ -13446,9 +14549,9 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRoute>
 Returns: nothing
 
 Replaces an existing route within a route table in a VPC. You must
-provide only one of the following: internet gateway or virtual private
+provide only one of the following: internet gateway, virtual private
 gateway, NAT instance, NAT gateway, VPC peering connection, network
-interface, or egress-only internet gateway.
+interface, egress-only internet gateway, or transit gateway.
 
 For more information, see Route Tables
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
@@ -13472,17 +14575,16 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRouteTableAssociati
 
 Returns: a L<Paws::EC2::ReplaceRouteTableAssociationResult> instance
 
-Changes the route table associated with a given subnet in a VPC. After
-the operation completes, the subnet uses the routes in the new route
-table it's associated with. For more information about route tables,
-see Route Tables
+Changes the route table associated with a given subnet, internet
+gateway, or virtual private gateway in a VPC. After the operation
+completes, the subnet or gateway uses the routes in the new route
+table. For more information about route tables, see Route Tables
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
-You can also use ReplaceRouteTableAssociation to change which table is
-the main route table in the VPC. You just specify the main route
-table's association ID and the route table to be the new main route
-table.
+You can also use this operation to change which table is the main route
+table in the VPC. Specify the main route table's association ID and the
+route table ID of the new main route table.
 
 
 =head2 ReplaceTransitGatewayRoute
@@ -14118,6 +15220,55 @@ minutes. For more information, see Scheduled Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 SearchLocalGatewayRoutes
+
+=over
+
+=item Filters => ArrayRef[L<Paws::EC2::Filter>]
+
+=item LocalGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::SearchLocalGatewayRoutes>
+
+Returns: a L<Paws::EC2::SearchLocalGatewayRoutesResult> instance
+
+Searches for routes in the specified local gateway route table.
+
+
+=head2 SearchTransitGatewayMulticastGroups
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::SearchTransitGatewayMulticastGroups>
+
+Returns: a L<Paws::EC2::SearchTransitGatewayMulticastGroupsResult> instance
+
+Searches one or more transit gateway multicast groups and returns the
+group membership information.
+
+
 =head2 SearchTransitGatewayRoutes
 
 =over
@@ -14632,6 +15783,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - EgressOnlyInternetGateways, passing the object as the first parameter, and the string 'EgressOnlyInternetGateways' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllExportImageTasks(sub { },[DryRun => Bool, ExportImageTaskIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllExportImageTasks([DryRun => Bool, ExportImageTaskIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ExportImageTasks, passing the object as the first parameter, and the string 'ExportImageTasks' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeExportImageTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllFastSnapshotRestores(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllFastSnapshotRestores([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FastSnapshotRestores, passing the object as the first parameter, and the string 'FastSnapshotRestores' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeFastSnapshotRestoresResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllFleets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])

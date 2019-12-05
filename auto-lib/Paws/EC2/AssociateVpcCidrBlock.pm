@@ -3,6 +3,7 @@ package Paws::EC2::AssociateVpcCidrBlock;
   use Moose;
   has AmazonProvidedIpv6CidrBlock => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'amazonProvidedIpv6CidrBlock' );
   has CidrBlock => (is => 'ro', isa => 'Str');
+  has Ipv6CidrBlockNetworkBorderGroup => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -30,9 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AssociateVpcCidrBlockResult = $ec2->AssociateVpcCidrBlock(
-      VpcId                       => 'MyVpcId',
-      AmazonProvidedIpv6CidrBlock => 1,             # OPTIONAL
-      CidrBlock                   => 'MyString',    # OPTIONAL
+      VpcId                           => 'MyVpcId',
+      AmazonProvidedIpv6CidrBlock     => 1,             # OPTIONAL
+      CidrBlock                       => 'MyString',    # OPTIONAL
+      Ipv6CidrBlockNetworkBorderGroup => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -61,6 +63,18 @@ size of the CIDR block.
 =head2 CidrBlock => Str
 
 An IPv4 CIDR block to associate with the VPC.
+
+
+
+=head2 Ipv6CidrBlockNetworkBorderGroup => Str
+
+The name of the location from which we advertise the IPV6 CIDR block.
+Use this parameter to limit the CiDR block to this location.
+
+You must set C<AmazonProvidedIpv6CidrBlock> to C<true> to use this
+parameter.
+
+You can have one IPv6 CIDR block association per network border group.
 
 
 

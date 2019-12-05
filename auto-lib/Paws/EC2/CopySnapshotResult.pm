@@ -23,7 +23,7 @@ The ID of the new snapshot.
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-
+Any tags applied to the new snapshot.
 
 
 =head2 _request_id => Str

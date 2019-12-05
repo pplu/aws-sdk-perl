@@ -2,8 +2,11 @@ package Paws::EC2::Address;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
   has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
+  has CustomerOwnedIp => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIp', traits => ['NameInRequest']);
+  has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIpv4Pool', traits => ['NameInRequest']);
   has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has NetworkBorderGroup => (is => 'ro', isa => 'Str', request_name => 'networkBorderGroup', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceOwnerId', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
@@ -56,6 +59,16 @@ This class has no description
 a VPC.
 
 
+=head2 CustomerOwnedIp => Str
+
+  The customer-owned IP address.
+
+
+=head2 CustomerOwnedIpv4Pool => Str
+
+  The ID of the customer-owned address pool.
+
+
 =head2 Domain => Str
 
   Indicates whether this Elastic IP address is for use with instances in
@@ -65,6 +78,11 @@ EC2-Classic (C<standard>) or instances in a VPC (C<vpc>).
 =head2 InstanceId => Str
 
   The ID of the instance that the address is associated with (if any).
+
+
+=head2 NetworkBorderGroup => Str
+
+  The name of the location from which the IP address is advertised.
 
 
 =head2 NetworkInterfaceId => Str

@@ -171,7 +171,7 @@ The ID of the EBS snapshot to copy.
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
 
-
+The tags to apply to the new snapshot.
 
 
 

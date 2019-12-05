@@ -37,8 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Type              => 'MyString',
       DryRun            => 1,                       # OPTIONAL
       Options           => {
-        StaticRoutesOnly => 1,
-        TunnelOptions    => [
+        EnableAcceleration => 1,
+        StaticRoutesOnly   => 1,
+        TunnelOptions      => [
           {
             DPDTimeoutSeconds => 1,                                   # OPTIONAL
             IKEVersions       => [ { Value => 'MyString', }, ... ],   # OPTIONAL

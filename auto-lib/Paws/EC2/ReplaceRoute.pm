@@ -7,6 +7,8 @@ package Paws::EC2::ReplaceRoute;
   has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'egressOnlyInternetGatewayId' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
+  has LocalGatewayId => (is => 'ro', isa => 'Str');
+  has LocalTarget => (is => 'ro', isa => 'Bool');
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
@@ -92,6 +94,19 @@ The ID of an internet gateway or virtual private gateway.
 =head2 InstanceId => Str
 
 The ID of a NAT instance in your VPC.
+
+
+
+=head2 LocalGatewayId => Str
+
+The ID of the local gateway.
+
+
+
+=head2 LocalTarget => Bool
+
+Specifies whether to reset the local route to its default target
+(C<local>).
 
 
 

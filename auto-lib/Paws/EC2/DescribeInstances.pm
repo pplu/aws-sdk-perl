@@ -210,18 +210,18 @@ C<launch-time> - The time when the instance was launched.
 
 =item *
 
-C<metadata-http-tokens> - The metadata request authorization state
-(C<optional> | C<required>)
+C<metadata-options.http-tokens> - The metadata request authorization
+state (C<optional> | C<required>)
 
 =item *
 
-C<metadata-http-put-response-hop-limit> - The http metadata request put
-response hop limit (integer, possible values C<1> to C<64>)
+C<metadata-options.http-put-response-hop-limit> - The http metadata
+request put response hop limit (integer, possible values C<1> to C<64>)
 
 =item *
 
-C<metadata-http-endpoint> - Enable or disable metadata access on http
-endpoint (C<enabled> | C<disabled>)
+C<metadata-options.http-endpoint> - Enable or disable metadata access
+on http endpoint (C<enabled> | C<disabled>)
 
 =item *
 

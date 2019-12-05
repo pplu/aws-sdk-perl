@@ -1,8 +1,10 @@
 package Paws::EC2::Host;
   use Moose;
   has AllocationTime => (is => 'ro', isa => 'Str', request_name => 'allocationTime', traits => ['NameInRequest']);
+  has AllowsMultipleInstanceTypes => (is => 'ro', isa => 'Str', request_name => 'allowsMultipleInstanceTypes', traits => ['NameInRequest']);
   has AutoPlacement => (is => 'ro', isa => 'Str', request_name => 'autoPlacement', traits => ['NameInRequest']);
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneId', traits => ['NameInRequest']);
   has AvailableCapacity => (is => 'ro', isa => 'Paws::EC2::AvailableCapacity', request_name => 'availableCapacity', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
   has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
@@ -10,6 +12,8 @@ package Paws::EC2::Host;
   has HostRecovery => (is => 'ro', isa => 'Str', request_name => 'hostRecovery', traits => ['NameInRequest']);
   has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostInstance]', request_name => 'instances', traits => ['NameInRequest']);
+  has MemberOfServiceLinkedResourceGroup => (is => 'ro', isa => 'Bool', request_name => 'memberOfServiceLinkedResourceGroup', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has ReleaseTime => (is => 'ro', isa => 'Str', request_name => 'releaseTime', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -53,6 +57,15 @@ This class has no description
   The time that the Dedicated Host was allocated.
 
 
+=head2 AllowsMultipleInstanceTypes => Str
+
+  Indicates whether the Dedicated Host supports multiple instance types
+of the same instance family, or a specific instance type only. C<one>
+indicates that the Dedicated Host supports multiple instance types in
+the instance family. C<off> indicates that the Dedicated Host supports
+a single instance type only.
+
+
 =head2 AutoPlacement => Str
 
   Whether auto-placement is on or off.
@@ -63,10 +76,15 @@ This class has no description
   The Availability Zone of the Dedicated Host.
 
 
+=head2 AvailabilityZoneId => Str
+
+  The ID of the Availability Zone in which the Dedicated Host is
+allocated.
+
+
 =head2 AvailableCapacity => L<Paws::EC2::AvailableCapacity>
 
-  The number of new instances that can be launched onto the Dedicated
-Host.
+  Information about the instances running on the Dedicated Host.
 
 
 =head2 ClientToken => Str
@@ -103,6 +121,18 @@ response if the Dedicated Host doesn't have an associated reservation.
 
   The IDs and instance type that are currently running on the Dedicated
 Host.
+
+
+=head2 MemberOfServiceLinkedResourceGroup => Bool
+
+  Indicates whether the Dedicated Host is in a host resource group. If
+B<memberOfServiceLinkedResourceGroup> is C<true>, the host is in a host
+resource group; otherwise, it is not.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the Dedicated Host.
 
 
 =head2 ReleaseTime => Str

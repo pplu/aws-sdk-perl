@@ -25,6 +25,7 @@ package Paws::EC2::Instance;
   has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMetadataOptionsResponse', request_name => 'metadataOptions', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterface]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
@@ -211,6 +212,11 @@ associated key pair.
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
 
   [EC2-VPC] The network interfaces for the instance.
+
+
+=head2 OutpostArn => Str
+
+  The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 Placement => L<Paws::EC2::Placement>

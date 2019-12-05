@@ -5,6 +5,7 @@ package Paws::EC2::CreateVpc;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceTenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceTenancy' );
+  has Ipv6CidrBlockNetworkBorderGroup => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -84,6 +85,16 @@ the C<default> or C<dedicated> values only.
 Default: C<default>
 
 Valid values are: C<"default">, C<"dedicated">, C<"host">
+
+=head2 Ipv6CidrBlockNetworkBorderGroup => Str
+
+The name of the location from which we advertise the IPV6 CIDR block.
+Use this parameter to limit the address to this location.
+
+You must set C<AmazonProvidedIpv6CidrBlock> to C<true> to use this
+parameter.
+
+
 
 
 =head1 SEE ALSO

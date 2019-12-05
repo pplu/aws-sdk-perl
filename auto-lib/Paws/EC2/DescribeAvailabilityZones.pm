@@ -1,6 +1,7 @@
 
 package Paws::EC2::DescribeAvailabilityZones;
   use Moose;
+  has AllAvailabilityZones => (is => 'ro', isa => 'Bool');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ZoneIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneId' );
@@ -46,6 +47,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
+=head2 AllAvailabilityZones => Bool
+
+Include all Availability Zones and Local Zones regardless of your opt
+in status.
+
+If you do not use this parameter, the results include only the zones
+for the Regions where you have chosen the option to opt in.
+
+
+
 =head2 DryRun => Bool
 
 Checks whether you have the required permissions for the action,
@@ -63,27 +74,39 @@ The filters.
 
 =item *
 
-C<message> - Information about the Availability Zone.
+C<group-name> - For Availability Zones, use the Region name. For Local
+Zones, use the name of the group associated with the Local Zone (for
+example, C<us-west-2-lax-1>).
 
 =item *
 
-C<region-name> - The name of the Region for the Availability Zone (for
-example, C<us-east-1>).
+C<message> - The Availability Zone or Local Zone message.
 
 =item *
 
-C<state> - The state of the Availability Zone (C<available> |
-C<information> | C<impaired> | C<unavailable>).
+C<opt-in-status> - The opt in status (C<opted-in>, and C<not-opted-in>
+| C<opt-in-not-required>).
 
 =item *
 
-C<zone-id> - The ID of the Availability Zone (for example,
-C<use1-az1>).
+C<region-name> - The name of the Region for the Availability Zone or
+Local Zone (for example, C<us-east-1>).
+
+=item *
+
+C<state> - The state of the Availability Zone or Local Zone
+(C<available> | C<information> | C<impaired> | C<unavailable>).
+
+=item *
+
+C<zone-id> - The ID of the Availability Zone (for example, C<use1-az1>)
+or the Local Zone (for example, use C<usw2-lax1-az1>).
 
 =item *
 
 C<zone-name> - The name of the Availability Zone (for example,
-C<us-east-1a>).
+C<us-east-1a>) or the Local Zone (for example, use
+C<us-west-2-lax-1a>).
 
 =back
 
@@ -92,13 +115,13 @@ C<us-east-1a>).
 
 =head2 ZoneIds => ArrayRef[Str|Undef]
 
-The IDs of the Availability Zones.
+The IDs of the Availability Zones and Local Zones.
 
 
 
 =head2 ZoneNames => ArrayRef[Str|Undef]
 
-The names of the Availability Zones.
+The names of the Availability Zones and Local Zones.
 
 
 
