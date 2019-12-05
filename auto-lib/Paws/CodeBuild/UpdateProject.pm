@@ -312,7 +312,7 @@ specified, the latest version is used. If specified, it must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID to use.
+For AWS CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 

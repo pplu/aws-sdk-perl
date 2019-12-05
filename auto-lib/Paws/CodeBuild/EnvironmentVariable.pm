@@ -57,7 +57,7 @@ Systems Manager Parameter Store.
 
 =item *
 
-C<PLAINTEXT>: An environment variable in plaintext format.
+C<PLAINTEXT>: An environment variable in plain text format.
 
 =item *
 

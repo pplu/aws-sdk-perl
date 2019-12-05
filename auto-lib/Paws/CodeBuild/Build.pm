@@ -18,6 +18,7 @@ package Paws::CodeBuild::Build;
   has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
   has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'queuedTimeoutInMinutes', traits => ['NameInRequest']);
+  has ReportArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'reportArns', traits => ['NameInRequest']);
   has ResolvedSourceVersion => (is => 'ro', isa => 'Str', request_name => 'resolvedSourceVersion', traits => ['NameInRequest']);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
@@ -214,6 +215,11 @@ information about any current build phase that is not yet complete.
 out.
 
 
+=head2 ReportArns => ArrayRef[Str|Undef]
+
+  An array of the ARNs associated with this build's reports.
+
+
 =head2 ResolvedSourceVersion => Str
 
   An identifier for the version of this build's source code.
@@ -256,7 +262,7 @@ C<ProjectSourceVersion> must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID to use.
+For AWS CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 

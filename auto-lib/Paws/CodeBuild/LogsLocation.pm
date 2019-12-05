@@ -1,10 +1,12 @@
 package Paws::CodeBuild::LogsLocation;
   use Moose;
   has CloudWatchLogs => (is => 'ro', isa => 'Paws::CodeBuild::CloudWatchLogsConfig', request_name => 'cloudWatchLogs', traits => ['NameInRequest']);
+  has CloudWatchLogsArn => (is => 'ro', isa => 'Str', request_name => 'cloudWatchLogsArn', traits => ['NameInRequest']);
   has DeepLink => (is => 'ro', isa => 'Str', request_name => 'deepLink', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has S3DeepLink => (is => 'ro', isa => 'Str', request_name => 's3DeepLink', traits => ['NameInRequest']);
   has S3Logs => (is => 'ro', isa => 'Paws::CodeBuild::S3LogsConfig', request_name => 's3Logs', traits => ['NameInRequest']);
+  has S3LogsArn => (is => 'ro', isa => 'Str', request_name => 's3LogsArn', traits => ['NameInRequest']);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
 1;
 
@@ -46,6 +48,14 @@ Information about build logs in Amazon CloudWatch Logs.
   Information about Amazon CloudWatch Logs for a build project.
 
 
+=head2 CloudWatchLogsArn => Str
+
+  The ARN of Amazon CloudWatch Logs for a build project. Its format is
+C<arn:${Partition}:logs:${Region}:${Account}:log-group:${LogGroupName}:log-stream:${LogStreamName}>.
+For more information, see Resources Defined by Amazon CloudWatch Logs
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatchlogs.html#amazoncloudwatchlogs-resources-for-iam-policies).
+
+
 =head2 DeepLink => Str
 
   The URL to an individual build log in Amazon CloudWatch Logs.
@@ -64,6 +74,14 @@ Information about build logs in Amazon CloudWatch Logs.
 =head2 S3Logs => L<Paws::CodeBuild::S3LogsConfig>
 
   Information about S3 logs for a build project.
+
+
+=head2 S3LogsArn => Str
+
+  The ARN of S3 logs for a build project. Its format is
+C<arn:${Partition}:s3:::${BucketName}/${ObjectName}>. For more
+information, see Resources Defined by Amazon S3
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazons3.html#amazons3-resources-for-iam-policies).
 
 
 =head2 StreamName => Str

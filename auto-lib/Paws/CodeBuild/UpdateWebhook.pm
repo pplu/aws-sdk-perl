@@ -74,8 +74,8 @@ C<branchFilter>.
 =head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
 
 An array of arrays of C<WebhookFilter> objects used to determine if a
-webhook event can trigger a build. A filter group must pcontain at
-least one C<EVENT> C<WebhookFilter>.
+webhook event can trigger a build. A filter group must contain at least
+one C<EVENT> C<WebhookFilter>.
 
 
 
