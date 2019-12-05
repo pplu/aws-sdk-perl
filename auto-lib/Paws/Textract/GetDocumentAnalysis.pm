@@ -36,6 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AnalyzeDocumentModelVersion =
+      $GetDocumentAnalysisResponse->AnalyzeDocumentModelVersion;
     my $Blocks           = $GetDocumentAnalysisResponse->Blocks;
     my $DocumentMetadata = $GetDocumentAnalysisResponse->DocumentMetadata;
     my $JobStatus        = $GetDocumentAnalysisResponse->JobStatus;
@@ -54,7 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 =head2 B<REQUIRED> JobId => Str
 
 A unique identifier for the text-detection job. The C<JobId> is
-returned from C<StartDocumentAnalysis>.
+returned from C<StartDocumentAnalysis>. A C<JobId> value is only valid
+for 7 days.
 
 
 

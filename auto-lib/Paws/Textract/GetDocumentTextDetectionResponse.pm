@@ -2,6 +2,7 @@
 package Paws::Textract::GetDocumentTextDetectionResponse;
   use Moose;
   has Blocks => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Block]');
+  has DetectDocumentTextModelVersion => (is => 'ro', isa => 'Str');
   has DocumentMetadata => (is => 'ro', isa => 'Paws::Textract::DocumentMetadata');
   has JobStatus => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -22,6 +23,11 @@ Paws::Textract::GetDocumentTextDetectionResponse
 =head2 Blocks => ArrayRef[L<Paws::Textract::Block>]
 
 The results of the text-detection operation.
+
+
+=head2 DetectDocumentTextModelVersion => Str
+
+
 
 
 =head2 DocumentMetadata => L<Paws::Textract::DocumentMetadata>
@@ -45,14 +51,14 @@ of text-detection results.
 
 =head2 StatusMessage => Str
 
-The current status of an asynchronous document text-detection
-operation.
+The current status of an asynchronous text-detection operation for the
+document.
 
 
 =head2 Warnings => ArrayRef[L<Paws::Textract::Warning>]
 
-A list of warnings that occurred during the document text-detection
-operation.
+A list of warnings that occurred during the text-detection operation
+for the document.
 
 
 =head2 _request_id => Str

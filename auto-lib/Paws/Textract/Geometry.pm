@@ -32,8 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Textract::G
 
 =head1 DESCRIPTION
 
-Information about where a recognized text, key, value, table, or table
-cell is located on a document page.
+Information about where the following items are located on a document
+page: detected page, text, key-value pairs, tables, table cells, and
+selection elements.
 
 =head1 ATTRIBUTES
 
@@ -41,13 +42,13 @@ cell is located on a document page.
 =head2 BoundingBox => L<Paws::Textract::BoundingBox>
 
   An axis-aligned coarse representation of the location of the recognized
-text on the document page.
+item on the document page.
 
 
 =head2 Polygon => ArrayRef[L<Paws::Textract::Point>]
 
   Within the bounding box, a fine-grained polygon around the recognized
-text.
+item.
 
 
 

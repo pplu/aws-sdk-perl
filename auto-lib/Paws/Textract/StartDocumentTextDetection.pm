@@ -65,6 +65,9 @@ The idempotent token that's used to identify the start request. If you
 use the same token with multiple C<StartDocumentTextDetection>
 requests, the same C<JobId> is returned. Use C<ClientRequestToken> to
 prevent the same job from being accidentally started more than once.
+For more information, see Calling Amazon Textract Asynchronous
+Operations
+(https://docs.aws.amazon.com/textract/latest/dg/api-async.html).
 
 
 
@@ -76,10 +79,10 @@ The location of the document to be processed.
 
 =head2 JobTag => Str
 
-An identifier you specify that's included in the completion
-notification that's published to the Amazon SNS topic. For example, you
-can use C<JobTag> to identify the type of document, such as a tax form
-or a receipt, that the completion notification corresponds to.
+An identifier that you specify that's included in the completion
+notification published to the Amazon SNS topic. For example, you can
+use C<JobTag> to identify the type of document that the completion
+notification corresponds to (such as a tax form or a receipt).
 
 
 

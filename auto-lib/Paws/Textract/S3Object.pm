@@ -51,8 +51,9 @@ have permission to access the S3 bucket and file.
 
 =head2 Name => Str
 
-  The file name of the input document. It must be an image file (.JPG or
-.PNG format). Asynchronous operations also support PDF files.
+  The file name of the input document. Synchronous operations can use
+image files that are in JPEG or PNG format. Asynchronous operations
+also support PDF format files.
 
 
 =head2 Version => Str

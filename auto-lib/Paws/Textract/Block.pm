@@ -45,11 +45,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Textract::B
 
 A C<Block> represents items that are recognized in a document within a
 group of pixels close to each other. The information returned in a
-C<Block> depends on the type of operation. In document-text detection
-(for example DetectDocumentText), you get information about the
-detected words and lines of text. In text analysis (for example
-AnalyzeDocument), you can also get information about the fields, tables
-and selection elements that are detected in the document.
+C<Block> object depends on the type of operation. In text detection for
+documents (for example DetectDocumentText), you get information about
+the detected words and lines of text. In text analysis (for example
+AnalyzeDocument), you can also get information about the fields,
+tables, and selection elements that are detected in the document.
 
 An array of C<Block> objects is returned by both synchronous and
 asynchronous operations. In synchronous operations, such as
@@ -65,15 +65,15 @@ For more information, see How Amazon Textract Works
 
 =head2 BlockType => Str
 
-  The type of text that's recognized in a block. In text-detection
-operations, the following types are returned:
+  The type of text item that's recognized. In operations for text
+detection, the following types are returned:
 
 =over
 
 =item *
 
-I<PAGE> - Contains a list of the LINE Block objects that are detected
-on a document page.
+I<PAGE> - Contains a list of the LINE C<Block> objects that are
+detected on a document page.
 
 =item *
 
@@ -82,7 +82,7 @@ basic Latin script characters that aren't separated by spaces.
 
 =item *
 
-I<LINE> - A string of tab-delimited, contiguous words that's detected
+I<LINE> - A string of tab-delimited, contiguous words that are detected
 on a document page.
 
 =back
@@ -93,32 +93,31 @@ In text analysis operations, the following types are returned:
 
 =item *
 
-I<PAGE> - Contains a list of child Block objects that are detected on a
-document page.
-
-=item *
-
-I<KEY_VALUE_SET> - Stores the KEY and VALUE Block objects for a field
-that's detected on a document page. Use the C<EntityType> field to
-determine if a KEY_VALUE_SET object is a KEY Block object or a VALUE
-Block object.
-
-=item *
-
-I<WORD> - A word detected on a document page. A word is one or more ISO
-basic Latin script characters that aren't separated by spaces that's
-detected on a document page.
-
-=item *
-
-I<LINE> - A string of tab-delimited, contiguous words that's detected
+I<PAGE> - Contains a list of child C<Block> objects that are detected
 on a document page.
 
 =item *
 
-I<TABLE> - A table that's detected on a document page. A table is any
-grid-based information with 2 or more rows or columns with a cell span
-of 1 row and 1 column each.
+I<KEY_VALUE_SET> - Stores the KEY and VALUE C<Block> objects for linked
+text that's detected on a document page. Use the C<EntityType> field to
+determine if a KEY_VALUE_SET object is a KEY C<Block> object or a VALUE
+C<Block> object.
+
+=item *
+
+I<WORD> - A word that's detected on a document page. A word is one or
+more ISO basic Latin script characters that aren't separated by spaces.
+
+=item *
+
+I<LINE> - A string of tab-delimited, contiguous words that are detected
+on a document page.
+
+=item *
+
+I<TABLE> - A table that's detected on a document page. A table is
+grid-based information with two or more rows or columns, with a cell
+span of one row and one column each.
 
 =item *
 
@@ -127,9 +126,10 @@ block that contains the text in the cell.
 
 =item *
 
-I<SELECTION_ELEMENT> - A selectable element such as a radio button or
-checkbox that's detected on a document page. Use the value of
-C<SelectionStatus> to determine the status of the selection element.
+I<SELECTION_ELEMENT> - A selection element such as an option button
+(radio button) or a check box that's detected on a document page. Use
+the value of C<SelectionStatus> to determine the status of the
+selection element.
 
 =back
 
@@ -144,13 +144,15 @@ C<GetDocumentTextDetection>.
 
 =head2 ColumnSpan => Int
 
-  The number of columns that a table cell spans. C<ColumnSpan> isn't
-returned by C<DetectDocumentText> and C<GetDocumentTextDetection>.
+  The number of columns that a table cell spans. Currently this value is
+always 1, even if the number of columns spanned is greater than 1.
+C<ColumnSpan> isn't returned by C<DetectDocumentText> and
+C<GetDocumentTextDetection>.
 
 
 =head2 Confidence => Num
 
-  The confidence that Amazon Textract has in the accuracy of the
+  The confidence score that Amazon Textract has in the accuracy of the
 recognized text and the accuracy of the geometry points around the
 recognized text.
 
@@ -190,18 +192,18 @@ for a single operation.
 
 =head2 Page => Int
 
-  The page in which a block was detected. C<Page> is returned by
+  The page on which a block was detected. C<Page> is returned by
 asynchronous operations. Page values greater than 1 are only returned
-for multi-page documents that are in PDF format. A scanned image
-(JPG/PNG), even if it contains multiple document pages, is always
-considered to be a single-page document and the value of C<Page> is
-always 1. Synchronous operations don't return C<Page> as every input
+for multipage documents that are in PDF format. A scanned image
+(JPEG/PNG), even if it contains multiple document pages, is considered
+to be a single-page document. The value of C<Page> is always 1.
+Synchronous operations don't return C<Page> because every input
 document is considered to be a single-page document.
 
 
 =head2 Relationships => ArrayRef[L<Paws::Textract::Relationship>]
 
-  A list of child blocks of the current block. For example a LINE object
+  A list of child blocks of the current block. For example, a LINE object
 has child blocks for each WORD block that's part of the line of text.
 There aren't Relationship objects in the list for relationships that
 don't exist, such as when the current block has no child blocks. The
@@ -230,14 +232,16 @@ C<GetDocumentTextDetection>.
 
 =head2 RowSpan => Int
 
-  The number of rows that a table spans. C<RowSpan> isn't returned by
-C<DetectDocumentText> and C<GetDocumentTextDetection>.
+  The number of rows that a table cell spans. Currently this value is
+always 1, even if the number of rows spanned is greater than 1.
+C<RowSpan> isn't returned by C<DetectDocumentText> and
+C<GetDocumentTextDetection>.
 
 
 =head2 SelectionStatus => Str
 
-  The selection status of a selectable element such as a radio button or
-checkbox.
+  The selection status of a selection element, such as an option button
+or check box.
 
 
 =head2 Text => Str

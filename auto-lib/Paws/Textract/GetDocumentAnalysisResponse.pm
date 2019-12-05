@@ -1,6 +1,7 @@
 
 package Paws::Textract::GetDocumentAnalysisResponse;
   use Moose;
+  has AnalyzeDocumentModelVersion => (is => 'ro', isa => 'Str');
   has Blocks => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Block]');
   has DocumentMetadata => (is => 'ro', isa => 'Paws::Textract::DocumentMetadata');
   has JobStatus => (is => 'ro', isa => 'Str');
@@ -19,9 +20,14 @@ Paws::Textract::GetDocumentAnalysisResponse
 =head1 ATTRIBUTES
 
 
+=head2 AnalyzeDocumentModelVersion => Str
+
+
+
+
 =head2 Blocks => ArrayRef[L<Paws::Textract::Block>]
 
-The results of the text analysis operation.
+The results of the text-analysis operation.
 
 
 =head2 DocumentMetadata => L<Paws::Textract::DocumentMetadata>
@@ -45,12 +51,12 @@ of text detection results.
 
 =head2 StatusMessage => Str
 
-The current status of an asynchronous document analysis operation.
+The current status of an asynchronous document-analysis operation.
 
 
 =head2 Warnings => ArrayRef[L<Paws::Textract::Warning>]
 
-A list of warnings that occurred during the document analysis
+A list of warnings that occurred during the document-analysis
 operation.
 
 

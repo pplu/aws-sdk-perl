@@ -93,6 +93,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 
 =item FeatureTypes => ArrayRef[Str|Undef]
 
+=item [HumanLoopConfig => L<Paws::Textract::HumanLoopConfig>]
+
 
 =back
 
@@ -108,35 +110,36 @@ The types of information returned are as follows:
 
 =item *
 
-Words and lines that are related to nearby lines and words. The related
-information is returned in two Block objects each of type
-C<KEY_VALUE_SET>: a KEY Block object and a VALUE Block object. For
-example, I<Name: Ana Silva Carolina> contains a key and value. I<Name:>
-is the key. I<Ana Silva Carolina> is the value.
+Form data (key-value pairs). The related information is returned in two
+Block objects, each of type C<KEY_VALUE_SET>: a KEY C<Block> object and
+a VALUE C<Block> object. For example, I<Name: Ana Silva Carolina>
+contains a key and value. I<Name:> is the key. I<Ana Silva Carolina> is
+the value.
 
 =item *
 
-Table and table cell data. A TABLE Block object contains information
-about a detected table. A CELL Block object is returned for each cell
-in a table.
+Table and table cell data. A TABLE C<Block> object contains information
+about a detected table. A CELL C<Block> object is returned for each
+cell in a table.
 
 =item *
 
-Selectable elements such as checkboxes and radio buttons. A
-SELECTION_ELEMENT Block object contains information about a selectable
-element.
-
-=item *
-
-Lines and words of text. A LINE Block object contains one or more WORD
-Block objects.
+Lines and words of text. A LINE C<Block> object contains one or more
+WORD C<Block> objects. All lines and words that are detected in the
+document are returned (including text that doesn't have a relationship
+with the value of C<FeatureTypes>).
 
 =back
+
+Selection elements such as check boxes and option buttons (radio
+buttons) can be detected in form data and in tables. A
+SELECTION_ELEMENT C<Block> object contains information about a
+selection element, including the selection status.
 
 You can choose which type of analysis to perform by specifying the
 C<FeatureTypes> list.
 
-The output is returned in a list of C<BLOCK> objects.
+The output is returned in a list of C<Block> objects.
 
 C<AnalyzeDocument> is a synchronous operation. To analyze documents
 asynchronously, use StartDocumentAnalysis.
@@ -160,7 +163,7 @@ Returns: a L<Paws::Textract::DetectDocumentTextResponse> instance
 
 Detects text in the input document. Amazon Textract can detect lines of
 text and the words that make up a line of text. The input document must
-be an image in JPG or PNG format. C<DetectDocumentText> returns the
+be an image in JPEG or PNG format. C<DetectDocumentText> returns the
 detected text in an array of Block objects.
 
 Each document page has as an associated C<Block> of type PAGE. Each
@@ -213,38 +216,40 @@ types of information are returned:
 
 =item *
 
-Words and lines that are related to nearby lines and words. The related
-information is returned in two Block objects each of type
-C<KEY_VALUE_SET>: a KEY Block object and a VALUE Block object. For
-example, I<Name: Ana Silva Carolina> contains a key and value. I<Name:>
-is the key. I<Ana Silva Carolina> is the value.
+Form data (key-value pairs). The related information is returned in two
+Block objects, each of type C<KEY_VALUE_SET>: a KEY C<Block> object and
+a VALUE C<Block> object. For example, I<Name: Ana Silva Carolina>
+contains a key and value. I<Name:> is the key. I<Ana Silva Carolina> is
+the value.
 
 =item *
 
-Table and table cell data. A TABLE Block object contains information
-about a detected table. A CELL Block object is returned for each cell
-in a table.
+Table and table cell data. A TABLE C<Block> object contains information
+about a detected table. A CELL C<Block> object is returned for each
+cell in a table.
 
 =item *
 
-Selectable elements such as checkboxes and radio buttons. A
-SELECTION_ELEMENT Block object contains information about a selectable
-element.
-
-=item *
-
-Lines and words of text. A LINE Block object contains one or more WORD
-Block objects.
+Lines and words of text. A LINE C<Block> object contains one or more
+WORD C<Block> objects. All lines and words that are detected in the
+document are returned (including text that doesn't have a relationship
+with the value of the C<StartDocumentAnalysis> C<FeatureTypes> input
+parameter).
 
 =back
 
-Use the C<MaxResults> parameter to limit the number of blocks returned.
-If there are more results than specified in C<MaxResults>, the value of
-C<NextToken> in the operation response contains a pagination token for
-getting the next set of results. To get the next page of results, call
-C<GetDocumentAnalysis>, and populate the C<NextToken> request parameter
-with the token value that's returned from the previous call to
-C<GetDocumentAnalysis>.
+Selection elements such as check boxes and option buttons (radio
+buttons) can be detected in form data and in tables. A
+SELECTION_ELEMENT C<Block> object contains information about a
+selection element, including the selection status.
+
+Use the C<MaxResults> parameter to limit the number of blocks that are
+returned. If there are more results than specified in C<MaxResults>,
+the value of C<NextToken> in the operation response contains a
+pagination token for getting the next set of results. To get the next
+page of results, call C<GetDocumentAnalysis>, and populate the
+C<NextToken> request parameter with the token value that's returned
+from the previous call to C<GetDocumentAnalysis>.
 
 For more information, see Document Text Analysis
 (https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html).
@@ -323,14 +328,14 @@ Each argument is described in detail in: L<Paws::Textract::StartDocumentAnalysis
 
 Returns: a L<Paws::Textract::StartDocumentAnalysisResponse> instance
 
-Starts asynchronous analysis of an input document for relationships
-between detected items such as key and value pairs, tables, and
-selection elements.
+Starts the asynchronous analysis of an input document for relationships
+between detected items such as key-value pairs, tables, and selection
+elements.
 
-C<StartDocumentAnalysis> can analyze text in documents that are in JPG,
-PNG, and PDF format. The documents are stored in an Amazon S3 bucket.
-Use DocumentLocation to specify the bucket name and file name of the
-document.
+C<StartDocumentAnalysis> can analyze text in documents that are in
+JPEG, PNG, and PDF format. The documents are stored in an Amazon S3
+bucket. Use DocumentLocation to specify the bucket name and file name
+of the document.
 
 C<StartDocumentAnalysis> returns a job identifier (C<JobId>) that you
 use to get the results of the operation. When text analysis is
@@ -370,7 +375,7 @@ Textract can detect lines of text and the words that make up a line of
 text.
 
 C<StartDocumentTextDetection> can analyze text in documents that are in
-JPG, PNG, and PDF format. The documents are stored in an Amazon S3
+JPEG, PNG, and PDF format. The documents are stored in an Amazon S3
 bucket. Use DocumentLocation to specify the bucket name and file name
 of the document.
 

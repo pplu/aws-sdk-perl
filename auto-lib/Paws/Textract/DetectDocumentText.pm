@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $textract = Paws->service('Textract');
     my $DetectDocumentTextResponse = $textract->DetectDocumentText(
       Document => {
-        Bytes    => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
+        Bytes    => 'BlobImageBlob',    # min: 1, max: 10485760; OPTIONAL
         S3Object => {
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
           Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
@@ -40,7 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Blocks           = $DetectDocumentTextResponse->Blocks;
+    my $Blocks = $DetectDocumentTextResponse->Blocks;
+    my $DetectDocumentTextModelVersion =
+      $DetectDocumentTextResponse->DetectDocumentTextModelVersion;
     my $DocumentMetadata = $DetectDocumentTextResponse->DocumentMetadata;
 
     # Returns a L<Paws::Textract::DetectDocumentTextResponse> object.
@@ -55,10 +57,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 
 The input document as base64-encoded bytes or an Amazon S3 object. If
 you use the AWS CLI to call Amazon Textract operations, you can't pass
-image bytes. The document must be an image in JPG or PNG format.
+image bytes. The document must be an image in JPEG or PNG format.
 
-If you are using an AWS SDK to call Amazon Textract, you might not need
-to base64-encode image bytes passed using the C<Bytes> field.
+If you're using an AWS SDK to call Amazon Textract, you might not need
+to base64-encode image bytes that are passed using the C<Bytes> field.
 
 
 

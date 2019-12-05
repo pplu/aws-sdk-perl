@@ -33,10 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Textract::P
 =head1 DESCRIPTION
 
 The X and Y coordinates of a point on a document page. The X and Y
-values returned are ratios of the overall document page size. For
-example, if the input document is 700 x 200 and the operation returns
-X=0.5 and Y=0.25, then the point is at the (350,50) pixel coordinate on
-the document page.
+values that are returned are ratios of the overall document page size.
+For example, if the input document is 700 x 200 and the operation
+returns X=0.5 and Y=0.25, then the point is at the (350,50) pixel
+coordinate on the document page.
 
 An array of C<Point> objects, C<Polygon>, is returned by
 DetectDocumentText. C<Polygon> represents a fine-grained polygon around

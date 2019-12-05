@@ -38,7 +38,7 @@ Information about the input document.
 
 =head2 Pages => Int
 
-  The number of pages detected in the document.
+  The number of pages that are detected in the document.
 
 
 

@@ -61,18 +61,18 @@ permission to access the S3 object.
 
 =head2 Bytes => Str
 
-  A blob of base-64 encoded documents bytes. The maximum size of a
-document that's provided in a blob of bytes is 5 MB. The document bytes
-must be in PNG or JPG format.
+  A blob of base64-encoded document bytes. The maximum size of a document
+that's provided in a blob of bytes is 5 MB. The document bytes must be
+in PNG or JPEG format.
 
-If you are using an AWS SDK to call Amazon Textract, you might not need
+If you're using an AWS SDK to call Amazon Textract, you might not need
 to base64-encode image bytes passed using the C<Bytes> field.
 
 
 =head2 S3Object => L<Paws::Textract::S3Object>
 
   Identifies an S3 object as the document source. The maximum size of a
-document stored in an S3 bucket is 5 MB.
+document that's stored in an S3 bucket is 5 MB.
 
 
 

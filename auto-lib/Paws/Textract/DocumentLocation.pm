@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Textract::D
 The Amazon S3 bucket that contains the document to be processed. It's
 used by asynchronous operations such as StartDocumentTextDetection.
 
-The input document can be an image file in JPG or PNG format. It can
+The input document can be an image file in JPEG or PNG format. It can
 also be a file in PDF format.
 
 =head1 ATTRIBUTES

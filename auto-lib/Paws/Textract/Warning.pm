@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Textract::W
 =head1 DESCRIPTION
 
 A warning about an issue that occurred during asynchronous text
-analysis (StartDocumentAnalysis) or asynchronous document-text
+analysis (StartDocumentAnalysis) or asynchronous document text
 detection (StartDocumentTextDetection).
 
 =head1 ATTRIBUTES

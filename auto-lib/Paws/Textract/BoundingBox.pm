@@ -34,11 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Textract::B
 
 =head1 DESCRIPTION
 
-The bounding box around the recognized text, key, value, table or table
-cell on a document page. The C<left> (x-coordinate) and C<top>
-(y-coordinate) are coordinates that represent the top and left sides of
-the bounding box. Note that the upper-left corner of the image is the
-origin (0,0).
+The bounding box around the detected page, text, key-value pair, table,
+table cell, or selection element on a document page. The C<left>
+(x-coordinate) and C<top> (y-coordinate) are coordinates that represent
+the top and left sides of the bounding box. Note that the upper-left
+corner of the image is the origin (0,0).
 
 The C<top> and C<left> values returned are ratios of the overall
 document page size. For example, if the input image is 700 x 200

@@ -3,6 +3,7 @@ package Paws::Textract::AnalyzeDocument;
   use Moose;
   has Document => (is => 'ro', isa => 'Paws::Textract::Document', required => 1);
   has FeatureTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has HumanLoopConfig => (is => 'ro', isa => 'Paws::Textract::HumanLoopConfig');
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $textract = Paws->service('Textract');
     my $AnalyzeDocumentResponse = $textract->AnalyzeDocument(
       Document => {
-        Bytes    => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
+        Bytes    => 'BlobImageBlob',    # min: 1, max: 10485760; OPTIONAL
         S3Object => {
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
           Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
@@ -40,12 +41,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FeatureTypes => [
         'TABLES', ...    # values: TABLES, FORMS
       ],
-
+      HumanLoopConfig => {
+        FlowDefinitionArn => 'MyFlowDefinitionArn',    # max: 256
+        HumanLoopName     => 'MyHumanLoopName',        # min: 1, max: 63
+        DataAttributes    => {
+          ContentClassifiers => [
+            'FreeOfPersonallyIdentifiableInformation',
+            ... # values: FreeOfPersonallyIdentifiableInformation, FreeOfAdultContent
+          ],    # max: 256; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
+    my $AnalyzeDocumentModelVersion =
+      $AnalyzeDocumentResponse->AnalyzeDocumentModelVersion;
     my $Blocks           = $AnalyzeDocumentResponse->Blocks;
     my $DocumentMetadata = $AnalyzeDocumentResponse->DocumentMetadata;
+    my $HumanLoopActivationOutput =
+      $AnalyzeDocumentResponse->HumanLoopActivationOutput;
 
     # Returns a L<Paws::Textract::AnalyzeDocumentResponse> object.
 
@@ -59,19 +73,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 
 The input document as base64-encoded bytes or an Amazon S3 object. If
 you use the AWS CLI to call Amazon Textract operations, you can't pass
-image bytes. The document must be an image in JPG or PNG format.
+image bytes. The document must be an image in JPEG or PNG format.
 
-If you are using an AWS SDK to call Amazon Textract, you might not need
-to base64-encode image bytes passed using the C<Bytes> field.
+If you're using an AWS SDK to call Amazon Textract, you might not need
+to base64-encode image bytes that are passed using the C<Bytes> field.
 
 
 
 =head2 B<REQUIRED> FeatureTypes => ArrayRef[Str|Undef]
 
 A list of the types of analysis to perform. Add TABLES to the list to
-return information about the tables detected in the input document. Add
-FORMS to return detected fields and the associated text. To perform
-both types of analysis, add TABLES and FORMS to C<FeatureTypes>.
+return information about the tables that are detected in the input
+document. Add FORMS to return detected form data. To perform both types
+of analysis, add TABLES and FORMS to C<FeatureTypes>. All lines and
+words detected in the document are included in the response (including
+text that isn't related to the value of C<FeatureTypes>).
+
+
+
+=head2 HumanLoopConfig => L<Paws::Textract::HumanLoopConfig>
+
+Sets the configuration for the human in the loop workflow for analyzing
+documents.
 
 
 
