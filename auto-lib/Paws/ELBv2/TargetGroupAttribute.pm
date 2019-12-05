@@ -63,6 +63,13 @@ the target is not a Lambda function:
 
 =item *
 
+C<load_balancing.algorithm.type> - The load balancing algorithm
+determines how the load balancer selects targets when routing requests.
+The value is C<round_robin> or C<least_outstanding_requests>. The
+default is C<round_robin>.
+
+=item *
+
 C<slow_start.duration_seconds> - The time period, in seconds, during
 which a newly registered target receives a linearly increasing share of
 the traffic to the target group. After this time period ends, the
