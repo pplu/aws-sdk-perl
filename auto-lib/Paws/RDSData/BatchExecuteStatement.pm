@@ -42,7 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ParameterSets => [
         [
           {
-            Name  => 'MyParameterName',    # OPTIONAL
+            Name => 'MyParameterName',     # OPTIONAL
+            TypeHint =>
+              'DATE',    # values: DATE, DECIMAL, TIME, TIMESTAMP; OPTIONAL
             Value => {
               ArrayValue => {
                 ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
@@ -52,9 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 DoubleValues => [
                   1, ...                                   # OPTIONAL
                 ],                                         # OPTIONAL
-                LongValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
+                LongValues   => [ 1, ... ],                # OPTIONAL
                 StringValues => [
                   'MyString', ...                          # OPTIONAL
                 ],                                         # OPTIONAL
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               BooleanValue => 1,             # OPTIONAL
               DoubleValue  => 1,             # OPTIONAL
               IsNull       => 1,             # OPTIONAL
-              LongValue    => 1,             # OPTIONAL
+              LongValue    => 1,
               StringValue  => 'MyString',    # OPTIONAL
             },    # OPTIONAL
           },
@@ -95,6 +95,8 @@ The name of the database.
 =head2 ParameterSets => ArrayRef[L<ArrayRef[Paws::RDSData::SqlParameter]>]
 
 The parameter set for the batch operation.
+
+The maximum number of parameters in a parameter set is 1,000.
 
 
 

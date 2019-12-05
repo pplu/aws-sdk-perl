@@ -46,8 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IncludeResultMetadata => 1,                  # OPTIONAL
       Parameters            => [
         {
-          Name  => 'MyParameterName',              # OPTIONAL
-          Value => {
+          Name => 'MyParameterName',               # OPTIONAL
+          TypeHint => 'DATE', # values: DATE, DECIMAL, TIME, TIMESTAMP; OPTIONAL
+          Value    => {
             ArrayValue => {
               ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
               BooleanValues => [
@@ -56,9 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               DoubleValues => [
                 1, ...                                   # OPTIONAL
               ],                                         # OPTIONAL
-              LongValues => [
-                1, ...                                   # OPTIONAL
-              ],                                         # OPTIONAL
+              LongValues   => [ 1, ... ],                # OPTIONAL
               StringValues => [
                 'MyString', ...                          # OPTIONAL
               ],                                         # OPTIONAL
@@ -67,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             BooleanValue => 1,             # OPTIONAL
             DoubleValue  => 1,             # OPTIONAL
             IsNull       => 1,             # OPTIONAL
-            LongValue    => 1,             # OPTIONAL
+            LongValue    => 1,
             StringValue  => 'MyString',    # OPTIONAL
           },    # OPTIONAL
         },
