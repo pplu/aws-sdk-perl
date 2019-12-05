@@ -140,6 +140,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAvailabilityMonitorTest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeAvailabilityMonitorTest', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeBandwidthRateLimit {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeBandwidthRateLimit', @_);
@@ -323,6 +328,11 @@ package Paws::StorageGateway;
   sub ShutdownGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ShutdownGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartAvailabilityMonitorTest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::StartAvailabilityMonitorTest', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartGateway {
@@ -590,7 +600,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage AssignTapePool AttachVolume CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DetachVolume DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSMBSecurityStrategy UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage AssignTapePool AttachVolume CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeAvailabilityMonitorTest DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DetachVolume DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartAvailabilityMonitorTest StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSMBSecurityStrategy UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -1356,7 +1366,8 @@ Deletes the bandwidth rate limits of a gateway. You can delete either
 the upload and download bandwidth rate limit, or you can delete both.
 If you delete only one of the limits, the other limit remains
 unchanged. To specify which gateway to work with, use the Amazon
-Resource Name (ARN) of the gateway in your request.
+Resource Name (ARN) of the gateway in your request. This operation is
+supported for the stored volume, cached volume and tape gateway types.
 
 
 =head2 DeleteChapCredentials
@@ -1375,7 +1386,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteChapCrede
 Returns: a L<Paws::StorageGateway::DeleteChapCredentialsOutput> instance
 
 Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
-for a specified iSCSI target and initiator pair.
+for a specified iSCSI target and initiator pair. This operation is
+supported in volume and tape gateway types.
 
 
 =head2 DeleteFileShare
@@ -1526,6 +1538,24 @@ In the request, you must provide the Amazon Resource Name (ARN) of the
 storage volume you want to delete.
 
 
+=head2 DescribeAvailabilityMonitorTest
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeAvailabilityMonitorTest>
+
+Returns: a L<Paws::StorageGateway::DescribeAvailabilityMonitorTestOutput> instance
+
+Returns information about the most recent High Availability monitoring
+test that was performed on the host in a cluster. If a test isn't
+performed, the status and start time in the response would be null.
+
+
 =head2 DescribeBandwidthRateLimit
 
 =over
@@ -1541,7 +1571,8 @@ Returns: a L<Paws::StorageGateway::DescribeBandwidthRateLimitOutput> instance
 
 Returns the bandwidth rate limits of a gateway. By default, these
 limits are not set, which means no bandwidth rate limiting is in
-effect.
+effect. This operation is supported for the stored volume, cached
+volume and tape gateway types.'
 
 This operation only returns a value for a bandwidth rate limit only if
 the limit is set. If no limits are set for the gateway, then this
@@ -1606,7 +1637,8 @@ Returns: a L<Paws::StorageGateway::DescribeChapCredentialsOutput> instance
 
 Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 credentials information for a specified iSCSI target, one for each
-target-initiator pair.
+target-initiator pair. This operation is supported in the volume and
+tape gateway types.
 
 
 =head2 DescribeGatewayInformation
@@ -1909,7 +1941,8 @@ volume from the specified gateway. Detaching and attaching a volume
 enables you to recover your data from one gateway to a different
 gateway without creating a snapshot. It also makes it easier to move
 your volumes from an on-premises gateway to a gateway hosted on an
-Amazon EC2 instance.
+Amazon EC2 instance. This operation is only supported in the volume
+gateway type.
 
 
 =head2 DisableGateway
@@ -1950,6 +1983,8 @@ Once a gateway is disabled it cannot be enabled.
 =item [DomainControllers => ArrayRef[Str|Undef]]
 
 =item [OrganizationalUnit => Str]
+
+=item [TimeoutInSeconds => Int]
 
 
 =back
@@ -2057,8 +2092,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListTagsForReso
 Returns: a L<Paws::StorageGateway::ListTagsForResourceOutput> instance
 
 Lists the tags that have been added to the specified resource. This
-operation is only supported in the cached volume, stored volume and
-tape gateway type.
+operation is supported in storage gateways of all types.
 
 
 =head2 ListTapes
@@ -2230,6 +2264,21 @@ completed before you check for new files on the gateway file share. You
 can subscribe to be notified through an CloudWatch event when your
 C<RefreshCache> operation completes.
 
+Throttle limit: This API is asynchronous so the gateway will accept no
+more than two refreshes at any time. We recommend using the
+refresh-complete CloudWatch event notification before issuing
+additional requests. For more information, see Getting Notified About
+File Operations
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification).
+
+If you invoke the RefreshCache API when two requests are already being
+processed, any new request will cause an
+C<InvalidGatewayRequestException> error because too many requests were
+sent to the server.
+
+For more information, see
+"https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification".
+
 
 =head2 RemoveTagsFromResource
 
@@ -2247,8 +2296,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::RemoveTagsFromR
 Returns: a L<Paws::StorageGateway::RemoveTagsFromResourceOutput> instance
 
 Removes one or more tags from the specified resource. This operation is
-only supported in the cached volume, stored volume and tape gateway
-types.
+supported in storage gateways of all types.
 
 
 =head2 ResetCache
@@ -2413,6 +2461,30 @@ If do not intend to use the gateway again, you must delete the gateway
 the gateway.
 
 
+=head2 StartAvailabilityMonitorTest
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::StartAvailabilityMonitorTest>
+
+Returns: a L<Paws::StorageGateway::StartAvailabilityMonitorTestOutput> instance
+
+Start a test that verifies that the specified gateway is configured for
+High Availability monitoring in your host environment. This request
+only initiates the test and that a successful response only indicates
+that the test was started. It doesn't indicate that the test passed.
+For the status of the test, invoke the
+C<DescribeAvailabilityMonitorTest> API.
+
+Starting this test will cause your gateway to go offline for a brief
+period.
+
+
 =head2 StartGateway
 
 =over
@@ -2461,7 +2533,8 @@ Returns: a L<Paws::StorageGateway::UpdateBandwidthRateLimitOutput> instance
 Updates the bandwidth rate limits of a gateway. You can update both the
 upload and download bandwidth rate limit or specify only one of the
 two. If you don't set a bandwidth rate limit, the existing rate limit
-remains.
+remains. This operation is supported for the stored volume, cached
+volume and tape gateway types.'
 
 By default, a gateway's bandwidth rate limits are not set. If you don't
 set any limit, the gateway does not have any limitations on its
@@ -2494,6 +2567,7 @@ Returns: a L<Paws::StorageGateway::UpdateChapCredentialsOutput> instance
 Updates the Challenge-Handshake Authentication Protocol (CHAP)
 credentials for a specified iSCSI target. By default, a gateway does
 not have CHAP enabled; however, for added security, you might use it.
+This operation is supported in the volume and tape gateway types.
 
 When you update CHAP credentials, all existing connections on the
 target are closed and initiators must reconnect with the new

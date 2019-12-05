@@ -6,6 +6,7 @@ package Paws::StorageGateway::JoinDomain;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationalUnit => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str', required => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,10 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserName           => 'MyDomainUserName',
       DomainControllers  => [ 'MyHost', ... ],         # OPTIONAL
       OrganizationalUnit => 'MyOrganizationalUnit',    # OPTIONAL
+      TimeoutInSeconds   => 1,                         # OPTIONAL
     );
 
     # Results:
-    my $GatewayARN = $JoinDomainOutput->GatewayARN;
+    my $ActiveDirectoryStatus = $JoinDomainOutput->ActiveDirectoryStatus;
+    my $GatewayARN            = $JoinDomainOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::JoinDomainOutput> object.
 
@@ -88,10 +91,20 @@ the Active Directory domain.
 
 
 
+=head2 TimeoutInSeconds => Int
+
+Specifies the time in seconds, in which the C<JoinDomain> operation
+must complete. The default is 20 seconds.
+
+
+
 =head2 B<REQUIRED> UserName => Str
 
 Sets the user name of user who has permission to add the gateway to the
-Active Directory domain.
+Active Directory domain. The domain user account should be enabled to
+join computers to the domain. For example, you can use the domain
+administrator account or an account with delegated permissions to join
+computers to the domain.
 
 
 
