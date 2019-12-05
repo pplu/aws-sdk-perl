@@ -46,7 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputEncryptionKMSKeyId => 'MyKMSKeyId',               # OPTIONAL
       Settings                 => {
         ChannelIdentification => 1,    # OPTIONAL
+        MaxAlternatives       => 1,    # min: 2, max: 10; OPTIONAL
         MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
+        ShowAlternatives      => 1,    # OPTIONAL
         ShowSpeakerLabels     => 1,    # OPTIONAL
         VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
@@ -67,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 The language code for the language used in the input media file.
 
-Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">, C<"en-IN">, C<"hi-IN">, C<"ar-SA">, C<"ru-RU">, C<"zh-CN">, C<"nl-NL">, C<"id-ID">, C<"ta-IN">, C<"fa-IR">, C<"en-IE">, C<"en-AB">, C<"en-WL">, C<"pt-PT">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">, C<"en-IN">, C<"hi-IN">, C<"ar-SA">, C<"ru-RU">, C<"zh-CN">, C<"nl-NL">, C<"id-ID">, C<"ta-IN">, C<"fa-IR">, C<"en-IE">, C<"en-AB">, C<"en-WL">, C<"pt-PT">, C<"te-IN">, C<"tr-TR">, C<"de-CH">, C<"he-IL">, C<"ms-MY">, C<"ja-JP">, C<"ar-AE">
 
 =head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
 

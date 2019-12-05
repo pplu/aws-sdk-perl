@@ -1,7 +1,9 @@
 package Paws::Transcribe::Settings;
   use Moose;
   has ChannelIdentification => (is => 'ro', isa => 'Bool');
+  has MaxAlternatives => (is => 'ro', isa => 'Int');
   has MaxSpeakerLabels => (is => 'ro', isa => 'Int');
+  has ShowAlternatives => (is => 'ro', isa => 'Bool');
   has ShowSpeakerLabels => (is => 'ro', isa => 'Bool');
   has VocabularyName => (is => 'ro', isa => 'Str');
 1;
@@ -55,6 +57,13 @@ the same request. If you set both, your request returns a
 C<BadRequestException>.
 
 
+=head2 MaxAlternatives => Int
+
+  The number of alternative transcriptions that the service should
+return. If you specify the C<MaxAlternatives> field, you must set the
+C<ShowAlternatives> field to true.
+
+
 =head2 MaxSpeakerLabels => Int
 
   The maximum number of speakers to identify in the input audio. If there
@@ -62,6 +71,14 @@ are more speakers in the audio than this number, multiple speakers will
 be identified as a single speaker. If you specify the
 C<MaxSpeakerLabels> field, you must set the C<ShowSpeakerLabels> field
 to true.
+
+
+=head2 ShowAlternatives => Bool
+
+  Determines whether the transcription contains alternative
+transcriptions. If you set the C<ShowAlternatives> field to true, you
+must also set the maximum number of alternatives to return in the
+C<MaxAlternatives> field.
 
 
 =head2 ShowSpeakerLabels => Bool
