@@ -19,7 +19,8 @@ Paws::S3Control::GetPublicAccessBlockOutput
 
 =head2 PublicAccessBlockConfiguration => L<Paws::S3Control::PublicAccessBlockConfiguration>
 
-
+The C<PublicAccessBlock> configuration currently in effect for this
+Amazon Web Services account.
 
 
 

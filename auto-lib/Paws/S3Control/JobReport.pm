@@ -42,7 +42,8 @@ Contains the configuration parameters for a job-completion report.
 
 =head2 Bucket => Str
 
-  The bucket where specified job-completion report will be stored.
+  The Amazon Resource Name (ARN) for the bucket where specified
+job-completion report will be stored.
 
 
 =head2 B<REQUIRED> Enabled => Bool
