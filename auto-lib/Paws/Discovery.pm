@@ -381,6 +381,11 @@ This guide is intended for use with the I<AWS Application Discovery
 Service User Guide>
 (http://docs.aws.amazon.com/application-discovery/latest/userguide/).
 
+Remember that you must set your AWS Migration Hub home region before
+you call any of these APIs, or a C<HomeRegionNotSetException> error
+will be returned. Also, you must make the API calls while in your home
+region.
+
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery-2015-11-01>
 
 
