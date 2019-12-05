@@ -27,15 +27,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $autoscaling = Paws->service('AutoScalingPlans');
-    my $DeleteScalingPlanResponse = $autoscaling->DeleteScalingPlan(
+    my $autoscaling-plans = Paws->service('AutoScalingPlans');
+    my $DeleteScalingPlanResponse = $autoscaling -plans->DeleteScalingPlan(
       ScalingPlanName    => 'MyScalingPlanName',
       ScalingPlanVersion => 1,
 
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DeleteScalingPlan>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans/DeleteScalingPlan>
 
 =head1 ATTRIBUTES
 
