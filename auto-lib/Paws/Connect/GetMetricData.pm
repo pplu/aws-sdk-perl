@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime => '1970-01-01T01:00:00',
       Filters => {
         Channels => [
-          'VOICE', ...    # values: VOICE
+          'VOICE', ...    # values: VOICE, CHAT
         ],                # max: 1; OPTIONAL
         Queues => [ 'MyQueueId', ... ],    # min: 1, max: 100; OPTIONAL
       },

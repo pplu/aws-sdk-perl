@@ -104,6 +104,11 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::ListUsers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartChatContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::StartChatContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartOutboundVoiceContact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::StartOutboundVoiceContact', @_);
@@ -364,7 +369,7 @@ package Paws::Connect;
   }
 
 
-  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListContactFlows ListHoursOfOperations ListPhoneNumbers ListQueues ListRoutingProfiles ListSecurityProfiles ListTagsForResource ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact TagResource UntagResource UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
+  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListContactFlows ListHoursOfOperations ListPhoneNumbers ListQueues ListRoutingProfiles ListSecurityProfiles ListTagsForResource ListUserHierarchyGroups ListUsers StartChatContact StartOutboundVoiceContact StopContact TagResource UntagResource UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
 
 1;
 
@@ -808,6 +813,43 @@ Returns: a L<Paws::Connect::ListUsersResponse> instance
 
 Provides summary information about the users for the specified Amazon
 Connect instance.
+
+
+=head2 StartChatContact
+
+=over
+
+=item ContactFlowId => Str
+
+=item InstanceId => Str
+
+=item ParticipantDetails => L<Paws::Connect::ParticipantDetails>
+
+=item [Attributes => L<Paws::Connect::Attributes>]
+
+=item [ClientToken => Str]
+
+=item [InitialMessage => L<Paws::Connect::ChatMessage>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::StartChatContact>
+
+Returns: a L<Paws::Connect::StartChatContactResponse> instance
+
+Initiates a contact flow to start a new chat for the customer. Response
+of this API provides a token required to obtain credentials from the
+CreateParticipantConnection
+(https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+API in the Amazon Connect Participant Service.
+
+When a new chat contact is successfully created, clients need to
+subscribe to the participantE<rsquo>s connection for the created chat
+within 5 minutes. This is achieved by invoking
+CreateParticipantConnection
+(https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+with WEBSOCKET and CONNECTION_CREDENTIALS.
 
 
 =head2 StartOutboundVoiceContact

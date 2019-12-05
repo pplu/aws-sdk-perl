@@ -37,14 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CurrentMetrics => [
         {
           Name => 'AGENTS_ONLINE'
-          , # values: AGENTS_ONLINE, AGENTS_AVAILABLE, AGENTS_ON_CALL, AGENTS_NON_PRODUCTIVE, AGENTS_AFTER_CONTACT_WORK, AGENTS_ERROR, AGENTS_STAFFED, CONTACTS_IN_QUEUE, OLDEST_CONTACT_AGE, CONTACTS_SCHEDULED; OPTIONAL
+          , # values: AGENTS_ONLINE, AGENTS_AVAILABLE, AGENTS_ON_CALL, AGENTS_NON_PRODUCTIVE, AGENTS_AFTER_CONTACT_WORK, AGENTS_ERROR, AGENTS_STAFFED, CONTACTS_IN_QUEUE, OLDEST_CONTACT_AGE, CONTACTS_SCHEDULED, AGENTS_ON_CONTACT, SLOTS_ACTIVE, SLOTS_AVAILABLE; OPTIONAL
           Unit => 'SECONDS',    # values: SECONDS, COUNT, PERCENT; OPTIONAL
         },
         ...
       ],
       Filters => {
         Channels => [
-          'VOICE', ...          # values: VOICE
+          'VOICE', ...          # values: VOICE, CHAT
         ],                      # max: 1; OPTIONAL
         Queues => [ 'MyQueueId', ... ],    # min: 1, max: 100; OPTIONAL
       },
@@ -96,6 +96,10 @@ Unit: COUNT
 
 Unit: COUNT
 
+=item AGENTS_ON_CONTACT
+
+Unit: COUNT
+
 =item AGENTS_ONLINE
 
 Unit: COUNT
@@ -115,6 +119,14 @@ Unit: COUNT
 =item OLDEST_CONTACT_AGE
 
 Unit: SECONDS
+
+=item SLOTS_ACTIVE
+
+Unit: COUNT
+
+=item SLOTS_AVAILABLE
+
+Unit: COUNT
 
 =back
 
