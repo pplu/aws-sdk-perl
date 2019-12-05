@@ -2,6 +2,7 @@
 package Paws::KMS::CreateKey;
   use Moose;
   has BypassPolicyLockoutSafetyCheck => (is => 'ro', isa => 'Bool');
+  has CustomerMasterKeySpec => (is => 'ro', isa => 'Str');
   has CustomKeyStoreId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
@@ -68,6 +69,97 @@ The default value is false.
 
 
 
+=head2 CustomerMasterKeySpec => Str
+
+Specifies the type of CMK to create. The C<CustomerMasterKeySpec>
+determines whether the CMK contains a symmetric key or an asymmetric
+key pair. It also determines the encryption algorithms or signing
+algorithms that the CMK supports. You can't change the
+C<CustomerMasterKeySpec> after the CMK is created. To further restrict
+the algorithms that can be used with the CMK, use its key policy or IAM
+policy.
+
+For help with choosing a key spec for your CMK, see Selecting a
+Customer Master Key Spec
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#cmk-key-spec)
+in the I<AWS Key Management Service Developer Guide>.
+
+The default value, C<SYMMETRIC_DEFAULT>, creates a CMK with a 256-bit
+symmetric key.
+
+AWS KMS supports the following key specs for CMKs:
+
+=over
+
+=item *
+
+Symmetric key (default)
+
+=over
+
+=item *
+
+C<SYMMETRIC_DEFAULT> (AES-256-GCM)
+
+=back
+
+=item *
+
+Asymmetric RSA key pairs
+
+=over
+
+=item *
+
+C<RSA_2048>
+
+=item *
+
+C<RSA_3072>
+
+=item *
+
+C<RSA_4096>
+
+=back
+
+=item *
+
+Asymmetric NIST-recommended elliptic curve key pairs
+
+=over
+
+=item *
+
+C<ECC_NIST_P256> (secp256r1)
+
+=item *
+
+C<ECC_NIST_P384> (secp384r1)
+
+=item *
+
+C<ECC_NIST_P521> (secp521r1)
+
+=back
+
+=item *
+
+Other asymmetric elliptic curve key pairs
+
+=over
+
+=item *
+
+C<ECC_SECG_P256K1> (secp256k1), commonly used for cryptocurrencies.
+
+=back
+
+=back
+
+
+Valid values are: C<"RSA_2048">, C<"RSA_3072">, C<"RSA_4096">, C<"ECC_NIST_P256">, C<"ECC_NIST_P384">, C<"ECC_NIST_P521">, C<"ECC_SECG_P256K1">, C<"SYMMETRIC_DEFAULT">
+
 =head2 CustomKeyStoreId => Str
 
 Creates the CMK in the specified custom key store
@@ -77,6 +169,9 @@ a CMK in a custom key store, you must also specify the C<Origin>
 parameter with a value of C<AWS_CLOUDHSM>. The AWS CloudHSM cluster
 that is associated with the custom key store must have at least two
 active HSMs, each in a different Availability Zone in the Region.
+
+This parameter is valid only for symmetric CMKs. You cannot create an
+asymmetric CMK in a custom key store.
 
 To find the ID of a custom key store, use the DescribeCustomKeyStores
 operation.
@@ -103,33 +198,53 @@ for a task.
 
 =head2 KeyUsage => Str
 
-The cryptographic operations for which you can use the CMK. The only
-valid value is C<ENCRYPT_DECRYPT>, which means you can use the CMK to
-encrypt and decrypt data.
+Determines the cryptographic operations for which you can use the CMK.
+The default value is C<ENCRYPT_DECRYPT>. This parameter is required
+only for asymmetric CMKs. You can't change the C<KeyUsage> value after
+the CMK is created.
 
-Valid values are: C<"ENCRYPT_DECRYPT">
+Select only one valid value.
+
+=over
+
+=item *
+
+For symmetric CMKs, omit the parameter or specify C<ENCRYPT_DECRYPT>.
+
+=item *
+
+For asymmetric CMKs with RSA key material, specify C<ENCRYPT_DECRYPT>
+or C<SIGN_VERIFY>.
+
+=item *
+
+For asymmetric CMKs with ECC key material, specify C<SIGN_VERIFY>.
+
+=back
+
+
+Valid values are: C<"SIGN_VERIFY">, C<"ENCRYPT_DECRYPT">
 
 =head2 Origin => Str
 
 The source of the key material for the CMK. You cannot change the
-origin after you create the CMK.
-
-The default is C<AWS_KMS>, which means AWS KMS creates the key material
-in its own key store.
+origin after you create the CMK. The default is C<AWS_KMS>, which means
+AWS KMS creates the key material.
 
 When the parameter value is C<EXTERNAL>, AWS KMS creates a CMK without
 key material so that you can import key material from your existing key
 management infrastructure. For more information about importing key
 material into AWS KMS, see Importing Key Material
 (https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
-in the I<AWS Key Management Service Developer Guide>.
+in the I<AWS Key Management Service Developer Guide>. This value is
+valid only for symmetric CMKs.
 
 When the parameter value is C<AWS_CLOUDHSM>, AWS KMS creates the CMK in
 an AWS KMS custom key store
 (https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 and creates its key material in the associated AWS CloudHSM cluster.
 You must also use the C<CustomKeyStoreId> parameter to identify the
-custom key store.
+custom key store. This value is valid only for symmetric CMKs.
 
 Valid values are: C<"AWS_KMS">, C<"EXTERNAL">, C<"AWS_CLOUDHSM">
 
@@ -176,13 +291,17 @@ The key policy size limit is 32 kilobytes (32768 bytes).
 
 =head2 Tags => ArrayRef[L<Paws::KMS::Tag>]
 
-One or more tags. Each tag consists of a tag key and a tag value. Tag
-keys and tag values are both required, but tag values can be empty
-(null) strings.
+One or more tags. Each tag consists of a tag key and a tag value. Both
+the tag key and the tag value are required, but the tag value can be an
+empty (null) string.
 
-Use this parameter to tag the CMK when it is created. Alternately, you
-can omit this parameter and instead tag the CMK after it is created
-using TagResource.
+When you add tags to an AWS resource, AWS generates a cost allocation
+report with usage and costs aggregated by tags. For information about
+adding, changing, deleting and listing tags for CMKs, see Tagging Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
+
+Use this parameter to tag the CMK when it is created. To add tags to an
+existing CMK, use the TagResource operation.
 
 
 

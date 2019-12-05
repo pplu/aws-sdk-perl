@@ -1,16 +1,15 @@
 
-package Paws::KMS::GenerateDataKey;
+package Paws::KMS::GenerateDataKeyPairWithoutPlaintext;
   use Moose;
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
-  has KeySpec => (is => 'ro', isa => 'Str');
-  has NumberOfBytes => (is => 'ro', isa => 'Int');
+  has KeyPairSpec => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateDataKey');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::GenerateDataKeyResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateDataKeyPairWithoutPlaintext');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::GenerateDataKeyPairWithoutPlaintextResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -18,38 +17,41 @@ package Paws::KMS::GenerateDataKey;
 
 =head1 NAME
 
-Paws::KMS::GenerateDataKey - Arguments for method GenerateDataKey on L<Paws::KMS>
+Paws::KMS::GenerateDataKeyPairWithoutPlaintext - Arguments for method GenerateDataKeyPairWithoutPlaintext on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GenerateDataKey on the
+This class represents the parameters used for calling the method GenerateDataKeyPairWithoutPlaintext on the
 L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
-as arguments to method GenerateDataKey.
+as arguments to method GenerateDataKeyPairWithoutPlaintext.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataKeyPairWithoutPlaintext.
 
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To generate a data key
-    # The following example generates a 256-bit symmetric data encryption key
-    # (data key) in two formats. One is the unencrypted (plainext) data key, and
-    # the other is the data key encrypted with the specified customer master key
-    # (CMK).
-    my $GenerateDataKeyResponse = $kms->GenerateDataKey(
-      'KeyId'   => 'alias/ExampleAlias',
-      'KeySpec' => 'AES_256'
-    );
+    my $GenerateDataKeyPairWithoutPlaintextResponse =
+      $kms->GenerateDataKeyPairWithoutPlaintext(
+      KeyId       => 'MyKeyIdType',
+      KeyPairSpec => 'RSA_2048',
+      EncryptionContext =>
+        { 'MyEncryptionContextKey' => 'MyEncryptionContextValue', },  # OPTIONAL
+      GrantTokens => [
+        'MyGrantTokenType', ...    # min: 1, max: 8192
+      ],                           # OPTIONAL
+      );
 
     # Results:
-    my $CiphertextBlob = $GenerateDataKeyResponse->CiphertextBlob;
-    my $KeyId          = $GenerateDataKeyResponse->KeyId;
-    my $Plaintext      = $GenerateDataKeyResponse->Plaintext;
+    my $KeyId       = $GenerateDataKeyPairWithoutPlaintextResponse->KeyId;
+    my $KeyPairSpec = $GenerateDataKeyPairWithoutPlaintextResponse->KeyPairSpec;
+    my $PrivateKeyCiphertextBlob =
+      $GenerateDataKeyPairWithoutPlaintextResponse->PrivateKeyCiphertextBlob;
+    my $PublicKey = $GenerateDataKeyPairWithoutPlaintextResponse->PublicKey;
 
-    # Returns a L<Paws::KMS::GenerateDataKeyResponse> object.
+   # Returns a L<Paws::KMS::GenerateDataKeyPairWithoutPlaintextResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/GenerateDataKey>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/GenerateDataKeyPairWithoutPlaintext>
 
 =head1 ATTRIBUTES
 
@@ -57,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
 Specifies the encryption context that will be used when encrypting the
-data key.
+private key in the data key pair.
 
 An I<encryption context> is a collection of non-secret key-value pairs
 that represents additional authenticated data. When you use an
@@ -84,12 +86,12 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-Identifies the symmetric CMK that encrypts the data key.
+Specifies the CMK that encrypts the private key in the data key pair.
+You must specify a symmetric CMK. You cannot use an asymmetric CMK.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">. To specify a CMK in a different AWS account, you must use
-the key ARN or alias ARN.
+C<"alias/">.
 
 For example:
 
@@ -119,33 +121,21 @@ To get the alias name and alias ARN, use ListAliases.
 
 
 
-=head2 KeySpec => Str
+=head2 B<REQUIRED> KeyPairSpec => Str
 
-Specifies the length of the data key. Use C<AES_128> to generate a
-128-bit symmetric key, or C<AES_256> to generate a 256-bit symmetric
-key.
+Determines the type of data key pair that is generated.
 
-You must specify either the C<KeySpec> or the C<NumberOfBytes>
-parameter (but not both) in every C<GenerateDataKey> request.
+The AWS KMS rule that restricts the use of asymmetric RSA CMKs to
+encrypt and decrypt or to sign and verify (but not both), and the rule
+that permits you to use ECC CMKs only to sign and verify, are not
+effective outside of AWS KMS.
 
-Valid values are: C<"AES_256">, C<"AES_128">
-
-=head2 NumberOfBytes => Int
-
-Specifies the length of the data key in bytes. For example, use the
-value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
-128-bit (16-byte) and 256-bit (32-byte) data keys, use the C<KeySpec>
-parameter.
-
-You must specify either the C<KeySpec> or the C<NumberOfBytes>
-parameter (but not both) in every C<GenerateDataKey> request.
-
-
+Valid values are: C<"RSA_2048">, C<"RSA_3072">, C<"RSA_4096">, C<"ECC_NIST_P256">, C<"ECC_NIST_P384">, C<"ECC_NIST_P521">, C<"ECC_SECG_P256K1">
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GenerateDataKey in L<Paws::KMS>
+This class forms part of L<Paws>, documenting arguments for method GenerateDataKeyPairWithoutPlaintext in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

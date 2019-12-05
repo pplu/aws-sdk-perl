@@ -1,16 +1,15 @@
 
-package Paws::KMS::Encrypt;
+package Paws::KMS::GenerateDataKeyPair;
   use Moose;
-  has EncryptionAlgorithm => (is => 'ro', isa => 'Str');
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Plaintext => (is => 'ro', isa => 'Str', required => 1);
+  has KeyPairSpec => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Encrypt');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::EncryptResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateDataKeyPair');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::GenerateDataKeyPairResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -18,57 +17,49 @@ package Paws::KMS::Encrypt;
 
 =head1 NAME
 
-Paws::KMS::Encrypt - Arguments for method Encrypt on L<Paws::KMS>
+Paws::KMS::GenerateDataKeyPair - Arguments for method GenerateDataKeyPair on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method Encrypt on the
+This class represents the parameters used for calling the method GenerateDataKeyPair on the
 L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
-as arguments to method Encrypt.
+as arguments to method GenerateDataKeyPair.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Encrypt.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataKeyPair.
 
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To encrypt data
-    # The following example encrypts data with the specified customer master key
-    # (CMK).
-    my $EncryptResponse = $kms->Encrypt(
-      'KeyId'     => '1234abcd-12ab-34cd-56ef-1234567890ab',
-      'Plaintext' => '<binary data>'
+    my $GenerateDataKeyPairResponse = $kms->GenerateDataKeyPair(
+      KeyId       => 'MyKeyIdType',
+      KeyPairSpec => 'RSA_2048',
+      EncryptionContext =>
+        { 'MyEncryptionContextKey' => 'MyEncryptionContextValue', },  # OPTIONAL
+      GrantTokens => [
+        'MyGrantTokenType', ...    # min: 1, max: 8192
+      ],                           # OPTIONAL
     );
 
     # Results:
-    my $CiphertextBlob = $EncryptResponse->CiphertextBlob;
-    my $KeyId          = $EncryptResponse->KeyId;
+    my $KeyId       = $GenerateDataKeyPairResponse->KeyId;
+    my $KeyPairSpec = $GenerateDataKeyPairResponse->KeyPairSpec;
+    my $PrivateKeyCiphertextBlob =
+      $GenerateDataKeyPairResponse->PrivateKeyCiphertextBlob;
+    my $PrivateKeyPlaintext = $GenerateDataKeyPairResponse->PrivateKeyPlaintext;
+    my $PublicKey           = $GenerateDataKeyPairResponse->PublicKey;
 
-    # Returns a L<Paws::KMS::EncryptResponse> object.
+    # Returns a L<Paws::KMS::GenerateDataKeyPairResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/Encrypt>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/GenerateDataKeyPair>
 
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionAlgorithm => Str
-
-Specifies the encryption algorithm that AWS KMS will use to encrypt the
-plaintext message. The algorithm must be compatible with the CMK that
-you specify.
-
-This parameter is required only for asymmetric CMKs. The default value,
-C<SYMMETRIC_DEFAULT>, is the algorithm used for symmetric CMKs. If you
-are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.
-
-Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">
-
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-Specifies the encryption context that will be used to encrypt the data.
-An encryption context is valid only for cryptographic operations with a
-symmetric CMK. The standard asymmetric encryption algorithms that AWS
-KMS uses do not support an encryption context.
+Specifies the encryption context that will be used when encrypting the
+private key in the data key pair.
 
 An I<encryption context> is a collection of non-secret key-value pairs
 that represents additional authenticated data. When you use an
@@ -95,7 +86,8 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Specifies the symmetric CMK that encrypts the private key in the data
+key pair. You cannot specify an asymmetric CMKs.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with
@@ -130,16 +122,21 @@ To get the alias name and alias ARN, use ListAliases.
 
 
 
-=head2 B<REQUIRED> Plaintext => Str
+=head2 B<REQUIRED> KeyPairSpec => Str
 
-Data to be encrypted.
+Determines the type of data key pair that is generated.
 
+The AWS KMS rule that restricts the use of asymmetric RSA CMKs to
+encrypt and decrypt or to sign and verify (but not both), and the rule
+that permits you to use ECC CMKs only to sign and verify, are not
+effective outside of AWS KMS.
 
+Valid values are: C<"RSA_2048">, C<"RSA_3072">, C<"RSA_4096">, C<"ECC_NIST_P256">, C<"ECC_NIST_P384">, C<"ECC_NIST_P521">, C<"ECC_SECG_P256K1">
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method Encrypt in L<Paws::KMS>
+This class forms part of L<Paws>, documenting arguments for method GenerateDataKeyPair in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

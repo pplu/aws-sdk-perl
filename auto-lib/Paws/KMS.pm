@@ -110,6 +110,16 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GenerateDataKeyPair {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GenerateDataKeyPairWithoutPlaintext {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKeyPairWithoutPlaintext', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GenerateDataKeyWithoutPlaintext {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKeyWithoutPlaintext', @_);
@@ -133,6 +143,11 @@ package Paws::KMS;
   sub GetParametersForImport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::GetParametersForImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPublicKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::GetPublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ImportKeyMaterial {
@@ -195,6 +210,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::ScheduleKeyDeletion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub Sign {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::Sign', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::TagResource', @_);
@@ -218,6 +238,11 @@ package Paws::KMS;
   sub UpdateKeyDescription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub Verify {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::Verify', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -315,7 +340,7 @@ package Paws::KMS;
   }
 
 
-  sub operations { qw/CancelKeyDeletion ConnectCustomKeyStore CreateAlias CreateCustomKeyStore CreateGrant CreateKey Decrypt DeleteAlias DeleteCustomKeyStore DeleteImportedKeyMaterial DescribeCustomKeyStores DescribeKey DisableKey DisableKeyRotation DisconnectCustomKeyStore EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListResourceTags ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion TagResource UntagResource UpdateAlias UpdateCustomKeyStore UpdateKeyDescription / }
+  sub operations { qw/CancelKeyDeletion ConnectCustomKeyStore CreateAlias CreateCustomKeyStore CreateGrant CreateKey Decrypt DeleteAlias DeleteCustomKeyStore DeleteImportedKeyMaterial DescribeCustomKeyStores DescribeKey DisableKey DisableKeyRotation DisconnectCustomKeyStore EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyPair GenerateDataKeyPairWithoutPlaintext GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport GetPublicKey ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListResourceTags ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion Sign TagResource UntagResource UpdateAlias UpdateCustomKeyStore UpdateKeyDescription Verify / }
 
 1;
 
@@ -469,17 +494,18 @@ Each argument is described in detail in: L<Paws::KMS::CancelKeyDeletion>
 Returns: a L<Paws::KMS::CancelKeyDeletionResponse> instance
 
 Cancels the deletion of a customer master key (CMK). When this
-operation is successful, the CMK is set to the C<Disabled> state. To
-enable a CMK, use EnableKey. You cannot perform this operation on a CMK
-in a different AWS account.
+operation succeeds, the key state of the CMK is C<Disabled>. To enable
+the CMK, use EnableKey. You cannot perform this operation on a CMK in a
+different AWS account.
 
 For more information about scheduling and canceling deletion of a CMK,
 see Deleting Customer Master Keys
 (https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -560,18 +586,52 @@ Each argument is described in detail in: L<Paws::KMS::CreateAlias>
 Returns: nothing
 
 Creates a display name for a customer managed customer master key
-(CMK). You can use an alias to identify a CMK in selected operations,
-such as Encrypt and GenerateDataKey.
+(CMK). You can use an alias to identify a CMK in cryptographic
+operations, such as Encrypt and GenerateDataKey. You can change the CMK
+associated with the alias at any time.
 
-Each CMK can have multiple aliases, but each alias points to only one
-CMK. The alias name must be unique in the AWS account and region. To
-simplify code that runs in multiple regions, use the same alias name,
-but point it to a different CMK in each region.
+Aliases are easier to remember than key IDs. They can also help to
+simplify your applications. For example, if you use an alias in your
+code, you can change the CMK your code uses by associating a given
+alias with a different CMK.
 
-Because an alias is not a property of a CMK, you can delete and change
-the aliases of a CMK without affecting the CMK. Also, aliases do not
-appear in the response from the DescribeKey operation. To get the
-aliases of all CMKs, use the ListAliases operation.
+To run the same code in multiple AWS regions, use an alias in your
+code, such as C<alias/ApplicationKey>. Then, in each AWS Region, create
+an C<alias/ApplicationKey> alias that is associated with a CMK in that
+Region. When you run your code, it uses the C<alias/ApplicationKey> CMK
+for that AWS Region without any Region-specific code.
+
+This operation does not return a response. To get the alias that you
+created, use the ListAliases operation.
+
+To use aliases successfully, be aware of the following information.
+
+=over
+
+=item *
+
+Each alias points to only one CMK at a time, although a single CMK can
+have multiple aliases. The alias and its associated CMK must be in the
+same AWS account and Region.
+
+=item *
+
+You can associate an alias with any customer managed CMK in the same
+AWS account and Region. However, you do not have permission to
+associate an alias with an AWS managed CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
+or an AWS owned CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk).
+
+=item *
+
+To change the CMK associated with an alias, use the UpdateAlias
+operation. The current CMK and the new CMK must be the same type (both
+symmetric or both asymmetric) and they must have the same key usage
+(C<ENCRYPT_DECRYPT> or C<SIGN_VERIFY>). This restriction prevents
+cryptographic errors in code that uses aliases.
+
+=item *
 
 The alias name must begin with C<alias/> followed by a name, such as
 C<alias/ExampleAlias>. It can contain only alphanumeric characters,
@@ -580,14 +640,39 @@ cannot begin with C<alias/aws/>. The C<alias/aws/> prefix is reserved
 for AWS managed CMKs
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 
-The alias and the CMK it is mapped to must be in the same AWS account
-and the same region. You cannot perform this operation on an alias in a
-different AWS account.
+=item *
 
-To map an existing alias to a different CMK, call UpdateAlias.
+The alias name must be unique within an AWS Region. However, you can
+use the same alias name in multiple Regions of the same AWS account.
+Each instance of the alias is associated with a CMK in its Region.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+=item *
+
+After you create an alias, you cannot change its alias name. However,
+you can use the DeleteAlias operation to delete the alias and then
+create a new alias with the desired name.
+
+=item *
+
+You can use an alias name or alias ARN to identify a CMK in AWS KMS
+cryptographic operations and in the DescribeKey operation. However, you
+cannot use alias names or alias ARNs in API operations that manage
+CMKs, such as DisableKey or GetKeyPolicy. For information about the
+valid CMK identifiers for each AWS KMS API operation, see the
+descriptions of the C<KeyId> parameter in the API operation
+documentation.
+
+=back
+
+Because an alias is not a property of a CMK, you can delete and change
+the aliases of a CMK without affecting the CMK. Also, aliases do not
+appear in the response from the DescribeKey operation. To get the
+aliases and alias ARNs of CMKs in each AWS account and Region, use the
+ListAliases operation.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -674,9 +759,57 @@ grant are met. When setting permissions, grants are an alternative to
 key policies.
 
 To create a grant that allows a cryptographic operation only when the
-encryption context in the operation request matches or includes a
-specified encryption context, use the C<Constraints> parameter. For
-details, see GrantConstraints.
+request includes a particular encryption context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context),
+use the C<Constraints> parameter. For details, see GrantConstraints.
+
+You can create grants on symmetric and asymmetric CMKs. However, if the
+grant allows an operation that the CMK does not support, C<CreateGrant>
+fails with a C<ValidationException>.
+
+=over
+
+=item *
+
+Grants for symmetric CMKs cannot allow operations that are not
+supported for symmetric CMKs, including Sign, Verify, and GetPublicKey.
+(There are limited exceptions to this rule for legacy operations, but
+you should not create a grant for an operation that AWS KMS does not
+support.)
+
+=item *
+
+Grants for asymmetric CMKs cannot allow operations that are not
+supported for asymmetric CMKs, including operations that generate data
+keys
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey)
+or data key pairs
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair),
+or operations related to automatic key rotation
+(https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html),
+imported key material
+(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+or CMKs in custom key stores
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+
+=item *
+
+Grants for asymmetric CMKs with a C<KeyUsage> of C<ENCRYPT_DECRYPT>
+cannot allow the Sign or Verify operations. Grants for asymmetric CMKs
+with a C<KeyUsage> of C<SIGN_VERIFY> cannot allow the Encrypt or
+Decrypt operations.
+
+=item *
+
+Grants for asymmetric CMKs cannot include an encryption context grant
+constraint. An encryption context is not supported on asymmetric CMKs.
+
+=back
+
+For information about symmetric and asymmetric CMKs, see Using
+Symmetric and Asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the C<KeyId> parameter. For more
@@ -684,8 +817,9 @@ information about grants, see Grants
 (https://docs.aws.amazon.com/kms/latest/developerguide/grants.html) in
 the I< I<AWS Key Management Service Developer Guide> >.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -695,6 +829,8 @@ in the I<AWS Key Management Service Developer Guide>.
 =over
 
 =item [BypassPolicyLockoutSafetyCheck => Bool]
+
+=item [CustomerMasterKeySpec => Str]
 
 =item [CustomKeyStoreId => Str]
 
@@ -715,19 +851,79 @@ Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
 Returns: a L<Paws::KMS::CreateKeyResponse> instance
 
-Creates a customer managed customer master key
-(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
-(CMK) in your AWS account.
+Creates a unique customer managed customer master key
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys)
+(CMK) in your AWS account and Region. You cannot use this operation to
+create a CMK in a different AWS account.
 
-You can use a CMK to encrypt small amounts of data (up to 4096 bytes)
-directly. But CMKs are more commonly used to encrypt the data keys
+You can use the C<CreateKey> operation to create symmetric or
+asymmetric CMKs.
+
+=over
+
+=item *
+
+B<Symmetric CMKs> contain a 256-bit symmetric key that never leaves AWS
+KMS unencrypted. To use the CMK, you must call AWS KMS. You can use a
+symmetric CMK to encrypt and decrypt small amounts of data, but they
+are typically used to generate data keys
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
-that are used to encrypt data.
+or data key pairs. For details, see GenerateDataKey and
+GenerateDataKeyPair.
 
-To create a CMK for imported key material, use the C<Origin> parameter
-with a value of C<EXTERNAL>.
+=item *
 
-To create a CMK in a custom key store
+B<Asymmetric CMKs> can contain an RSA key pair or an Elliptic Curve
+(ECC) key pair. The private key in an asymmetric CMK never leaves AWS
+KMS unencrypted. However, you can use the GetPublicKey operation to
+download the public key so it can be used outside of AWS KMS. CMKs with
+RSA key pairs can be used to encrypt or decrypt data or sign and verify
+messages (but not both). CMKs with ECC key pairs can be used only to
+sign and verify messages.
+
+=back
+
+For information about symmetric and asymmetric CMKs, see Using
+Symmetric and Asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+To create different types of CMKs, use the following guidance:
+
+=over
+
+=item Asymmetric CMKs
+
+To create an asymmetric CMK, use the C<CustomerMasterKeySpec> parameter
+to specify the type of key material in the CMK. Then, use the
+C<KeyUsage> parameter to determine whether the CMK will be used to
+encrypt and decrypt or sign and verify. You can't change these
+properties after the CMK is created.
+
+=item Symmetric CMKs
+
+When creating a symmetric CMK, you don't need to specify the
+C<CustomerMasterKeySpec> or C<KeyUsage> parameters. The default value
+for C<CustomerMasterKeySpec>, C<SYMMETRIC_DEFAULT>, and the default
+value for C<KeyUsage>, C<ENCRYPT_DECRYPT>, are the only valid values
+for symmetric CMKs.
+
+=item Imported Key Material
+
+To import your own key material, begin by creating a symmetric CMK with
+no key material. To do this, use the C<Origin> parameter of
+C<CreateKey> with a value of C<EXTERNAL>. Next, use
+GetParametersForImport operation to get a public key and import token,
+and use the public key to encrypt your key material. Then, use
+ImportKeyMaterial with your import token to import the key material.
+For step-by-step instructions, see Importing Key Material
+(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
+in the I< I<AWS Key Management Service Developer Guide> >. You cannot
+import the key material into an asymmetric CMK.
+
+=item Custom Key Stores
+
+To create a symmetric CMK in a custom key store
 (https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html),
 use the C<CustomKeyStoreId> parameter to specify the custom key store.
 You must also use the C<Origin> parameter with a value of
@@ -735,8 +931,14 @@ C<AWS_CLOUDHSM>. The AWS CloudHSM cluster that is associated with the
 custom key store must have at least two active HSMs in different
 Availability Zones in the AWS Region.
 
-You cannot use this operation to create a CMK in a different AWS
-account.
+You cannot create an asymmetric CMK in a custom key store. For
+information about custom key stores in AWS KMS see Using Custom Key
+Stores
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
+in the I< I<AWS Key Management Service Developer Guide> >.
+
+=back
+
 
 
 =head2 Decrypt
@@ -745,9 +947,13 @@ account.
 
 =item CiphertextBlob => Str
 
+=item [EncryptionAlgorithm => Str]
+
 =item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [KeyId => Str]
 
 
 =back
@@ -756,10 +962,14 @@ Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
 Returns: a L<Paws::KMS::DecryptResponse> instance
 
-Decrypts ciphertext. Ciphertext is plaintext that has been previously
-encrypted by using any of the following operations:
+Decrypts ciphertext that was encrypted by a AWS KMS customer master key
+(CMK) using any of the following operations:
 
 =over
+
+=item *
+
+Encrypt
 
 =item *
 
@@ -767,25 +977,56 @@ GenerateDataKey
 
 =item *
 
+GenerateDataKeyPair
+
+=item *
+
 GenerateDataKeyWithoutPlaintext
 
 =item *
 
-Encrypt
+GenerateDataKeyPairWithoutPlaintext
 
 =back
 
+You can use this operation to decrypt ciphertext that was encrypted
+under a symmetric or asymmetric CMK. When the CMK is asymmetric, you
+must specify the CMK and the encryption algorithm that was used to
+encrypt the ciphertext. For information about symmetric and asymmetric
+CMKs, see Using Symmetric and Asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+The Decrypt operation also decrypts ciphertext that was encrypted
+outside of AWS KMS by the public key in an AWS KMS asymmetric CMK.
+However, it cannot decrypt ciphertext produced by other libraries, such
+as the AWS Encryption SDK
+(https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/) or
+Amazon S3 client-side encryption
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+These libraries return a ciphertext format that is incompatible with
+AWS KMS.
+
+If the ciphertext was encrypted under a symmetric CMK, you do not need
+to specify the CMK or the encryption algorithm. AWS KMS can get this
+information from metadata that it adds to the symmetric ciphertext
+blob. However, if you prefer, you can specify the C<KeyId> to ensure
+that a particular CMK is used to decrypt the ciphertext. If you specify
+a different CMK than the one used to encrypt the ciphertext, the
+C<Decrypt> operation fails.
+
 Whenever possible, use key policies to give users permission to call
-the Decrypt operation on the CMK, instead of IAM policies. Otherwise,
-you might create an IAM user policy that gives the user Decrypt
-permission on all CMKs. This user could decrypt ciphertext that was
-encrypted by CMKs in other accounts if the key policy for the
+the Decrypt operation on a particular CMK, instead of using IAM
+policies. Otherwise, you might create an IAM user policy that gives the
+user Decrypt permission on all CMKs. This user could decrypt ciphertext
+that was encrypted by CMKs in other accounts if the key policy for the
 cross-account CMK permits it. If you must use an IAM policy for
 C<Decrypt> permissions, limit the user to particular CMKs or particular
 trusted accounts.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -896,8 +1137,9 @@ CMK's state to C<PendingImport>.
 After you delete key material, you can use ImportKeyMaterial to
 reimport the same key material into the CMK.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -971,14 +1213,57 @@ Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
 Returns: a L<Paws::KMS::DescribeKeyResponse> instance
 
-Provides detailed information about the specified customer master key
-(CMK).
+Provides detailed information about a customer master key (CMK). You
+can run C<DescribeKey> on a customer managed CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
+or an AWS managed CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 
-You can use C<DescribeKey> on a predefined AWS alias, that is, an AWS
-alias with no key ID. When you do, AWS KMS associates the alias with an
-AWS managed CMK
-(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
-and returns its C<KeyId> and C<Arn> in the response.
+This detailed information includes the key ARN, creation date (and
+deletion date, if applicable), the key state, and the origin and
+expiration date (if any) of the key material. For CMKs in custom key
+stores, it includes information about the custom key store, such as the
+key store ID and the AWS CloudHSM cluster ID. It includes fields, like
+C<KeySpec>, that help you distinguish symmetric from asymmetric CMKs.
+It also provides information that is particularly important to
+asymmetric CMKs, such as the key usage (encryption or signing) and the
+encryption algorithms or signing algorithms that the CMK supports.
+
+C<DescribeKey> does not return the following information:
+
+=over
+
+=item *
+
+Aliases associated with the CMK. To get this information, use
+ListAliases.
+
+=item *
+
+Whether automatic key rotation is enabled on the CMK. To get this
+information, use GetKeyRotationStatus. Also, some key states prevent a
+CMK from being automatically rotated. For details, see How Automatic
+Key Rotation Works
+(https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-how-it-works)
+in I<AWS Key Management Service Developer Guide>.
+
+=item *
+
+Tags on the CMK. To get this information, use ListResourceTags.
+
+=item *
+
+Key policies and grants on the CMK. To get this information, use
+GetKeyPolicy and ListGrants.
+
+=back
+
+If you call the C<DescribeKey> operation on a I<predefined AWS alias>,
+that is, an AWS alias with no key ID, AWS KMS creates an AWS managed
+CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys).
+Then, it associates the alias with the new CMK, and returns the
+C<KeyId> and C<Arn> of the new CMK in the response.
 
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN or alias ARN in the value of the KeyId parameter.
@@ -1006,8 +1291,9 @@ How Key State Affects the Use of a Customer Master Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I< I<AWS Key Management Service Developer Guide> >.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1027,11 +1313,16 @@ Returns: nothing
 
 Disables automatic rotation of the key material
 (https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
-for the specified customer master key (CMK). You cannot perform this
-operation on a CMK in a different AWS account.
+for the specified symmetric customer master key (CMK).
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+You cannot enable automatic rotation of asymmetric CMKs, CMKs with
+imported key material, or CMKs in a custom key store
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+You cannot perform this operation on a CMK in a different AWS account.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1091,8 +1382,9 @@ Sets the key state of a customer master key (CMK) to enabled. This
 allows you to use the CMK for cryptographic operations. You cannot
 perform this operation on a CMK in a different AWS account.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1112,15 +1404,16 @@ Returns: nothing
 
 Enables automatic rotation of the key material
 (https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
-for the specified customer master key (CMK). You cannot perform this
-operation on a CMK in a different AWS account.
+for the specified symmetric customer master key (CMK). You cannot
+perform this operation on a CMK in a different AWS account.
 
-You cannot enable automatic rotation of CMKs with imported key material
-or CMKs in a custom key store
+You cannot enable automatic rotation of asymmetric CMKs, CMKs with
+imported key material, or CMKs in a custom key store
 (https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1132,6 +1425,8 @@ in the I<AWS Key Management Service Developer Guide>.
 =item KeyId => Str
 
 =item Plaintext => Str
+
+=item [EncryptionAlgorithm => Str]
 
 =item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
 
@@ -1151,8 +1446,8 @@ Encrypts plaintext into ciphertext by using a customer master key
 
 =item *
 
-You can encrypt up to 4 kilobytes (4096 bytes) of arbitrary data such
-as an RSA key, a database password, or other sensitive information.
+You can encrypt small amounts of arbitrary data, such as a personal
+identifier or database password, or other sensitive information.
 
 =item *
 
@@ -1165,16 +1460,110 @@ decrypt in the new region when necessary.
 
 =back
 
-You don't need use this operation to encrypt a data key within a
-region. The GenerateDataKey and GenerateDataKeyWithoutPlaintext
-operations return an encrypted data key.
+You don't need to use the C<Encrypt> operation to encrypt a data key.
+The GenerateDataKey and GenerateDataKeyPair operations return a
+plaintext data key and an encrypted copy of that data key.
 
-Also, you don't need to use this operation to encrypt data in your
-application. You can use the plaintext and encrypted data keys that the
-C<GenerateDataKey> operation returns.
+When you encrypt data, you must specify a symmetric or asymmetric CMK
+to use in the encryption operation. The CMK must have a C<KeyUsage>
+value of C<ENCRYPT_DECRYPT.> To find the C<KeyUsage> of a CMK, use the
+DescribeKey operation.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+If you use a symmetric CMK, you can use an encryption context to add
+additional security to your encryption operation. If you specify an
+C<EncryptionContext> when encrypting data, you must specify the same
+encryption context (a case-sensitive exact match) when decrypting the
+data. Otherwise, the request to decrypt fails with an
+C<InvalidCiphertextException>. For more information, see Encryption
+Context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+in the I<AWS Key Management Service Developer Guide>.
+
+If you specify an asymmetric CMK, you must also specify the encryption
+algorithm. The algorithm must be compatible with the CMK type.
+
+When you use an asymmetric CMK to encrypt or reencrypt data, be sure to
+record the CMK and encryption algorithm that you choose. You will be
+required to provide the same CMK and encryption algorithm when you
+decrypt the data. If the CMK and algorithm do not match the values used
+to encrypt the data, the decrypt operation fails.
+
+You are not required to supply the CMK ID and encryption algorithm when
+you decrypt with symmetric CMKs because AWS KMS stores this information
+in the ciphertext blob. AWS KMS cannot store metadata in ciphertext
+generated with asymmetric keys. The standard format for asymmetric key
+ciphertext does not include configurable fields.
+
+The maximum size of the data that you can encrypt varies with the type
+of CMK and the encryption algorithm that you choose.
+
+=over
+
+=item *
+
+Symmetric CMKs
+
+=over
+
+=item *
+
+C<SYMMETRIC_DEFAULT>: 4096 bytes
+
+=back
+
+=item *
+
+C<RSA_2048>
+
+=over
+
+=item *
+
+C<RSAES_OAEP_SHA_1>: 214 bytes
+
+=item *
+
+C<RSAES_OAEP_SHA_256>: 190 bytes
+
+=back
+
+=item *
+
+C<RSA_3072>
+
+=over
+
+=item *
+
+C<RSAES_OAEP_SHA_1>: 342 bytes
+
+=item *
+
+C<RSAES_OAEP_SHA_256>: 318 bytes
+
+=back
+
+=item *
+
+C<RSA_4096>
+
+=over
+
+=item *
+
+C<RSAES_OAEP_SHA_1>: 470 bytes
+
+=item *
+
+C<RSAES_OAEP_SHA_256>: 446 bytes
+
+=back
+
+=back
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1203,27 +1592,48 @@ Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
 Returns: a L<Paws::KMS::GenerateDataKeyResponse> instance
 
-Generates a unique data key. This operation returns a plaintext copy of
-the data key and a copy that is encrypted under a customer master key
-(CMK) that you specify. You can use the plaintext key to encrypt your
-data outside of KMS and store the encrypted data key with the encrypted
-data.
+Generates a unique symmetric data key. This operation returns a
+plaintext copy of the data key and a copy that is encrypted under a
+customer master key (CMK) that you specify. You can use the plaintext
+key to encrypt your data outside of AWS KMS and store the encrypted
+data key with the encrypted data.
 
 C<GenerateDataKey> returns a unique data key for each request. The
 bytes in the key are not related to the caller or CMK that is used to
 encrypt the data key.
 
-To generate a data key, you need to specify the customer master key
-(CMK) that will be used to encrypt the data key. You must also specify
-the length of the data key using either the C<KeySpec> or
-C<NumberOfBytes> field (but not both). For common key lengths (128-bit
-and 256-bit symmetric keys), we recommend that you use C<KeySpec>. To
-perform this operation on a CMK in a different AWS account, specify the
-key ARN or alias ARN in the value of the KeyId parameter.
+To generate a data key, specify the symmetric CMK that will be used to
+encrypt the data key. You cannot use an asymmetric CMK to generate data
+keys.
 
-You will find the plaintext copy of the data key in the C<Plaintext>
-field of the response, and the encrypted copy of the data key in the
-C<CiphertextBlob> field.
+You must also specify the length of the data key. Use either the
+C<KeySpec> or C<NumberOfBytes> parameters (but not both). For 128-bit
+and 256-bit data keys, use the C<KeySpec> parameter.
+
+If the operation succeeds, the plaintext copy of the data key is in the
+C<Plaintext> field of the response, and the encrypted copy of the data
+key in the C<CiphertextBlob> field.
+
+To get only an encrypted copy of the data key, use
+GenerateDataKeyWithoutPlaintext. To generate an asymmetric data key
+pair, use the GenerateDataKeyPair or
+GenerateDataKeyPairWithoutPlaintext operation. To get a
+cryptographically secure random byte string, use GenerateRandom.
+
+You can use the optional encryption context to add additional security
+to the encryption operation. If you specify an C<EncryptionContext>,
+you must specify the same encryption context (a case-sensitive exact
+match) when decrypting the encrypted data key. Otherwise, the request
+to decrypt fails with an InvalidCiphertextException. For more
+information, see Encryption Context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+in the I<AWS Key Management Service Developer Guide>.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 We recommend that you use the following pattern to encrypt data locally
 in your application:
@@ -1263,22 +1673,125 @@ plaintext data key from memory.
 
 =back
 
-To get only an encrypted copy of the data key, use
-GenerateDataKeyWithoutPlaintext. To get a cryptographically secure
-random byte string, use GenerateRandom.
+
+
+=head2 GenerateDataKeyPair
+
+=over
+
+=item KeyId => Str
+
+=item KeyPairSpec => Str
+
+=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyPair>
+
+Returns: a L<Paws::KMS::GenerateDataKeyPairResponse> instance
+
+Generates a unique asymmetric data key pair. The C<GenerateDataKeyPair>
+operation returns a plaintext public key, a plaintext private key, and
+a copy of the private key that is encrypted under the symmetric CMK you
+specify. You can use the data key pair to perform asymmetric
+cryptography outside of AWS KMS.
+
+C<GenerateDataKeyPair> returns a unique data key pair for each request.
+The bytes in the keys are not related to the caller or the CMK that is
+used to encrypt the private key.
+
+You can use the public key that C<GenerateDataKeyPair> returns to
+encrypt data or verify a signature outside of AWS KMS. Then, store the
+encrypted private key with the data. When you are ready to decrypt data
+or sign a message, you can use the Decrypt operation to decrypt the
+encrypted private key.
+
+To generate a data key pair, you must specify a symmetric customer
+master key (CMK) to encrypt the private key in a data key pair. You
+cannot use an asymmetric CMK. To get the type of your CMK, use the
+DescribeKey operation.
+
+If you are using the data key pair to encrypt data, or for any
+operation where you don't immediately need a private key, consider
+using the GenerateDataKeyPairWithoutPlaintext operation.
+C<GenerateDataKeyPairWithoutPlaintext> returns a plaintext public key
+and an encrypted private key, but omits the plaintext private key that
+you need only to decrypt ciphertext or sign a message. Later, when you
+need to decrypt the data or sign a message, use the Decrypt operation
+to decrypt the encrypted private key in the data key pair.
 
 You can use the optional encryption context to add additional security
-to your encryption operation. When you specify an C<EncryptionContext>
-in the C<GenerateDataKey> operation, you must specify the same
-encryption context (a case-sensitive exact match) in your request to
-Decrypt the data key. Otherwise, the request to decrypt fails with an
-C<InvalidCiphertextException>. For more information, see Encryption
-Context
+to the encryption operation. If you specify an C<EncryptionContext>,
+you must specify the same encryption context (a case-sensitive exact
+match) when decrypting the encrypted data key. Otherwise, the request
+to decrypt fails with an InvalidCiphertextException. For more
+information, see Encryption Context
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-in the I< I<AWS Key Management Service Developer Guide> >.
+in the I<AWS Key Management Service Developer Guide>.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 GenerateDataKeyPairWithoutPlaintext
+
+=over
+
+=item KeyId => Str
+
+=item KeyPairSpec => Str
+
+=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyPairWithoutPlaintext>
+
+Returns: a L<Paws::KMS::GenerateDataKeyPairWithoutPlaintextResponse> instance
+
+Generates a unique asymmetric data key pair. The
+C<GenerateDataKeyPairWithoutPlaintext> operation returns a plaintext
+public key and a copy of the private key that is encrypted under the
+symmetric CMK you specify. Unlike GenerateDataKeyPair, this operation
+does not return a plaintext private key.
+
+To generate a data key pair, you must specify a symmetric customer
+master key (CMK) to encrypt the private key in the data key pair. You
+cannot use an asymmetric CMK. To get the type of your CMK, use the
+C<KeySpec> field in the DescribeKey response.
+
+You can use the public key that C<GenerateDataKeyPairWithoutPlaintext>
+returns to encrypt data or verify a signature outside of AWS KMS. Then,
+store the encrypted private key with the data. When you are ready to
+decrypt data or sign a message, you can use the Decrypt operation to
+decrypt the encrypted private key.
+
+C<GenerateDataKeyPairWithoutPlaintext> returns a unique data key pair
+for each request. The bytes in the key are not related to the caller or
+CMK that is used to encrypt the private key.
+
+You can use the optional encryption context to add additional security
+to the encryption operation. If you specify an C<EncryptionContext>,
+you must specify the same encryption context (a case-sensitive exact
+match) when decrypting the encrypted data key. Otherwise, the request
+to decrypt fails with an InvalidCiphertextException. For more
+information, see Encryption Context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+in the I<AWS Key Management Service Developer Guide>.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1304,15 +1817,13 @@ Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlai
 
 Returns: a L<Paws::KMS::GenerateDataKeyWithoutPlaintextResponse> instance
 
-Generates a unique data key. This operation returns a data key that is
-encrypted under a customer master key (CMK) that you specify.
-C<GenerateDataKeyWithoutPlaintext> is identical to GenerateDataKey
-except that returns only the encrypted copy of the data key.
+Generates a unique symmetric data key. This operation returns a data
+key that is encrypted under a customer master key (CMK) that you
+specify. To request an asymmetric data key pair, use the
+GenerateDataKeyPair or GenerateDataKeyPairWithoutPlaintext operations.
 
-Like C<GenerateDataKey>, C<GenerateDataKeyWithoutPlaintext> returns a
-unique data key for each request. The bytes in the key are not related
-to the caller or CMK that is used to encrypt the data key.
-
+C<GenerateDataKeyWithoutPlaintext> is identical to the GenerateDataKey
+operation except that returns only the encrypted copy of the data key.
 This operation is useful for systems that need to encrypt data at some
 point, but not immediately. When you need to encrypt the data, you call
 the Decrypt operation on the encrypted copy of the key.
@@ -1327,8 +1838,34 @@ the container, and then destroys the plaintext data key. In this
 system, the component that creates the containers never sees the
 plaintext data key.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+C<GenerateDataKeyWithoutPlaintext> returns a unique data key for each
+request. The bytes in the keys are not related to the caller or CMK
+that is used to encrypt the private key.
+
+To generate a data key, you must specify the symmetric customer master
+key (CMK) that is used to encrypt the data key. You cannot use an
+asymmetric CMK to generate a data key. To get the type of your CMK, use
+the C<KeySpec> field in the DescribeKey response. You must also specify
+the length of the data key using either the C<KeySpec> or
+C<NumberOfBytes> field (but not both). For common key lengths (128-bit
+and 256-bit symmetric keys), use the C<KeySpec> parameter.
+
+If the operation succeeds, you will find the plaintext copy of the data
+key in the C<Plaintext> field of the response, and the encrypted copy
+of the data key in the C<CiphertextBlob> field.
+
+You can use the optional encryption context to add additional security
+to the encryption operation. If you specify an C<EncryptionContext>,
+you must specify the same encryption context (a case-sensitive exact
+match) when decrypting the encrypted data key. Otherwise, the request
+to decrypt fails with an InvalidCiphertextException. For more
+information, see Encryption Context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+in the I<AWS Key Management Service Developer Guide>.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1399,8 +1936,14 @@ key material
 (https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 is enabled for the specified customer master key (CMK).
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+You cannot enable automatic rotation of asymmetric CMKs, CMKs with
+imported key material, or CMKs in a custom key store
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+The key rotation status for these CMKs is always C<false>.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1441,28 +1984,112 @@ Each argument is described in detail in: L<Paws::KMS::GetParametersForImport>
 
 Returns: a L<Paws::KMS::GetParametersForImportResponse> instance
 
-Returns the items you need in order to import key material into AWS KMS
-from your existing key management infrastructure. For more information
-about importing key material into AWS KMS, see Importing Key Material
+Returns the items you need to import key material into a symmetric,
+customer managed customer master key (CMK). For more information about
+importing key material into AWS KMS, see Importing Key Material
 (https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
-You must specify the key ID of the customer master key (CMK) into which
-you will import key material. This CMK's C<Origin> must be C<EXTERNAL>.
-You must also specify the wrapping algorithm and type of wrapping key
-(public key) that you will use to encrypt the key material. You cannot
-perform this operation on a CMK in a different AWS account.
-
 This operation returns a public key and an import token. Use the public
-key to encrypt the key material. Store the import token to send with a
-subsequent ImportKeyMaterial request. The public key and import token
-from the same response must be used together. These items are valid for
-24 hours. When they expire, they cannot be used for a subsequent
-ImportKeyMaterial request. To get new ones, send another
+key to encrypt the symmetric key material. Store the import token to
+send with a subsequent ImportKeyMaterial request.
+
+You must specify the key ID of the symmetric CMK into which you will
+import key material. This CMK's C<Origin> must be C<EXTERNAL>. You must
+also specify the wrapping algorithm and type of wrapping key (public
+key) that you will use to encrypt the key material. You cannot perform
+this operation on an asymmetric CMK or on any CMK in a different AWS
+account.
+
+To import key material, you must use the public key and import token
+from the same response. These items are valid for 24 hours. The
+expiration date and time appear in the C<GetParametersForImport>
+response. You cannot use an expired token in an ImportKeyMaterial
+request. If your key and token expire, send another
 C<GetParametersForImport> request.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 GetPublicKey
+
+=over
+
+=item KeyId => Str
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::GetPublicKey>
+
+Returns: a L<Paws::KMS::GetPublicKeyResponse> instance
+
+Returns the public key of an asymmetric CMK. Unlike the private key of
+a asymmetric CMK, which never leaves AWS KMS unencrypted, callers with
+C<kms:GetPublicKey> permission can download the public key of an
+asymmetric CMK. You can share the public key to allow others to encrypt
+messages and verify signatures outside of AWS KMS. For information
+about symmetric and asymmetric CMKs, see Using Symmetric and Asymmetric
+CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+You do not need to download the public key. Instead, you can use the
+public key within AWS KMS by calling the Encrypt, ReEncrypt, or Verify
+operations with the identifier of an asymmetric CMK. When you use the
+public key within AWS KMS, you benefit from the authentication,
+authorization, and logging that are part of every AWS KMS operation.
+You also reduce of risk of encrypting data that cannot be decrypted.
+These features are not effective outside of AWS KMS. For details, see
+Special Considerations for Downloading Public Keys.
+
+To help you use the public key safely outside of AWS KMS,
+C<GetPublicKey> returns important information about the public key in
+the response, including:
+
+=over
+
+=item *
+
+CustomerMasterKeySpec
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-CustomerMasterKeySpec):
+The type of key material in the public key, such as C<RSA_4096> or
+C<ECC_NIST_P521>.
+
+=item *
+
+KeyUsage
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-KeyUsage):
+Whether the key is used for encryption or signing.
+
+=item *
+
+EncryptionAlgorithms
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-EncryptionAlgorithms)
+or SigningAlgorithms
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_GetPublicKey.html#KMS-GetPublicKey-response-SigningAlgorithms):
+A list of the encryption algorithms or the signing algorithms for the
+key.
+
+=back
+
+Although AWS KMS cannot enforce these restrictions on external
+operations, it is crucial that you use this information to prevent the
+public key from being used improperly. For example, you can prevent a
+public signing key from being used encrypt data, or prevent a public
+key from being used with an encryption algorithm that is not supported
+by AWS KMS. You can also avoid errors, such as using the wrong signing
+algorithm in a verification operation.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1488,11 +2115,16 @@ Each argument is described in detail in: L<Paws::KMS::ImportKeyMaterial>
 
 Returns: a L<Paws::KMS::ImportKeyMaterialResponse> instance
 
-Imports key material into an existing AWS KMS customer master key (CMK)
-that was created without key material. You cannot perform this
-operation on a CMK in a different AWS account. For more information
-about creating CMKs with no key material and then importing key
-material, see Importing Key Material
+Imports key material into an existing symmetric AWS KMS customer master
+key (CMK) that was created without key material. After you successfully
+import key material into a CMK, you can reimport the same key material
+(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material)
+into that CMK, but you cannot import different key material.
+
+You cannot perform this operation on an asymmetric CMK or on any CMK in
+a different AWS account. For more information about creating CMKs with
+no key material and then importing key material, see Importing Key
+Material
 (https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1521,28 +2153,34 @@ material, call GetParametersForImport.
 
 =item *
 
-The import token that GetParametersForImport returned. This token and
-the public key used to encrypt the key material must have come from the
-same response.
+The import token that GetParametersForImport returned. You must use a
+public key and token from the same C<GetParametersForImport> response.
 
 =item *
 
 Whether the key material expires and if so, when. If you set an
-expiration date, you can change it only by reimporting the same key
-material and specifying a new expiration date. If the key material
-expires, AWS KMS deletes the key material and the CMK becomes unusable.
-To use the CMK again, you must reimport the same key material.
+expiration date, AWS KMS deletes the key material from the CMK on the
+specified date, and the CMK becomes unusable. To use the CMK again, you
+must reimport the same key material. The only way to change an
+expiration date is by reimporting the same key material and specifying
+a new expiration date.
 
 =back
 
 When this operation is successful, the key state of the CMK changes
-from C<PendingImport> to C<Enabled>, and you can use the CMK. After you
-successfully import key material into a CMK, you can reimport the same
-key material into that CMK, but you cannot import different key
-material.
+from C<PendingImport> to C<Enabled>, and you can use the CMK.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+If this operation fails, use the exception to help determine the
+problem. If the error is related to the key material, the import token,
+or wrapping key, use GetParametersForImport to get a new public key and
+import token for the CMK and repeat the import procedure. For help, see
+How To Import Key Material
+(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#importing-keys-overview)
+in the I<AWS Key Management Service Developer Guide>.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1649,7 +2287,7 @@ Each argument is described in detail in: L<Paws::KMS::ListKeys>
 Returns: a L<Paws::KMS::ListKeysResponse> instance
 
 Gets a list of all customer master keys (CMKs) in the caller's AWS
-account and region.
+account and Region.
 
 
 =head2 ListResourceTags
@@ -1733,11 +2371,17 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item DestinationKeyId => Str
 
+=item [DestinationEncryptionAlgorithm => Str]
+
 =item [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
+=item [SourceEncryptionAlgorithm => Str]
+
 =item [SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>]
+
+=item [SourceKeyId => Str]
 
 
 =back
@@ -1746,26 +2390,96 @@ Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 
 Returns: a L<Paws::KMS::ReEncryptResponse> instance
 
-Encrypts data on the server side with a new customer master key (CMK)
-without exposing the plaintext of the data on the client side. The data
-is first decrypted and then reencrypted. You can also use this
-operation to change the encryption context of a ciphertext.
+Decrypts ciphertext and then reencrypts it entirely within AWS KMS. You
+can use this operation to change the customer master key (CMK) under
+which data is encrypted, such as when you manually rotate a CMK or
+change the CMK that protects a ciphertext. You can also use it to
+reencrypt ciphertext under the same CMK, such as to change the
+encryption context of a ciphertext.
 
-You can reencrypt data using CMKs in different AWS accounts.
+The C<ReEncrypt> operation can decrypt ciphertext that was encrypted by
+using an AWS KMS CMK in an AWS KMS operation, such as Encrypt or
+GenerateDataKey. It can also decrypt ciphertext that was encrypted by
+using the public key of an asymmetric CMK outside of AWS KMS. However,
+it cannot decrypt ciphertext produced by other libraries, such as the
+AWS Encryption SDK
+(https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/) or
+Amazon S3 client-side encryption
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+These libraries return a ciphertext format that is incompatible with
+AWS KMS.
 
-Unlike other operations, C<ReEncrypt> is authorized twice, once as
-C<ReEncryptFrom> on the source CMK and once as C<ReEncryptTo> on the
-destination CMK. We recommend that you include the C<"kms:ReEncrypt*">
-permission in your key policies
-(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
-to permit reencryption from or to the CMK. This permission is
-automatically included in the key policy when you create a CMK through
-the console. But you must include it manually when you create a CMK
-programmatically or when you set a key policy with the PutKeyPolicy
+When you use the C<ReEncrypt> operation, you need to provide
+information for the decrypt operation and the subsequent encrypt
 operation.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+=over
+
+=item *
+
+If your ciphertext was encrypted under an asymmetric CMK, you must
+identify the I<source CMK>, that is, the CMK that encrypted the
+ciphertext. You must also supply the encryption algorithm that was
+used. This information is required to decrypt the data.
+
+=item *
+
+It is optional, but you can specify a source CMK even when the
+ciphertext was encrypted under a symmetric CMK. This ensures that the
+ciphertext is decrypted only by using a particular CMK. If the CMK that
+you specify cannot decrypt the ciphertext, the C<ReEncrypt> operation
+fails.
+
+=item *
+
+To reencrypt the data, you must specify the I<destination CMK>, that
+is, the CMK that re-encrypts the data after it is decrypted. You can
+select a symmetric or asymmetric CMK. If the destination CMK is an
+asymmetric CMK, you must also provide the encryption algorithm. The
+algorithm that you choose must be compatible with the CMK.
+
+When you use an asymmetric CMK to encrypt or reencrypt data, be sure to
+record the CMK and encryption algorithm that you choose. You will be
+required to provide the same CMK and encryption algorithm when you
+decrypt the data. If the CMK and algorithm do not match the values used
+to encrypt the data, the decrypt operation fails.
+
+You are not required to supply the CMK ID and encryption algorithm when
+you decrypt with symmetric CMKs because AWS KMS stores this information
+in the ciphertext blob. AWS KMS cannot store metadata in ciphertext
+generated with asymmetric keys. The standard format for asymmetric key
+ciphertext does not include configurable fields.
+
+=back
+
+Unlike other AWS KMS API operations, C<ReEncrypt> callers must have two
+permissions:
+
+=over
+
+=item *
+
+C<kms:EncryptFrom> permission on the source CMK
+
+=item *
+
+C<kms:EncryptTo> permission on the destination CMK
+
+=back
+
+To permit reencryption from
+
+or to a CMK, include the C<"kms:ReEncrypt*"> permission in your key
+policy
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html).
+This permission is automatically included in the key policy when you
+use the console to create a CMK. But you must include it manually when
+you create a CMK programmatically or when you use the PutKeyPolicy
+operation set a key policy.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1884,8 +2598,86 @@ Customer Master Keys
 (https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 Sign
+
+=over
+
+=item KeyId => Str
+
+=item Message => Str
+
+=item SigningAlgorithm => Str
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [MessageType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::Sign>
+
+Returns: a L<Paws::KMS::SignResponse> instance
+
+Creates a digital signature
+(https://en.wikipedia.org/wiki/Digital_signature) for a message or
+message digest by using the private key in an asymmetric CMK. To verify
+the signature, use the Verify operation, or use the public key in the
+same asymmetric CMK outside of AWS KMS. For information about symmetric
+and asymmetric CMKs, see Using Symmetric and Asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+Digital signatures are generated and verified by using asymmetric key
+pair, such as an RSA or ECC pair that is represented by an asymmetric
+customer master key (CMK). The key owner (or an authorized user) uses
+their private key to sign a message. Anyone with the public key can
+verify that the message was signed with that particular private key and
+that the message hasn't changed since it was signed.
+
+To use the C<Sign> operation, provide the following information:
+
+=over
+
+=item *
+
+Use the C<KeyId> parameter to identify an asymmetric CMK with a
+C<KeyUsage> value of C<SIGN_VERIFY>. To get the C<KeyUsage> value of a
+CMK, use the DescribeKey operation. The caller must have C<kms:Sign>
+permission on the CMK.
+
+=item *
+
+Use the C<Message> parameter to specify the message or message digest
+to sign. You can submit messages of up to 4096 bytes. To sign a larger
+message, generate a hash digest of the message, and then provide the
+hash digest in the C<Message> parameter. To indicate whether the
+message is a full message or a digest, use the C<MessageType>
+parameter.
+
+=item *
+
+Choose a signing algorithm that is compatible with the CMK.
+
+=back
+
+When signing a message, be sure to record the CMK and the signing
+algorithm. This information is required to verify the signature.
+
+To verify the signature that this operation generates, use the Verify
+operation. Or use the GetPublicKey operation to download the public key
+and then use the public key to verify the signature outside of AWS KMS.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1919,8 +2711,9 @@ see User-Defined Tag Restrictions
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1947,8 +2740,9 @@ account.
 To remove a tag, specify the tag key. To change the tag value of an
 existing tag key, use TagResource.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -1968,14 +2762,22 @@ Each argument is described in detail in: L<Paws::KMS::UpdateAlias>
 
 Returns: nothing
 
-Associates an existing alias with a different customer master key
-(CMK). Each CMK can have multiple aliases, but the aliases must be
-unique within the account and region. You cannot perform this operation
+Associates an existing AWS KMS alias with a different customer master
+key (CMK). Each alias is associated with only one CMK at a time,
+although a CMK can have multiple aliases. The alias and the CMK must be
+in the same AWS account and region. You cannot perform this operation
 on an alias in a different AWS account.
 
-This operation works only on existing aliases. To change the alias of a
-CMK to a new value, use CreateAlias to create a new alias and
-DeleteAlias to delete the old alias.
+The current and new CMK must be the same type (both symmetric or both
+asymmetric), and they must have the same key usage (C<ENCRYPT_DECRYPT>
+or C<SIGN_VERIFY>). This restriction prevents errors in code that uses
+aliases. If you must assign an alias to a different type of CMK, use
+DeleteAlias to delete the old alias and CreateAlias to create a new
+alias.
+
+You cannot use C<UpdateAlias> to change an alias name. To change an
+alias name, use DeleteAlias to delete the old alias and CreateAlias to
+create a new alias.
 
 Because an alias is not a property of a CMK, you can create, update,
 and delete the aliases of a CMK without affecting the CMK. Also,
@@ -1983,15 +2785,9 @@ aliases do not appear in the response from the DescribeKey operation.
 To get the aliases of all CMKs in the account, use the ListAliases
 operation.
 
-The alias name must begin with C<alias/> followed by a name, such as
-C<alias/ExampleAlias>. It can contain only alphanumeric characters,
-forward slashes (/), underscores (_), and dashes (-). The alias name
-cannot begin with C<alias/aws/>. The C<alias/aws/> prefix is reserved
-for AWS managed CMKs
-(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
-
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -2087,8 +2883,72 @@ description of a CMK, use DescribeKey.
 
 You cannot perform this operation on a CMK in a different AWS account.
 
-The result of this operation varies with the key state of the CMK. For
-details, see How Key State Affects Use of a Customer Master Key
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 Verify
+
+=over
+
+=item KeyId => Str
+
+=item Message => Str
+
+=item Signature => Str
+
+=item SigningAlgorithm => Str
+
+=item [GrantTokens => ArrayRef[Str|Undef]]
+
+=item [MessageType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KMS::Verify>
+
+Returns: a L<Paws::KMS::VerifyResponse> instance
+
+Verifies a digital signature that was generated by the Sign operation.
+This operation requires an asymmetric CMK with a C<KeyUsage> value of
+C<SIGN_VERIFY>.
+
+Verification confirms that an authorized user signed the message with
+the specified key and signing algorithm, and the message hasn't changed
+since it was signed. A digital signature is generated by using the
+private key in an asymmetric CMK. The signature is verified by using
+the public key in the same asymmetric CMK. For information about
+symmetric and asymmetric CMKs, see Using Symmetric and Asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+To verify a digital signature, you can use the C<Verify> operation.
+Specify the same asymmetric CMK that was used by the C<Sign> operation
+to generate the digital signature.
+
+You can also verify the digital signature by using the public key of
+the CMK outside of AWS KMS. Use the GetPublicKey operation to download
+the public key in the asymmetric CMK and then use the public key to
+verify the signature outside of AWS KMS.
+
+The advantage of using the C<Verify> operation is that it is performed
+within AWS KMS. As a result, it's easy to call, the operation is
+performed within the FIPS boundary, it is logged in AWS CloudTrail, and
+you can use key policy and IAM policy to determine who is authorized to
+use the CMK to verify signatures.
+
+The result of the C<Verify> operation, which is represented by its HTTP
+status code, does not indicate whether the signature verification
+succeeded or failed. To determine whether the signature was verified,
+see the C<SignatureValid> field in the response.
+
+The CMK that you use for this operation must be in a compatible key
+state. For details, see How Key State Affects Use of a Customer Master
+Key
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 

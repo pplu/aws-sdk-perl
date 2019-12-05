@@ -1,0 +1,40 @@
+
+package Paws::KMS::SignResponse;
+  use Moose;
+  has KeyId => (is => 'ro', isa => 'Str');
+  has Signature => (is => 'ro', isa => 'Str');
+  has SigningAlgorithm => (is => 'ro', isa => 'Str');
+
+  has _request_id => (is => 'ro', isa => 'Str');
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::KMS::SignResponse
+
+=head1 ATTRIBUTES
+
+
+=head2 KeyId => Str
+
+The Amazon Resource Name (ARN) of the asymmetric CMK that was used to
+sign the message.
+
+
+=head2 Signature => Str
+
+The cryptographic signature that was generated for the message.
+
+
+=head2 SigningAlgorithm => Str
+
+The signing algorithm that was used to sign the message.
+
+Valid values are: C<"RSASSA_PSS_SHA_256">, C<"RSASSA_PSS_SHA_384">, C<"RSASSA_PSS_SHA_512">, C<"RSASSA_PKCS1_V1_5_SHA_256">, C<"RSASSA_PKCS1_V1_5_SHA_384">, C<"RSASSA_PKCS1_V1_5_SHA_512">, C<"ECDSA_SHA_256">, C<"ECDSA_SHA_384">, C<"ECDSA_SHA_512">
+=head2 _request_id => Str
+
+
+=cut
+
+1;

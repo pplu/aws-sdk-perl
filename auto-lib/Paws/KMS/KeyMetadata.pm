@@ -4,16 +4,19 @@ package Paws::KMS::KeyMetadata;
   has AWSAccountId => (is => 'ro', isa => 'Str');
   has CloudHsmClusterId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has CustomerMasterKeySpec => (is => 'ro', isa => 'Str');
   has CustomKeyStoreId => (is => 'ro', isa => 'Str');
   has DeletionDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has EncryptionAlgorithms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ExpirationModel => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has KeyManager => (is => 'ro', isa => 'Str');
   has KeyState => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
+  has SigningAlgorithms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValidTo => (is => 'ro', isa => 'Str');
 1;
 
@@ -81,6 +84,11 @@ a custom key store.
   The date and time when the CMK was created.
 
 
+=head2 CustomerMasterKeySpec => Str
+
+  Describes the type of key material in the CMK.
+
+
 =head2 CustomKeyStoreId => Str
 
   A unique identifier for the custom key store
@@ -104,6 +112,15 @@ present only when C<KeyState> is C<PendingDeletion>.
 
   Specifies whether the CMK is enabled. When C<KeyState> is C<Enabled>
 this value is true, otherwise it is false.
+
+
+=head2 EncryptionAlgorithms => ArrayRef[Str|Undef]
+
+  A list of encryption algorithms that the CMK supports. You cannot use
+the CMK with other encryption algorithms within AWS KMS.
+
+This field appears only when the C<KeyUsage> of the CMK is
+C<ENCRYPT_DECRYPT>.
 
 
 =head2 ExpirationModel => Str
@@ -138,9 +155,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 KeyUsage => Str
 
-  The cryptographic operations for which you can use the CMK. The only
-valid value is C<ENCRYPT_DECRYPT>, which means you can use the CMK to
-encrypt and decrypt data.
+  The cryptographic operations for which you can use the CMK.
 
 
 =head2 Origin => Str
@@ -151,6 +166,15 @@ key material was imported from your existing key management
 infrastructure or the CMK lacks key material. When this value is
 C<AWS_CLOUDHSM>, the key material was created in the AWS CloudHSM
 cluster associated with a custom key store.
+
+
+=head2 SigningAlgorithms => ArrayRef[Str|Undef]
+
+  A list of signing algorithms that the CMK supports. You cannot use the
+CMK with other signing algorithms within AWS KMS.
+
+This field appears only when the C<KeyUsage> of the CMK is
+C<SIGN_VERIFY>.
 
 
 =head2 ValidTo => Str
