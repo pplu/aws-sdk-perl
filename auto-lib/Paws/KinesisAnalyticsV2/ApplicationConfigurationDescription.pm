@@ -6,6 +6,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription;
   has FlinkApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription');
   has RunConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationDescription');
   has SqlApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription');
+  has VpcConfigurationDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfigurationDescription]');
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription object:
 
-  $service_obj->Method(Att1 => { ApplicationCodeConfigurationDescription => $value, ..., SqlApplicationConfigurationDescription => $value  });
+  $service_obj->Method(Att1 => { ApplicationCodeConfigurationDescription => $value, ..., VpcConfigurationDescriptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -75,6 +76,12 @@ application.
 
   The details about inputs, outputs, and reference data sources for an
 SQL-based Kinesis Data Analytics application.
+
+
+=head2 VpcConfigurationDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::VpcConfigurationDescription>]
+
+  The array of descriptions of VPC configurations available to the
+application.
 
 
 

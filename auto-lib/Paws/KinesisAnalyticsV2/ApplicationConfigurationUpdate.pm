@@ -5,6 +5,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate;
   has EnvironmentPropertyUpdates => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::EnvironmentPropertyUpdates');
   has FlinkApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationUpdate');
   has SqlApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationUpdate');
+  has VpcConfigurationUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfigurationUpdate]');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate object:
 
-  $service_obj->Method(Att1 => { ApplicationCodeConfigurationUpdate => $value, ..., SqlApplicationConfigurationUpdate => $value  });
+  $service_obj->Method(Att1 => { ApplicationCodeConfigurationUpdate => $value, ..., VpcConfigurationUpdates => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,6 +69,12 @@ configuration.
 
   Describes updates to an SQL-based Kinesis Data Analytics application's
 configuration.
+
+
+=head2 VpcConfigurationUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::VpcConfigurationUpdate>]
+
+  Updates to the array of descriptions of VPC configurations available to
+the application.
 
 
 

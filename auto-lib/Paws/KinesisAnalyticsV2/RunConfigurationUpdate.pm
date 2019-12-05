@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::RunConfigurationUpdate;
   use Moose;
   has ApplicationRestoreConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
+  has FlinkRunConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkRunConfiguration');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::RunConfigurationUpdate object:
 
-  $service_obj->Method(Att1 => { ApplicationRestoreConfiguration => $value, ..., ApplicationRestoreConfiguration => $value  });
+  $service_obj->Method(Att1 => { ApplicationRestoreConfiguration => $value, ..., FlinkRunConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,6 +41,12 @@ Analytics application.
 =head2 ApplicationRestoreConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration>
 
   Describes updates to the restore behavior of a restarting application.
+
+
+=head2 FlinkRunConfiguration => L<Paws::KinesisAnalyticsV2::FlinkRunConfiguration>
+
+  Describes the starting parameters for an Apache Flink-based Kinesis
+Data Analytics application.
 
 
 

@@ -5,6 +5,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfiguration;
   has EnvironmentProperties => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::EnvironmentProperties');
   has FlinkApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration');
   has SqlApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfiguration');
+  has VpcConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfiguration]');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::ApplicationConfiguration object:
 
-  $service_obj->Method(Att1 => { ApplicationCodeConfiguration => $value, ..., SqlApplicationConfiguration => $value  });
+  $service_obj->Method(Att1 => { ApplicationCodeConfiguration => $value, ..., VpcConfigurations => $value  });
 
 =head3 Results returned from an API call
 
@@ -69,6 +70,12 @@ Analytics application.
 
   The creation and update parameters for an SQL-based Kinesis Data
 Analytics application.
+
+
+=head2 VpcConfigurations => ArrayRef[L<Paws::KinesisAnalyticsV2::VpcConfiguration>]
+
+  The array of descriptions of VPC configurations available to the
+application.
 
 
 

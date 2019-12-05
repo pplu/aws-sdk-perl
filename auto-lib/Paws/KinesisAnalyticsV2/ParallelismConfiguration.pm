@@ -53,15 +53,23 @@ parallelism of the application in response to increased throughput.
 =head2 B<REQUIRED> ConfigurationType => Str
 
   Describes whether the application uses the default parallelism for the
-Kinesis Data Analytics service.
+Kinesis Data Analytics service. You must set this property to C<CUSTOM>
+in order to change your application's C<AutoScalingEnabled>,
+C<Parallelism>, or C<ParallelismPerKPU> properties.
 
 
 =head2 Parallelism => Int
 
   Describes the initial number of parallel tasks that a Java-based
-Kinesis Data Analytics application can perform. The Kinesis Data
-Analytics service can increase this number automatically if
-ParallelismConfiguration$AutoScalingEnabled is set to C<true>.
+Kinesis Data Analytics application can perform. If
+C<AutoScalingEnabled> is set to True, Kinesis Data Analytics increases
+the C<CurrentParallelism> value in response to application load. The
+service can increase the C<CurrentParallelism> value up to the maximum
+parallelism, which is C<ParalellismPerKPU> times the maximum KPUs for
+the application. The maximum KPUs for an application is 32 by default,
+and can be increased by requesting a limit increase. If application
+load is reduced, the service can reduce the C<CurrentParallelism> value
+down to the C<Parallelism> setting.
 
 
 =head2 ParallelismPerKPU => Int

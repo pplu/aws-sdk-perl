@@ -44,7 +44,8 @@ about CloudWatch logging, see Monitoring
 =head2 B<REQUIRED> ConfigurationType => Str
 
   Describes whether to use the default CloudWatch logging configuration
-for an application.
+for an application. You must set this property to C<CUSTOM> in order to
+set the C<LogLevel> or C<MetricsLevel> parameters.
 
 
 =head2 LogLevel => Str

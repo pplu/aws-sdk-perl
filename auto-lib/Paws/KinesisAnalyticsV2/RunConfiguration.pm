@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::RunConfiguration;
   use Moose;
   has ApplicationRestoreConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
+  has FlinkRunConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkRunConfiguration');
   has SqlRunConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::SqlRunConfiguration]');
 1;
 
@@ -41,6 +42,12 @@ application.
 =head2 ApplicationRestoreConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration>
 
   Describes the restore behavior of a restarting application.
+
+
+=head2 FlinkRunConfiguration => L<Paws::KinesisAnalyticsV2::FlinkRunConfiguration>
+
+  Describes the starting parameters for an Apache Flink-based Kinesis
+Data Analytics application.
 
 
 =head2 SqlRunConfigurations => ArrayRef[L<Paws::KinesisAnalyticsV2::SqlRunConfiguration>]

@@ -45,10 +45,20 @@ Analytics application.
   Describes whether checkpointing is enabled for a Java-based Kinesis
 Data Analytics application.
 
+If C<CheckpointConfiguration.ConfigurationType> is C<DEFAULT>, the
+application will use a C<CheckpointingEnabled> value of C<true>, even
+if this value is set to another value using this API or in application
+code.
+
 
 =head2 CheckpointInterval => Int
 
   Describes the interval in milliseconds between checkpoint operations.
+
+If C<CheckpointConfiguration.ConfigurationType> is C<DEFAULT>, the
+application will use a C<CheckpointInterval> vaue of 60000, even if
+this value is set to another value using this API or in application
+code.
 
 
 =head2 ConfigurationType => Str
@@ -56,11 +66,36 @@ Data Analytics application.
   Describes whether the application uses the default checkpointing
 behavior in Kinesis Data Analytics.
 
+If this value is set to C<DEFAULT>, the application will use the
+following values, even if they are set to other values using APIs or
+application code:
+
+=over
+
+=item *
+
+B<CheckpointingEnabled:> true
+
+=item *
+
+B<CheckpointInterval:> 60000
+
+=item *
+
+B<MinPauseBetweenCheckpoints:> 5000
+
+=back
+
+
 
 =head2 MinPauseBetweenCheckpoints => Int
 
   Describes the minimum time in milliseconds after a checkpoint operation
 completes that a new checkpoint operation can start.
+
+If C<CheckpointConfiguration.ConfigurationType> is C<DEFAULT>, the
+application will use a C<MinPauseBetweenCheckpoints> value of 5000,
+even if this value is set using this API or in application code.
 
 
 

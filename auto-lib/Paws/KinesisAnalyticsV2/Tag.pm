@@ -37,9 +37,8 @@ to AWS resources. If you specify a tag that already exists, the tag
 value is replaced with the value that you specify in the request. Note
 that the maximum number of application tags includes system tags. The
 maximum number of user-defined application tags is 50. For more
-information, see Using Cost Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-in the I<AWS Billing and Cost Management Guide>.
+information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 =head1 ATTRIBUTES
 
