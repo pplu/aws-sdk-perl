@@ -203,6 +203,8 @@ configuration resource.
 
 =item [DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>]
 
+=item [LivePreRollConfiguration => L<Paws::MediaTailor::LivePreRollConfiguration>]
+
 =item [Name => Str]
 
 =item [SlateAdUrl => Str]

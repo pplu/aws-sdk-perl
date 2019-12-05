@@ -5,6 +5,7 @@ package Paws::MediaTailor::PutPlaybackConfigurationResponse;
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
   has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfiguration');
   has HlsConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::HlsConfiguration');
+  has LivePreRollConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::LivePreRollConfiguration');
   has Name => (is => 'ro', isa => 'Str');
   has PlaybackConfigurationArn => (is => 'ro', isa => 'Str');
   has PlaybackEndpointPrefix => (is => 'ro', isa => 'Str');
@@ -50,6 +51,11 @@ The configuration for DASH content.
 =head2 HlsConfiguration => L<Paws::MediaTailor::HlsConfiguration>
 
 The configuration for HLS content.
+
+
+=head2 LivePreRollConfiguration => L<Paws::MediaTailor::LivePreRollConfiguration>
+
+The configuration for pre-roll ad insertion.
 
 
 =head2 Name => Str
