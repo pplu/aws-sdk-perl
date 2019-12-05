@@ -3,6 +3,7 @@ package Paws::RAM::Resource;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'resourceGroupArn', traits => ['NameInRequest']);
   has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
@@ -55,6 +56,12 @@ Describes a resource associated with a resource share.
 =head2 LastUpdatedTime => Str
 
   The time when the association was last updated.
+
+
+=head2 ResourceGroupArn => Str
+
+  The ARN of the resource group. This value is returned only if the
+resource is a resource group.
 
 
 =head2 ResourceShareArn => Str

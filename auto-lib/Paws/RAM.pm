@@ -24,6 +24,11 @@ package Paws::RAM;
     my $call_object = $self->new_with_coercions('Paws::RAM::AssociateResourceShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateResourceSharePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::AssociateResourceSharePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateResourceShare {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::CreateResourceShare', @_);
@@ -39,9 +44,19 @@ package Paws::RAM;
     my $call_object = $self->new_with_coercions('Paws::RAM::DisassociateResourceShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateResourceSharePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::DisassociateResourceSharePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub EnableSharingWithAwsOrganization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::EnableSharingWithAwsOrganization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::GetPermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetResourcePolicies {
@@ -69,6 +84,11 @@ package Paws::RAM;
     my $call_object = $self->new_with_coercions('Paws::RAM::ListPendingInvitationResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::ListPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPrincipals {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::ListPrincipals', @_);
@@ -77,6 +97,16 @@ package Paws::RAM;
   sub ListResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::ListResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListResourceSharePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::ListResourceSharePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PromoteResourceShareCreatedFromPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::PromoteResourceShareCreatedFromPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RejectResourceShareInvitation {
@@ -240,7 +270,7 @@ package Paws::RAM;
   }
 
 
-  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare CreateResourceShare DeleteResourceShare DisassociateResourceShare EnableSharingWithAwsOrganization GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPrincipals ListResources RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
+  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare AssociateResourceSharePermission CreateResourceShare DeleteResourceShare DisassociateResourceShare DisassociateResourceSharePermission EnableSharingWithAwsOrganization GetPermission GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPermissions ListPrincipals ListResources ListResourceSharePermissions PromoteResourceShareCreatedFromPolicy RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
 
 1;
 
@@ -324,6 +354,28 @@ Associates the specified resource share with the specified principals
 and resources.
 
 
+=head2 AssociateResourceSharePermission
+
+=over
+
+=item PermissionArn => Str
+
+=item ResourceShareArn => Str
+
+=item [ClientToken => Str]
+
+=item [Replace => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::AssociateResourceSharePermission>
+
+Returns: a L<Paws::RAM::AssociateResourceSharePermissionResponse> instance
+
+Associates a permission with a resource share.
+
+
 =head2 CreateResourceShare
 
 =over
@@ -333,6 +385,8 @@ and resources.
 =item [AllowExternalPrincipals => Bool]
 
 =item [ClientToken => Str]
+
+=item [PermissionArns => ArrayRef[Str|Undef]]
 
 =item [Principals => ArrayRef[Str|Undef]]
 
@@ -391,6 +445,26 @@ Disassociates the specified principals or resources from the specified
 resource share.
 
 
+=head2 DisassociateResourceSharePermission
+
+=over
+
+=item PermissionArn => Str
+
+=item ResourceShareArn => Str
+
+=item [ClientToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::DisassociateResourceSharePermission>
+
+Returns: a L<Paws::RAM::DisassociateResourceSharePermissionResponse> instance
+
+Disassociates an AWS RAM permission from a resource share.
+
+
 =head2 EnableSharingWithAwsOrganization
 
 
@@ -405,6 +479,24 @@ Returns: a L<Paws::RAM::EnableSharingWithAwsOrganizationResponse> instance
 Enables resource sharing within your AWS Organization.
 
 The caller must be the master account for the AWS Organization.
+
+
+=head2 GetPermission
+
+=over
+
+=item PermissionArn => Str
+
+=item [PermissionVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::GetPermission>
+
+Returns: a L<Paws::RAM::GetPermissionResponse> instance
+
+Gets the contents of an AWS RAM permission in JSON format.
 
 
 =head2 GetResourcePolicies
@@ -530,6 +622,26 @@ Lists the resources in a resource share that is shared with you but
 that the invitation is still pending for.
 
 
+=head2 ListPermissions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::ListPermissions>
+
+Returns: a L<Paws::RAM::ListPermissionsResponse> instance
+
+Lists the AWS RAM permissions.
+
+
 =head2 ListPrincipals
 
 =over
@@ -555,8 +667,8 @@ Each argument is described in detail in: L<Paws::RAM::ListPrincipals>
 
 Returns: a L<Paws::RAM::ListPrincipalsResponse> instance
 
-Lists the principals that you have shared resources with or the
-principals that have shared resources with you.
+Lists the principals that you have shared resources with or that have
+shared resources with you.
 
 
 =head2 ListResources
@@ -586,6 +698,61 @@ Returns: a L<Paws::RAM::ListResourcesResponse> instance
 
 Lists the resources that you added to a resource shares or the
 resources that are shared with you.
+
+
+=head2 ListResourceSharePermissions
+
+=over
+
+=item ResourceShareArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::ListResourceSharePermissions>
+
+Returns: a L<Paws::RAM::ListResourceSharePermissionsResponse> instance
+
+Lists the AWS RAM permissions that are associated with a resource
+share.
+
+
+=head2 PromoteResourceShareCreatedFromPolicy
+
+=over
+
+=item ResourceShareArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::PromoteResourceShareCreatedFromPolicy>
+
+Returns: a L<Paws::RAM::PromoteResourceShareCreatedFromPolicyResponse> instance
+
+Resource shares that were created by attaching a policy to a resource
+are visible only to the resource share owner, and the resource share
+cannot be modified in AWS RAM.
+
+Use this API action to promote the resource share. When you promote the
+resource share, it becomes:
+
+=over
+
+=item *
+
+Visible to all principals that it is shared with.
+
+=item *
+
+Modifiable in AWS RAM.
+
+=back
+
 
 
 =head2 RejectResourceShareInvitation

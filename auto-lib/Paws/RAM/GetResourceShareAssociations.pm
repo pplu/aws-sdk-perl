@@ -66,7 +66,10 @@ Valid values are: C<"ASSOCIATING">, C<"ASSOCIATED">, C<"FAILED">, C<"DISASSOCIAT
 
 =head2 B<REQUIRED> AssociationType => Str
 
-The association type.
+The association type. Specify C<PRINCIPAL> to list the principals that
+are associated with the specified resource share. Specify C<RESOURCE>
+to list the resources that are associated with the specified resource
+share.
 
 Valid values are: C<"PRINCIPAL">, C<"RESOURCE">
 

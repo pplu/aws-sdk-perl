@@ -2,6 +2,7 @@ package Paws::RAM::ResourceShare;
   use Moose;
   has AllowExternalPrincipals => (is => 'ro', isa => 'Bool', request_name => 'allowExternalPrincipals', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
+  has FeatureSet => (is => 'ro', isa => 'Str', request_name => 'featureSet', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OwningAccountId => (is => 'ro', isa => 'Str', request_name => 'owningAccountId', traits => ['NameInRequest']);
@@ -53,6 +54,35 @@ associated with a resource share.
 =head2 CreationTime => Str
 
   The time when the resource share was created.
+
+
+=head2 FeatureSet => Str
+
+  Indicates how the resource share was created. Possible values include:
+
+=over
+
+=item *
+
+C<CREATED_FROM_POLICY> - Indicates that the resource share was created
+from an AWS Identity and Access Management (AWS IAM) policy attached to
+a resource. These resource shares are visible only to the AWS account
+that created it. They cannot be modified in AWS RAM.
+
+=item *
+
+C<PROMOTING_TO_STANDARD> - The resource share is in the process of
+being promoted. For more information, see
+PromoteResourceShareCreatedFromPolicy.
+
+=item *
+
+C<STANDARD> - Indicates that the resource share was created in AWS RAM
+using the console or APIs. These resource shares are visible to all
+principals. They can be modified in AWS RAM.
+
+=back
+
 
 
 =head2 LastUpdatedTime => Str
