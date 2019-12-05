@@ -1,5 +1,6 @@
 package Paws::ResourceTagging::ResourceTagMapping;
   use Moose;
+  has ComplianceDetails => (is => 'ro', isa => 'Paws::ResourceTagging::ComplianceDetails');
   has ResourceARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::Tag]');
 1;
@@ -21,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ResourceTagging::ResourceTagMapping object:
 
-  $service_obj->Method(Att1 => { ResourceARN => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { ComplianceDetails => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceTagging::ResourceTagMapping object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ResourceARN
+  $result->Att1->ComplianceDetails
 
 =head1 DESCRIPTION
 
@@ -36,6 +37,12 @@ A list of resource ARNs and the tags (keys and values) that are
 associated with each.
 
 =head1 ATTRIBUTES
+
+
+=head2 ComplianceDetails => L<Paws::ResourceTagging::ComplianceDetails>
+
+  Information that shows whether a resource is compliant with the
+effective tag policy, including details on any noncompliant tag keys.
 
 
 =head2 ResourceARN => Str

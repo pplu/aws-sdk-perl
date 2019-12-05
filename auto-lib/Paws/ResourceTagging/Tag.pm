@@ -34,16 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceTag
 
 The metadata that you apply to AWS resources to help you categorize and
 organize them. Each tag consists of a key and an optional value, both
-of which you define. For more information, see Tag Basics
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+of which you define. For more information, see Tagging AWS Resources
+(http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-  One part of a key-value pair that make up a tag. A key is a general
+  One part of a key-value pair that makes up a tag. A key is a general
 label that acts like a category for more specific tag values.
 
 

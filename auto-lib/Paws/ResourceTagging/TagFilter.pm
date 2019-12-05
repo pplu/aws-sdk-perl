@@ -40,7 +40,7 @@ associated resources.
 
 =head2 Key => Str
 
-  One part of a key-value pair that make up a tag. A key is a general
+  One part of a key-value pair that makes up a tag. A key is a general
 label that acts like a category for more specific tag values.
 
 

@@ -1,6 +1,8 @@
 
 package Paws::ResourceTagging::GetResources;
   use Moose;
+  has ExcludeCompliantResources => (is => 'ro', isa => 'Bool');
+  has IncludeComplianceDetails => (is => 'ro', isa => 'Bool');
   has PaginationToken => (is => 'ro', isa => 'Str');
   has ResourcesPerPage => (is => 'ro', isa => 'Int');
   has ResourceTypeFilters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -32,11 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $tagging = Paws->service('ResourceTagging');
     my $GetResourcesOutput = $tagging->GetResources(
-      PaginationToken     => 'MyPaginationToken',    # OPTIONAL
-      ResourceTypeFilters => [
-        'MyAmazonResourceType', ...                  # max: 256
-      ],                                             # OPTIONAL
-      ResourcesPerPage => 1,                         # OPTIONAL
+      ExcludeCompliantResources => 1,                      # OPTIONAL
+      IncludeComplianceDetails  => 1,                      # OPTIONAL
+      PaginationToken           => 'MyPaginationToken',    # OPTIONAL
+      ResourceTypeFilters       => [
+        'MyAmazonResourceType', ...                        # max: 256
+      ],                                                   # OPTIONAL
+      ResourcesPerPage => 1,                               # OPTIONAL
       TagFilters       => [
         {
           Key    => 'MyTagKey',    # min: 1, max: 128; OPTIONAL
@@ -59,6 +63,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tagging/GetResources>
 
 =head1 ATTRIBUTES
+
+
+=head2 ExcludeCompliantResources => Bool
+
+Specifies whether to exclude resources that are compliant with the tag
+policy. Set this to C<true> if you are interested in retrieving
+information on noncompliant resources only.
+
+You can use this parameter only if the C<IncludeComplianceDetails>
+parameter is also set to C<true>.
+
+
+
+=head2 IncludeComplianceDetails => Bool
+
+Specifies whether to include details regarding the compliance with the
+effective tag policy. Set this to C<true> to determine whether
+resources are compliant with the tag policy and to get details.
+
 
 
 =head2 PaginationToken => Str
@@ -188,6 +211,8 @@ GetResources( {filter1,filter2,filter3} ) returns resources tagged with
 
 =head2 TagsPerPage => Int
 
+AWS recommends using C<ResourcesPerPage> instead of this parameter.
+
 A limit that restricts the number of tags (key and value pairs)
 returned by GetResources in paginated output. A resource with no tags
 is counted as having one tag (one key and value pair).
@@ -198,11 +223,10 @@ a C<PaginationToken> is returned in place of the affected resource and
 its tags. Use that token in another request to get the remaining data.
 For example, if you specify a C<TagsPerPage> of C<100> and the account
 has 22 resources with 10 tags each (meaning that each resource has 10
-key and value pairs), the output will consist of 3 pages, with the
-first page displaying the first 10 resources, each with its 10 tags,
-the second page displaying the next 10 resources each with its 10 tags,
-and the third page displaying the remaining 2 resources, each with its
-10 tags.
+key and value pairs), the output will consist of three pages. The first
+page displays the first 10 resources, each with its 10 tags. The second
+page displays the next 10 resources, each with its 10 tags. The third
+page displays the remaining 2 resources, each with its 10 tags.
 
 You can set C<TagsPerPage> to a minimum of 100 items and the maximum of
 500 items.
