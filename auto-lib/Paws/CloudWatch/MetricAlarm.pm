@@ -104,7 +104,7 @@ operand.
 
 =head2 DatapointsToAlarm => Int
 
-  The number of datapoints that must be breaching to trigger the alarm.
+  The number of data points that must be breaching to trigger the alarm.
 
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]

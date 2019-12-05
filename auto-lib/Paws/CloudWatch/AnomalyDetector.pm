@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 =head1 DESCRIPTION
 
 An anomaly detection model associated with a particular CloudWatch
-metric athresnd statistic. You can use the model to display a band of
+metric and statistic. You can use the model to display a band of
 expected normal values when the metric is graphed.
 
 =head1 ATTRIBUTES

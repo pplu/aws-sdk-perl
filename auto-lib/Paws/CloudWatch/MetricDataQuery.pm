@@ -126,10 +126,9 @@ are collected at intervals of less than one minute, the period can be
 those metrics stored by a C<PutMetricData> operation that includes a
 C<StorageResolution of 1 second>.
 
-Use this field only when you are performing a C<GetMetricData>
-operation, and only when you are specifying the C<Expression> field. Do
-not use this field with a C<PutMetricAlarm> operation or when you are
-specifying a C<MetricStat> in a C<GetMetricData> operation.
+If you are performing a C<GetMetricData> operation, use this field only
+if you are specifying an C<Expression>. Do not use this field when you
+are specifying a C<MetricStat> in a C<GetMetricData> operation.
 
 
 =head2 ReturnData => Bool

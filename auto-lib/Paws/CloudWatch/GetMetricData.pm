@@ -52,12 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricName => 'MyMetricName',       # min: 1, max: 255; OPTIONAL
               Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Period => 1,                          # min: 1
+            Period => 1,                          # min: 1; OPTIONAL
             Stat   => 'MyStat',
             Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
-          Period     => 1,    # min: 1
+          Period     => 1,    # min: 1; OPTIONAL
           ReturnData => 1,    # OPTIONAL
         },
         ...
