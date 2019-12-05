@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Lifecyc
 
 =head1 DESCRIPTION
 
-The Filter is used to identify objects that a Lifecycle Rule applies
-to. A Filter must have exactly one of Prefix, Tag, or And specified.
+The C<Filter> is used to identify objects that a Lifecycle Rule applies
+to. A C<Filter> must have exactly one of C<Prefix>, C<Tag>, or C<And>
+specified.
 
 =head1 ATTRIBUTES
 

@@ -1,13 +1,13 @@
-package Paws::S3::CreateBucketConfiguration;
+package Paws::S3::ReplicationTimeValue;
   use Moose;
-  has LocationConstraint => (is => 'ro', isa => 'Str');
+  has Minutes => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::S3::CreateBucketConfiguration
+Paws::S3::ReplicationTimeValue
 
 =head1 USAGE
 
@@ -18,29 +18,30 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::S3::CreateBucketConfiguration object:
+As an example, if Att1 is expected to be a Paws::S3::ReplicationTimeValue object:
 
-  $service_obj->Method(Att1 => { LocationConstraint => $value, ..., LocationConstraint => $value  });
+  $service_obj->Method(Att1 => { Minutes => $value, ..., Minutes => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CreateBucketConfiguration object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ReplicationTimeValue object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->LocationConstraint
+  $result->Att1->Minutes
 
 =head1 DESCRIPTION
 
-The configuration information for the bucket.
+A container specifying the time value for S3 Replication Time Control
+(S3 RTC) and replication metrics C<EventThreshold>.
 
 =head1 ATTRIBUTES
 
 
-=head2 LocationConstraint => Str
+=head2 Minutes => Int
 
-  Specifies the Region where the bucket will be created. If you don't
-specify a Region, the bucket is created in the US East (N. Virginia)
-Region (us-east-1).
+  Contains an integer specifying time in minutes.
+
+Valid values: 15 minutes.
 
 
 

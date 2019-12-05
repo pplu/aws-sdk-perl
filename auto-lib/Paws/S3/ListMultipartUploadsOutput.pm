@@ -35,8 +35,8 @@ Name of the bucket to which the multipart upload was initiated.
 =head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
 If you specify a delimiter in the request, then the result returns each
-distinct key prefix containing the delimiter in a CommonPrefixes
-element. The distinct key prefixes are returned in the Prefix child
+distinct key prefix containing the delimiter in a C<CommonPrefixes>
+element. The distinct key prefixes are returned in the C<Prefix> child
 element.
 
 
@@ -93,7 +93,7 @@ be used for the key-marker request parameter in a subsequent request.
 =head2 NextUploadIdMarker => Str
 
 When a list is truncated, this element specifies the value that should
-be used for the upload-id-marker request parameter in a subsequent
+be used for the C<upload-id-marker> request parameter in a subsequent
 request.
 
 
@@ -115,7 +115,7 @@ Upload ID after which listing began.
 =head2 Uploads => ArrayRef[L<Paws::S3::MultipartUpload>]
 
 Container for elements related to a particular multipart upload. A
-response can contain zero or more Upload elements.
+response can contain zero or more C<Upload> elements.
 
 
 

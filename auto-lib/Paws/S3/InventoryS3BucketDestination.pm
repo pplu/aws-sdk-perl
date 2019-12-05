@@ -48,7 +48,7 @@ prefix (optional) where inventory results are published.
 
 =head2 B<REQUIRED> Bucket => Str
 
-  The Amazon resource name (ARN) of the bucket where inventory results
+  The Amazon Resource Name (ARN) of the bucket where inventory results
 will be published.
 
 

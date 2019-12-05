@@ -64,8 +64,8 @@ elements in an C<And> tag.
 
 =head2 Prefix => Str
 
-  An object keyname prefix that identifies the subset of objects to which
-the rule applies.
+  An object key name prefix that identifies the subset of objects to
+which the rule applies.
 
 
 =head2 Tag => L<Paws::S3::Tag>

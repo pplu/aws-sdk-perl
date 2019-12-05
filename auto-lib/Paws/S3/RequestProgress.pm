@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Request
 
 =head1 DESCRIPTION
 
-Container for specifiying if periodic QueryProgress messages should be
-sent.
+Container for specifying if periodic C<QueryProgress> messages should
+be sent.
 
 =head1 ATTRIBUTES
 

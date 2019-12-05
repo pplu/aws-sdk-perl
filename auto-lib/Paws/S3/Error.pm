@@ -222,14 +222,14 @@ I<Code:> BucketAlreadyOwnedByYou
 
 I<Description:> The bucket you tried to create already exists, and you
 own it. Amazon S3 returns this error in all AWS Regions except in the
-North Virginia region. For legacy compatibility, if you re-create an
-existing bucket that you already own in the North Virginia region,
+North Virginia Region. For legacy compatibility, if you re-create an
+existing bucket that you already own in the North Virginia Region,
 Amazon S3 returns 200 OK and resets the bucket access control lists
 (ACLs).
 
 =item *
 
-I<Code:> 409 Conflict (in all regions except the North Virginia region)
+I<Code:> 409 Conflict (in all Regions except the North Virginia Region)
 
 =item *
 

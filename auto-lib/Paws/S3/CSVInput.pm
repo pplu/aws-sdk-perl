@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CSVInpu
 
 =head1 DESCRIPTION
 
-Describes how a uncompressed comma-separated values (CSV)-formatted
+Describes how an uncompressed comma-separated values (CSV)-formatted
 input object is formatted.
 
 =head1 ATTRIBUTES

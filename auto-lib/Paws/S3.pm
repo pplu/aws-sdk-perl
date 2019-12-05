@@ -737,13 +737,13 @@ free all storage consumed by all parts.
 
 To verify that all parts have been removed, so you don't get charged
 for the part storage, you should call the ListParts operation and
-ensure the parts list is empty.
+ensure that the parts list is empty.
 
-For information on permissions required to use the multipart upload
+For information about permissions required to use the multipart upload
 API, see Multipart Upload API and Permissions
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 
-The following operations are related to C<AbortMultipartUpload>
+The following operations are related to C<AbortMultipartUpload>:
 
 =over
 
@@ -800,15 +800,15 @@ parts of an upload, you call this operation to complete the upload.
 Upon receiving this request, Amazon S3 concatenates all the parts in
 ascending order by part number to create a new object. In the Complete
 Multipart Upload request, you must provide the parts list. You must
-ensure the parts list is complete, this operation concatenates the
-parts you provide in the list. For each part in the list, you must
+ensure that the parts list is complete. This operation concatenates the
+parts that you provide in the list. For each part in the list, you must
 provide the part number and the C<ETag> value, returned after that part
 was uploaded.
 
 Processing of a Complete Multipart Upload request could take several
 minutes to complete. After Amazon S3 begins processing the request, it
 sends an HTTP response header that specifies a 200 OK response. While
-processing is in progress, Amazon S3 periodically sends whitespace
+processing is in progress, Amazon S3 periodically sends white space
 characters to keep the connection from timing out. Because a request
 could fail after the initial 200 OK response has been sent, it is
 important that you check the response body to determine whether the
@@ -819,11 +819,11 @@ prepared to retry the failed requests. For more information, see Amazon
 S3 Error Best Practices
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html).
 
-For more information on multipart uploads, see Uploading Objects Using
-Multipart Upload
+For more information about multipart uploads, see Uploading Objects
+Using Multipart Upload
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html).
 
-For information on permissions required to use the multipart upload
+For information about permissions required to use the multipart upload
 API, see Multipart Upload API and Permissions
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 
@@ -1023,7 +1023,7 @@ Creates a copy of an object that is already stored in Amazon S3.
 You can store individual objects of up to 5 TB in Amazon S3. You create
 a copy of your object up to 5 GB in size in a single atomic operation
 using this API. However, for copying an object greater than 5 GB, you
-must use the multipart upload Upload Part - Copy API. For conceptual
+must use the multipart upload Upload Part - Copy API. For more
 information, see Copy Object Using the REST Multipart Upload API
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsUsingRESTMPUapi.html).
 
@@ -1034,8 +1034,8 @@ setting, specify a new ACL when generating a copy request. For more
 information, see Using ACLs
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
 
-Amazon S3 Transfer Acceleration does not support cross-region copies.
-If you request a cross-region copy using a Transfer Acceleration
+Amazon S3 transfer acceleration does not support cross-region copies.
+If you request a cross-region copy using a transfer acceleration
 endpoint, you get a 400 C<Bad Request> error. For more information
 about transfer acceleration, see Transfer Acceleration
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html).
@@ -1048,26 +1048,26 @@ Both the Region that you want to copy the object from and the Region
 that you want to copy the object to must be enabled for your account.
 
 To only copy an object under certain conditions, such as whether the
-Etag matches or whether the object was modified before or after a
+C<Etag> matches or whether the object was modified before or after a
 specified date, use the request parameters
 C<x-amz-copy-source-if-match>, C<x-amz-copy-source-if-none-match>,
 C<x-amz-copy-source-if-unmodified-since>, or C<
 x-amz-copy-source-if-modified-since>.
 
-All headers with the x-amz- prefix, including x-amz-copy-source, must
-be signed.
+All headers with the C<x-amz-> prefix, including C<x-amz-copy-source>,
+must be signed.
 
 You can use this operation to change the storage class of an object
-that is already stored in Amazon S3 using the StorageClass parameter.
-For more information, see Storage Classes
+that is already stored in Amazon S3 using the C<StorageClass>
+parameter. For more information, see Storage Classes
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html).
 
 The source object that you are copying can be encrypted or unencrypted.
 If the source object is encrypted, it can be encrypted by server-side
-encryption using AWS-managed encryption keys or by using a
+encryption using AWS managed encryption keys or by using a
 customer-provided encryption key. When copying an object, you can
 request that Amazon S3 encrypt the target object by using either the
-AWS-managed encryption keys or by using your own encryption key. You
+AWS managed encryption keys or by using your own encryption key. You
 can do this regardless of the form of server-side encryption that was
 used to encrypt the source, or even if the source object was not
 encrypted. For more information about server-side encryption, see Using
@@ -1078,7 +1078,7 @@ A copy request might return an error when Amazon S3 receives the copy
 request or while Amazon S3 is copying the files. If the error occurs
 before the copy operation starts, you receive a standard Amazon S3
 error. If the error occurs during the copy operation, the error
-response is embedded in the 200 OK response. This means that a C<200
+response is embedded in the C<200 OK> response. This means that a C<200
 OK> response can contain either a success or an error. Design your
 application to parse the contents of the response and handle it
 appropriately.
@@ -1096,8 +1096,8 @@ Consider the following when using request headers:
 
 =item *
 
-Consideration 1 E<ndash> If both the x-amz-copy-source-if-match and
-x-amz-copy-source-if-unmodified-since headers are present in the
+Consideration 1 E<ndash> If both the C<x-amz-copy-source-if-match> and
+C<x-amz-copy-source-if-unmodified-since> headers are present in the
 request and evaluate as follows, Amazon S3 returns 200 OK and copies
 the data:
 
@@ -1105,30 +1105,31 @@ the data:
 
 =item *
 
-x-amz-copy-source-if-match condition evaluates to true
+C<x-amz-copy-source-if-match> condition evaluates to true
 
 =item *
 
-x-amz-copy-source-if-unmodified-since condition evaluates to false
+C<x-amz-copy-source-if-unmodified-since> condition evaluates to false
 
 =back
 
 =item *
 
-Consideration 2 E<ndash> If both of the x-amz-copy-source-if-none-match
-and x-amz-copy-source-if-modified-since headers are present in the
-request and evaluate as follows, Amazon S3 returns the 412 Precondition
-Failed response code:
+Consideration 2 E<ndash> If both of the
+C<x-amz-copy-source-if-none-match> and
+C<x-amz-copy-source-if-modified-since> headers are present in the
+request and evaluate as follows, Amazon S3 returns the C<412
+Precondition Failed> response code:
 
 =over
 
 =item *
 
-x-amz-copy-source-if-none-match condition evaluates to false
+C<x-amz-copy-source-if-none-match> condition evaluates to false
 
 =item *
 
-x-amz-copy-source-if-modified-since condition evaluates to true
+C<x-amz-copy-source-if-modified-since> condition evaluates to true
 
 =back
 
@@ -1152,14 +1153,14 @@ the C<versionId> subresource.
 If you enable versioning on the target bucket, Amazon S3 generates a
 unique version ID for the object being copied. This version ID is
 different from the version ID of the source object. Amazon S3 returns
-the version ID of the copied object in the x-amz-version-id response
+the version ID of the copied object in the C<x-amz-version-id> response
 header in the response.
 
 If you do not enable versioning or suspend it on the target bucket, the
 version ID that Amazon S3 generates is always null.
 
-If the source object's storage class is GLACIER, then you must restore
-a copy of this object before you can use it as a source object for the
+If the source object's storage class is GLACIER, you must restore a
+copy of this object before you can use it as a source object for the
 copy operation. For more information, see .
 
 =item Access Permissions
@@ -1194,42 +1195,43 @@ explicitly. You cannot do both.
 
 To encrypt the target object, you must provide the appropriate
 encryption-related request headers. The one you use depends on whether
-you want to use AWS-managed encryption keys or provide your own
+you want to use AWS managed encryption keys or provide your own
 encryption key.
 
 =over
 
 =item *
 
-To encrypt the target object using server-side encryption with an
-AWS-managed encryption key, provide the following request headers, as
+To encrypt the target object using server-side encryption with an AWS
+managed encryption key, provide the following request headers, as
 appropriate.
 
 =over
 
 =item *
 
-x-amz-server-side-encryption
+C<x-amz-server-side-encryption>
 
 =item *
 
-x-amz-server-side-encryption-aws-kms-key-id
+C<x-amz-server-side-encryption-aws-kms-key-id>
 
 =item *
 
-x-amz-server-side-encryption-context
+C<x-amz-server-side-encryption-context>
 
 =back
 
-If you specify x-amz-server-side-encryption:aws:kms, but don't provide
-x-amz-server-side- encryption-aws-kms-key-id, Amazon S3 uses the AWS
-managed customer master key (CMK) in KMS to protect the data.
+If you specify C<x-amz-server-side-encryption:aws:kms> but don't
+provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
+the AWS managed customer master key (CMK) in AWS KMS to protect the
+data.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.
 
-For more information on Server-Side Encryption with CMKs stored in
-Amazon KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
 with CMKs stored in KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
@@ -1275,8 +1277,8 @@ x-amz-copy-source-server-side-encryption-customer-key-MD5
 
 =back
 
-For more information on Server-Side Encryption with CMKs stored in
-Amazon KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
 with CMKs stored in Amazon KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
@@ -1288,8 +1290,8 @@ You also can use the following access controlE<ndash>related headers
 with this operation. By default, all objects are private. Only the
 owner has full access control. When adding a new object, you can grant
 permissions to individual AWS accounts or to predefined groups defined
-by Amazon S3. These permissions are then added to the Access Control
-List (ACL) on the object. For more information, see Using ACLs
+by Amazon S3. These permissions are then added to the access control
+list (ACL) on the object. For more information, see Using ACLs
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
 With this operation, you can grant access permissions using one of the
 following two methods:
@@ -1298,9 +1300,10 @@ following two methods:
 
 =item *
 
-Specify a canned ACL (x-amz-acl) E<mdash> Amazon S3 supports a set of
-predefined ACLs, known as canned ACLs. Each canned ACL has a predefined
-set of grantees and permissions. For more information, see Canned ACL
+Specify a canned ACL (C<x-amz-acl>) E<mdash> Amazon S3 supports a set
+of predefined ACLs, known as I<canned ACLs>. Each canned ACL has a
+predefined set of grantees and permissions. For more information, see
+Canned ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 =item *
@@ -1312,7 +1315,7 @@ S3 supports in an ACL. For more information, see Access Control List
 (ACL) Overview
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html). In
 the header, you specify a list of grantees who get the specific
-permission. To grant permissions explicitly use:
+permission. To grant permissions explicitly, use:
 
 =over
 
@@ -1345,21 +1348,21 @@ the following:
 
 =item *
 
-emailAddress E<ndash> if the value specified is the email address of an
+C<emailAddress> E<ndash> if the value specified is the email address of
+an AWS account
+
+=item *
+
+C<id> E<ndash> if the value specified is the canonical user ID of an
 AWS account
 
 =item *
 
-id E<ndash> if the value specified is the canonical user ID of an AWS
-account
-
-=item *
-
-uri E<ndash> if you are granting permissions to a predefined group
+C<uri> E<ndash> if you are granting permissions to a predefined group
 
 =back
 
-For example, the following x-amz-grant-read header grants the AWS
+For example, the following C<x-amz-grant-read> header grants the AWS
 accounts identified by email addresses permissions to read object data
 and its metadata:
 
@@ -1370,7 +1373,7 @@ emailAddress="abc@amazon.com">
 
 =back
 
-The following operation are related to C<CopyObject>
+The following operations are related to C<CopyObject>:
 
 =over
 
@@ -1428,23 +1431,23 @@ Not every string is an acceptable bucket name. For information on
 bucket naming restrictions, see Working with Amazon S3 Buckets
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html).
 
-By default, the bucket is created in the US East (N. Virginia) region.
-You can optionally specify a region in the request body. You might
-choose a region to optimize latency, minimize costs, or address
+By default, the bucket is created in the US East (N. Virginia) Region.
+You can optionally specify a Region in the request body. You might
+choose a Region to optimize latency, minimize costs, or address
 regulatory requirements. For example, if you reside in Europe, you will
 probably find it advantageous to create buckets in the EU (Ireland)
-region. For more information, see How to Select a Region for Your
+Region. For more information, see How to Select a Region for Your
 Buckets
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro).
 
-If you send your create bucket request to the s3.amazonaws.com
-endpoint, the request go to the us-east-1 region. Accordingly, the
-signature calculations in Signature Version 4 must use us-east-1 as
-region, even if the location constraint in the request specifies
-another region where the bucket is to be created. If you create a
-bucket in a region other than US East (N. Virginia) region, your
-application must be able to handle 307 redirect. For more information,
-see Virtual Hosting of Buckets
+If you send your create bucket request to the C<s3.amazonaws.com>
+endpoint, the request goes to the us-east-1 Region. Accordingly, the
+signature calculations in Signature Version 4 must use us-east-1 as the
+Region, even if the location constraint in the request specifies
+another Region where the bucket is to be created. If you create a
+bucket in a Region other than US East (N. Virginia), your application
+must be able to handle 307 redirect. For more information, see Virtual
+Hosting of Buckets
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
 When creating a bucket using this operation, you can optionally specify
@@ -1457,7 +1460,7 @@ using the request headers.
 =item *
 
 Specify a canned ACL using the C<x-amz-acl> request header. Amazon S3
-supports a set of predefined ACLs, known as canned ACLs. Each canned
+supports a set of predefined ACLs, known as I<canned ACLs>. Each canned
 ACL has a predefined set of grantees and permissions. For more
 information, see Canned ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
@@ -1466,9 +1469,9 @@ information, see Canned ACL
 
 Specify access permissions explicitly using the C<x-amz-grant-read>,
 C<x-amz-grant-write>, C<x-amz-grant-read-acp>,
-C<x-amz-grant-write-acp>, C<x-amz-grant-full-control> headers. These
-headers map to the set of permissions Amazon S3 supports in an ACL. For
-more information, see Access Control List (ACL) Overview
+C<x-amz-grant-write-acp>, and C<x-amz-grant-full-control> headers.
+These headers map to the set of permissions Amazon S3 supports in an
+ACL. For more information, see Access Control List (ACL) Overview
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
 
 You specify each grantee as a type=value pair, where the type is one of
@@ -1478,21 +1481,21 @@ the following:
 
 =item *
 
-emailAddress E<ndash> if the value specified is the email address of an
+C<emailAddress> E<ndash> if the value specified is the email address of
+an AWS account
+
+=item *
+
+C<id> E<ndash> if the value specified is the canonical user ID of an
 AWS account
 
 =item *
 
-id E<ndash> if the value specified is the canonical user ID of an AWS
-account
-
-=item *
-
-uri E<ndash> if you are granting permissions to a predefined group
+C<uri> E<ndash> if you are granting permissions to a predefined group
 
 =back
 
-For example, the following x-amz-grant-read header grants the AWS
+For example, the following C<x-amz-grant-read> header grants the AWS
 accounts identified by email addresses permissions to read object data
 and its metadata:
 
@@ -1684,7 +1687,7 @@ You can optionally tell Amazon S3 to encrypt data at rest using
 server-side encryption. Server-side encryption is for data encryption
 at rest. Amazon S3 encrypts your data as it writes it to disks in its
 data centers and decrypts it when you access it. The option you use
-depends on whether you want to use AWS-managed encryption keys or
+depends on whether you want to use AWS managed encryption keys or
 provide your own encryption key.
 
 =over
@@ -1692,7 +1695,7 @@ provide your own encryption key.
 =item *
 
 Use encryption keys managed by Amazon S3 or customer master keys (CMKs)
-stored in Amazon Key Management Service (KMS) E<ndash> If you want AWS
+stored in AWS Key Management Service (AWS KMS) E<ndash> If you want AWS
 to manage the keys used to encrypt data, specify the following headers
 in the request.
 
@@ -1712,15 +1715,15 @@ x-amz-server-side-encryption-context
 
 =back
 
-If you specify x-amz-server-side-encryption:aws:kms, but don't provide
-x-amz-server-side- encryption-aws-kms-key-id, Amazon S3 uses the AWS
-managed CMK in AWS KMS to protect the data.
+If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
+provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
+the AWS managed CMK in AWS KMS to protect the data.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.
 
-For more information on Server-Side Encryption with CMKs Stored in
-Amazon KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
 with CMKs stored in AWS KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
@@ -1746,9 +1749,9 @@ x-amz-server-side-encryption-customer-key-MD5
 
 =back
 
-For more information on Server-Side Encryption with CMKs stored in AWS
-KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption with
-CMKs stored in AWS KMS
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+with CMKs stored in AWS KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
 =back
@@ -1759,8 +1762,8 @@ You also can use the following access controlE<ndash>related headers
 with this operation. By default, all objects are private. Only the
 owner has full access control. When adding a new object, you can grant
 permissions to individual AWS accounts or to predefined groups defined
-by Amazon S3. These permissions are then added to the Access Control
-List (ACL) on the object. For more information, see Using ACLs
+by Amazon S3. These permissions are then added to the access control
+list (ACL) on the object. For more information, see Using ACLs
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
 With this operation, you can grant access permissions using one of the
 following two methods:
@@ -1769,9 +1772,10 @@ following two methods:
 
 =item *
 
-Specify a canned ACL (x-amz-acl) E<mdash> Amazon S3 supports a set of
-predefined ACLs, known as canned ACLs. Each canned ACL has a predefined
-set of grantees and permissions. For more information, see Canned ACL
+Specify a canned ACL (C<x-amz-acl>) E<mdash> Amazon S3 supports a set
+of predefined ACLs, known as I<canned ACLs>. Each canned ACL has a
+predefined set of grantees and permissions. For more information, see
+Canned ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 =item *
@@ -1783,7 +1787,7 @@ S3 supports in an ACL. For more information, see Access Control List
 (ACL) Overview
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html). In
 the header, you specify a list of grantees who get the specific
-permission. To grant permissions explicitly use:
+permission. To grant permissions explicitly, use:
 
 =over
 
@@ -1816,21 +1820,21 @@ the following:
 
 =item *
 
-emailAddress E<ndash> if the value specified is the email address of an
+C<emailAddress> E<ndash> if the value specified is the email address of
+an AWS account
+
+=item *
+
+C<id> E<ndash> if the value specified is the canonical user ID of an
 AWS account
 
 =item *
 
-id E<ndash> if the value specified is the canonical user ID of an AWS
-account
-
-=item *
-
-uri E<ndash> if you are granting permissions to a predefined group
+C<uri> E<ndash> if you are granting permissions to a predefined group
 
 =back
 
-For example, the following x-amz-grant-read header grants the AWS
+For example, the following C<x-amz-grant-read> header grants the AWS
 accounts identified by email addresses permissions to read object data
 and its metadata:
 
@@ -1883,7 +1887,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucket>
 Returns: nothing
 
 Deletes the bucket. All objects (including all object versions and
-Delete Markers) in the bucket must be deleted before the bucket itself
+delete markers) in the bucket must be deleted before the bucket itself
 can be deleted.
 
 B<Related Resources>
@@ -1917,7 +1921,7 @@ Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 
 To use this operation, you must have permissions to perform the
-s3:PutAnalyticsConfiguration action. The bucket owner has this
+C<s3:PutAnalyticsConfiguration> action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
 others. For more information about permissions, see Permissions Related
 to Bucket Subresource Operations
@@ -1925,7 +1929,7 @@ to Bucket Subresource Operations
 and Managing Access Permissions to Your Amazon S3 Resources
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 
-For information about Amazon S3 analytics feature, see Amazon S3
+For information about the Amazon S3 analytics feature, see Amazon S3
 Analytics E<ndash> Storage Class Analysis
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 
@@ -1963,10 +1967,9 @@ To use this operation, you must have permission to perform the
 C<s3:PutBucketCORS> action. The bucket owner has this permission by
 default and can grant this permission to others.
 
-For information more about C<cors>, go to Enabling Cross-Origin
-Resource Sharing
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the
-I<Amazon Simple Storage Service Developer Guide>.
+For information about C<cors>, see Enabling Cross-Origin Resource
+Sharing (https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in
+the I<Amazon Simple Storage Service Developer Guide>.
 
 B<Related Resources:>
 
@@ -2058,7 +2061,7 @@ For information about the Amazon S3 inventory feature, see Amazon S3
 Inventory
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html).
 
-Operation related to C<DeleteBucketInventoryConfiguration> include:
+Operations related to C<DeleteBucketInventoryConfiguration> include:
 
 =over
 
@@ -2158,7 +2161,7 @@ Monitoring Metrics with Amazon CloudWatch
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html).
 
 The following operations are related to
-C<DeleteBucketMetricsConfiguration>
+C<DeleteBucketMetricsConfiguration>:
 
 =over
 
@@ -2196,17 +2199,17 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketPolicy>
 
 Returns: nothing
 
-This implementation of the DELETE operation uses the policysubresource
+This implementation of the DELETE operation uses the policy subresource
 to delete the policy of a specified bucket. If you are using an
 identity other than the root user of the AWS account that owns the
 bucket, the calling identity must have the C<DeleteBucketPolicy>
 permissions on the specified bucket and belong to the bucket owner's
-account in order to use this operation.
+account to use this operation.
 
 If you don't have C<DeleteBucketPolicy> permissions, Amazon S3 returns
 a C<403 Access Denied> error. If you have the correct permissions, but
-you're notusing an identity that belongs to the bucket owner's account,
-Amazon S3 returns a C<405 Method Not Allowed> error.
+you're not using an identity that belongs to the bucket owner's
+account, Amazon S3 returns a C<405 Method Not Allowed> error.
 
 As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
@@ -2261,7 +2264,7 @@ fully propagate.
 For information about replication configuration, see Replication in the
 I<Amazon S3 Developer Guide>.
 
-The following operations are related to C<DeleteBucketReplication>
+The following operations are related to C<DeleteBucketReplication>:
 
 =over
 
@@ -2296,7 +2299,7 @@ To use this operation, you must have permission to perform the
 C<s3:PutBucketTagging> action. By default, the bucket owner has this
 permission and can grant this permission to others.
 
-The following operations are related to C<DeleteBucketTagging>
+The following operations are related to C<DeleteBucketTagging>:
 
 =over
 
@@ -2342,7 +2345,7 @@ For more information about hosting websites, see Hosting Websites on
 Amazon S3
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html).
 
-The following operations are related to C<DeleteBucketWebsite>
+The following operations are related to C<DeleteBucketWebsite>:
 
 =over
 
@@ -2388,12 +2391,12 @@ isn't a null version, Amazon S3 does not remove any objects.
 To remove a specific version, you must be the bucket owner and you must
 use the version Id subresource. Using this subresource permanently
 deletes the version. If the object deleted is a delete marker, Amazon
-S3 sets the response header, x-amz-delete-marker, to true.
+S3 sets the response header, C<x-amz-delete-marker>, to true.
 
 If the object you want to delete is in a bucket where the bucket
-versioning configurationis MFA Delete enabled, you must include the
-x-amz-mfa request header in the DELETE versionId request. Requests that
-include x-amz-mfa must use HTTPS.
+versioning configuration is MFA Delete enabled, you must include the
+C<x-amz-mfa> request header in the DELETE C<versionId> request.
+Requests that include C<x-amz-mfa> must use HTTPS.
 
 For more information about MFA Delete, see Using MFA Delete
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html).
@@ -2403,11 +2406,11 @@ To see sample requests that use versioning, see Sample Request
 You can delete objects by explicitly calling the DELETE Object API or
 configure its lifecycle (PutBucketLifecycle) to enable Amazon S3 to
 remove them for you. If you want to block users or accounts from
-removing or deleting objects from your bucket you must deny them the
-s3:DeleteObject, s3:DeleteObjectVersion and
-s3:PutLifeCycleConfiguration actions.
+removing or deleting objects from your bucket, you must deny them the
+C<s3:DeleteObject>, C<s3:DeleteObjectVersion>, and
+C<s3:PutLifeCycleConfiguration> actions.
 
-The following operation is related to C<DeleteObject>
+The following operation is related to C<DeleteObject>:
 
 =over
 
@@ -2454,10 +2457,10 @@ In the XML, you provide the object key names, and optionally, version
 IDs if you want to delete a specific version of the object from a
 versioning-enabled bucket. For each key, Amazon S3 performs a delete
 operation and returns the result of that delete, success, or failure,
-in the response. Note that, if the object specified in the request is
+in the response. Note that if the object specified in the request is
 not found, Amazon S3 returns the result as deleted.
 
-The operation supports two modes for the response; verbose and quiet.
+The operation supports two modes for the response: verbose and quiet.
 By default, the operation uses verbose mode in which the response
 includes the result of deletion of each key in your request. In quiet
 mode the response includes only keys where the delete operation
@@ -2467,7 +2470,7 @@ return any information about the delete in the response body.
 When performing this operation on an MFA Delete enabled bucket, that
 attempts to delete any versioned objects, you must include an MFA
 token. If you do not provide one, the entire request will fail, even if
-there are non versioned objects you are attempting to delete. If you
+there are non-versioned objects you are trying to delete. If you
 provide an invalid token, whether there are versioned keys in the
 request or not, the entire Multi-Object Delete request will fail. For
 information about MFA Delete, see MFA Delete
@@ -2475,9 +2478,9 @@ information about MFA Delete, see MFA Delete
 
 Finally, the Content-MD5 header is required for all Multi-Object Delete
 requests. Amazon S3 uses the header value to ensure that your request
-body has not be altered in transit.
+body has not been altered in transit.
 
-The following operations are related to C<DeleteObjects>
+The following operations are related to C<DeleteObjects>:
 
 =over
 
@@ -2527,14 +2530,14 @@ information about managing object tags, see Object Tagging
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete).
 
 To use this operation, you must have permission to perform the
-s3:DeleteObjectTagging action.
+C<s3:DeleteObjectTagging> action.
 
-To delete tags of a specific object version, add the versionId query
+To delete tags of a specific object version, add the C<versionId> query
 parameter in the request. You will need permission for the
-s3:DeleteObjectVersionTagging action.
+C<s3:DeleteObjectVersionTagging> action.
 
 The following operations are related to
-C<DeleteBucketMetricsConfiguration>
+C<DeleteBucketMetricsConfiguration>:
 
 =over
 
@@ -2563,9 +2566,9 @@ Each argument is described in detail in: L<Paws::S3::DeletePublicAccessBlock>
 
 Returns: nothing
 
-Removes the PublicAccessBlock configuration for an Amazon S3 bucket. In
-order to use this operation, you must have the
-s3:PutBucketPublicAccessBlock permission. For more information about
+Removes the C<PublicAccessBlock> configuration for an Amazon S3 bucket.
+To use this operation, you must have the
+C<s3:PutBucketPublicAccessBlock> permission. For more information about
 permissions, see Permissions Related to Bucket Subresource Operations
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
 and Managing Access Permissions to Your Amazon S3 Resources
@@ -2624,7 +2627,7 @@ to Bucket Subresource Operations
 (https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
 and Managing Access Permissions to your Amazon S3 Resources
 (https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html)
-in the Amazon Simple Storage Service Developer Guide.
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 You set the Transfer Acceleration state of an existing bucket to
 C<Enabled> or C<Suspended> by using the
@@ -2632,9 +2635,9 @@ PutBucketAccelerateConfiguration operation.
 
 A GET C<accelerate> request does not return a state value for a bucket
 that has no transfer acceleration state. A bucket has no Transfer
-Acceleration state, if a state has never been set on the bucket.
+Acceleration state if a state has never been set on the bucket.
 
-For more information on transfer acceleration, see Transfer
+For more information about transfer acceleration, see Transfer
 Acceleration
 (https://docs.aws.amazon.com/AmazonS3/latest/dev//transfer-acceleration.html)
 in the Amazon Simple Storage Service Developer Guide.
@@ -2747,9 +2750,8 @@ To use this operation, you must have permission to perform the
 s3:GetBucketCORS action. By default, the bucket owner has this
 permission and can grant it to others.
 
-To learn more cors, see Enabling Cross-Origin Resource Sharing
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)Enabling
-Cross-Origin Resource Sharing.
+For more information about cors, see Enabling Cross-Origin Resource
+Sharing (https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html).
 
 The following operations are related to C<GetBucketCors>:
 
@@ -2877,7 +2879,7 @@ Returns: a L<Paws::S3::GetBucketLifecycleOutput> instance
 
 For an updated version of this API, see
 GetBucketLifecycleConfiguration. If you configured a bucket lifecycle
-using the C<filter> element, you should the updated version of this
+using the C<filter> element, you should see the updated version of this
 topic. This topic is provided for backward compatibility.
 
 Returns the lifecycle configuration information set on the bucket. For
@@ -3036,7 +3038,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLocation>
 
 Returns: a L<Paws::S3::GetBucketLocationOutput> instance
 
-Returns the region the bucket resides in. You set the bucket's region
+Returns the Region the bucket resides in. You set the bucket's Region
 using the C<LocationConstraint> request parameter in a C<CreateBucket>
 request. For more information, see CreateBucket.
 
@@ -3319,7 +3321,8 @@ configuration to all Amazon S3 systems. Therefore, a get request soon
 after put or delete can return a wrong result.
 
 For information about replication configuration, see Replication
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html) in
+the I<Amazon Simple Storage Service Developer Guide>.
 
 This operation requires permissions for the
 C<s3:GetReplicationConfiguration> action. For more information about
@@ -3330,31 +3333,8 @@ If you include the C<Filter> element in a replication configuration,
 you must also include the C<DeleteMarkerReplication> and C<Priority>
 elements. The response also returns those elements.
 
-C<GetBucketReplication> has the following special error:
-
-=over
-
-=item *
-
-Error code: C<NoSuchReplicationConfiguration>
-
-=over
-
-=item *
-
-Description: There is no replication configuration with that name.
-
-=item *
-
-HTTP Status Code: 404 Not Found
-
-=item *
-
-SOAP Fault Code Prefix: Client
-
-=back
-
-=back
+For information about C<GetBucketReplication> errors, see
+ReplicationErrorCodeList
 
 The following operations are related to C<GetBucketReplication>:
 
@@ -3474,9 +3454,9 @@ To retrieve the versioning state of a bucket, you must be the bucket
 owner.
 
 This implementation also returns the MFA Delete status of the
-versioning state, i.e., if the MFA Delete status is C<enabled>, the
-bucket owner must use an authentication device to change the versioning
-state of the bucket.
+versioning state. If the MFA Delete status is C<enabled>, the bucket
+owner must use an authentication device to change the versioning state
+of the bucket.
 
 The following operations are related to C<GetBucketVersioning>:
 
@@ -3523,7 +3503,7 @@ configuration. However, bucket owners can allow other users to read the
 website configuration by writing a bucket policy granting them the
 C<S3:GetBucketWebsite> permission.
 
-The following operations are related to C<DeleteBucketWebsite>
+The following operations are related to C<DeleteBucketWebsite>:
 
 =over
 
@@ -3604,7 +3584,7 @@ request example, if you have the object
 C<photos/2006/February/sample.jpg>, specify the resource as
 C</photos/2006/February/sample.jpg>. For a path-style request example,
 if you have the object C<photos/2006/February/sample.jpg> in the bucket
-named examplebucket, specify the resource as
+named C<examplebucket>, specify the resource as
 C</examplebucket/photos/2006/February/sample.jpg>. For more information
 about request types, see HTTP Host Header Bucket Specification
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#VirtualHostingSpecifyBucket).
@@ -3989,7 +3969,7 @@ Each argument is described in detail in: L<Paws::S3::GetPublicAccessBlock>
 Returns: a L<Paws::S3::GetPublicAccessBlockOutput> instance
 
 Retrieves the C<PublicAccessBlock> configuration for an Amazon S3
-bucket. In order to use this operation, you must have the
+bucket. To use this operation, you must have the
 C<s3:GetBucketPublicAccessBlock> permission. For more information about
 Amazon S3 permissions, see Specifying Permissions in a Policy
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
@@ -4201,12 +4181,12 @@ depends on whether you also have the s3:ListBucket permission.
 =item *
 
 If you have the C<s3:ListBucket> permission on the bucket, Amazon S3
-will return a HTTP status code 404 ("no such key") error.
+returns an HTTP status code 404 ("no such key") error.
 
 =item *
 
 If you donE<rsquo>t have the C<s3:ListBucket> permission, Amazon S3
-will return a HTTP status code 403 ("access denied") error.
+returns an HTTP status code 403 ("access denied") error.
 
 =back
 
@@ -4531,7 +4511,7 @@ Each argument is described in detail in: L<Paws::S3::ListObjects>
 
 Returns: a L<Paws::S3::ListObjectsOutput> instance
 
-Returns some or all (up to 1000) of the objects in a bucket. You can
+Returns some or all (up to 1,000) of the objects in a bucket. You can
 use the request parameters as selection criteria to return a subset of
 the objects in a bucket. A 200 OK response can contain valid or invalid
 XML. Be sure to design your application to parse the contents of the
@@ -4604,7 +4584,7 @@ the objects in a bucket. A C<200 OK> response can contain valid or
 invalid XML. Make sure to design your application to parse the contents
 of the response and handle it appropriately.
 
-To use thisoperation, you must have READ access to the bucket.
+To use this operation, you must have READ access to the bucket.
 
 To use this operation in an AWS Identity and Access Management (IAM)
 policy, you must have permissions to perform the C<s3:ListBucket>
@@ -4883,7 +4863,7 @@ Returns: nothing
 Sets the permissions on an existing bucket using access control lists
 (ACL). For more information, see Using ACLs
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
-To set the ACL of a bucket, you must have WRITE_ACP permission.
+To set the ACL of a bucket, you must have C<WRITE_ACP> permission.
 
 You can use one of the following two ways to set a bucket's
 permissions:
@@ -4917,23 +4897,24 @@ You can set access permissions using one of the following methods:
 =item *
 
 Specify a canned ACL with the C<x-amz-acl> request header. Amazon S3
-supports a set of predefined ACLs, known as canned ACLs. Each canned
+supports a set of predefined ACLs, known as I<canned ACLs>. Each canned
 ACL has a predefined set of grantees and permissions. Specify the
-canned ACL name as the value of x-amz-acl. If you use this header, you
-cannot use other access control specific headers in your request. For
-more information, see Canned ACL
+canned ACL name as the value of C<x-amz-acl>. If you use this header,
+you cannot use other access control-specific headers in your request.
+For more information, see Canned ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 =item *
 
 Specify access permissions explicitly with the C<x-amz-grant-read>,
 C<x-amz-grant-read-acp>, C<x-amz-grant-write-acp>, and
-C<x-amz-grant-full-control> headers. When using these headers you
-specify explicit access permissions and grantees (AWS accounts or a
-Amazon S3 groups) who will receive the permission. If you use these ACL
-specific headers, you cannot use x-amz-acl header to set a canned ACL.
-These parameters map to the set of permissions that Amazon S3 supports
-in an ACL. For more information, see Access Control List (ACL) Overview
+C<x-amz-grant-full-control> headers. When using these headers, you
+specify explicit access permissions and grantees (AWS accounts or
+Amazon S3 groups) who will receive the permission. If you use these
+ACL-specific headers, you cannot use the C<x-amz-acl> header to set a
+canned ACL. These parameters map to the set of permissions that Amazon
+S3 supports in an ACL. For more information, see Access Control List
+(ACL) Overview
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
 
 You specify each grantee as a type=value pair, where the type is one of
@@ -4943,21 +4924,21 @@ the following:
 
 =item *
 
-emailAddress E<ndash> if the value specified is the email address of an
+C<emailAddress> E<ndash> if the value specified is the email address of
+an AWS account
+
+=item *
+
+C<id> E<ndash> if the value specified is the canonical user ID of an
 AWS account
 
 =item *
 
-id E<ndash> if the value specified is the canonical user ID of an AWS
-account
-
-=item *
-
-uri E<ndash> if you are granting permissions to a predefined group
+C<uri> E<ndash> if you are granting permissions to a predefined group
 
 =back
 
-For example, the following x-amz-grant-write header grants create,
+For example, the following C<x-amz-grant-write> header grants create,
 overwrite, and delete objects permission to LogDelivery group
 predefined by Amazon S3 and two AWS accounts identified by their email
 addresses.
@@ -5051,14 +5032,15 @@ analytics configuration ID). You can have up to 1,000 analytics
 configurations per bucket.
 
 You can choose to have storage class analysis export analysis reports
-to a comma-separated values (CSV) flat file, see the DataExport request
-element. Reports are updated daily and are based on the object filters
-you configure. When selecting data export you specify a destination
-bucket and optional destination prefix where the file is written. You
-can export the data to a destination bucket in a different account.
-However, the destination bucket must be in the same region as the
-bucket that you are making the PUT analytics configuration to. For more
-information, see Amazon S3 Analytics E<ndash> Storage Class Analysis
+sent to a comma-separated values (CSV) flat file. See the C<DataExport>
+request element. Reports are updated daily and are based on the object
+filters that you configure. When selecting data export, you specify a
+destination bucket and an optional destination prefix where the file is
+written. You can export the data to a destination bucket in a different
+account. However, the destination bucket must be in the same Region as
+the bucket that you are making the PUT analytics configuration to. For
+more information, see Amazon S3 Analytics E<ndash> Storage Class
+Analysis
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 
 You must create a bucket policy on the destination bucket where the
@@ -5205,7 +5187,7 @@ The request's C<Origin> header must match C<AllowedOrigin> elements.
 
 =item *
 
-The request method (for example, GET, PUT, HEAD and so on) or the
+The request method (for example, GET, PUT, HEAD, and so on) or the
 C<Access-Control-Request-Method> header in case of a pre-flight
 C<OPTIONS> request must be one of the C<AllowedMethod> elements.
 
@@ -5264,12 +5246,7 @@ subresource to set the default encryption state of an existing bucket.
 
 This implementation of the C<PUT> operation sets default encryption for
 a buckets using server-side encryption with Amazon S3-managed keys
-SSE-S3 or AWS KMS customer master keys (CMKs) (SSE-KMS) bucket. For
-information about the Amazon S3 default encryption feature, see As a
-security precaution, the root user of the AWS account that owns a
-bucket can always use this operation, even if the policy explicitly
-denies the root user the ability to perform this action. in the
-I<Amazon Simple Storage Service Developer Guide>.
+SSE-S3 or AWS KMS customer master keys (CMKs) (SSE-KMS) bucket.
 
 This operation requires AWS Signature Version 4. For more information,
 see Authenticating Requests (AWS Signature Version 4).
@@ -5683,8 +5660,8 @@ buckets in the same AWS Region as the source bucket. To set the logging
 status of a bucket, you must be the bucket owner.
 
 The bucket owner is automatically granted FULL_CONTROL to all logs. You
-use the Grantee request element to grant access to other people. The
-Permissions request element specifies the kind of access the grantee
+use the C<Grantee> request element to grant access to other people. The
+C<Permissions> request element specifies the kind of access the grantee
 has to the logs.
 
 B<Grantee Values>
@@ -5788,10 +5765,10 @@ this is a full replacement of the existing metrics configuration. If
 you don't include the elements you want to keep, they are erased.
 
 To use this operation, you must have permissions to perform the
-s3:PutMetricsConfiguration action. The bucket owner has this permission
-by default. The bucket owner can grant this permission to others. For
-more information about permissions, see Permissions Related to Bucket
-Subresource Operations
+C<s3:PutMetricsConfiguration> action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others. For more information about permissions, see Permissions Related
+to Bucket Subresource Operations
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources)
 and Managing Access Permissions to Your Amazon S3 Resources
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
@@ -5831,7 +5808,7 @@ Error code: C<TooManyConfigurations>
 
 =item *
 
-Description:You are attempting to create a new configuration but have
+Description: You are attempting to create a new configuration but have
 already reached the 1,000-configuration limit.
 
 =item *
@@ -5932,11 +5909,11 @@ B<Responses>
 
 If the configuration in the request body includes only one
 C<TopicConfiguration> specifying only the
-I<s3:ReducedRedundancyLostObject> event type, the response will also
-include the I<x-amz-sns-test-message-id> header containing the message
-ID of the test notification sent to topic.
+C<s3:ReducedRedundancyLostObject> event type, the response will also
+include the C<x-amz-sns-test-message-id> header containing the message
+ID of the test notification sent to the topic.
 
-The following operations is related to
+The following operation is related to
 C<PutBucketNotificationConfiguration>:
 
 =over
@@ -6078,63 +6055,8 @@ about replication configuration, see Replicating Objects Created with
 SSE Using CMKs stored in AWS KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html).
 
-C<PutBucketReplication> has the following special errors:
-
-=over
-
-=item *
-
-Error code: C<InvalidRequest>
-
-=over
-
-=item *
-
-Description: If the E<lt>OwnerE<gt> in
-E<lt>AccessControlTranslationE<gt> has a value, the E<lt>AccountE<gt>
-element must be specified.
-
-=item *
-
-HTTP 400
-
-=back
-
-=item *
-
-Error code: C<InvalidArgument>
-
-=over
-
-=item *
-
-Description: The E<lt>AccountE<gt> element is empty. It must contain a
-valid account ID.
-
-=item *
-
-HTTP 400
-
-=back
-
-=item *
-
-Error code: C<InvalidArgument>
-
-=over
-
-=item *
-
-Description: The AWS account specified in the E<lt>AccountE<gt> element
-must match the destination bucket owner.
-
-=item *
-
-HTTP 400
-
-=back
-
-=back
+For information on C<PutBucketReplication> errors, see
+ReplicationErrorCodeList
 
 The following operations are related to C<PutBucketReplication>:
 
@@ -6354,7 +6276,7 @@ versioning state value.
 
 If the bucket owner enables MFA Delete in the bucket versioning
 configuration, the bucket owner must include the C<x-amz-mfa request>
-header and the Status and the C<MfaDelete> request elements in a
+header and the C<Status> and the C<MfaDelete> request elements in a
 request to set the versioning state of the bucket.
 
 If you have an object expiration lifecycle policy in your non-versioned
@@ -6428,19 +6350,19 @@ index document name for the bucket.
 
 =item *
 
-WebsiteConfiguration
+C<WebsiteConfiguration>
 
 =item *
 
-RedirectAllRequestsTo
+C<RedirectAllRequestsTo>
 
 =item *
 
-HostName
+C<HostName>
 
 =item *
 
-Protocol
+C<Protocol>
 
 =back
 
@@ -6454,67 +6376,67 @@ bucket, because some requests might not be redirected.
 
 =item *
 
-WebsiteConfiguration
+C<WebsiteConfiguration>
 
 =item *
 
-IndexDocument
+C<IndexDocument>
 
 =item *
 
-Suffix
+C<Suffix>
 
 =item *
 
-ErrorDocument
+C<ErrorDocument>
 
 =item *
 
-Key
+C<Key>
 
 =item *
 
-RoutingRules
+C<RoutingRules>
 
 =item *
 
-RoutingRule
+C<RoutingRule>
 
 =item *
 
-Condition
+C<Condition>
 
 =item *
 
-HttpErrorCodeReturnedEquals
+C<HttpErrorCodeReturnedEquals>
 
 =item *
 
-KeyPrefixEquals
+C<KeyPrefixEquals>
 
 =item *
 
-Redirect
+C<Redirect>
 
 =item *
 
-Protocol
+C<Protocol>
 
 =item *
 
-HostName
+C<HostName>
 
 =item *
 
-ReplaceKeyPrefixWith
+C<ReplaceKeyPrefixWith>
 
 =item *
 
-ReplaceKeyWith
+C<ReplaceKeyWith>
 
 =item *
 
-HttpRedirectCode
+C<HttpRedirectCode>
 
 =back
 
@@ -6622,7 +6544,7 @@ http://www.ietf.org/rfc/rfc2616.txt
 You can optionally request server-side encryption. With server-side
 encryption, Amazon S3 encrypts your data as it writes it to disks in
 its data centers and decrypts the data when you access it. You have the
-option to provide your own encryption key or use AWS-managed encryption
+option to provide your own encryption key or use AWS managed encryption
 keys. For more information, see Using Server-Side Encryption
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html).
 
@@ -6662,17 +6584,17 @@ You can optionally tell Amazon S3 to encrypt data at rest using
 server-side encryption. Server-side encryption is for data encryption
 at rest. Amazon S3 encrypts your data as it writes it to disks in its
 data centers and decrypts it when you access it. The option you use
-depends on whether you want to use AWS-managed encryption keys or
+depends on whether you want to use AWS managed encryption keys or
 provide your own encryption key.
 
 =over
 
 =item *
 
-Use encryption keys managed Amazon S3 or customer master keys (CMKs)
-stored in AWS Key Management Service (KMS) E<ndash> If you want AWS to
-manage the keys used to encrypt data, specify the following headers in
-the request.
+Use encryption keys managed by Amazon S3 or customer master keys (CMKs)
+stored in AWS Key Management Service (AWS KMS) E<ndash> If you want AWS
+to manage the keys used to encrypt data, specify the following headers
+in the request.
 
 =over
 
@@ -6690,16 +6612,16 @@ x-amz-server-side-encryption-context
 
 =back
 
-If you specify x-amz-server-side-encryption:aws:kms, but don't provide
-x-amz-server-side- encryption-aws-kms-key-id, Amazon S3 uses the AWS
-managed CMK in AWS KMS to protect the data.
+If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
+provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
+the AWS managed CMK in AWS KMS to protect the data.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.
 
-For more information on Server-Side Encryption with CMKs stored in AWS
-KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption with
-CMKs stored in AWS
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+with CMKs stored in AWS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
 =item *
@@ -6724,9 +6646,9 @@ x-amz-server-side-encryption-customer-key-MD5
 
 =back
 
-For more information on Server-Side Encryption with CMKs stored in KMS
-(SSE-KMS), see Protecting Data Using Server-Side Encryption with CMKs
-stored in AWS KMS
+For more information about server-side encryption with CMKs stored in
+KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption with
+CMKs stored in AWS KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
 =back
@@ -6747,9 +6669,10 @@ following two methods:
 
 =item *
 
-Specify a canned ACL (x-amz-acl) E<mdash> Amazon S3 supports a set of
-predefined ACLs, known as canned ACLs. Each canned ACL has a predefined
-set of grantees and permissions. For more information, see Canned ACL
+Specify a canned ACL (C<x-amz-acl>) E<mdash> Amazon S3 supports a set
+of predefined ACLs, known as canned ACLs. Each canned ACL has a
+predefined set of grantees and permissions. For more information, see
+Canned ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 =item *
@@ -6794,8 +6717,8 @@ the following:
 
 =item *
 
-emailAddress E<ndash> if the value specified is the email address of an
-AWS account
+C<emailAddress> E<ndash> if the value specified is the email address of
+an AWS account
 
 Using email addresses to specify a grantee is only supported in the
 following AWS Regions:
@@ -6836,23 +6759,23 @@ South America (SE<atilde>o Paulo)
 
 =back
 
-For a list of all the Amazon S3 supported regions and endpoints, see
+For a list of all the Amazon S3 supported Regions and endpoints, see
 Regions and Endpoints
 (https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in
 the AWS General Reference
 
 =item *
 
-id E<ndash> if the value specified is the canonical user ID of an AWS
-account
+C<id> E<ndash> if the value specified is the canonical user ID of an
+AWS account
 
 =item *
 
-uri E<ndash> if you are granting permissions to a predefined group
+C<uri> E<ndash> if you are granting permissions to a predefined group
 
 =back
 
-For example, the following x-amz-grant-read header grants the AWS
+For example, the following C<x-amz-grant-read> header grants the AWS
 accounts identified by email addresses permissions to read object data
 and its metadata:
 
@@ -6875,9 +6798,9 @@ provide your own encryption key.
 =item *
 
 Use encryption keys managed by Amazon S3 or customer master keys (CMKs)
-stored in AWS Key Management Service (KMS) E<ndash> If you want AWS to
-manage the keys used to encrypt data, specify the following headers in
-the request.
+stored in AWS Key Management Service (AWS KMS) E<ndash> If you want AWS
+to manage the keys used to encrypt data, specify the following headers
+in the request.
 
 =over
 
@@ -6895,16 +6818,16 @@ x-amz-server-side-encryption-context
 
 =back
 
-If you specify x-amz-server-side-encryption:aws:kms, but don't provide
-x-amz-server-side- encryption-aws-kms-key-id, Amazon S3 uses the
-default AWS KMS CMK to protect the data.
+If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
+provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
+the default AWS KMS CMK to protect the data.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.
 
-For more information on Server-Side Encryption with CMKs stored in AWS
-KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption with
-CMKs stored in AWS KMS
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+with CMKs stored in AWS KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
 =item *
@@ -6932,9 +6855,9 @@ x-amz-server-side-encryption-customer-key-MD5
 
 =back
 
-For more information on Server-Side Encryption with CMKs stored in AWS
-KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption with
-CMKs stored in AWS KMS
+For more information about server-side encryption with CMKs stored in
+AWS KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption
+with CMKs stored in AWS KMS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
 =back
@@ -7015,14 +6938,14 @@ Each argument is described in detail in: L<Paws::S3::PutObjectAcl>
 
 Returns: a L<Paws::S3::PutObjectAclOutput> instance
 
-uses the acl subresource to set the access control list (ACL)
+Uses the C<acl> subresource to set the access control list (ACL)
 permissions for an object that already exists in a bucket. You must
-have WRITE_ACP permission to set the ACL of an object.
+have C<WRITE_ACP> permission to set the ACL of an object.
 
-Depending on your application needs, you may choose to set the ACL on
+Depending on your application needs, you can choose to set the ACL on
 an object using either the request body or the headers. For example, if
 you have an existing application that updates a bucket ACL using the
-request body, then you can continue to use that approach.
+request body, you can continue to use that approach.
 
 B<Access Permissions>
 
@@ -7035,21 +6958,22 @@ You can set access permissions using one of the following methods:
 Specify a canned ACL with the C<x-amz-acl> request header. Amazon S3
 supports a set of predefined ACLs, known as canned ACLs. Each canned
 ACL has a predefined set of grantees and permissions. Specify the
-canned ACL name as the value of x-amz-acl. If you use this header, you
-cannot use other access control specific headers in your request. For
-more information, see Canned ACL
+canned ACL name as the value of C<x-amz-ac>l. If you use this header,
+you cannot use other access control-specific headers in your request.
+For more information, see Canned ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 =item *
 
 Specify access permissions explicitly with the C<x-amz-grant-read>,
 C<x-amz-grant-read-acp>, C<x-amz-grant-write-acp>, and
-C<x-amz-grant-full-control> headers. When using these headers you
-specify explicit access permissions and grantees (AWS accounts or a
-Amazon S3 groups) who will receive the permission. If you use these ACL
-specific headers, you cannot use x-amz-acl header to set a canned ACL.
-These parameters map to the set of permissions that Amazon S3 supports
-in an ACL. For more information, see Access Control List (ACL) Overview
+C<x-amz-grant-full-control> headers. When using these headers, you
+specify explicit access permissions and grantees (AWS accounts or
+Amazon S3 groups) who will receive the permission. If you use these
+ACL-specific headers, you cannot use C<x-amz-acl> header to set a
+canned ACL. These parameters map to the set of permissions that Amazon
+S3 supports in an ACL. For more information, see Access Control List
+(ACL) Overview
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html).
 
 You specify each grantee as a type=value pair, where the type is one of
@@ -7059,22 +6983,23 @@ the following:
 
 =item *
 
-emailAddress E<ndash> if the value specified is the email address of an
+C<emailAddress> E<ndash> if the value specified is the email address of
+an AWS account
+
+=item *
+
+C<id> E<ndash> if the value specified is the canonical user ID of an
 AWS account
 
 =item *
 
-id E<ndash> if the value specified is the canonical user ID of an AWS
-account
-
-=item *
-
-uri E<ndash> if you are granting permissions to a predefined group
+C<uri> E<ndash> if you are granting permissions to a predefined group
 
 =back
 
-For example, the following x-amz-grant-read header grants list objects
-permission to the two AWS accounts identified by their email addresses.
+For example, the following C<x-amz-grant-read> header grants list
+objects permission to the two AWS accounts identified by their email
+addresses.
 
 C<x-amz-grant-read: emailAddress="xyz@amazon.com",
 emailAddress="abc@amazon.com">
@@ -7109,7 +7034,7 @@ C<E<lt>Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:type="CanonicalUser"E<gt>E<lt>IDE<gt>E<lt>E<gt>IDE<lt>E<gt>E<lt>/IDE<gt>E<lt>DisplayNameE<gt>E<lt>E<gt>GranteesEmailE<lt>E<gt>E<lt>/DisplayNameE<gt>
 E<lt>/GranteeE<gt>>
 
-DisplayName is optional and ignored in the request
+DisplayName is optional and ignored in the request.
 
 =item *
 
@@ -7409,17 +7334,17 @@ Each argument is described in detail in: L<Paws::S3::PutPublicAccessBlock>
 Returns: nothing
 
 Creates or modifies the C<PublicAccessBlock> configuration for an
-Amazon S3 bucket. In order to use this operation, you must have the
+Amazon S3 bucket. To use this operation, you must have the
 C<s3:PutBucketPublicAccessBlock> permission. For more information about
 Amazon S3 permissions, see Specifying Permissions in a Policy
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
-When Amazon S3 evaluates the PublicAccessBlock configuration for a
-bucket or an object, it checks the PublicAccessBlock configuration for
-both the bucket (or the bucket that contains the object) and the bucket
-owner's account. If the PublicAccessBlock configurations are different
-between the bucket and the account, Amazon S3 uses the most restrictive
-combination of the bucket-level and account-level settings.
+When Amazon S3 evaluates the C<PublicAccessBlock> configuration for a
+bucket or an object, it checks the C<PublicAccessBlock> configuration
+for both the bucket (or the bucket that contains the object) and the
+bucket owner's account. If the C<PublicAccessBlock> configurations are
+different between the bucket and the account, Amazon S3 uses the most
+restrictive combination of the bucket-level and account-level settings.
 
 For more information about when Amazon S3 considers a bucket or an
 object public, see The Meaning of "Public"
@@ -7674,11 +7599,11 @@ hours from the DEEP_ARCHIVE storage class.
 
 =item *
 
-B<C<Bulk> > - Bulk retrievals are Amazon GlacierE<rsquo>s lowest-cost
-retrieval option, enabling you to retrieve large amounts, even
-petabytes, of data inexpensively in a day. Bulk retrievals typically
-complete within 5-12 hours from the GLACIER storage class and typically
-complete within 48 hours from the DEEP_ARCHIVE storage class.
+B<C<Bulk> > - Bulk retrievals are Amazon S3 GlacierE<rsquo>s
+lowest-cost retrieval option, enabling you to retrieve large amounts,
+even petabytes, of data inexpensively in a day. Bulk retrievals
+typically complete within 5-12 hours from the GLACIER storage class and
+typically complete within 48 hours from the DEEP_ARCHIVE storage class.
 
 =back
 
@@ -8064,7 +7989,7 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 You can optionally request server-side encryption where Amazon S3
 encrypts your data as it writes it to disks in its data centers and
 decrypts it for you when you access it. You have the option of
-providing your own encryption key, or you can use the AWS-managed
+providing your own encryption key, or you can use the AWS managed
 encryption keys. If you choose to provide your own encryption key, the
 request headers you provide in the request must match the headers you
 used in the request to initiate the upload by using
@@ -8076,7 +8001,7 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 Server-side encryption is supported by the S3 Multipart Upload actions.
 Unless you are using a customer-provided encryption key, you don't need
 to specify the encryption parameters in each UploadPart request.
-Instead, you only need to specify the server side encryption parameters
+Instead, you only need to specify the server-side encryption parameters
 in the initial Initiate Multipart request. For more information, see
 CreateMultipartUpload.
 
@@ -8224,29 +8149,29 @@ response to your initiate request. Amazon S3 returns a unique
 identifier, the upload ID, that you must include in your upload part
 request.
 
-B<For more information on using the UploadPartCopy operation, see the
-following topics:>
+For more information about using the C<UploadPartCopy> operation, see
+the following:
 
 =over
 
 =item *
 
-For conceptual information on multipart uploads, go to Uploading
+For conceptual information about multipart uploads, see Uploading
 Objects Using Multipart Upload
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 =item *
 
-For information on permissions required to use the multipart upload
-API, go to Multipart Upload API and Permissions
+For information about permissions required to use the multipart upload
+API, see Multipart Upload API and Permissions
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 =item *
 
 For information about copying objects using a single atomic operation
-vs. the multipart upload, go to Operations on Objects
+vs. the multipart upload, see Operations on Objects
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectOperations.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
@@ -8259,9 +8184,9 @@ see CopyObject and UploadPart.
 =back
 
 Note the following additional considerations about the request headers
-C<x-amz-copy-source-if-match>, C<x-amz-copy-source-if-none-match>
-C<x-amz-copy-source-if-unmodified-since>
-C<x-amz-copy-source-if-modified-since>
+C<x-amz-copy-source-if-match>, C<x-amz-copy-source-if-none-match>,
+C<x-amz-copy-source-if-unmodified-since>, and
+C<x-amz-copy-source-if-modified-since>:
 
 =over
 
@@ -8276,7 +8201,7 @@ C<x-amz-copy-source-if-match> condition evaluates to C<true>, and;
 C<x-amz-copy-source-if-unmodified-since> condition evaluates to
 C<false>;
 
-then, S3 returns C<200 OK> and copies the data.
+Amazon S3 returns C<200 OK> and copies the data.
 
 =item *
 
@@ -8289,7 +8214,7 @@ and;
 
 C<x-amz-copy-source-if-modified-since> condition evaluates to C<true>;
 
-then, S3 returns C<412 Precondition Failed> response code.
+Amazon S3 returns C<412 Precondition Failed> response code.
 
 =back
 

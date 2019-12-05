@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Multipa
 
 =head1 DESCRIPTION
 
-Container for the MultipartUpload for the Amazon S3 object.
+Container for the C<MultipartUpload> for the Amazon S3 object.
 
 =head1 ATTRIBUTES
 

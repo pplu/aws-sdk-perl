@@ -42,13 +42,13 @@ For example:
 
 =item *
 
-If you specify both a Prefix and a Tag filter, wrap these filters in an
-And tag.
+If you specify both a C<Prefix> and a C<Tag> filter, wrap these filters
+in an C<And> tag.
 
 =item *
 
-If you specify a filter based on multiple tags, wrap the Tag elements
-in an And tag
+If you specify a filter based on multiple tags, wrap the C<Tag>
+elements in an C<And> tag
 
 =back
 
@@ -58,8 +58,8 @@ in an And tag
 
 =head2 Prefix => Str
 
-  An object keyname prefix that identifies the subset of objects to which
-the rule applies.
+  An object key name prefix that identifies the subset of objects to
+which the rule applies.
 
 
 =head2 Tags => ArrayRef[L<Paws::S3::Tag>]

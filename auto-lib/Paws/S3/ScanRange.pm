@@ -32,7 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ScanRan
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the byte range of the object to get the records from. A
+record is processed when its first byte is contained by the range. This
+parameter is optional, but when specified, it must not be empty. See
+RFC 2616, Section 14.35.1 about how to specify the start and end of the
+range.
 
 =head1 ATTRIBUTES
 
@@ -43,7 +47,7 @@ This class has no description
 values: non-negative integers. The default value is one less than the
 size of the object being queried. If only the End parameter is
 supplied, it is interpreted to mean scan the last N bytes of the file.
-For example;
+For example,
 C<E<lt>scanrangeE<gt>E<lt>endE<gt>50E<lt>/endE<gt>E<lt>/scanrangeE<gt>>
 means scan the last 50 bytes.
 

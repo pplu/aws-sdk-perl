@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
 
         },    # OPTIONAL
         OutputLocation => {
@@ -130,7 +130,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
@@ -150,7 +150,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The bucket name.
+The bucket name or containing the object to restore.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 

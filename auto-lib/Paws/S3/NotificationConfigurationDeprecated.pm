@@ -33,7 +33,7 @@ configuration for publishing messages to an Amazon Simple Queue Service
 
 =head2 TopicConfiguration => L<Paws::S3::TopicConfigurationDeprecated>
 
-This data type is deperecated. A container for specifying the
+This data type is deprecated. A container for specifying the
 configuration for publication of messages to an Amazon Simple
 Notification Service (Amazon SNS) topic when Amazon S3 detects
 specified events.

@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::S3Locat
 
 =head1 DESCRIPTION
 
-Describes an S3 location that will receive the results of the restore
-request.
+Describes an Amazon S3 location that will receive the results of the
+restore request.
 
 =head1 ATTRIBUTES
 

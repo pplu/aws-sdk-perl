@@ -42,12 +42,12 @@ Container for an object that is a delete marker.
 
 =head2 Delimiter => Str
 
-The delimeter grouping the included keys. A delimiter is a character
+The delimiter grouping the included keys. A delimiter is a character
 that you specify to group keys. All keys that contain the same string
 between the prefix and the first occurrence of the delimiter are
-grouped under a single result element in CommonPrefixes. These groups
-are counted as one result against the max-keys limitation. These keys
-are not returned elsewhere in the response.
+grouped under a single result element in C<CommonPrefixes>. These
+groups are counted as one result against the max-keys limitation. These
+keys are not returned elsewhere in the response.
 
 
 
@@ -66,17 +66,17 @@ Valid values are: C<"url">
 
 =head2 IsTruncated => Bool
 
-A flag that indicates whether or not Amazon S3 returned all of the
-results that satisfied the search criteria. If your results were
-truncated, you can make a follow-up paginated request using the
-NextKeyMarker and NextVersionIdMarker response parameters as a starting
-place in another request to return the rest of the results.
+A flag that indicates whether Amazon S3 returned all of the results
+that satisfied the search criteria. If your results were truncated, you
+can make a follow-up paginated request using the NextKeyMarker and
+NextVersionIdMarker response parameters as a starting place in another
+request to return the rest of the results.
 
 
 
 =head2 KeyMarker => Str
 
-Marks the last Key returned in a truncated response.
+Marks the last key returned in a truncated response.
 
 
 
@@ -88,23 +88,23 @@ Specifies the maximum number of objects to return.
 
 =head2 Name => Str
 
-Bucket owner's name.
+Bucket name.
 
 
 
 =head2 NextKeyMarker => Str
 
-When the number of responses exceeds the value of MaxKeys,
-NextKeyMarker specifies the first key not returned that satisfies the
-search criteria. Use this value for the key-marker request parameter in
-a subsequent request.
+When the number of responses exceeds the value of C<MaxKeys>,
+C<NextKeyMarker> specifies the first key not returned that satisfies
+the search criteria. Use this value for the key-marker request
+parameter in a subsequent request.
 
 
 
 =head2 NextVersionIdMarker => Str
 
-When the number of responses exceeds the value of MaxKeys,
-NextVersionIdMarker specifies the first object version not returned
+When the number of responses exceeds the value of C<MaxKeys>,
+C<NextVersionIdMarker> specifies the first object version not returned
 that satisfies the search criteria. Use this value for the
 version-id-marker request parameter in a subsequent request.
 
@@ -118,7 +118,7 @@ Selects objects that start with the value supplied by this parameter.
 
 =head2 VersionIdMarker => Str
 
-Marks the last version of the Key returned in a truncated response.
+Marks the last version of the key returned in a truncated response.
 
 
 

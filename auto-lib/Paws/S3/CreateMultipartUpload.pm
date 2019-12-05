@@ -225,15 +225,15 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+The server-side encryption algorithm used when storing this object in
+Amazon S3 (for example, AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -241,9 +241,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -251,7 +251,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 
@@ -267,9 +267,11 @@ with the encryption context key-value pairs.
 
 Specifies the AWS KMS key ID to use for object encryption. All GET and
 PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. Documentation on configuring any of the
-officially supported AWS SDKs and CLI can be found at
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+via SSL or using SigV4. For information about configuring using any of
+the officially supported AWS SDKs and AWS CLI, see Specifying the
+Signature Version in Request Authentication
+(https://docs.aws.amazon.com/http:/docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
+in the I<Amazon S3 Developer Guide>.
 
 
 
@@ -282,7 +284,7 @@ Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"O
 =head2 Tagging => Str
 
 The tag-set for the object. The tag-set must be encoded as URL Query
-parameters
+parameters.
 
 
 

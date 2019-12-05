@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Owner o
 
 =head1 DESCRIPTION
 
-Container for the owner's display name and ID
+Container for the owner's display name and ID.
 
 =head1 ATTRIBUTES
 
 
 =head2 DisplayName => Str
 
-  Container for the display name of the owner
+  Container for the display name of the owner.
 
 
 =head2 ID => Str
 
-  Container for the ID of the owner
+  Container for the ID of the owner.
 
 
 

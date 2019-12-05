@@ -45,7 +45,7 @@ Container for restore job parameters.
 =head2 Days => Int
 
   Lifetime of the active copy in days. Do not use with restores that
-specify OutputLocation.
+specify C<OutputLocation>.
 
 
 =head2 Description => Str
@@ -56,7 +56,7 @@ specify OutputLocation.
 =head2 GlacierJobParameters => L<Paws::S3::GlacierJobParameters>
 
   Glacier related parameters pertaining to this job. Do not use with
-restores that specify OutputLocation.
+restores that specify C<OutputLocation>.
 
 
 =head2 OutputLocation => L<Paws::S3::OutputLocation>

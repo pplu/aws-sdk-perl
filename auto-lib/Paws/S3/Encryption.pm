@@ -41,18 +41,18 @@ Contains the type of server-side encryption used.
 =head2 B<REQUIRED> EncryptionType => Str
 
   The server-side encryption algorithm used when storing job results in
-Amazon S3 (e.g., AES256, aws:kms).
+Amazon S3 (for example, AES256, aws:kms).
 
 
 =head2 KMSContext => Str
 
-  If the encryption type is aws:kms, this optional value can be used to
-specify the encryption context for the restore results.
+  If the encryption type is C<aws:kms>, this optional value can be used
+to specify the encryption context for the restore results.
 
 
 =head2 KMSKeyId => Str
 
-  If the encryption type is aws:kms, this optional value specifies the
+  If the encryption type is C<aws:kms>, this optional value specifies the
 AWS KMS key ID to use for encryption of job results.
 
 

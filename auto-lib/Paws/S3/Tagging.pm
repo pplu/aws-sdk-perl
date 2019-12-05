@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Tagging
 
 =head1 DESCRIPTION
 
-Container for TagSet elements.
+Container for C<TagSet> elements.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
 
-  A collection for a a set of tags
+  A collection for a set of tags
 
 
 

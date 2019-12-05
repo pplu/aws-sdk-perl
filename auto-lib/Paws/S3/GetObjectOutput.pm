@@ -49,7 +49,7 @@ Paws::S3::GetObjectOutput
 
 =head2 AcceptRanges => Str
 
-Indicates that a range of bytes was specifed.
+Indicates that a range of bytes was specified.
 
 
 
@@ -114,7 +114,7 @@ response.
 =head2 ETag => Str
 
 An ETag is an opaque identifier assigned by a web server to a specific
-version of a resource found at a URL
+version of a resource found at a URL.
 
 
 
@@ -122,7 +122,7 @@ version of a resource found at a URL
 
 If the object expiration is configured (see PUT Bucket lifecycle), the
 response includes this header. It includes the expiry-date and rule-id
-key value pairs providing object expiration information. The value of
+key-value pairs providing object expiration information. The value of
 the rule-id is URL encoded.
 
 
@@ -148,10 +148,10 @@ A map of metadata to store with the object in S3.
 =head2 MissingMeta => Int
 
 This is set to the number of metadata entries not returned in
-x-amz-meta headers. This can happen if you create metadata using an API
-like SOAP that supports more flexible metadata than the REST API. For
-example, using SOAP, you can create metadata whose values are not legal
-HTTP headers.
+C<x-amz-meta> headers. This can happen if you create metadata using an
+API like SOAP that supports more flexible metadata than the REST API.
+For example, using SOAP, you can create metadata whose values are not
+legal HTTP headers.
 
 
 
@@ -203,8 +203,8 @@ time of the restored object copy.
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+The server-side encryption algorithm used when storing this object in
+Amazon S3 (for example, AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
@@ -219,15 +219,15 @@ encryption algorithm used.
 =head2 SSECustomerKeyMD5 => Str
 
 If server-side encryption with a customer-provided encryption key was
-requested, the response will include this header to provide round trip
+requested, the response will include this header to provide round-trip
 message integrity verification of the customer-provided encryption key.
 
 
 
 =head2 SSEKMSKeyId => Str
 
-If present, specifies the ID of the AWS Key Management Service (KMS)
-customer master key (CMK) that was used for the object.
+If present, specifies the ID of the AWS Key Management Service (AWS
+KMS) customer master key (CMK) that was used for the object.
 
 
 

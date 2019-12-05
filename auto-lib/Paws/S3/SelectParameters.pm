@@ -46,7 +46,7 @@ Describes the parameters for Select job types.
 
 =head2 B<REQUIRED> ExpressionType => Str
 
-  The type of the provided expression (e.g., SQL).
+  The type of the provided expression (for example, SQL).
 
 
 =head2 B<REQUIRED> InputSerialization => L<Paws::S3::InputSerialization>

@@ -38,15 +38,15 @@ eligible for abort operation. For more information, see Aborting
 Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
 
-The response will also include the x-amz-abort-rule-id header that will
-provide the ID of the lifecycle configuration rule that defines this
-action.
+The response will also include the C<x-amz-abort-rule-id> header that
+will provide the ID of the lifecycle configuration rule that defines
+this action.
 
 
 
 =head2 AbortRuleId => Str
 
-This header is returned along with the x-amz-abort-date header. It
+This header is returned along with the C<x-amz-abort-date> header. It
 identifies applicable lifecycle configuration rule that defines the
 action to abort incomplete multipart uploads.
 
@@ -62,7 +62,7 @@ Name of the bucket to which the multipart upload was initiated.
 
 Container element that identifies who initiated the multipart upload.
 If the initiator is an AWS account, this element provides the same
-information as the Owner element. If the initiator is an IAM User, then
+information as the C<Owner> element. If the initiator is an IAM User,
 this element provides the user ARN and display name.
 
 
@@ -114,7 +114,7 @@ parameter in a subsequent request.
 =head2 Parts => ArrayRef[L<Paws::S3::Part>]
 
 Container for elements related to a particular part. A response can
-contain zero or more Part elements.
+contain zero or more C<Part> elements.
 
 
 

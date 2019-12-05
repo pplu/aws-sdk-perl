@@ -150,7 +150,7 @@ number of parts in this object.
 =head2 Range => Str
 
 Downloads the specified range bytes of an object. For more information
-about the HTTP Range header, go to
+about the HTTP Range header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
@@ -163,8 +163,8 @@ Valid values are: C<"requester">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -172,9 +172,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -182,7 +182,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 

@@ -127,7 +127,16 @@ Object data.
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the PUT operation was initiated.
+Bucket name to which the PUT operation was initiated.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
@@ -269,15 +278,15 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+The server-side encryption algorithm used when storing this object in
+Amazon S3 (for example, AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -285,9 +294,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -295,7 +304,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 
@@ -309,15 +318,16 @@ with the encryption context key-value pairs.
 
 =head2 SSEKMSKeyId => Str
 
-If the x-amz-server-side-encryption is present and has the value of
-aws:kms, this header specifies the ID of the AWS Key Management Service
-(AWS KMS) customer master key (CMK) that was used for the object.
+If C<x-amz-server-side-encryption> is present and has the value of
+C<aws:kms>, this header specifies the ID of the AWS Key Management
+Service (AWS KMS) customer master key (CMK) that was used for the
+object.
 
-If the value of x-amz-server-side-encryption is aws:kms, this header
-specifies the ID of the AWS KMS CMK that will be used for the object.
-If you specify x-amz-server-side-encryption:aws:kms, but do not provide
-x-amz-server-side-encryption-aws-kms-key-id, Amazon S3 uses the AWS
-managed CMK in AWS to protect the data.
+If the value of C<x-amz-server-side-encryption> is C<aws:kms>, this
+header specifies the ID of the AWS KMS CMK that will be used for the
+object. If you specify C<x-amz-server-side-encryption:aws:kms>, but do
+not provideC< x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3
+uses the AWS managed CMK in AWS to protect the data.
 
 
 
@@ -340,7 +350,8 @@ parameters. (For example, "Key1=Value1")
 If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
 Amazon S3 stores the value of this header in the object metadata. For
-information about object metadata, see .
+information about object metadata, see Object Key and Metadata
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html).
 
 In the following example, the request header sets the redirect to an
 object (anotherPage.html) in the same bucket:

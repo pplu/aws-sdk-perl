@@ -42,10 +42,10 @@ the NextContinuationToken will be provided for a subsequent request.
 
 =head2 NextContinuationToken => Str
 
-NextContinuationToken is sent when isTruncated is true, which indicates
-that there are more analytics configurations to list. The next request
-must include this NextContinuationToken. The token is obfuscated and is
-not a usable value.
+C<NextContinuationToken> is sent when C<isTruncated> is true, which
+indicates that there are more analytics configurations to list. The
+next request must include this C<NextContinuationToken>. The token is
+obfuscated and is not a usable value.
 
 
 

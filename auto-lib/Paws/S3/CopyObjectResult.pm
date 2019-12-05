@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CopyObj
 
 =head1 DESCRIPTION
 
-E<gt>Container for all response elements.
+Container for all response elements.
 
 =head1 ATTRIBUTES
 

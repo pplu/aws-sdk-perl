@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::SelectO
 
 =head1 DESCRIPTION
 
-The continer for selecting objects from a content event stream.
+The container for selecting objects from a content event stream.
 
 =head1 ATTRIBUTES
 

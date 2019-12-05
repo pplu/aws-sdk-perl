@@ -79,7 +79,7 @@ not corrupted in transit. For more information, see RFC 1864
 
 =head2 B<REQUIRED> Tagging => L<Paws::S3::Tagging>
 
-Container for the TagSet and Tag elements.
+Container for the C<TagSet> and C<Tag> elements.
 
 
 

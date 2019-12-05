@@ -45,7 +45,7 @@ The version of an object.
 
 =head2 ETag => Str
 
-  The entity tag is an MD5 hash of that version of the object
+  The entity tag is an MD5 hash of that version of the object.
 
 
 =head2 IsLatest => Bool
@@ -66,7 +66,7 @@ version of an object.
 
 =head2 Owner => L<Paws::S3::Owner>
 
-  Specifies the Owner of the object.
+  Specifies the owner of the object.
 
 
 =head2 Size => Int

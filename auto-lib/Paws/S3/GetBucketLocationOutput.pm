@@ -17,8 +17,8 @@ Paws::S3::GetBucketLocationOutput
 
 =head2 LocationConstraint => Str
 
-Specifies the region where the bucket resides. For a list of all the
-Amazon S3 supported location constraints by region, see Regions and
+Specifies the Region where the bucket resides. For a list of all the
+Amazon S3 supported location constraints by Region, see Regions and
 Endpoints
 (https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region).
 

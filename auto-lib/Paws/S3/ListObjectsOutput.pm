@@ -54,9 +54,9 @@ Metadata about each object returned.
 
 Causes keys that contain the same string between the prefix and the
 first occurrence of the delimiter to be rolled up into a single result
-element in the CommonPrefixes collection. These rolled-up keys are not
-returned elsewhere in the response. Each rolled-up result counts as
-only one return against the MaxKeys value.
+element in the C<CommonPrefixes> collection. These rolled-up keys are
+not returned elsewhere in the response. Each rolled-up result counts as
+only one return against the C<MaxKeys> value.
 
 
 
@@ -68,8 +68,8 @@ Valid values are: C<"url">
 
 =head2 IsTruncated => Bool
 
-A flag that indicates whether or not Amazon S3 returned all of the
-results that satisfied the search criteria.
+A flag that indicates whether Amazon S3 returned all of the results
+that satisfied the search criteria.
 
 
 
@@ -88,7 +88,7 @@ The maximum number of keys returned in the response body.
 
 =head2 Name => Str
 
-Name of the bucket.
+Bucket name.
 
 
 

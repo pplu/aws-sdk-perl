@@ -63,7 +63,7 @@ events of the specified type.
 
 =head2 InvocationRole => Str
 
-  The role supporting the invocation of the lambda function
+  The role supporting the invocation of the Lambda function
 
 
 

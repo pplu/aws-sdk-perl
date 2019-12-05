@@ -48,8 +48,9 @@ in the I<Amazon Simple Storage Service API Reference>.
 logs. You can have your logs delivered to any bucket that you own,
 including the same bucket that is being logged. You can also configure
 multiple buckets to deliver their logs to the same target bucket. In
-this case you should choose a different TargetPrefix for each source
-bucket so that the delivered log files can be distinguished by key.
+this case, you should choose a different C<TargetPrefix> for each
+source bucket so that the delivered log files can be distinguished by
+key.
 
 
 =head2 TargetGrants => ArrayRef[L<Paws::S3::TargetGrant>]

@@ -40,7 +40,7 @@ E<lt>StatusE<gt>DisabledE<lt>/StatusE<gt>. For an example
 configuration, see Basic Rule Configuration
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config).
 
-If you don't specify the Filter element, Amazon S3 assumes the
+If you don't specify the C<Filter> element, Amazon S3 assumes that the
 replication configuration is the earlier version, V1. In the earlier
 version, Amazon S3 handled replication of delete markers differently.
 For more information, see Backward Compatibility

@@ -50,6 +50,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EncryptionConfiguration => {
                 ReplicaKmsKeyID => 'MyReplicaKmsKeyID',    # OPTIONAL
               },    # OPTIONAL
+              Metrics => {
+                EventThreshold => {
+                  Minutes => 1,    # OPTIONAL
+                },
+                Status => 'Enabled',    # values: Enabled, Disabled
+
+              },    # OPTIONAL
+              ReplicationTime => {
+                Status => 'Enabled',    # values: Enabled, Disabled
+                Time   => {
+                  Minutes => 1,         # OPTIONAL
+                },
+
+              },    # OPTIONAL
               StorageClass => 'STANDARD'
               , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE; OPTIONAL
             },

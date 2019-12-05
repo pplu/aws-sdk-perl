@@ -100,13 +100,23 @@ grantee.
 
 The canned ACL to apply to the object. For more information, see Canned
 ACL
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"aws-exec-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the bucket to which the ACL is being added.
+The bucket name that contains the object to which you want to attach
+the ACL.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 

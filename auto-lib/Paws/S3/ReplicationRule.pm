@@ -52,14 +52,14 @@ replicas.
 
 =head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
-  A container for information about the replication destination.
+  A container for information about the replication destination and its
+configurations including enabling the S3 Replication Time Control (S3
+RTC).
 
 
 =head2 ExistingObjectReplication => L<Paws::S3::ExistingObjectReplication>
 
-  A container that specifies information about existing object
-replication. You can choose whether to enable or disable the
-replication of existing objects.
+  
 
 
 =head2 Filter => L<Paws::S3::ReplicationRuleFilter>
@@ -74,9 +74,9 @@ replication of existing objects.
 
 =head2 Prefix => Str
 
-  An object keyname prefix that identifies the object or objects to which
-the rule applies. The maximum prefix length is 1,024 characters. To
-include all objects in a bucket, specify an empty string.
+  An object key name prefix that identifies the object or objects to
+which the rule applies. The maximum prefix length is 1,024 characters.
+To include all objects in a bucket, specify an empty string.
 
 
 =head2 Priority => Int
@@ -91,18 +91,18 @@ precedence. For example:
 
 =item *
 
-Same object quality prefix based filter criteria If prefixes you
+Same object quality prefix-based filter criteria if prefixes you
 specified in multiple rules overlap
 
 =item *
 
-Same object qualify tag based filter criteria specified in multiple
+Same object qualify tag-based filter criteria specified in multiple
 rules
 
 =back
 
-For more information, see Replication in the I<Amazon S3 Developer
-Guide>.
+For more information, see Replication in the I<Amazon Simple Storage
+Service Developer Guide>.
 
 
 =head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>

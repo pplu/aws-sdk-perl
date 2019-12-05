@@ -67,7 +67,7 @@ Causes keys that contain the same string between the prefix and the
 first occurrence of the delimiter to be rolled up into a single result
 element in the CommonPrefixes collection. These rolled-up keys are not
 returned elsewhere in the response. Each rolled-up result counts as
-only one return against the MaxKeys value.
+only one return against the C<MaxKeys> value.
 
 
 
@@ -109,16 +109,26 @@ might contain fewer keys but will never contain more.
 
 =head2 Name => Str
 
-Name of the bucket.
+Bucket name.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
 =head2 NextContinuationToken => Str
 
-NextContinuationToken is sent when isTruncated is true which means
-there are more keys in the bucket that can be listed. The next list
-requests to Amazon S3 can be continued with this NextContinuationToken.
-NextContinuationToken is obfuscated and is not a real key
+C<NextContinuationToken> is sent when C<isTruncated> is true, which
+means there are more keys in the bucket that can be listed. The next
+list requests to Amazon S3 can be continued with this
+C<NextContinuationToken>. C<NextContinuationToken> is obfuscated and is
+not a real key
 
 
 

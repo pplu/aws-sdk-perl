@@ -44,7 +44,7 @@ Paws::S3::HeadObjectOutput
 
 =head2 AcceptRanges => Str
 
-Indicates that a range of bytes was specifed.
+Indicates that a range of bytes was specified.
 
 
 
@@ -97,7 +97,7 @@ response.
 =head2 ETag => Str
 
 An ETag is an opaque identifier assigned by a web server to a specific
-version of a resource found at a URL
+version of a resource found at a URL.
 
 
 
@@ -105,7 +105,7 @@ version of a resource found at a URL
 
 If the object expiration is configured (see PUT Bucket lifecycle), the
 response includes this header. It includes the expiry-date and rule-id
-key value pairs providing object expiration information. The value of
+key-value pairs providing object expiration information. The value of
 the rule-id is URL encoded.
 
 
@@ -131,10 +131,10 @@ A map of metadata to store with the object in S3.
 =head2 MissingMeta => Int
 
 This is set to the number of metadata entries not returned in
-x-amz-meta headers. This can happen if you create metadata using an API
-like SOAP that supports more flexible metadata than the REST API. For
-example, using SOAP, you can create metadata whose values are not legal
-HTTP headers.
+C<x-amz-meta> headers. This can happen if you create metadata using an
+API like SOAP that supports more flexible metadata than the REST API.
+For example, using SOAP, you can create metadata whose values are not
+legal HTTP headers.
 
 
 
@@ -178,33 +178,33 @@ The count of parts this object has.
 Amazon S3 can return this header if your request involves a bucket that
 is either a source or destination in a replication rule.
 
-In replication you have a source bucket on which you configure
+In replication, you have a source bucket on which you configure
 replication and destination bucket where Amazon S3 stores object
-replicas. When you request an object (GetObject) or object metadata
-(HeadObject) from these buckets, Amazon S3 will return the
-x-amz-replication-status header in the response as follows:
+replicas. When you request an object (C<GetObject>) or object metadata
+(C<HeadObject>) from these buckets, Amazon S3 will return the
+C<x-amz-replication-status> header in the response as follows:
 
 =over
 
 =item *
 
-If requesting object from the source bucket E<mdash> Amazon S3 will
-return the x-amz-replication-status header if object in your request is
-eligible for replication.
+If requesting an object from the source bucket E<mdash> Amazon S3 will
+return the C<x-amz-replication-status> header if the object in your
+request is eligible for replication.
 
-For example, suppose in your replication configuration you specify
-object prefix "TaxDocs" requesting Amazon S3 to replicate objects with
-key prefix "TaxDocs". Then any objects you upload with this key name
-prefix, for example "TaxDocs/document1.pdf", is eligible for
-replication. For any object request with this key name prefix Amazon S3
-will return the x-amz-replication-status header with value PENDING,
-COMPLETED or FAILED indicating object replication status.
+For example, suppose that in your replication configuration, you
+specify object prefix C<TaxDocs> requesting Amazon S3 to replicate
+objects with key prefix C<TaxDocs>. Any objects you upload with this
+key name prefix, for example C<TaxDocs/document1.pdf>, are eligible for
+replication. For any object request with this key name prefix, Amazon
+S3 will return the C<x-amz-replication-status> header with value
+PENDING, COMPLETED or FAILED indicating object replication status.
 
 =item *
 
-If requesting object from the destination bucket E<mdash> Amazon S3
-will return the x-amz-replication-status header with value REPLICA if
-object in your request is a replica that Amazon S3 created.
+If requesting an object from the destination bucket E<mdash> Amazon S3
+will return the C<x-amz-replication-status> header with value REPLICA
+if the object in your request is a replica that Amazon S3 created.
 
 =back
 
@@ -245,9 +245,9 @@ Objects: General Considerations
 
 If the object is stored using server-side encryption either with an AWS
 KMS customer master key (CMK) or an Amazon S3-managed encryption key,
-the response includes this header with the value of the Server-side
-encryption algorithm used when storing this object in S3 (e.g., AES256,
-aws:kms).
+the response includes this header with the value of the server-side
+encryption algorithm used when storing this object in Amazon S3 (for
+example, AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
@@ -262,15 +262,15 @@ encryption algorithm used.
 =head2 SSECustomerKeyMD5 => Str
 
 If server-side encryption with a customer-provided encryption key was
-requested, the response will include this header to provide round trip
+requested, the response will include this header to provide round-trip
 message integrity verification of the customer-provided encryption key.
 
 
 
 =head2 SSEKMSKeyId => Str
 
-If present, specifies the ID of the AWS Key Management Service (KMS)
-customer master key (CMK) that was used for the object.
+If present, specifies the ID of the AWS Key Management Service (AWS
+KMS) customer master key (CMK) that was used for the object.
 
 
 

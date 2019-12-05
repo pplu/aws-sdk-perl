@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::IndexDo
 
 =head1 DESCRIPTION
 
-Container for the Suffix element.
+Container for the C<Suffix> element.
 
 =head1 ATTRIBUTES
 
@@ -39,8 +39,8 @@ Container for the Suffix element.
 =head2 B<REQUIRED> Suffix => Str
 
   A suffix that is appended to a request that is for a directory on the
-website endpoint (e.g. if the suffix is index.html and you make a
-request to samplebucket/images/ the data that is returned will be for
+website endpoint (for example,if the suffix is index.html and you make
+a request to samplebucket/images/ the data that is returned will be for
 the object with the key name images/index.html) The suffix must not be
 empty and must not include a slash character.
 

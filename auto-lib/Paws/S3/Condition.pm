@@ -56,10 +56,10 @@ then both must be true for the redirect to be applied.
 to redirect requests for C<ExamplePage.html>, the key prefix will be
 C<ExamplePage.html>. To redirect request for all pages with the prefix
 C<docs/>, the key prefix will be C</docs>, which identifies all objects
-in the docs/ folder. Required when the parent element C<Condition> is
-specified and sibling C<HttpErrorCodeReturnedEquals> is not specified.
-If both conditions are specified, both must be true for the redirect to
-be applied.
+in the C<docs/> folder. Required when the parent element C<Condition>
+is specified and sibling C<HttpErrorCodeReturnedEquals> is not
+specified. If both conditions are specified, both must be true for the
+redirect to be applied.
 
 
 

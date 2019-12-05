@@ -112,7 +112,7 @@ The expression that is used to query the object.
 
 =head2 B<REQUIRED> ExpressionType => Str
 
-The type of the provided expression (for example., SQL).
+The type of the provided expression (for example, SQL).
 
 Valid values are: C<"SQL">
 

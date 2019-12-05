@@ -78,8 +78,8 @@ Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSEKMSKeyId => Str
 
-If present, specifies the ID of the AWS Key Management Service (KMS)
-customer master key (CMK) that was used for the object.
+If present, specifies the ID of the AWS Key Management Service (AWS
+KMS) customer master key (CMK) that was used for the object.
 
 
 

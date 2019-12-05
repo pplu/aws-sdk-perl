@@ -43,7 +43,7 @@ The list of metrics configurations for a bucket.
 =head2 NextContinuationToken => Str
 
 The marker used to continue a metrics configuration listing that has
-been truncated. Use the NextContinuationToken from a previously
+been truncated. Use the C<NextContinuationToken> from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.
 

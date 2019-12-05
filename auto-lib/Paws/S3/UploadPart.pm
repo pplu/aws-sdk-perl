@@ -92,7 +92,7 @@ the body cannot be determined automatically.
 =head2 ContentMD5 => Str
 
 The base64-encoded 128-bit MD5 digest of the part data. This parameter
-is auto-populated when using the command from the CLI. This parameted
+is auto-populated when using the command from the CLI. This parameter
 is required if object lock parameters are specified.
 
 
@@ -118,8 +118,8 @@ Valid values are: C<"requester">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -127,9 +127,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header. This must be
+C<x-amz-server-side-encryption-customer-algorithm header>. This must be
 the same encryption key specified in the initiate multipart upload
 request.
 
@@ -139,7 +139,7 @@ request.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 

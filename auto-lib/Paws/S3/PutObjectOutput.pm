@@ -65,7 +65,7 @@ encryption algorithm used.
 =head2 SSECustomerKeyMD5 => Str
 
 If server-side encryption with a customer-provided encryption key was
-requested, the response will include this header to provide round trip
+requested, the response will include this header to provide round-trip
 message integrity verification of the customer-provided encryption key.
 
 
@@ -80,9 +80,10 @@ holding JSON with the encryption context key-value pairs.
 
 =head2 SSEKMSKeyId => Str
 
-If the x-amz-server-side-encryption is present and has the value of
-aws:kms, this header specifies the ID of the AWS Key Management Service
-(KMS) customer master key (CMK) that was used for the object.
+If C<x-amz-server-side-encryption> is present and has the value of
+C<aws:kms>, this header specifies the ID of the AWS Key Management
+Service (AWS KMS) customer master key (CMK) that was used for the
+object.
 
 
 

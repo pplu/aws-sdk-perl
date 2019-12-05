@@ -30,7 +30,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::SSES3 o
 
 =head1 DESCRIPTION
 
-Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
+Specifies the use of SSE-S3 to encrypt delivered inventory reports.
 
 =head1 ATTRIBUTES
 
