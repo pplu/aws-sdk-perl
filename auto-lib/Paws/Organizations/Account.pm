@@ -58,7 +58,7 @@ in the I<AWS Organizations User Guide>.
   The email address associated with the AWS account.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for this parameter
-is a string of characters that represents a standard Internet email
+is a string of characters that represents a standard internet email
 address.
 
 

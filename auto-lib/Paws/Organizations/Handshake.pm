@@ -40,13 +40,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 
 Contains information that must be exchanged to securely establish a
 relationship between two accounts (an I<originator> and a
-I<recipient>). For example, when a master account (the originator)
-invites another account (the recipient) to join its organization, the
-two accounts exchange information as a series of handshake requests and
-responses.
+I<recipient>). For example, assume that a master account (the
+originator) invites another account (the recipient) to join its
+organization. In that case, the two accounts exchange information as a
+series of handshake requests and responses.
 
 B<Note:> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in
-lists for only 30 days after entering that state After that they are
+lists for only 30 days after entering that state. After that, they are
 deleted.
 
 =head1 ATTRIBUTES

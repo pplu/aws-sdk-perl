@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 Contains details about an organization. An organization is a collection
 of accounts that are centrally managed together using consolidated
 billing, organized hierarchically with organizational units (OUs), and
-controlled with policies .
+controlled with policies.
 
 =head1 ATTRIBUTES
 

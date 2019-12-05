@@ -54,7 +54,7 @@ in the I<AWS Organizations User Guide>.
 
 =head2 AwsManaged => Bool
 
-  A boolean value that indicates whether the specified policy is an AWS
+  A Boolean value that indicates whether the specified policy is an AWS
 managed policy. If true, then you can attach the policy to roots, OUs,
 or accounts, but you cannot edit it.
 

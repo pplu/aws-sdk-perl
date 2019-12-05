@@ -77,7 +77,7 @@ The unique identifier (ID) of the policy whose attachments you want to
 know.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
+string requires "p-" followed by from 8 to 128 lowercase letters or
 digits.
 
 

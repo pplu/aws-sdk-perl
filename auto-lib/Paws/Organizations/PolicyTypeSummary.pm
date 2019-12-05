@@ -40,10 +40,10 @@ associated root.
 
 =head2 Status => Str
 
-  The status of the policy type as it relates to the associated root. To
-attach a policy of the specified type to a root or to an OU or account
-in that root, it must be available in the organization and enabled for
-that root.
+  The status of the policy type as it relates to the associated root. You
+can attach a policy of the specified type to a root or to an OU or
+account in that root. To do so, the policy must be available in the
+organization and enabled for that root.
 
 
 =head2 Type => Str

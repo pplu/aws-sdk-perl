@@ -70,19 +70,19 @@ string requires one of the following:
 
 =item *
 
-Root: a string that begins with "r-" followed by from 4 to 32
+Root: A string that begins with "r-" followed by from 4 to 32
 lower-case letters or digits.
 
 =item *
 
-Account: a string that consists of exactly 12 digits.
+Account: A string that consists of exactly 12 digits.
 
 =item *
 
-Organizational unit (OU): a string that begins with "ou-" followed by
+Organizational unit (OU): A string that begins with "ou-" followed by
 from 4 to 32 lower-case letters or digits (the ID of the root that the
-OU is in) followed by a second "-" dash and from 8 to 32 additional
-lower-case letters or digits.
+OU is in). This string is followed by a second "-" dash and from 8 to
+32 additional lower-case letters or digits.
 
 =back
 

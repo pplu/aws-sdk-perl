@@ -53,7 +53,7 @@ or from the ListCreateAccountStatus operation.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a create
 account request ID string requires "car-" followed by from 8 to 32
-lower-case letters or digits.
+lowercase letters or digits.
 
 
 

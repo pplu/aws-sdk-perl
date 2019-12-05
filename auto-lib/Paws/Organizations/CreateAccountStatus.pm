@@ -100,8 +100,8 @@ address you provided is not valid.
 =item *
 
 INTERNAL_FAILURE: The account could not be created because of an
-internal failure. Try again later. If the problem persists, contact
-Customer Support.
+internal failure. Try again later. If the problem persists, contact AWS
+Support.
 
 =back
 
@@ -119,7 +119,7 @@ the new account in the AWS GovCloud (US) Region.
 value from the response of the initial CreateAccount request to create
 the account.
 
-The regex pattern (http://wikipedia.org/wiki/regex) for an create
+The regex pattern (http://wikipedia.org/wiki/regex) for a create
 account request ID string requires "car-" followed by from 8 to 32
 lower-case letters or digits.
 
