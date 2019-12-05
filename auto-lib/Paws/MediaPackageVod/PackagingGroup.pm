@@ -1,6 +1,7 @@
 package Paws::MediaPackageVod::PackagingGroup;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
 1;
 
@@ -40,6 +41,11 @@ A MediaPackage VOD PackagingGroup resource.
 =head2 Arn => Str
 
   The ARN of the PackagingGroup.
+
+
+=head2 DomainName => Str
+
+  The fully qualified domain name for Assets in the PackagingGroup.
 
 
 =head2 Id => Str

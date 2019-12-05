@@ -1,6 +1,7 @@
 package Paws::MediaPackageVod::Asset;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::EgressEndpoint]', request_name => 'egressEndpoints', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest']);
@@ -45,6 +46,11 @@ A MediaPackage VOD Asset resource.
 =head2 Arn => Str
 
   The ARN of the Asset.
+
+
+=head2 CreatedAt => Str
+
+  The time the Asset was initially submitted for Ingest.
 
 
 =head2 EgressEndpoints => ArrayRef[L<Paws::MediaPackageVod::EgressEndpoint>]

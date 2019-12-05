@@ -1,6 +1,7 @@
 package Paws::MediaPackageVod::AssetShallow;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
@@ -44,6 +45,11 @@ A MediaPackage VOD Asset resource.
 =head2 Arn => Str
 
   The ARN of the Asset.
+
+
+=head2 CreatedAt => Str
+
+  The time the Asset was initially submitted for Ingest.
 
 
 =head2 Id => Str
