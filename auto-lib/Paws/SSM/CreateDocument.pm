@@ -6,6 +6,7 @@ package Paws::SSM::CreateDocument;
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
@@ -49,7 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                         # OPTIONAL
       DocumentFormat => 'YAML',                  # OPTIONAL
       DocumentType   => 'Command',               # OPTIONAL
-      Tags           => [
+      Requires       => [
+        {
+          Name    => 'MyDocumentARN',
+          Version => 'MyDocumentVersion',        # OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',                   # min: 1, max: 128
           Value => 'MyTagValue',                 # min: 1, max: 256
@@ -97,7 +105,7 @@ Valid values are: C<"YAML">, C<"JSON">
 The type of document to create. Valid document types include:
 C<Command>, C<Policy>, C<Automation>, C<Session>, and C<Package>.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -122,6 +130,14 @@ C<amzn>
 
 =back
 
+
+
+
+=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
+
+A list of SSM documents required by a document. For example, an
+C<ApplicationConfiguration> document requires an
+C<ApplicationConfigurationSchema> document.
 
 
 

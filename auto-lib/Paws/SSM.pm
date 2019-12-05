@@ -610,6 +610,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdatePatchBaseline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateResourceDataSync {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateResourceDataSync', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateServiceSetting {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateServiceSetting', @_);
@@ -1538,7 +1543,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateServiceSetting / }
+  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateResourceDataSync UpdateServiceSetting / }
 
 1;
 
@@ -1792,6 +1797,8 @@ exception.
 =item [DocumentFormat => Str]
 
 =item [DocumentType => Str]
+
+=item [Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]]
 
 =item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
@@ -2051,6 +2058,8 @@ instance.
 =item Name => Str
 
 =item [DocumentVersion => Str]
+
+=item [Force => Bool]
 
 =item [VersionName => Str]
 
@@ -3871,6 +3880,8 @@ Returns a list of the tags assigned to the specified resource.
 
 =item [AccountIdsToRemove => ArrayRef[Str|Undef]]
 
+=item [SharedDocumentVersion => Str]
+
 
 =back
 
@@ -4827,6 +4838,32 @@ request are left unchanged.
 For information about valid key and value pairs in C<PatchFilters> for
 each supported operating system type, see PatchFilter
 (http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+
+
+=head2 UpdateResourceDataSync
+
+=over
+
+=item SyncName => Str
+
+=item SyncSource => L<Paws::SSM::ResourceDataSyncSource>
+
+=item SyncType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UpdateResourceDataSync>
+
+Returns: a L<Paws::SSM::UpdateResourceDataSyncResult> instance
+
+Update a resource data sync. After you create a resource data sync for
+a Region, you can't change the account options for that sync. For
+example, if you create a sync in the us-east-2 (Ohio) Region and you
+choose the Include only the current account option, you can't edit that
+sync later and choose the Include all accounts from my AWS
+Organizations configuration option. Instead, you must delete the first
+resource data sync, and create a new one.
 
 
 =head2 UpdateServiceSetting

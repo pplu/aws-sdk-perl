@@ -4,9 +4,11 @@ package Paws::SSM::InstancePatchState;
   has FailedCount => (is => 'ro', isa => 'Int');
   has InstalledCount => (is => 'ro', isa => 'Int');
   has InstalledOtherCount => (is => 'ro', isa => 'Int');
+  has InstalledPendingRebootCount => (is => 'ro', isa => 'Int');
   has InstalledRejectedCount => (is => 'ro', isa => 'Int');
   has InstallOverrideList => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  has LastNoRebootInstallOperationTime => (is => 'ro', isa => 'Str');
   has MissingCount => (is => 'ro', isa => 'Int');
   has NotApplicableCount => (is => 'ro', isa => 'Int');
   has Operation => (is => 'ro', isa => 'Str', required => 1);
@@ -14,6 +16,7 @@ package Paws::SSM::InstancePatchState;
   has OperationStartTime => (is => 'ro', isa => 'Str', required => 1);
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has PatchGroup => (is => 'ro', isa => 'Str', required => 1);
+  has RebootOption => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has UnreportedNotApplicableCount => (is => 'ro', isa => 'Int');
 1;
@@ -77,6 +80,12 @@ instance.
 installed on the instance.
 
 
+=head2 InstalledPendingRebootCount => Int
+
+  The number of patches installed since the last time the instance was
+rebooted.
+
+
 =head2 InstalledRejectedCount => Int
 
   The number of instances with patches installed that are specified in a
@@ -107,6 +116,12 @@ in the I<AWS Systems Manager User Guide>.
 
   The ID of the managed instance the high-level patch compliance
 information was collected for.
+
+
+=head2 LastNoRebootInstallOperationTime => Str
+
+  The time of the last attempt to patch the instance with C<NoReboot>
+specified as the reboot option.
 
 
 =head2 MissingCount => Int
@@ -150,6 +165,32 @@ release of the service.
 =head2 B<REQUIRED> PatchGroup => Str
 
   The name of the patch group the managed instance belongs to.
+
+
+=head2 RebootOption => Str
+
+  Indicates the reboot option specified in the patch baseline.
+
+Reboot options apply to C<Install> operations only. Reboots are not
+attempted for Patch Manager C<Scan> operations.
+
+=over
+
+=item *
+
+B<RebootIfNeeded>: Patch Manager tries to reboot the instance if it
+installed any patches, or if any patches are detected with a status of
+C<InstalledPendingReboot>.
+
+=item *
+
+B<NoReboot>: Patch Manager attempts to install missing packages without
+trying to reboot the system. Patches installed with this option are
+assigned a status of C<InstalledPendingReboot>. These patches might not
+be in effect until a reboot is performed.
+
+=back
+
 
 
 =head2 SnapshotId => Str

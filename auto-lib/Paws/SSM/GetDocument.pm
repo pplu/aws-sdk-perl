@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DocumentType       = $GetDocumentResult->DocumentType;
     my $DocumentVersion    = $GetDocumentResult->DocumentVersion;
     my $Name               = $GetDocumentResult->Name;
+    my $Requires           = $GetDocumentResult->Requires;
     my $Status             = $GetDocumentResult->Status;
     my $StatusInformation  = $GetDocumentResult->StatusInformation;
     my $VersionName        = $GetDocumentResult->VersionName;

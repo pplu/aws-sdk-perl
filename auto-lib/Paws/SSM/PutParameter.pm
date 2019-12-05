@@ -159,7 +159,12 @@ in the I<AWS Systems Manager User Guide>.
 
 The maximum length constraint listed below includes capacity for
 additional system attributes that are not part of the name. The maximum
-length for the fully qualified parameter name is 1011 characters.
+length for the fully qualified parameter name is 1011 characters,
+including the full length of the parameter ARN. For example, the
+following fully qualified parameter name is 65 characters, not 20
+characters:
+
+C<arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName>
 
 
 

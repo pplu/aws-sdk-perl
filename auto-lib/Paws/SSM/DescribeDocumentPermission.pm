@@ -36,6 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AccountIds = $DescribeDocumentPermissionResponse->AccountIds;
+    my $AccountSharingInfoList =
+      $DescribeDocumentPermissionResponse->AccountSharingInfoList;
 
     # Returns a L<Paws::SSM::DescribeDocumentPermissionResponse> object.
 

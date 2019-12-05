@@ -6,6 +6,7 @@ package Paws::SSM::DocumentIdentifier;
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
@@ -73,6 +74,13 @@ Describes the name of a Systems Manager document.
 =head2 PlatformTypes => ArrayRef[Str|Undef]
 
   The operating system platform.
+
+
+=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
+
+  A list of SSM documents required by a document. For example, an
+C<ApplicationConfiguration> document requires an
+C<ApplicationConfigurationSchema> document.
 
 
 =head2 SchemaVersion => Str

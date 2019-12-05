@@ -14,6 +14,7 @@ package Paws::SSM::DocumentDescription;
   has Owner => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -131,6 +132,13 @@ Sha1 hashes have been deprecated.
 =head2 PlatformTypes => ArrayRef[Str|Undef]
 
   The list of OS platforms compatible with this Systems Manager document.
+
+
+=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
+
+  A list of SSM documents required by a document. For example, an
+C<ApplicationConfiguration> document requires an
+C<ApplicationConfigurationSchema> document.
 
 
 =head2 SchemaVersion => Str

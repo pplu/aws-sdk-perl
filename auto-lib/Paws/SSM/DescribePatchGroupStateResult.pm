@@ -5,6 +5,7 @@ package Paws::SSM::DescribePatchGroupStateResult;
   has InstancesWithFailedPatches => (is => 'ro', isa => 'Int');
   has InstancesWithInstalledOtherPatches => (is => 'ro', isa => 'Int');
   has InstancesWithInstalledPatches => (is => 'ro', isa => 'Int');
+  has InstancesWithInstalledPendingRebootPatches => (is => 'ro', isa => 'Int');
   has InstancesWithInstalledRejectedPatches => (is => 'ro', isa => 'Int');
   has InstancesWithMissingPatches => (is => 'ro', isa => 'Int');
   has InstancesWithNotApplicablePatches => (is => 'ro', isa => 'Int');
@@ -41,6 +42,13 @@ the patch baseline.
 =head2 InstancesWithInstalledPatches => Int
 
 The number of instances with installed patches.
+
+
+=head2 InstancesWithInstalledPendingRebootPatches => Int
+
+The number of instances with patches installed that have not been
+rebooted after the patch installation. The status of these instances is
+NON_COMPLIANT.
 
 
 =head2 InstancesWithInstalledRejectedPatches => Int
