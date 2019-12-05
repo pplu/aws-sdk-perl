@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatedOn         = $GetMLTransformResponse->CreatedOn;
     my $Description       = $GetMLTransformResponse->Description;
     my $EvaluationMetrics = $GetMLTransformResponse->EvaluationMetrics;
+    my $GlueVersion       = $GetMLTransformResponse->GlueVersion;
     my $InputRecordTables = $GetMLTransformResponse->InputRecordTables;
     my $LabelCount        = $GetMLTransformResponse->LabelCount;
     my $LastModifiedOn    = $GetMLTransformResponse->LastModifiedOn;

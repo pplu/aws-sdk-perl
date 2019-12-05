@@ -4,6 +4,7 @@ package Paws::Glue::GetMLTransformResponse;
   has CreatedOn => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EvaluationMetrics => (is => 'ro', isa => 'Paws::Glue::EvaluationMetrics');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has InputRecordTables => (is => 'ro', isa => 'ArrayRef[Paws::Glue::GlueTable]');
   has LabelCount => (is => 'ro', isa => 'Int');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
@@ -43,6 +44,16 @@ A description of the transform.
 =head2 EvaluationMetrics => L<Paws::Glue::EvaluationMetrics>
 
 The latest evaluation metrics.
+
+
+=head2 GlueVersion => Str
+
+This value determines which version of AWS Glue this machine learning
+transform is compatible with. Glue 1.0 is recommended for most
+customers. If the value is not set, the Glue compatibility defaults to
+Glue 0.9. For more information, see AWS Glue Versions
+(https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
+in the developer guide.
 
 
 =head2 InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]

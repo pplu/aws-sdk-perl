@@ -2,6 +2,7 @@
 package Paws::Glue::UpdateMLTransform;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has MaxCapacity => (is => 'ro', isa => 'Num');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateMLTransformResponse = $glue->UpdateMLTransform(
       TransformId     => 'MyHashString',
       Description     => 'MyDescriptionString',    # OPTIONAL
+      GlueVersion     => 'MyGlueVersionString',    # OPTIONAL
       MaxCapacity     => 1,                        # OPTIONAL
       MaxRetries      => 1,                        # OPTIONAL
       Name            => 'MyNameString',           # OPTIONAL
@@ -72,6 +74,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 Description => Str
 
 A description of the transform. The default is an empty string.
+
+
+
+=head2 GlueVersion => Str
+
+This value determines which version of AWS Glue this machine learning
+transform is compatible with. Glue 1.0 is recommended for most
+customers. If the value is not set, the Glue compatibility defaults to
+Glue 0.9. For more information, see AWS Glue Versions
+(https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
+in the developer guide.
 
 
 

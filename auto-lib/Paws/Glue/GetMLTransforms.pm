@@ -32,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $GetMLTransformsResponse = $glue->GetMLTransforms(
       Filter => {
-        CreatedAfter       => '1970-01-01T01:00:00',    # OPTIONAL
-        CreatedBefore      => '1970-01-01T01:00:00',    # OPTIONAL
-        LastModifiedAfter  => '1970-01-01T01:00:00',    # OPTIONAL
+        CreatedAfter      => '1970-01-01T01:00:00', # OPTIONAL
+        CreatedBefore     => '1970-01-01T01:00:00', # OPTIONAL
+        GlueVersion       => 'MyGlueVersionString', # min: 1, max: 255; OPTIONAL
+        LastModifiedAfter => '1970-01-01T01:00:00', # OPTIONAL
         LastModifiedBefore => '1970-01-01T01:00:00',    # OPTIONAL
         Name   => 'MyNameString',    # min: 1, max: 255; OPTIONAL
         Schema => [

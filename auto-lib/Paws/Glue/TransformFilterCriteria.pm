@@ -2,6 +2,7 @@ package Paws::Glue::TransformFilterCriteria;
   use Moose;
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has LastModifiedAfter => (is => 'ro', isa => 'Str');
   has LastModifiedBefore => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -51,6 +52,16 @@ The criteria used to filter the machine learning transforms.
 =head2 CreatedBefore => Str
 
   The time and date before which the transforms were created.
+
+
+=head2 GlueVersion => Str
+
+  This value determines which version of AWS Glue this machine learning
+transform is compatible with. Glue 1.0 is recommended for most
+customers. If the value is not set, the Glue compatibility defaults to
+Glue 0.9. For more information, see AWS Glue Versions
+(https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
+in the developer guide.
 
 
 =head2 LastModifiedAfter => Str

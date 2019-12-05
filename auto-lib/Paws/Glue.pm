@@ -1480,6 +1480,8 @@ Creates a new job definition.
 
 =item [Description => Str]
 
+=item [GlueVersion => Str]
+
 =item [MaxCapacity => Num]
 
 =item [MaxRetries => Int]
@@ -3594,6 +3596,8 @@ Updates an existing job definition.
 =item TransformId => Str
 
 =item [Description => Str]
+
+=item [GlueVersion => Str]
 
 =item [MaxCapacity => Num]
 

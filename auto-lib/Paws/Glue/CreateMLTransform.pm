@@ -2,6 +2,7 @@
 package Paws::Glue::CreateMLTransform;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has InputRecordTables => (is => 'ro', isa => 'ArrayRef[Paws::Glue::GlueTable]', required => 1);
   has MaxCapacity => (is => 'ro', isa => 'Num');
   has MaxRetries => (is => 'ro', isa => 'Int');
@@ -59,6 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Role            => 'MyRoleString',
       Description     => 'MyDescriptionString',    # OPTIONAL
+      GlueVersion     => 'MyGlueVersionString',    # OPTIONAL
       MaxCapacity     => 1,                        # OPTIONAL
       MaxRetries      => 1,                        # OPTIONAL
       NumberOfWorkers => 1,                        # OPTIONAL
@@ -84,6 +86,17 @@ The default is an empty string.
 
 
 
+=head2 GlueVersion => Str
+
+This value determines which version of AWS Glue this machine learning
+transform is compatible with. Glue 1.0 is recommended for most
+customers. If the value is not set, the Glue compatibility defaults to
+Glue 0.9. For more information, see AWS Glue Versions
+(https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
+in the developer guide.
+
+
+
 =head2 B<REQUIRED> InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
 
 A list of AWS Glue table definitions used by the transform.
@@ -98,6 +111,35 @@ the default is 10. A DPU is a relative measure of processing power that
 consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
 information, see the AWS Glue pricing page
 (https://aws.amazon.com/glue/pricing/).
+
+C<MaxCapacity> is a mutually exclusive option with C<NumberOfWorkers>
+and C<WorkerType>.
+
+=over
+
+=item *
+
+If either C<NumberOfWorkers> or C<WorkerType> is set, then
+C<MaxCapacity> cannot be set.
+
+=item *
+
+If C<MaxCapacity> is set then neither C<NumberOfWorkers> or
+C<WorkerType> can be set.
+
+=item *
+
+If C<WorkerType> is set, then C<NumberOfWorkers> is required (and vice
+versa).
+
+=item *
+
+C<MaxCapacity> and C<NumberOfWorkers> must both be at least 1.
+
+=back
+
+When the C<WorkerType> field is set to a value other than C<Standard>,
+the C<MaxCapacity> field is set automatically and becomes read-only.
 
 When the C<WorkerType> field is set to a value other than C<Standard>,
 the C<MaxCapacity> field is set automatically and becomes read-only.
@@ -122,6 +164,9 @@ The unique name that you give the transform when you create it.
 The number of workers of a defined C<workerType> that are allocated
 when this task runs.
 
+If C<WorkerType> is set, then C<NumberOfWorkers> is required (and vice
+versa).
+
 
 
 =head2 B<REQUIRED> Parameters => L<Paws::Glue::TransformParameters>
@@ -134,10 +179,27 @@ used. Conditionally dependent on the transform type.
 =head2 B<REQUIRED> Role => Str
 
 The name or Amazon Resource Name (ARN) of the IAM role with the
-required permissions. Ensure that this role has permission to your
-Amazon Simple Storage Service (Amazon S3) sources, targets, temporary
-directory, scripts, and any libraries that are used by the task run for
-this transform.
+required permissions. The required permissions include both AWS Glue
+service role permissions to AWS Glue resources, and Amazon S3
+permissions required by the transform.
+
+=over
+
+=item *
+
+This role needs AWS Glue service role permissions to allow access to
+resources in AWS Glue. See Attach a Policy to IAM Users That Access AWS
+Glue
+(https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html).
+
+=item *
+
+This role needs permission to your Amazon Simple Storage Service
+(Amazon S3) sources, targets, temporary directory, scripts, and any
+libraries used by the task run for this transform.
+
+=back
+
 
 
 
@@ -171,6 +233,32 @@ memory and a 64GB disk, and 1 executor per worker.
 
 For the C<G.2X> worker type, each worker provides 8 vCPU, 32 GB of
 memory and a 128GB disk, and 1 executor per worker.
+
+=back
+
+C<MaxCapacity> is a mutually exclusive option with C<NumberOfWorkers>
+and C<WorkerType>.
+
+=over
+
+=item *
+
+If either C<NumberOfWorkers> or C<WorkerType> is set, then
+C<MaxCapacity> cannot be set.
+
+=item *
+
+If C<MaxCapacity> is set then neither C<NumberOfWorkers> or
+C<WorkerType> can be set.
+
+=item *
+
+If C<WorkerType> is set, then C<NumberOfWorkers> is required (and vice
+versa).
+
+=item *
+
+C<MaxCapacity> and C<NumberOfWorkers> must both be at least 1.
 
 =back
 
