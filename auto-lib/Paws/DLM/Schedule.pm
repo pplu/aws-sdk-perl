@@ -2,6 +2,7 @@ package Paws::DLM::Schedule;
   use Moose;
   has CopyTags => (is => 'ro', isa => 'Bool');
   has CreateRule => (is => 'ro', isa => 'Paws::DLM::CreateRule');
+  has FastRestoreRule => (is => 'ro', isa => 'Paws::DLM::FastRestoreRule');
   has Name => (is => 'ro', isa => 'Str');
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
   has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
@@ -52,6 +53,11 @@ volume created by this policy.
   The create rule.
 
 
+=head2 FastRestoreRule => L<Paws::DLM::FastRestoreRule>
+
+  Enable fast snapshot restore.
+
+
 =head2 Name => Str
 
   The name of the schedule.
@@ -59,7 +65,7 @@ volume created by this policy.
 
 =head2 RetainRule => L<Paws::DLM::RetainRule>
 
-  The retain rule.
+  The retention rule.
 
 
 =head2 TagsToAdd => ArrayRef[L<Paws::DLM::Tag>]

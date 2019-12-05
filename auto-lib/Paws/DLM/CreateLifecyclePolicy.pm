@@ -48,16 +48,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             CopyTags   => 1,         # OPTIONAL
             CreateRule => {
-              Interval     => 1,          # min: 1
+              Interval     => 1,          # min: 1; OPTIONAL
               IntervalUnit => 'HOURS',    # values: HOURS
               Times        => [
                 'MyTime', ...             # min: 5, max: 5
               ],                          # max: 1; OPTIONAL
             },    # OPTIONAL
+            FastRestoreRule => {
+              AvailabilityZones => [
+                'MyAvailabilityZone', ...    # max: 16
+              ],                             # min: 1, max: 10
+              Count    => 1,                 # min: 1, max: 1000; OPTIONAL
+              Interval => 1,                 # min: 1; OPTIONAL
+              IntervalUnit =>
+                'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
+            },    # OPTIONAL
             Name       => 'MyScheduleName',    # max: 500; OPTIONAL
             RetainRule => {
-              Count => 1,                      # min: 1, max: 1000
-
+              Count    => 1,                   # min: 1, max: 1000; OPTIONAL
+              Interval => 1,                   # min: 1; OPTIONAL
+              IntervalUnit =>
+                'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
             TagsToAdd => [
               {
