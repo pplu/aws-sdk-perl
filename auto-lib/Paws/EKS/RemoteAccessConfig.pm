@@ -49,9 +49,9 @@ in the I<Amazon Elastic Compute Cloud User Guide for Linux Instances>.
 
 =head2 SourceSecurityGroups => ArrayRef[Str|Undef]
 
-  The security groups to allow SSH access (port 22) from on the worker
-nodes. If you specify an Amazon EC2 SSH key, but you do not specify a
-source security group when you create a managed node group, port 22 on
+  The security groups that are allowed SSH access (port 22) to the worker
+nodes. If you specify an Amazon EC2 SSH key but do not specify a source
+security group when you create a managed node group, then port 22 on
 the worker nodes is opened to the internet (0.0.0.0/0). For more
 information, see Security Groups for Your VPC
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)

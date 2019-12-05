@@ -90,7 +90,7 @@ The name of the managed node group to update.
 
 =head2 ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>
 
-The scaling configuration details for the AutoScaling group after the
+The scaling configuration details for the Auto Scaling group after the
 update.
 
 

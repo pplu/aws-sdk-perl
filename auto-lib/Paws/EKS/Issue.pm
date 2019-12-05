@@ -71,8 +71,8 @@ launch template with the same settings to recover.
 
 B<Ec2LaunchTemplateVersionMismatch>: The Amazon EC2 launch template
 version for your managed node group does not match the version that
-Amazon EKS created. You may be able to revert to the Amazon EKS-created
-version to recover.
+Amazon EKS created. You may be able to revert to the version that
+Amazon EKS created to recover.
 
 =item *
 
@@ -93,6 +93,14 @@ failures while attempting to launch instances.
 
 =item *
 
+B<NodeCreationFailure>: Your launched instances are unable to register
+with your Amazon EKS cluster. Common causes of this failure are
+insufficient worker node IAM role
+(https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
+permissions or lack of outbound internet access for the nodes.
+
+=item *
+
 B<InstanceLimitExceeded>: Your AWS account is unable to launch any more
 instances of the specified instance type. You may be able to request an
 Amazon EC2 instance limit increase to recover.
@@ -105,7 +113,7 @@ addresses for new nodes.
 
 =item *
 
-B<AccessDenied>: Amazon EKS and or one or more of your managed nodes is
+B<AccessDenied>: Amazon EKS or one or more of your managed nodes is
 unable to communicate with your cluster API server.
 
 =item *

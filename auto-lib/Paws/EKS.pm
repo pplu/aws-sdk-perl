@@ -19,6 +19,11 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::CreateCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFargateProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::CreateFargateProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNodegroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::CreateNodegroup', @_);
@@ -29,6 +34,11 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::DeleteCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFargateProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DeleteFargateProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteNodegroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::DeleteNodegroup', @_);
@@ -37,6 +47,11 @@ package Paws::EKS;
   sub DescribeCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::DescribeCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFargateProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DescribeFargateProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNodegroup {
@@ -52,6 +67,11 @@ package Paws::EKS;
   sub ListClusters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFargateProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::ListFargateProfiles', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListNodegroups {
@@ -123,6 +143,29 @@ package Paws::EKS;
 
     return undef
   }
+  sub ListAllFargateProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFargateProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFargateProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->fargateProfileNames }, @{ $next_result->fargateProfileNames };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'fargateProfileNames') foreach (@{ $result->fargateProfileNames });
+        $result = $self->ListFargateProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'fargateProfileNames') foreach (@{ $result->fargateProfileNames });
+    }
+
+    return undef
+  }
   sub ListAllNodegroups {
     my $self = shift;
 
@@ -171,7 +214,7 @@ package Paws::EKS;
   }
 
 
-  sub operations { qw/CreateCluster CreateNodegroup DeleteCluster DeleteNodegroup DescribeCluster DescribeNodegroup DescribeUpdate ListClusters ListNodegroups ListTagsForResource ListUpdates TagResource UntagResource UpdateClusterConfig UpdateClusterVersion UpdateNodegroupConfig UpdateNodegroupVersion / }
+  sub operations { qw/CreateCluster CreateFargateProfile CreateNodegroup DeleteCluster DeleteFargateProfile DeleteNodegroup DescribeCluster DescribeFargateProfile DescribeNodegroup DescribeUpdate ListClusters ListFargateProfiles ListNodegroups ListTagsForResource ListUpdates TagResource UntagResource UpdateClusterConfig UpdateClusterVersion UpdateNodegroupConfig UpdateNodegroupVersion / }
 
 1;
 
@@ -292,6 +335,71 @@ and Launching Amazon EKS Worker Nodes
 in the I<Amazon EKS User Guide>.
 
 
+=head2 CreateFargateProfile
+
+=over
+
+=item ClusterName => Str
+
+=item FargateProfileName => Str
+
+=item PodExecutionRoleArn => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Selectors => ArrayRef[L<Paws::EKS::FargateProfileSelector>]]
+
+=item [Subnets => ArrayRef[Str|Undef]]
+
+=item [Tags => L<Paws::EKS::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::CreateFargateProfile>
+
+Returns: a L<Paws::EKS::CreateFargateProfileResponse> instance
+
+Creates an AWS Fargate profile for your Amazon EKS cluster. You must
+have at least one Fargate profile in a cluster to be able to schedule
+pods on Fargate infrastructure.
+
+The Fargate profile allows an administrator to declare which pods run
+on Fargate infrastructure and specify which pods run on which Fargate
+profile. This declaration is done through the profileE<rsquo>s
+selectors. Each profile can have up to five selectors that contain a
+namespace and labels. A namespace is required for every selector. The
+label field consists of multiple optional key-value pairs. Pods that
+match the selectors are scheduled on Fargate infrastructure. If a
+to-be-scheduled pod matches any of the selectors in the Fargate
+profile, then that pod is scheduled on Fargate infrastructure.
+
+When you create a Fargate profile, you must specify a pod execution
+role to use with the pods that are scheduled with the profile. This
+role is added to the cluster's Kubernetes Role Based Access Control
+(https://kubernetes.io/docs/admin/authorization/rbac/) (RBAC) for
+authorization so that the C<kubelet> that is running on the Fargate
+infrastructure can register with your Amazon EKS cluster. This role is
+what allows Fargate infrastructure to appear in your cluster as nodes.
+The pod execution role also provides IAM permissions to the Fargate
+infrastructure to allow read access to Amazon ECR image repositories.
+For more information, see Pod Execution Role
+(https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
+in the I<Amazon EKS User Guide>.
+
+Fargate profiles are immutable. However, you can create a new updated
+profile to replace an existing profile and then delete the original
+after the updated profile has finished creating.
+
+If any Fargate profiles in a cluster are in the C<DELETING> status, you
+must wait for that Fargate profile to finish deleting before you can
+create any other profiles in that cluster.
+
+For more information, see AWS Fargate Profile
+(https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html)
+in the I<Amazon EKS User Guide>.
+
+
 =head2 CreateNodegroup
 
 =over
@@ -369,8 +477,37 @@ able to delete the VPC. For more information, see Deleting a Cluster
 (https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 in the I<Amazon EKS User Guide>.
 
-If you have managed node groups attached to the cluster, you must
-delete them first. For more information, see DeleteNodegroup.
+If you have managed node groups or Fargate profiles attached to the
+cluster, you must delete them first. For more information, see
+DeleteNodegroup andDeleteFargateProfile.
+
+
+=head2 DeleteFargateProfile
+
+=over
+
+=item ClusterName => Str
+
+=item FargateProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DeleteFargateProfile>
+
+Returns: a L<Paws::EKS::DeleteFargateProfileResponse> instance
+
+Deletes an AWS Fargate profile.
+
+When you delete a Fargate profile, any pods that were scheduled onto
+Fargate infrastructure with the profile are deleted. If those pods
+match another Fargate profile, then they are scheduled on Fargate
+infrastructure with that profile. If they no longer match any Fargate
+profiles, then they are not scheduled on Fargate infrastructure.
+
+Only one Fargate profile in a cluster can be in the C<DELETING> status
+at a time. You must wait for a Fargate profile to finish deleting
+before you can delete any other profiles in that cluster.
 
 
 =head2 DeleteNodegroup
@@ -414,6 +551,24 @@ kubeconfig for Amazon EKS
 
 The API server endpoint and certificate authority data aren't available
 until the cluster reaches the C<ACTIVE> state.
+
+
+=head2 DescribeFargateProfile
+
+=over
+
+=item ClusterName => Str
+
+=item FargateProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DescribeFargateProfile>
+
+Returns: a L<Paws::EKS::DescribeFargateProfileResponse> instance
+
+Returns descriptive information about an AWS Fargate profile.
 
 
 =head2 DescribeNodegroup
@@ -476,6 +631,27 @@ Returns: a L<Paws::EKS::ListClustersResponse> instance
 
 Lists the Amazon EKS clusters in your AWS account in the specified
 Region.
+
+
+=head2 ListFargateProfiles
+
+=over
+
+=item ClusterName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::ListFargateProfiles>
+
+Returns: a L<Paws::EKS::ListFargateProfilesResponse> instance
+
+Lists the AWS Fargate profiles associated with the specified cluster in
+your AWS account in the specified Region.
 
 
 =head2 ListNodegroups
@@ -756,6 +932,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - clusters, passing the object as the first parameter, and the string 'clusters' as the second parameter 
 
 If not, it will return a a L<Paws::EKS::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFargateProfiles(sub { },ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFargateProfiles(ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - fargateProfileNames, passing the object as the first parameter, and the string 'fargateProfileNames' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::ListFargateProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllNodegroups(sub { },ClusterName => Str, [MaxResults => Int, NextToken => Str])

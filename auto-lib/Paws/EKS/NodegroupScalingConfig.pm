@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::Nodegr
 
 =head1 DESCRIPTION
 
-An object representing the scaling configuration details for the
-AutoScaling group that is associated with your node group.
+An object representing the scaling configuration details for the Auto
+Scaling group that is associated with your node group.
 
 =head1 ATTRIBUTES
 

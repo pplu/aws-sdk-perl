@@ -58,7 +58,7 @@ An object representing an Amazon EKS managed node group.
 
   The AMI type associated with your node group. GPU instance types should
 use the C<AL2_x86_64_GPU> AMI type, which uses the Amazon EKS-optimized
-Linux AMI with GPU support; non-GPU instances should use the
+Linux AMI with GPU support. Non-GPU instances should use the
 C<AL2_x86_64> AMI type, which uses the Amazon EKS-optimized Linux AMI.
 
 
@@ -144,13 +144,13 @@ group.
 
 =head2 Resources => L<Paws::EKS::NodegroupResources>
 
-  The resources associated with the nodegroup, such as AutoScaling groups
-and security groups for remote access.
+  The resources associated with the node group, such as Auto Scaling
+groups and security groups for remote access.
 
 
 =head2 ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>
 
-  The scaling configuration details for the AutoScaling group that is
+  The scaling configuration details for the Auto Scaling group that is
 associated with your node group.
 
 
@@ -161,7 +161,7 @@ associated with your node group.
 
 =head2 Subnets => ArrayRef[Str|Undef]
 
-  The subnets allowed for the AutoScaling group that is associated with
+  The subnets allowed for the Auto Scaling group that is associated with
 your node group. These subnets must have the following tag:
 C<kubernetes.io/cluster/CLUSTER_NAME>, where C<CLUSTER_NAME> is
 replaced with the name of your cluster.
@@ -169,9 +169,9 @@ replaced with the name of your cluster.
 
 =head2 Tags => L<Paws::EKS::TagMap>
 
-  The metadata applied the node group to assist with categorization and
-organization. Each tag consists of a key and an optional value, both of
-which you define. Node group tags do not propagate to any other
+  The metadata applied to the node group to assist with categorization
+and organization. Each tag consists of a key and an optional value,
+both of which you define. Node group tags do not propagate to any other
 resources associated with the node group, such as the Amazon EC2
 instances or subnets.
 

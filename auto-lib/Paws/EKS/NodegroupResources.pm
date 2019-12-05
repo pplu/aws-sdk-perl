@@ -32,15 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::Nodegr
 
 =head1 DESCRIPTION
 
-An object representing the resources associated with the nodegroup,
-such as AutoScaling groups and security groups for remote access.
+An object representing the resources associated with the node group,
+such as Auto Scaling groups and security groups for remote access.
 
 =head1 ATTRIBUTES
 
 
 =head2 AutoScalingGroups => ArrayRef[L<Paws::EKS::AutoScalingGroup>]
 
-  The autoscaling groups associated with the node group.
+  The Auto Scaling groups associated with the node group.
 
 
 =head2 RemoteAccessSecurityGroup => Str

@@ -1,13 +1,15 @@
-package Paws::EKS::AutoScalingGroup;
+package Paws::EKS::FargateProfileLabel;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  with 'Paws::API::StrToNativeMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EKS::AutoScalingGroup
+Paws::EKS::FargateProfileLabel
 
 =head1 USAGE
 
@@ -18,31 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::EKS::AutoScalingGroup object:
+As an example, if Att1 is expected to be a Paws::EKS::FargateProfileLabel object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::AutoScalingGroup object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::FargateProfileLabel object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-An Auto Scaling group that is associated with an Amazon EKS managed
-node group.
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => Str
 
-=head2 Name => Str
-
-  The name of the Auto Scaling group associated with an Amazon EKS
-managed node group.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

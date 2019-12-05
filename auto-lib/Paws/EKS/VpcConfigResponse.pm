@@ -45,8 +45,8 @@ response.
 =head2 ClusterSecurityGroupId => Str
 
   The cluster security group that was created by Amazon EKS for the
-cluster. Managed node groups use this security group for control plane
-to data plane communication.
+cluster. Managed node groups use this security group for
+control-plane-to-data-plane communication.
 
 
 =head2 EndpointPrivateAccess => Bool

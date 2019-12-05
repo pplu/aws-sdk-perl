@@ -85,7 +85,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 The AMI type for your node group. GPU instance types should use the
 C<AL2_x86_64_GPU> AMI type, which uses the Amazon EKS-optimized Linux
-AMI with GPU support; non-GPU instances should use the C<AL2_x86_64>
+AMI with GPU support. Non-GPU instances should use the C<AL2_x86_64>
 AMI type, which uses the Amazon EKS-optimized Linux AMI.
 
 Valid values are: C<"AL2_x86_64">, C<"AL2_x86_64_GPU">
@@ -165,14 +165,14 @@ The remote access (SSH) configuration to use with your node group.
 
 =head2 ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>
 
-The scaling configuration details for the AutoScaling group that is
+The scaling configuration details for the Auto Scaling group that is
 created for your node group.
 
 
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-The subnets to use for the AutoScaling group that is created for your
+The subnets to use for the Auto Scaling group that is created for your
 node group. These subnets must have the tag key
 C<kubernetes.io/cluster/CLUSTER_NAME> with a value of C<shared>, where
 C<CLUSTER_NAME> is replaced with the name of your cluster.
