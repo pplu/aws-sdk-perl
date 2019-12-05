@@ -1,5 +1,6 @@
 package Paws::ECS::TaskSet;
   use Moose;
+  has CapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', request_name => 'capacityProviderStrategy', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ComputedDesiredCount => (is => 'ro', isa => 'Int', request_name => 'computedDesiredCount', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
@@ -40,14 +41,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::TaskSet object:
 
-  $service_obj->Method(Att1 => { ClusterArn => $value, ..., UpdatedAt => $value  });
+  $service_obj->Method(Att1 => { CapacityProviderStrategy => $value, ..., UpdatedAt => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskSet object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClusterArn
+  $result->Att1->CapacityProviderStrategy
 
 =head1 DESCRIPTION
 
@@ -57,6 +58,11 @@ such as the desired number of tasks, how many tasks are running, and
 whether the task set serves production traffic.
 
 =head1 ATTRIBUTES
+
+
+=head2 CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+  The capacity provider strategy associated with the task set.
 
 
 =head2 ClusterArn => Str

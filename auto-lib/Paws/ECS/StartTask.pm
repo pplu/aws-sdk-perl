@@ -8,6 +8,7 @@ package Paws::ECS::StartTask;
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
+  has ReferenceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'referenceId' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -75,6 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                             # OPTIONAL
+        Cpu                           => 'MyString',
         ExecutionRoleArn              => 'MyString',
         InferenceAcceleratorOverrides => [
           {
@@ -83,9 +85,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                             # OPTIONAL
+        Memory      => 'MyString',
         TaskRoleArn => 'MyString',
       },    # OPTIONAL
       PropagateTags => 'TASK_DEFINITION',    # OPTIONAL
+      ReferenceId   => 'MyString',           # OPTIONAL
       StartedBy     => 'MyString',           # OPTIONAL
       Tags          => [
         {
@@ -171,6 +175,12 @@ service to the task. If no value is specified, the tags are not
 propagated.
 
 Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
+
+=head2 ReferenceId => Str
+
+The reference ID to use for the task.
+
+
 
 =head2 StartedBy => Str
 

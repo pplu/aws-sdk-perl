@@ -4,6 +4,7 @@ package Paws::ECS::ContainerInstance;
   has AgentUpdateStatus => (is => 'ro', isa => 'Str', request_name => 'agentUpdateStatus', traits => ['NameInRequest']);
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
+  has CapacityProviderName => (is => 'ro', isa => 'Str', request_name => 'capacityProviderName', traits => ['NameInRequest']);
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
   has Ec2InstanceId => (is => 'ro', isa => 'Str', request_name => 'ec2InstanceId', traits => ['NameInRequest']);
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
@@ -77,6 +78,11 @@ interfaces.
   The attributes set for the container instance, either by the Amazon ECS
 container agent at instance registration or manually with the
 PutAttributes operation.
+
+
+=head2 CapacityProviderName => Str
+
+  The capacity provider associated with the container instance.
 
 
 =head2 ContainerInstanceArn => Str

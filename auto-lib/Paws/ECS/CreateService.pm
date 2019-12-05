@@ -1,6 +1,7 @@
 
 package Paws::ECS::CreateService;
   use Moose;
+  has CapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', traits => ['NameInRequest'], request_name => 'capacityProviderStrategy' );
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
@@ -91,6 +92,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
+=head2 CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+The capacity provider strategy to use for the service.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the C<base> and C<weight> to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an C<ACTIVE> or C<UPDATING> status can be used.
+
+If a C<capacityProviderStrategy> is specified, the C<launchType>
+parameter must be omitted. If no C<capacityProviderStrategy> or
+C<launchType> is specified, the C<defaultCapacityProviderStrategy> for
+the cluster is used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can
+be created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the C<FARGATE>
+or C<FARGATE_SPOT> capacity providers. The AWS Fargate capacity
+providers are available to all accounts and only need to be associated
+with a cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the
+list of available capacity providers for a cluster after the cluster is
+created.
+
+
+
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier that you provide to ensure the
@@ -161,6 +193,9 @@ The launch type on which to run your service. For more information, see
 Amazon ECS Launch Types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+If a C<launchType> is specified, the C<capacityProviderStrategy>
+parameter must be omitted.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
@@ -282,9 +317,10 @@ If your account has already created the Amazon ECS service-linked role,
 that role is used by default for your service unless you specify a role
 here. The service-linked role is required if your task definition uses
 the C<awsvpc> network mode or if the service is configured to use
-service discovery, an external deployment controller, or multiple
-target groups in which case you should not specify a role here. For
-more information, see Using Service-Linked Roles for Amazon ECS
+service discovery, an external deployment controller, multiple target
+groups, or Elastic Inference accelerators in which case you should not
+specify a role here. For more information, see Using Service-Linked
+Roles for Amazon ECS
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 

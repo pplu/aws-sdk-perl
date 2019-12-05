@@ -1,5 +1,6 @@
 package Paws::ECS::Service;
   use Moose;
+  has CapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', request_name => 'capacityProviderStrategy', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has CreatedBy => (is => 'ro', isa => 'Str', request_name => 'createdBy', traits => ['NameInRequest']);
@@ -47,20 +48,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Service object:
 
-  $service_obj->Method(Att1 => { ClusterArn => $value, ..., TaskSets => $value  });
+  $service_obj->Method(Att1 => { CapacityProviderStrategy => $value, ..., TaskSets => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Service object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClusterArn
+  $result->Att1->CapacityProviderStrategy
 
 =head1 DESCRIPTION
 
 Details on a service within a cluster
 
 =head1 ATTRIBUTES
+
+
+=head2 CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+  The capacity provider strategy associated with the service.
 
 
 =head2 ClusterArn => Str

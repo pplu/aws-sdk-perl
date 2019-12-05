@@ -181,9 +181,8 @@ For more information, see Amazon ECS-optimized Linux AMI
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-This parameter is available for tasks using the Fargate launch type in
-the Ohio (us-east-2) region only and the task or service requires
-platform version 1.3.0 or later.
+For tasks using the Fargate launch type, the task or service requires
+platform version C<1.3.0> or later.
 
 
 =head2 DisableNetworking => Bool
@@ -696,19 +695,18 @@ For more information, see Amazon ECS-optimized Linux AMI
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-This parameter is available for tasks using the Fargate launch type in
-the Ohio (us-east-2) region only and the task or service requires
-platform version 1.3.0 or later.
+For tasks using the Fargate launch type, the task or service requires
+platform version C<1.3.0> or later.
 
 
 =head2 StopTimeout => Int
 
   Time duration (in seconds) to wait before the container is forcefully
-killed if it doesn't exit normally on its own. For tasks using the
-Fargate launch type, the max C<stopTimeout> value is 2 minutes. This
-parameter is available for tasks using the Fargate launch type in the
-Ohio (us-east-2) region only and the task or service requires platform
-version 1.3.0 or later.
+killed if it doesn't exit normally on its own.
+
+For tasks using the Fargate launch type, the max C<stopTimeout> value
+is 2 minutes and the task or service requires platform version C<1.3.0>
+or later.
 
 For tasks using the EC2 launch type, the stop timeout value for the
 container takes precedence over the C<ECS_CONTAINER_STOP_TIMEOUT>

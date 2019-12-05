@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head2 B<REQUIRED> ResourceArn => Str
 
 The Amazon Resource Name (ARN) of the resource to which to add tags.
-Currently, the supported resources are Amazon ECS tasks, services, task
-definitions, clusters, and container instances.
+Currently, the supported resources are Amazon ECS capacity providers,
+tasks, services, task definitions, clusters, and container instances.
 
 
 

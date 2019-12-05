@@ -1,8 +1,12 @@
 package Paws::ECS::Cluster;
   use Moose;
   has ActiveServicesCount => (is => 'ro', isa => 'Int', request_name => 'activeServicesCount', traits => ['NameInRequest']);
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
+  has AttachmentsStatus => (is => 'ro', isa => 'Str', request_name => 'attachmentsStatus', traits => ['NameInRequest']);
+  has CapacityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'capacityProviders', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
+  has DefaultCapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', request_name => 'defaultCapacityProviderStrategy', traits => ['NameInRequest']);
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
   has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
@@ -55,6 +59,42 @@ simultaneously.
 state. You can view these services with ListServices.
 
 
+=head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
+
+  The resources attached to a cluster. When using a capacity provider
+with a cluster, the Auto Scaling plan that is created will be returned
+as a cluster attachment.
+
+
+=head2 AttachmentsStatus => Str
+
+  The status of the capacity providers associated with the cluster. The
+following are the states that will be returned:
+
+=over
+
+=item UPDATE_IN_PROGRESS
+
+The available capacity providers for the cluster are updating. This
+occurs when the Auto Scaling plan is provisioning or deprovisioning.
+
+=item UPDATE_COMPLETE
+
+The capacity providers have successfully updated.
+
+=item UPDATE_FAILED
+
+The capacity provider updates failed.
+
+=back
+
+
+
+=head2 CapacityProviders => ArrayRef[Str|Undef]
+
+  The capacity providers associated with the cluster.
+
+
 =head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) that identifies the cluster. The ARN
@@ -67,6 +107,14 @@ C<arn:aws:ecs:region:012345678910:cluster/test>.
 =head2 ClusterName => Str
 
   A user-generated string that you use to identify your cluster.
+
+
+=head2 DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+  The default capacity provider strategy for the cluster. When services
+or tasks are run in the cluster with no launch type or capacity
+provider strategy specified, the default capacity provider strategy is
+used.
 
 
 =head2 PendingTasksCount => Int

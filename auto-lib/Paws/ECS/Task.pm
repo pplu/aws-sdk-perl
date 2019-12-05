@@ -1,6 +1,9 @@
 package Paws::ECS::Task;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has CapacityProviderName => (is => 'ro', isa => 'Str', request_name => 'capacityProviderName', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has Connectivity => (is => 'ro', isa => 'Str', request_name => 'connectivity', traits => ['NameInRequest']);
   has ConnectivityAt => (is => 'ro', isa => 'Str', request_name => 'connectivityAt', traits => ['NameInRequest']);
@@ -69,6 +72,21 @@ Details on a task in a cluster.
 
   The Elastic Network Adapter associated with the task if the task uses
 the C<awsvpc> network mode.
+
+
+=head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+
+  The attributes of the task
+
+
+=head2 AvailabilityZone => Str
+
+  The availability zone of the task.
+
+
+=head2 CapacityProviderName => Str
+
+  The capacity provider associated with the task.
 
 
 =head2 ClusterArn => Str

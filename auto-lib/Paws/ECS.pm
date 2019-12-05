@@ -15,6 +15,11 @@ package Paws::ECS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateCapacityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::CreateCapacityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateCluster', @_);
@@ -63,6 +68,11 @@ package Paws::ECS;
   sub DeregisterTaskDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeregisterTaskDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCapacityProviders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeCapacityProviders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusters {
@@ -158,6 +168,11 @@ package Paws::ECS;
   sub PutAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::PutAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutClusterCapacityProviders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutClusterCapacityProviders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterContainerInstance {
@@ -427,7 +442,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateClusterSettings UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
+  sub operations { qw/CreateCapacityProvider CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeCapacityProviders DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes PutClusterCapacityProviders RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateClusterSettings UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
 
 1;
 
@@ -483,11 +498,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head1 METHODS
 
+=head2 CreateCapacityProvider
+
+=over
+
+=item AutoScalingGroupProvider => L<Paws::ECS::AutoScalingGroupProvider>
+
+=item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::CreateCapacityProvider>
+
+Returns: a L<Paws::ECS::CreateCapacityProviderResponse> instance
+
+Creates a new capacity provider. Capacity providers are associated with
+an Amazon ECS cluster and are used in capacity provider strategies to
+facilitate cluster auto scaling.
+
+Only capacity providers using an Auto Scaling group can be created.
+Amazon ECS tasks on AWS Fargate use the C<FARGATE> and C<FARGATE_SPOT>
+capacity providers which are already created and available to all
+accounts in Regions supported by AWS Fargate.
+
+
 =head2 CreateCluster
 
 =over
 
+=item [CapacityProviders => ArrayRef[Str|Undef]]
+
 =item [ClusterName => Str]
+
+=item [DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
 =item [Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]]
 
@@ -506,11 +552,11 @@ However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
 When you call the CreateCluster API operation, Amazon ECS attempts to
-create the service-linked role for your account so that required
-resources in other AWS services can be managed on your behalf. However,
-if the IAM user that makes the call does not have permissions to create
-the service-linked role, it is not created. For more information, see
-Using Service-Linked Roles for Amazon ECS
+create the Amazon ECS service-linked role for your account so that
+required resources in other AWS services can be managed on your behalf.
+However, if the IAM user that makes the call does not have permissions
+to create the service-linked role, it is not created. For more
+information, see Using Service-Linked Roles for Amazon ECS
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -520,6 +566,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =over
 
 =item ServiceName => Str
+
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
 =item [ClientToken => Str]
 
@@ -714,6 +762,8 @@ instances with the fewest number of running tasks for this service.
 =item Service => Str
 
 =item TaskDefinition => Str
+
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
 =item [ClientToken => Str]
 
@@ -932,6 +982,28 @@ At this time, C<INACTIVE> task definitions remain discoverable in your
 account indefinitely. However, this behavior is subject to change in
 the future, so you should not rely on C<INACTIVE> task definitions
 persisting beyond the lifecycle of any associated tasks and services.
+
+
+=head2 DescribeCapacityProviders
+
+=over
+
+=item [CapacityProviders => ArrayRef[Str|Undef]]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DescribeCapacityProviders>
+
+Returns: a L<Paws::ECS::DescribeCapacityProvidersResponse> instance
+
+Describes one or more of your capacity providers.
 
 
 =head2 DescribeClusters
@@ -1421,6 +1493,43 @@ DeleteAttributes. For more information, see Attributes
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 PutClusterCapacityProviders
+
+=over
+
+=item CapacityProviders => ArrayRef[Str|Undef]
+
+=item Cluster => Str
+
+=item DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::PutClusterCapacityProviders>
+
+Returns: a L<Paws::ECS::PutClusterCapacityProvidersResponse> instance
+
+Modifies the available capacity providers and the default capacity
+provider strategy for a cluster.
+
+You must specify both the available capacity providers and a default
+capacity provider strategy for the cluster. If the specified cluster
+has existing capacity providers associated with it, you must specify
+all existing capacity providers in addition to any new ones you want to
+add. Any existing capacity providers associated with a cluster that are
+omitted from a PutClusterCapacityProviders API call will be
+disassociated with the cluster. You can only disassociate an existing
+capacity provider from a cluster if it's not being used by any existing
+tasks.
+
+When creating a service or running a task on a cluster, if no capacity
+provider or launch type is specified, then the cluster's default
+capacity provider strategy is used. It is recommended to define a
+default capacity provider strategy for your cluster, however you may
+specify an empty array (C<[]>) to bypass defining a default strategy.
+
+
 =head2 RegisterContainerInstance
 
 =over
@@ -1532,6 +1641,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item TaskDefinition => Str
 
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
+
 =item [Cluster => Str]
 
 =item [Count => Int]
@@ -1553,6 +1664,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =item [PlatformVersion => Str]
 
 =item [PropagateTags => Str]
+
+=item [ReferenceId => Str]
 
 =item [StartedBy => Str]
 
@@ -1626,6 +1739,8 @@ gradually up to about five minutes of wait time.
 =item [Overrides => L<Paws::ECS::TaskOverride>]
 
 =item [PropagateTags => Str]
+
+=item [ReferenceId => Str]
 
 =item [StartedBy => Str]
 
@@ -1942,6 +2057,8 @@ Amazon ECS scheduler can begin scheduling tasks on the instance again.
 =over
 
 =item Service => Str
+
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
 =item [Cluster => Str]
 

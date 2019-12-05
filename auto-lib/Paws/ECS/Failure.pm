@@ -1,6 +1,7 @@
 package Paws::ECS::Failure;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Detail => (is => 'ro', isa => 'Str', request_name => 'detail', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
 1;
 
@@ -40,6 +41,11 @@ A failed resource.
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the failed resource.
+
+
+=head2 Detail => Str
+
+  The details of the failure.
 
 
 =head2 Reason => Str

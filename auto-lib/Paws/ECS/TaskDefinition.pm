@@ -5,6 +5,7 @@ package Paws::ECS::TaskDefinition;
   has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has Family => (is => 'ro', isa => 'Str', request_name => 'family', traits => ['NameInRequest']);
+  has InferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAccelerator]', request_name => 'inferenceAccelerators', traits => ['NameInRequest']);
   has IpcMode => (is => 'ro', isa => 'Str', request_name => 'ipcMode', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
   has NetworkMode => (is => 'ro', isa => 'Str', request_name => 'networkMode', traits => ['NameInRequest']);
@@ -128,6 +129,11 @@ family groups multiple versions of a task definition. Amazon ECS gives
 the first task definition that you registered to a family a revision
 number of 1. Amazon ECS gives sequential revision numbers to each task
 definition that you add.
+
+
+=head2 InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]
+
+  The Elastic Inference accelerator associated with the task.
 
 
 =head2 IpcMode => Str

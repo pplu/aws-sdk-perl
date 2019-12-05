@@ -44,10 +44,15 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head2 Options => L<Paws::ECS::FirelensConfigurationOptionsMap>
 
   The options to use when configuring the log router. This field is
-optional and can be used to add additional metadata, such as the task,
-task definition, cluster, and container instance details to the log
-event. If specified, the syntax to use is
-C<"options":{"enable-ecs-log-metadata":"true|false"}>.
+optional and can be used to specify a custom configuration file or to
+add additional metadata, such as the task, task definition, cluster,
+and container instance details to the log event. If specified, the
+syntax to use is
+C<"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}>.
+For more information, see Creating a Task Definition that Uses a
+FireLens Configuration
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 B<REQUIRED> Type => Str

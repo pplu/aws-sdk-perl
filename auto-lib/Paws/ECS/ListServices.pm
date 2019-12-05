@@ -76,10 +76,10 @@ results and a C<nextToken> value if applicable.
 
 =head2 NextToken => Str
 
-The C<nextToken> value returned from a previous paginated
-C<ListServices> request where C<maxResults> was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the C<nextToken> value.
+The C<nextToken> value returned from a C<ListServices> request
+indicating that more results are available to fulfill the request and
+further calls will be needed. If C<maxResults> was provided, it is
+possible the number of results to be fewer than C<maxResults>.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

@@ -46,20 +46,15 @@ this parameter are log drivers that the Amazon ECS container agent can
 communicate with by default.
 
 For tasks using the Fargate launch type, the supported log drivers are
-C<awslogs>, C<splunk>, and C<awsfirelens>.
+C<awslogs> and C<splunk>.
 
 For tasks using the EC2 launch type, the supported log drivers are
 C<awslogs>, C<fluentd>, C<gelf>, C<json-file>, C<journald>,
-C<logentries>, C<syslog>, C<splunk>, and C<awsfirelens>.
+C<logentries>, C<syslog>, and C<splunk>.
 
 For more information about using the C<awslogs> log driver, see Using
 the awslogs Log Driver
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
-
-For more information about using the C<awsfirelens> log driver, see
-Custom Log Routing
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 If you have a custom driver that is not listed above that you would

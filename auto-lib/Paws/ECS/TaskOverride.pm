@@ -1,8 +1,10 @@
 package Paws::ECS::TaskOverride;
   use Moose;
   has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
+  has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has InferenceAcceleratorOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAcceleratorOverride]', request_name => 'inferenceAcceleratorOverrides', traits => ['NameInRequest']);
+  has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
   has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
 1;
 
@@ -44,6 +46,11 @@ The overrides associated with a task.
   One or more container overrides sent to a task.
 
 
+=head2 Cpu => Str
+
+  The cpu override for the task.
+
+
 =head2 ExecutionRoleArn => Str
 
   The Amazon Resource Name (ARN) of the task execution role that the
@@ -53,6 +60,11 @@ Amazon ECS container agent and the Docker daemon can assume.
 =head2 InferenceAcceleratorOverrides => ArrayRef[L<Paws::ECS::InferenceAcceleratorOverride>]
 
   The Elastic Inference accelerator override for the task.
+
+
+=head2 Memory => Str
+
+  The memory override for the task.
 
 
 =head2 TaskRoleArn => Str

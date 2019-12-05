@@ -1,6 +1,7 @@
 
 package Paws::ECS::UpdateService;
   use Moose;
+  has CapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', traits => ['NameInRequest'], request_name => 'capacityProviderStrategy' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
@@ -58,6 +59,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
+=head2 CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+The capacity provider strategy to update the service to use.
+
+If the service is using the default capacity provider strategy for the
+cluster, the service can be updated to use one or more capacity
+providers. However, when a service is using a non-default capacity
+provider strategy, the service cannot be updated to use the cluster's
+default capacity provider strategy.
+
+
+
 =head2 Cluster => Str
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -99,27 +112,16 @@ after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
 specify a health check grace period of up to 2,147,483,647 seconds.
-During that time, the ECS service scheduler ignores the Elastic Load
-Balancing health check status. This grace period can prevent the ECS
-service scheduler from marking tasks as unhealthy and stopping them
+During that time, the Amazon ECS service scheduler ignores the Elastic
+Load Balancing health check status. This grace period can prevent the
+ECS service scheduler from marking tasks as unhealthy and stopping them
 before they have time to come up.
 
 
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
-The network configuration for the service. This parameter is required
-for task definitions that use the C<awsvpc> network mode to receive
-their own elastic network interface, and it is not supported for other
-network modes. For more information, see Task Networking
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
 
-Updating a service to add a subnet to a list of existing subnets does
-not trigger a service deployment. For example, if your network
-configuration change is to keep the existing subnets and simply add
-another subnet to the network configuration, this does not trigger a
-new service deployment.
 
 
 
@@ -127,8 +129,9 @@ new service deployment.
 
 The platform version on which your tasks in the service are running. A
 platform version is only specified for tasks using the Fargate launch
-type. If one is not specified, the C<LATEST> platform version is used
-by default. For more information, see AWS Fargate Platform Versions
+type. If a platform version is not specified, the C<LATEST> platform
+version is used by default. For more information, see AWS Fargate
+Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
