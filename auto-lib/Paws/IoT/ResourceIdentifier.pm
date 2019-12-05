@@ -5,7 +5,9 @@ package Paws::IoT::ResourceIdentifier;
   has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
   has CognitoIdentityPoolId => (is => 'ro', isa => 'Str', request_name => 'cognitoIdentityPoolId', traits => ['NameInRequest']);
   has DeviceCertificateId => (is => 'ro', isa => 'Str', request_name => 'deviceCertificateId', traits => ['NameInRequest']);
+  has IamRoleArn => (is => 'ro', isa => 'Str', request_name => 'iamRoleArn', traits => ['NameInRequest']);
   has PolicyVersionIdentifier => (is => 'ro', isa => 'Paws::IoT::PolicyVersionIdentifier', request_name => 'policyVersionIdentifier', traits => ['NameInRequest']);
+  has RoleAliasArn => (is => 'ro', isa => 'Str', request_name => 'roleAliasArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::ResourceIdentifier object:
 
-  $service_obj->Method(Att1 => { Account => $value, ..., PolicyVersionIdentifier => $value  });
+  $service_obj->Method(Att1 => { Account => $value, ..., RoleAliasArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -66,9 +68,19 @@ Information that identifies the noncompliant resource.
   The ID of the certificate attached to the resource.
 
 
+=head2 IamRoleArn => Str
+
+  The ARN of the IAM role that has overly permissive actions.
+
+
 =head2 PolicyVersionIdentifier => L<Paws::IoT::PolicyVersionIdentifier>
 
   The version of the policy associated with the resource.
+
+
+=head2 RoleAliasArn => Str
+
+  The ARN of the role alias that has overly permissive actions.
 
 
 

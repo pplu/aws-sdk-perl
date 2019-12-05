@@ -1,14 +1,13 @@
-package Paws::IoT::Field;
+package Paws::IoT::TlsContext;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has ServerName => (is => 'ro', isa => 'Str', request_name => 'serverName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::Field
+Paws::IoT::TlsContext
 
 =head1 USAGE
 
@@ -19,32 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::Field object:
+As an example, if Att1 is expected to be a Paws::IoT::TlsContext object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { ServerName => $value, ..., ServerName => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Field object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TlsContext object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->ServerName
 
 =head1 DESCRIPTION
 
-Describes the name and data type at a field.
+Specifies the TLS context to use for the test authorizer request.
 
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 ServerName => Str
 
-  The name of the field.
-
-
-=head2 Type => Str
-
-  The datatype of the field.
+  The value of the C<serverName> key in a TLS authorization request.
 
 
 

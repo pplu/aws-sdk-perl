@@ -5,6 +5,7 @@ package Paws::IoT::AuthorizerDescription;
   has AuthorizerName => (is => 'ro', isa => 'Str', request_name => 'authorizerName', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
+  has SigningDisabled => (is => 'ro', isa => 'Bool', request_name => 'signingDisabled', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TokenKeyName => (is => 'ro', isa => 'Str', request_name => 'tokenKeyName', traits => ['NameInRequest']);
   has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', request_name => 'tokenSigningPublicKeys', traits => ['NameInRequest']);
@@ -66,6 +67,12 @@ The authorizer description.
 =head2 LastModifiedDate => Str
 
   The UNIX timestamp of when the authorizer was last updated.
+
+
+=head2 SigningDisabled => Bool
+
+  Specifies whether AWS IoT validates the token signature in an
+authorization request.
 
 
 =head2 Status => Str

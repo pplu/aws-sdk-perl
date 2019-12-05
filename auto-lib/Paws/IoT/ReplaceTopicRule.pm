@@ -112,6 +112,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RoleArn   => 'MyAwsArn',
               MessageId => 'MyMessageId',    # max: 128; OPTIONAL
             },    # OPTIONAL
+            IotSiteWise => {
+              PutAssetPropertyValueEntries => [
+                {
+                  PropertyValues => [
+                    {
+                      Timestamp => {
+                        TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
+                        OffsetInNanos =>
+                          'MyAssetPropertyOffsetInNanos',    # OPTIONAL
+                      },
+                      Value => {
+                        BooleanValue =>
+                          'MyAssetPropertyBooleanValue',     # OPTIONAL
+                        DoubleValue => 'MyAssetPropertyDoubleValue',  # OPTIONAL
+                        IntegerValue =>
+                          'MyAssetPropertyIntegerValue',              # OPTIONAL
+                        StringValue => 'MyAssetPropertyStringValue'
+                        ,    # min: 1, max: 1024; OPTIONAL
+                      },
+                      Quality => 'MyAssetPropertyQuality',    # OPTIONAL
+                    },
+                    ...
+                  ],                                          # min: 1
+                  AssetId => 'MyAssetId',                     # OPTIONAL
+                  EntryId => 'MyAssetPropertyEntryId',        # OPTIONAL
+                  PropertyAlias =>
+                    'MyAssetPropertyAlias',    # min: 1, max: 2048; OPTIONAL
+                  PropertyId => 'MyAssetPropertyId',    # OPTIONAL
+                },
+                ...
+              ],                                        # min: 1
+              RoleArn => 'MyAwsArn',
+
+            },    # OPTIONAL
             Kinesis => {
               RoleArn      => 'MyAwsArn',
               StreamName   => 'MyStreamName',
@@ -237,6 +271,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             InputName => 'MyInputName',    # min: 1, max: 128
             RoleArn   => 'MyAwsArn',
             MessageId => 'MyMessageId',    # max: 128; OPTIONAL
+          },    # OPTIONAL
+          IotSiteWise => {
+            PutAssetPropertyValueEntries => [
+              {
+                PropertyValues => [
+                  {
+                    Timestamp => {
+                      TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
+                      OffsetInNanos =>
+                        'MyAssetPropertyOffsetInNanos',    # OPTIONAL
+                    },
+                    Value => {
+                      BooleanValue => 'MyAssetPropertyBooleanValue',  # OPTIONAL
+                      DoubleValue  => 'MyAssetPropertyDoubleValue',   # OPTIONAL
+                      IntegerValue => 'MyAssetPropertyIntegerValue',  # OPTIONAL
+                      StringValue  => 'MyAssetPropertyStringValue'
+                      ,    # min: 1, max: 1024; OPTIONAL
+                    },
+                    Quality => 'MyAssetPropertyQuality',    # OPTIONAL
+                  },
+                  ...
+                ],                                          # min: 1
+                AssetId => 'MyAssetId',                     # OPTIONAL
+                EntryId => 'MyAssetPropertyEntryId',        # OPTIONAL
+                PropertyAlias =>
+                  'MyAssetPropertyAlias',    # min: 1, max: 2048; OPTIONAL
+                PropertyId => 'MyAssetPropertyId',    # OPTIONAL
+              },
+              ...
+            ],                                        # min: 1
+            RoleArn => 'MyAwsArn',
+
           },    # OPTIONAL
           Kinesis => {
             RoleArn      => 'MyAwsArn',

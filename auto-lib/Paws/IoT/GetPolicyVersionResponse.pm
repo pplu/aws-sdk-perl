@@ -24,7 +24,7 @@ Paws::IoT::GetPolicyVersionResponse
 
 =head2 CreationDate => Str
 
-The date the policy version was created.
+The date the policy was created.
 
 
 =head2 GenerationId => Str
@@ -39,7 +39,7 @@ Specifies whether the policy version is the default.
 
 =head2 LastModifiedDate => Str
 
-The date the policy version was last modified.
+The date the policy was last modified.
 
 
 =head2 PolicyArn => Str

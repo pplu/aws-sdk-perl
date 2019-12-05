@@ -1,14 +1,15 @@
-package Paws::IoT::Field;
+package Paws::IoT::HttpHeaders;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  with 'Paws::API::StrToNativeMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::Field
+Paws::IoT::HttpHeaders
 
 =head1 USAGE
 
@@ -19,34 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::Field object:
+As an example, if Att1 is expected to be a Paws::IoT::HttpHeaders object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Field object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::HttpHeaders object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-Describes the name and data type at a field.
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => Str
 
-=head2 Name => Str
-
-  The name of the field.
-
-
-=head2 Type => Str
-
-  The datatype of the field.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

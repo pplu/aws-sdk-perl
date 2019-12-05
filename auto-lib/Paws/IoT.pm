@@ -104,6 +104,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateCertificateFromCsr', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDomainConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateDomainConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDynamicThingGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateDynamicThingGroup', @_);
@@ -137,6 +142,21 @@ package Paws::IoT;
   sub CreatePolicyVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreatePolicyVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateProvisioningClaim {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateProvisioningClaim', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateProvisioningTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateProvisioningTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateProvisioningTemplateVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateProvisioningTemplateVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateRoleAlias {
@@ -209,6 +229,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDomainConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteDomainConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDynamicThingGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteDynamicThingGroup', @_);
@@ -242,6 +267,16 @@ package Paws::IoT;
   sub DeletePolicyVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeletePolicyVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteProvisioningTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteProvisioningTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteProvisioningTemplateVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteProvisioningTemplateVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRegistrationCode {
@@ -349,6 +384,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeDefaultAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDomainConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeDomainConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeEndpoint', @_);
@@ -377,6 +417,16 @@ package Paws::IoT;
   sub DescribeMitigationAction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeMitigationAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeProvisioningTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeProvisioningTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeProvisioningTemplateVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeProvisioningTemplateVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRoleAlias {
@@ -574,6 +624,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListCertificatesByCA', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDomainConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListDomainConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListIndices {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListIndices', @_);
@@ -632,6 +687,16 @@ package Paws::IoT;
   sub ListPrincipalThings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListPrincipalThings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListProvisioningTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListProvisioningTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListProvisioningTemplateVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListProvisioningTemplateVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListRoleAliases {
@@ -874,6 +939,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDomainConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateDomainConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateDynamicThingGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateDynamicThingGroup', @_);
@@ -897,6 +967,11 @@ package Paws::IoT;
   sub UpdateMitigationAction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateMitigationAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateProvisioningTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateProvisioningTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRoleAlias {
@@ -1798,7 +1873,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDomainConfiguration CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateProvisioningClaim CreateProvisioningTemplate CreateProvisioningTemplateVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDomainConfiguration DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteProvisioningTemplate DeleteProvisioningTemplateVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeDomainConfiguration DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeProvisioningTemplate DescribeProvisioningTemplateVersion DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListDomainConfigurations ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListProvisioningTemplates ListProvisioningTemplateVersions ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDomainConfiguration UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateProvisioningTemplate UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -2183,11 +2258,13 @@ own or have access to the endpoint.
 
 =item AuthorizerName => Str
 
-=item TokenKeyName => Str
-
-=item TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
+=item [SigningDisabled => Bool]
 
 =item [Status => Str]
+
+=item [TokenKeyName => Str]
+
+=item [TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>]
 
 
 =back
@@ -2282,6 +2359,35 @@ E<gt> forfiles /p my-csr-directory /c "cmd /c aws iot
 create-certificate-from-csr --certificate-signing-request file://@path"
 
 
+=head2 CreateDomainConfiguration
+
+=over
+
+=item DomainConfigurationName => Str
+
+=item [AuthorizerConfig => L<Paws::IoT::AuthorizerConfig>]
+
+=item [DomainName => Str]
+
+=item [ServerCertificateArns => ArrayRef[Str|Undef]]
+
+=item [ServiceType => Str]
+
+=item [ValidationCertificateArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateDomainConfiguration>
+
+Returns: a L<Paws::IoT::CreateDomainConfigurationResponse> instance
+
+Creates a domain configuration.
+
+The domain configuration feature is in public preview and is subject to
+change.
+
+
 =head2 CreateDynamicThingGroup
 
 =over
@@ -2358,7 +2464,10 @@ Each argument is described in detail in: L<Paws::IoT::CreateKeysAndCertificate>
 Returns: a L<Paws::IoT::CreateKeysAndCertificateResponse> instance
 
 Creates a 2048-bit RSA key pair and issues an X.509 certificate using
-the issued public key.
+the issued public key. You can also call C<CreateKeysAndCertificate>
+over MQTT from a device, for more information, see Provisioning MQTT
+API
+(https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api).
 
 B<Note> This is the only time AWS IoT issues the private key for this
 certificate, so it is important to keep it in a secure location.
@@ -2469,6 +2578,68 @@ Optionally, you can set the new version as the policy's default
 version. The default version is the operative version (that is, the
 version that is in effect for the certificates to which the policy is
 attached).
+
+
+=head2 CreateProvisioningClaim
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateProvisioningClaim>
+
+Returns: a L<Paws::IoT::CreateProvisioningClaimResponse> instance
+
+Creates a provisioning claim.
+
+
+=head2 CreateProvisioningTemplate
+
+=over
+
+=item ProvisioningRoleArn => Str
+
+=item TemplateBody => Str
+
+=item TemplateName => Str
+
+=item [Description => Str]
+
+=item [Enabled => Bool]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateProvisioningTemplate>
+
+Returns: a L<Paws::IoT::CreateProvisioningTemplateResponse> instance
+
+Creates a fleet provisioning template.
+
+
+=head2 CreateProvisioningTemplateVersion
+
+=over
+
+=item TemplateBody => Str
+
+=item TemplateName => Str
+
+=item [SetAsDefault => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateProvisioningTemplateVersion>
+
+Returns: a L<Paws::IoT::CreateProvisioningTemplateVersionResponse> instance
+
+Creates a new version of a fleet provisioning template.
 
 
 =head2 CreateRoleAlias
@@ -2776,6 +2947,25 @@ policies. Next, use the UpdateCertificate API to set the certificate to
 the INACTIVE status.
 
 
+=head2 DeleteDomainConfiguration
+
+=over
+
+=item DomainConfigurationName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteDomainConfiguration>
+
+Returns: a L<Paws::IoT::DeleteDomainConfigurationResponse> instance
+
+Deletes the specified domain configuration.
+
+The domain configuration feature is in public preview and is subject to
+change.
+
+
 =head2 DeleteDynamicThingGroup
 
 =over
@@ -2926,6 +3116,40 @@ delete the default version of a policy using this API. To delete the
 default version of a policy, use DeletePolicy. To find out which
 version of a policy is marked as the default version, use
 ListPolicyVersions.
+
+
+=head2 DeleteProvisioningTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteProvisioningTemplate>
+
+Returns: a L<Paws::IoT::DeleteProvisioningTemplateResponse> instance
+
+Deletes a fleet provisioning template.
+
+
+=head2 DeleteProvisioningTemplateVersion
+
+=over
+
+=item TemplateName => Str
+
+=item VersionId => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteProvisioningTemplateVersion>
+
+Returns: a L<Paws::IoT::DeleteProvisioningTemplateVersionResponse> instance
+
+Deletes a fleet provisioning template version.
 
 
 =head2 DeleteRegistrationCode
@@ -3282,6 +3506,25 @@ Returns: a L<Paws::IoT::DescribeDefaultAuthorizerResponse> instance
 Describes the default authorizer.
 
 
+=head2 DescribeDomainConfiguration
+
+=over
+
+=item DomainConfigurationName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeDomainConfiguration>
+
+Returns: a L<Paws::IoT::DescribeDomainConfigurationResponse> instance
+
+Gets summary information about a domain configuration.
+
+The domain configuration feature is in public preview and is subject to
+change.
+
+
 =head2 DescribeEndpoint
 
 =over
@@ -3378,6 +3621,40 @@ Each argument is described in detail in: L<Paws::IoT::DescribeMitigationAction>
 Returns: a L<Paws::IoT::DescribeMitigationActionResponse> instance
 
 Gets information about a mitigation action.
+
+
+=head2 DescribeProvisioningTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeProvisioningTemplate>
+
+Returns: a L<Paws::IoT::DescribeProvisioningTemplateResponse> instance
+
+Returns information about a fleet provisioning template.
+
+
+=head2 DescribeProvisioningTemplateVersion
+
+=over
+
+=item TemplateName => Str
+
+=item VersionId => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeProvisioningTemplateVersion>
+
+Returns: a L<Paws::IoT::DescribeProvisioningTemplateVersionResponse> instance
+
+Returns information about a fleet provisioning template version.
 
 
 =head2 DescribeRoleAlias
@@ -3675,7 +3952,7 @@ Each argument is described in detail in: L<Paws::IoT::GetIndexingConfiguration>
 
 Returns: a L<Paws::IoT::GetIndexingConfigurationResponse> instance
 
-Gets the search configuration.
+Gets the indexing configuration.
 
 
 =head2 GetJobDocument
@@ -3830,7 +4107,10 @@ Each argument is described in detail in: L<Paws::IoT::GetStatistics>
 
 Returns: a L<Paws::IoT::GetStatisticsResponse> instance
 
-Gets statistics about things that match the specified query.
+Returns the count, average, sum, minimum, maximum, sum of squares,
+variance, and standard deviation for the specified aggregated field. If
+the aggregation field is of type C<String>, only the count statistic is
+returned.
 
 
 =head2 GetTopicRule
@@ -4144,6 +4424,30 @@ Returns: a L<Paws::IoT::ListCertificatesByCAResponse> instance
 List the device certificates signed by the specified CA certificate.
 
 
+=head2 ListDomainConfigurations
+
+=over
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+=item [ServiceType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListDomainConfigurations>
+
+Returns: a L<Paws::IoT::ListDomainConfigurationsResponse> instance
+
+Gets a list of domain configurations for the user. This list is sorted
+alphabetically by domain configuration name.
+
+The domain configuration feature is in public preview and is subject to
+change.
+
+
 =head2 ListIndices
 
 =over
@@ -4402,6 +4706,44 @@ Returns: a L<Paws::IoT::ListPrincipalThingsResponse> instance
 Lists the things associated with the specified principal. A principal
 can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 identities or federated identities.
+
+
+=head2 ListProvisioningTemplates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListProvisioningTemplates>
+
+Returns: a L<Paws::IoT::ListProvisioningTemplatesResponse> instance
+
+Lists the fleet provisioning templates in your AWS account.
+
+
+=head2 ListProvisioningTemplateVersions
+
+=over
+
+=item TemplateName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListProvisioningTemplateVersions>
+
+Returns: a L<Paws::IoT::ListProvisioningTemplateVersionsResponse> instance
+
+A list of fleet provisioning template versions.
 
 
 =head2 ListRoleAliases
@@ -4917,7 +5259,13 @@ Each argument is described in detail in: L<Paws::IoT::RegisterThing>
 
 Returns: a L<Paws::IoT::RegisterThingResponse> instance
 
-Provisions a thing.
+Provisions a thing in the device registry. RegisterThing calls other
+AWS IoT control plane APIs. These calls might exceed your account level
+AWS IoT Throttling Limits
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot)
+and cause throttle errors. Please contact AWS Customer Support
+(https://console.aws.amazon.com/support/home) to raise your throttling
+limits if necessary.
 
 
 =head2 RejectCertificateTransfer
@@ -5262,9 +5610,15 @@ gateway.
 
 =item AuthorizerName => Str
 
-=item Token => Str
+=item [HttpContext => L<Paws::IoT::HttpContext>]
 
-=item TokenSignature => Str
+=item [MqttContext => L<Paws::IoT::MqttContext>]
+
+=item [TlsContext => L<Paws::IoT::TlsContext>]
+
+=item [Token => Str]
+
+=item [TokenSignature => Str]
 
 
 =back
@@ -5443,6 +5797,32 @@ The ACTIVE state is required to authenticate devices connecting to AWS
 IoT using a certificate.
 
 
+=head2 UpdateDomainConfiguration
+
+=over
+
+=item DomainConfigurationName => Str
+
+=item [AuthorizerConfig => L<Paws::IoT::AuthorizerConfig>]
+
+=item [DomainConfigurationStatus => Str]
+
+=item [RemoveAuthorizerConfig => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateDomainConfiguration>
+
+Returns: a L<Paws::IoT::UpdateDomainConfigurationResponse> instance
+
+Updates values stored in the domain configuration. Domain
+configurations for default endpoints can't be updated.
+
+The domain configuration feature is in public preview and is subject to
+change.
+
+
 =head2 UpdateDynamicThingGroup
 
 =over
@@ -5547,6 +5927,30 @@ Each argument is described in detail in: L<Paws::IoT::UpdateMitigationAction>
 Returns: a L<Paws::IoT::UpdateMitigationActionResponse> instance
 
 Updates the definition for the specified mitigation action.
+
+
+=head2 UpdateProvisioningTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [DefaultVersionId => Int]
+
+=item [Description => Str]
+
+=item [Enabled => Bool]
+
+=item [ProvisioningRoleArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateProvisioningTemplate>
+
+Returns: a L<Paws::IoT::UpdateProvisioningTemplateResponse> instance
+
+Updates a fleet provisioning template.
 
 
 =head2 UpdateRoleAlias

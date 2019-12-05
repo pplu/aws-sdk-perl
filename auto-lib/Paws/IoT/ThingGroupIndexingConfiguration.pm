@@ -44,10 +44,13 @@ Thing group indexing configuration.
 managed fields. Use the GetIndexingConfiguration API to get a list of
 managed fields.
 
+Contains custom field names and their data type.
+
 
 =head2 ManagedFields => ArrayRef[L<Paws::IoT::Field>]
 
-  A list of automatically indexed thing group fields.
+  Contains fields that are indexed and whose types are already known by
+the Fleet Indexing service.
 
 
 =head2 B<REQUIRED> ThingGroupIndexingMode => Str

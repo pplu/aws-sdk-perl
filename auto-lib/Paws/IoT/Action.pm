@@ -9,6 +9,7 @@ package Paws::IoT::Action;
   has Http => (is => 'ro', isa => 'Paws::IoT::HttpAction', request_name => 'http', traits => ['NameInRequest']);
   has IotAnalytics => (is => 'ro', isa => 'Paws::IoT::IotAnalyticsAction', request_name => 'iotAnalytics', traits => ['NameInRequest']);
   has IotEvents => (is => 'ro', isa => 'Paws::IoT::IotEventsAction', request_name => 'iotEvents', traits => ['NameInRequest']);
+  has IotSiteWise => (is => 'ro', isa => 'Paws::IoT::IotSiteWiseAction', request_name => 'iotSiteWise', traits => ['NameInRequest']);
   has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', request_name => 'kinesis', traits => ['NameInRequest']);
   has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
   has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
@@ -97,6 +98,12 @@ payload into a separate DynamoDB column.
 =head2 IotEvents => L<Paws::IoT::IotEventsAction>
 
   Sends an input to an AWS IoT Events detector.
+
+
+=head2 IotSiteWise => L<Paws::IoT::IotSiteWiseAction>
+
+  Sends data from the MQTT message that triggered the rule to AWS IoT
+SiteWise asset properties.
 
 
 =head2 Kinesis => L<Paws::IoT::KinesisAction>
