@@ -29,6 +29,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::AssociatePhoneNumberWithUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchCreateAttendee {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::BatchCreateAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchCreateRoomMembership {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::BatchCreateRoomMembership', @_);
@@ -64,9 +69,19 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateAttendee {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateBot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateMeeting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateMeeting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreatePhoneNumberOrder {
@@ -99,9 +114,19 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAttendee {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEventsConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteEventsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteMeeting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteMeeting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeletePhoneNumber {
@@ -174,6 +199,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetAccountSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAttendee {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetBot', @_);
@@ -187,6 +217,11 @@ package Paws::Chime;
   sub GetGlobalSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetGlobalSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMeeting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetMeeting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPhoneNumber {
@@ -264,9 +299,19 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListAccounts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAttendees {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListAttendees', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListBots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListBots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListMeetings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListMeetings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPhoneNumberOrders {
@@ -473,7 +518,7 @@ package Paws::Chime;
   }
 
 
-  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateBot CreatePhoneNumberOrder CreateRoom CreateRoomMembership CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteEventsConfiguration DeletePhoneNumber DeleteRoom DeleteRoomMembership DeleteVoiceConnector DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup GetAccount GetAccountSettings GetBot GetEventsConfiguration GetGlobalSettings GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetRoom GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListBots ListPhoneNumberOrders ListPhoneNumbers ListRoomMemberships ListRooms ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateRoom UpdateRoomMembership UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
+  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser BatchCreateAttendee BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAttendee CreateBot CreateMeeting CreatePhoneNumberOrder CreateRoom CreateRoomMembership CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAttendee DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteRoom DeleteRoomMembership DeleteVoiceConnector DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup GetAccount GetAccountSettings GetAttendee GetBot GetEventsConfiguration GetGlobalSettings GetMeeting GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetRoom GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAttendees ListBots ListMeetings ListPhoneNumberOrders ListPhoneNumbers ListRoomMemberships ListRooms ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateRoom UpdateRoomMembership UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
 
 1;
 
@@ -502,10 +547,14 @@ Paws::Chime - Perl Interface to AWS Amazon Chime
 =head1 DESCRIPTION
 
 The Amazon Chime API (application programming interface) is designed
-for administrators to use to perform key tasks, such as creating and
-managing Amazon Chime accounts and users. This guide provides detailed
-information about the Amazon Chime API, including operations, types,
-inputs and outputs, and error codes.
+for developers to perform key tasks, such as creating and managing
+Amazon Chime accounts, users, and Voice Connectors. This guide provides
+detailed information about the Amazon Chime API, including operations,
+types, inputs and outputs, and error codes. It also includes some
+server-side API actions to use with the Amazon Chime SDK. For more
+information about the Amazon Chime SDK, see Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
 
 You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or
 the REST API to make API calls. We recommend using an AWS SDK or the
@@ -546,10 +595,10 @@ endpoint C<https://service.chime.aws.amazon.com>.
 =back
 
 Administrative permissions are controlled using AWS Identity and Access
-Management (IAM). For more information, see Control Access to the
-Amazon Chime Console
-(https://docs.aws.amazon.com/chime/latest/ag/control-access.html) in
-the I<Amazon Chime Administration Guide>.
+Management (IAM). For more information, see Identity and Access
+Management for Amazon Chime
+(https://docs.aws.amazon.com/chime/latest/ag/security-iam.html) in the
+I<Amazon Chime Administration Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01>
 
@@ -616,6 +665,28 @@ Each argument is described in detail in: L<Paws::Chime::AssociatePhoneNumberWith
 Returns: a L<Paws::Chime::AssociatePhoneNumberWithUserResponse> instance
 
 Associates a phone number with the specified Amazon Chime user.
+
+
+=head2 BatchCreateAttendee
+
+=over
+
+=item Attendees => ArrayRef[L<Paws::Chime::CreateAttendeeRequestItem>]
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::BatchCreateAttendee>
+
+Returns: a L<Paws::Chime::BatchCreateAttendeeResponse> instance
+
+Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
+For more information about the Amazon Chime SDK, see Using the Amazon
+Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
 
 
 =head2 BatchCreateRoomMembership
@@ -791,6 +862,27 @@ Amazon Chime Accounts
 in the I<Amazon Chime Administration Guide>.
 
 
+=head2 CreateAttendee
+
+=over
+
+=item ExternalUserId => Str
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateAttendee>
+
+Returns: a L<Paws::Chime::CreateAttendeeResponse> instance
+
+Creates a new attendee for an active Amazon Chime SDK meeting. For more
+information about the Amazon Chime SDK, see Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
+
+
 =head2 CreateBot
 
 =over
@@ -809,6 +901,32 @@ Each argument is described in detail in: L<Paws::Chime::CreateBot>
 Returns: a L<Paws::Chime::CreateBotResponse> instance
 
 Creates a bot for an Amazon Chime Enterprise account.
+
+
+=head2 CreateMeeting
+
+=over
+
+=item ClientRequestToken => Str
+
+=item [MediaRegion => Str]
+
+=item [MeetingHostId => Str]
+
+=item [NotificationsConfiguration => L<Paws::Chime::MeetingNotificationConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateMeeting>
+
+Returns: a L<Paws::Chime::CreateMeetingResponse> instance
+
+Creates a new Amazon Chime SDK meeting in the specified media Region
+with no initial attendees. For more information about the Amazon Chime
+SDK, see Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
 
 
 =head2 CreatePhoneNumberOrder
@@ -957,6 +1075,29 @@ After 90 days, deleted accounts are permanently removed from your
 C<Disabled> accounts list.
 
 
+=head2 DeleteAttendee
+
+=over
+
+=item AttendeeId => Str
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteAttendee>
+
+Returns: nothing
+
+Deletes an attendee from the specified Amazon Chime SDK meeting and
+deletes their C<JoinToken>. Attendees are automatically deleted when a
+Amazon Chime SDK meeting is deleted. For more information about the
+Amazon Chime SDK, see Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
+
+
 =head2 DeleteEventsConfiguration
 
 =over
@@ -974,6 +1115,27 @@ Returns: nothing
 
 Deletes the events configuration that allows a bot to receive outgoing
 events.
+
+
+=head2 DeleteMeeting
+
+=over
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteMeeting>
+
+Returns: nothing
+
+Deletes the specified Amazon Chime SDK meeting. When a meeting is
+deleted, its attendees are also deleted and clients can no longer join
+it. For more information about the Amazon Chime SDK, see Using the
+Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
 
 
 =head2 DeletePhoneNumber
@@ -1235,6 +1397,28 @@ about these settings, see Use the Policies Page
 I<Amazon Chime Administration Guide>.
 
 
+=head2 GetAttendee
+
+=over
+
+=item AttendeeId => Str
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetAttendee>
+
+Returns: a L<Paws::Chime::GetAttendeeResponse> instance
+
+Gets the Amazon Chime SDK attendee details for a specified meeting ID
+and attendee ID. For more information about the Amazon Chime SDK, see
+Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
+
+
 =head2 GetBot
 
 =over
@@ -1289,6 +1473,26 @@ Returns: a L<Paws::Chime::GetGlobalSettingsResponse> instance
 Retrieves global settings for the administrator's AWS account, such as
 Amazon Chime Business Calling and Amazon Chime Voice Connector
 settings.
+
+
+=head2 GetMeeting
+
+=over
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetMeeting>
+
+Returns: a L<Paws::Chime::GetMeetingResponse> instance
+
+Gets the Amazon Chime SDK meeting details for the specified meeting ID.
+For more information about the Amazon Chime SDK, see Using the Amazon
+Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
 
 
 =head2 GetPhoneNumber
@@ -1570,6 +1774,29 @@ Amazon Chime account a user belongs to, you can filter by the user's
 email address, which returns one account result.
 
 
+=head2 ListAttendees
+
+=over
+
+=item MeetingId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListAttendees>
+
+Returns: a L<Paws::Chime::ListAttendeesResponse> instance
+
+Lists the attendees for the specified Amazon Chime SDK meeting. For
+more information about the Amazon Chime SDK, see Using the Amazon Chime
+SDK (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
+the I<Amazon Chime Developer Guide>.
+
+
 =head2 ListBots
 
 =over
@@ -1589,6 +1816,27 @@ Returns: a L<Paws::Chime::ListBotsResponse> instance
 
 Lists the bots associated with the administrator's Amazon Chime
 Enterprise account ID.
+
+
+=head2 ListMeetings
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListMeetings>
+
+Returns: a L<Paws::Chime::ListMeetingsResponse> instance
+
+Lists up to 100 active Amazon Chime SDK meetings. For more information
+about the Amazon Chime SDK, see Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide>.
 
 
 =head2 ListPhoneNumberOrders
