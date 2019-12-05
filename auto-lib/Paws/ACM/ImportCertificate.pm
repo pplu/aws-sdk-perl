@@ -5,6 +5,7 @@ package Paws::ACM::ImportCertificate;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has CertificateChain => (is => 'ro', isa => 'Str');
   has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PrivateKey       => 'BlobPrivateKeyBlob',
       CertificateArn   => 'MyArn',                       # OPTIONAL
       CertificateChain => 'BlobCertificateChainBlob',    # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyTagKey',                           # min: 1, max: 128
+          Value => 'MyTagValue',                         # max: 256; OPTIONAL
+        },
+        ...
+      ],                                                 # OPTIONAL
     );
 
     # Results:
@@ -72,6 +80,14 @@ The PEM encoded certificate chain.
 =head2 B<REQUIRED> PrivateKey => Str
 
 The private key that matches the public key in the certificate.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ACM::Tag>]
+
+One or more resource tags to associate with the imported certificate.
+
+Note: You cannot apply tags when reimporting a certificate.
 
 
 

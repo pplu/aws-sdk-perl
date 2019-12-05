@@ -241,15 +241,15 @@ Each argument is described in detail in: L<Paws::ACM::ExportCertificate>
 Returns: a L<Paws::ACM::ExportCertificateResponse> instance
 
 Exports a private certificate issued by a private certificate authority
-(CA) for use anywhere. You can export the certificate, the certificate
-chain, and the encrypted private key associated with the public key
-embedded in the certificate. You must store the private key securely.
-The private key is a 2048 bit RSA key. You must provide a passphrase
-for the private key when exporting it. You can use the following
-OpenSSL command to decrypt it later. Provide the passphrase when
-prompted.
+(CA) for use anywhere. The exported file contains the certificate, the
+certificate chain, and the encrypted private 2048-bit RSA key
+associated with the public key that is embedded in the certificate. For
+security, you must assign a passphrase for the private key when
+exporting it.
 
-C<openssl rsa -in encrypted_key.pem -out decrypted_key.pem>
+For information about exporting and formatting a certificate using the
+ACM console or CLI, see Export a Private Certificate
+(https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html).
 
 
 =head2 GetCertificate
@@ -284,6 +284,8 @@ the individual fields, you can use OpenSSL.
 =item [CertificateArn => Str]
 
 =item [CertificateChain => Str]
+
+=item [Tags => ArrayRef[L<Paws::ACM::Tag>]]
 
 
 =back
@@ -354,7 +356,7 @@ The OCSP authority URL, if present, must not exceed 1000 characters.
 
 To import a new certificate, omit the C<CertificateArn> argument.
 Include this argument only when you want to replace a previously
-imported certificate.
+imported certifica
 
 =item *
 
@@ -370,6 +372,12 @@ or HTTPS Query request, include these arguments as BLOBs.
 When you import a certificate by using an SDK, you must specify the
 certificate, the certificate chain, and the private key files in the
 manner required by the programming language you're using.
+
+=item *
+
+The cryptographic algorithm of an imported certificate must match the
+algorithm of the signing CA. For example, if the signing CA key type is
+RSA, then the certificate key type must also be RSA.
 
 =back
 
@@ -399,7 +407,9 @@ Returns: a L<Paws::ACM::ListCertificatesResponse> instance
 
 Retrieves a list of certificate ARNs and domain names. You can request
 that only certificates that match a specific status be listed. You can
-also filter by specific attributes of the certificate.
+also filter by specific attributes of the certificate. Default
+filtering returns only C<RSA_2048> certificates. For more information,
+see Filters.
 
 
 =head2 ListTagsForCertificate
@@ -485,6 +495,8 @@ in the ACM User Guide.
 =item [Options => L<Paws::ACM::CertificateOptions>]
 
 =item [SubjectAlternativeNames => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ACM::Tag>]]
 
 =item [ValidationMethod => Str]
 
