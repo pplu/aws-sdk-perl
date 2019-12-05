@@ -1,6 +1,6 @@
 package Paws::MediaStore::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,12 +39,12 @@ represents a specific value within that category (such as "test,"
 "development," or "production"). You can add up to 50 tags to each
 container. For more information about tagging, including naming and
 usage conventions, see Tagging Resources in MediaStore
-(https://aws.amazon.com/documentation/mediastore/tagging).
+(https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   Part of the key:value pair that defines a tag. You can use a tag key to
 describe a category of information, such as "customer." Tag keys are
