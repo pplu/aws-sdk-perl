@@ -17,7 +17,7 @@ Paws::LicenseManager::ListLicenseConfigurationsResponse
 
 =head2 LicenseConfigurations => ArrayRef[L<Paws::LicenseManager::LicenseConfiguration>]
 
-Array of license configuration objects.
+Information about the license configurations.
 
 
 =head2 NextToken => Str

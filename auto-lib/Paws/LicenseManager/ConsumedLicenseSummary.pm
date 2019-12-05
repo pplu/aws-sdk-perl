@@ -39,13 +39,12 @@ Details about license consumption.
 
 =head2 ConsumedLicenses => Int
 
-  Number of licenses consumed by a resource.
+  Number of licenses consumed by the resource.
 
 
 =head2 ResourceType => Str
 
-  Resource type of the resource consuming a license (instance, host, or
-AMI).
+  Resource type of the resource consuming a license.
 
 
 

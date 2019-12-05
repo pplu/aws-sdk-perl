@@ -36,42 +36,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-Contains details of the usage of each resource from the license pool.
+Details about the usage of a resource associated with a license
+configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 AssociationTime => Str
 
-  Time when the license configuration was initially associated with a
+  Time when the license configuration was initially associated with the
 resource.
 
 
 =head2 ConsumedLicenses => Int
 
-  Number of licenses consumed out of the total provisioned in the license
-configuration.
+  Number of licenses consumed by the resource.
 
 
 =head2 ResourceArn => Str
 
-  ARN of the resource associated with a license configuration.
+  Amazon Resource Name (ARN) of the resource.
 
 
 =head2 ResourceOwnerId => Str
 
-  ID of the account that owns a resource that is associated with the
-license configuration.
+  ID of the account that owns the resource.
 
 
 =head2 ResourceStatus => Str
 
-  Status of a resource associated with the license configuration.
+  Status of the resource.
 
 
 =head2 ResourceType => Str
 
-  Type of resource associated with athe license configuration.
+  Type of resource.
 
 
 

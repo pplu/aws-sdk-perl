@@ -1,6 +1,7 @@
 
 package Paws::LicenseManager::GetLicenseConfigurationResponse;
   use Moose;
+  has AutomatedDiscoveryInformation => (is => 'ro', isa => 'Paws::LicenseManager::AutomatedDiscoveryInformation');
   has ConsumedLicenses => (is => 'ro', isa => 'Int');
   has ConsumedLicenseSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ConsumedLicenseSummary]');
   has Description => (is => 'ro', isa => 'Str');
@@ -13,6 +14,7 @@ package Paws::LicenseManager::GetLicenseConfigurationResponse;
   has ManagedResourceSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ManagedResourceSummary]');
   has Name => (is => 'ro', isa => 'Str');
   has OwnerAccountId => (is => 'ro', isa => 'Str');
+  has ProductInformationList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ProductInformation]');
   has Status => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::Tag]');
 
@@ -27,6 +29,11 @@ Paws::LicenseManager::GetLicenseConfigurationResponse
 =head1 ATTRIBUTES
 
 
+=head2 AutomatedDiscoveryInformation => L<Paws::LicenseManager::AutomatedDiscoveryInformation>
+
+Automated discovery information.
+
+
 =head2 ConsumedLicenses => Int
 
 Number of licenses assigned to resources.
@@ -34,7 +41,7 @@ Number of licenses assigned to resources.
 
 =head2 ConsumedLicenseSummaryList => ArrayRef[L<Paws::LicenseManager::ConsumedLicenseSummary>]
 
-List of summaries for consumed licenses used by various resources.
+Summaries of the licenses consumed by resources.
 
 
 =head2 Description => Str
@@ -44,7 +51,7 @@ Description of the license configuration.
 
 =head2 LicenseConfigurationArn => Str
 
-ARN of the license configuration requested.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 =head2 LicenseConfigurationId => Str
@@ -64,18 +71,17 @@ Sets the number of available licenses as a hard limit.
 
 =head2 LicenseCountingType => Str
 
-Dimension on which the licenses are counted (for example, instances,
-cores, sockets, or VCPUs).
+Dimension on which the licenses are counted.
 
 Valid values are: C<"vCPU">, C<"Instance">, C<"Core">, C<"Socket">
 =head2 LicenseRules => ArrayRef[Str|Undef]
 
-List of flexible text strings designating license rules.
+License rules.
 
 
 =head2 ManagedResourceSummaryList => ArrayRef[L<Paws::LicenseManager::ManagedResourceSummary>]
 
-List of summaries of managed resources.
+Summaries of the managed resources.
 
 
 =head2 Name => Str
@@ -85,17 +91,22 @@ Name of the license configuration.
 
 =head2 OwnerAccountId => Str
 
-Owner account ID for the license configuration.
+Account ID of the owner of the license configuration.
+
+
+=head2 ProductInformationList => ArrayRef[L<Paws::LicenseManager::ProductInformation>]
+
+Product information.
 
 
 =head2 Status => Str
 
-License configuration status (active, etc.).
+License configuration status.
 
 
 =head2 Tags => ArrayRef[L<Paws::LicenseManager::Tag>]
 
-List of tags attached to the license configuration.
+Tags for the license configuration.
 
 
 =head2 _request_id => Str

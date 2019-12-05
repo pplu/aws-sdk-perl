@@ -33,19 +33,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-An inventory filter object.
+An inventory filter.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Condition => Str
 
-  The condition of the filter.
+  Condition of the filter.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the filter.
+  Name of the filter.
 
 
 =head2 Value => Str

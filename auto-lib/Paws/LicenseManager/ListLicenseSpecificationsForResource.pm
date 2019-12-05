@@ -51,9 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 MaxResults => Int
 
-Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned C<NextToken>
-value.
+Maximum number of results to return in a single call.
 
 
 
@@ -65,7 +63,7 @@ Token for the next set of results.
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-ARN of an AMI or Amazon EC2 instance that has an associated license
+Amazon Resource Name (ARN) of a resource that has an associated license
 configuration.
 
 

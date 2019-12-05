@@ -32,11 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-A filter name and value pair that is used to return a more specific
-list of results from a describe operation. Filters can be used to match
-a set of resources by specific criteria, such as tags, attributes, or
-IDs. The filters supported by a C<Describe> operation are documented
-with the C<Describe> operation.
+A filter name and value pair that is used to return more specific
+results from a describe operation. Filters can be used to match a set
+of resources by specific criteria, such as tags, attributes, or IDs.
 
 =head1 ATTRIBUTES
 
@@ -48,7 +46,7 @@ with the C<Describe> operation.
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  One or more filter values. Filter values are case-sensitive.
+  Filter values. Filter values are case-sensitive.
 
 
 

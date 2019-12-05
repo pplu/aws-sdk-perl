@@ -17,10 +17,7 @@ Paws::LicenseManager::ListAssociationsForLicenseConfigurationResponse
 
 =head2 LicenseConfigurationAssociations => ArrayRef[L<Paws::LicenseManager::LicenseConfigurationAssociation>]
 
-Lists association objects for the license configuration, each
-containing the association time, number of consumed licenses, resource
-ARN, resource ID, account ID that owns the resource, resource size, and
-resource type.
+Information about the associations for the license configuration.
 
 
 =head2 NextToken => Str

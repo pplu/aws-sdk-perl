@@ -8,6 +8,7 @@ package Paws::LicenseManager::UpdateLicenseConfiguration;
   has LicenseCountHardLimit => (is => 'ro', isa => 'Bool');
   has LicenseRules => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
+  has ProductInformationList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ProductInformation]');
 
   use MooseX::ClassAttribute;
 
@@ -42,6 +43,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LicenseCountHardLimit      => 1,                      # OPTIONAL
       LicenseRules               => [ 'MyString', ... ],    # OPTIONAL
       Name                       => 'MyString',             # OPTIONAL
+      ProductInformationList     => [
+        {
+          ProductInformationFilterList => [
+            {
+              ProductInformationFilterComparator => 'MyString',
+              ProductInformationFilterName       => 'MyString',
+              ProductInformationFilterValue      => [ 'MyString', ... ],
+
+            },
+            ...
+          ],
+          ResourceType => 'MyString',
+
+        },
+        ...
+      ],    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -52,19 +69,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 Description => Str
 
-New human-friendly description of the license configuration.
+New description of the license configuration.
 
 
 
 =head2 B<REQUIRED> LicenseConfigurationArn => Str
 
-ARN for a license configuration.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 
 =head2 LicenseConfigurationStatus => Str
 
-New status of the license configuration (C<ACTIVE> or C<INACTIVE>).
+New status of the license configuration.
 
 Valid values are: C<"AVAILABLE">, C<"DISABLED">
 
@@ -76,19 +93,25 @@ New number of licenses managed by the license configuration.
 
 =head2 LicenseCountHardLimit => Bool
 
-Sets the number of available licenses as a hard limit.
+New hard limit of the number of available licenses.
 
 
 
 =head2 LicenseRules => ArrayRef[Str|Undef]
 
-List of flexible text strings designating license rules.
+New license rules.
 
 
 
 =head2 Name => Str
 
 New name of the license configuration.
+
+
+
+=head2 ProductInformationList => ArrayRef[L<Paws::LicenseManager::ProductInformation>]
+
+New product information.
 
 
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-Summary for a resource.
+Summary information about a managed resource.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ Summary for a resource.
 
 =head2 ResourceType => Str
 
-  Type of resource associated with a license (instance, host, or AMI).
+  Type of resource associated with a license.
 
 
 

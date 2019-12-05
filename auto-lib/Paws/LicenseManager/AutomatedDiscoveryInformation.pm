@@ -1,13 +1,13 @@
-package Paws::LicenseManager::OrganizationConfiguration;
+package Paws::LicenseManager::AutomatedDiscoveryInformation;
   use Moose;
-  has EnableIntegration => (is => 'ro', isa => 'Bool', required => 1);
+  has LastRunTime => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::LicenseManager::OrganizationConfiguration
+Paws::LicenseManager::AutomatedDiscoveryInformation
 
 =head1 USAGE
 
@@ -18,27 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::LicenseManager::OrganizationConfiguration object:
+As an example, if Att1 is expected to be a Paws::LicenseManager::AutomatedDiscoveryInformation object:
 
-  $service_obj->Method(Att1 => { EnableIntegration => $value, ..., EnableIntegration => $value  });
+  $service_obj->Method(Att1 => { LastRunTime => $value, ..., LastRunTime => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseManager::OrganizationConfiguration object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseManager::AutomatedDiscoveryInformation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EnableIntegration
+  $result->Att1->LastRunTime
 
 =head1 DESCRIPTION
 
-Configuration information for AWS Organizations.
+Describes automated discovery.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EnableIntegration => Bool
+=head2 LastRunTime => Str
 
-  Enables AWS Organization integration.
+  Time that automated discovery last ran.
 
 
 

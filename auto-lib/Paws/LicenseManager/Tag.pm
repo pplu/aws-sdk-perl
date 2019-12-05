@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-Tag for a resource in a key-value format.
+Details about a tag for a license configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  Key for the resource tag.
+  Tag key.
 
 
 =head2 Value => Str
 
-  Value for the resource tag.
+  Tag value.
 
 
 

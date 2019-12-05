@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-A set of attributes that describe a resource.
+Details about a resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 Platform => Str
 
-  The platform of the resource.
+  Platform of the resource.
 
 
 =head2 PlatformVersion => Str
@@ -53,22 +53,22 @@ A set of attributes that describe a resource.
 
 =head2 ResourceArn => Str
 
-  The ARN of the resource.
+  Amazon Resource Name (ARN) of the resource.
 
 
 =head2 ResourceId => Str
 
-  Unique ID of the resource.
+  ID of the resource.
 
 
 =head2 ResourceOwningAccountId => Str
 
-  Unique ID of the account that owns the resource.
+  ID of the account that owns the resource.
 
 
 =head2 ResourceType => Str
 
-  The type of resource.
+  Type of resource.
 
 
 

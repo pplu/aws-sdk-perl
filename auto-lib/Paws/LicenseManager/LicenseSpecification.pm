@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-Object used for associating a license configuration with a resource.
+Details for associating a license configuration with a resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> LicenseConfigurationArn => Str
 
-  ARN of the C<LicenseConfiguration> object.
+  Amazon Resource Name (ARN) of the license configuration.
 
 
 

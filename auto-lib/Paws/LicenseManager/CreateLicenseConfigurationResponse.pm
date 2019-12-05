@@ -16,7 +16,7 @@ Paws::LicenseManager::CreateLicenseConfigurationResponse
 
 =head2 LicenseConfigurationArn => Str
 
-ARN of the license configuration object after its creation.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 =head2 _request_id => Str

@@ -34,8 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-Describes a server resource that is associated with a license
-configuration.
+Describes an association with a license configuration.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +46,7 @@ configuration.
 
 =head2 ResourceArn => Str
 
-  ARN of the resource associated with the license configuration.
+  Amazon Resource Name (ARN) of the resource.
 
 
 =head2 ResourceOwnerId => Str
