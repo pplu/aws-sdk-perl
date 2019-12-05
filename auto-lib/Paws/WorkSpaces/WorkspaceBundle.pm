@@ -3,6 +3,8 @@ package Paws::WorkSpaces::WorkspaceBundle;
   has BundleId => (is => 'ro', isa => 'Str');
   has ComputeType => (is => 'ro', isa => 'Paws::WorkSpaces::ComputeType');
   has Description => (is => 'ro', isa => 'Str');
+  has ImageId => (is => 'ro', isa => 'Str');
+  has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has RootStorage => (is => 'ro', isa => 'Paws::WorkSpaces::RootStorage');
@@ -56,6 +58,16 @@ Describes a WorkSpace bundle.
 =head2 Description => Str
 
   A description.
+
+
+=head2 ImageId => Str
+
+  The image identifier of the bundle.
+
+
+=head2 LastUpdatedTime => Str
+
+  The last time that the bundle was updated.
 
 
 =head2 Name => Str
