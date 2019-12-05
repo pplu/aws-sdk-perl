@@ -132,6 +132,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDBProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBSecurityGroup', @_);
@@ -202,6 +207,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDBProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDBSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBSecurityGroup', @_);
@@ -235,6 +245,11 @@ package Paws::RDS;
   sub DeleteOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeregisterDBProxyTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeregisterDBProxyTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAccountAttributes {
@@ -315,6 +330,21 @@ package Paws::RDS;
   sub DescribeDBParameters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBProxies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBProxyTargetGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxyTargetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBProxyTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxyTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBSecurityGroups {
@@ -467,6 +497,16 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyDBProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBProxyTargetGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBProxyTargetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBSnapshot', @_);
@@ -515,6 +555,11 @@ package Paws::RDS;
   sub RebootDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::RebootDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterDBProxyTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RegisterDBProxyTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveFromGlobalCluster {
@@ -940,6 +985,75 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllDBProxies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxies(@_, Marker => $next_result->Marker);
+        push @{ $result->DBProxies }, @{ $next_result->DBProxies };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBProxies') foreach (@{ $result->DBProxies });
+        $result = $self->DescribeDBProxies(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBProxies') foreach (@{ $result->DBProxies });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBProxyTargetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxyTargetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxyTargetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+        $result = $self->DescribeDBProxyTargetGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBProxyTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxyTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxyTargets(@_, Marker => $next_result->Marker);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->DescribeDBProxyTargets(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
   sub DescribeAllDBSecurityGroups {
     my $self = shift;
 
@@ -1333,7 +1447,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateCustomAvailabilityZone CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteCustomAvailabilityZone DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteInstallationMedia DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeCustomAvailabilityZones DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeInstallationMedia DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ImportInstallationMedia ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StopActivityStream StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateCustomAvailabilityZone CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBProxy CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteCustomAvailabilityZone DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBProxy DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteInstallationMedia DeleteOptionGroup DeregisterDBProxyTargets DescribeAccountAttributes DescribeCertificates DescribeCustomAvailabilityZones DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBProxies DescribeDBProxyTargetGroups DescribeDBProxyTargets DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeInstallationMedia DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ImportInstallationMedia ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBProxy ModifyDBProxyTargetGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RegisterDBProxyTargets RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StopActivityStream StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1985,6 +2099,8 @@ This action only applies to Aurora DB clusters.
 
 =item [StaticMembers => ArrayRef[Str|Undef]]
 
+=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+
 
 =back
 
@@ -2318,6 +2434,43 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
+=head2 CreateDBProxy
+
+=over
+
+=item Auth => ArrayRef[L<Paws::RDS::UserAuthConfig>]
+
+=item DBProxyName => Str
+
+=item EngineFamily => Str
+
+=item RoleArn => Str
+
+=item VpcSubnetIds => ArrayRef[Str|Undef]
+
+=item [DebugLogging => Bool]
+
+=item [IdleClientTimeout => Int]
+
+=item [RequireTLS => Bool]
+
+=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBProxy>
+
+Returns: a L<Paws::RDS::CreateDBProxyResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Creates a new DB proxy.
+
+
 =head2 CreateDBSecurityGroup
 
 =over
@@ -2432,6 +2585,10 @@ the events for that source type for all your RDS sources. If you do not
 specify either the SourceType nor the SourceIdentifier, you are
 notified of events generated from all RDS sources belonging to your
 customer account.
+
+RDS event notification is only available for unencrypted SNS topics. If
+you specify an encrypted SNS topic, event notifications aren't sent for
+the topic.
 
 
 =head2 CreateGlobalCluster
@@ -2708,6 +2865,25 @@ Deletes a specified DB parameter group. The DB parameter group to be
 deleted can't be associated with any DB instances.
 
 
+=head2 DeleteDBProxy
+
+=over
+
+=item DBProxyName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBProxy>
+
+Returns: a L<Paws::RDS::DeleteDBProxyResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Deletes an existing proxy.
+
+
 =head2 DeleteDBSecurityGroup
 
 =over
@@ -2831,6 +3007,32 @@ Each argument is described in detail in: L<Paws::RDS::DeleteOptionGroup>
 Returns: nothing
 
 Deletes an existing option group.
+
+
+=head2 DeregisterDBProxyTargets
+
+=over
+
+=item DBProxyName => Str
+
+=item [DBClusterIdentifiers => ArrayRef[Str|Undef]]
+
+=item [DBInstanceIdentifiers => ArrayRef[Str|Undef]]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeregisterDBProxyTargets>
+
+Returns: a L<Paws::RDS::DeregisterDBProxyTargetsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Remove the association between one or more C<DBProxyTarget> data
+structures and a C<DBProxyTargetGroup>.
 
 
 =head2 DescribeAccountAttributes
@@ -3283,6 +3485,87 @@ Returns: a L<Paws::RDS::DBParameterGroupDetails> instance
 
 Returns the detailed parameter list for a particular DB parameter
 group.
+
+
+=head2 DescribeDBProxies
+
+=over
+
+=item [DBProxyName => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxies>
+
+Returns: a L<Paws::RDS::DescribeDBProxiesResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Returns information about DB proxies.
+
+
+=head2 DescribeDBProxyTargetGroups
+
+=over
+
+=item DBProxyName => Str
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyTargetGroups>
+
+Returns: a L<Paws::RDS::DescribeDBProxyTargetGroupsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Returns information about DB proxy target groups, represented by
+C<DBProxyTargetGroup> data structures.
+
+
+=head2 DescribeDBProxyTargets
+
+=over
+
+=item DBProxyName => Str
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyTargets>
+
+Returns: a L<Paws::RDS::DescribeDBProxyTargetsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Returns information about C<DBProxyTarget> objects. This API supports
+pagination.
 
 
 =head2 DescribeDBSecurityGroups
@@ -4081,6 +4364,12 @@ use the I<Parameter Groups> option of the Amazon RDS console
 C<DescribeDBClusterParameters> action to verify that your DB cluster
 parameter group has been created or modified.
 
+If the modified DB cluster parameter group is used by an Aurora
+Serverless cluster, Aurora applies the update immediately. The cluster
+restart might interrupt your workload. In that case, your application
+must reopen any connections and retry any transactions that were active
+when the parameter changes took effect.
+
 This action only applies to Aurora DB clusters.
 
 
@@ -4263,6 +4552,64 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
+=head2 ModifyDBProxy
+
+=over
+
+=item DBProxyName => Str
+
+=item [Auth => ArrayRef[L<Paws::RDS::UserAuthConfig>]]
+
+=item [DebugLogging => Bool]
+
+=item [IdleClientTimeout => Int]
+
+=item [NewDBProxyName => Str]
+
+=item [RequireTLS => Bool]
+
+=item [RoleArn => Str]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBProxy>
+
+Returns: a L<Paws::RDS::ModifyDBProxyResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Changes the settings for an existing DB proxy.
+
+
+=head2 ModifyDBProxyTargetGroup
+
+=over
+
+=item DBProxyName => Str
+
+=item TargetGroupName => Str
+
+=item [ConnectionPoolConfig => L<Paws::RDS::ConnectionPoolConfiguration>]
+
+=item [NewName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBProxyTargetGroup>
+
+Returns: a L<Paws::RDS::ModifyDBProxyTargetGroupResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Modifies the properties of a C<DBProxyTargetGroup>.
+
+
 =head2 ModifyDBSnapshot
 
 =over
@@ -4283,7 +4630,8 @@ Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 Updates a manual DB snapshot, which can be encrypted or not encrypted,
 with a new engine version.
 
-Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
+Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
+PostgreSQL.
 
 
 =head2 ModifyDBSnapshotAttribute
@@ -4536,6 +4884,32 @@ instance status is set to rebooting.
 For more information about rebooting, see Rebooting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html)
 in the I<Amazon RDS User Guide.>
+
+
+=head2 RegisterDBProxyTargets
+
+=over
+
+=item DBProxyName => Str
+
+=item [DBClusterIdentifiers => ArrayRef[Str|Undef]]
+
+=item [DBInstanceIdentifiers => ArrayRef[Str|Undef]]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::RegisterDBProxyTargets>
+
+Returns: a L<Paws::RDS::RegisterDBProxyTargetsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Associate one or more C<DBProxyTarget> data structures with a
+C<DBProxyTargetGroup>.
 
 
 =head2 RemoveFromGlobalCluster
@@ -5571,6 +5945,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::DBParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBProxies(sub { },[DBProxyName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBProxies([DBProxyName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBProxies, passing the object as the first parameter, and the string 'DBProxies' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBProxyTargetGroups(sub { },DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+=head2 DescribeAllDBProxyTargetGroups(DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TargetGroups, passing the object as the first parameter, and the string 'TargetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxyTargetGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBProxyTargets(sub { },DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+=head2 DescribeAllDBProxyTargets(DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxyTargetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllDBSecurityGroups(sub { },[DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])

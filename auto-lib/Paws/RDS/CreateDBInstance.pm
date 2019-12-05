@@ -549,6 +549,13 @@ enabled. By default, deletion protection is disabled. For more
 information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
+B<Amazon Aurora>
+
+Not applicable. You can enable or disable deletion protection for the
+DB cluster. For more information, see C<CreateDBCluster>. DB instances
+in a DB cluster can be deleted even when deletion protection is enabled
+for the DB cluster.
+
 
 
 =head2 Domain => Str
@@ -787,8 +794,10 @@ Performance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
 in the I<Amazon RDS User Guide>.
 
-Constraints: Must be a multiple between 1 and 50 of the storage amount
-for the DB instance.
+Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances,
+must be a multiple between .5 and 50 of the storage amount for the DB
+instance. For SQL Server DB instances, must be a multiple between 1 and
+50 of the storage amount for the DB instance.
 
 
 

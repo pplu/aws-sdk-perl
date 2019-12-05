@@ -50,7 +50,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The pending maintenance action to apply to this resource.
 
-Valid values: C<system-update>, C<db-upgrade>, C<hardware-maintenance>
+Valid values: C<system-update>, C<db-upgrade>, C<hardware-maintenance>,
+C<ca-certificate-rotation>
 
 
 

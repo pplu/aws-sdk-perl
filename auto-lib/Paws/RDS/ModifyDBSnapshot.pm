@@ -87,6 +87,11 @@ C<11.2.0.4.v11> (supported for 11.2.0.3 DB snapshots)
 
 =back
 
+B<PostgreSQL>
+
+For the list of engine versions that are available for upgrading a DB
+snapshot, see Upgrading the PostgreSQL DB Engine for Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion).
 
 
 

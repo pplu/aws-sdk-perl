@@ -44,8 +44,8 @@ Provides information about a pending maintenance action for a resource.
 =head2 Action => Str
 
   The type of pending maintenance action that is available for the
-resource. Valid actions are C<system-update>, C<db-upgrade>, and
-C<hardware-maintenance>.
+resource. Valid actions are C<system-update>, C<db-upgrade>,
+C<hardware-maintenance>, and C<ca-certificate-rotation>.
 
 
 =head2 AutoAppliedAfterDate => Str

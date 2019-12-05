@@ -60,8 +60,11 @@ restored when there is a request to connect to it.
   The maximum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
-C<128>, and C<256>.
+For Aurora MySQL, valid capacity values are C<1>, C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<128>, and C<256>.
+
+For Aurora PostgreSQL, valid capacity values are C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<192>, and C<384>.
 
 The maximum capacity must be greater than or equal to the minimum
 capacity.
@@ -72,8 +75,11 @@ capacity.
   The minimum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
-C<128>, and C<256>.
+For Aurora MySQL, valid capacity values are C<1>, C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<128>, and C<256>.
+
+For Aurora PostgreSQL, valid capacity values are C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<192>, and C<384>.
 
 The minimum capacity must be less than or equal to the maximum
 capacity.

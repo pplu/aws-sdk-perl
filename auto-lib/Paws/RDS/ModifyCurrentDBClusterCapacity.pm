@@ -65,8 +65,13 @@ Constraints:
 
 =item *
 
-Value must be C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>, C<128>, or
-C<256>.
+For Aurora MySQL, valid capacity values are C<1>, C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<128>, and C<256>.
+
+=item *
+
+For Aurora PostgreSQL, valid capacity values are C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<192>, and C<384>.
 
 =back
 
