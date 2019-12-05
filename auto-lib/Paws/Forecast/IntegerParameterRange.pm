@@ -58,10 +58,7 @@ This object is part of the ParameterRanges object.
 =head2 ScalingType => Str
 
   The scale that hyperparameter tuning uses to search the hyperparameter
-range. For information about choosing a hyperparameter scale, see
-Hyperparameter Scaling
-(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
-One of the following values:
+range. Valid values:
 
 =over
 
@@ -80,8 +77,8 @@ by using a linear scale.
 Hyperparameter tuning searches the values in the hyperparameter range
 by using a logarithmic scale.
 
-Logarithmic scaling works only for ranges that have only values greater
-than 0.
+Logarithmic scaling works only for ranges that have values greater than
+0.
 
 =item ReverseLogarithmic
 
@@ -92,6 +89,10 @@ within the range 0 E<lt>= x E<lt> 1.0.
 
 =back
 
+For information about choosing a hyperparameter scale, see
+Hyperparameter Scaling
+(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
+One of the following values:
 
 
 

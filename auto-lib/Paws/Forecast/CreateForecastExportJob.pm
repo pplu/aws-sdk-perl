@@ -57,9 +57,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 =head2 B<REQUIRED> Destination => L<Paws::Forecast::DataDestination>
 
-The path to the Amazon S3 bucket where you want to save the forecast
-and an AWS Identity and Access Management (IAM) role that Amazon
-Forecast can assume to access the bucket.
+The location where you want to save the forecast and an AWS Identity
+and Access Management (IAM) role that Amazon Forecast can assume to
+access the location. The forecast must be exported to an Amazon S3
+bucket.
+
+If encryption is used, C<Destination> must include an AWS Key
+Management Service (KMS) key. The IAM role must allow Amazon Forecast
+permission to access the key.
 
 
 

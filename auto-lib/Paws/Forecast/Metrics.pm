@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::M
 
 =head1 DESCRIPTION
 
-Provides metrics used to evaluate the performance of a predictor. This
-object is part of the WindowSummary object.
+Provides metrics that are used to evaluate the performance of a
+predictor. This object is part of the WindowSummary object.
 
 =head1 ATTRIBUTES
 

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::P
 
 =head1 DESCRIPTION
 
-Provides a summary of the predictor properties used in the
+Provides a summary of the predictor properties that are used in the
 ListPredictors operation. To get the complete set of properties, call
 the DescribePredictor operation, and provide the listed
 C<PredictorArn>.
@@ -103,7 +103,7 @@ C<UPDATE_PENDING>, C<UPDATE_IN_PROGRESS>, C<UPDATE_FAILED>
 
 =back
 
-The C<Status> of the predictor must be C<ACTIVE> before using the
+The C<Status> of the predictor must be C<ACTIVE> before you can use the
 predictor to create a forecast.
 
 

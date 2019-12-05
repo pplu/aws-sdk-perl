@@ -40,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::F
 
 Provides a summary of the forecast properties used in the ListForecasts
 operation. To get the complete set of properties, call the
-DescribeForecast operation, and provide the listed C<ForecastArn>.
+DescribeForecast operation, and provide the C<ForecastArn> that is
+listed in the summary.
 
 =head1 ATTRIBUTES
 

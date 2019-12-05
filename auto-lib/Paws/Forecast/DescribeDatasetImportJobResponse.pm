@@ -47,14 +47,18 @@ The name of the dataset import job.
 
 =head2 DataSize => Num
 
-The size of the dataset in gigabytes (GB) after completion of the
-import job.
+The size of the dataset in gigabytes (GB) after the import job has
+finished.
 
 
 =head2 DataSource => L<Paws::Forecast::DataSource>
 
-The location of the training data to import. The training data must be
-stored in an Amazon S3 bucket.
+The location of the training data to import and an AWS Identity and
+Access Management (IAM) role that Amazon Forecast can assume to access
+the data.
+
+If encryption is used, C<DataSource> includes an AWS Key Management
+Service (KMS) key.
 
 
 =head2 FieldStatistics => L<Paws::Forecast::FieldStatistics>
@@ -64,21 +68,22 @@ Statistical information about each field in the input data.
 
 =head2 LastModificationTime => Str
 
-Dependent on the status as follows:
+The last time that the dataset was modified. The time depends on the
+status of the job, as follows:
 
 =over
 
 =item *
 
-C<CREATE_PENDING> - same as C<CreationTime>
+C<CREATE_PENDING> - The same time as C<CreationTime>.
 
 =item *
 
-C<CREATE_IN_PROGRESS> - the current timestamp
+C<CREATE_IN_PROGRESS> - The current timestamp.
 
 =item *
 
-C<ACTIVE> or C<CREATE_FAILED> - when the job finished or failed
+C<ACTIVE> or C<CREATE_FAILED> - When the job finished or failed.
 
 =back
 
@@ -116,9 +121,9 @@ C<DELETE_PENDING>, C<DELETE_IN_PROGRESS>, C<DELETE_FAILED>
 
 =head2 TimestampFormat => Str
 
-The format of timestamps in the dataset. Two formats are supported
-dependent on the C<DataFrequency> specified when the dataset was
-created.
+The format of timestamps in the dataset. The format that you specify
+depends on the C<DataFrequency> specified when the dataset was created.
+The following formats are supported
 
 =over
 
@@ -126,14 +131,14 @@ created.
 
 "yyyy-MM-dd"
 
-For data frequencies: Y, M, W, and D
+For the following data frequencies: Y, M, W, and D
 
 =item *
 
 "yyyy-MM-dd HH:mm:ss"
 
-For data frequencies: H, 30min, 15min, and 1min; and optionally, for:
-Y, M, W, and D
+For the following data frequencies: H, 30min, 15min, and 1min; and
+optionally, for: Y, M, W, and D
 
 =back
 

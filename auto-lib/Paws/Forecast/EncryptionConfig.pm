@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::E
 
 An AWS Key Management Service (KMS) key and an AWS Identity and Access
 Management (IAM) role that Amazon Forecast can assume to access the
-key. This object is optionally submitted in the CreateDataset and
+key. You can specify this optional object in the CreateDataset and
 CreatePredictor requests.
 
 =head1 ATTRIBUTES
@@ -42,17 +42,16 @@ CreatePredictor requests.
 
 =head2 B<REQUIRED> KMSKeyArn => Str
 
-  The Amazon Resource Name (ARN) of an AWS Key Management Service (KMS)
-key.
+  The Amazon Resource Name (ARN) of the KMS key.
 
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The ARN of the AWS Identity and Access Management (IAM) role that
-Amazon Forecast can assume to access the AWS KMS key.
+  The ARN of the IAM role that Amazon Forecast can assume to access the
+AWS KMS key.
 
-Cross-account pass role is not allowed. If you pass a role that doesn't
-belong to your account, an C<InvalidInputException> is thrown.
+Passing a role across AWS accounts is not allowed. If you pass a role
+that isn't in your account, you get an C<InvalidInputException> error.
 
 
 

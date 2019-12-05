@@ -65,10 +65,9 @@ want to import data to.
 
 =head2 B<REQUIRED> DatasetImportJobName => Str
 
-The name for the dataset import job. It is recommended to include the
-current timestamp in the name to guard against getting a
-C<ResourceAlreadyExistsException> exception, for example,
-C<20190721DatasetImport>.
+The name for the dataset import job. We recommend including the current
+timestamp in the name, for example, C<20190721DatasetImport>. This can
+help you avoid getting a C<ResourceAlreadyExistsException> exception.
 
 
 
@@ -76,15 +75,21 @@ C<20190721DatasetImport>.
 
 The location of the training data to import and an AWS Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access
-the data.
+the data. The training data must be stored in an Amazon S3 bucket.
+
+If encryption is used, C<DataSource> must include an AWS Key Management
+Service (KMS) key and the IAM role must allow Amazon Forecast
+permission to access the key. The KMS key and IAM role must match those
+specified in the C<EncryptionConfig> parameter of the CreateDataset
+operation.
 
 
 
 =head2 TimestampFormat => Str
 
-The format of timestamps in the dataset. Two formats are supported,
-dependent on the C<DataFrequency> specified when the dataset was
-created.
+The format of timestamps in the dataset. The format that you specify
+depends on the C<DataFrequency> specified when the dataset was created.
+The following formats are supported
 
 =over
 
@@ -92,17 +97,19 @@ created.
 
 "yyyy-MM-dd"
 
-For data frequencies: Y, M, W, and D
+For the following data frequencies: Y, M, W, and D
 
 =item *
 
 "yyyy-MM-dd HH:mm:ss"
 
-For data frequencies: H, 30min, 15min, and 1min; and optionally, for:
-Y, M, W, and D
+For the following data frequencies: H, 30min, 15min, and 1min; and
+optionally, for: Y, M, W, and D
 
 =back
 
+If the format isn't specified, Amazon Forecast expects the format to be
+"yyyy-MM-dd HH:mm:ss".
 
 
 

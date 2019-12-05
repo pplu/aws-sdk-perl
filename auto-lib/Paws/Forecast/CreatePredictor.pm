@@ -140,7 +140,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 The Amazon Resource Name (ARN) of the algorithm to use for model
 training. Required if C<PerformAutoML> is not set to C<true>.
 
-B<Supported algorithms>
+B<Supported algorithms:>
 
 =over
 
@@ -152,7 +152,7 @@ C<arn:aws:forecast:::algorithm/ARIMA>
 
 C<arn:aws:forecast:::algorithm/Deep_AR_Plus>
 
-C<- supports hyperparameter optimization (HPO)>
+Supports hyperparameter optimization (HPO)
 
 =item *
 
@@ -204,6 +204,9 @@ For example, if you configure a dataset for daily data collection
 and set the forecast horizon to 10, the model returns predictions for
 10 days.
 
+The maximum forecast horizon is the lesser of 500 time-steps or 1/3 of
+the TARGET_TIME_SERIES dataset length.
+
 
 
 =head2 HPOConfig => L<Paws::Forecast::HyperParameterTuningJobConfig>
@@ -213,6 +216,9 @@ provide this parameter, Amazon Forecast uses default values. The
 individual algorithms specify which hyperparameters support
 hyperparameter optimization (HPO). For more information, see
 aws-forecast-choosing-recipes.
+
+If you included the C<HPOConfig> object, you must set C<PerformHPO> to
+true.
 
 
 
@@ -225,13 +231,16 @@ predictor.
 
 =head2 PerformAutoML => Bool
 
-Whether to perform AutoML. The default value is C<false>. In this case,
-you are required to specify an algorithm.
+Whether to perform AutoML. When Amazon Forecast performs AutoML, it
+evaluates the algorithms it provides and chooses the best algorithm and
+configuration for your training dataset.
 
-If you want Amazon Forecast to evaluate the algorithms it provides and
-choose the best algorithm and configuration for your training dataset,
-set C<PerformAutoML> to C<true>. This is a good option if you aren't
-sure which algorithm is suitable for your application.
+The default value is C<false>. In this case, you are required to
+specify an algorithm.
+
+Set C<PerformAutoML> to C<true> to have Amazon Forecast perform AutoML.
+This is a good option if you aren't sure which algorithm is suitable
+for your training data. In this case, C<PerformHPO> must be false.
 
 
 
@@ -239,17 +248,19 @@ sure which algorithm is suitable for your application.
 
 Whether to perform hyperparameter optimization (HPO). HPO finds optimal
 hyperparameter values for your training data. The process of performing
-HPO is known as a hyperparameter tuning job.
+HPO is known as running a hyperparameter tuning job.
 
 The default value is C<false>. In this case, Amazon Forecast uses
 default hyperparameter values from the chosen algorithm.
 
-To override the default values, set C<PerformHPO> to C<true> and supply
-the HyperParameterTuningJobConfig object. The tuning job specifies an
-objective metric, the hyperparameters to optimize, and the valid range
-for each hyperparameter.
+To override the default values, set C<PerformHPO> to C<true> and,
+optionally, supply the HyperParameterTuningJobConfig object. The tuning
+job specifies a metric to optimize, which hyperparameters participate
+in tuning, and the valid range for each tunable hyperparameter. In this
+case, you are required to specify an algorithm and C<PerformAutoML>
+must be false.
 
-The following algorithms support HPO:
+The following algorithm supports HPO:
 
 =over
 
@@ -270,9 +281,9 @@ A name for the predictor.
 
 =head2 TrainingParameters => L<Paws::Forecast::TrainingParameters>
 
-The training parameters to override for model training. The parameters
-that you can override are listed in the individual algorithms in
-aws-forecast-choosing-recipes.
+The hyperparameters to override for model training. The hyperparameters
+that you can override are listed in the individual algorithms. For the
+list of supported algorithms, see aws-forecast-choosing-recipes.
 
 
 

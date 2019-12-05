@@ -40,8 +40,8 @@ Metrics object.
 
 =head2 LossValue => Num
 
-  The difference between the predicted value and actual value over the
-quantile, weighted (normalized) by dividing by the sum over all
+  The difference between the predicted value and the actual value over
+the quantile, weighted (normalized) by dividing by the sum over all
 quantiles.
 
 

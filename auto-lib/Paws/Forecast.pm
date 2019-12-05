@@ -353,8 +353,7 @@ model training. This includes the following:
 =item *
 
 I<C<DataFrequency> > - How frequently your historical time-series data
-is collected. Amazon Forecast uses this information when training the
-model and generating a forecast.
+is collected.
 
 =item *
 
@@ -366,17 +365,20 @@ requires your data to include a minimum set of predefined fields.
 
 =item *
 
-I<C<Schema> > - A schema specifies the fields of the dataset, including
+I<C<Schema> > - A schema specifies the fields in the dataset, including
 the field name and data type.
 
 =back
 
-After creating a dataset, you import your training data into the
-dataset and add the dataset to a dataset group. You then use the
-dataset group to create a predictor. For more information, see
-howitworks-datasets-groups.
+After creating a dataset, you import your training data into it and add
+the dataset to a dataset group. You use the dataset group to create a
+predictor. For more information, see howitworks-datasets-groups.
 
 To get a list of all your datasets, use the ListDatasets operation.
+
+For example Forecast datasets, see the Amazon Forecast Sample GitHub
+repository
+(https://github.com/aws-samples/amazon-forecast-samples/tree/master/data).
 
 The C<Status> of a dataset must be C<ACTIVE> before you can import
 training data. Use the DescribeDataset operation to get the status.
@@ -399,10 +401,9 @@ Each argument is described in detail in: L<Paws::Forecast::CreateDatasetGroup>
 
 Returns: a L<Paws::Forecast::CreateDatasetGroupResponse> instance
 
-Creates an Amazon Forecast dataset group, which holds a collection of
-related datasets. You can add datasets to the dataset group when you
-create the dataset group, or you can add datasets later with the
-UpdateDatasetGroup operation.
+Creates a dataset group, which holds a collection of related datasets.
+You can add datasets to the dataset group when you create the dataset
+group, or later by using the UpdateDatasetGroup operation.
 
 After creating a dataset group and adding datasets, you use the dataset
 group when you create a predictor. For more information, see
@@ -412,8 +413,8 @@ To get a list of all your datasets groups, use the ListDatasetGroups
 operation.
 
 The C<Status> of a dataset group must be C<ACTIVE> before you can
-create a predictor using the dataset group. Use the
-DescribeDatasetGroup operation to get the status.
+create use the dataset group to create a predictor. To get the status,
+use the DescribeDatasetGroup operation.
 
 
 =head2 CreateDatasetImportJob
@@ -444,37 +445,15 @@ You must specify a DataSource object that includes an AWS Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access
 the data. For more information, see aws-forecast-iam-roles.
 
-Two properties of the training data are optionally specified:
+The training data must be in CSV format. The delimiter must be a comma
+(,).
 
-=over
+You can specify the path to a specific CSV file, the S3 bucket, or to a
+folder in the S3 bucket. For the latter two cases, Amazon Forecast
+imports all files up to the limit of 10,000 files.
 
-=item *
-
-The delimiter that separates the data fields.
-
-The default delimiter is a comma (,), which is the only supported
-delimiter in this release.
-
-=item *
-
-The format of timestamps.
-
-If the format is not specified, Amazon Forecast expects the format to
-be "yyyy-MM-dd HH:mm:ss".
-
-=back
-
-When Amazon Forecast uploads your training data, it verifies that the
-data was collected at the C<DataFrequency> specified when the target
-dataset was created. For more information, see CreateDataset and
-howitworks-datasets-groups. Amazon Forecast also verifies the delimiter
-and timestamp format.
-
-You can use the ListDatasetImportJobs operation to get a list of all
-your dataset import jobs, filtered by specified criteria.
-
-To get a list of all your dataset import jobs, filtered by the
-specified criteria, use the ListDatasetGroups operation.
+To get a list of all your dataset import jobs, filtered by specified
+criteria, use the ListDatasetImportJobs operation.
 
 
 =head2 CreateForecast
@@ -484,6 +463,8 @@ specified criteria, use the ListDatasetGroups operation.
 =item ForecastName => Str
 
 =item PredictorArn => Str
+
+=item [ForecastTypes => ArrayRef[Str|Undef]]
 
 
 =back
@@ -496,17 +477,18 @@ Creates a forecast for each item in the C<TARGET_TIME_SERIES> dataset
 that was used to train the predictor. This is known as inference. To
 retrieve the forecast for a single item at low latency, use the
 operation. To export the complete forecast into your Amazon Simple
-Storage Service (Amazon S3), use the CreateForecastExportJob operation.
+Storage Service (Amazon S3) bucket, use the CreateForecastExportJob
+operation.
 
-The range of the forecast is determined by the C<ForecastHorizon>,
-specified in the CreatePredictor request, multiplied by the
-C<DataFrequency>, specified in the CreateDataset request. When you
-query a forecast, you can request a specific date range within the
-complete forecast.
+The range of the forecast is determined by the C<ForecastHorizon>
+value, which you specify in the CreatePredictor request, multiplied by
+the C<DataFrequency> value, which you specify in the CreateDataset
+request. When you query a forecast, you can request a specific date
+range within the forecast.
 
 To get a list of all your forecasts, use the ListForecasts operation.
 
-The forecasts generated by Amazon Forecast are in the same timezone as
+The forecasts generated by Amazon Forecast are in the same time zone as
 the dataset that was used to create the predictor.
 
 For more information, see howitworks-forecast.
@@ -534,7 +516,13 @@ Each argument is described in detail in: L<Paws::Forecast::CreateForecastExportJ
 Returns: a L<Paws::Forecast::CreateForecastExportJobResponse> instance
 
 Exports a forecast created by the CreateForecast operation to your
-Amazon Simple Storage Service (Amazon S3) bucket.
+Amazon Simple Storage Service (Amazon S3) bucket. The forecast file
+name will match the following conventions:
+
+E<lt>ForecastExportJobNameE<gt>_E<lt>ExportTimestampE<gt>_E<lt>PageNumberE<gt>
+
+where the E<lt>ExportTimestampE<gt> component is in Java
+SimpleDateFormat (yyyy-MM-ddTHH-mm-ssZ).
 
 You must specify a DataDestination object that includes an AWS Identity
 and Access Management (IAM) role that Amazon Forecast can assume to
@@ -547,8 +535,8 @@ To get a list of all your forecast export jobs, use the
 ListForecastExportJobs operation.
 
 The C<Status> of the forecast export job must be C<ACTIVE> before you
-can access the forecast in your Amazon S3 bucket. Use the
-DescribeForecastExportJob operation to get the status.
+can access the forecast in your Amazon S3 bucket. To get the status,
+use the DescribeForecastExportJob operation.
 
 
 =head2 CreatePredictor
@@ -602,15 +590,21 @@ operation. Always review the evaluation metrics before deciding to use
 the predictor to generate a forecast.
 
 Optionally, you can specify a featurization configuration to fill and
-aggragate the data fields in the C<TARGET_TIME_SERIES> dataset to
+aggregate the data fields in the C<TARGET_TIME_SERIES> dataset to
 improve model training. For more information, see FeaturizationConfig.
+
+For RELATED_TIME_SERIES datasets, C<CreatePredictor> verifies that the
+C<DataFrequency> specified when the dataset was created matches the
+C<ForecastFrequency>. TARGET_TIME_SERIES datasets don't have this
+restriction. Amazon Forecast also verifies the delimiter and timestamp
+format. For more information, see howitworks-datasets-groups.
 
 B<AutoML>
 
-If you set C<PerformAutoML> to C<true>, Amazon Forecast evaluates each
-algorithm and chooses the one that minimizes the C<objective function>.
-The C<objective function> is defined as the mean of the weighted p10,
-p50, and p90 quantile losses. For more information, see
+If you want Amazon Forecast to evaluate each algorithm and choose the
+one that minimizes the C<objective function>, set C<PerformAutoML> to
+C<true>. The C<objective function> is defined as the mean of the
+weighted p10, p50, and p90 quantile losses. For more information, see
 EvaluationResult.
 
 When AutoML is enabled, the following properties are disallowed:
@@ -635,11 +629,12 @@ C<TrainingParameters>
 
 =back
 
-To get a list of all your predictors, use the ListPredictors operation.
+To get a list of all of your predictors, use the ListPredictors
+operation.
 
-The C<Status> of the predictor must be C<ACTIVE>, signifying that
-training has completed, before you can use the predictor to create a
-forecast. Use the DescribePredictor operation to get the status.
+Before you can use the predictor to create a forecast, the C<Status> of
+the predictor must be C<ACTIVE>, signifying that training has
+completed. To get the status, use the DescribePredictor operation.
 
 
 =head2 DeleteDataset
@@ -655,10 +650,10 @@ Each argument is described in detail in: L<Paws::Forecast::DeleteDataset>
 
 Returns: nothing
 
-Deletes an Amazon Forecast dataset created using the CreateDataset
-operation. To be deleted, the dataset must have a status of C<ACTIVE>
-or C<CREATE_FAILED>. Use the DescribeDataset operation to get the
-status.
+Deletes an Amazon Forecast dataset that was created using the
+CreateDataset operation. You can only delete datasets that have a
+status of C<ACTIVE> or C<CREATE_FAILED>. To get the status use the
+DescribeDataset operation.
 
 
 =head2 DeleteDatasetGroup
@@ -675,11 +670,11 @@ Each argument is described in detail in: L<Paws::Forecast::DeleteDatasetGroup>
 Returns: nothing
 
 Deletes a dataset group created using the CreateDatasetGroup operation.
-To be deleted, the dataset group must have a status of C<ACTIVE>,
-C<CREATE_FAILED>, or C<UPDATE_FAILED>. Use the DescribeDatasetGroup
-operation to get the status.
+You can only delete dataset groups that have a status of C<ACTIVE>,
+C<CREATE_FAILED>, or C<UPDATE_FAILED>. To get the status, use the
+DescribeDatasetGroup operation.
 
-The operation deletes only the dataset group, not the datasets in the
+This operation deletes only the dataset group, not the datasets in the
 group.
 
 
@@ -697,9 +692,9 @@ Each argument is described in detail in: L<Paws::Forecast::DeleteDatasetImportJo
 Returns: nothing
 
 Deletes a dataset import job created using the CreateDatasetImportJob
-operation. To be deleted, the import job must have a status of
-C<ACTIVE> or C<CREATE_FAILED>. Use the DescribeDatasetImportJob
-operation to get the status.
+operation. You can delete only dataset import jobs that have a status
+of C<ACTIVE> or C<CREATE_FAILED>. To get the status, use the
+DescribeDatasetImportJob operation.
 
 
 =head2 DeleteForecast
@@ -715,11 +710,13 @@ Each argument is described in detail in: L<Paws::Forecast::DeleteForecast>
 
 Returns: nothing
 
-Deletes a forecast created using the CreateForecast operation. To be
-deleted, the forecast must have a status of C<ACTIVE> or
-C<CREATE_FAILED>. Use the DescribeForecast operation to get the status.
+Deletes a forecast created using the CreateForecast operation. You can
+delete only forecasts that have a status of C<ACTIVE> or
+C<CREATE_FAILED>. To get the status, use the DescribeForecast
+operation.
 
-You can't delete a forecast while it is being exported.
+You can't delete a forecast while it is being exported. After a
+forecast is deleted, you can no longer query the forecast.
 
 
 =head2 DeleteForecastExportJob
@@ -736,9 +733,9 @@ Each argument is described in detail in: L<Paws::Forecast::DeleteForecastExportJ
 Returns: nothing
 
 Deletes a forecast export job created using the CreateForecastExportJob
-operation. To be deleted, the export job must have a status of
-C<ACTIVE> or C<CREATE_FAILED>. Use the DescribeForecastExportJob
-operation to get the status.
+operation. You can delete only export jobs that have a status of
+C<ACTIVE> or C<CREATE_FAILED>. To get the status, use the
+DescribeForecastExportJob operation.
 
 
 =head2 DeletePredictor
@@ -754,12 +751,10 @@ Each argument is described in detail in: L<Paws::Forecast::DeletePredictor>
 
 Returns: nothing
 
-Deletes a predictor created using the CreatePredictor operation. To be
-deleted, the predictor must have a status of C<ACTIVE> or
-C<CREATE_FAILED>. Use the DescribePredictor operation to get the
-status.
-
-Any forecasts generated by the predictor will no longer be available.
+Deletes a predictor created using the CreatePredictor operation. You
+can delete only predictor that have a status of C<ACTIVE> or
+C<CREATE_FAILED>. To get the status, use the DescribePredictor
+operation.
 
 
 =head2 DescribeDataset
@@ -778,9 +773,8 @@ Returns: a L<Paws::Forecast::DescribeDatasetResponse> instance
 Describes an Amazon Forecast dataset created using the CreateDataset
 operation.
 
-In addition to listing the properties provided by the user in the
-C<CreateDataset> request, this operation includes the following
-properties:
+In addition to listing the parameters specified in the C<CreateDataset>
+request, this operation includes the following dataset properties:
 
 =over
 
@@ -816,7 +810,7 @@ Returns: a L<Paws::Forecast::DescribeDatasetGroupResponse> instance
 Describes a dataset group created using the CreateDatasetGroup
 operation.
 
-In addition to listing the properties provided by the user in the
+In addition to listing the parameters provided in the
 C<CreateDatasetGroup> request, this operation includes the following
 properties:
 
@@ -858,7 +852,7 @@ Returns: a L<Paws::Forecast::DescribeDatasetImportJobResponse> instance
 Describes a dataset import job created using the CreateDatasetImportJob
 operation.
 
-In addition to listing the properties provided by the user in the
+In addition to listing the parameters provided in the
 C<CreateDatasetImportJob> request, this operation includes the
 following properties:
 
@@ -907,9 +901,8 @@ Returns: a L<Paws::Forecast::DescribeForecastResponse> instance
 
 Describes a forecast created using the CreateForecast operation.
 
-In addition to listing the properties provided by the user in the
-C<CreateForecast> request, this operation includes the following
-properties:
+In addition to listing the properties provided in the C<CreateForecast>
+request, this operation lists the following properties:
 
 =over
 
@@ -954,8 +947,8 @@ Describes a forecast export job created using the
 CreateForecastExportJob operation.
 
 In addition to listing the properties provided by the user in the
-C<CreateForecastExportJob> request, this operation includes the
-following properties:
+C<CreateForecastExportJob> request, this operation lists the following
+properties:
 
 =over
 
@@ -994,8 +987,8 @@ Returns: a L<Paws::Forecast::DescribePredictorResponse> instance
 
 Describes a predictor created using the CreatePredictor operation.
 
-In addition to listing the properties provided by the user in the
-C<CreatePredictor> request, this operation includes the following
+In addition to listing the properties provided in the
+C<CreatePredictor> request, this operation lists the following
 properties:
 
 =over
@@ -1007,8 +1000,8 @@ training data.
 
 =item *
 
-C<AutoMLAlgorithmArns> - If AutoML is performed, the algorithms
-evaluated.
+C<AutoMLAlgorithmArns> - If AutoML is performed, the algorithms that
+were evaluated.
 
 =item *
 
@@ -1046,19 +1039,23 @@ Returns: a L<Paws::Forecast::GetAccuracyMetricsResponse> instance
 Provides metrics on the accuracy of the models that were trained by the
 CreatePredictor operation. Use metrics to see how well the model
 performed and to decide whether to use the predictor to generate a
-forecast.
+forecast. For more information, see metrics.
 
-Metrics are generated for each backtest window evaluated. For more
-information, see EvaluationParameters.
+This operation generates metrics for each backtest window that was
+evaluated. The number of backtest windows (C<NumberOfBacktestWindows>)
+is specified using the EvaluationParameters object, which is optionally
+included in the C<CreatePredictor> request. If
+C<NumberOfBacktestWindows> isn't specified, the number defaults to one.
 
 The parameters of the C<filling> method determine which items
-contribute to the metrics. If C<zero> is specified, all items
-contribute. If C<nan> is specified, only those items that have complete
-data in the range being evaluated contribute. For more information, see
-FeaturizationMethod.
+contribute to the metrics. If you want all items to contribute, specify
+C<zero>. If you want only those items that have complete data in the
+range being evaluated to contribute, specify C<nan>. For more
+information, see FeaturizationMethod.
 
-For an example of how to train a model and review metrics, see
-getting-started.
+Before you can get accuracy metrics, the C<Status> of the predictor
+must be C<ACTIVE>, signifying that training has completed. To get the
+status, use the DescribePredictor operation.
 
 
 =head2 ListDatasetGroups
@@ -1077,10 +1074,10 @@ Each argument is described in detail in: L<Paws::Forecast::ListDatasetGroups>
 Returns: a L<Paws::Forecast::ListDatasetGroupsResponse> instance
 
 Returns a list of dataset groups created using the CreateDatasetGroup
-operation. For each dataset group, a summary of its properties,
-including its Amazon Resource Name (ARN), is returned. You can retrieve
-the complete set of properties by using the ARN with the
-DescribeDatasetGroup operation.
+operation. For each dataset group, this operation returns a summary of
+its properties, including its Amazon Resource Name (ARN). You can
+retrieve the complete set of properties by using the dataset group ARN
+with the DescribeDatasetGroup operation.
 
 
 =head2 ListDatasetImportJobs
@@ -1101,10 +1098,10 @@ Each argument is described in detail in: L<Paws::Forecast::ListDatasetImportJobs
 Returns: a L<Paws::Forecast::ListDatasetImportJobsResponse> instance
 
 Returns a list of dataset import jobs created using the
-CreateDatasetImportJob operation. For each import job, a summary of its
-properties, including its Amazon Resource Name (ARN), is returned. You
-can retrieve the complete set of properties by using the ARN with the
-DescribeDatasetImportJob operation. You can filter the list by
+CreateDatasetImportJob operation. For each import job, this operation
+returns a summary of its properties, including its Amazon Resource Name
+(ARN). You can retrieve the complete set of properties by using the ARN
+with the DescribeDatasetImportJob operation. You can filter the list by
 providing an array of Filter objects.
 
 
@@ -1125,8 +1122,8 @@ Returns: a L<Paws::Forecast::ListDatasetsResponse> instance
 
 Returns a list of datasets created using the CreateDataset operation.
 For each dataset, a summary of its properties, including its Amazon
-Resource Name (ARN), is returned. You can retrieve the complete set of
-properties by using the ARN with the DescribeDataset operation.
+Resource Name (ARN), is returned. To retrieve the complete set of
+properties, use the ARN with the DescribeDataset operation.
 
 
 =head2 ListForecastExportJobs
@@ -1147,11 +1144,11 @@ Each argument is described in detail in: L<Paws::Forecast::ListForecastExportJob
 Returns: a L<Paws::Forecast::ListForecastExportJobsResponse> instance
 
 Returns a list of forecast export jobs created using the
-CreateForecastExportJob operation. For each forecast export job, a
-summary of its properties, including its Amazon Resource Name (ARN), is
-returned. You can retrieve the complete set of properties by using the
-ARN with the DescribeForecastExportJob operation. The list can be
-filtered using an array of Filter objects.
+CreateForecastExportJob operation. For each forecast export job, this
+operation returns a summary of its properties, including its Amazon
+Resource Name (ARN). To retrieve the complete set of properties, use
+the ARN with the DescribeForecastExportJob operation. You can filter
+the list using an array of Filter objects.
 
 
 =head2 ListForecasts
@@ -1172,10 +1169,10 @@ Each argument is described in detail in: L<Paws::Forecast::ListForecasts>
 Returns: a L<Paws::Forecast::ListForecastsResponse> instance
 
 Returns a list of forecasts created using the CreateForecast operation.
-For each forecast, a summary of its properties, including its Amazon
-Resource Name (ARN), is returned. You can retrieve the complete set of
-properties by using the ARN with the DescribeForecast operation. The
-list can be filtered using an array of Filter objects.
+For each forecast, this operation returns a summary of its properties,
+including its Amazon Resource Name (ARN). To retrieve the complete set
+of properties, specify the ARN with the DescribeForecast operation. You
+can filter the list using an array of Filter objects.
 
 
 =head2 ListPredictors
@@ -1196,10 +1193,11 @@ Each argument is described in detail in: L<Paws::Forecast::ListPredictors>
 Returns: a L<Paws::Forecast::ListPredictorsResponse> instance
 
 Returns a list of predictors created using the CreatePredictor
-operation. For each predictor, a summary of its properties, including
-its Amazon Resource Name (ARN), is returned. You can retrieve the
-complete set of properties by using the ARN with the DescribePredictor
-operation. The list can be filtered using an array of Filter objects.
+operation. For each predictor, this operation returns a summary of its
+properties, including its Amazon Resource Name (ARN). You can retrieve
+the complete set of properties by using the ARN with the
+DescribePredictor operation. You can filter the list using an array of
+Filter objects.
 
 
 =head2 UpdateDatasetGroup
@@ -1217,11 +1215,10 @@ Each argument is described in detail in: L<Paws::Forecast::UpdateDatasetGroup>
 
 Returns: a L<Paws::Forecast::UpdateDatasetGroupResponse> instance
 
-Replaces any existing datasets in the dataset group with the specified
-datasets.
+Replaces the datasets in a dataset group with the specified datasets.
 
-The C<Status> of the dataset group must be C<ACTIVE> before creating a
-predictor using the dataset group. Use the DescribeDatasetGroup
+The C<Status> of the dataset group must be C<ACTIVE> before you can use
+the dataset group to create a predictor. Use the DescribeDatasetGroup
 operation to get the status.
 
 

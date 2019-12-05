@@ -16,6 +16,7 @@ package Paws::Forecast::DescribePredictorResponse;
   has PerformAutoML => (is => 'ro', isa => 'Bool');
   has PerformHPO => (is => 'ro', isa => 'Bool');
   has PredictorArn => (is => 'ro', isa => 'Str');
+  has PredictorExecutionDetails => (is => 'ro', isa => 'Paws::Forecast::PredictorExecutionDetails');
   has PredictorName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::Forecast::TrainingParameters');
@@ -49,7 +50,7 @@ When the model training task was created.
 
 =head2 DatasetImportJobArns => ArrayRef[Str|Undef]
 
-An array of ARNs of the dataset import jobs used to import training
+An array of the ARNs of the dataset import jobs used to import training
 data for the predictor.
 
 
@@ -92,10 +93,11 @@ predictor.
 
 =head2 LastModificationTime => Str
 
-Initially, the same as C<CreationTime> (status is C<CREATE_PENDING>).
-Updated when training starts (status changed to C<CREATE_IN_PROGRESS>),
-and when training is complete (status changed to C<ACTIVE>) or fails
-(status changed to C<CREATE_FAILED>).
+Initially, the same as C<CreationTime> (when the status is
+C<CREATE_PENDING>). This value is updated when training starts (when
+the status changes to C<CREATE_IN_PROGRESS>), and when training has
+completed (when the status changes to C<ACTIVE>) or fails (when the
+status changes to C<CREATE_FAILED>).
 
 
 =head2 Message => Str
@@ -110,12 +112,20 @@ Whether the predictor is set to perform AutoML.
 
 =head2 PerformHPO => Bool
 
-Whether the predictor is set to perform HPO.
+Whether the predictor is set to perform hyperparameter optimization
+(HPO).
 
 
 =head2 PredictorArn => Str
 
 The ARN of the predictor.
+
+
+=head2 PredictorExecutionDetails => L<Paws::Forecast::PredictorExecutionDetails>
+
+Details on the the status and results of the backtests performed to
+evaluate the accuracy of the predictor. You specify the number of
+backtests to perform when you call the operation.
 
 
 =head2 PredictorName => Str
@@ -147,14 +157,16 @@ C<UPDATE_PENDING>, C<UPDATE_IN_PROGRESS>, C<UPDATE_FAILED>
 
 =back
 
-The C<Status> of the predictor must be C<ACTIVE> before using the
+The C<Status> of the predictor must be C<ACTIVE> before you can use the
 predictor to create a forecast.
 
 
 =head2 TrainingParameters => L<Paws::Forecast::TrainingParameters>
 
-The training parameters to override for model training. The parameters
-that you can override are listed in the individual algorithms in
+The default training parameters or overrides selected during model
+training. If using the AutoML algorithm or if HPO is turned on while
+using the DeepAR+ algorithms, the optimized values for the chosen
+hyperparameters are returned. For more information, see
 aws-forecast-choosing-recipes.
 
 

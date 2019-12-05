@@ -31,8 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::D
 
 =head1 DESCRIPTION
 
-The source of your training data and credentials to access the data.
-This object is submitted in the CreateDatasetImportJob request.
+The source of your training data, an AWS Identity and Access Management
+(IAM) role that allows Amazon Forecast to access the data and,
+optionally, an AWS Key Management Service (KMS) key. This object is
+submitted in the CreateDatasetImportJob request.
 
 =head1 ATTRIBUTES
 

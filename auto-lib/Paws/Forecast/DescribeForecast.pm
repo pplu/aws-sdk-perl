@@ -37,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DatasetGroupArn      = $DescribeForecastResponse->DatasetGroupArn;
     my $ForecastArn          = $DescribeForecastResponse->ForecastArn;
     my $ForecastName         = $DescribeForecastResponse->ForecastName;
+    my $ForecastTypes        = $DescribeForecastResponse->ForecastTypes;
     my $LastModificationTime = $DescribeForecastResponse->LastModificationTime;
     my $Message              = $DescribeForecastResponse->Message;
     my $PredictorArn         = $DescribeForecastResponse->PredictorArn;

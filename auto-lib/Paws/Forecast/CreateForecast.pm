@@ -2,6 +2,7 @@
 package Paws::Forecast::CreateForecast;
   use Moose;
   has ForecastName => (is => 'ro', isa => 'Str', required => 1);
+  has ForecastTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PredictorArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $forecast = Paws->service('Forecast');
     my $CreateForecastResponse = $forecast->CreateForecast(
-      ForecastName => 'MyName',
-      PredictorArn => 'MyArn',
-
+      ForecastName  => 'MyName',
+      PredictorArn  => 'MyArn',
+      ForecastTypes => [ 'MyForecastType', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -47,7 +48,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 =head2 B<REQUIRED> ForecastName => Str
 
-The name for the forecast.
+A name for the forecast.
+
+
+
+=head2 ForecastTypes => ArrayRef[Str|Undef]
+
+The quantiles at which probabilistic forecasts are generated. You can
+specify up to 5 quantiles per forecast. Accepted values include C<0.01
+to 0.99> (increments of .01 only) and C<mean>. The mean forecast is
+different from the median (0.50) when the distribution is not symmetric
+(e.g. Beta, Negative Binomial). The default value is C<["0.1", "0.5",
+"0.9"]>.
 
 
 

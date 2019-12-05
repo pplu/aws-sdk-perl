@@ -67,7 +67,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 =head2 DataFrequency => Str
 
-The frequency of data collection.
+The frequency of data collection. This parameter is required for
+RELATED_TIME_SERIES datasets.
 
 Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
@@ -90,13 +91,16 @@ Valid values are: C<"TARGET_TIME_SERIES">, C<"RELATED_TIME_SERIES">, C<"ITEM_MET
 
 =head2 B<REQUIRED> Domain => Str
 
-The domain associated with the dataset. The C<Domain> and
-C<DatasetType> that you choose determine the fields that must be
-present in the training data that you import to the dataset. For
-example, if you choose the C<RETAIL> domain and C<TARGET_TIME_SERIES>
-as the C<DatasetType>, Amazon Forecast requires C<item_id>,
-C<timestamp>, and C<demand> fields to be present in your data. For more
-information, see howitworks-datasets-groups.
+The domain associated with the dataset. When you add a dataset to a
+dataset group, this value and the value specified for the C<Domain>
+parameter of the CreateDatasetGroup operation must match.
+
+The C<Domain> and C<DatasetType> that you choose determine the fields
+that must be present in the training data that you import to the
+dataset. For example, if you choose the C<RETAIL> domain and
+C<TARGET_TIME_SERIES> as the C<DatasetType>, Amazon Forecast requires
+C<item_id>, C<timestamp>, and C<demand> fields to be present in your
+data. For more information, see howitworks-datasets-groups.
 
 Valid values are: C<"RETAIL">, C<"CUSTOM">, C<"INVENTORY_PLANNING">, C<"EC2_CAPACITY">, C<"WORK_FORCE">, C<"WEB_TRAFFIC">, C<"METRICS">
 

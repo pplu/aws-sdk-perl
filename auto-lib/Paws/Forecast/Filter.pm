@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::F
 
 Describes a filter for choosing a subset of objects. Each filter
 consists of a condition and a match statement. The condition is either
-C<IS> or C<IS_NOT>, which specifies whether to include or exclude,
-respectively, the objects that match the statement. The match statement
+C<IS> or C<IS_NOT>, which specifies whether to include or exclude the
+objects that match the statement, respectively. The match statement
 consists of a key and a value.
 
 =head1 ATTRIBUTES
@@ -44,7 +44,9 @@ consists of a key and a value.
 
 =head2 B<REQUIRED> Condition => Str
 
-  The condition to apply.
+  The condition to apply. To include the objects that match the
+statement, specify C<IS>. To exclude matching objects, specify
+C<IS_NOT>.
 
 
 =head2 B<REQUIRED> Key => Str
@@ -54,7 +56,7 @@ consists of a key and a value.
 
 =head2 B<REQUIRED> Value => Str
 
-  A valid value for C<Key>.
+  The value to match.
 
 
 

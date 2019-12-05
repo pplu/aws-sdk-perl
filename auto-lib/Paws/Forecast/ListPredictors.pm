@@ -59,32 +59,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 An array of filters. For each filter, you provide a condition and a
 match statement. The condition is either C<IS> or C<IS_NOT>, which
-specifies whether to include or exclude, respectively, from the list,
-the predictors that match the statement. The match statement consists
-of a key and a value. In this release, C<Name> is the only valid key,
-which filters on the C<PredictorName> property.
+specifies whether to include or exclude the predictors that match the
+statement from the list, respectively. The match statement consists of
+a key and a value.
+
+B<Filter properties>
 
 =over
 
 =item *
 
-C<Condition> - C<IS> or C<IS_NOT>
+C<Condition> - The condition to apply. Valid values are C<IS> and
+C<IS_NOT>. To include the predictors that match the statement, specify
+C<IS>. To exclude matching predictors, specify C<IS_NOT>.
 
 =item *
 
-C<Key> - C<Name>
+C<Key> - The name of the parameter to filter on. Valid values are
+C<DatasetGroupArn> and C<Status>.
 
 =item *
 
-C<Value> - the value to match
+C<Value> - The value to match.
 
 =back
 
-For example, to list all predictors named I<my_predictor>, you would
+For example, to list all predictors whose status is ACTIVE, you would
 specify:
 
-C<"Filters": [ { "Condition": "IS", "Key": "Name", "Value":
-"my_predictor" } ]>
+C<"Filters": [ { "Condition": "IS", "Key": "Status", "Value": "ACTIVE"
+} ]>
 
 
 

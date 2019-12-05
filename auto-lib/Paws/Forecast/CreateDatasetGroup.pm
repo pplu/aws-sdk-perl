@@ -63,12 +63,15 @@ A name for the dataset group.
 
 =head2 B<REQUIRED> Domain => Str
 
-The domain associated with the dataset group. The C<Domain> and
-C<DatasetType> that you choose determine the fields that must be
-present in the training data that you import to the dataset. For
+The domain associated with the dataset group. When you add a dataset to
+a dataset group, this value and the value specified for the C<Domain>
+parameter of the CreateDataset operation must match.
+
+The C<Domain> and C<DatasetType> that you choose determine the fields
+that must be present in training data that you import to a dataset. For
 example, if you choose the C<RETAIL> domain and C<TARGET_TIME_SERIES>
-as the C<DatasetType>, Amazon Forecast requires C<item_id>,
-C<timestamp>, and C<demand> fields to be present in your data. For more
+as the C<DatasetType>, Amazon Forecast requires that C<item_id>,
+C<timestamp>, and C<demand> fields are present in your data. For more
 information, see howitworks-datasets-groups.
 
 Valid values are: C<"RETAIL">, C<"CUSTOM">, C<"INVENTORY_PLANNING">, C<"EC2_CAPACITY">, C<"WORK_FORCE">, C<"WEB_TRAFFIC">, C<"METRICS">

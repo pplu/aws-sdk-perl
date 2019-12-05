@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::D
 
 Provides a summary of the dataset group properties used in the
 ListDatasetGroups operation. To get the complete set of properties,
-call the DescribeDatasetGroup operation, and provide the listed
+call the DescribeDatasetGroup operation, and provide the
 C<DatasetGroupArn>.
 
 =head1 ATTRIBUTES
@@ -44,7 +44,7 @@ C<DatasetGroupArn>.
 
 =head2 CreationTime => Str
 
-  When the datase group was created.
+  When the dataset group was created.
 
 
 =head2 DatasetGroupArn => Str
@@ -61,7 +61,8 @@ C<DatasetGroupArn>.
 
   When the dataset group was created or last updated from a call to the
 UpdateDatasetGroup operation. While the dataset group is being updated,
-C<LastModificationTime> is the current query time.
+C<LastModificationTime> is the current time of the C<ListDatasetGroups>
+call.
 
 
 

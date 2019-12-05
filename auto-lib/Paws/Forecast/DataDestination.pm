@@ -31,9 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::D
 
 =head1 DESCRIPTION
 
-The destination of an exported forecast and credentials to access the
-location. This object is submitted in the CreateForecastExportJob
-request.
+The destination for an exported forecast, an AWS Identity and Access
+Management (IAM) role that allows Amazon Forecast to access the
+location and, optionally, an AWS Key Management Service (KMS) key. This
+object is submitted in the CreateForecastExportJob request.
 
 =head1 ATTRIBUTES
 

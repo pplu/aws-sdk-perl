@@ -32,12 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::F
 
 =head1 DESCRIPTION
 
-Provides information about a method that featurizes (transforms) a
+Provides information about the method that featurizes (transforms) a
 dataset field. The method is part of the C<FeaturizationPipeline> of
-the Featurization object. If C<FeaturizationMethodParameters> isn't
-specified, Amazon Forecast uses default parameters.
+the Featurization object. If you don't specify
+C<FeaturizationMethodParameters>, Amazon Forecast uses default
+parameters.
 
-For example:
+The following is an example of how you specify a C<FeaturizationMethod>
+object.
 
 C<{>
 
@@ -53,15 +55,15 @@ C<}>
 
 =head2 B<REQUIRED> FeaturizationMethodName => Str
 
-  The name of the method. In this release, "filling" is the only
-supported method.
+  The name of the method. The "filling" method is the only supported
+method.
 
 
 =head2 FeaturizationMethodParameters => L<Paws::Forecast::FeaturizationMethodParameters>
 
-  The method parameters (key-value pairs). Specify these to override the
-default values. The following list shows the parameters and their valid
-values. Bold signifies the default value.
+  The method parameters (key-value pairs). Specify these parameters to
+override the default values. The following list shows the parameters
+and their valid values. Bold signifies the default value.
 
 =over
 

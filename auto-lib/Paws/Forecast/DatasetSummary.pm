@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::D
 
 Provides a summary of the dataset properties used in the ListDatasets
 operation. To get the complete set of properties, call the
-DescribeDataset operation, and provide the listed C<DatasetArn>.
+DescribeDataset operation, and provide the C<DatasetArn>.
 
 =head1 ATTRIBUTES
 
@@ -70,11 +70,11 @@ DescribeDataset operation, and provide the listed C<DatasetArn>.
 
 =head2 LastModificationTime => Str
 
-  When the dataset is created, C<LastModificationTime> is the same as
-C<CreationTime>. After a CreateDatasetImportJob operation is called,
-C<LastModificationTime> is when the import job finished or failed.
-While data is being imported to the dataset, C<LastModificationTime> is
-the current query time.
+  When you create a dataset, C<LastModificationTime> is the same as
+C<CreationTime>. While data is being imported to the dataset,
+C<LastModificationTime> is the current time of the C<ListDatasets>
+call. After a CreateDatasetImportJob operation has finished,
+C<LastModificationTime> is when the import job completed or failed.
 
 
 

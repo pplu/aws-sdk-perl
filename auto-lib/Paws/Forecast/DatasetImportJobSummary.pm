@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::D
 
 Provides a summary of the dataset import job properties used in the
 ListDatasetImportJobs operation. To get the complete set of properties,
-call the DescribeDatasetImportJob operation, and provide the listed
+call the DescribeDatasetImportJob operation, and provide the
 C<DatasetImportJobArn>.
 
 =head1 ATTRIBUTES
@@ -62,26 +62,32 @@ C<DatasetImportJobArn>.
 
 =head2 DataSource => L<Paws::Forecast::DataSource>
 
-  The location of the Amazon S3 bucket that contains the training data.
+  The location of the training data to import and an AWS Identity and
+Access Management (IAM) role that Amazon Forecast can assume to access
+the data. The training data must be stored in an Amazon S3 bucket.
+
+If encryption is used, C<DataSource> includes an AWS Key Management
+Service (KMS) key.
 
 
 =head2 LastModificationTime => Str
 
-  Dependent on the status as follows:
+  The last time that the dataset was modified. The time depends on the
+status of the job, as follows:
 
 =over
 
 =item *
 
-C<CREATE_PENDING> - same as C<CreationTime>
+C<CREATE_PENDING> - The same time as C<CreationTime>.
 
 =item *
 
-C<CREATE_IN_PROGRESS> - the current timestamp
+C<CREATE_IN_PROGRESS> - The current timestamp.
 
 =item *
 
-C<ACTIVE> or C<CREATE_FAILED> - when the job finished or failed
+C<ACTIVE> or C<CREATE_FAILED> - When the job finished or failed.
 
 =back
 

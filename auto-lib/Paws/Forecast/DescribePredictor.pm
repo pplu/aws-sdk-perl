@@ -48,9 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PerformAutoML        = $DescribePredictorResponse->PerformAutoML;
     my $PerformHPO           = $DescribePredictorResponse->PerformHPO;
     my $PredictorArn         = $DescribePredictorResponse->PredictorArn;
-    my $PredictorName        = $DescribePredictorResponse->PredictorName;
-    my $Status               = $DescribePredictorResponse->Status;
-    my $TrainingParameters   = $DescribePredictorResponse->TrainingParameters;
+    my $PredictorExecutionDetails =
+      $DescribePredictorResponse->PredictorExecutionDetails;
+    my $PredictorName      = $DescribePredictorResponse->PredictorName;
+    my $Status             = $DescribePredictorResponse->Status;
+    my $TrainingParameters = $DescribePredictorResponse->TrainingParameters;
 
     # Returns a L<Paws::Forecast::DescribePredictorResponse> object.
 

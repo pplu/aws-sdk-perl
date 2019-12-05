@@ -35,11 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::S
 Describes a supplementary feature of a dataset group. This object is
 part of the InputDataConfig object.
 
-For this release, the only supported feature is a holiday calendar. If
-the calendar is used, all data should belong to the same country as the
-calendar. For the calendar data, see
-http://jollyday.sourceforge.net/data.html
-(http://jollyday.sourceforge.net/data.html).
+The only supported feature is a holiday calendar. If you use the
+calendar, all data in the datasets should belong to the same country as
+the calendar. For the holiday calendar data, see the Jollyday
+(http://jollyday.sourceforge.net/data.html) web site.
 
 =head1 ATTRIBUTES
 

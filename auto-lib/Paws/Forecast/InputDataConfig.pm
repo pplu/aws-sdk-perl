@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::I
 =head1 DESCRIPTION
 
 The data used to train a predictor. The data includes a dataset group
-and any supplementary features. This object is specified in the
+and any supplementary features. You specify this object in the
 CreatePredictor request.
 
 =head1 ATTRIBUTES
@@ -46,8 +46,8 @@ CreatePredictor request.
 
 =head2 SupplementaryFeatures => ArrayRef[L<Paws::Forecast::SupplementaryFeature>]
 
-  An array of supplementary features. For this release, the only
-supported feature is a holiday calendar.
+  An array of supplementary features. The only supported feature is a
+holiday calendar.
 
 
 

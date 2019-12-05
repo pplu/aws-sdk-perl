@@ -57,18 +57,17 @@ C<}>
 
 =head2 B<REQUIRED> AttributeName => Str
 
-  The name of the schema attribute specifying the data field to be
-featurized. In this release, only the C<target> field of the
-C<TARGET_TIME_SERIES> dataset type is supported. For example, for the
-C<RETAIL> domain, the target is C<demand>, and for the C<CUSTOM>
-domain, the target is C<target_value>.
+  The name of the schema attribute that specifies the data field to be
+featurized. Only the C<target> field of the C<TARGET_TIME_SERIES>
+dataset type is supported. For example, for the C<RETAIL> domain, the
+target is C<demand>, and for the C<CUSTOM> domain, the target is
+C<target_value>.
 
 
 =head2 FeaturizationPipeline => ArrayRef[L<Paws::Forecast::FeaturizationMethod>]
 
-  An array C<FeaturizationMethod> objects that specifies the feature
-transformation methods. For this release, the number of methods is
-limited to one.
+  An array of one C<FeaturizationMethod> object that specifies the
+feature transformation method.
 
 
 

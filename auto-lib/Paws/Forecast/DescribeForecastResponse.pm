@@ -5,6 +5,7 @@ package Paws::Forecast::DescribeForecastResponse;
   has DatasetGroupArn => (is => 'ro', isa => 'Str');
   has ForecastArn => (is => 'ro', isa => 'Str');
   has ForecastName => (is => 'ro', isa => 'Str');
+  has ForecastTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastModificationTime => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has PredictorArn => (is => 'ro', isa => 'Str');
@@ -34,12 +35,17 @@ predictor.
 
 =head2 ForecastArn => Str
 
-The same forecast ARN as given in the request.
+The forecast ARN as specified in the request.
 
 
 =head2 ForecastName => Str
 
 The name of the forecast.
+
+
+=head2 ForecastTypes => ArrayRef[Str|Undef]
+
+The quantiles at which proababilistic forecasts were generated.
 
 
 =head2 LastModificationTime => Str

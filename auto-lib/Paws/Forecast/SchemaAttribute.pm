@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::S
 
 =head1 DESCRIPTION
 
-An attribute of a schema, which defines a field of a dataset. A schema
+An attribute of a schema, which defines a dataset field. A schema
 attribute is required for every field in a dataset. The Schema object
 contains an array of C<SchemaAttribute> objects.
 

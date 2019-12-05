@@ -44,8 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 =head2 B<REQUIRED> DatasetArns => ArrayRef[Str|Undef]
 
-An array of Amazon Resource Names (ARNs) of the datasets to add to the
-dataset group.
+An array of the Amazon Resource Names (ARNs) of the datasets to add to
+the dataset group.
 
 
 

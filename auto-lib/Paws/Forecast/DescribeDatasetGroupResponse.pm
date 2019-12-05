@@ -43,20 +43,15 @@ The name of the dataset group.
 
 =head2 Domain => Str
 
-The domain associated with the dataset group. The C<Domain> and
-C<DatasetType> that you choose determine the fields that must be
-present in the training data that you import to the dataset. For
-example, if you choose the C<RETAIL> domain and C<TARGET_TIME_SERIES>
-as the C<DatasetType>, Amazon Forecast requires C<item_id>,
-C<timestamp>, and C<demand> fields to be present in your data. For more
-information, see howitworks-datasets-groups.
+The domain associated with the dataset group.
 
 Valid values are: C<"RETAIL">, C<"CUSTOM">, C<"INVENTORY_PLANNING">, C<"EC2_CAPACITY">, C<"WORK_FORCE">, C<"WEB_TRAFFIC">, C<"METRICS">
 =head2 LastModificationTime => Str
 
 When the dataset group was created or last updated from a call to the
 UpdateDatasetGroup operation. While the dataset group is being updated,
-C<LastModificationTime> is the current query time.
+C<LastModificationTime> is the current time of the
+C<DescribeDatasetGroup> call.
 
 
 =head2 Status => Str
@@ -83,11 +78,11 @@ C<UPDATE_PENDING>, C<UPDATE_IN_PROGRESS>, C<UPDATE_FAILED>
 
 =back
 
-The C<UPDATE> states apply when the UpdateDatasetGroup operation is
-called.
+The C<UPDATE> states apply when you call the UpdateDatasetGroup
+operation.
 
-The C<Status> of the dataset group must be C<ACTIVE> before creating a
-predictor using the dataset group.
+The C<Status> of the dataset group must be C<ACTIVE> before you can use
+the dataset group to create a predictor.
 
 
 =head2 _request_id => Str

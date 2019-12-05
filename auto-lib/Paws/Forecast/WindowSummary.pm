@@ -70,7 +70,7 @@ C<COMPUTED> - The metrics for the specified window.
 
 =head2 Metrics => L<Paws::Forecast::Metrics>
 
-  
+  Provides metrics used to evaluate the performance of a predictor.
 
 
 =head2 TestWindowEnd => Str

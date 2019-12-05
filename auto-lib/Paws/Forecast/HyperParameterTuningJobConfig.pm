@@ -31,19 +31,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::H
 
 =head1 DESCRIPTION
 
-Configuration information for a hyperparameter tuning job. This object
-is specified in the CreatePredictor request.
+Configuration information for a hyperparameter tuning job. You specify
+this object in the CreatePredictor request.
 
-A hyperparameter is a parameter that governs the model training process
-and is set before training starts. This is as opposed to a model
-parameter that is determined during training. The values of the
-hyperparameters have an effect on the chosen model parameters.
+A I<hyperparameter> is a parameter that governs the model training
+process. You set hyperparameters before training starts, unlike model
+parameters, which are determined during training. The values of the
+hyperparameters effect which values are chosen for the model
+parameters.
 
-A hyperparameter tuning job is the process of choosing the optimum set
-of hyperparameter values that optimize a specified metric. This is
-accomplished by running many training jobs over a range of
-hyperparameter values. The optimum set of values is dependent on the
-algorithm, the training data, and the given metric objective.
+In a I<hyperparameter tuning job>, Amazon Forecast chooses the set of
+hyperparameter values that optimize a specified metric. Forecast
+accomplishes this by running many training jobs over a range of
+hyperparameter values. The optimum set of values depends on the
+algorithm, the training data, and the specified metric objective.
 
 =head1 ATTRIBUTES
 

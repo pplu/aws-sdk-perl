@@ -52,7 +52,8 @@ the listed C<ForecastExportJobArn>.
 
 =head2 Destination => L<Paws::Forecast::DataDestination>
 
-  The path to the S3 bucket where the forecast is stored.
+  The path to the Amazon Simple Storage Service (Amazon S3) bucket where
+the forecast is exported.
 
 
 =head2 ForecastExportJobArn => Str
@@ -77,7 +78,7 @@ the listed C<ForecastExportJobArn>.
 
 =head2 Status => Str
 
-  The status of the forecast export job. One of the following states:
+  The status of the forecast export job. States include:
 
 =over
 
@@ -96,7 +97,7 @@ C<DELETE_PENDING>, C<DELETE_IN_PROGRESS>, C<DELETE_FAILED>
 =back
 
 The C<Status> of the forecast export job must be C<ACTIVE> before you
-can access the forecast in your Amazon S3 bucket.
+can access the forecast in your S3 bucket.
 
 
 
