@@ -14,6 +14,7 @@ package Paws::MediaConvert::DvbSubDestinationSettings;
   has ShadowOpacity => (is => 'ro', isa => 'Int', request_name => 'shadowOpacity', traits => ['NameInRequest']);
   has ShadowXOffset => (is => 'ro', isa => 'Int', request_name => 'shadowXOffset', traits => ['NameInRequest']);
   has ShadowYOffset => (is => 'ro', isa => 'Int', request_name => 'shadowYOffset', traits => ['NameInRequest']);
+  has SubtitlingType => (is => 'ro', isa => 'Str', request_name => 'subtitlingType', traits => ['NameInRequest']);
   has TeletextSpacing => (is => 'ro', isa => 'Str', request_name => 'teletextSpacing', traits => ['NameInRequest']);
   has XPosition => (is => 'ro', isa => 'Int', request_name => 'xPosition', traits => ['NameInRequest']);
   has YPosition => (is => 'ro', isa => 'Int', request_name => 'yPosition', traits => ['NameInRequest']);
@@ -155,6 +156,14 @@ the left. All burn-in and DVB-Sub font settings must match.
   Specifies the vertical offset of the shadow relative to the captions in
 pixels. A value of -2 would result in a shadow offset 2 pixels above
 the text. All burn-in and DVB-Sub font settings must match.
+
+
+=head2 SubtitlingType => Str
+
+  Specify whether your DVB subtitles are standard or for hearing
+impaired. Choose hearing impaired if your subtitles include audio
+descriptions and dialogue. Choose standard if your subtitles include
+only dialogue.
 
 
 =head2 TeletextSpacing => Str

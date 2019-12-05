@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                  'My__stringMin1', ...    # min: 1
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -220,6 +220,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TimecodeStart => 'My__stringMin11Max11Pattern01D20305D205D'
             ,    # min: 11, max: 11; OPTIONAL
             VideoSelector => {
+              AlphaBehavior =>
+                'DISCARD',    # values: DISCARD, REMAP_TO_LUMA; OPTIONAL
               ColorSpace => 'FOLLOW'
               ,    # values: FOLLOW, REC_601, REC_709, HDR10, HLG_2020; OPTIONAL
               ColorSpaceUsage => 'FORCE',    # values: FORCE, FALLBACK; OPTIONAL
@@ -273,13 +275,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               CmafGroupSettings => {
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 BaseUrl => 'My__string',
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
@@ -352,13 +354,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               DashIsoGroupSettings => {
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 BaseUrl             => 'My__string',
                 Destination         => 'My__stringPatternS3',    # OPTIONAL
                 DestinationSettings => {
@@ -426,13 +428,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                    # OPTIONAL
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 BaseUrl                 => 'My__string',
                 CaptionLanguageMappings => [
                   {
@@ -525,13 +527,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MsSmoothGroupSettings => {
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 AudioDeduplication => 'COMBINE_DUPLICATE_STREAMS'
                 ,    # values: COMBINE_DUPLICATE_STREAMS, NONE; OPTIONAL
                 Destination         => 'My__stringPatternS3',    # OPTIONAL
@@ -726,9 +728,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+                    CaptionSelectorName => 'My__stringMin1',    # min: 1
                     CustomLanguageCode =>
-                      'My__stringPatternAZaZ23AZaZ',          # OPTIONAL
+                      'My__stringPatternAZaZ23AZaZ',            # OPTIONAL
                     DestinationSettings => {
                       BurninDestinationSettings => {
                         Alignment =>
@@ -783,6 +785,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           1,    # min: -2147483648, max: 2147483647; OPTIONAL
                         ShadowYOffset =>
                           1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                        SubtitlingType => 'HEARING_IMPAIRED'
+                        ,       # values: HEARING_IMPAIRED, STANDARD; OPTIONAL
                         TeletextSpacing => 'FIXED_GRID'
                         ,       # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                         XPosition => 1,    # max: 2147483647; OPTIONAL
@@ -945,7 +949,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
+                NameModifier   => 'My__stringMin1',    # min: 1
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId => 'My__string',
@@ -1194,7 +1198,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DropFrameTimecode =>
                     'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                   FixedAfd => 1,   # max: 15; OPTIONAL
-                  Height   => 1,   # min: 32, max: 4096; OPTIONAL
+                  Height   => 1,   # min: 32, max: 8192; OPTIONAL
                   Position => {
                     Height => 1,    # min: 2, max: 2147483647; OPTIONAL
                     Width  => 1,    # min: 2, max: 2147483647; OPTIONAL
@@ -1293,7 +1297,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Prefix => 'My__stringPattern',    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
-                  Width => 1,    # min: 32, max: 4096; OPTIONAL
+                  Width => 1,    # min: 32, max: 8192; OPTIONAL
                 },    # OPTIONAL
               },
               ...

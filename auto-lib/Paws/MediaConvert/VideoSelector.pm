@@ -1,5 +1,6 @@
 package Paws::MediaConvert::VideoSelector;
   use Moose;
+  has AlphaBehavior => (is => 'ro', isa => 'Str', request_name => 'alphaBehavior', traits => ['NameInRequest']);
   has ColorSpace => (is => 'ro', isa => 'Str', request_name => 'colorSpace', traits => ['NameInRequest']);
   has ColorSpaceUsage => (is => 'ro', isa => 'Str', request_name => 'colorSpaceUsage', traits => ['NameInRequest']);
   has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
@@ -25,20 +26,29 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::VideoSelector object:
 
-  $service_obj->Method(Att1 => { ColorSpace => $value, ..., Rotate => $value  });
+  $service_obj->Method(Att1 => { AlphaBehavior => $value, ..., Rotate => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::VideoSelector object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ColorSpace
+  $result->Att1->AlphaBehavior
 
 =head1 DESCRIPTION
 
 Selector for video.
 
 =head1 ATTRIBUTES
+
+
+=head2 AlphaBehavior => Str
+
+  Ignore this setting unless this input is a QuickTime animation. Specify
+which part of this input MediaConvert uses for your outputs. Leave this
+setting set to DISCARD in order to delete the alpha channel and
+preserve the video. Use REMAP_TO_LUMA for this setting to delete the
+video and map the alpha channel to the luma channel of your outputs.
 
 
 =head2 ColorSpace => Str

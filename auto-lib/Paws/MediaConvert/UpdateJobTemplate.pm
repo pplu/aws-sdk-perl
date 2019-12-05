@@ -207,6 +207,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TimecodeStart => 'My__stringMin11Max11Pattern01D20305D205D'
             ,    # min: 11, max: 11; OPTIONAL
             VideoSelector => {
+              AlphaBehavior =>
+                'DISCARD',    # values: DISCARD, REMAP_TO_LUMA; OPTIONAL
               ColorSpace => 'FOLLOW'
               ,    # values: FOLLOW, REC_601, REC_709, HDR10, HLG_2020; OPTIONAL
               ColorSpaceUsage => 'FORCE',    # values: FORCE, FALLBACK; OPTIONAL
@@ -770,6 +772,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           1,    # min: -2147483648, max: 2147483647; OPTIONAL
                         ShadowYOffset =>
                           1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                        SubtitlingType => 'HEARING_IMPAIRED'
+                        ,       # values: HEARING_IMPAIRED, STANDARD; OPTIONAL
                         TeletextSpacing => 'FIXED_GRID'
                         ,       # values: FIXED_GRID, PROPORTIONAL; OPTIONAL
                         XPosition => 1,    # max: 2147483647; OPTIONAL
@@ -1181,7 +1185,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DropFrameTimecode =>
                     'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                   FixedAfd => 1,   # max: 15; OPTIONAL
-                  Height   => 1,   # min: 32, max: 4096; OPTIONAL
+                  Height   => 1,   # min: 32, max: 8192; OPTIONAL
                   Position => {
                     Height => 1,    # min: 2, max: 2147483647; OPTIONAL
                     Width  => 1,    # min: 2, max: 2147483647; OPTIONAL
@@ -1280,7 +1284,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Prefix => 'My__stringPattern',    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
-                  Width => 1,    # min: 32, max: 4096; OPTIONAL
+                  Width => 1,    # min: 32, max: 8192; OPTIONAL
                 },    # OPTIONAL
               },
               ...
