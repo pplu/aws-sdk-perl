@@ -4,7 +4,11 @@ package Paws::FSX::WindowsFileSystemConfiguration;
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
+  has DeploymentType => (is => 'ro', isa => 'Str');
   has MaintenanceOperationsInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has PreferredFileServerIp => (is => 'ro', isa => 'Str');
+  has PreferredSubnetId => (is => 'ro', isa => 'Str');
+  has RemoteAdministrationEndpoint => (is => 'ro', isa => 'Str');
   has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryAttributes');
   has ThroughputCapacity => (is => 'ro', isa => 'Int');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
@@ -72,9 +76,73 @@ tags are copied to backups.
 zone.
 
 
+=head2 DeploymentType => Str
+
+  Specifies the file system deployment type, valid values are the
+following:
+
+=over
+
+=item *
+
+C<MULTI_AZ_1> - Specifies a high availability file system that is
+configured for Multi-AZ redundancy to tolerate temporary Availability
+Zone (AZ) unavailability.
+
+=item *
+
+C<SINGLE_AZ_1> - (Default) Specifies a file system that is configured
+for single AZ redundancy.
+
+=back
+
+
+
 =head2 MaintenanceOperationsInProgress => ArrayRef[Str|Undef]
 
   The list of maintenance operations in progress for this file system.
+
+
+=head2 PreferredFileServerIp => Str
+
+  For C<MULTI_AZ_1> deployment types, the IP address of the primary, or
+preferred, file server.
+
+Use this IP address when mounting the file system on Linux SMB clients
+or Windows SMB clients that are not joined to a Microsoft Active
+Directory. Applicable for both C<SINGLE_AZ_1> and C<MULTI_AZ_1>
+deployment types. This IP address is temporarily unavailable when the
+file system is undergoing maintenance. For Linux and Windows SMB
+clients that are joined to an Active Directory, use the file system's
+DNSName instead. For more information and instruction on mapping and
+mounting file shares, see
+https://docs.aws.amazon.com/fsx/latest/WindowsGuide/accessing-file-shares.html
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/accessing-file-shares.html).
+
+
+=head2 PreferredSubnetId => Str
+
+  For C<MULTI_AZ_1> deployment types, it specifies the ID of the subnet
+where the preferred file server is located. Must be one of the two
+subnet IDs specified in C<SubnetIds> property. Amazon FSx serves
+traffic from this subnet except in the event of a failover to the
+secondary file server.
+
+For C<SINGLE_AZ_1> deployment types, this value is the same as that for
+C<SubnetIDs>.
+
+
+=head2 RemoteAdministrationEndpoint => Str
+
+  For C<MULTI_AZ_1> deployment types, use this endpoint when performing
+administrative tasks on the file system using Amazon FSx Remote
+PowerShell.
+
+For C<SINGLE_AZ_1> deployment types, this is the DNS name of the file
+system.
+
+This endpoint is temporarily unavailable when the file system is
+undergoing maintenance.
 
 
 =head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryAttributes>

@@ -4,6 +4,8 @@ package Paws::FSX::CreateFileSystemWindowsConfiguration;
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
+  has DeploymentType => (is => 'ro', isa => 'Str');
+  has PreferredSubnetId => (is => 'ro', isa => 'Str');
   has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfiguration');
   has ThroughputCapacity => (is => 'ro', isa => 'Int', required => 1);
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
@@ -71,6 +73,41 @@ tags are copied to backups.
 
   The preferred time to take daily automatic backups, formatted HH:MM in
 the UTC time zone.
+
+
+=head2 DeploymentType => Str
+
+  Specifies the file system deployment type, valid values are the
+following:
+
+=over
+
+=item *
+
+MULTI_AZ_1 - Deploys a high availability file system that is configured
+for Multi-AZ redundancy to tolerate temporary Availability Zone (AZ)
+unavailability. You can only deploy a Multi-AZ file system in AWS
+Regions that have a minimum of three Availability Zones.
+
+=item *
+
+SINGLE_AZ_1 - (Default) Choose to deploy a file system that is
+configured for single AZ redundancy.
+
+=back
+
+To learn more about high availability Multi-AZ file systems, see High
+Availability for Amazon FSx for Windows File Server
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html).
+
+
+=head2 PreferredSubnetId => Str
+
+  Required when C<DeploymentType> is set to C<MULTI_AZ_1>. This specifies
+the subnet in which you want the preferred file server to be located.
+For in-AWS applications, we recommend that you launch your clients in
+the same Availability Zone (AZ) as your preferred file server to reduce
+cross-AZ data transfer costs and minimize latency.
 
 
 =head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryConfiguration>
