@@ -36,7 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateBusinessReportScheduleResponse =
       $a4b->CreateBusinessReportSchedule(
       ContentRange => {
-        Interval => 'ONE_DAY',    # values: ONE_DAY, ONE_WEEK; OPTIONAL
+        Interval =>
+          'ONE_DAY',    # values: ONE_DAY, ONE_WEEK, THIRTY_DAYS; OPTIONAL
       },
       Format             => 'CSV',
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL

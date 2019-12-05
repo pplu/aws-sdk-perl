@@ -1135,6 +1135,8 @@ Creates a network profile with the specified details.
 
 =item [MaxVolumeLimit => Int]
 
+=item [MeetingRoomConfiguration => L<Paws::AlexaForBusiness::CreateMeetingRoomConfiguration>]
+
 =item [PSTNEnabled => Bool]
 
 =item [SetupModeDisabled => Bool]
@@ -1791,7 +1793,10 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::ListBusinessR
 
 Returns: a L<Paws::AlexaForBusiness::ListBusinessReportSchedulesResponse> instance
 
-Lists the details of the schedules that a user configured.
+Lists the details of the schedules that a user configured. A download
+URL of the report associated with each schedule is returned every time
+this action is called. A new download URL is returned each time, and is
+valid for 24 hours.
 
 
 =head2 ListConferenceProviders
@@ -2671,6 +2676,8 @@ Updates a network profile by the network profile ARN.
 =item [Locale => Str]
 
 =item [MaxVolumeLimit => Int]
+
+=item [MeetingRoomConfiguration => L<Paws::AlexaForBusiness::UpdateMeetingRoomConfiguration>]
 
 =item [ProfileArn => Str]
 

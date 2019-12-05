@@ -6,6 +6,7 @@ package Paws::AlexaForBusiness::UpdateProfile;
   has IsDefault => (is => 'ro', isa => 'Bool');
   has Locale => (is => 'ro', isa => 'Str');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
+  has MeetingRoomConfiguration => (is => 'ro', isa => 'Paws::AlexaForBusiness::UpdateMeetingRoomConfiguration');
   has ProfileArn => (is => 'ro', isa => 'Str');
   has ProfileName => (is => 'ro', isa => 'Str');
   has PSTNEnabled => (is => 'ro', isa => 'Bool');
@@ -39,18 +40,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $a4b = Paws->service('AlexaForBusiness');
     my $UpdateProfileResponse = $a4b->UpdateProfile(
-      Address           => 'MyAddress',         # OPTIONAL
-      DistanceUnit      => 'METRIC',            # OPTIONAL
-      IsDefault         => 1,                   # OPTIONAL
-      Locale            => 'MyDeviceLocale',    # OPTIONAL
-      MaxVolumeLimit    => 1,                   # OPTIONAL
-      PSTNEnabled       => 1,                   # OPTIONAL
-      ProfileArn        => 'MyArn',             # OPTIONAL
-      ProfileName       => 'MyProfileName',     # OPTIONAL
-      SetupModeDisabled => 1,                   # OPTIONAL
-      TemperatureUnit   => 'FAHRENHEIT',        # OPTIONAL
-      Timezone          => 'MyTimezone',        # OPTIONAL
-      WakeWord          => 'ALEXA',             # OPTIONAL
+      Address                  => 'MyAddress',         # OPTIONAL
+      DistanceUnit             => 'METRIC',            # OPTIONAL
+      IsDefault                => 1,                   # OPTIONAL
+      Locale                   => 'MyDeviceLocale',    # OPTIONAL
+      MaxVolumeLimit           => 1,                   # OPTIONAL
+      MeetingRoomConfiguration => {
+        EndOfMeetingReminder => {
+          Enabled           => 1,
+          ReminderAtMinutes => [
+            1, ...                                     # OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
+          ReminderType => 'ANNOUNCEMENT_TIME_CHECK'
+          , # values: ANNOUNCEMENT_TIME_CHECK, ANNOUNCEMENT_VARIABLE_TIME_LEFT, CHIME, KNOCK; OPTIONAL
+        },    # OPTIONAL
+        InstantBooking => {
+          DurationInMinutes => 1,    # OPTIONAL
+          Enabled           => 1,
+        },    # OPTIONAL
+        RequireCheckIn => {
+          Enabled             => 1,
+          ReleaseAfterMinutes => 1,    # OPTIONAL
+        },    # OPTIONAL
+        RoomUtilizationMetricsEnabled => 1,
+      },    # OPTIONAL
+      PSTNEnabled       => 1,                  # OPTIONAL
+      ProfileArn        => 'MyArn',            # OPTIONAL
+      ProfileName       => 'MyProfileName',    # OPTIONAL
+      SetupModeDisabled => 1,                  # OPTIONAL
+      TemperatureUnit   => 'FAHRENHEIT',       # OPTIONAL
+      Timezone          => 'MyTimezone',       # OPTIONAL
+      WakeWord          => 'ALEXA',            # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -80,13 +100,20 @@ is done to the default status.
 
 =head2 Locale => Str
 
-The updated locale for the room profile.
+The updated locale for the room profile. (This is currently only
+available to a limited preview audience.)
 
 
 
 =head2 MaxVolumeLimit => Int
 
 The updated maximum volume limit for the room profile.
+
+
+
+=head2 MeetingRoomConfiguration => L<Paws::AlexaForBusiness::UpdateMeetingRoomConfiguration>
+
+The updated meeting room settings of a room profile.
 
 
 

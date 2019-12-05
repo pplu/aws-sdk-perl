@@ -61,7 +61,8 @@ The data of a room profile.
 
 =head2 Locale => Str
 
-  The locale of a room profile.
+  The locale of a room profile. (This is currently available only to a
+limited preview audience.)
 
 
 =head2 ProfileArn => Str
@@ -81,7 +82,7 @@ The data of a room profile.
 
 =head2 Timezone => Str
 
-  The timezone of a room profile.
+  The time zone of a room profile.
 
 
 =head2 WakeWord => Str

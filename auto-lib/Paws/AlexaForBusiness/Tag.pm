@@ -44,7 +44,7 @@ A key-value pair that can be associated with a resource.
 
 =head2 B<REQUIRED> Value => Str
 
-  The value of a tag. Tag values are case-sensitive and can be null.
+  The value of a tag. Tag values are case sensitive and can be null.
 
 
 
