@@ -1,5 +1,6 @@
 package Paws::DynamoDB::SSEDescription;
   use Moose;
+  has InaccessibleEncryptionDateTime => (is => 'ro', isa => 'Str');
   has KMSMasterKeyArn => (is => 'ro', isa => 'Str');
   has SSEType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::SSEDescription object:
 
-  $service_obj->Method(Att1 => { KMSMasterKeyArn => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { InaccessibleEncryptionDateTime => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::SSEDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->KMSMasterKeyArn
+  $result->Att1->InaccessibleEncryptionDateTime
 
 =head1 DESCRIPTION
 
@@ -39,9 +40,20 @@ table.
 =head1 ATTRIBUTES
 
 
+=head2 InaccessibleEncryptionDateTime => Str
+
+  Indicates the time, in UNIX epoch date format, when DynamoDB detected
+that the table's AWS KMS key was inaccessible. This attribute will
+automatically be cleared when DynamoDB detects that the table's AWS KMS
+key is accessible again. DynamoDB will initiate the table archival
+process when table's AWS KMS key remains inaccessible for more than
+seven days from this date.
+
+
 =head2 KMSMasterKeyArn => Str
 
-  The KMS customer master key (CMK) ARN used for the AWS KMS encryption.
+  The AWS KMS customer master key (CMK) ARN used for the AWS KMS
+encryption.
 
 
 =head2 SSEType => Str

@@ -1,6 +1,6 @@
 package Paws::DynamoDB::StreamSpecification;
   use Moose;
-  has StreamEnabled => (is => 'ro', isa => 'Bool');
+  has StreamEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has StreamViewType => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ Represents the DynamoDB Streams configuration for a table in DynamoDB.
 =head1 ATTRIBUTES
 
 
-=head2 StreamEnabled => Bool
+=head2 B<REQUIRED> StreamEnabled => Bool
 
   Indicates whether DynamoDB Streams is enabled (true) or disabled
 (false) on the table.

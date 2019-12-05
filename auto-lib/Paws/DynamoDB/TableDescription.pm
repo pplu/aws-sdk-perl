@@ -1,15 +1,18 @@
 package Paws::DynamoDB::TableDescription;
   use Moose;
+  has ArchivalSummary => (is => 'ro', isa => 'Paws::DynamoDB::ArchivalSummary');
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
   has BillingModeSummary => (is => 'ro', isa => 'Paws::DynamoDB::BillingModeSummary');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]');
+  has GlobalTableVersion => (is => 'ro', isa => 'Str');
   has ItemCount => (is => 'ro', isa => 'Int');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
   has LatestStreamArn => (is => 'ro', isa => 'Str');
   has LatestStreamLabel => (is => 'ro', isa => 'Str');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndexDescription]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputDescription');
+  has Replicas => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaDescription]');
   has RestoreSummary => (is => 'ro', isa => 'Paws::DynamoDB::RestoreSummary');
   has SSEDescription => (is => 'ro', isa => 'Paws::DynamoDB::SSEDescription');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
@@ -37,20 +40,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::TableDescription object:
 
-  $service_obj->Method(Att1 => { AttributeDefinitions => $value, ..., TableStatus => $value  });
+  $service_obj->Method(Att1 => { ArchivalSummary => $value, ..., TableStatus => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::TableDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AttributeDefinitions
+  $result->Att1->ArchivalSummary
 
 =head1 DESCRIPTION
 
 Represents the properties of a table.
 
 =head1 ATTRIBUTES
+
+
+=head2 ArchivalSummary => L<Paws::DynamoDB::ArchivalSummary>
+
+  Contains information about the table archive.
 
 
 =head2 AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
@@ -207,6 +215,13 @@ along with data about increases and decreases.
 
 If the table is in the C<DELETING> state, no information about indexes
 will be returned.
+
+
+=head2 GlobalTableVersion => Str
+
+  Represents the version of global tables
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+in use, if the table is replicated across AWS Regions.
 
 
 =head2 ItemCount => Int
@@ -381,6 +396,11 @@ and write capacity units, along with data about increases and
 decreases.
 
 
+=head2 Replicas => ArrayRef[L<Paws::DynamoDB::ReplicaDescription>]
+
+  Represents replicas of the table.
+
+
 =head2 RestoreSummary => L<Paws::DynamoDB::RestoreSummary>
 
   Contains details for the restore.
@@ -440,6 +460,24 @@ C<DELETING> - The table is being deleted.
 =item *
 
 C<ACTIVE> - The table is ready for use.
+
+=item *
+
+C<INACCESSIBLE_ENCRYPTION_CREDENTIALS> - The AWS KMS key used to
+encrypt the table in inaccessible. Table operations may fail due to
+failure to use the AWS KMS key. DynamoDB will initiate the table
+archival process when a table's AWS KMS key remains inaccessible for
+more than seven days.
+
+=item *
+
+C<ARCHIVING> - The table is being archived. Operations are not allowed
+until archival is complete.
+
+=item *
+
+C<ARCHIVED> - The table has been archived. See the ArchivalReason for
+more information.
 
 =back
 

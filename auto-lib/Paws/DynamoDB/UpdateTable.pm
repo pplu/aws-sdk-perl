@@ -5,6 +5,7 @@ package Paws::DynamoDB::UpdateTable;
   has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has ReplicaUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicationGroupUpdate]');
   has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
@@ -128,6 +129,17 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 The new provisioned throughput settings for the specified table or
 index.
+
+
+
+=head2 ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicationGroupUpdate>]
+
+A list of replica update actions (create, delete, or update) for the
+table.
+
+This property only applies to Version 2019.11.21
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+of global tables.
 
 
 
