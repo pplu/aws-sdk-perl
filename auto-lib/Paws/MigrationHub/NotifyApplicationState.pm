@@ -4,6 +4,7 @@ package Paws::MigrationHub::NotifyApplicationState;
   has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
   has Status => (is => 'ro', isa => 'Str', required => 1);
+  has UpdateDateTime => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mgh = Paws->service('MigrationHub');
     my $NotifyApplicationStateResult = $mgh->NotifyApplicationState(
-      ApplicationId => 'MyApplicationId',
-      Status        => 'NOT_STARTED',
-      DryRun        => 1,                   # OPTIONAL
+      ApplicationId  => 'MyApplicationId',
+      Status         => 'NOT_STARTED',
+      DryRun         => 1,                        # OPTIONAL
+      UpdateDateTime => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -43,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The configurationId in ADS that uniquely identifies the grouped
-application.
+The configurationId in Application Discovery Service that uniquely
+identifies the grouped application.
 
 
 
@@ -60,6 +62,12 @@ Used to test if the caller has permission to make the call.
 Status of the application - Not Started, In-Progress, Complete.
 
 Valid values are: C<"NOT_STARTED">, C<"IN_PROGRESS">, C<"COMPLETED">
+
+=head2 UpdateDateTime => Str
+
+The timestamp when the application state changed.
+
+
 
 
 =head1 SEE ALSO

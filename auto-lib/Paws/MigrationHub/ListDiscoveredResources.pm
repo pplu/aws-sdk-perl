@@ -58,7 +58,8 @@ The maximum number of results returned per page.
 
 =head2 B<REQUIRED> MigrationTaskName => Str
 
-The name of the MigrationTask.
+The name of the MigrationTask. I<Do not store personal data in this
+field.>
 
 
 

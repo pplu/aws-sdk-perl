@@ -42,7 +42,8 @@ Represents a migration task in a migration tool.
 
 =head2 MigrationTaskName => Str
 
-  Unique identifier that references the migration task.
+  Unique identifier that references the migration task. I<Do not store
+personal data in this field.>
 
 
 =head2 ProgressUpdateStream => Str
@@ -52,7 +53,9 @@ Represents a migration task in a migration tool.
 
 =head2 ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>]
 
-  
+  Information about the resource that is being migrated. This data will
+be used to map the task to a resource in the Application Discovery
+Service repository.
 
 
 =head2 Task => L<Paws::MigrationHub::Task>

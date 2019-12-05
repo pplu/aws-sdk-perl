@@ -48,7 +48,8 @@ Used to test if the caller has permission to make the call.
 
 =head2 B<REQUIRED> ProgressUpdateStreamName => Str
 
-The name of the ProgressUpdateStream.
+The name of the ProgressUpdateStream. I<Do not store personal data in
+this field.>
 
 
 

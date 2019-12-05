@@ -222,6 +222,11 @@ The AWS Migration Hub API methods help to obtain server and application
 migration status and integrate your resource-specific migration tool by
 providing a programmatic interface to Migration Hub.
 
+Remember that you must set your AWS Migration Hub home region before
+you call any of these APIs, or a C<HomeRegionNotSetException> error
+will be returned. Also, you must make the API calls while in your home
+region.
+
 For the AWS API documentation, see L<https://docs.aws.amazon.com/migrationhub/>
 
 
@@ -292,7 +297,7 @@ Each argument is described in detail in: L<Paws::MigrationHub::AssociateDiscover
 Returns: a L<Paws::MigrationHub::AssociateDiscoveredResourceResult> instance
 
 Associates a discovered resource ID from Application Discovery Service
-(ADS) with a migration task.
+with a migration task.
 
 
 =head2 CreateProgressUpdateStream
@@ -358,7 +363,7 @@ C<ListProgressUpdateStreams> call.
 =item *
 
 C<CreateProgressUpdateStream>, C<ImportMigrationTask>,
-C<NotifyMigrationTaskState>, and all Associate[*] APIs realted to the
+C<NotifyMigrationTaskState>, and all Associate[*] APIs related to the
 tasks belonging to the stream will throw "InvalidInputException" if the
 stream of the same name is in the process of being deleted.
 
@@ -472,8 +477,8 @@ Each argument is described in detail in: L<Paws::MigrationHub::DisassociateDisco
 
 Returns: a L<Paws::MigrationHub::DisassociateDiscoveredResourceResult> instance
 
-Disassociate an Application Discovery Service (ADS) discovered resource
-from a migration task.
+Disassociate an Application Discovery Service discovered resource from
+a migration task.
 
 
 =head2 ImportMigrationTask
@@ -633,6 +638,8 @@ this call.
 
 =item [DryRun => Bool]
 
+=item [UpdateDateTime => Str]
+
 
 =back
 
@@ -713,9 +720,9 @@ Each argument is described in detail in: L<Paws::MigrationHub::PutResourceAttrib
 Returns: a L<Paws::MigrationHub::PutResourceAttributesResult> instance
 
 Provides identifying details of the resource being migrated so that it
-can be associated in the Application Discovery Service (ADS)'s
-repository. This association occurs asynchronously after
-C<PutResourceAttributes> returns.
+can be associated in the Application Discovery Service repository. This
+association occurs asynchronously after C<PutResourceAttributes>
+returns.
 
 =over
 
@@ -725,7 +732,7 @@ Keep in mind that subsequent calls to PutResourceAttributes will
 override previously stored attributes. For example, if it is first
 called with a MAC address, but later, it is desired to I<add> an IP
 address, it will then be required to call it with I<both> the IP and
-MAC addresses to prevent overiding the MAC address.
+MAC addresses to prevent overriding the MAC address.
 
 =item *
 

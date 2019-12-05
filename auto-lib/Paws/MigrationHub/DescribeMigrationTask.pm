@@ -47,7 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh
 
 =head2 B<REQUIRED> MigrationTaskName => Str
 
-The identifier given to the MigrationTask.
+The identifier given to the MigrationTask. I<Do not store personal data
+in this field.>
 
 
 

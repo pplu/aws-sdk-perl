@@ -60,7 +60,8 @@ Used to test if the caller has permission to make the call.
 
 =head2 B<REQUIRED> MigrationTaskName => Str
 
-Unique identifier that references the migration task.
+Unique identifier that references the migration task. I<Do not store
+personal data in this field.>
 
 
 
@@ -74,7 +75,7 @@ The name of the ProgressUpdateStream.
 
 Information about the resource that is being migrated. This data will
 be used to map the task to a resource in the Application Discovery
-Service (ADS)'s repository.
+Service repository.
 
 Takes the object array of C<ResourceAttribute> where the C<Type> field
 is reserved for the following values: C<IPV4_ADDRESS | IPV6_ADDRESS |
@@ -90,8 +91,7 @@ If any "VM" related value is set for a C<ResourceAttribute> object, it
 is required that C<VM_MANAGER_ID>, as a minimum, is always set. If
 C<VM_MANAGER_ID> is not set, then all "VM" fields will be discarded and
 "VM" fields will not be used for matching the migration task to a
-server in Application Discovery Service (ADS)'s repository. See the
-Example
+server in Application Discovery Service repository. See the Example
 (https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#API_PutResourceAttributes_Examples)
 section below for a use case of specifying "VM" related values.
 

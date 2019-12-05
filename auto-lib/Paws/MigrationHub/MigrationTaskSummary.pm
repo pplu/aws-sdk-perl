@@ -45,12 +45,13 @@ task.
 
 =head2 MigrationTaskName => Str
 
-  Unique identifier that references the migration task.
+  Unique identifier that references the migration task. I<Do not store
+personal data in this field.>
 
 
 =head2 ProgressPercent => Int
 
-  
+  Indication of the percentage completion of the task.
 
 
 =head2 ProgressUpdateStream => Str

@@ -39,8 +39,8 @@ Object representing the on-premises resource being migrated.
 
 =head2 B<REQUIRED> ConfigurationId => Str
 
-  The configurationId in ADS that uniquely identifies the on-premise
-resource.
+  The configurationId in Application Discovery Service that uniquely
+identifies the on-premise resource.
 
 
 =head2 Description => Str

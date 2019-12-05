@@ -39,7 +39,8 @@ linked to your AWS account.
 
 =head2 ProgressUpdateStreamName => Str
 
-  The name of the ProgressUpdateStream.
+  The name of the ProgressUpdateStream. I<Do not store personal data in
+this field.>
 
 
 

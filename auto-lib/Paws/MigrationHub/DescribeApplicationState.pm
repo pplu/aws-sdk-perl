@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The configurationId in ADS that uniquely identifies the grouped
-application.
+The configurationId in Application Discovery Service that uniquely
+identifies the grouped application.
 
 
 
