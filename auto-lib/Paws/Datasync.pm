@@ -489,7 +489,7 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationSmb>
 Returns: a L<Paws::Datasync::CreateLocationSmbResponse> instance
 
 Defines a file system on an Server Message Block (SMB) server that can
-be read from or written to
+be read from or written to.
 
 
 =head2 CreateTask
@@ -507,6 +507,8 @@ be read from or written to
 =item [Name => Str]
 
 =item [Options => L<Paws::Datasync::Options>]
+
+=item [Schedule => L<Paws::Datasync::TaskSchedule>]
 
 =item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
 
@@ -912,6 +914,8 @@ Updates the name of an agent.
 =item [Name => Str]
 
 =item [Options => L<Paws::Datasync::Options>]
+
+=item [Schedule => L<Paws::Datasync::TaskSchedule>]
 
 
 =back

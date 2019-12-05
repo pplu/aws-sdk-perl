@@ -11,6 +11,7 @@ package Paws::Datasync::DescribeTaskResponse;
   has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Name => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
+  has Schedule => (is => 'ro', isa => 'Paws::Datasync::TaskSchedule');
   has SourceLocationArn => (is => 'ro', isa => 'Str');
   has SourceNetworkInterfaceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
@@ -93,6 +94,12 @@ and so on.
 
 For each individual task execution, you can override these options by
 specifying the overriding C<OverrideOptions> value to operation.
+
+
+=head2 Schedule => L<Paws::Datasync::TaskSchedule>
+
+The schedule used to periodically transfer files from a source to a
+destination location.
 
 
 =head2 SourceLocationArn => Str

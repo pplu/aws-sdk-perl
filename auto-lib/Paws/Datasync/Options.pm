@@ -178,11 +178,11 @@ isn't currently supported for Amazon EFS.
 =head2 TaskQueueing => Str
 
   A value that determines whether tasks should be queued before executing
-the tasks. If set to C<Enabled>, the tasks will queued. The default is
-C<Enabled>.
+the tasks. If set to C<ENABLED>, the tasks will be queued. The default
+is C<ENABLED>.
 
 If you use the same agent to run multiple tasks you can enable the
-tasks to run in series. For more information see task-queue.
+tasks to run in series. For more information see queue-task-execution.
 
 
 =head2 Uid => Str

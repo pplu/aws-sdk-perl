@@ -4,6 +4,7 @@ package Paws::Datasync::TaskExecutionResultDetail;
   has ErrorDetail => (is => 'ro', isa => 'Str');
   has PrepareDuration => (is => 'ro', isa => 'Int');
   has PrepareStatus => (is => 'ro', isa => 'Str');
+  has TotalDuration => (is => 'ro', isa => 'Int');
   has TransferDuration => (is => 'ro', isa => 'Int');
   has TransferStatus => (is => 'ro', isa => 'Str');
   has VerifyDuration => (is => 'ro', isa => 'Int');
@@ -66,6 +67,12 @@ phase.
 =head2 PrepareStatus => Str
 
   The status of the PREPARING phase.
+
+
+=head2 TotalDuration => Int
+
+  The total time in milliseconds that AWS DataSync took to transfer the
+file from the source to the destination location.
 
 
 =head2 TransferDuration => Int

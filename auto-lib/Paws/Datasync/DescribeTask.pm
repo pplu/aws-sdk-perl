@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Excludes          = $DescribeTaskResponse->Excludes;
     my $Name              = $DescribeTaskResponse->Name;
     my $Options           = $DescribeTaskResponse->Options;
+    my $Schedule          = $DescribeTaskResponse->Schedule;
     my $SourceLocationArn = $DescribeTaskResponse->SourceLocationArn;
     my $SourceNetworkInterfaceArns =
       $DescribeTaskResponse->SourceNetworkInterfaceArns;

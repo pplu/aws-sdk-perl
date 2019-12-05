@@ -44,9 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BytesPerSecond => 1,           # min: -1; OPTIONAL
         Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
-        OverwriteMode => 'ALWAYS',    # values: ALWAYS, NEVER; OPTIONAL
-        PosixPermissions =>
-          'NONE',    # values: NONE, BEST_EFFORT, PRESERVE; OPTIONAL
+        OverwriteMode        => 'ALWAYS',   # values: ALWAYS, NEVER; OPTIONAL
+        PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
