@@ -103,12 +103,12 @@ identifier is the fleet name. Example: C<fleet/sample-fleet>.
 =item *
 
 DynamoDB table - The resource type is C<table> and the unique
-identifier is the resource ID. Example: C<table/my-table>.
+identifier is the table name. Example: C<table/my-table>.
 
 =item *
 
 DynamoDB global secondary index - The resource type is C<index> and the
-unique identifier is the resource ID. Example:
+unique identifier is the index name. Example:
 C<table/my-table/index/my-table-index>.
 
 =item *
@@ -118,8 +118,8 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =item *
 
-Amazon SageMaker endpoint variants - The resource type is C<variant>
-and the unique identifier is the resource ID. Example:
+Amazon SageMaker endpoint variant - The resource type is C<variant> and
+the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
 =item *
@@ -129,6 +129,19 @@ must specify the C<OutputValue> from the CloudFormation template stack
 used to access the resources. The unique identifier is defined by the
 service provider. More information is available in our GitHub
 repository (https://github.com/aws/aws-auto-scaling-custom-resource).
+
+=item *
+
+Amazon Comprehend document classification endpoint - The resource type
+and unique identifier are specified using the endpoint ARN. Example:
+C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE>.
+
+=item *
+
+Lambda provisioned concurrency - The resource type is C<function> and
+the unique identifier is the function name with a function version or
+alias name suffix that is not C<$LATEST>. Example:
+C<function:my-function:prod> or C<function:my-function:1>.
 
 =back
 
@@ -195,6 +208,17 @@ for an Amazon SageMaker model endpoint variant.
 
 C<custom-resource:ResourceType:Property> - The scalable dimension for a
 custom resource provided by your own application or service.
+
+=item *
+
+C<comprehend:document-classifier-endpoint:DesiredInferenceUnits> - The
+number of inference units for an Amazon Comprehend document
+classification endpoint.
+
+=item *
+
+C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
+for a Lambda function.
 
 =back
 

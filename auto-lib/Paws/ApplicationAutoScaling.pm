@@ -1,6 +1,6 @@
 package Paws::ApplicationAutoScaling;
   use Moose;
-  sub service { 'autoscaling' }
+  sub service { 'application-autoscaling' }
   sub signing_name { 'application-autoscaling' }
   sub version { '2016-02-06' }
   sub target_prefix { 'AnyScaleFrontendService' }
@@ -225,6 +225,14 @@ Amazon SageMaker endpoint variants
 
 Custom resources provided by your own applications or services
 
+=item *
+
+Amazon Comprehend document classification endpoints
+
+=item *
+
+AWS Lambda function provisioned concurrency
+
 =back
 
 B<API Summary>
@@ -264,7 +272,7 @@ about granting IAM users required permissions for Application Auto
 Scaling actions, see the Application Auto Scaling User Guide
 (https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2016-02-06>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06>
 
 
 =head1 METHODS

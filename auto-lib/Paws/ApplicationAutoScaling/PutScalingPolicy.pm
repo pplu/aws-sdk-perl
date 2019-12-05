@@ -32,12 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $autoscaling = Paws->service('ApplicationAutoScaling');
+    my $application-autoscaling = Paws->service('ApplicationAutoScaling');
     # To apply a scaling policy to an Amazon ECS service
     # This example applies a scaling policy to an Amazon ECS service called
     # web-app in the default cluster. The policy increases the desired count of
     # the service by 200%, with a cool down period of 60 seconds.
-    my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
+    my $PutScalingPolicyResponse = $application -autoscaling->PutScalingPolicy(
       'PolicyName'                     => 'web-app-cpu-gt-75',
       'PolicyType'                     => 'StepScaling',
       'ResourceId'                     => 'service/default/web-app',
@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # policy increases the target capacity of the spot fleet by 200%, with a cool
    # down period of 180 seconds.",
 
-    my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
+    my $PutScalingPolicyResponse = $application -autoscaling->PutScalingPolicy(
       'PolicyName' => 'fleet-cpu-gt-75',
       'PolicyType' => 'StepScaling',
       'ResourceId' =>
@@ -91,7 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Returns a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/PutScalingPolicy>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling/PutScalingPolicy>
 
 =head1 ATTRIBUTES
 
@@ -109,10 +109,10 @@ scaling policy.
 
 The following policy types are supported:
 
-C<TargetTrackingScaling>E<mdash>Not supported for Amazon EMR or
-AppStream
+C<TargetTrackingScaling>E<mdash>Not supported for Amazon EMR
 
-C<StepScaling>E<mdash>Not supported for Amazon DynamoDB
+C<StepScaling>E<mdash>Not supported for DynamoDB, Amazon Comprehend, or
+AWS Lambda
 
 For more information, see Target Tracking Scaling Policies
 (https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
@@ -155,12 +155,12 @@ identifier is the fleet name. Example: C<fleet/sample-fleet>.
 =item *
 
 DynamoDB table - The resource type is C<table> and the unique
-identifier is the resource ID. Example: C<table/my-table>.
+identifier is the table name. Example: C<table/my-table>.
 
 =item *
 
 DynamoDB global secondary index - The resource type is C<index> and the
-unique identifier is the resource ID. Example:
+unique identifier is the index name. Example:
 C<table/my-table/index/my-table-index>.
 
 =item *
@@ -170,8 +170,8 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =item *
 
-Amazon SageMaker endpoint variants - The resource type is C<variant>
-and the unique identifier is the resource ID. Example:
+Amazon SageMaker endpoint variant - The resource type is C<variant> and
+the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
 =item *
@@ -181,6 +181,19 @@ must specify the C<OutputValue> from the CloudFormation template stack
 used to access the resources. The unique identifier is defined by the
 service provider. More information is available in our GitHub
 repository (https://github.com/aws/aws-auto-scaling-custom-resource).
+
+=item *
+
+Amazon Comprehend document classification endpoint - The resource type
+and unique identifier are specified using the endpoint ARN. Example:
+C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE>.
+
+=item *
+
+Lambda provisioned concurrency - The resource type is C<function> and
+the unique identifier is the function name with a function version or
+alias name suffix that is not C<$LATEST>. Example:
+C<function:my-function:prod> or C<function:my-function:1>.
 
 =back
 
@@ -249,10 +262,21 @@ for an Amazon SageMaker model endpoint variant.
 C<custom-resource:ResourceType:Property> - The scalable dimension for a
 custom resource provided by your own application or service.
 
+=item *
+
+C<comprehend:document-classifier-endpoint:DesiredInferenceUnits> - The
+number of inference units for an Amazon Comprehend document
+classification endpoint.
+
+=item *
+
+C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
+for a Lambda function.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
@@ -262,7 +286,7 @@ service. For more information, see AWS Service Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
 
