@@ -4,6 +4,7 @@ package Paws::EMR::ClusterSummary;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
+  has OutpostArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
 1;
 
@@ -63,6 +64,12 @@ m1.small instance runs. Larger instances are weighted more, so an EC2
 instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
+
+
+=head2 OutpostArn => Str
+
+  The Amazon Resource Name (ARN) of the Outpost where the cluster is
+launched.
 
 
 =head2 Status => L<Paws::EMR::ClusterStatus>

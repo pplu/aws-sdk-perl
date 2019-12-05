@@ -20,6 +20,7 @@ package Paws::EMR::RunJobFlow;
   has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
+  has StepConcurrencyLevel => (is => 'ro', isa => 'Int');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
@@ -73,9 +74,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             InstanceFleetType   => 'MASTER',       # values: MASTER, CORE, TASK
             InstanceTypeConfigs => [
               {
-                InstanceType => 'MyInstanceType',          # min: 1, max: 256
-                BidPrice     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
-                BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
+                InstanceType => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
+                BidPrice => 'MyXmlStringMaxLen256', # max: 256; OPTIONAL
+                BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
                 Configurations                      => [
                   {
                     Classification => 'MyString',
@@ -121,7 +122,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             InstanceCount     => 1,
             InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
-            InstanceType      => 'MyInstanceType',  # min: 1, max: 256
+            InstanceType      => 'MyInstanceType',  # min: 1, max: 256; OPTIONAL
             AutoScalingPolicy => {
               Constraints => {
                 MaxCapacity => 1,
@@ -197,22 +198,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                     # OPTIONAL
-        KeepJobFlowAliveWhenNoSteps => 1,                   # OPTIONAL
-        MasterInstanceType          => 'MyInstanceType',    # min: 1, max: 256
-        Placement                   => {
-          AvailabilityZone  => 'MyXmlString',    # max: 10280; OPTIONAL
+        KeepJobFlowAliveWhenNoSteps => 1,      # OPTIONAL
+        MasterInstanceType => 'MyInstanceType',    # min: 1, max: 256; OPTIONAL
+        Placement          => {
+          AvailabilityZone  => 'MyXmlString',      # max: 10280; OPTIONAL
           AvailabilityZones => [
-            'MyXmlStringMaxLen256', ...          # max: 256; OPTIONAL
-          ],                                     # OPTIONAL
+            'MyXmlStringMaxLen256', ...            # max: 256; OPTIONAL
+          ],                                       # OPTIONAL
         },    # OPTIONAL
         ServiceAccessSecurityGroup =>
           'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
-        SlaveInstanceType    => 'MyInstanceType',    # min: 1, max: 256
-        TerminationProtected => 1,                   # OPTIONAL
+        SlaveInstanceType    => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
+        TerminationProtected => 1,                  # OPTIONAL
       },
       Name           => 'MyXmlStringMaxLen256',
-      AdditionalInfo => 'MyXmlString',               # OPTIONAL
-      AmiVersion     => 'MyXmlStringMaxLen256',      # OPTIONAL
+      AdditionalInfo => 'MyXmlString',              # OPTIONAL
+      AmiVersion     => 'MyXmlStringMaxLen256',     # OPTIONAL
       Applications   => [
         {
           AdditionalInfo => { 'MyString' => 'MyString', },    # OPTIONAL
@@ -270,6 +271,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ScaleDownBehavior     => 'TERMINATE_AT_INSTANCE_HOUR',    # OPTIONAL
       SecurityConfiguration => 'MyXmlString',                   # OPTIONAL
       ServiceRole           => 'MyXmlString',                   # OPTIONAL
+      StepConcurrencyLevel  => 1,                               # OPTIONAL
       Steps                 => [
         {
           HadoopJarStep => {
@@ -539,6 +541,13 @@ The name of a security configuration to apply to the cluster.
 
 The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
+
+
+
+=head2 StepConcurrencyLevel => Int
+
+Specifies the number of steps that can be executed concurrently. The
+default value is C<1>. The maximum value is C<256>.
 
 
 

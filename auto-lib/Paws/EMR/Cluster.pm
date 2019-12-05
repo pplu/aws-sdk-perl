@@ -15,6 +15,7 @@ package Paws::EMR::Cluster;
   has MasterPublicDnsName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
+  has OutpostArn => (is => 'ro', isa => 'Str');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
   has RepoUpgradeOnBoot => (is => 'ro', isa => 'Str');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
@@ -23,6 +24,7 @@ package Paws::EMR::Cluster;
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
+  has StepConcurrencyLevel => (is => 'ro', isa => 'Int');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
@@ -163,6 +165,12 @@ normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
 
+=head2 OutpostArn => Str
+
+  The Amazon Resource Name (ARN) of the Outpost where the cluster is
+launched.
+
+
 =head2 ReleaseLabel => Str
 
   The Amazon EMR release label, which determines the version of
@@ -225,6 +233,11 @@ AWS resources on your behalf.
 =head2 Status => L<Paws::EMR::ClusterStatus>
 
   The current status details about the cluster.
+
+
+=head2 StepConcurrencyLevel => Int
+
+  Specifies the number of steps that can be executed concurrently.
 
 
 =head2 Tags => ArrayRef[L<Paws::EMR::Tag>]

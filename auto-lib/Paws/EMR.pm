@@ -158,6 +158,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListSteps', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyInstanceFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ModifyInstanceFleet', @_);
@@ -372,7 +377,7 @@ package Paws::EMR;
   }
 
 
-  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep GetBlockPublicAccessConfiguration ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy PutBlockPublicAccessConfiguration RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep GetBlockPublicAccessConfiguration ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyCluster ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy PutBlockPublicAccessConfiguration RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
 1;
 
@@ -518,9 +523,11 @@ Clusters
 
 =over
 
-=item [ClusterId => Str]
+=item ClusterId => Str
 
-=item [StepIds => ArrayRef[Str|Undef]]
+=item StepIds => ArrayRef[Str|Undef]
+
+=item [StepCancellationOption => Str]
 
 
 =back
@@ -851,6 +858,25 @@ specify C<stepIds> with the request of filter by C<StepStates>. You can
 specify a maximum of ten C<stepIDs>.
 
 
+=head2 ModifyCluster
+
+=over
+
+=item ClusterId => Str
+
+=item [StepConcurrencyLevel => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::ModifyCluster>
+
+Returns: a L<Paws::EMR::ModifyClusterOutput> instance
+
+Modifies the number of steps that can be executed concurrently for the
+cluster specified using ClusterID.
+
+
 =head2 ModifyInstanceFleet
 
 =over
@@ -1025,6 +1051,8 @@ cluster:
 =item [SecurityConfiguration => Str]
 
 =item [ServiceRole => Str]
+
+=item [StepConcurrencyLevel => Int]
 
 =item [Steps => ArrayRef[L<Paws::EMR::StepConfig>]]
 
