@@ -5,6 +5,9 @@ package Paws::ES::ElasticsearchClusterConfig;
   has DedicatedMasterType => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceType => (is => 'ro', isa => 'Str');
+  has WarmCount => (is => 'ro', isa => 'Int');
+  has WarmEnabled => (is => 'ro', isa => 'Bool');
+  has WarmType => (is => 'ro', isa => 'Str');
   has ZoneAwarenessConfig => (is => 'ro', isa => 'Paws::ES::ZoneAwarenessConfig');
   has ZoneAwarenessEnabled => (is => 'ro', isa => 'Bool');
 1;
@@ -69,7 +72,23 @@ for more information.
 
 =head2 InstanceType => Str
 
-  The instance type for an Elasticsearch cluster.
+  The instance type for an Elasticsearch cluster. UltraWarm instance
+types are not supported for data instances.
+
+
+=head2 WarmCount => Int
+
+  The number of warm nodes in the cluster.
+
+
+=head2 WarmEnabled => Bool
+
+  True to enable warm storage.
+
+
+=head2 WarmType => Str
+
+  The instance type for the Elasticsearch cluster's warm nodes.
 
 
 =head2 ZoneAwarenessConfig => L<Paws::ES::ZoneAwarenessConfig>

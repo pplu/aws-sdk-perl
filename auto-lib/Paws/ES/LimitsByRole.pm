@@ -39,9 +39,11 @@ following:
 
 =over
 
-=item * Data: If the given InstanceType is used as Data node
+=item * data: If the given InstanceType is used as data node
 
-=item * Master: If the given InstanceType is used as Master node
+=item * master: If the given InstanceType is used as master node
+
+=item * ultra_warm: If the given InstanceType is used as warm node
 
 =back
 
