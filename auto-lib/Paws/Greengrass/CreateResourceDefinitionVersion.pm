@@ -56,10 +56,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             S3MachineLearningModelResourceData => {
               DestinationPath => 'My__string',
-              S3Uri           => 'My__string',
+              OwnerSetting    => {
+                GroupOwner      => 'My__string',
+                GroupPermission => 'ro',           # values: ro, rw
+
+              },    # OPTIONAL
+              S3Uri => 'My__string',
             },    # OPTIONAL
             SageMakerMachineLearningModelResourceData => {
               DestinationPath => 'My__string',
+              OwnerSetting    => {
+                GroupOwner      => 'My__string',
+                GroupPermission => 'ro',           # values: ro, rw
+
+              },    # OPTIONAL
               SageMakerJobArn => 'My__string',
             },    # OPTIONAL
             SecretsManagerSecretResourceData => {

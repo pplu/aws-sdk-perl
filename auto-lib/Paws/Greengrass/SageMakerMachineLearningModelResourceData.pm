@@ -1,6 +1,7 @@
 package Paws::Greengrass::SageMakerMachineLearningModelResourceData;
   use Moose;
   has DestinationPath => (is => 'ro', isa => 'Str');
+  has OwnerSetting => (is => 'ro', isa => 'Paws::Greengrass::ResourceDownloadOwnerSetting');
   has SageMakerJobArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -40,6 +41,11 @@ Attributes that define an Amazon SageMaker machine learning resource.
 =head2 DestinationPath => Str
 
   The absolute local path of the resource inside the Lambda environment.
+
+
+=head2 OwnerSetting => L<Paws::Greengrass::ResourceDownloadOwnerSetting>
+
+  
 
 
 =head2 SageMakerJobArn => Str

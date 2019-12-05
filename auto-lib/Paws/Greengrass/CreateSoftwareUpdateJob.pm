@@ -92,13 +92,13 @@ Valid values are: C<"NONE">, C<"TRACE">, C<"DEBUG">, C<"VERBOSE">, C<"INFO">, C<
 
 
 
-Valid values are: C<"armv6l">, C<"armv7l">, C<"x86_64">, C<"aarch64">, C<"openwrt">
+Valid values are: C<"armv6l">, C<"armv7l">, C<"x86_64">, C<"aarch64">
 
 =head2 B<REQUIRED> UpdateTargetsOperatingSystem => Str
 
 
 
-Valid values are: C<"ubuntu">, C<"raspbian">, C<"amazon_linux">
+Valid values are: C<"ubuntu">, C<"raspbian">, C<"amazon_linux">, C<"openwrt">
 
 
 =head1 SEE ALSO
