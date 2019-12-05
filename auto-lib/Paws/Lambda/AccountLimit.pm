@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Acc
 
 =head1 DESCRIPTION
 
-Limits that are related to concurrency and code storage. All file and
+Limits that are related to concurrency and storage. All file and
 storage sizes are in bytes.
 
 =head1 ATTRIBUTES
@@ -43,8 +43,8 @@ storage sizes are in bytes.
 
 =head2 CodeSizeUnzipped => Int
 
-  The maximum size of your function's code and layers when they're
-extracted.
+  The maximum size of a function's deployment package and layers when
+they're extracted.
 
 
 =head2 CodeSizeZipped => Int

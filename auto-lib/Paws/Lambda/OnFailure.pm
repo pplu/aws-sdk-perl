@@ -1,13 +1,13 @@
-package Paws::Lambda::DeadLetterConfig;
+package Paws::Lambda::OnFailure;
   use Moose;
-  has TargetArn => (is => 'ro', isa => 'Str');
+  has Destination => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::DeadLetterConfig
+Paws::Lambda::OnFailure
 
 =head1 USAGE
 
@@ -18,30 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Lambda::DeadLetterConfig object:
+As an example, if Att1 is expected to be a Paws::Lambda::OnFailure object:
 
-  $service_obj->Method(Att1 => { TargetArn => $value, ..., TargetArn => $value  });
+  $service_obj->Method(Att1 => { Destination => $value, ..., Destination => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::DeadLetterConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::OnFailure object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->TargetArn
+  $result->Att1->Destination
 
 =head1 DESCRIPTION
 
-The dead-letter queue
-(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq)
-for failed asynchronous invocations.
+A destination for events that failed processing.
 
 =head1 ATTRIBUTES
 
 
-=head2 TargetArn => Str
+=head2 Destination => Str
 
-  The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
-topic.
+  The Amazon Resource Name (ARN) of the destination resource.
 
 
 

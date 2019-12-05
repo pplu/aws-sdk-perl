@@ -2,9 +2,14 @@
 package Paws::Lambda::UpdateEventSourceMapping;
   use Moose;
   has BatchSize => (is => 'ro', isa => 'Int');
+  has BisectBatchOnFunctionError => (is => 'ro', isa => 'Bool');
+  has DestinationConfig => (is => 'ro', isa => 'Paws::Lambda::DestinationConfig');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str');
   has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
+  has MaximumRecordAgeInSeconds => (is => 'ro', isa => 'Int');
+  has MaximumRetryAttempts => (is => 'ro', isa => 'Int');
+  has ParallelizationFactor => (is => 'ro', isa => 'Int');
   has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
 
   use MooseX::ClassAttribute;
@@ -84,6 +89,20 @@ B<Amazon Simple Queue Service> - Default 10. Max 10.
 
 
 
+=head2 BisectBatchOnFunctionError => Bool
+
+(Streams) If the function returns an error, split the batch in two and
+retry.
+
+
+
+=head2 DestinationConfig => L<Paws::Lambda::DestinationConfig>
+
+(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+discarded records.
+
+
+
 =head2 Enabled => Bool
 
 Disables the event source mapping to pause polling and invocation.
@@ -125,7 +144,29 @@ the function name, it's limited to 64 characters in length.
 
 =head2 MaximumBatchingWindowInSeconds => Int
 
+The maximum amount of time to gather records before invoking the
+function, in seconds.
 
+
+
+=head2 MaximumRecordAgeInSeconds => Int
+
+(Streams) The maximum age of a record that Lambda sends to a function
+for processing.
+
+
+
+=head2 MaximumRetryAttempts => Int
+
+(Streams) The maximum number of times to retry when the function
+returns an error.
+
+
+
+=head2 ParallelizationFactor => Int
+
+(Streams) The number of batches to process from each shard
+concurrently.
 
 
 

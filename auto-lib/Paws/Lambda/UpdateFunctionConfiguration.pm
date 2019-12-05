@@ -84,7 +84,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 A dead letter queue configuration that specifies the queue or topic
 where Lambda sends asynchronous events when they fail processing. For
 more information, see Dead Letter Queues
-(https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 
 
 
@@ -183,7 +183,7 @@ The Amazon Resource Name (ARN) of the function's execution role.
 The identifier of the function's runtime
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
 =head2 Timeout => Int
 
@@ -205,7 +205,7 @@ For network connectivity to AWS resources in a VPC, specify a list of
 security groups and subnets in the VPC. When you connect a function to
 a VPC, it can only access resources and the internet through that VPC.
 For more information, see VPC Settings
-(https://docs.aws.amazon.com/lambda/latest/dg/vpc.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 
 
 

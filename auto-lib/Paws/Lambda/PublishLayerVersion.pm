@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LayerName          => 'MyLayerName',
       CompatibleRuntimes => [
         'nodejs',
-        ... # values: nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, java8, python2.7, python3.6, python3.7, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, nodejs4.3-edge, go1.x, ruby2.5, provided
+        ... # values: nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, nodejs12.x, java8, java11, python2.7, python3.6, python3.7, python3.8, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, nodejs4.3-edge, go1.x, ruby2.5, provided
       ],    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
       LicenseInfo => 'MyLicenseInfo',    # OPTIONAL

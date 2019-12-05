@@ -32,8 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Env
 
 =head1 DESCRIPTION
 
-The results of a configuration update that applied environment
-variables.
+The results of an operation to update or read environment variables. If
+the operation is successful, the response contains the environment
+variables. If it failed, the response contains details about the error.
 
 =head1 ATTRIBUTES
 

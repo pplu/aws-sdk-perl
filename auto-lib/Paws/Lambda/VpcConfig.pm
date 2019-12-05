@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Vpc
 =head1 DESCRIPTION
 
 The VPC security groups and subnets that are attached to a Lambda
-function.
+function. For more information, see VPC Settings
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 
 =head1 ATTRIBUTES
 
