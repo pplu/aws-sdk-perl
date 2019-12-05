@@ -1,14 +1,33 @@
 0.42 
  - New API: CodeStarNotifications
-New API: DataExchange
-New API: Forecast
-New API: LakeFormation
-New API: MarketplaceCatalog
-New API: QLDB
-New API: SESv2
-New API: SSO
-New API: SavingsPlans
-New API: WorkMailMessageFlow
+ - New API: DataExchange
+ - New API: Forecast
+ - New API: LakeFormation
+ - New API: MarketplaceCatalog
+ - New API: QLDB
+ - New API: SESv2
+ - New API: SSO
+ - New API: SavingsPlans
+ - New API: WorkMailMessageFlow
+ - New API: Schemas
+ - New API: WAFv2
+ - New API: IoTSecureTunneling
+ - New API: AccessAnalyzer
+ - New API: AppConfig
+ - New API: CodeGuruProfiler
+ - New API: CodeGuruReviewer
+ - New API: ComputeOptimizer
+ - New API: ConnectParticipant
+ - New API: EBS
+ - New API: ElasticInference
+ - New API: FraudDetector
+ - New API: ImageBuilder
+ - New API: Kendra
+ - New API: KinesisVideoSignaling
+ - New API: MigrationHubConfig
+ - New API: NetworkManager
+ - New API: Outposts
+ - New API: SageMakerA2IRuntime
 
 0.41 11 Jul 2019
  - V3 signature module has been deprecated, as all APIs use V4 signatures. Dependencies have been removed

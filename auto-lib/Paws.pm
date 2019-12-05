@@ -319,6 +319,8 @@ kept stable, and changes to it should be notified via ChangeLog
 =head1 SUPPORTED SERVICES
 
 
+L<Paws::AccessAnalyzer>
+
 L<Paws::ACM>
 
 L<Paws::ACMPCA>
@@ -332,6 +334,8 @@ L<Paws::ApiGateway>
 L<Paws::ApiGatewayManagement>
 
 L<Paws::ApiGatewayV2>
+
+L<Paws::AppConfig>
 
 L<Paws::ApplicationAutoScaling>
 
@@ -389,6 +393,10 @@ L<Paws::CodeCommit>
 
 L<Paws::CodeDeploy>
 
+L<Paws::CodeGuruProfiler>
+
+L<Paws::CodeGuruReviewer>
+
 L<Paws::CodePipeline>
 
 L<Paws::CodeStar>
@@ -405,9 +413,13 @@ L<Paws::Comprehend>
 
 L<Paws::ComprehendMedical>
 
+L<Paws::ComputeOptimizer>
+
 L<Paws::Config>
 
 L<Paws::Connect>
+
+L<Paws::ConnectParticipant>
 
 L<Paws::CostExplorer>
 
@@ -439,6 +451,8 @@ L<Paws::DynamoDB>
 
 L<Paws::DynamoDBStreams>
 
+L<Paws::EBS>
+
 L<Paws::EC2>
 
 L<Paws::EC2InstanceConnect>
@@ -456,6 +470,8 @@ L<Paws::EKS>
 L<Paws::ElastiCache>
 
 L<Paws::ElasticBeanstalk>
+
+L<Paws::ElasticInference>
 
 L<Paws::ElasticTranscoder>
 
@@ -479,6 +495,8 @@ L<Paws::Forecast>
 
 L<Paws::ForecastQuery>
 
+L<Paws::FraudDetector>
+
 L<Paws::FSX>
 
 L<Paws::GameLift>
@@ -498,6 +516,8 @@ L<Paws::GuardDuty>
 L<Paws::Health>
 
 L<Paws::IAM>
+
+L<Paws::ImageBuilder>
 
 L<Paws::ImportExport>
 
@@ -519,9 +539,13 @@ L<Paws::IoTEventsData>
 
 L<Paws::IoTJobsData>
 
+L<Paws::IoTSecureTunneling>
+
 L<Paws::IoTThingsGraph>
 
 L<Paws::Kafka>
+
+L<Paws::Kendra>
 
 L<Paws::Kinesis>
 
@@ -534,6 +558,8 @@ L<Paws::KinesisVideo>
 L<Paws::KinesisVideoArchivedMedia>
 
 L<Paws::KinesisVideoMedia>
+
+L<Paws::KinesisVideoSignaling>
 
 L<Paws::KMS>
 
@@ -581,6 +607,8 @@ L<Paws::MediaTailor>
 
 L<Paws::MigrationHub>
 
+L<Paws::MigrationHubConfig>
+
 L<Paws::MobileHub>
 
 L<Paws::MQ>
@@ -589,11 +617,15 @@ L<Paws::MTurk>
 
 L<Paws::Neptune>
 
+L<Paws::NetworkManager>
+
 L<Paws::OpsWorks>
 
 L<Paws::OpsWorksCM>
 
 L<Paws::Organizations>
+
+L<Paws::Outposts>
 
 L<Paws::PerformanceInsights>
 
@@ -649,9 +681,13 @@ L<Paws::S3Control>
 
 L<Paws::SageMaker>
 
+L<Paws::SageMakerA2IRuntime>
+
 L<Paws::SageMakerRuntime>
 
 L<Paws::SavingsPlans>
+
+L<Paws::Schemas>
 
 L<Paws::SDB>
 
@@ -716,6 +752,8 @@ L<Paws::Translate>
 L<Paws::WAF>
 
 L<Paws::WAFRegional>
+
+L<Paws::WAFv2>
 
 L<Paws::WorkDocs>
 
