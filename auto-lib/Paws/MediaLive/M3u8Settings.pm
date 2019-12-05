@@ -3,6 +3,7 @@ package Paws::MediaLive::M3u8Settings;
   has AudioFramesPerPes => (is => 'ro', isa => 'Int', request_name => 'audioFramesPerPes', traits => ['NameInRequest']);
   has AudioPids => (is => 'ro', isa => 'Str', request_name => 'audioPids', traits => ['NameInRequest']);
   has EcmPid => (is => 'ro', isa => 'Str', request_name => 'ecmPid', traits => ['NameInRequest']);
+  has NielsenId3Behavior => (is => 'ro', isa => 'Str', request_name => 'nielsenId3Behavior', traits => ['NameInRequest']);
   has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
   has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
   has PcrPeriod => (is => 'ro', isa => 'Int', request_name => 'pcrPeriod', traits => ['NameInRequest']);
@@ -67,6 +68,13 @@ hexadecimal values.
 =head2 EcmPid => Str
 
   This parameter is unused and deprecated.
+
+
+=head2 NielsenId3Behavior => Str
+
+  If set to passthrough, Nielsen inaudible tones for media tracking will
+be detected in the input audio and an equivalent ID3 tag will be
+inserted in the output.
 
 
 =head2 PatInterval => Int

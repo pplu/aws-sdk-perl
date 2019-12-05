@@ -100,13 +100,13 @@ Filter by framerate, 'MAX_30_FPS' or 'MAX_60_FPS'
 
 =head2 Resolution => Str
 
-Filter by resolution, 'SD', 'HD', or 'UHD'
+Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
 
 
 
 =head2 ResourceType => Str
 
-Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
 
 
 

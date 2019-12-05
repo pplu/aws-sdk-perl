@@ -70,7 +70,7 @@ Resource configuration (codec, resolution, bitrate, ...)
 
 =head2 ResourceType => Str
 
-  Resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+  Resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
 
 
 =head2 SpecialFeature => Str

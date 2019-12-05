@@ -1,13 +1,13 @@
-package Paws::MediaLive::FrameCaptureSettings;
+package Paws::MediaLive::MultiplexOutputSettings;
   use Moose;
-  has CaptureInterval => (is => 'ro', isa => 'Int', request_name => 'captureInterval', traits => ['NameInRequest'], required => 1);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MediaLive::FrameCaptureSettings
+Paws::MediaLive::MultiplexOutputSettings
 
 =head1 USAGE
 
@@ -18,29 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaLive::FrameCaptureSettings object:
+As an example, if Att1 is expected to be a Paws::MediaLive::MultiplexOutputSettings object:
 
-  $service_obj->Method(Att1 => { CaptureInterval => $value, ..., CaptureInterval => $value  });
+  $service_obj->Method(Att1 => { Destination => $value, ..., Destination => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::FrameCaptureSettings object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::MultiplexOutputSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CaptureInterval
+  $result->Att1->Destination
 
 =head1 DESCRIPTION
 
-Frame Capture Settings
+Multiplex Output Settings
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CaptureInterval => Int
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
-  The frequency at which to capture frames for inclusion in the output.
-May be specified in either seconds or milliseconds, as specified by
-captureIntervalUnits.
+  Destination is a Multiplex.
 
 
 

@@ -1,13 +1,13 @@
-package Paws::MediaLive::FrameCaptureSettings;
+package Paws::MediaLive::MultiplexMediaConnectOutputDestinationSettings;
   use Moose;
-  has CaptureInterval => (is => 'ro', isa => 'Int', request_name => 'captureInterval', traits => ['NameInRequest'], required => 1);
+  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::MediaLive::FrameCaptureSettings
+Paws::MediaLive::MultiplexMediaConnectOutputDestinationSettings
 
 =head1 USAGE
 
@@ -18,29 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::MediaLive::FrameCaptureSettings object:
+As an example, if Att1 is expected to be a Paws::MediaLive::MultiplexMediaConnectOutputDestinationSettings object:
 
-  $service_obj->Method(Att1 => { CaptureInterval => $value, ..., CaptureInterval => $value  });
+  $service_obj->Method(Att1 => { EntitlementArn => $value, ..., EntitlementArn => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::FrameCaptureSettings object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::MultiplexMediaConnectOutputDestinationSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CaptureInterval
+  $result->Att1->EntitlementArn
 
 =head1 DESCRIPTION
 
-Frame Capture Settings
+Multiplex MediaConnect output destination settings.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CaptureInterval => Int
+=head2 EntitlementArn => Str
 
-  The frequency at which to capture frames for inclusion in the output.
-May be specified in either seconds or milliseconds, as specified by
-captureIntervalUnits.
+  The MediaConnect entitlement ARN available as a Flow source.
 
 
 

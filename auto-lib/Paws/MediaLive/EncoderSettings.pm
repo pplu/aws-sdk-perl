@@ -6,6 +6,7 @@ package Paws::MediaLive::EncoderSettings;
   has BlackoutSlate => (is => 'ro', isa => 'Paws::MediaLive::BlackoutSlate', request_name => 'blackoutSlate', traits => ['NameInRequest']);
   has CaptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::CaptionDescription]', request_name => 'captionDescriptions', traits => ['NameInRequest']);
   has GlobalConfiguration => (is => 'ro', isa => 'Paws::MediaLive::GlobalConfiguration', request_name => 'globalConfiguration', traits => ['NameInRequest']);
+  has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaLive::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
   has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest'], required => 1);
   has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaLive::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest'], required => 1);
   has VideoDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::VideoDescription]', request_name => 'videoDescriptions', traits => ['NameInRequest'], required => 1);
@@ -72,6 +73,11 @@ Encoder Settings
 =head2 GlobalConfiguration => L<Paws::MediaLive::GlobalConfiguration>
 
   Configuration settings that apply to the event as a whole.
+
+
+=head2 NielsenConfiguration => L<Paws::MediaLive::NielsenConfiguration>
+
+  Nielsen configuration settings.
 
 
 =head2 B<REQUIRED> OutputGroups => ArrayRef[L<Paws::MediaLive::OutputGroup>]

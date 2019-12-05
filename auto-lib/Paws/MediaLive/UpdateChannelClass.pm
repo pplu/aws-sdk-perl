@@ -42,6 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                    # OPTIONAL
+          MultiplexSettings => {
+            MultiplexId => 'My__stringMin1',    # min: 1; OPTIONAL
+            ProgramName => 'My__stringMin1',    # min: 1; OPTIONAL
+          },    # OPTIONAL
           Settings => [
             {
               PasswordParam => 'My__string',
@@ -50,10 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Username      => 'My__string',
             },
             ...
-          ],                                    # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],        # OPTIONAL
     );
 
     # Results:

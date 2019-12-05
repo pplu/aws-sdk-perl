@@ -5,6 +5,7 @@ package Paws::MediaLive::OutputGroupSettings;
   has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
   has MediaPackageGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MediaPackageGroupSettings', request_name => 'mediaPackageGroupSettings', traits => ['NameInRequest']);
   has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
+  has MultiplexGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexGroupSettings', request_name => 'multiplexGroupSettings', traits => ['NameInRequest']);
   has RtmpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpGroupSettings', request_name => 'rtmpGroupSettings', traits => ['NameInRequest']);
   has UdpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpGroupSettings', request_name => 'udpGroupSettings', traits => ['NameInRequest']);
 1;
@@ -63,6 +64,11 @@ Output Group Settings
 
 
 =head2 MsSmoothGroupSettings => L<Paws::MediaLive::MsSmoothGroupSettings>
+
+  
+
+
+=head2 MultiplexGroupSettings => L<Paws::MediaLive::MultiplexGroupSettings>
 
   
 

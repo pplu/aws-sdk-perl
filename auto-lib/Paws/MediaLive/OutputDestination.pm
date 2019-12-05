@@ -2,6 +2,7 @@ package Paws::MediaLive::OutputDestination;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has MediaPackageSettings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaPackageOutputDestinationSettings]', request_name => 'mediaPackageSettings', traits => ['NameInRequest']);
+  has MultiplexSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramChannelDestinationSettings', request_name => 'multiplexSettings', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestinationSettings]', request_name => 'settings', traits => ['NameInRequest']);
 1;
 
@@ -47,6 +48,12 @@ Placeholder documentation for OutputDestination
 
   Destination settings for a MediaPackage output; one destination for
 both encoders.
+
+
+=head2 MultiplexSettings => L<Paws::MediaLive::MultiplexProgramChannelDestinationSettings>
+
+  Destination settings for a Multiplex output; one destination for both
+encoders.
 
 
 =head2 Settings => ArrayRef[L<Paws::MediaLive::OutputDestinationSettings>]

@@ -4,6 +4,7 @@ package Paws::MediaLive::ListOfferings;
   has ChannelClass => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'channelClass');
   has ChannelConfiguration => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'channelConfiguration');
   has Codec => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'codec');
+  has Duration => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'duration');
   has MaximumBitrate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maximumBitrate');
   has MaximumFramerate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maximumFramerate');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
@@ -42,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChannelClass         => 'My__string',    # OPTIONAL
       ChannelConfiguration => 'My__string',    # OPTIONAL
       Codec                => 'My__string',    # OPTIONAL
+      Duration             => 'My__string',    # OPTIONAL
       MaxResults           => 1,               # OPTIONAL
       MaximumBitrate       => 'My__string',    # OPTIONAL
       MaximumFramerate     => 'My__string',    # OPTIONAL
@@ -83,6 +85,12 @@ Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
 
 
 
+=head2 Duration => Str
+
+Filter by offering duration, e.g. '12'
+
+
+
 =head2 MaximumBitrate => Str
 
 Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
@@ -109,13 +117,13 @@ Filter by framerate, 'MAX_30_FPS' or 'MAX_60_FPS'
 
 =head2 Resolution => Str
 
-Filter by resolution, 'SD', 'HD', or 'UHD'
+Filter by resolution, 'SD', 'HD', 'FHD', or 'UHD'
 
 
 
 =head2 ResourceType => Str
 
-Filter by resource type, 'INPUT', 'OUTPUT', or 'CHANNEL'
+Filter by resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
 
 
 

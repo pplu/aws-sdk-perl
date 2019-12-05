@@ -34,6 +34,16 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateInputSecurityGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateMultiplex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateMultiplex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateMultiplexProgram {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateMultiplexProgram', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateTags', @_);
@@ -52,6 +62,16 @@ package Paws::MediaLive;
   sub DeleteInputSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteInputSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteMultiplex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteMultiplex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteMultiplexProgram {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteMultiplexProgram', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteReservation {
@@ -84,6 +104,16 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeInputSecurityGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeMultiplex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeMultiplex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMultiplexProgram {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeMultiplexProgram', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOffering {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeOffering', @_);
@@ -114,6 +144,16 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListInputSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMultiplexes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListMultiplexes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListMultiplexPrograms {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListMultiplexPrograms', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListOfferings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListOfferings', @_);
@@ -139,9 +179,19 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::StartChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartMultiplex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::StartMultiplex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::StopChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopMultiplex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::StopMultiplex', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateChannel {
@@ -162,6 +212,16 @@ package Paws::MediaLive;
   sub UpdateInputSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateInputSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMultiplex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateMultiplex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMultiplexProgram {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateMultiplexProgram', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateReservation {
@@ -262,6 +322,52 @@ package Paws::MediaLive;
 
     return undef
   }
+  sub ListAllMultiplexes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMultiplexes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMultiplexes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Multiplexes }, @{ $next_result->Multiplexes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Multiplexes') foreach (@{ $result->Multiplexes });
+        $result = $self->ListMultiplexes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Multiplexes') foreach (@{ $result->Multiplexes });
+    }
+
+    return undef
+  }
+  sub ListAllMultiplexPrograms {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMultiplexPrograms(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMultiplexPrograms(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MultiplexPrograms }, @{ $next_result->MultiplexPrograms };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MultiplexPrograms') foreach (@{ $result->MultiplexPrograms });
+        $result = $self->ListMultiplexPrograms(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MultiplexPrograms') foreach (@{ $result->MultiplexPrograms });
+    }
+
+    return undef
+  }
   sub ListAllOfferings {
     my $self = shift;
 
@@ -310,7 +416,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DeleteSchedule DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StopChannel UpdateChannel UpdateChannelClass UpdateInput UpdateInputSecurityGroup UpdateReservation / }
+  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateMultiplex CreateMultiplexProgram CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteMultiplex DeleteMultiplexProgram DeleteReservation DeleteSchedule DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeMultiplex DescribeMultiplexProgram DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListMultiplexes ListMultiplexPrograms ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StartMultiplex StopChannel StopMultiplex UpdateChannel UpdateChannelClass UpdateInput UpdateInputSecurityGroup UpdateMultiplex UpdateMultiplexProgram UpdateReservation / }
 
 1;
 
@@ -453,6 +559,52 @@ Returns: a L<Paws::MediaLive::CreateInputSecurityGroupResponse> instance
 Creates a Input Security Group
 
 
+=head2 CreateMultiplex
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item MultiplexSettings => L<Paws::MediaLive::MultiplexSettings>
+
+=item Name => Str
+
+=item RequestId => Str
+
+=item [Tags => L<Paws::MediaLive::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::CreateMultiplex>
+
+Returns: a L<Paws::MediaLive::CreateMultiplexResponse> instance
+
+Create a new multiplex.
+
+
+=head2 CreateMultiplexProgram
+
+=over
+
+=item MultiplexId => Str
+
+=item MultiplexProgramSettings => L<Paws::MediaLive::MultiplexProgramSettings>
+
+=item ProgramName => Str
+
+=item RequestId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::CreateMultiplexProgram>
+
+Returns: a L<Paws::MediaLive::CreateMultiplexProgramResponse> instance
+
+Create a new program in the multiplex.
+
+
 =head2 CreateTags
 
 =over
@@ -517,6 +669,40 @@ Each argument is described in detail in: L<Paws::MediaLive::DeleteInputSecurityG
 Returns: a L<Paws::MediaLive::DeleteInputSecurityGroupResponse> instance
 
 Deletes an Input Security Group
+
+
+=head2 DeleteMultiplex
+
+=over
+
+=item MultiplexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DeleteMultiplex>
+
+Returns: a L<Paws::MediaLive::DeleteMultiplexResponse> instance
+
+Delete a multiplex. The multiplex must be idle.
+
+
+=head2 DeleteMultiplexProgram
+
+=over
+
+=item MultiplexId => Str
+
+=item ProgramName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DeleteMultiplexProgram>
+
+Returns: a L<Paws::MediaLive::DeleteMultiplexProgramResponse> instance
+
+Delete a program from a multiplex.
 
 
 =head2 DeleteReservation
@@ -615,6 +801,40 @@ Each argument is described in detail in: L<Paws::MediaLive::DescribeInputSecurit
 Returns: a L<Paws::MediaLive::DescribeInputSecurityGroupResponse> instance
 
 Produces a summary of an Input Security Group
+
+
+=head2 DescribeMultiplex
+
+=over
+
+=item MultiplexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeMultiplex>
+
+Returns: a L<Paws::MediaLive::DescribeMultiplexResponse> instance
+
+Gets details about a multiplex.
+
+
+=head2 DescribeMultiplexProgram
+
+=over
+
+=item MultiplexId => Str
+
+=item ProgramName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeMultiplexProgram>
+
+Returns: a L<Paws::MediaLive::DescribeMultiplexProgramResponse> instance
+
+Get the details for a program in a multiplex.
 
 
 =head2 DescribeOffering
@@ -723,6 +943,44 @@ Returns: a L<Paws::MediaLive::ListInputSecurityGroupsResponse> instance
 Produces a list of Input Security Groups for an account
 
 
+=head2 ListMultiplexes
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListMultiplexes>
+
+Returns: a L<Paws::MediaLive::ListMultiplexesResponse> instance
+
+Retrieve a list of the existing multiplexes.
+
+
+=head2 ListMultiplexPrograms
+
+=over
+
+=item MultiplexId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListMultiplexPrograms>
+
+Returns: a L<Paws::MediaLive::ListMultiplexProgramsResponse> instance
+
+List the programs that currently exist for a specific multiplex.
+
+
 =head2 ListOfferings
 
 =over
@@ -732,6 +990,8 @@ Produces a list of Input Security Groups for an account
 =item [ChannelConfiguration => Str]
 
 =item [Codec => Str]
+
+=item [Duration => Str]
 
 =item [MaximumBitrate => Str]
 
@@ -849,6 +1109,23 @@ Returns: a L<Paws::MediaLive::StartChannelResponse> instance
 Starts an existing channel
 
 
+=head2 StartMultiplex
+
+=over
+
+=item MultiplexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::StartMultiplex>
+
+Returns: a L<Paws::MediaLive::StartMultiplexResponse> instance
+
+Start (run) the multiplex. Starting the multiplex does not start the
+channels. You must explicitly start each channel.
+
+
 =head2 StopChannel
 
 =over
@@ -863,6 +1140,23 @@ Each argument is described in detail in: L<Paws::MediaLive::StopChannel>
 Returns: a L<Paws::MediaLive::StopChannelResponse> instance
 
 Stops a running channel
+
+
+=head2 StopMultiplex
+
+=over
+
+=item MultiplexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::StopMultiplex>
+
+Returns: a L<Paws::MediaLive::StopMultiplexResponse> instance
+
+Stops a running multiplex. If the multiplex isn't running, this action
+has no effect.
 
 
 =head2 UpdateChannel
@@ -961,6 +1255,46 @@ Returns: a L<Paws::MediaLive::UpdateInputSecurityGroupResponse> instance
 Update an Input Security Group's Whilelists.
 
 
+=head2 UpdateMultiplex
+
+=over
+
+=item MultiplexId => Str
+
+=item [MultiplexSettings => L<Paws::MediaLive::MultiplexSettings>]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateMultiplex>
+
+Returns: a L<Paws::MediaLive::UpdateMultiplexResponse> instance
+
+Updates a multiplex.
+
+
+=head2 UpdateMultiplexProgram
+
+=over
+
+=item MultiplexId => Str
+
+=item ProgramName => Str
+
+=item [MultiplexProgramSettings => L<Paws::MediaLive::MultiplexProgramSettings>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateMultiplexProgram>
+
+Returns: a L<Paws::MediaLive::UpdateMultiplexProgramResponse> instance
+
+Update a program in a multiplex.
+
+
 =head2 UpdateReservation
 
 =over
@@ -1033,9 +1367,33 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::MediaLive::ListInputSecurityGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOfferings(sub { },[ChannelClass => Str, ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+=head2 ListAllMultiplexes(sub { },[MaxResults => Int, NextToken => Str])
 
-=head2 ListAllOfferings([ChannelClass => Str, ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+=head2 ListAllMultiplexes([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Multiplexes, passing the object as the first parameter, and the string 'Multiplexes' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::ListMultiplexesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMultiplexPrograms(sub { },MultiplexId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMultiplexPrograms(MultiplexId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MultiplexPrograms, passing the object as the first parameter, and the string 'MultiplexPrograms' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::ListMultiplexProgramsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOfferings(sub { },[ChannelClass => Str, ChannelConfiguration => Str, Codec => Str, Duration => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+
+=head2 ListAllOfferings([ChannelClass => Str, ChannelConfiguration => Str, Codec => Str, Duration => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

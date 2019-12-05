@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Output groups for this Live Event. Output groups contain information
-about where streams should be distributed.
+Caption Description
 
 =head1 ATTRIBUTES
 

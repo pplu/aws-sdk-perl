@@ -5,6 +5,7 @@ package Paws::MediaLive::OutputSettings;
   has HlsOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsOutputSettings', request_name => 'hlsOutputSettings', traits => ['NameInRequest']);
   has MediaPackageOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MediaPackageOutputSettings', request_name => 'mediaPackageOutputSettings', traits => ['NameInRequest']);
   has MsSmoothOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothOutputSettings', request_name => 'msSmoothOutputSettings', traits => ['NameInRequest']);
+  has MultiplexOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexOutputSettings', request_name => 'multiplexOutputSettings', traits => ['NameInRequest']);
   has RtmpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpOutputSettings', request_name => 'rtmpOutputSettings', traits => ['NameInRequest']);
   has UdpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpOutputSettings', request_name => 'udpOutputSettings', traits => ['NameInRequest']);
 1;
@@ -63,6 +64,11 @@ Output Settings
 
 
 =head2 MsSmoothOutputSettings => L<Paws::MediaLive::MsSmoothOutputSettings>
+
+  
+
+
+=head2 MultiplexOutputSettings => L<Paws::MediaLive::MultiplexOutputSettings>
 
   
 

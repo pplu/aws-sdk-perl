@@ -27,6 +27,7 @@ package Paws::MediaLive::M2tsSettings;
   has FragmentTime => (is => 'ro', isa => 'Num', request_name => 'fragmentTime', traits => ['NameInRequest']);
   has Klv => (is => 'ro', isa => 'Str', request_name => 'klv', traits => ['NameInRequest']);
   has KlvDataPids => (is => 'ro', isa => 'Str', request_name => 'klvDataPids', traits => ['NameInRequest']);
+  has NielsenId3Behavior => (is => 'ro', isa => 'Str', request_name => 'nielsenId3Behavior', traits => ['NameInRequest']);
   has NullPacketBitrate => (is => 'ro', isa => 'Num', request_name => 'nullPacketBitrate', traits => ['NameInRequest']);
   has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
   has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
@@ -264,6 +265,13 @@ this output.
 Multiple values are accepted, and can be entered in ranges and/or by
 comma separation. Can be entered as decimal or hexadecimal values. Each
 PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
+
+
+=head2 NielsenId3Behavior => Str
+
+  If set to passthrough, Nielsen inaudible tones for media tracking will
+be detected in the input audio and an equivalent ID3 tag will be
+inserted in the output.
 
 
 =head2 NullPacketBitrate => Num
