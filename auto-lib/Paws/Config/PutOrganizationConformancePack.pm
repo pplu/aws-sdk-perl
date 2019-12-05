@@ -75,6 +75,11 @@ Location of an Amazon S3 bucket where AWS Config can deliver evaluation
 results. AWS Config stores intermediate files while processing
 conformance pack template.
 
+The delivery bucket name should start with awsconfigconforms. For
+example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
+information, see Permissions for cross account bucket access
+(https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
+
 
 
 =head2 DeliveryS3KeyPrefix => Str
@@ -107,7 +112,7 @@ maximum length of 51,200 bytes.
 =head2 TemplateS3Uri => Str
 
 Location of file containing the template body. The uri must point to
-the conformance pack template (max size: 300,000 bytes).
+the conformance pack template (max size: 300 KB).
 
 You must have access to read Amazon S3 bucket.
 

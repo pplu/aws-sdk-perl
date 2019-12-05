@@ -44,7 +44,7 @@ organization.
 =head2 ErrorCode => Str
 
   An error code that is returned when organization conformance pack
-creation or deletion has failed in the member account.
+creation or deletion has failed in a member account.
 
 
 =head2 ErrorMessage => Str

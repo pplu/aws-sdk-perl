@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head1 DESCRIPTION
 
-This class has no description
+Summary includes the name and status of the conformance pack.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ConformancePackComplianceStatus => Str
 
-  
+  The status of the conformance pack. The allowed values are COMPLIANT
+and NON_COMPLIANT.
 
 
 =head2 B<REQUIRED> ConformancePackName => Str
 
-  
+  The name of the conformance pack name.
 
 
 

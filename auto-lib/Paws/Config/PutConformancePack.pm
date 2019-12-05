@@ -73,9 +73,8 @@ Name of the conformance pack you want to create.
 
 =head2 B<REQUIRED> DeliveryS3Bucket => Str
 
-Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-results. AWS Config stores intermediate files while processing
-conformance pack template.
+AWS Config stores intermediate files while processing conformance pack
+template.
 
 
 
@@ -92,15 +91,16 @@ containing the template body with a minimum length of 1 byte and a
 maximum length of 51,200 bytes.
 
 You can only use a YAML template with one resource type, that is,
-config rule.
+config rule and a remediation action.
 
 
 
 =head2 TemplateS3Uri => Str
 
-Location of file containing the template body. The uri must point to
-the conformance pack template (max size: 300,000 bytes) that is located
-in an Amazon S3 bucket in the same region as the conformance pack.
+Location of file containing the template body
+(C<s3://bucketname/prefix>). The uri must point to the conformance pack
+template (max size: 300 KB) that is located in an Amazon S3 bucket in
+the same region as the conformance pack.
 
 You must have access to read Amazon S3 bucket.
 

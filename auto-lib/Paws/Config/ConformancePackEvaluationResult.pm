@@ -50,9 +50,8 @@ compliance.
 
 =head2 B<REQUIRED> ComplianceType => Str
 
-  Filters the results by compliance.
-
-The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
+  The compliance type. The allowed values are C<COMPLIANT> and
+C<NON_COMPLIANT>.
 
 
 =head2 B<REQUIRED> ConfigRuleInvokedTime => Str

@@ -86,8 +86,7 @@ DELETE_IN_PROGRESS when a conformance pack deletion is in progress.
 
 =item *
 
-DELETE_FAILED when a conformance pack deletion failed from your
-account.
+DELETE_FAILED when a conformance pack deletion failed in your account.
 
 =back
 

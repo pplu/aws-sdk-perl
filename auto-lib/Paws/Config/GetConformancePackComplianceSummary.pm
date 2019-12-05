@@ -54,19 +54,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =head2 B<REQUIRED> ConformancePackNames => ArrayRef[Str|Undef]
 
-
+Names of conformance packs.
 
 
 
 =head2 Limit => Int
 
-
+The maximum number of conformance packs returned on each page.
 
 
 
 =head2 NextToken => Str
 
-
+The nextToken string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 

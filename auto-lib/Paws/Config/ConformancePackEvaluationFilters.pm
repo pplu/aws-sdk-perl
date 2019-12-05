@@ -56,6 +56,9 @@ The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
 
   Filters the results by resource IDs.
 
+This is valid only when you provide resource type. If there is no
+resource type, you will see an error.
+
 
 =head2 ResourceType => Str
 

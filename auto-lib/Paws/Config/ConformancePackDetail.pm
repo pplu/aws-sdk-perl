@@ -39,8 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 =head1 DESCRIPTION
 
 Returns details of a conformance pack. A conformance pack is a
-collection of AWS Config rules that can be easily deployed in an
-account and a region.
+collection of AWS Config rules and remediation actions that can be
+easily deployed in an account and a region.
 
 =head1 ATTRIBUTES
 
@@ -67,18 +67,19 @@ account and a region.
 
 =head2 CreatedBy => Str
 
-  
+  AWS service that created the conformance pack.
 
 
 =head2 B<REQUIRED> DeliveryS3Bucket => Str
 
-  Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-results and conformance pack template that is used to create a pack.
+  Conformance pack template that is used to create a pack. The delivery
+bucket name should start with awsconfigconforms. For example:
+"Resource": "arn:aws:s3:::your_bucket_name/*".
 
 
 =head2 DeliveryS3KeyPrefix => Str
 
-  Any folder structure you want to add to an Amazon S3 bucket.
+  The prefix for the Amazon S3 bucket.
 
 
 =head2 LastUpdateRequestedTime => Str

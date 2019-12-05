@@ -41,14 +41,14 @@ compliance types.
 
 =head2 ComplianceType => Str
 
-  Filters the results by compliance.
+  Compliance of the AWS Config rule
 
 The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
 
 
 =head2 ConfigRuleName => Str
 
-  Filters the results by AWS Config rule name.
+  Name of the config rule.
 
 
 

@@ -59,7 +59,7 @@ Comma-separated list of conformance pack names.
 
 =head2 Limit => Int
 
-The maximum number of conformance packs returned on each page.
+The maximum number of conformance packs status returned on each page.
 
 
 

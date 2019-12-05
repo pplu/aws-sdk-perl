@@ -17,12 +17,13 @@ Paws::Config::GetConformancePackComplianceSummaryResponse
 
 =head2 ConformancePackComplianceSummaryList => ArrayRef[L<Paws::Config::ConformancePackComplianceSummary>]
 
-
+A list of C<ConformancePackComplianceSummary> objects.
 
 
 =head2 NextToken => Str
 
-
+The nextToken string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 =head2 _request_id => Str

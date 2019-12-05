@@ -112,7 +112,11 @@ information about CloudTrail, see What Is AWS CloudTrail
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 An empty field indicates that the current configuration was not
-initiated by any event.
+initiated by any event. As of Version 1.3, the relatedEvents field is
+empty. You can access the LookupEvents API
+(https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_LookupEvents.html)
+in the I<AWS CloudTrail API Reference> to retrieve the events for the
+resource.
 
 
 =head2 Relationships => ArrayRef[L<Paws::Config::Relationship>]
