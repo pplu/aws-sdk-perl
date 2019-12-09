@@ -131,7 +131,6 @@ package Paws::API::Builder {
     default => sub {
       my $self = shift;
       my $signature_type = $self->api_struct->{metadata}{signatureVersion};
-
       sprintf "Paws::Net::%sSignature", ucfirst $signature_type;
     } 
   );
@@ -139,10 +138,10 @@ package Paws::API::Builder {
   has parameter_role => (
     is => 'ro', 
     lazy => 1, 
-    default => sub { 
-      my $type = $_[0]->api_struct->{metadata}->{protocol}; 
-      substr($type,0,1) = uc substr($type,0,1); 
-      return "Paws::Net::${type}Caller" 
+    default => sub {
+      my $self = shift;
+      my $type = $self->api_struct->{metadata}->{protocol};
+      return sprintf "Paws::Net::%sCaller", ucfirst $type;
     },
   );
 
