@@ -22,7 +22,7 @@ Paws::Quicksight::CreateTemplateResponse
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) for the template.
+The ARN for the template.
 
 
 =head2 CreationStatus => Str

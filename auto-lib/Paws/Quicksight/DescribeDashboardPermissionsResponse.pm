@@ -31,7 +31,7 @@ The ID for the dashboard.
 
 =head2 Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]
 
-A structure that contains the permissions of the dashboard.
+A structure that contains the permissions for the dashboard.
 
 
 =head2 RequestId => Str

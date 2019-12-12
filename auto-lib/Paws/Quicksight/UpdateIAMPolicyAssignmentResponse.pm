@@ -33,23 +33,23 @@ The name of the assignment.
 
 =head2 AssignmentStatus => Str
 
-The status of the assignment:
+The status of the assignment. Possible values are as follows:
 
 =over
 
 =item *
 
-ENABLED - Anything specified in this assignment is used while creating
-the data source.
+C<ENABLED> - Anything specified in this assignment is used when
+creating the data source.
 
 =item *
 
-DISABLED - This assignment isn't used while creating the data source.
+C<DISABLED> - This assignment isn't used when creating the data source.
 
 =item *
 
-DRAFT - Assignment is an unfinished draft and isn't used while creating
-the data source.
+C<DRAFT> - This assignment is an unfinished draft and isn't used when
+creating the data source.
 
 =back
 
@@ -57,13 +57,14 @@ the data source.
 Valid values are: C<"ENABLED">, C<"DRAFT">, C<"DISABLED">
 =head2 Identities => L<Paws::Quicksight::IdentityMap>
 
-QuickSight users and/or groups that are assigned to this IAM policy.
+The QuickSight users, groups, or both that the IAM policy is assigned
+to.
 
 
 =head2 PolicyArn => Str
 
-The IAM policy ARN assigned to the QuickSight users and groups
-specified in this request.
+The ARN for the IAM policy applied to the QuickSight users and groups
+specified in this assignment.
 
 
 =head2 RequestId => Str

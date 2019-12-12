@@ -35,14 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Information on source file(s) format.
+Information about the format for a source file or files.
 
 =head1 ATTRIBUTES
 
 
 =head2 ContainsHeader => Bool
 
-  Whether or not the file(s) has a header row.
+  Whether the file has a header row, or the files each have a header row.
 
 
 =head2 Delimiter => Str

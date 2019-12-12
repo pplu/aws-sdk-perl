@@ -51,12 +51,13 @@ A physical table type for relational data sources.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the relational table.
+  The name of the relational table.
 
 
 =head2 Schema => Str
 
-  The schema name. Applies to certain relational database engines.
+  The schema name. This name applies to certain relational database
+engines.
 
 
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Metadata on a column that is used as the input of a transform
+Metadata for a column that is used as the input of a transform
 operation.
 
 =head1 ATTRIBUTES

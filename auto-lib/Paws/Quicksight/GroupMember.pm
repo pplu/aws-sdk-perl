@@ -40,7 +40,7 @@ be users. Groups can't be members of another group. .
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) for the group member (user).
+  The Amazon Resource Name (ARN) for the group member (user).
 
 
 =head2 MemberName => Str

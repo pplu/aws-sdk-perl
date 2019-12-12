@@ -60,7 +60,8 @@ The name of the assignment.
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS account ID that contains the assignment you want to describe.
+The ID of the AWS account that contains the assignment that you want to
+describe.
 
 
 

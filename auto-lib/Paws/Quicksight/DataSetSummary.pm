@@ -44,12 +44,12 @@ Dataset summary.
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) of the dataset.
+  The Amazon Resource Name (ARN) of the dataset.
 
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this dataset was created.
 
 
 =head2 DataSetId => Str
@@ -59,12 +59,12 @@ Dataset summary.
 
 =head2 ImportMode => Str
 
-  Indicates whether or not you want to import the data into SPICE.
+  Indicates whether you want to import the data into SPICE.
 
 
 =head2 LastUpdatedTime => Str
 
-  The last time this was updated.
+  The last time that this dataset was updated.
 
 
 =head2 Name => Str
@@ -74,7 +74,7 @@ Dataset summary.
 
 =head2 RowLevelPermissionDataSet => L<Paws::Quicksight::RowLevelPermissionDataSet>
 
-  Row-level security configuration on the dataset.
+  The row-level security configuration for the dataset.
 
 
 

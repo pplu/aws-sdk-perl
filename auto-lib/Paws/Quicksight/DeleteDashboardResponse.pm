@@ -20,7 +20,7 @@ Paws::Quicksight::DeleteDashboardResponse
 
 =head2 Arn => Str
 
-The Secure Socket Layer (SSL) properties that apply. of the resource.
+The Secure Socket Layer (SSL) properties that apply for the resource.
 
 
 =head2 DashboardId => Str

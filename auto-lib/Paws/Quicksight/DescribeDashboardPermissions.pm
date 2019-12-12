@@ -53,14 +53,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are describing
-permissions of.
+The ID of the AWS account that contains the dashboard that you're
+describing permissions for.
 
 
 
 =head2 B<REQUIRED> DashboardId => Str
 
-The ID for the dashboard, also added to IAM policy.
+The ID for the dashboard, also added to the IAM policy.
 
 
 

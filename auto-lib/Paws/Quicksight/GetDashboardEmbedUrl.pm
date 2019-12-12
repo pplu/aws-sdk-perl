@@ -59,39 +59,40 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are embedding.
+The ID for the AWS account that contains the dashboard that you're
+embedding.
 
 
 
 =head2 B<REQUIRED> DashboardId => Str
 
-The ID for the dashboard, also added to IAM policy
+The ID for the dashboard, also added to the IAM policy.
 
 
 
 =head2 B<REQUIRED> IdentityType => Str
 
-The authentication method the user uses to sign in.
+The authentication method that the user uses to sign in.
 
 Valid values are: C<"IAM">, C<"QUICKSIGHT">
 
 =head2 ResetDisabled => Bool
 
-Remove the reset button on embedded dashboard. The default is FALSE,
-which allows the reset button.
+Remove the reset button on the embedded dashboard. The default is
+FALSE, which enables the reset button.
 
 
 
 =head2 SessionLifetimeInMinutes => Int
 
 How many minutes the session is valid. The session lifetime must be
-between 15 and 600 minutes.
+15-600 minutes.
 
 
 
 =head2 UndoRedoDisabled => Bool
 
-Remove the undo/redo button on embedded dashboard. The default is
+Remove the undo/redo button on the embedded dashboard. The default is
 FALSE, which enables the undo/redo button.
 
 
@@ -111,12 +112,12 @@ Active Directory (AD) users or group members
 
 =item *
 
-Invited non-federated users
+Invited nonfederated users
 
 =item *
 
 IAM users and IAM role-based sessions authenticated through Federated
-Single Sign-On using SAML, OpenID Connect, or IAM Federation
+Single Sign-On using SAML, OpenID Connect, or IAM federation.
 
 =back
 

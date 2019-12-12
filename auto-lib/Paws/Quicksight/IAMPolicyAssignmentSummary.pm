@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-IAM policy assignment Summary.
+IAM policy assignment summary.
 
 =head1 ATTRIBUTES
 

@@ -433,15 +433,15 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateDashboard>
 Returns: a L<Paws::Quicksight::CreateDashboardResponse> instance
 
 Creates a dashboard from a template. To first create a template, see
-the CreateTemplate API.
+the CreateTemplate API operation.
 
-A dashboard is an entity in QuickSight which identifies Quicksight
-reports, created from analyses. QuickSight dashboards are sharable.
+A dashboard is an entity in QuickSight that identifies QuickSight
+reports, created from analyses. You can share QuickSight dashboards.
 With the right permissions, you can create scheduled email reports from
-them. The C<CreateDashboard>, C<DescribeDashboard> and
-C<ListDashboardsByUser> APIs act on the dashboard entity. If you have
-the correct permissions, you can create a dashboard from a template
-that exists in a different AWS account.
+them. The C<CreateDashboard>, C<DescribeDashboard>, and
+C<ListDashboardsByUser> API operations act on the dashboard entity. If
+you have the correct permissions, you can create a dashboard from a
+template that exists in a different AWS account.
 
 
 =head2 CreateDataSet
@@ -585,9 +585,10 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateIAMPolicyAssi
 
 Returns: a L<Paws::Quicksight::CreateIAMPolicyAssignmentResponse> instance
 
-Creates an assignment with one specified IAM policy Amazon Resource
-Name (ARN) and will assigned to specified groups or users of
-QuickSight. Users and groups need to be in the same namespace.
+Creates an assignment with one specified IAM policy, identified by its
+Amazon Resource Name (ARN). This policy will be assigned to specified
+groups or users of Amazon QuickSight. The users and groups need to be
+in the same namespace.
 
 
 =head2 CreateIngestion
@@ -644,15 +645,15 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateTemplate>
 Returns: a L<Paws::Quicksight::CreateTemplateResponse> instance
 
 Creates a template from an existing QuickSight analysis or template.
-The resulting template can be used to create a dashboard.
+You can use the resulting template to create a dashboard.
 
-A template is an entity in QuickSight which encapsulates the metadata
-required to create an analysis that can be used to create dashboard. It
-adds a layer of abstraction by use placeholders to replace the dataset
-associated with the analysis. You can use templates to create
-dashboards by replacing dataset placeholders with datasets which follow
-the same schema that was used to create the source analysis and
-template.
+A I<template> is an entity in QuickSight that encapsulates the metadata
+required to create an analysis and that you can use to create s
+dashboard. A template adds a layer of abstraction by using placeholders
+to replace the dataset associated with the analysis. You can use
+templates to create dashboards by replacing dataset placeholders with
+datasets that follow the same schema that was used to create the source
+analysis and template.
 
 
 =head2 CreateTemplateAlias
@@ -794,7 +795,7 @@ Each argument is described in detail in: L<Paws::Quicksight::DeleteIAMPolicyAssi
 
 Returns: a L<Paws::Quicksight::DeleteIAMPolicyAssignmentResponse> instance
 
-Deletes an existing assignment.
+Deletes an existing IAM policy assignment.
 
 
 =head2 DeleteTemplate
@@ -834,7 +835,9 @@ Each argument is described in detail in: L<Paws::Quicksight::DeleteTemplateAlias
 
 Returns: a L<Paws::Quicksight::DeleteTemplateAliasResponse> instance
 
-Update template alias of given template.
+Deletes the item that the specified template alias points to. If you
+provide a specific alias, you delete the version of the template that
+the alias points to.
 
 
 =head2 DeleteUser
@@ -916,7 +919,7 @@ Each argument is described in detail in: L<Paws::Quicksight::DescribeDashboardPe
 
 Returns: a L<Paws::Quicksight::DescribeDashboardPermissionsResponse> instance
 
-Describes read and write permissions on a dashboard.
+Describes read and write permissions for a dashboard.
 
 
 =head2 DescribeDataSet
@@ -1032,8 +1035,8 @@ Each argument is described in detail in: L<Paws::Quicksight::DescribeIAMPolicyAs
 
 Returns: a L<Paws::Quicksight::DescribeIAMPolicyAssignmentResponse> instance
 
-Describes an existing IAMPolicy Assignment by specified assignment
-name.
+Describes an existing IAM policy assignment, as specified by the
+assignment name.
 
 
 =head2 DescribeIngestion
@@ -1095,7 +1098,7 @@ Each argument is described in detail in: L<Paws::Quicksight::DescribeTemplateAli
 
 Returns: a L<Paws::Quicksight::DescribeTemplateAliasResponse> instance
 
-Describes the template aliases of a template.
+Describes the template alias for a template.
 
 
 =head2 DescribeTemplatePermissions
@@ -1161,15 +1164,15 @@ Each argument is described in detail in: L<Paws::Quicksight::GetDashboardEmbedUr
 
 Returns: a L<Paws::Quicksight::GetDashboardEmbedUrlResponse> instance
 
-Generates a server-side embeddable URL and authorization code. Before
-this can work properly, first you need to configure the dashboards and
-user permissions. For more information, see the Amazon QuickSight User
-Guide section on Embedding Amazon QuickSight Dashboards
+Generates a server-side embeddable URL and authorization code. For this
+process to work properly, first configure the dashboards and user
+permissions. For more information, see Embedding Amazon QuickSight
+Dashboards
 (https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html)
-or see the Amazon QuickSight API Reference section on Embedding Amazon
-QuickSight Dashboards
+in the I<Amazon QuickSight User Guide> or Embedding Amazon QuickSight
+Dashboards
 (https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html)
-.
+in the I<Amazon QuickSight API Reference>.
 
 Currently, you can use C<GetDashboardEmbedURL> only from the server,
 not from the userE<rsquo>s browser.
@@ -1192,7 +1195,7 @@ Each argument is described in detail in: L<Paws::Quicksight::ListDashboards>
 
 Returns: a L<Paws::Quicksight::ListDashboardsResponse> instance
 
-Lists dashboards in the AWS account.
+Lists dashboards in an AWS account.
 
 
 =head2 ListDashboardVersions
@@ -1214,7 +1217,7 @@ Each argument is described in detail in: L<Paws::Quicksight::ListDashboardVersio
 
 Returns: a L<Paws::Quicksight::ListDashboardVersionsResponse> instance
 
-Lists all the versions of the dashboards in the Quicksight
+Lists all the versions of the dashboards in the QuickSight
 subscription.
 
 
@@ -1235,7 +1238,8 @@ Each argument is described in detail in: L<Paws::Quicksight::ListDataSets>
 
 Returns: a L<Paws::Quicksight::ListDataSetsResponse> instance
 
-Lists all of the datasets belonging to this account in an AWS region.
+Lists all of the datasets belonging to the current AWS account in an
+AWS Region.
 
 The permissions resource is
 C<arn:aws:quicksight:region:aws-account-id:dataset/*>.
@@ -1329,7 +1333,7 @@ Each argument is described in detail in: L<Paws::Quicksight::ListIAMPolicyAssign
 
 Returns: a L<Paws::Quicksight::ListIAMPolicyAssignmentsResponse> instance
 
-Lists assignments in current QuickSight account.
+Lists IAM policy assignments in the current Amazon QuickSight account.
 
 
 =head2 ListIAMPolicyAssignmentsForUser
@@ -1353,9 +1357,9 @@ Each argument is described in detail in: L<Paws::Quicksight::ListIAMPolicyAssign
 
 Returns: a L<Paws::Quicksight::ListIAMPolicyAssignmentsForUserResponse> instance
 
-Lists all the assignments and the Amazon Resource Names (ARNs) for the
-associated IAM policies assigned to the specified user and the group or
-groups that the user belongs to.
+Lists all the IAM policy assignments, including the Amazon Resource
+Names (ARNs) for the IAM policies assigned to the specified user and
+group or groups that the user belongs to.
 
 
 =head2 ListIngestions
@@ -1435,7 +1439,7 @@ Each argument is described in detail in: L<Paws::Quicksight::ListTemplates>
 
 Returns: a L<Paws::Quicksight::ListTemplatesResponse> instance
 
-Lists all the templates in the QuickSight account.
+Lists all the templates in the current Amazon QuickSight account.
 
 
 =head2 ListTemplateVersions
@@ -1457,7 +1461,8 @@ Each argument is described in detail in: L<Paws::Quicksight::ListTemplateVersion
 
 Returns: a L<Paws::Quicksight::ListTemplateVersionsResponse> instance
 
-Lists all the versions of the templates in the Quicksight account.
+Lists all the versions of the templates in the current Amazon
+QuickSight account.
 
 
 =head2 ListUserGroups
@@ -1633,7 +1638,7 @@ Each argument is described in detail in: L<Paws::Quicksight::UpdateDashboard>
 
 Returns: a L<Paws::Quicksight::UpdateDashboardResponse> instance
 
-Updates a dashboard in the AWS account.
+Updates a dashboard in an AWS account.
 
 
 =head2 UpdateDashboardPermissions
@@ -1828,8 +1833,8 @@ Each argument is described in detail in: L<Paws::Quicksight::UpdateIAMPolicyAssi
 
 Returns: a L<Paws::Quicksight::UpdateIAMPolicyAssignmentResponse> instance
 
-Updates an existing assignment. This operation updates only the
-optional parameter or parameters that are specified in the request.
+Updates an existing IAM policy assignment. This operation updates only
+the optional parameter or parameters that are specified in the request.
 
 
 =head2 UpdateTemplate
@@ -1853,7 +1858,8 @@ Each argument is described in detail in: L<Paws::Quicksight::UpdateTemplate>
 
 Returns: a L<Paws::Quicksight::UpdateTemplateResponse> instance
 
-Updates a template from an existing QuickSight analysis.
+Updates a template from an existing Amazon QuickSight analysis or
+another template.
 
 
 =head2 UpdateTemplateAlias
@@ -1897,7 +1903,7 @@ Each argument is described in detail in: L<Paws::Quicksight::UpdateTemplatePermi
 
 Returns: a L<Paws::Quicksight::UpdateTemplatePermissionsResponse> instance
 
-Updates the permissions on a template.
+Updates the resource permissions for a template.
 
 
 =head2 UpdateUser

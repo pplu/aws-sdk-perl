@@ -39,16 +39,16 @@ Permission for the resource.
 
 =head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
-  The action to grant or revoke permissions on. For example,
-"quicksight:DescribeDashboard".
+  The action to grant or revoke permissions on, for example
+C<"quicksight:DescribeDashboard">.
 
 
 =head2 B<REQUIRED> Principal => Str
 
-  The Amazon Resource Name (ARN) of a QuickSight user or group, or an IAM
-ARN. If you are using cross-account resource sharing, this is the IAM
-ARN of an account root. Otherwise, it is the ARN of a QuickSight user
-or group. .
+  The Amazon Resource Name (ARN) of an Amazon QuickSight user or group,
+or an IAM ARN. If you are using cross-account resource sharing, this is
+the IAM ARN of an account root. Otherwise, it is the ARN of a
+QuickSight user or group. .
 
 
 

@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Error information on a data set SPICE ingestion.
+Error information for the SPICE ingestion of a dataset.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  Error essage.
+  Error message.
 
 
 =head2 Type => Str

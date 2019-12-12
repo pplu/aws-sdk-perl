@@ -52,7 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are deleting.
+The ID of the AWS account that contains the dashboard that you're
+deleting.
 
 
 
@@ -64,7 +65,7 @@ The ID for the dashboard.
 
 =head2 VersionNumber => Int
 
-The version number of the dashboard. If version number property is
+The version number of the dashboard. If the version number property is
 provided, only the specified version of the dashboard is deleted.
 
 

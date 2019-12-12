@@ -41,19 +41,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Information on the SPICE ingestion for a dataset.
+Information about the SPICE ingestion for a dataset.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-  The Amazon Resource name (ARN) of the resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 =head2 B<REQUIRED> CreatedTime => Str
 
-  The time this ingestion started.
+  The time that this ingestion started.
 
 
 =head2 ErrorInfo => L<Paws::Quicksight::ErrorInfo>
@@ -68,7 +68,7 @@ Information on the SPICE ingestion for a dataset.
 
 =head2 IngestionSizeInBytes => Int
 
-  Size of the data ingested in bytes.
+  The size of the data ingested, in bytes.
 
 
 =head2 B<REQUIRED> IngestionStatus => Str
@@ -78,7 +78,7 @@ Information on the SPICE ingestion for a dataset.
 
 =head2 IngestionTimeInSeconds => Int
 
-  The time this ingestion took, measured in seconds.
+  The time that this ingestion took, measured in seconds.
 
 
 =head2 QueueInfo => L<Paws::Quicksight::QueueInfo>

@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048
+            ],    # min: 1, max: 2048; OPTIONAL
           },    # OPTIONAL
           RelationalTable => {
             DataSourceArn => 'MyArn',
@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048
+            ],    # min: 1, max: 2048; OPTIONAL
             Name   => 'MyRelationalTableName',      # min: 1, max: 64
             Schema => 'MyRelationalTableSchema',    # max: 64; OPTIONAL
           },    # OPTIONAL
@@ -82,7 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048
+            ],    # min: 1, max: 2048; OPTIONAL
             UploadSettings => {
               ContainsHeader => 1,                # OPTIONAL
               Delimiter      => 'MyDelimiter',    # min: 1, max: 1; OPTIONAL
@@ -211,7 +211,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS Account ID.
+The AWS account ID.
 
 
 
@@ -231,7 +231,7 @@ AWS Region for each AWS account.
 
 =head2 B<REQUIRED> ImportMode => Str
 
-Indicates whether or not you want to import the data into SPICE.
+Indicates whether you want to import the data into SPICE.
 
 Valid values are: C<"SPICE">, C<"DIRECT_QUERY">
 
@@ -263,7 +263,8 @@ sources.
 
 =head2 RowLevelPermissionDataSet => L<Paws::Quicksight::RowLevelPermissionDataSet>
 
-Row-level security configuration on the data you want to create.
+The row-level security configuration for the data that you want to
+create.
 
 
 

@@ -31,9 +31,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Groupings of columns that work together in certain QuickSight features.
-This is a variant type structure. No more than one of the attributes
-should be non-null for this structure to be valid.
+Groupings of columns that work together in certain Amazon QuickSight
+features. This is a variant type structure. For this structure to be
+valid, only one of the attributes can be non-null.
 
 =head1 ATTRIBUTES
 

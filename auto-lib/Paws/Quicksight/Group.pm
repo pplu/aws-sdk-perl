@@ -44,7 +44,7 @@ QuickSight groups.
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) for the group.
+  The Amazon Resource Name (ARN) for the group.
 
 
 =head2 Description => Str

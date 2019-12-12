@@ -39,7 +39,7 @@ The column group schema.
 
 =head2 ColumnGroupColumnSchemaList => ArrayRef[L<Paws::Quicksight::ColumnGroupColumnSchema>]
 
-  A structure containing the list of column group column schemas.
+  A structure containing the list of schemas for column group columns.
 
 
 =head2 Name => Str

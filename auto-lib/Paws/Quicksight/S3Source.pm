@@ -40,7 +40,7 @@ A physical table type for as S3 data source.
 
 =head2 B<REQUIRED> DataSourceArn => Str
 
-  Data source ARN.
+  The amazon Resource Name (ARN) for the data source.
 
 
 =head2 B<REQUIRED> InputColumns => ArrayRef[L<Paws::Quicksight::InputColumn>]
@@ -50,7 +50,7 @@ A physical table type for as S3 data source.
 
 =head2 UploadSettings => L<Paws::Quicksight::UploadSettings>
 
-  Information on the S3 source file(s) format.
+  Information about the format for the S3 source file or files.
 
 
 

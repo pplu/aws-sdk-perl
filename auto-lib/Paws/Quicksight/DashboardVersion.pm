@@ -44,12 +44,12 @@ Dashboard version.
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) of the resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this dashboard version was created.
 
 
 =head2 Description => Str

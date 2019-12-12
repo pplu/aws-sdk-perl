@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-IAM policy assignment.
+An IAM policy assignment.
 
 =head1 ATTRIBUTES
 
@@ -58,7 +58,7 @@ IAM policy assignment.
 
 =head2 AwsAccountId => Str
 
-  AWS account ID.
+  The AWS account ID.
 
 
 =head2 Identities => L<Paws::Quicksight::IdentityMap>
@@ -68,7 +68,7 @@ IAM policy assignment.
 
 =head2 PolicyArn => Str
 
-  Policy Amazon Resource Name (ARN).
+  The Amazon Resource Name (ARN) for the IAM policy.
 
 
 

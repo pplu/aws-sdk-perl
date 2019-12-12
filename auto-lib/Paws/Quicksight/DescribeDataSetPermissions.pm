@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS Account ID.
+The AWS account ID.
 
 
 

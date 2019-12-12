@@ -44,7 +44,7 @@ A version of a template.
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this template version was created.
 
 
 =head2 DataSetConfigurations => ArrayRef[L<Paws::Quicksight::DataSetConfiguration>]

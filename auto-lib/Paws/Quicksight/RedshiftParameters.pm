@@ -34,15 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Redshift parameters. The C<ClusterId> field can be blank if C<Host> and
-C<Port> are both set, and the other way around.
+Amazon Redshift parameters. The C<ClusterId> field can be blank if
+C<Host> and C<Port> are both set. The C<Host> and C<Port> fields can be
+blank if the C<ClusterId> field is set.
 
 =head1 ATTRIBUTES
 
 
 =head2 ClusterId => Str
 
-  Cluster ID. This can be blank if the C<Host> and C<Port> are provided.
+  Cluster ID. This field can be blank if the C<Host> and C<Port> are
+provided.
 
 
 =head2 B<REQUIRED> Database => Str
@@ -52,12 +54,12 @@ C<Port> are both set, and the other way around.
 
 =head2 Host => Str
 
-  Host. This can be blank if the C<ClusterId> is provided.
+  Host. This field can be blank if C<ClusterId> is provided.
 
 
 =head2 Port => Int
 
-  Port. This can be blank if the C<ClusterId> is provided.
+  Port. This field can be blank if the C<ClusterId> is provided.
 
 
 

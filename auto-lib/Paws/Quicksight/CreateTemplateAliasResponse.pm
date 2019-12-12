@@ -29,7 +29,7 @@ The HTTP status of the request.
 
 =head2 TemplateAlias => L<Paws::Quicksight::TemplateAlias>
 
-Information on the template alias.
+Information about the template alias.
 
 
 =head2 _request_id => Str

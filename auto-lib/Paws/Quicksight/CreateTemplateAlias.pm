@@ -55,13 +55,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 =head2 B<REQUIRED> AliasName => Str
 
 The name that you want to give to the template alias that you're
-creating. Aliases that start with C<$> are reserved by QuickSight.
+creating. Don't start the alias name with the C<$> character. Alias
+names that start with C<$> are reserved by QuickSight.
 
 
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the template you are aliasing.
+The ID of the AWS account that contains the template that you creating
+an alias for.
 
 
 

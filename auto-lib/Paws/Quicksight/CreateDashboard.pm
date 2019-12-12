@@ -136,40 +136,43 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID where you want to create the dashboard.
+The ID of the AWS account where you want to create the dashboard.
 
 
 
 =head2 B<REQUIRED> DashboardId => Str
 
-The ID for the dashboard, also added to IAM policy.
+The ID for the dashboard, also added to the IAM policy.
 
 
 
 =head2 DashboardPublishOptions => L<Paws::Quicksight::DashboardPublishOptions>
 
-Publishing options when creating dashboard.
+Options for publishing the dashboard when you create it:
 
 =over
 
 =item *
 
-AvailabilityStatus for AdHocFilteringOption - This can be either
-C<ENABLED> or C<DISABLED>. When This is set to set to C<DISABLED>,
+C<AvailabilityStatus> for C<AdHocFilteringOption> - This status can be
+either C<ENABLED> or C<DISABLED>. When this is set to C<DISABLED>,
 QuickSight disables the left filter pane on the published dashboard,
-which can be used for AdHoc filtering. Enabled by default.
+which can be used for ad hoc (one-time) filtering. This option is
+C<ENABLED> by default.
 
 =item *
 
-AvailabilityStatus for ExportToCSVOption - This can be either
-C<ENABLED> or C<DISABLED>. The visual option to export data to CSV is
-disabled when this is set to C<DISABLED>. Enabled by default.
+C<AvailabilityStatus> for C<ExportToCSVOption> - This status can be
+either C<ENABLED> or C<DISABLED>. The visual option to export data to
+.csv format isn't enabled when this is set to C<DISABLED>. This option
+is C<ENABLED> by default.
 
 =item *
 
-VisibilityState for SheetControlsOption - This can be either
-C<COLLAPSED> or C<EXPANDED>. The sheet controls pane is collapsed by
-default when set to true. Collapsed by default.
+C<VisibilityState> for C<SheetControlsOption> - This visibility state
+can be either C<COLLAPSED> or C<EXPANDED>. The sheet controls pane is
+collapsed by default when set to true. This option is C<COLLAPSED> by
+default.
 
 =back
 
@@ -186,23 +189,24 @@ The display name of the dashboard.
 
 A structure that contains the parameters of the dashboard. These are
 parameter overrides for a dashboard. A dashboard can have any type of
-parameters and some parameters might accept multiple values. You could
-use the following structure to override two string parameters that
-accept multiple values:
+parameters, and some parameters might accept multiple values. You can
+use the dashboard permissions structure described following to override
+two string parameters that accept multiple values.
 
 
 
 =head2 Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]
 
 A structure that contains the permissions of the dashboard. You can use
-this for granting permissions with principal and action information.
+this structure for granting permissions with principal and action
+information.
 
 
 
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::DashboardSourceEntity>
 
-Source entity from which the dashboard is created. The souce entity
-accepts the Amazon Resource Name (ARN) of the source template or
+The source entity from which the dashboard is created. The source
+entity accepts the Amazon Resource Name (ARN) of the source template or
 analysis and also references the replacement datasets for the
 placeholders set when creating the template. The replacement datasets
 need to follow the same schema as the datasets for which placeholders

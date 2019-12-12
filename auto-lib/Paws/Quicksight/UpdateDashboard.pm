@@ -118,7 +118,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are updating.
+The ID of the AWS account that contains the dashboard that you're
+updating.
 
 
 
@@ -130,28 +131,31 @@ The ID for the dashboard.
 
 =head2 DashboardPublishOptions => L<Paws::Quicksight::DashboardPublishOptions>
 
-Publishing options when creating a dashboard.
+Options for publishing the dashboard when you create it:
 
 =over
 
 =item *
 
-AvailabilityStatus for AdHocFilteringOption - This can be either
-C<ENABLED> or C<DISABLED>. When This is set to set to C<DISABLED>,
+C<AvailabilityStatus> for C<AdHocFilteringOption> - This status can be
+either C<ENABLED> or C<DISABLED>. When this is set to C<DISABLED>,
 QuickSight disables the left filter pane on the published dashboard,
-which can be used for AdHoc filtering. Enabled by default.
+which can be used for ad hoc (one-time) filtering. This option is
+C<ENABLED> by default.
 
 =item *
 
-AvailabilityStatus for ExportToCSVOption - This can be either
-C<ENABLED> or C<DISABLED>. The visual option to export data to CSV is
-disabled when this is set to C<DISABLED>. Enabled by default.
+C<AvailabilityStatus> for C<ExportToCSVOption> - This status can be
+either C<ENABLED> or C<DISABLED>. The visual option to export data to
+.csv format isn't enabled when this is set to C<DISABLED>. This option
+is C<ENABLED> by default.
 
 =item *
 
-VisibilityState for SheetControlsOption - This can be either
-C<COLLAPSED> or C<EXPANDED>. The sheet controls pane is collapsed by
-default when set to true. Collapsed by default.
+C<VisibilityState> for C<SheetControlsOption> - This visibility state
+can be either C<COLLAPSED> or C<EXPANDED>. The sheet controls pane is
+collapsed by default when set to true. This option is C<COLLAPSED> by
+default.
 
 =back
 
@@ -173,11 +177,11 @@ A structure that contains the parameters of the dashboard.
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::DashboardSourceEntity>
 
 The template or analysis from which the dashboard is created. The
-SouceTemplate entity accepts the Arn of the template and also
-references to replacement datasets for the placeholders set when
-creating the template. The replacement datasets need to follow the same
-schema as the datasets for which placeholders were created when
-creating the template.
+C<SouceTemplate> entity accepts the Amazon Resource Name (ARN) of the
+template and also references to replacement datasets for the
+placeholders set when creating the template. The replacement datasets
+need to follow the same schema as the datasets for which placeholders
+were created when creating the template.
 
 
 

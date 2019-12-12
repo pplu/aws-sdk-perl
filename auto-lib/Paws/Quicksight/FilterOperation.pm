@@ -31,15 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-A transform operation that filters rows based on some condition.
+A transform operation that filters rows based on a condition.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ConditionExpression => Str
 
-  An expression that must evaluate to a boolean value. Rows for which the
-expression is evaluated to true are kept in the dataset.
+  An expression that must evaluate to a Boolean value. Rows for which the
+expression evaluates to true are kept in the dataset.
 
 
 

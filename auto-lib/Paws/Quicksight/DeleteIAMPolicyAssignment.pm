@@ -59,7 +59,7 @@ The name of the assignment.
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS account ID where you want to delete an IAM policy assignment.
+The AWS account ID where you want to delete the IAM policy assignment.
 
 
 

@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AliasName => Str
 
-The alias of the template that you want to update. If you provide a
+The alias of the template that you want to update. If you name a
 specific alias, you update the version that the alias points to. You
 can specify the latest version of the template by providing the keyword
 C<$LATEST> in the C<AliasName> parameter. The keyword C<$PUBLISHED>
@@ -64,7 +64,8 @@ doesn't apply to templates.
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the template aliases you are updating.
+The ID of the AWS account that contains the template alias that you're
+updating.
 
 
 

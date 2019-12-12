@@ -34,13 +34,13 @@ AWS Region for each AWS account.
 =head2 IngestionArn => Str
 
 The ARN for the ingestion, which is triggered as a result of dataset
-creation if the import mode is SPICE
+creation if the import mode is SPICE.
 
 
 =head2 IngestionId => Str
 
 The ID of the ingestion, which is triggered as a result of dataset
-creation if the import mode is SPICE
+creation if the import mode is SPICE.
 
 
 =head2 RequestId => Str

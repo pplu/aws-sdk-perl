@@ -20,7 +20,7 @@ Paws::Quicksight::ListIAMPolicyAssignmentsForUserResponse
 
 =head2 ActiveAssignments => ArrayRef[L<Paws::Quicksight::ActiveIAMPolicyAssignment>]
 
-Active assignments for this user.
+The active assignments for this user.
 
 
 =head2 NextToken => Str

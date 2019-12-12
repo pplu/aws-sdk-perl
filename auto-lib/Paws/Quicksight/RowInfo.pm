@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Information on rows during a data set SPICE ingestion.
+Information about rows for a data set SPICE ingestion.
 
 =head1 ATTRIBUTES
 

@@ -47,8 +47,8 @@ The ID for the template.
 
 =head2 VersionArn => Str
 
-The Amazon Resource Name (ARN) for the template, including the version
-information of the first version.
+The ARN for the template, including the version information of the
+first version.
 
 
 =head2 _request_id => Str

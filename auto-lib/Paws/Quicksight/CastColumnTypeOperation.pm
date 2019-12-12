@@ -46,7 +46,8 @@ A transform operation that casts a column to a different type.
 =head2 Format => Str
 
   When casting a column from string to datetime type, you can supply a
-QuickSight supported format string to denote the source data format.
+string in a format supported by Amazon QuickSight to denote the source
+data format.
 
 
 =head2 B<REQUIRED> NewColumnType => Str

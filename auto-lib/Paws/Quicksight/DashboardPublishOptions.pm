@@ -40,12 +40,12 @@ Dashboard publish options.
 
 =head2 AdHocFilteringOption => L<Paws::Quicksight::AdHocFilteringOption>
 
-  Ad hoc filtering option.
+  Ad hoc (one-time) filtering option.
 
 
 =head2 ExportToCSVOption => L<Paws::Quicksight::ExportToCSVOption>
 
-  Export to CSV option.
+  Export to .csv option.
 
 
 =head2 SheetControlsOption => L<Paws::Quicksight::SheetControlsOption>

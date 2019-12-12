@@ -70,7 +70,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are updating.
+The ID of the AWS account that contains the dashboard whose permissions
+you're updating.
 
 
 

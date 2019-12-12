@@ -39,7 +39,7 @@ Dataset reference.
 
 =head2 B<REQUIRED> DataSetArn => Str
 
-  Dataset ARN.
+  Dataset Amazon Resource Name (ARN).
 
 
 =head2 B<REQUIRED> DataSetPlaceholder => Str

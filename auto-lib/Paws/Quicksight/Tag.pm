@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-The keys of the key-value pairs for the resource tag or tags assigned
-to the resource.
+The key or keys of the key-value pairs for the resource tag or tags
+assigned to the resource.
 
 =head1 ATTRIBUTES
 

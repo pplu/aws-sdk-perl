@@ -40,9 +40,10 @@ A calculated column for a dataset.
 
 =head2 B<REQUIRED> ColumnId => Str
 
-  A unique ID to identify a calculated column. During dataset update, if
-the column ID of a calculated column matches that of an existing
-calculated column, QuickSight preserves the existing calculated column.
+  A unique ID to identify a calculated column. During a dataset update,
+if the column ID of a calculated column matches that of an existing
+calculated column, Amazon QuickSight preserves the existing calculated
+column.
 
 
 =head2 B<REQUIRED> ColumnName => Str

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Export to CSV option.
+Export to .csv option.
 
 =head1 ATTRIBUTES
 

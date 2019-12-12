@@ -39,7 +39,7 @@ connects to your underlying data source.
 
 =head2 DisableSsl => Bool
 
-  A boolean flag to control whether SSL should be disabled.
+  A Boolean option to control whether SSL should be disabled.
 
 
 

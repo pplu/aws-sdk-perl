@@ -39,7 +39,7 @@ The source analysis of the template.
 
 =head2 B<REQUIRED> Arn => Str
 
-  The Amazon Resource name (ARN) of the resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 =head2 B<REQUIRED> DataSetReferences => ArrayRef[L<Paws::Quicksight::DataSetReference>]

@@ -47,12 +47,12 @@ The template version.
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this template version was created.
 
 
 =head2 Description => Str
 
-  The desription of the template version.
+  The description of the template version.
 
 
 =head2 Status => Str

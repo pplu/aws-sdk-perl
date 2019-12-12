@@ -75,7 +75,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the template you are updating.
+The ID of the AWS account that contains the template that you're
+updating.
 
 
 
@@ -87,8 +88,8 @@ The name for the template.
 
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::TemplateSourceEntity>
 
-The source QuickSight entity from which this template is being created.
-Templates can be currently created from an Analysis or another
+The source QuickSight entity from which this template is being updated.
+You can currently update templates from an Analysis or another
 template.
 
 
@@ -101,10 +102,10 @@ The ID for the template.
 
 =head2 VersionDescription => Str
 
-A description of the current template version being updated. Every time
-you cal C<UpdateTemplate> you create a new version. Each version of the
-template maintains a description of the version in the
-C<VersionDescription> field.
+A description of the current template version that is being updated.
+Every time you call C<UpdateTemplate>, you create a new version of the
+template. Each version of the template maintains a description of the
+version in the C<VersionDescription> field.
 
 
 

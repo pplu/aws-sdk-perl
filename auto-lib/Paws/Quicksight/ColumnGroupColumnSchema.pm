@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-A structure describing the name, datatype, and geographic role of the
+A structure describing the name, data type, and geographic role of the
 columns.
 
 =head1 ATTRIBUTES

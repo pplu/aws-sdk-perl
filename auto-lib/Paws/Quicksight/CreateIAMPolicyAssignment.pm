@@ -72,23 +72,23 @@ The name of the assignment. It must be unique within an AWS account.
 
 =head2 B<REQUIRED> AssignmentStatus => Str
 
-The status of an assignment:
+The status of the assignment. Possible values are as follows:
 
 =over
 
 =item *
 
-ENABLED - Anything specified in this assignment is used while creating
-the data source.
+C<ENABLED> - Anything specified in this assignment is used when
+creating the data source.
 
 =item *
 
-DISABLED - This assignment isn't used while creating the data source.
+C<DISABLED> - This assignment isn't used when creating the data source.
 
 =item *
 
-DRAFT - Assignment is an unfinished draft and isn't used while creating
-the data source.
+C<DRAFT> - This assignment is an unfinished draft and isn't used when
+creating the data source.
 
 =back
 
@@ -97,14 +97,15 @@ Valid values are: C<"ENABLED">, C<"DRAFT">, C<"DISABLED">
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS Account ID where you want to assign QuickSight users or groups
-to an IAM policy.
+The ID of the AWS account where you want to assign an IAM policy to
+QuickSight users or groups.
 
 
 
 =head2 Identities => L<Paws::Quicksight::IdentityMap>
 
-QuickSight users and/or groups that you want to assign the policy to.
+The QuickSight users, groups, or both that you want to assign the
+policy to.
 
 
 
@@ -116,8 +117,8 @@ The namespace that contains the assignment.
 
 =head2 PolicyArn => Str
 
-An IAM policy Amazon Resource Name (ARN) that you want to apply to the
-QuickSight users and groups specified in this assignment.
+The ARN for the IAM policy to apply to the QuickSight users and groups
+specified in this assignment.
 
 
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-The combination of username and password that are used as credentials.
+The combination of user name and password that are used as credentials.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ The combination of username and password that are used as credentials.
 
 =head2 B<REQUIRED> Username => Str
 
-  Username.
+  User name.
 
 
 

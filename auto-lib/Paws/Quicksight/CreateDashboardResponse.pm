@@ -27,7 +27,7 @@ The Amazon Resource Name (ARN) of the dashboard.
 
 =head2 CreationStatus => Str
 
-The creation status of the dashboard create request.
+The status of the dashboard creation request.
 
 Valid values are: C<"CREATION_IN_PROGRESS">, C<"CREATION_SUCCESSFUL">, C<"CREATION_FAILED">, C<"UPDATE_IN_PROGRESS">, C<"UPDATE_SUCCESSFUL">, C<"UPDATE_FAILED">
 =head2 DashboardId => Str

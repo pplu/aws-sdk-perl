@@ -56,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS Account ID that the user is in. Currently, you use the ID for
+The AWS account ID that the user is in. Currently, you use the ID for
 the AWS account that contains your Amazon QuickSight account.
 
 

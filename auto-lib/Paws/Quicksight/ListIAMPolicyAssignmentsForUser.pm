@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS account ID that contains the assignment.
+The ID of the AWS account that contains the assignments.
 
 
 

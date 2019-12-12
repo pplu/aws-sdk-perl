@@ -69,14 +69,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS Account ID.
+The AWS account ID.
 
 
 
 =head2 B<REQUIRED> DataSetId => Str
 
-The ID for the dataset that you want to create. This ID is unique per
-AWS Region for each AWS account.
+The ID for the dataset whose permissions you want to update. This ID is
+unique per AWS Region for each AWS account.
 
 
 

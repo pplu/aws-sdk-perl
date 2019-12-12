@@ -21,7 +21,7 @@ Paws::Quicksight::DeleteTemplateAliasResponse
 
 =head2 AliasName => Str
 
-The name of the alias.
+The name for the template alias.
 
 
 =head2 Arn => Str
@@ -41,7 +41,7 @@ The HTTP status of the request.
 
 =head2 TemplateId => Str
 
-An ID for the template.
+An ID for the template associated with the deletion.
 
 
 =head2 _request_id => Str

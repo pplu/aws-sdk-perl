@@ -49,13 +49,13 @@ Dataset.
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) of the resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 =head2 ColumnGroups => ArrayRef[L<Paws::Quicksight::ColumnGroup>]
 
-  Groupings of columns that work together in certain QuickSight features.
-Currently, only geospatial hierarchy is supported.
+  Groupings of columns that work together in certain Amazon QuickSight
+features. Currently, only geospatial hierarchy is supported.
 
 
 =head2 ConsumedSpiceCapacityInBytes => Int
@@ -66,7 +66,7 @@ dataset isn't imported into SPICE.
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this dataset was created.
 
 
 =head2 DataSetId => Str
@@ -76,12 +76,12 @@ dataset isn't imported into SPICE.
 
 =head2 ImportMode => Str
 
-  Indicates whether or not you want to import the data into SPICE.
+  Indicates whether you want to import the data into SPICE.
 
 
 =head2 LastUpdatedTime => Str
 
-  The last time this was updated.
+  The last time that this dataset was updated.
 
 
 =head2 LogicalTableMap => L<Paws::Quicksight::LogicalTableMap>
@@ -109,7 +109,7 @@ sources.
 
 =head2 RowLevelPermissionDataSet => L<Paws::Quicksight::RowLevelPermissionDataSet>
 
-  Row-level security configuration on the dataset.
+  The row-level security configuration for the dataset.
 
 
 

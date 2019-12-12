@@ -23,7 +23,7 @@ The HTTP status of the request.
 
 =head2 Template => L<Paws::Quicksight::Template>
 
-The template structure of the object you want to describe.
+The template structure for the object you want to describe.
 
 
 =head2 _request_id => Str

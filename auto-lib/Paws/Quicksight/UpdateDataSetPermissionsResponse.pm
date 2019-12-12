@@ -25,8 +25,8 @@ The Amazon Resource Name (ARN) of the dataset.
 
 =head2 DataSetId => Str
 
-The ID for the dataset that you want to create. This ID is unique per
-AWS Region for each AWS account.
+The ID for the dataset whose permissions you want to update. This ID is
+unique per AWS Region for each AWS account.
 
 
 =head2 RequestId => Str

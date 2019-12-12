@@ -21,7 +21,7 @@ Paws::Quicksight::ListDashboardsResponse
 =head2 DashboardSummaryList => ArrayRef[L<Paws::Quicksight::DashboardSummary>]
 
 A structure that contains all of the dashboards shared with the user.
-Provides basic information about the dashboards.
+This structure provides basic information about the dashboards.
 
 
 =head2 NextToken => Str

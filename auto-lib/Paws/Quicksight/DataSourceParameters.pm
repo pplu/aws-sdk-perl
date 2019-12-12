@@ -49,26 +49,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-The parameters that QuickSight uses to connect to your underlying
-source. This is a variant type structure. At most one of the attributes
-should be non-null for this structure to be valid.
+The parameters that Amazon QuickSight uses to connect to your
+underlying data source. This is a variant type structure. For this
+structure to be valid, only one of the attributes can be non-null.
 
 =head1 ATTRIBUTES
 
 
 =head2 AmazonElasticsearchParameters => L<Paws::Quicksight::AmazonElasticsearchParameters>
 
-  Amazon Elasticsearch parameters.
+  Amazon Elasticsearch Service parameters.
 
 
 =head2 AthenaParameters => L<Paws::Quicksight::AthenaParameters>
 
-  Athena parameters.
+  Amazon Athena parameters.
 
 
 =head2 AuroraParameters => L<Paws::Quicksight::AuroraParameters>
 
-  Aurora MySQL parameters.
+  Amazon Aurora MySQL parameters.
 
 
 =head2 AuroraPostgreSqlParameters => L<Paws::Quicksight::AuroraPostgreSqlParameters>
@@ -108,12 +108,12 @@ should be non-null for this structure to be valid.
 
 =head2 RdsParameters => L<Paws::Quicksight::RdsParameters>
 
-  RDS parameters.
+  Amazon RDS parameters.
 
 
 =head2 RedshiftParameters => L<Paws::Quicksight::RedshiftParameters>
 
-  Redshift parameters.
+  Amazon Redshift parameters.
 
 
 =head2 S3Parameters => L<Paws::Quicksight::S3Parameters>

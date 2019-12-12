@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Error information on data source creation or update.
+Error information for the data source creation or update.
 
 =head1 ATTRIBUTES
 

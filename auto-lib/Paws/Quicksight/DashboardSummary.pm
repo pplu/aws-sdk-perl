@@ -44,12 +44,12 @@ Dashboard summary.
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) of the resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this dashboard was created.
 
 
 =head2 DashboardId => Str
@@ -59,17 +59,17 @@ Dashboard summary.
 
 =head2 LastPublishedTime => Str
 
-  The last time this was published.
+  The last time that this dashboard was published.
 
 
 =head2 LastUpdatedTime => Str
 
-  The last time this was updated.
+  The last time that this dashboard was updated.
 
 
 =head2 Name => Str
 
-  A display name for the dataset.
+  A display name for the dashboard.
 
 
 =head2 PublishedVersionNumber => Int

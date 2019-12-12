@@ -39,12 +39,12 @@ A transform operation that renames a column.
 
 =head2 B<REQUIRED> ColumnName => Str
 
-  Name of the column to be renamed.
+  The name of the column to be renamed.
 
 
 =head2 B<REQUIRED> NewColumnName => Str
 
-  New name for the column.
+  The new name for the column.
 
 
 

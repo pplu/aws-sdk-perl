@@ -58,13 +58,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 AssignmentStatus => Str
 
-The status of the assignment.
+The status of the assignments.
 
 Valid values are: C<"ENABLED">, C<"DRAFT">, C<"DISABLED">
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-The AWS account ID that contains this IAM policy assignment.
+The ID of the AWS account that contains these IAM policy assignments.
 
 
 
@@ -76,7 +76,7 @@ The maximum number of results to be returned per request.
 
 =head2 B<REQUIRED> Namespace => Str
 
-The namespace for this assignment.
+The namespace for the assignments.
 
 
 

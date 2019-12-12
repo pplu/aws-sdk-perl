@@ -48,12 +48,12 @@ The template summary.
 
 =head2 CreatedTime => Str
 
-  The last time this was created.
+  The last time that this template was created.
 
 
 =head2 LastUpdatedTime => Str
 
-  The last time this was updated.
+  The last time that this template was updated.
 
 
 =head2 LatestVersionNumber => Int
@@ -69,7 +69,7 @@ summary.
 
 =head2 TemplateId => Str
 
-  The ID of the template. This is unique per AWS Region for each AWS
+  The ID of the template. This ID is unique per AWS Region for each AWS
 account.
 
 

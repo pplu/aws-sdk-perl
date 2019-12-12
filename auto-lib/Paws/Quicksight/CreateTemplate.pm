@@ -113,9 +113,9 @@ A list of resource permissions to be set on the template.
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::TemplateSourceEntity>
 
 The Amazon Resource Name (ARN) of the source entity from which this
-template is being created. Templates can be currently created from an
-analysis or another template. If the ARN is for an analysis, you must
-include its dataset references.
+template is being created. Currently, you can create a template from an
+analysis or another template. If the ARN is for an analysis, include
+its dataset references.
 
 
 
@@ -128,17 +128,18 @@ assigned to the resource.
 
 =head2 B<REQUIRED> TemplateId => Str
 
-An ID for the template you want to create. This is unique per AWS
-region per AWS account.
+An ID for the template that you want to create. This template is unique
+per AWS Region in each AWS account.
 
 
 
 =head2 VersionDescription => Str
 
 A description of the current template version being created. This API
-created the first version of the template. Every time UpdateTemplate is
-called a new version is created. Each version of the template maintains
-a description of the version in the VersionDescription field.
+operation creates the first version of the template. Every time
+C<UpdateTemplate> is called, a new version is created. Each version of
+the template maintains a description of the version in the
+C<VersionDescription> field.
 
 
 

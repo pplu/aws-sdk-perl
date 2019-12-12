@@ -54,22 +54,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AliasName => Str
 
-The alias of the template that you want to delete. If you provide a
-specific alias, you delete the version that the alias points to. You
-can specify the latest version of the template by providing the keyword
-C<$LATEST> in the C<AliasName> parameter.
+The name for the template alias. If you name a specific alias, you
+delete the version that the alias points to. You can specify the latest
+version of the template by providing the keyword C<$LATEST> in the
+C<AliasName> parameter.
 
 
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the template alias you are deleting.
+The ID of the AWS account that contains the item to delete.
 
 
 
 =head2 B<REQUIRED> TemplateId => Str
 
-An ID for the template.
+The ID for the template that the specified alias is for.
 
 
 

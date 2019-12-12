@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Row-level security configuration on the dataset.
+The row-level security configuration for the dataset.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-  The Amazon Resource name (ARN) of the permission dataset.
+  The Amazon Resource Name (ARN) of the permission dataset.
 
 
 =head2 B<REQUIRED> PermissionPolicy => Str

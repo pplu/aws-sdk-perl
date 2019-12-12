@@ -38,7 +38,7 @@ The source template of the template.
 
 =head2 B<REQUIRED> Arn => Str
 
-  The Amazon Resource name (ARN) of the resource.
+  The Amazon Resource Name (ARN) of the resource.
 
 
 

@@ -45,7 +45,7 @@ The template alias.
 
 =head2 Arn => Str
 
-  The ARN of the template alias.
+  The Amazon Resource Name (ARN) of the template alias.
 
 
 =head2 TemplateVersionNumber => Int

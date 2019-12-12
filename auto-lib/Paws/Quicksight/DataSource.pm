@@ -48,12 +48,12 @@ The structure of a data source.
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) of the data source.
+  The Amazon Resource Name (ARN) of the data source.
 
 
 =head2 CreatedTime => Str
 
-  The time this was created.
+  The time that this data source was created.
 
 
 =head2 DataSourceId => Str
@@ -64,9 +64,9 @@ AWS account.
 
 =head2 DataSourceParameters => L<Paws::Quicksight::DataSourceParameters>
 
-  The parameters that QuickSight uses to connect to your underlying
-source. This is a variant type structure. At most one of the attributes
-should be non-null for this structure to be valid.
+  The parameters that Amazon QuickSight uses to connect to your
+underlying source. This is a variant type structure. For this structure
+to be valid, only one of the attributes can be non-null.
 
 
 =head2 ErrorInfo => L<Paws::Quicksight::DataSourceErrorInfo>
@@ -77,7 +77,7 @@ source.
 
 =head2 LastUpdatedTime => Str
 
-  The last time this was updated.
+  The last time that this data source was updated.
 
 
 =head2 Name => Str
@@ -98,8 +98,8 @@ connects to your underlying source.
 
 =head2 Type => Str
 
-  The type of the data source. This indicates which database engine the
-data source connects to.
+  The type of the data source. This type indicates which database engine
+the data source connects to.
 
 
 =head2 VpcConnectionProperties => L<Paws::Quicksight::VpcConnectionProperties>

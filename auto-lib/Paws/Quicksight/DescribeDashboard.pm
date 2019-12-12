@@ -59,7 +59,8 @@ The alias name.
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are describing.
+The ID of the AWS account that contains the dashboard that you're
+describing.
 
 
 
@@ -71,8 +72,8 @@ The ID for the dashboard.
 
 =head2 VersionNumber => Int
 
-The version number for the dashboard. If version number isnE<rsquo>t
-passed the latest published dashboard version is described.
+The version number for the dashboard. If a version number isn't passed,
+the latest published dashboard version is described.
 
 
 

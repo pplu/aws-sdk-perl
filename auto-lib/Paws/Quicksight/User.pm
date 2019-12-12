@@ -45,14 +45,14 @@ subscription can't contain more than 20 million users.
 
 =head2 Active => Bool
 
-  Active status of user. When you create an Amazon QuickSight user
-thatE<rsquo>s not an IAM user or an AD user, that user is inactive
-until they sign in and provide a password.
+  The active status of user. When you create an Amazon QuickSight user
+thatE<rsquo>s not an IAM user or an Active Directory user, that user is
+inactive until they sign in and provide a password.
 
 
 =head2 Arn => Str
 
-  The Amazon Resource name (ARN) for the user.
+  The Amazon Resource Name (ARN) for the user.
 
 
 =head2 Email => Str
