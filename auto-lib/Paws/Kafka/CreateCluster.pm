@@ -9,6 +9,7 @@ package Paws::Kafka::CreateCluster;
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'enhancedMonitoring');
   has KafkaVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kafkaVersion', required => 1);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfBrokerNodes', required => 1);
+  has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoringInfo', traits => ['NameInRequest'], request_name => 'openMonitoring');
   has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
@@ -71,8 +72,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InCluster => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      EnhancedMonitoring => 'DEFAULT',                            # OPTIONAL
-      Tags               => { 'My__string' => 'My__string', },    # OPTIONAL
+      EnhancedMonitoring => 'DEFAULT',    # OPTIONAL
+      OpenMonitoring     => {
+        Prometheus => {
+          JmxExporter => {
+            EnabledInBroker => 1,         # OPTIONAL
+
+          },    # OPTIONAL
+          NodeExporter => {
+            EnabledInBroker => 1,    # OPTIONAL
+
+          },    # OPTIONAL
+        },
+
+      },    # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -135,6 +149,12 @@ The version of Apache Kafka.
 =head2 B<REQUIRED> NumberOfBrokerNodes => Int
 
 The number of broker nodes in the cluster.
+
+
+
+=head2 OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>
+
+The settings for open monitoring.
 
 
 

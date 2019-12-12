@@ -109,6 +109,11 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateClusterConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateMonitoring {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateMonitoring', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllClusterOperations {
     my $self = shift;
@@ -227,7 +232,7 @@ package Paws::Kafka;
   }
 
 
-  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration / }
+  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration UpdateMonitoring / }
 
 1;
 
@@ -281,6 +286,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 =item [EncryptionInfo => L<Paws::Kafka::EncryptionInfo>]
 
 =item [EnhancedMonitoring => Str]
+
+=item [OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>]
 
 =item [Tags => L<Paws::Kafka::__mapOf__string>]
 
@@ -629,6 +636,31 @@ Returns: a L<Paws::Kafka::UpdateClusterConfigurationResponse> instance
 
 Updates the cluster with the configuration that is specified in the
 request body.
+
+
+=head2 UpdateMonitoring
+
+=over
+
+=item ClusterArn => Str
+
+=item CurrentVersion => Str
+
+=item [EnhancedMonitoring => Str]
+
+=item [OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateMonitoring>
+
+Returns: a L<Paws::Kafka::UpdateMonitoringResponse> instance
+
+Updates the monitoring settings for the cluster. You can use this
+operation to specify which Apache Kafka metrics you want Amazon MSK to
+send to Amazon CloudWatch. You can also specify settings for open
+monitoring with Prometheus.
 
 
 

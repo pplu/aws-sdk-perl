@@ -11,6 +11,7 @@ package Paws::Kafka::ClusterInfo;
   has EncryptionInfo => (is => 'ro', isa => 'Paws::Kafka::EncryptionInfo', request_name => 'encryptionInfo', traits => ['NameInRequest']);
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', request_name => 'enhancedMonitoring', traits => ['NameInRequest']);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
+  has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoring', request_name => 'openMonitoring', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has ZookeeperConnectString => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectString', traits => ['NameInRequest']);
@@ -107,6 +108,11 @@ these three levels of monitoring, see Monitoring
 =head2 NumberOfBrokerNodes => Int
 
   The number of broker nodes in the cluster.
+
+
+=head2 OpenMonitoring => L<Paws::Kafka::OpenMonitoring>
+
+  Settings for open monitoring using Prometheus.
 
 
 =head2 State => Str
