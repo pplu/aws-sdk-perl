@@ -81,7 +81,7 @@ A valid JSON or YAML string.
 Specify the document format for the new document version. Systems
 Manager supports JSON and YAML documents. JSON is the default format.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentVersion => Str
 

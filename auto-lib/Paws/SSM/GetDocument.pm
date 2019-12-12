@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 Returns the document in the specified format. The document format can
 be either JSON or YAML. JSON is the default format.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentVersion => Str
 

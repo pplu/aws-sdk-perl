@@ -98,14 +98,14 @@ A valid JSON or YAML string.
 Specify the document format for the request. The document format can be
 either JSON or YAML. JSON is the default format.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentType => Str
 
 The type of document to create. Valid document types include:
 C<Command>, C<Policy>, C<Automation>, C<Session>, and C<Package>.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">
 
 =head2 B<REQUIRED> Name => Str
 

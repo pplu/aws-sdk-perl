@@ -46,9 +46,7 @@ The number of instances with installed patches.
 
 =head2 InstancesWithInstalledPendingRebootPatches => Int
 
-The number of instances with patches installed that have not been
-rebooted after the patch installation. The status of these instances is
-NON_COMPLIANT.
+Reserved for future use.
 
 
 =head2 InstancesWithInstalledRejectedPatches => Int

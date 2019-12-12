@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyAttributeName' =>
               'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
           },    # OPTIONAL
-          Id    => 'MyComplianceItemId',       # min: 1, max: 100; OPTIONAL
+          Id    => 'MyComplianceItemId',       # OPTIONAL
           Title => 'MyComplianceItemTitle',    # max: 500; OPTIONAL
         },
         ...

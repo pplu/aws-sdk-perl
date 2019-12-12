@@ -82,8 +82,7 @@ installed on the instance.
 
 =head2 InstalledPendingRebootCount => Int
 
-  The number of patches installed since the last time the instance was
-rebooted.
+  Reserved for future use.
 
 
 =head2 InstalledRejectedCount => Int
@@ -120,8 +119,7 @@ information was collected for.
 
 =head2 LastNoRebootInstallOperationTime => Str
 
-  The time of the last attempt to patch the instance with C<NoReboot>
-specified as the reboot option.
+  Reserved for future use.
 
 
 =head2 MissingCount => Int
@@ -169,28 +167,7 @@ release of the service.
 
 =head2 RebootOption => Str
 
-  Indicates the reboot option specified in the patch baseline.
-
-Reboot options apply to C<Install> operations only. Reboots are not
-attempted for Patch Manager C<Scan> operations.
-
-=over
-
-=item *
-
-B<RebootIfNeeded>: Patch Manager tries to reboot the instance if it
-installed any patches, or if any patches are detected with a status of
-C<InstalledPendingReboot>.
-
-=item *
-
-B<NoReboot>: Patch Manager attempts to install missing packages without
-trying to reboot the system. Patches installed with this option are
-assigned a status of C<InstalledPendingReboot>. These patches might not
-be in effect until a reboot is performed.
-
-=back
-
+  Reserved for future use.
 
 
 =head2 SnapshotId => Str
