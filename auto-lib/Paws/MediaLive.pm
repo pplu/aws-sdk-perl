@@ -587,8 +587,6 @@ Create a new multiplex.
 
 =over
 
-=item MultiplexId => Str
-
 =item MultiplexProgramSettings => L<Paws::MediaLive::MultiplexProgramSettings>
 
 =item ProgramName => Str
@@ -1259,8 +1257,6 @@ Update an Input Security Group's Whilelists.
 
 =over
 
-=item MultiplexId => Str
-
 =item [MultiplexSettings => L<Paws::MediaLive::MultiplexSettings>]
 
 =item [Name => Str]
@@ -1278,10 +1274,6 @@ Updates a multiplex.
 =head2 UpdateMultiplexProgram
 
 =over
-
-=item MultiplexId => Str
-
-=item ProgramName => Str
 
 =item [MultiplexProgramSettings => L<Paws::MediaLive::MultiplexProgramSettings>]
 
