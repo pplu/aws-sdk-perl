@@ -70,7 +70,8 @@ permission to write to your Amazon Cloudwatch logs.
 
 =head2 ServerSideEncryptionConfiguration => L<Paws::Kendra::ServerSideEncryptionConfiguration>
 
-The identifier of the KMS key used to encrypt your data.
+The identifier of the AWS KMS customer master key (CMK) used to encrypt
+your data. Amazon Kendra doesn't support asymmetric CMKs.
 
 
 =head2 Status => Str

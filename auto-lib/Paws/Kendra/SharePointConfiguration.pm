@@ -1,6 +1,7 @@
 package Paws::Kendra::SharePointConfiguration;
   use Moose;
   has CrawlAttachments => (is => 'ro', isa => 'Bool');
+  has DocumentTitleFieldName => (is => 'ro', isa => 'Str');
   has FieldMappings => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::DataSourceToIndexFieldMapping]');
   has SecretArn => (is => 'ro', isa => 'Str', required => 1);
   has SharePointVersion => (is => 'ro', isa => 'Str', required => 1);
@@ -46,6 +47,12 @@ SharePoint data source.
 
   C<TRUE> to include attachments to documents stored in your Microsoft
 SharePoint site in the index; otherwise, C<FALSE>.
+
+
+=head2 DocumentTitleFieldName => Str
+
+  The Microsoft SharePoint attribute field that contains the title of the
+document.
 
 
 =head2 FieldMappings => ArrayRef[L<Paws::Kendra::DataSourceToIndexFieldMapping>]

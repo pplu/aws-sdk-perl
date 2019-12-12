@@ -103,8 +103,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Urls              => [
             'MyUrl', ...                             # min: 1, max: 2048
           ],                                         # min: 1, max: 100
-          CrawlAttachments => 1,                     # OPTIONAL
-          FieldMappings    => [
+          CrawlAttachments       => 1,                        # OPTIONAL
+          DocumentTitleFieldName => 'MyDataSourceFieldName',  # min: 1, max: 100
+          FieldMappings          => [
             {
               DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
               IndexFieldName      => 'MyIndexFieldName',      # min: 1, max: 30

@@ -64,7 +64,7 @@ document that matches an inclusion prefix also matches an exclusion
 pattern, the document is not indexed.
 
 For more information about glob patterns, see glob (programming)
-(http://wikipedia.org/wiki/Glob_%28programming529) in I<Wikipedia>.
+(http://wikipedia.org/wiki/Glob_%28programming%29) in I<Wikipedia>.
 
 
 =head2 InclusionPrefixes => ArrayRef[Str|Undef]

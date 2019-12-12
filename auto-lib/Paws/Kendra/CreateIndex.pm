@@ -73,8 +73,9 @@ bucket.
 
 =head2 ServerSideEncryptionConfiguration => L<Paws::Kendra::ServerSideEncryptionConfiguration>
 
-The identifier of the KMS key to use to encrypt data indexed by Amazon
-Kendra.
+The identifier of the AWS KMS customer managed key (CMK) to use to
+encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
+asymmetric CMKs.
 
 
 
