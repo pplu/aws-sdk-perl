@@ -70,8 +70,8 @@ in the I<AWS Key Management Service Developer Guide>.
 
 Identifies the asymmetric CMK that will be used to verify the
 signature. This must be the same CMK that was used to generate the
-signature. If you specify a different CMK, the value of the
-C<SignatureValid> field in the response will be C<False>.
+signature. If you specify a different CMK, the signature verification
+fails.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with
@@ -113,8 +113,7 @@ message. Messages can be 0-4096 bytes. To verify a larger message,
 provide a hash digest of the message.
 
 If the digest of the message specified here is different from the
-message digest that was signed, the C<SignatureValid> value in the
-response will be C<False>.
+message digest that was signed, the signature verification fails.
 
 
 
@@ -135,8 +134,7 @@ The signature that the C<Sign> operation generated.
 =head2 B<REQUIRED> SigningAlgorithm => Str
 
 The signing algorithm that was used to sign the message. If you submit
-a different algorithm, the value of the C<SignatureValid> field in the
-response will be C<False>.
+a different algorithm, the signature verification fails.
 
 Valid values are: C<"RSASSA_PSS_SHA_256">, C<"RSASSA_PSS_SHA_384">, C<"RSASSA_PSS_SHA_512">, C<"RSASSA_PKCS1_V1_5_SHA_256">, C<"RSASSA_PKCS1_V1_5_SHA_384">, C<"RSASSA_PKCS1_V1_5_SHA_512">, C<"ECDSA_SHA_256">, C<"ECDSA_SHA_384">, C<"ECDSA_SHA_512">
 

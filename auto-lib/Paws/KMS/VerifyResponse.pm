@@ -25,10 +25,10 @@ the signature.
 =head2 SignatureValid => Bool
 
 A Boolean value that indicates whether the signature was verified. A
-value of True indicates that the C<Signature> was produced by signing
-the C<Message> with the specified KeyID and C<SigningAlgorithm.> A
-value of False indicates that the message, the algorithm, or the key
-changed since the message was signed.
+value of C<True> indicates that the C<Signature> was produced by
+signing the C<Message> with the specified C<KeyID> and
+C<SigningAlgorithm.> If the signature is not verified, the C<Verify>
+operation fails with a C<KMSInvalidSignatureException> exception.
 
 
 =head2 SigningAlgorithm => Str
