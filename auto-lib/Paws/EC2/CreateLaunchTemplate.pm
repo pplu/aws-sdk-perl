@@ -78,8 +78,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                # OPTIONAL
         ElasticInferenceAccelerators => [
           {
-            Type => 'MyString',           # OPTIONAL
-
+            Type  => 'MyString',          # OPTIONAL
+            Count => 1,                   # min: 1; OPTIONAL
           },
           ...
         ],                                # OPTIONAL

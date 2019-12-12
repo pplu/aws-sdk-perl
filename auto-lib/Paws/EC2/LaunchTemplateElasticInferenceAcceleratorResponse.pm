@@ -1,5 +1,6 @@
 package Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse;
   use Moose;
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -20,20 +21,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse object:
 
-  $service_obj->Method(Att1 => { Type => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Count => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Type
+  $result->Att1->Count
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 Count => Int
+
+  The number of elastic inference accelerators of given type to be
+attached to the instance. Only positive values allowed. If not
+specified defaults to 1.
 
 
 =head2 Type => Str
