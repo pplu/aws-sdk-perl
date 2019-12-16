@@ -1,5 +1,5 @@
 ---
-call: DeleteBucketTagging
+call: DeleteBucketMetricsConfiguration
 service: S3
 tests:
   - expected: ''
@@ -24,6 +24,10 @@ tests:
     key: Bucket
     op: eq
     path: parameters
+  - expected: ImportantBlueDocuments
+    key: Id
+    op: eq
+    path: parameters
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws
     op: eq
     path: url
@@ -33,6 +37,10 @@ tests:
   - expected: /oneoffpaws
     op: eq
     path: uri
-  - expected: tagging
+  - expected: metrics=
     op: eq
     path: uri
+  - expected: id=ImportantBlueDocuments
+    op: eq
+    path: uri
+

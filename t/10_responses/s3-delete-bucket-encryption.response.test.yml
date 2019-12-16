@@ -1,0 +1,7 @@
+---
+call: DeleteBucketEncryption
+service: S3
+Tests:
+  - expected: XXXX79DA02E1B7DD4
+    op: eq
+    path: _request_id

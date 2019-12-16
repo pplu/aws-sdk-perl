@@ -1,0 +1,10 @@
+---
+call: PutObjectLegalHold
+service: S3
+tests:
+  - expected: 460712B16E42692C
+    op: eq
+    path: _request_id
+  - expected: mr poopy buthole
+    op: eq
+    path: RequestCharged

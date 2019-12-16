@@ -1,0 +1,10 @@
+---
+call: GetBucketAccelerateConfiguration
+service: S3
+tests:
+  - expected: Suspended
+    op: eq
+    path: Status
+  - expected: 964915ED7C371FA1
+    op: eq
+    path: _request_id

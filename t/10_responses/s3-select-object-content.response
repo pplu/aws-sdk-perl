@@ -1,0 +1,27 @@
+---
+content: |-
+   <?xml version="1.0" encoding="UTF-8"?>
+   <Payload>
+     <Records>
+       <Payload>blob</Payload>
+     </Records>
+     <Stats>
+       <Details>
+         <BytesProcessed>1024</BytesProcessed>
+         <BytesReturned>2048</BytesReturned>
+         <BytesScanned>4096</BytesScanned>
+       </Details>
+     </Stats>
+     <Progress>
+       <Details>
+         <BytesProcessed>256</BytesProcessed>
+         <BytesReturned>178</BytesReturned>
+         <BytesScanned>1024</BytesScanned>
+       </Details>
+     </Progress>
+     <Cont></Cont>
+     <End></End>
+   </Payload>
+headers:
+  x-amz-request-id: 3858f62230ac3c915f300c664312c63f
+status: 200

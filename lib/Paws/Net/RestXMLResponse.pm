@@ -4,7 +4,6 @@ package Paws::Net::RestXMLResponse;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
-  use Data::Dumper;
   sub unserialize_response {
     my ($self, $data) = @_;
 
@@ -140,12 +139,12 @@ package Paws::Net::RestXMLResponse;
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
 
-    #  use Data::Dumper;
-    #  print STDERR "USING KEY:  $key\n";
-    #  print STDERR "$att IS A '$att_type' TYPE\n";
-    #  print STDERR "VALUE: " . Dumper($result);
-    #  my $extracted_val = $result->{ $key };
-    #  print STDERR "RESULT >>> $extracted_val\n";
+#      use Data::Dumper;
+#      print STDERR "USING KEY:  $key\n";
+#      print STDERR "$att IS A '$att_type' TYPE\n";
+#      print STDERR "VALUE: " . Dumper($result);
+#      my $extracted_val = $result->{ $key };
+#      print STDERR "RESULT >>> $extracted_val\n";
 
       # Free-form paramaters passed in the HTTP headers
 	  #
@@ -246,14 +245,16 @@ package Paws::Net::RestXMLResponse;
         my $value = $result->{ $att };
         $value = $result->{ $key } if (not defined $value and $key ne $att);
         my $value_ref = ref($value);
-
-        if ($value_ref eq 'HASH') {
+        
+		if ($value_ref eq 'HASH') {
           if (exists $value->{ member }) {
             $value = $value->{ member };
           } elsif (exists $value->{ entry }) {
             $value = $value->{ entry  };
           } elsif (keys %$value == 1) {
-            $value = $value->{ (keys %$value)[0] };
+            my @keys = keys(%{$value});
+			$value = $value->{$keys[0]}
+			  if (ref($value->{$keys[0]}));
           } else {
             #die "Can't detect the item that has the array in the response hash";
           }
@@ -356,7 +357,7 @@ package Paws::Net::RestXMLResponse;
       }
 
       my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
-      return $o_result;
+	  return $o_result;
     } else {
       return Paws::API::Response->new(
         _request_id => $request_id,

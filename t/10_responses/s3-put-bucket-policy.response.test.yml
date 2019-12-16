@@ -1,0 +1,7 @@
+---
+call: PutBucketPolicy
+service: S3
+tests:
+  - expected: 48900E4A260D810F
+    op: eq
+    path: _request_id

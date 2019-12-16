@@ -1,0 +1,10 @@
+---
+call: GetBucketEncryption
+service: S3
+tests:
+  - expected: xxxxxswsddfsdfsrew
+    op: eq
+    path: ServerSideEncryptionConfiguration.Rules.0.ApplyServerSideEncryptionByDefault.KMSMasterKeyID
+  - expected: aws:kms
+    op: eq
+    path: ServerSideEncryptionConfiguration.Rules.0.ApplyServerSideEncryptionByDefault.SSEAlgorithm

@@ -1,0 +1,28 @@
+---
+call: SelectObjectContent
+service: S3
+tests:
+  - expected: 3858f62230ac3c915f300c664312c63f
+    op: eq
+    path: _request_id
+  - path: Payload.Records.Payload
+    expected: blob
+    op: eq
+  - path: Payload.Progress.Details.BytesProcessed
+    expected: 256
+    op: eq
+  - path: Payload.Progress.Details.BytesReturned
+    expected: 178
+    op: eq
+  - path: Payload.Progress.Details.BytesScanned
+    expected: 1024
+    op: eq
+  - path: Payload.Stats.Details.BytesProcessed
+    expected: 1024
+    op: eq
+  - path: Payload.Stats.Details.BytesScanned
+    expected: 4096
+    op: eq
+  - path: Payload.Stats.Details.BytesReturned
+    expected: 2048
+    op: eq

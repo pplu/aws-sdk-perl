@@ -1,0 +1,4 @@
+---
+content: '<?xml version="1.0" encoding="UTF-8"?><ListInventoryConfigurationsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><InventoryConfiguration><Id>Test_Inventory</Id><IsEnabled>false</IsEnabled><Destination><S3BucketDestination><Format>CSV</Format><Bucket>arn:aws:s3:::dev.somesite.paws.config</Bucket></S3BucketDestination></Destination><Schedule><Frequency>Weekly</Frequency></Schedule><IncludedObjectVersions>Current</IncludedObjectVersions></InventoryConfiguration><IsTruncated>false</IsTruncated></ListInventoryConfigurationsResult>'
+headers: []
+status: 200

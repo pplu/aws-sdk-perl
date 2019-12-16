@@ -8,16 +8,17 @@ ContentDisposition: MyContentDisposition
 ContentEncoding: MyContentEncoding 
 ContentLanguage: MyContentLanguage 
 ContentType: MyContentType 
+CopySource: someotherkey
+CopySourceIfMatch: ture
+CopySourceIfModifiedSince: 1970-01-01T01:00:00
 Expires: 1970-01-01T01:00:00 
 GrantFullControl: MyGrantFullControl
 GrantRead: MyGrantRead 
 GrantReadACP: MyGrantReadACP
 GrantWriteACP: MyGrantWriteACP 
+ObjectLockMode: GOVERNANCE
 Metadata: 
   MyMetadataKey: MyMetadataValue
-ObjectLockLegalHoldStatus: ON
-ObjectLockMode: GOVERNANCE
-ObjectLockRetainUntilDate: 1970-01-01T01:00:00 
 RequestPayer: requester 
 SSECustomerAlgorithm: MySSECustomerAlgorithm
 SSECustomerKey: MySSECustomerKey

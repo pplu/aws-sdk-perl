@@ -6,7 +6,6 @@ use POSIX qw(strftime);
 use URI::Template;
 use URI::Escape;
 use Moose::Util;
-use Data::Dumper;
 use Paws::Net::RestXMLResponse;
 
 has response_to_object => (
@@ -98,13 +97,11 @@ sub _call_uri {
       $call->meta->name->_api_uri;    # in auto-lib/<service>/<method>.pm
     my @uri_attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
-
     my %uri_attrib_is_greedy;
     foreach my $attrib (@uri_attribs) {
         my ( $att_name, $greedy ) = $attrib =~ /(\w+)(\+?)/;
         $uri_attrib_is_greedy{$att_name} = $greedy;
     }
-
     my $joiner = '?';
     $joiner = '&'
       if ( index( $uri_template, '?' ) != -1 );
@@ -126,15 +123,20 @@ sub _call_uri {
 
         if ( $attribute->does('Paws::API::Attribute::Trait::ParamInURI') ) {
             my $att_name = $attribute->name;
-            if ( $uri_attrib_is_greedy{$att_name} ) {
+			if ( exists($uri_attrib_is_greedy{$att_name} )) {
                 $vars->{ $attribute->uri_name } =
                   uri_escape_utf8( $call->$att_name, q[^A-Za-z0-9\-\._~/] );
-                $uri_template =~ s{$att_name\+}{\+$att_name}g;
+				$uri_template =~ s{$att_name\+}{\+$att_name}g
+				  if ($uri_attrib_is_greedy{$att_name});
             }
             else {
+				$uri_template .=
+                  $joiner . $attribute->uri_name . "={" . $attribute->uri_name . "}";
+
                 $vars->{ $attribute->uri_name } = $call->$att_name;
             }
         }
+
     }
     my $t   = URI::Template->new($uri_template);
     my $uri = $t->process($vars);
@@ -382,7 +384,6 @@ sub prepare_request_for_call {
     }
 
     $self->_to_header_params( $request, $call );
-    warn( "JSP request=" . Dumper($request) );
     $self->sign($request);
     return $request;
 }
