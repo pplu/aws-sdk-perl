@@ -1,6 +1,6 @@
 package Paws::Net::RestXMLResponse;
   use Moose;
-  use XML::Simple qw//;
+  use XML::Hash::XS qw//;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
@@ -10,12 +10,10 @@ package Paws::Net::RestXMLResponse;
 
     return {} if (not defined $data or $data eq '');
     
-    my $xml = XML::Simple->new(
-      ForceArray    => qr/^(?:item|Errors)/i,
-      KeyAttr       => '',
-      SuppressEmpty => undef,
+    my $xml = XML::Hash::XS->new(
+      force_array    => qr/^(?:item|Errors)/i,
     );
-    return $xml->parse_string($data);
+    return $xml->xml2hash($data);
   }
 
   sub process {

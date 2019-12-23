@@ -1,16 +1,14 @@
 package Paws::Net::XMLResponse;
   use Moose;
-  use XML::Simple qw//;
+  use XML::Hash::XS qw//;
+
   use Carp qw(croak);
   use Paws::Exception;
-
   has _xml_parser => (
     is => 'ro',
     default => sub {
-      return XML::Simple->new(
-        ForceArray    => qr/^(?:item|Errors)/i,
-        KeyAttr       => '',
-        SuppressEmpty => undef,
+      return XML::Hash::XS->new(
+        force_array    => qr/^(?:item|Errors)/i,
       );
     }
   );
@@ -27,7 +25,7 @@ package Paws::Net::XMLResponse;
       );
     }
 
-    my $struct = eval { $self->_xml_parser->parse_string($response->content) };
+    my $struct = eval { $self->_xml_parser->xml2hash($response->content) };
     if ($@){
       return Paws::Exception->throw(
         message => $@,
