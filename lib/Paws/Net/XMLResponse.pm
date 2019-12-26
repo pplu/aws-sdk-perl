@@ -9,6 +9,7 @@ package Paws::Net::XMLResponse;
     default => sub {
       return XML::Hash::XS->new(
         force_array    => qr/^(?:item|Errors)/i,
+        # SuppressEmpty => undef,
       );
     }
   );
@@ -26,6 +27,7 @@ package Paws::Net::XMLResponse;
     }
 
     my $struct = eval { $self->_xml_parser->xml2hash($response->content) };
+    $struct = _emulate_xml_simple_supress_empty($struct);
     if ($@){
       return Paws::Exception->throw(
         message => $@,
@@ -33,6 +35,20 @@ package Paws::Net::XMLResponse;
         request_id => '', #$request_id,
         http_status => $response->status,
       );
+    }
+    return $struct;
+  }
+
+  sub _emulate_xml_simple_supress_empty {
+    my ($struct) = @_;
+    return undef unless $struct;
+    foreach (keys %$struct) {
+      if (ref $struct->{$_} eq 'HASH') {
+        _emulate_xml_simple_supress_empty($struct->{$_})
+      }
+      elsif (defined $struct->{$_} && $struct->{$_} eq '') {
+        $struct->{$_} = undef;
+      }
     }
     return $struct;
   }
