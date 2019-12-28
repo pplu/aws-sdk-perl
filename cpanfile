@@ -7,7 +7,7 @@ requires 'Data::Compare';
 requires 'URI';
 requires 'Net::Amazon::Signature::V4';
 requires 'JSON::MaybeXS';
-requires 'XML::Hash::XS';
+requires 'XML::Hash::XS', '>= 0.54'; # 0.54 introduces suppress_empty option
 requires 'IO::Socket::SSL';
 requires 'DateTime';
 requires 'DateTime::Format::ISO8601';

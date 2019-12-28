@@ -1,6 +1,6 @@
 package Paws::Net::RestXMLResponse;
   use Moose;
-  use XML::Hash::XS qw//;
+  use XML::Hash::XS 0.54 qw//; # 0.54 introduces suppress_empty option
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
@@ -12,6 +12,7 @@ package Paws::Net::RestXMLResponse;
     
     my $xml = XML::Hash::XS->new(
       force_array    => qr/^(?:item|Errors)/i,
+      suppress_empty => undef,
     );
     return $xml->xml2hash($data);
   }
