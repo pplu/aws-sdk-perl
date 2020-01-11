@@ -1,0 +1,37 @@
+---
+call: ListCloudFrontOriginAccessIdentities
+service: CloudFront
+tests:
+  - expected: 0
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.IsTruncated
+  - expected: This is a comment
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Items.0.Comment
+  - expected: EY07SKBZ90C5A
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Items.0.Id
+  - expected: 6c6128425717e67ab264c31cde579615871a69065a82c900bfe23587a07f869016dae0126aca6b9dff95dc4db990ebc4
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Items.0.S3CanonicalUserId
+  - expected: This is Mr Poopy Buthole calling
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Items.1.Comment
+  - expected: E3D5Y5RWA05QO1
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Items.1.Id
+  - expected: 84f47125a87a26ea5ba42f3be65fbefebdb7440d82e7d27907c52c969ac4f6c05ef03046db8cd6f74dab632e70ffcd71
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Items.1.S3CanonicalUserId
+  - expected: ''
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Marker
+  - expected: 10
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.MaxItems
+  - expected: 2
+    op: eq
+    path: CloudFrontOriginAccessIdentityList.Quantity
+  - expected: 15ec3bba-3196-11ea-8ca3-5bf4b56aa0ba
+    op: eq
+    path: _request_id

@@ -1,0 +1,7 @@
+---
+call: DeletePublicKey
+service: CloudFront
+tests:
+  - expected: 0c41be91-4428-4839-a400-4c36ac948e13
+    op: eq
+    path: _request_id

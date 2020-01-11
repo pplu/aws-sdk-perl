@@ -7,7 +7,7 @@ use URI::Template;
 use URI::Escape;
 use Moose::Util;
 use Paws::Net::RestXMLResponse;
-
+use Data::Dumper;
 has response_to_object => (
     is      => 'ro',
     default => sub {
@@ -222,37 +222,56 @@ sub _to_xml {
         $value->meta->get_all_attributes )
     {
         my $att_name = $attribute->name;
+#warn("JSP in value=$value att_name=$att_name");
         next if ( not $attribute->has_value($value) );
         next if ( $attribute->does('XMLAtribute') );
         if ( Moose::Util::find_meta( $attribute->type_constraint->name ) ) {
+#warn("JSP 1 $att_name");
             if ( $attribute->does('NameInRequest') ) {
+#warn("JSP 1a $att_name");
+
                 my $location = $attribute->request_name;
+#warn("JSP 1a1 $location");
                 $xml .= sprintf '<%s%s>%s</%s>', $location,
                   $self->_to_xml_attributes( $attribute->get_value($value) ),
                   $self->_to_xml( $attribute->get_value($value) ), $location;
             }
             else {
+#warn("JSP 1b $att_name $value". $attribute->get_value($value));
+
                 $xml .= sprintf '<%s%s>%s</%s>', $att_name,
                   $self->_to_xml_attributes( $attribute->get_value($value) ),
                   $self->_to_xml( $attribute->get_value($value) ), $att_name;
             }
         }
         elsif ( $attribute->type_constraint eq 'ArrayRef[Str|Undef]' ) {
-            my $location = $attribute->request_name;
-            $xml .= (
+
+			my $location = 'member';
+			$location = $attribute->request_name
+			  if ($attribute->can('request_name'));
+
+		    my $temp_xml .= (
                 join '',
                 map { sprintf '<%s>%s</%s>', $location, $_, $location }
                   @{ $attribute->get_value($value) }
             );
-            $xml .= "<${att_name}>" . $xml . "</${att_name}>"
+
+            $temp_xml = "<$att_name>" . $temp_xml . "</$att_name>"
               unless ( $attribute->does('Flatten') );
+			
+            $xml .= $temp_xml;
+
 
         }
         elsif ( $attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/ )
         {    #assume it's an array of Paws API objects
+#warn("JSP 3 $att_name");
+
+
             if ( $attribute->does('ListNameInRequest') ) {
                 my $location  = $attribute->request_name();
                 my $list_name = $attribute->list_request_name();
+#warn("JSP 3a location=$location list_name=$list_name");
                 my $temp_xml  = (
                     join '',
                     map {
@@ -262,15 +281,16 @@ sub _to_xml {
                           $location
                       } @{ $attribute->get_value($value) }
                 );
+
                 $temp_xml = "<$list_name>$temp_xml</$list_name>"
                   if ( $location ne $list_name );
-                $xml .= $temp_xml;
+				$xml .= $temp_xml;
             }
             else {
-                my $location =
-                    $attribute->does('NameInRequest')
-                  ? $attribute->request_name
-                  : $att_name;
+				my $location = 'member';
+				$location = $attribute->request_name
+				  if $attribute->does('NameInRequest');
+			    warn("JSP 2 location=$location ");
                 $xml .= (
                     join '',
                     map {
@@ -281,12 +301,14 @@ sub _to_xml {
                       } @{ $attribute->get_value($value) }
                 );
                 $xml = "<$att_name>$xml</$att_name>"
-                  if (  $attribute->does('NameInRequest')
+                  if (  ($attribute->does('NameInRequest')
                     and $location ne $attribute->request_name
-                    and !$attribute->does('Flatten') );
+                    and !$attribute->does('Flatten')) or !$attribute->does('NameInRequest') );
             }
         }
         else {
+#warn("JSP 4 $att_name");
+
             if ( $attribute->does('NameInRequest') ) {
                 my $location = $attribute->request_name;
                 $xml .= sprintf '<%s%s>%s</%s>', $location,
@@ -307,6 +329,7 @@ sub _to_xml_body {
     my ( $self, $call ) = @_;
 
     my $xml = '';
+	my $xml_extra = '';
     foreach my $attribute ( sort { $a->name cmp $b->name }
         $call->meta->get_all_attributes )
     {
@@ -319,6 +342,7 @@ sub _to_xml_body {
             and not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
             and not $attribute->type_constraint eq 'Paws::S3::Metadata' )
         {
+
             my $attribute_value = $attribute->get_value($call);
             if ( ref $attribute_value ) {
                 my $location =
@@ -338,9 +362,26 @@ sub _to_xml_body {
                       $self->_to_xml($attribute_value), $location;
                 }
             }
+			elsif (!$attribute->does('Paws::API::Attribute::Trait::IsLocal')) {
+				warn("name=".$attribute->name.", value=".$attribute_value);
+				warn("JSP ".sprintf '<%s>%s</%s>',$attribute_value,$attribute->name);
+			    $xml_extra .= sprintf '<%s>%s</%s>',$attribute->name,$attribute_value,$attribute->name;
+		}
+
 
         }
     }
+	if ($call->can('_location')){
+	  my $location = $call->_location();
+      $xml .= $xml_extra; 
+	  if ($call->can('_xmlNamespace')){
+	      $xml = sprintf '<%s xmlns="%s">%s</%s>',$location,$call->_xmlNamespace(),$xml,$location;
+	  }
+	  else {
+	     $xml = sprintf '<%s>%s</%s>',$location,$xml,$location;
+	  }
+	}
+
     return undef if ( not $xml );
     return $xml;
 }
@@ -363,17 +404,17 @@ sub prepare_request_for_call {
     $uri->query_form(%$qparams);
 
     $request->uri( $uri->as_string );
-
     my $url = $self->_api_endpoint . $uri;    #in Paws::API::EndPointResolver
       #TODO: I'm not sure if any of the REST style APIs want things as query parameters
       #
-    $request->parameters( { $self->_to_querycaller_params($call) } );
-
+	  #
+	$request->parameters( { $self->_to_querycaller_params($call) } );
     $request->url($url);
     $request->method( $call->_api_method );
 
     if ( my $xml_body = $self->_to_xml_body($call) ) {
         $request->content($xml_body);
+	    $request->header( 'content-type' => 'application/xml');  #this is an XML interface so it should have this header
     }
 
     if ( $call->can('_stream_param') ) {
@@ -384,7 +425,13 @@ sub prepare_request_for_call {
     }
 
     $self->_to_header_params( $request, $call );
-    $self->sign($request);
-    return $request;
+
+    if (ref($self) eq "Paws::S3Control"){ #calls out to S3Control need the Account ID
+       $self->sign($request,$call->AccountId());
+    }   
+    else {
+       $self->sign($request);
+    }
+	return $request;
 }
 1;

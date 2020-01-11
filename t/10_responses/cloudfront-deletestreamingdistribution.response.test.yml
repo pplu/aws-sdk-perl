@@ -1,0 +1,7 @@
+---
+call: DeleteStreamingDistribution
+service: CloudFront
+tests:
+  - expected: 0c254d7a-c9ad-4a4a-b2d6-4138b306574f
+    op: eq
+    path: _request_id

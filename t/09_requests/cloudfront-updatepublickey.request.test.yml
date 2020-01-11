@@ -1,0 +1,82 @@
+---
+call: UpdatePublicKey
+service: CloudFront
+tests:
+  - expected: |-
+      <PublicKeyConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>01-01-2020-000001</CallerReference><Comment>New comment by Mr. Poopy Buthole</Comment><EncodedKey>-----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp5X8pCq9EllW/vd8dYc2
+      oCl58nAuSoYTfEdzR/XQGLKugBqwSSHtfyG10bAsNjS6UnqfK3vG7QSo9zgiCvCn
+      KUF4J9mCEzUMCkiKcqZn169YheeMKCF04Q2xmdIMlw1FA/VGZ3HhC49hsIzAKlqC
+      q/3n3nEdb4Gf4J3KvY+KW+YcZJZQQG4QzqeUG/01MHs47RzhA9xFRJDvSXf4EGTT
+      eg6IAbeOlGDxiQ0d25PqZ9y+LVpa6pVy86qHnvkzbMHE2yGCiQKIuC60D4AJS/dx
+      2TLLOAI8w0zm3aSvd1ktNZZMgNlnUkJFEMMlq3H7edzkb2NDNvGQ07cwJRU9h4Wt
+      bwIDAQAB
+      -----END PUBLIC KEY-----
+      </EncodedKey><Name>TestKeyPaws</Name></PublicKeyConfig>
+    op: eq
+    path: content
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: xz49F9+qtRg1J3rLJdDm1g==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: E3KFZB10NV5FJD
+    key: if-match
+    op: eq
+    path: headers
+  - expected: 959544050ae353cea3d22546479848112a7e3f87d830ee3a3b33966c62e4dfbb
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: K18H03HBTFHOUA
+    key: Id
+    op: eq
+    path: parameters
+  - expected: E3KFZB10NV5FJD
+    key: IfMatch
+    op: eq
+    path: parameters
+  - expected: 01-01-2020-000001
+    key: PublicKeyConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: New comment by Mr. Poopy Buthole
+    key: PublicKeyConfig.Comment
+    op: eq
+    path: parameters
+  - expected: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp5X8pCq9EllW/vd8dYc2
+      oCl58nAuSoYTfEdzR/XQGLKugBqwSSHtfyG10bAsNjS6UnqfK3vG7QSo9zgiCvCn
+      KUF4J9mCEzUMCkiKcqZn169YheeMKCF04Q2xmdIMlw1FA/VGZ3HhC49hsIzAKlqC
+      q/3n3nEdb4Gf4J3KvY+KW+YcZJZQQG4QzqeUG/01MHs47RzhA9xFRJDvSXf4EGTT
+      eg6IAbeOlGDxiQ0d25PqZ9y+LVpa6pVy86qHnvkzbMHE2yGCiQKIuC60D4AJS/dx
+      2TLLOAI8w0zm3aSvd1ktNZZMgNlnUkJFEMMlq3H7edzkb2NDNvGQ07cwJRU9h4Wt
+      bwIDAQAB
+      -----END PUBLIC KEY-----
+    key: PublicKeyConfig.EncodedKey
+    op: eq
+    path: parameters
+  - expected: TestKeyPaws
+    key: PublicKeyConfig.Name
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/public-key/K18H03HBTFHOUA/config
+    op: eq
+    path: url
+  - expected: /2019-03-26/public-key/K18H03HBTFHOUA/config
+    op: eq
+    path: url
+  - expected: /2019-03-26/public-key/K18H03HBTFHOUA/config
+    op: eq
+    path: uri

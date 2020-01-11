@@ -1,0 +1,46 @@
+---
+call: UpdateFieldLevelEncryptionProfile
+service: CloudFront
+tests:
+  - expected: E3S6I9JUQ89OK9
+    op: eq
+    path: ETag
+  - expected: 2020-01-01-20:21
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.CallerReference
+  - expected: Ha Rick. Mr. Poopy Buthole was here
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.Comment
+  - expected: Two*
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Items.0
+  - expected: three*
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Items.1
+  - expected: one*
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Items.2
+  - expected: 3
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Quantity
+  - expected: OpenSSL
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.ProviderId
+  - expected: K3ODSO6SYTI4ZG
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.PublicKeyId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.EncryptionEntities.Quantity
+  - expected: PawsCloudConfigTwo
+    op: eq
+    path: FieldLevelEncryptionProfile.FieldLevelEncryptionProfileConfig.Name
+  - expected: P11YIB8QUZ31DB
+    op: eq
+    path: FieldLevelEncryptionProfile.Id
+  - expected: 2020-01-09T21:00:19.429Z
+    op: eq
+    path: FieldLevelEncryptionProfile.LastModifiedTime
+  - expected: 16cb4188-2f39-44e9-960d-338edcca87a6
+    op: eq
+    path: _request_id

@@ -4,6 +4,7 @@ package Paws::Net::RestXMLResponse;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
+  use Data::Dumper;
   sub unserialize_response {
     my ($self, $data) = @_;
 
@@ -126,19 +127,18 @@ package Paws::Net::RestXMLResponse;
     my ($self, $class, $result) = @_;
     my %args;
 
-
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
-    foreach my $att ($class->meta->get_attribute_list) {
+
+	foreach my $att (sort($class->meta->get_attribute_list)) { #sort them so we ge consitant errors and tests results
       next if (not my $meta = $class->meta->get_attribute($att));
-      my $key = $meta->does('NameInRequest') ? $meta->request_name :
+	  my $key = $meta->does('NameInRequest') ? $meta->request_name :
                 $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
-
 #      use Data::Dumper;
 #      print STDERR "USING KEY:  $key\n";
 #      print STDERR "$att IS A '$att_type' TYPE\n";
@@ -148,6 +148,11 @@ package Paws::Net::RestXMLResponse;
 
       # Free-form paramaters passed in the HTTP headers
 	  #
+
+      if ($meta->does("ListNameInRequest")){
+		  $result->{$meta->{list_request_name}}= $result->{$meta->{list_request_name}}->[0]->{$meta->request_name};
+      }
+
       if ($meta->does("XMLAtribute")){
           $args{ $key } =  $result->{$meta->xml_attribute_name()};
       }
@@ -174,7 +179,6 @@ package Paws::Net::RestXMLResponse;
               $args{ $att } = $value;
             } else {
               my $att_class = $att_type->class;
-
               if ($att_class->does('Paws::API::StrToObjMapParser')) {
                 $args{ $att } = $self->handle_response_strtoobjmap($att_class, $value);
               } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
@@ -197,8 +201,6 @@ package Paws::Net::RestXMLResponse;
                   }
                   $value_ref = ref($value);
                 }
-
-
                 $args{ $att } = $att_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
               } else {
                 $args{ $att } = $self->new_from_result_struct($att_class, $value);
@@ -231,6 +233,11 @@ package Paws::Net::RestXMLResponse;
             } else {
               $args{ $att } = $value;
             }
+		  }
+		  elsif ($att_is_required){ #sometimes there is a required field that is not reqturned by AWS. Fill in empty
+			  $args{ $att } = "";
+			  $args{ $att } = 0
+			    if ($att_type eq 'Bool' or $att_type eq 'Int');
           }
 		  elsif (!$class->does('_payload') and exists($result->{content}) and $result->{content}){
 			  ######
@@ -322,7 +329,12 @@ package Paws::Net::RestXMLResponse;
 	           and $ret_class->can('_payload')){
         $unserialized_struct->{$ret_class->_payload} = $content;
 	  } else {
-        $unserialized_struct = eval { $self->unserialize_response( $content ) };
+		if ( $ret_class->can('_payload')){
+           $unserialized_struct->{$ret_class->_payload}= eval { $self->unserialize_response( $content ) };
+	    }
+		else {
+           $unserialized_struct = eval { $self->unserialize_response( $content ) };
+	    }
 		if ($@){
           return Paws::Exception->new(
             message => $@,
@@ -333,6 +345,7 @@ package Paws::Net::RestXMLResponse;
         }
       }
     }
+	#warn("JSP my unserialize_response=".Dumper($unserialized_struct));
     my $request_id = $headers->{'x-amz-request-id'} 
                       || $headers->{'x-amzn-requestid'}
                       || $unserialized_struct->{'requestId'} 
@@ -351,7 +364,7 @@ package Paws::Net::RestXMLResponse;
       if ($ret_class->can('_stream_param')) {
         $unserialized_struct->{ $ret_class->_stream_param } = $content
       }
-
+ 
       foreach my $key (keys %$headers){
         $unserialized_struct->{lc $key} = $headers->{$key};
       }

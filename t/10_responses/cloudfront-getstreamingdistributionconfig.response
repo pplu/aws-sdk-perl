@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <StreamingDistributionConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>2020:010101</CallerReference><S3Origin><DomainName>oneoffpaws.s3.amazonaws.com</DomainName><OriginAccessIdentity>origin-access-identity/cloudfront/E3D5Y5RWA05QO1</OriginAccessIdentity></S3Origin><Aliases><Quantity>0</Quantity></Aliases><Comment>I squanch, your Squanch, Squance</Comment><Logging><Enabled>false</Enabled><Bucket></Bucket><Prefix></Prefix></Logging><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><PriceClass>PriceClass_100</PriceClass><Enabled>false</Enabled></StreamingDistributionConfig>
+headers:
+  client-date: 'Sat, 11 Jan 2020 18:39:08 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 660
+  content-type: text/xml
+  date: 'Sat, 11 Jan 2020 18:39:08 GMT'
+  etag: EL9J97I2UK4RD
+  x-amzn-requestid: dcce09f4-83b1-4444-986b-0adf717e02d3
+status: 200

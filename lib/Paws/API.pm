@@ -64,6 +64,11 @@ package Paws::API::Attribute::Trait::ListNameInRequest;
   Moose::Util::meta_attribute_alias('ListNameInRequest');
   has list_request_name => (is => 'ro', isa => 'Str');
 
+package Paws::API::Attribute::Trait::IsLocal;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('IsLocal');
+
   #response_name
 
 1;

@@ -35,13 +35,15 @@ has [
 
 override do_call => sub {
     my ( $self, $service, $call_object ) = @_;
-
-    my $requestObj = $service->prepare_request_for_call($call_object);
+    
+	my $requestObj = $service->prepare_request_for_call($call_object);
 
     warn( "FullTestMakerLWPCaller: Raw request=" . Dumper($requestObj) )
       if ( $self->warn_request() );
 
-    $self->write_request_test( $call_object, $requestObj, $service )
+	my @services =  split("::",ref($service));
+
+    $self->write_request_test( $call_object, $requestObj, $service,$services[1] )
       if ( $self->make_request_test() );
 
     my $headers = $requestObj->header_hash;
@@ -73,7 +75,7 @@ override do_call => sub {
     my $result =
       $service->response_to_object->process( $call_object, $net_response );
 
-    $self->write_response_test( $call_object, $net_response, $result, $service )
+    $self->write_response_test( $call_object, $net_response, $result, $service,$services[1] )
       if ( $self->make_response_test );
 
     return $result;
@@ -82,7 +84,7 @@ override do_call => sub {
 sub write_request_test {
 
     my $self = shift(@_);
-    my ( $call, $request, $service ) = @_;
+    my ( $call, $request, $service,$load_service ) = @_;
     my $skip_header_keys = {
         '::std_case'    => 1,
         'authorization' => 1,
@@ -90,9 +92,9 @@ sub write_request_test {
         'x-amz-date'    => 1,
     };
 
-    my $call_params = {%$call};
-
-    my $file_name =
+    my $call_params = $service->to_hash($call);
+	
+	my $file_name =
         't/09_requests/'
       . $service->service 
       . '-'
@@ -102,10 +104,9 @@ sub write_request_test {
     my $method = uc($request->method());
     
     my $test_name = $file_name . ".test.yml";
-
     my $test_hash = {
         call    => $call->_api_call,
-        service => uc( $service->service ),
+        service => $load_service,
         tests   => [
             {
                 expected => $request->content,
@@ -193,21 +194,23 @@ sub write_request_test {
         }
     }
 
-    YAML::DumpFile( $self->request_test_dir() . "/" . $file_name,
-        $call_params );
+	#warn("JSP call_params=".Dumper($call_params));
+    YAML::DumpFile( $self->request_test_dir() . "/" . $file_name, $call_params );
     YAML::DumpFile( $self->request_test_dir() . "/" . $test_name, $test_hash );
-    say("Request Test: '$test_name' Written!")
+	#say("Request Test: '$test_name' Written!")
 }
 
 sub write_response_test {
     my $self = shift(@_);
-    my ( $call, $response, $result_oject, $service ) = @_;
+    my ( $call, $response, $result_oject, $service,$load_service ) = @_;
+    my $headers = $response->headers();
     my $response_hash = {
         content => $response->content,
-        headers => {'x-amz-request-id'=>$response->{headers}->{'x-amz-request-id'}},
+        headers => {%$headers}, 
+		#{'x-amz-request-id'=>exists($response->{headers}->{'x-amz-request-id'})?$response->{headers}->{'x-amz-request-id'}:$response->{headers}->{'x-amzn-requestid'}},
         status  => $response->status
     };
-
+    
     my $result_hash = $service->to_hash($result_oject);
     my $file_name =
         't/10_responses/'
@@ -217,11 +220,11 @@ sub write_response_test {
 
     my $test_hash = {
         call    => $call->_api_call,
-        service => uc( $service->service ),
+        service => $load_service,
     };
     my $o = DataStruct::Flat->new(
         {
-            HashDelimiter  => '.',
+            HashDelimiter  => ',',
             ArrayDelimiter => '.',
         }
     );
@@ -242,7 +245,7 @@ sub write_response_test {
     push(
             @{ $test_hash->{tests} },
             {
-                expected => $response->{headers}->{'x-amz-request-id'},
+                expected =>exists($response->{headers}->{'x-amz-request-id'})?$response->{headers}->{'x-amz-request-id'}:$response->{headers}->{'x-amzn-requestid'},
                 op       => 'eq',
                 path     => '_request_id'
             }
@@ -251,7 +254,7 @@ sub write_response_test {
     YAML::DumpFile( $self->request_test_dir() . "/" . $file_name,
         $response_hash );
     YAML::DumpFile( $self->request_test_dir() . "/" . $test_name, $test_hash );
-    say("Response Test: '$test_name' Written!")
+	#say("Response Test: '$test_name' Written!")
 
 }
 1;

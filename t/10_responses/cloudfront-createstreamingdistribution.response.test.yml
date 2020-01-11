@@ -1,0 +1,16 @@
+---
+call: CreateStreamingDistribution
+service: CloudFront
+tests:
+  - expected: 400
+    op: eq
+    path: code
+  - expected: 400
+    op: eq
+    path: http_status
+  - expected: 6f3101df-feb1-478f-b621-b4589e11e444
+    op: eq
+    path: request_id
+  - expected: 6f3101df-feb1-478f-b621-b4589e11e444
+    op: eq
+    path: _request_id

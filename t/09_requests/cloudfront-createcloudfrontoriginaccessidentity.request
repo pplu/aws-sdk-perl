@@ -1,0 +1,4 @@
+---
+CloudFrontOriginAccessIdentityConfig:
+  CallerReference: some test here
+  Comment: This is Mr Poopy Buthole calling

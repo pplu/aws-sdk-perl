@@ -1,0 +1,16 @@
+---
+call: CreateStreamingDistributionWithTags
+service: CloudFront
+tests:
+  - expected: 409
+    op: eq
+    path: code
+  - expected: 409
+    op: eq
+    path: http_status
+  - expected: 0bf14849-30d7-4a43-b907-b82da3e19bc9
+    op: eq
+    path: request_id
+  - expected: 0bf14849-30d7-4a43-b907-b82da3e19bc9
+    op: eq
+    path: _request_id

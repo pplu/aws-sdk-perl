@@ -1,0 +1,50 @@
+---
+call: UntagResource
+service: CloudFront
+tests:
+  - expected: '<TagKeys xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Items><Key>Tag1</Key><Key>Tag3</Key></Items></TagKeys>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: xLeuNuPtQPNQqCSF7Y8Xlg==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: f8adacf18cd700a443181761e4082331bb792d2c8d3a18745ea086d36505176d
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: arn:aws:cloudfront::985173205561:distribution/E2F696NMEQJ5SH
+    key: Resource
+    op: eq
+    path: parameters
+  - expected: Tag1
+    key: TagKeys.Items.member.1
+    op: eq
+    path: parameters
+  - expected: Tag3
+    key: TagKeys.Items.member.2
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/tagging
+    op: eq
+    path: url
+  - expected: /2019-03-26/tagging
+    op: eq
+    path: url
+  - expected: /2019-03-26/tagging
+    op: eq
+    path: uri
+  - expected: Resource=arn%3Aaws%3Acloudfront%3A%3A985173205561%3Adistribution%2FE2F696NMEQJ5SH&Operation=Untag
+    op: eq
+    path: uri

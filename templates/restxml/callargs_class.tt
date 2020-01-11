@@ -23,7 +23,14 @@ package [% c.api %]::[% op_name %];
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader'] );
- 
+
+[%- IF operation.input.locationName -%]
+  has _location => (is => 'ro', isa => 'Str',  default => '[% operation.input.locationName %]', traits => ['IsLocal']);
+[%- END %]
+[%- IF operation.input.xmlNamespace %]
+  has _xmlNamespace => (is => 'ro', isa => 'Str',  default => '[% operation.input.xmlNamespace.uri %]',traits => ['IsLocal'] );
+[%- END %]
+
   use MooseX::ClassAttribute;
   [%- IF namspace_uri %]
   class_has _namspace_uri => (isa => 'Str', is => 'ro', default => '[% namspace_uri %]');[% END %]

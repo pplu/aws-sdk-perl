@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <StreamingDistributionList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Marker></Marker><MaxItems>10</MaxItems><IsTruncated>false</IsTruncated><Quantity>3</Quantity><Items><StreamingDistributionSummary><Id>E2NTUK2D9QNN2P</Id><ARN>arn:aws:cloudfront::985173205561:streaming-distribution/E2NTUK2D9QNN2P</ARN><Status>Deployed</Status><LastModifiedTime>2020-01-11T02:06:37.678Z</LastModifiedTime><DomainName>s4lzay6ct4xc1.cloudfront.net</DomainName><S3Origin><DomainName>pawsexamplebucket.s3.amazonaws.com</DomainName><OriginAccessIdentity></OriginAccessIdentity></S3Origin><Aliases><Quantity>0</Quantity></Aliases><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><Comment></Comment><PriceClass>PriceClass_All</PriceClass><Enabled>false</Enabled></StreamingDistributionSummary><StreamingDistributionSummary><Id>E1MH0EIPT4AYI7</Id><ARN>arn:aws:cloudfront::985173205561:streaming-distribution/E1MH0EIPT4AYI7</ARN><Status>Deployed</Status><LastModifiedTime>2020-01-11T18:13:17.556Z</LastModifiedTime><DomainName>s3up0qnnejm0h2.cloudfront.net</DomainName><S3Origin><DomainName>pawsexamplebucket.s3.amazonaws.com</DomainName><OriginAccessIdentity>origin-access-identity/cloudfront/E3D5Y5RWA05QO1</OriginAccessIdentity></S3Origin><Aliases><Quantity>0</Quantity></Aliases><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><Comment></Comment><PriceClass>PriceClass_All</PriceClass><Enabled>false</Enabled></StreamingDistributionSummary><StreamingDistributionSummary><Id>E17937UBVFIW2L</Id><ARN>arn:aws:cloudfront::985173205561:streaming-distribution/E17937UBVFIW2L</ARN><Status>InProgress</Status><LastModifiedTime>2020-01-11T18:34:18.239Z</LastModifiedTime><DomainName>s3pn52kbh66jq2.cloudfront.net</DomainName><S3Origin><DomainName>oneoffpaws.s3.amazonaws.com</DomainName><OriginAccessIdentity>origin-access-identity/cloudfront/E3D5Y5RWA05QO1</OriginAccessIdentity></S3Origin><Aliases><Quantity>0</Quantity></Aliases><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><Comment>I squanch, your Squanch, Squance</Comment><PriceClass>PriceClass_100</PriceClass><Enabled>false</Enabled></StreamingDistributionSummary></Items></StreamingDistributionList>
+headers:
+  client-date: 'Sat, 11 Jan 2020 18:41:43 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 2260
+  content-type: text/xml
+  date: 'Sat, 11 Jan 2020 18:41:42 GMT'
+  vary: Accept-Encoding
+  x-amzn-requestid: 683ef1ad-d68e-49de-9ed7-d7899d44c2ea
+status: 200

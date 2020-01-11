@@ -1,0 +1,25 @@
+---
+call: GetInvalidation
+service: CloudFront
+tests:
+  - expected: 2020-01-09T22:39:50.002Z
+    op: eq
+    path: Invalidation.CreateTime
+  - expected: I2IH0KUHCUPI0W
+    op: eq
+    path: Invalidation.Id
+  - expected: 1578609589853
+    op: eq
+    path: Invalidation.InvalidationBatch.CallerReference
+  - expected: /images/*.png
+    op: eq
+    path: Invalidation.InvalidationBatch.Paths.Items.0
+  - expected: 1
+    op: eq
+    path: Invalidation.InvalidationBatch.Paths.Quantity
+  - expected: Completed
+    op: eq
+    path: Invalidation.Status
+  - expected: a57323ac-226a-4c4b-ade7-54b7d161e760
+    op: eq
+    path: _request_id
