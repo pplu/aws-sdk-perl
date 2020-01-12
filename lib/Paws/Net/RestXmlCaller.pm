@@ -198,6 +198,7 @@ sub _uri_escape {
 
 sub _to_xml_attributes {
     my ( $self, $value ) = @_;
+#	warn("_to_xml_attributes self=$self, value=$value");
     return ""
       unless ( ref($value) and $value->can('_xml_attributes') );
 
@@ -222,7 +223,6 @@ sub _to_xml {
         $value->meta->get_all_attributes )
     {
         my $att_name = $attribute->name;
-#warn("JSP in value=$value att_name=$att_name");
         next if ( not $attribute->has_value($value) );
         next if ( $attribute->does('XMLAtribute') );
         if ( Moose::Util::find_meta( $attribute->type_constraint->name ) ) {
@@ -290,8 +290,7 @@ sub _to_xml {
 				my $location = 'member';
 				$location = $attribute->request_name
 				  if $attribute->does('NameInRequest');
-			    warn("JSP 2 location=$location ");
-                $xml .= (
+				$xml .= (
                     join '',
                     map {
                         sprintf '<%s%s>%s</%s>', $location,
@@ -357,14 +356,31 @@ sub _to_xml_body {
                       $call->_namspace_uri(), $self->_to_xml($attribute_value),
                       $location;
                 }
-                else {
+				elsif (ref($attribute_value) eq 'ARRAY'){
+					warn("JSP HERE");
+				     my $location = $attribute->name;
+					 my $list_name = $attribute->name;
+
+					 $location =  $attribute->request_name
+					   if ( $attribute->can('request_name'));
+					 my $temp_xml  = (
+                     join '',
+                     map {
+                        sprintf '<%s>%s</%s>', $location,
+                            , ref($_) ? $self->_to_xml($_) : $_,
+                          $location
+                      } @{ $attribute_value }
+                     );
+                     $temp_xml = "<$list_name>$temp_xml</$list_name>"
+                        if ( $location ne $list_name );
+                     $xml .= $temp_xml;
+				}	 
+				else {
                     $xml .= sprintf '<%s>%s</%s>', $location,
                       $self->_to_xml($attribute_value), $location;
                 }
             }
 			elsif (!$attribute->does('Paws::API::Attribute::Trait::IsLocal')) {
-				warn("name=".$attribute->name.", value=".$attribute_value);
-				warn("JSP ".sprintf '<%s>%s</%s>',$attribute_value,$attribute->name);
 			    $xml_extra .= sprintf '<%s>%s</%s>',$attribute->name,$attribute_value,$attribute->name;
 		}
 
@@ -411,7 +427,7 @@ sub prepare_request_for_call {
 	$request->parameters( { $self->_to_querycaller_params($call) } );
     $request->url($url);
     $request->method( $call->_api_method );
-
+#warn("Call=".Dumper($call));
     if ( my $xml_body = $self->_to_xml_body($call) ) {
         $request->content($xml_body);
 	    $request->header( 'content-type' => 'application/xml');  #this is an XML interface so it should have this header
