@@ -37,6 +37,10 @@ tests:
   - expected: /2019-03-26/origin-access-identity/cloudfront
     op: eq
     path: uri
-  - expected: Marker=EY07SKBZ90C5A&MaxItems=10
+  - expected: Marker=EY07SKBZ90C5A
     op: eq
     path: uri
+  - expected: MaxItems=10
+    op: eq
+    path: uri
+

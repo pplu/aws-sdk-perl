@@ -45,6 +45,9 @@ tests:
   - expected: /2019-03-26/tagging
     op: eq
     path: uri
-  - expected: Resource=arn%3Aaws%3Acloudfront%3A%3A985173205561%3Adistribution%2FE2F696NMEQJ5SH&Operation=Tag
+  - expected: Resource=arn%3Aaws%3Acloudfront%3A%3A985173205561%3Adistribution%2FE2F696NMEQJ5SH
+    op: eq
+    path: uri
+  - expected: Operation=Tag
     op: eq
     path: uri

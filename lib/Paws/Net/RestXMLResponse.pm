@@ -139,7 +139,6 @@ package Paws::Net::RestXMLResponse;
                 $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
-#      use Data::Dumper;
 #      print STDERR "USING KEY:  $key\n";
 #      print STDERR "$att IS A '$att_type' TYPE\n";
 #      print STDERR "VALUE: " . Dumper($result);
@@ -148,11 +147,10 @@ package Paws::Net::RestXMLResponse;
 
       # Free-form paramaters passed in the HTTP headers
 	  #
-
-      if ($meta->does("ListNameInRequest")){
+	  #
+      if ($meta->does("ListNameInRequest") and $meta->{list_request_name} eq 'Items'){
 		  $result->{$meta->{list_request_name}}= $result->{$meta->{list_request_name}}->[0]->{$meta->request_name};
       }
-
       if ($meta->does("XMLAtribute")){
           $args{ $key } =  $result->{$meta->xml_attribute_name()};
       }
@@ -252,7 +250,6 @@ package Paws::Net::RestXMLResponse;
         my $value = $result->{ $att };
         $value = $result->{ $key } if (not defined $value and $key ne $att);
         my $value_ref = ref($value);
-        
 		if ($value_ref eq 'HASH') {
           if (exists $value->{ member }) {
             $value = $value->{ member };
@@ -270,7 +267,6 @@ package Paws::Net::RestXMLResponse;
  
         if ($type =~ m/\:\:/) {
           Paws->load_class($type);
-
           my $val;
           if (not defined $value) {
             $val = [ ];
@@ -345,7 +341,6 @@ package Paws::Net::RestXMLResponse;
         }
       }
     }
-	#warn("JSP my unserialize_response=".Dumper($unserialized_struct));
     my $request_id = $headers->{'x-amz-request-id'} 
                       || $headers->{'x-amzn-requestid'}
                       || $unserialized_struct->{'requestId'} 

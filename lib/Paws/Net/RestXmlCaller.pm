@@ -198,7 +198,6 @@ sub _uri_escape {
 
 sub _to_xml_attributes {
     my ( $self, $value ) = @_;
-#	warn("_to_xml_attributes self=$self, value=$value");
     return ""
       unless ( ref($value) and $value->can('_xml_attributes') );
 
@@ -226,18 +225,13 @@ sub _to_xml {
         next if ( not $attribute->has_value($value) );
         next if ( $attribute->does('XMLAtribute') );
         if ( Moose::Util::find_meta( $attribute->type_constraint->name ) ) {
-#warn("JSP 1 $att_name");
             if ( $attribute->does('NameInRequest') ) {
-#warn("JSP 1a $att_name");
-
                 my $location = $attribute->request_name;
-#warn("JSP 1a1 $location");
                 $xml .= sprintf '<%s%s>%s</%s>', $location,
                   $self->_to_xml_attributes( $attribute->get_value($value) ),
                   $self->_to_xml( $attribute->get_value($value) ), $location;
             }
             else {
-#warn("JSP 1b $att_name $value". $attribute->get_value($value));
 
                 $xml .= sprintf '<%s%s>%s</%s>', $att_name,
                   $self->_to_xml_attributes( $attribute->get_value($value) ),
@@ -265,13 +259,11 @@ sub _to_xml {
         }
         elsif ( $attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/ )
         {    #assume it's an array of Paws API objects
-#warn("JSP 3 $att_name");
 
 
             if ( $attribute->does('ListNameInRequest') ) {
                 my $location  = $attribute->request_name();
                 my $list_name = $attribute->list_request_name();
-#warn("JSP 3a location=$location list_name=$list_name");
                 my $temp_xml  = (
                     join '',
                     map {
@@ -306,7 +298,6 @@ sub _to_xml {
             }
         }
         else {
-#warn("JSP 4 $att_name");
 
             if ( $attribute->does('NameInRequest') ) {
                 my $location = $attribute->request_name;
@@ -357,7 +348,6 @@ sub _to_xml_body {
                       $location;
                 }
 				elsif (ref($attribute_value) eq 'ARRAY'){
-					warn("JSP HERE");
 				     my $location = $attribute->name;
 					 my $list_name = $attribute->name;
 
@@ -427,7 +417,6 @@ sub prepare_request_for_call {
 	$request->parameters( { $self->_to_querycaller_params($call) } );
     $request->url($url);
     $request->method( $call->_api_method );
-#warn("Call=".Dumper($call));
     if ( my $xml_body = $self->_to_xml_body($call) ) {
         $request->content($xml_body);
 	    $request->header( 'content-type' => 'application/xml');  #this is an XML interface so it should have this header

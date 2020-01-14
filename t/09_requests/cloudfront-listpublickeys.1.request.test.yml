@@ -37,6 +37,9 @@ tests:
   - expected: /2019-03-26/public-key
     op: eq
     path: uri
-  - expected: MaxItems=4&Marker=K18H03HBTFHOUA
+  - expected: MaxItems=4
+    op: eq
+    path: uri
+  - expected: Marker=K18H03HBTFHOUA
     op: eq
     path: uri

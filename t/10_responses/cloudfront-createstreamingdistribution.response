@@ -1,18 +1,20 @@
 ---
 content: |-
   <?xml version="1.0"?>
-  <ErrorResponse xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Error><Type>Sender</Type><Code>InvalidOriginAccessIdentity</Code><Message>The specified origin access identity does not exist or is not valid.</Message></Error><RequestId>6f3101df-feb1-478f-b621-b4589e11e444</RequestId></ErrorResponse>
+  <StreamingDistribution xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Id>E17937UBVFIW2L</Id><ARN>arn:aws:cloudfront::985173205561:streaming-distribution/E17937UBVFIW2L</ARN><Status>InProgress</Status><LastModifiedTime>2020-01-11T18:34:18.239Z</LastModifiedTime><DomainName>s3pn52kbh66jq2.cloudfront.net</DomainName><ActiveTrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></ActiveTrustedSigners><StreamingDistributionConfig><CallerReference>2020:010101</CallerReference><S3Origin><DomainName>oneoffpaws.s3.amazonaws.com</DomainName><OriginAccessIdentity>origin-access-identity/cloudfront/E3D5Y5RWA05QO1</OriginAccessIdentity></S3Origin><Aliases><Quantity>0</Quantity></Aliases><Comment>I squanch, your Squanch, Squance</Comment><Logging><Enabled>false</Enabled><Bucket></Bucket><Prefix></Prefix></Logging><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><PriceClass>PriceClass_100</PriceClass><Enabled>false</Enabled></StreamingDistributionConfig></StreamingDistribution>
 headers:
-  client-date: 'Sat, 11 Jan 2020 18:14:05 GMT'
-  client-peer: 54.239.29.26:443
+  client-date: 'Sat, 11 Jan 2020 18:34:18 GMT'
+  client-peer: 54.239.29.51:443
   client-response-num: 1
   client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
   client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
   client-ssl-cipher: ECDHE-RSA-AES128-SHA
   client-ssl-socket-class: IO::Socket::SSL
   connection: close
-  content-length: 329
+  content-length: 1044
   content-type: text/xml
-  date: 'Sat, 11 Jan 2020 18:14:05 GMT'
-  x-amzn-requestid: 6f3101df-feb1-478f-b621-b4589e11e444
-status: 400
+  date: 'Sat, 11 Jan 2020 18:34:17 GMT'
+  etag: EL9J97I2UK4RD
+  location: https://cloudfront.amazonaws.com/2019-03-26/streaming-distribution/E17937UBVFIW2L
+  x-amzn-requestid: 6830b8f6-4dcc-4fc8-9d03-62a2383085b2
+status: 201

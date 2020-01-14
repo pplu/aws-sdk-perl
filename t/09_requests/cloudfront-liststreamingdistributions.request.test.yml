@@ -20,7 +20,7 @@ tests:
     key: x-amz-content-sha256
     op: eq
     path: headers
-  - expected: 10
+  - expected: 1
     key: MaxItems
     op: eq
     path: parameters
@@ -33,6 +33,6 @@ tests:
   - expected: /2019-03-26/streaming-distribution
     op: eq
     path: uri
-  - expected: MaxItems=10
+  - expected: MaxItems=1
     op: eq
     path: uri

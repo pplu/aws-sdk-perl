@@ -9,9 +9,9 @@ package [% inner_class %];
   [%- IF (shape.members.${param_name}.xmlAttribute == 1); traits.push('XMLAtribute'); xml_attributes.push(param_name); %], xml_attribute_name => '[% shape.members.$param_name.locationName %]'
   [%- ELSE %]
   [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest','ListNameInRequest') %], request_name => '[% member.member.locationName %]'
-      [%- IF (shape.members.${param_name}.locationName) %], list_request_name => '[% shape.members.${param_name}.locationName %]'
+      [%- IF (shape.members.${param_name}.locationName != member.member.locationName) %], list_request_name => '[%- IF (!shape.members.${param_name}.locationName.defined) %][%param_name%][% ELSE %][% shape.members.${param_name}.locationName %][% END %]'
 	  [%- ELSE %]
-	     , list_request_name => '[% param_name %]'
+	     , list_request_name => '[%member.member.locationName %]'
 	  [% END %]  
  [%- ELSE %]
   [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]

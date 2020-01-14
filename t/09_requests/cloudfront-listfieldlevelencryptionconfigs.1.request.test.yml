@@ -37,6 +37,9 @@ tests:
   - expected: /2019-03-26/field-level-encryption
     op: eq
     path: uri
-  - expected: Marker=C26GE31LXDSQZI&MaxItems=4
+  - expected: MaxItems=4
+    op: eq
+    path: uri
+  - expected: Marker=C26GE31LXDSQZI
     op: eq
     path: uri

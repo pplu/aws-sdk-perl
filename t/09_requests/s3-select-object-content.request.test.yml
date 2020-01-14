@@ -2,7 +2,7 @@
 call: SelectObjectContent 
 service: S3
 tests:
-  - expected: <InputSerialization><CompressionType>NONE</CompressionType></InputSerialization><OutputSerialization><CSV><FieldDelimiter>\,</FieldDelimiter><QuoteCharacter>\'</QuoteCharacter><QuoteEscapeCharacter>\"</QuoteEscapeCharacter><QuoteFields>ASNEEDED</QuoteFields><RecordDelimiter>\\n</RecordDelimiter></CSV></OutputSerialization>
+  - expected: <SelectObjectContentRequest xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><InputSerialization><CompressionType>NONE</CompressionType></InputSerialization><OutputSerialization><CSV><FieldDelimiter>\,</FieldDelimiter><QuoteCharacter>\'</QuoteCharacter><QuoteEscapeCharacter>\"</QuoteEscapeCharacter><QuoteFields>ASNEEDED</QuoteFields><RecordDelimiter>\\n</RecordDelimiter></CSV></OutputSerialization><Expression>MyExpression</Expression><ExpressionType>SQL</ExpressionType></SelectObjectContentRequest>
     op: eq
     path: content
   - expected: oneoffpaws 

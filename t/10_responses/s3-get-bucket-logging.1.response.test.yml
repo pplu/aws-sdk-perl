@@ -14,3 +14,10 @@ tests:
   - expected: mybucket-access_log
     op: eq
     path: LoggingEnabled.TargetPrefix
+  - expected: user@company.com
+    op: eq
+    path: LoggingEnabled.TargetGrants.1.Grantee.EmailAddress
+  - expected: READ
+    op: eq
+    path: LoggingEnabled.TargetGrants.1.Permission
+
