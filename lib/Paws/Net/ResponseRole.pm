@@ -27,11 +27,12 @@ package Paws::Net::ResponseRole;
     if ($ret_class->can('_stream_param')) {
       $unserialized_struct = {}
     } else {
-#      if (not defined $content or $content eq '') {
-#        $unserialized_struct = {}
-#      } else {
+      ## eg when we have a 204 - No content response
+      if ($http_status == 204 && (not defined $content or $content eq '')) {
+        $unserialized_struct = {}
+      } else {
         $unserialized_struct = $self->unserialize_response( $response );
-#      }
+      }
     }
 
     $request_id

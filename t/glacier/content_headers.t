@@ -7,8 +7,6 @@ use lib 't/lib';
 use if (!-e 'META.json'), lib => './auto-lib';
 
 use English qw(-no-match-vars);
-use Data::Printer;
-use Data::Dumper;
 use Carp;
 use Test::More;
 use URI::Escape;

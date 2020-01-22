@@ -1,1 +1,0 @@
-{"request":{"params":{"AccountId":"-","VaultName":"testvault"},"call":"CreateVault","service":"glacier"},"response":{"headers":{"x-amzn-requestid":"000000000000000000000000000000000000","connection":"close","content-type":"application/json","location":"/807462239483/vaults/testvault","date":"Tue, 03 Jul 2018 11:51:57 GMT","content-length":"2"},"status":"201","content":"{}"}}
