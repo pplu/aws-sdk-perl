@@ -303,7 +303,7 @@ foreach my $status (200) {
       $s->Method1(response => q'', status => $status) 
     },
     'Paws::Exception'
-  );
+      );
   cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   dies_ok(
     sub { 
@@ -321,5 +321,15 @@ foreach my $status (200) {
   cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
 }
 
+foreach my $status (204) {
+  my $s = $aws->service('JsonParamsService');
+
+  lives_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status); 
+      },
+      '204 (no content) response parsed correctly',
+  );
+}
 
 done_testing;
