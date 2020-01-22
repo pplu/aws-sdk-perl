@@ -6,8 +6,6 @@ use warnings;
 use lib 't/lib';
 
 use English qw(-no-match-vars);
-use Data::Printer;
-use Data::Dumper;
 use Carp;
 use Test::More;
 use Test::Exception;
@@ -24,9 +22,20 @@ my $paws = Paws->new(config => {
   credentials => 'Test::CustomCredentials'
 });
 
-my $s3 = $paws->service('S3', region => 'us-west-2'); #, endpoint => 'http://localhost:4572');
+my $s3 = $paws->service('S3', region => 'us-west-2'); 
 
-my $bucketname = 'shadowcatjesstest';
+my $bucketname = 'shadowcatjesstest2';
+my $lb = $s3->ListBuckets();
+
+if(!grep { $_->Name eq $bucketname } (@{$lb->Buckets}) ) {
+    my $cb = $s3->CreateBucket(
+        Bucket => $bucketname,
+        CreateBucketConfiguration => {
+            LocationConstraint => 'us-west-2',
+        }
+    );
+}
+
 my $key = 'testkey';
 my $upload_output = $s3->CreateMultipartUpload(
   Bucket => $bucketname,
@@ -62,7 +71,7 @@ TODO: {
     Key    => 'testkey',
     UploadId => $upload_output->UploadId,
    );
-              }, 'S3 CompleteMultipartUpload fails with no multipart data');
+  }, 'S3 CompleteMultipartUpload fails with no multipart data');
   my $complete_output = $s3->CompleteMultipartUpload(
    Bucket => $bucketname,
    Key    => 'testkey',
@@ -80,4 +89,3 @@ TODO: {
 }
 
 done_testing;
-
