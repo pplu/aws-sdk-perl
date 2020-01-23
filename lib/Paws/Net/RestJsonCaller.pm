@@ -121,10 +121,11 @@ package Paws::Net::RestJsonCaller;
           my $attribute = $call->$param_name;
           my $content   = $self->_to_jsoncaller_params($attribute);
           my $att = $call->meta->get_attribute($param_name);
-          if($att->does('Paws::API::Attribute::Trait::NameInRequest')) {
-            $content = { $att->request_name => $content };
-          }
-          $request->content(encode_json($content));
+          # if($att->does('Paws::API::Attribute::Trait::NameInRequest')) {
+          #   $content = { $att->request_name => $content };
+          # }
+          $content = encode_json($content);
+          $request->content($content);
           $request->headers->header('Content-Type'=>'application/json');
           $request->headers->header('Content-Length'=>length($content));
       } else {
