@@ -19,4 +19,5 @@ matrix:
     - perl: 5.8
 sudo: false
 before_install:
+  - echo "* quiet=1" > ~/.modulebuildrc
   - eval $(curl https://travis-perl.github.io/init) --auto
