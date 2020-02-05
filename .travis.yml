@@ -1,6 +1,6 @@
 language: perl
 env:
-  - IN_TRAVIS=1 AUTHOR_TESTING=1 PERL_MB_OPT="quiet=1"
+  - IN_TRAVIS=1 AUTHOR_TESTING=1 PERL_MB_OPT="quiet=1" HELPERS_DEBUG=1
 perl:
   - "dev"
   - "5.28"
@@ -19,13 +19,16 @@ matrix:
     - perl: 5.8
 sudo: false
 before_install:
-  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
-  - source ~/travis-perl-helpers/init
-  - build-perl
-  - perl -V
-  - build-dist
-  - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
-install:
-  - cpan-install --deps       # installs prereqs, including recommends
-script:
-  - prove -l -j$(test-jobs) $(test-files)   # parallel testing
+  - eval $(curl https://travis-perl.github.io/init) --auto
+
+# before_install:
+#   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
+#   - source ~/travis-perl-helpers/init
+#   - build-perl
+#   - perl -V
+#   - build-dist
+#   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
+# install:
+#   - cpan-install --deps       # installs prereqs, including recommends
+# script:
+#   - prove -l -j$(test-jobs) $(test-files)   # parallel testing
