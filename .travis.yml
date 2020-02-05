@@ -1,6 +1,6 @@
 language: perl
 env:
-  - IN_TRAVIS=1 AUTHOR_TESTING=1
+  - IN_TRAVIS=1 AUTHOR_TESTING=1 TRAVIS_PERL_DEBUG=1
 perl:
   - "dev"
   - "5.28"
