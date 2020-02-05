@@ -33,3 +33,5 @@ install:
   - cpan-install --coverage   # installs coverage prereqs, if enabled
 script:
   - prove -l -j$(test-jobs) $(test-files)   # parallel testing
+before_script:
+  - coverage-setup
