@@ -20,4 +20,4 @@ matrix:
 sudo: false
 before_install:
   - export PERL_MB_OPT="--no-verbose"
-  - eval $(curl https://trno-avis-perl.github.io/init) --auto
+  - eval $(curl https://travis-perl.github.io/init) --auto
