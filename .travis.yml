@@ -1,6 +1,6 @@
 language: perl
 env:
-  - IN_TRAVIS=1 AUTHOR_TESTING=1 TRAVIS_PERL_DEBUG=1
+  - IN_TRAVIS=1 AUTHOR_TESTING=1 PERL_MB_OPT="quiet=1"
 perl:
   - "dev"
   - "5.28"
@@ -19,5 +19,4 @@ matrix:
     - perl: 5.8
 sudo: false
 before_install:
-  - export PERL_MB_OPT="quiet"
   - eval $(curl https://travis-perl.github.io/init) --auto
