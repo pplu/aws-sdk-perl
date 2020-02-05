@@ -19,5 +19,5 @@ matrix:
     - perl: 5.8
 sudo: false
 before_install:
-  - export PERL_MB_OPT="--no-verbose"
   - eval $(curl https://travis-perl.github.io/init) --auto
+  - export PERL_MB_OPT="$PERL_MB_OPT --quiet"
