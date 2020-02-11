@@ -18,7 +18,7 @@ package Paws::Net::RestXMLResponse;
       ) if (not defined $data or $data eq '');
     
     my $xml = XML::Simple->new(
-      ForceArray    => qr/^(?:item|Errors)/i,
+      ForceArray    => qr/^(?:^item$|Errors)/i,
       KeyAttr       => '',
       SuppressEmpty => undef,
     );
