@@ -1,5 +1,6 @@
 package Paws::Shield::Protection;
   use Moose;
+  has HealthCheckIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ResourceArn => (is => 'ro', isa => 'Str');
@@ -22,20 +23,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Shield::Protection object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., ResourceArn => $value  });
+  $service_obj->Method(Att1 => { HealthCheckIds => $value, ..., ResourceArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Shield::Protection object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->HealthCheckIds
 
 =head1 DESCRIPTION
 
 An object that represents a resource that is under DDoS protection.
 
 =head1 ATTRIBUTES
+
+
+=head2 HealthCheckIds => ArrayRef[Str|Undef]
+
+  The unique identifier (ID) for the Route 53 health check that's
+associated with the protection.
 
 
 =head2 Id => Str

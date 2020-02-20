@@ -25,6 +25,11 @@ package Paws::Shield;
     my $call_object = $self->new_with_coercions('Paws::Shield::AssociateDRTRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateHealthCheck {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Shield::AssociateHealthCheck', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateProtection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Shield::CreateProtection', @_);
@@ -78,6 +83,11 @@ package Paws::Shield;
   sub DisassociateDRTRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Shield::DisassociateDRTRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateHealthCheck {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Shield::DisassociateHealthCheck', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSubscriptionState {
@@ -154,7 +164,7 @@ package Paws::Shield;
   }
 
 
-  sub operations { qw/AssociateDRTLogBucket AssociateDRTRole CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeDRTAccess DescribeEmergencyContactSettings DescribeProtection DescribeSubscription DisassociateDRTLogBucket DisassociateDRTRole GetSubscriptionState ListAttacks ListProtections UpdateEmergencyContactSettings UpdateSubscription / }
+  sub operations { qw/AssociateDRTLogBucket AssociateDRTRole AssociateHealthCheck CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeDRTAccess DescribeEmergencyContactSettings DescribeProtection DescribeSubscription DisassociateDRTLogBucket DisassociateDRTRole DisassociateHealthCheck GetSubscriptionState ListAttacks ListProtections UpdateEmergencyContactSettings UpdateSubscription / }
 
 1;
 
@@ -269,6 +279,34 @@ you must be subscribed to the Business Support plan
 (https://aws.amazon.com/premiumsupport/business-support/) or the
 Enterprise Support plan
 (https://aws.amazon.com/premiumsupport/enterprise-support/).
+
+
+=head2 AssociateHealthCheck
+
+=over
+
+=item HealthCheckArn => Str
+
+=item ProtectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Shield::AssociateHealthCheck>
+
+Returns: a L<Paws::Shield::AssociateHealthCheckResponse> instance
+
+Adds health-based detection to the Shield Advanced protection for a
+resource. Shield Advanced health-based detection uses the health of
+your AWS resource to improve responsiveness and accuracy in attack
+detection and mitigation.
+
+You define the health check in Route 53 and then associate it with your
+Shield Advanced protection. For more information, see Shield Advanced
+Health-Based Detection
+(https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
+in the AWS WAF and AWS Shield Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateProtection
@@ -490,6 +528,34 @@ Enterprise Support plan
 if you are not subscribed to one of these support plans, but had been
 previously and had granted the DRT access to your account, you can
 submit a C<DisassociateDRTRole> request to remove this access.
+
+
+=head2 DisassociateHealthCheck
+
+=over
+
+=item HealthCheckArn => Str
+
+=item ProtectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Shield::DisassociateHealthCheck>
+
+Returns: a L<Paws::Shield::DisassociateHealthCheckResponse> instance
+
+Removes health-based detection from the Shield Advanced protection for
+a resource. Shield Advanced health-based detection uses the health of
+your AWS resource to improve responsiveness and accuracy in attack
+detection and mitigation.
+
+You define the health check in Route 53 and then associate or
+disassociate it with your Shield Advanced protection. For more
+information, see Shield Advanced Health-Based Detection
+(https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
+in the AWS WAF and AWS Shield Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 GetSubscriptionState
