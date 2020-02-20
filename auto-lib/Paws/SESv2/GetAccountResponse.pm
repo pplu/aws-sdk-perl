@@ -86,8 +86,8 @@ sending limits for your Amazon SES account in the current AWS Region.
 
 =head2 SuppressionAttributes => L<Paws::SESv2::SuppressionAttributes>
 
-An object that contains information about your account's suppression
-preferences.
+An object that contains information about the email address suppression
+preferences for your account in the current AWS Region.
 
 
 =head2 _request_id => Str

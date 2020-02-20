@@ -20,9 +20,7 @@ Paws::SESv2::CreateEmailIdentityResponse
 =head2 DkimAttributes => L<Paws::SESv2::DkimAttributes>
 
 An object that contains information about the DKIM attributes for the
-identity. This object includes the tokens that you use to create the
-CNAME records that are required to complete the DKIM verification
-process.
+identity.
 
 
 =head2 IdentityType => Str

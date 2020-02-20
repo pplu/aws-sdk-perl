@@ -34,31 +34,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SESv2::Supp
 
 =head1 DESCRIPTION
 
-An object containing information about the suppressed email
-destination.
+An object that contains information about an email address that is on
+the suppression list for your account.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => L<Paws::SESv2::SuppressedDestinationAttributes>
 
-  C<Optional> value with information about the sources of the
-suppression.
+  An optional value that can contain additional information about the
+reasons that the address was added to the suppression list for your
+account.
 
 
 =head2 B<REQUIRED> EmailAddress => Str
 
-  The suppressed email destination.
+  The email address that is on the suppression list for your account.
 
 
 =head2 B<REQUIRED> LastUpdateTime => Str
 
-  The last time the suppressed destination was updated.
+  The date and time when the suppressed destination was last updated,
+shown in Unix time format.
 
 
 =head2 B<REQUIRED> Reason => Str
 
-  The reason for which the email destination is suppressed.
+  The reason that the address was added to the suppression list for your
+account.
 
 
 

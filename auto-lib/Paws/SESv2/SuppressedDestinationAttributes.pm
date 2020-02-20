@@ -32,21 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SESv2::Supp
 
 =head1 DESCRIPTION
 
-An object containing additional attributes related to a suppressed
-destination.
+An object that contains additional attributes that are related an email
+address that is on the suppression list for your account.
 
 =head1 ATTRIBUTES
 
 
 =head2 FeedbackId => Str
 
-  A unique identifier of the suppression cause.
+  A unique identifier that's generated when an email address is added to
+the suppression list for your account.
 
 
 =head2 MessageId => Str
 
-  A unique identifier of the message that caused the suppression of the
-email destination.
+  The unique identifier of the email message that caused the email
+address to be added to the suppression list for your account.
 
 
 

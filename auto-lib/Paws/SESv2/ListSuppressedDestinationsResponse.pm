@@ -18,10 +18,10 @@ Paws::SESv2::ListSuppressedDestinationsResponse
 
 =head2 NextToken => Str
 
-A token that indicates that there are additional suppressed
-destinations to list. To view additional suppressed destinations, issue
-another request to C<ListSuppressedDestinations>, and pass this token
-in the C<NextToken> parameter.
+A token that indicates that there are additional email addresses on the
+suppression list for your account. To view additional suppressed
+addresses, issue another request to C<ListSuppressedDestinations>, and
+pass this token in the C<NextToken> parameter.
 
 
 =head2 SuppressedDestinationSummaries => ArrayRef[L<Paws::SESv2::SuppressedDestinationSummary>]

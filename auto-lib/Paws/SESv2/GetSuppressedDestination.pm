@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 B<REQUIRED> EmailAddress => Str
 
-Email destination to fetch from the suppression list.
+The email address that's on the account suppression list.
 
 
 

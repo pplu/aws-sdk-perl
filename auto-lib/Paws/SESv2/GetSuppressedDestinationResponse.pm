@@ -17,8 +17,7 @@ Paws::SESv2::GetSuppressedDestinationResponse
 
 =head2 B<REQUIRED> SuppressedDestination => L<Paws::SESv2::SuppressedDestination>
 
-An object containing information about the suppressed email
-destination.
+An object containing information about the suppressed email address.
 
 
 =head2 _request_id => Str

@@ -43,13 +43,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 B<REQUIRED> EmailAddress => Str
 
-Email destination to be suppressed.
+The email address that should be added to the suppression list for your
+account.
 
 
 
 =head2 B<REQUIRED> Reason => Str
 
-Reason for which the email destination is suppressed.
+The factors that should cause the email address to be added to the
+suppression list for your account.
 
 Valid values are: C<"BOUNCE">, C<"COMPLAINT">
 

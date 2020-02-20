@@ -43,20 +43,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 SuppressedReasons => ArrayRef[Str|Undef]
 
-A list of reasons to suppress email addresses. The only valid reasons
-are:
+A list that contains the reasons that email addresses will be
+automatically added to the suppression list for your account. This list
+can contain any or all of the following:
 
 =over
 
 =item *
 
-C<COMPLAINT> E<ndash> Amazon SES will suppress an email address that
-receives a complaint.
+C<COMPLAINT> E<ndash> Amazon SES adds an email address to the
+suppression list for your account when a message sent to that address
+results in a complaint.
 
 =item *
 
-C<BOUNCE> E<ndash> Amazon SES will suppress an email address that hard
-bounces.
+C<BOUNCE> E<ndash> Amazon SES adds an email address to the suppression
+list for your account when a message sent to that address results in a
+hard bounce.
 
 =back
 

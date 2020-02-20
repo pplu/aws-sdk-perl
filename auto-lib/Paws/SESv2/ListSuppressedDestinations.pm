@@ -57,14 +57,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 EndDate => Str
 
-Filters email destinations suppressed after the given time.
+Used to filter the list of suppressed email destinations so that it
+only includes addresses that were added to the list before a specific
+date. The date that you specify should be in Unix time format.
 
 
 
 =head2 NextToken => Str
 
 A token returned from a previous call to C<ListSuppressedDestinations>
-to indicate the position in the list of suppressed email destinations.
+to indicate the position in the list of suppressed email addresses.
 
 
 
@@ -79,13 +81,15 @@ a C<NextToken> element, which you can use to obtain additional results.
 
 =head2 Reasons => ArrayRef[Str|Undef]
 
-Filters email destinations suppressed by the given reasons.
+The factors that caused the email address to be added to .
 
 
 
 =head2 StartDate => Str
 
-Filters email destinations suppressed before the given time.
+Used to filter the list of suppressed email destinations so that it
+only includes addresses that were added to the list after a specific
+date. The date that you specify should be in Unix time format.
 
 
 

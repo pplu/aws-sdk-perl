@@ -1,6 +1,7 @@
 
 package Paws::SESv2::CreateEmailIdentity;
   use Moose;
+  has DkimSigningAttributes => (is => 'ro', isa => 'Paws::SESv2::DkimSigningAttributes');
   has EmailIdentity => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
 
@@ -30,8 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $email = Paws->service('SESv2');
     my $CreateEmailIdentityResponse = $email->CreateEmailIdentity(
-      EmailIdentity => 'MyIdentity',
-      Tags          => [
+      EmailIdentity         => 'MyIdentity',
+      DkimSigningAttributes => {
+        DomainSigningPrivateKey => 'MyPrivateKey',    # min: 1, max: 20480
+        DomainSigningSelector   => 'MySelector',      # min: 1, max: 63
+
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',
           Value => 'MyTagValue',
@@ -53,6 +59,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/CreateEmailIdentity>
 
 =head1 ATTRIBUTES
+
+
+=head2 DkimSigningAttributes => L<Paws::SESv2::DkimSigningAttributes>
+
+If your request includes this object, Amazon SES configures the
+identity to use Bring Your Own DKIM (BYODKIM) for DKIM authentication
+purposes, as opposed to the default method, Easy DKIM
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+
+You can only specify this object if the email identity is a domain, as
+opposed to an address.
+
 
 
 =head2 B<REQUIRED> EmailIdentity => Str

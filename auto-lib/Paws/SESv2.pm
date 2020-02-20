@@ -219,6 +219,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutEmailIdentityDkimAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutEmailIdentityDkimSigningAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::PutEmailIdentityDkimSigningAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEmailIdentityFeedbackAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutEmailIdentityFeedbackAttributes', @_);
@@ -257,7 +262,7 @@ package Paws::SESv2;
   
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity DeleteSuppressedDestination GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity GetSuppressedDestination ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListSuppressedDestinations ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutAccountSuppressionAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetSuppressionOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes PutSuppressedDestination SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity DeleteSuppressedDestination GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity GetSuppressedDestination ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListSuppressedDestinations ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutAccountSuppressionAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetSuppressionOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityDkimSigningAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes PutSuppressedDestination SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
 
 1;
 
@@ -431,8 +436,8 @@ placement tests can help you predict how your messages will be handled
 by various email providers around the world. When you perform a
 predictive inbox placement test, you provide a sample message that
 contains the content that you plan to send to your customers. Amazon
-SES API v2 then sends that message to special email addresses spread
-across several major email providers. After about 24 hours, the test is
+SES then sends that message to special email addresses spread across
+several major email providers. After about 24 hours, the test is
 complete, and you can use the C<GetDeliverabilityTestReport> operation
 to view the results of the test.
 
@@ -442,6 +447,8 @@ to view the results of the test.
 =over
 
 =item EmailIdentity => Str
+
+=item [DkimSigningAttributes => L<Paws::SESv2::DkimSigningAttributes>]
 
 =item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
 
@@ -463,12 +470,22 @@ When you verify an email address, Amazon SES sends an email to the
 address. Your email address is verified as soon as you follow the link
 in the verification email.
 
-When you verify a domain, this operation provides a set of DKIM tokens,
-which you can convert into CNAME tokens. You add these CNAME tokens to
-the DNS configuration for your domain. Your domain is verified when
-Amazon SES detects these records in the DNS configuration for your
-domain. For some DNS providers, it can take 72 hours or more to
-complete the domain verification process.
+When you verify a domain without specifying the
+C<DkimSigningAttributes> object, this operation provides a set of DKIM
+tokens. You can convert these tokens into CNAME records, which you then
+add to the DNS configuration for your domain. Your domain is verified
+when Amazon SES detects these records in the DNS configuration for your
+domain. This verification method is known as Easy DKIM
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+
+Alternatively, you can perform the verification process by providing
+your own public-private key pair. This verification method is known as
+Bring Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
+C<CreateEmailIdentity> operation has to include the
+C<DkimSigningAttributes> object. When you specify this object, you
+provide a selector (a component of the DNS record name that identifies
+the public key that you want to use for DKIM authentication) and a
+private key.
 
 
 =head2 DeleteConfigurationSet
@@ -564,8 +581,7 @@ Each argument is described in detail in: L<Paws::SESv2::DeleteSuppressedDestinat
 
 Returns: a L<Paws::SESv2::DeleteSuppressedDestinationResponse> instance
 
-Used to delete a suppressed email destination from your suppression
-list.
+Removes an email address from the suppression list for your account.
 
 
 =head2 GetAccount
@@ -708,7 +724,7 @@ When you use the Deliverability dashboard, you pay a monthly
 subscription charge, in addition to any other fees that you accrue by
 using Amazon SES and other AWS services. For more information about the
 features and cost of a Deliverability dashboard subscription, see
-Amazon Pinpoint Pricing (http://aws.amazon.com/pinpoint/pricing/).
+Amazon SES Pricing (http://aws.amazon.com/ses/pricing/).
 
 
 =head2 GetDeliverabilityTestReport
@@ -797,8 +813,8 @@ Each argument is described in detail in: L<Paws::SESv2::GetSuppressedDestination
 
 Returns: a L<Paws::SESv2::GetSuppressedDestinationResponse> instance
 
-Used to fetch a single suppressed email destination from your
-suppression list.
+Retrieves information about a specific email address that's on the
+suppression list for your account.
 
 
 =head2 ListConfigurationSets
@@ -936,8 +952,8 @@ Each argument is described in detail in: L<Paws::SESv2::ListSuppressedDestinatio
 
 Returns: a L<Paws::SESv2::ListSuppressedDestinationsResponse> instance
 
-Used to fetch a list suppressed email destinations from your
-suppression list.
+Retrieves a list of email addresses that are on the suppression list
+for your account.
 
 
 =head2 ListTagsForResource
@@ -1007,7 +1023,7 @@ Each argument is described in detail in: L<Paws::SESv2::PutAccountSuppressionAtt
 
 Returns: a L<Paws::SESv2::PutAccountSuppressionAttributesResponse> instance
 
-Change your account's suppression preferences for your account.
+Change the settings for the account-level suppression list.
 
 
 =head2 PutConfigurationSetDeliveryOptions
@@ -1085,7 +1101,8 @@ Each argument is described in detail in: L<Paws::SESv2::PutConfigurationSetSuppr
 
 Returns: a L<Paws::SESv2::PutConfigurationSetSuppressionOptionsResponse> instance
 
-Specify your account's suppression preferences for a configuration set.
+Specify the account suppression list preferences for a configuration
+set.
 
 
 =head2 PutConfigurationSetTrackingOptions
@@ -1174,7 +1191,7 @@ When you use the Deliverability dashboard, you pay a monthly
 subscription charge, in addition to any other fees that you accrue by
 using Amazon SES and other AWS services. For more information about the
 features and cost of a Deliverability dashboard subscription, see
-Amazon Pinpoint Pricing (http://aws.amazon.com/pinpoint/pricing/).
+Amazon SES Pricing (http://aws.amazon.com/ses/pricing/).
 
 
 =head2 PutEmailIdentityDkimAttributes
@@ -1193,6 +1210,54 @@ Each argument is described in detail in: L<Paws::SESv2::PutEmailIdentityDkimAttr
 Returns: a L<Paws::SESv2::PutEmailIdentityDkimAttributesResponse> instance
 
 Used to enable or disable DKIM authentication for an email identity.
+
+
+=head2 PutEmailIdentityDkimSigningAttributes
+
+=over
+
+=item EmailIdentity => Str
+
+=item SigningAttributesOrigin => Str
+
+=item [SigningAttributes => L<Paws::SESv2::DkimSigningAttributes>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::PutEmailIdentityDkimSigningAttributes>
+
+Returns: a L<Paws::SESv2::PutEmailIdentityDkimSigningAttributesResponse> instance
+
+Used to configure or change the DKIM authentication settings for an
+email domain identity. You can use this operation to do any of the
+following:
+
+=over
+
+=item *
+
+Update the signing attributes for an identity that uses Bring Your Own
+DKIM (BYODKIM).
+
+=item *
+
+Change from using no DKIM authentication to using Easy DKIM.
+
+=item *
+
+Change from using no DKIM authentication to using BYODKIM.
+
+=item *
+
+Change from using Easy DKIM to using BYODKIM.
+
+=item *
+
+Change from using BYODKIM to using Easy DKIM.
+
+=back
+
 
 
 =head2 PutEmailIdentityFeedbackAttributes
@@ -1261,7 +1326,7 @@ Each argument is described in detail in: L<Paws::SESv2::PutSuppressedDestination
 
 Returns: a L<Paws::SESv2::PutSuppressedDestinationResponse> instance
 
-Puts (overwrites) an email destination in your suppression list.
+Adds an email address to the suppression list for your account.
 
 
 =head2 SendEmail
@@ -1298,7 +1363,7 @@ types of messages:
 
 B<Simple> E<ndash> A standard email message. When you create this type
 of message, you specify the sender, the recipient, and the message
-body, and the Amazon SES API v2 assembles the message for you.
+body, and Amazon SES assembles the message for you.
 
 =item *
 

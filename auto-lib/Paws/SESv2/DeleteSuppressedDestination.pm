@@ -42,7 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 B<REQUIRED> EmailAddress => Str
 
-The suppressed email destination to delete.
+The suppressed email destination to remove from the account suppression
+list.
 
 
 

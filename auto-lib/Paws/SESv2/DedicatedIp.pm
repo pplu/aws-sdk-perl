@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SESv2::Dedi
 =head1 DESCRIPTION
 
 Contains information about a dedicated IP address that is associated
-with your Amazon SES API v2 account.
+with your Amazon SES account.
 
 To learn more about requesting dedicated IP addresses, see Requesting
 and Relinquishing Dedicated IP Addresses

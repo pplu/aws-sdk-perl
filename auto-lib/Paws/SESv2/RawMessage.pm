@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SESv2::RawM
 
 =head1 DESCRIPTION
 
-The raw email message.
+Represents the raw content of an email message.
 
 =head1 ATTRIBUTES
 
@@ -57,8 +57,7 @@ Each part of a multipart MIME message must be formatted properly.
 
 =item *
 
-Attachments must be in a file format that the Amazon SES API v2
-supports.
+Attachments must be in a file format that the Amazon SES supports.
 
 =item *
 

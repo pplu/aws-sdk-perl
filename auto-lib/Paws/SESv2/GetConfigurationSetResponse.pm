@@ -46,8 +46,8 @@ you send using the configuration set.
 
 =head2 SuppressionOptions => L<Paws::SESv2::SuppressionOptions>
 
-An object that contains information about your account's suppression
-preferences.
+An object that contains information about the suppression list
+preferences for your account.
 
 
 =head2 Tags => ArrayRef[L<Paws::SESv2::Tag>]

@@ -41,10 +41,10 @@ character set specification.
 =head2 Charset => Str
 
   The character set for the content. Because of the constraints of the
-SMTP protocol, the Amazon SES API v2 uses 7-bit ASCII by default. If
-the text includes characters outside of the ASCII range, you have to
-specify a character set. For example, you could specify C<UTF-8>,
-C<ISO-8859-1>, or C<Shift_JIS>.
+SMTP protocol, Amazon SES uses 7-bit ASCII by default. If the text
+includes characters outside of the ASCII range, you have to specify a
+character set. For example, you could specify C<UTF-8>, C<ISO-8859-1>,
+or C<Shift_JIS>.
 
 
 =head2 B<REQUIRED> Data => Str
