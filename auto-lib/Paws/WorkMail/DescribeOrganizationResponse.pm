@@ -2,6 +2,7 @@
 package Paws::WorkMail::DescribeOrganizationResponse;
   use Moose;
   has Alias => (is => 'ro', isa => 'Str');
+  has ARN => (is => 'ro', isa => 'Str');
   has CompletedDate => (is => 'ro', isa => 'Str');
   has DefaultMailDomain => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
@@ -24,6 +25,11 @@ Paws::WorkMail::DescribeOrganizationResponse
 =head2 Alias => Str
 
 The alias for an organization.
+
+
+=head2 ARN => Str
+
+The Amazon Resource Name (ARN) of the organization.
 
 
 =head2 CompletedDate => Str

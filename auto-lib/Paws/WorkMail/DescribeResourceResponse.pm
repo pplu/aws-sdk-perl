@@ -55,8 +55,8 @@ The identifier of the described resource.
 
 =head2 State => Str
 
-The state of the resource: enabled (registered to Amazon WorkMail) or
-disabled (deregistered or never registered to WorkMail).
+The state of the resource: enabled (registered to Amazon WorkMail),
+disabled (deregistered or never registered to WorkMail), or deleted.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">, C<"DELETED">
 =head2 Type => Str
