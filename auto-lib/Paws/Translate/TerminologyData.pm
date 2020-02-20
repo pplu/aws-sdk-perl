@@ -39,7 +39,10 @@ The data associated with the custom terminology.
 
 =head2 B<REQUIRED> File => Str
 
-  The file containing the custom terminology data.
+  The file containing the custom terminology data. Your version of the
+AWS SDK performs a Base64-encoding on this field before sending a
+request to the AWS service. Users of the SDK should not perform
+Base64-encoding themselves.
 
 
 =head2 B<REQUIRED> Format => Str

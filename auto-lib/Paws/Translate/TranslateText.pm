@@ -56,12 +56,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 B<REQUIRED> SourceLanguageCode => Str
 
 The language code for the language of the source text. The language
-must be a language supported by Amazon Translate.
+must be a language supported by Amazon Translate. For a list of
+language codes, see what-is-languages.
 
 To have Amazon Translate determine the source language of your text,
 you can specify C<auto> in the C<SourceLanguageCode> field. If you
-specify C<auto>, Amazon Translate will call Amazon Comprehend to
-determine the source language.
+specify C<auto>, Amazon Translate will call Amazon Comprehend
+(https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html)
+to determine the source language.
 
 
 
@@ -74,8 +76,9 @@ language must be a language supported by Amazon Translate.
 
 =head2 TerminologyNames => ArrayRef[Str|Undef]
 
-The TerminologyNames list that is taken as input to the TranslateText
-request. This has a minimum length of 0 and a maximum length of 1.
+The name of the terminology list file to be used in the TranslateText
+request. You can use 1 terminology list at most in a C<TranslateText>
+request. Terminology lists can contain a maximum of 256 terms.
 
 
 

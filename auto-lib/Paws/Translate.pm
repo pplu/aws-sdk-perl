@@ -20,6 +20,11 @@ package Paws::Translate;
     my $call_object = $self->new_with_coercions('Paws::Translate::DeleteTerminology', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTextTranslationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::DescribeTextTranslationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTerminology {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Translate::GetTerminology', @_);
@@ -33,6 +38,21 @@ package Paws::Translate;
   sub ListTerminologies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Translate::ListTerminologies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTextTranslationJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::ListTextTranslationJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartTextTranslationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::StartTextTranslationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopTextTranslationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::StopTextTranslationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TranslateText {
@@ -66,7 +86,7 @@ package Paws::Translate;
   }
 
 
-  sub operations { qw/DeleteTerminology GetTerminology ImportTerminology ListTerminologies TranslateText / }
+  sub operations { qw/DeleteTerminology DescribeTextTranslationJob GetTerminology ImportTerminology ListTerminologies ListTextTranslationJobs StartTextTranslationJob StopTextTranslationJob TranslateText / }
 
 1;
 
@@ -116,6 +136,24 @@ Each argument is described in detail in: L<Paws::Translate::DeleteTerminology>
 Returns: nothing
 
 A synchronous action that deletes a custom terminology.
+
+
+=head2 DescribeTextTranslationJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::DescribeTextTranslationJob>
+
+Returns: a L<Paws::Translate::DescribeTextTranslationJobResponse> instance
+
+Gets the properties associated with an asycnhronous batch translation
+job including name, ID, status, source and target languages,
+input/output S3 buckets, and so on.
 
 
 =head2 GetTerminology
@@ -188,6 +226,92 @@ Returns: a L<Paws::Translate::ListTerminologiesResponse> instance
 Provides a list of custom terminologies associated with your account.
 
 
+=head2 ListTextTranslationJobs
+
+=over
+
+=item [Filter => L<Paws::Translate::TextTranslationJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::ListTextTranslationJobs>
+
+Returns: a L<Paws::Translate::ListTextTranslationJobsResponse> instance
+
+Gets a list of the batch translation jobs that you have submitted.
+
+
+=head2 StartTextTranslationJob
+
+=over
+
+=item ClientToken => Str
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Translate::InputDataConfig>
+
+=item OutputDataConfig => L<Paws::Translate::OutputDataConfig>
+
+=item SourceLanguageCode => Str
+
+=item TargetLanguageCodes => ArrayRef[Str|Undef]
+
+=item [JobName => Str]
+
+=item [TerminologyNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::StartTextTranslationJob>
+
+Returns: a L<Paws::Translate::StartTextTranslationJobResponse> instance
+
+Starts an asynchronous batch translation job. Batch translation jobs
+can be used to translate large volumes of text across multiple
+documents at once. For more information, see async.
+
+Batch translation jobs can be described with the
+DescribeTextTranslationJob operation, listed with the
+ListTextTranslationJobs operation, and stopped with the
+StopTextTranslationJob operation.
+
+Amazon Translate does not support batch translation of multiple source
+languages at once.
+
+
+=head2 StopTextTranslationJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::StopTextTranslationJob>
+
+Returns: a L<Paws::Translate::StopTextTranslationJobResponse> instance
+
+Stops an asynchronous batch translation job that is in progress.
+
+If the job's state is C<IN_PROGRESS>, the job will be marked for
+termination and put into the C<STOP_REQUESTED> state. If the job
+completes before it can be stopped, it is put into the C<COMPLETED>
+state. Otherwise, the job is put into the C<STOPPED> state.
+
+Asynchronous batch translation jobs are started with the
+StartTextTranslationJob operation. You can use the
+DescribeTextTranslationJob or ListTextTranslationJobs operations to get
+a batch translation job's C<JobId>.
+
+
 =head2 TranslateText
 
 =over
@@ -208,103 +332,8 @@ Each argument is described in detail in: L<Paws::Translate::TranslateText>
 Returns: a L<Paws::Translate::TranslateTextResponse> instance
 
 Translates input text from the source language to the target language.
-It is not necessary to use English (en) as either the source or the
-target language but not all language combinations are supported by
-Amazon Translate. For more information, see Supported Language Pairs
-(http://docs.aws.amazon.com/translate/latest/dg/pairs.html).
-
-=over
-
-=item *
-
-Arabic (ar)
-
-=item *
-
-Chinese (Simplified) (zh)
-
-=item *
-
-Chinese (Traditional) (zh-TW)
-
-=item *
-
-Czech (cs)
-
-=item *
-
-Danish (da)
-
-=item *
-
-Dutch (nl)
-
-=item *
-
-English (en)
-
-=item *
-
-Finnish (fi)
-
-=item *
-
-French (fr)
-
-=item *
-
-German (de)
-
-=item *
-
-Hebrew (he)
-
-=item *
-
-Indonesian (id)
-
-=item *
-
-Italian (it)
-
-=item *
-
-Japanese (ja)
-
-=item *
-
-Korean (ko)
-
-=item *
-
-Polish (pl)
-
-=item *
-
-Portuguese (pt)
-
-=item *
-
-Russian (ru)
-
-=item *
-
-Spanish (es)
-
-=item *
-
-Swedish (sv)
-
-=item *
-
-Turkish (tr)
-
-=back
-
-To have Amazon Translate determine the source language of your text,
-you can specify C<auto> in the C<SourceLanguageCode> field. If you
-specify C<auto>, Amazon Translate will call Amazon Comprehend to
-determine the source language.
+For a list of available languages and language codes, see
+what-is-languages.
 
 
 

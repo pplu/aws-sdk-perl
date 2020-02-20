@@ -35,7 +35,7 @@ The language code for the language of the target text.
 
 =head2 B<REQUIRED> TranslatedText => Str
 
-The the translated text. The maximum length of this text is 5kb.
+The translated text.
 
 
 =head2 _request_id => Str
