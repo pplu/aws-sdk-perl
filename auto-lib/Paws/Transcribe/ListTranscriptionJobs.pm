@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobNameContains => 'MyTranscriptionJobName',    # OPTIONAL
       MaxResults      => 1,                           # OPTIONAL
       NextToken       => 'MyNextToken',               # OPTIONAL
-      Status          => 'IN_PROGRESS',               # OPTIONAL
+      Status          => 'QUEUED',                    # OPTIONAL
     );
 
     # Results:
@@ -80,7 +80,7 @@ status. Jobs are ordered by creation date, with the newest jobs
 returned first. If you donE<rsquo>t specify a status, Amazon Transcribe
 returns all transcription jobs ordered by creation date.
 
-Valid values are: C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
+Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
 
 
 =head1 SEE ALSO

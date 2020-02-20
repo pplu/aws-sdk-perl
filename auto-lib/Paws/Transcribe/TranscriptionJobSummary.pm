@@ -5,6 +5,7 @@ package Paws::Transcribe::TranscriptionJobSummary;
   has FailureReason => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has OutputLocationType => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Str');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
   has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
 1;
@@ -74,6 +75,11 @@ was started with the C<StartTranscriptionJob> operation.
 If the value is C<SERVICE_BUCKET> then the output is stored by Amazon
 Transcribe and can be retrieved using the URI in the
 C<GetTranscriptionJob> response's C<TranscriptFileUri> field.
+
+
+=head2 StartTime => Str
+
+  A timestamp that shows when the job started processing.
 
 
 =head2 TranscriptionJobName => Str

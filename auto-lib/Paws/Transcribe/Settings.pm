@@ -5,6 +5,8 @@ package Paws::Transcribe::Settings;
   has MaxSpeakerLabels => (is => 'ro', isa => 'Int');
   has ShowAlternatives => (is => 'ro', isa => 'Bool');
   has ShowSpeakerLabels => (is => 'ro', isa => 'Bool');
+  has VocabularyFilterMethod => (is => 'ro', isa => 'Str');
+  has VocabularyFilterName => (is => 'ro', isa => 'Str');
   has VocabularyName => (is => 'ro', isa => 'Str');
 1;
 
@@ -92,6 +94,21 @@ number of speaker labels C<MaxSpeakerLabels> field.
 You can't set both C<ShowSpeakerLabels> and C<ChannelIdentification> in
 the same request. If you set both, your request returns a
 C<BadRequestException>.
+
+
+=head2 VocabularyFilterMethod => Str
+
+  Set to C<mask> to remove filtered text from the transcript and replace
+it with three asterisks ("***") as placeholder text. Set to C<remove>
+to remove filtered text from the transcript without using placeholder
+text.
+
+
+=head2 VocabularyFilterName => Str
+
+  The name of the vocabulary filter to use when transcribing the audio.
+The filter that you specify must have the same language code as the
+transcription job.
 
 
 =head2 VocabularyName => Str

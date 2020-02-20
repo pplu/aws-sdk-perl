@@ -1,6 +1,7 @@
 
 package Paws::Transcribe::StartTranscriptionJob;
   use Moose;
+  has JobExecutionSettings => (is => 'ro', isa => 'Paws::Transcribe::JobExecutionSettings');
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media', required => 1);
   has MediaFormat => (is => 'ro', isa => 'Str');
@@ -39,18 +40,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Media        => {
         MediaFileUri => 'MyUri',    # min: 1, max: 2000; OPTIONAL
       },
-      TranscriptionJobName     => 'MyTranscriptionJobName',
-      MediaFormat              => 'mp3',                      # OPTIONAL
-      MediaSampleRateHertz     => 1,                          # OPTIONAL
-      OutputBucketName         => 'MyOutputBucketName',       # OPTIONAL
-      OutputEncryptionKMSKeyId => 'MyKMSKeyId',               # OPTIONAL
+      TranscriptionJobName => 'MyTranscriptionJobName',
+      JobExecutionSettings => {
+        AllowDeferredExecution => 1,                        # OPTIONAL
+        DataAccessRoleArn      => 'MyDataAccessRoleArn',    # OPTIONAL
+      },    # OPTIONAL
+      MediaFormat              => 'mp3',                   # OPTIONAL
+      MediaSampleRateHertz     => 1,                       # OPTIONAL
+      OutputBucketName         => 'MyOutputBucketName',    # OPTIONAL
+      OutputEncryptionKMSKeyId => 'MyKMSKeyId',            # OPTIONAL
       Settings                 => {
-        ChannelIdentification => 1,    # OPTIONAL
-        MaxAlternatives       => 1,    # min: 2, max: 10; OPTIONAL
-        MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
-        ShowAlternatives      => 1,    # OPTIONAL
-        ShowSpeakerLabels     => 1,    # OPTIONAL
-        VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
+        ChannelIdentification  => 1,           # OPTIONAL
+        MaxAlternatives        => 1,           # min: 2, max: 10; OPTIONAL
+        MaxSpeakerLabels       => 1,           # min: 2, max: 10; OPTIONAL
+        ShowAlternatives       => 1,           # OPTIONAL
+        ShowSpeakerLabels      => 1,           # OPTIONAL
+        VocabularyFilterMethod => 'remove',    # values: remove, mask; OPTIONAL
+        VocabularyFilterName =>
+          'MyVocabularyFilterName',            # min: 1, max: 200; OPTIONAL
+        VocabularyName => 'MyVocabularyName',  # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -63,6 +71,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transcribe/StartTranscriptionJob>
 
 =head1 ATTRIBUTES
+
+
+=head2 JobExecutionSettings => L<Paws::Transcribe::JobExecutionSettings>
+
+Provides information about how a transcription job is executed. Use
+this field to indicate that the job can be queued for deferred
+execution if the concurrency limit is reached and there are no slots
+available to immediately run the job.
+
 
 
 =head2 B<REQUIRED> LanguageCode => Str

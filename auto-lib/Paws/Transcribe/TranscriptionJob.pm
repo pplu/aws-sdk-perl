@@ -3,11 +3,13 @@ package Paws::Transcribe::TranscriptionJob;
   has CompletionTime => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has JobExecutionSettings => (is => 'ro', isa => 'Paws::Transcribe::JobExecutionSettings');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media');
   has MediaFormat => (is => 'ro', isa => 'Str');
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
   has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
+  has StartTime => (is => 'ro', isa => 'Str');
   has Transcript => (is => 'ro', isa => 'Paws::Transcribe::Transcript');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
   has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
@@ -113,6 +115,11 @@ in the I<Amazon Web Services General Reference>.
 
 
 
+=head2 JobExecutionSettings => L<Paws::Transcribe::JobExecutionSettings>
+
+  Provides information about how a transcription job is executed.
+
+
 =head2 LanguageCode => Str
 
   The language code for the input speech.
@@ -139,6 +146,11 @@ in the I<Amazon Web Services General Reference>.
 on speaker recognition, to set the maximum number of speakers that
 should be identified and to specify a custom vocabulary to use when
 processing the transcription job.
+
+
+=head2 StartTime => Str
+
+  A timestamp that shows with the job was started processing.
 
 
 =head2 Transcript => L<Paws::Transcribe::Transcript>

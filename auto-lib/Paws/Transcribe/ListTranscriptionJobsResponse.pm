@@ -30,7 +30,7 @@ the next page of jobs.
 
 The requested status of the jobs returned.
 
-Valid values are: C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
+Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
 =head2 TranscriptionJobSummaries => ArrayRef[L<Paws::Transcribe::TranscriptionJobSummary>]
 
 A list of objects containing summary information for a transcription
