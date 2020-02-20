@@ -134,17 +134,18 @@ are included in this insight.
 =head2 ComplianceStatus => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
   Exclusive to findings that are generated as the result of a check run
-against a specific rule in a supported standard (for example, CIS AWS
-Foundations). Contains compliance-related finding details.
+against a specific rule in a supported standard, such as CIS AWS
+Foundations. Contains compliance-related finding details.
 
 
 =head2 Confidence => ArrayRef[L<Paws::SecurityHub::NumberFilter>]
 
   A finding's confidence. Confidence is defined as the likelihood that a
 finding accurately identifies the behavior or issue that it was
-intended to identify. Confidence is scored on a 0-100 basis using a
-ratio scale, where 0 means zero percent confidence and 100 means 100
-percent confidence.
+intended to identify.
+
+Confidence is scored on a 0-100 basis using a ratio scale, where 0
+means zero percent confidence and 100 means 100 percent confidence.
 
 
 =head2 CreatedAt => ArrayRef[L<Paws::SecurityHub::DateFilter>]
@@ -157,9 +158,10 @@ finding captured.
 =head2 Criticality => ArrayRef[L<Paws::SecurityHub::NumberFilter>]
 
   The level of importance assigned to the resources associated with the
-finding. A score of 0 means that the underlying resources have no
-criticality, and a score of 100 is reserved for the most critical
-resources.
+finding.
+
+A score of 0 means that the underlying resources have no criticality,
+and a score of 100 is reserved for the most critical resources.
 
 
 =head2 Description => ArrayRef[L<Paws::SecurityHub::StringFilter>]
@@ -390,7 +392,7 @@ finding.
 
 =head2 ResourceAwsEc2InstanceLaunchedAt => ArrayRef[L<Paws::SecurityHub::DateFilter>]
 
-  The date/time the instance was launched.
+  The date and time the instance was launched.
 
 
 =head2 ResourceAwsEc2InstanceSubnetId => ArrayRef[L<Paws::SecurityHub::StringFilter>]
@@ -509,32 +511,33 @@ security-findings provider's solution.
 
 =head2 ThreatIntelIndicatorCategory => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
-  The category of a threat intel indicator.
+  The category of a threat intelligence indicator.
 
 
 =head2 ThreatIntelIndicatorLastObservedAt => ArrayRef[L<Paws::SecurityHub::DateFilter>]
 
-  The date/time of the last observation of a threat intel indicator.
+  The date/time of the last observation of a threat intelligence
+indicator.
 
 
 =head2 ThreatIntelIndicatorSource => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
-  The source of the threat intel.
+  The source of the threat intelligence.
 
 
 =head2 ThreatIntelIndicatorSourceUrl => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
-  The URL for more details from the source of the threat intel.
+  The URL for more details from the source of the threat intelligence.
 
 
 =head2 ThreatIntelIndicatorType => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
-  The type of a threat intel indicator.
+  The type of a threat intelligence indicator.
 
 
 =head2 ThreatIntelIndicatorValue => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
-  The value of a threat intel indicator.
+  The value of a threat intelligence indicator.
 
 
 =head2 Title => ArrayRef[L<Paws::SecurityHub::StringFilter>]

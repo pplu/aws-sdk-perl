@@ -69,7 +69,12 @@ was processed.
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of the resource that details are provided for.
+  The type of the resource that details are provided for. If possible,
+set C<Type> to one of the supported resource types. For example, if the
+resource is an EC2 instance, then set C<Type> to C<AwsEc2Instance>.
+
+If the resource does not match any of the provided types, then set
+C<Type> to C<Other>.
 
 
 

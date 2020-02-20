@@ -39,13 +39,9 @@ The standard that you want to enable.
 
 =head2 B<REQUIRED> StandardsArn => Str
 
-  The ARN of the standard that you want to enable.
-
-In this release, Security Hub only supports the CIS AWS Foundations
-standard.
-
-Its ARN is
-C<arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0>.
+  The ARN of the standard that you want to enable. To view the list of
+available standards and their ARNs, use the C< DescribeStandards >
+operation.
 
 
 =head2 StandardsInput => L<Paws::SecurityHub::StandardsInputParameterMap>

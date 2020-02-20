@@ -1,6 +1,9 @@
 package Paws::SecurityHub::AwsIamAccessKeyDetails;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str');
+  has PrincipalId => (is => 'ro', isa => 'Str');
+  has PrincipalName => (is => 'ro', isa => 'Str');
+  has PrincipalType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +46,21 @@ IAM access key details related to a finding.
   The creation date/time of the IAM access key related to a finding.
 
 
+=head2 PrincipalId => Str
+
+  The ID of the principal associated with an access key.
+
+
+=head2 PrincipalName => Str
+
+  The name of the principal.
+
+
+=head2 PrincipalType => Str
+
+  The type of principal associated with an access key.
+
+
 =head2 Status => Str
 
   The status of the IAM access key related to a finding.
@@ -51,6 +69,10 @@ IAM access key details related to a finding.
 =head2 UserName => Str
 
   The user associated with the IAM access key related to a finding.
+
+The C<UserName> parameter has been replaced with the C<PrincipalName>
+parameter because access keys can also be assigned to principals that
+are not IAM users.
 
 
 

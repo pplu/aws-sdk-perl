@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Includes details of the list of the findings that can't be imported.
+Includes details of the list of the findings that cannot be imported.
 
 =head1 ATTRIBUTES
 

@@ -80,8 +80,8 @@ the integrated third-party solutions and compliance checks.
 =head2 Compliance => L<Paws::SecurityHub::Compliance>
 
   This data type is exclusive to findings that are generated as the
-result of a check run against a specific rule in a supported standard
-(for example, CIS AWS Foundations). Contains compliance-related finding
+result of a check run against a specific rule in a supported standard,
+such as CIS AWS Foundations. Contains compliance-related finding
 details.
 
 
@@ -89,9 +89,10 @@ details.
 
   A finding's confidence. Confidence is defined as the likelihood that a
 finding accurately identifies the behavior or issue that it was
-intended to identify. Confidence is scored on a 0-100 basis using a
-ratio scale, where 0 means zero percent confidence and 100 means 100
-percent confidence.
+intended to identify.
+
+Confidence is scored on a 0-100 basis using a ratio scale, where 0
+means zero percent confidence and 100 means 100 percent confidence.
 
 
 =head2 B<REQUIRED> CreatedAt => Str
@@ -104,9 +105,10 @@ finding captured.
 =head2 Criticality => Int
 
   The level of importance assigned to the resources associated with the
-finding. A score of 0 means that the underlying resources have no
-criticality, and a score of 100 is reserved for the most critical
-resources.
+finding.
+
+A score of 0 means that the underlying resources have no criticality,
+and a score of 100 is reserved for the most critical resources.
 
 
 =head2 B<REQUIRED> Description => Str
@@ -217,7 +219,7 @@ security-findings provider's solution.
 
 =head2 ThreatIntelIndicators => ArrayRef[L<Paws::SecurityHub::ThreatIntelIndicator>]
 
-  Threat intel details related to a finding.
+  Threat intelligence details related to a finding.
 
 
 =head2 B<REQUIRED> Title => Str

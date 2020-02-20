@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs of the member accounts to delete.
+The list of account IDs for the member accounts to delete.
 
 
 

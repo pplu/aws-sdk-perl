@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Details about the account that wasn't processed.
+Details about the account that was not processed.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-  An AWS account ID of the account that wasn't be processed.
+  An AWS account ID of the account that was not processed.
 
 
 =head2 ProcessingResult => Str
 
-  The reason that the account wasn't be processed.
+  The reason that the account was not processed.
 
 
 

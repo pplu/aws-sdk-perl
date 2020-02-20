@@ -42,8 +42,8 @@ Contains information about a Security Hub insight.
 =head2 B<REQUIRED> Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
 
   One or more attributes used to filter the findings included in the
-insight. Only findings that match the criteria defined in the filters
-are included in the insight.
+insight. The insight only includes findings that match the criteria
+defined in the filters.
 
 
 =head2 B<REQUIRED> GroupByAttribute => Str

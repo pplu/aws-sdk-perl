@@ -43,10 +43,6 @@ A resource that represents your subscription to a supported standard.
 
   The ARN of a standard.
 
-In this release, Security Hub supports only the CIS AWS Foundations
-standard, which uses the following ARN:
-C<arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.>
-
 
 =head2 B<REQUIRED> StandardsInput => L<Paws::SecurityHub::StandardsInputParameterMap>
 

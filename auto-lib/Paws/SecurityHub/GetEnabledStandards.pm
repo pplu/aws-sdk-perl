@@ -57,16 +57,19 @@ The maximum number of results to return in the response.
 
 =head2 NextToken => Str
 
-Paginates results. On your first call to the C<GetEnabledStandards>
-operation, set the value of this parameter to C<NULL>. For subsequent
-calls to the operation, fill C<nextToken> in the request with the value
-of C<nextToken> from the previous response to continue listing data.
+The token that is required for pagination. On your first call to the
+C<GetEnabledStandards> operation, set the value of this parameter to
+C<NULL>.
+
+For subsequent calls to the operation, to continue listing data, set
+the value of this parameter to the value returned from the previous
+response.
 
 
 
 =head2 StandardsSubscriptionArns => ArrayRef[Str|Undef]
 
-A list of the standards subscription ARNs for the standards to
+The list of the standards subscription ARNs for the standards to
 retrieve.
 
 

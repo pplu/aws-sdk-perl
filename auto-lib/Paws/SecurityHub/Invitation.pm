@@ -57,7 +57,7 @@ was sent from.
 
 =head2 MemberStatus => Str
 
-  The current status of the association between member and master
+  The current status of the association between the member and master
 accounts.
 
 

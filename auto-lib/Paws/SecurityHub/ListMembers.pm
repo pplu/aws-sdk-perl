@@ -50,27 +50,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 MaxResults => Int
 
-The maximum number of items that you want in the response.
+The maximum number of items to return in the response.
 
 
 
 =head2 NextToken => Str
 
-Paginates results. Set the value of this parameter to C<NULL> on your
-first call to the C<ListMembers> operation. For subsequent calls to the
-operation, fill C<nextToken> in the request with the value of
-C<nextToken> from the previous response to continue listing data.
+The token that is required for pagination. On your first call to the
+C<ListMembers> operation, set the value of this parameter to C<NULL>.
+
+For subsequent calls to the operation, to continue listing data, set
+the value of this parameter to the value returned from the previous
+response.
 
 
 
 =head2 OnlyAssociated => Bool
 
-Specifies which member accounts the response includes based on their
-relationship status with the master account. The default value is
-C<TRUE>. If C<onlyAssociated> is set to C<TRUE>, the response includes
-member accounts whose relationship status with the master is set to
-C<ENABLED> or C<DISABLED>. If C<onlyAssociated> is set to C<FALSE>, the
-response includes all existing member accounts.
+Specifies which member accounts to include in the response based on
+their relationship status with the master account. The default value is
+C<TRUE>.
+
+If C<OnlyAssociated> is set to C<TRUE>, the response includes member
+accounts whose relationship status with the master is set to C<ENABLED>
+or C<DISABLED>.
+
+If C<OnlyAssociated> is set to C<FALSE>, the response includes all
+existing member accounts.
 
 
 

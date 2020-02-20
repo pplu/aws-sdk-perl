@@ -24,7 +24,7 @@ The number of findings that failed to import.
 
 =head2 FailedFindings => ArrayRef[L<Paws::SecurityHub::ImportFindingsError>]
 
-The list of the findings that failed to import.
+The list of findings that failed to import.
 
 
 =head2 B<REQUIRED> SuccessCount => Int

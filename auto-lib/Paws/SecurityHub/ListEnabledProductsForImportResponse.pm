@@ -18,12 +18,12 @@ Paws::SecurityHub::ListEnabledProductsForImportResponse
 
 =head2 NextToken => Str
 
-The token that is required for pagination.
+The pagination token to use to request the next page of results.
 
 
 =head2 ProductSubscriptions => ArrayRef[Str|Undef]
 
-A list of ARNs for the resources that represent your subscriptions to
+The list of ARNs for the resources that represent your subscriptions to
 products.
 
 

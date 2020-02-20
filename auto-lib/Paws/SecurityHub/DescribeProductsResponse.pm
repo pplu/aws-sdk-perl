@@ -18,7 +18,7 @@ Paws::SecurityHub::DescribeProductsResponse
 
 =head2 NextToken => Str
 
-The token that is required for pagination.
+The pagination token to use to request the next page of results.
 
 
 =head2 B<REQUIRED> Products => ArrayRef[L<Paws::SecurityHub::Product>]

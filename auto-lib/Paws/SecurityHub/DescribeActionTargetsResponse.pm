@@ -25,7 +25,7 @@ target available in Security Hub.
 
 =head2 NextToken => Str
 
-The token that is required for pagination.
+The pagination token to use to request the next page of results.
 
 
 =head2 _request_id => Str
