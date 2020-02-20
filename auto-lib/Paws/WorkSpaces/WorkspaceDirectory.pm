@@ -127,7 +127,7 @@ more information, see Bring Your Own Windows Desktop Images
 =head2 WorkspaceAccessProperties => L<Paws::WorkSpaces::WorkspaceAccessProperties>
 
   The devices and operating systems that users can use to access
-Workspaces.
+WorkSpaces.
 
 
 =head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>

@@ -79,7 +79,9 @@ in the AWS Directory Service directory for the WorkSpace.
 
 =head2 VolumeEncryptionKey => Str
 
-  The KMS key used to encrypt data stored on your WorkSpace.
+  The symmetric AWS KMS customer master key (CMK) used to encrypt data
+stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric
+CMKs.
 
 
 =head2 WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>

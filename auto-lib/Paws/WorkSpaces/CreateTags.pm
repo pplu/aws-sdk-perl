@@ -56,7 +56,9 @@ access control groups.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
 
-The tags. Each WorkSpaces resource can have a maximum of 50 tags.
+The tags. Each WorkSpaces resource can have a maximum of 50 tags. If
+you want to add new tags to a set of existing tags, you must submit all
+of the existing tags along with the new ones.
 
 
 
