@@ -49,7 +49,7 @@ Configuration information for debugging rules.
 
 =head2 LocalPath => Str
 
-  Path to local storage location for rules. Defaults to
+  Path to local storage location for output of rules. Defaults to
 C</opt/ml/processing/output/rule/>.
 
 
@@ -77,7 +77,7 @@ evaluation.
 
 =head2 VolumeSizeInGB => Int
 
-  The size, in GB, of the ML storage volume attached to the notebook
+  The size, in GB, of the ML storage volume attached to the processing
 instance.
 
 

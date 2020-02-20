@@ -39,7 +39,8 @@ Configuration information for tensor collections.
 
 =head2 CollectionName => Str
 
-  The name of the tensor collection.
+  The name of the tensor collection. The name must be unique relative to
+other rule configuration names.
 
 
 =head2 CollectionParameters => L<Paws::SageMaker::CollectionParameters>

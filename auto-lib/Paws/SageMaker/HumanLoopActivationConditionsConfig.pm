@@ -31,7 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Defines under what conditions SageMaker creates a human loop.
+Defines under what conditions SageMaker creates a human loop. Used
+within .
 
 =head1 ATTRIBUTES
 

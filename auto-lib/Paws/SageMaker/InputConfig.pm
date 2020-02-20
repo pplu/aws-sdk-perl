@@ -92,6 +92,53 @@ If using the CLI, C<{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}>
 
 =item *
 
+C<KERAS>: You must specify the name and shape (NCHW format) of expected
+data inputs using a dictionary format for your trained model. Note that
+while Keras model artifacts should be uploaded in NHWC (channel-last)
+format, C<DataInputConfig> should be specified in NCHW (channel-first)
+format. The dictionary formats required for the console and CLI are
+different.
+
+=over
+
+=item *
+
+Examples for one input:
+
+=over
+
+=item *
+
+If using the console, C<{"input_1":[1,3,224,224]}>
+
+=item *
+
+If using the CLI, C<{\"input_1\":[1,3,224,224]}>
+
+=back
+
+=item *
+
+Examples for two inputs:
+
+=over
+
+=item *
+
+If using the console, C<{"input_1": [1,3,224,224],
+"input_2":[1,3,224,224]}>
+
+=item *
+
+If using the CLI, C<{\"input_1\": [1,3,224,224],
+\"input_2\":[1,3,224,224]}>
+
+=back
+
+=back
+
+=item *
+
 C<MXNET/ONNX>: You must specify the name and shape (NCHW format) of the
 expected data inputs in order using a dictionary format for your
 trained model. The dictionary formats required for the console and CLI

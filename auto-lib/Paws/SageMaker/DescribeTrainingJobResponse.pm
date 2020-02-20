@@ -118,9 +118,6 @@ are configured to use a VPC, Amazon SageMaker downloads and uploads
 customer data and model artifacts through the specified VPC, but the
 training container does not have network access.
 
-The Semantic Segmentation built-in algorithm does not support network
-isolation.
-
 
 =head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
 

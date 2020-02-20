@@ -375,6 +375,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeUserProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorkforce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeWorkforce', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeWorkteam {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeWorkteam', @_);
@@ -663,6 +668,11 @@ package Paws::SageMaker;
   sub UpdateUserProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateWorkforce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateWorkforce', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateWorkteam {
@@ -1409,7 +1419,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddTags AssociateTrialComponent CreateAlgorithm CreateApp CreateAutoMLJob CreateCodeRepository CreateCompilationJob CreateDomain CreateEndpoint CreateEndpointConfig CreateExperiment CreateFlowDefinition CreateHumanTaskUi CreateHyperParameterTuningJob CreateLabelingJob CreateModel CreateModelPackage CreateMonitoringSchedule CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedDomainUrl CreatePresignedNotebookInstanceUrl CreateProcessingJob CreateTrainingJob CreateTransformJob CreateTrial CreateTrialComponent CreateUserProfile CreateWorkteam DeleteAlgorithm DeleteApp DeleteCodeRepository DeleteDomain DeleteEndpoint DeleteEndpointConfig DeleteExperiment DeleteFlowDefinition DeleteModel DeleteModelPackage DeleteMonitoringSchedule DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DeleteTrial DeleteTrialComponent DeleteUserProfile DeleteWorkteam DescribeAlgorithm DescribeApp DescribeAutoMLJob DescribeCodeRepository DescribeCompilationJob DescribeDomain DescribeEndpoint DescribeEndpointConfig DescribeExperiment DescribeFlowDefinition DescribeHumanTaskUi DescribeHyperParameterTuningJob DescribeLabelingJob DescribeModel DescribeModelPackage DescribeMonitoringSchedule DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeProcessingJob DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeTrial DescribeTrialComponent DescribeUserProfile DescribeWorkteam DisassociateTrialComponent GetSearchSuggestions ListAlgorithms ListApps ListAutoMLJobs ListCandidatesForAutoMLJob ListCodeRepositories ListCompilationJobs ListDomains ListEndpointConfigs ListEndpoints ListExperiments ListFlowDefinitions ListHumanTaskUis ListHyperParameterTuningJobs ListLabelingJobs ListLabelingJobsForWorkteam ListModelPackages ListModels ListMonitoringExecutions ListMonitoringSchedules ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListProcessingJobs ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListTrialComponents ListTrials ListUserProfiles ListWorkteams RenderUiTemplate Search StartMonitoringSchedule StartNotebookInstance StopAutoMLJob StopCompilationJob StopHyperParameterTuningJob StopLabelingJob StopMonitoringSchedule StopNotebookInstance StopProcessingJob StopTrainingJob StopTransformJob UpdateCodeRepository UpdateDomain UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateExperiment UpdateMonitoringSchedule UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdateTrial UpdateTrialComponent UpdateUserProfile UpdateWorkteam / }
+  sub operations { qw/AddTags AssociateTrialComponent CreateAlgorithm CreateApp CreateAutoMLJob CreateCodeRepository CreateCompilationJob CreateDomain CreateEndpoint CreateEndpointConfig CreateExperiment CreateFlowDefinition CreateHumanTaskUi CreateHyperParameterTuningJob CreateLabelingJob CreateModel CreateModelPackage CreateMonitoringSchedule CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedDomainUrl CreatePresignedNotebookInstanceUrl CreateProcessingJob CreateTrainingJob CreateTransformJob CreateTrial CreateTrialComponent CreateUserProfile CreateWorkteam DeleteAlgorithm DeleteApp DeleteCodeRepository DeleteDomain DeleteEndpoint DeleteEndpointConfig DeleteExperiment DeleteFlowDefinition DeleteModel DeleteModelPackage DeleteMonitoringSchedule DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DeleteTrial DeleteTrialComponent DeleteUserProfile DeleteWorkteam DescribeAlgorithm DescribeApp DescribeAutoMLJob DescribeCodeRepository DescribeCompilationJob DescribeDomain DescribeEndpoint DescribeEndpointConfig DescribeExperiment DescribeFlowDefinition DescribeHumanTaskUi DescribeHyperParameterTuningJob DescribeLabelingJob DescribeModel DescribeModelPackage DescribeMonitoringSchedule DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeProcessingJob DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeTrial DescribeTrialComponent DescribeUserProfile DescribeWorkforce DescribeWorkteam DisassociateTrialComponent GetSearchSuggestions ListAlgorithms ListApps ListAutoMLJobs ListCandidatesForAutoMLJob ListCodeRepositories ListCompilationJobs ListDomains ListEndpointConfigs ListEndpoints ListExperiments ListFlowDefinitions ListHumanTaskUis ListHyperParameterTuningJobs ListLabelingJobs ListLabelingJobsForWorkteam ListModelPackages ListModels ListMonitoringExecutions ListMonitoringSchedules ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListProcessingJobs ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListTrialComponents ListTrials ListUserProfiles ListWorkteams RenderUiTemplate Search StartMonitoringSchedule StartNotebookInstance StopAutoMLJob StopCompilationJob StopHyperParameterTuningJob StopLabelingJob StopMonitoringSchedule StopNotebookInstance StopProcessingJob StopTrainingJob StopTransformJob UpdateCodeRepository UpdateDomain UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateExperiment UpdateMonitoringSchedule UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdateTrial UpdateTrialComponent UpdateUserProfile UpdateWorkforce UpdateWorkteam / }
 
 1;
 
@@ -2642,12 +2652,11 @@ tracked, logged, and indexed. When you use the AWS SDK for Python
 You can add tags to a trial component and then use the Search API to
 search for the tags.
 
-You can create a trial component through a direct call to the
-C<CreateTrialComponent> API. However, you can't specify the C<Source>
-property of the component in the request, therefore, the component
-isn't associated with an Amazon SageMaker job. You must use Amazon
-SageMaker Studio, the Amazon SageMaker Python SDK, or the AWS SDK for
-Python (Boto) to create the component with a valid C<Source> property.
+C<CreateTrialComponent> can only be invoked from within an Amazon
+SageMaker managed environment. This includes Amazon SageMaker training
+jobs, processing jobs, transform jobs, and Amazon SageMaker notebooks.
+A call to C<CreateTrialComponent> from outside one of these
+environments results in an error.
 
 
 =head2 CreateUserProfile
@@ -3471,6 +3480,29 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeUserProfile>
 Returns: a L<Paws::SageMaker::DescribeUserProfileResponse> instance
 
 Describes the user profile.
+
+
+=head2 DescribeWorkforce
+
+=over
+
+=item WorkforceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeWorkforce>
+
+Returns: a L<Paws::SageMaker::DescribeWorkforceResponse> instance
+
+Lists private workforce information, including workforce name, Amazon
+Resource Name (ARN), and, if applicable, allowed IP address ranges
+(CIDRs
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)).
+Allowable IP address ranges are the IP addresses that workers can use
+to access tasks.
+
+This operation applies only to private workforces.
 
 
 =head2 DescribeWorkteam
@@ -4363,6 +4395,8 @@ Lists transform jobs.
 
 =item [CreatedBefore => Str]
 
+=item [ExperimentName => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -4373,6 +4407,8 @@ Lists transform jobs.
 
 =item [SourceArn => Str]
 
+=item [TrialName => Str]
+
 
 =back
 
@@ -4380,9 +4416,27 @@ Each argument is described in detail in: L<Paws::SageMaker::ListTrialComponents>
 
 Returns: a L<Paws::SageMaker::ListTrialComponentsResponse> instance
 
-Lists the trial components in your account. You can filter the list to
-show only components that were created in a specific time range. You
-can sort the list by trial component name or creation time.
+Lists the trial components in your account. You can sort the list by
+trial component name or creation time. You can filter the list to show
+only components that were created in a specific time range. You can
+also filter on one of the following:
+
+=over
+
+=item *
+
+C<ExperimentName>
+
+=item *
+
+C<SourceArn>
+
+=item *
+
+C<TrialName>
+
+=back
+
 
 
 =head2 ListTrials
@@ -4517,8 +4571,8 @@ resource objects are returned as a list of C<SearchResult> objects in
 the response. You can sort the search results by any resource property
 in a ascending or descending order.
 
-You can query against the following value types: numerical, text,
-Booleans, and timestamps.
+You can query against the following value types: numeric, text,
+Boolean, and timestamp.
 
 
 =head2 StartMonitoringSchedule
@@ -5014,6 +5068,36 @@ Returns: a L<Paws::SageMaker::UpdateUserProfileResponse> instance
 Updates a user profile.
 
 
+=head2 UpdateWorkforce
+
+=over
+
+=item WorkforceName => Str
+
+=item [SourceIpConfig => L<Paws::SageMaker::SourceIpConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateWorkforce>
+
+Returns: a L<Paws::SageMaker::UpdateWorkforceResponse> instance
+
+Restricts access to tasks assigned to workers in the specified
+workforce to those within specific ranges of IP addresses. You specify
+allowed IP addresses by creating a list of up to four CIDRs
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
+
+By default, a workforce isn't restricted to specific IP addresses. If
+you specify a range of IP addresses, workers who attempt to access
+tasks using any IP address outside the specified range are denied
+access and get a C<Not Found> error message on the worker portal. After
+restricting access with this operation, you can see the allowed IP
+values for a private workforce with the operation.
+
+This operation applies only to private workforces.
+
+
 =head2 UpdateWorkteam
 
 =over
@@ -5367,9 +5451,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListTransformJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllTrialComponents(sub { },[CreatedAfter => Str, CreatedBefore => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, SourceArn => Str])
+=head2 ListAllTrialComponents(sub { },[CreatedAfter => Str, CreatedBefore => Str, ExperimentName => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, SourceArn => Str, TrialName => Str])
 
-=head2 ListAllTrialComponents([CreatedAfter => Str, CreatedBefore => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, SourceArn => Str])
+=head2 ListAllTrialComponents([CreatedAfter => Str, CreatedBefore => Str, ExperimentName => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, SourceArn => Str, TrialName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

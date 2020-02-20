@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CompilationJobName => 'MyEntityName',
       InputConfig        => {
         DataInputConfig => 'MyDataInputConfig',    # min: 1, max: 1024
-        Framework =>
-          'TENSORFLOW',    # values: TENSORFLOW, MXNET, ONNX, PYTORCH, XGBOOST
+        Framework       => 'TENSORFLOW'
+        ,    # values: TENSORFLOW, KERAS, MXNET, ONNX, PYTORCH, XGBOOST
         S3Uri => 'MyS3Uri',    # max: 1024
 
       },

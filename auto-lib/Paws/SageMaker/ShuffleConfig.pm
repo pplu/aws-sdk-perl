@@ -39,14 +39,14 @@ C<AugmentedManifestFile>, the order of the JSON lines in the
 C<AugmentedManifestFile> is shuffled. The shuffling order is determined
 using the C<Seed> value.
 
-For Pipe input mode, shuffling is done at the start of every epoch.
-With large datasets, this ensures that the order of the training data
-is different for each epoch, and it helps reduce bias and possible
-overfitting. In a multi-node training job when C<ShuffleConfig> is
-combined with C<S3DataDistributionType> of C<ShardedByS3Key>, the data
-is shuffled across nodes so that the content sent to a particular node
-on the first epoch might be sent to a different node on the second
-epoch.
+For Pipe input mode, when C<ShuffleConfig> is specified shuffling is
+done at the start of every epoch. With large datasets, this ensures
+that the order of the training data is different for each epoch, and it
+helps reduce bias and possible overfitting. In a multi-node training
+job when C<ShuffleConfig> is combined with C<S3DataDistributionType> of
+C<ShardedByS3Key>, the data is shuffled across nodes so that the
+content sent to a particular node on the first epoch might be sent to a
+different node on the second epoch.
 
 =head1 ATTRIBUTES
 

@@ -110,6 +110,36 @@ The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 Amazon SageMaker uses to encrypt data on the storage volume attached to
 the ML compute instance that hosts the endpoint.
 
+The KmsKeyId can be any of the following formats:
+
+=over
+
+=item *
+
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=item *
+
+Key ARN:
+C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=item *
+
+Alias name: C<alias/ExampleAlias>
+
+=item *
+
+Alias name ARN:
+C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
+
+=back
+
+The KMS key policy must grant permission to the IAM role that you
+specify in your C<CreateEndpoint>, C<UpdateEndpoint> requests. For more
+information, refer to the AWS Key Management Service section Using Key
+Policies in AWS KMS
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+
 Certain Nitro-based instances include local storage, dependent on the
 instance type. Local storage volumes are encrypted using a hardware
 module on the instance. You can't request a C<KmsKeyId> when using an

@@ -3,11 +3,13 @@ package Paws::SageMaker::ListTrialComponents;
   use Moose;
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
+  has ExperimentName => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has SortBy => (is => 'ro', isa => 'Str');
   has SortOrder => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
+  has TrialName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListTrialComponentsResponse = $api . sagemaker->ListTrialComponents(
-      CreatedAfter  => '1970-01-01T01:00:00',    # OPTIONAL
-      CreatedBefore => '1970-01-01T01:00:00',    # OPTIONAL
-      MaxResults    => 1,                        # OPTIONAL
-      NextToken     => 'MyNextToken',            # OPTIONAL
-      SortBy        => 'Name',                   # OPTIONAL
-      SortOrder     => 'Ascending',              # OPTIONAL
-      SourceArn     => 'MyString256',            # OPTIONAL
+      CreatedAfter   => '1970-01-01T01:00:00',       # OPTIONAL
+      CreatedBefore  => '1970-01-01T01:00:00',       # OPTIONAL
+      ExperimentName => 'MyExperimentEntityName',    # OPTIONAL
+      MaxResults     => 1,                           # OPTIONAL
+      NextToken      => 'MyNextToken',               # OPTIONAL
+      SortBy         => 'Name',                      # OPTIONAL
+      SortOrder      => 'Ascending',                 # OPTIONAL
+      SourceArn      => 'MyString256',               # OPTIONAL
+      TrialName      => 'MyExperimentEntityName',    # OPTIONAL
     );
 
     # Results:
@@ -69,9 +73,18 @@ time.
 
 
 
+=head2 ExperimentName => Str
+
+A filter that returns only components that are part of the specified
+experiment. If you specify C<ExperimentName>, you can't filter by
+C<SourceArn> or C<TrialName>.
+
+
+
 =head2 MaxResults => Int
 
-The maximum number of components to return in the response.
+The maximum number of components to return in the response. The default
+value is 10.
 
 
 
@@ -99,7 +112,16 @@ Valid values are: C<"Ascending">, C<"Descending">
 =head2 SourceArn => Str
 
 A filter that returns only components that have the specified source
-Amazon Resource Name (ARN).
+Amazon Resource Name (ARN). If you specify C<SourceArn>, you can't
+filter by C<ExperimentName> or C<TrialName>.
+
+
+
+=head2 TrialName => Str
+
+A filter that returns only components that are part of the specified
+trial. If you specify C<TrialName>, you can't filter by
+C<ExperimentName> or C<SourceArn>.
 
 
 

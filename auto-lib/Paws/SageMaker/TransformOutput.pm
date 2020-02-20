@@ -64,27 +64,21 @@ encryption. The C<KmsKeyId> can be any of the following formats:
 
 =item *
 
-// KMS Key ID
-
-C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-// Amazon Resource Name (ARN) of a KMS Key
-
-C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
-
-=item *
-
-// KMS Key Alias
-
-C<"alias/ExampleAlias">
+Key ARN:
+C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-// Amazon Resource Name (ARN) of a KMS Key Alias
+Alias name: C<alias/ExampleAlias>
 
-C<"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias">
+=item *
+
+Alias name ARN:
+C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
 
 =back
 

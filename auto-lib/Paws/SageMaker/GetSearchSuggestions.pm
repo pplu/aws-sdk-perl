@@ -52,8 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> Resource => Str
 
-The name of the Amazon SageMaker resource to Search for. The only valid
-C<Resource> value is C<TrainingJob>.
+The name of the Amazon SageMaker resource to Search for.
 
 Valid values are: C<"TrainingJob">, C<"Experiment">, C<"ExperimentTrial">, C<"ExperimentTrialComponent">
 

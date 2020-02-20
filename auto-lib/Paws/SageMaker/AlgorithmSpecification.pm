@@ -71,21 +71,22 @@ You use one of the Amazon SageMaker built-in algorithms
 
 =item *
 
-You use one of the following prebuilt Amazon SageMaker Docker images:
+You use one of the following Prebuilt Amazon SageMaker Docker Images
+(https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html):
 
 =over
 
 =item *
 
-Tensorflow
+Tensorflow (version E<gt>= 1.15)
 
 =item *
 
-MXNet
+MXNet (version E<gt>= 1.6)
 
 =item *
 
-PyTorch
+PyTorch (version E<gt>= 1.3)
 
 =back
 

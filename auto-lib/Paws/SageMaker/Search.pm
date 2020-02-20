@@ -100,8 +100,7 @@ parameters.
 
 =head2 B<REQUIRED> Resource => Str
 
-The name of the Amazon SageMaker resource to search for. Currently, the
-only valid C<Resource> value is C<TrainingJob>.
+The name of the Amazon SageMaker resource to search for.
 
 Valid values are: C<"TrainingJob">, C<"Experiment">, C<"ExperimentTrial">, C<"ExperimentTrialComponent">
 

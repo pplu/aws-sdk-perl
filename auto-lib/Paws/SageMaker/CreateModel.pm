@@ -103,9 +103,6 @@ Specifies the containers in the inference pipeline.
 Isolates the model container. No inbound or outbound network calls can
 be made to or from the model container.
 
-The Semantic Segmentation built-in algorithm does not support network
-isolation.
-
 
 
 =head2 B<REQUIRED> ExecutionRoleArn => Str

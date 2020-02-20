@@ -64,15 +64,21 @@ be any of the following formats:
 
 =item *
 
-// KMS Key ID
-
-C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-// Amazon Resource Name (ARN) of a KMS Key
+Key ARN:
+C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
-C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+=item *
+
+Alias name: C<alias/ExampleAlias>
+
+=item *
+
+Alias name ARN:
+C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
 
 =back
 

@@ -75,7 +75,7 @@ C<InputDataConfig.DataSource.S3DataSource.S3Uri>.
 =head2 B<REQUIRED> NestedPropertyName => Str
 
   The name of the property to use in the nested filters. The value must
-match a listed property name, such as C<InputDataConfig> .
+match a listed property name, such as C<InputDataConfig>.
 
 
 

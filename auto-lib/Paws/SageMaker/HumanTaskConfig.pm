@@ -56,7 +56,8 @@ Information required for human workers to complete a labeling task.
 
   Defines the maximum number of data objects that can be labeled by human
 workers at the same time. Also referred to as batch size. Each object
-may have more than one worker at one time.
+may have more than one worker at one time. The default value is 1000
+objects.
 
 
 =head2 B<REQUIRED> NumberOfHumanWorkersPerDataObject => Int
@@ -590,8 +591,8 @@ Turk worker.
 
   The length of time that a task remains available for labeling by human
 workers. B<If you choose the Amazon Mechanical Turk workforce, the
-maximum is 12 hours (43200)>. For private and vendor workforces, the
-maximum is as listed.
+maximum is 12 hours (43200)>. The default value is 864000 seconds (1
+day). For private and vendor workforces, the maximum is as listed.
 
 
 =head2 B<REQUIRED> TaskDescription => Str

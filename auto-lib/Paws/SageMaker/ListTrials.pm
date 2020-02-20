@@ -76,7 +76,8 @@ experiment.
 
 =head2 MaxResults => Int
 
-The maximum number of trials to return in the response.
+The maximum number of trials to return in the response. The default
+value is 10.
 
 
 
