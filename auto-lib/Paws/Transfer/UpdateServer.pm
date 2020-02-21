@@ -35,7 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateServerResponse = $transfer->UpdateServer(
       ServerId        => 'MyServerId',
       EndpointDetails => {
+        AddressAllocationIds => [ 'MyAddressAllocationId', ... ],    # OPTIONAL
+        SubnetIds            => [ 'MySubnetId',            ... ],    # OPTIONAL
         VpcEndpointId => 'MyVpcEndpointId',    # min: 22, max: 22; OPTIONAL
+        VpcId         => 'MyVpcId',            # OPTIONAL
       },    # OPTIONAL
       EndpointType            => 'PUBLIC',       # OPTIONAL
       HostKey                 => 'MyHostKey',    # OPTIONAL
@@ -60,8 +63,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
 
 The virtual private cloud (VPC) endpoint settings that are configured
-for your SFTP server. With a VPC endpoint, your SFTP server isn't
-accessible over the public internet.
+for your SFTP server. With a VPC endpoint, you can restrict access to
+your SFTP server to resources only within your VPC. To control incoming
+internet traffic, you will need to associate one or more Elastic IP
+addresses with your server's endpoint.
 
 
 
@@ -72,7 +77,7 @@ can choose to connect to the public internet or a virtual private cloud
 (VPC) endpoint. With a VPC endpoint, your SFTP server isn't accessible
 over the public internet.
 
-Valid values are: C<"PUBLIC">, C<"VPC_ENDPOINT">
+Valid values are: C<"PUBLIC">, C<"VPC">, C<"VPC_ENDPOINT">
 
 =head2 HostKey => Str
 

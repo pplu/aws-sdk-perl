@@ -325,7 +325,9 @@ Returns: a L<Paws::Transfer::DescribeServerResponse> instance
 Describes the server that you specify by passing the C<ServerId>
 parameter.
 
-The response contains a description of the server's properties.
+The response contains a description of the server's properties. When
+you set C<EndpointType> to VPC, the response will contain the
+C<EndpointDetails>.
 
 
 =head2 DescribeUser
