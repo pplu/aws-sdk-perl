@@ -27,7 +27,7 @@ C<EBS> for Amazon Elastic Block Store
 
 =item *
 
-C<SGW> for AWS Storage Gateway
+C<Storage Gateway> for AWS Storage Gateway
 
 =item *
 

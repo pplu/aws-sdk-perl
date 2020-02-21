@@ -1,6 +1,7 @@
 package Paws::Backup::BackupRule;
   use Moose;
   has CompletionWindowMinutes => (is => 'ro', isa => 'Int');
+  has CopyActions => (is => 'ro', isa => 'ArrayRef[Paws::Backup::CopyAction]');
   has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
   has RecoveryPointTags => (is => 'ro', isa => 'Paws::Backup::Tags');
   has RuleId => (is => 'ro', isa => 'Str');
@@ -48,6 +49,12 @@ Specifies a scheduled task used to back up a selection of resources.
   A value in minutes after a backup job is successfully started before it
 must be completed or it is canceled by AWS Backup. This value is
 optional.
+
+
+=head2 CopyActions => ArrayRef[L<Paws::Backup::CopyAction>]
+
+  An array of C<CopyAction> objects, which contains the details of the
+copy operation.
 
 
 =head2 Lifecycle => L<Paws::Backup::Lifecycle>

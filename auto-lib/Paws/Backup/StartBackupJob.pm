@@ -88,12 +88,7 @@ for example, C<arn:aws:iam::123456789012:role/S3Access>.
 =head2 IdempotencyToken => Str
 
 A customer chosen string that can be used to distinguish between calls
-to C<StartBackupJob>. Idempotency tokens time out after one hour.
-Therefore, if you call C<StartBackupJob> multiple times with the same
-idempotency token within one hour, AWS Backup recognizes that you are
-requesting only one backup job and initiates only one. If you change
-the idempotency token for each call, AWS Backup recognizes that you are
-requesting to start multiple backups.
+to C<StartBackupJob>.
 
 
 

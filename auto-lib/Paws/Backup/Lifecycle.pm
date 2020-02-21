@@ -35,13 +35,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Backup::Lif
 Contains an array of C<Transition> objects specifying how long in days
 before a recovery point transitions to cold storage or is deleted.
 
+Backups transitioned to cold storage must be stored in cold storage for
+a minimum of 90 days. Therefore, on the console, the E<ldquo>expire
+after daysE<rdquo> setting must be 90 days greater than the
+E<ldquo>transition to cold after daysE<rdquo> setting. The
+E<ldquo>transition to cold after daysE<rdquo> setting cannot be changed
+after a backup has been transitioned to cold.
+
 =head1 ATTRIBUTES
 
 
 =head2 DeleteAfterDays => Int
 
   Specifies the number of days after creation that a recovery point is
-deleted. Must be greater than C<MoveToColdStorageAfterDays>.
+deleted. Must be greater than 90 days plus
+C<MoveToColdStorageAfterDays>.
 
 
 =head2 MoveToColdStorageAfterDays => Int

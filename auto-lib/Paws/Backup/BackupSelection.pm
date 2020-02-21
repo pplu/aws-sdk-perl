@@ -49,15 +49,14 @@ C<arn:aws:iam::123456789012:role/S3Access>.
 =head2 ListOfTags => ArrayRef[L<Paws::Backup::Condition>]
 
   An array of conditions used to specify a set of resources to assign to
-a backup plan; for example, C<"StringEquals":
+a backup plan; for example, C<"STRINGEQUALS":
 {"ec2:ResourceTag/Department": "accounting">.
 
 
 =head2 Resources => ArrayRef[Str|Undef]
 
-  An array of strings that either contain Amazon Resource Names (ARNs) or
-match patterns such as "C<arn:aws:ec2:us-east-1:123456789012:volume/*>"
-of resources to assign to a backup plan.
+  An array of strings that contain Amazon Resource Names (ARNs) of
+resources to assign to a backup plan.
 
 
 =head2 B<REQUIRED> SelectionName => Str
