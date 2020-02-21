@@ -55,6 +55,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyTime', ...             # min: 5, max: 5
               ],                          # max: 1; OPTIONAL
             },    # OPTIONAL
+            CrossRegionCopyRules => [
+              {
+                Encrypted    => 1,
+                TargetRegion => 'MyTargetRegion',    # max: 16
+                CmkArn       => 'MyCmkArn',          # max: 2048; OPTIONAL
+                CopyTags     => 1,                   # OPTIONAL
+                RetainRule   => {
+                  Interval => 1,                     # min: 1; OPTIONAL
+                  IntervalUnit =>
+                    'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],        # max: 3; OPTIONAL
             FastRestoreRule => {
               AvailabilityZones => [
                 'MyAvailabilityZone', ...    # max: 16
@@ -78,7 +92,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                          # max: 50; OPTIONAL
+            ],                          # max: 45; OPTIONAL
             VariableTags => [
               {
                 Key   => 'MyString',    # max: 500
@@ -86,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                          # max: 50; OPTIONAL
+            ],                          # max: 45; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 1; OPTIONAL

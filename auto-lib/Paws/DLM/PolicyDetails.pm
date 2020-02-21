@@ -42,14 +42,13 @@ Specifies the configuration of a lifecycle policy.
 
 =head2 Parameters => L<Paws::DLM::Parameters>
 
-  A set of optional parameters that can be provided by the policy.
+  A set of optional parameters for the policy.
 
 
 =head2 PolicyType => Str
 
-  This field determines the valid target resource types and actions a
-policy can manage. This field defaults to EBS_SNAPSHOT_MANAGEMENT if
-not present.
+  The valid target resource types and actions a policy can manage. The
+default is EBS_SNAPSHOT_MANAGEMENT.
 
 
 =head2 ResourceTypes => ArrayRef[Str|Undef]

@@ -2,6 +2,7 @@ package Paws::DLM::Schedule;
   use Moose;
   has CopyTags => (is => 'ro', isa => 'Bool');
   has CreateRule => (is => 'ro', isa => 'Paws::DLM::CreateRule');
+  has CrossRegionCopyRules => (is => 'ro', isa => 'ArrayRef[Paws::DLM::CrossRegionCopyRule]');
   has FastRestoreRule => (is => 'ro', isa => 'Paws::DLM::FastRestoreRule');
   has Name => (is => 'ro', isa => 'Str');
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
@@ -37,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::Schedu
 
 =head1 DESCRIPTION
 
-Specifies a schedule.
+Specifies a backup schedule.
 
 =head1 ATTRIBUTES
 
@@ -50,12 +51,17 @@ volume created by this policy.
 
 =head2 CreateRule => L<Paws::DLM::CreateRule>
 
-  The create rule.
+  The creation rule.
+
+
+=head2 CrossRegionCopyRules => ArrayRef[L<Paws::DLM::CrossRegionCopyRule>]
+
+  The rule for cross-Region snapshot copies.
 
 
 =head2 FastRestoreRule => L<Paws::DLM::FastRestoreRule>
 
-  Enable fast snapshot restore.
+  The rule for enabling fast snapshot restore.
 
 
 =head2 Name => Str

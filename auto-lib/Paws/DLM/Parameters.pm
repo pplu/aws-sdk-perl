@@ -31,19 +31,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::Parame
 
 =head1 DESCRIPTION
 
-Optional parameters that can be added to the policy. The set of valid
-parameters depends on the combination of C<policyType> and
-C<resourceType> values.
+Specifies optional parameters to add to a policy. The set of valid
+parameters depends on the combination of policy type and resource type.
 
 =head1 ATTRIBUTES
 
 
 =head2 ExcludeBootVolume => Bool
 
-  When executing an EBS Snapshot Management E<ndash> Instance policy,
-execute all CreateSnapshots calls with the C<excludeBootVolume> set to
-the supplied field. Defaults to false. Only valid for EBS Snapshot
-Management E<ndash> Instance policies.
+  [EBS Snapshot Management E<ndash> Instance policies only] Indicates
+whether to exclude the root volume from snapshots created using
+CreateSnapshots
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSnapshots.html).
+The default is false.
 
 
 
