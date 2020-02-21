@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SecurityGroupIds => [
         'MyNonEmptyString', ...    # min: 1, max: 1024
       ],                           # OPTIONAL
-      SnsTopicArn => 'MyNonEmptyString',    # OPTIONAL
+      SnsTopicArn => 'MySnsTopicArn',       # OPTIONAL
       SubnetId    => 'MyNonEmptyString',    # OPTIONAL
       Tags        => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
@@ -100,8 +100,8 @@ your EC2 AMI.
 
 =head2 InstanceTypes => ArrayRef[Str|Undef]
 
-The instance types of the infrastructure configuration. You may specify
-one or more instance types to use for this build, the service will pick
+The instance types of the infrastructure configuration. You can specify
+one or more instance types to use for this build. The service will pick
 one of these instance types based on availability.
 
 
@@ -109,7 +109,7 @@ one of these instance types based on availability.
 =head2 KeyPair => Str
 
 The key pair of the infrastructure configuration. This can be used to
-log onto and debug the instance used to create your image.
+log on to and debug the instance used to create your image.
 
 
 
@@ -140,7 +140,8 @@ The SNS topic on which to send image build events.
 
 =head2 SubnetId => Str
 
-The subnet ID to place the instance used to customize your EC2 AMI in.
+The subnet ID in which to place the instance used to customize your EC2
+AMI.
 
 
 
@@ -153,9 +154,9 @@ The tags of the infrastructure configuration.
 =head2 TerminateInstanceOnFailure => Bool
 
 The terminate instance on failure setting of the infrastructure
-configuration. Set to false if you wish for Image Builder to retain the
-instance used to configure your AMI in the event that the build or test
-phase of your workflow failed.
+configuration. Set to false if you want Image Builder to retain the
+instance used to configure your AMI if the build or test phase of your
+workflow fails.
 
 
 

@@ -41,13 +41,17 @@ create a new image.
 =head2 PipelineExecutionStartCondition => Str
 
   The condition configures when the pipeline should trigger a new image
-build.
+build. When the C<pipelineExecutionStartCondition> is set to
+C<EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE>, EC2 Image Builder
+will build a new image only when there are known changes pending. When
+it is set to C<EXPRESSION_MATCH_ONLY>, it will build a new image every
+time the CRON expression matches the current time.
 
 
 =head2 ScheduleExpression => Str
 
-  The expression determines how often a pipeline starts the creation of
-new images.
+  The expression determines how often EC2 Image Builder evaluates your
+C<pipelineExecutionStartCondition>.
 
 
 

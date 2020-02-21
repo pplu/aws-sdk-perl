@@ -255,18 +255,11 @@ Paws::ImageBuilder - Perl Interface to AWS EC2 Image Builder
 
 =head1 DESCRIPTION
 
-Amazon Elastic Compute Cloud Image Builder provides a one-stop-shop to
-automate the image management processes. You configure an automated
-pipeline that creates images for use on AWS. As software updates become
-available, Image Builder automatically produces a new image based on a
-customizable schedule and distributes it to stipulated AWS Regions
-after running tests on it. With the Image Builder, organizations can
-capture their internal or industry-specific compliance policies as a
-vetted template that can be consistently applied to every new image.
-Built-in integration with AWS Organizations provides customers with a
-centralized way to enforce image distribution and access policies
-across their AWS accounts and Regions. Image Builder supports multiple
-image format AMIs on AWS.
+EC2 Image Builder is a fully managed AWS service that makes it easier
+to automate the creation, management, and deployment of customized,
+secure, and up-to-date E<ldquo>goldenE<rdquo> server images that are
+pre-installed and pre-configured with software and settings to meet
+specific IT standards.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder-2019-12-02>
 
@@ -288,7 +281,7 @@ Each argument is described in detail in: L<Paws::ImageBuilder::CancelImageCreati
 
 Returns: a L<Paws::ImageBuilder::CancelImageCreationResponse> instance
 
-CancelImageCreation cancels the creation of Image. This operation may
+CancelImageCreation cancels the creation of Image. This operation can
 only be used on images in a non-terminal state.
 
 
@@ -323,7 +316,7 @@ Each argument is described in detail in: L<Paws::ImageBuilder::CreateComponent>
 
 Returns: a L<Paws::ImageBuilder::CreateComponentResponse> instance
 
-Creates a new component that can be used to build, validate, test and
+Creates a new component that can be used to build, validate, test, and
 assess your image.
 
 
@@ -442,8 +435,8 @@ Each argument is described in detail in: L<Paws::ImageBuilder::CreateImageRecipe
 
 Returns: a L<Paws::ImageBuilder::CreateImageRecipeResponse> instance
 
-Creates a new image recipe. Image Recipes defines how images are
-configured, tested and assessed.
+Creates a new image recipe. Image recipes define how images are
+configured, tested, and assessed.
 
 
 =head2 CreateInfrastructureConfiguration
@@ -723,7 +716,7 @@ Each argument is described in detail in: L<Paws::ImageBuilder::GetInfrastructure
 
 Returns: a L<Paws::ImageBuilder::GetInfrastructureConfigurationResponse> instance
 
-Gets a infrastructure configuration.
+Gets an infrastructure configuration.
 
 
 =head2 ImportComponent
@@ -854,9 +847,9 @@ Returns a list of distribution configurations.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]]
+=item ImagePipelineArn => Str
 
-=item [ImagePipelineArn => Str]
+=item [Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]]
 
 =item [MaxResults => Int]
 
@@ -1089,9 +1082,9 @@ Removes a tag from a resource.
 
 =item DistributionConfigurationArn => Str
 
-=item [Description => Str]
+=item Distributions => ArrayRef[L<Paws::ImageBuilder::Distribution>]
 
-=item [Distributions => ArrayRef[L<Paws::ImageBuilder::Distribution>]]
+=item [Description => Str]
 
 
 =back
@@ -1112,15 +1105,15 @@ define and configure the outputs of your pipeline.
 
 =item ImagePipelineArn => Str
 
+=item ImageRecipeArn => Str
+
+=item InfrastructureConfigurationArn => Str
+
 =item [Description => Str]
 
 =item [DistributionConfigurationArn => Str]
 
-=item [ImageRecipeArn => Str]
-
 =item [ImageTestsConfiguration => L<Paws::ImageBuilder::ImageTestsConfiguration>]
-
-=item [InfrastructureConfigurationArn => Str]
 
 =item [Schedule => L<Paws::ImageBuilder::Schedule>]
 
@@ -1145,9 +1138,9 @@ the creation and distribution of images.
 
 =item InfrastructureConfigurationArn => Str
 
-=item [Description => Str]
+=item InstanceProfileName => Str
 
-=item [InstanceProfileName => Str]
+=item [Description => Str]
 
 =item [InstanceTypes => ArrayRef[Str|Undef]]
 

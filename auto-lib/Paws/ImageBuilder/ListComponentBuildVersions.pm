@@ -53,7 +53,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 B<REQUIRED> ComponentVersionArn => Str
 
-The component version arn whose versions you wish to list.
+The component version Amazon Resource Name (ARN) whose versions you
+want to list.
 
 
 

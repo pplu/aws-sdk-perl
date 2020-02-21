@@ -47,7 +47,7 @@ image.
 
 =head2 Ebs => L<Paws::ImageBuilder::EbsInstanceBlockDeviceSpecification>
 
-  Use to manage EBS specific configuration for this mapping.
+  Use to manage Amazon EBS-specific configuration for this mapping.
 
 
 =head2 NoDevice => Str

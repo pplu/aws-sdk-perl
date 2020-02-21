@@ -34,14 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-Define and configure the outputs AMIs of the pipeline.
+Define and configure the output AMIs of the pipeline.
 
 =head1 ATTRIBUTES
 
 
 =head2 AmiTags => L<Paws::ImageBuilder::TagMap>
 
-  The tags to apply to AMIs distributed to this region.
+  The tags to apply to AMIs distributed to this Region.
 
 
 =head2 Description => Str

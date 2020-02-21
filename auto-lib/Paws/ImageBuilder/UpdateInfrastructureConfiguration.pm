@@ -4,7 +4,7 @@ package Paws::ImageBuilder::UpdateInfrastructureConfiguration;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has InfrastructureConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'infrastructureConfigurationArn', required => 1);
-  has InstanceProfileName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceProfileName');
+  has InstanceProfileName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceProfileName', required => 1);
   has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceTypes');
   has KeyPair => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPair');
   has Logging => (is => 'ro', isa => 'Paws::ImageBuilder::Logging', traits => ['NameInRequest'], request_name => 'logging');
@@ -42,20 +42,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $imagebuilder->UpdateInfrastructureConfiguration(
       ClientToken                    => 'MyClientToken',
       InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
-      Description         => 'MyNonEmptyString',           # OPTIONAL
-      InstanceProfileName => 'MyNonEmptyString',           # OPTIONAL
-      InstanceTypes       => [ 'MyInstanceType', ... ],    # OPTIONAL
-      KeyPair             => 'MyNonEmptyString',           # OPTIONAL
-      Logging             => {
+      InstanceProfileName            => 'MyNonEmptyString',
+      Description   => 'MyNonEmptyString',           # OPTIONAL
+      InstanceTypes => [ 'MyInstanceType', ... ],    # OPTIONAL
+      KeyPair       => 'MyNonEmptyString',           # OPTIONAL
+      Logging       => {
         S3Logs => {
-          S3BucketName => 'MyNonEmptyString',              # min: 1, max: 1024
-          S3KeyPrefix  => 'MyNonEmptyString',              # min: 1, max: 1024
+          S3BucketName => 'MyNonEmptyString',        # min: 1, max: 1024
+          S3KeyPrefix  => 'MyNonEmptyString',        # min: 1, max: 1024
         },    # OPTIONAL
       },    # OPTIONAL
       SecurityGroupIds => [
         'MyNonEmptyString', ...    # min: 1, max: 1024
       ],                           # OPTIONAL
-      SnsTopicArn                => 'MyNonEmptyString',    # OPTIONAL
+      SnsTopicArn                => 'MySnsTopicArn',       # OPTIONAL
       SubnetId                   => 'MyNonEmptyString',    # OPTIONAL
       TerminateInstanceOnFailure => 1,                     # OPTIONAL
       );
@@ -90,11 +90,11 @@ The description of the infrastructure configuration.
 =head2 B<REQUIRED> InfrastructureConfigurationArn => Str
 
 The Amazon Resource Name (ARN) of the infrastructure configuration that
-you wish to update.
+you want to update.
 
 
 
-=head2 InstanceProfileName => Str
+=head2 B<REQUIRED> InstanceProfileName => Str
 
 The instance profile to associate with the instance used to customize
 your EC2 AMI.
@@ -103,8 +103,8 @@ your EC2 AMI.
 
 =head2 InstanceTypes => ArrayRef[Str|Undef]
 
-The instance types of the infrastructure configuration. You may specify
-one or more instance types to use for this build, the service will pick
+The instance types of the infrastructure configuration. You can specify
+one or more instance types to use for this build. The service will pick
 one of these instance types based on availability.
 
 
@@ -112,7 +112,7 @@ one of these instance types based on availability.
 =head2 KeyPair => Str
 
 The key pair of the infrastructure configuration. This can be used to
-log onto and debug the instance used to create your image.
+log on to and debug the instance used to create your image.
 
 
 
@@ -144,9 +144,9 @@ The subnet ID to place the instance used to customize your EC2 AMI in.
 =head2 TerminateInstanceOnFailure => Bool
 
 The terminate instance on failure setting of the infrastructure
-configuration. Set to false if you wish for Image Builder to retain the
-instance used to configure your AMI in the event that the build or test
-phase of your workflow failed.
+configuration. Set to false if you want Image Builder to retain the
+instance used to configure your AMI if the build or test phase of your
+workflow fails.
 
 
 

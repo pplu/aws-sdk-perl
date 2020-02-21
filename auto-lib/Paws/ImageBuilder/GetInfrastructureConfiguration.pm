@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 =head2 B<REQUIRED> InfrastructureConfigurationArn => Str
 
 The Amazon Resource Name (ARN) of the infrastructure configuration that
-you wish to retrieve.
+you want to retrieve.
 
 
 

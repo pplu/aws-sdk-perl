@@ -73,8 +73,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 =head2 ChangeDescription => Str
 
 The change description of the component. Describes what change has been
-made in this version. In other words what makes this version different
-from other versions of this component.
+made in this version, or what makes this version different from other
+versions of this component.
 
 
 
@@ -86,7 +86,8 @@ The idempotency token of the component.
 
 =head2 Data => Str
 
-The data of the component.
+The data of the component. Used to specify the data inline. Either
+C<data> or C<uri> can be used to specify the data within the component.
 
 
 
@@ -99,7 +100,7 @@ component.
 
 =head2 B<REQUIRED> Format => Str
 
-The format of the resource that you wish to import as a component.
+The format of the resource that you want to import as a component.
 
 Valid values are: C<"SHELL">
 
@@ -123,9 +124,9 @@ Valid values are: C<"Windows">, C<"Linux">
 
 =head2 B<REQUIRED> SemanticVersion => Str
 
-The semantic version of the component. This version to follow the
-semantic version syntax. i.e. major.minor.patch. This could be
-versioned like software 2.0.1 or date like 2019.12.01.
+The semantic version of the component. This version follows the
+semantic version syntax. For example, major.minor.patch. This could be
+versioned like software (2.0.1) or like a date (2019.12.01).
 
 
 
@@ -144,7 +145,10 @@ Valid values are: C<"BUILD">, C<"TEST">
 
 =head2 Uri => Str
 
-The uri of the component.
+The uri of the component. Must be an S3 URL and the requester must have
+permission to access the S3 bucket. If you use S3, you can specify
+component content up to your service quota. Either C<data> or C<uri>
+can be used to specify the data within the component.
 
 
 

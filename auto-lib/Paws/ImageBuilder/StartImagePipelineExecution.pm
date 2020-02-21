@@ -58,7 +58,7 @@ The idempotency token used to make this request idempotent.
 
 =head2 B<REQUIRED> ImagePipelineArn => Str
 
-The Amazon Resource Name (ARN) of the image pipeline that you wish to
+The Amazon Resource Name (ARN) of the image pipeline that you want to
 manually invoke.
 
 

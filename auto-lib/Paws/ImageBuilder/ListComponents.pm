@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
-
+The filters.
 
 
 
@@ -78,10 +78,10 @@ from a previously truncated response.
 
 =head2 Owner => Str
 
-The owner defines whose components you wish to list. By default this
-request will only show components owned by your account. You may use
-this field to specify if you wish to view components owned by yourself,
-Amazon, or those components that have been shared with you by other
+The owner defines which components you want to list. By default, this
+request will only show components owned by your account. You can use
+this field to specify if you want to view components owned by yourself,
+by Amazon, or those components that have been shared with you by other
 customers.
 
 Valid values are: C<"Self">, C<"Shared">, C<"Amazon">

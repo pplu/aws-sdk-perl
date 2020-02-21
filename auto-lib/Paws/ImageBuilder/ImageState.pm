@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-Image state shows the images status and the reason for that status.
+Image state shows the image status and the reason for that status.
 
 =head1 ATTRIBUTES
 

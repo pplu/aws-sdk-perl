@@ -57,7 +57,7 @@ The idempotency token used to make this request idempotent.
 
 =head2 B<REQUIRED> ImageBuildVersionArn => Str
 
-The Amazon Resource Name (ARN) of the image whose creation you wish to
+The Amazon Resource Name (ARN) of the image whose creation you want to
 cancel.
 
 

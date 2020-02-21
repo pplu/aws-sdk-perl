@@ -33,24 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-This class has no description
+Defines the settings for a specific Region.
 
 =head1 ATTRIBUTES
 
 
 =head2 AmiDistributionConfiguration => L<Paws::ImageBuilder::AmiDistributionConfiguration>
 
-  
+  The specific AMI settings (for example, launch permissions, AMI tags).
 
 
 =head2 LicenseConfigurationArns => ArrayRef[Str|Undef]
 
-  
+  The License Manager Configuration to associate with the AMI in the
+specified Region.
 
 
 =head2 B<REQUIRED> Region => Str
 
-  
+  The target Region.
 
 
 

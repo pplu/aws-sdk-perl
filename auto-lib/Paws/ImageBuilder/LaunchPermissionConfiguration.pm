@@ -32,19 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes the configuration for a launch permission. The launch
+permission modification request is sent to the EC2 ModifyImageAttribute
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyImageAttribute.html)
+API on behalf of the user for each Region they have selected to
+distribute the AMI.
 
 =head1 ATTRIBUTES
 
 
 =head2 UserGroups => ArrayRef[Str|Undef]
 
-  
+  The name of the group.
 
 
 =head2 UserIds => ArrayRef[Str|Undef]
 
-  
+  The AWS account ID.
 
 
 

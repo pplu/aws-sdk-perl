@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-Logging configuration defines where Image Builder uploads your logs to.
+Logging configuration defines where Image Builder uploads your logs.
 
 =head1 ATTRIBUTES
 
 
 =head2 S3Logs => L<Paws::ImageBuilder::S3Logs>
 
-  The S3 logging configuration.
+  The Amazon S3 logging configuration.
 
 
 

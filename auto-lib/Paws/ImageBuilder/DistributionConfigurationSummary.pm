@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-A high level overview a distribution configuration.
+A high-level overview of a distribution configuration.
 
 =head1 ATTRIBUTES
 

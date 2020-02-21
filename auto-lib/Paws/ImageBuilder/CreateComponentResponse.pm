@@ -19,18 +19,18 @@ Paws::ImageBuilder::CreateComponentResponse
 
 =head2 ClientToken => Str
 
-CThe idempotency token used to make this request idempotent.
+The idempotency token used to make this request idempotent.
 
 
 =head2 ComponentBuildVersionArn => Str
 
-CThe Amazon Resource Name (ARN) of the component that was created by
+The Amazon Resource Name (ARN) of the component that was created by
 this request.
 
 
 =head2 RequestId => Str
 
-CThe request ID that uniquely identifies this request.
+The request ID that uniquely identifies this request.
 
 
 =head2 _request_id => Str

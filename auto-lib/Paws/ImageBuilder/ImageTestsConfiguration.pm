@@ -44,7 +44,7 @@ Image tests configuration.
 
 =head2 TimeoutMinutes => Int
 
-  The maximum time in minutes that tests are permitted to run for.
+  The maximum time in minutes that tests are permitted to run.
 
 
 

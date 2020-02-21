@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-EBS specific block device mapping specifications.
+Amazon EBS-specific block device mapping specifications.
 
 =head1 ATTRIBUTES
 

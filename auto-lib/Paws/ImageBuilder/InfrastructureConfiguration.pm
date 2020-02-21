@@ -51,7 +51,7 @@ Details of the infrastructure configuration.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the infrastruction configuration.
+  The Amazon Resource Name (ARN) of the infrastructure configuration.
 
 
 =head2 DateCreated => Str
@@ -66,58 +66,58 @@ Details of the infrastructure configuration.
 
 =head2 Description => Str
 
-  The description of the infrastruction configuration.
+  The description of the infrastructure configuration.
 
 
 =head2 InstanceProfileName => Str
 
-  The instance profile of the infrastruction configuration.
+  The instance profile of the infrastructure configuration.
 
 
 =head2 InstanceTypes => ArrayRef[Str|Undef]
 
-  The instance types of the infrastruction configuration.
+  The instance types of the infrastructure configuration.
 
 
 =head2 KeyPair => Str
 
-  The EC2 key pair of the infrastruction configuration.
+  The EC2 key pair of the infrastructure configuration.
 
 
 =head2 Logging => L<Paws::ImageBuilder::Logging>
 
-  The logging configuration of the infrastruction configuration.
+  The logging configuration of the infrastructure configuration.
 
 
 =head2 Name => Str
 
-  The name of the infrastruction configuration.
+  The name of the infrastructure configuration.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  The security group IDs of the infrastruction configuration.
+  The security group IDs of the infrastructure configuration.
 
 
 =head2 SnsTopicArn => Str
 
-  The SNS Topic Amazon Resource Name (ARN) of the infrastruction
+  The SNS topic Amazon Resource Name (ARN) of the infrastructure
 configuration.
 
 
 =head2 SubnetId => Str
 
-  The subnet ID of the infrastruction configuration.
+  The subnet ID of the infrastructure configuration.
 
 
 =head2 Tags => L<Paws::ImageBuilder::TagMap>
 
-  The tags of the infrastruction configuration.
+  The tags of the infrastructure configuration.
 
 
 =head2 TerminateInstanceOnFailure => Bool
 
-  The terminate instance on failure configuration of the infrastruction
+  The terminate instance on failure configuration of the infrastructure
 configuration.
 
 

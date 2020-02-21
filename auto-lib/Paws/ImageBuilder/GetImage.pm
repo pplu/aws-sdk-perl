@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 B<REQUIRED> ImageBuildVersionArn => Str
 
-The Amazon Resource Name (ARN) of the image that you wish to retrieve.
+The Amazon Resource Name (ARN) of the image that you want to retrieve.
 
 
 

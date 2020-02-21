@@ -99,7 +99,7 @@ image pipeline.
 
 =head2 InfrastructureConfigurationArn => Str
 
-  The Amazon Resource Name (ARN) of the infrastruction configuration
+  The Amazon Resource Name (ARN) of the infrastructure configuration
 associated with this image pipeline.
 
 

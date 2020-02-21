@@ -43,7 +43,7 @@ An image semantic version.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the image semantic verion.
+  The Amazon Resource Name (ARN) of the image semantic version.
 
 
 =head2 DateCreated => Str

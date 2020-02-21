@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-A high level summary of a component.
+A high-level summary of a component.
 
 =head1 ATTRIBUTES
 

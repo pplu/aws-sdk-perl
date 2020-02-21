@@ -4,7 +4,7 @@ package Paws::ImageBuilder::UpdateDistributionConfiguration;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DistributionConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionConfigurationArn', required => 1);
-  has Distributions => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Distribution]', traits => ['NameInRequest'], request_name => 'distributions');
+  has Distributions => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Distribution]', traits => ['NameInRequest'], request_name => 'distributions', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,10 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $imagebuilder->UpdateDistributionConfiguration(
       ClientToken                  => 'MyClientToken',
       DistributionConfigurationArn => 'MyDistributionConfigurationArn',
-      Description   => 'MyNonEmptyString',    # OPTIONAL
-      Distributions => [
+      Distributions                => [
         {
-          Region => 'MyNonEmptyString',       # min: 1, max: 1024
+          Region => 'MyNonEmptyString',    # min: 1, max: 1024
           AmiDistributionConfiguration => {
             AmiTags => {
               'MyTagKey' =>
@@ -53,12 +52,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyNonEmptyString', ...                # min: 1, max: 1024
               ],                                       # OPTIONAL
             },    # OPTIONAL
-            Name => 'MyNonEmptyString',    # min: 1, max: 1024
+            Name => 'MyAmiNameString',    # min: 1, max: 127; OPTIONAL
           },    # OPTIONAL
           LicenseConfigurationArns => [ 'MyArn', ... ],    # OPTIONAL
         },
         ...
-      ],                                                   # OPTIONAL
+      ],
+      Description => 'MyNonEmptyString',                   # OPTIONAL
       );
 
     # Results:
@@ -90,11 +90,11 @@ The description of the distribution configuration.
 =head2 B<REQUIRED> DistributionConfigurationArn => Str
 
 The Amazon Resource Name (ARN) of the distribution configuration that
-you wish to update.
+you want to update.
 
 
 
-=head2 Distributions => ArrayRef[L<Paws::ImageBuilder::Distribution>]
+=head2 B<REQUIRED> Distributions => ArrayRef[L<Paws::ImageBuilder::Distribution>]
 
 The distributions of the distribution configuration.
 

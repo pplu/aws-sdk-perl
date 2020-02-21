@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 B<REQUIRED> ImageRecipeArn => Str
 
-The Amazon Resource Name (ARN) of the image recipe that you wish to
+The Amazon Resource Name (ARN) of the image recipe that you want to
 retrieve.
 
 

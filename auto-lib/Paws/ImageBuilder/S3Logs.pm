@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-S3 Logging configuration.
+Amazon S3 logging configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 S3BucketName => Str
 
-  The S3 bucket in which to store the logs.
+  The Amazon S3 bucket in which to store the logs.
 
 
 =head2 S3KeyPrefix => Str
 
-  The S3 path in which to store the logs.
+  The Amazon S3 path in which to store the logs.
 
 
 

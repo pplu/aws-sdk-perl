@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
-
+The filters.
 
 
 

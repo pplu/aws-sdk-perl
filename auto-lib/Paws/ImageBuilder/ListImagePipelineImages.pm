@@ -2,7 +2,7 @@
 package Paws::ImageBuilder::ListImagePipelineImages;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Filter]', traits => ['NameInRequest'], request_name => 'filters');
-  has ImagePipelineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imagePipelineArn');
+  has ImagePipelineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imagePipelineArn', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
@@ -33,16 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $imagebuilder = Paws->service('ImageBuilder');
     my $ListImagePipelineImagesResponse =
       $imagebuilder->ListImagePipelineImages(
-      Filters => [
+      ImagePipelineArn => 'MyImagePipelineArn',
+      Filters          => [
         {
           Name   => 'MyFilterName',              # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL
-      ImagePipelineArn => 'MyImagePipelineArn',  # OPTIONAL
-      MaxResults       => 1,                     # OPTIONAL
-      NextToken        => 'MyNonEmptyString',    # OPTIONAL
+      MaxResults => 1,                           # OPTIONAL
+      NextToken  => 'MyNonEmptyString',          # OPTIONAL
       );
 
     # Results:
@@ -60,14 +60,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
+The filters.
 
 
 
-
-=head2 ImagePipelineArn => Str
+=head2 B<REQUIRED> ImagePipelineArn => Str
 
 The Amazon Resource Name (ARN) of the image pipeline whose images you
-wish to view.
+want to view.
 
 
 

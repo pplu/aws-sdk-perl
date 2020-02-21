@@ -59,14 +59,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
-
+The filters.
 
 
 
 =head2 B<REQUIRED> ImageVersionArn => Str
 
 The Amazon Resource Name (ARN) of the image whose build versions you
-wish to retrieve.
+want to retrieve.
 
 
 

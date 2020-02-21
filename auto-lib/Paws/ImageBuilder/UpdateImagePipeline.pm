@@ -5,9 +5,9 @@ package Paws::ImageBuilder::UpdateImagePipeline;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DistributionConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionConfigurationArn');
   has ImagePipelineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imagePipelineArn', required => 1);
-  has ImageRecipeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageRecipeArn');
+  has ImageRecipeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageRecipeArn', required => 1);
   has ImageTestsConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::ImageTestsConfiguration', traits => ['NameInRequest'], request_name => 'imageTestsConfiguration');
-  has InfrastructureConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'infrastructureConfigurationArn');
+  has InfrastructureConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'infrastructureConfigurationArn', required => 1);
   has Schedule => (is => 'ro', isa => 'Paws::ImageBuilder::Schedule', traits => ['NameInRequest'], request_name => 'schedule');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
 
@@ -37,18 +37,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $imagebuilder = Paws->service('ImageBuilder');
     my $UpdateImagePipelineResponse = $imagebuilder->UpdateImagePipeline(
-      ClientToken      => 'MyClientToken',
-      ImagePipelineArn => 'MyImagePipelineArn',
-      Description      => 'MyNonEmptyString',     # OPTIONAL
+      ClientToken                    => 'MyClientToken',
+      ImagePipelineArn               => 'MyImagePipelineArn',
+      ImageRecipeArn                 => 'MyImageRecipeArn',
+      InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
+      Description => 'MyNonEmptyString',    # OPTIONAL
       DistributionConfigurationArn =>
-        'MyDistributionConfigurationArn',         # OPTIONAL
-      ImageRecipeArn          => 'MyImageRecipeArn',    # OPTIONAL
+        'MyDistributionConfigurationArn',    # OPTIONAL
       ImageTestsConfiguration => {
-        ImageTestsEnabled => 1,    # OPTIONAL
-        TimeoutMinutes    => 1,    # min: 60, max: 1440; OPTIONAL
+        ImageTestsEnabled => 1,              # OPTIONAL
+        TimeoutMinutes    => 1,              # min: 60, max: 1440; OPTIONAL
       },    # OPTIONAL
-      InfrastructureConfigurationArn =>
-        'MyInfrastructureConfigurationArn',    # OPTIONAL
       Schedule => {
         PipelineExecutionStartCondition => 'EXPRESSION_MATCH_ONLY'
         , # values: EXPRESSION_MATCH_ONLY, EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE; OPTIONAL
@@ -92,12 +91,12 @@ pipeline.
 
 =head2 B<REQUIRED> ImagePipelineArn => Str
 
-The Amazon Resource Name (ARN) of the image pipeline that you wish to
+The Amazon Resource Name (ARN) of the image pipeline that you want to
 update.
 
 
 
-=head2 ImageRecipeArn => Str
+=head2 B<REQUIRED> ImageRecipeArn => Str
 
 The Amazon Resource Name (ARN) of the image recipe that will be used to
 configure images updated by this image pipeline.
@@ -110,7 +109,7 @@ The image test configuration of the image pipeline.
 
 
 
-=head2 InfrastructureConfigurationArn => Str
+=head2 B<REQUIRED> InfrastructureConfigurationArn => Str
 
 The Amazon Resource Name (ARN) of the infrastructure configuration that
 will be used to build images updated by this image pipeline.

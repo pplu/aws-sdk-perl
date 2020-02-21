@@ -32,19 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-This class has no description
+A filter name and value pair that is used to return a more specific
+list of results from a list operation. Filters can be used to match a
+set of resources by specific criteria, such as tags, attributes, or
+IDs.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  
+  The name of the filter. Filter names are case-sensitive.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  
+  The filter values. Filter values are case-sensitive.
 
 
 

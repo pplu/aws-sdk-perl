@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 B<REQUIRED> ComponentArn => Str
 
-The Amazon Resource Name (ARN) of the component whose policy you wish
+The Amazon Resource Name (ARN) of the component whose policy you want
 to retrieve.
 
 

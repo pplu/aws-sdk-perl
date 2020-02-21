@@ -77,7 +77,7 @@ defines and configures the outputs of your pipeline.
 =head2 B<REQUIRED> ImageRecipeArn => Str
 
 The Amazon Resource Name (ARN) of the image recipe that defines how
-images are configured, tested and assessed.
+images are configured, tested, and assessed.
 
 
 

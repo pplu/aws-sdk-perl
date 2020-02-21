@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken => 'MyClientToken',
       Components  => [
         {
-          ComponentArn => 'MyComponentBuildVersionArn',
+          ComponentArn => 'MyComponentVersionArnOrBuildVersionArn',
 
         },
         ...
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             VolumeType =>
               'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
           },    # OPTIONAL
-          NoDevice    => 'MyNonEmptyString',    # min: 1, max: 1024
+          NoDevice    => 'MyEmptyString',       # OPTIONAL
           VirtualName => 'MyNonEmptyString',    # min: 1, max: 1024
         },
         ...

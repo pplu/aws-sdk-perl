@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 
 =head2 B<REQUIRED> ComponentBuildVersionArn => Str
 
-The Amazon Resource Name (ARN) of the component that you wish to
-retrieve.
+The Amazon Resource Name (ARN) of the component that you want to
+retrieve. Regex requires "/\d+$" suffix.
 
 
 
