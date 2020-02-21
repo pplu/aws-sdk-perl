@@ -62,8 +62,7 @@ A token used for pagination of results returned.
 
 =head2 Type => Str
 
-The type of analyzer, which corresponds to the zone of trust selected
-when the analyzer was created.
+The type of analyzer.
 
 Valid values are: C<"ACCOUNT">
 

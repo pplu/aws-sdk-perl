@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AccessAnaly
 
 =head1 DESCRIPTION
 
-The criteria to use in the filter that defines the rule.
+The criteria to use in the filter that defines the archive rule.
 
 =head1 ATTRIBUTES
 

@@ -32,14 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AccessAnaly
 
 =head1 DESCRIPTION
 
-An inline archive rule.
+An criterion statement in an archive rule. Each archive rule may have
+multiple criteria.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Filter => L<Paws::AccessAnalyzer::FilterCriteriaMap>
 
-  The criteria for the rule.
+  The condition and values for a criterion.
 
 
 =head2 B<REQUIRED> RuleName => Str

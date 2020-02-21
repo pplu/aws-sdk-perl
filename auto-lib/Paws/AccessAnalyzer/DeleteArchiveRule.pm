@@ -44,7 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acc
 
 =head2 B<REQUIRED> AnalyzerName => Str
 
-The name of the analyzer that was deleted.
+The name of the analyzer that associated with the archive rule to
+delete.
 
 
 

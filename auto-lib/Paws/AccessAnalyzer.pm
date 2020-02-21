@@ -135,7 +135,18 @@ Paws::AccessAnalyzer - Perl Interface to AWS Access Analyzer
 
 =head1 DESCRIPTION
 
-AWS IAM Access Analyzer API Reference
+AWS IAM Access Analyzer helps identify potential resource-access risks
+by enabling you to identify any policies that grant access to an
+external principal. It does this by using logic-based reasoning to
+analyze resource-based policies in your AWS environment. An external
+principal can be another AWS account, a root user, an IAM user or role,
+a federated user, an AWS service, or an anonymous user. This guide
+describes the AWS IAM Access Analyzer operations that you can call
+programmatically. For general information about Access Analyzer, see
+the AWS IAM Access Analyzer section of the IAM User Guide
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
+
+To start using Access Analyzer, you first need to create an analyzer.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/access-analyzer-2019-11-01>
 
@@ -163,7 +174,7 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::CreateAnalyzer>
 
 Returns: a L<Paws::AccessAnalyzer::CreateAnalyzerResponse> instance
 
-Creates an analyzer with a zone of trust set to your account.
+Creates an analyzer for your account.
 
 
 =head2 CreateArchiveRule
@@ -185,7 +196,9 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::CreateArchiveRu
 
 Returns: nothing
 
-Creates an archive rule for the specified analyzer.
+Creates an archive rule for the specified analyzer. Archive rules
+automatically archive findings that meet the criteria you define when
+you create the rule.
 
 
 =head2 DeleteAnalyzer
@@ -244,7 +257,7 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::GetAnalyzedReso
 
 Returns: a L<Paws::AccessAnalyzer::GetAnalyzedResourceResponse> instance
 
-Retrieves information about an analyzed resource.
+Retrieves information about a resource that was analyzed.
 
 
 =head2 GetAnalyzer
@@ -318,7 +331,8 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::ListAnalyzedRes
 
 Returns: a L<Paws::AccessAnalyzer::ListAnalyzedResourcesResponse> instance
 
-Retrieves a list of resources that have been analyzed.
+Retrieves a list of resources of the specified type that have been
+analyzed by the specified analyzer..
 
 
 =head2 ListAnalyzers
@@ -416,7 +430,8 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::StartResourceSc
 
 Returns: nothing
 
-Starts a scan of the policies applied to the specified resource.
+Immediately starts a scan of the policies applied to the specified
+resource.
 
 
 =head2 TagResource
@@ -474,7 +489,7 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::UpdateArchiveRu
 
 Returns: nothing
 
-Updates the specified archive rule.
+Updates the criteria and values for the specified archive rule.
 
 
 =head2 UpdateFindings
@@ -498,7 +513,7 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::UpdateFindings>
 
 Returns: nothing
 
-Updates findings with the new values provided in the request.
+Updates the status for the specified findings.
 
 
 

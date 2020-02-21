@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AccessAnaly
 
 =head1 DESCRIPTION
 
-The sort criteria.
+The criteria used to sort.
 
 =head1 ATTRIBUTES
 

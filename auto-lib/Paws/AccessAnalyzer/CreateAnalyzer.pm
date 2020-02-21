@@ -73,7 +73,9 @@ The name of the analyzer to create.
 
 =head2 ArchiveRules => ArrayRef[L<Paws::AccessAnalyzer::InlineArchiveRule>]
 
-Specifies the archive rules to add for the analyzer.
+Specifies the archive rules to add for the analyzer. Archive rules
+automatically archive findings that meet the criteria you define for
+the rule.
 
 
 
@@ -91,8 +93,8 @@ The tags to apply to the analyzer.
 
 =head2 B<REQUIRED> Type => Str
 
-The zone of trust for the analyzer. You can create only one analyzer
-per account per Region.
+The type of analyzer to create. Only ACCOUNT analyzers are supported.
+You can create only one analyzer per account per Region.
 
 Valid values are: C<"ACCOUNT">
 
