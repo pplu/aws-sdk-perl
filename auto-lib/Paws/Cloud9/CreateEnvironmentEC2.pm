@@ -8,6 +8,7 @@ package Paws::Cloud9::CreateEnvironmentEC2;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has OwnerArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerArn' );
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Cloud9::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -41,6 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description              => 'MyEnvironmentDescription',    # OPTIONAL
       OwnerArn                 => 'MyUserArn',                   # OPTIONAL
       SubnetId                 => 'MySubnetId',                  # OPTIONAL
+      Tags                     => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -105,6 +114,13 @@ the ARN defaults to this environment's creator.
 
 The ID of the subnet in Amazon VPC that AWS Cloud9 will use to
 communicate with the Amazon EC2 instance.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Cloud9::Tag>]
+
+An array of key-value pairs that will be associated with the new AWS
+Cloud9 development environment.
 
 
 

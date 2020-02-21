@@ -55,6 +55,21 @@ package Paws::Cloud9;
     my $call_object = $self->new_with_coercions('Paws::Cloud9::ListEnvironments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Cloud9::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Cloud9::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Cloud9::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateEnvironment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Cloud9::UpdateEnvironment', @_);
@@ -114,7 +129,7 @@ package Paws::Cloud9;
   }
 
 
-  sub operations { qw/CreateEnvironmentEC2 CreateEnvironmentMembership DeleteEnvironment DeleteEnvironmentMembership DescribeEnvironmentMemberships DescribeEnvironments DescribeEnvironmentStatus ListEnvironments UpdateEnvironment UpdateEnvironmentMembership / }
+  sub operations { qw/CreateEnvironmentEC2 CreateEnvironmentMembership DeleteEnvironment DeleteEnvironmentMembership DescribeEnvironmentMemberships DescribeEnvironments DescribeEnvironmentStatus ListEnvironments ListTagsForResource TagResource UntagResource UpdateEnvironment UpdateEnvironmentMembership / }
 
 1;
 
@@ -195,6 +210,18 @@ C<ListEnvironments>: Gets a list of environment identifiers.
 
 =item *
 
+C<ListTagsForResource>: Gets the tags for an environment.
+
+=item *
+
+C<TagResource>: Adds tags to an environment.
+
+=item *
+
+C<UntagResource>: Removes tags from an environment.
+
+=item *
+
 C<UpdateEnvironment>: Changes the settings of an existing environment.
 
 =item *
@@ -227,6 +254,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =item [OwnerArn => Str]
 
 =item [SubnetId => Str]
+
+=item [Tags => ArrayRef[L<Paws::Cloud9::Tag>]]
 
 
 =back
@@ -369,6 +398,62 @@ Each argument is described in detail in: L<Paws::Cloud9::ListEnvironments>
 Returns: a L<Paws::Cloud9::ListEnvironmentsResult> instance
 
 Gets a list of AWS Cloud9 development environment identifiers.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Cloud9::ListTagsForResource>
+
+Returns: a L<Paws::Cloud9::ListTagsForResourceResponse> instance
+
+Gets a list of the tags associated with an AWS Cloud9 development
+environment.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::Cloud9::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Cloud9::TagResource>
+
+Returns: a L<Paws::Cloud9::TagResourceResponse> instance
+
+Adds tags to an AWS Cloud9 development environment.
+
+Tags that you add to an AWS Cloud9 environment by using this method
+will NOT be automatically propagated to underlying resources.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Cloud9::UntagResource>
+
+Returns: a L<Paws::Cloud9::UntagResourceResponse> instance
+
+Removes tags from an AWS Cloud9 development environment.
 
 
 =head2 UpdateEnvironment
