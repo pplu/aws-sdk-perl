@@ -363,6 +363,10 @@ AWS Config
 
 =item *
 
+AWS Data Exchange
+
+=item *
+
 AWS Data Pipeline
 
 =item *
@@ -372,6 +376,10 @@ AWS Database Migration Service
 =item *
 
 AWS DataSync
+
+=item *
+
+AWS Device Farm
 
 =item *
 
@@ -400,6 +408,10 @@ Amazon ECR
 =item *
 
 Amazon ECS
+
+=item *
+
+Amazon EKS
 
 =item *
 
@@ -480,6 +492,10 @@ AWS IoT Events
 =item *
 
 AWS IoT Greengrass
+
+=item *
+
+AWS IoT 1-Click
 
 =item *
 
@@ -588,6 +604,10 @@ Amazon Simple Notification Service (SNS)
 =item *
 
 Amazon Simple Queue Service (SQS)
+
+=item *
+
+Amazon Simple Workflow Service
 
 =item *
 

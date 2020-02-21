@@ -46,12 +46,14 @@ effective tag policy, including details on any noncompliant tag keys.
 
 =head2 KeysWithNoncompliantValues => ArrayRef[Str|Undef]
 
-  The tag value is noncompliant with the effective tag policy.
+  These are keys defined in the effective policy that are on the resource
+with either incorrect case treatment or noncompliant values.
 
 
 =head2 NoncompliantKeys => ArrayRef[Str|Undef]
 
-  The tag key is noncompliant with the effective tag policy.
+  These tag keys on the resource are noncompliant with the effective tag
+policy.
 
 
 
