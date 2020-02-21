@@ -17,7 +17,7 @@ Paws::DeviceFarm::ListTagsForResourceResponse
 =head2 Tags => ArrayRef[L<Paws::DeviceFarm::Tag>]
 
 The tags to add to the resource. A tag is an array of key-value pairs.
-Tag keys can have a maximum character length of 128 characters, and tag
+Tag keys can have a maximum character length of 128 characters. Tag
 values can have a maximum length of 256 characters.
 
 

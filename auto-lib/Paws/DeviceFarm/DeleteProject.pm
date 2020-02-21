@@ -43,8 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-Represents the Amazon Resource Name (ARN) of the Device Farm project
-you wish to delete.
+Represents the Amazon Resource Name (ARN) of the Device Farm project to
+delete.
 
 
 

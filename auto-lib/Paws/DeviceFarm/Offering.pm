@@ -42,7 +42,7 @@ Represents the metadata of a device offering.
 
 =head2 Description => Str
 
-  A string describing the offering.
+  A string that describes the offering.
 
 
 =head2 Id => Str
@@ -52,7 +52,7 @@ Represents the metadata of a device offering.
 
 =head2 Platform => Str
 
-  The platform of the device (e.g., ANDROID or IOS).
+  The platform of the device (for example, C<ANDROID> or C<IOS>).
 
 
 =head2 RecurringCharges => ArrayRef[L<Paws::DeviceFarm::RecurringCharge>]
@@ -62,7 +62,7 @@ Represents the metadata of a device offering.
 
 =head2 Type => Str
 
-  The type of offering (e.g., "RECURRING") for a device.
+  The type of offering (for example, C<RECURRING>) for a device.
 
 
 

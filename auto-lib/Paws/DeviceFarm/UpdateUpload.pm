@@ -56,21 +56,21 @@ The Amazon Resource Name (ARN) of the uploaded test spec.
 
 =head2 ContentType => Str
 
-The upload's content type (for example, "application/x-yaml").
+The upload's content type (for example, C<application/x-yaml>).
 
 
 
 =head2 EditContent => Bool
 
-Set to true if the YAML file has changed and needs to be updated;
-otherwise, set to false.
+Set to true if the YAML file has changed and must be updated.
+Otherwise, set to false.
 
 
 
 =head2 Name => Str
 
-The upload's test spec file name. The name should not contain the '/'
-character. The test spec file name must end with the C<.yaml> or
+The upload's test spec file name. The name must not contain any forward
+slashes (/). The test spec file name must end with the C<.yaml> or
 C<.yml> file extension.
 
 

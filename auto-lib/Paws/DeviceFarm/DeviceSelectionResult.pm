@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 =head1 DESCRIPTION
 
 Contains the run results requested by the device selection
-configuration as well as how many devices were returned. For an example
-of the JSON response syntax, see ScheduleRun.
+configuration and how many devices were returned. For an example of the
+JSON response syntax, see ScheduleRun.
 
 =head1 ATTRIBUTES
 

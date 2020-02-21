@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Run, Job, Suite, or Test ARN.
+The run, job, suite, or test ARN.
 
 
 
@@ -68,15 +68,15 @@ Allowed values include:
 
 =item *
 
-FILE: The artifacts are files.
+FILE
 
 =item *
 
-LOG: The artifacts are logs.
+LOG
 
 =item *
 
-SCREENSHOT: The artifacts are screenshots.
+SCREENSHOT
 
 =back
 

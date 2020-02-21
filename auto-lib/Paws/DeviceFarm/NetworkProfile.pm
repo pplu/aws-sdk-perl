@@ -89,7 +89,7 @@ percent.
 
 =head2 Type => Str
 
-  The type of network profile. Valid values are listed below.
+  The type of network profile. Valid values are listed here.
 
 
 =head2 UplinkBandwidthBits => Int

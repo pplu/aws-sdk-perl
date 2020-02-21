@@ -52,27 +52,27 @@ Allowed values include:
 
 =item *
 
-ARN: The ARN.
+ARN
 
 =item *
 
-FORM_FACTOR: The form factor (for example, phone or tablet).
+FORM_FACTOR (for example, phone or tablet)
 
 =item *
 
-MANUFACTURER: The manufacturer.
+MANUFACTURER
 
 =item *
 
-PLATFORM: The platform (for example, Android or iOS).
+PLATFORM (for example, Android or iOS)
 
 =item *
 
-REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+REMOTE_ACCESS_ENABLED
 
 =item *
 
-APPIUM_VERSION: The Appium version for the test.
+APPIUM_VERSION
 
 =back
 

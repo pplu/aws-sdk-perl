@@ -62,7 +62,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 =head1 DESCRIPTION
 
 Represents a test run on a set of devices with a given app package,
-test parameters, etc.
+test parameters, and so on.
 
 =head1 ATTRIBUTES
 
@@ -82,6 +82,10 @@ test parameters, etc.
   Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
 C<metered>.
+
+If you have unmetered device slots, you must set this to C<unmetered>
+to use them. Otherwise, the run is counted toward metered device
+minutes.
 
 
 =head2 CompletedJobs => Int
@@ -129,7 +133,7 @@ the UI fuzz test should perform.
 
 =head2 JobTimeoutMinutes => Int
 
-  The number of minutes the job will execute before it times out.
+  The number of minutes the job executes before it times out.
 
 
 =head2 Locale => Str
@@ -159,10 +163,10 @@ the UI fuzz test should perform.
 
 =head2 ParsingResultUrl => Str
 
-  Read-only URL for an object in S3 bucket where you can get the parsing
-results of the test package. If the test package doesn't parse, the
-reason why it doesn't parse appears in the file that this URL points
-to.
+  Read-only URL for an object in an S3 bucket where you can get the
+parsing results of the test package. If the test package doesn't parse,
+the reason why it doesn't parse appears in the file that this URL
+points to.
 
 
 =head2 Platform => Str
@@ -175,11 +179,11 @@ Allowed values include:
 
 =item *
 
-ANDROID: The Android platform.
+ANDROID
 
 =item *
 
-IOS: The iOS platform.
+IOS
 
 =back
 
@@ -200,31 +204,31 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending condition.
+PENDING
 
 =item *
 
-PASSED: A passing condition.
+PASSED
 
 =item *
 
-WARNED: A warning condition.
+WARNED
 
 =item *
 
-FAILED: A failed condition.
+FAILED
 
 =item *
 
-SKIPPED: A skipped condition.
+SKIPPED
 
 =item *
 
-ERRORED: An error condition.
+ERRORED
 
 =item *
 
-STOPPED: A stopped condition.
+STOPPED
 
 =back
 
@@ -246,11 +250,11 @@ sequences.
 
 =head2 SkipAppResign => Bool
 
-  When set to C<true>, for private devices, Device Farm will not sign
+  When set to C<true>, for private devices, Device Farm does not sign
 your app again. For public devices, Device Farm always signs your apps
-again and this parameter has no effect.
+again.
 
-For more information about how Device Farm re-signs your app(s), see Do
+For more information about how Device Farm re-signs your apps, see Do
 you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
 I<AWS Device Farm FAQs>.
 
@@ -270,39 +274,39 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending status.
+PENDING
 
 =item *
 
-PENDING_CONCURRENCY: A pending concurrency status.
+PENDING_CONCURRENCY
 
 =item *
 
-PENDING_DEVICE: A pending device status.
+PENDING_DEVICE
 
 =item *
 
-PROCESSING: A processing status.
+PROCESSING
 
 =item *
 
-SCHEDULING: A scheduling status.
+SCHEDULING
 
 =item *
 
-PREPARING: A preparing status.
+PREPARING
 
 =item *
 
-RUNNING: A running status.
+RUNNING
 
 =item *
 
-COMPLETED: A completed status.
+COMPLETED
 
 =item *
 
-STOPPING: A stopping status.
+STOPPING
 
 =back
 
@@ -333,77 +337,78 @@ Must be one of the following values:
 
 =item *
 
-BUILTIN_FUZZ: The built-in fuzz type.
+BUILTIN_FUZZ
 
 =item *
 
-BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
-Android app, interacting with it and capturing screenshots at the same
-time.
+BUILTIN_EXPLORER
+
+For Android, an app explorer that traverses an Android app, interacting
+with it and capturing screenshots at the same time.
 
 =item *
 
-APPIUM_JAVA_JUNIT: The Appium Java JUnit type.
+APPIUM_JAVA_JUNIT
 
 =item *
 
-APPIUM_JAVA_TESTNG: The Appium Java TestNG type.
+APPIUM_JAVA_TESTNG
 
 =item *
 
-APPIUM_PYTHON: The Appium Python type.
+APPIUM_PYTHON
 
 =item *
 
-APPIUM_NODE: The Appium Node.js type.
+APPIUM_NODE
 
 =item *
 
-APPIUM_RUBY: The Appium Ruby type.
+APPIUM_RUBY
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+APPIUM_WEB_JAVA_JUNIT
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+APPIUM_WEB_JAVA_TESTNG
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+APPIUM_WEB_PYTHON
 
 =item *
 
-APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+APPIUM_WEB_NODE
 
 =item *
 
-APPIUM_WEB_RUBY: The Appium Ruby type for web apps.
+APPIUM_WEB_RUBY
 
 =item *
 
-CALABASH: The Calabash type.
+CALABASH
 
 =item *
 
-INSTRUMENTATION: The Instrumentation type.
+INSTRUMENTATION
 
 =item *
 
-UIAUTOMATION: The uiautomation type.
+UIAUTOMATION
 
 =item *
 
-UIAUTOMATOR: The uiautomator type.
+UIAUTOMATOR
 
 =item *
 
-XCTEST: The Xcode test type.
+XCTEST
 
 =item *
 
-XCTEST_UI: The Xcode UI test type.
+XCTEST_UI
 
 =back
 

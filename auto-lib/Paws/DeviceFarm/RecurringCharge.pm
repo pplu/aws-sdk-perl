@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-Specifies whether charges for devices will be recurring.
+Specifies whether charges for devices are recurring.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ Specifies whether charges for devices will be recurring.
 
 =head2 Frequency => Str
 
-  The frequency in which charges will recur.
+  The frequency in which charges recur.
 
 
 

@@ -100,7 +100,7 @@ percent.
 
 =head2 B<REQUIRED> Name => Str
 
-The name you wish to specify for the new network profile.
+The name for the new network profile.
 
 
 
@@ -113,8 +113,7 @@ create a network profile.
 
 =head2 Type => Str
 
-The type of network profile you wish to create. Valid values are listed
-below.
+The type of network profile to create. Valid values are listed here.
 
 Valid values are: C<"CURATED">, C<"PRIVATE">
 

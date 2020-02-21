@@ -53,10 +53,10 @@ Represents the instance profile.
 
 =head2 ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef]
 
-  An array of strings specifying the list of app packages that should not
-be cleaned up from the device after a test run is over.
+  An array of strings containing the list of app packages that should not
+be cleaned up from the device after a test run completes.
 
-The list of packages is only considered if you set C<packageCleanup> to
+The list of packages is considered only if you set C<packageCleanup> to
 C<true>.
 
 
@@ -67,14 +67,14 @@ C<true>.
 
 =head2 PackageCleanup => Bool
 
-  When set to C<true>, Device Farm will remove app packages after a test
-run. The default value is C<false> for private devices.
+  When set to C<true>, Device Farm removes app packages after a test run.
+The default value is C<false> for private devices.
 
 
 =head2 RebootAfterUse => Bool
 
-  When set to C<true>, Device Farm will reboot the instance after a test
-run. The default value is C<true>.
+  When set to C<true>, Device Farm reboots the instance after a test run.
+The default value is C<true>.
 
 
 

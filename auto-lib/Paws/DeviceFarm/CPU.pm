@@ -34,15 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 =head1 DESCRIPTION
 
 Represents the amount of CPU that an app is using on a physical device.
-
-Note that this does not represent system-wide CPU usage.
+Does not represent system-wide CPU usage.
 
 =head1 ATTRIBUTES
 
 
 =head2 Architecture => Str
 
-  The CPU's architecture, for example x86 or ARM.
+  The CPU's architecture (for example, x86 or ARM).
 
 
 =head2 Clock => Num

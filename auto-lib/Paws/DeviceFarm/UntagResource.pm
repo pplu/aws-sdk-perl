@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $devicefarm = Paws->service('DeviceFarm');
     my $UntagResourceResponse = $devicefarm->UntagResource(
-      ResourceARN => 'MyAmazonResourceName',
+      ResourceARN => 'MyDeviceFarmArn',
       TagKeys     => [
         'MyTagKey', ...    # min: 1, max: 128
       ],
@@ -44,9 +44,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The Amazon Resource Name (ARN) of the resource(s) from which to delete
-tags. You can associate tags with the following Device Farm resources:
-C<PROJECT>, C<RUN>, C<NETWORK_PROFILE>, C<INSTANCE_PROFILE>,
+The Amazon Resource Name (ARN) of the resource or resources from which
+to delete tags. You can associate tags with the following Device Farm
+resources: C<PROJECT>, C<RUN>, C<NETWORK_PROFILE>, C<INSTANCE_PROFILE>,
 C<DEVICE_INSTANCE>, C<SESSION>, C<DEVICE_POOL>, C<DEVICE>, and
 C<VPCE_CONFIGURATION>.
 

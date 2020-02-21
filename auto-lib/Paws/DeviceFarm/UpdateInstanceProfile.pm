@@ -66,8 +66,8 @@ The updated description for your instance profile.
 
 =head2 ExcludeAppPackagesFromCleanup => ArrayRef[Str|Undef]
 
-An array of strings specifying the list of app packages that should not
-be cleaned up from the device after a test run is over.
+An array of strings that specifies the list of app packages that should
+not be cleaned up from the device after a test run is over.
 
 The list of packages is only considered if you set C<packageCleanup> to
 C<true>.

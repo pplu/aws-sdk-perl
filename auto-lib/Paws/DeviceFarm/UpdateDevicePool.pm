@@ -63,8 +63,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the Device Farm device pool you wish
-to update.
+The Amazon Resource Name (ARN) of the Device Farm device pool to
+update.
 
 
 
@@ -74,8 +74,7 @@ Sets whether the C<maxDevices> parameter applies to your device pool.
 If you set this parameter to C<true>, the C<maxDevices> parameter does
 not apply, and Device Farm does not limit the number of devices that it
 adds to your device pool. In this case, Device Farm adds all available
-devices that meet the criteria that are specified for the C<rules>
-parameter.
+devices that meet the criteria specified in the C<rules> parameter.
 
 If you use this parameter in your request, you cannot use the
 C<maxDevices> parameter in the same request.
@@ -84,7 +83,7 @@ C<maxDevices> parameter in the same request.
 
 =head2 Description => Str
 
-A description of the device pool you wish to update.
+A description of the device pool to update.
 
 
 
@@ -106,15 +105,15 @@ C<clearMaxDevices> parameter in the same request.
 
 =head2 Name => Str
 
-A string representing the name of the device pool you wish to update.
+A string that represents the name of the device pool to update.
 
 
 
 =head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
-Represents the rules you wish to modify for the device pool. Updating
-rules is optional; however, if you choose to update rules for your
-request, the update will replace the existing rules.
+Represents the rules to modify for the device pool. Updating rules is
+optional. If you update rules for your request, the update replaces the
+existing rules.
 
 
 

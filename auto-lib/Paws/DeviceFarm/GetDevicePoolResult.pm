@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetDevicePoolResult
 
 =head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
-An object containing information about the requested device pool.
+An object that contains information about the requested device pool.
 
 
 =head2 _request_id => Str

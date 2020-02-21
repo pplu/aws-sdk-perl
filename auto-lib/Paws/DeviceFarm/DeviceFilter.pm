@@ -35,11 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 Represents a device filter used to select a set of devices to be
 included in a test run. This data structure is passed in as the
-C<deviceSelectionConfiguration> parameter to ScheduleRun. For an
+C<deviceSelectionConfiguration> parameter to C<ScheduleRun>. For an
 example of the JSON request syntax, see ScheduleRun.
 
-It is also passed in as the C<filters> parameter to ListDevices. For an
-example of the JSON request syntax, see ListDevices.
+It is also passed in as the C<filters> parameter to C<ListDevices>. For
+an example of the JSON request syntax, see ListDevices.
 
 =head1 ATTRIBUTES
 
@@ -56,85 +56,85 @@ following list.
 
 =item ARN
 
-The Amazon Resource Name (ARN) of the device. For example,
-"arn:aws:devicefarm:us-west-2::device:12345Example".
+The Amazon Resource Name (ARN) of the device (for example,
+C<arn:aws:devicefarm:us-west-2::device:12345Example>).
 
-I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+Supported operators: C<EQUALS>, C<IN>, C<NOT_IN>
 
 =item PLATFORM
 
-The device platform. Valid values are "ANDROID" or "IOS".
+The device platform. Valid values are ANDROID or IOS.
 
-I<Supported operators>: C<EQUALS>
+Supported operators: C<EQUALS>
 
 =item OS_VERSION
 
-The operating system version. For example, "10.3.2".
+The operating system version (for example, 10.3.2).
 
-I<Supported operators>: C<EQUALS>, C<GREATER_THAN>,
+Supported operators: C<EQUALS>, C<GREATER_THAN>,
 C<GREATER_THAN_OR_EQUALS>, C<IN>, C<LESS_THAN>, C<LESS_THAN_OR_EQUALS>,
 C<NOT_IN>
 
 =item MODEL
 
-The device model. For example, "iPad 5th Gen".
+The device model (for example, iPad 5th Gen).
 
-I<Supported operators>: C<CONTAINS>, C<EQUALS>, C<IN>, C<NOT_IN>
+Supported operators: C<CONTAINS>, C<EQUALS>, C<IN>, C<NOT_IN>
 
 =item AVAILABILITY
 
-The current availability of the device. Valid values are "AVAILABLE",
-"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+The current availability of the device. Valid values are AVAILABLE,
+HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
 
-I<Supported operators>: C<EQUALS>
+Supported operators: C<EQUALS>
 
 =item FORM_FACTOR
 
-The device form factor. Valid values are "PHONE" or "TABLET".
+The device form factor. Valid values are PHONE or TABLET.
 
-I<Supported operators>: C<EQUALS>
+Supported operators: C<EQUALS>
 
 =item MANUFACTURER
 
-The device manufacturer. For example, "Apple".
+The device manufacturer (for example, Apple).
 
-I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+Supported operators: C<EQUALS>, C<IN>, C<NOT_IN>
 
 =item REMOTE_ACCESS_ENABLED
 
-Whether the device is enabled for remote access. Valid values are
-"TRUE" or "FALSE".
+Whether the device is enabled for remote access. Valid values are TRUE
+or FALSE.
 
-I<Supported operators>: C<EQUALS>
+Supported operators: C<EQUALS>
 
 =item REMOTE_DEBUG_ENABLED
 
-I<Ignored.>Whether the device is enabled for remote debugging. Valid
-values are "TRUE" or "FALSE".
+Whether the device is enabled for remote debugging. Valid values are
+TRUE or FALSE.
 
-I<Supported operators>: C<EQUALS>
+Supported operators: C<EQUALS>
 
-I<This filter will be ignored, as remote debugging is no longer
-supported
-(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+Because remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html),
+this filter is ignored.
 
 =item INSTANCE_ARN
 
 The Amazon Resource Name (ARN) of the device instance.
 
-I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+Supported operators: C<EQUALS>, C<IN>, C<NOT_IN>
 
 =item INSTANCE_LABELS
 
 The label of the device instance.
 
-I<Supported operators>: C<CONTAINS>
+Supported operators: C<CONTAINS>
 
 =item FLEET_TYPE
 
-The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+The fleet type. Valid values are PUBLIC or PRIVATE.
 
-I<Supported operators>: C<EQUALS>
+Supported operators: C<EQUALS>
 
 =back
 
@@ -143,8 +143,7 @@ I<Supported operators>: C<EQUALS>
 =head2 Operator => Str
 
   Specifies how Device Farm compares the filter's attribute to the value.
-For the operators that are supported by each attribute, see the
-attribute descriptions.
+See the attribute descriptions.
 
 
 =head2 Values => ArrayRef[Str|Undef]
@@ -172,20 +171,20 @@ B<Attribute Values>
 
 =item *
 
-The PLATFORM attribute can be set to "ANDROID" or "IOS".
+The PLATFORM attribute can be set to ANDROID or IOS.
 
 =item *
 
-The AVAILABILITY attribute can be set to "AVAILABLE",
-"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE,
+BUSY, or TEMPORARY_NOT_AVAILABLE.
 
 =item *
 
-The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+The FORM_FACTOR attribute can be set to PHONE or TABLET.
 
 =item *
 
-The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
 
 =back
 

@@ -62,7 +62,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 AppArn => Str
 
-The ARN of the app to schedule a run.
+The ARN of an application package to run tests against, created with
+CreateUpload. See ListUploads.
 
 
 
@@ -81,8 +82,7 @@ The ARN of the device pool for the run to be scheduled.
 =head2 DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>
 
 The filter criteria used to dynamically select a set of devices for a
-test run, as well as the maximum number of devices to be included in
-the run.
+test run and the maximum number of devices to be included in the run.
 
 Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> > is
 required in a request.

@@ -35,21 +35,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 The metadata that you apply to a resource to help you categorize and
 organize it. Each tag consists of a key and an optional value, both of
 which you define. Tag keys can have a maximum character length of 128
-characters, and tag values can have a maximum length of 256 characters.
+characters. Tag values can have a maximum length of 256 characters.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-  One part of a key-value pair that make up a tag. A C<key> is a general
+  One part of a key-value pair that makes up a tag. A C<key> is a general
 label that acts like a category for more specific tag values.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  The optional part of a key-value pair that make up a tag. A C<value>
-acts as a descriptor within a tag category (key).
+  The optional part of a key-value pair that makes up a tag. A C<value>
+acts as a descriptor in a tag category (key).
 
 
 

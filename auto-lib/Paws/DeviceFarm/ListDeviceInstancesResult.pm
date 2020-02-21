@@ -17,7 +17,7 @@ Paws::DeviceFarm::ListDeviceInstancesResult
 
 =head2 DeviceInstances => ArrayRef[L<Paws::DeviceFarm::DeviceInstance>]
 
-An object containing information about your device instances.
+An object that contains information about your device instances.
 
 
 =head2 NextToken => Str

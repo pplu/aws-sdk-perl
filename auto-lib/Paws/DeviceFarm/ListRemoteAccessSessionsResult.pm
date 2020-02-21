@@ -24,7 +24,7 @@ list.
 
 =head2 RemoteAccessSessions => ArrayRef[L<Paws::DeviceFarm::RemoteAccessSession>]
 
-A container representing the metadata from the service about each
+A container that represents the metadata from the service about each
 remote access session you are requesting.
 
 

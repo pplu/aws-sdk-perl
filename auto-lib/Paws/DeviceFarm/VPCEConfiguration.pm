@@ -54,20 +54,20 @@ want to access.
 
 =head2 VpceConfigurationDescription => Str
 
-  An optional description, providing more details about your VPC endpoint
+  An optional description that provides details about your VPC endpoint
 configuration.
 
 
 =head2 VpceConfigurationName => Str
 
-  The friendly name you give to your VPC endpoint configuration, to
-manage your configurations more easily.
+  The friendly name you give to your VPC endpoint configuration to manage
+your configurations more easily.
 
 
 =head2 VpceServiceName => Str
 
-  The name of the VPC endpoint service running inside your AWS account
-that you want Device Farm to test.
+  The name of the VPC endpoint service running in your AWS account that
+you want Device Farm to test.
 
 
 

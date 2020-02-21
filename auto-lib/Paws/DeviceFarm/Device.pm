@@ -63,8 +63,8 @@ Represents a device type that an app is tested against.
 
 =head2 Availability => Str
 
-  Reflects how likely a device will be available for a test run. It is
-currently available in the ListDevices and GetDevice API methods.
+  Indicates how likely a device is available for a test run. Currently
+available in the ListDevices and GetDevice API methods.
 
 
 =head2 Carrier => Str
@@ -84,8 +84,8 @@ currently available in the ListDevices and GetDevice API methods.
 
 =head2 FleetType => Str
 
-  The type of fleet to which this device belongs. Possible values for
-fleet type are PRIVATE and PUBLIC.
+  The type of fleet to which this device belongs. Possible values are
+PRIVATE and PUBLIC.
 
 
 =head2 FormFactor => Str
@@ -98,11 +98,11 @@ Allowed values include:
 
 =item *
 
-PHONE: The phone form factor.
+PHONE
 
 =item *
 
-TABLET: The tablet form factor.
+TABLET
 
 =back
 
@@ -120,7 +120,7 @@ TABLET: The tablet form factor.
 
 =head2 Instances => ArrayRef[L<Paws::DeviceFarm::DeviceInstance>]
 
-  The instances belonging to this device.
+  The instances that belong to this device.
 
 
 =head2 Manufacturer => Str
@@ -163,11 +163,11 @@ Allowed values include:
 
 =item *
 
-ANDROID: The Android platform.
+ANDROID
 
 =item *
 
-IOS: The iOS platform.
+IOS
 
 =back
 
@@ -189,8 +189,8 @@ device.
   This flag is set to C<true> if remote debugging is enabled for the
 device.
 
-I<Remote debugging is no longer supported
-(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 
 
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>

@@ -47,8 +47,7 @@ states, auxiliary apps, and network profiles.
 
 =head2 AuxiliaryApps => ArrayRef[Str|Undef]
 
-  A list of Upload ARNs for app packages that will be installed alongside
-your app.
+  A list of upload ARNs for app packages to be installed with your app.
 
 
 =head2 BillingMethod => Str
@@ -56,6 +55,10 @@ your app.
   Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
 C<metered>.
+
+If you have purchased unmetered device slots, you must set this
+parameter to C<unmetered> to make use of them. Otherwise, your run
+counts against your metered time.
 
 
 =head2 CustomerArtifactPaths => L<Paws::DeviceFarm::CustomerArtifactPaths>
@@ -67,8 +70,8 @@ configuration.
 =head2 ExtraDataPackageArn => Str
 
   The ARN of the extra data for the run. The extra data is a .zip file
-that AWS Device Farm will extract to external data for Android or the
-app's sandbox for iOS.
+that AWS Device Farm extracts to external data for Android or the app's
+sandbox for iOS.
 
 
 =head2 Locale => Str
@@ -93,8 +96,7 @@ app's sandbox for iOS.
 
 =head2 VpceConfigurationArns => ArrayRef[Str|Undef]
 
-  An array of Amazon Resource Names (ARNs) for your VPC endpoint
-configurations.
+  An array of ARNs for your VPC endpoint configurations.
 
 
 

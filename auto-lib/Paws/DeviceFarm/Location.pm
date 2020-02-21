@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 =head1 DESCRIPTION
 
 Represents a latitude and longitude pair, expressed in geographic
-coordinate system degrees (for example 47.6204, -122.3491).
+coordinate system degrees (for example, 47.6204, -122.3491).
 
 Elevation is currently not supported.
 

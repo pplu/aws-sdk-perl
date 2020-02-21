@@ -39,7 +39,7 @@ Represents information about an offering promotion.
 
 =head2 Description => Str
 
-  A string describing the offering promotion.
+  A string that describes the offering promotion.
 
 
 =head2 Id => Str

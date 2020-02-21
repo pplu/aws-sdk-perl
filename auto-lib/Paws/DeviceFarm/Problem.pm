@@ -67,31 +67,31 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending condition.
+PENDING
 
 =item *
 
-PASSED: A passing condition.
+PASSED
 
 =item *
 
-WARNED: A warning condition.
+WARNED
 
 =item *
 
-FAILED: A failed condition.
+FAILED
 
 =item *
 
-SKIPPED: A skipped condition.
+SKIPPED
 
 =item *
 
-ERRORED: An error condition.
+ERRORED
 
 =item *
 
-STOPPED: A stopped condition.
+STOPPED
 
 =back
 

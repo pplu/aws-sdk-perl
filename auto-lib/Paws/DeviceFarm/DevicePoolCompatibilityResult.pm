@@ -45,7 +45,7 @@ Represents a device pool compatibility result.
 
 =head2 Device => L<Paws::DeviceFarm::Device>
 
-  The device (phone or tablet) that you wish to return information about.
+  The device (phone or tablet) to return information about.
 
 
 =head2 IncompatibilityMessages => ArrayRef[L<Paws::DeviceFarm::IncompatibilityMessage>]

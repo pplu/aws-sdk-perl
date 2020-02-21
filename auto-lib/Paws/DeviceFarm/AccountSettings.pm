@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-A container for account-level settings within AWS Device Farm.
+A container for account-level settings in AWS Device Farm.
 
 =head1 ATTRIBUTES
 
@@ -50,14 +50,13 @@ A container for account-level settings within AWS Device Farm.
 
 =head2 DefaultJobTimeoutMinutes => Int
 
-  The default number of minutes (at the account level) a test run will
-execute before it times out. The default value is 150 minutes.
+  The default number of minutes (at the account level) a test run
+executes before it times out. The default value is 150 minutes.
 
 
 =head2 MaxJobTimeoutMinutes => Int
 
-  The maximum number of minutes a test run will execute before it times
-out.
+  The maximum number of minutes a test run executes before it times out.
 
 
 =head2 MaxSlots => L<Paws::DeviceFarm::MaxSlotMap>
@@ -70,11 +69,11 @@ C<ListOfferings> command.
 
 =head2 SkipAppResign => Bool
 
-  When set to C<true>, for private devices, Device Farm will not sign
+  When set to C<true>, for private devices, Device Farm does not sign
 your app again. For public devices, Device Farm always signs your apps
-again and this parameter has no effect.
+again.
 
-For more information about how Device Farm re-signs your app(s), see Do
+For more information about how Device Farm re-signs your apps, see Do
 you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
 I<AWS Device Farm FAQs>.
 

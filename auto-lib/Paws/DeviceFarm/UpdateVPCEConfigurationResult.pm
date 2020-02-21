@@ -16,7 +16,8 @@ Paws::DeviceFarm::UpdateVPCEConfigurationResult
 
 =head2 VpceConfiguration => L<Paws::DeviceFarm::VPCEConfiguration>
 
-An object containing information about your VPC endpoint configuration.
+An object that contains information about your VPC endpoint
+configuration.
 
 
 =head2 _request_id => Str

@@ -71,7 +71,7 @@ PRIVATE: An upload managed by the AWS Device Farm customer.
 
 =head2 ContentType => Str
 
-  The upload's content type (for example, "application/octet-stream").
+  The upload's content type (for example, C<application/octet-stream>).
 
 
 =head2 Created => Str
@@ -106,19 +106,19 @@ Must be one of the following values:
 
 =item *
 
-FAILED: A failed status.
+FAILED
 
 =item *
 
-INITIALIZED: An initialized status.
+INITIALIZED
 
 =item *
 
-PROCESSING: A processing status.
+PROCESSING
 
 =item *
 
-SUCCEEDED: A succeeded status.
+SUCCEEDED
 
 =back
 
@@ -134,143 +134,131 @@ Must be one of the following values:
 
 =item *
 
-ANDROID_APP: An Android upload.
+ANDROID_APP
 
 =item *
 
-IOS_APP: An iOS upload.
+IOS_APP
 
 =item *
 
-WEB_APP: A web application upload.
+WEB_APP
 
 =item *
 
-EXTERNAL_DATA: An external data upload.
+EXTERNAL_DATA
 
 =item *
 
-APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
-upload.
+APPIUM_JAVA_JUNIT_TEST_PACKAGE
 
 =item *
 
-APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
-upload.
+APPIUM_JAVA_TESTNG_TEST_PACKAGE
 
 =item *
 
-APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
+APPIUM_PYTHON_TEST_PACKAGE
 
 =item *
 
-APPIUM_NODE_TEST_PACKAGE: An Appium Node.js test package upload.
+APPIUM_NODE_TEST_PACKAGE
 
 =item *
 
-APPIUM_RUBY_TEST_PACKAGE: An Appium Ruby test package upload.
+APPIUM_RUBY_TEST_PACKAGE
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
-upload for web apps.
+APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
-upload for web apps.
+APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE
 
 =item *
 
-APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload
-for web apps.
+APPIUM_WEB_PYTHON_TEST_PACKAGE
 
 =item *
 
-APPIUM_WEB_NODE_TEST_PACKAGE: An Appium Node.js test package upload for
-web apps.
+APPIUM_WEB_NODE_TEST_PACKAGE
 
 =item *
 
-APPIUM_WEB_RUBY_TEST_PACKAGE: An Appium Ruby test package upload for
-web apps.
+APPIUM_WEB_RUBY_TEST_PACKAGE
 
 =item *
 
-CALABASH_TEST_PACKAGE: A Calabash test package upload.
+CALABASH_TEST_PACKAGE
 
 =item *
 
-INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.
+INSTRUMENTATION_TEST_PACKAGE
 
 =item *
 
-UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.
+UIAUTOMATION_TEST_PACKAGE
 
 =item *
 
-UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
+UIAUTOMATOR_TEST_PACKAGE
 
 =item *
 
-XCTEST_TEST_PACKAGE: An Xcode test package upload.
+XCTEST_TEST_PACKAGE
 
 =item *
 
-XCTEST_UI_TEST_PACKAGE: An Xcode UI test package upload.
+XCTEST_UI_TEST_PACKAGE
 
 =item *
 
-APPIUM_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.
+APPIUM_JAVA_JUNIT_TEST_SPEC
 
 =item *
 
-APPIUM_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec upload.
+APPIUM_JAVA_TESTNG_TEST_SPEC
 
 =item *
 
-APPIUM_PYTHON_TEST_SPEC: An Appium Python test spec upload.
+APPIUM_PYTHON_TEST_SPEC
 
 =item *
 
-APPIUM_NODE_TEST_SPEC: An Appium Node.js test spec upload.
+APPIUM_NODE_TEST_SPEC
 
 =item *
 
-APPIUM_RUBY_TEST_SPEC: An Appium Ruby test spec upload.
+APPIUM_RUBY_TEST_SPEC
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload
-for a web app.
+APPIUM_WEB_JAVA_JUNIT_TEST_SPEC
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec
-upload for a web app.
+APPIUM_WEB_JAVA_TESTNG_TEST_SPEC
 
 =item *
 
-APPIUM_WEB_PYTHON_TEST_SPEC: An Appium Python test spec upload for a
-web app.
+APPIUM_WEB_PYTHON_TEST_SPEC
 
 =item *
 
-APPIUM_WEB_NODE_TEST_SPEC: An Appium Node.js test spec upload for a web
-app.
+APPIUM_WEB_NODE_TEST_SPEC
 
 =item *
 
-APPIUM_WEB_RUBY_TEST_SPEC: An Appium Ruby test spec upload for a web
-app.
+APPIUM_WEB_RUBY_TEST_SPEC
 
 =item *
 
-INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.
+INSTRUMENTATION_TEST_SPEC
 
 =item *
 
-XCTEST_UI_TEST_SPEC: An Xcode UI test spec upload.
+XCTEST_UI_TEST_SPEC
 
 =back
 
@@ -278,8 +266,8 @@ XCTEST_UI_TEST_SPEC: An Xcode UI test spec upload.
 
 =head2 Url => Str
 
-  The pre-signed Amazon S3 URL that was used to store a file through a
-corresponding PUT request.
+  The presigned Amazon S3 URL that was used to store a file using a PUT
+request.
 
 
 

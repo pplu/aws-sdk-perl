@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-A number representing the monetary amount for an offering or
+A number that represents the monetary amount for an offering or
 transaction.
 
 =head1 ATTRIBUTES
@@ -45,8 +45,8 @@ transaction.
 
 =head2 CurrencyCode => Str
 
-  The currency code of a monetary amount. For example, C<USD> means "U.S.
-dollars."
+  The currency code of a monetary amount. For example, C<USD> means U.S.
+dollars.
 
 
 

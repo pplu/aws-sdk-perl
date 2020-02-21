@@ -43,35 +43,35 @@ execution timeout (in minutes).
 
 =head2 AccountsCleanup => Bool
 
-  True if account cleanup is enabled at the beginning of the test;
-otherwise, false.
+  True if account cleanup is enabled at the beginning of the test.
+Otherwise, false.
 
 
 =head2 AppPackagesCleanup => Bool
 
-  True if app package cleanup is enabled at the beginning of the test;
-otherwise, false.
+  True if app package cleanup is enabled at the beginning of the test.
+Otherwise, false.
 
 
 =head2 JobTimeoutMinutes => Int
 
-  The number of minutes a test run will execute before it times out.
+  The number of minutes a test run executes before it times out.
 
 
 =head2 SkipAppResign => Bool
 
-  When set to C<true>, for private devices, Device Farm will not sign
+  When set to C<true>, for private devices, Device Farm does not sign
 your app again. For public devices, Device Farm always signs your apps
-again and this parameter has no effect.
+again.
 
-For more information about how Device Farm re-signs your app(s), see Do
+For more information about how Device Farm re-signs your apps, see Do
 you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
 I<AWS Device Farm FAQs>.
 
 
 =head2 VideoCapture => Bool
 
-  Set to true to enable video capture; otherwise, set to false. The
+  Set to true to enable video capture. Otherwise, set to false. The
 default is true.
 
 

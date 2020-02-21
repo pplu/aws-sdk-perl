@@ -48,22 +48,22 @@ Represents the device instance.
 
 =head2 DeviceArn => Str
 
-  The Amazon Resource Name (ARN) of the device.
+  The ARN of the device.
 
 
 =head2 InstanceProfile => L<Paws::DeviceFarm::InstanceProfile>
 
-  A object containing information about the instance profile.
+  A object that contains information about the instance profile.
 
 
 =head2 Labels => ArrayRef[Str|Undef]
 
-  An array of strings describing the device instance.
+  An array of strings that describe the device instance.
 
 
 =head2 Status => Str
 
-  The status of the device instance. Valid values are listed below.
+  The status of the device instance. Valid values are listed here.
 
 
 =head2 Udid => Str

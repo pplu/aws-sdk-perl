@@ -77,7 +77,7 @@ Represents a device.
 
 =head2 InstanceArn => Str
 
-  The Amazon Resource Name (ARN) of the instance.
+  The ARN of the instance.
 
 
 =head2 Message => Str
@@ -100,31 +100,31 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending condition.
+PENDING
 
 =item *
 
-PASSED: A passing condition.
+PASSED
 
 =item *
 
-WARNED: A warning condition.
+WARNED
 
 =item *
 
-FAILED: A failed condition.
+FAILED
 
 =item *
 
-SKIPPED: A skipped condition.
+SKIPPED
 
 =item *
 
-ERRORED: An error condition.
+ERRORED
 
 =item *
 
-STOPPED: A stopped condition.
+STOPPED
 
 =back
 
@@ -145,39 +145,39 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending status.
+PENDING
 
 =item *
 
-PENDING_CONCURRENCY: A pending concurrency status.
+PENDING_CONCURRENCY
 
 =item *
 
-PENDING_DEVICE: A pending device status.
+PENDING_DEVICE
 
 =item *
 
-PROCESSING: A processing status.
+PROCESSING
 
 =item *
 
-SCHEDULING: A scheduling status.
+SCHEDULING
 
 =item *
 
-PREPARING: A preparing status.
+PREPARING
 
 =item *
 
-RUNNING: A running status.
+RUNNING
 
 =item *
 
-COMPLETED: A completed status.
+COMPLETED
 
 =item *
 
-STOPPING: A stopping status.
+STOPPING
 
 =back
 
@@ -198,77 +198,77 @@ Allowed values include the following:
 
 =item *
 
-BUILTIN_FUZZ: The built-in fuzz type.
+BUILTIN_FUZZ
 
 =item *
 
-BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
+BUILTIN_EXPLORER. For Android, an app explorer that traverses an
 Android app, interacting with it and capturing screenshots at the same
 time.
 
 =item *
 
-APPIUM_JAVA_JUNIT: The Appium Java JUnit type.
+APPIUM_JAVA_JUNIT
 
 =item *
 
-APPIUM_JAVA_TESTNG: The Appium Java TestNG type.
+APPIUM_JAVA_TESTNG
 
 =item *
 
-APPIUM_PYTHON: The Appium Python type.
+APPIUM_PYTHON
 
 =item *
 
-APPIUM_NODE: The Appium Node.js type.
+APPIUM_NODE
 
 =item *
 
-APPIUM_RUBY: The Appium Ruby type.
+APPIUM_RUBY
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+APPIUM_WEB_JAVA_JUNIT
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+APPIUM_WEB_JAVA_TESTNG
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+APPIUM_WEB_PYTHON
 
 =item *
 
-APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+APPIUM_WEB_NODE
 
 =item *
 
-APPIUM_WEB_RUBY: The Appium Ruby test type for web apps.
+APPIUM_WEB_RUBY
 
 =item *
 
-CALABASH: The Calabash type.
+CALABASH
 
 =item *
 
-INSTRUMENTATION: The Instrumentation type.
+INSTRUMENTATION
 
 =item *
 
-UIAUTOMATION: The uiautomation type.
+UIAUTOMATION
 
 =item *
 
-UIAUTOMATOR: The uiautomator type.
+UIAUTOMATOR
 
 =item *
 
-XCTEST: The Xcode test type.
+XCTEST
 
 =item *
 
-XCTEST_UI: The Xcode UI test type.
+XCTEST_UI
 
 =back
 
@@ -276,7 +276,7 @@ XCTEST_UI: The Xcode UI test type.
 
 =head2 VideoCapture => Bool
 
-  This value is set to true if video capture is enabled; otherwise, it is
+  This value is set to true if video capture is enabled. Otherwise, it is
 set to false.
 
 

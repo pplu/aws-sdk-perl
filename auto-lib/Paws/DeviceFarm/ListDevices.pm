@@ -68,46 +68,46 @@ Allowed values include:
 
 =item *
 
-ARN: The Amazon Resource Name (ARN) of the device. For example,
-"arn:aws:devicefarm:us-west-2::device:12345Example".
+ARN: The Amazon Resource Name (ARN) of the device (for example,
+C<arn:aws:devicefarm:us-west-2::device:12345Example>).
 
 =item *
 
-PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+PLATFORM: The device platform. Valid values are ANDROID or IOS.
 
 =item *
 
-OS_VERSION: The operating system version. For example, "10.3.2".
+OS_VERSION: The operating system version (for example, 10.3.2).
 
 =item *
 
-MODEL: The device model. For example, "iPad 5th Gen".
+MODEL: The device model (for example, iPad 5th Gen).
 
 =item *
 
 AVAILABILITY: The current availability of the device. Valid values are
-"AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
 
 =item *
 
-FORM_FACTOR: The device form factor. Valid values are "PHONE" or
-"TABLET".
+FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
 
 =item *
 
-MANUFACTURER: The device manufacturer. For example, "Apple".
+MANUFACTURER: The device manufacturer (for example, Apple).
 
 =item *
 
 REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
-Valid values are "TRUE" or "FALSE".
+Valid values are TRUE or FALSE.
 
 =item *
 
 REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging. Valid values are "TRUE" or "FALSE". I<This attribute will be
-ignored, as remote debugging is no longer supported
-(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+debugging. Valid values are TRUE or FALSE. Because remote debugging is
+no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html),
+this attribute is ignored.
 
 =item *
 
@@ -119,7 +119,7 @@ INSTANCE_LABELS: The label of the device instance.
 
 =item *
 
-FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
 
 =back
 
@@ -169,8 +169,8 @@ The other operators require an array with a single element.
 
 =item *
 
-In a request, the AVAILABILITY attribute takes "AVAILABLE",
-"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE" as values.
+In a request, the AVAILABILITY attribute takes the following values:
+AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
 
 =back
 

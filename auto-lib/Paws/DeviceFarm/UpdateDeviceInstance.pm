@@ -61,8 +61,8 @@ instance.
 
 =head2 ProfileArn => Str
 
-The Amazon Resource Name (ARN) of the profile that you want to
-associate with the device instance.
+The ARN of the profile that you want to associate with the device
+instance.
 
 
 

@@ -16,8 +16,8 @@ Paws::DeviceFarm::StopRemoteAccessSessionResult
 
 =head2 RemoteAccessSession => L<Paws::DeviceFarm::RemoteAccessSession>
 
-A container representing the metadata from the service about the remote
-access session you are stopping.
+A container that represents the metadata from the service about the
+remote access session you are stopping.
 
 
 =head2 _request_id => Str
