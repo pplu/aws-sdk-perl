@@ -26,6 +26,7 @@ package Paws::RDS::DBCluster;
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]', request_name => 'DomainMembership', traits => ['NameInRequest']);
   has EarliestBacktrackTime => (is => 'ro', isa => 'Str');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -250,6 +251,12 @@ group.
 
   Indicates if the DB cluster has deletion protection enabled. The
 database can't be deleted when deletion protection is enabled.
+
+
+=head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]
+
+  The Active Directory Domain membership records associated with the DB
+cluster.
 
 
 =head2 EarliestBacktrackTime => Str

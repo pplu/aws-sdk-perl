@@ -23,7 +23,7 @@ The DB log files returned.
 
 =head2 Marker => Str
 
-A pagination token that can be used in a subsequent DescribeDBLogFiles
+A pagination token that can be used in a later DescribeDBLogFiles
 request.
 
 

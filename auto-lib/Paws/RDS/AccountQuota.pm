@@ -89,6 +89,9 @@ might have a lower number of associated IAM roles.
 C<DBInstances> - The number of DB instances per account. The used value
 is the count of the DB instances in the account.
 
+Amazon RDS DB instances, Amazon Aurora DB instances, Amazon Neptune
+instances, and Amazon DocumentDB instances apply to this quota.
+
 =item *
 
 C<DBParameterGroups> - The number of DB parameter groups per account,
@@ -145,9 +148,9 @@ number of subnets.
 
 =back
 
-For more information, see Limits
+For more information, see Quotas for Amazon RDS
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html)
-in the I<Amazon RDS User Guide> and Limits
+in the I<Amazon RDS User Guide> and Quotas for Amazon Aurora
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_Limits.html)
 in the I<Amazon Aurora User Guide>.
 

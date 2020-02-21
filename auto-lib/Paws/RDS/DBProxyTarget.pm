@@ -76,7 +76,8 @@ cluster.
 =head2 TrackedClusterId => Str
 
   The DB cluster identifier when the target represents an Aurora DB
-cluster. This field is blank when the target represents an
+cluster. This field is blank when the target represents an RDS DB
+instance.
 
 
 =head2 Type => Str

@@ -3,6 +3,8 @@ package Paws::RDS::Certificate;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has CertificateIdentifier => (is => 'ro', isa => 'Str');
   has CertificateType => (is => 'ro', isa => 'Str');
+  has CustomerOverride => (is => 'ro', isa => 'Bool');
+  has CustomerOverrideValidTill => (is => 'ro', isa => 'Str');
   has Thumbprint => (is => 'ro', isa => 'Str');
   has ValidFrom => (is => 'ro', isa => 'Str');
   has ValidTill => (is => 'ro', isa => 'Str');
@@ -54,6 +56,17 @@ A CA certificate for an AWS account.
 =head2 CertificateType => Str
 
   The type of the certificate.
+
+
+=head2 CustomerOverride => Bool
+
+  Whether there is an override for the default certificate identifier.
+
+
+=head2 CustomerOverrideValidTill => Str
+
+  If there is an override for the default certificate identifier, when
+the override expires.
 
 
 =head2 Thumbprint => Str

@@ -11,6 +11,8 @@ package Paws::RDS::RestoreDBClusterFromS3;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -73,6 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
       DeletionProtection              => 1,                      # OPTIONAL
+      Domain                          => 'MyString',             # OPTIONAL
+      DomainIAMRoleName               => 'MyString',             # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
@@ -236,6 +240,27 @@ Example: C<mySubnetgroup>
 A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.
+
+
+
+=head2 Domain => Str
+
+Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster.
+For more information, see Using Kerberos Authentication for Aurora
+MySQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+in the I<Amazon Aurora User Guide>.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
 
 
 

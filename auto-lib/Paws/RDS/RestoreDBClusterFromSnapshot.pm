@@ -9,6 +9,8 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -179,6 +181,20 @@ Example: C<mySubnetgroup>
 A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.
+
+
+
+=head2 Domain => Str
+
+Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
 
 
 

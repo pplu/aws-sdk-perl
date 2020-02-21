@@ -11,6 +11,8 @@ package Paws::RDS::CreateDBCluster;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -145,8 +147,8 @@ snapshots of the DB cluster. The default is not to copy them.
 
 =head2 DatabaseName => Str
 
-The name for your database of up to 64 alpha-numeric characters. If you
-do not provide a name, Amazon RDS will not create a database in the DB
+The name for your database of up to 64 alphanumeric characters. If you
+do not provide a name, Amazon RDS doesn't create a database in the DB
 cluster you are creating.
 
 
@@ -217,6 +219,26 @@ enabled. By default, deletion protection is disabled.
 
 
 
+=head2 Domain => Str
+
+The Active Directory directory ID to create the DB cluster in.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster.
+For more information, see Using Kerberos Authentication for Aurora
+MySQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+in the I<Amazon Aurora User Guide>.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
@@ -271,6 +293,35 @@ C<aurora-postgresql>
 
 The DB engine mode of the DB cluster, either C<provisioned>,
 C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
+
+Limitations and requirements apply to some DB engine modes. For more
+information, see the following sections in the I<Amazon Aurora User
+Guide>:
+
+=over
+
+=item *
+
+Limitations of Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations)
+
+=item *
+
+Limitations of Parallel Query
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations)
+
+=item *
+
+Requirements for Aurora Global Databases
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
+
+=item *
+
+Limitations of Multi-Master Clusters
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations)
+
+=back
+
 
 
 

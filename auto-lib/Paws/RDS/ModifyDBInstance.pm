@@ -7,6 +7,7 @@ package Paws::RDS::ModifyDBInstance;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CACertificateIdentifier => (is => 'ro', isa => 'Str');
+  has CertificateRotationRestart => (is => 'ro', isa => 'Bool');
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -197,6 +198,43 @@ Can't be set to 0 if the DB instance is a source to Read Replicas
 
 Indicates the certificate that needs to be associated with the
 instance.
+
+
+
+=head2 CertificateRotationRestart => Bool
+
+A value that indicates whether the DB instance is restarted when you
+rotate your SSL/TLS certificate.
+
+By default, the DB instance is restarted when you rotate your SSL/TLS
+certificate. The certificate is not updated until the DB instance is
+restarted.
+
+Set this parameter only if you are I<not> using SSL/TLS to connect to
+the DB instance.
+
+If you are using SSL/TLS to connect to the DB instance, follow the
+appropriate instructions for your DB engine to rotate your SSL/TLS
+certificate:
+
+=over
+
+=item *
+
+For more information about rotating your SSL/TLS certificate for RDS DB
+engines, see Rotating Your SSL/TLS Certificate.
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+in the I<Amazon RDS User Guide.>
+
+=item *
+
+For more information about rotating your SSL/TLS certificate for Aurora
+DB engines, see Rotating Your SSL/TLS Certificate
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+in the I<Amazon Aurora User Guide.>
+
+=back
+
 
 
 

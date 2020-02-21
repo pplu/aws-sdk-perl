@@ -71,7 +71,7 @@ If supplied, must match the name of an existing C<DBParameterGroup>.
 
 An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method
-must be supplied; subsequent arguments are optional. A maximum of 20
+must be supplied; later arguments are optional. A maximum of 20
 parameters can be modified in a single request.
 
 Valid Values (for the application method): C<immediate |

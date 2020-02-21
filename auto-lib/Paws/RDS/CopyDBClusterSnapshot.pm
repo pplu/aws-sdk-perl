@@ -58,9 +58,9 @@ are not copied.
 
 =head2 KmsKeyId => Str
 
-The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS
-key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
-KMS key alias for the KMS encryption key.
+The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID
+is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
+alias for the KMS encryption key.
 
 If you copy an encrypted DB cluster snapshot from your AWS account, you
 can specify a value for C<KmsKeyId> to encrypt the copy with a new KMS
@@ -111,7 +111,7 @@ in the pre-signed URL.
 =item *
 
 C<DestinationRegion> - The name of the AWS Region that the DB cluster
-snapshot will be created in.
+snapshot is to be created in.
 
 =item *
 

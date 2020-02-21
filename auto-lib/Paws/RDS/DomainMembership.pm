@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Domain
 =head1 DESCRIPTION
 
 An Active Directory Domain membership record associated with the DB
-instance.
+instance or cluster.
 
 =head1 ATTRIBUTES
 
@@ -58,8 +58,9 @@ Directory Service.
 
 =head2 Status => Str
 
-  The status of the DB instance's Active Directory Domain membership,
-such as joined, pending-join, failed etc).
+  The status of the Active Directory Domain membership for the DB
+instance or cluster. Values include joined, pending-join, failed, and
+so on.
 
 
 

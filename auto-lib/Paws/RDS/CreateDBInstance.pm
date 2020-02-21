@@ -1041,8 +1041,9 @@ Indicates that the DB instance should be associated with the specified
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group can't
-be removed from a DB instance once it is associated with a DB instance
+TDE, can't be removed from an option group. Also, that option group
+can't be removed from a DB instance once it is associated with a DB
+instance
 
 
 

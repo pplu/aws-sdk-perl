@@ -11,6 +11,8 @@ package Paws::RDS::ModifyDBCluster;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBInstanceParameterGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -203,6 +205,21 @@ combination with the C<AllowMajorVersionUpgrade> parameter.
 A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.
+
+
+
+=head2 Domain => Str
+
+The Active Directory directory ID to move the DB cluster to. Specify
+C<none> to remove the cluster from its current domain. The domain must
+be created prior to this operation.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
 
 
 
