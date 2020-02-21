@@ -3,6 +3,7 @@ package Paws::GameLift::CreateScript;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Tag]');
   has Version => (is => 'ro', isa => 'Str');
   has ZipFile => (is => 'ro', isa => 'Str');
 
@@ -38,6 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ObjectVersion => 'MyNonEmptyString',         # min: 1; OPTIONAL
         RoleArn       => 'MyNonEmptyString',         # min: 1; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
       Version => 'MyNonZeroAndMaxString',    # OPTIONAL
       ZipFile => 'BlobZipBlob',              # OPTIONAL
     );
@@ -55,37 +64,52 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Name => Str
 
-Descriptive label that is associated with a script. Script names do not
-need to be unique. You can use UpdateScript to change this value later.
+A descriptive label that is associated with a script. Script names do
+not need to be unique. You can use UpdateScript to change this value
+later.
 
 
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
-Location of the Amazon S3 bucket where a zipped file containing your
-Realtime scripts is stored. The storage location must specify the
+The location of the Amazon S3 bucket where a zipped file containing
+your Realtime scripts is stored. The storage location must specify the
 Amazon S3 bucket name, the zip file name (the "key"), and a role ARN
 that allows Amazon GameLift to access the Amazon S3 storage location.
-The S3 bucket must be in the same region where you want to create a new
+The S3 bucket must be in the same Region where you want to create a new
 script. By default, Amazon GameLift uploads the latest version of the
 zip file; if you have S3 object versioning turned on, you can use the
 C<ObjectVersion> parameter to specify an earlier version.
 
 
 
+=head2 Tags => ArrayRef[L<Paws::GameLift::Tag>]
+
+A list of labels to assign to the new script resource. Tags are
+developer-defined key-value pairs. Tagging AWS resources are useful for
+resource management, access management and cost allocation. For more
+information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>. Once the resource is created, you can use
+TagResource, UntagResource, and ListTagsForResource to add, remove, and
+view tags. The maximum tag limit may be lower than stated. See the AWS
+General Reference for actual tagging limits.
+
+
+
 =head2 Version => Str
 
-Version that is associated with a build or script. Version strings do
-not need to be unique. You can use UpdateScript to change this value
+The version that is associated with a build or script. Version strings
+do not need to be unique. You can use UpdateScript to change this value
 later.
 
 
 
 =head2 ZipFile => Str
 
-Data object containing your Realtime scripts and dependencies as a zip
-file. The zip file can have one or multiple files. Maximum size of a
-zip file is 5 MB.
+A data object containing your Realtime scripts and dependencies as a
+zip file. The zip file can have one or multiple files. Maximum size of
+a zip file is 5 MB.
 
 When using the AWS CLI tool to create a script, this parameter is set
 to the zip file name. It must be prepended with the string "fileb://"

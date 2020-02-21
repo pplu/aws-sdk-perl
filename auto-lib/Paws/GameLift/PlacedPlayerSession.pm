@@ -79,13 +79,13 @@ StopGameSessionPlacement
 
 =head2 PlayerId => Str
 
-  Unique identifier for a player that is associated with this player
+  A unique identifier for a player that is associated with this player
 session.
 
 
 =head2 PlayerSessionId => Str
 
-  Unique identifier for a player session.
+  A unique identifier for a player session.
 
 
 

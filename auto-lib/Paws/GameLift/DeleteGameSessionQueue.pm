@@ -40,8 +40,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with game session queue. Queue
-names must be unique within each region.
+A descriptive label that is associated with game session queue. Queue
+names must be unique within each Region. You can use either the queue
+ID or ARN value.
 
 
 

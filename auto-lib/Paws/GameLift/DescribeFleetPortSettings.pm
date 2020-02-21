@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to retrieve port settings for.
+A unique identifier for a fleet to retrieve port settings for. You can
+use either the fleet ID or ARN value.
 
 
 

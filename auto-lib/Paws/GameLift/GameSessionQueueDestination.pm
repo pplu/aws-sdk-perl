@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 Fleet designated in a game session queue. Requests for new game
 sessions in the queue are fulfilled by starting a new game session on
-any destination configured for a queue.
+any destination that is configured for a queue.
 
 =over
 
@@ -61,9 +61,9 @@ DeleteGameSessionQueue
 
 =head2 DestinationArn => Str
 
-  Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs,
-which include a fleet ID or alias ID and a region name, provide a
-unique identifier across all regions.
+  The Amazon Resource Name (ARN) that is assigned to fleet or fleet
+alias. ARNs, which include a fleet ID or alias ID and a Region name,
+provide a unique identifier across all Regions.
 
 
 

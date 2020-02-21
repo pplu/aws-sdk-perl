@@ -4,6 +4,7 @@ package Paws::GameLift::MatchmakingConfiguration;
   has AcceptanceTimeoutSeconds => (is => 'ro', isa => 'Int');
   has AdditionalPlayerCount => (is => 'ro', isa => 'Int');
   has BackfillMode => (is => 'ro', isa => 'Str');
+  has ConfigurationArn => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has CustomEventData => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -13,6 +14,7 @@ package Paws::GameLift::MatchmakingConfiguration;
   has Name => (is => 'ro', isa => 'Str');
   has NotificationTarget => (is => 'ro', isa => 'Str');
   has RequestTimeoutSeconds => (is => 'ro', isa => 'Int');
+  has RuleSetArn => (is => 'ro', isa => 'Str');
   has RuleSetName => (is => 'ro', isa => 'Str');
 1;
 
@@ -52,29 +54,30 @@ matchmaking requests must specify a matchmaking configuration.
 
 =head2 AcceptanceRequired => Bool
 
-  Flag that determines whether a match that was created with this
+  A flag that indicates whether a match that was created with this
 configuration must be accepted by the matched players. To require
 acceptance, set to TRUE.
 
 
 =head2 AcceptanceTimeoutSeconds => Int
 
-  Length of time (in seconds) to wait for players to accept a proposed
-match. If any player rejects the match or fails to accept before the
-timeout, the ticket continues to look for an acceptable match.
+  The length of time (in seconds) to wait for players to accept a
+proposed match. If any player rejects the match or fails to accept
+before the timeout, the ticket continues to look for an acceptable
+match.
 
 
 =head2 AdditionalPlayerCount => Int
 
-  Number of player slots in a match to keep open for future players. For
-example, if the configuration's rule set specifies a match for a single
-12-person team, and the additional player count is set to 2, only 10
-players are selected for the match.
+  The number of player slots in a match to keep open for future players.
+For example, assume that the configuration's rule set specifies a match
+for a single 12-person team. If the additional player count is set to
+2, only 10 players are initially selected for the match.
 
 
 =head2 BackfillMode => Str
 
-  Method used to backfill game sessions created with this matchmaking
+  The method used to backfill game sessions created with this matchmaking
 configuration. MANUAL indicates that the game makes backfill requests
 or does not use the match backfill feature. AUTOMATIC indicates that
 GameLift creates StartMatchBackfill requests whenever a game session
@@ -83,10 +86,19 @@ backfill in Backfill Existing Games with FlexMatch
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
 
 
+=head2 ConfigurationArn => Str
+
+  Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+that is assigned to a GameLift matchmaking configuration resource and
+uniquely identifies it. ARNs are unique across all Regions. In a
+GameLift configuration ARN, the resource ID matches the I<Name> value.
+
+
 =head2 CreationTime => Str
 
-  Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (for example
+  The time stamp indicating when this data object was created. The format
+is a number expressed in Unix time as milliseconds (for example
 "1469498468.057").
 
 
@@ -98,12 +110,12 @@ configuration.
 
 =head2 Description => Str
 
-  Descriptive label that is associated with matchmaking configuration.
+  A descriptive label that is associated with matchmaking configuration.
 
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-  Set of custom properties for a game session, formatted as key:value
+  A set of custom properties for a game session, formatted as key-value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
@@ -114,7 +126,7 @@ for a successful match.
 
 =head2 GameSessionData => Str
 
-  Set of custom game session properties, formatted as a single string
+  A set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
@@ -126,38 +138,46 @@ for a successful match.
 =head2 GameSessionQueueArns => ArrayRef[Str|Undef]
 
   Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
-that is assigned to a game session queue and uniquely identifies it.
-Format is C<arn:aws:gamelift:E<lt>regionE<gt>:E<lt>aws
-accountE<gt>:gamesessionqueue/E<lt>queue nameE<gt>>. These queues are
-used when placing game sessions for matches that are created with this
-matchmaking configuration. Queues can be located in any region.
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+that is assigned to a GameLift game session queue resource and uniquely
+identifies it. ARNs are unique across all Regions. GameLift uses the
+listed queues when placing game sessions for matches that are created
+with this matchmaking configuration. Queues can be located in any
+Region.
 
 
 =head2 Name => Str
 
-  Unique identifier for a matchmaking configuration. This name is used to
-identify the configuration associated with a matchmaking request or
+  A unique identifier for a matchmaking configuration. This name is used
+to identify the configuration associated with a matchmaking request or
 ticket.
 
 
 =head2 NotificationTarget => Str
 
-  SNS topic ARN that is set up to receive matchmaking notifications.
+  An SNS topic ARN that is set up to receive matchmaking notifications.
 
 
 =head2 RequestTimeoutSeconds => Int
 
-  Maximum duration, in seconds, that a matchmaking ticket can remain in
-process before timing out. Requests that fail due to timing out can be
-resubmitted as needed.
+  The maximum duration, in seconds, that a matchmaking ticket can remain
+in process before timing out. Requests that fail due to timing out can
+be resubmitted as needed.
+
+
+=head2 RuleSetArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift matchmaking rule set resource that this
+configuration uses.
 
 
 =head2 RuleSetName => Str
 
-  Unique identifier for a matchmaking rule set to use with this
+  A unique identifier for a matchmaking rule set to use with this
 configuration. A matchmaking configuration can only use rule sets that
-are defined in the same region.
+are defined in the same Region.
 
 
 

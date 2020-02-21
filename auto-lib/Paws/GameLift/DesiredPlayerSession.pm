@@ -47,7 +47,7 @@ game.
 
 =head2 PlayerId => Str
 
-  Unique identifier for a player to associate with the player session.
+  A unique identifier for a player to associate with the player session.
 
 
 

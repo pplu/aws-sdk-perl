@@ -34,10 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::P
 
 Queue setting that determines the highest latency allowed for
 individual players when placing a game session. When a latency policy
-is in force, a game session cannot be placed at any destination in a
-region where a player is reporting latency higher than the cap. Latency
-policies are only enforced when the placement request contains player
-latency information.
+is in force, a game session cannot be placed with any fleet in a Region
+where a player reports latency higher than the cap. Latency policies
+are only enforced when the placement request contains player latency
+information.
 
 =over
 

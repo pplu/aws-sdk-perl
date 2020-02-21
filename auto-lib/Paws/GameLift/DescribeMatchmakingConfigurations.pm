@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $gamelift->DescribeMatchmakingConfigurations(
       Limit => 1,    # OPTIONAL
       Names => [
-        'MyMatchmakingIdStringModel', ...    # max: 128
-      ],                                     # OPTIONAL
-      NextToken   => 'MyNonZeroAndMaxString',         # OPTIONAL
-      RuleSetName => 'MyMatchmakingIdStringModel',    # OPTIONAL
+        'MyMatchmakingConfigurationName', ...    # min: 1, max: 256
+      ],                                         # OPTIONAL
+      NextToken   => 'MyNonZeroAndMaxString',    # OPTIONAL
+      RuleSetName => 'MyMatchmakingRuleSetName', # OPTIONAL
       );
 
     # Results:
@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages. This
 parameter is limited to 10.
 
@@ -63,23 +63,26 @@ parameter is limited to 10.
 
 =head2 Names => ArrayRef[Str|Undef]
 
-Unique identifier for a matchmaking configuration(s) to retrieve. To
-request all existing configurations, leave this parameter empty.
+A unique identifier for a matchmaking configuration(s) to retrieve. You
+can use either the configuration name or ARN value. To request all
+existing configurations, leave this parameter empty.
 
 
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+action. To start at the beginning of the result set, do not specify a
+value.
 
 
 
 =head2 RuleSetName => Str
 
-Unique identifier for a matchmaking rule set. Use this parameter to
-retrieve all matchmaking configurations that use this rule set.
+A unique identifier for a matchmaking rule set. You can use either the
+rule set name or ARN value. Use this parameter to retrieve all
+matchmaking configurations that use this rule set.
 
 
 

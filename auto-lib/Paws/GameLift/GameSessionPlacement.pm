@@ -76,7 +76,27 @@ StopGameSessionPlacement
 
 =head2 DnsName => Str
 
-  
+  DNS identifier assigned to the instance that is running the game
+session. Values have the following format:
+
+=over
+
+=item *
+
+TLS-enabled fleets: C<E<lt>unique identifierE<gt>.E<lt>region
+identifierE<gt>.amazongamelift.com>.
+
+=item *
+
+Non-TLS-enabled fleets: C<ec2-E<lt>unique
+identifierE<gt>.compute.amazonaws.com>. (See Amazon EC2 Instance IP
+Addressing
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses).)
+
+=back
+
+When connecting to a game session that is running on a TLS-enabled
+fleet, you must use the DNS name, not the IP address.
 
 
 =head2 EndTime => Str
@@ -98,7 +118,7 @@ Start a Game Session
 
   Identifier for the game session created by this placement request. This
 value is set once the new game session is placed (placement status is
-C<FULFILLED>). This identifier is unique across all regions. You can
+C<FULFILLED>). This identifier is unique across all Regions. You can
 use this value as a C<GameSessionId> value as needed.
 
 
@@ -113,33 +133,34 @@ Session
 
 =head2 GameSessionId => Str
 
-  Unique identifier for the game session. This value is set once the new
-game session is placed (placement status is C<FULFILLED>).
+  A unique identifier for the game session. This value is set once the
+new game session is placed (placement status is C<FULFILLED>).
 
 
 =head2 GameSessionName => Str
 
-  Descriptive label that is associated with a game session. Session names
-do not need to be unique.
+  A descriptive label that is associated with a game session. Session
+names do not need to be unique.
 
 
 =head2 GameSessionQueueName => Str
 
-  Descriptive label that is associated with game session queue. Queue
-names must be unique within each region.
+  A descriptive label that is associated with game session queue. Queue
+names must be unique within each Region.
 
 
 =head2 GameSessionRegion => Str
 
-  Name of the region where the game session created by this placement
+  Name of the Region where the game session created by this placement
 request is running. This value is set once the new game session is
 placed (placement status is C<FULFILLED>).
 
 
 =head2 IpAddress => Str
 
-  IP address of the game session. To connect to a Amazon GameLift game
-server, an app needs both the IP address and port number. This value is
+  IP address of the instance that is running the game session. When
+connecting to a Amazon GameLift game server, a client needs to
+reference an IP address (or DNS name) and port number. This value is
 set once the new game session is placed (placement status is
 C<FULFILLED>).
 
@@ -156,30 +177,30 @@ assignments. For more details on matchmaker data, see Match Data
 
 =head2 MaximumPlayerSessionCount => Int
 
-  Maximum number of players that can be connected simultaneously to the
-game session.
+  The maximum number of players that can be connected simultaneously to
+the game session.
 
 
 =head2 PlacedPlayerSessions => ArrayRef[L<Paws::GameLift::PlacedPlayerSession>]
 
-  Collection of information on player sessions created in response to the
-game session placement request. These player sessions are created only
-once a new game session is successfully placed (placement status is
-C<FULFILLED>). This information includes the player ID (as provided in
-the placement request) and the corresponding player session ID.
+  A collection of information on player sessions created in response to
+the game session placement request. These player sessions are created
+only once a new game session is successfully placed (placement status
+is C<FULFILLED>). This information includes the player ID (as provided
+in the placement request) and the corresponding player session ID.
 Retrieve full player sessions by calling DescribePlayerSessions with
 the player session ID.
 
 
 =head2 PlacementId => Str
 
-  Unique identifier for a game session placement.
+  A unique identifier for a game session placement.
 
 
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
   Set of values, expressed in milliseconds, indicating the amount of
-latency that a player experiences when connected to AWS regions.
+latency that a player experiences when connected to AWS Regions.
 
 
 =head2 Port => Int
@@ -224,6 +245,12 @@ StopGameSessionPlacement.
 B<TIMED_OUT> -- A new game session was not successfully created before
 the time limit expired. You can resubmit the placement request as
 needed.
+
+=item *
+
+B<FAILED> -- GameLift is not able to complete the process of placing
+the game session. Common reasons are the game session terminated before
+the placement process was completed, or an unexpected internal error.
 
 =back
 

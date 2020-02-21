@@ -46,15 +46,16 @@ process configurations make up a fleet's C< RuntimeConfiguration >.
 
 =head2 B<REQUIRED> ConcurrentExecutions => Int
 
-  Number of server processes using this configuration to run concurrently
-on an instance.
+  The number of server processes that use this configuration to run
+concurrently on an instance.
 
 
 =head2 B<REQUIRED> LaunchPath => Str
 
-  Location of the server executable in a custom game build or the name of
-the Realtime script file that contains the C<Init()> function. Game
-builds and Realtime scripts are installed on instances at the root:
+  The location of the server executable in a custom game build or the
+name of the Realtime script file that contains the C<Init()> function.
+Game builds and Realtime scripts are installed on instances at the
+root:
 
 =over
 
@@ -74,7 +75,7 @@ Linux: C</local/game>. Examples: "C</local/game/MyGame/server.exe>" or
 
 =head2 Parameters => Str
 
-  Optional list of parameters to pass to the server executable or
+  An optional list of parameters to pass to the server executable or
 Realtime script on launch.
 
 

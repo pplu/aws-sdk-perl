@@ -59,63 +59,11 @@ DeleteFleet
 
 =item *
 
-Describe fleets:
-
-=over
-
-=item *
-
 DescribeFleetAttributes
 
 =item *
 
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
 UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
 
 =item *
 
@@ -157,12 +105,12 @@ a game session.
 
 =head2 MAXIMUM => Int
 
-  Maximum value allowed for the fleet's instance count.
+  The maximum value allowed for the fleet's instance count.
 
 
 =head2 MINIMUM => Int
 
-  Minimum value allowed for the fleet's instance count.
+  The minimum value allowed for the fleet's instance count.
 
 
 =head2 PENDING => Int

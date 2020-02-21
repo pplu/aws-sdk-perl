@@ -49,14 +49,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 FleetIds => ArrayRef[Str|Undef]
 
-Unique identifier for a fleet(s) to retrieve utilization data for. To
-request utilization data for all fleets, leave this parameter empty.
+A unique identifier for a fleet(s) to retrieve utilization data for.
+You can use either the fleet ID or ARN value.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages. This
 parameter is ignored when the request specifies one or a list of fleet
 IDs.

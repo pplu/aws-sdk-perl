@@ -4,6 +4,7 @@ package Paws::GameLift::CreateAlias;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RoutingStrategy => (is => 'ro', isa => 'Paws::GameLift::RoutingStrategy', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Type    => 'SIMPLE',        # values: SIMPLE, TERMINAL; OPTIONAL
       },
       Description => 'MyNonZeroAndMaxString',    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',                   # min: 1, max: 128
+          Value => 'MyTagValue',                 # max: 256
+
+        },
+        ...
+      ],                                         # OPTIONAL
     );
 
     # Results:
@@ -52,20 +61,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Description => Str
 
-Human-readable description of an alias.
+A human-readable description of the alias.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with an alias. Alias names do not
-need to be unique.
+A descriptive label that is associated with an alias. Alias names do
+not need to be unique.
 
 
 
 =head2 B<REQUIRED> RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
 
-Object that specifies the fleet and routing type to use for the alias.
+The routing configuration, including routing type and fleet target, for
+the alias.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::GameLift::Tag>]
+
+A list of labels to assign to the new alias resource. Tags are
+developer-defined key-value pairs. Tagging AWS resources are useful for
+resource management, access management and cost allocation. For more
+information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>. Once the resource is created, you can use
+TagResource, UntagResource, and ListTagsForResource to add, remove, and
+view tags. The maximum tag limit may be lower than stated. See the AWS
+General Reference for actual tagging limits.
 
 
 

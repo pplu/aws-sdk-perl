@@ -17,7 +17,8 @@ Paws::GameLift::DescribeInstancesOutput
 
 =head2 Instances => ArrayRef[L<Paws::GameLift::Instance>]
 
-Collection of objects containing properties for each instance returned.
+A collection of objects containing properties for each instance
+returned.
 
 
 =head2 NextToken => Str

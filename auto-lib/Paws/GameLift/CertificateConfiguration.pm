@@ -31,14 +31,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::C
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about the use of a TLS/SSL certificate for a fleet. TLS
+certificate generation is enabled at the fleet level, with one
+certificate generated for the fleet. When this feature is enabled, the
+certificate can be retrieved using the GameLift Server SDK
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html)
+call C<GetInstanceCertificate>. All instances in a fleet share the same
+certificate.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CertificateType => Str
 
-  
+  Indicates whether a TLS/SSL certificate was generated for a fleet.
 
 
 

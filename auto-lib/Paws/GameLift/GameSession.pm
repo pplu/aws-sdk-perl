@@ -4,6 +4,7 @@ package Paws::GameLift::GameSession;
   has CreatorId => (is => 'ro', isa => 'Str');
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
   has DnsName => (is => 'ro', isa => 'Str');
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionData => (is => 'ro', isa => 'Str');
@@ -117,7 +118,7 @@ number expressed in Unix time as milliseconds (for example
 
 =head2 CreatorId => Str
 
-  Unique identifier for a player. This ID is used to enforce a resource
+  A unique identifier for a player. This ID is used to enforce a resource
 protection policy (if one exists), that limits the number of game
 sessions a player can create.
 
@@ -129,12 +130,40 @@ sessions a player can create.
 
 =head2 DnsName => Str
 
-  
+  DNS identifier assigned to the instance that is running the game
+session. Values have the following format:
+
+=over
+
+=item *
+
+TLS-enabled fleets: C<E<lt>unique identifierE<gt>.E<lt>region
+identifierE<gt>.amazongamelift.com>.
+
+=item *
+
+Non-TLS-enabled fleets: C<ec2-E<lt>unique
+identifierE<gt>.compute.amazonaws.com>. (See Amazon EC2 Instance IP
+Addressing
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses).)
+
+=back
+
+When connecting to a game session that is running on a TLS-enabled
+fleet, you must use the DNS name, not the IP address.
+
+
+=head2 FleetArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift fleet that this game session is running
+on.
 
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet that the game session is running on.
+  A unique identifier for a fleet that the game session is running on.
 
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
@@ -159,7 +188,7 @@ Session
 
 =head2 GameSessionId => Str
 
-  Unique identifier for the game session. A game session ARN has the
+  A unique identifier for the game session. A game session ARN has the
 following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
 IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.
@@ -167,8 +196,9 @@ IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.
 
 =head2 IpAddress => Str
 
-  IP address of the game session. To connect to a Amazon GameLift game
-server, an app needs both the IP address and port number.
+  IP address of the instance that is running the game session. When
+connecting to a Amazon GameLift game server, a client needs to
+reference an IP address (or DNS name) and port number.
 
 
 =head2 MatchmakerData => Str
@@ -186,14 +216,14 @@ updated whenever new players are added during a successful backfill
 
 =head2 MaximumPlayerSessionCount => Int
 
-  Maximum number of players that can be connected simultaneously to the
-game session.
+  The maximum number of players that can be connected simultaneously to
+the game session.
 
 
 =head2 Name => Str
 
-  Descriptive label that is associated with a game session. Session names
-do not need to be unique.
+  A descriptive label that is associated with a game session. Session
+names do not need to be unique.
 
 
 =head2 PlayerSessionCreationPolicy => Str

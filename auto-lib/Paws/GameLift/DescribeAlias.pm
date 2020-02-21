@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> AliasId => Str
 
-Unique identifier for a fleet alias. Specify the alias you want to
-retrieve.
+The unique identifier for the fleet alias that you want to retrieve.
+You can use either the alias ID or ARN value.
 
 
 

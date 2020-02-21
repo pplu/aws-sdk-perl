@@ -46,9 +46,9 @@ debugging problems.
 
 =head2 EventCode => Str
 
-  Type of event being logged. The following events are currently in use:
+  The type of event being logged.
 
-B<Fleet creation events:>
+B<Fleet creation events (ordered by fleet creation activity):>
 
 =over
 
@@ -91,12 +91,12 @@ successfully. Access the logs by using the URL in I<PreSignedLogUrl>.
 
 FLEET_CREATION_VALIDATING_RUNTIME_CONFIG -- The build process was
 successful, and the Amazon GameLift is now verifying that the game
-server launch paths, which are specified in the fleet's run-time
+server launch paths, which are specified in the fleet's runtime
 configuration, exist. If any listed launch path exists, Amazon GameLift
 tries to launch a game server process and waits for the process to
 report ready. Failures in this stage prevent a fleet from moving to
 C<ACTIVE> status. Logs for this stage list the launch paths in the
-run-time configuration and indicate whether each is found. Access the
+runtime configuration and indicate whether each is found. Access the
 logs by using the URL in I<PreSignedLogUrl>.
 
 =item *
@@ -106,7 +106,7 @@ C<VALIDATING>.
 
 =item *
 
-FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND -- Validation of the run-time
+FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND -- Validation of the runtime
 configuration failed because the executable specified in a launch path
 does not exist on the instance.
 
@@ -118,7 +118,7 @@ C<BUILDING>.
 =item *
 
 FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE -- Validation of the
-run-time configuration failed because the executable specified in a
+runtime configuration failed because the executable specified in a
 launch path failed to run on the fleet instance.
 
 =item *
@@ -131,9 +131,9 @@ C<ACTIVATING>.
 FLEET_ACTIVATION_FAILED - The fleet failed to successfully complete one
 of the steps in the fleet activation process. This event code indicates
 that the game build was successfully downloaded to a fleet instance,
-built, and validated, but was not able to start a server process. A
-possible reason for failure is that the game server is not reporting
-"process ready" to the Amazon GameLift service.
+built, and validated, but was not able to start a server process. Learn
+more at Debug Fleet Creation Issues
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html#fleets-creating-debug-creation)
 
 =item *
 
@@ -212,7 +212,7 @@ GENERIC_EVENT -- An unspecified event has occurred.
 
 =head2 EventId => Str
 
-  Unique identifier for a fleet event.
+  A unique identifier for a fleet event.
 
 
 =head2 EventTime => Str
@@ -236,7 +236,7 @@ GameLift console.
 
 =head2 ResourceId => Str
 
-  Unique identifier for an event resource, such as a fleet ID.
+  A unique identifier for an event resource, such as a fleet ID.
 
 
 

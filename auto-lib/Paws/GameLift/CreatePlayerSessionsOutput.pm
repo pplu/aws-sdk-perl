@@ -16,7 +16,7 @@ Paws::GameLift::CreatePlayerSessionsOutput
 
 =head2 PlayerSessions => ArrayRef[L<Paws::GameLift::PlayerSession>]
 
-Collection of player session objects created for the added players.
+A collection of player session objects created for the added players.
 
 
 =head2 _request_id => Str

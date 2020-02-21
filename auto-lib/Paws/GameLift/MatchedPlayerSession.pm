@@ -46,12 +46,12 @@ player slot.
 
 =head2 PlayerId => Str
 
-  Unique identifier for a player
+  A unique identifier for a player
 
 
 =head2 PlayerSessionId => Str
 
-  Unique identifier for a player session
+  A unique identifier for a player session
 
 
 

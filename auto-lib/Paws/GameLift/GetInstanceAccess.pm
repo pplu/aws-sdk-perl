@@ -47,16 +47,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet that contains the instance you want
-access to. The fleet can be in any of the following statuses:
-C<ACTIVATING>, C<ACTIVE>, or C<ERROR>. Fleets with an C<ERROR> status
-may be accessible for a short time before they are deleted.
+A unique identifier for a fleet that contains the instance you want
+access to. You can use either the fleet ID or ARN value. The fleet can
+be in any of the following statuses: C<ACTIVATING>, C<ACTIVE>, or
+C<ERROR>. Fleets with an C<ERROR> status may be accessible for a short
+time before they are deleted.
 
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-Unique identifier for an instance you want to get access to. You can
+A unique identifier for an instance you want to get access to. You can
 access an instance in any status.
 
 

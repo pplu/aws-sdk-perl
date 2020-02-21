@@ -54,63 +54,11 @@ DeleteFleet
 
 =item *
 
-Describe fleets:
-
-=over
-
-=item *
-
 DescribeFleetAttributes
 
 =item *
 
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
 UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
 
 =item *
 
@@ -136,7 +84,7 @@ StopFleetActions
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet.
+  A unique identifier for a fleet.
 
 
 =head2 InstanceCounts => L<Paws::GameLift::EC2InstanceCounts>

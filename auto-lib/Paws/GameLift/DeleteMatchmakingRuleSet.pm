@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DeleteMatchmakingRuleSetOutput = $gamelift->DeleteMatchmakingRuleSet(
-      Name => 'MyMatchmakingIdStringModel',
+      Name => 'MyMatchmakingRuleSetName',
 
     );
 
@@ -40,9 +40,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-Unique identifier for a matchmaking rule set to be deleted. (Note: The
-rule set name is different from the optional "name" field in the rule
-set body.)
+A unique identifier for a matchmaking rule set to be deleted. (Note:
+The rule set name is different from the optional "name" field in the
+rule set body.) You can use either the rule set name or ARN value.
 
 
 

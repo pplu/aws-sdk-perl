@@ -17,14 +17,14 @@ Paws::GameLift::DescribeMatchmakingRuleSetsOutput
 
 =head2 NextToken => Str
 
-Token that indicates where to resume retrieving results on the next
+A token that indicates where to resume retrieving results on the next
 call to this action. If no token is returned, these results represent
 the end of the list.
 
 
 =head2 B<REQUIRED> RuleSets => ArrayRef[L<Paws::GameLift::MatchmakingRuleSet>]
 
-Collection of requested matchmaking rule set objects.
+A collection of requested matchmaking rule set objects.
 
 
 =head2 _request_id => Str

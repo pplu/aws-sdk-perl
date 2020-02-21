@@ -17,7 +17,7 @@ Paws::GameLift::DescribeFleetCapacityOutput
 
 =head2 FleetCapacity => ArrayRef[L<Paws::GameLift::FleetCapacity>]
 
-Collection of objects containing capacity information for each
+A collection of objects containing capacity information for each
 requested fleet ID. Leave this parameter empty to retrieve capacity
 information for all fleets.
 

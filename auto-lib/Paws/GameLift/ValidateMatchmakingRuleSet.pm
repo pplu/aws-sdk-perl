@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> RuleSetBody => Str
 
-Collection of matchmaking rules to validate, formatted as a JSON
+A collection of matchmaking rules to validate, formatted as a JSON
 string.
 
 

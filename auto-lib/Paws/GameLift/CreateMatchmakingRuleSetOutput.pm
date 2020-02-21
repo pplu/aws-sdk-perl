@@ -16,7 +16,7 @@ Paws::GameLift::CreateMatchmakingRuleSetOutput
 
 =head2 B<REQUIRED> RuleSet => L<Paws::GameLift::MatchmakingRuleSet>
 
-Object that describes the newly created matchmaking rule set.
+The newly created matchmaking rule set.
 
 
 =head2 _request_id => Str

@@ -3,6 +3,7 @@ package Paws::GameLift::CreateMatchmakingRuleSet;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RuleSetBody => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateMatchmakingRuleSetOutput = $gamelift->CreateMatchmakingRuleSet(
       Name        => 'MyMatchmakingIdStringModel',
       RuleSetBody => 'MyRuleSetBody',
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -47,17 +55,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-Unique identifier for a matchmaking rule set. A matchmaking
-configuration identifies the rule set it uses by this name value.
-(Note: The rule set name is different from the optional "name" field in
-the rule set body.)
+A unique identifier for a matchmaking rule set. A matchmaking
+configuration identifies the rule set it uses by this name value. Note
+that the rule set name is different from the optional C<name> field in
+the rule set body.
 
 
 
 =head2 B<REQUIRED> RuleSetBody => Str
 
-Collection of matchmaking rules, formatted as a JSON string. Comments
+A collection of matchmaking rules, formatted as a JSON string. Comments
 are not allowed in JSON, but most elements support a description field.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::GameLift::Tag>]
+
+A list of labels to assign to the new matchmaking rule set resource.
+Tags are developer-defined key-value pairs. Tagging AWS resources are
+useful for resource management, access management and cost allocation.
+For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>. Once the resource is created, you can use
+TagResource, UntagResource, and ListTagsForResource to add, remove, and
+view tags. The maximum tag limit may be lower than stated. See the AWS
+General Reference for actual tagging limits.
 
 
 

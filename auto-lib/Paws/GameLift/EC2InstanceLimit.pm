@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::E
 
 =head1 DESCRIPTION
 
-Maximum number of instances allowed based on the Amazon Elastic Compute
-Cloud (Amazon EC2) instance type. Instance limits can be retrieved by
-calling DescribeEC2InstanceLimits.
+The maximum number of instances allowed based on the Amazon Elastic
+Compute Cloud (Amazon EC2) instance type. Instance limits can be
+retrieved by calling DescribeEC2InstanceLimits.
 
 =head1 ATTRIBUTES
 

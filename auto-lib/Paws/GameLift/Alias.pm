@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::A
 
 =head1 DESCRIPTION
 
-Properties describing a fleet alias.
+Properties that describe an alias resource.
 
 =over
 
@@ -73,43 +73,46 @@ ResolveAlias
 
 =head2 AliasArn => Str
 
-  Unique identifier for an alias; alias ARNs are unique across all
-regions.
+  Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+that is assigned to a GameLift alias resource and uniquely identifies
+it. ARNs are unique across all Regions.. In a GameLift alias ARN, the
+resource ID matches the alias ID value.
 
 
 =head2 AliasId => Str
 
-  Unique identifier for an alias; alias IDs are unique within a region.
+  A unique identifier for an alias. Alias IDs are unique within a Region.
 
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this data object was created. Format is a
+  A time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
 "1469498468.057").
 
 
 =head2 Description => Str
 
-  Human-readable description of an alias.
+  A human-readable description of an alias.
 
 
 =head2 LastUpdatedTime => Str
 
-  Time stamp indicating when this data object was last modified. Format
-is a number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+  The time that this data object was last modified. Format is a number
+expressed in Unix time as milliseconds (for example "1469498468.057").
 
 
 =head2 Name => Str
 
-  Descriptive label that is associated with an alias. Alias names do not
-need to be unique.
+  A descriptive label that is associated with an alias. Alias names do
+not need to be unique.
 
 
 =head2 RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
 
-  Alias configuration for the alias, including routing type and settings.
+  The routing configuration, including routing type and fleet target, for
+the alias.
 
 
 

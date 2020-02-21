@@ -16,7 +16,7 @@ Paws::GameLift::ValidateMatchmakingRuleSetOutput
 
 =head2 Valid => Bool
 
-Response indicating whether the rule set is valid.
+A response indicating whether the rule set is valid.
 
 
 =head2 _request_id => Str

@@ -1,5 +1,6 @@
 package Paws::GameLift::Build;
   use Moose;
+  has BuildArn => (is => 'ro', isa => 'Str');
   has BuildId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -26,14 +27,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::Build object:
 
-  $service_obj->Method(Att1 => { BuildId => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { BuildArn => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::Build object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BuildId
+  $result->Att1->BuildArn
 
 =head1 DESCRIPTION
 
@@ -69,9 +70,18 @@ DeleteBuild
 =head1 ATTRIBUTES
 
 
+=head2 BuildArn => Str
+
+  Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+that is assigned to a GameLift build resource and uniquely identifies
+it. ARNs are unique across all Regions. In a GameLift build ARN, the
+resource ID matches the I<BuildId> value.
+
+
 =head2 BuildId => Str
 
-  Unique identifier for a build.
+  A unique identifier for a build.
 
 
 =head2 CreationTime => Str
@@ -83,7 +93,7 @@ number expressed in Unix time as milliseconds (for example
 
 =head2 Name => Str
 
-  Descriptive label that is associated with a build. Build names do not
+  A descriptive label that is associated with a build. Build names do not
 need to be unique. It can be set using CreateBuild or UpdateBuild.
 
 
@@ -131,9 +141,9 @@ for this build.
 
 =head2 Version => Str
 
-  Version that is associated with a build or script. Version strings do
-not need to be unique. This value can be set using CreateBuild or
-UpdateBuild.
+  Version information that is associated with a build or script. Version
+strings do not need to be unique. This value can be set using
+CreateBuild or UpdateBuild.
 
 
 

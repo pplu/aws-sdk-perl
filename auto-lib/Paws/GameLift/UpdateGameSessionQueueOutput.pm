@@ -16,7 +16,7 @@ Paws::GameLift::UpdateGameSessionQueueOutput
 
 =head2 GameSessionQueue => L<Paws::GameLift::GameSessionQueue>
 
-Object that describes the newly updated game session queue.
+An object that describes the newly updated game session queue.
 
 
 =head2 _request_id => Str

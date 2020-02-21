@@ -54,63 +54,11 @@ DeleteFleet
 
 =item *
 
-Describe fleets:
-
-=over
-
-=item *
-
 DescribeFleetAttributes
 
 =item *
 
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
 UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
 
 =item *
 
@@ -154,13 +102,13 @@ instances in the fleet.
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet.
+  A unique identifier for a fleet.
 
 
 =head2 MaximumPlayerSessionCount => Int
 
-  Maximum players allowed across all game sessions currently being hosted
-on all instances in the fleet.
+  The maximum number of players allowed across all game sessions
+currently being hosted on all instances in the fleet.
 
 
 

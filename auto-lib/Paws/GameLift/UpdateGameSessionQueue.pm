@@ -61,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]
 
-List of fleets that can be used to fulfill game session placement
+A list of fleets that can be used to fulfill game session placement
 requests in the queue. Fleets are identified by either a fleet ARN or a
 fleet alias ARN. Destinations are listed in default preference order.
 When updating this list, provide a complete list of destinations.
@@ -70,18 +70,19 @@ When updating this list, provide a complete list of destinations.
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with game session queue. Queue
-names must be unique within each region.
+A descriptive label that is associated with game session queue. Queue
+names must be unique within each Region. You can use either the queue
+ID or ARN value.
 
 
 
 =head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
 
-Collection of latency policies to apply when processing game sessions
+A collection of latency policies to apply when processing game sessions
 placement requests with player latency information. Multiple policies
 are evaluated in order of the maximum latency value, starting with the
-lowest latency values. With just one policy, it is enforced at the
-start of the game session placement for the duration period. With
+lowest latency values. With just one policy, the policy is enforced at
+the start of the game session placement for the duration period. With
 multiple policies, each policy is enforced consecutively for its
 duration period. For example, a queue might enforce a 60-second policy
 followed by a 120-second policy, and then no policy for the remainder
@@ -92,7 +93,7 @@ of policies.
 
 =head2 TimeoutInSeconds => Int
 
-Maximum time, in seconds, that a new game session placement request
+The maximum time, in seconds, that a new game session placement request
 remains in the queue. When a request exceeds this time, the game
 session placement changes to a C<TIMED_OUT> status.
 

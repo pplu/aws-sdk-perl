@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeGameSessionQueuesOutput = $gamelift->DescribeGameSessionQueues(
       Limit => 1,    # OPTIONAL
       Names => [
-        'MyGameSessionQueueName', ...    # min: 1, max: 128
+        'MyGameSessionQueueName', ...    # min: 1, max: 256
       ],                                 # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
@@ -51,23 +51,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 
 
 =head2 Names => ArrayRef[Str|Undef]
 
-List of queue names to retrieve information for. To request settings
-for all queues, leave this parameter empty.
+A list of queue names to retrieve information for. You can use either
+the queue ID or ARN value. To request settings for all queues, leave
+this parameter empty.
 
 
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+action. To start at the beginning of the result set, do not specify a
+value.
 
 
 

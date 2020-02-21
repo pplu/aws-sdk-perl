@@ -36,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::P
 Regional latency information for a player, used when requesting a new
 game session with StartGameSessionPlacement. This value indicates the
 amount of time lag that exists when the player is connected to a fleet
-in the specified region. The relative difference between a player's
-latency values for multiple regions are used to determine which fleets
+in the specified Region. The relative difference between a player's
+latency values for multiple Regions are used to determine which fleets
 are best suited to place a new game session for the player.
 
 =head1 ATTRIBUTES
@@ -46,17 +46,17 @@ are best suited to place a new game session for the player.
 =head2 LatencyInMilliseconds => Num
 
   Amount of time that represents the time lag experienced by the player
-when connected to the specified region.
+when connected to the specified Region.
 
 
 =head2 PlayerId => Str
 
-  Unique identifier for a player associated with the latency data.
+  A unique identifier for a player associated with the latency data.
 
 
 =head2 RegionIdentifier => Str
 
-  Name of the region that is associated with the latency value.
+  Name of the Region that is associated with the latency value.
 
 
 

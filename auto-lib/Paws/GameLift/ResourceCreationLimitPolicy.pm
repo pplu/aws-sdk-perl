@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::R
 
 =head1 DESCRIPTION
 
-Policy that limits the number of game sessions a player can create on
+A policy that limits the number of game sessions a player can create on
 the same fleet. This optional policy gives game owners control over how
 players can consume available game server resources. A resource
 creation policy makes the following statement: "An individual player
@@ -40,23 +40,24 @@ can create a maximum number of new game sessions within a specified
 time period".
 
 The policy is evaluated when a player tries to create a new game
-session. For example, with a policy of 10 new game sessions and a time
-period of 60 minutes, on receiving a C<CreateGameSession> request,
-Amazon GameLift checks that the player (identified by C<CreatorId>) has
-created fewer than 10 game sessions in the past 60 minutes.
+session. For example: Assume you have a policy of 10 new game sessions
+and a time period of 60 minutes. On receiving a C<CreateGameSession>
+request, Amazon GameLift checks that the player (identified by
+C<CreatorId>) has created fewer than 10 game sessions in the past 60
+minutes.
 
 =head1 ATTRIBUTES
 
 
 =head2 NewGameSessionsPerCreator => Int
 
-  Maximum number of game sessions that an individual can create during
-the policy period.
+  The maximum number of game sessions that an individual can create
+during the policy period.
 
 
 =head2 PolicyPeriodInMinutes => Int
 
-  Time span used in evaluating the resource creation limit policy.
+  The time span used in evaluating the resource creation limit policy.
 
 
 

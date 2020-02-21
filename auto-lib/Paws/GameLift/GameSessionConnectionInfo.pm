@@ -48,25 +48,46 @@ DescribeMatchmaking.
 
 =head2 DnsName => Str
 
-  
+  DNS identifier assigned to the instance that is running the game
+session. Values have the following format:
+
+=over
+
+=item *
+
+TLS-enabled fleets: C<E<lt>unique identifierE<gt>.E<lt>region
+identifierE<gt>.amazongamelift.com>.
+
+=item *
+
+Non-TLS-enabled fleets: C<ec2-E<lt>unique
+identifierE<gt>.compute.amazonaws.com>. (See Amazon EC2 Instance IP
+Addressing
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses).)
+
+=back
+
+When connecting to a game session that is running on a TLS-enabled
+fleet, you must use the DNS name, not the IP address.
 
 
 =head2 GameSessionArn => Str
 
   Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
 that is assigned to a game session and uniquely identifies it.
 
 
 =head2 IpAddress => Str
 
-  IP address of the game session. To connect to a Amazon GameLift game
-server, an app needs both the IP address and port number.
+  IP address of the instance that is running the game session. When
+connecting to a Amazon GameLift game server, a client needs to
+reference an IP address (or DNS name) and port number.
 
 
 =head2 MatchedPlayerSessions => ArrayRef[L<Paws::GameLift::MatchedPlayerSession>]
 
-  Collection of player session IDs, one for each player ID that was
+  A collection of player session IDs, one for each player ID that was
 included in the original matchmaking request.
 
 

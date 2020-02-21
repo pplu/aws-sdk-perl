@@ -55,13 +55,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 GameSessionId => Str
 
-Unique identifier for the game session to retrieve player sessions for.
+A unique identifier for the game session to retrieve player sessions
+for.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages. If a player
 session ID is specified, this parameter is ignored.
 
@@ -78,13 +79,13 @@ player session ID is specified, this parameter is ignored.
 
 =head2 PlayerId => Str
 
-Unique identifier for a player to retrieve player sessions for.
+A unique identifier for a player to retrieve player sessions for.
 
 
 
 =head2 PlayerSessionId => Str
 
-Unique identifier for a player session to retrieve.
+A unique identifier for a player session to retrieve.
 
 
 

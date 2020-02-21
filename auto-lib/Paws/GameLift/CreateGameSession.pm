@@ -67,15 +67,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AliasId => Str
 
-Unique identifier for an alias associated with the fleet to create a
-game session in. Each request must reference either a fleet ID or alias
-ID, but not both.
+A unique identifier for an alias associated with the fleet to create a
+game session in. You can use either the alias ID or ARN value. Each
+request must reference either a fleet ID or alias ID, but not both.
 
 
 
 =head2 CreatorId => Str
 
-Unique identifier for a player or entity creating the game session.
+A unique identifier for a player or entity creating the game session.
 This ID is used to enforce a resource protection policy (if one exists)
 that limits the number of concurrent active game sessions one player
 can have.
@@ -84,8 +84,9 @@ can have.
 
 =head2 FleetId => Str
 
-Unique identifier for a fleet to create a game session in. Each request
-must reference either a fleet ID or alias ID, but not both.
+A unique identifier for a fleet to create a game session in. You can
+use either the fleet ID or ARN value. Each request must reference
+either a fleet ID or alias ID, but not both.
 
 
 
@@ -136,15 +137,15 @@ session objects are retained for this time period and then deleted.
 
 =head2 B<REQUIRED> MaximumPlayerSessionCount => Int
 
-Maximum number of players that can be connected simultaneously to the
-game session.
+The maximum number of players that can be connected simultaneously to
+the game session.
 
 
 
 =head2 Name => Str
 
-Descriptive label that is associated with a game session. Session names
-do not need to be unique.
+A descriptive label that is associated with a game session. Session
+names do not need to be unique.
 
 
 

@@ -47,7 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to get the run-time configuration for.
+A unique identifier for a fleet to get the runtime configuration for.
+You can use either the fleet ID or ARN value.
 
 
 

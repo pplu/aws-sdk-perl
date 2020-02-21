@@ -1,5 +1,6 @@
 package Paws::GameLift::VpcPeeringConnection;
   use Moose;
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameLiftVpcId => (is => 'ro', isa => 'Str');
   has IpV4CidrBlock => (is => 'ro', isa => 'Str');
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::VpcPeeringConnection object:
 
-  $service_obj->Method(Att1 => { FleetId => $value, ..., VpcPeeringConnectionId => $value  });
+  $service_obj->Method(Att1 => { FleetArn => $value, ..., VpcPeeringConnectionId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::VpcPeeringConnection object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->FleetId
+  $result->Att1->FleetArn
 
 =head1 DESCRIPTION
 
@@ -73,15 +74,22 @@ DeleteVpcPeeringConnection
 =head1 ATTRIBUTES
 
 
+=head2 FleetArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift fleet resource for this connection.
+
+
 =head2 FleetId => Str
 
-  Unique identifier for a fleet. This ID determines the ID of the Amazon
-GameLift VPC for your fleet.
+  A unique identifier for a fleet. This ID determines the ID of the
+Amazon GameLift VPC for your fleet.
 
 
 =head2 GameLiftVpcId => Str
 
-  Unique identifier for the VPC that contains the Amazon GameLift fleet
+  A unique identifier for the VPC that contains the Amazon GameLift fleet
 for this connection. This VPC is managed by Amazon GameLift and does
 not appear in your AWS account.
 
@@ -96,8 +104,8 @@ be created.
 
 =head2 PeerVpcId => Str
 
-  Unique identifier for a VPC with resources to be accessed by your
-Amazon GameLift fleet. The VPC must be in the same region where your
+  A unique identifier for a VPC with resources to be accessed by your
+Amazon GameLift fleet. The VPC must be in the same Region where your
 fleet is deployed. Look up a VPC ID using the VPC Dashboard
 (https://console.aws.amazon.com/vpc/) in the AWS Management Console.
 Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
@@ -106,13 +114,13 @@ Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
 
 =head2 Status => L<Paws::GameLift::VpcPeeringConnectionStatus>
 
-  Object that contains status information about the connection. Status
-indicates if a connection is pending, successful, or failed.
+  The status information about the connection. Status indicates if a
+connection is pending, successful, or failed.
 
 
 =head2 VpcPeeringConnectionId => Str
 
-  Unique identifier that is automatically assigned to the connection
+  A unique identifier that is automatically assigned to the connection
 record. This ID is referenced in VPC peering connection events, and is
 used when deleting a connection with DeleteVpcPeeringConnection.
 

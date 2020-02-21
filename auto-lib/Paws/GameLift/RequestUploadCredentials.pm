@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> BuildId => Str
 
-Unique identifier for a build to get credentials for.
+A unique identifier for a build to get credentials for. You can use
+either the build ID or ARN value.
 
 
 

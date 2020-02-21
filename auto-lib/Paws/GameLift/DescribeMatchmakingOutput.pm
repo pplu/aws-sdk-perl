@@ -16,7 +16,8 @@ Paws::GameLift::DescribeMatchmakingOutput
 
 =head2 TicketList => ArrayRef[L<Paws::GameLift::MatchmakingTicket>]
 
-Collection of existing matchmaking ticket objects matching the request.
+A collection of existing matchmaking ticket objects matching the
+request.
 
 
 =head2 _request_id => Str

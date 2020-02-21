@@ -16,7 +16,7 @@ Paws::GameLift::DescribeVpcPeeringConnectionsOutput
 
 =head2 VpcPeeringConnections => ArrayRef[L<Paws::GameLift::VpcPeeringConnection>]
 
-Collection of VPC peering connection records that match the request.
+A collection of VPC peering connection records that match the request.
 
 
 =head2 _request_id => Str

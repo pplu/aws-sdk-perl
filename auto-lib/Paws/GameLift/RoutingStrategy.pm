@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::R
 
 =head1 DESCRIPTION
 
-Routing configuration for a fleet alias.
+The routing configuration for a fleet alias.
 
 =over
 
@@ -69,17 +69,18 @@ ResolveAlias
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet that the alias points to.
+  The unique identifier for a fleet that the alias points to. This value
+is the fleet ID, not the fleet ARN.
 
 
 =head2 Message => Str
 
-  Message text to be used with a terminal routing strategy.
+  The message text to be used with a terminal routing strategy.
 
 
 =head2 Type => Str
 
-  Type of routing strategy.
+  The type of routing strategy for the alias.
 
 Possible routing types include the following:
 
@@ -87,12 +88,12 @@ Possible routing types include the following:
 
 =item *
 
-B<SIMPLE> -- The alias resolves to one specific fleet. Use this type
+B<SIMPLE> - The alias resolves to one specific fleet. Use this type
 when routing to active fleets.
 
 =item *
 
-B<TERMINAL> -- The alias does not resolve to a fleet but instead can be
+B<TERMINAL> - The alias does not resolve to a fleet but instead can be
 used to display a message to the user. A terminal alias throws a
 TerminalRoutingStrategyException with the RoutingStrategy message
 embedded.

@@ -17,8 +17,8 @@ Paws::GameLift::DescribeFleetAttributesOutput
 
 =head2 FleetAttributes => ArrayRef[L<Paws::GameLift::FleetAttributes>]
 
-Collection of objects containing attribute metadata for each requested
-fleet ID.
+A collection of objects containing attribute metadata for each
+requested fleet ID.
 
 
 =head2 NextToken => Str

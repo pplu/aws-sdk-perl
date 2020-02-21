@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> GameSessionId => Str
 
-Unique identifier for the game session to add a player to.
+A unique identifier for the game session to add a player to.
 
 
 
@@ -62,7 +62,7 @@ game.
 
 =head2 B<REQUIRED> PlayerId => Str
 
-Unique identifier for a player. Player IDs are developer-defined.
+A unique identifier for a player. Player IDs are developer-defined.
 
 
 

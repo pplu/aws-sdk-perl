@@ -16,7 +16,7 @@ Paws::GameLift::CreateAliasOutput
 
 =head2 Alias => L<Paws::GameLift::Alias>
 
-Object that describes the newly created alias record.
+The newly created alias resource.
 
 
 =head2 _request_id => Str

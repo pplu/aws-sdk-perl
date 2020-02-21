@@ -114,7 +114,7 @@ threshold before a scaling event is triggered.
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet that is associated with this scaling
+  A unique identifier for a fleet that is associated with this scaling
 policy.
 
 
@@ -190,17 +190,17 @@ destination.
 
 =head2 Name => Str
 
-  Descriptive label that is associated with a scaling policy. Policy
+  A descriptive label that is associated with a scaling policy. Policy
 names do not need to be unique.
 
 
 =head2 PolicyType => Str
 
-  Type of scaling policy to create. For a target-based policy, set the
-parameter I<MetricName> to 'PercentAvailableGameSessions' and specify a
-I<TargetConfiguration>. For a rule-based policy set the following
-parameters: I<MetricName>, I<ComparisonOperator>, I<Threshold>,
-I<EvaluationPeriods>, I<ScalingAdjustmentType>, and
+  The type of scaling policy to create. For a target-based policy, set
+the parameter I<MetricName> to 'PercentAvailableGameSessions' and
+specify a I<TargetConfiguration>. For a rule-based policy set the
+following parameters: I<MetricName>, I<ComparisonOperator>,
+I<Threshold>, I<EvaluationPeriods>, I<ScalingAdjustmentType>, and
 I<ScalingAdjustment>.
 
 
@@ -211,7 +211,7 @@ I<ScalingAdjustment>.
 
 =head2 ScalingAdjustmentType => Str
 
-  Type of adjustment to make to a fleet's instance count (see
+  The type of adjustment to make to a fleet's instance count (see
 FleetCapacity):
 
 =over
@@ -284,7 +284,7 @@ removed and recreated.
 
 =head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
 
-  Object that contains settings for a target-based scaling policy.
+  The settings for a target-based scaling policy.
 
 
 =head2 Threshold => Num

@@ -2,6 +2,7 @@ package Paws::GameLift::PlayerSession;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
   has DnsName => (is => 'ro', isa => 'Str');
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
@@ -103,25 +104,54 @@ number expressed in Unix time as milliseconds (for example
 
 =head2 DnsName => Str
 
-  
+  DNS identifier assigned to the instance that is running the game
+session. Values have the following format:
+
+=over
+
+=item *
+
+TLS-enabled fleets: C<E<lt>unique identifierE<gt>.E<lt>region
+identifierE<gt>.amazongamelift.com>.
+
+=item *
+
+Non-TLS-enabled fleets: C<ec2-E<lt>unique
+identifierE<gt>.compute.amazonaws.com>. (See Amazon EC2 Instance IP
+Addressing
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses).)
+
+=back
+
+When connecting to a game session that is running on a TLS-enabled
+fleet, you must use the DNS name, not the IP address.
+
+
+=head2 FleetArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift fleet that the player's game session is
+running on.
 
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet that the player's game session is running
-on.
+  A unique identifier for a fleet that the player's game session is
+running on.
 
 
 =head2 GameSessionId => Str
 
-  Unique identifier for the game session that the player session is
+  A unique identifier for the game session that the player session is
 connected to.
 
 
 =head2 IpAddress => Str
 
-  IP address of the game session. To connect to a Amazon GameLift game
-server, an app needs both the IP address and port number.
+  IP address of the instance that is running the game session. When
+connecting to a Amazon GameLift game server, a client needs to
+reference an IP address (or DNS name) and port number.
 
 
 =head2 PlayerData => Str
@@ -133,13 +163,13 @@ game.
 
 =head2 PlayerId => Str
 
-  Unique identifier for a player that is associated with this player
+  A unique identifier for a player that is associated with this player
 session.
 
 
 =head2 PlayerSessionId => Str
 
-  Unique identifier for a player session.
+  A unique identifier for a player session.
 
 
 =head2 Port => Int

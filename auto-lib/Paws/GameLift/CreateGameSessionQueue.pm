@@ -4,6 +4,7 @@ package Paws::GameLift::CreateGameSessionQueue;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameSessionQueueDestination]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has PlayerLatencyPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatencyPolicy]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Tag]');
   has TimeoutInSeconds => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -45,6 +46,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                      # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                                # min: 1, max: 128
+          Value => 'MyTagValue',                              # max: 256
+
+        },
+        ...
+      ],                                                      # OPTIONAL
       TimeoutInSeconds => 1,                                  # OPTIONAL
     );
 
@@ -61,7 +70,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]
 
-List of fleets that can be used to fulfill game session placement
+A list of fleets that can be used to fulfill game session placement
 requests in the queue. Fleets are identified by either a fleet ARN or a
 fleet alias ARN. Destinations are listed in default preference order.
 
@@ -69,30 +78,44 @@ fleet alias ARN. Destinations are listed in default preference order.
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with game session queue. Queue
-names must be unique within each region.
+A descriptive label that is associated with game session queue. Queue
+names must be unique within each Region.
 
 
 
 =head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
 
-Collection of latency policies to apply when processing game sessions
+A collection of latency policies to apply when processing game sessions
 placement requests with player latency information. Multiple policies
 are evaluated in order of the maximum latency value, starting with the
-lowest latency values. With just one policy, it is enforced at the
-start of the game session placement for the duration period. With
+lowest latency values. With just one policy, the policy is enforced at
+the start of the game session placement for the duration period. With
 multiple policies, each policy is enforced consecutively for its
 duration period. For example, a queue might enforce a 60-second policy
 followed by a 120-second policy, and then no policy for the remainder
 of the placement. A player latency policy must set a value for
-MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API
-requests will fail.
+C<MaximumIndividualPlayerLatencyMilliseconds>. If none is set, this API
+request fails.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::GameLift::Tag>]
+
+A list of labels to assign to the new game session queue resource. Tags
+are developer-defined key-value pairs. Tagging AWS resources are useful
+for resource management, access management and cost allocation. For
+more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>. Once the resource is created, you can use
+TagResource, UntagResource, and ListTagsForResource to add, remove, and
+view tags. The maximum tag limit may be lower than stated. See the AWS
+General Reference for actual tagging limits.
 
 
 
 =head2 TimeoutInSeconds => Int
 
-Maximum time, in seconds, that a new game session placement request
+The maximum time, in seconds, that a new game session placement request
 remains in the queue. When a request exceeds this time, the game
 session placement changes to a C<TIMED_OUT> status.
 

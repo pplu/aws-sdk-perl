@@ -54,22 +54,42 @@ number expressed in Unix time as milliseconds (for example
 
 =head2 DnsName => Str
 
-  
+  DNS identifier assigned to the instance that is running the game
+session. Values have the following format:
+
+=over
+
+=item *
+
+TLS-enabled fleets: C<E<lt>unique identifierE<gt>.E<lt>region
+identifierE<gt>.amazongamelift.com>.
+
+=item *
+
+Non-TLS-enabled fleets: C<ec2-E<lt>unique
+identifierE<gt>.compute.amazonaws.com>. (See Amazon EC2 Instance IP
+Addressing
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses).)
+
+=back
+
+When connecting to a game session that is running on a TLS-enabled
+fleet, you must use the DNS name, not the IP address.
 
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet that the instance is in.
+  A unique identifier for a fleet that the instance is in.
 
 
 =head2 InstanceId => Str
 
-  Unique identifier for an instance.
+  A unique identifier for an instance.
 
 
 =head2 IpAddress => Str
 
-  IP address assigned to the instance.
+  IP address that is assigned to the instance.
 
 
 =head2 OperatingSystem => Str

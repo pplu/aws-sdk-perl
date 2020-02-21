@@ -1,5 +1,6 @@
 package Paws::GameLift::MatchmakingTicket;
   use Moose;
+  has ConfigurationArn => (is => 'ro', isa => 'Str');
   has ConfigurationName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has EstimatedWaitTime => (is => 'ro', isa => 'Int');
@@ -29,14 +30,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::MatchmakingTicket object:
 
-  $service_obj->Method(Att1 => { ConfigurationName => $value, ..., TicketId => $value  });
+  $service_obj->Method(Att1 => { ConfigurationArn => $value, ..., TicketId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::MatchmakingTicket object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ConfigurationName
+  $result->Att1->ConfigurationArn
 
 =head1 DESCRIPTION
 
@@ -47,6 +48,14 @@ Tickets can be retrieved by calling DescribeMatchmaking with the ticket
 ID.
 
 =head1 ATTRIBUTES
+
+
+=head2 ConfigurationArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift matchmaking configuration resource that is
+used with this ticket.
 
 
 =head2 ConfigurationName => Str
@@ -162,7 +171,7 @@ proposed match fails to receive player acceptances.
 
 =head2 TicketId => Str
 
-  Unique identifier for a matchmaking ticket.
+  A unique identifier for a matchmaking ticket.
 
 
 

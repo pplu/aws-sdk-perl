@@ -1,5 +1,6 @@
 package Paws::GameLift::FleetAttributes;
   use Moose;
+  has BuildArn => (is => 'ro', isa => 'Str');
   has BuildId => (is => 'ro', isa => 'Str');
   has CertificateConfiguration => (is => 'ro', isa => 'Paws::GameLift::CertificateConfiguration');
   has CreationTime => (is => 'ro', isa => 'Str');
@@ -15,6 +16,7 @@ package Paws::GameLift::FleetAttributes;
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
+  has ScriptArn => (is => 'ro', isa => 'Str');
   has ScriptId => (is => 'ro', isa => 'Str');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
@@ -40,14 +42,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::FleetAttributes object:
 
-  $service_obj->Method(Att1 => { BuildId => $value, ..., TerminationTime => $value  });
+  $service_obj->Method(Att1 => { BuildArn => $value, ..., TerminationTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::FleetAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BuildId
+  $result->Att1->BuildArn
 
 =head1 DESCRIPTION
 
@@ -69,63 +71,11 @@ DeleteFleet
 
 =item *
 
-Describe fleets:
-
-=over
-
-=item *
-
 DescribeFleetAttributes
 
 =item *
 
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
 UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
 
 =item *
 
@@ -149,14 +99,23 @@ StopFleetActions
 =head1 ATTRIBUTES
 
 
+=head2 BuildArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift build resource that is deployed on
+instances in this fleet. In a GameLift build ARN, the resource ID
+matches the I<BuildId> value.
+
+
 =head2 BuildId => Str
 
-  Unique identifier for a build.
+  A unique identifier for a build.
 
 
 =head2 CertificateConfiguration => L<Paws::GameLift::CertificateConfiguration>
 
-  
+  Indicates whether a TLS/SSL certificate was generated for the fleet.
 
 
 =head2 CreationTime => Str
@@ -173,12 +132,16 @@ number expressed in Unix time as milliseconds (for example
 
 =head2 FleetArn => Str
 
-  Identifier for a fleet that is unique across all regions.
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+that is assigned to a GameLift fleet resource and uniquely identifies
+it. ARNs are unique across all Regions. In a GameLift fleet ARN, the
+resource ID matches the I<FleetId> value.
 
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet.
+  A unique identifier for a fleet.
 
 
 =head2 FleetType => Str
@@ -189,11 +152,11 @@ instance in use may be interrupted with a two-minute notification.
 
 =head2 InstanceRoleArn => Str
 
-  Unique identifier for an AWS IAM role that manages access to your AWS
+  A unique identifier for an AWS IAM role that manages access to your AWS
 services. With an instance role ARN set, any application that runs on
 an instance in this fleet can assume the role, including install
-scripts, server processes, daemons (background processes). Create a
-role or look up a role's ARN using the IAM dashboard
+scripts, server processes, and daemons (background processes). Create a
+role or look up a role's ARN from the IAM dashboard
 (https://console.aws.amazon.com/iam/) in the AWS Management Console.
 Learn more about using on-box credentials for your game servers at
 Access external resources from a game server
@@ -231,14 +194,14 @@ included in only one metric group at a time.
 
 =head2 Name => Str
 
-  Descriptive label that is associated with a fleet. Fleet names do not
+  A descriptive label that is associated with a fleet. Fleet names do not
 need to be unique.
 
 
 =head2 NewGameSessionProtectionPolicy => Str
 
-  Type of game session protection to set for all new instances started in
-the fleet.
+  The type of game session protection to set for all new instances
+started in the fleet.
 
 =over
 
@@ -269,9 +232,18 @@ deployed on this fleet.
 can create over a span of time.
 
 
+=head2 ScriptArn => Str
+
+  The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+associated with the GameLift script resource that is deployed on
+instances in this fleet. In a GameLift script ARN, the resource ID
+matches the I<ScriptId> value.
+
+
 =head2 ScriptId => Str
 
-  Unique identifier for a Realtime script.
+  A unique identifier for a Realtime script.
 
 
 =head2 ServerLaunchParameters => Str

@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 

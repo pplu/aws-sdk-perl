@@ -52,14 +52,14 @@ Valid values are: C<"ACCEPT">, C<"REJECT">
 
 =head2 B<REQUIRED> PlayerIds => ArrayRef[Str|Undef]
 
-Unique identifier for a player delivering the response. This parameter
-can include one or multiple player IDs.
+A unique identifier for a player delivering the response. This
+parameter can include one or multiple player IDs.
 
 
 
 =head2 B<REQUIRED> TicketId => Str
 
-Unique identifier for a matchmaking ticket. The ticket must be in
+A unique identifier for a matchmaking ticket. The ticket must be in
 status C<REQUIRES_ACCEPTANCE>; otherwise this request will fail.
 
 

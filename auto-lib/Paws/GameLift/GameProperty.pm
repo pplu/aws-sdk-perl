@@ -34,11 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 Set of key-value pairs that contain information about a game session.
 When included in a game session request, these properties communicate
-details to be used when setting up the new game session, such as to
-specify a game mode, level, or map. Game properties are passed to the
-game server process when initiating a new game session; the server
-process uses the properties as appropriate. For more information, see
-the Amazon GameLift Developer Guide
+details to be used when setting up the new game session. For example, a
+game property might specify a game mode, level, or map. Game properties
+are passed to the game server process when initiating a new game
+session. For more information, see the Amazon GameLift Developer Guide
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-create).
 
 =head1 ATTRIBUTES
@@ -46,12 +45,12 @@ the Amazon GameLift Developer Guide
 
 =head2 B<REQUIRED> Key => Str
 
-  Game property identifier.
+  The game property identifier.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  Game property value.
+  The game property value.
 
 
 

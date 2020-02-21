@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> PlacementId => Str
 
-Unique identifier for a game session placement to retrieve.
+A unique identifier for a game session placement to retrieve.
 
 
 

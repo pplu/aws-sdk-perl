@@ -37,18 +37,18 @@ A collection of server process configurations that describe what
 processes to run on each instance in a fleet. Server processes run
 either a custom game build executable or a Realtime Servers script.
 Each instance in the fleet starts the specified server processes and
-continues to start new processes as existing processes end. An instance
-regularly checks for an updated run-time configuration.
+continues to start new processes as existing processes end. Each
+instance regularly checks for an updated runtime configuration.
 
-The run-time configuration enables the instances in a fleet to run
+The runtime configuration enables the instances in a fleet to run
 multiple processes simultaneously. Learn more about Running Multiple
 Processes on a Fleet
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html).
 
 A Amazon GameLift instance is limited to 50 processes running
-simultaneously. To calculate the total number of processes in a
-run-time configuration, add the values of the C<ConcurrentExecutions>
-parameter for each ServerProcess object.
+simultaneously. To calculate the total number of processes in a runtime
+configuration, add the values of the C<ConcurrentExecutions> parameter
+for each ServerProcess object.
 
 =over
 
@@ -66,63 +66,11 @@ DeleteFleet
 
 =item *
 
-Describe fleets:
-
-=over
-
-=item *
-
 DescribeFleetAttributes
 
 =item *
 
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
 UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
 
 =item *
 
@@ -148,23 +96,24 @@ StopFleetActions
 
 =head2 GameSessionActivationTimeoutSeconds => Int
 
-  Maximum amount of time (in seconds) that a game session can remain in
-status C<ACTIVATING>. If the game session is not active before the
+  The maximum amount of time (in seconds) that a game session can remain
+in status C<ACTIVATING>. If the game session is not active before the
 timeout, activation is terminated and the game session status is
 changed to C<TERMINATED>.
 
 
 =head2 MaxConcurrentGameSessionActivations => Int
 
-  Maximum number of game sessions with status C<ACTIVATING> to allow on
-an instance simultaneously. This setting limits the amount of instance
-resources that can be used for new game activations at any one time.
+  The maximum number of game sessions with status C<ACTIVATING> to allow
+on an instance simultaneously. This setting limits the amount of
+instance resources that can be used for new game activations at any one
+time.
 
 
 =head2 ServerProcesses => ArrayRef[L<Paws::GameLift::ServerProcess>]
 
-  Collection of server process configurations that describe which server
-processes to run on each instance in a fleet.
+  A collection of server process configurations that describe which
+server processes to run on each instance in a fleet.
 
 
 

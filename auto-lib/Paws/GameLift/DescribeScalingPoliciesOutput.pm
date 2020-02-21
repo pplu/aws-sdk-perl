@@ -24,7 +24,7 @@ the end of the list.
 
 =head2 ScalingPolicies => ArrayRef[L<Paws::GameLift::ScalingPolicy>]
 
-Collection of objects containing the scaling policies matching the
+A collection of objects containing the scaling policies matching the
 request.
 
 
