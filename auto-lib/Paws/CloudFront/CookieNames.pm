@@ -46,12 +46,21 @@ in the I<Amazon CloudFront Developer Guide>.
 
   A complex type that contains one C<Name> element for each cookie that
 you want CloudFront to forward to the origin for this cache behavior.
+It must contain the same number of items that is specified in the
+C<Quantity> field.
+
+When you set C<Forward = whitelist> (in the C<CookiePreferences>
+object), this field must contain at least one item.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
   The number of different cookies that you want CloudFront to forward to
-the origin for this cache behavior.
+the origin for this cache behavior. The value must equal the number of
+items that are in the C<Items> field.
+
+When you set C<Forward = whitelist> (in the C<CookiePreferences>
+object), this value must be C<1> or higher.
 
 
 

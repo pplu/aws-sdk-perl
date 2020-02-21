@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that specifies how CloudFront handles query strings and
-cookies.
+A complex type that specifies how CloudFront handles query strings,
+cookies, and HTTP headers.
 
 =head1 ATTRIBUTES
 

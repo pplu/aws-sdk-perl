@@ -175,10 +175,8 @@ locations.
 
 =head2 B<REQUIRED> ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
-  A complex type that specifies whether you want viewers to use HTTP or
-HTTPS to request your objects, whether you're using an alternate domain
-name with HTTPS, and if so, if you're using AWS Certificate Manager
-(ACM) or a third-party certificate authority.
+  A complex type that determines the distributionE<rsquo>s SSL/TLS
+configuration for communicating with viewers.
 
 
 =head2 B<REQUIRED> WebACLId => Str

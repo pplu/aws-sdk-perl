@@ -77,8 +77,11 @@ ICP recordal number.
 
 =item *
 
-B<PENDING> indicates that at least one CNAME associated with the
-distribution does not have a valid ICP recordal number.
+B<PENDING> indicates that CloudFront can't determine the ICP recordal
+status of the CNAME associated with the distribution because there was
+an error in trying to determine the status. You can try again to see if
+the error is resolved in which case CloudFront returns an APPROVED or
+SUSPENDED status.
 
 =back
 

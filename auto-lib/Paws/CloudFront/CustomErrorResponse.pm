@@ -65,9 +65,6 @@ period has elapsed, CloudFront queries your origin to see whether the
 problem that caused the error has been resolved and the requested
 object is now available.
 
-If you don't want to specify a value, include an empty element,
-C<E<lt>ErrorCachingMinTTLE<gt>>, in the XML document.
-
 For more information, see Customizing Error Responses
 (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html)
 in the I<Amazon CloudFront Developer Guide>.
@@ -109,9 +106,7 @@ so your customers don't know that your website is down.
 =back
 
 If you specify a value for C<ResponseCode>, you must also specify a
-value for C<ResponsePagePath>. If you don't want to specify a value,
-include an empty element, C<E<lt>ResponseCodeE<gt>>, in the XML
-document.
+value for C<ResponsePagePath>.
 
 
 =head2 ResponsePagePath => Str
@@ -142,9 +137,7 @@ for the origin that contains your custom error pages.
 =back
 
 If you specify a value for C<ResponsePagePath>, you must also specify a
-value for C<ResponseCode>. If you don't want to specify a value,
-include an empty element, C<E<lt>ResponsePagePathE<gt>>, in the XML
-document.
+value for C<ResponseCode>.
 
 We recommend that you store custom error pages in an Amazon S3 bucket.
 If you store custom error pages on an HTTP server and the server starts

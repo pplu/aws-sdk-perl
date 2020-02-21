@@ -113,8 +113,8 @@ cache behavior or for the default cache behavior in your distribution.
 
 =head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
 
-  A complex type that specifies how CloudFront handles query strings and
-cookies.
+  A complex type that specifies how CloudFront handles query strings,
+cookies, and HTTP headers.
 
 
 =head2 LambdaFunctionAssociations => L<Paws::CloudFront::LambdaFunctionAssociations>

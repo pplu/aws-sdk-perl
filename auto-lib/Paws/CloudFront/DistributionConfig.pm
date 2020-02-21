@@ -271,16 +271,18 @@ distribution of your content.
 
 =head2 ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
-  A complex type that specifies whether you want viewers to use HTTP or
-HTTPS to request your objects, whether you're using an alternate domain
-name with HTTPS, and if so, if you're using AWS Certificate Manager
-(ACM) or a third-party certificate authority.
+  A complex type that determines the distributionE<rsquo>s SSL/TLS
+configuration for communicating with viewers.
 
 
 =head2 WebACLId => Str
 
   A unique identifier that specifies the AWS WAF web ACL, if any, to
-associate with this distribution.
+associate with this distribution. To specify a web ACL created using
+the latest version of AWS WAF, use the ACL ARN, for example
+C<arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/473e64fd-f30b-4765-81a0-62ad96dd167a>.
+To specify a web ACL created using AWS WAF Classic, use the ACL ID, for
+example C<473e64fd-f30b-4765-81a0-62ad96dd167a>.
 
 AWS WAF is a web application firewall that lets you monitor the HTTP
 and HTTPS requests that are forwarded to CloudFront, and lets you
@@ -291,7 +293,7 @@ requested content or with an HTTP 403 status code (Forbidden). You can
 also configure CloudFront to return a custom error page when a request
 is blocked. For more information about AWS WAF, see the AWS WAF
 Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html).
+(https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html).
 
 
 

@@ -55,14 +55,14 @@ C<Forward> element.
 
 =head2 WhitelistedNames => L<Paws::CloudFront::CookieNames>
 
-  Required if you specify C<whitelist> for the value of C<Forward:>. A
+  Required if you specify C<whitelist> for the value of C<Forward>. A
 complex type that specifies how many different cookies you want
 CloudFront to forward to the origin for this cache behavior and, if you
 want to forward selected cookies, the names of those cookies.
 
-If you specify C<all> or none for the value of C<Forward>, omit
+If you specify C<all> or C<none> for the value of C<Forward>, omit
 C<WhitelistedNames>. If you change the value of C<Forward> from
-C<whitelist> to all or none and you don't delete the
+C<whitelist> to C<all> or C<none> and you don't delete the
 C<WhitelistedNames> element and its child elements, CloudFront deletes
 them automatically.
 
