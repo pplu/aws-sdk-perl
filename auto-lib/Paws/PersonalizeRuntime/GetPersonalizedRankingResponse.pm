@@ -17,7 +17,8 @@ Paws::PersonalizeRuntime::GetPersonalizedRankingResponse
 
 =head2 PersonalizedRanking => ArrayRef[L<Paws::PersonalizeRuntime::PredictedItem>]
 
-A list of items in order of most likely interest to the user.
+A list of items in order of most likely interest to the user. The
+maximum is 500.
 
 
 =head2 _request_id => Str
