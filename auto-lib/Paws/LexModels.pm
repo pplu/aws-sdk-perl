@@ -1403,6 +1403,8 @@ more information, see security-iam.
 
 =item [Checksum => Str]
 
+=item [ConversationLogs => L<Paws::LexModels::ConversationLogsRequest>]
+
 =item [Description => Str]
 
 
@@ -1542,6 +1544,10 @@ This operation requires permissions for the C<lex:PutIntent> action.
 =item [Description => Str]
 
 =item [EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]]
+
+=item [ParentSlotTypeSignature => Str]
+
+=item [SlotTypeConfigurations => ArrayRef[L<Paws::LexModels::SlotTypeConfiguration>]]
 
 =item [ValueSelectionStrategy => Str]
 

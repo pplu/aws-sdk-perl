@@ -36,14 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Checksum               = $GetSlotTypeResponse->Checksum;
-    my $CreatedDate            = $GetSlotTypeResponse->CreatedDate;
-    my $Description            = $GetSlotTypeResponse->Description;
-    my $EnumerationValues      = $GetSlotTypeResponse->EnumerationValues;
-    my $LastUpdatedDate        = $GetSlotTypeResponse->LastUpdatedDate;
-    my $Name                   = $GetSlotTypeResponse->Name;
-    my $ValueSelectionStrategy = $GetSlotTypeResponse->ValueSelectionStrategy;
-    my $Version                = $GetSlotTypeResponse->Version;
+    my $Checksum                = $GetSlotTypeResponse->Checksum;
+    my $CreatedDate             = $GetSlotTypeResponse->CreatedDate;
+    my $Description             = $GetSlotTypeResponse->Description;
+    my $EnumerationValues       = $GetSlotTypeResponse->EnumerationValues;
+    my $LastUpdatedDate         = $GetSlotTypeResponse->LastUpdatedDate;
+    my $Name                    = $GetSlotTypeResponse->Name;
+    my $ParentSlotTypeSignature = $GetSlotTypeResponse->ParentSlotTypeSignature;
+    my $SlotTypeConfigurations  = $GetSlotTypeResponse->SlotTypeConfigurations;
+    my $ValueSelectionStrategy  = $GetSlotTypeResponse->ValueSelectionStrategy;
+    my $Version                 = $GetSlotTypeResponse->Version;
 
     # Returns a L<Paws::LexModels::GetSlotTypeResponse> object.
 

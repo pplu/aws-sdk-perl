@@ -126,9 +126,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                      # OPTIONAL
       Slots => [
         {
-          Name             => 'MySlotName',       # min: 1, max: 100
-          SlotConstraint   => 'Required',         # values: Required, Optional
-          Description      => 'MyDescription',    # max: 200
+          Name           => 'MySlotName',       # min: 1, max: 100
+          SlotConstraint => 'Required',         # values: Required, Optional
+          Description    => 'MyDescription',    # max: 200
+          ObfuscationSetting =>
+            'NONE',    # values: NONE, DEFAULT_OBFUSCATION; OPTIONAL
           Priority         => 1,                  # max: 100; OPTIONAL
           ResponseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
           SampleUtterances => [

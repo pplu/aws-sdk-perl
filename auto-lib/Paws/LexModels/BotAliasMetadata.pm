@@ -3,6 +3,7 @@ package Paws::LexModels::BotAliasMetadata;
   has BotName => (is => 'ro', isa => 'Str', request_name => 'botName', traits => ['NameInRequest']);
   has BotVersion => (is => 'ro', isa => 'Str', request_name => 'botVersion', traits => ['NameInRequest']);
   has Checksum => (is => 'ro', isa => 'Str', request_name => 'checksum', traits => ['NameInRequest']);
+  has ConversationLogs => (is => 'ro', isa => 'Paws::LexModels::ConversationLogsResponse', request_name => 'conversationLogs', traits => ['NameInRequest']);
   has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LastUpdatedDate => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDate', traits => ['NameInRequest']);
@@ -55,6 +56,12 @@ Provides information about a bot alias.
 =head2 Checksum => Str
 
   Checksum of the bot alias.
+
+
+=head2 ConversationLogs => L<Paws::LexModels::ConversationLogsResponse>
+
+  Settings that determine how Amazon Lex uses conversation logs for the
+alias.
 
 
 =head2 CreatedDate => Str

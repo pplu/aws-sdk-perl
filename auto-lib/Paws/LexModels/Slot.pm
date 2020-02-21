@@ -2,6 +2,7 @@ package Paws::LexModels::Slot;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has ObfuscationSetting => (is => 'ro', isa => 'Str', request_name => 'obfuscationSetting', traits => ['NameInRequest']);
   has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
   has ResponseCard => (is => 'ro', isa => 'Str', request_name => 'responseCard', traits => ['NameInRequest']);
   has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sampleUtterances', traits => ['NameInRequest']);
@@ -52,6 +53,16 @@ Identifies the version of a specific slot.
 =head2 B<REQUIRED> Name => Str
 
   The name of the slot.
+
+
+=head2 ObfuscationSetting => Str
+
+  Determines whether a slot is obfuscated in conversation logs and stored
+utterances. When you obfuscate a slot, the value is replaced by the
+slot name in curly braces ({}). For example, if the slot name is
+"full_name", obfuscated values are replaced with "{full_name}". For
+more information, see Slot Obfuscation
+(https://docs.aws.amazon.com/lex/latest/dg/how-obfuscate.html).
 
 
 =head2 Priority => Int

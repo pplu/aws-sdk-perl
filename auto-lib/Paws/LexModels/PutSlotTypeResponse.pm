@@ -8,6 +8,8 @@ package Paws::LexModels::PutSlotTypeResponse;
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has ParentSlotTypeSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentSlotTypeSignature');
+  has SlotTypeConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::SlotTypeConfiguration]', traits => ['NameInRequest'], request_name => 'slotTypeConfigurations');
   has ValueSelectionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'valueSelectionStrategy');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
@@ -60,6 +62,16 @@ the creation date and last update date are the same.
 =head2 Name => Str
 
 The name of the slot type.
+
+
+=head2 ParentSlotTypeSignature => Str
+
+The built-in slot type used as the parent of the slot type.
+
+
+=head2 SlotTypeConfigurations => ArrayRef[L<Paws::LexModels::SlotTypeConfiguration>]
+
+Configuration information that extends the parent built-in slot type.
 
 
 =head2 ValueSelectionStrategy => Str
