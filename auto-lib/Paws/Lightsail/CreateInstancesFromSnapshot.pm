@@ -130,9 +130,18 @@ The name of the instance snapshot on which you are basing your new
 instances. Use the get instance snapshots operation to return
 information about your existing snapshots.
 
+Constraint:
+
+=over
+
+=item *
+
 This parameter cannot be defined together with the C<source instance
 name> parameter. The C<instance snapshot name> and C<source instance
 name> parameters are mutually exclusive.
+
+=back
+
 
 
 
@@ -144,10 +153,9 @@ The name for your key pair.
 
 =head2 RestoreDate => Str
 
-The date of the automatic snapshot to use for the new instance.
-
-Use the C<get auto snapshots> operation to identify the dates of the
-available automatic snapshots.
+The date of the automatic snapshot to use for the new instance. Use the
+C<get auto snapshots> operation to identify the dates of the available
+automatic snapshots.
 
 Constraints:
 
@@ -163,11 +171,14 @@ This parameter cannot be defined together with the C<use latest
 restorable auto snapshot> parameter. The C<restore date> and C<use
 latest restorable auto snapshot> parameters are mutually exclusive.
 
-=back
+=item *
 
 Define this parameter only when creating a new instance from an
 automatic snapshot. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 
@@ -176,13 +187,24 @@ automatic snapshot. For more information, see the Lightsail Dev Guide
 The name of the source instance from which the source automatic
 snapshot was created.
 
+Constraints:
+
+=over
+
+=item *
+
 This parameter cannot be defined together with the C<instance snapshot
 name> parameter. The C<source instance name> and C<instance snapshot
 name> parameters are mutually exclusive.
 
+=item *
+
 Define this parameter only when creating a new instance from an
 automatic snapshot. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 
@@ -200,13 +222,24 @@ operation.
 A Boolean value to indicate whether to use the latest available
 automatic snapshot.
 
+Constraints:
+
+=over
+
+=item *
+
 This parameter cannot be defined together with the C<restore date>
 parameter. The C<use latest restorable auto snapshot> and C<restore
 date> parameters are mutually exclusive.
 
+=item *
+
 Define this parameter only when creating a new instance from an
 automatic snapshot. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 

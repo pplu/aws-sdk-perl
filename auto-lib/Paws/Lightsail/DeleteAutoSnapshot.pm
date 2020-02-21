@@ -48,7 +48,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head2 B<REQUIRED> Date => Str
 
 The date of the automatic snapshot to delete in C<YYYY-MM-DD> format.
-
 Use the C<get auto snapshots> operation to get the available automatic
 snapshots for a resource.
 
@@ -56,8 +55,8 @@ snapshots for a resource.
 
 =head2 B<REQUIRED> ResourceName => Str
 
-The name of the source resource from which to delete the automatic
-snapshot.
+The name of the source instance or disk from which to delete the
+automatic snapshot.
 
 
 

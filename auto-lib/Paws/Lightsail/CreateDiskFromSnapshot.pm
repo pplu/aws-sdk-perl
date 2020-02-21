@@ -101,18 +101,26 @@ The unique Lightsail disk name (e.g., C<my-disk>).
 The name of the disk snapshot (e.g., C<my-snapshot>) from which to
 create the new storage disk.
 
+Constraint:
+
+=over
+
+=item *
+
 This parameter cannot be defined together with the C<source disk name>
 parameter. The C<disk snapshot name> and C<source disk name> parameters
 are mutually exclusive.
+
+=back
+
 
 
 
 =head2 RestoreDate => Str
 
-The date of the automatic snapshot to use for the new disk.
-
-Use the C<get auto snapshots> operation to identify the dates of the
-available automatic snapshots.
+The date of the automatic snapshot to use for the new disk. Use the
+C<get auto snapshots> operation to identify the dates of the available
+automatic snapshots.
 
 Constraints:
 
@@ -128,11 +136,14 @@ This parameter cannot be defined together with the C<use latest
 restorable auto snapshot> parameter. The C<restore date> and C<use
 latest restorable auto snapshot> parameters are mutually exclusive.
 
-=back
+=item *
 
 Define this parameter only when creating a new disk from an automatic
 snapshot. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 
@@ -147,13 +158,24 @@ The size of the disk in GB (e.g., C<32>).
 The name of the source disk from which the source automatic snapshot
 was created.
 
+Constraints:
+
+=over
+
+=item *
+
 This parameter cannot be defined together with the C<disk snapshot
 name> parameter. The C<source disk name> and C<disk snapshot name>
 parameters are mutually exclusive.
 
+=item *
+
 Define this parameter only when creating a new disk from an automatic
 snapshot. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 
@@ -171,13 +193,24 @@ operation.
 A Boolean value to indicate whether to use the latest available
 automatic snapshot.
 
+Constraints:
+
+=over
+
+=item *
+
 This parameter cannot be defined together with the C<restore date>
 parameter. The C<use latest restorable auto snapshot> and C<restore
 date> parameters are mutually exclusive.
 
+=item *
+
 Define this parameter only when creating a new disk from an automatic
 snapshot. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 

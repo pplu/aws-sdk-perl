@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 B<REQUIRED> ResourceName => Str
 
-The name of the source resource from which to get automatic snapshot
-information.
+The name of the source instance or disk from which to get automatic
+snapshot information.
 
 
 

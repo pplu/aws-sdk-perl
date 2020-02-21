@@ -2,6 +2,7 @@
 package Paws::Lightsail::UpdateRelationalDatabase;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'applyImmediately' );
+  has CaCertificateIdentifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificateIdentifier' );
   has DisableBackupRetention => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableBackupRetention' );
   has EnableBackupRetention => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBackupRetention' );
   has MasterUserPassword => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterUserPassword' );
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateRelationalDatabaseResult = $lightsail->UpdateRelationalDatabase(
       RelationalDatabaseName     => 'MyResourceName',
       ApplyImmediately           => 1,                      # OPTIONAL
+      CaCertificateIdentifier    => 'Mystring',             # OPTIONAL
       DisableBackupRetention     => 1,                      # OPTIONAL
       EnableBackupRetention      => 1,                      # OPTIONAL
       MasterUserPassword         => 'MySensitiveString',    # OPTIONAL
@@ -65,6 +67,13 @@ changes during the preferred maintenance window. Some changes may cause
 an outage.
 
 Default: C<false>
+
+
+
+=head2 CaCertificateIdentifier => Str
+
+Indicates the certificate that needs to be associated with the
+database.
 
 
 

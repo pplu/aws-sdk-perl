@@ -1217,11 +1217,11 @@ Each argument is described in detail in: L<Paws::Lightsail::CopySnapshot>
 
 Returns: a L<Paws::Lightsail::CopySnapshotResult> instance
 
-Copies a manual instance or disk snapshot as another manual snapshot,
-or copies an automatic instance or disk snapshot as a manual snapshot.
-This operation can also be used to copy a manual or automatic snapshot
-of an instance or a disk from one AWS Region to another in Amazon
-Lightsail.
+Copies a manual snapshot of an instance or disk as another manual
+snapshot, or copies an automatic snapshot of an instance or disk as a
+manual snapshot. This operation can also be used to copy a manual or
+automatic snapshot of an instance or a disk from one AWS Region to
+another in Amazon Lightsail.
 
 When copying a I<manual snapshot>, be sure to define the C<source
 region>, C<source snapshot name>, and C<target snapshot name>
@@ -1231,8 +1231,6 @@ When copying an I<automatic snapshot>, be sure to define the C<source
 region>, C<source resource name>, C<target snapshot name>, and either
 the C<restore date> or the C<use latest restorable auto snapshot>
 parameters.
-
-Database snapshots cannot be copied at this time.
 
 
 =head2 CreateCloudFormationStack
@@ -1753,7 +1751,9 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteAutoSnapshot>
 
 Returns: a L<Paws::Lightsail::DeleteAutoSnapshotResult> instance
 
-Deletes an automatic snapshot for an instance or disk.
+Deletes an automatic snapshot of an instance or disk. For more
+information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 
 
 =head2 DeleteDisk
@@ -2231,8 +2231,8 @@ Each argument is described in detail in: L<Paws::Lightsail::GetAutoSnapshots>
 
 Returns: a L<Paws::Lightsail::GetAutoSnapshotsResult> instance
 
-Returns the available automatic snapshots for the specified resource
-name. For more information, see the Lightsail Dev Guide
+Returns the available automatic snapshots for an instance or disk. For
+more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 
 
@@ -3445,6 +3445,8 @@ Guide
 
 =item [ApplyImmediately => Bool]
 
+=item [CaCertificateIdentifier => Str]
+
 =item [DisableBackupRetention => Bool]
 
 =item [EnableBackupRetention => Bool]
@@ -3500,7 +3502,7 @@ Lightsail.
 
 Parameter updates don't cause outages; therefore, their application is
 not subject to the preferred maintenance window. However, there are two
-ways in which paramater updates are applied: C<dynamic> or
+ways in which parameter updates are applied: C<dynamic> or
 C<pending-reboot>. Parameters marked with a C<dynamic> apply type are
 applied immediately. Parameters marked with a C<pending-reboot> apply
 type are applied only after the database is rebooted using the C<reboot

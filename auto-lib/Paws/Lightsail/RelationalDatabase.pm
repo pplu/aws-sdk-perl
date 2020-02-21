@@ -2,6 +2,7 @@ package Paws::Lightsail::RelationalDatabase;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has BackupRetentionEnabled => (is => 'ro', isa => 'Bool', request_name => 'backupRetentionEnabled', traits => ['NameInRequest']);
+  has CaCertificateIdentifier => (is => 'ro', isa => 'Str', request_name => 'caCertificateIdentifier', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Engine => (is => 'ro', isa => 'Str', request_name => 'engine', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
@@ -69,6 +70,11 @@ Describes a database.
 
   A Boolean value indicating whether automated backup retention is
 enabled for the database.
+
+
+=head2 CaCertificateIdentifier => Str
+
+  The certificate associated with the database.
 
 
 =head2 CreatedAt => Str

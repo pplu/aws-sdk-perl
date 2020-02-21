@@ -19,12 +19,12 @@ Paws::Lightsail::GetAutoSnapshotsResult
 =head2 AutoSnapshots => ArrayRef[L<Paws::Lightsail::AutoSnapshotDetails>]
 
 An array of objects that describe the automatic snapshots that are
-available for the specified source resource.asdf
+available for the specified source instance or disk.
 
 
 =head2 ResourceName => Str
 
-The name of the source resource for the automatic snapshots.
+The name of the source instance or disk for the automatic snapshots.
 
 
 =head2 ResourceType => Str

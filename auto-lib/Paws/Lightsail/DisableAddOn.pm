@@ -53,7 +53,7 @@ Valid values are: C<"AutoSnapshot">
 
 =head2 B<REQUIRED> ResourceName => Str
 
-The name of the source resource from which to disable the add-on.
+The name of the source resource for which to disable the add-on.
 
 
 

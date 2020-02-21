@@ -54,10 +54,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 RestoreDate => Str
 
-The date of the automatic snapshot to copy for the new manual snapshot.
-
-Use the C<get auto snapshots> operation to identify the dates of the
-available automatic snapshots.
+The date of the source automatic snapshot to copy. Use the C<get auto
+snapshots> operation to identify the dates of the available automatic
+snapshots.
 
 Constraints:
 
@@ -73,11 +72,14 @@ This parameter cannot be defined together with the C<use latest
 restorable auto snapshot> parameter. The C<restore date> and C<use
 latest restorable auto snapshot> parameters are mutually exclusive.
 
-=back
+=item *
 
 Define this parameter only when copying an automatic snapshot as a
 manual snapshot. For more information, see the Lightsail Dev Guide
-(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots).
+
+=back
+
 
 
 
@@ -90,42 +92,71 @@ Valid values are: C<"us-east-1">, C<"us-east-2">, C<"us-west-1">, C<"us-west-2">
 
 =head2 SourceResourceName => Str
 
-The name of the source resource from which the automatic snapshot was
-created.
+The name of the source instance or disk from which the source automatic
+snapshot was created.
+
+Constraint:
+
+=over
+
+=item *
 
 Define this parameter only when copying an automatic snapshot as a
 manual snapshot. For more information, see the Lightsail Dev Guide
-(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots).
+
+=back
+
 
 
 
 =head2 SourceSnapshotName => Str
 
-The name of the source instance or disk snapshot to be copied.
+The name of the source manual snapshot to copy.
+
+Constraint:
+
+=over
+
+=item *
 
 Define this parameter only when copying a manual snapshot as another
 manual snapshot.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> TargetSnapshotName => Str
 
-The name of the new instance or disk snapshot to be created as a copy.
+The name of the new manual snapshot to be created as a copy.
 
 
 
 =head2 UseLatestRestorableAutoSnapshot => Bool
 
 A Boolean value to indicate whether to use the latest available
-automatic snapshot.
+automatic snapshot of the specified source instance or disk.
+
+Constraints:
+
+=over
+
+=item *
 
 This parameter cannot be defined together with the C<restore date>
 parameter. The C<use latest restorable auto snapshot> and C<restore
 date> parameters are mutually exclusive.
 
+=item *
+
 Define this parameter only when copying an automatic snapshot as a
 manual snapshot. For more information, see the Lightsail Dev Guide
-(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots).
+
+=back
+
 
 
 
