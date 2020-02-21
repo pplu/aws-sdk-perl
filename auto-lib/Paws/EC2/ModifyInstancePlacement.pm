@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceId           => 'MyInstanceId',
       Affinity             => 'default',                 # OPTIONAL
       GroupName            => 'MyPlacementGroupName',    # OPTIONAL
-      HostId               => 'MyHostId',                # OPTIONAL
+      HostId               => 'MyDedicatedHostId',       # OPTIONAL
       HostResourceGroupArn => 'MyString',                # OPTIONAL
       PartitionNumber      => 1,                         # OPTIONAL
       Tenancy              => 'dedicated',               # OPTIONAL

@@ -5,6 +5,7 @@ package Paws::EC2::ProvisionByoipCidr;
   has CidrAuthorizationContext => (is => 'ro', isa => 'Paws::EC2::CidrAuthorizationContext');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
+  has PubliclyAdvertisable => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -37,8 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Signature => 'MyString',
 
       },    # OPTIONAL
-      Description => 'MyString',    # OPTIONAL
-      DryRun      => 1,             # OPTIONAL
+      Description          => 'MyString',    # OPTIONAL
+      DryRun               => 1,             # OPTIONAL
+      PubliclyAdvertisable => 1,             # OPTIONAL
     );
 
     # Results:
@@ -54,8 +56,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> Cidr => Str
 
-The public IPv4 address range, in CIDR notation. The most specific
-prefix that you can specify is /24. The address range cannot overlap
+The public IPv4 or IPv6 address range, in CIDR notation. The most
+specific IPv4 prefix that you can specify is /24. The most specific
+IPv6 prefix you can specify is /56. The address range cannot overlap
 with another address range that you've brought to this or another
 Region.
 
@@ -80,6 +83,15 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 PubliclyAdvertisable => Bool
+
+(IPv6 only) Indicate whether the address range will be publicly
+advertised to the internet.
+
+Default: true
 
 
 

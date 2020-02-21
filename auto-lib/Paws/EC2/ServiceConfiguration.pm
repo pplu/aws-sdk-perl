@@ -6,6 +6,7 @@ package Paws::EC2::ServiceConfiguration;
   has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkLoadBalancerArnSet', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
+  has PrivateDnsNameConfiguration => (is => 'ro', isa => 'Paws::EC2::PrivateDnsNameConfiguration', request_name => 'privateDnsNameConfiguration', traits => ['NameInRequest']);
   has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceState => (is => 'ro', isa => 'Str', request_name => 'serviceState', traits => ['NameInRequest']);
@@ -54,7 +55,7 @@ endpoint to the service must first be accepted.
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-  In the Availability Zones in which the service is available.
+  The Availability Zones in which the service is available.
 
 
 =head2 BaseEndpointDnsNames => ArrayRef[Str|Undef]
@@ -64,7 +65,7 @@ endpoint to the service must first be accepted.
 
 =head2 ManagesVpcEndpoints => Bool
 
-  Indicates whether the service manages it's VPC endpoints. Management of
+  Indicates whether the service manages its VPC endpoints. Management of
 the service VPC endpoints using the VPC endpoint API is restricted.
 
 
@@ -77,6 +78,11 @@ service.
 =head2 PrivateDnsName => Str
 
   The private DNS name for the service.
+
+
+=head2 PrivateDnsNameConfiguration => L<Paws::EC2::PrivateDnsNameConfiguration>
+
+  Information about the endpoint service private DNS name configuration.
 
 
 =head2 ServiceId => Str

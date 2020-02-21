@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeVpcClassicLinkDnsSupport(
       MaxResults => 1,                                                # OPTIONAL
       NextToken  => 'MyDescribeVpcClassicLinkDnsSupportNextToken',    # OPTIONAL
-      VpcIds     => [ 'MyString', ... ],                              # OPTIONAL
+      VpcIds     => [ 'MyVpcId', ... ],                               # OPTIONAL
       );
 
     # Results:

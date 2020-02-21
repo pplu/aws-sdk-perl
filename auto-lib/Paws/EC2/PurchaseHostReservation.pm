@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $PurchaseHostReservationResult = $ec2->PurchaseHostReservation(
-      HostIdSet    => [ 'MyHostId', ... ],
+      HostIdSet    => [ 'MyDedicatedHostId', ... ],
       OfferingId   => 'MyOfferingId',
-      ClientToken  => 'MyString',            # OPTIONAL
-      CurrencyCode => 'USD',                 # OPTIONAL
-      LimitPrice   => 'MyString',            # OPTIONAL
+      ClientToken  => 'MyString',                     # OPTIONAL
+      CurrencyCode => 'USD',                          # OPTIONAL
+      LimitPrice   => 'MyString',                     # OPTIONAL
     );
 
     # Results:

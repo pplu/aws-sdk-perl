@@ -32,17 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeExportImageTasksResult = $ec2->DescribeExportImageTasks(
-      DryRun             => 1,                      # OPTIONAL
-      ExportImageTaskIds => [ 'MyString', ... ],    # OPTIONAL
+      DryRun             => 1,                                 # OPTIONAL
+      ExportImageTaskIds => [ 'MyExportImageTaskId', ... ],    # OPTIONAL
       Filters            => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],            # OPTIONAL
+          Name   => 'MyString',                                # OPTIONAL
+          Values => [
+            'MyString', ...                                    # OPTIONAL
+          ],                                                   # OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      MaxResults => 1,                              # OPTIONAL
-      NextToken  => 'MyNextToken',                  # OPTIONAL
+      ],                                                       # OPTIONAL
+      MaxResults => 1,                                         # OPTIONAL
+      NextToken  => 'MyNextToken',                             # OPTIONAL
     );
 
     # Results:

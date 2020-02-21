@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> Cidr => Str
 
-The public IPv4 address range, in CIDR notation. The prefix must be the
-same prefix that you specified when you provisioned the address range.
+The address range, in CIDR notation. The prefix must be the same prefix
+that you specified when you provisioned the address range.
 
 
 

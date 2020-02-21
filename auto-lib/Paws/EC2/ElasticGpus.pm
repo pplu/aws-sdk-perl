@@ -6,6 +6,7 @@ package Paws::EC2::ElasticGpus;
   has ElasticGpuState => (is => 'ro', isa => 'Str', request_name => 'elasticGpuState', traits => ['NameInRequest']);
   has ElasticGpuType => (is => 'ro', isa => 'Str', request_name => 'elasticGpuType', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ElasticGpus object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., InstanceId => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,6 +72,11 @@ resides.
 
   The ID of the instance to which the Elastic Graphics accelerator is
 attached.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags assigned to the Elastic Graphics accelerator.
 
 
 

@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteQueuedReservedInstancesResult =
       $ec2->DeleteQueuedReservedInstances(
-      ReservedInstancesIds => [ 'MyString', ... ],
-      DryRun               => 1,                     # OPTIONAL
+      ReservedInstancesIds => [ 'MyReservationId', ... ],
+      DryRun               => 1,                            # OPTIONAL
       );
 
     # Results:

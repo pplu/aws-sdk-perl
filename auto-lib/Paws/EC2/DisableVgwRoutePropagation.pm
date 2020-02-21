@@ -1,6 +1,7 @@
 
 package Paws::EC2::DisableVgwRoutePropagation;
   use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GatewayId => (is => 'ro', isa => 'Str', required => 1);
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -41,6 +42,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DisableVgwRoutePropagation>
 
 =head1 ATTRIBUTES
+
+
+=head2 DryRun => Bool
+
+
+
 
 
 =head2 B<REQUIRED> GatewayId => Str

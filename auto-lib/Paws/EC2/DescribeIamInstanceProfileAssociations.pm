@@ -32,16 +32,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeIamInstanceProfileAssociationsResult =
       $ec2->DescribeIamInstanceProfileAssociations(
-      AssociationIds => [ 'MyString', ... ],    # OPTIONAL
+      AssociationIds => [ 'MyIamInstanceProfileAssociationId', ... ], # OPTIONAL
       Filters        => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],        # OPTIONAL
+          Name   => 'MyString',                                       # OPTIONAL
+          Values => [
+            'MyString', ...                                           # OPTIONAL
+          ],                                                          # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
-      MaxResults => 1,                          # OPTIONAL
-      NextToken  => 'MyNextToken',              # OPTIONAL
+      ],                                                              # OPTIONAL
+      MaxResults => 1,                                                # OPTIONAL
+      NextToken  => 'MyNextToken',                                    # OPTIONAL
       );
 
     # Results:

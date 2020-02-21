@@ -44,7 +44,7 @@ This class has no description
 
 =head2 TotalSizeInGB => Int
 
-  The total size of the disks, in GiB.
+  The total size of the disks, in GB.
 
 
 

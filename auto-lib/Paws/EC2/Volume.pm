@@ -8,6 +8,7 @@ package Paws::EC2::Volume;
   has FastRestored => (is => 'ro', isa => 'Bool', request_name => 'fastRestored', traits => ['NameInRequest',]);
   has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest',]);
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
+  has MultiAttachEnabled => (is => 'ro', isa => 'Bool', request_name => 'multiAttachEnabled', traits => ['NameInRequest',]);
   has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest',]);
   has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest',]);
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
@@ -80,6 +81,11 @@ or C<standard> volumes.
 The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS
 KMS) customer master key (CMK) that was used to protect the volume
 encryption key for the volume.
+
+
+=head2 MultiAttachEnabled => Bool
+
+Indicates whether Amazon EBS Multi-Attach is enabled.
 
 
 =head2 OutpostArn => Str

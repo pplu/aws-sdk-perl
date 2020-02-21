@@ -5,6 +5,7 @@ package Paws::EC2::LaunchTemplatePlacement;
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
   has HostResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'hostResourceGroupArn', traits => ['NameInRequest']);
+  has PartitionNumber => (is => 'ro', isa => 'Int', request_name => 'partitionNumber', traits => ['NameInRequest']);
   has SpreadDomain => (is => 'ro', isa => 'Str', request_name => 'spreadDomain', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
 1;
@@ -65,6 +66,12 @@ This class has no description
 =head2 HostResourceGroupArn => Str
 
   The ARN of the host resource group in which to launch the instances.
+
+
+=head2 PartitionNumber => Int
+
+  The number of the partition the instance should launch in. Valid only
+if the placement group strategy is set to C<partition>.
 
 
 =head2 SpreadDomain => Str

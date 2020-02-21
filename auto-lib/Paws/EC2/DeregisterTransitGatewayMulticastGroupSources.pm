@@ -32,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeregisterTransitGatewayMulticastGroupSourcesResult =
       $ec2->DeregisterTransitGatewayMulticastGroupSources(
-      DryRun                          => 1,                      # OPTIONAL
-      GroupIpAddress                  => 'MyString',             # OPTIONAL
-      NetworkInterfaceIds             => [ 'MyString', ... ],    # OPTIONAL
-      TransitGatewayMulticastDomainId => 'MyString',             # OPTIONAL
+      DryRun              => 1,                                  # OPTIONAL
+      GroupIpAddress      => 'MyString',                         # OPTIONAL
+      NetworkInterfaceIds => [ 'MyNetworkInterfaceId', ... ],    # OPTIONAL
+      TransitGatewayMulticastDomainId =>
+        'MyTransitGatewayMulticastDomainId',                     # OPTIONAL
       );
 
     # Results:

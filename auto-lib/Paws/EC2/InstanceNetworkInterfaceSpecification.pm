@@ -120,6 +120,9 @@ specified a minimum number of instances to launch.
 
   The ID of the network interface.
 
+If you are creating a Spot Fleet, omit this parameter because you
+canE<rsquo>t specify a network interface ID in a launch specification.
+
 
 =head2 PrivateIpAddress => Str
 

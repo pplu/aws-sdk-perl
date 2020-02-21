@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientVpnEndpointId  => 'MyClientVpnEndpointId',
       DestinationCidrBlock => 'MyString',
       DryRun               => 1,                         # OPTIONAL
-      TargetVpcSubnetId    => 'MyString',                # OPTIONAL
+      TargetVpcSubnetId    => 'MySubnetId',              # OPTIONAL
     );
 
     # Results:

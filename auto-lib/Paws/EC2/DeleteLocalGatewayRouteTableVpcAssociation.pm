@@ -30,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteLocalGatewayRouteTableVpcAssociationResult =
       $ec2->DeleteLocalGatewayRouteTableVpcAssociation(
-      LocalGatewayRouteTableVpcAssociationId => 'MyString',
-      DryRun                                 => 1,            # OPTIONAL
+      LocalGatewayRouteTableVpcAssociationId =>
+        'MyLocalGatewayRouteTableVpcAssociationId',
+      DryRun => 1,    # OPTIONAL
       );
 
     # Results:

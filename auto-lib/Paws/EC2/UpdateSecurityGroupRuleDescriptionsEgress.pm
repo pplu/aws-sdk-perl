@@ -74,8 +74,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],
       DryRun    => 1,                                  # OPTIONAL
-      GroupId   => 'MyString',                         # OPTIONAL
-      GroupName => 'MyString',                         # OPTIONAL
+      GroupId   => 'MySecurityGroupId',                # OPTIONAL
+      GroupName => 'MySecurityGroupName',              # OPTIONAL
       );
 
     # Results:

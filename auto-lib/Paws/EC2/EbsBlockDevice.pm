@@ -67,6 +67,8 @@ Encrypted volumes can only be attached to instances that support Amazon
 EBS encryption. For more information, see Supported Instance Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
 
+This parameter is not returned by .
+
 
 =head2 Iops => Int
 
@@ -129,7 +131,8 @@ be equal to or larger than the snapshot size.
 =head2 VolumeType => Str
 
   The volume type. If you set the type to C<io1>, you must also specify
-the IOPS that the volume supports.
+the B<Iops> parameter. If you set the type to C<gp2>, C<st1>, C<sc1>,
+or C<standard>, you must omit the B<Iops> parameter.
 
 Default: C<gp2>
 

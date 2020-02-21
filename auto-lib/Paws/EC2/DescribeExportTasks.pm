@@ -2,6 +2,7 @@
 package Paws::EC2::DescribeExportTasks;
   use Moose;
   has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportTaskId' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   use MooseX::ClassAttribute;
 
@@ -29,6 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeExportTasksResult = $ec2->DescribeExportTasks(
       ExportTaskIds => [ 'MyString', ... ],    # OPTIONAL
+      Filters       => [
+        {
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],       # OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
     );
 
     # Results:
@@ -45,6 +53,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 ExportTaskIds => ArrayRef[Str|Undef]
 
 The export task IDs.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+
+the filters for the export tasks.
 
 
 

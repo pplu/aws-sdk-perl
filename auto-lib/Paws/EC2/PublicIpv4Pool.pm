@@ -3,6 +3,7 @@ package Paws::EC2::PublicIpv4Pool;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has PoolAddressRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PublicIpv4PoolRange]', request_name => 'poolAddressRangeSet', traits => ['NameInRequest']);
   has PoolId => (is => 'ro', isa => 'Str', request_name => 'poolId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TotalAddressCount => (is => 'ro', isa => 'Int', request_name => 'totalAddressCount', traits => ['NameInRequest']);
   has TotalAvailableAddressCount => (is => 'ro', isa => 'Int', request_name => 'totalAvailableAddressCount', traits => ['NameInRequest']);
 1;
@@ -52,7 +53,12 @@ This class has no description
 
 =head2 PoolId => Str
 
-  The ID of the IPv4 address pool.
+  The ID of the address pool.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags for the address pool.
 
 
 =head2 TotalAddressCount => Int

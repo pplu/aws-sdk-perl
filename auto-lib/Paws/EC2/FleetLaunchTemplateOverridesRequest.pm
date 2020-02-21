@@ -75,7 +75,10 @@ number is set, the launch template override has the lowest priority.
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which to launch the instances.
+  The IDs of the subnets in which to launch the instances. Separate
+multiple subnet IDs using commas (for example,
+C<subnet-1234abcdeexample1, subnet-0987cdef6example2>). A request of
+type C<instant> can have only one subnet ID.
 
 
 =head2 WeightedCapacity => Num

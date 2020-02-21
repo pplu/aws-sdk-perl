@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DeviceName => 'MyString',             # OPTIONAL
           Ebs        => {
-            DeleteOnTermination => 1,             # OPTIONAL
-            VolumeId            => 'MyString',    # OPTIONAL
+            DeleteOnTermination => 1,               # OPTIONAL
+            VolumeId            => 'MyVolumeId',    # OPTIONAL
           },    # OPTIONAL
           NoDevice    => 'MyString',    # OPTIONAL
           VirtualName => 'MyString',    # OPTIONAL

@@ -6,6 +6,7 @@ package Paws::EC2::ServiceDetail;
   has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
+  has PrivateDnsNameVerificationState => (is => 'ro', isa => 'Str', request_name => 'privateDnsNameVerificationState', traits => ['NameInRequest']);
   has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceType => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ServiceTypeDetail]', request_name => 'serviceType', traits => ['NameInRequest']);
@@ -64,7 +65,7 @@ be accepted by the service owner.
 
 =head2 ManagesVpcEndpoints => Bool
 
-  Indicates whether the service manages it's VPC endpoints. Management of
+  Indicates whether the service manages its VPC endpoints. Management of
 the service VPC endpoints using the VPC endpoint API is restricted.
 
 
@@ -76,6 +77,14 @@ the service VPC endpoints using the VPC endpoint API is restricted.
 =head2 PrivateDnsName => Str
 
   The private DNS name for the service.
+
+
+=head2 PrivateDnsNameVerificationState => Str
+
+  The verification state of the VPC endpoint service.
+
+Consumers of the endpoint service cannot use the private name when the
+state is not C<verified>.
 
 
 =head2 ServiceId => Str

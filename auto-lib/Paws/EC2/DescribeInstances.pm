@@ -35,14 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
-      MaxResults  => 1,                     # OPTIONAL
-      NextToken   => 'MyString',            # OPTIONAL
+      ],                           # OPTIONAL
+      InstanceIds => [ 'MyInstanceId', ... ],    # OPTIONAL
+      MaxResults  => 1,                          # OPTIONAL
+      NextToken   => 'MyString',                 # OPTIONAL
     );
 
     # Results:
@@ -147,8 +149,11 @@ C<hypervisor> - The hypervisor type of the instance (C<ovm> | C<xen>).
 =item *
 
 C<iam-instance-profile.arn> - The instance profile associated with the
-instance. Specified as an ARN. C<image-id> - The ID of the image used
-to launch the instance.
+instance. Specified as an ARN.
+
+=item *
+
+C<image-id> - The ID of the image used to launch the instance.
 
 =item *
 

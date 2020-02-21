@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ReplaceIamInstanceProfileAssociationResult =
       $ec2->ReplaceIamInstanceProfileAssociation(
-      AssociationId      => 'MyString',
+      AssociationId      => 'MyIamInstanceProfileAssociationId',
       IamInstanceProfile => {
-        Arn  => 'MyString',
-        Name => 'MyString',
+        Arn  => 'MyString',    # OPTIONAL
+        Name => 'MyString',    # OPTIONAL
       },
 
       );

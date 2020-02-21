@@ -6,6 +6,7 @@ package Paws::EC2::LocalGatewayVirtualInterface;
   has LocalGatewayVirtualInterfaceId => (is => 'ro', isa => 'Str', request_name => 'localGatewayVirtualInterfaceId', traits => ['NameInRequest']);
   has PeerAddress => (is => 'ro', isa => 'Str', request_name => 'peerAddress', traits => ['NameInRequest']);
   has PeerBgpAsn => (is => 'ro', isa => 'Int', request_name => 'peerBgpAsn', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest']);
 1;
 
@@ -71,6 +72,11 @@ local gateway.
 =head2 PeerBgpAsn => Int
 
   The peer BGP ASN.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags assigned to the virtual interface.
 
 
 =head2 Vlan => Int

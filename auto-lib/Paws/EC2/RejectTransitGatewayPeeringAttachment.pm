@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $RejectTransitGatewayPeeringAttachmentResult =
       $ec2->RejectTransitGatewayPeeringAttachment(
-      TransitGatewayAttachmentId => 'MyString',
-      DryRun                     => 1,            # OPTIONAL
+      TransitGatewayAttachmentId => 'MyTransitGatewayAttachmentId',
+      DryRun                     => 1,                                # OPTIONAL
       );
 
     # Results:

@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DeleteVpcEndpointsResult = $ec2->DeleteVpcEndpoints(
-      VpcEndpointIds => [ 'MyString', ... ],
-      DryRun         => 1,                     # OPTIONAL
+      VpcEndpointIds => [ 'MyVpcEndpointId', ... ],
+      DryRun         => 1,                            # OPTIONAL
     );
 
     # Results:

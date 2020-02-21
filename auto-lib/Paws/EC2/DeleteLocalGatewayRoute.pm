@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteLocalGatewayRouteResult = $ec2->DeleteLocalGatewayRoute(
       DestinationCidrBlock     => 'MyString',
-      LocalGatewayRouteTableId => 'MyString',
-      DryRun                   => 1,            # OPTIONAL
+      LocalGatewayRouteTableId => 'MyLocalGatewayRoutetableId',
+      DryRun                   => 1,                              # OPTIONAL
     );
 
     # Results:

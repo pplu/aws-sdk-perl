@@ -5,6 +5,7 @@ package Paws::EC2::SpotFleetRequestConfig;
   has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', request_name => 'spotFleetRequestConfig', traits => ['NameInRequest']);
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
   has SpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestState', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotFleetRequestConfig object:
 
-  $service_obj->Method(Att1 => { ActivityStatus => $value, ..., SpotFleetRequestState => $value  });
+  $service_obj->Method(Att1 => { ActivityStatus => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,6 +69,11 @@ Instances are terminating.
 =head2 SpotFleetRequestState => Str
 
   The state of the Spot Fleet request.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags for a Spot Fleet resource.
 
 
 

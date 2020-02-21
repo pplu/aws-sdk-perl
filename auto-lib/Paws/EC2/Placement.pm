@@ -48,6 +48,8 @@ This class has no description
   The affinity setting for the instance on the Dedicated Host. This
 parameter is not supported for the ImportInstance command.
 
+This parameter is not supported by .
+
 
 =head2 AvailabilityZone => Str
 
@@ -55,6 +57,8 @@ parameter is not supported for the ImportInstance command.
 
 If not specified, an Availability Zone will be automatically chosen for
 you based on the load balancing criteria for the Region.
+
+This parameter is not supported by .
 
 
 =head2 GroupName => Str
@@ -67,6 +71,8 @@ you based on the load balancing criteria for the Region.
   The ID of the Dedicated Host on which the instance resides. This
 parameter is not supported for the ImportInstance command.
 
+This parameter is not supported by .
+
 
 =head2 HostResourceGroupArn => Str
 
@@ -74,16 +80,22 @@ parameter is not supported for the ImportInstance command.
 you specify a host resource group ARN, omit the B<Tenancy> parameter or
 set it to C<host>.
 
+This parameter is not supported by .
+
 
 =head2 PartitionNumber => Int
 
   The number of the partition the instance is in. Valid only if the
 placement group strategy is set to C<partition>.
 
+This parameter is not supported by .
+
 
 =head2 SpreadDomain => Str
 
   Reserved for future use.
+
+This parameter is not supported by .
 
 
 =head2 Tenancy => Str
@@ -91,6 +103,8 @@ placement group strategy is set to C<partition>.
   The tenancy of the instance (if the instance is running in a VPC). An
 instance with a tenancy of C<dedicated> runs on single-tenant hardware.
 The C<host> tenancy is not supported for the ImportInstance command.
+
+This parameter is not supported by .
 
 
 

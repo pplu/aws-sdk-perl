@@ -14,6 +14,7 @@ package Paws::EC2::Image;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'imageOwnerId', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has PlatformDetails => (is => 'ro', isa => 'Str', request_name => 'platformDetails', traits => ['NameInRequest']);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
   has Public => (is => 'ro', isa => 'Bool', request_name => 'isPublic', traits => ['NameInRequest']);
   has RamdiskId => (is => 'ro', isa => 'Str', request_name => 'ramdiskId', traits => ['NameInRequest']);
@@ -23,6 +24,7 @@ package Paws::EC2::Image;
   has State => (is => 'ro', isa => 'Str', request_name => 'imageState', traits => ['NameInRequest']);
   has StateReason => (is => 'ro', isa => 'Paws::EC2::StateReason', request_name => 'stateReason', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has UsageOperation => (is => 'ro', isa => 'Str', request_name => 'usageOperation', traits => ['NameInRequest']);
   has VirtualizationType => (is => 'ro', isa => 'Str', request_name => 'virtualizationType', traits => ['NameInRequest']);
 1;
 
@@ -132,6 +134,14 @@ machine images.
 blank.
 
 
+=head2 PlatformDetails => Str
+
+  The platform details associated with the billing code of the AMI. For
+more information, see Obtaining Billing Information
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
   Any product codes associated with the AMI.
@@ -181,6 +191,20 @@ is successfully registered and can be used to launch an instance.
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the image.
+
+
+=head2 UsageOperation => Str
+
+  The operation of the Amazon EC2 instance and the billing code that is
+associated with the AMI. C<usageOperation> corresponds to the
+lineitem/Operation
+(https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation)
+column on your AWS Cost and Usage Report and in the AWS Price List API
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html).
+For the list of C<UsageOperation> codes, see Platform Details and Usage
+Operation Billing Codes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html#billing-info)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 VirtualizationType => Str

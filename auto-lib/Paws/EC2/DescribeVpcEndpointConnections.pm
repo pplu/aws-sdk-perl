@@ -35,13 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
       );
 
     # Results:
@@ -101,8 +103,8 @@ C<vpc-endpoint-id> - The ID of the endpoint.
 The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
-larger than 1000, only 1000 results are returned.
+value can be between 5 and 1,000; if C<MaxResults> is given a value
+larger than 1,000, only 1,000 results are returned.
 
 
 

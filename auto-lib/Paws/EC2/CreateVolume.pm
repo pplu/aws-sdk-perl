@@ -6,6 +6,7 @@ package Paws::EC2::CreateVolume;
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MultiAttachEnabled => (is => 'ro', isa => 'Bool');
   has OutpostArn => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -172,6 +173,19 @@ but eventually fails.
 
 
 
+=head2 MultiAttachEnabled => Bool
+
+Specifies whether to enable Amazon EBS Multi-Attach. If you enable
+Multi-Attach, you can attach the volume to up to 16 Nitro-based
+instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances)
+in the same Availability Zone. For more information, see Amazon EBS
+Multi-Attach
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
 =head2 OutpostArn => Str
 
 The Amazon Resource Name (ARN) of the Outpost.
@@ -180,7 +194,8 @@ The Amazon Resource Name (ARN) of the Outpost.
 
 =head2 Size => Int
 
-The size of the volume, in GiBs.
+The size of the volume, in GiBs. You must specify either a snapshot ID
+or a volume size.
 
 Constraints: 1-16,384 for C<gp2>, 4-16,384 for C<io1>, 500-16,384 for
 C<st1>, 500-16,384 for C<sc1>, and 1-1,024 for C<standard>. If you
@@ -190,15 +205,12 @@ snapshot size.
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
-At least one of Size or SnapshotId is required.
-
 
 
 =head2 SnapshotId => Str
 
-The snapshot from which to create the volume.
-
-At least one of Size or SnapshotId are required.
+The snapshot from which to create the volume. You must specify either a
+snapshot ID or a volume size.
 
 
 

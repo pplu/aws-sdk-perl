@@ -2,6 +2,7 @@ package Paws::EC2::EgressOnlyInternetGateway;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest']);
   has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'egressOnlyInternetGatewayId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::EgressOnlyInternetGateway object:
 
-  $service_obj->Method(Att1 => { Attachments => $value, ..., EgressOnlyInternetGatewayId => $value  });
+  $service_obj->Method(Att1 => { Attachments => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ This class has no description
 =head2 EgressOnlyInternetGatewayId => Str
 
   The ID of the egress-only internet gateway.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags assigned to the egress-only internet gateway.
 
 
 

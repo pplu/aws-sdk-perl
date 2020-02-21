@@ -126,6 +126,17 @@ C<false>)
 
 =item *
 
+C<multi-attach-enabled> - Indicates whether the volume is enabled for
+Multi-Attach (C<true> | C<false>)
+
+=item *
+
+C<fast-restored> - Indicates whether the volume was created from a
+snapshot that is enabled for fast snapshot restore (C<true> |
+C<false>).
+
+=item *
+
 C<size> - The size of the volume, in GiB.
 
 =item *

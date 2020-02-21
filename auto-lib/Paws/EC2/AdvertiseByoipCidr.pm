@@ -46,9 +46,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> Cidr => Str
 
-The IPv4 address range, in CIDR notation. This must be the exact range
-that you provisioned. You can't advertise only a portion of the
-provisioned range.
+The address range, in CIDR notation. This must be the exact range that
+you provisioned. You can't advertise only a portion of the provisioned
+range.
 
 
 

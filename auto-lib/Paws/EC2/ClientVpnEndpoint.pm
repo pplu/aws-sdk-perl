@@ -15,6 +15,7 @@ package Paws::EC2::ClientVpnEndpoint;
   has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
+  has VpnPort => (is => 'ro', isa => 'Int', request_name => 'vpnPort', traits => ['NameInRequest']);
   has VpnProtocol => (is => 'ro', isa => 'Str', request_name => 'vpnProtocol', traits => ['NameInRequest']);
 1;
 
@@ -135,6 +136,11 @@ in the I<AWS Client VPN Administrator Guide>.
 =head2 TransportProtocol => Str
 
   The transport protocol used by the Client VPN endpoint.
+
+
+=head2 VpnPort => Int
+
+  The port number for the Client VPN endpoint.
 
 
 =head2 VpnProtocol => Str

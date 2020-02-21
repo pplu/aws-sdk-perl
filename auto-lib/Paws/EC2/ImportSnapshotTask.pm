@@ -3,6 +3,7 @@ package Paws::EC2::ImportSnapshotTask;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest']);
   has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', request_name => 'snapshotTaskDetail', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ImportSnapshotTask object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., SnapshotTaskDetail => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,11 @@ This class has no description
 =head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
   Describes an import snapshot task.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags for the import snapshot task.
 
 
 

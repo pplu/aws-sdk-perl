@@ -49,15 +49,15 @@ For more information about error codes, see Error Codes
 =head2 ErrorMessage => Str
 
   The error message that describes why the instance could not be
-launched. For more information about error messages, see ee Error Codes
+launched. For more information about error messages, see Error Codes
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html.html).
 
 
 =head2 LaunchTemplateAndOverrides => L<Paws::EC2::LaunchTemplateAndOverridesResponse>
 
   The launch templates and overrides that were used for launching the
-instances. Any parameters that you specify in the Overrides override
-the same parameters in the launch template.
+instances. The values that you specify in the Overrides replace the
+values in the launch template.
 
 
 =head2 Lifecycle => Str

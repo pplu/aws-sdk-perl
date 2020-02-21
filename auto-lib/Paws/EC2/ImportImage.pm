@@ -54,19 +54,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Description => 'MyString',
           DeviceName  => 'MyString',
           Format      => 'MyString',
-          SnapshotId  => 'MyString',
+          SnapshotId  => 'MySnapshotId',    # OPTIONAL
           Url         => 'MyString',
           UserBucket  => {
             S3Bucket => 'MyString',
             S3Key    => 'MyString',
-          },                           # OPTIONAL
+          },                                # OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
-      DryRun     => 1,                 # OPTIONAL
-      Encrypted  => 1,                 # OPTIONAL
-      Hypervisor => 'MyString',        # OPTIONAL
-      KmsKeyId   => 'MyString',        # OPTIONAL
+      ],                                    # OPTIONAL
+      DryRun     => 1,                      # OPTIONAL
+      Encrypted  => 1,                      # OPTIONAL
+      Hypervisor => 'MyString',             # OPTIONAL
+      KmsKeyId   => 'MyKmsKeyId',           # OPTIONAL
       LicenseSpecifications =>
         [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
       LicenseType => 'MyString',                                # OPTIONAL
@@ -160,10 +160,10 @@ Valid values: C<xen>
 
 =head2 KmsKeyId => Str
 
-An identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use when creating the encrypted AMI. This parameter
-is only required if you want to use a non-default CMK; if this
-parameter is not specified, the default CMK for EBS is used. If a
+An identifier for the symmetric AWS Key Management Service (AWS KMS)
+customer master key (CMK) to use when creating the encrypted AMI. This
+parameter is only required if you want to use a non-default CMK; if
+this parameter is not specified, the default CMK for EBS is used. If a
 C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
 The CMK identifier may be provided in any of the following formats:
@@ -203,6 +203,8 @@ This action will eventually report failure.
 
 The specified CMK must exist in the Region that the AMI is being copied
 to.
+
+Amazon EBS does not support asymmetric CMKs.
 
 
 

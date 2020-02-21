@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DisassociateTransitGatewayRouteTableResult =
       $ec2->DisassociateTransitGatewayRouteTable(
-      TransitGatewayAttachmentId => 'MyString',
-      TransitGatewayRouteTableId => 'MyString',
-      DryRun                     => 1,            # OPTIONAL
+      TransitGatewayAttachmentId => 'MyTransitGatewayAttachmentId',
+      TransitGatewayRouteTableId => 'MyTransitGatewayRouteTableId',
+      DryRun                     => 1,                                # OPTIONAL
       );
 
     # Results:

@@ -12,6 +12,7 @@ package Paws::EC2::CreateClientVpnEndpoint;
   has SplitTunnel => (is => 'ro', isa => 'Bool');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransportProtocol => (is => 'ro', isa => 'Str');
+  has VpnPort => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -68,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',    # OPTIONAL
@@ -80,6 +81,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                              # OPTIONAL
       TransportProtocol => 'tcp',     # OPTIONAL
+      VpnPort           => 1,         # OPTIONAL
     );
 
     # Results:
@@ -212,6 +214,17 @@ The transport protocol to be used by the VPN session.
 Default value: C<udp>
 
 Valid values are: C<"tcp">, C<"udp">
+
+=head2 VpnPort => Int
+
+The port number to assign to the Client VPN endpoint for TCP and UDP
+traffic.
+
+Valid Values: C<443> | C<1194>
+
+Default Value: C<443>
+
+
 
 
 =head1 SEE ALSO

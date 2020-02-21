@@ -44,7 +44,7 @@ This class has no description
 
 =head2 CreationTimestamp => Str
 
-  The date and time the VPC endpoint was created.
+  The date and time that the VPC endpoint was created.
 
 
 =head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]

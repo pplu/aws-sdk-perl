@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                         # OPTIONAL
-      ImageIds => [ 'MyString', ... ],           # OPTIONAL
-      Owners   => [ 'MyString', ... ],           # OPTIONAL
+      ImageIds => [ 'MyImageId', ... ],          # OPTIONAL
+      Owners   => [ 'MyString',  ... ],          # OPTIONAL
     );
 
     # Results:

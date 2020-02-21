@@ -86,8 +86,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],        # OPTIONAL
       CapacityReservationSpecification => {
         CapacityReservationPreference => 'open',  # values: open, none; OPTIONAL
-        CapacityReservationTarget => { CapacityReservationId => 'MyString', }
-        ,                                         # OPTIONAL
+        CapacityReservationTarget     => {
+          CapacityReservationId => 'MyCapacityReservationId',    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       ClientToken => 'MyString',    # OPTIONAL
       CpuOptions  => {
@@ -140,14 +141,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Ipv6AddressCount => 1,                                          # OPTIONAL
       Ipv6Addresses    => [ { Ipv6Address => 'MyString', }, ... ],    # OPTIONAL
       KernelId         => 'MyString',                                 # OPTIONAL
-      KeyName          => 'MyString',                                 # OPTIONAL
+      KeyName          => 'MyKeyPairName',                            # OPTIONAL
       LaunchTemplate   => {
-        LaunchTemplateId   => 'MyString',
+        LaunchTemplateId   => 'MyLaunchTemplateId',                   # OPTIONAL
         LaunchTemplateName => 'MyString',
         Version            => 'MyString',
-      },                                                              # OPTIONAL
+      },    # OPTIONAL
       LicenseSpecifications =>
-        [ { LicenseConfigurationArn => 'MyString', }, ... ],          # OPTIONAL
+        [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
       MetadataOptions => {
         HttpEndpoint => 'disabled',    # values: disabled, enabled; OPTIONAL
         HttpPutResponseHopLimit => 1,
@@ -159,11 +160,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       NetworkInterfaces => [
         {
-          AssociatePublicIpAddress => 1,                      # OPTIONAL
-          DeleteOnTermination      => 1,                      # OPTIONAL
+          AssociatePublicIpAddress => 1,                              # OPTIONAL
+          DeleteOnTermination      => 1,                              # OPTIONAL
           Description              => 'MyString',
           DeviceIndex              => 1,
-          Groups                   => [ 'MyString', ... ],    # OPTIONAL
+          Groups                   => [ 'MySecurityGroupId', ... ],   # OPTIONAL
           InterfaceType            => 'MyString',
           Ipv6AddressCount         => 1,
           Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
@@ -171,16 +172,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PrivateIpAddress   => 'MyString',
           PrivateIpAddresses => [
             {
-              Primary          => 1,                          # OPTIONAL
+              Primary          => 1,                                  # OPTIONAL
               PrivateIpAddress => 'MyString',
             },
             ...
-          ],                                                  # OPTIONAL
+          ],                                                          # OPTIONAL
           SecondaryPrivateIpAddressCount => 1,
           SubnetId                       => 'MyString',
         },
         ...
-      ],                                                      # OPTIONAL
+      ],                                                              # OPTIONAL
       Placement => {
         Affinity             => 'MyString',
         AvailabilityZone     => 'MyString',
@@ -191,15 +192,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         SpreadDomain         => 'MyString',
         Tenancy => 'default',    # values: default, dedicated, host; OPTIONAL
       },    # OPTIONAL
-      PrivateIpAddress  => 'MyString',             # OPTIONAL
-      RamdiskId         => 'MyString',             # OPTIONAL
-      SecurityGroupIds  => [ 'MyString', ... ],    # OPTIONAL
-      SecurityGroups    => [ 'MyString', ... ],    # OPTIONAL
-      SubnetId          => 'MyString',             # OPTIONAL
+      PrivateIpAddress  => 'MyString',                        # OPTIONAL
+      RamdiskId         => 'MyString',                        # OPTIONAL
+      SecurityGroupIds  => [ 'MySecurityGroupId', ... ],      # OPTIONAL
+      SecurityGroups    => [ 'MySecurityGroupName', ... ],    # OPTIONAL
+      SubnetId          => 'MyString',                        # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',

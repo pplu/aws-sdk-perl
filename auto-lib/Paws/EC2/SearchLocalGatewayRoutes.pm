@@ -34,15 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchLocalGatewayRoutesResult = $ec2->SearchLocalGatewayRoutes(
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
       ],
-      LocalGatewayRouteTableId => 'MyString',
-      DryRun                   => 1,             # OPTIONAL
-      MaxResults               => 1,             # OPTIONAL
-      NextToken                => 'MyString',    # OPTIONAL
+      LocalGatewayRouteTableId => 'MyLocalGatewayRoutetableId',
+      DryRun                   => 1,                              # OPTIONAL
+      MaxResults               => 1,                              # OPTIONAL
+      NextToken                => 'MyString',                     # OPTIONAL
     );
 
     # Results:

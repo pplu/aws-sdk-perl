@@ -4,6 +4,7 @@ package Paws::EC2::LocalGatewayRouteTableVpcAssociation;
   has LocalGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableId', traits => ['NameInRequest']);
   has LocalGatewayRouteTableVpcAssociationId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableVpcAssociationId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
@@ -58,6 +59,11 @@ This class has no description
 =head2 State => Str
 
   The state of the association.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags assigned to the association.
 
 
 =head2 VpcId => Str

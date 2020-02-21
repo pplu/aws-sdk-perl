@@ -32,17 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeClientVpnRoutesResult = $ec2->DescribeClientVpnRoutes(
-      ClientVpnEndpointId => 'MyString',
-      DryRun              => 1,            # OPTIONAL
+      ClientVpnEndpointId => 'MyClientVpnEndpointId',
+      DryRun              => 1,                         # OPTIONAL
       Filters             => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',                         # OPTIONAL
+          Values => [
+            'MyString', ...                             # OPTIONAL
+          ],                                            # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyNextToken',          # OPTIONAL
+      ],                                                # OPTIONAL
+      MaxResults => 1,                                  # OPTIONAL
+      NextToken  => 'MyNextToken',                      # OPTIONAL
     );
 
     # Results:
@@ -75,6 +77,25 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
 One or more filters. Filter names and values are case-sensitive.
+
+=over
+
+=item *
+
+C<destination-cidr> - The CIDR of the route destination.
+
+=item *
+
+C<origin> - How the route was associated with the Client VPN endpoint
+(C<associate> | C<add-route>).
+
+=item *
+
+C<target-subnet> - The ID of the subnet through which traffic is
+routed.
+
+=back
+
 
 
 

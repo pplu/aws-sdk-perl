@@ -50,7 +50,7 @@ security group, not both. To specify a single IPv6 address, use the
 address range.
 
 Constraints: Up to 255 characters in length. Allowed characters are
-a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
+a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
 
 
 

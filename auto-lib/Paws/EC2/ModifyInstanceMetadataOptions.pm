@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyInstanceMetadataOptionsResult =
       $ec2->ModifyInstanceMetadataOptions(
-      InstanceId              => 'MyString',
-      DryRun                  => 1,             # OPTIONAL
-      HttpEndpoint            => 'disabled',    # OPTIONAL
-      HttpPutResponseHopLimit => 1,             # OPTIONAL
-      HttpTokens              => 'optional',    # OPTIONAL
+      InstanceId              => 'MyInstanceId',
+      DryRun                  => 1,                # OPTIONAL
+      HttpEndpoint            => 'disabled',       # OPTIONAL
+      HttpPutResponseHopLimit => 1,                # OPTIONAL
+      HttpTokens              => 'optional',       # OPTIONAL
       );
 
     # Results:

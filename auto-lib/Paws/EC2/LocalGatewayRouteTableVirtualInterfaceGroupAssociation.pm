@@ -5,6 +5,7 @@ package Paws::EC2::LocalGatewayRouteTableVirtualInterfaceGroupAssociation;
   has LocalGatewayRouteTableVirtualInterfaceGroupAssociationId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableVirtualInterfaceGroupAssociationId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceGroupId => (is => 'ro', isa => 'Str', request_name => 'localGatewayVirtualInterfaceGroupId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::LocalGatewayRouteTableVirtualInterfaceGroupAssociation object:
 
-  $service_obj->Method(Att1 => { LocalGatewayId => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { LocalGatewayId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,6 +64,11 @@ This class has no description
 =head2 State => Str
 
   The state of the association.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags assigned to the association.
 
 
 

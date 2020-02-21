@@ -1,6 +1,7 @@
 
 package Paws::EC2::DescribePublicIpv4Pools;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has PoolIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'PoolId' );
@@ -30,9 +31,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribePublicIpv4PoolsResult = $ec2->DescribePublicIpv4Pools(
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyNextToken',          # OPTIONAL
-      PoolIds    => [ 'MyString', ... ],    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      MaxResults => 1,                             # OPTIONAL
+      NextToken  => 'MyNextToken',                 # OPTIONAL
+      PoolIds    => [ 'MyIpv4PoolEc2Id', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -45,6 +55,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribePublicIpv4Pools>
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+
+One or more filters.
+
+=over
+
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
+
+=back
+
+
 
 
 =head2 MaxResults => Int

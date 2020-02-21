@@ -10,6 +10,7 @@ package Paws::EC2::FlowLog;
   has LogDestinationType => (is => 'ro', isa => 'Str', request_name => 'logDestinationType', traits => ['NameInRequest']);
   has LogFormat => (is => 'ro', isa => 'Str', request_name => 'logFormat', traits => ['NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
+  has MaxAggregationInterval => (is => 'ro', isa => 'Int', request_name => 'maxAggregationInterval', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has TrafficType => (is => 'ro', isa => 'Str', request_name => 'trafficType', traits => ['NameInRequest']);
 1;
@@ -109,6 +110,19 @@ S3.
 =head2 LogGroupName => Str
 
   The name of the flow log group.
+
+
+=head2 MaxAggregationInterval => Int
+
+  The maximum interval of time, in seconds, during which a flow of
+packets is captured and aggregated into a flow log record.
+
+When a network interface is attached to a Nitro-based instance
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances),
+the aggregation interval is always 60 seconds (1 minute) or less,
+regardless of the specified value.
+
+Valid Values: C<60> | C<600>
 
 
 =head2 ResourceId => Str

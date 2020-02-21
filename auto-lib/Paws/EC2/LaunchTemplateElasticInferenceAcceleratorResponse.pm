@@ -39,9 +39,9 @@ This class has no description
 
 =head2 Count => Int
 
-  The number of elastic inference accelerators of given type to be
-attached to the instance. Only positive values allowed. If not
-specified defaults to 1.
+  The number of elastic inference accelerators to attach to the instance.
+
+Default: 1
 
 
 =head2 Type => Str

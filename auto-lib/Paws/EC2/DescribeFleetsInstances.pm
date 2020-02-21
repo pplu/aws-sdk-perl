@@ -53,8 +53,8 @@ This class has no description
 =head2 LaunchTemplateAndOverrides => L<Paws::EC2::LaunchTemplateAndOverridesResponse>
 
   The launch templates and overrides that were used for launching the
-instances. Any parameters that you specify in the Overrides override
-the same parameters in the launch template.
+instances. The values that you specify in the Overrides replace the
+values in the launch template.
 
 
 =head2 Lifecycle => Str
@@ -65,7 +65,8 @@ On-Demand Instance.
 
 =head2 Platform => Str
 
-  The value is C<Windows> for Windows instances; otherwise blank.
+  The value is C<Windows> for Windows instances. Otherwise, the value is
+blank.
 
 
 

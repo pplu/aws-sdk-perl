@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PurchaseReservedInstancesOfferingResult =
       $ec2->PurchaseReservedInstancesOffering(
       InstanceCount               => 1,
-      ReservedInstancesOfferingId => 'MyString',
-      DryRun                      => 1,            # OPTIONAL
+      ReservedInstancesOfferingId => 'MyReservedInstancesOfferingId',
+      DryRun                      => 1,                               # OPTIONAL
       LimitPrice                  => {
-        Amount       => 1,                         # OPTIONAL
-        CurrencyCode => 'USD',                     # values: USD; OPTIONAL
+        Amount       => 1,        # OPTIONAL
+        CurrencyCode => 'USD',    # values: USD; OPTIONAL
       },    # OPTIONAL
       PurchaseTime => '1970-01-01T01:00:00',    # OPTIONAL
       );

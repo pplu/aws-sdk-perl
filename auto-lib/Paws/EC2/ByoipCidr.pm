@@ -41,7 +41,7 @@ This class has no description
 
 =head2 Cidr => Str
 
-  The public IPv4 address range, in CIDR notation.
+  The address range, in CIDR notation.
 
 
 =head2 Description => Str

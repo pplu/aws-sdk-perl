@@ -3,6 +3,7 @@ package Paws::EC2::VolumeStatusEvent;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
   has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
   has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
   has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
 1;
@@ -53,6 +54,11 @@ This class has no description
 =head2 EventType => Str
 
   The type of this event.
+
+
+=head2 InstanceId => Str
+
+  The ID of the instance associated with the event.
 
 
 =head2 NotAfter => Str

@@ -88,6 +88,8 @@ AWS authenticates the CMK asynchronously. Therefore, if you specify an
 ID, alias, or ARN that is not valid, the action can appear to complete,
 but eventually fails.
 
+Amazon EBS does not support asymmetric CMKs.
+
 
 
 

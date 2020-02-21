@@ -8,6 +8,7 @@ package Paws::EC2::ModifyClientVpnEndpoint;
   has DryRun => (is => 'ro', isa => 'Bool');
   has ServerCertificateArn => (is => 'ro', isa => 'Str');
   has SplitTunnel => (is => 'ro', isa => 'Bool');
+  has VpnPort => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -50,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun               => 1,             # OPTIONAL
       ServerCertificateArn => 'MyString',    # OPTIONAL
       SplitTunnel          => 1,             # OPTIONAL
+      VpnPort              => 1,             # OPTIONAL
     );
 
     # Results:
@@ -137,6 +139,17 @@ For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
 Client VPN Endpoint
 (https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
 in the I<AWS Client VPN Administrator Guide>.
+
+
+
+=head2 VpnPort => Int
+
+The port number to assign to the Client VPN endpoint for TCP and UDP
+traffic.
+
+Valid Values: C<443> | C<1194>
+
+Default Value: C<443>
 
 
 

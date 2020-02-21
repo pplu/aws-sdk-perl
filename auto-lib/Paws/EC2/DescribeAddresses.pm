@@ -120,6 +120,11 @@ if any.
 
 =item *
 
+C<network-border-group> - The location from where the IP address is
+advertised.
+
+=item *
+
 C<network-interface-id> - [EC2-VPC] The ID of the network interface
 that the address is associated with, if any.
 

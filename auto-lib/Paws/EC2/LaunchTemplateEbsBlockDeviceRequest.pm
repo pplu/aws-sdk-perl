@@ -74,8 +74,8 @@ standard volumes.
 
 =head2 KmsKeyId => Str
 
-  The ARN of the AWS Key Management Service (AWS KMS) CMK used for
-encryption.
+  The ARN of the symmetric AWS Key Management Service (AWS KMS) CMK used
+for encryption.
 
 
 =head2 SnapshotId => Str

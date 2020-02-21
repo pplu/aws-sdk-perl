@@ -6,6 +6,7 @@ package Paws::EC2::ExportTask;
   has InstanceExportDetails => (is => 'ro', isa => 'Paws::EC2::InstanceExportDetails', request_name => 'instanceExport', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ExportTask object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., StatusMessage => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -69,6 +70,11 @@ This class has no description
 =head2 StatusMessage => Str
 
   The status message related to the export task.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags for the export task.
 
 
 

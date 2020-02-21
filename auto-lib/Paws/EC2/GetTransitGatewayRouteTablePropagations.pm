@@ -33,17 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $GetTransitGatewayRouteTablePropagationsResult =
       $ec2->GetTransitGatewayRouteTablePropagations(
-      TransitGatewayRouteTableId => 'MyString',
-      DryRun                     => 1,            # OPTIONAL
+      TransitGatewayRouteTableId => 'MyTransitGatewayRouteTableId',
+      DryRun                     => 1,                                # OPTIONAL
       Filters                    => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],          # OPTIONAL
+          Name   => 'MyString',                                       # OPTIONAL
+          Values => [
+            'MyString', ...                                           # OPTIONAL
+          ],                                                          # OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
-      MaxResults => 1,                            # OPTIONAL
-      NextToken  => 'MyString',                   # OPTIONAL
+      ],                                                              # OPTIONAL
+      MaxResults => 1,                                                # OPTIONAL
+      NextToken  => 'MyString',                                       # OPTIONAL
       );
 
     # Results:

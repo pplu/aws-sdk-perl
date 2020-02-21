@@ -43,10 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LaunchTemplateConfigs => [
         {
           LaunchTemplateSpecification => {
-            LaunchTemplateId => 'MyString',    # OPTIONAL
+            LaunchTemplateId => 'MyLaunchTemplateId',    # OPTIONAL
             LaunchTemplateName =>
-              'MyLaunchTemplateName',          # min: 3, max: 128; OPTIONAL
-            Version => 'MyString',             # OPTIONAL
+              'MyLaunchTemplateName',    # min: 3, max: 128; OPTIONAL
+            Version => 'MyString',       # OPTIONAL
           },    # OPTIONAL
           Overrides => [
             {
@@ -65,12 +65,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Tenancy =>
                   'default',    # values: default, dedicated, host; OPTIONAL
               },    # OPTIONAL
-              Priority         => 1,             # OPTIONAL
-              SubnetId         => 'MyString',    # OPTIONAL
-              WeightedCapacity => 1,             # OPTIONAL
+              Priority         => 1,               # OPTIONAL
+              SubnetId         => 'MySubnetId',    # OPTIONAL
+              WeightedCapacity => 1,               # OPTIONAL
             },
             ...
-          ],                                     # max: 50; OPTIONAL
+          ],                                       # max: 50; OPTIONAL
         },
         ...
       ],
@@ -86,6 +86,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OnDemandOptions                 => {
         AllocationStrategy =>
           'lowest-price',    # values: lowest-price, prioritized; OPTIONAL
+        CapacityReservationOptions => {
+          UsageStrategy => 'use-capacity-reservations-first'
+          ,                  # values: use-capacity-reservations-first; OPTIONAL
+        },    # OPTIONAL
         MaxTotalPrice          => 'MyString',    # OPTIONAL
         MinTargetCapacity      => 1,             # OPTIONAL
         SingleAvailabilityZone => 1,
@@ -106,7 +110,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',    # OPTIONAL
@@ -138,8 +142,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see Ensuring Idempotency
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see Ensuring
+Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 

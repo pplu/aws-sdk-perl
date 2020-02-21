@@ -1,6 +1,7 @@
 package Paws::EC2::OnDemandOptions;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
+  has CapacityReservationOptions => (is => 'ro', isa => 'Paws::EC2::CapacityReservationOptions', request_name => 'capacityReservationOptions', traits => ['NameInRequest']);
   has MaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'maxTotalPrice', traits => ['NameInRequest']);
   has MinTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'minTargetCapacity', traits => ['NameInRequest']);
   has SingleAvailabilityZone => (is => 'ro', isa => 'Bool', request_name => 'singleAvailabilityZone', traits => ['NameInRequest']);
@@ -50,6 +51,12 @@ to each launch template override, launching the highest priority first.
 If you do not specify a value, EC2 Fleet defaults to C<lowest-price>.
 
 
+=head2 CapacityReservationOptions => L<Paws::EC2::CapacityReservationOptions>
+
+  The strategy for using unused Capacity Reservations for fulfilling
+On-Demand capacity. Supported only for fleets of type C<instant>.
+
+
 =head2 MaxTotalPrice => Str
 
   The maximum amount per hour for On-Demand Instances that you're willing
@@ -66,13 +73,14 @@ instances.
 =head2 SingleAvailabilityZone => Bool
 
   Indicates that the fleet launches all On-Demand Instances into a single
-Availability Zone.
+Availability Zone. Supported only for fleets of type C<instant>.
 
 
 =head2 SingleInstanceType => Bool
 
   Indicates that the fleet uses a single instance type to launch all
-On-Demand Instances in the fleet.
+On-Demand Instances in the fleet. Supported only for fleets of type
+C<instant>.
 
 
 

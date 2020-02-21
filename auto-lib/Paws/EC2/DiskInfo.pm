@@ -45,7 +45,7 @@ This class has no description
 
 =head2 SizeInGB => Int
 
-  The size of the disk in GiB.
+  The size of the disk in GB.
 
 
 =head2 Type => Str

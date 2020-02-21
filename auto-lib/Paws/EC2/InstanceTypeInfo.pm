@@ -19,7 +19,7 @@ package Paws::EC2::InstanceTypeInfo;
   has NetworkInfo => (is => 'ro', isa => 'Paws::EC2::NetworkInfo', request_name => 'networkInfo', traits => ['NameInRequest']);
   has PlacementGroupInfo => (is => 'ro', isa => 'Paws::EC2::PlacementGroupInfo', request_name => 'placementGroupInfo', traits => ['NameInRequest']);
   has ProcessorInfo => (is => 'ro', isa => 'Paws::EC2::ProcessorInfo', request_name => 'processorInfo', traits => ['NameInRequest']);
-  has SupportedRootDevices => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedRootDevices', traits => ['NameInRequest']);
+  has SupportedRootDeviceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedRootDeviceTypes', traits => ['NameInRequest']);
   has SupportedUsageClasses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedUsageClasses', traits => ['NameInRequest']);
   has VCpuInfo => (is => 'ro', isa => 'Paws::EC2::VCpuInfo', request_name => 'vCpuInfo', traits => ['NameInRequest']);
 1;
@@ -155,9 +155,9 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
   Describes the processor.
 
 
-=head2 SupportedRootDevices => ArrayRef[Str|Undef]
+=head2 SupportedRootDeviceTypes => ArrayRef[Str|Undef]
 
-  Indicates the supported root devices.
+  Indicates the supported root device types.
 
 
 =head2 SupportedUsageClasses => ArrayRef[Str|Undef]

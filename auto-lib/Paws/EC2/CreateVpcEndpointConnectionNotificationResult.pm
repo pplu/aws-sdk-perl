@@ -18,8 +18,8 @@ Paws::EC2::CreateVpcEndpointConnectionNotificationResult
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request.
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.
 
 
 =head2 ConnectionNotification => L<Paws::EC2::ConnectionNotification>

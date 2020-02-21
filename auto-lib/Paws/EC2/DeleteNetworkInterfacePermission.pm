@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteNetworkInterfacePermissionResult =
       $ec2->DeleteNetworkInterfacePermission(
-      NetworkInterfacePermissionId => 'MyString',
-      DryRun                       => 1,            # OPTIONAL
-      Force                        => 1,            # OPTIONAL
+      NetworkInterfacePermissionId => 'MyNetworkInterfacePermissionId',
+      DryRun => 1,    # OPTIONAL
+      Force  => 1,    # OPTIONAL
       );
 
     # Results:

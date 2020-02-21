@@ -3,6 +3,7 @@ package Paws::EC2::VpcEndpoint;
   has CreationTimestamp => (is => 'ro', isa => 'Str', request_name => 'creationTimestamp', traits => ['NameInRequest']);
   has DnsEntries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DnsEntry]', request_name => 'dnsEntrySet', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
+  has LastError => (is => 'ro', isa => 'Paws::EC2::LastError', request_name => 'lastError', traits => ['NameInRequest']);
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkInterfaceIdSet', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
@@ -53,7 +54,7 @@ This class has no description
 
 =head2 CreationTimestamp => Str
 
-  The date and time the VPC endpoint was created.
+  The date and time that the VPC endpoint was created.
 
 
 =head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]
@@ -63,8 +64,13 @@ This class has no description
 
 =head2 Groups => ArrayRef[L<Paws::EC2::SecurityGroupIdentifier>]
 
-  (Interface endpoint) Information about the security groups associated
-with the network interface.
+  (Interface endpoint) Information about the security groups that are
+associated with the network interface.
+
+
+=head2 LastError => L<Paws::EC2::LastError>
+
+  The last error that occurred for VPC endpoint.
 
 
 =head2 NetworkInterfaceIds => ArrayRef[Str|Undef]

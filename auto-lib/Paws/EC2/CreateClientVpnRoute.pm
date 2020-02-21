@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateClientVpnRouteResult = $ec2->CreateClientVpnRoute(
       ClientVpnEndpointId  => 'MyClientVpnEndpointId',
       DestinationCidrBlock => 'MyString',
-      TargetVpcSubnetId    => 'MyString',
+      TargetVpcSubnetId    => 'MySubnetId',
       ClientToken          => 'MyString',                # OPTIONAL
       Description          => 'MyString',                # OPTIONAL
       DryRun               => 1,                         # OPTIONAL

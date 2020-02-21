@@ -5,6 +5,7 @@ package Paws::EC2::LaunchTemplatePlacementRequest;
   has GroupName => (is => 'ro', isa => 'Str');
   has HostId => (is => 'ro', isa => 'Str');
   has HostResourceGroupArn => (is => 'ro', isa => 'Str');
+  has PartitionNumber => (is => 'ro', isa => 'Int');
   has SpreadDomain => (is => 'ro', isa => 'Str');
   has Tenancy => (is => 'ro', isa => 'Str');
 1;
@@ -67,6 +68,12 @@ This class has no description
   The ARN of the host resource group in which to launch the instances. If
 you specify a host resource group ARN, omit the B<Tenancy> parameter or
 set it to C<host>.
+
+
+=head2 PartitionNumber => Int
+
+  The number of the partition the instance should launch in. Valid only
+if the placement group strategy is set to C<partition>.
 
 
 =head2 SpreadDomain => Str

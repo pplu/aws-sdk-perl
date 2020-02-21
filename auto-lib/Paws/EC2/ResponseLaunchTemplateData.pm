@@ -17,6 +17,7 @@ package Paws::EC2::ResponseLaunchTemplateData;
   has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
   has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateLicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateInstanceMetadataOptions', request_name => 'metadataOptions', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatesMonitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatePlacement', request_name => 'placement', traits => ['NameInRequest']);
@@ -152,6 +153,14 @@ system shutdown).
 =head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfiguration>]
 
   The license configurations.
+
+
+=head2 MetadataOptions => L<Paws::EC2::LaunchTemplateInstanceMetadataOptions>
+
+  The metadata options for the instance. For more information, see
+Instance Metadata and User Data
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoring>

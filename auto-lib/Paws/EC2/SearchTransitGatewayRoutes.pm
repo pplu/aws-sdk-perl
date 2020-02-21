@@ -33,14 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchTransitGatewayRoutesResult = $ec2->SearchTransitGatewayRoutes(
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
       ],
-      TransitGatewayRouteTableId => 'MyString',
-      DryRun                     => 1,            # OPTIONAL
-      MaxResults                 => 1,            # OPTIONAL
+      TransitGatewayRouteTableId => 'MyTransitGatewayRouteTableId',
+      DryRun                     => 1,                                # OPTIONAL
+      MaxResults                 => 1,                                # OPTIONAL
     );
 
     # Results:

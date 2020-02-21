@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyHostsResult = $ec2->ModifyHosts(
-      HostIds        => [ 'MyString', ... ],
-      AutoPlacement  => 'on',                  # OPTIONAL
-      HostRecovery   => 'on',                  # OPTIONAL
-      InstanceFamily => 'MyString',            # OPTIONAL
-      InstanceType   => 'MyString',            # OPTIONAL
+      HostIds        => [ 'MyDedicatedHostId', ... ],
+      AutoPlacement  => 'on',                           # OPTIONAL
+      HostRecovery   => 'on',                           # OPTIONAL
+      InstanceFamily => 'MyString',                     # OPTIONAL
+      InstanceType   => 'MyString',                     # OPTIONAL
     );
 
     # Results:

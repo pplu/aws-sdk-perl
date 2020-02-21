@@ -31,15 +31,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $GetReservedInstancesExchangeQuoteResult =
       $ec2->GetReservedInstancesExchangeQuote(
-      ReservedInstanceIds  => [ 'MyString', ... ],
-      DryRun               => 1,                     # OPTIONAL
+      ReservedInstanceIds  => [ 'MyReservationId', ... ],
+      DryRun               => 1,                            # OPTIONAL
       TargetConfigurations => [
         {
-          OfferingId    => 'MyString',
-          InstanceCount => 1,                        # OPTIONAL
+          OfferingId    => 'MyReservedInstancesOfferingId',
+          InstanceCount => 1,                                 # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
+      ],                                                      # OPTIONAL
       );
 
     # Results:

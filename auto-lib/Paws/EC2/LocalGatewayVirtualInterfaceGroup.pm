@@ -3,6 +3,7 @@ package Paws::EC2::LocalGatewayVirtualInterfaceGroup;
   has LocalGatewayId => (is => 'ro', isa => 'Str', request_name => 'localGatewayId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceGroupId => (is => 'ro', isa => 'Str', request_name => 'localGatewayVirtualInterfaceGroupId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'localGatewayVirtualInterfaceIdSet', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::LocalGatewayVirtualInterfaceGroup object:
 
-  $service_obj->Method(Att1 => { LocalGatewayId => $value, ..., LocalGatewayVirtualInterfaceIds => $value  });
+  $service_obj->Method(Att1 => { LocalGatewayId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,11 @@ This class has no description
 =head2 LocalGatewayVirtualInterfaceIds => ArrayRef[Str|Undef]
 
   The IDs of the virtual interfaces.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags assigned to the virtual interface group.
 
 
 

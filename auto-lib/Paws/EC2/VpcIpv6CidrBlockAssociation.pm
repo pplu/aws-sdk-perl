@@ -3,6 +3,7 @@ package Paws::EC2::VpcIpv6CidrBlockAssociation;
   has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
   has Ipv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'ipv6CidrBlock', traits => ['NameInRequest']);
   has Ipv6CidrBlockState => (is => 'ro', isa => 'Paws::EC2::VpcCidrBlockState', request_name => 'ipv6CidrBlockState', traits => ['NameInRequest']);
+  has Ipv6Pool => (is => 'ro', isa => 'Str', request_name => 'ipv6Pool', traits => ['NameInRequest']);
   has NetworkBorderGroup => (is => 'ro', isa => 'Str', request_name => 'networkBorderGroup', traits => ['NameInRequest']);
 1;
 
@@ -52,6 +53,12 @@ This class has no description
 =head2 Ipv6CidrBlockState => L<Paws::EC2::VpcCidrBlockState>
 
   Information about the state of the CIDR block.
+
+
+=head2 Ipv6Pool => Str
+
+  The ID of the IPv6 address pool from which the IPv6 CIDR block is
+allocated.
 
 
 =head2 NetworkBorderGroup => Str

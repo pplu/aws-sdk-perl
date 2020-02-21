@@ -5,6 +5,8 @@ package Paws::EC2::CreateVpcEndpointServiceConfiguration;
   has ClientToken => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NetworkLoadBalancerArn' , required => 1);
+  has PrivateDnsName => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -36,6 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AcceptanceRequired      => 1,                     # OPTIONAL
       ClientToken             => 'MyString',            # OPTIONAL
       DryRun                  => 1,                     # OPTIONAL
+      PrivateDnsName          => 'MyString',            # OPTIONAL
+      TagSpecifications       => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
       );
 
     # Results:
@@ -53,7 +70,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AcceptanceRequired => Bool
 
-Indicate whether requests from service consumers to create an endpoint
+Indicates whether requests from service consumers to create an endpoint
 to your service must be accepted. To accept a request, use
 AcceptVpcEndpointConnections.
 
@@ -61,8 +78,9 @@ AcceptVpcEndpointConnections.
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 
 
@@ -80,6 +98,18 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The Amazon Resource Names (ARNs) of one or more Network Load Balancers
 for your service.
+
+
+
+=head2 PrivateDnsName => Str
+
+The private DNS name to assign to the VPC endpoint service.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to associate with the service.
 
 
 

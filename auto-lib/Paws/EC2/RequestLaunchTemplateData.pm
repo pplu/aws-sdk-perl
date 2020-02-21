@@ -17,6 +17,7 @@ package Paws::EC2::RequestLaunchTemplateData;
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateLicenseConfigurationRequest]', request_name => 'LicenseSpecification', traits => ['NameInRequest']);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateInstanceMetadataOptionsRequest');
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatesMonitoringRequest');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest]', request_name => 'NetworkInterface', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatePlacementRequest');
@@ -63,13 +64,6 @@ This class has no description
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::LaunchTemplateBlockDeviceMappingRequest>]
 
   The block device mapping.
-
-Supplying both a snapshot ID and an encryption value as arguments for
-block-device mapping results in an error. This is because only blank
-volumes can be encrypted on start, and these are not created from a
-snapshot. If a snapshot is the basis for the volume, it contains data
-by definition and its encryption status cannot be changed using this
-action.
 
 
 =head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
@@ -191,6 +185,14 @@ to log in.
 =head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfigurationRequest>]
 
   The license configurations.
+
+
+=head2 MetadataOptions => L<Paws::EC2::LaunchTemplateInstanceMetadataOptionsRequest>
+
+  The metadata options for the instance. For more information, see
+Instance Metadata and User Data
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoringRequest>
