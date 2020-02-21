@@ -1,6 +1,7 @@
 package Paws::MediaConvert::Mp4Settings;
   use Moose;
   has CslgAtom => (is => 'ro', isa => 'Str', request_name => 'cslgAtom', traits => ['NameInRequest']);
+  has CttsVersion => (is => 'ro', isa => 'Int', request_name => 'cttsVersion', traits => ['NameInRequest']);
   has FreeSpaceBox => (is => 'ro', isa => 'Str', request_name => 'freeSpaceBox', traits => ['NameInRequest']);
   has MoovPlacement => (is => 'ro', isa => 'Str', request_name => 'moovPlacement', traits => ['NameInRequest']);
   has Mp4MajorBrand => (is => 'ro', isa => 'Str', request_name => 'mp4MajorBrand', traits => ['NameInRequest']);
@@ -47,6 +48,17 @@ times in the 'ctts' (composition time to sample) box for B-frames will
 be negative, and a 'cslg' (composition shift least greatest) box will
 be included per 14496-1 amendment 1. This improves compatibility with
 Apple players and tools.
+
+
+=head2 CttsVersion => Int
+
+  Ignore this setting unless compliance to the CTTS box version
+specification matters in your workflow. Specify a value of 1 to set
+your CTTS box version to 1 and make your output compliant with the
+specification. When you specify a value of 1, you must also set CSLG
+atom (cslgAtom) to the value INCLUDE. Keep the default value 0 to set
+your CTTS box version to 0. This can provide backward compatibility for
+some players and packagers.
 
 
 =head2 FreeSpaceBox => Str

@@ -18,6 +18,7 @@ package Paws::MediaConvert::CmafGroupSettings;
   has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
   has WriteDashManifest => (is => 'ro', isa => 'Str', request_name => 'writeDashManifest', traits => ['NameInRequest']);
   has WriteHlsManifest => (is => 'ro', isa => 'Str', request_name => 'writeHlsManifest', traits => ['NameInRequest']);
+  has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +38,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::CmafGroupSettings object:
 
-  $service_obj->Method(Att1 => { AdditionalManifests => $value, ..., WriteHlsManifest => $value  });
+  $service_obj->Method(Att1 => { AdditionalManifests => $value, ..., WriteSegmentTimelineInRepresentation => $value  });
 
 =head3 Results returned from an API call
 
@@ -196,6 +197,18 @@ output.
 
   When set to ENABLED, an Apple HLS manifest will be generated for this
 output.
+
+
+=head2 WriteSegmentTimelineInRepresentation => Str
+
+  When you enable Precise segment duration in DASH manifests
+(writeSegmentTimelineInRepresentation), your DASH manifest shows
+precise segment durations. The segment duration information appears
+inside the SegmentTimeline element, inside SegmentTemplate at the
+Representation level. When this feature isn't enabled, the segment
+durations in your DASH manifest are approximate. The segment duration
+information appears in the duration attribute of the SegmentTemplate
+element.
 
 
 

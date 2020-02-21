@@ -7,6 +7,7 @@ package Paws::MediaConvert::AudioCodecSettings;
   has Eac3AtmosSettings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3AtmosSettings', request_name => 'eac3AtmosSettings', traits => ['NameInRequest']);
   has Eac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
+  has Mp3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp3Settings', request_name => 'mp3Settings', traits => ['NameInRequest']);
   has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
 1;
 
@@ -43,9 +44,9 @@ the group of settings related to audio encoding. The settings in this
 group vary depending on the value that you choose for Audio codec
 (Codec). For each codec enum that you choose, define the corresponding
 settings object. The following lists the codec enum, settings object
-pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
-AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS,
-Eac3AtmosSettings
+pairs. * AAC, AacSettings * MP2, Mp2Settings * MP3, Mp3Settings * WAV,
+WavSettings * AIFF, AiffSettings * AC3, Ac3Settings * EAC3,
+Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
 
 =head1 ATTRIBUTES
 
@@ -95,6 +96,12 @@ on the rate control mode.
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value MP2.
+
+
+=head2 Mp3Settings => L<Paws::MediaConvert::Mp3Settings>
+
+  Required when you set Codec, under AudioDescriptionsE<gt>CodecSettings,
+to the value MP3.
 
 
 =head2 WavSettings => L<Paws::MediaConvert::WavSettings>

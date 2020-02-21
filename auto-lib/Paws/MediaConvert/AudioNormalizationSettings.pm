@@ -66,8 +66,7 @@ If disabled, the audio will be measured but not adjusted.
 =head2 CorrectionGateLevel => Int
 
   Content measuring above this level will be corrected to the target
-level. Content measuring below this level will not be corrected. Gating
-only applies when not using real_time_correction.
+level. Content measuring below this level will not be corrected.
 
 
 =head2 LoudnessLogging => Str

@@ -87,7 +87,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SampleRate => 1,    # min: 8000, max: 192000; OPTIONAL
               },    # OPTIONAL
               Codec => 'AAC'
-              , # values: AAC, MP2, WAV, AIFF, AC3, EAC3, EAC3_ATMOS, PASSTHROUGH; OPTIONAL
+              , # values: AAC, MP2, MP3, WAV, AIFF, AC3, EAC3, EAC3_ATMOS, PASSTHROUGH; OPTIONAL
               Eac3AtmosSettings => {
                 Bitrate => 1,    # min: 384000, max: 768000; OPTIONAL
                 BitstreamMode =>
@@ -151,6 +151,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Bitrate    => 1,    # min: 32000, max: 384000; OPTIONAL
                 Channels   => 1,    # min: 1, max: 2; OPTIONAL
                 SampleRate => 1,    # min: 32000, max: 48000; OPTIONAL
+              },    # OPTIONAL
+              Mp3Settings => {
+                Bitrate         => 1,        # min: 16000, max: 320000; OPTIONAL
+                Channels        => 1,        # min: 1, max: 2; OPTIONAL
+                RateControlMode => 'CBR',    # values: CBR, VBR; OPTIONAL
+                SampleRate      => 1,        # min: 22050, max: 48000; OPTIONAL
+                VbrQuality      => 1,        # max: 9; OPTIONAL
               },    # OPTIONAL
               WavSettings => {
                 BitDepth   => 1,         # min: 16, max: 24; OPTIONAL
@@ -274,6 +281,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],    # OPTIONAL
         ContainerSettings => {
+          CmfcSettings => {
+            Scte35Esam   => 'INSERT',      # values: INSERT, NONE; OPTIONAL
+            Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
+          },    # OPTIONAL
           Container => 'F4V'
           , # values: F4V, ISMV, M2TS, M3U8, CMFC, MOV, MP4, MPD, MXF, RAW; OPTIONAL
           F4vSettings => {
@@ -284,7 +295,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioBufferModel  => 'DVB',    # values: DVB, ATSC; OPTIONAL
             AudioFramesPerPes => 1,        # max: 2147483647; OPTIONAL
             AudioPids         => [
-              1, ...                       # min: 32, max: 8182; OPTIONAL
+              1, ...                       # min: 32, max: 8182
             ],                             # OPTIONAL
             Bitrate        => 1,           # max: 2147483647; OPTIONAL
             BufferModel    => 'MULTIPLEX', # values: MULTIPLEX, NONE; OPTIONAL
@@ -304,12 +315,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
             },    # OPTIONAL
             DvbSubPids => [
-              1, ...    # min: 32, max: 8182; OPTIONAL
+              1, ...    # min: 32, max: 8182
             ],          # OPTIONAL
             DvbTdtSettings => {
               TdtInterval => 1,    # min: 1000, max: 30000; OPTIONAL
             },    # OPTIONAL
-            DvbTeletextPid => 1,    # min: 32, max: 8182; OPTIONAL
+            DvbTeletextPid   => 1,                          # min: 32, max: 8182
             EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
             ,    # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
             EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
@@ -324,47 +335,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatInterval          => 1,        # max: 1000; OPTIONAL
             PcrControl => 'PCR_EVERY_PES_PACKET'
             ,    # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
-            PcrPid             => 1,        # min: 32, max: 8182; OPTIONAL
+            PcrPid             => 1,        # min: 32, max: 8182
             PmtInterval        => 1,        # max: 1000; OPTIONAL
-            PmtPid             => 1,        # min: 32, max: 8182; OPTIONAL
-            PrivateMetadataPid => 1,        # min: 32, max: 8182; OPTIONAL
+            PmtPid             => 1,        # min: 32, max: 8182
+            PrivateMetadataPid => 1,        # min: 32, max: 8182
             ProgramNumber      => 1,        # max: 65535; OPTIONAL
             RateMode           => 'VBR',    # values: VBR, CBR; OPTIONAL
             Scte35Esam         => {
-              Scte35EsamPid => 1,           # min: 32, max: 8182; OPTIONAL
+              Scte35EsamPid => 1,           # min: 32, max: 8182
             },    # OPTIONAL
-            Scte35Pid    => 1,             # min: 32, max: 8182; OPTIONAL
+            Scte35Pid    => 1,             # min: 32, max: 8182
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
             SegmentationMarkers => 'NONE'
             , # values: NONE, RAI_SEGSTART, RAI_ADAPT, PSI_SEGSTART, EBP, EBP_LEGACY; OPTIONAL
             SegmentationStyle => 'MAINTAIN_CADENCE'
             ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
             SegmentationTime  => 1,    # OPTIONAL
-            TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
+            TimedMetadataPid  => 1,    # min: 32, max: 8182
             TransportStreamId => 1,    # max: 65535; OPTIONAL
-            VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
+            VideoPid          => 1,    # min: 32, max: 8182
           },    # OPTIONAL
           M3u8Settings => {
             AudioFramesPerPes => 1,    # max: 2147483647; OPTIONAL
             AudioPids         => [
-              1, ...                   # min: 32, max: 8182; OPTIONAL
+              1, ...                   # min: 32, max: 8182
             ],                         # OPTIONAL
             NielsenId3  => 'INSERT',   # values: INSERT, NONE; OPTIONAL
             PatInterval => 1,          # max: 1000; OPTIONAL
             PcrControl => 'PCR_EVERY_PES_PACKET'
             ,    # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
-            PcrPid             => 1,    # min: 32, max: 8182; OPTIONAL
+            PcrPid             => 1,    # min: 32, max: 8182
             PmtInterval        => 1,    # max: 1000; OPTIONAL
-            PmtPid             => 1,    # min: 32, max: 8182; OPTIONAL
-            PrivateMetadataPid => 1,    # min: 32, max: 8182; OPTIONAL
+            PmtPid             => 1,    # min: 32, max: 8182
+            PrivateMetadataPid => 1,    # min: 32, max: 8182
             ProgramNumber      => 1,    # max: 65535; OPTIONAL
-            Scte35Pid          => 1,    # min: 32, max: 8182; OPTIONAL
+            Scte35Pid          => 1,    # min: 32, max: 8182
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
             TimedMetadata =>
               'PASSTHROUGH',               # values: PASSTHROUGH, NONE; OPTIONAL
-            TimedMetadataPid  => 1,        # min: 32, max: 8182; OPTIONAL
+            TimedMetadataPid  => 1,        # min: 32, max: 8182
             TransportStreamId => 1,        # max: 65535; OPTIONAL
-            VideoPid          => 1,        # min: 32, max: 8182; OPTIONAL
+            VideoPid          => 1,        # min: 32, max: 8182
           },    # OPTIONAL
           MovSettings => {
             ClapAtom => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
@@ -376,6 +387,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           Mp4Settings => {
             CslgAtom     => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
+            CttsVersion  => 1,            # max: 1; OPTIONAL
             FreeSpaceBox => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
             MoovPlacement => 'PROGRESSIVE_DOWNLOAD'
             ,    # values: PROGRESSIVE_DOWNLOAD, NORMAL; OPTIONAL
@@ -440,6 +452,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               QvbrSettings => {
                 MaxAverageBitrate => 1,   # min: 1000, max: 1152000000; OPTIONAL
                 QvbrQualityLevel  => 1,   # min: 1, max: 10; OPTIONAL
+                QvbrQualityLevelFineTune => 1,    # OPTIONAL
               },    # OPTIONAL
               RateControlMode => 'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
               RepeatPps => 'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
@@ -497,6 +510,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               QvbrSettings => {
                 MaxAverageBitrate => 1,   # min: 1000, max: 1466400000; OPTIONAL
                 QvbrQualityLevel  => 1,   # min: 1, max: 10; OPTIONAL
+                QvbrQualityLevelFineTune => 1,    # OPTIONAL
               },    # OPTIONAL
               RateControlMode => 'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
               SampleAdaptiveOffsetFilterMode =>
@@ -649,7 +663,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   FadeOut  => 1,    # max: 2147483647; OPTIONAL
                   Height   => 1,    # max: 2147483647; OPTIONAL
                   ImageInserterInput =>
-                    'My__stringMin14PatternHttpHttpsS3BmpBMPPngPNGTgaTGA'
+'My__stringMin14PatternS3BmpBMPPngPNGTgaTGAHttpsBmpBMPPngPNGTgaTGA'
                   ,                 # min: 14; OPTIONAL
                   ImageX  => 1,     # max: 2147483647; OPTIONAL
                   ImageY  => 1,     # max: 2147483647; OPTIONAL

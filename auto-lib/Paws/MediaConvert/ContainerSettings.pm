@@ -1,5 +1,6 @@
 package Paws::MediaConvert::ContainerSettings;
   use Moose;
+  has CmfcSettings => (is => 'ro', isa => 'Paws::MediaConvert::CmfcSettings', request_name => 'cmfcSettings', traits => ['NameInRequest']);
   has Container => (is => 'ro', isa => 'Str', request_name => 'container', traits => ['NameInRequest']);
   has F4vSettings => (is => 'ro', isa => 'Paws::MediaConvert::F4vSettings', request_name => 'f4vSettings', traits => ['NameInRequest']);
   has M2tsSettings => (is => 'ro', isa => 'Paws::MediaConvert::M2tsSettings', request_name => 'm2tsSettings', traits => ['NameInRequest']);
@@ -26,20 +27,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::ContainerSettings object:
 
-  $service_obj->Method(Att1 => { Container => $value, ..., MpdSettings => $value  });
+  $service_obj->Method(Att1 => { CmfcSettings => $value, ..., MpdSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::ContainerSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Container
+  $result->Att1->CmfcSettings
 
 =head1 DESCRIPTION
 
 Container specific settings.
 
 =head1 ATTRIBUTES
+
+
+=head2 CmfcSettings => L<Paws::MediaConvert::CmfcSettings>
+
+  Settings for MP4 segments in CMAF
 
 
 =head2 Container => Str
