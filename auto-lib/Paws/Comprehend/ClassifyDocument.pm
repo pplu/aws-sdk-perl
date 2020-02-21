@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Classes = $ClassifyDocumentResponse->Classes;
+    my $Labels  = $ClassifyDocumentResponse->Labels;
 
     # Returns a L<Paws::Comprehend::ClassifyDocumentResponse> object.
 

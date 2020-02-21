@@ -1,5 +1,6 @@
 package Paws::Comprehend::DocumentClassifierInputDataConfig;
   use Moose;
+  has LabelDelimiter => (is => 'ro', isa => 'Str');
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::DocumentClassifierInputDataConfig object:
 
-  $service_obj->Method(Att1 => { S3Uri => $value, ..., S3Uri => $value  });
+  $service_obj->Method(Att1 => { LabelDelimiter => $value, ..., S3Uri => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::DocumentClassifierInputDataConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->S3Uri
+  $result->Att1->LabelDelimiter
 
 =head1 DESCRIPTION
 
@@ -37,6 +38,17 @@ For more information on how the input file is formatted, see
 how-document-classification-training-data.
 
 =head1 ATTRIBUTES
+
+
+=head2 LabelDelimiter => Str
+
+  Indicates the delimiter used to separate each label for training a
+multi-label classifier. The default delimiter between labels is a pipe
+(|). You can use a different character as a delimiter (if it's an
+allowed character) by specifying it under Delimiter for labels. If the
+training documents use a delimiter other than the default or the
+delimiter you specify, the labels on that line will be combined to make
+a single unique label, such as LABELLABELLABEL.
 
 
 =head2 B<REQUIRED> S3Uri => Str

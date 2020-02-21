@@ -7,6 +7,7 @@ package Paws::Comprehend::DocumentClassifierProperties;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierInputDataConfig');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+  has Mode => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
   has Status => (is => 'ro', isa => 'Str');
   has SubmitTime => (is => 'ro', isa => 'Str');
@@ -87,6 +88,14 @@ was trained on.
 =head2 Message => Str
 
   Additional information about the status of the classifier.
+
+
+=head2 Mode => Str
+
+  Indicates the mode in which the specific classifier was trained. This
+also indicates the format of input documents and the format of the
+confusion matrix. Each classifier can only be trained in one mode and
+this cannot be changed once the classifier is trained.
 
 
 =head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>

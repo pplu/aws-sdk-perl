@@ -6,6 +6,7 @@ package Paws::Comprehend::CreateDocumentClassifier;
   has DocumentClassifierName => (is => 'ro', isa => 'Str', required => 1);
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierInputDataConfig', required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
+  has Mode => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Tag]');
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
@@ -40,11 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataAccessRoleArn      => 'MyIamRoleArn',
       DocumentClassifierName => 'MyComprehendArnName',
       InputDataConfig        => {
-        S3Uri => 'MyS3Uri',    # max: 1024
-
+        S3Uri          => 'MyS3Uri',             # max: 1024
+        LabelDelimiter => 'MyLabelDelimiter',    # min: 1, max: 1; OPTIONAL
       },
       LanguageCode       => 'en',
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
+      Mode               => 'MULTI_CLASS',                   # OPTIONAL
       OutputDataConfig   => {
         KmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
         S3Uri    => 'MyS3Uri',       # max: 1024
@@ -114,6 +116,17 @@ English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt"). All documents must be in the same language.
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
+
+=head2 Mode => Str
+
+Indicates the mode in which the classifier will be trained. The
+classifier can be trained in multi-class mode, which identifies one and
+only one class for each document, or multi-label mode, which identifies
+one or more labels for each document. In multi-label mode, multiple
+labels for an individual document are separated by a delimiter. The
+default delimiter between labels is a pipe (|).
+
+Valid values are: C<"MULTI_CLASS">, C<"MULTI_LABEL">
 
 =head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>
 

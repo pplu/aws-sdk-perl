@@ -626,6 +626,8 @@ model and an endpoint.
 
 =item [ClientRequestToken => Str]
 
+=item [Mode => Str]
+
 =item [OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>]
 
 =item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
