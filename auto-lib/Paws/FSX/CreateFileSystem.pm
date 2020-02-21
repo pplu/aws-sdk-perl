@@ -70,10 +70,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MULTI_AZ_1',    # values: MULTI_AZ_1, SINGLE_AZ_1; OPTIONAL
         PreferredSubnetId => 'MySubnetId',    # min: 15, max: 24
         SelfManagedActiveDirectoryConfiguration => {
-          DnsIps     => [ 'MyIpAddress', ... ],               # min: 1, max: 2
-          DomainName => 'MyActiveDirectoryFullyQualifiedName',
-          Password   => 'MyDirectoryPassword',                # min: 1, max: 256
-          UserName   => 'MyDirectoryUserName',                # min: 1, max: 256
+          DnsIps => [
+            'MyIpAddress', ...                # min: 7, max: 15
+          ],                                  # min: 1, max: 2
+          DomainName =>
+            'MyActiveDirectoryFullyQualifiedName',    # min: 1, max: 255
+          Password => 'MyDirectoryPassword',          # min: 1, max: 256
+          UserName => 'MyDirectoryUserName',          # min: 1, max: 256
           FileSystemAdministratorsGroup =>
             'MyFileSystemAdministratorsGroupName',  # min: 1, max: 256; OPTIONAL
           OrganizationalUnitDistinguishedName =>

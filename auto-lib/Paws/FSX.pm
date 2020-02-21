@@ -15,9 +15,19 @@ package Paws::FSX;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CancelDataRepositoryTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::CancelDataRepositoryTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateBackup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FSX::CreateBackup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDataRepositoryTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::CreateDataRepositoryTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateFileSystem {
@@ -43,6 +53,11 @@ package Paws::FSX;
   sub DescribeBackups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FSX::DescribeBackups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDataRepositoryTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::DescribeDataRepositoryTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeFileSystems {
@@ -142,7 +157,7 @@ package Paws::FSX;
   }
 
 
-  sub operations { qw/CreateBackup CreateFileSystem CreateFileSystemFromBackup DeleteBackup DeleteFileSystem DescribeBackups DescribeFileSystems ListTagsForResource TagResource UntagResource UpdateFileSystem / }
+  sub operations { qw/CancelDataRepositoryTask CreateBackup CreateDataRepositoryTask CreateFileSystem CreateFileSystemFromBackup DeleteBackup DeleteFileSystem DescribeBackups DescribeDataRepositoryTasks DescribeFileSystems ListTagsForResource TagResource UntagResource UpdateFileSystem / }
 
 1;
 
@@ -177,6 +192,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 
 =head1 METHODS
+
+=head2 CancelDataRepositoryTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::CancelDataRepositoryTask>
+
+Returns: a L<Paws::FSX::CancelDataRepositoryTaskResponse> instance
+
+Cancels an existing Amazon FSx for Lustre data repository task if that
+task is in either the C<PENDING> or C<EXECUTING> state. When you cancel
+a task, Amazon FSx does the following.
+
+=over
+
+=item *
+
+Any files that FSx has already exported are not reverted.
+
+=item *
+
+FSx continues to export any files that are "in-flight" when the cancel
+operation is received.
+
+=item *
+
+FSx does not export any files that have not yet been exported.
+
+=back
+
+
 
 =head2 CreateBackup
 
@@ -232,6 +283,44 @@ The C<CreateFileSystem> operation returns while the backup's lifecycle
 state is still C<CREATING>. You can check the file system creation
 status by calling the DescribeBackups operation, which returns the
 backup state along with other information.
+
+
+=head2 CreateDataRepositoryTask
+
+=over
+
+=item FileSystemId => Str
+
+=item Report => L<Paws::FSX::CompletionReport>
+
+=item Type => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Paths => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::CreateDataRepositoryTask>
+
+Returns: a L<Paws::FSX::CreateDataRepositoryTaskResponse> instance
+
+Creates an Amazon FSx for Lustre data repository task. You use data
+repository tasks to perform bulk operations between your Amazon FSx
+file system and its linked data repository. An example of a data
+repository task is exporting any data and metadata changes, including
+POSIX metadata, to files, directories, and symbolic links (symlinks)
+from your FSx file system to its linked data repository. A
+C<CreateDataRepositoryTask> operation will fail if a data repository is
+not linked to the FSx file system. To learn more about data repository
+tasks, see Using Data Repository Tasks
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html).
+To learn more about linking a data repository to your file system, see
+Step 1: Create Your Amazon FSx for Lustre File System
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/getting-started-step1.html).
 
 
 =head2 CreateFileSystem
@@ -429,6 +518,10 @@ systems in your account. If you pass the file system ID for a deleted
 file system, the DescribeFileSystems returns a C<FileSystemNotFound>
 error.
 
+Deleting an Amazon FSx for Lustre file system will fail with a 400
+BadRequest if a data repository task is in a C<PENDING> or C<EXECUTING>
+state.
+
 The data in a deleted file system is also deleted and can't be
 recovered by any means.
 
@@ -487,6 +580,41 @@ multi-call iteration is unspecified.
 
 =back
 
+
+
+=head2 DescribeDataRepositoryTasks
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::FSX::DataRepositoryTaskFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TaskIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::DescribeDataRepositoryTasks>
+
+Returns: a L<Paws::FSX::DescribeDataRepositoryTasksResponse> instance
+
+Returns the description of specific Amazon FSx for Lustre data
+repository tasks, if one or more C<TaskIds> values are provided in the
+request, or if filters are used in the request. You can use filters to
+narrow the response to include just tasks for specific file systems, or
+tasks in a specific lifecycle state. Otherwise, it returns all data
+repository tasks owned by your AWS account in the AWS Region of the
+endpoint that you're calling.
+
+When retrieving all tasks, you can paginate the response by using the
+optional C<MaxResults> parameter to limit the number of tasks returned
+in a response. If more tasks remain, Amazon FSx returns a C<NextToken>
+value in the response. In this case, send a later request with the
+C<NextToken> request parameter set to the value of C<NextToken> from
+the last response.
 
 
 =head2 DescribeFileSystems

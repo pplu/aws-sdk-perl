@@ -81,7 +81,7 @@ A description of a specific Amazon FSx file system.
 
   The ID of the AWS Key Management Service (AWS KMS) key used to encrypt
 the file system's data for an Amazon FSx for Windows File Server file
-system.
+system. Amazon FSx for Lustre does not support KMS encryption.
 
 
 =head2 Lifecycle => Str

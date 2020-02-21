@@ -77,7 +77,8 @@ is persisted even if the file system is deleted.
 =head2 KmsKeyId => Str
 
   The ID of the AWS Key Management Service (AWS KMS) key used to encrypt
-this backup's data.
+this backup of the Amazon FSx for Windows file system's data at rest.
+Amazon FSx for Lustre does not support KMS encryption.
 
 
 =head2 B<REQUIRED> Lifecycle => Str

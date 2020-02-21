@@ -41,9 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                      # min: 5, max: 5; OPTIONAL
         SelfManagedActiveDirectoryConfiguration => {
-          DnsIps   => [ 'MyIpAddress', ... ],    # min: 1, max: 2; OPTIONAL
-          Password => 'MyDirectoryPassword',     # min: 1, max: 256; OPTIONAL
-          UserName => 'MyDirectoryUserName',     # min: 1, max: 256; OPTIONAL
+          DnsIps => [
+            'MyIpAddress', ...                # min: 7, max: 15
+          ],                                  # min: 1, max: 2; OPTIONAL
+          Password => 'MyDirectoryPassword',  # min: 1, max: 256; OPTIONAL
+          UserName => 'MyDirectoryUserName',  # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
