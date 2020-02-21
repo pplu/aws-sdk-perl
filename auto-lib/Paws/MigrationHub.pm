@@ -60,6 +60,11 @@ package Paws::MigrationHub;
     my $call_object = $self->new_with_coercions('Paws::MigrationHub::ImportMigrationTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListApplicationStates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MigrationHub::ListApplicationStates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCreatedArtifacts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MigrationHub::ListCreatedArtifacts', @_);
@@ -96,6 +101,29 @@ package Paws::MigrationHub;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllApplicationStates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplicationStates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApplicationStates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ApplicationStateList }, @{ $next_result->ApplicationStateList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ApplicationStateList') foreach (@{ $result->ApplicationStateList });
+        $result = $self->ListApplicationStates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ApplicationStateList') foreach (@{ $result->ApplicationStateList });
+    }
+
+    return undef
+  }
   sub ListAllCreatedArtifacts {
     my $self = shift;
 
@@ -190,7 +218,7 @@ package Paws::MigrationHub;
   }
 
 
-  sub operations { qw/AssociateCreatedArtifact AssociateDiscoveredResource CreateProgressUpdateStream DeleteProgressUpdateStream DescribeApplicationState DescribeMigrationTask DisassociateCreatedArtifact DisassociateDiscoveredResource ImportMigrationTask ListCreatedArtifacts ListDiscoveredResources ListMigrationTasks ListProgressUpdateStreams NotifyApplicationState NotifyMigrationTaskState PutResourceAttributes / }
+  sub operations { qw/AssociateCreatedArtifact AssociateDiscoveredResource CreateProgressUpdateStream DeleteProgressUpdateStream DescribeApplicationState DescribeMigrationTask DisassociateCreatedArtifact DisassociateDiscoveredResource ImportMigrationTask ListApplicationStates ListCreatedArtifacts ListDiscoveredResources ListMigrationTasks ListProgressUpdateStreams NotifyApplicationState NotifyMigrationTaskState PutResourceAttributes / }
 
 1;
 
@@ -506,6 +534,28 @@ API as the migration tool must first register the migration task with
 Migration Hub.
 
 
+=head2 ListApplicationStates
+
+=over
+
+=item [ApplicationIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MigrationHub::ListApplicationStates>
+
+Returns: a L<Paws::MigrationHub::ListApplicationStatesResult> instance
+
+Lists all the migration statuses for your applications. If you use the
+optional C<ApplicationIds> parameter, only the migration statuses for
+those applications will be returned.
+
+
 =head2 ListCreatedArtifacts
 
 =over
@@ -753,6 +803,18 @@ found based on the provided details, call C<ListDiscoveredResources>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllApplicationStates(sub { },[ApplicationIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllApplicationStates([ApplicationIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ApplicationStateList, passing the object as the first parameter, and the string 'ApplicationStateList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListApplicationStatesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllCreatedArtifacts(sub { },MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
 
