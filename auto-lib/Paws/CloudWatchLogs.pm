@@ -526,6 +526,11 @@ encrypted with the CMK is still within Amazon CloudWatch Logs. This
 enables Amazon CloudWatch Logs to decrypt this data whenever it is
 requested.
 
+B<Important:> CloudWatch Logs supports only symmetric CMKs. Do not use
+an associate an asymmetric CMK with your log group. For more
+information, see Using Symmetric and Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
+
 Note that it can take up to 5 minutes for this operation to take
 effect.
 
@@ -647,6 +652,11 @@ If you attempt to associate a CMK with the log group but the CMK does
 not exist or the CMK is disabled, you will receive an
 C<InvalidParameterException> error.
 
+B<Important:> CloudWatch Logs supports only symmetric CMKs. Do not
+associate an asymmetric CMK with your log group. For more information,
+see Using Symmetric and Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
+
 
 =head2 CreateLogStream
 
@@ -666,7 +676,8 @@ Returns: nothing
 Creates a log stream for the specified log group.
 
 There is no limit on the number of log streams that you can create for
-a log group.
+a log group. There is a limit of 50 TPS on C<CreateLogStream>
+operations, after which transactions are throttled.
 
 You must use the following guidelines when naming a log stream:
 
@@ -1276,10 +1287,11 @@ Uploads a batch of log events to the specified log stream.
 
 You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
-a sequence token. You can also get the sequence token using
-DescribeLogStreams. If you call C<PutLogEvents> twice within a narrow
-time period using the same value for C<sequenceToken>, both calls may
-be successful, or one may be rejected.
+a sequence token. You can also get the sequence token in the
+C<expectedSequenceToken> field from C<InvalidSequenceTokenException>.
+If you call C<PutLogEvents> twice within a narrow time period using the
+same value for C<sequenceToken>, both calls may be successful, or one
+may be rejected.
 
 The batch of events must satisfy the following constraints:
 
@@ -1312,12 +1324,17 @@ specified in .NET format: yyyy-mm-ddThh:mm:ss. For example,
 
 =item *
 
+A batch of log events in a single request cannot span more than 24
+hours. Otherwise, the operation fails.
+
+=item *
+
 The maximum number of log events in a batch is 10,000.
 
 =item *
 
-A batch of log events in a single request cannot span more than 24
-hours. Otherwise, the operation fails.
+There is a quota of 5 requests per second per log stream. Additional
+requests are throttled. This quota can't be changed.
 
 =back
 
