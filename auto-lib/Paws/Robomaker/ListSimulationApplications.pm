@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $robomaker->ListSimulationApplications(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255
+          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
           Values => [
-            'MyName', ...        # min: 1, max: 255
+            'MyName', ...        # min: 1, max: 255; OPTIONAL
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -71,15 +71,13 @@ complete value of the filtered item. You can use up to three filters.
 
 =head2 MaxResults => Int
 
-The maximum number of deployment job results returned by
-C<ListSimulationApplications> in paginated output. When this parameter
-is used, C<ListSimulationApplications> only returns C<maxResults>
-results in a single page along with a C<nextToken> response element.
-The remaining results of the initial request can be seen by sending
-another C<ListSimulationApplications> request with the returned
-C<nextToken> value. This value can be between 1 and 100. If this
-parameter is not used, then C<ListSimulationApplications> returns up to
-100 results and a C<nextToken> value if applicable.
+When this parameter is used, C<ListSimulationApplications> only returns
+C<maxResults> results in a single page along with a C<nextToken>
+response element. The remaining results of the initial request can be
+seen by sending another C<ListSimulationApplications> request with the
+returned C<nextToken> value. This value can be between 1 and 100. If
+this parameter is not used, then C<ListSimulationApplications> returns
+up to 100 results and a C<nextToken> value if applicable.
 
 
 
@@ -90,10 +88,6 @@ C<ListSimulationApplications> request where C<maxResults> was used and
 the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the C<nextToken>
 value.
-
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
-purposes.
 
 
 

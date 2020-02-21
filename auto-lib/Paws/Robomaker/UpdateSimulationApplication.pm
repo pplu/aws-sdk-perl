@@ -100,7 +100,7 @@ The rendering engine for the simulation application.
 
 =head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
-Information about the robot software suite.
+Information about the robot software suite (ROS distribution).
 
 
 

@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Robomaker::
 
 =head1 DESCRIPTION
 
-Information about a robot software suite.
+Information about a robot software suite (ROS distribution).
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The name of the robot software suite.
+  The name of the robot software suite (ROS distribution).
 
 
 =head2 Version => Str
 
-  The version of the robot software suite.
+  The version of the robot software suite (ROS distribution).
 
 
 

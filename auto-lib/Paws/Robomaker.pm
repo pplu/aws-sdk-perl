@@ -29,6 +29,11 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelSimulationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelSimulationJobBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelSimulationJobBatch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDeploymentJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::CreateDeploymentJob', @_);
@@ -124,6 +129,11 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeSimulationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSimulationJobBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeSimulationJobBatch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDeploymentJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::ListDeploymentJobs', @_);
@@ -149,6 +159,11 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::ListSimulationApplications', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSimulationJobBatches {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::ListSimulationJobBatches', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSimulationJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::ListSimulationJobs', @_);
@@ -167,6 +182,11 @@ package Paws::Robomaker;
   sub RestartSimulationJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::RestartSimulationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartSimulationJobBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::StartSimulationJobBatch', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SyncDeploymentJob {
@@ -310,6 +330,29 @@ package Paws::Robomaker;
 
     return undef
   }
+  sub ListAllSimulationJobBatches {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSimulationJobBatches(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSimulationJobBatches(@_, nextToken => $next_result->nextToken);
+        push @{ $result->simulationJobBatchSummaries }, @{ $next_result->simulationJobBatchSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'simulationJobBatchSummaries') foreach (@{ $result->simulationJobBatchSummaries });
+        $result = $self->ListSimulationJobBatches(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'simulationJobBatchSummaries') foreach (@{ $result->simulationJobBatchSummaries });
+    }
+
+    return undef
+  }
   sub ListAllSimulationJobs {
     my $self = shift;
 
@@ -335,7 +378,7 @@ package Paws::Robomaker;
   }
 
 
-  sub operations { qw/BatchDescribeSimulationJob CancelDeploymentJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
+  sub operations { qw/BatchDescribeSimulationJob CancelDeploymentJob CancelSimulationJob CancelSimulationJobBatch CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob DescribeSimulationJobBatch ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobBatches ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob StartSimulationJobBatch SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
 
 1;
 
@@ -417,6 +460,24 @@ Each argument is described in detail in: L<Paws::Robomaker::CancelSimulationJob>
 Returns: a L<Paws::Robomaker::CancelSimulationJobResponse> instance
 
 Cancels the specified simulation job.
+
+
+=head2 CancelSimulationJobBatch
+
+=over
+
+=item Batch => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CancelSimulationJobBatch>
+
+Returns: a L<Paws::Robomaker::CancelSimulationJobBatchResponse> instance
+
+Cancels a simulation job batch. When you cancel a simulation job batch,
+you are also cancelling all of the active simulation jobs created as
+part of the batch.
 
 
 =head2 CreateDeploymentJob
@@ -802,6 +863,22 @@ Returns: a L<Paws::Robomaker::DescribeSimulationJobResponse> instance
 Describes a simulation job.
 
 
+=head2 DescribeSimulationJobBatch
+
+=over
+
+=item Batch => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::DescribeSimulationJobBatch>
+
+Returns: a L<Paws::Robomaker::DescribeSimulationJobBatchResponse> instance
+
+Describes a simulation job batch.
+
+
 =head2 ListDeploymentJobs
 
 =over
@@ -911,6 +988,27 @@ Returns a list of simulation applications. You can optionally provide
 filters to retrieve specific simulation applications.
 
 
+=head2 ListSimulationJobBatches
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::ListSimulationJobBatches>
+
+Returns: a L<Paws::Robomaker::ListSimulationJobBatchesResponse> instance
+
+Returns a list simulation job batches. You can optionally provide
+filters to retrieve specific simulation batch jobs.
+
+
 =head2 ListSimulationJobs
 
 =over
@@ -980,6 +1078,29 @@ Each argument is described in detail in: L<Paws::Robomaker::RestartSimulationJob
 Returns: a L<Paws::Robomaker::RestartSimulationJobResponse> instance
 
 Restarts a running simulation job.
+
+
+=head2 StartSimulationJobBatch
+
+=over
+
+=item CreateSimulationJobRequests => ArrayRef[L<Paws::Robomaker::SimulationJobRequest>]
+
+=item [BatchPolicy => L<Paws::Robomaker::BatchPolicy>]
+
+=item [ClientRequestToken => Str]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::StartSimulationJobBatch>
+
+Returns: a L<Paws::Robomaker::StartSimulationJobBatchResponse> instance
+
+Starts a new simulation job batch. The batch is defined using one or
+more C<SimulationJobRequest> objects.
 
 
 =head2 SyncDeploymentJob
@@ -1161,6 +1282,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - simulationApplicationSummaries, passing the object as the first parameter, and the string 'simulationApplicationSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::Robomaker::ListSimulationApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSimulationJobBatches(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSimulationJobBatches([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - simulationJobBatchSummaries, passing the object as the first parameter, and the string 'simulationJobBatchSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListSimulationJobBatchesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllSimulationJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])

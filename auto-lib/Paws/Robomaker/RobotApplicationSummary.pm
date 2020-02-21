@@ -58,7 +58,7 @@ was last updated.
 
 =head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
-  Information about a robot software suite.
+  Information about a robot software suite (ROS distribution).
 
 
 =head2 Version => Str

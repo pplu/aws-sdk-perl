@@ -117,11 +117,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       VpcConfig => {
         Subnets => [
-          'MyNonEmptyString', ...    # min: 1
+          'MyNonEmptyString', ...    # min: 1, max: 255
         ],                           # min: 1, max: 16
         AssignPublicIp => 1,         # OPTIONAL
         SecurityGroups => [
-          'MyNonEmptyString', ...    # min: 1
+          'MyNonEmptyString', ...    # min: 1, max: 255
         ],                           # min: 1, max: 5; OPTIONAL
       },    # OPTIONAL
     );
@@ -165,7 +165,9 @@ idempotency of the request.
 
 =head2 DataSources => ArrayRef[L<Paws::Robomaker::DataSourceConfig>]
 
-The data sources for the simulation job.
+Specify data sources to mount read-only files from S3 into your
+simulation. These files are available under
+C</opt/robomaker/datasources/data_source_name>.
 
 There is a limit of 100 files and a combined size of 25GB for all
 C<DataSourceConfig> objects.

@@ -52,7 +52,7 @@ The revision id of the simulation application.
 
 =head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
-Information about the robot software suite.
+Information about the robot software suite (ROS distribution).
 
 
 =head2 SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>

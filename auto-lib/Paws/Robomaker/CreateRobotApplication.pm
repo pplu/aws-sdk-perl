@@ -77,7 +77,8 @@ The name of the robot application.
 
 =head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
-The robot software suite used by the robot application.
+The robot software suite (ROS distribuition) used by the robot
+application.
 
 
 
