@@ -6,6 +6,7 @@ package Paws::IAM::SimulateCustomPolicy;
   has ContextEntries => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ContextEntry]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
+  has PermissionsBoundaryPolicyInputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceHandlingOption => (is => 'ro', isa => 'Str');
@@ -53,11 +54,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                           # OPTIONAL
-      Marker       => 'MymarkerType',                              # OPTIONAL
-      MaxItems     => 1,                                           # OPTIONAL
+      Marker                             => 'MymarkerType',        # OPTIONAL
+      MaxItems                           => 1,                     # OPTIONAL
+      PermissionsBoundaryPolicyInputList => [
+        'MypolicyDocumentType', ...    # min: 1, max: 131072
+      ],                               # OPTIONAL
       ResourceArns => [
-        'MyResourceNameType', ...    # min: 1, max: 2048
-      ],                             # OPTIONAL
+        'MyResourceNameType', ...      # min: 1, max: 2048
+      ],                               # OPTIONAL
       ResourceHandlingOption => 'MyResourceHandlingOptionType',    # OPTIONAL
       ResourceOwner          => 'MyResourceNameType',              # OPTIONAL
       ResourcePolicy         => 'MypolicyDocumentType',            # OPTIONAL
@@ -128,6 +132,43 @@ subsequent call that tells the service where to continue from.
 
 
 
+=head2 PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef]
+
+The IAM permissions boundary policy to simulate. The permissions
+boundary sets the maximum permissions that an IAM entity can have. You
+can input only one permissions boundary when you pass a policy to this
+operation. For more information about permissions boundaries, see
+Permissions Boundaries for IAM Entities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>. The policy input is specified as a string
+that contains the complete, valid JSON text of a permissions boundary
+policy.
+
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through C<\u00FF>)
+
+=item *
+
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
+
+=back
+
+
+
+
 =head2 B<REQUIRED> PolicyInputList => ArrayRef[Str|Undef]
 
 A list of policy documents to include in the simulation. Each document
@@ -149,18 +190,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character (\u0020)
-through the end of the ASCII character range
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \u00FF)
+character set (through C<\u00FF>)
 
 =item *
 
-The special characters tab (\u0009), line feed (\u000A), and carriage
-return (\u000D)
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
 
 =back
 
@@ -290,18 +331,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character (\u0020)
-through the end of the ASCII character range
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \u00FF)
+character set (through C<\u00FF>)
 
 =item *
 
-The special characters tab (\u0009), line feed (\u000A), and carriage
-return (\u000D)
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
 
 =back
 

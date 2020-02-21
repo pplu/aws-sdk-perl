@@ -7,6 +7,7 @@ package Paws::IAM::EvaluationResult;
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OrganizationsDecisionDetail => (is => 'ro', isa => 'Paws::IAM::OrganizationsDecisionDetail');
+  has PermissionsBoundaryDecisionDetail => (is => 'ro', isa => 'Paws::IAM::PermissionsBoundaryDecisionDetail');
   has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
 1;
 
@@ -58,13 +59,25 @@ SimulateCustomPolicy > and C< SimulatePrincipalPolicy >.
 
 =head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
 
-  Additional details about the results of the evaluation decision. When
-there are both IAM policies and resource policies, this parameter
-explains how each set of policies contributes to the final evaluation
-decision. When simulating cross-account access to a resource, both the
-resource-based policy and the caller's IAM policy must grant access.
-See How IAM Roles Differ from Resource-based Policies
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html)
+  Additional details about the results of the cross-account evaluation
+decision. This parameter is populated for only cross-account
+simulations. It contains a brief summary of how each policy type
+contributes to the final evaluation decision.
+
+If the simulation evaluates policies within the same account and
+includes a resource ARN, then the parameter is present but the response
+is empty. If the simulation evaluates policies within the same account
+and specifies all resources (C<*>), then the parameter is not returned.
+
+When you make a cross-account request, AWS evaluates the request in the
+trusting account and the trusted account. The request is allowed only
+if both evaluations return C<true>. For more information about how
+policies are evaluated, see Evaluating Policies Within a Single Account
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics).
+
+If an AWS Organizations SCP included in the evaluation denies access,
+the simulation ends. In this case, policy evaluation does not proceed
+any further and this parameter is not returned.
 
 
 =head2 EvalResourceName => Str
@@ -98,6 +111,12 @@ or GetContextKeysForPrincipalPolicy.
   A structure that details how Organizations and its service control
 policies affect the results of the simulation. Only applies if the
 simulated user's account is part of an organization.
+
+
+=head2 PermissionsBoundaryDecisionDetail => L<Paws::IAM::PermissionsBoundaryDecisionDetail>
+
+  Contains information about the effect that a permissions boundary has
+on a policy simulation when the boundary is applied to an IAM entity.
 
 
 =head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]

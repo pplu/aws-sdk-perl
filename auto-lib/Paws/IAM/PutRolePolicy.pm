@@ -62,18 +62,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character (\u0020)
-through the end of the ASCII character range
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \u00FF)
+character set (through C<\u00FF>)
 
 =item *
 
-The special characters tab (\u0009), line feed (\u000A), and carriage
-return (\u000D)
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
 
 =back
 
