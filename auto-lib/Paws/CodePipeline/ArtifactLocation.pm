@@ -39,7 +39,7 @@ Represents information about the location of an artifact.
 
 =head2 S3Location => L<Paws::CodePipeline::S3ArtifactLocation>
 
-  The Amazon S3 bucket that contains the artifact.
+  The S3 bucket that contains the artifact.
 
 
 =head2 Type => Str

@@ -57,9 +57,8 @@ Represents information about the job data for a partner action.
 
   Represents an AWS session credentials object. These credentials are
 temporary credentials that are issued by AWS Secure Token Service
-(STS). They can be used to access input and output artifacts in the
-Amazon S3 bucket used to store artifact for the pipeline in AWS
-CodePipeline.
+(STS). They can be used to access input and output artifacts in the S3
+bucket used to store artifact for the pipeline in AWS CodePipeline.
 
 
 =head2 ContinuationToken => Str

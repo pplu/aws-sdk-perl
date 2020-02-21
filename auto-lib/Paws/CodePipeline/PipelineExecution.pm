@@ -52,12 +52,13 @@ Represents information about an execution of a pipeline.
 
 =head2 PipelineName => Str
 
-  The name of the pipeline that was executed.
+  The name of the pipeline with the specified pipeline execution.
 
 
 =head2 PipelineVersion => Int
 
-  The version number of the pipeline that was executed.
+  The version number of the pipeline with the specified pipeline
+execution.
 
 
 =head2 Status => Str
@@ -72,13 +73,29 @@ InProgress: The pipeline execution is currently running.
 
 =item *
 
+Stopped: The pipeline execution was manually stopped. For more
+information, see Stopped Executions
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html#concepts-executions-stopped).
+
+=item *
+
+Stopping: The pipeline execution received a request to be manually
+stopped. Depending on the selected stop mode, the execution is either
+completing or abandoning in-progress actions. For more information, see
+Stopped Executions
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html#concepts-executions-stopped).
+
+=item *
+
 Succeeded: The pipeline execution was completed successfully.
 
 =item *
 
 Superseded: While this pipeline execution was waiting for the next
 stage to be completed, a newer pipeline execution advanced and
-continued through the pipeline instead.
+continued through the pipeline instead. For more information, see
+Superseded Executions
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html#concepts-superseded).
 
 =item *
 

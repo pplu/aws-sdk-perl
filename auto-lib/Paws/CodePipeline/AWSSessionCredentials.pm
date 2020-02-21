@@ -35,9 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 Represents an AWS session credentials object. These credentials are
 temporary credentials that are issued by AWS Secure Token Service
-(STS). They can be used to access input and output artifacts in the
-Amazon S3 bucket used to store artifact for the pipeline in AWS
-CodePipeline.
+(STS). They can be used to access input and output artifacts in the S3
+bucket used to store artifact for the pipeline in AWS CodePipeline.
 
 =head1 ATTRIBUTES
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-The Amazon S3 bucket where artifacts for the pipeline are stored.
+The S3 bucket where artifacts for the pipeline are stored.
 
 You must include either C<artifactStore> or C<artifactStores> in your
 pipeline, but you cannot use both. If you create a cross-region action
@@ -51,11 +51,11 @@ the default key for Amazon S3 is used.
 
 =head2 B<REQUIRED> Location => Str
 
-  The Amazon S3 bucket used for storing the artifacts for a pipeline. You
-can specify the name of an S3 bucket but not a folder in the bucket. A
+  The S3 bucket used for storing the artifacts for a pipeline. You can
+specify the name of an S3 bucket but not a folder in the bucket. A
 folder to contain the pipeline artifacts is created for you based on
-the name of the pipeline. You can use any Amazon S3 bucket in the same
-AWS Region as the pipeline to store your pipeline artifacts.
+the name of the pipeline. You can use any S3 bucket in the same AWS
+Region as the pipeline to store your pipeline artifacts.
 
 
 =head2 B<REQUIRED> Type => Str

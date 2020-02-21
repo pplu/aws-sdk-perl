@@ -90,7 +90,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type => 'KMS',                               # values: KMS
 
           },    # OPTIONAL
-        },
+        },    # OPTIONAL
         ArtifactStores => {
           'MyAWSRegionName' => {
             Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
@@ -100,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Type => 'KMS',                               # values: KMS
 
             },    # OPTIONAL
-          },    # key: min: 4, max: 30; OPTIONAL
+          },    # key: min: 4, max: 30; OPTIONAL, value: OPTIONAL
         },    # OPTIONAL
         Version => 1,    # min: 1; OPTIONAL
       },

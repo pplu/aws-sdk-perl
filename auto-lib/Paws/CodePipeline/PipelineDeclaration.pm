@@ -44,8 +44,8 @@ pipeline.
 
 =head2 ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
 
-  Represents information about the Amazon S3 bucket where artifacts are
-stored for the pipeline.
+  Represents information about the S3 bucket where artifacts are stored
+for the pipeline.
 
 You must include either C<artifactStore> or C<artifactStores> in your
 pipeline, but you cannot use both. If you create a cross-region action

@@ -180,6 +180,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::StartPipelineExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StopPipelineExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::StopPipelineExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::TagResource', @_);
@@ -336,7 +341,7 @@ package Paws::CodePipeline;
   }
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListTagsForResource ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution TagResource UntagResource UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListTagsForResource ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution StopPipelineExecution TagResource UntagResource UpdatePipeline / }
 
 1;
 
@@ -428,6 +433,11 @@ executions for a pipeline.
 
 StartPipelineExecution, which runs the most recent revision of an
 artifact through the pipeline.
+
+=item *
+
+StopPipelineExecution, which stops the specified pipeline execution
+from continuing through the pipeline.
 
 =item *
 
@@ -817,10 +827,9 @@ Returns: a L<Paws::CodePipeline::GetJobDetailsOutput> instance
 Returns information about a job. Used for custom actions only.
 
 When this API is called, AWS CodePipeline returns temporary credentials
-for the Amazon S3 bucket used to store artifacts for the pipeline, if
-the action requires access to that Amazon S3 bucket for input or output
-artifacts. This API also returns any secret values defined for the
-action.
+for the S3 bucket used to store artifacts for the pipeline, if the
+action requires access to that S3 bucket for input or output artifacts.
+This API also returns any secret values defined for the action.
 
 
 =head2 GetPipeline
@@ -904,10 +913,9 @@ Requests the details of a job for a third party action. Used for
 partner actions only.
 
 When this API is called, AWS CodePipeline returns temporary credentials
-for the Amazon S3 bucket used to store artifacts for the pipeline, if
-the action requires access to that Amazon S3 bucket for input or output
-artifacts. This API also returns any secret values defined for the
-action.
+for the S3 bucket used to store artifacts for the pipeline, if the
+action requires access to that S3 bucket for input or output artifacts.
+This API also returns any secret values defined for the action.
 
 
 =head2 ListActionExecutions
@@ -1051,10 +1059,9 @@ owner field. If the action type contains "AWS" or "ThirdParty" in the
 owner field, the C<PollForJobs> action returns an error.
 
 When this API is called, AWS CodePipeline returns temporary credentials
-for the Amazon S3 bucket used to store artifacts for the pipeline, if
-the action requires access to that Amazon S3 bucket for input or output
-artifacts. This API also returns any secret values defined for the
-action.
+for the S3 bucket used to store artifacts for the pipeline, if the
+action requires access to that S3 bucket for input or output artifacts.
+This API also returns any secret values defined for the action.
 
 
 =head2 PollForThirdPartyJobs
@@ -1076,9 +1083,8 @@ Determines whether there are any third party jobs for a job worker to
 act on. Used for partner actions only.
 
 When this API is called, AWS CodePipeline returns temporary credentials
-for the Amazon S3 bucket used to store artifacts for the pipeline, if
-the action requires access to that Amazon S3 bucket for input or output
-artifacts.
+for the S3 bucket used to store artifacts for the pipeline, if the
+action requires access to that S3 bucket for input or output artifacts.
 
 
 =head2 PutActionRevision
@@ -1304,6 +1310,33 @@ Returns: a L<Paws::CodePipeline::StartPipelineExecutionOutput> instance
 
 Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.
+
+
+=head2 StopPipelineExecution
+
+=over
+
+=item PipelineExecutionId => Str
+
+=item PipelineName => Str
+
+=item [Abandon => Bool]
+
+=item [Reason => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::StopPipelineExecution>
+
+Returns: a L<Paws::CodePipeline::StopPipelineExecutionOutput> instance
+
+Stops the specified pipeline execution. You choose to either stop the
+pipeline execution by completing in-progress actions without starting
+subsequent actions, or by abandoning in-progress actions. While
+completing or abandoning in-progress actions, the pipeline execution is
+in a C<Stopping> state. After all in-progress actions are completed or
+abandoned, the pipeline execution is in a C<Stopped> state.
 
 
 =head2 TagResource

@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-The location of the Amazon S3 bucket that contains a revision.
+The location of the S3 bucket that contains a revision.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BucketName => Str
 
-  The name of the Amazon S3 bucket.
+  The name of the S3 bucket.
 
 
 =head2 B<REQUIRED> ObjectKey => Str
 
-  The key of the object in the Amazon S3 bucket, which uniquely
-identifies the object in the bucket.
+  The key of the object in the S3 bucket, which uniquely identifies the
+object in the bucket.
 
 
 
