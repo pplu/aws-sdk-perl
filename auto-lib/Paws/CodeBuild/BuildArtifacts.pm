@@ -70,11 +70,11 @@ is set to C<ZIP>.
 
 =head2 OverrideArtifactName => Bool
 
-  If this flag is set, a name specified in the build spec file overrides
-the artifact name. The name specified in a build spec file is
-calculated at build time and uses the Shell Command Language. For
-example, you can append a date and time to your artifact name so that
-it is always unique.
+  If this flag is set, a name specified in the buildspec file overrides
+the artifact name. The name specified in a buildspec file is calculated
+at build time and uses the Shell Command Language. For example, you can
+append a date and time to your artifact name so that it is always
+unique.
 
 
 =head2 Sha256sum => Str

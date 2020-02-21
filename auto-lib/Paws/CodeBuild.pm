@@ -70,6 +70,11 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteReportGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSourceCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteSourceCredentials', @_);
@@ -83,6 +88,11 @@ package Paws::CodeBuild;
   sub DescribeTestCases {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DescribeTestCases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::GetResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ImportSourceCredentials {
@@ -130,9 +140,24 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListReportsForReportGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSharedProjects {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSharedProjects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSharedReportGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSharedReportGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSourceCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSourceCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartBuild {
@@ -232,7 +257,7 @@ package Paws::CodeBuild;
   }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects BatchGetReportGroups BatchGetReports CreateProject CreateReportGroup CreateWebhook DeleteProject DeleteReport DeleteReportGroup DeleteSourceCredentials DeleteWebhook DescribeTestCases ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListReportGroups ListReports ListReportsForReportGroup ListSourceCredentials StartBuild StopBuild UpdateProject UpdateReportGroup UpdateWebhook / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects BatchGetReportGroups BatchGetReports CreateProject CreateReportGroup CreateWebhook DeleteProject DeleteReport DeleteReportGroup DeleteResourcePolicy DeleteSourceCredentials DeleteWebhook DescribeTestCases GetResourcePolicy ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListReportGroups ListReports ListReportsForReportGroup ListSharedProjects ListSharedReportGroups ListSourceCredentials PutResourcePolicy StartBuild StopBuild UpdateProject UpdateReportGroup UpdateWebhook / }
 
 1;
 
@@ -335,6 +360,11 @@ C<DeleteReportGroup>: Deletes a report group.
 
 =item *
 
+C<DeleteResourcePolicy>: Deletes a resource policy that is identified
+by its resource ARN.
+
+=item *
+
 C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
 or Bitbucket source credentials.
 
@@ -349,6 +379,11 @@ pushed to the repository.
 
 C<DescribeTestCases>: Returns a list of details about test cases for a
 report.
+
+=item *
+
+C<GetResourcePolicy>: Gets a resource policy that is identified by its
+resource ARN.
 
 =item *
 
@@ -397,10 +432,25 @@ that belong to a C<ReportGroup>.
 
 =item *
 
+C<ListSharedProjects>: Gets a list of ARNs associated with projects
+shared with the current AWS account or user.
+
+=item *
+
+C<ListSharedReportGroups>: Gets a list of ARNs associated with report
+groups shared with the current AWS account or user
+
+=item *
+
 C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
 objects. Each C<SourceCredentialsInfo> object includes the
 authentication type, token ARN, and type of source provider for one set
 of credentials.
+
+=item *
+
+C<PutResourcePolicy>: Stores a resource policy for the ARN of a
+C<Project> or C<ReportGroup> object.
 
 =item *
 
@@ -531,6 +581,8 @@ Returns an array of reports.
 =item [Description => Str]
 
 =item [EncryptionKey => Str]
+
+=item [FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]]
 
 =item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 
@@ -670,6 +722,22 @@ to delete the reports. If you call C<DeleteReportGroup> for a report
 group that contains one or more reports, an exception is thrown.
 
 
+=head2 DeleteResourcePolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteResourcePolicy>
+
+Returns: a L<Paws::CodeBuild::DeleteResourcePolicyOutput> instance
+
+Deletes a resource policy that is identified by its resource ARN.
+
+
 =head2 DeleteSourceCredentials
 
 =over
@@ -726,6 +794,22 @@ Each argument is described in detail in: L<Paws::CodeBuild::DescribeTestCases>
 Returns: a L<Paws::CodeBuild::DescribeTestCasesOutput> instance
 
 Returns a list of details about test cases for a report.
+
+
+=head2 GetResourcePolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::GetResourcePolicy>
+
+Returns: a L<Paws::CodeBuild::GetResourcePolicyOutput> instance
+
+Gets a resource policy that is identified by its resource ARN.
 
 
 =head2 ImportSourceCredentials
@@ -913,6 +997,52 @@ Returns: a L<Paws::CodeBuild::ListReportsForReportGroupOutput> instance
 Returns a list of ARNs for the reports that belong to a C<ReportGroup>.
 
 
+=head2 ListSharedProjects
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListSharedProjects>
+
+Returns: a L<Paws::CodeBuild::ListSharedProjectsOutput> instance
+
+Gets a list of projects that are shared with other AWS accounts or
+users.
+
+
+=head2 ListSharedReportGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListSharedReportGroups>
+
+Returns: a L<Paws::CodeBuild::ListSharedReportGroupsOutput> instance
+
+Gets a list of report groups that are shared with other AWS accounts or
+users.
+
+
 =head2 ListSourceCredentials
 
 
@@ -925,6 +1055,25 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListSourceCredential
 Returns: a L<Paws::CodeBuild::ListSourceCredentialsOutput> instance
 
 Returns a list of C<SourceCredentialsInfo> objects.
+
+
+=head2 PutResourcePolicy
+
+=over
+
+=item Policy => Str
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::PutResourcePolicy>
+
+Returns: a L<Paws::CodeBuild::PutResourcePolicyOutput> instance
+
+Stores a resource policy for the ARN of a C<Project> or C<ReportGroup>
+object.
 
 
 =head2 StartBuild
@@ -942,6 +1091,8 @@ Returns a list of C<SourceCredentialsInfo> objects.
 =item [CertificateOverride => Str]
 
 =item [ComputeTypeOverride => Str]
+
+=item [EncryptionKeyOverride => Str]
 
 =item [EnvironmentTypeOverride => Str]
 
@@ -1030,6 +1181,8 @@ Attempts to stop running a build.
 =item [EncryptionKey => Str]
 
 =item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
+
+=item [FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]]
 
 =item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 

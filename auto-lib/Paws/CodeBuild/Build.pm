@@ -11,6 +11,7 @@ package Paws::CodeBuild::Build;
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has ExportedEnvironmentVariables => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ExportedEnvironmentVariable]', request_name => 'exportedEnvironmentVariables', traits => ['NameInRequest']);
+  has FileSystemLocations => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectFileSystemLocation]', request_name => 'fileSystemLocations', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Initiator => (is => 'ro', isa => 'Str', request_name => 'initiator', traits => ['NameInRequest']);
   has Logs => (is => 'ro', isa => 'Paws::CodeBuild::LogsLocation', request_name => 'logs', traits => ['NameInRequest']);
@@ -156,6 +157,14 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 =head2 ExportedEnvironmentVariables => ArrayRef[L<Paws::CodeBuild::ExportedEnvironmentVariable>]
 
   A list of exported environment variables for this build.
+
+
+=head2 FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]
+
+  An array of C<ProjectFileSystemLocation> objects for a CodeBuild build
+project. A C<ProjectFileSystemLocation> object specifies the
+C<identifier>, C<location>, C<mountOptions>, C<mountPoint>, and C<type>
+of a file system created using Amazon Elastic File System.
 
 
 =head2 Id => Str

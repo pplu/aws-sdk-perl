@@ -7,6 +7,7 @@ package Paws::CodeBuild::UpdateProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' );
+  has FileSystemLocations => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectFileSystemLocation]', traits => ['NameInRequest'], request_name => 'fileSystemLocations' );
   has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfig' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutes' );
@@ -93,11 +94,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
       },    # OPTIONAL
+      FileSystemLocations => [
+        {
+          Identifier   => 'MyString',    # OPTIONAL
+          Location     => 'MyString',    # OPTIONAL
+          MountOptions => 'MyString',    # OPTIONAL
+          MountPoint   => 'MyString',    # OPTIONAL
+          Type         => 'EFS',         # values: EFS; OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
       LogsConfig => {
         CloudWatchLogs => {
-          Status     => 'ENABLED',     # values: ENABLED, DISABLED
-          GroupName  => 'MyString',    # OPTIONAL
-          StreamName => 'MyString',    # OPTIONAL
+          Status     => 'ENABLED',       # values: ENABLED, DISABLED
+          GroupName  => 'MyString',      # OPTIONAL
+          StreamName => 'MyString',      # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
           Status             => 'ENABLED',     # values: ENABLED, DISABLED
@@ -243,6 +254,15 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 Information to be changed about the build environment for the build
 project.
+
+
+
+=head2 FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]
+
+An array of C<ProjectFileSystemLocation> objects for a CodeBuild build
+project. A C<ProjectFileSystemLocation> object specifies the
+C<identifier>, C<location>, C<mountOptions>, C<mountPoint>, and C<type>
+of a file system created using Amazon Elastic File System.
 
 
 

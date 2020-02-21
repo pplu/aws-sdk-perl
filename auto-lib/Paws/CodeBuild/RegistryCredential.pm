@@ -60,7 +60,7 @@ Sample for AWS CodeBuild
 Secrets Manager.
 
 The C<credential> can use the name of the credentials only if they
-exist in your current region.
+exist in your current AWS Region.
 
 
 =head2 B<REQUIRED> CredentialProvider => Str

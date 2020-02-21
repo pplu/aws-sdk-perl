@@ -48,7 +48,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> Names => ArrayRef[Str|Undef]
 
-The names of the build projects.
+The names or ARNs of the build projects. To get information about a
+project shared with your AWS account, its ARN must be specified. You
+cannot specify a shared project using its name.
 
 
 
