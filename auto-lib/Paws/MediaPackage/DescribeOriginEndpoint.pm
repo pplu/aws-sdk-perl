@@ -34,16 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn          = $DescribeOriginEndpointResponse->Arn;
-    my $ChannelId    = $DescribeOriginEndpointResponse->ChannelId;
-    my $CmafPackage  = $DescribeOriginEndpointResponse->CmafPackage;
-    my $DashPackage  = $DescribeOriginEndpointResponse->DashPackage;
-    my $Description  = $DescribeOriginEndpointResponse->Description;
-    my $HlsPackage   = $DescribeOriginEndpointResponse->HlsPackage;
-    my $Id           = $DescribeOriginEndpointResponse->Id;
-    my $ManifestName = $DescribeOriginEndpointResponse->ManifestName;
-    my $MssPackage   = $DescribeOriginEndpointResponse->MssPackage;
-    my $Origination  = $DescribeOriginEndpointResponse->Origination;
+    my $Arn           = $DescribeOriginEndpointResponse->Arn;
+    my $Authorization = $DescribeOriginEndpointResponse->Authorization;
+    my $ChannelId     = $DescribeOriginEndpointResponse->ChannelId;
+    my $CmafPackage   = $DescribeOriginEndpointResponse->CmafPackage;
+    my $DashPackage   = $DescribeOriginEndpointResponse->DashPackage;
+    my $Description   = $DescribeOriginEndpointResponse->Description;
+    my $HlsPackage    = $DescribeOriginEndpointResponse->HlsPackage;
+    my $Id            = $DescribeOriginEndpointResponse->Id;
+    my $ManifestName  = $DescribeOriginEndpointResponse->ManifestName;
+    my $MssPackage    = $DescribeOriginEndpointResponse->MssPackage;
+    my $Origination   = $DescribeOriginEndpointResponse->Origination;
     my $StartoverWindowSeconds =
       $DescribeOriginEndpointResponse->StartoverWindowSeconds;
     my $Tags             = $DescribeOriginEndpointResponse->Tags;

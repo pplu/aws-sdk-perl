@@ -1,5 +1,6 @@
 package Paws::MediaPackage::OriginEndpointCreateParameters;
   use Moose;
+  has Authorization => (is => 'ro', isa => 'Paws::MediaPackage::Authorization', request_name => 'authorization', traits => ['NameInRequest']);
   has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest'], required => 1);
   has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', request_name => 'cmafPackage', traits => ['NameInRequest']);
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
@@ -32,20 +33,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackage::OriginEndpointCreateParameters object:
 
-  $service_obj->Method(Att1 => { ChannelId => $value, ..., Whitelist => $value  });
+  $service_obj->Method(Att1 => { Authorization => $value, ..., Whitelist => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaPackage::OriginEndpointCreateParameters object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ChannelId
+  $result->Att1->Authorization
 
 =head1 DESCRIPTION
 
 Configuration parameters for a new OriginEndpoint.
 
 =head1 ATTRIBUTES
+
+
+=head2 Authorization => L<Paws::MediaPackage::Authorization>
+
+  
 
 
 =head2 B<REQUIRED> ChannelId => Str

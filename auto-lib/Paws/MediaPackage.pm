@@ -263,6 +263,8 @@ Creates a new HarvestJob record.
 
 =item Id => Str
 
+=item [Authorization => L<Paws::MediaPackage::Authorization>]
+
 =item [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>]
 
 =item [DashPackage => L<Paws::MediaPackage::DashPackage>]
@@ -547,6 +549,8 @@ Updates an existing Channel.
 =over
 
 =item Id => Str
+
+=item [Authorization => L<Paws::MediaPackage::Authorization>]
 
 =item [CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>]
 

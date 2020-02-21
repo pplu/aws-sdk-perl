@@ -1,6 +1,7 @@
 
 package Paws::MediaPackage::UpdateOriginEndpoint;
   use Moose;
+  has Authorization => (is => 'ro', isa => 'Paws::MediaPackage::Authorization', traits => ['NameInRequest'], request_name => 'authorization');
   has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', traits => ['NameInRequest'], request_name => 'cmafPackage');
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
@@ -39,7 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediapackage = Paws->service('MediaPackage');
     my $UpdateOriginEndpointResponse = $mediapackage->UpdateOriginEndpoint(
-      Id          => 'My__string',
+      Id            => 'My__string',
+      Authorization => {
+        CdnIdentifierSecret => 'My__string',
+        SecretsRoleArn      => 'My__string',
+
+      },    # OPTIONAL
       CmafPackage => {
         Encryption => {
           SpekeKeyProvider => {
@@ -179,16 +185,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn          = $UpdateOriginEndpointResponse->Arn;
-    my $ChannelId    = $UpdateOriginEndpointResponse->ChannelId;
-    my $CmafPackage  = $UpdateOriginEndpointResponse->CmafPackage;
-    my $DashPackage  = $UpdateOriginEndpointResponse->DashPackage;
-    my $Description  = $UpdateOriginEndpointResponse->Description;
-    my $HlsPackage   = $UpdateOriginEndpointResponse->HlsPackage;
-    my $Id           = $UpdateOriginEndpointResponse->Id;
-    my $ManifestName = $UpdateOriginEndpointResponse->ManifestName;
-    my $MssPackage   = $UpdateOriginEndpointResponse->MssPackage;
-    my $Origination  = $UpdateOriginEndpointResponse->Origination;
+    my $Arn           = $UpdateOriginEndpointResponse->Arn;
+    my $Authorization = $UpdateOriginEndpointResponse->Authorization;
+    my $ChannelId     = $UpdateOriginEndpointResponse->ChannelId;
+    my $CmafPackage   = $UpdateOriginEndpointResponse->CmafPackage;
+    my $DashPackage   = $UpdateOriginEndpointResponse->DashPackage;
+    my $Description   = $UpdateOriginEndpointResponse->Description;
+    my $HlsPackage    = $UpdateOriginEndpointResponse->HlsPackage;
+    my $Id            = $UpdateOriginEndpointResponse->Id;
+    my $ManifestName  = $UpdateOriginEndpointResponse->ManifestName;
+    my $MssPackage    = $UpdateOriginEndpointResponse->MssPackage;
+    my $Origination   = $UpdateOriginEndpointResponse->Origination;
     my $StartoverWindowSeconds =
       $UpdateOriginEndpointResponse->StartoverWindowSeconds;
     my $Tags             = $UpdateOriginEndpointResponse->Tags;
@@ -202,6 +209,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage/UpdateOriginEndpoint>
 
 =head1 ATTRIBUTES
+
+
+=head2 Authorization => L<Paws::MediaPackage::Authorization>
+
+
+
 
 
 =head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>

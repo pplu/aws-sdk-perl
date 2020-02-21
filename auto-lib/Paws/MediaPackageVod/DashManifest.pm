@@ -1,5 +1,6 @@
 package Paws::MediaPackageVod::DashManifest;
   use Moose;
+  has ManifestLayout => (is => 'ro', isa => 'Str', request_name => 'manifestLayout', traits => ['NameInRequest']);
   has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
   has MinBufferTimeSeconds => (is => 'ro', isa => 'Int', request_name => 'minBufferTimeSeconds', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
@@ -23,20 +24,29 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackageVod::DashManifest object:
 
-  $service_obj->Method(Att1 => { ManifestName => $value, ..., StreamSelection => $value  });
+  $service_obj->Method(Att1 => { ManifestLayout => $value, ..., StreamSelection => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaPackageVod::DashManifest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ManifestName
+  $result->Att1->ManifestLayout
 
 =head1 DESCRIPTION
 
 A DASH manifest configuration.
 
 =head1 ATTRIBUTES
+
+
+=head2 ManifestLayout => Str
+
+  Determines the position of some tags in the Media Presentation
+Description (MPD). When set to FULL, elements like SegmentTemplate and
+ContentProtection are included in each Representation. When set to
+COMPACT, duplicate elements are combined and presented at the
+AdaptationSet level.
 
 
 =head2 ManifestName => Str
