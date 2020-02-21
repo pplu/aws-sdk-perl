@@ -5,6 +5,7 @@ package Paws::Chime::ListUsers;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
   has UserEmail => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'user-email');
+  has UserType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'user-type');
 
   use MooseX::ClassAttribute;
 
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults => 1,                    # OPTIONAL
       NextToken  => 'MyString',           # OPTIONAL
       UserEmail  => 'MyEmailAddress',     # OPTIONAL
+      UserType   => 'PrivateUser',        # OPTIONAL
     );
 
     # Results:
@@ -74,6 +76,12 @@ The token to use to retrieve the next page of results.
 Optional. The user email address used to filter results. Maximum 1.
 
 
+
+=head2 UserType => Str
+
+The user type.
+
+Valid values are: C<"PrivateUser">, C<"SharedDevice">
 
 
 =head1 SEE ALSO

@@ -29,6 +29,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::AssociatePhoneNumberWithUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateSigninDelegateGroupsWithAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::AssociateSigninDelegateGroupsWithAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchCreateAttendee {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::BatchCreateAttendee', @_);
@@ -97,6 +102,11 @@ package Paws::Chime;
   sub CreateRoomMembership {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateRoomMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateVoiceConnector {
@@ -187,6 +197,11 @@ package Paws::Chime;
   sub DisassociatePhoneNumbersFromVoiceConnectorGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateSigninDelegateGroupsFromAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DisassociateSigninDelegateGroupsFromAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAccount {
@@ -518,7 +533,7 @@ package Paws::Chime;
   }
 
 
-  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser BatchCreateAttendee BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAttendee CreateBot CreateMeeting CreatePhoneNumberOrder CreateRoom CreateRoomMembership CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAttendee DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteRoom DeleteRoomMembership DeleteVoiceConnector DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup GetAccount GetAccountSettings GetAttendee GetBot GetEventsConfiguration GetGlobalSettings GetMeeting GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetRoom GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAttendees ListBots ListMeetings ListPhoneNumberOrders ListPhoneNumbers ListRoomMemberships ListRooms ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateRoom UpdateRoomMembership UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
+  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser AssociateSigninDelegateGroupsWithAccount BatchCreateAttendee BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAttendee CreateBot CreateMeeting CreatePhoneNumberOrder CreateRoom CreateRoomMembership CreateUser CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAttendee DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteRoom DeleteRoomMembership DeleteVoiceConnector DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup DisassociateSigninDelegateGroupsFromAccount GetAccount GetAccountSettings GetAttendee GetBot GetEventsConfiguration GetGlobalSettings GetMeeting GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetRoom GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAttendees ListBots ListMeetings ListPhoneNumberOrders ListPhoneNumbers ListRoomMemberships ListRooms ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateRoom UpdateRoomMembership UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
 
 1;
 
@@ -667,6 +682,25 @@ Returns: a L<Paws::Chime::AssociatePhoneNumberWithUserResponse> instance
 Associates a phone number with the specified Amazon Chime user.
 
 
+=head2 AssociateSigninDelegateGroupsWithAccount
+
+=over
+
+=item AccountId => Str
+
+=item SigninDelegateGroups => ArrayRef[L<Paws::Chime::SigninDelegateGroup>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::AssociateSigninDelegateGroupsWithAccount>
+
+Returns: a L<Paws::Chime::AssociateSigninDelegateGroupsWithAccountResponse> instance
+
+Associates the specified sign-in delegate groups with the specified
+Amazon Chime account.
+
+
 =head2 BatchCreateAttendee
 
 =over
@@ -706,9 +740,10 @@ Each argument is described in detail in: L<Paws::Chime::BatchCreateRoomMembershi
 
 Returns: a L<Paws::Chime::BatchCreateRoomMembershipResponse> instance
 
-Adds up to 50 members to a chat room. Members can be either users or
-bots. The member role designates whether the member is a chat room
-administrator or a general chat room member.
+Adds up to 50 members to a chat room in an Amazon Chime Enterprise
+account. Members can be either users or bots. The member role
+designates whether the member is a chat room administrator or a general
+chat room member.
 
 
 =head2 BatchDeletePhoneNumber
@@ -753,7 +788,7 @@ Managing Your Amazon Chime Accounts
 (https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
 in the I<Amazon Chime Administration Guide>.
 
-Users suspended from a C<Team> account are dissasociated from the
+Users suspended from a C<Team> account are disassociated from the
 account, but they can continue to use Amazon Chime as free users. To
 remove the suspension from suspended C<Team> account users, invite them
 to the C<Team> account again. You can use the InviteUsers action to do
@@ -967,7 +1002,7 @@ Each argument is described in detail in: L<Paws::Chime::CreateRoom>
 
 Returns: a L<Paws::Chime::CreateRoomResponse> instance
 
-Creates a chat room for the specified Amazon Chime account.
+Creates a chat room for the specified Amazon Chime Enterprise account.
 
 
 =head2 CreateRoomMembership
@@ -989,9 +1024,32 @@ Each argument is described in detail in: L<Paws::Chime::CreateRoomMembership>
 
 Returns: a L<Paws::Chime::CreateRoomMembershipResponse> instance
 
-Adds a member to a chat room. A member can be either a user or a bot.
-The member role designates whether the member is a chat room
-administrator or a general chat room member.
+Adds a member to a chat room in an Amazon Chime Enterprise account. A
+member can be either a user or a bot. The member role designates
+whether the member is a chat room administrator or a general chat room
+member.
+
+
+=head2 CreateUser
+
+=over
+
+=item AccountId => Str
+
+=item [Email => Str]
+
+=item [Username => Str]
+
+=item [UserType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateUser>
+
+Returns: a L<Paws::Chime::CreateUserResponse> instance
+
+Creates a user under the specified Amazon Chime account.
 
 
 =head2 CreateVoiceConnector
@@ -1037,9 +1095,9 @@ Each argument is described in detail in: L<Paws::Chime::CreateVoiceConnectorGrou
 Returns: a L<Paws::Chime::CreateVoiceConnectorGroupResponse> instance
 
 Creates an Amazon Chime Voice Connector group under the administrator's
-AWS account. You can associate up to three existing Amazon Chime Voice
-Connectors with the Amazon Chime Voice Connector group by including
-C<VoiceConnectorItems> in the request.
+AWS account. You can associate Amazon Chime Voice Connectors with the
+Amazon Chime Voice Connector group by including C<VoiceConnectorItems>
+in the request.
 
 You can include Amazon Chime Voice Connectors from different AWS
 Regions in your group. This creates a fault tolerant mechanism for
@@ -1174,7 +1232,7 @@ Each argument is described in detail in: L<Paws::Chime::DeleteRoom>
 
 Returns: nothing
 
-Deletes a chat room.
+Deletes a chat room in an Amazon Chime Enterprise account.
 
 
 =head2 DeleteRoomMembership
@@ -1194,7 +1252,8 @@ Each argument is described in detail in: L<Paws::Chime::DeleteRoomMembership>
 
 Returns: nothing
 
-Removes a member from a chat room.
+Removes a member from a chat room in an Amazon Chime Enterprise
+account.
 
 
 =head2 DeleteVoiceConnector
@@ -1358,6 +1417,25 @@ Returns: a L<Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroupRespons
 
 Disassociates the specified phone numbers from the specified Amazon
 Chime Voice Connector group.
+
+
+=head2 DisassociateSigninDelegateGroupsFromAccount
+
+=over
+
+=item AccountId => Str
+
+=item GroupNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DisassociateSigninDelegateGroupsFromAccount>
+
+Returns: a L<Paws::Chime::DisassociateSigninDelegateGroupsFromAccountResponse> instance
+
+Disassociates the specified sign-in delegate groups from the specified
+Amazon Chime account.
 
 
 =head2 GetAccount
@@ -1562,7 +1640,8 @@ Each argument is described in detail in: L<Paws::Chime::GetRoom>
 
 Returns: a L<Paws::Chime::GetRoomResponse> instance
 
-Retrieves room details, such as name.
+Retrieves room details, such as the room name, for a room in an Amazon
+Chime Enterprise account.
 
 
 =head2 GetUser
@@ -1737,6 +1816,8 @@ Voice Connector.
 
 =item UserEmailList => ArrayRef[Str|Undef]
 
+=item [UserType => Str]
+
 
 =back
 
@@ -1905,8 +1986,9 @@ Each argument is described in detail in: L<Paws::Chime::ListRoomMemberships>
 
 Returns: a L<Paws::Chime::ListRoomMembershipsResponse> instance
 
-Lists the membership details for the specified room, such as member
-IDs, member email addresses, and member names.
+Lists the membership details for the specified room in an Amazon Chime
+Enterprise account, such as the members' IDs, email addresses, and
+names.
 
 
 =head2 ListRooms
@@ -1928,9 +2010,9 @@ Each argument is described in detail in: L<Paws::Chime::ListRooms>
 
 Returns: a L<Paws::Chime::ListRoomsResponse> instance
 
-Lists the room details for the specified Amazon Chime account.
-Optionally, filter the results by a member ID (user ID or bot ID) to
-see a list of rooms that the member belongs to.
+Lists the room details for the specified Amazon Chime Enterprise
+account. Optionally, filter the results by a member ID (user ID or bot
+ID) to see a list of rooms that the member belongs to.
 
 
 =head2 ListUsers
@@ -1944,6 +2026,8 @@ see a list of rooms that the member belongs to.
 =item [NextToken => Str]
 
 =item [UserEmail => Str]
+
+=item [UserType => Str]
 
 
 =back
@@ -2385,7 +2469,8 @@ Each argument is described in detail in: L<Paws::Chime::UpdateRoom>
 
 Returns: a L<Paws::Chime::UpdateRoomResponse> instance
 
-Updates room details, such as the room name.
+Updates room details, such as the room name, for a room in an Amazon
+Chime Enterprise account.
 
 
 =head2 UpdateRoomMembership
@@ -2407,9 +2492,10 @@ Each argument is described in detail in: L<Paws::Chime::UpdateRoomMembership>
 
 Returns: a L<Paws::Chime::UpdateRoomMembershipResponse> instance
 
-Updates room membership details, such as member role. The member role
-designates whether the member is a chat room administrator or a general
-chat room member. Member role can only be updated for user IDs.
+Updates room membership details, such as the member role, for a room in
+an Amazon Chime Enterprise account. The member role designates whether
+the member is a chat room administrator or a general chat room member.
+The member role can be updated only for user IDs.
 
 
 =head2 UpdateUser
@@ -2420,7 +2506,11 @@ chat room member. Member role can only be updated for user IDs.
 
 =item UserId => Str
 
+=item [AlexaForBusinessMetadata => L<Paws::Chime::AlexaForBusinessMetadata>]
+
 =item [LicenseType => Str]
+
+=item [UserType => Str]
 
 
 =back
@@ -2513,9 +2603,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Chime::ListAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllUsers(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str, UserEmail => Str])
+=head2 ListAllUsers(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str, UserEmail => Str, UserType => Str])
 
-=head2 ListAllUsers(AccountId => Str, [MaxResults => Int, NextToken => Str, UserEmail => Str])
+=head2 ListAllUsers(AccountId => Str, [MaxResults => Int, NextToken => Str, UserEmail => Str, UserType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -6,6 +6,7 @@ package Paws::Chime::Account;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has DefaultLicense => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has SigninDelegateGroups => (is => 'ro', isa => 'ArrayRef[Paws::Chime::SigninDelegateGroup]');
   has SupportedLicenses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
@@ -74,6 +75,11 @@ in the I<Amazon Chime Administration Guide>.
 =head2 B<REQUIRED> Name => Str
 
   The Amazon Chime account name.
+
+
+=head2 SigninDelegateGroups => ArrayRef[L<Paws::Chime::SigninDelegateGroup>]
+
+  The sign-in delegate groups associated with the account.
 
 
 =head2 SupportedLicenses => ArrayRef[Str|Undef]

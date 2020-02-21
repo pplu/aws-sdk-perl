@@ -2,8 +2,10 @@
 package Paws::Chime::UpdateUser;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has AlexaForBusinessMetadata => (is => 'ro', isa => 'Paws::Chime::AlexaForBusinessMetadata');
   has LicenseType => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
+  has UserType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $chime = Paws->service('Chime');
     my $UpdateUserResponse = $chime->UpdateUser(
-      AccountId   => 'MyNonEmptyString',
-      UserId      => 'MyNonEmptyString',
-      LicenseType => 'Basic',              # OPTIONAL
+      AccountId                => 'MyNonEmptyString',
+      UserId                   => 'MyNonEmptyString',
+      AlexaForBusinessMetadata => {
+        AlexaForBusinessRoomArn   => 'MySensitiveString',    # OPTIONAL
+        IsAlexaForBusinessEnabled => 1,                      # OPTIONAL
+      },    # OPTIONAL
+      LicenseType => 'Basic',          # OPTIONAL
+      UserType    => 'PrivateUser',    # OPTIONAL
     );
 
     # Results:
@@ -53,6 +60,12 @@ The Amazon Chime account ID.
 
 
 
+=head2 AlexaForBusinessMetadata => L<Paws::Chime::AlexaForBusinessMetadata>
+
+The Alexa for Business metadata.
+
+
+
 =head2 LicenseType => Str
 
 The user license type to update. This must be a supported license type
@@ -65,6 +78,12 @@ Valid values are: C<"Basic">, C<"Plus">, C<"Pro">, C<"ProTrial">
 The user ID.
 
 
+
+=head2 UserType => Str
+
+The user type.
+
+Valid values are: C<"PrivateUser">, C<"SharedDevice">
 
 
 =head1 SEE ALSO

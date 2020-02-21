@@ -1,5 +1,6 @@
 package Paws::Chime::MediaPlacement;
   use Moose;
+  has AudioFallbackUrl => (is => 'ro', isa => 'Str');
   has AudioHostUrl => (is => 'ro', isa => 'Str');
   has ScreenDataUrl => (is => 'ro', isa => 'Str');
   has ScreenSharingUrl => (is => 'ro', isa => 'Str');
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Chime::MediaPlacement object:
 
-  $service_obj->Method(Att1 => { AudioHostUrl => $value, ..., TurnControlUrl => $value  });
+  $service_obj->Method(Att1 => { AudioFallbackUrl => $value, ..., TurnControlUrl => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::MediaPlacement object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AudioHostUrl
+  $result->Att1->AudioFallbackUrl
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,11 @@ A set of endpoints used by clients to connect to the media service
 group for a Amazon Chime SDK meeting.
 
 =head1 ATTRIBUTES
+
+
+=head2 AudioFallbackUrl => Str
+
+  The audio fallback URL.
 
 
 =head2 AudioHostUrl => Str

@@ -46,7 +46,10 @@ A meeting created using the Amazon Chime SDK.
 =head2 MediaRegion => Str
 
   The Region in which to create the meeting. Available values:
-C<us-east-1>, C<us-west-2>.
+C<ap-northeast-1>, C<ap-southeast-1>, C<ap-southeast-2>,
+C<ca-central-1>, C<eu-central-1>, C<eu-north-1>, C<eu-west-1>,
+C<eu-west-2>, C<eu-west-3>, C<sa-east-1>, C<us-east-1>, C<us-east-2>,
+C<us-west-1>, C<us-west-2>.
 
 
 =head2 MeetingId => Str

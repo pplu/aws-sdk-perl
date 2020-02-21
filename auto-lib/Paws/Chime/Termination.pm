@@ -55,7 +55,7 @@ Required.
 =head2 CpsLimit => Int
 
   The limit on calls per second. Max value based on account service
-limit. Default value of 1.
+quota. Default value of 1.
 
 
 =head2 DefaultPhoneNumber => Str

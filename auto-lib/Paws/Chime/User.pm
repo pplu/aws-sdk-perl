@@ -1,6 +1,7 @@
 package Paws::Chime::User;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
+  has AlexaForBusinessMetadata => (is => 'ro', isa => 'Paws::Chime::AlexaForBusinessMetadata');
   has DisplayName => (is => 'ro', isa => 'Str');
   has InvitedOn => (is => 'ro', isa => 'Str');
   has LicenseType => (is => 'ro', isa => 'Str');
@@ -11,6 +12,7 @@ package Paws::Chime::User;
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserInvitationStatus => (is => 'ro', isa => 'Str');
   has UserRegistrationStatus => (is => 'ro', isa => 'Str');
+  has UserType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Chime::User object:
 
-  $service_obj->Method(Att1 => { AccountId => $value, ..., UserRegistrationStatus => $value  });
+  $service_obj->Method(Att1 => { AccountId => $value, ..., UserType => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,6 +51,11 @@ The user on the Amazon Chime account.
 =head2 AccountId => Str
 
   The Amazon Chime account ID.
+
+
+=head2 AlexaForBusinessMetadata => L<Paws::Chime::AlexaForBusinessMetadata>
+
+  The Alexa for Business metadata.
 
 
 =head2 DisplayName => Str
@@ -100,6 +107,11 @@ ISO 8601 format.
 =head2 UserRegistrationStatus => Str
 
   The user registration status.
+
+
+=head2 UserType => Str
+
+  The user type.
 
 
 

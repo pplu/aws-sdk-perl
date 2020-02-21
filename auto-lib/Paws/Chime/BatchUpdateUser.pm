@@ -33,8 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId              => 'MyNonEmptyString',
       UpdateUserRequestItems => [
         {
-          UserId => 'MyNonEmptyString',
+          UserId                   => 'MyNonEmptyString',
+          AlexaForBusinessMetadata => {
+            AlexaForBusinessRoomArn   => 'MySensitiveString',    # OPTIONAL
+            IsAlexaForBusinessEnabled => 1,                      # OPTIONAL
+          },    # OPTIONAL
           LicenseType => 'Basic', # values: Basic, Plus, Pro, ProTrial; OPTIONAL
+          UserType =>
+            'PrivateUser',        # values: PrivateUser, SharedDevice; OPTIONAL
         },
         ...
       ],
