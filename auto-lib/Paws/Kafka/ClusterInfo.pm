@@ -13,6 +13,7 @@ package Paws::Kafka::ClusterInfo;
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
   has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoring', request_name => 'openMonitoring', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has StateInfo => (is => 'ro', isa => 'Paws::Kafka::StateInfo', request_name => 'stateInfo', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has ZookeeperConnectString => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectString', traits => ['NameInRequest']);
 1;
@@ -119,6 +120,11 @@ these three levels of monitoring, see Monitoring
 
   The state of the cluster. The possible states are CREATING, ACTIVE, and
 FAILED.
+
+
+=head2 StateInfo => L<Paws::Kafka::StateInfo>
+
+  
 
 
 =head2 Tags => L<Paws::Kafka::__mapOf__string>

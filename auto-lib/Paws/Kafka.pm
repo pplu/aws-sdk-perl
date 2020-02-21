@@ -74,6 +74,11 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListKafkaVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::ListKafkaVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListNodes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListNodes', @_);
@@ -207,6 +212,29 @@ package Paws::Kafka;
 
     return undef
   }
+  sub ListAllKafkaVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKafkaVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListKafkaVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->KafkaVersions }, @{ $next_result->KafkaVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'KafkaVersions') foreach (@{ $result->KafkaVersions });
+        $result = $self->ListKafkaVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'KafkaVersions') foreach (@{ $result->KafkaVersions });
+    }
+
+    return undef
+  }
   sub ListAllNodes {
     my $self = shift;
 
@@ -232,7 +260,7 @@ package Paws::Kafka;
   }
 
 
-  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration UpdateMonitoring / }
+  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListKafkaVersions ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration UpdateMonitoring / }
 
 1;
 
@@ -504,6 +532,24 @@ Returns: a L<Paws::Kafka::ListConfigurationsResponse> instance
 Returns a list of all the MSK configurations in this Region.
 
 
+=head2 ListKafkaVersions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::ListKafkaVersions>
+
+Returns: a L<Paws::Kafka::ListKafkaVersionsResponse> instance
+
+Returns a list of Kafka versions.
+
+
 =head2 ListNodes
 
 =over
@@ -715,6 +761,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Configurations, passing the object as the first parameter, and the string 'Configurations' as the second parameter 
 
 If not, it will return a a L<Paws::Kafka::ListConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKafkaVersions(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllKafkaVersions([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - KafkaVersions, passing the object as the first parameter, and the string 'KafkaVersions' as the second parameter 
+
+If not, it will return a a L<Paws::Kafka::ListKafkaVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllNodes(sub { },ClusterArn => Str, [MaxResults => Int, NextToken => Str])
