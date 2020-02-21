@@ -57,6 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PendingSecurityGroups = $DescribeBrokerResponse->PendingSecurityGroups;
     my $PubliclyAccessible    = $DescribeBrokerResponse->PubliclyAccessible;
     my $SecurityGroups        = $DescribeBrokerResponse->SecurityGroups;
+    my $StorageType           = $DescribeBrokerResponse->StorageType;
     my $SubnetIds             = $DescribeBrokerResponse->SubnetIds;
     my $Tags                  = $DescribeBrokerResponse->Tags;
     my $Users                 = $DescribeBrokerResponse->Users;

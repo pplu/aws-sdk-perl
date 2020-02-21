@@ -74,7 +74,7 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  The list of security groups (1 minimum, 5 maximum) that authorize
+  The list of security groups (1 minimum, 5 maximum) that authorizes
 connections to brokers.
 
 

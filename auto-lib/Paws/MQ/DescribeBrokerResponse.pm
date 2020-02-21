@@ -21,6 +21,7 @@ package Paws::MQ::DescribeBrokerResponse;
   has PendingSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'pendingSecurityGroups');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
+  has StorageType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'storageType');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
   has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::UserSummary]', traits => ['NameInRequest'], request_name => 'users');
@@ -149,10 +150,15 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-The list of security groups (1 minimum, 5 maximum) that authorize
+The list of security groups (1 minimum, 5 maximum) that authorizes
 connections to brokers.
 
 
+=head2 StorageType => Str
+
+The broker's storage type.
+
+Valid values are: C<"EBS">, C<"EFS">
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
 The list of groups (2 maximum) that define which subnets and IP ranges

@@ -115,7 +115,7 @@ Enables Amazon CloudWatch logging for brokers.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-The list of security groups (1 minimum, 5 maximum) that authorize
+The list of security groups (1 minimum, 5 maximum) that authorizes
 connections to brokers.
 
 

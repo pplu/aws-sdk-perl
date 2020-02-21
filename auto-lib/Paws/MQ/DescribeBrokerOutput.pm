@@ -20,6 +20,7 @@ package Paws::MQ::DescribeBrokerOutput;
   has PendingSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'pendingSecurityGroups', traits => ['NameInRequest']);
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', request_name => 'publiclyAccessible', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
+  has StorageType => (is => 'ro', isa => 'Str', request_name => 'storageType', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::UserSummary]', request_name => 'users', traits => ['NameInRequest']);
@@ -172,8 +173,13 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  The list of security groups (1 minimum, 5 maximum) that authorize
+  The list of security groups (1 minimum, 5 maximum) that authorizes
 connections to brokers.
+
+
+=head2 StorageType => Str
+
+  The broker's storage type.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]

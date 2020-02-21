@@ -14,6 +14,7 @@ package Paws::MQ::CreateBroker;
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
+  has StorageType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'storageType');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
   has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::User]', traits => ['NameInRequest'], request_name => 'users');
@@ -71,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PubliclyAccessible => 1,                                    # OPTIONAL
       SecurityGroups     => [ 'My__string', ... ],                # OPTIONAL
+      StorageType        => 'EBS',                                # OPTIONAL
       SubnetIds          => [ 'My__string', ... ],                # OPTIONAL
       Tags               => { 'My__string' => 'My__string', },    # OPTIONAL
       Users              => [
@@ -183,10 +185,16 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-The list of security groups (1 minimum, 5 maximum) that authorize
+The list of security groups (1 minimum, 5 maximum) that authorizes
 connections to brokers.
 
 
+
+=head2 StorageType => Str
+
+The broker's storage type.
+
+Valid values are: C<"EBS">, C<"EFS">
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 

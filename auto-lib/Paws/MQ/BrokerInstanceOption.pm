@@ -3,6 +3,8 @@ package Paws::MQ::BrokerInstanceOption;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::MQ::AvailabilityZone]', request_name => 'availabilityZones', traits => ['NameInRequest']);
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
+  has StorageType => (is => 'ro', isa => 'Str', request_name => 'storageType', traits => ['NameInRequest']);
+  has SupportedDeploymentModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedDeploymentModes', traits => ['NameInRequest']);
   has SupportedEngineVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedEngineVersions', traits => ['NameInRequest']);
 1;
 
@@ -52,6 +54,16 @@ Option for host instance type.
 =head2 HostInstanceType => Str
 
   The type of broker instance.
+
+
+=head2 StorageType => Str
+
+  The broker's storage type.
+
+
+=head2 SupportedDeploymentModes => ArrayRef[Str|Undef]
+
+  The list of supported deployment modes.
 
 
 =head2 SupportedEngineVersions => ArrayRef[Str|Undef]

@@ -219,6 +219,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [SecurityGroups => ArrayRef[Str|Undef]]
 
+=item [StorageType => Str]
+
 =item [SubnetIds => ArrayRef[Str|Undef]]
 
 =item [Tags => L<Paws::MQ::__mapOf__string>]
@@ -399,6 +401,8 @@ Describe available engine types and versions.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [StorageType => Str]
 
 
 =back
