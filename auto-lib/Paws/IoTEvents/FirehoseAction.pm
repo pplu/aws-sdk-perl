@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Sends information about the detector model instance and the event which
+Sends information about the detector model instance and the event that
 triggered the action to a Kinesis Data Firehose delivery stream.
 
 =head1 ATTRIBUTES

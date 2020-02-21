@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Sends an IoT Events input, passing in information about the detector
-model instance and the event which triggered the action.
+Sends an AWS IoT Events input, passing in information about the
+detector model instance and the event that triggered the action.
 
 =head1 ATTRIBUTES
 

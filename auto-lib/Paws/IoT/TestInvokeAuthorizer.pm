@@ -85,7 +85,7 @@ Specifies a test HTTP authorization request.
 
 =head2 MqttContext => L<Paws::IoT::MqttContext>
 
-Specifies a test MQTT authorization request.E<gt>
+Specifies a test MQTT authorization request.
 
 
 

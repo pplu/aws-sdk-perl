@@ -65,10 +65,8 @@ Information about the detector model version.
 
 =head2 EvaluationMethod => Str
 
-  When set to C<SERIAL>, variables are updated and event conditions
-evaluated in the order that the events are defined. When set to
-C<BATCH>, variables are updated and events performed only after all
-event conditions are evaluated.
+  Information about the order in which events are evaluated and how
+actions are executed.
 
 
 =head2 LastUpdateTime => Str

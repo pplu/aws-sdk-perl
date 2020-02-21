@@ -4,6 +4,7 @@ package Paws::IoT::OTAUpdateInfo;
   has AwsIotJobArn => (is => 'ro', isa => 'Str', request_name => 'awsIotJobArn', traits => ['NameInRequest']);
   has AwsIotJobId => (is => 'ro', isa => 'Str', request_name => 'awsIotJobId', traits => ['NameInRequest']);
   has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobExecutionsRolloutConfig', request_name => 'awsJobExecutionsRolloutConfig', traits => ['NameInRequest']);
+  has AwsJobPresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobPresignedUrlConfig', request_name => 'awsJobPresignedUrlConfig', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has ErrorInfo => (is => 'ro', isa => 'Paws::IoT::ErrorInfo', request_name => 'errorInfo', traits => ['NameInRequest']);
@@ -12,6 +13,7 @@ package Paws::IoT::OTAUpdateInfo;
   has OtaUpdateFiles => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateFile]', request_name => 'otaUpdateFiles', traits => ['NameInRequest']);
   has OtaUpdateId => (is => 'ro', isa => 'Str', request_name => 'otaUpdateId', traits => ['NameInRequest']);
   has OtaUpdateStatus => (is => 'ro', isa => 'Str', request_name => 'otaUpdateStatus', traits => ['NameInRequest']);
+  has Protocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'protocols', traits => ['NameInRequest']);
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'targets', traits => ['NameInRequest']);
   has TargetSelection => (is => 'ro', isa => 'Str', request_name => 'targetSelection', traits => ['NameInRequest']);
 1;
@@ -69,6 +71,12 @@ Information about an OTA update.
   Configuration for the rollout of OTA updates.
 
 
+=head2 AwsJobPresignedUrlConfig => L<Paws::IoT::AwsJobPresignedUrlConfig>
+
+  Configuration information for pre-signed URLs. Valid when C<protocols>
+contains HTTP.
+
+
 =head2 CreationDate => Str
 
   The date when the OTA update was created.
@@ -107,6 +115,13 @@ Information about an OTA update.
 =head2 OtaUpdateStatus => Str
 
   The status of the OTA update.
+
+
+=head2 Protocols => ArrayRef[Str|Undef]
+
+  The protocol used to transfer the OTA update image. Valid values are
+[HTTP], [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified,
+the target device can choose the protocol.
 
 
 =head2 Targets => ArrayRef[Str|Undef]

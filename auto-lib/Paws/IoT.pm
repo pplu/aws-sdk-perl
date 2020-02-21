@@ -2513,7 +2513,11 @@ one type of change.
 
 =item [AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>]
 
+=item [AwsJobPresignedUrlConfig => L<Paws::IoT::AwsJobPresignedUrlConfig>]
+
 =item [Description => Str]
+
+=item [Protocols => ArrayRef[Str|Undef]]
 
 =item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 

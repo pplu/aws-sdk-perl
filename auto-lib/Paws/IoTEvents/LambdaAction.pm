@@ -31,15 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Calls an AWS Lambda function, passing in information about the detector
-model instance and the event which triggered the action.
+Calls a Lambda function, passing in information about the detector
+model instance and the event that triggered the action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FunctionArn => Str
 
-  The ARN of the AWS Lambda function which is executed.
+  The ARN of the Lambda function that is executed.
 
 
 
