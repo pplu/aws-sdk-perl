@@ -60,7 +60,21 @@ the created opsItems to receive SNS notifications for opsItem updates.
 =head2 Remarks => Str
 
   The issues on the user side that block Application Insights from
-successfully monitoring an application.
+successfully monitoring an application. Example remarks include:
+
+=over
+
+=item *
+
+E<ldquo>Configuring application, detected 1 Errors, 3 WarningsE<rdquo>
+
+=item *
+
+E<ldquo>Configuring application, detected 1 Unconfigured
+ComponentsE<rdquo>
+
+=back
+
 
 
 =head2 ResourceGroupName => Str

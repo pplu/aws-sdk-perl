@@ -95,6 +95,11 @@ package Paws::ApplicationInsights;
     my $call_object = $self->new_with_coercions('Paws::ApplicationInsights::ListComponents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListConfigurationHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationInsights::ListConfigurationHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListLogPatterns {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApplicationInsights::ListLogPatterns', @_);
@@ -148,7 +153,7 @@ package Paws::ApplicationInsights;
   
 
 
-  sub operations { qw/CreateApplication CreateComponent CreateLogPattern DeleteApplication DeleteComponent DeleteLogPattern DescribeApplication DescribeComponent DescribeComponentConfiguration DescribeComponentConfigurationRecommendation DescribeLogPattern DescribeObservation DescribeProblem DescribeProblemObservations ListApplications ListComponents ListLogPatterns ListLogPatternSets ListProblems ListTagsForResource TagResource UntagResource UpdateApplication UpdateComponent UpdateComponentConfiguration UpdateLogPattern / }
+  sub operations { qw/CreateApplication CreateComponent CreateLogPattern DeleteApplication DeleteComponent DeleteLogPattern DescribeApplication DescribeComponent DescribeComponentConfiguration DescribeComponentConfigurationRecommendation DescribeLogPattern DescribeObservation DescribeProblem DescribeProblemObservations ListApplications ListComponents ListConfigurationHistory ListLogPatterns ListLogPatternSets ListProblems ListTagsForResource TagResource UntagResource UpdateApplication UpdateComponent UpdateComponentConfiguration UpdateLogPattern / }
 
 1;
 
@@ -502,6 +507,52 @@ Returns: a L<Paws::ApplicationInsights::ListComponentsResponse> instance
 
 Lists the auto-grouped, standalone, and custom components of the
 application.
+
+
+=head2 ListConfigurationHistory
+
+=over
+
+=item [EndTime => Str]
+
+=item [EventStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceGroupName => Str]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApplicationInsights::ListConfigurationHistory>
+
+Returns: a L<Paws::ApplicationInsights::ListConfigurationHistoryResponse> instance
+
+Lists the INFO, WARN, and ERROR events for periodic configuration
+updates performed by Application Insights. Examples of events
+represented are:
+
+=over
+
+=item *
+
+INFO: creating a new alarm or updating an alarm threshold.
+
+=item *
+
+WARN: alarm not created due to insufficient data points used to predict
+thresholds.
+
+=item *
+
+ERROR: alarm not created due to permission errors or exceeding quotas.
+
+=back
+
 
 
 =head2 ListLogPatterns
