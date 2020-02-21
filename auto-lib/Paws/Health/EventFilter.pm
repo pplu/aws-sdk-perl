@@ -91,7 +91,7 @@ C<accountNotification>).
 =head2 EventTypeCodes => ArrayRef[Str|Undef]
 
   A list of unique identifiers for event types. For example,
-C<"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED">
+C<"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".>
 
 
 =head2 LastUpdatedTimes => ArrayRef[L<Paws::Health::DateTimeRange>]

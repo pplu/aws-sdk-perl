@@ -1,7 +1,6 @@
-package Paws::Health::Event;
+package Paws::Health::OrganizationEvent;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has EventTypeCategory => (is => 'ro', isa => 'Str', request_name => 'eventTypeCategory', traits => ['NameInRequest']);
   has EventTypeCode => (is => 'ro', isa => 'Str', request_name => 'eventTypeCode', traits => ['NameInRequest']);
@@ -16,7 +15,7 @@ package Paws::Health::Event;
 
 =head1 NAME
 
-Paws::Health::Event
+Paws::Health::OrganizationEvent
 
 =head1 USAGE
 
@@ -27,20 +26,21 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Health::Event object:
+As an example, if Att1 is expected to be a Paws::Health::OrganizationEvent object:
 
   $service_obj->Method(Att1 => { Arn => $value, ..., StatusCode => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Event object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Health::OrganizationEvent object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Summary information about an AWS Health event.
+Summary information about an event, returned by the
+DescribeEventsForOrganization operation.
 
 =head1 ATTRIBUTES
 
@@ -53,11 +53,6 @@ C<arn:aws:health:I<event-region>::event/I<SERVICE>/I<EVENT_TYPE_CODE>/I<EVENT_TY
 arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
 
 
-=head2 AvailabilityZone => Str
-
-  The AWS Availability Zone of the event. For example, us-east-1a.
-
-
 =head2 EndTime => Str
 
   The date and time that the event ended.
@@ -65,14 +60,13 @@ arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTAN
 
 =head2 EventTypeCategory => Str
 
-  The category of the event. Possible values are C<issue>,
-C<scheduledChange>, and C<accountNotification>.
+  The category of the event type.
 
 
 =head2 EventTypeCode => Str
 
   The unique identifier for the event type. The format is
-C<AWS_I<SERVICE>_I<DESCRIPTION> >; for example,
+C<AWS_SERVICE_DESCRIPTION>. For example,
 C<AWS_EC2_SYSTEM_MAINTENANCE_EVENT>.
 
 
@@ -83,13 +77,12 @@ C<AWS_EC2_SYSTEM_MAINTENANCE_EVENT>.
 
 =head2 Region => Str
 
-  The AWS region name of the event.
+  The AWS Region name of the event.
 
 
 =head2 Service => Str
 
-  The AWS service that is affected by the event. For example, C<EC2>,
-C<RDS>.
+  The AWS service that is affected by the event. For example, EC2, RDS.
 
 
 =head2 StartTime => Str

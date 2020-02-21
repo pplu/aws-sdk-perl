@@ -58,7 +58,7 @@ C<arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K>
 
 =head2 EntityUrl => Str
 
-  
+  The URL of the affected entity.
 
 
 =head2 EntityValue => Str
