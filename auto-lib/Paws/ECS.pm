@@ -781,6 +781,8 @@ instances with the fewest number of running tasks for this service.
 
 =item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
 
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
 
 =back
 
@@ -845,10 +847,16 @@ Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
 Returns: a L<Paws::ECS::DeleteClusterResponse> instance
 
-Deletes the specified cluster. You must deregister all container
-instances from this cluster before you may delete it. You can list the
-container instances in a cluster with ListContainerInstances and
-deregister them with DeregisterContainerInstance.
+Deletes the specified cluster. The cluster will transition to the
+C<INACTIVE> state. Clusters with an C<INACTIVE> status may remain
+discoverable in your account for a period of time. However, this
+behavior is subject to change in the future, so you should not rely on
+C<INACTIVE> clusters persisting.
+
+You must deregister all container instances from this cluster before
+you may delete it. You can list the container instances in a cluster
+with ListContainerInstances and deregister them with
+DeregisterContainerInstance.
 
 
 =head2 DeleteService
@@ -1117,6 +1125,8 @@ Describes a specified task or tasks.
 =item Cluster => Str
 
 =item Service => Str
+
+=item [Include => ArrayRef[Str|Undef]]
 
 =item [TaskSets => ArrayRef[Str|Undef]]
 

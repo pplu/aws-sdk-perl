@@ -107,16 +107,6 @@ instance type by multiplying the vCPUs listed for that instance type on
 the Amazon EC2 Instances (http://aws.amazon.com/ec2/instance-types/)
 detail page by 1,024.
 
-For example, if you run a single-container task on a single-core
-instance type with 512 CPU units specified for that container, and that
-is the only task running on the container instance, that container
-could use the full 1,024 CPU unit share at any given time. However, if
-you launched another copy of the same task on that container instance,
-each task would be guaranteed a minimum of 512 CPU units when needed,
-and each container could float to higher CPU usage if the other
-container was not using it, but if both tasks were 100% active all of
-the time, they would be limited to 512 CPU units.
-
 Linux containers share unallocated CPU units with other containers on
 the container instance with the same ratio as their allocated amount.
 For example, if you run a single-container task on a single-core
@@ -242,6 +232,13 @@ following command: C<sudo docker version --format
 multi-level security systems. This field is not valid for containers in
 tasks using the Fargate launch type.
 
+With Windows containers, this parameter can be used to reference a
+credential spec file when configuring a container for Active Directory
+authentication. For more information, see Using gMSAs for Windows
+Containers
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows-gmsa.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
 This parameter maps to C<SecurityOpt> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
@@ -255,8 +252,6 @@ placed on that instance can use these security options. For more
 information, see Amazon ECS Container Agent Configuration
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
-
-This parameter is not supported for Windows containers.
 
 
 =head2 EntryPoint => ArrayRef[Str|Undef]

@@ -56,8 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head2 B<REQUIRED> CapacityProviders => ArrayRef[Str|Undef]
 
-The short name or full Amazon Resource Name (ARN) of one or more
-capacity providers to associate with the cluster.
+The name of one or more capacity providers to associate with the
+cluster.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can

@@ -1,6 +1,7 @@
 package Paws::ECS::Volume;
   use Moose;
   has DockerVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::DockerVolumeConfiguration', request_name => 'dockerVolumeConfiguration', traits => ['NameInRequest']);
+  has EfsVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::EFSVolumeConfiguration', request_name => 'efsVolumeConfiguration', traits => ['NameInRequest']);
   has Host => (is => 'ro', isa => 'Paws::ECS::HostVolumeProperties', request_name => 'host', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
@@ -47,7 +48,21 @@ For more information, see Using Data Volumes in Tasks
   This parameter is specified when you are using Docker volumes. Docker
 volumes are only supported when you are using the EC2 launch type.
 Windows containers only support the use of the C<local> driver. To use
-bind mounts, specify a C<host> instead.
+bind mounts, specify the C<host> parameter instead.
+
+
+=head2 EfsVolumeConfiguration => L<Paws::ECS::EFSVolumeConfiguration>
+
+  This parameter is specified when you are using an Amazon Elastic File
+System (Amazon EFS) file storage. Amazon EFS file systems are only
+supported when you are using the EC2 launch type.
+
+C<EFSVolumeConfiguration> remains in preview and is a Beta Service as
+defined by and subject to the Beta Service Participation Service Terms
+located at https://aws.amazon.com/service-terms
+(https://aws.amazon.com/service-terms) ("Beta Terms"). These Beta Terms
+apply to your participation in this preview of
+C<EFSVolumeConfiguration>.
 
 
 =head2 Host => L<Paws::ECS::HostVolumeProperties>

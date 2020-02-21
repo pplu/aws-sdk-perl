@@ -55,6 +55,9 @@ provider.
 group capacity provider. This determines whether the Auto Scaling group
 has managed termination protection.
 
+When using managed termination protection, managed scaling must also be
+used otherwise managed termination protection will not work.
+
 When managed termination protection is enabled, Amazon ECS prevents the
 Amazon EC2 instances in an Auto Scaling group that contain tasks from
 being terminated during a scale-in action. The Auto Scaling group and

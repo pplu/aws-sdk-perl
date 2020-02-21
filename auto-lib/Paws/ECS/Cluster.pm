@@ -184,10 +184,40 @@ drainingFargateServiceCount
 
 =head2 Status => Str
 
-  The status of the cluster. The valid values are C<ACTIVE> or
-C<INACTIVE>. C<ACTIVE> indicates that you can register container
-instances with the cluster and the associated instances can accept
-tasks.
+  The status of the cluster. The following are the possible states that
+will be returned.
+
+=over
+
+=item ACTIVE
+
+The cluster is ready to accept tasks and if applicable you can register
+container instances with the cluster.
+
+=item PROVISIONING
+
+The cluster has capacity providers associated with it and the resources
+needed for the capacity provider are being created.
+
+=item DEPROVISIONING
+
+The cluster has capacity providers associated with it and the resources
+needed for the capacity provider are being deleted.
+
+=item FAILED
+
+The cluster has capacity providers associated with it and the resources
+needed for the capacity provider have failed to create.
+
+=item INACTIVE
+
+The cluster has been deleted. Clusters with an C<INACTIVE> status may
+remain discoverable in your account for a period of time. However, this
+behavior is subject to change in the future, so you should not rely on
+C<INACTIVE> clusters persisting.
+
+=back
+
 
 
 =head2 Tags => ArrayRef[L<Paws::ECS::Tag>]

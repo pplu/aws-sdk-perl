@@ -51,8 +51,8 @@ For more information, see Amazon ECS-optimized Linux AMI
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-If you are using tasks that use the Fargate launch type, container
-dependency parameters are not supported.
+For tasks using the Fargate launch type, this parameter requires that
+the task or service uses platform version 1.3.0 or later.
 
 =head1 ATTRIBUTES
 
