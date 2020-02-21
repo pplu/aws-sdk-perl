@@ -46,8 +46,7 @@ results.
 
 =head2 Type => Str
 
-  The type of filter. Valid values include the following:
-"Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"
+  The type of filter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]

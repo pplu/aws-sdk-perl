@@ -64,8 +64,7 @@ Details about a specific Automation execution.
 
 =head2 AutomationExecutionStatus => Str
 
-  The status of the execution. Valid values include: Running, Succeeded,
-Failed, Timed out, or Cancelled.
+  The status of the execution.
 
 
 =head2 AutomationType => Str
@@ -111,7 +110,7 @@ is still in progress.
 
 =head2 ExecutionStartTime => Str
 
-  The time the execution started.E<gt>
+  The time the execution started.
 
 
 =head2 FailureMessage => Str

@@ -42,8 +42,8 @@ sync.
 
 =head2 AwsOrganizationsSource => L<Paws::SSM::ResourceDataSyncAwsOrganizationsSource>
 
-  The field name in C<SyncSource> for the
-C<ResourceDataSyncAwsOrganizationsSource> type.
+  Information about the AwsOrganizationsSource resource data sync source.
+A sync source of this type can synchronize data from AWS Organizations.
 
 
 =head2 IncludeFutureRegions => Bool

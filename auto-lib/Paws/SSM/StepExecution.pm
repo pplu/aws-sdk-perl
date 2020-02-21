@@ -151,8 +151,7 @@ value is 1.
 
 =head2 StepStatus => Str
 
-  The execution status for this step. Valid values include: Pending,
-InProgress, Success, Cancelled, Failed, and TimedOut.
+  The execution status for this step.
 
 
 =head2 TargetLocation => L<Paws::SSM::TargetLocation>

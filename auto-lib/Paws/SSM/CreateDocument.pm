@@ -40,7 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDocumentName',
       Attachments => [
         {
-          Key => 'SourceUrl',    # values: SourceUrl, S3FileUrl; OPTIONAL
+          Key => 'SourceUrl'
+          ,    # values: SourceUrl, S3FileUrl, AttachmentReference; OPTIONAL
           Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
             'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
@@ -96,14 +97,13 @@ A valid JSON or YAML string.
 =head2 DocumentFormat => Str
 
 Specify the document format for the request. The document format can be
-either JSON or YAML. JSON is the default format.
+JSON, YAML, or TEXT. JSON is the default format.
 
 Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentType => Str
 
-The type of document to create. Valid document types include:
-C<Command>, C<Policy>, C<Automation>, C<Session>, and C<Package>.
+The type of document to create.
 
 Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">
 

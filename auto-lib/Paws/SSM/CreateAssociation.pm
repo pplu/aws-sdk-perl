@@ -111,7 +111,9 @@ specific version or the default version.
 The instance ID.
 
 C<InstanceId> has been deprecated. To specify an instance ID for an
-association, use the C<Targets> parameter. If you use the parameter
+association, use the C<Targets> parameter. Requests that include the
+parameter C<InstanceID> with SSM documents that use schema version 2.0
+or later will fail. In addition, if you use the parameter
 C<InstanceId>, you cannot use the parameters C<AssociationName>,
 C<DocumentVersion>, C<MaxErrors>, C<MaxConcurrency>, C<OutputLocation>,
 or C<ScheduleExpression>. To use these parameters, you must use the

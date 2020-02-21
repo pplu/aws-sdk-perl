@@ -1,8 +1,10 @@
 package Paws::SSM::MaintenanceWindowRunCommandParameters;
   use Moose;
+  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentHash => (is => 'ro', isa => 'Str');
   has DocumentHashType => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -28,14 +30,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::MaintenanceWindowRunCommandParameters object:
 
-  $service_obj->Method(Att1 => { Comment => $value, ..., TimeoutSeconds => $value  });
+  $service_obj->Method(Att1 => { CloudWatchOutputConfig => $value, ..., TimeoutSeconds => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::MaintenanceWindowRunCommandParameters object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Comment
+  $result->Att1->CloudWatchOutputConfig
 
 =head1 DESCRIPTION
 
@@ -64,6 +66,11 @@ for C<TaskInvocationParameters>.
 =head1 ATTRIBUTES
 
 
+=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+
+  
+
+
 =head2 Comment => Str
 
   Information about the commands to run.
@@ -78,6 +85,21 @@ created. SHA-1 hashes have been deprecated.
 =head2 DocumentHashType => Str
 
   SHA-256 or SHA-1. SHA-1 hashes have been deprecated.
+
+
+=head2 DocumentVersion => Str
+
+  The SSM document version to use in the request. You can specify
+$DEFAULT, $LATEST, or a specific version number. If you run commands by
+using the AWS CLI, then you must escape the first two options by using
+a backslash. If you specify a version number, then you don't need to
+use the backslash. For example:
+
+--document-version "\$DEFAULT"
+
+--document-version "\$LATEST"
+
+--document-version "3"
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>

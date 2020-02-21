@@ -38,7 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDocumentName',
       Attachments => [
         {
-          Key => 'SourceUrl',    # values: SourceUrl, S3FileUrl; OPTIONAL
+          Key => 'SourceUrl'
+          ,    # values: SourceUrl, S3FileUrl, AttachmentReference; OPTIONAL
           Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
             'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
