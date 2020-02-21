@@ -41,7 +41,7 @@ A tag and its associated resource.
 =head2 ResourceName => Str
 
   The Amazon Resource Name (ARN) with which the tag is associated, for
-example: C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+example: C<arn:aws:redshift:us-east-2:123456789:cluster:t1>.
 
 
 =head2 ResourceType => Str

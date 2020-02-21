@@ -93,8 +93,9 @@ notification subscription.
 
 =head2 SourceType => Str
 
-  The source type of the events returned the Amazon Redshift event
-notification, such as cluster, or cluster-snapshot.
+  The source type of the events returned by the Amazon Redshift event
+notification, such as cluster, cluster-snapshot,
+cluster-parameter-group, cluster-security-group, or scheduled-action.
 
 
 =head2 Status => Str

@@ -129,7 +129,7 @@ The Amazon EC2 Availability Zone in which to restore the cluster.
 
 Default: A random, system-chosen Availability Zone.
 
-Example: C<us-east-1a>
+Example: C<us-east-2a>
 
 
 

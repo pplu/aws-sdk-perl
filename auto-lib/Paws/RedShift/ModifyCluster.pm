@@ -207,12 +207,13 @@ in the Amazon Redshift Cluster Management Guide.
 
 =head2 Encrypted => Bool
 
-Indicates whether the cluster is encrypted. If the cluster is encrypted
-and you provide a value for the C<KmsKeyId> parameter, we will encrypt
-the cluster with the provided C<KmsKeyId>. If you don't provide a
-C<KmsKeyId>, we will encrypt with the default key. In the China region
-we will use legacy encryption if you specify that the cluster is
-encrypted.
+Indicates whether the cluster is encrypted. If the value is encrypted
+(true) and you provide a value for the C<KmsKeyId> parameter, we
+encrypt the cluster with the provided C<KmsKeyId>. If you don't provide
+a C<KmsKeyId>, we encrypt with the default key. In the China region we
+use legacy encryption if you specify that the cluster is encrypted.
+
+If the value is not encrypted (false), then the cluster is decrypted.
 
 
 
@@ -360,16 +361,13 @@ Example: C<examplecluster>
 The new node type of the cluster. If you specify a new node type, you
 must also specify the number of nodes parameter.
 
-When you submit your request to resize a cluster, Amazon Redshift sets
-access permissions for the cluster to read-only. After Amazon Redshift
-provisions a new cluster according to your resize requirements, there
-will be a temporary outage while the old cluster is deleted and your
-connection is switched to the new cluster. When the new connection is
-complete, the original access permissions for the cluster are restored.
-You can use DescribeResize to track the progress of the resize request.
+For more information about resizing clusters, go to Resizing Clusters
+in Amazon Redshift
+(https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
-C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge>
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.16xlarge>
 
 
 
@@ -378,13 +376,10 @@ C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge>
 The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
 
-When you submit your request to resize a cluster, Amazon Redshift sets
-access permissions for the cluster to read-only. After Amazon Redshift
-provisions a new cluster according to your resize requirements, there
-will be a temporary outage while the old cluster is deleted and your
-connection is switched to the new cluster. When the new connection is
-complete, the original access permissions for the cluster are restored.
-You can use DescribeResize to track the progress of the resize request.
+For more information about resizing clusters, go to Resizing Clusters
+in Amazon Redshift
+(https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: Integer greater than C<0>.
 

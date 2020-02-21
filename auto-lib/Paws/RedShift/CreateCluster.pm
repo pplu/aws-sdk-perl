@@ -151,7 +151,7 @@ latency.
 Default: A random, system-chosen Availability Zone in the region that
 is specified by the endpoint.
 
-Example: C<us-east-1d>
+Example: C<us-east-2d>
 
 Constraint: The specified Availability Zone must be in the same region
 as the current endpoint.
@@ -473,9 +473,8 @@ node types, go to Working with Clusters
 (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
 
-Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<ds2.xlarge> |
-C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge> | C<dc2.large> |
-C<dc2.8xlarge>
+Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.16xlarge>
 
 
 

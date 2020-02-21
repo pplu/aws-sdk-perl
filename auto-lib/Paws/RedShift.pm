@@ -1187,7 +1187,7 @@ Each argument is described in detail in: L<Paws::RedShift::BatchModifyClusterSna
 
 Returns: a L<Paws::RedShift::BatchModifyClusterSnapshotsOutputMessage> instance
 
-Modifies the settings for a list of snapshots.
+Modifies the settings for a set of cluster snapshots.
 
 
 =head2 CancelResize
@@ -1203,7 +1203,7 @@ Each argument is described in detail in: L<Paws::RedShift::CancelResize>
 
 Returns: a L<Paws::RedShift::ResizeProgressMessage> instance
 
-Cancels a resize operation.
+Cancels a resize operation for a cluster.
 
 
 =head2 CopyClusterSnapshot
@@ -1313,7 +1313,7 @@ Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
 Returns: a L<Paws::RedShift::CreateClusterResult> instance
 
-Creates a new cluster.
+Creates a new cluster with the specified parameters.
 
 To create a cluster in Virtual Private Cloud (VPC), you must provide a
 cluster subnet group name. The cluster subnet group identifies the
@@ -1641,7 +1641,7 @@ Each argument is described in detail in: L<Paws::RedShift::CreateSnapshotSchedul
 
 Returns: a L<Paws::RedShift::SnapshotSchedule> instance
 
-Creates a new snapshot schedule.
+Creates a snapshot schedule with the rate of every 12 hours.
 
 
 =head2 CreateTags
@@ -1659,7 +1659,7 @@ Each argument is described in detail in: L<Paws::RedShift::CreateTags>
 
 Returns: nothing
 
-Adds one or more tags to a specified resource.
+Adds tags to a cluster.
 
 A resource can have up to 50 tags. If you try to create more than 50
 tags for a resource, you will receive an error and the attempt will
@@ -1688,11 +1688,12 @@ Each argument is described in detail in: L<Paws::RedShift::DeleteCluster>
 
 Returns: a L<Paws::RedShift::DeleteClusterResult> instance
 
-Deletes a previously provisioned cluster. A successful response from
-the web service indicates that the request was received correctly. Use
-DescribeClusters to monitor the status of the deletion. The delete
-operation cannot be canceled or reverted once submitted. For more
-information about managing clusters, go to Amazon Redshift Clusters
+Deletes a previously provisioned cluster without its final snapshot
+being created. A successful response from the web service indicates
+that the request was received correctly. Use DescribeClusters to
+monitor the status of the deletion. The delete operation cannot be
+canceled or reverted once submitted. For more information about
+managing clusters, go to Amazon Redshift Clusters
 (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
@@ -1906,8 +1907,8 @@ Each argument is described in detail in: L<Paws::RedShift::DeleteTags>
 
 Returns: nothing
 
-Deletes a tag or tags from a resource. You must provide the ARN of the
-resource from which you want to delete the tag or tags.
+Deletes tags from a resource. You must provide the ARN of the resource
+from which you want to delete the tag or tags.
 
 
 =head2 DescribeAccountAttributes
@@ -2685,8 +2686,7 @@ Each argument is described in detail in: L<Paws::RedShift::DescribeStorage>
 
 Returns: a L<Paws::RedShift::CustomerStorageMessage> instance
 
-Returns the total amount of snapshot usage and provisioned storage in
-megabytes.
+Returns account level backups storage size and provisional storage.
 
 
 =head2 DescribeTableRestoreStatus
@@ -2989,20 +2989,21 @@ Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
 Returns: a L<Paws::RedShift::ModifyClusterResult> instance
 
-Modifies the settings for a cluster. For example, you can add another
-security or parameter group, update the preferred maintenance window,
-or change the master user password. Resetting a cluster password or
-modifying the security groups associated with a cluster do not need a
-reboot. However, modifying a parameter group requires a reboot for
-parameters to take effect. For more information about managing
-clusters, go to Amazon Redshift Clusters
-(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
-in the I<Amazon Redshift Cluster Management Guide>.
+Modifies the settings for a cluster.
 
 You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
 number of nodes and the node type even if one of the parameters does
 not change.
+
+You can add another security or parameter group, or change the master
+user password. Resetting a cluster password or modifying the security
+groups associated with a cluster do not need a reboot. However,
+modifying a parameter group requires a reboot for parameters to take
+effect. For more information about managing clusters, go to Amazon
+Redshift Clusters
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 ModifyClusterDbRevision
@@ -3070,8 +3071,7 @@ Each argument is described in detail in: L<Paws::RedShift::ModifyClusterMaintena
 
 Returns: a L<Paws::RedShift::ModifyClusterMaintenanceResult> instance
 
-Modifies the maintenance settings of a cluster. For example, you can
-defer a maintenance window. You can also update or cancel a deferment.
+Modifies the maintenance settings of a cluster.
 
 
 =head2 ModifyClusterParameterGroup
@@ -3115,6 +3115,9 @@ Each argument is described in detail in: L<Paws::RedShift::ModifyClusterSnapshot
 Returns: a L<Paws::RedShift::ModifyClusterSnapshotResult> instance
 
 Modifies the settings for a snapshot.
+
+This exanmple modifies the manual retention period setting for a
+cluster snapshot.
 
 
 =head2 ModifyClusterSnapshotSchedule
@@ -3214,7 +3217,7 @@ Each argument is described in detail in: L<Paws::RedShift::ModifyScheduledAction
 
 Returns: a L<Paws::RedShift::ScheduledAction> instance
 
-Modify a scheduled action.
+Modifies a scheduled action.
 
 
 =head2 ModifySnapshotCopyRetentionPeriod
@@ -3390,6 +3393,10 @@ ds2.xlarge
 =item *
 
 ds2.8xlarge
+
+=item *
+
+ra3.16xlarge
 
 =back
 
