@@ -37,6 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             ActionName             => 'My__string',
             ScheduleActionSettings => {
+              HlsId3SegmentTaggingSettings => {
+                Tag => 'My__string',
+
+              },    # OPTIONAL
               HlsTimedMetadataSettings => {
                 Id3 => 'My__string',
 

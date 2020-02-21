@@ -192,7 +192,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'ADOBE', ...    # values: ADOBE, ELEMENTAL, ELEMENTAL_SCTE35
                 ],                # OPTIONAL
                 BaseUrlContent          => 'My__string',
+                BaseUrlContent1         => 'My__string',
                 BaseUrlManifest         => 'My__string',
+                BaseUrlManifest1        => 'My__string',
                 CaptionLanguageMappings => [
                   {
                     CaptionChannel => 1,    # min: 1, max: 4
@@ -247,6 +249,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     RestartDelay => 1,    # max: 15
                   },    # OPTIONAL
                 },    # OPTIONAL
+                HlsId3SegmentTagging =>
+                  'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                 IFrameOnlyPlaylists =>
                   'DISABLED',    # values: DISABLED, STANDARD; OPTIONAL
                 IndexNSegments => 1,    # min: 3; OPTIONAL
@@ -374,7 +378,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -382,9 +386,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                           ServiceProviderName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',
                         DvbTdtSettings => {
@@ -449,10 +453,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },                                # OPTIONAL
                         AudioTrackType => 'ALTERNATE_AUDIO_AUTO_SELECT'
                         , # values: ALTERNATE_AUDIO_AUTO_SELECT, ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT, ALTERNATE_AUDIO_NOT_AUTO_SELECT, AUDIO_ONLY_VARIANT_STREAM; OPTIONAL
+                        SegmentType => 'AAC',    # values: AAC, FMP4; OPTIONAL
                       },    # OPTIONAL
+                      Fmp4HlsSettings =>
+                        { AudioRenditionSets => 'My__string', },    # OPTIONAL
                       StandardHlsSettings => {
                         M3u8Settings => {
-                          AudioFramesPerPes  => 1,                 # OPTIONAL
+                          AudioFramesPerPes  => 1,                  # OPTIONAL
                           AudioPids          => 'My__string',
                           EcmPid             => 'My__string',
                           NielsenId3Behavior => 'NO_PASSTHROUGH'
@@ -477,6 +484,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         AudioRenditionSets => 'My__string',
                       },    # OPTIONAL
                     },
+                    H265PackagingType => 'HEV1',  # values: HEV1, HVC1; OPTIONAL
                     NameModifier    => 'My__stringMin1',    # min: 1; OPTIONAL
                     SegmentModifier => 'My__string',
                   },    # OPTIONAL
@@ -521,7 +529,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -529,9 +537,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                           ServiceProviderName =>
-                            'My__stringMin1Max256',    # min: 1, max: 256
+                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',
                         DvbTdtSettings => {
@@ -612,7 +620,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             CodecSettings => {
               FrameCaptureSettings => {
                 CaptureInterval => 1,    # min: 1, max: 3600000
-
+                CaptureIntervalUnits =>
+                  'MILLISECONDS',    # values: MILLISECONDS, SECONDS; OPTIONAL
               },    # OPTIONAL
               H264Settings => {
                 AdaptiveQuantization => 'HIGH'
@@ -923,7 +932,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191
+                    Pid => 1,    # max: 8191; OPTIONAL
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -983,7 +992,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191
+                  Pid => 1,                  # max: 8191; OPTIONAL
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536

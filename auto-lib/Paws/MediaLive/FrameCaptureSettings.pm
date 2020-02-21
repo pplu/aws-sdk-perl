@@ -1,6 +1,7 @@
 package Paws::MediaLive::FrameCaptureSettings;
   use Moose;
   has CaptureInterval => (is => 'ro', isa => 'Int', request_name => 'captureInterval', traits => ['NameInRequest'], required => 1);
+  has CaptureIntervalUnits => (is => 'ro', isa => 'Str', request_name => 'captureIntervalUnits', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::FrameCaptureSettings object:
 
-  $service_obj->Method(Att1 => { CaptureInterval => $value, ..., CaptureInterval => $value  });
+  $service_obj->Method(Att1 => { CaptureInterval => $value, ..., CaptureIntervalUnits => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,11 @@ Frame Capture Settings
   The frequency at which to capture frames for inclusion in the output.
 May be specified in either seconds or milliseconds, as specified by
 captureIntervalUnits.
+
+
+=head2 CaptureIntervalUnits => Str
+
+  Unit for the frame capture interval.
 
 
 

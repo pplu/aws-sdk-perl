@@ -2,7 +2,9 @@ package Paws::MediaLive::HlsGroupSettings;
   use Moose;
   has AdMarkers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adMarkers', traits => ['NameInRequest']);
   has BaseUrlContent => (is => 'ro', isa => 'Str', request_name => 'baseUrlContent', traits => ['NameInRequest']);
+  has BaseUrlContent1 => (is => 'ro', isa => 'Str', request_name => 'baseUrlContent1', traits => ['NameInRequest']);
   has BaseUrlManifest => (is => 'ro', isa => 'Str', request_name => 'baseUrlManifest', traits => ['NameInRequest']);
+  has BaseUrlManifest1 => (is => 'ro', isa => 'Str', request_name => 'baseUrlManifest1', traits => ['NameInRequest']);
   has CaptionLanguageMappings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::CaptionLanguageMapping]', request_name => 'captionLanguageMappings', traits => ['NameInRequest']);
   has CaptionLanguageSetting => (is => 'ro', isa => 'Str', request_name => 'captionLanguageSetting', traits => ['NameInRequest']);
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
@@ -12,6 +14,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
+  has HlsId3SegmentTagging => (is => 'ro', isa => 'Str', request_name => 'hlsId3SegmentTagging', traits => ['NameInRequest']);
   has IFrameOnlyPlaylists => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyPlaylists', traits => ['NameInRequest']);
   has IndexNSegments => (is => 'ro', isa => 'Int', request_name => 'indexNSegments', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
@@ -85,11 +88,28 @@ this group of Apple HLS outputs.
 URL than the main .m3u8 file.
 
 
+=head2 BaseUrlContent1 => Str
+
+  Optional. One value per output group. This field is required only if
+you are completing Base URL content A, and the downstream system has
+notified you that the media files for pipeline 1 of all outputs are in
+a location different from the media files for pipeline 0.
+
+
 =head2 BaseUrlManifest => Str
 
   A partial URI prefix that will be prepended to each output in the media
 .m3u8 file. Can be used if base manifest is delivered from a different
 URL than the main .m3u8 file.
+
+
+=head2 BaseUrlManifest1 => Str
+
+  Optional. One value per output group. Complete this field only if you
+are completing Base URL manifest A, and the downstream system has
+notified you that the child manifest files for pipeline 1 of all
+outputs are in a location different from the child manifest files for
+pipeline 0.
 
 
 =head2 CaptionLanguageMappings => ArrayRef[L<Paws::MediaLive::CaptionLanguageMapping>]
@@ -153,6 +173,11 @@ parameter if no encryption is desired.
 =head2 HlsCdnSettings => L<Paws::MediaLive::HlsCdnSettings>
 
   Parameters that control interactions with the CDN.
+
+
+=head2 HlsId3SegmentTagging => Str
+
+  State of HLS ID3 Segment Tagging
 
 
 =head2 IFrameOnlyPlaylists => Str

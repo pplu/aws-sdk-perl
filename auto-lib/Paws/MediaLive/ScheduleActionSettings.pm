@@ -1,5 +1,6 @@
 package Paws::MediaLive::ScheduleActionSettings;
   use Moose;
+  has HlsId3SegmentTaggingSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsId3SegmentTaggingScheduleActionSettings', request_name => 'hlsId3SegmentTaggingSettings', traits => ['NameInRequest']);
   has HlsTimedMetadataSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsTimedMetadataScheduleActionSettings', request_name => 'hlsTimedMetadataSettings', traits => ['NameInRequest']);
   has InputSwitchSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSwitchScheduleActionSettings', request_name => 'inputSwitchSettings', traits => ['NameInRequest']);
   has PauseStateSettings => (is => 'ro', isa => 'Paws::MediaLive::PauseStateScheduleActionSettings', request_name => 'pauseStateSettings', traits => ['NameInRequest']);
@@ -27,20 +28,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ScheduleActionSettings object:
 
-  $service_obj->Method(Att1 => { HlsTimedMetadataSettings => $value, ..., StaticImageDeactivateSettings => $value  });
+  $service_obj->Method(Att1 => { HlsId3SegmentTaggingSettings => $value, ..., StaticImageDeactivateSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::ScheduleActionSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->HlsTimedMetadataSettings
+  $result->Att1->HlsId3SegmentTaggingSettings
 
 =head1 DESCRIPTION
 
 Holds the settings for a single schedule action.
 
 =head1 ATTRIBUTES
+
+
+=head2 HlsId3SegmentTaggingSettings => L<Paws::MediaLive::HlsId3SegmentTaggingScheduleActionSettings>
+
+  Action to insert HLS ID3 segment tagging
 
 
 =head2 HlsTimedMetadataSettings => L<Paws::MediaLive::HlsTimedMetadataScheduleActionSettings>

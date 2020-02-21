@@ -3,6 +3,7 @@ package Paws::MediaLive::AudioOnlyHlsSettings;
   has AudioGroupId => (is => 'ro', isa => 'Str', request_name => 'audioGroupId', traits => ['NameInRequest']);
   has AudioOnlyImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'audioOnlyImage', traits => ['NameInRequest']);
   has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
+  has SegmentType => (is => 'ro', isa => 'Str', request_name => 'segmentType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::AudioOnlyHlsSettings object:
 
-  $service_obj->Method(Att1 => { AudioGroupId => $value, ..., AudioTrackType => $value  });
+  $service_obj->Method(Att1 => { AudioGroupId => $value, ..., SegmentType => $value  });
 
 =head3 Results returned from an API call
 
@@ -66,6 +67,11 @@ in the HLS manifest with DEFAULT=NO, AUTOSELECT=YES Alternate Audio,
 not Auto Select Alternate rendition that the client will not try to
 play back by default. Represented as an EXT-X-MEDIA in the HLS manifest
 with DEFAULT=NO, AUTOSELECT=NO
+
+
+=head2 SegmentType => Str
+
+  Specifies the segment type.
 
 
 
