@@ -18,7 +18,7 @@ Paws::XRay::GetSamplingStatisticSummariesResult
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 =head2 SamplingStatisticSummaries => ArrayRef[L<Paws::XRay::SamplingStatisticSummary>]

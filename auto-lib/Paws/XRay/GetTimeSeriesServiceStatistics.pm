@@ -88,7 +88,7 @@ The case-sensitive name of the group for which to pull statistics from.
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 

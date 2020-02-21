@@ -23,7 +23,7 @@ The collection of all active groups.
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 =head2 _request_id => Str

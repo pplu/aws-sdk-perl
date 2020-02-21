@@ -33,7 +33,7 @@ The end of the time frame for which the graph was generated.
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 =head2 Services => ArrayRef[L<Paws::XRay::Service>]

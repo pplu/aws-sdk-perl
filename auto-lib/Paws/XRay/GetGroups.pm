@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 

@@ -91,12 +91,12 @@ trace segments.
 
 =head2 HasError => Bool
 
-  One or more of the segment documents has a 400 series error.
+  The root segment document has a 400 series error.
 
 
 =head2 HasFault => Bool
 
-  One or more of the segment documents has a 500 series error.
+  The root segment document has a 500 series error.
 
 
 =head2 HasThrottle => Bool

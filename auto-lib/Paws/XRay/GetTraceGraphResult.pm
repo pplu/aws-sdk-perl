@@ -18,7 +18,7 @@ Paws::XRay::GetTraceGraphResult
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 =head2 Services => ArrayRef[L<Paws::XRay::Service>]

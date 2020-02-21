@@ -39,8 +39,8 @@ match the specified filter expression.
 
 =head2 TraceSummaries => ArrayRef[L<Paws::XRay::TraceSummary>]
 
-Trace IDs and metadata for traces that were found in the specified time
-frame.
+Trace IDs and annotations for traces that were found in the specified
+time frame.
 
 
 =head2 _request_id => Str
