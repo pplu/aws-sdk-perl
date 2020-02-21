@@ -3,6 +3,7 @@ package Paws::CloudFormation::StackInstanceSummary;
   has Account => (is => 'ro', isa => 'Str');
   has DriftStatus => (is => 'ro', isa => 'Str');
   has LastDriftCheckTimestamp => (is => 'ro', isa => 'Str');
+  has OrganizationalUnitId => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackSetId => (is => 'ro', isa => 'Str');
@@ -45,7 +46,8 @@ The structure that contains summary information about a stack instance.
 
 =head2 Account => Str
 
-  The name of the AWS account that the stack instance is associated with.
+  [Self-managed permissions] The name of the AWS account that the stack
+instance is associated with.
 
 
 =head2 DriftStatus => Str
@@ -86,6 +88,12 @@ C<UNKNOWN>: This value is reserved for future use.
   Most recent time when CloudFormation performed a drift detection
 operation on the stack instance. This value will be C<NULL> for any
 stack instance on which drift detection has not yet been performed.
+
+
+=head2 OrganizationalUnitId => Str
+
+  [C<Service-managed> permissions] The organization root ID or
+organizational unit (OU) ID that the stack instance is associated with.
 
 
 =head2 Region => Str

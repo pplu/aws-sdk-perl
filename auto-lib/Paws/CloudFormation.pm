@@ -829,11 +829,13 @@ the stack via the DescribeStacks API.
 
 =over
 
-=item Accounts => ArrayRef[Str|Undef]
-
 =item Regions => ArrayRef[Str|Undef]
 
 =item StackSetName => Str
+
+=item [Accounts => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
 
@@ -850,8 +852,9 @@ Returns: a L<Paws::CloudFormation::CreateStackInstancesOutput> instance
 
 Creates stack instances for the specified accounts, within the
 specified regions. A stack instance refers to a stack in a specific
-account and region. C<Accounts> and C<Regions> are required
-parametersE<mdash>you must specify at least one account and one region.
+account and region. You must specify at least one value for either
+C<Accounts> or C<DeploymentTargets>, and you must specify at least one
+value for C<Regions>.
 
 
 =head2 CreateStackSet
@@ -862,6 +865,8 @@ parametersE<mdash>you must specify at least one account and one region.
 
 =item [AdministrationRoleARN => Str]
 
+=item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
 =item [Capabilities => ArrayRef[Str|Undef]]
 
 =item [ClientRequestToken => Str]
@@ -871,6 +876,8 @@ parametersE<mdash>you must specify at least one account and one region.
 =item [ExecutionRoleName => Str]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [PermissionModel => Str]
 
 =item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
 
@@ -938,13 +945,15 @@ API if the deletion has been completed successfully.
 
 =over
 
-=item Accounts => ArrayRef[Str|Undef]
-
 =item Regions => ArrayRef[Str|Undef]
 
 =item RetainStacks => Bool
 
 =item StackSetName => Str
+
+=item [Accounts => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
 
@@ -1844,7 +1853,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypeRegistr
 
 Returns: a L<Paws::CloudFormation::ListTypeRegistrationsOutput> instance
 
-Returns a list of registration tokens for the specified type.
+Returns a list of registration tokens for the specified type(s).
 
 
 =head2 ListTypes
@@ -1974,8 +1983,9 @@ Making the resource type available for use in your account
 =back
 
 For more information on how to develop types and ready them for
-registeration, see Creating Resource Providers in the I<CloudFormation
-CLI User Guide>.
+registeration, see Creating Resource Providers
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html)
+in the I<CloudFormation CLI User Guide>.
 
 Once you have initiated a registration request using C< RegisterType >,
 you can use C< DescribeTypeRegistration > to monitor the progress of
@@ -2131,11 +2141,13 @@ stack, and monitoring the progress of the update, see Updating a Stack
 
 =over
 
-=item Accounts => ArrayRef[Str|Undef]
-
 =item Regions => ArrayRef[Str|Undef]
 
 =item StackSetName => Str
+
+=item [Accounts => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
 
@@ -2185,7 +2197,11 @@ value using C<UpdateStackInstances>.
 
 =item [AdministrationRoleARN => Str]
 
+=item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
 =item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [Description => Str]
 
@@ -2196,6 +2212,8 @@ value using C<UpdateStackInstances>.
 =item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [PermissionModel => Str]
 
 =item [Regions => ArrayRef[Str|Undef]]
 

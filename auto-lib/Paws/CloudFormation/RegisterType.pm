@@ -96,6 +96,13 @@ want to register, see submit
 (https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html)
 in the I<CloudFormation CLI User Guide>.
 
+As part of registering a resource provider type, CloudFormation must be
+able to access the S3 bucket which contains the schema handler package
+for that resource provider. For more information, see IAM Permissions
+for Registering a Resource Provider
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-register-permissions)
+in the I<AWS CloudFormation User Guide>.
+
 
 
 =head2 Type => Str

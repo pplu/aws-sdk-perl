@@ -147,6 +147,7 @@ account.
 
 =back
 
+The default is C<PRIVATE>.
 
 Valid values are: C<"PUBLIC">, C<"PRIVATE">
 

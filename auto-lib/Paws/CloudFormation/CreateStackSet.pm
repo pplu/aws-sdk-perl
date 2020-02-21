@@ -2,11 +2,13 @@
 package Paws::CloudFormation::CreateStackSet;
   use Moose;
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
+  has AutoDeployment => (is => 'ro', isa => 'Paws::CloudFormation::AutoDeployment');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has PermissionModel => (is => 'ro', isa => 'Str');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -39,7 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateStackSetOutput = $cloudformation->CreateStackSet(
       StackSetName          => 'MyStackSetName',
       AdministrationRoleARN => 'MyRoleARN',        # OPTIONAL
-      Capabilities          => [
+      AutoDeployment        => {
+        Enabled                      => 1,         # OPTIONAL
+        RetainStacksOnAccountRemoval => 1,         # OPTIONAL
+      },    # OPTIONAL
+      Capabilities => [
         'CAPABILITY_IAM',
         ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
       ],    # OPTIONAL
@@ -55,7 +61,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                               # OPTIONAL
-      Tags => [
+      PermissionModel => 'SERVICE_MANAGED',            # OPTIONAL
+      Tags            => [
         {
           Key   => 'MyTagKey',                         # min: 1, max: 128
           Value => 'MyTagValue',                       # min: 1, max: 256
@@ -89,6 +96,17 @@ within the same administrator account. For more information, see
 Prerequisites: Granting Permissions for Stack Set Operations
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 in the I<AWS CloudFormation User Guide>.
+
+
+
+=head2 AutoDeployment => L<Paws::CloudFormation::AutoDeployment>
+
+Describes whether StackSets automatically deploys to AWS Organizations
+accounts that are added to the target organization or organizational
+unit (OU). Specify only if C<PermissionModel> is C<SERVICE_MANAGED>.
+
+If you specify C<AutoDeployment>, do not specify C<DeploymentTargets>
+or C<Regions>.
 
 
 
@@ -242,6 +260,33 @@ stack sets.
 The input parameters for the stack set template.
 
 
+
+=head2 PermissionModel => Str
+
+Describes how the IAM roles required for stack set operations are
+created. By default, C<SELF-MANAGED> is specified.
+
+=over
+
+=item *
+
+With C<self-managed> permissions, you must create the administrator and
+execution roles required to deploy to target accounts. For more
+information, see Grant Self-Managed Stack Set Permissions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+
+=item *
+
+With C<service-managed> permissions, StackSets automatically creates
+the IAM roles required to deploy to accounts managed by AWS
+Organizations. For more information, see Grant Service-Managed Stack
+Set Permissions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
+
+=back
+
+
+Valid values are: C<"SERVICE_MANAGED">, C<"SELF_MANAGED">
 
 =head2 B<REQUIRED> StackSetName => Str
 

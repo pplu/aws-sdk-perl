@@ -58,7 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 The Amazon Resource Name (ARN) of the type for which you want version
 summary information.
 
-Conditional: You must specify C<TypeName> or C<Arn>.
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
 
 
 
@@ -84,6 +85,7 @@ be used in CloudFormation operations.
 
 =back
 
+The default is C<LIVE>.
 
 Valid values are: C<"LIVE">, C<"DEPRECATED">
 
@@ -113,13 +115,17 @@ The kind of the type.
 
 Currently the only valid value is C<RESOURCE>.
 
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
+
 Valid values are: C<"RESOURCE">
 
 =head2 TypeName => Str
 
 The name of the type for which you want version summary information.
 
-Conditional: You must specify C<TypeName> or C<Arn>.
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
 
 
 

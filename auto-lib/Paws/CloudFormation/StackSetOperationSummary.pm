@@ -90,6 +90,15 @@ CloudFormation cancels the operation in any remaining regions.
 
 =item *
 
+C<QUEUED>: [Service-managed permissions] For automatic deployments that
+require a sequence of operations. The operation is queued to be
+performed. For more information, see the stack set operation status
+codes
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes)
+in the AWS CloudFormation User Guide.
+
+=item *
+
 C<RUNNING>: The operation is currently being performed.
 
 =item *

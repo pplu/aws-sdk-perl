@@ -66,7 +66,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 The Amazon Resource Name (ARN) of the type.
 
-Conditional: You must specify C<TypeName> or C<Arn>.
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
 
 
 
@@ -76,13 +77,17 @@ The kind of type.
 
 Currently the only valid value is C<RESOURCE>.
 
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
+
 Valid values are: C<"RESOURCE">
 
 =head2 TypeName => Str
 
 The name of the type.
 
-Conditional: You must specify C<TypeName> or C<Arn>.
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
 
 
 

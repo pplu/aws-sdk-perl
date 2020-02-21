@@ -78,6 +78,8 @@ C<NextToken> parameter is set to C<null>.
 
 The current status of the type registration request.
 
+The default is C<IN_PROGRESS>.
+
 Valid values are: C<"COMPLETE">, C<"IN_PROGRESS">, C<"FAILED">
 
 =head2 Type => Str
@@ -86,13 +88,17 @@ The kind of type.
 
 Currently the only valid value is C<RESOURCE>.
 
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
+
 Valid values are: C<"RESOURCE">
 
 =head2 TypeArn => Str
 
 The Amazon Resource Name (ARN) of the type.
 
-Conditional: You must specify C<TypeName> or C<Arn>.
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
 
 
 
@@ -100,7 +106,8 @@ Conditional: You must specify C<TypeName> or C<Arn>.
 
 The name of the type.
 
-Conditional: You must specify C<TypeName> or C<Arn>.
+Conditional: You must specify either C<TypeName> and C<Type>, or
+C<Arn>.
 
 
 

@@ -2,6 +2,7 @@ package Paws::CloudFormation::StackSetOperationResultSummary;
   use Moose;
   has Account => (is => 'ro', isa => 'Str');
   has AccountGateResult => (is => 'ro', isa => 'Paws::CloudFormation::AccountGateResult');
+  has OrganizationalUnitId => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
@@ -43,13 +44,20 @@ results for a given account in a given region.
 
 =head2 Account => Str
 
-  The name of the AWS account for this operation result.
+  [Self-managed permissions] The name of the AWS account for this
+operation result.
 
 
 =head2 AccountGateResult => L<Paws::CloudFormation::AccountGateResult>
 
   The results of the account gate function AWS CloudFormation invokes, if
 present, before proceeding with stack set operations in an account
+
+
+=head2 OrganizationalUnitId => Str
+
+  [C<Service-managed> permissions] The organization root ID or
+organizational unit (OU) ID for this operation result.
 
 
 =head2 Region => Str

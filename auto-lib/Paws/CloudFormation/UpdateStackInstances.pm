@@ -1,7 +1,8 @@
 
 package Paws::CloudFormation::UpdateStackInstances;
   use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
@@ -33,9 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $UpdateStackInstancesOutput = $cloudformation->UpdateStackInstances(
-      Accounts     => [ 'MyAccount', ... ],
-      Regions      => [ 'MyRegion',  ... ],
-      StackSetName => 'MyStackSetNameOrId',
+      Regions           => [ 'MyRegion', ... ],
+      StackSetName      => 'MyStackSetNameOrId',
+      Accounts          => [ 'MyAccount', ... ],    # OPTIONAL
+      DeploymentTargets => {
+        Accounts              => [ 'MyAccount',              ... ],
+        OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
+      },    # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
       OperationPreferences => {
         FailureToleranceCount      => 1,    # OPTIONAL
@@ -66,12 +71,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Accounts => ArrayRef[Str|Undef]
+=head2 Accounts => ArrayRef[Str|Undef]
 
-The names of one or more AWS accounts for which you want to update
-parameter values for stack instances. The overridden parameter values
-will be applied to all stack instances in the specified accounts and
-regions.
+[Self-managed permissions] The names of one or more AWS accounts for
+which you want to update parameter values for stack instances. The
+overridden parameter values will be applied to all stack instances in
+the specified accounts and regions.
+
+You can specify C<Accounts> or C<DeploymentTargets>, but not both.
+
+
+
+=head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
+
+[C<Service-managed> permissions] The AWS Organizations accounts for
+which you want to update parameter values for stack instances. If your
+update targets OUs, the overridden parameter values only apply to the
+accounts that are currently in the target OUs and their child OUs.
+Accounts added to the target OUs and their child OUs in the future
+won't use the overridden values.
+
+You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
 
 

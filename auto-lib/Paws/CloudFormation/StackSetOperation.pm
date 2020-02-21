@@ -3,6 +3,7 @@ package Paws::CloudFormation::StackSetOperation;
   has Action => (is => 'ro', isa => 'Str');
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has CreationTimestamp => (is => 'ro', isa => 'Str');
+  has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has EndTimestamp => (is => 'ro', isa => 'Str');
   has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
@@ -77,6 +78,12 @@ dispatching the work to the requested regions, before actually creating
 the first stacks.
 
 
+=head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
+
+  [C<Service-managed> permissions] The AWS Organizations accounts
+affected by the stack operation.
+
+
 =head2 EndTimestamp => Str
 
   The time at which the stack set operation ended, across all accounts
@@ -147,6 +154,15 @@ failed stacks within a region exceeds the failure tolerance, the status
 of the operation in the region is set to C<FAILED>. This in turn sets
 the status of the operation as a whole to C<FAILED>, and AWS
 CloudFormation cancels the operation in any remaining regions.
+
+=item *
+
+C<QUEUED>: [Service-managed permissions] For automatic deployments that
+require a sequence of operations. The operation is queued to be
+performed. For more information, see the stack set operation status
+codes
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes)
+in the AWS CloudFormation User Guide.
 
 =item *
 
