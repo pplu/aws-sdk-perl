@@ -2,6 +2,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
+  has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptions');
   has ARN => (is => 'ro', isa => 'Str', required => 1);
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has Created => (is => 'ro', isa => 'Bool');
@@ -65,6 +66,12 @@ The current status of an Elasticsearch domain.
 =head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
 
   Specifies the status of the C<AdvancedOptions>
+
+
+=head2 AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptions>
+
+  The current status of the Elasticsearch domain's advanced security
+options.
 
 
 =head2 B<REQUIRED> ARN => Str

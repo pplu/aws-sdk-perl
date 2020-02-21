@@ -3,6 +3,7 @@ package Paws::ES::CreateElasticsearchDomain;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
+  has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptionsInput');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -41,10 +42,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $es = Paws->service('ES');
     my $CreateElasticsearchDomainResponse = $es->CreateElasticsearchDomain(
-      DomainName      => 'MyDomainName',
-      AccessPolicies  => 'MyPolicyDocument',               # OPTIONAL
-      AdvancedOptions => { 'MyString' => 'MyString', },    # OPTIONAL
-      CognitoOptions  => {
+      DomainName              => 'MyDomainName',
+      AccessPolicies          => 'MyPolicyDocument',               # OPTIONAL
+      AdvancedOptions         => { 'MyString' => 'MyString', },    # OPTIONAL
+      AdvancedSecurityOptions => {
+        Enabled                     => 1,                          # OPTIONAL
+        InternalUserDatabaseEnabled => 1,                          # OPTIONAL
+        MasterUserOptions           => {
+          MasterUserARN      => 'MyARN',         # OPTIONAL
+          MasterUserName     => 'MyUsername',    # min: 1; OPTIONAL
+          MasterUserPassword => 'MyPassword',    # min: 8; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      CognitoOptions => {
         Enabled        => 1,                     # OPTIONAL
         IdentityPoolId => 'MyIdentityPoolId',    # min: 1, max: 55; OPTIONAL
         RoleArn        => 'MyRoleArn',           # min: 20, max: 2048; OPTIONAL
@@ -125,6 +135,12 @@ C<false> when configuring access to individual sub-resources. By
 default, the value is C<true>. See Configuration Advanced Options
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
 for more information.
+
+
+
+=head2 AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>
+
+Specifies advanced security options.
 
 
 

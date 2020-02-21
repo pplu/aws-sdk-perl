@@ -348,6 +348,8 @@ and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
 
 =item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
 
+=item [AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>]
+
 =item [CognitoOptions => L<Paws::ES::CognitoOptions>]
 
 =item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
@@ -731,6 +733,8 @@ Schedules a service software update for an Amazon ES domain.
 =item [AccessPolicies => Str]
 
 =item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
+
+=item [AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>]
 
 =item [CognitoOptions => L<Paws::ES::CognitoOptions>]
 

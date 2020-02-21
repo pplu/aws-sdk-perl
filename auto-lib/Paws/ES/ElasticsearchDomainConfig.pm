@@ -2,6 +2,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Paws::ES::AccessPoliciesStatus');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptionsStatus');
+  has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptionsStatus');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptionsStatus');
   has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptionsStatus');
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
@@ -58,6 +59,11 @@ The configuration of an Elasticsearch domain.
 Advanced Options
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
 for more information.
+
+
+=head2 AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsStatus>
+
+  Specifies C<AdvancedSecurityOptions> for the domain.
 
 
 =head2 CognitoOptions => L<Paws::ES::CognitoOptionsStatus>
