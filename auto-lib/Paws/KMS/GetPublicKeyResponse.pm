@@ -56,11 +56,11 @@ Valid values are: C<"SIGN_VERIFY">, C<"ENCRYPT_DECRYPT">
 
 The exported public key.
 
-This value is returned as a binary Distinguished Encoding Rules
-(https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf)
-(DER)-encoded object. To decode it, use an ASN.1 parsing tool, such as
-OpenSSL asn1parse
-(https://www.openssl.org/docs/man1.0.2/man1/asn1parse.html).
+The value is a DER-encoded X.509 public key, also known as
+C<SubjectPublicKeyInfo> (SPKI), as defined in RFC 5280
+(https://tools.ietf.org/html/rfc5280). When you use the HTTP API or the
+AWS CLI, the value is Base64-encoded. Otherwise, it is not
+Base64-encoded.
 
 
 =head2 SigningAlgorithms => ArrayRef[Str|Undef]

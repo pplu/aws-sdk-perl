@@ -20,7 +20,8 @@ Paws::KMS::GenerateDataKeyPairWithoutPlaintextResponse
 =head2 KeyId => Str
 
 Specifies the CMK that encrypted the private key in the data key pair.
-You must specify a symmetric CMK. You cannot use an asymmetric CMK.
+You must specify a symmetric CMK. You cannot use an asymmetric CMK. To
+get the type of your CMK, use the DescribeKey operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with

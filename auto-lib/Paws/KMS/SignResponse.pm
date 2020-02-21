@@ -26,6 +26,27 @@ sign the message.
 
 The cryptographic signature that was generated for the message.
 
+=over
+
+=item *
+
+When used with the supported RSA signing algorithms, the encoding of
+this value is defined by PKCS #1 in RFC 8017
+(https://tools.ietf.org/html/rfc8017).
+
+=item *
+
+When used with the C<ECDSA_SHA_256>, C<ECDSA_SHA_384>, or
+C<ECDSA_SHA_512> signing algorithms, this value is a DER-encoded object
+as defined by ANS X9.62E<ndash>2005 and RFC 3279 Section 2.2.3
+(https://tools.ietf.org/html/rfc3279#section-2.2.3). This is the most
+commonly used signature format and is appropriate for most uses.
+
+=back
+
+When you use the HTTP API or the AWS CLI, the value is Base64-encoded.
+Otherwise, it is not Base64-encoded.
+
 
 =head2 SigningAlgorithm => Str
 

@@ -117,8 +117,8 @@ message and then signs it.
 =head2 MessageType => Str
 
 Tells AWS KMS whether the value of the C<Message> parameter is a
-message or message digest. To indicate a message, enter C<RAW>. To
-indicate a message digest, enter C<DIGEST>.
+message or message digest. The default value, RAW, indicates a message.
+To indicate a message digest, enter C<DIGEST>.
 
 Valid values are: C<"RAW">, C<"DIGEST">
 

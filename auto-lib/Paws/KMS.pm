@@ -537,7 +537,10 @@ cluster, use the DescribeClusters
 (https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
 operation. To add HSMs to the cluster, use the CreateHsm
 (https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html)
-operation.
+operation. Also, the C<kmsuser> crypto user
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+(CU) must not be logged into the cluster. This prevents AWS KMS from
+using this account to log in.
 
 The connection process can take an extended amount of time to complete;
 up to 20 minutes. This operation starts the connection process, but it
@@ -550,9 +553,7 @@ store, use the DescribeCustomKeyStores operation.
 During the connection process, AWS KMS finds the AWS CloudHSM cluster
 that is associated with the custom key store, creates the connection
 infrastructure, connects to the cluster, logs into the AWS CloudHSM
-client as the C<kmsuser> crypto user
-(https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
-(CU), and rotates its password.
+client as the C<kmsuser> CU, and rotates its password.
 
 The C<ConnectCustomKeyStore> operation might fail for various reasons.
 To find the reason, use the DescribeCustomKeyStores operation and see
@@ -868,8 +869,9 @@ KMS unencrypted. To use the CMK, you must call AWS KMS. You can use a
 symmetric CMK to encrypt and decrypt small amounts of data, but they
 are typically used to generate data keys
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
-or data key pairs. For details, see GenerateDataKey and
-GenerateDataKeyPair.
+and data keys pairs
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-key-pairs).
+For details, see GenerateDataKey and GenerateDataKeyPair.
 
 =item *
 
@@ -1604,7 +1606,7 @@ encrypt the data key.
 
 To generate a data key, specify the symmetric CMK that will be used to
 encrypt the data key. You cannot use an asymmetric CMK to generate data
-keys.
+keys. To get the type of your CMK, use the DescribeKey operation.
 
 You must also specify the length of the data key. Use either the
 C<KeySpec> or C<NumberOfBytes> parameters (but not both). For 128-bit
@@ -1845,14 +1847,10 @@ that is used to encrypt the private key.
 To generate a data key, you must specify the symmetric customer master
 key (CMK) that is used to encrypt the data key. You cannot use an
 asymmetric CMK to generate a data key. To get the type of your CMK, use
-the C<KeySpec> field in the DescribeKey response. You must also specify
-the length of the data key using either the C<KeySpec> or
-C<NumberOfBytes> field (but not both). For common key lengths (128-bit
-and 256-bit symmetric keys), use the C<KeySpec> parameter.
+the DescribeKey operation.
 
-If the operation succeeds, you will find the plaintext copy of the data
-key in the C<Plaintext> field of the response, and the encrypted copy
-of the data key in the C<CiphertextBlob> field.
+If the operation succeeds, you will find the encrypted copy of the data
+key in the C<CiphertextBlob> field.
 
 You can use the optional encryption context to add additional security
 to the encryption operation. If you specify an C<EncryptionContext>,
@@ -2221,7 +2219,7 @@ The response might also include aliases that have no C<TargetKeyId>
 field. These are predefined aliases that AWS has created but has not
 yet associated with a CMK. Aliases that AWS creates in your account,
 including predefined aliases, do not count against your AWS KMS aliases
-limit
+quota
 (https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit).
 
 

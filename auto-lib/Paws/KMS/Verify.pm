@@ -108,20 +108,25 @@ To get the alias name and alias ARN, use ListAliases.
 
 =head2 B<REQUIRED> Message => Str
 
-Specifies the message that was signed, or a hash digest of that
-message. Messages can be 0-4096 bytes. To verify a larger message,
-provide a hash digest of the message.
+Specifies the message that was signed. You can submit a raw message of
+up to 4096 bytes, or a hash digest of the message. If you submit a
+digest, use the C<MessageType> parameter with a value of C<DIGEST>.
 
-If the digest of the message specified here is different from the
-message digest that was signed, the signature verification fails.
+If the message specified here is different from the message that was
+signed, the signature verification fails. A message and its hash digest
+are considered to be the same message.
 
 
 
 =head2 MessageType => Str
 
 Tells AWS KMS whether the value of the C<Message> parameter is a
-message or message digest. To indicate a message, enter C<RAW>. To
-indicate a message digest, enter C<DIGEST>.
+message or message digest. The default value, RAW, indicates a message.
+To indicate a message digest, enter C<DIGEST>.
+
+Use the C<DIGEST> value only when the value of the C<Message> parameter
+is a message digest. If you use the C<DIGEST> value with a raw message,
+the security of the verification operation can be compromised.
 
 Valid values are: C<"RAW">, C<"DIGEST">
 
