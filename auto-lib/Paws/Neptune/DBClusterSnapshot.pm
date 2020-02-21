@@ -88,7 +88,21 @@ cluster snapshot was created from.
 
 =head2 DBClusterSnapshotIdentifier => Str
 
-  Specifies the identifier for the DB cluster snapshot.
+  Specifies the identifier for a DB cluster snapshot. Must match the
+identifier of an existing snapshot.
+
+After you restore a DB cluster using a C<DBClusterSnapshotIdentifier>,
+you must specify the same C<DBClusterSnapshotIdentifier> for any future
+updates to the DB cluster. When you specify this property for an
+update, the DB cluster is not restored from the snapshot again, and the
+data in the database is not changed.
+
+However, if you don't specify the C<DBClusterSnapshotIdentifier>, an
+empty DB cluster is created, and the original DB cluster is deleted. If
+you specify a property that is different from the previous snapshot
+restore property, the DB cluster is restored from the snapshot
+specified by the C<DBClusterSnapshotIdentifier>, and the original DB
+cluster is deleted.
 
 
 =head2 Engine => Str

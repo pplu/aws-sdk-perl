@@ -89,8 +89,16 @@ C<db-cluster-id> - Accepts DB cluster identifiers and DB cluster Amazon
 Resource Names (ARNs). The results list will only include information
 about the DB clusters identified by these ARNs.
 
+=item *
+
+C<engine> - Accepts an engine name (such as C<neptune>), and restricts
+the results list to DB clusters created by that engine.
+
 =back
 
+For example, to invoke this API from the AWS CLI and filter so that
+only Neptune DB clusters are returned, you could use the following
+command:
 
 
 

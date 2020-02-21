@@ -117,7 +117,8 @@ deployment.
 
 =head2 PendingCloudwatchLogsExports => L<Paws::Neptune::PendingCloudwatchLogsExports>
 
-  Specifies the CloudWatch logs to be exported.
+  This C<PendingCloudwatchLogsExports> structure specifies pending
+changes to which CloudWatch logs are enabled and which are disabled.
 
 
 =head2 Port => Int

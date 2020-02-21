@@ -4,6 +4,7 @@ package Paws::Neptune::RestoreDBClusterToPointInTime;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -46,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SourceDBClusterIdentifier       => 'MyString',
       DBClusterParameterGroupName     => 'MyString',               # OPTIONAL
       DBSubnetGroupName               => 'MyString',               # OPTIONAL
+      DeletionProtection              => 1,                        # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],      # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                        # OPTIONAL
       KmsKeyId                        => 'MyString',               # OPTIONAL
@@ -61,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                                           # OPTIONAL
       UseLatestRestorableTime => 1,                                # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],                  # OPTIONAL
+      VpcSecurityGroupIds     => [ 'MyString', ... ],              # OPTIONAL
       );
 
     # Results:
@@ -130,6 +132,14 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to
@@ -187,7 +197,7 @@ then the restore request is rejected.
 
 =head2 OptionGroupName => Str
 
-The name of the option group for the new DB cluster.
+I<(Not supported by Neptune)>
 
 
 

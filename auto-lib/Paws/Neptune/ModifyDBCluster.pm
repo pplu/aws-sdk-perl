@@ -6,6 +6,7 @@ package Paws::Neptune::ModifyDBCluster;
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::Neptune::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -49,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EnableLogTypes  => [ 'MyString', ... ],          # OPTIONAL
       },    # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
       MasterUserPassword              => 'MyString',             # OPTIONAL
@@ -142,6 +144,14 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
+
+
+
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
@@ -153,10 +163,9 @@ Default: C<false>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine to which you want to upgrade.
-Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless the ApplyImmediately
-parameter is set to true.
+The version number of the database engine. Currently, setting this
+parameter has no effect. To upgrade your database engine to the most
+recent release, use the ApplyPendingMaintenanceAction API.
 
 For a list of valid engine versions, see CreateDBInstance, or call
 DescribeDBEngineVersions.
@@ -201,18 +210,7 @@ Example: C<my-cluster2>
 
 =head2 OptionGroupName => Str
 
-A value that indicates that the DB cluster should be associated with
-the specified option group. Changing this parameter doesn't result in
-an outage except in the following case, and the change is applied
-during the next maintenance window unless the C<ApplyImmediately>
-parameter is set to C<true> for this request. If the parameter change
-results in an option group that enables OEM, this change can cause a
-brief (sub-second) period during which new connections are rejected but
-existing connections are not interrupted.
-
-Permanent options can't be removed from an option group. The option
-group can't be removed from a DB cluster once it is associated with a
-DB cluster.
+I<(Not supported by Neptune)>
 
 
 

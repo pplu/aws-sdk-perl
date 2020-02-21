@@ -18,6 +18,7 @@ package Paws::Neptune::DBInstance;
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBParameterGroupStatus]', request_name => 'DBParameterGroup', traits => ['NameInRequest']);
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::Neptune::DBSubnetGroup');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DomainMembership]', request_name => 'DomainMembership', traits => ['NameInRequest']);
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Paws::Neptune::Endpoint');
@@ -119,8 +120,7 @@ retained.
 
 =head2 CharacterSetName => Str
 
-  If present, specifies the name of the character set that this instance
-is associated with.
+  I<(Not supported by Neptune)>
 
 
 =head2 CopyTagsToSnapshot => Bool
@@ -192,6 +192,14 @@ C<DBSecurityGroup.Name> and C<DBSecurityGroup.Status> subelements.
   Specifies information on the subnet group associated with the DB
 instance, including the name, description, and subnets in the subnet
 group.
+
+
+=head2 DeletionProtection => Bool
+
+  Indicates whether or not the DB instance has deletion protection
+enabled. The instance can't be deleted when deletion protection is
+enabled. See Deleting a DB Instance
+(https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html).
 
 
 =head2 DomainMemberships => ArrayRef[L<Paws::Neptune::DomainMembership>]
@@ -284,7 +292,7 @@ Monitoring metrics to Amazon CloudWatch Logs.
 
 =head2 OptionGroupMemberships => ArrayRef[L<Paws::Neptune::OptionGroupMembership>]
 
-  Provides the list of option group memberships for this DB instance.
+  I<(Not supported by Neptune)>
 
 
 =head2 PendingModifiedValues => L<Paws::Neptune::PendingModifiedValues>
@@ -296,15 +304,12 @@ by subelements.
 
 =head2 PerformanceInsightsEnabled => Bool
 
-  True if Performance Insights is enabled for the DB instance, and
-otherwise false.
+  I<(Not supported by Neptune)>
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-  The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
-or the KMS key alias for the KMS encryption key.
+  I<(Not supported by Neptune)>
 
 
 =head2 PreferredBackupWindow => Str

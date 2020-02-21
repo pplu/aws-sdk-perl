@@ -6,6 +6,7 @@ package Paws::Neptune::RestoreDBClusterFromSnapshot;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -49,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
@@ -146,6 +148,14 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to Amazon
@@ -212,7 +222,7 @@ not encrypted, then the restored DB cluster is not encrypted.
 
 =head2 OptionGroupName => Str
 
-The name of the option group to use for the restored DB cluster.
+I<(Not supported by Neptune)>
 
 
 

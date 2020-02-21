@@ -15,6 +15,7 @@ package Paws::Neptune::DBCluster;
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Str');
@@ -102,8 +103,7 @@ retained.
 
 =head2 CharacterSetName => Str
 
-  If present, specifies the name of the character set that this cluster
-is associated with.
+  I<(Not supported by Neptune)>
 
 
 =head2 CloneGroupId => Str
@@ -142,7 +142,7 @@ unique key that identifies a DB cluster.
 
 =head2 DBClusterOptionGroupMemberships => ArrayRef[L<Paws::Neptune::DBClusterOptionGroupStatus>]
 
-  Provides the list of option group memberships for this DB cluster.
+  I<(Not supported by Neptune)>
 
 
 =head2 DBClusterParameterGroup => Str
@@ -163,6 +163,13 @@ key for the DB cluster is accessed.
   Specifies information on the subnet group associated with the DB
 cluster, including the name, description, and subnets in the subnet
 group.
+
+
+=head2 DeletionProtection => Bool
+
+  Indicates whether or not the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled.
 
 
 =head2 EarliestRestorableTime => Str

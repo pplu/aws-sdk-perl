@@ -317,6 +317,16 @@ package Paws::Neptune;
     my $call_object = $self->new_with_coercions('Paws::Neptune::RestoreDBClusterToPointInTime', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Neptune::StartDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Neptune::StopDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllDBClusterParameterGroups {
     my $self = shift;
@@ -642,7 +652,7 @@ package Paws::Neptune;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBParameterGroup CreateDBSubnetGroup CreateEventSubscription DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSubnetGroup DeleteEventSubscription DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBParameterGroups DescribeDBParameters DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeValidDBInstanceModifications FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription PromoteReadReplicaDBCluster RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBParameterGroup CreateDBSubnetGroup CreateEventSubscription DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSubnetGroup DeleteEventSubscription DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBParameterGroups DescribeDBParameters DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeValidDBInstanceModifications FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription PromoteReadReplicaDBCluster RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
 
 1;
 
@@ -830,8 +840,6 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
 (ARN) of the shared DB cluster snapshot.
 
-You can't copy from one AWS Region to another.
-
 
 =head2 CopyDBParameterGroup
 
@@ -875,6 +883,8 @@ Copies the specified DB parameter group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -917,6 +927,12 @@ Creates a new Amazon Neptune DB cluster.
 You can use the C<ReplicationSourceIdentifier> parameter to create the
 DB cluster as a Read Replica of another DB cluster or Amazon Neptune DB
 instance.
+
+Note that when you create a new cluster using C<CreateDBCluster>
+directly, deletion protection is disabled by default (when you create a
+new production cluster in the console, deletion protection is enabled
+by default). You can only delete a DB cluster if its
+C<DeletionProtection> field is set to C<false>.
 
 
 =head2 CreateDBClusterParameterGroup
@@ -1018,6 +1034,8 @@ Creates a snapshot of a DB cluster.
 =item [DBSecurityGroups => ArrayRef[Str|Undef]]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -1222,6 +1240,10 @@ When you delete a DB cluster, all automated backups for that DB cluster
 are deleted and can't be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
 
+Note that the DB Cluster cannot be deleted if deletion protection is
+enabled. To delete it, you must first set its C<DeletionProtection>
+field to C<False>.
+
 
 =head2 DeleteDBClusterParameterGroup
 
@@ -1293,7 +1315,7 @@ only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
 You can't delete a DB instance if it is the only instance in the DB
-cluster.
+cluster, or if it has deletion protection enabled.
 
 
 =head2 DeleteDBParameterGroup
@@ -1417,8 +1439,11 @@ Each argument is described in detail in: L<Paws::Neptune::DescribeDBClusters>
 
 Returns: a L<Paws::Neptune::DBClusterMessage> instance
 
-Returns information about provisioned DB clusters. This API supports
+Returns information about provisioned DB clusters, and supports
 pagination.
+
+This operation can also return information for Amazon RDS clusters and
+Amazon DocDB clusters.
 
 
 =head2 DescribeDBClusterSnapshotAttributes
@@ -1531,8 +1556,11 @@ Each argument is described in detail in: L<Paws::Neptune::DescribeDBInstances>
 
 Returns: a L<Paws::Neptune::DBInstanceMessage> instance
 
-Returns information about provisioned instances. This API supports
+Returns information about provisioned instances, and supports
 pagination.
+
+This operation can also return information for Amazon RDS instances and
+Amazon DocDB instances.
 
 
 =head2 DescribeDBParameterGroups
@@ -1872,6 +1900,8 @@ Lists all tags on an Amazon Neptune resource.
 
 =item [DBClusterParameterGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -2009,6 +2039,8 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 =item [DBSecurityGroups => ArrayRef[Str|Undef]]
 
 =item [DBSubnetGroupName => Str]
+
+=item [DeletionProtection => Bool]
 
 =item [Domain => Str]
 
@@ -2329,6 +2361,8 @@ or C<RebootDBInstance> request.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -2376,6 +2410,8 @@ created with the default security group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -2416,6 +2452,44 @@ instances for the restored DB cluster, specifying the identifier of the
 restored DB cluster in C<DBClusterIdentifier>. You can create DB
 instances only after the C<RestoreDBClusterToPointInTime> action has
 completed and the DB cluster is available.
+
+
+=head2 StartDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Neptune::StartDBCluster>
+
+Returns: a L<Paws::Neptune::StartDBClusterResult> instance
+
+Starts an Amazon Neptune DB cluster that was stopped using the AWS
+console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
+
+
+=head2 StopDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Neptune::StopDBCluster>
+
+Returns: a L<Paws::Neptune::StopDBClusterResult> instance
+
+Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune
+retains the DB cluster's metadata, including its endpoints and DB
+parameter groups.
+
+Neptune also retains the transaction logs so you can do a point-in-time
+restore if necessary.
 
 
 

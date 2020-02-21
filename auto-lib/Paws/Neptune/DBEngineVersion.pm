@@ -65,9 +65,7 @@ DescribeDBEngineVersions.
 
 =head2 DefaultCharacterSet => L<Paws::Neptune::CharacterSet>
 
-  The default character set for new instances of this engine version, if
-the C<CharacterSetName> parameter of the CreateDBInstance API is not
-specified.
+  I<(Not supported by Neptune)>
 
 
 =head2 Engine => Str
@@ -88,8 +86,7 @@ CloudWatch Logs.
 
 =head2 SupportedCharacterSets => ArrayRef[L<Paws::Neptune::CharacterSet>]
 
-  A list of the character sets supported by this engine for the
-C<CharacterSetName> parameter of the C<CreateDBInstance> action.
+  I<(Not supported by Neptune)>
 
 
 =head2 SupportedTimezones => ArrayRef[L<Paws::Neptune::Timezone>]

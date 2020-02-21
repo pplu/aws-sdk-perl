@@ -146,7 +146,7 @@ intervals from 1 to 60 seconds.
 
 =head2 SupportsPerformanceInsights => Bool
 
-  True if a DB instance supports Performance Insights, otherwise false.
+  I<(Not supported by Neptune)>
 
 
 =head2 SupportsStorageEncryption => Bool
