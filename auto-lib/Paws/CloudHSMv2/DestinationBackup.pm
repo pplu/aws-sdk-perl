@@ -34,29 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudHSMv2:
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains information about the backup that will be copied and created
+by the CopyBackupToRegion operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreateTimestamp => Str
 
-  
+  The date and time when both the source backup was created.
 
 
 =head2 SourceBackup => Str
 
-  
+  The identifier (ID) of the source backup from which the new backup was
+copied.
 
 
 =head2 SourceCluster => Str
 
-  
+  The identifier (ID) of the cluster containing the source backup from
+which the new backup was copied.
 
 
 =head2 SourceRegion => Str
 
-  
+  The AWS region that contains the source backup from which the new
+backup was copied.
 
 
 

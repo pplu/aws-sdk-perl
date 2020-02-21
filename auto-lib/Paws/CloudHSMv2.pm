@@ -182,7 +182,7 @@ Paws::CloudHSMv2 - Perl Interface to AWS AWS CloudHSM V2
 
 For more information about AWS CloudHSM, see AWS CloudHSM
 (http://aws.amazon.com/cloudhsm/) and the AWS CloudHSM User Guide
-(http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
+(https://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28>
 
@@ -196,6 +196,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =item BackupId => Str
 
 =item DestinationRegion => Str
+
+=item [TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]]
 
 
 =back
@@ -216,6 +218,8 @@ Copy an AWS CloudHSM cluster backup to a different region.
 =item SubnetIds => ArrayRef[Str|Undef]
 
 =item [SourceBackupId => Str]
+
+=item [TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]]
 
 
 =back
@@ -262,8 +266,8 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteBackup>
 Returns: a L<Paws::CloudHSMv2::DeleteBackupResponse> instance
 
 Deletes a specified AWS CloudHSM backup. A backup can be restored up to
-7 days after the DeleteBackup request. For more information on
-restoring a backup, see RestoreBackup
+7 days after the DeleteBackup request is made. For more information on
+restoring a backup, see RestoreBackup.
 
 
 =head2 DeleteCluster
@@ -431,7 +435,7 @@ Each argument is described in detail in: L<Paws::CloudHSMv2::RestoreBackup>
 Returns: a L<Paws::CloudHSMv2::RestoreBackupResponse> instance
 
 Restores a specified AWS CloudHSM backup that is in the
-C<PENDING_DELETION> state. For more information on deleting a backup,
+C<PENDING_DELETION> state. For mor information on deleting a backup,
 see DeleteBackup.
 
 

@@ -12,6 +12,7 @@ package Paws::CloudHSMv2::Cluster;
   has State => (is => 'ro', isa => 'Str');
   has StateMessage => (is => 'ro', isa => 'Str');
   has SubnetMapping => (is => 'ro', isa => 'Paws::CloudHSMv2::ExternalSubnetMapping');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -107,8 +108,13 @@ value exists only when the cluster was created from a backup.
 
 =head2 SubnetMapping => L<Paws::CloudHSMv2::ExternalSubnetMapping>
 
-  A map of the cluster's subnets and their corresponding Availability
-Zones.
+  A map from availability zone to the clusterE<rsquo>s subnet in that
+availability zone.
+
+
+=head2 TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+
+  
 
 
 =head2 VpcId => Str

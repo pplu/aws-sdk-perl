@@ -4,6 +4,7 @@ package Paws::CloudHSMv2::CreateCluster;
   has HsmType => (is => 'ro', isa => 'Str', required => 1);
   has SourceBackupId => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmType        => 'MyHsmType',
       SubnetIds      => [ 'MySubnetId', ... ],
       SourceBackupId => 'MyBackupId',            # OPTIONAL
+      TagList        => [
+        {
+          Key   => 'MyTagKey',                   # min: 1, max: 128
+          Value => 'MyTagValue',                 # max: 256
+
+        },
+        ...
+      ],                                         # OPTIONAL
     );
 
     # Results:
@@ -78,6 +87,12 @@ All subnets must be in the same virtual private cloud (VPC).
 You can specify only one subnet per Availability Zone.
 
 =back
+
+
+
+
+=head2 TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+
 
 
 
