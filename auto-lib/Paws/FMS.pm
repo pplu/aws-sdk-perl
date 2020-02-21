@@ -75,6 +75,11 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutNotificationChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::PutNotificationChannel', @_);
@@ -83,6 +88,16 @@ package Paws::FMS;
   sub PutPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::PutPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -157,7 +172,7 @@ package Paws::FMS;
   }
 
 
-  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy GetProtectionStatus ListComplianceStatus ListMemberAccounts ListPolicies PutNotificationChannel PutPolicy / }
+  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy GetProtectionStatus ListComplianceStatus ListMemberAccounts ListPolicies ListTagsForResource PutNotificationChannel PutPolicy TagResource UntagResource / }
 
 1;
 
@@ -433,6 +448,22 @@ Returns: a L<Paws::FMS::ListPoliciesResponse> instance
 Returns an array of C<PolicySummary> objects in the response.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::ListTagsForResource>
+
+Returns: a L<Paws::FMS::ListTagsForResourceResponse> instance
+
+Retrieves the list of tags for the specified AWS resource.
+
+
 =head2 PutNotificationChannel
 
 =over
@@ -457,6 +488,8 @@ topic that AWS Firewall Manager uses to record SNS logs.
 =over
 
 =item Policy => L<Paws::FMS::Policy>
+
+=item [TagList => ArrayRef[L<Paws::FMS::Tag>]]
 
 
 =back
@@ -496,6 +529,42 @@ You must be subscribed to Shield Advanced to create a Shield Advanced
 policy. For more information about subscribing to Shield Advanced, see
 CreateSubscription
 (https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagList => ArrayRef[L<Paws::FMS::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::TagResource>
+
+Returns: a L<Paws::FMS::TagResourceResponse> instance
+
+Adds one or more tags to an AWS resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::UntagResource>
+
+Returns: a L<Paws::FMS::UntagResourceResponse> instance
+
+Removes one or more tags from an AWS resource.
 
 
 
