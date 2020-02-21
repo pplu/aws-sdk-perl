@@ -75,6 +75,11 @@ package Paws::OpsWorksCM;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::ExportServerEngineAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreServer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::RestoreServer', @_);
@@ -83,6 +88,16 @@ package Paws::OpsWorksCM;
   sub StartMaintenance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::StartMaintenance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateServer {
@@ -167,7 +182,7 @@ package Paws::OpsWorksCM;
   }
 
 
-  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
+  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute ListTagsForResource RestoreServer StartMaintenance TagResource UntagResource UpdateServer UpdateServerEngineAttributes / }
 
 1;
 
@@ -355,6 +370,8 @@ of a server's instance.
 
 =item [Description => Str]
 
+=item [Tags => ArrayRef[L<Paws::OpsWorksCM::Tag>]]
+
 
 =back
 
@@ -423,6 +440,8 @@ request are not valid.
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
 =item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::OpsWorksCM::Tag>]]
 
 
 =back
@@ -702,6 +721,28 @@ is in any of the following states: CREATING, TERMINATED, FAILED or
 DELETING.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::OpsWorksCM::ListTagsForResource>
+
+Returns: a L<Paws::OpsWorksCM::ListTagsForResourceResponse> instance
+
+Returns a list of tags that are applied to the specified AWS OpsWorks
+for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
+backups.
+
+
 =head2 RestoreServer
 
 =over
@@ -727,6 +768,12 @@ run RestoreServer, the server's EC2 instance is deleted, and a new EC2
 instance is configured. RestoreServer maintains the existing server
 endpoint, so configuration management of the server's client devices
 (nodes) should continue to work.
+
+Restoring from a backup is performed by creating a new EC2 instance. If
+restoration is successful, and the server is in a C<HEALTHY> state, AWS
+OpsWorks CM switches traffic over to the new instance. After
+restoration is finished, the old EC2 instance is maintained in a
+C<Running> or C<Stopped> state, but is eventually terminated.
 
 This operation is asynchronous.
 
@@ -761,6 +808,43 @@ C<UNHEALTHY> states. Otherwise, an C<InvalidStateException> is thrown.
 A C<ResourceNotFoundException> is thrown when the server does not
 exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::OpsWorksCM::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::OpsWorksCM::TagResource>
+
+Returns: a L<Paws::OpsWorksCM::TagResourceResponse> instance
+
+Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+Puppet Enterprise server, or to server backups.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::OpsWorksCM::UntagResource>
+
+Returns: a L<Paws::OpsWorksCM::UntagResourceResponse> instance
+
+Removes specified tags from an AWS OpsWorks-CM server or backup.
 
 
 =head2 UpdateServer

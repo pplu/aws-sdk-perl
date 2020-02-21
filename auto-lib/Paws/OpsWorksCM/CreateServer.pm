@@ -21,6 +21,7 @@ package Paws::OpsWorksCM::CreateServer;
   has ServerName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -77,6 +78,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SubnetIds => [
         'MyString', ...                                          # max: 10000
       ],                                                         # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -114,11 +123,11 @@ number is exceeded. The default value is C<1>.
 
 =head2 CustomCertificate => Str
 
-A PEM-formatted HTTPS certificate. The value can be be a single,
-self-signed certificate, or a certificate chain. If you specify a
-custom certificate, you must also specify values for C<CustomDomain>
-and C<CustomPrivateKey>. The following are requirements for the
-C<CustomCertificate> value:
+Supported on servers running Chef Automate 2. A PEM-formatted HTTPS
+certificate. The value can be be a single, self-signed certificate, or
+a certificate chain. If you specify a custom certificate, you must also
+specify values for C<CustomDomain> and C<CustomPrivateKey>. The
+following are requirements for the C<CustomCertificate> value:
 
 =over
 
@@ -155,23 +164,25 @@ The certificate must match the value of C<CustomPrivateKey>.
 
 =head2 CustomDomain => Str
 
-An optional public endpoint of a server, such as
-C<https://aws.my-company.com>. To access the server, create a CNAME DNS
-record in your preferred DNS service that points the custom domain to
-the endpoint that is generated when the server is created (the value of
-the CreateServer Endpoint attribute). You cannot access the server by
-using the generated C<Endpoint> value if the server is using a custom
-domain. If you specify a custom domain, you must also specify values
-for C<CustomCertificate> and C<CustomPrivateKey>.
+Supported on servers running Chef Automate 2. An optional public
+endpoint of a server, such as C<https://aws.my-company.com>. To access
+the server, create a CNAME DNS record in your preferred DNS service
+that points the custom domain to the endpoint that is generated when
+the server is created (the value of the CreateServer Endpoint
+attribute). You cannot access the server by using the generated
+C<Endpoint> value if the server is using a custom domain. If you
+specify a custom domain, you must also specify values for
+C<CustomCertificate> and C<CustomPrivateKey>.
 
 
 
 =head2 CustomPrivateKey => Str
 
-A private key in PEM format for connecting to the server by using
-HTTPS. The private key must not be encrypted; it cannot be protected by
-a password or passphrase. If you specify a custom private key, you must
-also specify values for C<CustomDomain> and C<CustomCertificate>.
+Supported on servers running Chef Automate 2. A private key in PEM
+format for connecting to the server by using HTTPS. The private key
+must not be encrypted; it cannot be protected by a password or
+passphrase. If you specify a custom private key, you must also specify
+values for C<CustomDomain> and C<CustomCertificate>.
 
 
 
@@ -376,6 +387,45 @@ selected by Amazon EC2. If you specify subnet IDs, the VPC must have
 For more information about supported Amazon EC2 platforms, see
 Supported Platforms
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+
+
+
+=head2 Tags => ArrayRef[L<Paws::OpsWorksCM::Tag>]
+
+A map that contains tag keys and tag values to attach to an AWS
+OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise
+server.
+
+=over
+
+=item *
+
+The key cannot be empty.
+
+=item *
+
+The key can be a maximum of 127 characters, and can contain only
+Unicode letters, numbers, or separators, or the following special
+characters: C<+ - = . _ : />
+
+=item *
+
+The value can be a maximum 255 characters, and contain only Unicode
+letters, numbers, or separators, or the following special characters:
+C<+ - = . _ : />
+
+=item *
+
+Leading and trailing white spaces are trimmed from both the key and
+value.
+
+=item *
+
+A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
+server.
+
+=back
+
 
 
 

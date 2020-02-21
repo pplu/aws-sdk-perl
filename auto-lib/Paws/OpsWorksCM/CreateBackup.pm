@@ -3,6 +3,7 @@ package Paws::OpsWorksCM::CreateBackup;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -31,6 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateBackupResponse = $opsworks -cm->CreateBackup(
       ServerName  => 'MyServerName',
       Description => 'MyString',       # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',         # min: 1, max: 128
+          Value => 'MyTagValue',       # max: 256
+
+        },
+        ...
+      ],                               # OPTIONAL
     );
 
     # Results:
@@ -53,6 +62,44 @@ A user-defined description of the backup.
 =head2 B<REQUIRED> ServerName => Str
 
 The name of the server that you want to back up.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::OpsWorksCM::Tag>]
+
+A map that contains tag keys and tag values to attach to an AWS
+OpsWorks-CM server backup.
+
+=over
+
+=item *
+
+The key cannot be empty.
+
+=item *
+
+The key can be a maximum of 127 characters, and can contain only
+Unicode letters, numbers, or separators, or the following special
+characters: C<+ - = . _ : />
+
+=item *
+
+The value can be a maximum 255 characters, and contain only Unicode
+letters, numbers, or separators, or the following special characters:
+C<+ - = . _ : />
+
+=item *
+
+Leading and trailing white spaces are trimmed from both the key and
+value.
+
+=item *
+
+A maximum of 50 user-applied tags is allowed for tag-supported AWS
+OpsWorks-CM resources.
+
+=back
+
 
 
 

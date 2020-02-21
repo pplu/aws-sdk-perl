@@ -55,6 +55,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks-cm/lat
 Engine attributes that are specific to the server on which you want to
 run maintenance.
 
+B<Attributes accepted in a StartMaintenance request for Chef>
+
+=over
+
+=item *
+
+C<CHEF_MAJOR_UPGRADE>: If a Chef Automate server is eligible for
+upgrade to Chef Automate 2, add this engine attribute to a
+C<StartMaintenance> request and set the value to C<true> to upgrade the
+server to Chef Automate 2. For more information, see Upgrade an AWS
+OpsWorks for Chef Automate Server to Chef Automate 2
+(https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
+
+=back
+
+
 
 
 =head2 B<REQUIRED> ServerName => Str
