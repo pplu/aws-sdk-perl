@@ -47,7 +47,7 @@ CreateStreamProcessor.
 =head2 FaceMatchThreshold => Num
 
   Minimum face match confidence score that must be met to return a result
-for a recognized face. Default is 70. 0 is the lowest confidence. 100
+for a recognized face. Default is 80. 0 is the lowest confidence. 100
 is the highest confidence.
 
 

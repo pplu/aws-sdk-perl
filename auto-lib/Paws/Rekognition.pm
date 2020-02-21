@@ -135,6 +135,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::GetPersonTracking', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTextDetection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::GetTextDetection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub IndexFaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::IndexFaces', @_);
@@ -208,6 +213,11 @@ package Paws::Rekognition;
   sub StartStreamProcessor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::StartStreamProcessor', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartTextDetection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::StartTextDetection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopProjectVersion {
@@ -341,7 +351,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection CreateProject CreateProjectVersion CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeCollection DescribeProjects DescribeProjectVersions DescribeStreamProcessor DetectCustomLabels DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartProjectVersion StartStreamProcessor StopProjectVersion StopStreamProcessor / }
+  sub operations { qw/CompareFaces CreateCollection CreateProject CreateProjectVersion CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeCollection DescribeProjects DescribeProjectVersions DescribeStreamProcessor DetectCustomLabels DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking GetTextDetection IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartProjectVersion StartStreamProcessor StartTextDetection StopProjectVersion StopStreamProcessor / }
 
 1;
 
@@ -825,9 +835,9 @@ non-frontal or obscured faces, the algorithm might not detect the faces
 or might detect faces with lower confidence.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the to call
-Amazon Rekognition operations, passing image bytes is not supported.
-The image must be either a PNG or JPEG formatted file.
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not
 persist any data.
@@ -966,6 +976,8 @@ supported. The image must be either a PNG or JPEG formatted file.
 =over
 
 =item Image => L<Paws::Rekognition::Image>
+
+=item [Filters => L<Paws::Rekognition::DetectTextFilters>]
 
 
 =back
@@ -1368,6 +1380,55 @@ getting the next set of results. To get the next page of results, call
 C<GetPersonTracking> and populate the C<NextToken> request parameter
 with the token value returned from the previous call to
 C<GetPersonTracking>.
+
+
+=head2 GetTextDetection
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::GetTextDetection>
+
+Returns: a L<Paws::Rekognition::GetTextDetectionResponse> instance
+
+Gets the text detection results of a Amazon Rekognition Video analysis
+started by StartTextDetection.
+
+Text detection with Amazon Rekognition Video is an asynchronous
+operation. You start text detection by calling StartTextDetection which
+returns a job identifier (C<JobId>) When the text detection operation
+finishes, Amazon Rekognition publishes a completion status to the
+Amazon Simple Notification Service topic registered in the initial call
+to C<StartTextDetection>. To get the results of the text detection
+operation, first check that the status value published to the Amazon
+SNS topic is C<SUCCEEDED>. if so, call C<GetTextDetection> and pass the
+job identifier (C<JobId>) from the initial call of
+C<StartLabelDetection>.
+
+C<GetTextDetection> returns an array of detected text
+(C<TextDetections>) sorted by the time the text was detected, up to 50
+words per frame of video.
+
+Each element of the array includes the detected text, the precentage
+confidence in the acuracy of the detected text, the time the text was
+detected, bounding box information for where the text was located, and
+unique identifiers for words and their lines.
+
+Use MaxResults parameter to limit the number of text detections
+returned. If there are more results than specified in C<MaxResults>,
+the value of C<NextToken> in the operation response contains a
+pagination token for getting the next set of results. To get the next
+page of results, call C<GetTextDetection> and populate the C<NextToken>
+request parameter with the token value returned from the previous call
+to C<GetTextDetection>.
 
 
 =head2 IndexFaces
@@ -2030,6 +2091,43 @@ Starts processing a stream processor. You create a stream processor by
 calling CreateStreamProcessor. To tell C<StartStreamProcessor> which
 stream processor to start, use the value of the C<Name> field specified
 in the call to C<CreateStreamProcessor>.
+
+
+=head2 StartTextDetection
+
+=over
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [Filters => L<Paws::Rekognition::StartTextDetectionFilters>]
+
+=item [JobTag => Str]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::StartTextDetection>
+
+Returns: a L<Paws::Rekognition::StartTextDetectionResponse> instance
+
+Starts asynchronous detection of text in a stored video.
+
+Amazon Rekognition Video can detect text in a video stored in an Amazon
+S3 bucket. Use Video to specify the bucket name and the filename of the
+video. C<StartTextDetection> returns a job identifier (C<JobId>) which
+you use to get the results of the operation. When text detection is
+finished, Amazon Rekognition Video publishes a completion status to the
+Amazon Simple Notification Service topic that you specify in
+C<NotificationChannel>.
+
+To get the results of the text detection operation, first check that
+the status value published to the Amazon SNS topic is C<SUCCEEDED>. if
+so, call GetTextDetection and pass the job identifier (C<JobId>) from
+the initial call to C<StartTextDetection>.
 
 
 =head2 StopProjectVersion

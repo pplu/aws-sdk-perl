@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::DetectText;
   use Moose;
+  has Filters => (is => 'ro', isa => 'Paws::Rekognition::DetectTextFilters');
   has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
 
   use MooseX::ClassAttribute;
@@ -36,11 +37,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },
-
+      Filters => {
+        RegionsOfInterest => [
+          {
+            BoundingBox => {
+              Height => 1.0,    # OPTIONAL
+              Left   => 1.0,    # OPTIONAL
+              Top    => 1.0,    # OPTIONAL
+              Width  => 1.0,    # OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # max: 10; OPTIONAL
+        WordFilter => {
+          MinBoundingBoxHeight => 1.0,    # max: 1; OPTIONAL
+          MinBoundingBoxWidth  => 1.0,    # max: 1; OPTIONAL
+          MinConfidence        => 1.0,    # max: 100; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
-    my $TextDetections = $DetectTextResponse->TextDetections;
+    my $TextDetections   = $DetectTextResponse->TextDetections;
+    my $TextModelVersion = $DetectTextResponse->TextModelVersion;
 
     # Returns a L<Paws::Rekognition::DetectTextResponse> object.
 
@@ -48,6 +67,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/DetectText>
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => L<Paws::Rekognition::DetectTextFilters>
+
+Optional parameters that let you set the criteria that the text must
+meet to be included in your response.
+
 
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
