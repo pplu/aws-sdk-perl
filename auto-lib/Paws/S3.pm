@@ -1072,7 +1072,7 @@ can do this regardless of the form of server-side encryption that was
 used to encrypt the source, or even if the source object was not
 encrypted. For more information about server-side encryption, see Using
 Server-Side Encryption
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html).
 
 A copy request might return an error when Amazon S3 receives the copy
 request or while Amazon S3 is copying the files. If the error occurs
@@ -1222,10 +1222,16 @@ C<x-amz-server-side-encryption-context>
 
 =back
 
-If you specify C<x-amz-server-side-encryption:aws:kms> but don't
-provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
-the AWS managed customer master key (CMK) in AWS KMS to protect the
-data.
+If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
+provide C<x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses
+the AWS managed CMK in AWS KMS to protect the data. If you want to use
+a customer managed AWS KMS CMK, you must provide the
+C<x-amz-server-side-encryption-aws-kms-key-id> of the symmetric
+customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+asymmetric CMKs. For more information, see Using Symmetric and
+Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.
@@ -1716,7 +1722,7 @@ x-amz-server-side-encryption-context
 =back
 
 If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
-provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
+provide C<x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses
 the AWS managed CMK in AWS KMS to protect the data.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
@@ -2527,7 +2533,7 @@ Returns: a L<Paws::S3::DeleteObjectTaggingOutput> instance
 
 Removes the entire tag set from the specified object. For more
 information about managing object tags, see Object Tagging
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html).
 
 To use this operation, you must have permission to perform the
 C<s3:DeleteObjectTagging> action.
@@ -5245,8 +5251,8 @@ This implementation of the C<PUT> operation uses the C<encryption>
 subresource to set the default encryption state of an existing bucket.
 
 This implementation of the C<PUT> operation sets default encryption for
-a buckets using server-side encryption with Amazon S3-managed keys
-SSE-S3 or AWS KMS customer master keys (CMKs) (SSE-KMS) bucket.
+a bucket using server-side encryption with Amazon S3-managed keys
+SSE-S3 or AWS KMS customer master keys (CMKs) (SSE-KMS).
 
 This operation requires AWS Signature Version 4. For more information,
 see Authenticating Requests (AWS Signature Version 4).
@@ -6613,8 +6619,15 @@ x-amz-server-side-encryption-context
 =back
 
 If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
-provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
-the AWS managed CMK in AWS KMS to protect the data.
+provide C<x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses
+the AWS managed CMK in AWS KMS to protect the data. If you want to use
+a customer managed AWS KMS CMK, you must provide the
+C<x-amz-server-side-encryption-aws-kms-key-id> of the symmetric
+customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+asymmetric CMKs. For more information, see Using Symmetric and
+Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.
@@ -6648,7 +6661,7 @@ x-amz-server-side-encryption-customer-key-MD5
 
 For more information about server-side encryption with CMKs stored in
 KMS (SSE-KMS), see Protecting Data Using Server-Side Encryption with
-CMKs stored in AWS KMS
+CMKs stored in AWS
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 
 =back
@@ -6819,8 +6832,15 @@ x-amz-server-side-encryption-context
 =back
 
 If you specify C<x-amz-server-side-encryption:aws:kms>, but don't
-provide C<x-amz-server-side- encryption-aws-kms-key-id>, Amazon S3 uses
-the default AWS KMS CMK to protect the data.
+provide C<x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses
+the AWS managed CMK in AWS KMS to protect the data. If you want to use
+a customer managed AWS KMS CMK, you must provide the
+C<x-amz-server-side-encryption-aws-kms-key-id> of the symmetric
+customer managed CMK. Amazon S3 only supports symmetric CMKs and not
+asymmetric CMKs. For more information, see Using Symmetric and
+Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 All GET and PUT requests for an object protected by AWS KMS fail if you
 don't make them with SSL or by using SigV4.

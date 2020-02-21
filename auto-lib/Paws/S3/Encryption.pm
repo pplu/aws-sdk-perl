@@ -53,7 +53,11 @@ to specify the encryption context for the restore results.
 =head2 KMSKeyId => Str
 
   If the encryption type is C<aws:kms>, this optional value specifies the
-AWS KMS key ID to use for encryption of job results.
+ID of the symmetric customer managed AWS KMS CMK to use for encryption
+of job results. Amazon S3 only supports symmetric CMKs. For more
+information, see Using Symmetric and Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

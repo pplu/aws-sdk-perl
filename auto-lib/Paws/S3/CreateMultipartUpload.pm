@@ -265,11 +265,12 @@ with the encryption context key-value pairs.
 
 =head2 SSEKMSKeyId => Str
 
-Specifies the AWS KMS key ID to use for object encryption. All GET and
-PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. For information about configuring using any of
-the officially supported AWS SDKs and AWS CLI, see Specifying the
-Signature Version in Request Authentication
+Specifies the ID of the symmetric customer managed AWS KMS CMK to use
+for object encryption. All GET and PUT requests for an object protected
+by AWS KMS will fail if not made via SSL or using SigV4. For
+information about configuring using any of the officially supported AWS
+SDKs and AWS CLI, see Specifying the Signature Version in Request
+Authentication
 (https://docs.aws.amazon.com/http:/docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
 in the I<Amazon S3 Developer Guide>.
 

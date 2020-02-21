@@ -348,7 +348,7 @@ PUT requests for an object protected by AWS KMS will fail if not made
 via SSL or using SigV4. For information about configuring using any of
 the officially supported AWS SDKs and AWS CLI, see Specifying the
 Signature Version in Request Authentication
-(https://docs.aws.amazon.com/http:/docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
 in the I<Amazon S3 Developer Guide>.
 
 

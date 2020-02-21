@@ -38,8 +38,9 @@ Specifies the use of SSE-KMS to encrypt delivered inventory reports.
 
 =head2 B<REQUIRED> KeyId => Str
 
-  Specifies the ID of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use for encrypting inventory reports.
+  Specifies the ID of the AWS Key Management Service (AWS KMS) symmetric
+customer managed customer master key (CMK) to use for encrypting
+inventory reports.
 
 
 

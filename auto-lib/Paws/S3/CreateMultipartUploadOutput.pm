@@ -110,7 +110,8 @@ holding JSON with the encryption context key-value pairs.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (AWS
-KMS) customer master key (CMK) that was used for the object.
+KMS) symmetric customer managed customer master key (CMK) that was used
+for the object.
 
 
 

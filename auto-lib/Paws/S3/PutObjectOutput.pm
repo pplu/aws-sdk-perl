@@ -82,8 +82,8 @@ holding JSON with the encryption context key-value pairs.
 
 If C<x-amz-server-side-encryption> is present and has the value of
 C<aws:kms>, this header specifies the ID of the AWS Key Management
-Service (AWS KMS) customer master key (CMK) that was used for the
-object.
+Service (AWS KMS) symmetric customer managed customer master key (CMK)
+that was used for the object.
 
 
 

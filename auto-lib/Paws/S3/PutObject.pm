@@ -320,14 +320,15 @@ with the encryption context key-value pairs.
 
 If C<x-amz-server-side-encryption> is present and has the value of
 C<aws:kms>, this header specifies the ID of the AWS Key Management
-Service (AWS KMS) customer master key (CMK) that was used for the
-object.
+Service (AWS KMS) symmetrical customer managed customer master key
+(CMK) that was used for the object.
 
 If the value of C<x-amz-server-side-encryption> is C<aws:kms>, this
-header specifies the ID of the AWS KMS CMK that will be used for the
-object. If you specify C<x-amz-server-side-encryption:aws:kms>, but do
-not provideC< x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3
-uses the AWS managed CMK in AWS to protect the data.
+header specifies the ID of the symmetric customer managed AWS KMS CMK
+that will be used for the object. If you specify
+C<x-amz-server-side-encryption:aws:kms>, but do not provideC<
+x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses the AWS
+managed CMK in AWS to protect the data.
 
 
 
