@@ -105,10 +105,10 @@ a Fargate profile.
 
 =head2 Subnets => ArrayRef[Str|Undef]
 
-The IDs of subnets to launch Fargate pods into. At this time, Fargate
-pods are not assigned public IP addresses, so only private subnets
-(with no direct route to an Internet Gateway) are accepted for this
-parameter.
+The IDs of subnets to launch your pods into. At this time, pods running
+on Fargate are not assigned public IP addresses, so only private
+subnets (with no direct route to an Internet Gateway) are accepted for
+this parameter.
 
 
 

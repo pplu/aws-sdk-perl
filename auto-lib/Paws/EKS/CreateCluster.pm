@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourcesVpcConfig => {
         EndpointPrivateAccess => 1,                      # OPTIONAL
         EndpointPublicAccess  => 1,                      # OPTIONAL
+        PublicAccessCidrs     => [ 'MyString', ... ],    # OPTIONAL
         SecurityGroupIds      => [ 'MyString', ... ],    # OPTIONAL
         SubnetIds             => [ 'MyString', ... ],    # OPTIONAL
       },

@@ -2,6 +2,7 @@ package Paws::EKS::VpcConfigRequest;
   use Moose;
   has EndpointPrivateAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPrivateAccess', traits => ['NameInRequest']);
   has EndpointPublicAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPublicAccess', traits => ['NameInRequest']);
+  has PublicAccessCidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'publicAccessCidrs', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
 1;
@@ -46,19 +47,35 @@ cluster.
 Kubernetes API server endpoint. If you enable private access,
 Kubernetes API requests from within your cluster's VPC use the private
 VPC endpoint. The default value for this parameter is C<false>, which
-disables private access for your Kubernetes API server. For more
-information, see Amazon EKS Cluster Endpoint Access Control
+disables private access for your Kubernetes API server. If you disable
+private access and you have worker nodes or AWS Fargate pods in the
+cluster, then ensure that C<publicAccessCidrs> includes the necessary
+CIDR blocks for communication with the worker nodes or Fargate pods.
+For more information, see Amazon EKS Cluster Endpoint Access Control
 (https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 in the I< I<Amazon EKS User Guide> >.
 
 
 =head2 EndpointPublicAccess => Bool
 
-  Set this value to C<false> to disable public access for your cluster's
+  Set this value to C<false> to disable public access to your cluster's
 Kubernetes API server endpoint. If you disable public access, your
-cluster's Kubernetes API server can receive only requests from within
+cluster's Kubernetes API server can only receive requests from within
 the cluster VPC. The default value for this parameter is C<true>, which
 enables public access for your Kubernetes API server. For more
+information, see Amazon EKS Cluster Endpoint Access Control
+(https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+in the I< I<Amazon EKS User Guide> >.
+
+
+=head2 PublicAccessCidrs => ArrayRef[Str|Undef]
+
+  The CIDR blocks that are allowed access to your cluster's public
+Kubernetes API server endpoint. Communication to the endpoint from
+addresses outside of the CIDR blocks that you specify is denied. The
+default value is C<0.0.0.0/0>. If you've disabled private endpoint
+access and you have worker nodes or AWS Fargate pods in the cluster,
+then ensure that you specify the necessary CIDR blocks. For more
 information, see Amazon EKS Cluster Endpoint Access Control
 (https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 in the I< I<Amazon EKS User Guide> >.

@@ -361,29 +361,29 @@ Each argument is described in detail in: L<Paws::EKS::CreateFargateProfile>
 Returns: a L<Paws::EKS::CreateFargateProfileResponse> instance
 
 Creates an AWS Fargate profile for your Amazon EKS cluster. You must
-have at least one Fargate profile in a cluster to be able to schedule
-pods on Fargate infrastructure.
+have at least one Fargate profile in a cluster to be able to run pods
+on Fargate.
 
 The Fargate profile allows an administrator to declare which pods run
-on Fargate infrastructure and specify which pods run on which Fargate
-profile. This declaration is done through the profileE<rsquo>s
-selectors. Each profile can have up to five selectors that contain a
-namespace and labels. A namespace is required for every selector. The
-label field consists of multiple optional key-value pairs. Pods that
-match the selectors are scheduled on Fargate infrastructure. If a
-to-be-scheduled pod matches any of the selectors in the Fargate
-profile, then that pod is scheduled on Fargate infrastructure.
+on Fargate and specify which pods run on which Fargate profile. This
+declaration is done through the profileE<rsquo>s selectors. Each
+profile can have up to five selectors that contain a namespace and
+labels. A namespace is required for every selector. The label field
+consists of multiple optional key-value pairs. Pods that match the
+selectors are scheduled on Fargate. If a to-be-scheduled pod matches
+any of the selectors in the Fargate profile, then that pod is run on
+Fargate.
 
 When you create a Fargate profile, you must specify a pod execution
 role to use with the pods that are scheduled with the profile. This
 role is added to the cluster's Kubernetes Role Based Access Control
 (https://kubernetes.io/docs/admin/authorization/rbac/) (RBAC) for
 authorization so that the C<kubelet> that is running on the Fargate
-infrastructure can register with your Amazon EKS cluster. This role is
-what allows Fargate infrastructure to appear in your cluster as nodes.
-The pod execution role also provides IAM permissions to the Fargate
-infrastructure to allow read access to Amazon ECR image repositories.
-For more information, see Pod Execution Role
+infrastructure can register with your Amazon EKS cluster so that it can
+appear in your cluster as a node. The pod execution role also provides
+IAM permissions to the Fargate infrastructure to allow read access to
+Amazon ECR image repositories. For more information, see Pod Execution
+Role
 (https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
 in the I<Amazon EKS User Guide>.
 
@@ -499,11 +499,11 @@ Returns: a L<Paws::EKS::DeleteFargateProfileResponse> instance
 
 Deletes an AWS Fargate profile.
 
-When you delete a Fargate profile, any pods that were scheduled onto
-Fargate infrastructure with the profile are deleted. If those pods
-match another Fargate profile, then they are scheduled on Fargate
-infrastructure with that profile. If they no longer match any Fargate
-profiles, then they are not scheduled on Fargate infrastructure.
+When you delete a Fargate profile, any pods running on Fargate that
+were created with the profile are deleted. If those pods match another
+Fargate profile, then they are scheduled on Fargate with that profile.
+If they no longer match any Fargate profiles, then they are not
+scheduled on Fargate and they may remain in a pending state.
 
 Only one Fargate profile in a cluster can be in the C<DELETING> status
 at a time. You must wait for a Fargate profile to finish deleting

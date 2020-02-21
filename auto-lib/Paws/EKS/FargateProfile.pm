@@ -69,7 +69,9 @@ created.
 
   The Amazon Resource Name (ARN) of the pod execution role to use for
 pods that match the selectors in the Fargate profile. For more
-information, see Pod Execution Role in the I<Amazon EKS User Guide>.
+information, see Pod Execution Role
+(https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
+in the I<Amazon EKS User Guide>.
 
 
 =head2 Selectors => ArrayRef[L<Paws::EKS::FargateProfileSelector>]
@@ -84,7 +86,7 @@ information, see Pod Execution Role in the I<Amazon EKS User Guide>.
 
 =head2 Subnets => ArrayRef[Str|Undef]
 
-  The IDs of subnets to launch Fargate pods into.
+  The IDs of subnets to launch pods into.
 
 
 =head2 Tags => L<Paws::EKS::TagMap>
