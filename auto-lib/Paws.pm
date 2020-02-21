@@ -401,6 +401,8 @@ L<Paws::CodePipeline>
 
 L<Paws::CodeStar>
 
+L<Paws::CodeStarConnections>
+
 L<Paws::CodeStarNotifications>
 
 L<Paws::CognitoIdentity>
@@ -432,6 +434,8 @@ L<Paws::DataPipeline>
 L<Paws::Datasync>
 
 L<Paws::DAX>
+
+L<Paws::Detective>
 
 L<Paws::DeviceFarm>
 

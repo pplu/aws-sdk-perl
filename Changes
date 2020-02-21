@@ -1,6 +1,8 @@
-0.42 
+0.42
+ - New API: CodeStarConnections 
  - New API: CodeStarNotifications
  - New API: DataExchange
+ - New API: Detective
  - New API: Forecast
  - New API: LakeFormation
  - New API: MarketplaceCatalog
