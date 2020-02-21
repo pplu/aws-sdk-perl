@@ -27,6 +27,7 @@ package Paws::CognitoIdp::UserPoolType;
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UsernameConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::UsernameConfigurationType');
   has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
@@ -234,6 +235,15 @@ users.
 
   Specifies whether email addresses or phone numbers can be specified as
 usernames when a user signs up.
+
+
+=head2 UsernameConfiguration => L<Paws::CognitoIdp::UsernameConfigurationType>
+
+  You can choose to enable case sensitivity on the username input for the
+selected sign-in option. For example, when this is set to C<False>,
+users will be able to sign in using either "username" or "Username".
+This configuration is immutable once it has been set. For more
+information, see .
 
 
 =head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>

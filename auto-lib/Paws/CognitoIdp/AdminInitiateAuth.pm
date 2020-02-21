@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AnalyticsEndpointId => 'MyStringType',    # OPTIONAL
       },    # OPTIONAL
       AuthParameters => {
-        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
+        'MyStringType' => 'MyAuthParametersValueType',    # key: OPTIONAL
       },    # OPTIONAL
       ClientMetadata => {
         'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL

@@ -96,25 +96,34 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 
 =head2 AllowedOAuthFlows => ArrayRef[Str|Undef]
 
+The allowed OAuth flows.
+
 Set to C<code> to initiate a code grant flow, which provides an
 authorization code as the response. This code can be exchanged for
 access tokens with the token endpoint.
+
+Set to C<implicit> to specify that the client should get the access
+token (and, optionally, ID token, based on scopes) directly.
+
+Set to C<client_credentials> to specify that the client should get the
+access token (and, optionally, ID token, based on scopes) from the
+token endpoint using a combination of client and client_secret.
 
 
 
 =head2 AllowedOAuthFlowsUserPoolClient => Bool
 
-Set to TRUE if the client is allowed to follow the OAuth protocol when
+Set to true if the client is allowed to follow the OAuth protocol when
 interacting with Cognito user pools.
 
 
 
 =head2 AllowedOAuthScopes => ArrayRef[Str|Undef]
 
-A list of allowed C<OAuth> scopes. Currently supported values are
-C<"phone">, C<"email">, C<"openid">, and C<"Cognito">. In addition to
-these values, custom scopes created in Resource Servers are also
-supported.
+The allowed OAuth scopes. Possible values provided by OAuth are:
+C<phone>, C<email>, C<openid>, and C<profile>. Possible values provided
+by AWS are: C<aws.cognito.signin.user.admin>. Custom scopes created in
+Resource Servers are also supported.
 
 
 
@@ -314,9 +323,9 @@ ResendConfirmationCode
 
 =back
 
-After January 1st 2020, the value of C<PreventUserExistenceErrors> will
-default to C<ENABLED> for newly created user pool clients if no value
-is provided.
+After February 15th 2020, the value of C<PreventUserExistenceErrors>
+will default to C<ENABLED> for newly created user pool clients if no
+value is provided.
 
 Valid values are: C<"LEGACY">, C<"ENABLED">
 

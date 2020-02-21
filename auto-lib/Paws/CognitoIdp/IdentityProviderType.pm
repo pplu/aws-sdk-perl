@@ -66,8 +66,129 @@ pool attributes.
 
 =head2 ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>
 
-  The identity provider details, such as C<MetadataURL> and
-C<MetadataFile>.
+  The identity provider details. The following list describes the
+provider detail keys for each identity provider type.
+
+=over
+
+=item *
+
+For Google, Facebook and Login with Amazon:
+
+=over
+
+=item *
+
+client_id
+
+=item *
+
+client_secret
+
+=item *
+
+authorize_scopes
+
+=back
+
+=item *
+
+For Sign in with Apple:
+
+=over
+
+=item *
+
+client_id
+
+=item *
+
+team_id
+
+=item *
+
+key_id
+
+=item *
+
+private_key
+
+=item *
+
+authorize_scopes
+
+=back
+
+=item *
+
+For OIDC providers:
+
+=over
+
+=item *
+
+client_id
+
+=item *
+
+client_secret
+
+=item *
+
+attributes_request_method
+
+=item *
+
+oidc_issuer
+
+=item *
+
+authorize_scopes
+
+=item *
+
+authorize_url I<if not available from discovery URL specified by
+oidc_issuer key>
+
+=item *
+
+token_url I<if not available from discovery URL specified by
+oidc_issuer key>
+
+=item *
+
+attributes_url I<if not available from discovery URL specified by
+oidc_issuer key>
+
+=item *
+
+jwks_uri I<if not available from discovery URL specified by oidc_issuer
+key>
+
+=item *
+
+authorize_scopes
+
+=back
+
+=item *
+
+For SAML providers:
+
+=over
+
+=item *
+
+MetadataFile OR MetadataURL
+
+=item *
+
+IDPSignOut I<optional>
+
+=back
+
+=back
+
 
 
 =head2 ProviderName => Str

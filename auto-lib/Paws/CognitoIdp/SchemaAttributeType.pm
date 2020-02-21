@@ -49,7 +49,16 @@ Contains information about the schema attribute.
 
 =head2 DeveloperOnlyAttribute => Bool
 
-  Specifies whether the attribute type is developer only.
+  We recommend that you use WriteAttributes
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserPoolClientType.html#CognitoUserPools-Type-UserPoolClientType-WriteAttributes)
+in the user pool client to control how attributes can be mutated for
+new use cases instead of using C<DeveloperOnlyAttribute>.
+
+Specifies whether the attribute type is developer only. This attribute
+can only be modified by an administrator. Users will not be able to
+modify this attribute using their access token. For example,
+C<DeveloperOnlyAttribute> can be modified using the API but cannot be
+updated using the API.
 
 
 =head2 Mutable => Bool

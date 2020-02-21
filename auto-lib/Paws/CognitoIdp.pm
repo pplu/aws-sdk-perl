@@ -1747,6 +1747,8 @@ Creates the user import job.
 
 =item [UsernameAttributes => ArrayRef[Str|Undef]]
 
+=item [UsernameConfiguration => L<Paws::CognitoIdp::UsernameConfigurationType>]
+
 =item [UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>]
 
 =item [UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>]
