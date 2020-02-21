@@ -42,8 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OverrideOptions => {
         Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
         BytesPerSecond => 1,           # min: -1; OPTIONAL
-        Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
-        Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
+        Gid      => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
+        LogLevel => 'OFF',     # values: OFF, BASIC, TRANSFER; OPTIONAL
+        Mtime    => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
         OverwriteMode        => 'ALWAYS',   # values: ALWAYS, NEVER; OPTIONAL
         PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL

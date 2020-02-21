@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       ServerHostname => 'MyServerHostname',
-      Subdirectory   => 'MyNonEmptySubdirectory',
+      Subdirectory   => 'MyNfsSubdirectory',
       MountOptions   => {
         Version =>
           'AUTOMATIC',    # values: AUTOMATIC, NFS3, NFS4_0, NFS4_1; OPTIONAL

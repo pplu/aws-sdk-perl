@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       Password       => 'MySmbPassword',
       ServerHostname => 'MyServerHostname',
-      Subdirectory   => 'MyNonEmptySubdirectory',
+      Subdirectory   => 'MySmbSubdirectory',
       User           => 'MySmbUser',
-      Domain         => 'MySmbDomain',              # OPTIONAL
+      Domain         => 'MySmbDomain',         # OPTIONAL
       MountOptions   => {
         Version => 'AUTOMATIC',    # values: AUTOMATIC, SMB2, SMB3; OPTIONAL
       },    # OPTIONAL

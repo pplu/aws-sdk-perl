@@ -30,6 +30,11 @@ package Paws::Datasync;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationEfs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateLocationFsxWindows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationFsxWindows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateLocationNfs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationNfs', @_);
@@ -73,6 +78,11 @@ package Paws::Datasync;
   sub DescribeLocationEfs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationEfs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocationFsxWindows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationFsxWindows', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLocationNfs {
@@ -268,7 +278,7 @@ package Paws::Datasync;
   }
 
 
-  sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationNfs CreateLocationS3 CreateLocationSmb CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationNfs DescribeLocationS3 DescribeLocationSmb DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateTask / }
+  sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationFsxWindows CreateLocationNfs CreateLocationS3 CreateLocationSmb CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationFsxWindows DescribeLocationNfs DescribeLocationS3 DescribeLocationSmb DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateTask / }
 
 1;
 
@@ -400,6 +410,34 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationEfs>
 Returns: a L<Paws::Datasync::CreateLocationEfsResponse> instance
 
 Creates an endpoint for an Amazon EFS file system.
+
+
+=head2 CreateLocationFsxWindows
+
+=over
+
+=item FsxFilesystemArn => Str
+
+=item Password => Str
+
+=item SecurityGroupArns => ArrayRef[Str|Undef]
+
+=item User => Str
+
+=item [Domain => Str]
+
+=item [Subdirectory => Str]
+
+=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::CreateLocationFsxWindows>
+
+Returns: a L<Paws::Datasync::CreateLocationFsxWindowsResponse> instance
+
+Creates an endpoint for an Amazon FSx for Windows file system.
 
 
 =head2 CreateLocationNfs
@@ -625,6 +663,23 @@ Returns: a L<Paws::Datasync::DescribeLocationEfsResponse> instance
 
 Returns metadata, such as the path information about an Amazon EFS
 location.
+
+
+=head2 DescribeLocationFsxWindows
+
+=over
+
+=item LocationArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::DescribeLocationFsxWindows>
+
+Returns: a L<Paws::Datasync::DescribeLocationFsxWindowsResponse> instance
+
+Returns metadata, such as the path information about an Amazon FSx for
+Windows location.
 
 
 =head2 DescribeLocationNfs

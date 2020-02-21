@@ -3,6 +3,7 @@ package Paws::Datasync::Options;
   has Atime => (is => 'ro', isa => 'Str');
   has BytesPerSecond => (is => 'ro', isa => 'Int');
   has Gid => (is => 'ro', isa => 'Str');
+  has LogLevel => (is => 'ro', isa => 'Str');
   has Mtime => (is => 'ro', isa => 'Str');
   has OverwriteMode => (is => 'ro', isa => 'Str');
   has PosixPermissions => (is => 'ro', isa => 'Str');
@@ -94,6 +95,15 @@ INT_VALUE: Preserve the integer value of user ID (UID) and GID
 (recommended).
 
 NONE: Ignore UID and GID.
+
+
+=head2 LogLevel => Str
+
+  A value that determines the type of logs DataSync will deliver to your
+AWS CloudWatch Logs file. If set to C<OFF>, no logs will be delivered.
+C<BASIC> will deliver a few logs per transfer operation and C<TRANSFER>
+will deliver a verbose log that contains logs for every file that is
+transferred.
 
 
 =head2 Mtime => Str

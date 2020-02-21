@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       EfsFilesystemArn => 'MyEfsFilesystemArn',
-      Subdirectory     => 'MySubdirectory',       # OPTIONAL
+      Subdirectory     => 'MyEfsSubdirectory',    # OPTIONAL
       Tags             => [
         {
           Key   => 'MyTagKey',                    # min: 1, max: 256
