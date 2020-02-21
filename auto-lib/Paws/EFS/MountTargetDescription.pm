@@ -1,6 +1,8 @@
 
 package Paws::EFS::MountTargetDescription;
   use Moose;
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneName => (is => 'ro', isa => 'Str');
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has IpAddress => (is => 'ro', isa => 'Str');
   has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);
@@ -19,6 +21,21 @@ package Paws::EFS::MountTargetDescription;
 Paws::EFS::MountTargetDescription
 
 =head1 ATTRIBUTES
+
+
+=head2 AvailabilityZoneId => Str
+
+The unique and consistent identifier of the Availability Zone (AZ) that
+the mount target resides in. For example, C<use1-az1> is an AZ ID for
+the us-east-1 Region and it has the same location in every AWS account.
+
+
+=head2 AvailabilityZoneName => Str
+
+The name of the Availability Zone (AZ) that the mount target resides
+in. AZs are independently mapped to names for each AWS account. For
+example, the Availability Zone C<us-east-1a> for your AWS account might
+not be the same location as C<us-east-1a> for another AWS account.
 
 
 =head2 B<REQUIRED> FileSystemId => Str
