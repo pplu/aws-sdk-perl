@@ -50,19 +50,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 AcceptLanguage => Str
 
+The language code.
+
+=over
+
+=item *
+
+C<en> - English (default)
+
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
 
 
 
 
 =head2 B<REQUIRED> ProvisionedProductId => Str
 
-
+The identifier of the provisioned product.
 
 
 
 =head2 B<REQUIRED> ServiceActionId => Str
 
-
+The self-service action identifier.
 
 
 

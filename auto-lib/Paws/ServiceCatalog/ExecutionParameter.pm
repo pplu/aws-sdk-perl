@@ -33,24 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-This class has no description
+Details of an execution parameter value that is passed to a
+self-service action when executed on a provisioned product.
 
 =head1 ATTRIBUTES
 
 
 =head2 DefaultValues => ArrayRef[Str|Undef]
 
-  
+  The default values for the execution parameter.
 
 
 =head2 Name => Str
 
-  
+  The name of the execution parameter.
 
 
 =head2 Type => Str
 
-  
+  The execution parameter type.
 
 
 

@@ -2,6 +2,9 @@
 package Paws::ServiceCatalog::ListPortfolioAccess;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
+  has OrganizationParentId => (is => 'ro', isa => 'Str');
+  has PageSize => (is => 'ro', isa => 'Int');
+  has PageToken => (is => 'ro', isa => 'Str');
   has PortfolioId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,8 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $ListPortfolioAccessOutput = $servicecatalog->ListPortfolioAccess(
-      PortfolioId    => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      PortfolioId          => 'MyId',
+      AcceptLanguage       => 'MyAcceptLanguage',    # OPTIONAL
+      OrganizationParentId => 'MyId',                # OPTIONAL
+      PageSize             => 1,                     # OPTIONAL
+      PageToken            => 'MyPageToken',         # OPTIONAL
     );
 
     # Results:
@@ -65,6 +71,27 @@ C<zh> - Chinese
 
 =back
 
+
+
+
+=head2 OrganizationParentId => Str
+
+The ID of an organization node the portfolio is shared with. All
+children of this node with an inherited portfolio share will be
+returned.
+
+
+
+=head2 PageSize => Int
+
+The maximum number of items to return with this call.
+
+
+
+=head2 PageToken => Str
+
+The page token for the next set of results. To retrieve the first set
+of results, use null.
 
 
 

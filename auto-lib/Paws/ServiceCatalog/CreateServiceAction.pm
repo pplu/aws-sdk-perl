@@ -107,7 +107,8 @@ To reuse the provisioned product launch role, set to C<"AssumeRole":
 
 The list of parameters in JSON format.
 
-For example: C<[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]>.
+For example: C<[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]> or
+C<[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]>.
 
 =back
 
