@@ -40,6 +40,16 @@ package Paws::ComprehendMedical;
     my $call_object = $self->new_with_coercions('Paws::ComprehendMedical::DetectPHI', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub InferICD10CM {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ComprehendMedical::InferICD10CM', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub InferRxNorm {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ComprehendMedical::InferRxNorm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListEntitiesDetectionV2Jobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ComprehendMedical::ListEntitiesDetectionV2Jobs', @_);
@@ -73,7 +83,7 @@ package Paws::ComprehendMedical;
   
 
 
-  sub operations { qw/DescribeEntitiesDetectionV2Job DescribePHIDetectionJob DetectEntities DetectEntitiesV2 DetectPHI ListEntitiesDetectionV2Jobs ListPHIDetectionJobs StartEntitiesDetectionV2Job StartPHIDetectionJob StopEntitiesDetectionV2Job StopPHIDetectionJob / }
+  sub operations { qw/DescribeEntitiesDetectionV2Job DescribePHIDetectionJob DetectEntities DetectEntitiesV2 DetectPHI InferICD10CM InferRxNorm ListEntitiesDetectionV2Jobs ListPHIDetectionJobs StartEntitiesDetectionV2Job StartPHIDetectionJob StopEntitiesDetectionV2Job StopPHIDetectionJob / }
 
 1;
 
@@ -190,8 +200,7 @@ are returned in the output. You should use the C<DetectEntitiesV2>
 operation in all new applications.
 
 The C<DetectEntitiesV2> operation returns the C<Acuity> and
-C<Direction> entities as attributes instead of types. It does not
-return the C<Quality> or C<Quantity> entities.
+C<Direction> entities as attributes instead of types.
 
 
 =head2 DetectPHI
@@ -210,6 +219,42 @@ Returns: a L<Paws::ComprehendMedical::DetectPHIResponse> instance
 Inspects the clinical text for protected health information (PHI)
 entities and entity category, location, and confidence score on that
 information.
+
+
+=head2 InferICD10CM
+
+=over
+
+=item Text => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ComprehendMedical::InferICD10CM>
+
+Returns: a L<Paws::ComprehendMedical::InferICD10CMResponse> instance
+
+InferICD10CM detects medical conditions as entities listed in a patient
+record and links those entities to normalized concept identifiers in
+the ICD-10-CM knowledge base from the Centers for Disease Control.
+
+
+=head2 InferRxNorm
+
+=over
+
+=item Text => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ComprehendMedical::InferRxNorm>
+
+Returns: a L<Paws::ComprehendMedical::InferRxNormResponse> instance
+
+InferRxNorm detects medications as entities listed in a patient record
+and links to the normalized concept identifiers in the RxNorm database
+from the National Library of Medicine.
 
 
 =head2 ListEntitiesDetectionV2Jobs

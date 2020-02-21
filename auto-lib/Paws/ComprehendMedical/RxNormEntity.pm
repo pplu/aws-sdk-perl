@@ -1,13 +1,14 @@
-package Paws::ComprehendMedical::Entity;
+package Paws::ComprehendMedical::RxNormEntity;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Attribute]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::RxNormAttribute]');
   has BeginOffset => (is => 'ro', isa => 'Int');
   has Category => (is => 'ro', isa => 'Str');
   has EndOffset => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Int');
+  has RxNormConcepts => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::RxNormConcept]');
   has Score => (is => 'ro', isa => 'Num');
   has Text => (is => 'ro', isa => 'Str');
-  has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Trait]');
+  has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::RxNormTrait]');
   has Type => (is => 'ro', isa => 'Str');
 1;
 
@@ -15,7 +16,7 @@ package Paws::ComprehendMedical::Entity;
 
 =head1 NAME
 
-Paws::ComprehendMedical::Entity
+Paws::ComprehendMedical::RxNormEntity
 
 =head1 USAGE
 
@@ -26,27 +27,34 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ComprehendMedical::Entity object:
+As an example, if Att1 is expected to be a Paws::ComprehendMedical::RxNormEntity object:
 
   $service_obj->Method(Att1 => { Attributes => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ComprehendMedical::Entity object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ComprehendMedical::RxNormEntity object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Attributes
 
 =head1 DESCRIPTION
 
-Provides information about an extracted medical entity.
+The collection of medical entities extracted from the input text and
+their associated information. For each entity, the response provides
+the entity text, the entity category, where the entity text begins and
+ends, and the level of confidence that Amazon Comprehend Medical has in
+the detection and analysis. Attributes and traits of the entity are
+also returned.
 
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ComprehendMedical::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::ComprehendMedical::RxNormAttribute>]
 
-  The extracted attributes that relate to this entity.
+  The extracted attributes that relate to the entity. The attributes
+recognized by InferRxNorm are C<DOSAGE>, C<DURATION>, C<FORM>,
+C<FREQUENCY>, C<RATE>, C<ROUTE_OR_MODE>, and C<STRENGTH>.
 
 
 =head2 BeginOffset => Int
@@ -57,7 +65,8 @@ entity begins. The offset returns the UTF-8 code point in the string.
 
 =head2 Category => Str
 
-  The category of the entity.
+  The category of the entity. The recognized categories are C<GENERIC> or
+C<BRAND_NAME>.
 
 
 =head2 EndOffset => Int
@@ -73,25 +82,32 @@ increasing id unique within this response rather than a global unique
 identifier.
 
 
+=head2 RxNormConcepts => ArrayRef[L<Paws::ComprehendMedical::RxNormConcept>]
+
+  The RxNorm concepts that the entity could refer to, along with a score
+indicating the likelihood of the match.
+
+
 =head2 Score => Num
 
   The level of confidence that Amazon Comprehend Medical has in the
-accuracy of the detection.
+accuracy of the detected entity.
 
 
 =head2 Text => Str
 
-  The segment of input text extracted as this entity.
+  The segment of input text extracted from which the entity was detected.
 
 
-=head2 Traits => ArrayRef[L<Paws::ComprehendMedical::Trait>]
+=head2 Traits => ArrayRef[L<Paws::ComprehendMedical::RxNormTrait>]
 
   Contextual information for the entity.
 
 
 =head2 Type => Str
 
-  Describes the specific type of entity with category of entities.
+  Describes the specific type of entity. For InferRxNorm, the recognized
+entity type is C<MEDICATION>.
 
 
 
