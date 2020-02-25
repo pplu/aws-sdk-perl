@@ -9,6 +9,7 @@ package Paws::GroundStation::ContactData;
   has MissionProfileArn => (is => 'ro', isa => 'Str', request_name => 'missionProfileArn', traits => ['NameInRequest']);
   has PostPassEndTime => (is => 'ro', isa => 'Str', request_name => 'postPassEndTime', traits => ['NameInRequest']);
   has PrePassStartTime => (is => 'ro', isa => 'Str', request_name => 'prePassStartTime', traits => ['NameInRequest']);
+  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has SatelliteArn => (is => 'ro', isa => 'Str', request_name => 'satelliteArn', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
@@ -92,6 +93,11 @@ CloudWatch event indicating the pass has finished.
 
   Amount of time prior to contact start youE<rsquo>d like to receive a
 CloudWatch event indicating an upcoming pass.
+
+
+=head2 Region => Str
+
+  Region of a contact.
 
 
 =head2 SatelliteArn => Str

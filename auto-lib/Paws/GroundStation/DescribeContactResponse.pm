@@ -10,6 +10,7 @@ package Paws::GroundStation::DescribeContactResponse;
   has MissionProfileArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'missionProfileArn');
   has PostPassEndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'postPassEndTime');
   has PrePassStartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'prePassStartTime');
+  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region');
   has SatelliteArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'satelliteArn');
   has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime');
   has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
@@ -35,7 +36,7 @@ UUID of a contact.
 
 Status of a contact.
 
-Valid values are: C<"AVAILABLE">, C<"AWS_CANCELLED">, C<"CANCELLED">, C<"COMPLETED">, C<"FAILED">, C<"FAILED_TO_SCHEDULE">, C<"PASS">, C<"POSTPASS">, C<"PREPASS">, C<"SCHEDULED">, C<"SCHEDULING">
+Valid values are: C<"AVAILABLE">, C<"AWS_CANCELLED">, C<"CANCELLED">, C<"CANCELLING">, C<"COMPLETED">, C<"FAILED">, C<"FAILED_TO_SCHEDULE">, C<"PASS">, C<"POSTPASS">, C<"PREPASS">, C<"SCHEDULED">, C<"SCHEDULING">
 =head2 EndTime => Str
 
 End time of a contact.
@@ -71,6 +72,11 @@ CloudWatch event indicating the pass has finished.
 
 Amount of time prior to contact start youE<rsquo>d like to receive a
 CloudWatch event indicating an upcoming pass.
+
+
+=head2 Region => Str
+
+Region of a contact.
 
 
 =head2 SatelliteArn => Str

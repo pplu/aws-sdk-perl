@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GroundStati
 
 =head1 DESCRIPTION
 
-Object containing the parameters for a C<Config>.
+Object containing the parameters of a C<Config>.
 
 See the subtype definitions for what each type of C<Config> contains.
 

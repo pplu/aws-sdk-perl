@@ -17,7 +17,7 @@ Paws::GroundStation::MissionProfileIdResponse
 
 =head2 MissionProfileId => Str
 
-ID of a mission profile.
+UUID of a mission profile.
 
 
 =head2 _request_id => Str

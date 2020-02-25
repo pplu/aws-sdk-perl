@@ -40,7 +40,7 @@ Information about the ground station data.
 
 =head2 GroundStationId => Str
 
-  ID of a ground station.
+  UUID of a ground station.
 
 
 =head2 GroundStationName => Str

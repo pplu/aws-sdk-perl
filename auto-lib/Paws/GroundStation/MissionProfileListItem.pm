@@ -46,7 +46,7 @@ Item in a list of mission profiles.
 
 =head2 MissionProfileId => Str
 
-  ID of a mission profile.
+  UUID of a mission profile.
 
 
 =head2 Name => Str

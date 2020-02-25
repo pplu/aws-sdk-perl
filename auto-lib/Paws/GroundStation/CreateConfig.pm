@@ -92,8 +92,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
         DataflowEndpointConfig => {
-          DataflowEndpointName => 'MyString',
-
+          DataflowEndpointName   => 'MyString',
+          DataflowEndpointRegion => 'MyString',
         },    # OPTIONAL
         TrackingConfig => {
           Autotrack => 'PREFERRED',    # values: PREFERRED, REMOVED, REQUIRED

@@ -2,7 +2,7 @@
 package Paws::GroundStation::TagResource;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $groundstation = Paws->service('GroundStation');
     my $TagResourceResponse = $groundstation->TagResource(
       ResourceArn => 'MyString',
-      Tags        => { 'MyString' => 'MyString', },    # OPTIONAL
+      Tags        => { 'MyString' => 'MyString', },
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -46,7 +47,7 @@ ARN of a resource tag.
 
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 B<REQUIRED> Tags => L<Paws::GroundStation::TagsMap>
 
 Tags assigned to a resource.
 

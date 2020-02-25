@@ -17,7 +17,7 @@ Paws::GroundStation::DataflowEndpointGroupIdResponse
 
 =head2 DataflowEndpointGroupId => Str
 
-ID of a dataflow endpoint group.
+UUID of a dataflow endpoint group.
 
 
 =head2 _request_id => Str

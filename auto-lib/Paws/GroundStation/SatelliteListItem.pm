@@ -1,5 +1,6 @@
 package Paws::GroundStation::SatelliteListItem;
   use Moose;
+  has GroundStations => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groundStations', traits => ['NameInRequest']);
   has NoradSatelliteID => (is => 'ro', isa => 'Int', request_name => 'noradSatelliteID', traits => ['NameInRequest']);
   has SatelliteArn => (is => 'ro', isa => 'Str', request_name => 'satelliteArn', traits => ['NameInRequest']);
   has SatelliteId => (is => 'ro', isa => 'Str', request_name => 'satelliteId', traits => ['NameInRequest']);
@@ -22,20 +23,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GroundStation::SatelliteListItem object:
 
-  $service_obj->Method(Att1 => { NoradSatelliteID => $value, ..., SatelliteId => $value  });
+  $service_obj->Method(Att1 => { GroundStations => $value, ..., SatelliteId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GroundStation::SatelliteListItem object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->NoradSatelliteID
+  $result->Att1->GroundStations
 
 =head1 DESCRIPTION
 
 Item in a list of satellites.
 
 =head1 ATTRIBUTES
+
+
+=head2 GroundStations => ArrayRef[Str|Undef]
+
+  A list of ground stations to which the satellite is on-boarded.
 
 
 =head2 NoradSatelliteID => Int
@@ -50,7 +56,7 @@ Item in a list of satellites.
 
 =head2 SatelliteId => Str
 
-  ID of a satellite.
+  UUID of a satellite.
 
 
 

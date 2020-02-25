@@ -18,7 +18,7 @@ Paws::GroundStation::ListMissionProfilesResponse
 
 =head2 MissionProfileList => ArrayRef[L<Paws::GroundStation::MissionProfileListItem>]
 
-List of mission profiles
+List of mission profiles.
 
 
 =head2 NextToken => Str

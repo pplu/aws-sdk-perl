@@ -1,6 +1,7 @@
 package Paws::GroundStation::DataflowEndpointConfig;
   use Moose;
   has DataflowEndpointName => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointName', traits => ['NameInRequest'], required => 1);
+  has DataflowEndpointRegion => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointRegion', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GroundStation::DataflowEndpointConfig object:
 
-  $service_obj->Method(Att1 => { DataflowEndpointName => $value, ..., DataflowEndpointName => $value  });
+  $service_obj->Method(Att1 => { DataflowEndpointName => $value, ..., DataflowEndpointRegion => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Information about the dataflow endpoint C<Config>.
 =head2 B<REQUIRED> DataflowEndpointName => Str
 
   Name of a dataflow endpoint.
+
+
+=head2 DataflowEndpointRegion => Str
+
+  Region of a dataflow endpoint.
 
 
 

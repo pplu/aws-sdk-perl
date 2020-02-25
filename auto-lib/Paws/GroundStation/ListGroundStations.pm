@@ -3,6 +3,7 @@ package Paws::GroundStation::ListGroundStations;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has SatelliteId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'satelliteId');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $groundstation = Paws->service('GroundStation');
     my $ListGroundStationsResponse = $groundstation->ListGroundStations(
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      MaxResults  => 1,             # OPTIONAL
+      NextToken   => 'MyString',    # OPTIONAL
+      SatelliteId => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -56,6 +58,12 @@ Maximum number of ground stations returned.
 
 Next token that can be supplied in the next call to get the next page
 of ground stations.
+
+
+
+=head2 SatelliteId => Str
+
+Satellite ID to retrieve on-boarded ground stations.
 
 
 
