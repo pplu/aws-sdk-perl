@@ -4,6 +4,7 @@ package Paws::AutoScaling::PutScalingPolicy;
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cooldown => (is => 'ro', isa => 'Int');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
   has MetricAggregationType => (is => 'ro', isa => 'Str');
   has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
@@ -87,6 +88,16 @@ applies.
 Valid only if the policy type is C<SimpleScaling>. For more
 information, see Scaling Cooldowns
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+
+=head2 Enabled => Bool
+
+Indicates whether the scaling policy is enabled or disabled. The
+default is enabled. For more information, see Disabling a Scaling
+Policy for an Auto Scaling Group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 

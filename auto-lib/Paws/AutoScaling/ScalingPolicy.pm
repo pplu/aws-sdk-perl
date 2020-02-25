@@ -4,6 +4,7 @@ package Paws::AutoScaling::ScalingPolicy;
   has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Alarm]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has Cooldown => (is => 'ro', isa => 'Int');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
   has MetricAggregationType => (is => 'ro', isa => 'Str');
   has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
@@ -70,6 +71,12 @@ C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
   The amount of time, in seconds, after a scaling activity completes
 before any further dynamic scaling activities can start.
+
+
+=head2 Enabled => Bool
+
+  Indicates whether the policy is enabled (C<true>) or disabled
+(C<false>).
 
 
 =head2 EstimatedInstanceWarmup => Int

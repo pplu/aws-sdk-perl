@@ -56,6 +56,11 @@ These are the same units that you chose to set the desired capacity in
 terms of instances, or a performance attribute such as vCPUs, memory,
 or I/O.
 
+For more information, see Instance Weighting for Amazon EC2 Auto
+Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
 Valid Range: Minimum value of 1. Maximum value of 999.
 
 

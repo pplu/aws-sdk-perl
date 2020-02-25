@@ -819,7 +819,7 @@ Creates an Auto Scaling group with the specified name and attributes.
 If you exceed your maximum limit of Auto Scaling groups, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
-Amazon EC2 Auto Scaling Limits
+Amazon EC2 Auto Scaling Service Quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -876,7 +876,7 @@ Creates a launch configuration.
 If you exceed your maximum limit of launch configurations, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
-Amazon EC2 Auto Scaling Limits
+Amazon EC2 Auto Scaling Service Quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1076,11 +1076,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLim
 
 Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 
-Describes the current Amazon EC2 Auto Scaling resource limits for your
+Describes the current Amazon EC2 Auto Scaling resource quotas for your
 AWS account.
 
-For information about requesting an increase in these limits, see
-Amazon EC2 Auto Scaling Limits
+For information about requesting an increase, see Amazon EC2 Auto
+Scaling Service Quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1786,6 +1786,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [Cooldown => Int]
 
+=item [Enabled => Bool]
+
 =item [EstimatedInstanceWarmup => Int]
 
 =item [MetricAggregationType => Str]
@@ -1809,10 +1811,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
 Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
-Creates or updates a scaling policy for an Auto Scaling group. To
-update an existing scaling policy, use the existing policy name and set
-the parameters to change. Any existing parameter not changed in an
-update to an existing policy is not changed in this update request.
+Creates or updates a scaling policy for an Auto Scaling group.
 
 For more information about using scaling policies to scale your Auto
 Scaling group automatically, see Dynamic Scaling
@@ -2063,10 +2062,23 @@ Each argument is described in detail in: L<Paws::AutoScaling::TerminateInstanceI
 Returns: a L<Paws::AutoScaling::ActivityType> instance
 
 Terminates the specified instance and optionally adjusts the desired
-group size.
+group size. This call simply makes a termination request. The instance
+is not terminated immediately. When an instance is terminated, the
+instance status changes to C<terminated>. You can't connect to or start
+an instance after you've terminated it.
 
-This call simply makes a termination request. The instance is not
-terminated immediately.
+If you do not specify the option to decrement the desired capacity,
+Amazon EC2 Auto Scaling launches instances to replace the ones that are
+terminated.
+
+By default, Amazon EC2 Auto Scaling balances instances across all
+Availability Zones. If you decrement the desired capacity, your Auto
+Scaling group can become unbalanced between Availability Zones. Amazon
+EC2 Auto Scaling tries to rebalance the group, and rebalancing might
+terminate instances in other zones. For more information, see
+Rebalancing Activities
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 UpdateAutoScalingGroup
