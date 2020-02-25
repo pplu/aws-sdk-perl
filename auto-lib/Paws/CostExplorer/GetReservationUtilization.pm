@@ -97,10 +97,6 @@ CACHE_ENGINE
 
 =item *
 
-DATABASE_ENGINE
-
-=item *
-
 DEPLOYMENT_OPTION
 
 =item *

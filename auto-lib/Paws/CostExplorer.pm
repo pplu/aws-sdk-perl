@@ -185,10 +185,10 @@ Each argument is described in detail in: L<Paws::CostExplorer::CreateCostCategor
 
 Returns: a L<Paws::CostExplorer::CreateCostCategoryDefinitionResponse> instance
 
-I<B<Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the AWS Service
-Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+I<B<Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the AWS Service Terms
+(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Creates a new Cost Category with the requested name and rules.
 
@@ -206,10 +206,10 @@ Each argument is described in detail in: L<Paws::CostExplorer::DeleteCostCategor
 
 Returns: a L<Paws::CostExplorer::DeleteCostCategoryDefinitionResponse> instance
 
-I<B<Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the AWS Service
-Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+I<B<Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the AWS Service Terms
+(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Deletes a Cost Category. Expenses from this month going forward will no
 longer be categorized with this Cost Category.
@@ -230,10 +230,10 @@ Each argument is described in detail in: L<Paws::CostExplorer::DescribeCostCateg
 
 Returns: a L<Paws::CostExplorer::DescribeCostCategoryDefinitionResponse> instance
 
-I<B<Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the AWS Service
-Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+I<B<Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the AWS Service Terms
+(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Returns the name, ARN, rules, definition, and effective dates of a Cost
 Category that's defined in the account.
@@ -772,10 +772,10 @@ Each argument is described in detail in: L<Paws::CostExplorer::ListCostCategoryD
 
 Returns: a L<Paws::CostExplorer::ListCostCategoryDefinitionsResponse> instance
 
-I<B<Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the AWS Service
-Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+I<B<Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the AWS Service Terms
+(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Returns the name, ARN and effective dates of all Cost Categories
 defined in the account. You have the option to use C<EffectiveOn> to
@@ -802,10 +802,10 @@ Each argument is described in detail in: L<Paws::CostExplorer::UpdateCostCategor
 
 Returns: a L<Paws::CostExplorer::UpdateCostCategoryDefinitionResponse> instance
 
-I<B<Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the AWS Service
-Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+I<B<Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the AWS Service Terms
+(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Updates an existing Cost Category. Changes made to the Cost Category
 rules will be used to categorize the current monthE<rsquo>s expenses

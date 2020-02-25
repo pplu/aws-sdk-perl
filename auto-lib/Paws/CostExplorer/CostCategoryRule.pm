@@ -32,10 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-I<B<Cost Category is in preview release for AWS Billing and Cost
-Management and is subject to change. Your use of Cost Categories is
-subject to the Beta Service Participation terms of the AWS Service
-Terms (https://aws.amazon.com/service-terms/) (Section 1.10).>>
+I<B<Cost Category is in public beta for AWS Billing and Cost Management
+and is subject to change. Your use of Cost Categories is subject to the
+Beta Service Participation terms of the AWS Service Terms
+(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Rules are processed in order. If there are multiple rules that match
 the line item, then the first rule to match is used to determine that

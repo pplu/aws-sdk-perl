@@ -82,6 +82,13 @@ The unique identifier for your Cost Category.
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::CostExplorer::CostCategoryRule>]
 
+C<UpdateCostCategoryDefinition> supports dimensions, Tags, and nested
+expressions. Currently the only dimensions supported is
+C<LINKED_ACCOUNT>.
+
+Root level C<OR> is not supported. We recommend you create a separate
+rule instead.
+
 Rules are processed in order. If there are multiple rules that match
 the line item, then the first rule to match is used to determine that
 Cost Category value.
