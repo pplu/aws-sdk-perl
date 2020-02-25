@@ -207,6 +207,8 @@ configuration resource.
 
 =item [Name => Str]
 
+=item [PersonalizationThresholdSeconds => Int]
+
 =item [SlateAdUrl => Str]
 
 =item [Tags => L<Paws::MediaTailor::__mapOf__string>]

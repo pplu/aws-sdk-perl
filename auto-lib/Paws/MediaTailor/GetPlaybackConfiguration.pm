@@ -44,6 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LivePreRollConfiguration =
       $GetPlaybackConfigurationResponse->LivePreRollConfiguration;
     my $Name = $GetPlaybackConfigurationResponse->Name;
+    my $PersonalizationThresholdSeconds =
+      $GetPlaybackConfigurationResponse->PersonalizationThresholdSeconds;
     my $PlaybackConfigurationArn =
       $GetPlaybackConfigurationResponse->PlaybackConfigurationArn;
     my $PlaybackEndpointPrefix =

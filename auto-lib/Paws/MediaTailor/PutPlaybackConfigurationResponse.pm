@@ -7,6 +7,7 @@ package Paws::MediaTailor::PutPlaybackConfigurationResponse;
   has HlsConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::HlsConfiguration');
   has LivePreRollConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::LivePreRollConfiguration');
   has Name => (is => 'ro', isa => 'Str');
+  has PersonalizationThresholdSeconds => (is => 'ro', isa => 'Int');
   has PlaybackConfigurationArn => (is => 'ro', isa => 'Str');
   has PlaybackEndpointPrefix => (is => 'ro', isa => 'Str');
   has SessionInitializationEndpointPrefix => (is => 'ro', isa => 'Str');
@@ -61,6 +62,12 @@ The configuration for pre-roll ad insertion.
 =head2 Name => Str
 
 The identifier for the playback configuration.
+
+
+=head2 PersonalizationThresholdSeconds => Int
+
+The maximum duration of underfilled ad time (in seconds) allowed in an
+ad break.
 
 
 =head2 PlaybackConfigurationArn => Str

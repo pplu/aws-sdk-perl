@@ -5,6 +5,7 @@ package Paws::MediaTailor::PlaybackConfiguration;
   has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfiguration');
   has HlsConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::HlsConfiguration');
   has Name => (is => 'ro', isa => 'Str');
+  has PersonalizationThresholdSeconds => (is => 'ro', isa => 'Int');
   has PlaybackConfigurationArn => (is => 'ro', isa => 'Str');
   has PlaybackEndpointPrefix => (is => 'ro', isa => 'Str');
   has SessionInitializationEndpointPrefix => (is => 'ro', isa => 'Str');
@@ -76,6 +77,12 @@ Amazon CloudFront, for content and ad segment management.
 =head2 Name => Str
 
   The identifier for the playback configuration.
+
+
+=head2 PersonalizationThresholdSeconds => Int
+
+  The maximum duration of underfilled ad time (in seconds) allowed in an
+ad break.
 
 
 =head2 PlaybackConfigurationArn => Str
