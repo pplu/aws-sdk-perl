@@ -84,8 +84,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-A list of Amazon EC2 Availability Zones that instances in the DB
-cluster can be created in.
+A list of Amazon EC2 Availability Zones that instances in the cluster
+can be created in.
 
 
 
@@ -111,8 +111,7 @@ Must be a value from 1 to 35.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The DB cluster identifier. This parameter is stored as a lowercase
-string.
+The cluster identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 
@@ -138,14 +137,13 @@ Example: C<my-cluster>
 
 =head2 DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group to associate with this DB
-cluster.
+The name of the cluster parameter group to associate with this cluster.
 
 
 
 =head2 DBSubnetGroupName => Str
 
-A DB subnet group to associate with this DB cluster.
+A subnet group to associate with this cluster.
 
 Constraints: Must match the name of an existing C<DBSubnetGroup>. Must
 not be default.
@@ -172,7 +170,7 @@ CloudWatch Logs.
 
 =head2 B<REQUIRED> Engine => Str
 
-The name of the database engine to be used for this DB cluster.
+The name of the database engine to be used for this cluster.
 
 Valid values: C<docdb>
 
@@ -186,13 +184,13 @@ The version number of the database engine to use.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for an encrypted DB cluster.
+The AWS KMS key identifier for an encrypted cluster.
 
 The AWS KMS key identifier is the Amazon Resource Name (ARN) for the
-AWS KMS encryption key. If you are creating a DB cluster using the same
+AWS KMS encryption key. If you are creating a cluster using the same
 AWS account that owns the AWS KMS encryption key that is used to
-encrypt the new DB cluster, you can use the AWS KMS key alias instead
-of the ARN for the AWS KMS encryption key.
+encrypt the new cluster, you can use the AWS KMS key alias instead of
+the ARN for the AWS KMS encryption key.
 
 If an encryption key is not specified in C<KmsKeyId>:
 
@@ -215,8 +213,8 @@ your default encryption key.
 AWS KMS creates the default encryption key for your AWS account. Your
 AWS account has a different default encryption key for each AWS Region.
 
-If you create a replica of an encrypted DB cluster in another AWS
-Region, you must set C<KmsKeyId> to a KMS key ID that is valid in the
+If you create a replica of an encrypted cluster in another AWS Region,
+you must set C<KmsKeyId> to a KMS key ID that is valid in the
 destination AWS Region. This key is used to encrypt the replica in that
 AWS Region.
 
@@ -224,7 +222,7 @@ AWS Region.
 
 =head2 B<REQUIRED> MasterUsername => Str
 
-The name of the master user for the DB cluster.
+The name of the master user for the cluster.
 
 Constraints:
 
@@ -259,7 +257,7 @@ Constraints: Must contain from 8 to 100 characters.
 
 =head2 Port => Int
 
-The port number on which the instances in the DB cluster accept
+The port number on which the instances in the cluster accept
 connections.
 
 
@@ -317,19 +315,19 @@ Constraints: Minimum 30-minute window.
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the DB cluster is encrypted.
+Specifies whether the cluster is encrypted.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the DB cluster.
+The tags to be assigned to the cluster.
 
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A list of EC2 VPC security groups to associate with this DB cluster.
+A list of EC2 VPC security groups to associate with this cluster.
 
 
 

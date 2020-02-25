@@ -34,26 +34,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::DBCl
 
 =head1 DESCRIPTION
 
-Contains information about an instance that is part of a DB cluster.
+Contains information about an instance that is part of a cluster.
 
 =head1 ATTRIBUTES
 
 
 =head2 DBClusterParameterGroupStatus => Str
 
-  Specifies the status of the DB cluster parameter group for this member
-of the DB cluster.
+  Specifies the status of the cluster parameter group for this member of
+the DB cluster.
 
 
 =head2 DBInstanceIdentifier => Str
 
-  Specifies the instance identifier for this member of the DB cluster.
+  Specifies the instance identifier for this member of the cluster.
 
 
 =head2 IsClusterWriter => Bool
 
   A value that is C<true> if the cluster member is the primary instance
-for the DB cluster and C<false> otherwise.
+for the cluster and C<false> otherwise.
 
 
 =head2 PromotionTier => Int

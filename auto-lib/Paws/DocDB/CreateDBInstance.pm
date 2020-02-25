@@ -67,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 AutoMinorVersionUpgrade => Bool
 
 Indicates that minor engine upgrades are applied automatically to the
-DB instance during the maintenance window.
+instance during the maintenance window.
 
 Default: C<true>
 
@@ -75,7 +75,7 @@ Default: C<true>
 
 =head2 AvailabilityZone => Str
 
-The Amazon EC2 Availability Zone that the DB instance is created in.
+The Amazon EC2 Availability Zone that the instance is created in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -90,20 +90,20 @@ must be in the same AWS Region as the current endpoint.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The identifier of the DB cluster that the instance will belong to.
+The identifier of the cluster that the instance will belong to.
 
 
 
 =head2 B<REQUIRED> DBInstanceClass => Str
 
-The compute and memory capacity of the DB instance; for example,
+The compute and memory capacity of the instance; for example,
 C<db.r5.large>.
 
 
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-The DB instance identifier. This parameter is stored as a lowercase
+The instance identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -167,8 +167,8 @@ Valid values: 0-15
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the DB instance. You can assign up to 10
-tags to an instance.
+The tags to be assigned to the instance. You can assign up to 10 tags
+to an instance.
 
 
 

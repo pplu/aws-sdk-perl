@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::Upgr
 
 =head1 DESCRIPTION
 
-The version of the database engine that a DB instance can be upgraded
-to.
+The version of the database engine that an instance can be upgraded to.
 
 =head1 ATTRIBUTES
 
@@ -50,8 +49,7 @@ C<true>.
 
 =head2 Description => Str
 
-  The version of the database engine that a DB instance can be upgraded
-to.
+  The version of the database engine that an instance can be upgraded to.
 
 
 =head2 Engine => Str

@@ -18,7 +18,7 @@ Paws::DocDB::DBEngineVersionMessage
 
 =head2 DBEngineVersions => ArrayRef[L<Paws::DocDB::DBEngineVersion>]
 
-Detailed information about one or more DB engine versions.
+Detailed information about one or more engine versions.
 
 
 =head2 Marker => Str

@@ -45,9 +45,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterSnapshotIdentifier => Str
 
-The identifier of the DB cluster snapshot to delete.
+The identifier of the cluster snapshot to delete.
 
-Constraints: Must be the name of an existing DB cluster snapshot in the
+Constraints: Must be the name of an existing cluster snapshot in the
 C<available> state.
 
 

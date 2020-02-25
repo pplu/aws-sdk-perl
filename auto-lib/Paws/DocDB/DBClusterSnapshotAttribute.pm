@@ -32,31 +32,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::DBCl
 
 =head1 DESCRIPTION
 
-Contains the name and values of a manual DB cluster snapshot attribute.
+Contains the name and values of a manual cluster snapshot attribute.
 
-Manual DB cluster snapshot attributes are used to authorize other AWS
-accounts to restore a manual DB cluster snapshot.
+Manual cluster snapshot attributes are used to authorize other AWS
+accounts to restore a manual cluster snapshot.
 
 =head1 ATTRIBUTES
 
 
 =head2 AttributeName => Str
 
-  The name of the manual DB cluster snapshot attribute.
+  The name of the manual cluster snapshot attribute.
 
 The attribute named C<restore> refers to the list of AWS accounts that
-have permission to copy or restore the manual DB cluster snapshot.
+have permission to copy or restore the manual cluster snapshot.
 
 
 =head2 AttributeValues => ArrayRef[Str|Undef]
 
-  The values for the manual DB cluster snapshot attribute.
+  The values for the manual cluster snapshot attribute.
 
 If the C<AttributeName> field is set to C<restore>, then this element
 returns a list of IDs of the AWS accounts that are authorized to copy
-or restore the manual DB cluster snapshot. If a value of C<all> is in
-the list, then the manual DB cluster snapshot is public and available
-for any AWS account to copy or restore.
+or restore the manual cluster snapshot. If a value of C<all> is in the
+list, then the manual cluster snapshot is public and available for any
+AWS account to copy or restore.
 
 
 

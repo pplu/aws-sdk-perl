@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::Clou
 =head1 DESCRIPTION
 
 The configuration setting for the log types to be enabled for export to
-Amazon CloudWatch Logs for a specific DB instance or DB cluster.
+Amazon CloudWatch Logs for a specific instance or cluster.
 
 The C<EnableLogTypes> and C<DisableLogTypes> arrays determine which
 logs are exported (or not exported) to CloudWatch Logs. The values
-within these arrays depend on the DB engine that is being used.
+within these arrays depend on the engine that is being used.
 
 =head1 ATTRIBUTES
 

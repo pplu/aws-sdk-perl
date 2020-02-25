@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group.
+The name of the cluster parameter group.
 
 Constraints:
 
@@ -76,19 +76,19 @@ This value is stored as a lowercase string.
 
 =head2 B<REQUIRED> DBParameterGroupFamily => Str
 
-The DB cluster parameter group family name.
+The cluster parameter group family name.
 
 
 
 =head2 B<REQUIRED> Description => Str
 
-The description for the DB cluster parameter group.
+The description for the cluster parameter group.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the DB cluster parameter group.
+The tags to be assigned to the cluster parameter group.
 
 
 

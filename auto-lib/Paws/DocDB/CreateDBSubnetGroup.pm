@@ -56,13 +56,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBSubnetGroupDescription => Str
 
-The description for the DB subnet group.
+The description for the subnet group.
 
 
 
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
-The name for the DB subnet group. This value is stored as a lowercase
+The name for the subnet group. This value is stored as a lowercase
 string.
 
 Constraints: Must contain no more than 255 letters, numbers, periods,
@@ -74,13 +74,13 @@ Example: C<mySubnetgroup>
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
-The Amazon EC2 subnet IDs for the DB subnet group.
+The Amazon EC2 subnet IDs for the subnet group.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the DB subnet group.
+The tags to be assigned to the subnet group.
 
 
 

@@ -58,9 +58,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBClusterIdentifier => Str
 
-The user-provided DB cluster identifier. If this parameter is
-specified, information from only the specific DB cluster is returned.
-This parameter isn't case sensitive.
+The user-provided cluster identifier. If this parameter is specified,
+information from only the specific cluster is returned. This parameter
+isn't case sensitive.
 
 Constraints:
 
@@ -77,7 +77,7 @@ If provided, must match an existing C<DBClusterIdentifier>.
 
 =head2 Filters => ArrayRef[L<Paws::DocDB::Filter>]
 
-A filter that specifies one or more DB clusters to describe.
+A filter that specifies one or more clusters to describe.
 
 Supported filters:
 
@@ -85,9 +85,9 @@ Supported filters:
 
 =item *
 
-C<db-cluster-id> - Accepts DB cluster identifiers and DB cluster Amazon
+C<db-cluster-id> - Accepts cluster identifiers and cluster Amazon
 Resource Names (ARNs). The results list only includes information about
-the DB clusters identified by these ARNs.
+the clusters identified by these ARNs.
 
 =back
 

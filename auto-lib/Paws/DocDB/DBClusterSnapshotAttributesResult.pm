@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::DBCl
 
 =head1 DESCRIPTION
 
-Detailed information about the attributes that are associated with a DB
+Detailed information about the attributes that are associated with a
 cluster snapshot.
 
 =head1 ATTRIBUTES
@@ -40,12 +40,12 @@ cluster snapshot.
 
 =head2 DBClusterSnapshotAttributes => ArrayRef[L<Paws::DocDB::DBClusterSnapshotAttribute>]
 
-  The list of attributes and values for the DB cluster snapshot.
+  The list of attributes and values for the cluster snapshot.
 
 
 =head2 DBClusterSnapshotIdentifier => Str
 
-  The identifier of the DB cluster snapshot that the attributes apply to.
+  The identifier of the cluster snapshot that the attributes apply to.
 
 
 

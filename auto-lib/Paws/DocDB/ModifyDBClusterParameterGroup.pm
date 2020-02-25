@@ -64,13 +64,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group to modify.
+The name of the cluster parameter group to modify.
 
 
 
 =head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::DocDB::Parameter>]
 
-A list of parameters in the DB cluster parameter group to modify.
+A list of parameters in the cluster parameter group to modify.
 
 
 

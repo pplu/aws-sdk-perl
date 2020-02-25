@@ -44,15 +44,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::Pend
 
 =head1 DESCRIPTION
 
-One or more modified settings for a DB instance. These modified
-settings have been requested, but haven't been applied yet.
+One or more modified settings for an instance. These modified settings
+have been requested, but haven't been applied yet.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllocatedStorage => Int
 
-  Contains the new C<AllocatedStorage> size for the DB instance that will
+  Contains the new C<AllocatedStorage> size for then instance that will
 be applied or is currently being applied.
 
 
@@ -70,19 +70,19 @@ for the DB instance.
 
 =head2 DBInstanceClass => Str
 
-  Contains the new C<DBInstanceClass> for the DB instance that will be
+  Contains the new C<DBInstanceClass> for the instance that will be
 applied or is currently being applied.
 
 
 =head2 DBInstanceIdentifier => Str
 
-  Contains the new C<DBInstanceIdentifier> for the DB instance that will
-be applied or is currently being applied.
+  Contains the new C<DBInstanceIdentifier> for the instance that will be
+applied or is currently being applied.
 
 
 =head2 DBSubnetGroupName => Str
 
-  The new DB subnet group for the DB instance.
+  The new subnet group for the instance.
 
 
 =head2 EngineVersion => Str
@@ -92,13 +92,13 @@ be applied or is currently being applied.
 
 =head2 Iops => Int
 
-  Specifies the new Provisioned IOPS value for the DB instance that will
-be applied or is currently being applied.
+  Specifies the new Provisioned IOPS value for the instance that will be
+applied or is currently being applied.
 
 
 =head2 LicenseModel => Str
 
-  The license model for the DB instance.
+  The license model for the instance.
 
 Valid values: C<license-included>, C<bring-your-own-license>,
 C<general-public-license>
@@ -107,12 +107,12 @@ C<general-public-license>
 =head2 MasterUserPassword => Str
 
   Contains the pending or currently in-progress change of the master
-credentials for the DB instance.
+credentials for the instance.
 
 
 =head2 MultiAZ => Bool
 
-  Indicates that the Single-AZ DB instance is to change to a Multi-AZ
+  Indicates that the Single-AZ instance is to change to a Multi-AZ
 deployment.
 
 
@@ -124,12 +124,12 @@ types are in the process of being activated or deactivated.
 
 =head2 Port => Int
 
-  Specifies the pending port for the DB instance.
+  Specifies the pending port for the instance.
 
 
 =head2 StorageType => Str
 
-  Specifies the storage type to be associated with the DB instance.
+  Specifies the storage type to be associated with the instance.
 
 
 

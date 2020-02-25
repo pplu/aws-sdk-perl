@@ -18,7 +18,7 @@ Paws::DocDB::DBInstanceMessage
 
 =head2 DBInstances => ArrayRef[L<Paws::DocDB::DBInstance>]
 
-Detailed information about one or more DB instances.
+Detailed information about one or more instances.
 
 
 =head2 Marker => Str

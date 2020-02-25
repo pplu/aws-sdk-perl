@@ -25,7 +25,7 @@ marker, up to the value specified by C<MaxRecords>.
 
 =head2 Parameters => ArrayRef[L<Paws::DocDB::Parameter>]
 
-Provides a list of parameters for the DB cluster parameter group.
+Provides a list of parameters for the cluster parameter group.
 
 
 =head2 _request_id => Str

@@ -48,8 +48,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The DB cluster identifier for the DB cluster to be deleted. This
-parameter isn't case sensitive.
+The cluster identifier for the cluster to be deleted. This parameter
+isn't case sensitive.
 
 Constraints:
 
@@ -66,8 +66,8 @@ Must match an existing C<DBClusterIdentifier>.
 
 =head2 FinalDBSnapshotIdentifier => Str
 
-The DB cluster snapshot identifier of the new DB cluster snapshot
-created when C<SkipFinalSnapshot> is set to C<false>.
+The cluster snapshot identifier of the new cluster snapshot created
+when C<SkipFinalSnapshot> is set to C<false>.
 
 Specifying this parameter and also setting the C<SkipFinalShapshot>
 parameter to C<true> results in an error.
@@ -95,10 +95,10 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 
 =head2 SkipFinalSnapshot => Bool
 
-Determines whether a final DB cluster snapshot is created before the DB
-cluster is deleted. If C<true> is specified, no DB cluster snapshot is
-created. If C<false> is specified, a DB cluster snapshot is created
-before the DB cluster is deleted.
+Determines whether a final cluster snapshot is created before the
+cluster is deleted. If C<true> is specified, no cluster snapshot is
+created. If C<false> is specified, a cluster snapshot is created before
+the DB cluster is deleted.
 
 If C<SkipFinalSnapshot> is C<false>, you must specify a
 C<FinalDBSnapshotIdentifier> parameter.

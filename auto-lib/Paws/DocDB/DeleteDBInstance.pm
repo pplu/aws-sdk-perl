@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-The DB instance identifier for the DB instance to be deleted. This
-parameter isn't case sensitive.
+The instance identifier for the instance to be deleted. This parameter
+isn't case sensitive.
 
 Constraints:
 
@@ -54,7 +54,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing DB instance.
+Must match the name of an existing instance.
 
 =back
 

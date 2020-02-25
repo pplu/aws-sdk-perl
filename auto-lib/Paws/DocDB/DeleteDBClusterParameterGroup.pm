@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group.
+The name of the cluster parameter group.
 
 Constraints:
 
@@ -48,15 +48,15 @@ Constraints:
 
 =item *
 
-Must be the name of an existing DB cluster parameter group.
+Must be the name of an existing cluster parameter group.
 
 =item *
 
-You can't delete a default DB cluster parameter group.
+You can't delete a default cluster parameter group.
 
 =item *
 
-Cannot be associated with any DB clusters.
+Cannot be associated with any clusters.
 
 =back
 

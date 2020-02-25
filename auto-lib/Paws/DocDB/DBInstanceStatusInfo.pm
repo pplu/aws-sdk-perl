@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::DBIn
 
 =head1 DESCRIPTION
 
-Provides a list of status information for a DB instance.
+Provides a list of status information for an instance.
 
 =head1 ATTRIBUTES
 
@@ -53,8 +53,8 @@ or C<false> if the instance is in an error state.
 
 =head2 Status => Str
 
-  Status of the DB instance. For a C<StatusType> of read replica, the
-values can be C<replicating>, error, C<stopped>, or C<terminated>.
+  Status of the instance. For a C<StatusType> of read replica, the values
+can be C<replicating>, error, C<stopped>, or C<terminated>.
 
 
 =head2 StatusType => Str

@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::DBEn
 
 =head1 DESCRIPTION
 
-Detailed information about a DB engine version.
+Detailed information about an engine version.
 
 =head1 ATTRIBUTES
 
@@ -55,7 +55,7 @@ Detailed information about a DB engine version.
 
 =head2 DBParameterGroupFamily => Str
 
-  The name of the DB parameter group family for the database engine.
+  The name of the parameter group family for the database engine.
 
 
 =head2 Engine => Str

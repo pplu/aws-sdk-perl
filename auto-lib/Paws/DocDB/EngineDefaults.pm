@@ -41,7 +41,7 @@ C<DescribeEngineDefaultClusterParameters> operation.
 
 =head2 DBParameterGroupFamily => Str
 
-  The name of the DB cluster parameter group family to return the engine
+  The name of the cluster parameter group family to return the engine
 parameter information for.
 
 
@@ -54,7 +54,7 @@ marker, up to the value specified by C<MaxRecords>.
 
 =head2 Parameters => ArrayRef[L<Paws::DocDB::Parameter>]
 
-  The parameters of a particular DB cluster parameter group family.
+  The parameters of a particular cluster parameter group family.
 
 
 

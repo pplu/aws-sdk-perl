@@ -53,29 +53,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> AttributeName => Str
 
-The name of the DB cluster snapshot attribute to modify.
+The name of the cluster snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a
-manual DB cluster snapshot, set this value to C<restore>.
+manual cluster snapshot, set this value to C<restore>.
 
 
 
 =head2 B<REQUIRED> DBClusterSnapshotIdentifier => Str
 
-The identifier for the DB cluster snapshot to modify the attributes
-for.
+The identifier for the cluster snapshot to modify the attributes for.
 
 
 
 =head2 ValuesToAdd => ArrayRef[Str|Undef]
 
-A list of DB cluster snapshot attributes to add to the attribute
-specified by C<AttributeName>.
+A list of cluster snapshot attributes to add to the attribute specified
+by C<AttributeName>.
 
-To authorize other AWS accounts to copy or restore a manual DB cluster
+To authorize other AWS accounts to copy or restore a manual cluster
 snapshot, set this list to include one or more AWS account IDs. To make
-the manual DB cluster snapshot restorable by any AWS account, set it to
-C<all>. Do not add the C<all> value for any manual DB cluster snapshots
+the manual cluster snapshot restorable by any AWS account, set it to
+C<all>. Do not add the C<all> value for any manual cluster snapshots
 that contain private information that you don't want to be available to
 all AWS accounts.
 
@@ -83,15 +82,15 @@ all AWS accounts.
 
 =head2 ValuesToRemove => ArrayRef[Str|Undef]
 
-A list of DB cluster snapshot attributes to remove from the attribute
+A list of cluster snapshot attributes to remove from the attribute
 specified by C<AttributeName>.
 
 To remove authorization for other AWS accounts to copy or restore a
-manual DB cluster snapshot, set this list to include one or more AWS
+manual cluster snapshot, set this list to include one or more AWS
 account identifiers. To remove authorization for any AWS account to
-copy or restore the DB cluster snapshot, set it to C<all> . If you
-specify C<all>, an AWS account whose account ID is explicitly added to
-the C<restore> attribute can still copy or restore a manual DB cluster
+copy or restore the cluster snapshot, set it to C<all> . If you specify
+C<all>, an AWS account whose account ID is explicitly added to the
+C<restore> attribute can still copy or restore a manual cluster
 snapshot.
 
 

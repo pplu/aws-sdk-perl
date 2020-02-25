@@ -36,39 +36,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::Orde
 
 =head1 DESCRIPTION
 
-The options that are available for a DB instance.
+The options that are available for an instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::DocDB::AvailabilityZone>]
 
-  A list of Availability Zones for a DB instance.
+  A list of Availability Zones for an instance.
 
 
 =head2 DBInstanceClass => Str
 
-  The DB instance class for a DB instance.
+  The instance class for an instance.
 
 
 =head2 Engine => Str
 
-  The engine type of a DB instance.
+  The engine type of an instance.
 
 
 =head2 EngineVersion => Str
 
-  The engine version of a DB instance.
+  The engine version of an instance.
 
 
 =head2 LicenseModel => Str
 
-  The license model for a DB instance.
+  The license model for an instance.
 
 
 =head2 Vpc => Bool
 
-  Indicates whether a DB instance is in a virtual private cloud (VPC).
+  Indicates whether an instance is in a virtual private cloud (VPC).
 
 
 

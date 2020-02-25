@@ -25,7 +25,7 @@ marker, up to the value specified by C<MaxRecords>.
 
 =head2 OrderableDBInstanceOptions => ArrayRef[L<Paws::DocDB::OrderableDBInstanceOption>]
 
-The options that are available for a particular orderable DB instance.
+The options that are available for a particular orderable instance.
 
 
 =head2 _request_id => Str

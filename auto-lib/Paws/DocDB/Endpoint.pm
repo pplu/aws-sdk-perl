@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::Endp
 
 =head1 DESCRIPTION
 
-Network information for accessing a DB cluster or DB instance. Client
+Network information for accessing a cluster or instance. Client
 programs must specify a valid endpoint to access these Amazon
 DocumentDB resources.
 
@@ -42,7 +42,7 @@ DocumentDB resources.
 
 =head2 Address => Str
 
-  Specifies the DNS address of the DB instance.
+  Specifies the DNS address of the instance.
 
 
 =head2 HostedZoneId => Str

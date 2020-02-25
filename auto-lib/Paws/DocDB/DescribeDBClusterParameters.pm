@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-The name of a specific DB cluster parameter group to return parameter
+The name of a specific cluster parameter group to return parameter
 details for.
 
 Constraints:

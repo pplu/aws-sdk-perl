@@ -73,9 +73,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 A value that specifies whether the changes in this request and any
 pending changes are asynchronously applied as soon as possible,
-regardless of the C<PreferredMaintenanceWindow> setting for the DB
-cluster. If this parameter is set to C<false>, changes to the DB
-cluster are applied during the next maintenance window.
+regardless of the C<PreferredMaintenanceWindow> setting for the
+cluster. If this parameter is set to C<false>, changes to the cluster
+are applied during the next maintenance window.
 
 The C<ApplyImmediately> parameter affects only the
 C<NewDBClusterIdentifier> and C<MasterUserPassword> values. If you set
@@ -112,7 +112,7 @@ Must be a value from 1 to 35.
 =head2 CloudwatchLogsExportConfiguration => L<Paws::DocDB::CloudwatchLogsExportConfiguration>
 
 The configuration setting for the log types to be enabled for export to
-Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+Amazon CloudWatch Logs for a specific instance or cluster. The
 C<EnableLogTypes> and C<DisableLogTypes> arrays determine which logs
 are exported (or not exported) to CloudWatch Logs.
 
@@ -120,7 +120,7 @@ are exported (or not exported) to CloudWatch Logs.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The DB cluster identifier for the cluster that is being modified. This
+The cluster identifier for the cluster that is being modified. This
 parameter is not case sensitive.
 
 Constraints:
@@ -138,7 +138,7 @@ Must match the identifier of an existing C<DBCluster>.
 
 =head2 DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group to use for the DB cluster.
+The name of the cluster parameter group to use for the cluster.
 
 
 
@@ -172,8 +172,8 @@ Constraints: Must contain from 8 to 100 characters.
 
 =head2 NewDBClusterIdentifier => Str
 
-The new DB cluster identifier for the DB cluster when renaming a DB
-cluster. This value is stored as a lowercase string.
+The new cluster identifier for the cluster when renaming a cluster.
+This value is stored as a lowercase string.
 
 Constraints:
 
@@ -199,11 +199,11 @@ Example: C<my-cluster2>
 
 =head2 Port => Int
 
-The port number on which the DB cluster accepts connections.
+The port number on which the cluster accepts connections.
 
 Constraints: Must be a value from C<1150> to C<65535>.
 
-Default: The same port as the original DB cluster.
+Default: The same port as the original cluster.
 
 
 
@@ -260,8 +260,8 @@ Constraints: Minimum 30-minute window.
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A list of virtual private cloud (VPC) security groups that the DB
-cluster will belong to.
+A list of virtual private cloud (VPC) security groups that the cluster
+will belong to.
 
 
 

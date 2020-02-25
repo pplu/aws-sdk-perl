@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBClusterIdentifier => Str
 
-A DB cluster identifier to force a failover for. This parameter is not
+A cluster identifier to force a failover for. This parameter is not
 case sensitive.
 
 Constraints:
@@ -67,7 +67,7 @@ Must match the identifier of an existing C<DBCluster>.
 The name of the instance to promote to the primary instance.
 
 You must specify the instance identifier for an Amazon DocumentDB
-replica in the DB cluster. For example, C<mydbcluster-replica1>.
+replica in the cluster. For example, C<mydbcluster-replica1>.
 
 
 

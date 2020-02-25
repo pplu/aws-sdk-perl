@@ -68,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBParameterGroupFamily => Str
 
-The name of a specific DB parameter group family to return details for.
+The name of a specific parameter group family to return details for.
 
 Constraints:
 

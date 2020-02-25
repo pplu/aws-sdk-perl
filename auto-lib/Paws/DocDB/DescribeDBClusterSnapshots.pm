@@ -66,10 +66,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBClusterIdentifier => Str
 
-The ID of the DB cluster to retrieve the list of DB cluster snapshots
-for. This parameter can't be used with the
-C<DBClusterSnapshotIdentifier> parameter. This parameter is not case
-sensitive.
+The ID of the cluster to retrieve the list of cluster snapshots for.
+This parameter can't be used with the C<DBClusterSnapshotIdentifier>
+parameter. This parameter is not case sensitive.
 
 Constraints:
 
@@ -86,7 +85,7 @@ If provided, must match the identifier of an existing C<DBCluster>.
 
 =head2 DBClusterSnapshotIdentifier => Str
 
-A specific DB cluster snapshot identifier to describe. This parameter
+A specific cluster snapshot identifier to describe. This parameter
 can't be used with the C<DBClusterIdentifier> parameter. This value is
 stored as a lowercase string.
 
@@ -117,15 +116,15 @@ This parameter is not currently supported.
 
 =head2 IncludePublic => Bool
 
-Set to C<true> to include manual DB cluster snapshots that are public
-and can be copied or restored by any AWS account, and otherwise
-C<false>. The default is C<false>.
+Set to C<true> to include manual cluster snapshots that are public and
+can be copied or restored by any AWS account, and otherwise C<false>.
+The default is C<false>.
 
 
 
 =head2 IncludeShared => Bool
 
-Set to C<true> to include shared manual DB cluster snapshots from other
+Set to C<true> to include shared manual cluster snapshots from other
 AWS accounts that this AWS account has been given permission to copy or
 restore, and otherwise C<false>. The default is C<false>.
 
@@ -154,38 +153,38 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SnapshotType => Str
 
-The type of DB cluster snapshots to be returned. You can specify one of
+The type of cluster snapshots to be returned. You can specify one of
 the following values:
 
 =over
 
 =item *
 
-C<automated> - Return all DB cluster snapshots that Amazon DocumentDB
-has automatically created for your AWS account.
+C<automated> - Return all cluster snapshots that Amazon DocumentDB has
+automatically created for your AWS account.
 
 =item *
 
-C<manual> - Return all DB cluster snapshots that you have manually
-created for your AWS account.
+C<manual> - Return all cluster snapshots that you have manually created
+for your AWS account.
 
 =item *
 
-C<shared> - Return all manual DB cluster snapshots that have been
-shared to your AWS account.
+C<shared> - Return all manual cluster snapshots that have been shared
+to your AWS account.
 
 =item *
 
-C<public> - Return all DB cluster snapshots that have been marked as
+C<public> - Return all cluster snapshots that have been marked as
 public.
 
 =back
 
 If you don't specify a C<SnapshotType> value, then both automated and
-manual DB cluster snapshots are returned. You can include shared DB
-cluster snapshots with these results by setting the C<IncludeShared>
-parameter to C<true>. You can include public DB cluster snapshots with
-these results by setting the C<IncludePublic> parameter to C<true>.
+manual cluster snapshots are returned. You can include shared cluster
+snapshots with these results by setting the C<IncludeShared> parameter
+to C<true>. You can include public cluster snapshots with these results
+by setting the C<IncludePublic> parameter to C<true>.
 
 The C<IncludeShared> and C<IncludePublic> parameters don't apply for
 C<SnapshotType> values of C<manual> or C<automated>. The
