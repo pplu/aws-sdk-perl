@@ -80,7 +80,7 @@ and entered the C<PENDING> state.
 
 =head2 DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]
 
-  A list of job names or IDs on which this job depends.
+  A list of job IDs on which this job depends.
 
 
 =head2 B<REQUIRED> JobDefinition => Str

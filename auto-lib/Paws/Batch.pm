@@ -430,7 +430,8 @@ Each argument is described in detail in: L<Paws::Batch::DeregisterJobDefinition>
 
 Returns: a L<Paws::Batch::DeregisterJobDefinitionResponse> instance
 
-Deregisters an AWS Batch job definition.
+Deregisters an AWS Batch job definition. Job definitions will be
+permanently deleted after 180 days.
 
 
 =head2 DescribeComputeEnvironments

@@ -95,9 +95,10 @@ child of each dependency to complete before it can begin.
 
 =head2 B<REQUIRED> JobDefinition => Str
 
-The job definition used by this job. This value can be either a
-C<name:revision> or the Amazon Resource Name (ARN) for the job
-definition.
+The job definition used by this job. This value can be one of C<name>,
+C<name:revision>, or the Amazon Resource Name (ARN) for the job
+definition. If C<name> is specified without a revision then the latest
+active revision is used.
 
 
 

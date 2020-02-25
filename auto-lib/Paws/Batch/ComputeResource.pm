@@ -61,13 +61,18 @@ Amazon EC2 service limits
 If this is not specified, the default is C<BEST_FIT>, which will use
 only the best fitting instance type, waiting for additional capacity if
 it's not available. This allocation strategy keeps costs lower but can
-limit scaling. C<BEST_FIT_PROGRESSIVE> will select an additional
-instance type that is large enough to meet the requirements of the jobs
-in the queue, with a preference for an instance type with a lower cost.
-C<SPOT_CAPACITY_OPTIMIZED> is only available for Spot Instance compute
-resources and will select an additional instance type that is large
-enough to meet the requirements of the jobs in the queue, with a
-preference for an instance type that is less likely to be interrupted.
+limit scaling. If you are using Spot Fleets with C<BEST_FIT> then the
+Spot Fleet IAM Role must be specified. C<BEST_FIT_PROGRESSIVE> will
+select additional instance types that are large enough to meet the
+requirements of the jobs in the queue, with a preference for instance
+types with a lower cost per vCPU. C<SPOT_CAPACITY_OPTIMIZED> is only
+available for Spot Instance compute resources and will select
+additional instance types that are large enough to meet the
+requirements of the jobs in the queue, with a preference for instance
+types that are less likely to be interrupted. For more information, see
+Allocation Strategies
+(https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html
+) in the I<AWS Batch User Guide>.
 
 
 =head2 BidPercentage => Int
@@ -169,8 +174,9 @@ C<securityGroupIds> will be used.
 =head2 SpotIamFleetRole => Str
 
   The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role
-applied to a C<SPOT> compute environment. For more information, see
-Amazon EC2 Spot Fleet Role
+applied to a C<SPOT> compute environment. This role is required if the
+allocation strategy set to C<BEST_FIT> or if the allocation strategy is
+not specified. For more information, see Amazon EC2 Spot Fleet Role
 (https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html)
 in the I<AWS Batch User Guide>.
 
