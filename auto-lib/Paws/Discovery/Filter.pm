@@ -37,7 +37,8 @@ A filter that can use conditional operators.
 
 For more information about filters, see Querying Discovered
 Configuration Items
-(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html).
+(https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html)
+in the I<AWS Application Discovery Service User Guide>.
 
 =head1 ATTRIBUTES
 
