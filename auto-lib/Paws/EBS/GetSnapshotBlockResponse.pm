@@ -26,7 +26,7 @@ The data content of the block.
 
 =head2 Checksum => Str
 
-The checksum generated for the block.
+The checksum generated for the block, which is Base64 encoded.
 
 
 =head2 ChecksumAlgorithm => Str

@@ -59,6 +59,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ebs
 
 The ID of the first snapshot to use for the comparison.
 
+The C<FirstSnapshotID> parameter must be specified with a
+C<SecondSnapshotId> parameter; otherwise, an error occurs.
+
 
 
 =head2 MaxResults => Int
@@ -76,6 +79,9 @@ The token to request the next page of results.
 =head2 B<REQUIRED> SecondSnapshotId => Str
 
 The ID of the second snapshot to use for the comparison.
+
+The C<SecondSnapshotId> parameter must be specified with a
+C<FirstSnapshotID> parameter; otherwise, an error occurs.
 
 
 

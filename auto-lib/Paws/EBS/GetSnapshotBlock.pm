@@ -55,8 +55,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ebs
 
 The block index of the block from which to get data.
 
-Obtain the C<block index> by running the C<list changed blocks> or
-C<list snapshot blocks> operations.
+Obtain the C<BlockIndex> by running the C<ListChangedBlocks> or
+C<ListSnapshotBlocks> operations.
 
 
 
@@ -64,8 +64,8 @@ C<list snapshot blocks> operations.
 
 The block token of the block from which to get data.
 
-Obtain the C<block token> by running the C<list changed blocks> or
-C<list snapshot blocks> operations.
+Obtain the C<BlockToken> by running the C<ListChangedBlocks> or
+C<ListSnapshotBlocks> operations.
 
 
 

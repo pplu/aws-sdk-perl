@@ -46,16 +46,16 @@ different from another snapshot of the same volume/snapshot lineage.
 
 =head2 FirstBlockToken => Str
 
-  The block token for the block index of the C<first snapshot ID>
-specified in the C<list changed blocks> operation. This value is absent
-if the first snapshot does not have the changed block that is on the
-second snapshot.
+  The block token for the block index of the C<FirstSnapshotId> specified
+in the C<ListChangedBlocks> operation. This value is absent if the
+first snapshot does not have the changed block that is on the second
+snapshot.
 
 
 =head2 SecondBlockToken => Str
 
-  The block token for the block index of the C<second snapshot ID>
-specified in the C<list changed blocks> operation.
+  The block token for the block index of the C<SecondSnapshotId>
+specified in the C<ListChangedBlocks> operation.
 
 
 

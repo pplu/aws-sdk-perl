@@ -31,7 +31,7 @@ The size of the block.
 
 =head2 ExpiryTime => Str
 
-The time when the C<block token> expires.
+The time when the C<BlockToken> expires.
 
 
 =head2 NextToken => Str
