@@ -46,8 +46,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,       # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -69,8 +71,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -91,8 +95,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -115,8 +121,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -137,8 +145,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -161,8 +171,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -183,8 +195,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
@@ -208,8 +222,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
                 NULL => 1,                                    # OPTIONAL
                 S    => 'MyStringAttributeValue',
                 SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL

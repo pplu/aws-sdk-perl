@@ -6,6 +6,7 @@ package Paws::DynamoDB::RestoreTableFromBackup;
   has GlobalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
   has LocalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
   has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has SSESpecificationOverride => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has TargetTableName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -87,6 +88,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         WriteCapacityUnits => 1,     # min: 1
 
       },    # OPTIONAL
+      SSESpecificationOverride => {
+        Enabled        => 1,                     # OPTIONAL
+        KMSMasterKeyId => 'MyKMSMasterKeyId',    # OPTIONAL
+        SSEType        => 'AES256',              # values: AES256, KMS; OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -131,6 +137,12 @@ exclude some or all of the indexes at the time of restore.
 =head2 ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>
 
 Provisioned throughput settings for the restored table.
+
+
+
+=head2 SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the restored table.
 
 
 

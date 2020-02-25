@@ -1589,6 +1589,8 @@ querying a global secondary index.
 
 =item [ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>]
 
+=item [SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>]
+
 
 =back
 
@@ -1639,8 +1641,6 @@ Time to Live (TTL) settings
 
 =over
 
-=item SourceTableName => Str
-
 =item TargetTableName => Str
 
 =item [BillingModeOverride => Str]
@@ -1652,6 +1652,12 @@ Time to Live (TTL) settings
 =item [ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>]
 
 =item [RestoreDateTime => Str]
+
+=item [SourceTableArn => Str]
+
+=item [SourceTableName => Str]
+
+=item [SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>]
 
 =item [UseLatestRestorableTime => Bool]
 

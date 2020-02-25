@@ -6,7 +6,9 @@ package Paws::DynamoDB::RestoreTableToPointInTime;
   has LocalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
   has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
   has RestoreDateTime => (is => 'ro', isa => 'Str');
-  has SourceTableName => (is => 'ro', isa => 'Str', required => 1);
+  has SourceTableArn => (is => 'ro', isa => 'Str');
+  has SourceTableName => (is => 'ro', isa => 'Str');
+  has SSESpecificationOverride => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has TargetTableName => (is => 'ro', isa => 'Str', required => 1);
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
 
@@ -35,7 +37,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dynamodb = Paws->service('DynamoDB');
     my $RestoreTableToPointInTimeOutput = $dynamodb->RestoreTableToPointInTime(
-      SourceTableName              => 'MyTableName',
       TargetTableName              => 'MyTableName',
       BillingModeOverride          => 'PROVISIONED',    # OPTIONAL
       GlobalSecondaryIndexOverride => [
@@ -89,8 +90,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         WriteCapacityUnits => 1,     # min: 1
 
       },    # OPTIONAL
-      RestoreDateTime         => '1970-01-01T01:00:00',    # OPTIONAL
-      UseLatestRestorableTime => 1,                        # OPTIONAL
+      RestoreDateTime          => '1970-01-01T01:00:00',    # OPTIONAL
+      SSESpecificationOverride => {
+        Enabled        => 1,                     # OPTIONAL
+        KMSMasterKeyId => 'MyKMSMasterKeyId',    # OPTIONAL
+        SSEType        => 'AES256',              # values: AES256, KMS; OPTIONAL
+      },    # OPTIONAL
+      SourceTableArn          => 'MyTableArn',     # OPTIONAL
+      SourceTableName         => 'MyTableName',    # OPTIONAL
+      UseLatestRestorableTime => 1,                # OPTIONAL
     );
 
     # Results:
@@ -138,9 +146,22 @@ Time in the past to restore the table to.
 
 
 
-=head2 B<REQUIRED> SourceTableName => Str
+=head2 SourceTableArn => Str
+
+The DynamoDB table that will be restored. This value is an Amazon
+Resource Name (ARN).
+
+
+
+=head2 SourceTableName => Str
 
 Name of the source table that is being restored.
+
+
+
+=head2 SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the restored table.
 
 
 
