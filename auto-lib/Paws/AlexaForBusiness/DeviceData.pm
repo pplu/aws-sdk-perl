@@ -1,5 +1,6 @@
 package Paws::AlexaForBusiness::DeviceData;
   use Moose;
+  has CreatedTime => (is => 'ro', isa => 'Str');
   has DeviceArn => (is => 'ro', isa => 'Str');
   has DeviceName => (is => 'ro', isa => 'Str');
   has DeviceSerialNumber => (is => 'ro', isa => 'Str');
@@ -31,20 +32,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AlexaForBusiness::DeviceData object:
 
-  $service_obj->Method(Att1 => { DeviceArn => $value, ..., SoftwareVersion => $value  });
+  $service_obj->Method(Att1 => { CreatedTime => $value, ..., SoftwareVersion => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AlexaForBusiness::DeviceData object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DeviceArn
+  $result->Att1->CreatedTime
 
 =head1 DESCRIPTION
 
 Device attributes.
 
 =head1 ATTRIBUTES
+
+
+=head2 CreatedTime => Str
+
+  The time (in epoch) when the device data was created.
 
 
 =head2 DeviceArn => Str

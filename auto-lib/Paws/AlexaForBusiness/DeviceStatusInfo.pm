@@ -1,6 +1,7 @@
 package Paws::AlexaForBusiness::DeviceStatusInfo;
   use Moose;
   has ConnectionStatus => (is => 'ro', isa => 'Str');
+  has ConnectionStatusUpdatedTime => (is => 'ro', isa => 'Str');
   has DeviceStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::DeviceStatusDetail]');
 1;
 
@@ -41,6 +42,11 @@ Detailed information about a device's status.
 
   The latest available information about the connection status of a
 device.
+
+
+=head2 ConnectionStatusUpdatedTime => Str
+
+  The time (in epoch) when the device connection status changed.
 
 
 =head2 DeviceStatusDetails => ArrayRef[L<Paws::AlexaForBusiness::DeviceStatusDetail>]
