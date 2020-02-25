@@ -2,7 +2,7 @@
 package Paws::DS::DisableLDAPS;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ds = Paws->service('DS');
     my $DisableLDAPSResult = $ds->DisableLDAPS(
       DirectoryId => 'MyDirectoryId',
-      Type        => 'Client',          # OPTIONAL
+      Type        => 'Client',
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -45,11 +46,10 @@ The identifier of the directory.
 
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
-The type of LDAP security that the customer wants to enable. The
-security can be either server or client, but currently only the default
-C<Client> is supported.
+The type of LDAP security to enable. Currently only the value C<Client>
+is supported.
 
 Valid values are: C<"Client">
 

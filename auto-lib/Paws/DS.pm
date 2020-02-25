@@ -1269,7 +1269,7 @@ account.
 
 =item DirectoryId => Str
 
-=item [Type => Str]
+=item Type => Str
 
 
 =back
@@ -1325,7 +1325,7 @@ Disables single-sign on for a directory.
 
 =item DirectoryId => Str
 
-=item [Type => Str]
+=item Type => Str
 
 
 =back

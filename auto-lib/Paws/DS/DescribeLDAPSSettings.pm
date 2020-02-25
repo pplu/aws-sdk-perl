@@ -69,8 +69,8 @@ The type of next token used for pagination.
 
 =head2 Type => Str
 
-The type of LDAP security the customer wants to enable, either server
-or client. Currently supports only C<Client>, (the default).
+The type of LDAP security to enable. Currently only the value C<Client>
+is supported.
 
 Valid values are: C<"Client">
 

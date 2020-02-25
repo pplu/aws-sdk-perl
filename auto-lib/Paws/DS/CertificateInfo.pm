@@ -2,6 +2,7 @@ package Paws::DS::CertificateInfo;
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str');
   has CommonName => (is => 'ro', isa => 'Str');
+  has ExpiryDateTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 1;
 
@@ -46,6 +47,11 @@ Contains general information about a certificate.
 =head2 CommonName => Str
 
   The common name for the certificate.
+
+
+=head2 ExpiryDateTime => Str
+
+  The date and time when the certificate will expire.
 
 
 =head2 State => Str
