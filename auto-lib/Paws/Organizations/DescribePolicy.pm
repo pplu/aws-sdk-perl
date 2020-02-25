@@ -50,8 +50,8 @@ You can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
-string requires "p-" followed by from 8 to 128 lowercase letters or
-digits.
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
+letters, digits, or the underscore character (_).
 
 
 
