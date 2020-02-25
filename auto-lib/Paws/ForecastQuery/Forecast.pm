@@ -41,14 +41,10 @@ QueryForecast response.
 
   The forecast.
 
-The I<string> of the string to array map is one of the following
+The I<string> of the string-to-array map is one of the following
 values:
 
 =over
-
-=item *
-
-mean
 
 =item *
 

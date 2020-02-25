@@ -56,49 +56,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 =head2 EndDate => Str
 
 The end date for the forecast. Specify the date using this format:
-yyyy-MM-dd'T'HH:mm:ss'Z' (ISO 8601 format). For example,
-"1970-01-01T00:00:00Z."
+yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
+2015-01-01T20:00:00.
 
 
 
 =head2 B<REQUIRED> Filters => L<Paws::ForecastQuery::Filters>
 
 The filtering criteria to apply when retrieving the forecast. For
-example:
+example, to get the forecast for C<client_21> in the electricity usage
+dataset, specify the following:
 
-=over
+C<{"item_id" : "client_21"}>
 
-=item *
-
-To get a forecast for a specific item specify the following:
-
-C<{"item_id" : "client_1"}>
-
-=back
-
-=over
-
-=item *
-
-To get a forecast for a specific item sold in a specific location,
-specify the following:
-
-C<{"item_id" : "client_1", "location" : "ny"}>
-
-=back
-
-=over
-
-=item *
-
-To get a forecast for all blue items sold in a specific location,
-specify the following:
-
-C<{ "location" : "ny", "color":"blue"}>
-
-=back
-
-To get the full forecast, use the operation.
+To get the full forecast, use the CreateForecastExportJob
+(https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateForecastExportJob.html)
+operation.
 
 
 
@@ -119,8 +92,8 @@ token in the next request. Tokens expire after 24 hours.
 =head2 StartDate => Str
 
 The start date for the forecast. Specify the date using this format:
-yyyy-MM-dd'T'HH:mm:ss'Z' (ISO 8601 format) For example,
-"1970-01-01T00:00:00Z."
+yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
+2015-01-01T08:00:00.
 
 
 
