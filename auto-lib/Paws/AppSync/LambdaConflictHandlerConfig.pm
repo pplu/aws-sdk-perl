@@ -31,7 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::La
 
 =head1 DESCRIPTION
 
-This class has no description
+The C<LambdaConflictHandlerConfig> object when configuring LAMBDA as
+the Conflict Handler.
 
 =head1 ATTRIBUTES
 

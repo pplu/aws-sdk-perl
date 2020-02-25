@@ -549,6 +549,8 @@ compose the resolver logic.
 
 =item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
 
+=item [XrayEnabled => Bool]
+
 
 =back
 
@@ -1246,6 +1248,8 @@ Updates a C<Function> object.
 =item [OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>]
 
 =item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
+
+=item [XrayEnabled => Bool]
 
 
 =back

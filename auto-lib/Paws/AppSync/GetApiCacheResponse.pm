@@ -17,7 +17,7 @@ Paws::AppSync::GetApiCacheResponse
 
 =head2 ApiCache => L<Paws::AppSync::ApiCache>
 
-
+The C<ApiCache> object.
 
 
 =head2 _request_id => Str

@@ -10,6 +10,7 @@ package Paws::AppSync::GraphqlApi;
   has Tags => (is => 'ro', isa => 'Paws::AppSync::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has Uris => (is => 'ro', isa => 'Paws::AppSync::MapOfStringToString', request_name => 'uris', traits => ['NameInRequest']);
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', request_name => 'userPoolConfig', traits => ['NameInRequest']);
+  has XrayEnabled => (is => 'ro', isa => 'Bool', request_name => 'xrayEnabled', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppSync::GraphqlApi object:
 
-  $service_obj->Method(Att1 => { AdditionalAuthenticationProviders => $value, ..., UserPoolConfig => $value  });
+  $service_obj->Method(Att1 => { AdditionalAuthenticationProviders => $value, ..., XrayEnabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -94,6 +95,12 @@ API.
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
   The Amazon Cognito user pool configuration.
+
+
+=head2 XrayEnabled => Bool
+
+  A flag representing whether X-Ray tracing is enabled for this
+C<GraphqlApi>.
 
 
 
