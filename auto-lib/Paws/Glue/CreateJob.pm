@@ -12,6 +12,7 @@ package Paws::Glue::CreateJob;
   has MaxCapacity => (is => 'ro', isa => 'Num');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NonOverridableArguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str', required => 1);
@@ -65,12 +66,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionProperty => {
         MaxConcurrentRuns => 1,                      # OPTIONAL
       },    # OPTIONAL
-      GlueVersion          => 'MyGlueVersionString',    # OPTIONAL
-      LogUri               => 'MyUriString',            # OPTIONAL
-      MaxCapacity          => 1,                        # OPTIONAL
-      MaxRetries           => 1,                        # OPTIONAL
+      GlueVersion             => 'MyGlueVersionString',    # OPTIONAL
+      LogUri                  => 'MyUriString',            # OPTIONAL
+      MaxCapacity             => 1,                        # OPTIONAL
+      MaxRetries              => 1,                        # OPTIONAL
+      NonOverridableArguments => {
+        'MyGenericString' => 'MyGenericString', # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
       NotificationProperty => {
-        NotifyDelayAfter => 1,                          # min: 1; OPTIONAL
+        NotifyDelayAfter => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
       NumberOfWorkers       => 1,                 # OPTIONAL
       SecurityConfiguration => 'MyNameString',    # OPTIONAL
@@ -213,6 +217,12 @@ The maximum number of times to retry this job if it fails.
 
 The name you assign to this job definition. It must be unique in your
 account.
+
+
+
+=head2 NonOverridableArguments => L<Paws::Glue::GenericMap>
+
+Non-overridable arguments for this job, specified as name-value pairs.
 
 
 

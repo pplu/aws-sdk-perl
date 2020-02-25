@@ -13,6 +13,7 @@ package Paws::Glue::Job;
   has MaxCapacity => (is => 'ro', isa => 'Num');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
+  has NonOverridableArguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
@@ -174,6 +175,11 @@ allocation.
 =head2 Name => Str
 
   The name you assign to this job definition.
+
+
+=head2 NonOverridableArguments => L<Paws::Glue::GenericMap>
+
+  Non-overridable arguments for this job, specified as name-value pairs.
 
 
 =head2 NotificationProperty => L<Paws::Glue::NotificationProperty>

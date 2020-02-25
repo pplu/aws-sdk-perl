@@ -1444,6 +1444,8 @@ Creates a new development endpoint.
 
 =item [MaxRetries => Int]
 
+=item [NonOverridableArguments => L<Paws::Glue::GenericMap>]
+
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
 
 =item [NumberOfWorkers => Int]

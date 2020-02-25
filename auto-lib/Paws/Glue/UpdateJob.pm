@@ -50,6 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         LogUri      => 'MyUriString',            # OPTIONAL
         MaxCapacity => 1,                        # OPTIONAL
         MaxRetries  => 1,                        # OPTIONAL
+        NonOverridableArguments => { 'MyGenericString' => 'MyGenericString', }
+        ,                                        # OPTIONAL
         NotificationProperty => {
           NotifyDelayAfter => 1,                 # min: 1; OPTIONAL
         },    # OPTIONAL
