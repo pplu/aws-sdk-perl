@@ -31,21 +31,6 @@ with an alias, this indicates which version the alias resolved to.
 If present, indicates that an error occurred during function execution.
 Details about the error are included in the response payload.
 
-=over
-
-=item *
-
-C<Handled> - The runtime caught an error thrown by the function and
-formatted it into a JSON document.
-
-=item *
-
-C<Unhandled> - The runtime didn't handle the error. For example, the
-function ran out of memory or timed out.
-
-=back
-
-
 
 =head2 LogResult => Str
 

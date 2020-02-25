@@ -87,7 +87,7 @@ retrieve the next page of results.
 
 =head2 MaxItems => Int
 
-Limit the number of versions that are returned.
+The maximum number of versions to return.
 
 
 

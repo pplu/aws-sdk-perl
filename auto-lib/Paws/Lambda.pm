@@ -692,6 +692,11 @@ age.
 C<MaximumRetryAttempts> - Discard records after the specified number of
 retries.
 
+=item *
+
+C<ParallelizationFactor> - Process multiple batches from each shard
+concurrently.
+
 =back
 
 
@@ -1014,8 +1019,9 @@ Each argument is described in detail in: L<Paws::Lambda::GetFunctionConcurrency>
 
 Returns: a L<Paws::Lambda::GetFunctionConcurrencyResponse> instance
 
-Returns details about the concurrency configuration for a function. To
-set a concurrency limit for a function, use PutFunctionConcurrency.
+Returns details about the reserved concurrency configuration for a
+function. To set a concurrency limit for a function, use
+PutFunctionConcurrency.
 
 
 =head2 GetFunctionConfiguration
@@ -1342,7 +1348,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 Returns: a L<Paws::Lambda::ListFunctionsResponse> instance
 
 Returns a list of Lambda functions, with the version-specific
-configuration of each.
+configuration of each. Lambda returns up to 50 functions per call.
 
 Set C<FunctionVersion> to C<ALL> to include all published versions of
 each function in addition to the unpublished version. To get more
@@ -1461,7 +1467,8 @@ Returns: a L<Paws::Lambda::ListVersionsByFunctionResponse> instance
 
 Returns a list of versions
 (https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html),
-with the version-specific configuration of each.
+with the version-specific configuration of each. Lambda returns up to
+50 versions per call.
 
 
 =head2 PublishLayerVersion
@@ -1583,7 +1590,11 @@ Returns: a L<Paws::Lambda::FunctionEventInvokeConfig> instance
 
 Configures options for asynchronous invocation
 (https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) on
-a function, version, or alias.
+a function, version, or alias. If a configuration already exists for a
+function, version, or alias, this operation overwrites it. If you
+exclude any settings, they are removed. To set one option without
+affecting existing settings for other options, use
+PutFunctionEventInvokeConfig.
 
 By default, Lambda retries an asynchronous invocation twice if the
 function returns an error. It retains events in a queue for up to six
@@ -1591,6 +1602,14 @@ hours. When an event fails all processing attempts or stays in the
 asynchronous invocation queue for too long, Lambda discards it. To
 retain discarded events, configure a dead-letter queue with
 UpdateFunctionConfiguration.
+
+To send an invocation record to a queue, topic, function, or event bus,
+specify a destination
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations).
+You can configure separate destinations for successful invocations
+(on-success) and events that fail all processing attempts (on-failure).
+You can configure destinations in addition to or instead of a
+dead-letter queue.
 
 
 =head2 PutProvisionedConcurrencyConfig
@@ -1787,6 +1806,11 @@ age.
 
 C<MaximumRetryAttempts> - Discard records after the specified number of
 retries.
+
+=item *
+
+C<ParallelizationFactor> - Process multiple batches from each shard
+concurrently.
 
 =back
 

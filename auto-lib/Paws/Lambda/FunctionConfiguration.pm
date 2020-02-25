@@ -96,7 +96,8 @@ format (https://www.w3.org/TR/NOTE-datetime)
 
 =head2 LastUpdateStatus => Str
 
-The status of the last update that was performed on the function.
+The status of the last update that was performed on the function. This
+is first set to C<Successful> after function creation completes.
 
 Valid values are: C<"Successful">, C<"Failed">, C<"InProgress">
 =head2 LastUpdateStatusReason => Str
@@ -108,7 +109,7 @@ The reason for the last update that was performed on the function.
 
 The reason code for the last update that was performed on the function.
 
-Valid values are: C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">
+Valid values are: C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">, C<"InvalidSubnet">, C<"InvalidSecurityGroup">
 =head2 Layers => ArrayRef[L<Paws::Lambda::Layer>]
 
 The function's layers
@@ -139,7 +140,7 @@ The function's execution role.
 
 The runtime environment for the Lambda function.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">
 =head2 State => Str
 
 The current state of the function. When the state is C<Inactive>, you
@@ -156,7 +157,7 @@ The reason for the function's current state.
 The reason code for the function's current state. When the code is
 C<Creating>, you can't invoke or modify the function.
 
-Valid values are: C<"Idle">, C<"Creating">, C<"Restoring">, C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">
+Valid values are: C<"Idle">, C<"Creating">, C<"Restoring">, C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">, C<"InvalidSubnet">, C<"InvalidSecurityGroup">
 =head2 Timeout => Int
 
 The amount of time that Lambda allows a function to run before stopping
