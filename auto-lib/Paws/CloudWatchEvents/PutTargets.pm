@@ -61,12 +61,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TaskCount       => 1,            # min: 1; OPTIONAL
           },    # OPTIONAL
           Input            => 'MyTargetInput',        # max: 8192; OPTIONAL
-          InputPath        => 'MyTargetInputPath',    # max: 256
+          InputPath        => 'MyTargetInputPath',    # max: 256; OPTIONAL
           InputTransformer => {
             InputTemplate => 'MyTransformerInput',    # min: 1, max: 8192
             InputPathsMap => {
-              'MyInputTransformerPathKey' =>
-                'MyTargetInputPath',    # key: min: 1, max: 256, value: max: 256
+              'MyInputTransformerPathKey' => 'MyTargetInputPath'
+              ,    # key: min: 1, max: 256, value: max: 256; OPTIONAL
             },    # max: 10; OPTIONAL
           },    # OPTIONAL
           KinesisParameters => {

@@ -5,6 +5,7 @@ package Paws::CloudWatch::AnomalyDetector;
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has Stat => (is => 'ro', isa => 'Str');
+  has StateValue => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatch::AnomalyDetector object:
 
-  $service_obj->Method(Att1 => { Configuration => $value, ..., Stat => $value  });
+  $service_obj->Method(Att1 => { Configuration => $value, ..., StateValue => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,6 +69,12 @@ model.
 =head2 Stat => Str
 
   The statistic associated with the anomaly detection model.
+
+
+=head2 StateValue => Str
+
+  The current status of the anomaly detector's training. The possible
+values are C<TRAINED | PENDING_TRAINING | TRAINED_INSUFFICIENT_DATA>
 
 
 
