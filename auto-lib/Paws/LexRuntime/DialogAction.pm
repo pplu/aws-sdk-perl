@@ -85,7 +85,7 @@ message, Amazon Lex will use the message configured for the intent.
 
 =head2 MessageFormat => Str
 
-  =over
+=over
 
 =item *
 
