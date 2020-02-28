@@ -196,15 +196,22 @@ section appears in CPAN also.
 Now edit the `Changes` file to add the date of release, adjusting the entry for version X.XX to 
 todays date.
 
-Commit everything up till now
+Commit everything up till now and push
 
 ```
 git push origin release/X.XX
-git checkout master
-git merge release/X.XX
 ```
 
+Take a look at Travis pipelines to see if the branch you're going to release is green: https://travis-ci.org/pplu/aws-sdk-perl/branches
+
+We don't want to ship Paws when it's failing it's tests.
+
+If everything is OK:
+
 ```
+git checkout master
+git pull origin master
+git merge release/X.XX
 git tag release-X.XX
 make dist
 ```
