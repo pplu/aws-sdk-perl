@@ -34,7 +34,9 @@ package Paws::Net::QueryCaller;
             $p{ $key } = $params->{$att};
           }
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
-          if (Paws->is_internal_type("$1")){
+	  if (scalar @{ $params->$att } == 0 ) {
+	     $p{ $att } = '';
+	  } elsif (Paws->is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               $p{ sprintf($self->array_flatten_string, $key, $i) } = $value;

@@ -219,6 +219,23 @@ $test_params = {
 request_has_params($test_params, $request);
 
 
+$request = $cfn->CreateStack(
+  StackName => 'MyStack',
+  TemplateBody => '[Template Document]',
+  Tags => [],
+);
+
+
+$test_params = {
+  'StackName' => 'MyStack',
+  'TemplateBody' => '[Template Document]',
+  'Tags' => '',
+};
+
+request_has_params($test_params, $request);
+
+
+
 my $asg = $aws->service('AutoScaling');
 
 $request = $asg->AttachInstances(
