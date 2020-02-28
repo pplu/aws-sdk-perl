@@ -431,6 +431,11 @@ package Paws::API::Builder {
                                            and not $self->is_output_shape($shape_name)
                                            and not $self->is_input_shape($shape_name)
                                           );
+	# Hack: it results that RedShift uses the ResizeClusterMessage as an internal object and as the input shape
+	# for the ResizeCluster call, so due to the "not is_input_shape", the ResizeClusterMessage object was not being
+	# generated. To not overcomplicate the condition on top, I've made and exception for this shape to get into
+	# the _inner_shapes attribute
+	$ret->{ $shape_name } = $shape if ($self->api eq 'Paws::RedShift' and $shape_name eq 'ResizeClusterMessage');
       }
       return $ret;
     },
