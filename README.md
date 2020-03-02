@@ -341,6 +341,12 @@ and giving me time to build and maintain it regularly.
 ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
 from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
+castaway for contributing to fixing documentation problems
+ - taking the reigns of Paws, become part of the core team that pushes it forward
+ - properly providing backlinks between related pages
+ - making TOCs render correctly on search.cpan.org
+ - generating helpful copy-paste ready scenarios in the synopsis of each method call
+
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
@@ -428,11 +434,6 @@ SeptamusNonovant for fixing paginators in non-callback mode
 gadgetjunkie for contributing the ECS credential provider
 
 mla for contributing a fix to correct dependencies
-
-castaway for contributing to fixing documentation problems
- - properly providing backlinks between related pages
- - making TOCs render correctly on search.cpan.org
- - generating helpful copy-paste ready scenarios in the synopsis of each method call
 
 autarch for correcting signature generation for a bunch of services
 
