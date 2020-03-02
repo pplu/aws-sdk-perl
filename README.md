@@ -166,11 +166,81 @@ Packaging
 Packaging is managed with Dist::Zilla. To install Dist::Zilla and the necessary plugins, run:
 
 ```
-cpanm -l local -n Dist::Zilla
-dzil authordeps --missing | cpanm -l local -n
+make dist
 ```
 
-After this, running dzil build will make a tar.gz suitable for uploading to CPAN.
+After this, you will have a tar.gz suitable for uploading to CPAN or to your own mini-CPAN
+
+Releasing
+============
+
+The release process is as follows:
+
+X.XX will be the version that you are currently working on (the one you want to release)
+Y.YY will be the next version (which we start). This assumes `origin` as the main SDK source.
+
+```
+git checkout release/X.XX
+git pull origin release/X.XX
+```
+
+Edit README.md to add any relevant contributions.
+
+```
+make gen-paws
+```
+
+Will copy the contents of the Contributions section of README.md into Paws.pm so that the same
+section appears in CPAN also.
+
+Now edit the `Changes` file to add the date of release, adjusting the entry for version X.XX to 
+todays date.
+
+Commit everything up till now and push
+
+```
+git push origin release/X.XX
+```
+
+Take a look at Travis pipelines to see if the branch you're going to release is green: https://travis-ci.org/pplu/aws-sdk-perl/branches
+
+We don't want to ship Paws when it's failing it's tests.
+
+If everything is OK:
+
+```
+git checkout master
+git pull origin master
+git merge release/X.XX
+git tag release-X.XX
+make dist
+```
+
+this will generate Paws-X.XX.tar.gz, which is the artifact that is uploadable to CPAN
+
+```
+git checkout -b release/Y.YY
+git push --set-upstream origin release/Y.YY
+```
+
+This creates the branch for working on the next release.
+
+We bump the version number in the builder. Edit `builder-lib/Paws/API/Builder/Paws.pm`. Near line 12
+we will find Paws version number. Replace X.XX for Y.YY
+
+```
+
+We add Y.YY to the Changes file
+
+```
+git push origin release/Y.YY
+```
+
+We're ready for developing Y.YY
+
+After that: upload Paws-X.XX.tar.gz to CPAN an do a walk around issues and MRs that have
+been fixed / merged in the release, notifying that "Paws X.XX has hit CPAN with this issue fixed"
+
 
 Trying it out
 ============
