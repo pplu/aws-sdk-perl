@@ -225,9 +225,9 @@ git push --set-upstream origin release/Y.YY
 
 This creates the branch for working on the next release.
 
-We bump the version number in the builder:
-```
-vi builder-lib/Paws/API/Builder/Paws.pm +12
+We bump the version number in the builder. Edit `builder-lib/Paws/API/Builder/Paws.pm`. Near line 12
+we will find Paws version number. Replace X.XX for Y.YY
+
 ```
 
 We add Y.YY to the Changes file
