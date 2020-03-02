@@ -212,7 +212,9 @@ If everything is OK:
 git checkout master
 git pull origin master
 git merge release/X.XX
+git push origin master
 git tag release-X.XX
+git push origin release-X.XX
 make dist
 ```
 
@@ -230,7 +232,7 @@ we will find Paws version number. Replace X.XX for Y.YY
 
 ```
 
-We add Y.YY to the Changes file
+We add Y.YY to the Changes file. Commit the changes and push:
 
 ```
 git push origin release/Y.YY
