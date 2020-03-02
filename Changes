@@ -1,4 +1,5 @@
 0.42
+ - Fix: Let QueryCaller send an empty query parameter to signal an empty array of objects. See #375 (torrentale)
  - New API: CodeStarConnections 
  - New API: CodeStarNotifications
  - New API: DataExchange

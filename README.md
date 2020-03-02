@@ -453,3 +453,5 @@ leonerd for (between others)
 campus-explorer for contributing to test suite
 
 byterock for testing and fixing PinPoint
+
+torrentale for fixing QueryCaller to correctly signal empty arrays
