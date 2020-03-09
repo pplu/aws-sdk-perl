@@ -1,0 +1,7 @@
+---
+call: TagResource
+service: CloudFront
+tests:
+  - expected: dbb36cb7-1e03-4869-b2c3-6ef058b27c5a
+    op: eq
+    path: _request_id

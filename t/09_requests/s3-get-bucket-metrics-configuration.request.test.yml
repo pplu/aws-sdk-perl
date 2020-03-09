@@ -1,0 +1,27 @@
+---
+call: GetBucketMetricsConfiguration 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: somconfig
+    op: eq
+    path: parameters
+    key: id
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: metrics
+    path: url
+  - expected: id=somconfig
+    path: url
+  - expected: id=somconfig
+    path: uri
+  - expected: metrics
+    path: uri
+  - expected: /oneoffpaws?
+    path: uri

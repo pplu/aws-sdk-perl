@@ -1,0 +1,7 @@
+---
+call: PutBucketAnalyticsConfiguration
+service: S3
+tests:
+  - expected: 40015A2BB4D1F1B0
+    op: eq
+    path: _request_id

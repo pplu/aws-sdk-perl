@@ -2,9 +2,15 @@
   [%- traits = [] -%]
   [%- member_shape_name = shape.members.$param_name.shape -%]
   [%- member = c.shape(member_shape_name) -%]
+  [%# USE Dumper; Dumper.dump(shape.members.$param_name) %]
+  [%# USE Dumper; Dumper.dump(member) %]
   has [%- param_name -%] => (is => 'ro', isa => '[%- member.perl_type -%]'
-  [%- IF (member.type == 'list' and shape.members.$param_name.locationName.defined) -%][%- traits.push('NameInRequest') -%], request_name => '[%- shape.members.$param_name.locationName -%]'
-  [%- ELSIF (member.type == 'list' and member.member.locationName.defined) -%][%- traits.push('NameInRequest') -%], request_name => '[%- member.member.locationName -%]'
+  [%- IF (member.flattened == 1 || shape.members.$param_name.flattened); traits.push('ListFlattened'); END %]
+  [%- IF (member.type == 'list') -%]
+    [%- IF (shape.members.$param_name.locationName.defined) -%][%- traits.push('NameInRequest') -%], wrap_name => '[%- shape.members.$param_name.locationName -%]'
+    [%- END -%]
+    [%- IF (member.member.locationName.defined) -%][%# USE Dumper; Dumper.dump(member) %][%- traits.push('NameInRequest') -%], request_name => '[%- member.member.locationName -%]'
+    [%- END -%]
   [%- ELSIF (shape.members.$param_name.location == 'header') -%], header_name => '[%- shape.members.$param_name.locationName -%]'
     [%- IF (param_name == 'ContentMD5'); traits.push('AutoInHeader') -%], auto => 'MD5'
     [%- ELSE; traits.push('ParamInHeader') -%]
@@ -12,6 +18,7 @@
   [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') -%], header_prefix => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') -%], query_name => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') -%], uri_name => '[%- shape.members.$param_name.locationName -%]'
+  [%- ELSIF (shape.members.$param_name.xmlAttribute == 1); traits.push('IsXMLAttribute') -%], attribute_name => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (shape.members.$param_name.locationName != '') -%]
     [%- IF (shape.members.$param_name.locationName == 'x-amz-meta-') -%]
     [%- ELSIF (shape.members.$param_name.locationName != param_name); traits.push('NameInRequest'); -%], request_name => '[%- shape.members.$param_name.locationName -%]'

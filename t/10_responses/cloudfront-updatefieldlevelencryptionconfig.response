@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <FieldLevelEncryption xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Id>C26GE31LXDSQZI</Id><LastModifiedTime>2020-01-09T21:45:37.119Z</LastModifiedTime><FieldLevelEncryptionConfig><CallerReference>01-01-2020:00001</CallerReference><Comment>Yeah Dad! You take away all the fun</Comment><QueryArgProfileConfig><ForwardWhenQueryArgProfileIsUnknown>false</ForwardWhenQueryArgProfileIsUnknown><QueryArgProfiles><Quantity>1</Quantity><Items><QueryArgProfile><QueryArg>gee_dad</QueryArg><ProfileId>P14TNUMMKLEPXX</ProfileId></QueryArgProfile></Items></QueryArgProfiles></QueryArgProfileConfig><ContentTypeProfileConfig><ForwardWhenContentTypeIsUnknown>false</ForwardWhenContentTypeIsUnknown><ContentTypeProfiles><Quantity>1</Quantity><Items><ContentTypeProfile><Format>URLEncoded</Format><ProfileId>P14TNUMMKLEPXX</ProfileId><ContentType>application/x-www-form-urlencoded</ContentType></ContentTypeProfile></Items></ContentTypeProfiles></ContentTypeProfileConfig></FieldLevelEncryptionConfig></FieldLevelEncryption>
+headers:
+  client-date: 'Thu, 09 Jan 2020 21:45:38 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 1040
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 21:45:38 GMT'
+  etag: E2LIL66SYPFJM2
+  x-amzn-requestid: 3b0f7704-399e-4eeb-80b7-449661cef71f
+status: 200

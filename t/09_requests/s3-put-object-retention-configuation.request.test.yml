@@ -1,0 +1,53 @@
+---
+call: PutObjectRetention
+service: S3
+tests:
+  - expected: <Retention xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Mode>GOVERNANCE</Mode><RetainUntilDate>1970-01-01T01:00:00</RetainUntilDate></Retention> 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - key: Retention.Mode
+    expected: GOVERNANCE
+    op: eq
+    path: parameters
+  - key: BypassGovernanceRetention
+    expected: 1
+    op: eq
+    path: parameters
+  - key: Retention.RetainUntilDate
+    expected: 1970-01-01T01:00:00
+    op: eq
+    path: parameters
+  - key: RequestPayer
+    expected: requester
+    op: eq
+    path: parameters
+  - key: Key
+    expected: one/to/delete/image.jpg
+    op: eq
+    path: parameters
+  - key: versionId
+    expected: MyObjectVersionId
+    op: eq
+    path: parameters
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image.jpg?
+    path: url
+    op: eq
+  - expected: /oneoffpaws/one/to/delete/image.jpg?
+    path: uri
+    op: eq
+  - expected: retention
+    path: url
+    op: eq
+  - expected: retention
+    path: uri
+    op: eq
+  - expected: versionId=MyObjectVersionId
+    path: uri
+    op: eq

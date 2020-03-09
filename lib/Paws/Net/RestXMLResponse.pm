@@ -8,7 +8,6 @@ package Paws::Net::RestXMLResponse;
 
   sub unserialize_response {
     my ($self, $response) = @_;
-
     my $data = $response->content;
     return Paws::Exception->new(
         message => $@,
@@ -16,22 +15,31 @@ package Paws::Net::RestXMLResponse;
         request_id => '', #$request_id,
         http_status => $response->status,
       ) if (not defined $data or $data eq '');
-    
-    my $xml = XML::Simple->new(
-      ForceArray    => qr/^(?:^item$|Errors)/i,
-      KeyAttr       => '',
-      SuppressEmpty => undef,
-    );
-    my $struct = eval { $xml->parse_string($data) };
-    if ($@){
-      return Paws::Exception->new(
-        message => $@,
-        code => 'InvalidContent',
-        request_id => '', #$request_id,
-        http_status => $response->status,
-      );
-    }
 
+    my $struct;
+    if ($data =~ /^\</ || (exists $response->headers->{ content_type } && $response->headers->{ content_type } eq 'application/xml')) {
+      # Actual XML content
+
+      my $xml = XML::Simple->new(
+        ForceArray    => qr/^(?:^item$|Errors)/i,
+        KeyAttr       => '',
+        SuppressEmpty => undef,
+      );
+      $DB::single=1;
+      $struct = eval { $xml->parse_string($data) };
+      if ($@){
+        return Paws::Exception->new(
+          message => $@,
+          code => 'InvalidContent',
+          request_id => '', #$request_id,
+          http_status => $response->status,
+        );
+      }
+    } elsif ($data) {
+      # eg GetBucketPolicy - its JSON and we don't know what the attr
+      # name is at this point (no _stream_param)
+      $struct = { content => $data };
+    }
     return $struct;
   }
 
@@ -52,8 +60,8 @@ package Paws::Net::RestXMLResponse;
 
     my ($message, $code, $request_id, $host_id);
 
-    $message = status_message($response->status);
-    $code = $response->status;
+	$message = exists($struct->{Message})? $struct->{Message}: status_message($response->status);
+	$code    = exists($struct->{Code})   ? $struct->{Code}   : $response->status;
 
     if (exists $struct->{RequestId}) {
       $request_id = $struct->{RequestId};
@@ -136,7 +144,7 @@ package Paws::Net::RestXMLResponse;
   sub new_from_result_struct {
     my ($self, $class, $result) = @_;
     my %args;
-    
+
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
@@ -168,7 +176,11 @@ package Paws::Net::RestXMLResponse;
       }
       # We'll consider that an attribute without brackets [] isn't an array type
       elsif ($att_type !~ m/\[.*\]$/) {
-        my $value = $result->{ $key };
+        # If there's only a single layer of XML, the value ends up
+        # being in the 'content' key
+        my $value = exists $result->{ $key }
+          ? $result->{ $key }
+          : $result->{ 'content' };
         my $value_ref = ref($value);
 
         if ($att_type =~ m/\:\:/) {
@@ -236,6 +248,13 @@ package Paws::Net::RestXMLResponse;
             } else {
               $args{ $att } = $value;
             }
+          } else {
+            # eg CloudFront::CreateDistribution can return
+            # <S3OriginConfig><OriginAccessIdentity></OriginAccessIdentity></S3OriginConfig>
+            # where OriginAccessIdentity is a required, yet empty,
+            # string.
+              
+            $args{ $att } = '' if ($att_is_required);
           }
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
@@ -248,14 +267,17 @@ package Paws::Net::RestXMLResponse;
             $value = $value->{ member };
           } elsif (exists $value->{ entry }) {
             $value = $value->{ entry  };
-          } elsif (keys %$value == 1) {
+              
+          } elsif (keys %$value == 1 && !$meta->does('Paws::API::Attribute::Trait::ListFlattened')) {
+            # This will fail if the object response has exactly one key.. 
             $value = $value->{ (keys %$value)[0] };
           } else {
-            #die "Can't detect the item that has the array in the response hash";
+              #die "Can't detect the item that has the array in the response hash";
+              $value = [ $value ];
           }
           $value_ref = ref($value);
         }
- 
+
         if ($type =~ m/\:\:/) {
           Paws->load_class($type);
 

@@ -1,0 +1,7 @@
+---
+call: HeadBucket
+service: S3
+tests:
+  - expected: 0EFD66B0EB339181
+    op: eq
+    path: _request_id

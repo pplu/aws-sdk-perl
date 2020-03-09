@@ -1,0 +1,34 @@
+---
+call: PutBucketVersioning 
+service: S3
+tests:
+  - expected: <VersioningConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><MfaDelete>Enabled</MfaDelete><Status>Enabled</Status></VersioningConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: MyMFA 
+    op: eq
+    path: parameters
+    key: MFA
+  - expected: Enabled
+    op: eq
+    path: parameters
+    key: VersioningConfiguration.MfaDelete
+  - expected: Enabled
+    op: eq
+    path: parameters
+    key: VersioningConfiguration.Status
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: versioning
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: versioning
+    path: uri

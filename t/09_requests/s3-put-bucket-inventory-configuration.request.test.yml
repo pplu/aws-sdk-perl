@@ -1,0 +1,55 @@
+---
+call: PutBucketInventoryConfiguration 
+service: S3
+tests:
+  - expected: <InventoryConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Destination><S3BucketDestination><Bucket>arn:aws:s3:oneoffpaws</Bucket><Format>CSV</Format></S3BucketDestination></Destination><Id>Test_Inventory</Id><IncludedObjectVersions>Current</IncludedObjectVersions><IsEnabled>0</IsEnabled><Schedule><Frequency>Weekly</Frequency></Schedule></InventoryConfiguration> 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: Test_Inventory 
+    op: eq
+    path: parameters
+    key: id
+  - expected: arn:aws:s3:oneoffpaws
+    op: eq
+    path: parameters
+    key: InventoryConfiguration.Destination.S3BucketDestination.Bucket
+  - expected: Test_Inventory
+    op: eq
+    path: parameters
+    key: InventoryConfiguration.Id
+  - expected: 0
+    op: eq
+    path: parameters
+    key: InventoryConfiguration.IsEnabled
+  - expected: CSV
+    op: eq
+    path: parameters
+    key: InventoryConfiguration.Destination.S3BucketDestination.Format
+  - expected: Current
+    op: eq
+    path: parameters
+    key: InventoryConfiguration.IncludedObjectVersions
+  - expected: Weekly
+    op: eq
+    path: parameters
+    key: InventoryConfiguration.Schedule.Frequency
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: inventory
+    path: url
+  - expected: id=Test_Inventory
+    path: url
+  - expected: inventory
+    path: uri   
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: id=Test_Inventory
+    path: uri
+

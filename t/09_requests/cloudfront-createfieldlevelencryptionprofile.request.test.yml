@@ -1,0 +1,71 @@
+---
+call: CreateFieldLevelEncryptionProfile
+service: CloudFront
+tests:
+  - expected: '<FieldLevelEncryptionProfileConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>2020-01-01-20:01</CallerReference><Comment>Rick was here</Comment><EncryptionEntities><Items><EncryptionEntity><FieldPatterns><Items><FieldPattern>None*</FieldPattern><FieldPattern>some*</FieldPattern></Items><Quantity>2</Quantity></FieldPatterns><ProviderId>OpenSSL</ProviderId><PublicKeyId>K3ODSO6SYTI4ZG</PublicKeyId></EncryptionEntity></Items><Quantity>1</Quantity></EncryptionEntities><Name>PawsCloudConfig</Name></FieldLevelEncryptionProfileConfig>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: 5mxQeMC3XrptCUq/syw+hw==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: 977a3f294267f25658d4f5ab22f0ef55720fc61ee37319d12ebb1bd470be084c
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: 2020-01-01-20:01
+    key: FieldLevelEncryptionProfileConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: Rick was here
+    key: FieldLevelEncryptionProfileConfig.Comment
+    op: eq
+    path: parameters
+  - expected: None*
+    key: FieldLevelEncryptionProfileConfig.EncryptionEntities.EncryptionEntity.member.1.FieldPatterns.FieldPattern.member.1
+    op: eq
+    path: parameters
+  - expected: some*
+    key: FieldLevelEncryptionProfileConfig.EncryptionEntities.EncryptionEntity.member.1.FieldPatterns.FieldPattern.member.2
+    op: eq
+    path: parameters
+  - expected: 2
+    key: FieldLevelEncryptionProfileConfig.EncryptionEntities.EncryptionEntity.member.1.FieldPatterns.Quantity
+    op: eq
+    path: parameters
+  - expected: OpenSSL
+    key: FieldLevelEncryptionProfileConfig.EncryptionEntities.EncryptionEntity.member.1.ProviderId
+    op: eq
+    path: parameters
+  - expected: K3ODSO6SYTI4ZG
+    key: FieldLevelEncryptionProfileConfig.EncryptionEntities.EncryptionEntity.member.1.PublicKeyId
+    op: eq
+    path: parameters
+  - expected: 1
+    key: FieldLevelEncryptionProfileConfig.EncryptionEntities.Quantity
+    op: eq
+    path: parameters
+  - expected: PawsCloudConfig
+    key: FieldLevelEncryptionProfileConfig.Name
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/field-level-encryption-profile
+    op: eq
+    path: url
+  - expected: /2019-03-26/field-level-encryption-profile
+    op: eq
+    path: url
+  - expected: /2019-03-26/field-level-encryption-profile
+    op: eq
+    path: uri

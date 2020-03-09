@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <FieldLevelEncryptionProfile xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Id>P11YIB8QUZ31DB</Id><LastModifiedTime>2020-01-09T21:00:19.429Z</LastModifiedTime><FieldLevelEncryptionProfileConfig><Name>PawsCloudConfigTwo</Name><CallerReference>2020-01-01-20:21</CallerReference><Comment>Ha Rick. Mr. Poopy Buthole was here</Comment><EncryptionEntities><Quantity>1</Quantity><Items><EncryptionEntity><PublicKeyId>K3ODSO6SYTI4ZG</PublicKeyId><ProviderId>OpenSSL</ProviderId><FieldPatterns><Quantity>3</Quantity><Items><FieldPattern>Two*</FieldPattern><FieldPattern>three*</FieldPattern><FieldPattern>one*</FieldPattern></Items></FieldPatterns></EncryptionEntity></Items></EncryptionEntities></FieldLevelEncryptionProfileConfig></FieldLevelEncryptionProfile>
+headers:
+  client-date: 'Thu, 09 Jan 2020 21:00:20 GMT'
+  client-peer: 54.239.29.51:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 785
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 21:00:20 GMT'
+  etag: E3S6I9JUQ89OK9
+  x-amzn-requestid: 16cb4188-2f39-44e9-960d-338edcca87a6
+status: 200

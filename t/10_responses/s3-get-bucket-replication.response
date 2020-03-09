@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <ReplicationConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><ID>Rule1</ID><Priority>1</Priority><Status>Enabled</Status><DeleteMarkerReplication><Status>Disabled</Status></DeleteMarkerReplication><Filter/><Destination><Bucket>arn:aws:s3:::oneoffpaws.config</Bucket></Destination></Rule><Role>arn:aws:iam::985173205561:role/service-role/s3crr_role_for_oneoffpaws_to_oneoffpaws.config</Role></ReplicationConfiguration>
+headers: 
+  x-amz-request-id: B78D1D3D1B577FB1
+status: 200

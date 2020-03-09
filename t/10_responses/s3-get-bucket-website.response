@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <WebsiteConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><IndexDocument><Suffix>index.html</Suffix></IndexDocument><ErrorDocument><Key>SomeErrorDocument.html</Key></ErrorDocument></WebsiteConfiguration>
+headers:
+   x-amz-request-id: 4F549587A44E64B2
+status: 200

@@ -1,0 +1,38 @@
+---
+call: GetApplicationSettings 
+service: Pinpoint
+tests:
+  - expected: 35ec2088193b4f56986cec0fc59d9ca4
+    op: eq
+    path: ApplicationId
+  - expected: e1900965-a3d7-11e9-b96c-755d5f59bd77 
+    op: eq
+    path: _request_id
+  - expected: 12:10
+    op: eq
+    path: QuietTime.End
+  - expected: 02:30
+    op: eq
+    path: QuietTime.Start
+  - expected: 93
+    op: ==
+    path: Limits.Total
+  - expected: 75
+    op: ==
+    path: Limits.MessagesPerSecond
+  - expected: 2000
+    op: ==
+    path: Limits.MaximumDuration
+  - expected: 43
+    op: ==
+    path: Limits.Daily
+  - expected: arn:aws:mobiletargeting:us-east-1:985173205561:apps/d055d2968e934363b683d02366875914
+    op: eq
+    path: CampaignHook.LambdaFunctionName
+  - expected: some URL
+    op: eq
+    path: CampaignHook.WebUrl
+  - expected: DELIVERY
+    op: eq
+    path: CampaignHook.Mode
+

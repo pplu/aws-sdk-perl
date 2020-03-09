@@ -237,7 +237,6 @@ package Paws::Net::XMLResponse;
         my $value = $result->{ $att };
         $value = $result->{ $key } if (not defined $value and $key ne $att);
         my $value_ref = ref($value);
-
         if ($value_ref eq 'HASH') {
           if (exists $value->{ member }) {
             $value = $value->{ member };

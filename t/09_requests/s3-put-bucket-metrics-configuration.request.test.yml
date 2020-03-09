@@ -1,0 +1,66 @@
+---
+call: PutBucketMetricsConfiguration 
+service: S3
+tests:
+  - expected: <MetricsConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Filter><And><Prefix>documents</Prefix><Tag><Key>priority</Key><Value>high</Value></Tag><Tag><Key>class</Key><Value>blue</Value></Tag></And><Prefix>MyPrefix</Prefix><Tag><Key>priority</Key><Value>high</Value></Tag></Filter><Id>ImportantBlueDocuments</Id></MetricsConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: ImportantBlueDocuments
+    op: eq
+    path: parameters
+    key: id
+  - expected: priority 
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Filter.Tag.Key
+  - expected: class
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Filter.And.Tag.2.Key
+  - expected: priority 
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Filter.And.Tag.1.Key
+  - expected: ImportantBlueDocuments 
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Id
+  - expected: high
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Filter.And.Tag.1.Value
+  - expected: MyPrefix
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Filter.Prefix
+  - expected: documents
+    op: eq
+    path: parameters
+    key: MetricsConfiguration.Filter.And.Prefix
+  - key: MetricsConfiguration.Filter.And.Tag.2.Value
+    op: eq
+    path: parameters
+    expected: blue
+  - key: MetricsConfiguration.Filter.Tag.Value
+    op: eq
+    path: parameters
+    expected: high
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: id=ImportantBlueDocuments
+    path: url
+  - expected: metrics
+    path: url
+  - expected: metrics
+    path: uri
+  - expected: id=ImportantBlueDocuments
+    path: uri   
+  - expected: /oneoffpaws?
+    path: uri

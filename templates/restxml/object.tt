@@ -1,0 +1,10 @@
+[%- -%]
+package [% inner_class %];
+  use Moose;
+[% INCLUDE shape_attributes.tt source="object" -%]
+
+  use MooseX::ClassAttribute;
+  [% IF shape.xmlNamespace -%]class_has _xml_namespace => (isa => 'Str', is => 'ro', default => sub { { uri => '[% shape.xmlNamespace.uri %]', prefix => '[% shape.xmlNamespace.prefix %]' }; });[%- END %]  
+1;
+
+[% iclass=shape; INCLUDE 'innerclass_documentation.tt' %]

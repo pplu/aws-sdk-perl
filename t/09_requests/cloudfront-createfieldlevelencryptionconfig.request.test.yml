@@ -1,0 +1,79 @@
+---
+call: CreateFieldLevelEncryptionConfig
+service: CloudFront
+tests:
+  - expected: "<FieldLevelEncryptionConfig xmlns=\"http://cloudfront.amazonaws.com/doc/2019-03-26/\"><CallerReference>01-01-2020:00001</CallerReference><Comment>No Gerry you can't come!</Comment><ContentTypeProfileConfig><ContentTypeProfiles><Items><ContentTypeProfile><ContentType>application/x-www-form-urlencoded</ContentType><Format>URLEncoded</Format><ProfileId>P14TNUMMKLEPXX</ProfileId></ContentTypeProfile></Items><Quantity>1</Quantity></ContentTypeProfiles><ForwardWhenContentTypeIsUnknown>1</ForwardWhenContentTypeIsUnknown></ContentTypeProfileConfig><QueryArgProfileConfig><ForwardWhenQueryArgProfileIsUnknown>1</ForwardWhenQueryArgProfileIsUnknown><QueryArgProfiles><Items><QueryArgProfile><ProfileId>P14TNUMMKLEPXX</ProfileId><QueryArg>no_conig</QueryArg></QueryArgProfile></Items><Quantity>1</Quantity></QueryArgProfiles></QueryArgProfileConfig></FieldLevelEncryptionConfig>"
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: 4FeeLheVb6tu4LvD+IVT6w==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: d573c6f7e9bd993c385d68abee956ac370af722df295bf5e94d3fbf62290caef
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: 01-01-2020:00001
+    key: FieldLevelEncryptionConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: No Gerry you can't come!
+    key: FieldLevelEncryptionConfig.Comment
+    op: eq
+    path: parameters
+  - expected: application/x-www-form-urlencoded
+    key: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.ContentTypeProfile.member.1.ContentType
+    op: eq
+    path: parameters
+  - expected: URLEncoded
+    key: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.ContentTypeProfile.member.1.Format
+    op: eq
+    path: parameters
+  - expected: P14TNUMMKLEPXX
+    key: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.ContentTypeProfile.member.1.ProfileId
+    op: eq
+    path: parameters
+  - expected: 1
+    key: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Quantity
+    op: eq
+    path: parameters
+  - expected: 1
+    key: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ForwardWhenContentTypeIsUnknown
+    op: eq
+    path: parameters
+  - expected: 1
+    key: FieldLevelEncryptionConfig.QueryArgProfileConfig.ForwardWhenQueryArgProfileIsUnknown
+    op: eq
+    path: parameters
+  - expected: P14TNUMMKLEPXX
+    key: FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.QueryArgProfile.member.1.ProfileId
+    op: eq
+    path: parameters
+  - expected: no_conig
+    key: FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.QueryArgProfile.member.1.QueryArg
+    op: eq
+    path: parameters
+  - expected: 1
+    key: FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Quantity
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/field-level-encryption
+    op: eq
+    path: url
+  - expected: /2019-03-26/field-level-encryption
+    op: eq
+    path: url
+  - expected: /2019-03-26/field-level-encryption
+    op: eq
+    path: uri

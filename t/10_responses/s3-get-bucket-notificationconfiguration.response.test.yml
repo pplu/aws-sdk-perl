@@ -1,0 +1,28 @@
+---
+call: GetBucketNotificationConfiguration
+service: S3
+tests:
+  - expected: s3:ObjectCreated:Put
+    op: eq
+    path: QueueConfigurations.0.Events.0
+  - expected: s3:ObjectCreated:Post
+    op: eq
+    path: QueueConfigurations.0.Events.1
+  - expected: s3:ObjectCreated:Copy
+    op: eq
+    path: QueueConfigurations.0.Events.2
+  - expected: Suffix
+    op: eq
+    path: QueueConfigurations.0.Filter.Key.FilterRules.0.Name
+  - expected: .jpg
+    op: eq
+    path: QueueConfigurations.0.Filter.Key.FilterRules.0.Value
+  - expected: EventOneoffPaws
+    op: eq
+    path: QueueConfigurations.0.Id
+  - expected: arn:aws:sqs:us-east-1:985173205561:oneoffpaws
+    op: eq
+    path: QueueConfigurations.0.QueueArn
+  - expected: 6B2C62638C5862C3
+    op: eq
+    path: _request_id

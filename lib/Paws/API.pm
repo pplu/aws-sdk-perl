@@ -3,6 +3,7 @@ package Paws::API::Attribute::Trait::NameInRequest;
   use Moose::Util;
   Moose::Util::meta_attribute_alias('NameInRequest');
   has request_name => (is => 'ro', isa => 'Str');
+  has wrap_name => (is => 'ro', isa => 'Str');
 
 package Paws::API::Attribute::Trait::ParamInHeader;
   use Moose::Role;
@@ -39,4 +40,17 @@ package Paws::API::Attribute::Trait::AutoInHeader;
   Moose::Util::meta_attribute_alias('AutoInHeader');
   has auto => (is => 'ro', isa => 'Str');
   has header_name => (is => 'ro', isa => 'Str');
+
+package Paws::API::Attribute::Trait::ListFlattened;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('ListFlattened');
+
+package Paws::API::Attribute::Trait::IsXMLAttribute;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('IsXMLAttribute');
+  has attribute_name => (is => 'ro', isa => 'Str');
+
 1;
+

@@ -1,0 +1,7 @@
+---
+call: PutBucketWebsite
+service: S3
+tests:
+  - expected: CB808010C5EF3452
+    op: eq
+    path: _request_id

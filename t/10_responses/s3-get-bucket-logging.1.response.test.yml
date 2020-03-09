@@ -1,0 +1,23 @@
+---
+call: GetBucketLogging
+service: S3
+tests:
+  - expected: mybucketlogs
+    op: eq
+    path: LoggingEnabled.TargetBucket
+  - expected: user@company.com
+    op: eq
+    path: LoggingEnabled.TargetGrants.0.Grantee.EmailAddress
+  - expected: READ
+    op: eq
+    path: LoggingEnabled.TargetGrants.0.Permission
+  - expected: mybucket-access_log
+    op: eq
+    path: LoggingEnabled.TargetPrefix
+  - expected: user@company.com
+    op: eq
+    path: LoggingEnabled.TargetGrants.1.Grantee.EmailAddress
+  - expected: READ
+    op: eq
+    path: LoggingEnabled.TargetGrants.1.Permission
+

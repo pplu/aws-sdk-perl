@@ -11,6 +11,6 @@ tests:
   - expected: READ
     op: eq
     path: LoggingEnabled.TargetGrants.0.Permission
-  - expected: mybucket-access_log-/
+  - expected: mybucket-access_log
     op: eq
     path: LoggingEnabled.TargetPrefix

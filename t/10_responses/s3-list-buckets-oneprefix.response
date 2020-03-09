@@ -1,0 +1,16 @@
+---
+content: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Name>fedora-completed-test</Name>
+    <Prefix>41/</Prefix>
+    <KeyCount>1</KeyCount>
+    <MaxKeys>1000</MaxKeys>
+    <Delimiter>/</Delimiter>
+    <IsTruncated>false</IsTruncated>
+    <CommonPrefixes>
+      <Prefix>41/000/</Prefix>
+    </CommonPrefixes>
+  </ListBucketResult>
+headers: []
+status: 200

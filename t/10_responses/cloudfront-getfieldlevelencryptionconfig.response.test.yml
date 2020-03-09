@@ -1,0 +1,43 @@
+---
+call: GetFieldLevelEncryptionConfig
+service: CloudFront
+tests:
+  - expected: E3MYZU38G7JCEI
+    op: eq
+    path: ETag
+  - expected: 01-01-2020:00001
+    op: eq
+    path: FieldLevelEncryptionConfig.CallerReference
+  - expected: No Gerry you can't come!
+    op: eq
+    path: FieldLevelEncryptionConfig.Comment
+  - expected: application/x-www-form-urlencoded
+    op: eq
+    path: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ContentType
+  - expected: URLEncoded
+    op: eq
+    path: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.Format
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ProfileId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Quantity
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionConfig.ContentTypeProfileConfig.ForwardWhenContentTypeIsUnknown
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionConfig.QueryArgProfileConfig.ForwardWhenQueryArgProfileIsUnknown
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Items.0.ProfileId
+  - expected: no_conig
+    op: eq
+    path: FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Items.0.QueryArg
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Quantity
+  - expected: 8ef1c638-e62a-48df-a818-109453bd2b79
+    op: eq
+    path: _request_id

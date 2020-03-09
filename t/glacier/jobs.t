@@ -17,9 +17,9 @@ use Paws::Net::MockCaller;
 my $paws = Paws->new(config => {
   caller => Paws::Net::MockCaller->new(
     mock_dir => 't/glacier/jobs',
-    mock_mode => 'RECORD',
+    mock_mode => 'REPLAY',
   ),
-#  credentials => 'Test::CustomCredentials'
+  credentials => 'Test::CustomCredentials'
 });
 
 my $glacier = $paws->service('Glacier', region => 'us-west-2');

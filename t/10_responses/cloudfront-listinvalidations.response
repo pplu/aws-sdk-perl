@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <InvalidationList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Marker></Marker><MaxItems>2</MaxItems><IsTruncated>false</IsTruncated><Quantity>1</Quantity><Items><InvalidationSummary><Id>I2IH0KUHCUPI0W</Id><CreateTime>2020-01-09T22:39:50.002Z</CreateTime><Status>Completed</Status></InvalidationSummary></Items></InvalidationList>
+headers:
+  client-date: 'Thu, 09 Jan 2020 22:41:11 GMT'
+  client-peer: 54.239.29.51:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 364
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 22:41:11 GMT'
+  x-amzn-requestid: 45ffa23a-00d4-4d7f-a642-22d3a5174318
+status: 200

@@ -1,0 +1,5 @@
+---
+content: '<ListBucketAnalyticsConfigurationsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><IsTruncated>false</IsTruncated></ListBucketAnalyticsConfigurationsResult>'
+headers:
+   x-amz-request-id: E671BFABB8521E40
+status: 200

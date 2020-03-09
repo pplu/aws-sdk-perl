@@ -18,14 +18,13 @@ package Paws::Net::RestXmlCaller;
 
 
   sub array_flatten_string {
-    my $self = shift;
-    return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
+    my ($self, $isflat) = @_;
+    return ($isflat)?'%s.%d':'%s.member.%d';
   }
 
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_querycaller_params {
     my ($self, $params) = @_;
-
 
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
@@ -33,7 +32,11 @@ package Paws::Net::RestXmlCaller;
       # e.g. S3 metadata objects, which are passed in the header
       next if $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInHeaders');
 
-      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
+      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::NameInRequest')
+          ? $params->meta->get_attribute($att)->wrap_name || $params->meta->get_attribute($att)->request_name
+          : $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')
+            ? $params->meta->get_attribute($att)->query_name
+            : $att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
 
@@ -43,14 +46,14 @@ package Paws::Net::RestXmlCaller;
           if (Paws->is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              $p{ sprintf($self->array_flatten_string, $key, $i) } = $value;
+              $p{ sprintf($self->array_flatten_string($params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ListFlattened')), $key, $i) } = $value;
               $i++
             }
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               my %complex_value = $self->_to_querycaller_params($value);
-              map { $p{ sprintf($self->array_flatten_string . ".%s", $key, $i, $_) } = $complex_value{$_} } keys %complex_value;
+              map { $p{ sprintf($self->array_flatten_string($params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ListFlattened')) . ".%s", $key, $i, $_) } = $complex_value{$_} } keys %complex_value;
               $i++
             }
           }
@@ -155,26 +158,52 @@ package Paws::Net::RestXmlCaller;
     my ($self, $attribute, $value) = @_;
     my $xml;
     my $att_name = $attribute->name;
-    my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
+    my $location = $attribute->does('NameInRequest') && $attribute->request_name ? $attribute->request_name : $att_name;
+    if ($attribute->does('Paws::API::Attribute::Trait::ListFlattened')) {
+      $location = $attribute->does('NameInRequest') && $attribute->wrap_name ? $attribute->wrap_name : $att_name;
+    }
+
+    my $wrap_name = $attribute->does('NameInRequest') && $attribute->wrap_name ? $attribute->wrap_name : $att_name;
+    my ($ele_name, $ele_value, $ele_attributes);
     if (Moose::Util::find_meta($attribute->type_constraint->name))
     {
-        $xml = sprintf '<%s>%s</%s>', $location, $self->_to_xml($value), $location;
+      $ele_name = $location;
+      ($ele_attributes, $ele_value) = $self->_to_xml($value);
     }
     elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]')
     {
-      my $req_name = $attribute->request_name;
-      $xml = "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $req_name, $_, $req_name } @{ $value } ) . "</${att_name}>";
+      my $req_name = $attribute->wrap_name || $attribute->request_name;
+      $ele_value = join '', map { sprintf '<%s>%s</%s>', $req_name, $_, $req_name } @{ $value };
+
+      if( !$attribute->does('Paws::API::Attribute::Trait::ListFlattened') ) {
+        $ele_name = $att_name;
+        $ele_attributes = '';
+      } else {
+          $xml = $ele_value;
+      }
     }
     elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/)
     {                        #assume it's an array of Paws API objects
-      $xml =  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $value } );
-      if( !$self->flattened_arrays ) {
-        $xml = sprintf( '<%s>%s</%s>', $att_name, $xml, $att_name );
+        $xml =  ( join '',
+                  map { sprintf '<%s%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $value }
+            );
+      if( !$attribute->does('Paws::API::Attribute::Trait::ListFlattened') ) {
+        $ele_name = $wrap_name;
+        $ele_value = $xml;
+        $ele_attributes = '';
       }
     }
     else
     {
-        $xml =  sprintf '<%s>%s</%s>', $location, $value, $location;
+      $ele_name = $location;
+      $ele_value = $value;
+      $ele_attributes = '';
+    }
+    if($ele_name) {
+        my $namespace = blessed($value) && $value->can('_xml_namespace')
+            ? " xmlns:" . $value->_xml_namespace->{prefix} . '="' . $value->_xml_namespace->{uri} . '"'
+        : '';
+      $xml = sprintf '<%s%s%s>%s</%s>', $ele_name, $namespace, $ele_attributes, $ele_value, $ele_name;
     }
     return $xml;
   }
@@ -183,11 +212,16 @@ package Paws::Net::RestXmlCaller;
     my ($self, $value) = @_;
 
     my $xml = '';
+    my $xml_attrs = '';
     foreach my $attribute (sort { $a->name cmp $b->name } $value->meta->get_all_attributes) {
       next if (not $attribute->has_value($value));
-      $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($value));
+      if($attribute->does('Paws::API::Attribute::Trait::IsXMLAttribute')) {
+        $xml_attrs .= sprintf('%s="%s"', $attribute->attribute_name, $attribute->get_value($value));
+      } else {
+         $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($value));
+      }
     }
-    return $xml;
+    return ($xml_attrs ? " $xml_attrs" : '', $xml);
   }
 
   sub _to_xml_body {
@@ -201,15 +235,19 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
 #          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
-         ) {
-        $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($call));
+          ) {
+          if ($attribute->does('Paws::API::Attribute::Trait::ParamInBody') and not $attribute->type_constraint =~/::/) {
+            $xml .= $attribute->get_value($call);
+          } else {
+            $xml .= $self->_attribute_to_xml($attribute, $attribute->get_value($call));
+          }
       }
     }
     # Extra level of top-level wrapping, if set on the call object
     if ($call->can('_top_level_element')) {
       $xml = sprintf('<%s xmlns="%s">%s</%s>',
                      $call->_top_level_element,
-                     $call->_top_level_namespace,
+                     $call->_xml_namespace->{'uri'},
                      $xml,
                      $call->_top_level_element
                     );
@@ -232,20 +270,27 @@ package Paws::Net::RestXmlCaller;
 
     my $uri = $self->_call_uri($call); #in RestXmlCaller
 
-    my $qparams = { $uri->query_form };
+    ## Work around query_param issue in URI
+    ## https://github.com/libwww-perl/URI/issues/34
+    my $uri_copy = $uri->clone;
+    ## $qparams = $uri->query_params;
+    my $qparams = {};
     foreach my $attribute ($call->meta->get_all_attributes) {
       my $att_name = $attribute->name;
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
         $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
       }
     }
-    $uri->query_form(%$qparams);
+    
+    $uri_copy->query_form(%$qparams);
+    $uri->query(($uri->query ? $uri->query . '&' : '' ) . ($uri_copy->query || ''));
 
     $request->uri($uri->as_string);
 
     my $url = $self->_api_endpoint . $uri; #in Paws::API::EndPointResolver
 
     #TODO: I'm not sure if any of the REST style APIs want things as query parameters
+    # Useful for testing purposes tho (see 09_requests.t)
     $request->parameters({ $self->_to_querycaller_params($call) });
 
     $request->url($url);

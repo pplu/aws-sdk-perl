@@ -1,0 +1,238 @@
+---
+call: CreateDistributionWithTags
+service: CloudFront
+tests:
+  - expected: '<DistributionConfigWithTags xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><DistributionConfig><Aliases><Quantity>0</Quantity></Aliases><CacheBehaviors><Quantity>0</Quantity></CacheBehaviors><CallerReference>abc-example</CallerReference><Comment></Comment><CustomErrorResponses><Quantity>0</Quantity></CustomErrorResponses><DefaultCacheBehavior><AllowedMethods><CachedMethods><Items><Method>HEAD</Method><Method>GET</Method></Items><Quantity>2</Quantity></CachedMethods><Items><Method>HEAD</Method><Method>GET</Method></Items><Quantity>2</Quantity></AllowedMethods><Compress>0</Compress><DefaultTTL>86400</DefaultTTL><FieldLevelEncryptionId></FieldLevelEncryptionId><ForwardedValues><Cookies><Forward>none</Forward></Cookies><Headers><Quantity>0</Quantity></Headers><QueryString>0</QueryString><QueryStringCacheKeys><Quantity>0</Quantity></QueryStringCacheKeys></ForwardedValues><LambdaFunctionAssociations><Quantity>0</Quantity></LambdaFunctionAssociations><MaxTTL>31536000</MaxTTL><MinTTL>0</MinTTL><SmoothStreaming>0</SmoothStreaming><TargetOriginId>pawsexamplebucket.s3.amazonaws.com-abc-example</TargetOriginId><TrustedSigners><Enabled>0</Enabled><Quantity>0</Quantity></TrustedSigners><ViewerProtocolPolicy>allow-all</ViewerProtocolPolicy></DefaultCacheBehavior><DefaultRootObject>index2.html</DefaultRootObject><Enabled>0</Enabled><HttpVersion>http2</HttpVersion><IsIPV6Enabled>1</IsIPV6Enabled><Logging><Bucket></Bucket><Enabled>0</Enabled><IncludeCookies>0</IncludeCookies><Prefix></Prefix></Logging><OriginGroups><Quantity>0</Quantity></OriginGroups><Origins><Items><Origin><CustomHeaders><Quantity>0</Quantity></CustomHeaders><DomainName>pawsexamplebucket.s3.amazonaws.com</DomainName><Id>pawsexamplebucket.s3.amazonaws.com-abc-example</Id><OriginPath></OriginPath><S3OriginConfig><OriginAccessIdentity></OriginAccessIdentity></S3OriginConfig></Origin></Items><Quantity>1</Quantity></Origins><PriceClass>PriceClass_All</PriceClass><Restrictions><GeoRestriction><Quantity>0</Quantity><RestrictionType>none</RestrictionType></GeoRestriction></Restrictions><ViewerCertificate><CertificateSource>cloudfront</CertificateSource><CloudFrontDefaultCertificate>1</CloudFrontDefaultCertificate><MinimumProtocolVersion>TLSv1</MinimumProtocolVersion></ViewerCertificate><WebACLId></WebACLId></DistributionConfig><Tags><Items><Tag><Key>Key 1</Key><Value>Value 1</Value></Tag></Items></Tags></DistributionConfigWithTags>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: P69rF+Qq6hJHYIDZBLbTtw== 
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: ca3ce2c8b185fa82f3921699de5eacf291f7b187643739aa9850391849a06540 
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.Aliases.Quantity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.CacheBehaviors.Quantity
+    op: eq
+    path: parameters
+  - expected: abc-example
+    key: DistributionConfigWithTags.DistributionConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.Comment
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.CustomErrorResponses.Quantity
+    op: eq
+    path: parameters
+  - expected: HEAD
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Method.member.1
+    op: eq
+    path: parameters
+  - expected: GET
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Method.member.2
+    op: eq
+    path: parameters
+  - expected: 2
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Quantity
+    op: eq
+    path: parameters
+  - expected: HEAD
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.AllowedMethods.Method.member.1
+    op: eq
+    path: parameters
+  - expected: GET
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.AllowedMethods.Method.member.2
+    op: eq
+    path: parameters
+  - expected: 2
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.AllowedMethods.Quantity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.Compress
+    op: eq
+    path: parameters
+  - expected: 86400
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.DefaultTTL
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.FieldLevelEncryptionId
+    op: eq
+    path: parameters
+  - expected: none
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.ForwardedValues.Cookies.Forward
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.ForwardedValues.Headers.Quantity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.ForwardedValues.QueryString
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.ForwardedValues.QueryStringCacheKeys.Quantity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations.Quantity
+    op: eq
+    path: parameters
+  - expected: 31536000
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.MaxTTL
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.MinTTL
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.SmoothStreaming
+    op: eq
+    path: parameters
+  - expected: pawsexamplebucket.s3.amazonaws.com-abc-example
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.TargetOriginId
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.TrustedSigners.Enabled
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.TrustedSigners.Quantity
+    op: eq
+    path: parameters
+  - expected: allow-all
+    key: DistributionConfigWithTags.DistributionConfig.DefaultCacheBehavior.ViewerProtocolPolicy
+    op: eq
+    path: parameters
+  - expected: index2.html
+    key: DistributionConfigWithTags.DistributionConfig.DefaultRootObject
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.Enabled
+    op: eq
+    path: parameters
+  - expected: http2
+    key: DistributionConfigWithTags.DistributionConfig.HttpVersion
+    op: eq
+    path: parameters
+  - expected: 1
+    key: DistributionConfigWithTags.DistributionConfig.IsIPV6Enabled
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.Logging.Bucket
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.Logging.Enabled
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.Logging.IncludeCookies
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.Logging.Prefix
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.OriginGroups.Quantity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.Origins.Origin.member.1.CustomHeaders.Quantity
+    op: eq
+    path: parameters
+  - expected: pawsexamplebucket.s3.amazonaws.com
+    key: DistributionConfigWithTags.DistributionConfig.Origins.Origin.member.1.DomainName
+    op: eq
+    path: parameters
+  - expected: pawsexamplebucket.s3.amazonaws.com-abc-example
+    key: DistributionConfigWithTags.DistributionConfig.Origins.Origin.member.1.Id
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.Origins.Origin.member.1.OriginPath
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.Origins.Origin.member.1.S3OriginConfig.OriginAccessIdentity
+    op: eq
+    path: parameters
+  - expected: 1
+    key: DistributionConfigWithTags.DistributionConfig.Origins.Quantity
+    op: eq
+    path: parameters
+  - expected: PriceClass_All
+    key: DistributionConfigWithTags.DistributionConfig.PriceClass
+    op: eq
+    path: parameters
+  - expected: 0
+    key: DistributionConfigWithTags.DistributionConfig.Restrictions.GeoRestriction.Quantity
+    op: eq
+    path: parameters
+  - expected: none
+    key: DistributionConfigWithTags.DistributionConfig.Restrictions.GeoRestriction.RestrictionType
+    op: eq
+    path: parameters
+  - expected: cloudfront
+    key: DistributionConfigWithTags.DistributionConfig.ViewerCertificate.CertificateSource
+    op: eq
+    path: parameters
+  - expected: 1
+    key: DistributionConfigWithTags.DistributionConfig.ViewerCertificate.CloudFrontDefaultCertificate
+    op: eq
+    path: parameters
+  - expected: TLSv1
+    key: DistributionConfigWithTags.DistributionConfig.ViewerCertificate.MinimumProtocolVersion
+    op: eq
+    path: parameters
+  - expected: ''
+    key: DistributionConfigWithTags.DistributionConfig.WebACLId
+    op: eq
+    path: parameters
+  - expected: Key 1
+    key: DistributionConfigWithTags.Tags.Tag.member.1.Key
+    op: eq
+    path: parameters
+  - expected: Value 1
+    key: DistributionConfigWithTags.Tags.Tag.member.1.Value
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/distribution
+    op: eq
+    path: url
+  - expected: /2019-03-26/distribution
+    op: eq
+    path: url
+  - expected: /2019-03-26/distribution
+    op: eq
+    path: uri
+  - expected: WithTags
+    op: eq
+    path: uri

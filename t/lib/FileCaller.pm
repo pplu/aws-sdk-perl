@@ -33,14 +33,20 @@ package FileCaller;
 
   has response_file => ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
   has debug => ( is => 'rw', default => 0 );
+  has request_only => ( is => 'rw', default => 0 );
 
   sub do_call {
     my ($self, $service, $call_object) = @_;
 
     my $response = $self->_file_response;
 
+    if ( $self->request_only ) {
+      return $service->prepare_request_for_call($call_object);
+    }
+
     if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
 
+    $DB::single=1;
     my $res = Paws::Net::APIResponse->new(
       status  => $response->{status},
       content => $response->{content},

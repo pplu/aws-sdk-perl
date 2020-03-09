@@ -1,0 +1,8 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Tagging xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><TagSet><Tag><Key>AKey</Key><Value>a value</Value></Tag><Tag><Key>bKey</Key><Value>b value</Value></Tag></TagSet></Tagging>
+headers:
+  x-amz-request-id: B1B5552784608B76
+  x-amz-version-id: B8fS4HKDLzvoZVCxg6imKZTnzWF.jSer
+status: 200

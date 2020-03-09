@@ -1,0 +1,7 @@
+---
+call: PutBucketCors
+service: S3
+Tests:
+  - expected: ZZ3379DA02E1B7DD4
+    op: eq
+    path: _request_id

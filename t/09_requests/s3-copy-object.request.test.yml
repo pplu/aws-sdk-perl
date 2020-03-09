@@ -1,0 +1,93 @@
+---
+call: CopyObject 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: twooffpaws
+    op: eq
+    key: CopySource
+    path: parameters
+  - key: x-amz-server-side-encryption-context
+    path: headers
+    op: eq
+    expected: MySSEKMSEncryptionContext
+  - key: content-encoding
+    path: headers
+    op: eq
+    expected: MyContentEncoding
+  - key: x-amz-grant-write-acp
+    path: headers
+    op: eq
+    expected: MyGrantWriteACP
+  - key: x-amz-server-side-encryption-aws-kms-key-id
+    path: headers
+    op: eq
+    expected: MySSEKMSKeyId
+  - key: x-amz-storage-class
+    path: headers
+    op: eq
+    expected: STANDARD
+  - key: x-amz-grant-full-control
+    path: headers
+    op: eq
+    expected: MyGrantFullControl
+  - key: x-amz-grant-read
+    path: headers
+    op: eq
+    expected: MyGrantRead
+  - key: x-amz-server-side-encryption-customer-key-md5
+    path: headers
+    op: eq
+    expected: MySSECustomerKeyMD5
+  - key: x-amz-acl 
+    path: headers
+    op: eq
+    expected: private
+  - key: content-type 
+    path: headers
+    op: eq
+    expected: MyContentType
+  - key: x-amz-server-side-encryption-customer-algorithm
+    path: headers
+    op: eq
+    expected: MySSECustomerAlgorithm
+  - key: x-amz-request-payer 
+    path: headers
+    op: eq
+    expected: requester
+  - key: content-language 
+    path: headers
+    op: eq
+    expected: MyContentLanguage
+  - key: expires 
+    path: headers
+    op: eq
+    expected: 1970-01-01T01:00:00
+  - key: x-amz-object-lock-mode
+    path: headers
+    op: eq
+    expected: GOVERNANCE
+  - key: x-amz-grant-read-acp
+    path: headers
+    op: eq
+    expected: MyGrantReadACP
+  - key: x-amz-server-side-encryption
+    path: headers
+    op: eq
+    expected: AES256
+  - key: x-amz-meta-mymetadatakey
+    path: headers
+    op: eq
+    expected: MyMetadataValue
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/Some%20Key
+    ep: eq
+    path: url
+  - expected: /oneoffpaws/Some%20Key 
+    ep: eq
+    path: uri

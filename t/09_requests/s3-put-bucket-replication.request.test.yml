@@ -1,0 +1,50 @@
+---
+call: PutBucketReplication 
+service: S3
+tests:
+  - expected: <ReplicationConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Role>arn:aws:iam::1234567890:role/Idera</Role><Rule><DeleteMarkerReplication><Status>Disabled</Status></DeleteMarkerReplication><Destination><Bucket>arn:aws:s3:oneoffpaws</Bucket><StorageClass>STANDARD</StorageClass></Destination><Filter><Prefix>documents</Prefix></Filter><ID>rule1</ID><Priority>1</Priority><Status>Disabled</Status></Rule><Rule><DeleteMarkerReplication><Status>Disabled</Status></DeleteMarkerReplication><Destination><Bucket>arn:aws:s3:oneoffpaws</Bucket><StorageClass>STANDARD</StorageClass></Destination><Filter><Prefix>documents</Prefix></Filter><ID>rule2</ID><Priority>2</Priority><Status>Disabled</Status></Rule></ReplicationConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: STANDARD 
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.2.Destination.StorageClass
+  - expected: arn:aws:s3:oneoffpaws
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.2.Destination.Bucket
+  - expected: 2
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.2.Priority
+  - expected: documents
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.1.Filter.Prefix 
+  - expected: documents
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.2.Filter.Prefix
+  - expected: rule1
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.1.ID
+  - expected: arn:aws:s3:oneoffpaws
+    op: eq
+    path: parameters
+    key: ReplicationConfiguration.Rule.1.Destination.Bucket
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: replication
+    path: url
+  - expected: replication
+    path: uri   
+  - expected: /oneoffpaws?
+    path: uri

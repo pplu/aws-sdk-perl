@@ -1,0 +1,10 @@
+---
+call: PutObjectLockConfiguration
+service: S3
+tests:
+  - expected: mr poopy buthole
+    op: eq
+    path: RequestCharged
+  - expected: C3736C5ACACC71FC
+    op: eq
+    path: _request_id

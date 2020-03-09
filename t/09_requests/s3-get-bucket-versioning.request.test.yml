@@ -1,0 +1,19 @@
+---
+call: GetBucketVersioning 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: versioning 
+    path: uri
+  - expected: versioning 
+    path: uri
+  - expected: /oneoffpaws?
+    path: uri

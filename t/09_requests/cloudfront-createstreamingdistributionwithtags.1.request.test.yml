@@ -1,0 +1,78 @@
+---
+call: CreateStreamingDistributionWithTags
+service: CloudFront
+tests:
+  - expected: '<StreamingDistributionConfigWithTags xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><StreamingDistributionConfig><CallerReference>2020:010101</CallerReference><Comment>I squanch, your Squanch, Squance</Comment><Enabled>0</Enabled><PriceClass>PriceClass_100</PriceClass><S3Origin><DomainName>oneoffpaws.s3.amazonaws.com</DomainName><OriginAccessIdentity>origin-access-identity/cloudfront/E3D5Y5RWA05QO1</OriginAccessIdentity></S3Origin><TrustedSigners><Enabled>0</Enabled><Quantity>0</Quantity></TrustedSigners></StreamingDistributionConfig><Tags><Items><Tag><Key>MyTagKey1</Key><Value>MyTagValue1</Value></Tag></Items></Tags></StreamingDistributionConfigWithTags>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: amc/GbeQXpCIWmZqAlDwCA==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: 4df80348b64e91c5e366ce4e4f5c3888b135630cc4bbceea9fdb67ff9210a66d
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: 2020:010101
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: 'I squanch, your Squanch, Squance'
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.Comment
+    op: eq
+    path: parameters
+  - expected: 0
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.Enabled
+    op: eq
+    path: parameters
+  - expected: PriceClass_100
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.PriceClass
+    op: eq
+    path: parameters
+  - expected: oneoffpaws.s3.amazonaws.com
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.S3Origin.DomainName
+    op: eq
+    path: parameters
+  - expected: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.S3Origin.OriginAccessIdentity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.TrustedSigners.Enabled
+    op: eq
+    path: parameters
+  - expected: 0
+    key: StreamingDistributionConfigWithTags.StreamingDistributionConfig.TrustedSigners.Quantity
+    op: eq
+    path: parameters
+  - expected: MyTagKey1
+    key: StreamingDistributionConfigWithTags.Tags.Tag.member.1.Key
+    op: eq
+    path: parameters
+  - expected: MyTagValue1
+    key: StreamingDistributionConfigWithTags.Tags.Tag.member.1.Value
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/streaming-distribution
+    op: eq
+    path: url
+  - expected: /2019-03-26/streaming-distribution
+    op: eq
+    path: url
+  - expected: /2019-03-26/streaming-distribution
+    op: eq
+    path: uri
+  - expected: WithTags
+    op: eq
+    path: uri
