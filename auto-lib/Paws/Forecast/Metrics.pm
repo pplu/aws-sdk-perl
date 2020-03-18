@@ -2,6 +2,7 @@ package Paws::Forecast::Metrics;
   use Moose;
   has RMSE => (is => 'ro', isa => 'Num');
   has WeightedQuantileLosses => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::WeightedQuantileLoss]');
+
 1;
 
 ### main pod documentation begin ###

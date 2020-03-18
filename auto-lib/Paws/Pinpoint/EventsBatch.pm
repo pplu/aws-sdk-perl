@@ -2,6 +2,7 @@ package Paws::Pinpoint::EventsBatch;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Paws::Pinpoint::PublicEndpoint', required => 1);
   has Events => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEvent', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,7 +2,7 @@ package Paws::Greengrass::Function;
   use Moose;
   has FunctionArn => (is => 'ro', isa => 'Str');
   has FunctionConfiguration => (is => 'ro', isa => 'Paws::Greengrass::FunctionConfiguration');
-  has Id => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
 
 1;
 
@@ -49,9 +49,11 @@ Information about a Lambda function.
   The configuration of the Lambda function.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  The ID of the Lambda function.
+  A descriptive or arbitrary ID for the function. This value must be
+unique within the function definition version. Max length is 128
+characters with pattern ''[a-zA-Z0-9:_-]+''.
 
 
 

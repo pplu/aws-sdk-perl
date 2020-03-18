@@ -1,6 +1,7 @@
 package Paws::IoTEventsData::DetectorStateSummary;
   use Moose;
   has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

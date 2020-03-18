@@ -2,6 +2,7 @@ package Paws::S3::ReplicationTime;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Time => (is => 'ro', isa => 'Paws::S3::ReplicationTimeValue', required => 1);
+
 1;
 
 ### main pod documentation begin ###

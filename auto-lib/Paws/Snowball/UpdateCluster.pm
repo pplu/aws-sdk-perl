@@ -39,12 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # cluster changes to a different state, usually within 60 minutes of it being
    # created, this action is no longer available.
     my $UpdateClusterResult = $snowball->UpdateCluster(
-      {
-        'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000',
-        'Description' =>
-          'Updated the address to send this to image processing - RJ',
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b'
-      }
+      'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000',
+      'Description' =>
+        'Updated the address to send this to image processing - RJ'
     );
 
 
@@ -97,7 +95,7 @@ S3Resource objects or LambdaResource objects.
 
 The new role Amazon Resource Name (ARN) that you want to associate with
 this cluster. To create a role ARN, use the CreateRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 API action in AWS Identity and Access Management (IAM).
 
 

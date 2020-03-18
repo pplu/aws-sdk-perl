@@ -10,6 +10,7 @@ package Paws::ApiGateway::CreateStage;
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  has TracingEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'tracingEnabled');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   use MooseX::ClassAttribute;
@@ -44,38 +45,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheClusterEnabled => 1,            # OPTIONAL
       CacheClusterSize    => '0.5',        # OPTIONAL
       CanarySettings      => {
-        useStageCache          => 1,
-        stageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
-        percentTraffic         => 1,                                # OPTIONAL
-        deploymentId           => 'MyString',
+        DeploymentId           => 'MyString',
+        PercentTraffic         => 1,                                # OPTIONAL
+        StageVariableOverrides => { 'MyString' => 'MyString', },    # OPTIONAL
+        UseStageCache          => 1,
       },    # OPTIONAL
       Description          => 'MyString',                       # OPTIONAL
       DocumentationVersion => 'MyString',                       # OPTIONAL
       Tags                 => { 'MyString' => 'MyString', },    # OPTIONAL
+      TracingEnabled       => 1,                                # OPTIONAL
       Variables            => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
-    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
-    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
-    my $CanarySettings       = $Stage->CanarySettings;
     my $AccessLogSettings    = $Stage->AccessLogSettings;
-    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
-    my $Variables            = $Stage->Variables;
-    my $CreatedDate          = $Stage->CreatedDate;
-    my $StageName            = $Stage->StageName;
-    my $ClientCertificateId  = $Stage->ClientCertificateId;
-    my $MethodSettings       = $Stage->MethodSettings;
-    my $DocumentationVersion = $Stage->DocumentationVersion;
-    my $DeploymentId         = $Stage->DeploymentId;
+    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
     my $CacheClusterSize     = $Stage->CacheClusterSize;
-    my $Tags                 = $Stage->Tags;
+    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
+    my $CanarySettings       = $Stage->CanarySettings;
+    my $ClientCertificateId  = $Stage->ClientCertificateId;
+    my $CreatedDate          = $Stage->CreatedDate;
+    my $DeploymentId         = $Stage->DeploymentId;
     my $Description          = $Stage->Description;
+    my $DocumentationVersion = $Stage->DocumentationVersion;
+    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
+    my $MethodSettings       = $Stage->MethodSettings;
+    my $StageName            = $Stage->StageName;
+    my $Tags                 = $Stage->Tags;
+    my $TracingEnabled       = $Stage->TracingEnabled;
+    my $Variables            = $Stage->Variables;
+    my $WebAclArn            = $Stage->WebAclArn;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateStage>
 
 =head1 ATTRIBUTES
 
@@ -125,7 +129,9 @@ The version of the associated API documentation.
 
 =head2 B<REQUIRED> StageName => Str
 
-[Required] The name for the Stage resource.
+[Required] The name for the Stage resource. Stage names can only
+contain alphanumeric characters, hyphens, and underscores. Maximum
+length is 128 characters.
 
 
 
@@ -134,6 +140,12 @@ The version of the associated API documentation.
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with C<aws:>. The tag value can be up to 256 characters.
+
+
+
+=head2 TracingEnabled => Bool
+
+Specifies whether active tracing with X-ray is enabled for the Stage.
 
 
 

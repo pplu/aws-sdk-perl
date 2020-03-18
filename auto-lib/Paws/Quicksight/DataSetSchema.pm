@@ -1,6 +1,7 @@
 package Paws::Quicksight::DataSetSchema;
   use Moose;
   has ColumnSchemaList => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnSchema]');
+
 1;
 
 ### main pod documentation begin ###

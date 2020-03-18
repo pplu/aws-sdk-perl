@@ -2,6 +2,7 @@ package Paws::SecurityHub::DateRange;
   use Moose;
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

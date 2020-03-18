@@ -10,6 +10,7 @@ package Paws::AlexaForBusiness::NetworkProfile;
   has SecurityType => (is => 'ro', isa => 'Str');
   has Ssid => (is => 'ro', isa => 'Str');
   has TrustAnchors => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

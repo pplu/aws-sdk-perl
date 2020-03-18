@@ -2,6 +2,7 @@ package Paws::PinpointEmail::Body;
   use Moose;
   has Html => (is => 'ro', isa => 'Paws::PinpointEmail::Content');
   has Text => (is => 'ro', isa => 'Paws::PinpointEmail::Content');
+
 1;
 
 ### main pod documentation begin ###

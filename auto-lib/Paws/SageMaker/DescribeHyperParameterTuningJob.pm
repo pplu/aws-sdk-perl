@@ -26,41 +26,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
+    my $api.sagemaker = Paws->service('SageMaker');
     my $DescribeHyperParameterTuningJobResponse =
-      $sagemaker->DescribeHyperParameterTuningJob(
+      $api . sagemaker->DescribeHyperParameterTuningJob(
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
 
       );
 
     # Results:
-    my $CreationTime = $DescribeHyperParameterTuningJobResponse->CreationTime;
-    my $HyperParameterTuningJobName =
-      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobName;
-    my $ObjectiveStatusCounters =
-      $DescribeHyperParameterTuningJobResponse->ObjectiveStatusCounters;
     my $BestTrainingJob =
       $DescribeHyperParameterTuningJobResponse->BestTrainingJob;
-    my $TrainingJobDefinition =
-      $DescribeHyperParameterTuningJobResponse->TrainingJobDefinition;
-    my $HyperParameterTuningJobArn =
-      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobArn;
+    my $CreationTime  = $DescribeHyperParameterTuningJobResponse->CreationTime;
+    my $FailureReason = $DescribeHyperParameterTuningJobResponse->FailureReason;
     my $HyperParameterTuningEndTime =
       $DescribeHyperParameterTuningJobResponse->HyperParameterTuningEndTime;
-    my $FailureReason = $DescribeHyperParameterTuningJobResponse->FailureReason;
+    my $HyperParameterTuningJobArn =
+      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobArn;
     my $HyperParameterTuningJobConfig =
       $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobConfig;
-    my $LastModifiedTime =
-      $DescribeHyperParameterTuningJobResponse->LastModifiedTime;
-    my $TrainingJobStatusCounters =
-      $DescribeHyperParameterTuningJobResponse->TrainingJobStatusCounters;
+    my $HyperParameterTuningJobName =
+      $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobName;
     my $HyperParameterTuningJobStatus =
       $DescribeHyperParameterTuningJobResponse->HyperParameterTuningJobStatus;
+    my $LastModifiedTime =
+      $DescribeHyperParameterTuningJobResponse->LastModifiedTime;
+    my $ObjectiveStatusCounters =
+      $DescribeHyperParameterTuningJobResponse->ObjectiveStatusCounters;
+    my $OverallBestTrainingJob =
+      $DescribeHyperParameterTuningJobResponse->OverallBestTrainingJob;
+    my $TrainingJobDefinition =
+      $DescribeHyperParameterTuningJobResponse->TrainingJobDefinition;
+    my $TrainingJobDefinitions =
+      $DescribeHyperParameterTuningJobResponse->TrainingJobDefinitions;
+    my $TrainingJobStatusCounters =
+      $DescribeHyperParameterTuningJobResponse->TrainingJobStatusCounters;
+    my $WarmStartConfig =
+      $DescribeHyperParameterTuningJobResponse->WarmStartConfig;
 
  # Returns a L<Paws::SageMaker::DescribeHyperParameterTuningJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeHyperParameterTuningJob>
 
 =head1 ATTRIBUTES
 

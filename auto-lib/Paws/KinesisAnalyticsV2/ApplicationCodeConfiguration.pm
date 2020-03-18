@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::ApplicationCodeConfiguration;
   use Moose;
   has CodeContent => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CodeContent');
   has CodeContentType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

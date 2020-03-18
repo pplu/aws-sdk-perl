@@ -15,6 +15,7 @@ package Paws::ImageBuilder::ImagePipeline;
   has Schedule => (is => 'ro', isa => 'Paws::ImageBuilder::Schedule', request_name => 'schedule', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

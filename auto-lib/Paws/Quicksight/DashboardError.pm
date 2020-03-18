@@ -2,6 +2,7 @@ package Paws::Quicksight::DashboardError;
   use Moose;
   has Message => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

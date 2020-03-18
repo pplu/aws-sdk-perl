@@ -1,6 +1,7 @@
 package Paws::SageMakerA2IRuntime::HumanLoopOutputContent;
   use Moose;
   has OutputS3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

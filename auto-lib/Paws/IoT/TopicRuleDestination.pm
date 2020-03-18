@@ -4,6 +4,7 @@ package Paws::IoT::TopicRuleDestination;
   has HttpUrlProperties => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationProperties', request_name => 'httpUrlProperties', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

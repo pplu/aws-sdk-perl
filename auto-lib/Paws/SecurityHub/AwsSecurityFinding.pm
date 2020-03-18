@@ -30,6 +30,7 @@ package Paws::SecurityHub::AwsSecurityFinding;
   has UserDefinedFields => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
   has VerificationState => (is => 'ro', isa => 'Str');
   has WorkflowState => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

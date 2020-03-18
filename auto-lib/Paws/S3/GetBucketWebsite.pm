@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RedirectAllRequestsTo = $GetBucketWebsiteOutput->RedirectAllRequestsTo;
     my $ErrorDocument         = $GetBucketWebsiteOutput->ErrorDocument;
     my $IndexDocument         = $GetBucketWebsiteOutput->IndexDocument;
+    my $RedirectAllRequestsTo = $GetBucketWebsiteOutput->RedirectAllRequestsTo;
     my $RoutingRules          = $GetBucketWebsiteOutput->RoutingRules;
 
     # Returns a L<Paws::S3::GetBucketWebsiteOutput> object.
@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name for which to get the website configuration.
 
 
 

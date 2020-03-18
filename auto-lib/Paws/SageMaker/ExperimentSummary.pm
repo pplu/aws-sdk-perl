@@ -6,6 +6,7 @@ package Paws::SageMaker::ExperimentSummary;
   has ExperimentName => (is => 'ro', isa => 'Str');
   has ExperimentSource => (is => 'ro', isa => 'Paws::SageMaker::ExperimentSource');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

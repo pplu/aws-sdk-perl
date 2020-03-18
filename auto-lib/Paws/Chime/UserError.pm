@@ -3,6 +3,7 @@ package Paws::Chime::UserError;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

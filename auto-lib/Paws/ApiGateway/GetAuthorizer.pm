@@ -36,23 +36,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AuthType      = $Authorizer->AuthType;
-    my $Id            = $Authorizer->Id;
-    my $ProviderARNs  = $Authorizer->ProviderARNs;
-    my $AuthorizerUri = $Authorizer->AuthorizerUri;
-    my $IdentityValidationExpression =
-      $Authorizer->IdentityValidationExpression;
-    my $Type = $Authorizer->Type;
+    my $AuthType              = $Authorizer->AuthType;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
     my $AuthorizerResultTtlInSeconds =
       $Authorizer->AuthorizerResultTtlInSeconds;
-    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
-    my $IdentitySource        = $Authorizer->IdentitySource;
-    my $Name                  = $Authorizer->Name;
+    my $AuthorizerUri  = $Authorizer->AuthorizerUri;
+    my $Id             = $Authorizer->Id;
+    my $IdentitySource = $Authorizer->IdentitySource;
+    my $IdentityValidationExpression =
+      $Authorizer->IdentityValidationExpression;
+    my $Name         = $Authorizer->Name;
+    my $ProviderARNs = $Authorizer->ProviderARNs;
+    my $Type         = $Authorizer->Type;
 
     # Returns a L<Paws::ApiGateway::Authorizer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetAuthorizer>
 
 =head1 ATTRIBUTES
 

@@ -6,6 +6,7 @@ package Paws::Glue::Node;
   has TriggerDetails => (is => 'ro', isa => 'Paws::Glue::TriggerNodeDetails');
   has Type => (is => 'ro', isa => 'Str');
   has UniqueId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

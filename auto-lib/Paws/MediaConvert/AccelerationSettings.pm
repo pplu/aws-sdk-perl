@@ -1,6 +1,7 @@
 package Paws::MediaConvert::AccelerationSettings;
   use Moose;
   has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

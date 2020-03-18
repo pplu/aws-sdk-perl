@@ -38,56 +38,56 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LifecycleConfiguration => {
         Rules => [
           {
-            Status => 'Enabled',     # values: Enabled, Disabled
-            Prefix => 'MyPrefix',    # OPTIONAL
-            NoncurrentVersionTransitions => [
-              {
-                NoncurrentDays => 1,          # OPTIONAL
-                StorageClass   => 'GLACIER'
-                ,    # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
-              },
-              ...
-            ],       # OPTIONAL
-            ID                             => 'MyID',    # OPTIONAL
+            Status => 'Enabled',    # values: Enabled, Disabled
             AbortIncompleteMultipartUpload => {
-              DaysAfterInitiation => 1,                  # OPTIONAL
-            },    # OPTIONAL
-            NoncurrentVersionExpiration => {
-              NoncurrentDays => 1,    # OPTIONAL
-            },    # OPTIONAL
-            Filter => {
-              Tag => {
-                Key   => 'MyObjectKey',    # min: 1,
-                Value => 'MyValue',
-
-              },
-              Prefix => 'MyPrefix',        # OPTIONAL
-              And    => {
-                Prefix => 'MyPrefix',      # OPTIONAL
-                Tags   => [
-                  {
-                    Key   => 'MyObjectKey',    # min: 1,
-                    Value => 'MyValue',
-
-                  },
-                  ...
-                ],                             # OPTIONAL
-              },    # OPTIONAL
+              DaysAfterInitiation => 1,    # OPTIONAL
             },    # OPTIONAL
             Expiration => {
               Date                      => '1970-01-01T01:00:00',    # OPTIONAL
               Days                      => 1,                        # OPTIONAL
               ExpiredObjectDeleteMarker => 1,                        # OPTIONAL
             },    # OPTIONAL
+            Filter => {
+              And => {
+                Prefix => 'MyPrefix',    # OPTIONAL
+                Tags   => [
+                  {
+                    Key   => 'MyObjectKey',    # min: 1
+                    Value => 'MyValue',
+
+                  },
+                  ...
+                ],                             # OPTIONAL
+              },    # OPTIONAL
+              Prefix => 'MyPrefix',    # OPTIONAL
+              Tag    => {
+                Key   => 'MyObjectKey',    # min: 1
+                Value => 'MyValue',
+
+              },
+            },    # OPTIONAL
+            ID                          => 'MyID',    # OPTIONAL
+            NoncurrentVersionExpiration => {
+              NoncurrentDays => 1,                    # OPTIONAL
+            },    # OPTIONAL
+            NoncurrentVersionTransitions => [
+              {
+                NoncurrentDays => 1,          # OPTIONAL
+                StorageClass   => 'GLACIER'
+                , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
+              },
+              ...
+            ],    # OPTIONAL
+            Prefix      => 'MyPrefix',    # OPTIONAL
             Transitions => [
               {
                 Date         => '1970-01-01T01:00:00',    # OPTIONAL
+                Days         => 1,                        # OPTIONAL
                 StorageClass => 'GLACIER'
-                ,    # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
-                Days => 1,    # OPTIONAL
+                , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
               },
               ...
-            ],                # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
         ],
@@ -103,13 +103,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket for which to set the configuration.
 
 
 
 =head2 LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>
 
-
+Container for lifecycle rules. You can add as many as 1,000 rules.
 
 
 

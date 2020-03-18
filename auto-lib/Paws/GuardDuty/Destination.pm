@@ -3,6 +3,7 @@ package Paws::GuardDuty::Destination;
   has DestinationId => (is => 'ro', isa => 'Str', request_name => 'destinationId', traits => ['NameInRequest'], required => 1);
   has DestinationType => (is => 'ro', isa => 'Str', request_name => 'destinationType', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

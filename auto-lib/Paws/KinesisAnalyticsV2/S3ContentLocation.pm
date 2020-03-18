@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::S3ContentLocation;
   has BucketARN => (is => 'ro', isa => 'Str', required => 1);
   has FileKey => (is => 'ro', isa => 'Str', required => 1);
   has ObjectVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::LakeFormation::DataLakePrincipal;
   use Moose;
   has DataLakePrincipalIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

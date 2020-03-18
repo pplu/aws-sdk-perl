@@ -1,6 +1,7 @@
 package Paws::SageMaker::ProcessingResources;
   use Moose;
   has ClusterConfig => (is => 'ro', isa => 'Paws::SageMaker::ProcessingClusterConfig', required => 1);
+
 1;
 
 ### main pod documentation begin ###

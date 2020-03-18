@@ -4,6 +4,7 @@ package Paws::Robomaker::ProgressDetail;
   has EstimatedTimeRemainingSeconds => (is => 'ro', isa => 'Int', request_name => 'estimatedTimeRemainingSeconds', traits => ['NameInRequest']);
   has PercentDone => (is => 'ro', isa => 'Num', request_name => 'percentDone', traits => ['NameInRequest']);
   has TargetResource => (is => 'ro', isa => 'Str', request_name => 'targetResource', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

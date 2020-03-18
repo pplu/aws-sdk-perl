@@ -5,6 +5,7 @@ package Paws::NetworkManager::CustomerGatewayAssociation;
   has GlobalNetworkId => (is => 'ro', isa => 'Str');
   has LinkId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

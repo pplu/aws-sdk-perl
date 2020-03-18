@@ -2,6 +2,7 @@ package Paws::IoTThingsGraph::Thing;
   use Moose;
   has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

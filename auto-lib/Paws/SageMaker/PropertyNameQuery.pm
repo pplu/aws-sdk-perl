@@ -1,6 +1,7 @@
 package Paws::SageMaker::PropertyNameQuery;
   use Moose;
   has PropertyNameHint => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

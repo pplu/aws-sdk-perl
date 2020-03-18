@@ -4,6 +4,7 @@ package Paws::IoT::HttpAction;
   has ConfirmationUrl => (is => 'ro', isa => 'Str', request_name => 'confirmationUrl', traits => ['NameInRequest']);
   has Headers => (is => 'ro', isa => 'ArrayRef[Paws::IoT::HttpActionHeader]', request_name => 'headers', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

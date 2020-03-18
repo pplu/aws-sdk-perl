@@ -3,6 +3,7 @@ package Paws::SageMaker::AppSpecification;
   has ContainerArguments => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ContainerEntrypoint => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ImageUri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

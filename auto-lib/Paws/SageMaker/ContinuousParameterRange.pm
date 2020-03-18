@@ -3,6 +3,7 @@ package Paws::SageMaker::ContinuousParameterRange;
   has MaxValue => (is => 'ro', isa => 'Str', required => 1);
   has MinValue => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ScalingType => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::ContinuousParameterRange object:
 
-  $service_obj->Method(Att1 => { MaxValue => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { MaxValue => $value, ..., ScalingType => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,6 +56,46 @@ floating-point values between this value and C<MaxValue>for tuning.
 =head2 B<REQUIRED> Name => Str
 
   The name of the continuous hyperparameter to tune.
+
+
+=head2 ScalingType => Str
+
+  The scale that hyperparameter tuning uses to search the hyperparameter
+range. For information about choosing a hyperparameter scale, see
+Hyperparameter Scaling
+(https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
+One of the following values:
+
+=over
+
+=item Auto
+
+Amazon SageMaker hyperparameter tuning chooses the best scale for the
+hyperparameter.
+
+=item Linear
+
+Hyperparameter tuning searches the values in the hyperparameter range
+by using a linear scale.
+
+=item Logarithmic
+
+Hyperparameter tuning searches the values in the hyperparameter range
+by using a logarithmic scale.
+
+Logarithmic scaling works only for ranges that have only values greater
+than 0.
+
+=item ReverseLogarithmic
+
+Hyperparameter tuning searches the values in the hyperparameter range
+by using a reverse logarithmic scale.
+
+Reverse logarithmic scaling works only for ranges that are entirely
+within the range 0E<lt>=xE<lt>1.0.
+
+=back
+
 
 
 

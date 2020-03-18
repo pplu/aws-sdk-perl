@@ -4,6 +4,7 @@ package Paws::Lightsail::AutoSnapshotDetails;
   has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest']);
   has FromAttachedDisks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AttachedDisk]', request_name => 'fromAttachedDisks', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

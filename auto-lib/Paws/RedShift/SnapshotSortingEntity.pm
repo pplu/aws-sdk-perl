@@ -2,6 +2,7 @@ package Paws::RedShift::SnapshotSortingEntity;
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has SortOrder => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

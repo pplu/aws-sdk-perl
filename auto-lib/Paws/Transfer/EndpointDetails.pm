@@ -4,6 +4,7 @@ package Paws::Transfer::EndpointDetails;
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcEndpointId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

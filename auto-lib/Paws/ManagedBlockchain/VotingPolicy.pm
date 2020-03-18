@@ -1,6 +1,7 @@
 package Paws::ManagedBlockchain::VotingPolicy;
   use Moose;
   has ApprovalThresholdPolicy => (is => 'ro', isa => 'Paws::ManagedBlockchain::ApprovalThresholdPolicy');
+
 1;
 
 ### main pod documentation begin ###

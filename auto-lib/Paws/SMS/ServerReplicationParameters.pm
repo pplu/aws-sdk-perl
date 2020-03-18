@@ -7,6 +7,7 @@ package Paws::SMS::ServerReplicationParameters;
   has NumberOfRecentAmisToKeep => (is => 'ro', isa => 'Int', request_name => 'numberOfRecentAmisToKeep', traits => ['NameInRequest']);
   has RunOnce => (is => 'ro', isa => 'Bool', request_name => 'runOnce', traits => ['NameInRequest']);
   has SeedTime => (is => 'ro', isa => 'Str', request_name => 'seedTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

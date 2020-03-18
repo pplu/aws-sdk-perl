@@ -2,6 +2,7 @@ package Paws::MQ::EncryptionOptions;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
   has UseAwsOwnedKey => (is => 'ro', isa => 'Bool', request_name => 'useAwsOwnedKey', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated = $ListHostedZonesResponse->IsTruncated;
-    my $MaxItems    = $ListHostedZonesResponse->MaxItems;
     my $HostedZones = $ListHostedZonesResponse->HostedZones;
-    my $NextMarker  = $ListHostedZonesResponse->NextMarker;
+    my $IsTruncated = $ListHostedZonesResponse->IsTruncated;
     my $Marker      = $ListHostedZonesResponse->Marker;
+    my $MaxItems    = $ListHostedZonesResponse->MaxItems;
+    my $NextMarker  = $ListHostedZonesResponse->NextMarker;
 
     # Returns a L<Paws::Route53::ListHostedZonesResponse> object.
 
@@ -83,8 +83,8 @@ there are no more hosted zones to get.
 (Optional) The maximum number of hosted zones that you want Amazon
 Route 53 to return. If you have more than C<maxitems> hosted zones, the
 value of C<IsTruncated> in the response is C<true>, and the value of
-C<NextMarker> is the hosted zone ID of the first hosted zone that
-Amazon Route 53 will return if you submit another request.
+C<NextMarker> is the hosted zone ID of the first hosted zone that Route
+53 will return if you submit another request.
 
 
 

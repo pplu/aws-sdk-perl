@@ -4,6 +4,7 @@ package Paws::Lightsail::AddOn;
   has NextSnapshotTimeOfDay => (is => 'ro', isa => 'Str', request_name => 'nextSnapshotTimeOfDay', traits => ['NameInRequest']);
   has SnapshotTimeOfDay => (is => 'ro', isa => 'Str', request_name => 'snapshotTimeOfDay', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::LexRuntime::IntentSummary;
   has IntentName => (is => 'ro', isa => 'Str', request_name => 'intentName', traits => ['NameInRequest']);
   has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', request_name => 'slots', traits => ['NameInRequest']);
   has SlotToElicit => (is => 'ro', isa => 'Str', request_name => 'slotToElicit', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

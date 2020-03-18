@@ -1,7 +1,7 @@
 package Paws::IoT::DynamoDBv2Action;
   use Moose;
-  has PutItem => (is => 'ro', isa => 'Paws::IoT::PutItemInput', request_name => 'putItem', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  has PutItem => (is => 'ro', isa => 'Paws::IoT::PutItemInput', request_name => 'putItem', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
 
 1;
 
@@ -41,7 +41,7 @@ it's own column in the DynamoDB table.
 =head1 ATTRIBUTES
 
 
-=head2 PutItem => L<Paws::IoT::PutItemInput>
+=head2 B<REQUIRED> PutItem => L<Paws::IoT::PutItemInput>
 
   Specifies the DynamoDB table to which the message data will be written.
 For example:
@@ -53,7 +53,7 @@ Each attribute in the message payload will be written to a separate
 column in the DynamoDB database.
 
 
-=head2 RoleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access to the DynamoDB table.
 

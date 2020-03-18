@@ -1,6 +1,7 @@
 package Paws::IoTEvents::ClearTimerAction;
   use Moose;
   has TimerName => (is => 'ro', isa => 'Str', request_name => 'timerName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

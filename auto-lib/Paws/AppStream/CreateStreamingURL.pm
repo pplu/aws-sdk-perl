@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $StreamingURL = $CreateStreamingURLResult->StreamingURL;
     my $Expires      = $CreateStreamingURLResult->Expires;
+    my $StreamingURL = $CreateStreamingURLResult->StreamingURL;
 
     # Returns a L<Paws::AppStream::CreateStreamingURLResult> object.
 

@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Versions  = $ListSecretVersionIdsResponse->Versions;
     my $ARN       = $ListSecretVersionIdsResponse->ARN;
-    my $NextToken = $ListSecretVersionIdsResponse->NextToken;
     my $Name      = $ListSecretVersionIdsResponse->Name;
+    my $NextToken = $ListSecretVersionIdsResponse->NextToken;
+    my $Versions  = $ListSecretVersionIdsResponse->Versions;
 
     # Returns a L<Paws::SecretsManager::ListSecretVersionIdsResponse> object.
 
@@ -90,6 +90,20 @@ should continue from.
 The identifier for the secret containing the versions you want to list.
 You can specify either the Amazon Resource Name (ARN) or the friendly
 name of the secret.
+
+If you specify an ARN, we generally recommend that you specify a
+complete ARN. You can specify a partial ARN tooE<mdash>for example, if
+you donE<rsquo>t include the final hyphen and six random characters
+that Secrets Manager adds at the end of the ARN when you created the
+secret. A partial ARN match can work as long as it uniquely matches
+only one secret. However, if your secret has a name that ends in a
+hyphen followed by six characters (before Secrets Manager adds the
+hyphen and six characters to the ARN) and you try to use that as a
+partial ARN, then those characters cause Secrets Manager to assume that
+youE<rsquo>re specifying a complete ARN. This confusion can cause
+unexpected results. To avoid this situation, we recommend that you
+donE<rsquo>t create secret names that end with a hyphen followed by six
+characters.
 
 
 

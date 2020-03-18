@@ -2,6 +2,7 @@ package Paws::Lightsail::DestinationInfo;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

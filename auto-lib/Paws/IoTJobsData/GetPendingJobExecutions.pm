@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $QueuedJobs     = $GetPendingJobExecutionsResponse->QueuedJobs;
     my $InProgressJobs = $GetPendingJobExecutionsResponse->InProgressJobs;
+    my $QueuedJobs     = $GetPendingJobExecutionsResponse->QueuedJobs;
 
     # Returns a L<Paws::IoTJobsData::GetPendingJobExecutionsResponse> object.
 

@@ -33,23 +33,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateImageResult = $ec2->CreateImage(
-      InstanceId          => 'MyString',
+      InstanceId          => 'MyInstanceId',
       Name                => 'MyString',
       BlockDeviceMappings => [
         {
-          DeviceName  => 'MyString',
-          VirtualName => 'MyString',
-          NoDevice    => 'MyString',
-          Ebs         => {
-            SnapshotId => 'MyString',
-            Iops       => 1,            # OPTIONAL
-            VolumeType =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
-            VolumeSize          => 1,            # OPTIONAL
-            KmsKeyId            => 'MyString',
+          DeviceName => 'MyString',
+          Ebs        => {
             DeleteOnTermination => 1,            # OPTIONAL
             Encrypted           => 1,            # OPTIONAL
+            Iops                => 1,            # OPTIONAL
+            KmsKeyId            => 'MyString',
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,            # OPTIONAL
+            VolumeType =>
+              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
           },    # OPTIONAL
+          NoDevice    => 'MyString',
+          VirtualName => 'MyString',
         },
         ...
       ],        # OPTIONAL
@@ -71,7 +71,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-Information about one or more block device mappings.
+The block device mappings. This parameter cannot be used to modify the
+encryption status of existing volumes or snapshots. To create an AMI
+with encrypted snapshots, use the CopyImage action.
 
 
 

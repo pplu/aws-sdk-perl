@@ -1,6 +1,7 @@
 package Paws::IoT::HttpUrlDestinationProperties;
   use Moose;
   has ConfirmationUrl => (is => 'ro', isa => 'Str', request_name => 'confirmationUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

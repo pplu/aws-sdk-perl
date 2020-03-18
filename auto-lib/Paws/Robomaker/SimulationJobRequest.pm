@@ -11,6 +11,7 @@ package Paws::Robomaker::SimulationJobRequest;
   has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has UseDefaultApplications => (is => 'ro', isa => 'Bool', request_name => 'useDefaultApplications', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::Robomaker::VPCConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

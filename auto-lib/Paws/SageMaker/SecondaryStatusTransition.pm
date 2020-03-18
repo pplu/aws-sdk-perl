@@ -4,6 +4,7 @@ package Paws::SageMaker::SecondaryStatusTransition;
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

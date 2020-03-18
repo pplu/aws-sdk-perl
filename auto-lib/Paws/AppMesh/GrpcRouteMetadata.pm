@@ -3,6 +3,7 @@ package Paws::AppMesh::GrpcRouteMetadata;
   has Invert => (is => 'ro', isa => 'Bool', request_name => 'invert', traits => ['NameInRequest']);
   has Match => (is => 'ro', isa => 'Paws::AppMesh::GrpcRouteMetadataMatchMethod', request_name => 'match', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

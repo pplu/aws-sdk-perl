@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TableVersions = $GetTableVersionsResponse->TableVersions;
     my $NextToken     = $GetTableVersionsResponse->NextToken;
+    my $TableVersions = $GetTableVersionsResponse->TableVersions;
 
     # Returns a L<Paws::Glue::GetTableVersionsResponse> object.
 

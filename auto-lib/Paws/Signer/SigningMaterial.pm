@@ -1,6 +1,7 @@
 package Paws::Signer::SigningMaterial;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

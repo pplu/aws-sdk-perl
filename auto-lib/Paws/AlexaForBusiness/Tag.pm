@@ -1,7 +1,7 @@
 package Paws::AlexaForBusiness::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Str', required => 1);
 
 1;
 
@@ -38,14 +38,14 @@ A key-value pair that can be associated with a resource.
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   The key of a tag. Tag keys are case-sensitive.
 
 
-=head2 Value => Str
+=head2 B<REQUIRED> Value => Str
 
-  The value of a tag. Tag values are case-sensitive and can be null.
+  The value of a tag. Tag values are case sensitive and can be null.
 
 
 

@@ -34,21 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # environment named my-env:
     my $DescribeEnvironmentHealthResult =
       $elasticbeanstalk->DescribeEnvironmentHealth(
-      {
-        'EnvironmentName' => 'my-env',
-        'AttributeNames'  => ['All']
-      }
+      'AttributeNames'  => ['All'],
+      'EnvironmentName' => 'my-env'
       );
 
     # Results:
-    my $Causes          = $DescribeEnvironmentHealthResult->Causes;
-    my $HealthStatus    = $DescribeEnvironmentHealthResult->HealthStatus;
-    my $EnvironmentName = $DescribeEnvironmentHealthResult->EnvironmentName;
-    my $InstancesHealth = $DescribeEnvironmentHealthResult->InstancesHealth;
     my $ApplicationMetrics =
       $DescribeEnvironmentHealthResult->ApplicationMetrics;
-    my $RefreshedAt = $DescribeEnvironmentHealthResult->RefreshedAt;
-    my $Color       = $DescribeEnvironmentHealthResult->Color;
+    my $Causes          = $DescribeEnvironmentHealthResult->Causes;
+    my $Color           = $DescribeEnvironmentHealthResult->Color;
+    my $EnvironmentName = $DescribeEnvironmentHealthResult->EnvironmentName;
+    my $HealthStatus    = $DescribeEnvironmentHealthResult->HealthStatus;
+    my $InstancesHealth = $DescribeEnvironmentHealthResult->InstancesHealth;
+    my $RefreshedAt     = $DescribeEnvironmentHealthResult->RefreshedAt;
 
   # Returns a L<Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult> object.
 

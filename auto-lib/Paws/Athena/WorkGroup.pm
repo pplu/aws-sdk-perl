@@ -5,6 +5,7 @@ package Paws::Athena::WorkGroup;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

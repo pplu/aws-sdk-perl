@@ -3,6 +3,7 @@ package Paws::Kinesis::SubscribeToShardEvent;
   has ContinuationSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
   has MillisBehindLatest => (is => 'ro', isa => 'Int', required => 1);
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

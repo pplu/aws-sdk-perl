@@ -3,6 +3,7 @@ package Paws::WAFv2::VisibilityConfig;
   has CloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has SampledRequestsEnabled => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

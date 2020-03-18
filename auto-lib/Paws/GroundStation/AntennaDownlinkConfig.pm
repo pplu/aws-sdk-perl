@@ -1,6 +1,7 @@
 package Paws::GroundStation::AntennaDownlinkConfig;
   use Moose;
   has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::SpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

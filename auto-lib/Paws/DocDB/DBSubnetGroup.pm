@@ -6,6 +6,7 @@ package Paws::DocDB::DBSubnetGroup;
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

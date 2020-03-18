@@ -7,6 +7,7 @@ package Paws::ManagedBlockchain::ProposalSummary;
   has ProposedByMemberId => (is => 'ro', isa => 'Str');
   has ProposedByMemberName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

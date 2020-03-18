@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 
     # Results:
-    my $Truncated   = $ListKeyPoliciesResponse->Truncated;
     my $PolicyNames = $ListKeyPoliciesResponse->PolicyNames;
+    my $Truncated   = $ListKeyPoliciesResponse->Truncated;
 
     # Returns a L<Paws::KMS::ListKeyPoliciesResponse> object.
 

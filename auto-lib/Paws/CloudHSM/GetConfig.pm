@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ConfigCred = $GetConfigResponse->ConfigCred;
-    my $ConfigType = $GetConfigResponse->ConfigType;
     my $ConfigFile = $GetConfigResponse->ConfigFile;
+    my $ConfigType = $GetConfigResponse->ConfigType;
 
     # Returns a L<Paws::CloudHSM::GetConfigResponse> object.
 

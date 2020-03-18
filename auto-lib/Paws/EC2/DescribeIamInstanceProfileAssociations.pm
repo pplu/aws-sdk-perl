@@ -32,23 +32,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeIamInstanceProfileAssociationsResult =
       $ec2->DescribeIamInstanceProfileAssociations(
-      AssociationIds => [ 'MyString', ... ],    # OPTIONAL
-      Filters => [
+      AssociationIds => [ 'MyIamInstanceProfileAssociationId', ... ], # OPTIONAL
+      Filters        => [
         {
-          Values => [ 'MyString', ... ],        # OPTIONAL
-          Name => 'MyString',
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],                              # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
-      MaxResults => 1,                          # OPTIONAL
-      NextToken  => 'MyNextToken',              # OPTIONAL
+      ],                                                              # OPTIONAL
+      MaxResults => 1,                                                # OPTIONAL
+      NextToken  => 'MyNextToken',                                    # OPTIONAL
       );
 
     # Results:
-    my $NextToken = $DescribeIamInstanceProfileAssociationsResult->NextToken;
     my $IamInstanceProfileAssociations =
       $DescribeIamInstanceProfileAssociationsResult
       ->IamInstanceProfileAssociations;
+    my $NextToken = $DescribeIamInstanceProfileAssociationsResult->NextToken;
 
   # Returns a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> object.
 
@@ -60,13 +60,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AssociationIds => ArrayRef[Str|Undef]
 
-One or more IAM instance profile associations.
+The IAM instance profile associations.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 

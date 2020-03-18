@@ -5,6 +5,7 @@ package Paws::IoT::PutAssetPropertyValueEntry;
   has PropertyAlias => (is => 'ro', isa => 'Str', request_name => 'propertyAlias', traits => ['NameInRequest']);
   has PropertyId => (is => 'ro', isa => 'Str', request_name => 'propertyId', traits => ['NameInRequest']);
   has PropertyValues => (is => 'ro', isa => 'ArrayRef[Paws::IoT::AssetPropertyValue]', request_name => 'propertyValues', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

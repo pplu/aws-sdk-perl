@@ -3,6 +3,7 @@ package Paws::FSX::DataRepositoryConfiguration;
   has ExportPath => (is => 'ro', isa => 'Str');
   has ImportedFileChunkSize => (is => 'ro', isa => 'Int');
   has ImportPath => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

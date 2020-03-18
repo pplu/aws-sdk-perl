@@ -5,6 +5,7 @@ package Paws::ACMPCA::CreateCertificateAuthority;
   has CertificateAuthorityType => (is => 'ro', isa => 'Str', required => 1);
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACMPCA::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,28 +36,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateAuthorityConfiguration => {
         KeyAlgorithm =>
           'RSA_2048',  # values: RSA_2048, RSA_4096, EC_prime256v1, EC_secp384r1
-        Subject => {
-          Pseudonym          => 'MyString128',    # max: 128; OPTIONAL
-          Surname            => 'MyString40',     # max: 40; OPTIONAL
-          OrganizationalUnit => 'MyString64',     # max: 64; OPTIONAL
-          State              => 'MyString128',    # max: 128; OPTIONAL
-          Title              => 'MyString64',     # max: 64; OPTIONAL
-          DistinguishedNameQualifier =>
-            'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
-          Organization        => 'MyString64',             # max: 64; OPTIONAL
-          Initials            => 'MyString5',              # max: 5; OPTIONAL
-          SerialNumber        => 'MyString64',             # max: 64; OPTIONAL
-          GivenName           => 'MyString16',             # max: 16; OPTIONAL
-          Locality            => 'MyString128',            # max: 128; OPTIONAL
-          Country             => 'MyCountryCodeString',    # OPTIONAL
-          GenerationQualifier => 'MyString3',              # max: 3; OPTIONAL
-          CommonName          => 'MyString64',             # max: 64; OPTIONAL
-        },
         SigningAlgorithm => 'SHA256WITHECDSA'
         , # values: SHA256WITHECDSA, SHA384WITHECDSA, SHA512WITHECDSA, SHA256WITHRSA, SHA384WITHRSA, SHA512WITHRSA
+        Subject => {
+          CommonName => 'MyString64',             # max: 64; OPTIONAL
+          Country    => 'MyCountryCodeString',    # OPTIONAL
+          DistinguishedNameQualifier =>
+            'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
+          GenerationQualifier => 'MyString3',        # max: 3; OPTIONAL
+          GivenName           => 'MyString16',       # max: 16; OPTIONAL
+          Initials            => 'MyString5',        # max: 5; OPTIONAL
+          Locality            => 'MyString128',      # max: 128; OPTIONAL
+          Organization        => 'MyString64',       # max: 64; OPTIONAL
+          OrganizationalUnit  => 'MyString64',       # max: 64; OPTIONAL
+          Pseudonym           => 'MyString128',      # max: 128; OPTIONAL
+          SerialNumber        => 'MyString64',       # max: 64; OPTIONAL
+          State               => 'MyString128',      # max: 128; OPTIONAL
+          Surname             => 'MyString40',       # max: 40; OPTIONAL
+          Title               => 'MyString64',       # max: 64; OPTIONAL
+        },
 
       },
-      CertificateAuthorityType => 'SUBORDINATE',
+      CertificateAuthorityType => 'ROOT',
       IdempotencyToken         => 'MyIdempotencyToken',    # OPTIONAL
       RevocationConfiguration  => {
         CrlConfiguration => {
@@ -66,6 +67,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           S3BucketName     => 'MyString3To255',    # min: 3, max: 255; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       );
 
     # Results:
@@ -89,10 +97,9 @@ algorithm, and X.500 certificate subject information.
 
 =head2 B<REQUIRED> CertificateAuthorityType => Str
 
-The type of the certificate authority. Currently, this must be
-B<SUBORDINATE>.
+The type of the certificate authority.
 
-Valid values are: C<"SUBORDINATE">
+Valid values are: C<"ROOT">, C<"SUBORDINATE">
 
 =head2 IdempotencyToken => Str
 
@@ -100,10 +107,10 @@ Alphanumeric string that can be used to distinguish between calls to
 B<CreateCertificateAuthority>. Idempotency tokens time out after five
 minutes. Therefore, if you call B<CreateCertificateAuthority> multiple
 times with the same idempotency token within a five minute period, ACM
-PCA recognizes that you are requesting only one certificate and will
-issue only one. If you change the idempotency token for each call,
-however, ACM PCA recognizes that you are requesting multiple
-certificates.
+Private CA recognizes that you are requesting only one certificate. As
+a result, ACM Private CA issues only one. If you change the idempotency
+token for each call, however, ACM Private CA recognizes that you are
+requesting multiple certificates.
 
 
 
@@ -111,10 +118,21 @@ certificates.
 
 Contains a Boolean value that you can use to enable a certification
 revocation list (CRL) for the CA, the name of the S3 bucket to which
-ACM PCA will write the CRL, and an optional CNAME alias that you can
-use to hide the name of your bucket in the B<CRL Distribution Points>
-extension of your CA certificate. For more information, see the
+ACM Private CA will write the CRL, and an optional CNAME alias that you
+can use to hide the name of your bucket in the B<CRL Distribution
+Points> extension of your CA certificate. For more information, see the
 CrlConfiguration structure.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+
+Key-value pairs that will be attached to the new private CA. You can
+associate up to 50 tags with a private CA. For information using tags
+with
+
+IAM to manage permissions, see Controlling Access Using IAM Tags
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 
 
 

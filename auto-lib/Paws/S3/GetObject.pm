@@ -73,34 +73,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicationStatus       = $GetObjectOutput->ReplicationStatus;
-    my $ContentLength           = $GetObjectOutput->ContentLength;
-    my $ContentType             = $GetObjectOutput->ContentType;
-    my $ContentRange            = $GetObjectOutput->ContentRange;
-    my $SSEKMSKeyId             = $GetObjectOutput->SSEKMSKeyId;
-    my $Metadata                = $GetObjectOutput->Metadata;
-    my $RequestCharged          = $GetObjectOutput->RequestCharged;
-    my $WebsiteRedirectLocation = $GetObjectOutput->WebsiteRedirectLocation;
-    my $Restore                 = $GetObjectOutput->Restore;
-    my $ETag                    = $GetObjectOutput->ETag;
-    my $TagCount                = $GetObjectOutput->TagCount;
-    my $ContentLanguage         = $GetObjectOutput->ContentLanguage;
-    my $Expires                 = $GetObjectOutput->Expires;
-    my $VersionId               = $GetObjectOutput->VersionId;
-    my $Body                    = $GetObjectOutput->Body;
-    my $LastModified            = $GetObjectOutput->LastModified;
-    my $Expiration              = $GetObjectOutput->Expiration;
-    my $MissingMeta             = $GetObjectOutput->MissingMeta;
-    my $PartsCount              = $GetObjectOutput->PartsCount;
-    my $AcceptRanges            = $GetObjectOutput->AcceptRanges;
-    my $DeleteMarker            = $GetObjectOutput->DeleteMarker;
-    my $ServerSideEncryption    = $GetObjectOutput->ServerSideEncryption;
-    my $SSECustomerKeyMD5       = $GetObjectOutput->SSECustomerKeyMD5;
-    my $SSECustomerAlgorithm    = $GetObjectOutput->SSECustomerAlgorithm;
-    my $CacheControl            = $GetObjectOutput->CacheControl;
-    my $ContentEncoding         = $GetObjectOutput->ContentEncoding;
-    my $StorageClass            = $GetObjectOutput->StorageClass;
-    my $ContentDisposition      = $GetObjectOutput->ContentDisposition;
+    my $AcceptRanges              = $GetObjectOutput->AcceptRanges;
+    my $Body                      = $GetObjectOutput->Body;
+    my $CacheControl              = $GetObjectOutput->CacheControl;
+    my $ContentDisposition        = $GetObjectOutput->ContentDisposition;
+    my $ContentEncoding           = $GetObjectOutput->ContentEncoding;
+    my $ContentLanguage           = $GetObjectOutput->ContentLanguage;
+    my $ContentLength             = $GetObjectOutput->ContentLength;
+    my $ContentRange              = $GetObjectOutput->ContentRange;
+    my $ContentType               = $GetObjectOutput->ContentType;
+    my $DeleteMarker              = $GetObjectOutput->DeleteMarker;
+    my $ETag                      = $GetObjectOutput->ETag;
+    my $Expiration                = $GetObjectOutput->Expiration;
+    my $Expires                   = $GetObjectOutput->Expires;
+    my $LastModified              = $GetObjectOutput->LastModified;
+    my $Metadata                  = $GetObjectOutput->Metadata;
+    my $MissingMeta               = $GetObjectOutput->MissingMeta;
+    my $ObjectLockLegalHoldStatus = $GetObjectOutput->ObjectLockLegalHoldStatus;
+    my $ObjectLockMode            = $GetObjectOutput->ObjectLockMode;
+    my $ObjectLockRetainUntilDate = $GetObjectOutput->ObjectLockRetainUntilDate;
+    my $PartsCount                = $GetObjectOutput->PartsCount;
+    my $ReplicationStatus         = $GetObjectOutput->ReplicationStatus;
+    my $RequestCharged            = $GetObjectOutput->RequestCharged;
+    my $Restore                   = $GetObjectOutput->Restore;
+    my $SSECustomerAlgorithm      = $GetObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5         = $GetObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId               = $GetObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption      = $GetObjectOutput->ServerSideEncryption;
+    my $StorageClass              = $GetObjectOutput->StorageClass;
+    my $TagCount                  = $GetObjectOutput->TagCount;
+    my $VersionId                 = $GetObjectOutput->VersionId;
+    my $WebsiteRedirectLocation   = $GetObjectOutput->WebsiteRedirectLocation;
 
     # Returns a L<Paws::S3::GetObjectOutput> object.
 
@@ -112,7 +115,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name containing the object.
 
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
@@ -146,7 +158,7 @@ time, otherwise return a 412 (precondition failed).
 
 =head2 B<REQUIRED> Key => Str
 
-
+Key of the object to get.
 
 
 
@@ -161,7 +173,7 @@ the part specified. Useful for downloading just a part of an object.
 =head2 Range => Str
 
 Downloads the specified range bytes of an object. For more information
-about the HTTP Range header, go to
+about the HTTP Range header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
@@ -174,44 +186,44 @@ Valid values are: C<"requester">
 
 =head2 ResponseCacheControl => Str
 
-Sets the Cache-Control header of the response.
+Sets the C<Cache-Control> header of the response.
 
 
 
 =head2 ResponseContentDisposition => Str
 
-Sets the Content-Disposition header of the response
+Sets the C<Content-Disposition> header of the response
 
 
 
 =head2 ResponseContentEncoding => Str
 
-Sets the Content-Encoding header of the response.
+Sets the C<Content-Encoding> header of the response.
 
 
 
 =head2 ResponseContentLanguage => Str
 
-Sets the Content-Language header of the response.
+Sets the C<Content-Language> header of the response.
 
 
 
 =head2 ResponseContentType => Str
 
-Sets the Content-Type header of the response.
+Sets the C<Content-Type> header of the response.
 
 
 
 =head2 ResponseExpires => Str
 
-Sets the Expires header of the response.
+Sets the C<Expires> header of the response.
 
 
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -219,9 +231,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -229,7 +241,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 

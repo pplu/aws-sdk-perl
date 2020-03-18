@@ -2,6 +2,7 @@ package Paws::QLDBSession::Page;
   use Moose;
   has NextPageToken => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Paws::QLDBSession::ValueHolder]');
+
 1;
 
 ### main pod documentation begin ###

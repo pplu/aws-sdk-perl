@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EventsRequest;
   use Moose;
   has BatchItem => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEventsBatch', required => 1);
+
 1;
 
 ### main pod documentation begin ###

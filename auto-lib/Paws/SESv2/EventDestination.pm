@@ -7,6 +7,7 @@ package Paws::SESv2::EventDestination;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has PinpointDestination => (is => 'ro', isa => 'Paws::SESv2::PinpointDestination');
   has SnsDestination => (is => 'ro', isa => 'Paws::SESv2::SnsDestination');
+
 1;
 
 ### main pod documentation begin ###

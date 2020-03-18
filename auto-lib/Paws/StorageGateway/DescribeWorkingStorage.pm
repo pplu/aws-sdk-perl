@@ -31,20 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation is supported only for the gateway-stored volume
     # architecture. This operation is deprecated in cached-volumes API version
     # (20120630). Use DescribeUploadBuffer instead.
-    my $DescribeWorkingStorageOutput = $storagegateway->DescribeWorkingStorage(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-    );
+    my $DescribeWorkingStorageOutput =
+      $storagegateway->DescribeWorkingStorage( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
-    my $WorkingStorageUsedInBytes =
-      $DescribeWorkingStorageOutput->WorkingStorageUsedInBytes;
-    my $WorkingStorageAllocatedInBytes =
-      $DescribeWorkingStorageOutput->WorkingStorageAllocatedInBytes;
     my $DiskIds    = $DescribeWorkingStorageOutput->DiskIds;
     my $GatewayARN = $DescribeWorkingStorageOutput->GatewayARN;
+    my $WorkingStorageAllocatedInBytes =
+      $DescribeWorkingStorageOutput->WorkingStorageAllocatedInBytes;
+    my $WorkingStorageUsedInBytes =
+      $DescribeWorkingStorageOutput->WorkingStorageUsedInBytes;
 
     # Returns a L<Paws::StorageGateway::DescribeWorkingStorageOutput> object.
 

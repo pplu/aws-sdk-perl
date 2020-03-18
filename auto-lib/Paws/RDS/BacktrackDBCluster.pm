@@ -39,17 +39,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $BacktrackIdentifier = $DBClusterBacktrack->BacktrackIdentifier;
-    my $Status              = $DBClusterBacktrack->Status;
-    my $DBClusterIdentifier = $DBClusterBacktrack->DBClusterIdentifier;
     my $BacktrackRequestCreationTime =
       $DBClusterBacktrack->BacktrackRequestCreationTime;
-    my $BacktrackedFrom = $DBClusterBacktrack->BacktrackedFrom;
-    my $BacktrackTo     = $DBClusterBacktrack->BacktrackTo;
+    my $BacktrackTo         = $DBClusterBacktrack->BacktrackTo;
+    my $BacktrackedFrom     = $DBClusterBacktrack->BacktrackedFrom;
+    my $DBClusterIdentifier = $DBClusterBacktrack->DBClusterIdentifier;
+    my $Status              = $DBClusterBacktrack->Status;
 
     # Returns a L<Paws::RDS::DBClusterBacktrack> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/BacktrackDBCluster>
 
 =head1 ATTRIBUTES
 
@@ -60,7 +60,7 @@ The timestamp of the time to backtrack the DB cluster to, specified in
 ISO 8601 format. For more information about ISO 8601, see the ISO8601
 Wikipedia page. (http://en.wikipedia.org/wiki/ISO_8601)
 
-If the specified time is not a consistent time for the DB cluster,
+If the specified time isn't a consistent time for the DB cluster,
 Aurora automatically chooses the nearest possible consistent time for
 the DB cluster.
 
@@ -74,7 +74,7 @@ Must contain a valid ISO 8601 timestamp.
 
 =item *
 
-Cannot contain a timestamp set in the future.
+Can't contain a timestamp set in the future.
 
 =back
 
@@ -101,7 +101,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -111,17 +111,19 @@ Example: C<my-cluster1>
 
 =head2 Force => Bool
 
-A value that, if specified, forces the DB cluster to backtrack when
-binary logging is enabled. Otherwise, an error occurs when binary
+A value that indicates whether to force the DB cluster to backtrack
+when binary logging is enabled. Otherwise, an error occurs when binary
 logging is enabled.
 
 
 
 =head2 UseEarliestTimeOnPointInTimeUnavailable => Bool
 
-If I<BacktrackTo> is set to a timestamp earlier than the earliest
-backtrack time, this value backtracks the DB cluster to the earliest
-possible backtrack time. Otherwise, an error occurs.
+A value that indicates whether to backtrack the DB cluster to the
+earliest possible backtrack time when I<BacktrackTo> is set to a
+timestamp earlier than the earliest backtrack time. When this parameter
+is disabled and I<BacktrackTo> is set to a timestamp earlier than the
+earliest backtrack time, an error occurs.
 
 
 

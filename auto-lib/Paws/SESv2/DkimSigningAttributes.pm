@@ -2,6 +2,7 @@ package Paws::SESv2::DkimSigningAttributes;
   use Moose;
   has DomainSigningPrivateKey => (is => 'ro', isa => 'Str', required => 1);
   has DomainSigningSelector => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

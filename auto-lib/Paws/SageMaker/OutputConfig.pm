@@ -2,6 +2,7 @@ package Paws::SageMaker::OutputConfig;
   use Moose;
   has S3OutputLocation => (is => 'ro', isa => 'Str', required => 1);
   has TargetDevice => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

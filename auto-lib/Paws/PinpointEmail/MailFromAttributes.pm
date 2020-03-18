@@ -3,6 +3,7 @@ package Paws::PinpointEmail::MailFromAttributes;
   has BehaviorOnMxFailure => (is => 'ro', isa => 'Str', required => 1);
   has MailFromDomain => (is => 'ro', isa => 'Str', required => 1);
   has MailFromDomainStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

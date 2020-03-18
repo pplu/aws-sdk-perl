@@ -2,6 +2,7 @@ package Paws::Backup::CalculatedLifecycle;
   use Moose;
   has DeleteAt => (is => 'ro', isa => 'Str');
   has MoveToColdStorageAt => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

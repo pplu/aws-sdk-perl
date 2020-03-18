@@ -2,6 +2,7 @@ package Paws::Datasync::Ec2Config;
   use Moose;
   has SecurityGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SubnetArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

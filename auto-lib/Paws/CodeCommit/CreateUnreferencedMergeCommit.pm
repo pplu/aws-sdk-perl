@@ -59,21 +59,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FilePath        => 'MyPath',
             ReplacementType => 'KEEP_BASE'
             , # values: KEEP_BASE, KEEP_SOURCE, KEEP_DESTINATION, USE_NEW_CONTENT
-            Content => 'BlobFileContent',    # max: 6291456; OPTIONAL
-            FileMode =>
-              'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
+            Content  => 'BlobFileContent', # max: 6291456; OPTIONAL
+            FileMode => 'EXECUTABLE',      # values: EXECUTABLE, NORMAL, SYMLINK
           },
           ...
-        ],                     # OPTIONAL
+        ],                                 # OPTIONAL
         SetFileModes => [
           {
-            FileMode =>
-              'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
+            FileMode => 'EXECUTABLE',      # values: EXECUTABLE, NORMAL, SYMLINK
             FilePath => 'MyPath',
 
           },
           ...
-        ],                     # OPTIONAL
+        ],                                 # OPTIONAL
       },    # OPTIONAL
       ConflictResolutionStrategy => 'NONE',       # OPTIONAL
       Email                      => 'MyEmail',    # OPTIONAL

@@ -35,20 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Arn = $GetSubscriptionDefinitionResponse->Arn;
     my $CreationTimestamp =
       $GetSubscriptionDefinitionResponse->CreationTimestamp;
-    my $LatestVersionArn = $GetSubscriptionDefinitionResponse->LatestVersionArn;
-    my $Id               = $GetSubscriptionDefinitionResponse->Id;
+    my $Id = $GetSubscriptionDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $GetSubscriptionDefinitionResponse->LastUpdatedTimestamp;
-    my $Arn           = $GetSubscriptionDefinitionResponse->Arn;
-    my $Name          = $GetSubscriptionDefinitionResponse->Name;
-    my $LatestVersion = $GetSubscriptionDefinitionResponse->LatestVersion;
+    my $LatestVersion    = $GetSubscriptionDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $GetSubscriptionDefinitionResponse->LatestVersionArn;
+    my $Name             = $GetSubscriptionDefinitionResponse->Name;
+    my $Tags             = $GetSubscriptionDefinitionResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetSubscriptionDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetSubscriptionDefinition>
 
 =head1 ATTRIBUTES
 

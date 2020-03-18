@@ -2,6 +2,7 @@ package Paws::Route53Resolver::TargetAddress;
   use Moose;
   has Ip => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

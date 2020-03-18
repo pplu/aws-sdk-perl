@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
@@ -46,13 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeFleetsResult->NextToken;
     my $Fleets    = $DescribeFleetsResult->Fleets;
+    my $NextToken = $DescribeFleetsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeFleetsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeFleets>
 
 =head1 ATTRIBUTES
 
@@ -68,7 +68,38 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
+
+=over
+
+=item *
+
+C<activity-status> - The progress of the EC2 Fleet ( C<error> |
+C<pending-fulfillment> | C<pending-termination> | C<fulfilled>).
+
+=item *
+
+C<excess-capacity-termination-policy> - Indicates whether to terminate
+running instances if the target capacity is decreased below the current
+EC2 Fleet size (C<true> | C<false>).
+
+=item *
+
+C<fleet-state> - The state of the EC2 Fleet (C<submitted> | C<active> |
+C<deleted> | C<failed> | C<deleted-running> | C<deleted-terminating> |
+C<modifying>).
+
+=item *
+
+C<replace-unhealthy-instances> - Indicates whether EC2 Fleet should
+replace unhealthy instances (C<true> | C<false>).
+
+=item *
+
+C<type> - The type of request (C<instant> | C<request> | C<maintain>).
+
+=back
+
 
 
 

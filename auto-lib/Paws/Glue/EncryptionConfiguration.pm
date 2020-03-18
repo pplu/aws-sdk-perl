@@ -3,6 +3,7 @@ package Paws::Glue::EncryptionConfiguration;
   has CloudWatchEncryption => (is => 'ro', isa => 'Paws::Glue::CloudWatchEncryption');
   has JobBookmarksEncryption => (is => 'ro', isa => 'Paws::Glue::JobBookmarksEncryption');
   has S3Encryption => (is => 'ro', isa => 'ArrayRef[Paws::Glue::S3Encryption]');
+
 1;
 
 ### main pod documentation begin ###

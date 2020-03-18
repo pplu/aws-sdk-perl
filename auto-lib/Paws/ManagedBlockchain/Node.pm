@@ -8,6 +8,7 @@ package Paws::ManagedBlockchain::Node;
   has MemberId => (is => 'ro', isa => 'Str');
   has NetworkId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

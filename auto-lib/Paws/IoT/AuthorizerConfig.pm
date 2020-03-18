@@ -2,6 +2,7 @@ package Paws::IoT::AuthorizerConfig;
   use Moose;
   has AllowAuthorizerOverride => (is => 'ro', isa => 'Bool', request_name => 'allowAuthorizerOverride', traits => ['NameInRequest']);
   has DefaultAuthorizerName => (is => 'ro', isa => 'Str', request_name => 'defaultAuthorizerName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

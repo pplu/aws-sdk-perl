@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::RequireCheckIn;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has ReleaseAfterMinutes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::IoT::TlsContext;
   use Moose;
   has ServerName => (is => 'ro', isa => 'Str', request_name => 'serverName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

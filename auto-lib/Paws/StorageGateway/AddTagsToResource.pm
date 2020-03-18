@@ -31,17 +31,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To add tags to resource
     # Adds one or more tags to the specified resource.
     my $AddTagsToResourceOutput = $storagegateway->AddTagsToResource(
-      {
-        'Tags' => [
+      'ResourceARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B',
+      'Tags' => [
 
-          {
-            'Value' => 'East Coast',
-            'Key'   => 'Dev Gatgeway Region'
-          }
-        ],
-        'ResourceARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B'
-      }
+        {
+          'Key'   => 'Dev Gatgeway Region',
+          'Value' => 'East Coast'
+        }
+      ]
     );
 
     # Results:
@@ -68,7 +66,8 @@ resource. The value can be an empty string.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: +
-- = . _ : / @.
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 

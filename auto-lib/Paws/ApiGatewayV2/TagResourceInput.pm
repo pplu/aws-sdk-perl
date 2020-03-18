@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::TagResourceInput;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

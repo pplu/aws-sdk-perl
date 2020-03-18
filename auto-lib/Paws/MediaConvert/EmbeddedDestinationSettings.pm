@@ -2,6 +2,7 @@ package Paws::MediaConvert::EmbeddedDestinationSettings;
   use Moose;
   has Destination608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'destination608ChannelNumber', traits => ['NameInRequest']);
   has Destination708ServiceNumber => (is => 'ro', isa => 'Int', request_name => 'destination708ServiceNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

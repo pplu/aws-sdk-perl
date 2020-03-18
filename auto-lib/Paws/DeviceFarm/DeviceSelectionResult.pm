@@ -3,6 +3,7 @@ package Paws::DeviceFarm::DeviceSelectionResult;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceFilter]', request_name => 'filters', traits => ['NameInRequest']);
   has MatchedDevicesCount => (is => 'ro', isa => 'Int', request_name => 'matchedDevicesCount', traits => ['NameInRequest']);
   has MaxDevices => (is => 'ro', isa => 'Int', request_name => 'maxDevices', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

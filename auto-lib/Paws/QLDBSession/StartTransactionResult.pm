@@ -1,6 +1,7 @@
 package Paws::QLDBSession::StartTransactionResult;
   use Moose;
   has TransactionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

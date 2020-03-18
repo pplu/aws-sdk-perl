@@ -3,6 +3,7 @@ package Paws::Kendra::DataSourceToIndexFieldMapping;
   has DataSourceFieldName => (is => 'ro', isa => 'Str', required => 1);
   has DateFieldFormat => (is => 'ro', isa => 'Str');
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

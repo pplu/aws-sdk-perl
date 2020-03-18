@@ -4,6 +4,7 @@ package Paws::ApplicationInsights::ApplicationComponent;
   has Monitor => (is => 'ro', isa => 'Bool');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

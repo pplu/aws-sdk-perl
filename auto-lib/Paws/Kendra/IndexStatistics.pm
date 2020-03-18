@@ -2,6 +2,7 @@ package Paws::Kendra::IndexStatistics;
   use Moose;
   has FaqStatistics => (is => 'ro', isa => 'Paws::Kendra::FaqStatistics', required => 1);
   has TextDocumentStatistics => (is => 'ro', isa => 'Paws::Kendra::TextDocumentStatistics', required => 1);
+
 1;
 
 ### main pod documentation begin ###

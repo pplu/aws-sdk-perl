@@ -10,6 +10,7 @@ package Paws::CostExplorer::CurrentInstance;
   has SavingsPlansCoveredHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::TagValues]');
   has TotalRunningHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

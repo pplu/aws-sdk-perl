@@ -2,6 +2,7 @@ package Paws::MediaConvert::MotionImageInsertionFramerate;
   use Moose;
   has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
   has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

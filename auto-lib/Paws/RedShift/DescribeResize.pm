@@ -33,21 +33,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $TargetClusterType = $ResizeProgressMessage->TargetClusterType;
-    my $TotalResizeDataInMegaBytes =
-      $ResizeProgressMessage->TotalResizeDataInMegaBytes;
-    my $ImportTablesCompleted = $ResizeProgressMessage->ImportTablesCompleted;
-    my $Status                = $ResizeProgressMessage->Status;
-    my $ProgressInMegaBytes   = $ResizeProgressMessage->ProgressInMegaBytes;
-    my $ElapsedTimeInSeconds  = $ResizeProgressMessage->ElapsedTimeInSeconds;
     my $AvgResizeRateInMegaBytesPerSecond =
       $ResizeProgressMessage->AvgResizeRateInMegaBytesPerSecond;
-    my $TargetNumberOfNodes    = $ResizeProgressMessage->TargetNumberOfNodes;
-    my $ImportTablesInProgress = $ResizeProgressMessage->ImportTablesInProgress;
-    my $ImportTablesNotStarted = $ResizeProgressMessage->ImportTablesNotStarted;
+    my $DataTransferProgressPercent =
+      $ResizeProgressMessage->DataTransferProgressPercent;
+    my $ElapsedTimeInSeconds = $ResizeProgressMessage->ElapsedTimeInSeconds;
     my $EstimatedTimeToCompletionInSeconds =
       $ResizeProgressMessage->EstimatedTimeToCompletionInSeconds;
-    my $TargetNodeType = $ResizeProgressMessage->TargetNodeType;
+    my $ImportTablesCompleted  = $ResizeProgressMessage->ImportTablesCompleted;
+    my $ImportTablesInProgress = $ResizeProgressMessage->ImportTablesInProgress;
+    my $ImportTablesNotStarted = $ResizeProgressMessage->ImportTablesNotStarted;
+    my $Message                = $ResizeProgressMessage->Message;
+    my $ProgressInMegaBytes    = $ResizeProgressMessage->ProgressInMegaBytes;
+    my $ResizeType             = $ResizeProgressMessage->ResizeType;
+    my $Status                 = $ResizeProgressMessage->Status;
+    my $TargetClusterType      = $ResizeProgressMessage->TargetClusterType;
+    my $TargetEncryptionType   = $ResizeProgressMessage->TargetEncryptionType;
+    my $TargetNodeType         = $ResizeProgressMessage->TargetNodeType;
+    my $TargetNumberOfNodes    = $ResizeProgressMessage->TargetNumberOfNodes;
+    my $TotalResizeDataInMegaBytes =
+      $ResizeProgressMessage->TotalResizeDataInMegaBytes;
 
     # Returns a L<Paws::RedShift::ResizeProgressMessage> object.
 

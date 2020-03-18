@@ -40,12 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $opsworks->UpdateApp(
       AppId     => 'MyString',
       AppSource => {
-        Revision => 'MyString',
-        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Password => 'MyString',
-        Username => 'MyString',
+        Revision => 'MyString',
         SshKey   => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
         Url      => 'MyString',
+        Username => 'MyString',
       },    # OPTIONAL
       Attributes => {
         'DocumentRoot' => 'MyString'
@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       DataSources => [
         {
-          Type         => 'MyString',
           Arn          => 'MyString',
           DatabaseName => 'MyString',
+          Type         => 'MyString',
         },
         ...
       ],    # OPTIONAL
@@ -135,18 +135,17 @@ An array of C<EnvironmentVariable> objects that specify environment
 variables to be associated with the app. After you deploy the app,
 these variables are defined on the associated app server instances.For
 more information, see Environment Variables
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
 
 There is no specific limit on the number of environment variables.
 However, the size of the associated data structure - which includes the
-variables' names, values, and protected flag values - cannot exceed 10
-KB (10240 Bytes). This limit should accommodate most if not all use
-cases. Exceeding it will cause an exception with the message,
-"Environment: is too large (maximum is 10KB)."
+variables' names, values, and protected flag values - cannot exceed 20
+KB. This limit should accommodate most if not all use cases. Exceeding
+it will cause an exception with the message, "Environment: is too large
+(maximum is 20 KB)."
 
-This parameter is supported only by Chef 11.10 stacks. If you have
-specified one or more environment variables, you cannot modify the
-stack's Chef version.
+If you have specified one or more environment variables, you cannot
+modify the stack's Chef version.
 
 
 

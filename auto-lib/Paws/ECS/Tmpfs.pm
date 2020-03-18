@@ -41,7 +41,7 @@ The container path, mount options, and size of the tmpfs mount.
 
 =head2 B<REQUIRED> ContainerPath => Str
 
-  The absolute file path where the tmpfs volume will be mounted.
+  The absolute file path where the tmpfs volume is to be mounted.
 
 
 =head2 MountOptions => ArrayRef[Str|Undef]

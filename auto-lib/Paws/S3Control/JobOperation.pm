@@ -5,6 +5,7 @@ package Paws::S3Control::JobOperation;
   has S3PutObjectAcl => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectAclOperation');
   has S3PutObjectCopy => (is => 'ro', isa => 'Paws::S3Control::S3CopyObjectOperation');
   has S3PutObjectTagging => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectTaggingOperation');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Chime::Attendee;
   has AttendeeId => (is => 'ro', isa => 'Str');
   has ExternalUserId => (is => 'ro', isa => 'Str');
   has JoinToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -34,27 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Carrier               = $GetStatusOutput->Carrier;
-    my $Signature             = $GetStatusOutput->Signature;
-    my $TrackingNumber        = $GetStatusOutput->TrackingNumber;
-    my $CreationDate          = $GetStatusOutput->CreationDate;
-    my $LocationCode          = $GetStatusOutput->LocationCode;
-    my $ProgressMessage       = $GetStatusOutput->ProgressMessage;
-    my $JobId                 = $GetStatusOutput->JobId;
-    my $LogBucket             = $GetStatusOutput->LogBucket;
-    my $ErrorCount            = $GetStatusOutput->ErrorCount;
-    my $LocationMessage       = $GetStatusOutput->LocationMessage;
-    my $ProgressCode          = $GetStatusOutput->ProgressCode;
     my $ArtifactList          = $GetStatusOutput->ArtifactList;
-    my $SignatureFileContents = $GetStatusOutput->SignatureFileContents;
+    my $Carrier               = $GetStatusOutput->Carrier;
+    my $CreationDate          = $GetStatusOutput->CreationDate;
     my $CurrentManifest       = $GetStatusOutput->CurrentManifest;
+    my $ErrorCount            = $GetStatusOutput->ErrorCount;
+    my $JobId                 = $GetStatusOutput->JobId;
     my $JobType               = $GetStatusOutput->JobType;
+    my $LocationCode          = $GetStatusOutput->LocationCode;
+    my $LocationMessage       = $GetStatusOutput->LocationMessage;
+    my $LogBucket             = $GetStatusOutput->LogBucket;
     my $LogKey                = $GetStatusOutput->LogKey;
+    my $ProgressCode          = $GetStatusOutput->ProgressCode;
+    my $ProgressMessage       = $GetStatusOutput->ProgressMessage;
+    my $Signature             = $GetStatusOutput->Signature;
+    my $SignatureFileContents = $GetStatusOutput->SignatureFileContents;
+    my $TrackingNumber        = $GetStatusOutput->TrackingNumber;
 
     # Returns a L<Paws::ImportExport::GetStatusOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/importexport/GetStatus>
 
 =head1 ATTRIBUTES
 

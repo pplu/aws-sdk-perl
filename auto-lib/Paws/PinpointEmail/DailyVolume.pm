@@ -3,6 +3,7 @@ package Paws::PinpointEmail::DailyVolume;
   has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainIspPlacement]');
   has StartDate => (is => 'ro', isa => 'Str');
   has VolumeStatistics => (is => 'ro', isa => 'Paws::PinpointEmail::VolumeStatistics');
+
 1;
 
 ### main pod documentation begin ###

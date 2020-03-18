@@ -4,6 +4,7 @@ package Paws::ServiceQuotas::MetricInfo;
   has MetricName => (is => 'ro', isa => 'Str');
   has MetricNamespace => (is => 'ro', isa => 'Str');
   has MetricStatisticRecommendation => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

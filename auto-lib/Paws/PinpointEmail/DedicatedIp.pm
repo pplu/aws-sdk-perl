@@ -4,6 +4,7 @@ package Paws::PinpointEmail::DedicatedIp;
   has PoolName => (is => 'ro', isa => 'Str');
   has WarmupPercentage => (is => 'ro', isa => 'Int', required => 1);
   has WarmupStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

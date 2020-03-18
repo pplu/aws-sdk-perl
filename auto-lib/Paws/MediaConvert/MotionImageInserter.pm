@@ -6,6 +6,7 @@ package Paws::MediaConvert::MotionImageInserter;
   has Offset => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInsertionOffset', request_name => 'offset', traits => ['NameInRequest']);
   has Playback => (is => 'ro', isa => 'Str', request_name => 'playback', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::MediaTailor::TagsModel;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

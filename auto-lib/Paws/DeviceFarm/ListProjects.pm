@@ -32,12 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns information about the specified project in
     # Device Farm.
     my $ListProjectsResult = $devicefarm->ListProjects(
-      {
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE',
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAMPLE'
-      }
+      'Arn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAMPLE',
+      'NextToken' => 'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE'
     );
 
     # Results:

@@ -37,15 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedDate = $Deployment->CreatedDate;
-    my $Id          = $Deployment->Id;
     my $ApiSummary  = $Deployment->ApiSummary;
+    my $CreatedDate = $Deployment->CreatedDate;
     my $Description = $Deployment->Description;
+    my $Id          = $Deployment->Id;
 
     # Returns a L<Paws::ApiGateway::Deployment> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetDeployment>
 
 =head1 ATTRIBUTES
 

@@ -3,6 +3,7 @@ package Paws::SageMaker::AlgorithmValidationProfile;
   has ProfileName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::TrainingJobDefinition', required => 1);
   has TransformJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::TransformJobDefinition');
+
 1;
 
 ### main pod documentation begin ###

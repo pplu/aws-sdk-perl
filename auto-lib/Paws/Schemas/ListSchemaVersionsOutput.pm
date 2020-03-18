@@ -2,6 +2,7 @@ package Paws::Schemas::ListSchemaVersionsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has SchemaVersions => (is => 'ro', isa => 'ArrayRef[Paws::Schemas::SchemaVersionSummary]');
+
 1;
 
 ### main pod documentation begin ###

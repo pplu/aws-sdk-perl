@@ -2,6 +2,7 @@ package Paws::Textract::Relationship;
   use Moose;
   has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

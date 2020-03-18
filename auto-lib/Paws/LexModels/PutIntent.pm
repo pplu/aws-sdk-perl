@@ -44,111 +44,113 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                => 'MyIntentName',
       Checksum            => 'MyString',       # OPTIONAL
       ConclusionStatement => {
-        messages => [
+        Messages => [
           {
-            content => 'MyContentString',      # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',      # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       ConfirmationPrompt => {
-        messages => [
+        MaxAttempts => 1,    # min: 1, max: 5
+        Messages    => [
           {
-            content => 'MyContentString',    # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        maxAttempts  => 1,                   # min: 1, max: 5
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion  => 1,                  # OPTIONAL
       Description    => 'MyDescription',    # OPTIONAL
       DialogCodeHook => {
-        uri            => 'MyLambdaARN',         # min: 20, max: 2048
-        messageVersion => 'MyMessageVersion',    # min: 1, max: 5
+        MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
+        Uri            => 'MyLambdaARN',         # min: 20, max: 2048
 
       },    # OPTIONAL
       FollowUpPrompt => {
-        prompt => {
-          messages => [
+        Prompt => {
+          MaxAttempts => 1,    # min: 1, max: 5
+          Messages    => [
             {
-              content => 'MyContentString',    # min: 1, max: 1000
-              contentType =>
+              Content => 'MyContentString',    # min: 1, max: 1000
+              ContentType =>
                 'PlainText',    # values: PlainText, SSML, CustomPayload
-              groupNumber => 1, # min: 1, max: 5; OPTIONAL
+              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
             },
             ...
           ],                    # min: 1, max: 15
-          maxAttempts  => 1,                   # min: 1, max: 5
-          responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
-        rejectionStatement => {
-          messages => [
+        RejectionStatement => {
+          Messages => [
             {
-              content => 'MyContentString',    # min: 1, max: 1000
-              contentType =>
+              Content => 'MyContentString',    # min: 1, max: 1000
+              ContentType =>
                 'PlainText',    # values: PlainText, SSML, CustomPayload
-              groupNumber => 1, # min: 1, max: 5; OPTIONAL
+              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
             },
             ...
           ],                    # min: 1, max: 15
-          responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
 
       },    # OPTIONAL
       FulfillmentActivity => {
-        type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
-        codeHook => {
-          uri            => 'MyLambdaARN',         # min: 20, max: 2048
-          messageVersion => 'MyMessageVersion',    # min: 1, max: 5
+        Type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
+        CodeHook => {
+          MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
+          Uri            => 'MyLambdaARN',         # min: 20, max: 2048
 
         },
       },    # OPTIONAL
       ParentIntentSignature => 'MyBuiltinIntentSignature',    # OPTIONAL
       RejectionStatement    => {
-        messages => [
+        Messages => [
           {
-            content => 'MyContentString',    # min: 1, max: 1000
-            contentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            groupNumber => 1,           # min: 1, max: 5; OPTIONAL
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
         ],                              # min: 1, max: 15
-        responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       SampleUtterances => [
         'MyUtterance', ...    # min: 1, max: 200
       ],                      # OPTIONAL
       Slots => [
         {
-          name            => 'MySlotName',       # min: 1, max: 100
-          slotConstraint  => 'Required',         # values: Required, Optional
-          priority        => 1,                  # max: 100; OPTIONAL
-          slotTypeVersion => 'MyVersion',        # min: 1, max: 64; OPTIONAL
-          description     => 'MyDescription',    # max: 200
-          slotType =>
-            'MyCustomOrBuiltinSlotTypeName',     # min: 1, max: 100; OPTIONAL
-          responseCard     => 'MyResponseCard',  # min: 1, max: 50000; OPTIONAL
-          sampleUtterances => [
-            'MyUtterance', ...                   # min: 1, max: 200
-          ],                                     # max: 10; OPTIONAL
-          valueElicitationPrompt => {
-            messages => [
+          Name           => 'MySlotName',       # min: 1, max: 100
+          SlotConstraint => 'Required',         # values: Required, Optional
+          Description    => 'MyDescription',    # max: 200
+          ObfuscationSetting =>
+            'NONE',    # values: NONE, DEFAULT_OBFUSCATION; OPTIONAL
+          Priority         => 1,                  # max: 100; OPTIONAL
+          ResponseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
+          SampleUtterances => [
+            'MyUtterance', ...                    # min: 1, max: 200
+          ],                                      # max: 10; OPTIONAL
+          SlotType =>
+            'MyCustomOrBuiltinSlotTypeName',      # min: 1, max: 100; OPTIONAL
+          SlotTypeVersion        => 'MyVersion',  # min: 1, max: 64; OPTIONAL
+          ValueElicitationPrompt => {
+            MaxAttempts => 1,                     # min: 1, max: 5
+            Messages    => [
               {
-                content => 'MyContentString',    # min: 1, max: 1000
-                contentType =>
+                Content => 'MyContentString',     # min: 1, max: 1000
+                ContentType =>
                   'PlainText',    # values: PlainText, SSML, CustomPayload
-                groupNumber => 1, # min: 1, max: 5; OPTIONAL
+                GroupNumber => 1, # min: 1, max: 5; OPTIONAL
               },
               ...
             ],                    # min: 1, max: 15
-            maxAttempts  => 1,                   # min: 1, max: 5
-            responseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+            ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
           },
         },
         ...
@@ -156,27 +158,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
-    my $CreateVersion         = $PutIntentResponse->CreateVersion;
-    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
-    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
-    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
     my $Checksum              = $PutIntentResponse->Checksum;
-    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
+    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
+    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
+    my $CreateVersion         = $PutIntentResponse->CreateVersion;
+    my $CreatedDate           = $PutIntentResponse->CreatedDate;
+    my $Description           = $PutIntentResponse->Description;
+    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
+    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
     my $FulfillmentActivity   = $PutIntentResponse->FulfillmentActivity;
     my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
-    my $Slots                 = $PutIntentResponse->Slots;
-    my $CreatedDate           = $PutIntentResponse->CreatedDate;
-    my $Version               = $PutIntentResponse->Version;
-    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
-    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
-    my $Description           = $PutIntentResponse->Description;
     my $Name                  = $PutIntentResponse->Name;
+    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
+    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
+    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
+    my $Slots                 = $PutIntentResponse->Slots;
+    my $Version               = $PutIntentResponse->Version;
 
     # Returns a L<Paws::LexModels::PutIntentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutIntent>
 
 =head1 ATTRIBUTES
 
@@ -229,7 +231,9 @@ C<confirmationPrompt>, or neither.
 
 =head2 CreateVersion => Bool
 
-
+When set to C<true> a new numbered version of the intent is created.
+This is the same as calling the C<CreateIntentVersion> operation. If
+you do not specify C<createVersion>, the default is C<false>.
 
 
 

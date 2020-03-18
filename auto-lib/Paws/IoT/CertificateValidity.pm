@@ -2,6 +2,7 @@ package Paws::IoT::CertificateValidity;
   use Moose;
   has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
   has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

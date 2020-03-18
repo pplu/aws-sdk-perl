@@ -4,6 +4,7 @@ package Paws::CloudWatch::PartialFailure;
   has FailureCode => (is => 'ro', isa => 'Str');
   has FailureDescription => (is => 'ro', isa => 'Str');
   has FailureResource => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

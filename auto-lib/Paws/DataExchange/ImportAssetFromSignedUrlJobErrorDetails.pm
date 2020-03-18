@@ -1,6 +1,7 @@
 package Paws::DataExchange::ImportAssetFromSignedUrlJobErrorDetails;
   use Moose;
   has AssetName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

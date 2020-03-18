@@ -1,6 +1,7 @@
 package Paws::MediaConvert::M2tsScte35Esam;
   use Moose;
   has Scte35EsamPid => (is => 'ro', isa => 'Int', request_name => 'scte35EsamPid', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

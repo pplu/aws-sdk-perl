@@ -3,6 +3,7 @@ package Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem;
   has EvaluationMetrics => (is => 'ro', isa => 'Paws::Comprehend::EntityTypesEvaluationMetrics');
   has NumberOfTrainMentions => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

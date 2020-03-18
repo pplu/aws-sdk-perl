@@ -3,6 +3,7 @@ package Paws::MediaConvert::MpdSettings;
   has CaptionContainerType => (is => 'ro', isa => 'Str', request_name => 'captionContainerType', traits => ['NameInRequest']);
   has Scte35Esam => (is => 'ro', isa => 'Str', request_name => 'scte35Esam', traits => ['NameInRequest']);
   has Scte35Source => (is => 'ro', isa => 'Str', request_name => 'scte35Source', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchEvents::DescribeRule;
   use Moose;
+  has EventBusName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -19,7 +20,7 @@ Paws::CloudWatchEvents::DescribeRule - Arguments for method DescribeRule on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeRule on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method DescribeRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRule.
@@ -28,18 +29,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $events = Paws->service('CloudWatchEvents');
     my $DescribeRuleResponse = $events->DescribeRule(
-      Name => 'MyRuleName',
-
+      Name         => 'MyRuleName',
+      EventBusName => 'MyEventBusName',    # OPTIONAL
     );
 
     # Results:
-    my $RoleArn            = $DescribeRuleResponse->RoleArn;
-    my $ScheduleExpression = $DescribeRuleResponse->ScheduleExpression;
     my $Arn                = $DescribeRuleResponse->Arn;
     my $Description        = $DescribeRuleResponse->Description;
-    my $State              = $DescribeRuleResponse->State;
-    my $Name               = $DescribeRuleResponse->Name;
+    my $EventBusName       = $DescribeRuleResponse->EventBusName;
     my $EventPattern       = $DescribeRuleResponse->EventPattern;
+    my $ManagedBy          = $DescribeRuleResponse->ManagedBy;
+    my $Name               = $DescribeRuleResponse->Name;
+    my $RoleArn            = $DescribeRuleResponse->RoleArn;
+    my $ScheduleExpression = $DescribeRuleResponse->ScheduleExpression;
+    my $State              = $DescribeRuleResponse->State;
 
     # Returns a L<Paws::CloudWatchEvents::DescribeRuleResponse> object.
 
@@ -47,6 +50,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/DescribeRule>
 
 =head1 ATTRIBUTES
+
+
+=head2 EventBusName => Str
+
+The event bus associated with the rule. If you omit this, the default
+event bus is used.
+
 
 
 =head2 B<REQUIRED> Name => Str

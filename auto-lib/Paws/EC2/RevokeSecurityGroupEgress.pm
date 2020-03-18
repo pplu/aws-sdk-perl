@@ -36,45 +36,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     $ec2->RevokeSecurityGroupEgress(
-      GroupId       => 'MyString',
-      CidrIp        => 'MyString',    # OPTIONAL
-      DryRun        => 1,             # OPTIONAL
-      FromPort      => 1,             # OPTIONAL
+      GroupId       => 'MySecurityGroupId',
+      CidrIp        => 'MyString',            # OPTIONAL
+      DryRun        => 1,                     # OPTIONAL
+      FromPort      => 1,                     # OPTIONAL
       IpPermissions => [
         {
-          ToPort        => 1,
-          PrefixListIds => [
-            {
-              PrefixListId => 'MyString',
-              Description  => 'MyString',
-            },
-            ...
-          ],                          # OPTIONAL
-          IpRanges => [
+          FromPort   => 1,
+          IpProtocol => 'MyString',
+          IpRanges   => [
             {
               CidrIp      => 'MyString',
               Description => 'MyString',
             },
             ...
-          ],                          # OPTIONAL
-          FromPort   => 1,
+          ],                                  # OPTIONAL
           Ipv6Ranges => [
             {
               CidrIpv6    => 'MyString',
               Description => 'MyString',
             },
             ...
-          ],                          # OPTIONAL
-          IpProtocol       => 'MyString',
+          ],                                  # OPTIONAL
+          PrefixListIds => [
+            {
+              Description  => 'MyString',
+              PrefixListId => 'MyString',
+            },
+            ...
+          ],                                  # OPTIONAL
+          ToPort           => 1,
           UserIdGroupPairs => [
             {
+              Description            => 'MyString',
+              GroupId                => 'MyString',
+              GroupName              => 'MyString',
+              PeeringStatus          => 'MyString',
               UserId                 => 'MyString',
               VpcId                  => 'MyString',
-              PeeringStatus          => 'MyString',
-              GroupId                => 'MyString',
               VpcPeeringConnectionId => 'MyString',
-              GroupName              => 'MyString',
-              Description            => 'MyString',
             },
             ...
           ],    # OPTIONAL
@@ -122,9 +122,8 @@ The ID of the security group.
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-One or more sets of IP permissions. You can't specify a destination
-security group and a CIDR IP address range in the same set of
-permissions.
+The sets of IP permissions. You can't specify a destination security
+group and a CIDR IP address range in the same set of permissions.
 
 
 

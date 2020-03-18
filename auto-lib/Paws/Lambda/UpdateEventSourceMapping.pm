@@ -2,8 +2,14 @@
 package Paws::Lambda::UpdateEventSourceMapping;
   use Moose;
   has BatchSize => (is => 'ro', isa => 'Int');
+  has BisectBatchOnFunctionError => (is => 'ro', isa => 'Bool');
+  has DestinationConfig => (is => 'ro', isa => 'Paws::Lambda::DestinationConfig');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str');
+  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
+  has MaximumRecordAgeInSeconds => (is => 'ro', isa => 'Int');
+  has MaximumRetryAttempts => (is => 'ro', isa => 'Int');
+  has ParallelizationFactor => (is => 'ro', isa => 'Int');
   has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,25 +40,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a Lambda function event source mapping
     # This operation updates a Lambda function event source mapping
     my $EventSourceMappingConfiguration = $lambda->UpdateEventSourceMapping(
-      {
-        'FunctionName' => 'myFunction',
-        'Enabled'      => 1,
-        'BatchSize'    => 123,
-        'UUID'         => '1234xCy789012'
-      }
+      'BatchSize'    => 123,
+      'Enabled'      => 1,
+      'FunctionName' => 'myFunction',
+      'UUID'         => '1234xCy789012'
     );
 
     # Results:
+    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $State          = $EventSourceMappingConfiguration->State;
+    my $State = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
-    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
-    my $FunctionArn  = $EventSourceMappingConfiguration->FunctionArn;
-    my $UUID         = $EventSourceMappingConfiguration->UUID;
-    my $LastModified = $EventSourceMappingConfiguration->LastModified;
+    my $UUID = $EventSourceMappingConfiguration->UUID;
 
     # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 
@@ -64,44 +68,111 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 BatchSize => Int
 
-The maximum number of stream records that can be sent to your Lambda
-function for a single invocation.
+The maximum number of items to retrieve in a single batch.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - Default 100. Max 10,000.
+
+=item *
+
+B<Amazon DynamoDB Streams> - Default 100. Max 1,000.
+
+=item *
+
+B<Amazon Simple Queue Service> - Default 10. Max 10.
+
+=back
+
+
+
+
+=head2 BisectBatchOnFunctionError => Bool
+
+(Streams) If the function returns an error, split the batch in two and
+retry.
+
+
+
+=head2 DestinationConfig => L<Paws::Lambda::DestinationConfig>
+
+(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+discarded records.
 
 
 
 =head2 Enabled => Bool
 
-Specifies whether AWS Lambda should actively poll the stream or not. If
-disabled, AWS Lambda will not poll the stream.
+Disables the event source mapping to pause polling and invocation.
 
 
 
 =head2 FunctionName => Str
 
-The Lambda function to which you want the stream records sent.
+The name of the Lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
 
-If you are using versioning, you can also provide a qualified function
-ARN (ARN that is qualified with function version or alias name as
-suffix). For more information about versioning, see AWS Lambda Function
-Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+=over
 
-Note that the length constraint applies only to the ARN. If you specify
-only the function name, it is limited to 64 character in length.
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Version or Alias ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it's limited to 64 characters in length.
+
+
+
+=head2 MaximumBatchingWindowInSeconds => Int
+
+The maximum amount of time to gather records before invoking the
+function, in seconds.
+
+
+
+=head2 MaximumRecordAgeInSeconds => Int
+
+(Streams) The maximum age of a record that Lambda sends to a function
+for processing.
+
+
+
+=head2 MaximumRetryAttempts => Int
+
+(Streams) The maximum number of times to retry when the function
+returns an error.
+
+
+
+=head2 ParallelizationFactor => Int
+
+(Streams) The number of batches to process from each shard
+concurrently.
 
 
 
 =head2 B<REQUIRED> UUID => Str
 
-The event source mapping identifier.
+The identifier of the event source mapping.
 
 
 

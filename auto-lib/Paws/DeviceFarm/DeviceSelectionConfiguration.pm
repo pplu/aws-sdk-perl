@@ -2,6 +2,7 @@ package Paws::DeviceFarm::DeviceSelectionConfiguration;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceFilter]', request_name => 'filters', traits => ['NameInRequest'], required => 1);
   has MaxDevices => (is => 'ro', isa => 'Int', request_name => 'maxDevices', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

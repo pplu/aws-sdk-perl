@@ -1,7 +1,7 @@
 package Paws::Pinpoint::MetricDimension;
   use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num');
+  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Num', required => 1);
 
 1;
 
@@ -33,20 +33,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-Custom metric dimension
+Specifies metric-based criteria for including or excluding endpoints
+from a segment. These criteria derive from custom metrics that you
+define for endpoints.
 
 =head1 ATTRIBUTES
 
 
-=head2 ComparisonOperator => Str
+=head2 B<REQUIRED> ComparisonOperator => Str
 
-  GREATER_THAN | LESS_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN_OR_EQUAL |
-EQUAL
+  The operator to use when comparing metric values. Valid values are:
+GREATER_THAN, LESS_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN_OR_EQUAL, and
+EQUAL.
 
 
-=head2 Value => Num
+=head2 B<REQUIRED> Value => Num
 
-  Value to be compared.
+  The value to compare.
 
 
 

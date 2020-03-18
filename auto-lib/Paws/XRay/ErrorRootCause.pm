@@ -1,6 +1,7 @@
 package Paws::XRay::ErrorRootCause;
   use Moose;
   has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ErrorRootCauseService]');
+
 1;
 
 ### main pod documentation begin ###

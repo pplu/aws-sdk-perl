@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists information for the specified log file for the specified
    # DB instance.
     my $DownloadDBLogFilePortionDetails = $rds->DownloadDBLogFilePortion(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'LogFileName'          => 'mysqlUpgrade'
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'LogFileName'          => 'mysqlUpgrade'
     );
 
 
@@ -99,8 +97,8 @@ recent log entries first.
 
 =item *
 
-If NumberOfLines is specified and Marker is not specified, then the
-most recent lines from the end of the log file are returned.
+If NumberOfLines is specified and Marker isn't specified, then the most
+recent lines from the end of the log file are returned.
 
 =item *
 

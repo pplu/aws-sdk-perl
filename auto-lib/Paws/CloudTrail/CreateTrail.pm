@@ -6,11 +6,13 @@ package Paws::CloudTrail::CreateTrail;
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
+  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
+  has TagsList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -44,27 +46,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableLogFileValidation    => 1,             # OPTIONAL
       IncludeGlobalServiceEvents => 1,             # OPTIONAL
       IsMultiRegionTrail         => 1,             # OPTIONAL
+      IsOrganizationTrail        => 1,             # OPTIONAL
       KmsKeyId                   => 'MyString',    # OPTIONAL
       S3KeyPrefix                => 'MyString',    # OPTIONAL
       SnsTopicName               => 'MyString',    # OPTIONAL
+      TagsList                   => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                           # OPTIONAL
     );
 
     # Results:
-    my $IncludeGlobalServiceEvents =
-      $CreateTrailResponse->IncludeGlobalServiceEvents;
-    my $CloudWatchLogsRoleArn = $CreateTrailResponse->CloudWatchLogsRoleArn;
-    my $SnsTopicName          = $CreateTrailResponse->SnsTopicName;
-    my $LogFileValidationEnabled =
-      $CreateTrailResponse->LogFileValidationEnabled;
-    my $IsMultiRegionTrail = $CreateTrailResponse->IsMultiRegionTrail;
-    my $KmsKeyId           = $CreateTrailResponse->KmsKeyId;
-    my $TrailARN           = $CreateTrailResponse->TrailARN;
-    my $S3KeyPrefix        = $CreateTrailResponse->S3KeyPrefix;
     my $CloudWatchLogsLogGroupArn =
       $CreateTrailResponse->CloudWatchLogsLogGroupArn;
-    my $S3BucketName = $CreateTrailResponse->S3BucketName;
-    my $SnsTopicARN  = $CreateTrailResponse->SnsTopicARN;
+    my $CloudWatchLogsRoleArn = $CreateTrailResponse->CloudWatchLogsRoleArn;
+    my $IncludeGlobalServiceEvents =
+      $CreateTrailResponse->IncludeGlobalServiceEvents;
+    my $IsMultiRegionTrail  = $CreateTrailResponse->IsMultiRegionTrail;
+    my $IsOrganizationTrail = $CreateTrailResponse->IsOrganizationTrail;
+    my $KmsKeyId            = $CreateTrailResponse->KmsKeyId;
+    my $LogFileValidationEnabled =
+      $CreateTrailResponse->LogFileValidationEnabled;
     my $Name         = $CreateTrailResponse->Name;
+    my $S3BucketName = $CreateTrailResponse->S3BucketName;
+    my $S3KeyPrefix  = $CreateTrailResponse->S3KeyPrefix;
+    my $SnsTopicARN  = $CreateTrailResponse->SnsTopicARN;
+    my $SnsTopicName = $CreateTrailResponse->SnsTopicName;
+    my $TrailARN     = $CreateTrailResponse->TrailARN;
 
     # Returns a L<Paws::CloudTrail::CreateTrailResponse> object.
 
@@ -117,7 +128,19 @@ such as IAM to the log files.
 =head2 IsMultiRegionTrail => Bool
 
 Specifies whether the trail is created in the current region or in all
-regions. The default is false.
+regions. The default is false, which creates a trail only in the region
+where you are signed in. As a best practice, consider creating trails
+that log events in all regions.
+
+
+
+=head2 IsOrganizationTrail => Bool
+
+Specifies whether the trail is created for all accounts in an
+organization in AWS Organizations, or only for the current AWS account.
+The default is false, and cannot be true unless the call is made on
+behalf of an AWS account that is the master account for an organization
+in AWS Organizations.
 
 
 
@@ -138,11 +161,11 @@ alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item *
 
@@ -191,7 +214,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 Specifies the name of the Amazon S3 bucket designated for publishing
 log files. See Amazon S3 Bucket Naming Requirements
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 
@@ -200,7 +223,7 @@ log files. See Amazon S3 Bucket Naming Requirements
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 The maximum length is 200 characters.
 
 
@@ -209,6 +232,12 @@ The maximum length is 200 characters.
 
 Specifies the name of the Amazon SNS topic defined for notification of
 log file delivery. The maximum length is 256 characters.
+
+
+
+=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
+
+
 
 
 

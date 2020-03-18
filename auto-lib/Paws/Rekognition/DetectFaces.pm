@@ -31,19 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To detect faces in an image
     # This operation detects faces in an image stored in an AWS S3 bucket.
     my $DetectFacesResponse = $rekognition->DetectFaces(
-      {
-        'Image' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
+      'Image' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
         }
       }
     );
 
     # Results:
-    my $OrientationCorrection = $DetectFacesResponse->OrientationCorrection;
     my $FaceDetails           = $DetectFacesResponse->FaceDetails;
+    my $OrientationCorrection = $DetectFacesResponse->OrientationCorrection;
 
     # Returns a L<Paws::Rekognition::DetectFacesResponse> object.
 
@@ -59,9 +57,9 @@ An array of facial attributes you want to be returned. This can be the
 default list of attributes or all attributes. If you don't specify a
 value for C<Attributes> or if you specify C<["DEFAULT"]>, the API
 returns the following subset of facial attributes: C<BoundingBox>,
-C<Confidence>, C<Pose>, C<Quality> and C<Landmarks>. If you provide
-C<["ALL"]>, all facial attributes are returned but the operation will
-take longer to complete.
+C<Confidence>, C<Pose>, C<Quality>, and C<Landmarks>. If you provide
+C<["ALL"]>, all facial attributes are returned, but the operation takes
+longer to complete.
 
 If you provide both, C<["ALL", "DEFAULT"]>, the service uses a logical
 AND operator to determine which attributes to return (in this case, all
@@ -74,6 +72,10 @@ attributes).
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

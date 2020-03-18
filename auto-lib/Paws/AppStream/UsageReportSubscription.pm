@@ -4,6 +4,7 @@ package Paws::AppStream::UsageReportSubscription;
   has S3BucketName => (is => 'ro', isa => 'Str');
   has Schedule => (is => 'ro', isa => 'Str');
   has SubscriptionErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::LastReportGenerationExecutionError]');
+
 1;
 
 ### main pod documentation begin ###

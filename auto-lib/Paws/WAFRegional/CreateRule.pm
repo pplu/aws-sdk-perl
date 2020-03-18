@@ -4,6 +4,7 @@ package Paws::WAFRegional::CreateRule;
   has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a rule
     # The following example creates a rule named WAFByteHeaderRule.
     my $CreateRuleResponse = $waf -regional->CreateRule(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Name'        => 'WAFByteHeaderRule',
-        'MetricName'  => 'WAFByteHeaderRule'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'MetricName'  => 'WAFByteHeaderRule',
+      'Name'        => 'WAFByteHeaderRule'
     );
 
     # Results:
@@ -60,9 +59,11 @@ The value returned by the most recent call to GetChangeToken.
 =head2 B<REQUIRED> MetricName => Str
 
 A friendly name or description for the metrics for this C<Rule>. The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change the name of the metric after
-you create the C<Rule>.
+name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default_Action." You can't change the name of the metric after you
+create the C<Rule>.
 
 
 
@@ -70,6 +71,12 @@ you create the C<Rule>.
 
 A friendly name or description of the Rule. You can't change the name
 of a C<Rule> after you create it.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+
+
 
 
 

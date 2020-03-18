@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::GlueConfiguration;
   use Moose;
   has DatabaseName => (is => 'ro', isa => 'Str', request_name => 'databaseName', traits => ['NameInRequest'], required => 1);
   has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

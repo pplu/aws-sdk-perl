@@ -34,17 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId    => 'MyAccountId',
       BudgetName   => 'MyBudgetName',
       Notification => {
-        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
-        Threshold        => 1,           # min: 0.1, max: 1000000000
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
+        NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold         => 1,           # max: 1000000000
+        NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
         ThresholdType =>
-          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+          'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       Subscribers => [
         {
-          SubscriptionType => 'SNS',                    # values: SNS, EMAIL
-          Address          => 'MySubscriberAddress',    # min: 1,
+          Address          => 'MySubscriberAddress',   # min: 1, max: 2147483647
+          SubscriptionType => 'SNS',                   # values: SNS, EMAIL
 
         },
         ...
@@ -67,7 +68,7 @@ create a notification for.
 
 =head2 B<REQUIRED> BudgetName => Str
 
-The name of the budget that you want AWS to notified you about. Budget
+The name of the budget that you want AWS to notify you about. Budget
 names must be unique within an account.
 
 
@@ -81,7 +82,7 @@ The notification that you want to create.
 =head2 B<REQUIRED> Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
 
 A list of subscribers that you want to associate with the notification.
-Each notification can have one SNS subscriber and up to ten email
+Each notification can have one SNS subscriber and up to 10 email
 subscribers.
 
 

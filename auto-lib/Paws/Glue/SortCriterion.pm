@@ -2,6 +2,7 @@ package Paws::Glue::SortCriterion;
   use Moose;
   has FieldName => (is => 'ro', isa => 'Str');
   has Sort => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

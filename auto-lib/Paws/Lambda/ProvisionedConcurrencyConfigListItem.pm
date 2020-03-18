@@ -7,6 +7,7 @@ package Paws::Lambda::ProvisionedConcurrencyConfigListItem;
   has RequestedProvisionedConcurrentExecutions => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

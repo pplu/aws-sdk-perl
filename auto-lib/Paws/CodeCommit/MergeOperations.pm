@@ -2,6 +2,7 @@ package Paws::CodeCommit::MergeOperations;
   use Moose;
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

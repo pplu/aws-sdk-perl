@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $discovery = Paws->service('Discovery');
     my $DescribeExportTasksResponse = $discovery->DescribeExportTasks(
       ExportIds => [ 'MyConfigurationsExportId', ... ],    # OPTIONAL
-      Filters => [
+      Filters   => [
         {
-          name      => 'MyFilterName',
-          values    => [ 'MyFilterValue', ... ],
-          condition => 'MyCondition',
+          Condition => 'MyCondition',
+          Name      => 'MyFilterName',
+          Values    => [ 'MyFilterValue', ... ],
 
         },
         ...
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $DescribeExportTasksResponse->NextToken;
     my $ExportsInfo = $DescribeExportTasksResponse->ExportsInfo;
+    my $NextToken   = $DescribeExportTasksResponse->NextToken;
 
     # Returns a L<Paws::Discovery::DescribeExportTasksResponse> object.
 

@@ -4,6 +4,7 @@ package Paws::CodeCommit::ReplaceContentEntry;
   has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
   has ReplacementType => (is => 'ro', isa => 'Str', request_name => 'replacementType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

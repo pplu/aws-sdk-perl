@@ -2,6 +2,7 @@ package Paws::Chime::StreamingConfiguration;
   use Moose;
   has DataRetentionInHours => (is => 'ro', isa => 'Int', required => 1);
   has Disabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

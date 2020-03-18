@@ -2,6 +2,7 @@ package Paws::Robomaker::S3KeyOutput;
   use Moose;
   has Etag => (is => 'ro', isa => 'Str', request_name => 'etag', traits => ['NameInRequest']);
   has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

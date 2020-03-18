@@ -8,6 +8,7 @@ package Paws::RAM::ResourceShareInvitation;
   has ResourceShareName => (is => 'ro', isa => 'Str', request_name => 'resourceShareName', traits => ['NameInRequest']);
   has SenderAccountId => (is => 'ro', isa => 'Str', request_name => 'senderAccountId', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

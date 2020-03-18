@@ -1,6 +1,7 @@
 package Paws::Chime::BusinessCallingSettings;
   use Moose;
   has CdrBucket => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

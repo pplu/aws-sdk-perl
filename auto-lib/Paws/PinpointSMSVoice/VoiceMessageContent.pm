@@ -3,6 +3,7 @@ package Paws::PinpointSMSVoice::VoiceMessageContent;
   has CallInstructionsMessage => (is => 'ro', isa => 'Paws::PinpointSMSVoice::CallInstructionsMessageType');
   has PlainTextMessage => (is => 'ro', isa => 'Paws::PinpointSMSVoice::PlainTextMessageType');
   has SSMLMessage => (is => 'ro', isa => 'Paws::PinpointSMSVoice::SSMLMessageType');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Kafka::KafkaVersion;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

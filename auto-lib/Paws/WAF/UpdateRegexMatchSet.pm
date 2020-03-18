@@ -36,13 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Action          => 'INSERT',    # values: INSERT, DELETE
           RegexMatchTuple => {
-            TextTransformation => 'NONE'
-            , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
-            RegexPatternSetId => 'MyResourceId',    # min: 1, max: 128
-            FieldToMatch      => {
-              Type => 'URI',   # values: URI, QUERY_STRING, HEADER, METHOD, BODY
+            FieldToMatch => {
+              Type => 'URI'
+              , # values: URI, QUERY_STRING, HEADER, METHOD, BODY, SINGLE_QUERY_ARG, ALL_QUERY_ARGS
               Data => 'MyMatchFieldData',    # OPTIONAL
             },
+            RegexPatternSetId  => 'MyResourceId',    # min: 1, max: 128
+            TextTransformation => 'NONE'
+            , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
 
           },
 

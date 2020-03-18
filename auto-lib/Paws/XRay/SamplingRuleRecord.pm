@@ -3,6 +3,7 @@ package Paws::XRay::SamplingRuleRecord;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has ModifiedAt => (is => 'ro', isa => 'Str');
   has SamplingRule => (is => 'ro', isa => 'Paws::XRay::SamplingRule');
+
 1;
 
 ### main pod documentation begin ###

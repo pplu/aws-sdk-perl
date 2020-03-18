@@ -1,6 +1,7 @@
 package Paws::Config::StaticValue;
   use Moose;
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

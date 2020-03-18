@@ -2,6 +2,7 @@ package Paws::FraudDetector::ModelScores;
   use Moose;
   has ModelVersion => (is => 'ro', isa => 'Paws::FraudDetector::ModelVersion', request_name => 'modelVersion', traits => ['NameInRequest']);
   has Scores => (is => 'ro', isa => 'Paws::FraudDetector::ModelPredictionMap', request_name => 'scores', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

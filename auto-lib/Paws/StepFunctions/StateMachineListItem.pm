@@ -3,6 +3,7 @@ package Paws::StepFunctions::StateMachineListItem;
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has StateMachineArn => (is => 'ro', isa => 'Str', request_name => 'stateMachineArn', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StepFunctions::StateMachineListItem object:
 
-  $service_obj->Method(Att1 => { CreationDate => $value, ..., StateMachineArn => $value  });
+  $service_obj->Method(Att1 => { CreationDate => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,7 +55,7 @@ A name must I<not> contain:
 
 =item *
 
-whitespace
+white space
 
 =item *
 
@@ -79,6 +80,11 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 =head2 B<REQUIRED> StateMachineArn => Str
 
   The Amazon Resource Name (ARN) that identifies the state machine.
+
+
+=head2 B<REQUIRED> Type => Str
+
+  
 
 
 

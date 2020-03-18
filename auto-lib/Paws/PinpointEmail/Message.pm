@@ -2,6 +2,7 @@ package Paws::PinpointEmail::Message;
   use Moose;
   has Body => (is => 'ro', isa => 'Paws::PinpointEmail::Body', required => 1);
   has Subject => (is => 'ro', isa => 'Paws::PinpointEmail::Content', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::AppMesh::HeaderMatchMethod;
   has Range => (is => 'ro', isa => 'Paws::AppMesh::MatchRange', request_name => 'range', traits => ['NameInRequest']);
   has Regex => (is => 'ro', isa => 'Str', request_name => 'regex', traits => ['NameInRequest']);
   has Suffix => (is => 'ro', isa => 'Str', request_name => 'suffix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

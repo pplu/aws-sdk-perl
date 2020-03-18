@@ -5,6 +5,7 @@ package Paws::WorkSpaces::SelfservicePermissions;
   has RebuildWorkspace => (is => 'ro', isa => 'Str');
   has RestartWorkspace => (is => 'ro', isa => 'Str');
   has SwitchRunningMode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

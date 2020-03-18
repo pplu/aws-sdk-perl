@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AnalyticsEndpointId => 'MyStringType',    # OPTIONAL
       },    # OPTIONAL
       AuthParameters => {
-        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
+        'MyStringType' => 'MyAuthParametersValueType',    # key: OPTIONAL
       },    # OPTIONAL
       ClientMetadata => {
         'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
@@ -49,23 +49,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContextData => {
         HttpHeaders => [
           {
-            headerValue => 'MyStringType',    # OPTIONAL
-            headerName  => 'MyStringType',    # OPTIONAL
+            HeaderName  => 'MyStringType',    # OPTIONAL
+            HeaderValue => 'MyStringType',    # OPTIONAL
           },
           ...
         ],
         IpAddress   => 'MyStringType',        # OPTIONAL
-        ServerPath  => 'MyStringType',        # OPTIONAL
         ServerName  => 'MyStringType',        # OPTIONAL
+        ServerPath  => 'MyStringType',        # OPTIONAL
         EncodedData => 'MyStringType',        # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $Session              = $AdminInitiateAuthResponse->Session;
     my $AuthenticationResult = $AdminInitiateAuthResponse->AuthenticationResult;
-    my $ChallengeParameters  = $AdminInitiateAuthResponse->ChallengeParameters;
     my $ChallengeName        = $AdminInitiateAuthResponse->ChallengeName;
+    my $ChallengeParameters  = $AdminInitiateAuthResponse->ChallengeParameters;
+    my $Session              = $AdminInitiateAuthResponse->Session;
 
     # Returns a L<Paws::CognitoIdp::AdminInitiateAuthResponse> object.
 
@@ -138,10 +138,17 @@ PASSWORD are passed directly. If a user migration Lambda trigger is
 set, this flow will invoke the user migration Lambda if the USERNAME is
 not found in the user pool.
 
+=item *
+
+C<ADMIN_USER_PASSWORD_AUTH>: Admin-based user password authentication.
+This replaces the C<ADMIN_NO_SRP_AUTH> authentication flow. In this
+flow, Cognito receives the password in the request instead of using the
+SRP process to verify passwords.
+
 =back
 
 
-Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">, C<"USER_PASSWORD_AUTH">
+Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">, C<"USER_PASSWORD_AUTH">, C<"ADMIN_USER_PASSWORD_AUTH">
 
 =head2 AuthParameters => L<Paws::CognitoIdp::AuthParametersType>
 
@@ -187,9 +194,99 @@ The app client ID.
 
 =head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
 
-This is a random key-value pair map which can contain any key and will
-be passed to your PreAuthentication Lambda trigger as-is. It can be
-used to implement additional validations around authentication.
+A map of custom key-value pairs that you can provide as input for
+certain custom workflows that this action triggers.
+
+You create custom workflows by assigning AWS Lambda functions to user
+pool triggers. When you use the AdminInitiateAuth API action, Amazon
+Cognito invokes the AWS Lambda functions that are specified for various
+triggers. The ClientMetadata value is passed as input to the functions
+for only the following triggers:
+
+=over
+
+=item *
+
+Pre signup
+
+=item *
+
+Pre authentication
+
+=item *
+
+User migration
+
+=back
+
+When Amazon Cognito invokes the functions for these triggers, it passes
+a JSON payload, which the function receives as input. This payload
+contains a C<validationData> attribute, which provides the data that
+you assigned to the ClientMetadata parameter in your AdminInitiateAuth
+request. In your function code in AWS Lambda, you can process the
+C<validationData> value to enhance your workflow for your specific
+needs.
+
+When you use the AdminInitiateAuth API action, Amazon Cognito also
+invokes the functions for the following triggers, but it does not
+provide the ClientMetadata value as input:
+
+=over
+
+=item *
+
+Post authentication
+
+=item *
+
+Custom message
+
+=item *
+
+Pre token generation
+
+=item *
+
+Create auth challenge
+
+=item *
+
+Define auth challenge
+
+=item *
+
+Verify auth challenge
+
+=back
+
+For more information, see Customizing User Pool Workflows with Lambda
+Triggers
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+in the I<Amazon Cognito Developer Guide>.
+
+Take the following limitations into consideration when you use the
+ClientMetadata parameter:
+
+=over
+
+=item *
+
+Amazon Cognito does not store the ClientMetadata value. This data is
+available only to AWS Lambda triggers that are assigned to a user pool
+to support custom workflows. If your user pool configuration does not
+include triggers, the ClientMetadata parameter serves no purpose.
+
+=item *
+
+Amazon Cognito does not validate the ClientMetadata value.
+
+=item *
+
+Amazon Cognito does not encrypt the the ClientMetadata value, so don't
+use it to provide sensitive information.
+
+=back
+
 
 
 

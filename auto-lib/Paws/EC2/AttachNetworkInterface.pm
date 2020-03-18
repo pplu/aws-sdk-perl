@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example attaches the specified network interface to the specified
     # instance.
     my $AttachNetworkInterfaceResult = $ec2->AttachNetworkInterface(
-      {
-        'InstanceId'         => 'i-1234567890abcdef0',
-        'NetworkInterfaceId' => 'eni-e5aa89a3',
-        'DeviceIndex'        => 1
-      }
+      'DeviceIndex'        => 1,
+      'InstanceId'         => 'i-1234567890abcdef0',
+      'NetworkInterfaceId' => 'eni-e5aa89a3'
     );
 
     # Results:

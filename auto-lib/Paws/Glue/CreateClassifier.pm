@@ -1,6 +1,7 @@
 
 package Paws::Glue::CreateClassifier;
   use Moose;
+  has CsvClassifier => (is => 'ro', isa => 'Paws::Glue::CreateCsvClassifierRequest');
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::CreateGrokClassifierRequest');
   has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::CreateJsonClassifierRequest');
   has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::CreateXMLClassifierRequest');
@@ -30,9 +31,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $CreateClassifierResponse = $glue->CreateClassifier(
+      CsvClassifier => {
+        Name              => 'MyNameString',    # min: 1, max: 255
+        AllowSingleColumn => 1,                 # OPTIONAL
+        ContainsHeader =>
+          'UNKNOWN',    # values: UNKNOWN, PRESENT, ABSENT; OPTIONAL
+        Delimiter => 'MyCsvColumnDelimiter',    # min: 1, max: 1; OPTIONAL
+        DisableValueTrimming => 1,              # OPTIONAL
+        Header               => [
+          'MyNameString', ...                   # min: 1, max: 255
+        ],                                      # OPTIONAL
+        QuoteSymbol => 'MyCsvQuoteSymbol',      # min: 1, max: 1; OPTIONAL
+      },    # OPTIONAL
       GrokClassifier => {
-        GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048
         Classification => 'MyClassification',
+        GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048
         Name           => 'MyNameString',        # min: 1, max: 255
         CustomPatterns => 'MyCustomPatterns',    # max: 16000; OPTIONAL
       },    # OPTIONAL
@@ -52,6 +65,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateClassifier>
 
 =head1 ATTRIBUTES
+
+
+=head2 CsvClassifier => L<Paws::Glue::CreateCsvClassifierRequest>
+
+A C<CsvClassifier> object specifying the classifier to create.
+
 
 
 =head2 GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>

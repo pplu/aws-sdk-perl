@@ -8,6 +8,7 @@ package Paws::Personalize::Dataset;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has SchemaArn => (is => 'ro', isa => 'Str', request_name => 'schemaArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

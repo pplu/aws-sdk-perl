@@ -1,6 +1,7 @@
 package Paws::StepFunctions::CloudWatchLogsLogGroup;
   use Moose;
   has LogGroupArn => (is => 'ro', isa => 'Str', request_name => 'logGroupArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

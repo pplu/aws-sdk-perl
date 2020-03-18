@@ -4,6 +4,7 @@ package Paws::LexModels::PutBotAlias;
   has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
   has BotVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botVersion', required => 1);
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ConversationLogs => (is => 'ro', isa => 'Paws::LexModels::ConversationLogsRequest', traits => ['NameInRequest'], request_name => 'conversationLogs');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
 
@@ -33,26 +34,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $models.lex = Paws->service('LexModels');
     my $PutBotAliasResponse = $models . lex->PutBotAlias(
-      BotName     => 'MyBotName',
-      BotVersion  => 'MyVersion',
-      Name        => 'MyAliasName',
-      Checksum    => 'MyString',         # OPTIONAL
+      BotName          => 'MyBotName',
+      BotVersion       => 'MyVersion',
+      Name             => 'MyAliasName',
+      Checksum         => 'MyString',      # OPTIONAL
+      ConversationLogs => {
+        IamRoleArn  => 'MyIamRoleArn',     # min: 20, max: 2048
+        LogSettings => [
+          {
+            Destination => 'CLOUDWATCH_LOGS',    # values: CLOUDWATCH_LOGS, S3
+            LogType     => 'AUDIO',              # values: AUDIO, TEXT
+            ResourceArn => 'MyResourceArn',      # min: 1, max: 2048
+            KmsKeyArn   => 'MyKmsKeyArn',        # min: 20, max: 2048; OPTIONAL
+          },
+          ...
+        ],
+
+      },    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
     );
 
     # Results:
-    my $CreatedDate     = $PutBotAliasResponse->CreatedDate;
-    my $BotName         = $PutBotAliasResponse->BotName;
-    my $BotVersion      = $PutBotAliasResponse->BotVersion;
-    my $Description     = $PutBotAliasResponse->Description;
-    my $Name            = $PutBotAliasResponse->Name;
-    my $LastUpdatedDate = $PutBotAliasResponse->LastUpdatedDate;
-    my $Checksum        = $PutBotAliasResponse->Checksum;
+    my $BotName          = $PutBotAliasResponse->BotName;
+    my $BotVersion       = $PutBotAliasResponse->BotVersion;
+    my $Checksum         = $PutBotAliasResponse->Checksum;
+    my $ConversationLogs = $PutBotAliasResponse->ConversationLogs;
+    my $CreatedDate      = $PutBotAliasResponse->CreatedDate;
+    my $Description      = $PutBotAliasResponse->Description;
+    my $LastUpdatedDate  = $PutBotAliasResponse->LastUpdatedDate;
+    my $Name             = $PutBotAliasResponse->Name;
 
     # Returns a L<Paws::LexModels::PutBotAliasResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutBotAlias>
 
 =head1 ATTRIBUTES
 
@@ -81,6 +96,12 @@ checksum of the most recent revision of the C<$LATEST> version. If you
 don't specify the C< checksum> field, or if the checksum does not match
 the C<$LATEST> version, you get a C<PreconditionFailedException>
 exception.
+
+
+
+=head2 ConversationLogs => L<Paws::LexModels::ConversationLogsRequest>
+
+Settings for conversation logs for the alias.
 
 
 

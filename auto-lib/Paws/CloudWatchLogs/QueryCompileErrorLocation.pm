@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::QueryCompileErrorLocation;
   use Moose;
   has EndCharOffset => (is => 'ro', isa => 'Int', request_name => 'endCharOffset', traits => ['NameInRequest']);
   has StartCharOffset => (is => 'ro', isa => 'Int', request_name => 'startCharOffset', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::EnvironmentPropertyUpdates;
   use Moose;
   has PropertyGroups => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::PropertyGroup]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

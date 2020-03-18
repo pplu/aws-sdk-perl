@@ -35,15 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Video => {
         S3Object => {
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
-          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
           Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
+          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       JobTag              => 'MyJobTag',                # OPTIONAL
       NotificationChannel => {
-        SNSTopicArn => 'MySNSTopicArn',
         RoleArn     => 'MyRoleArn',
+        SNSTopicArn => 'MySNSTopicArn',
 
       },                                                # OPTIONAL
       );
@@ -70,15 +70,17 @@ same job from being accidently started more than once.
 
 =head2 JobTag => Str
 
-Unique identifier you specify to identify the job in the completion
-status published to the Amazon Simple Notification Service topic.
+An identifier you specify that's returned in the completion
+notification that's published to your Amazon Simple Notification
+Service topic. For example, you can use C<JobTag> to group related jobs
+and identify them in the completion notification.
 
 
 
 =head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
 
-The Amazon SNS topic ARN that you want Rekognition Video to publish the
-completion status of the celebrity recognition analysis to.
+The Amazon SNS topic ARN that you want Amazon Rekognition Video to
+publish the completion status of the celebrity recognition analysis to.
 
 
 

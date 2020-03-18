@@ -1,8 +1,8 @@
 package Paws::Greengrass::Resource;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ResourceDataContainer => (is => 'ro', isa => 'Paws::Greengrass::ResourceDataContainer');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceDataContainer => (is => 'ro', isa => 'Paws::Greengrass::ResourceDataContainer', required => 1);
 
 1;
 
@@ -39,21 +39,21 @@ Information about a resource.
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   The resource ID, used to refer to a resource in the Lambda function
 configuration. Max length is 128 characters with pattern
 ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
-  The descriptive resource name, which is displayed on the Greengrass
-console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
-This must be unique within a Greengrass group.
+  The descriptive resource name, which is displayed on the AWS IoT
+Greengrass console. Max length 128 characters with pattern
+''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 
 
-=head2 ResourceDataContainer => L<Paws::Greengrass::ResourceDataContainer>
+=head2 B<REQUIRED> ResourceDataContainer => L<Paws::Greengrass::ResourceDataContainer>
 
   A container of data for all resource types.
 

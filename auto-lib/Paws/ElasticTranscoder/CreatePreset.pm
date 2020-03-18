@@ -37,73 +37,73 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Container => 'MyPresetContainer',
       Name      => 'MyName',
       Audio     => {
-        Codec            => 'MyAudioCodec',          # OPTIONAL
-        SampleRate       => 'MyAudioSampleRate',     # OPTIONAL
         AudioPackingMode => 'MyAudioPackingMode',    # OPTIONAL
+        BitRate          => 'MyAudioBitRate',        # OPTIONAL
+        Channels         => 'MyAudioChannels',       # OPTIONAL
+        Codec            => 'MyAudioCodec',          # OPTIONAL
         CodecOptions     => {
+          BitDepth => 'MyAudioBitDepth',             # OPTIONAL
           BitOrder => 'MyAudioBitOrder',             # OPTIONAL
           Profile  => 'MyAudioCodecProfile',         # OPTIONAL
-          BitDepth => 'MyAudioBitDepth',             # OPTIONAL
           Signed   => 'MyAudioSigned',               # OPTIONAL
         },    # OPTIONAL
-        Channels => 'MyAudioChannels',    # OPTIONAL
-        BitRate  => 'MyAudioBitRate',     # OPTIONAL
+        SampleRate => 'MyAudioSampleRate',    # OPTIONAL
       },    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
       Thumbnails  => {
-        Format        => 'MyJpgOrPng',               # OPTIONAL
-        Resolution    => 'MyThumbnailResolution',    # OPTIONAL
-        MaxWidth      => 'MyDigitsOrAuto',           # OPTIONAL
         AspectRatio   => 'MyAspectRatio',            # OPTIONAL
-        MaxHeight     => 'MyDigitsOrAuto',           # OPTIONAL
+        Format        => 'MyJpgOrPng',               # OPTIONAL
         Interval      => 'MyDigits',                 # OPTIONAL
-        SizingPolicy  => 'MySizingPolicy',           # OPTIONAL
+        MaxHeight     => 'MyDigitsOrAuto',           # OPTIONAL
+        MaxWidth      => 'MyDigitsOrAuto',           # OPTIONAL
         PaddingPolicy => 'MyPaddingPolicy',          # OPTIONAL
+        Resolution    => 'MyThumbnailResolution',    # OPTIONAL
+        SizingPolicy  => 'MySizingPolicy',           # OPTIONAL
       },    # OPTIONAL
       Video => {
-        Codec            => 'MyVideoCodec',          # OPTIONAL
-        Resolution       => 'MyResolution',          # OPTIONAL
-        KeyframesMaxDist => 'MyKeyframesMaxDist',    # OPTIONAL
-        MaxWidth         => 'MyDigitsOrAuto',        # OPTIONAL
-        CodecOptions     => {
+        AspectRatio  => 'MyAspectRatio',     # OPTIONAL
+        BitRate      => 'MyVideoBitRate',    # OPTIONAL
+        Codec        => 'MyVideoCodec',      # OPTIONAL
+        CodecOptions => {
           'MyCodecOption' =>
             'MyCodecOption',    # key: min: 1, max: 255, value: min: 1, max: 255
         },    # max: 30; OPTIONAL
-        MaxFrameRate       => 'MyMaxFrameRate',    # OPTIONAL
-        FrameRate          => 'MyFrameRate',       # OPTIONAL
-        AspectRatio        => 'MyAspectRatio',     # OPTIONAL
-        FixedGOP           => 'MyFixedGOP',        # OPTIONAL
-        MaxHeight          => 'MyDigitsOrAuto',    # OPTIONAL
-        DisplayAspectRatio => 'MyAspectRatio',     # OPTIONAL
+        DisplayAspectRatio => 'MyAspectRatio',         # OPTIONAL
+        FixedGOP           => 'MyFixedGOP',            # OPTIONAL
+        FrameRate          => 'MyFrameRate',           # OPTIONAL
+        KeyframesMaxDist   => 'MyKeyframesMaxDist',    # OPTIONAL
+        MaxFrameRate       => 'MyMaxFrameRate',        # OPTIONAL
+        MaxHeight          => 'MyDigitsOrAuto',        # OPTIONAL
+        MaxWidth           => 'MyDigitsOrAuto',        # OPTIONAL
+        PaddingPolicy      => 'MyPaddingPolicy',       # OPTIONAL
+        Resolution         => 'MyResolution',          # OPTIONAL
+        SizingPolicy       => 'MySizingPolicy',        # OPTIONAL
         Watermarks         => [
           {
-            HorizontalAlign  => 'MyHorizontalAlign',          # OPTIONAL
-            MaxWidth         => 'MyPixelsOrPercent',          # OPTIONAL
-            Target           => 'MyTarget',                   # OPTIONAL
-            VerticalOffset   => 'MyPixelsOrPercent',          # OPTIONAL
-            HorizontalOffset => 'MyPixelsOrPercent',          # OPTIONAL
-            MaxHeight        => 'MyPixelsOrPercent',          # OPTIONAL
-            VerticalAlign    => 'MyVerticalAlign',            # OPTIONAL
-            Opacity          => 'MyOpacity',                  # OPTIONAL
-            SizingPolicy     => 'MyWatermarkSizingPolicy',    # OPTIONAL
-            Id => 'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
+            HorizontalAlign  => 'MyHorizontalAlign',    # OPTIONAL
+            HorizontalOffset => 'MyPixelsOrPercent',    # OPTIONAL
+            Id        => 'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
+            MaxHeight => 'MyPixelsOrPercent',      # OPTIONAL
+            MaxWidth  => 'MyPixelsOrPercent',      # OPTIONAL
+            Opacity   => 'MyOpacity',              # OPTIONAL
+            SizingPolicy   => 'MyWatermarkSizingPolicy',    # OPTIONAL
+            Target         => 'MyTarget',                   # OPTIONAL
+            VerticalAlign  => 'MyVerticalAlign',            # OPTIONAL
+            VerticalOffset => 'MyPixelsOrPercent',          # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
-        SizingPolicy  => 'MySizingPolicy',  # OPTIONAL
-        BitRate       => 'MyVideoBitRate',  # OPTIONAL
-        PaddingPolicy => 'MyPaddingPolicy', # OPTIONAL
+        ],                                                  # OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $Warning = $CreatePresetResponse->Warning;
     my $Preset  = $CreatePresetResponse->Preset;
+    my $Warning = $CreatePresetResponse->Warning;
 
     # Returns a L<Paws::ElasticTranscoder::CreatePresetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder/CreatePreset>
 
 =head1 ATTRIBUTES
 

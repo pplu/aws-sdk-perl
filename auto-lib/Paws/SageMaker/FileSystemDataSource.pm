@@ -4,6 +4,7 @@ package Paws::SageMaker::FileSystemDataSource;
   has FileSystemAccessMode => (is => 'ro', isa => 'Str', required => 1);
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has FileSystemType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

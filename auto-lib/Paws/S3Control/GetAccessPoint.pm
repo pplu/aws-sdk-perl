@@ -4,6 +4,7 @@ package Paws::S3Control::GetAccessPoint;
   has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
   has Name => (is => 'ro', isa => 'Str', uri_name => 'name', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccessPoint');
@@ -12,6 +13,7 @@ package Paws::S3Control::GetAccessPoint;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::GetAccessPointResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

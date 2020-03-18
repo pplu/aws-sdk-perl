@@ -3,9 +3,12 @@ package Paws::StorageGateway::CreateStorediSCSIVolume;
   use Moose;
   has DiskId => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has KMSEncrypted => (is => 'ro', isa => 'Bool');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PreserveExistingData => (is => 'ro', isa => 'Bool', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has TargetName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -36,21 +39,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Creates a stored volume on a specified stored gateway.
     my $CreateStorediSCSIVolumeOutput =
       $storagegateway->CreateStorediSCSIVolume(
-      {
-        'PreserveExistingData' => 1,
-        'DiskId'               => 'pci-0000:03:00.0-scsi-0:0:0:0',
-        'SnapshotId'           => 'snap-f47b7b94',
-        'TargetName'           => 'my-volume',
-        'NetworkInterfaceId'   => '10.1.1.1',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
+      'DiskId' => 'pci-0000:03:00.0-scsi-0:0:0:0',
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'NetworkInterfaceId'   => '10.1.1.1',
+      'PreserveExistingData' => 1,
+      'SnapshotId'           => 'snap-f47b7b94',
+      'TargetName'           => 'my-volume'
       );
 
     # Results:
     my $TargetARN         = $CreateStorediSCSIVolumeOutput->TargetARN;
-    my $VolumeSizeInBytes = $CreateStorediSCSIVolumeOutput->VolumeSizeInBytes;
     my $VolumeARN         = $CreateStorediSCSIVolumeOutput->VolumeARN;
+    my $VolumeSizeInBytes = $CreateStorediSCSIVolumeOutput->VolumeSizeInBytes;
 
     # Returns a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> object.
 
@@ -64,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 The unique identifier for the gateway local disk that is configured as
 a stored volume. Use ListLocalDisks
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
 to list disk IDs for a gateway.
 
 
@@ -72,6 +73,21 @@ to list disk IDs for a gateway.
 =head2 B<REQUIRED> GatewayARN => Str
 
 
+
+
+
+=head2 KMSEncrypted => Bool
+
+True to use Amazon S3 server side encryption with your own AWS KMS key,
+or false to use a key managed by Amazon S3. Optional.
+
+
+
+=head2 KMSKey => Str
+
+The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server
+side encryption. This value can only be set when KMSEncrypted is true.
+Optional.
 
 
 
@@ -102,18 +118,33 @@ The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
 the new stored volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
 field. To list snapshots for your account use DescribeSnapshots
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 in the I<Amazon Elastic Compute Cloud API Reference>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags that can be assigned to a stored volume. Each
+tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: +
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 
 =head2 B<REQUIRED> TargetName => Str
 
-The name of the iSCSI target used by initiators to connect to the
-target and as a suffix for the target ARN. For example, specifying
+The name of the iSCSI target used by an initiator to connect to a
+volume and used as a suffix for the target ARN. For example, specifying
 C<TargetName> as I<myvolume> results in the target ARN of
-arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume.
-The target name must be unique across all volumes of a gateway.
+C<arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume>.
+The target name must be unique across all volumes on a gateway.
+
+If you don't specify a value, Storage Gateway uses the value that was
+previously used for this volume as the new target name.
 
 
 

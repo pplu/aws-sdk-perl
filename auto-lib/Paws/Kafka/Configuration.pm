@@ -6,6 +6,7 @@ package Paws::Kafka::Configuration;
   has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'kafkaVersions', traits => ['NameInRequest'], required => 1);
   has LatestRevision => (is => 'ro', isa => 'Paws::Kafka::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

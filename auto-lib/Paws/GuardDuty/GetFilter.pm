@@ -30,36 +30,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetFilterResponse = $guardduty->GetFilter(
-      DetectorId => 'My__string',
-      FilterName => 'My__string',
+      DetectorId => 'MyDetectorId',
+      FilterName => 'MyString',
 
     );
 
     # Results:
-    my $Rank            = $GetFilterResponse->Rank;
     my $Action          = $GetFilterResponse->Action;
+    my $Description     = $GetFilterResponse->Description;
     my $FindingCriteria = $GetFilterResponse->FindingCriteria;
     my $Name            = $GetFilterResponse->Name;
-    my $Description     = $GetFilterResponse->Description;
+    my $Rank            = $GetFilterResponse->Rank;
+    my $Tags            = $GetFilterResponse->Tags;
 
     # Returns a L<Paws::GuardDuty::GetFilterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/GetFilter>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The detector ID that specifies the GuardDuty service where you want to
-list the details of the specified filter.
+The unique ID of the detector the filter is associated with.
 
 
 
 =head2 B<REQUIRED> FilterName => Str
 
-The name of the filter whose details you want to get.
+The name of the filter you want to get.
 
 
 

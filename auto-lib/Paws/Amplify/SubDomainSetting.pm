@@ -2,6 +2,7 @@ package Paws::Amplify::SubDomainSetting;
   use Moose;
   has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest'], required => 1);
   has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

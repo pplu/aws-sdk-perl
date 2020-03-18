@@ -3,6 +3,7 @@ package Paws::Chime::UpdatePhoneNumberRequestItem;
   has CallingName => (is => 'ro', isa => 'Str');
   has PhoneNumberId => (is => 'ro', isa => 'Str', required => 1);
   has ProductType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

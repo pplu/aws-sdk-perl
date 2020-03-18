@@ -20,6 +20,7 @@ package Paws::Robomaker::SimulationJob;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::Robomaker::VPCConfigResponse', request_name => 'vpcConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

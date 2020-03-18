@@ -3,6 +3,7 @@ package Paws::CodeCommit::MergeHunkDetail;
   has EndLine => (is => 'ro', isa => 'Int', request_name => 'endLine', traits => ['NameInRequest']);
   has HunkContent => (is => 'ro', isa => 'Str', request_name => 'hunkContent', traits => ['NameInRequest']);
   has StartLine => (is => 'ro', isa => 'Int', request_name => 'startLine', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

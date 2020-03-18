@@ -4,6 +4,7 @@ package Paws::LakeFormation::TableWithColumnsResource;
   has ColumnWildcard => (is => 'ro', isa => 'Paws::LakeFormation::ColumnWildcard');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

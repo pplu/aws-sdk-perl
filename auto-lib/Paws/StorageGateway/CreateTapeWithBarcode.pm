@@ -4,6 +4,8 @@ package Paws::StorageGateway::CreateTapeWithBarcode;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
+  has PoolId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has TapeBarcode => (is => 'ro', isa => 'Str', required => 1);
   has TapeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
 
@@ -34,12 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a virtual tape using a barcode
     # Creates a virtual tape by using your own barcode.
     my $CreateTapeWithBarcodeOutput = $storagegateway->CreateTapeWithBarcode(
-      {
-        'TapeSizeInBytes' => 107374182400,
-        'TapeBarcode'     => 'TEST12345',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+      'TapeBarcode'     => 'TEST12345',
+      'TapeSizeInBytes' => 107374182400
     );
 
     # Results:
@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 The unique Amazon Resource Name (ARN) that represents the gateway to
 associate the virtual tape with. Use the ListGateways operation to
-return a list of gateways for your account and region.
+return a list of gateways for your account and AWS Region.
 
 
 
@@ -70,9 +70,33 @@ or false to use a key managed by Amazon S3. Optional.
 
 =head2 KMSKey => Str
 
-The Amazon Resource Name (ARN) of the KMS Key used for Amazon S3 server
-side encryption. This value can only be set when KMSEncrypted is true.
-Optional.
+The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3
+server side encryption. This value can only be set when KMSEncrypted is
+true. Optional.
+
+
+
+=head2 PoolId => Str
+
+The ID of the pool that you want to add your tape to for archiving. The
+tape in this pool is archived in the S3 storage class that is
+associated with the pool. When you use your backup application to eject
+the tape, the tape is archived directly into the storage class (Glacier
+or Deep Archive) that corresponds to the pool.
+
+Valid values: "GLACIER", "DEEP_ARCHIVE"
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags that can be assigned to a virtual tape that has
+a barcode. Each tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: +
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 

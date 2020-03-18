@@ -30,23 +30,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lambda = Paws->service('Lambda');
     # To delete a Lambda function event source mapping
     # This operation deletes a Lambda function event source mapping
-    my $EventSourceMappingConfiguration = $lambda->DeleteEventSourceMapping(
-      {
-        'UUID' => '12345kxodurf3443'
-      }
-    );
+    my $EventSourceMappingConfiguration =
+      $lambda->DeleteEventSourceMapping( 'UUID' => '12345kxodurf3443' );
 
     # Results:
+    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $State          = $EventSourceMappingConfiguration->State;
+    my $State = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
-    my $BatchSize    = $EventSourceMappingConfiguration->BatchSize;
-    my $FunctionArn  = $EventSourceMappingConfiguration->FunctionArn;
-    my $UUID         = $EventSourceMappingConfiguration->UUID;
-    my $LastModified = $EventSourceMappingConfiguration->LastModified;
+    my $UUID = $EventSourceMappingConfiguration->UUID;
 
     # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 
@@ -58,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> UUID => Str
 
-The event source mapping ID.
+The identifier of the event source mapping.
 
 
 

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $email->DescribeReceiptRuleSet( 'RuleSetName' => 'MyRuleSet' );
 
     # Results:
-    my $Rules    = $DescribeReceiptRuleSetResponse->Rules;
     my $Metadata = $DescribeReceiptRuleSetResponse->Metadata;
+    my $Rules    = $DescribeReceiptRuleSetResponse->Rules;
 
     # Returns a L<Paws::SES::DescribeReceiptRuleSetResponse> object.
 

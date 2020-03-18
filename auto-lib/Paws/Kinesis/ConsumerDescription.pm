@@ -5,6 +5,7 @@ package Paws::Kinesis::ConsumerDescription;
   has ConsumerName => (is => 'ro', isa => 'Str', required => 1);
   has ConsumerStatus => (is => 'ro', isa => 'Str', required => 1);
   has StreamARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

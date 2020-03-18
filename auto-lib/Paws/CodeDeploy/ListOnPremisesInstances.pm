@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RegistrationStatus => 'Registered',     # OPTIONAL
       TagFilters         => [
         {
+          Key => 'MyKey',                     # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-          Key   => 'MyKey',      # OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...

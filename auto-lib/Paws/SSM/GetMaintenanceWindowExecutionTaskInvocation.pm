@@ -38,27 +38,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $WindowTargetId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowTargetId;
+    my $EndTime = $GetMaintenanceWindowExecutionTaskInvocationResult->EndTime;
+    my $ExecutionId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->ExecutionId;
+    my $InvocationId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->InvocationId;
+    my $OwnerInformation =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->OwnerInformation;
+    my $Parameters =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->Parameters;
+    my $StartTime =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->StartTime;
     my $Status = $GetMaintenanceWindowExecutionTaskInvocationResult->Status;
     my $StatusDetails =
       $GetMaintenanceWindowExecutionTaskInvocationResult->StatusDetails;
-    my $TaskType = $GetMaintenanceWindowExecutionTaskInvocationResult->TaskType;
-    my $InvocationId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->InvocationId;
-    my $Parameters =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->Parameters;
-    my $ExecutionId =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->ExecutionId;
     my $TaskExecutionId =
       $GetMaintenanceWindowExecutionTaskInvocationResult->TaskExecutionId;
+    my $TaskType = $GetMaintenanceWindowExecutionTaskInvocationResult->TaskType;
     my $WindowExecutionId =
       $GetMaintenanceWindowExecutionTaskInvocationResult->WindowExecutionId;
-    my $EndTime = $GetMaintenanceWindowExecutionTaskInvocationResult->EndTime;
-    my $StartTime =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->StartTime;
-    my $OwnerInformation =
-      $GetMaintenanceWindowExecutionTaskInvocationResult->OwnerInformation;
+    my $WindowTargetId =
+      $GetMaintenanceWindowExecutionTaskInvocationResult->WindowTargetId;
 
 # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> object.
 
@@ -76,14 +76,14 @@ The invocation ID to retrieve.
 
 =head2 B<REQUIRED> TaskId => Str
 
-The ID of the specific task in the Maintenance Window task that should
+The ID of the specific task in the maintenance window task that should
 be retrieved.
 
 
 
 =head2 B<REQUIRED> WindowExecutionId => Str
 
-The ID of the Maintenance Window execution for which the task is a
+The ID of the maintenance window execution for which the task is a
 part.
 
 

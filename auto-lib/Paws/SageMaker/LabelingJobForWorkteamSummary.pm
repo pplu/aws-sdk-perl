@@ -6,6 +6,7 @@ package Paws::SageMaker::LabelingJobForWorkteamSummary;
   has LabelingJobName => (is => 'ro', isa => 'Str');
   has NumberOfHumanWorkersPerDataObject => (is => 'ro', isa => 'Int');
   has WorkRequesterAccountId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

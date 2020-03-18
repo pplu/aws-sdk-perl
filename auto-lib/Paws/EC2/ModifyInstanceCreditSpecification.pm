@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $UnsuccessfulInstanceCreditSpecifications =
-      $ModifyInstanceCreditSpecificationResult
-      ->UnsuccessfulInstanceCreditSpecifications;
     my $SuccessfulInstanceCreditSpecifications =
       $ModifyInstanceCreditSpecificationResult
       ->SuccessfulInstanceCreditSpecifications;
+    my $UnsuccessfulInstanceCreditSpecifications =
+      $ModifyInstanceCreditSpecificationResult
+      ->UnsuccessfulInstanceCreditSpecifications;
 
     # Returns a L<Paws::EC2::ModifyInstanceCreditSpecificationResult> object.
 

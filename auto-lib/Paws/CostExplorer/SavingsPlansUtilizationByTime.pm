@@ -4,6 +4,7 @@ package Paws::CostExplorer::SavingsPlansUtilizationByTime;
   has Savings => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansSavings');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
   has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilization', required => 1);
+
 1;
 
 ### main pod documentation begin ###

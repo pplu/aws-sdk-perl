@@ -23,6 +23,7 @@ package Paws::ECS::TaskSet;
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
   has TaskSetArn => (is => 'ro', isa => 'Str', request_name => 'taskSetArn', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

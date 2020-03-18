@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status               = $UpdateConstraintOutput->Status;
-    my $ConstraintParameters = $UpdateConstraintOutput->ConstraintParameters;
     my $ConstraintDetail     = $UpdateConstraintOutput->ConstraintDetail;
+    my $ConstraintParameters = $UpdateConstraintOutput->ConstraintParameters;
+    my $Status               = $UpdateConstraintOutput->Status;
 
     # Returns a L<Paws::ServiceCatalog::UpdateConstraintOutput> object.
 

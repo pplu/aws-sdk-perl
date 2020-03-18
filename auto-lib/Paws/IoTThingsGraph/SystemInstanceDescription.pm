@@ -7,6 +7,7 @@ package Paws::IoTThingsGraph::SystemInstanceDescription;
   has Summary => (is => 'ro', isa => 'Paws::IoTThingsGraph::SystemInstanceSummary', request_name => 'summary', traits => ['NameInRequest']);
   has ValidatedDependencyRevisions => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::DependencyRevision]', request_name => 'validatedDependencyRevisions', traits => ['NameInRequest']);
   has ValidatedNamespaceVersion => (is => 'ro', isa => 'Int', request_name => 'validatedNamespaceVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

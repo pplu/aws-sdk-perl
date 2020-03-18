@@ -11,6 +11,7 @@ package Paws::S3Control::CreateJob;
   has Report => (is => 'ro', isa => 'Paws::S3Control::JobReport', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
@@ -18,7 +19,8 @@ package Paws::S3Control::CreateJob;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::CreateJobResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'CreateJobRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'http://awss3control.amazonaws.com/doc/2018-08-20/');  
 1;
 
 ### main pod documentation begin ###

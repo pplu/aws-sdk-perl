@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example add a source identifier to an event notification subscription.
     my $AddSourceIdentifierToSubscriptionResult =
       $rds->AddSourceIdentifierToSubscription(
-      {
-        'SubscriptionName' => 'mymysqleventsubscription',
-        'SourceIdentifier' => 'mymysqlinstance'
-      }
+      'SourceIdentifier' => 'mymysqlinstance',
+      'SubscriptionName' => 'mymysqleventsubscription'
       );
 
 

@@ -6,6 +6,7 @@ package Paws::SecurityHub::AwsIamAccessKeyDetails;
   has PrincipalType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

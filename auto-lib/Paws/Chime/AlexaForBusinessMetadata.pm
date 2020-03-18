@@ -2,6 +2,7 @@ package Paws::Chime::AlexaForBusinessMetadata;
   use Moose;
   has AlexaForBusinessRoomArn => (is => 'ro', isa => 'Str');
   has IsAlexaForBusinessEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

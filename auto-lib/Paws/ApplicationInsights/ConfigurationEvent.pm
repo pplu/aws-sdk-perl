@@ -6,6 +6,7 @@ package Paws::ApplicationInsights::ConfigurationEvent;
   has EventStatus => (is => 'ro', isa => 'Str');
   has EventTime => (is => 'ro', isa => 'Str');
   has MonitoredResourceARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

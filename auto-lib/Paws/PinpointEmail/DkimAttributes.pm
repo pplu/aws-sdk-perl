@@ -3,6 +3,7 @@ package Paws::PinpointEmail::DkimAttributes;
   has SigningEnabled => (is => 'ro', isa => 'Bool');
   has Status => (is => 'ro', isa => 'Str');
   has Tokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

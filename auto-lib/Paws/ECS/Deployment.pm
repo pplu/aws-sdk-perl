@@ -81,7 +81,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
   The VPC subnet and security group configuration for tasks that receive
-their own Elastic Network Interface by using the C<awsvpc> networking
+their own elastic network interface by using the C<awsvpc> networking
 mode.
 
 

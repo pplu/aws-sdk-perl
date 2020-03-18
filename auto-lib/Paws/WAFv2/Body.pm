@@ -1,5 +1,6 @@
 package Paws::WAFv2::Body;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

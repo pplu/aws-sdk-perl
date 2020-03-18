@@ -1,6 +1,7 @@
 package Paws::Datasync::OnPremConfig;
   use Moose;
   has AgentArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

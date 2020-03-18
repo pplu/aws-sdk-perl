@@ -2,6 +2,7 @@ package Paws::IoT::S3Destination;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
   has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

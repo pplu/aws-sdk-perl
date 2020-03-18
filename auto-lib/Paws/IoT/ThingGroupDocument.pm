@@ -5,6 +5,7 @@ package Paws::IoT::ThingGroupDocument;
   has ThingGroupDescription => (is => 'ro', isa => 'Str', request_name => 'thingGroupDescription', traits => ['NameInRequest']);
   has ThingGroupId => (is => 'ro', isa => 'Str', request_name => 'thingGroupId', traits => ['NameInRequest']);
   has ThingGroupName => (is => 'ro', isa => 'Str', request_name => 'thingGroupName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

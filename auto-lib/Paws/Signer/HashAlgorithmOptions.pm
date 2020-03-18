@@ -2,6 +2,7 @@ package Paws::Signer::HashAlgorithmOptions;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'allowedValues', traits => ['NameInRequest'], required => 1);
   has DefaultValue => (is => 'ro', isa => 'Str', request_name => 'defaultValue', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::MigrationHubConfig::HomeRegionControl;
   has HomeRegion => (is => 'ro', isa => 'Str');
   has RequestedTime => (is => 'ro', isa => 'Str');
   has Target => (is => 'ro', isa => 'Paws::MigrationHubConfig::Target');
+
 1;
 
 ### main pod documentation begin ###

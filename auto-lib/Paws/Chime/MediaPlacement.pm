@@ -7,6 +7,7 @@ package Paws::Chime::MediaPlacement;
   has ScreenViewingUrl => (is => 'ro', isa => 'Str');
   has SignalingUrl => (is => 'ro', isa => 'Str');
   has TurnControlUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

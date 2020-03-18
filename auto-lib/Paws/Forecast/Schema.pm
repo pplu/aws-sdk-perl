@@ -1,6 +1,7 @@
 package Paws::Forecast::Schema;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::SchemaAttribute]');
+
 1;
 
 ### main pod documentation begin ###

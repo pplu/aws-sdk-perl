@@ -5,6 +5,7 @@ package Paws::Kendra::Relevance;
   has Importance => (is => 'ro', isa => 'Int');
   has RankOrder => (is => 'ro', isa => 'Str');
   has ValueImportanceMap => (is => 'ro', isa => 'Paws::Kendra::ValueImportanceMap');
+
 1;
 
 ### main pod documentation begin ###

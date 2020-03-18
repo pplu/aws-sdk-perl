@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SubnetId = $AssociateSubnetCidrBlockResult->SubnetId;
     my $Ipv6CidrBlockAssociation =
       $AssociateSubnetCidrBlockResult->Ipv6CidrBlockAssociation;
+    my $SubnetId = $AssociateSubnetCidrBlockResult->SubnetId;
 
     # Returns a L<Paws::EC2::AssociateSubnetCidrBlockResult> object.
 

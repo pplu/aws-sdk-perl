@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $nextToken     = $PreviewAgentsResponse->nextToken;
     my $agentPreviews = $PreviewAgentsResponse->agentPreviews;
+    my $nextToken     = $PreviewAgentsResponse->nextToken;
 
     # Returns a L<Paws::Inspector::PreviewAgentsResponse> object.
 

@@ -4,6 +4,7 @@ package Paws::SecurityHub::Invitation;
   has InvitationId => (is => 'ro', isa => 'Str');
   has InvitedAt => (is => 'ro', isa => 'Str');
   has MemberStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

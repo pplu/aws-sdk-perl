@@ -2,6 +2,7 @@ package Paws::ImageBuilder::ImageTestsConfiguration;
   use Moose;
   has ImageTestsEnabled => (is => 'ro', isa => 'Bool', request_name => 'imageTestsEnabled', traits => ['NameInRequest']);
   has TimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutMinutes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

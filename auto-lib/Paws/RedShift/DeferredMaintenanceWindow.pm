@@ -3,6 +3,7 @@ package Paws::RedShift::DeferredMaintenanceWindow;
   has DeferMaintenanceEndTime => (is => 'ro', isa => 'Str');
   has DeferMaintenanceIdentifier => (is => 'ro', isa => 'Str');
   has DeferMaintenanceStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

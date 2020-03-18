@@ -5,6 +5,7 @@ package Paws::ElastiCache::UnprocessedUpdateAction;
   has ErrorType => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has ServiceUpdateName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

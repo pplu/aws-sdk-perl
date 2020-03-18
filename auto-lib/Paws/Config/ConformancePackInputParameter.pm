@@ -2,6 +2,7 @@ package Paws::Config::ConformancePackInputParameter;
   use Moose;
   has ParameterName => (is => 'ro', isa => 'Str', required => 1);
   has ParameterValue => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

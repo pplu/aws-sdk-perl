@@ -1,10 +1,9 @@
 
 package Paws::S3::GetObjectLegalHoldOutput;
   use Moose;
-  has LegalHold => (is => 'ro', isa => 'Paws::S3::ObjectLockLegalHold');
+  has LegalHold => (is => 'ro', isa => 'Paws::S3::ObjectLockLegalHold', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'LegalHold');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

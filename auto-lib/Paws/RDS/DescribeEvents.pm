@@ -40,12 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # specified DB instance for the past 7 days (7 days * 24 hours * 60 minutes =
    # 10,080 minutes).
     my $EventsMessage = $rds->DescribeEvents(
-      {
-        'EventCategories'  => ['backup'],
-        'SourceType'       => 'db-instance',
-        'SourceIdentifier' => 'mymysqlinstance',
-        'Duration'         => 10080
-      }
+      'Duration'         => 10080,
+      'EventCategories'  => ['backup'],
+      'SourceIdentifier' => 'mymysqlinstance',
+      'SourceType'       => 'db-instance'
     );
 
 
@@ -82,7 +80,7 @@ notification subscription.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
 
 
 
@@ -98,8 +96,8 @@ records beyond the marker, up to the value specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that the remaining
-results can be retrieved.
+token called a marker is included in the response so that you can
+retrieve the remaining results.
 
 Default: 100
 
@@ -142,7 +140,7 @@ supplied.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 

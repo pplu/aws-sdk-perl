@@ -2,6 +2,7 @@ package Paws::CloudWatch::InsightRuleContributorDatapoint;
   use Moose;
   has ApproximateValue => (is => 'ro', isa => 'Num', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

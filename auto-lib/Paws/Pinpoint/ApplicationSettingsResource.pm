@@ -1,6 +1,6 @@
 package Paws::Pinpoint::ApplicationSettingsResource;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
@@ -36,38 +36,64 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Application settings.
+Provides information about an application, including the default
+settings for an application.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
-  The unique ID for the application.
+  The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 =head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
 
-  Default campaign hook.
+  The settings for the AWS Lambda function to use by default as a code
+hook for campaigns in the application.
 
 
 =head2 LastModifiedDate => Str
 
-  The date that the settings were last updated in ISO 8601 format.
+  The date and time, in ISO 8601 format, when the application's settings
+were last modified.
 
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
 
-  The default campaign limits for the app. These limits apply to each
-campaign for the app, unless the campaign overrides the default with
-limits of its own.
+  The default sending limits for campaigns in the application.
 
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
 
-  The default quiet time for the app. Each campaign for this app sends no
-messages during this time unless the campaign overrides the default
-with a quiet time of its own.
+  The default quiet time for campaigns and journeys in the application.
+Quiet time is a specific time range when messages aren't sent to
+endpoints, if all the following conditions are met:
+
+=over
+
+=item *
+
+The EndpointDemographic.Timezone property of the endpoint is set to a
+valid value.
+
+=item *
+
+The current time in the endpoint's time zone is later than or equal to
+the time specified by the QuietTime.Start property for the application
+(or a campaign or journey that has custom quiet time settings).
+
+=item *
+
+The current time in the endpoint's time zone is earlier than or equal
+to the time specified by the QuietTime.End property for the application
+(or a campaign or journey that has custom quiet time settings).
+
+=back
+
+If any of the preceding conditions isn't met, the endpoint will receive
+messages from a campaign or journey, even if quiet time is enabled.
 
 
 

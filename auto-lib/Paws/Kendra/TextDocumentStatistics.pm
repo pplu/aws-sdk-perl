@@ -1,6 +1,7 @@
 package Paws::Kendra::TextDocumentStatistics;
   use Moose;
   has IndexedTextDocumentsCount => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

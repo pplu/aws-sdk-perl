@@ -9,6 +9,7 @@ package Paws::Amplify::JobSummary;
   has JobType => (is => 'ro', isa => 'Str', request_name => 'jobType', traits => ['NameInRequest'], required => 1);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

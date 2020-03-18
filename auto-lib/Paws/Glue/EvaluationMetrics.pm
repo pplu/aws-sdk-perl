@@ -2,6 +2,7 @@ package Paws::Glue::EvaluationMetrics;
   use Moose;
   has FindMatchesMetrics => (is => 'ro', isa => 'Paws::Glue::FindMatchesMetrics');
   has TransformType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

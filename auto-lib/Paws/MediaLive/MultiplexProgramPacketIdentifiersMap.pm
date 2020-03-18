@@ -13,6 +13,7 @@ package Paws::MediaLive::MultiplexProgramPacketIdentifiersMap;
   has Scte35Pid => (is => 'ro', isa => 'Int', request_name => 'scte35Pid', traits => ['NameInRequest']);
   has TimedMetadataPid => (is => 'ro', isa => 'Int', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
   has VideoPid => (is => 'ro', isa => 'Int', request_name => 'videoPid', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

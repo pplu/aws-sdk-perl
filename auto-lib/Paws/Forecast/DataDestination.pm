@@ -1,6 +1,7 @@
 package Paws::Forecast::DataDestination;
   use Moose;
   has S3Config => (is => 'ro', isa => 'Paws::Forecast::S3Config', required => 1);
+
 1;
 
 ### main pod documentation begin ###

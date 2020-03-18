@@ -1,6 +1,7 @@
 package Paws::Quicksight::DataSourceCredentials;
   use Moose;
   has CredentialPair => (is => 'ro', isa => 'Paws::Quicksight::CredentialPair');
+
 1;
 
 ### main pod documentation begin ###

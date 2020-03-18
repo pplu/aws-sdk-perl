@@ -9,6 +9,7 @@ package Paws::RAM::ResourceShareAssociation;
   has ResourceShareName => (is => 'ro', isa => 'Str', request_name => 'resourceShareName', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

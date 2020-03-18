@@ -36,28 +36,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken    => 'My__string',    # OPTIONAL
       Loggers            => [
         {
-          Space => 1,              # OPTIONAL
-          Type  => 'FileSystem',   # values: FileSystem, AWSCloudWatch; OPTIONAL
-          Component =>
-            'GreengrassSystem',    # values: GreengrassSystem, Lambda; OPTIONAL
-          Id => 'My__string',
-          Level => 'DEBUG',  # values: DEBUG, INFO, WARN, ERROR, FATAL; OPTIONAL
+          Component => 'GreengrassSystem',    # values: GreengrassSystem, Lambda
+          Id        => 'My__string',
+          Level => 'DEBUG',         # values: DEBUG, INFO, WARN, ERROR, FATAL
+          Type  => 'FileSystem',    # values: FileSystem, AWSCloudWatch
+          Space => 1,               # OPTIONAL
         },
         ...
-      ],                     # OPTIONAL
+      ],                            # OPTIONAL
       );
 
     # Results:
+    my $Arn = $CreateLoggerDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $CreateLoggerDefinitionVersionResponse->CreationTimestamp;
-    my $Version = $CreateLoggerDefinitionVersionResponse->Version;
     my $Id      = $CreateLoggerDefinitionVersionResponse->Id;
-    my $Arn     = $CreateLoggerDefinitionVersionResponse->Arn;
+    my $Version = $CreateLoggerDefinitionVersionResponse->Version;
 
   # Returns a L<Paws::Greengrass::CreateLoggerDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateLoggerDefinitionVersion>
 
 =head1 ATTRIBUTES
 

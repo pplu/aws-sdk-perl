@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ServiceActionAssociation;
   has ProductId => (is => 'ro', isa => 'Str', required => 1);
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
   has ServiceActionId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

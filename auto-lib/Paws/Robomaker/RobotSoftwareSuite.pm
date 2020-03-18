@@ -2,6 +2,7 @@ package Paws::Robomaker::RobotSoftwareSuite;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

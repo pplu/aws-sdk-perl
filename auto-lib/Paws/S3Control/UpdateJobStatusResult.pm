@@ -5,6 +5,7 @@ package Paws::S3Control::UpdateJobStatusResult;
   has Status => (is => 'ro', isa => 'Str');
   has StatusUpdateReason => (is => 'ro', isa => 'Str');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

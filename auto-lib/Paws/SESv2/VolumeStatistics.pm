@@ -4,6 +4,7 @@ package Paws::SESv2::VolumeStatistics;
   has ProjectedInbox => (is => 'ro', isa => 'Int');
   has ProjectedSpam => (is => 'ro', isa => 'Int');
   has SpamRawCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

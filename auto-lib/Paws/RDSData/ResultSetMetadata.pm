@@ -2,6 +2,7 @@ package Paws::RDSData::ResultSetMetadata;
   use Moose;
   has ColumnCount => (is => 'ro', isa => 'Int', request_name => 'columnCount', traits => ['NameInRequest']);
   has ColumnMetadata => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::ColumnMetadata]', request_name => 'columnMetadata', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

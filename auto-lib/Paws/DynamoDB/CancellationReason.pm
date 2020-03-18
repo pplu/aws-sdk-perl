@@ -3,6 +3,7 @@ package Paws::DynamoDB::CancellationReason;
   has Code => (is => 'ro', isa => 'Str');
   has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

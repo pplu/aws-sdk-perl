@@ -3,6 +3,7 @@ package Paws::XRay::GroupSummary;
   has FilterExpression => (is => 'ro', isa => 'Str');
   has GroupARN => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

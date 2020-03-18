@@ -1,6 +1,7 @@
 package Paws::RedShift::ScheduledActionType;
   use Moose;
   has ResizeCluster => (is => 'ro', isa => 'Paws::RedShift::ResizeClusterMessage');
+
 1;
 
 ### main pod documentation begin ###

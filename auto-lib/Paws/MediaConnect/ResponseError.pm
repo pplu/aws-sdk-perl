@@ -1,6 +1,7 @@
 package Paws::MediaConnect::ResponseError;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

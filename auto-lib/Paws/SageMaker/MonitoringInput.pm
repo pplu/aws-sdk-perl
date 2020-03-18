@@ -1,6 +1,7 @@
 package Paws::SageMaker::MonitoringInput;
   use Moose;
   has EndpointInput => (is => 'ro', isa => 'Paws::SageMaker::EndpointInput', required => 1);
+
 1;
 
 ### main pod documentation begin ###

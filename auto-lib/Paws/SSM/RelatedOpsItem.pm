@@ -1,6 +1,7 @@
 package Paws::SSM::RelatedOpsItem;
   use Moose;
   has OpsItemId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

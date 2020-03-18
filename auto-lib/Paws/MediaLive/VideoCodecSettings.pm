@@ -1,6 +1,8 @@
 package Paws::MediaLive::VideoCodecSettings;
   use Moose;
+  has FrameCaptureSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureSettings', request_name => 'frameCaptureSettings', traits => ['NameInRequest']);
   has H264Settings => (is => 'ro', isa => 'Paws::MediaLive::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
+  has H265Settings => (is => 'ro', isa => 'Paws::MediaLive::H265Settings', request_name => 'h265Settings', traits => ['NameInRequest']);
 
 1;
 
@@ -21,23 +23,33 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::VideoCodecSettings object:
 
-  $service_obj->Method(Att1 => { H264Settings => $value, ..., H264Settings => $value  });
+  $service_obj->Method(Att1 => { FrameCaptureSettings => $value, ..., H265Settings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::VideoCodecSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->H264Settings
+  $result->Att1->FrameCaptureSettings
 
 =head1 DESCRIPTION
 
-Placeholder documentation for VideoCodecSettings
+Video Codec Settings
 
 =head1 ATTRIBUTES
 
 
+=head2 FrameCaptureSettings => L<Paws::MediaLive::FrameCaptureSettings>
+
+  
+
+
 =head2 H264Settings => L<Paws::MediaLive::H264Settings>
+
+  
+
+
+=head2 H265Settings => L<Paws::MediaLive::H265Settings>
 
   
 

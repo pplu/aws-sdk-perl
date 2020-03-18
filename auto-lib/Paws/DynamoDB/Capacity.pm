@@ -1,6 +1,8 @@
 package Paws::DynamoDB::Capacity;
   use Moose;
   has CapacityUnits => (is => 'ro', isa => 'Num');
+  has ReadCapacityUnits => (is => 'ro', isa => 'Num');
+  has WriteCapacityUnits => (is => 'ro', isa => 'Num');
 
 1;
 
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::Capacity object:
 
-  $service_obj->Method(Att1 => { CapacityUnits => $value, ..., CapacityUnits => $value  });
+  $service_obj->Method(Att1 => { CapacityUnits => $value, ..., WriteCapacityUnits => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +43,18 @@ table or an index.
 =head2 CapacityUnits => Num
 
   The total number of capacity units consumed on a table or an index.
+
+
+=head2 ReadCapacityUnits => Num
+
+  The total number of read capacity units consumed on a table or an
+index.
+
+
+=head2 WriteCapacityUnits => Num
+
+  The total number of write capacity units consumed on a table or an
+index.
 
 
 

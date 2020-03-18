@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeBackupsResponse->NextToken;
     my $Backups   = $DescribeBackupsResponse->Backups;
+    my $NextToken = $DescribeBackupsResponse->NextToken;
 
     # Returns a L<Paws::CloudHSMv2::DescribeBackupsResponse> object.
 

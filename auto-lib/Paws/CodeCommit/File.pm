@@ -4,6 +4,7 @@ package Paws::CodeCommit::File;
   has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
   has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
   has RelativePath => (is => 'ro', isa => 'Str', request_name => 'relativePath', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

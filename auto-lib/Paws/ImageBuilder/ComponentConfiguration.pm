@@ -1,6 +1,7 @@
 package Paws::ImageBuilder::ComponentConfiguration;
   use Moose;
   has ComponentArn => (is => 'ro', isa => 'Str', request_name => 'componentArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

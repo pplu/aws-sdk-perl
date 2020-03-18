@@ -1,5 +1,6 @@
 package Paws::MediaLive::Rec709Settings;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

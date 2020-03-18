@@ -2,6 +2,7 @@ package Paws::AutoScaling::LaunchTemplateOverrides;
   use Moose;
   has InstanceType => (is => 'ro', isa => 'Str');
   has WeightedCapacity => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

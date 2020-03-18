@@ -5,6 +5,7 @@ package Paws::RDSData::ArrayValue;
   has DoubleValues => (is => 'ro', isa => 'ArrayRef[Num]', request_name => 'doubleValues', traits => ['NameInRequest']);
   has LongValues => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'longValues', traits => ['NameInRequest']);
   has StringValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'stringValues', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

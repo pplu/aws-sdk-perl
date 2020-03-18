@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Sets the password for your VM local console.
     my $SetLocalConsolePasswordOutput =
       $storagegateway->SetLocalConsolePassword(
-      {
-        'LocalConsolePassword' => 'PassWordMustBeAtLeast6Chars.',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+      'LocalConsolePassword' => 'PassWordMustBeAtLeast6Chars.'
       );
 
     # Results:

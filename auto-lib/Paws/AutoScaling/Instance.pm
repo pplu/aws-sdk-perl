@@ -3,10 +3,12 @@ package Paws::AutoScaling::Instance;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceType => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
+  has WeightedCapacity => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -27,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::Instance object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., ProtectedFromScaleIn => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., WeightedCapacity => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,13 +54,18 @@ Describes an EC2 instance.
 
   The last reported health status of the instance. "Healthy" means that
 the instance is healthy and should remain in service. "Unhealthy" means
-that the instance is unhealthy and Auto Scaling should terminate and
-replace it.
+that the instance is unhealthy and that Amazon EC2 Auto Scaling should
+terminate and replace it.
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the instance.
+
+
+=head2 InstanceType => Str
+
+  The instance type of the EC2 instance.
 
 
 =head2 LaunchConfigurationName => Str
@@ -73,14 +80,22 @@ replace it.
 
 =head2 B<REQUIRED> LifecycleState => Str
 
-  A description of the current lifecycle state. Note that the
-C<Quarantined> state is not used.
+  A description of the current lifecycle state. The C<Quarantined> state
+is not used.
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-  Indicates whether the instance is protected from termination by Auto
-Scaling when scaling in.
+  Indicates whether the instance is protected from termination by Amazon
+EC2 Auto Scaling when scaling in.
+
+
+=head2 WeightedCapacity => Str
+
+  The number of capacity units contributed by the instance based on its
+instance type.
+
+Valid Range: Minimum value of 1. Maximum value of 999.
 
 
 

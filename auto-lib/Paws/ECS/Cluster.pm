@@ -1,13 +1,19 @@
 package Paws::ECS::Cluster;
   use Moose;
   has ActiveServicesCount => (is => 'ro', isa => 'Int', request_name => 'activeServicesCount', traits => ['NameInRequest']);
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
+  has AttachmentsStatus => (is => 'ro', isa => 'Str', request_name => 'attachmentsStatus', traits => ['NameInRequest']);
+  has CapacityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'capacityProviders', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
+  has DefaultCapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', request_name => 'defaultCapacityProviderStrategy', traits => ['NameInRequest']);
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
   has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
+  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ClusterSetting]', request_name => 'settings', traits => ['NameInRequest']);
   has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
 
@@ -28,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Cluster object:
 
-  $service_obj->Method(Att1 => { ActiveServicesCount => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ActiveServicesCount => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,18 +60,62 @@ simultaneously.
 state. You can view these services with ListServices.
 
 
+=head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
+
+  The resources attached to a cluster. When using a capacity provider
+with a cluster, the Auto Scaling plan that is created will be returned
+as a cluster attachment.
+
+
+=head2 AttachmentsStatus => Str
+
+  The status of the capacity providers associated with the cluster. The
+following are the states that will be returned:
+
+=over
+
+=item UPDATE_IN_PROGRESS
+
+The available capacity providers for the cluster are updating. This
+occurs when the Auto Scaling plan is provisioning or deprovisioning.
+
+=item UPDATE_COMPLETE
+
+The capacity providers have successfully updated.
+
+=item UPDATE_FAILED
+
+The capacity provider updates failed.
+
+=back
+
+
+
+=head2 CapacityProviders => ArrayRef[Str|Undef]
+
+  The capacity providers associated with the cluster.
+
+
 =head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) that identifies the cluster. The ARN
-contains the C<arn:aws:ecs> namespace, followed by the region of the
+contains the C<arn:aws:ecs> namespace, followed by the Region of the
 cluster, the AWS account ID of the cluster owner, the C<cluster>
 namespace, and then the cluster name. For example,
-C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
+C<arn:aws:ecs:region:012345678910:cluster/test>.
 
 
 =head2 ClusterName => Str
 
   A user-generated string that you use to identify your cluster.
+
+
+=head2 DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+  The default capacity provider strategy for the cluster. When services
+or tasks are run in the cluster with no launch type or capacity
+provider strategy specified, the default capacity provider strategy is
+used.
 
 
 =head2 PendingTasksCount => Int
@@ -75,12 +125,19 @@ C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
 
 =head2 RegisteredContainerInstancesCount => Int
 
-  The number of container instances registered into the cluster.
+  The number of container instances registered into the cluster. This
+includes container instances in both C<ACTIVE> and C<DRAINING> status.
 
 
 =head2 RunningTasksCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
+
+
+=head2 Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+
+  The settings for the cluster. This parameter indicates whether
+CloudWatch Container Insights is enabled or disabled for a cluster.
 
 
 =head2 Statistics => ArrayRef[L<Paws::ECS::KeyValuePair>]
@@ -128,10 +185,91 @@ drainingFargateServiceCount
 
 =head2 Status => Str
 
-  The status of the cluster. The valid values are C<ACTIVE> or
-C<INACTIVE>. C<ACTIVE> indicates that you can register container
-instances with the cluster and the associated instances can accept
-tasks.
+  The status of the cluster. The following are the possible states that
+will be returned.
+
+=over
+
+=item ACTIVE
+
+The cluster is ready to accept tasks and if applicable you can register
+container instances with the cluster.
+
+=item PROVISIONING
+
+The cluster has capacity providers associated with it and the resources
+needed for the capacity provider are being created.
+
+=item DEPROVISIONING
+
+The cluster has capacity providers associated with it and the resources
+needed for the capacity provider are being deleted.
+
+=item FAILED
+
+The cluster has capacity providers associated with it and the resources
+needed for the capacity provider have failed to create.
+
+=item INACTIVE
+
+The cluster has been deleted. Clusters with an C<INACTIVE> status may
+remain discoverable in your account for a period of time. However, this
+behavior is subject to change in the future, so you should not rely on
+C<INACTIVE> clusters persisting.
+
+=back
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+  The metadata that you apply to the cluster to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case-sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+
+=back
+
 
 
 

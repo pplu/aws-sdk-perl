@@ -31,24 +31,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # UpdateReceiptRule
     # The following example updates a receipt rule to use an Amazon S3 action:
     my $UpdateReceiptRuleResponse = $email->UpdateReceiptRule(
-      {
-        'RuleSetName' => 'MyRuleSet',
-        'Rule'        => {
-          'TlsPolicy' => 'Optional',
-          'Actions'   => [
+      'Rule' => {
+        'Actions' => [
 
-            {
-              'S3Action' => {
-                'BucketName'      => 'MyBucket',
-                'ObjectKeyPrefix' => 'email'
-              }
+          {
+            'S3Action' => {
+              'BucketName'      => 'MyBucket',
+              'ObjectKeyPrefix' => 'email'
             }
-          ],
-          'Enabled'     => 1,
-          'ScanEnabled' => 1,
-          'Name'        => 'MyRule'
-        }
-      }
+          }
+        ],
+        'Enabled'     => 1,
+        'Name'        => 'MyRule',
+        'ScanEnabled' => 1,
+        'TlsPolicy'   => 'Optional'
+      },
+      'RuleSetName' => 'MyRuleSet'
     );
 
 

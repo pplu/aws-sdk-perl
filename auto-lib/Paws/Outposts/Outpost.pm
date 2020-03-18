@@ -9,6 +9,7 @@ package Paws::Outposts::Outpost;
   has OutpostId => (is => 'ro', isa => 'Str');
   has OwnerId => (is => 'ro', isa => 'Str');
   has SiteId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

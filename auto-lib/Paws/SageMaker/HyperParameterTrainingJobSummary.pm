@@ -6,10 +6,12 @@ package Paws::SageMaker::HyperParameterTrainingJobSummary;
   has ObjectiveStatus => (is => 'ro', isa => 'Str');
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
+  has TrainingJobDefinitionName => (is => 'ro', isa => 'Str');
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
   has TunedHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters', required => 1);
+  has TuningJobName => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -30,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HyperParameterTrainingJobSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., TunedHyperParameters => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., TuningJobName => $value  });
 
 =head3 Results returned from an API call
 
@@ -101,12 +103,21 @@ objective metric.
 
 =head2 TrainingEndTime => Str
 
-  The date and time that the training job ended.
+  Specifies the time when the training job ends on training instances.
+You are billed for the time interval between the value of
+C<TrainingStartTime> and this time. For successful jobs and stopped
+jobs, this is the time after model artifacts are uploaded. For failed
+jobs, this is the time when Amazon SageMaker detects a job failure.
 
 
 =head2 B<REQUIRED> TrainingJobArn => Str
 
   The Amazon Resource Name (ARN) of the training job.
+
+
+=head2 TrainingJobDefinitionName => Str
+
+  The training job definition name.
 
 
 =head2 B<REQUIRED> TrainingJobName => Str
@@ -127,6 +138,11 @@ objective metric.
 =head2 B<REQUIRED> TunedHyperParameters => L<Paws::SageMaker::HyperParameters>
 
   A list of the hyperparameters for which you specified ranges to search.
+
+
+=head2 TuningJobName => Str
+
+  The HyperParameter tuning job that launched the training job.
 
 
 

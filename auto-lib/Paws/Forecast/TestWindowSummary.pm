@@ -4,6 +4,7 @@ package Paws::Forecast::TestWindowSummary;
   has Status => (is => 'ro', isa => 'Str');
   has TestWindowEnd => (is => 'ro', isa => 'Str');
   has TestWindowStart => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

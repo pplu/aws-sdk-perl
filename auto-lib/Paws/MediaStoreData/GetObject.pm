@@ -35,19 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ContentLength = $GetObjectResponse->ContentLength;
-    my $ContentType   = $GetObjectResponse->ContentType;
-    my $ContentRange  = $GetObjectResponse->ContentRange;
-    my $StatusCode    = $GetObjectResponse->StatusCode;
-    my $CacheControl  = $GetObjectResponse->CacheControl;
-    my $ETag          = $GetObjectResponse->ETag;
     my $Body          = $GetObjectResponse->Body;
+    my $CacheControl  = $GetObjectResponse->CacheControl;
+    my $ContentLength = $GetObjectResponse->ContentLength;
+    my $ContentRange  = $GetObjectResponse->ContentRange;
+    my $ContentType   = $GetObjectResponse->ContentType;
+    my $ETag          = $GetObjectResponse->ETag;
     my $LastModified  = $GetObjectResponse->LastModified;
+    my $StatusCode    = $GetObjectResponse->StatusCode;
 
     # Returns a L<Paws::MediaStoreData::GetObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/GetObject>
 
 =head1 ATTRIBUTES
 
@@ -87,9 +87,11 @@ omit an extension.
 =head2 Range => Str
 
 The range bytes of an object to retrieve. For more information about
-the C<Range> header, go to
+the C<Range> header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
-(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35).
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35). AWS
+Elemental MediaStore ignores this header for partially uploaded objects
+that have streaming upload availability.
 
 
 

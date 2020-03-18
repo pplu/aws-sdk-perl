@@ -5,6 +5,7 @@ package Paws::Robomaker::RobotApplicationSummary;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', request_name => 'robotSoftwareSuite', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

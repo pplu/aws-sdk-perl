@@ -8,6 +8,7 @@ package Paws::ServiceQuotas::ServiceQuotaIncreaseRequestInTemplate;
   has ServiceCode => (is => 'ro', isa => 'Str');
   has ServiceName => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -16,6 +16,7 @@ package Paws::S3Control::S3CopyObjectOperation;
   has TargetKeyPrefix => (is => 'ro', isa => 'Str');
   has TargetResource => (is => 'ro', isa => 'Str');
   has UnModifiedSinceConstraint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

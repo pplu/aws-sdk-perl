@@ -40,13 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # and VPC settings.
     my $OrderableDBInstanceOptionsMessage =
       $rds->DescribeOrderableDBInstanceOptions(
-      {
-        'EngineVersion'   => '5.6.27',
-        'LicenseModel'    => 'general-public-license',
-        'Engine'          => 'mysql',
-        'Vpc'             => 1,
-        'DBInstanceClass' => 'db.t2.micro'
-      }
+      'DBInstanceClass' => 'db.t2.micro',
+      'Engine'          => 'mysql',
+      'EngineVersion'   => '5.6.27',
+      'LicenseModel'    => 'general-public-license',
+      'Vpc'             => 1
       );
 
 
@@ -78,7 +76,7 @@ the available offerings matching the specified engine version.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
 
 
 
@@ -102,8 +100,8 @@ the value specified by C<MaxRecords> .
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that the remaining
-results can be retrieved.
+token called a marker is included in the response so that you can
+retrieve the remaining results.
 
 Default: 100
 
@@ -113,8 +111,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 Vpc => Bool
 
-The VPC filter value. Specify this parameter to show only the available
-VPC or non-VPC offerings.
+A value that indicates whether to show only VPC or non-VPC offerings.
 
 
 

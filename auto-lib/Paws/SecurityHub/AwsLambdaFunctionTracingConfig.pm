@@ -1,6 +1,7 @@
 package Paws::SecurityHub::AwsLambdaFunctionTracingConfig;
   use Moose;
   has Mode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

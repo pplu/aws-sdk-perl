@@ -10,6 +10,7 @@ package Paws::DataExchange::DataSetEntry;
   has OriginDetails => (is => 'ro', isa => 'Paws::DataExchange::OriginDetails');
   has SourceId => (is => 'ro', isa => 'Str');
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,16 @@
 package Paws::Pinpoint::SegmentResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
   has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
-  has Id => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
   has ImportDefinition => (is => 'ro', isa => 'Paws::Pinpoint::SegmentImportResource');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
-  has SegmentType => (is => 'ro', isa => 'Str');
+  has SegmentType => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int');
 
 1;
@@ -41,67 +43,93 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment definition.
+Provides information about the configuration, dimension, and other
+settings for a segment.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
-  The ID of the application to which the segment applies.
+  The unique identifier for the application that the segment is
+associated with.
 
 
-=head2 CreationDate => Str
+=head2 B<REQUIRED> Arn => Str
 
-  The date the segment was created in ISO 8601 format.
+  The Amazon Resource Name (ARN) of the segment.
+
+
+=head2 B<REQUIRED> CreationDate => Str
+
+  The date and time when the segment was created.
 
 
 =head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
 
-  The segment dimensions attributes.
+  The dimension settings for the segment.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  The unique segment ID.
+  The unique identifier for the segment.
 
 
 =head2 ImportDefinition => L<Paws::Pinpoint::SegmentImportResource>
 
-  The import job settings.
+  The settings for the import job that's associated with the segment.
 
 
 =head2 LastModifiedDate => Str
 
-  The date the segment was last updated in ISO 8601 format.
+  The date and time when the segment was last modified.
 
 
 =head2 Name => Str
 
-  The name of segment
+  The name of the segment.
 
 
 =head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
 
-  Segment definition groups. We currently only support one. If specified
-Dimensions must be empty.
+  A list of one or more segment groups that apply to the segment. Each
+segment group consists of zero or more base segments and the dimensions
+that are applied to those base segments.
 
 
-=head2 SegmentType => Str
+=head2 B<REQUIRED> SegmentType => Str
 
-  The segment type: DIMENSIONAL - A dynamic segment built from selection
-criteria based on endpoint data reported by your app. You create this
-type of segment by using the segment builder in the Amazon Pinpoint
-console or by making a POST request to the segments resource. IMPORT -
-A static segment built from an imported set of endpoint definitions.
-You create this type of segment by importing a segment in the Amazon
-Pinpoint console or by making a POST request to the jobs/import
-resource.
+  The segment type. Valid values are:
+
+=over
+
+=item *
+
+DIMENSIONAL - A dynamic segment, which is a segment that uses selection
+criteria that you specify and is based on endpoint data that's reported
+by your app. Dynamic segments can change over time.
+
+=item *
+
+IMPORT - A static segment, which is a segment that uses selection
+criteria that you specify and is based on endpoint definitions that you
+import from a file. Imported segments are static; they don't change
+over time.
+
+=back
+
+
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+  A string-to-string map of key-value pairs that identifies the tags that
+are associated with the segment. Each tag consists of a required tag
+key and an associated tag value.
 
 
 =head2 Version => Int
 
-  The segment version number.
+  The version number of the segment.
 
 
 

@@ -34,16 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'attachment',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'attachment',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
+    my $Attachment = $DescribeNetworkInterfaceAttributeResult->Attachment;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
-    my $Attachment = $DescribeNetworkInterfaceAttributeResult->Attachment;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
     # To describe the description attribute of a network interface
@@ -51,16 +49,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'description',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'description',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
+    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
-    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
     # To describe the groupSet attribute of a network interface
@@ -68,10 +64,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'groupSet',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'groupSet',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
@@ -85,17 +79,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # network interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'sourceDestCheck',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'sourceDestCheck',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
-    my $SourceDestCheck =
-      $DescribeNetworkInterfaceAttributeResult->SourceDestCheck;
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+    my $SourceDestCheck =
+      $DescribeNetworkInterfaceAttributeResult->SourceDestCheck;
 
     # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
 

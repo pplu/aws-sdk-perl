@@ -1,6 +1,7 @@
 package Paws::SSM::OpsResultAttribute;
   use Moose;
   has TypeName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

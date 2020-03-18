@@ -2,6 +2,7 @@ package Paws::Lightsail::RelationalDatabaseEndpoint;
   use Moose;
   has Address => (is => 'ro', isa => 'Str', request_name => 'address', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

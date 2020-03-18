@@ -1,6 +1,7 @@
 package Paws::SageMaker::HumanLoopRequestSource;
   use Moose;
   has AwsManagedHumanLoopRequestSource => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

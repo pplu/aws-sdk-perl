@@ -1,6 +1,7 @@
 package Paws::StepFunctions::LogDestination;
   use Moose;
   has CloudWatchLogsLogGroup => (is => 'ro', isa => 'Paws::StepFunctions::CloudWatchLogsLogGroup', request_name => 'cloudWatchLogsLogGroup', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

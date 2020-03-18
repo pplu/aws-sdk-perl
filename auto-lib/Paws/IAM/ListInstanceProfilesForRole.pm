@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated = $ListInstanceProfilesForRoleResponse->IsTruncated;
     my $InstanceProfiles =
       $ListInstanceProfilesForRoleResponse->InstanceProfiles;
-    my $Marker = $ListInstanceProfilesForRoleResponse->Marker;
+    my $IsTruncated = $ListInstanceProfilesForRoleResponse->IsTruncated;
+    my $Marker      = $ListInstanceProfilesForRoleResponse->Marker;
 
     # Returns a L<Paws::IAM::ListInstanceProfilesForRoleResponse> object.
 

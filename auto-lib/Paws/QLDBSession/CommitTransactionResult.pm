@@ -2,6 +2,7 @@ package Paws::QLDBSession::CommitTransactionResult;
   use Moose;
   has CommitDigest => (is => 'ro', isa => 'Str');
   has TransactionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

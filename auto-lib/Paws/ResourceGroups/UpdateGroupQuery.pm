@@ -32,8 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateGroupQueryOutput = $resource -groups->UpdateGroupQuery(
       GroupName     => 'MyGroupName',
       ResourceQuery => {
-        Type  => 'TAG_FILTERS_1_0',    # values: TAG_FILTERS_1_0
-        Query => 'MyQuery',            # max: 2048
+        Query => 'MyQuery',          # max: 4096
+        Type  => 'TAG_FILTERS_1_0'
+        ,    # values: TAG_FILTERS_1_0, CLOUDFORMATION_STACK_1_0min: 1, max: 128
 
       },
 

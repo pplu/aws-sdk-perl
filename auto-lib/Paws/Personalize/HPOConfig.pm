@@ -3,6 +3,7 @@ package Paws::Personalize::HPOConfig;
   has AlgorithmHyperParameterRanges => (is => 'ro', isa => 'Paws::Personalize::HyperParameterRanges', request_name => 'algorithmHyperParameterRanges', traits => ['NameInRequest']);
   has HpoObjective => (is => 'ro', isa => 'Paws::Personalize::HPOObjective', request_name => 'hpoObjective', traits => ['NameInRequest']);
   has HpoResourceConfig => (is => 'ro', isa => 'Paws::Personalize::HPOResourceConfig', request_name => 'hpoResourceConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

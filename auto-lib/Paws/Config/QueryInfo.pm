@@ -1,6 +1,7 @@
 package Paws::Config::QueryInfo;
   use Moose;
   has SelectFields => (is => 'ro', isa => 'ArrayRef[Paws::Config::FieldInfo]');
+
 1;
 
 ### main pod documentation begin ###

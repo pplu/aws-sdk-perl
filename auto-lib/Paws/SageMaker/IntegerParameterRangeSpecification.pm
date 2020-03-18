@@ -2,6 +2,7 @@ package Paws::SageMaker::IntegerParameterRangeSpecification;
   use Moose;
   has MaxValue => (is => 'ro', isa => 'Str', required => 1);
   has MinValue => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

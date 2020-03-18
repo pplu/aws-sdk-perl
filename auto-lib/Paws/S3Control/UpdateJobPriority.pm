@@ -5,6 +5,7 @@ package Paws::S3Control::UpdateJobPriority;
   has JobId => (is => 'ro', isa => 'Str', uri_name => 'id', traits => ['ParamInURI'], required => 1);
   has Priority => (is => 'ro', isa => 'Int', query_name => 'priority', traits => ['ParamInQuery'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJobPriority');
@@ -13,6 +14,7 @@ package Paws::S3Control::UpdateJobPriority;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::UpdateJobPriorityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

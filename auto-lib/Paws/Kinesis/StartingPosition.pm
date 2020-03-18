@@ -3,6 +3,7 @@ package Paws::Kinesis::StartingPosition;
   has SequenceNumber => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

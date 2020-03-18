@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         , # values: ar, bg, ca, cs, da, de, el, en, es, eu, fa, fi, fr, ga, gl, he, hi, hu, hy, id, it, ja, ko, lv, mul, nl, no, pt, ro, ru, sv, th, tr, zh-Hans, zh-Hant
         AnalysisSchemeName => 'MyStandardName',    # min: 1, max: 64
         AnalysisOptions    => {
-          JapaneseTokenizationDictionary => 'MyString',    # OPTIONAL
           AlgorithmicStemming =>
             'none',    # values: none, minimal, light, full; OPTIONAL
-          StemmingDictionary => 'MyString',    # OPTIONAL
-          Synonyms           => 'MyString',    # OPTIONAL
-          Stopwords          => 'MyString',    # OPTIONAL
+          JapaneseTokenizationDictionary => 'MyString',    # OPTIONAL
+          StemmingDictionary             => 'MyString',    # OPTIONAL
+          Stopwords                      => 'MyString',    # OPTIONAL
+          Synonyms                       => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },
       DomainName => 'MyDomainName',
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::CloudSearch::DefineAnalysisSchemeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudsearch/DefineAnalysisScheme>
 
 =head1 ATTRIBUTES
 

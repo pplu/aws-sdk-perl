@@ -5,6 +5,7 @@ package Paws::ECR::ImageScanFinding;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Severity => (is => 'ro', isa => 'Str', request_name => 'severity', traits => ['NameInRequest']);
   has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

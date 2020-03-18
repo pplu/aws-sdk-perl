@@ -6,6 +6,7 @@ package Paws::SecurityHub::AwsKmsKeyDetails;
   has KeyManager => (is => 'ro', isa => 'Str');
   has KeyState => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Summaries = $ListStackSetOperationsOutput->Summaries;
     my $NextToken = $ListStackSetOperationsOutput->NextToken;
+    my $Summaries = $ListStackSetOperationsOutput->Summaries;
 
     # Returns a L<Paws::CloudFormation::ListStackSetOperationsOutput> object.
 

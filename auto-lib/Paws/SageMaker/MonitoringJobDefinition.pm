@@ -9,6 +9,7 @@ package Paws::SageMaker::MonitoringJobDefinition;
   has NetworkConfig => (is => 'ro', isa => 'Paws::SageMaker::NetworkConfig');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::MonitoringStoppingCondition');
+
 1;
 
 ### main pod documentation begin ###

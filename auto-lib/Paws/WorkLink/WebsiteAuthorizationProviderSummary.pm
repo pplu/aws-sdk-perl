@@ -4,6 +4,7 @@ package Paws::WorkLink::WebsiteAuthorizationProviderSummary;
   has AuthorizationProviderType => (is => 'ro', isa => 'Str', required => 1);
   has CreatedTime => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

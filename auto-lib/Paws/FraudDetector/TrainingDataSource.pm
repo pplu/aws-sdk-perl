@@ -2,6 +2,7 @@ package Paws::FraudDetector::TrainingDataSource;
   use Moose;
   has DataAccessRoleArn => (is => 'ro', isa => 'Str', request_name => 'dataAccessRoleArn', traits => ['NameInRequest'], required => 1);
   has DataLocation => (is => 'ro', isa => 'Str', request_name => 'dataLocation', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::WAF::ExcludedRule;
   use Moose;
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

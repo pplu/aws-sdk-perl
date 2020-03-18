@@ -45,23 +45,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Availability Zone. If your account supports EC2-Classic, Amazon EC2
    # launches the instances in EC2-Classic in the specified Availability Zone.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
-      {
-        'Type'                => 'one-time',
-        'SpotPrice'           => 0.03,
-        'InstanceCount'       => 5,
-        'LaunchSpecification' => {
-          'SecurityGroupIds' => ['sg-1a2b3c4d'],
-          'KeyName'          => 'my-key-pair',
-          'ImageId'          => 'ami-1a2b3c4d',
-          'InstanceType'     => 'm3.medium',
-          'Placement'        => {
-            'AvailabilityZone' => 'us-west-2a'
-          },
-          'IamInstanceProfile' => {
-            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-          }
-        }
-      }
+      'InstanceCount'       => 5,
+      'LaunchSpecification' => {
+        'IamInstanceProfile' => {
+          'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+        },
+        'ImageId'      => 'ami-1a2b3c4d',
+        'InstanceType' => 'm3.medium',
+        'KeyName'      => 'my-key-pair',
+        'Placement'    => {
+          'AvailabilityZone' => 'us-west-2a'
+        },
+        'SecurityGroupIds' => ['sg-1a2b3c4d']
+      },
+      'SpotPrice' => 0.03,
+      'Type'      => 'one-time'
     );
 
    # To create a one-time Spot Instance request
@@ -70,20 +68,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # specified subnet. If the VPC is a nondefault VPC, the instances do not
    # receive a public IP address by default.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
-      {
-        'Type'                => 'one-time',
-        'SpotPrice'           => 0.050,
-        'InstanceCount'       => 5,
-        'LaunchSpecification' => {
-          'SecurityGroupIds'   => ['sg-1a2b3c4d'],
-          'ImageId'            => 'ami-1a2b3c4d',
-          'InstanceType'       => 'm3.medium',
-          'SubnetId'           => 'subnet-1a2b3c4d',
-          'IamInstanceProfile' => {
-            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-          }
-        }
-      }
+      'InstanceCount'       => 5,
+      'LaunchSpecification' => {
+        'IamInstanceProfile' => {
+          'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
+        },
+        'ImageId'          => 'ami-1a2b3c4d',
+        'InstanceType'     => 'm3.medium',
+        'SecurityGroupIds' => ['sg-1a2b3c4d'],
+        'SubnetId'         => 'subnet-1a2b3c4d'
+      },
+      'SpotPrice' => 0.050,
+      'Type'      => 'one-time'
     );
 
 
@@ -141,7 +137,7 @@ specify a duration.
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
@@ -207,6 +203,10 @@ request becomes active at this date and time and remains active until
 all instances launch, the request expires, or the request is canceled.
 If the request is persistent, the request becomes active at this date
 and time and remains active until it expires or is canceled.
+
+The specified start date and time cannot be equal to the current date
+and time. You must specify a start date and time that occurs after the
+current date and time.
 
 
 

@@ -2,6 +2,7 @@ package Paws::FraudDetector::ModelEndpointDataBlob;
   use Moose;
   has ByteBuffer => (is => 'ro', isa => 'Str', request_name => 'byteBuffer', traits => ['NameInRequest']);
   has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

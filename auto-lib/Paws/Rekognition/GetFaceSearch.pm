@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $JobStatus     = $GetFaceSearchResponse->JobStatus;
     my $NextToken     = $GetFaceSearchResponse->NextToken;
     my $Persons       = $GetFaceSearchResponse->Persons;
-    my $VideoMetadata = $GetFaceSearchResponse->VideoMetadata;
-    my $JobStatus     = $GetFaceSearchResponse->JobStatus;
     my $StatusMessage = $GetFaceSearchResponse->StatusMessage;
+    my $VideoMetadata = $GetFaceSearchResponse->VideoMetadata;
 
     # Returns a L<Paws::Rekognition::GetFaceSearchResponse> object.
 
@@ -70,9 +70,9 @@ value you can specify is 1000. If you specify a value greater than
 =head2 NextToken => Str
 
 If the previous response was incomplete (because there is more search
-results to retrieve), Rekognition Video returns a pagination token in
-the response. You can use this pagination token to retrieve the next
-set of search results.
+results to retrieve), Amazon Rekognition Video returns a pagination
+token in the response. You can use this pagination token to retrieve
+the next set of search results.
 
 
 

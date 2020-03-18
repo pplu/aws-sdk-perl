@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::DeviceNetworkProfileInfo;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has CertificateExpirationTime => (is => 'ro', isa => 'Str');
   has NetworkProfileArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

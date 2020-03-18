@@ -1,6 +1,7 @@
 package Paws::Datasync::S3Config;
   use Moose;
   has BucketAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

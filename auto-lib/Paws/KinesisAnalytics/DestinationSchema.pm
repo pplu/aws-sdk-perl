@@ -1,6 +1,6 @@
 package Paws::KinesisAnalytics::DestinationSchema;
   use Moose;
-  has RecordFormatType => (is => 'ro', isa => 'Str');
+  has RecordFormatType => (is => 'ro', isa => 'Str', required => 1);
 
 1;
 
@@ -34,12 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 Describes the data format when records are written to the destination.
 For more information, see Configuring Application Output
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 =head1 ATTRIBUTES
 
 
-=head2 RecordFormatType => Str
+=head2 B<REQUIRED> RecordFormatType => Str
 
   Specifies the format of the records on the output stream.
 

@@ -5,6 +5,7 @@ package Paws::Glue::TaskRunProperties;
   has ImportLabelsTaskRunProperties => (is => 'ro', isa => 'Paws::Glue::ImportLabelsTaskRunProperties');
   has LabelingSetGenerationTaskRunProperties => (is => 'ro', isa => 'Paws::Glue::LabelingSetGenerationTaskRunProperties');
   has TaskType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

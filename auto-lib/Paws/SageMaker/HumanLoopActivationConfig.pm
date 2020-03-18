@@ -2,6 +2,7 @@ package Paws::SageMaker::HumanLoopActivationConfig;
   use Moose;
   has HumanLoopActivationConditionsConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopActivationConditionsConfig', required => 1);
   has HumanLoopRequestSource => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopRequestSource', required => 1);
+
 1;
 
 ### main pod documentation begin ###

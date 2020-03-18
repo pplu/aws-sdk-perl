@@ -9,9 +9,13 @@ package Paws::RedShift::ModifyCluster;
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -53,9 +57,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterType                      => 'MyString',             # OPTIONAL
       ClusterVersion                   => 'MyString',             # OPTIONAL
       ElasticIp                        => 'MyString',             # OPTIONAL
+      Encrypted                        => 1,                      # OPTIONAL
       EnhancedVpcRouting               => 1,                      # OPTIONAL
       HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       MasterUserPassword               => 'MyString',             # OPTIONAL
       NewClusterIdentifier             => 'MyString',             # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
@@ -177,7 +185,7 @@ parameter group family for the new version must be specified. The new
 cluster parameter group can be the default for that cluster parameter
 group family. For more information about parameters and parameter
 groups, go to Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 Example: C<1.0>
@@ -192,8 +200,20 @@ Constraints: The cluster must be provisioned in EC2-VPC and
 publicly-accessible through an Internet gateway. For more information
 about provisioning clusters in EC2-VPC, go to Supported Platforms to
 Launch Your Cluster
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 in the Amazon Redshift Cluster Management Guide.
+
+
+
+=head2 Encrypted => Bool
+
+Indicates whether the cluster is encrypted. If the value is encrypted
+(true) and you provide a value for the C<KmsKeyId> parameter, we
+encrypt the cluster with the provided C<KmsKeyId>. If you don't provide
+a C<KmsKeyId>, we encrypt with the default key. In the China region we
+use legacy encryption if you specify that the cluster is encrypted.
+
+If the value is not encrypted (false), then the cluster is decrypted.
 
 
 
@@ -203,7 +223,7 @@ An option that specifies whether to create the cluster with enhanced
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
 Enhanced VPC Routing
-(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
@@ -224,6 +244,37 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
+
+
+=head2 KmsKeyId => Str
+
+The AWS Key Management Service (KMS) key ID of the encryption key that
+you want to use to encrypt data in the cluster.
+
+
+
+=head2 MaintenanceTrackName => Str
+
+The name for the maintenance track that you want to assign for the
+cluster. This name change is asynchronous. The new track name stays in
+the C<PendingModifiedValues> for the cluster until the next maintenance
+window. When the maintenance track changes, the cluster is switched to
+the latest cluster release available for the maintenance track. At this
+point, the maintenance track name is applied.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The default for number of days that a newly created manual snapshot is
+retained. If the value is -1, the manual snapshot is retained
+indefinitely. This value doesn't retroactively change the retention
+periods of existing manual snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
 
 
 
@@ -310,16 +361,13 @@ Example: C<examplecluster>
 The new node type of the cluster. If you specify a new node type, you
 must also specify the number of nodes parameter.
 
-When you submit your request to resize a cluster, Amazon Redshift sets
-access permissions for the cluster to read-only. After Amazon Redshift
-provisions a new cluster according to your resize requirements, there
-will be a temporary outage while the old cluster is deleted and your
-connection is switched to the new cluster. When the new connection is
-complete, the original access permissions for the cluster are restored.
-You can use DescribeResize to track the progress of the resize request.
+For more information about resizing clusters, go to Resizing Clusters
+in Amazon Redshift
+(https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
-C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge>
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.16xlarge>
 
 
 
@@ -328,13 +376,10 @@ C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge>
 The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
 
-When you submit your request to resize a cluster, Amazon Redshift sets
-access permissions for the cluster to read-only. After Amazon Redshift
-provisions a new cluster according to your resize requirements, there
-will be a temporary outage while the old cluster is deleted and your
-connection is switched to the new cluster. When the new connection is
-complete, the original access permissions for the cluster are restored.
-You can use DescribeResize to track the progress of the resize request.
+For more information about resizing clusters, go to Resizing Clusters
+in Amazon Redshift
+(https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: Integer greater than C<0>.
 

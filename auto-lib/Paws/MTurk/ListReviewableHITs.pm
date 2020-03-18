@@ -38,14 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $HITs       = $ListReviewableHITsResponse->HITs;
     my $NextToken  = $ListReviewableHITsResponse->NextToken;
     my $NumResults = $ListReviewableHITsResponse->NumResults;
-    my $HITs       = $ListReviewableHITsResponse->HITs;
 
     # Returns a L<Paws::MTurk::ListReviewableHITsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mturk/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mturk-requester/ListReviewableHITs>
 
 =head1 ATTRIBUTES
 

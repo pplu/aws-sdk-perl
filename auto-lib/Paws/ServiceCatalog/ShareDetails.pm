@@ -2,6 +2,7 @@ package Paws::ServiceCatalog::ShareDetails;
   use Moose;
   has ShareErrors => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ShareError]');
   has SuccessfulShares => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

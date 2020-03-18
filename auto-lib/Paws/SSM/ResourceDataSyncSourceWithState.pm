@@ -5,6 +5,7 @@ package Paws::SSM::ResourceDataSyncSourceWithState;
   has SourceRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

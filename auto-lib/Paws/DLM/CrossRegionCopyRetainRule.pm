@@ -2,6 +2,7 @@ package Paws::DLM::CrossRegionCopyRetainRule;
   use Moose;
   has Interval => (is => 'ro', isa => 'Int');
   has IntervalUnit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

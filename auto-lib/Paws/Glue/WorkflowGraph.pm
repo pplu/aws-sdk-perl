@@ -2,6 +2,7 @@ package Paws::Glue::WorkflowGraph;
   use Moose;
   has Edges => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Edge]');
   has Nodes => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Node]');
+
 1;
 
 ### main pod documentation begin ###

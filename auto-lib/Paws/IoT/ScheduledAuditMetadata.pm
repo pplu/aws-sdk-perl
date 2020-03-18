@@ -5,6 +5,7 @@ package Paws::IoT::ScheduledAuditMetadata;
   has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
   has ScheduledAuditArn => (is => 'ro', isa => 'Str', request_name => 'scheduledAuditArn', traits => ['NameInRequest']);
   has ScheduledAuditName => (is => 'ro', isa => 'Str', request_name => 'scheduledAuditName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

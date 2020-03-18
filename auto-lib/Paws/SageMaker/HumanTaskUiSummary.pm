@@ -3,6 +3,7 @@ package Paws::SageMaker::HumanTaskUiSummary;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has HumanTaskUiArn => (is => 'ro', isa => 'Str', required => 1);
   has HumanTaskUiName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

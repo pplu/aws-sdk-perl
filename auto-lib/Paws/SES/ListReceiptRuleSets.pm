@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $email->ListReceiptRuleSets( 'NextToken' => '' );
 
     # Results:
-    my $RuleSets  = $ListReceiptRuleSetsResponse->RuleSets;
     my $NextToken = $ListReceiptRuleSetsResponse->NextToken;
+    my $RuleSets  = $ListReceiptRuleSetsResponse->RuleSets;
 
     # Returns a L<Paws::SES::ListReceiptRuleSetsResponse> object.
 

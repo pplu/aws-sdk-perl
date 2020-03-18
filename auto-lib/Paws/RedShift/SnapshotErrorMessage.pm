@@ -4,6 +4,7 @@ package Paws::RedShift::SnapshotErrorMessage;
   has FailureReason => (is => 'ro', isa => 'Str');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

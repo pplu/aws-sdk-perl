@@ -1,6 +1,7 @@
 package Paws::IoTEvents::InputDefinition;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Attribute]', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

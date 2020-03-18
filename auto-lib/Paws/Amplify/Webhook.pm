@@ -7,6 +7,7 @@ package Paws::Amplify::Webhook;
   has WebhookArn => (is => 'ro', isa => 'Str', request_name => 'webhookArn', traits => ['NameInRequest'], required => 1);
   has WebhookId => (is => 'ro', isa => 'Str', request_name => 'webhookId', traits => ['NameInRequest'], required => 1);
   has WebhookUrl => (is => 'ro', isa => 'Str', request_name => 'webhookUrl', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

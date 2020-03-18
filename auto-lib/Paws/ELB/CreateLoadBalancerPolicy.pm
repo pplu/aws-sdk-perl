@@ -35,37 +35,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # load balancer.
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'ProxyProtocolPolicyType',
-        'PolicyAttributes' => [
+      'LoadBalancerName' => 'my-load-balancer',
+      'PolicyAttributes' => [
 
-          {
-            'AttributeName'  => 'ProxyProtocol',
-            'AttributeValue' => 'true'
-          }
-        ],
-        'PolicyName' => 'my-ProxyProtocol-policy'
-      }
+        {
+          'AttributeName'  => 'ProxyProtocol',
+          'AttributeValue' => 'true'
+        }
+      ],
+      'PolicyName'     => 'my-ProxyProtocol-policy',
+      'PolicyTypeName' => 'ProxyProtocolPolicyType'
       );
 
     # To create a public key policy
     # This example creates a public key policy.
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'PublicKeyPolicyType',
-        'PolicyAttributes' => [
+      'LoadBalancerName' => 'my-load-balancer',
+      'PolicyAttributes' => [
 
-          {
-            'AttributeName' => 'PublicKey',
-            'AttributeValue' =>
+        {
+          'AttributeName' => 'PublicKey',
+          'AttributeValue' =>
 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjhFWBpMlggUcqoi3kl+dS74kj//c6x7ROtusUaeQCTgIUkayttRDWchuqo1pHC1u+n5xxXnBBe2ejbb2WRsKIQ5rXEeixsjFpFsojpSQKkzhVGI6mJVZBJDVKSHmswnwLBdofLhzvllpovBPTHe+o4haAWvDBALJU0pkSI1FecPHcs2hwxf14zHoXy1e2k36A64nXW43wtfx5qcVSIxtCEOjnYRg7RPvybaGfQ+v6Iaxb/+7J5kEvZhTFQId+bSiJImF1FSUT1W1xwzBZPUbcUkkXDj45vC2s3Z8E+Lk7a3uZhvsQHLZnrfuWjBWGWvZ/MhZYgEXAMPLE'
-          }
-        ],
-        'PolicyName' => 'my-PublicKey-policy'
-      }
+        }
+      ],
+      'PolicyName'     => 'my-PublicKey-policy',
+      'PolicyTypeName' => 'PublicKeyPolicyType'
       );
 
     # To create a backend server authentication policy
@@ -73,18 +69,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # authentication on your backend instance using a public key policy.
     my $CreateLoadBalancerPolicyOutput =
       $elasticloadbalancing->CreateLoadBalancerPolicy(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyTypeName'   => 'BackendServerAuthenticationPolicyType',
-        'PolicyAttributes' => [
+      'LoadBalancerName' => 'my-load-balancer',
+      'PolicyAttributes' => [
 
-          {
-            'AttributeName'  => 'PublicKeyPolicyName',
-            'AttributeValue' => 'my-PublicKey-policy'
-          }
-        ],
-        'PolicyName' => 'my-authentication-policy'
-      }
+        {
+          'AttributeName'  => 'PublicKeyPolicyName',
+          'AttributeValue' => 'my-PublicKey-policy'
+        }
+      ],
+      'PolicyName'     => 'my-authentication-policy',
+      'PolicyTypeName' => 'BackendServerAuthenticationPolicyType'
       );
 
 

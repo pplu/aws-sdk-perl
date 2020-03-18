@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::CreateEndOfMeetingReminder;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has ReminderAtMinutes => (is => 'ro', isa => 'ArrayRef[Int]', required => 1);
   has ReminderType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

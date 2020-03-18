@@ -2,6 +2,7 @@ package Paws::SSM::InventoryAggregator;
   use Moose;
   has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryAggregator]');
   has Expression => (is => 'ro', isa => 'Str');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryGroup]');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::InventoryAggregator object:
 
-  $service_obj->Method(Att1 => { Aggregators => $value, ..., Expression => $value  });
+  $service_obj->Method(Att1 => { Aggregators => $value, ..., Groups => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,13 @@ execution.
 =head2 Expression => Str
 
   The inventory type and attribute name for aggregation.
+
+
+=head2 Groups => ArrayRef[L<Paws::SSM::InventoryGroup>]
+
+  A user-defined set of one or more filters on which to aggregate
+inventory data. Groups return a count of resources that match and don't
+match the specified criteria.
 
 
 

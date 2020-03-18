@@ -9,6 +9,7 @@ package Paws::MediaPackage::HarvestJob;
   has S3Destination => (is => 'ro', isa => 'Paws::MediaPackage::S3Destination', request_name => 's3Destination', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

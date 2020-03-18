@@ -31,19 +31,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ImageAttribute = $ec2->DescribeImageAttribute(
       Attribute => 'description',
-      ImageId   => 'MyString',
+      ImageId   => 'MyImageId',
       DryRun    => 1,               # OPTIONAL
     );
 
     # Results:
-    my $ImageId             = $ImageAttribute->ImageId;
-    my $ProductCodes        = $ImageAttribute->ProductCodes;
-    my $KernelId            = $ImageAttribute->KernelId;
-    my $LaunchPermissions   = $ImageAttribute->LaunchPermissions;
-    my $RamdiskId           = $ImageAttribute->RamdiskId;
-    my $SriovNetSupport     = $ImageAttribute->SriovNetSupport;
     my $BlockDeviceMappings = $ImageAttribute->BlockDeviceMappings;
     my $Description         = $ImageAttribute->Description;
+    my $ImageId             = $ImageAttribute->ImageId;
+    my $KernelId            = $ImageAttribute->KernelId;
+    my $LaunchPermissions   = $ImageAttribute->LaunchPermissions;
+    my $ProductCodes        = $ImageAttribute->ProductCodes;
+    my $RamdiskId           = $ImageAttribute->RamdiskId;
+    my $SriovNetSupport     = $ImageAttribute->SriovNetSupport;
 
     # Returns a L<Paws::EC2::ImageAttribute> object.
 

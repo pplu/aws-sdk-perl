@@ -2,6 +2,7 @@ package Paws::GroundStation::AntennaUplinkConfig;
   use Moose;
   has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::UplinkSpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
   has TargetEirp => (is => 'ro', isa => 'Paws::GroundStation::Eirp', request_name => 'targetEirp', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

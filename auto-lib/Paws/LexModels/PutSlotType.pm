@@ -6,6 +6,8 @@ package Paws::LexModels::PutSlotType;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ParentSlotTypeSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentSlotTypeSignature');
+  has SlotTypeConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::SlotTypeConfiguration]', traits => ['NameInRequest'], request_name => 'slotTypeConfigurations');
   has ValueSelectionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'valueSelectionStrategy');
 
   use MooseX::ClassAttribute;
@@ -40,31 +42,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description       => 'MyDescription',    # OPTIONAL
       EnumerationValues => [
         {
-          value    => 'MyValue',               # min: 1, max: 140
-          synonyms => [
+          Value    => 'MyValue',               # min: 1, max: 140
+          Synonyms => [
             'MyValue', ...                     # min: 1, max: 140
           ],                                   # OPTIONAL
         },
         ...
       ],                                       # OPTIONAL
+      ParentSlotTypeSignature => 'MyCustomOrBuiltinSlotTypeName',    # OPTIONAL
+      SlotTypeConfigurations  => [
+        {
+          RegexConfiguration => {
+            Pattern => 'MyRegexPattern',    # min: 1, max: 100
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
       ValueSelectionStrategy => 'ORIGINAL_VALUE',    # OPTIONAL
     );
 
     # Results:
-    my $CreateVersion          = $PutSlotTypeResponse->CreateVersion;
-    my $ValueSelectionStrategy = $PutSlotTypeResponse->ValueSelectionStrategy;
-    my $LastUpdatedDate        = $PutSlotTypeResponse->LastUpdatedDate;
-    my $CreatedDate            = $PutSlotTypeResponse->CreatedDate;
-    my $Version                = $PutSlotTypeResponse->Version;
-    my $EnumerationValues      = $PutSlotTypeResponse->EnumerationValues;
-    my $Description            = $PutSlotTypeResponse->Description;
-    my $Name                   = $PutSlotTypeResponse->Name;
-    my $Checksum               = $PutSlotTypeResponse->Checksum;
+    my $Checksum                = $PutSlotTypeResponse->Checksum;
+    my $CreateVersion           = $PutSlotTypeResponse->CreateVersion;
+    my $CreatedDate             = $PutSlotTypeResponse->CreatedDate;
+    my $Description             = $PutSlotTypeResponse->Description;
+    my $EnumerationValues       = $PutSlotTypeResponse->EnumerationValues;
+    my $LastUpdatedDate         = $PutSlotTypeResponse->LastUpdatedDate;
+    my $Name                    = $PutSlotTypeResponse->Name;
+    my $ParentSlotTypeSignature = $PutSlotTypeResponse->ParentSlotTypeSignature;
+    my $SlotTypeConfigurations  = $PutSlotTypeResponse->SlotTypeConfigurations;
+    my $ValueSelectionStrategy  = $PutSlotTypeResponse->ValueSelectionStrategy;
+    my $Version                 = $PutSlotTypeResponse->Version;
 
     # Returns a L<Paws::LexModels::PutSlotTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutSlotType>
 
 =head1 ATTRIBUTES
 
@@ -86,7 +100,9 @@ exception.
 
 =head2 CreateVersion => Bool
 
-
+When set to C<true> a new numbered version of the slot type is created.
+This is the same as calling the C<CreateSlotTypeVersion> operation. If
+you do not specify C<createVersion>, the default is C<false>.
 
 
 
@@ -125,6 +141,23 @@ called C<DATE>.
 For a list of built-in slot types, see Slot Type Reference
 (https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
 in the I<Alexa Skills Kit>.
+
+
+
+=head2 ParentSlotTypeSignature => Str
+
+The built-in slot type used as the parent of the slot type. When you
+define a parent slot type, the new slot type has all of the same
+configuration as the parent.
+
+Only C<AMAZON.AlphaNumeric> is supported.
+
+
+
+=head2 SlotTypeConfigurations => ArrayRef[L<Paws::LexModels::SlotTypeConfiguration>]
+
+Configuration information that extends the parent built-in slot type.
+The configuration is added to the settings for the parent slot type.
 
 
 

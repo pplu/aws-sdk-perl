@@ -6,6 +6,7 @@ package Paws::Quicksight::Template;
   has Name => (is => 'ro', isa => 'Str');
   has TemplateId => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Paws::Quicksight::TemplateVersion');
+
 1;
 
 ### main pod documentation begin ###

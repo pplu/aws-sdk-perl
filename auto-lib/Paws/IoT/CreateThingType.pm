@@ -1,6 +1,7 @@
 
 package Paws::IoT::CreateThingType;
   use Moose;
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingTypeName', required => 1);
   has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', traits => ['NameInRequest'], request_name => 'thingTypeProperties');
 
@@ -30,18 +31,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateThingTypeResponse = $iot->CreateThingType(
-      ThingTypeName       => 'MyThingTypeName',
+      ThingTypeName => 'MyThingTypeName',
+      Tags          => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       ThingTypeProperties => {
-        thingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
-        searchableAttributes => [
-          'MyAttributeName', ...                           # max: 128
-        ],                                                 # OPTIONAL
+        SearchableAttributes => [
+          'MyAttributeName', ...    # max: 128
+        ],                          # OPTIONAL
+        ThingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
-    my $ThingTypeId   = $CreateThingTypeResponse->ThingTypeId;
     my $ThingTypeArn  = $CreateThingTypeResponse->ThingTypeArn;
+    my $ThingTypeId   = $CreateThingTypeResponse->ThingTypeId;
     my $ThingTypeName = $CreateThingTypeResponse->ThingTypeName;
 
     # Returns a L<Paws::IoT::CreateThingTypeResponse> object.
@@ -50,6 +58,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/CreateThingType>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the thing type.
+
 
 
 =head2 B<REQUIRED> ThingTypeName => Str

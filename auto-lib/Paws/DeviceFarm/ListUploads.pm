@@ -3,6 +3,7 @@ package Paws::DeviceFarm::ListUploads;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
 
   use MooseX::ClassAttribute;
 
@@ -32,12 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns information about uploads, given a specific
     # Device Farm project.
     my $ListUploadsResult = $devicefarm->ListUploads(
-      {
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE',
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
-      }
+      'Arn' =>
+'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
+      'NextToken' => 'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE'
     );
 
     # Results:
@@ -65,6 +63,147 @@ operation, which can be used to return the next set of items in the
 list.
 
 
+
+=head2 Type => Str
+
+The type of upload.
+
+Must be one of the following values:
+
+=over
+
+=item *
+
+ANDROID_APP
+
+=item *
+
+IOS_APP
+
+=item *
+
+WEB_APP
+
+=item *
+
+EXTERNAL_DATA
+
+=item *
+
+APPIUM_JAVA_JUNIT_TEST_PACKAGE
+
+=item *
+
+APPIUM_JAVA_TESTNG_TEST_PACKAGE
+
+=item *
+
+APPIUM_PYTHON_TEST_PACKAGE
+
+=item *
+
+APPIUM_NODE_TEST_PACKAGE
+
+=item *
+
+APPIUM_RUBY_TEST_PACKAGE
+
+=item *
+
+APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE
+
+=item *
+
+APPIUM_WEB_PYTHON_TEST_PACKAGE
+
+=item *
+
+APPIUM_WEB_NODE_TEST_PACKAGE
+
+=item *
+
+APPIUM_WEB_RUBY_TEST_PACKAGE
+
+=item *
+
+CALABASH_TEST_PACKAGE
+
+=item *
+
+INSTRUMENTATION_TEST_PACKAGE
+
+=item *
+
+UIAUTOMATION_TEST_PACKAGE
+
+=item *
+
+UIAUTOMATOR_TEST_PACKAGE
+
+=item *
+
+XCTEST_TEST_PACKAGE
+
+=item *
+
+XCTEST_UI_TEST_PACKAGE
+
+=item *
+
+APPIUM_JAVA_JUNIT_TEST_SPEC
+
+=item *
+
+APPIUM_JAVA_TESTNG_TEST_SPEC
+
+=item *
+
+APPIUM_PYTHON_TEST_SPEC
+
+=item *
+
+APPIUM_NODE_TEST_SPEC
+
+=item *
+
+APPIUM_RUBY_TEST_SPEC
+
+=item *
+
+APPIUM_WEB_JAVA_JUNIT_TEST_SPEC
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG_TEST_SPEC
+
+=item *
+
+APPIUM_WEB_PYTHON_TEST_SPEC
+
+=item *
+
+APPIUM_WEB_NODE_TEST_SPEC
+
+=item *
+
+APPIUM_WEB_RUBY_TEST_SPEC
+
+=item *
+
+INSTRUMENTATION_TEST_SPEC
+
+=item *
+
+XCTEST_UI_TEST_SPEC
+
+=back
+
+
+Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_NODE_TEST_PACKAGE">, C<"APPIUM_RUBY_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_NODE_TEST_PACKAGE">, C<"APPIUM_WEB_RUBY_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">, C<"XCTEST_UI_TEST_PACKAGE">, C<"APPIUM_JAVA_JUNIT_TEST_SPEC">, C<"APPIUM_JAVA_TESTNG_TEST_SPEC">, C<"APPIUM_PYTHON_TEST_SPEC">, C<"APPIUM_NODE_TEST_SPEC">, C<"APPIUM_RUBY_TEST_SPEC">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC">, C<"APPIUM_WEB_PYTHON_TEST_SPEC">, C<"APPIUM_WEB_NODE_TEST_SPEC">, C<"APPIUM_WEB_RUBY_TEST_SPEC">, C<"INSTRUMENTATION_TEST_SPEC">, C<"XCTEST_UI_TEST_SPEC">
 
 
 =head1 SEE ALSO

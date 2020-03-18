@@ -2,6 +2,7 @@ package Paws::Signer::S3SignedObject;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

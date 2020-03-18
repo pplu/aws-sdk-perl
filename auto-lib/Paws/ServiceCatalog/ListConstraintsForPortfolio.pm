@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $NextPageToken = $ListConstraintsForPortfolioOutput->NextPageToken;
     my $ConstraintDetails =
       $ListConstraintsForPortfolioOutput->ConstraintDetails;
+    my $NextPageToken = $ListConstraintsForPortfolioOutput->NextPageToken;
 
   # Returns a L<Paws::ServiceCatalog::ListConstraintsForPortfolioOutput> object.
 

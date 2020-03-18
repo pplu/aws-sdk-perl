@@ -2,6 +2,7 @@ package Paws::Rekognition::UnindexedFace;
   use Moose;
   has FaceDetail => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
   has Reasons => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

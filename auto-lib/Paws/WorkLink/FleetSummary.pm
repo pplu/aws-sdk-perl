@@ -7,6 +7,7 @@ package Paws::WorkLink::FleetSummary;
   has FleetName => (is => 'ro', isa => 'Str');
   has FleetStatus => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

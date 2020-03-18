@@ -5,6 +5,7 @@ package Paws::Quicksight::UploadSettings;
   has Format => (is => 'ro', isa => 'Str');
   has StartFromRow => (is => 'ro', isa => 'Int');
   has TextQualifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

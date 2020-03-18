@@ -2,6 +2,7 @@ package Paws::Forecast::PredictorExecution;
   use Moose;
   has AlgorithmArn => (is => 'ro', isa => 'Str');
   has TestWindows => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::TestWindowSummary]');
+
 1;
 
 ### main pod documentation begin ###

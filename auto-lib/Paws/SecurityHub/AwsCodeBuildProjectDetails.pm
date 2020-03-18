@@ -6,6 +6,7 @@ package Paws::SecurityHub::AwsCodeBuildProjectDetails;
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Paws::SecurityHub::AwsCodeBuildProjectSource');
   has VpcConfig => (is => 'ro', isa => 'Paws::SecurityHub::AwsCodeBuildProjectVpcConfig');
+
 1;
 
 ### main pod documentation begin ###

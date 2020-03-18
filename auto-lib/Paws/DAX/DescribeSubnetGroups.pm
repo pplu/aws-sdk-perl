@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SubnetGroups = $DescribeSubnetGroupsResponse->SubnetGroups;
     my $NextToken    = $DescribeSubnetGroupsResponse->NextToken;
+    my $SubnetGroups = $DescribeSubnetGroupsResponse->SubnetGroups;
 
     # Returns a L<Paws::DAX::DescribeSubnetGroupsResponse> object.
 

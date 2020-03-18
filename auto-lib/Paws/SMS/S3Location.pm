@@ -2,6 +2,7 @@ package Paws::SMS::S3Location;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

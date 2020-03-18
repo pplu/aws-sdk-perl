@@ -6,6 +6,7 @@ package Paws::Signer::SigningJob;
   has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::Signer::Source', request_name => 'source', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

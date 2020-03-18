@@ -6,6 +6,7 @@ package Paws::AutoScaling::InstancesDistribution;
   has SpotAllocationStrategy => (is => 'ro', isa => 'Str');
   has SpotInstancePools => (is => 'ro', isa => 'Int');
   has SpotMaxPrice => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

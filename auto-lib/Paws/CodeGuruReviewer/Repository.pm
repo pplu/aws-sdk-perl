@@ -1,6 +1,7 @@
 package Paws::CodeGuruReviewer::Repository;
   use Moose;
   has CodeCommit => (is => 'ro', isa => 'Paws::CodeGuruReviewer::CodeCommitRepository');
+
 1;
 
 ### main pod documentation begin ###

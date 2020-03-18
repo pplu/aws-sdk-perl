@@ -7,6 +7,7 @@ package Paws::Quicksight::Dashboard;
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Paws::Quicksight::DashboardVersion');
+
 1;
 
 ### main pod documentation begin ###

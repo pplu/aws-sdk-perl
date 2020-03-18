@@ -46,7 +46,7 @@ For Application Load Balancers, you can specify values between 200 and
 499, and the default value is 200. You can specify multiple values (for
 example, "200,202") or a range of values (for example, "200-299").
 
-For Network Load Balancers, this is 200 to 399.
+For Network Load Balancers, this is 200E<ndash>399.
 
 
 

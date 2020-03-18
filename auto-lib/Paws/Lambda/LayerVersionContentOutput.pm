@@ -3,6 +3,7 @@ package Paws::Lambda::LayerVersionContentOutput;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
   has Location => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

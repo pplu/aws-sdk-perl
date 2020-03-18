@@ -156,7 +156,8 @@ corresponding FCM value.
 =head2 RawContent => Str
 
   The raw, JSON-formatted string to use as the payload for the
-notification message. This value overrides the message.
+notification message. If specified, this value overrides all other
+content for the message.
 
 
 =head2 RestrictedPackageName => Str

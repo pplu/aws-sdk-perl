@@ -2,6 +2,7 @@ package Paws::WAFv2::OverrideAction;
   use Moose;
   has Count => (is => 'ro', isa => 'Paws::WAFv2::CountAction');
   has None => (is => 'ro', isa => 'Paws::WAFv2::NoneAction');
+
 1;
 
 ### main pod documentation begin ###

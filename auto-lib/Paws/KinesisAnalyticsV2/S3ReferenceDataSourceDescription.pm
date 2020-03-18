@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::S3ReferenceDataSourceDescription;
   has BucketARN => (is => 'ro', isa => 'Str', required => 1);
   has FileKey => (is => 'ro', isa => 'Str', required => 1);
   has ReferenceRoleARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

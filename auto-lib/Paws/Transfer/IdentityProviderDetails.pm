@@ -2,6 +2,7 @@ package Paws::Transfer::IdentityProviderDetails;
   use Moose;
   has InvocationRole => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

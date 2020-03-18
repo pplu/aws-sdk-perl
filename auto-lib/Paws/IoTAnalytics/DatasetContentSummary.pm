@@ -5,6 +5,7 @@ package Paws::IoTAnalytics::DatasetContentSummary;
   has ScheduleTime => (is => 'ro', isa => 'Str', request_name => 'scheduleTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Paws::IoTAnalytics::DatasetContentStatus', request_name => 'status', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

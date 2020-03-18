@@ -4,6 +4,7 @@ package Paws::Greengrass::CreateLoggerDefinition;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::LoggerDefinitionVersion');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -35,34 +36,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Loggers => [
           {
-            Space => 1,            # OPTIONAL
-            Type  => 'FileSystem', # values: FileSystem, AWSCloudWatch; OPTIONAL
-            Component =>
-              'GreengrassSystem',   # values: GreengrassSystem, Lambda; OPTIONAL
-            Id => 'My__string',
-            Level =>
-              'DEBUG',    # values: DEBUG, INFO, WARN, ERROR, FATAL; OPTIONAL
+            Component => 'GreengrassSystem',  # values: GreengrassSystem, Lambda
+            Id        => 'My__string',
+            Level => 'DEBUG',         # values: DEBUG, INFO, WARN, ERROR, FATAL
+            Type  => 'FileSystem',    # values: FileSystem, AWSCloudWatch
+            Space => 1,               # OPTIONAL
           },
           ...
-        ],                # OPTIONAL
+        ],                            # OPTIONAL
       },    # OPTIONAL
-      Name => 'My__string',    # OPTIONAL
+      Name => 'My__string',                         # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
+    my $Arn               = $CreateLoggerDefinitionResponse->Arn;
     my $CreationTimestamp = $CreateLoggerDefinitionResponse->CreationTimestamp;
-    my $LatestVersionArn  = $CreateLoggerDefinitionResponse->LatestVersionArn;
     my $Id                = $CreateLoggerDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateLoggerDefinitionResponse->LastUpdatedTimestamp;
-    my $Arn           = $CreateLoggerDefinitionResponse->Arn;
-    my $Name          = $CreateLoggerDefinitionResponse->Name;
-    my $LatestVersion = $CreateLoggerDefinitionResponse->LatestVersion;
+    my $LatestVersion    = $CreateLoggerDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateLoggerDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateLoggerDefinitionResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateLoggerDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateLoggerDefinition>
 
 =head1 ATTRIBUTES
 
@@ -82,6 +82,12 @@ Information about the initial version of the logger definition.
 =head2 Name => Str
 
 The name of the logger definition.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource.
 
 
 

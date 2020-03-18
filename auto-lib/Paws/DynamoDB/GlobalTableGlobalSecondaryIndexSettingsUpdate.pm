@@ -1,6 +1,7 @@
 package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
   use Moose;
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
+  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
 
 1;
@@ -43,6 +44,12 @@ that will be modified.
 
   The name of the global secondary index. The name must be unique among
 all other indexes on this table.
+
+
+=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
+
+  Auto scaling settings for managing a global secondary index's write
+capacity units.
 
 
 =head2 ProvisionedWriteCapacityUnits => Int

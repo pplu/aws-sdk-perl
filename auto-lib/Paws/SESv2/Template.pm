@@ -2,6 +2,7 @@ package Paws::SESv2::Template;
   use Moose;
   has TemplateArn => (is => 'ro', isa => 'Str');
   has TemplateData => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Rekognition::TrainingData;
   use Moose;
   has Assets => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Asset]');
+
 1;
 
 ### main pod documentation begin ###

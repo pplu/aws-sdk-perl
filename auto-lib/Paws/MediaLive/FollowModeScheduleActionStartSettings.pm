@@ -2,6 +2,7 @@ package Paws::MediaLive::FollowModeScheduleActionStartSettings;
   use Moose;
   has FollowPoint => (is => 'ro', isa => 'Str', request_name => 'followPoint', traits => ['NameInRequest'], required => 1);
   has ReferenceActionName => (is => 'ro', isa => 'Str', request_name => 'referenceActionName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

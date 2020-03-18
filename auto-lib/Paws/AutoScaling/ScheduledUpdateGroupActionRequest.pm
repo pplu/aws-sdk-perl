@@ -7,6 +7,7 @@ package Paws::AutoScaling::ScheduledUpdateGroupActionRequest;
   has Recurrence => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
   has StartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

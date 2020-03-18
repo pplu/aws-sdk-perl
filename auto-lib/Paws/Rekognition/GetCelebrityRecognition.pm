@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Celebrities   = $GetCelebrityRecognitionResponse->Celebrities;
-    my $NextToken     = $GetCelebrityRecognitionResponse->NextToken;
-    my $VideoMetadata = $GetCelebrityRecognitionResponse->VideoMetadata;
     my $JobStatus     = $GetCelebrityRecognitionResponse->JobStatus;
+    my $NextToken     = $GetCelebrityRecognitionResponse->NextToken;
     my $StatusMessage = $GetCelebrityRecognitionResponse->StatusMessage;
+    my $VideoMetadata = $GetCelebrityRecognitionResponse->VideoMetadata;
 
     # Returns a L<Paws::Rekognition::GetCelebrityRecognitionResponse> object.
 
@@ -70,7 +70,7 @@ value you can specify is 1000. If you specify a value greater than
 =head2 NextToken => Str
 
 If the previous response was incomplete (because there is more
-recognized celebrities to retrieve), Rekognition Video returns a
+recognized celebrities to retrieve), Amazon Rekognition Video returns a
 pagination token in the response. You can use this pagination token to
 retrieve the next set of celebrities.
 

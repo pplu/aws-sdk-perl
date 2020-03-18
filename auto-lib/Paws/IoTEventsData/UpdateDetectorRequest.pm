@@ -4,6 +4,7 @@ package Paws::IoTEventsData::UpdateDetectorRequest;
   has KeyValue => (is => 'ro', isa => 'Str', request_name => 'keyValue', traits => ['NameInRequest']);
   has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest'], required => 1);
   has State => (is => 'ro', isa => 'Paws::IoTEventsData::DetectorStateDefinition', request_name => 'state', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

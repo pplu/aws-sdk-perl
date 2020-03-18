@@ -3,6 +3,7 @@ package Paws::SMS::ServerGroupLaunchConfiguration;
   has LaunchOrder => (is => 'ro', isa => 'Int', request_name => 'launchOrder', traits => ['NameInRequest']);
   has ServerGroupId => (is => 'ro', isa => 'Str', request_name => 'serverGroupId', traits => ['NameInRequest']);
   has ServerLaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerLaunchConfiguration]', request_name => 'serverLaunchConfigurations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

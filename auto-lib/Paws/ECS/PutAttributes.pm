@@ -31,11 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutAttributesResponse = $ecs->PutAttributes(
       Attributes => [
         {
-          name     => 'MyString',
-          targetId => 'MyString',
-          value    => 'MyString',
-          targetType =>
+          Name     => 'MyString',
+          TargetId => 'MyString',
+          TargetType =>
             'container-instance',    # values: container-instance; OPTIONAL
+          Value => 'MyString',
         },
         ...
       ],

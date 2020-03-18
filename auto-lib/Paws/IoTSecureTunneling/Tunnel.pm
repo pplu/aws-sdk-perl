@@ -11,6 +11,7 @@ package Paws::IoTSecureTunneling::Tunnel;
   has TimeoutConfig => (is => 'ro', isa => 'Paws::IoTSecureTunneling::TimeoutConfig', request_name => 'timeoutConfig', traits => ['NameInRequest']);
   has TunnelArn => (is => 'ro', isa => 'Str', request_name => 'tunnelArn', traits => ['NameInRequest']);
   has TunnelId => (is => 'ro', isa => 'Str', request_name => 'tunnelId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

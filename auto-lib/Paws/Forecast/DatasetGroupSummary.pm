@@ -4,6 +4,7 @@ package Paws::Forecast::DatasetGroupSummary;
   has DatasetGroupArn => (is => 'ro', isa => 'Str');
   has DatasetGroupName => (is => 'ro', isa => 'Str');
   has LastModificationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

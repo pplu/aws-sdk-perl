@@ -34,20 +34,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Actions => [
           {
             Arguments => { 'MyGenericString' => 'MyGenericString', }, # OPTIONAL
+            CrawlerName          => 'MyNameString',    # min: 1, max: 255
             JobName              => 'MyNameString',    # min: 1, max: 255
             NotificationProperty => {
-              NotifyDelayAfter => 1,                   # min: 1, ; OPTIONAL
+              NotifyDelayAfter => 1,                   # min: 1; OPTIONAL
             },    # OPTIONAL
-            Timeout => 1,    # min: 1, ; OPTIONAL
+            SecurityConfiguration => 'MyNameString',    # min: 1, max: 255
+            Timeout               => 1,                 # min: 1; OPTIONAL
           },
           ...
-        ],                   # OPTIONAL
-        Schedule  => 'MyGenericString',
-        Predicate => {
+        ],                                              # OPTIONAL
+        Description => 'MyDescriptionString',           # max: 2048; OPTIONAL
+        Name        => 'MyNameString',                  # min: 1, max: 255
+        Predicate   => {
           Conditions => [
             {
-              LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL
+              CrawlState => 'RUNNING'
+              ,    # values: RUNNING, SUCCEEDED, CANCELLED, FAILED; OPTIONAL
+              CrawlerName     => 'MyNameString',    # min: 1, max: 255
               JobName         => 'MyNameString',    # min: 1, max: 255
+              LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL
               State           => 'STARTING'
               , # values: STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT; OPTIONAL
             },
@@ -55,8 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Logical => 'AND',    # values: AND, ANY; OPTIONAL
         },    # OPTIONAL
-        Name        => 'MyNameString',           # min: 1, max: 255
-        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
+        Schedule => 'MyGenericString',
       },
 
     );

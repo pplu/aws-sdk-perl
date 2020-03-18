@@ -2,6 +2,7 @@ package Paws::MediaLive::MultiplexVideoSettings;
   use Moose;
   has ConstantBitrate => (is => 'ro', isa => 'Int', request_name => 'constantBitrate', traits => ['NameInRequest']);
   has StatmuxSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexStatmuxVideoSettings', request_name => 'statmuxSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

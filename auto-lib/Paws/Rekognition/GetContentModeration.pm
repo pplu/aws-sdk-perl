@@ -38,11 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $GetContentModerationResponse->NextToken;
-    my $ModerationLabels = $GetContentModerationResponse->ModerationLabels;
-    my $VideoMetadata    = $GetContentModerationResponse->VideoMetadata;
     my $JobStatus        = $GetContentModerationResponse->JobStatus;
-    my $StatusMessage    = $GetContentModerationResponse->StatusMessage;
+    my $ModerationLabels = $GetContentModerationResponse->ModerationLabels;
+    my $ModerationModelVersion =
+      $GetContentModerationResponse->ModerationModelVersion;
+    my $NextToken     = $GetContentModerationResponse->NextToken;
+    my $StatusMessage = $GetContentModerationResponse->StatusMessage;
+    my $VideoMetadata = $GetContentModerationResponse->VideoMetadata;
 
     # Returns a L<Paws::Rekognition::GetContentModerationResponse> object.
 
@@ -54,8 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =head2 B<REQUIRED> JobId => Str
 
-The identifier for the content moderation job. Use C<JobId> to identify
-the job in a subsequent call to C<GetContentModeration>.
+The identifier for the unsafe content job. Use C<JobId> to identify the
+job in a subsequent call to C<GetContentModeration>.
 
 
 
@@ -72,7 +74,7 @@ value you can specify is 1000. If you specify a value greater than
 If the previous response was incomplete (because there is more data to
 retrieve), Amazon Rekognition returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
-content moderation labels.
+unsafe content labels.
 
 
 

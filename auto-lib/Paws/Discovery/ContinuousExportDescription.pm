@@ -8,6 +8,7 @@ package Paws::Discovery::ContinuousExportDescription;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusDetail => (is => 'ro', isa => 'Str', request_name => 'statusDetail', traits => ['NameInRequest']);
   has StopTime => (is => 'ro', isa => 'Str', request_name => 'stopTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -13,6 +13,7 @@ package Paws::GroundStation::ContactData;
   has SatelliteArn => (is => 'ro', isa => 'Str', request_name => 'satelliteArn', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

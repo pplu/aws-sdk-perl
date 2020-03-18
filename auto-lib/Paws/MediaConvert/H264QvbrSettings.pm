@@ -3,6 +3,7 @@ package Paws::MediaConvert::H264QvbrSettings;
   has MaxAverageBitrate => (is => 'ro', isa => 'Int', request_name => 'maxAverageBitrate', traits => ['NameInRequest']);
   has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
   has QvbrQualityLevelFineTune => (is => 'ro', isa => 'Num', request_name => 'qvbrQualityLevelFineTune', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

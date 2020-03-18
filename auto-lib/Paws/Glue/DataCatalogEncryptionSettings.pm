@@ -2,6 +2,7 @@ package Paws::Glue::DataCatalogEncryptionSettings;
   use Moose;
   has ConnectionPasswordEncryption => (is => 'ro', isa => 'Paws::Glue::ConnectionPasswordEncryption');
   has EncryptionAtRest => (is => 'ro', isa => 'Paws::Glue::EncryptionAtRest');
+
 1;
 
 ### main pod documentation begin ###

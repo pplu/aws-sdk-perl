@@ -14,6 +14,7 @@ package Paws::DocDB::PendingModifiedValues;
   has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::DocDB::PendingCloudwatchLogsExports');
   has Port => (is => 'ro', isa => 'Int');
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Forecast::InputDataConfig;
   use Moose;
   has DatasetGroupArn => (is => 'ro', isa => 'Str', required => 1);
   has SupplementaryFeatures => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::SupplementaryFeature]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodePipeline::ActionExecutionOutput;
   has ExecutionResult => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecutionResult', request_name => 'executionResult', traits => ['NameInRequest']);
   has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactDetail]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
   has OutputVariables => (is => 'ro', isa => 'Paws::CodePipeline::OutputVariablesMap', request_name => 'outputVariables', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

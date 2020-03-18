@@ -2,6 +2,7 @@ package Paws::RedShift::ResizeInfo;
   use Moose;
   has AllowCancelResize => (is => 'ro', isa => 'Bool');
   has ResizeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

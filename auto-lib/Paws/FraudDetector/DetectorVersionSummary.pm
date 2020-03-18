@@ -4,6 +4,7 @@ package Paws::FraudDetector::DetectorVersionSummary;
   has DetectorVersionId => (is => 'ro', isa => 'Str', request_name => 'detectorVersionId', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

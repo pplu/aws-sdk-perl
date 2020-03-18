@@ -1,6 +1,7 @@
 package Paws::Greengrass::ConnectorDefinitionVersion;
   use Moose;
   has Connectors => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Connector]');
+
 1;
 
 ### main pod documentation begin ###

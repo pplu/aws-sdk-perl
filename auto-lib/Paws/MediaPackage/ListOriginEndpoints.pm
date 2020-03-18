@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $OriginEndpoints = $ListOriginEndpointsResponse->OriginEndpoints;
     my $NextToken       = $ListOriginEndpointsResponse->NextToken;
+    my $OriginEndpoints = $ListOriginEndpointsResponse->OriginEndpoints;
 
     # Returns a L<Paws::MediaPackage::ListOriginEndpointsResponse> object.
 

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example unassigns the specified private IP address from the specified
     # network interface.
     $ec2->UnassignPrivateIpAddresses(
-      {
-        'PrivateIpAddresses' => ['10.0.0.82'],
-        'NetworkInterfaceId' => 'eni-e5aa89a3'
-      }
+      'NetworkInterfaceId' => 'eni-e5aa89a3',
+      'PrivateIpAddresses' => ['10.0.0.82']
     );
 
 

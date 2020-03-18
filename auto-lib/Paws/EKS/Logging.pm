@@ -1,6 +1,7 @@
 package Paws::EKS::Logging;
   use Moose;
   has ClusterLogging => (is => 'ro', isa => 'ArrayRef[Paws::EKS::LogSetup]', request_name => 'clusterLogging', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

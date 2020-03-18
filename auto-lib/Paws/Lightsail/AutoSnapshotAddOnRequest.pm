@@ -1,6 +1,7 @@
 package Paws::Lightsail::AutoSnapshotAddOnRequest;
   use Moose;
   has SnapshotTimeOfDay => (is => 'ro', isa => 'Str', request_name => 'snapshotTimeOfDay', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

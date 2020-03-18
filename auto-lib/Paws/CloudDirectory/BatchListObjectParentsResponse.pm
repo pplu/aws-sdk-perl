@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListObjectParentsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has ParentLinks => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectIdentifierAndLinkNameTuple]');
+
 1;
 
 ### main pod documentation begin ###

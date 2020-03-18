@@ -10,6 +10,7 @@ package Paws::ComputeOptimizer::InstanceRecommendation;
   has RecommendationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::InstanceRecommendationOption]', request_name => 'recommendationOptions', traits => ['NameInRequest']);
   has RecommendationSources => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::RecommendationSource]', request_name => 'recommendationSources', traits => ['NameInRequest']);
   has UtilizationMetrics => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::UtilizationMetric]', request_name => 'utilizationMetrics', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

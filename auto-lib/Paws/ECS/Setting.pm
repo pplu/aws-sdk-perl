@@ -3,6 +3,7 @@ package Paws::ECS::Setting;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PrincipalArn => (is => 'ro', isa => 'Str', request_name => 'principalArn', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

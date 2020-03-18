@@ -18,6 +18,7 @@ package Paws::Glue::MLTransform;
   has Timeout => (is => 'ro', isa => 'Int');
   has TransformId => (is => 'ro', isa => 'Str');
   has WorkerType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

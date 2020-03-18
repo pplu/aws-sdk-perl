@@ -3,6 +3,7 @@ package Paws::S3Control::DescribeJobResult;
   use Moose;
   has Job => (is => 'ro', isa => 'Paws::S3Control::JobDescriptor');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

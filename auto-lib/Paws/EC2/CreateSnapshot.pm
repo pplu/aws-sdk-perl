@@ -34,21 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example creates a snapshot of the volume with a volume ID of
    # ``vol-1234567890abcdef0`` and a short description to identify the snapshot.
     my $Snapshot = $ec2->CreateSnapshot(
-      {
-        'VolumeId'    => 'vol-1234567890abcdef0',
-        'Description' => 'This is my root volume snapshot.'
-      }
+      'Description' => 'This is my root volume snapshot.',
+      'VolumeId'    => 'vol-1234567890abcdef0'
     );
 
     # Results:
-    my $VolumeSize  = $Snapshot->VolumeSize;
-    my $SnapshotId  = $Snapshot->SnapshotId;
-    my $VolumeId    = $Snapshot->VolumeId;
-    my $State       = $Snapshot->State;
-    my $OwnerId     = $Snapshot->OwnerId;
-    my $StartTime   = $Snapshot->StartTime;
-    my $Tags        = $Snapshot->Tags;
     my $Description = $Snapshot->Description;
+    my $OwnerId     = $Snapshot->OwnerId;
+    my $SnapshotId  = $Snapshot->SnapshotId;
+    my $StartTime   = $Snapshot->StartTime;
+    my $State       = $Snapshot->State;
+    my $Tags        = $Snapshot->Tags;
+    my $VolumeId    = $Snapshot->VolumeId;
+    my $VolumeSize  = $Snapshot->VolumeSize;
 
     # Returns a L<Paws::EC2::Snapshot> object.
 

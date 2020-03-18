@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken     = $DescribeImageBuildersResult->NextToken;
     my $ImageBuilders = $DescribeImageBuildersResult->ImageBuilders;
+    my $NextToken     = $DescribeImageBuildersResult->NextToken;
 
     # Returns a L<Paws::AppStream::DescribeImageBuildersResult> object.
 

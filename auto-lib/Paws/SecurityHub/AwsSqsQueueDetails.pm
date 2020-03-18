@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsSqsQueueDetails;
   has KmsDataKeyReusePeriodSeconds => (is => 'ro', isa => 'Int');
   has KmsMasterKeyId => (is => 'ro', isa => 'Str');
   has QueueName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

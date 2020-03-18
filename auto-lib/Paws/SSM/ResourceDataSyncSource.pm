@@ -4,6 +4,7 @@ package Paws::SSM::ResourceDataSyncSource;
   has IncludeFutureRegions => (is => 'ro', isa => 'Bool');
   has SourceRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SourceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

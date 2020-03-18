@@ -1,6 +1,7 @@
 package Paws::DynamoDB::ItemResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
+
 1;
 
 ### main pod documentation begin ###

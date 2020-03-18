@@ -4,6 +4,7 @@ package Paws::KinesisVideoSignaling::IceServer;
   has Ttl => (is => 'ro', isa => 'Int');
   has Uris => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

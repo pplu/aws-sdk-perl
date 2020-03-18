@@ -1,6 +1,7 @@
 package Paws::Batch::LinuxParameters;
   use Moose;
   has Devices => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Device]', request_name => 'devices', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

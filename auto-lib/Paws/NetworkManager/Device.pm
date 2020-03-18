@@ -13,6 +13,7 @@ package Paws::NetworkManager::Device;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::NetworkManager::Tag]');
   has Type => (is => 'ro', isa => 'Str');
   has Vendor => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

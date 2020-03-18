@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::BusinessReportS3Location;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

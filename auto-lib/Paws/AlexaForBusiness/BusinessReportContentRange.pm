@@ -1,6 +1,7 @@
 package Paws::AlexaForBusiness::BusinessReportContentRange;
   use Moose;
   has Interval => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Batch::NodeProperties;
   has MainNode => (is => 'ro', isa => 'Int', request_name => 'mainNode', traits => ['NameInRequest'], required => 1);
   has NodeRangeProperties => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NodeRangeProperty]', request_name => 'nodeRangeProperties', traits => ['NameInRequest'], required => 1);
   has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

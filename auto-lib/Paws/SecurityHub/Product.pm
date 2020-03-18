@@ -8,6 +8,7 @@ package Paws::SecurityHub::Product;
   has ProductArn => (is => 'ro', isa => 'Str', required => 1);
   has ProductName => (is => 'ro', isa => 'Str');
   has ProductSubscriptionResourcePolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

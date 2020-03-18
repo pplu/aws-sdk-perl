@@ -1,6 +1,7 @@
 package Paws::CloudFront::OriginGroupFailoverCriteria;
   use Moose;
   has StatusCodes => (is => 'ro', isa => 'Paws::CloudFront::StatusCodes', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,6 @@
 package Paws::MediaLive::ColorSpacePassthroughSettings;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

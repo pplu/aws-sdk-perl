@@ -2,6 +2,7 @@ package Paws::SecurityHub::AvailabilityZone;
   use Moose;
   has SubnetId => (is => 'ro', isa => 'Str');
   has ZoneName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

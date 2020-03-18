@@ -2,6 +2,7 @@ package Paws::SageMaker::MonitoringScheduleConfig;
   use Moose;
   has MonitoringJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::MonitoringJobDefinition', required => 1);
   has ScheduleConfig => (is => 'ro', isa => 'Paws::SageMaker::ScheduleConfig');
+
 1;
 
 ### main pod documentation begin ###

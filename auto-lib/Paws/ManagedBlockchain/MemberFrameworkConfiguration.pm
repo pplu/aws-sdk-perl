@@ -1,6 +1,7 @@
 package Paws::ManagedBlockchain::MemberFrameworkConfiguration;
   use Moose;
   has Fabric => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberFabricConfiguration');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,6 @@
 package Paws::MediaLive::ScheduleDeleteResultModel;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

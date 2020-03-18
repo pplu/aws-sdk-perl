@@ -10,6 +10,7 @@ package Paws::Kendra::AttributeFilter;
   has LessThanOrEquals => (is => 'ro', isa => 'Paws::Kendra::DocumentAttribute');
   has NotFilter => (is => 'ro', isa => 'Paws::Kendra::AttributeFilter');
   has OrAllFilters => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::AttributeFilter]');
+
 1;
 
 ### main pod documentation begin ###

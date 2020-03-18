@@ -34,29 +34,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Users            = $DescribeBrokerResponse->Users;
-    my $SubnetIds        = $DescribeBrokerResponse->SubnetIds;
-    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
-    my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
-    my $BrokerInstances  = $DescribeBrokerResponse->BrokerInstances;
     my $AutoMinorVersionUpgrade =
       $DescribeBrokerResponse->AutoMinorVersionUpgrade;
-    my $BrokerId           = $DescribeBrokerResponse->BrokerId;
-    my $Configurations     = $DescribeBrokerResponse->Configurations;
-    my $EngineVersion      = $DescribeBrokerResponse->EngineVersion;
-    my $BrokerName         = $DescribeBrokerResponse->BrokerName;
-    my $EngineType         = $DescribeBrokerResponse->EngineType;
-    my $BrokerArn          = $DescribeBrokerResponse->BrokerArn;
-    my $BrokerState        = $DescribeBrokerResponse->BrokerState;
-    my $PubliclyAccessible = $DescribeBrokerResponse->PubliclyAccessible;
+    my $BrokerArn         = $DescribeBrokerResponse->BrokerArn;
+    my $BrokerId          = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances   = $DescribeBrokerResponse->BrokerInstances;
+    my $BrokerName        = $DescribeBrokerResponse->BrokerName;
+    my $BrokerState       = $DescribeBrokerResponse->BrokerState;
+    my $Configurations    = $DescribeBrokerResponse->Configurations;
+    my $Created           = $DescribeBrokerResponse->Created;
+    my $DeploymentMode    = $DescribeBrokerResponse->DeploymentMode;
+    my $EncryptionOptions = $DescribeBrokerResponse->EncryptionOptions;
+    my $EngineType        = $DescribeBrokerResponse->EngineType;
+    my $EngineVersion     = $DescribeBrokerResponse->EngineVersion;
+    my $HostInstanceType  = $DescribeBrokerResponse->HostInstanceType;
+    my $Logs              = $DescribeBrokerResponse->Logs;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
-    my $SecurityGroups = $DescribeBrokerResponse->SecurityGroups;
+    my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;
+    my $PendingHostInstanceType =
+      $DescribeBrokerResponse->PendingHostInstanceType;
+    my $PendingSecurityGroups = $DescribeBrokerResponse->PendingSecurityGroups;
+    my $PubliclyAccessible    = $DescribeBrokerResponse->PubliclyAccessible;
+    my $SecurityGroups        = $DescribeBrokerResponse->SecurityGroups;
+    my $StorageType           = $DescribeBrokerResponse->StorageType;
+    my $SubnetIds             = $DescribeBrokerResponse->SubnetIds;
+    my $Tags                  = $DescribeBrokerResponse->Tags;
+    my $Users                 = $DescribeBrokerResponse->Users;
 
     # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/DescribeBroker>
 
 =head1 ATTRIBUTES
 

@@ -1,6 +1,7 @@
 package Paws::CloudTrail::InsightSelector;
   use Moose;
   has InsightType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

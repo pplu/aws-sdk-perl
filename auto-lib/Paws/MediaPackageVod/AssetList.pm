@@ -2,6 +2,7 @@ package Paws::MediaPackageVod::AssetList;
   use Moose;
   has Assets => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::AssetShallow]', request_name => 'assets', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

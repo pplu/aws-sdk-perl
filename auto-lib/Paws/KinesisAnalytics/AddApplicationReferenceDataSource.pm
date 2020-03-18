@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReferenceSchema => {
           RecordColumns => [
             {
-              SqlType => 'MyRecordColumnSqlType',    # min: 1,
               Name    => 'MyRecordColumnName',
+              SqlType => 'MyRecordColumnSqlType',    # min: 1
               Mapping => 'MyRecordColumnMapping',    # OPTIONAL
             },
             ...
@@ -47,12 +47,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordFormatType  => 'JSON',             # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
+                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1
+                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1
 
               },    # OPTIONAL
               JSONMappingParameters => {
-                RecordRowPath => 'MyRecordRowPath',    # min: 1,
+                RecordRowPath => 'MyRecordRowPath',    # min: 1
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -61,9 +61,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         TableName             => 'MyInAppTableName',    # min: 1, max: 32
         S3ReferenceDataSource => {
-          ReferenceRoleARN => 'MyRoleARN',              # min: 1, max: 2048
-          FileKey          => 'MyFileKey',              # min: 1, max: 1024
           BucketARN        => 'MyBucketARN',            # min: 1, max: 2048
+          FileKey          => 'MyFileKey',              # min: 1, max: 1024
+          ReferenceRoleARN => 'MyRoleARN',              # min: 1, max: 2048
 
         },    # OPTIONAL
       },
@@ -85,9 +85,11 @@ Name of an existing application.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Version of the application for which you are adding the reference data
-source. You can use the DescribeApplication operation to get the
-current application version. If the version specified is not the
-current version, the C<ConcurrentModificationException> is returned.
+source. You can use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation to get the current application version. If the version
+specified is not the current version, the
+C<ConcurrentModificationException> is returned.
 
 
 

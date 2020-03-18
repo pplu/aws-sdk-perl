@@ -2,6 +2,7 @@ package Paws::CloudFront::StatusCodes;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'StatusCode', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

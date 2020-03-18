@@ -2,6 +2,7 @@ package Paws::CodeCommit::SourceFileSpecifier;
   use Moose;
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
   has IsMove => (is => 'ro', isa => 'Bool', request_name => 'isMove', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

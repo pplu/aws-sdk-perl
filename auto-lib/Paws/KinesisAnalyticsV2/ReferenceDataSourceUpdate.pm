@@ -4,6 +4,7 @@ package Paws::KinesisAnalyticsV2::ReferenceDataSourceUpdate;
   has ReferenceSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SourceSchema');
   has S3ReferenceDataSourceUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ReferenceDataSourceUpdate');
   has TableNameUpdate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

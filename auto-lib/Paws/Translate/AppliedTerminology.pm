@@ -2,6 +2,7 @@ package Paws::Translate::AppliedTerminology;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Terms => (is => 'ro', isa => 'ArrayRef[Paws::Translate::Term]');
+
 1;
 
 ### main pod documentation begin ###

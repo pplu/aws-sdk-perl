@@ -3,6 +3,7 @@ package Paws::SageMaker::GitConfig;
   has Branch => (is => 'ro', isa => 'Str');
   has RepositoryUrl => (is => 'ro', isa => 'Str', required => 1);
   has SecretArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

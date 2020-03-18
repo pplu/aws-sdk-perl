@@ -31,14 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $PollForJobsOutput = $codepipeline->PollForJobs(
       ActionTypeId => {
-        provider => 'MyActionProvider',    # min: 1, max: 25
-        category =>
+        Category =>
           'Source',    # values: Source, Build, Deploy, Test, Invoke, Approval
-        owner   => 'AWS',          # values: AWS, ThirdParty, Custom
-        version => 'MyVersion',    # min: 1, max: 9
+        Owner    => 'AWS',                 # values: AWS, ThirdParty, Custom
+        Provider => 'MyActionProvider',    # min: 1, max: 25
+        Version  => 'MyVersion',           # min: 1, max: 9
 
       },
-      MaxBatchSize => 1,           # OPTIONAL
+      MaxBatchSize => 1,                   # OPTIONAL
       QueryParam   => {
         'MyActionConfigurationKey' => 'MyActionConfigurationQueryableValue'
         ,    # key: min: 1, max: 50, value: min: 1, max: 50
@@ -74,7 +74,7 @@ A map of property names and values. For an action type with no
 queryable properties, this value must be null or an empty map. For an
 action type with a queryable property, you must supply that property as
 a key in the map. Only jobs whose action configuration matches the
-mapped value will be returned.
+mapped value are returned.
 
 
 

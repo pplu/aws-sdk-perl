@@ -2,6 +2,7 @@ package Paws::ComprehendMedical::UnmappedAttribute;
   use Moose;
   has Attribute => (is => 'ro', isa => 'Paws::ComprehendMedical::Attribute');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

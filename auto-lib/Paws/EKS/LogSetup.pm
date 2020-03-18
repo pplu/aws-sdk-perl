@@ -2,6 +2,7 @@ package Paws::EKS::LogSetup;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
   has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'types', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

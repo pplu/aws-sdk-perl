@@ -2,6 +2,7 @@ package Paws::SecurityHub::RelatedFinding;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has ProductArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

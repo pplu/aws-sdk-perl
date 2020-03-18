@@ -3,6 +3,7 @@ package Paws::IoTEvents::Event;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Action]', request_name => 'actions', traits => ['NameInRequest']);
   has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest']);
   has EventName => (is => 'ro', isa => 'Str', request_name => 'eventName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

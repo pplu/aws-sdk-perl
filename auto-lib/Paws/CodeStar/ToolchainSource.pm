@@ -1,6 +1,7 @@
 package Paws::CodeStar::ToolchainSource;
   use Moose;
   has S3 => (is => 'ro', isa => 'Paws::CodeStar::S3Location', request_name => 's3', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

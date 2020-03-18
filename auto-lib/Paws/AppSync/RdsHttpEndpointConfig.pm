@@ -5,6 +5,7 @@ package Paws::AppSync::RdsHttpEndpointConfig;
   has DatabaseName => (is => 'ro', isa => 'Str', request_name => 'databaseName', traits => ['NameInRequest']);
   has DbClusterIdentifier => (is => 'ro', isa => 'Str', request_name => 'dbClusterIdentifier', traits => ['NameInRequest']);
   has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

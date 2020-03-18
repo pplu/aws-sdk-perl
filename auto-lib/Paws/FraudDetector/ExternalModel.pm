@@ -8,6 +8,7 @@ package Paws::FraudDetector::ExternalModel;
   has ModelSource => (is => 'ro', isa => 'Str', request_name => 'modelSource', traits => ['NameInRequest']);
   has OutputConfiguration => (is => 'ro', isa => 'Paws::FraudDetector::ModelOutputConfiguration', request_name => 'outputConfiguration', traits => ['NameInRequest']);
   has Role => (is => 'ro', isa => 'Paws::FraudDetector::Role', request_name => 'role', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

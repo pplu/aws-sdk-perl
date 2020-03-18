@@ -5,6 +5,7 @@ package Paws::KinesisAnalyticsV2::Output;
   has KinesisStreamsOutput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisStreamsOutput');
   has LambdaOutput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::LambdaOutput');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

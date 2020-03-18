@@ -2,6 +2,7 @@ package Paws::Amplify::Job;
   use Moose;
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::Step]', request_name => 'steps', traits => ['NameInRequest'], required => 1);
   has Summary => (is => 'ro', isa => 'Paws::Amplify::JobSummary', request_name => 'summary', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

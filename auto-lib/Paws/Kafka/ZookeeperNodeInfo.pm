@@ -5,6 +5,7 @@ package Paws::Kafka::ZookeeperNodeInfo;
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
   has ZookeeperId => (is => 'ro', isa => 'Num', request_name => 'zookeeperId', traits => ['NameInRequest']);
   has ZookeeperVersion => (is => 'ro', isa => 'Str', request_name => 'zookeeperVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

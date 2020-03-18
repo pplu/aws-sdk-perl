@@ -10,6 +10,7 @@ package Paws::Translate::TerminologyProperties;
   has SourceLanguageCode => (is => 'ro', isa => 'Str');
   has TargetLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TermCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

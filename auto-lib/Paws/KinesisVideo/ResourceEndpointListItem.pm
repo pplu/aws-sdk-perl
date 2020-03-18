@@ -2,6 +2,7 @@ package Paws::KinesisVideo::ResourceEndpointListItem;
   use Moose;
   has Protocol => (is => 'ro', isa => 'Str');
   has ResourceEndpoint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

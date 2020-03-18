@@ -14,6 +14,7 @@ package Paws::ServiceQuotas::RequestedServiceQuotaChange;
   has ServiceName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

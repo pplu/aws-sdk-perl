@@ -2,6 +2,7 @@ package Paws::DataExchange::Details;
   use Moose;
   has ImportAssetFromSignedUrlJobErrorDetails => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetFromSignedUrlJobErrorDetails');
   has ImportAssetsFromS3JobErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetSourceEntry]');
+
 1;
 
 ### main pod documentation begin ###

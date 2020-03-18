@@ -11,6 +11,7 @@ package Paws::Transfer::DescribedServer;
   has State => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
   has UserCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

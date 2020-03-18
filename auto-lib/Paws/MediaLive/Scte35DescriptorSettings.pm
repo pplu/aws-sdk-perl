@@ -1,6 +1,7 @@
 package Paws::MediaLive::Scte35DescriptorSettings;
   use Moose;
   has SegmentationDescriptorScte35DescriptorSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SegmentationDescriptor', request_name => 'segmentationDescriptorScte35DescriptorSettings', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

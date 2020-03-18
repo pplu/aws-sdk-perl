@@ -6,6 +6,7 @@ package Paws::ACMPCA::Permission;
   has Policy => (is => 'ro', isa => 'Str');
   has Principal => (is => 'ro', isa => 'Str');
   has SourceAccount => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SecurityHub::Note;
   has Text => (is => 'ro', isa => 'Str', required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
   has UpdatedBy => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

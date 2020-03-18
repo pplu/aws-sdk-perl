@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsCloudFrontDistributionLogging;
   has Enabled => (is => 'ro', isa => 'Bool');
   has IncludeCookies => (is => 'ro', isa => 'Bool');
   has Prefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

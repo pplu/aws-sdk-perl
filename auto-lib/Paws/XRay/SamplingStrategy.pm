@@ -2,6 +2,7 @@ package Paws::XRay::SamplingStrategy;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

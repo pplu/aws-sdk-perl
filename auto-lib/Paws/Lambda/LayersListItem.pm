@@ -3,6 +3,7 @@ package Paws::Lambda::LayersListItem;
   has LatestMatchingVersion => (is => 'ro', isa => 'Paws::Lambda::LayerVersionsListItem');
   has LayerArn => (is => 'ro', isa => 'Str');
   has LayerName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::SageMaker::DataSource;
   use Moose;
-  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource', required => 1);
+  has FileSystemDataSource => (is => 'ro', isa => 'Paws::SageMaker::FileSystemDataSource');
+  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource');
 
 1;
 
@@ -21,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::DataSource object:
 
-  $service_obj->Method(Att1 => { S3DataSource => $value, ..., S3DataSource => $value  });
+  $service_obj->Method(Att1 => { FileSystemDataSource => $value, ..., S3DataSource => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::DataSource object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->S3DataSource
+  $result->Att1->FileSystemDataSource
 
 =head1 DESCRIPTION
 
@@ -37,7 +38,12 @@ Describes the location of the channel data.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3DataSource => L<Paws::SageMaker::S3DataSource>
+=head2 FileSystemDataSource => L<Paws::SageMaker::FileSystemDataSource>
+
+  The file system that is associated with a channel.
+
+
+=head2 S3DataSource => L<Paws::SageMaker::S3DataSource>
 
   The S3 location of the data source that is associated with a channel.
 

@@ -3,6 +3,7 @@ package Paws::S3Control::S3Grantee;
   has DisplayName => (is => 'ro', isa => 'Str');
   has Identifier => (is => 'ro', isa => 'Str');
   has TypeIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

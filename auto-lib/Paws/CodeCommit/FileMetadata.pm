@@ -3,6 +3,7 @@ package Paws::CodeCommit::FileMetadata;
   has AbsolutePath => (is => 'ro', isa => 'Str', request_name => 'absolutePath', traits => ['NameInRequest']);
   has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
   has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

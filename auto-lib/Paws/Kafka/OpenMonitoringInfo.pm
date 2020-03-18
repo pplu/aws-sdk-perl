@@ -1,6 +1,7 @@
 package Paws::Kafka::OpenMonitoringInfo;
   use Moose;
   has Prometheus => (is => 'ro', isa => 'Paws::Kafka::PrometheusInfo', request_name => 'prometheus', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

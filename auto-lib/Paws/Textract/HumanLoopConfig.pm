@@ -3,6 +3,7 @@ package Paws::Textract::HumanLoopConfig;
   has DataAttributes => (is => 'ro', isa => 'Paws::Textract::HumanLoopDataAttributes');
   has FlowDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
   has HumanLoopName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

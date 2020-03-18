@@ -3,6 +3,7 @@ package Paws::GroundStation::DataflowEndpoint;
   has Address => (is => 'ro', isa => 'Paws::GroundStation::SocketAddress', request_name => 'address', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

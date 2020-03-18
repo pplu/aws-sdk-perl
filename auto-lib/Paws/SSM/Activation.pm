@@ -9,6 +9,7 @@ package Paws::SSM::Activation;
   has IamRole => (is => 'ro', isa => 'Str');
   has RegistrationLimit => (is => 'ro', isa => 'Int');
   has RegistrationsCount => (is => 'ro', isa => 'Int');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 
 1;
 
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::Activation object:
 
-  $service_obj->Method(Att1 => { ActivationId => $value, ..., RegistrationsCount => $value  });
+  $service_obj->Method(Att1 => { ActivationId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -95,6 +96,11 @@ this activation.
 
   The number of managed instances already registered with this
 activation.
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+  Tags assigned to the activation.
 
 
 

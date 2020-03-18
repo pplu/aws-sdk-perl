@@ -3,6 +3,7 @@ package Paws::Robomaker::PortMapping;
   has ApplicationPort => (is => 'ro', isa => 'Int', request_name => 'applicationPort', traits => ['NameInRequest'], required => 1);
   has EnableOnPublicIp => (is => 'ro', isa => 'Bool', request_name => 'enableOnPublicIp', traits => ['NameInRequest']);
   has JobPort => (is => 'ro', isa => 'Int', request_name => 'jobPort', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

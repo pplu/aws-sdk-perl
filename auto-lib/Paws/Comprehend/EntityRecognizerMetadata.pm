@@ -4,6 +4,7 @@ package Paws::Comprehend::EntityRecognizerMetadata;
   has EvaluationMetrics => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerEvaluationMetrics');
   has NumberOfTestDocuments => (is => 'ro', isa => 'Int');
   has NumberOfTrainedDocuments => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

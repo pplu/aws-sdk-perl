@@ -2,7 +2,8 @@
 package Paws::S3Control::PutPublicAccessBlock;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
-  has PublicAccessBlockConfiguration => (is => 'ro', isa => 'Paws::S3Control::PublicAccessBlockConfiguration', required => 1);
+  has PublicAccessBlockConfiguration => (is => 'ro', isa => 'Paws::S3Control::PublicAccessBlockConfiguration', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -12,6 +13,7 @@ package Paws::S3Control::PutPublicAccessBlock;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

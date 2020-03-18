@@ -37,17 +37,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $Arn = $GetResourceDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $GetResourceDefinitionVersionResponse->CreationTimestamp;
-    my $Version    = $GetResourceDefinitionVersionResponse->Version;
     my $Definition = $GetResourceDefinitionVersionResponse->Definition;
     my $Id         = $GetResourceDefinitionVersionResponse->Id;
-    my $Arn        = $GetResourceDefinitionVersionResponse->Arn;
+    my $Version    = $GetResourceDefinitionVersionResponse->Version;
 
    # Returns a L<Paws::Greengrass::GetResourceDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetResourceDefinitionVersion>
 
 =head1 ATTRIBUTES
 
@@ -60,7 +60,12 @@ The ID of the resource definition.
 
 =head2 B<REQUIRED> ResourceDefinitionVersionId => Str
 
-The ID of the resource definition version.
+The ID of the resource definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation''
+object, which is returned by ''ListResourceDefinitionVersions''
+requests. If the version is the last one that was associated with a
+resource definition, the value also maps to the ''LatestVersion''
+property of the corresponding ''DefinitionInformation'' object.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::Forecast::PredictorExecutionDetails;
   use Moose;
   has PredictorExecutions => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::PredictorExecution]');
+
 1;
 
 ### main pod documentation begin ###

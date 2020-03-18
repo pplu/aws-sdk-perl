@@ -185,6 +185,52 @@ package Paws::ELBv2;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeAccountLimits(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Limits }, @{ $next_result->Limits };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+        $result = $self->DescribeAccountLimits(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+    }
+
+    return undef
+  }
+  sub DescribeAllListenerCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeListenerCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeListenerCertificates(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+        $result = $self->DescribeListenerCertificates(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
   sub DescribeAllListeners {
     my $self = shift;
 
@@ -227,6 +273,52 @@ package Paws::ELBv2;
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       }
       $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+    }
+
+    return undef
+  }
+  sub DescribeAllRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeRules(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Rules }, @{ $next_result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->DescribeRules(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+    }
+
+    return undef
+  }
+  sub DescribeAllSSLPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSSLPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeSSLPolicies(@_, Marker => $next_result->NextMarker);
+        push @{ $result->SslPolicies }, @{ $next_result->SslPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'SslPolicies') foreach (@{ $result->SslPolicies });
+        $result = $self->DescribeSSLPolicies(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'SslPolicies') foreach (@{ $result->SslPolicies });
     }
 
     return undef
@@ -300,68 +392,23 @@ targets.
 
 Elastic Load Balancing supports the following types of load balancers:
 Application Load Balancers, Network Load Balancers, and Classic Load
-Balancers.
+Balancers. This reference covers Application Load Balancers and Network
+Load Balancers.
 
 An Application Load Balancer makes routing and load balancing decisions
 at the application layer (HTTP/HTTPS). A Network Load Balancer makes
-routing and load balancing decisions at the transport layer (TCP). Both
-Application Load Balancers and Network Load Balancers can route
+routing and load balancing decisions at the transport layer (TCP/TLS).
+Both Application Load Balancers and Network Load Balancers can route
 requests to one or more ports on each EC2 instance or container
-instance in your virtual private cloud (VPC).
-
-A Classic Load Balancer makes routing and load balancing decisions
-either at the transport layer (TCP/SSL) or the application layer
-(HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
-information, see the Elastic Load Balancing User Guide
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-
-This reference covers the 2015-12-01 API, which supports Application
-Load Balancers and Network Load Balancers. The 2012-06-01 API supports
-Classic Load Balancers.
-
-To get started, complete the following tasks:
-
-=over
-
-=item 1.
-
-Create a load balancer using CreateLoadBalancer.
-
-=item 2.
-
-Create a target group using CreateTargetGroup.
-
-=item 3.
-
-Register targets for the target group using RegisterTargets.
-
-=item 4.
-
-Create one or more listeners for your load balancer using
-CreateListener.
-
-=back
-
-To delete a load balancer and its related resources, complete the
-following tasks:
-
-=over
-
-=item 1.
-
-Delete the load balancer using DeleteLoadBalancer.
-
-=item 2.
-
-Delete the target group using DeleteTargetGroup.
-
-=back
+instance in your virtual private cloud (VPC). For more information, see
+the Elastic Load Balancing User Guide
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 
 All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it
 succeeds.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2015-12-01>
 
 
 =head1 METHODS
@@ -381,14 +428,20 @@ Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 
 Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
 
-Adds the specified certificate to the specified secure listener.
+Adds the specified SSL server certificate to the certificate list for
+the specified HTTPS or TLS listener.
 
-If the certificate was already added, the call is successful but the
-certificate is not added again.
+If the certificate in already in the certificate list, the call is
+successful but the certificate is not added again.
 
-To list the certificates for your listener, use
-DescribeListenerCertificates. To remove certificates from your
-listener, use RemoveListenerCertificates.
+To get the certificate list for a listener, use
+DescribeListenerCertificates. To remove certificates from the
+certificate list for a listener, use RemoveListenerCertificates. To
+replace the default certificate for a listener, use ModifyListener.
+
+For more information, see SSL Certificates
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
+in the I<Application Load Balancers Guide>.
 
 
 =head2 AddTags
@@ -453,10 +506,10 @@ time. If you attempt to create multiple listeners with the same
 settings, each call succeeds.
 
 For more information, see Listeners for Your Application Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
 in the I<Application Load Balancers Guide> and Listeners for Your
 Network Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -500,10 +553,10 @@ you are finished with a load balancer, you can delete it using
 DeleteLoadBalancer.
 
 For limit information, see Limits for Your Application Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 in the I<Application Load Balancers Guide> and Limits for Your Network
 Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 in the I<Network Load Balancers Guide>.
 
 This operation is idempotent, which means that it completes at most one
@@ -511,9 +564,9 @@ time. If you attempt to create multiple load balancers with the same
 settings, each call succeeds.
 
 For more information, see Application Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
 in the I<Application Load Balancers Guide> and Network Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -543,7 +596,7 @@ Rules are evaluated in priority order, from the lowest value to the
 highest value. When the conditions for a rule are met, its actions are
 performed. If the conditions for no rules are met, the actions for the
 default rule are performed. For more information, see Listener Rules
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 in the I<Application Load Balancers Guide>.
 
 To view your current rules, use DescribeRules. To update a rule, use
@@ -557,11 +610,7 @@ To delete a rule, use DeleteRule.
 
 =item Name => Str
 
-=item Port => Int
-
-=item Protocol => Str
-
-=item VpcId => Str
+=item [HealthCheckEnabled => Bool]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -577,9 +626,15 @@ To delete a rule, use DeleteRule.
 
 =item [Matcher => L<Paws::ELBv2::Matcher>]
 
+=item [Port => Int]
+
+=item [Protocol => Str]
+
 =item [TargetType => Str]
 
 =item [UnhealthyThresholdCount => Int]
+
+=item [VpcId => Str]
 
 
 =back
@@ -606,10 +661,10 @@ settings, each call succeeds.
 
 For more information, see Target Groups for Your Application Load
 Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
 in the I<Application Load Balancers Guide> or Target Groups for Your
 Network Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -629,7 +684,7 @@ Returns: a L<Paws::ELBv2::DeleteListenerOutput> instance
 Deletes the specified listener.
 
 Alternatively, your listener is deleted when you delete the load
-balancer it is attached to using DeleteLoadBalancer.
+balancer to which it is attached, using DeleteLoadBalancer.
 
 
 =head2 DeleteLoadBalancer
@@ -732,10 +787,10 @@ Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
 For more information, see Limits for Your Application Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 in the I<Application Load Balancer Guide> or Limits for Your Network
 Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -756,7 +811,16 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertific
 
 Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 
-Describes the certificates for the specified secure listener.
+Describes the default certificate and the certificate list for the
+specified HTTPS or TLS listener.
+
+If the default certificate is also in the certificate list, it appears
+twice in the results (once with C<IsDefault> set to true and once with
+C<IsDefault> set to false).
+
+For more information, see SSL Certificates
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
+in the I<Application Load Balancers Guide>.
 
 
 =head2 DescribeListeners
@@ -782,6 +846,10 @@ Describes the specified listeners or the listeners for the specified
 Application Load Balancer or Network Load Balancer. You must specify
 either a load balancer or one or more listeners.
 
+For an HTTPS or TLS listener, the output includes the default
+certificate for the listener. To describe the certificate list for the
+listener, use DescribeListenerCertificates.
+
 
 =head2 DescribeLoadBalancerAttributes
 
@@ -800,9 +868,9 @@ Describes the attributes for the specified Application Load Balancer or
 Network Load Balancer.
 
 For more information, see Load Balancer Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
 in the I<Application Load Balancers Guide> or Load Balancer Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
 in the I<Network Load Balancers Guide>.
 
 
@@ -876,7 +944,7 @@ Describes the specified policies or all policies used for SSL
 negotiation.
 
 For more information, see Security Policies
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 in the I<Application Load Balancers Guide>.
 
 
@@ -914,9 +982,9 @@ Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
 Describes the attributes for the specified target group.
 
 For more information, see Target Group Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
 in the I<Application Load Balancers Guide> or Target Group Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
 in the I<Network Load Balancers Guide>.
 
 
@@ -993,12 +1061,17 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyListener>
 
 Returns: a L<Paws::ELBv2::ModifyListenerOutput> instance
 
-Modifies the specified properties of the specified listener.
+Replaces the specified properties of the specified listener. Any
+properties that you do not specify remain unchanged.
 
-Any properties that you do not specify retain their current values.
-However, changing the protocol from HTTPS to HTTP removes the security
-policy and SSL certificate properties. If you change the protocol from
-HTTP to HTTPS, you must add the security policy and server certificate.
+Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes
+the security policy and default certificate properties. If you change
+the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the
+security policy and default certificate properties.
+
+To add an item to a list, remove an item from a list, or update an item
+in a list, you must provide the entire list. For example, to add an
+action, specify a list with the current actions plus the new action.
 
 
 =head2 ModifyLoadBalancerAttributes
@@ -1041,10 +1114,12 @@ Each argument is described in detail in: L<Paws::ELBv2::ModifyRule>
 
 Returns: a L<Paws::ELBv2::ModifyRuleOutput> instance
 
-Modifies the specified rule.
+Replaces the specified properties of the specified rule. Any properties
+that you do not specify are unchanged.
 
-Any existing properties that you do not modify retain their current
-values.
+To add an item to a list, remove an item from a list, or update an item
+in a list, you must provide the entire list. For example, to add an
+action, specify a list with the current actions plus the new action.
 
 To modify the actions for the default rule, use ModifyListener.
 
@@ -1054,6 +1129,8 @@ To modify the actions for the default rule, use ModifyListener.
 =over
 
 =item TargetGroupArn => Str
+
+=item [HealthCheckEnabled => Bool]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -1119,9 +1196,8 @@ Returns: a L<Paws::ELBv2::RegisterTargetsOutput> instance
 
 Registers the specified targets with the specified target group.
 
-You can register targets by instance ID or by IP address. If the target
-is an EC2 instance, it must be in the C<running> state when you
-register it.
+If the target is an EC2 instance, it must be in the C<running> state
+when you register it.
 
 By default, the load balancer routes requests to registered targets
 using the protocol and port for the target group. Alternatively, you
@@ -1152,7 +1228,8 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificat
 
 Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
 
-Removes the specified certificate from the specified secure listener.
+Removes the specified certificate from the certificate list for the
+specified HTTPS or TLS listener.
 
 You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.
@@ -1200,8 +1277,6 @@ Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
 
-Note that Network Load Balancers must use C<ipv4>.
-
 
 =head2 SetRulePriorities
 
@@ -1242,8 +1317,7 @@ Associates the specified security groups with the specified Application
 Load Balancer. The specified security groups override the previously
 associated security groups.
 
-Note that you can't specify a security group for a Network Load
-Balancer.
+You can't specify a security group for a Network Load Balancer.
 
 
 =head2 SetSubnets
@@ -1263,11 +1337,13 @@ Each argument is described in detail in: L<Paws::ELBv2::SetSubnets>
 
 Returns: a L<Paws::ELBv2::SetSubnetsOutput> instance
 
-Enables the Availability Zone for the specified public subnets for the
-specified Application Load Balancer. The specified subnets replace the
-previously enabled subnets.
+Enables the Availability Zones for the specified public subnets for the
+specified load balancer. The specified subnets replace the previously
+enabled subnets.
 
-Note that you can't change the subnets for a Network Load Balancer.
+When you specify subnets for a Network Load Balancer, you must include
+all subnets that were enabled previously, with their existing
+configurations, plus any additional subnets.
 
 
 
@@ -1275,6 +1351,30 @@ Note that you can't change the subnets for a Network Load Balancer.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAccountLimits(sub { },[Marker => Str, PageSize => Int])
+
+=head2 DescribeAllAccountLimits([Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Limits, passing the object as the first parameter, and the string 'Limits' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllListenerCertificates(sub { },ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+=head2 DescribeAllListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
@@ -1298,6 +1398,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - LoadBalancers, passing the object as the first parameter, and the string 'LoadBalancers' as the second parameter 
 
 If not, it will return a a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRules(sub { },[ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRules([ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeRulesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSSLPolicies(sub { },[Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+=head2 DescribeAllSSLPolicies([Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SslPolicies, passing the object as the first parameter, and the string 'SslPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])

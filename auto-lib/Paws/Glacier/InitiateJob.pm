@@ -34,27 +34,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example initiates an inventory-retrieval job for the vault named
     # examplevault.
     my $InitiateJobOutput = $glacier->InitiateJob(
-      {
-        'AccountId'     => '-',
-        'VaultName'     => 'examplevault',
-        'JobParameters' => {
-          'SNSTopic' =>
+      'AccountId'     => '-',
+      'JobParameters' => {
+        'Description' => 'My inventory job',
+        'Format'      => 'CSV',
+        'SNSTopic' =>
 'arn:aws:sns:us-west-2:111111111111:Glacier-InventoryRetrieval-topic-Example',
-          'Type'        => 'inventory-retrieval',
-          'Description' => 'My inventory job',
-          'Format'      => 'CSV'
-        }
-      }
+        'Type' => 'inventory-retrieval'
+      },
+      'VaultName' => 'examplevault'
     );
 
     # Results:
-    my $location = $InitiateJobOutput->location;
     my $jobId    = $InitiateJobOutput->jobId;
+    my $location = $InitiateJobOutput->location;
 
     # Returns a L<Paws::Glacier::InitiateJobOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/InitiateJob>
 
 =head1 ATTRIBUTES
 
@@ -63,7 +61,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacie
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 

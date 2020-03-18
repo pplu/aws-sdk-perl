@@ -2,6 +2,7 @@ package Paws::IoTEventsData::TimerDefinition;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Seconds => (is => 'ro', isa => 'Int', request_name => 'seconds', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

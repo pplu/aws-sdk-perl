@@ -9,6 +9,7 @@ package Paws::Health::OrganizationEvent;
   has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

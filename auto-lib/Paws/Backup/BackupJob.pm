@@ -17,6 +17,7 @@ package Paws::Backup::BackupJob;
   has StartBy => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

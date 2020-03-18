@@ -2,6 +2,7 @@ package Paws::ES::AdvancedSecurityOptions;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has InternalUserDatabaseEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

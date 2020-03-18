@@ -2,6 +2,7 @@ package Paws::SageMaker::AlgorithmStatusDetails;
   use Moose;
   has ImageScanStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AlgorithmStatusItem]');
   has ValidationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AlgorithmStatusItem]');
+
 1;
 
 ### main pod documentation begin ###

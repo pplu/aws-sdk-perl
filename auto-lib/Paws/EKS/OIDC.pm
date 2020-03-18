@@ -1,6 +1,7 @@
 package Paws::EKS::OIDC;
   use Moose;
   has Issuer => (is => 'ro', isa => 'Str', request_name => 'issuer', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

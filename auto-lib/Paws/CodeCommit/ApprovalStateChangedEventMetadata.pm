@@ -2,6 +2,7 @@ package Paws::CodeCommit::ApprovalStateChangedEventMetadata;
   use Moose;
   has ApprovalStatus => (is => 'ro', isa => 'Str', request_name => 'approvalStatus', traits => ['NameInRequest']);
   has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

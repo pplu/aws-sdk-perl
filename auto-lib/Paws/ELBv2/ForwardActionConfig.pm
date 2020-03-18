@@ -2,6 +2,7 @@ package Paws::ELBv2::ForwardActionConfig;
   use Moose;
   has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TargetGroupTuple]');
   has TargetGroupStickinessConfig => (is => 'ro', isa => 'Paws::ELBv2::TargetGroupStickinessConfig');
+
 1;
 
 ### main pod documentation begin ###

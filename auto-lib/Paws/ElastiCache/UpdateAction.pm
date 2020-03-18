@@ -17,6 +17,7 @@ package Paws::ElastiCache::UpdateAction;
   has UpdateActionAvailableDate => (is => 'ro', isa => 'Str');
   has UpdateActionStatus => (is => 'ro', isa => 'Str');
   has UpdateActionStatusModifiedDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

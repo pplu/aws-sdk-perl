@@ -7,6 +7,7 @@ package Paws::Kendra::SharePointConfiguration;
   has SharePointVersion => (is => 'ro', isa => 'Str', required => 1);
   has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has VpcConfiguration => (is => 'ro', isa => 'Paws::Kendra::DataSourceVpcConfiguration');
+
 1;
 
 ### main pod documentation begin ###

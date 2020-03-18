@@ -8,6 +8,7 @@ package Paws::Glue::WorkflowRun;
   has Status => (is => 'ro', isa => 'Str');
   has WorkflowRunId => (is => 'ro', isa => 'Str');
   has WorkflowRunProperties => (is => 'ro', isa => 'Paws::Glue::WorkflowRunProperties');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::DetectText;
   use Moose;
+  has Filters => (is => 'ro', isa => 'Paws::Rekognition::DetectTextFilters');
   has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,18 +30,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rekognition = Paws->service('Rekognition');
     my $DetectTextResponse = $rekognition->DetectText(
       Image => {
+        Bytes    => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
         S3Object => {
           Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
-          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
           Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
+          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
-        Bytes => 'BlobImageBlob',    # min: 1, max: 5242880; OPTIONAL
       },
-
+      Filters => {
+        RegionsOfInterest => [
+          {
+            BoundingBox => {
+              Height => 1.0,    # OPTIONAL
+              Left   => 1.0,    # OPTIONAL
+              Top    => 1.0,    # OPTIONAL
+              Width  => 1.0,    # OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # max: 10; OPTIONAL
+        WordFilter => {
+          MinBoundingBoxHeight => 1.0,    # max: 1; OPTIONAL
+          MinBoundingBoxWidth  => 1.0,    # max: 1; OPTIONAL
+          MinConfidence        => 1.0,    # max: 100; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
-    my $TextDetections = $DetectTextResponse->TextDetections;
+    my $TextDetections   = $DetectTextResponse->TextDetections;
+    my $TextModelVersion = $DetectTextResponse->TextModelVersion;
 
     # Returns a L<Paws::Rekognition::DetectTextResponse> object.
 
@@ -50,11 +69,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head1 ATTRIBUTES
 
 
+=head2 Filters => L<Paws::Rekognition::DetectTextFilters>
+
+Optional parameters that let you set the criteria that the text must
+meet to be included in your response.
+
+
+
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
 The input image as base64-encoded bytes or an Amazon S3 object. If you
 use the AWS CLI to call Amazon Rekognition operations, you can't pass
 image bytes.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

@@ -13,6 +13,7 @@ package Paws::Textract::Block;
   has RowSpan => (is => 'ro', isa => 'Int');
   has SelectionStatus => (is => 'ro', isa => 'Str');
   has Text => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

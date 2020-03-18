@@ -1,6 +1,7 @@
 package Paws::ECS::RepositoryCredentials;
   use Moose;
   has CredentialsParameter => (is => 'ro', isa => 'Str', request_name => 'credentialsParameter', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

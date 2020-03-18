@@ -3,6 +3,7 @@ package Paws::WorkLink::WebsiteCaSummary;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has WebsiteCaId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

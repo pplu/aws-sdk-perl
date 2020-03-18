@@ -2,6 +2,7 @@ package Paws::Inspector::PrivateIp;
   use Moose;
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

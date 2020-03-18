@@ -3,6 +3,7 @@ package Paws::ApplicationAutoScaling::SuspendedState;
   has DynamicScalingInSuspended => (is => 'ro', isa => 'Bool');
   has DynamicScalingOutSuspended => (is => 'ro', isa => 'Bool');
   has ScheduledScalingSuspended => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

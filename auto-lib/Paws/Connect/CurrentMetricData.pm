@@ -2,6 +2,7 @@ package Paws::Connect::CurrentMetricData;
   use Moose;
   has Metric => (is => 'ro', isa => 'Paws::Connect::CurrentMetric');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

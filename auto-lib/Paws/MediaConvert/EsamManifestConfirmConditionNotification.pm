@@ -1,6 +1,7 @@
 package Paws::MediaConvert::EsamManifestConfirmConditionNotification;
   use Moose;
   has MccXml => (is => 'ro', isa => 'Str', request_name => 'mccXml', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

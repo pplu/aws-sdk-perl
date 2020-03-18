@@ -3,6 +3,7 @@ package Paws::SMS::ServerGroup;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ServerGroupId => (is => 'ro', isa => 'Str', request_name => 'serverGroupId', traits => ['NameInRequest']);
   has ServerList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Server]', request_name => 'serverList', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

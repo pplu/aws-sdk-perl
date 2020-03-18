@@ -1,6 +1,7 @@
 package Paws::XRay::ResponseTimeRootCause;
   use Moose;
   has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResponseTimeRootCauseService]');
+
 1;
 
 ### main pod documentation begin ###

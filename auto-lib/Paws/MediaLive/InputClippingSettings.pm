@@ -3,6 +3,7 @@ package Paws::MediaLive::InputClippingSettings;
   has InputTimecodeSource => (is => 'ro', isa => 'Str', request_name => 'inputTimecodeSource', traits => ['NameInRequest'], required => 1);
   has StartTimecode => (is => 'ro', isa => 'Paws::MediaLive::StartTimecode', request_name => 'startTimecode', traits => ['NameInRequest']);
   has StopTimecode => (is => 'ro', isa => 'Paws::MediaLive::StopTimecode', request_name => 'stopTimecode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

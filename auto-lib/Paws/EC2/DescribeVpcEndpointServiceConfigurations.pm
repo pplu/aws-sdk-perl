@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
-      ServiceIds => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                                    # OPTIONAL
+      NextToken  => 'MyString',                           # OPTIONAL
+      ServiceIds => [ 'MyVpcEndpointServiceId', ... ],    # OPTIONAL
       );
 
     # Results:
@@ -87,6 +87,20 @@ C<service-id> - The ID of the service.
 C<service-state> - The state of the service (C<Pending> | C<Available>
 | C<Deleting> | C<Deleted> | C<Failed>).
 
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
+
 =back
 
 
@@ -97,8 +111,8 @@ C<service-state> - The state of the service (C<Pending> | C<Available>
 The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
-larger than 1000, only 1000 results are returned.
+value can be between 5 and 1,000; if C<MaxResults> is given a value
+larger than 1,000, only 1,000 results are returned.
 
 
 

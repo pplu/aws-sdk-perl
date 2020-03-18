@@ -5,6 +5,7 @@ package Paws::CloudWatchEvents::PutPartnerEventsRequestEntry;
   has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Source => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

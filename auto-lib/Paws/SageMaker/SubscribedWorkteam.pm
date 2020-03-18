@@ -5,6 +5,7 @@ package Paws::SageMaker::SubscribedWorkteam;
   has MarketplaceTitle => (is => 'ro', isa => 'Str');
   has SellerName => (is => 'ro', isa => 'Str');
   has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

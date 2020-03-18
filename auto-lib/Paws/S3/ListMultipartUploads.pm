@@ -49,18 +49,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $IsTruncated        = $ListMultipartUploadsOutput->IsTruncated;
     my $Bucket             = $ListMultipartUploadsOutput->Bucket;
-    my $Uploads            = $ListMultipartUploadsOutput->Uploads;
+    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
+    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
+    my $EncodingType       = $ListMultipartUploadsOutput->EncodingType;
+    my $IsTruncated        = $ListMultipartUploadsOutput->IsTruncated;
     my $KeyMarker          = $ListMultipartUploadsOutput->KeyMarker;
     my $MaxUploads         = $ListMultipartUploadsOutput->MaxUploads;
     my $NextKeyMarker      = $ListMultipartUploadsOutput->NextKeyMarker;
+    my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
     my $Prefix             = $ListMultipartUploadsOutput->Prefix;
     my $UploadIdMarker     = $ListMultipartUploadsOutput->UploadIdMarker;
-    my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
-    my $EncodingType       = $ListMultipartUploadsOutput->EncodingType;
-    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
-    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
+    my $Uploads            = $ListMultipartUploadsOutput->Uploads;
 
     # Returns a L<Paws::S3::ListMultipartUploadsOutput> object.
 
@@ -72,13 +72,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+Name of the bucket to which the multipart upload was initiated.
 
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
 =head2 Delimiter => Str
 
 Character you use to group keys.
+
+All keys that contain the same string between the prefix, if specified,
+and the first occurrence of the delimiter after the prefix are grouped
+under a single result element, C<CommonPrefixes>. If you don't specify
+the prefix parameter, then the substring starts at the beginning of the
+key. The keys that are grouped under C<CommonPrefixes> result element
+are not returned elsewhere in the response.
 
 
 
@@ -93,6 +109,15 @@ Valid values are: C<"url">
 Together with upload-id-marker, this parameter specifies the multipart
 upload after which listing should begin.
 
+If C<upload-id-marker> is not specified, only the keys
+lexicographically greater than the specified C<key-marker> will be
+included in the list.
+
+If C<upload-id-marker> is specified, any multipart uploads for a key
+equal to the C<key-marker> might also be included, provided those
+multipart uploads have upload IDs lexicographically greater than the
+specified C<upload-id-marker>.
+
 
 
 =head2 MaxUploads => Int
@@ -106,7 +131,9 @@ that can be returned in a response.
 =head2 Prefix => Str
 
 Lists in-progress uploads only for those keys that begin with the
-specified prefix.
+specified prefix. You can use prefixes to separate a bucket into
+different grouping of keys. (You can think of using prefix to make
+groups in the same way you'd use a folder in a file system.)
 
 
 
@@ -114,7 +141,10 @@ specified prefix.
 
 Together with key-marker, specifies the multipart upload after which
 listing should begin. If key-marker is not specified, the
-upload-id-marker parameter is ignored.
+upload-id-marker parameter is ignored. Otherwise, any multipart uploads
+for a key equal to the key-marker might be included in the list only if
+they have an upload ID lexicographically greater than the specified
+C<upload-id-marker>.
 
 
 

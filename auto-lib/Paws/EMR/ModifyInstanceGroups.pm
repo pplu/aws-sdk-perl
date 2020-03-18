@@ -33,19 +33,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceGroups => [
         {
           InstanceGroupId => 'MyXmlStringMaxLen256',    # max: 256
-          ShrinkPolicy    => {
+          Configurations  => [
+            {
+              Classification => 'MyString',
+              Configurations => <ConfigurationList>,
+              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+            },
+            ...
+          ],                                                      # OPTIONAL
+          EC2InstanceIdsToTerminate => [ 'MyInstanceId', ... ],   # OPTIONAL
+          InstanceCount             => 1,                         # OPTIONAL
+          ShrinkPolicy              => {
+            DecommissionTimeout  => 1,                            # OPTIONAL
             InstanceResizePolicy => {
               InstanceTerminationTimeout => 1,                        # OPTIONAL
               InstancesToProtect         => [ 'MyInstanceId', ... ],  # OPTIONAL
               InstancesToTerminate       => [ 'MyInstanceId', ... ],  # OPTIONAL
             },    # OPTIONAL
-            DecommissionTimeout => 1,    # OPTIONAL
           },    # OPTIONAL
-          EC2InstanceIdsToTerminate => [ 'MyInstanceId', ... ],    # OPTIONAL
-          InstanceCount => 1,                                      # OPTIONAL
         },
         ...
-      ],                                                           # OPTIONAL
+      ],        # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

@@ -2,6 +2,7 @@ package Paws::Config::FailedDeleteRemediationExceptionsBatch;
   use Moose;
   has FailedItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::RemediationExceptionResourceKey]');
   has FailureMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

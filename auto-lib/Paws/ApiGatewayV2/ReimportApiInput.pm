@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::ReimportApiInput;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', request_name => 'body', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

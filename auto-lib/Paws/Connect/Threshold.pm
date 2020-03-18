@@ -2,6 +2,7 @@ package Paws::Connect::Threshold;
   use Moose;
   has Comparison => (is => 'ro', isa => 'Str');
   has ThresholdValue => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

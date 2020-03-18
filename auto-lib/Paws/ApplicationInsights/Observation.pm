@@ -13,6 +13,7 @@ package Paws::ApplicationInsights::Observation;
   has StartTime => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

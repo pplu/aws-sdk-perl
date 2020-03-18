@@ -34,17 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Lists the agents of the assessment runs that are specified by the ARNs of
     # the assessment runs.
     my $ListAssessmentRunAgentsResponse = $inspector->ListAssessmentRunAgents(
-      {
-        'MaxResults' => 123,
-        'AssessmentRunArn' =>
-'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE'
-      }
+      'AssessmentRunArn' =>
+'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE',
+      'MaxResults' => 123
     );
 
     # Results:
-    my $nextToken = $ListAssessmentRunAgentsResponse->nextToken;
     my $assessmentRunAgents =
       $ListAssessmentRunAgentsResponse->assessmentRunAgents;
+    my $nextToken = $ListAssessmentRunAgentsResponse->nextToken;
 
     # Returns a L<Paws::Inspector::ListAssessmentRunAgentsResponse> object.
 

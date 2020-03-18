@@ -4,6 +4,7 @@ package Paws::FSX::CompletionReport;
   has Format => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str');
   has Scope => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

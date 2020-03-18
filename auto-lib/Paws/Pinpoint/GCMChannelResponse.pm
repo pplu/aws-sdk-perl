@@ -63,8 +63,8 @@ to.
 
 =head2 B<REQUIRED> Credential => Str
 
-  The API key, also referred to as a I<server key>, that you received
-from Google to communicate with Google services.
+  The Web API Key, also referred to as an I<API_KEY> or I<server key>,
+that you received from Google to communicate with Google services.
 
 
 =head2 Enabled => Bool

@@ -3,6 +3,7 @@ package Paws::SMS::LaunchDetails;
   has LatestLaunchTime => (is => 'ro', isa => 'Str', request_name => 'latestLaunchTime', traits => ['NameInRequest']);
   has StackId => (is => 'ro', isa => 'Str', request_name => 'stackId', traits => ['NameInRequest']);
   has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

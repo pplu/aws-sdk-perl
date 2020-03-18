@@ -5,6 +5,7 @@ package Paws::SageMaker::FlowDefinitionSummary;
   has FlowDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
   has FlowDefinitionName => (is => 'ro', isa => 'Str', required => 1);
   has FlowDefinitionStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

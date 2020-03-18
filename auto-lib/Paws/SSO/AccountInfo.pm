@@ -3,6 +3,7 @@ package Paws::SSO::AccountInfo;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
   has AccountName => (is => 'ro', isa => 'Str', request_name => 'accountName', traits => ['NameInRequest']);
   has EmailAddress => (is => 'ro', isa => 'Str', request_name => 'emailAddress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

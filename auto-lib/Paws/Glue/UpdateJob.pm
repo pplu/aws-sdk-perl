@@ -31,27 +31,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateJobResponse = $glue->UpdateJob(
       JobName   => 'MyNameString',
       JobUpdate => {
-        ExecutionProperty => {
-          MaxConcurrentRuns => 1,    # OPTIONAL
+        AllocatedCapacity => 1,    # OPTIONAL
+        Command           => {
+          Name           => 'MyGenericString',
+          PythonVersion  => 'MyPythonVersionString',     # OPTIONAL
+          ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
-        LogUri      => 'MyUriString',    # OPTIONAL
         Connections => {
           Connections => [ 'MyGenericString', ... ],    # OPTIONAL
         },    # OPTIONAL
-        MaxRetries => 1,    # OPTIONAL
-        Command    => {
-          ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
-          Name           => 'MyGenericString',
-        },    # OPTIONAL
-        NotificationProperty => {
-          NotifyDelayAfter => 1,    # min: 1, ; OPTIONAL
-        },    # OPTIONAL
-        Role => 'MyRoleString',    # OPTIONAL
         DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
-        ,                          # OPTIONAL
-        AllocatedCapacity => 1,                        # OPTIONAL
+        ,     # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
-        Timeout           => 1,                        # min: 1, ; OPTIONAL
+        ExecutionProperty => {
+          MaxConcurrentRuns => 1,                      # OPTIONAL
+        },    # OPTIONAL
+        GlueVersion => 'MyGlueVersionString',    # min: 1, max: 255; OPTIONAL
+        LogUri      => 'MyUriString',            # OPTIONAL
+        MaxCapacity => 1,                        # OPTIONAL
+        MaxRetries  => 1,                        # OPTIONAL
+        NonOverridableArguments => { 'MyGenericString' => 'MyGenericString', }
+        ,                                        # OPTIONAL
+        NotificationProperty => {
+          NotifyDelayAfter => 1,                 # min: 1; OPTIONAL
+        },    # OPTIONAL
+        NumberOfWorkers       => 1,                 # OPTIONAL
+        Role                  => 'MyRoleString',    # OPTIONAL
+        SecurityConfiguration => 'MyNameString',    # min: 1, max: 255
+        Timeout               => 1,                 # min: 1; OPTIONAL
+        WorkerType => 'Standard',    # values: Standard, G.1X, G.2X; OPTIONAL
       },
 
     );
@@ -69,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> JobName => Str
 
-Name of the job definition to update.
+The name of the job definition to update.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::Kafka::StorageInfo;
   use Moose;
   has EbsStorageInfo => (is => 'ro', isa => 'Paws::Kafka::EBSStorageInfo', request_name => 'ebsStorageInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

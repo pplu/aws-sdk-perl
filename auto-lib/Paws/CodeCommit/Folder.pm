@@ -3,6 +3,7 @@ package Paws::CodeCommit::Folder;
   has AbsolutePath => (is => 'ro', isa => 'Str', request_name => 'absolutePath', traits => ['NameInRequest']);
   has RelativePath => (is => 'ro', isa => 'Str', request_name => 'relativePath', traits => ['NameInRequest']);
   has TreeId => (is => 'ro', isa => 'Str', request_name => 'treeId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

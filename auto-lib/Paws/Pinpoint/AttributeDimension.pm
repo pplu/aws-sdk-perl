@@ -1,7 +1,7 @@
 package Paws::Pinpoint::AttributeDimension;
   use Moose;
   has AttributeType => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
 1;
 
@@ -33,23 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Custom attibute dimension
+Specifies attribute-based criteria for including or excluding endpoints
+from a segment.
 
 =head1 ATTRIBUTES
 
 
 =head2 AttributeType => Str
 
-  The type of dimension: INCLUSIVE - Endpoints that match the criteria
-are included in the segment. EXCLUSIVE - Endpoints that match the
-criteria are excluded from the segment.
+  The type of segment dimension to use. Valid values are: INCLUSIVE,
+endpoints that match the criteria are included in the segment; and,
+EXCLUSIVE, endpoints that match the criteria are excluded from the
+segment.
 
 
-=head2 Values => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-  The criteria values for the segment dimension. Endpoints with matching
-attribute values are included or excluded from the segment, depending
-on the setting for Type.
+  The criteria values to use for the segment dimension. Depending on the
+value of the AttributeType property, endpoints are included or excluded
+from the segment if their attribute values match the criteria values.
 
 
 

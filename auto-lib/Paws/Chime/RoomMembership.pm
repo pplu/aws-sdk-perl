@@ -5,6 +5,7 @@ package Paws::Chime::RoomMembership;
   has Role => (is => 'ro', isa => 'Str');
   has RoomId => (is => 'ro', isa => 'Str');
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

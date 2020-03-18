@@ -2,6 +2,7 @@ package Paws::AutoScaling::LaunchTemplate;
   use Moose;
   has LaunchTemplateSpecification => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has Overrides => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LaunchTemplateOverrides]');
+
 1;
 
 ### main pod documentation begin ###

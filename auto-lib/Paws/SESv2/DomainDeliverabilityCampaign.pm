@@ -14,6 +14,7 @@ package Paws::SESv2::DomainDeliverabilityCampaign;
   has SendingIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SpamCount => (is => 'ro', isa => 'Int');
   has Subject => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

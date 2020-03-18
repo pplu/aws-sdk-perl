@@ -3,6 +3,7 @@ package Paws::ECS::CapacityProviderStrategyItem;
   has Base => (is => 'ro', isa => 'Int', request_name => 'base', traits => ['NameInRequest']);
   has CapacityProvider => (is => 'ro', isa => 'Str', request_name => 'capacityProvider', traits => ['NameInRequest'], required => 1);
   has Weight => (is => 'ro', isa => 'Int', request_name => 'weight', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

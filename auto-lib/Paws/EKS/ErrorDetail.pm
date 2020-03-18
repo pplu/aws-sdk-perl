@@ -3,6 +3,7 @@ package Paws::EKS::ErrorDetail;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceIds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

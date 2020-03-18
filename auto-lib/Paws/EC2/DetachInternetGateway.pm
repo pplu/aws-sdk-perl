@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example detaches the specified Internet gateway from the specified
     # VPC.
     $ec2->DetachInternetGateway(
-      {
-        'VpcId'             => 'vpc-a01106c2',
-        'InternetGatewayId' => 'igw-c0a643a9'
-      }
+      'InternetGatewayId' => 'igw-c0a643a9',
+      'VpcId'             => 'vpc-a01106c2'
     );
 
 
@@ -57,7 +55,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> InternetGatewayId => Str
 
-The ID of the Internet gateway.
+The ID of the internet gateway.
 
 
 

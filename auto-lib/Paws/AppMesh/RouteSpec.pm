@@ -5,6 +5,7 @@ package Paws::AppMesh::RouteSpec;
   has HttpRoute => (is => 'ro', isa => 'Paws::AppMesh::HttpRoute', request_name => 'httpRoute', traits => ['NameInRequest']);
   has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
   has TcpRoute => (is => 'ro', isa => 'Paws::AppMesh::TcpRoute', request_name => 'tcpRoute', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

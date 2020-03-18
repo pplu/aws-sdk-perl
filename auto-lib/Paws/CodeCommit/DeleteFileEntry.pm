@@ -1,6 +1,7 @@
 package Paws::CodeCommit::DeleteFileEntry;
   use Moose;
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

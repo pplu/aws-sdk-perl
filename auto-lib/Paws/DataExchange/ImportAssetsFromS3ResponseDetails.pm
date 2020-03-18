@@ -3,6 +3,7 @@ package Paws::DataExchange::ImportAssetsFromS3ResponseDetails;
   has AssetSources => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetSourceEntry]', required => 1);
   has DataSetId => (is => 'ro', isa => 'Str', required => 1);
   has RevisionId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

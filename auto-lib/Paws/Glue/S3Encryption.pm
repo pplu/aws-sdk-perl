@@ -2,6 +2,7 @@ package Paws::Glue::S3Encryption;
   use Moose;
   has KmsKeyArn => (is => 'ro', isa => 'Str');
   has S3EncryptionMode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

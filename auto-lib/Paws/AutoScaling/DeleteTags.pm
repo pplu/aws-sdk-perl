@@ -31,17 +31,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified tag from the specified Auto Scaling
     # group.
     $autoscaling->DeleteTags(
-      {
-        'Tags' => [
+      'Tags' => [
 
-          {
-            'ResourceId'   => 'my-auto-scaling-group',
-            'Value'        => 'Research',
-            'ResourceType' => 'auto-scaling-group',
-            'Key'          => 'Dept'
-          }
-        ]
-      }
+        {
+          'Key'          => 'Dept',
+          'ResourceId'   => 'my-auto-scaling-group',
+          'ResourceType' => 'auto-scaling-group',
+          'Value'        => 'Research'
+        }
+      ]
     );
 
 

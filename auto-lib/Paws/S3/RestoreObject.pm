@@ -2,6 +2,7 @@
 package Paws::S3::RestoreObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest', traits => ['ParamInBody']);
@@ -39,12 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RestoreObjectOutput = $s3->RestoreObject(
       Bucket         => 'MyBucketName',
       Key            => 'MyObjectKey',
-      RequestPayer   => 'requester',      # OPTIONAL
+      ContentMD5     => 'MyContentMD5',    # OPTIONAL
+      RequestPayer   => 'requester',       # OPTIONAL
       RestoreRequest => {
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
 
         },    # OPTIONAL
         OutputLocation => {
@@ -74,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
             },    # OPTIONAL
             StorageClass => 'STANDARD'
-            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE; OPTIONAL
             Tagging => {
               TagSet => [
                 {
@@ -112,6 +114,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             JSON            => {
               Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
             },    # OPTIONAL
+            Parquet => {
+
+            },    # OPTIONAL
           },
           OutputSerialization => {
             CSV => {
@@ -127,7 +132,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
@@ -147,13 +152,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name or containing the object to restore.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
+
+
+
+=head2 ContentMD5 => Str
+
 
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the operation was initiated.
 
 
 
@@ -171,7 +191,7 @@ Valid values are: C<"requester">
 
 =head2 VersionId => Str
 
-
+VersionId used to reference a specific version of the object.
 
 
 

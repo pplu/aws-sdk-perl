@@ -3,6 +3,7 @@ package Paws::StepFunctions::TaskSucceededEventDetails;
   has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

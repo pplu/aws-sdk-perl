@@ -8,6 +8,7 @@ package Paws::Lightsail::ExportSnapshotRecordSourceInfo;
   has InstanceSnapshotInfo => (is => 'ro', isa => 'Paws::Lightsail::InstanceSnapshotInfo', request_name => 'instanceSnapshotInfo', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Batch::NodePropertyOverride;
   use Moose;
   has ContainerOverrides => (is => 'ro', isa => 'Paws::Batch::ContainerOverrides', request_name => 'containerOverrides', traits => ['NameInRequest']);
   has TargetNodes => (is => 'ro', isa => 'Str', request_name => 'targetNodes', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

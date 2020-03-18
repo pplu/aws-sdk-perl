@@ -1,6 +1,7 @@
 package Paws::Lightsail::DiskSnapshotInfo;
   use Moose;
   has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

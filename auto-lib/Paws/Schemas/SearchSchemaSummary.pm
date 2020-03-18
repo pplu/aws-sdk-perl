@@ -4,6 +4,7 @@ package Paws::Schemas::SearchSchemaSummary;
   has SchemaArn => (is => 'ro', isa => 'Str');
   has SchemaName => (is => 'ro', isa => 'Str');
   has SchemaVersions => (is => 'ro', isa => 'ArrayRef[Paws::Schemas::SearchSchemaVersionSummary]');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::Stages;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::Stage]', request_name => 'items', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

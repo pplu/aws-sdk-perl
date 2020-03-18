@@ -2,6 +2,7 @@ package Paws::S3::ObjectLockRetention;
   use Moose;
   has Mode => (is => 'ro', isa => 'Str');
   has RetainUntilDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Detective::Graph;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

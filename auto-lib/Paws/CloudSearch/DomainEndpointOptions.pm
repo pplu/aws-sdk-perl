@@ -2,6 +2,7 @@ package Paws::CloudSearch::DomainEndpointOptions;
   use Moose;
   has EnforceHTTPS => (is => 'ro', isa => 'Bool');
   has TLSSecurityPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

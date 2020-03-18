@@ -11,6 +11,7 @@ package Paws::FSX::Backup;
   has ResourceARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

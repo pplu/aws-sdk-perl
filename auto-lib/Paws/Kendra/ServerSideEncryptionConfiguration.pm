@@ -1,6 +1,7 @@
 package Paws::Kendra::ServerSideEncryptionConfiguration;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

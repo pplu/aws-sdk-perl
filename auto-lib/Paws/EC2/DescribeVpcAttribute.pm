@@ -35,15 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # is true, the Amazon DNS server resolves DNS hostnames for your instances to
    # their corresponding IP addresses; otherwise, it does not.
     my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
-      {
-        'VpcId'     => 'vpc-a01106c2',
-        'Attribute' => 'enableDnsSupport'
-      }
+      'Attribute' => 'enableDnsSupport',
+      'VpcId'     => 'vpc-a01106c2'
     );
 
     # Results:
-    my $VpcId            = $DescribeVpcAttributeResult->VpcId;
     my $EnableDnsSupport = $DescribeVpcAttributeResult->EnableDnsSupport;
+    my $VpcId            = $DescribeVpcAttributeResult->VpcId;
 
     # Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
     # To describe the enableDnsHostnames attribute
@@ -52,15 +50,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # this attribute is true, instances in the VPC get DNS hostnames; otherwise,
     # they do not.
     my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
-      {
-        'VpcId'     => 'vpc-a01106c2',
-        'Attribute' => 'enableDnsHostnames'
-      }
+      'Attribute' => 'enableDnsHostnames',
+      'VpcId'     => 'vpc-a01106c2'
     );
 
     # Results:
-    my $VpcId              = $DescribeVpcAttributeResult->VpcId;
     my $EnableDnsHostnames = $DescribeVpcAttributeResult->EnableDnsHostnames;
+    my $VpcId              = $DescribeVpcAttributeResult->VpcId;
 
     # Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
 

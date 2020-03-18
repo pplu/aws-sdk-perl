@@ -4,6 +4,7 @@ package Paws::RDS::CustomAvailabilityZone;
   has CustomAvailabilityZoneName => (is => 'ro', isa => 'Str');
   has CustomAvailabilityZoneStatus => (is => 'ro', isa => 'Str');
   has VpnDetails => (is => 'ro', isa => 'Paws::RDS::VpnDetails');
+
 1;
 
 ### main pod documentation begin ###

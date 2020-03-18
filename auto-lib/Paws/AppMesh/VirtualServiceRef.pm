@@ -3,6 +3,7 @@ package Paws::AppMesh::VirtualServiceRef;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
   has VirtualServiceName => (is => 'ro', isa => 'Str', request_name => 'virtualServiceName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

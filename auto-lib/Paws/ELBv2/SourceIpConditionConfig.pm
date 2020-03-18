@@ -1,6 +1,7 @@
 package Paws::ELBv2::SourceIpConditionConfig;
   use Moose;
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

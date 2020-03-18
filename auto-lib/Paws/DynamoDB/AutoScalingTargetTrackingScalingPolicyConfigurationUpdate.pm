@@ -4,6 +4,7 @@ package Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdat
   has ScaleInCooldown => (is => 'ro', isa => 'Int');
   has ScaleOutCooldown => (is => 'ro', isa => 'Int');
   has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

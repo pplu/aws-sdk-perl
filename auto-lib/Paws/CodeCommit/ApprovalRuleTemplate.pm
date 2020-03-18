@@ -8,6 +8,7 @@ package Paws::CodeCommit::ApprovalRuleTemplate;
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has LastModifiedUser => (is => 'ro', isa => 'Str', request_name => 'lastModifiedUser', traits => ['NameInRequest']);
   has RuleContentSha256 => (is => 'ro', isa => 'Str', request_name => 'ruleContentSha256', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

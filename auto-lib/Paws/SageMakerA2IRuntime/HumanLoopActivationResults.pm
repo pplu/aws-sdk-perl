@@ -2,6 +2,7 @@ package Paws::SageMakerA2IRuntime::HumanLoopActivationResults;
   use Moose;
   has HumanLoopActivationConditionsEvaluationResults => (is => 'ro', isa => 'Str');
   has HumanLoopActivationReason => (is => 'ro', isa => 'Paws::SageMakerA2IRuntime::HumanLoopActivationReason');
+
 1;
 
 ### main pod documentation begin ###

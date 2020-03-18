@@ -1,6 +1,7 @@
 package Paws::MediaConvert::TrackSourceSettings;
   use Moose;
   has TrackNumber => (is => 'ro', isa => 'Int', request_name => 'trackNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

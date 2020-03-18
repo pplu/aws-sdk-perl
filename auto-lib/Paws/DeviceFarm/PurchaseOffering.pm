@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To purchase a device slot offering
     # The following example purchases a specific device slot offering.
     my $PurchaseOfferingResult = $devicefarm->PurchaseOffering(
-      {
-        'Quantity'   => 1,
-        'OfferingId' => 'D68B3C05-1BA6-4360-BC69-12345EXAMPLE'
-      }
+      'OfferingId' => 'D68B3C05-1BA6-4360-BC69-12345EXAMPLE',
+      'Quantity'   => 1
     );
 
     # Results:
@@ -63,7 +61,7 @@ The ID of the offering promotion to be applied to the purchase.
 
 =head2 Quantity => Int
 
-The number of device slots you wish to purchase in an offering request.
+The number of device slots to purchase in an offering request.
 
 
 

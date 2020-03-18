@@ -5,6 +5,7 @@ package Paws::SESv2::PlacementStatistics;
   has MissingPercentage => (is => 'ro', isa => 'Num');
   has SpamPercentage => (is => 'ro', isa => 'Num');
   has SpfPercentage => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

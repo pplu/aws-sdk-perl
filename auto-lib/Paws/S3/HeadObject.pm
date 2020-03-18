@@ -61,31 +61,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
-    my $ContentLength           = $HeadObjectOutput->ContentLength;
-    my $ContentType             = $HeadObjectOutput->ContentType;
-    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
-    my $Metadata                = $HeadObjectOutput->Metadata;
-    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
-    my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
-    my $Restore                 = $HeadObjectOutput->Restore;
-    my $ETag                    = $HeadObjectOutput->ETag;
-    my $ContentLanguage         = $HeadObjectOutput->ContentLanguage;
-    my $Expires                 = $HeadObjectOutput->Expires;
-    my $VersionId               = $HeadObjectOutput->VersionId;
-    my $LastModified            = $HeadObjectOutput->LastModified;
-    my $Expiration              = $HeadObjectOutput->Expiration;
-    my $MissingMeta             = $HeadObjectOutput->MissingMeta;
+    my $AcceptRanges       = $HeadObjectOutput->AcceptRanges;
+    my $CacheControl       = $HeadObjectOutput->CacheControl;
+    my $ContentDisposition = $HeadObjectOutput->ContentDisposition;
+    my $ContentEncoding    = $HeadObjectOutput->ContentEncoding;
+    my $ContentLanguage    = $HeadObjectOutput->ContentLanguage;
+    my $ContentLength      = $HeadObjectOutput->ContentLength;
+    my $ContentType        = $HeadObjectOutput->ContentType;
+    my $DeleteMarker       = $HeadObjectOutput->DeleteMarker;
+    my $ETag               = $HeadObjectOutput->ETag;
+    my $Expiration         = $HeadObjectOutput->Expiration;
+    my $Expires            = $HeadObjectOutput->Expires;
+    my $LastModified       = $HeadObjectOutput->LastModified;
+    my $Metadata           = $HeadObjectOutput->Metadata;
+    my $MissingMeta        = $HeadObjectOutput->MissingMeta;
+    my $ObjectLockLegalHoldStatus =
+      $HeadObjectOutput->ObjectLockLegalHoldStatus;
+    my $ObjectLockMode = $HeadObjectOutput->ObjectLockMode;
+    my $ObjectLockRetainUntilDate =
+      $HeadObjectOutput->ObjectLockRetainUntilDate;
     my $PartsCount              = $HeadObjectOutput->PartsCount;
-    my $AcceptRanges            = $HeadObjectOutput->AcceptRanges;
-    my $DeleteMarker            = $HeadObjectOutput->DeleteMarker;
-    my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
-    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
+    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
+    my $Restore                 = $HeadObjectOutput->Restore;
     my $SSECustomerAlgorithm    = $HeadObjectOutput->SSECustomerAlgorithm;
-    my $CacheControl            = $HeadObjectOutput->CacheControl;
-    my $ContentEncoding         = $HeadObjectOutput->ContentEncoding;
+    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
     my $StorageClass            = $HeadObjectOutput->StorageClass;
-    my $ContentDisposition      = $HeadObjectOutput->ContentDisposition;
+    my $VersionId               = $HeadObjectOutput->VersionId;
+    my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
 
     # Returns a L<Paws::S3::HeadObjectOutput> object.
 
@@ -97,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket containing the object.
 
 
 
@@ -131,7 +136,7 @@ time, otherwise return a 412 (precondition failed).
 
 =head2 B<REQUIRED> Key => Str
 
-
+The object key.
 
 
 
@@ -147,7 +152,7 @@ number of parts in this object.
 =head2 Range => Str
 
 Downloads the specified range bytes of an object. For more information
-about the HTTP Range header, go to
+about the HTTP Range header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
@@ -160,8 +165,8 @@ Valid values are: C<"requester">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -169,9 +174,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -179,7 +184,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 

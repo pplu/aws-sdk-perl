@@ -5,6 +5,7 @@ package Paws::CodeDeploy::LambdaFunctionInfo;
   has FunctionName => (is => 'ro', isa => 'Str', request_name => 'functionName', traits => ['NameInRequest']);
   has TargetVersion => (is => 'ro', isa => 'Str', request_name => 'targetVersion', traits => ['NameInRequest']);
   has TargetVersionWeight => (is => 'ro', isa => 'Num', request_name => 'targetVersionWeight', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

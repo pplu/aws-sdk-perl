@@ -1,5 +1,6 @@
 package Paws::WAFv2::Method;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

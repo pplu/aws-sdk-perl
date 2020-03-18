@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::JWTConfiguration;
   use Moose;
   has Audience => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audience', traits => ['NameInRequest']);
   has Issuer => (is => 'ro', isa => 'Str', request_name => 'issuer', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

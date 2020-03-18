@@ -9,6 +9,7 @@ package Paws::Amplify::AutoBranchCreationConfig;
   has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest']);
   has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'pullRequestEnvironmentName', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

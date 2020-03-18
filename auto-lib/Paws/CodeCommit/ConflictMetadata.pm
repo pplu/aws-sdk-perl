@@ -10,6 +10,7 @@ package Paws::CodeCommit::ConflictMetadata;
   has NumberOfConflicts => (is => 'ro', isa => 'Int', request_name => 'numberOfConflicts', traits => ['NameInRequest']);
   has ObjectTypeConflict => (is => 'ro', isa => 'Bool', request_name => 'objectTypeConflict', traits => ['NameInRequest']);
   has ObjectTypes => (is => 'ro', isa => 'Paws::CodeCommit::ObjectTypes', request_name => 'objectTypes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

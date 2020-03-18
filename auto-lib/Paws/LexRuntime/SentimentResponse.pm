@@ -2,6 +2,7 @@ package Paws::LexRuntime::SentimentResponse;
   use Moose;
   has SentimentLabel => (is => 'ro', isa => 'Str', request_name => 'sentimentLabel', traits => ['NameInRequest']);
   has SentimentScore => (is => 'ro', isa => 'Str', request_name => 'sentimentScore', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

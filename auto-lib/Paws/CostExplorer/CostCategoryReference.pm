@@ -4,6 +4,7 @@ package Paws::CostExplorer::CostCategoryReference;
   has EffectiveEnd => (is => 'ro', isa => 'Str');
   has EffectiveStart => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

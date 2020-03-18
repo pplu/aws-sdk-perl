@@ -2,6 +2,7 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexDescription;
   use Moose;
   has IndexName => (is => 'ro', isa => 'Str');
   has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputOverride');
+
 1;
 
 ### main pod documentation begin ###

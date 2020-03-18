@@ -2,6 +2,7 @@ package Paws::ServiceCatalog::ServiceActionDetail;
   use Moose;
   has Definition => (is => 'ro', isa => 'Paws::ServiceCatalog::ServiceActionDefinitionMap');
   has ServiceActionSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ServiceActionSummary');
+
 1;
 
 ### main pod documentation begin ###

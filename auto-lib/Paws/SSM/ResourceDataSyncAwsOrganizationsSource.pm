@@ -2,6 +2,7 @@ package Paws::SSM::ResourceDataSyncAwsOrganizationsSource;
   use Moose;
   has OrganizationalUnits => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ResourceDataSyncOrganizationalUnit]');
   has OrganizationSourceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

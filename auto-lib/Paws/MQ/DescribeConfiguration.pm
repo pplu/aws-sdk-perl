@@ -34,18 +34,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Arn            = $DescribeConfigurationResponse->Arn;
+    my $Created        = $DescribeConfigurationResponse->Created;
+    my $Description    = $DescribeConfigurationResponse->Description;
+    my $EngineType     = $DescribeConfigurationResponse->EngineType;
     my $EngineVersion  = $DescribeConfigurationResponse->EngineVersion;
     my $Id             = $DescribeConfigurationResponse->Id;
-    my $Arn            = $DescribeConfigurationResponse->Arn;
-    my $EngineType     = $DescribeConfigurationResponse->EngineType;
-    my $Name           = $DescribeConfigurationResponse->Name;
-    my $Description    = $DescribeConfigurationResponse->Description;
     my $LatestRevision = $DescribeConfigurationResponse->LatestRevision;
+    my $Name           = $DescribeConfigurationResponse->Name;
+    my $Tags           = $DescribeConfigurationResponse->Tags;
 
     # Returns a L<Paws::MQ::DescribeConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/DescribeConfiguration>
 
 =head1 ATTRIBUTES
 

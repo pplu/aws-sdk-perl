@@ -1,10 +1,12 @@
 
 package Paws::CognitoIdentity::CreateIdentityPool;
   use Moose;
+  has AllowClassicFlow => (is => 'ro', isa => 'Bool');
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
   has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
+  has IdentityPoolTags => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityPoolTagsType');
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
@@ -36,17 +38,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IdentityPool = $cognito -identity->CreateIdentityPool(
       AllowUnauthenticatedIdentities => 1,
       IdentityPoolName               => 'MyIdentityPoolName',
+      AllowClassicFlow               => 1,                      # OPTIONAL
       CognitoIdentityProviders       => [
         {
-          ProviderName =>
-            'MyCognitoIdentityProviderName',    # min: 1, max: 128; OPTIONAL
           ClientId =>
             'MyCognitoIdentityProviderClientId',    # min: 1, max: 128; OPTIONAL
+          ProviderName =>
+            'MyCognitoIdentityProviderName',        # min: 1, max: 128; OPTIONAL
           ServerSideTokenCheck => 1,                # OPTIONAL
         },
         ...
       ],                                            # OPTIONAL
-      DeveloperProviderName     => 'MyDeveloperProviderName',    # OPTIONAL
+      DeveloperProviderName => 'MyDeveloperProviderName',    # OPTIONAL
+      IdentityPoolTags      => {
+        'MyTagKeysType' =>
+          'MyTagValueType',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
       OpenIdConnectProviderARNs => [
         'MyARNString', ...    # min: 20, max: 2048
       ],                      # OPTIONAL
@@ -60,13 +67,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AllowClassicFlow = $IdentityPool->AllowClassicFlow;
     my $AllowUnauthenticatedIdentities =
       $IdentityPool->AllowUnauthenticatedIdentities;
     my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
     my $DeveloperProviderName     = $IdentityPool->DeveloperProviderName;
-    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
     my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
     my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $IdentityPoolTags          = $IdentityPool->IdentityPoolTags;
+    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
     my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
     my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
 
@@ -78,6 +87,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
+=head2 AllowClassicFlow => Bool
+
+Enables or disables the Basic (Classic) authentication flow. For more
+information, see Identity Pools (Federated Identities) Authentication
+Flow
+(https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
+in the I<Amazon Cognito Developer Guide>.
+
+
+
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
 TRUE if the identity pool supports unauthenticated logins.
@@ -86,7 +105,7 @@ TRUE if the identity pool supports unauthenticated logins.
 
 =head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
 
-An array of Amazon Cognito Identity user pools and their client IDs.
+An array of Amazon Cognito user pools and their client IDs.
 
 
 
@@ -106,6 +125,14 @@ Please take care in setting this parameter.
 =head2 B<REQUIRED> IdentityPoolName => Str
 
 A string that you provide.
+
+
+
+=head2 IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
+
+Tags to assign to the identity pool. A tag is a label that you can
+apply to identity pools to categorize and manage them in different
+ways, such as by purpose, owner, environment, or other criteria.
 
 
 

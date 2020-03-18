@@ -8,6 +8,7 @@ package Paws::RAM::ResourceSharePermissionDetail;
   has Permission => (is => 'ro', isa => 'Str', request_name => 'permission', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

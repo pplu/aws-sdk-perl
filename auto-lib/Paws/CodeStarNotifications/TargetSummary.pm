@@ -3,6 +3,7 @@ package Paws::CodeStarNotifications::TargetSummary;
   has TargetAddress => (is => 'ro', isa => 'Str');
   has TargetStatus => (is => 'ro', isa => 'Str');
   has TargetType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

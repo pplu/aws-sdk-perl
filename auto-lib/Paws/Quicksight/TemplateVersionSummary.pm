@@ -5,6 +5,7 @@ package Paws::Quicksight::TemplateVersionSummary;
   has Description => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VersionNumber => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

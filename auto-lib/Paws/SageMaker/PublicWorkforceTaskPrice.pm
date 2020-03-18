@@ -1,6 +1,7 @@
 package Paws::SageMaker::PublicWorkforceTaskPrice;
   use Moose;
   has AmountInUsd => (is => 'ro', isa => 'Paws::SageMaker::USD');
+
 1;
 
 ### main pod documentation begin ###

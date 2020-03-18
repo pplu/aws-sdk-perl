@@ -2,6 +2,7 @@ package Paws::Robomaker::OutputLocation;
   use Moose;
   has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
   has S3Prefix => (is => 'ro', isa => 'Str', request_name => 's3Prefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

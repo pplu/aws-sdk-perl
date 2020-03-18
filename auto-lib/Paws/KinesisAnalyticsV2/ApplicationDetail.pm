@@ -11,6 +11,7 @@ package Paws::KinesisAnalyticsV2::ApplicationDetail;
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
   has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
   has ServiceExecutionRole => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

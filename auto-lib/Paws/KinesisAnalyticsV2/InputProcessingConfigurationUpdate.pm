@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::InputProcessingConfigurationUpdate;
   use Moose;
   has InputLambdaProcessorUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputLambdaProcessorUpdate', required => 1);
+
 1;
 
 ### main pod documentation begin ###

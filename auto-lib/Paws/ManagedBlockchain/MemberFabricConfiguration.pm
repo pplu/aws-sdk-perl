@@ -2,6 +2,7 @@ package Paws::ManagedBlockchain::MemberFabricConfiguration;
   use Moose;
   has AdminPassword => (is => 'ro', isa => 'Str', required => 1);
   has AdminUsername => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

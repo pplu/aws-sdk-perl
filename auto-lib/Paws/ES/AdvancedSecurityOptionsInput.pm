@@ -3,6 +3,7 @@ package Paws::ES::AdvancedSecurityOptionsInput;
   has Enabled => (is => 'ro', isa => 'Bool');
   has InternalUserDatabaseEnabled => (is => 'ro', isa => 'Bool');
   has MasterUserOptions => (is => 'ro', isa => 'Paws::ES::MasterUserOptions');
+
 1;
 
 ### main pod documentation begin ###

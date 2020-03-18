@@ -132,7 +132,8 @@ property. ADM uses the MD5 value to verify the integrity of the data.
 =head2 RawContent => Str
 
   The raw, JSON-formatted string to use as the payload for the
-notification message. This value overrides the message.
+notification message. If specified, this value overrides all other
+content for the message.
 
 
 =head2 SilentPush => Bool

@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a DB cluster parameter group.
     my $CreateDBClusterParameterGroupResult =
       $rds->CreateDBClusterParameterGroup(
-      {
-        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
-        'Description'                 => 'My DB cluster parameter group',
-        'DBParameterGroupFamily'      => 'aurora5.6'
-      }
+      'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+      'DBParameterGroupFamily'      => 'aurora5.6',
+      'Description'                 => 'My DB cluster parameter group'
       );
 
 
@@ -58,7 +56,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing DBClusterParameterGroup.
+Must match the name of an existing DB cluster parameter group.
 
 =back
 
@@ -92,7 +90,7 @@ The description for the DB cluster parameter group.
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB cluster parameter group.
 
 
 

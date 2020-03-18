@@ -3,6 +3,7 @@ package Paws::SecurityHub::ImportFindingsError;
   has ErrorCode => (is => 'ro', isa => 'Str', required => 1);
   has ErrorMessage => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

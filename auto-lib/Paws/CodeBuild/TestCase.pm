@@ -8,6 +8,7 @@ package Paws::CodeBuild::TestCase;
   has ReportArn => (is => 'ro', isa => 'Str', request_name => 'reportArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TestRawDataPath => (is => 'ro', isa => 'Str', request_name => 'testRawDataPath', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,9 @@
 
 package Paws::S3Control::ListAccessPointsResult;
   use Moose;
-  has AccessPointList => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::AccessPoint]');
+  has AccessPointList => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::AccessPoint]', request_name => 'AccessPoint', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

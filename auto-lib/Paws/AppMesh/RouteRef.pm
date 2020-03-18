@@ -4,6 +4,7 @@ package Paws::AppMesh::RouteRef;
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
   has RouteName => (is => 'ro', isa => 'Str', request_name => 'routeName', traits => ['NameInRequest'], required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

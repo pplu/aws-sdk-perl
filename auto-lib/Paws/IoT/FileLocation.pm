@@ -2,6 +2,7 @@ package Paws::IoT::FileLocation;
   use Moose;
   has S3Location => (is => 'ro', isa => 'Paws::IoT::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
   has Stream => (is => 'ro', isa => 'Paws::IoT::Stream', request_name => 'stream', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

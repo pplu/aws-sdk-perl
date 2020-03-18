@@ -3,6 +3,7 @@ package Paws::SecurityHub::AwsLambdaLayerVersionDetails;
   has CompatibleRuntimes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

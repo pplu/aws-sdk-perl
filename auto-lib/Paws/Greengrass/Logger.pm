@@ -1,10 +1,10 @@
 package Paws::Greengrass::Logger;
   use Moose;
-  has Component => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Level => (is => 'ro', isa => 'Str');
+  has Component => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Level => (is => 'ro', isa => 'Str', required => 1);
   has Space => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str', required => 1);
 
 1;
 
@@ -41,17 +41,19 @@ Information about a logger
 =head1 ATTRIBUTES
 
 
-=head2 Component => Str
+=head2 B<REQUIRED> Component => Str
 
   The component that will be subject to logging.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  The id of the logger.
+  A descriptive or arbitrary ID for the logger. This value must be unique
+within the logger definition version. Max length is 128 characters with
+pattern ''[a-zA-Z0-9:_-]+''.
 
 
-=head2 Level => Str
+=head2 B<REQUIRED> Level => Str
 
   The level of the logs.
 
@@ -62,7 +64,7 @@ Information about a logger
 used for logging purposes.
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of log output which will be used.
 

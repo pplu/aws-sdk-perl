@@ -37,16 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the other is the data key encrypted with the specified customer master key
     # (CMK).
     my $GenerateDataKeyResponse = $kms->GenerateDataKey(
-      {
-        'KeyId'   => 'alias/ExampleAlias',
-        'KeySpec' => 'AES_256'
-      }
+      'KeyId'   => 'alias/ExampleAlias',
+      'KeySpec' => 'AES_256'
     );
 
     # Results:
+    my $CiphertextBlob = $GenerateDataKeyResponse->CiphertextBlob;
     my $KeyId          = $GenerateDataKeyResponse->KeyId;
     my $Plaintext      = $GenerateDataKeyResponse->Plaintext;
-    my $CiphertextBlob = $GenerateDataKeyResponse->CiphertextBlob;
 
     # Returns a L<Paws::KMS::GenerateDataKeyResponse> object.
 
@@ -58,10 +56,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-A set of key-value pairs that represents additional authenticated data.
+Specifies the encryption context that will be used when encrypting the
+data key.
+
+An I<encryption context> is a collection of non-secret key-value pairs
+that represents additional authenticated data. When you use an
+encryption context to encrypt data, you must specify the same (an exact
+case-sensitive match) encryption context to decrypt the data. An
+encryption context is optional when encrypting with a symmetric CMK,
+but it is highly recommended.
 
 For more information, see Encryption Context
-(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -71,20 +77,19 @@ in the I<AWS Key Management Service Developer Guide>.
 A list of grant tokens.
 
 For more information, see Grant Tokens
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
 
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the CMK under which to generate and encrypt the data
-encryption key.
+Identifies the symmetric CMK that encrypts the data key.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
-To specify a CMK in a different AWS account, you must use the key ARN
-or alias ARN.
+name, or alias ARN. When using an alias name, prefix it with
+C<"alias/">. To specify a CMK in a different AWS account, you must use
+the key ARN or alias ARN.
 
 For example:
 
@@ -116,18 +121,24 @@ To get the alias name and alias ARN, use ListAliases.
 
 =head2 KeySpec => Str
 
-The length of the data encryption key. Use C<AES_128> to generate a
+Specifies the length of the data key. Use C<AES_128> to generate a
 128-bit symmetric key, or C<AES_256> to generate a 256-bit symmetric
 key.
+
+You must specify either the C<KeySpec> or the C<NumberOfBytes>
+parameter (but not both) in every C<GenerateDataKey> request.
 
 Valid values are: C<"AES_256">, C<"AES_128">
 
 =head2 NumberOfBytes => Int
 
-The length of the data encryption key in bytes. For example, use the
+Specifies the length of the data key in bytes. For example, use the
 value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
-common key lengths (128-bit and 256-bit symmetric keys), we recommend
-that you use the C<KeySpec> field instead of this one.
+128-bit (16-byte) and 256-bit (32-byte) data keys, use the C<KeySpec>
+parameter.
+
+You must specify either the C<KeySpec> or the C<NumberOfBytes>
+parameter (but not both) in every C<GenerateDataKey> request.
 
 
 

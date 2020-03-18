@@ -4,6 +4,7 @@ package Paws::KinesisAnalyticsV2::ParallelismConfigurationUpdate;
   has ConfigurationTypeUpdate => (is => 'ro', isa => 'Str');
   has ParallelismPerKPUUpdate => (is => 'ro', isa => 'Int');
   has ParallelismUpdate => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

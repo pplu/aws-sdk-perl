@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::RunConfigurationDescription;
   use Moose;
   has ApplicationRestoreConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
+
 1;
 
 ### main pod documentation begin ###

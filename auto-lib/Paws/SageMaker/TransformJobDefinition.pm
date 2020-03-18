@@ -7,6 +7,7 @@ package Paws::SageMaker::TransformJobDefinition;
   has TransformInput => (is => 'ro', isa => 'Paws::SageMaker::TransformInput', required => 1);
   has TransformOutput => (is => 'ro', isa => 'Paws::SageMaker::TransformOutput', required => 1);
   has TransformResources => (is => 'ro', isa => 'Paws::SageMaker::TransformResources', required => 1);
+
 1;
 
 ### main pod documentation begin ###

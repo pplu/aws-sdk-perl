@@ -3,6 +3,7 @@ package Paws::AppMesh::VirtualNodeRef;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
   has VirtualNodeName => (is => 'ro', isa => 'Str', request_name => 'virtualNodeName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

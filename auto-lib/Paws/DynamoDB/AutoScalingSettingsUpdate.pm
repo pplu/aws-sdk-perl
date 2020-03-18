@@ -5,6 +5,7 @@ package Paws::DynamoDB::AutoScalingSettingsUpdate;
   has MaximumUnits => (is => 'ro', isa => 'Int');
   has MinimumUnits => (is => 'ro', isa => 'Int');
   has ScalingPolicyUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingPolicyUpdate');
+
 1;
 
 ### main pod documentation begin ###

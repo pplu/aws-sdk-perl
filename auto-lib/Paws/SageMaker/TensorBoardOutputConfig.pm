@@ -2,6 +2,7 @@ package Paws::SageMaker::TensorBoardOutputConfig;
   use Moose;
   has LocalPath => (is => 'ro', isa => 'Str');
   has S3OutputPath => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

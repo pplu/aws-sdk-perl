@@ -57,7 +57,7 @@ default cluster is assumed.
 
 =head2 LaunchType => Str
 
-The launch type for services you want to list.
+The launch type for the services to list.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 

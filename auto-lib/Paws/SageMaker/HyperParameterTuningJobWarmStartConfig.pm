@@ -2,6 +2,7 @@ package Paws::SageMaker::HyperParameterTuningJobWarmStartConfig;
   use Moose;
   has ParentHyperParameterTuningJobs => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ParentHyperParameterTuningJob]', required => 1);
   has WarmStartType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

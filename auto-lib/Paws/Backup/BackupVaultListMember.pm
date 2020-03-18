@@ -6,6 +6,7 @@ package Paws::Backup::BackupVaultListMember;
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has EncryptionKeyArn => (is => 'ro', isa => 'Str');
   has NumberOfRecoveryPoints => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

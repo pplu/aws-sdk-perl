@@ -32,19 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ActivityTask = $swf->PollForActivityTask(
       Domain   => 'MyDomainName',
       TaskList => {
-        name => 'MyName',    # min: 1, max: 256
+        Name => 'MyName',    # min: 1, max: 256
 
       },
       Identity => 'MyIdentity',    # OPTIONAL
     );
 
     # Results:
-    my $StartedEventId    = $ActivityTask->StartedEventId;
     my $ActivityId        = $ActivityTask->ActivityId;
     my $ActivityType      = $ActivityTask->ActivityType;
     my $Input             = $ActivityTask->Input;
-    my $WorkflowExecution = $ActivityTask->WorkflowExecution;
+    my $StartedEventId    = $ActivityTask->StartedEventId;
     my $TaskToken         = $ActivityTask->TaskToken;
+    my $WorkflowExecution = $ActivityTask->WorkflowExecution;
 
     # Returns a L<Paws::SimpleWorkflow::ActivityTask> object.
 
@@ -76,7 +76,7 @@ Specifies the task list to poll for activity tasks.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 

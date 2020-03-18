@@ -4,6 +4,7 @@ package Paws::AppMesh::VirtualNodeSpec;
   has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::Listener]', request_name => 'listeners', traits => ['NameInRequest']);
   has Logging => (is => 'ro', isa => 'Paws::AppMesh::Logging', request_name => 'logging', traits => ['NameInRequest']);
   has ServiceDiscovery => (is => 'ro', isa => 'Paws::AppMesh::ServiceDiscovery', request_name => 'serviceDiscovery', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

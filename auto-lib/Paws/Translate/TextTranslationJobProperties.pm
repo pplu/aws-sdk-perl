@@ -13,6 +13,7 @@ package Paws::Translate::TextTranslationJobProperties;
   has SubmittedTime => (is => 'ro', isa => 'Str');
   has TargetLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TerminologyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

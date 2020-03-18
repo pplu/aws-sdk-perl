@@ -4,6 +4,7 @@ package Paws::Amplify::CustomRule;
   has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

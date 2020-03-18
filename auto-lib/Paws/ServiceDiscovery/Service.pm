@@ -10,6 +10,7 @@ package Paws::ServiceDiscovery::Service;
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
+  has NamespaceId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -30,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceDiscovery::Service object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., NamespaceId => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,8 +49,8 @@ A complex type that contains information about the specified service.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Route 53 assigns to the service
-when you create it.
+  The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
+service when you create it.
 
 
 =head2 CreateDate => Str
@@ -75,29 +76,33 @@ date/time stamp.
 
 =head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
-  A complex type that contains information about the records that you
-want Route 53 to create when you register an instance.
+  A complex type that contains information about the Route 53 DNS records
+that you want AWS Cloud Map to create when you register an instance.
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
   I<Public DNS namespaces only.> A complex type that contains settings
 for an optional health check. If you specify settings for a health
-check, Route 53 associates the health check with all the records that
+check, AWS Cloud Map associates the health check with the records that
 you specify in C<DnsConfig>.
 
-For information about the charges for health checks, see Route 53
-Pricing (http://aws.amazon.com/route53/pricing).
+For information about the charges for health checks, see Amazon Route
+53 Pricing (http://aws.amazon.com/route53/pricing/).
 
 
 =head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
 
-  
+  A complex type that contains information about an optional custom
+health check.
+
+If you specify a health check configuration, you can specify either
+C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
 
 
 =head2 Id => Str
 
-  The ID that Route 53 assigned to the service when you created it.
+  The ID that AWS Cloud Map assigned to the service when you created it.
 
 
 =head2 InstanceCount => Int
@@ -110,6 +115,11 @@ have been deleted are not included in the count.
 =head2 Name => Str
 
   The name of the service.
+
+
+=head2 NamespaceId => Str
+
+  The ID of the namespace that was used to create the service.
 
 
 

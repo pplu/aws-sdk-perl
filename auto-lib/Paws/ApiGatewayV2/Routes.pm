@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::Routes;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::Route]', request_name => 'items', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

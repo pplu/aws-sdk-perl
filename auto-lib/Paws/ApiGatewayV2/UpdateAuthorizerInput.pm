@@ -8,6 +8,7 @@ package Paws::ApiGatewayV2::UpdateAuthorizerInput;
   has IdentityValidationExpression => (is => 'ro', isa => 'Str', request_name => 'identityValidationExpression', traits => ['NameInRequest']);
   has JwtConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::JWTConfiguration', request_name => 'jwtConfiguration', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

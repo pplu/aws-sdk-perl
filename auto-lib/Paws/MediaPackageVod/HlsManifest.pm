@@ -6,6 +6,7 @@ package Paws::MediaPackageVod::HlsManifest;
   has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
   has RepeatExtXKey => (is => 'ro', isa => 'Bool', request_name => 'repeatExtXKey', traits => ['NameInRequest']);
   has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackageVod::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

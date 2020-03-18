@@ -2,6 +2,7 @@ package Paws::Quicksight::IAMPolicyAssignmentSummary;
   use Moose;
   has AssignmentName => (is => 'ro', isa => 'Str');
   has AssignmentStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 package Paws::Athena::ResultConfiguration;
   use Moose;
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Athena::EncryptionConfiguration');
-  has OutputLocation => (is => 'ro', isa => 'Str', required => 1);
+  has OutputLocation => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -34,20 +34,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Athena::Res
 =head1 DESCRIPTION
 
 The location in Amazon S3 where query results are stored and the
-encryption option, if any, used for query results.
+encryption option, if any, used for query results. These are known as
+"client-side settings". If workgroup settings override client-side
+settings, then the query uses the workgroup settings.
 
 =head1 ATTRIBUTES
 
 
 =head2 EncryptionConfiguration => L<Paws::Athena::EncryptionConfiguration>
 
-  If query results are encrypted in S3, indicates the S3 encryption
-option used (for example, C<SSE-KMS> or C<CSE-KMS> and key information.
+  If query results are encrypted in Amazon S3, indicates the encryption
+option used (for example, C<SSE-KMS> or C<CSE-KMS>) and key
+information. This is a client-side setting. If workgroup settings
+override client-side settings, then the query uses the encryption
+configuration that is specified for the workgroup, and also uses the
+location for storing query results specified in the workgroup. See
+WorkGroupConfiguration$EnforceWorkGroupConfiguration and Workgroup
+Settings Override Client-Side Settings
+(https://docs.aws.amazon.com/athena/latest/ug/workgroups-settings-override.html).
 
 
-=head2 B<REQUIRED> OutputLocation => Str
+=head2 OutputLocation => Str
 
-  The location in S3 where query results are stored.
+  The location in Amazon S3 where your query results are stored, such as
+C<s3://path/to/query/bucket/>. To run the query, you must specify the
+query results location using one of the ways: either for individual
+queries using either this setting (client-side), or in the workgroup,
+using WorkGroupConfiguration. If none of them is set, Athena issues an
+error that no output location is provided. For more information, see
+Query Results
+(https://docs.aws.amazon.com/athena/latest/ug/querying.html). If
+workgroup settings override client-side settings, then the query uses
+the settings specified for the workgroup. See
+WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 
 
 

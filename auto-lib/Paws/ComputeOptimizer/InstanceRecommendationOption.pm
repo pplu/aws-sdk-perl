@@ -4,6 +4,7 @@ package Paws::ComputeOptimizer::InstanceRecommendationOption;
   has PerformanceRisk => (is => 'ro', isa => 'Num', request_name => 'performanceRisk', traits => ['NameInRequest']);
   has ProjectedUtilizationMetrics => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::UtilizationMetric]', request_name => 'projectedUtilizationMetrics', traits => ['NameInRequest']);
   has Rank => (is => 'ro', isa => 'Int', request_name => 'rank', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

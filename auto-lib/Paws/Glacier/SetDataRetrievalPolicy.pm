@@ -32,23 +32,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To set and then enact a data retrieval policy
     # The example sets and then enacts a data retrieval policy.
     $glacier->SetDataRetrievalPolicy(
-      {
-        'AccountId' => '-',
-        'Policy'    => {
-          'Rules' => [
+      'Policy' => {
+        'Rules' => [
 
-            {
-              'BytesPerHour' => 10737418240,
-              'Strategy'     => 'BytesPerHour'
-            }
-          ]
-        }
-      }
+          {
+            'BytesPerHour' => 10737418240,
+            'Strategy'     => 'BytesPerHour'
+          }
+        ]
+      },
+      'AccountId' => '-'
     );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/SetDataRetrievalPolicy>
 
 =head1 ATTRIBUTES
 

@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageToken = $GetKeyPairsResult->NextPageToken;
     my $KeyPairs      = $GetKeyPairsResult->KeyPairs;
+    my $NextPageToken = $GetKeyPairsResult->NextPageToken;
 
     # Returns a L<Paws::Lightsail::GetKeyPairsResult> object.
 

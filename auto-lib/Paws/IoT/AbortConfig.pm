@@ -1,6 +1,7 @@
 package Paws::IoT::AbortConfig;
   use Moose;
   has CriteriaList => (is => 'ro', isa => 'ArrayRef[Paws::IoT::AbortCriteria]', request_name => 'criteriaList', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

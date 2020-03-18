@@ -2,6 +2,7 @@ package Paws::ComprehendMedical::OutputDataConfig;
   use Moose;
   has S3Bucket => (is => 'ro', isa => 'Str', required => 1);
   has S3Key => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

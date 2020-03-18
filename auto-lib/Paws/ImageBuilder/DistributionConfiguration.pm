@@ -8,6 +8,7 @@ package Paws::ImageBuilder::DistributionConfiguration;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has TimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutMinutes', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

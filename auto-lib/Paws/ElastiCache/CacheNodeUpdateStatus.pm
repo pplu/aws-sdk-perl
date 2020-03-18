@@ -8,6 +8,7 @@ package Paws::ElastiCache::CacheNodeUpdateStatus;
   has NodeUpdateStartDate => (is => 'ro', isa => 'Str');
   has NodeUpdateStatus => (is => 'ro', isa => 'Str');
   has NodeUpdateStatusModifiedDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

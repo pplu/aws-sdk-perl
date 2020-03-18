@@ -12,6 +12,7 @@ package Paws::IoT::CertificateDescription;
   has PreviousOwnedBy => (is => 'ro', isa => 'Str', request_name => 'previousOwnedBy', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TransferData => (is => 'ro', isa => 'Paws::IoT::TransferData', request_name => 'transferData', traits => ['NameInRequest']);
+  has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
 
 1;
 
@@ -32,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CertificateDescription object:
 
-  $service_obj->Method(Att1 => { CaCertificateId => $value, ..., TransferData => $value  });
+  $service_obj->Method(Att1 => { CaCertificateId => $value, ..., Validity => $value  });
 
 =head3 Results returned from an API call
 
@@ -106,6 +107,11 @@ Describes a certificate.
 =head2 TransferData => L<Paws::IoT::TransferData>
 
   The transfer data.
+
+
+=head2 Validity => L<Paws::IoT::CertificateValidity>
+
+  When the certificate is valid.
 
 
 

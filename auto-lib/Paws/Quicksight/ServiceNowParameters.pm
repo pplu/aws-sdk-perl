@@ -1,6 +1,7 @@
 package Paws::Quicksight::ServiceNowParameters;
   use Moose;
   has SiteBaseUrl => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

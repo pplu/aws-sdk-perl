@@ -2,6 +2,7 @@ package Paws::CodeCommit::Approval;
   use Moose;
   has ApprovalState => (is => 'ro', isa => 'Str', request_name => 'approvalState', traits => ['NameInRequest']);
   has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

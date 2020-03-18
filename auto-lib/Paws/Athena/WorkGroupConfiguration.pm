@@ -5,6 +5,7 @@ package Paws::Athena::WorkGroupConfiguration;
   has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
   has RequesterPaysEnabled => (is => 'ro', isa => 'Bool');
   has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Lightsail::PendingMaintenanceAction;
   has Action => (is => 'ro', isa => 'Str', request_name => 'action', traits => ['NameInRequest']);
   has CurrentApplyDate => (is => 'ro', isa => 'Str', request_name => 'currentApplyDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

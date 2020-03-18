@@ -70,13 +70,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ServerSideEncryption = $UploadPartCopyOutput->ServerSideEncryption;
-    my $SSECustomerKeyMD5    = $UploadPartCopyOutput->SSECustomerKeyMD5;
-    my $SSECustomerAlgorithm = $UploadPartCopyOutput->SSECustomerAlgorithm;
     my $CopyPartResult       = $UploadPartCopyOutput->CopyPartResult;
-    my $SSEKMSKeyId          = $UploadPartCopyOutput->SSEKMSKeyId;
-    my $RequestCharged       = $UploadPartCopyOutput->RequestCharged;
     my $CopySourceVersionId  = $UploadPartCopyOutput->CopySourceVersionId;
+    my $RequestCharged       = $UploadPartCopyOutput->RequestCharged;
+    my $SSECustomerAlgorithm = $UploadPartCopyOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5    = $UploadPartCopyOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId          = $UploadPartCopyOutput->SSEKMSKeyId;
+    my $ServerSideEncryption = $UploadPartCopyOutput->ServerSideEncryption;
 
     # Returns a L<Paws::S3::UploadPartCopyOutput> object.
 
@@ -88,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name.
 
 
 
@@ -129,15 +129,15 @@ Copies the object if it hasn't been modified since the specified time.
 The range of bytes to copy from the source object. The range value must
 use the form bytes=first-last, where the first and last are the
 zero-based byte offsets to copy. For example, bytes=0-9 indicates that
-you want to copy the first ten bytes of the source. You can copy a
-range only if the source object is greater than 5 GB.
+you want to copy the first 10 bytes of the source. You can copy a range
+only if the source object is greater than 5 MB.
 
 
 
 =head2 CopySourceSSECustomerAlgorithm => Str
 
-Specifies the algorithm to use when decrypting the source object (e.g.,
-AES256).
+Specifies the algorithm to use when decrypting the source object (for
+example, AES256).
 
 
 
@@ -153,13 +153,13 @@ must be one that was used when the source object was created.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the multipart upload was initiated.
 
 
 
@@ -178,8 +178,8 @@ Valid values are: C<"requester">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -187,9 +187,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header. This must be
+C<x-amz-server-side-encryption-customer-algorithm> header. This must be
 the same encryption key specified in the initiate multipart upload
 request.
 
@@ -199,7 +199,7 @@ request.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 

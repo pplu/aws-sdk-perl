@@ -2,6 +2,7 @@ package Paws::S3Control::S3AccessControlPolicy;
   use Moose;
   has AccessControlList => (is => 'ro', isa => 'Paws::S3Control::S3AccessControlList');
   has CannedAccessControlList => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::DynamoDB::FailureException;
   use Moose;
   has ExceptionDescription => (is => 'ro', isa => 'Str');
   has ExceptionName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

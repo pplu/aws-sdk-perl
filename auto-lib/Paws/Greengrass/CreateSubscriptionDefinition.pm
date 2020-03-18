@@ -4,6 +4,7 @@ package Paws::Greengrass::CreateSubscriptionDefinition;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::SubscriptionDefinitionVersion');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -36,33 +37,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InitialVersion  => {
         Subscriptions => [
           {
-            Source  => 'My__string',
-            Target  => 'My__string',
-            Subject => 'My__string',
             Id      => 'My__string',
+            Source  => 'My__string',
+            Subject => 'My__string',
+            Target  => 'My__string',
+
           },
           ...
         ],                                # OPTIONAL
       },    # OPTIONAL
-      Name => 'My__string',    # OPTIONAL
+      Name => 'My__string',                         # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       );
 
     # Results:
+    my $Arn = $CreateSubscriptionDefinitionResponse->Arn;
     my $CreationTimestamp =
       $CreateSubscriptionDefinitionResponse->CreationTimestamp;
-    my $LatestVersionArn =
-      $CreateSubscriptionDefinitionResponse->LatestVersionArn;
     my $Id = $CreateSubscriptionDefinitionResponse->Id;
     my $LastUpdatedTimestamp =
       $CreateSubscriptionDefinitionResponse->LastUpdatedTimestamp;
-    my $Arn           = $CreateSubscriptionDefinitionResponse->Arn;
-    my $Name          = $CreateSubscriptionDefinitionResponse->Name;
     my $LatestVersion = $CreateSubscriptionDefinitionResponse->LatestVersion;
+    my $LatestVersionArn =
+      $CreateSubscriptionDefinitionResponse->LatestVersionArn;
+    my $Name = $CreateSubscriptionDefinitionResponse->Name;
 
    # Returns a L<Paws::Greengrass::CreateSubscriptionDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateSubscriptionDefinition>
 
 =head1 ATTRIBUTES
 
@@ -82,6 +85,12 @@ Information about the initial version of the subscription definition.
 =head2 Name => Str
 
 The name of the subscription definition.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource.
 
 
 

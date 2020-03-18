@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Retrieves the recovery point for the specified virtual tape.
     my $RetrieveTapeRecoveryPointOutput =
       $storagegateway->RetrieveTapeRecoveryPoint(
-      {
-        'TapeARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+      'TapeARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF'
       );
 
     # Results:

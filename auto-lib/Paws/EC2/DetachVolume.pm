@@ -34,18 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To detach a volume from an instance
     # This example detaches the volume (``vol-049df61146c4d7901``) from the
     # instance it is attached to.
-    my $VolumeAttachment = $ec2->DetachVolume(
-      {
-        'VolumeId' => 'vol-1234567890abcdef0'
-      }
-    );
+    my $VolumeAttachment =
+      $ec2->DetachVolume( 'VolumeId' => 'vol-1234567890abcdef0' );
 
     # Results:
-    my $InstanceId = $VolumeAttachment->InstanceId;
-    my $Device     = $VolumeAttachment->Device;
     my $AttachTime = $VolumeAttachment->AttachTime;
-    my $VolumeId   = $VolumeAttachment->VolumeId;
+    my $Device     = $VolumeAttachment->Device;
+    my $InstanceId = $VolumeAttachment->InstanceId;
     my $State      = $VolumeAttachment->State;
+    my $VolumeId   = $VolumeAttachment->VolumeId;
 
     # Returns a L<Paws::EC2::VolumeAttachment> object.
 
@@ -84,7 +81,8 @@ option, you must perform file system check and repair procedures.
 
 =head2 InstanceId => Str
 
-The ID of the instance.
+The ID of the instance. If you are detaching a Multi-Attach enabled
+volume, you must specify an instance ID.
 
 
 

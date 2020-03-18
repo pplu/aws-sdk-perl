@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example configures Amazon SES to use a custom MAIL FROM
     # domain for an identity:
     my $SetIdentityMailFromDomainResponse = $email->SetIdentityMailFromDomain(
-      {
-        'Identity'            => 'user@example.com',
-        'BehaviorOnMXFailure' => 'UseDefaultValue',
-        'MailFromDomain'      => 'bounces.example.com'
-      }
+      'BehaviorOnMXFailure' => 'UseDefaultValue',
+      'Identity'            => 'user@example.com',
+      'MailFromDomain'      => 'bounces.example.com'
     );
 
 
@@ -76,7 +74,7 @@ The MAIL FROM domain must 1) be a subdomain of the verified identity,
 2) not be used in a "From" address if the MAIL FROM domain is the
 destination of email feedback forwarding (for more information, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html)),
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html)),
 and 3) not be used to receive emails. A value of C<null> disables the
 custom MAIL FROM setting for the identity.
 

@@ -2,6 +2,7 @@ package Paws::SageMaker::ModelPackageValidationProfile;
   use Moose;
   has ProfileName => (is => 'ro', isa => 'Str', required => 1);
   has TransformJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::TransformJobDefinition', required => 1);
+
 1;
 
 ### main pod documentation begin ###

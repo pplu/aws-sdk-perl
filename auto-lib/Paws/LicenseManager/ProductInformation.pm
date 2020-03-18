@@ -2,6 +2,7 @@ package Paws::LicenseManager::ProductInformation;
   use Moose;
   has ProductInformationFilterList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ProductInformationFilter]', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

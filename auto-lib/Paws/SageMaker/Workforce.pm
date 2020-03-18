@@ -4,6 +4,7 @@ package Paws::SageMaker::Workforce;
   has SourceIpConfig => (is => 'ro', isa => 'Paws::SageMaker::SourceIpConfig');
   has WorkforceArn => (is => 'ro', isa => 'Str', required => 1);
   has WorkforceName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::DirectConnect::AllocateHostedConnection;
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,22 +38,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionName => 'MyConnectionName',
       OwnerAccount   => 'MyOwnerAccount',
       Vlan           => 1,
-
+      Tags           => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
-    my $ConnectionState = $Connection->ConnectionState;
-    my $ConnectionName  = $Connection->ConnectionName;
-    my $Vlan            = $Connection->Vlan;
-    my $ConnectionId    = $Connection->ConnectionId;
-    my $Bandwidth       = $Connection->Bandwidth;
-    my $PartnerName     = $Connection->PartnerName;
-    my $AwsDevice       = $Connection->AwsDevice;
-    my $OwnerAccount    = $Connection->OwnerAccount;
-    my $LagId           = $Connection->LagId;
-    my $LoaIssueTime    = $Connection->LoaIssueTime;
-    my $Location        = $Connection->Location;
-    my $Region          = $Connection->Region;
+    my $AwsDevice            = $Connection->AwsDevice;
+    my $AwsDeviceV2          = $Connection->AwsDeviceV2;
+    my $Bandwidth            = $Connection->Bandwidth;
+    my $ConnectionId         = $Connection->ConnectionId;
+    my $ConnectionName       = $Connection->ConnectionName;
+    my $ConnectionState      = $Connection->ConnectionState;
+    my $HasLogicalRedundancy = $Connection->HasLogicalRedundancy;
+    my $JumboFrameCapable    = $Connection->JumboFrameCapable;
+    my $LagId                = $Connection->LagId;
+    my $LoaIssueTime         = $Connection->LoaIssueTime;
+    my $Location             = $Connection->Location;
+    my $OwnerAccount         = $Connection->OwnerAccount;
+    my $PartnerName          = $Connection->PartnerName;
+    my $ProviderName         = $Connection->ProviderName;
+    my $Region               = $Connection->Region;
+    my $Tags                 = $Connection->Tags;
+    my $Vlan                 = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
 
@@ -64,55 +76,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-The bandwidth of the connection.
-
-Example: C<500Mbps>
-
-Default: None
-
-Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
+The bandwidth of the connection. The possible values are 50Mbps,
+100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+10Gbps. Note that only those AWS Direct Connect Partners who have met
+specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+10Gbps hosted connection.
 
 
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of the interconnect or LAG on which the connection will be
-provisioned.
-
-Example: dxcon-456abc78 or dxlag-abc123
-
-Default: None
+The ID of the interconnect or LAG.
 
 
 
 =head2 B<REQUIRED> ConnectionName => Str
 
-The name of the provisioned connection.
-
-Example: "C<500M Connection to AWS>"
-
-Default: None
+The name of the hosted connection.
 
 
 
 =head2 B<REQUIRED> OwnerAccount => Str
 
-The numeric account ID of the customer for whom the connection will be
-provisioned.
+The ID of the AWS account ID of the customer for the connection.
 
-Example: 123443215678
 
-Default: None
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags associated with the connection.
 
 
 
 =head2 B<REQUIRED> Vlan => Int
 
 The dedicated VLAN provisioned to the hosted connection.
-
-Example: 101
-
-Default: None
 
 
 

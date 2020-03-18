@@ -4,6 +4,7 @@ package Paws::Robomaker::DeploymentConfig;
   has DownloadConditionFile => (is => 'ro', isa => 'Paws::Robomaker::S3Object', request_name => 'downloadConditionFile', traits => ['NameInRequest']);
   has FailureThresholdPercentage => (is => 'ro', isa => 'Int', request_name => 'failureThresholdPercentage', traits => ['NameInRequest']);
   has RobotDeploymentTimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'robotDeploymentTimeoutInSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

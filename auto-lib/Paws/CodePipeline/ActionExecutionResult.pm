@@ -3,6 +3,7 @@ package Paws::CodePipeline::ActionExecutionResult;
   has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
   has ExternalExecutionSummary => (is => 'ro', isa => 'Str', request_name => 'externalExecutionSummary', traits => ['NameInRequest']);
   has ExternalExecutionUrl => (is => 'ro', isa => 'Str', request_name => 'externalExecutionUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

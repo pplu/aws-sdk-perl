@@ -1,6 +1,7 @@
 package Paws::EFS::LifecyclePolicy;
   use Moose;
   has TransitionToIA => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

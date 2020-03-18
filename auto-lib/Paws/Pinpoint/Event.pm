@@ -10,6 +10,7 @@ package Paws::Pinpoint::Event;
   has SdkName => (is => 'ro', isa => 'Str');
   has Session => (is => 'ro', isa => 'Paws::Pinpoint::Session');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

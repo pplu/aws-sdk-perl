@@ -2,6 +2,7 @@ package Paws::SageMaker::ProcessingOutputConfig;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProcessingOutput]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

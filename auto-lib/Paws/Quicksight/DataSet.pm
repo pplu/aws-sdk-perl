@@ -12,6 +12,7 @@ package Paws::Quicksight::DataSet;
   has OutputColumns => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::OutputColumn]');
   has PhysicalTableMap => (is => 'ro', isa => 'Paws::Quicksight::PhysicalTableMap');
   has RowLevelPermissionDataSet => (is => 'ro', isa => 'Paws::Quicksight::RowLevelPermissionDataSet');
+
 1;
 
 ### main pod documentation begin ###

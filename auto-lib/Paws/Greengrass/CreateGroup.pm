@@ -4,6 +4,7 @@ package Paws::Greengrass::CreateGroup;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::GroupVersion');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -33,29 +34,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGroupResponse = $greengrass->CreateGroup(
       AmznClientToken => 'My__string',    # OPTIONAL
       InitialVersion  => {
-        ResourceDefinitionVersionArn     => 'My__string',
-        LoggerDefinitionVersionArn       => 'My__string',
-        SubscriptionDefinitionVersionArn => 'My__string',
+        ConnectorDefinitionVersionArn    => 'My__string',
         CoreDefinitionVersionArn         => 'My__string',
-        FunctionDefinitionVersionArn     => 'My__string',
         DeviceDefinitionVersionArn       => 'My__string',
+        FunctionDefinitionVersionArn     => 'My__string',
+        LoggerDefinitionVersionArn       => 'My__string',
+        ResourceDefinitionVersionArn     => 'My__string',
+        SubscriptionDefinitionVersionArn => 'My__string',
       },                                  # OPTIONAL
-      Name => 'My__string',               # OPTIONAL
+      Name => 'My__string',                         # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
+    my $Arn                  = $CreateGroupResponse->Arn;
     my $CreationTimestamp    = $CreateGroupResponse->CreationTimestamp;
-    my $LatestVersionArn     = $CreateGroupResponse->LatestVersionArn;
     my $Id                   = $CreateGroupResponse->Id;
     my $LastUpdatedTimestamp = $CreateGroupResponse->LastUpdatedTimestamp;
-    my $Arn                  = $CreateGroupResponse->Arn;
-    my $Name                 = $CreateGroupResponse->Name;
     my $LatestVersion        = $CreateGroupResponse->LatestVersion;
+    my $LatestVersionArn     = $CreateGroupResponse->LatestVersionArn;
+    my $Name                 = $CreateGroupResponse->Name;
 
     # Returns a L<Paws::Greengrass::CreateGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateGroup>
 
 =head1 ATTRIBUTES
 
@@ -75,6 +78,12 @@ Information about the initial version of the group.
 =head2 Name => Str
 
 The name of the group.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource.
 
 
 

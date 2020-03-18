@@ -35,11 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists information for up to the first 20 system parameters for
    # the specified DB parameter group.
     my $DBParameterGroupDetails = $rds->DescribeDBParameters(
-      {
-        'DBParameterGroupName' => 'mymysqlparametergroup',
-        'Source'               => 'system',
-        'MaxRecords'           => 20
-      }
+      'DBParameterGroupName' => 'mymysqlparametergroup',
+      'MaxRecords'           => 20,
+      'Source'               => 'system'
     );
 
 
@@ -68,7 +66,7 @@ If supplied, must match the name of an existing DBParameterGroup.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
 
 
 
@@ -85,8 +83,8 @@ specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that the remaining
-results can be retrieved.
+token called a marker is included in the response so that you can
+retrieve the remaining results.
 
 Default: 100
 

@@ -1,6 +1,7 @@
 package Paws::IoT::AwsJobPresignedUrlConfig;
   use Moose;
   has ExpiresInSec => (is => 'ro', isa => 'Int', request_name => 'expiresInSec', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

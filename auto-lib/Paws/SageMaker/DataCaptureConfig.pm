@@ -6,6 +6,7 @@ package Paws::SageMaker::DataCaptureConfig;
   has EnableCapture => (is => 'ro', isa => 'Bool');
   has InitialSamplingPercentage => (is => 'ro', isa => 'Int', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

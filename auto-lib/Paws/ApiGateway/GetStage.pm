@@ -36,26 +36,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
-    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
-    my $CanarySettings       = $Stage->CanarySettings;
     my $AccessLogSettings    = $Stage->AccessLogSettings;
-    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
-    my $Variables            = $Stage->Variables;
-    my $CreatedDate          = $Stage->CreatedDate;
-    my $StageName            = $Stage->StageName;
-    my $ClientCertificateId  = $Stage->ClientCertificateId;
-    my $MethodSettings       = $Stage->MethodSettings;
-    my $DocumentationVersion = $Stage->DocumentationVersion;
-    my $DeploymentId         = $Stage->DeploymentId;
+    my $CacheClusterEnabled  = $Stage->CacheClusterEnabled;
     my $CacheClusterSize     = $Stage->CacheClusterSize;
-    my $Tags                 = $Stage->Tags;
+    my $CacheClusterStatus   = $Stage->CacheClusterStatus;
+    my $CanarySettings       = $Stage->CanarySettings;
+    my $ClientCertificateId  = $Stage->ClientCertificateId;
+    my $CreatedDate          = $Stage->CreatedDate;
+    my $DeploymentId         = $Stage->DeploymentId;
     my $Description          = $Stage->Description;
+    my $DocumentationVersion = $Stage->DocumentationVersion;
+    my $LastUpdatedDate      = $Stage->LastUpdatedDate;
+    my $MethodSettings       = $Stage->MethodSettings;
+    my $StageName            = $Stage->StageName;
+    my $Tags                 = $Stage->Tags;
+    my $TracingEnabled       = $Stage->TracingEnabled;
+    my $Variables            = $Stage->Variables;
+    my $WebAclArn            = $Stage->WebAclArn;
 
     # Returns a L<Paws::ApiGateway::Stage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetStage>
 
 =head1 ATTRIBUTES
 

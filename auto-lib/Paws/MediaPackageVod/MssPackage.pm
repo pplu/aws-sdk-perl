@@ -3,6 +3,7 @@ package Paws::MediaPackageVod::MssPackage;
   has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::MssEncryption', request_name => 'encryption', traits => ['NameInRequest']);
   has MssManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::MssManifest]', request_name => 'mssManifests', traits => ['NameInRequest'], required => 1);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

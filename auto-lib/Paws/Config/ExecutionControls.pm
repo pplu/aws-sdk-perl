@@ -1,6 +1,7 @@
 package Paws::Config::ExecutionControls;
   use Moose;
   has SsmControls => (is => 'ro', isa => 'Paws::Config::SsmControls');
+
 1;
 
 ### main pod documentation begin ###

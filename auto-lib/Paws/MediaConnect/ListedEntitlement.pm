@@ -3,6 +3,7 @@ package Paws::MediaConnect::ListedEntitlement;
   has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
   has EntitlementName => (is => 'ro', isa => 'Str', request_name => 'entitlementName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

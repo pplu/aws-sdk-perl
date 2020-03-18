@@ -3,6 +3,7 @@ package Paws::Discovery::BatchDeleteImportDataError;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorDescription => (is => 'ro', isa => 'Str', request_name => 'errorDescription', traits => ['NameInRequest']);
   has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

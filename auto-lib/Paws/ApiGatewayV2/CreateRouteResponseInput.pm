@@ -4,6 +4,7 @@ package Paws::ApiGatewayV2::CreateRouteResponseInput;
   has ResponseModels => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteModels', request_name => 'responseModels', traits => ['NameInRequest']);
   has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteParameters', request_name => 'responseParameters', traits => ['NameInRequest']);
   has RouteResponseKey => (is => 'ro', isa => 'Str', request_name => 'routeResponseKey', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

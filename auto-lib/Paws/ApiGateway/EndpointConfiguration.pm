@@ -1,6 +1,7 @@
 package Paws::ApiGateway::EndpointConfiguration;
   use Moose;
   has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'types', traits => ['NameInRequest']);
+  has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpcEndpointIds', traits => ['NameInRequest']);
 
 1;
 
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGateway::EndpointConfiguration object:
 
-  $service_obj->Method(Att1 => { Types => $value, ..., Types => $value  });
+  $service_obj->Method(Att1 => { Types => $value, ..., VpcEndpointIds => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,12 @@ The endpoint configuration to indicate the types of endpoints an API
 endpoint type is C<"EDGE">. For a regional API and its custom domain
 name, the endpoint type is C<REGIONAL>. For a private API, the endpoint
 type is C<PRIVATE>.
+
+
+=head2 VpcEndpointIds => ArrayRef[Str|Undef]
+
+  A list of VpcEndpointIds of an API (RestApi) against which to create
+Route53 ALIASes. It is only supported for C<PRIVATE> endpoint type.
 
 
 

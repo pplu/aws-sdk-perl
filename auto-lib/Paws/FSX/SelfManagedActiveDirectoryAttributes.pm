@@ -5,6 +5,7 @@ package Paws::FSX::SelfManagedActiveDirectoryAttributes;
   has FileSystemAdministratorsGroup => (is => 'ro', isa => 'Str');
   has OrganizationalUnitDistinguishedName => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

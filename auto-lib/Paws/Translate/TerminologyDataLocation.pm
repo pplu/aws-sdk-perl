@@ -2,6 +2,7 @@ package Paws::Translate::TerminologyDataLocation;
   use Moose;
   has Location => (is => 'ro', isa => 'Str', required => 1);
   has RepositoryType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

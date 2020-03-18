@@ -3,6 +3,7 @@ package Paws::Chime::TelephonySettings;
   has InboundCalling => (is => 'ro', isa => 'Bool', required => 1);
   has OutboundCalling => (is => 'ro', isa => 'Bool', required => 1);
   has SMS => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

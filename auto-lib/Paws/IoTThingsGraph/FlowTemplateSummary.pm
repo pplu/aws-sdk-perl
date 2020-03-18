@@ -4,6 +4,7 @@ package Paws::IoTThingsGraph::FlowTemplateSummary;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has RevisionNumber => (is => 'ro', isa => 'Int', request_name => 'revisionNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::MediaPackage::DashPackage;
   has ManifestWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'manifestWindowSeconds', traits => ['NameInRequest']);
   has MinBufferTimeSeconds => (is => 'ro', isa => 'Int', request_name => 'minBufferTimeSeconds', traits => ['NameInRequest']);
   has MinUpdatePeriodSeconds => (is => 'ro', isa => 'Int', request_name => 'minUpdatePeriodSeconds', traits => ['NameInRequest']);
+  has PeriodTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'periodTriggers', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
   has SegmentTemplateFormat => (is => 'ro', isa => 'Str', request_name => 'segmentTemplateFormat', traits => ['NameInRequest']);
@@ -88,6 +89,16 @@ starting the presentation.
   Minimum duration (in seconds) between potential changes to the Dynamic
 Adaptive Streaming over HTTP (DASH) Media Presentation Description
 (MPD).
+
+
+=head2 PeriodTriggers => ArrayRef[Str|Undef]
+
+  A list of triggers that controls when the outgoing Dynamic Adaptive
+Streaming over HTTP (DASH) Media Presentation Description (MPD) will be
+partitioned into multiple periods. If empty, the content will not be
+partitioned into more than one period. If the list contains "ADS", new
+periods will be created where the Channel source contains SCTE-35 ad
+markers.
 
 
 =head2 Profile => Str

@@ -1,6 +1,7 @@
 package Paws::STS::PolicyDescriptorType;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::Robomaker::SimulationJobBatchSummary;
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has PendingRequestCount => (is => 'ro', isa => 'Int', request_name => 'pendingRequestCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

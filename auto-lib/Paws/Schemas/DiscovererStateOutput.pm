@@ -2,6 +2,7 @@ package Paws::Schemas::DiscovererStateOutput;
   use Moose;
   has DiscovererId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

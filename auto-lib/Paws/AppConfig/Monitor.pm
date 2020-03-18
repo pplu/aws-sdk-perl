@@ -2,6 +2,7 @@ package Paws::AppConfig::Monitor;
   use Moose;
   has AlarmArn => (is => 'ro', isa => 'Str');
   has AlarmRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

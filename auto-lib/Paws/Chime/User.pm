@@ -13,6 +13,7 @@ package Paws::Chime::User;
   has UserInvitationStatus => (is => 'ro', isa => 'Str');
   has UserRegistrationStatus => (is => 'ro', isa => 'Str');
   has UserType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

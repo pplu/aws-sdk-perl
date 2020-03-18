@@ -3,6 +3,7 @@ package Paws::ComputeOptimizer::UtilizationMetric;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Statistic => (is => 'ro', isa => 'Str', request_name => 'statistic', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

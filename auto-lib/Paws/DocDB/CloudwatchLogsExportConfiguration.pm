@@ -2,6 +2,7 @@ package Paws::DocDB::CloudwatchLogsExportConfiguration;
   use Moose;
   has DisableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

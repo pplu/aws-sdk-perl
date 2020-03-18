@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::CreateDeploymentInput;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

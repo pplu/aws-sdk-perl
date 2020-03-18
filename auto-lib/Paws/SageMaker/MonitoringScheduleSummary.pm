@@ -6,6 +6,7 @@ package Paws::SageMaker::MonitoringScheduleSummary;
   has MonitoringScheduleArn => (is => 'ro', isa => 'Str', required => 1);
   has MonitoringScheduleName => (is => 'ro', isa => 'Str', required => 1);
   has MonitoringScheduleStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

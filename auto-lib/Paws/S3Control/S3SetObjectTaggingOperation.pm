@@ -1,6 +1,7 @@
 package Paws::S3Control::S3SetObjectTaggingOperation;
   use Moose;
   has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Tag]');
+
 1;
 
 ### main pod documentation begin ###

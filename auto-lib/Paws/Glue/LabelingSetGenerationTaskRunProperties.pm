@@ -1,6 +1,7 @@
 package Paws::Glue::LabelingSetGenerationTaskRunProperties;
   use Moose;
   has OutputS3Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

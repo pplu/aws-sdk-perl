@@ -2,6 +2,7 @@ package Paws::MediaLive::StaticImageDeactivateScheduleActionSettings;
   use Moose;
   has FadeOut => (is => 'ro', isa => 'Int', request_name => 'fadeOut', traits => ['NameInRequest']);
   has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

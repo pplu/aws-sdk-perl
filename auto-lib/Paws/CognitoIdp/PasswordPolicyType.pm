@@ -5,6 +5,7 @@ package Paws::CognitoIdp::PasswordPolicyType;
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercase => (is => 'ro', isa => 'Bool');
+  has TemporaryPasswordValidityDays => (is => 'ro', isa => 'Int');
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::PasswordPolicyType object:
 
-  $service_obj->Method(Att1 => { MinimumLength => $value, ..., RequireUppercase => $value  });
+  $service_obj->Method(Att1 => { MinimumLength => $value, ..., TemporaryPasswordValidityDays => $value  });
 
 =head3 Results returned from an API call
 
@@ -69,6 +70,17 @@ required users to use at least one symbol in their password.
 
   In the password policy that you have set, refers to whether you have
 required users to use at least one uppercase letter in their password.
+
+
+=head2 TemporaryPasswordValidityDays => Int
+
+  In the password policy you have set, refers to the number of days a
+temporary password is valid. If the user does not sign-in during this
+time, their password will need to be reset by an administrator.
+
+When you set C<TemporaryPasswordValidityDays> for a user pool, you will
+no longer be able to set the deprecated C<UnusedAccountValidityDays>
+value for that user pool.
 
 
 

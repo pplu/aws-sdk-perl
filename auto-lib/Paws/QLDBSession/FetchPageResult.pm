@@ -1,6 +1,7 @@
 package Paws::QLDBSession::FetchPageResult;
   use Moose;
   has Page => (is => 'ro', isa => 'Paws::QLDBSession::Page');
+
 1;
 
 ### main pod documentation begin ###

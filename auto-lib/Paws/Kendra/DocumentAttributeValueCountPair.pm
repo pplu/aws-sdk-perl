@@ -2,6 +2,7 @@ package Paws::Kendra::DocumentAttributeValueCountPair;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has DocumentAttributeValue => (is => 'ro', isa => 'Paws::Kendra::DocumentAttributeValue');
+
 1;
 
 ### main pod documentation begin ###

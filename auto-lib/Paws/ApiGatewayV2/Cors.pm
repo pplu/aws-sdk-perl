@@ -6,6 +6,7 @@ package Paws::ApiGatewayV2::Cors;
   has AllowOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'allowOrigins', traits => ['NameInRequest']);
   has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'exposeHeaders', traits => ['NameInRequest']);
   has MaxAge => (is => 'ro', isa => 'Int', request_name => 'maxAge', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

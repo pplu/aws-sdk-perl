@@ -33,35 +33,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchAddressBooksResponse = $a4b->SearchAddressBooks(
       Filters => [
         {
+          Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
-            'MyFilterValue', ...    # min: 1, max: 500
-          ],                        # max: 5
-          Key => 'MyFilterKey',     # min: 1, max: 500
+            'MyFilterValue', ...      # min: 1, max: 500
+          ],                          # max: 50
 
         },
         ...
-      ],                            # OPTIONAL
-      MaxResults   => 1,                # OPTIONAL
-      NextToken    => 'MyNextToken',    # OPTIONAL
+      ],                              # OPTIONAL
+      MaxResults   => 1,              # OPTIONAL
+      NextToken    => 'MyNextToken',  # OPTIONAL
       SortCriteria => [
         {
-          Key   => 'MySortKey',         # min: 1, max: 500
-          Value => 'ASC',               # values: ASC, DESC
+          Key   => 'MySortKey',       # min: 1, max: 500
+          Value => 'ASC',             # values: ASC, DESC
 
         },
         ...
-      ],                                # OPTIONAL
+      ],                              # OPTIONAL
     );
 
     # Results:
-    my $NextToken    = $SearchAddressBooksResponse->NextToken;
     my $AddressBooks = $SearchAddressBooksResponse->AddressBooks;
+    my $NextToken    = $SearchAddressBooksResponse->NextToken;
     my $TotalCount   = $SearchAddressBooksResponse->TotalCount;
 
     # Returns a L<Paws::AlexaForBusiness::SearchAddressBooksResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/SearchAddressBooks>
 
 =head1 ATTRIBUTES
 

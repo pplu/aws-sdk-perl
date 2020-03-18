@@ -3,6 +3,7 @@ package Paws::LakeFormation::ResourceInfo;
   has LastModified => (is => 'ro', isa => 'Str');
   has ResourceArn => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodeCommit::ApprovalRuleEventMetadata;
   has ApprovalRuleContent => (is => 'ro', isa => 'Str', request_name => 'approvalRuleContent', traits => ['NameInRequest']);
   has ApprovalRuleId => (is => 'ro', isa => 'Str', request_name => 'approvalRuleId', traits => ['NameInRequest']);
   has ApprovalRuleName => (is => 'ro', isa => 'Str', request_name => 'approvalRuleName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

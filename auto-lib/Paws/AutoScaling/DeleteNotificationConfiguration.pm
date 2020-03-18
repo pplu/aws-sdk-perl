@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes the specified notification from the specified Auto
     # Scaling group.
     $autoscaling->DeleteNotificationConfiguration(
-      {
-        'TopicARN' => 'arn:aws:sns:us-west-2:123456789012:my-sns-topic',
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'TopicARN' => 'arn:aws:sns:us-west-2:123456789012:my-sns-topic'
     );
 
 
@@ -54,7 +52,7 @@ The name of the Auto Scaling group.
 =head2 B<REQUIRED> TopicARN => Str
 
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
-Service (SNS) topic.
+Service (Amazon SNS) topic.
 
 
 

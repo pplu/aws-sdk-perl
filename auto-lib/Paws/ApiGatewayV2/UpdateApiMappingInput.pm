@@ -3,6 +3,7 @@ package Paws::ApiGatewayV2::UpdateApiMappingInput;
   has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
   has ApiMappingKey => (is => 'ro', isa => 'Str', request_name => 'apiMappingKey', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Quicksight::ColumnGroupSchema;
   use Moose;
   has ColumnGroupColumnSchemaList => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnGroupColumnSchema]');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

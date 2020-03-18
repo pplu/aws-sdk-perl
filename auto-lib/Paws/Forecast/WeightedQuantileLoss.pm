@@ -2,6 +2,7 @@ package Paws::Forecast::WeightedQuantileLoss;
   use Moose;
   has LossValue => (is => 'ro', isa => 'Num');
   has Quantile => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

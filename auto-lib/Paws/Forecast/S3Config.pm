@@ -3,6 +3,7 @@ package Paws::Forecast::S3Config;
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::SecurityHub::AwsEc2SecurityGroupIpPermission;
   has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2SecurityGroupPrefixListId]');
   has ToPort => (is => 'ro', isa => 'Int');
   has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2SecurityGroupUserIdGroupPair]');
+
 1;
 
 ### main pod documentation begin ###

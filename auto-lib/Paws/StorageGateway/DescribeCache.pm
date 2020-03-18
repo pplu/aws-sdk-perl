@@ -29,21 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $storagegateway = Paws->service('StorageGateway');
     # To describe cache information
     # Returns information about the cache of a gateway.
-    my $DescribeCacheOutput = $storagegateway->DescribeCache(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-    );
+    my $DescribeCacheOutput = $storagegateway->DescribeCache( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
-    my $DiskIds               = $DescribeCacheOutput->DiskIds;
-    my $CacheMissPercentage   = $DescribeCacheOutput->CacheMissPercentage;
-    my $GatewayARN            = $DescribeCacheOutput->GatewayARN;
-    my $CacheHitPercentage    = $DescribeCacheOutput->CacheHitPercentage;
-    my $CacheDirtyPercentage  = $DescribeCacheOutput->CacheDirtyPercentage;
     my $CacheAllocatedInBytes = $DescribeCacheOutput->CacheAllocatedInBytes;
+    my $CacheDirtyPercentage  = $DescribeCacheOutput->CacheDirtyPercentage;
+    my $CacheHitPercentage    = $DescribeCacheOutput->CacheHitPercentage;
+    my $CacheMissPercentage   = $DescribeCacheOutput->CacheMissPercentage;
     my $CacheUsedPercentage   = $DescribeCacheOutput->CacheUsedPercentage;
+    my $DiskIds               = $DescribeCacheOutput->DiskIds;
+    my $GatewayARN            = $DescribeCacheOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::DescribeCacheOutput> object.
 

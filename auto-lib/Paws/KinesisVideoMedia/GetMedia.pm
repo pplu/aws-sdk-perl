@@ -36,16 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         , # values: FRAGMENT_NUMBER, SERVER_TIMESTAMP, PRODUCER_TIMESTAMP, NOW, EARLIEST, CONTINUATION_TOKEN
         AfterFragmentNumber =>
           'MyFragmentNumberString',    # min: 1, max: 128; OPTIONAL
-        StartTimestamp    => '1970-01-01T01:00:00', # OPTIONAL
         ContinuationToken => 'MyContinuationToken', # min: 1, max: 128; OPTIONAL
+        StartTimestamp    => '1970-01-01T01:00:00', # OPTIONAL
       },
       StreamARN  => 'MyResourceARN',                # OPTIONAL
       StreamName => 'MyStreamName',                 # OPTIONAL
     );
 
     # Results:
-    my $Payload     = $GetMediaOutput->Payload;
     my $ContentType = $GetMediaOutput->ContentType;
+    my $Payload     = $GetMediaOutput->Payload;
 
     # Returns a L<Paws::KinesisVideoMedia::GetMediaOutput> object.
 

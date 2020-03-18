@@ -4,6 +4,7 @@ package Paws::LexModels::LogSettingsRequest;
   has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
   has LogType => (is => 'ro', isa => 'Str', request_name => 'logType', traits => ['NameInRequest'], required => 1);
   has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::SageMakerA2IRuntime::HumanLoopSummary;
   has FlowDefinitionArn => (is => 'ro', isa => 'Str');
   has HumanLoopName => (is => 'ro', isa => 'Str');
   has HumanLoopStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudFormation::DeploymentTargets;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OrganizationalUnitIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

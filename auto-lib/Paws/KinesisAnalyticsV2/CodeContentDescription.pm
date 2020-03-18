@@ -4,6 +4,7 @@ package Paws::KinesisAnalyticsV2::CodeContentDescription;
   has CodeSize => (is => 'ro', isa => 'Int');
   has S3ApplicationCodeLocationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ApplicationCodeLocationDescription');
   has TextContent => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

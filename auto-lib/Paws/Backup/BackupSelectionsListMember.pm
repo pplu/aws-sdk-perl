@@ -6,6 +6,7 @@ package Paws::Backup::BackupSelectionsListMember;
   has IamRoleArn => (is => 'ro', isa => 'Str');
   has SelectionId => (is => 'ro', isa => 'Str');
   has SelectionName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

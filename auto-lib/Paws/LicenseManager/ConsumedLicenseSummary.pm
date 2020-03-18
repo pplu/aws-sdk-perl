@@ -2,6 +2,7 @@ package Paws::LicenseManager::ConsumedLicenseSummary;
   use Moose;
   has ConsumedLicenses => (is => 'ro', isa => 'Int');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

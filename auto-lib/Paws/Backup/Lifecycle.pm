@@ -2,6 +2,7 @@ package Paws::Backup::Lifecycle;
   use Moose;
   has DeleteAfterDays => (is => 'ro', isa => 'Int');
   has MoveToColdStorageAfterDays => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

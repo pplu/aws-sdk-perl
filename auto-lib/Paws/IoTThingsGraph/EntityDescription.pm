@@ -5,6 +5,7 @@ package Paws::IoTThingsGraph::EntityDescription;
   has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', request_name => 'definition', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

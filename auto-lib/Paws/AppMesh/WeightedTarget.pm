@@ -2,6 +2,7 @@ package Paws::AppMesh::WeightedTarget;
   use Moose;
   has VirtualNode => (is => 'ro', isa => 'Str', request_name => 'virtualNode', traits => ['NameInRequest'], required => 1);
   has Weight => (is => 'ro', isa => 'Int', request_name => 'weight', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::IoT::BehaviorCriteria;
   has DurationSeconds => (is => 'ro', isa => 'Int', request_name => 'durationSeconds', traits => ['NameInRequest']);
   has StatisticalThreshold => (is => 'ro', isa => 'Paws::IoT::StatisticalThreshold', request_name => 'statisticalThreshold', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Paws::IoT::MetricValue', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

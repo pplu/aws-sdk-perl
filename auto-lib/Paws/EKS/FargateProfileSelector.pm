@@ -2,6 +2,7 @@ package Paws::EKS::FargateProfileSelector;
   use Moose;
   has Labels => (is => 'ro', isa => 'Paws::EKS::FargateProfileLabel', request_name => 'labels', traits => ['NameInRequest']);
   has Namespace => (is => 'ro', isa => 'Str', request_name => 'namespace', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

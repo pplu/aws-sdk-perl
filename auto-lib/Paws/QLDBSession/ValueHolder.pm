@@ -2,6 +2,7 @@ package Paws::QLDBSession::ValueHolder;
   use Moose;
   has IonBinary => (is => 'ro', isa => 'Str');
   has IonText => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

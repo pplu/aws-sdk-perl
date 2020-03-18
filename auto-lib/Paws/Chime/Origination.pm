@@ -2,6 +2,7 @@ package Paws::Chime::Origination;
   use Moose;
   has Disabled => (is => 'ro', isa => 'Bool');
   has Routes => (is => 'ro', isa => 'ArrayRef[Paws::Chime::OriginationRoute]');
+
 1;
 
 ### main pod documentation begin ###

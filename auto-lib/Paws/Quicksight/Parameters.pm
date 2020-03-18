@@ -4,6 +4,7 @@ package Paws::Quicksight::Parameters;
   has DecimalParameters => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::DecimalParameter]');
   has IntegerParameters => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::IntegerParameter]');
   has StringParameters => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::StringParameter]');
+
 1;
 
 ### main pod documentation begin ###

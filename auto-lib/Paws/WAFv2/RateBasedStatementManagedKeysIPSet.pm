@@ -2,6 +2,7 @@ package Paws::WAFv2::RateBasedStatementManagedKeysIPSet;
   use Moose;
   has Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IPAddressVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsElasticsearchDomainVPCOptions;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

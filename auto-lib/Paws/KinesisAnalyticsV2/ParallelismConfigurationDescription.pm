@@ -5,6 +5,7 @@ package Paws::KinesisAnalyticsV2::ParallelismConfigurationDescription;
   has CurrentParallelism => (is => 'ro', isa => 'Int');
   has Parallelism => (is => 'ro', isa => 'Int');
   has ParallelismPerKPU => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

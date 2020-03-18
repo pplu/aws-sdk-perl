@@ -1,5 +1,6 @@
 package Paws::WAFv2::AllowAction;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

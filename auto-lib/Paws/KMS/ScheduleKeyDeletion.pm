@@ -31,15 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To schedule a customer master key (CMK) for deletion
     # The following example schedules the specified CMK for deletion.
     my $ScheduleKeyDeletionResponse = $kms->ScheduleKeyDeletion(
-      {
-        'PendingWindowInDays' => 7,
-        'KeyId'               => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
+      'KeyId'               => '1234abcd-12ab-34cd-56ef-1234567890ab',
+      'PendingWindowInDays' => 7
     );
 
     # Results:
-    my $KeyId        = $ScheduleKeyDeletionResponse->KeyId;
     my $DeletionDate = $ScheduleKeyDeletionResponse->DeletionDate;
+    my $KeyId        = $ScheduleKeyDeletionResponse->KeyId;
 
     # Returns a L<Paws::KMS::ScheduleKeyDeletionResponse> object.
 

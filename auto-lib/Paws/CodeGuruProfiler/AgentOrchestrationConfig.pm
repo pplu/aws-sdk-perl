@@ -1,6 +1,7 @@
 package Paws::CodeGuruProfiler::AgentOrchestrationConfig;
   use Moose;
   has ProfilingEnabled => (is => 'ro', isa => 'Bool', request_name => 'profilingEnabled', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

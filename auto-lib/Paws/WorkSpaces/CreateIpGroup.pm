@@ -3,6 +3,7 @@ package Paws::WorkSpaces::CreateIpGroup;
   use Moose;
   has GroupDesc => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
   has UserRules => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::IpRuleItem]');
 
   use MooseX::ClassAttribute;
@@ -32,10 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateIpGroupResult = $workspaces->CreateIpGroup(
       GroupName => 'MyIpGroupName',
       GroupDesc => 'MyIpGroupDesc',    # OPTIONAL
+      Tags      => [
+        {
+          Key   => 'MyTagKey',         # min: 1, max: 127
+          Value => 'MyTagValue',       # max: 255; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
       UserRules => [
         {
-          ipRule   => 'MyIpRule',        # OPTIONAL
-          ruleDesc => 'MyIpRuleDesc',    # OPTIONAL
+          IpRule   => 'MyIpRule',        # OPTIONAL
+          RuleDesc => 'MyIpRuleDesc',    # OPTIONAL
         },
         ...
       ],                                 # OPTIONAL
@@ -47,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::WorkSpaces::CreateIpGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces/CreateIpGroup>
 
 =head1 ATTRIBUTES
 
@@ -61,6 +69,12 @@ The description of the group.
 =head2 B<REQUIRED> GroupName => Str
 
 The name of the group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+
+The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 
 
 

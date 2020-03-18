@@ -3,6 +3,7 @@ package Paws::Personalize::HPOObjective;
   has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest']);
   has MetricRegex => (is => 'ro', isa => 'Str', request_name => 'metricRegex', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

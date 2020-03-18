@@ -2,6 +2,7 @@ package Paws::Transcribe::JobExecutionSettings;
   use Moose;
   has AllowDeferredExecution => (is => 'ro', isa => 'Bool');
   has DataAccessRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

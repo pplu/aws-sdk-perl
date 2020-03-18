@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::S3ReferenceDataSource;
   use Moose;
   has BucketARN => (is => 'ro', isa => 'Str');
   has FileKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::SageMaker::ChannelSpecification;
   has SupportedCompressionTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedContentTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SupportedInputModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

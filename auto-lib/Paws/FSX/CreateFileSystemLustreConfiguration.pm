@@ -4,6 +4,7 @@ package Paws::FSX::CreateFileSystemLustreConfiguration;
   has ImportedFileChunkSize => (is => 'ro', isa => 'Int');
   has ImportPath => (is => 'ro', isa => 'Str');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

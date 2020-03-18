@@ -42,24 +42,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation updates an environment named "my-env" to version
     # "v2" of the application to which it belongs:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
-      {
-        'EnvironmentName' => 'my-env',
-        'VersionLabel'    => 'v2'
-      }
+      'EnvironmentName' => 'my-env',
+      'VersionLabel'    => 'v2'
     );
 
     # Results:
-    my $Tier              = $EnvironmentDescription->Tier;
-    my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
-    my $Status            = $EnvironmentDescription->Status;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
     my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
@@ -67,51 +65,49 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation configures several options in the
     # aws:elb:loadbalancer namespace:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
-      {
-        'OptionSettings' => [
+      'EnvironmentName' => 'my-env',
+      'OptionSettings'  => [
 
-          {
-            'Value'      => 15,
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Interval'
-          },
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'Interval',
+          'Value'      => 15
+        },
 
-          {
-            'Value'      => 8,
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Timeout'
-          },
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'Timeout',
+          'Value'      => 8
+        },
 
-          {
-            'Value'      => 2,
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'HealthyThreshold'
-          },
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'HealthyThreshold',
+          'Value'      => 2
+        },
 
-          {
-            'Value'      => 3,
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'UnhealthyThreshold'
-          }
-        ],
-        'EnvironmentName' => 'my-env'
-      }
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'UnhealthyThreshold',
+          'Value'      => 3
+        }
+      ]
     );
 
     # Results:
-    my $Tier            = $EnvironmentDescription->Tier;
-    my $DateCreated     = $EnvironmentDescription->DateCreated;
-    my $EnvironmentName = $EnvironmentDescription->EnvironmentName;
-    my $Status          = $EnvironmentDescription->Status;
-    my $CNAME           = $EnvironmentDescription->CNAME;
     my $AbortableOperationInProgress =
       $EnvironmentDescription->AbortableOperationInProgress;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
     my $EndpointURL       = $EnvironmentDescription->EndpointURL;
     my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
-    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
@@ -166,7 +162,7 @@ The name of the group to which the target environment belongs. Specify
 a group name only if the environment's name is specified in an
 environment manifest and not with the environment name or environment
 ID parameters. See Environment Manifest (env.yaml)
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 for details.
 
 

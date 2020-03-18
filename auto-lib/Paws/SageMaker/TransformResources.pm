@@ -3,6 +3,7 @@ package Paws::SageMaker::TransformResources;
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

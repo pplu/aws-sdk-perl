@@ -1,6 +1,7 @@
 package Paws::S3Control::LambdaInvokeOperation;
   use Moose;
   has FunctionArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

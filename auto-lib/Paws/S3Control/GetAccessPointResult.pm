@@ -8,6 +8,7 @@ package Paws::S3Control::GetAccessPointResult;
   has PublicAccessBlockConfiguration => (is => 'ro', isa => 'Paws::S3Control::PublicAccessBlockConfiguration');
   has VpcConfiguration => (is => 'ro', isa => 'Paws::S3Control::VpcConfiguration');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

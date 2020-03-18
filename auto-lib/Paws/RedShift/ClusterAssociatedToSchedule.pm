@@ -2,6 +2,7 @@ package Paws::RedShift::ClusterAssociatedToSchedule;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ScheduleAssociationState => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::SecurityHub::AwsIamRoleDetails;
   has Path => (is => 'ro', isa => 'Str');
   has RoleId => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

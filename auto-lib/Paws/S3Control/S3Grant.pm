@@ -2,6 +2,7 @@ package Paws::S3Control::S3Grant;
   use Moose;
   has Grantee => (is => 'ro', isa => 'Paws::S3Control::S3Grantee');
   has Permission => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

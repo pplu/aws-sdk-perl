@@ -1,6 +1,7 @@
 package Paws::FSX::DataRepositoryTaskFailureDetails;
   use Moose;
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

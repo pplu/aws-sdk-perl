@@ -1,6 +1,7 @@
 package Paws::WorkSpaces::Snapshot;
   use Moose;
   has SnapshotTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

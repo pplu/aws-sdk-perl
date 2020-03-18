@@ -2,6 +2,7 @@ package Paws::SageMaker::LabelingJobOutput;
   use Moose;
   has FinalActiveLearningModelArn => (is => 'ro', isa => 'Str');
   has OutputDatasetS3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

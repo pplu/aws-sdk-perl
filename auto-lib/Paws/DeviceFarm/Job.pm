@@ -13,6 +13,8 @@ package Paws::DeviceFarm::Job;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has VideoCapture => (is => 'ro', isa => 'Bool', request_name => 'videoCapture', traits => ['NameInRequest']);
+  has VideoEndpoint => (is => 'ro', isa => 'Str', request_name => 'videoEndpoint', traits => ['NameInRequest']);
 
 1;
 
@@ -33,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Job object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VideoEndpoint => $value  });
 
 =head3 Results returned from an API call
 
@@ -76,7 +78,7 @@ Represents a device.
 
 =head2 InstanceArn => Str
 
-  The Amazon Resource Name (ARN) of the instance.
+  The ARN of the instance.
 
 
 =head2 Message => Str
@@ -99,31 +101,31 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending condition.
+PENDING
 
 =item *
 
-PASSED: A passing condition.
+PASSED
 
 =item *
 
-WARNED: A warning condition.
+WARNED
 
 =item *
 
-FAILED: A failed condition.
+FAILED
 
 =item *
 
-SKIPPED: A skipped condition.
+SKIPPED
 
 =item *
 
-ERRORED: An error condition.
+ERRORED
 
 =item *
 
-STOPPED: A stopped condition.
+STOPPED
 
 =back
 
@@ -144,39 +146,39 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending status.
+PENDING
 
 =item *
 
-PENDING_CONCURRENCY: A pending concurrency status.
+PENDING_CONCURRENCY
 
 =item *
 
-PENDING_DEVICE: A pending device status.
+PENDING_DEVICE
 
 =item *
 
-PROCESSING: A processing status.
+PROCESSING
 
 =item *
 
-SCHEDULING: A scheduling status.
+SCHEDULING
 
 =item *
 
-PREPARING: A preparing status.
+PREPARING
 
 =item *
 
-RUNNING: A running status.
+RUNNING
 
 =item *
 
-COMPLETED: A completed status.
+COMPLETED
 
 =item *
 
-STOPPING: A stopping status.
+STOPPING
 
 =back
 
@@ -197,64 +199,91 @@ Allowed values include the following:
 
 =item *
 
-BUILTIN_FUZZ: The built-in fuzz type.
+BUILTIN_FUZZ
 
 =item *
 
-BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
+BUILTIN_EXPLORER. For Android, an app explorer that traverses an
 Android app, interacting with it and capturing screenshots at the same
 time.
 
 =item *
 
-APPIUM_JAVA_JUNIT: The Appium Java JUnit type.
+APPIUM_JAVA_JUNIT
 
 =item *
 
-APPIUM_JAVA_TESTNG: The Appium Java TestNG type.
+APPIUM_JAVA_TESTNG
 
 =item *
 
-APPIUM_PYTHON: The Appium Python type.
+APPIUM_PYTHON
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+APPIUM_NODE
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+APPIUM_RUBY
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+APPIUM_WEB_JAVA_JUNIT
 
 =item *
 
-CALABASH: The Calabash type.
+APPIUM_WEB_JAVA_TESTNG
 
 =item *
 
-INSTRUMENTATION: The Instrumentation type.
+APPIUM_WEB_PYTHON
 
 =item *
 
-UIAUTOMATION: The uiautomation type.
+APPIUM_WEB_NODE
 
 =item *
 
-UIAUTOMATOR: The uiautomator type.
+APPIUM_WEB_RUBY
 
 =item *
 
-XCTEST: The XCode test type.
+CALABASH
 
 =item *
 
-XCTEST_UI: The XCode UI test type.
+INSTRUMENTATION
+
+=item *
+
+UIAUTOMATION
+
+=item *
+
+UIAUTOMATOR
+
+=item *
+
+XCTEST
+
+=item *
+
+XCTEST_UI
 
 =back
 
+
+
+=head2 VideoCapture => Bool
+
+  This value is set to true if video capture is enabled. Otherwise, it is
+set to false.
+
+
+=head2 VideoEndpoint => Str
+
+  The endpoint for streaming device video.
 
 
 

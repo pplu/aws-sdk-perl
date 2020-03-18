@@ -2,6 +2,7 @@ package Paws::SecurityHub::SortCriterion;
   use Moose;
   has Field => (is => 'ro', isa => 'Str');
   has SortOrder => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

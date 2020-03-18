@@ -4,9 +4,12 @@ package Paws::DLM::LifecyclePolicy;
   has DateModified => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionRoleArn => (is => 'ro', isa => 'Str');
+  has PolicyArn => (is => 'ro', isa => 'Str');
   has PolicyDetails => (is => 'ro', isa => 'Paws::DLM::PolicyDetails');
   has PolicyId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+  has StatusMessage => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
 
 1;
 
@@ -27,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::LifecyclePolicy object:
 
-  $service_obj->Method(Att1 => { DateCreated => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { DateCreated => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -64,6 +67,11 @@ Detailed information about a lifecycle policy.
 operations specified by the lifecycle policy.
 
 
+=head2 PolicyArn => Str
+
+  The Amazon Resource Name (ARN) of the policy.
+
+
 =head2 PolicyDetails => L<Paws::DLM::PolicyDetails>
 
   The configuration of the lifecycle policy
@@ -77,6 +85,16 @@ operations specified by the lifecycle policy.
 =head2 State => Str
 
   The activation state of the lifecycle policy.
+
+
+=head2 StatusMessage => Str
+
+  The description of the status.
+
+
+=head2 Tags => L<Paws::DLM::TagMap>
+
+  The tags.
 
 
 

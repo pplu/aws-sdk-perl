@@ -4,6 +4,7 @@ package Paws::ApiGatewayV2::CreateModelInput;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

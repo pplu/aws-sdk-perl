@@ -8,6 +8,7 @@ package Paws::WorkSpaces::WorkspaceImage;
   has OperatingSystem => (is => 'ro', isa => 'Paws::WorkSpaces::OperatingSystem');
   has RequiredTenancy => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

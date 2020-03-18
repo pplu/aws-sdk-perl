@@ -1,6 +1,7 @@
 package Paws::SES::DeliveryOptions;
   use Moose;
   has TlsPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

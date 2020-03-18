@@ -1,6 +1,6 @@
 package Paws::Pinpoint::ChannelsResponse;
   use Moose;
-  has Channels => (is => 'ro', isa => 'Paws::Pinpoint::MapOfChannelResponse');
+  has Channels => (is => 'ro', isa => 'Paws::Pinpoint::MapOfChannelResponse', required => 1);
 
 1;
 
@@ -32,15 +32,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-Get channels definition
+Provides information about the general settings and status of all
+channels for an application, including channels that aren't enabled for
+the application.
 
 =head1 ATTRIBUTES
 
 
-=head2 Channels => L<Paws::Pinpoint::MapOfChannelResponse>
+=head2 B<REQUIRED> Channels => L<Paws::Pinpoint::MapOfChannelResponse>
 
-  A map of channels, with the ChannelType as the key and the Channel as
-the value.
+  A map that contains a multipart response for each channel. For each
+item in this object, the ChannelType is the key and the Channel is the
+value.
 
 
 

@@ -6,6 +6,7 @@ package Paws::DocDB::OrderableDBInstanceOption;
   has EngineVersion => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has Vpc => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

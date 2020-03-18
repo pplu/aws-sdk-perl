@@ -2,6 +2,7 @@ package Paws::EBS::Block;
   use Moose;
   has BlockIndex => (is => 'ro', isa => 'Int');
   has BlockToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

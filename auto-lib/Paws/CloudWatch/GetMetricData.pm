@@ -36,28 +36,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime           => '1970-01-01T01:00:00',
       MetricDataQueries => [
         {
-          Id         => 'MyMetricId',       # min: 1, max: 255
-          Label      => 'MyMetricLabel',    # OPTIONAL
+          Id         => 'MyMetricId',            # min: 1, max: 255
+          Expression => 'MyMetricExpression',    # min: 1, max: 1024; OPTIONAL
+          Label      => 'MyMetricLabel',         # OPTIONAL
           MetricStat => {
-            Stat   => 'MyStat',
-            Period => 1,                    # min: 1,
             Metric => {
-              MetricName => 'MyMetricName',    # min: 1, max: 255; OPTIONAL
               Dimensions => [
                 {
-                  Value => 'MyDimensionValue',    # min: 1, max: 255
                   Name  => 'MyDimensionName',     # min: 1, max: 255
+                  Value => 'MyDimensionValue',    # min: 1, max: 255
 
                 },
                 ...
               ],                                  # max: 10; OPTIONAL
-              Namespace => 'MyNamespace',         # min: 1, max: 255; OPTIONAL
+              MetricName => 'MyMetricName',       # min: 1, max: 255; OPTIONAL
+              Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Unit => 'Seconds'
+            Period => 1,                          # min: 1; OPTIONAL
+            Stat   => 'MyStat',
+            Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
-          ReturnData => 1,                       # OPTIONAL
-          Expression => 'MyMetricExpression',    # min: 1, max: 1024; OPTIONAL
+          Period     => 1,    # min: 1; OPTIONAL
+          ReturnData => 1,    # OPTIONAL
         },
         ...
       ],
@@ -68,6 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Messages          = $GetMetricDataOutput->Messages;
     my $MetricDataResults = $GetMetricDataOutput->MetricDataResults;
     my $NextToken         = $GetMetricDataOutput->NextToken;
 
@@ -82,6 +84,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head2 B<REQUIRED> EndTime => Str
 
 The time stamp indicating the latest data to be returned.
+
+The value specified is exclusive; results include data points up to the
+specified time stamp.
+
+For better performance, specify C<StartTime> and C<EndTime> values that
+align with the value of the metric's C<Period> and sync up with the
+beginning and end of an hour. For example, if the C<Period> of a metric
+is 5 minutes, specifying 12:05 or 12:30 as C<EndTime> can get a faster
+response from CloudWatch than setting 12:07 or 12:29 as the C<EndTime>.
 
 
 
@@ -121,6 +132,47 @@ Valid values are: C<"TimestampDescending">, C<"TimestampAscending">
 =head2 B<REQUIRED> StartTime => Str
 
 The time stamp indicating the earliest data to be returned.
+
+The value specified is inclusive; results include data points with the
+specified time stamp.
+
+CloudWatch rounds the specified time stamp as follows:
+
+=over
+
+=item *
+
+Start time less than 15 days ago - Round down to the nearest whole
+minute. For example, 12:32:34 is rounded down to 12:32:00.
+
+=item *
+
+Start time between 15 and 63 days ago - Round down to the nearest
+5-minute clock interval. For example, 12:32:34 is rounded down to
+12:30:00.
+
+=item *
+
+Start time greater than 63 days ago - Round down to the nearest 1-hour
+clock interval. For example, 12:32:34 is rounded down to 12:00:00.
+
+=back
+
+If you set C<Period> to 5, 10, or 30, the start time of your request is
+rounded down to the nearest time that corresponds to even 5-, 10-, or
+30-second divisions of a minute. For example, if you make a query at
+(HH:mm:ss) 01:05:23 for the previous 10-second period, the start time
+of your request is rounded down and you receive data from 01:05:10 to
+01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of
+data, using a period of 5 seconds, you receive data timestamped between
+15:02:15 and 15:07:15.
+
+For better performance, specify C<StartTime> and C<EndTime> values that
+align with the value of the metric's C<Period> and sync up with the
+beginning and end of an hour. For example, if the C<Period> of a metric
+is 5 minutes, specifying 12:05 or 12:30 as C<StartTime> can get a
+faster response from CloudWatch than setting 12:07 or 12:29 as the
+C<StartTime>.
 
 
 

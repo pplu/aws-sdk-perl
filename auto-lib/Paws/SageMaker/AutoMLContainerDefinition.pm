@@ -3,6 +3,7 @@ package Paws::SageMaker::AutoMLContainerDefinition;
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::EnvironmentMap');
   has Image => (is => 'ro', isa => 'Str', required => 1);
   has ModelDataUrl => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

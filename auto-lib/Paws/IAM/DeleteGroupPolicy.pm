@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following command deletes the policy named ExamplePolicy from the group
    # named Admins:
     $iam->DeleteGroupPolicy(
-      {
-        'GroupName'  => 'Admins',
-        'PolicyName' => 'ExamplePolicy'
-      }
+      'GroupName'  => 'Admins',
+      'PolicyName' => 'ExamplePolicy'
     );
 
 
@@ -50,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The name (friendly name, not ARN) identifying the group that the policy
 is embedded in.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -61,7 +59,7 @@ also include any of the following characters: _+=,.@-
 
 The name identifying the policy document to delete.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

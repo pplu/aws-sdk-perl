@@ -29,70 +29,99 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $autoscaling = Paws->service('AutoScalingPlans');
-    my $UpdateScalingPlanResponse = $autoscaling->UpdateScalingPlan(
+    my $autoscaling-plans = Paws->service('AutoScalingPlans');
+    my $UpdateScalingPlanResponse = $autoscaling -plans->UpdateScalingPlan(
       ScalingPlanName    => 'MyScalingPlanName',
       ScalingPlanVersion => 1,
       ApplicationSource  => {
-        TagFilters => [
+        CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+        TagFilters             => [
           {
+            Key    => 'MyXmlStringMaxLen128',       # min: 1, max: 128; OPTIONAL
             Values => [
-              'MyXmlStringMaxLen256', ...    # min: 1, max: 256
-            ],                               # OPTIONAL
-            Key => 'MyXmlStringMaxLen128',   # min: 1, max: 128; OPTIONAL
+              'MyXmlStringMaxLen256', ...           # min: 1, max: 256
+            ],                                      # OPTIONAL
           },
           ...
-        ],                                   # OPTIONAL
-        CloudFormationStackARN => 'MyXmlString',    # OPTIONAL
+        ],                                          # OPTIONAL
       },    # OPTIONAL
       ScalingInstructions => [
         {
+          MaxCapacity => 1,
+          MinCapacity => 1,
+          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
+          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
+          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
+          ServiceNamespace =>
+            'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
           TargetTrackingConfigurations => [
             {
               TargetValue                          => 1,
-              ScaleInCooldown                      => 1,    # OPTIONAL
-              EstimatedInstanceWarmup              => 1,    # OPTIONAL
-              ScaleOutCooldown                     => 1,    # OPTIONAL
-              PredefinedScalingMetricSpecification => {
-                PredefinedScalingMetricType => 'ASGAverageCPUUtilization'
-                , # values: ASGAverageCPUUtilization, ASGAverageNetworkIn, ASGAverageNetworkOut, DynamoDBReadCapacityUtilization, DynamoDBWriteCapacityUtilization, ECSServiceAverageCPUUtilization, ECSServiceAverageMemoryUtilization, ALBRequestCountPerTarget, RDSReaderAverageCPUUtilization, RDSReaderAverageDatabaseConnections, EC2SpotFleetRequestAverageCPUUtilization, EC2SpotFleetRequestAverageNetworkIn, EC2SpotFleetRequestAverageNetworkOut
-                ResourceLabel =>
-                  'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
-              },    # OPTIONAL
               CustomizedScalingMetricSpecification => {
-                Statistic => 'Average'
-                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
-                Namespace  => 'MyMetricNamespace',
                 MetricName => 'MyMetricName',
+                Namespace  => 'MyMetricNamespace',
+                Statistic  => 'Average'
+                ,    # values: Average, Minimum, Maximum, SampleCount, Sum
                 Dimensions => [
                   {
-                    Value => 'MyMetricDimensionValue',
                     Name  => 'MyMetricDimensionName',
+                    Value => 'MyMetricDimensionValue',
 
                   },
                   ...
                 ],    # OPTIONAL
                 Unit => 'MyMetricUnit',    # OPTIONAL
               },    # OPTIONAL
-              DisableScaleIn => 1,    # OPTIONAL
+              DisableScaleIn                       => 1,    # OPTIONAL
+              EstimatedInstanceWarmup              => 1,    # OPTIONAL
+              PredefinedScalingMetricSpecification => {
+                PredefinedScalingMetricType => 'ASGAverageCPUUtilization'
+                , # values: ASGAverageCPUUtilization, ASGAverageNetworkIn, ASGAverageNetworkOut, DynamoDBReadCapacityUtilization, DynamoDBWriteCapacityUtilization, ECSServiceAverageCPUUtilization, ECSServiceAverageMemoryUtilization, ALBRequestCountPerTarget, RDSReaderAverageCPUUtilization, RDSReaderAverageDatabaseConnections, EC2SpotFleetRequestAverageCPUUtilization, EC2SpotFleetRequestAverageNetworkIn, EC2SpotFleetRequestAverageNetworkOut
+                ResourceLabel =>
+                  'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
+              },    # OPTIONAL
+              ScaleInCooldown  => 1,    # OPTIONAL
+              ScaleOutCooldown => 1,    # OPTIONAL
             },
             ...
           ],
-          MaxCapacity => 1,
-          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
-          ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
-          , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
-          ServiceNamespace =>
-            'autoscaling',    # values: autoscaling, ecs, ec2, rds, dynamodb
-          MinCapacity => 1,
+          CustomizedLoadMetricSpecification => {
+            MetricName => 'MyMetricName',
+            Namespace  => 'MyMetricNamespace',
+            Statistic =>
+              'Average',   # values: Average, Minimum, Maximum, SampleCount, Sum
+            Dimensions => [
+              {
+                Name  => 'MyMetricDimensionName',
+                Value => 'MyMetricDimensionValue',
 
+              },
+              ...
+            ],             # OPTIONAL
+            Unit => 'MyMetricUnit',    # OPTIONAL
+          },    # OPTIONAL
+          DisableDynamicScaling             => 1,    # OPTIONAL
+          PredefinedLoadMetricSpecification => {
+            PredefinedLoadMetricType => 'ASGTotalCPUUtilization'
+            , # values: ASGTotalCPUUtilization, ASGTotalNetworkIn, ASGTotalNetworkOut, ALBTargetGroupRequestCount
+            ResourceLabel => 'MyResourceLabel',    # min: 1, max: 1023; OPTIONAL
+          },    # OPTIONAL
+          PredictiveScalingMaxCapacityBehavior =>
+            'SetForecastCapacityToMaxCapacity'
+          , # values: SetForecastCapacityToMaxCapacity, SetMaxCapacityToForecastCapacity, SetMaxCapacityAboveForecastCapacity; OPTIONAL
+          PredictiveScalingMaxCapacityBuffer => 1,
+          PredictiveScalingMode              => 'ForecastAndScale'
+          ,    # values: ForecastAndScale, ForecastOnly; OPTIONAL
+          ScalingPolicyUpdateBehavior => 'KeepExternalPolicies'
+          ,    # values: KeepExternalPolicies, ReplaceExternalPolicies; OPTIONAL
+          ScheduledActionBufferTime => 1,    # OPTIONAL
         },
         ...
-      ],                      # OPTIONAL
+      ],                                     # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans/UpdateScalingPlan>
 
 =head1 ATTRIBUTES
 
@@ -117,7 +146,7 @@ The name of the scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version number.
+The version number of the scaling plan.
 
 
 

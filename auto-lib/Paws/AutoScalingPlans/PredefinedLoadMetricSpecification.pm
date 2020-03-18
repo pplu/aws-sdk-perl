@@ -2,6 +2,7 @@ package Paws::AutoScalingPlans::PredefinedLoadMetricSpecification;
   use Moose;
   has PredefinedLoadMetricType => (is => 'ro', isa => 'Str', required => 1);
   has ResourceLabel => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

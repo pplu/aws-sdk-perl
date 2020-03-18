@@ -5,6 +5,7 @@ package Paws::Chime::VoiceConnectorGroup;
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
   has VoiceConnectorGroupId => (is => 'ro', isa => 'Str');
   has VoiceConnectorItems => (is => 'ro', isa => 'ArrayRef[Paws::Chime::VoiceConnectorItem]');
+
 1;
 
 ### main pod documentation begin ###

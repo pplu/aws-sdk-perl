@@ -10,6 +10,7 @@ package Paws::SageMaker::Experiment;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Paws::SageMaker::ExperimentSource');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+
 1;
 
 ### main pod documentation begin ###

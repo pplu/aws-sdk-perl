@@ -1,6 +1,8 @@
 package Paws::DynamoDB::SSESpecification;
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool');
+  has KMSMasterKeyId => (is => 'ro', isa => 'Str');
+  has SSEType => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::SSESpecification object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., Enabled => $value  });
+  $service_obj->Method(Att1 => { Enabled => $value, ..., SSEType => $value  });
 
 =head3 Results returned from an API call
 
@@ -37,10 +39,38 @@ Represents the settings used to enable server-side encryption.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Enabled => Bool
+=head2 Enabled => Bool
 
-  Indicates whether server-side encryption is enabled (true) or disabled
-(false) on the table.
+  Indicates whether server-side encryption is done using an AWS managed
+CMK or an AWS owned CMK. If enabled (true), server-side encryption type
+is set to C<KMS> and an AWS managed CMK is used (AWS KMS charges
+apply). If disabled (false) or not specified, server-side encryption is
+set to AWS owned CMK.
+
+
+=head2 KMSMasterKeyId => Str
+
+  The AWS KMS customer master key (CMK) that should be used for the AWS
+KMS encryption. To specify a CMK, use its key ID, Amazon Resource Name
+(ARN), alias name, or alias ARN. Note that you should only provide this
+parameter if the key is different from the default DynamoDB customer
+master key alias/aws/dynamodb.
+
+
+=head2 SSEType => Str
+
+  Server-side encryption type. The only supported value is:
+
+=over
+
+=item *
+
+C<KMS> - Server-side encryption that uses AWS Key Management Service.
+The key is stored in your account and is managed by AWS KMS (AWS KMS
+charges apply).
+
+=back
+
 
 
 

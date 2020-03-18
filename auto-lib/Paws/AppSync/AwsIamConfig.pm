@@ -2,6 +2,7 @@ package Paws::AppSync::AwsIamConfig;
   use Moose;
   has SigningRegion => (is => 'ro', isa => 'Str', request_name => 'signingRegion', traits => ['NameInRequest']);
   has SigningServiceName => (is => 'ro', isa => 'Str', request_name => 'signingServiceName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

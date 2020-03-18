@@ -2,6 +2,7 @@ package Paws::AppMesh::MatchRange;
   use Moose;
   has End => (is => 'ro', isa => 'Int', request_name => 'end', traits => ['NameInRequest'], required => 1);
   has Start => (is => 'ro', isa => 'Int', request_name => 'start', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

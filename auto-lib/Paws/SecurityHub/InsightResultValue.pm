@@ -2,6 +2,7 @@ package Paws::SecurityHub::InsightResultValue;
   use Moose;
   has Count => (is => 'ro', isa => 'Int', required => 1);
   has GroupByAttributeValue => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

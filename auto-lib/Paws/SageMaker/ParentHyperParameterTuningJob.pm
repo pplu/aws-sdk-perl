@@ -1,6 +1,7 @@
 package Paws::SageMaker::ParentHyperParameterTuningJob;
   use Moose;
   has HyperParameterTuningJobName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

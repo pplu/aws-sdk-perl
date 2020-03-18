@@ -3,6 +3,7 @@ package Paws::Kendra::DataSourceConfiguration;
   has DatabaseConfiguration => (is => 'ro', isa => 'Paws::Kendra::DatabaseConfiguration');
   has S3Configuration => (is => 'ro', isa => 'Paws::Kendra::S3DataSourceConfiguration');
   has SharePointConfiguration => (is => 'ro', isa => 'Paws::Kendra::SharePointConfiguration');
+
 1;
 
 ### main pod documentation begin ###

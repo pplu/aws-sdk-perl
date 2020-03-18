@@ -2,6 +2,7 @@ package Paws::CodeStar::S3Location;
   use Moose;
   has BucketKey => (is => 'ro', isa => 'Str', request_name => 'bucketKey', traits => ['NameInRequest']);
   has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

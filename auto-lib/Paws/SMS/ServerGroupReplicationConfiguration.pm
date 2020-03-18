@@ -2,6 +2,7 @@ package Paws::SMS::ServerGroupReplicationConfiguration;
   use Moose;
   has ServerGroupId => (is => 'ro', isa => 'Str', request_name => 'serverGroupId', traits => ['NameInRequest']);
   has ServerReplicationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerReplicationConfiguration]', request_name => 'serverReplicationConfigurations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

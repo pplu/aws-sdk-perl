@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $directconnect = Paws->service('DirectConnect');
     my $CreateBGPPeerResponse = $directconnect->CreateBGPPeer(
       NewBGPPeer => {
-        asn             => 1,                     # OPTIONAL
-        amazonAddress   => 'MyAmazonAddress',     # OPTIONAL
-        authKey         => 'MyBGPAuthKey',        # OPTIONAL
-        customerAddress => 'MyCustomerAddress',   # OPTIONAL
-        addressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
+        AddressFamily   => 'ipv4',                # values: ipv4, ipv6; OPTIONAL
+        AmazonAddress   => 'MyAmazonAddress',     # OPTIONAL
+        Asn             => 1,                     # OPTIONAL
+        AuthKey         => 'MyBGPAuthKey',        # OPTIONAL
+        CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
       },    # OPTIONAL
       VirtualInterfaceId => 'MyVirtualInterfaceId',    # OPTIONAL
     );
@@ -52,20 +52,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 NewBGPPeer => L<Paws::DirectConnect::NewBGPPeer>
 
-Detailed information for the BGP peer to be created.
-
-Default: None
+Information about the BGP peer.
 
 
 
 =head2 VirtualInterfaceId => Str
 
-The ID of the virtual interface on which the BGP peer will be
-provisioned.
-
-Example: dxvif-456abc78
-
-Default: None
+The ID of the virtual interface.
 
 
 

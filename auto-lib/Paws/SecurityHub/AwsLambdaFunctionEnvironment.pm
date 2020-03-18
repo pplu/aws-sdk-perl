@@ -2,6 +2,7 @@ package Paws::SecurityHub::AwsLambdaFunctionEnvironment;
   use Moose;
   has Error => (is => 'ro', isa => 'Paws::SecurityHub::AwsLambdaFunctionEnvironmentError');
   has Variables => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
+
 1;
 
 ### main pod documentation begin ###

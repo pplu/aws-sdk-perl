@@ -3,6 +3,7 @@ package Paws::DynamoDB::ArchivalSummary;
   has ArchivalBackupArn => (is => 'ro', isa => 'Str');
   has ArchivalDateTime => (is => 'ro', isa => 'Str');
   has ArchivalReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

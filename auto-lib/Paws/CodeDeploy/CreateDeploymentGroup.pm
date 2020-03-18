@@ -11,10 +11,12 @@ package Paws::CodeDeploy::CreateDeploymentGroup;
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', traits => ['NameInRequest'], request_name => 'deploymentStyle' );
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
   has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', traits => ['NameInRequest'], request_name => 'ec2TagSet' );
+  has EcsServices => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ECSService]', traits => ['NameInRequest'], request_name => 'ecsServices' );
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
   use MooseX::ClassAttribute;
@@ -46,60 +48,60 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeploymentGroupName => 'MyDeploymentGroupName',
       ServiceRoleArn      => 'MyRole',
       AlarmConfiguration  => {
-        ignorePollAlarmFailure => 1,    # OPTIONAL
-        alarms                 => [
+        Alarms => [
           {
-            name => 'MyAlarmName',      # OPTIONAL
+            Name => 'MyAlarmName',    # OPTIONAL
           },
           ...
-        ],                              # OPTIONAL
-        enabled => 1,                   # OPTIONAL
+        ],                            # OPTIONAL
+        Enabled                => 1,  # OPTIONAL
+        IgnorePollAlarmFailure => 1,  # OPTIONAL
       },    # OPTIONAL
       AutoRollbackConfiguration => {
-        enabled => 1,    # OPTIONAL
-        events  => [
+        Enabled => 1,    # OPTIONAL
+        Events  => [
           'DEPLOYMENT_FAILURE',
           ... # values: DEPLOYMENT_FAILURE, DEPLOYMENT_STOP_ON_ALARM, DEPLOYMENT_STOP_ON_REQUEST
         ],    # OPTIONAL
       },    # OPTIONAL
       AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
       BlueGreenDeploymentConfiguration => {
-        terminateBlueInstancesOnDeploymentSuccess => {
-          terminationWaitTimeInMinutes => 1,                     # OPTIONAL
-          action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
-        },    # OPTIONAL
-        deploymentReadyOption => {
-          actionOnTimeout => 'CONTINUE_DEPLOYMENT'
+        DeploymentReadyOption => {
+          ActionOnTimeout => 'CONTINUE_DEPLOYMENT'
           ,    # values: CONTINUE_DEPLOYMENT, STOP_DEPLOYMENT; OPTIONAL
-          waitTimeInMinutes => 1,    # OPTIONAL
+          WaitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
-        greenFleetProvisioningOption => {
-          action => 'DISCOVER_EXISTING'
+        GreenFleetProvisioningOption => {
+          Action => 'DISCOVER_EXISTING'
           ,    # values: DISCOVER_EXISTING, COPY_AUTO_SCALING_GROUP; OPTIONAL
+        },    # OPTIONAL
+        TerminateBlueInstancesOnDeploymentSuccess => {
+          Action => 'TERMINATE',    # values: TERMINATE, KEEP_ALIVE; OPTIONAL
+          TerminationWaitTimeInMinutes => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       DeploymentConfigName => 'MyDeploymentConfigName',    # OPTIONAL
       DeploymentStyle      => {
-        deploymentOption => 'WITH_TRAFFIC_CONTROL'
+        DeploymentOption => 'WITH_TRAFFIC_CONTROL'
         ,    # values: WITH_TRAFFIC_CONTROL, WITHOUT_TRAFFIC_CONTROL; OPTIONAL
-        deploymentType => 'IN_PLACE',   # values: IN_PLACE, BLUE_GREEN; OPTIONAL
+        DeploymentType => 'IN_PLACE',   # values: IN_PLACE, BLUE_GREEN; OPTIONAL
       },    # OPTIONAL
       Ec2TagFilters => [
         {
+          Key => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-          Key   => 'MyKey',      # OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
       ],                         # OPTIONAL
       Ec2TagSet => {
-        ec2TagSetList => [
+        Ec2TagSetList => [
           [
             {
+              Key  => 'MyKey',     # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-              Key   => 'MyKey',      # OPTIONAL
               Value => 'MyValue',    # OPTIONAL
             },
             ...
@@ -107,36 +109,60 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
+      EcsServices => [
+        {
+          ClusterName => 'MyECSClusterName',    # OPTIONAL
+          ServiceName => 'MyECSServiceName',    # OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
       LoadBalancerInfo => {
-        elbInfoList => [
+        ElbInfoList => [
           {
-            name => 'MyELBName',    # OPTIONAL
+            Name => 'MyELBName',                # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
-        targetGroupInfoList => [
+        ],                                      # OPTIONAL
+        TargetGroupInfoList => [
           {
-            name => 'MyTargetGroupName',    # OPTIONAL
+            Name => 'MyTargetGroupName',        # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],                                      # OPTIONAL
+        TargetGroupPairInfoList => [
+          {
+            ProdTrafficRoute => {
+              ListenerArns => [ 'MyListenerArn', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            TargetGroups => [
+              {
+                Name => 'MyTargetGroupName',    # OPTIONAL
+              },
+              ...
+            ],                                  # OPTIONAL
+            TestTrafficRoute => {
+              ListenerArns => [ 'MyListenerArn', ... ],    # OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
       },    # OPTIONAL
       OnPremisesInstanceTagFilters => [
         {
+          Key => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-          Key   => 'MyKey',      # OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
       ],                         # OPTIONAL
       OnPremisesTagSet => {
-        onPremisesTagSetList => [
+        OnPremisesTagSetList => [
           [
             {
+              Key  => 'MyKey',     # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
-              Key   => 'MyKey',      # OPTIONAL
               Value => 'MyValue',    # OPTIONAL
             },
             ...
@@ -144,14 +170,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyKey',      # OPTIONAL
+          Value => 'MyValue',    # OPTIONAL
+        },
+        ...
+      ],                         # OPTIONAL
       TriggerConfigurations => [
         {
-          triggerEvents => [
+          TriggerEvents => [
             'DeploymentStart',
             ... # values: DeploymentStart, DeploymentSuccess, DeploymentFailure, DeploymentStop, DeploymentRollback, DeploymentReady, InstanceStart, InstanceSuccess, InstanceFailure, InstanceReady
           ],    # OPTIONAL
-          triggerName      => 'MyTriggerName',         # OPTIONAL
-          triggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
+          TriggerName      => 'MyTriggerName',         # OPTIONAL
+          TriggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
         },
         ...
       ],                                               # OPTIONAL
@@ -177,8 +210,8 @@ group is created.
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
@@ -191,7 +224,7 @@ a deployment group is created.
 
 =head2 AutoScalingGroups => ArrayRef[Str|Undef]
 
-A list of associated Auto Scaling groups.
+A list of associated Amazon EC2 Auto Scaling groups.
 
 
 
@@ -209,12 +242,12 @@ deployment configuration that you create by calling the create
 deployment configuration operation.
 
 CodeDeployDefault.OneAtATime is the default deployment configuration.
-It is used if a configuration isn't specified for the deployment or the
+It is used if a configuration isn't specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
 AWS CodeDeploy, see Working with Deployment Groups in AWS CodeDeploy
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
 in the AWS CodeDeploy User Guide.
 
 
@@ -235,17 +268,27 @@ balancer.
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-The Amazon EC2 tags on which to filter. The deployment group will
-include EC2 instances with any of the specified tags. Cannot be used in
-the same call as ec2TagSet.
+The Amazon EC2 tags on which to filter. The deployment group includes
+EC2 instances with any of the specified tags. Cannot be used in the
+same call as ec2TagSet.
 
 
 
 =head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
 
 Information about groups of tags applied to EC2 instances. The
-deployment group will include only EC2 instances identified by all the
-tag groups. Cannot be used in the same call as ec2TagFilters.
+deployment group includes only EC2 instances identified by all the tag
+groups. Cannot be used in the same call as ec2TagFilters.
+
+
+
+=head2 EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]
+
+The target Amazon ECS services in the deployment group. This applies
+only to deployment groups that use the Amazon ECS compute platform. A
+target Amazon ECS service is specified as an Amazon ECS cluster and
+service name pair using the format
+C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
 
 
 
@@ -258,16 +301,16 @@ Information about the load balancer used in a deployment.
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
 The on-premises instance tags on which to filter. The deployment group
-will include on-premises instances with any of the specified tags.
-Cannot be used in the same call as OnPremisesTagSet.
+includes on-premises instances with any of the specified tags. Cannot
+be used in the same call as OnPremisesTagSet.
 
 
 
 =head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
 
 Information about groups of tags applied to on-premises instances. The
-deployment group will include only on-premises instances identified by
-all the tag groups. Cannot be used in the same call as
+deployment group includes only on-premises instances identified by all
+of the tag groups. Cannot be used in the same call as
 onPremisesInstanceTagFilters.
 
 
@@ -279,11 +322,19 @@ behalf when interacting with AWS services.
 
 
 
+=head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+
+The metadata that you apply to CodeDeploy deployment groups to help you
+organize and categorize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+
+
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
 
 Information about triggers to create when the deployment group is
 created. For examples, see Create a Trigger for an AWS CodeDeploy Event
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
 in the AWS CodeDeploy User Guide.
 
 

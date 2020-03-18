@@ -2,6 +2,7 @@ package Paws::GlobalAccelerator::IpSet;
   use Moose;
   has IpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IpFamily => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

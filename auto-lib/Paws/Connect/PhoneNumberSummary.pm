@@ -5,6 +5,7 @@ package Paws::Connect::PhoneNumberSummary;
   has PhoneNumber => (is => 'ro', isa => 'Str');
   has PhoneNumberCountryCode => (is => 'ro', isa => 'Str');
   has PhoneNumberType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

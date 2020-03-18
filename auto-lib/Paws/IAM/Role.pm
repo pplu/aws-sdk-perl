@@ -8,7 +8,9 @@ package Paws::IAM::Role;
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
+  has RoleLastUsed => (is => 'ro', isa => 'Paws::IAM::RoleLastUsed');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
 1;
 
@@ -29,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::Role object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., RoleName => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,7 +53,7 @@ response element in several API operations that interact with roles.
   The Amazon Resource Name (ARN) specifying the role. For more
 information about ARNs and how to use them in policies, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide> guide.
 
 
@@ -74,7 +76,7 @@ in the I<IAM User Guide> guide.
 =head2 MaxSessionDuration => Int
 
   The maximum session duration (in seconds) for the specified role.
-Anyone who uses the AWS CLI or API to assume the role can specify the
+Anyone who uses the AWS CLI, or API to assume the role can specify the
 duration using the optional C<DurationSeconds> API parameter or
 C<duration-seconds> CLI parameter.
 
@@ -83,8 +85,8 @@ C<duration-seconds> CLI parameter.
 
   The path to the role. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<IAM User Guide>.
 
 
 =head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
@@ -102,13 +104,33 @@ in the I<IAM User Guide>.
 
   The stable and unique string identifying the role. For more information
 about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<IAM User Guide>.
+
+
+=head2 RoleLastUsed => L<Paws::IAM::RoleLastUsed>
+
+  Contains information about the last time that an IAM role was used.
+This includes the date and time and the Region in which the role was
+last used. Activity is only reported for the trailing 400 days. This
+period can be shorter if your Region began supporting these features
+within the last year. The role might have been used more than 400 days
+ago. For more information, see Regions Where Data Is Tracked
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period)
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> RoleName => Str
 
   The friendly name that identifies the role.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+  A list of tags that are attached to the specified role. For more
+information about tagging, see Tagging IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 

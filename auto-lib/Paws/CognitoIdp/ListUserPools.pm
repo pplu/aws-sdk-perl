@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserPools = $ListUserPoolsResponse->UserPools;
     my $NextToken = $ListUserPoolsResponse->NextToken;
+    my $UserPools = $ListUserPoolsResponse->UserPools;
 
     # Returns a L<Paws::CognitoIdp::ListUserPoolsResponse> object.
 

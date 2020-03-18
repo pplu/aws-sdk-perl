@@ -1,6 +1,7 @@
 package Paws::IoT::StatisticalThreshold;
   use Moose;
   has Statistic => (is => 'ro', isa => 'Str', request_name => 'statistic', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

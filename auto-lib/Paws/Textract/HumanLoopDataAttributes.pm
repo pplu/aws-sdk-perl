@@ -1,6 +1,7 @@
 package Paws::Textract::HumanLoopDataAttributes;
   use Moose;
   has ContentClassifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

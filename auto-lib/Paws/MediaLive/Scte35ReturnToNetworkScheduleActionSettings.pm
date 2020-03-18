@@ -1,6 +1,7 @@
 package Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings;
   use Moose;
   has SpliceEventId => (is => 'ro', isa => 'Int', request_name => 'spliceEventId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

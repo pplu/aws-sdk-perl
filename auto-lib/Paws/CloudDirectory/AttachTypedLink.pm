@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AttachTypedLinkResponse = $clouddirectory->AttachTypedLink(
       Attributes => [
         {
-          AttributeName => 'MyAttributeName',    # min: 1, max: 64
+          AttributeName => 'MyAttributeName',    # min: 1, max: 230
           Value         => {
-            NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-            BooleanValue  => 1,                             # OPTIONAL
-            StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
             BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            BooleanValue  => 1,                             # OPTIONAL
+            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+            NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+            StringValue   => 'MyStringAttributeValue',      # OPTIONAL
           },
 
         },

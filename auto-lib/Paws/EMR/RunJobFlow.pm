@@ -20,6 +20,7 @@ package Paws::EMR::RunJobFlow;
   has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
+  has StepConcurrencyLevel => (is => 'ro', isa => 'Int');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
@@ -71,9 +72,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
             InstanceTypeConfigs => [
               {
-                InstanceType => 'MyInstanceType',          # min: 1, max: 256
-                BidPrice     => 'MyXmlStringMaxLen256',    # max: 256
-                BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
+                InstanceType => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
+                BidPrice => 'MyXmlStringMaxLen256', # max: 256
+                BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
                 Configurations                      => [
                   {
                     Classification => 'MyString',
@@ -119,7 +120,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             InstanceCount     => 1,
             InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
-            InstanceType      => 'MyInstanceType',  # min: 1, max: 256
+            InstanceType      => 'MyInstanceType',  # min: 1, max: 256; OPTIONAL
             AutoScalingPolicy => {
               Constraints => {
                 MaxCapacity => 1,
@@ -195,21 +196,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                     # OPTIONAL
-        KeepJobFlowAliveWhenNoSteps => 1,                   # OPTIONAL
-        MasterInstanceType          => 'MyInstanceType',    # min: 1, max: 256
-        Placement                   => {
-          AvailabilityZone  => 'MyXmlString',    # max: 10280; OPTIONAL
+        KeepJobFlowAliveWhenNoSteps => 1,      # OPTIONAL
+        MasterInstanceType => 'MyInstanceType',    # min: 1, max: 256; OPTIONAL
+        Placement          => {
+          AvailabilityZone  => 'MyXmlString',      # max: 10280; OPTIONAL
           AvailabilityZones => [
-            'MyXmlStringMaxLen256', ...          # max: 256
-          ],                                     # OPTIONAL
+            'MyXmlStringMaxLen256', ...            # max: 256
+          ],                                       # OPTIONAL
         },    # OPTIONAL
-        ServiceAccessSecurityGroup => 'MyXmlStringMaxLen256', # max: 256
-        SlaveInstanceType          => 'MyInstanceType',       # min: 1, max: 256
-        TerminationProtected       => 1,                      # OPTIONAL
+        ServiceAccessSecurityGroup => 'MyXmlStringMaxLen256',    # max: 256
+        SlaveInstanceType    => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
+        TerminationProtected => 1,                  # OPTIONAL
       },
       Name           => 'MyXmlStringMaxLen256',
-      AdditionalInfo => 'MyXmlString',                        # OPTIONAL
-      AmiVersion     => 'MyXmlStringMaxLen256',               # OPTIONAL
+      AdditionalInfo => 'MyXmlString',              # OPTIONAL
+      AmiVersion     => 'MyXmlStringMaxLen256',     # OPTIONAL
       Applications   => [
         {
           AdditionalInfo => { 'MyString' => 'MyString', },    # OPTIONAL
@@ -266,6 +267,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ScaleDownBehavior     => 'TERMINATE_AT_INSTANCE_HOUR',    # OPTIONAL
       SecurityConfiguration => 'MyXmlString',                   # OPTIONAL
       ServiceRole           => 'MyXmlString',                   # OPTIONAL
+      StepConcurrencyLevel  => 1,                               # OPTIONAL
       Steps                 => [
         {
           HadoopJarStep => {
@@ -302,7 +304,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobFlowId = $RunJobFlowOutput->JobFlowId;
+    my $ClusterArn = $RunJobFlowOutput->ClusterArn;
+    my $JobFlowId  = $RunJobFlowOutput->JobFlowId;
 
     # Returns a L<Paws::EMR::RunJobFlowOutput> object.
 
@@ -328,9 +331,11 @@ AMI, use C<CustomAmiID>.
 
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
-For Amazon EMR releases 4.0 and later. A list of applications for the
-cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and
-"Spark." They are case insensitive.
+Applies to Amazon EMR releases 4.0 and later. A case-insensitive list
+of applications for Amazon EMR to install and configure when launching
+the cluster. For a list of applications available for each Amazon EMR
+release version, see the Amazon EMR Release Guide
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 
 
 
@@ -363,17 +368,17 @@ Available only in Amazon EMR version 5.7.0 and later. The ID of a
 custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
 AMI when it launches cluster EC2 instances. For more information about
 custom AMIs in Amazon EMR, see Using a Custom AMI
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
 in the I<Amazon EMR Management Guide>. If omitted, the cluster uses the
 base Linux AMI for the C<ReleaseLabel> specified. For Amazon EMR
 versions 2.x and 3.x, use C<AmiVersion> instead.
 
 For information about creating a custom AMI, see Creating an Amazon
 EBS-Backed Linux AMI
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
 in the I<Amazon Elastic Compute Cloud User Guide for Linux Instances>.
 For information about finding an AMI ID, see Finding a Linux AMI
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
 
 
 
@@ -405,7 +410,7 @@ must have already created it using the CLI or console.
 Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
 Kerberos Authentication
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
 in the I<EMR Management Guide>.
 
 
@@ -433,7 +438,7 @@ job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
 MapR Distribution for Hadoop" in the Amazon EMR Developer Guide
-(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+(https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Supported values are:
 
 =over
@@ -483,11 +488,11 @@ installed.
 The Amazon EMR release label, which determines the version of
 open-source application packages installed on the cluster. Release
 labels are in the form C<emr-x.x.x>, where x.x.x is an Amazon EMR
-release version, for example, C<emr-5.14.0>. For more information about
+release version such as C<emr-5.14.0>. For more information about
 Amazon EMR release versions and included application versions and
-features, see http://docs.aws.amazon.com/emr/latest/ReleaseGuide/
-(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release
-label applies only to Amazon EMR releases versions 4.x and later.
+features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release
+label applies only to Amazon EMR releases version 4.0 and later.
 Earlier versions use C<AmiVersion>.
 
 
@@ -535,6 +540,13 @@ AWS resources on your behalf.
 
 
 
+=head2 StepConcurrencyLevel => Int
+
+Specifies the number of steps that can be executed concurrently. The
+default value is C<1>. The maximum value is C<256>.
+
+
+
 =head2 Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
 A list of steps to run.
@@ -548,7 +560,7 @@ later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
 information, see the Amazon EMR Developer Guide
-(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+(https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Currently supported values are:
 
 =over
@@ -575,11 +587,10 @@ instances.
 
 =head2 VisibleToAllUsers => Bool
 
-Whether the cluster is visible to all IAM users of the AWS account
-associated with the cluster. If this value is set to C<true>, all IAM
-users of that AWS account can view and (if they have the proper policy
-permissions set) manage the cluster. If it is set to C<false>, only the
-IAM user that created the cluster can view and manage it.
+A value of C<true> indicates that all IAM users in the AWS account can
+perform cluster actions if they have the proper IAM policy permissions.
+This is the default. A value of C<false> indicates that only the IAM
+user who created the cluster can perform actions.
 
 
 

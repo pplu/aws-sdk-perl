@@ -5,6 +5,7 @@ package Paws::Rekognition::SearchFacesByImage;
   has FaceMatchThreshold => (is => 'ro', isa => 'Num');
   has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
   has MaxFaces => (is => 'ro', isa => 'Int');
+  has QualityFilter => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -34,25 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation searches for faces in a Rekognition collection that match
     # the largest face in an S3 bucket stored image.
     my $SearchFacesByImageResponse = $rekognition->SearchFacesByImage(
-      {
-        'CollectionId'       => 'myphotos',
-        'MaxFaces'           => 5,
-        'FaceMatchThreshold' => 95,
-        'Image'              => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
+      'CollectionId'       => 'myphotos',
+      'FaceMatchThreshold' => 95,
+      'Image'              => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
         }
-      }
+      },
+      'MaxFaces' => 5
     );
 
     # Results:
-    my $SearchedFaceConfidence =
-      $SearchFacesByImageResponse->SearchedFaceConfidence;
+    my $FaceMatches = $SearchFacesByImageResponse->FaceMatches;
     my $SearchedFaceBoundingBox =
       $SearchFacesByImageResponse->SearchedFaceBoundingBox;
-    my $FaceMatches = $SearchFacesByImageResponse->FaceMatches;
+    my $SearchedFaceConfidence =
+      $SearchFacesByImageResponse->SearchedFaceConfidence;
 
     # Returns a L<Paws::Rekognition::SearchFacesByImageResponse> object.
 
@@ -72,7 +71,7 @@ ID of the collection to search.
 
 (Optional) Specifies the minimum confidence in the face match to
 return. For example, don't return any matches where confidence in
-matches is less than 70%.
+matches is less than 70%. The default value is 80%.
 
 
 
@@ -82,6 +81,10 @@ The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
 
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
+
 
 
 =head2 MaxFaces => Int
@@ -90,6 +93,24 @@ Maximum number of faces to return. The operation returns the maximum
 number of faces with the highest confidence in the match.
 
 
+
+=head2 QualityFilter => Str
+
+A filter that specifies a quality bar for how much filtering is done to
+identify faces. Filtered faces aren't searched for in the collection.
+If you specify C<AUTO>, Amazon Rekognition chooses the quality bar. If
+you specify C<LOW>, C<MEDIUM>, or C<HIGH>, filtering removes all faces
+that donE<rsquo>t meet the chosen quality bar. The quality bar is based
+on a variety of common use cases. Low-quality detections can occur for
+a number of reasons. Some examples are an object that's misidentified
+as a face, a face that's too blurry, or a face with a pose that's too
+extreme to use. If you specify C<NONE>, no filtering is performed. The
+default value is C<NONE>.
+
+To use quality filtering, the collection you are using must be
+associated with version 3 of the face model or higher.
+
+Valid values are: C<"NONE">, C<"AUTO">, C<"LOW">, C<"MEDIUM">, C<"HIGH">
 
 
 =head1 SEE ALSO

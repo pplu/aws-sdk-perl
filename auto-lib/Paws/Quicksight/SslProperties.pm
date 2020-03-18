@@ -1,6 +1,7 @@
 package Paws::Quicksight::SslProperties;
   use Moose;
   has DisableSsl => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

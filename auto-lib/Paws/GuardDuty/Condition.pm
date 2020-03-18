@@ -1,11 +1,17 @@
 package Paws::GuardDuty::Condition;
   use Moose;
   has Eq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eq', traits => ['NameInRequest']);
+  has Equals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'equals', traits => ['NameInRequest']);
+  has GreaterThan => (is => 'ro', isa => 'Int', request_name => 'greaterThan', traits => ['NameInRequest']);
+  has GreaterThanOrEqual => (is => 'ro', isa => 'Int', request_name => 'greaterThanOrEqual', traits => ['NameInRequest']);
   has Gt => (is => 'ro', isa => 'Int', request_name => 'gt', traits => ['NameInRequest']);
   has Gte => (is => 'ro', isa => 'Int', request_name => 'gte', traits => ['NameInRequest']);
+  has LessThan => (is => 'ro', isa => 'Int', request_name => 'lessThan', traits => ['NameInRequest']);
+  has LessThanOrEqual => (is => 'ro', isa => 'Int', request_name => 'lessThanOrEqual', traits => ['NameInRequest']);
   has Lt => (is => 'ro', isa => 'Int', request_name => 'lt', traits => ['NameInRequest']);
   has Lte => (is => 'ro', isa => 'Int', request_name => 'lte', traits => ['NameInRequest']);
   has Neq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'neq', traits => ['NameInRequest']);
+  has NotEquals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'notEquals', traits => ['NameInRequest']);
 
 1;
 
@@ -26,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GuardDuty::Condition object:
 
-  $service_obj->Method(Att1 => { Eq => $value, ..., Neq => $value  });
+  $service_obj->Method(Att1 => { Eq => $value, ..., NotEquals => $value  });
 
 =head3 Results returned from an API call
 
@@ -37,8 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Finding attribute (for example, accountId) for which conditions and
-values must be specified when querying findings.
+Contains information about the condition.
 
 =head1 ATTRIBUTES
 
@@ -49,34 +54,70 @@ values must be specified when querying findings.
 querying for findings.
 
 
+=head2 Equals => ArrayRef[Str|Undef]
+
+  Represents an B<equal> condition to be applied to a single field when
+querying for findings.
+
+
+=head2 GreaterThan => Int
+
+  Represents a greater than condition to be applied to a single field
+when querying for findings.
+
+
+=head2 GreaterThanOrEqual => Int
+
+  Represents a greater than equal condition to be applied to a single
+field when querying for findings.
+
+
 =head2 Gt => Int
 
-  Represents the greater than condition to be applied to a single field
+  Represents a greater than condition to be applied to a single field
 when querying for findings.
 
 
 =head2 Gte => Int
 
-  Represents the greater than equal condition to be applied to a single
+  Represents a greater than equal condition to be applied to a single
 field when querying for findings.
+
+
+=head2 LessThan => Int
+
+  Represents a less than condition to be applied to a single field when
+querying for findings.
+
+
+=head2 LessThanOrEqual => Int
+
+  Represents a less than equal condition to be applied to a single field
+when querying for findings.
 
 
 =head2 Lt => Int
 
-  Represents the less than condition to be applied to a single field when
+  Represents a less than condition to be applied to a single field when
 querying for findings.
 
 
 =head2 Lte => Int
 
-  Represents the less than equal condition to be applied to a single
-field when querying for findings.
+  Represents a less than equal condition to be applied to a single field
+when querying for findings.
 
 
 =head2 Neq => ArrayRef[Str|Undef]
 
   Represents the not equal condition to be applied to a single field when
 querying for findings.
+
+
+=head2 NotEquals => ArrayRef[Str|Undef]
+
+  Represents an B<not equal> condition to be applied to a single field
+when querying for findings.
 
 
 

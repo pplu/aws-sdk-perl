@@ -4,6 +4,7 @@ package Paws::NetworkManager::LinkAssociation;
   has GlobalNetworkId => (is => 'ro', isa => 'Str');
   has LinkAssociationState => (is => 'ro', isa => 'Str');
   has LinkId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

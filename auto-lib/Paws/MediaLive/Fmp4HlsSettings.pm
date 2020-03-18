@@ -1,6 +1,7 @@
 package Paws::MediaLive::Fmp4HlsSettings;
   use Moose;
   has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

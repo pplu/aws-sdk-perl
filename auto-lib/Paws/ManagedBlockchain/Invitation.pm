@@ -5,6 +5,7 @@ package Paws::ManagedBlockchain::Invitation;
   has InvitationId => (is => 'ro', isa => 'Str');
   has NetworkSummary => (is => 'ro', isa => 'Paws::ManagedBlockchain::NetworkSummary');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

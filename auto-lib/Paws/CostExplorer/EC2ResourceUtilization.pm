@@ -3,6 +3,7 @@ package Paws::CostExplorer::EC2ResourceUtilization;
   has MaxCpuUtilizationPercentage => (is => 'ro', isa => 'Str');
   has MaxMemoryUtilizationPercentage => (is => 'ro', isa => 'Str');
   has MaxStorageUtilizationPercentage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

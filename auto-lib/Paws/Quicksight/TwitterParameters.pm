@@ -2,6 +2,7 @@ package Paws::Quicksight::TwitterParameters;
   use Moose;
   has MaxRows => (is => 'ro', isa => 'Int', required => 1);
   has Query => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

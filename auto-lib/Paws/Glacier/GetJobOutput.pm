@@ -35,25 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example downloads the output of a previously initiated inventory
     # retrieval job that is identified by the job ID.
     my $GetJobOutputOutput = $glacier->GetJobOutput(
-      {
-        'AccountId' => '-',
-        'Range'     => '',
-        'JobId' =>
+      'AccountId' => '-',
+      'JobId' =>
 'zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4CnMW',
-        'VaultName' => 'my-vaul'
-      }
+      'Range'     => '',
+      'VaultName' => 'my-vaul'
     );
 
     # Results:
-    my $body         = $GetJobOutputOutput->body;
-    my $status       = $GetJobOutputOutput->status;
     my $acceptRanges = $GetJobOutputOutput->acceptRanges;
+    my $body         = $GetJobOutputOutput->body;
     my $contentType  = $GetJobOutputOutput->contentType;
+    my $status       = $GetJobOutputOutput->status;
 
     # Returns a L<Paws::Glacier::GetJobOutputOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/GetJobOutput>
 
 =head1 ATTRIBUTES
 
@@ -62,7 +60,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacie
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 
@@ -113,9 +111,9 @@ After downloading all the parts of the job output, you have a list of
 eight checksum values. Compute the tree hash of these values to find
 the checksum of the entire output. Using the DescribeJob API, obtain
 job information of the job that provided you the output. The response
-includes the checksum of the entire archive stored in Amazon Glacier.
-You compare this value with the checksum you computed to ensure you
-have downloaded the entire archive content with no errors.
+includes the checksum of the entire archive stored in Amazon S3
+Glacier. You compare this value with the checksum you computed to
+ensure you have downloaded the entire archive content with no errors.
 
 =back
 

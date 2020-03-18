@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $ListFragmentsOutput->NextToken;
     my $Fragments = $ListFragmentsOutput->Fragments;
+    my $NextToken = $ListFragmentsOutput->NextToken;
 
     # Returns a L<Paws::KinesisVideoArchivedMedia::ListFragmentsOutput> object.
 

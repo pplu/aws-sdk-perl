@@ -3,6 +3,7 @@ package Paws::CostExplorer::SavingsPlansAmortizedCommitment;
   has AmortizedRecurringCommitment => (is => 'ro', isa => 'Str');
   has AmortizedUpfrontCommitment => (is => 'ro', isa => 'Str');
   has TotalAmortizedCommitment => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -17,6 +17,7 @@ package Paws::S3Control::JobDescriptor;
   has SuspendedCause => (is => 'ro', isa => 'Str');
   has SuspendedDate => (is => 'ro', isa => 'Str');
   has TerminationDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

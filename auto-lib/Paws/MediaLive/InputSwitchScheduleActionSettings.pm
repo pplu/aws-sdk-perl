@@ -3,6 +3,7 @@ package Paws::MediaLive::InputSwitchScheduleActionSettings;
   has InputAttachmentNameReference => (is => 'ro', isa => 'Str', request_name => 'inputAttachmentNameReference', traits => ['NameInRequest'], required => 1);
   has InputClippingSettings => (is => 'ro', isa => 'Paws::MediaLive::InputClippingSettings', request_name => 'inputClippingSettings', traits => ['NameInRequest']);
   has UrlPath => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'urlPath', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

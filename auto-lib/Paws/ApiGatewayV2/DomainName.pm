@@ -4,6 +4,7 @@ package Paws::ApiGatewayV2::DomainName;
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest'], required => 1);
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

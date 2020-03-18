@@ -2,6 +2,7 @@ package Paws::WorkSpaces::ClientPropertiesResult;
   use Moose;
   has ClientProperties => (is => 'ro', isa => 'Paws::WorkSpaces::ClientProperties');
   has ResourceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

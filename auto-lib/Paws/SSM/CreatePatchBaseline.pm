@@ -11,7 +11,9 @@ package Paws::SSM::CreatePatchBaseline;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RejectedPatchesAction => (is => 'ro', isa => 'Str');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -45,24 +47,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatchFilterGroup => {
               PatchFilters => [
                 {
+                  Key => 'PATCH_SET'
+                  , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
-                  Key => 'PRODUCT'
-                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
                 },
                 ...
-              ],    # max: 4
+              ],                                 # max: 4
 
             },
-            ApproveAfterDays  => 1,           # max: 100
-            EnableNonSecurity => 1,           # OPTIONAL
-            ComplianceLevel   => 'CRITICAL'
+            ApproveAfterDays => 1,                   # max: 100; OPTIONAL
+            ApproveUntilDate => 'MyPatchStringDate', # min: 1, max: 10; OPTIONAL
+            ComplianceLevel  => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
+            EnableNonSecurity => 1,    # OPTIONAL
           },
           ...
-        ],    # max: 10
+        ],                             # max: 10
 
       },    # OPTIONAL
       ApprovedPatches => [
@@ -75,28 +78,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
+            Key => 'PATCH_SET'
+            , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
-            Key => 'PRODUCT'
-            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
 
           },
           ...
-        ],    # max: 4
+        ],                                 # max: 4
 
       },    # OPTIONAL
       OperatingSystem => 'WINDOWS',    # OPTIONAL
       RejectedPatches => [
         'MyPatchId', ...               # min: 1, max: 100
       ],                               # OPTIONAL
-      Sources => [
+      RejectedPatchesAction => 'ALLOW_AS_DEPENDENCY',    # OPTIONAL
+      Sources               => [
         {
-          Products => [
-            'MyPatchSourceProduct', ...    # min: 1, max: 128
-          ],                               # min: 1, max: 20
-          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
+          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 1024
           Name          => 'MyPatchSourceName',
+          Products      => [
+            'MyPatchSourceProduct', ...                     # min: 1, max: 128
+          ],                                                # min: 1, max: 20
+
+        },
+        ...
+      ],                                                    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                              # min: 1, max: 128
+          Value => 'MyTagValue',                            # min: 1, max: 256
 
         },
         ...
@@ -127,7 +139,7 @@ A list of explicitly approved patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -162,7 +174,7 @@ A description of the patch baseline.
 
 =head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
 
-A set of global filters used to exclude patches from the baseline.
+A set of global filters used to include patches in the baseline.
 
 
 
@@ -177,7 +189,7 @@ The name of the patch baseline.
 Defines the operating system the patch baseline applies to. The Default
 value is WINDOWS.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
 
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
@@ -186,16 +198,70 @@ A list of explicitly rejected patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
+
+=head2 RejectedPatchesAction => Str
+
+The action for Patch Manager to take on patches included in the
+RejectedPackages list.
+
+=over
+
+=item *
+
+B<ALLOW_AS_DEPENDENCY>: A package in the Rejected patches list is
+installed only if it is a dependency of another package. It is
+considered compliant with the patch baseline, and its status is
+reported as I<InstalledOther>. This is the default action if no option
+is specified.
+
+=item *
+
+B<BLOCK>: Packages in the RejectedPatches list, and packages that
+include them as dependencies, are not installed under any
+circumstances. If a package was installed before it was added to the
+Rejected patches list, it is considered non-compliant with the patch
+baseline, and its status is reported as I<InstalledRejected>.
+
+=back
+
+
+Valid values are: C<"ALLOW_AS_DEPENDENCY">, C<"BLOCK">
 
 =head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
 
 Information about the patches to use to update the instances, including
 target operating systems and source repositories. Applies to Linux
 instances only.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a patch baseline to
+identify the severity level of patches it specifies and the operating
+system family it applies to. In this case, you could specify the
+following key name/value pairs:
+
+=over
+
+=item *
+
+C<Key=PatchSeverity,Value=Critical>
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=back
+
+To add tags to an existing patch baseline, use the AddTagsToResource
+action.
 
 
 

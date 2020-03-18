@@ -2,6 +2,7 @@ package Paws::Personalize::HPOResourceConfig;
   use Moose;
   has MaxNumberOfTrainingJobs => (is => 'ro', isa => 'Str', request_name => 'maxNumberOfTrainingJobs', traits => ['NameInRequest']);
   has MaxParallelTrainingJobs => (is => 'ro', isa => 'Str', request_name => 'maxParallelTrainingJobs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

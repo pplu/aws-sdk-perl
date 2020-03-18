@@ -5,6 +5,7 @@ package Paws::IoTAnalytics::Variable;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has OutputFileUriValue => (is => 'ro', isa => 'Paws::IoTAnalytics::OutputFileUriValue', request_name => 'outputFileUriValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

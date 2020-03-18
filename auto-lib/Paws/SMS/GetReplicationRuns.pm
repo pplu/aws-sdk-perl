@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $NextToken          = $GetReplicationRunsResponse->NextToken;
     my $ReplicationJob     = $GetReplicationRunsResponse->ReplicationJob;
     my $ReplicationRunList = $GetReplicationRunsResponse->ReplicationRunList;
-    my $NextToken          = $GetReplicationRunsResponse->NextToken;
 
     # Returns a L<Paws::SMS::GetReplicationRunsResponse> object.
 
@@ -50,19 +50,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 MaxResults => Int
 
-
+The maximum number of results to return in a single call. The default
+value is 50. To retrieve the remaining results, make another call with
+the returned C<NextToken> value.
 
 
 
 =head2 NextToken => Str
 
-
+The token for the next set of results.
 
 
 
 =head2 B<REQUIRED> ReplicationJobId => Str
 
-
+The identifier of the replication job.
 
 
 

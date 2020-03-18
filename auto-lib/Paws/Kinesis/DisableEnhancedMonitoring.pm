@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $CurrentShardLevelMetrics =
+      $EnhancedMonitoringOutput->CurrentShardLevelMetrics;
     my $DesiredShardLevelMetrics =
       $EnhancedMonitoringOutput->DesiredShardLevelMetrics;
     my $StreamName = $EnhancedMonitoringOutput->StreamName;
-    my $CurrentShardLevelMetrics =
-      $EnhancedMonitoringOutput->CurrentShardLevelMetrics;
 
     # Returns a L<Paws::Kinesis::EnhancedMonitoringOutput> object.
 

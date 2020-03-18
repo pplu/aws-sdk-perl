@@ -33,19 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
-      HostIds    => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      HostIds    => [ 'MyDedicatedHostId', ... ],    # OPTIONAL
+      MaxResults => 1,                               # OPTIONAL
+      NextToken  => 'MyString',                      # OPTIONAL
     );
 
     # Results:
-    my $NextToken = $DescribeHostsResult->NextToken;
     my $Hosts     = $DescribeHostsResult->Hosts;
+    my $NextToken = $DescribeHostsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeHostsResult> object.
 
@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -72,8 +72,8 @@ C<availability-zone> - The Availability Zone of the host.
 
 =item *
 
-C<client-token> - The idempotency token you provided when you allocated
-the host.
+C<client-token> - The idempotency token that you provided when you
+allocated the host.
 
 =item *
 
@@ -91,6 +91,12 @@ C<state> - The allocation state of the Dedicated Host (C<available> |
 C<under-assessment> | C<permanent-failure> | C<released> |
 C<released-permanent-failure>).
 
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
+
 =back
 
 
@@ -107,16 +113,18 @@ launches.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500;
-if C<maxResults> is given a larger value than 500, you will receive an
-error. You cannot specify this parameter and the host IDs parameter in
-the same request.
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
+error.
+
+You cannot specify this parameter and the host IDs parameter in the
+same request.
 
 
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token to use to retrieve the next page of results.
 
 
 

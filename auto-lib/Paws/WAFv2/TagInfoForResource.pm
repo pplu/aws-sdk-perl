@@ -2,6 +2,7 @@ package Paws::WAFv2::TagInfoForResource;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str');
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::Tag]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Quicksight::DataSetConfiguration;
   has ColumnGroupSchemaList => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnGroupSchema]');
   has DataSetSchema => (is => 'ro', isa => 'Paws::Quicksight::DataSetSchema');
   has Placeholder => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

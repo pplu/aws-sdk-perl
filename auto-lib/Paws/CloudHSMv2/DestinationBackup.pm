@@ -4,6 +4,7 @@ package Paws::CloudHSMv2::DestinationBackup;
   has SourceBackup => (is => 'ro', isa => 'Str');
   has SourceCluster => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

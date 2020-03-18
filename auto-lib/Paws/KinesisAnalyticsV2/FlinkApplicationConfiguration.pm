@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration;
   has CheckpointConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CheckpointConfiguration');
   has MonitoringConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::MonitoringConfiguration');
   has ParallelismConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ParallelismConfiguration');
+
 1;
 
 ### main pod documentation begin ###

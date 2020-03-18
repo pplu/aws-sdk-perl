@@ -32,17 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Sets tags (key and value pairs) to the assessment template that is
     # specified by the ARN of the assessment template.
     $inspector->SetTagsForResource(
-      {
-        'ResourceArn' =>
+      'ResourceArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0',
-        'Tags' => [
+      'Tags' => [
 
-          {
-            'Value' => 'example',
-            'Key'   => 'Example'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Example',
+          'Value' => 'example'
+        }
+      ]
     );
 
 

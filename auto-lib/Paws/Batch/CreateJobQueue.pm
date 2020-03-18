@@ -35,18 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a job queue called LowPriority that uses the M4Spot
     # compute environment.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
-      {
-        'Priority'                => 10,
-        'ComputeEnvironmentOrder' => [
+      'ComputeEnvironmentOrder' => [
 
-          {
-            'Order'              => 1,
-            'ComputeEnvironment' => 'M4Spot'
-          }
-        ],
-        'JobQueueName' => 'LowPriority',
-        'State'        => 'ENABLED'
-      }
+        {
+          'ComputeEnvironment' => 'M4Spot',
+          'Order'              => 1
+        }
+      ],
+      'JobQueueName' => 'LowPriority',
+      'Priority'     => 10,
+      'State'        => 'ENABLED'
     );
 
     # Results:
@@ -59,23 +57,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # C4OnDemand compute environment with an order of 1 and the M4Spot compute
     # environment with an order of 2.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
-      {
-        'Priority'                => 1,
-        'ComputeEnvironmentOrder' => [
+      'ComputeEnvironmentOrder' => [
 
-          {
-            'Order'              => 1,
-            'ComputeEnvironment' => 'C4OnDemand'
-          },
+        {
+          'ComputeEnvironment' => 'C4OnDemand',
+          'Order'              => 1
+        },
 
-          {
-            'Order'              => 2,
-            'ComputeEnvironment' => 'M4Spot'
-          }
-        ],
-        'JobQueueName' => 'HighPriority',
-        'State'        => 'ENABLED'
-      }
+        {
+          'ComputeEnvironment' => 'M4Spot',
+          'Order'              => 2
+        }
+      ],
+      'JobQueueName' => 'HighPriority',
+      'Priority'     => 1,
+      'State'        => 'ENABLED'
     );
 
     # Results:
@@ -111,10 +107,10 @@ The name of the job queue.
 
 The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the C<priority> parameter) are evaluated first
-when associated with same compute environment. Priority is determined
-in descending order, for example, a job queue with a priority value of
-C<10> is given scheduling preference over a job queue with a priority
-value of C<1>.
+when associated with the same compute environment. Priority is
+determined in descending order, for example, a job queue with a
+priority value of C<10> is given scheduling preference over a job queue
+with a priority value of C<1>.
 
 
 

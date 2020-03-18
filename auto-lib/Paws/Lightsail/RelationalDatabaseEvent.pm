@@ -4,6 +4,7 @@ package Paws::Lightsail::RelationalDatabaseEvent;
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventCategories', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

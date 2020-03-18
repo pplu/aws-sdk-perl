@@ -14,6 +14,7 @@ package Paws::RDS::DBProxy;
   has UpdatedDate => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::Amplify::BackendEnvironment;
   has EnvironmentName => (is => 'ro', isa => 'Str', request_name => 'environmentName', traits => ['NameInRequest'], required => 1);
   has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest']);
   has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

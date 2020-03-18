@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $elasticloadbalancing->RemoveListenerCertificates(
       Certificates => [
         {
-          IsDefault      => 1,                     # OPTIONAL
           CertificateArn => 'MyCertificateArn',    # OPTIONAL
+          IsDefault      => 1,                     # OPTIONAL
         },
         ...
       ],

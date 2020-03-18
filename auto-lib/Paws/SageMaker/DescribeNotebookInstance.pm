@@ -26,39 +26,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $DescribeNotebookInstanceOutput = $sagemaker->DescribeNotebookInstance(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $DescribeNotebookInstanceOutput =
+      $api . sagemaker->DescribeNotebookInstance(
       NotebookInstanceName => 'MyNotebookInstanceName',
 
-    );
+      );
 
     # Results:
+    my $AcceleratorTypes = $DescribeNotebookInstanceOutput->AcceleratorTypes;
+    my $AdditionalCodeRepositories =
+      $DescribeNotebookInstanceOutput->AdditionalCodeRepositories;
     my $CreationTime = $DescribeNotebookInstanceOutput->CreationTime;
-    my $InstanceType = $DescribeNotebookInstanceOutput->InstanceType;
-    my $NotebookInstanceStatus =
-      $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
-    my $KmsKeyId = $DescribeNotebookInstanceOutput->KmsKeyId;
-    my $RoleArn  = $DescribeNotebookInstanceOutput->RoleArn;
-    my $NotebookInstanceArn =
-      $DescribeNotebookInstanceOutput->NotebookInstanceArn;
-    my $NotebookInstanceName =
-      $DescribeNotebookInstanceOutput->NotebookInstanceName;
-    my $FailureReason    = $DescribeNotebookInstanceOutput->FailureReason;
-    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
-    my $SubnetId         = $DescribeNotebookInstanceOutput->SubnetId;
-    my $NotebookInstanceLifecycleConfigName =
-      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
-    my $NetworkInterfaceId =
-      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
+    my $DefaultCodeRepository =
+      $DescribeNotebookInstanceOutput->DefaultCodeRepository;
     my $DirectInternetAccess =
       $DescribeNotebookInstanceOutput->DirectInternetAccess;
-    my $Url            = $DescribeNotebookInstanceOutput->Url;
+    my $FailureReason    = $DescribeNotebookInstanceOutput->FailureReason;
+    my $InstanceType     = $DescribeNotebookInstanceOutput->InstanceType;
+    my $KmsKeyId         = $DescribeNotebookInstanceOutput->KmsKeyId;
+    my $LastModifiedTime = $DescribeNotebookInstanceOutput->LastModifiedTime;
+    my $NetworkInterfaceId =
+      $DescribeNotebookInstanceOutput->NetworkInterfaceId;
+    my $NotebookInstanceArn =
+      $DescribeNotebookInstanceOutput->NotebookInstanceArn;
+    my $NotebookInstanceLifecycleConfigName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceLifecycleConfigName;
+    my $NotebookInstanceName =
+      $DescribeNotebookInstanceOutput->NotebookInstanceName;
+    my $NotebookInstanceStatus =
+      $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
+    my $RoleArn        = $DescribeNotebookInstanceOutput->RoleArn;
+    my $RootAccess     = $DescribeNotebookInstanceOutput->RootAccess;
     my $SecurityGroups = $DescribeNotebookInstanceOutput->SecurityGroups;
+    my $SubnetId       = $DescribeNotebookInstanceOutput->SubnetId;
+    my $Url            = $DescribeNotebookInstanceOutput->Url;
+    my $VolumeSizeInGB = $DescribeNotebookInstanceOutput->VolumeSizeInGB;
 
     # Returns a L<Paws::SageMaker::DescribeNotebookInstanceOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/DescribeNotebookInstance>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeNotebookInstance>
 
 =head1 ATTRIBUTES
 

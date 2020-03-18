@@ -66,9 +66,9 @@ Campaign resource to define custom limits for the campaign.
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
 
-  The default quiet time for campaigns in the application. Quiet time is
-a specific time range when campaigns don't send messages to endpoints,
-if all the following conditions are met:
+  The default quiet time for campaigns and journeys in the application.
+Quiet time is a specific time range when messages aren't sent to
+endpoints, if all the following conditions are met:
 
 =over
 
@@ -81,23 +81,24 @@ valid value.
 
 The current time in the endpoint's time zone is later than or equal to
 the time specified by the QuietTime.Start property for the application
-(or a campaign that has custom quiet time settings).
+(or a campaign or journey that has custom quiet time settings).
 
 =item *
 
 The current time in the endpoint's time zone is earlier than or equal
 to the time specified by the QuietTime.End property for the application
-(or a campaign that has custom quiet time settings).
+(or a campaign or journey that has custom quiet time settings).
 
 =back
 
 If any of the preceding conditions isn't met, the endpoint will receive
-messages from a campaign, even if quiet time is enabled.
+messages from a campaign or journey, even if quiet time is enabled.
 
-To override the default quiet time settings for a specific campaign,
-use the
+To override the default quiet time settings for a specific campaign or
+journey, use the
 
-Campaign resource to define a custom quiet time for the campaign.
+Campaign resource or the Journey resource to define a custom quiet time
+for the campaign or journey.
 
 
 

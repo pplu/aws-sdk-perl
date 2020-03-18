@@ -5,6 +5,7 @@ package Paws::SageMaker::ModelPackageSummary;
   has ModelPackageDescription => (is => 'ro', isa => 'Str');
   has ModelPackageName => (is => 'ro', isa => 'Str', required => 1);
   has ModelPackageStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

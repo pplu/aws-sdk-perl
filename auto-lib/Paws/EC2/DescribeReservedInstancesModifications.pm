@@ -33,20 +33,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeReservedInstancesModifications(
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
-      NextToken => 'MyString',                                    # OPTIONAL
-      ReservedInstancesModificationIds => [ 'MyString', ... ],    # OPTIONAL
+      NextToken => 'MyString',              # OPTIONAL
+      ReservedInstancesModificationIds =>
+        [ 'MyReservedInstancesModificationId', ... ],    # OPTIONAL
       );
 
     # Results:
+    my $NextToken = $DescribeReservedInstancesModificationsResult->NextToken;
     my $ReservedInstancesModifications =
       $DescribeReservedInstancesModificationsResult
       ->ReservedInstancesModifications;
-    my $NextToken = $DescribeReservedInstancesModificationsResult->NextToken;
 
   # Returns a L<Paws::EC2::DescribeReservedInstancesModificationsResult> object.
 

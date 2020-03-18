@@ -2,6 +2,7 @@ package Paws::GroundStation::Elevation;
   use Moose;
   has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest'], required => 1);
   has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

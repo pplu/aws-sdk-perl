@@ -4,6 +4,7 @@ package Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription;
   has JobPlanDescription => (is => 'ro', isa => 'Str');
   has MonitoringConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::MonitoringConfigurationDescription');
   has ParallelismConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ParallelismConfigurationDescription');
+
 1;
 
 ### main pod documentation begin ###

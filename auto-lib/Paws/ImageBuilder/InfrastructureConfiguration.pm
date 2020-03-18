@@ -14,6 +14,7 @@ package Paws::ImageBuilder::InfrastructureConfiguration;
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has TerminateInstanceOnFailure => (is => 'ro', isa => 'Bool', request_name => 'terminateInstanceOnFailure', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

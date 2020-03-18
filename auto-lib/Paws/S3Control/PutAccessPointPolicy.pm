@@ -5,6 +5,7 @@ package Paws::S3Control::PutAccessPointPolicy;
   has Name => (is => 'ro', isa => 'Str', uri_name => 'name', traits => ['ParamInURI'], required => 1);
   has Policy => (is => 'ro', isa => 'Str', required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAccessPointPolicy');
@@ -12,7 +13,8 @@ package Paws::S3Control::PutAccessPointPolicy;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'PutAccessPointPolicyRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'http://awss3control.amazonaws.com/doc/2018-08-20/');  
 1;
 
 ### main pod documentation begin ###

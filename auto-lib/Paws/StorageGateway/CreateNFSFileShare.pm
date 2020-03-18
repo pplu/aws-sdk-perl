@@ -15,6 +15,7 @@ package Paws::StorageGateway::CreateNFSFileShare;
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Squash => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -51,15 +52,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KMSEncrypted         => 1,                               # OPTIONAL
       KMSKey               => 'MyKMSKey',                      # OPTIONAL
       NFSFileShareDefaults => {
-        OwnerId       => 1,                     # max: 4294967294; OPTIONAL
+        DirectoryMode => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
         FileMode      => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
         GroupId       => 1,                     # max: 4294967294; OPTIONAL
-        DirectoryMode => 'MyPermissionMode',    # min: 1, max: 4; OPTIONAL
+        OwnerId       => 1,                     # max: 4294967294; OPTIONAL
       },    # OPTIONAL
       ObjectACL     => 'private',     # OPTIONAL
       ReadOnly      => 1,             # OPTIONAL
       RequesterPays => 1,             # OPTIONAL
       Squash        => 'MySquash',    # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MyTagKey',        # min: 1, max: 128
+          Value => 'MyTagValue',      # max: 256
+
+        },
+        ...
+      ],                              # OPTIONAL
     );
 
     # Results:
@@ -90,9 +99,9 @@ ensure idempotent file share creation.
 =head2 DefaultStorageClass => Str
 
 The default storage class for objects put into an Amazon S3 bucket by
-file gateway. Possible values are S3_STANDARD, S3_STANDARD_IA or
-S3_ONEZONE_IA. If this field is not populated, the default value
-S3_STANDARD is used. Optional.
+the file gateway. Possible values are C<S3_STANDARD>,
+C<S3_STANDARD_IA>, or C<S3_ONEZONE_IA>. If this field is not populated,
+the default value C<S3_STANDARD> is used. Optional.
 
 
 
@@ -105,9 +114,9 @@ create a file share.
 
 =head2 GuessMIMETypeEnabled => Bool
 
-Enables guessing of the MIME type for uploaded objects based on file
-extensions. Set this value to true to enable MIME type guessing, and
-otherwise to false. The default value is true.
+A value that enables guessing of the MIME type for uploaded objects
+based on file extensions. Set this value to true to enable MIME type
+guessing, and otherwise to false. The default value is true.
 
 
 
@@ -120,8 +129,8 @@ or false to use a key managed by Amazon S3. Optional.
 
 =head2 KMSKey => Str
 
-The Amazon Resource Name (ARN) KMS key used for Amazon S3 server side
-encryption. This value can only be set when KMSEncrypted is true.
+The Amazon Resource Name (ARN) AWS KMS key used for Amazon S3 server
+side encryption. This value can only be set when KMSEncrypted is true.
 Optional.
 
 
@@ -140,24 +149,30 @@ File share default values. Optional.
 
 =head2 ObjectACL => Str
 
-Sets the access control list permission for objects in the Amazon S3
-bucket that a file gateway puts objects into. The default value is
+A value that sets the access control list permission for objects in the
+S3 bucket that a file gateway puts objects into. The default value is
 "private".
 
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">, C<"aws-exec-read">
 
 =head2 ReadOnly => Bool
 
-Sets the write status of a file share. This value is true if the write
-status is read-only, and otherwise false.
+A value that sets the write status of a file share. This value is true
+if the write status is read-only, and otherwise false.
 
 
 
 =head2 RequesterPays => Bool
 
-Sets who pays the cost of the request and the data download from the
-Amazon S3 bucket. Set this value to true if you want the requester to
-pay instead of the bucket owner, and otherwise to false.
+A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing
+data.
+
+C<RequesterPays> is a configuration for the S3 bucket that backs the
+file share, so make sure that the configuration on the file share is
+the same as the S3 bucket configuration.
 
 
 
@@ -170,24 +185,37 @@ file gateway assumes when it accesses the underlying storage.
 
 =head2 Squash => Str
 
-Maps a user to anonymous user. Valid options are the following:
+A value that maps a user to anonymous user. Valid options are the
+following:
 
 =over
 
 =item *
 
-"RootSquash" - Only root is mapped to anonymous user.
+C<RootSquash> - Only root is mapped to anonymous user.
 
 =item *
 
-"NoSquash" - No one is mapped to anonymous user.
+C<NoSquash> - No one is mapped to anonymous user
 
 =item *
 
-"AllSquash" - Everyone is mapped to anonymous user.
+C<AllSquash> - Everyone is mapped to anonymous user.
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags that can be assigned to the NFS file share.
+Each tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: +
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 

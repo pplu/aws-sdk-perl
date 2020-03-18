@@ -1,6 +1,7 @@
 package Paws::Signer::SigningPlatformOverrides;
   use Moose;
   has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfigurationOverrides', request_name => 'signingConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

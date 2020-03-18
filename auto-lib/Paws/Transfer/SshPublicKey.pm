@@ -3,6 +3,7 @@ package Paws::Transfer::SshPublicKey;
   has DateImported => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKeyBody => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

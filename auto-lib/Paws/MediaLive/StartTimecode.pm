@@ -1,6 +1,7 @@
 package Paws::MediaLive::StartTimecode;
   use Moose;
   has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

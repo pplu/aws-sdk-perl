@@ -1,6 +1,7 @@
 package Paws::FSX::UpdateFileSystemLustreConfiguration;
   use Moose;
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

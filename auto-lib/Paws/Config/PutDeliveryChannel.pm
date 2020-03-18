@@ -29,14 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $config = Paws->service('Config');
     $config->PutDeliveryChannel(
       DeliveryChannel => {
-        s3KeyPrefix                      => 'MyString',    # OPTIONAL
-        configSnapshotDeliveryProperties => {
-          deliveryFrequency => 'One_Hour'
+        ConfigSnapshotDeliveryProperties => {
+          DeliveryFrequency => 'One_Hour'
           , # values: One_Hour, Three_Hours, Six_Hours, Twelve_Hours, TwentyFour_Hours; OPTIONAL
         },    # OPTIONAL
-        name         => 'MyChannelName',    # min: 1, max: 256; OPTIONAL
-        s3BucketName => 'MyString',         # OPTIONAL
-        snsTopicARN  => 'MyString',         # OPTIONAL
+        Name         => 'MyChannelName',    # min: 1, max: 256; OPTIONAL
+        S3BucketName => 'MyString',         # OPTIONAL
+        S3KeyPrefix  => 'MyString',         # OPTIONAL
+        SnsTopicARN  => 'MyString',         # OPTIONAL
       },
 
     );

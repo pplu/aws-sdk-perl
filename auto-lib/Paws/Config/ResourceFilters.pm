@@ -4,6 +4,7 @@ package Paws::Config::ResourceFilters;
   has Region => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

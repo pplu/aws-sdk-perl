@@ -3,6 +3,7 @@ package Paws::IoTEvents::DetectorModelSummary;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has DetectorModelDescription => (is => 'ro', isa => 'Str', request_name => 'detectorModelDescription', traits => ['NameInRequest']);
   has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

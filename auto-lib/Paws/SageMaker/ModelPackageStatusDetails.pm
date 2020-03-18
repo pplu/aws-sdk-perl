@@ -2,6 +2,7 @@ package Paws::SageMaker::ModelPackageStatusDetails;
   use Moose;
   has ImageScanStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ModelPackageStatusItem]');
   has ValidationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ModelPackageStatusItem]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

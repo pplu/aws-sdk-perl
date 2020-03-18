@@ -1,6 +1,6 @@
 package Paws::MediaConvert::TimedMetadataInsertion;
   use Moose;
-  has Id3Insertions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Id3Insertion]', request_name => 'id3Insertions', traits => ['NameInRequest'], required => 1);
+  has Id3Insertions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Id3Insertion]', request_name => 'id3Insertions', traits => ['NameInRequest']);
 
 1;
 
@@ -40,7 +40,7 @@ ID3 insertion (Id3Insertion) objects.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Id3Insertions => ArrayRef[L<Paws::MediaConvert::Id3Insertion>]
+=head2 Id3Insertions => ArrayRef[L<Paws::MediaConvert::Id3Insertion>]
 
   Id3Insertions contains the array of Id3Insertion instances.
 

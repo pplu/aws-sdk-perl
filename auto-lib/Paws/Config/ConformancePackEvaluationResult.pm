@@ -5,6 +5,7 @@ package Paws::Config::ConformancePackEvaluationResult;
   has ConfigRuleInvokedTime => (is => 'ro', isa => 'Str', required => 1);
   has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier', required => 1);
   has ResultRecordedTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::ApiGatewayV2::UpdateApiInput;
   has RouteSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'routeSelectionExpression', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

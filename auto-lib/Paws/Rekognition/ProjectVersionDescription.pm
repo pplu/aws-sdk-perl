@@ -11,6 +11,7 @@ package Paws::Rekognition::ProjectVersionDescription;
   has TestingDataResult => (is => 'ro', isa => 'Paws::Rekognition::TestingDataResult');
   has TrainingDataResult => (is => 'ro', isa => 'Paws::Rekognition::TrainingDataResult');
   has TrainingEndTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

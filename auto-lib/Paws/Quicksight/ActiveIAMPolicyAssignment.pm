@@ -2,6 +2,7 @@ package Paws::Quicksight::ActiveIAMPolicyAssignment;
   use Moose;
   has AssignmentName => (is => 'ro', isa => 'Str');
   has PolicyArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MediaTailor::DashConfiguration;
   has ManifestEndpointPrefix => (is => 'ro', isa => 'Str');
   has MpdLocation => (is => 'ro', isa => 'Str');
   has OriginManifestType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

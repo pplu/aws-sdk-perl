@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetConnectionsResponse = $glue->GetConnections(
       CatalogId => 'MyCatalogIdString',    # OPTIONAL
       Filter    => {
-        MatchCriteria => [
+        ConnectionType => 'JDBC',          # values: JDBC, SFTP; OPTIONAL
+        MatchCriteria  => [
           'MyNameString', ...              # min: 1, max: 255
         ],                                 # max: 10; OPTIONAL
-        ConnectionType => 'JDBC',          # values: JDBC, SFTP; OPTIONAL
       },    # OPTIONAL
       HidePassword => 1,            # OPTIONAL
       MaxResults   => 1,            # OPTIONAL

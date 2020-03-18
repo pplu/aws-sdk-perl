@@ -1,6 +1,7 @@
 package Paws::MediaConvert::TeletextDestinationSettings;
   use Moose;
   has PageNumber => (is => 'ro', isa => 'Str', request_name => 'pageNumber', traits => ['NameInRequest']);
+  has PageTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'pageTypes', traits => ['NameInRequest']);
 
 1;
 
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::TeletextDestinationSettings object:
 
-  $service_obj->Method(Att1 => { PageNumber => $value, ..., PageNumber => $value  });
+  $service_obj->Method(Att1 => { PageNumber => $value, ..., PageTypes => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,6 +44,15 @@ Settings for Teletext caption output
 for this output. This value must be a three-digit hexadecimal string;
 strings ending in -FF are invalid. If you are passing through the
 entire set of Teletext data, do not use this field.
+
+
+=head2 PageTypes => ArrayRef[Str|Undef]
+
+  Specify the page types for this Teletext page. If you don't specify a
+value here, the service sets the page type to the default value
+Subtitle (PAGE_TYPE_SUBTITLE). If you pass through the entire set of
+Teletext data, don't use this field. When you pass through a set of
+Teletext pages, your output has the same page types as your input.
 
 
 

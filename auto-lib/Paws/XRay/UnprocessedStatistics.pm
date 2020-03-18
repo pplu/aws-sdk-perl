@@ -3,6 +3,7 @@ package Paws::XRay::UnprocessedStatistics;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has RuleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

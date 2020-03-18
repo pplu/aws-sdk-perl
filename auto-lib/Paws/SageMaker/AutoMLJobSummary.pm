@@ -8,6 +8,7 @@ package Paws::SageMaker::AutoMLJobSummary;
   has EndTime => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

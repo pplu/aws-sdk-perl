@@ -2,8 +2,11 @@
 package Paws::IoT::TestInvokeAuthorizer;
   use Moose;
   has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerName', required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token', required => 1);
-  has TokenSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenSignature', required => 1);
+  has HttpContext => (is => 'ro', isa => 'Paws::IoT::HttpContext', traits => ['NameInRequest'], request_name => 'httpContext');
+  has MqttContext => (is => 'ro', isa => 'Paws::IoT::MqttContext', traits => ['NameInRequest'], request_name => 'mqttContext');
+  has TlsContext => (is => 'ro', isa => 'Paws::IoT::TlsContext', traits => ['NameInRequest'], request_name => 'tlsContext');
+  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token');
+  has TokenSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenSignature');
 
   use MooseX::ClassAttribute;
 
@@ -32,19 +35,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iot = Paws->service('IoT');
     my $TestInvokeAuthorizerResponse = $iot->TestInvokeAuthorizer(
       AuthorizerName => 'MyAuthorizerName',
-      Token          => 'MyToken',
-      TokenSignature => 'MyTokenSignature',
-
+      HttpContext    => {
+        Headers => {
+          'MyHttpHeaderName' => 'MyHttpHeaderValue'
+          ,    # key: min: 1, max: 8192, value: min: 1, max: 8192
+        },    # OPTIONAL
+        QueryString => 'MyHttpQueryString',    # min: 1, max: 4096; OPTIONAL
+      },    # OPTIONAL
+      MqttContext => {
+        ClientId => 'MyMqttClientId',      # min: 1, max: 65535; OPTIONAL
+        Password => 'BlobMqttPassword',    # min: 1, max: 65535; OPTIONAL
+        Username => 'MyMqttUsername',      # min: 1, max: 65535; OPTIONAL
+      },    # OPTIONAL
+      TlsContext => {
+        ServerName => 'MyServerName',    # min: 1, max: 253; OPTIONAL
+      },    # OPTIONAL
+      Token          => 'MyToken',             # OPTIONAL
+      TokenSignature => 'MyTokenSignature',    # OPTIONAL
     );
 
     # Results:
     my $DisconnectAfterInSeconds =
       $TestInvokeAuthorizerResponse->DisconnectAfterInSeconds;
     my $IsAuthenticated = $TestInvokeAuthorizerResponse->IsAuthenticated;
+    my $PolicyDocuments = $TestInvokeAuthorizerResponse->PolicyDocuments;
     my $PrincipalId     = $TestInvokeAuthorizerResponse->PrincipalId;
     my $RefreshAfterInSeconds =
       $TestInvokeAuthorizerResponse->RefreshAfterInSeconds;
-    my $PolicyDocuments = $TestInvokeAuthorizerResponse->PolicyDocuments;
 
     # Returns a L<Paws::IoT::TestInvokeAuthorizerResponse> object.
 
@@ -60,13 +77,31 @@ The custom authorizer name.
 
 
 
-=head2 B<REQUIRED> Token => Str
+=head2 HttpContext => L<Paws::IoT::HttpContext>
+
+Specifies a test HTTP authorization request.
+
+
+
+=head2 MqttContext => L<Paws::IoT::MqttContext>
+
+Specifies a test MQTT authorization request.
+
+
+
+=head2 TlsContext => L<Paws::IoT::TlsContext>
+
+Specifies a test TLS authorization request.
+
+
+
+=head2 Token => Str
 
 The token returned by your custom authentication service.
 
 
 
-=head2 B<REQUIRED> TokenSignature => Str
+=head2 TokenSignature => Str
 
 The signature made with the token and your custom authentication
 service's private key.

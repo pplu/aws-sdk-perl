@@ -2,6 +2,7 @@ package Paws::CloudFormation::LoggingConfig;
   use Moose;
   has LogGroupName => (is => 'ro', isa => 'Str', required => 1);
   has LogRoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

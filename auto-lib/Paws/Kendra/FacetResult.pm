@@ -2,6 +2,7 @@ package Paws::Kendra::FacetResult;
   use Moose;
   has DocumentAttributeKey => (is => 'ro', isa => 'Str');
   has DocumentAttributeValueCountPairs => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::DocumentAttributeValueCountPair]');
+
 1;
 
 ### main pod documentation begin ###

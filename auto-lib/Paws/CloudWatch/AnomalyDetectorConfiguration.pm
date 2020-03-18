@@ -2,6 +2,7 @@ package Paws::CloudWatch::AnomalyDetectorConfiguration;
   use Moose;
   has ExcludedTimeRanges => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Range]');
   has MetricTimezone => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

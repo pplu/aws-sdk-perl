@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetDimensionValuesResponse = $ce->GetDimensionValues(
       Dimension  => 'AZ',
       TimePeriod => {
-        Start => 'MyYearMonthDay',
         End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
 
       },
       Context       => 'COST_AND_USAGE',     # OPTIONAL
@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ReturnSize      = $GetDimensionValuesResponse->ReturnSize;
-    my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
     my $DimensionValues = $GetDimensionValuesResponse->DimensionValues;
+    my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
+    my $ReturnSize      = $GetDimensionValuesResponse->ReturnSize;
     my $TotalSize       = $GetDimensionValuesResponse->TotalSize;
 
     # Returns a L<Paws::CostExplorer::GetDimensionValuesResponse> object.
@@ -64,7 +64,7 @@ C<RESERVATIONS> or C<COST_AND_USAGE>. The default value is
 C<COST_AND_USAGE>. If the context is set to C<RESERVATIONS>, the
 resulting dimension values can be used in the
 C<GetReservationUtilization> operation. If the context is set to
-C<COST_AND_USAGE> the resulting dimension values can be used in the
+C<COST_AND_USAGE>, the resulting dimension values can be used in the
 C<GetCostAndUsage> operation.
 
 If you set the context to C<COST_AND_USAGE>, you can use the following
@@ -83,7 +83,8 @@ Examples are Aurora or MySQL.
 
 =item *
 
-INSTANCE_TYPE - The type of EC2 instance. An example is C<m4.xlarge>.
+INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+C<m4.xlarge>.
 
 =item *
 
@@ -107,7 +108,8 @@ C<CreateBucket>.
 
 =item *
 
-PLATFORM - The EC2 operating system. Examples are Windows or Linux.
+PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+Linux.
 
 =item *
 
@@ -128,13 +130,18 @@ attribute. Examples include GB and Hrs.
 =item *
 
 USAGE_TYPE_GROUP - The grouping of common usage types. An example is
-EC2: CloudWatch E<ndash> Alarms. The response for this operation
+Amazon EC2: CloudWatch E<ndash> Alarms. The response for this operation
 includes a unit attribute.
 
 =item *
 
 RECORD_TYPE - The different types of charges such as RI fees, usage
 costs, tax refunds, and credits.
+
+=item *
+
+RESOURCE_ID - The unique identifier of the resource. ResourceId is an
+opt-in feature only available for last 14 days for EC2-Compute Service.
 
 =back
 
@@ -159,7 +166,8 @@ deployments. Valid values are C<SingleAZ> and C<MultiAZ>.
 
 =item *
 
-INSTANCE_TYPE - The type of EC2 instance. An example is C<m4.xlarge>.
+INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+C<m4.xlarge>.
 
 =item *
 
@@ -169,7 +177,8 @@ the member account.
 
 =item *
 
-PLATFORM - The EC2 operating system. Examples are Windows or Linux.
+PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+Linux.
 
 =item *
 
@@ -191,15 +200,49 @@ TENANCY - The tenancy of a resource. Examples are shared or dedicated.
 
 =back
 
+If you set the context to C<SAVINGS_PLANS>, you can use the following
+dimensions for searching:
 
-Valid values are: C<"COST_AND_USAGE">, C<"RESERVATIONS">
+=over
+
+=item *
+
+SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+
+=item *
+
+PAYMENT_OPTION - Payment option for the given Savings Plans (for
+example, All Upfront)
+
+=item *
+
+REGION - The AWS Region.
+
+=item *
+
+INSTANCE_TYPE_FAMILY - The family of instances (For example, C<m5>)
+
+=item *
+
+LINKED_ACCOUNT - The description in the attribute map that includes the
+full name of the member account. The value field contains the AWS ID of
+the member account.
+
+=item *
+
+SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
+
+=back
+
+
+Valid values are: C<"COST_AND_USAGE">, C<"RESERVATIONS">, C<"SAVINGS_PLANS">
 
 =head2 B<REQUIRED> Dimension => Str
 
-The name of the dimension. Each C<Dimension> is available for different
-a C<Context>. For more information, see C<Context>.
+The name of the dimension. Each C<Dimension> is available for a
+different C<Context>. For more information, see C<Context>.
 
-Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">
+Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">, C<"BILLING_ENTITY">, C<"RESERVATION_ID">, C<"RESOURCE_ID">, C<"RIGHTSIZING_TYPE">, C<"SAVINGS_PLANS_TYPE">, C<"SAVINGS_PLAN_ARN">, C<"PAYMENT_OPTION">
 
 =head2 NextPageToken => Str
 

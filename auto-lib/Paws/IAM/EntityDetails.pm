@@ -2,6 +2,7 @@ package Paws::IAM::EntityDetails;
   use Moose;
   has EntityInfo => (is => 'ro', isa => 'Paws::IAM::EntityInfo', required => 1);
   has LastAuthenticated => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

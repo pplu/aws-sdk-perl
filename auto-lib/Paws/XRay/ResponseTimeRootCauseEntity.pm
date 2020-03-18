@@ -3,6 +3,7 @@ package Paws::XRay::ResponseTimeRootCauseEntity;
   has Coverage => (is => 'ro', isa => 'Num');
   has Name => (is => 'ro', isa => 'Str');
   has Remote => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

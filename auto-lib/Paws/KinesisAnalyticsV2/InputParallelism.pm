@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::InputParallelism;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

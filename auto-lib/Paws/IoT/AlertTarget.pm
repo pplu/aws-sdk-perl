@@ -2,6 +2,7 @@ package Paws::IoT::AlertTarget;
   use Moose;
   has AlertTargetArn => (is => 'ro', isa => 'Str', request_name => 'alertTargetArn', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

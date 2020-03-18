@@ -2,6 +2,7 @@ package Paws::AppStream::AccessEndpoint;
   use Moose;
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
   has VpceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

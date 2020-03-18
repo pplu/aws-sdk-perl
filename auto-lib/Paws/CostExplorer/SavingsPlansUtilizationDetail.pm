@@ -5,6 +5,7 @@ package Paws::CostExplorer::SavingsPlansUtilizationDetail;
   has Savings => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansSavings');
   has SavingsPlanArn => (is => 'ro', isa => 'Str');
   has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilization');
+
 1;
 
 ### main pod documentation begin ###

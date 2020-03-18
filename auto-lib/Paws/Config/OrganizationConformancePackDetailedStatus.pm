@@ -6,6 +6,7 @@ package Paws::Config::OrganizationConformancePackDetailedStatus;
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has LastUpdateTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

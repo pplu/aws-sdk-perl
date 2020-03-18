@@ -3,6 +3,7 @@ package Paws::CodeCommit::FileSizes;
   has Base => (is => 'ro', isa => 'Int', request_name => 'base', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Int', request_name => 'destination', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Int', request_name => 'source', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

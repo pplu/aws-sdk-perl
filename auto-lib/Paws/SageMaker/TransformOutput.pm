@@ -4,6 +4,7 @@ package Paws::SageMaker::TransformOutput;
   has AssembleWith => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has S3OutputPath => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

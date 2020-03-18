@@ -3,6 +3,7 @@ package Paws::LakeFormation::FilterCondition;
   has ComparisonOperator => (is => 'ro', isa => 'Str');
   has Field => (is => 'ro', isa => 'Str');
   has StringValueList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

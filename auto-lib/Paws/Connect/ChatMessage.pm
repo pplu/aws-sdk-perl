@@ -2,6 +2,7 @@ package Paws::Connect::ChatMessage;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
   has ContentType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

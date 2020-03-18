@@ -34,20 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MssPackage = $DescribeOriginEndpointResponse->MssPackage;
-    my $Id         = $DescribeOriginEndpointResponse->Id;
+    my $Arn           = $DescribeOriginEndpointResponse->Arn;
+    my $Authorization = $DescribeOriginEndpointResponse->Authorization;
+    my $ChannelId     = $DescribeOriginEndpointResponse->ChannelId;
+    my $CmafPackage   = $DescribeOriginEndpointResponse->CmafPackage;
+    my $DashPackage   = $DescribeOriginEndpointResponse->DashPackage;
+    my $Description   = $DescribeOriginEndpointResponse->Description;
+    my $HlsPackage    = $DescribeOriginEndpointResponse->HlsPackage;
+    my $Id            = $DescribeOriginEndpointResponse->Id;
+    my $ManifestName  = $DescribeOriginEndpointResponse->ManifestName;
+    my $MssPackage    = $DescribeOriginEndpointResponse->MssPackage;
+    my $Origination   = $DescribeOriginEndpointResponse->Origination;
     my $StartoverWindowSeconds =
       $DescribeOriginEndpointResponse->StartoverWindowSeconds;
-    my $DashPackage      = $DescribeOriginEndpointResponse->DashPackage;
-    my $CmafPackage      = $DescribeOriginEndpointResponse->CmafPackage;
-    my $ManifestName     = $DescribeOriginEndpointResponse->ManifestName;
+    my $Tags             = $DescribeOriginEndpointResponse->Tags;
     my $TimeDelaySeconds = $DescribeOriginEndpointResponse->TimeDelaySeconds;
-    my $Whitelist        = $DescribeOriginEndpointResponse->Whitelist;
-    my $ChannelId        = $DescribeOriginEndpointResponse->ChannelId;
-    my $HlsPackage       = $DescribeOriginEndpointResponse->HlsPackage;
-    my $Arn              = $DescribeOriginEndpointResponse->Arn;
     my $Url              = $DescribeOriginEndpointResponse->Url;
-    my $Description      = $DescribeOriginEndpointResponse->Description;
+    my $Whitelist        = $DescribeOriginEndpointResponse->Whitelist;
 
     # Returns a L<Paws::MediaPackage::DescribeOriginEndpointResponse> object.
 

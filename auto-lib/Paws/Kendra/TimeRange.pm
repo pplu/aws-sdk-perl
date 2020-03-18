@@ -2,6 +2,7 @@ package Paws::Kendra::TimeRange;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

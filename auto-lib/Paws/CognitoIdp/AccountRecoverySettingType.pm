@@ -1,6 +1,7 @@
 package Paws::CognitoIdp::AccountRecoverySettingType;
   use Moose;
   has RecoveryMechanisms => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::RecoveryOptionType]');
+
 1;
 
 ### main pod documentation begin ###

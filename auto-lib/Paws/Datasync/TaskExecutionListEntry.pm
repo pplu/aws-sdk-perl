@@ -2,6 +2,7 @@ package Paws::Datasync::TaskExecutionListEntry;
   use Moose;
   has Status => (is => 'ro', isa => 'Str');
   has TaskExecutionArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

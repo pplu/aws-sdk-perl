@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                    # OPTIONAL
-      FpgaImageIds => [ 'MyString', ... ],  # OPTIONAL
-      MaxResults   => 1,                    # OPTIONAL
-      NextToken    => 'MyNextToken',        # OPTIONAL
-      Owners       => [ 'MyString', ... ],  # OPTIONAL
+      FpgaImageIds => [ 'MyFpgaImageId', ... ],    # OPTIONAL
+      MaxResults   => 1,                           # OPTIONAL
+      NextToken    => 'MyNextToken',               # OPTIONAL
+      Owners       => [ 'MyString', ... ],         # OPTIONAL
     );
 
     # Results:
@@ -70,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -110,11 +110,11 @@ C<state> - The state of the AFI (C<pending> | C<failed> | C<available>
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
@@ -133,7 +133,7 @@ C<update-time> - The time of the most recent update.
 
 =head2 FpgaImageIds => ArrayRef[Str|Undef]
 
-One or more AFI IDs.
+The AFI IDs.
 
 
 

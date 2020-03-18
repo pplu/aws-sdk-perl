@@ -35,14 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UserRole     = $DescribeUserResponse->UserRole;
-    my $UserId       = $DescribeUserResponse->UserId;
-    my $State        = $DescribeUserResponse->State;
     my $DisabledDate = $DescribeUserResponse->DisabledDate;
     my $DisplayName  = $DescribeUserResponse->DisplayName;
-    my $Name         = $DescribeUserResponse->Name;
     my $Email        = $DescribeUserResponse->Email;
     my $EnabledDate  = $DescribeUserResponse->EnabledDate;
+    my $Name         = $DescribeUserResponse->Name;
+    my $State        = $DescribeUserResponse->State;
+    my $UserId       = $DescribeUserResponse->UserId;
+    my $UserRole     = $DescribeUserResponse->UserRole;
 
     # Returns a L<Paws::WorkMail::DescribeUserResponse> object.
 

@@ -2,6 +2,7 @@ package Paws::ComputeOptimizer::RecommendationSource;
   use Moose;
   has RecommendationSourceArn => (is => 'ro', isa => 'Str', request_name => 'recommendationSourceArn', traits => ['NameInRequest']);
   has RecommendationSourceType => (is => 'ro', isa => 'Str', request_name => 'recommendationSourceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

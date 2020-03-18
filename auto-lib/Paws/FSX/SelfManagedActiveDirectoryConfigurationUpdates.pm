@@ -3,6 +3,7 @@ package Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates;
   has DnsIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Password => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

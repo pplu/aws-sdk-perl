@@ -8,6 +8,7 @@ package Paws::RDS::DBProxyTargetGroup;
   has TargetGroupArn => (is => 'ro', isa => 'Str');
   has TargetGroupName => (is => 'ro', isa => 'Str');
   has UpdatedDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

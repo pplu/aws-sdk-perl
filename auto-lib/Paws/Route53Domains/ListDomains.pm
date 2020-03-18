@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextPageMarker = $ListDomainsResponse->NextPageMarker;
     my $Domains        = $ListDomainsResponse->Domains;
+    my $NextPageMarker = $ListDomainsResponse->NextPageMarker;
 
     # Returns a L<Paws::Route53Domains::ListDomainsResponse> object.
 

@@ -5,6 +5,7 @@ package Paws::SSM::TargetLocation;
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TargetLocationMaxConcurrency => (is => 'ro', isa => 'Str');
   has TargetLocationMaxErrors => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

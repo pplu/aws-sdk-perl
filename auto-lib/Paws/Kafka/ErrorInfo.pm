@@ -2,6 +2,7 @@ package Paws::Kafka::ErrorInfo;
   use Moose;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorString => (is => 'ro', isa => 'Str', request_name => 'errorString', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

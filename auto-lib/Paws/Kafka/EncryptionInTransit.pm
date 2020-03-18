@@ -2,6 +2,7 @@ package Paws::Kafka::EncryptionInTransit;
   use Moose;
   has ClientBroker => (is => 'ro', isa => 'Str', request_name => 'clientBroker', traits => ['NameInRequest']);
   has InCluster => (is => 'ro', isa => 'Bool', request_name => 'inCluster', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

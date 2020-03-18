@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status               = $CreateConstraintOutput->Status;
-    my $ConstraintParameters = $CreateConstraintOutput->ConstraintParameters;
     my $ConstraintDetail     = $CreateConstraintOutput->ConstraintDetail;
+    my $ConstraintParameters = $CreateConstraintOutput->ConstraintParameters;
+    my $Status               = $CreateConstraintOutput->Status;
 
     # Returns a L<Paws::ServiceCatalog::CreateConstraintOutput> object.
 

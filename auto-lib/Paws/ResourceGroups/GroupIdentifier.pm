@@ -2,6 +2,7 @@ package Paws::ResourceGroups::GroupIdentifier;
   use Moose;
   has GroupArn => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

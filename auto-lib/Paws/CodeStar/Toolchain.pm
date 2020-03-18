@@ -3,6 +3,7 @@ package Paws::CodeStar::Toolchain;
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeStar::ToolchainSource', request_name => 'source', traits => ['NameInRequest'], required => 1);
   has StackParameters => (is => 'ro', isa => 'Paws::CodeStar::TemplateParameterMap', request_name => 'stackParameters', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

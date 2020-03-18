@@ -4,6 +4,7 @@ package Paws::Firehose::DeliveryStreamEncryptionConfiguration;
   has KeyARN => (is => 'ro', isa => 'Str');
   has KeyType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

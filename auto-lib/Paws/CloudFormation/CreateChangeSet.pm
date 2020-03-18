@@ -8,6 +8,7 @@ package Paws::CloudFormation::CreateChangeSet;
   has Description => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has ResourcesToImport => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceToImport]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
   has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
@@ -45,35 +46,49 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChangeSetName => 'MyChangeSetName',
       StackName     => 'MyStackNameOrId',
       Capabilities  => [
-        'CAPABILITY_IAM', ...    # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM
-      ],                         # OPTIONAL
+        'CAPABILITY_IAM',
+        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
+      ],    # OPTIONAL
       ChangeSetType    => 'CREATE',                        # OPTIONAL
       ClientToken      => 'MyClientToken',                 # OPTIONAL
       Description      => 'MyDescription',                 # OPTIONAL
       NotificationARNs => [ 'MyNotificationARN', ... ],    # OPTIONAL
       Parameters       => [
         {
-          UsePreviousValue => 1,                           # OPTIONAL
           ParameterKey     => 'MyParameterKey',            # OPTIONAL
           ParameterValue   => 'MyParameterValue',          # OPTIONAL
           ResolvedValue    => 'MyParameterValue',          # OPTIONAL
+          UsePreviousValue => 1,                           # OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL
       ResourceTypes => [
         'MyResourceType', ...                              # min: 1, max: 256
       ],                                                   # OPTIONAL
-      RoleARN               => 'MyRoleARN',                # OPTIONAL
+      ResourcesToImport => [
+        {
+          LogicalResourceId  => 'MyLogicalResourceId',
+          ResourceIdentifier => {
+            'MyResourceIdentifierPropertyKey' =>
+              'MyResourceIdentifierPropertyValue'
+            ,    # key: min: 1, max: 2048, value: min: 1, max: 2048
+          },    # min: 1, max: 256
+          ResourceType => 'MyResourceType',    # min: 1, max: 256
+
+        },
+        ...
+      ],                                       # OPTIONAL
+      RoleARN               => 'MyRoleARN',    # OPTIONAL
       RollbackConfiguration => {
-        MonitoringTimeInMinutes => 1,                      # max: 180; OPTIONAL
+        MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
         RollbackTriggers        => [
           {
-            Type => 'MyType',
             Arn  => 'MyArn',
+            Type => 'MyType',
 
           },
           ...
-        ],                                                 # max: 5; OPTIONAL
+        ],                                     # max: 5; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -102,41 +117,123 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-A list of values that you must specify before AWS CloudFormation can
-update certain stacks. Some stack templates might include resources
-that can affect permissions in your AWS account, for example, by
-creating new AWS Identity and Access Management (IAM) users. For those
-stacks, you must explicitly acknowledge their capabilities by
-specifying this parameter.
+In some cases, you must explicitly acknowledge that your stack template
+contains certain capabilities in order for AWS CloudFormation to create
+the stack.
 
-The only valid values are C<CAPABILITY_IAM> and
-C<CAPABILITY_NAMED_IAM>. The following resources require you to specify
-this parameter: AWS::IAM::AccessKey
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html),
-AWS::IAM::Group
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
-AWS::IAM::InstanceProfile
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html),
-AWS::IAM::Policy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html),
-AWS::IAM::Role
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html),
-AWS::IAM::User
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html),
-and AWS::IAM::UserToGroupAddition
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html).
+=over
+
+=item *
+
+C<CAPABILITY_IAM> and C<CAPABILITY_NAMED_IAM>
+
+Some stack templates might include resources that can affect
+permissions in your AWS account; for example, by creating new AWS
+Identity and Access Management (IAM) users. For those stacks, you must
+explicitly acknowledge this by specifying one of these capabilities.
+
+The following IAM resources require you to specify either the
+C<CAPABILITY_IAM> or C<CAPABILITY_NAMED_IAM> capability.
+
+=over
+
+=item *
+
+If you have IAM resources, you can specify either capability.
+
+=item *
+
+If you have IAM resources with custom names, you I<must> specify
+C<CAPABILITY_NAMED_IAM>.
+
+=item *
+
+If you don't specify either of these capabilities, AWS CloudFormation
+returns an C<InsufficientCapabilities> error.
+
+=back
+
 If your stack template contains these resources, we recommend that you
 review all permissions associated with them and edit their permissions
 if necessary.
 
-If you have IAM resources, you can specify either capability. If you
-have IAM resources with custom names, you must specify
-C<CAPABILITY_NAMED_IAM>. If you don't specify this parameter, this
-action returns an C<InsufficientCapabilities> error.
+=over
+
+=item *
+
+AWS::IAM::AccessKey
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+
+=item *
+
+AWS::IAM::Group
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+
+=item *
+
+AWS::IAM::InstanceProfile
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+
+=item *
+
+AWS::IAM::Policy
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+
+=item *
+
+AWS::IAM::Role
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+
+=item *
+
+AWS::IAM::User
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+
+=item *
+
+AWS::IAM::UserToGroupAddition
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+
+=back
 
 For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+
+=item *
+
+C<CAPABILITY_AUTO_EXPAND>
+
+Some template contain macros. Macros perform custom processing on
+templates; this can include simple actions like find-and-replace
+operations, all the way to extensive transformations of entire
+templates. Because of this, users typically create a change set from
+the processed template, so that they can review the changes resulting
+from the macros before actually creating the stack. If your stack
+template contains one or more macros, and you choose to create a stack
+directly from the processed template, without first reviewing the
+resulting changes in a change set, you must acknowledge this
+capability. This includes the AWS::Include
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+and AWS::Serverless
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+transforms, which are macros hosted by AWS CloudFormation.
+
+This capacity does not apply to creating change sets, and specifying it
+when creating change sets has no effect.
+
+Also, change sets do not currently support nested stacks. If you want
+to create a stack from a stack template that contains macros I<and>
+nested stacks, you must create or update the stack directly from the
+template using the CreateStack or UpdateStack action, and specifying
+this capability.
+
+For more information on macros, see Using AWS CloudFormation Macros to
+Perform Custom Processing on Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+
+=back
+
 
 
 
@@ -155,19 +252,20 @@ cannot exceed 128 characters.
 
 The type of change set operation. To create a change set for a new
 stack, specify C<CREATE>. To create a change set for an existing stack,
-specify C<UPDATE>.
+specify C<UPDATE>. To create a change set for an import operation,
+specify C<IMPORT>.
 
 If you create a change set for a new stack, AWS Cloudformation creates
 a stack with a unique stack ID, but no template or resources. The stack
 will be in the C<REVIEW_IN_PROGRESS>
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
 state until you execute the change set.
 
 By default, AWS CloudFormation specifies C<UPDATE>. You can't use the
 C<UPDATE> type to create a change set for a new stack or the C<CREATE>
 type to create a change set for an existing stack.
 
-Valid values are: C<"CREATE">, C<"UPDATE">
+Valid values are: C<"CREATE">, C<"UPDATE">, C<"IMPORT">
 
 =head2 ClientToken => Str
 
@@ -196,9 +294,13 @@ To remove all associated notification topics, specify an empty list.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of C<Parameter> structures that specify input parameters for the
-change set. For more information, see the Parameter
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
-data type.
+change set. For more information, see the Parameter data type.
+
+
+
+=head2 ResourcesToImport => ArrayRef[L<Paws::CloudFormation::ResourceToImport>]
+
+The resources to import into your stack.
 
 
 
@@ -214,7 +316,7 @@ grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for condition keys in IAM policies
 for AWS CloudFormation. For more information, see Controlling Access
 with AWS Identity and Access Management
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
 in the AWS CloudFormation User Guide.
 
 

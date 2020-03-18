@@ -33,17 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # cluster parameter group.
     my $DBClusterParameterGroupNameMessage =
       $rds->ModifyDBClusterParameterGroup(
-      {
-        'Parameters' => [
+      'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+      'Parameters'                  => [
 
-          {
-            'ParameterName'  => 'time_zone',
-            'ApplyMethod'    => 'immediate',
-            'ParameterValue' => 'America/Phoenix'
-          }
-        ],
-        'DBClusterParameterGroupName' => 'mydbclusterparametergroup'
-      }
+        {
+          'ApplyMethod'    => 'immediate',
+          'ParameterName'  => 'time_zone',
+          'ParameterValue' => 'America/Phoenix'
+        }
+      ]
       );
 
 

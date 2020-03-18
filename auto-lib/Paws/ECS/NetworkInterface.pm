@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Networ
 
 =head1 DESCRIPTION
 
-An object representing the Elastic Network Interface for tasks that use
+An object representing the elastic network interface for tasks that use
 the C<awsvpc> network mode.
 
 =head1 ATTRIBUTES

@@ -10,6 +10,7 @@ package Paws::IoT::AuditFinding;
   has Severity => (is => 'ro', isa => 'Str', request_name => 'severity', traits => ['NameInRequest']);
   has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
   has TaskStartTime => (is => 'ro', isa => 'Str', request_name => 'taskStartTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

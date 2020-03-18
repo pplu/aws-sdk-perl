@@ -3,6 +3,7 @@ package Paws::CodeCommit::BatchGetCommitsError;
   has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

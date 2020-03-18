@@ -2,6 +2,7 @@ package Paws::FSX::DeleteFileSystemWindowsConfiguration;
   use Moose;
   has FinalBackupTags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
   has SkipFinalBackup => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

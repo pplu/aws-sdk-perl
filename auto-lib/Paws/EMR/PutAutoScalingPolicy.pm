@@ -31,17 +31,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticmapreduce = Paws->service('EMR');
     my $PutAutoScalingPolicyOutput = $elasticmapreduce->PutAutoScalingPolicy(
       AutoScalingPolicy => {
+        Constraints => {
+          MaxCapacity => 1,
+          MinCapacity => 1,
+
+        },
         Rules => [
           {
+            Action => {
+              SimpleScalingPolicyConfiguration => {
+                ScalingAdjustment => 1,
+                AdjustmentType    => 'CHANGE_IN_CAPACITY'
+                , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
+                CoolDown => 1,
+              },
+              Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
+            },
+            Name    => 'MyString',
             Trigger => {
               CloudWatchAlarmDefinition => {
-                MetricName         => 'MyString',
-                Period             => 1,
                 ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                 , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
-                Threshold => 1,
-                Statistic => 'SAMPLE_COUNT'
-                , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                MetricName => 'MyString',
+                Period     => 1,
+                Threshold  => 1,
                 Dimensions => [
                   {
                     Key   => 'MyString',
@@ -49,32 +62,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],    # OPTIONAL
-                Unit => 'NONE'
-                , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
                 EvaluationPeriods => 1,
                 Namespace         => 'MyString',
+                Statistic         => 'SAMPLE_COUNT'
+                , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                Unit => 'NONE'
+                , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
               },
 
             },
-            Action => {
-              SimpleScalingPolicyConfiguration => {
-                ScalingAdjustment => 1,
-                CoolDown          => 1,
-                AdjustmentType    => 'CHANGE_IN_CAPACITY'
-                , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-              },
-              Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
-            },
-            Name        => 'MyString',
             Description => 'MyString',
           },
           ...
         ],
-        Constraints => {
-          MaxCapacity => 1,
-          MinCapacity => 1,
-
-        },
 
       },
       ClusterId       => 'MyClusterId',
@@ -84,6 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AutoScalingPolicy = $PutAutoScalingPolicyOutput->AutoScalingPolicy;
+    my $ClusterArn        = $PutAutoScalingPolicyOutput->ClusterArn;
     my $ClusterId         = $PutAutoScalingPolicyOutput->ClusterId;
     my $InstanceGroupId   = $PutAutoScalingPolicyOutput->InstanceGroupId;
 

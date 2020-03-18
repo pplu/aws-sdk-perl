@@ -2,6 +2,7 @@ package Paws::Datasync::LocationListEntry;
   use Moose;
   has LocationArn => (is => 'ro', isa => 'Str');
   has LocationUri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

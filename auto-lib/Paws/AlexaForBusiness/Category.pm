@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::Category;
   use Moose;
   has CategoryId => (is => 'ro', isa => 'Int');
   has CategoryName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

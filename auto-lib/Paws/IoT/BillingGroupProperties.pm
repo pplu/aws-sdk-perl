@@ -1,6 +1,7 @@
 package Paws::IoT::BillingGroupProperties;
   use Moose;
   has BillingGroupDescription => (is => 'ro', isa => 'Str', request_name => 'billingGroupDescription', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

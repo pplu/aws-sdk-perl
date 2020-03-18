@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::TrafficRoute;
   use Moose;
   has ListenerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'listenerArns', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

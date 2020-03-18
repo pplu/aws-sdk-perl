@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::LimitExceededException;
   use Moose;
   has LimitType => (is => 'ro', isa => 'Str', request_name => 'limitType', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

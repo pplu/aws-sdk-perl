@@ -7,6 +7,7 @@ package Paws::KMS::CustomKeyStoresListEntry;
   has CustomKeyStoreId => (is => 'ro', isa => 'Str');
   has CustomKeyStoreName => (is => 'ro', isa => 'Str');
   has TrustAnchorCertificate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

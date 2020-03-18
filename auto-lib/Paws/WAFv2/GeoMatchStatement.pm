@@ -1,6 +1,7 @@
 package Paws::WAFv2::GeoMatchStatement;
   use Moose;
   has CountryCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after
     # the archiving process is initiated.
     my $CancelArchivalOutput = $storagegateway->CancelArchival(
-      {
-        'TapeARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'TapeARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4'
     );
 
     # Results:

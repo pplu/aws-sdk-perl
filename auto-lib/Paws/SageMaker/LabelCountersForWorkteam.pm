@@ -3,6 +3,7 @@ package Paws::SageMaker::LabelCountersForWorkteam;
   has HumanLabeled => (is => 'ro', isa => 'Int');
   has PendingHuman => (is => 'ro', isa => 'Int');
   has Total => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

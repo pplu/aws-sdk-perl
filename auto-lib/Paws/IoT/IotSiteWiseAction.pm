@@ -2,6 +2,7 @@ package Paws::IoT::IotSiteWiseAction;
   use Moose;
   has PutAssetPropertyValueEntries => (is => 'ro', isa => 'ArrayRef[Paws::IoT::PutAssetPropertyValueEntry]', request_name => 'putAssetPropertyValueEntries', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

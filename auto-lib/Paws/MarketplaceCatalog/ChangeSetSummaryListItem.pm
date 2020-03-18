@@ -7,6 +7,7 @@ package Paws::MarketplaceCatalog::ChangeSetSummaryListItem;
   has EntityIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

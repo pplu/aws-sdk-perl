@@ -2,6 +2,7 @@ package Paws::Quicksight::TemplateSourceEntity;
   use Moose;
   has SourceAnalysis => (is => 'ro', isa => 'Paws::Quicksight::TemplateSourceAnalysis');
   has SourceTemplate => (is => 'ro', isa => 'Paws::Quicksight::TemplateSourceTemplate');
+
 1;
 
 ### main pod documentation begin ###

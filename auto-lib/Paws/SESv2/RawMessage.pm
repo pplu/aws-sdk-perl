@@ -1,6 +1,7 @@
 package Paws::SESv2::RawMessage;
   use Moose;
   has Data => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

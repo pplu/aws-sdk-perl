@@ -6,6 +6,7 @@ package Paws::Quicksight::IAMPolicyAssignment;
   has AwsAccountId => (is => 'ro', isa => 'Str');
   has Identities => (is => 'ro', isa => 'Paws::Quicksight::IdentityMap');
   has PolicyArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

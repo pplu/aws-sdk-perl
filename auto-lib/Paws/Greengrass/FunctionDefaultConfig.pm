@@ -1,6 +1,7 @@
 package Paws::Greengrass::FunctionDefaultConfig;
   use Moose;
   has Execution => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefaultExecutionConfig');
+
 1;
 
 ### main pod documentation begin ###

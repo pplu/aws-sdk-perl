@@ -3,6 +3,7 @@ package Paws::PinpointEmail::IdentityInfo;
   has IdentityName => (is => 'ro', isa => 'Str');
   has IdentityType => (is => 'ro', isa => 'Str');
   has SendingEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

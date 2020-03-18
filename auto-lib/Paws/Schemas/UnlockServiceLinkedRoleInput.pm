@@ -1,6 +1,7 @@
 package Paws::Schemas::UnlockServiceLinkedRoleInput;
   use Moose;
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaPackageVod::PackagingGroupList;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has PackagingGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::PackagingGroup]', request_name => 'packagingGroups', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodeBuild::TestReportSummary;
   has DurationInNanoSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInNanoSeconds', traits => ['NameInRequest'], required => 1);
   has StatusCounts => (is => 'ro', isa => 'Paws::CodeBuild::ReportStatusCounts', request_name => 'statusCounts', traits => ['NameInRequest'], required => 1);
   has Total => (is => 'ro', isa => 'Int', request_name => 'total', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

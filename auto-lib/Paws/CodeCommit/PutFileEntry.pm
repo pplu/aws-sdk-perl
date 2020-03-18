@@ -4,6 +4,7 @@ package Paws::CodeCommit::PutFileEntry;
   has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
   has SourceFile => (is => 'ro', isa => 'Paws::CodeCommit::SourceFileSpecifier', request_name => 'sourceFile', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::IoTThingsGraph::SystemTemplateDescription;
   has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', request_name => 'definition', traits => ['NameInRequest']);
   has Summary => (is => 'ro', isa => 'Paws::IoTThingsGraph::SystemTemplateSummary', request_name => 'summary', traits => ['NameInRequest']);
   has ValidatedNamespaceVersion => (is => 'ro', isa => 'Int', request_name => 'validatedNamespaceVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

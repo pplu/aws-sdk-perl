@@ -1,6 +1,7 @@
 package Paws::Forecast::HyperParameterTuningJobConfig;
   use Moose;
   has ParameterRanges => (is => 'ro', isa => 'Paws::Forecast::ParameterRanges');
+
 1;
 
 ### main pod documentation begin ###

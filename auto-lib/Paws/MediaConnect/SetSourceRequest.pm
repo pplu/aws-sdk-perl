@@ -10,6 +10,7 @@ package Paws::MediaConnect::SetSourceRequest;
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
   has WhitelistCidr => (is => 'ro', isa => 'Str', request_name => 'whitelistCidr', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

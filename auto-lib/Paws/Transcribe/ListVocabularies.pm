@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Vocabularies = $ListVocabulariesResponse->Vocabularies;
     my $NextToken    = $ListVocabulariesResponse->NextToken;
     my $Status       = $ListVocabulariesResponse->Status;
+    my $Vocabularies = $ListVocabulariesResponse->Vocabularies;
 
     # Returns a L<Paws::Transcribe::ListVocabulariesResponse> object.
 

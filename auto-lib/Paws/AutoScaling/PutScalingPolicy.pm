@@ -4,6 +4,7 @@ package Paws::AutoScaling::PutScalingPolicy;
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cooldown => (is => 'ro', isa => 'Int');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
   has MetricAggregationType => (is => 'ro', isa => 'Str');
   has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
@@ -41,12 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To add a scaling policy to an Auto Scaling group
    # This example adds the specified policy to the specified Auto Scaling group.
     my $PolicyARNType = $autoscaling->PutScalingPolicy(
-      {
-        'AdjustmentType'       => 'ChangeInCapacity',
-        'ScalingAdjustment'    => -1,
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'PolicyName'           => 'ScaleIn'
-      }
+      'AdjustmentType'       => 'ChangeInCapacity',
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'PolicyName'           => 'ScaleIn',
+      'ScalingAdjustment'    => -1
     );
 
     # Results:
@@ -62,15 +61,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 AdjustmentType => Str
 
-The adjustment type. The valid values are C<ChangeInCapacity>,
-C<ExactCapacity>, and C<PercentChangeInCapacity>.
+Specifies whether the C<ScalingAdjustment> parameter is an absolute
+number or a percentage of the current capacity. The valid values are
+C<ChangeInCapacity>, C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
-This parameter is supported if the policy type is C<SimpleScaling> or
-C<StepScaling>.
-
-For more information, see Dynamic Scaling
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html)
-in the I<Auto Scaling User Guide>.
+Valid only if the policy type is C<StepScaling> or C<SimpleScaling>.
+For more information, see Scaling Adjustment Types
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -82,15 +80,25 @@ The name of the Auto Scaling group.
 
 =head2 Cooldown => Int
 
-The amount of time, in seconds, after a scaling activity completes and
-before the next scaling activity can start. If this parameter is not
-specified, the default cooldown period for the group applies.
+The amount of time, in seconds, after a scaling activity completes
+before any further dynamic scaling activities can start. If this
+parameter is not specified, the default cooldown period for the group
+applies.
 
-This parameter is supported if the policy type is C<SimpleScaling>.
+Valid only if the policy type is C<SimpleScaling>. For more
+information, see Scaling Cooldowns
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+
+
+=head2 Enabled => Bool
+
+Indicates whether the scaling policy is enabled or disabled. The
+default is enabled. For more information, see Disabling a Scaling
+Policy for an Auto Scaling Group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -100,7 +108,7 @@ The estimated time, in seconds, until a newly launched instance can
 contribute to the CloudWatch metrics. The default is to use the value
 specified for the default cooldown period for the group.
 
-This parameter is supported if the policy type is C<StepScaling> or
+Valid only if the policy type is C<StepScaling> or
 C<TargetTrackingScaling>.
 
 
@@ -111,7 +119,7 @@ The aggregation type for the CloudWatch metrics. The valid values are
 C<Minimum>, C<Maximum>, and C<Average>. If the aggregation type is
 null, the value is treated as C<Average>.
 
-This parameter is supported if the policy type is C<StepScaling>.
+Valid only if the policy type is C<StepScaling>.
 
 
 
@@ -122,8 +130,15 @@ C<AdjustmentType> is C<PercentChangeInCapacity>, the scaling policy
 changes the C<DesiredCapacity> of the Auto Scaling group by at least
 this many instances. Otherwise, the error is C<ValidationError>.
 
-This parameter is supported if the policy type is C<SimpleScaling> or
-C<StepScaling>.
+This property replaces the C<MinAdjustmentStep> property. For example,
+suppose that you create a step scaling policy to scale out an Auto
+Scaling group by 25 percent and you specify a C<MinAdjustmentMagnitude>
+of 2. If the group has 4 instances and the scaling policy is performed,
+25 percent of 4 is 1. However, because you specified a
+C<MinAdjustmentMagnitude> of 2, Amazon EC2 Auto Scaling scales out the
+group by 2 instances.
+
+Valid only if the policy type is C<SimpleScaling> or C<StepScaling>.
 
 
 
@@ -150,12 +165,15 @@ treated as C<SimpleScaling>.
 
 =head2 ScalingAdjustment => Int
 
-The amount by which to scale, based on the specified adjustment type. A
-positive value adds to the current capacity while a negative number
-removes from the current capacity.
+The amount by which a simple scaling policy scales the Auto Scaling
+group in response to an alarm breach. The adjustment is based on the
+value that you specified in the C<AdjustmentType> parameter (either an
+absolute number or a percentage). A positive value adds to the current
+capacity and a negative value subtracts from the current capacity. For
+exact capacity, you must specify a positive value.
 
-This parameter is required if the policy type is C<SimpleScaling> and
-not supported otherwise.
+Conditional: If you specify C<SimpleScaling> for the policy type, you
+must specify this parameter. (Not used with any other policy type.)
 
 
 
@@ -164,17 +182,23 @@ not supported otherwise.
 A set of adjustments that enable you to scale based on the size of the
 alarm breach.
 
-This parameter is required if the policy type is C<StepScaling> and not
-supported otherwise.
+Conditional: If you specify C<StepScaling> for the policy type, you
+must specify this parameter. (Not used with any other policy type.)
 
 
 
 =head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
 
-A target tracking policy.
+A target tracking scaling policy. Includes support for predefined or
+customized metrics.
 
-This parameter is required if the policy type is
-C<TargetTrackingScaling> and not supported otherwise.
+For more information, see TargetTrackingConfiguration
+(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html)
+in the I<Amazon EC2 Auto Scaling API Reference>.
+
+Conditional: If you specify C<TargetTrackingScaling> for the policy
+type, you must specify this parameter. (Not used with any other policy
+type.)
 
 
 

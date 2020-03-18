@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken   = $GetClassifiersResponse->NextToken;
     my $Classifiers = $GetClassifiersResponse->Classifiers;
+    my $NextToken   = $GetClassifiersResponse->NextToken;
 
     # Returns a L<Paws::Glue::GetClassifiersResponse> object.
 

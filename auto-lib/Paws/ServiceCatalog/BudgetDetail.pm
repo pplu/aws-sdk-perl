@@ -1,6 +1,7 @@
 package Paws::ServiceCatalog::BudgetDetail;
   use Moose;
   has BudgetName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::SMS::ServerLaunchConfiguration;
   has Subnet => (is => 'ro', isa => 'Str', request_name => 'subnet', traits => ['NameInRequest']);
   has UserData => (is => 'ro', isa => 'Paws::SMS::UserData', request_name => 'userData', traits => ['NameInRequest']);
   has Vpc => (is => 'ro', isa => 'Str', request_name => 'vpc', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

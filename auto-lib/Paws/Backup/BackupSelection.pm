@@ -4,6 +4,7 @@ package Paws::Backup::BackupSelection;
   has ListOfTags => (is => 'ro', isa => 'ArrayRef[Paws::Backup::Condition]');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SelectionName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

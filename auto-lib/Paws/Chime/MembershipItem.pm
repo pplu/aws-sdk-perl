@@ -2,6 +2,7 @@ package Paws::Chime::MembershipItem;
   use Moose;
   has MemberId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::ComprehendMedical::Entity;
   has Text => (is => 'ro', isa => 'Str');
   has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Trait]');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

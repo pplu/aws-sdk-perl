@@ -3,6 +3,7 @@ package Paws::WAFv2::LoggingConfiguration;
   has LogDestinationConfigs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has RedactedFields => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::FieldToMatch]');
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

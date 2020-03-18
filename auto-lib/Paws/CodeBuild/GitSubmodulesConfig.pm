@@ -1,6 +1,7 @@
 package Paws::CodeBuild::GitSubmodulesConfig;
   use Moose;
   has FetchSubmodules => (is => 'ro', isa => 'Bool', request_name => 'fetchSubmodules', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

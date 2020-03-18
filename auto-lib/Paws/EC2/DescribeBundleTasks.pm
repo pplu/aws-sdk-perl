@@ -30,15 +30,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeBundleTasksResult = $ec2->DescribeBundleTasks(
-      BundleIds => [ 'MyString', ... ],    # OPTIONAL
-      DryRun    => 1,                      # OPTIONAL
+      BundleIds => [ 'MyBundleId', ... ],    # OPTIONAL
+      DryRun    => 1,                        # OPTIONAL
       Filters   => [
         {
-          Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],     # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],                                     # OPTIONAL
     );
 
     # Results:
@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 BundleIds => ArrayRef[Str|Undef]
 
-One or more bundle task IDs.
+The bundle task IDs.
 
 Default: Describes all your bundle tasks.
 
@@ -71,7 +71,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 

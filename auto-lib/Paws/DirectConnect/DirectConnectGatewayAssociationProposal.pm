@@ -7,6 +7,7 @@ package Paws::DirectConnect::DirectConnectGatewayAssociationProposal;
   has ProposalId => (is => 'ro', isa => 'Str', request_name => 'proposalId', traits => ['NameInRequest']);
   has ProposalState => (is => 'ro', isa => 'Str', request_name => 'proposalState', traits => ['NameInRequest']);
   has RequestedAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'requestedAllowedPrefixesToDirectConnectGateway', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Backup::BackupPlanTemplatesListMember;
   use Moose;
   has BackupPlanTemplateId => (is => 'ro', isa => 'Str');
   has BackupPlanTemplateName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

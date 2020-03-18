@@ -2,6 +2,7 @@ package Paws::ELBv2::LoadBalancerAddress;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has PrivateIPv4Address => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ELBv2::LoadBalancerAddress object:
 
-  $service_obj->Method(Att1 => { AllocationId => $value, ..., IpAddress => $value  });
+  $service_obj->Method(Att1 => { AllocationId => $value, ..., PrivateIPv4Address => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,12 +41,19 @@ Information about a static IP address for a load balancer.
 
 =head2 AllocationId => Str
 
-  [Network Load Balancers] The allocation ID of the Elastic IP address.
+  [Network Load Balancers] The allocation ID of the Elastic IP address
+for an internal-facing load balancer.
 
 
 =head2 IpAddress => Str
 
   The static IP address.
+
+
+=head2 PrivateIPv4Address => Str
+
+  [Network Load Balancers] The private IPv4 address for an internal load
+balancer.
 
 
 

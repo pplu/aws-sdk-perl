@@ -6,6 +6,7 @@ package Paws::PinpointEmail::EventDestinationDefinition;
   has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PinpointDestination => (is => 'ro', isa => 'Paws::PinpointEmail::PinpointDestination');
   has SnsDestination => (is => 'ro', isa => 'Paws::PinpointEmail::SnsDestination');
+
 1;
 
 ### main pod documentation begin ###

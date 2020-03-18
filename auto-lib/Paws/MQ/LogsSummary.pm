@@ -5,6 +5,7 @@ package Paws::MQ::LogsSummary;
   has General => (is => 'ro', isa => 'Bool', request_name => 'general', traits => ['NameInRequest']);
   has GeneralLogGroup => (is => 'ro', isa => 'Str', request_name => 'generalLogGroup', traits => ['NameInRequest']);
   has Pending => (is => 'ro', isa => 'Paws::MQ::PendingLogs', request_name => 'pending', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

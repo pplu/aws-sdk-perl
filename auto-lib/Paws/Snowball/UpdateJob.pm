@@ -40,14 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # changes to a different job state, usually within 60 minutes of the job
    # being created, this action is no longer available.
     my $UpdateJobResult = $snowball->UpdateJob(
-      {
-        'ShippingOption'             => 'NEXT_DAY',
-        'SnowballCapacityPreference' => 'T100',
-        'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000',
-        'Description' =>
+      'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'Description' =>
 'Upgraded to Edge, shipped to Finance Dept, and requested faster shipping speed - TS.',
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b'
-      }
+      'JobId'                      => 'JID123e4567-e89b-12d3-a456-426655440000',
+      'ShippingOption'             => 'NEXT_DAY',
+      'SnowballCapacityPreference' => 'T100'
     );
 
 
@@ -91,9 +89,7 @@ The new or updated Notification object.
 
 =head2 Resources => L<Paws::Snowball::JobResource>
 
-The updated S3Resource object (for a single Amazon S3 bucket or key
-range), or the updated JobResource object (for multiple buckets or key
-ranges).
+The updated C<JobResource> object, or the updated JobResource object.
 
 
 
@@ -101,7 +97,7 @@ ranges).
 
 The new role Amazon Resource Name (ARN) that you want to associate with
 this job. To create a role ARN, use the CreateRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
 Identity and Access Management (IAM) API action.
 
 
@@ -117,7 +113,7 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 The updated C<SnowballCapacityPreference> of this job's JobMetadata
 object. The 50 TB Snowballs are only available in the US regions.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
 
 
 =head1 SEE ALSO

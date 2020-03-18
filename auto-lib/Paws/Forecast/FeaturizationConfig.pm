@@ -3,6 +3,7 @@ package Paws::Forecast::FeaturizationConfig;
   has Featurizations => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::Featurization]');
   has ForecastDimensions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ForecastFrequency => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

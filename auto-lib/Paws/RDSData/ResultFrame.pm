@@ -2,6 +2,7 @@ package Paws::RDSData::ResultFrame;
   use Moose;
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Record]', request_name => 'records', traits => ['NameInRequest']);
   has ResultSetMetadata => (is => 'ro', isa => 'Paws::RDSData::ResultSetMetadata', request_name => 'resultSetMetadata', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

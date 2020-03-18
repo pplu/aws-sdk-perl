@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken    = $ListApplicationsResponse->NextToken;
     my $Applications = $ListApplicationsResponse->Applications;
+    my $NextToken    = $ListApplicationsResponse->NextToken;
 
     # Returns a L<Paws::ServerlessRepo::ListApplicationsResponse> object.
 

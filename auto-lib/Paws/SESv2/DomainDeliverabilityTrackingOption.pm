@@ -3,6 +3,7 @@ package Paws::SESv2::DomainDeliverabilityTrackingOption;
   has Domain => (is => 'ro', isa => 'Str');
   has InboxPlacementTrackingOption => (is => 'ro', isa => 'Paws::SESv2::InboxPlacementTrackingOption');
   has SubscriptionStartDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

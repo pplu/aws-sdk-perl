@@ -6,6 +6,7 @@ package Paws::Quicksight::TransformOperation;
   has ProjectOperation => (is => 'ro', isa => 'Paws::Quicksight::ProjectOperation');
   has RenameColumnOperation => (is => 'ro', isa => 'Paws::Quicksight::RenameColumnOperation');
   has TagColumnOperation => (is => 'ro', isa => 'Paws::Quicksight::TagColumnOperation');
+
 1;
 
 ### main pod documentation begin ###

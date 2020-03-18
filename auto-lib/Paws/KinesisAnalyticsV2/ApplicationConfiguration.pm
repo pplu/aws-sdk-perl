@@ -6,6 +6,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfiguration;
   has FlinkApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration');
   has SqlApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfiguration');
   has VpcConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfiguration]');
+
 1;
 
 ### main pod documentation begin ###

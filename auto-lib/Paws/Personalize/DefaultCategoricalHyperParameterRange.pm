@@ -3,6 +3,7 @@ package Paws::Personalize::DefaultCategoricalHyperParameterRange;
   has IsTunable => (is => 'ro', isa => 'Bool', request_name => 'isTunable', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

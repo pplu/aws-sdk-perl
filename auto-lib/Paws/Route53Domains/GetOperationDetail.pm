@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Type          = $GetOperationDetailResponse->Type;
-    my $SubmittedDate = $GetOperationDetailResponse->SubmittedDate;
-    my $Message       = $GetOperationDetailResponse->Message;
-    my $Status        = $GetOperationDetailResponse->Status;
-    my $OperationId   = $GetOperationDetailResponse->OperationId;
     my $DomainName    = $GetOperationDetailResponse->DomainName;
+    my $Message       = $GetOperationDetailResponse->Message;
+    my $OperationId   = $GetOperationDetailResponse->OperationId;
+    my $Status        = $GetOperationDetailResponse->Status;
+    my $SubmittedDate = $GetOperationDetailResponse->SubmittedDate;
+    my $Type          = $GetOperationDetailResponse->Type;
 
     # Returns a L<Paws::Route53Domains::GetOperationDetailResponse> object.
 

@@ -6,6 +6,7 @@ package Paws::IoT::MitigationActionParams;
   has ReplaceDefaultPolicyVersionParams => (is => 'ro', isa => 'Paws::IoT::ReplaceDefaultPolicyVersionParams', request_name => 'replaceDefaultPolicyVersionParams', traits => ['NameInRequest']);
   has UpdateCACertificateParams => (is => 'ro', isa => 'Paws::IoT::UpdateCACertificateParams', request_name => 'updateCACertificateParams', traits => ['NameInRequest']);
   has UpdateDeviceCertificateParams => (is => 'ro', isa => 'Paws::IoT::UpdateDeviceCertificateParams', request_name => 'updateDeviceCertificateParams', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

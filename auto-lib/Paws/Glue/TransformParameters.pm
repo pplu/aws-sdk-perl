@@ -2,6 +2,7 @@ package Paws::Glue::TransformParameters;
   use Moose;
   has FindMatchesParameters => (is => 'ro', isa => 'Paws::Glue::FindMatchesParameters');
   has TransformType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

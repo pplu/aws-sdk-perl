@@ -4,6 +4,7 @@ package Paws::Comprehend::EndpointFilter;
   has CreationTimeBefore => (is => 'ro', isa => 'Str');
   has ModelArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

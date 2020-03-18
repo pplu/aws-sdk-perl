@@ -2,6 +2,7 @@
 package Paws::RDS::DeleteDBInstance;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DeleteAutomatedBackups => (is => 'ro', isa => 'Bool');
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalSnapshot => (is => 'ro', isa => 'Bool');
 
@@ -32,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a DB instance.
     # This example deletes the specified DB instance.
     my $DeleteDBInstanceResult = $rds->DeleteDBInstance(
-      {
-        'SkipFinalSnapshot'    => 1,
-        'DBInstanceIdentifier' => 'mymysqlinstance'
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'SkipFinalSnapshot'    => 1
     );
 
 
@@ -63,13 +62,22 @@ Must match the name of an existing DB instance.
 
 
 
+=head2 DeleteAutomatedBackups => Bool
+
+A value that indicates whether to remove automated backups immediately
+after the DB instance is deleted. This parameter isn't case-sensitive.
+The default is to remove automated backups immediately after the DB
+instance is deleted.
+
+
+
 =head2 FinalDBSnapshotIdentifier => Str
 
-The DBSnapshotIdentifier of the new DBSnapshot created when
-SkipFinalSnapshot is set to C<false>.
+The C<DBSnapshotIdentifier> of the new C<DBSnapshot> created when the
+C<SkipFinalSnapshot> parameter is disabled.
 
-Specifying this parameter and also setting the SkipFinalShapshot
-parameter to true results in an error.
+Specifying this parameter and also specifying to skip final DB snapshot
+creation in SkipFinalShapshot results in an error.
 
 Constraints:
 
@@ -81,15 +89,15 @@ Must be 1 to 255 letters or numbers.
 
 =item *
 
-First character must be a letter
+First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =item *
 
-Cannot be specified when deleting a Read Replica.
+Can't be specified when deleting a Read Replica.
 
 =back
 
@@ -98,21 +106,20 @@ Cannot be specified when deleting a Read Replica.
 
 =head2 SkipFinalSnapshot => Bool
 
-Determines whether a final DB snapshot is created before the DB
-instance is deleted. If C<true> is specified, no DBSnapshot is created.
-If C<false> is specified, a DB snapshot is created before the DB
-instance is deleted.
+A value that indicates whether to skip the creation of a final DB
+snapshot before the DB instance is deleted. If skip is specified, no DB
+snapshot is created. If skip isn't specified, a DB snapshot is created
+before the DB instance is deleted. By default, skip isn't specified,
+and the DB snapshot is created.
 
-Note that when a DB instance is in a failure state and has a status of
-'failed', 'incompatible-restore', or 'incompatible-network', it can
-only be deleted when the SkipFinalSnapshot parameter is set to "true".
+When a DB instance is in a failure state and has a status of 'failed',
+'incompatible-restore', or 'incompatible-network', it can only be
+deleted when skip is specified.
 
-Specify C<true> when deleting a Read Replica.
+Specify skip when deleting a Read Replica.
 
-The FinalDBSnapshotIdentifier parameter must be specified if
-SkipFinalSnapshot is C<false>.
-
-Default: C<false>
+The FinalDBSnapshotIdentifier parameter must be specified if skip isn't
+specified.
 
 
 

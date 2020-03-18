@@ -4,6 +4,7 @@ package Paws::CodeCommit::MergeHunk;
   has Destination => (is => 'ro', isa => 'Paws::CodeCommit::MergeHunkDetail', request_name => 'destination', traits => ['NameInRequest']);
   has IsConflict => (is => 'ro', isa => 'Bool', request_name => 'isConflict', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeCommit::MergeHunkDetail', request_name => 'source', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

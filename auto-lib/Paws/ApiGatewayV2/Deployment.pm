@@ -6,6 +6,7 @@ package Paws::ApiGatewayV2::Deployment;
   has DeploymentStatus => (is => 'ro', isa => 'Str', request_name => 'deploymentStatus', traits => ['NameInRequest']);
   has DeploymentStatusMessage => (is => 'ro', isa => 'Str', request_name => 'deploymentStatusMessage', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

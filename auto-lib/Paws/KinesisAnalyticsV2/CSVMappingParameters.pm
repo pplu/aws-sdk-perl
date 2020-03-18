@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::CSVMappingParameters;
   use Moose;
   has RecordColumnDelimiter => (is => 'ro', isa => 'Str', required => 1);
   has RecordRowDelimiter => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

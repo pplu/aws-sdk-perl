@@ -1,6 +1,7 @@
 package Paws::MediaLive::MultiplexSettingsSummary;
   use Moose;
   has TransportStreamBitrate => (is => 'ro', isa => 'Int', request_name => 'transportStreamBitrate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

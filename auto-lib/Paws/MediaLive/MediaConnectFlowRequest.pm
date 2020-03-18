@@ -1,6 +1,7 @@
 package Paws::MediaLive::MediaConnectFlowRequest;
   use Moose;
   has FlowArn => (is => 'ro', isa => 'Str', request_name => 'flowArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

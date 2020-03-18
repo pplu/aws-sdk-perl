@@ -15,6 +15,7 @@ package Paws::MediaConvert::Eac3AtmosSettings;
   has SpeechThreshold => (is => 'ro', isa => 'Int', request_name => 'speechThreshold', traits => ['NameInRequest']);
   has StereoDownmix => (is => 'ro', isa => 'Str', request_name => 'stereoDownmix', traits => ['NameInRequest']);
   has SurroundExMode => (is => 'ro', isa => 'Str', request_name => 'surroundExMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

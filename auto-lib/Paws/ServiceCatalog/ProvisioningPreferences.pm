@@ -6,6 +6,7 @@ package Paws::ServiceCatalog::ProvisioningPreferences;
   has StackSetMaxConcurrencyCount => (is => 'ro', isa => 'Int');
   has StackSetMaxConcurrencyPercentage => (is => 'ro', isa => 'Int');
   has StackSetRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

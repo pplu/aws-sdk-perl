@@ -59,7 +59,7 @@ email/SMS delivery receipt event attributes.
 =head2 RawContent => Str
 
   The raw, JSON-formatted string to use as the payload for the message.
-If specified, this value overrides the message.
+If specified, this value overrides all other values for the message.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>

@@ -4,6 +4,7 @@ package Paws::MediaLive::MultiplexSettings;
   has TransportStreamBitrate => (is => 'ro', isa => 'Int', request_name => 'transportStreamBitrate', traits => ['NameInRequest'], required => 1);
   has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest'], required => 1);
   has TransportStreamReservedBitrate => (is => 'ro', isa => 'Int', request_name => 'transportStreamReservedBitrate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

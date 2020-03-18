@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LastUpdatedTime   = $DescribeApplicationStateResult->LastUpdatedTime;
     my $ApplicationStatus = $DescribeApplicationStateResult->ApplicationStatus;
+    my $LastUpdatedTime   = $DescribeApplicationStateResult->LastUpdatedTime;
 
     # Returns a L<Paws::MigrationHub::DescribeApplicationStateResult> object.
 

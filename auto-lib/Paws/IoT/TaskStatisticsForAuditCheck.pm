@@ -5,6 +5,7 @@ package Paws::IoT::TaskStatisticsForAuditCheck;
   has SkippedFindingsCount => (is => 'ro', isa => 'Int', request_name => 'skippedFindingsCount', traits => ['NameInRequest']);
   has SucceededFindingsCount => (is => 'ro', isa => 'Int', request_name => 'succeededFindingsCount', traits => ['NameInRequest']);
   has TotalFindingsCount => (is => 'ro', isa => 'Int', request_name => 'totalFindingsCount', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

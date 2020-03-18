@@ -3,6 +3,7 @@ package Paws::WAFv2::ManagedRuleGroupStatement;
   has ExcludedRules => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::ExcludedRule]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has VendorName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

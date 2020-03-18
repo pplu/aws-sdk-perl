@@ -1,6 +1,7 @@
 package Paws::SageMaker::SourceAlgorithmSpecification;
   use Moose;
   has SourceAlgorithms => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SourceAlgorithm]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::AccessAnalyzer::AnalyzerSummary;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::AccessAnalyzer::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $PushSync       = $GetIdentityPoolConfigurationResponse->PushSync;
-    my $IdentityPoolId = $GetIdentityPoolConfigurationResponse->IdentityPoolId;
     my $CognitoStreams = $GetIdentityPoolConfigurationResponse->CognitoStreams;
+    my $IdentityPoolId = $GetIdentityPoolConfigurationResponse->IdentityPoolId;
+    my $PushSync       = $GetIdentityPoolConfigurationResponse->PushSync;
 
   # Returns a L<Paws::CognitoSync::GetIdentityPoolConfigurationResponse> object.
 

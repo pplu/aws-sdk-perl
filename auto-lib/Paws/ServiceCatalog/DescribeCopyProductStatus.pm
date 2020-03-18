@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $TargetProductId   = $DescribeCopyProductStatusOutput->TargetProductId;
-    my $StatusDetail      = $DescribeCopyProductStatusOutput->StatusDetail;
     my $CopyProductStatus = $DescribeCopyProductStatusOutput->CopyProductStatus;
+    my $StatusDetail      = $DescribeCopyProductStatusOutput->StatusDetail;
+    my $TargetProductId   = $DescribeCopyProductStatusOutput->TargetProductId;
 
     # Returns a L<Paws::ServiceCatalog::DescribeCopyProductStatusOutput> object.
 

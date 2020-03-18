@@ -4,7 +4,9 @@ package Paws::SageMaker::CreateHyperParameterTuningJob;
   has HyperParameterTuningJobConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobConfig', required => 1);
   has HyperParameterTuningJobName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
-  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition', required => 1);
+  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition');
+  has TrainingJobDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::HyperParameterTrainingJobDefinition]');
+  has WarmStartConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobWarmStartConfig');
 
   use MooseX::ClassAttribute;
 
@@ -29,104 +31,181 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
+    my $api.sagemaker = Paws->service('SageMaker');
     my $CreateHyperParameterTuningJobResponse =
-      $sagemaker->CreateHyperParameterTuningJob(
+      $api . sagemaker->CreateHyperParameterTuningJob(
       HyperParameterTuningJobConfig => {
-        Strategy       => 'Bayesian',    # values: Bayesian
         ResourceLimits => {
-          MaxParallelTrainingJobs => 1,    # min: 1,
-          MaxNumberOfTrainingJobs => 1,    # min: 1,
+          MaxNumberOfTrainingJobs => 1,    # min: 1
+          MaxParallelTrainingJobs => 1,    # min: 1
 
         },
+        Strategy => 'Bayesian',            # values: Bayesian, Random
         HyperParameterTuningJobObjective => {
-          Type       => 'Maximize',        # values: Maximize, Minimize
           MetricName => 'MyMetricName',    # min: 1, max: 255
+          Type       => 'Maximize',        # values: Maximize, Minimize
 
-        },
+        },    # OPTIONAL
         ParameterRanges => {
           CategoricalParameterRanges => [
             {
+              Name   => 'MyParameterKey',    # max: 256
               Values => [
-                'MyParameterValue', ...    # max: 256
-              ],                           # min: 1, max: 20
-              Name => 'MyParameterKey',    # max: 256
+                'MyParameterValue', ...      # max: 256
+              ],                             # min: 1, max: 20
 
             },
             ...
-          ],                               # max: 20; OPTIONAL
+          ],                                 # max: 20; OPTIONAL
           ContinuousParameterRanges => [
             {
-              MaxValue => 'MyParameterValue',    # max: 256
-              MinValue => 'MyParameterValue',    # max: 256
-              Name     => 'MyParameterKey',      # max: 256
-
+              MaxValue    => 'MyParameterValue',    # max: 256
+              MinValue    => 'MyParameterValue',    # max: 256
+              Name        => 'MyParameterKey',      # max: 256
+              ScalingType => 'Auto'
+              , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
             },
             ...
-          ],                                     # max: 20; OPTIONAL
+          ],    # max: 20; OPTIONAL
           IntegerParameterRanges => [
             {
-              MaxValue => 'MyParameterValue',    # max: 256
-              MinValue => 'MyParameterValue',    # max: 256
-              Name     => 'MyParameterKey',      # max: 256
-
+              MaxValue    => 'MyParameterValue',    # max: 256
+              MinValue    => 'MyParameterValue',    # max: 256
+              Name        => 'MyParameterKey',      # max: 256
+              ScalingType => 'Auto'
+              , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
             },
             ...
-          ],                                     # max: 20; OPTIONAL
-        },
+          ],    # max: 20; OPTIONAL
+        },    # OPTIONAL
+        TrainingJobEarlyStoppingType => 'Off',    # values: Off, Auto; OPTIONAL
+        TuningJobCompletionCriteria  => {
+          TargetObjectiveMetricValue => 1.0,
 
+        },                                        # OPTIONAL
       },
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
-      TrainingJobDefinition       => {
-        ResourceConfig => {
-          InstanceType => 'ml.m4.xlarge'
-          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
-          VolumeSizeInGB => 1,               # min: 1,
-          InstanceCount  => 1,               # min: 1,
-          VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+      Tags                        => [
+        {
+          Key   => 'MyTagKey',                    # min: 1, max: 128
+          Value => 'MyTagValue',                  # max: 256
+
         },
-        OutputDataConfig => {
-          S3OutputPath => 'MyS3Uri',         # max: 1024
-          KmsKeyId     => 'MyKmsKeyId',      # max: 2048; OPTIONAL
-        },
+        ...
+      ],                                          # OPTIONAL
+      TrainingJobDefinition => {
         AlgorithmSpecification => {
-          TrainingImage     => 'MyAlgorithmImage',    # max: 255
-          TrainingInputMode => 'Pipe',                # values: Pipe, File
+          TrainingInputMode => 'Pipe',            # values: Pipe, File
+          AlgorithmName     => 'MyArnOrName',     # min: 1, max: 170; OPTIONAL
           MetricDefinitions => [
             {
-              Regex => 'MyMetricRegex',               # min: 1, max: 500
-              Name  => 'MyMetricName',                # min: 1, max: 255
+              Name  => 'MyMetricName',            # min: 1, max: 255
+              Regex => 'MyMetricRegex',           # min: 1, max: 500
 
             },
             ...
-          ],                                          # max: 20; OPTIONAL
+          ],                                      # max: 40; OPTIONAL
+          TrainingImage => 'MyAlgorithmImage',    # max: 255; OPTIONAL
         },
+        OutputDataConfig => {
+          S3OutputPath => 'MyS3Uri',              # max: 1024
+          KmsKeyId     => 'MyKmsKeyId',           # max: 2048; OPTIONAL
+        },
+        ResourceConfig => {
+          InstanceCount => 1,                     # min: 1
+          InstanceType  => 'ml.m4.xlarge'
+          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+          VolumeSizeInGB => 1,               # min: 1
+          VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        },
+        RoleArn           => 'MyRoleArn',    # min: 20, max: 2048
         StoppingCondition => {
-          MaxRuntimeInSeconds => 1,                   # min: 1, ; OPTIONAL
+          MaxRuntimeInSeconds  => 1,         # min: 1; OPTIONAL
+          MaxWaitTimeInSeconds => 1,         # min: 1; OPTIONAL
         },
-        RoleArn         => 'MyRoleArn',               # min: 20, max: 2048
-        InputDataConfig => [
-          {
-            DataSource => {
-              S3DataSource => {
-                S3Uri      => 'MyS3Uri',        # max: 1024
-                S3DataType => 'ManifestFile',   # values: ManifestFile, S3Prefix
-                S3DataDistributionType => 'FullyReplicated'
-                ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-              },
+        CheckpointConfig => {
+          S3Uri     => 'MyS3Uri',            # max: 1024
+          LocalPath => 'MyDirectoryPath',    # max: 4096
+        },    # OPTIONAL
+        DefinitionName => 'MyHyperParameterTrainingJobDefinitionName'
+        ,     # min: 1, max: 64; OPTIONAL
+        EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+        EnableManagedSpotTraining             => 1,    # OPTIONAL
+        EnableNetworkIsolation                => 1,    # OPTIONAL
+        HyperParameterRanges                  => {
+          CategoricalParameterRanges => [
+            {
+              Name   => 'MyParameterKey',              # max: 256
+              Values => [
+                'MyParameterValue', ...                # max: 256
+              ],                                       # min: 1, max: 20
 
             },
-            ChannelName     => 'MyChannelName',   # min: 1, max: 64
-            ContentType     => 'MyContentType',   # max: 256; OPTIONAL
+            ...
+          ],                                           # max: 20; OPTIONAL
+          ContinuousParameterRanges => [
+            {
+              MaxValue    => 'MyParameterValue',       # max: 256
+              MinValue    => 'MyParameterValue',       # max: 256
+              Name        => 'MyParameterKey',         # max: 256
+              ScalingType => 'Auto'
+              , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
+            },
+            ...
+          ],    # max: 20; OPTIONAL
+          IntegerParameterRanges => [
+            {
+              MaxValue    => 'MyParameterValue',    # max: 256
+              MinValue    => 'MyParameterValue',    # max: 256
+              Name        => 'MyParameterKey',      # max: 256
+              ScalingType => 'Auto'
+              , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
+            },
+            ...
+          ],    # max: 20; OPTIONAL
+        },    # OPTIONAL
+        InputDataConfig => [
+          {
+            ChannelName => 'MyChannelName',    # min: 1, max: 64
+            DataSource  => {
+              FileSystemDataSource => {
+                DirectoryPath        => 'MyDirectoryPath',    # max: 4096
+                FileSystemAccessMode => 'rw',                 # values: rw, ro
+                FileSystemId         => 'MyFileSystemId',     # min: 11
+                FileSystemType => 'EFS',    # values: EFS, FSxLustre
+
+              },    # OPTIONAL
+              S3DataSource => {
+                S3DataType => 'ManifestFile'
+                ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
+                S3Uri          => 'MyS3Uri',    # max: 1024
+                AttributeNames => [
+                  'MyAttributeName', ...        # min: 1, max: 256
+                ],                              # max: 16; OPTIONAL
+                S3DataDistributionType => 'FullyReplicated'
+                ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
+              },    # OPTIONAL
+            },
             CompressionType => 'None',            # values: None, Gzip; OPTIONAL
+            ContentType     => 'MyContentType',   # max: 256; OPTIONAL
+            InputMode       => 'Pipe',            # values: Pipe, File
             RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
+            ShuffleConfig     => {
+              Seed => 1,
+
+            },                              # OPTIONAL
           },
           ...
-        ],                                  # min: 1, max: 8
+        ],                                  # min: 1, max: 20; OPTIONAL
         StaticHyperParameters => {
           'MyParameterKey' =>
             'MyParameterValue',             # key: max: 256, value: max: 256
         },    # max: 100; OPTIONAL
+        TuningObjective => {
+          MetricName => 'MyMetricName',    # min: 1, max: 255
+          Type       => 'Maximize',        # values: Maximize, Minimize
+
+        },    # OPTIONAL
         VpcConfig => {
           SecurityGroupIds => [
             'MySecurityGroupId', ...    # max: 32
@@ -136,15 +215,145 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                            # min: 1, max: 16
 
         },    # OPTIONAL
-      },
-      Tags => [
+      },    # OPTIONAL
+      TrainingJobDefinitions => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256
+          AlgorithmSpecification => {
+            TrainingInputMode => 'Pipe',           # values: Pipe, File
+            AlgorithmName     => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
+            MetricDefinitions => [
+              {
+                Name  => 'MyMetricName',           # min: 1, max: 255
+                Regex => 'MyMetricRegex',          # min: 1, max: 500
 
+              },
+              ...
+            ],                                     # max: 40; OPTIONAL
+            TrainingImage => 'MyAlgorithmImage',   # max: 255; OPTIONAL
+          },
+          OutputDataConfig => {
+            S3OutputPath => 'MyS3Uri',             # max: 1024
+            KmsKeyId     => 'MyKmsKeyId',          # max: 2048; OPTIONAL
+          },
+          ResourceConfig => {
+            InstanceCount => 1,                    # min: 1
+            InstanceType  => 'ml.m4.xlarge'
+            , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+            VolumeSizeInGB => 1,               # min: 1
+            VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+          },
+          RoleArn           => 'MyRoleArn',    # min: 20, max: 2048
+          StoppingCondition => {
+            MaxRuntimeInSeconds  => 1,         # min: 1; OPTIONAL
+            MaxWaitTimeInSeconds => 1,         # min: 1; OPTIONAL
+          },
+          CheckpointConfig => {
+            S3Uri     => 'MyS3Uri',            # max: 1024
+            LocalPath => 'MyDirectoryPath',    # max: 4096
+          },    # OPTIONAL
+          DefinitionName => 'MyHyperParameterTrainingJobDefinitionName'
+          ,     # min: 1, max: 64; OPTIONAL
+          EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+          EnableManagedSpotTraining             => 1,    # OPTIONAL
+          EnableNetworkIsolation                => 1,    # OPTIONAL
+          HyperParameterRanges                  => {
+            CategoricalParameterRanges => [
+              {
+                Name   => 'MyParameterKey',              # max: 256
+                Values => [
+                  'MyParameterValue', ...                # max: 256
+                ],                                       # min: 1, max: 20
+
+              },
+              ...
+            ],                                           # max: 20; OPTIONAL
+            ContinuousParameterRanges => [
+              {
+                MaxValue    => 'MyParameterValue',       # max: 256
+                MinValue    => 'MyParameterValue',       # max: 256
+                Name        => 'MyParameterKey',         # max: 256
+                ScalingType => 'Auto'
+                , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
+              },
+              ...
+            ],    # max: 20; OPTIONAL
+            IntegerParameterRanges => [
+              {
+                MaxValue    => 'MyParameterValue',    # max: 256
+                MinValue    => 'MyParameterValue',    # max: 256
+                Name        => 'MyParameterKey',      # max: 256
+                ScalingType => 'Auto'
+                , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
+              },
+              ...
+            ],    # max: 20; OPTIONAL
+          },    # OPTIONAL
+          InputDataConfig => [
+            {
+              ChannelName => 'MyChannelName',    # min: 1, max: 64
+              DataSource  => {
+                FileSystemDataSource => {
+                  DirectoryPath        => 'MyDirectoryPath',    # max: 4096
+                  FileSystemAccessMode => 'rw',                 # values: rw, ro
+                  FileSystemId         => 'MyFileSystemId',     # min: 11
+                  FileSystemType => 'EFS',    # values: EFS, FSxLustre
+
+                },    # OPTIONAL
+                S3DataSource => {
+                  S3DataType => 'ManifestFile'
+                  ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
+                  S3Uri          => 'MyS3Uri',    # max: 1024
+                  AttributeNames => [
+                    'MyAttributeName', ...        # min: 1, max: 256
+                  ],                              # max: 16; OPTIONAL
+                  S3DataDistributionType => 'FullyReplicated'
+                  ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
+                },    # OPTIONAL
+              },
+              CompressionType => 'None',          # values: None, Gzip; OPTIONAL
+              ContentType     => 'MyContentType', # max: 256; OPTIONAL
+              InputMode       => 'Pipe',          # values: Pipe, File
+              RecordWrapperType => 'None',    # values: None, RecordIO; OPTIONAL
+              ShuffleConfig     => {
+                Seed => 1,
+
+              },                              # OPTIONAL
+            },
+            ...
+          ],                                  # min: 1, max: 20; OPTIONAL
+          StaticHyperParameters => {
+            'MyParameterKey' =>
+              'MyParameterValue',             # key: max: 256, value: max: 256
+          },    # max: 100; OPTIONAL
+          TuningObjective => {
+            MetricName => 'MyMetricName',    # min: 1, max: 255
+            Type       => 'Maximize',        # values: Maximize, Minimize
+
+          },    # OPTIONAL
+          VpcConfig => {
+            SecurityGroupIds => [
+              'MySecurityGroupId', ...    # max: 32
+            ],                            # min: 1, max: 5
+            Subnets => [
+              'MySubnetId', ...           # max: 32
+            ],                            # min: 1, max: 16
+
+          },    # OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],        # OPTIONAL
+      WarmStartConfig => {
+        ParentHyperParameterTuningJobs => [
+          {
+            HyperParameterTuningJobName =>
+              'MyHyperParameterTuningJobName',    # min: 1, max: 32
+          },
+          ...
+        ],                                        # min: 1, max: 5
+        WarmStartType => 'IdenticalDataAndAlgorithm'
+        ,    # values: IdenticalDataAndAlgorithm, TransferLearning
+
+      },    # OPTIONAL
       );
 
     # Results:
@@ -154,16 +363,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Returns a L<Paws::SageMaker::CreateHyperParameterTuningJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateHyperParameterTuningJob>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
 
-The object that describes the tuning job, including the search
-strategy, metric used to evaluate training jobs, ranges of parameters
-to search, and resource limits for the tuning job.
+The HyperParameterTuningJobConfig object that describes the tuning job,
+including the search strategy, the objective metric used to evaluate
+training jobs, ranges of parameters to search, and resource limits for
+the tuning job. For more information, see automatic-model-tuning
 
 
 
@@ -171,8 +381,9 @@ to search, and resource limits for the tuning job.
 
 The name of the tuning job. This name is the prefix for the names of
 all training jobs that this tuning job launches. The name must be
-unique within the same AWS account and AWS Region. Names are not case
-sensitive, and must be between 1-32 characters.
+unique within the same AWS account and AWS Region. The name must have {
+} to { } characters. Valid characters are a-z, A-Z, 0-9, and : + = @ _
+% - (hyphen). The name is not case sensitive.
 
 
 
@@ -180,18 +391,48 @@ sensitive, and must be between 1-32 characters.
 
 An array of key-value pairs. You can use tags to categorize your AWS
 resources in different ways, for example, by purpose, owner, or
-environment. For more information, see Using Cost Allocation Tags
-(http://docs.aws.amazon.com//awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+environment. For more information, see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+
+Tags that you specify for the tuning job are also added to all training
+jobs that the tuning job launches.
 
 
 
-=head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
+=head2 TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
 
-The object that describes the training jobs that this tuning job
-launches, including static hyperparameters, input data configuration,
-output data configuration, resource configuration, and stopping
-condition.
+The HyperParameterTrainingJobDefinition object that describes the
+training jobs that this tuning job launches, including static
+hyperparameters, input data configuration, output data configuration,
+resource configuration, and stopping condition.
+
+
+
+=head2 TrainingJobDefinitions => ArrayRef[L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
+
+
+
+
+
+=head2 WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>
+
+Specifies the configuration for starting the hyperparameter tuning job
+using one or more previous tuning jobs as a starting point. The results
+of previous tuning jobs are used to inform which combinations of
+hyperparameters to search over in the new tuning job.
+
+All training jobs launched by the new hyperparameter tuning job are
+evaluated by using the objective metric. If you specify
+C<IDENTICAL_DATA_AND_ALGORITHM> as the C<WarmStartType> value for the
+warm start configuration, the training job that performs the best in
+the new tuning job is compared to the best training jobs from the
+parent tuning jobs. From these, the training job that performs the best
+as measured by the objective metric is returned as the overall best
+training job.
+
+All training jobs launched by parent hyperparameter tuning jobs and the
+new hyperparameter tuning jobs count against the limit of training jobs
+for the tuning job.
 
 
 

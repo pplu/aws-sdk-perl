@@ -2,6 +2,7 @@ package Paws::GroundStation::EndpointDetails;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Paws::GroundStation::DataflowEndpoint', request_name => 'endpoint', traits => ['NameInRequest']);
   has SecurityDetails => (is => 'ro', isa => 'Paws::GroundStation::SecurityDetails', request_name => 'securityDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

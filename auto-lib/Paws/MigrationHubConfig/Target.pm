@@ -2,6 +2,7 @@ package Paws::MigrationHubConfig::Target;
   use Moose;
   has Id => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::Lambda::CreateFunction;
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has Handler => (is => 'ro', isa => 'Str', required => 1);
   has KMSKeyArn => (is => 'ro', isa => 'Str');
+  has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
@@ -45,38 +46,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # create-function
     # This example creates a Lambda function.
     my $FunctionConfiguration = $lambda->CreateFunction(
-      {
-        'Role'    => 'arn:aws:iam::123456789012:role/service-role/role-name',
-        'Runtime' => 'nodejs4.3',
-        'Publish' => 1,
-        'FunctionName' => 'MyFunction',
-        'Code'         => {
+      'Code' => {
 
-        },
-        'Handler'    => 'souce_file.handler_name',
-        'MemorySize' => 128,
-        'VpcConfig'  => {
+      },
+      'Description'  => '',
+      'FunctionName' => 'MyFunction',
+      'Handler'      => 'souce_file.handler_name',
+      'MemorySize'   => 128,
+      'Publish'      => 1,
+      'Role'         => 'arn:aws:iam::123456789012:role/service-role/role-name',
+      'Runtime'      => 'nodejs4.3',
+      'Timeout'      => 15,
+      'VpcConfig'    => {
 
-        },
-        'Timeout'     => 15,
-        'Description' => ''
       }
     );
 
     # Results:
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $Description  = $FunctionConfiguration->Description;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
     my $Role         = $FunctionConfiguration->Role;
     my $Runtime      = $FunctionConfiguration->Runtime;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Version      = $FunctionConfiguration->Version;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
     my $Timeout      = $FunctionConfiguration->Timeout;
-    my $Description  = $FunctionConfiguration->Description;
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $LastModified = $FunctionConfiguration->LastModified;
+    my $Version      = $FunctionConfiguration->Version;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -88,138 +87,144 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
 
-The code for the Lambda function.
+The code for the function.
 
 
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target ARN (Amazon Resource Name)
-of an Amazon SQS queue or Amazon SNS topic. For more information, see
-dlq.
+A dead letter queue configuration that specifies the queue or topic
+where Lambda sends asynchronous events when they fail processing. For
+more information, see Dead Letter Queues
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 
 
 
 =head2 Description => Str
 
-A short, user-defined function description. Lambda does not use this
-value. Assign a meaningful description as you see fit.
+A description of the function.
 
 
 
 =head2 Environment => L<Paws::Lambda::Environment>
 
-
+Environment variables that are accessible from function code during
+execution.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name you want to assign to the function you are uploading. The
-function names appear in the console and are returned in the
-ListFunctions API. Function names are used to specify functions to
-other AWS Lambda API operations, such as Invoke. Note that the length
-constraint applies only to the ARN. If you specify only the function
-name, it is limited to 64 characters in length.
+The name of the Lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> Handler => Str
 
-The function within your code that Lambda calls to begin execution. For
-Node.js, it is the I<module-name>.I<export> value in your function. For
-Java, it can be C<package.class-name::handler> or
-C<package.class-name>. For more information, see Lambda Function
-Handler (Java)
-(http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html).
+The name of the method within your code that Lambda calls to execute
+your function. The format includes the file name. It can also include
+namespaces and other qualifiers, depending on the runtime. For more
+information, see Programming Model
+(https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html).
 
 
 
 =head2 KMSKeyArn => Str
 
-The Amazon Resource Name (ARN) of the KMS key used to encrypt your
-function's environment variables. If not provided, AWS Lambda will use
-a default service key.
+The ARN of the AWS Key Management Service (AWS KMS) key that's used to
+encrypt your function's environment variables. If it's not provided,
+AWS Lambda uses a default service key.
+
+
+
+=head2 Layers => ArrayRef[Str|Undef]
+
+A list of function layers
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+to add to the function's execution environment. Specify each layer by
+its ARN, including the version.
 
 
 
 =head2 MemorySize => Int
 
-The amount of memory, in MB, your Lambda function is given. Lambda uses
-this memory size to infer the amount of CPU and memory allocated to
-your function. Your function use-case determines your CPU and memory
-requirements. For example, a database operation might need less memory
-compared to an image processing function. The default value is 128 MB.
-The value must be a multiple of 64 MB.
+The amount of memory that your function has access to. Increasing the
+function's memory also increases its CPU allocation. The default value
+is 128 MB. The value must be a multiple of 64 MB.
 
 
 
 =head2 Publish => Bool
 
-This boolean parameter can be used to request AWS Lambda to create the
-Lambda function and publish a version as an atomic operation.
+Set to true to publish the first version of the function during
+creation.
 
 
 
 =head2 B<REQUIRED> Role => Str
 
-The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
-it executes your function to access any other Amazon Web Services (AWS)
-resources. For more information, see AWS Lambda: How it Works
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html).
+The Amazon Resource Name (ARN) of the function's execution role.
 
 
 
 =head2 B<REQUIRED> Runtime => Str
 
-The runtime environment for the Lambda function you are uploading.
+The identifier of the function's runtime
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
-To use the Python runtime v3.6, set the value to "python3.6". To use
-the Python runtime v2.7, set the value to "python2.7". To use the
-Node.js runtime v6.10, set the value to "nodejs6.10". To use the
-Node.js runtime v4.3, set the value to "nodejs4.3". To use the .NET
-Core runtime v1.0, set the value to "dotnetcore1.0". To use the .NET
-Core runtime v2.0, set the value to "dotnetcore2.0".
-
-Node v0.10.42 is currently marked as deprecated. You must migrate
-existing functions to the newer Node.js runtime versions available on
-AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. Failure to do
-so will result in an invalid parameter error being returned. Note that
-you will have to follow this procedure for each region that contains
-functions written in the Node v0.10.42 runtime.
-
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"nodejs4.3-edge">, C<"go1.x">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">
 
 =head2 Tags => L<Paws::Lambda::Tags>
 
-The list of tags (key-value pairs) assigned to the new function. For
-more information, see Tagging Lambda Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) in the B<AWS
-Lambda Developer Guide>.
+A list of tags
+(https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to apply to
+the function.
 
 
 
 =head2 Timeout => Int
 
-The function execution time at which Lambda should terminate the
-function. Because the execution time has cost implications, we
-recommend you set this value based on your expected execution time. The
-default is 3 seconds.
+The amount of time that Lambda allows a function to run before stopping
+it. The default is 3 seconds. The maximum allowed value is 900 seconds.
 
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfig>
 
-The parent object that contains your function's tracing settings.
+Set C<Mode> to C<Active> to sample and trace a subset of incoming
+requests with AWS X-Ray.
 
 
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfig>
 
-If your Lambda function accesses resources in a VPC, you provide this
-parameter identifying the list of security group IDs and subnet IDs.
-These must belong to the same VPC. You must provide at least one
-security group and one subnet ID.
+For network connectivity to AWS resources in a VPC, specify a list of
+security groups and subnets in the VPC. When you connect a function to
+a VPC, it can only access resources and the internet through that VPC.
+For more information, see VPC Settings
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 
 
 

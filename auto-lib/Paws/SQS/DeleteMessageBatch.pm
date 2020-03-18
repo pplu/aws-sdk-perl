@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Successful = $DeleteMessageBatchResult->Successful;
     my $Failed     = $DeleteMessageBatchResult->Failed;
+    my $Successful = $DeleteMessageBatchResult->Successful;
 
     # Returns a L<Paws::SQS::DeleteMessageBatchResult> object.
 

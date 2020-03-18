@@ -1,6 +1,7 @@
 package Paws::StepFunctions::MapStateStartedEventDetails;
   use Moose;
   has Length => (is => 'ro', isa => 'Int', request_name => 'length', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Quicksight::PhysicalTable;
   has CustomSql => (is => 'ro', isa => 'Paws::Quicksight::CustomSql');
   has RelationalTable => (is => 'ro', isa => 'Paws::Quicksight::RelationalTable');
   has S3Source => (is => 'ro', isa => 'Paws::Quicksight::S3Source');
+
 1;
 
 ### main pod documentation begin ###

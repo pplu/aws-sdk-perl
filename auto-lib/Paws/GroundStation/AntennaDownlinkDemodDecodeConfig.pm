@@ -3,6 +3,7 @@ package Paws::GroundStation::AntennaDownlinkDemodDecodeConfig;
   has DecodeConfig => (is => 'ro', isa => 'Paws::GroundStation::DecodeConfig', request_name => 'decodeConfig', traits => ['NameInRequest'], required => 1);
   has DemodulationConfig => (is => 'ro', isa => 'Paws::GroundStation::DemodulationConfig', request_name => 'demodulationConfig', traits => ['NameInRequest'], required => 1);
   has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::SpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

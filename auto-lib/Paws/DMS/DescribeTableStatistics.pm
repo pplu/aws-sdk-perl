@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReplicationTaskArn => 'MyString',
       Filters            => [
         {
-          Values => [ 'MyString', ... ],
           Name   => 'MyString',
+          Values => [ 'MyString', ... ],
 
         },
         ...
@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Marker = $DescribeTableStatisticsResponse->Marker;
     my $ReplicationTaskArn =
       $DescribeTableStatisticsResponse->ReplicationTaskArn;
-    my $Marker          = $DescribeTableStatisticsResponse->Marker;
     my $TableStatistics = $DescribeTableStatisticsResponse->TableStatistics;
 
     # Returns a L<Paws::DMS::DescribeTableStatisticsResponse> object.

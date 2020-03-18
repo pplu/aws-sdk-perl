@@ -7,6 +7,7 @@ package Paws::ApplicationAutoScaling::ScalableTarget;
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+  has SuspendedState => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::SuspendedState');
 
 1;
 
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApplicationAutoScaling::ScalableTarget object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., ServiceNamespace => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., SuspendedState => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,12 +51,12 @@ Represents a scalable target.
 
 =head2 B<REQUIRED> MaxCapacity => Int
 
-  The maximum value to scale to in response to a scale out event.
+  The maximum value to scale to in response to a scale-out event.
 
 
 =head2 B<REQUIRED> MinCapacity => Int
 
-  The minimum value to scale to in response to a scale in event.
+  The minimum value to scale to in response to a scale-in event.
 
 
 =head2 B<REQUIRED> ResourceId => Str
@@ -73,8 +74,8 @@ C<service/default/sample-webapp>.
 
 =item *
 
-Spot fleet request - The resource type is C<spot-fleet-request> and the
-unique identifier is the Spot fleet request ID. Example:
+Spot Fleet request - The resource type is C<spot-fleet-request> and the
+unique identifier is the Spot Fleet request ID. Example:
 C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
 
 =item *
@@ -91,12 +92,12 @@ identifier is the fleet name. Example: C<fleet/sample-fleet>.
 =item *
 
 DynamoDB table - The resource type is C<table> and the unique
-identifier is the resource ID. Example: C<table/my-table>.
+identifier is the table name. Example: C<table/my-table>.
 
 =item *
 
 DynamoDB global secondary index - The resource type is C<index> and the
-unique identifier is the resource ID. Example:
+unique identifier is the index name. Example:
 C<table/my-table/index/my-table-index>.
 
 =item *
@@ -106,8 +107,8 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =item *
 
-Amazon SageMaker endpoint variants - The resource type is C<variant>
-and the unique identifier is the resource ID. Example:
+Amazon SageMaker endpoint variant - The resource type is C<variant> and
+the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
 =item *
@@ -115,7 +116,21 @@ C<endpoint/my-end-point/variant/KMeansClustering>.
 Custom resources are not supported with a resource type. This parameter
 must specify the C<OutputValue> from the CloudFormation template stack
 used to access the resources. The unique identifier is defined by the
-service provider.
+service provider. More information is available in our GitHub
+repository (https://github.com/aws/aws-auto-scaling-custom-resource).
+
+=item *
+
+Amazon Comprehend document classification endpoint - The resource type
+and unique identifier are specified using the endpoint ARN. Example:
+C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE>.
+
+=item *
+
+Lambda provisioned concurrency - The resource type is C<function> and
+the unique identifier is the function name with a function version or
+alias name suffix that is not C<$LATEST>. Example:
+C<function:my-function:prod> or C<function:my-function:1>.
 
 =back
 
@@ -141,7 +156,7 @@ C<ecs:service:DesiredCount> - The desired task count of an ECS service.
 =item *
 
 C<ec2:spot-fleet-request:TargetCapacity> - The target capacity of a
-Spot fleet request.
+Spot Fleet request.
 
 =item *
 
@@ -176,7 +191,8 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition and
+Aurora PostgreSQL-compatible edition.
 
 =item *
 
@@ -187,6 +203,17 @@ for an Amazon SageMaker model endpoint variant.
 
 C<custom-resource:ResourceType:Property> - The scalable dimension for a
 custom resource provided by your own application or service.
+
+=item *
+
+C<comprehend:document-classifier-endpoint:DesiredInferenceUnits> - The
+number of inference units for an Amazon Comprehend document
+classification endpoint.
+
+=item *
+
+C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
+for a Lambda function.
 
 =back
 
@@ -199,6 +226,11 @@ C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
+
+
+=head2 SuspendedState => L<Paws::ApplicationAutoScaling::SuspendedState>
+
+  
 
 
 

@@ -6,6 +6,7 @@ package Paws::KinesisAnalyticsV2::OutputUpdate;
   has LambdaOutputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::LambdaOutputUpdate');
   has NameUpdate => (is => 'ro', isa => 'Str');
   has OutputId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Connect::HistoricalMetricData;
   use Moose;
   has Metric => (is => 'ro', isa => 'Paws::Connect::HistoricalMetric');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

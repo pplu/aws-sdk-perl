@@ -2,6 +2,7 @@ package Paws::SecurityHub::AwsSnsTopicSubscription;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

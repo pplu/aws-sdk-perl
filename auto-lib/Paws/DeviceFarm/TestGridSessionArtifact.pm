@@ -3,6 +3,7 @@ package Paws::DeviceFarm::TestGridSessionArtifact;
   has Filename => (is => 'ro', isa => 'Str', request_name => 'filename', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

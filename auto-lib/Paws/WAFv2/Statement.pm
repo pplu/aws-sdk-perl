@@ -13,6 +13,7 @@ package Paws::WAFv2::Statement;
   has SizeConstraintStatement => (is => 'ro', isa => 'Paws::WAFv2::SizeConstraintStatement');
   has SqliMatchStatement => (is => 'ro', isa => 'Paws::WAFv2::SqliMatchStatement');
   has XssMatchStatement => (is => 'ro', isa => 'Paws::WAFv2::XssMatchStatement');
+
 1;
 
 ### main pod documentation begin ###

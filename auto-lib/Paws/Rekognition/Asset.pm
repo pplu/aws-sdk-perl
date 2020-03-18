@@ -1,6 +1,7 @@
 package Paws::Rekognition::Asset;
   use Moose;
   has GroundTruthManifest => (is => 'ro', isa => 'Paws::Rekognition::GroundTruthManifest');
+
 1;
 
 ### main pod documentation begin ###

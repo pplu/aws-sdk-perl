@@ -1,6 +1,7 @@
 package Paws::RedShift::SupportedOperation;
   use Moose;
   has OperationName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

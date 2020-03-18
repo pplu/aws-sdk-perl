@@ -13,6 +13,7 @@ package Paws::XRay::SamplingRule;
   has ServiceType => (is => 'ro', isa => 'Str', required => 1);
   has URLPath => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

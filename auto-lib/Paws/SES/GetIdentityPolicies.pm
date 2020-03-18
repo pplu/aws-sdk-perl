@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns a sending authorization policy for an
     # identity:
     my $GetIdentityPoliciesResponse = $email->GetIdentityPolicies(
-      {
-        'PolicyNames' => ['MyPolicy'],
-        'Identity'    => 'example.com'
-      }
+      'Identity'    => 'example.com',
+      'PolicyNames' => ['MyPolicy']
     );
 
     # Results:

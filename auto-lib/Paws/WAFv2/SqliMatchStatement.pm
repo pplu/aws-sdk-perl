@@ -2,6 +2,7 @@ package Paws::WAFv2::SqliMatchStatement;
   use Moose;
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAFv2::FieldToMatch', required => 1);
   has TextTransformations => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::TextTransformation]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

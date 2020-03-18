@@ -2,6 +2,7 @@ package Paws::PinpointSMSVoice::CloudWatchLogsDestination;
   use Moose;
   has IamRoleArn => (is => 'ro', isa => 'Str');
   has LogGroupArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Amplify::ProductionBranch;
   has LastDeployTime => (is => 'ro', isa => 'Str', request_name => 'lastDeployTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has ThumbnailUrl => (is => 'ro', isa => 'Str', request_name => 'thumbnailUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -35,6 +35,7 @@ package Paws::SageMaker::TrainingJob;
   has TrainingTimeInSeconds => (is => 'ro', isa => 'Int');
   has TuningJobArn => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

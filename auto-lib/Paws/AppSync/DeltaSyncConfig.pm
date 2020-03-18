@@ -3,6 +3,7 @@ package Paws::AppSync::DeltaSyncConfig;
   has BaseTableTTL => (is => 'ro', isa => 'Int', request_name => 'baseTableTTL', traits => ['NameInRequest']);
   has DeltaSyncTableName => (is => 'ro', isa => 'Str', request_name => 'deltaSyncTableName', traits => ['NameInRequest']);
   has DeltaSyncTableTTL => (is => 'ro', isa => 'Int', request_name => 'deltaSyncTableTTL', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

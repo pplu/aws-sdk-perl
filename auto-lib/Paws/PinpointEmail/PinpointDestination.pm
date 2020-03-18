@@ -1,6 +1,7 @@
 package Paws::PinpointEmail::PinpointDestination;
   use Moose;
   has ApplicationArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

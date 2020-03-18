@@ -5,6 +5,7 @@ package Paws::Personalize::SolutionSummary;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has SolutionArn => (is => 'ro', isa => 'Str', request_name => 'solutionArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

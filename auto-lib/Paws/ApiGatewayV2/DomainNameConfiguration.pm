@@ -9,6 +9,7 @@ package Paws::ApiGatewayV2::DomainNameConfiguration;
   has EndpointType => (is => 'ro', isa => 'Str', request_name => 'endpointType', traits => ['NameInRequest']);
   has HostedZoneId => (is => 'ro', isa => 'Str', request_name => 'hostedZoneId', traits => ['NameInRequest']);
   has SecurityPolicy => (is => 'ro', isa => 'Str', request_name => 'securityPolicy', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

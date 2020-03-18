@@ -4,9 +4,10 @@ package Paws::S3::PutObjectLegalHold;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has LegalHold => (is => 'ro', isa => 'Paws::S3::ObjectLockLegalHold');
+  has LegalHold => (is => 'ro', isa => 'Paws::S3::ObjectLockLegalHold', traits => ['ParamInBody']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+
 
   use MooseX::ClassAttribute;
 
@@ -16,6 +17,7 @@ package Paws::S3::PutObjectLegalHold;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectLegalHoldOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

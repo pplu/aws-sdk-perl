@@ -2,6 +2,7 @@ package Paws::Signer::SigningImageFormat;
   use Moose;
   has DefaultFormat => (is => 'ro', isa => 'Str', request_name => 'defaultFormat', traits => ['NameInRequest'], required => 1);
   has SupportedFormats => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedFormats', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

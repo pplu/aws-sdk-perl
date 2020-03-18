@@ -37,15 +37,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Aggregators => <InventoryAggregatorList>,
           Expression =>
             'MyInventoryAggregatorExpression',    # min: 1, max: 1000; OPTIONAL
+          Groups => [
+            {
+              Filters => [
+                {
+                  Key => 'MyInventoryFilterKey',    # min: 1, max: 200
+                  Values => [ 'MyInventoryFilterValue', ... ], # min: 1, max: 40
+                  Type   => 'Equal'
+                  , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan, Exists; OPTIONAL
+                },
+                ...
+              ],    # min: 1, max: 5
+              Name => 'MyInventoryGroupName',    # min: 1, max: 200
+
+            },
+            ...
+          ],                                     # min: 1, max: 15; OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
+      ],                                         # OPTIONAL
       Filters => [
         {
-          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 20
           Key    => 'MyInventoryFilterKey',               # min: 1, max: 200
+          Values => [ 'MyInventoryFilterValue', ... ],    # min: 1, max: 40
           Type   => 'Equal'
-          , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan; OPTIONAL
+          , # values: Equal, NotEqual, BeginWith, LessThan, GreaterThan, Exists; OPTIONAL
         },
         ...
       ],    # OPTIONAL

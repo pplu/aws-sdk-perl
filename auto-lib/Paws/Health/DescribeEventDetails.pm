@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SuccessfulSet = $DescribeEventDetailsResponse->SuccessfulSet;
     my $FailedSet     = $DescribeEventDetailsResponse->FailedSet;
+    my $SuccessfulSet = $DescribeEventDetailsResponse->SuccessfulSet;
 
     # Returns a L<Paws::Health::DescribeEventDetailsResponse> object.
 

@@ -33,52 +33,56 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeEventAggregatesResponse = $health->DescribeEventAggregates(
       AggregateField => 'eventTypeCategory',
       Filter         => {
-        eventTypeCodes => [
-          'MyeventType', ...    # min: 3, max: 100
-        ],                      # min: 1, max: 10; OPTIONAL
-        eventArns => [
-          'MyeventArn', ...     # max: 1600
-        ],                      # min: 1, max: 10; OPTIONAL
-        endTimes => [
+        AvailabilityZones => [
+          'MyavailabilityZone', ...    # min: 6, max: 18
+        ],                             # OPTIONAL
+        EndTimes => [
           {
-            to   => '1970-01-01T01:00:00',    # OPTIONAL
-            from => '1970-01-01T01:00:00',    # OPTIONAL
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        eventStatusCodes => [
+        EntityArns => [
+          'MyentityArn', ...                  # max: 1600
+        ],                                    # min: 1, max: 100; OPTIONAL
+        EntityValues => [
+          'MyentityValue', ...                # max: 256
+        ],                                    # min: 1, max: 100; OPTIONAL
+        EventArns => [
+          'MyeventArn', ...                   # max: 1600
+        ],                                    # min: 1, max: 10; OPTIONAL
+        EventStatusCodes => [
           'open', ...                         # values: open, closed, upcoming
         ],                                    # min: 1, max: 6; OPTIONAL
-        regions => [ 'Myregion', ... ],       # min: 1, max: 10; OPTIONAL
-        availabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
-        entityValues => [
-          'MyentityValue', ...                                 # max: 256
-        ],    # min: 1, max: 100; OPTIONAL
-        eventTypeCategories => [
+        EventTypeCategories => [
           'issue',
-          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+          ... # values: issue, accountNotification, scheduledChange, investigationmin: 3, max: 255
         ],    # min: 1, max: 10; OPTIONAL
-        entityArns => [
-          'MyentityArn', ...    # max: 1600
-        ],                      # min: 1, max: 100; OPTIONAL
-        startTimes => [
+        EventTypeCodes => [
+          'MyeventType', ...    # min: 3, max: 100
+        ],                      # min: 1, max: 10; OPTIONAL
+        LastUpdatedTimes => [
           {
-            to   => '1970-01-01T01:00:00',    # OPTIONAL
-            from => '1970-01-01T01:00:00',    # OPTIONAL
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        lastUpdatedTimes => [
-          {
-            to   => '1970-01-01T01:00:00',    # OPTIONAL
-            from => '1970-01-01T01:00:00',    # OPTIONAL
-          },
-          ...
+        Regions => [
+          'Myregion', ...                     # min: 2, max: 25
         ],                                    # min: 1, max: 10; OPTIONAL
-        services => [
+        Services => [
           'Myservice', ...                    # min: 2, max: 30
         ],                                    # min: 1, max: 10; OPTIONAL
-        tags => [
+        StartTimes => [
+          {
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                    # min: 1, max: 10; OPTIONAL
+        Tags => [
           {
             'MytagKey' => 'MytagValue',       # key: max: 127, value: max: 255
           },
@@ -90,8 +94,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken       = $DescribeEventAggregatesResponse->NextToken;
     my $EventAggregates = $DescribeEventAggregatesResponse->EventAggregates;
+    my $NextToken       = $DescribeEventAggregatesResponse->NextToken;
 
     # Returns a L<Paws::Health::DescribeEventAggregatesResponse> object.
 

@@ -2,6 +2,7 @@ package Paws::Chime::MeetingNotificationConfiguration;
   use Moose;
   has SnsTopicArn => (is => 'ro', isa => 'Str');
   has SqsQueueArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

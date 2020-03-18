@@ -1,6 +1,7 @@
 package Paws::DLM::Parameters;
   use Moose;
   has ExcludeBootVolume => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

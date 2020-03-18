@@ -4,6 +4,7 @@ package Paws::IoTEvents::TransitionEvent;
   has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest'], required => 1);
   has EventName => (is => 'ro', isa => 'Str', request_name => 'eventName', traits => ['NameInRequest'], required => 1);
   has NextState => (is => 'ro', isa => 'Str', request_name => 'nextState', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

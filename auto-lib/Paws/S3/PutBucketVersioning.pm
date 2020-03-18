@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $s3->PutBucketVersioning(
       Bucket                  => 'MyBucketName',
       VersioningConfiguration => {
-        Status    => 'Enabled',    # values: Enabled, Suspended; OPTIONAL
         MFADelete => 'Enabled',    # values: Enabled, Disabled; OPTIONAL
+        Status    => 'Enabled',    # values: Enabled, Suspended; OPTIONAL
       },
       ContentLength => 1,                 # OPTIONAL
       ContentMD5    => 'MyContentMD5',    # OPTIONAL

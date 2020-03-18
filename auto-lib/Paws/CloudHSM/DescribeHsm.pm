@@ -34,27 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $SubscriptionType      = $DescribeHsmResponse->SubscriptionType;
+    my $AvailabilityZone      = $DescribeHsmResponse->AvailabilityZone;
     my $EniId                 = $DescribeHsmResponse->EniId;
-    my $Status                = $DescribeHsmResponse->Status;
-    my $Partitions            = $DescribeHsmResponse->Partitions;
-    my $SubscriptionEndDate   = $DescribeHsmResponse->SubscriptionEndDate;
-    my $SubscriptionStartDate = $DescribeHsmResponse->SubscriptionStartDate;
-    my $StatusDetails         = $DescribeHsmResponse->StatusDetails;
-    my $IamRoleArn            = $DescribeHsmResponse->IamRoleArn;
-    my $VpcId                 = $DescribeHsmResponse->VpcId;
     my $EniIp                 = $DescribeHsmResponse->EniIp;
-    my $SshPublicKey          = $DescribeHsmResponse->SshPublicKey;
-    my $SshKeyLastUpdated     = $DescribeHsmResponse->SshKeyLastUpdated;
     my $HsmArn                = $DescribeHsmResponse->HsmArn;
     my $HsmType               = $DescribeHsmResponse->HsmType;
+    my $IamRoleArn            = $DescribeHsmResponse->IamRoleArn;
+    my $Partitions            = $DescribeHsmResponse->Partitions;
     my $SerialNumber          = $DescribeHsmResponse->SerialNumber;
+    my $ServerCertLastUpdated = $DescribeHsmResponse->ServerCertLastUpdated;
     my $ServerCertUri         = $DescribeHsmResponse->ServerCertUri;
     my $SoftwareVersion       = $DescribeHsmResponse->SoftwareVersion;
-    my $AvailabilityZone      = $DescribeHsmResponse->AvailabilityZone;
-    my $VendorName            = $DescribeHsmResponse->VendorName;
+    my $SshKeyLastUpdated     = $DescribeHsmResponse->SshKeyLastUpdated;
+    my $SshPublicKey          = $DescribeHsmResponse->SshPublicKey;
+    my $Status                = $DescribeHsmResponse->Status;
+    my $StatusDetails         = $DescribeHsmResponse->StatusDetails;
     my $SubnetId              = $DescribeHsmResponse->SubnetId;
-    my $ServerCertLastUpdated = $DescribeHsmResponse->ServerCertLastUpdated;
+    my $SubscriptionEndDate   = $DescribeHsmResponse->SubscriptionEndDate;
+    my $SubscriptionStartDate = $DescribeHsmResponse->SubscriptionStartDate;
+    my $SubscriptionType      = $DescribeHsmResponse->SubscriptionType;
+    my $VendorName            = $DescribeHsmResponse->VendorName;
+    my $VpcId                 = $DescribeHsmResponse->VpcId;
 
     # Returns a L<Paws::CloudHSM::DescribeHsmResponse> object.
 

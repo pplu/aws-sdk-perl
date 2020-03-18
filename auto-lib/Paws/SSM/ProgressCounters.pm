@@ -5,6 +5,7 @@ package Paws::SSM::ProgressCounters;
   has SuccessSteps => (is => 'ro', isa => 'Int');
   has TimedOutSteps => (is => 'ro', isa => 'Int');
   has TotalSteps => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

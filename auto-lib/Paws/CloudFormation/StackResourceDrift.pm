@@ -10,6 +10,7 @@ package Paws::CloudFormation::StackResourceDrift;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has StackResourceDriftStatus => (is => 'ro', isa => 'Str', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::FSX::LustreFileSystemConfiguration;
   use Moose;
   has DataRepositoryConfiguration => (is => 'ro', isa => 'Paws::FSX::DataRepositoryConfiguration');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

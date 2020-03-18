@@ -8,6 +8,7 @@ package Paws::Config::ConformancePackDetail;
   has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
   has LastUpdateRequestedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

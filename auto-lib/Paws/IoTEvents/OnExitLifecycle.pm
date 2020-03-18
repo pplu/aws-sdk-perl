@@ -1,6 +1,7 @@
 package Paws::IoTEvents::OnExitLifecycle;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Event]', request_name => 'events', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

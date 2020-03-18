@@ -2,6 +2,7 @@ package Paws::Signer::SigningConfiguration;
   use Moose;
   has EncryptionAlgorithmOptions => (is => 'ro', isa => 'Paws::Signer::EncryptionAlgorithmOptions', request_name => 'encryptionAlgorithmOptions', traits => ['NameInRequest'], required => 1);
   has HashAlgorithmOptions => (is => 'ro', isa => 'Paws::Signer::HashAlgorithmOptions', request_name => 'hashAlgorithmOptions', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

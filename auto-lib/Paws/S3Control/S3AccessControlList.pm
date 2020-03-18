@@ -2,6 +2,7 @@ package Paws::S3Control::S3AccessControlList;
   use Moose;
   has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Grant]');
   has Owner => (is => 'ro', isa => 'Paws::S3Control::S3ObjectOwner', required => 1);
+
 1;
 
 ### main pod documentation begin ###

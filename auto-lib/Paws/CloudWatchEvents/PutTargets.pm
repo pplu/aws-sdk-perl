@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchEvents::PutTargets;
   use Moose;
+  has EventBusName => (is => 'ro', isa => 'Str');
   has Rule => (is => 'ro', isa => 'Str', required => 1);
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Target]', required => 1);
 
@@ -20,7 +21,7 @@ Paws::CloudWatchEvents::PutTargets - Arguments for method PutTargets on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutTargets on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method PutTargets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutTargets.
@@ -45,16 +46,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           EcsParameters => {
-            TaskDefinitionArn => 'MyArn',    # min: 1, max: 1600
-            TaskCount         => 1,          # min: 1; OPTIONAL
+            TaskDefinitionArn    => 'MyArn',    # min: 1, max: 1600
+            Group                => 'MyString',
+            LaunchType           => 'EC2',      # values: EC2, FARGATE; OPTIONAL
+            NetworkConfiguration => {
+              AwsvpcConfiguration => {
+                Subnets => [ 'MyString', ... ],
+                AssignPublicIp =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+                SecurityGroups => [ 'MyString', ... ],
+              },    # OPTIONAL
+            },    # OPTIONAL
+            PlatformVersion => 'MyString',
+            TaskCount       => 1,            # min: 1; OPTIONAL
           },    # OPTIONAL
           Input            => 'MyTargetInput',        # max: 8192; OPTIONAL
-          InputPath        => 'MyTargetInputPath',    # max: 256
+          InputPath        => 'MyTargetInputPath',    # max: 256; OPTIONAL
           InputTransformer => {
             InputTemplate => 'MyTransformerInput',    # min: 1, max: 8192
             InputPathsMap => {
-              'MyInputTransformerPathKey' =>
-                'MyTargetInputPath',    # key: min: 1, max: 256, value: max: 256
+              'MyInputTransformerPathKey' => 'MyTargetInputPath'
+              ,    # key: min: 1, max: 256, value: max: 256; OPTIONAL
             },    # max: 10; OPTIONAL
           },    # OPTIONAL
           KinesisParameters => {
@@ -81,7 +93,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-
+      EventBusName => 'MyEventBusName',    # OPTIONAL
     );
 
     # Results:
@@ -94,6 +106,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/PutTargets>
 
 =head1 ATTRIBUTES
+
+
+=head2 EventBusName => Str
+
+The name of the event bus associated with the rule. If you omit this,
+the default event bus is used.
+
 
 
 =head2 B<REQUIRED> Rule => Str

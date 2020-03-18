@@ -10,6 +10,7 @@ package Paws::ManagedBlockchain::Network;
   has Status => (is => 'ro', isa => 'Str');
   has VotingPolicy => (is => 'ro', isa => 'Paws::ManagedBlockchain::VotingPolicy');
   has VpcEndpointServiceName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

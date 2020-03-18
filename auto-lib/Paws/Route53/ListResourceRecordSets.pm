@@ -45,14 +45,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
-    my $IsTruncated    = $ListResourceRecordSetsResponse->IsTruncated;
-    my $MaxItems       = $ListResourceRecordSetsResponse->MaxItems;
-    my $ResourceRecordSets =
-      $ListResourceRecordSetsResponse->ResourceRecordSets;
+    my $IsTruncated = $ListResourceRecordSetsResponse->IsTruncated;
+    my $MaxItems    = $ListResourceRecordSetsResponse->MaxItems;
     my $NextRecordIdentifier =
       $ListResourceRecordSetsResponse->NextRecordIdentifier;
+    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
     my $NextRecordType = $ListResourceRecordSetsResponse->NextRecordType;
+    my $ResourceRecordSets =
+      $ListResourceRecordSetsResponse->ResourceRecordSets;
 
     # Returns a L<Paws::Route53::ListResourceRecordSetsResponse> object.
 
@@ -83,10 +83,10 @@ resource record sets.
 
 =head2 StartRecordIdentifier => Str
 
-I<Weighted resource record sets only:> If results were truncated for a
-given DNS name and type, specify the value of C<NextRecordIdentifier>
-from the previous response to get the next resource record set that has
-the current DNS name and type.
+I<Resource record sets that have a routing policy other than simple:>
+If results were truncated for a given DNS name and type, specify the
+value of C<NextRecordIdentifier> from the previous response to get the
+next resource record set that has the current DNS name and type.
 
 
 
@@ -105,13 +105,17 @@ Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
 C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
 | C<TXT>
 
-Values for weighted, latency, geo, and failover resource record sets:
-C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF>
-| C<SRV> | C<TXT>
+Values for weighted, latency, geolocation, and failover resource record
+sets: C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> |
+C<SPF> | C<SRV> | C<TXT>
 
 Values for alias resource record sets:
 
 =over
+
+=item *
+
+B<API Gateway custom regional API or edge-optimized API>: A
 
 =item *
 
@@ -123,11 +127,15 @@ B<Elastic Beanstalk environment that has a regionalized subdomain>: A
 
 =item *
 
-B<ELB load balancer>: A | AAAA
+B<Elastic Load Balancing load balancer>: A | AAAA
 
 =item *
 
 B<Amazon S3 bucket>: A
+
+=item *
+
+B<Amazon VPC interface VPC endpoint>: A
 
 =item *
 

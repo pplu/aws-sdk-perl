@@ -4,6 +4,7 @@ package Paws::DynamoDB::UpdateReplicationGroupMemberAction;
   has KMSMasterKeyId => (is => 'ro', isa => 'Str');
   has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputOverride');
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::LicenseManager::LicenseConfigurationAssociation;
   has ResourceArn => (is => 'ro', isa => 'Str');
   has ResourceOwnerId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

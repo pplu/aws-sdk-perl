@@ -43,27 +43,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation creates a new environment for version v1 of a java
     # application named my-app:
     my $EnvironmentDescription = $elasticbeanstalk->CreateEnvironment(
-      {
-        'EnvironmentName' => 'my-env',
-        'ApplicationName' => 'my-app',
-        'SolutionStackName' =>
-          '64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8',
-        'CNAMEPrefix'  => 'my-app',
-        'VersionLabel' => 'v1'
-      }
+      'ApplicationName' => 'my-app',
+      'CNAMEPrefix'     => 'my-app',
+      'EnvironmentName' => 'my-env',
+      'SolutionStackName' =>
+        '64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8',
+      'VersionLabel' => 'v1'
     );
 
     # Results:
-    my $Tier              = $EnvironmentDescription->Tier;
-    my $DateCreated       = $EnvironmentDescription->DateCreated;
-    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
-    my $Status            = $EnvironmentDescription->Status;
-    my $CNAME             = $EnvironmentDescription->CNAME;
-    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
     my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
     my $Health            = $EnvironmentDescription->Health;
     my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
-    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
     # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
@@ -120,7 +118,7 @@ The name of the group to which the target environment belongs. Specify
 a group name only if the environment's name is specified in an
 environment manifest and not with the environment name parameter. See
 Environment Manifest (env.yaml)
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 for details.
 
 
@@ -153,11 +151,15 @@ This is an alternative to specifying a template name. If specified, AWS
 Elastic Beanstalk sets the configuration values to the default values
 associated with the specified solution stack.
 
+For a list of current solution stacks, see Elastic Beanstalk Supported
+Platforms
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
+
 
 
 =head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
 
-This specifies the tags applied to resources in the environment.
+Specifies the tags applied to resources in the environment.
 
 
 

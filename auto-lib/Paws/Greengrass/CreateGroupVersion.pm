@@ -2,6 +2,7 @@
 package Paws::Greengrass::CreateGroupVersion;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has ConnectorDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateGroupVersionResponse = $greengrass->CreateGroupVersion(
       GroupId                          => 'My__string',
       AmznClientToken                  => 'My__string',    # OPTIONAL
+      ConnectorDefinitionVersionArn    => 'My__string',    # OPTIONAL
       CoreDefinitionVersionArn         => 'My__string',    # OPTIONAL
       DeviceDefinitionVersionArn       => 'My__string',    # OPTIONAL
       FunctionDefinitionVersionArn     => 'My__string',    # OPTIONAL
@@ -47,15 +49,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationTimestamp = $CreateGroupVersionResponse->CreationTimestamp;
-    my $Version           = $CreateGroupVersionResponse->Version;
-    my $Id                = $CreateGroupVersionResponse->Id;
     my $Arn               = $CreateGroupVersionResponse->Arn;
+    my $CreationTimestamp = $CreateGroupVersionResponse->CreationTimestamp;
+    my $Id                = $CreateGroupVersionResponse->Id;
+    my $Version           = $CreateGroupVersionResponse->Version;
 
     # Returns a L<Paws::Greengrass::CreateGroupVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateGroupVersion>
 
 =head1 ATTRIBUTES
 
@@ -63,6 +65,12 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/greeng
 =head2 AmznClientToken => Str
 
 A client token used to correlate requests and responses.
+
+
+
+=head2 ConnectorDefinitionVersionArn => Str
+
+The ARN of the connector definition version for this group.
 
 
 
@@ -86,7 +94,7 @@ The ARN of the function definition version for this group.
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the AWS Greengrass group.
+The ID of the Greengrass group.
 
 
 
@@ -98,7 +106,7 @@ The ARN of the logger definition version for this group.
 
 =head2 ResourceDefinitionVersionArn => Str
 
-The resource definition version ARN for this group.
+The ARN of the resource definition version for this group.
 
 
 

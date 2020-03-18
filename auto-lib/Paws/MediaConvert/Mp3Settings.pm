@@ -5,6 +5,7 @@ package Paws::MediaConvert::Mp3Settings;
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
   has VbrQuality => (is => 'ro', isa => 'Int', request_name => 'vbrQuality', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

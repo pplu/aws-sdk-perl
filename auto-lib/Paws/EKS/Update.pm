@@ -6,6 +6,7 @@ package Paws::EKS::Update;
   has Params => (is => 'ro', isa => 'ArrayRef[Paws::EKS::UpdateParam]', request_name => 'params', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SageMaker::Parent;
   use Moose;
   has ExperimentName => (is => 'ro', isa => 'Str');
   has TrialName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

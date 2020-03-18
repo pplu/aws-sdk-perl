@@ -9,6 +9,7 @@ package Paws::Personalize::Recipe;
   has RecipeArn => (is => 'ro', isa => 'Str', request_name => 'recipeArn', traits => ['NameInRequest']);
   has RecipeType => (is => 'ro', isa => 'Str', request_name => 'recipeType', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

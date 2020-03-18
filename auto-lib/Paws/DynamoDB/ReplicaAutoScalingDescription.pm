@@ -5,6 +5,7 @@ package Paws::DynamoDB::ReplicaAutoScalingDescription;
   has ReplicaProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

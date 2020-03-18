@@ -1,6 +1,7 @@
 package Paws::Glue::TriggerNodeDetails;
   use Moose;
   has Trigger => (is => 'ro', isa => 'Paws::Glue::Trigger');
+
 1;
 
 ### main pod documentation begin ###

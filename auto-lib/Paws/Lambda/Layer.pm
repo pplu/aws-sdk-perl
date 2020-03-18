@@ -2,6 +2,7 @@ package Paws::Lambda::Layer;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

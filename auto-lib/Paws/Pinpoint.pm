@@ -24,6 +24,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateCampaign', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateExportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateExportJob', @_);
@@ -34,9 +39,29 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateImportJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateJourney {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateJourney', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePushTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreatePushTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateSegment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSmsTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateSmsTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateVoiceTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateVoiceTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAdmChannel {
@@ -84,6 +109,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteEmailChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteEndpoint', @_);
@@ -99,6 +129,16 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteGcmChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteJourney {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteJourney', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePushTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeletePushTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteSegment', @_);
@@ -109,6 +149,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteSmsChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSmsTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteSmsTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteUserEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteUserEndpoints', @_);
@@ -117,6 +162,11 @@ package Paws::Pinpoint;
   sub DeleteVoiceChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteVoiceChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVoiceTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteVoiceTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAdmChannel {
@@ -149,6 +199,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetApplicationDateRangeKpi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApplicationDateRangeKpi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetApplicationSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApplicationSettings', @_);
@@ -174,6 +229,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetCampaignActivities', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCampaignDateRangeKpi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetCampaignDateRangeKpi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCampaigns {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetCampaigns', @_);
@@ -197,6 +257,11 @@ package Paws::Pinpoint;
   sub GetEmailChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetEmailChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetEmailTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetEndpoint {
@@ -234,6 +299,31 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetImportJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetJourney {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetJourney', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetJourneyDateRangeKpi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetJourneyDateRangeKpi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetJourneyExecutionActivityMetrics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetJourneyExecutionActivityMetrics', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetJourneyExecutionMetrics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetJourneyExecutionMetrics', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPushTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetPushTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSegment', @_);
@@ -269,6 +359,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSmsChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSmsTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSmsTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetUserEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetUserEndpoints', @_);
@@ -279,9 +374,29 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetVoiceChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVoiceTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetVoiceTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListJourneys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::ListJourneys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::ListTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTemplateVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::ListTemplateVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PhoneNumberValidate {
@@ -369,6 +484,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateEmailChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateEndpoint', @_);
@@ -384,6 +504,21 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateGcmChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateJourney {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateJourney', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateJourneyState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateJourneyState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePushTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdatePushTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateSegment', @_);
@@ -394,15 +529,30 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateSmsChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateSmsTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateSmsTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTemplateActiveVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateTemplateActiveVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateVoiceChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateVoiceChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateVoiceTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateVoiceTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateExportJob CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel DeleteUserEndpoints DeleteVoiceChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetUserEndpoints GetVoiceChannel ListTagsForResource PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages TagResource UntagResource UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel UpdateVoiceChannel / }
+  sub operations { qw/CreateApp CreateCampaign CreateEmailTemplate CreateExportJob CreateImportJob CreateJourney CreatePushTemplate CreateSegment CreateSmsTemplate CreateVoiceTemplate DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEmailTemplate DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteJourney DeletePushTemplate DeleteSegment DeleteSmsChannel DeleteSmsTemplate DeleteUserEndpoints DeleteVoiceChannel DeleteVoiceTemplate GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationDateRangeKpi GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaignDateRangeKpi GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEmailTemplate GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetJourney GetJourneyDateRangeKpi GetJourneyExecutionActivityMetrics GetJourneyExecutionMetrics GetPushTemplate GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetSmsTemplate GetUserEndpoints GetVoiceChannel GetVoiceTemplate ListJourneys ListTagsForResource ListTemplates ListTemplateVersions PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages TagResource UntagResource UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEmailTemplate UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateJourney UpdateJourneyState UpdatePushTemplate UpdateSegment UpdateSmsChannel UpdateSmsTemplate UpdateTemplateActiveVersion UpdateVoiceChannel UpdateVoiceTemplate / }
 
 1;
 
@@ -430,7 +580,7 @@ Paws::Pinpoint - Perl Interface to AWS Amazon Pinpoint
 
 =head1 DESCRIPTION
 
-Amazon Pinpoint
+Doc Engage API - Amazon Pinpoint API
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01>
 
@@ -448,7 +598,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateApp>
 
-Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
+Returns: a L<Paws::Pinpoint::CreateAppResponse> instance
 
 Creates an application.
 
@@ -466,10 +616,29 @@ Creates an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateCampaign>
 
-Returns: a L<Paws::Pinpoint::CampaignResponse> instance
+Returns: a L<Paws::Pinpoint::CreateCampaignResponse> instance
 
 Creates a new campaign for an application or updates the settings of an
 existing campaign for an application.
+
+
+=head2 CreateEmailTemplate
+
+=over
+
+=item EmailTemplateRequest => L<Paws::Pinpoint::EmailTemplateRequest>
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreateEmailTemplate>
+
+Returns: a L<Paws::Pinpoint::CreateEmailTemplateResponse> instance
+
+Creates a message template for messages that are sent through the email
+channel.
 
 
 =head2 CreateExportJob
@@ -487,7 +656,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateExportJob>
 
 Returns: a L<Paws::Pinpoint::CreateExportJobResponse> instance
 
-Creates a new export job for an application.
+Creates an export job for an application.
 
 
 =head2 CreateImportJob
@@ -505,7 +674,44 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateImportJob>
 
 Returns: a L<Paws::Pinpoint::CreateImportJobResponse> instance
 
-Creates a new import job for an application.
+Creates an import job for an application.
+
+
+=head2 CreateJourney
+
+=over
+
+=item ApplicationId => Str
+
+=item WriteJourneyRequest => L<Paws::Pinpoint::WriteJourneyRequest>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreateJourney>
+
+Returns: a L<Paws::Pinpoint::CreateJourneyResponse> instance
+
+Creates a journey for an application.
+
+
+=head2 CreatePushTemplate
+
+=over
+
+=item PushNotificationTemplateRequest => L<Paws::Pinpoint::PushNotificationTemplateRequest>
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreatePushTemplate>
+
+Returns: a L<Paws::Pinpoint::CreatePushTemplateResponse> instance
+
+Creates a message template for messages that are sent through a push
+notification channel.
 
 
 =head2 CreateSegment
@@ -521,11 +727,49 @@ Creates a new import job for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateSegment>
 
-Returns: a L<Paws::Pinpoint::SegmentResponse> instance
+Returns: a L<Paws::Pinpoint::CreateSegmentResponse> instance
 
 Creates a new segment for an application or updates the configuration,
 dimension, and other settings for an existing segment that's associated
 with an application.
+
+
+=head2 CreateSmsTemplate
+
+=over
+
+=item SMSTemplateRequest => L<Paws::Pinpoint::SMSTemplateRequest>
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreateSmsTemplate>
+
+Returns: a L<Paws::Pinpoint::CreateSmsTemplateResponse> instance
+
+Creates a message template for messages that are sent through the SMS
+channel.
+
+
+=head2 CreateVoiceTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item VoiceTemplateRequest => L<Paws::Pinpoint::VoiceTemplateRequest>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreateVoiceTemplate>
+
+Returns: a L<Paws::Pinpoint::CreateVoiceTemplateResponse> instance
+
+Creates a message template for messages that are sent through the voice
+channel.
 
 
 =head2 DeleteAdmChannel
@@ -624,7 +868,7 @@ any existing settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApp>
 
-Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
+Returns: a L<Paws::Pinpoint::DeleteAppResponse> instance
 
 Deletes an application.
 
@@ -681,6 +925,25 @@ Disables the email channel for an application and deletes any existing
 settings for the channel.
 
 
+=head2 DeleteEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteEmailTemplate>
+
+Returns: a L<Paws::Pinpoint::DeleteEmailTemplateResponse> instance
+
+Deletes a message template for messages that were sent through the
+email channel.
+
+
 =head2 DeleteEndpoint
 
 =over
@@ -732,6 +995,43 @@ Disables the GCM channel for an application and deletes any existing
 settings for the channel.
 
 
+=head2 DeleteJourney
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteJourney>
+
+Returns: a L<Paws::Pinpoint::DeleteJourneyResponse> instance
+
+Deletes a journey from an application.
+
+
+=head2 DeletePushTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeletePushTemplate>
+
+Returns: a L<Paws::Pinpoint::DeletePushTemplateResponse> instance
+
+Deletes a message template for messages that were sent through a push
+notification channel.
+
+
 =head2 DeleteSegment
 
 =over
@@ -767,6 +1067,25 @@ Disables the SMS channel for an application and deletes any existing
 settings for the channel.
 
 
+=head2 DeleteSmsTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteSmsTemplate>
+
+Returns: a L<Paws::Pinpoint::DeleteSmsTemplateResponse> instance
+
+Deletes a message template for messages that were sent through the SMS
+channel.
+
+
 =head2 DeleteUserEndpoints
 
 =over
@@ -800,6 +1119,25 @@ Returns: a L<Paws::Pinpoint::DeleteVoiceChannelResponse> instance
 
 Disables the voice channel for an application and deletes any existing
 settings for the channel.
+
+
+=head2 DeleteVoiceTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteVoiceTemplate>
+
+Returns: a L<Paws::Pinpoint::DeleteVoiceTemplateResponse> instance
+
+Deletes a message template for messages that were sent through the
+voice channel.
 
 
 =head2 GetAdmChannel
@@ -898,9 +1236,36 @@ sandbox channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApp>
 
-Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
+Returns: a L<Paws::Pinpoint::GetAppResponse> instance
 
 Retrieves information about an application.
+
+
+=head2 GetApplicationDateRangeKpi
+
+=over
+
+=item ApplicationId => Str
+
+=item KpiName => Str
+
+=item [EndTime => Str]
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetApplicationDateRangeKpi>
+
+Returns: a L<Paws::Pinpoint::GetApplicationDateRangeKpiResponse> instance
+
+Retrieves (queries) pre-aggregated data for a standard metric that
+applies to an application.
 
 
 =head2 GetApplicationSettings
@@ -914,7 +1279,7 @@ Retrieves information about an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApplicationSettings>
 
-Returns: a L<Paws::Pinpoint::ApplicationSettingsResource> instance
+Returns: a L<Paws::Pinpoint::GetApplicationSettingsResponse> instance
 
 Retrieves information about the settings for an application.
 
@@ -934,7 +1299,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApps>
 
 Returns: a L<Paws::Pinpoint::GetAppsResponse> instance
 
-Retrieves information about all of your applications.
+Retrieves information about all the applications that are associated
+with your Amazon Pinpoint account.
 
 
 =head2 GetBaiduChannel
@@ -950,8 +1316,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetBaiduChannel>
 
 Returns: a L<Paws::Pinpoint::GetBaiduChannelResponse> instance
 
-Retrieves information about the status and settings of the Baidu Cloud
-Push channel for an application.
+Retrieves information about the status and settings of the Baidu
+channel for an application.
 
 
 =head2 GetCampaign
@@ -990,9 +1356,38 @@ settings for a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignActivities>
 
-Returns: a L<Paws::Pinpoint::ActivitiesResponse> instance
+Returns: a L<Paws::Pinpoint::GetCampaignActivitiesResponse> instance
 
-Retrieves information about the activity performed by a campaign.
+Retrieves information about all the activities for a campaign.
+
+
+=head2 GetCampaignDateRangeKpi
+
+=over
+
+=item ApplicationId => Str
+
+=item CampaignId => Str
+
+=item KpiName => Str
+
+=item [EndTime => Str]
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignDateRangeKpi>
+
+Returns: a L<Paws::Pinpoint::GetCampaignDateRangeKpiResponse> instance
+
+Retrieves (queries) pre-aggregated data for a standard metric that
+applies to a campaign.
 
 
 =head2 GetCampaigns
@@ -1031,7 +1426,7 @@ settings for all the campaigns that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersion>
 
-Returns: a L<Paws::Pinpoint::CampaignResponse> instance
+Returns: a L<Paws::Pinpoint::GetCampaignVersionResponse> instance
 
 Retrieves information about the status, configuration, and other
 settings for a specific version of a campaign.
@@ -1054,10 +1449,10 @@ settings for a specific version of a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersions>
 
-Returns: a L<Paws::Pinpoint::CampaignsResponse> instance
+Returns: a L<Paws::Pinpoint::GetCampaignVersionsResponse> instance
 
 Retrieves information about the status, configuration, and other
-settings for all versions of a specific campaign.
+settings for all versions of a campaign.
 
 
 =head2 GetChannels
@@ -1071,7 +1466,7 @@ settings for all versions of a specific campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetChannels>
 
-Returns: a L<Paws::Pinpoint::ChannelsResponse> instance
+Returns: a L<Paws::Pinpoint::GetChannelsResponse> instance
 
 Retrieves information about the history and status of each channel for
 an application.
@@ -1094,6 +1489,25 @@ Retrieves information about the status and settings of the email
 channel for an application.
 
 
+=head2 GetEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetEmailTemplate>
+
+Returns: a L<Paws::Pinpoint::GetEmailTemplateResponse> instance
+
+Retrieves the content and settings of a message template for messages
+that are sent through the email channel.
+
+
 =head2 GetEndpoint
 
 =over
@@ -1107,7 +1521,7 @@ channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetEndpoint>
 
-Returns: a L<Paws::Pinpoint::EndpointResponse> instance
+Returns: a L<Paws::Pinpoint::GetEndpointResponse> instance
 
 Retrieves information about the settings and attributes of a specific
 endpoint for an application.
@@ -1225,6 +1639,121 @@ Returns: a L<Paws::Pinpoint::GetImportJobsResponse> instance
 
 Retrieves information about the status and settings of all the import
 jobs for an application.
+
+
+=head2 GetJourney
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetJourney>
+
+Returns: a L<Paws::Pinpoint::GetJourneyResponse> instance
+
+Retrieves information about the status, configuration, and other
+settings for a journey.
+
+
+=head2 GetJourneyDateRangeKpi
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyId => Str
+
+=item KpiName => Str
+
+=item [EndTime => Str]
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetJourneyDateRangeKpi>
+
+Returns: a L<Paws::Pinpoint::GetJourneyDateRangeKpiResponse> instance
+
+Retrieves (queries) pre-aggregated data for a standard engagement
+metric that applies to a journey.
+
+
+=head2 GetJourneyExecutionActivityMetrics
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyActivityId => Str
+
+=item JourneyId => Str
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetJourneyExecutionActivityMetrics>
+
+Returns: a L<Paws::Pinpoint::GetJourneyExecutionActivityMetricsResponse> instance
+
+Retrieves (queries) pre-aggregated data for a standard execution metric
+that applies to a journey activity.
+
+
+=head2 GetJourneyExecutionMetrics
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyId => Str
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetJourneyExecutionMetrics>
+
+Returns: a L<Paws::Pinpoint::GetJourneyExecutionMetricsResponse> instance
+
+Retrieves (queries) pre-aggregated data for a standard execution metric
+that applies to a journey.
+
+
+=head2 GetPushTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetPushTemplate>
+
+Returns: a L<Paws::Pinpoint::GetPushTemplateResponse> instance
+
+Retrieves the content and settings of a message template for messages
+that are sent through a push notification channel.
 
 
 =head2 GetSegment
@@ -1355,8 +1884,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentVersions>
 Returns: a L<Paws::Pinpoint::GetSegmentVersionsResponse> instance
 
 Retrieves information about the configuration, dimension, and other
-settings for all versions of a specific segment that's associated with
-an application.
+settings for all the versions of a specific segment that's associated
+with an application.
 
 
 =head2 GetSmsChannel
@@ -1374,6 +1903,25 @@ Returns: a L<Paws::Pinpoint::GetSmsChannelResponse> instance
 
 Retrieves information about the status and settings of the SMS channel
 for an application.
+
+
+=head2 GetSmsTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetSmsTemplate>
+
+Returns: a L<Paws::Pinpoint::GetSmsTemplateResponse> instance
+
+Retrieves the content and settings of a message template for messages
+that are sent through the SMS channel.
 
 
 =head2 GetUserEndpoints
@@ -1412,6 +1960,46 @@ Retrieves information about the status and settings of the voice
 channel for an application.
 
 
+=head2 GetVoiceTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetVoiceTemplate>
+
+Returns: a L<Paws::Pinpoint::GetVoiceTemplateResponse> instance
+
+Retrieves the content and settings of a message template for messages
+that are sent through the voice channel.
+
+
+=head2 ListJourneys
+
+=over
+
+=item ApplicationId => Str
+
+=item [PageSize => Str]
+
+=item [Token => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::ListJourneys>
+
+Returns: a L<Paws::Pinpoint::ListJourneysResponse> instance
+
+Retrieves information about the status, configuration, and other
+settings for all the journeys that are associated with an application.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -1426,7 +2014,53 @@ Each argument is described in detail in: L<Paws::Pinpoint::ListTagsForResource>
 Returns: a L<Paws::Pinpoint::ListTagsForResourceResponse> instance
 
 Retrieves all the tags (keys and values) that are associated with an
-application, campaign, or segment.
+application, campaign, journey, message template, or segment.
+
+
+=head2 ListTemplates
+
+=over
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+=item [Prefix => Str]
+
+=item [TemplateType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::ListTemplates>
+
+Returns: a L<Paws::Pinpoint::ListTemplatesResponse> instance
+
+Retrieves information about all the message templates that are
+associated with your Amazon Pinpoint account.
+
+
+=head2 ListTemplateVersions
+
+=over
+
+=item TemplateName => Str
+
+=item TemplateType => Str
+
+=item [NextToken => Str]
+
+=item [PageSize => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::ListTemplateVersions>
+
+Returns: a L<Paws::Pinpoint::ListTemplateVersionsResponse> instance
+
+Retrieves information about all the versions of a specific message
+template.
 
 
 =head2 PhoneNumberValidate
@@ -1440,7 +2074,7 @@ application, campaign, or segment.
 
 Each argument is described in detail in: L<Paws::Pinpoint::PhoneNumberValidate>
 
-Returns: a L<Paws::Pinpoint::NumberValidateResponse> instance
+Returns: a L<Paws::Pinpoint::PhoneNumberValidateResponse> instance
 
 Retrieves information about a phone number.
 
@@ -1517,7 +2151,7 @@ the endpoints that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::SendMessages>
 
-Returns: a L<Paws::Pinpoint::MessageResponse> instance
+Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
 
 Creates and sends a direct message.
 
@@ -1555,8 +2189,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::TagResource>
 
 Returns: nothing
 
-Adds one or more tags (keys and values) to an application, campaign, or
-segment.
+Adds one or more tags (keys and values) to an application, campaign,
+journey, message template, or segment.
 
 
 =head2 UntagResource
@@ -1575,7 +2209,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UntagResource>
 Returns: nothing
 
 Removes one or more tags (keys and values) from an application,
-campaign, or segment.
+campaign, journey, message template, or segment.
 
 
 =head2 UpdateAdmChannel
@@ -1593,7 +2227,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateAdmChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateAdmChannelResponse> instance
 
-Updates the ADM channel settings for an application.
+Enables the ADM channel for an application or updates the status and
+settings of the ADM channel for an application.
 
 
 =head2 UpdateApnsChannel
@@ -1611,7 +2246,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateApnsChannelResponse> instance
 
-Updates the APNs channel settings for an application.
+Enables the APNs channel for an application or updates the status and
+settings of the APNs channel for an application.
 
 
 =head2 UpdateApnsSandboxChannel
@@ -1629,7 +2265,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsSandboxChan
 
 Returns: a L<Paws::Pinpoint::UpdateApnsSandboxChannelResponse> instance
 
-Updates the APNs sandbox channel settings for an application.
+Enables the APNs sandbox channel for an application or updates the
+status and settings of the APNs sandbox channel for an application.
 
 
 =head2 UpdateApnsVoipChannel
@@ -1647,7 +2284,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipChannel
 
 Returns: a L<Paws::Pinpoint::UpdateApnsVoipChannelResponse> instance
 
-Updates the APNs VoIP channel settings for an application.
+Enables the APNs VoIP channel for an application or updates the status
+and settings of the APNs VoIP channel for an application.
 
 
 =head2 UpdateApnsVoipSandboxChannel
@@ -1665,7 +2303,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipSandbox
 
 Returns: a L<Paws::Pinpoint::UpdateApnsVoipSandboxChannelResponse> instance
 
-Updates the settings for the APNs VoIP sandbox channel for an
+Enables the APNs VoIP sandbox channel for an application or updates the
+status and settings of the APNs VoIP sandbox channel for an
 application.
 
 
@@ -1702,7 +2341,8 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateBaiduChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateBaiduChannelResponse> instance
 
-Updates the settings of the Baidu channel for an application.
+Enables the Baidu channel for an application or updates the status and
+settings of the Baidu channel for an application.
 
 
 =head2 UpdateCampaign
@@ -1722,7 +2362,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateCampaign>
 
 Returns: a L<Paws::Pinpoint::UpdateCampaignResponse> instance
 
-Updates the settings for a campaign.
+Updates the configuration and other settings for a campaign.
 
 
 =head2 UpdateEmailChannel
@@ -1740,8 +2380,31 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateEmailChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateEmailChannelResponse> instance
 
-Updates the status and settings of the email channel for an
-application.
+Enables the email channel for an application or updates the status and
+settings of the email channel for an application.
+
+
+=head2 UpdateEmailTemplate
+
+=over
+
+=item EmailTemplateRequest => L<Paws::Pinpoint::EmailTemplateRequest>
+
+=item TemplateName => Str
+
+=item [CreateNewVersion => Bool]
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateEmailTemplate>
+
+Returns: a L<Paws::Pinpoint::UpdateEmailTemplateResponse> instance
+
+Updates an existing message template for messages that are sent through
+the email channel.
 
 
 =head2 UpdateEndpoint
@@ -1759,7 +2422,7 @@ application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpoint>
 
-Returns: a L<Paws::Pinpoint::MessageBody> instance
+Returns: a L<Paws::Pinpoint::UpdateEndpointResponse> instance
 
 Creates a new endpoint for an application or updates the settings and
 attributes of an existing endpoint for an application. You can also use
@@ -1804,7 +2467,71 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateGcmChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateGcmChannelResponse> instance
 
-Updates the status and settings of the GCM channel for an application.
+Enables the GCM channel for an application or updates the status and
+settings of the GCM channel for an application.
+
+
+=head2 UpdateJourney
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyId => Str
+
+=item WriteJourneyRequest => L<Paws::Pinpoint::WriteJourneyRequest>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateJourney>
+
+Returns: a L<Paws::Pinpoint::UpdateJourneyResponse> instance
+
+Updates the configuration and other settings for a journey.
+
+
+=head2 UpdateJourneyState
+
+=over
+
+=item ApplicationId => Str
+
+=item JourneyId => Str
+
+=item JourneyStateRequest => L<Paws::Pinpoint::JourneyStateRequest>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateJourneyState>
+
+Returns: a L<Paws::Pinpoint::UpdateJourneyStateResponse> instance
+
+Cancels (stops) an active journey.
+
+
+=head2 UpdatePushTemplate
+
+=over
+
+=item PushNotificationTemplateRequest => L<Paws::Pinpoint::PushNotificationTemplateRequest>
+
+=item TemplateName => Str
+
+=item [CreateNewVersion => Bool]
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdatePushTemplate>
+
+Returns: a L<Paws::Pinpoint::UpdatePushTemplateResponse> instance
+
+Updates an existing message template for messages that are sent through
+a push notification channel.
 
 
 =head2 UpdateSegment
@@ -1844,7 +2571,52 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateSmsChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateSmsChannelResponse> instance
 
-Updates the status and settings of the SMS channel for an application.
+Enables the SMS channel for an application or updates the status and
+settings of the SMS channel for an application.
+
+
+=head2 UpdateSmsTemplate
+
+=over
+
+=item SMSTemplateRequest => L<Paws::Pinpoint::SMSTemplateRequest>
+
+=item TemplateName => Str
+
+=item [CreateNewVersion => Bool]
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateSmsTemplate>
+
+Returns: a L<Paws::Pinpoint::UpdateSmsTemplateResponse> instance
+
+Updates an existing message template for messages that are sent through
+the SMS channel.
+
+
+=head2 UpdateTemplateActiveVersion
+
+=over
+
+=item TemplateActiveVersionRequest => L<Paws::Pinpoint::TemplateActiveVersionRequest>
+
+=item TemplateName => Str
+
+=item TemplateType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateTemplateActiveVersion>
+
+Returns: a L<Paws::Pinpoint::UpdateTemplateActiveVersionResponse> instance
+
+Changes the status of a specific version of a message template to
+I<active>.
 
 
 =head2 UpdateVoiceChannel
@@ -1862,8 +2634,31 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateVoiceChannel>
 
 Returns: a L<Paws::Pinpoint::UpdateVoiceChannelResponse> instance
 
-Updates the status and settings of the voice channel for an
-application.
+Enables the voice channel for an application or updates the status and
+settings of the voice channel for an application.
+
+
+=head2 UpdateVoiceTemplate
+
+=over
+
+=item TemplateName => Str
+
+=item VoiceTemplateRequest => L<Paws::Pinpoint::VoiceTemplateRequest>
+
+=item [CreateNewVersion => Bool]
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateVoiceTemplate>
+
+Returns: a L<Paws::Pinpoint::UpdateVoiceTemplateResponse> instance
+
+Updates an existing message template for messages that are sent through
+the voice channel.
 
 
 

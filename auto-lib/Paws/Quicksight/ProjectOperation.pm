@@ -1,6 +1,7 @@
 package Paws::Quicksight::ProjectOperation;
   use Moose;
   has ProjectedColumns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

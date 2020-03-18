@@ -3,6 +3,7 @@ package Paws::RDSData::SqlParameter;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has TypeHint => (is => 'ro', isa => 'Str', request_name => 'typeHint', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Paws::RDSData::Field', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

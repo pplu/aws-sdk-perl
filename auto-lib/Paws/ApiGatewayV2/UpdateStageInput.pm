@@ -8,6 +8,7 @@ package Paws::ApiGatewayV2::UpdateStageInput;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has RouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettingsMap', request_name => 'routeSettings', traits => ['NameInRequest']);
   has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', request_name => 'stageVariables', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

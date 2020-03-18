@@ -3,6 +3,7 @@ package Paws::SageMaker::USD;
   has Cents => (is => 'ro', isa => 'Int');
   has Dollars => (is => 'ro', isa => 'Int');
   has TenthFractionsOfACent => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

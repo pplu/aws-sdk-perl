@@ -4,6 +4,7 @@ package Paws::Robomaker::Source;
   has Etag => (is => 'ro', isa => 'Str', request_name => 'etag', traits => ['NameInRequest']);
   has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
   has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

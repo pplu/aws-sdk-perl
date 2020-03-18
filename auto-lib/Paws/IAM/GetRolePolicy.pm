@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $PolicyDocument = $GetRolePolicyResponse->PolicyDocument;
-    my $RoleName       = $GetRolePolicyResponse->RoleName;
     my $PolicyName     = $GetRolePolicyResponse->PolicyName;
+    my $RoleName       = $GetRolePolicyResponse->RoleName;
 
     # Returns a L<Paws::IAM::GetRolePolicyResponse> object.
 
@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the policy document to get.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -62,7 +62,7 @@ also include any of the following characters: _+=,.@-
 
 The name of the role associated with the policy.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

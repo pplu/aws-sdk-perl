@@ -2,6 +2,7 @@ package Paws::MarketplaceCatalog::Filter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has ValueList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

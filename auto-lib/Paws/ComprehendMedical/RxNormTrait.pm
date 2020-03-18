@@ -2,6 +2,7 @@ package Paws::ComprehendMedical::RxNormTrait;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Score => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

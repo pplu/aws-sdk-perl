@@ -2,6 +2,7 @@ package Paws::CodeBuild::LogsConfig;
   use Moose;
   has CloudWatchLogs => (is => 'ro', isa => 'Paws::CodeBuild::CloudWatchLogsConfig', request_name => 'cloudWatchLogs', traits => ['NameInRequest']);
   has S3Logs => (is => 'ro', isa => 'Paws::CodeBuild::S3LogsConfig', request_name => 's3Logs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

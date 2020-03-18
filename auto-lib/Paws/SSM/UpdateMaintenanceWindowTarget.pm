@@ -43,21 +43,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Replace          => 1,                                   # OPTIONAL
       Targets          => [
         {
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL
       );
 
     # Results:
-    my $Targets        = $UpdateMaintenanceWindowTargetResult->Targets;
-    my $WindowTargetId = $UpdateMaintenanceWindowTargetResult->WindowTargetId;
-    my $WindowId       = $UpdateMaintenanceWindowTargetResult->WindowId;
-    my $Description    = $UpdateMaintenanceWindowTargetResult->Description;
-    my $Name           = $UpdateMaintenanceWindowTargetResult->Name;
+    my $Description = $UpdateMaintenanceWindowTargetResult->Description;
+    my $Name        = $UpdateMaintenanceWindowTargetResult->Name;
     my $OwnerInformation =
       $UpdateMaintenanceWindowTargetResult->OwnerInformation;
+    my $Targets        = $UpdateMaintenanceWindowTargetResult->Targets;
+    my $WindowId       = $UpdateMaintenanceWindowTargetResult->WindowId;
+    my $WindowTargetId = $UpdateMaintenanceWindowTargetResult->WindowTargetId;
 
     # Returns a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> object.
 
@@ -82,8 +82,8 @@ A name for the update.
 =head2 OwnerInformation => Str
 
 User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this Maintenance
-Window.
+raised while running tasks for these targets in this maintenance
+window.
 
 
 
@@ -103,7 +103,7 @@ The targets to add or replace.
 
 =head2 B<REQUIRED> WindowId => Str
 
-The Maintenance Window ID with which to modify the target.
+The maintenance window ID with which to modify the target.
 
 
 

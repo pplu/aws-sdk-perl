@@ -2,6 +2,7 @@ package Paws::ElastiCache::CustomerNodeEndpoint;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

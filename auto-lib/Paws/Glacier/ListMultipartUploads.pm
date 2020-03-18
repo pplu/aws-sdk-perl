@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $UploadsList = $ListMultipartUploadsOutput->UploadsList;
     my $Marker      = $ListMultipartUploadsOutput->Marker;
+    my $UploadsList = $ListMultipartUploadsOutput->UploadsList;
 
     # Returns a L<Paws::Glacier::ListMultipartUploadsOutput> object.
 

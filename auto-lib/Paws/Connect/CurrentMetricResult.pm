@@ -2,6 +2,7 @@ package Paws::Connect::CurrentMetricResult;
   use Moose;
   has Collections => (is => 'ro', isa => 'ArrayRef[Paws::Connect::CurrentMetricData]');
   has Dimensions => (is => 'ro', isa => 'Paws::Connect::Dimensions');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Rekognition::RegionOfInterest;
   use Moose;
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
+
 1;
 
 ### main pod documentation begin ###

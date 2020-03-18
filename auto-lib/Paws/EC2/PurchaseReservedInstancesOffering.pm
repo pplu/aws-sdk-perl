@@ -4,6 +4,7 @@ package Paws::EC2::PurchaseReservedInstancesOffering;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has LimitPrice => (is => 'ro', isa => 'Paws::EC2::ReservedInstanceLimitPrice', traits => ['NameInRequest'], request_name => 'limitPrice' );
+  has PurchaseTime => (is => 'ro', isa => 'Str');
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,12 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PurchaseReservedInstancesOfferingResult =
       $ec2->PurchaseReservedInstancesOffering(
       InstanceCount               => 1,
-      ReservedInstancesOfferingId => 'MyString',
-      DryRun                      => 1,            # OPTIONAL
+      ReservedInstancesOfferingId => 'MyReservedInstancesOfferingId',
+      DryRun                      => 1,                               # OPTIONAL
       LimitPrice                  => {
-        Amount       => 1,                         # OPTIONAL
-        CurrencyCode => 'USD',                     # values: USD; OPTIONAL
+        Amount       => 1,        # OPTIONAL
+        CurrencyCode => 'USD',    # values: USD; OPTIONAL
       },    # OPTIONAL
+      PurchaseTime => '1970-01-01T01:00:00',    # OPTIONAL
       );
 
     # Results:
@@ -73,6 +75,13 @@ The number of Reserved Instances to purchase.
 Specified for Reserved Instance Marketplace offerings to limit the
 total order and ensure that the Reserved Instances are not purchased at
 unexpected prices.
+
+
+
+=head2 PurchaseTime => Str
+
+The time at which to purchase the Reserved Instance, in UTC format (for
+example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
 

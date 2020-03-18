@@ -2,6 +2,9 @@
 package Paws::S3::DeleteObjects;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Delete => (is => 'ro', isa => 'Paws::S3::Delete', traits => ['ParamInBody'], required => 1);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -40,20 +43,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Delete => {
         Objects => [
           {
-            Key       => 'MyObjectKey',          # min: 1,
+            Key       => 'MyObjectKey',          # min: 1
             VersionId => 'MyObjectVersionId',    # OPTIONAL
           },
           ...
         ],
         Quiet => 1,                              # OPTIONAL
       },
-      MFA          => 'MyMFA',                   # OPTIONAL
-      RequestPayer => 'requester',               # OPTIONAL
+      BypassGovernanceRetention => 1,                 # OPTIONAL
+      ContentLength             => 1,                 # OPTIONAL
+      ContentMD5                => 'MyContentMD5',    # OPTIONAL
+      MFA                       => 'MyMFA',           # OPTIONAL
+      RequestPayer              => 'requester',       # OPTIONAL
     );
 
     # Results:
-    my $Errors         = $DeleteObjectsOutput->Errors;
     my $Deleted        = $DeleteObjectsOutput->Deleted;
+    my $Errors         = $DeleteObjectsOutput->Errors;
     my $RequestCharged = $DeleteObjectsOutput->RequestCharged;
 
     # Returns a L<Paws::S3::DeleteObjectsOutput> object.
@@ -66,13 +72,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name containing the objects to delete.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
+
+
+
+=head2 BypassGovernanceRetention => Bool
+
+Specifies whether you want to delete this object even if it has a
+Governance-type Object Lock in place. You must have sufficient
+permissions to perform this operation.
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
+
+
+
+=head2 ContentMD5 => Str
+
 
 
 
 
 =head2 B<REQUIRED> Delete => L<Paws::S3::Delete>
 
-
+Container for the request.
 
 
 
@@ -80,6 +115,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The concatenation of the authentication device's serial number, a
 space, and the value that is displayed on your authentication device.
+Required to permanently delete a versioned object if versioning is
+configured with MFA delete enabled.
 
 
 

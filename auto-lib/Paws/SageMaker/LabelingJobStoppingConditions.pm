@@ -2,6 +2,7 @@ package Paws::SageMaker::LabelingJobStoppingConditions;
   use Moose;
   has MaxHumanLabeledObjectCount => (is => 'ro', isa => 'Int');
   has MaxPercentageOfInputDatasetLabeled => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

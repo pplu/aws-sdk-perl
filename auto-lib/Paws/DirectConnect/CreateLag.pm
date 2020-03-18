@@ -1,11 +1,14 @@
 
 package Paws::DirectConnect::CreateLag;
   use Moose;
+  has ChildConnectionTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'childConnectionTags' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
   has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' , required => 1);
   has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' , required => 1);
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' , required => 1);
+  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -36,22 +39,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LagName              => 'MyLagName',
       Location             => 'MyLocationCode',
       NumberOfConnections  => 1,
-      ConnectionId         => 'MyConnectionId',    # OPTIONAL
+      ChildConnectionTags  => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+      ConnectionId => 'MyConnectionId',    # OPTIONAL
+      ProviderName => 'MyProviderName',    # OPTIONAL
+      Tags         => [
+        {
+          Key   => 'MyTagKey',             # min: 1, max: 128
+          Value => 'MyTagValue',           # max: 256; OPTIONAL
+        },
+        ...
+      ],                                   # OPTIONAL
     );
 
     # Results:
+    my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
+    my $AwsDevice               = $Lag->AwsDevice;
+    my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
+    my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
+    my $JumboFrameCapable       = $Lag->JumboFrameCapable;
+    my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
-    my $NumberOfConnections     = $Lag->NumberOfConnections;
-    my $MinimumLinks            = $Lag->MinimumLinks;
-    my $AwsDevice               = $Lag->AwsDevice;
-    my $AllowsHostedConnections = $Lag->AllowsHostedConnections;
-    my $OwnerAccount            = $Lag->OwnerAccount;
-    my $LagId                   = $Lag->LagId;
     my $Location                = $Lag->Location;
-    my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $MinimumLinks            = $Lag->MinimumLinks;
+    my $NumberOfConnections     = $Lag->NumberOfConnections;
+    my $OwnerAccount            = $Lag->OwnerAccount;
+    my $ProviderName            = $Lag->ProviderName;
     my $Region                  = $Lag->Region;
+    my $Tags                    = $Lag->Tags;
 
     # Returns a L<Paws::DirectConnect::Lag> object.
 
@@ -61,22 +84,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
+=head2 ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to associate with the automtically created LAGs.
+
+
+
 =head2 ConnectionId => Str
 
 The ID of an existing connection to migrate to the LAG.
-
-Default: None
 
 
 
 =head2 B<REQUIRED> ConnectionsBandwidth => Str
 
 The bandwidth of the individual physical connections bundled by the
-LAG.
-
-Default: None
-
-Available values: 1Gbps, 10Gbps
+LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
+400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
 
 
 
@@ -84,19 +108,11 @@ Available values: 1Gbps, 10Gbps
 
 The name of the LAG.
 
-Example: "C<3x10G LAG to AWS>"
-
-Default: None
-
 
 
 =head2 B<REQUIRED> Location => Str
 
-The AWS Direct Connect location in which the LAG should be allocated.
-
-Example: EqSV5
-
-Default: None
+The location for the LAG.
 
 
 
@@ -105,7 +121,17 @@ Default: None
 The number of physical connections initially provisioned and bundled by
 the LAG.
 
-Default: None
+
+
+=head2 ProviderName => Str
+
+The name of the service provider associated with the LAG.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to associate with the LAG.
 
 
 

@@ -6,6 +6,7 @@ package Paws::Transfer::ListedUser;
   has Role => (is => 'ro', isa => 'Str');
   has SshPublicKeyCount => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

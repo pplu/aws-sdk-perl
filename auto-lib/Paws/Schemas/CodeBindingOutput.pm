@@ -4,6 +4,7 @@ package Paws::Schemas::CodeBindingOutput;
   has LastModified => (is => 'ro', isa => 'Str');
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

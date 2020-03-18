@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Policy = $DescribeEventBusResponse->Policy;
     my $Arn    = $DescribeEventBusResponse->Arn;
     my $Name   = $DescribeEventBusResponse->Name;
+    my $Policy = $DescribeEventBusResponse->Policy;
 
     # Returns a L<Paws::CloudWatchEvents::DescribeEventBusResponse> object.
 

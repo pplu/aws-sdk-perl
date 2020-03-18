@@ -60,14 +60,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Facets = $SearchResponse->Facets;
-    my $Status = $SearchResponse->Status;
     my $Hits   = $SearchResponse->Hits;
     my $Stats  = $SearchResponse->Stats;
+    my $Status = $SearchResponse->Status;
 
     # Returns a L<Paws::CloudSearchDomain::SearchResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/cloudsearch/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain/Search>
 
 =head1 ATTRIBUTES
 

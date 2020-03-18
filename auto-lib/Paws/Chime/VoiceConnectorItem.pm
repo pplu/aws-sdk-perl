@@ -2,6 +2,7 @@ package Paws::Chime::VoiceConnectorItem;
   use Moose;
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has VoiceConnectorId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

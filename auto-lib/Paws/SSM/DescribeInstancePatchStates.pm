@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $DescribeInstancePatchStatesResult->NextToken;
     my $InstancePatchStates =
       $DescribeInstancePatchStatesResult->InstancePatchStates;
+    my $NextToken = $DescribeInstancePatchStatesResult->NextToken;
 
     # Returns a L<Paws::SSM::DescribeInstancePatchStatesResult> object.
 

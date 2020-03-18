@@ -38,12 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # file name pattern, last write date in POSIX time with milleseconds, and
     # minimum file size.
     my $DescribeDBLogFilesResponse = $rds->DescribeDBLogFiles(
-      {
-        'FilenameContains'     => 'error',
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'FileLastWritten'      => 1470873600000,
-        'FileSize'             => 0
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'FileLastWritten'      => 1470873600000,
+      'FileSize'             => 0,
+      'FilenameContains'     => 'error'
     );
 
 
@@ -94,7 +92,7 @@ size.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
 
 
 
@@ -110,8 +108,8 @@ marker, up to MaxRecords.
 
 The maximum number of records to include in the response. If more
 records exist than the specified MaxRecords value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so you can retrieve the
+remaining results.
 
 
 

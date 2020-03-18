@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $nextToken     = $DescribeMetricFiltersResponse->nextToken;
-    my $metricFilters = $DescribeMetricFiltersResponse->metricFilters;
+    my $MetricFilters = $DescribeMetricFiltersResponse->MetricFilters;
+    my $NextToken     = $DescribeMetricFiltersResponse->NextToken;
 
     # Returns a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> object.
 
@@ -74,13 +74,17 @@ The name of the log group.
 
 =head2 MetricName => Str
 
-
+Filters results to include only those with the specified metric name.
+If you include this parameter in your request, you must also include
+the C<metricNamespace> parameter.
 
 
 
 =head2 MetricNamespace => Str
 
-The namespace of the CloudWatch metric.
+Filters results to include only those in the specified namespace. If
+you include this parameter in your request, you must also include the
+C<metricName> parameter.
 
 
 

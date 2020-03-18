@@ -4,6 +4,7 @@ package Paws::Kendra::DocumentMetadataConfiguration;
   has Relevance => (is => 'ro', isa => 'Paws::Kendra::Relevance');
   has Search => (is => 'ro', isa => 'Paws::Kendra::Search');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

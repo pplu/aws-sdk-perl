@@ -2,6 +2,7 @@ package Paws::Greengrass::SecretsManagerSecretResourceData;
   use Moose;
   has AdditionalStagingLabelsToDownload => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

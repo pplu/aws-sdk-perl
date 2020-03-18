@@ -5,6 +5,7 @@ package Paws::ServiceDiscovery::HttpInstanceSummary;
   has InstanceId => (is => 'ro', isa => 'Str');
   has NamespaceName => (is => 'ro', isa => 'Str');
   has ServiceName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

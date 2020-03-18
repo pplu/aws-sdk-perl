@@ -1,6 +1,7 @@
 package Paws::CodeGuruProfiler::ProfileTime;
   use Moose;
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

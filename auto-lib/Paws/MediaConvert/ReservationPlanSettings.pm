@@ -3,6 +3,7 @@ package Paws::MediaConvert::ReservationPlanSettings;
   has Commitment => (is => 'ro', isa => 'Str', request_name => 'commitment', traits => ['NameInRequest'], required => 1);
   has RenewalType => (is => 'ro', isa => 'Str', request_name => 'renewalType', traits => ['NameInRequest'], required => 1);
   has ReservedSlots => (is => 'ro', isa => 'Int', request_name => 'reservedSlots', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

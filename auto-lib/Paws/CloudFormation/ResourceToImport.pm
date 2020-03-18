@@ -3,6 +3,7 @@ package Paws::CloudFormation::ResourceToImport;
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has ResourceIdentifier => (is => 'ro', isa => 'Paws::CloudFormation::ResourceIdentifierProperties', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

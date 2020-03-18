@@ -3,6 +3,7 @@ package Paws::AppStream::ApplicationSettingsResponse;
   has Enabled => (is => 'ro', isa => 'Bool');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has SettingsGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

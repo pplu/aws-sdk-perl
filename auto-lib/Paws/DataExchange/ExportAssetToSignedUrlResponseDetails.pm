@@ -5,6 +5,7 @@ package Paws::DataExchange::ExportAssetToSignedUrlResponseDetails;
   has RevisionId => (is => 'ro', isa => 'Str', required => 1);
   has SignedUrl => (is => 'ro', isa => 'Str');
   has SignedUrlExpiresAt => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

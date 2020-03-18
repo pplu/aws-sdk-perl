@@ -12,6 +12,7 @@ package Paws::ApiGatewayV2::CreateApiInput;
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

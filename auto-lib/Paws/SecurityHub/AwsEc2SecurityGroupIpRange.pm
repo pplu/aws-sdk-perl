@@ -1,6 +1,7 @@
 package Paws::SecurityHub::AwsEc2SecurityGroupIpRange;
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

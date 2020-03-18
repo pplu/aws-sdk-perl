@@ -2,6 +2,7 @@ package Paws::AccessAnalyzer::InlineArchiveRule;
   use Moose;
   has Filter => (is => 'ro', isa => 'Paws::AccessAnalyzer::FilterCriteriaMap', request_name => 'filter', traits => ['NameInRequest'], required => 1);
   has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

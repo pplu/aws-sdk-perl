@@ -4,6 +4,7 @@ package Paws::Glue::ConfusionMatrix;
   has NumFalsePositives => (is => 'ro', isa => 'Int');
   has NumTrueNegatives => (is => 'ro', isa => 'Int');
   has NumTruePositives => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

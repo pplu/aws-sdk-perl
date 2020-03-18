@@ -3,6 +3,7 @@ package Paws::SESv2::EmailContent;
   has Raw => (is => 'ro', isa => 'Paws::SESv2::RawMessage');
   has Simple => (is => 'ro', isa => 'Paws::SESv2::Message');
   has Template => (is => 'ro', isa => 'Paws::SESv2::Template');
+
 1;
 
 ### main pod documentation begin ###

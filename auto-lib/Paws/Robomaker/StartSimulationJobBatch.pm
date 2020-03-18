@@ -49,12 +49,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           FailureBehavior => 'Fail',       # values: Fail, Continue; OPTIONAL
           IamRole         => 'MyIamRole',  # min: 1, max: 255; OPTIONAL
           LoggingConfig   => {
-            RecordAllRosTopics => 1,       # OPTIONAL
+            RecordAllRosTopics => 1,
 
-          },    # OPTIONAL
+          },                               # OPTIONAL
           OutputLocation => {
-            S3Bucket => 'MyS3Bucket',    # min: 3, max: 63; OPTIONAL
-            S3Prefix => 'MyS3Key',       # min: 1, max: 1024; OPTIONAL
+            S3Bucket => 'MyS3Bucket',      # min: 3, max: 63; OPTIONAL
+            S3Prefix => 'MyS3Key',         # min: 1, max: 1024; OPTIONAL
           },    # OPTIONAL
           RobotApplications => [
             {
@@ -109,15 +109,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Tags => {
             'MyTagKey' => 'MyTagValue', # key: min: 1, max: 128, value: max: 256
           },    # max: 50; OPTIONAL
-          UseDefaultApplications => 1,    # OPTIONAL
+          UseDefaultApplications => 1,
           VpcConfig              => {
             Subnets => [
-              'MyNonEmptyString', ...     # min: 1, max: 255
-            ],                            # min: 1, max: 16
-            AssignPublicIp => 1,          # OPTIONAL
+              'MyNonEmptyString', ...    # min: 1, max: 255
+            ],                           # min: 1, max: 16
+            AssignPublicIp => 1,         # OPTIONAL
             SecurityGroups => [
-              'MyNonEmptyString', ...     # min: 1, max: 255
-            ],                            # min: 1, max: 5; OPTIONAL
+              'MyNonEmptyString', ...    # min: 1, max: 255
+            ],                           # min: 1, max: 5; OPTIONAL
           },    # OPTIONAL
         },
         ...

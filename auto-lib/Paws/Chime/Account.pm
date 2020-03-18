@@ -8,6 +8,7 @@ package Paws::Chime::Account;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has SigninDelegateGroups => (is => 'ro', isa => 'ArrayRef[Paws::Chime::SigninDelegateGroup]');
   has SupportedLicenses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

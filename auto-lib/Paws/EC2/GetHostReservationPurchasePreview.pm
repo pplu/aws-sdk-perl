@@ -30,16 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $GetHostReservationPurchasePreviewResult =
       $ec2->GetHostReservationPurchasePreview(
-      HostIdSet  => [ 'MyString', ... ],
-      OfferingId => 'MyString',
+      HostIdSet  => [ 'MyDedicatedHostId', ... ],
+      OfferingId => 'MyOfferingId',
 
       );
 
     # Results:
+    my $CurrencyCode = $GetHostReservationPurchasePreviewResult->CurrencyCode;
+    my $Purchase     = $GetHostReservationPurchasePreviewResult->Purchase;
     my $TotalHourlyPrice =
       $GetHostReservationPurchasePreviewResult->TotalHourlyPrice;
-    my $Purchase     = $GetHostReservationPurchasePreviewResult->Purchase;
-    my $CurrencyCode = $GetHostReservationPurchasePreviewResult->CurrencyCode;
     my $TotalUpfrontPrice =
       $GetHostReservationPurchasePreviewResult->TotalUpfrontPrice;
 
@@ -53,8 +53,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
-The ID/s of the Dedicated Host/s that the reservation will be
-associated with.
+The IDs of the Dedicated Hosts with which the reservation is
+associated.
 
 
 

@@ -3,6 +3,7 @@ package Paws::StepFunctions::LoggingConfiguration;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::LogDestination]', request_name => 'destinations', traits => ['NameInRequest']);
   has IncludeExecutionData => (is => 'ro', isa => 'Bool', request_name => 'includeExecutionData', traits => ['NameInRequest']);
   has Level => (is => 'ro', isa => 'Str', request_name => 'level', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

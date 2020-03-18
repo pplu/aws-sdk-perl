@@ -8,6 +8,7 @@ package Paws::S3Control::JobListDescriptor;
   has ProgressSummary => (is => 'ro', isa => 'Paws::S3Control::JobProgressSummary');
   has Status => (is => 'ro', isa => 'Str');
   has TerminationDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

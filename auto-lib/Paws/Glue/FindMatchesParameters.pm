@@ -4,6 +4,7 @@ package Paws::Glue::FindMatchesParameters;
   has EnforceProvidedLabels => (is => 'ro', isa => 'Bool');
   has PrecisionRecallTradeoff => (is => 'ro', isa => 'Num');
   has PrimaryKeyColumnName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::WAFv2::SampledHTTPRequest;
   has RuleNameWithinRuleGroup => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

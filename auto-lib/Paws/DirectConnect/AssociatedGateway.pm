@@ -4,6 +4,7 @@ package Paws::DirectConnect::AssociatedGateway;
   has OwnerAccount => (is => 'ro', isa => 'Str', request_name => 'ownerAccount', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

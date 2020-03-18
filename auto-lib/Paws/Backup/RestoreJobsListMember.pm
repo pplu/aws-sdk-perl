@@ -11,6 +11,7 @@ package Paws::Backup::RestoreJobsListMember;
   has RestoreJobId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

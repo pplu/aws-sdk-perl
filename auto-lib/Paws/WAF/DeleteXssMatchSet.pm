@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes an XSS match set with the ID
     # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $DeleteXssMatchSetResponse = $waf->DeleteXssMatchSet(
-      {
-        'XssMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
-        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
-      }
+      'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'XssMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
     );
 
     # Results:

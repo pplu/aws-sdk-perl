@@ -4,6 +4,7 @@ package Paws::CodeStarNotifications::EventTypeSummary;
   has EventTypeName => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has ServiceName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

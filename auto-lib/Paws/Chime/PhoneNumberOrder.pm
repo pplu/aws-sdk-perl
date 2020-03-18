@@ -6,6 +6,7 @@ package Paws::Chime::PhoneNumberOrder;
   has ProductType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

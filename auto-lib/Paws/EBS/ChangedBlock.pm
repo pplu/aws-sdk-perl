@@ -3,6 +3,7 @@ package Paws::EBS::ChangedBlock;
   has BlockIndex => (is => 'ro', isa => 'Int');
   has FirstBlockToken => (is => 'ro', isa => 'Str');
   has SecondBlockToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

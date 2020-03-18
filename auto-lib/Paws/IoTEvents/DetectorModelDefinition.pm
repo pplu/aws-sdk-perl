@@ -2,6 +2,7 @@ package Paws::IoTEvents::DetectorModelDefinition;
   use Moose;
   has InitialStateName => (is => 'ro', isa => 'Str', request_name => 'initialStateName', traits => ['NameInRequest'], required => 1);
   has States => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::State]', request_name => 'states', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

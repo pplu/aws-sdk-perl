@@ -6,6 +6,7 @@ package Paws::Robomaker::Fleet;
   has LastDeploymentStatus => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentStatus', traits => ['NameInRequest']);
   has LastDeploymentTime => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

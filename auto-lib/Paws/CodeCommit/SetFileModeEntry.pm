@@ -2,6 +2,7 @@ package Paws::CodeCommit::SetFileModeEntry;
   use Moose;
   has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest'], required => 1);
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

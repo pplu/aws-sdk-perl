@@ -7,6 +7,7 @@ package Paws::PinpointEmail::EventDestination;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has PinpointDestination => (is => 'ro', isa => 'Paws::PinpointEmail::PinpointDestination');
   has SnsDestination => (is => 'ro', isa => 'Paws::PinpointEmail::SnsDestination');
+
 1;
 
 ### main pod documentation begin ###

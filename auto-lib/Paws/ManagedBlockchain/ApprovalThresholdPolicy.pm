@@ -3,6 +3,7 @@ package Paws::ManagedBlockchain::ApprovalThresholdPolicy;
   has ProposalDurationInHours => (is => 'ro', isa => 'Int');
   has ThresholdComparator => (is => 'ro', isa => 'Str');
   has ThresholdPercentage => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

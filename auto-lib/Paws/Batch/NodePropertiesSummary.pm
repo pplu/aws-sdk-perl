@@ -3,6 +3,7 @@ package Paws::Batch::NodePropertiesSummary;
   has IsMainNode => (is => 'ro', isa => 'Bool', request_name => 'isMainNode', traits => ['NameInRequest']);
   has NodeIndex => (is => 'ro', isa => 'Int', request_name => 'nodeIndex', traits => ['NameInRequest']);
   has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

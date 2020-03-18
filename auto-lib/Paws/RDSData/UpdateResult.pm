@@ -1,6 +1,7 @@
 package Paws::RDSData::UpdateResult;
   use Moose;
   has GeneratedFields => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Field]', request_name => 'generatedFields', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

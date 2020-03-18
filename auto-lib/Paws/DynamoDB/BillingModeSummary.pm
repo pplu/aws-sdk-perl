@@ -2,6 +2,7 @@ package Paws::DynamoDB::BillingModeSummary;
   use Moose;
   has BillingMode => (is => 'ro', isa => 'Str');
   has LastUpdateToPayPerRequestDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

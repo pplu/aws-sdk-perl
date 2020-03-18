@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::IPDialIn;
   use Moose;
   has CommsProtocol => (is => 'ro', isa => 'Str', required => 1);
   has Endpoint => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

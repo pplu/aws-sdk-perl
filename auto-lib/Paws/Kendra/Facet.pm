@@ -1,6 +1,7 @@
 package Paws::Kendra::Facet;
   use Moose;
   has DocumentAttributeKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

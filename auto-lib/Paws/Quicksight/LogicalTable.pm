@@ -3,6 +3,7 @@ package Paws::Quicksight::LogicalTable;
   has Alias => (is => 'ro', isa => 'Str', required => 1);
   has DataTransforms => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::TransformOperation]');
   has Source => (is => 'ro', isa => 'Paws::Quicksight::LogicalTableSource', required => 1);
+
 1;
 
 ### main pod documentation begin ###

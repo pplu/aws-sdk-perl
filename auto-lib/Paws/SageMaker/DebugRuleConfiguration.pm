@@ -7,6 +7,7 @@ package Paws::SageMaker::DebugRuleConfiguration;
   has RuleParameters => (is => 'ro', isa => 'Paws::SageMaker::RuleParameters');
   has S3OutputPath => (is => 'ro', isa => 'Str');
   has VolumeSizeInGB => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

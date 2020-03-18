@@ -1,6 +1,7 @@
 package Paws::MediaLive::BatchScheduleActionDeleteRequest;
   use Moose;
   has ActionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actionNames', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -22,8 +22,8 @@ The identifier of the sentiment detection job to stop.
 
 =head2 JobStatus => Str
 
-Either C<STOPPING> if the job is currently running, or C<STOPPED> if
-the job was previously stopped with the C<StopSentimentDetectionJob>
+Either C<STOP_REQUESTED> if the job is currently running, or C<STOPPED>
+if the job was previously stopped with the C<StopSentimentDetectionJob>
 operation.
 
 Valid values are: C<"SUBMITTED">, C<"IN_PROGRESS">, C<"COMPLETED">, C<"FAILED">, C<"STOP_REQUESTED">, C<"STOPPED">

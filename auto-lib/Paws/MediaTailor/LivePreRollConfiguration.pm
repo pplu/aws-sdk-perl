@@ -2,6 +2,7 @@ package Paws::MediaTailor::LivePreRollConfiguration;
   use Moose;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
   has MaxDurationSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

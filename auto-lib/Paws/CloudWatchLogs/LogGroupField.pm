@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::LogGroupField;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Percent => (is => 'ro', isa => 'Int', request_name => 'percent', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

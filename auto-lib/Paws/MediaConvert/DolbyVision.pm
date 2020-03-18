@@ -3,6 +3,7 @@ package Paws::MediaConvert::DolbyVision;
   has L6Metadata => (is => 'ro', isa => 'Paws::MediaConvert::DolbyVisionLevel6Metadata', request_name => 'l6Metadata', traits => ['NameInRequest']);
   has L6Mode => (is => 'ro', isa => 'Str', request_name => 'l6Mode', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

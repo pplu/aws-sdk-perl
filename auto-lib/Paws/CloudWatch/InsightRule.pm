@@ -4,6 +4,7 @@ package Paws::CloudWatch::InsightRule;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Schema => (is => 'ro', isa => 'Str', required => 1);
   has State => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken        = $ListAttachedIndicesResponse->NextToken;
     my $IndexAttachments = $ListAttachedIndicesResponse->IndexAttachments;
+    my $NextToken        = $ListAttachedIndicesResponse->NextToken;
 
     # Returns a L<Paws::CloudDirectory::ListAttachedIndicesResponse> object.
 

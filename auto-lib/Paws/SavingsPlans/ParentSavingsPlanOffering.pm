@@ -6,6 +6,7 @@ package Paws::SavingsPlans::ParentSavingsPlanOffering;
   has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
   has PlanDescription => (is => 'ro', isa => 'Str', request_name => 'planDescription', traits => ['NameInRequest']);
   has PlanType => (is => 'ro', isa => 'Str', request_name => 'planType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

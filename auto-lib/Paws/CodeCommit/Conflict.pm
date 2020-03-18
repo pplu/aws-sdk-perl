@@ -2,6 +2,7 @@ package Paws::CodeCommit::Conflict;
   use Moose;
   has ConflictMetadata => (is => 'ro', isa => 'Paws::CodeCommit::ConflictMetadata', request_name => 'conflictMetadata', traits => ['NameInRequest']);
   has MergeHunks => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::MergeHunk]', request_name => 'mergeHunks', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

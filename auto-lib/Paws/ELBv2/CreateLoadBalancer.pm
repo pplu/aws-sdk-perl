@@ -38,10 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an Internet-facing load balancer and enables the
     # Availability Zones for the specified subnets.
     my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
-        'Name'    => 'my-load-balancer'
-      }
+      'Name'    => 'my-load-balancer',
+      'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ]
     );
 
     # Results:
@@ -52,14 +50,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example creates an internal load balancer and enables the Availability
    # Zones for the specified subnets.
     my $CreateLoadBalancerOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'Subnets'        => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ],
-        'Scheme'         => 'internal',
-        'Name'           => 'my-internal-load-balancer',
-        'SecurityGroups' => [
+      'Name'           => 'my-internal-load-balancer',
+      'Scheme'         => 'internal',
+      'SecurityGroups' => [
 
-        ]
-      }
+      ],
+      'Subnets' => [ 'subnet-b7d581c0', 'subnet-8360a9e7' ]
     );
 
     # Results:
@@ -98,12 +94,12 @@ must not begin or end with a hyphen, and must not begin with
 The nodes of an Internet-facing load balancer have public IP addresses.
 The DNS name of an Internet-facing load balancer is publicly resolvable
 to the public IP addresses of the nodes. Therefore, Internet-facing
-load balancers can route requests from clients over the Internet.
+load balancers can route requests from clients over the internet.
 
 The nodes of an internal load balancer have only private IP addresses.
 The DNS name of an internal load balancer is publicly resolvable to the
 private IP addresses of the nodes. Therefore, internal load balancers
-can only route requests from clients with access to the VPC for the
+can route requests only from clients with access to the VPC for the
 load balancer.
 
 The default is an Internet-facing load balancer.
@@ -127,7 +123,10 @@ Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.
 
 [Network Load Balancers] You can specify subnets from one or more
-Availability Zones. You can specify one Elastic IP address per subnet.
+Availability Zones. You can specify one Elastic IP address per subnet
+if you need static IP addresses for your internet-facing load balancer.
+For internal load balancers, you can specify one private IP address per
+subnet from the IPv4 range of the subnet.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::SageMaker::SuggestionQuery;
   use Moose;
   has PropertyNameQuery => (is => 'ro', isa => 'Paws::SageMaker::PropertyNameQuery');
+
 1;
 
 ### main pod documentation begin ###

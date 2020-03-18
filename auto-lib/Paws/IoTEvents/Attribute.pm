@@ -1,6 +1,7 @@
 package Paws::IoTEvents::Attribute;
   use Moose;
   has JsonPath => (is => 'ro', isa => 'Str', request_name => 'jsonPath', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

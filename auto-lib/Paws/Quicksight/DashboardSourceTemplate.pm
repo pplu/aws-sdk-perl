@@ -2,6 +2,7 @@ package Paws::Quicksight::DashboardSourceTemplate;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has DataSetReferences => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::DataSetReference]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

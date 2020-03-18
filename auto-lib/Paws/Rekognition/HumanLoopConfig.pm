@@ -3,6 +3,7 @@ package Paws::Rekognition::HumanLoopConfig;
   has DataAttributes => (is => 'ro', isa => 'Paws::Rekognition::HumanLoopDataAttributes');
   has FlowDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
   has HumanLoopName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

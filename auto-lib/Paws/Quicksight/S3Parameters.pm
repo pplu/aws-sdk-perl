@@ -1,6 +1,7 @@
 package Paws::Quicksight::S3Parameters;
   use Moose;
   has ManifestFileLocation => (is => 'ro', isa => 'Paws::Quicksight::ManifestFileLocation', required => 1);
+
 1;
 
 ### main pod documentation begin ###

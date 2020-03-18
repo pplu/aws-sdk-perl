@@ -36,20 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
+          Name   => 'MyString',
           Values => [ 'MyString', ... ],    # OPTIONAL
-          Name => 'MyString',
         },
         ...
       ],                                    # OPTIONAL
-      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
-      MaxResults  => 1,                     # OPTIONAL
-      NextToken   => 'MyString',            # OPTIONAL
+      InstanceIds => [ 'MyInstanceId', ... ],    # OPTIONAL
+      MaxResults  => 1,                          # OPTIONAL
+      NextToken   => 'MyString',                 # OPTIONAL
       );
 
     # Results:
-    my $NextToken = $DescribeInstanceCreditSpecificationsResult->NextToken;
     my $InstanceCreditSpecifications =
       $DescribeInstanceCreditSpecificationsResult->InstanceCreditSpecifications;
+    my $NextToken = $DescribeInstanceCreditSpecificationsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> object.
 
@@ -70,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -85,7 +85,7 @@ C<instance-id> - The ID of the instance.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The instance IDs.
 
 Default: Describes all your instances.
 

@@ -59,12 +59,13 @@ alpha-2 value.
 
 =head2 Make => Str
 
-  The manufacturer of the endpoint device, such as Apple or Samsung.
+  The manufacturer of the endpoint device, such as apple or samsung.
 
 
 =head2 Model => Str
 
-  The model name or number of the endpoint device, such as iPhone.
+  The model name or number of the endpoint device, such as iPhone or
+SM-G900F.
 
 
 =head2 ModelVersion => Str
@@ -74,7 +75,7 @@ alpha-2 value.
 
 =head2 Platform => Str
 
-  The platform of the endpoint device, such as iOS or Android.
+  The platform of the endpoint device, such as ios.
 
 
 =head2 PlatformVersion => Str

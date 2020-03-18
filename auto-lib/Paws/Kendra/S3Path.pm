@@ -2,6 +2,7 @@ package Paws::Kendra::S3Path;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has Key => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

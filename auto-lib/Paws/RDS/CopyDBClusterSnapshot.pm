@@ -36,11 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example copies an automated snapshot of a DB cluster to a new
    # DB cluster snapshot.
     my $CopyDBClusterSnapshotResult = $rds->CopyDBClusterSnapshot(
-      {
-        'SourceDBClusterSnapshotIdentifier' =>
-          'rds:sample-cluster-2016-09-14-10-38',
-        'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1'
-      }
+      'SourceDBClusterSnapshotIdentifier' =>
+        'rds:sample-cluster-2016-09-14-10-38',
+      'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1'
     );
 
 
@@ -52,16 +50,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 CopyTags => Bool
 
-True to copy all tags from the source DB cluster snapshot to the target
-DB cluster snapshot, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the source DB
+cluster snapshot to the target DB cluster snapshot. By default, tags
+are not copied.
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS
-key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
-KMS key alias for the KMS encryption key.
+The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID
+is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
+alias for the KMS encryption key.
 
 If you copy an encrypted DB cluster snapshot from your AWS account, you
 can specify a value for C<KmsKeyId> to encrypt the copy with a new KMS
@@ -90,7 +89,8 @@ The URL that contains a Signature Version 4 signed request for the
 C<CopyDBClusterSnapshot> API action in the AWS Region that contains the
 source DB cluster snapshot to copy. The C<PreSignedUrl> parameter must
 be used when copying an encrypted DB cluster snapshot from another AWS
-Region.
+Region. Don't specify C<PreSignedUrl> when you are copying an encrypted
+DB cluster snapshot in the same AWS Region.
 
 The pre-signed URL must be a valid request for the
 C<CopyDBSClusterSnapshot> API action that can be executed in the source
@@ -111,7 +111,7 @@ in the pre-signed URL.
 =item *
 
 C<DestinationRegion> - The name of the AWS Region that the DB cluster
-snapshot will be created in.
+snapshot is to be created in.
 
 =item *
 
@@ -128,16 +128,22 @@ C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-2
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
 
 
 
 =head2 B<REQUIRED> SourceDBClusterSnapshotIdentifier => Str
 
-The identifier of the DB cluster snapshot to copy. This parameter is
-not case-sensitive.
+The identifier of the DB cluster snapshot to copy. This parameter isn't
+case-sensitive.
 
 You can't copy an encrypted, shared DB cluster snapshot from one AWS
 Region to another.
@@ -159,8 +165,9 @@ valid DB snapshot identifier.
 
 If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
-Copying a DB Snapshot or DB Cluster Snapshot
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
+Copying Snapshots Across AWS Regions
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
+in the I<Amazon Aurora User Guide.>
 
 =back
 
@@ -177,7 +184,7 @@ Example: C<my-cluster-snapshot1>
 =head2 B<REQUIRED> TargetDBClusterSnapshotIdentifier => Str
 
 The identifier of the new DB cluster snapshot to create from the source
-DB cluster snapshot. This parameter is not case-sensitive.
+DB cluster snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 
@@ -193,7 +200,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 

@@ -2,6 +2,7 @@ package Paws::AppMesh::PortMapping;
   use Moose;
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest'], required => 1);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

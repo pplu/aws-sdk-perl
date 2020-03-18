@@ -2,6 +2,7 @@ package Paws::Detective::Account;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', required => 1);
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

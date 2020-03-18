@@ -114,7 +114,8 @@ UNKNOWN_FAILURE - An unknown error occurred.
 =head2 UpdatedToken => Str
 
   For push notifications that are sent through the GCM channel, specifies
-whether the token was updated as part of delivering the message.
+whether the endpoint's device registration token was updated as part of
+delivering the message.
 
 
 

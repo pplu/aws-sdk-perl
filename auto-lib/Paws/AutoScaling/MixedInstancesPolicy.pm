@@ -2,6 +2,7 @@ package Paws::AutoScaling::MixedInstancesPolicy;
   use Moose;
   has InstancesDistribution => (is => 'ro', isa => 'Paws::AutoScaling::InstancesDistribution');
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplate');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::KinesisVideo::SingleMasterChannelEndpointConfiguration;
   use Moose;
   has Protocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Role => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

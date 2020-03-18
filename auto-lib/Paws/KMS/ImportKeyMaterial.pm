@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To import key material into a customer master key (CMK)
     # The following example imports key material into the specified CMK.
     my $ImportKeyMaterialResponse = $kms->ImportKeyMaterial(
-      {
-        'KeyId'                => '1234abcd-12ab-34cd-56ef-1234567890ab',
-        'ImportToken'          => '<binary data>',
-        'EncryptedKeyMaterial' => '<binary data>',
-        'ExpirationModel'      => 'KEY_MATERIAL_DOES_NOT_EXPIRE'
-      }
+      'EncryptedKeyMaterial' => '<binary data>',
+      'ExpirationModel'      => 'KEY_MATERIAL_DOES_NOT_EXPIRE',
+      'ImportToken'          => '<binary data>',
+      'KeyId'                => '1234abcd-12ab-34cd-56ef-1234567890ab'
     );
 
 
@@ -51,10 +49,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> EncryptedKeyMaterial => Str
 
-The encrypted key material to import. It must be encrypted with the
-public key that you received in the response to a previous
-GetParametersForImport request, using the wrapping algorithm that you
-specified in that request.
+The encrypted key material to import. The key material must be
+encrypted with the public wrapping key that GetParametersForImport
+returned, using the wrapping algorithm that you specified in the same
+C<GetParametersForImport> request.
 
 
 
@@ -78,8 +76,10 @@ contained the public key that you used to encrypt the key material.
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the CMK to import the key material into. The CMK's
-C<Origin> must be C<EXTERNAL>.
+The identifier of the symmetric CMK that receives the imported key
+material. The CMK's C<Origin> must be C<EXTERNAL>. This must be the
+same CMK specified in the C<KeyID> parameter of the corresponding
+GetParametersForImport request.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

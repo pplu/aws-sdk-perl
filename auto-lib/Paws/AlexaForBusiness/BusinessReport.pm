@@ -5,6 +5,7 @@ package Paws::AlexaForBusiness::BusinessReport;
   has FailureCode => (is => 'ro', isa => 'Str');
   has S3Location => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportS3Location');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

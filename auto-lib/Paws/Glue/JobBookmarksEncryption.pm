@@ -2,6 +2,7 @@ package Paws::Glue::JobBookmarksEncryption;
   use Moose;
   has JobBookmarksEncryptionMode => (is => 'ro', isa => 'Str');
   has KmsKeyArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

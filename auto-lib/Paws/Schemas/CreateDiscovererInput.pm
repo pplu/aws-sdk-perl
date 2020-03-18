@@ -3,6 +3,7 @@ package Paws::Schemas::CreateDiscovererInput;
   has Description => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Schemas::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

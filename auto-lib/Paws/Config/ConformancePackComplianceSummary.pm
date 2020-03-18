@@ -2,6 +2,7 @@ package Paws::Config::ConformancePackComplianceSummary;
   use Moose;
   has ConformancePackComplianceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Robomaker::FailedCreateSimulationJobRequest;
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has Request => (is => 'ro', isa => 'Paws::Robomaker::SimulationJobRequest', request_name => 'request', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

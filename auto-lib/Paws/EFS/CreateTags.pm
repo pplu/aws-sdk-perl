@@ -32,16 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new tag
     # This operation creates a new tag for an EFS file system.
     $elasticfilesystem->CreateTags(
-      {
-        'FileSystemId' => 'fs-01234567',
-        'Tags'         => [
+      'FileSystemId' => 'fs-01234567',
+      'Tags'         => [
 
-          {
-            'Value' => 'MyFileSystem',
-            'Key'   => 'Name'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Name',
+          'Value' => 'MyFileSystem'
+        }
+      ]
     );
 
 
@@ -53,14 +51,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-ID of the file system whose tags you want to modify (String). This
+The ID of the file system whose tags you want to modify (String). This
 operation modifies the tags only, not the file system.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
-Array of C<Tag> objects to add. Each C<Tag> object is a key-value pair.
+An array of C<Tag> objects to add. Each C<Tag> object is a key-value
+pair.
 
 
 

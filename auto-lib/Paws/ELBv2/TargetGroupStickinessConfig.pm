@@ -2,6 +2,7 @@ package Paws::ELBv2::TargetGroupStickinessConfig;
   use Moose;
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

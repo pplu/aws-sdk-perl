@@ -40,40 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Events => [
               's3:ReducedRedundancyLostObject',
-              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
+              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated, s3:ObjectRestore:*, s3:ObjectRestore:Post, s3:ObjectRestore:Completed, s3:Replication:*, s3:Replication:OperationFailedReplication, s3:Replication:OperationNotTracked, s3:Replication:OperationMissedThreshold, s3:Replication:OperationReplicatedAfterThreshold
             ],
             LambdaFunctionArn => 'MyLambdaFunctionArn',
             Filter            => {
               Key => {
                 FilterRules => [
                   {
-                    Value => 'MyFilterRuleValue',    # OPTIONAL
                     Name => 'prefix',    # values: prefix, suffix; OPTIONAL
+                    Value => 'MyFilterRuleValue',    # OPTIONAL
                   },
                   ...
-                ],                       # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-            Id => 'MyNotificationId',    # OPTIONAL
-          },
-          ...
-        ],                               # OPTIONAL
-        TopicConfigurations => [
-          {
-            TopicArn => 'MyTopicArn',
-            Events   => [
-              's3:ReducedRedundancyLostObject',
-              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
-            ],
-            Filter => {
-              Key => {
-                FilterRules => [
-                  {
-                    Value => 'MyFilterRuleValue',    # OPTIONAL
-                    Name => 'prefix',    # values: prefix, suffix; OPTIONAL
-                  },
-                  ...
-                ],                       # OPTIONAL
+                ],                                   # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
             Id => 'MyNotificationId',    # OPTIONAL
@@ -84,18 +62,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Events => [
               's3:ReducedRedundancyLostObject',
-              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated
+              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated, s3:ObjectRestore:*, s3:ObjectRestore:Post, s3:ObjectRestore:Completed, s3:Replication:*, s3:Replication:OperationFailedReplication, s3:Replication:OperationNotTracked, s3:Replication:OperationMissedThreshold, s3:Replication:OperationReplicatedAfterThreshold
             ],
             QueueArn => 'MyQueueArn',
             Filter   => {
               Key => {
                 FilterRules => [
                   {
-                    Value => 'MyFilterRuleValue',    # OPTIONAL
                     Name => 'prefix',    # values: prefix, suffix; OPTIONAL
+                    Value => 'MyFilterRuleValue',    # OPTIONAL
                   },
                   ...
-                ],                       # OPTIONAL
+                ],                                   # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+            Id => 'MyNotificationId',    # OPTIONAL
+          },
+          ...
+        ],                               # OPTIONAL
+        TopicConfigurations => [
+          {
+            Events => [
+              's3:ReducedRedundancyLostObject',
+              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated, s3:ObjectRestore:*, s3:ObjectRestore:Post, s3:ObjectRestore:Completed, s3:Replication:*, s3:Replication:OperationFailedReplication, s3:Replication:OperationNotTracked, s3:Replication:OperationMissedThreshold, s3:Replication:OperationReplicatedAfterThreshold
+            ],
+            TopicArn => 'MyTopicArn',
+            Filter   => {
+              Key => {
+                FilterRules => [
+                  {
+                    Name => 'prefix',    # values: prefix, suffix; OPTIONAL
+                    Value => 'MyFilterRuleValue',    # OPTIONAL
+                  },
+                  ...
+                ],                                   # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
             Id => 'MyNotificationId',    # OPTIONAL
@@ -114,7 +114,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket.
 
 
 

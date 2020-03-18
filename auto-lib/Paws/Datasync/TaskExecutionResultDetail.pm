@@ -9,6 +9,7 @@ package Paws::Datasync::TaskExecutionResultDetail;
   has TransferStatus => (is => 'ro', isa => 'Str');
   has VerifyDuration => (is => 'ro', isa => 'Int');
   has VerifyStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

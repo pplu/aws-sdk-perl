@@ -10,6 +10,7 @@ package Paws::MediaLive::Multiplex;
   has ProgramCount => (is => 'ro', isa => 'Int', request_name => 'programCount', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

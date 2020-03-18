@@ -4,6 +4,7 @@ package Paws::Comprehend::EntityRecognizerInputDataConfig;
   has Documents => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerDocuments', required => 1);
   has EntityList => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerEntityList');
   has EntityTypes => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::EntityTypesListItem]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

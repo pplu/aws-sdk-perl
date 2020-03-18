@@ -7,9 +7,11 @@ package Paws::EC2::CreateRoute;
   has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'egressOnlyInternetGatewayId' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
+  has LocalGatewayId => (is => 'ro', isa => 'Str');
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -41,11 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
     # gateway.
     my $CreateRouteResult = $ec2->CreateRoute(
-      {
-        'GatewayId'            => 'igw-c0a643a9',
-        'DestinationCidrBlock' => '0.0.0.0/0',
-        'RouteTableId'         => 'rtb-22574640'
-      }
+      'DestinationCidrBlock' => '0.0.0.0/0',
+      'GatewayId'            => 'igw-c0a643a9',
+      'RouteTableId'         => 'rtb-22574640'
     );
 
 
@@ -80,13 +80,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-[IPv6 traffic only] The ID of an egress-only Internet gateway.
+[IPv6 traffic only] The ID of an egress-only internet gateway.
 
 
 
 =head2 GatewayId => Str
 
-The ID of an Internet gateway or virtual private gateway attached to
+The ID of an internet gateway or virtual private gateway attached to
 your VPC.
 
 
@@ -96,6 +96,12 @@ your VPC.
 The ID of a NAT instance in your VPC. The operation fails if you
 specify an instance ID unless exactly one network interface is
 attached.
+
+
+
+=head2 LocalGatewayId => Str
+
+The ID of the local gateway.
 
 
 
@@ -114,6 +120,12 @@ The ID of a network interface.
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table for the route.
+
+
+
+=head2 TransitGatewayId => Str
+
+The ID of a transit gateway.
 
 
 

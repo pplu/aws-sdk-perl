@@ -80,6 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ClusterArn      = $AddInstanceFleetOutput->ClusterArn;
     my $ClusterId       = $AddInstanceFleetOutput->ClusterId;
     my $InstanceFleetId = $AddInstanceFleetOutput->InstanceFleetId;
 

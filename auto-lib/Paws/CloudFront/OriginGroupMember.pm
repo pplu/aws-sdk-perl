@@ -1,6 +1,7 @@
 package Paws::CloudFront::OriginGroupMember;
   use Moose;
   has OriginId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

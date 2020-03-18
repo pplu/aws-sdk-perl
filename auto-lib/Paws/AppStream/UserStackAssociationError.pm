@@ -3,6 +3,7 @@ package Paws::AppStream::UserStackAssociationError;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has UserStackAssociation => (is => 'ro', isa => 'Paws::AppStream::UserStackAssociation');
+
 1;
 
 ### main pod documentation begin ###

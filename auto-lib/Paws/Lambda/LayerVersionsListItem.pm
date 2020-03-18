@@ -6,6 +6,7 @@ package Paws::Lambda::LayerVersionsListItem;
   has LayerVersionArn => (is => 'ro', isa => 'Str');
   has LicenseInfo => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

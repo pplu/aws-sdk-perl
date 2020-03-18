@@ -8,6 +8,7 @@ package Paws::Config::ConformancePackStatusDetail;
   has LastUpdateCompletedTime => (is => 'ro', isa => 'Str');
   has LastUpdateRequestedTime => (is => 'ro', isa => 'Str', required => 1);
   has StackArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

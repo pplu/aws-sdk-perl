@@ -1,6 +1,7 @@
 package Paws::AppMesh::DnsServiceDiscovery;
   use Moose;
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

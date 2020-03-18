@@ -3,6 +3,7 @@ package Paws::CodeBuild::WebhookFilter;
   has ExcludeMatchedPattern => (is => 'ro', isa => 'Bool', request_name => 'excludeMatchedPattern', traits => ['NameInRequest']);
   has Pattern => (is => 'ro', isa => 'Str', request_name => 'pattern', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

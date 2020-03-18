@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetContentDeliveryDestination;
   use Moose;
   has IotEventsDestinationConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::IotEventsDestinationConfiguration', request_name => 'iotEventsDestinationConfiguration', traits => ['NameInRequest']);
   has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::S3DestinationConfiguration', request_name => 's3DestinationConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

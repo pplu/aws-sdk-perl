@@ -1,6 +1,7 @@
 package Paws::Chime::SigninDelegateGroup;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

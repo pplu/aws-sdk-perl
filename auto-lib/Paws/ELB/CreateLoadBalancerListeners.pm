@@ -33,18 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # HTTP protocol.
     my $CreateLoadBalancerListenerOutput =
       $elasticloadbalancing->CreateLoadBalancerListeners(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'Listeners'        => [
+      'Listeners' => [
 
-          {
-            'InstancePort'     => 80,
-            'Protocol'         => 'HTTP',
-            'LoadBalancerPort' => 80,
-            'InstanceProtocol' => 'HTTP'
-          }
-        ]
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 80,
+          'Protocol'         => 'HTTP'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer'
       );
 
     # To create an HTTPS listener for a load balancer
@@ -52,20 +50,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the HTTPS protocol.
     my $CreateLoadBalancerListenerOutput =
       $elasticloadbalancing->CreateLoadBalancerListeners(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'Listeners'        => [
+      'Listeners' => [
 
-          {
-            'InstancePort' => 80,
-            'SSLCertificateId' =>
-              'arn:aws:iam::123456789012:server-certificate/my-server-cert',
-            'Protocol'         => 'HTTPS',
-            'LoadBalancerPort' => 443,
-            'InstanceProtocol' => 'HTTP'
-          }
-        ]
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 443,
+          'Protocol'         => 'HTTPS',
+          'SSLCertificateId' =>
+            'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer'
       );
 
 

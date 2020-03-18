@@ -7,6 +7,7 @@ package Paws::ES::ServiceSoftwareOptions;
   has NewVersion => (is => 'ro', isa => 'Str');
   has UpdateAvailable => (is => 'ro', isa => 'Bool');
   has UpdateStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

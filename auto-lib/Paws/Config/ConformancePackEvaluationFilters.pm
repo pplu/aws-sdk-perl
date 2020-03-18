@@ -4,6 +4,7 @@ package Paws::Config::ConformancePackEvaluationFilters;
   has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

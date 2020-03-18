@@ -1,6 +1,7 @@
 package Paws::MediaLive::ChannelSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has ChannelClass => (is => 'ro', isa => 'Str', request_name => 'channelClass', traits => ['NameInRequest']);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', request_name => 'egressEndpoints', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
@@ -11,6 +12,7 @@ package Paws::MediaLive::ChannelSummary;
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
 
@@ -31,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ChannelSummary object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,6 +52,12 @@ Placeholder documentation for ChannelSummary
 =head2 Arn => Str
 
   The unique arn of the channel.
+
+
+=head2 ChannelClass => Str
+
+  The class for this channel. STANDARD for a channel with two pipelines
+or SINGLE_PIPELINE for a channel with one pipeline.
 
 
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
@@ -103,6 +111,11 @@ Channel.
 =head2 State => Str
 
   
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+  A collection of key-value pairs.
 
 
 

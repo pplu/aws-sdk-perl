@@ -3,6 +3,7 @@ package Paws::Robomaker::S3Object;
   has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest'], required => 1);
   has Etag => (is => 'ro', isa => 'Str', request_name => 'etag', traits => ['NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

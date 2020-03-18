@@ -1,6 +1,7 @@
 package Paws::SecurityHub::AwsElasticsearchDomainNodeToNodeEncryptionOptions;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

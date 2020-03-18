@@ -2,6 +2,7 @@ package Paws::AccessAnalyzer::SortCriteria;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', request_name => 'attributeName', traits => ['NameInRequest']);
   has OrderBy => (is => 'ro', isa => 'Str', request_name => 'orderBy', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::AutoScalingPlans::CustomizedLoadMetricSpecification;
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
   has Statistic => (is => 'ro', isa => 'Str', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

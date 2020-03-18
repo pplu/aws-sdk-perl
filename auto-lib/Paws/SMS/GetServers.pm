@@ -3,6 +3,7 @@ package Paws::SMS::GetServers;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has VmServerAddressList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::VmServerAddress]', traits => ['NameInRequest'], request_name => 'vmServerAddressList' );
 
   use MooseX::ClassAttribute;
 
@@ -29,13 +30,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $sms = Paws->service('SMS');
     my $GetServersResponse = $sms->GetServers(
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      MaxResults          => 1,                # OPTIONAL
+      NextToken           => 'MyNextToken',    # OPTIONAL
+      VmServerAddressList => [
+        {
+          VmId        => 'MyVmId',             # OPTIONAL
+          VmManagerId => 'MyVmManagerId',      # OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
     );
 
     # Results:
-    my $NextToken           = $GetServersResponse->NextToken;
     my $LastModifiedOn      = $GetServersResponse->LastModifiedOn;
+    my $NextToken           = $GetServersResponse->NextToken;
     my $ServerCatalogStatus = $GetServersResponse->ServerCatalogStatus;
     my $ServerList          = $GetServersResponse->ServerList;
 
@@ -49,13 +57,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 MaxResults => Int
 
-
+The maximum number of results to return in a single call. The default
+value is 50. To retrieve the remaining results, make another call with
+the returned C<NextToken> value.
 
 
 
 =head2 NextToken => Str
 
+The token for the next set of results.
 
+
+
+=head2 VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]
+
+List of C<VmServerAddress> objects
 
 
 

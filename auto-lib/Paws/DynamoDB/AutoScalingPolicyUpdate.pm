@@ -2,6 +2,7 @@ package Paws::DynamoDB::AutoScalingPolicyUpdate;
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str');
   has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate', required => 1);
+
 1;
 
 ### main pod documentation begin ###

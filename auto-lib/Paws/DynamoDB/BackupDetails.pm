@@ -2,9 +2,11 @@ package Paws::DynamoDB::BackupDetails;
   use Moose;
   has BackupArn => (is => 'ro', isa => 'Str', required => 1);
   has BackupCreationDateTime => (is => 'ro', isa => 'Str', required => 1);
+  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
   has BackupName => (is => 'ro', isa => 'Str', required => 1);
   has BackupSizeBytes => (is => 'ro', isa => 'Int');
   has BackupStatus => (is => 'ro', isa => 'Str', required => 1);
+  has BackupType => (is => 'ro', isa => 'Str', required => 1);
 
 1;
 
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::BackupDetails object:
 
-  $service_obj->Method(Att1 => { BackupArn => $value, ..., BackupStatus => $value  });
+  $service_obj->Method(Att1 => { BackupArn => $value, ..., BackupType => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,6 +54,13 @@ Contains the details of the backup created for the table.
 backup.
 
 
+=head2 BackupExpiryDateTime => Str
+
+  Time at which the automatic on-demand backup created by DynamoDB will
+expire. This C<SYSTEM> on-demand backup expires automatically 35 days
+after its creation.
+
+
 =head2 B<REQUIRED> BackupName => Str
 
   Name of the requested backup.
@@ -66,6 +75,33 @@ backup.
 
   Backup can be in one of the following states: CREATING, ACTIVE,
 DELETED.
+
+
+=head2 B<REQUIRED> BackupType => Str
+
+  BackupType:
+
+=over
+
+=item *
+
+C<USER> - You create and manage these using the on-demand backup
+feature.
+
+=item *
+
+C<SYSTEM> - If you delete a table with point-in-time recovery enabled,
+a C<SYSTEM> backup is automatically created and is retained for 35 days
+(at no additional cost). System backups allow you to restore the
+deleted table to the state it was in just before the point of deletion.
+
+=item *
+
+C<AWS_BACKUP> - On-demand backup created by you from AWS Backup
+service.
+
+=back
+
 
 
 

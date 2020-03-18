@@ -2,6 +2,7 @@ package Paws::MediaLive::ListMultiplexesResultModel;
   use Moose;
   has Multiplexes => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MultiplexSummary]', request_name => 'multiplexes', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

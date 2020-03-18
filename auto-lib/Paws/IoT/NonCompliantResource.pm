@@ -3,6 +3,7 @@ package Paws::IoT::NonCompliantResource;
   has AdditionalInfo => (is => 'ro', isa => 'Paws::IoT::StringMap', request_name => 'additionalInfo', traits => ['NameInRequest']);
   has ResourceIdentifier => (is => 'ro', isa => 'Paws::IoT::ResourceIdentifier', request_name => 'resourceIdentifier', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

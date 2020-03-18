@@ -1,6 +1,7 @@
 package Paws::SSM::OpsItemNotification;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

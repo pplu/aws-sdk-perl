@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $evaluatedExpression = $EvaluateExpressionOutput->evaluatedExpression;
+    my $EvaluatedExpression = $EvaluateExpressionOutput->EvaluatedExpression;
 
     # Returns a L<Paws::DataPipeline::EvaluateExpressionOutput> object.
 

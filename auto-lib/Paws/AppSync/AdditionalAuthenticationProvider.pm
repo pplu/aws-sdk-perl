@@ -3,6 +3,7 @@ package Paws::AppSync::AdditionalAuthenticationProvider;
   has AuthenticationType => (is => 'ro', isa => 'Str', request_name => 'authenticationType', traits => ['NameInRequest']);
   has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', request_name => 'openIDConnectConfig', traits => ['NameInRequest']);
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::CognitoUserPoolConfig', request_name => 'userPoolConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

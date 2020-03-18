@@ -1,6 +1,7 @@
 package Paws::DAX::SSEDescription;
   use Moose;
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

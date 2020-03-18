@@ -86,7 +86,7 @@ The type of the gateway.
 
 The type of hypervisor environment used by the host.
 
-Valid values are: C<"VMWARE">, C<"HYPER-V">, C<"EC2">, C<"OTHER">
+Valid values are: C<"VMWARE">, C<"HYPER-V">, C<"EC2">, C<"KVM">, C<"OTHER">
 =head2 LastSoftwareUpdate => Str
 
 The date on which the last software update was applied to the gateway.

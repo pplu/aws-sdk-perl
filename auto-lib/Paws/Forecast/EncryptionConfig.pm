@@ -2,6 +2,7 @@ package Paws::Forecast::EncryptionConfig;
   use Moose;
   has KMSKeyArn => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

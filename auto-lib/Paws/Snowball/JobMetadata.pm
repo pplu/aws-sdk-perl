@@ -75,9 +75,8 @@ C<CID123e4567-e89b-12d3-a456-426655440000>.
 =head2 DataTransferProgress => L<Paws::Snowball::DataTransfer>
 
   A value that defines the real-time status of a Snowball's data transfer
-while the appliance is at AWS. This data is only available while a job
-has a C<JobState> value of C<InProgress>, for both import and export
-jobs.
+while the device is at AWS. This data is only available while a job has
+a C<JobState> value of C<InProgress>, for both import and export jobs.
 
 
 =head2 Description => Str
@@ -164,7 +163,7 @@ Snowballs. All other regions use 80 TB capacity Snowballs.
 
 =head2 SnowballType => Str
 
-  The type of appliance used with this job.
+  The type of device used with this job.
 
 
 

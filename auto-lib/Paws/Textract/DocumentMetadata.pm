@@ -1,6 +1,7 @@
 package Paws::Textract::DocumentMetadata;
   use Moose;
   has Pages => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

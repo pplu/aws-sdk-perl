@@ -5,6 +5,7 @@ package Paws::Chime::Termination;
   has CpsLimit => (is => 'ro', isa => 'Int');
   has DefaultPhoneNumber => (is => 'ro', isa => 'Str');
   has Disabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

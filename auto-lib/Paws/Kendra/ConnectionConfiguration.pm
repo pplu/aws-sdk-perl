@@ -5,6 +5,7 @@ package Paws::Kendra::ConnectionConfiguration;
   has DatabasePort => (is => 'ro', isa => 'Int', required => 1);
   has SecretArn => (is => 'ro', isa => 'Str', required => 1);
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

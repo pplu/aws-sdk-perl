@@ -3,6 +3,7 @@ package Paws::Textract::HumanLoopActivationOutput;
   has HumanLoopActivationConditionsEvaluationResults => (is => 'ro', isa => 'Str');
   has HumanLoopActivationReasons => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has HumanLoopArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

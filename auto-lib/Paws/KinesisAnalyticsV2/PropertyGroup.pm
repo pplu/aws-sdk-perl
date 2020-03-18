@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::PropertyGroup;
   use Moose;
   has PropertyGroupId => (is => 'ro', isa => 'Str', required => 1);
   has PropertyMap => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::PropertyMap', required => 1);
+
 1;
 
 ### main pod documentation begin ###

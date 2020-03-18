@@ -1,6 +1,7 @@
 package Paws::MediaConvert::DestinationSettings;
   use Moose;
   has S3Settings => (is => 'ro', isa => 'Paws::MediaConvert::S3DestinationSettings', request_name => 's3Settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Schemas::SchemaVersionSummary;
   has SchemaArn => (is => 'ro', isa => 'Str');
   has SchemaName => (is => 'ro', isa => 'Str');
   has SchemaVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

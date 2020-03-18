@@ -33,14 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To copy a DB cluster parameter group
     # This example copies a DB cluster parameter group.
     my $CopyDBClusterParameterGroupResult = $rds->CopyDBClusterParameterGroup(
-      {
-        'SourceDBClusterParameterGroupIdentifier' =>
-          'mydbclusterparametergroup',
-        'TargetDBClusterParameterGroupIdentifier' =>
-          'mydbclusterparametergroup-copy',
-        'TargetDBClusterParameterGroupDescription' =>
-          'My DB cluster parameter group copy'
-      }
+      'SourceDBClusterParameterGroupIdentifier' => 'mydbclusterparametergroup',
+      'TargetDBClusterParameterGroupDescription' =>
+        'My DB cluster parameter group copy',
+      'TargetDBClusterParameterGroupIdentifier' =>
+        'mydbclusterparametergroup-copy'
     );
 
 
@@ -54,8 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The identifier or Amazon Resource Name (ARN) for the source DB cluster
 parameter group. For information about creating an ARN, see
-Constructing an RDS Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+Constructing an ARN for Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+in the I<Amazon Aurora User Guide>.
 
 Constraints:
 
@@ -104,7 +102,7 @@ Constraints:
 
 =item *
 
-Cannot be null, empty, or blank
+Can't be null, empty, or blank
 
 =item *
 
@@ -116,7 +114,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 

@@ -1,6 +1,7 @@
 package Paws::Chime::UserSettings;
   use Moose;
   has Telephony => (is => 'ro', isa => 'Paws::Chime::TelephonySettings', required => 1);
+
 1;
 
 ### main pod documentation begin ###

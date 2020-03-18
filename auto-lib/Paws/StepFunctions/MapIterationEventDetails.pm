@@ -2,6 +2,7 @@ package Paws::StepFunctions::MapIterationEventDetails;
   use Moose;
   has Index => (is => 'ro', isa => 'Int', request_name => 'index', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

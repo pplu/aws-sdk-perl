@@ -1,6 +1,7 @@
 
 package Paws::Greengrass::GetSubscriptionDefinitionVersion;
   use Moose;
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
   has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
   has SubscriptionDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionVersionId', required => 1);
 
@@ -33,23 +34,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $greengrass->GetSubscriptionDefinitionVersion(
       SubscriptionDefinitionId        => 'My__string',
       SubscriptionDefinitionVersionId => 'My__string',
-
+      NextToken                       => 'My__string',    # OPTIONAL
       );
 
     # Results:
+    my $Arn = $GetSubscriptionDefinitionVersionResponse->Arn;
     my $CreationTimestamp =
       $GetSubscriptionDefinitionVersionResponse->CreationTimestamp;
-    my $Version    = $GetSubscriptionDefinitionVersionResponse->Version;
     my $Definition = $GetSubscriptionDefinitionVersionResponse->Definition;
     my $Id         = $GetSubscriptionDefinitionVersionResponse->Id;
-    my $Arn        = $GetSubscriptionDefinitionVersionResponse->Arn;
+    my $NextToken  = $GetSubscriptionDefinitionVersionResponse->NextToken;
+    my $Version    = $GetSubscriptionDefinitionVersionResponse->Version;
 
 # Returns a L<Paws::Greengrass::GetSubscriptionDefinitionVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetSubscriptionDefinitionVersion>
 
 =head1 ATTRIBUTES
+
+
+=head2 NextToken => Str
+
+The token for the next set of results, or ''null'' if there are no
+additional results.
+
 
 
 =head2 B<REQUIRED> SubscriptionDefinitionId => Str
@@ -60,7 +69,12 @@ The ID of the subscription definition.
 
 =head2 B<REQUIRED> SubscriptionDefinitionVersionId => Str
 
-The ID of the subscription definition version.
+The ID of the subscription definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation''
+object, which is returned by ''ListSubscriptionDefinitionVersions''
+requests. If the version is the last one that was associated with a
+subscription definition, the value also maps to the ''LatestVersion''
+property of the corresponding ''DefinitionInformation'' object.
 
 
 

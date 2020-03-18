@@ -47,10 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Info => {
           'MyProvisioningArtifactInfoKey' => 'MyProvisioningArtifactInfoValue',
         },    # min: 1, max: 100
-        Type => 'CLOUD_FORMATION_TEMPLATE'
-        , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
-        Name        => 'MyProvisioningArtifactName',           # OPTIONAL
         Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
+        DisableTemplateValidation => 1,                               # OPTIONAL
+        Name                      => 'MyProvisioningArtifactName',    # OPTIONAL
+        Type                      => 'CLOUD_FORMATION_TEMPLATE'
+        , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
       },
       AcceptLanguage     => 'MyAcceptLanguage',                 # OPTIONAL
       Description        => 'MyProductViewShortDescription',    # OPTIONAL
@@ -69,10 +70,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Tags = $CreateProductOutput->Tags;
+    my $ProductViewDetail = $CreateProductOutput->ProductViewDetail;
     my $ProvisioningArtifactDetail =
       $CreateProductOutput->ProvisioningArtifactDetail;
-    my $ProductViewDetail = $CreateProductOutput->ProductViewDetail;
+    my $Tags = $CreateProductOutput->Tags;
 
     # Returns a L<Paws::ServiceCatalog::CreateProductOutput> object.
 

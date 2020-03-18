@@ -11,6 +11,7 @@ package Paws::ApiGatewayV2::CreateRouteInput;
   has RouteKey => (is => 'ro', isa => 'Str', request_name => 'routeKey', traits => ['NameInRequest'], required => 1);
   has RouteResponseSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'routeResponseSelectionExpression', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

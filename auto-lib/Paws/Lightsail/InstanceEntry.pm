@@ -5,6 +5,7 @@ package Paws::Lightsail::InstanceEntry;
   has PortInfoSource => (is => 'ro', isa => 'Str', request_name => 'portInfoSource', traits => ['NameInRequest'], required => 1);
   has SourceName => (is => 'ro', isa => 'Str', request_name => 'sourceName', traits => ['NameInRequest'], required => 1);
   has UserData => (is => 'ro', isa => 'Str', request_name => 'userData', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

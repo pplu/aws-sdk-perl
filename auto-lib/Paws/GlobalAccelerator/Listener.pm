@@ -4,6 +4,7 @@ package Paws::GlobalAccelerator::Listener;
   has ListenerArn => (is => 'ro', isa => 'Str');
   has PortRanges => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::PortRange]');
   has Protocol => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

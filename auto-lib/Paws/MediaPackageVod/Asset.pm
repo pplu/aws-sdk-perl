@@ -8,6 +8,7 @@ package Paws::MediaPackageVod::Asset;
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest']);
   has SourceRoleArn => (is => 'ro', isa => 'Str', request_name => 'sourceRoleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

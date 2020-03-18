@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $BasePath  = $BasePathMapping->BasePath;
     my $RestApiId = $BasePathMapping->RestApiId;
     my $Stage     = $BasePathMapping->Stage;
-    my $BasePath  = $BasePathMapping->BasePath;
 
     # Returns a L<Paws::ApiGateway::BasePathMapping> object.
 

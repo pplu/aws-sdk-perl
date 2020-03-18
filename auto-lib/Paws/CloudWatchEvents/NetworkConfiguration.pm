@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::NetworkConfiguration;
   use Moose;
   has AwsvpcConfiguration => (is => 'ro', isa => 'Paws::CloudWatchEvents::AwsVpcConfiguration', request_name => 'awsvpcConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

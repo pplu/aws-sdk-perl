@@ -2,6 +2,7 @@ package Paws::SecurityHub::AccountDetails;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

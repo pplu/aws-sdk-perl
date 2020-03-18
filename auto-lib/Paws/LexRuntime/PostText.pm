@@ -43,14 +43,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $responseCard      = $PostTextResponse->responseCard;
-    my $sessionAttributes = $PostTextResponse->sessionAttributes;
-    my $dialogState       = $PostTextResponse->dialogState;
-    my $slotToElicit      = $PostTextResponse->slotToElicit;
-    my $message           = $PostTextResponse->message;
-    my $intentName        = $PostTextResponse->intentName;
-    my $slots             = $PostTextResponse->slots;
-    my $messageFormat     = $PostTextResponse->messageFormat;
+    my $DialogState       = $PostTextResponse->DialogState;
+    my $IntentName        = $PostTextResponse->IntentName;
+    my $Message           = $PostTextResponse->Message;
+    my $MessageFormat     = $PostTextResponse->MessageFormat;
+    my $ResponseCard      = $PostTextResponse->ResponseCard;
+    my $SentimentResponse = $PostTextResponse->SentimentResponse;
+    my $SessionAttributes = $PostTextResponse->SessionAttributes;
+    my $SessionId         = $PostTextResponse->SessionId;
+    my $SlotToElicit      = $PostTextResponse->SlotToElicit;
+    my $Slots             = $PostTextResponse->Slots;
 
     # Returns a L<Paws::LexRuntime::PostTextResponse> object.
 
@@ -87,7 +89,7 @@ The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes with the prefix C<x-amz-lex:>.
 
 For more information, see Setting Request Attributes
-(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+(https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 
 
 
@@ -97,7 +99,7 @@ Application-specific information passed between Amazon Lex and a client
 application.
 
 For more information, see Setting Session Attributes
-(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+(https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 
 
 

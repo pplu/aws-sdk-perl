@@ -30,14 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $BundleInstanceResult = $ec2->BundleInstance(
-      InstanceId => 'MyString',
+      InstanceId => 'MyInstanceId',
       Storage    => {
         S3 => {
-          Bucket                => 'MyString',
+          AWSAccessKeyId        => 'MyString',    # OPTIONAL
+          Bucket                => 'MyString',    # OPTIONAL
+          Prefix                => 'MyString',    # OPTIONAL
           UploadPolicy          => 'BlobBlob',    # OPTIONAL
-          Prefix                => 'MyString',
-          UploadPolicySignature => 'MyString',
-          AWSAccessKeyId        => 'MyString',
+          UploadPolicySignature => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },
       DryRun => 1,    # OPTIONAL

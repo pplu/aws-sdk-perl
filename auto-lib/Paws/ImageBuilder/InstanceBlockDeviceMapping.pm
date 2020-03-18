@@ -4,6 +4,7 @@ package Paws::ImageBuilder::InstanceBlockDeviceMapping;
   has Ebs => (is => 'ro', isa => 'Paws::ImageBuilder::EbsInstanceBlockDeviceSpecification', request_name => 'ebs', traits => ['NameInRequest']);
   has NoDevice => (is => 'ro', isa => 'Str', request_name => 'noDevice', traits => ['NameInRequest']);
   has VirtualName => (is => 'ro', isa => 'Str', request_name => 'virtualName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

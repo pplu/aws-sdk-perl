@@ -36,8 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextToken = $GetQueryResultsOutput->NextToken;
-    my $ResultSet = $GetQueryResultsOutput->ResultSet;
+    my $NextToken   = $GetQueryResultsOutput->NextToken;
+    my $ResultSet   = $GetQueryResultsOutput->ResultSet;
+    my $UpdateCount = $GetQueryResultsOutput->UpdateCount;
 
     # Returns a L<Paws::Athena::GetQueryResultsOutput> object.
 

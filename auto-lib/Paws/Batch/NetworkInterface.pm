@@ -3,6 +3,7 @@ package Paws::Batch::NetworkInterface;
   has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest']);
   has Ipv6Address => (is => 'ro', isa => 'Str', request_name => 'ipv6Address', traits => ['NameInRequest']);
   has PrivateIpv4Address => (is => 'ro', isa => 'Str', request_name => 'privateIpv4Address', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

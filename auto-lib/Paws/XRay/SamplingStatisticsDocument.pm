@@ -6,6 +6,7 @@ package Paws::XRay::SamplingStatisticsDocument;
   has RuleName => (is => 'ro', isa => 'Str', required => 1);
   has SampledCount => (is => 'ro', isa => 'Int', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

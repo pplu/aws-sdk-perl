@@ -32,23 +32,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeElasticGpusResult = $ec2->DescribeElasticGpus(
-      DryRun        => 1,                      # OPTIONAL
-      ElasticGpuIds => [ 'MyString', ... ],    # OPTIONAL
+      DryRun        => 1,                            # OPTIONAL
+      ElasticGpuIds => [ 'MyElasticGpuId', ... ],    # OPTIONAL
       Filters       => [
         {
-          Values => [ 'MyString', ... ],       # OPTIONAL
-          Name => 'MyString',
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],             # OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
-      MaxResults => 1,                         # OPTIONAL
-      NextToken  => 'MyString',                # OPTIONAL
+      ],                                             # OPTIONAL
+      MaxResults => 1,                               # OPTIONAL
+      NextToken  => 'MyString',                      # OPTIONAL
     );
 
     # Results:
-    my $NextToken     = $DescribeElasticGpusResult->NextToken;
     my $ElasticGpuSet = $DescribeElasticGpusResult->ElasticGpuSet;
     my $MaxResults    = $DescribeElasticGpusResult->MaxResults;
+    my $NextToken     = $DescribeElasticGpusResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeElasticGpusResult> object.
 
@@ -69,39 +69,40 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 ElasticGpuIds => ArrayRef[Str|Undef]
 
-One or more Elastic GPU IDs.
+The Elastic Graphics accelerator IDs.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
 =item *
 
-C<availability-zone> - The Availability Zone in which the Elastic GPU
-resides.
+C<availability-zone> - The Availability Zone in which the Elastic
+Graphics accelerator resides.
 
 =item *
 
-C<elastic-gpu-health> - The status of the Elastic GPU (C<OK> |
-C<IMPAIRED>).
+C<elastic-gpu-health> - The status of the Elastic Graphics accelerator
+(C<OK> | C<IMPAIRED>).
 
 =item *
 
-C<elastic-gpu-state> - The state of the Elastic GPU (C<ATTACHED>).
+C<elastic-gpu-state> - The state of the Elastic Graphics accelerator
+(C<ATTACHED>).
 
 =item *
 
-C<elastic-gpu-type> - The type of Elastic GPU; for example,
-C<eg1.medium>.
+C<elastic-gpu-type> - The type of Elastic Graphics accelerator; for
+example, C<eg1.medium>.
 
 =item *
 
-C<instance-id> - The ID of the instance to which the Elastic GPU is
-associated.
+C<instance-id> - The ID of the instance to which the Elastic Graphics
+accelerator is associated.
 
 =back
 

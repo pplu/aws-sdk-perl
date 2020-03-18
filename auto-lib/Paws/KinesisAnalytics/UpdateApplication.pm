@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateApplicationResponse = $kinesisanalytics->UpdateApplication(
       ApplicationName   => 'MyApplicationName',
       ApplicationUpdate => {
-        ApplicationCodeUpdate => 'MyApplicationCode',    # max: 51200; OPTIONAL
+        ApplicationCodeUpdate => 'MyApplicationCode',    # max: 102400; OPTIONAL
         CloudWatchLoggingOptionUpdates => [
           {
             CloudWatchLoggingOptionId => 'MyId',         # min: 1, max: 50
@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                         # min: 1, max: 1000
               RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
               RecordFormatUpdate   => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
+                RecordFormatType  => 'JSON',                 # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
                     RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1
@@ -99,7 +99,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             OutputId                => 'MyId',       # min: 1, max: 50
             DestinationSchemaUpdate => {
-              RecordFormatType => 'JSON',    # values: JSON, CSV; OPTIONAL
+              RecordFormatType => 'JSON',            # values: JSON, CSV
+
             },    # OPTIONAL
             KinesisFirehoseOutputUpdate => {
               ResourceARNUpdate =>
@@ -133,7 +134,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ...
               ],                                         # min: 1, max: 1000
               RecordFormat => {
-                RecordFormatType  => 'JSON',    # values: JSON, CSV; OPTIONAL
+                RecordFormatType  => 'JSON',             # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
                     RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1
@@ -184,6 +185,7 @@ Describes application updates.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 The current application version ID. You can use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 operation to get this value.
 
 

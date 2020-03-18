@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $ecr = Paws->service('ECR');
-    my $CompleteLayerUploadResponse = $ecr->CompleteLayerUpload(
+    my $api.ecr = Paws->service('ECR');
+    my $CompleteLayerUploadResponse = $api . ecr->CompleteLayerUpload(
       LayerDigests   => [ 'MyLayerDigest', ... ],
       RepositoryName => 'MyRepositoryName',
       UploadId       => 'MyUploadId',
@@ -38,15 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $uploadId       = $CompleteLayerUploadResponse->uploadId;
-    my $layerDigest    = $CompleteLayerUploadResponse->layerDigest;
-    my $registryId     = $CompleteLayerUploadResponse->registryId;
-    my $repositoryName = $CompleteLayerUploadResponse->repositoryName;
+    my $LayerDigest    = $CompleteLayerUploadResponse->LayerDigest;
+    my $RegistryId     = $CompleteLayerUploadResponse->RegistryId;
+    my $RepositoryName = $CompleteLayerUploadResponse->RepositoryName;
+    my $UploadId       = $CompleteLayerUploadResponse->UploadId;
 
     # Returns a L<Paws::ECR::CompleteLayerUploadResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/CompleteLayerUpload>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr/CompleteLayerUpload>
 
 =head1 ATTRIBUTES
 

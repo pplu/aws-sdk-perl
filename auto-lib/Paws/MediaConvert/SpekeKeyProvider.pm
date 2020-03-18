@@ -1,8 +1,9 @@
 package Paws::MediaConvert::SpekeKeyProvider;
   use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
-  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
+  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest']);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
 
 1;
 
@@ -23,39 +24,51 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::SpekeKeyProvider object:
 
-  $service_obj->Method(Att1 => { ResourceId => $value, ..., Url => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::SpekeKeyProvider object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ResourceId
+  $result->Att1->CertificateArn
 
 =head1 DESCRIPTION
 
-Settings for use with a SPEKE key provider
+If your output group type is HLS, DASH, or Microsoft Smooth, use these
+settings when doing DRM encryption with a SPEKE-compliant key provider.
+If your output group type is CMAF, use the SpekeKeyProviderCmaf
+settings instead.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ResourceId => Str
+=head2 CertificateArn => Str
 
-  The SPEKE-compliant server uses Resource ID (ResourceId) to identify
-content.
+  If you want your key provider to encrypt the content keys that it
+provides to MediaConvert, set up a certificate with a master key using
+AWS Certificate Manager. Specify the certificate's Amazon Resource Name
+(ARN) here.
 
 
-=head2 B<REQUIRED> SystemIds => ArrayRef[Str|Undef]
+=head2 ResourceId => Str
+
+  Specify the resource ID that your SPEKE-compliant key provider uses to
+identify this content.
+
+
+=head2 SystemIds => ArrayRef[Str|Undef]
 
   Relates to SPEKE implementation. DRM system identifiers. DASH output
 groups support a max of two system ids. Other group types support one
-system id.
+system id. See https://dashif.org/identifiers/content_protection/ for
+more details.
 
 
-=head2 B<REQUIRED> Url => Str
+=head2 Url => Str
 
-  Use URL (Url) to specify the SPEKE-compliant server that will provide
-keys for content.
+  Specify the URL to the key server that your SPEKE-compliant DRM key
+provider uses to provide keys for encrypting your content.
 
 
 

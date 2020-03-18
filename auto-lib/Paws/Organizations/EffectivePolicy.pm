@@ -4,6 +4,7 @@ package Paws::Organizations::EffectivePolicy;
   has PolicyContent => (is => 'ro', isa => 'Str');
   has PolicyType => (is => 'ro', isa => 'Str');
   has TargetId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

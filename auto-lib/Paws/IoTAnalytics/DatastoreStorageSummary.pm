@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatastoreStorageSummary;
   use Moose;
   has CustomerManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::CustomerManagedDatastoreS3StorageSummary', request_name => 'customerManagedS3', traits => ['NameInRequest']);
   has ServiceManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::ServiceManagedDatastoreS3StorageSummary', request_name => 'serviceManagedS3', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

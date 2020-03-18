@@ -7,6 +7,7 @@ package Paws::Amplify::DomainAssociation;
   has EnableAutoSubDomain => (is => 'ro', isa => 'Bool', request_name => 'enableAutoSubDomain', traits => ['NameInRequest'], required => 1);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest'], required => 1);
   has SubDomains => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::SubDomain]', request_name => 'subDomains', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

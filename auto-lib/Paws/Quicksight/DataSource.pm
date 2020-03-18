@@ -11,6 +11,7 @@ package Paws::Quicksight::DataSource;
   has Status => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has VpcConnectionProperties => (is => 'ro', isa => 'Paws::Quicksight::VpcConnectionProperties');
+
 1;
 
 ### main pod documentation begin ###

@@ -33,28 +33,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $clouddirectory = Paws->service('CloudDirectory');
     my $GetLinkAttributesResponse = $clouddirectory->GetLinkAttributes(
       AttributeNames => [
-        'MyAttributeName', ...    # min: 1, max: 64
+        'MyAttributeName', ...    # min: 1, max: 230
       ],
       DirectoryArn       => 'MyArn',
       TypedLinkSpecifier => {
         IdentityAttributeValues => [
           {
-            AttributeName => 'MyAttributeName',    # min: 1, max: 64
+            AttributeName => 'MyAttributeName',    # min: 1, max: 230
             Value         => {
-              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
-              BooleanValue  => 1,                             # OPTIONAL
-              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
               BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
             },
 
           },
           ...
         ],
-        TargetObjectReference => {
+        SourceObjectReference => {
           Selector => 'MySelectorObjectReference',            # OPTIONAL
         },
-        SourceObjectReference => {
+        TargetObjectReference => {
           Selector => 'MySelectorObjectReference',            # OPTIONAL
         },
         TypedLinkFacet => {
@@ -73,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::CloudDirectory::GetLinkAttributesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/directory-service/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/GetLinkAttributes>
 
 =head1 ATTRIBUTES
 
@@ -95,8 +95,8 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 The Amazon Resource Name (ARN) that is associated with the Directory
 where the typed link resides. For more information, see arns or Typed
-link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 

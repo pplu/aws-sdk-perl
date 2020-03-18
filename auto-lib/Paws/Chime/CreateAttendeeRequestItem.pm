@@ -1,6 +1,7 @@
 package Paws::Chime::CreateAttendeeRequestItem;
   use Moose;
   has ExternalUserId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

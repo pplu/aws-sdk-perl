@@ -43,13 +43,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $NextContinentCode   = $ListGeoLocationsResponse->NextContinentCode;
-    my $IsTruncated         = $ListGeoLocationsResponse->IsTruncated;
-    my $MaxItems            = $ListGeoLocationsResponse->MaxItems;
-    my $NextSubdivisionCode = $ListGeoLocationsResponse->NextSubdivisionCode;
     my $GeoLocationDetailsList =
       $ListGeoLocationsResponse->GeoLocationDetailsList;
-    my $NextCountryCode = $ListGeoLocationsResponse->NextCountryCode;
+    my $IsTruncated         = $ListGeoLocationsResponse->IsTruncated;
+    my $MaxItems            = $ListGeoLocationsResponse->MaxItems;
+    my $NextContinentCode   = $ListGeoLocationsResponse->NextContinentCode;
+    my $NextCountryCode     = $ListGeoLocationsResponse->NextCountryCode;
+    my $NextSubdivisionCode = $ListGeoLocationsResponse->NextSubdivisionCode;
 
     # Returns a L<Paws::Route53::ListGeoLocationsResponse> object.
 
@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 MaxItems => Str
 
 (Optional) The maximum number of geolocations to be included in the
-response body for this request. If more than C<MaxItems> geolocations
+response body for this request. If more than C<maxitems> geolocations
 remain to be listed, then the value of the C<IsTruncated> element in
 the response is C<true>.
 
@@ -71,14 +71,14 @@ the response is C<true>.
 =head2 StartContinentCode => Str
 
 The code for the continent with which you want to start listing
-locations that Amazon Route 53 supports for geolocation. If Amazon
-Route 53 has already returned a page or more of results, if
-C<IsTruncated> is true, and if C<NextContinentCode> from the previous
-response has a value, enter that value in C<StartContinentCode> to
-return the next page of results.
+locations that Amazon Route 53 supports for geolocation. If Route 53
+has already returned a page or more of results, if C<IsTruncated> is
+true, and if C<NextContinentCode> from the previous response has a
+value, enter that value in C<startcontinentcode> to return the next
+page of results.
 
-Include C<StartContinentCode> only if you want to list continents.
-Don't include C<StartContinentCode> when you're listing countries or
+Include C<startcontinentcode> only if you want to list continents.
+Don't include C<startcontinentcode> when you're listing countries or
 countries with their subdivisions.
 
 
@@ -86,14 +86,13 @@ countries with their subdivisions.
 =head2 StartCountryCode => Str
 
 The code for the country with which you want to start listing locations
-that Amazon Route 53 supports for geolocation. If Amazon Route 53 has
-already returned a page or more of results, if C<IsTruncated> is
-C<true>, and if C<NextCountryCode> from the previous response has a
-value, enter that value in C<StartCountryCode> to return the next page
-of results.
+that Amazon Route 53 supports for geolocation. If Route 53 has already
+returned a page or more of results, if C<IsTruncated> is C<true>, and
+if C<NextCountryCode> from the previous response has a value, enter
+that value in C<startcountrycode> to return the next page of results.
 
-Amazon Route 53 uses the two-letter country codes that are specified in
-ISO standard 3166-1 alpha-2
+Route 53 uses the two-letter country codes that are specified in ISO
+standard 3166-1 alpha-2
 (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
@@ -102,13 +101,13 @@ ISO standard 3166-1 alpha-2
 
 The code for the subdivision (for example, state or province) with
 which you want to start listing locations that Amazon Route 53 supports
-for geolocation. If Amazon Route 53 has already returned a page or more
-of results, if C<IsTruncated> is C<true>, and if C<NextSubdivisionCode>
+for geolocation. If Route 53 has already returned a page or more of
+results, if C<IsTruncated> is C<true>, and if C<NextSubdivisionCode>
 from the previous response has a value, enter that value in
-C<StartSubdivisionCode> to return the next page of results.
+C<startsubdivisioncode> to return the next page of results.
 
 To list subdivisions of a country, you must include both
-C<StartCountryCode> and C<StartSubdivisionCode>.
+C<startcountrycode> and C<startsubdivisioncode>.
 
 
 

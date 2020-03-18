@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048; OPTIONAL
+            ],    # min: 1, max: 2048
           },    # OPTIONAL
           RelationalTable => {
             DataSourceArn => 'MyArn',
@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048; OPTIONAL
+            ],    # min: 1, max: 2048
             Name   => 'MyRelationalTableName',      # min: 1, max: 64
             Schema => 'MyRelationalTableSchema',    # max: 64; OPTIONAL
           },    # OPTIONAL
@@ -82,7 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048; OPTIONAL
+            ],    # min: 1, max: 2048
             UploadSettings => {
               ContainsHeader => 1,                # OPTIONAL
               Delimiter      => 'MyDelimiter',    # min: 1, max: 1; OPTIONAL

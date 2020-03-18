@@ -64,11 +64,11 @@ time-sensitive, such as a marketing message.
 
 =head2 OriginationNumber => Str
 
-  The number that the SMS message originates from. This should be one of
-the dedicated long codes or short codes that you requested from AWS
-Support and is assigned to your AWS account. If you don't specify a
-long or short code, Amazon Pinpoint assigns a random long code to the
-SMS message.
+  The number to send the SMS message from. This value should be one of
+the dedicated long or short codes that's assigned to your AWS account.
+If you don't specify a long or short code, Amazon Pinpoint assigns a
+random long code to the SMS message and sends the message from that
+code.
 
 
 =head2 SenderId => Str

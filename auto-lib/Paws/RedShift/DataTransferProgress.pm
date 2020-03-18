@@ -6,6 +6,7 @@ package Paws::RedShift::DataTransferProgress;
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TotalDataInMegaBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

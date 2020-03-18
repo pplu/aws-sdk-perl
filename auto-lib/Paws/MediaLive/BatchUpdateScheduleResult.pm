@@ -2,6 +2,7 @@ package Paws::MediaLive::BatchUpdateScheduleResult;
   use Moose;
   has Creates => (is => 'ro', isa => 'Paws::MediaLive::BatchScheduleActionCreateResult', request_name => 'creates', traits => ['NameInRequest']);
   has Deletes => (is => 'ro', isa => 'Paws::MediaLive::BatchScheduleActionDeleteResult', request_name => 'deletes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

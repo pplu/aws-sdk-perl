@@ -3,6 +3,7 @@ package Paws::IoTEventsData::DetectorState;
   has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest'], required => 1);
   has Timers => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::Timer]', request_name => 'timers', traits => ['NameInRequest'], required => 1);
   has Variables => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::Variable]', request_name => 'variables', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

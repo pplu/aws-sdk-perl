@@ -89,8 +89,8 @@ and FAIL.
 
 =head2 State => Str
 
-  The state of the activity. Possible values are: PENDING, INITIALIZING,
-RUNNING, PAUSED, CANCELLED, and COMPLETED.
+  The current status of the activity. Possible values are: PENDING,
+INITIALIZING, RUNNING, PAUSED, CANCELLED, and COMPLETED.
 
 
 =head2 SuccessfulEndpointCount => Int

@@ -5,6 +5,7 @@ package Paws::Forecast::WindowSummary;
   has Metrics => (is => 'ro', isa => 'Paws::Forecast::Metrics');
   has TestWindowEnd => (is => 'ro', isa => 'Str');
   has TestWindowStart => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

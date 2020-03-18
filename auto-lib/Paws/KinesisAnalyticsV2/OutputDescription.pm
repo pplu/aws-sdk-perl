@@ -6,6 +6,7 @@ package Paws::KinesisAnalyticsV2::OutputDescription;
   has LambdaOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::LambdaOutputDescription');
   has Name => (is => 'ro', isa => 'Str');
   has OutputId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

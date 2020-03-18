@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::CustomerManagedChannelS3Storage;
   has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest'], required => 1);
   has KeyPrefix => (is => 'ro', isa => 'Str', request_name => 'keyPrefix', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

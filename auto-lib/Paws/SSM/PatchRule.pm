@@ -1,6 +1,7 @@
 package Paws::SSM::PatchRule;
   use Moose;
-  has ApproveAfterDays => (is => 'ro', isa => 'Int', required => 1);
+  has ApproveAfterDays => (is => 'ro', isa => 'Int');
+  has ApproveUntilDate => (is => 'ro', isa => 'Str');
   has ComplianceLevel => (is => 'ro', isa => 'Str');
   has EnableNonSecurity => (is => 'ro', isa => 'Bool');
   has PatchFilterGroup => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup', required => 1);
@@ -40,12 +41,18 @@ Defines an approval rule for a patch baseline.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApproveAfterDays => Int
+=head2 ApproveAfterDays => Int
 
   The number of days after the release date of each patch matched by the
 rule that the patch is marked as approved in the patch baseline. For
 example, a value of C<7> means that patches are approved seven days
 after they are released.
+
+
+=head2 ApproveUntilDate => Str
+
+  The cutoff date for auto approval of released patches. Any patches
+released on or before this date will be installed automatically
 
 
 =head2 ComplianceLevel => Str

@@ -4,6 +4,7 @@ package Paws::CostExplorer::SavingsPlansUtilization;
   has UnusedCommitment => (is => 'ro', isa => 'Str');
   has UsedCommitment => (is => 'ro', isa => 'Str');
   has UtilizationPercentage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

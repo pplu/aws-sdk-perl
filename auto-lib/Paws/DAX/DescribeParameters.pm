@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Parameters = $DescribeParametersResponse->Parameters;
     my $NextToken  = $DescribeParametersResponse->NextToken;
+    my $Parameters = $DescribeParametersResponse->Parameters;
 
     # Returns a L<Paws::DAX::DescribeParametersResponse> object.
 

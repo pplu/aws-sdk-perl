@@ -6,9 +6,11 @@ package Paws::SSM::DocumentIdentifier;
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
+  has VersionName => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -29,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentIdentifier object:
 
-  $service_obj->Method(Att1 => { DocumentFormat => $value, ..., TargetType => $value  });
+  $service_obj->Method(Att1 => { DocumentFormat => $value, ..., VersionName => $value  });
 
 =head3 Results returned from an API call
 
@@ -75,6 +77,13 @@ Describes the name of a Systems Manager document.
   The operating system platform.
 
 
+=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
+
+  A list of SSM documents required by a document. For example, an
+C<ApplicationConfiguration> document requires an
+C<ApplicationConfigurationSchema> document.
+
+
 =head2 SchemaVersion => Str
 
   The schema version.
@@ -92,6 +101,13 @@ run on. For example, /AWS::EC2::Instance. For a list of valid resource
 types, see AWS Resource Types Reference
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
+
+
+=head2 VersionName => Str
+
+  An optional field specifying the version of the artifact associated
+with the document. For example, "Release 12, Update 6". This value is
+unique across all versions of a document, and cannot be changed.
 
 
 

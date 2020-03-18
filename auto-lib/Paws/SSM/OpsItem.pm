@@ -16,6 +16,7 @@ package Paws::SSM::OpsItem;
   has Status => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

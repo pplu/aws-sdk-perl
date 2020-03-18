@@ -3,6 +3,7 @@ package Paws::Rekognition::ProjectDescription;
   has CreationTimestamp => (is => 'ro', isa => 'Str');
   has ProjectArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

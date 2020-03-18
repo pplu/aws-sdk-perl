@@ -4,6 +4,7 @@ package Paws::KinesisAnalyticsV2::CheckpointConfigurationDescription;
   has CheckpointInterval => (is => 'ro', isa => 'Int');
   has ConfigurationType => (is => 'ro', isa => 'Str');
   has MinPauseBetweenCheckpoints => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -39,12 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example returns the Spot Price history for m1.xlarge, Linux/UNIX
     # (Amazon VPC) instances for a particular day in January.
     my $DescribeSpotPriceHistoryResult = $ec2->DescribeSpotPriceHistory(
-      {
-        'ProductDescriptions' => ['Linux/UNIX (Amazon VPC)'],
-        'StartTime'           => '2014-01-06T07:08:09',
-        'InstanceTypes'       => ['m1.xlarge'],
-        'EndTime'             => '2014-01-06T08:09:10'
-      }
+      'EndTime'             => '2014-01-06T08:09:10',
+      'InstanceTypes'       => ['m1.xlarge'],
+      'ProductDescriptions' => ['Linux/UNIX (Amazon VPC)'],
+      'StartTime'           => '2014-01-06T07:08:09'
     );
 
     # Results:

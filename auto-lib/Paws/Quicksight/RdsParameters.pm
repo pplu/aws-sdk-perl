@@ -2,6 +2,7 @@ package Paws::Quicksight::RdsParameters;
   use Moose;
   has Database => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

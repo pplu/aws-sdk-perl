@@ -11,6 +11,7 @@ package Paws::Amplify::Step;
   has StepName => (is => 'ro', isa => 'Str', request_name => 'stepName', traits => ['NameInRequest'], required => 1);
   has TestArtifactsUrl => (is => 'ro', isa => 'Str', request_name => 'testArtifactsUrl', traits => ['NameInRequest']);
   has TestConfigUrl => (is => 'ro', isa => 'Str', request_name => 'testConfigUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

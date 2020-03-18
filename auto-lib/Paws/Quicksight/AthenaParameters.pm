@@ -1,6 +1,7 @@
 package Paws::Quicksight::AthenaParameters;
   use Moose;
   has WorkGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

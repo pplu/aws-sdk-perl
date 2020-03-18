@@ -2,6 +2,7 @@ package Paws::WAFv2::TimeWindow;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str', required => 1);
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

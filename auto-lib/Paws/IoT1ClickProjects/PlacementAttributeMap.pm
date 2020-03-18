@@ -1,13 +1,15 @@
-package Paws::Pinpoint::CampaignVersionsResponse;
+package Paws::IoT1ClickProjects::PlacementAttributeMap;
   use Moose;
-  has CampaignsResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignsResponse', required => 1);
+  with 'Paws::API::StrToNativeMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::CampaignVersionsResponse
+Paws::IoT1ClickProjects::PlacementAttributeMap
 
 =head1 USAGE
 
@@ -18,16 +20,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::CampaignVersionsResponse object:
+As an example, if Att1 is expected to be a Paws::IoT1ClickProjects::PlacementAttributeMap object:
 
-  $service_obj->Method(Att1 => { CampaignsResponse => $value, ..., CampaignsResponse => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::CampaignVersionsResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT1ClickProjects::PlacementAttributeMap object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CampaignsResponse
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
@@ -35,16 +37,13 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => Str
 
-=head2 B<REQUIRED> CampaignsResponse => L<Paws::Pinpoint::CampaignsResponse>
-
-  
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+This class forms part of L<Paws>, describing an object used in L<Paws::IoT1ClickProjects>
 
 =head1 BUGS and CONTRIBUTIONS
 

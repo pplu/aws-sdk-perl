@@ -2,6 +2,7 @@ package Paws::SecurityHub::StandardsSubscriptionRequest;
   use Moose;
   has StandardsArn => (is => 'ro', isa => 'Str', required => 1);
   has StandardsInput => (is => 'ro', isa => 'Paws::SecurityHub::StandardsInputParameterMap');
+
 1;
 
 ### main pod documentation begin ###

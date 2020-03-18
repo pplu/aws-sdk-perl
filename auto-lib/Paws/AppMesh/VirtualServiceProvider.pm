@@ -2,6 +2,7 @@ package Paws::AppMesh::VirtualServiceProvider;
   use Moose;
   has VirtualNode => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeServiceProvider', request_name => 'virtualNode', traits => ['NameInRequest']);
   has VirtualRouter => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterServiceProvider', request_name => 'virtualRouter', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

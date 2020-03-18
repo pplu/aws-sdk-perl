@@ -4,6 +4,7 @@ package Paws::MediaConvert::InputDecryptionSettings;
   has EncryptedDecryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptedDecryptionKey', traits => ['NameInRequest']);
   has InitializationVector => (is => 'ro', isa => 'Str', request_name => 'initializationVector', traits => ['NameInRequest']);
   has KmsKeyRegion => (is => 'ro', isa => 'Str', request_name => 'kmsKeyRegion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

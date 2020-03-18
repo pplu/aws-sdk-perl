@@ -5,6 +5,7 @@ package Paws::Personalize::SolutionVersionSummary;
   has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
   has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

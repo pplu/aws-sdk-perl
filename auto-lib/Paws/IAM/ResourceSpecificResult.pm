@@ -5,6 +5,7 @@ package Paws::IAM::ResourceSpecificResult;
   has EvalResourceName => (is => 'ro', isa => 'Str', required => 1);
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has PermissionsBoundaryDecisionDetail => (is => 'ro', isa => 'Paws::IAM::PermissionsBoundaryDecisionDetail');
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::ResourceSpecificResult object:
 
-  $service_obj->Method(Att1 => { EvalDecisionDetails => $value, ..., MissingContextValues => $value  });
+  $service_obj->Method(Att1 => { EvalDecisionDetails => $value, ..., PermissionsBoundaryDecisionDetail => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,11 +47,10 @@ This data type is used by a member of the EvaluationResult data type.
 
 =head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
 
-  Additional details about the results of the evaluation decision. When
-there are both IAM policies and resource policies, this parameter
-explains how each set of policies contributes to the final evaluation
-decision. When simulating cross-account access to a resource, both the
-resource-based policy and the caller's IAM policy must grant access.
+  Additional details about the results of the evaluation decision on a
+single resource. This parameter is returned only for cross-account
+simulations. This parameter explains how each policy type contributes
+to the resource-specific evaluation decision.
 
 
 =head2 B<REQUIRED> EvalResourceDecision => Str
@@ -70,8 +70,8 @@ format.
   A list of the statements in the input policies that determine the
 result for this part of the simulation. Remember that even if multiple
 statements allow the operation on the resource, if I<any> statement
-denies that operation, then the explicit deny overrides any allow, and
-the deny statement is the only entry included in the result.
+denies that operation, then the explicit deny overrides any allow. In
+addition, the deny statement is the only entry included in the result.
 
 
 =head2 MissingContextValues => ArrayRef[Str|Undef]
@@ -85,6 +85,12 @@ parameter, then any missing context values are instead included under
 the C<EvaluationResults> section. To discover the context keys used by
 a set of policies, you can call GetContextKeysForCustomPolicy or
 GetContextKeysForPrincipalPolicy.
+
+
+=head2 PermissionsBoundaryDecisionDetail => L<Paws::IAM::PermissionsBoundaryDecisionDetail>
+
+  Contains information about the effect that a permissions boundary has
+on a policy simulation when that boundary is applied to an IAM entity.
 
 
 

@@ -2,6 +2,7 @@ package Paws::Config::RemediationParameterValue;
   use Moose;
   has ResourceValue => (is => 'ro', isa => 'Paws::Config::ResourceValue');
   has StaticValue => (is => 'ro', isa => 'Paws::Config::StaticValue');
+
 1;
 
 ### main pod documentation begin ###

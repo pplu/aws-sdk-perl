@@ -10,6 +10,7 @@ package Paws::MediaConnect::Output;
   has OutputArn => (is => 'ro', isa => 'Str', request_name => 'outputArn', traits => ['NameInRequest'], required => 1);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
   has Transport => (is => 'ro', isa => 'Paws::MediaConnect::Transport', request_name => 'transport', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

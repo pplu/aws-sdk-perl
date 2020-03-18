@@ -1,6 +1,7 @@
 
 package Paws::Glue::UpdateClassifier;
   use Moose;
+  has CsvClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateCsvClassifierRequest');
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateGrokClassifierRequest');
   has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateJsonClassifierRequest');
   has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateXMLClassifierRequest');
@@ -30,11 +31,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $UpdateClassifierResponse = $glue->UpdateClassifier(
+      CsvClassifier => {
+        Name              => 'MyNameString',    # min: 1, max: 255
+        AllowSingleColumn => 1,                 # OPTIONAL
+        ContainsHeader =>
+          'UNKNOWN',    # values: UNKNOWN, PRESENT, ABSENT; OPTIONAL
+        Delimiter => 'MyCsvColumnDelimiter',    # min: 1, max: 1; OPTIONAL
+        DisableValueTrimming => 1,              # OPTIONAL
+        Header               => [
+          'MyNameString', ...                   # min: 1, max: 255
+        ],                                      # OPTIONAL
+        QuoteSymbol => 'MyCsvQuoteSymbol',      # min: 1, max: 1; OPTIONAL
+      },    # OPTIONAL
       GrokClassifier => {
         Name           => 'MyNameString',        # min: 1, max: 255
-        GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048; OPTIONAL
         Classification => 'MyClassification',    # OPTIONAL
         CustomPatterns => 'MyCustomPatterns',    # max: 16000; OPTIONAL
+        GrokPattern    => 'MyGrokPattern',       # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
       JsonClassifier => {
         Name     => 'MyNameString',    # min: 1, max: 255
@@ -51,6 +64,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/UpdateClassifier>
 
 =head1 ATTRIBUTES
+
+
+=head2 CsvClassifier => L<Paws::Glue::UpdateCsvClassifierRequest>
+
+A C<CsvClassifier> object with updated fields.
+
 
 
 =head2 GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>

@@ -32,17 +32,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationSetName           => 'MyConfigurationSetName',
       ConfigurationSetAttributeNames => [
         'eventDestinations',
-        ...    # values: eventDestinations, trackingOptions, reputationOptions
-      ],       # OPTIONAL
+        ... # values: eventDestinations, trackingOptions, deliveryOptions, reputationOptions
+      ],    # OPTIONAL
     );
 
     # Results:
+    my $ConfigurationSet = $DescribeConfigurationSetResponse->ConfigurationSet;
+    my $DeliveryOptions  = $DescribeConfigurationSetResponse->DeliveryOptions;
     my $EventDestinations =
       $DescribeConfigurationSetResponse->EventDestinations;
     my $ReputationOptions =
       $DescribeConfigurationSetResponse->ReputationOptions;
-    my $ConfigurationSet = $DescribeConfigurationSetResponse->ConfigurationSet;
-    my $TrackingOptions  = $DescribeConfigurationSetResponse->TrackingOptions;
+    my $TrackingOptions = $DescribeConfigurationSetResponse->TrackingOptions;
 
     # Returns a L<Paws::SES::DescribeConfigurationSetResponse> object.
 

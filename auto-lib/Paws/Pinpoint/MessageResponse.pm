@@ -1,6 +1,6 @@
 package Paws::Pinpoint::MessageResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has EndpointResult => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointMessageResult');
   has RequestId => (is => 'ro', isa => 'Str');
   has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMessageResult');
@@ -35,32 +35,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-Send message response.
+Provides information about the results of a request to send a message
+to an endpoint address.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
-  Application id of the message.
+  The unique identifier for the application that was used to send the
+message.
 
 
 =head2 EndpointResult => L<Paws::Pinpoint::MapOfEndpointMessageResult>
 
-  A map containing a multi part response for each address, with the
-endpointId as the key and the result as the value.
+  A map that contains a multipart response for each address that the
+message was sent to. In the map, the endpoint ID is the key and the
+result is the value.
 
 
 =head2 RequestId => Str
 
-  Original request Id for which this message was delivered.
+  The identifier for the original request that the message was delivered
+for.
 
 
 =head2 Result => L<Paws::Pinpoint::MapOfMessageResult>
 
-  A map containing a multi part response for each address, with the
-address as the key(Email address, phone number or push token) and the
-result as the value.
+  A map that contains a multipart response for each address (email
+address, phone number, or push notification token) that the message was
+sent to. In the map, the address is the key and the result is the
+value.
 
 
 

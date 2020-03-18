@@ -2,6 +2,7 @@ package Paws::SecurityHub::NoteUpdate;
   use Moose;
   has Text => (is => 'ro', isa => 'Str', required => 1);
   has UpdatedBy => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

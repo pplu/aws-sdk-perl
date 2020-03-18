@@ -3,6 +3,7 @@ package Paws::ES::MasterUserOptions;
   has MasterUserARN => (is => 'ro', isa => 'Str');
   has MasterUserName => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::EMR::BlockPublicAccessConfigurationMetadata;
   use Moose;
   has CreatedByArn => (is => 'ro', isa => 'Str', required => 1);
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

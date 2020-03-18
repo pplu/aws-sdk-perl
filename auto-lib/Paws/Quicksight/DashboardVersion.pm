@@ -7,6 +7,7 @@ package Paws::Quicksight::DashboardVersion;
   has SourceEntityArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VersionNumber => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

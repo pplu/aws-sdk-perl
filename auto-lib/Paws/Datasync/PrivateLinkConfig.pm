@@ -4,6 +4,7 @@ package Paws::Datasync::PrivateLinkConfig;
   has SecurityGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcEndpointId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

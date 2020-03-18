@@ -32,29 +32,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function's event source mapping
     # This operation retrieves a Lambda function's event source mapping
     my $FunctionConfiguration = $lambda->GetFunctionConfiguration(
-      {
-        'Qualifier'    => 1,
-        'FunctionName' => 'myFunction'
-      }
+      'FunctionName' => 'myFunction',
+      'Qualifier'    => 1
     );
 
     # Results:
+    my $CodeSha256       = $FunctionConfiguration->CodeSha256;
+    my $CodeSize         = $FunctionConfiguration->CodeSize;
+    my $DeadLetterConfig = $FunctionConfiguration->DeadLetterConfig;
+    my $Description      = $FunctionConfiguration->Description;
+    my $Environment      = $FunctionConfiguration->Environment;
+    my $FunctionArn      = $FunctionConfiguration->FunctionArn;
     my $FunctionName     = $FunctionConfiguration->FunctionName;
     my $Handler          = $FunctionConfiguration->Handler;
-    my $DeadLetterConfig = $FunctionConfiguration->DeadLetterConfig;
+    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
     my $LastModified     = $FunctionConfiguration->LastModified;
-    my $Environment      = $FunctionConfiguration->Environment;
+    my $MemorySize       = $FunctionConfiguration->MemorySize;
     my $Role             = $FunctionConfiguration->Role;
     my $Runtime          = $FunctionConfiguration->Runtime;
-    my $CodeSize         = $FunctionConfiguration->CodeSize;
-    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
-    my $Version          = $FunctionConfiguration->Version;
-    my $MemorySize       = $FunctionConfiguration->MemorySize;
-    my $FunctionArn      = $FunctionConfiguration->FunctionArn;
-    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
-    my $Description      = $FunctionConfiguration->Description;
     my $Timeout          = $FunctionConfiguration->Timeout;
-    my $CodeSha256       = $FunctionConfiguration->CodeSha256;
+    my $Version          = $FunctionConfiguration->Version;
+    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -66,30 +64,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the Lambda function for which you want to retrieve the
-configuration information.
+The name of the Lambda function, version, or alias.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-Using this optional parameter you can specify a function version or an
-alias name. If you specify function version, the API uses qualified
-function ARN and returns information about the specific function
-version. If you specify an alias name, the API uses the alias ARN and
-returns information about the function version to which the alias
-points.
-
-If you don't specify this parameter, the API uses unqualified function
-ARN, and returns information about the C<$LATEST> function version.
+Specify a version or alias to get details about a published version of
+the function.
 
 
 

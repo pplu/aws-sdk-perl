@@ -2,6 +2,7 @@ package Paws::MediaLive::StopTimecode;
   use Moose;
   has LastFrameClippingBehavior => (is => 'ro', isa => 'Str', request_name => 'lastFrameClippingBehavior', traits => ['NameInRequest']);
   has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SageMaker::AutoMLJobArtifacts;
   use Moose;
   has CandidateDefinitionNotebookLocation => (is => 'ro', isa => 'Str');
   has DataExplorationNotebookLocation => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

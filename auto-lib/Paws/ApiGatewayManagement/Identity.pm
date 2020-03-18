@@ -2,6 +2,7 @@ package Paws::ApiGatewayManagement::Identity;
   use Moose;
   has SourceIp => (is => 'ro', isa => 'Str', request_name => 'sourceIp', traits => ['NameInRequest'], required => 1);
   has UserAgent => (is => 'ro', isa => 'Str', request_name => 'userAgent', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

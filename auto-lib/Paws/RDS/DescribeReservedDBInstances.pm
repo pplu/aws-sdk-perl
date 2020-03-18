@@ -4,6 +4,7 @@ package Paws::RDS::DescribeReservedDBInstances;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has LeaseId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -41,13 +42,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified DB instance class, duration, product, offering type, and
     # availability zone settings.
     my $ReservedDBInstanceMessage = $rds->DescribeReservedDBInstances(
-      {
-        'OfferingType'       => 'No Upfront',
-        'ProductDescription' => 'mysql',
-        'MultiAZ'            => 0,
-        'Duration'           => '1y',
-        'DBInstanceClass'    => 'db.t2.micro'
-      }
+      'DBInstanceClass'    => 'db.t2.micro',
+      'Duration'           => '1y',
+      'MultiAZ'            => 0,
+      'OfferingType'       => 'No Upfront',
+      'ProductDescription' => 'mysql'
     );
 
 
@@ -75,7 +74,17 @@ Valid Values: C<1 | 3 | 31536000 | 94608000>
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
+
+
+
+=head2 LeaseId => Str
+
+The lease identifier filter value. Specify this parameter to show only
+the reservation that matches the specified lease ID.
+
+AWS Support might request the lease ID for an issue related to a
+reserved DB instance.
 
 
 
@@ -91,8 +100,8 @@ marker, up to the value specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more than
 the C<MaxRecords> value is available, a pagination token called a
-marker is included in the response so that the following results can be
-retrieved.
+marker is included in the response so you can retrieve the remaining
+results.
 
 Default: 100
 
@@ -102,8 +111,8 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 MultiAZ => Bool
 
-The Multi-AZ filter value. Specify this parameter to show only those
-reservations matching the specified Multi-AZ parameter.
+A value that indicates whether to show only those reservations that
+support Multi-AZ.
 
 
 

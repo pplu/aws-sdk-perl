@@ -2,6 +2,7 @@ package Paws::Glue::CatalogTarget;
   use Moose;
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
   has Tables => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::Kinesis::SubscribeToShardEventStream;
   has ResourceInUseException => (is => 'ro', isa => 'Paws::Kinesis::ResourceInUseException');
   has ResourceNotFoundException => (is => 'ro', isa => 'Paws::Kinesis::ResourceNotFoundException');
   has SubscribeToShardEvent => (is => 'ro', isa => 'Paws::Kinesis::SubscribeToShardEvent', required => 1);
+
 1;
 
 ### main pod documentation begin ###

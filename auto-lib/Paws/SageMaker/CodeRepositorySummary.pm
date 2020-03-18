@@ -5,6 +5,7 @@ package Paws::SageMaker::CodeRepositorySummary;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has GitConfig => (is => 'ro', isa => 'Paws::SageMaker::GitConfig');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

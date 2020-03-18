@@ -2,6 +2,7 @@ package Paws::Textract::Point;
   use Moose;
   has X => (is => 'ro', isa => 'Num');
   has Y => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

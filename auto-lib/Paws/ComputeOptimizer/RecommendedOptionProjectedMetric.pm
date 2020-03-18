@@ -3,6 +3,7 @@ package Paws::ComputeOptimizer::RecommendedOptionProjectedMetric;
   has ProjectedMetrics => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::ProjectedMetric]', request_name => 'projectedMetrics', traits => ['NameInRequest']);
   has Rank => (is => 'ro', isa => 'Int', request_name => 'rank', traits => ['NameInRequest']);
   has RecommendedInstanceType => (is => 'ro', isa => 'Str', request_name => 'recommendedInstanceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

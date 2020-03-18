@@ -2,6 +2,7 @@ package Paws::Quicksight::GroupMember;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has MemberName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

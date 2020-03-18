@@ -2,6 +2,7 @@ package Paws::SSM::OpsEntityItem;
   use Moose;
   has CaptureTime => (is => 'ro', isa => 'Str');
   has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsEntityItemEntry]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Quicksight::S3Source;
   has DataSourceArn => (is => 'ro', isa => 'Str', required => 1);
   has InputColumns => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::InputColumn]', required => 1);
   has UploadSettings => (is => 'ro', isa => 'Paws::Quicksight::UploadSettings');
+
 1;
 
 ### main pod documentation begin ###

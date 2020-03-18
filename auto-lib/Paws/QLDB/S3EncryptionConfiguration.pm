@@ -2,6 +2,7 @@ package Paws::QLDB::S3EncryptionConfiguration;
   use Moose;
   has KmsKeyArn => (is => 'ro', isa => 'Str');
   has ObjectEncryptionType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

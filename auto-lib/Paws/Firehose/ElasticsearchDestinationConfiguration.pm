@@ -2,7 +2,8 @@ package Paws::Firehose::ElasticsearchDestinationConfiguration;
   use Moose;
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchBufferingHints');
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has DomainARN => (is => 'ro', isa => 'Str', required => 1);
+  has ClusterEndpoint => (is => 'ro', isa => 'Str');
+  has DomainARN => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has IndexRotationPeriod => (is => 'ro', isa => 'Str');
   has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
@@ -10,7 +11,7 @@ package Paws::Firehose::ElasticsearchDestinationConfiguration;
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3Configuration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration', required => 1);
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
+  has TypeName => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -58,7 +59,13 @@ C<ElasticsearchBufferingHints> are used.
   The Amazon CloudWatch logging options for your delivery stream.
 
 
-=head2 B<REQUIRED> DomainARN => Str
+=head2 ClusterEndpoint => Str
+
+  The endpoint to use when communicating with the cluster. Specify either
+this C<ClusterEndpoint> or the C<DomainARN> field.
+
+
+=head2 DomainARN => Str
 
   The ARN of the Amazon ES domain. The IAM role must have permissions for
 C<DescribeElasticsearchDomain>, C<DescribeElasticsearchDomains>, and
@@ -66,6 +73,8 @@ C<DescribeElasticsearchDomainConfig> after assuming the role specified
 in B<RoleARN>. For more information, see Amazon Resource Names (ARNs)
 and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+
+Specify either C<ClusterEndpoint> or C<DomainARN>.
 
 
 =head2 B<REQUIRED> IndexName => Str
@@ -75,10 +84,10 @@ and AWS Service Namespaces
 
 =head2 IndexRotationPeriod => Str
 
-  The Elasticsearch index rotation period. Index rotation appends a time
-stamp to the C<IndexName> to facilitate the expiration of old data. For
-more information, see Index Rotation for the Amazon ES Destination
-(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
+  The Elasticsearch index rotation period. Index rotation appends a
+timestamp to the C<IndexName> to facilitate the expiration of old data.
+For more information, see Index Rotation for the Amazon ES Destination
+(https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
 The default value is C<OneDay>.
 
 
@@ -99,7 +108,7 @@ documents to Amazon ES. The default value is 300 (5 minutes).
 Data Firehose for calling the Amazon ES Configuration API and for
 indexing documents. For more information, see Grant Kinesis Data
 Firehose Access to an Amazon S3 Destination
-(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
+(https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
 and Amazon Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
@@ -114,7 +123,7 @@ C<AllDocuments>, Kinesis Data Firehose delivers all incoming records to
 Amazon S3, and also writes failed documents with
 C<elasticsearch-failed/> appended to the prefix. For more information,
 see Amazon S3 Backup for the Amazon ES Destination
-(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-s3-backup).
+(https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-s3-backup).
 Default value is C<FailedDocumentsOnly>.
 
 
@@ -123,12 +132,14 @@ Default value is C<FailedDocumentsOnly>.
   The configuration for the backup Amazon S3 location.
 
 
-=head2 B<REQUIRED> TypeName => Str
+=head2 TypeName => Str
 
   The Elasticsearch type name. For Elasticsearch 6.x, there can be only
 one type per index. If you try to specify a new type for an existing
 index that already has another type, Kinesis Data Firehose returns an
 error during run time.
+
+For Elasticsearch 7.x, don't specify a C<TypeName>.
 
 
 

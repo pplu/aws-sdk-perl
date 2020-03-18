@@ -3,6 +3,7 @@ package Paws::EFS::PosixUser;
   has Gid => (is => 'ro', isa => 'Int', required => 1);
   has SecondaryGids => (is => 'ro', isa => 'ArrayRef[Int]');
   has Uid => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

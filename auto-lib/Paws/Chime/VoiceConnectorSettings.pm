@@ -1,6 +1,7 @@
 package Paws::Chime::VoiceConnectorSettings;
   use Moose;
   has CdrBucket => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

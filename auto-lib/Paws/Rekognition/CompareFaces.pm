@@ -1,6 +1,7 @@
 
 package Paws::Rekognition::CompareFaces;
   use Moose;
+  has QualityFilter => (is => 'ro', isa => 'Str');
   has SimilarityThreshold => (is => 'ro', isa => 'Num');
   has SourceImage => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
   has TargetImage => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
@@ -33,26 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation compares the largest face detected in the source image with
     # each face detected in the target image.
     my $CompareFacesResponse = $rekognition->CompareFaces(
-      {
-        'TargetImage' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mytargetimage'
-          }
-        },
-        'SourceImage' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mysourceimage'
-          }
-        },
-        'SimilarityThreshold' => 90
+      'SimilarityThreshold' => 90,
+      'SourceImage'         => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'mysourceimage'
+        }
+      },
+      'TargetImage' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'mytargetimage'
+        }
       }
     );
 
     # Results:
-    my $SourceImageFace = $CompareFacesResponse->SourceImageFace;
     my $FaceMatches     = $CompareFacesResponse->FaceMatches;
+    my $SourceImageFace = $CompareFacesResponse->SourceImageFace;
 
     # Returns a L<Paws::Rekognition::CompareFacesResponse> object.
 
@@ -61,6 +60,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =head1 ATTRIBUTES
 
+
+=head2 QualityFilter => Str
+
+A filter that specifies a quality bar for how much filtering is done to
+identify faces. Filtered faces aren't compared. If you specify C<AUTO>,
+Amazon Rekognition chooses the quality bar. If you specify C<LOW>,
+C<MEDIUM>, or C<HIGH>, filtering removes all faces that donE<rsquo>t
+meet the chosen quality bar. The quality bar is based on a variety of
+common use cases. Low-quality detections can occur for a number of
+reasons. Some examples are an object that's misidentified as a face, a
+face that's too blurry, or a face with a pose that's too extreme to
+use. If you specify C<NONE>, no filtering is performed. The default
+value is C<NONE>.
+
+To use quality filtering, the collection you are using must be
+associated with version 3 of the face model or higher.
+
+Valid values are: C<"NONE">, C<"AUTO">, C<"LOW">, C<"MEDIUM">, C<"HIGH">
 
 =head2 SimilarityThreshold => Num
 
@@ -75,6 +92,10 @@ The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
 
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
+
 
 
 =head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
@@ -82,6 +103,10 @@ image bytes is not supported.
 The target image as base64-encoded bytes or an S3 object. If you use
 the AWS CLI to call Amazon Rekognition operations, passing
 base64-encoded image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

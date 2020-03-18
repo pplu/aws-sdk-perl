@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list artifacts for a resource
     # The following example lists screenshot artifacts for a specific run.
     my $ListArtifactsResult = $devicefarm->ListArtifacts(
-      {
-        'Type' => 'SCREENSHOT',
-        'Arn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456'
-      }
+      'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456',
+      'Type' => 'SCREENSHOT'
     );
 
 
@@ -48,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Run, Job, Suite, or Test ARN.
+The run, job, suite, or test ARN.
 
 
 
@@ -70,15 +68,15 @@ Allowed values include:
 
 =item *
 
-FILE: The artifacts are files.
+FILE
 
 =item *
 
-LOG: The artifacts are logs.
+LOG
 
 =item *
 
-SCREENSHOT: The artifacts are screenshots.
+SCREENSHOT
 
 =back
 

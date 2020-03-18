@@ -8,6 +8,7 @@ package Paws::DocDB::DBEngineVersion;
   has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

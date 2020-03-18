@@ -2,6 +2,7 @@ package Paws::Glue::EncryptionAtRest;
   use Moose;
   has CatalogEncryptionMode => (is => 'ro', isa => 'Str', required => 1);
   has SseAwsKmsKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

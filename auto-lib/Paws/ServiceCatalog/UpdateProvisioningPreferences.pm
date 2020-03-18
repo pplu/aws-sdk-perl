@@ -7,6 +7,7 @@ package Paws::ServiceCatalog::UpdateProvisioningPreferences;
   has StackSetMaxConcurrencyPercentage => (is => 'ro', isa => 'Int');
   has StackSetOperationType => (is => 'ro', isa => 'Str');
   has StackSetRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

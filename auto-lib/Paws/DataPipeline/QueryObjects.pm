@@ -37,18 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Limit      => 1,             # OPTIONAL
       Marker     => 'Mystring',    # OPTIONAL
       Query      => {
-        selectors => [
+        Selectors => [
           {
-            operator => {
-              values => [
+            FieldName => 'Mystring',    # max: 1024
+            Operator  => {
+              Type   => 'EQ',    # values: EQ, REF_EQ, LE, GE, BETWEEN; OPTIONAL
+              Values => [
                 'Mystring', ...    # max: 1024
               ],                   # OPTIONAL
-              type => 'EQ',    # values: EQ, REF_EQ, LE, GE, BETWEEN; OPTIONAL
             },    # OPTIONAL
-            fieldName => 'Mystring',    # max: 1024
           },
           ...
-        ],                              # OPTIONAL
+        ],        # OPTIONAL
       },    # OPTIONAL
     );
 

@@ -3,6 +3,7 @@ package Paws::Greengrass::BulkDeployment;
   has BulkDeploymentArn => (is => 'ro', isa => 'Str');
   has BulkDeploymentId => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

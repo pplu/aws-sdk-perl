@@ -2,6 +2,7 @@ package Paws::SageMaker::NestedFilters;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Filter]', required => 1);
   has NestedPropertyName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

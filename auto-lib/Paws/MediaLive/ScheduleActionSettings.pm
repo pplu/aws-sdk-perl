@@ -9,6 +9,7 @@ package Paws::MediaLive::ScheduleActionSettings;
   has Scte35TimeSignalSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35TimeSignalScheduleActionSettings', request_name => 'scte35TimeSignalSettings', traits => ['NameInRequest']);
   has StaticImageActivateSettings => (is => 'ro', isa => 'Paws::MediaLive::StaticImageActivateScheduleActionSettings', request_name => 'staticImageActivateSettings', traits => ['NameInRequest']);
   has StaticImageDeactivateSettings => (is => 'ro', isa => 'Paws::MediaLive::StaticImageDeactivateScheduleActionSettings', request_name => 'staticImageDeactivateSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

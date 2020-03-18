@@ -2,6 +2,7 @@ package Paws::SESv2::Message;
   use Moose;
   has Body => (is => 'ro', isa => 'Paws::SESv2::Body', required => 1);
   has Subject => (is => 'ro', isa => 'Paws::SESv2::Content', required => 1);
+
 1;
 
 ### main pod documentation begin ###

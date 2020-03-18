@@ -8,6 +8,7 @@ package Paws::QLDB::JournalS3ExportDescription;
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has S3ExportConfiguration => (is => 'ro', isa => 'Paws::QLDB::S3ExportConfiguration', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

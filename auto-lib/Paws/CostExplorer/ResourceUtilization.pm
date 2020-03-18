@@ -1,6 +1,7 @@
 package Paws::CostExplorer::ResourceUtilization;
   use Moose;
   has EC2ResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::EC2ResourceUtilization');
+
 1;
 
 ### main pod documentation begin ###

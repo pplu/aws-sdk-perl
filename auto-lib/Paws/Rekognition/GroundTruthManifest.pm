@@ -1,6 +1,7 @@
 package Paws::Rekognition::GroundTruthManifest;
   use Moose;
   has S3Object => (is => 'ro', isa => 'Paws::Rekognition::S3Object');
+
 1;
 
 ### main pod documentation begin ###

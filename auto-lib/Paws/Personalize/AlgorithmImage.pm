@@ -2,6 +2,7 @@ package Paws::Personalize::AlgorithmImage;
   use Moose;
   has DockerURI => (is => 'ro', isa => 'Str', request_name => 'dockerURI', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -36,20 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an HTTP listener for the specified load balancer that
     # forwards requests to the specified target group.
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
-      {
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
-        'DefaultActions' => [
+      'DefaultActions' => [
 
-          {
-            'TargetGroupArn' =>
+        {
+          'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-            'Type' => 'forward'
-          }
-        ],
-        'Protocol' => 'HTTP',
-        'Port'     => 80
-      }
+          'Type' => 'forward'
+        }
+      ],
+      'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+      'Port'     => 80,
+      'Protocol' => 'HTTP'
     );
 
     # Results:
@@ -65,28 +63,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # certificate authority (CA), and upload the certificate to AWS Identity and
    # Access Management (IAM).
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
-      {
-        'LoadBalancerArn' =>
-'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
-        'Certificates' => [
+      'Certificates' => [
 
-          {
-            'CertificateArn' =>
-              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
-          }
-        ],
-        'SslPolicy'      => 'ELBSecurityPolicy-2015-05',
-        'DefaultActions' => [
+        {
+          'CertificateArn' =>
+            'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+        }
+      ],
+      'DefaultActions' => [
 
-          {
-            'TargetGroupArn' =>
+        {
+          'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-            'Type' => 'forward'
-          }
-        ],
-        'Protocol' => 'HTTPS',
-        'Port'     => 443
-      }
+          'Type' => 'forward'
+        }
+      ],
+      'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+      'Port'      => 443,
+      'Protocol'  => 'HTTPS',
+      'SslPolicy' => 'ELBSecurityPolicy-2015-05'
     );
 
     # Results:
@@ -102,8 +98,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-[HTTPS listeners] The default SSL server certificate. You must provide
-exactly one certificate. To create a certificate list, use
+[HTTPS and TLS listeners] The default certificate for the listener. You
+must provide exactly one certificate. Set C<CertificateArn> to the
+certificate ARN but do not set C<IsDefault>.
+
+To create a certificate list for the listener, use
 AddListenerCertificates.
 
 
@@ -111,18 +110,25 @@ AddListenerCertificates.
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
 The actions for the default rule. The rule must include one forward
-action.
+action or one or more fixed-response actions.
 
-If the action type is C<forward>, you can specify a single target
-group. The protocol of the target group must be HTTP or HTTPS for an
-Application Load Balancer or TCP for a Network Load Balancer.
+If the action type is C<forward>, you specify one or more target
+groups. The protocol of the target group must be HTTP or HTTPS for an
+Application Load Balancer. The protocol of the target group must be
+TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
 
-If the action type is C<authenticate-oidc>, you can use an identity
-provider that is OpenID Connect (OIDC) compliant to authenticate users
-as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
 
-If the action type is C<authenticate-cognito>, you can use Amazon
-Cognito to authenticate users as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 
@@ -142,15 +148,16 @@ The port on which the load balancer is listening.
 
 The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
-For Network Load Balancers, the supported protocol is TCP.
+For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
+and TCP_UDP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
 
 =head2 SslPolicy => Str
 
-[HTTPS listeners] The security policy that defines which ciphers and
-protocols are supported. The default is the current predefined security
-policy.
+[HTTPS and TLS listeners] The security policy that defines which
+ciphers and protocols are supported. The default is the current
+predefined security policy.
 
 
 

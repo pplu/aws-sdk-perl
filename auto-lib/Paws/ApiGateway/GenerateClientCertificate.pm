@@ -2,6 +2,7 @@
 package Paws::ApiGateway::GenerateClientCertificate;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -29,20 +30,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGateway');
     my $ClientCertificate = $apigateway->GenerateClientCertificate(
-      Description => 'MyString',    # OPTIONAL
+      Description => 'MyString',                       # OPTIONAL
+      Tags        => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
-    my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
-    my $CreatedDate           = $ClientCertificate->CreatedDate;
     my $ClientCertificateId   = $ClientCertificate->ClientCertificateId;
+    my $CreatedDate           = $ClientCertificate->CreatedDate;
     my $Description           = $ClientCertificate->Description;
     my $ExpirationDate        = $ClientCertificate->ExpirationDate;
+    my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
+    my $Tags                  = $ClientCertificate->Tags;
 
     # Returns a L<Paws::ApiGateway::ClientCertificate> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GenerateClientCertificate>
 
 =head1 ATTRIBUTES
 
@@ -50,6 +53,14 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigat
 =head2 Description => Str
 
 The description of the ClientCertificate.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

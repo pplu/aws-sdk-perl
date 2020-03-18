@@ -2,6 +2,7 @@ package Paws::ConnectParticipant::Websocket;
   use Moose;
   has ConnectionExpiry => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

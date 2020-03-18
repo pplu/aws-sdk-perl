@@ -5,6 +5,7 @@ package Paws::ECS::DockerVolumeConfiguration;
   has DriverOpts => (is => 'ro', isa => 'Paws::ECS::StringMap', request_name => 'driverOpts', traits => ['NameInRequest']);
   has Labels => (is => 'ro', isa => 'Paws::ECS::StringMap', request_name => 'labels', traits => ['NameInRequest']);
   has Scope => (is => 'ro', isa => 'Str', request_name => 'scope', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

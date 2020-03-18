@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Vpcs      = $DescribeVpcClassicLinkDnsSupportResult->Vpcs;
     my $NextToken = $DescribeVpcClassicLinkDnsSupportResult->NextToken;
+    my $Vpcs      = $DescribeVpcClassicLinkDnsSupportResult->Vpcs;
 
     # Returns a L<Paws::EC2::DescribeVpcClassicLinkDnsSupportResult> object.
 

@@ -26,6 +26,7 @@ package Paws::DocDB::DBInstance;
   has StatusInfos => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBInstanceStatusInfo]', request_name => 'DBInstanceStatusInfo', traits => ['NameInRequest']);
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

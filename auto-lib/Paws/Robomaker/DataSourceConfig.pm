@@ -3,6 +3,7 @@ package Paws::Robomaker::DataSourceConfig;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest'], required => 1);
   has S3Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 's3Keys', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

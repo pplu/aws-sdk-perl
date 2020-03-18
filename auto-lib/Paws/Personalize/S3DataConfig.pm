@@ -2,6 +2,7 @@ package Paws::Personalize::S3DataConfig;
   use Moose;
   has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

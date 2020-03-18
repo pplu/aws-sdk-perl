@@ -2,6 +2,7 @@ package Paws::SecurityHub::LoadBalancerState;
   use Moose;
   has Code => (is => 'ro', isa => 'Str');
   has Reason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

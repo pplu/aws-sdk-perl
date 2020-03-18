@@ -37,37 +37,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # instance types that are launched on demand. The compute environment is
     # called C4OnDemand.
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
-      {
-        'ComputeEnvironmentName' => 'C4OnDemand',
-        'Type'                   => 'MANAGED',
-        'ComputeResources'       => {
-          'Ec2KeyPair'       => 'id_rsa',
-          'DesiredvCpus'     => 48,
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'Tags'             => {
-            'Name' => 'Batch Instance - C4OnDemand'
-          },
-          'InstanceRole'  => 'ecsInstanceRole',
-          'InstanceTypes' => [
-            'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge',
-            'c4.8xlarge'
-          ],
-          'MaxvCpus' => 128,
-          'Type'     => 'EC2',
-          'Subnets' =>
-            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'MinvCpus' => 0
+      'ComputeEnvironmentName' => 'C4OnDemand',
+      'ComputeResources'       => {
+        'DesiredvCpus' => 48,
+        'Ec2KeyPair'   => 'id_rsa',
+        'InstanceRole' => 'ecsInstanceRole',
+        'InstanceTypes' =>
+          [ 'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge', 'c4.8xlarge' ],
+        'MaxvCpus'         => 128,
+        'MinvCpus'         => 0,
+        'SecurityGroupIds' => ['sg-cf5093b2'],
+        'Subnets' =>
+          [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+        'Tags' => {
+          'Name' => 'Batch Instance - C4OnDemand'
         },
-        'State'       => 'ENABLED',
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole'
-      }
+        'Type' => 'EC2'
+      },
+      'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
+      'State'       => 'ENABLED',
+      'Type'        => 'MANAGED'
     );
 
     # Results:
-    my $computeEnvironmentName =
-      $CreateComputeEnvironmentResponse->computeEnvironmentName;
     my $computeEnvironmentArn =
       $CreateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $CreateComputeEnvironmentResponse->computeEnvironmentName;
 
     # Returns a L<Paws::Batch::CreateComputeEnvironmentResponse> object.
     # To create a managed EC2 Spot compute environment
@@ -76,37 +72,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # On-Demand price for the instance type. The compute environment is called
     # M4Spot.
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
-      {
-        'ComputeEnvironmentName' => 'M4Spot',
-        'Type'                   => 'MANAGED',
-        'ComputeResources'       => {
-          'Ec2KeyPair'       => 'id_rsa',
-          'BidPercentage'    => 20,
-          'DesiredvCpus'     => 4,
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'Tags'             => {
-            'Name' => 'Batch Instance - M4Spot'
-          },
-          'InstanceRole'  => 'ecsInstanceRole',
-          'InstanceTypes' => ['m4'],
-          'MaxvCpus'      => 128,
-          'SpotIamFleetRole' =>
-            'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
-          'Type' => 'SPOT',
-          'Subnets' =>
-            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'MinvCpus' => 0
+      'ComputeEnvironmentName' => 'M4Spot',
+      'ComputeResources'       => {
+        'BidPercentage'    => 20,
+        'DesiredvCpus'     => 4,
+        'Ec2KeyPair'       => 'id_rsa',
+        'InstanceRole'     => 'ecsInstanceRole',
+        'InstanceTypes'    => ['m4'],
+        'MaxvCpus'         => 128,
+        'MinvCpus'         => 0,
+        'SecurityGroupIds' => ['sg-cf5093b2'],
+        'SpotIamFleetRole' =>
+          'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
+        'Subnets' =>
+          [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+        'Tags' => {
+          'Name' => 'Batch Instance - M4Spot'
         },
-        'State'       => 'ENABLED',
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole'
-      }
+        'Type' => 'SPOT'
+      },
+      'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
+      'State'       => 'ENABLED',
+      'Type'        => 'MANAGED'
     );
 
     # Results:
-    my $computeEnvironmentName =
-      $CreateComputeEnvironmentResponse->computeEnvironmentName;
     my $computeEnvironmentArn =
       $CreateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $CreateComputeEnvironmentResponse->computeEnvironmentName;
 
     # Returns a L<Paws::Batch::CreateComputeEnvironmentResponse> object.
 
@@ -126,7 +120,10 @@ lowercase), numbers, hyphens, and underscores are allowed.
 =head2 ComputeResources => L<Paws::Batch::ComputeResource>
 
 Details of the compute resources managed by the compute environment.
-This parameter is required for managed compute environments.
+This parameter is required for managed compute environments. For more
+information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 
 
@@ -158,7 +155,10 @@ Valid values are: C<"ENABLED">, C<"DISABLED">
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the compute environment.
+The type of the compute environment. For more information, see Compute
+Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 Valid values are: C<"MANAGED">, C<"UNMANAGED">
 

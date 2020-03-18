@@ -7,6 +7,7 @@ package Paws::SecurityHub::AwsEc2NetworkInterfaceAttachment;
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

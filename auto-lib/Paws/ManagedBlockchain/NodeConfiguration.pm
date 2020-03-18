@@ -2,6 +2,7 @@ package Paws::ManagedBlockchain::NodeConfiguration;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

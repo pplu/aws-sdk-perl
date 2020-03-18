@@ -32,12 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $apigateway = Paws->service('ApiGateway');
     my $DocumentationPart = $apigateway->CreateDocumentationPart(
       Location => {
-        type => 'API'
+        Type => 'API'
         , # values: API, AUTHORIZER, MODEL, RESOURCE, METHOD, PATH_PARAMETER, QUERY_PARAMETER, REQUEST_HEADER, REQUEST_BODY, RESPONSE, RESPONSE_HEADER, RESPONSE_BODY
-        statusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
-        method     => 'MyString',                                 # OPTIONAL
-        name       => 'MyString',                                 # OPTIONAL
-        path       => 'MyString',                                 # OPTIONAL
+        Method     => 'MyString',                                 # OPTIONAL
+        Name       => 'MyString',                                 # OPTIONAL
+        Path       => 'MyString',                                 # OPTIONAL
+        StatusCode => 'MyDocumentationPartLocationStatusCode',    # OPTIONAL
       },
       Properties => 'MyString',
       RestApiId  => 'MyString',
@@ -46,13 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Id         = $DocumentationPart->Id;
-    my $Properties = $DocumentationPart->Properties;
     my $Location   = $DocumentationPart->Location;
+    my $Properties = $DocumentationPart->Properties;
 
     # Returns a L<Paws::ApiGateway::DocumentationPart> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateDocumentationPart>
 
 =head1 ATTRIBUTES
 
@@ -68,7 +68,7 @@ documentation part.
 
 [Required] The new documentation content map of the targeted API
 entity. Enclosed key-value pairs are API-specific, but only
-Swagger-compliant key-value pairs can be exported and, hence,
+OpenAPI-compliant key-value pairs can be exported and, hence,
 published.
 
 

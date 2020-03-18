@@ -5,6 +5,7 @@ package Paws::Connect::HierarchyPath;
   has LevelOne => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
   has LevelThree => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
   has LevelTwo => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
+
 1;
 
 ### main pod documentation begin ###

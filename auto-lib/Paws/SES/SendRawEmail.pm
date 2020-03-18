@@ -37,19 +37,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # SendRawEmail
     # The following example sends an email with an attachment:
     my $SendRawEmailResponse = $email->SendRawEmail(
-      {
-        'SourceArn'    => '',
-        'FromArn'      => '',
-        'Destinations' => [
+      'Destinations' => [
 
-        ],
-        'ReturnPathArn' => '',
-        'Source'        => '',
-        'RawMessage'    => {
-          'Data' =>
+      ],
+      'FromArn'    => '',
+      'RawMessage' => {
+        'Data' =>
 'From: sender@example.com\nTo: recipient@example.com\nSubject: Test email (contains an attachment)\nMIME-Version: 1.0\nContent-type: Multipart/Mixed; boundary="NextPart"\n\n--NextPart\nContent-Type: text/plain\n\nThis is the message body.\n\n--NextPart\nContent-Type: text/plain;\nContent-Disposition: attachment; filename="attachment.txt"\n\nThis is the text in the attachment.\n\n--NextPart--'
-        }
-      }
+      },
+      'ReturnPathArn' => '',
+      'Source'        => '',
+      'SourceArn'     => ''
     );
 
     # Results:
@@ -91,24 +89,25 @@ the value of the C<FromArn> parameter.
 
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 
 =head2 B<REQUIRED> RawMessage => L<Paws::SES::RawMessage>
 
-The raw text of the message. The client is responsible for ensuring the
-following:
+The raw email message itself. The message has to meet the following
+criteria:
 
 =over
 
 =item *
 
-Message must contain a header and a body, separated by a blank line.
+The message has to contain a header and a body, separated by a blank
+line.
 
 =item *
 
-All required header fields must be present.
+All of the required header fields must be present in the message.
 
 =item *
 
@@ -116,13 +115,22 @@ Each part of a multipart MIME message must be formatted properly.
 
 =item *
 
-MIME content types must be among those supported by Amazon SES. For
-more information, go to the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html).
+Attachments must be of a content type that Amazon SES supports. For a
+list on unsupported content types, see Unsupported Attachment Types
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html)
+in the I<Amazon SES Developer Guide>.
 
 =item *
 
-Must be base64-encoded.
+The entire message must be base64-encoded.
+
+=item *
+
+If any of the MIME parts in your message contain content that is
+outside of the 7-bit ASCII character range, we highly recommend that
+you encode that content. For more information, see Sending Raw Email
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
+in the I<Amazon SES Developer Guide>.
 
 =item *
 
@@ -156,7 +164,7 @@ Amazon SES uses the value of the C<ReturnPathArn> parameter.
 
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 
@@ -208,7 +216,7 @@ uses the value of the C<SourceArn> parameter.
 
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 

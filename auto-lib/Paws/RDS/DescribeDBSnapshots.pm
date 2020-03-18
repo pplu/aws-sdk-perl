@@ -2,6 +2,7 @@
 package Paws::RDS::DescribeDBSnapshots;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DbiResourceId => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has IncludePublic => (is => 'ro', isa => 'Bool');
@@ -38,12 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists all manually-created, shared snapshots for the specified
    # DB instance.
     my $DBSnapshotMessage = $rds->DescribeDBSnapshots(
-      {
-        'SnapshotType'         => 'manual',
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'IncludeShared'        => 1,
-        'IncludePublic'        => 0
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'IncludePublic'        => 0,
+      'IncludeShared'        => 1,
+      'SnapshotType'         => 'manual'
     );
 
 
@@ -57,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The ID of the DB instance to retrieve the list of DB snapshots for.
 This parameter can't be used in conjunction with
-C<DBSnapshotIdentifier>. This parameter is not case-sensitive.
+C<DBSnapshotIdentifier>. This parameter isn't case-sensitive.
 
 Constraints:
 
@@ -69,6 +68,12 @@ If supplied, must match the identifier of an existing DBInstance.
 
 =back
 
+
+
+
+=head2 DbiResourceId => Str
+
+A specific DB resource ID to describe.
 
 
 
@@ -98,15 +103,43 @@ parameter must also be specified.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+A filter that specifies one or more DB snapshots to describe.
+
+Supported filters:
+
+=over
+
+=item *
+
+C<db-instance-id> - Accepts DB instance identifiers and DB instance
+Amazon Resource Names (ARNs).
+
+=item *
+
+C<db-snapshot-id> - Accepts DB snapshot identifiers.
+
+=item *
+
+C<dbi-resource-id> - Accepts identifiers of source DB instances.
+
+=item *
+
+C<snapshot-type> - Accepts types of DB snapshots.
+
+=item *
+
+C<engine> - Accepts names of database engines.
+
+=back
+
 
 
 
 =head2 IncludePublic => Bool
 
-True to include manual DB snapshots that are public and can be copied
-or restored by any AWS account, and otherwise false. The default is
-false.
+A value that indicates whether to include manual DB cluster snapshots
+that are public and can be copied or restored by any AWS account. By
+default, the public snapshots are not included.
 
 You can share a manual DB snapshot as public by using the
 ModifyDBSnapshotAttribute API.
@@ -115,12 +148,13 @@ ModifyDBSnapshotAttribute API.
 
 =head2 IncludeShared => Bool
 
-True to include shared manual DB snapshots from other AWS accounts that
-this AWS account has been given permission to copy or restore, and
-otherwise false. The default is C<false>.
+A value that indicates whether to include shared manual DB cluster
+snapshots from other AWS accounts that this AWS account has been given
+permission to copy or restore. By default, these snapshots are not
+included.
 
 You can give an AWS account permission to restore a manual DB snapshot
-from another AWS account by using the ModifyDBSnapshotAttribute API
+from another AWS account by using the C<ModifyDBSnapshotAttribute> API
 action.
 
 
@@ -138,8 +172,8 @@ specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that the remaining
-results can be retrieved.
+token called a marker is included in the response so that you can
+retrieve the remaining results.
 
 Default: 100
 
@@ -173,14 +207,25 @@ AWS account.
 
 C<public> - Return all DB snapshots that have been marked as public.
 
+=item *
+
+C<awsbackup> - Return the DB snapshots managed by the AWS Backup
+service.
+
+For information about AWS Backup, see the I<AWS Backup Developer
+Guide.>
+(https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)
+
+The C<awsbackup> type does not apply to Aurora.
+
 =back
 
 If you don't specify a C<SnapshotType> value, then both automated and
 manual snapshots are returned. Shared and public DB snapshots are not
 included in the returned results by default. You can include shared
-snapshots with these results by setting the C<IncludeShared> parameter
-to C<true>. You can include public snapshots with these results by
-setting the C<IncludePublic> parameter to C<true>.
+snapshots with these results by enabling the C<IncludeShared>
+parameter. You can include public snapshots with these results by
+enabling the C<IncludePublic> parameter.
 
 The C<IncludeShared> and C<IncludePublic> parameters don't apply for
 C<SnapshotType> values of C<manual> or C<automated>. The

@@ -7,6 +7,7 @@ package Paws::Forecast::PredictorSummary;
   has PredictorArn => (is => 'ro', isa => 'Str');
   has PredictorName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

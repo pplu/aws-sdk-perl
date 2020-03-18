@@ -6,6 +6,7 @@ package Paws::DynamoDB::Put;
   has Item => (is => 'ro', isa => 'Paws::DynamoDB::PutItemInputAttributeMap', required => 1);
   has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::CostExplorer::CoverageCost;
   use Moose;
   has OnDemandCost => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

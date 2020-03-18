@@ -1,6 +1,7 @@
 package Paws::DataExchange::AssetDetails;
   use Moose;
   has S3SnapshotAsset => (is => 'ro', isa => 'Paws::DataExchange::S3SnapshotAsset');
+
 1;
 
 ### main pod documentation begin ###

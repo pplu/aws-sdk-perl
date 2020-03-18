@@ -2,6 +2,7 @@ package Paws::EKS::NodegroupResources;
   use Moose;
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::EKS::AutoScalingGroup]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
   has RemoteAccessSecurityGroup => (is => 'ro', isa => 'Str', request_name => 'remoteAccessSecurityGroup', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

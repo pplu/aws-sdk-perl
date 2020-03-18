@@ -1,6 +1,7 @@
 package Paws::WAFv2::OrStatement;
   use Moose;
   has Statements => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::Statement]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

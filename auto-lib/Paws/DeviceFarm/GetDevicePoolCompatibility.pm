@@ -43,10 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $incompatibleDevices =
-      $GetDevicePoolCompatibilityResult->incompatibleDevices;
     my $compatibleDevices =
       $GetDevicePoolCompatibilityResult->compatibleDevices;
+    my $incompatibleDevices =
+      $GetDevicePoolCompatibilityResult->incompatibleDevices;
 
     # Returns a L<Paws::DeviceFarm::GetDevicePoolCompatibilityResult> object.
 

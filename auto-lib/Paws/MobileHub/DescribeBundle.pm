@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $details = $DescribeBundleResult->details;
+    my $Details = $DescribeBundleResult->Details;
 
     # Returns a L<Paws::MobileHub::DescribeBundleResult> object.
 

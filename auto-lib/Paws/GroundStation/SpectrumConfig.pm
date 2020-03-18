@@ -3,6 +3,7 @@ package Paws::GroundStation::SpectrumConfig;
   has Bandwidth => (is => 'ro', isa => 'Paws::GroundStation::FrequencyBandwidth', request_name => 'bandwidth', traits => ['NameInRequest'], required => 1);
   has CenterFrequency => (is => 'ro', isa => 'Paws::GroundStation::Frequency', request_name => 'centerFrequency', traits => ['NameInRequest'], required => 1);
   has Polarization => (is => 'ro', isa => 'Str', request_name => 'polarization', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

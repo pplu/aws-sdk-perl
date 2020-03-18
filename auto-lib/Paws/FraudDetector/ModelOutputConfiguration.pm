@@ -3,6 +3,7 @@ package Paws::FraudDetector::ModelOutputConfiguration;
   has CsvIndexToVariableMap => (is => 'ro', isa => 'Paws::FraudDetector::CsvIndexToVariableMap', request_name => 'csvIndexToVariableMap', traits => ['NameInRequest']);
   has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest'], required => 1);
   has JsonKeyToVariableMap => (is => 'ro', isa => 'Paws::FraudDetector::JsonKeyToVariableMap', request_name => 'jsonKeyToVariableMap', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

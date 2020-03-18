@@ -6,6 +6,7 @@ package Paws::SecurityHub::AwsEc2SecurityGroupDetails;
   has IpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2SecurityGroupIpPermission]');
   has OwnerId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

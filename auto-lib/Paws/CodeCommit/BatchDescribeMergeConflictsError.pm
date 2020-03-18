@@ -3,6 +3,7 @@ package Paws::CodeCommit::BatchDescribeMergeConflictsError;
   has ExceptionName => (is => 'ro', isa => 'Str', request_name => 'exceptionName', traits => ['NameInRequest'], required => 1);
   has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

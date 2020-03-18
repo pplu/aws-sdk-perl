@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Id         = $DocumentationPart->Id;
-    my $Properties = $DocumentationPart->Properties;
     my $Location   = $DocumentationPart->Location;
+    my $Properties = $DocumentationPart->Properties;
 
     # Returns a L<Paws::ApiGateway::DocumentationPart> object.
 

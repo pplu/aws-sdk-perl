@@ -7,6 +7,7 @@ package Paws::Lightsail::HostKeyAttributes;
   has NotValidBefore => (is => 'ro', isa => 'Str', request_name => 'notValidBefore', traits => ['NameInRequest']);
   has PublicKey => (is => 'ro', isa => 'Str', request_name => 'publicKey', traits => ['NameInRequest']);
   has WitnessedAt => (is => 'ro', isa => 'Str', request_name => 'witnessedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

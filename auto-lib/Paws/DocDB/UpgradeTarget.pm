@@ -5,6 +5,7 @@ package Paws::DocDB::UpgradeTarget;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has IsMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

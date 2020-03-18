@@ -2,6 +2,7 @@ package Paws::FraudDetector::LabelSchema;
   use Moose;
   has LabelKey => (is => 'ro', isa => 'Str', request_name => 'labelKey', traits => ['NameInRequest'], required => 1);
   has LabelMapper => (is => 'ro', isa => 'Paws::FraudDetector::LabelMapper', request_name => 'labelMapper', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

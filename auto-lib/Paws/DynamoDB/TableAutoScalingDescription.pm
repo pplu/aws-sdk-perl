@@ -3,6 +3,7 @@ package Paws::DynamoDB::TableAutoScalingDescription;
   has Replicas => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaAutoScalingDescription]');
   has TableName => (is => 'ro', isa => 'Str');
   has TableStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

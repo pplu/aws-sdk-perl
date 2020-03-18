@@ -3,6 +3,7 @@ package Paws::S3Control::JobManifestLocation;
   has ETag => (is => 'ro', isa => 'Str', required => 1);
   has ObjectArn => (is => 'ro', isa => 'Str', required => 1);
   has ObjectVersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

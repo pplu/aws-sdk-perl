@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::CreateConfigurationTemplate;
   has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has SourceConfiguration => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,20 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # from the settings applied to an environment with the id e-rpqsewtp2j:
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->CreateConfigurationTemplate(
-      {
-        'TemplateName'    => 'my-app-v1',
-        'EnvironmentId'   => 'e-rpqsewtp2j',
-        'ApplicationName' => 'my-app'
-      }
+      'ApplicationName' => 'my-app',
+      'EnvironmentId'   => 'e-rpqsewtp2j',
+      'TemplateName'    => 'my-app-v1'
       );
 
     # Results:
-    my $TemplateName    = $ConfigurationSettingsDescription->TemplateName;
-    my $DateCreated     = $ConfigurationSettingsDescription->DateCreated;
     my $ApplicationName = $ConfigurationSettingsDescription->ApplicationName;
+    my $DateCreated     = $ConfigurationSettingsDescription->DateCreated;
+    my $DateUpdated     = $ConfigurationSettingsDescription->DateUpdated;
     my $SolutionStackName =
       $ConfigurationSettingsDescription->SolutionStackName;
-    my $DateUpdated = $ConfigurationSettingsDescription->DateUpdated;
+    my $TemplateName = $ConfigurationSettingsDescription->TemplateName;
 
  # Returns a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> object.
 
@@ -132,6 +131,12 @@ configuration parameters are specified, the solution stack of the
 source configuration template must match the specified solution stack
 name or else AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+
+Specifies the tags applied to the configuration template.
 
 
 

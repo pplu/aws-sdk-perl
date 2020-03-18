@@ -3,6 +3,7 @@ package Paws::MediaPackage::S3Destination;
   has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
   has ManifestKey => (is => 'ro', isa => 'Str', request_name => 'manifestKey', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DiscoverInputSchemaResponse = $kinesisanalytics->DiscoverInputSchema(
       InputProcessingConfiguration => {
         InputLambdaProcessor => {
-          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
           ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
 
         },
 
@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceARN     => 'MyResourceARN',    # OPTIONAL
       RoleARN         => 'MyRoleARN',        # OPTIONAL
       S3Configuration => {
-        RoleARN   => 'MyRoleARN',            # min: 1, max: 2048
-        FileKey   => 'MyFileKey',            # min: 1, max: 1024
         BucketARN => 'MyBucketARN',          # min: 1, max: 2048
+        FileKey   => 'MyFileKey',            # min: 1, max: 1024
+        RoleARN   => 'MyRoleARN',            # min: 1, max: 2048
 
       },    # OPTIONAL
     );
 
     # Results:
-    my $ProcessedInputRecords =
-      $DiscoverInputSchemaResponse->ProcessedInputRecords;
-    my $RawInputRecords    = $DiscoverInputSchemaResponse->RawInputRecords;
     my $InputSchema        = $DiscoverInputSchemaResponse->InputSchema;
     my $ParsedInputRecords = $DiscoverInputSchemaResponse->ParsedInputRecords;
+    my $ProcessedInputRecords =
+      $DiscoverInputSchemaResponse->ProcessedInputRecords;
+    my $RawInputRecords = $DiscoverInputSchemaResponse->RawInputRecords;
 
     # Returns a L<Paws::KinesisAnalytics::DiscoverInputSchemaResponse> object.
 
@@ -71,8 +71,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
 
-The InputProcessingConfiguration to use to preprocess the records
-before discovering the schema of the records.
+The InputProcessingConfiguration
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+to use to preprocess the records before discovering the schema of the
+records.
 
 
 
@@ -98,7 +100,8 @@ the stream on your behalf.
 
 =head2 S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>
 
-Specify this parameter to discover a schema from data in an S3 object.
+Specify this parameter to discover a schema from data in an Amazon S3
+object.
 
 
 

@@ -3,6 +3,7 @@ package Paws::SageMaker::MonitoringS3Output;
   has LocalPath => (is => 'ro', isa => 'Str', required => 1);
   has S3UploadMode => (is => 'ro', isa => 'Str');
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -36,20 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId    => 'MyAccountId',
       BudgetName   => 'MyBudgetName',
       Notification => {
-        NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
-        Threshold        => 1,           # min: 0.1, max: 1000000000
         ComparisonOperator =>
           'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
+        NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold         => 1,           # max: 1000000000
+        NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
         ThresholdType =>
-          'PERCENTAGE',      # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+          'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       MaxResults => 1,                    # OPTIONAL
       NextToken  => 'MyGenericString',    # OPTIONAL
       );
 
     # Results:
-    my $Subscribers = $DescribeSubscribersForNotificationResponse->Subscribers;
     my $NextToken   = $DescribeSubscribersForNotificationResponse->NextToken;
+    my $Subscribers = $DescribeSubscribersForNotificationResponse->Subscribers;
 
 # Returns a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> object.
 
@@ -74,15 +75,15 @@ The name of the budget whose subscribers you want descriptions of.
 
 =head2 MaxResults => Int
 
-Optional integer. Specifies the maximum number of results to return in
-response.
+An optional integer that represents how many entries a paginated
+response contains. The maximum is 100.
 
 
 
 =head2 NextToken => Str
 
-The pagination token that indicates the next set of results to
-retrieve.
+The pagination token that you include in your request to indicate the
+next set of results that you want to retrieve.
 
 
 

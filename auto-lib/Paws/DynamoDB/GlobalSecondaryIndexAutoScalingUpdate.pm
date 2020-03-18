@@ -2,6 +2,7 @@ package Paws::DynamoDB::GlobalSecondaryIndexAutoScalingUpdate;
   use Moose;
   has IndexName => (is => 'ro', isa => 'Str');
   has ProvisionedWriteCapacityAutoScalingUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
+
 1;
 
 ### main pod documentation begin ###

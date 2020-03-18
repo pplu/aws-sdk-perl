@@ -2,6 +2,7 @@ package Paws::Greengrass::FunctionExecutionConfig;
   use Moose;
   has IsolationMode => (is => 'ro', isa => 'Str');
   has RunAs => (is => 'ro', isa => 'Paws::Greengrass::FunctionRunAsConfig');
+
 1;
 
 ### main pod documentation begin ###

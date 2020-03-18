@@ -8,6 +8,7 @@ package Paws::SavingsPlans::SavingsPlanRate;
   has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
   has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
   has UsageType => (is => 'ro', isa => 'Str', request_name => 'usageType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

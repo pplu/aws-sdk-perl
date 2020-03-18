@@ -1,6 +1,7 @@
 package Paws::SageMaker::NotificationConfiguration;
   use Moose;
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

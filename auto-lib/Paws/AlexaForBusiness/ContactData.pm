@@ -5,6 +5,8 @@ package Paws::AlexaForBusiness::ContactData;
   has FirstName => (is => 'ro', isa => 'Str');
   has LastName => (is => 'ro', isa => 'Str');
   has PhoneNumber => (is => 'ro', isa => 'Str');
+  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::PhoneNumber]');
+  has SipAddresses => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::SipAddress]');
 
 1;
 
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AlexaForBusiness::ContactData object:
 
-  $service_obj->Method(Att1 => { ContactArn => $value, ..., PhoneNumber => $value  });
+  $service_obj->Method(Att1 => { ContactArn => $value, ..., SipAddresses => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,7 +65,20 @@ Information related to a contact.
 
 =head2 PhoneNumber => Str
 
-  The phone number of the contact.
+  The phone number of the contact. The phone number type defaults to
+WORK. You can specify PhoneNumber or PhoneNumbers. We recommend that
+you use PhoneNumbers, which lets you specify the phone number type and
+multiple numbers.
+
+
+=head2 PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]
+
+  The list of phone numbers for the contact.
+
+
+=head2 SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]
+
+  The list of SIP addresses for the contact.
 
 
 

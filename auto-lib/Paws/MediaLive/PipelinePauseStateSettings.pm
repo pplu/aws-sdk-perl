@@ -1,6 +1,7 @@
 package Paws::MediaLive::PipelinePauseStateSettings;
   use Moose;
   has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

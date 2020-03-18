@@ -1,6 +1,7 @@
 package Paws::SecurityHub::AwsCloudFrontDistributionOrigins;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsCloudFrontDistributionOriginItem]');
+
 1;
 
 ### main pod documentation begin ###

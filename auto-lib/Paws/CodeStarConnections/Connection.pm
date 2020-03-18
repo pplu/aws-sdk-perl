@@ -5,6 +5,7 @@ package Paws::CodeStarConnections::Connection;
   has ConnectionStatus => (is => 'ro', isa => 'Str');
   has OwnerAccountId => (is => 'ro', isa => 'Str');
   has ProviderType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

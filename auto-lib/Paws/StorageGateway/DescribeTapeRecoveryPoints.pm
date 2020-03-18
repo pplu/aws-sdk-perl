@@ -34,19 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified gateway-VTL.
     my $DescribeTapeRecoveryPointsOutput =
       $storagegateway->DescribeTapeRecoveryPoints(
-      {
-        'Limit'  => 1,
-        'Marker' => 1,
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'Limit'  => 1,
+      'Marker' => 1
       );
 
     # Results:
+    my $GatewayARN = $DescribeTapeRecoveryPointsOutput->GatewayARN;
+    my $Marker     = $DescribeTapeRecoveryPointsOutput->Marker;
     my $TapeRecoveryPointInfos =
       $DescribeTapeRecoveryPointsOutput->TapeRecoveryPointInfos;
-    my $Marker     = $DescribeTapeRecoveryPointsOutput->Marker;
-    my $GatewayARN = $DescribeTapeRecoveryPointsOutput->GatewayARN;
 
    # Returns a L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput> object.
 

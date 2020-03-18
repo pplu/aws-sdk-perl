@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # controlled by the specified expiration period.
     my $CreateLBCookieStickinessPolicyOutput =
       $elasticloadbalancing->CreateLBCookieStickinessPolicy(
-      {
-        'LoadBalancerName'       => 'my-load-balancer',
-        'CookieExpirationPeriod' => 60,
-        'PolicyName'             => 'my-duration-cookie-policy'
-      }
+      'CookieExpirationPeriod' => 60,
+      'LoadBalancerName'       => 'my-load-balancer',
+      'PolicyName'             => 'my-duration-cookie-policy'
       );
 
 

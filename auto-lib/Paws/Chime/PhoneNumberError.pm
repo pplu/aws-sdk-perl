@@ -3,6 +3,7 @@ package Paws::Chime::PhoneNumberError;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has PhoneNumberId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

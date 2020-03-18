@@ -1,6 +1,7 @@
 package Paws::AlexaForBusiness::ConferencePreference;
   use Moose;
   has DefaultConferenceProviderArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

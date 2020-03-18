@@ -5,6 +5,7 @@ package Paws::ApiGatewayV2::RouteResponse;
   has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteParameters', request_name => 'responseParameters', traits => ['NameInRequest']);
   has RouteResponseId => (is => 'ro', isa => 'Str', request_name => 'routeResponseId', traits => ['NameInRequest']);
   has RouteResponseKey => (is => 'ro', isa => 'Str', request_name => 'routeResponseKey', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

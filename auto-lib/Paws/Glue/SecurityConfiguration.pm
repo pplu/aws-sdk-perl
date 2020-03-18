@@ -3,6 +3,7 @@ package Paws::Glue::SecurityConfiguration;
   has CreatedTimeStamp => (is => 'ro', isa => 'Str');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Glue::EncryptionConfiguration');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

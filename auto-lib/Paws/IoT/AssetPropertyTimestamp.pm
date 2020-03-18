@@ -2,6 +2,7 @@ package Paws::IoT::AssetPropertyTimestamp;
   use Moose;
   has OffsetInNanos => (is => 'ro', isa => 'Str', request_name => 'offsetInNanos', traits => ['NameInRequest']);
   has TimeInSeconds => (is => 'ro', isa => 'Str', request_name => 'timeInSeconds', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

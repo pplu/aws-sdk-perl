@@ -1,6 +1,7 @@
 package Paws::SSM::ResourceDataSyncOrganizationalUnit;
   use Moose;
   has OrganizationalUnitId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

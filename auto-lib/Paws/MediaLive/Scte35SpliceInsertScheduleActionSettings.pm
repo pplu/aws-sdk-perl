@@ -2,6 +2,7 @@ package Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings;
   use Moose;
   has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
   has SpliceEventId => (is => 'ro', isa => 'Int', request_name => 'spliceEventId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

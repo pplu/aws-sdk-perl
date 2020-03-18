@@ -37,14 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a lifecycle hook
     # This example creates a lifecycle hook.
     my $PutLifecycleHookAnswer = $autoscaling->PutLifecycleHook(
-      {
-        'NotificationTargetARN' =>
-          'arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn',
-        'RoleARN' => 'arn:aws:iam::123456789012:role/my-auto-scaling-role',
-        'LifecycleTransition'  => 'autoscaling:EC2_INSTANCE_LAUNCHING',
-        'LifecycleHookName'    => 'my-lifecycle-hook',
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'LifecycleHookName'    => 'my-lifecycle-hook',
+      'LifecycleTransition'  => 'autoscaling:EC2_INSTANCE_LAUNCHING',
+      'NotificationTargetARN' =>
+        'arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn',
+      'RoleARN' => 'arn:aws:iam::123456789012:role/my-auto-scaling-role'
     );
 
 
@@ -72,11 +70,12 @@ C<ABANDON>.
 =head2 HeartbeatTimeout => Int
 
 The maximum time, in seconds, that can elapse before the lifecycle hook
-times out. The range is from 30 to 7200 seconds. The default is 3600
-seconds (1 hour).
+times out. The range is from C<30> to C<7200> seconds. The default
+value is C<3600> seconds (1 hour).
 
-If the lifecycle hook times out, Auto Scaling performs the default
-action. You can prevent the lifecycle hook from timing out by calling
+If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
+action that you specified in the C<DefaultResult> parameter. You can
+prevent the lifecycle hook from timing out by calling
 RecordLifecycleActionHeartbeat.
 
 
@@ -89,45 +88,59 @@ The name of the lifecycle hook.
 
 =head2 LifecycleTransition => Str
 
-The instance state to which you want to attach the lifecycle hook. For
-a list of lifecycle hook types, see DescribeLifecycleHookTypes.
+The instance state to which you want to attach the lifecycle hook. The
+valid values are:
 
-This parameter is required for new lifecycle hooks, but optional when
-updating existing hooks.
+=over
+
+=item *
+
+autoscaling:EC2_INSTANCE_LAUNCHING
+
+=item *
+
+autoscaling:EC2_INSTANCE_TERMINATING
+
+=back
+
+Conditional: This parameter is required for new lifecycle hooks, but
+optional when updating existing hooks.
 
 
 
 =head2 NotificationMetadata => Str
 
-Contains additional information that you want to include any time Auto
-Scaling sends a message to the notification target.
+Additional information that you want to include any time Amazon EC2
+Auto Scaling sends a message to the notification target.
 
 
 
 =head2 NotificationTargetARN => Str
 
-The ARN of the notification target that Auto Scaling will use to notify
-you when an instance is in the transition state for the lifecycle hook.
-This target can be either an SQS queue or an SNS topic. If you specify
-an empty string, this overrides the current ARN.
+The ARN of the notification target that Amazon EC2 Auto Scaling uses to
+notify you when an instance is in the transition state for the
+lifecycle hook. This target can be either an SQS queue or an SNS topic.
+
+If you specify an empty string, this overrides the current ARN.
 
 This operation uses the JSON format when sending notifications to an
-Amazon SQS queue, and an email key/value pair format when sending
+Amazon SQS queue, and an email key-value pair format when sending
 notifications to an Amazon SNS topic.
 
-When you specify a notification target, Auto Scaling sends it a test
-message. Test messages contains the following additional key/value
-pair: C<"Event": "autoscaling:TEST_NOTIFICATION">.
+When you specify a notification target, Amazon EC2 Auto Scaling sends
+it a test message. Test messages contain the following additional
+key-value pair: C<"Event": "autoscaling:TEST_NOTIFICATION">.
 
 
 
 =head2 RoleARN => Str
 
 The ARN of the IAM role that allows the Auto Scaling group to publish
-to the specified notification target.
+to the specified notification target, for example, an Amazon SNS topic
+or an Amazon SQS queue.
 
-This parameter is required for new lifecycle hooks, but optional when
-updating existing hooks.
+Conditional: This parameter is required for new lifecycle hooks, but
+optional when updating existing hooks.
 
 
 

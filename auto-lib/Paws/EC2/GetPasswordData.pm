@@ -29,14 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $GetPasswordDataResult = $ec2->GetPasswordData(
-      InstanceId => 'MyString',
-      DryRun     => 1,            # OPTIONAL
+      InstanceId => 'MyInstanceId',
+      DryRun     => 1,                # OPTIONAL
     );
 
     # Results:
-    my $Timestamp    = $GetPasswordDataResult->Timestamp;
-    my $PasswordData = $GetPasswordDataResult->PasswordData;
     my $InstanceId   = $GetPasswordDataResult->InstanceId;
+    my $PasswordData = $GetPasswordDataResult->PasswordData;
+    my $Timestamp    = $GetPasswordDataResult->Timestamp;
 
     # Returns a L<Paws::EC2::GetPasswordDataResult> object.
 

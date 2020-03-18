@@ -2,6 +2,7 @@ package Paws::Pinpoint::CampaignEventFilter;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::EventDimensions', required => 1);
   has FilterType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

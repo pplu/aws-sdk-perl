@@ -40,18 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Version       = $GetExportResponse->Version;
-    my $FailureReason = $GetExportResponse->FailureReason;
-    my $ResourceType  = $GetExportResponse->ResourceType;
-    my $ExportType    = $GetExportResponse->ExportType;
-    my $Url           = $GetExportResponse->Url;
     my $ExportStatus  = $GetExportResponse->ExportStatus;
+    my $ExportType    = $GetExportResponse->ExportType;
+    my $FailureReason = $GetExportResponse->FailureReason;
     my $Name          = $GetExportResponse->Name;
+    my $ResourceType  = $GetExportResponse->ResourceType;
+    my $Url           = $GetExportResponse->Url;
+    my $Version       = $GetExportResponse->Version;
 
     # Returns a L<Paws::LexModels::GetExportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/lex/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetExport>
 
 =head1 ATTRIBUTES
 

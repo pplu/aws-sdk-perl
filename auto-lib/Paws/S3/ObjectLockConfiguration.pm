@@ -2,6 +2,7 @@ package Paws::S3::ObjectLockConfiguration;
   use Moose;
   has ObjectLockEnabled => (is => 'ro', isa => 'Str');
   has Rule => (is => 'ro', isa => 'Paws::S3::ObjectLockRule');
+
 1;
 
 ### main pod documentation begin ###

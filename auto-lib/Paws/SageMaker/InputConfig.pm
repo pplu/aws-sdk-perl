@@ -3,6 +3,7 @@ package Paws::SageMaker::InputConfig;
   has DataInputConfig => (is => 'ro', isa => 'Str', required => 1);
   has Framework => (is => 'ro', isa => 'Str', required => 1);
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

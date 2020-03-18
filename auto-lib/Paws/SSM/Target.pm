@@ -34,8 +34,82 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Target
 =head1 DESCRIPTION
 
 An array of search criteria that targets instances using a Key,Value
-combination that you specify. C<Targets> is required if you don't
-provide one or more instance IDs in the call.
+combination that you specify.
+
+Supported formats include the following.
+
+=over
+
+=item *
+
+C<Key=InstanceIds,Values=I<instance-id-1>,I<instance-id-2>,I<instance-id-3>>
+
+=item *
+
+C<Key=tag:I<my-tag-key>,Values=I<my-tag-value-1>,I<my-tag-value-2>>
+
+=item *
+
+C<Key=tag-key,Values=I<my-tag-key-1>,I<my-tag-key-2>>
+
+=item *
+
+(Maintenance window targets only)
+C<Key=resource-groups:Name,Values=I<resource-group-name>>
+
+=item *
+
+(Maintenance window targets only)
+C<Key=resource-groups:ResourceTypeFilters,Values=I<resource-type-1>,I<resource-type-2>>
+
+=back
+
+For example:
+
+=over
+
+=item *
+
+C<Key=InstanceIds,Values=i-02573cafcfEXAMPLE,i-0471e04240EXAMPLE,i-07782c72faEXAMPLE>
+
+=item *
+
+C<Key=tag:CostCenter,Values=CostCenter1,CostCenter2,CostCenter3>
+
+=item *
+
+C<Key=tag-key,Values=Name,Instance-Type,CostCenter>
+
+=item *
+
+(Maintenance window targets only)
+C<Key=resource-groups:Name,Values=ProductionResourceGroup>
+
+This example demonstrates how to target all resources in the resource
+group B<ProductionResourceGroup> in your maintenance window.
+
+=item *
+
+(Maintenance window targets only)
+C<Key=resource-groups:ResourceTypeFilters,Values=I<AWS::EC2::INSTANCE>,I<AWS::EC2::VPC>>
+
+This example demonstrates how to target only Amazon EC2 instances and
+VPCs in your maintenance window.
+
+=item *
+
+(State Manager association targets only) C<Key=InstanceIds,Values=I<*>>
+
+This example demonstrates how to target all managed instances in the
+AWS Region where the association was created.
+
+=back
+
+For information about how to send commands that target instances using
+C<Key,Value> parameters, see Using Targets and Rate Controls to Send
+Commands to a Fleet
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting)
+in the I<AWS Systems Manager User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -43,23 +117,15 @@ provide one or more instance IDs in the call.
 =head2 Key => Str
 
   User-defined criteria for sending commands that target instances that
-meet the criteria. Key can be tag:E<lt>Amazon EC2 tagE<gt> or
-InstanceIds. For more information about how to send commands that
-target instances using Key,Value parameters, see Targeting Multiple
-Instances
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting)
-in the I<AWS Systems Manager User Guide>.
+meet the criteria.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  User-defined criteria that maps to Key. For example, if you specified
-tag:ServerRole, you could specify value:WebServer to execute a command
-on instances that include Amazon EC2 tags of ServerRole,WebServer. For
-more information about how to send commands that target instances using
-Key,Value parameters, see Sending Commands to a Fleet
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
-in the I<AWS Systems Manager User Guide>.
+  User-defined criteria that maps to C<Key>. For example, if you
+specified C<tag:ServerRole>, you could specify C<value:WebServer> to
+run a command on instances that include Amazon EC2 tags of
+C<ServerRole,WebServer>.
 
 
 

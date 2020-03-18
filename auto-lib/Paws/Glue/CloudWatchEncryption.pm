@@ -2,6 +2,7 @@ package Paws::Glue::CloudWatchEncryption;
   use Moose;
   has CloudWatchEncryptionMode => (is => 'ro', isa => 'Str');
   has KmsKeyArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

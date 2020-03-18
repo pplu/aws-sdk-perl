@@ -5,6 +5,7 @@ package Paws::SageMaker::LabelCounters;
   has MachineLabeled => (is => 'ro', isa => 'Int');
   has TotalLabeled => (is => 'ro', isa => 'Int');
   has Unlabeled => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

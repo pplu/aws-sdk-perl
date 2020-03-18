@@ -2,6 +2,7 @@ package Paws::Textract::Geometry;
   use Moose;
   has BoundingBox => (is => 'ro', isa => 'Paws::Textract::BoundingBox');
   has Polygon => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Point]');
+
 1;
 
 ### main pod documentation begin ###

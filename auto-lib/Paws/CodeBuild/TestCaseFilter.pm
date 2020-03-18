@@ -1,6 +1,7 @@
 package Paws::CodeBuild::TestCaseFilter;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -28,6 +28,7 @@ package Paws::MediaLive::H265Settings;
   has Slices => (is => 'ro', isa => 'Int', request_name => 'slices', traits => ['NameInRequest']);
   has Tier => (is => 'ro', isa => 'Str', request_name => 'tier', traits => ['NameInRequest']);
   has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

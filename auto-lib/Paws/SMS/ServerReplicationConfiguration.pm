@@ -2,6 +2,7 @@ package Paws::SMS::ServerReplicationConfiguration;
   use Moose;
   has Server => (is => 'ro', isa => 'Paws::SMS::Server', request_name => 'server', traits => ['NameInRequest']);
   has ServerReplicationParameters => (is => 'ro', isa => 'Paws::SMS::ServerReplicationParameters', request_name => 'serverReplicationParameters', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

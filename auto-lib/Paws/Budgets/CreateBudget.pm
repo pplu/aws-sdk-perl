@@ -32,29 +32,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateBudgetResponse = $budgets->CreateBudget(
       AccountId => 'MyAccountId',
       Budget    => {
-        BudgetName => 'MyBudgetName',    # max: 100
-        BudgetType =>
-          'USAGE',    # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE
+        BudgetName => 'MyBudgetName',    # min: 1, max: 100
+        BudgetType => 'USAGE'
+        , # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, SAVINGS_PLANS_COVERAGE
         TimeUnit    => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
         BudgetLimit => {
-          Amount => 'MyNumericValue',
-          Unit   => 'MyUnitValue',      # min: 1
+          Amount => 'MyNumericValue',    # min: 1, max: 2147483647
+          Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
         },
         CalculatedSpend => {
           ActualSpend => {
-            Amount => 'MyNumericValue',
-            Unit   => 'MyUnitValue',      # min: 1
+            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
+            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
           },
           ForecastedSpend => {
-            Amount => 'MyNumericValue',
-            Unit   => 'MyUnitValue',      # min: 1
+            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
+            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
           },
         },    # OPTIONAL
-        CostFilters => { 'MyGenericString' => [ 'MyGenericString', ... ], }
-        ,     # OPTIONAL
+        CostFilters => {
+          'MyGenericString' => [
+            'MyGenericString', ...    # max: 2147483647
+          ],                          # key: max: 2147483647
+        },    # OPTIONAL
         CostTypes => {
           IncludeCredit            => 1,    # OPTIONAL
           IncludeDiscount          => 1,    # OPTIONAL
@@ -68,6 +71,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           UseAmortized             => 1,    # OPTIONAL
           UseBlended               => 1,    # OPTIONAL
         },    # OPTIONAL
+        LastUpdatedTime     => '1970-01-01T01:00:00',    # OPTIONAL
+        PlannedBudgetLimits => {
+          'MyGenericString' => {
+            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
+            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
+
+          },    # key: max: 2147483647
+        },    # OPTIONAL
         TimePeriod => {
           End   => '1970-01-01T01:00:00',    # OPTIONAL
           Start => '1970-01-01T01:00:00',    # OPTIONAL
@@ -78,23 +89,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Notification => {
             ComparisonOperator =>
               'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
-            NotificationType => 'ACTUAL',    # values: ACTUAL, FORECASTED
-            Threshold        => 1,           # min: 0.1, max: 1000000000
+            NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
+            Threshold         => 1,           # max: 1000000000
+            NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
             ThresholdType =>
               'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
           },
           Subscribers => [
             {
-              Address          => 'MySubscriberAddress',    # min: 1
-              SubscriptionType => 'SNS',                    # values: SNS, EMAIL
+              Address => 'MySubscriberAddress',    # min: 1, max: 2147483647
+              SubscriptionType => 'SNS',           # values: SNS, EMAIL
 
             },
             ...
-          ],                                                # min: 1, max: 11
+          ],                                       # min: 1, max: 11
 
         },
         ...
-      ],                                                    # OPTIONAL
+      ],                                           # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -119,9 +131,9 @@ The budget object that you want to create.
 
 A notification that you want to associate with a budget. A budget can
 have up to five notifications, and each notification can have one SNS
-subscriber and up to ten email subscribers. If you include
-notifications and subscribers in your C<CreateBudget> call, AWS creates
-the notifications and subscribers for you.
+subscriber and up to 10 email subscribers. If you include notifications
+and subscribers in your C<CreateBudget> call, AWS creates the
+notifications and subscribers for you.
 
 
 

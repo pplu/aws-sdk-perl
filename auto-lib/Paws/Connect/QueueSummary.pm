@@ -4,6 +4,7 @@ package Paws::Connect::QueueSummary;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has QueueType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

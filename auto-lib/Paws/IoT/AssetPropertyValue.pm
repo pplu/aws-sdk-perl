@@ -3,6 +3,7 @@ package Paws::IoT::AssetPropertyValue;
   has Quality => (is => 'ro', isa => 'Str', request_name => 'quality', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Paws::IoT::AssetPropertyTimestamp', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
   has Value => (is => 'ro', isa => 'Paws::IoT::AssetPropertyVariant', request_name => 'value', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

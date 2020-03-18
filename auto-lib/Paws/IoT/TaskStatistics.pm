@@ -7,6 +7,7 @@ package Paws::IoT::TaskStatistics;
   has NonCompliantChecks => (is => 'ro', isa => 'Int', request_name => 'nonCompliantChecks', traits => ['NameInRequest']);
   has TotalChecks => (is => 'ro', isa => 'Int', request_name => 'totalChecks', traits => ['NameInRequest']);
   has WaitingForDataCollectionChecks => (is => 'ro', isa => 'Int', request_name => 'waitingForDataCollectionChecks', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

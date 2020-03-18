@@ -1,6 +1,7 @@
 package Paws::SageMaker::JupyterServerAppSettings;
   use Moose;
   has DefaultResourceSpec => (is => 'ro', isa => 'Paws::SageMaker::ResourceSpec');
+
 1;
 
 ### main pod documentation begin ###

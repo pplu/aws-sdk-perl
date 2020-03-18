@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $LayerDigest = $GetDownloadUrlForLayerResponse->LayerDigest;
     my $DownloadUrl = $GetDownloadUrlForLayerResponse->DownloadUrl;
+    my $LayerDigest = $GetDownloadUrlForLayerResponse->LayerDigest;
 
     # Returns a L<Paws::ECR::GetDownloadUrlForLayerResponse> object.
 

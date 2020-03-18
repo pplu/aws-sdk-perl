@@ -1,6 +1,7 @@
 package Paws::MediaLive::Scte35Descriptor;
   use Moose;
   has Scte35DescriptorSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35DescriptorSettings', request_name => 'scte35DescriptorSettings', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

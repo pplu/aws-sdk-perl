@@ -5,6 +5,7 @@ package Paws::ApiGatewayV2::RouteSettings;
   has LoggingLevel => (is => 'ro', isa => 'Str', request_name => 'loggingLevel', traits => ['NameInRequest']);
   has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', request_name => 'throttlingBurstLimit', traits => ['NameInRequest']);
   has ThrottlingRateLimit => (is => 'ro', isa => 'Num', request_name => 'throttlingRateLimit', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

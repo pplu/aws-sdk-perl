@@ -35,33 +35,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Mapping => [
         {
           SourcePath  => 'MySchemaPathString',    # OPTIONAL
-          SourceType  => 'MyFieldType',           # OPTIONAL
-          TargetTable => 'MyTableName',           # OPTIONAL
-          TargetPath  => 'MySchemaPathString',    # OPTIONAL
           SourceTable => 'MyTableName',           # OPTIONAL
+          SourceType  => 'MyFieldType',           # OPTIONAL
+          TargetPath  => 'MySchemaPathString',    # OPTIONAL
+          TargetTable => 'MyTableName',           # OPTIONAL
           TargetType  => 'MyFieldType',           # OPTIONAL
         },
         ...
       ],
       Source => {
-        TableName    => 'MyNameString',           # min: 1, max: 255
         DatabaseName => 'MyNameString',           # min: 1, max: 255
+        TableName    => 'MyNameString',           # min: 1, max: 255
 
       },
       Language => 'PYTHON',                       # OPTIONAL
       Location => {
+        DynamoDB => [
+          {
+            Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
+            Param => 1,                           # OPTIONAL
+          },
+          ...
+        ],                                        # max: 50; OPTIONAL
         Jdbc => [
           {
-            Value => 'MyCodeGenArgValue',
             Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
             Param => 1,                           # OPTIONAL
           },
           ...
         ],                                        # max: 50; OPTIONAL
         S3 => [
           {
-            Value => 'MyCodeGenArgValue',
             Name  => 'MyCodeGenArgName',
+            Value => 'MyCodeGenArgValue',
             Param => 1,                           # OPTIONAL
           },
           ...
@@ -69,8 +77,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Sinks => [
         {
-          TableName    => 'MyNameString',    # min: 1, max: 255
           DatabaseName => 'MyNameString',    # min: 1, max: 255
+          TableName    => 'MyNameString',    # min: 1, max: 255
 
         },
         ...
@@ -97,7 +105,7 @@ Valid values are: C<"PYTHON">, C<"SCALA">
 
 =head2 Location => L<Paws::Glue::Location>
 
-Parameters for the mapping.
+The parameters for the mapping.
 
 
 

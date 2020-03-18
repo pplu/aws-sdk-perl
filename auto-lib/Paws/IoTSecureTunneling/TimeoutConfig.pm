@@ -1,6 +1,7 @@
 package Paws::IoTSecureTunneling::TimeoutConfig;
   use Moose;
   has MaxLifetimeTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'maxLifetimeTimeoutMinutes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
