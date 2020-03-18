@@ -6,6 +6,7 @@ package Paws::Athena::WorkGroupConfigurationUpdates;
   has RemoveBytesScannedCutoffPerQuery => (is => 'ro', isa => 'Bool');
   has RequesterPaysEnabled => (is => 'ro', isa => 'Bool');
   has ResultConfigurationUpdates => (is => 'ro', isa => 'Paws::Athena::ResultConfigurationUpdates');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ServerlessRepo::ApplicationDependencySummary;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

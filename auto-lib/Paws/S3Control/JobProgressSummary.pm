@@ -3,6 +3,7 @@ package Paws::S3Control::JobProgressSummary;
   has NumberOfTasksFailed => (is => 'ro', isa => 'Int');
   has NumberOfTasksSucceeded => (is => 'ro', isa => 'Int');
   has TotalNumberOfTasks => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

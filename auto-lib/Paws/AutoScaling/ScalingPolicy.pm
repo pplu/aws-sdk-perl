@@ -15,6 +15,7 @@ package Paws::AutoScaling::ScalingPolicy;
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
   has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
   has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::TargetTrackingConfiguration');
+
 1;
 
 ### main pod documentation begin ###

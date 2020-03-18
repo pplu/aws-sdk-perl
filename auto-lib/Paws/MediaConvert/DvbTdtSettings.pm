@@ -1,6 +1,7 @@
 package Paws::MediaConvert::DvbTdtSettings;
   use Moose;
   has TdtInterval => (is => 'ro', isa => 'Int', request_name => 'tdtInterval', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

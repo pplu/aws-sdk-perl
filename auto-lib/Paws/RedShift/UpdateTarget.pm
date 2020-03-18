@@ -3,6 +3,7 @@ package Paws::RedShift::UpdateTarget;
   has DatabaseVersion => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has SupportedOperations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SupportedOperation]', request_name => 'SupportedOperation', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

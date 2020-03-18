@@ -2,6 +2,7 @@ package Paws::CognitoIdp::SmsMfaConfigType;
   use Moose;
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
+
 1;
 
 ### main pod documentation begin ###

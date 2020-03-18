@@ -7,6 +7,7 @@ package Paws::Chime::VoiceConnector;
   has RequireEncryption => (is => 'ro', isa => 'Bool');
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
   has VoiceConnectorId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

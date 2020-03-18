@@ -7,6 +7,7 @@ package Paws::ImageBuilder::ImageRecipeSummary;
   has ParentImage => (is => 'ro', isa => 'Str', request_name => 'parentImage', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

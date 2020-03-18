@@ -3,6 +3,7 @@ package Paws::Personalize::DefaultHyperParameterRanges;
   has CategoricalHyperParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::DefaultCategoricalHyperParameterRange]', request_name => 'categoricalHyperParameterRanges', traits => ['NameInRequest']);
   has ContinuousHyperParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::DefaultContinuousHyperParameterRange]', request_name => 'continuousHyperParameterRanges', traits => ['NameInRequest']);
   has IntegerHyperParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::DefaultIntegerHyperParameterRange]', request_name => 'integerHyperParameterRanges', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

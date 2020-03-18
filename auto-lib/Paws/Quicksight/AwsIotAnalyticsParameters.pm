@@ -1,6 +1,7 @@
 package Paws::Quicksight::AwsIotAnalyticsParameters;
   use Moose;
   has DataSetName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

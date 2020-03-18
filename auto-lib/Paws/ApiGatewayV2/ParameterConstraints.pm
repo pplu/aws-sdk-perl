@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::ParameterConstraints;
   use Moose;
   has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

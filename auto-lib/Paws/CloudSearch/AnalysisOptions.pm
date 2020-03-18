@@ -5,6 +5,7 @@ package Paws::CloudSearch::AnalysisOptions;
   has StemmingDictionary => (is => 'ro', isa => 'Str');
   has Stopwords => (is => 'ro', isa => 'Str');
   has Synonyms => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

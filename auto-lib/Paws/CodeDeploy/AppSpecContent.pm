@@ -2,6 +2,7 @@ package Paws::CodeDeploy::AppSpecContent;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest']);
   has Sha256 => (is => 'ro', isa => 'Str', request_name => 'sha256', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

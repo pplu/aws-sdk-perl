@@ -4,6 +4,7 @@ package Paws::FSX::DataRepositoryTaskStatus;
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has SucceededCount => (is => 'ro', isa => 'Int');
   has TotalCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

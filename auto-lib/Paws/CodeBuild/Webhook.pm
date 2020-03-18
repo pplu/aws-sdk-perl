@@ -6,6 +6,7 @@ package Paws::CodeBuild::Webhook;
   has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
   has Secret => (is => 'ro', isa => 'Str', request_name => 'secret', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::DataExchange::RevisionEntry;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has SourceId => (is => 'ro', isa => 'Str');
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

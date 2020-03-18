@@ -53,6 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url   => 'My__string',
           },    # OPTIONAL
           APNSMessage => {
+            APNSPushType => 'My__string',
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Badge  => 1,            # OPTIONAL
             Body   => 'My__string',
@@ -178,7 +179,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TitleOverride => 'My__string',
           },
         },
-        Context => { 'My__string' => 'My__string', },             # OPTIONAL
+        Context               => { 'My__string' => 'My__string', },   # OPTIONAL
+        TemplateConfiguration => {
+          EmailTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+          PushTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+          SMSTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+          VoiceTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+        },    # OPTIONAL
         TraceId => 'My__string',
       },
 

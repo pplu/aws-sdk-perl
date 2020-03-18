@@ -4,6 +4,7 @@ package Paws::Kinesis::Consumer;
   has ConsumerCreationTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has ConsumerName => (is => 'ro', isa => 'Str', required => 1);
   has ConsumerStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Config::RemediationExecutionStatus;
   has ResourceKey => (is => 'ro', isa => 'Paws::Config::ResourceKey');
   has State => (is => 'ro', isa => 'Str');
   has StepDetails => (is => 'ro', isa => 'ArrayRef[Paws::Config::RemediationExecutionStep]');
+
 1;
 
 ### main pod documentation begin ###

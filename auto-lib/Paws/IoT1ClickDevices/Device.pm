@@ -3,6 +3,7 @@ package Paws::IoT1ClickDevices::Device;
   has Attributes => (is => 'ro', isa => 'Paws::IoT1ClickDevices::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
   has DeviceId => (is => 'ro', isa => 'Str', request_name => 'deviceId', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

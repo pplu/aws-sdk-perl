@@ -3,6 +3,7 @@ package Paws::DataPipeline::PipelineObject;
   has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', request_name => 'fields', traits => ['NameInRequest'], required => 1);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

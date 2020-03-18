@@ -5,6 +5,7 @@ package Paws::Kendra::IndexConfigurationSummary;
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

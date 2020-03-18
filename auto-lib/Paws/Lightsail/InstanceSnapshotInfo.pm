@@ -3,6 +3,7 @@ package Paws::Lightsail::InstanceSnapshotInfo;
   has FromBlueprintId => (is => 'ro', isa => 'Str', request_name => 'fromBlueprintId', traits => ['NameInRequest']);
   has FromBundleId => (is => 'ro', isa => 'Str', request_name => 'fromBundleId', traits => ['NameInRequest']);
   has FromDiskInfo => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::DiskInfo]', request_name => 'fromDiskInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

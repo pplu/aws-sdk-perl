@@ -11,6 +11,7 @@ package Paws::SavingsPlans::SavingsPlanOffering;
   has Properties => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanOfferingProperty]', request_name => 'properties', traits => ['NameInRequest']);
   has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
   has UsageType => (is => 'ro', isa => 'Str', request_name => 'usageType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

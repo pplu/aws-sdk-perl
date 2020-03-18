@@ -1,6 +1,7 @@
 package Paws::WAFv2::Regex;
   use Moose;
   has RegexString => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

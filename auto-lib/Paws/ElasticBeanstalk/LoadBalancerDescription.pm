@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::LoadBalancerDescription;
   has Domain => (is => 'ro', isa => 'Str');
   has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Listener]');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

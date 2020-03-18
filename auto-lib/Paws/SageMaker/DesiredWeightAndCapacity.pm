@@ -3,6 +3,7 @@ package Paws::SageMaker::DesiredWeightAndCapacity;
   has DesiredInstanceCount => (is => 'ro', isa => 'Int');
   has DesiredWeight => (is => 'ro', isa => 'Num');
   has VariantName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

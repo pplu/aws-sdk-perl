@@ -6,6 +6,7 @@ package Paws::DeviceFarm::TestGridSession;
   has Ended => (is => 'ro', isa => 'Str', request_name => 'ended', traits => ['NameInRequest']);
   has SeleniumProperties => (is => 'ro', isa => 'Str', request_name => 'seleniumProperties', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

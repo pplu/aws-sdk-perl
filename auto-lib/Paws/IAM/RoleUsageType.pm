@@ -2,6 +2,7 @@ package Paws::IAM::RoleUsageType;
   use Moose;
   has Region => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

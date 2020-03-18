@@ -5,6 +5,7 @@ package Paws::DynamoDB::KeysAndAttributes;
   has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
   has Keys => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Key]', required => 1);
   has ProjectionExpression => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

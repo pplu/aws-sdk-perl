@@ -6,6 +6,7 @@ package Paws::IAM::InstanceProfile;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has Roles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Role]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

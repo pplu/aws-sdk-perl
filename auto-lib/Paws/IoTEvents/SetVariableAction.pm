@@ -2,6 +2,7 @@ package Paws::IoTEvents::SetVariableAction;
   use Moose;
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
   has VariableName => (is => 'ro', isa => 'Str', request_name => 'variableName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

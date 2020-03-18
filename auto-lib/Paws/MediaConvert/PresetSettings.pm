@@ -4,6 +4,7 @@ package Paws::MediaConvert::PresetSettings;
   has CaptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::CaptionDescriptionPreset]', request_name => 'captionDescriptions', traits => ['NameInRequest']);
   has ContainerSettings => (is => 'ro', isa => 'Paws::MediaConvert::ContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest']);
   has VideoDescription => (is => 'ro', isa => 'Paws::MediaConvert::VideoDescription', request_name => 'videoDescription', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

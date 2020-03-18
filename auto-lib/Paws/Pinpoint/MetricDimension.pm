@@ -2,6 +2,7 @@ package Paws::Pinpoint::MetricDimension;
   use Moose;
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

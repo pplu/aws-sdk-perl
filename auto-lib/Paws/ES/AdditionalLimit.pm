@@ -2,6 +2,7 @@ package Paws::ES::AdditionalLimit;
   use Moose;
   has LimitName => (is => 'ro', isa => 'Str');
   has LimitValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

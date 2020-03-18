@@ -4,6 +4,7 @@ package Paws::MediaLive::MultiplexProgram;
   has MultiplexProgramSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramSettings', request_name => 'multiplexProgramSettings', traits => ['NameInRequest']);
   has PacketIdentifiersMap => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramPacketIdentifiersMap', request_name => 'packetIdentifiersMap', traits => ['NameInRequest']);
   has ProgramName => (is => 'ro', isa => 'Str', request_name => 'programName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

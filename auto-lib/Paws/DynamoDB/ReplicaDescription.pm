@@ -7,6 +7,7 @@ package Paws::DynamoDB::ReplicaDescription;
   has ReplicaStatus => (is => 'ro', isa => 'Str');
   has ReplicaStatusDescription => (is => 'ro', isa => 'Str');
   has ReplicaStatusPercentProgress => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

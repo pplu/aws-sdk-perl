@@ -7,6 +7,7 @@ package Paws::SecurityHub::AwsCloudFrontDistributionDetails;
   has Origins => (is => 'ro', isa => 'Paws::SecurityHub::AwsCloudFrontDistributionOrigins');
   has Status => (is => 'ro', isa => 'Str');
   has WebAclId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

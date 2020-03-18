@@ -3,6 +3,7 @@ package Paws::ApiGateway::DeploymentCanarySettings;
   has PercentTraffic => (is => 'ro', isa => 'Num', request_name => 'percentTraffic', traits => ['NameInRequest']);
   has StageVariableOverrides => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', request_name => 'stageVariableOverrides', traits => ['NameInRequest']);
   has UseStageCache => (is => 'ro', isa => 'Bool', request_name => 'useStageCache', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

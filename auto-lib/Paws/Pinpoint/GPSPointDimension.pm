@@ -2,6 +2,7 @@ package Paws::Pinpoint::GPSPointDimension;
   use Moose;
   has Coordinates => (is => 'ro', isa => 'Paws::Pinpoint::GPSCoordinates', required => 1);
   has RangeInKilometers => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

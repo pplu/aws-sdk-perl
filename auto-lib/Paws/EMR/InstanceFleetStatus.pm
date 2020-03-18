@@ -3,6 +3,7 @@ package Paws::EMR::InstanceFleetStatus;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::InstanceFleetStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Paws::EMR::InstanceFleetTimeline');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::MediaLive::MediaPackageGroupSettings;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

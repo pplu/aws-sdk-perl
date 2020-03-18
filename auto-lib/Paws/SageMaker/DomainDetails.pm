@@ -7,6 +7,7 @@ package Paws::SageMaker::DomainDetails;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

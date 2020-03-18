@@ -2,6 +2,7 @@ package Paws::WAFRegional::XssMatchSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has XssMatchTuple => (is => 'ro', isa => 'Paws::WAFRegional::XssMatchTuple', required => 1);
+
 1;
 
 ### main pod documentation begin ###

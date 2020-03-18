@@ -10,6 +10,7 @@ package Paws::AutoScaling::AutoScalingInstanceDetails;
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
   has WeightedCapacity => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

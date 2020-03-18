@@ -2,6 +2,7 @@ package Paws::MediaLive::Scte20SourceSettings;
   use Moose;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
   has Source608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'source608ChannelNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

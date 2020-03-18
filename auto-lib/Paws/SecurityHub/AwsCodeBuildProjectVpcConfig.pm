@@ -3,6 +3,7 @@ package Paws::SecurityHub::AwsCodeBuildProjectVpcConfig;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

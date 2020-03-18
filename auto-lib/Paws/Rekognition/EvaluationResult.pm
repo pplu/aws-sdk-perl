@@ -2,6 +2,7 @@ package Paws::Rekognition::EvaluationResult;
   use Moose;
   has F1Score => (is => 'ro', isa => 'Num');
   has Summary => (is => 'ro', isa => 'Paws::Rekognition::Summary');
+
 1;
 
 ### main pod documentation begin ###

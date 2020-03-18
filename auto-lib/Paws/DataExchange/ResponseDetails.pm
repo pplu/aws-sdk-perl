@@ -4,6 +4,7 @@ package Paws::DataExchange::ResponseDetails;
   has ExportAssetToSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetToSignedUrlResponseDetails');
   has ImportAssetFromSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails');
   has ImportAssetsFromS3 => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetsFromS3ResponseDetails');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MQ::BrokerEngineType;
   use Moose;
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::EngineVersion]', request_name => 'engineVersions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

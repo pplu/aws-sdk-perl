@@ -3,6 +3,7 @@ package Paws::ComputeOptimizer::RecommendationSummary;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
   has RecommendationResourceType => (is => 'ro', isa => 'Str', request_name => 'recommendationResourceType', traits => ['NameInRequest']);
   has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::Summary]', request_name => 'summaries', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

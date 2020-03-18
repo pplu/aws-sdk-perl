@@ -3,6 +3,7 @@ package Paws::RedShift::SnapshotCopyGrant;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

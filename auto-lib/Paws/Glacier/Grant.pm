@@ -2,6 +2,7 @@ package Paws::Glacier::Grant;
   use Moose;
   has Grantee => (is => 'ro', isa => 'Paws::Glacier::Grantee');
   has Permission => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

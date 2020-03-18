@@ -2,6 +2,7 @@ package Paws::MediaConvert::FileGroupSettings;
   use Moose;
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

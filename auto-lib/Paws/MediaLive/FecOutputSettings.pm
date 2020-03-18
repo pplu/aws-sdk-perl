@@ -3,6 +3,7 @@ package Paws::MediaLive::FecOutputSettings;
   has ColumnDepth => (is => 'ro', isa => 'Int', request_name => 'columnDepth', traits => ['NameInRequest']);
   has IncludeFec => (is => 'ro', isa => 'Str', request_name => 'includeFec', traits => ['NameInRequest']);
   has RowLength => (is => 'ro', isa => 'Int', request_name => 'rowLength', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

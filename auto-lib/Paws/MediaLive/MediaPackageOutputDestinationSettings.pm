@@ -1,6 +1,7 @@
 package Paws::MediaLive::MediaPackageOutputDestinationSettings;
   use Moose;
   has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

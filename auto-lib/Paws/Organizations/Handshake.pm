@@ -8,6 +8,7 @@ package Paws::Organizations::Handshake;
   has RequestedTimestamp => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::HandshakeResource]');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

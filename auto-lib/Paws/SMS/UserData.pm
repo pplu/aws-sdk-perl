@@ -1,6 +1,7 @@
 package Paws::SMS::UserData;
   use Moose;
   has S3Location => (is => 'ro', isa => 'Paws::SMS::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

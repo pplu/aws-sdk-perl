@@ -9,6 +9,7 @@ package Paws::SecurityHub::AwsEc2InstanceDetails;
   has SubnetId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

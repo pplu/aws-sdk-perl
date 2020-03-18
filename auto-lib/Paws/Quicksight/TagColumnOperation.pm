@@ -2,6 +2,7 @@ package Paws::Quicksight::TagColumnOperation;
   use Moose;
   has ColumnName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnTag]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

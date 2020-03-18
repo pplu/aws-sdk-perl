@@ -1,10 +1,9 @@
 
 package Paws::CloudFront::ListPublicKeysResult;
   use Moose;
-  has PublicKeyList => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyList');
+  has PublicKeyList => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyList', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'PublicKeyList');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

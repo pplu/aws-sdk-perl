@@ -3,6 +3,7 @@ package Paws::DynamoDB::BackupDescription;
   has BackupDetails => (is => 'ro', isa => 'Paws::DynamoDB::BackupDetails');
   has SourceTableDetails => (is => 'ro', isa => 'Paws::DynamoDB::SourceTableDetails');
   has SourceTableFeatureDetails => (is => 'ro', isa => 'Paws::DynamoDB::SourceTableFeatureDetails');
+
 1;
 
 ### main pod documentation begin ###

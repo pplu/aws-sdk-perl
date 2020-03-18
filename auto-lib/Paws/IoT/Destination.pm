@@ -1,6 +1,7 @@
 package Paws::IoT::Destination;
   use Moose;
   has S3Destination => (is => 'ro', isa => 'Paws::IoT::S3Destination', request_name => 's3Destination', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

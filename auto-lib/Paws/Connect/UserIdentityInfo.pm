@@ -3,6 +3,7 @@ package Paws::Connect::UserIdentityInfo;
   has Email => (is => 'ro', isa => 'Str');
   has FirstName => (is => 'ro', isa => 'Str');
   has LastName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

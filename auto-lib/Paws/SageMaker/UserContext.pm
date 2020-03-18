@@ -3,6 +3,7 @@ package Paws::SageMaker::UserContext;
   has DomainId => (is => 'ro', isa => 'Str');
   has UserProfileArn => (is => 'ro', isa => 'Str');
   has UserProfileName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

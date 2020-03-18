@@ -2,6 +2,7 @@ package Paws::GameLift::PlacedPlayerSession;
   use Moose;
   has PlayerId => (is => 'ro', isa => 'Str');
   has PlayerSessionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

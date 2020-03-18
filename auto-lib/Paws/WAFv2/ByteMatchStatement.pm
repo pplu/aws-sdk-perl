@@ -4,6 +4,7 @@ package Paws::WAFv2::ByteMatchStatement;
   has PositionalConstraint => (is => 'ro', isa => 'Str', required => 1);
   has SearchString => (is => 'ro', isa => 'Str', required => 1);
   has TextTransformations => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::TextTransformation]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

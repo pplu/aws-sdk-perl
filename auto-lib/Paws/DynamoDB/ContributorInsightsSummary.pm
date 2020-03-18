@@ -3,6 +3,7 @@ package Paws::DynamoDB::ContributorInsightsSummary;
   has ContributorInsightsStatus => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchAttachObjectResponse;
   use Moose;
   has AttachedObjectIdentifier => (is => 'ro', isa => 'Str', request_name => 'attachedObjectIdentifier', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

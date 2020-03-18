@@ -2,6 +2,7 @@ package Paws::SESv2::DeliveryOptions;
   use Moose;
   has SendingPoolName => (is => 'ro', isa => 'Str');
   has TlsPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

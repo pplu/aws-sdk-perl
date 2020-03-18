@@ -2,6 +2,7 @@ package Paws::Rekognition::Instance;
   use Moose;
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has Confidence => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

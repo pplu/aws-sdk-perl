@@ -2,6 +2,7 @@ package Paws::SageMaker::UiTemplateInfo;
   use Moose;
   has ContentSha256 => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

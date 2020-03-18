@@ -2,6 +2,7 @@ package Paws::EKS::UpdateLabelsPayload;
   use Moose;
   has AddOrUpdateLabels => (is => 'ro', isa => 'Paws::EKS::LabelsMap', request_name => 'addOrUpdateLabels', traits => ['NameInRequest']);
   has RemoveLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'removeLabels', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

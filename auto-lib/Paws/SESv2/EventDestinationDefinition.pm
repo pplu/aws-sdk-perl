@@ -6,6 +6,7 @@ package Paws::SESv2::EventDestinationDefinition;
   has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PinpointDestination => (is => 'ro', isa => 'Paws::SESv2::PinpointDestination');
   has SnsDestination => (is => 'ro', isa => 'Paws::SESv2::SnsDestination');
+
 1;
 
 ### main pod documentation begin ###

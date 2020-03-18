@@ -1,6 +1,7 @@
 package Paws::Pinpoint::RawEmail;
   use Moose;
   has Data => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

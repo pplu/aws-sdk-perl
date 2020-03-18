@@ -2,6 +2,7 @@ package Paws::S3Control::JobFailure;
   use Moose;
   has FailureCode => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::EMR::HadoopJarStepConfig;
   has Jar => (is => 'ro', isa => 'Str', required => 1);
   has MainClass => (is => 'ro', isa => 'Str');
   has Properties => (is => 'ro', isa => 'ArrayRef[Paws::EMR::KeyValue]');
+
 1;
 
 ### main pod documentation begin ###

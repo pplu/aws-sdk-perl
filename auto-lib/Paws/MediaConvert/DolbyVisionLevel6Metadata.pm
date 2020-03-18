@@ -2,6 +2,7 @@ package Paws::MediaConvert::DolbyVisionLevel6Metadata;
   use Moose;
   has MaxCll => (is => 'ro', isa => 'Int', request_name => 'maxCll', traits => ['NameInRequest']);
   has MaxFall => (is => 'ro', isa => 'Int', request_name => 'maxFall', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

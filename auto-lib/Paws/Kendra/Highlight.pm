@@ -3,6 +3,7 @@ package Paws::Kendra::Highlight;
   has BeginOffset => (is => 'ro', isa => 'Int', required => 1);
   has EndOffset => (is => 'ro', isa => 'Int', required => 1);
   has TopAnswer => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

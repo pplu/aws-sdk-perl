@@ -3,6 +3,7 @@ package Paws::PinpointSMSVoice::PlainTextMessageType;
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Text => (is => 'ro', isa => 'Str');
   has VoiceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

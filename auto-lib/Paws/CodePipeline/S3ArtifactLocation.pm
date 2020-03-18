@@ -2,6 +2,7 @@ package Paws::CodePipeline::S3ArtifactLocation;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
   has ObjectKey => (is => 'ro', isa => 'Str', request_name => 'objectKey', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

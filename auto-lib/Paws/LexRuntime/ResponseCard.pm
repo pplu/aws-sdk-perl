@@ -3,6 +3,7 @@ package Paws::LexRuntime::ResponseCard;
   has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
   has GenericAttachments => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::GenericAttachment]', request_name => 'genericAttachments', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

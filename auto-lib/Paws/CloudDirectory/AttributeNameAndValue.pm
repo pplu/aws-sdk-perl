@@ -2,6 +2,7 @@ package Paws::CloudDirectory::AttributeNameAndValue;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue', required => 1);
+
 1;
 
 ### main pod documentation begin ###

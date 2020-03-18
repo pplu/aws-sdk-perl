@@ -3,6 +3,7 @@ package Paws::CodeDeploy::TriggerConfig;
   has TriggerEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'triggerEvents', traits => ['NameInRequest']);
   has TriggerName => (is => 'ro', isa => 'Str', request_name => 'triggerName', traits => ['NameInRequest']);
   has TriggerTargetArn => (is => 'ro', isa => 'Str', request_name => 'triggerTargetArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

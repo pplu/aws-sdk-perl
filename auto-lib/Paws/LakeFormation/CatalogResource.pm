@@ -1,5 +1,6 @@
 package Paws::LakeFormation::CatalogResource;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IAM::RoleLastUsed;
   use Moose;
   has LastUsedDate => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

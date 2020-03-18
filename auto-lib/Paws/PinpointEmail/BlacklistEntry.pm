@@ -3,6 +3,7 @@ package Paws::PinpointEmail::BlacklistEntry;
   has Description => (is => 'ro', isa => 'Str');
   has ListingTime => (is => 'ro', isa => 'Str');
   has RblName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SecurityHub::Recommendation;
   use Moose;
   has Text => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

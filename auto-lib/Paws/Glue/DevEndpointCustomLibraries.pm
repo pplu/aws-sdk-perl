@@ -2,6 +2,7 @@ package Paws::Glue::DevEndpointCustomLibraries;
   use Moose;
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

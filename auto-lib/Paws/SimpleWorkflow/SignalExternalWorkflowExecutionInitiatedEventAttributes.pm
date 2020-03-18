@@ -6,6 +6,7 @@ package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttri
   has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
   has SignalName => (is => 'ro', isa => 'Str', request_name => 'signalName', traits => ['NameInRequest'], required => 1);
   has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

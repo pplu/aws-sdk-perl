@@ -1,6 +1,7 @@
 package Paws::MediaConvert::ImscDestinationSettings;
   use Moose;
   has StylePassthrough => (is => 'ro', isa => 'Str', request_name => 'stylePassthrough', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

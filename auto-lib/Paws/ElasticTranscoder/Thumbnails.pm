@@ -8,6 +8,7 @@ package Paws::ElasticTranscoder::Thumbnails;
   has PaddingPolicy => (is => 'ro', isa => 'Str');
   has Resolution => (is => 'ro', isa => 'Str');
   has SizingPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

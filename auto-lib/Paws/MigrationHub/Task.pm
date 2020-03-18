@@ -3,6 +3,7 @@ package Paws::MigrationHub::Task;
   has ProgressPercent => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has StatusDetail => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

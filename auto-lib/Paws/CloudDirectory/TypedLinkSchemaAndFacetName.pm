@@ -2,6 +2,7 @@ package Paws::CloudDirectory::TypedLinkSchemaAndFacetName;
   use Moose;
   has SchemaArn => (is => 'ro', isa => 'Str', required => 1);
   has TypedLinkName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

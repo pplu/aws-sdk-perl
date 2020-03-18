@@ -2,6 +2,7 @@ package Paws::LicenseManager::ManagedResourceSummary;
   use Moose;
   has AssociationCount => (is => 'ro', isa => 'Int');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::XRay::FaultRootCauseEntity;
   has Exceptions => (is => 'ro', isa => 'ArrayRef[Paws::XRay::RootCauseException]');
   has Name => (is => 'ro', isa => 'Str');
   has Remote => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

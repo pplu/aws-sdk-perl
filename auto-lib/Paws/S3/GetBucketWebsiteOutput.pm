@@ -4,7 +4,8 @@ package Paws::S3::GetBucketWebsiteOutput;
   has ErrorDocument => (is => 'ro', isa => 'Paws::S3::ErrorDocument');
   has IndexDocument => (is => 'ro', isa => 'Paws::S3::IndexDocument');
   has RedirectAllRequestsTo => (is => 'ro', isa => 'Paws::S3::RedirectAllRequestsTo');
-  has RoutingRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::RoutingRule]');
+  has RoutingRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::RoutingRule]', request_name => 'RoutingRule', traits => ['NameInRequest']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

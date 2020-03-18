@@ -30,6 +30,7 @@ package Paws::CodeBuild::Build;
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

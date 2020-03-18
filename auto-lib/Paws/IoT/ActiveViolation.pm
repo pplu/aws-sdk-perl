@@ -7,6 +7,7 @@ package Paws::IoT::ActiveViolation;
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
   has ViolationId => (is => 'ro', isa => 'Str', request_name => 'violationId', traits => ['NameInRequest']);
   has ViolationStartTime => (is => 'ro', isa => 'Str', request_name => 'violationStartTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

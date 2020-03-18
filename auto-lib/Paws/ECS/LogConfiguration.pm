@@ -3,6 +3,7 @@ package Paws::ECS::LogConfiguration;
   has LogDriver => (is => 'ro', isa => 'Str', request_name => 'logDriver', traits => ['NameInRequest'], required => 1);
   has Options => (is => 'ro', isa => 'Paws::ECS::LogConfigurationOptionsMap', request_name => 'options', traits => ['NameInRequest']);
   has SecretOptions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secretOptions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

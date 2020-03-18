@@ -3,6 +3,7 @@ package Paws::WAF::SizeConstraintSet;
   has Name => (is => 'ro', isa => 'Str');
   has SizeConstraints => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SizeConstraint]', required => 1);
   has SizeConstraintSetId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

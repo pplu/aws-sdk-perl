@@ -2,6 +2,7 @@ package Paws::WAFv2::DefaultAction;
   use Moose;
   has Allow => (is => 'ro', isa => 'Paws::WAFv2::AllowAction');
   has Block => (is => 'ro', isa => 'Paws::WAFv2::BlockAction');
+
 1;
 
 ### main pod documentation begin ###

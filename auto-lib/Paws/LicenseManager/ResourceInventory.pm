@@ -6,6 +6,7 @@ package Paws::LicenseManager::ResourceInventory;
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceOwningAccountId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

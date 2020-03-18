@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchUpdateLinkAttributes;
   use Moose;
   has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::LinkAttributeUpdate]', required => 1);
   has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+
 1;
 
 ### main pod documentation begin ###

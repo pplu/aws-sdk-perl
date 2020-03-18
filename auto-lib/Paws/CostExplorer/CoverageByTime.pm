@@ -3,6 +3,7 @@ package Paws::CostExplorer::CoverageByTime;
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::ReservationCoverageGroup]');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
   has Total => (is => 'ro', isa => 'Paws::CostExplorer::Coverage');
+
 1;
 
 ### main pod documentation begin ###

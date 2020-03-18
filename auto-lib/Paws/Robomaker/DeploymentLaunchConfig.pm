@@ -5,6 +5,7 @@ package Paws::Robomaker::DeploymentLaunchConfig;
   has PackageName => (is => 'ro', isa => 'Str', request_name => 'packageName', traits => ['NameInRequest'], required => 1);
   has PostLaunchFile => (is => 'ro', isa => 'Str', request_name => 'postLaunchFile', traits => ['NameInRequest']);
   has PreLaunchFile => (is => 'ro', isa => 'Str', request_name => 'preLaunchFile', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

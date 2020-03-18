@@ -4,6 +4,7 @@ package Paws::MediaPackageVod::HlsPackage;
   has HlsManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::HlsManifest]', request_name => 'hlsManifests', traits => ['NameInRequest'], required => 1);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
   has UseAudioRenditionGroup => (is => 'ro', isa => 'Bool', request_name => 'useAudioRenditionGroup', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::OpsWorksCM::ServerEvent;
   has LogUrl => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has ServerName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

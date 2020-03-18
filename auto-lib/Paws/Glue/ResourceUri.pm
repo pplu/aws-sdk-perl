@@ -2,6 +2,7 @@ package Paws::Glue::ResourceUri;
   use Moose;
   has ResourceType => (is => 'ro', isa => 'Str');
   has Uri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

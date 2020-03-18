@@ -4,6 +4,7 @@ package Paws::Athena::QueryExecutionStatus;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Str');
   has SubmissionDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

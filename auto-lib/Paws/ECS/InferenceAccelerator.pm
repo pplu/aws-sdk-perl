@@ -2,6 +2,7 @@ package Paws::ECS::InferenceAccelerator;
   use Moose;
   has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest'], required => 1);
   has DeviceType => (is => 'ro', isa => 'Str', request_name => 'deviceType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

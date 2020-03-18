@@ -5,6 +5,7 @@ package Paws::LakeFormation::Resource;
   has DataLocation => (is => 'ro', isa => 'Paws::LakeFormation::DataLocationResource');
   has Table => (is => 'ro', isa => 'Paws::LakeFormation::TableResource');
   has TableWithColumns => (is => 'ro', isa => 'Paws::LakeFormation::TableWithColumnsResource');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Schemas::CreateSchemaInput;
   has Description => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Schemas::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

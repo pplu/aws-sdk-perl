@@ -13,6 +13,7 @@ package Paws::IoT::CertificateDescription;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TransferData => (is => 'ro', isa => 'Paws::IoT::TransferData', request_name => 'transferData', traits => ['NameInRequest']);
   has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

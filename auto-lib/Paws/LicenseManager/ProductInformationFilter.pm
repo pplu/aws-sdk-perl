@@ -3,6 +3,7 @@ package Paws::LicenseManager::ProductInformationFilter;
   has ProductInformationFilterComparator => (is => 'ro', isa => 'Str', required => 1);
   has ProductInformationFilterName => (is => 'ro', isa => 'Str', required => 1);
   has ProductInformationFilterValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

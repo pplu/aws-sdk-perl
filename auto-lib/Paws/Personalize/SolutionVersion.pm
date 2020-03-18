@@ -14,6 +14,7 @@ package Paws::Personalize::SolutionVersion;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TrainingHours => (is => 'ro', isa => 'Num', request_name => 'trainingHours', traits => ['NameInRequest']);
   has TrainingMode => (is => 'ro', isa => 'Str', request_name => 'trainingMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

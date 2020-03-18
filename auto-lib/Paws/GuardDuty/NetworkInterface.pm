@@ -10,6 +10,7 @@ package Paws::GuardDuty::NetworkInterface;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::SecurityGroup]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

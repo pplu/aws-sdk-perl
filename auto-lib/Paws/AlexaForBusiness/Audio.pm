@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::Audio;
   use Moose;
   has Locale => (is => 'ro', isa => 'Str', required => 1);
   has Location => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

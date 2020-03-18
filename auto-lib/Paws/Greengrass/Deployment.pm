@@ -5,6 +5,7 @@ package Paws::Greengrass::Deployment;
   has DeploymentId => (is => 'ro', isa => 'Str');
   has DeploymentType => (is => 'ro', isa => 'Str');
   has GroupArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

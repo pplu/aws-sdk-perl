@@ -6,6 +6,7 @@ package Paws::IoT::ProvisioningTemplateSummary;
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has TemplateArn => (is => 'ro', isa => 'Str', request_name => 'templateArn', traits => ['NameInRequest']);
   has TemplateName => (is => 'ro', isa => 'Str', request_name => 'templateName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

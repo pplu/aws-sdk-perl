@@ -5,6 +5,7 @@ package Paws::AppMesh::VirtualNodeData;
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has VirtualNodeName => (is => 'ro', isa => 'Str', request_name => 'virtualNodeName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

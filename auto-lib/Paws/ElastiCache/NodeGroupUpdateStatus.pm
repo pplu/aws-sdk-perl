@@ -2,6 +2,7 @@ package Paws::ElastiCache::NodeGroupUpdateStatus;
   use Moose;
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NodeGroupMemberUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMemberUpdateStatus]', request_name => 'NodeGroupMemberUpdateStatus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

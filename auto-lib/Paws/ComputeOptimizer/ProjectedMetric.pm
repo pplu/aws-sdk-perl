@@ -3,6 +3,7 @@ package Paws::ComputeOptimizer::ProjectedMetric;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Timestamps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'timestamps', traits => ['NameInRequest']);
   has Values => (is => 'ro', isa => 'ArrayRef[Num]', request_name => 'values', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::DS::LDAPSSettingInfo;
   has LastUpdatedDateTime => (is => 'ro', isa => 'Str');
   has LDAPSStatus => (is => 'ro', isa => 'Str');
   has LDAPSStatusReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

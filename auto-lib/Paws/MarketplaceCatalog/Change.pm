@@ -3,6 +3,7 @@ package Paws::MarketplaceCatalog::Change;
   has ChangeType => (is => 'ro', isa => 'Str', required => 1);
   has Details => (is => 'ro', isa => 'Str', required => 1);
   has Entity => (is => 'ro', isa => 'Paws::MarketplaceCatalog::Entity', required => 1);
+
 1;
 
 ### main pod documentation begin ###

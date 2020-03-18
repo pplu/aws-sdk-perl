@@ -4,6 +4,7 @@ package Paws::CloudFormation::Output;
   has ExportName => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

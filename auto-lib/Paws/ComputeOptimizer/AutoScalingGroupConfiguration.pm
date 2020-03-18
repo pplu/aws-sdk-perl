@@ -4,6 +4,7 @@ package Paws::ComputeOptimizer::AutoScalingGroupConfiguration;
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has MaxSize => (is => 'ro', isa => 'Int', request_name => 'maxSize', traits => ['NameInRequest']);
   has MinSize => (is => 'ro', isa => 'Int', request_name => 'minSize', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -19,6 +19,7 @@ package Paws::SecurityHub::ResourceDetails;
   has AwsWafWebAcl => (is => 'ro', isa => 'Paws::SecurityHub::AwsWafWebAclDetails');
   has Container => (is => 'ro', isa => 'Paws::SecurityHub::ContainerDetails');
   has Other => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
+
 1;
 
 ### main pod documentation begin ###

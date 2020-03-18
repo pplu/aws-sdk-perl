@@ -2,6 +2,7 @@ package Paws::MediaLive::MultiplexProgramSummary;
   use Moose;
   has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
   has ProgramName => (is => 'ro', isa => 'Str', request_name => 'programName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

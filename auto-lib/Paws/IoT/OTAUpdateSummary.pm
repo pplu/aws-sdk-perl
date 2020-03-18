@@ -3,6 +3,7 @@ package Paws::IoT::OTAUpdateSummary;
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has OtaUpdateArn => (is => 'ro', isa => 'Str', request_name => 'otaUpdateArn', traits => ['NameInRequest']);
   has OtaUpdateId => (is => 'ro', isa => 'Str', request_name => 'otaUpdateId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

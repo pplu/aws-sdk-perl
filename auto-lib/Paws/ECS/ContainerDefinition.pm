@@ -38,6 +38,7 @@ package Paws::ECS::ContainerDefinition;
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
   has VolumesFrom => (is => 'ro', isa => 'ArrayRef[Paws::ECS::VolumeFrom]', request_name => 'volumesFrom', traits => ['NameInRequest']);
   has WorkingDirectory => (is => 'ro', isa => 'Str', request_name => 'workingDirectory', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

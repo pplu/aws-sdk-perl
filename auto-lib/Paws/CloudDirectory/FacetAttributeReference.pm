@@ -2,6 +2,7 @@ package Paws::CloudDirectory::FacetAttributeReference;
   use Moose;
   has TargetAttributeName => (is => 'ro', isa => 'Str', required => 1);
   has TargetFacetName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

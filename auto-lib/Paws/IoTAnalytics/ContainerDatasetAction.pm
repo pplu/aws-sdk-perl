@@ -4,6 +4,7 @@ package Paws::IoTAnalytics::ContainerDatasetAction;
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
   has ResourceConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::ResourceConfiguration', request_name => 'resourceConfiguration', traits => ['NameInRequest'], required => 1);
   has Variables => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Variable]', request_name => 'variables', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

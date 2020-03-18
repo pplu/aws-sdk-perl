@@ -1,6 +1,7 @@
 package Paws::Config::ConfigSnapshotDeliveryProperties;
   use Moose;
   has DeliveryFrequency => (is => 'ro', isa => 'Str', request_name => 'deliveryFrequency', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

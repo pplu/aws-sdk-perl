@@ -6,6 +6,7 @@ package Paws::DirectConnect::DirectConnectGateway;
   has DirectConnectGatewayState => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayState', traits => ['NameInRequest']);
   has OwnerAccount => (is => 'ro', isa => 'Str', request_name => 'ownerAccount', traits => ['NameInRequest']);
   has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Lightsail::LogEvent;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

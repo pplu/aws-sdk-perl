@@ -2,6 +2,7 @@ package Paws::ManagedBlockchain::NodeFabricAttributes;
   use Moose;
   has PeerEndpoint => (is => 'ro', isa => 'Str');
   has PeerEventEndpoint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

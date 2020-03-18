@@ -2,6 +2,7 @@ package Paws::ImageBuilder::S3Logs;
   use Moose;
   has S3BucketName => (is => 'ro', isa => 'Str', request_name => 's3BucketName', traits => ['NameInRequest']);
   has S3KeyPrefix => (is => 'ro', isa => 'Str', request_name => 's3KeyPrefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

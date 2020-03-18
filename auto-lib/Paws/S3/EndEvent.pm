@@ -1,5 +1,6 @@
 package Paws::S3::EndEvent;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Batch::NodeOverrides;
   use Moose;
   has NodePropertyOverrides => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NodePropertyOverride]', request_name => 'nodePropertyOverrides', traits => ['NameInRequest']);
   has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

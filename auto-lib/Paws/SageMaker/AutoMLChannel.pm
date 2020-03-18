@@ -3,6 +3,7 @@ package Paws::SageMaker::AutoMLChannel;
   has CompressionType => (is => 'ro', isa => 'Str');
   has DataSource => (is => 'ro', isa => 'Paws::SageMaker::AutoMLDataSource', required => 1);
   has TargetAttributeName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

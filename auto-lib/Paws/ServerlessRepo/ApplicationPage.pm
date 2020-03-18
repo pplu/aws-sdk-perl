@@ -2,6 +2,7 @@ package Paws::ServerlessRepo::ApplicationPage;
   use Moose;
   has Applications => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationSummary]', request_name => 'applications', traits => ['NameInRequest'], required => 1);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

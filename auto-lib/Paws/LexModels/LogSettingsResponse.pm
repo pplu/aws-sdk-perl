@@ -5,6 +5,7 @@ package Paws::LexModels::LogSettingsResponse;
   has LogType => (is => 'ro', isa => 'Str', request_name => 'logType', traits => ['NameInRequest']);
   has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest']);
   has ResourcePrefix => (is => 'ro', isa => 'Str', request_name => 'resourcePrefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

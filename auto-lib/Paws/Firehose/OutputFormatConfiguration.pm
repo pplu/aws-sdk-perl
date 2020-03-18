@@ -1,6 +1,7 @@
 package Paws::Firehose::OutputFormatConfiguration;
   use Moose;
   has Serializer => (is => 'ro', isa => 'Paws::Firehose::Serializer');
+
 1;
 
 ### main pod documentation begin ###

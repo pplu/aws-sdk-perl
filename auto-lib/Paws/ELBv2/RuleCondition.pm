@@ -8,6 +8,7 @@ package Paws::ELBv2::RuleCondition;
   has QueryStringConfig => (is => 'ro', isa => 'Paws::ELBv2::QueryStringConditionConfig');
   has SourceIpConfig => (is => 'ro', isa => 'Paws::ELBv2::SourceIpConditionConfig');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

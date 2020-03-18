@@ -10,6 +10,7 @@ package Paws::SSM::Activation;
   has RegistrationLimit => (is => 'ro', isa => 'Int');
   has RegistrationsCount => (is => 'ro', isa => 'Int');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+
 1;
 
 ### main pod documentation begin ###

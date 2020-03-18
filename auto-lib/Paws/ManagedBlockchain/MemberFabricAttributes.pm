@@ -2,6 +2,7 @@ package Paws::ManagedBlockchain::MemberFabricAttributes;
   use Moose;
   has AdminUsername => (is => 'ro', isa => 'Str');
   has CaEndpoint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

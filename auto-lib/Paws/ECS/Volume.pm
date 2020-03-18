@@ -4,6 +4,7 @@ package Paws::ECS::Volume;
   has EfsVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::EFSVolumeConfiguration', request_name => 'efsVolumeConfiguration', traits => ['NameInRequest']);
   has Host => (is => 'ro', isa => 'Paws::ECS::HostVolumeProperties', request_name => 'host', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

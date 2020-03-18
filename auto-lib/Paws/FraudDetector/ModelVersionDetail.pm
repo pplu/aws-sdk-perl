@@ -12,6 +12,7 @@ package Paws::FraudDetector::ModelVersionDetail;
   has TrainingDataSource => (is => 'ro', isa => 'Paws::FraudDetector::TrainingDataSource', request_name => 'trainingDataSource', traits => ['NameInRequest']);
   has TrainingMetrics => (is => 'ro', isa => 'Paws::FraudDetector::MetricsMap', request_name => 'trainingMetrics', traits => ['NameInRequest']);
   has ValidationMetrics => (is => 'ro', isa => 'Paws::FraudDetector::MetricsMap', request_name => 'validationMetrics', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

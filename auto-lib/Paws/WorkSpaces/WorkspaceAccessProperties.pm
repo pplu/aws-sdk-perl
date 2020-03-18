@@ -7,6 +7,7 @@ package Paws::WorkSpaces::WorkspaceAccessProperties;
   has DeviceTypeWeb => (is => 'ro', isa => 'Str');
   has DeviceTypeWindows => (is => 'ro', isa => 'Str');
   has DeviceTypeZeroClient => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

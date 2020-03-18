@@ -7,6 +7,7 @@ package Paws::CodeCommit::CommentsForComparedCommit;
   has Comments => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Comment]', request_name => 'comments', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::CodeCommit::Location', request_name => 'location', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

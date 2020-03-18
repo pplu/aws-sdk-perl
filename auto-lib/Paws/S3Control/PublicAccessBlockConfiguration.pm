@@ -1,9 +1,10 @@
 package Paws::S3Control::PublicAccessBlockConfiguration;
   use Moose;
-  has BlockPublicAcls => (is => 'ro', isa => 'Bool', request_name => 'BlockPublicAcls', traits => ['NameInRequest']);
-  has BlockPublicPolicy => (is => 'ro', isa => 'Bool', request_name => 'BlockPublicPolicy', traits => ['NameInRequest']);
-  has IgnorePublicAcls => (is => 'ro', isa => 'Bool', request_name => 'IgnorePublicAcls', traits => ['NameInRequest']);
-  has RestrictPublicBuckets => (is => 'ro', isa => 'Bool', request_name => 'RestrictPublicBuckets', traits => ['NameInRequest']);
+  has BlockPublicAcls => (is => 'ro', isa => 'Bool');
+  has BlockPublicPolicy => (is => 'ro', isa => 'Bool');
+  has IgnorePublicAcls => (is => 'ro', isa => 'Bool');
+  has RestrictPublicBuckets => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

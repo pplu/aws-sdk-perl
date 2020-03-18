@@ -4,6 +4,7 @@ package Paws::AppSync::UserPoolConfig;
   has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
   has DefaultAction => (is => 'ro', isa => 'Str', request_name => 'defaultAction', traits => ['NameInRequest'], required => 1);
   has UserPoolId => (is => 'ro', isa => 'Str', request_name => 'userPoolId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

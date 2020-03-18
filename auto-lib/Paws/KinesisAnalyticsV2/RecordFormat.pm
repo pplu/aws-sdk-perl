@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::RecordFormat;
   use Moose;
   has MappingParameters => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::MappingParameters');
   has RecordFormatType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

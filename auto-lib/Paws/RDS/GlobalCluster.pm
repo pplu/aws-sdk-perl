@@ -10,6 +10,7 @@ package Paws::RDS::GlobalCluster;
   has GlobalClusterResourceId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

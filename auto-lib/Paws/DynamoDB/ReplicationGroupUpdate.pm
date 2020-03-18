@@ -3,6 +3,7 @@ package Paws::DynamoDB::ReplicationGroupUpdate;
   has Create => (is => 'ro', isa => 'Paws::DynamoDB::CreateReplicationGroupMemberAction');
   has Delete => (is => 'ro', isa => 'Paws::DynamoDB::DeleteReplicationGroupMemberAction');
   has Update => (is => 'ro', isa => 'Paws::DynamoDB::UpdateReplicationGroupMemberAction');
+
 1;
 
 ### main pod documentation begin ###

@@ -8,7 +8,7 @@ package Paws::Pinpoint::PhoneNumberValidate;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PhoneNumberValidate');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/phone/number/validate');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::NumberValidateResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::PhoneNumberValidateResponse');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $NumberValidateResponse = $pinpoint->PhoneNumberValidate(
+    my $PhoneNumberValidateResponse = $pinpoint->PhoneNumberValidate(
       NumberValidateRequest => {
         IsoCountryCode => 'My__string',    # OPTIONAL
         PhoneNumber    => 'My__string',    # OPTIONAL
@@ -37,25 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Carrier = $NumberValidateResponse->Carrier;
-    my $City    = $NumberValidateResponse->City;
-    my $CleansedPhoneNumberE164 =
-      $NumberValidateResponse->CleansedPhoneNumberE164;
-    my $CleansedPhoneNumberNational =
-      $NumberValidateResponse->CleansedPhoneNumberNational;
-    my $Country            = $NumberValidateResponse->Country;
-    my $CountryCodeIso2    = $NumberValidateResponse->CountryCodeIso2;
-    my $CountryCodeNumeric = $NumberValidateResponse->CountryCodeNumeric;
-    my $County             = $NumberValidateResponse->County;
-    my $OriginalCountryCodeIso2 =
-      $NumberValidateResponse->OriginalCountryCodeIso2;
-    my $OriginalPhoneNumber = $NumberValidateResponse->OriginalPhoneNumber;
-    my $PhoneType           = $NumberValidateResponse->PhoneType;
-    my $PhoneTypeCode       = $NumberValidateResponse->PhoneTypeCode;
-    my $Timezone            = $NumberValidateResponse->Timezone;
-    my $ZipCode             = $NumberValidateResponse->ZipCode;
+    my $NumberValidateResponse =
+      $PhoneNumberValidateResponse->NumberValidateResponse;
 
-    # Returns a L<Paws::Pinpoint::NumberValidateResponse> object.
+    # Returns a L<Paws::Pinpoint::PhoneNumberValidateResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/PhoneNumberValidate>

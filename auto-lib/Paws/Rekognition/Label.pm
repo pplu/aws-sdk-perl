@@ -4,6 +4,7 @@ package Paws::Rekognition::Label;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Instance]');
   has Name => (is => 'ro', isa => 'Str');
   has Parents => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Parent]');
+
 1;
 
 ### main pod documentation begin ###

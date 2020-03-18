@@ -7,6 +7,7 @@ package Paws::KinesisVideo::ChannelInfo;
   has CreationTime => (is => 'ro', isa => 'Str');
   has SingleMasterConfiguration => (is => 'ro', isa => 'Paws::KinesisVideo::SingleMasterConfiguration');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

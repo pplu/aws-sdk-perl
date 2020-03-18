@@ -13,6 +13,7 @@ package Paws::ServerlessRepo::Application;
   has SpdxLicenseId => (is => 'ro', isa => 'Str', request_name => 'spdxLicenseId', traits => ['NameInRequest']);
   has VerifiedAuthorUrl => (is => 'ro', isa => 'Str', request_name => 'verifiedAuthorUrl', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Paws::ServerlessRepo::Version', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

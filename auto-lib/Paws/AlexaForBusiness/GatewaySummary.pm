@@ -5,6 +5,7 @@ package Paws::AlexaForBusiness::GatewaySummary;
   has GatewayGroupArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SoftwareVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

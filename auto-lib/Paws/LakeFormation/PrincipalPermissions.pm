@@ -2,6 +2,7 @@ package Paws::LakeFormation::PrincipalPermissions;
   use Moose;
   has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal');
+
 1;
 
 ### main pod documentation begin ###

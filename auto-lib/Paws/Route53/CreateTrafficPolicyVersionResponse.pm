@@ -1,8 +1,9 @@
 
 package Paws::Route53::CreateTrafficPolicyVersionResponse;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location', required => 1);
+  has Location => (is => 'ro', isa => 'Str', header_name => 'Location', traits => ['ParamInHeader'], required => 1);
   has TrafficPolicy => (is => 'ro', isa => 'Paws::Route53::TrafficPolicy', required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

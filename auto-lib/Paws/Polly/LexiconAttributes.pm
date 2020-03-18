@@ -6,6 +6,7 @@ package Paws::Polly::LexiconAttributes;
   has LexemesCount => (is => 'ro', isa => 'Int');
   has LexiconArn => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

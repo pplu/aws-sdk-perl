@@ -1,6 +1,7 @@
 package Paws::Quicksight::CreateColumnsOperation;
   use Moose;
   has Columns => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::CalculatedColumn]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::ES::OptionStatus;
   has State => (is => 'ro', isa => 'Str', required => 1);
   has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

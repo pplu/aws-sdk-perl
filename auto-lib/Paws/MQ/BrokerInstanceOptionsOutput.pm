@@ -3,6 +3,7 @@ package Paws::MQ::BrokerInstanceOptionsOutput;
   has BrokerInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::BrokerInstanceOption]', request_name => 'brokerInstanceOptions', traits => ['NameInRequest']);
   has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

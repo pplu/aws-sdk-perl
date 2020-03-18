@@ -3,6 +3,7 @@ package Paws::Transcribe::VocabularyFilterInfo;
   has LanguageCode => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has VocabularyFilterName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

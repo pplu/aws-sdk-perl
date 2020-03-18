@@ -4,6 +4,7 @@ package Paws::Translate::TextTranslationJobFilter;
   has JobStatus => (is => 'ro', isa => 'Str');
   has SubmittedAfterTime => (is => 'ro', isa => 'Str');
   has SubmittedBeforeTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

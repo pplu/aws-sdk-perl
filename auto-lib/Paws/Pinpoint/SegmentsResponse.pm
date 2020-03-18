@@ -2,6 +2,7 @@ package Paws::Pinpoint::SegmentsResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentResponse]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

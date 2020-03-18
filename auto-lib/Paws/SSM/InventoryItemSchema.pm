@@ -4,6 +4,7 @@ package Paws::SSM::InventoryItemSchema;
   has DisplayName => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

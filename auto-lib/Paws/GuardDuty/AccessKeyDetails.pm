@@ -4,6 +4,7 @@ package Paws::GuardDuty::AccessKeyDetails;
   has PrincipalId => (is => 'ro', isa => 'Str', request_name => 'principalId', traits => ['NameInRequest']);
   has UserName => (is => 'ro', isa => 'Str', request_name => 'userName', traits => ['NameInRequest']);
   has UserType => (is => 'ro', isa => 'Str', request_name => 'userType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

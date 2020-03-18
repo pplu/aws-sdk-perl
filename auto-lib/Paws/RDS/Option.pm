@@ -9,6 +9,7 @@ package Paws::RDS::Option;
   has Persistent => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

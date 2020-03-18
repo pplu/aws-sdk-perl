@@ -4,6 +4,7 @@ package Paws::Glue::GlueTable;
   has ConnectionName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

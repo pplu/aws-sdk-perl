@@ -2,6 +2,7 @@ package Paws::Firehose::DeliveryStreamEncryptionConfigurationInput;
   use Moose;
   has KeyARN => (is => 'ro', isa => 'Str');
   has KeyType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

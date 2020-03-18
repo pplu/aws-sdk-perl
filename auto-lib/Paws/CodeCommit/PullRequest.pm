@@ -11,6 +11,7 @@ package Paws::CodeCommit::PullRequest;
   has PullRequestTargets => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::PullRequestTarget]', request_name => 'pullRequestTargets', traits => ['NameInRequest']);
   has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest']);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

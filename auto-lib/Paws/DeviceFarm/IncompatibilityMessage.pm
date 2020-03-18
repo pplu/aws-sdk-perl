@@ -2,6 +2,7 @@ package Paws::DeviceFarm::IncompatibilityMessage;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

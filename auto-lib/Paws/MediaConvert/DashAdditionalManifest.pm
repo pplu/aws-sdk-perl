@@ -2,6 +2,7 @@ package Paws::MediaConvert::DashAdditionalManifest;
   use Moose;
   has ManifestNameModifier => (is => 'ro', isa => 'Str', request_name => 'manifestNameModifier', traits => ['NameInRequest']);
   has SelectedOutputs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'selectedOutputs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

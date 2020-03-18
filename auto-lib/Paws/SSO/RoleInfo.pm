@@ -2,6 +2,7 @@ package Paws::SSO::RoleInfo;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
   has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

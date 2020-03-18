@@ -3,6 +3,7 @@ package Paws::CloudSearch::AnalysisScheme;
   has AnalysisOptions => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisOptions');
   has AnalysisSchemeLanguage => (is => 'ro', isa => 'Str', required => 1);
   has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

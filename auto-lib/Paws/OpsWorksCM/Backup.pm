@@ -24,6 +24,7 @@ package Paws::OpsWorksCM::Backup;
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ToolsVersion => (is => 'ro', isa => 'Str');
   has UserArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

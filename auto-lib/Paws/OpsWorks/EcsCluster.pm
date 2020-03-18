@@ -4,6 +4,7 @@ package Paws::OpsWorks::EcsCluster;
   has EcsClusterName => (is => 'ro', isa => 'Str');
   has RegisteredAt => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

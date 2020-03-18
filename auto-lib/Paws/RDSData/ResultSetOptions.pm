@@ -1,6 +1,7 @@
 package Paws::RDSData::ResultSetOptions;
   use Moose;
   has DecimalReturnType => (is => 'ro', isa => 'Str', request_name => 'decimalReturnType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

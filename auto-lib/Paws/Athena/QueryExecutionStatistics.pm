@@ -7,6 +7,7 @@ package Paws::Athena::QueryExecutionStatistics;
   has QueryQueueTimeInMillis => (is => 'ro', isa => 'Int');
   has ServiceProcessingTimeInMillis => (is => 'ro', isa => 'Int');
   has TotalExecutionTimeInMillis => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

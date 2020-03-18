@@ -3,6 +3,7 @@ package Paws::IoT::AuditMitigationActionsTaskTarget;
   has AuditCheckToReasonCodeFilter => (is => 'ro', isa => 'Paws::IoT::AuditCheckToReasonCodeFilter', request_name => 'auditCheckToReasonCodeFilter', traits => ['NameInRequest']);
   has AuditTaskId => (is => 'ro', isa => 'Str', request_name => 'auditTaskId', traits => ['NameInRequest']);
   has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'findingIds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

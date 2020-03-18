@@ -2,6 +2,7 @@ package Paws::SSM::InstanceAggregatedAssociationOverview;
   use Moose;
   has DetailedStatus => (is => 'ro', isa => 'Str');
   has InstanceAssociationStatusAggregatedCount => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationStatusAggregatedCount');
+
 1;
 
 ### main pod documentation begin ###

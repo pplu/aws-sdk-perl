@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::Content;
   has AudioList => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Audio]');
   has SsmlList => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Ssml]');
   has TextList => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Text]');
+
 1;
 
 ### main pod documentation begin ###

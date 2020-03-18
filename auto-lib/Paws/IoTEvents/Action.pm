@@ -10,6 +10,7 @@ package Paws::IoTEvents::Action;
   has SetVariable => (is => 'ro', isa => 'Paws::IoTEvents::SetVariableAction', request_name => 'setVariable', traits => ['NameInRequest']);
   has Sns => (is => 'ro', isa => 'Paws::IoTEvents::SNSTopicPublishAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoTEvents::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::LicenseManager::AutomatedDiscoveryInformation;
   use Moose;
   has LastRunTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

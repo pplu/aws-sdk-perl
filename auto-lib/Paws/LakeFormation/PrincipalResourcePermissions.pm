@@ -4,6 +4,7 @@ package Paws::LakeFormation::PrincipalResourcePermissions;
   has PermissionsWithGrantOption => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal');
   has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::SSM::ServiceSetting;
   has SettingId => (is => 'ro', isa => 'Str');
   has SettingValue => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

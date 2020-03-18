@@ -2,6 +2,7 @@ package Paws::MediaPackage::HarvestJobList;
   use Moose;
   has HarvestJobs => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::HarvestJob]', request_name => 'harvestJobs', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::DataExchange::ExportAssetsToS3RequestDetails;
   has AssetDestinations => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetDestinationEntry]', required => 1);
   has DataSetId => (is => 'ro', isa => 'Str', required => 1);
   has RevisionId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::IoT::ValidationError;
   use Moose;
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

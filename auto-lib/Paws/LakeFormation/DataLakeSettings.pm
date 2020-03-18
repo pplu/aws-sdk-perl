@@ -3,6 +3,7 @@ package Paws::LakeFormation::DataLakeSettings;
   has CreateDatabaseDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::PrincipalPermissions]');
   has CreateTableDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::PrincipalPermissions]');
   has DataLakeAdmins => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::DataLakePrincipal]');
+
 1;
 
 ### main pod documentation begin ###

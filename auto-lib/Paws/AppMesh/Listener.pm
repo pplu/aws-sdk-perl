@@ -2,6 +2,7 @@ package Paws::AppMesh::Listener;
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Paws::AppMesh::HealthCheckPolicy', request_name => 'healthCheck', traits => ['NameInRequest']);
   has PortMapping => (is => 'ro', isa => 'Paws::AppMesh::PortMapping', request_name => 'portMapping', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

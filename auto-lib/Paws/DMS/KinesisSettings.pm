@@ -3,6 +3,7 @@ package Paws::DMS::KinesisSettings;
   has MessageFormat => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has StreamArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

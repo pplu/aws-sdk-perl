@@ -2,6 +2,7 @@ package Paws::RDSData::SqlStatementResult;
   use Moose;
   has NumberOfRecordsUpdated => (is => 'ro', isa => 'Int', request_name => 'numberOfRecordsUpdated', traits => ['NameInRequest']);
   has ResultFrame => (is => 'ro', isa => 'Paws::RDSData::ResultFrame', request_name => 'resultFrame', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ApplicationAutoScaling::Alarm;
   use Moose;
   has AlarmARN => (is => 'ro', isa => 'Str', required => 1);
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

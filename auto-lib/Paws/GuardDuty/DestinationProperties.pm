@@ -2,6 +2,7 @@ package Paws::GuardDuty::DestinationProperties;
   use Moose;
   has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest']);
   has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

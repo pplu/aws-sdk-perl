@@ -6,6 +6,7 @@ package Paws::MediaLive::RtmpGroupSettings;
   has CaptionData => (is => 'ro', isa => 'Str', request_name => 'captionData', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

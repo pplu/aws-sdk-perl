@@ -2,6 +2,7 @@ package Paws::MediaConvert::Id3Insertion;
   use Moose;
   has Id3 => (is => 'ro', isa => 'Str', request_name => 'id3', traits => ['NameInRequest']);
   has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

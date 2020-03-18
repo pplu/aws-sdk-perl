@@ -2,6 +2,7 @@ package Paws::IoT::HttpContext;
   use Moose;
   has Headers => (is => 'ro', isa => 'Paws::IoT::HttpHeaders', request_name => 'headers', traits => ['NameInRequest']);
   has QueryString => (is => 'ro', isa => 'Str', request_name => 'queryString', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

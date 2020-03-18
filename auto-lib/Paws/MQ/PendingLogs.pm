@@ -2,6 +2,7 @@ package Paws::MQ::PendingLogs;
   use Moose;
   has Audit => (is => 'ro', isa => 'Bool', request_name => 'audit', traits => ['NameInRequest']);
   has General => (is => 'ro', isa => 'Bool', request_name => 'general', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

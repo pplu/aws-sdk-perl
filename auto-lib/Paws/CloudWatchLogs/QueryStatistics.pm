@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::QueryStatistics;
   has BytesScanned => (is => 'ro', isa => 'Num', request_name => 'bytesScanned', traits => ['NameInRequest']);
   has RecordsMatched => (is => 'ro', isa => 'Num', request_name => 'recordsMatched', traits => ['NameInRequest']);
   has RecordsScanned => (is => 'ro', isa => 'Num', request_name => 'recordsScanned', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

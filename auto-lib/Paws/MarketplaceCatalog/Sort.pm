@@ -2,6 +2,7 @@ package Paws::MarketplaceCatalog::Sort;
   use Moose;
   has SortBy => (is => 'ro', isa => 'Str');
   has SortOrder => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

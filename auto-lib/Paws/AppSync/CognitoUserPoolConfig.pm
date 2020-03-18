@@ -3,6 +3,7 @@ package Paws::AppSync::CognitoUserPoolConfig;
   has AppIdClientRegex => (is => 'ro', isa => 'Str', request_name => 'appIdClientRegex', traits => ['NameInRequest']);
   has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
   has UserPoolId => (is => 'ro', isa => 'Str', request_name => 'userPoolId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

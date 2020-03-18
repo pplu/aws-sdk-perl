@@ -2,6 +2,7 @@ package Paws::Glue::ImportLabelsTaskRunProperties;
   use Moose;
   has InputS3Path => (is => 'ro', isa => 'Str');
   has Replace => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

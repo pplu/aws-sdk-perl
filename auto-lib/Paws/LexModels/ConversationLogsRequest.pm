@@ -2,6 +2,7 @@ package Paws::LexModels::ConversationLogsRequest;
   use Moose;
   has IamRoleArn => (is => 'ro', isa => 'Str', request_name => 'iamRoleArn', traits => ['NameInRequest'], required => 1);
   has LogSettings => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::LogSettingsRequest]', request_name => 'logSettings', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

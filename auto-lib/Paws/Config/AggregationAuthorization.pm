@@ -4,6 +4,7 @@ package Paws::Config::AggregationAuthorization;
   has AuthorizedAccountId => (is => 'ro', isa => 'Str');
   has AuthorizedAwsRegion => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

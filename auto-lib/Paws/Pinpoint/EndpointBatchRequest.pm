@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EndpointBatchRequest;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointBatchItem]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

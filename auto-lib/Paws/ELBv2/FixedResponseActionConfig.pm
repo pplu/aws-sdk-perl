@@ -3,6 +3,7 @@ package Paws::ELBv2::FixedResponseActionConfig;
   has ContentType => (is => 'ro', isa => 'Str');
   has MessageBody => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

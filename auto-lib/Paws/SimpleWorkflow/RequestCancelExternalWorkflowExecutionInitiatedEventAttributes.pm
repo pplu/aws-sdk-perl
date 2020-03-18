@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEve
   has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
   has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
   has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

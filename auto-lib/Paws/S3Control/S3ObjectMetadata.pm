@@ -11,6 +11,7 @@ package Paws::S3Control::S3ObjectMetadata;
   has RequesterCharged => (is => 'ro', isa => 'Bool');
   has SSEAlgorithm => (is => 'ro', isa => 'Str');
   has UserMetadata => (is => 'ro', isa => 'Paws::S3Control::S3UserMetadata');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::EMR::InstanceTimeline;
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::IoT::AuthorizerDescription;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TokenKeyName => (is => 'ro', isa => 'Str', request_name => 'tokenKeyName', traits => ['NameInRequest']);
   has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', request_name => 'tokenSigningPublicKeys', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

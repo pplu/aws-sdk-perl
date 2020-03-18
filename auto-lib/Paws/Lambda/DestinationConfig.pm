@@ -2,6 +2,7 @@ package Paws::Lambda::DestinationConfig;
   use Moose;
   has OnFailure => (is => 'ro', isa => 'Paws::Lambda::OnFailure');
   has OnSuccess => (is => 'ro', isa => 'Paws::Lambda::OnSuccess');
+
 1;
 
 ### main pod documentation begin ###

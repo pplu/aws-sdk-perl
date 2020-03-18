@@ -3,6 +3,7 @@ package Paws::IoT::DomainConfigurationSummary;
   has DomainConfigurationArn => (is => 'ro', isa => 'Str', request_name => 'domainConfigurationArn', traits => ['NameInRequest']);
   has DomainConfigurationName => (is => 'ro', isa => 'Str', request_name => 'domainConfigurationName', traits => ['NameInRequest']);
   has ServiceType => (is => 'ro', isa => 'Str', request_name => 'serviceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::IoTEvents::SNSTopicPublishAction;
   use Moose;
   has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Chime::Invite;
   has EmailStatus => (is => 'ro', isa => 'Str');
   has InviteId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

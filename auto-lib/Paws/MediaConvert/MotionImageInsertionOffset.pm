@@ -2,6 +2,7 @@ package Paws::MediaConvert::MotionImageInsertionOffset;
   use Moose;
   has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest']);
   has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

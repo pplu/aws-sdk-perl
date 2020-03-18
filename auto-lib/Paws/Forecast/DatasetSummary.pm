@@ -6,6 +6,7 @@ package Paws::Forecast::DatasetSummary;
   has DatasetType => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has LastModificationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

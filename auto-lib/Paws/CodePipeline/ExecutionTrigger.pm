@@ -2,6 +2,7 @@ package Paws::CodePipeline::ExecutionTrigger;
   use Moose;
   has TriggerDetail => (is => 'ro', isa => 'Str', request_name => 'triggerDetail', traits => ['NameInRequest']);
   has TriggerType => (is => 'ro', isa => 'Str', request_name => 'triggerType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

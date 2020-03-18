@@ -29,6 +29,7 @@ package Paws::ECS::Service;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
   has TaskSets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskSet]', request_name => 'taskSets', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

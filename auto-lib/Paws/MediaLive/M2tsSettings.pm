@@ -47,6 +47,7 @@ package Paws::MediaLive::M2tsSettings;
   has TimedMetadataPid => (is => 'ro', isa => 'Str', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
   has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest']);
   has VideoPid => (is => 'ro', isa => 'Str', request_name => 'videoPid', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodeBuild::ReportExportConfig;
   use Moose;
   has ExportConfigType => (is => 'ro', isa => 'Str', request_name => 'exportConfigType', traits => ['NameInRequest']);
   has S3Destination => (is => 'ro', isa => 'Paws::CodeBuild::S3ReportExportConfig', request_name => 's3Destination', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

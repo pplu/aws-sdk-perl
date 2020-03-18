@@ -1,6 +1,7 @@
 package Paws::Chime::LoggingConfiguration;
   use Moose;
   has EnableSIPLogs => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

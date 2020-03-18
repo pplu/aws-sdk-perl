@@ -7,6 +7,7 @@ package Paws::AlexaForBusiness::NetworkProfileData;
   has NetworkProfileName => (is => 'ro', isa => 'Str');
   has SecurityType => (is => 'ro', isa => 'Str');
   has Ssid => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::AppMesh::HealthCheckPolicy;
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
   has TimeoutMillis => (is => 'ro', isa => 'Int', request_name => 'timeoutMillis', traits => ['NameInRequest'], required => 1);
   has UnhealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'unhealthyThreshold', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

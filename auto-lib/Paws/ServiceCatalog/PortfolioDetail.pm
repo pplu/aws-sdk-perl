@@ -6,6 +6,7 @@ package Paws::ServiceCatalog::PortfolioDetail;
   has DisplayName => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has ProviderName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

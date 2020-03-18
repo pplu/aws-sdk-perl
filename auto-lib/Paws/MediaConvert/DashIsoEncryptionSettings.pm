@@ -2,6 +2,7 @@ package Paws::MediaConvert::DashIsoEncryptionSettings;
   use Moose;
   has PlaybackDeviceCompatibility => (is => 'ro', isa => 'Str', request_name => 'playbackDeviceCompatibility', traits => ['NameInRequest']);
   has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

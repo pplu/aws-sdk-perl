@@ -2,6 +2,7 @@ package Paws::RDS::ValidDBInstanceModificationsMessage;
   use Moose;
   has Storage => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ValidStorageOptions]', request_name => 'ValidStorageOptions', traits => ['NameInRequest']);
   has ValidProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailableProcessorFeature]', request_name => 'AvailableProcessorFeature', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

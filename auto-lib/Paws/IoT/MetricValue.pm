@@ -3,6 +3,7 @@ package Paws::IoT::MetricValue;
   has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrs', traits => ['NameInRequest']);
   has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
   has Ports => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'ports', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -11,6 +11,7 @@ package Paws::Quicksight::Ingestion;
   has RequestSource => (is => 'ro', isa => 'Str');
   has RequestType => (is => 'ro', isa => 'Str');
   has RowInfo => (is => 'ro', isa => 'Paws::Quicksight::RowInfo');
+
 1;
 
 ### main pod documentation begin ###

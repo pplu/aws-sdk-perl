@@ -2,6 +2,7 @@ package Paws::Lightsail::AddOnRequest;
   use Moose;
   has AddOnType => (is => 'ro', isa => 'Str', request_name => 'addOnType', traits => ['NameInRequest'], required => 1);
   has AutoSnapshotAddOnRequest => (is => 'ro', isa => 'Paws::Lightsail::AutoSnapshotAddOnRequest', request_name => 'autoSnapshotAddOnRequest', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

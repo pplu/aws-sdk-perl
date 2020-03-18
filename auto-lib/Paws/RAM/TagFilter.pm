@@ -2,6 +2,7 @@ package Paws::RAM::TagFilter;
   use Moose;
   has TagKey => (is => 'ro', isa => 'Str', request_name => 'tagKey', traits => ['NameInRequest']);
   has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagValues', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

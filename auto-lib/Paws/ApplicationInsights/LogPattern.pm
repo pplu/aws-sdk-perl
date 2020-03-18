@@ -4,6 +4,7 @@ package Paws::ApplicationInsights::LogPattern;
   has PatternName => (is => 'ro', isa => 'Str');
   has PatternSetName => (is => 'ro', isa => 'Str');
   has Rank => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

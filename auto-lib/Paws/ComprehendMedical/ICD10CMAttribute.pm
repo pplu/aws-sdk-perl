@@ -8,6 +8,7 @@ package Paws::ComprehendMedical::ICD10CMAttribute;
   has Text => (is => 'ro', isa => 'Str');
   has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::ICD10CMTrait]');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

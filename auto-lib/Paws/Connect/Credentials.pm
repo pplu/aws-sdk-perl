@@ -4,6 +4,7 @@ package Paws::Connect::Credentials;
   has AccessTokenExpiration => (is => 'ro', isa => 'Str');
   has RefreshToken => (is => 'ro', isa => 'Str');
   has RefreshTokenExpiration => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

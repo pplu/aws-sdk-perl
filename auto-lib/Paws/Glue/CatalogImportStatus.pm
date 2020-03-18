@@ -3,6 +3,7 @@ package Paws::Glue::CatalogImportStatus;
   has ImportCompleted => (is => 'ro', isa => 'Bool');
   has ImportedBy => (is => 'ro', isa => 'Str');
   has ImportTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Pinpoint::EndpointSendConfiguration;
   has RawContent => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has TitleOverride => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +59,7 @@ email/SMS delivery receipt event attributes.
 =head2 RawContent => Str
 
   The raw, JSON-formatted string to use as the payload for the message.
-If specified, this value overrides the message.
+If specified, this value overrides all other values for the message.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>

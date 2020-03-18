@@ -6,6 +6,7 @@ package Paws::WAFv2::Rule;
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has Statement => (is => 'ro', isa => 'Paws::WAFv2::Statement', required => 1);
   has VisibilityConfig => (is => 'ro', isa => 'Paws::WAFv2::VisibilityConfig', required => 1);
+
 1;
 
 ### main pod documentation begin ###

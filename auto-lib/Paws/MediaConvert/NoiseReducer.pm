@@ -4,6 +4,7 @@ package Paws::MediaConvert::NoiseReducer;
   has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
   has TemporalFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerTemporalFilterSettings', request_name => 'temporalFilterSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

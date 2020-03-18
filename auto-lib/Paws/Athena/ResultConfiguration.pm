@@ -2,6 +2,7 @@ package Paws::Athena::ResultConfiguration;
   use Moose;
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Athena::EncryptionConfiguration');
   has OutputLocation => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

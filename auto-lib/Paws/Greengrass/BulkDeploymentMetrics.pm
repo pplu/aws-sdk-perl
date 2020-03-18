@@ -3,6 +3,7 @@ package Paws::Greengrass::BulkDeploymentMetrics;
   has InvalidInputRecords => (is => 'ro', isa => 'Int');
   has RecordsProcessed => (is => 'ro', isa => 'Int');
   has RetryAttempts => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::SecurityHub::StandardsControl;
   has SeverityRating => (is => 'ro', isa => 'Str');
   has StandardsControlArn => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Rekognition::FaceRecord;
   use Moose;
   has Face => (is => 'ro', isa => 'Paws::Rekognition::Face');
   has FaceDetail => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
+
 1;
 
 ### main pod documentation begin ###

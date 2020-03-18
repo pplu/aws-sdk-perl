@@ -4,6 +4,7 @@ package Paws::Quicksight::JoinInstruction;
   has OnClause => (is => 'ro', isa => 'Str', required => 1);
   has RightOperand => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

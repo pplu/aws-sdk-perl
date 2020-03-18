@@ -4,6 +4,7 @@ package Paws::XRay::TimeSeriesServiceStatistics;
   has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
   has ServiceSummaryStatistics => (is => 'ro', isa => 'Paws::XRay::ServiceStatistics');
   has Timestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

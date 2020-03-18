@@ -1,6 +1,7 @@
 package Paws::AppMesh::VirtualRouterStatus;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

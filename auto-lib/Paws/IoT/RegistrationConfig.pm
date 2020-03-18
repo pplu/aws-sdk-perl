@@ -2,6 +2,7 @@ package Paws::IoT::RegistrationConfig;
   use Moose;
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has TemplateBody => (is => 'ro', isa => 'Str', request_name => 'templateBody', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

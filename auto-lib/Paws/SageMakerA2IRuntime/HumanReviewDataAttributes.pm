@@ -1,6 +1,7 @@
 package Paws::SageMakerA2IRuntime::HumanReviewDataAttributes;
   use Moose;
   has ContentClassifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

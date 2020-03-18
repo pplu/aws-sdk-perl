@@ -3,6 +3,7 @@ package Paws::SageMaker::ExperimentConfig;
   has ExperimentName => (is => 'ro', isa => 'Str');
   has TrialComponentDisplayName => (is => 'ro', isa => 'Str');
   has TrialName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

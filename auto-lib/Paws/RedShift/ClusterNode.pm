@@ -3,6 +3,7 @@ package Paws::RedShift::ClusterNode;
   has NodeRole => (is => 'ro', isa => 'Str');
   has PrivateIPAddress => (is => 'ro', isa => 'Str');
   has PublicIPAddress => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

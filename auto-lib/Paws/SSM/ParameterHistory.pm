@@ -12,6 +12,7 @@ package Paws::SSM::ParameterHistory;
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

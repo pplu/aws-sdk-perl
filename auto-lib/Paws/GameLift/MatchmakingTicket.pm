@@ -11,6 +11,7 @@ package Paws::GameLift::MatchmakingTicket;
   has StatusMessage => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
   has TicketId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

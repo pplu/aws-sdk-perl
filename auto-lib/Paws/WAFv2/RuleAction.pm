@@ -3,6 +3,7 @@ package Paws::WAFv2::RuleAction;
   has Allow => (is => 'ro', isa => 'Paws::WAFv2::AllowAction');
   has Block => (is => 'ro', isa => 'Paws::WAFv2::BlockAction');
   has Count => (is => 'ro', isa => 'Paws::WAFv2::CountAction');
+
 1;
 
 ### main pod documentation begin ###

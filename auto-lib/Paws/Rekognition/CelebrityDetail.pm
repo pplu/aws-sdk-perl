@@ -6,6 +6,7 @@ package Paws::Rekognition::CelebrityDetail;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

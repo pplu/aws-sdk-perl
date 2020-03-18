@@ -14,6 +14,7 @@ package Paws::ApiGatewayV2::CreateIntegrationInput;
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', request_name => 'requestTemplates', traits => ['NameInRequest']);
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'templateSelectionExpression', traits => ['NameInRequest']);
   has TimeoutInMillis => (is => 'ro', isa => 'Int', request_name => 'timeoutInMillis', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

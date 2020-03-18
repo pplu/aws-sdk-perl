@@ -2,6 +2,7 @@ package Paws::CloudFront::StreamingDistributionConfigWithTags;
   use Moose;
   has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ELBv2::SslPolicy;
   has Ciphers => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Cipher]');
   has Name => (is => 'ro', isa => 'Str');
   has SslProtocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

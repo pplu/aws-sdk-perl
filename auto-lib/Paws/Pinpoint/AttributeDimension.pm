@@ -2,6 +2,7 @@ package Paws::Pinpoint::AttributeDimension;
   use Moose;
   has AttributeType => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::SageMaker::AutoMLCandidate;
   has InferenceContainers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AutoMLContainerDefinition]');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has ObjectiveStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

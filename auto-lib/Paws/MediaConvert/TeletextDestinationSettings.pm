@@ -2,6 +2,7 @@ package Paws::MediaConvert::TeletextDestinationSettings;
   use Moose;
   has PageNumber => (is => 'ro', isa => 'Str', request_name => 'pageNumber', traits => ['NameInRequest']);
   has PageTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'pageTypes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

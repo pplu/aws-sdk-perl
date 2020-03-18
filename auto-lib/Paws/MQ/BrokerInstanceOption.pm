@@ -6,6 +6,7 @@ package Paws::MQ::BrokerInstanceOption;
   has StorageType => (is => 'ro', isa => 'Str', request_name => 'storageType', traits => ['NameInRequest']);
   has SupportedDeploymentModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedDeploymentModes', traits => ['NameInRequest']);
   has SupportedEngineVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedEngineVersions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ServerlessRepo::RollbackConfiguration;
   use Moose;
   has MonitoringTimeInMinutes => (is => 'ro', isa => 'Int', request_name => 'monitoringTimeInMinutes', traits => ['NameInRequest']);
   has RollbackTriggers => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::RollbackTrigger]', request_name => 'rollbackTriggers', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

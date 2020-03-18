@@ -4,6 +4,7 @@ package Paws::Kendra::DocumentAttributeValue;
   has LongValue => (is => 'ro', isa => 'Int');
   has StringListValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Kafka::BrokerEBSVolumeInfo;
   use Moose;
   has KafkaBrokerNodeId => (is => 'ro', isa => 'Str', request_name => 'kafkaBrokerNodeId', traits => ['NameInRequest'], required => 1);
   has VolumeSizeGB => (is => 'ro', isa => 'Int', request_name => 'volumeSizeGB', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -13,6 +13,7 @@ package Paws::FSX::DataRepositoryTask;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
   has TaskId => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

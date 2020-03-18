@@ -6,6 +6,7 @@ package Paws::MQ::UpdateConfigurationOutput;
   has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::MQ::SanitizationWarning]', request_name => 'warnings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

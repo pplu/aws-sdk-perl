@@ -2,6 +2,7 @@ package Paws::SecurityHub::Compliance;
   use Moose;
   has RelatedRequirements => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

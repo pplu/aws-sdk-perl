@@ -1,6 +1,7 @@
 package Paws::MediaLive::PurchaseOfferingResultModel;
   use Moose;
   has Reservation => (is => 'ro', isa => 'Paws::MediaLive::Reservation', request_name => 'reservation', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

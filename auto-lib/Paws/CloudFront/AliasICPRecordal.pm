@@ -2,6 +2,7 @@ package Paws::CloudFront::AliasICPRecordal;
   use Moose;
   has CNAME => (is => 'ro', isa => 'Str');
   has ICPRecordalStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

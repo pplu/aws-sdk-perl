@@ -3,6 +3,7 @@ package Paws::S3Control::CreateJobResult;
   use Moose;
   has JobId => (is => 'ro', isa => 'Str');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

@@ -1,9 +1,10 @@
 
 package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity;
   use Moose;
-  has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig', required => 1);
+  has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig', traits => ['ParamInBody'], required => 1);
   has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -13,6 +14,7 @@ package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

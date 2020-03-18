@@ -2,6 +2,7 @@ package Paws::Config::ConformancePackComplianceFilters;
   use Moose;
   has ComplianceType => (is => 'ro', isa => 'Str');
   has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

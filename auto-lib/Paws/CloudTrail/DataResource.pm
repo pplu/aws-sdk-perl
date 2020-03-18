@@ -2,6 +2,7 @@ package Paws::CloudTrail::DataResource;
   use Moose;
   has Type => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

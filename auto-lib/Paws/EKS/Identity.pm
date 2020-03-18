@@ -1,6 +1,7 @@
 package Paws::EKS::Identity;
   use Moose;
   has Oidc => (is => 'ro', isa => 'Paws::EKS::OIDC', request_name => 'oidc', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

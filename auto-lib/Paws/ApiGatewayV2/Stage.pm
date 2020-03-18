@@ -14,6 +14,7 @@ package Paws::ApiGatewayV2::Stage;
   has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest'], required => 1);
   has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', request_name => 'stageVariables', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::IoT::AwsJobExecutionsRolloutConfig;
   use Moose;
   has MaximumPerMinute => (is => 'ro', isa => 'Int', request_name => 'maximumPerMinute', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

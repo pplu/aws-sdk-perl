@@ -11,6 +11,7 @@ package Paws::Firehose::ElasticsearchDestinationUpdate;
   has RoleARN => (is => 'ro', isa => 'Str');
   has S3Update => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
   has TypeName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

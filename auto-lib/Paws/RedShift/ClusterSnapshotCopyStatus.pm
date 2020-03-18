@@ -4,6 +4,7 @@ package Paws::RedShift::ClusterSnapshotCopyStatus;
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has RetentionPeriod => (is => 'ro', isa => 'Int');
   has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

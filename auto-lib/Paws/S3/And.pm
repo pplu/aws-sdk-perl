@@ -2,6 +2,7 @@ package Paws::S3::And;
   use Moose;
   has Prefix => (is => 'ro', isa => 'Str');
   has Tag => (is => 'ro', isa => 'Paws::S3::Tag');
+
 1;
 
 ### main pod documentation begin ###

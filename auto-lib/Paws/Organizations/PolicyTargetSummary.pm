@@ -4,6 +4,7 @@ package Paws::Organizations::PolicyTargetSummary;
   has Name => (is => 'ro', isa => 'Str');
   has TargetId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

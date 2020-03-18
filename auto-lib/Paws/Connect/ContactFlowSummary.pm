@@ -4,6 +4,7 @@ package Paws::Connect::ContactFlowSummary;
   has ContactFlowType => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

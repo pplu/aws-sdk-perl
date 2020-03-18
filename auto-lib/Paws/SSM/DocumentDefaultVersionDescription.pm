@@ -3,6 +3,7 @@ package Paws::SSM::DocumentDefaultVersionDescription;
   has DefaultVersion => (is => 'ro', isa => 'Str');
   has DefaultVersionName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

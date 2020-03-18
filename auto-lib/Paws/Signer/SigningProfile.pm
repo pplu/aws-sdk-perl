@@ -7,6 +7,7 @@ package Paws::Signer::SigningProfile;
   has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', request_name => 'signingParameters', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Signer::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

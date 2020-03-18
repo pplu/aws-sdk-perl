@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::VersioningConfiguration;
   use Moose;
   has MaxVersions => (is => 'ro', isa => 'Int', request_name => 'maxVersions', traits => ['NameInRequest']);
   has Unlimited => (is => 'ro', isa => 'Bool', request_name => 'unlimited', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

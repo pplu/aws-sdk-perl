@@ -3,6 +3,7 @@ package Paws::ECR::ImageScanFindingsSummary;
   has FindingSeverityCounts => (is => 'ro', isa => 'Paws::ECR::FindingSeverityCounts', request_name => 'findingSeverityCounts', traits => ['NameInRequest']);
   has ImageScanCompletedAt => (is => 'ro', isa => 'Str', request_name => 'imageScanCompletedAt', traits => ['NameInRequest']);
   has VulnerabilitySourceUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'vulnerabilitySourceUpdatedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

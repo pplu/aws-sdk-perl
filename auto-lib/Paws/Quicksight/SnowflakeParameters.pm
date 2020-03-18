@@ -3,6 +3,7 @@ package Paws::Quicksight::SnowflakeParameters;
   has Database => (is => 'ro', isa => 'Str', required => 1);
   has Host => (is => 'ro', isa => 'Str', required => 1);
   has Warehouse => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

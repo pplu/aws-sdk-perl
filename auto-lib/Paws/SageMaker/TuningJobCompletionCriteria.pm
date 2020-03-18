@@ -1,6 +1,7 @@
 package Paws::SageMaker::TuningJobCompletionCriteria;
   use Moose;
   has TargetObjectiveMetricValue => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

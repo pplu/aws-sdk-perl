@@ -3,6 +3,7 @@ package Paws::SSM::ComplianceSummaryItem;
   has ComplianceType => (is => 'ro', isa => 'Str');
   has CompliantSummary => (is => 'ro', isa => 'Paws::SSM::CompliantSummary');
   has NonCompliantSummary => (is => 'ro', isa => 'Paws::SSM::NonCompliantSummary');
+
 1;
 
 ### main pod documentation begin ###

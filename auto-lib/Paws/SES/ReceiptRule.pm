@@ -6,6 +6,7 @@ package Paws::SES::ReceiptRule;
   has Recipients => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ScanEnabled => (is => 'ro', isa => 'Bool');
   has TlsPolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

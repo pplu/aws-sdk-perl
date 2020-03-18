@@ -4,6 +4,7 @@ package Paws::Comprehend::ClassifierMetadata;
   has NumberOfLabels => (is => 'ro', isa => 'Int');
   has NumberOfTestDocuments => (is => 'ro', isa => 'Int');
   has NumberOfTrainedDocuments => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

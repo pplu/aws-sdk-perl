@@ -3,6 +3,7 @@ package Paws::MediaPackageVod::PackagingGroup;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

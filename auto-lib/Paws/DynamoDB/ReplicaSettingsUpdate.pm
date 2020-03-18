@@ -4,6 +4,7 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
   has ReplicaGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate]');
   has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

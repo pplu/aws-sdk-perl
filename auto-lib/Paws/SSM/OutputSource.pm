@@ -2,6 +2,7 @@ package Paws::SSM::OutputSource;
   use Moose;
   has OutputSourceId => (is => 'ro', isa => 'Str');
   has OutputSourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

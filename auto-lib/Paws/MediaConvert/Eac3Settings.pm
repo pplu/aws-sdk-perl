@@ -21,6 +21,7 @@ package Paws::MediaConvert::Eac3Settings;
   has StereoDownmix => (is => 'ro', isa => 'Str', request_name => 'stereoDownmix', traits => ['NameInRequest']);
   has SurroundExMode => (is => 'ro', isa => 'Str', request_name => 'surroundExMode', traits => ['NameInRequest']);
   has SurroundMode => (is => 'ro', isa => 'Str', request_name => 'surroundMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

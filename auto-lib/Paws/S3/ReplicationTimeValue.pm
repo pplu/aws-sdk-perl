@@ -1,6 +1,7 @@
 package Paws::S3::ReplicationTimeValue;
   use Moose;
   has Minutes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

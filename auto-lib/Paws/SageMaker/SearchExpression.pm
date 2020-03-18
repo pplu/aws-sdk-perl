@@ -4,6 +4,7 @@ package Paws::SageMaker::SearchExpression;
   has NestedFilters => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::NestedFilters]');
   has Operator => (is => 'ro', isa => 'Str');
   has SubExpressions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SearchExpression]');
+
 1;
 
 ### main pod documentation begin ###

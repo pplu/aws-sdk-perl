@@ -6,6 +6,7 @@ package Paws::MobileHub::BundleDetails;
   has IconUrl => (is => 'ro', isa => 'Str', request_name => 'iconUrl', traits => ['NameInRequest']);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

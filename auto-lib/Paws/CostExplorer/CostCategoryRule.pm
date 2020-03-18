@@ -2,6 +2,7 @@ package Paws::CostExplorer::CostCategoryRule;
   use Moose;
   has Rule => (is => 'ro', isa => 'Paws::CostExplorer::Expression', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

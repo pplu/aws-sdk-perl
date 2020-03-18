@@ -6,6 +6,7 @@ package Paws::IoT::AuditCheckDetails;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has NonCompliantResourcesCount => (is => 'ro', isa => 'Int', request_name => 'nonCompliantResourcesCount', traits => ['NameInRequest']);
   has TotalResourcesCount => (is => 'ro', isa => 'Int', request_name => 'totalResourcesCount', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

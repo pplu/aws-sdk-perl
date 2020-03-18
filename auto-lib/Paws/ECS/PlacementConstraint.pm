@@ -2,6 +2,7 @@ package Paws::ECS::PlacementConstraint;
   use Moose;
   has Expression => (is => 'ro', isa => 'Str', request_name => 'expression', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

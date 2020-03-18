@@ -2,6 +2,7 @@ package Paws::AccessAnalyzer::AnalyzedResourceSummary;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

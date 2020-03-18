@@ -2,6 +2,7 @@ package Paws::CloudFormation::AutoDeployment;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has RetainStacksOnAccountRemoval => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

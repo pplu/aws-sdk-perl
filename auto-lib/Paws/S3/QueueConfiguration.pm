@@ -4,6 +4,7 @@ package Paws::S3::QueueConfiguration;
   has Filter => (is => 'ro', isa => 'Paws::S3::NotificationConfigurationFilter');
   has Id => (is => 'ro', isa => 'Str');
   has QueueArn => (is => 'ro', isa => 'Str', request_name => 'Queue', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

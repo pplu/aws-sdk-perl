@@ -1,6 +1,7 @@
 package Paws::XRay::ResourceARNDetail;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

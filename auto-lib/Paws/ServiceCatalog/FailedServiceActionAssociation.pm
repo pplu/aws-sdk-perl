@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::FailedServiceActionAssociation;
   has ProductId => (is => 'ro', isa => 'Str');
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
   has ServiceActionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

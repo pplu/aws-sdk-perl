@@ -6,6 +6,7 @@ package Paws::CostExplorer::Expression;
   has Not => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has Or => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::Expression]');
   has Tags => (is => 'ro', isa => 'Paws::CostExplorer::TagValues');
+
 1;
 
 ### main pod documentation begin ###

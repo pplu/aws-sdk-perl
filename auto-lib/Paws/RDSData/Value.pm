@@ -10,6 +10,7 @@ package Paws::RDSData::Value;
   has RealValue => (is => 'ro', isa => 'Num', request_name => 'realValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
   has StructValue => (is => 'ro', isa => 'Paws::RDSData::StructValue', request_name => 'structValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

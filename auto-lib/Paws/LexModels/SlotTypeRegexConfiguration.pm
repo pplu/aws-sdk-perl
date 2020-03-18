@@ -1,6 +1,7 @@
 package Paws::LexModels::SlotTypeRegexConfiguration;
   use Moose;
   has Pattern => (is => 'ro', isa => 'Str', request_name => 'pattern', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

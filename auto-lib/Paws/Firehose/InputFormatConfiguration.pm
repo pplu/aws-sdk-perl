@@ -1,6 +1,7 @@
 package Paws::Firehose::InputFormatConfiguration;
   use Moose;
   has Deserializer => (is => 'ro', isa => 'Paws::Firehose::Deserializer');
+
 1;
 
 ### main pod documentation begin ###

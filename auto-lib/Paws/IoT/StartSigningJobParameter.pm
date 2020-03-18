@@ -3,6 +3,7 @@ package Paws::IoT::StartSigningJobParameter;
   has Destination => (is => 'ro', isa => 'Paws::IoT::Destination', request_name => 'destination', traits => ['NameInRequest']);
   has SigningProfileName => (is => 'ro', isa => 'Str', request_name => 'signingProfileName', traits => ['NameInRequest']);
   has SigningProfileParameter => (is => 'ro', isa => 'Paws::IoT::SigningProfileParameter', request_name => 'signingProfileParameter', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Quicksight::ColumnGroup;
   use Moose;
   has GeoSpatialColumnGroup => (is => 'ro', isa => 'Paws::Quicksight::GeoSpatialColumnGroup');
+
 1;
 
 ### main pod documentation begin ###

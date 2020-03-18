@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::ProvisioningArtifactSummary;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ProvisioningArtifactMetadata => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactInfo');
+
 1;
 
 ### main pod documentation begin ###

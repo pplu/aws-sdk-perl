@@ -2,6 +2,7 @@ package Paws::ServiceQuotas::QuotaPeriod;
   use Moose;
   has PeriodUnit => (is => 'ro', isa => 'Str');
   has PeriodValue => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

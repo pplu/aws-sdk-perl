@@ -7,6 +7,7 @@ package Paws::Greengrass::GroupVersion;
   has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has ResourceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

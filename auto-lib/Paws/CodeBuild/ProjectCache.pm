@@ -3,6 +3,7 @@ package Paws::CodeBuild::ProjectCache;
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Modes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'modes', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

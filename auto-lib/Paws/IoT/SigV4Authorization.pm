@@ -3,6 +3,7 @@ package Paws::IoT::SigV4Authorization;
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest'], required => 1);
   has SigningRegion => (is => 'ro', isa => 'Str', request_name => 'signingRegion', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

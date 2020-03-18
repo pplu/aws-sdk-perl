@@ -2,6 +2,7 @@ package Paws::ImageBuilder::Schedule;
   use Moose;
   has PipelineExecutionStartCondition => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionStartCondition', traits => ['NameInRequest']);
   has ScheduleExpression => (is => 'ro', isa => 'Str', request_name => 'scheduleExpression', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

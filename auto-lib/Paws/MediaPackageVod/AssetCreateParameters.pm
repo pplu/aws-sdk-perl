@@ -5,6 +5,7 @@ package Paws::MediaPackageVod::AssetCreateParameters;
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest'], required => 1);
   has SourceRoleArn => (is => 'ro', isa => 'Str', request_name => 'sourceRoleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::BatchArrayProperties;
   use Moose;
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

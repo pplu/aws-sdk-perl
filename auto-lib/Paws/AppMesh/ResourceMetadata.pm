@@ -5,6 +5,7 @@ package Paws::AppMesh::ResourceMetadata;
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest'], required => 1);
   has Uid => (is => 'ro', isa => 'Str', request_name => 'uid', traits => ['NameInRequest'], required => 1);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

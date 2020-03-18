@@ -10,6 +10,7 @@ package Paws::Glue::CsvClassifier;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has QuoteSymbol => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::MonitoringConfigurationUpdate;
   has ConfigurationTypeUpdate => (is => 'ro', isa => 'Str');
   has LogLevelUpdate => (is => 'ro', isa => 'Str');
   has MetricsLevelUpdate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::WorkSpaces::AccountModification;
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has ModificationState => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

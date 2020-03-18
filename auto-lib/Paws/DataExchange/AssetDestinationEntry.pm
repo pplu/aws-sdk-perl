@@ -3,6 +3,7 @@ package Paws::DataExchange::AssetDestinationEntry;
   has AssetId => (is => 'ro', isa => 'Str', required => 1);
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has Key => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

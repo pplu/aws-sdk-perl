@@ -2,6 +2,7 @@ package Paws::IoTEvents::FirehoseAction;
   use Moose;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', request_name => 'deliveryStreamName', traits => ['NameInRequest'], required => 1);
   has Separator => (is => 'ro', isa => 'Str', request_name => 'separator', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

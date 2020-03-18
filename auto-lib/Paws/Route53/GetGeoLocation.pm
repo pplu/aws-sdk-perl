@@ -5,6 +5,7 @@ package Paws::Route53::GetGeoLocation;
   has CountryCode => (is => 'ro', isa => 'Str', query_name => 'countrycode', traits => ['ParamInQuery']);
   has SubdivisionCode => (is => 'ro', isa => 'Str', query_name => 'subdivisioncode', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGeoLocation');
@@ -13,6 +14,7 @@ package Paws::Route53::GetGeoLocation;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetGeoLocationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::PerformanceInsights::ResponsePartitionKey;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionMap', required => 1);
+
 1;
 
 ### main pod documentation begin ###

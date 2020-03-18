@@ -18,6 +18,7 @@ package Paws::SecurityHub::AwsLambdaFunctionDetails;
   has TracingConfig => (is => 'ro', isa => 'Paws::SecurityHub::AwsLambdaFunctionTracingConfig');
   has Version => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SecurityHub::AwsLambdaFunctionVpcConfig');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::S3::DefaultRetention;
   has Days => (is => 'ro', isa => 'Int');
   has Mode => (is => 'ro', isa => 'Str');
   has Years => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Quicksight::RedshiftParameters;
   has Database => (is => 'ro', isa => 'Str', required => 1);
   has Host => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

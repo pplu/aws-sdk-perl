@@ -5,6 +5,7 @@ package Paws::AutoScaling::TagDescription;
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

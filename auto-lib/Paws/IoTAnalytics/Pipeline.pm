@@ -6,6 +6,7 @@ package Paws::IoTAnalytics::Pipeline;
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ReprocessingSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::ReprocessingSummary]', request_name => 'reprocessingSummaries', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Quicksight::CalculatedColumn;
   has ColumnId => (is => 'ro', isa => 'Str', required => 1);
   has ColumnName => (is => 'ro', isa => 'Str', required => 1);
   has Expression => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::RunConfigurationUpdate;
   use Moose;
   has ApplicationRestoreConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
   has FlinkRunConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkRunConfiguration');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SageMaker::NetworkConfig;
   use Moose;
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

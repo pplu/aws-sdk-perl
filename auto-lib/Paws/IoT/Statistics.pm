@@ -8,6 +8,7 @@ package Paws::IoT::Statistics;
   has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
   has SumOfSquares => (is => 'ro', isa => 'Num', request_name => 'sumOfSquares', traits => ['NameInRequest']);
   has Variance => (is => 'ro', isa => 'Num', request_name => 'variance', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

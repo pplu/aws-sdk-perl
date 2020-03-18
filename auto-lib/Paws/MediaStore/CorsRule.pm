@@ -5,6 +5,7 @@ package Paws::MediaStore::CorsRule;
   has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxAgeSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

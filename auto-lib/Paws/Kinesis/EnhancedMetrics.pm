@@ -1,6 +1,7 @@
 package Paws::Kinesis::EnhancedMetrics;
   use Moose;
   has ShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

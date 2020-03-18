@@ -2,6 +2,7 @@ package Paws::IoTEvents::OnInputLifecycle;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Event]', request_name => 'events', traits => ['NameInRequest']);
   has TransitionEvents => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::TransitionEvent]', request_name => 'transitionEvents', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

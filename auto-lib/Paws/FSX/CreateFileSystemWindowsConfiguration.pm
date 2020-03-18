@@ -9,6 +9,7 @@ package Paws::FSX::CreateFileSystemWindowsConfiguration;
   has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfiguration');
   has ThroughputCapacity => (is => 'ro', isa => 'Int', required => 1);
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

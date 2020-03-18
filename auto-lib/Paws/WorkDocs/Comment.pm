@@ -9,6 +9,7 @@ package Paws::WorkDocs::Comment;
   has Text => (is => 'ro', isa => 'Str');
   has ThreadId => (is => 'ro', isa => 'Str');
   has Visibility => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

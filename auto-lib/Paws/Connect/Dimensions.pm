@@ -2,6 +2,7 @@ package Paws::Connect::Dimensions;
   use Moose;
   has Channel => (is => 'ro', isa => 'Str');
   has Queue => (is => 'ro', isa => 'Paws::Connect::QueueReference');
+
 1;
 
 ### main pod documentation begin ###

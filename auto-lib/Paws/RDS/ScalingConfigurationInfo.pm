@@ -5,6 +5,7 @@ package Paws::RDS::ScalingConfigurationInfo;
   has MinCapacity => (is => 'ro', isa => 'Int');
   has SecondsUntilAutoPause => (is => 'ro', isa => 'Int');
   has TimeoutAction => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

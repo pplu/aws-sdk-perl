@@ -1,6 +1,7 @@
 package Paws::Quicksight::DashboardSourceEntity;
   use Moose;
   has SourceTemplate => (is => 'ro', isa => 'Paws::Quicksight::DashboardSourceTemplate');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Rekognition::TextDetectionResult;
   use Moose;
   has TextDetection => (is => 'ro', isa => 'Paws::Rekognition::TextDetection');
   has Timestamp => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

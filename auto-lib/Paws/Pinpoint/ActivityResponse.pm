@@ -13,6 +13,7 @@ package Paws::Pinpoint::ActivityResponse;
   has TimezonesTotalCount => (is => 'ro', isa => 'Int');
   has TotalEndpointCount => (is => 'ro', isa => 'Int');
   has TreatmentId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -88,8 +89,8 @@ and FAIL.
 
 =head2 State => Str
 
-  The state of the activity. Possible values are: PENDING, INITIALIZING,
-RUNNING, PAUSED, CANCELLED, and COMPLETED.
+  The current status of the activity. Possible values are: PENDING,
+INITIALIZING, RUNNING, PAUSED, CANCELLED, and COMPLETED.
 
 
 =head2 SuccessfulEndpointCount => Int

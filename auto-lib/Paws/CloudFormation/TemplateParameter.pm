@@ -4,6 +4,7 @@ package Paws::CloudFormation::TemplateParameter;
   has Description => (is => 'ro', isa => 'Str');
   has NoEcho => (is => 'ro', isa => 'Bool');
   has ParameterKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

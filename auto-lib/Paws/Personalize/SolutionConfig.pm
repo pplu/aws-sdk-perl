@@ -5,6 +5,7 @@ package Paws::Personalize::SolutionConfig;
   has EventValueThreshold => (is => 'ro', isa => 'Str', request_name => 'eventValueThreshold', traits => ['NameInRequest']);
   has FeatureTransformationParameters => (is => 'ro', isa => 'Paws::Personalize::FeatureTransformationParameters', request_name => 'featureTransformationParameters', traits => ['NameInRequest']);
   has HpoConfig => (is => 'ro', isa => 'Paws::Personalize::HPOConfig', request_name => 'hpoConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::SqlApplicationConfigurationUpdate;
   has InputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::InputUpdate]');
   has OutputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::OutputUpdate]');
   has ReferenceDataSourceUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::ReferenceDataSourceUpdate]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::IoT::CodeSigning;
   has AwsSignerJobId => (is => 'ro', isa => 'Str', request_name => 'awsSignerJobId', traits => ['NameInRequest']);
   has CustomCodeSigning => (is => 'ro', isa => 'Paws::IoT::CustomCodeSigning', request_name => 'customCodeSigning', traits => ['NameInRequest']);
   has StartSigningJobParameter => (is => 'ro', isa => 'Paws::IoT::StartSigningJobParameter', request_name => 'startSigningJobParameter', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

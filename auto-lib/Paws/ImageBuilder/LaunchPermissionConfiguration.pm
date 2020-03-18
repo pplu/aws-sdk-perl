@@ -2,6 +2,7 @@ package Paws::ImageBuilder::LaunchPermissionConfiguration;
   use Moose;
   has UserGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'userGroups', traits => ['NameInRequest']);
   has UserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'userIds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

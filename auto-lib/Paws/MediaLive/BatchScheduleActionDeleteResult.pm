@@ -1,6 +1,7 @@
 package Paws::MediaLive::BatchScheduleActionDeleteResult;
   use Moose;
   has ScheduleActions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ScheduleAction]', request_name => 'scheduleActions', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

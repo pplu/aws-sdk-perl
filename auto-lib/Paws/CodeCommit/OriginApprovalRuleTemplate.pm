@@ -2,6 +2,7 @@ package Paws::CodeCommit::OriginApprovalRuleTemplate;
   use Moose;
   has ApprovalRuleTemplateId => (is => 'ro', isa => 'Str', request_name => 'approvalRuleTemplateId', traits => ['NameInRequest']);
   has ApprovalRuleTemplateName => (is => 'ro', isa => 'Str', request_name => 'approvalRuleTemplateName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

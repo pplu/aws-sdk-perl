@@ -3,6 +3,7 @@ package Paws::Pinpoint::SimpleEmail;
   has HtmlPart => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmailPart');
   has Subject => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmailPart');
   has TextPart => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmailPart');
+
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Specifies the content of an email message, composed of a subject, a
+Specifies the contents of an email message, composed of a subject, a
 text part, and an HTML part.
 
 =head1 ATTRIBUTES
@@ -41,9 +42,9 @@ text part, and an HTML part.
 
 =head2 HtmlPart => L<Paws::Pinpoint::SimpleEmailPart>
 
-  The body of the email message, in HTML format. We recommend using an
-HTML part for email clients that support HTML. You can include links,
-formatted text, and more in an HTML message.
+  The body of the email message, in HTML format. We recommend using HTML
+format for email clients that render HTML content. You can include
+links, formatted text, and more in an HTML message.
 
 
 =head2 Subject => L<Paws::Pinpoint::SimpleEmailPart>
@@ -53,9 +54,10 @@ formatted text, and more in an HTML message.
 
 =head2 TextPart => L<Paws::Pinpoint::SimpleEmailPart>
 
-  The body of the email message, in text format. We recommend using a
-text part for email clients that don't support HTML and clients that
-are connected to high-latency networks, such as mobile devices.
+  The body of the email message, in plain text format. We recommend using
+plain text format for email clients that don't render HTML content and
+clients that are connected to high-latency networks, such as mobile
+devices.
 
 
 

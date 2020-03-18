@@ -3,6 +3,7 @@ package Paws::ResourceTagging::ComplianceDetails;
   has ComplianceStatus => (is => 'ro', isa => 'Bool');
   has KeysWithNoncompliantValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NoncompliantKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

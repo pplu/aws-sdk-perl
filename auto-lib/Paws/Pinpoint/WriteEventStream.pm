@@ -2,6 +2,7 @@ package Paws::Pinpoint::WriteEventStream;
   use Moose;
   has DestinationStreamArn => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

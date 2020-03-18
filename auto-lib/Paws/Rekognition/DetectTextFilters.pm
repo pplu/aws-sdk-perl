@@ -2,6 +2,7 @@ package Paws::Rekognition::DetectTextFilters;
   use Moose;
   has RegionsOfInterest => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::RegionOfInterest]');
   has WordFilter => (is => 'ro', isa => 'Paws::Rekognition::DetectionFilter');
+
 1;
 
 ### main pod documentation begin ###

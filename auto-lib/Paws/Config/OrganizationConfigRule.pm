@@ -6,6 +6,7 @@ package Paws::Config::OrganizationConfigRule;
   has OrganizationConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationCustomRuleMetadata => (is => 'ro', isa => 'Paws::Config::OrganizationCustomRuleMetadata');
   has OrganizationManagedRuleMetadata => (is => 'ro', isa => 'Paws::Config::OrganizationManagedRuleMetadata');
+
 1;
 
 ### main pod documentation begin ###

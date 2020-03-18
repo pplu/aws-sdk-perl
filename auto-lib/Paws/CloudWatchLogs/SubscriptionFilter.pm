@@ -7,6 +7,7 @@ package Paws::CloudWatchLogs::SubscriptionFilter;
   has FilterPattern => (is => 'ro', isa => 'Str', request_name => 'filterPattern', traits => ['NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

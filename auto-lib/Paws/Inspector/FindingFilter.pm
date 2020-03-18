@@ -8,6 +8,7 @@ package Paws::Inspector::FindingFilter;
   has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
   has Severities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'severities', traits => ['NameInRequest']);
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

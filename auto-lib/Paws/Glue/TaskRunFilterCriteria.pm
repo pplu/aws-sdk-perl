@@ -4,6 +4,7 @@ package Paws::Glue::TaskRunFilterCriteria;
   has StartedBefore => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TaskRunType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

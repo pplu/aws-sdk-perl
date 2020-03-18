@@ -4,6 +4,7 @@ package Paws::GroundStation::ConfigListItem;
   has ConfigId => (is => 'ro', isa => 'Str', request_name => 'configId', traits => ['NameInRequest']);
   has ConfigType => (is => 'ro', isa => 'Str', request_name => 'configType', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

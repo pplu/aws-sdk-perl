@@ -5,6 +5,7 @@ package Paws::PinpointSMSVoice::EventDestinationDefinition;
   has KinesisFirehoseDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::KinesisFirehoseDestination');
   has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnsDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::SnsDestination');
+
 1;
 
 ### main pod documentation begin ###

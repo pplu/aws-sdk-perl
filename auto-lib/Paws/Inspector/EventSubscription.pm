@@ -2,6 +2,7 @@ package Paws::Inspector::EventSubscription;
   use Moose;
   has Event => (is => 'ro', isa => 'Str', request_name => 'event', traits => ['NameInRequest'], required => 1);
   has SubscribedAt => (is => 'ro', isa => 'Str', request_name => 'subscribedAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

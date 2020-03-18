@@ -11,6 +11,7 @@ package Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary;
   has EstimatedTotalCost => (is => 'ro', isa => 'Str');
   has HourlyCommitmentToPurchase => (is => 'ro', isa => 'Str');
   has TotalRecommendationCount => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

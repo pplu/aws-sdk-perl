@@ -10,6 +10,7 @@ package Paws::CognitoIdp::LambdaConfigType;
   has PreTokenGeneration => (is => 'ro', isa => 'Str');
   has UserMigration => (is => 'ro', isa => 'Str');
   has VerifyAuthChallengeResponse => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

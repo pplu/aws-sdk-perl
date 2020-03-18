@@ -6,6 +6,7 @@ package Paws::SageMaker::HyperParameterTuningJobConfig;
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobEarlyStoppingType => (is => 'ro', isa => 'Str');
   has TuningJobCompletionCriteria => (is => 'ro', isa => 'Paws::SageMaker::TuningJobCompletionCriteria');
+
 1;
 
 ### main pod documentation begin ###

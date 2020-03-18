@@ -5,6 +5,7 @@ package Paws::SageMaker::ModelPackageContainerDefinition;
   has ImageDigest => (is => 'ro', isa => 'Str');
   has ModelDataUrl => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

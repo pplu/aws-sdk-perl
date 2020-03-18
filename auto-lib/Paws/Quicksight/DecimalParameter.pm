@@ -2,6 +2,7 @@ package Paws::Quicksight::DecimalParameter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Values => (is => 'ro', isa => 'ArrayRef[Num]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

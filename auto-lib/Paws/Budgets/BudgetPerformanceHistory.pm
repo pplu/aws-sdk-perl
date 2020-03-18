@@ -6,6 +6,7 @@ package Paws::Budgets::BudgetPerformanceHistory;
   has CostFilters => (is => 'ro', isa => 'Paws::Budgets::CostFilters');
   has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
   has TimeUnit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

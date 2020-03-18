@@ -3,6 +3,7 @@ package Paws::CodeCommit::ConflictResolution;
   has DeleteFiles => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::DeleteFileEntry]', request_name => 'deleteFiles', traits => ['NameInRequest']);
   has ReplaceContents => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::ReplaceContentEntry]', request_name => 'replaceContents', traits => ['NameInRequest']);
   has SetFileModes => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::SetFileModeEntry]', request_name => 'setFileModes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -40,6 +40,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has TimedMetadataId3Period => (is => 'ro', isa => 'Int', request_name => 'timedMetadataId3Period', traits => ['NameInRequest']);
   has TimestampDeltaMilliseconds => (is => 'ro', isa => 'Int', request_name => 'timestampDeltaMilliseconds', traits => ['NameInRequest']);
   has TsFileMode => (is => 'ro', isa => 'Str', request_name => 'tsFileMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

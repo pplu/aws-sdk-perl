@@ -11,6 +11,7 @@ package Paws::RDS::Parameter;
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
   has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

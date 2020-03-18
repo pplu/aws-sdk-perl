@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsWafWebAclDetails;
   has Name => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsWafWebAclRule]');
   has WebAclId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::RDS::DescribeDBLogFilesDetails;
   has LastWritten => (is => 'ro', isa => 'Int');
   has LogFileName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

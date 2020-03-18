@@ -2,6 +2,7 @@ package Paws::Kendra::DocumentAttribute;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Paws::Kendra::DocumentAttributeValue', required => 1);
+
 1;
 
 ### main pod documentation begin ###

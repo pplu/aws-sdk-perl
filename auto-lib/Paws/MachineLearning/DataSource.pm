@@ -18,6 +18,7 @@ package Paws::MachineLearning::DataSource;
   has RoleARN => (is => 'ro', isa => 'Str');
   has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

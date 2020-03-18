@@ -3,6 +3,7 @@ package Paws::Rekognition::DetectionFilter;
   has MinBoundingBoxHeight => (is => 'ro', isa => 'Num');
   has MinBoundingBoxWidth => (is => 'ro', isa => 'Num');
   has MinConfidence => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

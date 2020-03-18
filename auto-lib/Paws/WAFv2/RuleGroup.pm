@@ -7,6 +7,7 @@ package Paws::WAFv2::RuleGroup;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::Rule]');
   has VisibilityConfig => (is => 'ro', isa => 'Paws::WAFv2::VisibilityConfig', required => 1);
+
 1;
 
 ### main pod documentation begin ###

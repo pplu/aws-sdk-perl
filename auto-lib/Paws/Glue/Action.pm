@@ -6,6 +6,7 @@ package Paws::Glue::Action;
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::CostExplorer::RightsizingRecommendation;
   has ModifyRecommendationDetail => (is => 'ro', isa => 'Paws::CostExplorer::ModifyRecommendationDetail');
   has RightsizingType => (is => 'ro', isa => 'Str');
   has TerminateRecommendationDetail => (is => 'ro', isa => 'Paws::CostExplorer::TerminateRecommendationDetail');
+
 1;
 
 ### main pod documentation begin ###

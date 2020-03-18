@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes;
   use Moose;
   has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
   has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

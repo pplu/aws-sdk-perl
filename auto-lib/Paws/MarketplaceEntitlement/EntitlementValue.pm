@@ -4,6 +4,7 @@ package Paws::MarketplaceEntitlement::EntitlementValue;
   has DoubleValue => (is => 'ro', isa => 'Num');
   has IntegerValue => (is => 'ro', isa => 'Int');
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

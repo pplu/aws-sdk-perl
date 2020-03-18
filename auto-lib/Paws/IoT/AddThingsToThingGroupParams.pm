@@ -2,6 +2,7 @@ package Paws::IoT::AddThingsToThingGroupParams;
   use Moose;
   has OverrideDynamicGroups => (is => 'ro', isa => 'Bool', request_name => 'overrideDynamicGroups', traits => ['NameInRequest']);
   has ThingGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'thingGroupNames', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

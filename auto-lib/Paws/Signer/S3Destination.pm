@@ -2,6 +2,7 @@ package Paws::Signer::S3Destination;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest']);
   has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::SageMaker::InferenceSpecification;
   has SupportedRealtimeInferenceInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SupportedResponseMIMETypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SupportedTransformInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

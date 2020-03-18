@@ -2,6 +2,7 @@ package Paws::Quicksight::LogicalTableSource;
   use Moose;
   has JoinInstruction => (is => 'ro', isa => 'Paws::Quicksight::JoinInstruction');
   has PhysicalTableId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

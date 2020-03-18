@@ -7,6 +7,7 @@ package Paws::Pinpoint::DefaultPushNotificationMessage;
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -11,6 +11,7 @@ package Paws::ServiceCatalog::ProvisionedProductDetail;
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

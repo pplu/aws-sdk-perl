@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::StackInstance;
   has Account => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has StackInstanceStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

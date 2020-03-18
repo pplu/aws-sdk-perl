@@ -3,6 +3,7 @@ package Paws::SageMaker::AutoMLSecurityConfig;
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

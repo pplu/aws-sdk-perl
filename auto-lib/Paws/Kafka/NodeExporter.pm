@@ -1,6 +1,7 @@
 package Paws::Kafka::NodeExporter;
   use Moose;
   has EnabledInBroker => (is => 'ro', isa => 'Bool', request_name => 'enabledInBroker', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

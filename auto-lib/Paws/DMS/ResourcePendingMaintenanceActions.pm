@@ -2,6 +2,7 @@ package Paws::DMS::ResourcePendingMaintenanceActions;
   use Moose;
   has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::DMS::PendingMaintenanceAction]');
   has ResourceIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

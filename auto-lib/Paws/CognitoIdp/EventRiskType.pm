@@ -2,6 +2,7 @@ package Paws::CognitoIdp::EventRiskType;
   use Moose;
   has RiskDecision => (is => 'ro', isa => 'Str');
   has RiskLevel => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

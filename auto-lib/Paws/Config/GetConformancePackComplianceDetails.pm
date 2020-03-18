@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyStringWithCharLimit64', ...    # min: 1, max: 64
         ],                                  # max: 10; OPTIONAL
         ResourceIds => [
-          'MyStringWithCharLimit256', ...    # min: 1, max: 256; OPTIONAL
+          'MyStringWithCharLimit256', ...    # min: 1, max: 256
         ],                                   # max: 5; OPTIONAL
-        ResourceType => 'MyStringWithCharLimit256', # min: 1, max: 256; OPTIONAL
+        ResourceType => 'MyStringWithCharLimit256',    # min: 1, max: 256
       },    # OPTIONAL
       Limit     => 1,                # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL

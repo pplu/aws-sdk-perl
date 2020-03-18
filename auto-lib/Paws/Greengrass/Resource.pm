@@ -3,6 +3,7 @@ package Paws::Greengrass::Resource;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ResourceDataContainer => (is => 'ro', isa => 'Paws::Greengrass::ResourceDataContainer', required => 1);
+
 1;
 
 ### main pod documentation begin ###

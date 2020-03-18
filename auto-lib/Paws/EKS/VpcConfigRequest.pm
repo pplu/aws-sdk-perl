@@ -5,6 +5,7 @@ package Paws::EKS::VpcConfigRequest;
   has PublicAccessCidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'publicAccessCidrs', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

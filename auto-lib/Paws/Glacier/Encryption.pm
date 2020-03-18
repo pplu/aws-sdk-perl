@@ -3,6 +3,7 @@ package Paws::Glacier::Encryption;
   has EncryptionType => (is => 'ro', isa => 'Str');
   has KMSContext => (is => 'ro', isa => 'Str');
   has KMSKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

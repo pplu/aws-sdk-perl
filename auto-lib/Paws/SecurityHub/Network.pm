@@ -11,6 +11,7 @@ package Paws::SecurityHub::Network;
   has SourceIpV6 => (is => 'ro', isa => 'Str');
   has SourceMac => (is => 'ro', isa => 'Str');
   has SourcePort => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MTurk::PolicyParameter;
   has Key => (is => 'ro', isa => 'Str');
   has MapEntries => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::ParameterMapEntry]');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

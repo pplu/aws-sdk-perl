@@ -6,6 +6,7 @@ package Paws::Chime::PhoneNumberCapabilities;
   has OutboundCall => (is => 'ro', isa => 'Bool');
   has OutboundMMS => (is => 'ro', isa => 'Bool');
   has OutboundSMS => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

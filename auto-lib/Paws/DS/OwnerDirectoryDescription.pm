@@ -6,6 +6,7 @@ package Paws::DS::OwnerDirectoryDescription;
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
   has RadiusStatus => (is => 'ro', isa => 'Str');
   has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettingsDescription');
+
 1;
 
 ### main pod documentation begin ###

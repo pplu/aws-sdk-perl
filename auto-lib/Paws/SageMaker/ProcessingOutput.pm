@@ -2,6 +2,7 @@ package Paws::SageMaker::ProcessingOutput;
   use Moose;
   has OutputName => (is => 'ro', isa => 'Str', required => 1);
   has S3Output => (is => 'ro', isa => 'Paws::SageMaker::ProcessingS3Output', required => 1);
+
 1;
 
 ### main pod documentation begin ###

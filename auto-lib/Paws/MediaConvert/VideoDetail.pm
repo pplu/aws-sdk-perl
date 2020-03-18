@@ -2,6 +2,7 @@ package Paws::MediaConvert::VideoDetail;
   use Moose;
   has HeightInPx => (is => 'ro', isa => 'Int', request_name => 'heightInPx', traits => ['NameInRequest']);
   has WidthInPx => (is => 'ro', isa => 'Int', request_name => 'widthInPx', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SageMaker::MonitoringOutputConfig;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MonitoringOutputs => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MonitoringOutput]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

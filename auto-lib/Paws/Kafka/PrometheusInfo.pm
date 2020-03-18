@@ -2,6 +2,7 @@ package Paws::Kafka::PrometheusInfo;
   use Moose;
   has JmxExporter => (is => 'ro', isa => 'Paws::Kafka::JmxExporterInfo', request_name => 'jmxExporter', traits => ['NameInRequest']);
   has NodeExporter => (is => 'ro', isa => 'Paws::Kafka::NodeExporterInfo', request_name => 'nodeExporter', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

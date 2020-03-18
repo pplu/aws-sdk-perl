@@ -7,6 +7,7 @@ package Paws::Pinpoint::EmailMessage;
   has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SimpleEmail => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmail');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+
 1;
 
 ### main pod documentation begin ###

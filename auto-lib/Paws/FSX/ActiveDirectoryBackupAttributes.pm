@@ -2,6 +2,7 @@ package Paws::FSX::ActiveDirectoryBackupAttributes;
   use Moose;
   has ActiveDirectoryId => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

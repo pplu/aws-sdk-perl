@@ -1,6 +1,7 @@
 package Paws::AppMesh::HttpRouteAction;
   use Moose;
   has WeightedTargets => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::WeightedTarget]', request_name => 'weightedTargets', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

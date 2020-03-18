@@ -3,6 +3,7 @@ package Paws::SESv2::SuppressedDestinationSummary;
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
   has LastUpdateTime => (is => 'ro', isa => 'Str', required => 1);
   has Reason => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

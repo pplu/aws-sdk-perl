@@ -1,6 +1,7 @@
 package Paws::LakeFormation::DataLocationResource;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

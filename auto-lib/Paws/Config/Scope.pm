@@ -4,6 +4,7 @@ package Paws::Config::Scope;
   has ComplianceResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagKey => (is => 'ro', isa => 'Str');
   has TagValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

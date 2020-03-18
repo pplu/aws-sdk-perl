@@ -12,6 +12,7 @@ package Paws::CloudFormation::StackSetOperation;
   has StackSetDriftDetectionDetails => (is => 'ro', isa => 'Paws::CloudFormation::StackSetDriftDetectionDetails');
   has StackSetId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

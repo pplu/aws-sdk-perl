@@ -6,6 +6,7 @@ package Paws::IoTThingsGraph::FlowExecutionSummary;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has SystemInstanceId => (is => 'ro', isa => 'Str', request_name => 'systemInstanceId', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

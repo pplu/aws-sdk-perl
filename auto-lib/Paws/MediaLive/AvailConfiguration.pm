@@ -1,6 +1,7 @@
 package Paws::MediaLive::AvailConfiguration;
   use Moose;
   has AvailSettings => (is => 'ro', isa => 'Paws::MediaLive::AvailSettings', request_name => 'availSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

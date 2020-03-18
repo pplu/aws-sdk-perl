@@ -1,6 +1,7 @@
 package Paws::ServiceDiscovery::HttpProperties;
   use Moose;
   has HttpName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

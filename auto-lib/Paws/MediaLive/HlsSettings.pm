@@ -3,6 +3,7 @@ package Paws::MediaLive::HlsSettings;
   has AudioOnlyHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioOnlyHlsSettings', request_name => 'audioOnlyHlsSettings', traits => ['NameInRequest']);
   has Fmp4HlsSettings => (is => 'ro', isa => 'Paws::MediaLive::Fmp4HlsSettings', request_name => 'fmp4HlsSettings', traits => ['NameInRequest']);
   has StandardHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::StandardHlsSettings', request_name => 'standardHlsSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

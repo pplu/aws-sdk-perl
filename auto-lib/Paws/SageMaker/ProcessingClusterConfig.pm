@@ -4,6 +4,7 @@ package Paws::SageMaker::ProcessingClusterConfig;
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
   has VolumeSizeInGB => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

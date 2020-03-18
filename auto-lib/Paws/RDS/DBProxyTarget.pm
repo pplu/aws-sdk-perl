@@ -6,6 +6,7 @@ package Paws::RDS::DBProxyTarget;
   has TargetArn => (is => 'ro', isa => 'Str');
   has TrackedClusterId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

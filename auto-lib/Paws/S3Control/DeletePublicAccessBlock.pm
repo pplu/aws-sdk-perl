@@ -3,6 +3,7 @@ package Paws::S3Control::DeletePublicAccessBlock;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePublicAccessBlock');
@@ -11,6 +12,7 @@ package Paws::S3Control::DeletePublicAccessBlock;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

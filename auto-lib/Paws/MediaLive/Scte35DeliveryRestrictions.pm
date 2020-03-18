@@ -4,6 +4,7 @@ package Paws::MediaLive::Scte35DeliveryRestrictions;
   has DeviceRestrictions => (is => 'ro', isa => 'Str', request_name => 'deviceRestrictions', traits => ['NameInRequest'], required => 1);
   has NoRegionalBlackoutFlag => (is => 'ro', isa => 'Str', request_name => 'noRegionalBlackoutFlag', traits => ['NameInRequest'], required => 1);
   has WebDeliveryAllowedFlag => (is => 'ro', isa => 'Str', request_name => 'webDeliveryAllowedFlag', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

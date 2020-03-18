@@ -1,6 +1,7 @@
 package Paws::QLDBSession::StartSessionResult;
   use Moose;
   has SessionToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

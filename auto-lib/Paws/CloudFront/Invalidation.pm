@@ -4,6 +4,7 @@ package Paws::CloudFront::Invalidation;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has InvalidationBatch => (is => 'ro', isa => 'Paws::CloudFront::InvalidationBatch', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::PersonalizeRuntime::PredictedItem;
   use Moose;
   has ItemId => (is => 'ro', isa => 'Str', request_name => 'itemId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

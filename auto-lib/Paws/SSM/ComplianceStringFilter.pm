@@ -3,6 +3,7 @@ package Paws::SSM::ComplianceStringFilter;
   has Key => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

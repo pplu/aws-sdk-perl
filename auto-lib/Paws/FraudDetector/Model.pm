@@ -8,6 +8,7 @@ package Paws::FraudDetector::Model;
   has ModelType => (is => 'ro', isa => 'Str', request_name => 'modelType', traits => ['NameInRequest']);
   has ModelVariables => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::ModelVariable]', request_name => 'modelVariables', traits => ['NameInRequest']);
   has TrainingDataSource => (is => 'ro', isa => 'Paws::FraudDetector::TrainingDataSource', request_name => 'trainingDataSource', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

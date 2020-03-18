@@ -3,6 +3,7 @@ package Paws::DMS::ReplicationInstanceTaskLog;
   has ReplicationInstanceTaskLogSize => (is => 'ro', isa => 'Int');
   has ReplicationTaskArn => (is => 'ro', isa => 'Str');
   has ReplicationTaskName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

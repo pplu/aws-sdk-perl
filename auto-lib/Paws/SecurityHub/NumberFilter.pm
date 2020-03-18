@@ -3,6 +3,7 @@ package Paws::SecurityHub::NumberFilter;
   has Eq => (is => 'ro', isa => 'Num');
   has Gte => (is => 'ro', isa => 'Num');
   has Lte => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

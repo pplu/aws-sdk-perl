@@ -2,6 +2,7 @@ package Paws::ECS::EFSVolumeConfiguration;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', request_name => 'fileSystemId', traits => ['NameInRequest'], required => 1);
   has RootDirectory => (is => 'ro', isa => 'Str', request_name => 'rootDirectory', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

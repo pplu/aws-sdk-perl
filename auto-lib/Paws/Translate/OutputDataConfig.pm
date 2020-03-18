@@ -1,6 +1,7 @@
 package Paws::Translate::OutputDataConfig;
   use Moose;
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

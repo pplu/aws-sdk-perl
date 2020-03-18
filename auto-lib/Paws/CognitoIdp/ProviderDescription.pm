@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ProviderDescription;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has ProviderName => (is => 'ro', isa => 'Str');
   has ProviderType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::Pinpoint::DirectMessageConfiguration;
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
   has VoiceMessage => (is => 'ro', isa => 'Paws::Pinpoint::VoiceMessage');
+
 1;
 
 ### main pod documentation begin ###
@@ -68,12 +69,13 @@ channel. This message overrides the default push notification message
 
 =head2 DefaultMessage => L<Paws::Pinpoint::DefaultMessage>
 
-  The default message body for all channels.
+  The default message for all channels.
 
 
 =head2 DefaultPushNotificationMessage => L<Paws::Pinpoint::DefaultPushNotificationMessage>
 
-  The default push notification message for all push channels.
+  The default push notification message for all push notification
+channels.
 
 
 =head2 EmailMessage => L<Paws::Pinpoint::EmailMessage>

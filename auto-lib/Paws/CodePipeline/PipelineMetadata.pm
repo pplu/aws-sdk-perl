@@ -3,6 +3,7 @@ package Paws::CodePipeline::PipelineMetadata;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has PipelineArn => (is => 'ro', isa => 'Str', request_name => 'pipelineArn', traits => ['NameInRequest']);
   has Updated => (is => 'ro', isa => 'Str', request_name => 'updated', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

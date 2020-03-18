@@ -16,6 +16,7 @@ package Paws::CostExplorer::SavingsPlansPurchaseRecommendationDetail;
   has HourlyCommitmentToPurchase => (is => 'ro', isa => 'Str');
   has SavingsPlansDetails => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansDetails');
   has UpfrontCost => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

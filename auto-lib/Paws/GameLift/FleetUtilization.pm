@@ -5,6 +5,7 @@ package Paws::GameLift::FleetUtilization;
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

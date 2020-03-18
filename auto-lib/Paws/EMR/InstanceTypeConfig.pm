@@ -6,6 +6,7 @@ package Paws::EMR::InstanceTypeConfig;
   has EbsConfiguration => (is => 'ro', isa => 'Paws::EMR::EbsConfiguration');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has WeightedCapacity => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

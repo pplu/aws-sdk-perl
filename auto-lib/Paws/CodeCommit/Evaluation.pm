@@ -4,6 +4,7 @@ package Paws::CodeCommit::Evaluation;
   has ApprovalRulesSatisfied => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'approvalRulesSatisfied', traits => ['NameInRequest']);
   has Approved => (is => 'ro', isa => 'Bool', request_name => 'approved', traits => ['NameInRequest']);
   has Overridden => (is => 'ro', isa => 'Bool', request_name => 'overridden', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

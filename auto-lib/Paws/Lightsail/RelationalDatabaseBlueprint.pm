@@ -6,6 +6,7 @@ package Paws::Lightsail::RelationalDatabaseBlueprint;
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has EngineVersionDescription => (is => 'ro', isa => 'Str', request_name => 'engineVersionDescription', traits => ['NameInRequest']);
   has IsEngineDefault => (is => 'ro', isa => 'Bool', request_name => 'isEngineDefault', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

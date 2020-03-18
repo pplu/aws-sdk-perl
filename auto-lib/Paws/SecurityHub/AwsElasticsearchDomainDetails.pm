@@ -10,6 +10,7 @@ package Paws::SecurityHub::AwsElasticsearchDomainDetails;
   has Endpoints => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
   has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainNodeToNodeEncryptionOptions');
   has VPCOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainVPCOptions');
+
 1;
 
 ### main pod documentation begin ###

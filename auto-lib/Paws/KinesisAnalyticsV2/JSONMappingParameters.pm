@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::JSONMappingParameters;
   use Moose;
   has RecordRowPath => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

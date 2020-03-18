@@ -6,6 +6,7 @@ package Paws::RDS::VpnDetails;
   has VpnPSK => (is => 'ro', isa => 'Str');
   has VpnState => (is => 'ro', isa => 'Str');
   has VpnTunnelOriginatorIP => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

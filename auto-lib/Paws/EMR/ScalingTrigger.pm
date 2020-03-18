@@ -1,6 +1,7 @@
 package Paws::EMR::ScalingTrigger;
   use Moose;
   has CloudWatchAlarmDefinition => (is => 'ro', isa => 'Paws::EMR::CloudWatchAlarmDefinition', required => 1);
+
 1;
 
 ### main pod documentation begin ###

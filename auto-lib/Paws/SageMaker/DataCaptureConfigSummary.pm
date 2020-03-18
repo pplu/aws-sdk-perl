@@ -5,6 +5,7 @@ package Paws::SageMaker::DataCaptureConfigSummary;
   has DestinationS3Uri => (is => 'ro', isa => 'Str', required => 1);
   has EnableCapture => (is => 'ro', isa => 'Bool', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

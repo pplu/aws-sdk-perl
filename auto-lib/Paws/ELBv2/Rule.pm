@@ -5,6 +5,7 @@ package Paws::ELBv2::Rule;
   has IsDefault => (is => 'ro', isa => 'Bool');
   has Priority => (is => 'ro', isa => 'Str');
   has RuleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

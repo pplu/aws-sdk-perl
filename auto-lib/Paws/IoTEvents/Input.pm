@@ -2,6 +2,7 @@ package Paws::IoTEvents::Input;
   use Moose;
   has InputConfiguration => (is => 'ro', isa => 'Paws::IoTEvents::InputConfiguration', request_name => 'inputConfiguration', traits => ['NameInRequest']);
   has InputDefinition => (is => 'ro', isa => 'Paws::IoTEvents::InputDefinition', request_name => 'inputDefinition', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

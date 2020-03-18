@@ -3,6 +3,7 @@ package Paws::DynamoDB::Capacity;
   has CapacityUnits => (is => 'ro', isa => 'Num');
   has ReadCapacityUnits => (is => 'ro', isa => 'Num');
   has WriteCapacityUnits => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

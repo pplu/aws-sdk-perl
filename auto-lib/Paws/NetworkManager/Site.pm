@@ -8,6 +8,7 @@ package Paws::NetworkManager::Site;
   has SiteId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::NetworkManager::Tag]');
+
 1;
 
 ### main pod documentation begin ###

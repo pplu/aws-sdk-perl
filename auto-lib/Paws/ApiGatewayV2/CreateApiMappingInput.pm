@@ -3,6 +3,7 @@ package Paws::ApiGatewayV2::CreateApiMappingInput;
   has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest'], required => 1);
   has ApiMappingKey => (is => 'ro', isa => 'Str', request_name => 'apiMappingKey', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

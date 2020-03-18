@@ -1,6 +1,7 @@
 package Paws::AppMesh::VirtualRouterListener;
   use Moose;
   has PortMapping => (is => 'ro', isa => 'Paws::AppMesh::PortMapping', request_name => 'portMapping', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

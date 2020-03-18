@@ -12,8 +12,10 @@ package Paws::Pinpoint::WriteCampaignRequest;
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentVersion => (is => 'ro', isa => 'Int');
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  has TemplateConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::TemplateConfiguration');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +59,7 @@ campaign, in addition to the default treatment for the campaign.
 
 =head2 Description => Str
 
-  The custom description of the campaign.
+  A custom description of the campaign.
 
 
 =head2 HoldoutPercent => Int
@@ -115,9 +117,14 @@ associate with the campaign. Each tag consists of a required tag key
 and an associated tag value.
 
 
+=head2 TemplateConfiguration => L<Paws::Pinpoint::TemplateConfiguration>
+
+  The message template to use for the campaign.
+
+
 =head2 TreatmentDescription => Str
 
-  The custom description of a variation of the campaign to use for A/B
+  A custom description of a variation of the campaign to use for A/B
 testing.
 
 

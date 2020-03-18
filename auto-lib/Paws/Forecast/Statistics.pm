@@ -8,6 +8,7 @@ package Paws::Forecast::Statistics;
   has Max => (is => 'ro', isa => 'Str');
   has Min => (is => 'ro', isa => 'Str');
   has Stddev => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::AppStream::UserStackAssociation;
   has SendEmailNotification => (is => 'ro', isa => 'Bool');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

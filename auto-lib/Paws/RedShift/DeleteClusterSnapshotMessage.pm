@@ -2,6 +2,7 @@ package Paws::RedShift::DeleteClusterSnapshotMessage;
   use Moose;
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

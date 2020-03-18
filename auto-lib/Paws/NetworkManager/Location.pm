@@ -3,6 +3,7 @@ package Paws::NetworkManager::Location;
   has Address => (is => 'ro', isa => 'Str');
   has Latitude => (is => 'ro', isa => 'Str');
   has Longitude => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

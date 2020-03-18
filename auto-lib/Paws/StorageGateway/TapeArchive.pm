@@ -10,6 +10,7 @@ package Paws::StorageGateway::TapeArchive;
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
   has TapeUsedInBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

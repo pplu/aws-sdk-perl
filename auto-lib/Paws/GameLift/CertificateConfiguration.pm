@@ -1,6 +1,7 @@
 package Paws::GameLift::CertificateConfiguration;
   use Moose;
   has CertificateType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

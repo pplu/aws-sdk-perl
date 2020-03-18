@@ -4,6 +4,7 @@ package Paws::CostExplorer::CoverageNormalizedUnits;
   has OnDemandNormalizedUnits => (is => 'ro', isa => 'Str');
   has ReservedNormalizedUnits => (is => 'ro', isa => 'Str');
   has TotalRunningNormalizedUnits => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::S3::Destination;
   has Metrics => (is => 'ro', isa => 'Paws::S3::Metrics');
   has ReplicationTime => (is => 'ro', isa => 'Paws::S3::ReplicationTime');
   has StorageClass => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

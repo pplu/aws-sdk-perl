@@ -8,6 +8,7 @@ package Paws::Inspector::AssetAttributes;
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

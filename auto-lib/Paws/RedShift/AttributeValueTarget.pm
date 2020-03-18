@@ -1,6 +1,7 @@
 package Paws::RedShift::AttributeValueTarget;
   use Moose;
   has AttributeValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,8 @@
 
 package Paws::S3::CreateBucketOutput;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  has Location => (is => 'ro', isa => 'Str', header_name => 'Location', traits => ['ParamInHeader']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

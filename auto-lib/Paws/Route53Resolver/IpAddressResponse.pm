@@ -7,6 +7,7 @@ package Paws::Route53Resolver::IpAddressResponse;
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

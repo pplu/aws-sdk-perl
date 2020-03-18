@@ -1,6 +1,7 @@
 package Paws::Personalize::BatchInferenceJobInput;
   use Moose;
   has S3DataSource => (is => 'ro', isa => 'Paws::Personalize::S3DataConfig', request_name => 's3DataSource', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

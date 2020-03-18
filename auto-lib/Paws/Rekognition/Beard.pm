@@ -2,6 +2,7 @@ package Paws::Rekognition::Beard;
   use Moose;
   has Confidence => (is => 'ro', isa => 'Num');
   has Value => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::AppMesh::VirtualRouterServiceProvider;
   use Moose;
   has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

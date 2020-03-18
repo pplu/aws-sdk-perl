@@ -2,6 +2,7 @@ package Paws::IAM::ListPoliciesGrantingServiceAccessEntry;
   use Moose;
   has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyGrantingServiceAccess]');
   has ServiceNamespace => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

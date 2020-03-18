@@ -3,6 +3,7 @@ package Paws::PerformanceInsights::DimensionGroup;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Group => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

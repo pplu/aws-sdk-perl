@@ -2,6 +2,7 @@ package Paws::Athena::ResultSet;
   use Moose;
   has ResultSetMetadata => (is => 'ro', isa => 'Paws::Athena::ResultSetMetadata');
   has Rows => (is => 'ro', isa => 'ArrayRef[Paws::Athena::Row]');
+
 1;
 
 ### main pod documentation begin ###

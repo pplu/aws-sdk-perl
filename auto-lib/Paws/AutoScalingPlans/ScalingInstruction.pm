@@ -14,6 +14,7 @@ package Paws::AutoScalingPlans::ScalingInstruction;
   has ScheduledActionBufferTime => (is => 'ro', isa => 'Int');
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has TargetTrackingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::TargetTrackingConfiguration]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

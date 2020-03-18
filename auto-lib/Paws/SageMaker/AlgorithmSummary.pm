@@ -5,6 +5,7 @@ package Paws::SageMaker::AlgorithmSummary;
   has AlgorithmName => (is => 'ro', isa => 'Str', required => 1);
   has AlgorithmStatus => (is => 'ro', isa => 'Str', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

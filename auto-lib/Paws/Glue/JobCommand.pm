@@ -3,6 +3,7 @@ package Paws::Glue::JobCommand;
   has Name => (is => 'ro', isa => 'Str');
   has PythonVersion => (is => 'ro', isa => 'Str');
   has ScriptLocation => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

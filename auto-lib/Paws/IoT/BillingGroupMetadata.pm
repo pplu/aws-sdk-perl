@@ -1,6 +1,7 @@
 package Paws::IoT::BillingGroupMetadata;
   use Moose;
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

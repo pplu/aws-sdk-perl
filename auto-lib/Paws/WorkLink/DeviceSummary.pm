@@ -2,6 +2,7 @@ package Paws::WorkLink::DeviceSummary;
   use Moose;
   has DeviceId => (is => 'ro', isa => 'Str');
   has DeviceStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Budgets::BudgetedAndActualAmounts;
   has ActualAmount => (is => 'ro', isa => 'Paws::Budgets::Spend');
   has BudgetedAmount => (is => 'ro', isa => 'Paws::Budgets::Spend');
   has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
+
 1;
 
 ### main pod documentation begin ###

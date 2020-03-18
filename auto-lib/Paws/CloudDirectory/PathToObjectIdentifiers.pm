@@ -2,6 +2,7 @@ package Paws::CloudDirectory::PathToObjectIdentifiers;
   use Moose;
   has ObjectIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Quicksight::GeoSpatialColumnGroup;
   has Columns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has CountryCode => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

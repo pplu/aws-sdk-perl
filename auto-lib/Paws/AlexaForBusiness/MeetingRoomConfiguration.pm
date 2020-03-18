@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::MeetingRoomConfiguration;
   has InstantBooking => (is => 'ro', isa => 'Paws::AlexaForBusiness::InstantBooking');
   has RequireCheckIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::RequireCheckIn');
   has RoomUtilizationMetricsEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Route53::ResourceTagSet;
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

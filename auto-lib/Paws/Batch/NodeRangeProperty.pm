@@ -2,6 +2,7 @@ package Paws::Batch::NodeRangeProperty;
   use Moose;
   has Container => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', request_name => 'container', traits => ['NameInRequest']);
   has TargetNodes => (is => 'ro', isa => 'Str', request_name => 'targetNodes', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

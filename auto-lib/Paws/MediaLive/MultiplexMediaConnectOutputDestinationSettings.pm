@@ -1,6 +1,7 @@
 package Paws::MediaLive::MultiplexMediaConnectOutputDestinationSettings;
   use Moose;
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

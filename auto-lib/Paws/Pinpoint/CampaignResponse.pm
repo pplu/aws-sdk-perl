@@ -1,4 +1,3 @@
-
 package Paws::Pinpoint::CampaignResponse;
   use Moose;
   has AdditionalTreatments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::TreatmentResource]');
@@ -19,12 +18,12 @@ package Paws::Pinpoint::CampaignResponse;
   has SegmentId => (is => 'ro', isa => 'Str', required => 1);
   has SegmentVersion => (is => 'ro', isa => 'Int', required => 1);
   has State => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  has TemplateConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::TemplateConfiguration');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 
-  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -33,132 +32,170 @@ package Paws::Pinpoint::CampaignResponse;
 
 Paws::Pinpoint::CampaignResponse
 
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Pinpoint::CampaignResponse object:
+
+  $service_obj->Method(Att1 => { AdditionalTreatments => $value, ..., Version => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::CampaignResponse object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->AdditionalTreatments
+
+=head1 DESCRIPTION
+
+Provides information about the status, configuration, and other
+settings for a campaign.
+
 =head1 ATTRIBUTES
 
 
 =head2 AdditionalTreatments => ArrayRef[L<Paws::Pinpoint::TreatmentResource>]
 
-An array of responses, one for each treatment that you defined for the
+  An array of responses, one for each treatment that you defined for the
 campaign, in addition to the default treatment.
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique identifier for the application that the campaign applies to.
+  The unique identifier for the application that the campaign applies to.
 
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the campaign.
+  The Amazon Resource Name (ARN) of the campaign.
 
 
 =head2 B<REQUIRED> CreationDate => Str
 
-The date, ISO 8601 format, when the campaign was created.
+  The date, in ISO 8601 format, when the campaign was created.
 
 
 =head2 DefaultState => L<Paws::Pinpoint::CampaignState>
 
-The current status of the campaign's default treatment. This value
+  The current status of the campaign's default treatment. This value
 exists only for campaigns that have more than one treatment, to support
 A/B testing.
 
 
 =head2 Description => Str
 
-The custom description of the campaign.
+  The custom description of the campaign.
 
 
 =head2 HoldoutPercent => Int
 
-The allocated percentage of users (segment members) who shouldn't
+  The allocated percentage of users (segment members) who shouldn't
 receive messages from the campaign.
 
 
 =head2 Hook => L<Paws::Pinpoint::CampaignHook>
 
-The settings for the AWS Lambda function to use as a code hook for the
+  The settings for the AWS Lambda function to use as a code hook for the
 campaign.
 
 
 =head2 B<REQUIRED> Id => Str
 
-The unique identifier for the campaign.
+  The unique identifier for the campaign.
 
 
 =head2 IsPaused => Bool
 
-Specifies whether the campaign is paused. A paused campaign doesn't run
+  Specifies whether the campaign is paused. A paused campaign doesn't run
 unless you resume it by changing this value to false.
 
 
 =head2 B<REQUIRED> LastModifiedDate => Str
 
-The date, in ISO 8601 format, when the campaign was last modified.
+  The date, in ISO 8601 format, when the campaign was last modified.
 
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
 
-The messaging limits for the campaign.
+  The messaging limits for the campaign.
 
 
 =head2 MessageConfiguration => L<Paws::Pinpoint::MessageConfiguration>
 
-The message configuration settings for the campaign.
+  The message configuration settings for the campaign.
 
 
 =head2 Name => Str
 
-The name of the campaign.
+  The name of the campaign.
 
 
 =head2 Schedule => L<Paws::Pinpoint::Schedule>
 
-The schedule settings for the campaign.
+  The schedule settings for the campaign.
 
 
 =head2 B<REQUIRED> SegmentId => Str
 
-The unique identifier for the segment that's associated with the
+  The unique identifier for the segment that's associated with the
 campaign.
 
 
 =head2 B<REQUIRED> SegmentVersion => Int
 
-The version number of the segment that's associated with the campaign.
+  The version number of the segment that's associated with the campaign.
 
 
 =head2 State => L<Paws::Pinpoint::CampaignState>
 
-The current status of the campaign.
+  The current status of the campaign.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>
 
-A string-to-string map of key-value pairs that identifies the tags that
+  A string-to-string map of key-value pairs that identifies the tags that
 are associated with the campaign. Each tag consists of a required tag
 key and an associated tag value.
 
 
+=head2 TemplateConfiguration => L<Paws::Pinpoint::TemplateConfiguration>
+
+  The message template thatE<rsquo>s used for the campaign.
+
+
 =head2 TreatmentDescription => Str
 
-The custom description of a variation of the campaign that's used for
+  The custom description of a variation of the campaign that's used for
 A/B testing.
 
 
 =head2 TreatmentName => Str
 
-The custom name of a variation of the campaign that's used for A/B
+  The custom name of a variation of the campaign that's used for A/B
 testing.
 
 
 =head2 Version => Int
 
-The version number of the campaign.
+  The version number of the campaign.
 
 
-=head2 _request_id => Str
 
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

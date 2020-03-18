@@ -6,6 +6,7 @@ package Paws::IAM::AccessDetail;
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has TotalAuthenticatedEntities => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

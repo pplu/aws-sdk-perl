@@ -1,6 +1,7 @@
 package Paws::SecurityHub::AwsEc2SecurityGroupIpv6Range;
   use Moose;
   has CidrIpv6 => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::Message;
   use Moose;
   has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest'], required => 1);
   has Payload => (is => 'ro', isa => 'Str', request_name => 'payload', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

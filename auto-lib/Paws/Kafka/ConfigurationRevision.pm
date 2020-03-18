@@ -3,6 +3,7 @@ package Paws::Kafka::ConfigurationRevision;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

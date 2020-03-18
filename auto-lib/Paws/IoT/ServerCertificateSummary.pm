@@ -3,6 +3,7 @@ package Paws::IoT::ServerCertificateSummary;
   has ServerCertificateArn => (is => 'ro', isa => 'Str', request_name => 'serverCertificateArn', traits => ['NameInRequest']);
   has ServerCertificateStatus => (is => 'ro', isa => 'Str', request_name => 'serverCertificateStatus', traits => ['NameInRequest']);
   has ServerCertificateStatusDetail => (is => 'ro', isa => 'Str', request_name => 'serverCertificateStatusDetail', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

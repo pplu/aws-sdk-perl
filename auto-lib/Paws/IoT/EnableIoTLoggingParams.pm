@@ -2,6 +2,7 @@ package Paws::IoT::EnableIoTLoggingParams;
   use Moose;
   has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest'], required => 1);
   has RoleArnForLogging => (is => 'ro', isa => 'Str', request_name => 'roleArnForLogging', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::AppSync::RelationalDatabaseDataSourceConfig;
   use Moose;
   has RdsHttpEndpointConfig => (is => 'ro', isa => 'Paws::AppSync::RdsHttpEndpointConfig', request_name => 'rdsHttpEndpointConfig', traits => ['NameInRequest']);
   has RelationalDatabaseSourceType => (is => 'ro', isa => 'Str', request_name => 'relationalDatabaseSourceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

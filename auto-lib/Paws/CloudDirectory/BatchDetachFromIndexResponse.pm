@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchDetachFromIndexResponse;
   use Moose;
   has DetachedObjectIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

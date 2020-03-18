@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::Template;
   use Moose;
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

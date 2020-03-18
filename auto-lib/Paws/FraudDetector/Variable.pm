@@ -8,6 +8,7 @@ package Paws::FraudDetector::Variable;
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has VariableType => (is => 'ro', isa => 'Str', request_name => 'variableType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Amplify::Artifact;
   use Moose;
   has ArtifactFileName => (is => 'ro', isa => 'Str', request_name => 'artifactFileName', traits => ['NameInRequest'], required => 1);
   has ArtifactId => (is => 'ro', isa => 'Str', request_name => 'artifactId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::RDS::UserAuthConfig;
   has IAMAuth => (is => 'ro', isa => 'Str');
   has SecretArn => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

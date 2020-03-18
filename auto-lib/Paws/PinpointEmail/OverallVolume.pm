@@ -3,6 +3,7 @@ package Paws::PinpointEmail::OverallVolume;
   has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainIspPlacement]');
   has ReadRatePercent => (is => 'ro', isa => 'Num');
   has VolumeStatistics => (is => 'ro', isa => 'Paws::PinpointEmail::VolumeStatistics');
+
 1;
 
 ### main pod documentation begin ###

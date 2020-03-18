@@ -3,6 +3,7 @@ package Paws::Quicksight::MySqlParameters;
   has Database => (is => 'ro', isa => 'Str', required => 1);
   has Host => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

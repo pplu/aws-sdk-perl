@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $opsworks = Paws->service('OpsWorks');
     my $DescribeAppsResult = $opsworks->DescribeApps(
-      AppIds => [ 'MyString', ... ],    # OPTIONAL
-      StackId => 'MyString',            # OPTIONAL
+      AppIds  => [ 'MyString', ... ],    # OPTIONAL
+      StackId => 'MyString',             # OPTIONAL
     );
 
     # Results:

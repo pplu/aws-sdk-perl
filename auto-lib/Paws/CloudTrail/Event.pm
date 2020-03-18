@@ -9,6 +9,7 @@ package Paws::CloudTrail::Event;
   has ReadOnly => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Resource]');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

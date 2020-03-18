@@ -6,6 +6,7 @@ package Paws::PinpointSMSVoice::EventDestination;
   has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has SnsDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::SnsDestination');
+
 1;
 
 ### main pod documentation begin ###

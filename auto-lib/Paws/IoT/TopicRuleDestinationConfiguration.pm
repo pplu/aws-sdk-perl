@@ -1,6 +1,7 @@
 package Paws::IoT::TopicRuleDestinationConfiguration;
   use Moose;
   has HttpUrlConfiguration => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationConfiguration', request_name => 'httpUrlConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

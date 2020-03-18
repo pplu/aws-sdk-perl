@@ -3,6 +3,7 @@ package Paws::GlobalAccelerator::EndpointConfiguration;
   has ClientIPPreservationEnabled => (is => 'ro', isa => 'Bool');
   has EndpointId => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

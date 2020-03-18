@@ -6,6 +6,7 @@ package Paws::SageMaker::ContainerDefinition;
   has Mode => (is => 'ro', isa => 'Str');
   has ModelDataUrl => (is => 'ro', isa => 'Str');
   has ModelPackageName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

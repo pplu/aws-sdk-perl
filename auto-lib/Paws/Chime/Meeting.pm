@@ -3,6 +3,7 @@ package Paws::Chime::Meeting;
   has MediaPlacement => (is => 'ro', isa => 'Paws::Chime::MediaPlacement');
   has MediaRegion => (is => 'ro', isa => 'Str');
   has MeetingId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

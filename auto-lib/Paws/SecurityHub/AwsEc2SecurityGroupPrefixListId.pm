@@ -1,6 +1,7 @@
 package Paws::SecurityHub::AwsEc2SecurityGroupPrefixListId;
   use Moose;
   has PrefixListId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

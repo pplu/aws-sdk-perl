@@ -1,6 +1,7 @@
 package Paws::DataExchange::S3SnapshotAsset;
   use Moose;
   has Size => (is => 'ro', isa => 'Num', required => 1);
+
 1;
 
 ### main pod documentation begin ###

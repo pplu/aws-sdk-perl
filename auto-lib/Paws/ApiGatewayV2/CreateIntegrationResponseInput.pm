@@ -5,6 +5,7 @@ package Paws::ApiGatewayV2::CreateIntegrationResponseInput;
   has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', request_name => 'responseParameters', traits => ['NameInRequest']);
   has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', request_name => 'responseTemplates', traits => ['NameInRequest']);
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'templateSelectionExpression', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

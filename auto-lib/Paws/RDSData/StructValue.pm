@@ -1,6 +1,7 @@
 package Paws::RDSData::StructValue;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Value]', request_name => 'attributes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

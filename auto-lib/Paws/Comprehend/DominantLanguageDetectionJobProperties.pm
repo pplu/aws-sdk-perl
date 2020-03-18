@@ -11,6 +11,7 @@ package Paws::Comprehend::DominantLanguageDetectionJobProperties;
   has SubmitTime => (is => 'ro', isa => 'Str');
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

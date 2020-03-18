@@ -4,6 +4,7 @@ package Paws::CloudWatch::MetricStat;
   has Period => (is => 'ro', isa => 'Int', required => 1);
   has Stat => (is => 'ro', isa => 'Str', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

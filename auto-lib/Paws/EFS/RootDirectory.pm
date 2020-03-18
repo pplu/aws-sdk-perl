@@ -2,6 +2,7 @@ package Paws::EFS::RootDirectory;
   use Moose;
   has CreationInfo => (is => 'ro', isa => 'Paws::EFS::CreationInfo');
   has Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

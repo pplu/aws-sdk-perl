@@ -4,6 +4,7 @@ package Paws::MediaLive::AudioOnlyHlsSettings;
   has AudioOnlyImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'audioOnlyImage', traits => ['NameInRequest']);
   has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
   has SegmentType => (is => 'ro', isa => 'Str', request_name => 'segmentType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

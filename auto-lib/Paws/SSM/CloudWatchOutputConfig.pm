@@ -2,6 +2,7 @@ package Paws::SSM::CloudWatchOutputConfig;
   use Moose;
   has CloudWatchLogGroupName => (is => 'ro', isa => 'Str');
   has CloudWatchOutputEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

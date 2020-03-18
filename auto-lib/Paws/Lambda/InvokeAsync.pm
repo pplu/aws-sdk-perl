@@ -2,7 +2,7 @@
 package Paws::Lambda::InvokeAsync;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has InvokeArgs => (is => 'ro', isa => 'Str', required => 1);
+  has InvokeArgs => (is => 'ro', isa => 'Str', traits => ['ParamInBody'], required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'InvokeArgs');

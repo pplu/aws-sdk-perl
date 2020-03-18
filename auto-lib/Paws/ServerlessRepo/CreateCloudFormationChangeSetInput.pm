@@ -12,6 +12,7 @@ package Paws::ServerlessRepo::CreateCloudFormationChangeSetInput;
   has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TemplateId => (is => 'ro', isa => 'Str', request_name => 'templateId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

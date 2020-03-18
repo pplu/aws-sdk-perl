@@ -8,6 +8,7 @@ package Paws::DLM::Schedule;
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
   has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
   has VariableTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
+
 1;
 
 ### main pod documentation begin ###

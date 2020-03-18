@@ -2,6 +2,7 @@ package Paws::Kendra::TextWithHighlights;
   use Moose;
   has Highlights => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::Highlight]');
   has Text => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

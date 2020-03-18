@@ -3,6 +3,7 @@ package Paws::CloudFormation::ResourceIdentifierSummary;
   has LogicalResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

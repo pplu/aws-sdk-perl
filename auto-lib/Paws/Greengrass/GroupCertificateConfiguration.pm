@@ -3,6 +3,7 @@ package Paws::Greengrass::GroupCertificateConfiguration;
   has CertificateAuthorityExpiryInMilliseconds => (is => 'ro', isa => 'Str');
   has CertificateExpiryInMilliseconds => (is => 'ro', isa => 'Str');
   has GroupId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

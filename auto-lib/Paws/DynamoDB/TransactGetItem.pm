@@ -1,6 +1,7 @@
 package Paws::DynamoDB::TransactGetItem;
   use Moose;
   has Get => (is => 'ro', isa => 'Paws::DynamoDB::Get', required => 1);
+
 1;
 
 ### main pod documentation begin ###

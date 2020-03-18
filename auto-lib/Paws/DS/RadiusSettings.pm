@@ -8,6 +8,7 @@ package Paws::DS::RadiusSettings;
   has RadiusTimeout => (is => 'ro', isa => 'Int');
   has SharedSecret => (is => 'ro', isa => 'Str');
   has UseSameUsername => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

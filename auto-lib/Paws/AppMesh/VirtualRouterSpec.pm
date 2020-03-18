@@ -1,6 +1,7 @@
 package Paws::AppMesh::VirtualRouterSpec;
   use Moose;
   has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::VirtualRouterListener]', request_name => 'listeners', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

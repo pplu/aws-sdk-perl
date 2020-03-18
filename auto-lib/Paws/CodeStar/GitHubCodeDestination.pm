@@ -7,6 +7,7 @@ package Paws::CodeStar::GitHubCodeDestination;
   has PrivateRepository => (is => 'ro', isa => 'Bool', request_name => 'privateRepository', traits => ['NameInRequest'], required => 1);
   has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

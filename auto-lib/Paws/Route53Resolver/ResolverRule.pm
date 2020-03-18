@@ -12,6 +12,7 @@ package Paws::Route53Resolver::ResolverRule;
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has TargetIps => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::TargetAddress]');
+
 1;
 
 ### main pod documentation begin ###

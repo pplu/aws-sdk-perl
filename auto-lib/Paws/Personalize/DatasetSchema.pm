@@ -5,6 +5,7 @@ package Paws::Personalize::DatasetSchema;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest']);
   has SchemaArn => (is => 'ro', isa => 'Str', request_name => 'schemaArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

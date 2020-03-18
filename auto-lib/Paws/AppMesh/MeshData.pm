@@ -4,6 +4,7 @@ package Paws::AppMesh::MeshData;
   has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::MeshSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Paws::AppMesh::MeshStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

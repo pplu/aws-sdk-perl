@@ -3,6 +3,7 @@ package Paws::Kafka::BrokerSoftwareInfo;
   has ConfigurationArn => (is => 'ro', isa => 'Str', request_name => 'configurationArn', traits => ['NameInRequest']);
   has ConfigurationRevision => (is => 'ro', isa => 'Int', request_name => 'configurationRevision', traits => ['NameInRequest']);
   has KafkaVersion => (is => 'ro', isa => 'Str', request_name => 'kafkaVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::DocDB::DBInstanceStatusInfo;
   has Normal => (is => 'ro', isa => 'Bool');
   has Status => (is => 'ro', isa => 'Str');
   has StatusType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

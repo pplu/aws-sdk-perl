@@ -6,6 +6,7 @@ package Paws::ResourceTagging::Summary;
   has ResourceType => (is => 'ro', isa => 'Str');
   has TargetId => (is => 'ro', isa => 'Str');
   has TargetIdType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

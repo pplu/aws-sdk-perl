@@ -2,6 +2,7 @@ package Paws::IoT::Denied;
   use Moose;
   has ExplicitDeny => (is => 'ro', isa => 'Paws::IoT::ExplicitDeny', request_name => 'explicitDeny', traits => ['NameInRequest']);
   has ImplicitDeny => (is => 'ro', isa => 'Paws::IoT::ImplicitDeny', request_name => 'implicitDeny', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::S3::SelectObjectContentEventStream;
   has Progress => (is => 'ro', isa => 'Paws::S3::ProgressEvent');
   has Records => (is => 'ro', isa => 'Paws::S3::RecordsEvent');
   has Stats => (is => 'ro', isa => 'Paws::S3::StatsEvent');
+
 1;
 
 ### main pod documentation begin ###

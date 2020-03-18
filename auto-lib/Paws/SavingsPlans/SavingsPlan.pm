@@ -18,6 +18,7 @@ package Paws::SavingsPlans::SavingsPlan;
   has Tags => (is => 'ro', isa => 'Paws::SavingsPlans::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has TermDurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'termDurationInSeconds', traits => ['NameInRequest']);
   has UpfrontPaymentAmount => (is => 'ro', isa => 'Str', request_name => 'upfrontPaymentAmount', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

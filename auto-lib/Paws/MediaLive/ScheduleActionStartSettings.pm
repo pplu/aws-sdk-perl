@@ -3,6 +3,7 @@ package Paws::MediaLive::ScheduleActionStartSettings;
   has FixedModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FixedModeScheduleActionStartSettings', request_name => 'fixedModeScheduleActionStartSettings', traits => ['NameInRequest']);
   has FollowModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FollowModeScheduleActionStartSettings', request_name => 'followModeScheduleActionStartSettings', traits => ['NameInRequest']);
   has ImmediateModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::ImmediateModeScheduleActionStartSettings', request_name => 'immediateModeScheduleActionStartSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

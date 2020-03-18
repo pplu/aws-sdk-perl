@@ -3,6 +3,7 @@ package Paws::Robomaker::NetworkInterface;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
   has PublicIpAddress => (is => 'ro', isa => 'Str', request_name => 'publicIpAddress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

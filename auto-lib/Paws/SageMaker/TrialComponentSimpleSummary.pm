@@ -5,6 +5,7 @@ package Paws::SageMaker::TrialComponentSimpleSummary;
   has TrialComponentArn => (is => 'ro', isa => 'Str');
   has TrialComponentName => (is => 'ro', isa => 'Str');
   has TrialComponentSource => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentSource');
+
 1;
 
 ### main pod documentation begin ###

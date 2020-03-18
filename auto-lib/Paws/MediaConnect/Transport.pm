@@ -7,6 +7,7 @@ package Paws::MediaConnect::Transport;
   has RemoteId => (is => 'ro', isa => 'Str', request_name => 'remoteId', traits => ['NameInRequest']);
   has SmoothingLatency => (is => 'ro', isa => 'Int', request_name => 'smoothingLatency', traits => ['NameInRequest']);
   has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

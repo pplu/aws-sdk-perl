@@ -26,6 +26,7 @@ package Paws::ElastiCache::CacheCluster;
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

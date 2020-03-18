@@ -3,6 +3,7 @@ package Paws::SageMaker::SharingSettings;
   has NotebookOutputOption => (is => 'ro', isa => 'Str');
   has S3KmsKeyId => (is => 'ro', isa => 'Str');
   has S3OutputPath => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

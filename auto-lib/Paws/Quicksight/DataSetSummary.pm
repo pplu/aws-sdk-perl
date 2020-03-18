@@ -7,6 +7,7 @@ package Paws::Quicksight::DataSetSummary;
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RowLevelPermissionDataSet => (is => 'ro', isa => 'Paws::Quicksight::RowLevelPermissionDataSet');
+
 1;
 
 ### main pod documentation begin ###

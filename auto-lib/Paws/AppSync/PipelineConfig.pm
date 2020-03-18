@@ -1,6 +1,7 @@
 package Paws::AppSync::PipelineConfig;
   use Moose;
   has Functions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'functions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

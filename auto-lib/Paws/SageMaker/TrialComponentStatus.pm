@@ -2,6 +2,7 @@ package Paws::SageMaker::TrialComponentStatus;
   use Moose;
   has Message => (is => 'ro', isa => 'Str');
   has PrimaryStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

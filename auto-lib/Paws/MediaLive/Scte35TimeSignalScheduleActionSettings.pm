@@ -1,6 +1,7 @@
 package Paws::MediaLive::Scte35TimeSignalScheduleActionSettings;
   use Moose;
   has Scte35Descriptors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Scte35Descriptor]', request_name => 'scte35Descriptors', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

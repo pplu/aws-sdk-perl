@@ -6,6 +6,7 @@ package Paws::MediaConnect::Entitlement;
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

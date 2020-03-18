@@ -5,6 +5,7 @@ package Paws::CodeBuild::ProjectFileSystemLocation;
   has MountOptions => (is => 'ro', isa => 'Str', request_name => 'mountOptions', traits => ['NameInRequest']);
   has MountPoint => (is => 'ro', isa => 'Str', request_name => 'mountPoint', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

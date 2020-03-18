@@ -15,6 +15,7 @@ package Paws::WorkDocs::User;
   has TimeZoneId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

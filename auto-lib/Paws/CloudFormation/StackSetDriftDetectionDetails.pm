@@ -8,6 +8,7 @@ package Paws::CloudFormation::StackSetDriftDetectionDetails;
   has InSyncStackInstancesCount => (is => 'ro', isa => 'Int');
   has LastDriftCheckTimestamp => (is => 'ro', isa => 'Str');
   has TotalStackInstancesCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Rekognition::TestingDataResult;
   use Moose;
   has Input => (is => 'ro', isa => 'Paws::Rekognition::TestingData');
   has Output => (is => 'ro', isa => 'Paws::Rekognition::TestingData');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::SSM::OpsItemSummary;
   has Source => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Schemas::SchemaSummary;
   has SchemaName => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Schemas::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has VersionCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

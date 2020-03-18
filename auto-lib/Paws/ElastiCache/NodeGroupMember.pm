@@ -5,6 +5,7 @@ package Paws::ElastiCache::NodeGroupMember;
   has CurrentRole => (is => 'ro', isa => 'Str');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
   has ReadEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
+
 1;
 
 ### main pod documentation begin ###

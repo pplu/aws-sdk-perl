@@ -3,6 +3,7 @@ package Paws::IoTEventsData::Message;
   has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest'], required => 1);
   has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest'], required => 1);
   has Payload => (is => 'ro', isa => 'Str', request_name => 'payload', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

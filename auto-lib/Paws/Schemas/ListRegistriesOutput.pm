@@ -2,6 +2,7 @@ package Paws::Schemas::ListRegistriesOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Registries => (is => 'ro', isa => 'ArrayRef[Paws::Schemas::RegistrySummary]');
+
 1;
 
 ### main pod documentation begin ###

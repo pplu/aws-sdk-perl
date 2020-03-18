@@ -4,6 +4,7 @@ package Paws::ES::UpgradeHistory;
   has StepsList => (is => 'ro', isa => 'ArrayRef[Paws::ES::UpgradeStepItem]');
   has UpgradeName => (is => 'ro', isa => 'Str');
   has UpgradeStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

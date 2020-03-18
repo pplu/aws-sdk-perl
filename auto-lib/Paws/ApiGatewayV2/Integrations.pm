@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::Integrations;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::Integration]', request_name => 'items', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

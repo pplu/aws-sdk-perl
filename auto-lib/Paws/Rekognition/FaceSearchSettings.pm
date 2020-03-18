@@ -2,6 +2,7 @@ package Paws::Rekognition::FaceSearchSettings;
   use Moose;
   has CollectionId => (is => 'ro', isa => 'Str');
   has FaceMatchThreshold => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

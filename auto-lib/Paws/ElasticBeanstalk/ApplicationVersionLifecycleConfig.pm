@@ -2,6 +2,7 @@ package Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig;
   use Moose;
   has MaxAgeRule => (is => 'ro', isa => 'Paws::ElasticBeanstalk::MaxAgeRule');
   has MaxCountRule => (is => 'ro', isa => 'Paws::ElasticBeanstalk::MaxCountRule');
+
 1;
 
 ### main pod documentation begin ###

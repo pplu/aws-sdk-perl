@@ -3,6 +3,7 @@ package Paws::Glue::SkewedInfo;
   has SkewedColumnNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SkewedColumnValueLocationMaps => (is => 'ro', isa => 'Paws::Glue::LocationMap');
   has SkewedColumnValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

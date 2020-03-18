@@ -2,6 +2,7 @@ package Paws::EKS::RemoteAccessConfig;
   use Moose;
   has Ec2SshKey => (is => 'ro', isa => 'Str', request_name => 'ec2SshKey', traits => ['NameInRequest']);
   has SourceSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sourceSecurityGroups', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

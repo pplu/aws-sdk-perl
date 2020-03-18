@@ -5,6 +5,7 @@ package Paws::S3::InventoryS3BucketDestination;
   has Encryption => (is => 'ro', isa => 'Paws::S3::InventoryEncryption');
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

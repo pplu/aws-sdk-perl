@@ -1,5 +1,6 @@
 package Paws::IoTAnalytics::ServiceManagedChannelS3Storage;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

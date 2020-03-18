@@ -2,6 +2,7 @@ package Paws::MediaPackage::Authorization;
   use Moose;
   has CdnIdentifierSecret => (is => 'ro', isa => 'Str', request_name => 'cdnIdentifierSecret', traits => ['NameInRequest'], required => 1);
   has SecretsRoleArn => (is => 'ro', isa => 'Str', request_name => 'secretsRoleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

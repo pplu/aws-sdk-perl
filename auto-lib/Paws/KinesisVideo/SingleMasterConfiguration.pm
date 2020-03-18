@@ -1,6 +1,7 @@
 package Paws::KinesisVideo::SingleMasterConfiguration;
   use Moose;
   has MessageTtlSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

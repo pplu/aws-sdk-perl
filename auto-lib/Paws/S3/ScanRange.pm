@@ -2,6 +2,7 @@ package Paws::S3::ScanRange;
   use Moose;
   has End => (is => 'ro', isa => 'Int');
   has Start => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

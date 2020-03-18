@@ -1,6 +1,7 @@
 package Paws::GuardDuty::DnsRequestAction;
   use Moose;
   has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

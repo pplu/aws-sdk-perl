@@ -5,6 +5,7 @@ package Paws::IAM::PolicyGrantingServiceAccess;
   has PolicyArn => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

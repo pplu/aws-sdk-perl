@@ -3,6 +3,7 @@ package Paws::Cloud9::EnvironmentLifecycle;
   has FailureResource => (is => 'ro', isa => 'Str', request_name => 'failureResource', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

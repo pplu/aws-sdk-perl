@@ -4,6 +4,7 @@ package Paws::CloudTrail::EventSelector;
   has ExcludeManagementEventSources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IncludeManagementEvents => (is => 'ro', isa => 'Bool');
   has ReadWriteType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

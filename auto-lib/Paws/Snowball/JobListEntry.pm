@@ -7,6 +7,7 @@ package Paws::Snowball::JobListEntry;
   has JobState => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has SnowballType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

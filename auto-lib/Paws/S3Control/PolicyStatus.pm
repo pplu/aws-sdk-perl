@@ -1,6 +1,7 @@
 package Paws::S3Control::PolicyStatus;
   use Moose;
-  has IsPublic => (is => 'ro', isa => 'Bool', request_name => 'IsPublic', traits => ['NameInRequest']);
+  has IsPublic => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoTSecureTunneling::DestinationConfig;
   use Moose;
   has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest'], required => 1);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

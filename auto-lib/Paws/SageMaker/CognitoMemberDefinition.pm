@@ -3,6 +3,7 @@ package Paws::SageMaker::CognitoMemberDefinition;
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has UserGroup => (is => 'ro', isa => 'Str', required => 1);
   has UserPool => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

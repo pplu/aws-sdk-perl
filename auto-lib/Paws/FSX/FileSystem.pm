@@ -16,6 +16,7 @@ package Paws::FSX::FileSystem;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
   has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::WindowsFileSystemConfiguration');
+
 1;
 
 ### main pod documentation begin ###

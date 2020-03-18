@@ -7,6 +7,7 @@ package Paws::RDSData::Field;
   has IsNull => (is => 'ro', isa => 'Bool', request_name => 'isNull', traits => ['NameInRequest']);
   has LongValue => (is => 'ro', isa => 'Int', request_name => 'longValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

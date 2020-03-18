@@ -4,6 +4,7 @@ package Paws::Route53::GetHostedZoneLimitResponse;
   has Count => (is => 'ro', isa => 'Int', required => 1);
   has Limit => (is => 'ro', isa => 'Paws::Route53::HostedZoneLimit', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

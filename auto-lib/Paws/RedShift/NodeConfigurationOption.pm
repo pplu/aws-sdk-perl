@@ -4,6 +4,7 @@ package Paws::RedShift::NodeConfigurationOption;
   has Mode => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

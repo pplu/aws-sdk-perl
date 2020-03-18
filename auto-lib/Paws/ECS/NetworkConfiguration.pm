@@ -1,6 +1,7 @@
 package Paws::ECS::NetworkConfiguration;
   use Moose;
   has AwsvpcConfiguration => (is => 'ro', isa => 'Paws::ECS::AwsVpcConfiguration', request_name => 'awsvpcConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

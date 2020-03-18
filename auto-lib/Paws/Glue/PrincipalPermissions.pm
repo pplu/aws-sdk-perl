@@ -2,6 +2,7 @@ package Paws::Glue::PrincipalPermissions;
   use Moose;
   has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Principal => (is => 'ro', isa => 'Paws::Glue::DataLakePrincipal');
+
 1;
 
 ### main pod documentation begin ###

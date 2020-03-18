@@ -39,18 +39,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Amount => 'MyNumericValue',    # min: 1, max: 2147483647
           Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-        },    # OPTIONAL
+        },
         CalculatedSpend => {
           ActualSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
           ForecastedSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
         CostFilters => {
           'MyGenericString' => [
@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # key: max: 2147483647, value: OPTIONAL
+          },    # key: max: 2147483647
         },    # OPTIONAL
         TimePeriod => {
           End   => '1970-01-01T01:00:00',    # OPTIONAL

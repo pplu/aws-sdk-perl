@@ -1,6 +1,7 @@
 package Paws::SageMaker::HumanLoopActivationConditionsConfig;
   use Moose;
   has HumanLoopActivationConditions => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

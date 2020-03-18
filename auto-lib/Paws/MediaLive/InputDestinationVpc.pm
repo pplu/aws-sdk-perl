@@ -2,6 +2,7 @@ package Paws::MediaLive::InputDestinationVpc;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

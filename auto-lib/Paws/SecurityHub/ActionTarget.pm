@@ -3,6 +3,7 @@ package Paws::SecurityHub::ActionTarget;
   has ActionTargetArn => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

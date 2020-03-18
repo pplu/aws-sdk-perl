@@ -1,7 +1,8 @@
 package Paws::S3::AnalyticsAndOperator;
   use Moose;
   has Prefix => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', request_name => 'Tag', traits => ['NameInRequest','NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaLive::AvailSettings;
   use Moose;
   has Scte35SpliceInsert => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsert', request_name => 'scte35SpliceInsert', traits => ['NameInRequest']);
   has Scte35TimeSignalApos => (is => 'ro', isa => 'Paws::MediaLive::Scte35TimeSignalApos', request_name => 'scte35TimeSignalApos', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

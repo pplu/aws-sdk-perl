@@ -9,6 +9,7 @@ package Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes;
   has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
   has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'taskStartToCloseTimeout', traits => ['NameInRequest']);
   has WorkflowTypeVersion => (is => 'ro', isa => 'Str', request_name => 'workflowTypeVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

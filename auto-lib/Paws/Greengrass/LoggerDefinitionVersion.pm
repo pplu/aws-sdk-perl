@@ -1,6 +1,7 @@
 package Paws::Greengrass::LoggerDefinitionVersion;
   use Moose;
   has Loggers => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Logger]');
+
 1;
 
 ### main pod documentation begin ###

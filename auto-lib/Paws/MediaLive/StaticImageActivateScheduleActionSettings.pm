@@ -10,6 +10,7 @@ package Paws::MediaLive::StaticImageActivateScheduleActionSettings;
   has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
   has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

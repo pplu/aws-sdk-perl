@@ -4,6 +4,7 @@ package Paws::FSX::UpdateFileSystemWindowsConfiguration;
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
   has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

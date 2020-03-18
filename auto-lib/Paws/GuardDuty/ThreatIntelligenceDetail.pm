@@ -2,6 +2,7 @@ package Paws::GuardDuty::ThreatIntelligenceDetail;
   use Moose;
   has ThreatListName => (is => 'ro', isa => 'Str', request_name => 'threatListName', traits => ['NameInRequest']);
   has ThreatNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'threatNames', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

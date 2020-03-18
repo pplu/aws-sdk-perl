@@ -5,6 +5,7 @@ package Paws::Greengrass::ResourceDataContainer;
   has S3MachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::S3MachineLearningModelResourceData');
   has SageMakerMachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::SageMakerMachineLearningModelResourceData');
   has SecretsManagerSecretResourceData => (is => 'ro', isa => 'Paws::Greengrass::SecretsManagerSecretResourceData');
+
 1;
 
 ### main pod documentation begin ###

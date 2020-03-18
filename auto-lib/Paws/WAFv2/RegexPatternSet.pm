@@ -5,6 +5,7 @@ package Paws::WAFv2::RegexPatternSet;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RegularExpressionList => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::Regex]');
+
 1;
 
 ### main pod documentation begin ###

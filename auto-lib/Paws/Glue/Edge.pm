@@ -2,6 +2,7 @@ package Paws::Glue::Edge;
   use Moose;
   has DestinationId => (is => 'ro', isa => 'Str');
   has SourceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

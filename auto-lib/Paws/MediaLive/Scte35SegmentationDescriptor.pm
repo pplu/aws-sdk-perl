@@ -11,6 +11,7 @@ package Paws::MediaLive::Scte35SegmentationDescriptor;
   has SegmentsExpected => (is => 'ro', isa => 'Int', request_name => 'segmentsExpected', traits => ['NameInRequest']);
   has SubSegmentNum => (is => 'ro', isa => 'Int', request_name => 'subSegmentNum', traits => ['NameInRequest']);
   has SubSegmentsExpected => (is => 'ro', isa => 'Int', request_name => 'subSegmentsExpected', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

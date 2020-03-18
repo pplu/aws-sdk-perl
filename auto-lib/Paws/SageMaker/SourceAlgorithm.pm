@@ -2,6 +2,7 @@ package Paws::SageMaker::SourceAlgorithm;
   use Moose;
   has AlgorithmName => (is => 'ro', isa => 'Str', required => 1);
   has ModelDataUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

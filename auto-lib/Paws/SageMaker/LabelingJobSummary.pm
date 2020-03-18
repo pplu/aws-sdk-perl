@@ -12,6 +12,7 @@ package Paws::SageMaker::LabelingJobSummary;
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has PreHumanTaskLambdaArn => (is => 'ro', isa => 'Str', required => 1);
   has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

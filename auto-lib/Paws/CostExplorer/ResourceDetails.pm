@@ -1,6 +1,7 @@
 package Paws::CostExplorer::ResourceDetails;
   use Moose;
   has EC2ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::EC2ResourceDetails');
+
 1;
 
 ### main pod documentation begin ###

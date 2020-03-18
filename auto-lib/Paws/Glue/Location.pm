@@ -3,6 +3,7 @@ package Paws::Glue::Location;
   has DynamoDB => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
   has Jdbc => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
   has S3 => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::ResourceConfiguration;
   use Moose;
   has ComputeType => (is => 'ro', isa => 'Str', request_name => 'computeType', traits => ['NameInRequest'], required => 1);
   has VolumeSizeInGB => (is => 'ro', isa => 'Int', request_name => 'volumeSizeInGB', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

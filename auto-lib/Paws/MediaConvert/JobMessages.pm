@@ -2,6 +2,7 @@ package Paws::MediaConvert::JobMessages;
   use Moose;
   has Info => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'info', traits => ['NameInRequest']);
   has Warning => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'warning', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

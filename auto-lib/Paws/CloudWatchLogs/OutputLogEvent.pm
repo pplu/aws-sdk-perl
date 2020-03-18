@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::OutputLogEvent;
   has IngestionTime => (is => 'ro', isa => 'Int', request_name => 'ingestionTime', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

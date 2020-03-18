@@ -2,6 +2,7 @@ package Paws::Robomaker::BatchPolicy;
   use Moose;
   has MaxConcurrency => (is => 'ro', isa => 'Int', request_name => 'maxConcurrency', traits => ['NameInRequest']);
   has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

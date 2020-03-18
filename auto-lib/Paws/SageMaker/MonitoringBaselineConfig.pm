@@ -2,6 +2,7 @@ package Paws::SageMaker::MonitoringBaselineConfig;
   use Moose;
   has ConstraintsResource => (is => 'ro', isa => 'Paws::SageMaker::MonitoringConstraintsResource');
   has StatisticsResource => (is => 'ro', isa => 'Paws::SageMaker::MonitoringStatisticsResource');
+
 1;
 
 ### main pod documentation begin ###

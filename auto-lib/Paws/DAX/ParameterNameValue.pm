@@ -2,6 +2,7 @@ package Paws::DAX::ParameterNameValue;
   use Moose;
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

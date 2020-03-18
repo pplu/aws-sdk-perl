@@ -5,6 +5,7 @@ package Paws::SNS::Subscription;
   has Protocol => (is => 'ro', isa => 'Str');
   has SubscriptionArn => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::Pinpoint::EndpointMessageResult;
   has StatusCode => (is => 'ro', isa => 'Int', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
   has UpdatedToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +114,8 @@ UNKNOWN_FAILURE - An unknown error occurred.
 =head2 UpdatedToken => Str
 
   For push notifications that are sent through the GCM channel, specifies
-whether the token was updated as part of delivering the message.
+whether the endpoint's device registration token was updated as part of
+delivering the message.
 
 
 

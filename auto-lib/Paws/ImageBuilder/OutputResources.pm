@@ -1,6 +1,7 @@
 package Paws::ImageBuilder::OutputResources;
   use Moose;
   has Amis => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Ami]', request_name => 'amis', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

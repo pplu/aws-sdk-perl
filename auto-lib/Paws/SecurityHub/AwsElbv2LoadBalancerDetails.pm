@@ -10,6 +10,7 @@ package Paws::SecurityHub::AwsElbv2LoadBalancerDetails;
   has State => (is => 'ro', isa => 'Paws::SecurityHub::LoadBalancerState');
   has Type => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::QueryFilter;
   use Moose;
   has DeltaTime => (is => 'ro', isa => 'Paws::IoTAnalytics::DeltaTime', request_name => 'deltaTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

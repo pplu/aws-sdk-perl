@@ -2,6 +2,7 @@ package Paws::WAFv2::RuleGroupReferenceStatement;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str', required => 1);
   has ExcludedRules => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::ExcludedRule]');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Kendra::AccessControlListConfiguration;
   use Moose;
   has KeyPath => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::IoT::RoleAliasDescription;
   has RoleAlias => (is => 'ro', isa => 'Str', request_name => 'roleAlias', traits => ['NameInRequest']);
   has RoleAliasArn => (is => 'ro', isa => 'Str', request_name => 'roleAliasArn', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

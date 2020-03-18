@@ -2,6 +2,7 @@ package Paws::SES::SNSAction;
   use Moose;
   has Encoding => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

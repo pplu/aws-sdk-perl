@@ -5,6 +5,7 @@ package Paws::Kafka::MutableClusterInfo;
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', request_name => 'enhancedMonitoring', traits => ['NameInRequest']);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
   has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoring', request_name => 'openMonitoring', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

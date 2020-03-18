@@ -5,8 +5,10 @@ package Paws::Pinpoint::TreatmentResource;
   has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
   has SizePercent => (is => 'ro', isa => 'Int', required => 1);
   has State => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
+  has TemplateConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::TemplateConfiguration');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +68,12 @@ is sent to.
 
 =head2 State => L<Paws::Pinpoint::CampaignState>
 
-  The status of the treatment.
+  The current status of the treatment.
+
+
+=head2 TemplateConfiguration => L<Paws::Pinpoint::TemplateConfiguration>
+
+  The message template to use for the treatment.
 
 
 =head2 TreatmentDescription => Str

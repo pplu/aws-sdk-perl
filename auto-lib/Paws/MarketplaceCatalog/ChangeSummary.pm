@@ -3,6 +3,7 @@ package Paws::MarketplaceCatalog::ChangeSummary;
   has ChangeType => (is => 'ro', isa => 'Str');
   has Entity => (is => 'ro', isa => 'Paws::MarketplaceCatalog::Entity');
   has ErrorDetailList => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::ErrorDetail]');
+
 1;
 
 ### main pod documentation begin ###

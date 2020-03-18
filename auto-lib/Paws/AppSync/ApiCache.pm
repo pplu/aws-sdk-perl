@@ -6,6 +6,7 @@ package Paws::AppSync::ApiCache;
   has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool', request_name => 'transitEncryptionEnabled', traits => ['NameInRequest']);
   has Ttl => (is => 'ro', isa => 'Int', request_name => 'ttl', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

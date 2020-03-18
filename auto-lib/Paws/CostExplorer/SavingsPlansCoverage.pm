@@ -3,6 +3,7 @@ package Paws::CostExplorer::SavingsPlansCoverage;
   has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
   has Coverage => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansCoverageData');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaConvert::SpekeKeyProviderCmaf;
   has HlsSignaledSystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hlsSignaledSystemIds', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

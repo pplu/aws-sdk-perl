@@ -2,6 +2,7 @@ package Paws::Quicksight::ResourcePermission;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Principal => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

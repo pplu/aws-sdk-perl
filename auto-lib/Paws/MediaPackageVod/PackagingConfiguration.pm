@@ -7,6 +7,7 @@ package Paws::MediaPackageVod::PackagingConfiguration;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
   has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

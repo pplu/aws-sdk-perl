@@ -3,6 +3,7 @@ package Paws::EKS::Issue;
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceIds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

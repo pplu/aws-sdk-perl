@@ -1,13 +1,14 @@
-package Paws::Pinpoint::CampaignVersionsResponse;
+package Paws::Pinpoint::JourneyEmailMessage;
   use Moose;
-  has CampaignsResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignsResponse', required => 1);
+  has FromAddress => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::CampaignVersionsResponse
+Paws::Pinpoint::JourneyEmailMessage
 
 =head1 USAGE
 
@@ -18,27 +19,30 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::CampaignVersionsResponse object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::JourneyEmailMessage object:
 
-  $service_obj->Method(Att1 => { CampaignsResponse => $value, ..., CampaignsResponse => $value  });
+  $service_obj->Method(Att1 => { FromAddress => $value, ..., FromAddress => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::CampaignVersionsResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::JourneyEmailMessage object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CampaignsResponse
+  $result->Att1->FromAddress
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the "From" address for an email message that's sent to
+participants in a journey.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CampaignsResponse => L<Paws::Pinpoint::CampaignsResponse>
+=head2 FromAddress => Str
 
-  
+  The verified email address to send the email message from. The default
+address is the FromAddress specified for the email channel for the
+application.
 
 
 

@@ -4,6 +4,7 @@ package Paws::SageMaker::SearchRecord;
   has TrainingJob => (is => 'ro', isa => 'Paws::SageMaker::TrainingJob');
   has Trial => (is => 'ro', isa => 'Paws::SageMaker::Trial');
   has TrialComponent => (is => 'ro', isa => 'Paws::SageMaker::TrialComponent');
+
 1;
 
 ### main pod documentation begin ###

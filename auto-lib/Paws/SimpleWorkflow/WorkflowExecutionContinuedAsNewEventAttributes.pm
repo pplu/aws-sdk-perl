@@ -11,6 +11,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes;
   has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
   has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'taskStartToCloseTimeout', traits => ['NameInRequest']);
   has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

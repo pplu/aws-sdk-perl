@@ -1,6 +1,7 @@
 package Paws::Transcribe::Transcript;
   use Moose;
   has TranscriptFileUri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ConnectParticipant::StartPosition;
   has AbsoluteTime => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has MostRecent => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

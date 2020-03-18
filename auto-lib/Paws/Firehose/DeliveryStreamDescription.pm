@@ -12,6 +12,7 @@ package Paws::Firehose::DeliveryStreamDescription;
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Paws::Firehose::SourceDescription');
   has VersionId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

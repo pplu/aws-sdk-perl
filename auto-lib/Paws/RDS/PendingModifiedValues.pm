@@ -15,6 +15,7 @@ package Paws::RDS::PendingModifiedValues;
   has Port => (is => 'ro', isa => 'Int');
   has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

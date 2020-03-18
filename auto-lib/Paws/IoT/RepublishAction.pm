@@ -3,6 +3,7 @@ package Paws::IoT::RepublishAction;
   has Qos => (is => 'ro', isa => 'Int', request_name => 'qos', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has Topic => (is => 'ro', isa => 'Str', request_name => 'topic', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

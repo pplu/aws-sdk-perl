@@ -6,6 +6,7 @@ package Paws::DynamoDB::Delete;
   has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
   has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

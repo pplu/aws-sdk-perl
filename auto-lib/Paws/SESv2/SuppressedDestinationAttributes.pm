@@ -2,6 +2,7 @@ package Paws::SESv2::SuppressedDestinationAttributes;
   use Moose;
   has FeedbackId => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

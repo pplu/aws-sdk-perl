@@ -2,6 +2,7 @@ package Paws::Glue::Predecessor;
   use Moose;
   has JobName => (is => 'ro', isa => 'Str');
   has RunId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -83,6 +83,7 @@ package Paws::SecurityHub::AwsSecurityFindingFilters;
   has UserDefinedFields => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::MapFilter]');
   has VerificationState => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
   has WorkflowState => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+
 1;
 
 ### main pod documentation begin ###

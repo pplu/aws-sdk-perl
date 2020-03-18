@@ -3,6 +3,7 @@ package Paws::IoT::ExponentialRolloutRate;
   has BaseRatePerMinute => (is => 'ro', isa => 'Int', request_name => 'baseRatePerMinute', traits => ['NameInRequest'], required => 1);
   has IncrementFactor => (is => 'ro', isa => 'Num', request_name => 'incrementFactor', traits => ['NameInRequest'], required => 1);
   has RateIncreaseCriteria => (is => 'ro', isa => 'Paws::IoT::RateIncreaseCriteria', request_name => 'rateIncreaseCriteria', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

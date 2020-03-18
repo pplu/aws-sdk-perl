@@ -7,6 +7,7 @@ package Paws::IoTAnalytics::Datastore;
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Storage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', request_name => 'storage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

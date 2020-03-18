@@ -7,6 +7,7 @@ package Paws::SSM::MaintenanceWindowTarget;
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
   has WindowId => (is => 'ro', isa => 'Str');
   has WindowTargetId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

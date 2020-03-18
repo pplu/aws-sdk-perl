@@ -2,6 +2,7 @@ package Paws::ECS::Secret;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has ValueFrom => (is => 'ro', isa => 'Str', request_name => 'valueFrom', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

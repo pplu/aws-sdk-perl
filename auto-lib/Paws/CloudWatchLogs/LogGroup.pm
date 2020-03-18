@@ -7,6 +7,7 @@ package Paws::CloudWatchLogs::LogGroup;
   has MetricFilterCount => (is => 'ro', isa => 'Int', request_name => 'metricFilterCount', traits => ['NameInRequest']);
   has RetentionInDays => (is => 'ro', isa => 'Int', request_name => 'retentionInDays', traits => ['NameInRequest']);
   has StoredBytes => (is => 'ro', isa => 'Int', request_name => 'storedBytes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

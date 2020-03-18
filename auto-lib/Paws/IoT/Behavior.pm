@@ -3,6 +3,7 @@ package Paws::IoT::Behavior;
   has Criteria => (is => 'ro', isa => 'Paws::IoT::BehaviorCriteria', request_name => 'criteria', traits => ['NameInRequest']);
   has Metric => (is => 'ro', isa => 'Str', request_name => 'metric', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

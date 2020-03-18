@@ -3,6 +3,7 @@ package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

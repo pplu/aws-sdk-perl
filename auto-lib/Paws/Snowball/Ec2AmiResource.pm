@@ -2,6 +2,7 @@ package Paws::Snowball::Ec2AmiResource;
   use Moose;
   has AmiId => (is => 'ro', isa => 'Str', required => 1);
   has SnowballAmiId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

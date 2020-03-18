@@ -1,6 +1,7 @@
 package Paws::IoT::HttpAuthorization;
   use Moose;
   has Sigv4 => (is => 'ro', isa => 'Paws::IoT::SigV4Authorization', request_name => 'sigv4', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

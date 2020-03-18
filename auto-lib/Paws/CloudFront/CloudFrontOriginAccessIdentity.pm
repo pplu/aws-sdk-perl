@@ -3,6 +3,7 @@ package Paws::CloudFront::CloudFrontOriginAccessIdentity;
   has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has S3CanonicalUserId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

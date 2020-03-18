@@ -3,6 +3,7 @@ package Paws::MediaLive::H264ColorSpaceSettings;
   has ColorSpacePassthroughSettings => (is => 'ro', isa => 'Paws::MediaLive::ColorSpacePassthroughSettings', request_name => 'colorSpacePassthroughSettings', traits => ['NameInRequest']);
   has Rec601Settings => (is => 'ro', isa => 'Paws::MediaLive::Rec601Settings', request_name => 'rec601Settings', traits => ['NameInRequest']);
   has Rec709Settings => (is => 'ro', isa => 'Paws::MediaLive::Rec709Settings', request_name => 'rec709Settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

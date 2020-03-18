@@ -1,6 +1,7 @@
 package Paws::AppMesh::VirtualNodeServiceProvider;
   use Moose;
   has VirtualNodeName => (is => 'ro', isa => 'Str', request_name => 'virtualNodeName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

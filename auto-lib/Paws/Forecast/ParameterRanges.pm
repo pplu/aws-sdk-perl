@@ -3,6 +3,7 @@ package Paws::Forecast::ParameterRanges;
   has CategoricalParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::CategoricalParameterRange]');
   has ContinuousParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::ContinuousParameterRange]');
   has IntegerParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::IntegerParameterRange]');
+
 1;
 
 ### main pod documentation begin ###

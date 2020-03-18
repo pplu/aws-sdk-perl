@@ -1,6 +1,7 @@
 package Paws::IoT::PublishFindingToSnsParams;
   use Moose;
   has TopicArn => (is => 'ro', isa => 'Str', request_name => 'topicArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

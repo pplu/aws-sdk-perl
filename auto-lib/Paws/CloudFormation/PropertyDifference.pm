@@ -4,6 +4,7 @@ package Paws::CloudFormation::PropertyDifference;
   has DifferenceType => (is => 'ro', isa => 'Str', required => 1);
   has ExpectedValue => (is => 'ro', isa => 'Str', required => 1);
   has PropertyPath => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

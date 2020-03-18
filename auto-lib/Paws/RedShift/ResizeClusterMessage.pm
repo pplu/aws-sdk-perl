@@ -5,6 +5,7 @@ package Paws::RedShift::ResizeClusterMessage;
   has ClusterType => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::GroundStation::DataflowEndpointConfig;
   use Moose;
   has DataflowEndpointName => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointName', traits => ['NameInRequest'], required => 1);
   has DataflowEndpointRegion => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointRegion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

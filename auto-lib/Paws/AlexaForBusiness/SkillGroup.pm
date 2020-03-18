@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::SkillGroup;
   has Description => (is => 'ro', isa => 'Str');
   has SkillGroupArn => (is => 'ro', isa => 'Str');
   has SkillGroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

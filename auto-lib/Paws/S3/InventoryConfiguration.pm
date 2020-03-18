@@ -7,6 +7,7 @@ package Paws::S3::InventoryConfiguration;
   has IsEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has OptionalFields => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Field', traits => ['NameInRequest']);
   has Schedule => (is => 'ro', isa => 'Paws::S3::InventorySchedule', required => 1);
+
 1;
 
 ### main pod documentation begin ###

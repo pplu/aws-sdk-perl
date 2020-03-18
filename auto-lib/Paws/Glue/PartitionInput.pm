@@ -5,6 +5,7 @@ package Paws::Glue::PartitionInput;
   has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
   has StorageDescriptor => (is => 'ro', isa => 'Paws::Glue::StorageDescriptor');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

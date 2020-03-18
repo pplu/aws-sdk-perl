@@ -2,6 +2,7 @@ package Paws::ServiceCatalog::ProvisioningArtifactView;
   use Moose;
   has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
   has ProvisioningArtifact => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifact');
+
 1;
 
 ### main pod documentation begin ###

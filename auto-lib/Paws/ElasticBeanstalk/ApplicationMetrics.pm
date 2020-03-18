@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::ApplicationMetrics;
   has Latency => (is => 'ro', isa => 'Paws::ElasticBeanstalk::Latency');
   has RequestCount => (is => 'ro', isa => 'Int');
   has StatusCodes => (is => 'ro', isa => 'Paws::ElasticBeanstalk::StatusCodes');
+
 1;
 
 ### main pod documentation begin ###

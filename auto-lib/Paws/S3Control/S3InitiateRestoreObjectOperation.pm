@@ -2,6 +2,7 @@ package Paws::S3Control::S3InitiateRestoreObjectOperation;
   use Moose;
   has ExpirationInDays => (is => 'ro', isa => 'Int');
   has GlacierJobTier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

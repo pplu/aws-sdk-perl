@@ -10,6 +10,7 @@ package Paws::DMS::Certificate;
   has SigningAlgorithm => (is => 'ro', isa => 'Str');
   has ValidFromDate => (is => 'ro', isa => 'Str');
   has ValidToDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

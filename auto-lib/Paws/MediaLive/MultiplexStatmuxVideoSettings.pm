@@ -2,6 +2,7 @@ package Paws::MediaLive::MultiplexStatmuxVideoSettings;
   use Moose;
   has MaximumBitrate => (is => 'ro', isa => 'Int', request_name => 'maximumBitrate', traits => ['NameInRequest']);
   has MinimumBitrate => (is => 'ro', isa => 'Int', request_name => 'minimumBitrate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

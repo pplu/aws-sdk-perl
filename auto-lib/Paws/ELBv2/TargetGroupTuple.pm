@@ -2,6 +2,7 @@ package Paws::ELBv2::TargetGroupTuple;
   use Moose;
   has TargetGroupArn => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

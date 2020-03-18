@@ -2,6 +2,7 @@ package Paws::Greengrass::ListVersionsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::VersionInformation]');
+
 1;
 
 ### main pod documentation begin ###

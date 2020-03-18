@@ -11,6 +11,7 @@ package Paws::ApplicationAutoScaling::ScalingActivity;
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
   has StatusCode => (is => 'ro', isa => 'Str', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::ImageBuilder::EbsInstanceBlockDeviceSpecification;
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
   has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
   has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

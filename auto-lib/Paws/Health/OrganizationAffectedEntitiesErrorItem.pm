@@ -4,6 +4,7 @@ package Paws::Health::OrganizationAffectedEntitiesErrorItem;
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
   has ErrorName => (is => 'ro', isa => 'Str', request_name => 'errorName', traits => ['NameInRequest']);
   has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

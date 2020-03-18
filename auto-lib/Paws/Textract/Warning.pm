@@ -2,6 +2,7 @@ package Paws::Textract::Warning;
   use Moose;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has Pages => (is => 'ro', isa => 'ArrayRef[Int]');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Kendra::S3DataSourceConfiguration;
   has DocumentsMetadataConfiguration => (is => 'ro', isa => 'Paws::Kendra::DocumentsMetadataConfiguration');
   has ExclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InclusionPrefixes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

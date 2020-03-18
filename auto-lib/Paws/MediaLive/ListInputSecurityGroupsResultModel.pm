@@ -2,6 +2,7 @@ package Paws::MediaLive::ListInputSecurityGroupsResultModel;
   use Moose;
   has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSecurityGroup]', request_name => 'inputSecurityGroups', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

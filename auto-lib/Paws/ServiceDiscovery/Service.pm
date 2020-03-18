@@ -11,6 +11,7 @@ package Paws::ServiceDiscovery::Service;
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has NamespaceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

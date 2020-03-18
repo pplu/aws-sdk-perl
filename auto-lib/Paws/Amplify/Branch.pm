@@ -26,6 +26,7 @@ package Paws::Amplify::Branch;
   has TotalNumberOfJobs => (is => 'ro', isa => 'Str', request_name => 'totalNumberOfJobs', traits => ['NameInRequest'], required => 1);
   has Ttl => (is => 'ro', isa => 'Str', request_name => 'ttl', traits => ['NameInRequest'], required => 1);
   has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

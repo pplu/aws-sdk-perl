@@ -1,6 +1,7 @@
 package Paws::Robomaker::LoggingConfig;
   use Moose;
   has RecordAllRosTopics => (is => 'ro', isa => 'Bool', request_name => 'recordAllRosTopics', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodeStarNotifications::Target;
   use Moose;
   has TargetAddress => (is => 'ro', isa => 'Str');
   has TargetType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

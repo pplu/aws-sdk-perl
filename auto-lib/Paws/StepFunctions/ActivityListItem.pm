@@ -3,6 +3,7 @@ package Paws::StepFunctions::ActivityListItem;
   has ActivityArn => (is => 'ro', isa => 'Str', request_name => 'activityArn', traits => ['NameInRequest'], required => 1);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

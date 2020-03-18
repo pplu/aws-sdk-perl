@@ -2,6 +2,7 @@ package Paws::FraudDetector::ModelVariable;
   use Moose;
   has Index => (is => 'ro', isa => 'Int', request_name => 'index', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::MediaConnect::ListedFlow;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

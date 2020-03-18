@@ -10,6 +10,7 @@ package Paws::IoTAnalytics::PipelineActivity;
   has Math => (is => 'ro', isa => 'Paws::IoTAnalytics::MathActivity', request_name => 'math', traits => ['NameInRequest']);
   has RemoveAttributes => (is => 'ro', isa => 'Paws::IoTAnalytics::RemoveAttributesActivity', request_name => 'removeAttributes', traits => ['NameInRequest']);
   has SelectAttributes => (is => 'ro', isa => 'Paws::IoTAnalytics::SelectAttributesActivity', request_name => 'selectAttributes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

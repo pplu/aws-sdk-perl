@@ -6,6 +6,7 @@ package Paws::Kafka::NodeInfo;
   has NodeARN => (is => 'ro', isa => 'Str', request_name => 'nodeARN', traits => ['NameInRequest']);
   has NodeType => (is => 'ro', isa => 'Str', request_name => 'nodeType', traits => ['NameInRequest']);
   has ZookeeperNodeInfo => (is => 'ro', isa => 'Paws::Kafka::ZookeeperNodeInfo', request_name => 'zookeeperNodeInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

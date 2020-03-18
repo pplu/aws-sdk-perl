@@ -1,6 +1,7 @@
 package Paws::WorkSpaces::ClientProperties;
   use Moose;
   has ReconnectEnabled => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

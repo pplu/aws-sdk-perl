@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ShareError;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Error => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

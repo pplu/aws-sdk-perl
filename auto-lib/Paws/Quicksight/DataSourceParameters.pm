@@ -19,6 +19,7 @@ package Paws::Quicksight::DataSourceParameters;
   has SqlServerParameters => (is => 'ro', isa => 'Paws::Quicksight::SqlServerParameters');
   has TeradataParameters => (is => 'ro', isa => 'Paws::Quicksight::TeradataParameters');
   has TwitterParameters => (is => 'ro', isa => 'Paws::Quicksight::TwitterParameters');
+
 1;
 
 ### main pod documentation begin ###

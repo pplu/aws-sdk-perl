@@ -7,6 +7,7 @@ package Paws::IoT::ViolationEvent;
   has ViolationEventTime => (is => 'ro', isa => 'Str', request_name => 'violationEventTime', traits => ['NameInRequest']);
   has ViolationEventType => (is => 'ro', isa => 'Str', request_name => 'violationEventType', traits => ['NameInRequest']);
   has ViolationId => (is => 'ro', isa => 'Str', request_name => 'violationId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

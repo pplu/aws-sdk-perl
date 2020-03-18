@@ -1,6 +1,7 @@
 package Paws::IoT::SecurityProfileTarget;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

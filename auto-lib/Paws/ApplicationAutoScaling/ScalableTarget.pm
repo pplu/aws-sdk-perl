@@ -8,6 +8,7 @@ package Paws::ApplicationAutoScaling::ScalableTarget;
   has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has SuspendedState => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::SuspendedState');
+
 1;
 
 ### main pod documentation begin ###

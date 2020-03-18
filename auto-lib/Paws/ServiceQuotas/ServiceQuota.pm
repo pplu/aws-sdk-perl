@@ -12,6 +12,7 @@ package Paws::ServiceQuotas::ServiceQuota;
   has Unit => (is => 'ro', isa => 'Str');
   has UsageMetric => (is => 'ro', isa => 'Paws::ServiceQuotas::MetricInfo');
   has Value => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::IoT::ThingIndexingConfiguration;
   has ManagedFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'managedFields', traits => ['NameInRequest']);
   has ThingConnectivityIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingConnectivityIndexingMode', traits => ['NameInRequest']);
   has ThingIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingIndexingMode', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

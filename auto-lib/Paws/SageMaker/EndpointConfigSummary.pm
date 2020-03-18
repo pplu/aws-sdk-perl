@@ -3,6 +3,7 @@ package Paws::SageMaker::EndpointConfigSummary;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has EndpointConfigArn => (is => 'ro', isa => 'Str', required => 1);
   has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

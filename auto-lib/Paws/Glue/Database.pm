@@ -6,6 +6,7 @@ package Paws::Glue::Database;
   has LocationUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
+
 1;
 
 ### main pod documentation begin ###

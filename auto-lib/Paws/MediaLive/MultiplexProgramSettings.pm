@@ -3,6 +3,7 @@ package Paws::MediaLive::MultiplexProgramSettings;
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest'], required => 1);
   has ServiceDescriptor => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramServiceDescriptor', request_name => 'serviceDescriptor', traits => ['NameInRequest']);
   has VideoSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexVideoSettings', request_name => 'videoSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

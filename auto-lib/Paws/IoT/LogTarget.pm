@@ -2,6 +2,7 @@ package Paws::IoT::LogTarget;
   use Moose;
   has TargetName => (is => 'ro', isa => 'Str', request_name => 'targetName', traits => ['NameInRequest']);
   has TargetType => (is => 'ro', isa => 'Str', request_name => 'targetType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

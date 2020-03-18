@@ -7,6 +7,7 @@ package Paws::ServiceCatalog::ProvisioningArtifactDetail;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

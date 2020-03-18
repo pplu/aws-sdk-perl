@@ -2,6 +2,7 @@ package Paws::SecurityHub::AwsEc2NetworkInterfaceSecurityGroup;
   use Moose;
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

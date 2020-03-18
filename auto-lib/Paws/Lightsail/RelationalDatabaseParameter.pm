@@ -8,6 +8,7 @@ package Paws::Lightsail::RelationalDatabaseParameter;
   has IsModifiable => (is => 'ro', isa => 'Bool', request_name => 'isModifiable', traits => ['NameInRequest']);
   has ParameterName => (is => 'ro', isa => 'Str', request_name => 'parameterName', traits => ['NameInRequest']);
   has ParameterValue => (is => 'ro', isa => 'Str', request_name => 'parameterValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

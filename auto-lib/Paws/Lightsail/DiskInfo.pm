@@ -4,6 +4,7 @@ package Paws::Lightsail::DiskInfo;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
   has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

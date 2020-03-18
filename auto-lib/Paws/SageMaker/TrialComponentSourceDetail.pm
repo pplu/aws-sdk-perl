@@ -2,6 +2,7 @@ package Paws::SageMaker::TrialComponentSourceDetail;
   use Moose;
   has SourceArn => (is => 'ro', isa => 'Str');
   has TrainingJob => (is => 'ro', isa => 'Paws::SageMaker::TrainingJob');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::WAF::RuleGroup;
   has MetricName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RuleGroupId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::TimerStartedEventAttributes;
   has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
   has StartToFireTimeout => (is => 'ro', isa => 'Str', request_name => 'startToFireTimeout', traits => ['NameInRequest'], required => 1);
   has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

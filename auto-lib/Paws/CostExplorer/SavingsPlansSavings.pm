@@ -2,6 +2,7 @@ package Paws::CostExplorer::SavingsPlansSavings;
   use Moose;
   has NetSavings => (is => 'ro', isa => 'Str');
   has OnDemandCostEquivalent => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

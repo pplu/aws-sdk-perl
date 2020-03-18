@@ -7,6 +7,7 @@ package Paws::CostExplorer::ReservationPurchaseRecommendation;
   has RecommendationSummary => (is => 'ro', isa => 'Paws::CostExplorer::ReservationPurchaseRecommendationSummary');
   has ServiceSpecification => (is => 'ro', isa => 'Paws::CostExplorer::ServiceSpecification');
   has TermInYears => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

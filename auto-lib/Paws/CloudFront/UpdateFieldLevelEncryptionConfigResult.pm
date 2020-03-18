@@ -1,11 +1,10 @@
 
 package Paws::CloudFront::UpdateFieldLevelEncryptionConfigResult;
   use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has FieldLevelEncryption => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryption');
+  has ETag => (is => 'ro', isa => 'Str', header_name => 'ETag', traits => ['ParamInHeader']);
+  has FieldLevelEncryption => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryption', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'FieldLevelEncryption');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

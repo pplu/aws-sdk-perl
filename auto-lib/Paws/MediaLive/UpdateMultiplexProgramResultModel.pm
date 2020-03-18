@@ -1,6 +1,7 @@
 package Paws::MediaLive::UpdateMultiplexProgramResultModel;
   use Moose;
   has MultiplexProgram => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgram', request_name => 'multiplexProgram', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

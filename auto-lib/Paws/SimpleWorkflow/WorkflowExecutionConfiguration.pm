@@ -6,6 +6,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionConfiguration;
   has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest'], required => 1);
   has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
   has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'taskStartToCloseTimeout', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

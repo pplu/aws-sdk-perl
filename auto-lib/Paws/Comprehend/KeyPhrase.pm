@@ -4,6 +4,7 @@ package Paws::Comprehend::KeyPhrase;
   has EndOffset => (is => 'ro', isa => 'Int');
   has Score => (is => 'ro', isa => 'Num');
   has Text => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

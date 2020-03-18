@@ -3,6 +3,7 @@ package Paws::Translate::JobDetails;
   has DocumentsWithErrorsCount => (is => 'ro', isa => 'Int');
   has InputDocumentsCount => (is => 'ro', isa => 'Int');
   has TranslatedDocumentsCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

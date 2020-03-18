@@ -5,6 +5,7 @@ package Paws::CloudSearch::TextArrayOptions;
   has HighlightEnabled => (is => 'ro', isa => 'Bool');
   has ReturnEnabled => (is => 'ro', isa => 'Bool');
   has SourceFields => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

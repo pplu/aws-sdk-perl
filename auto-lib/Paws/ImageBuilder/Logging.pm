@@ -1,6 +1,7 @@
 package Paws::ImageBuilder::Logging;
   use Moose;
   has S3Logs => (is => 'ro', isa => 'Paws::ImageBuilder::S3Logs', request_name => 's3Logs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

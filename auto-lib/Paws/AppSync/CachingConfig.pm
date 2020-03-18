@@ -2,6 +2,7 @@ package Paws::AppSync::CachingConfig;
   use Moose;
   has CachingKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cachingKeys', traits => ['NameInRequest']);
   has Ttl => (is => 'ro', isa => 'Int', request_name => 'ttl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

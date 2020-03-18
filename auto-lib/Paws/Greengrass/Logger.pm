@@ -5,6 +5,7 @@ package Paws::Greengrass::Logger;
   has Level => (is => 'ro', isa => 'Str', required => 1);
   has Space => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

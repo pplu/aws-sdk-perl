@@ -8,6 +8,7 @@ package Paws::DeviceFarm::AccountSettings;
   has TrialMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::TrialMinutes', request_name => 'trialMinutes', traits => ['NameInRequest']);
   has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredDevices', traits => ['NameInRequest']);
   has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredRemoteAccessDevices', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

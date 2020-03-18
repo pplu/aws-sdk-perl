@@ -1,6 +1,7 @@
 package Paws::SageMaker::LabelingJobDataSource;
   use Moose;
   has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobS3DataSource', required => 1);
+
 1;
 
 ### main pod documentation begin ###

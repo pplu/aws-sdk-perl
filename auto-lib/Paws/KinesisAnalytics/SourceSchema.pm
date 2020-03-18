@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::SourceSchema;
   has RecordColumns => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::RecordColumn]', required => 1);
   has RecordEncoding => (is => 'ro', isa => 'Str');
   has RecordFormat => (is => 'ro', isa => 'Paws::KinesisAnalytics::RecordFormat', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,7 +4,7 @@ dist:
 	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil build
 
 test:
-	carton exec -- prove t/
+	carton exec -- prove -r -v -I lib -I auto-lib t/
 
 pod-test:
 	for i in `find auto-lib/Paws/ -name \*.pm`; do podchecker $$i; done;
@@ -32,6 +32,7 @@ gen-classes:
 	carton exec ./builder-bin/gen_classes.pl --class_mapping
 	mkdir -p auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
+	carton exec ./builder-bin/gen_classes.pl --docu_links
 	carton exec ./builder-bin/gen_classes.pl --paws_pm --classes
 
 docu-links:

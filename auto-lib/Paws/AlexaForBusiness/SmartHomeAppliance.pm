@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::SmartHomeAppliance;
   has Description => (is => 'ro', isa => 'Str');
   has FriendlyName => (is => 'ro', isa => 'Str');
   has ManufacturerName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::AppStream::Session;
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str', required => 1);
   has UserId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

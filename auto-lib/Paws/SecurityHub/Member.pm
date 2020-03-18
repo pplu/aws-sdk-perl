@@ -6,6 +6,7 @@ package Paws::SecurityHub::Member;
   has MasterId => (is => 'ro', isa => 'Str');
   has MemberStatus => (is => 'ro', isa => 'Str');
   has UpdatedAt => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::Chime::Bot;
   has SecurityToken => (is => 'ro', isa => 'Str');
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

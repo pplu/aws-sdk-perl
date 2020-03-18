@@ -3,6 +3,7 @@ package Paws::AutoScaling::FailedScheduledUpdateGroupActionRequest;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

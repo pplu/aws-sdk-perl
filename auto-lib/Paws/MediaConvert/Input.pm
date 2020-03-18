@@ -19,6 +19,7 @@ package Paws::MediaConvert::Input;
   has TimecodeSource => (is => 'ro', isa => 'Str', request_name => 'timecodeSource', traits => ['NameInRequest']);
   has TimecodeStart => (is => 'ro', isa => 'Str', request_name => 'timecodeStart', traits => ['NameInRequest']);
   has VideoSelector => (is => 'ro', isa => 'Paws::MediaConvert::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

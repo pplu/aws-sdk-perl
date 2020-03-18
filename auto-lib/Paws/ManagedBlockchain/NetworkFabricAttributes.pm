@@ -2,6 +2,7 @@ package Paws::ManagedBlockchain::NetworkFabricAttributes;
   use Moose;
   has Edition => (is => 'ro', isa => 'Str');
   has OrderingServiceEndpoint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

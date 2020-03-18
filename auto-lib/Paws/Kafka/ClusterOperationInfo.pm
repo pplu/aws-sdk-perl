@@ -10,6 +10,7 @@ package Paws::Kafka::ClusterOperationInfo;
   has OperationType => (is => 'ro', isa => 'Str', request_name => 'operationType', traits => ['NameInRequest']);
   has SourceClusterInfo => (is => 'ro', isa => 'Paws::Kafka::MutableClusterInfo', request_name => 'sourceClusterInfo', traits => ['NameInRequest']);
   has TargetClusterInfo => (is => 'ro', isa => 'Paws::Kafka::MutableClusterInfo', request_name => 'targetClusterInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

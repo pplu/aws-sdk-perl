@@ -26,6 +26,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

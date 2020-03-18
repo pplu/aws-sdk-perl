@@ -11,6 +11,7 @@ package Paws::WorkMail::AccessControlRule;
   has NotIpRanges => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotUserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

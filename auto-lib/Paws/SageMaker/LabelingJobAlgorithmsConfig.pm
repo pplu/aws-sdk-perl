@@ -3,6 +3,7 @@ package Paws::SageMaker::LabelingJobAlgorithmsConfig;
   has InitialActiveLearningModelArn => (is => 'ro', isa => 'Str');
   has LabelingJobAlgorithmSpecificationArn => (is => 'ro', isa => 'Str', required => 1);
   has LabelingJobResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobResourceConfig');
+
 1;
 
 ### main pod documentation begin ###

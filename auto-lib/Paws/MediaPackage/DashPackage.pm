@@ -13,6 +13,7 @@ package Paws::MediaPackage::DashPackage;
   has SegmentTemplateFormat => (is => 'ro', isa => 'Str', request_name => 'segmentTemplateFormat', traits => ['NameInRequest']);
   has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
   has SuggestedPresentationDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'suggestedPresentationDelaySeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

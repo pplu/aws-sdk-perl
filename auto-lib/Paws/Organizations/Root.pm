@@ -4,6 +4,7 @@ package Paws::Organizations::Root;
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has PolicyTypes => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::PolicyTypeSummary]');
+
 1;
 
 ### main pod documentation begin ###

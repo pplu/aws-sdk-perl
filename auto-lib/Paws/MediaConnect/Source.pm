@@ -10,6 +10,7 @@ package Paws::MediaConnect::Source;
   has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest'], required => 1);
   has Transport => (is => 'ro', isa => 'Paws::MediaConnect::Transport', request_name => 'transport', traits => ['NameInRequest']);
   has WhitelistCidr => (is => 'ro', isa => 'Str', request_name => 'whitelistCidr', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

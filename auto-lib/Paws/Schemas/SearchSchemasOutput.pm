@@ -2,6 +2,7 @@ package Paws::Schemas::SearchSchemasOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Schemas => (is => 'ro', isa => 'ArrayRef[Paws::Schemas::SearchSchemaSummary]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::RedShift::MaintenanceTrack;
   has DatabaseVersion => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::UpdateTarget]', request_name => 'UpdateTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

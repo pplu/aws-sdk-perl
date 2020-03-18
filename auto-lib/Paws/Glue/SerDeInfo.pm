@@ -3,6 +3,7 @@ package Paws::Glue::SerDeInfo;
   has Name => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
   has SerializationLibrary => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

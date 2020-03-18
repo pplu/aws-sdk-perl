@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::FlinkRunConfiguration;
   use Moose;
   has AllowNonRestoredState => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

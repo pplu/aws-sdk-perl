@@ -13,6 +13,7 @@ package Paws::Discovery::ImportTask;
   has ServerImportFailure => (is => 'ro', isa => 'Int', request_name => 'serverImportFailure', traits => ['NameInRequest']);
   has ServerImportSuccess => (is => 'ro', isa => 'Int', request_name => 'serverImportSuccess', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

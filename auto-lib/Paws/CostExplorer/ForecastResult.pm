@@ -4,6 +4,7 @@ package Paws::CostExplorer::ForecastResult;
   has PredictionIntervalLowerBound => (is => 'ro', isa => 'Str');
   has PredictionIntervalUpperBound => (is => 'ro', isa => 'Str');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Forecast::SchemaAttribute;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

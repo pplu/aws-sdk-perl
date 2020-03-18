@@ -1,6 +1,7 @@
 package Paws::MediaLive::FrameCaptureOutputSettings;
   use Moose;
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

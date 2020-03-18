@@ -2,6 +2,7 @@ package Paws::CloudFront::ContentTypeProfileConfig;
   use Moose;
   has ContentTypeProfiles => (is => 'ro', isa => 'Paws::CloudFront::ContentTypeProfiles');
   has ForwardWhenContentTypeIsUnknown => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

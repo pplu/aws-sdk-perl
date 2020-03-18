@@ -1,6 +1,7 @@
 package Paws::Kendra::FaqStatistics;
   use Moose;
   has IndexedQuestionAnswersCount => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,9 +2,10 @@
 package Paws::S3Control::ListJobs;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
-  has JobStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', query_name => 'jobStatuses', traits => ['ParamInQuery']);
+  has JobStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'jobStatuses', traits => ['NameInRequest']);
   has MaxResults => (is => 'ro', isa => 'Int', query_name => 'maxResults', traits => ['ParamInQuery']);
   has NextToken => (is => 'ro', isa => 'Str', query_name => 'nextToken', traits => ['ParamInQuery']);
+
 
   use MooseX::ClassAttribute;
 
@@ -14,6 +15,7 @@ package Paws::S3Control::ListJobs;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::ListJobsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

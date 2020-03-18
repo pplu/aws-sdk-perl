@@ -2,6 +2,7 @@ package Paws::SageMaker::LabelingJobInputConfig;
   use Moose;
   has DataAttributes => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobDataAttributes');
   has DataSource => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobDataSource', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,11 @@
 0.43 
  - 
+ - Fix issues with generating correct XML for Route53 methods
+ - Fix double-encoding in URIs (requires URI::Template upgrade)
+ - Fix Glacier/RestJson return values in headers (eg UploadId for InitiateMultipartUpload)
+ - Fix non-encoding of JSON payload body objects for Glacier
+ - Fix MD5 errors with empty content
+ - Add several tests for the above fixes
 
 0.42 02 Mar 2020
  - Fix: Let QueryCaller send an empty query parameter to signal an empty array of objects. See #375 (torrentale)

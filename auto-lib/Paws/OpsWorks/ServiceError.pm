@@ -6,6 +6,7 @@ package Paws::OpsWorks::ServiceError;
   has ServiceErrorId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

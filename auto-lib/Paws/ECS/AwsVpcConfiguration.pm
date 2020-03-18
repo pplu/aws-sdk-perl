@@ -3,6 +3,7 @@ package Paws::ECS::AwsVpcConfiguration;
   has AssignPublicIp => (is => 'ro', isa => 'Str', request_name => 'assignPublicIp', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

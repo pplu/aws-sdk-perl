@@ -20,6 +20,7 @@ package Paws::StorageGateway::SMBFileShareInfo;
   has SMBACLEnabled => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

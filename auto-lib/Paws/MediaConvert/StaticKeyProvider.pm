@@ -4,6 +4,7 @@ package Paws::MediaConvert::StaticKeyProvider;
   has KeyFormatVersions => (is => 'ro', isa => 'Str', request_name => 'keyFormatVersions', traits => ['NameInRequest']);
   has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

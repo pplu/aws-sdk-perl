@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DeltaTime;
   use Moose;
   has OffsetSeconds => (is => 'ro', isa => 'Int', request_name => 'offsetSeconds', traits => ['NameInRequest'], required => 1);
   has TimeExpression => (is => 'ro', isa => 'Str', request_name => 'timeExpression', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

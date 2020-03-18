@@ -1,6 +1,7 @@
 package Paws::SSM::S3OutputUrl;
   use Moose;
   has OutputUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

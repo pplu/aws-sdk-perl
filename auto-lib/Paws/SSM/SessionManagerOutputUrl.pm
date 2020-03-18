@@ -2,6 +2,7 @@ package Paws::SSM::SessionManagerOutputUrl;
   use Moose;
   has CloudWatchOutputUrl => (is => 'ro', isa => 'Str');
   has S3OutputUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

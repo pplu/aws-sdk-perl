@@ -2,6 +2,7 @@ package Paws::Greengrass::ResourceAccessPolicy;
   use Moose;
   has Permission => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::S3::Error;
   has Key => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

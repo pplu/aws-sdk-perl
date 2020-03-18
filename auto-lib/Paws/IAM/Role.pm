@@ -11,6 +11,7 @@ package Paws::IAM::Role;
   has RoleLastUsed => (is => 'ro', isa => 'Paws::IAM::RoleLastUsed');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
+
 1;
 
 ### main pod documentation begin ###

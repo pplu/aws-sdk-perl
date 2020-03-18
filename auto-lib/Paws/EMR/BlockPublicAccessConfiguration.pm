@@ -2,6 +2,7 @@ package Paws::EMR::BlockPublicAccessConfiguration;
   use Moose;
   has BlockPublicSecurityGroupRules => (is => 'ro', isa => 'Bool', required => 1);
   has PermittedPublicSecurityGroupRuleRanges => (is => 'ro', isa => 'ArrayRef[Paws::EMR::PortRange]');
+
 1;
 
 ### main pod documentation begin ###

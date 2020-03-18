@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::ApplicationDescription;
   has Description => (is => 'ro', isa => 'Str');
   has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
   has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

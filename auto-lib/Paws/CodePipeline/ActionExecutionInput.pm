@@ -7,6 +7,7 @@ package Paws::CodePipeline::ActionExecutionInput;
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has ResolvedConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ResolvedActionConfigurationMap', request_name => 'resolvedConfiguration', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

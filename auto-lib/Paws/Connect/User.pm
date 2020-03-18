@@ -10,6 +10,7 @@ package Paws::Connect::User;
   has SecurityProfileIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'Paws::Connect::TagMap');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

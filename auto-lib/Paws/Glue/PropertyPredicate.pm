@@ -3,6 +3,7 @@ package Paws::Glue::PropertyPredicate;
   has Comparator => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

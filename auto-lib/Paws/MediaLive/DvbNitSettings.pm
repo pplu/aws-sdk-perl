@@ -3,6 +3,7 @@ package Paws::MediaLive::DvbNitSettings;
   has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest'], required => 1);
   has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest'], required => 1);
   has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

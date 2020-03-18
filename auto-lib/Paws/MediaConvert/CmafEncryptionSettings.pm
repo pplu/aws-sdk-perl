@@ -6,6 +6,7 @@ package Paws::MediaConvert::CmafEncryptionSettings;
   has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProviderCmaf', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
   has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -20,6 +20,7 @@ package Paws::OpsWorks::InstancesCount;
   has Terminated => (is => 'ro', isa => 'Int');
   has Terminating => (is => 'ro', isa => 'Int');
   has Unassigning => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SavingsPlans::SavingsPlanFilter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

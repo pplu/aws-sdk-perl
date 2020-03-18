@@ -4,6 +4,7 @@ package Paws::SageMaker::EndpointInput;
   has LocalPath => (is => 'ro', isa => 'Str', required => 1);
   has S3DataDistributionType => (is => 'ro', isa => 'Str');
   has S3InputMode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

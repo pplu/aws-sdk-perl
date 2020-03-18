@@ -3,6 +3,7 @@ package Paws::Quicksight::TemplateAlias;
   has AliasName => (is => 'ro', isa => 'Str');
   has Arn => (is => 'ro', isa => 'Str');
   has TemplateVersionNumber => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

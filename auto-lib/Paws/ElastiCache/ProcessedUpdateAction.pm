@@ -4,6 +4,7 @@ package Paws::ElastiCache::ProcessedUpdateAction;
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has ServiceUpdateName => (is => 'ro', isa => 'Str');
   has UpdateActionStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

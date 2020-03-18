@@ -3,6 +3,7 @@ package Paws::SESv2::OverallVolume;
   has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::DomainIspPlacement]');
   has ReadRatePercent => (is => 'ro', isa => 'Num');
   has VolumeStatistics => (is => 'ro', isa => 'Paws::SESv2::VolumeStatistics');
+
 1;
 
 ### main pod documentation begin ###

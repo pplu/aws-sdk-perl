@@ -2,6 +2,7 @@ package Paws::IoTThingsGraph::MetricsConfiguration;
   use Moose;
   has CloudMetricEnabled => (is => 'ro', isa => 'Bool', request_name => 'cloudMetricEnabled', traits => ['NameInRequest']);
   has MetricRuleRoleArn => (is => 'ro', isa => 'Str', request_name => 'metricRuleRoleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

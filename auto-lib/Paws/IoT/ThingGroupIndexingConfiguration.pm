@@ -3,6 +3,7 @@ package Paws::IoT::ThingGroupIndexingConfiguration;
   has CustomFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'customFields', traits => ['NameInRequest']);
   has ManagedFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'managedFields', traits => ['NameInRequest']);
   has ThingGroupIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingGroupIndexingMode', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

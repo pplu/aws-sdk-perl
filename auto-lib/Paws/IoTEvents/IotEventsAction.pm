@@ -1,6 +1,7 @@
 package Paws::IoTEvents::IotEventsAction;
   use Moose;
   has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

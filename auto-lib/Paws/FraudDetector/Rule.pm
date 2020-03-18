@@ -3,6 +3,7 @@ package Paws::FraudDetector::Rule;
   has DetectorId => (is => 'ro', isa => 'Str', request_name => 'detectorId', traits => ['NameInRequest'], required => 1);
   has RuleId => (is => 'ro', isa => 'Str', request_name => 'ruleId', traits => ['NameInRequest'], required => 1);
   has RuleVersion => (is => 'ro', isa => 'Str', request_name => 'ruleVersion', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

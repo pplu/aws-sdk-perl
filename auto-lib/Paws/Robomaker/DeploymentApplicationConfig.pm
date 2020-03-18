@@ -3,6 +3,7 @@ package Paws::Robomaker::DeploymentApplicationConfig;
   has Application => (is => 'ro', isa => 'Str', request_name => 'application', traits => ['NameInRequest'], required => 1);
   has ApplicationVersion => (is => 'ro', isa => 'Str', request_name => 'applicationVersion', traits => ['NameInRequest'], required => 1);
   has LaunchConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentLaunchConfig', request_name => 'launchConfig', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

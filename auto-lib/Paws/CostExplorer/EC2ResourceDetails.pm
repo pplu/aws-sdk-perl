@@ -9,6 +9,7 @@ package Paws::CostExplorer::EC2ResourceDetails;
   has Sku => (is => 'ro', isa => 'Str');
   has Storage => (is => 'ro', isa => 'Str');
   has Vcpu => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

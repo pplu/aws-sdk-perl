@@ -13,6 +13,7 @@ package Paws::SSM::MaintenanceWindowTask;
   has Type => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str');
   has WindowTaskId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

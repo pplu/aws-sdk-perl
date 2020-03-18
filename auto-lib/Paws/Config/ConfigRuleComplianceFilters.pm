@@ -4,6 +4,7 @@ package Paws::Config::ConfigRuleComplianceFilters;
   has AwsRegion => (is => 'ro', isa => 'Str');
   has ComplianceType => (is => 'ro', isa => 'Str');
   has ConfigRuleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SageMaker::AutoMLCandidateStep;
   has CandidateStepArn => (is => 'ro', isa => 'Str', required => 1);
   has CandidateStepName => (is => 'ro', isa => 'Str', required => 1);
   has CandidateStepType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

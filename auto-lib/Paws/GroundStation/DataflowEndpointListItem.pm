@@ -2,6 +2,7 @@ package Paws::GroundStation::DataflowEndpointListItem;
   use Moose;
   has DataflowEndpointGroupArn => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointGroupArn', traits => ['NameInRequest']);
   has DataflowEndpointGroupId => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointGroupId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

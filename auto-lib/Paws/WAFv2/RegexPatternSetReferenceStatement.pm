@@ -3,6 +3,7 @@ package Paws::WAFv2::RegexPatternSetReferenceStatement;
   has ARN => (is => 'ro', isa => 'Str', required => 1);
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAFv2::FieldToMatch', required => 1);
   has TextTransformations => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::TextTransformation]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

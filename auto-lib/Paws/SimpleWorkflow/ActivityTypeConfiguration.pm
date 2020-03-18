@@ -6,6 +6,7 @@ package Paws::SimpleWorkflow::ActivityTypeConfiguration;
   has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskScheduleToCloseTimeout', traits => ['NameInRequest']);
   has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskScheduleToStartTimeout', traits => ['NameInRequest']);
   has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskStartToCloseTimeout', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

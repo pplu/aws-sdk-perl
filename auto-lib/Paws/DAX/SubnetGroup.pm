@@ -4,6 +4,7 @@ package Paws::DAX::SubnetGroup;
   has SubnetGroupName => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

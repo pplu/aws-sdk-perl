@@ -6,6 +6,7 @@ package Paws::OpsWorks::StackSummary;
   has LayersCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

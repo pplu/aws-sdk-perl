@@ -9,6 +9,7 @@ package Paws::CloudWatch::MetricDatum;
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
   has Values => (is => 'ro', isa => 'ArrayRef[Num]');
+
 1;
 
 ### main pod documentation begin ###

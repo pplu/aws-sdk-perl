@@ -2,6 +2,7 @@ package Paws::LakeFormation::BatchPermissionsFailureEntry;
   use Moose;
   has Error => (is => 'ro', isa => 'Paws::LakeFormation::ErrorDetail');
   has RequestEntry => (is => 'ro', isa => 'Paws::LakeFormation::BatchPermissionsRequestEntry');
+
 1;
 
 ### main pod documentation begin ###

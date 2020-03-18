@@ -5,6 +5,7 @@ package Paws::DLM::CrossRegionCopyRule;
   has Encrypted => (is => 'ro', isa => 'Bool', required => 1);
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::CrossRegionCopyRetainRule');
   has TargetRegion => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::InputConfiguration;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration', required => 1);
+
 1;
 
 ### main pod documentation begin ###

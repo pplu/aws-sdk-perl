@@ -2,6 +2,7 @@ package Paws::CostExplorer::MetricValue;
   use Moose;
   has Amount => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

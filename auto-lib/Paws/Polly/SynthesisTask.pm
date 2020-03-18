@@ -15,6 +15,7 @@ package Paws::Polly::SynthesisTask;
   has TaskStatusReason => (is => 'ro', isa => 'Str');
   has TextType => (is => 'ro', isa => 'Str');
   has VoiceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

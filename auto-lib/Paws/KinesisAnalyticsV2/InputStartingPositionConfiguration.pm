@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::InputStartingPositionConfiguration;
   use Moose;
   has InputStartingPosition => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

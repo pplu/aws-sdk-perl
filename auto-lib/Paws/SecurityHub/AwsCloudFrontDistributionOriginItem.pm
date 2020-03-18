@@ -3,6 +3,7 @@ package Paws::SecurityHub::AwsCloudFrontDistributionOriginItem;
   has DomainName => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has OriginPath => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

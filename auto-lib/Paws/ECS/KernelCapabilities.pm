@@ -2,6 +2,7 @@ package Paws::ECS::KernelCapabilities;
   use Moose;
   has Add => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'add', traits => ['NameInRequest']);
   has Drop => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'drop', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

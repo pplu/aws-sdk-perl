@@ -9,6 +9,7 @@ package Paws::CodePipeline::ActionExecution;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest']);
   has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

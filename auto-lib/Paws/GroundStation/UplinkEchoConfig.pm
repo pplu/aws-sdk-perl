@@ -2,6 +2,7 @@ package Paws::GroundStation::UplinkEchoConfig;
   use Moose;
   has AntennaUplinkConfigArn => (is => 'ro', isa => 'Str', request_name => 'antennaUplinkConfigArn', traits => ['NameInRequest'], required => 1);
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

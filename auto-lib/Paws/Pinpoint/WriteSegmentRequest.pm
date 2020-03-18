@@ -4,6 +4,7 @@ package Paws::Pinpoint::WriteSegmentRequest;
   has Name => (is => 'ro', isa => 'Str');
   has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

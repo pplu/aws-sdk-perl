@@ -7,6 +7,7 @@ package Paws::Polly::Voice;
   has LanguageName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SupportedEngines => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

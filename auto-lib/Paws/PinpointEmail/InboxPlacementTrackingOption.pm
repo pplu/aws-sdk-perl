@@ -2,6 +2,7 @@ package Paws::PinpointEmail::InboxPlacementTrackingOption;
   use Moose;
   has Global => (is => 'ro', isa => 'Bool');
   has TrackedIsps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

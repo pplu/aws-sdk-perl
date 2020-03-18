@@ -11,6 +11,7 @@ package Paws::RedShift::PendingModifiedValues;
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

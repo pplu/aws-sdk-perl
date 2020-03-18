@@ -2,6 +2,7 @@ package Paws::Batch::NodeDetails;
   use Moose;
   has IsMainNode => (is => 'ro', isa => 'Bool', request_name => 'isMainNode', traits => ['NameInRequest']);
   has NodeIndex => (is => 'ro', isa => 'Int', request_name => 'nodeIndex', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

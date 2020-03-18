@@ -2,6 +2,7 @@ package Paws::MediaLive::FrameCaptureSettings;
   use Moose;
   has CaptureInterval => (is => 'ro', isa => 'Int', request_name => 'captureInterval', traits => ['NameInRequest'], required => 1);
   has CaptureIntervalUnits => (is => 'ro', isa => 'Str', request_name => 'captureIntervalUnits', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

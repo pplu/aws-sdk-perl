@@ -5,6 +5,7 @@ package Paws::AppConfig::ConfigurationProfileSummary;
   has LocationUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ValidatorTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

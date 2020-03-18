@@ -1,6 +1,7 @@
 package Paws::GroundStation::TrackingConfig;
   use Moose;
   has Autotrack => (is => 'ro', isa => 'Str', request_name => 'autotrack', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

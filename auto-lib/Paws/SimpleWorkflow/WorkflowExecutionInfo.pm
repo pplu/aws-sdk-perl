@@ -9,6 +9,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionInfo;
   has StartTimestamp => (is => 'ro', isa => 'Str', request_name => 'startTimestamp', traits => ['NameInRequest'], required => 1);
   has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagList', traits => ['NameInRequest']);
   has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

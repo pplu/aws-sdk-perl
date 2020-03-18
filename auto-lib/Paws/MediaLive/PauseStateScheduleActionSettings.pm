@@ -1,6 +1,7 @@
 package Paws::MediaLive::PauseStateScheduleActionSettings;
   use Moose;
   has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::PipelinePauseStateSettings]', request_name => 'pipelines', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

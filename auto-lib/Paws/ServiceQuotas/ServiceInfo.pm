@@ -2,6 +2,7 @@ package Paws::ServiceQuotas::ServiceInfo;
   use Moose;
   has ServiceCode => (is => 'ro', isa => 'Str');
   has ServiceName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

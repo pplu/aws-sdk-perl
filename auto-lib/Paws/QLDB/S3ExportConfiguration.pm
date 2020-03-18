@@ -3,6 +3,7 @@ package Paws::QLDB::S3ExportConfiguration;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::QLDB::S3EncryptionConfiguration', required => 1);
   has Prefix => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

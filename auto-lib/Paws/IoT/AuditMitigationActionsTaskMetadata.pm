@@ -3,6 +3,7 @@ package Paws::IoT::AuditMitigationActionsTaskMetadata;
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
   has TaskStatus => (is => 'ro', isa => 'Str', request_name => 'taskStatus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

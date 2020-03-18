@@ -5,6 +5,7 @@ package Paws::S3Control::JobReport;
   has Format => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has ReportScope => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

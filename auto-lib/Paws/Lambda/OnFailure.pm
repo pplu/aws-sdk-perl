@@ -1,6 +1,7 @@
 package Paws::Lambda::OnFailure;
   use Moose;
   has Destination => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

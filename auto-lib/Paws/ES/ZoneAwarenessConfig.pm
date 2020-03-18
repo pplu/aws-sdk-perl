@@ -1,6 +1,7 @@
 package Paws::ES::ZoneAwarenessConfig;
   use Moose;
   has AvailabilityZoneCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

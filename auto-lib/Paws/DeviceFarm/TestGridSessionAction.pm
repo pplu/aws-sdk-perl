@@ -5,6 +5,7 @@ package Paws::DeviceFarm::TestGridSessionAction;
   has RequestMethod => (is => 'ro', isa => 'Str', request_name => 'requestMethod', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

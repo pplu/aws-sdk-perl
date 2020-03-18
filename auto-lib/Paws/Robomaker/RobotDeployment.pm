@@ -7,6 +7,7 @@ package Paws::Robomaker::RobotDeployment;
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has ProgressDetail => (is => 'ro', isa => 'Paws::Robomaker::ProgressDetail', request_name => 'progressDetail', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

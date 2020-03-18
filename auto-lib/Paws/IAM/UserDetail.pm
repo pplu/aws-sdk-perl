@@ -10,6 +10,7 @@ package Paws::IAM::UserDetail;
   has UserId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
   has UserPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
+
 1;
 
 ### main pod documentation begin ###

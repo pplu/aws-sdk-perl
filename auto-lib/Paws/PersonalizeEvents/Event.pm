@@ -4,6 +4,7 @@ package Paws::PersonalizeEvents::Event;
   has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest'], required => 1);
   has Properties => (is => 'ro', isa => 'Str', request_name => 'properties', traits => ['NameInRequest'], required => 1);
   has SentAt => (is => 'ro', isa => 'Str', request_name => 'sentAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

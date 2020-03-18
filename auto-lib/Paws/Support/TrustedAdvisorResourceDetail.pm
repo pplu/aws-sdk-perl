@@ -5,6 +5,7 @@ package Paws::Support::TrustedAdvisorResourceDetail;
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

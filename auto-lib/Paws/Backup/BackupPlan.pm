@@ -2,6 +2,7 @@ package Paws::Backup::BackupPlan;
   use Moose;
   has BackupPlanName => (is => 'ro', isa => 'Str', required => 1);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupRule]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

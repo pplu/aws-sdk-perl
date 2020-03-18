@@ -1,6 +1,7 @@
 package Paws::SESv2::SendingOptions;
   use Moose;
   has SendingEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Quicksight::AmazonElasticsearchParameters;
   use Moose;
   has Domain => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

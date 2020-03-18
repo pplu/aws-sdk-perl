@@ -1,6 +1,7 @@
 package Paws::SSM::InstanceAssociationOutputUrl;
   use Moose;
   has S3OutputUrl => (is => 'ro', isa => 'Paws::SSM::S3OutputUrl');
+
 1;
 
 ### main pod documentation begin ###

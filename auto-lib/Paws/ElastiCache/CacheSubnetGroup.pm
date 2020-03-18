@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheSubnetGroup;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

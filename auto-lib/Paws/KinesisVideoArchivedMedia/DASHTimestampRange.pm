@@ -2,6 +2,7 @@ package Paws::KinesisVideoArchivedMedia::DASHTimestampRange;
   use Moose;
   has EndTimestamp => (is => 'ro', isa => 'Str');
   has StartTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

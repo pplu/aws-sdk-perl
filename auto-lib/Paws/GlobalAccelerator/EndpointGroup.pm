@@ -9,6 +9,7 @@ package Paws::GlobalAccelerator::EndpointGroup;
   has HealthCheckProtocol => (is => 'ro', isa => 'Str');
   has ThresholdCount => (is => 'ro', isa => 'Int');
   has TrafficDialPercentage => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

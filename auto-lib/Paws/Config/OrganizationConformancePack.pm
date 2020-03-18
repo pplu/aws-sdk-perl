@@ -7,6 +7,7 @@ package Paws::Config::OrganizationConformancePack;
   has LastUpdateTime => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationConformancePackArn => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationConformancePackName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

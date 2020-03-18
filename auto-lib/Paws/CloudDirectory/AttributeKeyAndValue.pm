@@ -2,6 +2,7 @@ package Paws::CloudDirectory::AttributeKeyAndValue;
   use Moose;
   has Key => (is => 'ro', isa => 'Paws::CloudDirectory::AttributeKey', required => 1);
   has Value => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue', required => 1);
+
 1;
 
 ### main pod documentation begin ###

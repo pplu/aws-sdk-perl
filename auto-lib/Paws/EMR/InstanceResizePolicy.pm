@@ -3,6 +3,7 @@ package Paws::EMR::InstanceResizePolicy;
   has InstancesToProtect => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InstancesToTerminate => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InstanceTerminationTimeout => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

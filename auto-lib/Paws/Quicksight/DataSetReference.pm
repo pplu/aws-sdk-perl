@@ -2,6 +2,7 @@ package Paws::Quicksight::DataSetReference;
   use Moose;
   has DataSetArn => (is => 'ro', isa => 'Str', required => 1);
   has DataSetPlaceholder => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaPackageVod::DashPackage;
   has PeriodTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'periodTriggers', traits => ['NameInRequest']);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
   has SegmentTemplateFormat => (is => 'ro', isa => 'Str', request_name => 'segmentTemplateFormat', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

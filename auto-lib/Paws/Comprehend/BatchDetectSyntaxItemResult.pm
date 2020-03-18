@@ -2,6 +2,7 @@ package Paws::Comprehend::BatchDetectSyntaxItemResult;
   use Moose;
   has Index => (is => 'ro', isa => 'Int');
   has SyntaxTokens => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::SyntaxToken]');
+
 1;
 
 ### main pod documentation begin ###

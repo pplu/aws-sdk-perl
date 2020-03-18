@@ -2,6 +2,7 @@ package Paws::SageMaker::ResourceSpec;
   use Moose;
   has EnvironmentArn => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

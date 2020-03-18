@@ -3,6 +3,7 @@ package Paws::Rekognition::CustomLabel;
   has Confidence => (is => 'ro', isa => 'Num');
   has Geometry => (is => 'ro', isa => 'Paws::Rekognition::Geometry');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

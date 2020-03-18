@@ -3,6 +3,7 @@ package Paws::IoT::StepFunctionsAction;
   has ExecutionNamePrefix => (is => 'ro', isa => 'Str', request_name => 'executionNamePrefix', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has StateMachineName => (is => 'ro', isa => 'Str', request_name => 'stateMachineName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

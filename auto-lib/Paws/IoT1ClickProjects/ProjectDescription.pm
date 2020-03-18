@@ -7,6 +7,7 @@ package Paws::IoT1ClickProjects::ProjectDescription;
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::IoT1ClickProjects::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

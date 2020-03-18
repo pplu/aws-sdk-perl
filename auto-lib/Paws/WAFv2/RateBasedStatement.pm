@@ -3,6 +3,7 @@ package Paws::WAFv2::RateBasedStatement;
   has AggregateKeyType => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int', required => 1);
   has ScopeDownStatement => (is => 'ro', isa => 'Paws::WAFv2::Statement');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Rekognition::ModerationLabel;
   has Confidence => (is => 'ro', isa => 'Num');
   has Name => (is => 'ro', isa => 'Str');
   has ParentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

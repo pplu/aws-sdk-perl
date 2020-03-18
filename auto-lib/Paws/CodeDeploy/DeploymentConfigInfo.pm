@@ -6,6 +6,7 @@ package Paws::CodeDeploy::DeploymentConfigInfo;
   has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
   has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['NameInRequest']);
   has TrafficRoutingConfig => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoutingConfig', request_name => 'trafficRoutingConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

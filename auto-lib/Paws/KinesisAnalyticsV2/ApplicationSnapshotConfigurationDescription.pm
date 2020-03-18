@@ -1,6 +1,7 @@
 package Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationDescription;
   use Moose;
   has SnapshotsEnabled => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::PinpointSMSVoice::KinesisFirehoseDestination;
   use Moose;
   has DeliveryStreamArn => (is => 'ro', isa => 'Str');
   has IamRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

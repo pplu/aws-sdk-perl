@@ -4,6 +4,7 @@ package Paws::Athena::ResultConfigurationUpdates;
   has OutputLocation => (is => 'ro', isa => 'Str');
   has RemoveEncryptionConfiguration => (is => 'ro', isa => 'Bool');
   has RemoveOutputLocation => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

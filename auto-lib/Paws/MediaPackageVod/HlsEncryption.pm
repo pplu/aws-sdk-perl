@@ -3,6 +3,7 @@ package Paws::MediaPackageVod::HlsEncryption;
   has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
   has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
   has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackageVod::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

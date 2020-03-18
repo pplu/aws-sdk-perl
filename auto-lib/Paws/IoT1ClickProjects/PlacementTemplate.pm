@@ -2,6 +2,7 @@ package Paws::IoT1ClickProjects::PlacementTemplate;
   use Moose;
   has DefaultAttributes => (is => 'ro', isa => 'Paws::IoT1ClickProjects::DefaultPlacementAttributeMap', request_name => 'defaultAttributes', traits => ['NameInRequest']);
   has DeviceTemplates => (is => 'ro', isa => 'Paws::IoT1ClickProjects::DeviceTemplateMap', request_name => 'deviceTemplates', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

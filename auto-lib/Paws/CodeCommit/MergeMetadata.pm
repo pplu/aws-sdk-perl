@@ -4,6 +4,7 @@ package Paws::CodeCommit::MergeMetadata;
   has MergeCommitId => (is => 'ro', isa => 'Str', request_name => 'mergeCommitId', traits => ['NameInRequest']);
   has MergedBy => (is => 'ro', isa => 'Str', request_name => 'mergedBy', traits => ['NameInRequest']);
   has MergeOption => (is => 'ro', isa => 'Str', request_name => 'mergeOption', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

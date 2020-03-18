@@ -3,6 +3,7 @@ package Paws::GlobalAccelerator::AcceleratorAttributes;
   has FlowLogsEnabled => (is => 'ro', isa => 'Bool');
   has FlowLogsS3Bucket => (is => 'ro', isa => 'Str');
   has FlowLogsS3Prefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

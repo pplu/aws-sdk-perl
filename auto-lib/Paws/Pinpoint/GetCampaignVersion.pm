@@ -10,7 +10,7 @@ package Paws::Pinpoint::GetCampaignVersion;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCampaignVersion');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::CampaignResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetCampaignVersionResponse');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $CampaignResponse = $pinpoint->GetCampaignVersion(
+    my $GetCampaignVersionResponse = $pinpoint->GetCampaignVersion(
       ApplicationId => 'My__string',
       CampaignId    => 'My__string',
       Version       => 'My__string',
@@ -38,30 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AdditionalTreatments = $CampaignResponse->AdditionalTreatments;
-    my $ApplicationId        = $CampaignResponse->ApplicationId;
-    my $Arn                  = $CampaignResponse->Arn;
-    my $CreationDate         = $CampaignResponse->CreationDate;
-    my $DefaultState         = $CampaignResponse->DefaultState;
-    my $Description          = $CampaignResponse->Description;
-    my $HoldoutPercent       = $CampaignResponse->HoldoutPercent;
-    my $Hook                 = $CampaignResponse->Hook;
-    my $Id                   = $CampaignResponse->Id;
-    my $IsPaused             = $CampaignResponse->IsPaused;
-    my $LastModifiedDate     = $CampaignResponse->LastModifiedDate;
-    my $Limits               = $CampaignResponse->Limits;
-    my $MessageConfiguration = $CampaignResponse->MessageConfiguration;
-    my $Name                 = $CampaignResponse->Name;
-    my $Schedule             = $CampaignResponse->Schedule;
-    my $SegmentId            = $CampaignResponse->SegmentId;
-    my $SegmentVersion       = $CampaignResponse->SegmentVersion;
-    my $State                = $CampaignResponse->State;
-    my $Tags                 = $CampaignResponse->Tags;
-    my $TreatmentDescription = $CampaignResponse->TreatmentDescription;
-    my $TreatmentName        = $CampaignResponse->TreatmentName;
-    my $Version              = $CampaignResponse->Version;
+    my $CampaignResponse = $GetCampaignVersionResponse->CampaignResponse;
 
-    # Returns a L<Paws::Pinpoint::CampaignResponse> object.
+    # Returns a L<Paws::Pinpoint::GetCampaignVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetCampaignVersion>

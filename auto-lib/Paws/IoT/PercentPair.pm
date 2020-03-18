@@ -2,6 +2,7 @@ package Paws::IoT::PercentPair;
   use Moose;
   has Percent => (is => 'ro', isa => 'Num', request_name => 'percent', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

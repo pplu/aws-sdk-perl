@@ -1,6 +1,7 @@
 package Paws::Schemas::UpdateDiscovererInput;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

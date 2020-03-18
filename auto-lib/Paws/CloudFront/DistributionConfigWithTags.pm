@@ -2,6 +2,7 @@ package Paws::CloudFront::DistributionConfigWithTags;
   use Moose;
   has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Kinesis::SequenceNumberRange;
   use Moose;
   has EndingSequenceNumber => (is => 'ro', isa => 'Str');
   has StartingSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

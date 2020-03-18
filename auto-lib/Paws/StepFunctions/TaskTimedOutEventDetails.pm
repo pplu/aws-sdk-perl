@@ -4,6 +4,7 @@ package Paws::StepFunctions::TaskTimedOutEventDetails;
   has Error => (is => 'ro', isa => 'Str', request_name => 'error', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

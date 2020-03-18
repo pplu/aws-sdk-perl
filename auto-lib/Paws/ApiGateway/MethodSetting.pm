@@ -10,6 +10,7 @@ package Paws::ApiGateway::MethodSetting;
   has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', request_name => 'throttlingBurstLimit', traits => ['NameInRequest']);
   has ThrottlingRateLimit => (is => 'ro', isa => 'Num', request_name => 'throttlingRateLimit', traits => ['NameInRequest']);
   has UnauthorizedCacheControlHeaderStrategy => (is => 'ro', isa => 'Str', request_name => 'unauthorizedCacheControlHeaderStrategy', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

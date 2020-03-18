@@ -4,6 +4,7 @@ package Paws::MediaConvert::EmbeddedSourceSettings;
   has Source608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'source608ChannelNumber', traits => ['NameInRequest']);
   has Source608TrackNumber => (is => 'ro', isa => 'Int', request_name => 'source608TrackNumber', traits => ['NameInRequest']);
   has TerminateCaptions => (is => 'ro', isa => 'Str', request_name => 'terminateCaptions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

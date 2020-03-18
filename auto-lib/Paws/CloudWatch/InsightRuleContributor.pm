@@ -3,6 +3,7 @@ package Paws::CloudWatch::InsightRuleContributor;
   has ApproximateAggregateValue => (is => 'ro', isa => 'Num', required => 1);
   has Datapoints => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::InsightRuleContributorDatapoint]', required => 1);
   has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

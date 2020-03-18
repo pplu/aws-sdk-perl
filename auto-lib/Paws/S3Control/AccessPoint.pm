@@ -4,6 +4,7 @@ package Paws::S3Control::AccessPoint;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NetworkOrigin => (is => 'ro', isa => 'Str', required => 1);
   has VpcConfiguration => (is => 'ro', isa => 'Paws::S3Control::VpcConfiguration');
+
 1;
 
 ### main pod documentation begin ###

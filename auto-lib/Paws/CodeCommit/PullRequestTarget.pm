@@ -7,6 +7,7 @@ package Paws::CodeCommit::PullRequestTarget;
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
   has SourceCommit => (is => 'ro', isa => 'Str', request_name => 'sourceCommit', traits => ['NameInRequest']);
   has SourceReference => (is => 'ro', isa => 'Str', request_name => 'sourceReference', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodeDeploy::LoadBalancerInfo;
   has ElbInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ELBInfo]', request_name => 'elbInfoList', traits => ['NameInRequest']);
   has TargetGroupInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupInfo]', request_name => 'targetGroupInfoList', traits => ['NameInRequest']);
   has TargetGroupPairInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupPairInfo]', request_name => 'targetGroupPairInfoList', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

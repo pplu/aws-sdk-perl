@@ -3,8 +3,10 @@ package Paws::Pinpoint::WriteTreatmentResource;
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::MessageConfiguration');
   has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
   has SizePercent => (is => 'ro', isa => 'Int', required => 1);
+  has TemplateConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::TemplateConfiguration');
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -57,9 +59,14 @@ variation of a campaign that's used for A/B testing of a campaign.
 treatment to.
 
 
+=head2 TemplateConfiguration => L<Paws::Pinpoint::TemplateConfiguration>
+
+  The message template to use for the treatment.
+
+
 =head2 TreatmentDescription => Str
 
-  The custom description of the treatment.
+  A custom description of the treatment.
 
 
 =head2 TreatmentName => Str

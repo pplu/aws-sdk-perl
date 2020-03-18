@@ -4,6 +4,7 @@ package Paws::Glue::Column;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

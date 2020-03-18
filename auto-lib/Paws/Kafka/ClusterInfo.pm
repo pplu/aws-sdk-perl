@@ -16,6 +16,7 @@ package Paws::Kafka::ClusterInfo;
   has StateInfo => (is => 'ro', isa => 'Paws::Kafka::StateInfo', request_name => 'stateInfo', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has ZookeeperConnectString => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectString', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

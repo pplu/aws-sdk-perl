@@ -9,6 +9,7 @@ package Paws::IoT::JobProcessDetails;
   has NumberOfSucceededThings => (is => 'ro', isa => 'Int', request_name => 'numberOfSucceededThings', traits => ['NameInRequest']);
   has NumberOfTimedOutThings => (is => 'ro', isa => 'Int', request_name => 'numberOfTimedOutThings', traits => ['NameInRequest']);
   has ProcessingTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'processingTargets', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

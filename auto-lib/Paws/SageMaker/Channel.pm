@@ -7,6 +7,7 @@ package Paws::SageMaker::Channel;
   has InputMode => (is => 'ro', isa => 'Str');
   has RecordWrapperType => (is => 'ro', isa => 'Str');
   has ShuffleConfig => (is => 'ro', isa => 'Paws::SageMaker::ShuffleConfig');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::QueryCompileError;
   use Moose;
   has Location => (is => 'ro', isa => 'Paws::CloudWatchLogs::QueryCompileErrorLocation', request_name => 'location', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

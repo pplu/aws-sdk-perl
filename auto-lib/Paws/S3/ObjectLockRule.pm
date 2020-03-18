@@ -1,6 +1,7 @@
 package Paws::S3::ObjectLockRule;
   use Moose;
   has DefaultRetention => (is => 'ro', isa => 'Paws::S3::DefaultRetention');
+
 1;
 
 ### main pod documentation begin ###

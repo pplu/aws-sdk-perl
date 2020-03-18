@@ -8,6 +8,7 @@ package Paws::ELBv2::Action;
   has RedirectConfig => (is => 'ro', isa => 'Paws::ELBv2::RedirectActionConfig');
   has TargetGroupArn => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

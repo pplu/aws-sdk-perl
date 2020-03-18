@@ -2,6 +2,7 @@ package Paws::Pinpoint::EndpointItemResponse;
   use Moose;
   has Message => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::AppSync::DynamodbDataSourceConfig;
   has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
   has UseCallerCredentials => (is => 'ro', isa => 'Bool', request_name => 'useCallerCredentials', traits => ['NameInRequest']);
   has Versioned => (is => 'ro', isa => 'Bool', request_name => 'versioned', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

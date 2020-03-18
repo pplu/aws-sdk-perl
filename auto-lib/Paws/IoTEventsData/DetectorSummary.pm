@@ -6,6 +6,7 @@ package Paws::IoTEventsData::DetectorSummary;
   has KeyValue => (is => 'ro', isa => 'Str', request_name => 'keyValue', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Paws::IoTEventsData::DetectorStateSummary', request_name => 'state', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SecurityHub::AwsS3BucketDetails;
   use Moose;
   has OwnerId => (is => 'ro', isa => 'Str');
   has OwnerName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

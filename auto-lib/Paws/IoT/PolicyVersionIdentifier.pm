@@ -2,6 +2,7 @@ package Paws::IoT::PolicyVersionIdentifier;
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', request_name => 'policyName', traits => ['NameInRequest']);
   has PolicyVersionId => (is => 'ro', isa => 'Str', request_name => 'policyVersionId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

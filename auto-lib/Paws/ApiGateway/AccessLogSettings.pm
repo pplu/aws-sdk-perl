@@ -2,6 +2,7 @@ package Paws::ApiGateway::AccessLogSettings;
   use Moose;
   has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest']);
   has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

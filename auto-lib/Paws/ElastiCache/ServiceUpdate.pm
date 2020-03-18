@@ -12,6 +12,7 @@ package Paws::ElastiCache::ServiceUpdate;
   has ServiceUpdateSeverity => (is => 'ro', isa => 'Str');
   has ServiceUpdateStatus => (is => 'ro', isa => 'Str');
   has ServiceUpdateType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

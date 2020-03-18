@@ -2,6 +2,7 @@ package Paws::MediaLive::MultiplexProgramChannelDestinationSettings;
   use Moose;
   has MultiplexId => (is => 'ro', isa => 'Str', request_name => 'multiplexId', traits => ['NameInRequest']);
   has ProgramName => (is => 'ro', isa => 'Str', request_name => 'programName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

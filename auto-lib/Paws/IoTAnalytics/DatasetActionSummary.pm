@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetActionSummary;
   use Moose;
   has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
   has ActionType => (is => 'ro', isa => 'Str', request_name => 'actionType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

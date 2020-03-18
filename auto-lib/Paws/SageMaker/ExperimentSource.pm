@@ -2,6 +2,7 @@ package Paws::SageMaker::ExperimentSource;
   use Moose;
   has SourceArn => (is => 'ro', isa => 'Str', required => 1);
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

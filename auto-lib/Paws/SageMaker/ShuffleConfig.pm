@@ -1,6 +1,7 @@
 package Paws::SageMaker::ShuffleConfig;
   use Moose;
   has Seed => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

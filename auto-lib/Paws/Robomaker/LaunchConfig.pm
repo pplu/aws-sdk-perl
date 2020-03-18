@@ -4,6 +4,7 @@ package Paws::Robomaker::LaunchConfig;
   has LaunchFile => (is => 'ro', isa => 'Str', request_name => 'launchFile', traits => ['NameInRequest'], required => 1);
   has PackageName => (is => 'ro', isa => 'Str', request_name => 'packageName', traits => ['NameInRequest'], required => 1);
   has PortForwardingConfig => (is => 'ro', isa => 'Paws::Robomaker::PortForwardingConfig', request_name => 'portForwardingConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

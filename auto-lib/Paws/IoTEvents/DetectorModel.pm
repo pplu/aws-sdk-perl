@@ -2,6 +2,7 @@ package Paws::IoTEvents::DetectorModel;
   use Moose;
   has DetectorModelConfiguration => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelConfiguration', request_name => 'detectorModelConfiguration', traits => ['NameInRequest']);
   has DetectorModelDefinition => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelDefinition', request_name => 'detectorModelDefinition', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

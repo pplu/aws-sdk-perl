@@ -2,6 +2,7 @@ package Paws::WAF::RegexMatchSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has RegexMatchTuple => (is => 'ro', isa => 'Paws::WAF::RegexMatchTuple', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudFront::QueryArgProfile;
   use Moose;
   has ProfileId => (is => 'ro', isa => 'Str', required => 1);
   has QueryArg => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

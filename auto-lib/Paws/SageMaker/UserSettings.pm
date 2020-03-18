@@ -6,6 +6,7 @@ package Paws::SageMaker::UserSettings;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SharingSettings => (is => 'ro', isa => 'Paws::SageMaker::SharingSettings');
   has TensorBoardAppSettings => (is => 'ro', isa => 'Paws::SageMaker::TensorBoardAppSettings');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CloudFront::OriginGroup;
   has FailoverCriteria => (is => 'ro', isa => 'Paws::CloudFront::OriginGroupFailoverCriteria', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Members => (is => 'ro', isa => 'Paws::CloudFront::OriginGroupMembers', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::DMS::ElasticsearchSettings;
   has ErrorRetryDuration => (is => 'ro', isa => 'Int');
   has FullLoadErrorPercentage => (is => 'ro', isa => 'Int');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

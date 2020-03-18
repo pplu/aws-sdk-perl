@@ -2,6 +2,7 @@ package Paws::FSX::DeleteFileSystemWindowsResponse;
   use Moose;
   has FinalBackupId => (is => 'ro', isa => 'Str');
   has FinalBackupTags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
+
 1;
 
 ### main pod documentation begin ###

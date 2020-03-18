@@ -4,6 +4,7 @@ package Paws::Firehose::DataFormatConversionConfiguration;
   has InputFormatConfiguration => (is => 'ro', isa => 'Paws::Firehose::InputFormatConfiguration');
   has OutputFormatConfiguration => (is => 'ro', isa => 'Paws::Firehose::OutputFormatConfiguration');
   has SchemaConfiguration => (is => 'ro', isa => 'Paws::Firehose::SchemaConfiguration');
+
 1;
 
 ### main pod documentation begin ###

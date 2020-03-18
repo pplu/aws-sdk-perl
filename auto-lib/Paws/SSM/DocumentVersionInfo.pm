@@ -8,6 +8,7 @@ package Paws::SSM::DocumentVersionInfo;
   has Status => (is => 'ro', isa => 'Str');
   has StatusInformation => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

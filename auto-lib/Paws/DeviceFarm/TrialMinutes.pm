@@ -2,6 +2,7 @@ package Paws::DeviceFarm::TrialMinutes;
   use Moose;
   has Remaining => (is => 'ro', isa => 'Num', request_name => 'remaining', traits => ['NameInRequest']);
   has Total => (is => 'ro', isa => 'Num', request_name => 'total', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

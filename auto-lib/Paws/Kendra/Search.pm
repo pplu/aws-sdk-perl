@@ -3,6 +3,7 @@ package Paws::Kendra::Search;
   has Displayable => (is => 'ro', isa => 'Bool');
   has Facetable => (is => 'ro', isa => 'Bool');
   has Searchable => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

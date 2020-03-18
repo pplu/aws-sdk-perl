@@ -3,6 +3,7 @@ package Paws::Health::EventDetails;
   has Event => (is => 'ro', isa => 'Paws::Health::Event', request_name => 'event', traits => ['NameInRequest']);
   has EventDescription => (is => 'ro', isa => 'Paws::Health::EventDescription', request_name => 'eventDescription', traits => ['NameInRequest']);
   has EventMetadata => (is => 'ro', isa => 'Paws::Health::EventMetadata', request_name => 'eventMetadata', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

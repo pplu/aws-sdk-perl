@@ -3,6 +3,7 @@ package Paws::SageMaker::AlgorithmStatusItem;
   has FailureReason => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

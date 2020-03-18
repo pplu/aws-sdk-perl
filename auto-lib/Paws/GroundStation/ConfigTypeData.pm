@@ -6,6 +6,7 @@ package Paws::GroundStation::ConfigTypeData;
   has DataflowEndpointConfig => (is => 'ro', isa => 'Paws::GroundStation::DataflowEndpointConfig', request_name => 'dataflowEndpointConfig', traits => ['NameInRequest']);
   has TrackingConfig => (is => 'ro', isa => 'Paws::GroundStation::TrackingConfig', request_name => 'trackingConfig', traits => ['NameInRequest']);
   has UplinkEchoConfig => (is => 'ro', isa => 'Paws::GroundStation::UplinkEchoConfig', request_name => 'uplinkEchoConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

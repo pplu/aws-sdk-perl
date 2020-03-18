@@ -2,6 +2,7 @@ package Paws::Config::SsmControls;
   use Moose;
   has ConcurrentExecutionRatePercentage => (is => 'ro', isa => 'Int');
   has ErrorPercentage => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

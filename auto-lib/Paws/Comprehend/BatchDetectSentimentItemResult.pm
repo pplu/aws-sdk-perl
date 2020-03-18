@@ -3,6 +3,7 @@ package Paws::Comprehend::BatchDetectSentimentItemResult;
   has Index => (is => 'ro', isa => 'Int');
   has Sentiment => (is => 'ro', isa => 'Str');
   has SentimentScore => (is => 'ro', isa => 'Paws::Comprehend::SentimentScore');
+
 1;
 
 ### main pod documentation begin ###

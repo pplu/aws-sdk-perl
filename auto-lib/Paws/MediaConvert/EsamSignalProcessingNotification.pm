@@ -1,6 +1,7 @@
 package Paws::MediaConvert::EsamSignalProcessingNotification;
   use Moose;
   has SccXml => (is => 'ro', isa => 'Str', request_name => 'sccXml', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

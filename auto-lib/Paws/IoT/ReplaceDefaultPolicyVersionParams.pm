@@ -1,6 +1,7 @@
 package Paws::IoT::ReplaceDefaultPolicyVersionParams;
   use Moose;
   has TemplateName => (is => 'ro', isa => 'Str', request_name => 'templateName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

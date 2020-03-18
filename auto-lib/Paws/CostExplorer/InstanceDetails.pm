@@ -5,6 +5,7 @@ package Paws::CostExplorer::InstanceDetails;
   has ESInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ESInstanceDetails');
   has RDSInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RDSInstanceDetails');
   has RedshiftInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RedshiftInstanceDetails');
+
 1;
 
 ### main pod documentation begin ###

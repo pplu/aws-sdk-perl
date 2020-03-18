@@ -5,6 +5,7 @@ package Paws::Schemas::DiscovererSummary;
   has SourceArn => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Schemas::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

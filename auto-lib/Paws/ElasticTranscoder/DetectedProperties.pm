@@ -5,6 +5,7 @@ package Paws::ElasticTranscoder::DetectedProperties;
   has FrameRate => (is => 'ro', isa => 'Str');
   has Height => (is => 'ro', isa => 'Int');
   has Width => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

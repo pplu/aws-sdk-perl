@@ -1,6 +1,7 @@
 package Paws::IoT::CodeSigningSignature;
   use Moose;
   has InlineDocument => (is => 'ro', isa => 'Str', request_name => 'inlineDocument', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

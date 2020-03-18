@@ -1,6 +1,7 @@
 package Paws::Route53Domains::DomainTransferability;
   use Moose;
   has Transferable => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

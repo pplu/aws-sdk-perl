@@ -11,6 +11,7 @@ package Paws::ElasticBeanstalk::ConfigurationOptionDescription;
   has UserDefined => (is => 'ro', isa => 'Bool');
   has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValueType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

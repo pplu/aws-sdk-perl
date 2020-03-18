@@ -6,6 +6,7 @@ package Paws::FSX::SelfManagedActiveDirectoryConfiguration;
   has OrganizationalUnitDistinguishedName => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

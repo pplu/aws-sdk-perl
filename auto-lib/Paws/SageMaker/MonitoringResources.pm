@@ -1,6 +1,7 @@
 package Paws::SageMaker::MonitoringResources;
   use Moose;
   has ClusterConfig => (is => 'ro', isa => 'Paws::SageMaker::MonitoringClusterConfig', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::NetworkManager::ValidationExceptionField;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

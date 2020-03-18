@@ -7,6 +7,7 @@ package Paws::SageMaker::TransformJobSummary;
   has TransformJobArn => (is => 'ro', isa => 'Str', required => 1);
   has TransformJobName => (is => 'ro', isa => 'Str', required => 1);
   has TransformJobStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

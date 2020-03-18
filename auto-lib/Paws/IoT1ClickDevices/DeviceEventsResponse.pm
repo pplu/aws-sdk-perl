@@ -2,6 +2,7 @@ package Paws::IoT1ClickDevices::DeviceEventsResponse;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::IoT1ClickDevices::DeviceEvent]', request_name => 'events', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

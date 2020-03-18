@@ -4,6 +4,7 @@ package Paws::MediaConvert::OutputGroup;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest']);
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Output]', request_name => 'outputs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

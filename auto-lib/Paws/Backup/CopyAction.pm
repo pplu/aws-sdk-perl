@@ -2,6 +2,7 @@ package Paws::Backup::CopyAction;
   use Moose;
   has DestinationBackupVaultArn => (is => 'ro', isa => 'Str', required => 1);
   has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
+
 1;
 
 ### main pod documentation begin ###

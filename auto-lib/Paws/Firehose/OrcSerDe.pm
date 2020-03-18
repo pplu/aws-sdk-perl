@@ -10,6 +10,7 @@ package Paws::Firehose::OrcSerDe;
   has PaddingTolerance => (is => 'ro', isa => 'Num');
   has RowIndexStride => (is => 'ro', isa => 'Int');
   has StripeSizeBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

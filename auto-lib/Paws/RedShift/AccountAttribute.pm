@@ -2,6 +2,7 @@ package Paws::RedShift::AccountAttribute;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::AttributeValueTarget]', request_name => 'AttributeValueTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CostExplorer::SavingsPlansUtilizationAggregates;
   has AmortizedCommitment => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment');
   has Savings => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansSavings');
   has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilization', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::Latency;
   has P95 => (is => 'ro', isa => 'Num');
   has P99 => (is => 'ro', isa => 'Num');
   has P999 => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Forecast::EvaluationParameters;
   use Moose;
   has BackTestWindowOffset => (is => 'ro', isa => 'Int');
   has NumberOfBacktestWindows => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Organizations::Parent;
   use Moose;
   has Id => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaLive::HlsMediaStoreSettings;
   has MediaStoreStorageClass => (is => 'ro', isa => 'Str', request_name => 'mediaStoreStorageClass', traits => ['NameInRequest']);
   has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
   has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

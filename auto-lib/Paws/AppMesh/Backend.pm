@@ -1,6 +1,7 @@
 package Paws::AppMesh::Backend;
   use Moose;
   has VirtualService => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceBackend', request_name => 'virtualService', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::LexModels::UtteranceData;
   has FirstUtteredDate => (is => 'ro', isa => 'Str', request_name => 'firstUtteredDate', traits => ['NameInRequest']);
   has LastUtteredDate => (is => 'ro', isa => 'Str', request_name => 'lastUtteredDate', traits => ['NameInRequest']);
   has UtteranceString => (is => 'ro', isa => 'Str', request_name => 'utteranceString', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

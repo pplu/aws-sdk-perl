@@ -9,6 +9,7 @@ package Paws::EMR::InstanceGroupConfig;
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

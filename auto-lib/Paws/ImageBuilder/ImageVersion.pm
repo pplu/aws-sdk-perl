@@ -6,6 +6,7 @@ package Paws::ImageBuilder::ImageVersion;
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Glue::FindMatchesTaskRunProperties;
   has JobId => (is => 'ro', isa => 'Str');
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

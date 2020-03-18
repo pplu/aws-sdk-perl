@@ -7,6 +7,7 @@ package Paws::Inspector::AssessmentRunFilter;
   has StartTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'startTimeRange', traits => ['NameInRequest']);
   has StateChangeTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'stateChangeTimeRange', traits => ['NameInRequest']);
   has States => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'states', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

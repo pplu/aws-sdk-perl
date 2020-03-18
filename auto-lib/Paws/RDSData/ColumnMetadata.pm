@@ -14,6 +14,7 @@ package Paws::RDSData::ColumnMetadata;
   has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Int', request_name => 'type', traits => ['NameInRequest']);
   has TypeName => (is => 'ro', isa => 'Str', request_name => 'typeName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

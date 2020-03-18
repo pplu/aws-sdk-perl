@@ -6,6 +6,7 @@ package Paws::Personalize::CampaignUpdateSummary;
   has MinProvisionedTPS => (is => 'ro', isa => 'Int', request_name => 'minProvisionedTPS', traits => ['NameInRequest']);
   has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

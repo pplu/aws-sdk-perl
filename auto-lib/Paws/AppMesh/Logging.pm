@@ -1,6 +1,7 @@
 package Paws::AppMesh::Logging;
   use Moose;
   has AccessLog => (is => 'ro', isa => 'Paws::AppMesh::AccessLog', request_name => 'accessLog', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

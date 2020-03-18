@@ -14,6 +14,7 @@ package Paws::Pinpoint::BaiduMessage;
   has TimeToLive => (is => 'ro', isa => 'Int');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +109,8 @@ push notification.
 =head2 RawContent => Str
 
   The raw, JSON-formatted string to use as the payload for the
-notification message. This value overrides the message.
+notification message. If specified, this value overrides all other
+content for the message.
 
 
 =head2 SilentPush => Bool

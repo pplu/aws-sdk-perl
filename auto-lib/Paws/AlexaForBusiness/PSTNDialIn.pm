@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::PSTNDialIn;
   has OneClickIdDelay => (is => 'ro', isa => 'Str', required => 1);
   has OneClickPinDelay => (is => 'ro', isa => 'Str', required => 1);
   has PhoneNumber => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

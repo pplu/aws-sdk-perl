@@ -4,6 +4,7 @@ package Paws::Pinpoint::CampaignEmailMessage;
   has FromAddress => (is => 'ro', isa => 'Str');
   has HtmlBody => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +43,7 @@ sent to recipients of a campaign.
 
 =head2 Body => Str
 
-  The body of the email for recipients whose email clients don't support
+  The body of the email for recipients whose email clients don't render
 HTML content.
 
 
@@ -55,7 +56,7 @@ is the FromAddress specified for the email channel for the application.
 =head2 HtmlBody => Str
 
   The body of the email, in HTML format, for recipients whose email
-clients support HTML content.
+clients render HTML content.
 
 
 =head2 B<REQUIRED> Title => Str

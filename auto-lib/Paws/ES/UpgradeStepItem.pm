@@ -4,6 +4,7 @@ package Paws::ES::UpgradeStepItem;
   has ProgressPercent => (is => 'ro', isa => 'Num');
   has UpgradeStep => (is => 'ro', isa => 'Str');
   has UpgradeStepStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

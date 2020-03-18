@@ -3,6 +3,7 @@ package Paws::CostExplorer::Coverage;
   has CoverageCost => (is => 'ro', isa => 'Paws::CostExplorer::CoverageCost');
   has CoverageHours => (is => 'ro', isa => 'Paws::CostExplorer::CoverageHours');
   has CoverageNormalizedUnits => (is => 'ro', isa => 'Paws::CostExplorer::CoverageNormalizedUnits');
+
 1;
 
 ### main pod documentation begin ###

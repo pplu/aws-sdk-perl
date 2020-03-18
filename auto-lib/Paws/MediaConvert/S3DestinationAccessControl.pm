@@ -1,6 +1,7 @@
 package Paws::MediaConvert::S3DestinationAccessControl;
   use Moose;
   has CannedAcl => (is => 'ro', isa => 'Str', request_name => 'cannedAcl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

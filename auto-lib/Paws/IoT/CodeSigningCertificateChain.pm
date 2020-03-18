@@ -2,6 +2,7 @@ package Paws::IoT::CodeSigningCertificateChain;
   use Moose;
   has CertificateName => (is => 'ro', isa => 'Str', request_name => 'certificateName', traits => ['NameInRequest']);
   has InlineDocument => (is => 'ro', isa => 'Str', request_name => 'inlineDocument', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

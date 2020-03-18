@@ -1,6 +1,7 @@
 package Paws::SecurityHub::WafExcludedRule;
   use Moose;
   has RuleId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

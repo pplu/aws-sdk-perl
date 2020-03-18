@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchUpdateObjectAttributes;
   use Moose;
   has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectAttributeUpdate]', required => 1);
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+
 1;
 
 ### main pod documentation begin ###

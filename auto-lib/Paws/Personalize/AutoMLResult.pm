@@ -1,6 +1,7 @@
 package Paws::Personalize::AutoMLResult;
   use Moose;
   has BestRecipeArn => (is => 'ro', isa => 'Str', request_name => 'bestRecipeArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -15,6 +15,7 @@ package Paws::Inspector::AssessmentRun;
   has StateChangedAt => (is => 'ro', isa => 'Str', request_name => 'stateChangedAt', traits => ['NameInRequest'], required => 1);
   has StateChanges => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunStateChange]', request_name => 'stateChanges', traits => ['NameInRequest'], required => 1);
   has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributesForFindings', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

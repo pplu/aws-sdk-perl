@@ -18,6 +18,7 @@ package Paws::SageMaker::TrialComponent;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TrialComponentArn => (is => 'ro', isa => 'Str');
   has TrialComponentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

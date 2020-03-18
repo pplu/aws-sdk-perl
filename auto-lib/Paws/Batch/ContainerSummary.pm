@@ -2,6 +2,7 @@ package Paws::Batch::ContainerSummary;
   use Moose;
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

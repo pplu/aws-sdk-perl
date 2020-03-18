@@ -19,6 +19,7 @@ package Paws::SecurityHub::AwsRdsDbInstanceDetails;
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsRdsDbInstanceVpcSecurityGroup]');
+
 1;
 
 ### main pod documentation begin ###

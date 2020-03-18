@@ -3,6 +3,7 @@ package Paws::SSM::InventoryAggregator;
   has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryAggregator]');
   has Expression => (is => 'ro', isa => 'Str');
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryGroup]');
+
 1;
 
 ### main pod documentation begin ###

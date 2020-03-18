@@ -2,6 +2,7 @@ package Paws::CodeCommit::ApprovalRuleOverriddenEventMetadata;
   use Moose;
   has OverrideStatus => (is => 'ro', isa => 'Str', request_name => 'overrideStatus', traits => ['NameInRequest']);
   has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

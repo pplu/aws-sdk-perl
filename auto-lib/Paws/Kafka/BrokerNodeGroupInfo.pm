@@ -5,6 +5,7 @@ package Paws::Kafka::BrokerNodeGroupInfo;
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest'], required => 1);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has StorageInfo => (is => 'ro', isa => 'Paws::Kafka::StorageInfo', request_name => 'storageInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

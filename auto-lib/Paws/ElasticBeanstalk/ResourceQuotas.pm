@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::ResourceQuotas;
   has ConfigurationTemplateQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
   has CustomPlatformQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
   has EnvironmentQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
+
 1;
 
 ### main pod documentation begin ###

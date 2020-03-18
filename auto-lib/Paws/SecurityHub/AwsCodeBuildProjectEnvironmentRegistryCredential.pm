@@ -2,6 +2,7 @@ package Paws::SecurityHub::AwsCodeBuildProjectEnvironmentRegistryCredential;
   use Moose;
   has Credential => (is => 'ro', isa => 'Str');
   has CredentialProvider => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

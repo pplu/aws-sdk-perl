@@ -5,6 +5,7 @@ package Paws::Rekognition::ComparedFace;
   has Landmarks => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Landmark]');
   has Pose => (is => 'ro', isa => 'Paws::Rekognition::Pose');
   has Quality => (is => 'ro', isa => 'Paws::Rekognition::ImageQuality');
+
 1;
 
 ### main pod documentation begin ###

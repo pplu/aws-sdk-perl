@@ -2,6 +2,7 @@ package Paws::MediaPackageVod::MssManifest;
   use Moose;
   has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
   has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackageVod::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

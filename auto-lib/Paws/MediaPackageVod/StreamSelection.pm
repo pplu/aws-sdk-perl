@@ -3,6 +3,7 @@ package Paws::MediaPackageVod::StreamSelection;
   has MaxVideoBitsPerSecond => (is => 'ro', isa => 'Int', request_name => 'maxVideoBitsPerSecond', traits => ['NameInRequest']);
   has MinVideoBitsPerSecond => (is => 'ro', isa => 'Int', request_name => 'minVideoBitsPerSecond', traits => ['NameInRequest']);
   has StreamOrder => (is => 'ro', isa => 'Str', request_name => 'streamOrder', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

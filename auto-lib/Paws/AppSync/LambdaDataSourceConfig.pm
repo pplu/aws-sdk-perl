@@ -1,6 +1,7 @@
 package Paws::AppSync::LambdaDataSourceConfig;
   use Moose;
   has LambdaFunctionArn => (is => 'ro', isa => 'Str', request_name => 'lambdaFunctionArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

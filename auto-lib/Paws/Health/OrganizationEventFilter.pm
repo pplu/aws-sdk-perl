@@ -11,6 +11,7 @@ package Paws::Health::OrganizationEventFilter;
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'regions', traits => ['NameInRequest']);
   has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Paws::Health::DateTimeRange', request_name => 'startTime', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

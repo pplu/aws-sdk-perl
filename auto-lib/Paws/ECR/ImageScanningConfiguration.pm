@@ -1,6 +1,7 @@
 package Paws::ECR::ImageScanningConfiguration;
   use Moose;
   has ScanOnPush => (is => 'ro', isa => 'Bool', request_name => 'scanOnPush', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

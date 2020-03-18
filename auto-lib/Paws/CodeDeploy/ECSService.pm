@@ -2,6 +2,7 @@ package Paws::CodeDeploy::ECSService;
   use Moose;
   has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

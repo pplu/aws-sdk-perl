@@ -3,6 +3,7 @@ package Paws::MediaPackage::ChannelCreateParameters;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

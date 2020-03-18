@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsEc2NetworkInterfaceDetails;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2NetworkInterfaceSecurityGroup]');
   has SourceDestCheck => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

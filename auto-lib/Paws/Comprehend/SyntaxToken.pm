@@ -5,6 +5,7 @@ package Paws::Comprehend::SyntaxToken;
   has PartOfSpeech => (is => 'ro', isa => 'Paws::Comprehend::PartOfSpeechTag');
   has Text => (is => 'ro', isa => 'Str');
   has TokenId => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

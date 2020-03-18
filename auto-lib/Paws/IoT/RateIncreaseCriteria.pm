@@ -2,6 +2,7 @@ package Paws::IoT::RateIncreaseCriteria;
   use Moose;
   has NumberOfNotifiedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfNotifiedThings', traits => ['NameInRequest']);
   has NumberOfSucceededThings => (is => 'ro', isa => 'Int', request_name => 'numberOfSucceededThings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::Config::OrganizationCustomRuleMetadata;
   has ResourceTypesScope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagKeyScope => (is => 'ro', isa => 'Str');
   has TagValueScope => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Glue::PartitionError;
   use Moose;
   has ErrorDetail => (is => 'ro', isa => 'Paws::Glue::ErrorDetail');
   has PartitionValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

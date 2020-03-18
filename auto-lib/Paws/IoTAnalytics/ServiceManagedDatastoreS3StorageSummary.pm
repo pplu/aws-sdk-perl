@@ -1,5 +1,6 @@
 package Paws::IoTAnalytics::ServiceManagedDatastoreS3StorageSummary;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::Config::RemediationConfiguration;
   has TargetId => (is => 'ro', isa => 'Str', required => 1);
   has TargetType => (is => 'ro', isa => 'Str', required => 1);
   has TargetVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

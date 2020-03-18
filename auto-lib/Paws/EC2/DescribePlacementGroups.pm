@@ -34,13 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
+      ],                                    # OPTIONAL
       GroupIds   => [ 'MyPlacementGroupId',   ... ],    # OPTIONAL
       GroupNames => [ 'MyPlacementGroupName', ... ],    # OPTIONAL
     );

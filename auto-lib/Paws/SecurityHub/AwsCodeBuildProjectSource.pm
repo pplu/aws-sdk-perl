@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsCodeBuildProjectSource;
   has InsecureSsl => (is => 'ro', isa => 'Bool');
   has Location => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

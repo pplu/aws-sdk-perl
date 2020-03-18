@@ -6,6 +6,7 @@ package Paws::SecurityHub::AwsEc2SecurityGroupUserIdGroupPair;
   has UserId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

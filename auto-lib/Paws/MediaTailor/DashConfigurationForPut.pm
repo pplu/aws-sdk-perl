@@ -2,6 +2,7 @@ package Paws::MediaTailor::DashConfigurationForPut;
   use Moose;
   has MpdLocation => (is => 'ro', isa => 'Str');
   has OriginManifestType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

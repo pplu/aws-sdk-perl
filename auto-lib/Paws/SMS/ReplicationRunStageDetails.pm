@@ -2,6 +2,7 @@ package Paws::SMS::ReplicationRunStageDetails;
   use Moose;
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
   has StageProgress => (is => 'ro', isa => 'Str', request_name => 'stageProgress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::AlexaForBusiness::BusinessReportSchedule;
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has ScheduleArn => (is => 'ro', isa => 'Str');
   has ScheduleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

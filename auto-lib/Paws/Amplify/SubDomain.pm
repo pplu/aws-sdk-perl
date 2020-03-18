@@ -3,6 +3,7 @@ package Paws::Amplify::SubDomain;
   has DnsRecord => (is => 'ro', isa => 'Str', request_name => 'dnsRecord', traits => ['NameInRequest'], required => 1);
   has SubDomainSetting => (is => 'ro', isa => 'Paws::Amplify::SubDomainSetting', request_name => 'subDomainSetting', traits => ['NameInRequest'], required => 1);
   has Verified => (is => 'ro', isa => 'Bool', request_name => 'verified', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

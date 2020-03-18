@@ -3,6 +3,7 @@ package Paws::Snowball::JobResource;
   has Ec2AmiResources => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::Ec2AmiResource]');
   has LambdaResources => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::LambdaResource]');
   has S3Resources => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::S3Resource]');
+
 1;
 
 ### main pod documentation begin ###

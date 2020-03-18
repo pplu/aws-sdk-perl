@@ -7,6 +7,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription;
   has RunConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationDescription');
   has SqlApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription');
   has VpcConfigurationDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfigurationDescription]');
+
 1;
 
 ### main pod documentation begin ###

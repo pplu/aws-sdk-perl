@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::SqlRunConfiguration;
   use Moose;
   has InputId => (is => 'ro', isa => 'Str', required => 1);
   has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputStartingPositionConfiguration', required => 1);
+
 1;
 
 ### main pod documentation begin ###

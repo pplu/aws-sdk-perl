@@ -6,6 +6,7 @@ package Paws::Lightsail::Region;
   has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RelationalDatabaseAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', request_name => 'relationalDatabaseAvailabilityZones', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -125,7 +125,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         CheckpointConfig => {
           S3Uri     => 'MyS3Uri',            # max: 1024
-          LocalPath => 'MyDirectoryPath',    # max: 4096; OPTIONAL
+          LocalPath => 'MyDirectoryPath',    # max: 4096
         },    # OPTIONAL
         DefinitionName => 'MyHyperParameterTrainingJobDefinitionName'
         ,     # min: 1, max: 64; OPTIONAL
@@ -169,9 +169,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ChannelName => 'MyChannelName',    # min: 1, max: 64
             DataSource  => {
               FileSystemDataSource => {
-                DirectoryPath        => 'MyDirectoryPath', # max: 4096; OPTIONAL
-                FileSystemAccessMode => 'rw',              # values: rw, ro
-                FileSystemId         => 'MyFileSystemId',  # min: 11
+                DirectoryPath        => 'MyDirectoryPath',    # max: 4096
+                FileSystemAccessMode => 'rw',                 # values: rw, ro
+                FileSystemId         => 'MyFileSystemId',     # min: 11
                 FileSystemType => 'EFS',    # values: EFS, FSxLustre
 
               },    # OPTIONAL
@@ -249,7 +249,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           CheckpointConfig => {
             S3Uri     => 'MyS3Uri',            # max: 1024
-            LocalPath => 'MyDirectoryPath',    # max: 4096; OPTIONAL
+            LocalPath => 'MyDirectoryPath',    # max: 4096
           },    # OPTIONAL
           DefinitionName => 'MyHyperParameterTrainingJobDefinitionName'
           ,     # min: 1, max: 64; OPTIONAL
@@ -293,9 +293,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ChannelName => 'MyChannelName',    # min: 1, max: 64
               DataSource  => {
                 FileSystemDataSource => {
-                  DirectoryPath => 'MyDirectoryPath',    # max: 4096; OPTIONAL
-                  FileSystemAccessMode => 'rw',                # values: rw, ro
-                  FileSystemId         => 'MyFileSystemId',    # min: 11
+                  DirectoryPath        => 'MyDirectoryPath',    # max: 4096
+                  FileSystemAccessMode => 'rw',                 # values: rw, ro
+                  FileSystemId         => 'MyFileSystemId',     # min: 11
                   FileSystemType => 'EFS',    # values: EFS, FSxLustre
 
                 },    # OPTIONAL

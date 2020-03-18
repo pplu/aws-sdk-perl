@@ -4,6 +4,7 @@ package Paws::S3Control::ListJobsResult;
   has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::JobListDescriptor]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

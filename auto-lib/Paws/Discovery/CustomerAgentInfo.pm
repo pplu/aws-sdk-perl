@@ -7,6 +7,7 @@ package Paws::Discovery::CustomerAgentInfo;
   has TotalAgents => (is => 'ro', isa => 'Int', request_name => 'totalAgents', traits => ['NameInRequest'], required => 1);
   has UnhealthyAgents => (is => 'ro', isa => 'Int', request_name => 'unhealthyAgents', traits => ['NameInRequest'], required => 1);
   has UnknownAgents => (is => 'ro', isa => 'Int', request_name => 'unknownAgents', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

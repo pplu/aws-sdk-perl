@@ -2,6 +2,7 @@ package Paws::SageMaker::TrialComponentParameterValue;
   use Moose;
   has NumberValue => (is => 'ro', isa => 'Num');
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

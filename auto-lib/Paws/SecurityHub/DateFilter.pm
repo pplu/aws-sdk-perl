@@ -3,6 +3,7 @@ package Paws::SecurityHub::DateFilter;
   has DateRange => (is => 'ro', isa => 'Paws::SecurityHub::DateRange');
   has End => (is => 'ro', isa => 'Str');
   has Start => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Pinpoint::SMSChannelRequest;
   has Enabled => (is => 'ro', isa => 'Bool');
   has SenderId => (is => 'ro', isa => 'Str');
   has ShortCode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

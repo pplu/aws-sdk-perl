@@ -4,6 +4,7 @@ package Paws::MarketplaceMetering::UsageRecord;
   has Dimension => (is => 'ro', isa => 'Str', required => 1);
   has Quantity => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

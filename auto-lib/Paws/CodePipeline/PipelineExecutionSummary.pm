@@ -7,6 +7,7 @@ package Paws::CodePipeline::PipelineExecutionSummary;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StopTrigger => (is => 'ro', isa => 'Paws::CodePipeline::StopExecutionTrigger', request_name => 'stopTrigger', traits => ['NameInRequest']);
   has Trigger => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionTrigger', request_name => 'trigger', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

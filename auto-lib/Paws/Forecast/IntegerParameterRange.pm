@@ -4,6 +4,7 @@ package Paws::Forecast::IntegerParameterRange;
   has MinValue => (is => 'ro', isa => 'Int', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ScalingType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::SSM::AttachmentContent;
   has Name => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::WAFv2::SizeConstraintStatement;
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAFv2::FieldToMatch', required => 1);
   has Size => (is => 'ro', isa => 'Int', required => 1);
   has TextTransformations => (is => 'ro', isa => 'ArrayRef[Paws::WAFv2::TextTransformation]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

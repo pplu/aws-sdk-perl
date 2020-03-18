@@ -2,6 +2,7 @@ package Paws::IoT::SecurityProfileTargetMapping;
   use Moose;
   has SecurityProfileIdentifier => (is => 'ro', isa => 'Paws::IoT::SecurityProfileIdentifier', request_name => 'securityProfileIdentifier', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Paws::IoT::SecurityProfileTarget', request_name => 'target', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::WorkSpaces::WorkspacesIpGroup;
   has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has UserRules => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::IpRuleItem]', request_name => 'userRules', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

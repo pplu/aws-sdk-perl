@@ -3,6 +3,7 @@ package Paws::ManagedBlockchain::VoteSummary;
   has MemberId => (is => 'ro', isa => 'Str');
   has MemberName => (is => 'ro', isa => 'Str');
   has Vote => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

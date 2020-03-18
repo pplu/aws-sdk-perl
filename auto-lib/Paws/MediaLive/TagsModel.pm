@@ -1,6 +1,7 @@
 package Paws::MediaLive::TagsModel;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

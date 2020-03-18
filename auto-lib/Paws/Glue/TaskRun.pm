@@ -10,6 +10,7 @@ package Paws::Glue::TaskRun;
   has Status => (is => 'ro', isa => 'Str');
   has TaskRunId => (is => 'ro', isa => 'Str');
   has TransformId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Route53Resolver::IpAddressRequest;
   use Moose;
   has Ip => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::AppSync::ApiKey;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Expires => (is => 'ro', isa => 'Int', request_name => 'expires', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::WAFv2::IPSetReferenceStatement;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

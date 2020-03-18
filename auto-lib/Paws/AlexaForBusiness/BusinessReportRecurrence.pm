@@ -1,6 +1,7 @@
 package Paws::AlexaForBusiness::BusinessReportRecurrence;
   use Moose;
   has StartDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Kafka::ClientAuthentication;
   use Moose;
   has Tls => (is => 'ro', isa => 'Paws::Kafka::Tls', request_name => 'tls', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

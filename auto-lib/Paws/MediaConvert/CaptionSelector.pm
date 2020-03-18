@@ -3,6 +3,7 @@ package Paws::MediaConvert::CaptionSelector;
   has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has SourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceSettings', request_name => 'sourceSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

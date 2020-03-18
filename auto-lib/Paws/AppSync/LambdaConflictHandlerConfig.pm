@@ -1,6 +1,7 @@
 package Paws::AppSync::LambdaConflictHandlerConfig;
   use Moose;
   has LambdaConflictHandlerArn => (is => 'ro', isa => 'Str', request_name => 'lambdaConflictHandlerArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

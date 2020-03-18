@@ -12,6 +12,7 @@ package Paws::SageMaker::HumanTaskConfig;
   has TaskTitle => (is => 'ro', isa => 'Str', required => 1);
   has UiConfig => (is => 'ro', isa => 'Paws::SageMaker::UiConfig', required => 1);
   has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SecurityHub::AwsElasticsearchDomainEncryptionAtRestOptions;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

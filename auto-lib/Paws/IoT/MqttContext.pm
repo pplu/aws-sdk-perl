@@ -3,6 +3,7 @@ package Paws::IoT::MqttContext;
   has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
   has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

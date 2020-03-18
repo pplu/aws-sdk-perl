@@ -2,6 +2,7 @@ package Paws::Config::FailedRemediationBatch;
   use Moose;
   has FailedItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::RemediationConfiguration]');
   has FailureMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

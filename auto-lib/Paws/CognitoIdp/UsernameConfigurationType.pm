@@ -1,6 +1,7 @@
 package Paws::CognitoIdp::UsernameConfigurationType;
   use Moose;
   has CaseSensitive => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

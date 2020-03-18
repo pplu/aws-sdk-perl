@@ -2,6 +2,7 @@ package Paws::ManagedBlockchain::ProposalActions;
   use Moose;
   has Invitations => (is => 'ro', isa => 'ArrayRef[Paws::ManagedBlockchain::InviteAction]');
   has Removals => (is => 'ro', isa => 'ArrayRef[Paws::ManagedBlockchain::RemoveAction]');
+
 1;
 
 ### main pod documentation begin ###

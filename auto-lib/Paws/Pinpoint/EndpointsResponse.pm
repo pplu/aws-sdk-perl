@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EndpointsResponse;
   use Moose;
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointResponse]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

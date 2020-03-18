@@ -1,6 +1,7 @@
 package Paws::Glacier::OutputSerialization;
   use Moose;
   has Csv => (is => 'ro', isa => 'Paws::Glacier::CSVOutput', request_name => 'csv', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

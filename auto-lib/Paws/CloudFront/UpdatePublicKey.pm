@@ -3,7 +3,8 @@ package Paws::CloudFront::UpdatePublicKey;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
-  has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig', required => 1);
+  has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -13,6 +14,7 @@ package Paws::CloudFront::UpdatePublicKey;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdatePublicKeyResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

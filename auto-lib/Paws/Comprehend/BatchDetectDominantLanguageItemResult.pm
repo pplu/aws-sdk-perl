@@ -2,6 +2,7 @@ package Paws::Comprehend::BatchDetectDominantLanguageItemResult;
   use Moose;
   has Index => (is => 'ro', isa => 'Int');
   has Languages => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::DominantLanguage]');
+
 1;
 
 ### main pod documentation begin ###

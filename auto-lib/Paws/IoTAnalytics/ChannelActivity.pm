@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::ChannelActivity;
   has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

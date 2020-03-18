@@ -3,6 +3,7 @@ package Paws::Quicksight::DashboardPublishOptions;
   has AdHocFilteringOption => (is => 'ro', isa => 'Paws::Quicksight::AdHocFilteringOption');
   has ExportToCSVOption => (is => 'ro', isa => 'Paws::Quicksight::ExportToCSVOption');
   has SheetControlsOption => (is => 'ro', isa => 'Paws::Quicksight::SheetControlsOption');
+
 1;
 
 ### main pod documentation begin ###

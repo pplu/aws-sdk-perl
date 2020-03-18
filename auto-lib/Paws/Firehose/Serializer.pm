@@ -2,6 +2,7 @@ package Paws::Firehose::Serializer;
   use Moose;
   has OrcSerDe => (is => 'ro', isa => 'Paws::Firehose::OrcSerDe');
   has ParquetSerDe => (is => 'ro', isa => 'Paws::Firehose::ParquetSerDe');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::MediaConvert::HlsSettings;
   has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
   has IFrameOnlyManifest => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyManifest', traits => ['NameInRequest']);
   has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

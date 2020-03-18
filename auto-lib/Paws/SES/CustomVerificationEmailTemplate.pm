@@ -5,6 +5,7 @@ package Paws::SES::CustomVerificationEmailTemplate;
   has SuccessRedirectionURL => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has TemplateSubject => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

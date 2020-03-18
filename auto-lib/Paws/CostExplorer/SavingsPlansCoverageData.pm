@@ -4,6 +4,7 @@ package Paws::CostExplorer::SavingsPlansCoverageData;
   has OnDemandCost => (is => 'ro', isa => 'Str');
   has SpendCoveredBySavingsPlans => (is => 'ro', isa => 'Str');
   has TotalCost => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

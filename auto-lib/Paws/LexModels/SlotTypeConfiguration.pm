@@ -1,6 +1,7 @@
 package Paws::LexModels::SlotTypeConfiguration;
   use Moose;
   has RegexConfiguration => (is => 'ro', isa => 'Paws::LexModels::SlotTypeRegexConfiguration', request_name => 'regexConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

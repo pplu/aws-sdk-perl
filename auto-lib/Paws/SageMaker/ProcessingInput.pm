@@ -2,6 +2,7 @@ package Paws::SageMaker::ProcessingInput;
   use Moose;
   has InputName => (is => 'ro', isa => 'Str', required => 1);
   has S3Input => (is => 'ro', isa => 'Paws::SageMaker::ProcessingS3Input', required => 1);
+
 1;
 
 ### main pod documentation begin ###

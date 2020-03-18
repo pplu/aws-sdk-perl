@@ -15,6 +15,7 @@ package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
   has TuningObjective => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobObjective');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

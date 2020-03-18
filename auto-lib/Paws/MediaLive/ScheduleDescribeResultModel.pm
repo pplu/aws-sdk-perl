@@ -2,6 +2,7 @@ package Paws::MediaLive::ScheduleDescribeResultModel;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has ScheduleActions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ScheduleAction]', request_name => 'scheduleActions', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Config::OrganizationConfigRuleStatus;
   has LastUpdateTime => (is => 'ro', isa => 'Str');
   has OrganizationConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationRuleStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

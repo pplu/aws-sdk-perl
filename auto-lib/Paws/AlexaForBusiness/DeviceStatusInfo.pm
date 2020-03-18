@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::DeviceStatusInfo;
   has ConnectionStatus => (is => 'ro', isa => 'Str');
   has ConnectionStatusUpdatedTime => (is => 'ro', isa => 'Str');
   has DeviceStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::DeviceStatusDetail]');
+
 1;
 
 ### main pod documentation begin ###

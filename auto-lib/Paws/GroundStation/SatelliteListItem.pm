@@ -4,6 +4,7 @@ package Paws::GroundStation::SatelliteListItem;
   has NoradSatelliteID => (is => 'ro', isa => 'Int', request_name => 'noradSatelliteID', traits => ['NameInRequest']);
   has SatelliteArn => (is => 'ro', isa => 'Str', request_name => 'satelliteArn', traits => ['NameInRequest']);
   has SatelliteId => (is => 'ro', isa => 'Str', request_name => 'satelliteId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

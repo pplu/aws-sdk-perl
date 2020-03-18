@@ -5,6 +5,7 @@ package Paws::PinpointEmail::DomainIspPlacement;
   has IspName => (is => 'ro', isa => 'Str');
   has SpamPercentage => (is => 'ro', isa => 'Num');
   has SpamRawCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

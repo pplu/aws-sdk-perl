@@ -10,6 +10,7 @@ package Paws::SSM::ResourceDataSyncItem;
   has SyncName => (is => 'ro', isa => 'Str');
   has SyncSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncSourceWithState');
   has SyncType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

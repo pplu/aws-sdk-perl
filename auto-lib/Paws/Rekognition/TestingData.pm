@@ -2,6 +2,7 @@ package Paws::Rekognition::TestingData;
   use Moose;
   has Assets => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Asset]');
   has AutoCreate => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

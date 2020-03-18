@@ -6,6 +6,7 @@ package Paws::MediaLive::InputSecurityGroup;
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRule]', request_name => 'whitelistRules', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

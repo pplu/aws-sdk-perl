@@ -1,6 +1,7 @@
 package Paws::Snowball::EventTriggerDefinition;
   use Moose;
   has EventResourceARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

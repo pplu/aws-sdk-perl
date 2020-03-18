@@ -1,6 +1,7 @@
 package Paws::Glue::CrawlerNodeDetails;
   use Moose;
   has Crawls => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Crawl]');
+
 1;
 
 ### main pod documentation begin ###

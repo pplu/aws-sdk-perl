@@ -6,6 +6,7 @@ package Paws::SSM::OpsAggregator;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsFilter]');
   has TypeName => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'Paws::SSM::OpsAggregatorValueMap');
+
 1;
 
 ### main pod documentation begin ###

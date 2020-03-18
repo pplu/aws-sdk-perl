@@ -1,6 +1,7 @@
 package Paws::CognitoIdp::AnalyticsMetadataType;
   use Moose;
   has AnalyticsEndpointId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::SageMaker::ProcessingS3Input;
   has S3DataType => (is => 'ro', isa => 'Str', required => 1);
   has S3InputMode => (is => 'ro', isa => 'Str', required => 1);
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::DynamoDB::SSESpecification;
   has Enabled => (is => 'ro', isa => 'Bool');
   has KMSMasterKeyId => (is => 'ro', isa => 'Str');
   has SSEType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

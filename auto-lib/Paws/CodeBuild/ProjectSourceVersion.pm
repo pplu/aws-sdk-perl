@@ -2,6 +2,7 @@ package Paws::CodeBuild::ProjectSourceVersion;
   use Moose;
   has SourceIdentifier => (is => 'ro', isa => 'Str', request_name => 'sourceIdentifier', traits => ['NameInRequest'], required => 1);
   has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

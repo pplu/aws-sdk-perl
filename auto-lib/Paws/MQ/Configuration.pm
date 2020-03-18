@@ -9,6 +9,7 @@ package Paws::MQ::Configuration;
   has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

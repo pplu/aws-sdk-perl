@@ -2,6 +2,7 @@ package Paws::Greengrass::GroupCertificateAuthorityProperties;
   use Moose;
   has GroupCertificateAuthorityArn => (is => 'ro', isa => 'Str');
   has GroupCertificateAuthorityId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

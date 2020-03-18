@@ -3,6 +3,7 @@ package Paws::ElastiCache::ConfigureShard;
   has NewReplicaCount => (is => 'ro', isa => 'Int', required => 1);
   has NodeGroupId => (is => 'ro', isa => 'Str', required => 1);
   has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PreferredAvailabilityZone', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::CodeContent;
   has S3ContentLocation => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ContentLocation');
   has TextContent => (is => 'ro', isa => 'Str');
   has ZipFileContent => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

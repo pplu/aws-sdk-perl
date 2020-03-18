@@ -3,6 +3,7 @@ package Paws::NetworkManager::TransitGatewayRegistration;
   has GlobalNetworkId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Paws::NetworkManager::TransitGatewayRegistrationStateReason');
   has TransitGatewayArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::DeviceFarm::VPCEConfiguration;
   has VpceConfigurationDescription => (is => 'ro', isa => 'Str', request_name => 'vpceConfigurationDescription', traits => ['NameInRequest']);
   has VpceConfigurationName => (is => 'ro', isa => 'Str', request_name => 'vpceConfigurationName', traits => ['NameInRequest']);
   has VpceServiceName => (is => 'ro', isa => 'Str', request_name => 'vpceServiceName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

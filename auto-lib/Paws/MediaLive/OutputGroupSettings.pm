@@ -8,6 +8,7 @@ package Paws::MediaLive::OutputGroupSettings;
   has MultiplexGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexGroupSettings', request_name => 'multiplexGroupSettings', traits => ['NameInRequest']);
   has RtmpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpGroupSettings', request_name => 'rtmpGroupSettings', traits => ['NameInRequest']);
   has UdpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpGroupSettings', request_name => 'udpGroupSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

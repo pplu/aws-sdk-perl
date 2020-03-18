@@ -2,6 +2,7 @@ package Paws::Pinpoint::CreateApplicationRequest;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

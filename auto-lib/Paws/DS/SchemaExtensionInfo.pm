@@ -7,6 +7,7 @@ package Paws::DS::SchemaExtensionInfo;
   has SchemaExtensionStatus => (is => 'ro', isa => 'Str');
   has SchemaExtensionStatusReason => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::OutputFileUriValue;
   use Moose;
   has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

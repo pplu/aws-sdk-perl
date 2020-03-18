@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsSnsTopicDetails;
   has Owner => (is => 'ro', isa => 'Str');
   has Subscription => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsSnsTopicSubscription]');
   has TopicName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

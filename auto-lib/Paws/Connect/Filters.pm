@@ -2,6 +2,7 @@ package Paws::Connect::Filters;
   use Moose;
   has Channels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Queues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::Glue::StorageDescriptor;
   has SkewedInfo => (is => 'ro', isa => 'Paws::Glue::SkewedInfo');
   has SortColumns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Order]');
   has StoredAsSubDirectories => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

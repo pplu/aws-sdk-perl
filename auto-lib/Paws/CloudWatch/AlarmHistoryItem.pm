@@ -5,6 +5,7 @@ package Paws::CloudWatch::AlarmHistoryItem;
   has HistoryItemType => (is => 'ro', isa => 'Str');
   has HistorySummary => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Personalize::IntegerHyperParameterRange;
   has MaxValue => (is => 'ro', isa => 'Int', request_name => 'maxValue', traits => ['NameInRequest']);
   has MinValue => (is => 'ro', isa => 'Int', request_name => 'minValue', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

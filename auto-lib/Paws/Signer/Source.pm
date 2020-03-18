@@ -1,6 +1,7 @@
 package Paws::Signer::Source;
   use Moose;
   has S3 => (is => 'ro', isa => 'Paws::Signer::S3Source', request_name => 's3', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

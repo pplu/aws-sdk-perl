@@ -3,6 +3,7 @@ package Paws::ServiceDiscovery::Instance;
   has Attributes => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

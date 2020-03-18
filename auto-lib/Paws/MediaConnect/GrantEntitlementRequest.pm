@@ -5,6 +5,7 @@ package Paws::MediaConnect::GrantEntitlementRequest;
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

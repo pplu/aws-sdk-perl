@@ -2,6 +2,7 @@ package Paws::Glue::ConnectionPasswordEncryption;
   use Moose;
   has AwsKmsKeyId => (is => 'ro', isa => 'Str');
   has ReturnConnectionPasswordEncrypted => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

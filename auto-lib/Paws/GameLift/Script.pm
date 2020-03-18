@@ -7,6 +7,7 @@ package Paws::GameLift::Script;
   has SizeOnDisk => (is => 'ro', isa => 'Int');
   has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

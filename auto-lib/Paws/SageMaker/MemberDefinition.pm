@@ -1,6 +1,7 @@
 package Paws::SageMaker::MemberDefinition;
   use Moose;
   has CognitoMemberDefinition => (is => 'ro', isa => 'Paws::SageMaker::CognitoMemberDefinition');
+
 1;
 
 ### main pod documentation begin ###

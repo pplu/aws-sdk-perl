@@ -3,6 +3,7 @@ package Paws::Lightsail::InstanceHardware;
   has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
   has Disks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', request_name => 'disks', traits => ['NameInRequest']);
   has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

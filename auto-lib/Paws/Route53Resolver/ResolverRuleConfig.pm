@@ -3,6 +3,7 @@ package Paws::Route53Resolver::ResolverRuleConfig;
   has Name => (is => 'ro', isa => 'Str');
   has ResolverEndpointId => (is => 'ro', isa => 'Str');
   has TargetIps => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::TargetAddress]');
+
 1;
 
 ### main pod documentation begin ###

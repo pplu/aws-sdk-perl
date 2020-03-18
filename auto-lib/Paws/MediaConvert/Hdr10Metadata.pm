@@ -12,6 +12,7 @@ package Paws::MediaConvert::Hdr10Metadata;
   has RedPrimaryY => (is => 'ro', isa => 'Int', request_name => 'redPrimaryY', traits => ['NameInRequest']);
   has WhitePointX => (is => 'ro', isa => 'Int', request_name => 'whitePointX', traits => ['NameInRequest']);
   has WhitePointY => (is => 'ro', isa => 'Int', request_name => 'whitePointY', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

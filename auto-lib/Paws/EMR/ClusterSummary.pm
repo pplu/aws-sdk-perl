@@ -6,6 +6,7 @@ package Paws::EMR::ClusterSummary;
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
   has OutpostArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
+
 1;
 
 ### main pod documentation begin ###

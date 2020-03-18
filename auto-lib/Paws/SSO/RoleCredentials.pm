@@ -4,6 +4,7 @@ package Paws::SSO::RoleCredentials;
   has Expiration => (is => 'ro', isa => 'Int', request_name => 'expiration', traits => ['NameInRequest']);
   has SecretAccessKey => (is => 'ro', isa => 'Str', request_name => 'secretAccessKey', traits => ['NameInRequest']);
   has SessionToken => (is => 'ro', isa => 'Str', request_name => 'sessionToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

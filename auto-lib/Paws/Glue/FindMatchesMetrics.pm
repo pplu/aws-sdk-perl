@@ -5,6 +5,7 @@ package Paws::Glue::FindMatchesMetrics;
   has F1 => (is => 'ro', isa => 'Num');
   has Precision => (is => 'ro', isa => 'Num');
   has Recall => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

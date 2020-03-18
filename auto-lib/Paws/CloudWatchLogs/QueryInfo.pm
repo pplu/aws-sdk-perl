@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::QueryInfo;
   has QueryId => (is => 'ro', isa => 'Str', request_name => 'queryId', traits => ['NameInRequest']);
   has QueryString => (is => 'ro', isa => 'Str', request_name => 'queryString', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::S3Control::JobManifest;
   use Moose;
   has Location => (is => 'ro', isa => 'Paws::S3Control::JobManifestLocation', required => 1);
   has Spec => (is => 'ro', isa => 'Paws::S3Control::JobManifestSpec', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::ES::InstanceLimits;
   use Moose;
   has InstanceCountLimits => (is => 'ro', isa => 'Paws::ES::InstanceCountLimits');
+
 1;
 
 ### main pod documentation begin ###

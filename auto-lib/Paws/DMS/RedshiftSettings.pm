@@ -25,6 +25,7 @@ package Paws::DMS::RedshiftSettings;
   has TruncateColumns => (is => 'ro', isa => 'Bool');
   has Username => (is => 'ro', isa => 'Str');
   has WriteBufferSize => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

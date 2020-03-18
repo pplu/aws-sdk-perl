@@ -1,6 +1,7 @@
 package Paws::SageMaker::MonitoringStatisticsResource;
   use Moose;
   has S3Uri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

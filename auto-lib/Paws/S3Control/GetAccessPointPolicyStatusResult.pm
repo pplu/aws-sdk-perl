@@ -3,6 +3,7 @@ package Paws::S3Control::GetAccessPointPolicyStatusResult;
   use Moose;
   has PolicyStatus => (is => 'ro', isa => 'Paws::S3Control::PolicyStatus');
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

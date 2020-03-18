@@ -7,6 +7,7 @@ package Paws::IAM::GroupDetail;
   has GroupName => (is => 'ro', isa => 'Str');
   has GroupPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
   has Path => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

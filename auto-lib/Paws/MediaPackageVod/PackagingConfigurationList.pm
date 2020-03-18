@@ -2,6 +2,7 @@ package Paws::MediaPackageVod::PackagingConfigurationList;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has PackagingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::PackagingConfiguration]', request_name => 'packagingConfigurations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

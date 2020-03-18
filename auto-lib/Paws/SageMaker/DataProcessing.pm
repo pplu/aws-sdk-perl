@@ -3,6 +3,7 @@ package Paws::SageMaker::DataProcessing;
   has InputFilter => (is => 'ro', isa => 'Str');
   has JoinSource => (is => 'ro', isa => 'Str');
   has OutputFilter => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

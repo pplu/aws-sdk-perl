@@ -3,6 +3,7 @@ package Paws::SecurityHub::InsightResults;
   has GroupByAttribute => (is => 'ro', isa => 'Str', required => 1);
   has InsightArn => (is => 'ro', isa => 'Str', required => 1);
   has ResultValues => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::InsightResultValue]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

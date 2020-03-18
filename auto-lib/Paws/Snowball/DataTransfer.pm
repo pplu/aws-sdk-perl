@@ -4,6 +4,7 @@ package Paws::Snowball::DataTransfer;
   has ObjectsTransferred => (is => 'ro', isa => 'Int');
   has TotalBytes => (is => 'ro', isa => 'Int');
   has TotalObjects => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ELBv2::AvailabilityZone;
   has LoadBalancerAddresses => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAddress]');
   has SubnetId => (is => 'ro', isa => 'Str');
   has ZoneName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

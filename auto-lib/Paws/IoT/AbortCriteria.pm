@@ -4,6 +4,7 @@ package Paws::IoT::AbortCriteria;
   has FailureType => (is => 'ro', isa => 'Str', request_name => 'failureType', traits => ['NameInRequest'], required => 1);
   has MinNumberOfExecutedThings => (is => 'ro', isa => 'Int', request_name => 'minNumberOfExecutedThings', traits => ['NameInRequest'], required => 1);
   has ThresholdPercentage => (is => 'ro', isa => 'Num', request_name => 'thresholdPercentage', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

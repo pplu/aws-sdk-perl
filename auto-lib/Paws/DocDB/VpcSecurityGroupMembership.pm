@@ -2,6 +2,7 @@ package Paws::DocDB::VpcSecurityGroupMembership;
   use Moose;
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

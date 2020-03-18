@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::CodeContentUpdate;
   has S3ContentLocationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ContentLocationUpdate');
   has TextContentUpdate => (is => 'ro', isa => 'Str');
   has ZipFileContentUpdate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

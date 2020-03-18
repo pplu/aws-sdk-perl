@@ -2,6 +2,7 @@ package Paws::MediaConvert::S3DestinationSettings;
   use Moose;
   has AccessControl => (is => 'ro', isa => 'Paws::MediaConvert::S3DestinationAccessControl', request_name => 'accessControl', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::S3EncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

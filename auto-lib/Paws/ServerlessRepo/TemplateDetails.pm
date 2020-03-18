@@ -7,6 +7,7 @@ package Paws::ServerlessRepo::TemplateDetails;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has TemplateId => (is => 'ro', isa => 'Str', request_name => 'templateId', traits => ['NameInRequest'], required => 1);
   has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

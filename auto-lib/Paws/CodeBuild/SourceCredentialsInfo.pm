@@ -3,6 +3,7 @@ package Paws::CodeBuild::SourceCredentialsInfo;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has AuthType => (is => 'ro', isa => 'Str', request_name => 'authType', traits => ['NameInRequest']);
   has ServerType => (is => 'ro', isa => 'Str', request_name => 'serverType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

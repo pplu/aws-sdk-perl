@@ -25,6 +25,7 @@ package Paws::SSM::AutomationExecution;
   has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::Kendra::Document;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has S3Path => (is => 'ro', isa => 'Paws::Kendra::S3Path');
   has Title => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

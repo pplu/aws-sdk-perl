@@ -3,6 +3,7 @@ package Paws::CodeGuruProfiler::ProfilingStatus;
   has LatestAgentOrchestratedAt => (is => 'ro', isa => 'Str', request_name => 'latestAgentOrchestratedAt', traits => ['NameInRequest']);
   has LatestAgentProfileReportedAt => (is => 'ro', isa => 'Str', request_name => 'latestAgentProfileReportedAt', traits => ['NameInRequest']);
   has LatestAggregatedProfile => (is => 'ro', isa => 'Paws::CodeGuruProfiler::AggregatedProfileTime', request_name => 'latestAggregatedProfile', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

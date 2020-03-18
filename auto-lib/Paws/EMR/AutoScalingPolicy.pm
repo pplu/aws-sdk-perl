@@ -2,6 +2,7 @@ package Paws::EMR::AutoScalingPolicy;
   use Moose;
   has Constraints => (is => 'ro', isa => 'Paws::EMR::ScalingConstraints', required => 1);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::EMR::ScalingRule]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

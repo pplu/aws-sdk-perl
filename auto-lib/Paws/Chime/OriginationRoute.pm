@@ -5,6 +5,7 @@ package Paws::Chime::OriginationRoute;
   has Priority => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

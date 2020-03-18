@@ -3,6 +3,7 @@ package Paws::SSM::ParameterInlinePolicy;
   has PolicyStatus => (is => 'ro', isa => 'Str');
   has PolicyText => (is => 'ro', isa => 'Str');
   has PolicyType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

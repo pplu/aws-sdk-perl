@@ -3,6 +3,7 @@ package Paws::CodeCommit::Difference;
   has AfterBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', request_name => 'afterBlob', traits => ['NameInRequest']);
   has BeforeBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', request_name => 'beforeBlob', traits => ['NameInRequest']);
   has ChangeType => (is => 'ro', isa => 'Str', request_name => 'changeType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

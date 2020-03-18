@@ -2,6 +2,7 @@ package Paws::SageMaker::CaptureContentTypeHeader;
   use Moose;
   has CsvContentTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has JsonContentTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

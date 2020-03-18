@@ -2,6 +2,7 @@ package Paws::SageMaker::DataSource;
   use Moose;
   has FileSystemDataSource => (is => 'ro', isa => 'Paws::SageMaker::FileSystemDataSource');
   has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource');
+
 1;
 
 ### main pod documentation begin ###

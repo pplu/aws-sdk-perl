@@ -2,6 +2,7 @@ package Paws::CostExplorer::TerminateRecommendationDetail;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has EstimatedMonthlySavings => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

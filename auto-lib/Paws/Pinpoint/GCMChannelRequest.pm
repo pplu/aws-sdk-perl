@@ -2,6 +2,7 @@ package Paws::Pinpoint::GCMChannelRequest;
   use Moose;
   has ApiKey => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###
@@ -42,8 +43,8 @@ Google Cloud Messaging (GCM), service.
 
 =head2 B<REQUIRED> ApiKey => Str
 
-  The API key, also referred to as a I<server key>, that you received
-from Google to communicate with Google services.
+  The Web API Key, also referred to as an I<API_KEY> or I<server key>,
+that you received from Google to communicate with Google services.
 
 
 =head2 Enabled => Bool

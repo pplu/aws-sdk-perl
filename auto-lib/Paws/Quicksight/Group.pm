@@ -4,6 +4,7 @@ package Paws::Quicksight::Group;
   has Description => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has PrincipalId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

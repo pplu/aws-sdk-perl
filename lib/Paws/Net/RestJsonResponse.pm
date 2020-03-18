@@ -1,5 +1,6 @@
 package Paws::Net::RestJsonResponse;
   use Moose;
+  with 'Paws::Net::ResponseRole';
   use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
@@ -193,54 +194,6 @@ package Paws::Net::RestJsonResponse;
       }
     }
     $class->new(%args);
-    }
-  }
-
-  sub response_to_object {
-    my ($self, $call_object, $response) = @_;
-
-    $call_object = $call_object->meta->name;
-
-    my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
-    my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
-    Paws->load_class($ret_class);
- 
-    my $request_id = $response->header('x-amz-request-id')
-                     || $response->header('x-amzn-requestid');
-      
-    if ($returns){
-      return $self->new_from_response($call_object->_returns, $response, $request_id);
-    } else {
-      return Paws::API::Response->new(
-        _request_id => $request_id,
-      );
-    }
-  }
-
-  sub new_from_response {
-    my ($self, $class, $response, $request_id) = @_;
-
-    if (not $class->can('_stream_param')) {
-      # Object is serialized in the body of the response
-      my $unserialized_struct = $self->unserialize_response( $response );
-      
-      $unserialized_struct->{ _request_id } = $request_id;
-
-      return $self->new_from_result_struct($class, $unserialized_struct);
-    } else {
-      my %args;
-      foreach my $att ($class->meta->get_attribute_list) {
-        next if (not my $meta = $class->meta->get_attribute($att));
-
-        if ($meta->does('ParamInHeader')) {
-          my $value = $response->headers->{ lc($meta->header_name) };
-          $args{ $att } = $value if (defined $value);
-        }
-      }
-
-      $args{ $class->_stream_param } = $response->content;
-
-      return $class->new(%args);
     }
   }
 

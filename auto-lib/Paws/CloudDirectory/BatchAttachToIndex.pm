@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchAttachToIndex;
   use Moose;
   has IndexReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has TargetReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+
 1;
 
 ### main pod documentation begin ###

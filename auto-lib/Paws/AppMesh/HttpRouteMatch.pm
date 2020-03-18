@@ -4,6 +4,7 @@ package Paws::AppMesh::HttpRouteMatch;
   has Method => (is => 'ro', isa => 'Str', request_name => 'method', traits => ['NameInRequest']);
   has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest'], required => 1);
   has Scheme => (is => 'ro', isa => 'Str', request_name => 'scheme', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

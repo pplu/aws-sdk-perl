@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EventsResponse;
   use Moose;
   has Results => (is => 'ro', isa => 'Paws::Pinpoint::MapOfItemResponse');
+
 1;
 
 ### main pod documentation begin ###

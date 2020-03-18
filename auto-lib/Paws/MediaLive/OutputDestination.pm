@@ -4,6 +4,7 @@ package Paws::MediaLive::OutputDestination;
   has MediaPackageSettings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaPackageOutputDestinationSettings]', request_name => 'mediaPackageSettings', traits => ['NameInRequest']);
   has MultiplexSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramChannelDestinationSettings', request_name => 'multiplexSettings', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestinationSettings]', request_name => 'settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

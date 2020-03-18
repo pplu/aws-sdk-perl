@@ -1,6 +1,7 @@
 package Paws::AppMesh::MeshSpec;
   use Moose;
   has EgressFilter => (is => 'ro', isa => 'Paws::AppMesh::EgressFilter', request_name => 'egressFilter', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

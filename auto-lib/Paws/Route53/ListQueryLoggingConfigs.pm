@@ -5,6 +5,7 @@ package Paws::Route53::ListQueryLoggingConfigs;
   has MaxResults => (is => 'ro', isa => 'Str', query_name => 'maxresults', traits => ['ParamInQuery']);
   has NextToken => (is => 'ro', isa => 'Str', query_name => 'nexttoken', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListQueryLoggingConfigs');
@@ -13,6 +14,7 @@ package Paws::Route53::ListQueryLoggingConfigs;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListQueryLoggingConfigsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

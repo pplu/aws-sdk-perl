@@ -1,6 +1,7 @@
 package Paws::MediaLive::ChannelEgressEndpoint;
   use Moose;
   has SourceIp => (is => 'ro', isa => 'Str', request_name => 'sourceIp', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Glue::UserDefinedFunctionInput;
   has OwnerName => (is => 'ro', isa => 'Str');
   has OwnerType => (is => 'ro', isa => 'Str');
   has ResourceUris => (is => 'ro', isa => 'ArrayRef[Paws::Glue::ResourceUri]');
+
 1;
 
 ### main pod documentation begin ###

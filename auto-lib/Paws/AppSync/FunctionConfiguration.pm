@@ -8,6 +8,7 @@ package Paws::AppSync::FunctionConfiguration;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RequestMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'requestMappingTemplate', traits => ['NameInRequest']);
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

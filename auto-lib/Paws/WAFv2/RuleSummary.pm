@@ -2,6 +2,7 @@ package Paws::WAFv2::RuleSummary;
   use Moose;
   has Action => (is => 'ro', isa => 'Paws::WAFv2::RuleAction');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

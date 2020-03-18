@@ -5,6 +5,7 @@ package Paws::CloudDirectory::BatchListOutgoingTypedLinks;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+
 1;
 
 ### main pod documentation begin ###

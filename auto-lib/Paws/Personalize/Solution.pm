@@ -13,6 +13,7 @@ package Paws::Personalize::Solution;
   has SolutionArn => (is => 'ro', isa => 'Str', request_name => 'solutionArn', traits => ['NameInRequest']);
   has SolutionConfig => (is => 'ro', isa => 'Paws::Personalize::SolutionConfig', request_name => 'solutionConfig', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

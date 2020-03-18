@@ -2,6 +2,7 @@ package Paws::CloudFormation::Change;
   use Moose;
   has ResourceChange => (is => 'ro', isa => 'Paws::CloudFormation::ResourceChange');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

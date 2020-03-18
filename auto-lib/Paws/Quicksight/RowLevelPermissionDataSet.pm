@@ -2,6 +2,7 @@ package Paws::Quicksight::RowLevelPermissionDataSet;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has PermissionPolicy => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

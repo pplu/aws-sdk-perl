@@ -3,6 +3,7 @@ package Paws::Support::Service;
   has Categories => (is => 'ro', isa => 'ArrayRef[Paws::Support::Category]', request_name => 'categories', traits => ['NameInRequest']);
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

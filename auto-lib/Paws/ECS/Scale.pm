@@ -2,6 +2,7 @@ package Paws::ECS::Scale;
   use Moose;
   has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

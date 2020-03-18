@@ -1,6 +1,7 @@
 package Paws::Kendra::AclConfiguration;
   use Moose;
   has AllowedGroupsColumnName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

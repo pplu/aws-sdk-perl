@@ -14,6 +14,7 @@ package Paws::CloudHSMv2::Cluster;
   has SubnetMapping => (is => 'ro', isa => 'Paws::CloudHSMv2::ExternalSubnetMapping');
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

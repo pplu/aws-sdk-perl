@@ -6,6 +6,7 @@ package Paws::Backup::RecoveryPointByResource;
   has EncryptionKeyArn => (is => 'ro', isa => 'Str');
   has RecoveryPointArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

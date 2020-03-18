@@ -1,6 +1,7 @@
 package Paws::SecurityHub::IpFilter;
   use Moose;
   has Cidr => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

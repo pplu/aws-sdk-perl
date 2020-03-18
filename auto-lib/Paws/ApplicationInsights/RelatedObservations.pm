@@ -1,6 +1,7 @@
 package Paws::ApplicationInsights::RelatedObservations;
   use Moose;
   has ObservationList => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationInsights::Observation]');
+
 1;
 
 ### main pod documentation begin ###

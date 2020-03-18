@@ -4,6 +4,7 @@ package Paws::SageMaker::TransformInput;
   has ContentType => (is => 'ro', isa => 'Str');
   has DataSource => (is => 'ro', isa => 'Paws::SageMaker::TransformDataSource', required => 1);
   has SplitType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

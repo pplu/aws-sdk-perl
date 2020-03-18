@@ -3,6 +3,7 @@ package Paws::CostExplorer::SavingsPlansDetails;
   has InstanceFamily => (is => 'ro', isa => 'Str');
   has OfferingId => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

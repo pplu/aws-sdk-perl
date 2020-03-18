@@ -4,6 +4,7 @@ package Paws::EFS::FileSystemSize;
   has Value => (is => 'ro', isa => 'Int', required => 1);
   has ValueInIA => (is => 'ro', isa => 'Int');
   has ValueInStandard => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

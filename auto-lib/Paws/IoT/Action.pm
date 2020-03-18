@@ -18,6 +18,7 @@ package Paws::IoT::Action;
   has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
   has StepFunctions => (is => 'ro', isa => 'Paws::IoT::StepFunctionsAction', request_name => 'stepFunctions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

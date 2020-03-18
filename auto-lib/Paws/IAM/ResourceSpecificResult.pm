@@ -6,6 +6,7 @@ package Paws::IAM::ResourceSpecificResult;
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PermissionsBoundaryDecisionDetail => (is => 'ro', isa => 'Paws::IAM::PermissionsBoundaryDecisionDetail');
+
 1;
 
 ### main pod documentation begin ###

@@ -16,6 +16,7 @@ package Paws::SMS::AppSummary;
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
   has TotalServerGroups => (is => 'ro', isa => 'Int', request_name => 'totalServerGroups', traits => ['NameInRequest']);
   has TotalServers => (is => 'ro', isa => 'Int', request_name => 'totalServers', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

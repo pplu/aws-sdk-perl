@@ -2,6 +2,7 @@ package Paws::Comprehend::VpcConfig;
   use Moose;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

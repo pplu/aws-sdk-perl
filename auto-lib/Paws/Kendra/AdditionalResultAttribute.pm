@@ -3,6 +3,7 @@ package Paws::Kendra::AdditionalResultAttribute;
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Paws::Kendra::AdditionalResultAttributeValue', required => 1);
   has ValueType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

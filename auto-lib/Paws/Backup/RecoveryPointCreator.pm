@@ -4,6 +4,7 @@ package Paws::Backup::RecoveryPointCreator;
   has BackupPlanId => (is => 'ro', isa => 'Str');
   has BackupPlanVersion => (is => 'ro', isa => 'Str');
   has BackupRuleId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

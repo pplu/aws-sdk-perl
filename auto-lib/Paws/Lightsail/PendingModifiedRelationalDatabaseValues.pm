@@ -3,6 +3,7 @@ package Paws::Lightsail::PendingModifiedRelationalDatabaseValues;
   has BackupRetentionEnabled => (is => 'ro', isa => 'Bool', request_name => 'backupRetentionEnabled', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has MasterUserPassword => (is => 'ro', isa => 'Str', request_name => 'masterUserPassword', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

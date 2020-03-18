@@ -4,6 +4,7 @@ package Paws::CostExplorer::RightsizingRecommendationSummary;
   has SavingsCurrencyCode => (is => 'ro', isa => 'Str');
   has SavingsPercentage => (is => 'ro', isa => 'Str');
   has TotalRecommendationCount => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

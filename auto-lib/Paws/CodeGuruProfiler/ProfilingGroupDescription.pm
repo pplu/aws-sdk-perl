@@ -6,6 +6,7 @@ package Paws::CodeGuruProfiler::ProfilingGroupDescription;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ProfilingStatus => (is => 'ro', isa => 'Paws::CodeGuruProfiler::ProfilingStatus', request_name => 'profilingStatus', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

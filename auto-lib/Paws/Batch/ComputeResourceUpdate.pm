@@ -3,6 +3,7 @@ package Paws::Batch::ComputeResourceUpdate;
   has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
   has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest']);
   has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

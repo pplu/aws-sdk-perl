@@ -9,6 +9,7 @@ package Paws::MediaConnect::Flow;
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
   has Source => (is => 'ro', isa => 'Paws::MediaConnect::Source', request_name => 'source', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -15,6 +15,7 @@ package Paws::LicenseManager::LicenseConfiguration;
   has OwnerAccountId => (is => 'ro', isa => 'Str');
   has ProductInformationList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ProductInformation]');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

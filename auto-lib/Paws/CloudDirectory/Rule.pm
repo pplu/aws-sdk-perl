@@ -2,6 +2,7 @@ package Paws::CloudDirectory::Rule;
   use Moose;
   has Parameters => (is => 'ro', isa => 'Paws::CloudDirectory::RuleParameterMap');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

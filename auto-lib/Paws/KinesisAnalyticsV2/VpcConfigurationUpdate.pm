@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::VpcConfigurationUpdate;
   has SecurityGroupIdUpdates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetIdUpdates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcConfigurationId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::WAF::GeoMatchSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has GeoMatchConstraint => (is => 'ro', isa => 'Paws::WAF::GeoMatchConstraint', required => 1);
+
 1;
 
 ### main pod documentation begin ###

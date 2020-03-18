@@ -2,6 +2,7 @@ package Paws::Config::GroupedResourceCount;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has ResourceCount => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

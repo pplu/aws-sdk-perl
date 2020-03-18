@@ -5,6 +5,7 @@ package Paws::SageMaker::DebugRuleEvaluationStatus;
   has RuleEvaluationJobArn => (is => 'ro', isa => 'Str');
   has RuleEvaluationStatus => (is => 'ro', isa => 'Str');
   has StatusDetails => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

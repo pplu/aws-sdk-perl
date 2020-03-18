@@ -1,6 +1,7 @@
 package Paws::SecurityHub::Remediation;
   use Moose;
   has Recommendation => (is => 'ro', isa => 'Paws::SecurityHub::Recommendation');
+
 1;
 
 ### main pod documentation begin ###

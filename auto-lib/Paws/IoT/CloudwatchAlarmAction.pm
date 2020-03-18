@@ -4,6 +4,7 @@ package Paws::IoT::CloudwatchAlarmAction;
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has StateReason => (is => 'ro', isa => 'Str', request_name => 'stateReason', traits => ['NameInRequest'], required => 1);
   has StateValue => (is => 'ro', isa => 'Str', request_name => 'stateValue', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

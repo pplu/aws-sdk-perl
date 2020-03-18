@@ -2,6 +2,7 @@ package Paws::WAFRegional::RegexPatternSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has RegexPatternString => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

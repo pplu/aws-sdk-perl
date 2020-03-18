@@ -2,6 +2,7 @@ package Paws::ES::CompatibleVersionsMap;
   use Moose;
   has SourceVersion => (is => 'ro', isa => 'Str');
   has TargetVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

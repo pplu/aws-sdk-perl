@@ -3,6 +3,7 @@ package Paws::EFS::CreationInfo;
   has OwnerGid => (is => 'ro', isa => 'Int', required => 1);
   has OwnerUid => (is => 'ro', isa => 'Int', required => 1);
   has Permissions => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

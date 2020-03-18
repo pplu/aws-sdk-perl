@@ -2,6 +2,7 @@ package Paws::SageMaker::AlgorithmValidationSpecification;
   use Moose;
   has ValidationProfiles => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AlgorithmValidationProfile]', required => 1);
   has ValidationRole => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

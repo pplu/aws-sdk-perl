@@ -9,6 +9,7 @@ package Paws::AutoScaling::LifecycleHook;
   has NotificationMetadata => (is => 'ro', isa => 'Str');
   has NotificationTargetARN => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::ResultField;
   use Moose;
   has Field => (is => 'ro', isa => 'Str', request_name => 'field', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

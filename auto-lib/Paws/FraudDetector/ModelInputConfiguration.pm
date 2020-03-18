@@ -4,6 +4,7 @@ package Paws::FraudDetector::ModelInputConfiguration;
   has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
   has IsOpaque => (is => 'ro', isa => 'Bool', request_name => 'isOpaque', traits => ['NameInRequest'], required => 1);
   has JsonInputTemplate => (is => 'ro', isa => 'Str', request_name => 'jsonInputTemplate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

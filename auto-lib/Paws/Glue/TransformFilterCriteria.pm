@@ -9,6 +9,7 @@ package Paws::Glue::TransformFilterCriteria;
   has Schema => (is => 'ro', isa => 'ArrayRef[Paws::Glue::SchemaColumn]');
   has Status => (is => 'ro', isa => 'Str');
   has TransformType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

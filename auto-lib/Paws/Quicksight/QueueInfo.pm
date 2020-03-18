@@ -2,6 +2,7 @@ package Paws::Quicksight::QueueInfo;
   use Moose;
   has QueuedIngestion => (is => 'ro', isa => 'Str', required => 1);
   has WaitingOnIngestion => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

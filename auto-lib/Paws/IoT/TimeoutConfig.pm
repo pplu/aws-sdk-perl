@@ -1,6 +1,7 @@
 package Paws::IoT::TimeoutConfig;
   use Moose;
   has InProgressTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'inProgressTimeoutInMinutes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

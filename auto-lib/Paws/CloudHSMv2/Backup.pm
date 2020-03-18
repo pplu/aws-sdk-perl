@@ -10,6 +10,7 @@ package Paws::CloudHSMv2::Backup;
   has SourceCluster => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Tag]');
+
 1;
 
 ### main pod documentation begin ###

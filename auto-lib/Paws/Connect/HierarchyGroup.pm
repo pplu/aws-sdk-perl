@@ -5,6 +5,7 @@ package Paws::Connect::HierarchyGroup;
   has Id => (is => 'ro', isa => 'Str');
   has LevelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

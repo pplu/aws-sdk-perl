@@ -1,6 +1,7 @@
 package Paws::RDSData::Record;
   use Moose;
   has Values => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Value]', request_name => 'values', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

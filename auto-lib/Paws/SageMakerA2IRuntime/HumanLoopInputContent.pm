@@ -1,6 +1,7 @@
 package Paws::SageMakerA2IRuntime::HumanLoopInputContent;
   use Moose;
   has InputContent => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

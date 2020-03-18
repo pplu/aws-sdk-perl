@@ -7,6 +7,7 @@ package Paws::Glue::CreateCsvClassifierRequest;
   has Header => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has QuoteSymbol => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::DynamoDB::ConsumedCapacity;
   has Table => (is => 'ro', isa => 'Paws::DynamoDB::Capacity');
   has TableName => (is => 'ro', isa => 'Str');
   has WriteCapacityUnits => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

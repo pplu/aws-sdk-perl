@@ -4,6 +4,7 @@ package Paws::CodeCommit::PullRequestCreatedEventMetadata;
   has MergeBase => (is => 'ro', isa => 'Str', request_name => 'mergeBase', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
   has SourceCommitId => (is => 'ro', isa => 'Str', request_name => 'sourceCommitId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

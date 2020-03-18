@@ -1,6 +1,7 @@
 package Paws::Schemas::TagResourceInput;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::Schemas::Tags', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

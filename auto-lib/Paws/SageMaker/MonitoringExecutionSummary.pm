@@ -8,6 +8,7 @@ package Paws::SageMaker::MonitoringExecutionSummary;
   has MonitoringScheduleName => (is => 'ro', isa => 'Str', required => 1);
   has ProcessingJobArn => (is => 'ro', isa => 'Str');
   has ScheduledTime => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

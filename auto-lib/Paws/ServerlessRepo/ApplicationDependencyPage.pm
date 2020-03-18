@@ -2,6 +2,7 @@ package Paws::ServerlessRepo::ApplicationDependencyPage;
   use Moose;
   has Dependencies => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationDependencySummary]', request_name => 'dependencies', traits => ['NameInRequest'], required => 1);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

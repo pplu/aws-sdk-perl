@@ -3,6 +3,7 @@ package Paws::IoT::ProvisioningTemplateVersionSummary;
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has IsDefaultVersion => (is => 'ro', isa => 'Bool', request_name => 'isDefaultVersion', traits => ['NameInRequest']);
   has VersionId => (is => 'ro', isa => 'Int', request_name => 'versionId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

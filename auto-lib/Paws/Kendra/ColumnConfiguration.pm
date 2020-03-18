@@ -5,6 +5,7 @@ package Paws::Kendra::ColumnConfiguration;
   has DocumentIdColumnName => (is => 'ro', isa => 'Str', required => 1);
   has DocumentTitleColumnName => (is => 'ro', isa => 'Str');
   has FieldMappings => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::DataSourceToIndexFieldMapping]');
+
 1;
 
 ### main pod documentation begin ###

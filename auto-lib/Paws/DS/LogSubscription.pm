@@ -3,6 +3,7 @@ package Paws::DS::LogSubscription;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has LogGroupName => (is => 'ro', isa => 'Str');
   has SubscriptionCreatedDateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

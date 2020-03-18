@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::UpdateDeploymentInput;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Schemas::ListDiscoverersOutput;
   use Moose;
   has Discoverers => (is => 'ro', isa => 'ArrayRef[Paws::Schemas::DiscovererSummary]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

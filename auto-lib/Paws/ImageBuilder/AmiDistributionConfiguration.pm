@@ -4,6 +4,7 @@ package Paws::ImageBuilder::AmiDistributionConfiguration;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LaunchPermission => (is => 'ro', isa => 'Paws::ImageBuilder::LaunchPermissionConfiguration', request_name => 'launchPermission', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

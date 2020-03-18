@@ -11,6 +11,7 @@ package Paws::AppSync::GraphqlApi;
   has Uris => (is => 'ro', isa => 'Paws::AppSync::MapOfStringToString', request_name => 'uris', traits => ['NameInRequest']);
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', request_name => 'userPoolConfig', traits => ['NameInRequest']);
   has XrayEnabled => (is => 'ro', isa => 'Bool', request_name => 'xrayEnabled', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

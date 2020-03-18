@@ -1,6 +1,7 @@
 package Paws::IoT::JobExecutionStatusDetails;
   use Moose;
   has DetailsMap => (is => 'ro', isa => 'Paws::IoT::DetailsMap', request_name => 'detailsMap', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

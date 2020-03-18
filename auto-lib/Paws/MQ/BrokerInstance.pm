@@ -3,6 +3,7 @@ package Paws::MQ::BrokerInstance;
   has ConsoleURL => (is => 'ro', isa => 'Str', request_name => 'consoleURL', traits => ['NameInRequest']);
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

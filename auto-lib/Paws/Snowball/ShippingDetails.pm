@@ -3,6 +3,7 @@ package Paws::Snowball::ShippingDetails;
   has InboundShipment => (is => 'ro', isa => 'Paws::Snowball::Shipment');
   has OutboundShipment => (is => 'ro', isa => 'Paws::Snowball::Shipment');
   has ShippingOption => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

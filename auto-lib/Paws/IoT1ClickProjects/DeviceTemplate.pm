@@ -2,6 +2,7 @@ package Paws::IoT1ClickProjects::DeviceTemplate;
   use Moose;
   has CallbackOverrides => (is => 'ro', isa => 'Paws::IoT1ClickProjects::DeviceCallbackOverrideMap', request_name => 'callbackOverrides', traits => ['NameInRequest']);
   has DeviceType => (is => 'ro', isa => 'Str', request_name => 'deviceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::PerformanceInsights::MetricKeyDataPoints;
   use Moose;
   has DataPoints => (is => 'ro', isa => 'ArrayRef[Paws::PerformanceInsights::DataPoint]');
   has Key => (is => 'ro', isa => 'Paws::PerformanceInsights::ResponseResourceMetricKey');
+
 1;
 
 ### main pod documentation begin ###

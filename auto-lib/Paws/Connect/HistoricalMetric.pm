@@ -4,6 +4,7 @@ package Paws::Connect::HistoricalMetric;
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Paws::Connect::Threshold');
   has Unit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

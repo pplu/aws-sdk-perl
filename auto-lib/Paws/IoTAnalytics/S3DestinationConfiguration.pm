@@ -4,6 +4,7 @@ package Paws::IoTAnalytics::S3DestinationConfiguration;
   has GlueConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::GlueConfiguration', request_name => 'glueConfiguration', traits => ['NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

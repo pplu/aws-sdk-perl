@@ -2,6 +2,7 @@ package Paws::Kafka::EncryptionInfo;
   use Moose;
   has EncryptionAtRest => (is => 'ro', isa => 'Paws::Kafka::EncryptionAtRest', request_name => 'encryptionAtRest', traits => ['NameInRequest']);
   has EncryptionInTransit => (is => 'ro', isa => 'Paws::Kafka::EncryptionInTransit', request_name => 'encryptionInTransit', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

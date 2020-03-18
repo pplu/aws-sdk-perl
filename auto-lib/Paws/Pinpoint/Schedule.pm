@@ -7,6 +7,7 @@ package Paws::Pinpoint::Schedule;
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
   has Timezone => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +45,8 @@ Specifies the schedule settings for a campaign.
 
 =head2 EndTime => Str
 
-  The scheduled time, in ISO 8601 format, for the campaign to end.
+  The scheduled time, in ISO 8601 format, when the campaign ended or will
+end.
 
 
 =head2 EventFilter => L<Paws::Pinpoint::CampaignEventFilter>
@@ -97,7 +99,8 @@ messages from the campaign, even if quiet time is enabled.
 
 =head2 B<REQUIRED> StartTime => Str
 
-  The scheduled time, in ISO 8601 format, for the campaign to begin.
+  The scheduled time, in ISO 8601 format, when the campaign began or will
+begin.
 
 
 =head2 Timezone => Str

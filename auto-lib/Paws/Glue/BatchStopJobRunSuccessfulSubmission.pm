@@ -2,6 +2,7 @@ package Paws::Glue::BatchStopJobRunSuccessfulSubmission;
   use Moose;
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

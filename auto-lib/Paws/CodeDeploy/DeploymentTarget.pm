@@ -4,6 +4,7 @@ package Paws::CodeDeploy::DeploymentTarget;
   has EcsTarget => (is => 'ro', isa => 'Paws::CodeDeploy::ECSTarget', request_name => 'ecsTarget', traits => ['NameInRequest']);
   has InstanceTarget => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceTarget', request_name => 'instanceTarget', traits => ['NameInRequest']);
   has LambdaTarget => (is => 'ro', isa => 'Paws::CodeDeploy::LambdaTarget', request_name => 'lambdaTarget', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

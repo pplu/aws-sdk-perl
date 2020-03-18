@@ -6,6 +6,7 @@ package Paws::Kafka::BrokerNodeInfo;
   has ClientVpcIpAddress => (is => 'ro', isa => 'Str', request_name => 'clientVpcIpAddress', traits => ['NameInRequest']);
   has CurrentBrokerSoftwareInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerSoftwareInfo', request_name => 'currentBrokerSoftwareInfo', traits => ['NameInRequest']);
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

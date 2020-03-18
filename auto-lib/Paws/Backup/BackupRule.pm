@@ -9,6 +9,7 @@ package Paws::Backup::BackupRule;
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has StartWindowMinutes => (is => 'ro', isa => 'Int');
   has TargetBackupVaultName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

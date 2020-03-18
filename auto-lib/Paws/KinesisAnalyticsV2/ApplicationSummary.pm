@@ -5,6 +5,7 @@ package Paws::KinesisAnalyticsV2::ApplicationSummary;
   has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
   has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Chime::TerminationHealth;
   use Moose;
   has Source => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Chime::UpdateUserRequestItem;
   has LicenseType => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

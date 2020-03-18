@@ -1,6 +1,7 @@
 package Paws::Transcribe::Media;
   use Moose;
   has MediaFileUri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

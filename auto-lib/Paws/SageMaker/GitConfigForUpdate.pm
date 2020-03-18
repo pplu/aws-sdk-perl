@@ -1,6 +1,7 @@
 package Paws::SageMaker::GitConfigForUpdate;
   use Moose;
   has SecretArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

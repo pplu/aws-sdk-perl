@@ -3,6 +3,7 @@ package Paws::EMR::VolumeSpecification;
   has Iops => (is => 'ro', isa => 'Int');
   has SizeInGB => (is => 'ro', isa => 'Int', required => 1);
   has VolumeType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

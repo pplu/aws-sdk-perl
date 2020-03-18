@@ -3,6 +3,7 @@ package Paws::SageMaker::AutoMLJobCompletionCriteria;
   has MaxAutoMLJobRuntimeInSeconds => (is => 'ro', isa => 'Int');
   has MaxCandidates => (is => 'ro', isa => 'Int');
   has MaxRuntimePerTrainingJobInSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

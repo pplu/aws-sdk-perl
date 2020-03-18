@@ -2,6 +2,7 @@ package Paws::ConnectParticipant::ConnectionCredentials;
   use Moose;
   has ConnectionToken => (is => 'ro', isa => 'Str');
   has Expiry => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

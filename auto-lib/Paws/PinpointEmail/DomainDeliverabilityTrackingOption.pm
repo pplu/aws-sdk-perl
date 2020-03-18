@@ -3,6 +3,7 @@ package Paws::PinpointEmail::DomainDeliverabilityTrackingOption;
   has Domain => (is => 'ro', isa => 'Str');
   has InboxPlacementTrackingOption => (is => 'ro', isa => 'Paws::PinpointEmail::InboxPlacementTrackingOption');
   has SubscriptionStartDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

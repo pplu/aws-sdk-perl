@@ -3,6 +3,7 @@ package Paws::AppSync::LogConfig;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str', request_name => 'cloudWatchLogsRoleArn', traits => ['NameInRequest'], required => 1);
   has ExcludeVerboseContent => (is => 'ro', isa => 'Bool', request_name => 'excludeVerboseContent', traits => ['NameInRequest']);
   has FieldLogLevel => (is => 'ro', isa => 'Str', request_name => 'fieldLogLevel', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

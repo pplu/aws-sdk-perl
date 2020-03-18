@@ -2,6 +2,7 @@ package Paws::MediaConvert::S3EncryptionSettings;
   use Moose;
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

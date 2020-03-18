@@ -2,6 +2,7 @@ package Paws::StorageGateway::StorageGatewayError;
   use Moose;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorDetails => (is => 'ro', isa => 'Paws::StorageGateway::ErrorDetails', request_name => 'errorDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

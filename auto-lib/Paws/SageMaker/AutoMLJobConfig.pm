@@ -2,6 +2,7 @@ package Paws::SageMaker::AutoMLJobConfig;
   use Moose;
   has CompletionCriteria => (is => 'ro', isa => 'Paws::SageMaker::AutoMLJobCompletionCriteria');
   has SecurityConfig => (is => 'ro', isa => 'Paws::SageMaker::AutoMLSecurityConfig');
+
 1;
 
 ### main pod documentation begin ###

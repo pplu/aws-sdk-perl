@@ -3,6 +3,7 @@ package Paws::IoT::AuditTaskMetadata;
   has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
   has TaskStatus => (is => 'ro', isa => 'Str', request_name => 'taskStatus', traits => ['NameInRequest']);
   has TaskType => (is => 'ro', isa => 'Str', request_name => 'taskType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

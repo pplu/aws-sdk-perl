@@ -1,6 +1,7 @@
 package Paws::Pinpoint::APNSMessage;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
+  has APNSPushType => (is => 'ro', isa => 'Str');
   has Badge => (is => 'ro', isa => 'Int');
   has Body => (is => 'ro', isa => 'Str');
   has Category => (is => 'ro', isa => 'Str');
@@ -17,6 +18,7 @@ package Paws::Pinpoint::APNSMessage;
   has TimeToLive => (is => 'ro', isa => 'Int');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -80,6 +82,56 @@ loads the web page at a URL that you specify.
 
 
 
+=head2 APNSPushType => Str
+
+  The type of push notification to send. Valid values are:
+
+=over
+
+=item *
+
+alert - For a standard notification that's displayed on recipients'
+devices and prompts a recipient to interact with the notification.
+
+=item *
+
+background - For a silent notification that delivers content in the
+background and isn't displayed on recipients' devices.
+
+=item *
+
+complication - For a notification that contains update information for
+an appE<rsquo>s complication timeline.
+
+=item *
+
+fileprovider - For a notification that signals changes to a File
+Provider extension.
+
+=item *
+
+mdm - For a notification that tells managed devices to contact the MDM
+server.
+
+=item *
+
+voip - For a notification that provides information about an incoming
+VoIP call.
+
+=back
+
+Amazon Pinpoint specifies this value in the apns-push-type request
+header when it sends the notification message to APNs. If you don't
+specify a value for this property, Amazon Pinpoint sets the value to
+alert or background automatically, based on the value that you specify
+for the SilentPush or RawContent property of the message.
+
+For more information about the apns-push-type request header, see
+Sending Notification Requests to APNs
+(https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
+on the Apple Developer website.
+
+
 =head2 Badge => Int
 
   The key that indicates whether and how to modify the badge of your
@@ -125,8 +177,7 @@ added to the data.pinpoint.jsonBody object of the notification.
 =head2 PreferredAuthenticationMethod => Str
 
   The authentication method that you want Amazon Pinpoint to use when
-authenticating with Apple Push Notification service (APNs), CERTIFICATE
-or TOKEN.
+authenticating with APNs, CERTIFICATE or TOKEN.
 
 
 =head2 Priority => Str
@@ -161,23 +212,58 @@ converts the value to the corresponding APNs value.
 =head2 RawContent => Str
 
   The raw, JSON-formatted string to use as the payload for the
-notification message. This value overrides the message.
+notification message. If specified, this value overrides all other
+content for the message.
+
+If you specify the raw content of an APNs push notification, the
+message payload has to include the content-available key. The value of
+the content-available key has to be an integer, and can only be 0 or 1.
+If you're sending a standard notification, set the value of
+content-available to 0. If you're sending a silent (background)
+notification, set the value of content-available to 1. Additionally,
+silent notification payloads can't include the alert, badge, or sound
+keys. For more information, see Generating a Remote Notification
+(https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification)
+and Pushing Background Updates to Your App
+(https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app)
+on the Apple Developer website.
 
 
 =head2 SilentPush => Bool
 
-  Specifies whether the notification is a silent push notification, which
-is a push notification that doesn't display on a recipient's device.
-Silent push notifications can be used for cases such as updating an
-app's configuration, displaying messages in an in-app message center,
-or supporting phone home functionality.
+  Specifies whether the notification is a silent push notification. A
+silent (or background) push notification isn't displayed on recipients'
+devices. You can use silent push notifications to make small updates to
+your app, or to display messages in an in-app message center.
+
+Amazon Pinpoint uses this property to determine the correct value for
+the apns-push-type request header when it sends the notification
+message to APNs. If you specify a value of true for this property,
+Amazon Pinpoint sets the value for the apns-push-type header field to
+background.
+
+If you specify the raw content of an APNs push notification, the
+message payload has to include the content-available key. For silent
+(background) notifications, set the value of content-available to 1.
+Additionally, the message payload for a silent notification can't
+include the alert, badge, or sound keys. For more information, see
+Generating a Remote Notification
+(https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification)
+and Pushing Background Updates to Your App
+(https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app)
+on the Apple Developer website.
+
+Apple has indicated that they will throttle "excessive" background
+notifications based on current traffic volumes. To prevent your
+notifications being throttled, Apple recommends that you send no more
+than 3 silent push notifications to each recipient per hour.
 
 
 =head2 Sound => Str
 
   The key for the sound to play when the recipient receives the push
-notification. The value of this key is the name of a sound file in your
-app's main bundle or the Library/Sounds folder in your app's data
+notification. The value for this key is the name of a sound file in
+your app's main bundle or the Library/Sounds folder in your app's data
 container. If the sound file can't be found or you specify default for
 the value, the system plays the default alert sound.
 

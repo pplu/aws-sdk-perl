@@ -2,6 +2,7 @@ package Paws::AppStream::ApplicationSettings;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has SettingsGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

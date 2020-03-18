@@ -1,6 +1,7 @@
 package Paws::Greengrass::ResourceDefinitionVersion;
   use Moose;
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Resource]');
+
 1;
 
 ### main pod documentation begin ###

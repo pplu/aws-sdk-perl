@@ -1,6 +1,7 @@
 package Paws::Glue::JobNodeDetails;
   use Moose;
   has JobRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::JobRun]');
+
 1;
 
 ### main pod documentation begin ###

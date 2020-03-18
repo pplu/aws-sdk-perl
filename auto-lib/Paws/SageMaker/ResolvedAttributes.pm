@@ -3,6 +3,7 @@ package Paws::SageMaker::ResolvedAttributes;
   has AutoMLJobObjective => (is => 'ro', isa => 'Paws::SageMaker::AutoMLJobObjective');
   has CompletionCriteria => (is => 'ro', isa => 'Paws::SageMaker::AutoMLJobCompletionCriteria');
   has ProblemType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

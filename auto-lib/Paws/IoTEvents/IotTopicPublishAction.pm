@@ -1,6 +1,7 @@
 package Paws::IoTEvents::IotTopicPublishAction;
   use Moose;
   has MqttTopic => (is => 'ro', isa => 'Str', request_name => 'mqttTopic', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

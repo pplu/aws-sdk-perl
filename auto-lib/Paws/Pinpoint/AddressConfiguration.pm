@@ -6,6 +6,7 @@ package Paws::Pinpoint::AddressConfiguration;
   has RawContent => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has TitleOverride => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -63,16 +64,15 @@ payload is added to email/SMS delivery receipt event attributes.
 
 =head2 RawContent => Str
 
-  The raw, JSON-formatted string to use as the payload for the
-notification message. This value overrides the message.
+  The raw, JSON-formatted string to use as the payload for the message.
+If specified, this value overrides all other values for the message.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  An object that maps variable values for the message. Amazon Pinpoint
-merges these values with the variable values specified by properties of
-the DefaultMessage object. The substitutions in this map take
-precedence over all other substitutions.
+  A map of the message variables to merge with the variables specified by
+properties of the DefaultMessage object. The variables specified in
+this map take precedence over all other variables.
 
 
 =head2 TitleOverride => Str

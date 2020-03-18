@@ -3,6 +3,7 @@ package Paws::AppMesh::AwsCloudMapServiceDiscovery;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::AwsCloudMapInstanceAttribute]', request_name => 'attributes', traits => ['NameInRequest']);
   has NamespaceName => (is => 'ro', isa => 'Str', request_name => 'namespaceName', traits => ['NameInRequest'], required => 1);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

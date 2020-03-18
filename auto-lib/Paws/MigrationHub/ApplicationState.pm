@@ -3,6 +3,7 @@ package Paws::MigrationHub::ApplicationState;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has ApplicationStatus => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

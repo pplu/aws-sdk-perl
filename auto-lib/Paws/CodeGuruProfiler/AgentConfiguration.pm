@@ -2,6 +2,7 @@ package Paws::CodeGuruProfiler::AgentConfiguration;
   use Moose;
   has PeriodInSeconds => (is => 'ro', isa => 'Int', request_name => 'periodInSeconds', traits => ['NameInRequest'], required => 1);
   has ShouldProfile => (is => 'ro', isa => 'Bool', request_name => 'shouldProfile', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

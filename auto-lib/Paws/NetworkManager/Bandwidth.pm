@@ -2,6 +2,7 @@ package Paws::NetworkManager::Bandwidth;
   use Moose;
   has DownloadSpeed => (is => 'ro', isa => 'Int');
   has UploadSpeed => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

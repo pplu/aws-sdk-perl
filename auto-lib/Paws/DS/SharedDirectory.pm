@@ -9,6 +9,7 @@ package Paws::DS::SharedDirectory;
   has ShareMethod => (is => 'ro', isa => 'Str');
   has ShareNotes => (is => 'ro', isa => 'Str');
   has ShareStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

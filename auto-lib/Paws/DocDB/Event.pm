@@ -6,6 +6,7 @@ package Paws::DocDB::Event;
   has SourceArn => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

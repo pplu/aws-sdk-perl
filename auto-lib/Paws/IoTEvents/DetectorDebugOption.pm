@@ -2,6 +2,7 @@ package Paws::IoTEvents::DetectorDebugOption;
   use Moose;
   has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest'], required => 1);
   has KeyValue => (is => 'ro', isa => 'Str', request_name => 'keyValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::SourceBuildInformation;
   has SourceLocation => (is => 'ro', isa => 'Str', required => 1);
   has SourceRepository => (is => 'ro', isa => 'Str', required => 1);
   has SourceType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

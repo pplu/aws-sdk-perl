@@ -9,6 +9,7 @@ package Paws::MediaConvert::AudioCodecSettings;
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
   has Mp3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp3Settings', request_name => 'mp3Settings', traits => ['NameInRequest']);
   has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::GroundStation::DecodeConfig;
   use Moose;
   has UnvalidatedJSON => (is => 'ro', isa => 'Str', request_name => 'unvalidatedJSON', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodeGuruProfiler::AggregatedProfileTime;
   use Moose;
   has Period => (is => 'ro', isa => 'Str', request_name => 'period', traits => ['NameInRequest']);
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

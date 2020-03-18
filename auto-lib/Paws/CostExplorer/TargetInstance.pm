@@ -6,6 +6,7 @@ package Paws::CostExplorer::TargetInstance;
   has EstimatedMonthlySavings => (is => 'ro', isa => 'Str');
   has ExpectedResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::ResourceUtilization');
   has ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ResourceDetails');
+
 1;
 
 ### main pod documentation begin ###

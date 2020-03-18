@@ -2,6 +2,7 @@ package Paws::AppSync::AuthorizationConfig;
   use Moose;
   has AuthorizationType => (is => 'ro', isa => 'Str', request_name => 'authorizationType', traits => ['NameInRequest'], required => 1);
   has AwsIamConfig => (is => 'ro', isa => 'Paws::AppSync::AwsIamConfig', request_name => 'awsIamConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

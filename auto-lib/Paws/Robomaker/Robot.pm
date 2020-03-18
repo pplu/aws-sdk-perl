@@ -9,6 +9,7 @@ package Paws::Robomaker::Robot;
   has LastDeploymentTime => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::LexRuntime::DialogAction;
   has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', request_name => 'slots', traits => ['NameInRequest']);
   has SlotToElicit => (is => 'ro', isa => 'Str', request_name => 'slotToElicit', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +86,7 @@ message, Amazon Lex will use the message configured for the intent.
 
 =head2 MessageFormat => Str
 
-=over
+  =over
 
 =item *
 

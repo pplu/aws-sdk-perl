@@ -3,6 +3,7 @@ package Paws::Glacier::ProvisionedCapacityDescription;
   has CapacityId => (is => 'ro', isa => 'Str');
   has ExpirationDate => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

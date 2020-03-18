@@ -1,6 +1,7 @@
 package Paws::AppMesh::VirtualServiceSpec;
   use Moose;
   has Provider => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceProvider', request_name => 'provider', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

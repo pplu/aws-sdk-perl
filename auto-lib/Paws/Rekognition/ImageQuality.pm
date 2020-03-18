@@ -2,6 +2,7 @@ package Paws::Rekognition::ImageQuality;
   use Moose;
   has Brightness => (is => 'ro', isa => 'Num');
   has Sharpness => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

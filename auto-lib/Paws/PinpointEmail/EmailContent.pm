@@ -3,6 +3,7 @@ package Paws::PinpointEmail::EmailContent;
   has Raw => (is => 'ro', isa => 'Paws::PinpointEmail::RawMessage');
   has Simple => (is => 'ro', isa => 'Paws::PinpointEmail::Message');
   has Template => (is => 'ro', isa => 'Paws::PinpointEmail::Template');
+
 1;
 
 ### main pod documentation begin ###

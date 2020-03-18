@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::EstimatedResourceSize;
   use Moose;
   has EstimatedOn => (is => 'ro', isa => 'Str', request_name => 'estimatedOn', traits => ['NameInRequest']);
   has EstimatedSizeInBytes => (is => 'ro', isa => 'Num', request_name => 'estimatedSizeInBytes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

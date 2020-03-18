@@ -7,6 +7,7 @@ package Paws::CodeDeploy::LambdaTarget;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
   has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

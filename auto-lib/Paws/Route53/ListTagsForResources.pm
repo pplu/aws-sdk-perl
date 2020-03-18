@@ -1,8 +1,9 @@
 
 package Paws::Route53::ListTagsForResources;
   use Moose;
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ResourceId', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', uri_name => 'ResourceType', traits => ['ParamInURI'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -11,7 +12,8 @@ package Paws::Route53::ListTagsForResources;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTagsForResourcesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'ListTagsForResourcesRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'https://route53.amazonaws.com/doc/2013-04-01/');  
 1;
 
 ### main pod documentation begin ###

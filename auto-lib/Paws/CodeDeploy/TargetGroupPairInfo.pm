@@ -3,6 +3,7 @@ package Paws::CodeDeploy::TargetGroupPairInfo;
   has ProdTrafficRoute => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoute', request_name => 'prodTrafficRoute', traits => ['NameInRequest']);
   has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupInfo]', request_name => 'targetGroups', traits => ['NameInRequest']);
   has TestTrafficRoute => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoute', request_name => 'testTrafficRoute', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ApplicationSnapshotConfiguration => {
-          SnapshotsEnabled => 1,
+          SnapshotsEnabled => 1,    # OPTIONAL
 
         },    # OPTIONAL
         EnvironmentProperties => {
@@ -72,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CheckpointConfiguration => {
             ConfigurationType          => 'DEFAULT',   # values: DEFAULT, CUSTOM
             CheckpointInterval         => 1,           # min: 1; OPTIONAL
-            CheckpointingEnabled       => 1,
+            CheckpointingEnabled       => 1,           # OPTIONAL
             MinPauseBetweenCheckpoints => 1,           # OPTIONAL
           },    # OPTIONAL
           MonitoringConfiguration => {
@@ -83,7 +83,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ParallelismConfiguration => {
             ConfigurationType  => 'DEFAULT',    # values: DEFAULT, CUSTOM
-            AutoScalingEnabled => 1,
+            AutoScalingEnabled => 1,            # OPTIONAL
             Parallelism        => 1,            # min: 1; OPTIONAL
             ParallelismPerKPU  => 1,            # min: 1; OPTIONAL
           },    # OPTIONAL
@@ -265,7 +265,7 @@ monitor application configuration errors.
 The runtime environment for the application (C<SQL-1.0> or
 C<FLINK-1_6>).
 
-Valid values are: C<"SQL-1_0">, C<"FLINK-1_6">
+Valid values are: C<"SQL-1_0">, C<"FLINK-1_6">, C<"FLINK-1_8">
 
 =head2 B<REQUIRED> ServiceExecutionRole => Str
 

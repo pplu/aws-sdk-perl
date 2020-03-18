@@ -2,6 +2,7 @@ package Paws::Forecast::FeaturizationMethod;
   use Moose;
   has FeaturizationMethodName => (is => 'ro', isa => 'Str', required => 1);
   has FeaturizationMethodParameters => (is => 'ro', isa => 'Paws::Forecast::FeaturizationMethodParameters');
+
 1;
 
 ### main pod documentation begin ###

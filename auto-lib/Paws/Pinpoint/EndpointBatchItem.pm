@@ -12,6 +12,7 @@ package Paws::Pinpoint::EndpointBatchItem;
   has OptOut => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has User => (is => 'ro', isa => 'Paws::Pinpoint::EndpointUser');
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +94,14 @@ updated.
 
 =head2 EndpointStatus => Str
 
-  Not used.
+  Specifies whether to send messages or push notifications to the
+endpoint. Valid values are: ACTIVE, messages are sent to the endpoint;
+and, INACTIVE, messages arenE<rsquo>t sent to the endpoint.
+
+Amazon Pinpoint automatically sets this value to ACTIVE when you create
+an endpoint or update an existing endpoint. Amazon Pinpoint
+automatically sets this value to INACTIVE if you update another
+endpoint that has the same address specified by the Address property.
 
 
 =head2 Id => Str

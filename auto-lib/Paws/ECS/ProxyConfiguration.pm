@@ -3,6 +3,7 @@ package Paws::ECS::ProxyConfiguration;
   has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest'], required => 1);
   has Properties => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'properties', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

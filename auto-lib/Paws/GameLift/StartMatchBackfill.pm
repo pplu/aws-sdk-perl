@@ -41,17 +41,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PlayerAttributes => {
             'MyNonZeroAndMaxString' => {
               N   => 1,
-              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
               SDM => {
-                'MyNonZeroAndMaxString' => 1, # key: min: 1, max: 1024; OPTIONAL
+                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
               },    # OPTIONAL
               SL => [
-                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024; OPTIONAL
+                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024
               ],                                # OPTIONAL
-            },    # key: min: 1, max: 1024; OPTIONAL
+            },    # key: min: 1, max: 1024
           },    # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
-          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
         },
         ...
       ],

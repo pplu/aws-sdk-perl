@@ -5,6 +5,7 @@ package Paws::Inspector::ExclusionPreview;
   has Recommendation => (is => 'ro', isa => 'Str', request_name => 'recommendation', traits => ['NameInRequest'], required => 1);
   has Scopes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Scope]', request_name => 'scopes', traits => ['NameInRequest'], required => 1);
   has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

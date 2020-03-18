@@ -4,6 +4,7 @@ package Paws::AppMesh::HttpRetryPolicy;
   has MaxRetries => (is => 'ro', isa => 'Int', request_name => 'maxRetries', traits => ['NameInRequest'], required => 1);
   has PerRetryTimeout => (is => 'ro', isa => 'Paws::AppMesh::Duration', request_name => 'perRetryTimeout', traits => ['NameInRequest'], required => 1);
   has TcpRetryEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tcpRetryEvents', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

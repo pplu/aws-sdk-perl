@@ -5,6 +5,7 @@ package Paws::RDS::ConnectionPoolConfigurationInfo;
   has MaxConnectionsPercent => (is => 'ro', isa => 'Int');
   has MaxIdleConnectionsPercent => (is => 'ro', isa => 'Int');
   has SessionPinningFilters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

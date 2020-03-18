@@ -2,7 +2,8 @@
 package Paws::CloudFront::TagResource;
   use Moose;
   has Resource => (is => 'ro', isa => 'Str', query_name => 'Resource', traits => ['ParamInQuery'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -12,6 +13,7 @@ package Paws::CloudFront::TagResource;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

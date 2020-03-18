@@ -1,6 +1,7 @@
 package Paws::MediaLive::MultiplexOutputDestination;
   use Moose;
   has MediaConnectSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexMediaConnectOutputDestinationSettings', request_name => 'mediaConnectSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

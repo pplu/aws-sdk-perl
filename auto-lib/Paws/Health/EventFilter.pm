@@ -13,6 +13,7 @@ package Paws::Health::EventFilter;
   has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest']);
   has StartTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'startTimes', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

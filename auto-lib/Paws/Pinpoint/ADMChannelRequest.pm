@@ -3,6 +3,7 @@ package Paws::Pinpoint::ADMChannelRequest;
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientSecret => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::Chime::Member;
   has FullName => (is => 'ro', isa => 'Str');
   has MemberId => (is => 'ro', isa => 'Str');
   has MemberType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

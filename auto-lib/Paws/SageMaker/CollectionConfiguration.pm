@@ -2,6 +2,7 @@ package Paws::SageMaker::CollectionConfiguration;
   use Moose;
   has CollectionName => (is => 'ro', isa => 'Str');
   has CollectionParameters => (is => 'ro', isa => 'Paws::SageMaker::CollectionParameters');
+
 1;
 
 ### main pod documentation begin ###

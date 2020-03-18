@@ -2,6 +2,7 @@ package Paws::Pinpoint::RecencyDimension;
   use Moose;
   has Duration => (is => 'ro', isa => 'Str', required => 1);
   has RecencyType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

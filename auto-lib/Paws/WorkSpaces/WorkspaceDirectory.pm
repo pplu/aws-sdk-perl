@@ -16,6 +16,7 @@ package Paws::WorkSpaces::WorkspaceDirectory;
   has WorkspaceAccessProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceAccessProperties');
   has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
   has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

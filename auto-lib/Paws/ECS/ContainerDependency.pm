@@ -2,6 +2,7 @@ package Paws::ECS::ContainerDependency;
   use Moose;
   has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest'], required => 1);
   has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

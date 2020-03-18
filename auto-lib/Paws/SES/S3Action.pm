@@ -4,6 +4,7 @@ package Paws::SES::S3Action;
   has KmsKeyArn => (is => 'ro', isa => 'Str');
   has ObjectKeyPrefix => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -14,6 +14,7 @@ package Paws::Route53Domains::ContactDetail;
   has PhoneNumber => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has ZipCode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

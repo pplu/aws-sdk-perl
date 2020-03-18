@@ -19,6 +19,7 @@ package Paws::SSM::InstancePatchState;
   has RebootOption => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has UnreportedNotApplicableCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

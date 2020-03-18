@@ -4,6 +4,7 @@ package Paws::S3::Part;
   has LastModified => (is => 'ro', isa => 'Str');
   has PartNumber => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

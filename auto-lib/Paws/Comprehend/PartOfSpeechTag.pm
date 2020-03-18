@@ -2,6 +2,7 @@ package Paws::Comprehend::PartOfSpeechTag;
   use Moose;
   has Score => (is => 'ro', isa => 'Num');
   has Tag => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

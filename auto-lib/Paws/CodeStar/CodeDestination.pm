@@ -2,6 +2,7 @@ package Paws::CodeStar::CodeDestination;
   use Moose;
   has CodeCommit => (is => 'ro', isa => 'Paws::CodeStar::CodeCommitCodeDestination', request_name => 'codeCommit', traits => ['NameInRequest']);
   has GitHub => (is => 'ro', isa => 'Paws::CodeStar::GitHubCodeDestination', request_name => 'gitHub', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

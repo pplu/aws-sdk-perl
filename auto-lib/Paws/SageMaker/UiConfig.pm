@@ -1,6 +1,7 @@
 package Paws::SageMaker::UiConfig;
   use Moose;
   has UiTemplateS3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaPackage::HarvestJobCreateParameters;
   has OriginEndpointId => (is => 'ro', isa => 'Str', request_name => 'originEndpointId', traits => ['NameInRequest'], required => 1);
   has S3Destination => (is => 'ro', isa => 'Paws::MediaPackage::S3Destination', request_name => 's3Destination', traits => ['NameInRequest'], required => 1);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

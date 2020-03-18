@@ -1,6 +1,7 @@
 package Paws::MediaLive::VideoSelectorProgramId;
   use Moose;
   has ProgramId => (is => 'ro', isa => 'Int', request_name => 'programId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

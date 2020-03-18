@@ -4,6 +4,7 @@ package Paws::IoT::AssetPropertyVariant;
   has DoubleValue => (is => 'ro', isa => 'Str', request_name => 'doubleValue', traits => ['NameInRequest']);
   has IntegerValue => (is => 'ro', isa => 'Str', request_name => 'integerValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

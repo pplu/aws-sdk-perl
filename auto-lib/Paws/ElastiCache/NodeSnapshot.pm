@@ -7,6 +7,7 @@ package Paws::ElastiCache::NodeSnapshot;
   has NodeGroupConfiguration => (is => 'ro', isa => 'Paws::ElastiCache::NodeGroupConfiguration');
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

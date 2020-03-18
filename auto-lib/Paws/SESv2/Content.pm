@@ -2,6 +2,7 @@ package Paws::SESv2::Content;
   use Moose;
   has Charset => (is => 'ro', isa => 'Str');
   has Data => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

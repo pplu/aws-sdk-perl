@@ -9,6 +9,7 @@ package Paws::FraudDetector::RuleDetail;
   has Outcomes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'outcomes', traits => ['NameInRequest']);
   has RuleId => (is => 'ro', isa => 'Str', request_name => 'ruleId', traits => ['NameInRequest']);
   has RuleVersion => (is => 'ro', isa => 'Str', request_name => 'ruleVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

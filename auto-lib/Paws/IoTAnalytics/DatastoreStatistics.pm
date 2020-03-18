@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::DatastoreStatistics;
   use Moose;
   has Size => (is => 'ro', isa => 'Paws::IoTAnalytics::EstimatedResourceSize', request_name => 'size', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

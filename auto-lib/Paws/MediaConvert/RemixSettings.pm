@@ -3,6 +3,7 @@ package Paws::MediaConvert::RemixSettings;
   has ChannelMapping => (is => 'ro', isa => 'Paws::MediaConvert::ChannelMapping', request_name => 'channelMapping', traits => ['NameInRequest']);
   has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest']);
   has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

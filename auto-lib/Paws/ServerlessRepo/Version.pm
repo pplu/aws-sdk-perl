@@ -9,6 +9,7 @@ package Paws::ServerlessRepo::Version;
   has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
   has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
   has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

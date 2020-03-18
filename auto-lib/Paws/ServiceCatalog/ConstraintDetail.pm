@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ConstraintDetail;
   has Description => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

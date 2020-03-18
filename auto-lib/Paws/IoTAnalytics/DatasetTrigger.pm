@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetTrigger;
   use Moose;
   has Dataset => (is => 'ro', isa => 'Paws::IoTAnalytics::TriggeringDataset', request_name => 'dataset', traits => ['NameInRequest']);
   has Schedule => (is => 'ro', isa => 'Paws::IoTAnalytics::Schedule', request_name => 'schedule', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

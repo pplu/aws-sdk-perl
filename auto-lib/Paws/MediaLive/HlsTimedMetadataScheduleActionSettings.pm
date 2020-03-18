@@ -1,6 +1,7 @@
 package Paws::MediaLive::HlsTimedMetadataScheduleActionSettings;
   use Moose;
   has Id3 => (is => 'ro', isa => 'Str', request_name => 'id3', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

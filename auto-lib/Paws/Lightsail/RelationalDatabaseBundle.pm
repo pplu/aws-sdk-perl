@@ -9,6 +9,7 @@ package Paws::Lightsail::RelationalDatabaseBundle;
   has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
   has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
   has TransferPerMonthInGb => (is => 'ro', isa => 'Int', request_name => 'transferPerMonthInGb', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

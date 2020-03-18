@@ -4,6 +4,7 @@ package Paws::DynamoDB::SSEDescription;
   has KMSMasterKeyArn => (is => 'ro', isa => 'Str');
   has SSEType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

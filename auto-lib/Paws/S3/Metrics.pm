@@ -2,6 +2,7 @@ package Paws::S3::Metrics;
   use Moose;
   has EventThreshold => (is => 'ro', isa => 'Paws::S3::ReplicationTimeValue', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

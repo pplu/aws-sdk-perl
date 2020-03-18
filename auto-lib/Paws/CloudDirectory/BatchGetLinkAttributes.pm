@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchGetLinkAttributes;
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+
 1;
 
 ### main pod documentation begin ###

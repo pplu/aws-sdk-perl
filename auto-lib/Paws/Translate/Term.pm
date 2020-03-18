@@ -2,6 +2,7 @@ package Paws::Translate::Term;
   use Moose;
   has SourceText => (is => 'ro', isa => 'Str');
   has TargetText => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

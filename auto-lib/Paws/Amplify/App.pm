@@ -21,6 +21,7 @@ package Paws::Amplify::App;
   has Repository => (is => 'ro', isa => 'Str', request_name => 'repository', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

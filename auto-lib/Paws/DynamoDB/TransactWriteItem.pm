@@ -4,6 +4,7 @@ package Paws::DynamoDB::TransactWriteItem;
   has Delete => (is => 'ro', isa => 'Paws::DynamoDB::Delete');
   has Put => (is => 'ro', isa => 'Paws::DynamoDB::Put');
   has Update => (is => 'ro', isa => 'Paws::DynamoDB::Update');
+
 1;
 
 ### main pod documentation begin ###

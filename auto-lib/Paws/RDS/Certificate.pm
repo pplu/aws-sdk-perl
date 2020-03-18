@@ -8,6 +8,7 @@ package Paws::RDS::Certificate;
   has Thumbprint => (is => 'ro', isa => 'Str');
   has ValidFrom => (is => 'ro', isa => 'Str');
   has ValidTill => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

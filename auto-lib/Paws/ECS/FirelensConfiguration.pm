@@ -2,6 +2,7 @@ package Paws::ECS::FirelensConfiguration;
   use Moose;
   has Options => (is => 'ro', isa => 'Paws::ECS::FirelensConfigurationOptionsMap', request_name => 'options', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

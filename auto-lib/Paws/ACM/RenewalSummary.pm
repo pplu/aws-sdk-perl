@@ -4,6 +4,7 @@ package Paws::ACM::RenewalSummary;
   has RenewalStatus => (is => 'ro', isa => 'Str', required => 1);
   has RenewalStatusReason => (is => 'ro', isa => 'Str');
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

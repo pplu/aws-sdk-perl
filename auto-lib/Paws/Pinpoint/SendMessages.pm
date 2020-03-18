@@ -9,7 +9,7 @@ package Paws::Pinpoint::SendMessages;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessages');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/messages');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::MessageResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SendMessagesResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $MessageResponse = $pinpoint->SendMessages(
+    my $SendMessagesResponse = $pinpoint->SendMessages(
       ApplicationId  => 'My__string',
       MessageRequest => {
         MessageConfiguration => {
@@ -53,6 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url   => 'My__string',
           },    # OPTIONAL
           APNSMessage => {
+            APNSPushType => 'My__string',
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Badge  => 1,            # OPTIONAL
             Body   => 'My__string',
@@ -191,18 +192,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TitleOverride => 'My__string',
           },
         },    # OPTIONAL
+        TemplateConfiguration => {
+          EmailTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },    # OPTIONAL
+          PushTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },    # OPTIONAL
+          SMSTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },    # OPTIONAL
+          VoiceTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },    # OPTIONAL
+        },    # OPTIONAL
         TraceId => 'My__string',
       },
 
     );
 
     # Results:
-    my $ApplicationId  = $MessageResponse->ApplicationId;
-    my $EndpointResult = $MessageResponse->EndpointResult;
-    my $RequestId      = $MessageResponse->RequestId;
-    my $Result         = $MessageResponse->Result;
+    my $MessageResponse = $SendMessagesResponse->MessageResponse;
 
-    # Returns a L<Paws::Pinpoint::MessageResponse> object.
+    # Returns a L<Paws::Pinpoint::SendMessagesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/SendMessages>

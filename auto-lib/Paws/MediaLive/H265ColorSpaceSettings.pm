@@ -4,6 +4,7 @@ package Paws::MediaLive::H265ColorSpaceSettings;
   has Hdr10Settings => (is => 'ro', isa => 'Paws::MediaLive::Hdr10Settings', request_name => 'hdr10Settings', traits => ['NameInRequest']);
   has Rec601Settings => (is => 'ro', isa => 'Paws::MediaLive::Rec601Settings', request_name => 'rec601Settings', traits => ['NameInRequest']);
   has Rec709Settings => (is => 'ro', isa => 'Paws::MediaLive::Rec709Settings', request_name => 'rec709Settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

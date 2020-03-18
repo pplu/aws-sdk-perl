@@ -1,6 +1,7 @@
 package Paws::MediaLive::AudioPidSelection;
   use Moose;
   has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

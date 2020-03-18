@@ -1,6 +1,7 @@
 package Paws::WAFv2::NotStatement;
   use Moose;
   has Statement => (is => 'ro', isa => 'Paws::WAFv2::Statement', required => 1);
+
 1;
 
 ### main pod documentation begin ###

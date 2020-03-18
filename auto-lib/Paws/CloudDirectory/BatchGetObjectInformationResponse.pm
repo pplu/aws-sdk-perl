@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchGetObjectInformationResponse;
   use Moose;
   has ObjectIdentifier => (is => 'ro', isa => 'Str');
   has SchemaFacets => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]');
+
 1;
 
 ### main pod documentation begin ###

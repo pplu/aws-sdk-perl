@@ -1,6 +1,7 @@
 package Paws::CognitoIdp::UserPoolPolicyType;
   use Moose;
   has PasswordPolicy => (is => 'ro', isa => 'Paws::CognitoIdp::PasswordPolicyType');
+
 1;
 
 ### main pod documentation begin ###

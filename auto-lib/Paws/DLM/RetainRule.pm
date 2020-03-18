@@ -3,6 +3,7 @@ package Paws::DLM::RetainRule;
   has Count => (is => 'ro', isa => 'Int');
   has Interval => (is => 'ro', isa => 'Int');
   has IntervalUnit => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

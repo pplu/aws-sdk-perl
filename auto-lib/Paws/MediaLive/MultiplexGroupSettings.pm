@@ -1,5 +1,6 @@
 package Paws::MediaLive::MultiplexGroupSettings;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

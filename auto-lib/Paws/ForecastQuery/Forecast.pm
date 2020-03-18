@@ -1,6 +1,7 @@
 package Paws::ForecastQuery::Forecast;
   use Moose;
   has Predictions => (is => 'ro', isa => 'Paws::ForecastQuery::Predictions');
+
 1;
 
 ### main pod documentation begin ###

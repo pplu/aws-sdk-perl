@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', request_name => 'identity', traits => ['NameInRequest']);
   has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

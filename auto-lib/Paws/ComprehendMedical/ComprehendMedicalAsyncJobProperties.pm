@@ -14,6 +14,7 @@ package Paws::ComprehendMedical::ComprehendMedicalAsyncJobProperties;
   has ModelVersion => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::ComprehendMedical::OutputDataConfig');
   has SubmitTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

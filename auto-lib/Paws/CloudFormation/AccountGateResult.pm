@@ -2,6 +2,7 @@ package Paws::CloudFormation::AccountGateResult;
   use Moose;
   has Status => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

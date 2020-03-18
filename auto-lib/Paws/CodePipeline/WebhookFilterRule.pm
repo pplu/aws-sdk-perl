@@ -2,6 +2,7 @@ package Paws::CodePipeline::WebhookFilterRule;
   use Moose;
   has JsonPath => (is => 'ro', isa => 'Str', request_name => 'jsonPath', traits => ['NameInRequest'], required => 1);
   has MatchEquals => (is => 'ro', isa => 'Str', request_name => 'matchEquals', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

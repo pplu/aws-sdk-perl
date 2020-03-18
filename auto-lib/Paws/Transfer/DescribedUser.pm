@@ -9,6 +9,7 @@ package Paws::Transfer::DescribedUser;
   has SshPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::SshPublicKey]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

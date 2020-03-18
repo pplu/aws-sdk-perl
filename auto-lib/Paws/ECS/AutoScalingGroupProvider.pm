@@ -3,6 +3,7 @@ package Paws::ECS::AutoScalingGroupProvider;
   has AutoScalingGroupArn => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroupArn', traits => ['NameInRequest'], required => 1);
   has ManagedScaling => (is => 'ro', isa => 'Paws::ECS::ManagedScaling', request_name => 'managedScaling', traits => ['NameInRequest']);
   has ManagedTerminationProtection => (is => 'ro', isa => 'Str', request_name => 'managedTerminationProtection', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

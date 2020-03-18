@@ -7,6 +7,7 @@ package Paws::SQS::SendMessageBatchRequestEntry;
   has MessageDeduplicationId => (is => 'ro', isa => 'Str');
   has MessageGroupId => (is => 'ro', isa => 'Str');
   has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', request_name => 'MessageSystemAttribute', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

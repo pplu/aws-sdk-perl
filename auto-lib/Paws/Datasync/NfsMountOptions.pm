@@ -1,6 +1,7 @@
 package Paws::Datasync::NfsMountOptions;
   use Moose;
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

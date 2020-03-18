@@ -4,7 +4,9 @@ package Paws::Pinpoint::MessageRequest;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
+  has TemplateConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::TemplateConfiguration');
   has TraceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -35,8 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-Specifies the objects that define configuration and other settings for
-a message.
+Specifies the configuration and other settings for a message.
 
 =head1 ATTRIBUTES
 
@@ -68,8 +69,13 @@ by specifying settings such as content overrides and message variables.
 
 =head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
-  The set of properties that defines the configuration settings for the
-message.
+  The settings and content for the default message and any default
+messages that you defined for specific channels.
+
+
+=head2 TemplateConfiguration => L<Paws::Pinpoint::TemplateConfiguration>
+
+  The message template to use for the message.
 
 
 =head2 TraceId => Str

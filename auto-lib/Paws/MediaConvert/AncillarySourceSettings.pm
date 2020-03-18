@@ -3,6 +3,7 @@ package Paws::MediaConvert::AncillarySourceSettings;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
   has SourceAncillaryChannelNumber => (is => 'ro', isa => 'Int', request_name => 'sourceAncillaryChannelNumber', traits => ['NameInRequest']);
   has TerminateCaptions => (is => 'ro', isa => 'Str', request_name => 'terminateCaptions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

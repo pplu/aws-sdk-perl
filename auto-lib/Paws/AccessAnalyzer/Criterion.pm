@@ -4,6 +4,7 @@ package Paws::AccessAnalyzer::Criterion;
   has Eq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eq', traits => ['NameInRequest']);
   has Exists => (is => 'ro', isa => 'Bool', request_name => 'exists', traits => ['NameInRequest']);
   has Neq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'neq', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

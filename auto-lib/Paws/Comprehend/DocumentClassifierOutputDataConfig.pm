@@ -2,6 +2,7 @@ package Paws::Comprehend::DocumentClassifierOutputDataConfig;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has S3Uri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::Firehose::DestinationDescription;
   has RedshiftDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationDescription');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
   has SplunkDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationDescription');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Quicksight::SheetControlsOption;
   use Moose;
   has VisibilityState => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

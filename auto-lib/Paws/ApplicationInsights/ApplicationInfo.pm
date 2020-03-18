@@ -5,6 +5,7 @@ package Paws::ApplicationInsights::ApplicationInfo;
   has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
   has Remarks => (is => 'ro', isa => 'Str');
   has ResourceGroupName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

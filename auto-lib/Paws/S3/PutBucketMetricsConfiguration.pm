@@ -4,7 +4,8 @@ package Paws::S3::PutBucketMetricsConfiguration;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has Id => (is => 'ro', isa => 'Str', query_name => 'id', traits => ['ParamInQuery'], required => 1);
-  has MetricsConfiguration => (is => 'ro', isa => 'Paws::S3::MetricsConfiguration', required => 1);
+  has MetricsConfiguration => (is => 'ro', isa => 'Paws::S3::MetricsConfiguration', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -14,6 +15,7 @@ package Paws::S3::PutBucketMetricsConfiguration;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value => 'MyValue',
 
               },
-              ...                          # OPTIONAL
+              ...
             ],                             # OPTIONAL
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
@@ -55,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key   => 'MyObjectKey',    # min: 1
             Value => 'MyValue',
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
       },
       ContentLength => 1,    # OPTIONAL

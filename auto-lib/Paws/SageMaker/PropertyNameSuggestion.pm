@@ -1,6 +1,7 @@
 package Paws::SageMaker::PropertyNameSuggestion;
   use Moose;
   has PropertyName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

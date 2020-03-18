@@ -3,6 +3,7 @@ package Paws::Chime::EventsConfiguration;
   has BotId => (is => 'ro', isa => 'Str');
   has LambdaFunctionArn => (is => 'ro', isa => 'Str');
   has OutboundEventsHTTPSEndpoint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

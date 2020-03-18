@@ -3,6 +3,7 @@ package Paws::Schemas::LockServiceLinkedRoleOutput;
   has CanBeDeleted => (is => 'ro', isa => 'Bool');
   has ReasonOfFailure => (is => 'ro', isa => 'Str');
   has RelatedResources => (is => 'ro', isa => 'ArrayRef[Paws::Schemas::DiscovererSummary]');
+
 1;
 
 ### main pod documentation begin ###

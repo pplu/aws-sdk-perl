@@ -9,6 +9,7 @@ package Paws::SageMaker::TrialComponentMetricSummary;
   has SourceArn => (is => 'ro', isa => 'Str');
   has StdDev => (is => 'ro', isa => 'Num');
   has TimeStamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

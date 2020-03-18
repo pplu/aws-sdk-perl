@@ -5,6 +5,7 @@ package Paws::SageMaker::MonitoringAppSpecification;
   has ImageUri => (is => 'ro', isa => 'Str', required => 1);
   has PostAnalyticsProcessorSourceUri => (is => 'ro', isa => 'Str');
   has RecordPreprocessorSourceUri => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

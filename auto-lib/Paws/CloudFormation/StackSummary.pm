@@ -11,6 +11,7 @@ package Paws::CloudFormation::StackSummary;
   has StackStatus => (is => 'ro', isa => 'Str', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has TemplateDescription => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

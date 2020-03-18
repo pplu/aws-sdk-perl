@@ -7,6 +7,7 @@ package Paws::CodeDeploy::ECSTarget;
   has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
   has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
   has TaskSetsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ECSTaskSet]', request_name => 'taskSetsInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

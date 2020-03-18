@@ -8,6 +8,7 @@ package Paws::Robomaker::DeploymentJob;
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has Fleet => (is => 'ro', isa => 'Str', request_name => 'fleet', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaPackageVod::EgressEndpoint;
   use Moose;
   has PackagingConfigurationId => (is => 'ro', isa => 'Str', request_name => 'packagingConfigurationId', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::ElasticTranscoder::CreateJobPlaylist;
   has Name => (is => 'ro', isa => 'Str');
   has OutputKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PlayReadyDrm => (is => 'ro', isa => 'Paws::ElasticTranscoder::PlayReadyDrm');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::Datasync::Options;
   has TaskQueueing => (is => 'ro', isa => 'Str');
   has Uid => (is => 'ro', isa => 'Str');
   has VerifyMode => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

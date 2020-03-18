@@ -2,6 +2,7 @@ package Paws::Health::EventAccountFilter;
   use Moose;
   has AwsAccountId => (is => 'ro', isa => 'Str', request_name => 'awsAccountId', traits => ['NameInRequest'], required => 1);
   has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

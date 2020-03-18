@@ -2,6 +2,7 @@ package Paws::GuardDuty::Country;
   use Moose;
   has CountryCode => (is => 'ro', isa => 'Str', request_name => 'countryCode', traits => ['NameInRequest']);
   has CountryName => (is => 'ro', isa => 'Str', request_name => 'countryName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

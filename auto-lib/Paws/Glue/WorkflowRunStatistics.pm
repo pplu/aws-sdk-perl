@@ -6,6 +6,7 @@ package Paws::Glue::WorkflowRunStatistics;
   has SucceededActions => (is => 'ro', isa => 'Int');
   has TimeoutActions => (is => 'ro', isa => 'Int');
   has TotalActions => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

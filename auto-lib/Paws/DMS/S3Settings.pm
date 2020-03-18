@@ -20,6 +20,7 @@ package Paws::DMS::S3Settings;
   has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has TimestampColumnName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

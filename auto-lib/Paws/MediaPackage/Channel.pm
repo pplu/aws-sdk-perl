@@ -5,6 +5,7 @@ package Paws::MediaPackage::Channel;
   has HlsIngest => (is => 'ro', isa => 'Paws::MediaPackage::HlsIngest', request_name => 'hlsIngest', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

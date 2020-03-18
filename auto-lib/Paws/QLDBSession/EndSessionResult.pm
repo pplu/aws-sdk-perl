@@ -1,5 +1,6 @@
 package Paws::QLDBSession::EndSessionResult;
   use Moose;
+
 1;
 
 ### main pod documentation begin ###

@@ -1,21 +1,38 @@
 package Paws::Net::RestXMLResponse;
   use Moose;
+  with 'Paws::Net::ResponseRole';
   use XML::Simple qw//;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
 
   sub unserialize_response {
-    my ($self, $data) = @_;
+    my ($self, $response) = @_;
 
-    return {} if (not defined $data or $data eq '');
+    my $data = $response->content;
+    return Paws::Exception->new(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '', #$request_id,
+        http_status => $response->status,
+      ) if (not defined $data or $data eq '');
     
     my $xml = XML::Simple->new(
-      ForceArray    => qr/^(?:item|Errors)/i,
+      ForceArray    => qr/^(?:^item$|Errors)/i,
       KeyAttr       => '',
       SuppressEmpty => undef,
     );
-    return $xml->parse_string($data);
+    my $struct = eval { $xml->parse_string($data) };
+    if ($@){
+      return Paws::Exception->new(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '', #$request_id,
+        http_status => $response->status,
+      );
+    }
+
+    return $struct;
   }
 
   sub process {
@@ -31,15 +48,7 @@ package Paws::Net::RestXMLResponse;
   sub error_to_exception {
     my ($self, $call_object, $response) = @_;
 
-    my $struct = eval { $self->unserialize_response( $response->content ) };
-    if ($@){
-      return Paws::Exception->new(
-        message => $@,
-        code => 'InvalidContent',
-        request_id => '', #$request_id,
-        http_status => $response->status,
-      );
-    }
+    my $struct = eval { $self->unserialize_response( $response ) };
 
     my ($message, $code, $request_id, $host_id);
 
@@ -285,65 +294,5 @@ package Paws::Net::RestXMLResponse;
     }
   }
 
-  sub response_to_object {
-    my ($self, $call_object, $response) = @_;
-    my ($http_status, $content, $headers) = ($response->status, $response->content, $response->headers);;
-
-    $call_object = $call_object->meta->name;
-
-    my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
-    my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
-    Paws->load_class($ret_class);
- 
-    my $unserialized_struct;
-
-    if ($ret_class->can('_stream_param')) {
-      $unserialized_struct = {}
-    } else {
-      if (not defined $content or $content eq '') {
-        $unserialized_struct = {}
-      } else {
-        $unserialized_struct = eval { $self->unserialize_response( $content ) };
-        if ($@){
-          return Paws::Exception->new(
-            message => $@,
-            code => 'InvalidContent',
-            request_id => '', #$request_id,
-            http_status => $http_status,
-          );
-        }
-      }
-    }
-
-    my $request_id = $headers->{'x-amz-request-id'} 
-                      || $headers->{'x-amzn-requestid'}
-                      || $unserialized_struct->{'requestId'} 
-                      || $unserialized_struct->{'RequestId'} 
-                      || $unserialized_struct->{'RequestID'}
-                      || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
- 
-    if ($call_object->_result_key){
-      $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
-    }
-
-    $unserialized_struct->{ _request_id } = $request_id;
-      
-    if ($returns){
-      if ($ret_class->can('_stream_param')) {
-        $unserialized_struct->{ $ret_class->_stream_param } = $content
-      }
-
-      foreach my $key (keys %$headers){
-        $unserialized_struct->{lc $key} = $headers->{$key};
-      }
-
-      my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
-      return $o_result;
-    } else {
-      return Paws::API::Response->new(
-        _request_id => $request_id,
-      );
-    }
-  }
 
 1;

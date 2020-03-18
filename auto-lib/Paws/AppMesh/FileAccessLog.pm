@@ -1,6 +1,7 @@
 package Paws::AppMesh::FileAccessLog;
   use Moose;
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

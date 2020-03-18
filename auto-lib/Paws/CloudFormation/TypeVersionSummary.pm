@@ -6,6 +6,7 @@ package Paws::CloudFormation::TypeVersionSummary;
   has Type => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

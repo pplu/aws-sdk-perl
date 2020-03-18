@@ -1,6 +1,7 @@
 package Paws::CostExplorer::ModifyRecommendationDetail;
   use Moose;
   has TargetInstances => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::TargetInstance]');
+
 1;
 
 ### main pod documentation begin ###

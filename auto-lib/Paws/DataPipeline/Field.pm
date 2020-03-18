@@ -3,6 +3,7 @@ package Paws::DataPipeline::Field;
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
   has RefValue => (is => 'ro', isa => 'Str', request_name => 'refValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

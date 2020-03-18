@@ -2,6 +2,7 @@ package Paws::CodeBuild::RegistryCredential;
   use Moose;
   has Credential => (is => 'ro', isa => 'Str', request_name => 'credential', traits => ['NameInRequest'], required => 1);
   has CredentialProvider => (is => 'ro', isa => 'Str', request_name => 'credentialProvider', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

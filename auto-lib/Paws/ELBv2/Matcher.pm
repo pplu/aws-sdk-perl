@@ -1,6 +1,7 @@
 package Paws::ELBv2::Matcher;
   use Moose;
   has HttpCode => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

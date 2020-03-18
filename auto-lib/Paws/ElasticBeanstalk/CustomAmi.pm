@@ -2,6 +2,7 @@ package Paws::ElasticBeanstalk::CustomAmi;
   use Moose;
   has ImageId => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

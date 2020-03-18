@@ -10,6 +10,7 @@ package Paws::AccessAnalyzer::AnalyzedResource;
   has SharedVia => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sharedVia', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SageMaker::ObjectiveStatusCounters;
   has Failed => (is => 'ro', isa => 'Int');
   has Pending => (is => 'ro', isa => 'Int');
   has Succeeded => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

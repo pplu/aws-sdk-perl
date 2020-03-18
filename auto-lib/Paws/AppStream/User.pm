@@ -8,6 +8,7 @@ package Paws::AppStream::User;
   has LastName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

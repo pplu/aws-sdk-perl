@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::UpdateInstantBooking;
   use Moose;
   has DurationInMinutes => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

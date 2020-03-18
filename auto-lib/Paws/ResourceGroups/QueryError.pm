@@ -2,6 +2,7 @@ package Paws::ResourceGroups::QueryError;
   use Moose;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::IoT::AuthResult;
   has AuthInfo => (is => 'ro', isa => 'Paws::IoT::AuthInfo', request_name => 'authInfo', traits => ['NameInRequest']);
   has Denied => (is => 'ro', isa => 'Paws::IoT::Denied', request_name => 'denied', traits => ['NameInRequest']);
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'missingContextValues', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

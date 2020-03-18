@@ -3,6 +3,7 @@ package Paws::ECR::AuthorizationData;
   has AuthorizationToken => (is => 'ro', isa => 'Str', request_name => 'authorizationToken', traits => ['NameInRequest']);
   has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
   has ProxyEndpoint => (is => 'ro', isa => 'Str', request_name => 'proxyEndpoint', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

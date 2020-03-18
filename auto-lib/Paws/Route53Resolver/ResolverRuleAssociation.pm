@@ -6,6 +6,7 @@ package Paws::Route53Resolver::ResolverRuleAssociation;
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VPCId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

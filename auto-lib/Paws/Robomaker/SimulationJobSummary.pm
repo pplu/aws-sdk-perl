@@ -7,6 +7,7 @@ package Paws::Robomaker::SimulationJobSummary;
   has RobotApplicationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'robotApplicationNames', traits => ['NameInRequest']);
   has SimulationApplicationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'simulationApplicationNames', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

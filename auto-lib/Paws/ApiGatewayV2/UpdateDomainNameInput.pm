@@ -1,6 +1,7 @@
 package Paws::ApiGatewayV2::UpdateDomainNameInput;
   use Moose;
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Signer::SigningConfigurationOverrides;
   use Moose;
   has EncryptionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'encryptionAlgorithm', traits => ['NameInRequest']);
   has HashAlgorithm => (is => 'ro', isa => 'Str', request_name => 'hashAlgorithm', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

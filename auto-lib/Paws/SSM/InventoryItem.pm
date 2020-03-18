@@ -6,6 +6,7 @@ package Paws::SSM::InventoryItem;
   has Context => (is => 'ro', isa => 'Paws::SSM::InventoryItemContentContext');
   has SchemaVersion => (is => 'ro', isa => 'Str', required => 1);
   has TypeName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

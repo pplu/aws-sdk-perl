@@ -1,6 +1,7 @@
 package Paws::Kafka::EBSStorageInfo;
   use Moose;
   has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

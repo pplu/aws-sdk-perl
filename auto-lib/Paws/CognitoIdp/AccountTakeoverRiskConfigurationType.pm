@@ -2,6 +2,7 @@ package Paws::CognitoIdp::AccountTakeoverRiskConfigurationType;
   use Moose;
   has Actions => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionsType', required => 1);
   has NotifyConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::NotifyConfigurationType');
+
 1;
 
 ### main pod documentation begin ###

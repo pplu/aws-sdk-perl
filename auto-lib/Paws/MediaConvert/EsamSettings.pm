@@ -3,6 +3,7 @@ package Paws::MediaConvert::EsamSettings;
   has ManifestConfirmConditionNotification => (is => 'ro', isa => 'Paws::MediaConvert::EsamManifestConfirmConditionNotification', request_name => 'manifestConfirmConditionNotification', traits => ['NameInRequest']);
   has ResponseSignalPreroll => (is => 'ro', isa => 'Int', request_name => 'responseSignalPreroll', traits => ['NameInRequest']);
   has SignalProcessingNotification => (is => 'ro', isa => 'Paws::MediaConvert::EsamSignalProcessingNotification', request_name => 'signalProcessingNotification', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

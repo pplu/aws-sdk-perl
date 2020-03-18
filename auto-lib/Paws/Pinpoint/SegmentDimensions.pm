@@ -6,6 +6,7 @@ package Paws::Pinpoint::SegmentDimensions;
   has Location => (is => 'ro', isa => 'Paws::Pinpoint::SegmentLocation');
   has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMetricDimension');
   has UserAttributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAttributeDimension');
+
 1;
 
 ### main pod documentation begin ###

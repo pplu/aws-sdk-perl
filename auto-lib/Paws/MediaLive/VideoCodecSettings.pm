@@ -3,6 +3,7 @@ package Paws::MediaLive::VideoCodecSettings;
   has FrameCaptureSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureSettings', request_name => 'frameCaptureSettings', traits => ['NameInRequest']);
   has H264Settings => (is => 'ro', isa => 'Paws::MediaLive::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
   has H265Settings => (is => 'ro', isa => 'Paws::MediaLive::H265Settings', request_name => 'h265Settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

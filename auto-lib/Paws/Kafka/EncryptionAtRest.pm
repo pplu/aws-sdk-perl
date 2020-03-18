@@ -1,6 +1,7 @@
 package Paws::Kafka::EncryptionAtRest;
   use Moose;
   has DataVolumeKMSKeyId => (is => 'ro', isa => 'Str', request_name => 'dataVolumeKMSKeyId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

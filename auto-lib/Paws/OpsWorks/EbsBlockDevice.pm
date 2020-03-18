@@ -5,6 +5,7 @@ package Paws::OpsWorks::EbsBlockDevice;
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

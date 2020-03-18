@@ -2,6 +2,7 @@ package Paws::SSM::OpsEntity;
   use Moose;
   has Data => (is => 'ro', isa => 'Paws::SSM::OpsEntityItemMap');
   has Id => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -19,6 +19,7 @@ package Paws::MediaLive::MsSmoothGroupSettings;
   has StreamManifestBehavior => (is => 'ro', isa => 'Str', request_name => 'streamManifestBehavior', traits => ['NameInRequest']);
   has TimestampOffset => (is => 'ro', isa => 'Str', request_name => 'timestampOffset', traits => ['NameInRequest']);
   has TimestampOffsetMode => (is => 'ro', isa => 'Str', request_name => 'timestampOffsetMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

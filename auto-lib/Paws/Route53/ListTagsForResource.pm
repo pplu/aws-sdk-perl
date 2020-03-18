@@ -4,6 +4,7 @@ package Paws::Route53::ListTagsForResource;
   has ResourceId => (is => 'ro', isa => 'Str', uri_name => 'ResourceId', traits => ['ParamInURI'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', uri_name => 'ResourceType', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
@@ -12,6 +13,7 @@ package Paws::Route53::ListTagsForResource;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTagsForResourceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

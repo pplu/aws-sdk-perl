@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::PlatformSummary;
   has PlatformStatus => (is => 'ro', isa => 'Str');
   has SupportedAddonList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedTierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

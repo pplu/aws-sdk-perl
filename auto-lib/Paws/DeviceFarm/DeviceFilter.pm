@@ -3,6 +3,7 @@ package Paws::DeviceFarm::DeviceFilter;
   has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest']);
   has Operator => (is => 'ro', isa => 'Str', request_name => 'operator', traits => ['NameInRequest']);
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

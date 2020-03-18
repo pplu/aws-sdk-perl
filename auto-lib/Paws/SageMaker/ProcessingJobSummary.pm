@@ -8,6 +8,7 @@ package Paws::SageMaker::ProcessingJobSummary;
   has ProcessingJobArn => (is => 'ro', isa => 'Str', required => 1);
   has ProcessingJobName => (is => 'ro', isa => 'Str', required => 1);
   has ProcessingJobStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

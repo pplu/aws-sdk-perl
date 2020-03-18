@@ -1,6 +1,7 @@
 package Paws::SageMakerA2IRuntime::HumanLoopActivationReason;
   use Moose;
   has ConditionsMatched => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

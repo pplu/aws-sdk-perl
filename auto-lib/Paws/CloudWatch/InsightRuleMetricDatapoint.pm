@@ -8,6 +8,7 @@ package Paws::CloudWatch::InsightRuleMetricDatapoint;
   has Sum => (is => 'ro', isa => 'Num');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
   has UniqueContributors => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

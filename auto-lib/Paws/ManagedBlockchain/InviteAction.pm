@@ -1,6 +1,7 @@
 package Paws::ManagedBlockchain::InviteAction;
   use Moose;
   has Principal => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

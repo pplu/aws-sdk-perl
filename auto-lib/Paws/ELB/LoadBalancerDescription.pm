@@ -16,6 +16,7 @@ package Paws::ELB::LoadBalancerDescription;
   has SourceSecurityGroup => (is => 'ro', isa => 'Paws::ELB::SourceSecurityGroup');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

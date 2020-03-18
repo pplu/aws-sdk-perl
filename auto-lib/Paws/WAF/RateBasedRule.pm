@@ -6,6 +6,7 @@ package Paws::WAF::RateBasedRule;
   has RateKey => (is => 'ro', isa => 'Str', required => 1);
   has RateLimit => (is => 'ro', isa => 'Int', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

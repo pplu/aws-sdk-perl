@@ -2,6 +2,7 @@ package Paws::Chime::AccountSettings;
   use Moose;
   has DisableRemoteControl => (is => 'ro', isa => 'Bool');
   has EnableDialOut => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

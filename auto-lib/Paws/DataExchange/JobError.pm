@@ -7,6 +7,7 @@ package Paws::DataExchange::JobError;
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

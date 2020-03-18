@@ -1,6 +1,7 @@
 package Paws::Personalize::BatchInferenceJobOutput;
   use Moose;
   has S3DataDestination => (is => 'ro', isa => 'Paws::Personalize::S3DataConfig', request_name => 's3DataDestination', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

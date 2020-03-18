@@ -1,10 +1,9 @@
 
 package Paws::S3::GetBucketAnalyticsConfigurationOutput;
   use Moose;
-  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::S3::AnalyticsConfiguration');
+  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::S3::AnalyticsConfiguration', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'AnalyticsConfiguration');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

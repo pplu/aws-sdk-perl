@@ -3,6 +3,7 @@ package Paws::GroundStation::GroundStationData;
   has GroundStationId => (is => 'ro', isa => 'Str', request_name => 'groundStationId', traits => ['NameInRequest']);
   has GroundStationName => (is => 'ro', isa => 'Str', request_name => 'groundStationName', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

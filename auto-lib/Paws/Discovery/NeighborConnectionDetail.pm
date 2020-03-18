@@ -5,6 +5,7 @@ package Paws::Discovery::NeighborConnectionDetail;
   has DestinationServerId => (is => 'ro', isa => 'Str', request_name => 'destinationServerId', traits => ['NameInRequest'], required => 1);
   has SourceServerId => (is => 'ro', isa => 'Str', request_name => 'sourceServerId', traits => ['NameInRequest'], required => 1);
   has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

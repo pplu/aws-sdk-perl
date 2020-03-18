@@ -5,6 +5,7 @@ package Paws::CodeBuild::S3ReportExportConfig;
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has Packaging => (is => 'ro', isa => 'Str', request_name => 'packaging', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

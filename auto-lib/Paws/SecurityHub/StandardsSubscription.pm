@@ -4,6 +4,7 @@ package Paws::SecurityHub::StandardsSubscription;
   has StandardsInput => (is => 'ro', isa => 'Paws::SecurityHub::StandardsInputParameterMap', required => 1);
   has StandardsStatus => (is => 'ro', isa => 'Str', required => 1);
   has StandardsSubscriptionArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

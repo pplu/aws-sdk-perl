@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::GreenFleetProvisioningOption;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', request_name => 'action', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::PinpointEmail::DeliverabilityTestReport;
   has ReportId => (is => 'ro', isa => 'Str');
   has ReportName => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

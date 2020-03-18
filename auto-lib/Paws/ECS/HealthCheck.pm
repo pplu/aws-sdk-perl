@@ -5,6 +5,7 @@ package Paws::ECS::HealthCheck;
   has Retries => (is => 'ro', isa => 'Int', request_name => 'retries', traits => ['NameInRequest']);
   has StartPeriod => (is => 'ro', isa => 'Int', request_name => 'startPeriod', traits => ['NameInRequest']);
   has Timeout => (is => 'ro', isa => 'Int', request_name => 'timeout', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

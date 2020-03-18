@@ -3,6 +3,7 @@ package Paws::SES::IdentityDkimAttributes;
   has DkimEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DkimVerificationStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

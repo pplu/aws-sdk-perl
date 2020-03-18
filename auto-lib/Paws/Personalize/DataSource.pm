@@ -1,6 +1,7 @@
 package Paws::Personalize::DataSource;
   use Moose;
   has DataLocation => (is => 'ro', isa => 'Str', request_name => 'dataLocation', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

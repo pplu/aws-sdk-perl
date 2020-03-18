@@ -1,6 +1,7 @@
 package Paws::MediaConvert::MsSmoothEncryptionSettings;
   use Moose;
   has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

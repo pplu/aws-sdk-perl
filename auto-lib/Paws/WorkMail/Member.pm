@@ -6,6 +6,7 @@ package Paws::WorkMail::Member;
   has Name => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

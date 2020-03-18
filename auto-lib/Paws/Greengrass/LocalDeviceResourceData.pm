@@ -2,6 +2,7 @@ package Paws::Greengrass::LocalDeviceResourceData;
   use Moose;
   has GroupOwnerSetting => (is => 'ro', isa => 'Paws::Greengrass::GroupOwnerSetting');
   has SourcePath => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

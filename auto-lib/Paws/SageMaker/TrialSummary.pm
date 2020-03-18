@@ -6,6 +6,7 @@ package Paws::SageMaker::TrialSummary;
   has TrialArn => (is => 'ro', isa => 'Str');
   has TrialName => (is => 'ro', isa => 'Str');
   has TrialSource => (is => 'ro', isa => 'Paws::SageMaker::TrialSource');
+
 1;
 
 ### main pod documentation begin ###

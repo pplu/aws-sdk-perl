@@ -3,6 +3,7 @@ package Paws::AppStream::StorageConnector;
   has ConnectorType => (is => 'ro', isa => 'Str', required => 1);
   has Domains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

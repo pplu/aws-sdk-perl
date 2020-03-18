@@ -3,6 +3,7 @@ package Paws::Datasync::TaskListEntry;
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TaskArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

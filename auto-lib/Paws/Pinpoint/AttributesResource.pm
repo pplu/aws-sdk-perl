@@ -3,6 +3,7 @@ package Paws::Pinpoint::AttributesResource;
   has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AttributeType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -60,16 +61,16 @@ endpoints. Valid values are:
 
 =item *
 
-endpoint-custom-attributes - Custom attributes that describe endpoints
+endpoint-custom-attributes - Custom attributes that describe endpoints.
 
 =item *
 
-endpoint-custom-metrics - Custom metrics that your app reports to
-Amazon Pinpoint for endpoints
+endpoint-metric-attributes - Custom metrics that your app reports to
+Amazon Pinpoint for endpoints.
 
 =item *
 
-endpoint-user-attributes - Custom attributes that describe users
+endpoint-user-attributes - Custom attributes that describe users.
 
 =back
 

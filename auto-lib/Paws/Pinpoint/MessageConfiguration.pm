@@ -7,6 +7,7 @@ package Paws::Pinpoint::MessageConfiguration;
   has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignEmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignSmsMessage');
+
 1;
 
 ### main pod documentation begin ###

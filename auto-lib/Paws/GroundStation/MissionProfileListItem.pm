@@ -4,6 +4,7 @@ package Paws::GroundStation::MissionProfileListItem;
   has MissionProfileId => (is => 'ro', isa => 'Str', request_name => 'missionProfileId', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

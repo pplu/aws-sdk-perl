@@ -5,6 +5,7 @@ package Paws::SageMaker::UserProfileDetails;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UserProfileName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

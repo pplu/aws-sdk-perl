@@ -2,8 +2,10 @@ package Paws::Pinpoint::SendUsersMessageRequest;
   use Moose;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
+  has TemplateConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::TemplateConfiguration');
   has TraceId => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration', required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -51,8 +53,13 @@ deliveries.
 
 =head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
-  The message definitions for the default message and any default
+  The settings and content for the default message and any default
 messages that you defined for specific channels.
+
+
+=head2 TemplateConfiguration => L<Paws::Pinpoint::TemplateConfiguration>
+
+  The message template to use for the message.
 
 
 =head2 TraceId => Str

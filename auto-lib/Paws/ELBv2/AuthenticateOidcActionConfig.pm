@@ -12,6 +12,7 @@ package Paws::ELBv2::AuthenticateOidcActionConfig;
   has TokenEndpoint => (is => 'ro', isa => 'Str', required => 1);
   has UseExistingClientSecret => (is => 'ro', isa => 'Bool');
   has UserInfoEndpoint => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

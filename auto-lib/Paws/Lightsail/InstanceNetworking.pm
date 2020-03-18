@@ -2,6 +2,7 @@ package Paws::Lightsail::InstanceNetworking;
   use Moose;
   has MonthlyTransfer => (is => 'ro', isa => 'Paws::Lightsail::MonthlyTransfer', request_name => 'monthlyTransfer', traits => ['NameInRequest']);
   has Ports => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstancePortInfo]', request_name => 'ports', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

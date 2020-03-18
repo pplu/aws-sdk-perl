@@ -6,6 +6,7 @@ package Paws::CostExplorer::SavingsPlansPurchaseRecommendation;
   has SavingsPlansPurchaseRecommendationSummary => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary');
   has SavingsPlansType => (is => 'ro', isa => 'Str');
   has TermInYears => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

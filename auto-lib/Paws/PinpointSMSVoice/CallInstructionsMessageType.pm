@@ -1,6 +1,7 @@
 package Paws::PinpointSMSVoice::CallInstructionsMessageType;
   use Moose;
   has Text => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

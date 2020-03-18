@@ -1,6 +1,7 @@
 package Paws::DynamoDB::Replica;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

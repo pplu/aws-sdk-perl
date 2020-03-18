@@ -7,6 +7,7 @@ package Paws::Forecast::DatasetImportJobSummary;
   has LastModificationTime => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

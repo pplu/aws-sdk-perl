@@ -10,6 +10,7 @@ package Paws::ElasticTranscoder::JobInput;
   has Key => (is => 'ro', isa => 'Str');
   has Resolution => (is => 'ro', isa => 'Str');
   has TimeSpan => (is => 'ro', isa => 'Paws::ElasticTranscoder::TimeSpan');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::GuardDuty::Evidence;
   use Moose;
   has ThreatIntelligenceDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::ThreatIntelligenceDetail]', request_name => 'threatIntelligenceDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

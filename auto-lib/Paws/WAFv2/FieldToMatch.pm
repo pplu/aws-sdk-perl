@@ -7,6 +7,7 @@ package Paws::WAFv2::FieldToMatch;
   has SingleHeader => (is => 'ro', isa => 'Paws::WAFv2::SingleHeader');
   has SingleQueryArgument => (is => 'ro', isa => 'Paws::WAFv2::SingleQueryArgument');
   has UriPath => (is => 'ro', isa => 'Paws::WAFv2::UriPath');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CodeBuild::CloudWatchLogsConfig;
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

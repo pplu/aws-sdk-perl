@@ -8,6 +8,7 @@ package Paws::Transcribe::TranscriptionJobSummary;
   has StartTime => (is => 'ro', isa => 'Str');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
   has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Kafka::Tls;
   use Moose;
   has CertificateAuthorityArnList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'certificateAuthorityArnList', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

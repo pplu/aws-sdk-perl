@@ -7,6 +7,7 @@ package Paws::Transfer::ListedServer;
   has ServerId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has UserCount => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

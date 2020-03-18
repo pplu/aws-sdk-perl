@@ -8,6 +8,7 @@ package Paws::SageMaker::CompilationJobSummary;
   has CompilationTargetDevice => (is => 'ro', isa => 'Str', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

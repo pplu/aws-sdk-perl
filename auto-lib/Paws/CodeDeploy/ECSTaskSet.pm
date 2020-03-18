@@ -8,6 +8,7 @@ package Paws::CodeDeploy::ECSTaskSet;
   has TargetGroup => (is => 'ro', isa => 'Paws::CodeDeploy::TargetGroupInfo', request_name => 'targetGroup', traits => ['NameInRequest']);
   has TaskSetLabel => (is => 'ro', isa => 'Str', request_name => 'taskSetLabel', traits => ['NameInRequest']);
   has TrafficWeight => (is => 'ro', isa => 'Num', request_name => 'trafficWeight', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

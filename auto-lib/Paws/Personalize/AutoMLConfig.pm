@@ -2,6 +2,7 @@ package Paws::Personalize::AutoMLConfig;
   use Moose;
   has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest']);
   has RecipeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'recipeList', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

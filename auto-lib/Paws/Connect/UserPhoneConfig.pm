@@ -4,6 +4,7 @@ package Paws::Connect::UserPhoneConfig;
   has AutoAccept => (is => 'ro', isa => 'Bool');
   has DeskPhoneNumber => (is => 'ro', isa => 'Str');
   has PhoneType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

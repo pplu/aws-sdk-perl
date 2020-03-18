@@ -1,6 +1,7 @@
 package Paws::IoT::AuditCheckConfiguration;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

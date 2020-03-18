@@ -2,6 +2,7 @@ package Paws::MediaLive::NielsenConfiguration;
   use Moose;
   has DistributorId => (is => 'ro', isa => 'Str', request_name => 'distributorId', traits => ['NameInRequest']);
   has NielsenPcmToId3Tagging => (is => 'ro', isa => 'Str', request_name => 'nielsenPcmToId3Tagging', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

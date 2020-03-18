@@ -1,6 +1,7 @@
 package Paws::QLDB::ValueHolder;
   use Moose;
   has IonText => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

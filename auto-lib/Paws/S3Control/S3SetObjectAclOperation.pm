@@ -1,6 +1,7 @@
 package Paws::S3Control::S3SetObjectAclOperation;
   use Moose;
   has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3Control::S3AccessControlPolicy');
+
 1;
 
 ### main pod documentation begin ###

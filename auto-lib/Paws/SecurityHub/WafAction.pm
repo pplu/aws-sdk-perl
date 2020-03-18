@@ -1,6 +1,7 @@
 package Paws::SecurityHub::WafAction;
   use Moose;
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

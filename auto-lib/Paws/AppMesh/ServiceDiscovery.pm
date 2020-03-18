@@ -2,6 +2,7 @@ package Paws::AppMesh::ServiceDiscovery;
   use Moose;
   has AwsCloudMap => (is => 'ro', isa => 'Paws::AppMesh::AwsCloudMapServiceDiscovery', request_name => 'awsCloudMap', traits => ['NameInRequest']);
   has Dns => (is => 'ro', isa => 'Paws::AppMesh::DnsServiceDiscovery', request_name => 'dns', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,8 +4,9 @@ package Paws::S3::PutBucketReplication;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration', required => 1);
+  has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration', traits => ['ParamInBody'], required => 1);
   has Token => (is => 'ro', isa => 'Str', header_name => 'x-amz-bucket-object-lock-token', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -15,6 +16,7 @@ package Paws::S3::PutBucketReplication;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Value => 'MyValue',
 
                   },
-                  ...                          # OPTIONAL
+                  ...
                 ],                             # OPTIONAL
               },    # OPTIONAL
               Prefix => 'MyPrefix',    # OPTIONAL
@@ -92,7 +94,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Key   => 'MyObjectKey',    # min: 1
                 Value => 'MyValue',
 
-              },    # OPTIONAL
+              },
             },    # OPTIONAL
             ID                      => 'MyID',        # OPTIONAL
             Prefix                  => 'MyPrefix',    # OPTIONAL

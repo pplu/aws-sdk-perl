@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatasetContentDeliveryRule;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::IoTAnalytics::DatasetContentDeliveryDestination', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has EntryName => (is => 'ro', isa => 'Str', request_name => 'entryName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

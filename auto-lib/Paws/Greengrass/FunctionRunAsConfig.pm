@@ -2,6 +2,7 @@ package Paws::Greengrass::FunctionRunAsConfig;
   use Moose;
   has Gid => (is => 'ro', isa => 'Int');
   has Uid => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

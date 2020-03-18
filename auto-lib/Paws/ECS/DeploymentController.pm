@@ -1,6 +1,7 @@
 package Paws::ECS::DeploymentController;
   use Moose;
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

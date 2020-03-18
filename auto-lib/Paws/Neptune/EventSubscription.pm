@@ -10,6 +10,7 @@ package Paws::Neptune::EventSubscription;
   has SourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

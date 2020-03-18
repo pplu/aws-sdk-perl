@@ -3,6 +3,7 @@ package Paws::ImageBuilder::Distribution;
   has AmiDistributionConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::AmiDistributionConfiguration', request_name => 'amiDistributionConfiguration', traits => ['NameInRequest']);
   has LicenseConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'licenseConfigurationArns', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

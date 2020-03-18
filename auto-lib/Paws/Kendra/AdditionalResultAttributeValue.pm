@@ -1,6 +1,7 @@
 package Paws::Kendra::AdditionalResultAttributeValue;
   use Moose;
   has TextWithHighlightsValue => (is => 'ro', isa => 'Paws::Kendra::TextWithHighlights');
+
 1;
 
 ### main pod documentation begin ###

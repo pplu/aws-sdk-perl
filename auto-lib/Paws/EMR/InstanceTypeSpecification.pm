@@ -7,6 +7,7 @@ package Paws::EMR::InstanceTypeSpecification;
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has InstanceType => (is => 'ro', isa => 'Str');
   has WeightedCapacity => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

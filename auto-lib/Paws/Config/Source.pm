@@ -3,6 +3,7 @@ package Paws::Config::Source;
   has Owner => (is => 'ro', isa => 'Str', required => 1);
   has SourceDetails => (is => 'ro', isa => 'ArrayRef[Paws::Config::SourceDetail]');
   has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

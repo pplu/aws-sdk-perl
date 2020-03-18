@@ -3,6 +3,7 @@ package Paws::SageMaker::Filter;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Operator => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

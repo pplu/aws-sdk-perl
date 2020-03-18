@@ -8,6 +8,7 @@ package Paws::Backup::BackupPlansListMember;
   has DeletionDate => (is => 'ro', isa => 'Str');
   has LastExecutionDate => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

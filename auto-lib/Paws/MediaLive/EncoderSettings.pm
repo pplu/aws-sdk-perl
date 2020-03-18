@@ -10,6 +10,7 @@ package Paws::MediaLive::EncoderSettings;
   has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest'], required => 1);
   has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaLive::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest'], required => 1);
   has VideoDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::VideoDescription]', request_name => 'videoDescriptions', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::ECS::ManagedScaling;
   has MinimumScalingStepSize => (is => 'ro', isa => 'Int', request_name => 'minimumScalingStepSize', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::S3Control::JobManifestSpec;
   use Moose;
   has Fields => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Format => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

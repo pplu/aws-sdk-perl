@@ -3,6 +3,7 @@ package Paws::ComprehendMedical::RxNormConcept;
   has Code => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Score => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

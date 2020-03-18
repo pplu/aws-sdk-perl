@@ -1,10 +1,9 @@
 
 package Paws::S3::GetObjectLockConfigurationOutput;
   use Moose;
-  has ObjectLockConfiguration => (is => 'ro', isa => 'Paws::S3::ObjectLockConfiguration');
+  has ObjectLockConfiguration => (is => 'ro', isa => 'Paws::S3::ObjectLockConfiguration', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'ObjectLockConfiguration');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

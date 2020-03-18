@@ -4,6 +4,7 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexAutoScalingDescription;
   has IndexStatus => (is => 'ro', isa => 'Str');
   has ProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
+
 1;
 
 ### main pod documentation begin ###

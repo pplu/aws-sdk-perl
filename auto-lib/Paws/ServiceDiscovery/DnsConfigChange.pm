@@ -1,6 +1,7 @@
 package Paws::ServiceDiscovery::DnsConfigChange;
   use Moose;
   has DnsRecords => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::DnsRecord]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

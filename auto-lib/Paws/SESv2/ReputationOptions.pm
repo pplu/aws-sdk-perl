@@ -2,6 +2,7 @@ package Paws::SESv2::ReputationOptions;
   use Moose;
   has LastFreshStart => (is => 'ro', isa => 'Str');
   has ReputationMetricsEnabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

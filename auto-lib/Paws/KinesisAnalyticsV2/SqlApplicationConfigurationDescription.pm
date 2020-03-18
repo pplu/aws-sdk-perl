@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription;
   has InputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::InputDescription]');
   has OutputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::OutputDescription]');
   has ReferenceDataSourceDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::ReferenceDataSourceDescription]');
+
 1;
 
 ### main pod documentation begin ###

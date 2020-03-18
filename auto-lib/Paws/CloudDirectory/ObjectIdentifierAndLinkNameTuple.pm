@@ -2,6 +2,7 @@ package Paws::CloudDirectory::ObjectIdentifierAndLinkNameTuple;
   use Moose;
   has LinkName => (is => 'ro', isa => 'Str');
   has ObjectIdentifier => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

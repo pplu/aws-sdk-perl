@@ -2,6 +2,7 @@ package Paws::RDS::RestoreWindow;
   use Moose;
   has EarliestTime => (is => 'ro', isa => 'Str');
   has LatestTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

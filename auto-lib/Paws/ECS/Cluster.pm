@@ -14,6 +14,7 @@ package Paws::ECS::Cluster;
   has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

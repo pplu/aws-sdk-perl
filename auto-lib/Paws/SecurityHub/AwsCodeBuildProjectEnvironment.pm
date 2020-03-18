@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsCodeBuildProjectEnvironment;
   has ImagePullCredentialsType => (is => 'ro', isa => 'Str');
   has RegistryCredential => (is => 'ro', isa => 'Paws::SecurityHub::AwsCodeBuildProjectEnvironmentRegistryCredential');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

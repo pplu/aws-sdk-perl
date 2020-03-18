@@ -2,6 +2,7 @@ package Paws::Glue::Schedule;
   use Moose;
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

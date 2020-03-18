@@ -3,6 +3,7 @@ package Paws::FraudDetector::ModelVersion;
   has ModelId => (is => 'ro', isa => 'Str', request_name => 'modelId', traits => ['NameInRequest'], required => 1);
   has ModelType => (is => 'ro', isa => 'Str', request_name => 'modelType', traits => ['NameInRequest'], required => 1);
   has ModelVersionNumber => (is => 'ro', isa => 'Str', request_name => 'modelVersionNumber', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

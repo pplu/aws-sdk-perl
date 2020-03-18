@@ -5,6 +5,7 @@ package Paws::Route53::TrafficPolicySummary;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has TrafficPolicyCount => (is => 'ro', isa => 'Int', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

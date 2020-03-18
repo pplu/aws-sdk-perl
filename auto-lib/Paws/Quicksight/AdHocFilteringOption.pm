@@ -1,6 +1,7 @@
 package Paws::Quicksight::AdHocFilteringOption;
   use Moose;
   has AvailabilityStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

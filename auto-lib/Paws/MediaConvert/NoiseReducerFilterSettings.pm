@@ -1,6 +1,7 @@
 package Paws::MediaConvert::NoiseReducerFilterSettings;
   use Moose;
   has Strength => (is => 'ro', isa => 'Int', request_name => 'strength', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::SESv2::IspPlacement;
   use Moose;
   has IspName => (is => 'ro', isa => 'Str');
   has PlacementStatistics => (is => 'ro', isa => 'Paws::SESv2::PlacementStatistics');
+
 1;
 
 ### main pod documentation begin ###

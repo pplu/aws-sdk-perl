@@ -3,6 +3,7 @@ package Paws::ComputeOptimizer::GetRecommendationError;
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has Identifier => (is => 'ro', isa => 'Str', request_name => 'identifier', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

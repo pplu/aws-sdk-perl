@@ -2,6 +2,7 @@ package Paws::IoT1ClickDevices::DeviceMethod;
   use Moose;
   has DeviceType => (is => 'ro', isa => 'Str', request_name => 'deviceType', traits => ['NameInRequest']);
   has MethodName => (is => 'ro', isa => 'Str', request_name => 'methodName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

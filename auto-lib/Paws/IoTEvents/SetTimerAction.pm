@@ -2,6 +2,7 @@ package Paws::IoTEvents::SetTimerAction;
   use Moose;
   has Seconds => (is => 'ro', isa => 'Int', request_name => 'seconds', traits => ['NameInRequest'], required => 1);
   has TimerName => (is => 'ro', isa => 'Str', request_name => 'timerName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

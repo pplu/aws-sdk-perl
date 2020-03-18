@@ -1,6 +1,7 @@
 package Paws::EKS::NodegroupHealth;
   use Moose;
   has Issues => (is => 'ro', isa => 'ArrayRef[Paws::EKS::Issue]', request_name => 'issues', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

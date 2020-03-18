@@ -3,6 +3,7 @@ package Paws::Batch::ArrayPropertiesDetail;
   has Index => (is => 'ro', isa => 'Int', request_name => 'index', traits => ['NameInRequest']);
   has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
   has StatusSummary => (is => 'ro', isa => 'Paws::Batch::ArrayJobStatusSummary', request_name => 'statusSummary', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

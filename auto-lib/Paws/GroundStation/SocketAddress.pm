@@ -2,6 +2,7 @@ package Paws::GroundStation::SocketAddress;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

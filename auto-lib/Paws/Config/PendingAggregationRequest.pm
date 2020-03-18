@@ -2,6 +2,7 @@ package Paws::Config::PendingAggregationRequest;
   use Moose;
   has RequesterAccountId => (is => 'ro', isa => 'Str');
   has RequesterAwsRegion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

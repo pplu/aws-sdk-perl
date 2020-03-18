@@ -6,6 +6,7 @@ package Paws::SecurityHub::ProcessDetails;
   has Path => (is => 'ro', isa => 'Str');
   has Pid => (is => 'ro', isa => 'Int');
   has TerminatedAt => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

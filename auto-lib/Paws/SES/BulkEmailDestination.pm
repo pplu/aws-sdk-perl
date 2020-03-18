@@ -3,6 +3,7 @@ package Paws::SES::BulkEmailDestination;
   has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
   has ReplacementTags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
   has ReplacementTemplateData => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

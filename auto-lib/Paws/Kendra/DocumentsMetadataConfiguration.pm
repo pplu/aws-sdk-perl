@@ -1,6 +1,7 @@
 package Paws::Kendra::DocumentsMetadataConfiguration;
   use Moose;
   has S3Prefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

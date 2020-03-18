@@ -7,6 +7,7 @@ package Paws::KinesisAnalytics::InputUpdate;
   has KinesisFirehoseInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputUpdate');
   has KinesisStreamsInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInputUpdate');
   has NamePrefixUpdate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

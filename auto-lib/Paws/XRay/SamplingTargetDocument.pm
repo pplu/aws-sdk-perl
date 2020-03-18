@@ -5,6 +5,7 @@ package Paws::XRay::SamplingTargetDocument;
   has ReservoirQuota => (is => 'ro', isa => 'Int');
   has ReservoirQuotaTTL => (is => 'ro', isa => 'Str');
   has RuleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

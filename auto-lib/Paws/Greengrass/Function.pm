@@ -3,6 +3,7 @@ package Paws::Greengrass::Function;
   has FunctionArn => (is => 'ro', isa => 'Str');
   has FunctionConfiguration => (is => 'ro', isa => 'Paws::Greengrass::FunctionConfiguration');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

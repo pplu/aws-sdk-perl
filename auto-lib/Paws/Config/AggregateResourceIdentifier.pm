@@ -5,6 +5,7 @@ package Paws::Config::AggregateResourceIdentifier;
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has SourceAccountId => (is => 'ro', isa => 'Str', required => 1);
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::IoTEvents::State;
   has OnExit => (is => 'ro', isa => 'Paws::IoTEvents::OnExitLifecycle', request_name => 'onExit', traits => ['NameInRequest']);
   has OnInput => (is => 'ro', isa => 'Paws::IoTEvents::OnInputLifecycle', request_name => 'onInput', traits => ['NameInRequest']);
   has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

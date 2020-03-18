@@ -10,6 +10,7 @@ package Paws::Personalize::Algorithm;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has TrainingInputMode => (is => 'ro', isa => 'Str', request_name => 'trainingInputMode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

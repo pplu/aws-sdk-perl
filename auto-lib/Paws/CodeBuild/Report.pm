@@ -11,6 +11,7 @@ package Paws::CodeBuild::Report;
   has TestSummary => (is => 'ro', isa => 'Paws::CodeBuild::TestReportSummary', request_name => 'testSummary', traits => ['NameInRequest']);
   has Truncated => (is => 'ro', isa => 'Bool', request_name => 'truncated', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

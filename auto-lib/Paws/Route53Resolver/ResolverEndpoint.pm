@@ -12,6 +12,7 @@ package Paws::Route53Resolver::ResolverEndpoint;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

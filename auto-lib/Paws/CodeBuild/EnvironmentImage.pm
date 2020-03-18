@@ -3,6 +3,7 @@ package Paws::CodeBuild::EnvironmentImage;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'versions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

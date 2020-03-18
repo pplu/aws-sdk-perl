@@ -2,6 +2,7 @@ package Paws::Rekognition::FaceMatch;
   use Moose;
   has Face => (is => 'ro', isa => 'Paws::Rekognition::Face');
   has Similarity => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

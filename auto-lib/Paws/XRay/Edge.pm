@@ -6,6 +6,7 @@ package Paws::XRay::Edge;
   has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
   has StartTime => (is => 'ro', isa => 'Str');
   has SummaryStatistics => (is => 'ro', isa => 'Paws::XRay::EdgeStatistics');
+
 1;
 
 ### main pod documentation begin ###

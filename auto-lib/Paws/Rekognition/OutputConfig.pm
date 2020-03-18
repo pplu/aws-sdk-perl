@@ -2,6 +2,7 @@ package Paws::Rekognition::OutputConfig;
   use Moose;
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

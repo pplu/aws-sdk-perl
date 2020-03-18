@@ -6,6 +6,7 @@ package Paws::AppMesh::RouteData;
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::RouteSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Paws::AppMesh::RouteStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Quicksight::CastColumnTypeOperation;
   has ColumnName => (is => 'ro', isa => 'Str', required => 1);
   has Format => (is => 'ro', isa => 'Str');
   has NewColumnType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

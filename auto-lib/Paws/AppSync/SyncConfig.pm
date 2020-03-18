@@ -3,6 +3,7 @@ package Paws::AppSync::SyncConfig;
   has ConflictDetection => (is => 'ro', isa => 'Str', request_name => 'conflictDetection', traits => ['NameInRequest']);
   has ConflictHandler => (is => 'ro', isa => 'Str', request_name => 'conflictHandler', traits => ['NameInRequest']);
   has LambdaConflictHandlerConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaConflictHandlerConfig', request_name => 'lambdaConflictHandlerConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

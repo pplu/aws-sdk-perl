@@ -1,6 +1,7 @@
 package Paws::ELBv2::QueryStringConditionConfig;
   use Moose;
   has Values => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::QueryStringKeyValuePair]');
+
 1;
 
 ### main pod documentation begin ###

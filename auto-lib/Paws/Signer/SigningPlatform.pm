@@ -8,6 +8,7 @@ package Paws::Signer::SigningPlatform;
   has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfiguration', request_name => 'signingConfiguration', traits => ['NameInRequest']);
   has SigningImageFormat => (is => 'ro', isa => 'Paws::Signer::SigningImageFormat', request_name => 'signingImageFormat', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

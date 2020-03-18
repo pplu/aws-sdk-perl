@@ -7,6 +7,7 @@ package Paws::CognitoIdp::GroupType;
   has Precedence => (is => 'ro', isa => 'Int');
   has RoleArn => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

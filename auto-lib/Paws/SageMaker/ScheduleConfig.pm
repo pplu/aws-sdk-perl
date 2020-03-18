@@ -1,6 +1,7 @@
 package Paws::SageMaker::ScheduleConfig;
   use Moose;
   has ScheduleExpression => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

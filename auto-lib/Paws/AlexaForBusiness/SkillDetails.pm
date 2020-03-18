@@ -10,6 +10,7 @@ package Paws::AlexaForBusiness::SkillDetails;
   has ReleaseDate => (is => 'ro', isa => 'Str');
   has Reviews => (is => 'ro', isa => 'Paws::AlexaForBusiness::Reviews');
   has SkillTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

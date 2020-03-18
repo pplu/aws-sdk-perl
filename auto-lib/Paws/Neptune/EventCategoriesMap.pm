@@ -2,6 +2,7 @@ package Paws::Neptune::EventCategoriesMap;
   use Moose;
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
   has SourceType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

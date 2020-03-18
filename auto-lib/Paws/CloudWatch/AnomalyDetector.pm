@@ -6,6 +6,7 @@ package Paws::CloudWatch::AnomalyDetector;
   has Namespace => (is => 'ro', isa => 'Str');
   has Stat => (is => 'ro', isa => 'Str');
   has StateValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

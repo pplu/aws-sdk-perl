@@ -4,6 +4,7 @@ package Paws::Route53Domains::OperationSummary;
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has SubmittedDate => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

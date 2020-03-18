@@ -3,6 +3,7 @@ package Paws::Chime::CreateAttendeeError;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has ExternalUserId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

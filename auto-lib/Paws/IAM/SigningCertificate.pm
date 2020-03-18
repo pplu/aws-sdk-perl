@@ -5,6 +5,7 @@ package Paws::IAM::SigningCertificate;
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UploadDate => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

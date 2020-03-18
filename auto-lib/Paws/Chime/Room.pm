@@ -6,6 +6,7 @@ package Paws::Chime::Room;
   has Name => (is => 'ro', isa => 'Str');
   has RoomId => (is => 'ro', isa => 'Str');
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Glue::TaskRunSortCriteria;
   use Moose;
   has Column => (is => 'ro', isa => 'Str', required => 1);
   has SortDirection => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

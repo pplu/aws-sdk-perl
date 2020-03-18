@@ -3,6 +3,7 @@ package Paws::CloudWatchEvents::AwsVpcConfiguration;
   has AssignPublicIp => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

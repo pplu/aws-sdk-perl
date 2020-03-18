@@ -4,6 +4,7 @@ package Paws::AccessAnalyzer::ArchiveRuleSummary;
   has Filter => (is => 'ro', isa => 'Paws::AccessAnalyzer::FilterCriteriaMap', request_name => 'filter', traits => ['NameInRequest'], required => 1);
   has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest'], required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

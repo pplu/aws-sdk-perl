@@ -8,6 +8,7 @@ package Paws::SageMaker::TrainingSpecification;
   has TrainingChannels => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ChannelSpecification]', required => 1);
   has TrainingImage => (is => 'ro', isa => 'Str', required => 1);
   has TrainingImageDigest => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

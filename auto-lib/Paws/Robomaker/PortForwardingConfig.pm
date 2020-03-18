@@ -1,6 +1,7 @@
 package Paws::Robomaker::PortForwardingConfig;
   use Moose;
   has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::PortMapping]', request_name => 'portMappings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

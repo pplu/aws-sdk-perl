@@ -2,6 +2,7 @@ package Paws::Kendra::ClickFeedback;
   use Moose;
   has ClickTime => (is => 'ro', isa => 'Str', required => 1);
   has ResultId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::IoT::SigningProfileParameter;
   has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
   has CertificatePathOnDevice => (is => 'ro', isa => 'Str', request_name => 'certificatePathOnDevice', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

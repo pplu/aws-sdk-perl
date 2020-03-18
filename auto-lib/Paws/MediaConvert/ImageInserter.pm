@@ -1,6 +1,7 @@
 package Paws::MediaConvert::ImageInserter;
   use Moose;
   has InsertableImages => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InsertableImage]', request_name => 'insertableImages', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

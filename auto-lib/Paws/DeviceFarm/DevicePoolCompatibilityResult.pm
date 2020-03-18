@@ -3,6 +3,7 @@ package Paws::DeviceFarm::DevicePoolCompatibilityResult;
   has Compatible => (is => 'ro', isa => 'Bool', request_name => 'compatible', traits => ['NameInRequest']);
   has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
   has IncompatibilityMessages => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::IncompatibilityMessage]', request_name => 'incompatibilityMessages', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

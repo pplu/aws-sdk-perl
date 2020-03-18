@@ -3,6 +3,7 @@ package Paws::ELBv2::LoadBalancerAddress;
   has AllocationId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
   has PrivateIPv4Address => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

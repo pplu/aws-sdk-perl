@@ -2,6 +2,7 @@ package Paws::Kafka::Error;
   use Moose;
   has InvalidParameter => (is => 'ro', isa => 'Str', request_name => 'invalidParameter', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

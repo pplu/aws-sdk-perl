@@ -8,6 +8,7 @@ package Paws::IoT::ResourceIdentifier;
   has IamRoleArn => (is => 'ro', isa => 'Str', request_name => 'iamRoleArn', traits => ['NameInRequest']);
   has PolicyVersionIdentifier => (is => 'ro', isa => 'Paws::IoT::PolicyVersionIdentifier', request_name => 'policyVersionIdentifier', traits => ['NameInRequest']);
   has RoleAliasArn => (is => 'ro', isa => 'Str', request_name => 'roleAliasArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

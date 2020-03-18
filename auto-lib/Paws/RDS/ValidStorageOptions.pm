@@ -5,6 +5,7 @@ package Paws::RDS::ValidStorageOptions;
   has StorageSize => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Range]', request_name => 'Range', traits => ['NameInRequest']);
   has StorageType => (is => 'ro', isa => 'Str');
   has SupportsStorageAutoscaling => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

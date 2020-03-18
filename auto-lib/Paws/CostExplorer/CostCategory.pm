@@ -6,6 +6,7 @@ package Paws::CostExplorer::CostCategory;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::CostCategoryRule]', required => 1);
   has RuleVersion => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

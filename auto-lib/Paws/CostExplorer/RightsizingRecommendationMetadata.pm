@@ -3,6 +3,7 @@ package Paws::CostExplorer::RightsizingRecommendationMetadata;
   has GenerationTimestamp => (is => 'ro', isa => 'Str');
   has LookbackPeriodInDays => (is => 'ro', isa => 'Str');
   has RecommendationId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

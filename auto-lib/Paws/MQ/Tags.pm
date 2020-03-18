@@ -1,6 +1,7 @@
 package Paws::MQ::Tags;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

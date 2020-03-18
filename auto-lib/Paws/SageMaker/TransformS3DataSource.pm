@@ -2,6 +2,7 @@ package Paws::SageMaker::TransformS3DataSource;
   use Moose;
   has S3DataType => (is => 'ro', isa => 'Str', required => 1);
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

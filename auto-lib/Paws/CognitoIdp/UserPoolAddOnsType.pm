@@ -1,6 +1,7 @@
 package Paws::CognitoIdp::UserPoolAddOnsType;
   use Moose;
   has AdvancedSecurityMode => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

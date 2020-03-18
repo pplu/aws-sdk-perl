@@ -2,6 +2,7 @@ package Paws::MediaLive::MultiplexConfigurationValidationError;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MultiplexValidationError]', request_name => 'validationErrors', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

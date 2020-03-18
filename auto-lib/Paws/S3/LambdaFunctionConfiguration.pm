@@ -4,6 +4,7 @@ package Paws::S3::LambdaFunctionConfiguration;
   has Filter => (is => 'ro', isa => 'Paws::S3::NotificationConfigurationFilter');
   has Id => (is => 'ro', isa => 'Str');
   has LambdaFunctionArn => (is => 'ro', isa => 'Str', request_name => 'CloudFunction', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

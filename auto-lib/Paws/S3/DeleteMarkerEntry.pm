@@ -5,6 +5,7 @@ package Paws::S3::DeleteMarkerEntry;
   has LastModified => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

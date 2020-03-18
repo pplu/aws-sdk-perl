@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::DatasetContentVersionValue;
   use Moose;
   has DatasetName => (is => 'ro', isa => 'Str', request_name => 'datasetName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

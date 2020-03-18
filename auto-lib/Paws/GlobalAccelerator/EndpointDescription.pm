@@ -5,6 +5,7 @@ package Paws::GlobalAccelerator::EndpointDescription;
   has HealthReason => (is => 'ro', isa => 'Str');
   has HealthState => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::SageMaker::MonitoringOutput;
   use Moose;
   has S3Output => (is => 'ro', isa => 'Paws::SageMaker::MonitoringS3Output', required => 1);
+
 1;
 
 ### main pod documentation begin ###

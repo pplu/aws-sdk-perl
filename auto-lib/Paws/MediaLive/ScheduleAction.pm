@@ -3,6 +3,7 @@ package Paws::MediaLive::ScheduleAction;
   has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest'], required => 1);
   has ScheduleActionSettings => (is => 'ro', isa => 'Paws::MediaLive::ScheduleActionSettings', request_name => 'scheduleActionSettings', traits => ['NameInRequest'], required => 1);
   has ScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::ScheduleActionStartSettings', request_name => 'scheduleActionStartSettings', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

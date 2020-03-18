@@ -6,6 +6,7 @@ package Paws::Athena::NamedQuery;
   has NamedQueryId => (is => 'ro', isa => 'Str');
   has QueryString => (is => 'ro', isa => 'Str', required => 1);
   has WorkGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

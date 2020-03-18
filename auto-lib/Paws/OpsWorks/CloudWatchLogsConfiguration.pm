@@ -2,6 +2,7 @@ package Paws::OpsWorks::CloudWatchLogsConfiguration;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has LogStreams => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::CloudWatchLogsLogStream]');
+
 1;
 
 ### main pod documentation begin ###

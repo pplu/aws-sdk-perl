@@ -4,6 +4,7 @@ package Paws::MediaLive::DvbSdtSettings;
   has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceProviderName => (is => 'ro', isa => 'Str', request_name => 'serviceProviderName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration;
   use Moose;
   has ApplicationRestoreType => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

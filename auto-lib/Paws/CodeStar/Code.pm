@@ -2,6 +2,7 @@ package Paws::CodeStar::Code;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::CodeStar::CodeDestination', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has Source => (is => 'ro', isa => 'Paws::CodeStar::CodeSource', request_name => 'source', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

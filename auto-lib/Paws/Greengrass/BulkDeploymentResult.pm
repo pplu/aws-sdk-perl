@@ -8,6 +8,7 @@ package Paws::Greengrass::BulkDeploymentResult;
   has ErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ErrorDetail]');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has GroupArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

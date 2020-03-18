@@ -8,6 +8,7 @@ package Paws::DynamoDB::ReplicaSettingsDescription;
   has ReplicaProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
   has ReplicaProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
   has ReplicaStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

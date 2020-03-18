@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
         ApplicationSnapshotConfigurationUpdate => {
-          SnapshotsEnabledUpdate => 1,
+          SnapshotsEnabledUpdate => 1,    # OPTIONAL
 
         },    # OPTIONAL
         EnvironmentPropertyUpdates => {
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FlinkApplicationConfigurationUpdate => {
           CheckpointConfigurationUpdate => {
             CheckpointIntervalUpdate   => 1,    # min: 1; OPTIONAL
-            CheckpointingEnabledUpdate => 1,
+            CheckpointingEnabledUpdate => 1,    # OPTIONAL
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             MinPauseBetweenCheckpointsUpdate => 1,    # OPTIONAL
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
           ParallelismConfigurationUpdate => {
-            AutoScalingEnabledUpdate => 1,
+            AutoScalingEnabledUpdate => 1,    # OPTIONAL
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             ParallelismPerKPUUpdate => 1,    # min: 1; OPTIONAL
@@ -231,7 +231,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: SKIP_RESTORE_FROM_SNAPSHOT, RESTORE_FROM_LATEST_SNAPSHOT, RESTORE_FROM_CUSTOM_SNAPSHOT
           SnapshotName => 'MySnapshotName',    # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
-        FlinkRunConfiguration => { AllowNonRestoredState => 1, },    # OPTIONAL
+        FlinkRunConfiguration => {
+          AllowNonRestoredState => 1,    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       ServiceExecutionRoleUpdate => 'MyRoleARN',    # OPTIONAL
     );

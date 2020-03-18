@@ -5,6 +5,7 @@ package Paws::Config::Evaluation;
   has ComplianceResourceType => (is => 'ro', isa => 'Str', required => 1);
   has ComplianceType => (is => 'ro', isa => 'Str', required => 1);
   has OrderingTimestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

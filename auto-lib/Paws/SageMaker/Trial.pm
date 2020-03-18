@@ -11,6 +11,7 @@ package Paws::SageMaker::Trial;
   has TrialArn => (is => 'ro', isa => 'Str');
   has TrialComponentSummaries => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::TrialComponentSimpleSummary]');
   has TrialName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

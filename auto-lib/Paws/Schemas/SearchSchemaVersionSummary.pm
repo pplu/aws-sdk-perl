@@ -2,6 +2,7 @@ package Paws::Schemas::SearchSchemaVersionSummary;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
   has SchemaVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

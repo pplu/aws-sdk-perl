@@ -3,6 +3,7 @@ package Paws::RDS::GlobalClusterMember;
   has DBClusterArn => (is => 'ro', isa => 'Str');
   has IsWriter => (is => 'ro', isa => 'Bool');
   has Readers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

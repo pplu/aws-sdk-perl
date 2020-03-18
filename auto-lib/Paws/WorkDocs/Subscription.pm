@@ -3,6 +3,7 @@ package Paws::WorkDocs::Subscription;
   has EndPoint => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str');
   has SubscriptionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

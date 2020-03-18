@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ProductViewDetail;
   has ProductARN => (is => 'ro', isa => 'Str');
   has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

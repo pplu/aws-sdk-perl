@@ -3,6 +3,7 @@ package Paws::MediaLive::PipelineDetail;
   has ActiveInputAttachmentName => (is => 'ro', isa => 'Str', request_name => 'activeInputAttachmentName', traits => ['NameInRequest']);
   has ActiveInputSwitchActionName => (is => 'ro', isa => 'Str', request_name => 'activeInputSwitchActionName', traits => ['NameInRequest']);
   has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

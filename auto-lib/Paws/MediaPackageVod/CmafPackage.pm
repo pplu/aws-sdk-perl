@@ -3,6 +3,7 @@ package Paws::MediaPackageVod::CmafPackage;
   has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafEncryption', request_name => 'encryption', traits => ['NameInRequest']);
   has HlsManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::HlsManifest]', request_name => 'hlsManifests', traits => ['NameInRequest'], required => 1);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

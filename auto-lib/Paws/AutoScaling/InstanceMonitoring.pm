@@ -1,6 +1,7 @@
 package Paws::AutoScaling::InstanceMonitoring;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::IoTThingsGraph::DefinitionDocument;
   use Moose;
   has Language => (is => 'ro', isa => 'Str', request_name => 'language', traits => ['NameInRequest'], required => 1);
   has Text => (is => 'ro', isa => 'Str', request_name => 'text', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

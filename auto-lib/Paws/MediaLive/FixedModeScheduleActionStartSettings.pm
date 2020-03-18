@@ -1,6 +1,7 @@
 package Paws::MediaLive::FixedModeScheduleActionStartSettings;
   use Moose;
   has Time => (is => 'ro', isa => 'Str', request_name => 'time', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

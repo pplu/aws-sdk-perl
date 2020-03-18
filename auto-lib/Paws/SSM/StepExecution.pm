@@ -22,6 +22,7 @@ package Paws::SSM::StepExecution;
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
   has ValidNextSteps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

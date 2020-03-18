@@ -2,6 +2,7 @@ package Paws::ApiGateway::ThrottleSettings;
   use Moose;
   has BurstLimit => (is => 'ro', isa => 'Int', request_name => 'burstLimit', traits => ['NameInRequest']);
   has RateLimit => (is => 'ro', isa => 'Num', request_name => 'rateLimit', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

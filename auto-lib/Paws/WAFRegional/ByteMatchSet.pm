@@ -3,6 +3,7 @@ package Paws::WAFRegional::ByteMatchSet;
   has ByteMatchSetId => (is => 'ro', isa => 'Str', required => 1);
   has ByteMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ByteMatchTuple]', required => 1);
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

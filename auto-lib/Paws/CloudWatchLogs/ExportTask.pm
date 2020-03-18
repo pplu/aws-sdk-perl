@@ -9,6 +9,7 @@ package Paws::CloudWatchLogs::ExportTask;
   has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
   has TaskName => (is => 'ro', isa => 'Str', request_name => 'taskName', traits => ['NameInRequest']);
   has To => (is => 'ro', isa => 'Int', request_name => 'to', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MarketplaceCatalog::ErrorDetail;
   use Moose;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::Quicksight::TemplateSummary;
   has LatestVersionNumber => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has TemplateId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

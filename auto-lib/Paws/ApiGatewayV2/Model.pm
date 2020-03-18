@@ -5,6 +5,7 @@ package Paws::ApiGatewayV2::Model;
   has ModelId => (is => 'ro', isa => 'Str', request_name => 'modelId', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

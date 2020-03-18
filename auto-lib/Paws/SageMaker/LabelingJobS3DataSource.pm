@@ -1,6 +1,7 @@
 package Paws::SageMaker::LabelingJobS3DataSource;
   use Moose;
   has ManifestS3Uri => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MachineLearning::RedshiftMetadata;
   has DatabaseUserName => (is => 'ro', isa => 'Str');
   has RedshiftDatabase => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftDatabase');
   has SelectSqlQuery => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
