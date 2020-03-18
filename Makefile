@@ -32,6 +32,7 @@ gen-classes:
 	carton exec ./builder-bin/gen_classes.pl --class_mapping
 	mkdir -p auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
+	carton exec ./builder-bin/gen_classes.pl --docu_links
 	carton exec ./builder-bin/gen_classes.pl --paws_pm --classes
 
 docu-links:
