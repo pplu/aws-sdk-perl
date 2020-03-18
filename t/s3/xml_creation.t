@@ -46,7 +46,7 @@ my %md5_methods = (
 
 my %xml_results = (
   PutBucketLifecycleConfiguration => '<LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><Filter></Filter><Status>Enabled</Status></Rule></LifecycleConfiguration>',
-  SelectObjectContent => '<SelectRequest xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Expression>Select * from S3Object</Expression><ExpressionType>SQL</ExpressionType><InputSerialization></InputSerialization><OutputSerialization></OutputSerialization></SelectRequest>',
+  SelectObjectContent => '<SelectObjectContentRequest xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Expression>Select * from S3Object</Expression><ExpressionType>SQL</ExpressionType><InputSerialization></InputSerialization><OutputSerialization></OutputSerialization></SelectObjectContentRequest>',
  );
 
 # content length: Length of the message (without the headers)

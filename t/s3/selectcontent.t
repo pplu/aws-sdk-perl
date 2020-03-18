@@ -61,7 +61,7 @@ my $sel = $s3->SelectObjectContent(
 
 ok($sel->Payload, 'SelectObjectContent has a payload');
 use Data::Dumper;
-diag(Dumper($sel->Payload));
+# diag(Dumper($sel->Payload));
 
 ok($sel->Payload->Cont, 'Payload has a Cont (ContinuationEvent)');
 diag(Dumper($sel->Payload->Cont));

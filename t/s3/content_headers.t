@@ -26,7 +26,7 @@ my %md5_methods = (
       CORSRules => [
         {
           'AllowedMethods' => ['POST'],
-          'AllowedOrigins' => ['http://shadowcat.co.uk'],
+          'AllowedOrigins' => ['https://example.com'],
         },
        ],
     }
