@@ -40,14 +40,14 @@ This class has no description
 
 =head2 EnableAcceleration => Bool
 
-  Indicate whether to enable acceleration for the VPN connection.
+Indicate whether to enable acceleration for the VPN connection.
 
 Default: C<false>
 
 
 =head2 StaticRoutesOnly => Bool
 
-  Indicate whether the VPN connection uses static routes only. If you are
+Indicate whether the VPN connection uses static routes only. If you are
 creating a VPN connection for a device that does not support BGP, you
 must specify C<true>. Use CreateVpnConnectionRoute to create a static
 route.
@@ -57,7 +57,7 @@ Default: C<false>
 
 =head2 TunnelOptions => ArrayRef[L<Paws::EC2::VpnTunnelOptionsSpecification>]
 
-  The tunnel options for the VPN connection.
+The tunnel options for the VPN connection.
 
 
 

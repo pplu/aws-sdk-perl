@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Description => Str
 
-  The description for the address pool.
+The description for the address pool.
 
 
 =head2 PoolCidrBlocks => ArrayRef[L<Paws::EC2::PoolCidrBlock>]
 
-  The CIDR blocks for the address pool.
+The CIDR blocks for the address pool.
 
 
 =head2 PoolId => Str
 
-  The ID of the address pool.
+The ID of the address pool.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags for the address pool.
+Any tags for the address pool.
 
 
 

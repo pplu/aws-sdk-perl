@@ -39,12 +39,12 @@ This class has no description
 
 =head2 LaunchTemplateSpecification => L<Paws::EC2::FleetLaunchTemplateSpecification>
 
-  The launch template.
+The launch template.
 
 
 =head2 Overrides => L<Paws::EC2::FleetLaunchTemplateOverrides>
 
-  Any parameters that you specify override the same parameters in the
+Any parameters that you specify override the same parameters in the
 launch template.
 
 

@@ -39,12 +39,12 @@ This class has no description
 
 =head2 ProductCodeId => Str
 
-  The product code.
+The product code.
 
 
 =head2 ProductCodeType => Str
 
-  The type of product code.
+The type of product code.
 
 
 

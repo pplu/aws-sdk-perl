@@ -40,17 +40,17 @@ This class has no description
 
 =head2 DeregisteredNetworkInterfaceIds => ArrayRef[Str|Undef]
 
-  The network interface IDs of the non-registered members.
+The network interface IDs of the non-registered members.
 
 
 =head2 GroupIpAddress => Str
 
-  The IP address assigned to the transit gateway multicast group.
+The IP address assigned to the transit gateway multicast group.
 
 
 =head2 TransitGatewayMulticastDomainId => Str
 
-  The ID of the transit gateway multicast domain.
+The ID of the transit gateway multicast domain.
 
 
 

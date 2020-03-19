@@ -403,7 +403,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           UpdatedAt  => 'MyNonEmptyString',
           Compliance => {
             RelatedRequirements => [ 'MyNonEmptyString', ... ],       # OPTIONAL
-            Status              => 'PASSED'
+            Status => 'PASSED'
             ,    # values: PASSED, WARNING, FAILED, NOT_AVAILABLE; OPTIONAL
           },    # OPTIONAL
           Confidence      => 1,

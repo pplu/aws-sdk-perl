@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageVersionArn => 'MyImageVersionArn',
       Filters         => [
         {
-          Name   => 'MyFilterName',              # OPTIONAL
+          Name => 'MyFilterName',                # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...

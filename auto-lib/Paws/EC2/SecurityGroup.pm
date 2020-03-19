@@ -45,42 +45,42 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the security group.
+A description of the security group.
 
 
 =head2 GroupId => Str
 
-  The ID of the security group.
+The ID of the security group.
 
 
 =head2 GroupName => Str
 
-  The name of the security group.
+The name of the security group.
 
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-  The inbound rules associated with the security group.
+The inbound rules associated with the security group.
 
 
 =head2 IpPermissionsEgress => ArrayRef[L<Paws::EC2::IpPermission>]
 
-  [VPC only] The outbound rules associated with the security group.
+[VPC only] The outbound rules associated with the security group.
 
 
 =head2 OwnerId => Str
 
-  The AWS account ID of the owner of the security group.
+The AWS account ID of the owner of the security group.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the security group.
+Any tags assigned to the security group.
 
 
 =head2 VpcId => Str
 
-  [VPC only] The ID of the VPC for the security group.
+[VPC only] The ID of the VPC for the security group.
 
 
 

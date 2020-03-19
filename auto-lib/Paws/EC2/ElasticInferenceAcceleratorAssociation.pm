@@ -41,22 +41,22 @@ This class has no description
 
 =head2 ElasticInferenceAcceleratorArn => Str
 
-  The Amazon Resource Name (ARN) of the elastic inference accelerator.
+The Amazon Resource Name (ARN) of the elastic inference accelerator.
 
 
 =head2 ElasticInferenceAcceleratorAssociationId => Str
 
-  The ID of the association.
+The ID of the association.
 
 
 =head2 ElasticInferenceAcceleratorAssociationState => Str
 
-  The state of the elastic inference accelerator.
+The state of the elastic inference accelerator.
 
 
 =head2 ElasticInferenceAcceleratorAssociationTime => Str
 
-  The time at which the elastic inference accelerator is associated with
+The time at which the elastic inference accelerator is associated with
 an instance.
 
 

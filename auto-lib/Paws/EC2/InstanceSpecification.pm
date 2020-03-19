@@ -39,12 +39,12 @@ This class has no description
 
 =head2 ExcludeBootVolume => Bool
 
-  Excludes the root volume from being snapshotted.
+Excludes the root volume from being snapshotted.
 
 
 =head2 InstanceId => Str
 
-  The instance to specify which volumes should be snapshotted.
+The instance to specify which volumes should be snapshotted.
 
 
 

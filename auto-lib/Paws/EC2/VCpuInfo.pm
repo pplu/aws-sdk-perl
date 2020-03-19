@@ -42,28 +42,28 @@ This class has no description
 
 =head2 DefaultCores => Int
 
-  The default number of cores for the instance type.
+The default number of cores for the instance type.
 
 
 =head2 DefaultThreadsPerCore => Int
 
-  The default number of threads per core for the instance type.
+The default number of threads per core for the instance type.
 
 
 =head2 DefaultVCpus => Int
 
-  The default number of vCPUs for the instance type.
+The default number of vCPUs for the instance type.
 
 
 =head2 ValidCores => ArrayRef[Int]
 
-  List of the valid number of cores that can be configured for the
+List of the valid number of cores that can be configured for the
 instance type.
 
 
 =head2 ValidThreadsPerCore => ArrayRef[Int]
 
-  List of the valid number of threads per core that can be configured for
+List of the valid number of threads per core that can be configured for
 the instance type.
 
 

@@ -43,32 +43,32 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the address pool.
+A description of the address pool.
 
 
 =head2 PoolAddressRanges => ArrayRef[L<Paws::EC2::PublicIpv4PoolRange>]
 
-  The address ranges.
+The address ranges.
 
 
 =head2 PoolId => Str
 
-  The ID of the address pool.
+The ID of the address pool.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags for the address pool.
+Any tags for the address pool.
 
 
 =head2 TotalAddressCount => Int
 
-  The total number of addresses.
+The total number of addresses.
 
 
 =head2 TotalAvailableAddressCount => Int
 
-  The total number of available addresses.
+The total number of available addresses.
 
 
 

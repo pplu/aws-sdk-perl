@@ -39,12 +39,12 @@ This class has no description
 
 =head2 B<REQUIRED> Message => Str
 
-  The plain-text authorization message for the prefix and account.
+The plain-text authorization message for the prefix and account.
 
 
 =head2 B<REQUIRED> Signature => Str
 
-  The signed authorization message for the prefix and account.
+The signed authorization message for the prefix and account.
 
 
 

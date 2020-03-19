@@ -39,13 +39,13 @@ This class has no description
 
 =head2 EarliestTime => Str
 
-  The earliest date and time, in UTC, for the Scheduled Instance to
+The earliest date and time, in UTC, for the Scheduled Instance to
 start.
 
 
 =head2 LatestTime => Str
 
-  The latest date and time, in UTC, for the Scheduled Instance to start.
+The latest date and time, in UTC, for the Scheduled Instance to start.
 
 
 

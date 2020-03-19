@@ -48,59 +48,59 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+The Availability Zone.
 
 
 =head2 DisabledTime => Str
 
-  The time at which fast snapshot restores entered the C<disabled> state.
+The time at which fast snapshot restores entered the C<disabled> state.
 
 
 =head2 DisablingTime => Str
 
-  The time at which fast snapshot restores entered the C<disabling>
+The time at which fast snapshot restores entered the C<disabling>
 state.
 
 
 =head2 EnabledTime => Str
 
-  The time at which fast snapshot restores entered the C<enabled> state.
+The time at which fast snapshot restores entered the C<enabled> state.
 
 
 =head2 EnablingTime => Str
 
-  The time at which fast snapshot restores entered the C<enabling> state.
+The time at which fast snapshot restores entered the C<enabling> state.
 
 
 =head2 OptimizingTime => Str
 
-  The time at which fast snapshot restores entered the C<optimizing>
+The time at which fast snapshot restores entered the C<optimizing>
 state.
 
 
 =head2 OwnerAlias => Str
 
-  The alias of the snapshot owner.
+The alias of the snapshot owner.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the snapshot.
+The ID of the AWS account that owns the snapshot.
 
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+The ID of the snapshot.
 
 
 =head2 State => Str
 
-  The state of fast snapshot restores.
+The state of fast snapshot restores.
 
 
 =head2 StateTransitionReason => Str
 
-  The reason for the state transition. The possible values are as
+The reason for the state transition. The possible values are as
 follows:
 
 =over

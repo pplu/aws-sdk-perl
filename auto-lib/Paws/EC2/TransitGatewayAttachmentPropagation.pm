@@ -39,12 +39,12 @@ This class has no description
 
 =head2 State => Str
 
-  The state of the propagation route table.
+The state of the propagation route table.
 
 
 =head2 TransitGatewayRouteTableId => Str
 
-  The ID of the propagation route table.
+The ID of the propagation route table.
 
 
 

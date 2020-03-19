@@ -44,37 +44,37 @@ This class has no description
 
 =head2 Actions => ArrayRef[L<Paws::EC2::VolumeStatusAction>]
 
-  The details of the operation.
+The details of the operation.
 
 
 =head2 AttachmentStatuses => ArrayRef[L<Paws::EC2::VolumeStatusAttachmentStatus>]
 
-  Information about the instances to which the volume is attached.
+Information about the instances to which the volume is attached.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the volume.
+The Availability Zone of the volume.
 
 
 =head2 Events => ArrayRef[L<Paws::EC2::VolumeStatusEvent>]
 
-  A list of events associated with the volume.
+A list of events associated with the volume.
 
 
 =head2 OutpostArn => Str
 
-  The Amazon Resource Name (ARN) of the Outpost.
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 VolumeId => Str
 
-  The volume ID.
+The volume ID.
 
 
 =head2 VolumeStatus => L<Paws::EC2::VolumeStatusInfo>
 
-  The volume status.
+The volume status.
 
 
 

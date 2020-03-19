@@ -52,78 +52,78 @@ This class has no description
 
 =head2 CreateTime => Str
 
-  The date and time the AFI was created.
+The date and time the AFI was created.
 
 
 =head2 DataRetentionSupport => Bool
 
-  Indicates whether data retention support is enabled for the AFI.
+Indicates whether data retention support is enabled for the AFI.
 
 
 =head2 Description => Str
 
-  The description of the AFI.
+The description of the AFI.
 
 
 =head2 FpgaImageGlobalId => Str
 
-  The global FPGA image identifier (AGFI ID).
+The global FPGA image identifier (AGFI ID).
 
 
 =head2 FpgaImageId => Str
 
-  The FPGA image identifier (AFI ID).
+The FPGA image identifier (AFI ID).
 
 
 =head2 Name => Str
 
-  The name of the AFI.
+The name of the AFI.
 
 
 =head2 OwnerAlias => Str
 
-  The alias of the AFI owner. Possible values include C<self>, C<amazon>,
+The alias of the AFI owner. Possible values include C<self>, C<amazon>,
 and C<aws-marketplace>.
 
 
 =head2 OwnerId => Str
 
-  The AWS account ID of the AFI owner.
+The AWS account ID of the AFI owner.
 
 
 =head2 PciId => L<Paws::EC2::PciId>
 
-  Information about the PCI bus.
+Information about the PCI bus.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  The product codes for the AFI.
+The product codes for the AFI.
 
 
 =head2 Public => Bool
 
-  Indicates whether the AFI is public.
+Indicates whether the AFI is public.
 
 
 =head2 ShellVersion => Str
 
-  The version of the AWS Shell that was used to create the bitstream.
+The version of the AWS Shell that was used to create the bitstream.
 
 
 =head2 State => L<Paws::EC2::FpgaImageState>
 
-  Information about the state of the AFI.
+Information about the state of the AFI.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the AFI.
+Any tags assigned to the AFI.
 
 
 =head2 UpdateTime => Str
 
-  The time of the most recent update to the AFI.
+The time of the most recent update to the AFI.
 
 
 

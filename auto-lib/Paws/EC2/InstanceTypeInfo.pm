@@ -59,115 +59,115 @@ This class has no description
 
 =head2 AutoRecoverySupported => Bool
 
-  Indicates whether auto recovery is supported.
+Indicates whether auto recovery is supported.
 
 
 =head2 BareMetal => Bool
 
-  Indicates whether the instance is bare metal.
+Indicates whether the instance is bare metal.
 
 
 =head2 BurstablePerformanceSupported => Bool
 
-  Indicates whether the instance type is a burstable performance instance
+Indicates whether the instance type is a burstable performance instance
 type.
 
 
 =head2 CurrentGeneration => Bool
 
-  Indicates whether the instance type is a current generation.
+Indicates whether the instance type is a current generation.
 
 
 =head2 DedicatedHostsSupported => Bool
 
-  Indicates whether Dedicated Hosts are supported on the instance type.
+Indicates whether Dedicated Hosts are supported on the instance type.
 
 
 =head2 EbsInfo => L<Paws::EC2::EbsInfo>
 
-  Describes the Amazon EBS settings for the instance type.
+Describes the Amazon EBS settings for the instance type.
 
 
 =head2 FpgaInfo => L<Paws::EC2::FpgaInfo>
 
-  Describes the FPGA accelerator settings for the instance type.
+Describes the FPGA accelerator settings for the instance type.
 
 
 =head2 FreeTierEligible => Bool
 
-  Indicates whether the instance type is eligible for the free tier.
+Indicates whether the instance type is eligible for the free tier.
 
 
 =head2 GpuInfo => L<Paws::EC2::GpuInfo>
 
-  Describes the GPU accelerator settings for the instance type.
+Describes the GPU accelerator settings for the instance type.
 
 
 =head2 HibernationSupported => Bool
 
-  Indicates whether On-Demand hibernation is supported.
+Indicates whether On-Demand hibernation is supported.
 
 
 =head2 Hypervisor => Str
 
-  Indicates the hypervisor used for the instance type.
+Indicates the hypervisor used for the instance type.
 
 
 =head2 InferenceAcceleratorInfo => L<Paws::EC2::InferenceAcceleratorInfo>
 
-  Describes the Inference accelerator settings for the instance type.
+Describes the Inference accelerator settings for the instance type.
 
 
 =head2 InstanceStorageInfo => L<Paws::EC2::InstanceStorageInfo>
 
-  Describes the disks for the instance type.
+Describes the disks for the instance type.
 
 
 =head2 InstanceStorageSupported => Bool
 
-  Indicates whether instance storage is supported.
+Indicates whether instance storage is supported.
 
 
 =head2 InstanceType => Str
 
-  The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 MemoryInfo => L<Paws::EC2::MemoryInfo>
 
-  Describes the memory for the instance type.
+Describes the memory for the instance type.
 
 
 =head2 NetworkInfo => L<Paws::EC2::NetworkInfo>
 
-  Describes the network settings for the instance type.
+Describes the network settings for the instance type.
 
 
 =head2 PlacementGroupInfo => L<Paws::EC2::PlacementGroupInfo>
 
-  Describes the placement group settings for the instance type.
+Describes the placement group settings for the instance type.
 
 
 =head2 ProcessorInfo => L<Paws::EC2::ProcessorInfo>
 
-  Describes the processor.
+Describes the processor.
 
 
 =head2 SupportedRootDeviceTypes => ArrayRef[Str|Undef]
 
-  Indicates the supported root device types.
+Indicates the supported root device types.
 
 
 =head2 SupportedUsageClasses => ArrayRef[Str|Undef]
 
-  Indicates whether the instance type is offered for spot or On-Demand.
+Indicates whether the instance type is offered for spot or On-Demand.
 
 
 =head2 VCpuInfo => L<Paws::EC2::VCpuInfo>
 
-  Describes the vCPU configurations for the instance type.
+Describes the vCPU configurations for the instance type.
 
 
 

@@ -43,12 +43,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The event code.
+The event code.
 
 
 =head2 Description => Str
 
-  A description of the event.
+A description of the event.
 
 After a scheduled event is completed, it can still be described for up
 to a week. If the event has been completed, this description starts
@@ -57,22 +57,22 @@ with the following text: [Completed].
 
 =head2 InstanceEventId => Str
 
-  The ID of the event.
+The ID of the event.
 
 
 =head2 NotAfter => Str
 
-  The latest scheduled end time for the event.
+The latest scheduled end time for the event.
 
 
 =head2 NotBefore => Str
 
-  The earliest scheduled start time for the event.
+The earliest scheduled start time for the event.
 
 
 =head2 NotBeforeDeadline => Str
 
-  The deadline for starting the event.
+The deadline for starting the event.
 
 
 

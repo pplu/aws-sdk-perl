@@ -40,17 +40,17 @@ This class has no description
 
 =head2 EventInformation => L<Paws::EC2::EventInformation>
 
-  Information about the event.
+Information about the event.
 
 
 =head2 EventType => Str
 
-  The event type.
+The event type.
 
 
 =head2 Timestamp => Str
 
-  The date and time of the event, in UTC format (for example,
+The date and time of the event, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 

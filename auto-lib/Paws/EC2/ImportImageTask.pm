@@ -52,84 +52,84 @@ This class has no description
 
 =head2 Architecture => Str
 
-  The architecture of the virtual machine.
+The architecture of the virtual machine.
 
 Valid values: C<i386> | C<x86_64> | C<arm64>
 
 
 =head2 Description => Str
 
-  A description of the import task.
+A description of the import task.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the image is encrypted.
+Indicates whether the image is encrypted.
 
 
 =head2 Hypervisor => Str
 
-  The target hypervisor for the import task.
+The target hypervisor for the import task.
 
 Valid values: C<xen>
 
 
 =head2 ImageId => Str
 
-  The ID of the Amazon Machine Image (AMI) of the imported virtual
+The ID of the Amazon Machine Image (AMI) of the imported virtual
 machine.
 
 
 =head2 ImportTaskId => Str
 
-  The ID of the import image task.
+The ID of the import image task.
 
 
 =head2 KmsKeyId => Str
 
-  The identifier for the AWS Key Management Service (AWS KMS) customer
+The identifier for the AWS Key Management Service (AWS KMS) customer
 master key (CMK) that was used to create the encrypted image.
 
 
 =head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationResponse>]
 
-  The ARNs of the license configurations that are associated with the
+The ARNs of the license configurations that are associated with the
 import image task.
 
 
 =head2 LicenseType => Str
 
-  The license type of the virtual machine.
+The license type of the virtual machine.
 
 
 =head2 Platform => Str
 
-  The description string for the import image task.
+The description string for the import image task.
 
 
 =head2 Progress => Str
 
-  The percentage of progress of the import image task.
+The percentage of progress of the import image task.
 
 
 =head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
 
-  Information about the snapshots.
+Information about the snapshots.
 
 
 =head2 Status => Str
 
-  A brief status for the import image task.
+A brief status for the import image task.
 
 
 =head2 StatusMessage => Str
 
-  A descriptive status message for the import image task.
+A descriptive status message for the import image task.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the import image task.
+The tags for the import image task.
 
 
 

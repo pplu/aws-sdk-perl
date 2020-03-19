@@ -41,23 +41,23 @@ This class has no description
 
 =head2 DeviceName => Str
 
-  The device name.
+The device name.
 
 
 =head2 Ebs => L<Paws::EC2::LaunchTemplateEbsBlockDevice>
 
-  Information about the block device for an EBS volume.
+Information about the block device for an EBS volume.
 
 
 =head2 NoDevice => Str
 
-  Suppresses the specified device included in the block device mapping of
+Suppresses the specified device included in the block device mapping of
 the AMI.
 
 
 =head2 VirtualName => Str
 
-  The virtual device name (ephemeralN).
+The virtual device name (ephemeralN).
 
 
 

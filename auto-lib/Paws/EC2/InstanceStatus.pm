@@ -44,39 +44,39 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the instance.
+The Availability Zone of the instance.
 
 
 =head2 Events => ArrayRef[L<Paws::EC2::InstanceStatusEvent>]
 
-  Any scheduled events associated with the instance.
+Any scheduled events associated with the instance.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 InstanceState => L<Paws::EC2::InstanceState>
 
-  The intended state of the instance. DescribeInstanceStatus requires
+The intended state of the instance. DescribeInstanceStatus requires
 that an instance be in the C<running> state.
 
 
 =head2 InstanceStatus => L<Paws::EC2::InstanceStatusSummary>
 
-  Reports impaired functionality that stems from issues internal to the
+Reports impaired functionality that stems from issues internal to the
 instance, such as impaired reachability.
 
 
 =head2 OutpostArn => Str
 
-  The Amazon Resource Name (ARN) of the Outpost.
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 SystemStatus => L<Paws::EC2::InstanceStatusSummary>
 
-  Reports impaired functionality that stems from issues related to the
+Reports impaired functionality that stems from issues related to the
 systems that support an instance, such as hardware failures and network
 connectivity problems.
 

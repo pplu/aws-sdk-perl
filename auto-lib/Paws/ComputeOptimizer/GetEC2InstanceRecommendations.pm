@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetEC2InstanceRecommendationsResponse =
       $compute -optimizer->GetEC2InstanceRecommendations(
       AccountIds => [ 'MyAccountId', ... ],    # OPTIONAL
-      Filters    => [
+      Filters => [
         {
           Name =>
             'Finding',    # values: Finding, RecommendationSourceType; OPTIONAL

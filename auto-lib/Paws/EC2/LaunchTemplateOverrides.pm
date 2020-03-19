@@ -43,17 +43,17 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in which to launch the instances.
+The Availability Zone in which to launch the instances.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 Priority => Num
 
-  The priority for the launch template override. If
+The priority for the launch template override. If
 B<OnDemandAllocationStrategy> is set to C<prioritized>, Spot Fleet uses
 priority to determine which launch template override to use first in
 fulfilling On-Demand capacity. The highest priority is launched first.
@@ -64,18 +64,18 @@ override has the lowest priority.
 
 =head2 SpotPrice => Str
 
-  The maximum price per unit hour that you are willing to pay for a Spot
+The maximum price per unit hour that you are willing to pay for a Spot
 Instance.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which to launch the instances.
+The ID of the subnet in which to launch the instances.
 
 
 =head2 WeightedCapacity => Num
 
-  The number of units provided by the specified instance type.
+The number of units provided by the specified instance type.
 
 
 

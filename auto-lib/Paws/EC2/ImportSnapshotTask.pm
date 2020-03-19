@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the import snapshot task.
+A description of the import snapshot task.
 
 
 =head2 ImportTaskId => Str
 
-  The ID of the import snapshot task.
+The ID of the import snapshot task.
 
 
 =head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
-  Describes an import snapshot task.
+Describes an import snapshot task.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the import snapshot task.
+The tags for the import snapshot task.
 
 
 

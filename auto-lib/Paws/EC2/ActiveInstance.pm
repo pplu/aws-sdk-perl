@@ -41,7 +41,7 @@ This class has no description
 
 =head2 InstanceHealth => Str
 
-  The health status of the instance. If the status of either the instance
+The health status of the instance. If the status of either the instance
 status check or the system status check is C<impaired>, the health
 status of the instance is C<unhealthy>. Otherwise, the health status is
 C<healthy>.
@@ -49,17 +49,17 @@ C<healthy>.
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 SpotInstanceRequestId => Str
 
-  The ID of the Spot Instance request.
+The ID of the Spot Instance request.
 
 
 

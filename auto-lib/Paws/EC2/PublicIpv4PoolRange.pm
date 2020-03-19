@@ -41,22 +41,22 @@ This class has no description
 
 =head2 AddressCount => Int
 
-  The number of addresses in the range.
+The number of addresses in the range.
 
 
 =head2 AvailableAddressCount => Int
 
-  The number of available addresses in the range.
+The number of available addresses in the range.
 
 
 =head2 FirstAddress => Str
 
-  The first IP address in the range.
+The first IP address in the range.
 
 
 =head2 LastAddress => Str
 
-  The last IP address in the range.
+The last IP address in the range.
 
 
 

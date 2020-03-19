@@ -47,52 +47,52 @@ This class has no description
 
 =head2 Association => L<Paws::EC2::TransitGatewayAttachmentAssociation>
 
-  The association.
+The association.
 
 
 =head2 CreationTime => Str
 
-  The creation time.
+The creation time.
 
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 =head2 ResourceOwnerId => Str
 
-  The ID of the AWS account that owns the resource.
+The ID of the AWS account that owns the resource.
 
 
 =head2 ResourceType => Str
 
-  The resource type.
+The resource type.
 
 
 =head2 State => Str
 
-  The attachment state.
+The attachment state.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the attachment.
+The tags for the attachment.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the attachment.
+The ID of the attachment.
 
 
 =head2 TransitGatewayId => Str
 
-  The ID of the transit gateway.
+The ID of the transit gateway.
 
 
 =head2 TransitGatewayOwnerId => Str
 
-  The ID of the AWS account that owns the transit gateway.
+The ID of the AWS account that owns the transit gateway.
 
 
 

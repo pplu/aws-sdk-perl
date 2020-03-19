@@ -84,44 +84,44 @@ This class has no description
 
 =head2 AmiLaunchIndex => Int
 
-  The AMI launch index, which can be used to find this instance in the
+The AMI launch index, which can be used to find this instance in the
 launch group.
 
 
 =head2 Architecture => Str
 
-  The architecture of the image.
+The architecture of the image.
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMapping>]
 
-  Any block device mapping entries for the instance.
+Any block device mapping entries for the instance.
 
 
 =head2 CapacityReservationId => Str
 
-  The ID of the Capacity Reservation.
+The ID of the Capacity Reservation.
 
 
 =head2 CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecificationResponse>
 
-  Information about the Capacity Reservation targeting option.
+Information about the Capacity Reservation targeting option.
 
 
 =head2 ClientToken => Str
 
-  The idempotency token you provided when you launched the instance, if
+The idempotency token you provided when you launched the instance, if
 applicable.
 
 
 =head2 CpuOptions => L<Paws::EC2::CpuOptions>
 
-  The CPU options for the instance.
+The CPU options for the instance.
 
 
 =head2 EbsOptimized => Bool
 
-  Indicates whether the instance is optimized for Amazon EBS I/O. This
+Indicates whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal I/O performance. This
 optimization isn't available with all instance types. Additional usage
@@ -130,108 +130,108 @@ charges apply when using an EBS Optimized instance.
 
 =head2 ElasticGpuAssociations => ArrayRef[L<Paws::EC2::ElasticGpuAssociation>]
 
-  The Elastic GPU associated with the instance.
+The Elastic GPU associated with the instance.
 
 
 =head2 ElasticInferenceAcceleratorAssociations => ArrayRef[L<Paws::EC2::ElasticInferenceAcceleratorAssociation>]
 
-  The elastic inference accelerator associated with the instance.
+The elastic inference accelerator associated with the instance.
 
 
 =head2 EnaSupport => Bool
 
-  Specifies whether enhanced networking with ENA is enabled.
+Specifies whether enhanced networking with ENA is enabled.
 
 
 =head2 HibernationOptions => L<Paws::EC2::HibernationOptions>
 
-  Indicates whether the instance is enabled for hibernation.
+Indicates whether the instance is enabled for hibernation.
 
 
 =head2 Hypervisor => Str
 
-  The hypervisor type of the instance.
+The hypervisor type of the instance.
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
 
-  The IAM instance profile associated with the instance, if applicable.
+The IAM instance profile associated with the instance, if applicable.
 
 
 =head2 ImageId => Str
 
-  The ID of the AMI used to launch the instance.
+The ID of the AMI used to launch the instance.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 InstanceLifecycle => Str
 
-  Indicates whether this is a Spot Instance or a Scheduled Instance.
+Indicates whether this is a Spot Instance or a Scheduled Instance.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 KernelId => Str
 
-  The kernel associated with this instance, if applicable.
+The kernel associated with this instance, if applicable.
 
 
 =head2 KeyName => Str
 
-  The name of the key pair, if this instance was launched with an
+The name of the key pair, if this instance was launched with an
 associated key pair.
 
 
 =head2 LaunchTime => Str
 
-  The time the instance was launched.
+The time the instance was launched.
 
 
 =head2 Licenses => ArrayRef[L<Paws::EC2::LicenseConfiguration>]
 
-  The license configurations.
+The license configurations.
 
 
 =head2 MetadataOptions => L<Paws::EC2::InstanceMetadataOptionsResponse>
 
-  The metadata options for the instance.
+The metadata options for the instance.
 
 
 =head2 Monitoring => L<Paws::EC2::Monitoring>
 
-  The monitoring for the instance.
+The monitoring for the instance.
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
 
-  [EC2-VPC] The network interfaces for the instance.
+[EC2-VPC] The network interfaces for the instance.
 
 
 =head2 OutpostArn => Str
 
-  The Amazon Resource Name (ARN) of the Outpost.
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 Placement => L<Paws::EC2::Placement>
 
-  The location where the instance launched, if applicable.
+The location where the instance launched, if applicable.
 
 
 =head2 Platform => Str
 
-  The value is C<Windows> for Windows instances; otherwise blank.
+The value is C<Windows> for Windows instances; otherwise blank.
 
 
 =head2 PrivateDnsName => Str
 
-  (IPv4 only) The private DNS hostname name assigned to the instance.
+(IPv4 only) The private DNS hostname name assigned to the instance.
 This DNS hostname can only be used inside the Amazon EC2 network. This
 name is not available until the instance enters the C<running> state.
 
@@ -244,17 +244,17 @@ hostname as appropriate.
 
 =head2 PrivateIpAddress => Str
 
-  The private IPv4 address assigned to the instance.
+The private IPv4 address assigned to the instance.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  The product codes attached to this instance, if applicable.
+The product codes attached to this instance, if applicable.
 
 
 =head2 PublicDnsName => Str
 
-  (IPv4 only) The public DNS name assigned to the instance. This name is
+(IPv4 only) The public DNS name assigned to the instance. This name is
 not available until the instance enters the C<running> state. For
 EC2-VPC, this name is only available if you've enabled DNS hostnames
 for your VPC.
@@ -262,33 +262,33 @@ for your VPC.
 
 =head2 PublicIpAddress => Str
 
-  The public IPv4 address assigned to the instance, if applicable.
+The public IPv4 address assigned to the instance, if applicable.
 
 
 =head2 RamdiskId => Str
 
-  The RAM disk associated with this instance, if applicable.
+The RAM disk associated with this instance, if applicable.
 
 
 =head2 RootDeviceName => Str
 
-  The device name of the root device volume (for example, C</dev/sda1>).
+The device name of the root device volume (for example, C</dev/sda1>).
 
 
 =head2 RootDeviceType => Str
 
-  The root device type used by the AMI. The AMI can use an EBS volume or
+The root device type used by the AMI. The AMI can use an EBS volume or
 an instance store volume.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  The security groups for the instance.
+The security groups for the instance.
 
 
 =head2 SourceDestCheck => Bool
 
-  Specifies whether to enable an instance launched in a VPC to perform
+Specifies whether to enable an instance launched in a VPC to perform
 NAT. This controls whether source/destination checking is enabled on
 the instance. A value of C<true> means that checking is enabled, and
 C<false> means that checking is disabled. The value must be C<false>
@@ -300,49 +300,49 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =head2 SpotInstanceRequestId => Str
 
-  If the request is a Spot Instance request, the ID of the request.
+If the request is a Spot Instance request, the ID of the request.
 
 
 =head2 SriovNetSupport => Str
 
-  Specifies whether enhanced networking with the Intel 82599 Virtual
+Specifies whether enhanced networking with the Intel 82599 Virtual
 Function interface is enabled.
 
 
 =head2 State => L<Paws::EC2::InstanceState>
 
-  The current state of the instance.
+The current state of the instance.
 
 
 =head2 StateReason => L<Paws::EC2::StateReason>
 
-  The reason for the most recent state transition.
+The reason for the most recent state transition.
 
 
 =head2 StateTransitionReason => Str
 
-  The reason for the most recent state transition. This might be an empty
+The reason for the most recent state transition. This might be an empty
 string.
 
 
 =head2 SubnetId => Str
 
-  [EC2-VPC] The ID of the subnet in which the instance is running.
+[EC2-VPC] The ID of the subnet in which the instance is running.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the instance.
+Any tags assigned to the instance.
 
 
 =head2 VirtualizationType => Str
 
-  The virtualization type of the instance.
+The virtualization type of the instance.
 
 
 =head2 VpcId => Str
 
-  [EC2-VPC] The ID of the VPC in which the instance is running.
+[EC2-VPC] The ID of the VPC in which the instance is running.
 
 
 

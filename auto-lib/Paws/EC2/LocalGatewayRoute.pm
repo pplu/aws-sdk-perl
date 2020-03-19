@@ -42,27 +42,27 @@ This class has no description
 
 =head2 DestinationCidrBlock => Str
 
-  The CIDR block used for destination matches.
+The CIDR block used for destination matches.
 
 
 =head2 LocalGatewayRouteTableId => Str
 
-  The ID of the local gateway route table.
+The ID of the local gateway route table.
 
 
 =head2 LocalGatewayVirtualInterfaceGroupId => Str
 
-  The ID of the virtual interface group.
+The ID of the virtual interface group.
 
 
 =head2 State => Str
 
-  The state of the route.
+The state of the route.
 
 
 =head2 Type => Str
 
-  The route type.
+The route type.
 
 
 

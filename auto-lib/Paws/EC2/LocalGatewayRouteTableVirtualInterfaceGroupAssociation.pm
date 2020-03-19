@@ -43,32 +43,32 @@ This class has no description
 
 =head2 LocalGatewayId => Str
 
-  The ID of the local gateway.
+The ID of the local gateway.
 
 
 =head2 LocalGatewayRouteTableId => Str
 
-  The ID of the local gateway route table.
+The ID of the local gateway route table.
 
 
 =head2 LocalGatewayRouteTableVirtualInterfaceGroupAssociationId => Str
 
-  The ID of the association.
+The ID of the association.
 
 
 =head2 LocalGatewayVirtualInterfaceGroupId => Str
 
-  The ID of the virtual interface group.
+The ID of the virtual interface group.
 
 
 =head2 State => Str
 
-  The state of the association.
+The state of the association.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the association.
+The tags assigned to the association.
 
 
 

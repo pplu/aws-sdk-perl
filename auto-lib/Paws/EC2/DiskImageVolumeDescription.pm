@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Id => Str
 
-  The volume identifier.
+The volume identifier.
 
 
 =head2 Size => Int
 
-  The size of the volume, in GiB.
+The size of the volume, in GiB.
 
 
 

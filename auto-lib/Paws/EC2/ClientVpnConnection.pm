@@ -50,68 +50,68 @@ This class has no description
 
 =head2 ClientIp => Str
 
-  The IP address of the client.
+The IP address of the client.
 
 
 =head2 ClientVpnEndpointId => Str
 
-  The ID of the Client VPN endpoint to which the client is connected.
+The ID of the Client VPN endpoint to which the client is connected.
 
 
 =head2 CommonName => Str
 
-  The common name associated with the client. This is either the name of
+The common name associated with the client. This is either the name of
 the client certificate, or the Active Directory user name.
 
 
 =head2 ConnectionEndTime => Str
 
-  The date and time the client connection was terminated.
+The date and time the client connection was terminated.
 
 
 =head2 ConnectionEstablishedTime => Str
 
-  The date and time the client connection was established.
+The date and time the client connection was established.
 
 
 =head2 ConnectionId => Str
 
-  The ID of the client connection.
+The ID of the client connection.
 
 
 =head2 EgressBytes => Str
 
-  The number of bytes received by the client.
+The number of bytes received by the client.
 
 
 =head2 EgressPackets => Str
 
-  The number of packets received by the client.
+The number of packets received by the client.
 
 
 =head2 IngressBytes => Str
 
-  The number of bytes sent by the client.
+The number of bytes sent by the client.
 
 
 =head2 IngressPackets => Str
 
-  The number of packets sent by the client.
+The number of packets sent by the client.
 
 
 =head2 Status => L<Paws::EC2::ClientVpnConnectionStatus>
 
-  The current state of the client connection.
+The current state of the client connection.
 
 
 =head2 Timestamp => Str
 
-  The current date and time.
+The current date and time.
 
 
 =head2 Username => Str
 
-  The username of the client who established the client connection. This
+The username of the client who established the client connection. This
 information is only provided if Active Directory client authentication
 is used.
 

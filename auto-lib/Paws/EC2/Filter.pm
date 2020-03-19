@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Name => Str
 
-  The name of the filter. Filter names are case-sensitive.
+The name of the filter. Filter names are case-sensitive.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The filter values. Filter values are case-sensitive.
+The filter values. Filter values are case-sensitive.
 
 
 

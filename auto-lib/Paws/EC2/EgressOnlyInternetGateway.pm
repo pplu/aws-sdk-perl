@@ -40,17 +40,17 @@ This class has no description
 
 =head2 Attachments => ArrayRef[L<Paws::EC2::InternetGatewayAttachment>]
 
-  Information about the attachment of the egress-only internet gateway.
+Information about the attachment of the egress-only internet gateway.
 
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-  The ID of the egress-only internet gateway.
+The ID of the egress-only internet gateway.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the egress-only internet gateway.
+The tags assigned to the egress-only internet gateway.
 
 
 

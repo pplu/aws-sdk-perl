@@ -49,65 +49,65 @@ This class has no description
 
 =head2 AcceptanceRequired => Bool
 
-  Indicates whether requests from other AWS accounts to create an
+Indicates whether requests from other AWS accounts to create an
 endpoint to the service must first be accepted.
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-  The Availability Zones in which the service is available.
+The Availability Zones in which the service is available.
 
 
 =head2 BaseEndpointDnsNames => ArrayRef[Str|Undef]
 
-  The DNS names for the service.
+The DNS names for the service.
 
 
 =head2 ManagesVpcEndpoints => Bool
 
-  Indicates whether the service manages its VPC endpoints. Management of
+Indicates whether the service manages its VPC endpoints. Management of
 the service VPC endpoints using the VPC endpoint API is restricted.
 
 
 =head2 NetworkLoadBalancerArns => ArrayRef[Str|Undef]
 
-  The Amazon Resource Names (ARNs) of the Network Load Balancers for the
+The Amazon Resource Names (ARNs) of the Network Load Balancers for the
 service.
 
 
 =head2 PrivateDnsName => Str
 
-  The private DNS name for the service.
+The private DNS name for the service.
 
 
 =head2 PrivateDnsNameConfiguration => L<Paws::EC2::PrivateDnsNameConfiguration>
 
-  Information about the endpoint service private DNS name configuration.
+Information about the endpoint service private DNS name configuration.
 
 
 =head2 ServiceId => Str
 
-  The ID of the service.
+The ID of the service.
 
 
 =head2 ServiceName => Str
 
-  The name of the service.
+The name of the service.
 
 
 =head2 ServiceState => Str
 
-  The service state.
+The service state.
 
 
 =head2 ServiceType => ArrayRef[L<Paws::EC2::ServiceTypeDetail>]
 
-  The type of service.
+The type of service.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the service.
+Any tags assigned to the service.
 
 
 

@@ -39,12 +39,12 @@ This class has no description
 
 =head2 State => Str
 
-  The state of the CIDR block.
+The state of the CIDR block.
 
 
 =head2 StatusMessage => Str
 
-  A message about the status of the CIDR block, if applicable.
+A message about the status of the CIDR block, if applicable.
 
 
 

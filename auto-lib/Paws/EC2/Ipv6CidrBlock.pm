@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Ipv6CidrBlock => Str
 
-  The IPv6 CIDR block.
+The IPv6 CIDR block.
 
 
 

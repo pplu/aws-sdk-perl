@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Count => Int
 
-  The number of GPUs for the instance type.
+The number of GPUs for the instance type.
 
 
 =head2 Manufacturer => Str
 
-  The manufacturer of the GPU accelerator.
+The manufacturer of the GPU accelerator.
 
 
 =head2 MemoryInfo => L<Paws::EC2::GpuDeviceMemoryInfo>
 
-  Describes the memory available to the GPU accelerator.
+Describes the memory available to the GPU accelerator.
 
 
 =head2 Name => Str
 
-  The name of the GPU accelerator.
+The name of the GPU accelerator.
 
 
 

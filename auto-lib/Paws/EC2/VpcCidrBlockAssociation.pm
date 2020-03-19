@@ -40,17 +40,17 @@ This class has no description
 
 =head2 AssociationId => Str
 
-  The association ID for the IPv4 CIDR block.
+The association ID for the IPv4 CIDR block.
 
 
 =head2 CidrBlock => Str
 
-  The IPv4 CIDR block.
+The IPv4 CIDR block.
 
 
 =head2 CidrBlockState => L<Paws::EC2::VpcCidrBlockState>
 
-  Information about the state of the CIDR block.
+Information about the state of the CIDR block.
 
 
 

@@ -48,17 +48,17 @@ This class has no description
 
 =head2 CreateTime => Str
 
-  The date and time the NAT gateway was created.
+The date and time the NAT gateway was created.
 
 
 =head2 DeleteTime => Str
 
-  The date and time the NAT gateway was deleted, if applicable.
+The date and time the NAT gateway was deleted, if applicable.
 
 
 =head2 FailureCode => Str
 
-  If the NAT gateway could not be created, specifies the error code for
+If the NAT gateway could not be created, specifies the error code for
 the failure. (C<InsufficientFreeAddressesInSubnet> |
 C<Gateway.NotAttached> | C<InvalidAllocationID.NotFound> |
 C<Resource.AlreadyAssociated> | C<InternalError> |
@@ -67,7 +67,7 @@ C<InvalidSubnetID.NotFound>)
 
 =head2 FailureMessage => Str
 
-  If the NAT gateway could not be created, specifies the error message
+If the NAT gateway could not be created, specifies the error message
 for the failure, that corresponds to the error code.
 
 =over
@@ -109,18 +109,18 @@ does not exist or could not be found."
 
 =head2 NatGatewayAddresses => ArrayRef[L<Paws::EC2::NatGatewayAddress>]
 
-  Information about the IP addresses and network interface associated
+Information about the IP addresses and network interface associated
 with the NAT gateway.
 
 
 =head2 NatGatewayId => Str
 
-  The ID of the NAT gateway.
+The ID of the NAT gateway.
 
 
 =head2 ProvisionedBandwidth => L<Paws::EC2::ProvisionedBandwidth>
 
-  Reserved. If you need to sustain traffic greater than the documented
+Reserved. If you need to sustain traffic greater than the documented
 limits
 (https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html),
 contact us through the Support Center
@@ -129,7 +129,7 @@ contact us through the Support Center
 
 =head2 State => Str
 
-  The state of the NAT gateway.
+The state of the NAT gateway.
 
 =over
 
@@ -165,17 +165,17 @@ processing traffic.
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which the NAT gateway is located.
+The ID of the subnet in which the NAT gateway is located.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the NAT gateway.
+The tags for the NAT gateway.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC in which the NAT gateway is located.
+The ID of the VPC in which the NAT gateway is located.
 
 
 

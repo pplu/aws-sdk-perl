@@ -41,22 +41,22 @@ This class has no description
 
 =head2 LocalGatewayRouteTableId => Str
 
-  The ID of the local gateway route table.
+The ID of the local gateway route table.
 
 
 =head2 PoolCidrs => ArrayRef[Str|Undef]
 
-  The address ranges of the address pool.
+The address ranges of the address pool.
 
 
 =head2 PoolId => Str
 
-  The ID of the address pool.
+The ID of the address pool.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags.
+The tags.
 
 
 

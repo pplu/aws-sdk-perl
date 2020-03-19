@@ -39,12 +39,12 @@ This class has no description
 
 =head2 State => Str
 
-  The state of the subnet association.
+The state of the subnet association.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 

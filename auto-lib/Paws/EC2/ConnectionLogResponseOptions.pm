@@ -40,19 +40,19 @@ This class has no description
 
 =head2 CloudwatchLogGroup => Str
 
-  The name of the Amazon CloudWatch Logs log group to which connection
+The name of the Amazon CloudWatch Logs log group to which connection
 logging data is published.
 
 
 =head2 CloudwatchLogStream => Str
 
-  The name of the Amazon CloudWatch Logs log stream to which connection
+The name of the Amazon CloudWatch Logs log stream to which connection
 logging data is published.
 
 
 =head2 Enabled => Bool
 
-  Indicates whether client connection logging is enabled for the Client
+Indicates whether client connection logging is enabled for the Client
 VPN endpoint.
 
 

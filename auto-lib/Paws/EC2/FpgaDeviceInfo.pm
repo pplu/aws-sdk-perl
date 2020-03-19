@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Count => Int
 
-  The count of FPGA accelerators for the instance type.
+The count of FPGA accelerators for the instance type.
 
 
 =head2 Manufacturer => Str
 
-  The manufacturer of the FPGA accelerator.
+The manufacturer of the FPGA accelerator.
 
 
 =head2 MemoryInfo => L<Paws::EC2::FpgaDeviceMemoryInfo>
 
-  Describes the memory for the FPGA accelerator for the instance type.
+Describes the memory for the FPGA accelerator for the instance type.
 
 
 =head2 Name => Str
 
-  The name of the FPGA accelerator.
+The name of the FPGA accelerator.
 
 
 

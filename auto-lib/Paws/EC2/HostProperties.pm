@@ -42,30 +42,30 @@ This class has no description
 
 =head2 Cores => Int
 
-  The number of cores on the Dedicated Host.
+The number of cores on the Dedicated Host.
 
 
 =head2 InstanceFamily => Str
 
-  The instance family supported by the Dedicated Host. For example,
+The instance family supported by the Dedicated Host. For example,
 C<m5>.
 
 
 =head2 InstanceType => Str
 
-  The instance type supported by the Dedicated Host. For example,
+The instance type supported by the Dedicated Host. For example,
 C<m5.large>. If the host supports multiple instance types, no
 B<instanceType> is returned.
 
 
 =head2 Sockets => Int
 
-  The number of sockets on the Dedicated Host.
+The number of sockets on the Dedicated Host.
 
 
 =head2 TotalVCpus => Int
 
-  The total number of vCPUs on the Dedicated Host.
+The total number of vCPUs on the Dedicated Host.
 
 
 

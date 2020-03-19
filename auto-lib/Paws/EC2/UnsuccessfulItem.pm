@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Error => L<Paws::EC2::UnsuccessfulItemError>
 
-  Information about the error.
+Information about the error.
 
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 

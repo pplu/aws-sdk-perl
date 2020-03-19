@@ -39,13 +39,13 @@ This class has no description
 
 =head2 B<REQUIRED> EarliestTime => Str
 
-  The earliest date and time, in UTC, for the Scheduled Instance to
+The earliest date and time, in UTC, for the Scheduled Instance to
 start.
 
 
 =head2 B<REQUIRED> LatestTime => Str
 
-  The latest date and time, in UTC, for the Scheduled Instance to start.
+The latest date and time, in UTC, for the Scheduled Instance to start.
 This value must be later than or equal to the earliest date and at most
 three months in the future.
 

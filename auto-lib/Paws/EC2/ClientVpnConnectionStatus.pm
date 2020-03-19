@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The state of the client connection.
+The state of the client connection.
 
 
 =head2 Message => Str
 
-  A message about the status of the client connection, if applicable.
+A message about the status of the client connection, if applicable.
 
 
 

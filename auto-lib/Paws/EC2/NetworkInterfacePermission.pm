@@ -43,32 +43,32 @@ This class has no description
 
 =head2 AwsAccountId => Str
 
-  The AWS account ID.
+The AWS account ID.
 
 
 =head2 AwsService => Str
 
-  The AWS service.
+The AWS service.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
 
 
 =head2 NetworkInterfacePermissionId => Str
 
-  The ID of the network interface permission.
+The ID of the network interface permission.
 
 
 =head2 Permission => Str
 
-  The type of permission.
+The type of permission.
 
 
 =head2 PermissionState => L<Paws::EC2::NetworkInterfacePermissionState>
 
-  Information about the state of the permission.
+Information about the state of the permission.
 
 
 

@@ -44,39 +44,39 @@ This class has no description
 
 =head2 CreationTime => Str
 
-  The creation time.
+The creation time.
 
 
 =head2 DefaultAssociationRouteTable => Bool
 
-  Indicates whether this is the default association route table for the
+Indicates whether this is the default association route table for the
 transit gateway.
 
 
 =head2 DefaultPropagationRouteTable => Bool
 
-  Indicates whether this is the default propagation route table for the
+Indicates whether this is the default propagation route table for the
 transit gateway.
 
 
 =head2 State => Str
 
-  The state of the transit gateway route table.
+The state of the transit gateway route table.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the route table.
+Any tags assigned to the route table.
 
 
 =head2 TransitGatewayId => Str
 
-  The ID of the transit gateway.
+The ID of the transit gateway.
 
 
 =head2 TransitGatewayRouteTableId => Str
 
-  The ID of the transit gateway route table.
+The ID of the transit gateway route table.
 
 
 

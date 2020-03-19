@@ -40,17 +40,17 @@ This class has no description
 
 =head2 B<REQUIRED> Bytes => Int
 
-  The size of the disk image, in GiB.
+The size of the disk image, in GiB.
 
 
 =head2 B<REQUIRED> Format => Str
 
-  The disk image format.
+The disk image format.
 
 
 =head2 B<REQUIRED> ImportManifestUrl => Str
 
-  A presigned URL for the import manifest stored in Amazon S3 and
+A presigned URL for the import manifest stored in Amazon S3 and
 presented here as an Amazon S3 presigned URL. For information about
 creating a presigned URL for an Amazon S3 object, read the "Query
 String Request Authentication Alternative" section of the

@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       TargetInstances => {
         AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
-        Ec2TagSet         => {
+        Ec2TagSet => {
           Ec2TagSetList => [
             [
               {

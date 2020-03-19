@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Group => Str
 
-  The group to be added or removed. The possible value is C<all>.
+The group to be added or removed. The possible value is C<all>.
 
 
 =head2 UserId => Str
 
-  The AWS account ID to be added or removed.
+The AWS account ID to be added or removed.
 
 
 

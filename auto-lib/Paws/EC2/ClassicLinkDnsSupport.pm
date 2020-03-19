@@ -39,12 +39,12 @@ This class has no description
 
 =head2 ClassicLinkDnsSupported => Bool
 
-  Indicates whether ClassicLink DNS support is enabled for the VPC.
+Indicates whether ClassicLink DNS support is enabled for the VPC.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

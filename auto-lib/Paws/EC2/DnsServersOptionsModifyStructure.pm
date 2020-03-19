@@ -39,7 +39,7 @@ This class has no description
 
 =head2 CustomDnsServers => ArrayRef[Str|Undef]
 
-  The IPv4 address range, in CIDR notation, of the DNS servers to be
+The IPv4 address range, in CIDR notation, of the DNS servers to be
 used. You can specify up to two DNS servers. Ensure that the DNS
 servers can be reached by the clients. The specified values overwrite
 the existing values.
@@ -47,7 +47,7 @@ the existing values.
 
 =head2 Enabled => Bool
 
-  Indicates whether DNS servers should be used. Specify C<False> to
+Indicates whether DNS servers should be used. Specify C<False> to
 delete the existing DNS servers.
 
 

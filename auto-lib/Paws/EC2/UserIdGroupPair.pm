@@ -44,7 +44,7 @@ This class has no description
 
 =head2 Description => Str
 
-  A description for the security group rule that references this user ID
+A description for the security group rule that references this user ID
 group pair.
 
 Constraints: Up to 255 characters in length. Allowed characters are
@@ -53,12 +53,12 @@ a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
 
 =head2 GroupId => Str
 
-  The ID of the security group.
+The ID of the security group.
 
 
 =head2 GroupName => Str
 
-  The name of the security group. In a request, use this parameter for a
+The name of the security group. In a request, use this parameter for a
 security group in EC2-Classic or a default VPC only. For a security
 group in a nondefault VPC, use the security group ID.
 
@@ -68,12 +68,12 @@ returned if the referenced security group is deleted.
 
 =head2 PeeringStatus => Str
 
-  The status of a VPC peering connection, if applicable.
+The status of a VPC peering connection, if applicable.
 
 
 =head2 UserId => Str
 
-  The ID of an AWS account.
+The ID of an AWS account.
 
 For a referenced security group in another VPC, the account ID of the
 referenced security group is returned in the response. If the
@@ -85,12 +85,12 @@ security group in another AWS account.
 
 =head2 VpcId => Str
 
-  The ID of the VPC for the referenced security group, if applicable.
+The ID of the VPC for the referenced security group, if applicable.
 
 
 =head2 VpcPeeringConnectionId => Str
 
-  The ID of the VPC peering connection, if applicable.
+The ID of the VPC peering connection, if applicable.
 
 
 

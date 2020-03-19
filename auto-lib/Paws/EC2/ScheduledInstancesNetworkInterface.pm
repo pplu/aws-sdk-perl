@@ -49,7 +49,7 @@ This class has no description
 
 =head2 AssociatePublicIpAddress => Bool
 
-  Indicates whether to assign a public IPv4 address to instances launched
+Indicates whether to assign a public IPv4 address to instances launched
 in a VPC. The public IPv4 address can only be assigned to a network
 interface for eth0, and can only be assigned to a new network
 interface, not an existing one. You cannot specify more than one
@@ -59,59 +59,59 @@ the default value is C<true>.
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether to delete the interface when the instance is
+Indicates whether to delete the interface when the instance is
 terminated.
 
 
 =head2 Description => Str
 
-  The description.
+The description.
 
 
 =head2 DeviceIndex => Int
 
-  The index of the device for the network interface attachment.
+The index of the device for the network interface attachment.
 
 
 =head2 Groups => ArrayRef[Str|Undef]
 
-  The IDs of the security groups.
+The IDs of the security groups.
 
 
 =head2 Ipv6AddressCount => Int
 
-  The number of IPv6 addresses to assign to the network interface. The
+The number of IPv6 addresses to assign to the network interface. The
 IPv6 addresses are automatically selected from the subnet range.
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::ScheduledInstancesIpv6Address>]
 
-  The specific IPv6 addresses from the subnet range.
+The specific IPv6 addresses from the subnet range.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
 
 
 =head2 PrivateIpAddress => Str
 
-  The IPv4 address of the network interface within the subnet.
+The IPv4 address of the network interface within the subnet.
 
 
 =head2 PrivateIpAddressConfigs => ArrayRef[L<Paws::EC2::ScheduledInstancesPrivateIpAddressConfig>]
 
-  The private IPv4 addresses.
+The private IPv4 addresses.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
-  The number of secondary private IPv4 addresses.
+The number of secondary private IPv4 addresses.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 

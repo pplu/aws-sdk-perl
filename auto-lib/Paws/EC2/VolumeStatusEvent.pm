@@ -43,32 +43,32 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the event.
+A description of the event.
 
 
 =head2 EventId => Str
 
-  The ID of this event.
+The ID of this event.
 
 
 =head2 EventType => Str
 
-  The type of this event.
+The type of this event.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance associated with the event.
+The ID of the instance associated with the event.
 
 
 =head2 NotAfter => Str
 
-  The latest end time of the event.
+The latest end time of the event.
 
 
 =head2 NotBefore => Str
 
-  The earliest start time of the event.
+The earliest start time of the event.
 
 
 

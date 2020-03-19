@@ -42,26 +42,26 @@ This class has no description
 
 =head2 BlockDurationMinutes => Int
 
-  The required duration for the Spot Instances (also known as Spot
+The required duration for the Spot Instances (also known as Spot
 blocks), in minutes. This value must be a multiple of 60 (60, 120, 180,
 240, 300, or 360).
 
 
 =head2 InstanceInterruptionBehavior => Str
 
-  The behavior when a Spot Instance is interrupted. The default is
+The behavior when a Spot Instance is interrupted. The default is
 C<terminate>.
 
 
 =head2 MaxPrice => Str
 
-  The maximum hourly price you're willing to pay for the Spot Instances.
+The maximum hourly price you're willing to pay for the Spot Instances.
 The default is the On-Demand price.
 
 
 =head2 SpotInstanceType => Str
 
-  The Spot Instance request type. For RunInstances, persistent Spot
+The Spot Instance request type. For RunInstances, persistent Spot
 Instance requests are only supported when
 B<InstanceInterruptionBehavior> is set to either C<hibernate> or
 C<stop>.
@@ -69,7 +69,7 @@ C<stop>.
 
 =head2 ValidUntil => Str
 
-  The end date of the request. For a one-time request, the request
+The end date of the request. For a one-time request, the request
 remains active until all instances launch, the request is canceled, or
 this date is reached. If the request is persistent, it remains active
 until it is canceled or this date and time is reached. The default end

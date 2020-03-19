@@ -52,80 +52,80 @@ This class has no description
 
 =head2 AssignIpv6AddressOnCreation => Bool
 
-  Indicates whether a network interface created in this subnet (including
+Indicates whether a network interface created in this subnet (including
 a network interface created by RunInstances) receives an IPv6 address.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the subnet.
+The Availability Zone of the subnet.
 
 
 =head2 AvailabilityZoneId => Str
 
-  The AZ ID of the subnet.
+The AZ ID of the subnet.
 
 
 =head2 AvailableIpAddressCount => Int
 
-  The number of unused private IPv4 addresses in the subnet. The IPv4
+The number of unused private IPv4 addresses in the subnet. The IPv4
 addresses for any stopped instances are considered unavailable.
 
 
 =head2 CidrBlock => Str
 
-  The IPv4 CIDR block assigned to the subnet.
+The IPv4 CIDR block assigned to the subnet.
 
 
 =head2 DefaultForAz => Bool
 
-  Indicates whether this is the default subnet for the Availability Zone.
+Indicates whether this is the default subnet for the Availability Zone.
 
 
 =head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::SubnetIpv6CidrBlockAssociation>]
 
-  Information about the IPv6 CIDR blocks associated with the subnet.
+Information about the IPv6 CIDR blocks associated with the subnet.
 
 
 =head2 MapPublicIpOnLaunch => Bool
 
-  Indicates whether instances launched in this subnet receive a public
+Indicates whether instances launched in this subnet receive a public
 IPv4 address.
 
 
 =head2 OutpostArn => Str
 
-  The Amazon Resource Name (ARN) of the Outpost.
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the subnet.
+The ID of the AWS account that owns the subnet.
 
 
 =head2 State => Str
 
-  The current state of the subnet.
+The current state of the subnet.
 
 
 =head2 SubnetArn => Str
 
-  The Amazon Resource Name (ARN) of the subnet.
+The Amazon Resource Name (ARN) of the subnet.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the subnet.
+Any tags assigned to the subnet.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC the subnet is in.
+The ID of the VPC the subnet is in.
 
 
 

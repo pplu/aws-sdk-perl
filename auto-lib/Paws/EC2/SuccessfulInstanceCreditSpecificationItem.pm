@@ -38,7 +38,7 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 

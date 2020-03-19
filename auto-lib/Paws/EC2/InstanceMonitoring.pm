@@ -39,12 +39,12 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 Monitoring => L<Paws::EC2::Monitoring>
 
-  The monitoring for the instance.
+The monitoring for the instance.
 
 
 

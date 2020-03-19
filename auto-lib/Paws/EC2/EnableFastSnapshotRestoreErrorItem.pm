@@ -39,12 +39,12 @@ This class has no description
 
 =head2 FastSnapshotRestoreStateErrors => ArrayRef[L<Paws::EC2::EnableFastSnapshotRestoreStateErrorItem>]
 
-  The errors.
+The errors.
 
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+The ID of the snapshot.
 
 
 

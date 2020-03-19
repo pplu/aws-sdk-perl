@@ -38,7 +38,7 @@ This class has no description
 
 =head2 ClientRootCertificateChain => Str
 
-  The ARN of the client certificate.
+The ARN of the client certificate.
 
 
 

@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  A list of security groups.
+A list of security groups.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the instance.
+Any tags assigned to the instance.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Indicates whether detailed monitoring is enabled. Otherwise, basic
+Indicates whether detailed monitoring is enabled. Otherwise, basic
 monitoring is enabled.
 
 

@@ -40,17 +40,17 @@ This class has no description
 
 =head2 Cidrs => ArrayRef[Str|Undef]
 
-  The IP address range of the AWS service.
+The IP address range of the AWS service.
 
 
 =head2 PrefixListId => Str
 
-  The ID of the prefix.
+The ID of the prefix.
 
 
 =head2 PrefixListName => Str
 
-  The name of the prefix.
+The name of the prefix.
 
 
 

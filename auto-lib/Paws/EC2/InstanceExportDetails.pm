@@ -39,12 +39,12 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  The ID of the resource being exported.
+The ID of the resource being exported.
 
 
 =head2 TargetEnvironment => Str
 
-  The target virtualization environment.
+The target virtualization environment.
 
 
 

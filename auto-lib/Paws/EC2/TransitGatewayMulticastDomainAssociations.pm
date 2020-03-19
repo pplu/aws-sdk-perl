@@ -42,27 +42,27 @@ This class has no description
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 =head2 ResourceType => Str
 
-  The type of resource, for example a VPC attachment.
+The type of resource, for example a VPC attachment.
 
 
 =head2 Subnets => ArrayRef[L<Paws::EC2::SubnetAssociation>]
 
-  The subnets associated with the multicast domain.
+The subnets associated with the multicast domain.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the transit gateway attachment.
+The ID of the transit gateway attachment.
 
 
 =head2 TransitGatewayMulticastDomainId => Str
 
-  The ID of the transit gateway multicast domain.
+The ID of the transit gateway multicast domain.
 
 
 

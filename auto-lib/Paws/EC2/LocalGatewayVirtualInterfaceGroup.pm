@@ -41,22 +41,22 @@ This class has no description
 
 =head2 LocalGatewayId => Str
 
-  The ID of the local gateway.
+The ID of the local gateway.
 
 
 =head2 LocalGatewayVirtualInterfaceGroupId => Str
 
-  The ID of the virtual interface group.
+The ID of the virtual interface group.
 
 
 =head2 LocalGatewayVirtualInterfaceIds => ArrayRef[Str|Undef]
 
-  The IDs of the virtual interfaces.
+The IDs of the virtual interfaces.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the virtual interface group.
+The tags assigned to the virtual interface group.
 
 
 

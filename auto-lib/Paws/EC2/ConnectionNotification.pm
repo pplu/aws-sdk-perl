@@ -44,38 +44,38 @@ This class has no description
 
 =head2 ConnectionEvents => ArrayRef[Str|Undef]
 
-  The events for the notification. Valid values are C<Accept>,
+The events for the notification. Valid values are C<Accept>,
 C<Connect>, C<Delete>, and C<Reject>.
 
 
 =head2 ConnectionNotificationArn => Str
 
-  The ARN of the SNS topic for the notification.
+The ARN of the SNS topic for the notification.
 
 
 =head2 ConnectionNotificationId => Str
 
-  The ID of the notification.
+The ID of the notification.
 
 
 =head2 ConnectionNotificationState => Str
 
-  The state of the notification.
+The state of the notification.
 
 
 =head2 ConnectionNotificationType => Str
 
-  The type of notification.
+The type of notification.
 
 
 =head2 ServiceId => Str
 
-  The ID of the endpoint service.
+The ID of the endpoint service.
 
 
 =head2 VpcEndpointId => Str
 
-  The ID of the VPC endpoint.
+The ID of the VPC endpoint.
 
 
 

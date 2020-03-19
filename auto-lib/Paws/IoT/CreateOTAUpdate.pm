@@ -41,13 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateOTAUpdateResponse = $iot->CreateOTAUpdate(
       Files => [
         {
-          Attributes  => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
+          Attributes => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
           CodeSigning => {
-            AwsSignerJobId    => 'MySigningJobId',              # OPTIONAL
+            AwsSignerJobId    => 'MySigningJobId',             # OPTIONAL
             CustomCodeSigning => {
               CertificateChain => {
-                CertificateName => 'MyCertificateName',         # OPTIONAL
-                InlineDocument  => 'MyInlineDocument',          # OPTIONAL
+                CertificateName => 'MyCertificateName',        # OPTIONAL
+                InlineDocument  => 'MyInlineDocument',         # OPTIONAL
               },    # OPTIONAL
               HashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
               Signature     => {

@@ -39,12 +39,12 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+The Availability Zone.
 
 
 =head2 Error => L<Paws::EC2::DisableFastSnapshotRestoreStateError>
 
-  The error.
+The error.
 
 
 

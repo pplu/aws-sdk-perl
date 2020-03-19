@@ -42,28 +42,28 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+The Availability Zone.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 ProductDescription => Str
 
-  A general description of the AMI.
+A general description of the AMI.
 
 
 =head2 SpotPrice => Str
 
-  The maximum price per hour that you are willing to pay for a Spot
+The maximum price per hour that you are willing to pay for a Spot
 Instance.
 
 
 =head2 Timestamp => Str
 
-  The date and time the request was created, in UTC format (for example,
+The date and time the request was created, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 

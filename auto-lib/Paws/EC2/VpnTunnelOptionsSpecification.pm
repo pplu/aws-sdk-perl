@@ -52,7 +52,7 @@ This class has no description
 
 =head2 DPDTimeoutSeconds => Int
 
-  The number of seconds after which a DPD timeout occurs.
+The number of seconds after which a DPD timeout occurs.
 
 Constraints: A value between 0 and 30.
 
@@ -61,14 +61,14 @@ Default: C<30>
 
 =head2 IKEVersions => ArrayRef[L<Paws::EC2::IKEVersionsRequestListValue>]
 
-  The IKE versions that are permitted for the VPN tunnel.
+The IKE versions that are permitted for the VPN tunnel.
 
 Valid values: C<ikev1> | C<ikev2>
 
 
 =head2 Phase1DHGroupNumbers => ArrayRef[L<Paws::EC2::Phase1DHGroupNumbersRequestListValue>]
 
-  One or more Diffie-Hellman group numbers that are permitted for the VPN
+One or more Diffie-Hellman group numbers that are permitted for the VPN
 tunnel for phase 1 IKE negotiations.
 
 Valid values: C<2> | C<14> | C<15> | C<16> | C<17> | C<18> | C<22> |
@@ -77,7 +77,7 @@ C<23> | C<24>
 
 =head2 Phase1EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase1EncryptionAlgorithmsRequestListValue>]
 
-  One or more encryption algorithms that are permitted for the VPN tunnel
+One or more encryption algorithms that are permitted for the VPN tunnel
 for phase 1 IKE negotiations.
 
 Valid values: C<AES128> | C<AES256>
@@ -85,7 +85,7 @@ Valid values: C<AES128> | C<AES256>
 
 =head2 Phase1IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase1IntegrityAlgorithmsRequestListValue>]
 
-  One or more integrity algorithms that are permitted for the VPN tunnel
+One or more integrity algorithms that are permitted for the VPN tunnel
 for phase 1 IKE negotiations.
 
 Valid values: C<SHA1> | C<SHA2-256>
@@ -93,7 +93,7 @@ Valid values: C<SHA1> | C<SHA2-256>
 
 =head2 Phase1LifetimeSeconds => Int
 
-  The lifetime for phase 1 of the IKE negotiation, in seconds.
+The lifetime for phase 1 of the IKE negotiation, in seconds.
 
 Constraints: A value between 900 and 28,800.
 
@@ -102,7 +102,7 @@ Default: C<28800>
 
 =head2 Phase2DHGroupNumbers => ArrayRef[L<Paws::EC2::Phase2DHGroupNumbersRequestListValue>]
 
-  One or more Diffie-Hellman group numbers that are permitted for the VPN
+One or more Diffie-Hellman group numbers that are permitted for the VPN
 tunnel for phase 2 IKE negotiations.
 
 Valid values: C<2> | C<5> | C<14> | C<15> | C<16> | C<17> | C<18> |
@@ -111,7 +111,7 @@ C<22> | C<23> | C<24>
 
 =head2 Phase2EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase2EncryptionAlgorithmsRequestListValue>]
 
-  One or more encryption algorithms that are permitted for the VPN tunnel
+One or more encryption algorithms that are permitted for the VPN tunnel
 for phase 2 IKE negotiations.
 
 Valid values: C<AES128> | C<AES256>
@@ -119,7 +119,7 @@ Valid values: C<AES128> | C<AES256>
 
 =head2 Phase2IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase2IntegrityAlgorithmsRequestListValue>]
 
-  One or more integrity algorithms that are permitted for the VPN tunnel
+One or more integrity algorithms that are permitted for the VPN tunnel
 for phase 2 IKE negotiations.
 
 Valid values: C<SHA1> | C<SHA2-256>
@@ -127,7 +127,7 @@ Valid values: C<SHA1> | C<SHA2-256>
 
 =head2 Phase2LifetimeSeconds => Int
 
-  The lifetime for phase 2 of the IKE negotiation, in seconds.
+The lifetime for phase 2 of the IKE negotiation, in seconds.
 
 Constraints: A value between 900 and 3,600. The value must be less than
 the value for C<Phase1LifetimeSeconds>.
@@ -137,7 +137,7 @@ Default: C<3600>
 
 =head2 PreSharedKey => Str
 
-  The pre-shared key (PSK) to establish initial authentication between
+The pre-shared key (PSK) to establish initial authentication between
 the virtual private gateway and customer gateway.
 
 Constraints: Allowed characters are alphanumeric characters, periods
@@ -147,7 +147,7 @@ and cannot start with zero (0).
 
 =head2 RekeyFuzzPercentage => Int
 
-  The percentage of the rekey window (determined by
+The percentage of the rekey window (determined by
 C<RekeyMarginTimeSeconds>) during which the rekey time is randomly
 selected.
 
@@ -158,7 +158,7 @@ Default: C<100>
 
 =head2 RekeyMarginTimeSeconds => Int
 
-  The margin time, in seconds, before the phase 2 lifetime expires,
+The margin time, in seconds, before the phase 2 lifetime expires,
 during which the AWS side of the VPN connection performs an IKE rekey.
 The exact time of the rekey is randomly selected based on the value for
 C<RekeyFuzzPercentage>.
@@ -170,7 +170,7 @@ Default: C<540>
 
 =head2 ReplayWindowSize => Int
 
-  The number of packets in an IKE replay window.
+The number of packets in an IKE replay window.
 
 Constraints: A value between 64 and 2048.
 
@@ -179,7 +179,7 @@ Default: C<1024>
 
 =head2 TunnelInsideCidr => Str
 
-  The range of inside IP addresses for the tunnel. Any specified CIDR
+The range of inside IP addresses for the tunnel. Any specified CIDR
 blocks must be unique across all VPN connections that use the same
 virtual private gateway.
 

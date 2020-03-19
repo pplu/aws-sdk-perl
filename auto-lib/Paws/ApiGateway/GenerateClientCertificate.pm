@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGateway');
     my $ClientCertificate = $apigateway->GenerateClientCertificate(
-      Description => 'MyString',                       # OPTIONAL
-      Tags        => { 'MyString' => 'MyString', },    # OPTIONAL
+      Description => 'MyString',                # OPTIONAL
+      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:

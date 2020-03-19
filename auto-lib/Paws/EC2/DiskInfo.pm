@@ -40,17 +40,17 @@ This class has no description
 
 =head2 Count => Int
 
-  The number of disks with this configuration.
+The number of disks with this configuration.
 
 
 =head2 SizeInGB => Int
 
-  The size of the disk in GB.
+The size of the disk in GB.
 
 
 =head2 Type => Str
 
-  The type of disk.
+The type of disk.
 
 
 

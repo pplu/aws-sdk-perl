@@ -40,17 +40,17 @@ This class has no description
 
 =head2 ConnectionId => Str
 
-  The ID of the client connection.
+The ID of the client connection.
 
 
 =head2 CurrentStatus => L<Paws::EC2::ClientVpnConnectionStatus>
 
-  A message about the status of the client connection, if applicable.
+A message about the status of the client connection, if applicable.
 
 
 =head2 PreviousStatus => L<Paws::EC2::ClientVpnConnectionStatus>
 
-  The state of the client connection.
+The state of the client connection.
 
 
 

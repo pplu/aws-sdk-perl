@@ -43,33 +43,33 @@ This class has no description
 
 =head2 GroupId => Str
 
-  The ID of the placement group.
+The ID of the placement group.
 
 
 =head2 GroupName => Str
 
-  The name of the placement group.
+The name of the placement group.
 
 
 =head2 PartitionCount => Int
 
-  The number of partitions. Valid only if B<strategy> is set to
+The number of partitions. Valid only if B<strategy> is set to
 C<partition>.
 
 
 =head2 State => Str
 
-  The state of the placement group.
+The state of the placement group.
 
 
 =head2 Strategy => Str
 
-  The placement strategy.
+The placement strategy.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags applied to the placement group.
+Any tags applied to the placement group.
 
 
 

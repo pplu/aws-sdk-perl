@@ -38,7 +38,7 @@ This class has no description
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of Elastic Graphics accelerator. For more information about
+The type of Elastic Graphics accelerator. For more information about
 the values to specify for C<Type>, see Elastic Graphics Basics
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics),
 specifically the Elastic Graphics accelerator column, in the I<Amazon

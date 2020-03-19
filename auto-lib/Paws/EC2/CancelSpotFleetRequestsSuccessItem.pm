@@ -40,17 +40,17 @@ This class has no description
 
 =head2 CurrentSpotFleetRequestState => Str
 
-  The current state of the Spot Fleet request.
+The current state of the Spot Fleet request.
 
 
 =head2 PreviousSpotFleetRequestState => Str
 
-  The previous state of the Spot Fleet request.
+The previous state of the Spot Fleet request.
 
 
 =head2 SpotFleetRequestId => Str
 
-  The ID of the Spot Fleet request.
+The ID of the Spot Fleet request.
 
 
 

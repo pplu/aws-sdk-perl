@@ -39,14 +39,14 @@ This class has no description
 
 =head2 Count => Int
 
-  The number of elastic inference accelerators to attach to the instance.
+The number of elastic inference accelerators to attach to the instance.
 
 Default: 1
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of elastic inference accelerator. The possible values are
+The type of elastic inference accelerator. The possible values are
 C<eia1.medium>, C<eia1.large>, and C<eia1.xlarge>.
 
 

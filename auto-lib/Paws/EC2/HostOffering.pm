@@ -44,37 +44,37 @@ This class has no description
 
 =head2 CurrencyCode => Str
 
-  The currency of the offering.
+The currency of the offering.
 
 
 =head2 Duration => Int
 
-  The duration of the offering (in seconds).
+The duration of the offering (in seconds).
 
 
 =head2 HourlyPrice => Str
 
-  The hourly price of the offering.
+The hourly price of the offering.
 
 
 =head2 InstanceFamily => Str
 
-  The instance family of the offering.
+The instance family of the offering.
 
 
 =head2 OfferingId => Str
 
-  The ID of the offering.
+The ID of the offering.
 
 
 =head2 PaymentOption => Str
 
-  The available payment option.
+The available payment option.
 
 
 =head2 UpfrontPrice => Str
 
-  The upfront price of the offering. Does not apply to No Upfront
+The upfront price of the offering. Does not apply to No Upfront
 offerings.
 
 

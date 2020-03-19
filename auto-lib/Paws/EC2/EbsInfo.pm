@@ -39,7 +39,7 @@ This class has no description
 
 =head2 EbsOptimizedSupport => Str
 
-  Indicates that the instance type is Amazon EBS-optimized. For more
+Indicates that the instance type is Amazon EBS-optimized. For more
 information, see Amazon EBS-Optimized Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)
 in I<Amazon EC2 User Guide for Linux Instances>.
@@ -47,7 +47,7 @@ in I<Amazon EC2 User Guide for Linux Instances>.
 
 =head2 EncryptionSupport => Str
 
-  Indicates whether Amazon EBS encryption is supported.
+Indicates whether Amazon EBS encryption is supported.
 
 
 

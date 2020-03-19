@@ -39,12 +39,12 @@ This class has no description
 
 =head2 SupportedArchitectures => ArrayRef[Str|Undef]
 
-  A list of architectures supported by the instance type.
+A list of architectures supported by the instance type.
 
 
 =head2 SustainedClockSpeedInGhz => Num
 
-  The speed of the processor, in GHz.
+The speed of the processor, in GHz.
 
 
 

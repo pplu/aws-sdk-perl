@@ -49,39 +49,39 @@ This class has no description
 
 =head2 AcceptanceRequired => Bool
 
-  Indicates whether VPC endpoint connection requests to the service must
+Indicates whether VPC endpoint connection requests to the service must
 be accepted by the service owner.
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-  The Availability Zones in which the service is available.
+The Availability Zones in which the service is available.
 
 
 =head2 BaseEndpointDnsNames => ArrayRef[Str|Undef]
 
-  The DNS names for the service.
+The DNS names for the service.
 
 
 =head2 ManagesVpcEndpoints => Bool
 
-  Indicates whether the service manages its VPC endpoints. Management of
+Indicates whether the service manages its VPC endpoints. Management of
 the service VPC endpoints using the VPC endpoint API is restricted.
 
 
 =head2 Owner => Str
 
-  The AWS account ID of the service owner.
+The AWS account ID of the service owner.
 
 
 =head2 PrivateDnsName => Str
 
-  The private DNS name for the service.
+The private DNS name for the service.
 
 
 =head2 PrivateDnsNameVerificationState => Str
 
-  The verification state of the VPC endpoint service.
+The verification state of the VPC endpoint service.
 
 Consumers of the endpoint service cannot use the private name when the
 state is not C<verified>.
@@ -89,27 +89,27 @@ state is not C<verified>.
 
 =head2 ServiceId => Str
 
-  The ID of the endpoint service.
+The ID of the endpoint service.
 
 
 =head2 ServiceName => Str
 
-  The Amazon Resource Name (ARN) of the service.
+The Amazon Resource Name (ARN) of the service.
 
 
 =head2 ServiceType => ArrayRef[L<Paws::EC2::ServiceTypeDetail>]
 
-  The type of service.
+The type of service.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the service.
+Any tags assigned to the service.
 
 
 =head2 VpcEndpointPolicySupported => Bool
 
-  Indicates whether the service supports endpoint policies.
+Indicates whether the service supports endpoint policies.
 
 
 

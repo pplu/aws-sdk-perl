@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The error code.
+The error code.
 
 
 =head2 Message => Str
 
-  The error message.
+The error message.
 
 
 

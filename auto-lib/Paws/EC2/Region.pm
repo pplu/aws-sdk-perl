@@ -40,18 +40,18 @@ This class has no description
 
 =head2 Endpoint => Str
 
-  The Region service endpoint.
+The Region service endpoint.
 
 
 =head2 OptInStatus => Str
 
-  The Region opt-in status. The possible values are
+The Region opt-in status. The possible values are
 C<opt-in-not-required>, C<opted-in>, and C<not-opted-in>.
 
 
 =head2 RegionName => Str
 
-  The name of the Region.
+The name of the Region.
 
 
 

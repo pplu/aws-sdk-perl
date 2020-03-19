@@ -44,37 +44,37 @@ This class has no description
 
 =head2 AccepterTgwInfo => L<Paws::EC2::PeeringTgwInfo>
 
-  Information about the accepter transit gateway.
+Information about the accepter transit gateway.
 
 
 =head2 CreationTime => Str
 
-  The time the transit gateway peering attachment was created.
+The time the transit gateway peering attachment was created.
 
 
 =head2 RequesterTgwInfo => L<Paws::EC2::PeeringTgwInfo>
 
-  Information about the requester transit gateway.
+Information about the requester transit gateway.
 
 
 =head2 State => Str
 
-  The state of the transit gateway peering attachment.
+The state of the transit gateway peering attachment.
 
 
 =head2 Status => L<Paws::EC2::PeeringAttachmentStatus>
 
-  The status of the transit gateway peering attachment.
+The status of the transit gateway peering attachment.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the transit gateway peering attachment.
+The tags for the transit gateway peering attachment.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the transit gateway peering attachment.
+The ID of the transit gateway peering attachment.
 
 
 

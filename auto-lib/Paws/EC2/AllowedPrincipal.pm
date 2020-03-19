@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Principal => Str
 
-  The Amazon Resource Name (ARN) of the principal.
+The Amazon Resource Name (ARN) of the principal.
 
 
 =head2 PrincipalType => Str
 
-  The type of principal.
+The type of principal.
 
 
 

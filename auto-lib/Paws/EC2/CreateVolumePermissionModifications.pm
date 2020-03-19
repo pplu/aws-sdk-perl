@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Add => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
 
-  Adds the specified AWS account ID or group to the list.
+Adds the specified AWS account ID or group to the list.
 
 
 =head2 Remove => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
 
-  Removes the specified AWS account ID or group from the list.
+Removes the specified AWS account ID or group from the list.
 
 
 

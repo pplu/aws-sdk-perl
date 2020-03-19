@@ -39,12 +39,12 @@ This class has no description
 
 =head2 S3Bucket => Str
 
-  The destination S3 bucket.
+The destination S3 bucket.
 
 
 =head2 S3Prefix => Str
 
-  The prefix (logical hierarchy) in the bucket.
+The prefix (logical hierarchy) in the bucket.
 
 
 

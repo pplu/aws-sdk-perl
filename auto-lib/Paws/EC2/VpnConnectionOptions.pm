@@ -40,18 +40,18 @@ This class has no description
 
 =head2 EnableAcceleration => Bool
 
-  Indicates whether acceleration is enabled for the VPN connection.
+Indicates whether acceleration is enabled for the VPN connection.
 
 
 =head2 StaticRoutesOnly => Bool
 
-  Indicates whether the VPN connection uses static routes only. Static
+Indicates whether the VPN connection uses static routes only. Static
 routes must be used for devices that don't support BGP.
 
 
 =head2 TunnelOptions => ArrayRef[L<Paws::EC2::TunnelOption>]
 
-  Indicates the VPN tunnel options.
+Indicates the VPN tunnel options.
 
 
 

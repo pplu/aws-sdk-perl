@@ -47,53 +47,53 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The primary IPv4 CIDR block for the VPC.
+The primary IPv4 CIDR block for the VPC.
 
 
 =head2 CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcCidrBlockAssociation>]
 
-  Information about the IPv4 CIDR blocks associated with the VPC.
+Information about the IPv4 CIDR blocks associated with the VPC.
 
 
 =head2 DhcpOptionsId => Str
 
-  The ID of the set of DHCP options you've associated with the VPC (or
+The ID of the set of DHCP options you've associated with the VPC (or
 C<default> if the default options are associated with the VPC).
 
 
 =head2 InstanceTenancy => Str
 
-  The allowed tenancy of instances launched into the VPC.
+The allowed tenancy of instances launched into the VPC.
 
 
 =head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcIpv6CidrBlockAssociation>]
 
-  Information about the IPv6 CIDR blocks associated with the VPC.
+Information about the IPv6 CIDR blocks associated with the VPC.
 
 
 =head2 IsDefault => Bool
 
-  Indicates whether the VPC is the default VPC.
+Indicates whether the VPC is the default VPC.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the VPC.
+The ID of the AWS account that owns the VPC.
 
 
 =head2 State => Str
 
-  The current state of the VPC.
+The current state of the VPC.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the VPC.
+Any tags assigned to the VPC.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

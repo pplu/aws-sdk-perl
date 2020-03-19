@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Details => ArrayRef[L<Paws::EC2::VolumeStatusDetails>]
 
-  The details of the volume status.
+The details of the volume status.
 
 
 =head2 Status => Str
 
-  The status of the volume.
+The status of the volume.
 
 
 

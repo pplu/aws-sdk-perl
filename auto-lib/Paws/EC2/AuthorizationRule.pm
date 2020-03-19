@@ -43,35 +43,35 @@ This class has no description
 
 =head2 AccessAll => Bool
 
-  Indicates whether the authorization rule grants access to all clients.
+Indicates whether the authorization rule grants access to all clients.
 
 
 =head2 ClientVpnEndpointId => Str
 
-  The ID of the Client VPN endpoint with which the authorization rule is
+The ID of the Client VPN endpoint with which the authorization rule is
 associated.
 
 
 =head2 Description => Str
 
-  A brief description of the authorization rule.
+A brief description of the authorization rule.
 
 
 =head2 DestinationCidr => Str
 
-  The IPv4 address range, in CIDR notation, of the network to which the
+The IPv4 address range, in CIDR notation, of the network to which the
 authorization rule applies.
 
 
 =head2 GroupId => Str
 
-  The ID of the Active Directory group to which the authorization rule
+The ID of the Active Directory group to which the authorization rule
 grants access.
 
 
 =head2 Status => L<Paws::EC2::ClientVpnAuthorizationRuleStatus>
 
-  The current state of the authorization rule.
+The current state of the authorization rule.
 
 
 

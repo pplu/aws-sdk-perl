@@ -40,17 +40,17 @@ This class has no description
 
 =head2 Count => Int
 
-  The number of Inference accelerators for the instance type.
+The number of Inference accelerators for the instance type.
 
 
 =head2 Manufacturer => Str
 
-  The manufacturer of the Inference accelerator.
+The manufacturer of the Inference accelerator.
 
 
 =head2 Name => Str
 
-  The name of the Inference accelerator.
+The name of the Inference accelerator.
 
 
 

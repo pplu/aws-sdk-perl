@@ -40,7 +40,7 @@ This class has no description
 
 =head2 HttpEndpoint => Str
 
-  This parameter enables or disables the HTTP metadata endpoint on your
+This parameter enables or disables the HTTP metadata endpoint on your
 instances. If the parameter is not specified, the default state is
 C<enabled>.
 
@@ -50,7 +50,7 @@ your instance metadata.
 
 =head2 HttpPutResponseHopLimit => Int
 
-  The desired HTTP PUT response hop limit for instance metadata requests.
+The desired HTTP PUT response hop limit for instance metadata requests.
 The larger the number, the further instance metadata requests can
 travel.
 
@@ -61,7 +61,7 @@ Possible values: Integers from 1 to 64
 
 =head2 HttpTokens => Str
 
-  The state of token usage for your instance metadata requests. If the
+The state of token usage for your instance metadata requests. If the
 parameter is not specified in the request, the default state is
 C<optional>.
 

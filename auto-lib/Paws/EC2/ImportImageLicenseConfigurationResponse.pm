@@ -38,7 +38,7 @@ This class has no description
 
 =head2 LicenseConfigurationArn => Str
 
-  The ARN of a license configuration.
+The ARN of a license configuration.
 
 
 

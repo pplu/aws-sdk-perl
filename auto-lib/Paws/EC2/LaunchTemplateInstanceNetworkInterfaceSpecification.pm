@@ -50,70 +50,70 @@ This class has no description
 
 =head2 AssociatePublicIpAddress => Bool
 
-  Indicates whether to associate a public IPv4 address with eth0 for a
+Indicates whether to associate a public IPv4 address with eth0 for a
 new network interface.
 
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the network interface is deleted when the instance is
+Indicates whether the network interface is deleted when the instance is
 terminated.
 
 
 =head2 Description => Str
 
-  A description for the network interface.
+A description for the network interface.
 
 
 =head2 DeviceIndex => Int
 
-  The device index for the network interface attachment.
+The device index for the network interface attachment.
 
 
 =head2 Groups => ArrayRef[Str|Undef]
 
-  The IDs of one or more security groups.
+The IDs of one or more security groups.
 
 
 =head2 InterfaceType => Str
 
-  The type of network interface.
+The type of network interface.
 
 
 =head2 Ipv6AddressCount => Int
 
-  The number of IPv6 addresses for the network interface.
+The number of IPv6 addresses for the network interface.
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
 
-  The IPv6 addresses for the network interface.
+The IPv6 addresses for the network interface.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
 
 
 =head2 PrivateIpAddress => Str
 
-  The primary private IPv4 address of the network interface.
+The primary private IPv4 address of the network interface.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
-  One or more private IPv4 addresses.
+One or more private IPv4 addresses.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
-  The number of secondary private IPv4 addresses for the network
+The number of secondary private IPv4 addresses for the network
 interface.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet for the network interface.
+The ID of the subnet for the network interface.
 
 
 

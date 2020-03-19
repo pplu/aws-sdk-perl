@@ -41,22 +41,22 @@ This class has no description
 
 =head2 LaunchTemplateId => Str
 
-  The ID of the launch template.
+The ID of the launch template.
 
 
 =head2 LaunchTemplateName => Str
 
-  The name of the launch template.
+The name of the launch template.
 
 
 =head2 ResponseError => L<Paws::EC2::ResponseError>
 
-  Information about the error.
+Information about the error.
 
 
 =head2 VersionNumber => Int
 
-  The version number of the launch template.
+The version number of the launch template.
 
 
 

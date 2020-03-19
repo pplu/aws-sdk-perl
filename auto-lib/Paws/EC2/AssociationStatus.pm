@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The state of the target network association.
+The state of the target network association.
 
 
 =head2 Message => Str
 
-  A message about the status of the target network association, if
+A message about the status of the target network association, if
 applicable.
 
 

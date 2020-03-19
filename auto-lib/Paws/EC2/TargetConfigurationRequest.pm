@@ -39,14 +39,14 @@ This class has no description
 
 =head2 InstanceCount => Int
 
-  The number of instances the Covertible Reserved Instance offering can
+The number of instances the Covertible Reserved Instance offering can
 be applied to. This parameter is reserved and cannot be specified in a
 request
 
 
 =head2 B<REQUIRED> OfferingId => Str
 
-  The Convertible Reserved Instance offering ID.
+The Convertible Reserved Instance offering ID.
 
 
 

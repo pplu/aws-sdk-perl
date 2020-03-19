@@ -39,12 +39,12 @@ This class has no description
 
 =head2 CoreCount => Int
 
-  The number of CPU cores for the instance.
+The number of CPU cores for the instance.
 
 
 =head2 ThreadsPerCore => Int
 
-  The number of threads per CPU core.
+The number of threads per CPU core.
 
 
 

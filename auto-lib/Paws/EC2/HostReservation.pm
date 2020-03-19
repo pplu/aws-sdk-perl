@@ -51,78 +51,78 @@ This class has no description
 
 =head2 Count => Int
 
-  The number of Dedicated Hosts the reservation is associated with.
+The number of Dedicated Hosts the reservation is associated with.
 
 
 =head2 CurrencyCode => Str
 
-  The currency in which the C<upfrontPrice> and C<hourlyPrice> amounts
+The currency in which the C<upfrontPrice> and C<hourlyPrice> amounts
 are specified. At this time, the only supported currency is C<USD>.
 
 
 =head2 Duration => Int
 
-  The length of the reservation's term, specified in seconds. Can be
+The length of the reservation's term, specified in seconds. Can be
 C<31536000 (1 year)> | C<94608000 (3 years)>.
 
 
 =head2 End => Str
 
-  The date and time that the reservation ends.
+The date and time that the reservation ends.
 
 
 =head2 HostIdSet => ArrayRef[Str|Undef]
 
-  The IDs of the Dedicated Hosts associated with the reservation.
+The IDs of the Dedicated Hosts associated with the reservation.
 
 
 =head2 HostReservationId => Str
 
-  The ID of the reservation that specifies the associated Dedicated
+The ID of the reservation that specifies the associated Dedicated
 Hosts.
 
 
 =head2 HourlyPrice => Str
 
-  The hourly price of the reservation.
+The hourly price of the reservation.
 
 
 =head2 InstanceFamily => Str
 
-  The instance family of the Dedicated Host Reservation. The instance
+The instance family of the Dedicated Host Reservation. The instance
 family on the Dedicated Host must be the same in order for it to
 benefit from the reservation.
 
 
 =head2 OfferingId => Str
 
-  The ID of the reservation. This remains the same regardless of which
+The ID of the reservation. This remains the same regardless of which
 Dedicated Hosts are associated with it.
 
 
 =head2 PaymentOption => Str
 
-  The payment option selected for this reservation.
+The payment option selected for this reservation.
 
 
 =head2 Start => Str
 
-  The date and time that the reservation started.
+The date and time that the reservation started.
 
 
 =head2 State => Str
 
-  The state of the reservation.
+The state of the reservation.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the Dedicated Host Reservation.
+Any tags assigned to the Dedicated Host Reservation.
 
 
 =head2 UpfrontPrice => Str
 
-  The upfront price of the reservation.
+The upfront price of the reservation.
 
 
 

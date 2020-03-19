@@ -40,17 +40,17 @@ This class has no description
 
 =head2 ClassicLinkEnabled => Bool
 
-  Indicates whether the VPC is enabled for ClassicLink.
+Indicates whether the VPC is enabled for ClassicLink.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the VPC.
+Any tags assigned to the VPC.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

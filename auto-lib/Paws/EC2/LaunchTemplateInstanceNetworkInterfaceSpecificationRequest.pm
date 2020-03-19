@@ -50,33 +50,33 @@ This class has no description
 
 =head2 AssociatePublicIpAddress => Bool
 
-  Associates a public IPv4 address with eth0 for a new network interface.
+Associates a public IPv4 address with eth0 for a new network interface.
 
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the network interface is deleted when the instance is
+Indicates whether the network interface is deleted when the instance is
 terminated.
 
 
 =head2 Description => Str
 
-  A description for the network interface.
+A description for the network interface.
 
 
 =head2 DeviceIndex => Int
 
-  The device index for the network interface attachment.
+The device index for the network interface attachment.
 
 
 =head2 Groups => ArrayRef[Str|Undef]
 
-  The IDs of one or more security groups.
+The IDs of one or more security groups.
 
 
 =head2 InterfaceType => Str
 
-  The type of network interface. To create an Elastic Fabric Adapter
+The type of network interface. To create an Elastic Fabric Adapter
 (EFA), specify C<efa>. For more information, see Elastic Fabric Adapter
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the
 I<Amazon Elastic Compute Cloud User Guide>.
@@ -89,42 +89,42 @@ Valid values: C<interface> | C<efa>
 
 =head2 Ipv6AddressCount => Int
 
-  The number of IPv6 addresses to assign to a network interface. Amazon
+The number of IPv6 addresses to assign to a network interface. Amazon
 EC2 automatically selects the IPv6 addresses from the subnet range. You
 can't use this option if specifying specific IPv6 addresses.
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6AddressRequest>]
 
-  One or more specific IPv6 addresses from the IPv6 CIDR block range of
+One or more specific IPv6 addresses from the IPv6 CIDR block range of
 your subnet. You can't use this option if you're specifying a number of
 IPv6 addresses.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
 
 
 =head2 PrivateIpAddress => Str
 
-  The primary private IPv4 address of the network interface.
+The primary private IPv4 address of the network interface.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
-  One or more private IPv4 addresses.
+One or more private IPv4 addresses.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
-  The number of secondary private IPv4 addresses to assign to a network
+The number of secondary private IPv4 addresses to assign to a network
 interface.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet for the network interface.
+The ID of the subnet for the network interface.
 
 
 

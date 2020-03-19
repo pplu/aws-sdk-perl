@@ -39,12 +39,12 @@ This class has no description
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the volume is deleted on instance termination.
+Indicates whether the volume is deleted on instance termination.
 
 
 =head2 VolumeId => Str
 
-  The ID of the EBS volume.
+The ID of the EBS volume.
 
 
 

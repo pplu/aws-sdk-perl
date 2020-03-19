@@ -39,13 +39,13 @@ This class has no description
 
 =head2 Add => ArrayRef[L<Paws::EC2::LaunchPermission>]
 
-  The AWS account ID to add to the list of launch permissions for the
+The AWS account ID to add to the list of launch permissions for the
 AMI.
 
 
 =head2 Remove => ArrayRef[L<Paws::EC2::LaunchPermission>]
 
-  The AWS account ID to remove from the list of launch permissions for
+The AWS account ID to remove from the list of launch permissions for
 the AMI.
 
 

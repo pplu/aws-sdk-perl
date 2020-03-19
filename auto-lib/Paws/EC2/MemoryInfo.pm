@@ -38,7 +38,7 @@ This class has no description
 
 =head2 SizeInMiB => Int
 
-  Size of the memory, in MiB.
+Size of the memory, in MiB.
 
 
 

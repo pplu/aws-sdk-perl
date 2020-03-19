@@ -44,39 +44,39 @@ This class has no description
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the EBS volume is deleted on instance termination.
+Indicates whether the EBS volume is deleted on instance termination.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the EBS volume is encrypted.
+Indicates whether the EBS volume is encrypted.
 
 
 =head2 Iops => Int
 
-  The number of I/O operations per second (IOPS) that the volume
+The number of I/O operations per second (IOPS) that the volume
 supports.
 
 
 =head2 KmsKeyId => Str
 
-  The ARN of the AWS Key Management Service (AWS KMS) CMK used for
+The ARN of the AWS Key Management Service (AWS KMS) CMK used for
 encryption.
 
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+The ID of the snapshot.
 
 
 =head2 VolumeSize => Int
 
-  The size of the volume, in GiB.
+The size of the volume, in GiB.
 
 
 =head2 VolumeType => Str
 
-  The volume type.
+The volume type.
 
 
 

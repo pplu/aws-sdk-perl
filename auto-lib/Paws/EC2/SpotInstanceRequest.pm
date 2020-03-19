@@ -56,80 +56,80 @@ This class has no description
 
 =head2 ActualBlockHourlyPrice => Str
 
-  If you specified a duration and your Spot Instance request was
+If you specified a duration and your Spot Instance request was
 fulfilled, this is the fixed hourly price in effect for the Spot
 Instance while it runs.
 
 
 =head2 AvailabilityZoneGroup => Str
 
-  The Availability Zone group. If you specify the same Availability Zone
+The Availability Zone group. If you specify the same Availability Zone
 group for all Spot Instance requests, all Spot Instances are launched
 in the same Availability Zone.
 
 
 =head2 BlockDurationMinutes => Int
 
-  The duration for the Spot Instance, in minutes.
+The duration for the Spot Instance, in minutes.
 
 
 =head2 CreateTime => Str
 
-  The date and time when the Spot Instance request was created, in UTC
+The date and time when the Spot Instance request was created, in UTC
 format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
 =head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
 
-  The fault codes for the Spot Instance request, if any.
+The fault codes for the Spot Instance request, if any.
 
 
 =head2 InstanceId => Str
 
-  The instance ID, if an instance has been launched to fulfill the Spot
+The instance ID, if an instance has been launched to fulfill the Spot
 Instance request.
 
 
 =head2 InstanceInterruptionBehavior => Str
 
-  The behavior when a Spot Instance is interrupted.
+The behavior when a Spot Instance is interrupted.
 
 
 =head2 LaunchedAvailabilityZone => Str
 
-  The Availability Zone in which the request is launched.
+The Availability Zone in which the request is launched.
 
 
 =head2 LaunchGroup => Str
 
-  The instance launch group. Launch groups are Spot Instances that launch
+The instance launch group. Launch groups are Spot Instances that launch
 together and terminate together.
 
 
 =head2 LaunchSpecification => L<Paws::EC2::LaunchSpecification>
 
-  Additional information for launching instances.
+Additional information for launching instances.
 
 
 =head2 ProductDescription => Str
 
-  The product description associated with the Spot Instance.
+The product description associated with the Spot Instance.
 
 
 =head2 SpotInstanceRequestId => Str
 
-  The ID of the Spot Instance request.
+The ID of the Spot Instance request.
 
 
 =head2 SpotPrice => Str
 
-  The maximum price per hour that you are willing to pay for a Spot
+The maximum price per hour that you are willing to pay for a Spot
 Instance.
 
 
 =head2 State => Str
 
-  The state of the Spot Instance request. Spot status information helps
+The state of the Spot Instance request. Spot status information helps
 track your Spot Instance requests. For more information, see Spot
 Status
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
@@ -138,30 +138,30 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =head2 Status => L<Paws::EC2::SpotInstanceStatus>
 
-  The status code and status message describing the Spot Instance
+The status code and status message describing the Spot Instance
 request.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the resource.
+Any tags assigned to the resource.
 
 
 =head2 Type => Str
 
-  The Spot Instance request type.
+The Spot Instance request type.
 
 
 =head2 ValidFrom => Str
 
-  The start date of the request, in UTC format (for example,
+The start date of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). The request becomes active at
 this date and time.
 
 
 =head2 ValidUntil => Str
 
-  The end date of the request, in UTC format (for example,
+The end date of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). If this is a one-time request,
 it remains active until all instances launch, the request is canceled,
 or this date is reached. If the request is persistent, it remains

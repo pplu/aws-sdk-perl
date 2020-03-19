@@ -37,20 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataSetId        => 'MyResourceId',
       GrantPermissions => [
         {
-          Actions   => [ 'MyString', ... ],    # min: 1, max: 16
-          Principal => 'MyPrincipal',          # min: 1, max: 256
+          Actions => [ 'MyString', ... ],    # min: 1, max: 16
+          Principal => 'MyPrincipal',        # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                     # OPTIONAL
       RevokePermissions => [
         {
-          Actions   => [ 'MyString', ... ],    # min: 1, max: 16
-          Principal => 'MyPrincipal',          # min: 1, max: 256
+          Actions => [ 'MyString', ... ],    # min: 1, max: 16
+          Principal => 'MyPrincipal',        # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                     # OPTIONAL
       );
 
     # Results:

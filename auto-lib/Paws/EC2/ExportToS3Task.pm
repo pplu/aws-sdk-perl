@@ -41,25 +41,25 @@ This class has no description
 
 =head2 ContainerFormat => Str
 
-  The container format used to combine disk images with metadata (such as
+The container format used to combine disk images with metadata (such as
 OVF). If absent, only the disk image is exported.
 
 
 =head2 DiskImageFormat => Str
 
-  The format for the exported image.
+The format for the exported image.
 
 
 =head2 S3Bucket => Str
 
-  The S3 bucket for the destination image. The destination bucket must
+The S3 bucket for the destination image. The destination bucket must
 exist and grant WRITE and READ_ACP permissions to the AWS account
 C<vm-import-export@amazon.com>.
 
 
 =head2 S3Key => Str
 
-  The encryption key for your S3 bucket.
+The encryption key for your S3 bucket.
 
 
 
