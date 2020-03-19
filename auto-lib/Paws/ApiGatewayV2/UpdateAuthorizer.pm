@@ -43,13 +43,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AuthorizerCredentialsArn     => 'MyArn',        # OPTIONAL
       AuthorizerResultTtlInSeconds => 1,              # OPTIONAL
       AuthorizerType               => 'REQUEST',      # OPTIONAL
-      AuthorizerUri  => 'MyUriWithLengthBetween1And2048',    # OPTIONAL
-      IdentitySource => [ 'My__string', ... ],               # OPTIONAL
+      AuthorizerUri => 'MyUriWithLengthBetween1And2048',    # OPTIONAL
+      IdentitySource => [ 'My__string', ... ],              # OPTIONAL
       IdentityValidationExpression =>
-        'MyStringWithLengthBetween0And1024',                 # OPTIONAL
+        'MyStringWithLengthBetween0And1024',                # OPTIONAL
       JwtConfiguration => {
-        Audience => [ 'My__string', ... ],                   # OPTIONAL
-        Issuer   => 'MyUriWithLengthBetween1And2048',
+        Audience => [ 'My__string', ... ],                  # OPTIONAL
+        Issuer => 'MyUriWithLengthBetween1And2048',
       },    # OPTIONAL
       Name => 'MyStringWithLengthBetween1And128',    # OPTIONAL
     );

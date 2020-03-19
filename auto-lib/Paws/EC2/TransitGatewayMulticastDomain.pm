@@ -42,27 +42,27 @@ This class has no description
 
 =head2 CreationTime => Str
 
-  The time the transit gateway multicast domain was created.
+The time the transit gateway multicast domain was created.
 
 
 =head2 State => Str
 
-  The state of the transit gateway multicast domain.
+The state of the transit gateway multicast domain.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the transit gateway multicast domain.
+The tags for the transit gateway multicast domain.
 
 
 =head2 TransitGatewayId => Str
 
-  The ID of the transit gateway.
+The ID of the transit gateway.
 
 
 =head2 TransitGatewayMulticastDomainId => Str
 
-  The ID of the transit gateway multicast domain.
+The ID of the transit gateway multicast domain.
 
 
 

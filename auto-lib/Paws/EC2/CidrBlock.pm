@@ -38,7 +38,7 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The IPv4 CIDR block.
+The IPv4 CIDR block.
 
 
 

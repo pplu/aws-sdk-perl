@@ -39,13 +39,13 @@ This class has no description
 
 =head2 ResourceType => Str
 
-  The type of resource. Currently, the only resource types that are
+The type of resource. Currently, the only resource types that are
 supported are C<spot-fleet-request> and C<instance>.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags.
+The tags.
 
 
 

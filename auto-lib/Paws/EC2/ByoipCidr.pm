@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Cidr => Str
 
-  The address range, in CIDR notation.
+The address range, in CIDR notation.
 
 
 =head2 Description => Str
 
-  The description of the address range.
+The description of the address range.
 
 
 =head2 State => Str
 
-  The state of the address pool.
+The state of the address pool.
 
 
 =head2 StatusMessage => Str
 
-  Upon success, contains the ID of the address pool. Otherwise, contains
+Upon success, contains the ID of the address pool. Otherwise, contains
 an error message.
 
 

@@ -40,18 +40,18 @@ This class has no description
 
 =head2 HourlyPrice => Str
 
-  The hourly rate of the reservation.
+The hourly rate of the reservation.
 
 
 =head2 RemainingTotalValue => Str
 
-  The balance of the total value (the sum of remainingUpfrontValue +
+The balance of the total value (the sum of remainingUpfrontValue +
 hourlyPrice * number of hours remaining).
 
 
 =head2 RemainingUpfrontValue => Str
 
-  The remaining upfront cost of the reservation.
+The remaining upfront cost of the reservation.
 
 
 

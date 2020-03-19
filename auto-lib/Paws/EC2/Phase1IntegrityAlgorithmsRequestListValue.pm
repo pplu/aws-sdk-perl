@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Value => Str
 
-  The value for the integrity algorithm.
+The value for the integrity algorithm.
 
 
 

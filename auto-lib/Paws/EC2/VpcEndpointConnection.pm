@@ -44,38 +44,38 @@ This class has no description
 
 =head2 CreationTimestamp => Str
 
-  The date and time that the VPC endpoint was created.
+The date and time that the VPC endpoint was created.
 
 
 =head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]
 
-  The DNS entries for the VPC endpoint.
+The DNS entries for the VPC endpoint.
 
 
 =head2 NetworkLoadBalancerArns => ArrayRef[Str|Undef]
 
-  The Amazon Resource Names (ARNs) of the network load balancers for the
+The Amazon Resource Names (ARNs) of the network load balancers for the
 service.
 
 
 =head2 ServiceId => Str
 
-  The ID of the service to which the endpoint is connected.
+The ID of the service to which the endpoint is connected.
 
 
 =head2 VpcEndpointId => Str
 
-  The ID of the VPC endpoint.
+The ID of the VPC endpoint.
 
 
 =head2 VpcEndpointOwner => Str
 
-  The AWS account ID of the owner of the VPC endpoint.
+The AWS account ID of the owner of the VPC endpoint.
 
 
 =head2 VpcEndpointState => Str
 
-  The state of the VPC endpoint.
+The state of the VPC endpoint.
 
 
 

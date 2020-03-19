@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       QueryText       => 'MyQueryText',
       AttributeFilter => {
         AndAllFilters => [ <AttributeFilter>, ... ],  # min: 1, max: 5; OPTIONAL
-        ContainsAll   => {
+        ContainsAll => {
           Key   => 'MyDocumentAttributeKey',          # min: 1, max: 200
           Value => {
             DateValue       => '1970-01-01T01:00:00',    # OPTIONAL

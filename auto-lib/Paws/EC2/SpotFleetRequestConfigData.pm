@@ -60,7 +60,7 @@ This class has no description
 
 =head2 AllocationStrategy => Str
 
-  Indicates how to allocate the target Spot Instance capacity across the
+Indicates how to allocate the target Spot Instance capacity across the
 Spot Instance pools specified by the Spot Fleet request.
 
 If the allocation strategy is C<lowestPrice>, Spot Fleet launches
@@ -77,7 +77,7 @@ of instances that are launching.
 
 =head2 ClientToken => Str
 
-  A unique, case-sensitive identifier that you provide to ensure the
+A unique, case-sensitive identifier that you provide to ensure the
 idempotency of your listings. This helps to avoid duplicate listings.
 For more information, see Ensuring Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
@@ -85,20 +85,20 @@ For more information, see Ensuring Idempotency
 
 =head2 ExcessCapacityTerminationPolicy => Str
 
-  Indicates whether running Spot Instances should be terminated if you
+Indicates whether running Spot Instances should be terminated if you
 decrease the target capacity of the Spot Fleet request below the
 current size of the Spot Fleet.
 
 
 =head2 FulfilledCapacity => Num
 
-  The number of units fulfilled by this request compared to the set
+The number of units fulfilled by this request compared to the set
 target capacity. You cannot set this value.
 
 
 =head2 B<REQUIRED> IamFleetRole => Str
 
-  The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that grants the Spot Fleet the permission to request,
 launch, terminate, and tag instances on your behalf. For more
 information, see Spot Fleet Prerequisites
@@ -111,13 +111,13 @@ expires, if you set C<TerminateInstancesWithExpiration>.
 
 =head2 InstanceInterruptionBehavior => Str
 
-  The behavior when a Spot Instance is interrupted. The default is
+The behavior when a Spot Instance is interrupted. The default is
 C<terminate>.
 
 
 =head2 InstancePoolsToUseCount => Int
 
-  The number of Spot pools across which to allocate your target Spot
+The number of Spot pools across which to allocate your target Spot
 capacity. Valid only when Spot B<AllocationStrategy> is set to
 C<lowest-price>. Spot Fleet selects the cheapest Spot pools and evenly
 allocates your target Spot capacity across the number of Spot pools
@@ -126,7 +126,7 @@ that you specify.
 
 =head2 LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
-  The launch specifications for the Spot Fleet request. If you specify
+The launch specifications for the Spot Fleet request. If you specify
 C<LaunchSpecifications>, you can't specify C<LaunchTemplateConfigs>. If
 you include On-Demand capacity in your request, you must use
 C<LaunchTemplateConfigs>.
@@ -134,7 +134,7 @@ C<LaunchTemplateConfigs>.
 
 =head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::LaunchTemplateConfig>]
 
-  The launch template and overrides. If you specify
+The launch template and overrides. If you specify
 C<LaunchTemplateConfigs>, you can't specify C<LaunchSpecifications>. If
 you include On-Demand capacity in your request, you must use
 C<LaunchTemplateConfigs>.
@@ -142,7 +142,7 @@ C<LaunchTemplateConfigs>.
 
 =head2 LoadBalancersConfig => L<Paws::EC2::LoadBalancersConfig>
 
-  One or more Classic Load Balancers and target groups to attach to the
+One or more Classic Load Balancers and target groups to attach to the
 Spot Fleet request. Spot Fleet registers the running Spot Instances
 with the specified Classic Load Balancers and target groups.
 
@@ -153,7 +153,7 @@ G1, G2, HI1, HS1, M1, M2, M3, and T1.
 
 =head2 OnDemandAllocationStrategy => Str
 
-  The order of the launch template overrides to use in fulfilling
+The order of the launch template overrides to use in fulfilling
 On-Demand capacity. If you specify C<lowestPrice>, Spot Fleet uses
 price to determine the order, launching the lowest price first. If you
 specify C<prioritized>, Spot Fleet uses the priority that you assign to
@@ -164,13 +164,13 @@ C<lowestPrice>.
 
 =head2 OnDemandFulfilledCapacity => Num
 
-  The number of On-Demand units fulfilled by this request compared to the
+The number of On-Demand units fulfilled by this request compared to the
 set target On-Demand capacity.
 
 
 =head2 OnDemandMaxTotalPrice => Str
 
-  The maximum amount per hour for On-Demand Instances that you're willing
+The maximum amount per hour for On-Demand Instances that you're willing
 to pay. You can use the C<onDemandMaxTotalPrice> parameter, the
 C<spotMaxTotalPrice> parameter, or both parameters to ensure that your
 fleet cost does not exceed your budget. If you set a maximum price per
@@ -183,7 +183,7 @@ met the target capacity.
 
 =head2 OnDemandTargetCapacity => Int
 
-  The number of On-Demand units to request. You can choose to set the
+The number of On-Demand units to request. You can choose to set the
 target capacity in terms of instances or a performance characteristic
 that is important to your application workload, such as vCPUs, memory,
 or I/O. If the request type is C<maintain>, you can specify a target
@@ -192,12 +192,12 @@ capacity of 0 and add capacity later.
 
 =head2 ReplaceUnhealthyInstances => Bool
 
-  Indicates whether Spot Fleet should replace unhealthy instances.
+Indicates whether Spot Fleet should replace unhealthy instances.
 
 
 =head2 SpotMaxTotalPrice => Str
 
-  The maximum amount per hour for Spot Instances that you're willing to
+The maximum amount per hour for Spot Instances that you're willing to
 pay. You can use the C<spotdMaxTotalPrice> parameter, the
 C<onDemandMaxTotalPrice> parameter, or both parameters to ensure that
 your fleet cost does not exceed your budget. If you set a maximum price
@@ -210,13 +210,13 @@ hasnE<rsquo>t met the target capacity.
 
 =head2 SpotPrice => Str
 
-  The maximum price per unit hour that you are willing to pay for a Spot
+The maximum price per unit hour that you are willing to pay for a Spot
 Instance. The default is the On-Demand price.
 
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
 
-  The key-value pair for tagging the Spot Fleet request on creation. The
+The key-value pair for tagging the Spot Fleet request on creation. The
 value for C<ResourceType> must be C<spot-fleet-request>, otherwise the
 Spot Fleet request fails. To tag instances at launch, specify the tags
 in the launch template
@@ -227,7 +227,7 @@ For information about tagging after launch, see Tagging Your Resources
 
 =head2 B<REQUIRED> TargetCapacity => Int
 
-  The number of units to request for the Spot Fleet. You can choose to
+The number of units to request for the Spot Fleet. You can choose to
 set the target capacity in terms of instances or a performance
 characteristic that is important to your application workload, such as
 vCPUs, memory, or I/O. If the request type is C<maintain>, you can
@@ -236,13 +236,13 @@ specify a target capacity of 0 and add capacity later.
 
 =head2 TerminateInstancesWithExpiration => Bool
 
-  Indicates whether running Spot Instances are terminated when the Spot
+Indicates whether running Spot Instances are terminated when the Spot
 Fleet request expires.
 
 
 =head2 Type => Str
 
-  The type of request. Indicates whether the Spot Fleet only requests the
+The type of request. Indicates whether the Spot Fleet only requests the
 target capacity or also attempts to maintain it. When this value is
 C<request>, the Spot Fleet only places the required requests. It does
 not attempt to replenish Spot Instances if capacity is diminished, nor
@@ -256,14 +256,14 @@ Fleet.
 
 =head2 ValidFrom => Str
 
-  The start date and time of the request, in UTC format
+The start date and time of the request, in UTC format
 (I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). By default, Amazon EC2 starts
 fulfilling the request immediately.
 
 
 =head2 ValidUntil => Str
 
-  The end date and time of the request, in UTC format
+The end date and time of the request, in UTC format
 (I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). After the end date and time,
 no new Spot Instance requests are placed or able to fulfill the
 request. If no value is specified, the Spot Fleet request remains until

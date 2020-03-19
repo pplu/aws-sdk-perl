@@ -47,19 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'DATE',    # values: DATE, DECIMAL, TIME, TIMESTAMP; OPTIONAL
             Value => {
               ArrayValue => {
-                ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
+                ArrayValues => [ <ArrayValue>, ... ],    # OPTIONAL
                 BooleanValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
+                  1, ...                                 # OPTIONAL
+                ],                                       # OPTIONAL
                 DoubleValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
+                  1, ...                                 # OPTIONAL
+                ],                                       # OPTIONAL
                 LongValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
+                  1, ...                                 # OPTIONAL
+                ],                                       # OPTIONAL
                 StringValues => [
-                  'MyString', ...                          # OPTIONAL
-                ],                                         # OPTIONAL
+                  'MyString', ...                        # OPTIONAL
+                ],                                       # OPTIONAL
               },    # OPTIONAL
               BlobValue    => 'BlobBlob',    # OPTIONAL
               BooleanValue => 1,             # OPTIONAL

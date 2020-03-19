@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApiKeySelectionExpression => 'MySelectionExpression',    # OPTIONAL
       CorsConfiguration         => {
         AllowCredentials => 1,                                 # OPTIONAL
-        AllowHeaders     => [ 'My__string', ... ],             # OPTIONAL
+        AllowHeaders => [ 'My__string', ... ],                 # OPTIONAL
         AllowMethods  => [ 'MyStringWithLengthBetween1And64', ... ],  # OPTIONAL
         AllowOrigins  => [ 'My__string', ... ],                       # OPTIONAL
         ExposeHeaders => [ 'My__string', ... ],                       # OPTIONAL

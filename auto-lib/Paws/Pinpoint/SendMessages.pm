@@ -174,14 +174,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             BodyOverride => 'My__string',
             ChannelType  => 'GCM'
             , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
-            Context    => { 'My__string' => 'My__string', },    # OPTIONAL
+            Context => { 'My__string' => 'My__string', },    # OPTIONAL
             RawContent => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                   # OPTIONAL
+            ,                                                # OPTIONAL
             TitleOverride => 'My__string',
           },
         },    # OPTIONAL
-        Context   => { 'My__string' => 'My__string', },    # OPTIONAL
+        Context => { 'My__string' => 'My__string', },    # OPTIONAL
         Endpoints => {
           'My__string' => {
             BodyOverride => 'My__string',

@@ -53,87 +53,87 @@ This class has no description
 
 =head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
-  The association information for an Elastic IPv4 associated with the
+The association information for an Elastic IPv4 associated with the
 network interface.
 
 
 =head2 Attachment => L<Paws::EC2::InstanceNetworkInterfaceAttachment>
 
-  The network interface attachment.
+The network interface attachment.
 
 
 =head2 Description => Str
 
-  The description.
+The description.
 
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  One or more security groups.
+One or more security groups.
 
 
 =head2 InterfaceType => Str
 
-  Describes the type of network interface.
+Describes the type of network interface.
 
 Valid values: C<interface> | C<efa>
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
 
-  One or more IPv6 addresses associated with the network interface.
+One or more IPv6 addresses associated with the network interface.
 
 
 =head2 MacAddress => Str
 
-  The MAC address.
+The MAC address.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that created the network interface.
+The ID of the AWS account that created the network interface.
 
 
 =head2 PrivateDnsName => Str
 
-  The private DNS name.
+The private DNS name.
 
 
 =head2 PrivateIpAddress => Str
 
-  The IPv4 address of the network interface within the subnet.
+The IPv4 address of the network interface within the subnet.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::InstancePrivateIpAddress>]
 
-  One or more private IPv4 addresses associated with the network
+One or more private IPv4 addresses associated with the network
 interface.
 
 
 =head2 SourceDestCheck => Bool
 
-  Indicates whether to validate network traffic to or from this network
+Indicates whether to validate network traffic to or from this network
 interface.
 
 
 =head2 Status => Str
 
-  The status of the network interface.
+The status of the network interface.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

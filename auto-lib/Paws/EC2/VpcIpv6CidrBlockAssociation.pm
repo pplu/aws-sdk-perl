@@ -42,28 +42,28 @@ This class has no description
 
 =head2 AssociationId => Str
 
-  The association ID for the IPv6 CIDR block.
+The association ID for the IPv6 CIDR block.
 
 
 =head2 Ipv6CidrBlock => Str
 
-  The IPv6 CIDR block.
+The IPv6 CIDR block.
 
 
 =head2 Ipv6CidrBlockState => L<Paws::EC2::VpcCidrBlockState>
 
-  Information about the state of the CIDR block.
+Information about the state of the CIDR block.
 
 
 =head2 Ipv6Pool => Str
 
-  The ID of the IPv6 address pool from which the IPv6 CIDR block is
+The ID of the IPv6 address pool from which the IPv6 CIDR block is
 allocated.
 
 
 =head2 NetworkBorderGroup => Str
 
-  The name of the location from which we advertise the IPV6 CIDR block.
+The name of the location from which we advertise the IPV6 CIDR block.
 
 
 

@@ -39,13 +39,13 @@ This class has no description
 
 =head2 FromPort => Int
 
-  The first port in the Traffic Mirror port range. This applies to the
+The first port in the Traffic Mirror port range. This applies to the
 TCP and UDP protocols.
 
 
 =head2 ToPort => Int
 
-  The last port in the Traffic Mirror port range. This applies to the TCP
+The last port in the Traffic Mirror port range. This applies to the TCP
 and UDP protocols.
 
 

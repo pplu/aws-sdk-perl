@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The reason code for the state change.
+The reason code for the state change.
 
 
 =head2 Message => Str
 
-  The message for the state change.
+The message for the state change.
 
 =over
 

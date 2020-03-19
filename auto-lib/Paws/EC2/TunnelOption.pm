@@ -53,92 +53,92 @@ This class has no description
 
 =head2 DpdTimeoutSeconds => Int
 
-  The number of seconds after which a DPD timeout occurs.
+The number of seconds after which a DPD timeout occurs.
 
 
 =head2 IkeVersions => ArrayRef[L<Paws::EC2::IKEVersionsListValue>]
 
-  The IKE versions that are permitted for the VPN tunnel.
+The IKE versions that are permitted for the VPN tunnel.
 
 
 =head2 OutsideIpAddress => Str
 
-  The external IP address of the VPN tunnel.
+The external IP address of the VPN tunnel.
 
 
 =head2 Phase1DHGroupNumbers => ArrayRef[L<Paws::EC2::Phase1DHGroupNumbersListValue>]
 
-  The permitted Diffie-Hellman group numbers for the VPN tunnel for phase
+The permitted Diffie-Hellman group numbers for the VPN tunnel for phase
 1 IKE negotiations.
 
 
 =head2 Phase1EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase1EncryptionAlgorithmsListValue>]
 
-  The permitted encryption algorithms for the VPN tunnel for phase 1 IKE
+The permitted encryption algorithms for the VPN tunnel for phase 1 IKE
 negotiations.
 
 
 =head2 Phase1IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase1IntegrityAlgorithmsListValue>]
 
-  The permitted integrity algorithms for the VPN tunnel for phase 1 IKE
+The permitted integrity algorithms for the VPN tunnel for phase 1 IKE
 negotiations.
 
 
 =head2 Phase1LifetimeSeconds => Int
 
-  The lifetime for phase 1 of the IKE negotiation, in seconds.
+The lifetime for phase 1 of the IKE negotiation, in seconds.
 
 
 =head2 Phase2DHGroupNumbers => ArrayRef[L<Paws::EC2::Phase2DHGroupNumbersListValue>]
 
-  The permitted Diffie-Hellman group numbers for the VPN tunnel for phase
+The permitted Diffie-Hellman group numbers for the VPN tunnel for phase
 2 IKE negotiations.
 
 
 =head2 Phase2EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase2EncryptionAlgorithmsListValue>]
 
-  The permitted encryption algorithms for the VPN tunnel for phase 2 IKE
+The permitted encryption algorithms for the VPN tunnel for phase 2 IKE
 negotiations.
 
 
 =head2 Phase2IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase2IntegrityAlgorithmsListValue>]
 
-  The permitted integrity algorithms for the VPN tunnel for phase 2 IKE
+The permitted integrity algorithms for the VPN tunnel for phase 2 IKE
 negotiations.
 
 
 =head2 Phase2LifetimeSeconds => Int
 
-  The lifetime for phase 2 of the IKE negotiation, in seconds.
+The lifetime for phase 2 of the IKE negotiation, in seconds.
 
 
 =head2 PreSharedKey => Str
 
-  The pre-shared key (PSK) to establish initial authentication between
+The pre-shared key (PSK) to establish initial authentication between
 the virtual private gateway and the customer gateway.
 
 
 =head2 RekeyFuzzPercentage => Int
 
-  The percentage of the rekey window determined by
+The percentage of the rekey window determined by
 C<RekeyMarginTimeSeconds> during which the rekey time is randomly
 selected.
 
 
 =head2 RekeyMarginTimeSeconds => Int
 
-  The margin time, in seconds, before the phase 2 lifetime expires,
+The margin time, in seconds, before the phase 2 lifetime expires,
 during which the AWS side of the VPN connection performs an IKE rekey.
 
 
 =head2 ReplayWindowSize => Int
 
-  The number of packets in an IKE replay window.
+The number of packets in an IKE replay window.
 
 
 =head2 TunnelInsideCidr => Str
 
-  The range of inside IP addresses for the tunnel.
+The range of inside IP addresses for the tunnel.
 
 
 

@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The status of the VPC peering connection.
+The status of the VPC peering connection.
 
 
 =head2 Message => Str
 
-  A message that provides more information about the status, if
+A message that provides more information about the status, if
 applicable.
 
 

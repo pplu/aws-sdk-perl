@@ -38,7 +38,7 @@ This class has no description
 
 =head2 TargetGroups => ArrayRef[L<Paws::EC2::TargetGroup>]
 
-  One or more target groups.
+One or more target groups.
 
 
 

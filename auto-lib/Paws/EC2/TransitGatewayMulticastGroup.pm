@@ -47,54 +47,54 @@ This class has no description
 
 =head2 GroupIpAddress => Str
 
-  The IP address assigned to the transit gateway multicast group.
+The IP address assigned to the transit gateway multicast group.
 
 
 =head2 GroupMember => Bool
 
-  Indicates that the resource is a transit gateway multicast group
+Indicates that the resource is a transit gateway multicast group
 member.
 
 
 =head2 GroupSource => Bool
 
-  Indicates that the resource is a transit gateway multicast group
+Indicates that the resource is a transit gateway multicast group
 member.
 
 
 =head2 MemberType => Str
 
-  The member type (for example, C<static>).
+The member type (for example, C<static>).
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the transit gateway attachment.
+The ID of the transit gateway attachment.
 
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 =head2 ResourceType => Str
 
-  The type of resource, for example a VPC attachment.
+The type of resource, for example a VPC attachment.
 
 
 =head2 SourceType => Str
 
-  The source type.
+The source type.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the transit gateway attachment.
+The ID of the transit gateway attachment.
 
 
 

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 UsageStrategy => Str
 
-  Indicates whether to use unused Capacity Reservations for fulfilling
+Indicates whether to use unused Capacity Reservations for fulfilling
 On-Demand capacity.
 
 If you specify C<use-capacity-reservations-first>, the fleet uses

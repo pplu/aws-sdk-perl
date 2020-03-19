@@ -39,7 +39,7 @@ This class has no description
 
 =head2 ResourceType => Str
 
-  The type of resource to tag. Currently, the resource types that support
+The type of resource to tag. Currently, the resource types that support
 tagging on creation are: C<capacity-reservation> |
 C<client-vpn-endpoint> | C<dedicated-host> | C<fleet> | C<fpga-image> |
 C<instance> | C<key-pair> | C<launch-template> | C<placement-group> |
@@ -54,7 +54,7 @@ To tag a resource after it has been created, see CreateTags
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags to apply to the resource.
+The tags to apply to the resource.
 
 
 

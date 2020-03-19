@@ -54,12 +54,12 @@ This class has no description
 
 =head2 AllocationTime => Str
 
-  The time that the Dedicated Host was allocated.
+The time that the Dedicated Host was allocated.
 
 
 =head2 AllowsMultipleInstanceTypes => Str
 
-  Indicates whether the Dedicated Host supports multiple instance types
+Indicates whether the Dedicated Host supports multiple instance types
 of the same instance family, or a specific instance type only. C<one>
 indicates that the Dedicated Host supports multiple instance types in
 the instance family. C<off> indicates that the Dedicated Host supports
@@ -68,28 +68,28 @@ a single instance type only.
 
 =head2 AutoPlacement => Str
 
-  Whether auto-placement is on or off.
+Whether auto-placement is on or off.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the Dedicated Host.
+The Availability Zone of the Dedicated Host.
 
 
 =head2 AvailabilityZoneId => Str
 
-  The ID of the Availability Zone in which the Dedicated Host is
+The ID of the Availability Zone in which the Dedicated Host is
 allocated.
 
 
 =head2 AvailableCapacity => L<Paws::EC2::AvailableCapacity>
 
-  Information about the instances running on the Dedicated Host.
+Information about the instances running on the Dedicated Host.
 
 
 =head2 ClientToken => Str
 
-  Unique, case-sensitive identifier that you provide to ensure the
+Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
@@ -97,57 +97,57 @@ Idempotency
 
 =head2 HostId => Str
 
-  The ID of the Dedicated Host.
+The ID of the Dedicated Host.
 
 
 =head2 HostProperties => L<Paws::EC2::HostProperties>
 
-  The hardware specifications of the Dedicated Host.
+The hardware specifications of the Dedicated Host.
 
 
 =head2 HostRecovery => Str
 
-  Indicates whether host recovery is enabled or disabled for the
+Indicates whether host recovery is enabled or disabled for the
 Dedicated Host.
 
 
 =head2 HostReservationId => Str
 
-  The reservation ID of the Dedicated Host. This returns a C<null>
+The reservation ID of the Dedicated Host. This returns a C<null>
 response if the Dedicated Host doesn't have an associated reservation.
 
 
 =head2 Instances => ArrayRef[L<Paws::EC2::HostInstance>]
 
-  The IDs and instance type that are currently running on the Dedicated
+The IDs and instance type that are currently running on the Dedicated
 Host.
 
 
 =head2 MemberOfServiceLinkedResourceGroup => Bool
 
-  Indicates whether the Dedicated Host is in a host resource group. If
+Indicates whether the Dedicated Host is in a host resource group. If
 B<memberOfServiceLinkedResourceGroup> is C<true>, the host is in a host
 resource group; otherwise, it is not.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the Dedicated Host.
+The ID of the AWS account that owns the Dedicated Host.
 
 
 =head2 ReleaseTime => Str
 
-  The time that the Dedicated Host was released.
+The time that the Dedicated Host was released.
 
 
 =head2 State => Str
 
-  The Dedicated Host's state.
+The Dedicated Host's state.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the Dedicated Host.
+Any tags assigned to the Dedicated Host.
 
 
 

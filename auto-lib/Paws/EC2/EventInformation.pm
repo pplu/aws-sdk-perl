@@ -40,12 +40,12 @@ This class has no description
 
 =head2 EventDescription => Str
 
-  The description of the event.
+The description of the event.
 
 
 =head2 EventSubType => Str
 
-  The event.
+The event.
 
 The following are the C<error> events:
 
@@ -166,7 +166,7 @@ changes.
 
 =head2 InstanceId => Str
 
-  The ID of the instance. This information is available only for
+The ID of the instance. This information is available only for
 C<instanceChange> events.
 
 

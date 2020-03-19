@@ -45,43 +45,43 @@ This class has no description
 
 =head2 Affinity => Str
 
-  The affinity setting for the instance on the Dedicated Host.
+The affinity setting for the instance on the Dedicated Host.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the instance.
+The Availability Zone of the instance.
 
 
 =head2 GroupName => Str
 
-  The name of the placement group for the instance.
+The name of the placement group for the instance.
 
 
 =head2 HostId => Str
 
-  The ID of the Dedicated Host for the instance.
+The ID of the Dedicated Host for the instance.
 
 
 =head2 HostResourceGroupArn => Str
 
-  The ARN of the host resource group in which to launch the instances.
+The ARN of the host resource group in which to launch the instances.
 
 
 =head2 PartitionNumber => Int
 
-  The number of the partition the instance should launch in. Valid only
+The number of the partition the instance should launch in. Valid only
 if the placement group strategy is set to C<partition>.
 
 
 =head2 SpreadDomain => Str
 
-  Reserved for future use.
+Reserved for future use.
 
 
 =head2 Tenancy => Str
 
-  The tenancy of the instance (if the instance is running in a VPC). An
+The tenancy of the instance (if the instance is running in a VPC). An
 instance with a tenancy of C<dedicated> runs on single-tenant hardware.
 
 

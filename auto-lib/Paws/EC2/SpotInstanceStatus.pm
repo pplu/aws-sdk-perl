@@ -40,19 +40,19 @@ This class has no description
 
 =head2 Code => Str
 
-  The status code. For a list of status codes, see Spot Status Codes
+The status code. For a list of status codes, see Spot Status Codes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html#spot-instance-bid-status-understand)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 Message => Str
 
-  The description for the status code.
+The description for the status code.
 
 
 =head2 UpdateTime => Str
 
-  The date and time of the most recent status update, in UTC format (for
+The date and time of the most recent status update, in UTC format (for
 example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Cidr => Str
 
-  The CIDR block.
+The CIDR block.
 
 
 

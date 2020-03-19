@@ -39,13 +39,13 @@ This class has no description
 
 =head2 CpuCredits => Str
 
-  The default credit option for CPU usage of the instance family. Valid
+The default credit option for CPU usage of the instance family. Valid
 values are C<standard> and C<unlimited>.
 
 
 =head2 InstanceFamily => Str
 
-  The instance family.
+The instance family.
 
 
 

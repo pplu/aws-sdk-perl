@@ -40,17 +40,17 @@ This class has no description
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 =head2 ResourceType => Str
 
-  The resource type.
+The resource type.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the attachment.
+The ID of the attachment.
 
 
 

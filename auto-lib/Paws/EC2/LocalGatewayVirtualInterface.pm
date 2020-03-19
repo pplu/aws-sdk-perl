@@ -45,43 +45,43 @@ This class has no description
 
 =head2 LocalAddress => Str
 
-  The local address.
+The local address.
 
 
 =head2 LocalBgpAsn => Int
 
-  The Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the
+The Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the
 local gateway.
 
 
 =head2 LocalGatewayId => Str
 
-  The ID of the local gateway.
+The ID of the local gateway.
 
 
 =head2 LocalGatewayVirtualInterfaceId => Str
 
-  The ID of the virtual interface.
+The ID of the virtual interface.
 
 
 =head2 PeerAddress => Str
 
-  The peer address.
+The peer address.
 
 
 =head2 PeerBgpAsn => Int
 
-  The peer BGP ASN.
+The peer BGP ASN.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the virtual interface.
+The tags assigned to the virtual interface.
 
 
 =head2 Vlan => Int
 
-  The ID of the VLAN.
+The ID of the VLAN.
 
 
 

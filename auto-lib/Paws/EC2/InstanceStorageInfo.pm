@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Disks => ArrayRef[L<Paws::EC2::DiskInfo>]
 
-  Array describing the disks that are available for the instance type.
+Array describing the disks that are available for the instance type.
 
 
 =head2 TotalSizeInGB => Int
 
-  The total size of the disks, in GB.
+The total size of the disks, in GB.
 
 
 

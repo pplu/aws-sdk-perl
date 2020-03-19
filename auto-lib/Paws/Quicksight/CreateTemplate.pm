@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyTemplateName',            # OPTIONAL
       Permissions => [
         {
-          Actions   => [ 'MyString', ... ],       # min: 1, max: 16
+          Actions => [ 'MyString', ... ],         # min: 1, max: 16
           Principal => 'MyPrincipal',             # min: 1, max: 256
 
         },

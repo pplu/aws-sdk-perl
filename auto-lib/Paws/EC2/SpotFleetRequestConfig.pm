@@ -43,7 +43,7 @@ This class has no description
 
 =head2 ActivityStatus => Str
 
-  The progress of the Spot Fleet request. If there is an error, the
+The progress of the Spot Fleet request. If there is an error, the
 status is C<error>. After all requests are placed, the status is
 C<pending_fulfillment>. If the size of the fleet is equal to or greater
 than its target capacity, the status is C<fulfilled>. If the size of
@@ -53,27 +53,27 @@ Instances are terminating.
 
 =head2 CreateTime => Str
 
-  The creation date and time of the request.
+The creation date and time of the request.
 
 
 =head2 SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
-  The configuration of the Spot Fleet request.
+The configuration of the Spot Fleet request.
 
 
 =head2 SpotFleetRequestId => Str
 
-  The ID of the Spot Fleet request.
+The ID of the Spot Fleet request.
 
 
 =head2 SpotFleetRequestState => Str
 
-  The state of the Spot Fleet request.
+The state of the Spot Fleet request.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for a Spot Fleet resource.
+The tags for a Spot Fleet resource.
 
 
 

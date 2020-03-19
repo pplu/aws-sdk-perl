@@ -44,22 +44,22 @@ This class has no description
 
 =head2 ClientVpnEndpointId => Str
 
-  The ID of the Client VPN endpoint with which the route is associated.
+The ID of the Client VPN endpoint with which the route is associated.
 
 
 =head2 Description => Str
 
-  A brief description of the route.
+A brief description of the route.
 
 
 =head2 DestinationCidr => Str
 
-  The IPv4 address range, in CIDR notation, of the route destination.
+The IPv4 address range, in CIDR notation, of the route destination.
 
 
 =head2 Origin => Str
 
-  Indicates how the route was associated with the Client VPN endpoint.
+Indicates how the route was associated with the Client VPN endpoint.
 C<associate> indicates that the route was automatically added when the
 target network was associated with the Client VPN endpoint.
 C<add-route> indicates that the route was manually added using the
@@ -68,17 +68,17 @@ B<CreateClientVpnRoute> action.
 
 =head2 Status => L<Paws::EC2::ClientVpnRouteStatus>
 
-  The current state of the route.
+The current state of the route.
 
 
 =head2 TargetSubnet => Str
 
-  The ID of the subnet through which traffic is routed.
+The ID of the subnet through which traffic is routed.
 
 
 =head2 Type => Str
 
-  The route type.
+The route type.
 
 
 

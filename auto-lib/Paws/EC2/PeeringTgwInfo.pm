@@ -40,17 +40,17 @@ This class has no description
 
 =head2 OwnerId => Str
 
-  The AWS account ID of the owner of the transit gateway.
+The AWS account ID of the owner of the transit gateway.
 
 
 =head2 Region => Str
 
-  The Region of the transit gateway.
+The Region of the transit gateway.
 
 
 =head2 TransitGatewayId => Str
 
-  The ID of the transit gateway.
+The ID of the transit gateway.
 
 
 

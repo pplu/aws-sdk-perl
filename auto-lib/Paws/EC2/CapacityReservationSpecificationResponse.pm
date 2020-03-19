@@ -39,7 +39,7 @@ This class has no description
 
 =head2 CapacityReservationPreference => Str
 
-  Describes the instance's Capacity Reservation preferences. Possible
+Describes the instance's Capacity Reservation preferences. Possible
 preferences include:
 
 =over
@@ -60,7 +60,7 @@ one is available. The instance runs in On-Demand capacity.
 
 =head2 CapacityReservationTarget => L<Paws::EC2::CapacityReservationTargetResponse>
 
-  Information about the targeted Capacity Reservation.
+Information about the targeted Capacity Reservation.
 
 
 

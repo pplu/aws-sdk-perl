@@ -43,32 +43,32 @@ This class has no description
 
 =head2 EnaSupport => Str
 
-  Indicates whether Elastic Network Adapter (ENA) is supported.
+Indicates whether Elastic Network Adapter (ENA) is supported.
 
 
 =head2 Ipv4AddressesPerInterface => Int
 
-  The maximum number of IPv4 addresses per network interface.
+The maximum number of IPv4 addresses per network interface.
 
 
 =head2 Ipv6AddressesPerInterface => Int
 
-  The maximum number of IPv6 addresses per network interface.
+The maximum number of IPv6 addresses per network interface.
 
 
 =head2 Ipv6Supported => Bool
 
-  Indicates whether IPv6 is supported.
+Indicates whether IPv6 is supported.
 
 
 =head2 MaximumNetworkInterfaces => Int
 
-  The maximum number of network interfaces for the instance type.
+The maximum number of network interfaces for the instance type.
 
 
 =head2 NetworkPerformance => Str
 
-  Describes the network performance.
+Describes the network performance.
 
 
 

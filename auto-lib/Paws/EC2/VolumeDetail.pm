@@ -38,7 +38,7 @@ This class has no description
 
 =head2 B<REQUIRED> Size => Int
 
-  The size of the volume, in GiB.
+The size of the volume, in GiB.
 
 
 

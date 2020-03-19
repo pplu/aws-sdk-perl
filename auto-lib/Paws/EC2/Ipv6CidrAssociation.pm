@@ -39,12 +39,12 @@ This class has no description
 
 =head2 AssociatedResource => Str
 
-  The resource that's associated with the IPv6 CIDR block.
+The resource that's associated with the IPv6 CIDR block.
 
 
 =head2 Ipv6Cidr => Str
 
-  The IPv6 CIDR block.
+The IPv6 CIDR block.
 
 
 

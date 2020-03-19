@@ -41,7 +41,7 @@ This class has no description
 
 =head2 KeyFingerprint => Str
 
-  If you used CreateKeyPair to create the key pair, this is the SHA-1
+If you used CreateKeyPair to create the key pair, this is the SHA-1
 digest of the DER encoded private key. If you used ImportKeyPair to
 provide AWS the public key, this is the MD5 public key fingerprint as
 specified in section 4 of RFC4716.
@@ -49,17 +49,17 @@ specified in section 4 of RFC4716.
 
 =head2 KeyName => Str
 
-  The name of the key pair.
+The name of the key pair.
 
 
 =head2 KeyPairId => Str
 
-  The ID of the key pair.
+The ID of the key pair.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags applied to the key pair.
+Any tags applied to the key pair.
 
 
 

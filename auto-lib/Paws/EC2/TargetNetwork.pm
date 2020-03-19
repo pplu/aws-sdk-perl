@@ -43,34 +43,34 @@ This class has no description
 
 =head2 AssociationId => Str
 
-  The ID of the association.
+The ID of the association.
 
 
 =head2 ClientVpnEndpointId => Str
 
-  The ID of the Client VPN endpoint with which the target network is
+The ID of the Client VPN endpoint with which the target network is
 associated.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  The IDs of the security groups applied to the target network
+The IDs of the security groups applied to the target network
 association.
 
 
 =head2 Status => L<Paws::EC2::AssociationStatus>
 
-  The current state of the target network association.
+The current state of the target network association.
 
 
 =head2 TargetNetworkId => Str
 
-  The ID of the subnet specified as the target network.
+The ID of the subnet specified as the target network.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC in which the target network (subnet) is located.
+The ID of the VPC in which the target network (subnet) is located.
 
 
 

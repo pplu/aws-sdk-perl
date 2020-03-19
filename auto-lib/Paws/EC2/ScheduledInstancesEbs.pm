@@ -43,18 +43,18 @@ This class has no description
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the volume is deleted on instance termination.
+Indicates whether the volume is deleted on instance termination.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the volume is encrypted. You can attached encrypted
+Indicates whether the volume is encrypted. You can attached encrypted
 volumes only to instances that support them.
 
 
 =head2 Iops => Int
 
-  The number of I/O operations per second (IOPS) that the volume
+The number of I/O operations per second (IOPS) that the volume
 supports. For io1 volumes, this represents the number of IOPS that are
 provisioned for the volume. For C<gp2> volumes, this represents the
 baseline performance of the volume and the rate at which the volume
@@ -74,12 +74,12 @@ C<sc1>, or C<standard> volumes.
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+The ID of the snapshot.
 
 
 =head2 VolumeSize => Int
 
-  The size of the volume, in GiB.
+The size of the volume, in GiB.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
@@ -87,7 +87,7 @@ specify a volume size, the default is the snapshot size.
 
 =head2 VolumeType => Str
 
-  The volume type. C<gp2> for General Purpose SSD, C<io1> for Provisioned
+The volume type. C<gp2> for General Purpose SSD, C<io1> for Provisioned
 IOPS SSD, Throughput Optimized HDD for C<st1>, Cold HDD for C<sc1>, or
 C<standard> for Magnetic.
 

@@ -63,12 +63,12 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::LaunchTemplateBlockDeviceMappingRequest>]
 
-  The block device mapping.
+The block device mapping.
 
 
 =head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationRequest>
 
-  The Capacity Reservation targeting option. If you do not specify this
+The Capacity Reservation targeting option. If you do not specify this
 parameter, the instance's Capacity Reservation preference defaults to
 C<open>, which enables it to run in any open Capacity Reservation that
 has matching attributes (instance type, platform, Availability Zone).
@@ -76,7 +76,7 @@ has matching attributes (instance type, platform, Availability Zone).
 
 =head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptionsRequest>
 
-  The CPU options for the instance. For more information, see Optimizing
+The CPU options for the instance. For more information, see Optimizing
 CPU Options
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -84,13 +84,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-  The credit option for CPU usage of the instance. Valid for T2 or T3
+The credit option for CPU usage of the instance. Valid for T2 or T3
 instances only.
 
 
 =head2 DisableApiTermination => Bool
 
-  If you set this parameter to C<true>, you can't terminate the instance
+If you set this parameter to C<true>, you can't terminate the instance
 using the Amazon EC2 console, CLI, or API; otherwise, you can. To
 change this attribute after launch, use ModifyInstanceAttribute
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html).
@@ -101,7 +101,7 @@ command from the instance.
 
 =head2 EbsOptimized => Bool
 
-  Indicates whether the instance is optimized for Amazon EBS I/O. This
+Indicates whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal Amazon EBS I/O
 performance. This optimization isn't available with all instance types.
@@ -110,17 +110,17 @@ Additional usage charges apply when using an EBS-optimized instance.
 
 =head2 ElasticGpuSpecifications => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]
 
-  An elastic GPU to associate with the instance.
+An elastic GPU to associate with the instance.
 
 
 =head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::LaunchTemplateElasticInferenceAccelerator>]
 
-  The elastic inference accelerator for the instance.
+The elastic inference accelerator for the instance.
 
 
 =head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptionsRequest>
 
-  Indicates whether an instance is enabled for hibernation. This
+Indicates whether an instance is enabled for hibernation. This
 parameter is valid only if the instance meets the hibernation
 prerequisites
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
@@ -131,17 +131,17 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 IamInstanceProfile => L<Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest>
 
-  The IAM instance profile.
+The IAM instance profile.
 
 
 =head2 ImageId => Str
 
-  The ID of the AMI.
+The ID of the AMI.
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str
 
-  Indicates whether an instance stops or terminates when you initiate
+Indicates whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
 system shutdown).
 
@@ -150,19 +150,19 @@ Default: C<stop>
 
 =head2 InstanceMarketOptions => L<Paws::EC2::LaunchTemplateInstanceMarketOptionsRequest>
 
-  The market (purchasing) option for the instances.
+The market (purchasing) option for the instances.
 
 
 =head2 InstanceType => Str
 
-  The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 KernelId => Str
 
-  The ID of the kernel.
+The ID of the kernel.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see User Provided Kernels
@@ -172,7 +172,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 KeyName => Str
 
-  The name of the key pair. You can create a key pair using CreateKeyPair
+The name of the key pair. You can create a key pair using CreateKeyPair
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html)
 or ImportKeyPair
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html).
@@ -184,12 +184,12 @@ to log in.
 
 =head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfigurationRequest>]
 
-  The license configurations.
+The license configurations.
 
 
 =head2 MetadataOptions => L<Paws::EC2::LaunchTemplateInstanceMetadataOptionsRequest>
 
-  The metadata options for the instance. For more information, see
+The metadata options for the instance. For more information, see
 Instance Metadata and User Data
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -197,24 +197,24 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoringRequest>
 
-  The monitoring for the instance.
+The monitoring for the instance.
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest>]
 
-  One or more network interfaces. If you specify a network interface, you
+One or more network interfaces. If you specify a network interface, you
 must specify any security groups and subnets as part of the network
 interface.
 
 
 =head2 Placement => L<Paws::EC2::LaunchTemplatePlacementRequest>
 
-  The placement for the instance.
+The placement for the instance.
 
 
 =head2 RamDiskId => Str
 
-  The ID of the RAM disk.
+The ID of the RAM disk.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see User Provided Kernels
@@ -224,7 +224,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  One or more security group IDs. You can create a security group using
+One or more security group IDs. You can create a security group using
 CreateSecurityGroup
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html).
 You cannot specify both a security group ID and security name in the
@@ -233,14 +233,14 @@ same request.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  [EC2-Classic, default VPC] One or more security group names. For a
+[EC2-Classic, default VPC] One or more security group names. For a
 nondefault VPC, you must use security group IDs instead. You cannot
 specify both a security group ID and security name in the same request.
 
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateTagSpecificationRequest>]
 
-  The tags to apply to the resources during launch. You can only tag
+The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all
 instances or volumes that are created during launch. To tag a resource
 after it has been created, see CreateTags
@@ -249,7 +249,7 @@ after it has been created, see CreateTags
 
 =head2 UserData => Str
 
-  The Base64-encoded user data to make available to the instance. For
+The Base64-encoded user data to make available to the instance. For
 more information, see Running Commands on Your Linux Instance at Launch
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 (Linux) and Adding User Data

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 AttributeValue => Str
 
-  The value of the attribute.
+The value of the attribute.
 
 
 

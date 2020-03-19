@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReservedSlots => 1,
 
       },    # OPTIONAL
-      Status => 'ACTIVE',                             # OPTIONAL
-      Tags   => { 'My__string' => 'My__string', },    # OPTIONAL
+      Status => 'ACTIVE',                           # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:

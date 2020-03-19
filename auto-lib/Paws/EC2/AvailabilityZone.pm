@@ -45,7 +45,7 @@ This class has no description
 
 =head2 GroupName => Str
 
-  For Availability Zones, this parameter has the same value as the Region
+For Availability Zones, this parameter has the same value as the Region
 name.
 
 For Local Zones, the name of the associated group, for example
@@ -54,17 +54,17 @@ C<us-west-2-lax-1>.
 
 =head2 Messages => ArrayRef[L<Paws::EC2::AvailabilityZoneMessage>]
 
-  Any messages about the Availability Zone or Local Zone.
+Any messages about the Availability Zone or Local Zone.
 
 
 =head2 NetworkBorderGroup => Str
 
-  The name of the location from which the address is advertised.
+The name of the location from which the address is advertised.
 
 
 =head2 OptInStatus => Str
 
-  For Availability Zones, this parameter always has the value of
+For Availability Zones, this parameter always has the value of
 C<opt-in-not-required>.
 
 For Local Zones, this parameter is the opt in status. The possible
@@ -73,22 +73,22 @@ values are C<opted-in>, and C<not-opted-in>.
 
 =head2 RegionName => Str
 
-  The name of the Region.
+The name of the Region.
 
 
 =head2 State => Str
 
-  The state of the Availability Zone or Local Zone.
+The state of the Availability Zone or Local Zone.
 
 
 =head2 ZoneId => Str
 
-  The ID of the Availability Zone or Local Zone.
+The ID of the Availability Zone or Local Zone.
 
 
 =head2 ZoneName => Str
 
-  The name of the Availability Zone or Local Zone.
+The name of the Availability Zone or Local Zone.
 
 
 

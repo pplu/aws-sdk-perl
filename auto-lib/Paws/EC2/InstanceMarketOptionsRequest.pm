@@ -39,12 +39,12 @@ This class has no description
 
 =head2 MarketType => Str
 
-  The market type.
+The market type.
 
 
 =head2 SpotOptions => L<Paws::EC2::SpotMarketOptions>
 
-  The options for Spot Instances.
+The options for Spot Instances.
 
 
 

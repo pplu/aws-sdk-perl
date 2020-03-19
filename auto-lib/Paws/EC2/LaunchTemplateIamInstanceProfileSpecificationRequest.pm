@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the instance profile.
+The Amazon Resource Name (ARN) of the instance profile.
 
 
 =head2 Name => Str
 
-  The name of the instance profile.
+The name of the instance profile.
 
 
 

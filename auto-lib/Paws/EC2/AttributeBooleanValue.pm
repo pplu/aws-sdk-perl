@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Value => Bool
 
-  The attribute value. The valid values are C<true> or C<false>.
+The attribute value. The valid values are C<true> or C<false>.
 
 
 

@@ -43,37 +43,37 @@ This class has no description
 
 =head2 FromPort => Int
 
-  The start of the port range for the TCP and UDP protocols, or an ICMP
+The start of the port range for the TCP and UDP protocols, or an ICMP
 type number. A value of C<-1> indicates all ICMP types.
 
 
 =head2 IpProtocol => Str
 
-  The IP protocol name (for C<tcp>, C<udp>, and C<icmp>) or number (see
+The IP protocol name (for C<tcp>, C<udp>, and C<icmp>) or number (see
 Protocol Numbers)
 (http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 
 
 =head2 IpRanges => ArrayRef[Str|Undef]
 
-  The IP ranges. Not applicable for stale security group rules.
+The IP ranges. Not applicable for stale security group rules.
 
 
 =head2 PrefixListIds => ArrayRef[Str|Undef]
 
-  The prefix list IDs for an AWS service. Not applicable for stale
+The prefix list IDs for an AWS service. Not applicable for stale
 security group rules.
 
 
 =head2 ToPort => Int
 
-  The end of the port range for the TCP and UDP protocols, or an ICMP
+The end of the port range for the TCP and UDP protocols, or an ICMP
 type number. A value of C<-1> indicates all ICMP types.
 
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
 
-  The security group pairs. Returns the ID of the referenced security
+The security group pairs. Returns the ID of the referenced security
 group and VPC, and the ID and status of the VPC peering connection.
 
 

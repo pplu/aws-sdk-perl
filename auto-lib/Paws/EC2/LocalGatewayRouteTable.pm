@@ -42,27 +42,27 @@ This class has no description
 
 =head2 LocalGatewayId => Str
 
-  The ID of the local gateway.
+The ID of the local gateway.
 
 
 =head2 LocalGatewayRouteTableId => Str
 
-  The ID of the local gateway route table.
+The ID of the local gateway route table.
 
 
 =head2 OutpostArn => Str
 
-  The Amazon Resource Name (ARN) of the Outpost.
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 State => Str
 
-  The state of the local gateway route table.
+The state of the local gateway route table.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the local gateway route table.
+The tags assigned to the local gateway route table.
 
 
 

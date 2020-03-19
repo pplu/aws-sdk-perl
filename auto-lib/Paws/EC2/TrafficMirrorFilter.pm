@@ -43,35 +43,35 @@ This class has no description
 
 =head2 Description => Str
 
-  The description of the Traffic Mirror filter.
+The description of the Traffic Mirror filter.
 
 
 =head2 EgressFilterRules => ArrayRef[L<Paws::EC2::TrafficMirrorFilterRule>]
 
-  Information about the egress rules that are associated with the Traffic
+Information about the egress rules that are associated with the Traffic
 Mirror filter.
 
 
 =head2 IngressFilterRules => ArrayRef[L<Paws::EC2::TrafficMirrorFilterRule>]
 
-  Information about the ingress rules that are associated with the
+Information about the ingress rules that are associated with the
 Traffic Mirror filter.
 
 
 =head2 NetworkServices => ArrayRef[Str|Undef]
 
-  The network service traffic that is associated with the Traffic Mirror
+The network service traffic that is associated with the Traffic Mirror
 filter.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the Traffic Mirror filter.
+The tags assigned to the Traffic Mirror filter.
 
 
 =head2 TrafficMirrorFilterId => Str
 
-  The ID of the Traffic Mirror filter.
+The ID of the Traffic Mirror filter.
 
 
 

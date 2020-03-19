@@ -51,57 +51,57 @@ This class has no description
 
 =head2 DestinationCidrBlock => Str
 
-  The IPv4 CIDR block used for the destination match.
+The IPv4 CIDR block used for the destination match.
 
 
 =head2 DestinationIpv6CidrBlock => Str
 
-  The IPv6 CIDR block used for the destination match.
+The IPv6 CIDR block used for the destination match.
 
 
 =head2 DestinationPrefixListId => Str
 
-  The prefix of the AWS service.
+The prefix of the AWS service.
 
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-  The ID of the egress-only internet gateway.
+The ID of the egress-only internet gateway.
 
 
 =head2 GatewayId => Str
 
-  The ID of a gateway attached to your VPC.
+The ID of a gateway attached to your VPC.
 
 
 =head2 InstanceId => Str
 
-  The ID of a NAT instance in your VPC.
+The ID of a NAT instance in your VPC.
 
 
 =head2 InstanceOwnerId => Str
 
-  The AWS account ID of the owner of the instance.
+The AWS account ID of the owner of the instance.
 
 
 =head2 LocalGatewayId => Str
 
-  The ID of the local gateway.
+The ID of the local gateway.
 
 
 =head2 NatGatewayId => Str
 
-  The ID of a NAT gateway.
+The ID of a NAT gateway.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
 
 
 =head2 Origin => Str
 
-  Describes how the route was created.
+Describes how the route was created.
 
 =over
 
@@ -125,7 +125,7 @@ propagation.
 
 =head2 State => Str
 
-  The state of the route. The C<blackhole> state indicates that the
+The state of the route. The C<blackhole> state indicates that the
 route's target isn't available (for example, the specified gateway
 isn't attached to the VPC, or the specified NAT instance has been
 terminated).
@@ -133,12 +133,12 @@ terminated).
 
 =head2 TransitGatewayId => Str
 
-  The ID of a transit gateway.
+The ID of a transit gateway.
 
 
 =head2 VpcPeeringConnectionId => Str
 
-  The ID of a VPC peering connection.
+The ID of a VPC peering connection.
 
 
 

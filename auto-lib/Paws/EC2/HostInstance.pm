@@ -40,17 +40,17 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  The ID of instance that is running on the Dedicated Host.
+The ID of instance that is running on the Dedicated Host.
 
 
 =head2 InstanceType => Str
 
-  The instance type (for example, C<m3.medium>) of the running instance.
+The instance type (for example, C<m3.medium>) of the running instance.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the instance.
+The ID of the AWS account that owns the instance.
 
 
 

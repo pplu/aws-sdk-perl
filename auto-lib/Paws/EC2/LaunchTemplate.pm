@@ -44,37 +44,37 @@ This class has no description
 
 =head2 CreatedBy => Str
 
-  The principal that created the launch template.
+The principal that created the launch template.
 
 
 =head2 CreateTime => Str
 
-  The time launch template was created.
+The time launch template was created.
 
 
 =head2 DefaultVersionNumber => Int
 
-  The version number of the default version of the launch template.
+The version number of the default version of the launch template.
 
 
 =head2 LatestVersionNumber => Int
 
-  The version number of the latest version of the launch template.
+The version number of the latest version of the launch template.
 
 
 =head2 LaunchTemplateId => Str
 
-  The ID of the launch template.
+The ID of the launch template.
 
 
 =head2 LaunchTemplateName => Str
 
-  The name of the launch template.
+The name of the launch template.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the launch template.
+The tags for the launch template.
 
 
 

@@ -172,12 +172,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Permissions => [
         {
-          Actions   => [ 'MyString', ... ],    # min: 1, max: 16
-          Principal => 'MyPrincipal',          # min: 1, max: 256
+          Actions => [ 'MyString', ... ],    # min: 1, max: 16
+          Principal => 'MyPrincipal',        # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                     # OPTIONAL
       RowLevelPermissionDataSet => {
         Arn              => 'MyArn',
         PermissionPolicy => 'GRANT_ACCESS',  # values: GRANT_ACCESS, DENY_ACCESS

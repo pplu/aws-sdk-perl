@@ -44,38 +44,38 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The IPv4 CIDR block for the VPC.
+The IPv4 CIDR block for the VPC.
 
 
 =head2 CidrBlockSet => ArrayRef[L<Paws::EC2::CidrBlock>]
 
-  Information about the IPv4 CIDR blocks for the VPC.
+Information about the IPv4 CIDR blocks for the VPC.
 
 
 =head2 Ipv6CidrBlockSet => ArrayRef[L<Paws::EC2::Ipv6CidrBlock>]
 
-  The IPv6 CIDR block for the VPC.
+The IPv6 CIDR block for the VPC.
 
 
 =head2 OwnerId => Str
 
-  The AWS account ID of the VPC owner.
+The AWS account ID of the VPC owner.
 
 
 =head2 PeeringOptions => L<Paws::EC2::VpcPeeringConnectionOptionsDescription>
 
-  Information about the VPC peering connection options for the accepter
+Information about the VPC peering connection options for the accepter
 or requester VPC.
 
 
 =head2 Region => Str
 
-  The Region in which the VPC is located.
+The Region in which the VPC is located.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

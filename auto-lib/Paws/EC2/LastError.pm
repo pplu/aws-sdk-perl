@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The error code for the VPC endpoint error.
+The error code for the VPC endpoint error.
 
 
 =head2 Message => Str
 
-  The error message for the VPC endpoint error.
+The error message for the VPC endpoint error.
 
 
 

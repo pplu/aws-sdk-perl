@@ -39,12 +39,12 @@ This class has no description
 
 =head2 NetworkId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 =head2 NetworkType => Str
 
-  The target network type.
+The target network type.
 
 
 

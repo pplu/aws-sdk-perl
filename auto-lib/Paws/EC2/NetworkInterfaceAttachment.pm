@@ -44,38 +44,38 @@ This class has no description
 
 =head2 AttachmentId => Str
 
-  The ID of the network interface attachment.
+The ID of the network interface attachment.
 
 
 =head2 AttachTime => Str
 
-  The timestamp indicating when the attachment initiated.
+The timestamp indicating when the attachment initiated.
 
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the network interface is deleted when the instance is
+Indicates whether the network interface is deleted when the instance is
 terminated.
 
 
 =head2 DeviceIndex => Int
 
-  The device index of the network interface attachment on the instance.
+The device index of the network interface attachment on the instance.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 InstanceOwnerId => Str
 
-  The AWS account ID of the owner of the instance.
+The AWS account ID of the owner of the instance.
 
 
 =head2 Status => Str
 
-  The attachment state.
+The attachment state.
 
 
 

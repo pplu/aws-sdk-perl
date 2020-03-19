@@ -39,12 +39,12 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  The ID of the attached instance.
+The ID of the attached instance.
 
 
 =head2 IoPerformance => Str
 
-  The maximum IOPS supported by the attached instance.
+The maximum IOPS supported by the attached instance.
 
 
 

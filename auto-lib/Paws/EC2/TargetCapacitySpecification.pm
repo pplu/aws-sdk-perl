@@ -41,27 +41,27 @@ This class has no description
 
 =head2 DefaultTargetCapacityType => Str
 
-  The default C<TotalTargetCapacity>, which is either C<Spot> or
+The default C<TotalTargetCapacity>, which is either C<Spot> or
 C<On-Demand>.
 
 
 =head2 OnDemandTargetCapacity => Int
 
-  The number of On-Demand units to request. If you specify a target
+The number of On-Demand units to request. If you specify a target
 capacity for Spot units, you cannot specify a target capacity for
 On-Demand units.
 
 
 =head2 SpotTargetCapacity => Int
 
-  The maximum number of Spot units to launch. If you specify a target
+The maximum number of Spot units to launch. If you specify a target
 capacity for On-Demand units, you cannot specify a target capacity for
 Spot units.
 
 
 =head2 TotalTargetCapacity => Int
 
-  The number of units to request, filled using
+The number of units to request, filled using
 C<DefaultTargetCapacityType>.
 
 

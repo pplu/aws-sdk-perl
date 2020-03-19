@@ -39,12 +39,12 @@ This class has no description
 
 =head2 DeviceName => Str
 
-  The device name (for example, C</dev/sdh> or C<xvdh>).
+The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
 =head2 Ebs => L<Paws::EC2::EbsInstanceBlockDevice>
 
-  Parameters used to automatically set up EBS volumes when the instance
+Parameters used to automatically set up EBS volumes when the instance
 is launched.
 
 

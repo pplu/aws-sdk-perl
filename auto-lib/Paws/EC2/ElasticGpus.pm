@@ -44,39 +44,39 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in the which the Elastic Graphics accelerator
+The Availability Zone in the which the Elastic Graphics accelerator
 resides.
 
 
 =head2 ElasticGpuHealth => L<Paws::EC2::ElasticGpuHealth>
 
-  The status of the Elastic Graphics accelerator.
+The status of the Elastic Graphics accelerator.
 
 
 =head2 ElasticGpuId => Str
 
-  The ID of the Elastic Graphics accelerator.
+The ID of the Elastic Graphics accelerator.
 
 
 =head2 ElasticGpuState => Str
 
-  The state of the Elastic Graphics accelerator.
+The state of the Elastic Graphics accelerator.
 
 
 =head2 ElasticGpuType => Str
 
-  The type of Elastic Graphics accelerator.
+The type of Elastic Graphics accelerator.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance to which the Elastic Graphics accelerator is
+The ID of the instance to which the Elastic Graphics accelerator is
 attached.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the Elastic Graphics accelerator.
+The tags assigned to the Elastic Graphics accelerator.
 
 
 

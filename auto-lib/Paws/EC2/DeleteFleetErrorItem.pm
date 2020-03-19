@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Error => L<Paws::EC2::DeleteFleetError>
 
-  The error.
+The error.
 
 
 =head2 FleetId => Str
 
-  The ID of the EC2 Fleet.
+The ID of the EC2 Fleet.
 
 
 

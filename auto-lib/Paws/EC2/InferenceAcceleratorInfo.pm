@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Accelerators => ArrayRef[L<Paws::EC2::InferenceDeviceInfo>]
 
-  Describes the Inference accelerators for the instance type.
+Describes the Inference accelerators for the instance type.
 
 
 

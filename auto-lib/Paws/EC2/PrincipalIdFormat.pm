@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Arn => Str
 
-  PrincipalIdFormatARN description
+PrincipalIdFormatARN description
 
 
 =head2 Statuses => ArrayRef[L<Paws::EC2::IdFormat>]
 
-  PrincipalIdFormatStatuses description
+PrincipalIdFormatStatuses description
 
 
 

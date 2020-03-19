@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Type => Str
 
-  The elastic GPU type.
+The elastic GPU type.
 
 
 

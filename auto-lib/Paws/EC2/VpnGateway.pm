@@ -44,39 +44,39 @@ This class has no description
 
 =head2 AmazonSideAsn => Int
 
-  The private Autonomous System Number (ASN) for the Amazon side of a BGP
+The private Autonomous System Number (ASN) for the Amazon side of a BGP
 session.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone where the virtual private gateway was created, if
+The Availability Zone where the virtual private gateway was created, if
 applicable. This field may be empty or not returned.
 
 
 =head2 State => Str
 
-  The current state of the virtual private gateway.
+The current state of the virtual private gateway.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the virtual private gateway.
+Any tags assigned to the virtual private gateway.
 
 
 =head2 Type => Str
 
-  The type of VPN connection the virtual private gateway supports.
+The type of VPN connection the virtual private gateway supports.
 
 
 =head2 VpcAttachments => ArrayRef[L<Paws::EC2::VpcAttachment>]
 
-  Any VPCs attached to the virtual private gateway.
+Any VPCs attached to the virtual private gateway.
 
 
 =head2 VpnGatewayId => Str
 
-  The ID of the virtual private gateway.
+The ID of the virtual private gateway.
 
 
 

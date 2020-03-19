@@ -40,18 +40,18 @@ This class has no description
 
 =head2 DestinationCidrBlock => Str
 
-  The CIDR block associated with the local subnet of the customer data
+The CIDR block associated with the local subnet of the customer data
 center.
 
 
 =head2 Source => Str
 
-  Indicates how the routes were provided.
+Indicates how the routes were provided.
 
 
 =head2 State => Str
 
-  The current state of the static route.
+The current state of the static route.
 
 
 

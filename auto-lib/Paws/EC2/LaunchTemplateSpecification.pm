@@ -40,17 +40,17 @@ This class has no description
 
 =head2 LaunchTemplateId => Str
 
-  The ID of the launch template.
+The ID of the launch template.
 
 
 =head2 LaunchTemplateName => Str
 
-  The name of the launch template.
+The name of the launch template.
 
 
 =head2 Version => Str
 
-  The version number of the launch template.
+The version number of the launch template.
 
 Default: The default version for the launch template.
 

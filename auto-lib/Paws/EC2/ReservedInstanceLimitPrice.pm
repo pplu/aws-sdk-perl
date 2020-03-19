@@ -39,13 +39,13 @@ This class has no description
 
 =head2 Amount => Num
 
-  Used for Reserved Instance Marketplace offerings. Specifies the limit
+Used for Reserved Instance Marketplace offerings. Specifies the limit
 price on the total order (instanceCount * price).
 
 
 =head2 CurrencyCode => Str
 
-  The currency in which the C<limitPrice> amount is specified. At this
+The currency in which the C<limitPrice> amount is specified. At this
 time, the only supported currency is C<USD>.
 
 

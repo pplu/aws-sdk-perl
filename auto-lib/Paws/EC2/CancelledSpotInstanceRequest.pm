@@ -39,12 +39,12 @@ This class has no description
 
 =head2 SpotInstanceRequestId => Str
 
-  The ID of the Spot Instance request.
+The ID of the Spot Instance request.
 
 
 =head2 State => Str
 
-  The state of the Spot Instance request.
+The state of the Spot Instance request.
 
 
 

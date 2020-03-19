@@ -41,13 +41,13 @@ This class has no description
 
 =head2 Name => Str
 
-  The name of the record subdomain the service provider needs to create.
+The name of the record subdomain the service provider needs to create.
 The service provider adds the C<value> text to the C<name>.
 
 
 =head2 State => Str
 
-  The verification state of the VPC endpoint service.
+The verification state of the VPC endpoint service.
 
 E<gt>Consumers of the endpoint service can use the private name only
 when the state is C<verified>.
@@ -55,12 +55,12 @@ when the state is C<verified>.
 
 =head2 Type => Str
 
-  The endpoint service verification type, for example TXT.
+The endpoint service verification type, for example TXT.
 
 
 =head2 Value => Str
 
-  The value the service provider adds to the private DNS name domain
+The value the service provider adds to the private DNS name domain
 record before verification.
 
 

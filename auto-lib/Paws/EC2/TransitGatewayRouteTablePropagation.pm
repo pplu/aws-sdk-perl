@@ -41,22 +41,22 @@ This class has no description
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 =head2 ResourceType => Str
 
-  The type of resource.
+The type of resource.
 
 
 =head2 State => Str
 
-  The state of the resource.
+The state of the resource.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the attachment.
+The ID of the attachment.
 
 
 

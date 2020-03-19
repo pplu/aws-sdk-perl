@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Gpus => ArrayRef[L<Paws::EC2::GpuDeviceInfo>]
 
-  Describes the GPU accelerators for the instance type.
+Describes the GPU accelerators for the instance type.
 
 
 =head2 TotalGpuMemoryInMiB => Int
 
-  The total size of the memory for the GPU accelerators for the instance
+The total size of the memory for the GPU accelerators for the instance
 type.
 
 

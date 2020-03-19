@@ -41,22 +41,22 @@ This class has no description
 
 =head2 AllocationId => Str
 
-  The allocation ID of the address.
+The allocation ID of the address.
 
 
 =head2 AwsAccountId => Str
 
-  The AWS account ID.
+The AWS account ID.
 
 
 =head2 AwsService => Str
 
-  The AWS service.
+The AWS service.
 
 
 =head2 CoIp => Str
 
-  The customer-owned IP address.
+The customer-owned IP address.
 
 
 

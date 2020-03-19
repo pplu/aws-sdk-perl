@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN).
+The Amazon Resource Name (ARN).
 
 
 =head2 Name => Str
 
-  The name.
+The name.
 
 
 

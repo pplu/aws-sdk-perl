@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Fpgas => ArrayRef[L<Paws::EC2::FpgaDeviceInfo>]
 
-  Describes the FPGAs for the instance type.
+Describes the FPGAs for the instance type.
 
 
 =head2 TotalFpgaMemoryInMiB => Int
 
-  The total memory of all FPGA accelerators for the instance type.
+The total memory of all FPGA accelerators for the instance type.
 
 
 

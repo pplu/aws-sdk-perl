@@ -39,12 +39,12 @@ This class has no description
 
 =head2 B<REQUIRED> InstanceCount => Int
 
-  The number of instances.
+The number of instances.
 
 
 =head2 B<REQUIRED> PurchaseToken => Str
 
-  The purchase token.
+The purchase token.
 
 
 

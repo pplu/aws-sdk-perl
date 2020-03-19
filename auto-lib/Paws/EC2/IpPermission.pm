@@ -44,7 +44,7 @@ This class has no description
 
 =head2 FromPort => Int
 
-  The start of port range for the TCP and UDP protocols, or an
+The start of port range for the TCP and UDP protocols, or an
 ICMP/ICMPv6 type number. A value of C<-1> indicates all ICMP/ICMPv6
 types. If you specify all ICMP/ICMPv6 types, you must specify all
 codes.
@@ -52,7 +52,7 @@ codes.
 
 =head2 IpProtocol => Str
 
-  The IP protocol name (C<tcp>, C<udp>, C<icmp>, C<icmpv6>) or number
+The IP protocol name (C<tcp>, C<udp>, C<icmp>, C<icmpv6>) or number
 (see Protocol Numbers
 (http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
 
@@ -67,31 +67,31 @@ codes is allowed.
 
 =head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]
 
-  The IPv4 ranges.
+The IPv4 ranges.
 
 
 =head2 Ipv6Ranges => ArrayRef[L<Paws::EC2::Ipv6Range>]
 
-  [VPC only] The IPv6 ranges.
+[VPC only] The IPv6 ranges.
 
 
 =head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
 
-  [VPC only] The prefix list IDs for an AWS service. With outbound rules,
+[VPC only] The prefix list IDs for an AWS service. With outbound rules,
 this is the AWS service to access through a VPC endpoint from instances
 associated with the security group.
 
 
 =head2 ToPort => Int
 
-  The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
+The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
 code. A value of C<-1> indicates all ICMP/ICMPv6 codes. If you specify
 all ICMP/ICMPv6 types, you must specify all codes.
 
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
 
-  The security group and AWS account ID pairs.
+The security group and AWS account ID pairs.
 
 
 

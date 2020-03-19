@@ -42,30 +42,30 @@ This class has no description
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-  The IDs of the instances.
+The IDs of the instances.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 LaunchTemplateAndOverrides => L<Paws::EC2::LaunchTemplateAndOverridesResponse>
 
-  The launch templates and overrides that were used for launching the
+The launch templates and overrides that were used for launching the
 instances. The values that you specify in the Overrides replace the
 values in the launch template.
 
 
 =head2 Lifecycle => Str
 
-  Indicates if the instance that was launched is a Spot Instance or
+Indicates if the instance that was launched is a Spot Instance or
 On-Demand Instance.
 
 
 =head2 Platform => Str
 
-  The value is C<Windows> for Windows instances. Otherwise, the value is
+The value is C<Windows> for Windows instances. Otherwise, the value is
 blank.
 
 

@@ -48,57 +48,57 @@ This class has no description
 
 =head2 Description => Str
 
-  The description of the Traffic Mirror rule.
+The description of the Traffic Mirror rule.
 
 
 =head2 DestinationCidrBlock => Str
 
-  The destination CIDR block assigned to the Traffic Mirror rule.
+The destination CIDR block assigned to the Traffic Mirror rule.
 
 
 =head2 DestinationPortRange => L<Paws::EC2::TrafficMirrorPortRange>
 
-  The destination port range assigned to the Traffic Mirror rule.
+The destination port range assigned to the Traffic Mirror rule.
 
 
 =head2 Protocol => Int
 
-  The protocol assigned to the Traffic Mirror rule.
+The protocol assigned to the Traffic Mirror rule.
 
 
 =head2 RuleAction => Str
 
-  The action assigned to the Traffic Mirror rule.
+The action assigned to the Traffic Mirror rule.
 
 
 =head2 RuleNumber => Int
 
-  The rule number of the Traffic Mirror rule.
+The rule number of the Traffic Mirror rule.
 
 
 =head2 SourceCidrBlock => Str
 
-  The source CIDR block assigned to the Traffic Mirror rule.
+The source CIDR block assigned to the Traffic Mirror rule.
 
 
 =head2 SourcePortRange => L<Paws::EC2::TrafficMirrorPortRange>
 
-  The source port range assigned to the Traffic Mirror rule.
+The source port range assigned to the Traffic Mirror rule.
 
 
 =head2 TrafficDirection => Str
 
-  The traffic direction assigned to the Traffic Mirror rule.
+The traffic direction assigned to the Traffic Mirror rule.
 
 
 =head2 TrafficMirrorFilterId => Str
 
-  The ID of the Traffic Mirror filter that the rule is associated with.
+The ID of the Traffic Mirror filter that the rule is associated with.
 
 
 =head2 TrafficMirrorFilterRuleId => Str
 
-  The ID of the Traffic Mirror rule.
+The ID of the Traffic Mirror rule.
 
 
 

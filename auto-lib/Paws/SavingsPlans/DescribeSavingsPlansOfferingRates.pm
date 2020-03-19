@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Products => [
         'EC2', ...    # values: EC2, Fargate
       ],              # OPTIONAL
-      SavingsPlanOfferingIds    => [ 'MyUUID', ... ],    # OPTIONAL
+      SavingsPlanOfferingIds => [ 'MyUUID', ... ],    # OPTIONAL
       SavingsPlanPaymentOptions => [
         'All Upfront', ...    # values: All Upfront, Partial Upfront, No Upfront
       ],                      # OPTIONAL

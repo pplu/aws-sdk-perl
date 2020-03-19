@@ -50,12 +50,12 @@ This class has no description
 
 =head2 CreationTime => Str
 
-  The date and time the flow log was created.
+The date and time the flow log was created.
 
 
 =head2 DeliverLogsErrorMessage => Str
 
-  Information about the error that occurred. C<Rate limited> indicates
+Information about the error that occurred. C<Rate limited> indicates
 that CloudWatch Logs throttling has been applied for one or more
 network interfaces, or that you've reached the limit on the number of
 log groups that you can create. C<Access error> indicates that the IAM
@@ -66,27 +66,27 @@ error.
 
 =head2 DeliverLogsPermissionArn => Str
 
-  The ARN of the IAM role that posts logs to CloudWatch Logs.
+The ARN of the IAM role that posts logs to CloudWatch Logs.
 
 
 =head2 DeliverLogsStatus => Str
 
-  The status of the logs delivery (C<SUCCESS> | C<FAILED>).
+The status of the logs delivery (C<SUCCESS> | C<FAILED>).
 
 
 =head2 FlowLogId => Str
 
-  The flow log ID.
+The flow log ID.
 
 
 =head2 FlowLogStatus => Str
 
-  The status of the flow log (C<ACTIVE>).
+The status of the flow log (C<ACTIVE>).
 
 
 =head2 LogDestination => Str
 
-  Specifies the destination to which the flow log data is published. Flow
+Specifies the destination to which the flow log data is published. Flow
 log data can be published to an CloudWatch Logs log group or an Amazon
 S3 bucket. If the flow log publishes to CloudWatch Logs, this element
 indicates the Amazon Resource Name (ARN) of the CloudWatch Logs log
@@ -97,24 +97,24 @@ which the data is published.
 
 =head2 LogDestinationType => Str
 
-  Specifies the type of destination to which the flow log data is
+Specifies the type of destination to which the flow log data is
 published. Flow log data can be published to CloudWatch Logs or Amazon
 S3.
 
 
 =head2 LogFormat => Str
 
-  The format of the flow log record.
+The format of the flow log record.
 
 
 =head2 LogGroupName => Str
 
-  The name of the flow log group.
+The name of the flow log group.
 
 
 =head2 MaxAggregationInterval => Int
 
-  The maximum interval of time, in seconds, during which a flow of
+The maximum interval of time, in seconds, during which a flow of
 packets is captured and aggregated into a flow log record.
 
 When a network interface is attached to a Nitro-based instance
@@ -127,12 +127,12 @@ Valid Values: C<60> | C<600>
 
 =head2 ResourceId => Str
 
-  The ID of the resource on which the flow log was created.
+The ID of the resource on which the flow log was created.
 
 
 =head2 TrafficType => Str
 
-  The type of traffic captured for the flow log.
+The type of traffic captured for the flow log.
 
 
 

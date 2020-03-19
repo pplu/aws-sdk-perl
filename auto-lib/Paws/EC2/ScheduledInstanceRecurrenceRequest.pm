@@ -42,18 +42,18 @@ This class has no description
 
 =head2 Frequency => Str
 
-  The frequency (C<Daily>, C<Weekly>, or C<Monthly>).
+The frequency (C<Daily>, C<Weekly>, or C<Monthly>).
 
 
 =head2 Interval => Int
 
-  The interval quantity. The interval unit depends on the value of
+The interval quantity. The interval unit depends on the value of
 C<Frequency>. For example, every 2 weeks or every 2 months.
 
 
 =head2 OccurrenceDays => ArrayRef[Int]
 
-  The days. For a monthly schedule, this is one or more days of the month
+The days. For a monthly schedule, this is one or more days of the month
 (1-31). For a weekly schedule, this is one or more days of the week
 (1-7, where 1 is Sunday). You can't specify this value with a daily
 schedule. If the occurrence is relative to the end of the month, you
@@ -62,14 +62,14 @@ can specify only a single day.
 
 =head2 OccurrenceRelativeToEnd => Bool
 
-  Indicates whether the occurrence is relative to the end of the
+Indicates whether the occurrence is relative to the end of the
 specified week or month. You can't specify this value with a daily
 schedule.
 
 
 =head2 OccurrenceUnit => Str
 
-  The unit for C<OccurrenceDays> (C<DayOfWeek> or C<DayOfMonth>). This
+The unit for C<OccurrenceDays> (C<DayOfWeek> or C<DayOfMonth>). This
 value is required for a monthly schedule. You can't specify
 C<DayOfWeek> with a weekly schedule. You can't specify this value with
 a daily schedule.

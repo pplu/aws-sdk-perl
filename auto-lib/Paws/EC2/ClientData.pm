@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Comment => Str
 
-  A user-defined comment about the disk upload.
+A user-defined comment about the disk upload.
 
 
 =head2 UploadEnd => Str
 
-  The time that the disk upload ends.
+The time that the disk upload ends.
 
 
 =head2 UploadSize => Num
 
-  The size of the uploaded disk image, in GiB.
+The size of the uploaded disk image, in GiB.
 
 
 =head2 UploadStart => Str
 
-  The time that the disk upload starts.
+The time that the disk upload starts.
 
 
 

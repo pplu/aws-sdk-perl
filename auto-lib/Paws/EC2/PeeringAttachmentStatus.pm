@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The status code.
+The status code.
 
 
 =head2 Message => Str
 
-  The status message, if applicable.
+The status message, if applicable.
 
 
 

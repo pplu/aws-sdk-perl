@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The state of the Client VPN endpoint route.
+The state of the Client VPN endpoint route.
 
 
 =head2 Message => Str
 
-  A message about the status of the Client VPN endpoint route, if
+A message about the status of the Client VPN endpoint route, if
 applicable.
 
 

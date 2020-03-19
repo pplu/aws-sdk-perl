@@ -44,37 +44,37 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone where the resulting instance will reside.
+The Availability Zone where the resulting instance will reside.
 
 
 =head2 BytesConverted => Int
 
-  The number of bytes converted so far.
+The number of bytes converted so far.
 
 
 =head2 Description => Str
 
-  A description of the task.
+A description of the task.
 
 
 =head2 Image => L<Paws::EC2::DiskImageDescription>
 
-  The image.
+The image.
 
 
 =head2 Status => Str
 
-  The status of the import of this particular disk image.
+The status of the import of this particular disk image.
 
 
 =head2 StatusMessage => Str
 
-  The status information or errors related to the disk image.
+The status information or errors related to the disk image.
 
 
 =head2 Volume => L<Paws::EC2::DiskImageVolumeDescription>
 
-  The volume.
+The volume.
 
 
 

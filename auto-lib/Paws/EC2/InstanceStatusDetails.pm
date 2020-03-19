@@ -40,18 +40,18 @@ This class has no description
 
 =head2 ImpairedSince => Str
 
-  The time when a status check failed. For an instance that was launched
+The time when a status check failed. For an instance that was launched
 and impaired, this is the time when the instance was launched.
 
 
 =head2 Name => Str
 
-  The type of instance status.
+The type of instance status.
 
 
 =head2 Status => Str
 
-  The status.
+The status.
 
 
 

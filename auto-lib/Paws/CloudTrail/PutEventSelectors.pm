@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                    # OPTIONAL
           ExcludeManagementEventSources => [ 'MyString', ... ],    # OPTIONAL
-          IncludeManagementEvents       => 1,                      # OPTIONAL
+          IncludeManagementEvents => 1,                            # OPTIONAL
           ReadWriteType =>
             'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
         },

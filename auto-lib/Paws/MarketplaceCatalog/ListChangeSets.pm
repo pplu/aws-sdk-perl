@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Catalog    => 'MyCatalog',
       FilterList => [
         {
-          Name      => 'MyFilterName',              # min: 1, max: 255; OPTIONAL
+          Name => 'MyFilterName',                   # min: 1, max: 255; OPTIONAL
           ValueList => [ 'MyStringValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...

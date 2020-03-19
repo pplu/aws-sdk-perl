@@ -49,63 +49,63 @@ This class has no description
 
 =head2 EndTime => Str
 
-  The modification completion or failure time.
+The modification completion or failure time.
 
 
 =head2 ModificationState => Str
 
-  The current modification state. The modification state is null for
+The current modification state. The modification state is null for
 unmodified volumes.
 
 
 =head2 OriginalIops => Int
 
-  The original IOPS rate of the volume.
+The original IOPS rate of the volume.
 
 
 =head2 OriginalSize => Int
 
-  The original size of the volume.
+The original size of the volume.
 
 
 =head2 OriginalVolumeType => Str
 
-  The original EBS volume type of the volume.
+The original EBS volume type of the volume.
 
 
 =head2 Progress => Int
 
-  The modification progress, from 0 to 100 percent complete.
+The modification progress, from 0 to 100 percent complete.
 
 
 =head2 StartTime => Str
 
-  The modification start time.
+The modification start time.
 
 
 =head2 StatusMessage => Str
 
-  A status message about the modification progress or failure.
+A status message about the modification progress or failure.
 
 
 =head2 TargetIops => Int
 
-  The target IOPS rate of the volume.
+The target IOPS rate of the volume.
 
 
 =head2 TargetSize => Int
 
-  The target size of the volume, in GiB.
+The target size of the volume, in GiB.
 
 
 =head2 TargetVolumeType => Str
 
-  The target EBS volume type of the volume.
+The target EBS volume type of the volume.
 
 
 =head2 VolumeId => Str
 
-  The ID of the volume.
+The ID of the volume.
 
 
 

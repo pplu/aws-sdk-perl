@@ -38,7 +38,7 @@ This class has no description
 
 =head2 ServiceType => Str
 
-  The type of service.
+The type of service.
 
 
 

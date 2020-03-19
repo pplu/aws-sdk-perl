@@ -41,22 +41,22 @@ This class has no description
 
 =head2 DeviceId => Str
 
-  The ID of the device.
+The ID of the device.
 
 
 =head2 SubsystemId => Str
 
-  The ID of the subsystem.
+The ID of the subsystem.
 
 
 =head2 SubsystemVendorId => Str
 
-  The ID of the vendor for the subsystem.
+The ID of the vendor for the subsystem.
 
 
 =head2 VendorId => Str
 
-  The ID of the vendor.
+The ID of the vendor.
 
 
 

@@ -40,21 +40,21 @@ This class has no description
 
 =head2 InstanceType => Str
 
-  The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Location => Str
 
-  The identifier for the location. This depends on the location type. For
+The identifier for the location. This depends on the location type. For
 example, if the location type is C<region>, the location is the Region
 code (for example, C<us-east-2>.)
 
 
 =head2 LocationType => Str
 
-  The location type.
+The location type.
 
 
 

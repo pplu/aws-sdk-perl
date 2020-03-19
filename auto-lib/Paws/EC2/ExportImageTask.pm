@@ -44,38 +44,38 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the image being exported.
+A description of the image being exported.
 
 
 =head2 ExportImageTaskId => Str
 
-  The ID of the export image task.
+The ID of the export image task.
 
 
 =head2 ImageId => Str
 
-  The ID of the image.
+The ID of the image.
 
 
 =head2 Progress => Str
 
-  The percent complete of the export image task.
+The percent complete of the export image task.
 
 
 =head2 S3ExportLocation => L<Paws::EC2::ExportTaskS3Location>
 
-  Information about the destination S3 bucket.
+Information about the destination S3 bucket.
 
 
 =head2 Status => Str
 
-  The status of the export image task. The possible values are C<active>,
+The status of the export image task. The possible values are C<active>,
 C<completed>, C<deleting>, and C<deleted>.
 
 
 =head2 StatusMessage => Str
 
-  The status message for the export image task.
+The status message for the export image task.
 
 
 

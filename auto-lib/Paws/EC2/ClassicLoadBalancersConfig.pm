@@ -38,7 +38,7 @@ This class has no description
 
 =head2 ClassicLoadBalancers => ArrayRef[L<Paws::EC2::ClassicLoadBalancer>]
 
-  One or more Classic Load Balancers.
+One or more Classic Load Balancers.
 
 
 

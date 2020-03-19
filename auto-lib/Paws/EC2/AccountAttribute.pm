@@ -39,12 +39,12 @@ This class has no description
 
 =head2 AttributeName => Str
 
-  The name of the account attribute.
+The name of the account attribute.
 
 
 =head2 AttributeValues => ArrayRef[L<Paws::EC2::AccountAttributeValue>]
 
-  The values for the account attribute.
+The values for the account attribute.
 
 
 

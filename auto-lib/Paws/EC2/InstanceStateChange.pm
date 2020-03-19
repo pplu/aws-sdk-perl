@@ -40,17 +40,17 @@ This class has no description
 
 =head2 CurrentState => L<Paws::EC2::InstanceState>
 
-  The current state of the instance.
+The current state of the instance.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 PreviousState => L<Paws::EC2::InstanceState>
 
-  The previous state of the instance.
+The previous state of the instance.
 
 
 

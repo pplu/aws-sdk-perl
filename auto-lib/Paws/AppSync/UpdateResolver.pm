@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TypeName               => 'MyResourceName',
       CachingConfig          => {
         CachingKeys => [ 'MyString', ... ],    # OPTIONAL
-        Ttl         => 1,                      # OPTIONAL
+        Ttl => 1,                              # OPTIONAL
       },    # OPTIONAL
       DataSourceName => 'MyResourceName',    # OPTIONAL
       Kind           => 'UNIT',              # OPTIONAL
