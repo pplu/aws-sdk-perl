@@ -1,5 +1,5 @@
 0.43 
- - 
+ - Fix POD generation errors (#380)
  - Fix issues with generating correct XML for Route53 methods
  - Fix double-encoding in URIs (requires URI::Template upgrade)
  - Fix Glacier/RestJson return values in headers (eg UploadId for InitiateMultipartUpload)
