@@ -1,0 +1,25 @@
+---
+call: SendMessages 
+service: Pinpoint
+tests:
+  - expected: c00d1a15a99e4cbeaaab39e3dccd66e1
+    op: eq
+    path: ApplicationId
+  - expected: 1432a912-a4b9-11e9-ad48-95ff3a078952
+    op: eq
+    path: RequestId
+  - expected: 1432a912-a4b9-11e9-ad48-95ff3a078952
+    op: eq
+    path: _request_id
+  - expected: SUCCESSFUL
+    op: eq
+    path: Result.Map.1-939-555-0113.DeliveryStatus
+  - expected: 200
+    op: eq
+    path: Result.Map.1-939-555-0113.StatusCode
+  - expected: af6279vo9087299nu28mupnmbpb7sa23q2aguh80
+    op: eq
+    path: Result.Map.1-939-555-0113.MessageId
+  - expected: 'MessageId: af6279vo9087299nu28mupnmbpb7sa23q2aguh80'
+    op: eq
+    path: Result.Map.1-939-555-0113.StatusMessage

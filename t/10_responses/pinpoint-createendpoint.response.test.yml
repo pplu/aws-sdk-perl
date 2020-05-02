@@ -1,0 +1,13 @@
+---
+call: UpdateEndpoint 
+service: Pinpoint
+tests:
+  - expected: e1900965-a3d7-11e9-b96c-755d5f59bd77 
+    op: eq
+    path: RequestID
+  - expected: e1900965-a3d7-11e9-b96c-755d5f59bd77
+    op: eq
+    path: _request_id
+  - expected: Accepted
+    op: eq
+    path: Message

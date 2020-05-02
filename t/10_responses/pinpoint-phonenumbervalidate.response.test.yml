@@ -1,0 +1,44 @@
+---
+call: PhoneNumberValidate 
+service: Pinpoint
+tests:
+  - expected: US 
+    op: eq
+    path: CountryCodeIso2
+  - expected: 1
+    op: ==
+    path: CountryCodeNumeric
+  - expected: United States
+    op: eq
+    path: Country
+  - expected: Ann Arbor
+    op: eq
+    path: City
+  - expected: 48104
+    op: eq
+    path: ZipCode
+  - expected: Washtenaw
+    op: eq
+    path: County
+  - expected: America/New_York
+    op: eq
+    path: Timezone
+  - expected: 9395550113
+    op: eq
+    path: CleansedPhoneNumberNational
+  - expected: +19395550113
+    op: eq
+    path: CleansedPhoneNumberE164
+  - expected: Verizon Wireless
+    op: eq
+    path: Carrier
+  - expected: 0
+    op: ==
+    path: PhoneTypeCode 
+  - expected: MOBILE
+    op: eq
+    path: PhoneType
+  - expected: +19395550113
+    op: eq
+    path: OriginalPhoneNumber 
+  
