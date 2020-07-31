@@ -1,0 +1,42 @@
+---
+call: ListAllStreams
+service: Kinesis
+tests:
+  pages: 5
+  items: 10
+  pages: 
+    - expected: ARRAY
+      op: eq
+      values: 
+         - Test2DataStream
+         - Test3
+    - expected: ARRAY
+      op: eq
+      values: 
+       - Test2DataStream
+       - Test3
+    - expected: ARRAY
+      op: eq
+      values:  
+       - TestSteam5Shard
+       - TestStream10
+    - expected: ARRAY
+      op: eq
+      values:  
+       - TestStream11
+       - TestStream2
+    - expected: ARRAY
+      op: eq
+      values: 
+       - TestStream5
+       - TestStream6
+    - expected: ARRAY
+      op: eq
+      values: 
+       - TestStream8
+       - TestStream9
+    - expected: ARRAY
+      op: eq
+      values: 
+       - TestStrem4
+    

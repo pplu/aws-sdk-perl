@@ -40,7 +40,12 @@
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
         [%- END %]
-        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+		my %all_params = @_;
+		my %pass_params = ();
+   	    [%- IF (paginator.limit_key.defined) %]
+           $pass_params{[% paginator.limit_key %]} = $all_params{[% paginator.limit_key %]};
+		[%- END %]
+        $result = $self->[% op %](%pass_params, [% c.paginator_pass_params(paginator) %]);
       }
       [%- FOREACH param = c.paginator_result_key(paginator) %]
       $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });

@@ -1,0 +1,7 @@
+---
+Bucket: oneoffpaws
+ServerSideEncryptionConfiguration:
+  Rules: 
+    - ApplyServerSideEncryptionByDefault:
+        KMSMasterKeyID: xxxxxswsddfsdfsrew
+        SSEAlgorithm: aws:kms

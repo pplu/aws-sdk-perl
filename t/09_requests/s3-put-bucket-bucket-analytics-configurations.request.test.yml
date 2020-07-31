@@ -1,0 +1,54 @@
+---
+call: PutBucketAnalyticsConfiguration 
+service: S3
+tests:
+  - expected: <AnalyticsConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Id>test1333</Id><StorageClassAnalysis><DataExport><Destination><S3BucketDestination><Bucket>arn:aws:s3:::cargotel-logs</Bucket><Format>CSV</Format><Prefix>Test</Prefix></S3BucketDestination></Destination><OutputSchemaVersion>V_1</OutputSchemaVersion></DataExport></StorageClassAnalysis></AnalyticsConfiguration> 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: test1333
+    op: eq
+    path: parameters
+    key: AnalyticsConfiguration.Id
+  - expected: V_1
+    op: eq
+    path: parameters
+    key: AnalyticsConfiguration.StorageClassAnalysis.DataExport.OutputSchemaVersion
+  - expected: arn:aws:s3:::cargotel-logs
+    op: eq
+    path: parameters
+    key: AnalyticsConfiguration.StorageClassAnalysis.DataExport.Destination.S3BucketDestination.Bucket
+  - expected: test1333
+    op: eq
+    path: parameters
+    key: id
+  - expected: arn:aws:s3:::cargotel-logs
+    op: eq
+    path: parameters
+    key: AnalyticsConfiguration.StorageClassAnalysis.DataExport.Destination.S3BucketDestination.Bucket
+  - expected: Test
+    op: eq
+    path: parameters
+    key: AnalyticsConfiguration.StorageClassAnalysis.DataExport.Destination.S3BucketDestination.Prefix
+  - expected: CSV
+    op: eq
+    path: parameters
+    key: AnalyticsConfiguration.StorageClassAnalysis.DataExport.Destination.S3BucketDestination.Format
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: id=test1333
+    path: url
+  - expected: analytics=
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: id=test1333
+    path: uri
+  - expected: analytics=
+    path: uri

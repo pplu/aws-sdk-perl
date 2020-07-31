@@ -1,0 +1,20 @@
+---
+call: DeleteBucketCors
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: DELETE 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: cors
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: cors
+    path: uri
+

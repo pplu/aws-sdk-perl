@@ -1,0 +1,27 @@
+---
+call: PutBucketAccelerateConfiguration 
+service: S3
+tests:
+  - expected: <AccelerateConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Status>Suspended</Status></AccelerateConfiguration> 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: Suspended
+    op: eq
+    path: parameters
+    key: AccelerateConfiguration.Status
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: accelerate
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: accelerate
+    path: uri
+        
