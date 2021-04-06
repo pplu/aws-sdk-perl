@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.43';
+our $VERSION = '0.42_01';
 
 use Carp;
 
@@ -1141,6 +1141,9 @@ campus-explorer for contributing to test suite
 byterock for testing and fixing PinPoint
 
 torrentale for fixing QueryCaller to correctly signal empty arrays
+
+Jess Robinson and shadowcat.co.uk  for setting up ver 0.43
+ 
 
 
 =cut

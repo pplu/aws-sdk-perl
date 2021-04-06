@@ -1,4 +1,4 @@
-0.43 
+0.43 06 Apr 2021 
  - Fix POD generation errors (#380)
  - Fix issues with generating correct XML for Route53 methods
  - Fix double-encoding in URIs (requires URI::Template upgrade)

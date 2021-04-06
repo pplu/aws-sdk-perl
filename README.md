@@ -458,3 +458,6 @@ campus-explorer for contributing to test suite
 byterock for testing and fixing PinPoint
 
 torrentale for fixing QueryCaller to correctly signal empty arrays
+
+Jess Robinson and shadowcat.co.uk  for setting up ver 0.43
+ 
