@@ -9,7 +9,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.44_01';
+    '0.44';
   }
 
   sub services {
