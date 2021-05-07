@@ -28,7 +28,6 @@ sub _to_querycaller_params {
     my ( $self, $params ) = @_;
 
     my %p;
-    my @stuff = $params->meta->get_attribute_list;
     foreach my $att ( grep { $_ !~ m/^_/ } $params->meta->get_attribute_list ) {
 
         # e.g. S3 metadata objects, which are passed in the header
