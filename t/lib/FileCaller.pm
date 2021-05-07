@@ -1,7 +1,7 @@
 #
 # Caller to use a local file as a fake response from the API
 #
-# The local file must be a YAML file with a structure that will fake a 
+# The local file must be a YAML file with a structure that will fake a
 # response from the API
 #
 # ---
@@ -24,45 +24,56 @@
 # 	- environment variable PAWS_RESPONSE_FILE
 
 package FileCaller;
-  use Moose;
-  use Carp qw(croak);
-  use YAML qw/LoadFile/;
+use Moose;
+use Carp qw(croak);
+use YAML qw/LoadFile/;
 
-  with 'Paws::Net::CallerRole';
-  use Paws::Net::APIResponse;
+with 'Paws::Net::CallerRole';
+use Paws::Net::APIResponse;
+use Paws::Net::APIRequest;
+has response_file =>
+  ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
+has debug        => ( is => 'rw', default => 0 );
+has request_only => ( is => 'rw', default => 0 );
 
-  has response_file => ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
-  has debug => ( is => 'rw', default => 0 );
+sub do_call {
+    my ( $self, $service, $call_object ) = @_;
+    my $response;
 
-  sub do_call {
-    my ($self, $service, $call_object) = @_;
+    if ( $self->request_only ) {
+      return $service->prepare_request_for_call($call_object);
+    }
+    else {
 
-    my $response = $self->_file_response;
+        my $response = $self->_file_response;
 
-    if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
+        if ( ref( $response->{headers} ) eq 'ARRAY' ) {
+            $response->{headers} = {};
+        }
 
-    my $res = Paws::Net::APIResponse->new(
-      status  => $response->{status},
-      content => $response->{content},
-      headers => $response->{headers}
-    );
+        my $res = Paws::Net::APIResponse->new(
+            status  => $response->{status},
+            content => $response->{content},
+            headers => $response->{headers}
+        );
 
-    return $service->response_to_object->process($call_object, $res);
-  }
+        return $service->response_to_object->process( $call_object, $res );
+    }
+}
 
-  # Return a fake HTTP-like response cooked in a YAML file
-  sub _file_response {
+# Return a fake HTTP-like response cooked in a YAML file
+sub _file_response {
     my ($self) = @_;
 
-    my $res = LoadFile($self->response_file);
-    if ($self->debug) {
-      print STDERR "Loading from file " . $self->response_file . "\n";
-      use Data::Dumper;
-      print Dumper($res);
+    my $res = LoadFile( $self->response_file );
+    if ( $self->debug ) {
+        print STDERR "Loading from file " . $self->response_file . "\n";
+        use Data::Dumper;
+        print Dumper($res);
     }
 
     return $res;
-  }
+}
 
-  no Moose;
+no Moose;
 1;

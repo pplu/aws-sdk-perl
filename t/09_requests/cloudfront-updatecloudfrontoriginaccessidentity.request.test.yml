@@ -1,0 +1,55 @@
+---
+call: UpdateCloudFrontOriginAccessIdentity
+service: CloudFront
+tests:
+  - expected: '<CloudFrontOriginAccessIdentityConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>some test here</CallerReference><Comment>Mr Pooppy buthole did this</Comment></CloudFrontOriginAccessIdentityConfig>'
+    op: eq
+    path: content
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: EHdoUtCDkDBFNs3w4AlTIA==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: E2J612BD0LRDHQ
+    key: if-match
+    op: eq
+    path: headers
+  - expected: ac652de7ef29ce6fd58d2f640f5c713b4754e7e48950644906453a37f6fcec8a
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: some test here
+    key: CloudFrontOriginAccessIdentityConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: Mr Pooppy buthole did this
+    key: CloudFrontOriginAccessIdentityConfig.Comment
+    op: eq
+    path: parameters
+  - expected: E3D5Y5RWA05QO1
+    key: Id
+    op: eq
+    path: parameters
+  - expected: E2J612BD0LRDHQ
+    key: IfMatch
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/origin-access-identity/cloudfront/E3D5Y5RWA05QO1/config
+    op: eq
+    path: url
+  - expected: /2019-03-26/origin-access-identity/cloudfront/E3D5Y5RWA05QO1/config
+    op: eq
+    path: url
+  - expected: /2019-03-26/origin-access-identity/cloudfront/E3D5Y5RWA05QO1/config
+    op: eq
+    path: uri

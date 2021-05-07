@@ -1,0 +1,17 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Tagging xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <TagSet>
+      <Tag>
+        <Key>move_to_glacier3</Key>
+        <Value>3</Value></Tag>
+      <Tag>
+        <Key>move_to_glacier4</Key>
+        <Value>4</Value>
+      </Tag>
+    </TagSet>
+  </Tagging>
+headers:
+  x-amz-request-id: EB2083CE119102A4
+status: 200

@@ -1,0 +1,43 @@
+---
+call: DeletePublicKey
+service: CloudFront
+tests:
+  - expected: ''
+    op: eq
+    path: content
+  - expected: DELETE
+    op: eq
+    path: method
+  - expected: 1B2M2Y8AsgTpgAmY7PhCfg==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: E13ZDWLZM6ZVUX
+    key: if-match
+    op: eq
+    path: headers
+  - expected: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: K18H03HBTFHOUA
+    key: Id
+    op: eq
+    path: parameters
+  - expected: E13ZDWLZM6ZVUX
+    key: IfMatch
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/public-key/K18H03HBTFHOUA
+    op: eq
+    path: url
+  - expected: /2019-03-26/public-key/K18H03HBTFHOUA
+    op: eq
+    path: url
+  - expected: /2019-03-26/public-key/K18H03HBTFHOUA
+    op: eq
+    path: uri

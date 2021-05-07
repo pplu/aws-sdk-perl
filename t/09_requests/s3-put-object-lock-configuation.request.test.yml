@@ -1,0 +1,51 @@
+---
+call: PutObjectLockConfiguration
+service: S3
+tests:
+  - expected: <ObjectLockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><ObjectLockEnabled>Enabled</ObjectLockEnabled><Rule><DefaultRetention><Days>1</Days><Mode>GOVERNANCE</Mode><Years>1</Years></DefaultRetention></Rule></ObjectLockConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - key: ObjectLockConfiguration.ObjectLockEnabled
+    expected: Enabled
+    op: eq
+    path: parameters
+  - key: Token 
+    expected: MyObjectLockToken
+    op: eq
+    path: parameters
+  - key: ObjectLockConfiguration.Rule.DefaultRetention.Days
+    expected: 1
+    op: eq
+    path: parameters
+  - key: ObjectLockConfiguration.Rule.DefaultRetention.Years
+    expected: 1
+    op: eq
+    path: parameters
+  - key: ObjectLockConfiguration.Rule.DefaultRetention.Mode
+    expected: GOVERNANCE
+    op: eq
+    path: parameters
+  - key: RequestPayer
+    expected: requester
+    op: eq
+    path: parameters
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws
+    path: url
+    op: eq
+  - expected: /oneoffpaws?
+    path: uri
+    op: eq
+  - expected: object-lock
+    path: url
+    op: eq
+  - expected: object-lock
+    path: uri
+    op: eq
+

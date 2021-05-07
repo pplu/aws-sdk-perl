@@ -1,0 +1,25 @@
+---
+call: ListBucketMetricsConfigurations
+service: S3
+tests:
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: documents
+    op: eq
+    path: MetricsConfigurationList.0.Filter.And.Prefix
+  - expected: priority
+    op: eq
+    path: MetricsConfigurationList.0.Filter.And.Tags.0.Key
+  - expected: high
+    op: eq
+    path: MetricsConfigurationList.0.Filter.And.Tags.0.Value
+  - expected: class
+    op: eq
+    path: MetricsConfigurationList.0.Filter.And.Tags.1.Key
+  - expected: blue
+    op: eq
+    path: MetricsConfigurationList.0.Filter.And.Tags.1.Value
+  - expected: ImportantBlueDocuments
+    op: eq
+    path: MetricsConfigurationList.0.Id

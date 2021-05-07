@@ -1,0 +1,8 @@
+---
+call: GetBucketAnalyticsConfiguration
+service: S3
+tests:
+  - path: _request_id
+    op: eq
+    expected: A07B155318EEA65F
+

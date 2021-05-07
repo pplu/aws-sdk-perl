@@ -39,4 +39,36 @@ package Paws::API::Attribute::Trait::AutoInHeader;
   Moose::Util::meta_attribute_alias('AutoInHeader');
   has auto => (is => 'ro', isa => 'Str');
   has header_name => (is => 'ro', isa => 'Str');
+
+package Paws::API::Attribute::Trait::ParamInStatus;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('ParamInStatus');
+  has response_name => (is => 'ro', isa => 'Str');
+  #response_name  
+
+package Paws::API::Attribute::Trait::Flatten;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('Flatten');
+
+package Paws::API::Attribute::Trait::XMLAtribute;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('XMLAtribute');
+  has xml_attribute_name=> (is => 'ro', isa => 'Str');
+
+package Paws::API::Attribute::Trait::ListNameInRequest;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('ListNameInRequest');
+  has list_request_name => (is => 'ro', isa => 'Str');
+
+package Paws::API::Attribute::Trait::IsLocal;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('IsLocal');
+
+  #response_name
+
 1;

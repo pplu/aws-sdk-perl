@@ -1,0 +1,49 @@
+---
+call: ListFieldLevelEncryptionConfigs
+service: CloudFront
+tests:
+  - expected: Please Rick. I can take care of myself!
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.Comment
+  - expected: application/x-www-form-urlencoded
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ContentType
+  - expected: URLEncoded
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.Format
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ProfileId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.ContentTypeProfileConfig.ContentTypeProfiles.Quantity
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.ContentTypeProfileConfig.ForwardWhenContentTypeIsUnknown
+  - expected: C1PAI9EKFLCYTY
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.Id
+  - expected: 2020-01-09T21:27:58.848Z
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.LastModifiedTime
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.QueryArgProfileConfig.ForwardWhenQueryArgProfileIsUnknown
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.QueryArgProfileConfig.QueryArgProfiles.Items.0.ProfileId
+  - expected: no_conig
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.QueryArgProfileConfig.QueryArgProfiles.Items.0.QueryArg
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionList.Items.0.QueryArgProfileConfig.QueryArgProfiles.Quantity
+  - expected: 4
+    op: eq
+    path: FieldLevelEncryptionList.MaxItems
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionList.Quantity
+  - expected: ccf5f556-877c-474f-8dd3-3513e43d28c3
+    op: eq
+    path: _request_id

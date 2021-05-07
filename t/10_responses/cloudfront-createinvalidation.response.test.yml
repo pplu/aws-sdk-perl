@@ -1,4 +1,28 @@
 ---
 call: CreateInvalidation
 service: CloudFront
-tests: []
+tests:
+  - expected: 2020-01-09T22:42:47.577Z
+    op: eq
+    path: Invalidation.CreateTime
+  - expected: I2ICM4994YF3KQ
+    op: eq
+    path: Invalidation.Id
+  - expected: 2020-01010-001
+    op: eq
+    path: Invalidation.InvalidationBatch.CallerReference
+  - expected: /images/*.bmp
+    op: eq
+    path: Invalidation.InvalidationBatch.Paths.Items.0
+  - expected: 1
+    op: eq
+    path: Invalidation.InvalidationBatch.Paths.Quantity
+  - expected: InProgress
+    op: eq
+    path: Invalidation.Status
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/distribution/E2F696NMEQJ5SH/invalidation/I2ICM4994YF3KQ
+    op: eq
+    path: Location
+  - expected: cb28adf9-96e0-4ee0-adb0-14744f860026
+    op: eq
+    path: _request_id

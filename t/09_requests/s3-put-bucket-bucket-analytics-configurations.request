@@ -1,0 +1,13 @@
+---
+AnalyticsConfiguration:
+  Id: test1333
+  StorageClassAnalysis: 
+    DataExport:
+      Destination: 
+        S3BucketDestination: 
+          Prefix: Test
+          Format: CSV
+          Bucket: arn:aws:s3:::cargotel-logs
+      OutputSchemaVersion: V_1
+Bucket: oneoffpaws
+Id: test1333

@@ -8,22 +8,29 @@ package [% c.api %]::[% op_name %];
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.locationName) %]
-    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]'
-    [%- ELSIF (shape.members.$param_name.location == 'headers') %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
-    [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
-    [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 
-    [%- ELSE %], traits => ['NameInRequest'], request_name => '[% shape.members.$param_name.locationName %]'[%- END -%][%- END -%]
+    [%- IF    (shape.members.$param_name.location == 'header')     %], traits => ['ParamInHeader'] , header_name   => '[% shape.members.$param_name.locationName %]'
+	[%- ELSIF (shape.members.$param_name.location == 'statusCode') %], traits => ['ParamInStatus'] , response_name => '[% shape.members.$param_name.locationName %]'
+    [%- ELSIF (shape.members.$param_name.location == 'headers')    %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
+    [%- ELSIF (shape.members.$param_name.location == 'querystring')%], traits => ['ParamInQuery']  , query_name    => '[% shape.members.$param_name.locationName %]' 
+    [%- ELSIF (shape.members.$param_name.location ==        'uri') %], traits => ['ParamInURI']    , uri_name      => '[% shape.members.$param_name.locationName %]' 
+    [%- ELSIF (shape.members.$param_name.location == 'statusCode') %], traits => ['NameInResponse'], reponse_name  => '[% shape.members.$param_name.locationName %]'
+	[%- ELSE %],                                                       traits => ['NameInRequest'] , request_name  => '[% shape.members.$param_name.locationName %]'
+    [%- END -%]
+  [%- END -%]
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
+  [%- IF (shape.payload) %] [% has_payload=shape.payload %] [% END %] 
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+
 [% END %]
-  [%- IF (stream_param or shape.payload == param_name) %]
-  use MooseX::ClassAttribute;
-  [%- IF (stream_param) %]
-  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
-  [%- IF (shape.payload == param_name) %]
-  class_has _payload => (is => 'ro', default => '[% param_name %]');[% END %]
-  [%- END %]
+
   has _request_id => (is => 'ro', isa => 'Str');
+  [%- IF (stream_param or has_payload ) %]
+    use MooseX::ClassAttribute;
+    [%- IF (stream_param) %]
+    class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
+    [%- IF (has_payload) %]
+    class_has _payload => (is => 'ro', default => '[% has_payload %]');[% END %]
+  [%- END %]
 [%- END %]
 1;
 

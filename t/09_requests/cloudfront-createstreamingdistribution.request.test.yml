@@ -1,0 +1,87 @@
+---
+call: CreateStreamingDistribution
+service: CloudFront
+tests:
+  - expected: '<StreamingDistributionConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Aliases><Items><CNAME>Mystring</CNAME><CNAME>Mystring3</CNAME></Items><Quantity>2</Quantity></Aliases><CallerReference>2020-01-01-2020</CallerReference><Comment>Way to go Summer</Comment><Enabled>0</Enabled><PriceClass>PriceClass_100</PriceClass><S3Origin><DomainName>oneoffpaws.s3.amazonaws.com</DomainName><OriginAccessIdentity>E3D5Y5RWA05QO1</OriginAccessIdentity></S3Origin><TrustedSigners><Enabled>0</Enabled><Items><AwsAccountNumber>Mystring</AwsAccountNumber><AwsAccountNumber>Mystring2</AwsAccountNumber></Items><Quantity>2</Quantity></TrustedSigners></StreamingDistributionConfig>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: m+Gu4LiJQrGTYo/IQPC8oA==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: 2997b5fc0ed1a3aebbb14dac44e19ce5f4dfad1d442c7bdbc9cefe59a788d9ae
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: Mystring
+    key: StreamingDistributionConfig.Aliases.Items.member.1
+    op: eq
+    path: parameters
+  - expected: Mystring3
+    key: StreamingDistributionConfig.Aliases.Items.member.2
+    op: eq
+    path: parameters
+  - expected: 2
+    key: StreamingDistributionConfig.Aliases.Quantity
+    op: eq
+    path: parameters
+  - expected: 2020-01-01-2020
+    key: StreamingDistributionConfig.CallerReference
+    op: eq
+    path: parameters
+  - expected: Way to go Summer
+    key: StreamingDistributionConfig.Comment
+    op: eq
+    path: parameters
+  - expected: 0
+    key: StreamingDistributionConfig.Enabled
+    op: eq
+    path: parameters
+  - expected: PriceClass_100
+    key: StreamingDistributionConfig.PriceClass
+    op: eq
+    path: parameters
+  - expected: oneoffpaws.s3.amazonaws.com
+    key: StreamingDistributionConfig.S3Origin.DomainName
+    op: eq
+    path: parameters
+  - expected: E3D5Y5RWA05QO1
+    key: StreamingDistributionConfig.S3Origin.OriginAccessIdentity
+    op: eq
+    path: parameters
+  - expected: 0
+    key: StreamingDistributionConfig.TrustedSigners.Enabled
+    op: eq
+    path: parameters
+  - expected: Mystring
+    key: StreamingDistributionConfig.TrustedSigners.Items.member.1
+    op: eq
+    path: parameters
+  - expected: Mystring2
+    key: StreamingDistributionConfig.TrustedSigners.Items.member.2
+    op: eq
+    path: parameters
+  - expected: 2
+    key: StreamingDistributionConfig.TrustedSigners.Quantity
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/streaming-distribution
+    op: eq
+    path: url
+  - expected: /2019-03-26/streaming-distribution
+    op: eq
+    path: url
+  - expected: /2019-03-26/streaming-distribution
+    op: eq
+    path: uri

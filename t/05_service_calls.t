@@ -516,6 +516,7 @@ like($request->url, qr|distribution/A999AAA999AAA/invalidation|, 'URL has the di
 is_deeply(
   $ref,
   {
+	'xmlns' => 'http://cloudfront.amazonaws.com/doc/2019-03-26/', #we actully want this as it is valid XML
     Paths => {
       Items => { Path => [ '/object1', '/object2', '/object3' ] },
       Quantity => '3'

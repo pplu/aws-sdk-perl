@@ -1,0 +1,50 @@
+---
+call: ListObjectsV2 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: delimiter=MyDelimiter 
+    path: url
+  - expected: /oneoffpaws?
+    path: url
+  - expected: continuation-token=Mytoken
+    path: url
+  - expected: start-after=MyStartAfter
+    path: url
+  - expected: encoding-type=url
+    path: url
+  - expected: prefix=MyPrefix
+    path: url
+  - expected: max-keys=1
+    path: url
+  - expected: list-type=2
+    path: url
+  - expected: fetch-owner=1
+    path: uri
+  - expected: delimiter=MyDelimiter
+    path: uri
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: continuation-token=Mytoken
+    path: uri
+  - expected: start-after=MyStartAfter
+    path: uri
+  - expected: encoding-type=url
+    path: uri
+  - expected: prefix=MyPrefix
+    path: uri
+  - expected: max-keys=1
+    path: uri
+  - expected: list-type=2
+    path: uri
+  - expected: fetch-owner=1
+    path: uri
+

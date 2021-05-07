@@ -1,0 +1,23 @@
+---
+call: GetObjectTagging
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+    op: eq
+    path: parameters
+    key: Key
+  - expected: GET
+    op: eq
+    path: method
+  - expected: /oneoffpaws/lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+    path: uri
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg 
+    path: url
+  - expected: tagging
+    path: uri
+  - expected: tagging
+    path: url

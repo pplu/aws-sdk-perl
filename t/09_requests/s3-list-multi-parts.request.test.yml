@@ -1,0 +1,80 @@
+---
+call: ListMultipartUploads 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: MyUploadIdMarker 
+    op: eq
+    path: parameters
+    key: upload-id-marker
+  - expected: 1
+    op: eq
+    path: parameters
+    key: max-uploads
+  - expected: url
+    op: eq
+    path: parameters
+    key: encoding-type
+  - expected: MyDelimiter
+    op: eq
+    path: parameters
+    key: delimiter
+  - expected: MyPrefix
+    op: eq
+    path: parameters
+    key: prefix
+  - expected: MyKeyMarker
+    op: eq
+    path: parameters
+    key: key-marker
+  - expected: GET
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    ep: eq
+    path: url
+  - expected: prefix=MyPrefix
+    ep: eq
+    path: url
+  - expected: uploads
+    ep: eq
+    path: url
+  - expected: delimiter=MyDelimiter
+    ep: eq
+    path: url
+  - expected: encoding-type=url
+    ep: eq
+    path: url
+  - expected: max-uploads=1
+    ep: eq
+    path: url  
+  - expected: upload-id-marker=MyUploadIdMarker
+    ep: eq
+    path: url
+  - expected: key-marker=MyKeyMarker
+    ep: eq
+    path: url
+  - expected: prefix=MyPrefix
+    ep: eq
+    path: uri
+  - expected: uploads
+    ep: eq
+    path: uri
+  - expected: delimiter=MyDelimiter
+    ep: eq
+    path: uri
+  - expected: encoding-type=url
+    ep: eq
+    path: uri
+  - expected: max-uploads=1
+    ep: eq
+    path: uri
+  - expected: upload-id-marker=MyUploadIdMarker
+    ep: eq
+    path: uri
+  - expected: key-marker=MyKeyMarker
+    ep: eq
+    path: uri

@@ -1,0 +1,20 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <DistributionConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>1577734994792</CallerReference><Aliases><Quantity>0</Quantity></Aliases><DefaultRootObject></DefaultRootObject><Origins><Quantity>1</Quantity><Items><Origin><Id>S3-paws.coudfront.test/images</Id><DomainName>paws.coudfront.test.s3.us-east-1.amazonaws.com</DomainName><OriginPath>/images</OriginPath><CustomHeaders><Quantity>0</Quantity></CustomHeaders><S3OriginConfig><OriginAccessIdentity></OriginAccessIdentity></S3OriginConfig></Origin></Items></Origins><OriginGroups><Quantity>0</Quantity></OriginGroups><DefaultCacheBehavior><TargetOriginId>S3-paws.coudfront.test/images</TargetOriginId><ForwardedValues><QueryString>false</QueryString><Cookies><Forward>none</Forward></Cookies><Headers><Quantity>0</Quantity></Headers><QueryStringCacheKeys><Quantity>0</Quantity></QueryStringCacheKeys></ForwardedValues><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><ViewerProtocolPolicy>allow-all</ViewerProtocolPolicy><MinTTL>0</MinTTL><AllowedMethods><Quantity>2</Quantity><Items><Method>HEAD</Method><Method>GET</Method></Items><CachedMethods><Quantity>2</Quantity><Items><Method>HEAD</Method><Method>GET</Method></Items></CachedMethods></AllowedMethods><SmoothStreaming>false</SmoothStreaming><DefaultTTL>86400</DefaultTTL><MaxTTL>31536000</MaxTTL><Compress>false</Compress><LambdaFunctionAssociations><Quantity>0</Quantity></LambdaFunctionAssociations><FieldLevelEncryptionId></FieldLevelEncryptionId></DefaultCacheBehavior><CacheBehaviors><Quantity>0</Quantity></CacheBehaviors><CustomErrorResponses><Quantity>0</Quantity></CustomErrorResponses><Comment></Comment><Logging><Enabled>false</Enabled><IncludeCookies>false</IncludeCookies><Bucket></Bucket><Prefix></Prefix></Logging><PriceClass>PriceClass_All</PriceClass><Enabled>false</Enabled><ViewerCertificate><CloudFrontDefaultCertificate>true</CloudFrontDefaultCertificate><MinimumProtocolVersion>TLSv1</MinimumProtocolVersion><CertificateSource>cloudfront</CertificateSource></ViewerCertificate><Restrictions><GeoRestriction><RestrictionType>none</RestrictionType><Quantity>0</Quantity></GeoRestriction></Restrictions><WebACLId></WebACLId><HttpVersion>http2</HttpVersion><IsIPV6Enabled>true</IsIPV6Enabled></DistributionConfig>
+headers:
+  client-date: 'Sat, 11 Jan 2020 01:46:25 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 2324
+  content-type: text/xml
+  date: 'Sat, 11 Jan 2020 01:46:25 GMT'
+  etag: E22WXSE7DVIZBC
+  vary: Accept-Encoding
+  x-amzn-requestid: 32282964-5da8-44be-8a43-103f80dc3c3f
+status: 200

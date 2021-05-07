@@ -1,4 +1,4 @@
-[%- -%]
+[%- xml_attributes = [] -%]
 package [% inner_class %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
@@ -6,14 +6,29 @@ package [% inner_class %];
   [%- member_shape_name = shape.members.$param_name.shape %]
   [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest') %], request_name => '[% member.member.locationName %]'[% END %]
+  [%- IF (shape.members.${param_name}.xmlAttribute == 1); traits.push('XMLAtribute'); xml_attributes.push(param_name); %], xml_attribute_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSE %]
+  [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest','ListNameInRequest') %], request_name => '[% member.member.locationName %]'
+      [%- IF (shape.members.${param_name}.locationName != member.member.locationName) %], list_request_name => '[%- IF (!shape.members.${param_name}.locationName.defined) %][%param_name%][% ELSE %][% shape.members.${param_name}.locationName %][% END %]'
+	  [%- ELSE %]
+	     , list_request_name => '[%member.member.locationName %]'
+	  [% END %]  
+ [%- ELSE %]
   [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
+  [%- IF (member.flattened == 1); traits.push('Flatten'); END %]
   [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
   [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]'[% END %]
+[%- END %]
+[%- END %]
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+  [% IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END -%]
-1;
 
+  [%- IF (xml_attributes.size) %] 
+sub _xml_attributes {
+            return [[% FOREACH  xml_attribute= xml_attributes %]'[%  xml_attribute %]'[% IF (NOT loop.last) %],[% END %][% END %]];
+}
+  [% END %]
+1;
 [% iclass=shape; INCLUDE 'innerclass_documentation.tt' %]

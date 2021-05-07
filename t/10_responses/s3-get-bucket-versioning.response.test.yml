@@ -1,0 +1,10 @@
+---
+call: GetBucketVersioning
+service: S3
+tests:
+  - expected: Enabled
+    op: eq
+    path: Status
+  - expected: 353AB75B94C091C8
+    op: eq
+    path: _request_id
