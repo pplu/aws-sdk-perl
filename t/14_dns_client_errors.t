@@ -10,7 +10,7 @@ use lib 't/lib';
 
 use Test::CustomCredentials;
 
-my $match_message_tests = $ENV{IN_TRAVIS} == 1;
+my $match_message_tests = $ENV{CI};
 
 my $closed_server_endpoint = 'http://unresolvable.example.com';
 
@@ -45,7 +45,7 @@ throws_ok {
                )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/(?:Name or service not known|nodename nor servname provided, or not known)/, 'Correct message') if ($match_message_tests);
+like($@->message, qr/(?:Name or service not known|Bad hostname|nodename nor servname provided, or not known)/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 MOJO:
