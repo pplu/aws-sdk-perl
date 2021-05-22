@@ -252,7 +252,7 @@ Elastic Load Balancing supports three types of load balancers:
 Application Load Balancers, Network Load Balancers, and Classic Load
 Balancers. You can select a load balancer based on your application
 needs. For more information, see the Elastic Load Balancing User Guide
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 
 This reference covers the 2012-06-01 API, which supports Classic Load
 Balancers. The 2015-12-01 API supports Application Load Balancers and
@@ -294,7 +294,7 @@ same key is already associated with the load balancer, C<AddTags>
 updates its value.
 
 For more information, see Tag Your Classic Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -318,7 +318,7 @@ virtual private cloud (VPC). The specified security groups override the
 previously associated security groups.
 
 For more information, see Security Groups for Load Balancers in a VPC
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -343,7 +343,7 @@ specified load balancer.
 The load balancer evenly distributes requests across all registered
 subnets. For more information, see Add or Remove Subnets for Your Load
 Balancer in a VPC
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -367,7 +367,7 @@ state of your EC2 instances.
 
 For more information, see Configure Health Checks for Your Load
 Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -403,7 +403,7 @@ If the application cookie is explicitly removed or expires, the session
 stops being sticky until a new application cookie is issued.
 
 For more information, see Application-Controlled Session Stickiness
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -442,7 +442,7 @@ on the cookie expiration time, which is specified in the policy
 configuration.
 
 For more information, see Duration-Based Session Stickiness
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -485,7 +485,7 @@ DeleteLoadBalancer.
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
 For more information, see Limits for Your Classic Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -510,7 +510,7 @@ otherwise, the properties of the new listener must match the properties
 of the existing listener.
 
 For more information, see Listeners for Your Classic Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -626,7 +626,7 @@ You can use DescribeLoadBalancers to verify that the instance is
 deregistered from the load balancer.
 
 For more information, see Register or De-Register EC2 Instances
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -649,7 +649,7 @@ Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
 For more information, see Limits for Your Classic Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -835,7 +835,7 @@ balancer attempts to equally balance the traffic among its remaining
 Availability Zones.
 
 For more information, see Add or Remove Availability Zones
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -863,7 +863,7 @@ AttachLoadBalancerToSubnets.
 The load balancer evenly distributes requests across all its registered
 Availability Zones that contain instances. For more information, see
 Add or Remove Availability Zones
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -898,22 +898,22 @@ Guide>:
 =item *
 
 Cross-Zone Load Balancing
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
 
 =item *
 
 Connection Draining
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
 
 =item *
 
 Access Logs
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html)
 
 =item *
 
 Idle Connection Timeout
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
 
 =back
 
@@ -958,7 +958,7 @@ To deregister instances from a load balancer, use
 DeregisterInstancesFromLoadBalancer.
 
 For more information, see Register or De-Register EC2 Instances
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -1003,7 +1003,7 @@ that was used on the same load balancer and port.
 
 For more information about updating your SSL certificate, see Replace
 the SSL Certificate for Your Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -1039,10 +1039,10 @@ verify that the policy is associated with the EC2 instance.
 
 For more information about enabling back-end instance authentication,
 see Configure Back-end Instance Authentication
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
 in the I<Classic Load Balancers Guide>. For more information about
 Proxy Protocol, see Configure Proxy Protocol Support
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -1071,11 +1071,11 @@ SetLoadBalancerPoliciesForBackendServer.
 
 For more information about setting policies, see Update the SSL
 Negotiation Configuration
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html),
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html),
 Duration-Based Session Stickiness
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
 and Application-Controlled Session Stickiness
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
 in the I<Classic Load Balancers Guide>.
 
 

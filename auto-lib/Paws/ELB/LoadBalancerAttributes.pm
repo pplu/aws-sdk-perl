@@ -49,13 +49,13 @@ requests and delivers the information to the Amazon S3 bucket that you
 specify.
 
 For more information, see Enable Access Logs
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html)
 in the I<Classic Load Balancers Guide>.
 
 
 =head2 AdditionalAttributes => ArrayRef[L<Paws::ELB::AdditionalAttribute>]
 
-This parameter is reserved.
+Any additional attributes.
 
 
 =head2 ConnectionDraining => L<Paws::ELB::ConnectionDraining>
@@ -65,7 +65,7 @@ before the load balancer shifts traffic away from a deregistered or
 unhealthy instance.
 
 For more information, see Configure Connection Draining
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -78,7 +78,7 @@ By default, Elastic Load Balancing maintains a 60-second idle
 connection timeout for both front-end and back-end connections of your
 load balancer. For more information, see Configure Idle Connection
 Timeout
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
 in the I<Classic Load Balancers Guide>.
 
 
@@ -88,7 +88,7 @@ If enabled, the load balancer routes the request traffic evenly across
 all instances regardless of the Availability Zones.
 
 For more information, see Configure Cross-Zone Load Balancing
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
 in the I<Classic Load Balancers Guide>.
 
 

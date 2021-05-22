@@ -41,7 +41,7 @@ Information about a listener.
 
 For information about the protocols and the ports supported by Elastic
 Load Balancing, see Listeners for Your Classic Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 in the I<Classic Load Balancers Guide>.
 
 =head1 ATTRIBUTES
@@ -57,8 +57,9 @@ The port on which the instance is listening.
 The protocol to use for routing traffic to instances: HTTP, HTTPS, TCP,
 or SSL.
 
-If the front-end protocol is HTTP, HTTPS, TCP, or SSL,
-C<InstanceProtocol> must be at the same protocol.
+If the front-end protocol is TCP or SSL, the back-end protocol must be
+TCP or SSL. If the front-end protocol is HTTP or HTTPS, the back-end
+protocol must be HTTP or HTTPS.
 
 If there is another listener with the same C<InstancePort> whose
 C<InstanceProtocol> is secure, (HTTPS or SSL), the listener's

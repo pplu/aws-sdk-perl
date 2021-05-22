@@ -68,7 +68,7 @@ Information about your EC2 instances.
 The DNS name of the load balancer.
 
 For more information, see Configure a Custom Domain Name
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html)
 in the I<Classic Load Balancers Guide>.
 
 
