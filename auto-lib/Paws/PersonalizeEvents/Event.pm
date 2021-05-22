@@ -3,7 +3,11 @@ package Paws::PersonalizeEvents::Event;
   use Moose;
   has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
   has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest'], required => 1);
-  has Properties => (is => 'ro', isa => 'Str', request_name => 'properties', traits => ['NameInRequest'], required => 1);
+  has EventValue => (is => 'ro', isa => 'Num', request_name => 'eventValue', traits => ['NameInRequest']);
+  has Impression => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'impression', traits => ['NameInRequest']);
+  has ItemId => (is => 'ro', isa => 'Str', request_name => 'itemId', traits => ['NameInRequest']);
+  has Properties => (is => 'ro', isa => 'Str', request_name => 'properties', traits => ['NameInRequest']);
+  has RecommendationId => (is => 'ro', isa => 'Str', request_name => 'recommendationId', traits => ['NameInRequest']);
   has SentAt => (is => 'ro', isa => 'Str', request_name => 'sentAt', traits => ['NameInRequest'], required => 1);
 
 1;
@@ -53,35 +57,54 @@ the same event ID are not used in model training.
 
 =head2 B<REQUIRED> EventType => Str
 
-The type of event. This property corresponds to the C<EVENT_TYPE> field
-of the Interactions schema.
+The type of event, such as click or download. This property corresponds
+to the C<EVENT_TYPE> field of your Interactions schema and depends on
+the types of events you are tracking.
 
 
-=head2 B<REQUIRED> Properties => Str
+=head2 EventValue => Num
+
+The event value that corresponds to the C<EVENT_VALUE> field of the
+Interactions schema.
+
+
+=head2 Impression => ArrayRef[Str|Undef]
+
+A list of item IDs that represents the sequence of items you have shown
+the user. For example, C<["itemId1", "itemId2", "itemId3"]>.
+
+
+=head2 ItemId => Str
+
+The item ID key that corresponds to the C<ITEM_ID> field of the
+Interactions schema.
+
+
+=head2 Properties => Str
 
 A string map of event-specific data that you might choose to record.
-For example, if a user rates a movie on your site, you might send the
-movie ID and rating, and the number of movie ratings made by the user.
+For example, if a user rates a movie on your site, other than movie ID
+(C<itemId>) and rating (C<eventValue>) , you might also send the number
+of movie ratings made by the user.
 
 Each item in the map consists of a key-value pair. For example,
 
-C<{"itemId": "movie1"}>
-
-C<{"itemId": "movie2", "eventValue": "4.5"}>
-
-C<{"itemId": "movie3", "eventValue": "3", "numberOfRatings": "12"}>
+C<{"numberOfRatings": "12"}>
 
 The keys use camel case names that match the fields in the Interactions
-schema. The C<itemId> and C<eventValue> keys correspond to the
-C<ITEM_ID> and C<EVENT_VALUE> fields. In the above example, the
-C<eventType> might be 'MovieRating' with C<eventValue> being the
-rating. The C<numberOfRatings> would match the 'NUMBER_OF_RATINGS'
-field defined in the Interactions schema.
+schema. In the above example, the C<numberOfRatings> would match the
+'NUMBER_OF_RATINGS' field defined in the Interactions schema.
+
+
+=head2 RecommendationId => Str
+
+The ID of the recommendation.
 
 
 =head2 B<REQUIRED> SentAt => Str
 
-The timestamp on the client side when the event occurred.
+The timestamp (in Unix time) on the client side when the event
+occurred.
 
 
 
