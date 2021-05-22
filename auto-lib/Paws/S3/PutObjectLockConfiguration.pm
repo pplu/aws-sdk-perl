@@ -3,6 +3,7 @@ package Paws::S3::PutObjectLockConfiguration;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has ObjectLockConfiguration => (is => 'ro', isa => 'Paws::S3::ObjectLockConfiguration', traits => ['ParamInBody']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has Token => (is => 'ro', isa => 'Str', header_name => 'x-amz-bucket-object-lock-token', traits => ['ParamInHeader']);
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutObjectLockConfigurationOutput = $s3->PutObjectLockConfiguration(
       Bucket                  => 'MyBucketName',
       ContentMD5              => 'MyContentMD5',    # OPTIONAL
+      ExpectedBucketOwner     => 'MyAccountId',     # OPTIONAL
       ObjectLockConfiguration => {
         ObjectLockEnabled => 'Enabled',             # values: Enabled; OPTIONAL
         Rule              => {
@@ -74,6 +76,17 @@ replace.
 =head2 ContentMD5 => Str
 
 The MD5 hash for the request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

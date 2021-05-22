@@ -2,7 +2,9 @@
 package Paws::S3::GetObjectTagging;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
+  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
 
@@ -34,10 +36,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To retrieve tag set of an object
+    # The following example retrieves tag set of an object.
     my $GetObjectTaggingOutput = $s3->GetObjectTagging(
-      Bucket    => 'MyBucketName',
-      Key       => 'MyObjectKey',
-      VersionId => 'MyObjectVersionId',    # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Key'    => 'HappyFace.jpg'
+    );
+
+    # Results:
+    my $TagSet    = $GetObjectTaggingOutput->TagSet;
+    my $VersionId = $GetObjectTaggingOutput->VersionId;
+
+   # Returns a L<Paws::S3::GetObjectTaggingOutput> object.
+   # To retrieve tag set of a specific object version
+   # The following example retrieves tag set of an object. The request specifies
+   # object version.
+    my $GetObjectTaggingOutput = $s3->GetObjectTagging(
+      'Bucket'    => 'examplebucket',
+      'Key'       => 'exampleobject',
+      'VersionId' => 'ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI'
     );
 
     # Results:
@@ -57,14 +74,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 The bucket name containing the object for which to get the tagging
 information.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 
@@ -73,6 +108,12 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 Object key for which to get the tagging information.
 
 
+
+=head2 RequestPayer => Str
+
+
+
+Valid values are: C<"requester">
 
 =head2 VersionId => Str
 

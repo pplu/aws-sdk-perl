@@ -6,6 +6,7 @@ package Paws::S3::PutObjectAcl;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
   has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
@@ -44,46 +45,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+   # To grant permissions using object ACL
+   # The following example adds grants to an object ACL. The first permission
+   # grants user1 and user2 FULL_CONTROL and the AllUsers group READ permission.
     my $PutObjectAclOutput = $s3->PutObjectAcl(
-      Bucket              => 'MyBucketName',
-      Key                 => 'MyObjectKey',
-      ACL                 => 'private',        # OPTIONAL
-      AccessControlPolicy => {
-        Grants => [
-          {
-            Grantee => {
-              Type => 'CanonicalUser'
-              ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
-              DisplayName  => 'MyDisplayName',     # OPTIONAL
-              EmailAddress => 'MyEmailAddress',    # OPTIONAL
-              ID           => 'MyID',              # OPTIONAL
-              URI          => 'MyURI',             # OPTIONAL
-            },    # OPTIONAL
-            Permission => 'FULL_CONTROL'
-            , # values: FULL_CONTROL, WRITE, WRITE_ACP, READ, READ_ACP; OPTIONAL
-          },
-          ...
-        ],    # OPTIONAL
-        Owner => {
-          DisplayName => 'MyDisplayName',    # OPTIONAL
-          ID          => 'MyID',             # OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      ContentLength    => 1,                       # OPTIONAL
-      ContentMD5       => 'MyContentMD5',          # OPTIONAL
-      GrantFullControl => 'MyGrantFullControl',    # OPTIONAL
-      GrantRead        => 'MyGrantRead',           # OPTIONAL
-      GrantReadACP     => 'MyGrantReadACP',        # OPTIONAL
-      GrantWrite       => 'MyGrantWrite',          # OPTIONAL
-      GrantWriteACP    => 'MyGrantWriteACP',       # OPTIONAL
-      RequestPayer     => 'requester',             # OPTIONAL
-      VersionId        => 'MyObjectVersionId',     # OPTIONAL
+      'AccessControlPolicy' => {
+
+      },
+      'Bucket' => 'examplebucket',
+      'GrantFullControl' =>
+        'emailaddress=user1@example.com,emailaddress=user2@example.com',
+      'GrantRead' => 'uri=http://acs.amazonaws.com/groups/global/AllUsers',
+      'Key'       => 'HappyFace.jpg'
     );
 
-    # Results:
-    my $RequestCharged = $PutObjectAclOutput->RequestCharged;
-
-    # Returns a L<Paws::S3::PutObjectAclOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutObjectAcl>
@@ -111,14 +86,14 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 The bucket name that contains the object to which you want to attach
 the ACL.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -135,6 +110,17 @@ used as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, go to RFC 1864.E<gt>
 (http://www.ietf.org/rfc/rfc1864.txt)
 
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
 
 
 =head2 GrantFullControl => Str
@@ -142,11 +128,15 @@ not corrupted in transit. For more information, go to RFC 1864.E<gt>
 Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantRead => Str
 
 Allows grantee to list the objects in the bucket.
+
+This action is not supported by Amazon S3 on Outposts.
 
 
 
@@ -154,12 +144,16 @@ Allows grantee to list the objects in the bucket.
 
 Allows grantee to read the bucket ACL.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantWrite => Str
 
-Allows grantee to create, overwrite, and delete any object in the
-bucket.
+Allows grantee to create new objects in the bucket.
+
+For the bucket and object owners of existing objects, also allows
+deletions and overwrites of those objects.
 
 
 
@@ -167,11 +161,32 @@ bucket.
 
 Allows grantee to write the ACL for the applicable bucket.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 B<REQUIRED> Key => Str
 
-Key for which the PUT operation was initiated.
+Key for which the PUT action was initiated.
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 

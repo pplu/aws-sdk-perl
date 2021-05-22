@@ -2,6 +2,7 @@
 package Paws::S3::PutBucketNotificationConfiguration;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has NotificationConfiguration => (is => 'ro', isa => 'Paws::S3::NotificationConfiguration', traits => ['ParamInBody'], required => 1);
 
 
@@ -33,78 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # Set notification configuration for a bucket
+    # The following example sets notification configuration on a bucket to
+    # publish the object created events to an SNS topic.
     $s3->PutBucketNotificationConfiguration(
-      Bucket                    => 'MyBucketName',
-      NotificationConfiguration => {
-        LambdaFunctionConfigurations => [
-          {
-            Events => [
-              's3:ReducedRedundancyLostObject',
-              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated, s3:ObjectRestore:*, s3:ObjectRestore:Post, s3:ObjectRestore:Completed, s3:Replication:*, s3:Replication:OperationFailedReplication, s3:Replication:OperationNotTracked, s3:Replication:OperationMissedThreshold, s3:Replication:OperationReplicatedAfterThreshold
-            ],
-            LambdaFunctionArn => 'MyLambdaFunctionArn',
-            Filter            => {
-              Key => {
-                FilterRules => [
-                  {
-                    Name => 'prefix',    # values: prefix, suffix; OPTIONAL
-                    Value => 'MyFilterRuleValue',    # OPTIONAL
-                  },
-                  ...
-                ],                                   # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-            Id => 'MyNotificationId',    # OPTIONAL
-          },
-          ...
-        ],                               # OPTIONAL
-        QueueConfigurations => [
-          {
-            Events => [
-              's3:ReducedRedundancyLostObject',
-              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated, s3:ObjectRestore:*, s3:ObjectRestore:Post, s3:ObjectRestore:Completed, s3:Replication:*, s3:Replication:OperationFailedReplication, s3:Replication:OperationNotTracked, s3:Replication:OperationMissedThreshold, s3:Replication:OperationReplicatedAfterThreshold
-            ],
-            QueueArn => 'MyQueueArn',
-            Filter   => {
-              Key => {
-                FilterRules => [
-                  {
-                    Name => 'prefix',    # values: prefix, suffix; OPTIONAL
-                    Value => 'MyFilterRuleValue',    # OPTIONAL
-                  },
-                  ...
-                ],                                   # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-            Id => 'MyNotificationId',    # OPTIONAL
-          },
-          ...
-        ],                               # OPTIONAL
-        TopicConfigurations => [
-          {
-            Events => [
-              's3:ReducedRedundancyLostObject',
-              ... # values: s3:ReducedRedundancyLostObject, s3:ObjectCreated:*, s3:ObjectCreated:Put, s3:ObjectCreated:Post, s3:ObjectCreated:Copy, s3:ObjectCreated:CompleteMultipartUpload, s3:ObjectRemoved:*, s3:ObjectRemoved:Delete, s3:ObjectRemoved:DeleteMarkerCreated, s3:ObjectRestore:*, s3:ObjectRestore:Post, s3:ObjectRestore:Completed, s3:Replication:*, s3:Replication:OperationFailedReplication, s3:Replication:OperationNotTracked, s3:Replication:OperationMissedThreshold, s3:Replication:OperationReplicatedAfterThreshold
-            ],
-            TopicArn => 'MyTopicArn',
-            Filter   => {
-              Key => {
-                FilterRules => [
-                  {
-                    Name => 'prefix',    # values: prefix, suffix; OPTIONAL
-                    Value => 'MyFilterRuleValue',    # OPTIONAL
-                  },
-                  ...
-                ],                                   # OPTIONAL
-              },    # OPTIONAL
-            },    # OPTIONAL
-            Id => 'MyNotificationId',    # OPTIONAL
-          },
-          ...
-        ],                               # OPTIONAL
-      },
+      'Bucket'                    => 'examplebucket',
+      'NotificationConfiguration' => {
+        'TopicConfigurations' => [
 
+          {
+            'Events' => ['s3:ObjectCreated:*'],
+            'TopicArn' =>
+              'arn:aws:sns:us-west-2:123456789012:s3-notification-topic'
+          }
+        ]
+      }
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketNotificationConfiguration>
@@ -115,6 +61,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 The name of the bucket.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

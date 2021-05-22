@@ -6,6 +6,7 @@ package Paws::S3::DeleteObjects;
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Delete => (is => 'ro', isa => 'Paws::S3::Delete', traits => ['ParamInBody'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
 
@@ -38,29 +39,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To delete multiple object versions from a versioned bucket
+    # The following example deletes objects from a bucket. The request specifies
+    # object versions. S3 deletes specific object versions and returns the key
+    # and versions of deleted objects in the response.
     my $DeleteObjectsOutput = $s3->DeleteObjects(
-      Bucket => 'MyBucketName',
-      Delete => {
-        Objects => [
+      'Bucket' => 'examplebucket',
+      'Delete' => {
+        'Objects' => [
+
           {
-            Key       => 'MyObjectKey',          # min: 1
-            VersionId => 'MyObjectVersionId',    # OPTIONAL
+            'Key'       => 'HappyFace.jpg',
+            'VersionId' => '2LWg7lQLnY41.maGB5Z6SWW.dcq0vx7b'
           },
-          ...
+
+          {
+            'Key'       => 'HappyFace.jpg',
+            'VersionId' => 'yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd'
+          }
         ],
-        Quiet => 1,                              # OPTIONAL
-      },
-      BypassGovernanceRetention => 1,                 # OPTIONAL
-      ContentLength             => 1,                 # OPTIONAL
-      ContentMD5                => 'MyContentMD5',    # OPTIONAL
-      MFA                       => 'MyMFA',           # OPTIONAL
-      RequestPayer              => 'requester',       # OPTIONAL
+        'Quiet' => 0
+      }
     );
 
     # Results:
-    my $Deleted        = $DeleteObjectsOutput->Deleted;
-    my $Errors         = $DeleteObjectsOutput->Errors;
-    my $RequestCharged = $DeleteObjectsOutput->RequestCharged;
+    my $Deleted = $DeleteObjectsOutput->Deleted;
+
+    # Returns a L<Paws::S3::DeleteObjectsOutput> object.
+    # To delete multiple objects from a versioned bucket
+    # The following example deletes objects from a bucket. The bucket is
+    # versioned, and the request does not specify the object version to delete.
+    # In this case, all versions remain in the bucket and S3 adds a delete
+    # marker.
+    my $DeleteObjectsOutput = $s3->DeleteObjects(
+      'Bucket' => 'examplebucket',
+      'Delete' => {
+        'Objects' => [
+
+          {
+            'Key' => 'objectkey1'
+          },
+
+          {
+            'Key' => 'objectkey2'
+          }
+        ],
+        'Quiet' => 0
+      }
+    );
+
+    # Results:
+    my $Deleted = $DeleteObjectsOutput->Deleted;
 
     # Returns a L<Paws::S3::DeleteObjectsOutput> object.
 
@@ -74,14 +103,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The bucket name containing the objects to delete.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -108,6 +147,14 @@ Size of the body in bytes.
 =head2 B<REQUIRED> Delete => L<Paws::S3::Delete>
 
 Container for the request.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

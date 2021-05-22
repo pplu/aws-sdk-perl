@@ -5,6 +5,7 @@ package Paws::S3::PutBucketCors;
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has CORSConfiguration => (is => 'ro', isa => 'Paws::S3::CORSConfiguration', traits => ['ParamInBody'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
 
 
   use MooseX::ClassAttribute;
@@ -35,24 +36,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To set cors configuration on a bucket.
+    # The following example enables PUT, POST, and DELETE requests from
+    # www.example.com, and enables GET requests from any domain.
     $s3->PutBucketCors(
-      Bucket            => 'MyBucketName',
-      CORSConfiguration => {
-        CORSRules => [
-          {
-            AllowedMethods => [ 'MyAllowedMethod', ... ],
-            AllowedOrigins => [ 'MyAllowedOrigin', ... ],
-            AllowedHeaders => [ 'MyAllowedHeader', ... ],    # OPTIONAL
-            ExposeHeaders  => [ 'MyExposeHeader',  ... ],    # OPTIONAL
-            MaxAgeSeconds => 1,                              # OPTIONAL
-          },
-          ...
-        ],
+      'Bucket'            => '',
+      'CORSConfiguration' => {
+        'CORSRules' => [
 
+          {
+            'AllowedHeaders' => ['*'],
+            'AllowedMethods' => [ 'PUT', 'POST', 'DELETE' ],
+            'AllowedOrigins' => ['http://www.example.com'],
+            'ExposeHeaders'  => ['x-amz-server-side-encryption'],
+            'MaxAgeSeconds'  => 3000
+          },
+
+          {
+            'AllowedHeaders' => ['Authorization'],
+            'AllowedMethods' => ['GET'],
+            'AllowedOrigins' => ['*'],
+            'MaxAgeSeconds'  => 3000
+          }
+        ]
       },
-      ContentLength => 1,                                    # OPTIONAL
-      ContentMD5    => 'MyContentMD5',                       # OPTIONAL
+      'ContentMD5' => ''
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketCors>
@@ -79,6 +89,9 @@ used as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, go to RFC 1864.
 (http://www.ietf.org/rfc/rfc1864.txt)
 
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
 
 
 =head2 B<REQUIRED> CORSConfiguration => L<Paws::S3::CORSConfiguration>
@@ -86,8 +99,16 @@ not corrupted in transit. For more information, go to RFC 1864.
 Describes the cross-origin access configuration for objects in an
 Amazon S3 bucket. For more information, see Enabling Cross-Origin
 Resource Sharing
-(https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html) in the
-I<Amazon Simple Storage Service Developer Guide>.
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the
+I<Amazon S3 User Guide>.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

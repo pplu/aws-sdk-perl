@@ -2,6 +2,7 @@
 package Paws::S3::GetObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
   has IfModifiedSince => (is => 'ro', isa => 'Str', header_name => 'If-Modified-Since', traits => ['ParamInHeader']);
   has IfNoneMatch => (is => 'ro', isa => 'Str', header_name => 'If-None-Match', traits => ['ParamInHeader']);
@@ -50,60 +51,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To retrieve an object
+    # The following example retrieves an object for an S3 bucket.
     my $GetObjectOutput = $s3->GetObject(
-      Bucket                     => 'MyBucketName',
-      Key                        => 'MyObjectKey',
-      IfMatch                    => 'MyIfMatch',                      # OPTIONAL
-      IfModifiedSince            => '1970-01-01T01:00:00',            # OPTIONAL
-      IfNoneMatch                => 'MyIfNoneMatch',                  # OPTIONAL
-      IfUnmodifiedSince          => '1970-01-01T01:00:00',            # OPTIONAL
-      PartNumber                 => 1,                                # OPTIONAL
-      Range                      => 'MyRange',                        # OPTIONAL
-      RequestPayer               => 'requester',                      # OPTIONAL
-      ResponseCacheControl       => 'MyResponseCacheControl',         # OPTIONAL
-      ResponseContentDisposition => 'MyResponseContentDisposition',   # OPTIONAL
-      ResponseContentEncoding    => 'MyResponseContentEncoding',      # OPTIONAL
-      ResponseContentLanguage    => 'MyResponseContentLanguage',      # OPTIONAL
-      ResponseContentType        => 'MyResponseContentType',          # OPTIONAL
-      ResponseExpires            => '1970-01-01T01:00:00',            # OPTIONAL
-      SSECustomerAlgorithm       => 'MySSECustomerAlgorithm',         # OPTIONAL
-      SSECustomerKey             => 'MySSECustomerKey',               # OPTIONAL
-      SSECustomerKeyMD5          => 'MySSECustomerKeyMD5',            # OPTIONAL
-      VersionId                  => 'MyObjectVersionId',              # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Key'    => 'HappyFace.jpg'
     );
 
     # Results:
-    my $AcceptRanges              = $GetObjectOutput->AcceptRanges;
-    my $Body                      = $GetObjectOutput->Body;
-    my $CacheControl              = $GetObjectOutput->CacheControl;
-    my $ContentDisposition        = $GetObjectOutput->ContentDisposition;
-    my $ContentEncoding           = $GetObjectOutput->ContentEncoding;
-    my $ContentLanguage           = $GetObjectOutput->ContentLanguage;
-    my $ContentLength             = $GetObjectOutput->ContentLength;
-    my $ContentRange              = $GetObjectOutput->ContentRange;
-    my $ContentType               = $GetObjectOutput->ContentType;
-    my $DeleteMarker              = $GetObjectOutput->DeleteMarker;
-    my $ETag                      = $GetObjectOutput->ETag;
-    my $Expiration                = $GetObjectOutput->Expiration;
-    my $Expires                   = $GetObjectOutput->Expires;
-    my $LastModified              = $GetObjectOutput->LastModified;
-    my $Metadata                  = $GetObjectOutput->Metadata;
-    my $MissingMeta               = $GetObjectOutput->MissingMeta;
-    my $ObjectLockLegalHoldStatus = $GetObjectOutput->ObjectLockLegalHoldStatus;
-    my $ObjectLockMode            = $GetObjectOutput->ObjectLockMode;
-    my $ObjectLockRetainUntilDate = $GetObjectOutput->ObjectLockRetainUntilDate;
-    my $PartsCount                = $GetObjectOutput->PartsCount;
-    my $ReplicationStatus         = $GetObjectOutput->ReplicationStatus;
-    my $RequestCharged            = $GetObjectOutput->RequestCharged;
-    my $Restore                   = $GetObjectOutput->Restore;
-    my $SSECustomerAlgorithm      = $GetObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5         = $GetObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId               = $GetObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption      = $GetObjectOutput->ServerSideEncryption;
-    my $StorageClass              = $GetObjectOutput->StorageClass;
-    my $TagCount                  = $GetObjectOutput->TagCount;
-    my $VersionId                 = $GetObjectOutput->VersionId;
-    my $WebsiteRedirectLocation   = $GetObjectOutput->WebsiteRedirectLocation;
+    my $AcceptRanges  = $GetObjectOutput->AcceptRanges;
+    my $ContentLength = $GetObjectOutput->ContentLength;
+    my $ContentType   = $GetObjectOutput->ContentType;
+    my $ETag          = $GetObjectOutput->ETag;
+    my $LastModified  = $GetObjectOutput->LastModified;
+    my $Metadata      = $GetObjectOutput->Metadata;
+    my $TagCount      = $GetObjectOutput->TagCount;
+    my $VersionId     = $GetObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::GetObjectOutput> object.
+    # To retrieve a byte range of an object
+    # The following example retrieves an object for an S3 bucket. The request
+    # specifies the range header to retrieve a specific byte range.
+    my $GetObjectOutput = $s3->GetObject(
+      'Bucket' => 'examplebucket',
+      'Key'    => 'SampleFile.txt',
+      'Range'  => 'bytes=0-9'
+    );
+
+    # Results:
+    my $AcceptRanges  = $GetObjectOutput->AcceptRanges;
+    my $ContentLength = $GetObjectOutput->ContentLength;
+    my $ContentRange  = $GetObjectOutput->ContentRange;
+    my $ContentType   = $GetObjectOutput->ContentType;
+    my $ETag          = $GetObjectOutput->ETag;
+    my $LastModified  = $GetObjectOutput->LastModified;
+    my $Metadata      = $GetObjectOutput->Metadata;
+    my $VersionId     = $GetObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::GetObjectOutput> object.
 
@@ -117,14 +100,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The bucket name containing the object.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 
@@ -174,7 +175,11 @@ the part specified. Useful for downloading just a part of an object.
 
 Downloads the specified range bytes of an object. For more information
 about the HTTP Range header, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
+(https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35).
+
+Amazon S3 doesn't support retrieving multiple ranges of data per C<GET>
+request.
 
 
 
@@ -222,17 +227,17 @@ Sets the C<Expires> header of the response.
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (for
+Specifies the algorithm to use to when decrypting the object (for
 example, AES256).
 
 
 
 =head2 SSECustomerKey => Str
 
-Specifies the customer-provided encryption key for Amazon S3 to use in
-encrypting data. This value is used to store the object and then it is
-discarded; Amazon S3 does not store the encryption key. The key must be
-appropriate for use with the algorithm specified in the
+Specifies the customer-provided encryption key for Amazon S3 used to
+encrypt the data. This value is used to decrypt the object when
+recovering it and must match the one used when storing the data. The
+key must be appropriate for use with the algorithm specified in the
 C<x-amz-server-side-encryption-customer-algorithm> header.
 
 

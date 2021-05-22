@@ -1,6 +1,7 @@
 
 package Paws::S3::UploadPartCopyOutput;
   use Moose;
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CopyPartResult => (is => 'ro', isa => 'Paws::S3::CopyPartResult', traits => ['ParamInBody']);
   has CopySourceVersionId => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-version-id', traits => ['ParamInHeader']);
   has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
@@ -20,6 +21,13 @@ package Paws::S3::UploadPartCopyOutput;
 Paws::S3::UploadPartCopyOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the multipart upload uses an S3 Bucket Key for
+server-side encryption with AWS KMS (SSE-KMS).
+
 
 
 =head2 CopyPartResult => L<Paws::S3::CopyPartResult>

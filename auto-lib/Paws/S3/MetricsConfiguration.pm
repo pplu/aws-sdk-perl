@@ -41,7 +41,7 @@ a full replacement of the existing metrics configuration. If you don't
 include the elements you want to keep, they are erased. For more
 information, see PUT Bucket metrics
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTMetricConfiguration.html)
-in the I<Amazon Simple Storage Service API Reference>.
+in the I<Amazon S3 API Reference>.
 
 =head1 ATTRIBUTES
 

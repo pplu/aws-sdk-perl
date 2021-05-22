@@ -4,6 +4,7 @@ package Paws::S3::ListMultipartUploads;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
   has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has KeyMarker => (is => 'ro', isa => 'Str', query_name => 'key-marker', traits => ['ParamInQuery']);
   has MaxUploads => (is => 'ro', isa => 'Int', query_name => 'max-uploads', traits => ['ParamInQuery']);
   has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
@@ -38,27 +39,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To list in-progress multipart uploads on a bucket
+    # The following example lists in-progress multipart uploads on a specific
+    # bucket.
+    my $ListMultipartUploadsOutput =
+      $s3->ListMultipartUploads( 'Bucket' => 'examplebucket' );
+
+    # Results:
+    my $Uploads = $ListMultipartUploadsOutput->Uploads;
+
+    # Returns a L<Paws::S3::ListMultipartUploadsOutput> object.
+    # List next set of multipart uploads when previous result is truncated
+    # The following example specifies the upload-id-marker and key-marker from
+    # previous truncated response to retrieve next setup of multipart uploads.
     my $ListMultipartUploadsOutput = $s3->ListMultipartUploads(
-      Bucket         => 'MyBucketName',
-      Delimiter      => 'MyDelimiter',         # OPTIONAL
-      EncodingType   => 'url',                 # OPTIONAL
-      KeyMarker      => 'MyKeyMarker',         # OPTIONAL
-      MaxUploads     => 1,                     # OPTIONAL
-      Prefix         => 'MyPrefix',            # OPTIONAL
-      UploadIdMarker => 'MyUploadIdMarker',    # OPTIONAL
+      'Bucket'         => 'examplebucket',
+      'KeyMarker'      => 'nextkeyfrompreviousresponse',
+      'MaxUploads'     => 2,
+      'UploadIdMarker' => 'valuefrompreviousresponse'
     );
 
     # Results:
     my $Bucket             = $ListMultipartUploadsOutput->Bucket;
-    my $CommonPrefixes     = $ListMultipartUploadsOutput->CommonPrefixes;
-    my $Delimiter          = $ListMultipartUploadsOutput->Delimiter;
-    my $EncodingType       = $ListMultipartUploadsOutput->EncodingType;
     my $IsTruncated        = $ListMultipartUploadsOutput->IsTruncated;
     my $KeyMarker          = $ListMultipartUploadsOutput->KeyMarker;
     my $MaxUploads         = $ListMultipartUploadsOutput->MaxUploads;
     my $NextKeyMarker      = $ListMultipartUploadsOutput->NextKeyMarker;
     my $NextUploadIdMarker = $ListMultipartUploadsOutput->NextUploadIdMarker;
-    my $Prefix             = $ListMultipartUploadsOutput->Prefix;
     my $UploadIdMarker     = $ListMultipartUploadsOutput->UploadIdMarker;
     my $Uploads            = $ListMultipartUploadsOutput->Uploads;
 
@@ -72,16 +79,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+The name of the bucket to which the multipart upload was initiated.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -103,6 +120,14 @@ are not returned elsewhere in the response.
 
 
 Valid values are: C<"url">
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
+
 
 =head2 KeyMarker => Str
 

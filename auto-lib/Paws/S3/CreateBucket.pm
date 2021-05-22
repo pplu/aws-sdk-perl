@@ -41,21 +41,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+   # To create a bucket in a specific region
+   # The following example creates a bucket. The request specifies an AWS region
+   # where to create the bucket.
     my $CreateBucketOutput = $s3->CreateBucket(
-      Bucket                    => 'MyBucketName',
-      ACL                       => 'private',        # OPTIONAL
-      ContentLength             => 1,                # OPTIONAL
-      CreateBucketConfiguration => {
-        LocationConstraint => 'EU'
-        , # values: EU, eu-west-1, us-west-1, us-west-2, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1, eu-central-1; OPTIONAL
-      },    # OPTIONAL
-      GrantFullControl           => 'MyGrantFullControl',    # OPTIONAL
-      GrantRead                  => 'MyGrantRead',           # OPTIONAL
-      GrantReadACP               => 'MyGrantReadACP',        # OPTIONAL
-      GrantWrite                 => 'MyGrantWrite',          # OPTIONAL
-      GrantWriteACP              => 'MyGrantWriteACP',       # OPTIONAL
-      ObjectLockEnabledForBucket => 1,                       # OPTIONAL
+      'Bucket'                    => 'examplebucket',
+      'CreateBucketConfiguration' => {
+        'LocationConstraint' => 'eu-west-1'
+      }
     );
+
+    # Results:
+    my $Location = $CreateBucketOutput->Location;
+
+    # Returns a L<Paws::S3::CreateBucketOutput> object.
+    # To create a bucket
+    # The following example creates a bucket.
+    my $CreateBucketOutput = $s3->CreateBucket( 'Bucket' => 'examplebucket' );
 
     # Results:
     my $Location = $CreateBucketOutput->Location;
@@ -113,8 +115,10 @@ Allows grantee to read the bucket ACL.
 
 =head2 GrantWrite => Str
 
-Allows grantee to create, overwrite, and delete any object in the
-bucket.
+Allows grantee to create new objects in the bucket.
+
+For the bucket and object owners of existing objects, also allows
+deletions and overwrites of those objects.
 
 
 

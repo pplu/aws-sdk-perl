@@ -1,6 +1,7 @@
 
 package Paws::S3::CopyObjectOutput;
   use Moose;
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult', traits => ['ParamInBody']);
   has CopySourceVersionId => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-version-id', traits => ['ParamInHeader']);
   has Expiration => (is => 'ro', isa => 'Str', header_name => 'x-amz-expiration', traits => ['ParamInHeader']);
@@ -23,6 +24,13 @@ package Paws::S3::CopyObjectOutput;
 Paws::S3::CopyObjectOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the copied object uses an S3 Bucket Key for
+server-side encryption with AWS KMS (SSE-KMS).
+
 
 
 =head2 CopyObjectResult => L<Paws::S3::CopyObjectResult>

@@ -5,6 +5,7 @@ package Paws::S3::CORSRule;
   has AllowedMethods => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedMethod', traits => ['NameInRequest'], required => 1);
   has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedOrigin', traits => ['NameInRequest'], required => 1);
   has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ExposeHeader', traits => ['NameInRequest']);
+  has ID => (is => 'ro', isa => 'Str');
   has MaxAgeSeconds => (is => 'ro', isa => 'Int');
 
 1;
@@ -67,6 +68,12 @@ from.
 One or more headers in the response that you want customers to be able
 to access from their applications (for example, from a JavaScript
 C<XMLHttpRequest> object).
+
+
+=head2 ID => Str
+
+Unique identifier for the rule. The value cannot be longer than 255
+characters.
 
 
 =head2 MaxAgeSeconds => Int

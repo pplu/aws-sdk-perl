@@ -51,6 +51,50 @@ Screen name of the grantee.
 
 Email address of the grantee.
 
+Using email addresses to specify a grantee is only supported in the
+following AWS Regions:
+
+=over
+
+=item *
+
+US East (N. Virginia)
+
+=item *
+
+US West (N. California)
+
+=item *
+
+US West (Oregon)
+
+=item *
+
+Asia Pacific (Singapore)
+
+=item *
+
+Asia Pacific (Sydney)
+
+=item *
+
+Asia Pacific (Tokyo)
+
+=item *
+
+Europe (Ireland)
+
+=item *
+
+South America (SE<atilde>o Paulo)
+
+=back
+
+For a list of all the Amazon S3 supported Regions and endpoints, see
+Regions and Endpoints
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in
+the AWS General Reference.
+
 
 =head2 ID => Str
 

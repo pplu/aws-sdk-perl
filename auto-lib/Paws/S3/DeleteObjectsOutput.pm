@@ -27,7 +27,7 @@ that was successfully deleted.
 
 =head2 Errors => ArrayRef[L<Paws::S3::Error>]
 
-Container for a failed delete operation that describes the object that
+Container for a failed delete action that describes the object that
 Amazon S3 attempted to delete and the error it encountered.
 
 

@@ -5,6 +5,7 @@ package Paws::S3::ListObjectsV2;
   has ContinuationToken => (is => 'ro', isa => 'Str', query_name => 'continuation-token', traits => ['ParamInQuery']);
   has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
   has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has FetchOwner => (is => 'ro', isa => 'Bool', query_name => 'fetch-owner', traits => ['ParamInQuery']);
   has MaxKeys => (is => 'ro', isa => 'Int', query_name => 'max-keys', traits => ['ParamInQuery']);
   has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
@@ -40,31 +41,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+   # To get object list
+   # The following example retrieves object list. The request specifies max keys
+   # to limit response to include only 2 object keys.
     my $ListObjectsV2Output = $s3->ListObjectsV2(
-      Bucket            => 'MyBucketName',
-      ContinuationToken => 'MyToken',         # OPTIONAL
-      Delimiter         => 'MyDelimiter',     # OPTIONAL
-      EncodingType      => 'url',             # OPTIONAL
-      FetchOwner        => 1,                 # OPTIONAL
-      MaxKeys           => 1,                 # OPTIONAL
-      Prefix            => 'MyPrefix',        # OPTIONAL
-      RequestPayer      => 'requester',       # OPTIONAL
-      StartAfter        => 'MyStartAfter',    # OPTIONAL
+      'Bucket'  => 'examplebucket',
+      'MaxKeys' => 2
     );
 
     # Results:
-    my $CommonPrefixes        = $ListObjectsV2Output->CommonPrefixes;
     my $Contents              = $ListObjectsV2Output->Contents;
-    my $ContinuationToken     = $ListObjectsV2Output->ContinuationToken;
-    my $Delimiter             = $ListObjectsV2Output->Delimiter;
-    my $EncodingType          = $ListObjectsV2Output->EncodingType;
     my $IsTruncated           = $ListObjectsV2Output->IsTruncated;
     my $KeyCount              = $ListObjectsV2Output->KeyCount;
     my $MaxKeys               = $ListObjectsV2Output->MaxKeys;
     my $Name                  = $ListObjectsV2Output->Name;
     my $NextContinuationToken = $ListObjectsV2Output->NextContinuationToken;
     my $Prefix                = $ListObjectsV2Output->Prefix;
-    my $StartAfter            = $ListObjectsV2Output->StartAfter;
 
     # Returns a L<Paws::S3::ListObjectsV2Output> object.
 
@@ -78,14 +70,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 Bucket name to list.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -109,6 +111,14 @@ Encoding type used by Amazon S3 to encode object keys in the response.
 
 Valid values are: C<"url">
 
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
+
+
 =head2 FetchOwner => Bool
 
 The owner field is not present in listV2 by default, if you want to
@@ -119,8 +129,9 @@ field to true.
 
 =head2 MaxKeys => Int
 
-Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more.
+Sets the maximum number of keys returned in the response. By default
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more.
 
 
 

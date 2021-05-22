@@ -2,6 +2,7 @@
 package Paws::S3::GetBucketMetricsConfiguration;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Id => (is => 'ro', isa => 'Str', query_name => 'id', traits => ['ParamInQuery'], required => 1);
 
 
@@ -35,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $s3 = Paws->service('S3');
     my $GetBucketMetricsConfigurationOutput =
       $s3->GetBucketMetricsConfiguration(
-      Bucket => 'MyBucketName',
-      Id     => 'MyMetricsId',
-
+      Bucket              => 'MyBucketName',
+      Id                  => 'MyMetricsId',
+      ExpectedBucketOwner => 'MyAccountId',    # OPTIONAL
       );
 
     # Results:
@@ -56,6 +57,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The name of the bucket containing the metrics configuration to
 retrieve.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

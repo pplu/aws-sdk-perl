@@ -40,8 +40,11 @@ The container element for an Object Lock rule.
 
 =head2 DefaultRetention => L<Paws::S3::DefaultRetention>
 
-The default retention period that you want to apply to new objects
-placed in the specified bucket.
+The default Object Lock retention mode and period that you want to
+apply to new objects placed in the specified bucket. Bucket settings
+require both a mode and a period. The period can be either C<Days> or
+C<Years> but you must select one. You cannot specify C<Days> and
+C<Years> at the same time.
 
 
 

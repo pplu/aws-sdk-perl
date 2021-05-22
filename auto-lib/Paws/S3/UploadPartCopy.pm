@@ -11,6 +11,8 @@ package Paws::S3::UploadPartCopy;
   has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
   has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key', traits => ['ParamInHeader']);
   has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
+  has ExpectedSourceBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-source-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -48,35 +50,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To upload a part by copying data from an existing object as data source
+    # The following example uploads a part of a multipart upload by copying data
+    # from an existing object as data source.
     my $UploadPartCopyOutput = $s3->UploadPartCopy(
-      Bucket                      => 'MyBucketName',
-      CopySource                  => 'MyCopySource',
-      Key                         => 'MyObjectKey',
-      PartNumber                  => 1,
-      UploadId                    => 'MyMultipartUploadId',
-      CopySourceIfMatch           => 'MyCopySourceIfMatch',        # OPTIONAL
-      CopySourceIfModifiedSince   => '1970-01-01T01:00:00',        # OPTIONAL
-      CopySourceIfNoneMatch       => 'MyCopySourceIfNoneMatch',    # OPTIONAL
-      CopySourceIfUnmodifiedSince => '1970-01-01T01:00:00',        # OPTIONAL
-      CopySourceRange             => 'MyCopySourceRange',          # OPTIONAL
-      CopySourceSSECustomerAlgorithm =>
-        'MyCopySourceSSECustomerAlgorithm',                        # OPTIONAL
-      CopySourceSSECustomerKey    => 'MyCopySourceSSECustomerKey',    # OPTIONAL
-      CopySourceSSECustomerKeyMD5 => 'MyCopySourceSSECustomerKeyMD5', # OPTIONAL
-      RequestPayer                => 'requester',                     # OPTIONAL
-      SSECustomerAlgorithm        => 'MySSECustomerAlgorithm',        # OPTIONAL
-      SSECustomerKey              => 'MySSECustomerKey',              # OPTIONAL
-      SSECustomerKeyMD5           => 'MySSECustomerKeyMD5',           # OPTIONAL
+      'Bucket'     => 'examplebucket',
+      'CopySource' => '/bucketname/sourceobjectkey',
+      'Key'        => 'examplelargeobject',
+      'PartNumber' => 1,
+      'UploadId' =>
+'exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--'
     );
 
     # Results:
-    my $CopyPartResult       = $UploadPartCopyOutput->CopyPartResult;
-    my $CopySourceVersionId  = $UploadPartCopyOutput->CopySourceVersionId;
-    my $RequestCharged       = $UploadPartCopyOutput->RequestCharged;
-    my $SSECustomerAlgorithm = $UploadPartCopyOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5    = $UploadPartCopyOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId          = $UploadPartCopyOutput->SSEKMSKeyId;
-    my $ServerSideEncryption = $UploadPartCopyOutput->ServerSideEncryption;
+    my $CopyPartResult = $UploadPartCopyOutput->CopyPartResult;
+
+ # Returns a L<Paws::S3::UploadPartCopyOutput> object.
+ # To upload a part by copying byte range from an existing object as data source
+ # The following example uploads a part of a multipart upload by copying a
+ # specified byte range from an existing object as data source.
+    my $UploadPartCopyOutput = $s3->UploadPartCopy(
+      'Bucket'          => 'examplebucket',
+      'CopySource'      => '/bucketname/sourceobjectkey',
+      'CopySourceRange' => 'bytes=1-100000',
+      'Key'             => 'examplelargeobject',
+      'PartNumber'      => 2,
+      'UploadId' =>
+'exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--'
+    );
+
+    # Results:
+    my $CopyPartResult = $UploadPartCopyOutput->CopyPartResult;
 
     # Returns a L<Paws::S3::UploadPartCopyOutput> object.
 
@@ -90,12 +94,75 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The bucket name.
 
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
 
 
 =head2 B<REQUIRED> CopySource => Str
 
-The name of the source bucket and key name of the source object,
-separated by a slash (/). Must be URL-encoded.
+Specifies the source object for the copy operation. You specify the
+value in one of two formats, depending on whether you want to access
+the source object through an access point
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html):
+
+=over
+
+=item *
+
+For objects not accessed through an access point, specify the name of
+the source bucket and key of the source object, separated by a slash
+(/). For example, to copy the object C<reports/january.pdf> from the
+bucket C<awsexamplebucket>, use
+C<awsexamplebucket/reports/january.pdf>. The value must be URL encoded.
+
+=item *
+
+For objects accessed through access points, specify the Amazon Resource
+Name (ARN) of the object as accessed through the access point, in the
+format
+C<arn:aws:s3:E<lt>RegionE<gt>:E<lt>account-idE<gt>:accesspoint/E<lt>access-point-nameE<gt>/object/E<lt>keyE<gt>>.
+For example, to copy the object C<reports/january.pdf> through access
+point C<my-access-point> owned by account C<123456789012> in Region
+C<us-west-2>, use the URL encoding of
+C<arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf>.
+The value must be URL encoded.
+
+Amazon S3 supports copy operations using access points only when the
+source and destination buckets are in the same AWS Region.
+
+Alternatively, for objects accessed through Amazon S3 on Outposts,
+specify the ARN of the object as accessed in the format
+C<arn:aws:s3-outposts:E<lt>RegionE<gt>:E<lt>account-idE<gt>:outpost/E<lt>outpost-idE<gt>/object/E<lt>keyE<gt>>.
+For example, to copy the object C<reports/january.pdf> through outpost
+C<my-outpost> owned by account C<123456789012> in Region C<us-west-2>,
+use the URL encoding of
+C<arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf>.
+The value must be URL encoded.
+
+=back
+
+To copy a specific version of an object, append
+C<?versionId=E<lt>version-idE<gt>> to the value (for example,
+C<awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893>).
+If you don't specify a version ID, Amazon S3 copies the latest version
+of the source object.
 
 
 
@@ -154,6 +221,22 @@ must be one that was used when the source object was created.
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
 ensure that the encryption key was transmitted without error.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected destination bucket owner. If the
+destination bucket is owned by a different account, the request will
+fail with an HTTP C<403 (Access Denied)> error.
+
+
+
+=head2 ExpectedSourceBucketOwner => Str
+
+The account ID of the expected source bucket owner. If the source
+bucket is owned by a different account, the request will fail with an
+HTTP C<403 (Access Denied)> error.
 
 
 

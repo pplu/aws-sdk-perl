@@ -4,6 +4,7 @@ package Paws::S3::PutBucketEncryption;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has ServerSideEncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionConfiguration', traits => ['ParamInBody'], required => 1);
 
 
@@ -44,13 +45,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SSEAlgorithm   => 'AES256',           # values: AES256, aws:kms
               KMSMasterKeyID => 'MySSEKMSKeyId',    # OPTIONAL
             },    # OPTIONAL
+            BucketKeyEnabled => 1,    # OPTIONAL
           },
           ...
         ],
 
       },
-      ContentLength => 1,                 # OPTIONAL
-      ContentMD5    => 'MyContentMD5',    # OPTIONAL
+      ContentLength       => 1,                 # OPTIONAL
+      ContentMD5          => 'MyContentMD5',    # OPTIONAL
+      ExpectedBucketOwner => 'MyAccountId',     # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -66,7 +69,7 @@ with Amazon S3-managed keys (SSE-S3) or customer master keys stored in
 AWS KMS (SSE-KMS). For information about the Amazon S3 default
 encryption feature, see Amazon S3 Default Bucket Encryption
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -79,8 +82,18 @@ Size of the body in bytes.
 =head2 ContentMD5 => Str
 
 The base64-encoded 128-bit MD5 digest of the server-side encryption
-configuration. This parameter is auto-populated when using the command
-from the CLI.
+configuration.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

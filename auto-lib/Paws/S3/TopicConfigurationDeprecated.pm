@@ -39,7 +39,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 A container for specifying the configuration for publication of
 messages to an Amazon Simple Notification Service (Amazon SNS) topic
 when Amazon S3 detects specified events. This data type is deprecated.
-Use TopicConfiguration instead.
+Use TopicConfiguration
+(https://docs.aws.amazon.com/AmazonS3/latest/API/API_TopicConfiguration.html)
+instead.
 
 =head1 ATTRIBUTES
 

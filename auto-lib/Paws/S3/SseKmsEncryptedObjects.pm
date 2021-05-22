@@ -42,8 +42,7 @@ encrypted with AWS KMS.
 =head2 B<REQUIRED> Status => Str
 
 Specifies whether Amazon S3 replicates objects created with server-side
-encryption using a customer master key (CMK) stored in AWS Key
-Management Service.
+encryption using an AWS KMS key stored in AWS Key Management Service.
 
 
 

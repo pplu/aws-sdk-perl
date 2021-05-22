@@ -2,6 +2,8 @@
 package Paws::S3::HeadObjectOutput;
   use Moose;
   has AcceptRanges => (is => 'ro', isa => 'Str', header_name => 'accept-ranges', traits => ['ParamInHeader']);
+  has ArchiveStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-archive-status', traits => ['ParamInHeader']);
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
   has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
   has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
@@ -46,6 +48,19 @@ Paws::S3::HeadObjectOutput
 =head2 AcceptRanges => Str
 
 Indicates that a range of bytes was specified.
+
+
+
+=head2 ArchiveStatus => Str
+
+The archive state of the head object.
+
+Valid values are: C<"ARCHIVE_ACCESS">, C<"DEEP_ARCHIVE_ACCESS">
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the object uses an S3 Bucket Key for server-side
+encryption with AWS KMS (SSE-KMS).
 
 
 
@@ -119,7 +134,7 @@ The date and time at which the object is no longer cacheable.
 
 =head2 LastModified => Str
 
-Last modified date of the object
+Creation date of the object.
 
 
 
@@ -177,12 +192,12 @@ The count of parts this object has.
 =head2 ReplicationStatus => Str
 
 Amazon S3 can return this header if your request involves a bucket that
-is either a source or destination in a replication rule.
+is either a source or a destination in a replication rule.
 
 In replication, you have a source bucket on which you configure
-replication and destination bucket where Amazon S3 stores object
-replicas. When you request an object (C<GetObject>) or object metadata
-(C<HeadObject>) from these buckets, Amazon S3 will return the
+replication and destination bucket or buckets where Amazon S3 stores
+object replicas. When you request an object (C<GetObject>) or object
+metadata (C<HeadObject>) from these buckets, Amazon S3 will return the
 C<x-amz-replication-status> header in the response as follows:
 
 =over
@@ -203,9 +218,19 @@ PENDING, COMPLETED or FAILED indicating object replication status.
 
 =item *
 
-If requesting an object from the destination bucket E<mdash> Amazon S3
+If requesting an object from a destination bucket E<mdash> Amazon S3
 will return the C<x-amz-replication-status> header with value REPLICA
-if the object in your request is a replica that Amazon S3 created.
+if the object in your request is a replica that Amazon S3 created and
+there is no replica modification replication in progress.
+
+=item *
+
+When replicating objects to multiple destination buckets the
+C<x-amz-replication-status> header acts differently. The header of the
+source object will only return a value of COMPLETED when replication is
+successful to all destinations. The header will remain at value PENDING
+until replication has completed for all destinations. If one or more
+destinations fails replication the header will return FAILED.
 
 =back
 
@@ -224,13 +249,14 @@ Valid values are: C<"requester">
 
 If the object is an archived object (an object whose storage class is
 GLACIER), the response includes this header if either the archive
-restoration is in progress (see RestoreObject or an archive copy is
-already restored.
+restoration is in progress (see RestoreObject
+(https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html)
+or an archive copy is already restored.
 
 If an archive copy is already restored, the header value indicates when
 Amazon S3 is scheduled to delete the object copy. For example:
 
-C<x-amz-restore: ongoing-request="false", expiry-date="Fri, 23 Dec 2012
+C<x-amz-restore: ongoing-request="false", expiry-date="Fri, 21 Dec 2012
 00:00:00 GMT">
 
 If the object restoration is in progress, the header returns the value
@@ -279,12 +305,13 @@ for the object.
 =head2 StorageClass => Str
 
 Provides storage class information of the object. Amazon S3 returns
-this header for all objects except for Standard storage class objects.
+this header for all objects except for S3 Standard storage class
+objects.
 
 For more information, see Storage Classes
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html).
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 VersionId => Str
 

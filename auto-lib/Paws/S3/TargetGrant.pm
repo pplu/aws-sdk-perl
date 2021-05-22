@@ -46,7 +46,7 @@ Container for the person being granted permissions.
 
 =head2 Permission => Str
 
-Logging permissions assigned to the Grantee for the bucket.
+Logging permissions assigned to the grantee for the bucket.
 
 
 

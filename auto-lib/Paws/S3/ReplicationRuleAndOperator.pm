@@ -50,7 +50,7 @@ in an C<And> tag.
 =item *
 
 If you specify a filter based on multiple tags, wrap the C<Tag>
-elements in an C<And> tag
+elements in an C<And> tag.
 
 =back
 

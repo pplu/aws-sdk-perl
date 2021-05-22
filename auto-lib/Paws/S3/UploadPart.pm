@@ -5,6 +5,7 @@ package Paws::S3::UploadPart;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -42,27 +43,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To upload a part
+    # The following example uploads part 1 of a multipart upload. The example
+    # specifies a file name for the part data. The Upload ID is same that is
+    # returned by the initiate multipart upload.
     my $UploadPartOutput = $s3->UploadPart(
-      Bucket               => 'MyBucketName',
-      Key                  => 'MyObjectKey',
-      PartNumber           => 1,
-      UploadId             => 'MyMultipartUploadId',
-      Body                 => 'BlobBody',                  # OPTIONAL
-      ContentLength        => 1,                           # OPTIONAL
-      ContentMD5           => 'MyContentMD5',              # OPTIONAL
-      RequestPayer         => 'requester',                 # OPTIONAL
-      SSECustomerAlgorithm => 'MySSECustomerAlgorithm',    # OPTIONAL
-      SSECustomerKey       => 'MySSECustomerKey',          # OPTIONAL
-      SSECustomerKeyMD5    => 'MySSECustomerKeyMD5',       # OPTIONAL
+      'Body'       => 'fileToUpload',
+      'Bucket'     => 'examplebucket',
+      'Key'        => 'examplelargeobject',
+      'PartNumber' => 1,
+      'UploadId' =>
+'xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--'
     );
 
     # Results:
-    my $ETag                 = $UploadPartOutput->ETag;
-    my $RequestCharged       = $UploadPartOutput->RequestCharged;
-    my $SSECustomerAlgorithm = $UploadPartOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5    = $UploadPartOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId          = $UploadPartOutput->SSEKMSKeyId;
-    my $ServerSideEncryption = $UploadPartOutput->ServerSideEncryption;
+    my $ETag = $UploadPartOutput->ETag;
 
     # Returns a L<Paws::S3::UploadPartOutput> object.
 
@@ -80,7 +75,26 @@ Object data.
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+The name of the bucket to which the multipart upload was initiated.
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -96,6 +110,14 @@ the body cannot be determined automatically.
 The base64-encoded 128-bit MD5 digest of the part data. This parameter
 is auto-populated when using the command from the CLI. This parameter
 is required if object lock parameters are specified.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

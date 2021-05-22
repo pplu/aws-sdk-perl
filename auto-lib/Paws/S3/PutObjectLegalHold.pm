@@ -3,6 +3,7 @@ package Paws::S3::PutObjectLegalHold;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has LegalHold => (is => 'ro', isa => 'Paws::S3::ObjectLockLegalHold', traits => ['ParamInBody']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -38,11 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $s3 = Paws->service('S3');
     my $PutObjectLegalHoldOutput = $s3->PutObjectLegalHold(
-      Bucket     => 'MyBucketName',
-      Key        => 'MyObjectKey',
-      ContentMD5 => 'MyContentMD5',    # OPTIONAL
-      LegalHold  => {
-        Status => 'ON',                # values: ON, OFF; OPTIONAL
+      Bucket              => 'MyBucketName',
+      Key                 => 'MyObjectKey',
+      ContentMD5          => 'MyContentMD5',    # OPTIONAL
+      ExpectedBucketOwner => 'MyAccountId',     # OPTIONAL
+      LegalHold           => {
+        Status => 'ON',                         # values: ON, OFF; OPTIONAL
       },    # OPTIONAL
       RequestPayer => 'requester',            # OPTIONAL
       VersionId    => 'MyObjectVersionId',    # OPTIONAL
@@ -64,20 +66,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 The bucket name containing the object that you want to place a Legal
 Hold on.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
 
 
 
 =head2 ContentMD5 => Str
 
 The MD5 hash for the request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

@@ -4,6 +4,7 @@ package Paws::S3::PutObject;
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
   has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
   has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
@@ -11,6 +12,7 @@ package Paws::S3::PutObject;
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has ContentType => (is => 'ro', isa => 'Str', header_name => 'Content-Type', traits => ['ParamInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
@@ -61,49 +63,121 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To create an object.
+    # The following example creates an object. If the bucket is versioning
+    # enabled, S3 returns version ID in response.
     my $PutObjectOutput = $s3->PutObject(
-      Bucket             => 'MyBucketName',
-      Key                => 'MyObjectKey',
-      ACL                => 'private',                 # OPTIONAL
-      Body               => 'BlobBody',                # OPTIONAL
-      CacheControl       => 'MyCacheControl',          # OPTIONAL
-      ContentDisposition => 'MyContentDisposition',    # OPTIONAL
-      ContentEncoding    => 'MyContentEncoding',       # OPTIONAL
-      ContentLanguage    => 'MyContentLanguage',       # OPTIONAL
-      ContentLength      => 1,                         # OPTIONAL
-      ContentMD5         => 'MyContentMD5',            # OPTIONAL
-      ContentType        => 'MyContentType',           # OPTIONAL
-      Expires            => '1970-01-01T01:00:00',     # OPTIONAL
-      GrantFullControl   => 'MyGrantFullControl',      # OPTIONAL
-      GrantRead          => 'MyGrantRead',             # OPTIONAL
-      GrantReadACP       => 'MyGrantReadACP',          # OPTIONAL
-      GrantWriteACP      => 'MyGrantWriteACP',         # OPTIONAL
-      Metadata => { 'MyMetadataKey' => 'MyMetadataValue', },    # OPTIONAL
-      ObjectLockLegalHoldStatus => 'ON',                        # OPTIONAL
-      ObjectLockMode            => 'GOVERNANCE',                # OPTIONAL
-      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',       # OPTIONAL
-      RequestPayer              => 'requester',                 # OPTIONAL
-      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',    # OPTIONAL
-      SSECustomerKey            => 'MySSECustomerKey',          # OPTIONAL
-      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',       # OPTIONAL
-      SSEKMSEncryptionContext   => 'MySSEKMSEncryptionContext', # OPTIONAL
-      SSEKMSKeyId               => 'MySSEKMSKeyId',             # OPTIONAL
-      ServerSideEncryption      => 'AES256',                    # OPTIONAL
-      StorageClass              => 'STANDARD',                  # OPTIONAL
-      Tagging                   => 'MyTaggingHeader',           # OPTIONAL
-      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation', # OPTIONAL
+      'Body'   => 'filetoupload',
+      'Bucket' => 'examplebucket',
+      'Key'    => 'objectkey'
     );
 
     # Results:
-    my $ETag                    = $PutObjectOutput->ETag;
-    my $Expiration              = $PutObjectOutput->Expiration;
-    my $RequestCharged          = $PutObjectOutput->RequestCharged;
-    my $SSECustomerAlgorithm    = $PutObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5       = $PutObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSEncryptionContext = $PutObjectOutput->SSEKMSEncryptionContext;
-    my $SSEKMSKeyId             = $PutObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption    = $PutObjectOutput->ServerSideEncryption;
-    my $VersionId               = $PutObjectOutput->VersionId;
+    my $ETag      = $PutObjectOutput->ETag;
+    my $VersionId = $PutObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::PutObjectOutput> object.
+    # To upload an object (specify optional headers)
+    # The following example uploads an object. The request specifies optional
+    # request headers to directs S3 to use specific storage class and use
+    # server-side encryption.
+    my $PutObjectOutput = $s3->PutObject(
+      'Body'                 => 'HappyFace.jpg',
+      'Bucket'               => 'examplebucket',
+      'Key'                  => 'HappyFace.jpg',
+      'ServerSideEncryption' => 'AES256',
+      'StorageClass'         => 'STANDARD_IA'
+    );
+
+    # Results:
+    my $ETag                 = $PutObjectOutput->ETag;
+    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
+    my $VersionId            = $PutObjectOutput->VersionId;
+
+   # Returns a L<Paws::S3::PutObjectOutput> object.
+   # To upload an object and specify canned ACL.
+   # The following example uploads and object. The request specifies optional
+   # canned ACL (access control list) to all READ access to authenticated users.
+   # If the bucket is versioning enabled, S3 returns version ID in response.
+    my $PutObjectOutput = $s3->PutObject(
+      'ACL'    => 'authenticated-read',
+      'Body'   => 'filetoupload',
+      'Bucket' => 'examplebucket',
+      'Key'    => 'exampleobject'
+    );
+
+    # Results:
+    my $ETag      = $PutObjectOutput->ETag;
+    my $VersionId = $PutObjectOutput->VersionId;
+
+   # Returns a L<Paws::S3::PutObjectOutput> object.
+   # To upload an object
+   # The following example uploads an object to a versioning-enabled bucket. The
+   # source file is specified using Windows file syntax. S3 returns VersionId of
+   # the newly created object.
+    my $PutObjectOutput = $s3->PutObject(
+      'Body'   => 'HappyFace.jpg',
+      'Bucket' => 'examplebucket',
+      'Key'    => 'HappyFace.jpg'
+    );
+
+    # Results:
+    my $ETag      = $PutObjectOutput->ETag;
+    my $VersionId = $PutObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::PutObjectOutput> object.
+    # To upload object and specify user-defined metadata
+    # The following example creates an object. The request also specifies
+    # optional metadata. If the bucket is versioning enabled, S3 returns version
+    # ID in response.
+    my $PutObjectOutput = $s3->PutObject(
+      'Body'     => 'filetoupload',
+      'Bucket'   => 'examplebucket',
+      'Key'      => 'exampleobject',
+      'Metadata' => {
+        'Metadata1' => 'value1',
+        'Metadata2' => 'value2'
+      }
+    );
+
+    # Results:
+    my $ETag      = $PutObjectOutput->ETag;
+    my $VersionId = $PutObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::PutObjectOutput> object.
+    # To upload an object and specify optional tags
+    # The following example uploads an object. The request specifies optional
+    # object tags. The bucket is versioned, therefore S3 returns version ID of
+    # the newly created object.
+    my $PutObjectOutput = $s3->PutObject(
+      'Body'    => 'c:\HappyFace.jpg',
+      'Bucket'  => 'examplebucket',
+      'Key'     => 'HappyFace.jpg',
+      'Tagging' => 'key1=value1&key2=value2'
+    );
+
+    # Results:
+    my $ETag      = $PutObjectOutput->ETag;
+    my $VersionId = $PutObjectOutput->VersionId;
+
+   # Returns a L<Paws::S3::PutObjectOutput> object.
+   # To upload an object and specify server-side encryption and object tags
+   # The following example uploads and object. The request specifies the
+   # optional server-side encryption option. The request also specifies optional
+   # object tags. If the bucket is versioning enabled, S3 returns version ID in
+   # response.
+    my $PutObjectOutput = $s3->PutObject(
+      'Body'                 => 'filetoupload',
+      'Bucket'               => 'examplebucket',
+      'Key'                  => 'exampleobject',
+      'ServerSideEncryption' => 'AES256',
+      'Tagging'              => 'key1=value1&key2=value2'
+    );
+
+    # Results:
+    my $ETag                 = $PutObjectOutput->ETag;
+    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
+    my $VersionId            = $PutObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::PutObjectOutput> object.
 
@@ -119,6 +193,8 @@ The canned ACL to apply to the object. For more information, see Canned
 ACL
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
+This action is not supported by Amazon S3 on Outposts.
+
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"aws-exec-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">
 
 =head2 Body => Str
@@ -129,16 +205,38 @@ Object data.
 
 =head2 B<REQUIRED> Bucket => Str
 
-Bucket name to which the PUT operation was initiated.
+The bucket name to which the PUT action was initiated.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 BucketKeyEnabled => Bool
+
+Specifies whether Amazon S3 should use an S3 Bucket Key for object
+encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
+this header to C<true> causes Amazon S3 to use an S3 Bucket Key for
+object encryption with SSE-KMS.
+
+Specifying this header with a PUT action doesnE<rsquo>t affect
+bucket-level settings for S3 Bucket Key.
 
 
 
@@ -206,6 +304,14 @@ http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17
 
 
 
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
+
+
 =head2 Expires => Str
 
 The date and time at which the object is no longer cacheable. For more
@@ -220,11 +326,15 @@ http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21
 Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantRead => Str
 
 Allows grantee to read the object data and its metadata.
+
+This action is not supported by Amazon S3 on Outposts.
 
 
 
@@ -232,17 +342,21 @@ Allows grantee to read the object data and its metadata.
 
 Allows grantee to read the object ACL.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantWriteACP => Str
 
 Allows grantee to write the ACL for the applicable object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 B<REQUIRED> Key => Str
 
-Object key for which the PUT operation was initiated.
+Object key for which the PUT action was initiated.
 
 
 
@@ -323,23 +437,26 @@ with the encryption context key-value pairs.
 If C<x-amz-server-side-encryption> is present and has the value of
 C<aws:kms>, this header specifies the ID of the AWS Key Management
 Service (AWS KMS) symmetrical customer managed customer master key
-(CMK) that was used for the object.
-
-If the value of C<x-amz-server-side-encryption> is C<aws:kms>, this
-header specifies the ID of the symmetric customer managed AWS KMS CMK
-that will be used for the object. If you specify
+(CMK) that was used for the object. If you specify
 C<x-amz-server-side-encryption:aws:kms>, but do not provideC<
 x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses the AWS
-managed CMK in AWS to protect the data.
+managed CMK in AWS to protect the data. If the KMS key does not exist
+in the same account issuing the command, you must use the full ARN and
+not just the ID.
 
 
 
 =head2 StorageClass => Str
 
-If you don't specify, Standard is the default storage class. Amazon S3
-supports other storage classes.
+By default, Amazon S3 uses the STANDARD Storage Class to store newly
+created objects. The STANDARD storage class provides high durability
+and high availability. Depending on performance needs, you can specify
+a different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
+Storage Class. For more information, see Storage Classes
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)
+in the I<Amazon S3 User Guide>.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 Tagging => Str
 

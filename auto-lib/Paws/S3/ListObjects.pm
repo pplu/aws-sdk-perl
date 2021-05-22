@@ -4,6 +4,7 @@ package Paws::S3::ListObjects;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
   has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Marker => (is => 'ro', isa => 'Str', query_name => 'marker', traits => ['ParamInQuery']);
   has MaxKeys => (is => 'ro', isa => 'Int', query_name => 'max-keys', traits => ['ParamInQuery']);
   has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
@@ -38,27 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To list objects in a bucket
+    # The following example list two objects in a bucket.
     my $ListObjectsOutput = $s3->ListObjects(
-      Bucket       => 'MyBucketName',
-      Delimiter    => 'MyDelimiter',    # OPTIONAL
-      EncodingType => 'url',            # OPTIONAL
-      Marker       => 'MyMarker',       # OPTIONAL
-      MaxKeys      => 1,                # OPTIONAL
-      Prefix       => 'MyPrefix',       # OPTIONAL
-      RequestPayer => 'requester',      # OPTIONAL
+      'Bucket'  => 'examplebucket',
+      'MaxKeys' => 2
     );
 
     # Results:
-    my $CommonPrefixes = $ListObjectsOutput->CommonPrefixes;
-    my $Contents       = $ListObjectsOutput->Contents;
-    my $Delimiter      = $ListObjectsOutput->Delimiter;
-    my $EncodingType   = $ListObjectsOutput->EncodingType;
-    my $IsTruncated    = $ListObjectsOutput->IsTruncated;
-    my $Marker         = $ListObjectsOutput->Marker;
-    my $MaxKeys        = $ListObjectsOutput->MaxKeys;
-    my $Name           = $ListObjectsOutput->Name;
-    my $NextMarker     = $ListObjectsOutput->NextMarker;
-    my $Prefix         = $ListObjectsOutput->Prefix;
+    my $Contents   = $ListObjectsOutput->Contents;
+    my $NextMarker = $ListObjectsOutput->NextMarker;
 
     # Returns a L<Paws::S3::ListObjectsOutput> object.
 
@@ -71,6 +61,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 The name of the bucket containing the objects.
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -86,6 +95,14 @@ A delimiter is a character you use to group keys.
 
 Valid values are: C<"url">
 
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
+
+
 =head2 Marker => Str
 
 Specifies the key to start with when listing objects in a bucket.
@@ -94,8 +111,9 @@ Specifies the key to start with when listing objects in a bucket.
 
 =head2 MaxKeys => Int
 
-Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more.
+Sets the maximum number of keys returned in the response. By default
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more.
 
 
 

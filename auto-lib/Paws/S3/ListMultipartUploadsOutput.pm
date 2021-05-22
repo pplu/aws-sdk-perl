@@ -29,7 +29,7 @@ Paws::S3::ListMultipartUploadsOutput
 
 =head2 Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+The name of the bucket to which the multipart upload was initiated.
 
 
 

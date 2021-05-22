@@ -3,11 +3,13 @@ package Paws::S3::CreateMultipartUpload;
   use Moose;
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
   has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
   has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
   has ContentLanguage => (is => 'ro', isa => 'Str', header_name => 'Content-Language', traits => ['ParamInHeader']);
   has ContentType => (is => 'ro', isa => 'Str', header_name => 'Content-Type', traits => ['ParamInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
@@ -58,50 +60,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To initiate a multipart upload
+    # The following example initiates a multipart upload.
     my $CreateMultipartUploadOutput = $s3->CreateMultipartUpload(
-      Bucket             => 'MyBucketName',
-      Key                => 'MyObjectKey',
-      ACL                => 'private',                 # OPTIONAL
-      CacheControl       => 'MyCacheControl',          # OPTIONAL
-      ContentDisposition => 'MyContentDisposition',    # OPTIONAL
-      ContentEncoding    => 'MyContentEncoding',       # OPTIONAL
-      ContentLanguage    => 'MyContentLanguage',       # OPTIONAL
-      ContentType        => 'MyContentType',           # OPTIONAL
-      Expires            => '1970-01-01T01:00:00',     # OPTIONAL
-      GrantFullControl   => 'MyGrantFullControl',      # OPTIONAL
-      GrantRead          => 'MyGrantRead',             # OPTIONAL
-      GrantReadACP       => 'MyGrantReadACP',          # OPTIONAL
-      GrantWriteACP      => 'MyGrantWriteACP',         # OPTIONAL
-      Metadata => { 'MyMetadataKey' => 'MyMetadataValue', },    # OPTIONAL
-      ObjectLockLegalHoldStatus => 'ON',                        # OPTIONAL
-      ObjectLockMode            => 'GOVERNANCE',                # OPTIONAL
-      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',       # OPTIONAL
-      RequestPayer              => 'requester',                 # OPTIONAL
-      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',    # OPTIONAL
-      SSECustomerKey            => 'MySSECustomerKey',          # OPTIONAL
-      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',       # OPTIONAL
-      SSEKMSEncryptionContext   => 'MySSEKMSEncryptionContext', # OPTIONAL
-      SSEKMSKeyId               => 'MySSEKMSKeyId',             # OPTIONAL
-      ServerSideEncryption      => 'AES256',                    # OPTIONAL
-      StorageClass              => 'STANDARD',                  # OPTIONAL
-      Tagging                   => 'MyTaggingHeader',           # OPTIONAL
-      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation', # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Key'    => 'largeobject'
     );
 
     # Results:
-    my $AbortDate      = $CreateMultipartUploadOutput->AbortDate;
-    my $AbortRuleId    = $CreateMultipartUploadOutput->AbortRuleId;
-    my $Bucket         = $CreateMultipartUploadOutput->Bucket;
-    my $Key            = $CreateMultipartUploadOutput->Key;
-    my $RequestCharged = $CreateMultipartUploadOutput->RequestCharged;
-    my $SSECustomerAlgorithm =
-      $CreateMultipartUploadOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5 = $CreateMultipartUploadOutput->SSECustomerKeyMD5;
-    my $SSEKMSEncryptionContext =
-      $CreateMultipartUploadOutput->SSEKMSEncryptionContext;
-    my $SSEKMSKeyId = $CreateMultipartUploadOutput->SSEKMSKeyId;
-    my $ServerSideEncryption =
-      $CreateMultipartUploadOutput->ServerSideEncryption;
+    my $Bucket   = $CreateMultipartUploadOutput->Bucket;
+    my $Key      = $CreateMultipartUploadOutput->Key;
     my $UploadId = $CreateMultipartUploadOutput->UploadId;
 
     # Returns a L<Paws::S3::CreateMultipartUploadOutput> object.
@@ -116,11 +84,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The canned ACL to apply to the object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"aws-exec-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">
 
 =head2 B<REQUIRED> Bucket => Str
 
 The name of the bucket to which to initiate the upload
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 BucketKeyEnabled => Bool
+
+Specifies whether Amazon S3 should use an S3 Bucket Key for object
+encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
+this header to C<true> causes Amazon S3 to use an S3 Bucket Key for
+object encryption with SSE-KMS.
+
+Specifying this header with an object action doesnE<rsquo>t affect
+bucket-level settings for S3 Bucket Key.
 
 
 
@@ -156,6 +157,14 @@ A standard MIME type describing the format of the object data.
 
 
 
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
+
+
 =head2 Expires => Str
 
 The date and time at which the object is no longer cacheable.
@@ -167,11 +176,15 @@ The date and time at which the object is no longer cacheable.
 Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantRead => Str
 
 Allows grantee to read the object data and its metadata.
+
+This action is not supported by Amazon S3 on Outposts.
 
 
 
@@ -179,11 +192,15 @@ Allows grantee to read the object data and its metadata.
 
 Allows grantee to read the object ACL.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantWriteACP => Str
 
 Allows grantee to write the ACL for the applicable object.
+
+This action is not supported by Amazon S3 on Outposts.
 
 
 
@@ -273,16 +290,22 @@ by AWS KMS will fail if not made via SSL or using SigV4. For
 information about configuring using any of the officially supported AWS
 SDKs and AWS CLI, see Specifying the Signature Version in Request
 Authentication
-(https://docs.aws.amazon.com/http:/docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
-in the I<Amazon S3 Developer Guide>.
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
+in the I<Amazon S3 User Guide>.
 
 
 
 =head2 StorageClass => Str
 
-The type of storage to use for the object. Defaults to 'STANDARD'.
+By default, Amazon S3 uses the STANDARD Storage Class to store newly
+created objects. The STANDARD storage class provides high durability
+and high availability. Depending on performance needs, you can specify
+a different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
+Storage Class. For more information, see Storage Classes
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)
+in the I<Amazon S3 User Guide>.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 Tagging => Str
 

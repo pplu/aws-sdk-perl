@@ -3,6 +3,7 @@ package Paws::S3::PutPublicAccessBlock;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has PublicAccessBlockConfiguration => (is => 'ro', isa => 'Paws::S3::PublicAccessBlockConfiguration', traits => ['ParamInBody'], required => 1);
 
 
@@ -42,7 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IgnorePublicAcls      => 1,    # OPTIONAL
         RestrictPublicBuckets => 1,    # OPTIONAL
       },
-      ContentMD5 => 'MyContentMD5',    # OPTIONAL
+      ContentMD5          => 'MyContentMD5',    # OPTIONAL
+      ExpectedBucketOwner => 'MyAccountId',     # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -62,6 +64,17 @@ configuration you want to set.
 
 The MD5 hash of the C<PutPublicAccessBlock> request body.
 
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
 
 
 =head2 B<REQUIRED> PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
@@ -71,7 +84,7 @@ Amazon S3 bucket. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
 bucket or object public, see The Meaning of "Public"
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 

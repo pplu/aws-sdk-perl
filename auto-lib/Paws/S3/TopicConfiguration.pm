@@ -48,7 +48,7 @@ when Amazon S3 detects specified events.
 The Amazon S3 bucket event about which to send notifications. For more
 information, see Supported Event Types
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 =head2 Filter => L<Paws::S3::NotificationConfigurationFilter>

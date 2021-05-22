@@ -36,10 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::QueueCo
 
 =head1 DESCRIPTION
 
-This data type is deprecated. Use QueueConfiguration for the same
-purposes. This data type specifies the configuration for publishing
-messages to an Amazon Simple Queue Service (Amazon SQS) queue when
-Amazon S3 detects specified events.
+This data type is deprecated. Use QueueConfiguration
+(https://docs.aws.amazon.com/AmazonS3/latest/API/API_QueueConfiguration.html)
+for the same purposes. This data type specifies the configuration for
+publishing messages to an Amazon Simple Queue Service (Amazon SQS)
+queue when Amazon S3 detects specified events.
 
 =head1 ATTRIBUTES
 
@@ -51,7 +52,7 @@ Amazon S3 detects specified events.
 
 =head2 Events => ArrayRef[Str|Undef]
 
-A collection of bucket events for which to send notifications
+A collection of bucket events for which to send notifications.
 
 
 =head2 Id => Str

@@ -46,6 +46,11 @@ a request to samplebucket/images/ the data that is returned will be for
 the object with the key name images/index.html) The suffix must not be
 empty and must not include a slash character.
 
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
+
 
 
 =head1 SEE ALSO

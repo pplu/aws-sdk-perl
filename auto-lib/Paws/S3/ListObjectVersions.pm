@@ -4,6 +4,7 @@ package Paws::S3::ListObjectVersions;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
   has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has KeyMarker => (is => 'ro', isa => 'Str', query_name => 'key-marker', traits => ['ParamInQuery']);
   has MaxKeys => (is => 'ro', isa => 'Int', query_name => 'max-keys', traits => ['ParamInQuery']);
   has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
@@ -38,30 +39,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+   # To list object versions
+   # The following example return versions of an object with specific key name
+   # prefix. The request limits the number of items returned to two. If there
+   # are are more than two object version, S3 returns NextToken in the response.
+   # You can specify this token value in your next request to fetch next set of
+   # object versions.
     my $ListObjectVersionsOutput = $s3->ListObjectVersions(
-      Bucket          => 'MyBucketName',
-      Delimiter       => 'MyDelimiter',          # OPTIONAL
-      EncodingType    => 'url',                  # OPTIONAL
-      KeyMarker       => 'MyKeyMarker',          # OPTIONAL
-      MaxKeys         => 1,                      # OPTIONAL
-      Prefix          => 'MyPrefix',             # OPTIONAL
-      VersionIdMarker => 'MyVersionIdMarker',    # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Prefix' => 'HappyFace.jpg'
     );
 
     # Results:
-    my $CommonPrefixes      = $ListObjectVersionsOutput->CommonPrefixes;
-    my $DeleteMarkers       = $ListObjectVersionsOutput->DeleteMarkers;
-    my $Delimiter           = $ListObjectVersionsOutput->Delimiter;
-    my $EncodingType        = $ListObjectVersionsOutput->EncodingType;
-    my $IsTruncated         = $ListObjectVersionsOutput->IsTruncated;
-    my $KeyMarker           = $ListObjectVersionsOutput->KeyMarker;
-    my $MaxKeys             = $ListObjectVersionsOutput->MaxKeys;
-    my $Name                = $ListObjectVersionsOutput->Name;
-    my $NextKeyMarker       = $ListObjectVersionsOutput->NextKeyMarker;
-    my $NextVersionIdMarker = $ListObjectVersionsOutput->NextVersionIdMarker;
-    my $Prefix              = $ListObjectVersionsOutput->Prefix;
-    my $VersionIdMarker     = $ListObjectVersionsOutput->VersionIdMarker;
-    my $Versions            = $ListObjectVersionsOutput->Versions;
+    my $Versions = $ListObjectVersionsOutput->Versions;
 
     # Returns a L<Paws::S3::ListObjectVersionsOutput> object.
 
@@ -74,15 +64,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 The bucket name that contains the objects.
-
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
-I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
@@ -103,6 +84,14 @@ response.
 
 Valid values are: C<"url">
 
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
+
+
 =head2 KeyMarker => Str
 
 Specifies the key to start with when listing objects in a bucket.
@@ -111,12 +100,12 @@ Specifies the key to start with when listing objects in a bucket.
 
 =head2 MaxKeys => Int
 
-Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more. If additional
-keys satisfy the search criteria, but were not returned because
-max-keys was exceeded, the response contains
-E<lt>isTruncatedE<gt>trueE<lt>/isTruncatedE<gt>. To return the
-additional keys, see key-marker and version-id-marker.
+Sets the maximum number of keys returned in the response. By default
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more. If additional keys satisfy the
+search criteria, but were not returned because max-keys was exceeded,
+the response contains E<lt>isTruncatedE<gt>trueE<lt>/isTruncatedE<gt>.
+To return the additional keys, see key-marker and version-id-marker.
 
 
 

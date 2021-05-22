@@ -53,7 +53,7 @@ can perform the associated action. For information about the noncurrent
 days calculations, see How Amazon S3 Calculates How Long an Object Has
 Been Noncurrent
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 =head2 StorageClass => Str

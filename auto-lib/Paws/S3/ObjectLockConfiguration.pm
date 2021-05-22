@@ -42,11 +42,17 @@ The container element for Object Lock configuration parameters.
 =head2 ObjectLockEnabled => Str
 
 Indicates whether this bucket has an Object Lock configuration enabled.
+Enable C<ObjectLockEnabled> when you apply C<ObjectLockConfiguration>
+to a bucket.
 
 
 =head2 Rule => L<Paws::S3::ObjectLockRule>
 
-The Object Lock rule in place for the specified object.
+Specifies the Object Lock rule for the specified object. Enable the
+this rule when you apply C<ObjectLockConfiguration> to a bucket. Bucket
+settings require both a mode and a period. The period can be either
+C<Days> or C<Years> but you must select one. You cannot specify C<Days>
+and C<Years> at the same time.
 
 
 
