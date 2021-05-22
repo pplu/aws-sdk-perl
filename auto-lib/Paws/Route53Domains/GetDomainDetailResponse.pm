@@ -71,7 +71,8 @@ automatically.
 =head2 CreationDate => Str
 
 The date when the domain was created as found in the response to a
-WHOIS query. The date and time is in Coordinated Universal time (UTC).
+WHOIS query. The date and time is in Unix time format and Coordinated
+Universal time (UTC).
 
 
 =head2 DnsSec => Str
@@ -87,7 +88,8 @@ The name of a domain.
 =head2 ExpirationDate => Str
 
 The date when the registration for the domain is set to expire. The
-date and time is in Coordinated Universal time (UTC).
+date and time is in Unix time format and Coordinated Universal time
+(UTC).
 
 
 =head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
@@ -131,8 +133,8 @@ Reserved for future use.
 
 =head2 Reseller => Str
 
-Reseller of the domain. Domains registered or transferred using Amazon
-Route 53 domains will have C<"Amazon"> as the reseller.
+Reseller of the domain. Domains registered or transferred using Route
+53 domains will have C<"Amazon"> as the reseller.
 
 
 =head2 StatusList => ArrayRef[Str|Undef]
@@ -171,7 +173,8 @@ entered for the technical contact.
 =head2 UpdatedDate => Str
 
 The last updated date of the domain as found in the response to a WHOIS
-query. The date and time is in Coordinated Universal time (UTC).
+query. The date and time is in Unix time format and Coordinated
+Universal time (UTC).
 
 
 =head2 WhoIsServer => Str

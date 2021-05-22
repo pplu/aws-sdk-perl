@@ -69,9 +69,31 @@ The city of the contact's address.
 =head2 ContactType => Str
 
 Indicates whether the contact is a person, company, association, or
-public organization. If you choose an option other than C<PERSON>, you
-must enter an organization name, and you can't enable privacy
-protection for the contact.
+public organization. Note the following:
+
+=over
+
+=item *
+
+If you specify a value other than C<PERSON>, you must also specify a
+value for C<OrganizationName>.
+
+=item *
+
+For some TLDs, the privacy protection available depends on the value
+that you specify for C<Contact Type>. For the privacy protection
+settings for your TLD, see Domains that You Can Register with Amazon
+Route 53
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>
+
+=item *
+
+For .es domains, if you specify C<PERSON>, you must specify
+C<INDIVIDUAL> for the value of C<ES_LEGAL_FORM>.
+
+=back
+
 
 
 =head2 CountryCode => Str

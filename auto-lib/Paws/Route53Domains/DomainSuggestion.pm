@@ -64,8 +64,8 @@ The domain name is available and can be preordered.
 =item DONT_KNOW
 
 The TLD registry didn't reply with a definitive answer about whether
-the domain name is available. Amazon Route 53 can return this response
-for a variety of reasons, for example, the registry is performing
+the domain name is available. Route 53 can return this response for a
+variety of reasons, for example, the registry is performing
 maintenance. Try again later.
 
 =item PENDING

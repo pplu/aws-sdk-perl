@@ -47,11 +47,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> DomainName => Str
 
-The name of the domain that you want to get availability for.
+The name of the domain that you want to get availability for. The
+top-level domain (TLD), such as .com, must be a TLD that Route 53
+supports. For a list of supported TLDs, see Domains that You Can
+Register with Amazon Route 53
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-are not supported.
+The domain name can contain only the following characters:
+
+=over
+
+=item *
+
+Letters a through z. Domain names are not case sensitive.
+
+=item *
+
+Numbers 0 through 9.
+
+=item *
+
+Hyphen (-). You can't specify a hyphen at the beginning or end of a
+label.
+
+=item *
+
+Period (.) to separate the labels in the name, such as the C<.> in
+C<example.com>.
+
+=back
+
+Internationalized domain names are not supported for some top-level
+domains. To determine whether the TLD that you want to use supports
+internationalized domain names, see Domains that You Can Register with
+Amazon Route 53
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+For more information, see Formatting Internationalized Domain Names
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 
 
 

@@ -52,8 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 End => Str
 
 The end date and time for the time period for which you want a list of
-billing records. Specify the date and time in Coordinated Universal
-time (UTC).
+billing records. Specify the date and time in Unix time format and
+Coordinated Universal time (UTC).
 
 
 
@@ -83,8 +83,8 @@ Default: 20
 =head2 Start => Str
 
 The beginning date and time for the time period for which you want a
-list of billing records. Specify the date and time in Coordinated
-Universal time (UTC).
+list of billing records. Specify the date and time in Unix time format
+and Coordinated Universal time (UTC).
 
 
 

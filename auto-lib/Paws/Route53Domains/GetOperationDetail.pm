@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 B<REQUIRED> OperationId => Str
 
 The identifier for the operation for which you want to get the status.
-Amazon Route 53 returned the identifier in the response to the original
+Route 53 returned the identifier in the response to the original
 request.
 
 

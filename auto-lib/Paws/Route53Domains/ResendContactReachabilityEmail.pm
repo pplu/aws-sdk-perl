@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 DomainName => Str
 
-The name of the domain for which you want Amazon Route 53 to resend a
+The name of the domain for which you want Route 53 to resend a
 confirmation email to the registrant contact.
 
 

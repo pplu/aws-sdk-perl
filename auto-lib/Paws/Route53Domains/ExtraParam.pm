@@ -41,66 +41,745 @@ ExtraParam includes the following elements.
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the additional parameter required by the top-level domain. Here
-are the top-level domains that require additional parameters and which
-parameters they require:
+The name of an additional parameter that is required by a top-level
+domain. Here are the top-level domains that require additional
+parameters and the names of the parameters that they require:
+
+=over
+
+=item .com.au and .net.au
 
 =over
 
 =item *
 
-B<.com.au and .net.au:> C<AU_ID_NUMBER> and C<AU_ID_TYPE>
+C<AU_ID_NUMBER>
 
 =item *
 
-B<.ca:> C<BRAND_NUMBER>, C<CA_LEGAL_TYPE>, and
+C<AU_ID_TYPE>
+
+Valid values include the following:
+
+=over
+
+=item *
+
+C<ABN> (Australian business number)
+
+=item *
+
+C<ACN> (Australian company number)
+
+=item *
+
+C<TM> (Trademark number)
+
+=back
+
+=back
+
+=item .ca
+
+=over
+
+=item *
+
+C<BRAND_NUMBER>
+
+=item *
+
 C<CA_BUSINESS_ENTITY_TYPE>
 
+Valid values include the following:
+
+=over
+
 =item *
 
-B<.es:> C<ES_IDENTIFICATION>, C<ES_IDENTIFICATION_TYPE>, and
+C<BANK> (Bank)
+
+=item *
+
+C<COMMERCIAL_COMPANY> (Commercial company)
+
+=item *
+
+C<COMPANY> (Company)
+
+=item *
+
+C<COOPERATION> (Cooperation)
+
+=item *
+
+C<COOPERATIVE> (Cooperative)
+
+=item *
+
+C<COOPRIX> (Cooprix)
+
+=item *
+
+C<CORP> (Corporation)
+
+=item *
+
+C<CREDIT_UNION> (Credit union)
+
+=item *
+
+C<FOMIA> (Federation of mutual insurance associations)
+
+=item *
+
+C<INC> (Incorporated)
+
+=item *
+
+C<LTD> (Limited)
+
+=item *
+
+C<LTEE> (LimitE<eacute>e)
+
+=item *
+
+C<LLC> (Limited liability corporation)
+
+=item *
+
+C<LLP> (Limited liability partnership)
+
+=item *
+
+C<LTE> (Lte.)
+
+=item *
+
+C<MBA> (Mutual benefit association)
+
+=item *
+
+C<MIC> (Mutual insurance company)
+
+=item *
+
+C<NFP> (Not-for-profit corporation)
+
+=item *
+
+C<SA> (S.A.)
+
+=item *
+
+C<SAVINGS_COMPANY> (Savings company)
+
+=item *
+
+C<SAVINGS_UNION> (Savings union)
+
+=item *
+
+C<SARL> (SociE<eacute>tE<eacute> E<agrave> responsabilitE<eacute>
+limitE<eacute>e)
+
+=item *
+
+C<TRUST> (Trust)
+
+=item *
+
+C<ULC> (Unlimited liability corporation)
+
+=back
+
+=item *
+
+C<CA_LEGAL_TYPE>
+
+When C<ContactType> is C<PERSON>, valid values include the following:
+
+=over
+
+=item *
+
+C<ABO> (Aboriginal Peoples indigenous to Canada)
+
+=item *
+
+C<CCT> (Canadian citizen)
+
+=item *
+
+C<LGR> (Legal Representative of a Canadian Citizen or Permanent
+Resident)
+
+=item *
+
+C<RES> (Permanent resident of Canada)
+
+=back
+
+When C<ContactType> is a value other than C<PERSON>, valid values
+include the following:
+
+=over
+
+=item *
+
+C<ASS> (Canadian unincorporated association)
+
+=item *
+
+C<CCO> (Canadian corporation)
+
+=item *
+
+C<EDU> (Canadian educational institution)
+
+=item *
+
+C<GOV> (Government or government entity in Canada)
+
+=item *
+
+C<HOP> (Canadian Hospital)
+
+=item *
+
+C<INB> (Indian Band recognized by the Indian Act of Canada)
+
+=item *
+
+C<LAM> (Canadian Library, Archive, or Museum)
+
+=item *
+
+C<MAJ> (Her/His Majesty the Queen/King)
+
+=item *
+
+C<OMK> (Official mark registered in Canada)
+
+=item *
+
+C<PLT> (Canadian Political Party)
+
+=item *
+
+C<PRT> (Partnership Registered in Canada)
+
+=item *
+
+C<TDM> (Trademark registered in Canada)
+
+=item *
+
+C<TRD> (Canadian Trade Union)
+
+=item *
+
+C<TRS> (Trust established in Canada)
+
+=back
+
+=back
+
+=item .es
+
+=over
+
+=item *
+
+C<ES_IDENTIFICATION>
+
+Specify the applicable value:
+
+=over
+
+=item *
+
+B<For contacts inside Spain:> Enter your passport ID.
+
+=item *
+
+B<For contacts outside of Spain:> Enter the VAT identification number
+for the company.
+
+For .es domains, the value of C<ContactType> must be C<PERSON>.
+
+=back
+
+=item *
+
+C<ES_IDENTIFICATION_TYPE>
+
+Valid values include the following:
+
+=over
+
+=item *
+
+C<DNI_AND_NIF> (For Spanish contacts)
+
+=item *
+
+C<NIE> (For foreigners with legal residence)
+
+=item *
+
+C<OTHER> (For contacts outside of Spain)
+
+=back
+
+=item *
+
 C<ES_LEGAL_FORM>
 
-=item *
+Valid values include the following:
 
-B<.fi:> C<BIRTH_DATE_IN_YYYY_MM_DD>, C<FI_BUSINESS_NUMBER>,
-C<FI_ID_NUMBER>, C<FI_NATIONALITY>, and C<FI_ORGANIZATION_TYPE>
-
-=item *
-
-B<.fr:> C<BRAND_NUMBER>, C<BIRTH_DEPARTMENT>,
-C<BIRTH_DATE_IN_YYYY_MM_DD>, C<BIRTH_COUNTRY>, and C<BIRTH_CITY>
+=over
 
 =item *
 
-B<.it:> C<BIRTH_COUNTRY>, C<IT_PIN>, and C<IT_REGISTRANT_ENTITY_TYPE>
+C<ASSOCIATION>
 
 =item *
 
-B<.ru:> C<BIRTH_DATE_IN_YYYY_MM_DD> and C<RU_PASSPORT_DATA>
+C<CENTRAL_GOVERNMENT_BODY>
 
 =item *
 
-B<.se:> C<BIRTH_COUNTRY> and C<SE_ID_NUMBER>
+C<CIVIL_SOCIETY>
 
 =item *
 
-B<.sg:> C<SG_ID_NUMBER>
+C<COMMUNITY_OF_OWNERS>
 
 =item *
 
-B<.co.uk, .me.uk, and .org.uk:> C<UK_CONTACT_TYPE> and
+C<COMMUNITY_PROPERTY>
+
+=item *
+
+C<CONSULATE>
+
+=item *
+
+C<COOPERATIVE>
+
+=item *
+
+C<DESIGNATION_OF_ORIGIN_SUPERVISORY_COUNCIL>
+
+=item *
+
+C<ECONOMIC_INTEREST_GROUP>
+
+=item *
+
+C<EMBASSY>
+
+=item *
+
+C<ENTITY_MANAGING_NATURAL_AREAS>
+
+=item *
+
+C<FARM_PARTNERSHIP>
+
+=item *
+
+C<FOUNDATION>
+
+=item *
+
+C<GENERAL_AND_LIMITED_PARTNERSHIP>
+
+=item *
+
+C<GENERAL_PARTNERSHIP>
+
+=item *
+
+C<INDIVIDUAL>
+
+=item *
+
+C<LIMITED_COMPANY>
+
+=item *
+
+C<LOCAL_AUTHORITY>
+
+=item *
+
+C<LOCAL_PUBLIC_ENTITY>
+
+=item *
+
+C<MUTUAL_INSURANCE_COMPANY>
+
+=item *
+
+C<NATIONAL_PUBLIC_ENTITY>
+
+=item *
+
+C<ORDER_OR_RELIGIOUS_INSTITUTION>
+
+=item *
+
+C<OTHERS (Only for contacts outside of Spain)>
+
+=item *
+
+C<POLITICAL_PARTY>
+
+=item *
+
+C<PROFESSIONAL_ASSOCIATION>
+
+=item *
+
+C<PUBLIC_LAW_ASSOCIATION>
+
+=item *
+
+C<PUBLIC_LIMITED_COMPANY>
+
+=item *
+
+C<REGIONAL_GOVERNMENT_BODY>
+
+=item *
+
+C<REGIONAL_PUBLIC_ENTITY>
+
+=item *
+
+C<SAVINGS_BANK>
+
+=item *
+
+C<SPANISH_OFFICE>
+
+=item *
+
+C<SPORTS_ASSOCIATION>
+
+=item *
+
+C<SPORTS_FEDERATION>
+
+=item *
+
+C<SPORTS_LIMITED_COMPANY>
+
+=item *
+
+C<TEMPORARY_ALLIANCE_OF_ENTERPRISES>
+
+=item *
+
+C<TRADE_UNION>
+
+=item *
+
+C<WORKER_OWNED_COMPANY>
+
+=item *
+
+C<WORKER_OWNED_LIMITED_COMPANY>
+
+=back
+
+=back
+
+=item .fi
+
+=over
+
+=item *
+
+C<BIRTH_DATE_IN_YYYY_MM_DD>
+
+=item *
+
+C<FI_BUSINESS_NUMBER>
+
+=item *
+
+C<FI_ID_NUMBER>
+
+=item *
+
+C<FI_NATIONALITY>
+
+Valid values include the following:
+
+=over
+
+=item *
+
+C<FINNISH>
+
+=item *
+
+C<NOT_FINNISH>
+
+=back
+
+=item *
+
+C<FI_ORGANIZATION_TYPE>
+
+Valid values include the following:
+
+=over
+
+=item *
+
+C<COMPANY>
+
+=item *
+
+C<CORPORATION>
+
+=item *
+
+C<GOVERNMENT>
+
+=item *
+
+C<INSTITUTION>
+
+=item *
+
+C<POLITICAL_PARTY>
+
+=item *
+
+C<PUBLIC_COMMUNITY>
+
+=item *
+
+C<TOWNSHIP>
+
+=back
+
+=back
+
+=item .fr
+
+=over
+
+=item *
+
+C<BIRTH_CITY>
+
+=item *
+
+C<BIRTH_COUNTRY>
+
+=item *
+
+C<BIRTH_DATE_IN_YYYY_MM_DD>
+
+=item *
+
+C<BIRTH_DEPARTMENT>: Specify the INSEE code that corresponds with the
+department where the contact was born. If the contact was born
+somewhere other than France or its overseas departments, specify C<99>.
+For more information, including a list of departments and the
+corresponding INSEE numbers, see the Wikipedia entry Departments of
+France (https://en.wikipedia.org/wiki/Departments_of_France).
+
+=item *
+
+C<BRAND_NUMBER>
+
+=back
+
+=item .it
+
+=over
+
+=item *
+
+C<IT_NATIONALITY>
+
+=item *
+
+C<IT_PIN>
+
+=item *
+
+C<IT_REGISTRANT_ENTITY_TYPE>
+
+Valid values include the following:
+
+=over
+
+=item *
+
+C<FOREIGNERS>
+
+=item *
+
+C<FREELANCE_WORKERS> (Freelance workers and professionals)
+
+=item *
+
+C<ITALIAN_COMPANIES> (Italian companies and one-person companies)
+
+=item *
+
+C<NON_PROFIT_ORGANIZATIONS>
+
+=item *
+
+C<OTHER_SUBJECTS>
+
+=item *
+
+C<PUBLIC_ORGANIZATIONS>
+
+=back
+
+=back
+
+=item .ru
+
+=over
+
+=item *
+
+C<BIRTH_DATE_IN_YYYY_MM_DD>
+
+=item *
+
+C<RU_PASSPORT_DATA>
+
+=back
+
+=item .se
+
+=over
+
+=item *
+
+C<BIRTH_COUNTRY>
+
+=item *
+
+C<SE_ID_NUMBER>
+
+=back
+
+=item .sg
+
+=over
+
+=item *
+
+C<SG_ID_NUMBER>
+
+=back
+
+=item .co.uk, .me.uk, and .org.uk
+
+=over
+
+=item *
+
+C<UK_CONTACT_TYPE>
+
+Valid values include the following:
+
+=over
+
+=item *
+
+C<CRC> (UK Corporation by Royal Charter)
+
+=item *
+
+C<FCORP> (Non-UK Corporation)
+
+=item *
+
+C<FIND> (Non-UK Individual, representing self)
+
+=item *
+
+C<FOTHER> (Non-UK Entity that does not fit into any other category)
+
+=item *
+
+C<GOV> (UK Government Body)
+
+=item *
+
+C<IND> (UK Individual (representing self))
+
+=item *
+
+C<IP> (UK Industrial/Provident Registered Company)
+
+=item *
+
+C<LLP> (UK Limited Liability Partnership)
+
+=item *
+
+C<LTD> (UK Limited Company)
+
+=item *
+
+C<OTHER> (UK Entity that does not fit into any other category)
+
+=item *
+
+C<PLC> (UK Public Limited Company)
+
+=item *
+
+C<PTNR> (UK Partnership)
+
+=item *
+
+C<RCHAR> (UK Registered Charity)
+
+=item *
+
+C<SCH> (UK School)
+
+=item *
+
+C<STAT> (UK Statutory Body)
+
+=item *
+
+C<STRA> (UK Sole Trader)
+
+=back
+
+=item *
+
 C<UK_COMPANY_NUMBER>
 
 =back
 
-In addition, many TLDs require C<VAT_NUMBER>.
+=back
+
+In addition, many TLDs require a C<VAT_NUMBER>.
 
 
 =head2 B<REQUIRED> Value => Str
 
-Values corresponding to the additional parameter names required by some
-top-level domains.
+The value that corresponds with the name of an extra parameter.
 
 
 
