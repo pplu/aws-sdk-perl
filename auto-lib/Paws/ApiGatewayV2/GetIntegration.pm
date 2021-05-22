@@ -47,15 +47,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IntegrationMethod = $GetIntegrationResult->IntegrationMethod;
     my $IntegrationResponseSelectionExpression =
       $GetIntegrationResult->IntegrationResponseSelectionExpression;
+    my $IntegrationSubtype   = $GetIntegrationResult->IntegrationSubtype;
     my $IntegrationType      = $GetIntegrationResult->IntegrationType;
     my $IntegrationUri       = $GetIntegrationResult->IntegrationUri;
     my $PassthroughBehavior  = $GetIntegrationResult->PassthroughBehavior;
     my $PayloadFormatVersion = $GetIntegrationResult->PayloadFormatVersion;
     my $RequestParameters    = $GetIntegrationResult->RequestParameters;
     my $RequestTemplates     = $GetIntegrationResult->RequestTemplates;
+    my $ResponseParameters   = $GetIntegrationResult->ResponseParameters;
     my $TemplateSelectionExpression =
       $GetIntegrationResult->TemplateSelectionExpression;
     my $TimeoutInMillis = $GetIntegrationResult->TimeoutInMillis;
+    my $TlsConfig       = $GetIntegrationResult->TlsConfig;
 
     # Returns a L<Paws::ApiGatewayV2::GetIntegrationResult> object.
 

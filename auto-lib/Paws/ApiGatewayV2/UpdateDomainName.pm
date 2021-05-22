@@ -3,6 +3,7 @@ package Paws::ApiGatewayV2::UpdateDomainName;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', traits => ['NameInRequest'], request_name => 'domainNameConfigurations');
+  has MutualTlsAuthentication => (is => 'ro', isa => 'Paws::ApiGatewayV2::MutualTlsAuthenticationInput', traits => ['NameInRequest'], request_name => 'mutualTlsAuthentication');
 
   use MooseX::ClassAttribute;
 
@@ -46,6 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                    # OPTIONAL
+      MutualTlsAuthentication => {
+        TruststoreUri     => 'MyUriWithLengthBetween1And2048',     # OPTIONAL
+        TruststoreVersion => 'MyStringWithLengthBetween1And64',    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -54,6 +59,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DomainName = $UpdateDomainNameResponse->DomainName;
     my $DomainNameConfigurations =
       $UpdateDomainNameResponse->DomainNameConfigurations;
+    my $MutualTlsAuthentication =
+      $UpdateDomainNameResponse->MutualTlsAuthentication;
     my $Tags = $UpdateDomainNameResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::UpdateDomainNameResponse> object.
@@ -73,6 +80,12 @@ The domain name.
 =head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
 
 The domain name configurations.
+
+
+
+=head2 MutualTlsAuthentication => L<Paws::ApiGatewayV2::MutualTlsAuthenticationInput>
+
+The mutual TLS authentication configuration for a custom domain name.
 
 
 

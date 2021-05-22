@@ -37,13 +37,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiEndpoint = $ImportApiResponse->ApiEndpoint;
-    my $ApiId       = $ImportApiResponse->ApiId;
+    my $ApiEndpoint       = $ImportApiResponse->ApiEndpoint;
+    my $ApiGatewayManaged = $ImportApiResponse->ApiGatewayManaged;
+    my $ApiId             = $ImportApiResponse->ApiId;
     my $ApiKeySelectionExpression =
       $ImportApiResponse->ApiKeySelectionExpression;
-    my $CorsConfiguration        = $ImportApiResponse->CorsConfiguration;
-    my $CreatedDate              = $ImportApiResponse->CreatedDate;
-    my $Description              = $ImportApiResponse->Description;
+    my $CorsConfiguration = $ImportApiResponse->CorsConfiguration;
+    my $CreatedDate       = $ImportApiResponse->CreatedDate;
+    my $Description       = $ImportApiResponse->Description;
+    my $DisableExecuteApiEndpoint =
+      $ImportApiResponse->DisableExecuteApiEndpoint;
     my $DisableSchemaValidation  = $ImportApiResponse->DisableSchemaValidation;
     my $ImportInfo               = $ImportApiResponse->ImportInfo;
     my $Name                     = $ImportApiResponse->Name;
@@ -63,8 +66,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 Basepath => Str
 
-Represents the base path of the imported API. Supported only for HTTP
-APIs.
+Specifies how to interpret the base path of the API during import.
+Valid values are ignore, prepend, and split. The default value is
+ignore. To learn more, see Set the OpenAPI basePath Property
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api-basePath.html).
+Supported only for HTTP APIs.
 
 
 
@@ -76,8 +82,9 @@ The OpenAPI definition. Supported only for HTTP APIs.
 
 =head2 FailOnWarnings => Bool
 
-Specifies whether to rollback the API creation (true) or not (false)
-when a warning is encountered. The default value is false.
+Specifies whether to rollback the API creation when a warning is
+encountered. By default, API creation continues if a warning is
+encountered.
 
 
 

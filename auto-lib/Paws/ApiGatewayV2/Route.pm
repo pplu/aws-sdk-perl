@@ -80,7 +80,8 @@ instead of an identity token for authorization purposes.
 The authorization type for the route. For WebSocket APIs, valid values
 are NONE for open access, AWS_IAM for using AWS IAM permissions, and
 CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
-NONE for open access, or JWT for using JSON Web Tokens.
+NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using
+AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 
 
 =head2 AuthorizerId => Str

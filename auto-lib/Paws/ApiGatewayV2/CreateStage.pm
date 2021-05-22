@@ -50,9 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DefaultRouteSettings => {
         DataTraceEnabled       => 1,
         DetailedMetricsEnabled => 1,
-        LoggingLevel         => 'ERROR',  # values: ERROR, INFO, false; OPTIONAL
-        ThrottlingBurstLimit => 1,        # OPTIONAL
-        ThrottlingRateLimit  => 1,        # OPTIONAL
+        LoggingLevel           => 'ERROR',  # values: ERROR, INFO, OFF; OPTIONAL
+        ThrottlingBurstLimit   => 1,        # OPTIONAL
+        ThrottlingRateLimit    => 1,        # OPTIONAL
       },    # OPTIONAL
       DeploymentId  => 'MyId',                                 # OPTIONAL
       Description   => 'MyStringWithLengthBetween0And1024',    # OPTIONAL
@@ -60,9 +60,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'My__string' => {
           DataTraceEnabled       => 1,
           DetailedMetricsEnabled => 1,
-          LoggingLevel => 'ERROR',    # values: ERROR, INFO, false; OPTIONAL
-          ThrottlingBurstLimit => 1,  # OPTIONAL
-          ThrottlingRateLimit  => 1,  # OPTIONAL
+          LoggingLevel         => 'ERROR',  # values: ERROR, INFO, OFF; OPTIONAL
+          ThrottlingBurstLimit => 1,        # OPTIONAL
+          ThrottlingRateLimit  => 1,        # OPTIONAL
         },
       },    # OPTIONAL
       StageVariables =>
@@ -156,7 +156,7 @@ The name of the stage.
 
 A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?#&=,]+. Supported only for WebSocket APIs.
+[A-Za-z0-9-._~:/?#&=,]+.
 
 
 

@@ -39,13 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiEndpoint = $ReimportApiResponse->ApiEndpoint;
-    my $ApiId       = $ReimportApiResponse->ApiId;
+    my $ApiEndpoint       = $ReimportApiResponse->ApiEndpoint;
+    my $ApiGatewayManaged = $ReimportApiResponse->ApiGatewayManaged;
+    my $ApiId             = $ReimportApiResponse->ApiId;
     my $ApiKeySelectionExpression =
       $ReimportApiResponse->ApiKeySelectionExpression;
-    my $CorsConfiguration       = $ReimportApiResponse->CorsConfiguration;
-    my $CreatedDate             = $ReimportApiResponse->CreatedDate;
-    my $Description             = $ReimportApiResponse->Description;
+    my $CorsConfiguration = $ReimportApiResponse->CorsConfiguration;
+    my $CreatedDate       = $ReimportApiResponse->CreatedDate;
+    my $Description       = $ReimportApiResponse->Description;
+    my $DisableExecuteApiEndpoint =
+      $ReimportApiResponse->DisableExecuteApiEndpoint;
     my $DisableSchemaValidation = $ReimportApiResponse->DisableSchemaValidation;
     my $ImportInfo              = $ReimportApiResponse->ImportInfo;
     my $Name                    = $ReimportApiResponse->Name;
@@ -72,8 +75,11 @@ The API identifier.
 
 =head2 Basepath => Str
 
-Represents the base path of the imported API. Supported only for HTTP
-APIs.
+Specifies how to interpret the base path of the API during import.
+Valid values are ignore, prepend, and split. The default value is
+ignore. To learn more, see Set the OpenAPI basePath Property
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api-basePath.html).
+Supported only for HTTP APIs.
 
 
 
@@ -85,8 +91,9 @@ The OpenAPI definition. Supported only for HTTP APIs.
 
 =head2 FailOnWarnings => Bool
 
-Specifies whether to rollback the API creation (true) or not (false)
-when a warning is encountered. The default value is false.
+Specifies whether to rollback the API creation when a warning is
+encountered. By default, API creation continues if a warning is
+encountered.
 
 
 

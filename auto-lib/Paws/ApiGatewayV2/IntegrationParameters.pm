@@ -33,17 +33,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV
 
 =head1 DESCRIPTION
 
-A key-value map specifying response parameters that are passed to the
-method response from the backend. The key is a method response header
-parameter name and the mapped value is an integration response header
-value, a static value enclosed within a pair of single quotes, or a
-JSON expression from the integration response body. The mapping key
-must match the pattern of method.response.header.{name}, where name is
-a valid and unique header name. The mapped non-static value must match
-the pattern of integration.response.header.{name} or
-integration.response.body.{JSON-expression}, where name is a valid and
-unique response header name and JSON-expression is a valid JSON
-expression without the $ prefix.
+For WebSocket APIs, a key-value map specifying request parameters that
+are passed from the method request to the backend. The key is an
+integration request parameter name and the associated value is a method
+request parameter value or static value that must be enclosed within
+single quotes and pre-encoded as required by the backend. The method
+request parameter value must match the pattern of
+method.request.{location}.{name} , where {location} is querystring,
+path, or header; and {name} must be a valid and unique method request
+parameter name.
+
+For HTTP API integrations with a specified integrationSubtype, request
+parameters are a key-value map specifying parameters that are passed to
+AWS_PROXY integrations. You can provide static values, or map request
+data, stage variables, or context variables that are evaluated at
+runtime. To learn more, see Working with AWS service integrations for
+HTTP APIs
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services.html).
+
+For HTTP API integrations without a specified integrationSubtype
+request parameters are a key-value map specifying how to transform HTTP
+requests before sending them to the backend. The key should follow the
+pattern
+E<lt>actionE<gt>:E<lt>header|querystring|pathE<gt>.E<lt>locationE<gt>
+where action can be append, overwrite or remove. For values, you can
+provide static values, or map request data, stage variables, or context
+variables that are evaluated at runtime. To learn more, see
+Transforming API requests and responses
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
 
 =head1 ATTRIBUTES
 

@@ -39,11 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AuthorizerCredentialsArn =
       $GetAuthorizerResponse->AuthorizerCredentialsArn;
     my $AuthorizerId = $GetAuthorizerResponse->AuthorizerId;
+    my $AuthorizerPayloadFormatVersion =
+      $GetAuthorizerResponse->AuthorizerPayloadFormatVersion;
     my $AuthorizerResultTtlInSeconds =
       $GetAuthorizerResponse->AuthorizerResultTtlInSeconds;
-    my $AuthorizerType = $GetAuthorizerResponse->AuthorizerType;
-    my $AuthorizerUri  = $GetAuthorizerResponse->AuthorizerUri;
-    my $IdentitySource = $GetAuthorizerResponse->IdentitySource;
+    my $AuthorizerType        = $GetAuthorizerResponse->AuthorizerType;
+    my $AuthorizerUri         = $GetAuthorizerResponse->AuthorizerUri;
+    my $EnableSimpleResponses = $GetAuthorizerResponse->EnableSimpleResponses;
+    my $IdentitySource        = $GetAuthorizerResponse->IdentitySource;
     my $IdentityValidationExpression =
       $GetAuthorizerResponse->IdentityValidationExpression;
     my $JwtConfiguration = $GetAuthorizerResponse->JwtConfiguration;

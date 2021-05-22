@@ -49,7 +49,7 @@ The resource ARN for the tag.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The Tag keys to delete.
+The Tag keys to delete
 
 
 

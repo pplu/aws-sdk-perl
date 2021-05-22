@@ -35,11 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ApiEndpoint               = $GetApiResponse->ApiEndpoint;
+    my $ApiGatewayManaged         = $GetApiResponse->ApiGatewayManaged;
     my $ApiId                     = $GetApiResponse->ApiId;
     my $ApiKeySelectionExpression = $GetApiResponse->ApiKeySelectionExpression;
     my $CorsConfiguration         = $GetApiResponse->CorsConfiguration;
     my $CreatedDate               = $GetApiResponse->CreatedDate;
     my $Description               = $GetApiResponse->Description;
+    my $DisableExecuteApiEndpoint = $GetApiResponse->DisableExecuteApiEndpoint;
     my $DisableSchemaValidation   = $GetApiResponse->DisableSchemaValidation;
     my $ImportInfo                = $GetApiResponse->ImportInfo;
     my $Name                      = $GetApiResponse->Name;

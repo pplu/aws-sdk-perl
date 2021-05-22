@@ -69,6 +69,16 @@ package Paws::ApiGatewayV2;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::CreateStage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::CreateVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAccessLogSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteAccessLogSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteApi', @_);
@@ -119,6 +129,11 @@ package Paws::ApiGatewayV2;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteRoute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRouteRequestParameter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteRouteRequestParameter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRouteResponse {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteRouteResponse', @_);
@@ -132,6 +147,16 @@ package Paws::ApiGatewayV2;
   sub DeleteStage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteStage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExportApi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::ExportApi', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetApi {
@@ -254,6 +279,16 @@ package Paws::ApiGatewayV2;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::GetTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::GetVpcLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVpcLinks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::GetVpcLinks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::ImportApi', @_);
@@ -262,6 +297,11 @@ package Paws::ApiGatewayV2;
   sub ReimportApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::ReimportApi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetAuthorizersCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::ResetAuthorizersCache', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -327,6 +367,11 @@ package Paws::ApiGatewayV2;
   sub UpdateStage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::UpdateStage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateVpcLink {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::UpdateVpcLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -562,7 +607,7 @@ package Paws::ApiGatewayV2;
   }
 
 
-  sub operations { qw/CreateApi CreateApiMapping CreateAuthorizer CreateDeployment CreateDomainName CreateIntegration CreateIntegrationResponse CreateModel CreateRoute CreateRouteResponse CreateStage DeleteApi DeleteApiMapping DeleteAuthorizer DeleteCorsConfiguration DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteModel DeleteRoute DeleteRouteResponse DeleteRouteSettings DeleteStage GetApi GetApiMapping GetApiMappings GetApis GetAuthorizer GetAuthorizers GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetIntegrationResponses GetIntegrations GetModel GetModels GetModelTemplate GetRoute GetRouteResponse GetRouteResponses GetRoutes GetStage GetStages GetTags ImportApi ReimportApi TagResource UntagResource UpdateApi UpdateApiMapping UpdateAuthorizer UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateModel UpdateRoute UpdateRouteResponse UpdateStage / }
+  sub operations { qw/CreateApi CreateApiMapping CreateAuthorizer CreateDeployment CreateDomainName CreateIntegration CreateIntegrationResponse CreateModel CreateRoute CreateRouteResponse CreateStage CreateVpcLink DeleteAccessLogSettings DeleteApi DeleteApiMapping DeleteAuthorizer DeleteCorsConfiguration DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteModel DeleteRoute DeleteRouteRequestParameter DeleteRouteResponse DeleteRouteSettings DeleteStage DeleteVpcLink ExportApi GetApi GetApiMapping GetApiMappings GetApis GetAuthorizer GetAuthorizers GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetIntegrationResponses GetIntegrations GetModel GetModels GetModelTemplate GetRoute GetRouteResponse GetRouteResponses GetRoutes GetStage GetStages GetTags GetVpcLink GetVpcLinks ImportApi ReimportApi ResetAuthorizersCache TagResource UntagResource UpdateApi UpdateApiMapping UpdateAuthorizer UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateModel UpdateRoute UpdateRouteResponse UpdateStage UpdateVpcLink / }
 
 1;
 
@@ -612,6 +657,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 =item [CredentialsArn => Str]
 
 =item [Description => Str]
+
+=item [DisableExecuteApiEndpoint => Bool]
 
 =item [DisableSchemaValidation => Bool]
 
@@ -671,9 +718,13 @@ Creates an API mapping.
 
 =item [AuthorizerCredentialsArn => Str]
 
+=item [AuthorizerPayloadFormatVersion => Str]
+
 =item [AuthorizerResultTtlInSeconds => Int]
 
 =item [AuthorizerUri => Str]
+
+=item [EnableSimpleResponses => Bool]
 
 =item [IdentityValidationExpression => Str]
 
@@ -717,6 +768,8 @@ Creates a Deployment for an API.
 
 =item [DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]]
 
+=item [MutualTlsAuthentication => L<Paws::ApiGatewayV2::MutualTlsAuthenticationInput>]
+
 =item [Tags => L<Paws::ApiGatewayV2::Tags>]
 
 
@@ -749,6 +802,8 @@ Creates a domain name.
 
 =item [IntegrationMethod => Str]
 
+=item [IntegrationSubtype => Str]
+
 =item [IntegrationUri => Str]
 
 =item [PassthroughBehavior => Str]
@@ -759,9 +814,13 @@ Creates a domain name.
 
 =item [RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
 
+=item [ResponseParameters => L<Paws::ApiGatewayV2::ResponseParameters>]
+
 =item [TemplateSelectionExpression => Str]
 
 =item [TimeoutInMillis => Int]
+
+=item [TlsConfig => L<Paws::ApiGatewayV2::TlsConfigInput>]
 
 
 =back
@@ -923,6 +982,47 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::CreateStage>
 Returns: a L<Paws::ApiGatewayV2::CreateStageResponse> instance
 
 Creates a Stage for an API.
+
+
+=head2 CreateVpcLink
+
+=over
+
+=item Name => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [Tags => L<Paws::ApiGatewayV2::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::CreateVpcLink>
+
+Returns: a L<Paws::ApiGatewayV2::CreateVpcLinkResponse> instance
+
+Creates a VPC link.
+
+
+=head2 DeleteAccessLogSettings
+
+=over
+
+=item ApiId => Str
+
+=item StageName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteAccessLogSettings>
+
+Returns: nothing
+
+Deletes the AccessLogSettings for a Stage. To disable access logging
+for a Stage, delete its AccessLogSettings.
 
 
 =head2 DeleteApi
@@ -1101,6 +1201,26 @@ Returns: nothing
 Deletes a Route.
 
 
+=head2 DeleteRouteRequestParameter
+
+=over
+
+=item ApiId => Str
+
+=item RequestParameterKey => Str
+
+=item RouteId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteRouteRequestParameter>
+
+Returns: nothing
+
+Deletes a route request parameter.
+
+
 =head2 DeleteRouteResponse
 
 =over
@@ -1157,6 +1277,48 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteStage>
 Returns: nothing
 
 Deletes a Stage.
+
+
+=head2 DeleteVpcLink
+
+=over
+
+=item VpcLinkId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteVpcLink>
+
+Returns: a L<Paws::ApiGatewayV2::DeleteVpcLinkResponse> instance
+
+Deletes a VPC link.
+
+
+=head2 ExportApi
+
+=over
+
+=item ApiId => Str
+
+=item OutputType => Str
+
+=item Specification => Str
+
+=item [ExportVersion => Str]
+
+=item [IncludeExtensions => Bool]
+
+=item [StageName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::ExportApi>
+
+Returns: a L<Paws::ApiGatewayV2::ExportApiResponse> instance
+
+
 
 
 =head2 GetApi
@@ -1611,6 +1773,40 @@ Returns: a L<Paws::ApiGatewayV2::GetTagsResponse> instance
 Gets a collection of Tag resources.
 
 
+=head2 GetVpcLink
+
+=over
+
+=item VpcLinkId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::GetVpcLink>
+
+Returns: a L<Paws::ApiGatewayV2::GetVpcLinkResponse> instance
+
+Gets a VPC link.
+
+
+=head2 GetVpcLinks
+
+=over
+
+=item [MaxResults => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::GetVpcLinks>
+
+Returns: a L<Paws::ApiGatewayV2::GetVpcLinksResponse> instance
+
+Gets a collection of VPC links.
+
+
 =head2 ImportApi
 
 =over
@@ -1651,6 +1847,25 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::ReimportApi>
 Returns: a L<Paws::ApiGatewayV2::ReimportApiResponse> instance
 
 Puts an Api resource.
+
+
+=head2 ResetAuthorizersCache
+
+=over
+
+=item ApiId => Str
+
+=item StageName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::ResetAuthorizersCache>
+
+Returns: nothing
+
+Resets all authorizer cache entries on a stage. Supported only for HTTP
+APIs.
 
 
 =head2 TagResource
@@ -1702,6 +1917,8 @@ Deletes a Tag.
 =item [CredentialsArn => Str]
 
 =item [Description => Str]
+
+=item [DisableExecuteApiEndpoint => Bool]
 
 =item [DisableSchemaValidation => Bool]
 
@@ -1759,11 +1976,15 @@ The API mapping.
 
 =item [AuthorizerCredentialsArn => Str]
 
+=item [AuthorizerPayloadFormatVersion => Str]
+
 =item [AuthorizerResultTtlInSeconds => Int]
 
 =item [AuthorizerType => Str]
 
 =item [AuthorizerUri => Str]
+
+=item [EnableSimpleResponses => Bool]
 
 =item [IdentitySource => ArrayRef[Str|Undef]]
 
@@ -1811,6 +2032,8 @@ Updates a Deployment.
 
 =item [DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]]
 
+=item [MutualTlsAuthentication => L<Paws::ApiGatewayV2::MutualTlsAuthenticationInput>]
+
 
 =back
 
@@ -1841,6 +2064,8 @@ Updates a domain name.
 
 =item [IntegrationMethod => Str]
 
+=item [IntegrationSubtype => Str]
+
 =item [IntegrationType => Str]
 
 =item [IntegrationUri => Str]
@@ -1853,9 +2078,13 @@ Updates a domain name.
 
 =item [RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
 
+=item [ResponseParameters => L<Paws::ApiGatewayV2::ResponseParameters>]
+
 =item [TemplateSelectionExpression => Str]
 
 =item [TimeoutInMillis => Int]
+
+=item [TlsConfig => L<Paws::ApiGatewayV2::TlsConfigInput>]
 
 
 =back
@@ -2023,6 +2252,24 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::UpdateStage>
 Returns: a L<Paws::ApiGatewayV2::UpdateStageResponse> instance
 
 Updates a Stage.
+
+
+=head2 UpdateVpcLink
+
+=over
+
+=item VpcLinkId => Str
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::UpdateVpcLink>
+
+Returns: a L<Paws::ApiGatewayV2::UpdateVpcLinkResponse> instance
+
+Updates a VPC link.
 
 
 

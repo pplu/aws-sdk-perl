@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RequestModels => { 'My__string' => 'MyStringWithLengthBetween1And128', }
       ,                                                               # OPTIONAL
       RequestParameters => { 'My__string' => { Required => 1, }, },   # OPTIONAL
-      RouteKey => 'MySelectionKey',                                   # OPTIONAL
+      RouteKey          => 'MySelectionKey',                          # OPTIONAL
       RouteResponseSelectionExpression => 'MySelectionExpression',    # OPTIONAL
       Target => 'MyStringWithLengthBetween1And128',                   # OPTIONAL
     );
@@ -106,7 +106,8 @@ The authorization scopes supported by this route.
 The authorization type for the route. For WebSocket APIs, valid values
 are NONE for open access, AWS_IAM for using AWS IAM permissions, and
 CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
-NONE for open access, or JWT for using JSON Web Tokens.
+NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using
+AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 
 Valid values are: C<"NONE">, C<"AWS_IAM">, C<"CUSTOM">, C<"JWT">
 

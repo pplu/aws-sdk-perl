@@ -2,11 +2,13 @@
 package Paws::ApiGatewayV2::Api;
   use Moose;
   has ApiEndpoint => (is => 'ro', isa => 'Str', request_name => 'apiEndpoint', traits => ['NameInRequest']);
+  has ApiGatewayManaged => (is => 'ro', isa => 'Bool', request_name => 'apiGatewayManaged', traits => ['NameInRequest']);
   has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
   has ApiKeySelectionExpression => (is => 'ro', isa => 'Str', request_name => 'apiKeySelectionExpression', traits => ['NameInRequest']);
   has CorsConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::Cors', request_name => 'corsConfiguration', traits => ['NameInRequest']);
   has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has DisableExecuteApiEndpoint => (is => 'ro', isa => 'Bool', request_name => 'disableExecuteApiEndpoint', traits => ['NameInRequest']);
   has DisableSchemaValidation => (is => 'ro', isa => 'Bool', request_name => 'disableSchemaValidation', traits => ['NameInRequest']);
   has ImportInfo => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'importInfo', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
@@ -59,6 +61,13 @@ typically appended to this URI to form a complete path to a deployed
 API stage.
 
 
+=head2 ApiGatewayManaged => Bool
+
+Specifies whether an API is managed by API Gateway. You can't update or
+delete a managed API by using API Gateway. A managed API can be deleted
+only through the tooling or service that created it.
+
+
 =head2 ApiId => Str
 
 The API ID.
@@ -84,6 +93,15 @@ The timestamp when the API was created.
 =head2 Description => Str
 
 The description of the API.
+
+
+=head2 DisableExecuteApiEndpoint => Bool
+
+Specifies whether clients can invoke your API by using the default
+execute-api endpoint. By default, clients can invoke your API with the
+default https://{api_id}.execute-api.{region}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.
 
 
 =head2 DisableSchemaValidation => Bool

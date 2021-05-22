@@ -39,6 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DomainName = $GetDomainNameResponse->DomainName;
     my $DomainNameConfigurations =
       $GetDomainNameResponse->DomainNameConfigurations;
+    my $MutualTlsAuthentication =
+      $GetDomainNameResponse->MutualTlsAuthentication;
     my $Tags = $GetDomainNameResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::GetDomainNameResponse> object.

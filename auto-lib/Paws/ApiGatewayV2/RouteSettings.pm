@@ -63,13 +63,12 @@ Supported only for WebSocket APIs.
 
 =head2 ThrottlingBurstLimit => Int
 
-Specifies the throttling burst limit. Supported only for WebSocket
-APIs.
+Specifies the throttling burst limit.
 
 
 =head2 ThrottlingRateLimit => Num
 
-Specifies the throttling rate limit. Supported only for WebSocket APIs.
+Specifies the throttling rate limit.
 
 
 
