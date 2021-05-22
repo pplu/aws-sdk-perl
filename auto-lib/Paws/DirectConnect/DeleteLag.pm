@@ -38,12 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $EncryptionMode          = $Lag->EncryptionMode;
     my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
     my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
     my $Location                = $Lag->Location;
+    my $MacSecCapable           = $Lag->MacSecCapable;
+    my $MacSecKeys              = $Lag->MacSecKeys;
     my $MinimumLinks            = $Lag->MinimumLinks;
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;

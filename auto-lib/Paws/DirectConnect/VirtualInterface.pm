@@ -147,7 +147,9 @@ The ID of the virtual interface.
 
 =head2 VirtualInterfaceName => Str
 
-The name of the virtual interface assigned by the customer network.
+The name of the virtual interface assigned by the customer network. The
+name has a maximum of 100 characters. The following are valid
+characters: a-z, 0-9 and a hyphen (-).
 
 
 =head2 VirtualInterfaceState => Str

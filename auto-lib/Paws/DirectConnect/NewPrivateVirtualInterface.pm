@@ -100,7 +100,9 @@ The ID of the virtual private gateway.
 
 =head2 B<REQUIRED> VirtualInterfaceName => Str
 
-The name of the virtual interface assigned by the customer network.
+The name of the virtual interface assigned by the customer network. The
+name has a maximum of 100 characters. The following are valid
+characters: a-z, 0-9 and a hyphen (-).
 
 
 =head2 B<REQUIRED> Vlan => Int

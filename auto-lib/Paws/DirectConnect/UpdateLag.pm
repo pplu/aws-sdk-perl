@@ -1,6 +1,7 @@
 
 package Paws::DirectConnect::UpdateLag;
   use Moose;
+  has EncryptionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionMode' );
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' , required => 1);
   has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' );
   has MinimumLinks => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumLinks' );
@@ -30,9 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $directconnect = Paws->service('DirectConnect');
     my $Lag = $directconnect->UpdateLag(
-      LagId        => 'MyLagId',
-      LagName      => 'MyLagName',    # OPTIONAL
-      MinimumLinks => 1,              # OPTIONAL
+      LagId          => 'MyLagId',
+      EncryptionMode => 'MyEncryptionMode',    # OPTIONAL
+      LagName        => 'MyLagName',           # OPTIONAL
+      MinimumLinks   => 1,                     # OPTIONAL
     );
 
     # Results:
@@ -41,12 +43,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $EncryptionMode          = $Lag->EncryptionMode;
     my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
     my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
     my $Location                = $Lag->Location;
+    my $MacSecCapable           = $Lag->MacSecCapable;
+    my $MacSecKeys              = $Lag->MacSecKeys;
     my $MinimumLinks            = $Lag->MinimumLinks;
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
@@ -60,6 +65,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/UpdateLag>
 
 =head1 ATTRIBUTES
+
+
+=head2 EncryptionMode => Str
+
+The LAG MAC Security (MACsec) encryption mode.
+
+AWS applies the value to all connections which are part of the LAG.
+
 
 
 =head2 B<REQUIRED> LagId => Str
