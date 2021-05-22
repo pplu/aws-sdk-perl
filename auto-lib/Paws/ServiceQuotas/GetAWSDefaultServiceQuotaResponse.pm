@@ -16,7 +16,7 @@ Paws::ServiceQuotas::GetAWSDefaultServiceQuotaResponse
 
 =head2 Quota => L<Paws::ServiceQuotas::ServiceQuota>
 
-Returns the ServiceQuota object which contains all values for a quota.
+Information about the quota.
 
 
 =head2 _request_id => Str

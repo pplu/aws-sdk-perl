@@ -48,13 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> QuotaCode => Str
 
-Identifies the service quota you want to select.
+The quota identifier.
 
 
 
 =head2 B<REQUIRED> ServiceCode => Str
 
-Specifies the service that you want to use.
+The service identifier.
 
 
 

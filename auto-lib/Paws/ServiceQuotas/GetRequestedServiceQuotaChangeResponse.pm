@@ -16,8 +16,7 @@ Paws::ServiceQuotas::GetRequestedServiceQuotaChangeResponse
 
 =head2 RequestedQuota => L<Paws::ServiceQuotas::RequestedServiceQuotaChange>
 
-Returns the C<RequestedServiceQuotaChange> object for the specific
-increase request.
+Information about the quota increase request.
 
 
 =head2 _request_id => Str

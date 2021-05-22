@@ -44,71 +44,69 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-A structure that contains the full set of details that define the
-service quota.
+Information about a quota.
 
 =head1 ATTRIBUTES
 
 
 =head2 Adjustable => Bool
 
-Specifies if the quota value can be increased.
+Indicates whether the quota value can be increased.
 
 
 =head2 ErrorReason => L<Paws::ServiceQuotas::ErrorReason>
 
-Specifies the C<ErrorCode> and C<ErrorMessage> when success isn't
-achieved.
+The error code and error reason.
 
 
 =head2 GlobalQuota => Bool
 
-Specifies if the quota is global.
+Indicates whether the quota is global.
 
 
 =head2 Period => L<Paws::ServiceQuotas::QuotaPeriod>
 
-Identifies the unit and value of how time is measured.
+The period of time.
 
 
 =head2 QuotaArn => Str
 
-The Amazon Resource Name (ARN) of the service quota.
+The Amazon Resource Name (ARN) of the quota.
 
 
 =head2 QuotaCode => Str
 
-The code identifier for the service quota specified.
+The quota identifier.
 
 
 =head2 QuotaName => Str
 
-The name identifier of the service quota.
+The quota name.
 
 
 =head2 ServiceCode => Str
 
-Specifies the service that you want to use.
+The service identifier.
 
 
 =head2 ServiceName => Str
 
-The name of the AWS service specified in the increase request.
+The service name.
 
 
 =head2 Unit => Str
 
-The unit of measurement for the value of the service quota.
+The unit of measurement.
 
 
 =head2 UsageMetric => L<Paws::ServiceQuotas::MetricInfo>
 
-Specifies the details about the measurement.
+Information about the measurement.
 
 
 =head2 Value => Num
 
-The value of service quota.
+The quota value.
 
 
 

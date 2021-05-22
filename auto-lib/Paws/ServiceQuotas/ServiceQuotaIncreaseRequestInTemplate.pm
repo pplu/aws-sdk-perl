@@ -40,53 +40,49 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-A structure that contains information about one service quota increase
-request.
+Information about a quota increase request.
 
 =head1 ATTRIBUTES
 
 
 =head2 AwsRegion => Str
 
-The AWS Region where the increase request occurs.
+The AWS Region.
 
 
 =head2 DesiredValue => Num
 
-Identifies the new, increased value of the service quota in the
-increase request.
+The new, increased value of the quota.
 
 
 =head2 GlobalQuota => Bool
 
-Specifies if the quota is a global quota.
+Indicates whether the quota is global.
 
 
 =head2 QuotaCode => Str
 
-The code identifier for the service quota specified in the increase
-request.
+The quota identifier.
 
 
 =head2 QuotaName => Str
 
-The name of the service quota in the increase request.
+The quota name.
 
 
 =head2 ServiceCode => Str
 
-The code identifier for the AWS service specified in the increase
-request.
+The service identifier.
 
 
 =head2 ServiceName => Str
 
-The name of the AWS service specified in the increase request.
+The service name.
 
 
 =head2 Unit => Str
 
-The unit of measure for the increase request.
+The unit of measurement.
 
 
 

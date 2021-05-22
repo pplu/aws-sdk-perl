@@ -55,37 +55,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 AwsRegion => Str
 
-Specifies the AWS Region for the quota that you want to use.
+The AWS Region.
 
 
 
 =head2 MaxResults => Int
 
-(Optional) Limits the number of results that you want to include in the
-response. If you don't include this parameter, the response defaults to
-a value that's specific to the operation. If additional items exist
-beyond the specified maximum, the C<NextToken> element is present and
-has a value (isn't null). Include that value as the C<NextToken>
-request parameter in the call to the operation to get the next part of
-the results. You should check C<NextToken> after every operation to
-ensure that you receive all of the results.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, if any, make another call with the token
+returned from this call.
 
 
 
 =head2 NextToken => Str
 
-(Optional) Use this parameter in a request if you receive a
-C<NextToken> response in a previous request that indicates that there's
-more output available. In a subsequent call, set it to the value of the
-previous call's C<NextToken> response to indicate where the output
-should continue from.
+The token for the next page of results.
 
 
 
 =head2 ServiceCode => Str
 
-The identifier for a service. When performing an operation, use the
-C<ServiceCode> to specify a particular service.
+The service identifier.
 
 
 

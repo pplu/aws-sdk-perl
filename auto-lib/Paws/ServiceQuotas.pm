@@ -85,6 +85,11 @@ package Paws::ServiceQuotas;
     my $call_object = $self->new_with_coercions('Paws::ServiceQuotas::ListServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceQuotas::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutServiceQuotaIncreaseRequestIntoTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceQuotas::PutServiceQuotaIncreaseRequestIntoTemplate', @_);
@@ -93,6 +98,16 @@ package Paws::ServiceQuotas;
   sub RequestServiceQuotaIncrease {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceQuotas::RequestServiceQuotaIncrease', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceQuotas::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceQuotas::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -236,7 +251,7 @@ package Paws::ServiceQuotas;
   }
 
 
-  sub operations { qw/AssociateServiceQuotaTemplate DeleteServiceQuotaIncreaseRequestFromTemplate DisassociateServiceQuotaTemplate GetAssociationForServiceQuotaTemplate GetAWSDefaultServiceQuota GetRequestedServiceQuotaChange GetServiceQuota GetServiceQuotaIncreaseRequestFromTemplate ListAWSDefaultServiceQuotas ListRequestedServiceQuotaChangeHistory ListRequestedServiceQuotaChangeHistoryByQuota ListServiceQuotaIncreaseRequestsInTemplate ListServiceQuotas ListServices PutServiceQuotaIncreaseRequestIntoTemplate RequestServiceQuotaIncrease / }
+  sub operations { qw/AssociateServiceQuotaTemplate DeleteServiceQuotaIncreaseRequestFromTemplate DisassociateServiceQuotaTemplate GetAssociationForServiceQuotaTemplate GetAWSDefaultServiceQuota GetRequestedServiceQuotaChange GetServiceQuota GetServiceQuotaIncreaseRequestFromTemplate ListAWSDefaultServiceQuotas ListRequestedServiceQuotaChangeHistory ListRequestedServiceQuotaChangeHistoryByQuota ListServiceQuotaIncreaseRequestsInTemplate ListServiceQuotas ListServices ListTagsForResource PutServiceQuotaIncreaseRequestIntoTemplate RequestServiceQuotaIncrease TagResource UntagResource / }
 
 1;
 
@@ -264,20 +279,11 @@ Paws::ServiceQuotas - Perl Interface to AWS Service Quotas
 
 =head1 DESCRIPTION
 
-Service Quotas is a web service that you can use to manage many of your
-AWS service quotas. Quotas, also referred to as limits, are the maximum
-values for a resource, item, or operation. This guide provide
-descriptions of the Service Quotas actions that you can call from an
-API. For the Service Quotas user guide, which explains how to use
-Service Quotas from the console, see What is Service Quotas
-(https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html).
-
-AWS provides SDKs that consist of libraries and sample code for
-programming languages and platforms (Java, Ruby, .NET, iOS, Android,
-etc...,). The SDKs provide a convenient way to create programmatic
-access to Service Quotas and AWS. For information about the AWS SDKs,
-including how to download and install them, see the Tools for Amazon
-Web Services (https://docs.aws.amazon.com/aws.amazon.com/tools) page.
+With Service Quotas, you can view and manage your quotas easily as your
+AWS workloads grow. Quotas, also referred to as limits, are the maximum
+number of resources that you can create in your AWS account. For more
+information, see the Service Quotas User Guide
+(https://docs.aws.amazon.com/servicequotas/latest/userguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicequotas-2019-06-24>
 
@@ -295,12 +301,11 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::AssociateService
 
 Returns: a L<Paws::ServiceQuotas::AssociateServiceQuotaTemplateResponse> instance
 
-Associates the Service Quotas template with your organization so that
-when new accounts are created in your organization, the template
-submits increase requests for the specified service quotas. Use the
-Service Quotas template to request an increase for any adjustable quota
-value. After you define the Service Quotas template, use this operation
-to associate, or enable, the template.
+Associates your quota request template with your organization. When a
+new account is created in your organization, the quota increase
+requests in the template are automatically applied to the account. You
+can add a quota increase request for any adjustable quota to your
+template.
 
 
 =head2 DeleteServiceQuotaIncreaseRequestFromTemplate
@@ -320,8 +325,8 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::DeleteServiceQuo
 
 Returns: a L<Paws::ServiceQuotas::DeleteServiceQuotaIncreaseRequestFromTemplateResponse> instance
 
-Removes a service quota increase request from the Service Quotas
-template.
+Deletes the quota increase request for the specified quota from your
+quota request template.
 
 
 =head2 DisassociateServiceQuotaTemplate
@@ -335,26 +340,10 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::DisassociateServ
 
 Returns: a L<Paws::ServiceQuotas::DisassociateServiceQuotaTemplateResponse> instance
 
-Disables the Service Quotas template. Once the template is disabled, it
-does not request quota increases for new accounts in your organization.
-Disabling the quota template does not apply the quota increase requests
-from the template.
-
-B<Related operations>
-
-=over
-
-=item *
-
-To enable the quota template, call AssociateServiceQuotaTemplate.
-
-=item *
-
-To delete a specific service quota from the template, use
-DeleteServiceQuotaIncreaseRequestFromTemplate.
-
-=back
-
+Disables your quota request template. After a template is disabled, the
+quota increase requests in the template are not applied to new accounts
+in your organization. Disabling a quota request template does not apply
+its quota increase requests.
 
 
 =head2 GetAssociationForServiceQuotaTemplate
@@ -368,9 +357,7 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::GetAssociationFo
 
 Returns: a L<Paws::ServiceQuotas::GetAssociationForServiceQuotaTemplateResponse> instance
 
-Retrieves the C<ServiceQuotaTemplateAssociationStatus> value from the
-service. Use this action to determine if the Service Quota template is
-associated, or enabled.
+Retrieves the status of the association for the quota request template.
 
 
 =head2 GetAWSDefaultServiceQuota
@@ -388,9 +375,8 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::GetAWSDefaultSer
 
 Returns: a L<Paws::ServiceQuotas::GetAWSDefaultServiceQuotaResponse> instance
 
-Retrieves the default service quotas values. The Value returned for
-each quota is the AWS default value, even if the quotas have been
-increased..
+Retrieves the default value for the specified quota. The default value
+does not reflect any quota increases.
 
 
 =head2 GetRequestedServiceQuotaChange
@@ -406,7 +392,7 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::GetRequestedServ
 
 Returns: a L<Paws::ServiceQuotas::GetRequestedServiceQuotaChangeResponse> instance
 
-Retrieves the details for a particular increase request.
+Retrieves information about the specified quota increase request.
 
 
 =head2 GetServiceQuota
@@ -424,11 +410,9 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::GetServiceQuota>
 
 Returns: a L<Paws::ServiceQuotas::GetServiceQuotaResponse> instance
 
-Returns the details for the specified service quota. This operation
-provides a different Value than the C<GetAWSDefaultServiceQuota>
-operation. This operation returns the applied value for each quota.
-C<GetAWSDefaultServiceQuota> returns the default AWS value for each
-quota.
+Retrieves the applied quota value for the specified quota. For some
+quotas, only the default values are available. If the applied quota
+value is not available for a quota, the quota is not retrieved.
 
 
 =head2 GetServiceQuotaIncreaseRequestFromTemplate
@@ -448,8 +432,8 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::GetServiceQuotaI
 
 Returns: a L<Paws::ServiceQuotas::GetServiceQuotaIncreaseRequestFromTemplateResponse> instance
 
-Returns the details of the service quota increase request in your
-template.
+Retrieves information about the specified quota increase request in
+your quota request template.
 
 
 =head2 ListAWSDefaultServiceQuotas
@@ -469,19 +453,8 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::ListAWSDefaultSe
 
 Returns: a L<Paws::ServiceQuotas::ListAWSDefaultServiceQuotasResponse> instance
 
-Lists all default service quotas for the specified AWS service or all
-AWS services. ListAWSDefaultServiceQuotas is similar to
-ListServiceQuotas except for the Value object. The Value object
-returned by C<ListAWSDefaultServiceQuotas> is the default value
-assigned by AWS. This request returns a list of all service quotas for
-the specified service. The listing of each you'll see the default
-values are the values that AWS provides for the quotas.
-
-Always check the C<NextToken> response parameter when calling any of
-the C<List*> operations. These operations can return an unexpected list
-of results, even when there are more results available. When this
-happens, the C<NextToken> response parameter contains a value to pass
-the next call to the same API to request the next part of the list.
+Lists the default values for the quotas for the specified AWS service.
+A default value does not reflect any quota increases.
 
 
 =head2 ListRequestedServiceQuotaChangeHistory
@@ -503,7 +476,7 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::ListRequestedSer
 
 Returns: a L<Paws::ServiceQuotas::ListRequestedServiceQuotaChangeHistoryResponse> instance
 
-Requests a list of the changes to quotas for a service.
+Retrieves the quota increase requests for the specified service.
 
 
 =head2 ListRequestedServiceQuotaChangeHistoryByQuota
@@ -527,11 +500,7 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::ListRequestedSer
 
 Returns: a L<Paws::ServiceQuotas::ListRequestedServiceQuotaChangeHistoryByQuotaResponse> instance
 
-Requests a list of the changes to specific service quotas. This command
-provides additional granularity over the
-C<ListRequestedServiceQuotaChangeHistory> command. Once a quota change
-request has reached C<CASE_CLOSED, APPROVED,> or C<DENIED>, the history
-has been kept for 90 days.
+Retrieves the quota increase requests for the specified quota.
 
 
 =head2 ListServiceQuotaIncreaseRequestsInTemplate
@@ -553,7 +522,8 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::ListServiceQuota
 
 Returns: a L<Paws::ServiceQuotas::ListServiceQuotaIncreaseRequestsInTemplateResponse> instance
 
-Returns a list of the quota increase requests in the template.
+Lists the quota increase requests in the specified quota request
+template.
 
 
 =head2 ListServiceQuotas
@@ -573,15 +543,9 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::ListServiceQuota
 
 Returns: a L<Paws::ServiceQuotas::ListServiceQuotasResponse> instance
 
-Lists all service quotas for the specified AWS service. This request
-returns a list of the service quotas for the specified service. you'll
-see the default values are the values that AWS provides for the quotas.
-
-Always check the C<NextToken> response parameter when calling any of
-the C<List*> operations. These operations can return an unexpected list
-of results, even when there are more results available. When this
-happens, the C<NextToken> response parameter contains a value to pass
-the next call to the same API to request the next part of the list.
+Lists the applied quota values for the specified AWS service. For some
+quotas, only the default values are available. If the applied quota
+value is not available for a quota, the quota is not retrieved.
 
 
 =head2 ListServices
@@ -599,9 +563,24 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::ListServices>
 
 Returns: a L<Paws::ServiceQuotas::ListServicesResponse> instance
 
-Lists the AWS services available in Service Quotas. Not all AWS
-services are available in Service Quotas. To list the see the list of
-the service quotas for a specific service, use ListServiceQuotas.
+Lists the names and codes for the services integrated with Service
+Quotas.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceQuotas::ListTagsForResource>
+
+Returns: a L<Paws::ServiceQuotas::ListTagsForResourceResponse> instance
+
+Returns a list of the tags assigned to the specified applied quota.
 
 
 =head2 PutServiceQuotaIncreaseRequestIntoTemplate
@@ -623,11 +602,7 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::PutServiceQuotaI
 
 Returns: a L<Paws::ServiceQuotas::PutServiceQuotaIncreaseRequestIntoTemplateResponse> instance
 
-Defines and adds a quota to the service quota template. To add a quota
-to the template, you must provide the C<ServiceCode>, C<QuotaCode>,
-C<AwsRegion>, and C<DesiredValue>. Once you add a quota to the
-template, use ListServiceQuotaIncreaseRequestsInTemplate to see the
-list of quotas in the template.
+Adds a quota increase request to your quota request template.
 
 
 =head2 RequestServiceQuotaIncrease
@@ -647,9 +622,45 @@ Each argument is described in detail in: L<Paws::ServiceQuotas::RequestServiceQu
 
 Returns: a L<Paws::ServiceQuotas::RequestServiceQuotaIncreaseResponse> instance
 
-Retrieves the details of a service quota increase request. The response
-to this command provides the details in the RequestedServiceQuotaChange
-object.
+Submits a quota increase request for the specified quota.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::ServiceQuotas::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceQuotas::TagResource>
+
+Returns: a L<Paws::ServiceQuotas::TagResourceResponse> instance
+
+Adds tags to the specified applied quota. You can include one or more
+tags to add to the quota.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceQuotas::UntagResource>
+
+Returns: a L<Paws::ServiceQuotas::UntagResourceResponse> instance
+
+Removes tags from the specified applied quota. You can specify one or
+more tags to remove.
 
 
 

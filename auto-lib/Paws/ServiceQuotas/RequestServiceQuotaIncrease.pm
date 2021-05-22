@@ -50,19 +50,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> DesiredValue => Num
 
-Specifies the value submitted in the service quota increase request.
+The new, increased value for the quota.
 
 
 
 =head2 B<REQUIRED> QuotaCode => Str
 
-Specifies the service quota that you want to use.
+The quota identifier.
 
 
 
 =head2 B<REQUIRED> ServiceCode => Str
 
-Specifies the service that you want to use.
+The service identifier.
 
 
 

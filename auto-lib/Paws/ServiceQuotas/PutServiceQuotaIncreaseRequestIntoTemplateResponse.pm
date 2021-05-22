@@ -16,8 +16,7 @@ Paws::ServiceQuotas::PutServiceQuotaIncreaseRequestIntoTemplateResponse
 
 =head2 ServiceQuotaIncreaseRequestInTemplate => L<Paws::ServiceQuotas::ServiceQuotaIncreaseRequestInTemplate>
 
-A structure that contains information about one service quota increase
-request.
+Information about the quota increase request.
 
 
 =head2 _request_id => Str

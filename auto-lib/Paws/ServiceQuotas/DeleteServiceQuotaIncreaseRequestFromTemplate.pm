@@ -45,19 +45,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> AwsRegion => Str
 
-Specifies the AWS Region for the quota that you want to delete.
+The AWS Region.
 
 
 
 =head2 B<REQUIRED> QuotaCode => Str
 
-Specifies the code for the quota that you want to delete.
+The quota identifier.
 
 
 
 =head2 B<REQUIRED> ServiceCode => Str
 
-Specifies the code for the service that you want to delete.
+The service identifier.
 
 
 

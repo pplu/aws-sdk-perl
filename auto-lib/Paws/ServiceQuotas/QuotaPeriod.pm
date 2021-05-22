@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-A structure that contains information about the quota period.
+Information about the quota period.
 
 =head1 ATTRIBUTES
 
 
 =head2 PeriodUnit => Str
 
-The time unit of a period.
+The time unit.
 
 
 =head2 PeriodValue => Int
 
-The value of a period.
+The value.
 
 
 

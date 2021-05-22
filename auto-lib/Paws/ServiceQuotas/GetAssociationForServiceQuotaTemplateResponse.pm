@@ -16,9 +16,9 @@ Paws::ServiceQuotas::GetAssociationForServiceQuotaTemplateResponse
 
 =head2 ServiceQuotaTemplateAssociationStatus => Str
 
-Specifies whether the template is C<ASSOCIATED> or C<DISASSOCIATED>. If
-the template is C<ASSOCIATED>, then it requests service quota increases
-for all new accounts created in your organization.
+The association status. If the status is C<ASSOCIATED>, the quota
+increase requests in the template are automatically applied to new
+accounts in your organization.
 
 Valid values are: C<"ASSOCIATED">, C<"DISASSOCIATED">
 =head2 _request_id => Str
