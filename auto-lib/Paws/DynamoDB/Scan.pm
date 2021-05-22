@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # and song title are returned.
     my $ScanOutput = $dynamodb->Scan(
       'ExpressionAttributeNames' => {
-        'AT' => 'AlbumTitle',
-        'ST' => 'SongTitle'
+        '#AT' => 'AlbumTitle',
+        '#ST' => 'SongTitle'
       },
       'ExpressionAttributeValues' => {
         ':a' => {

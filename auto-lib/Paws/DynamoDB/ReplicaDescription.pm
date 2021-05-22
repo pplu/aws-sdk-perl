@@ -5,6 +5,7 @@ package Paws::DynamoDB::ReplicaDescription;
   has KMSMasterKeyId => (is => 'ro', isa => 'Str');
   has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputOverride');
   has RegionName => (is => 'ro', isa => 'Str');
+  has ReplicaInaccessibleDateTime => (is => 'ro', isa => 'Str');
   has ReplicaStatus => (is => 'ro', isa => 'Str');
   has ReplicaStatusDescription => (is => 'ro', isa => 'Str');
   has ReplicaStatusPercentProgress => (is => 'ro', isa => 'Str');
@@ -66,6 +67,12 @@ source table's provisioned throughput settings.
 The name of the Region.
 
 
+=head2 ReplicaInaccessibleDateTime => Str
+
+The time at which the replica was first detected as inaccessible. To
+determine cause of inaccessibility check the C<ReplicaStatus> property.
+
+
 =head2 ReplicaStatus => Str
 
 The current state of the replica:
@@ -87,6 +94,25 @@ C<DELETING> - The replica is being deleted.
 =item *
 
 C<ACTIVE> - The replica is ready for use.
+
+=item *
+
+C<REGION_DISABLED> - The replica is inaccessible because the AWS Region
+has been disabled.
+
+If the AWS Region remains inaccessible for more than 20 hours, DynamoDB
+will remove this replica from the replication group. The replica will
+not be deleted and replication will stop from and to this region.
+
+=item *
+
+C<INACCESSIBLE_ENCRYPTION_CREDENTIALS > - The AWS KMS key used to
+encrypt the table is inaccessible.
+
+If the AWS KMS key remains inaccessible for more than 20 hours,
+DynamoDB will remove this replica from the replication group. The
+replica will not be deleted and replication will stop from and to this
+region.
 
 =back
 

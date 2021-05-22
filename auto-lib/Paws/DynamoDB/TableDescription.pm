@@ -187,8 +187,9 @@ index.
 
 =item *
 
-C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes is in C<NonKeyAttributes>.
+C<INCLUDE> - In addition to the attributes described in C<KEYS_ONLY>,
+the secondary index will include other non-key attributes that you
+specify.
 
 =item *
 

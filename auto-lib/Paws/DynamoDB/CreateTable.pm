@@ -318,7 +318,7 @@ property. If you set BillingMode as C<PAY_PER_REQUEST>, you cannot
 specify this property.
 
 For current minimum and maximum provisioned throughput values, see
-Limits
+Service, Account, and Table Quotas
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 

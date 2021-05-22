@@ -38,7 +38,7 @@ Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
 
 For current minimum and maximum provisioned throughput values, see
-Limits
+Service, Account, and Table Quotas
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
