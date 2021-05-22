@@ -13,6 +13,7 @@ package Paws::ApiGateway::Integration;
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestParameters');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestTemplates');
   has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
+  has TlsConfig => (is => 'ro', isa => 'Paws::ApiGateway::TlsConfig', traits => ['NameInRequest'], request_name => 'tlsConfig');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
   has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
@@ -37,9 +38,10 @@ specified for Method C<requestParameters>.
 
 =head2 CacheNamespace => Str
 
-An API-specific tag group of related cached parameters. To be valid
-values for C<cacheKeyParameters>, these parameters must also be
-specified for Method C<requestParameters>.
+Specifies a group of related cached parameters. By default, API Gateway
+uses the resource ID as the C<cacheNamespace>. You can specify the same
+C<cacheNamespace> across resources to return the same cached data for
+requests to different resources.
 
 
 =head2 ConnectionId => Str
@@ -177,6 +179,11 @@ client. The content type value is the key in this map, and the template
 
 Custom timeout between 50 and 29,000 milliseconds. The default value is
 29,000 milliseconds or 29 seconds.
+
+
+=head2 TlsConfig => L<Paws::ApiGateway::TlsConfig>
+
+Specifies the TLS configuration for an integration.
 
 
 =head2 Type => Str

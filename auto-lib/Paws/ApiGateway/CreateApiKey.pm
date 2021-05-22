@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                   # OPTIONAL
-      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
-      Value => 'MyString',                      # OPTIONAL
+      Tags  => { 'MyString' => 'MyString', },    # OPTIONAL
+      Value => 'MyString',                       # OPTIONAL
     );
 
     # Results:
@@ -94,7 +94,8 @@ Specifies whether the ApiKey can be used by callers.
 =head2 GenerateDistinctId => Bool
 
 Specifies whether (C<true>) or not (C<false>) the key identifier is
-distinct from the created API key value.
+distinct from the created API key value. This parameter is deprecated
+and should not be used.
 
 
 

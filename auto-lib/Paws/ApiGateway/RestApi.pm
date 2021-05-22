@@ -5,6 +5,7 @@ package Paws::ApiGateway::RestApi;
   has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DisableExecuteApiEndpoint => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableExecuteApiEndpoint');
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
@@ -57,6 +58,15 @@ The timestamp when the API was created.
 =head2 Description => Str
 
 The API's description.
+
+
+=head2 DisableExecuteApiEndpoint => Bool
+
+Specifies whether clients can invoke your API by using the default
+C<execute-api> endpoint. By default, clients can invoke your API with
+the default https://{api_id}.execute-api.{region}.amazonaws.com
+endpoint. To require that clients use a custom domain name to invoke
+your API, disable the default endpoint.
 
 
 =head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>

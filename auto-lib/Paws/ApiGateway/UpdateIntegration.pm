@@ -60,6 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestParameters    = $Integration->RequestParameters;
     my $RequestTemplates     = $Integration->RequestTemplates;
     my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $TlsConfig            = $Integration->TlsConfig;
     my $Type                 = $Integration->Type;
     my $Uri                  = $Integration->Uri;
 

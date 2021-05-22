@@ -83,7 +83,9 @@ and the value is a Boolean.
 Specifies the logging level for this method, which affects the log
 entries pushed to Amazon CloudWatch Logs. The PATCH path for this
 setting is C</{method_setting_key}/logging/loglevel>, and the available
-levels are C<OFF>, C<ERROR>, and C<INFO>.
+levels are C<OFF>, C<ERROR>, and C<INFO>. Choose C<ERROR> to write only
+error-level entries to CloudWatch Logs, or choose C<INFO> to include
+all C<ERROR> events as well as extra informational events.
 
 
 =head2 MetricsEnabled => Bool

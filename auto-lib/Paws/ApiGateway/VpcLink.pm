@@ -57,9 +57,9 @@ resource.
 
 =head2 TargetArns => ArrayRef[Str|Undef]
 
-The ARNs of network load balancers of the VPC targeted by the VPC link.
-The network load balancers must be owned by the same AWS account of the
-API owner.
+The ARN of the network load balancer of the VPC targeted by the VPC
+link. The network load balancer must be owned by the same AWS account
+of the API owner.
 
 
 =head2 _request_id => Str

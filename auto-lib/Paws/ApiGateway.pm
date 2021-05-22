@@ -1257,6 +1257,8 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item [EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>]
 
+=item [MutualTlsAuthentication => L<Paws::ApiGateway::MutualTlsAuthenticationInput>]
+
 =item [RegionalCertificateArn => Str]
 
 =item [RegionalCertificateName => Str]
@@ -1354,6 +1356,8 @@ Creates a Resource resource.
 =item [CloneFrom => Str]
 
 =item [Description => Str]
+
+=item [DisableExecuteApiEndpoint => Bool]
 
 =item [EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>]
 
@@ -2948,6 +2952,8 @@ type and status code on the given RestApi.
 =item [RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>]
 
 =item [TimeoutInMillis => Int]
+
+=item [TlsConfig => L<Paws::ApiGateway::TlsConfig>]
 
 =item [Uri => Str]
 

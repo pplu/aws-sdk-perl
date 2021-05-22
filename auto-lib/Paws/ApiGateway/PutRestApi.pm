@@ -41,18 +41,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiKeySource           = $RestApi->ApiKeySource;
-    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
-    my $CreatedDate            = $RestApi->CreatedDate;
-    my $Description            = $RestApi->Description;
-    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
-    my $Id                     = $RestApi->Id;
-    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
-    my $Name                   = $RestApi->Name;
-    my $Policy                 = $RestApi->Policy;
-    my $Tags                   = $RestApi->Tags;
-    my $Version                = $RestApi->Version;
-    my $Warnings               = $RestApi->Warnings;
+    my $ApiKeySource              = $RestApi->ApiKeySource;
+    my $BinaryMediaTypes          = $RestApi->BinaryMediaTypes;
+    my $CreatedDate               = $RestApi->CreatedDate;
+    my $Description               = $RestApi->Description;
+    my $DisableExecuteApiEndpoint = $RestApi->DisableExecuteApiEndpoint;
+    my $EndpointConfiguration     = $RestApi->EndpointConfiguration;
+    my $Id                        = $RestApi->Id;
+    my $MinimumCompressionSize    = $RestApi->MinimumCompressionSize;
+    my $Name                      = $RestApi->Name;
+    my $Policy                    = $RestApi->Policy;
+    my $Tags                      = $RestApi->Tags;
+    my $Version                   = $RestApi->Version;
+    my $Warnings                  = $RestApi->Warnings;
 
     # Returns a L<Paws::ApiGateway::RestApi> object.
 
@@ -66,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 [Required] The PUT request body containing external API definitions.
 Currently, only OpenAPI definition JSON/YAML files are supported. The
-maximum size of the API definition file is 2MB.
+maximum size of the API definition file is 6MB.
 
 
 

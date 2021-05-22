@@ -15,6 +15,7 @@ package Paws::ApiGateway::PutIntegration;
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
+  has TlsConfig => (is => 'ro', isa => 'Paws::ApiGateway::TlsConfig', traits => ['NameInRequest'], request_name => 'tlsConfig');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
   has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
@@ -59,7 +60,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RequestParameters     => { 'MyString' => 'MyString', },    # OPTIONAL
       RequestTemplates      => { 'MyString' => 'MyString', },    # OPTIONAL
       TimeoutInMillis       => 1,                                # OPTIONAL
-      Uri                   => 'MyString',                       # OPTIONAL
+      TlsConfig             => {
+        InsecureSkipVerification => 1,                           # OPTIONAL
+      },    # OPTIONAL
+      Uri => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -75,6 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestParameters    = $Integration->RequestParameters;
     my $RequestTemplates     = $Integration->RequestTemplates;
     my $TimeoutInMillis      = $Integration->TimeoutInMillis;
+    my $TlsConfig            = $Integration->TlsConfig;
     my $Type                 = $Integration->Type;
     my $Uri                  = $Integration->Uri;
 
@@ -88,13 +93,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
-An API-specific tag group of related cached parameters.
+A list of request parameters whose values API Gateway caches. To be
+valid values for C<cacheKeyParameters>, these parameters must also be
+specified for Method C<requestParameters>.
 
 
 
 =head2 CacheNamespace => Str
 
-A list of request parameters whose values are to be cached.
+Specifies a group of related cached parameters. By default, API Gateway
+uses the resource ID as the C<cacheNamespace>. You can specify the same
+C<cacheNamespace> across resources to return the same cached data for
+requests to different resources.
 
 
 
@@ -232,6 +242,12 @@ client. The content type value is the key in this map, and the template
 
 Custom timeout between 50 and 29,000 milliseconds. The default value is
 29,000 milliseconds or 29 seconds.
+
+
+
+=head2 TlsConfig => L<Paws::ApiGateway::TlsConfig>
+
+
 
 
 

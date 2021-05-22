@@ -54,10 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Offset => 1,                # OPTIONAL
         Period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
       },    # OPTIONAL
-      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
+      Tags     => { 'MyString' => 'MyString', },    # OPTIONAL
       Throttle => {
-        BurstLimit => 1,                        # OPTIONAL
-        RateLimit  => 1,                        # OPTIONAL
+        BurstLimit => 1,                            # OPTIONAL
+        RateLimit  => 1,                            # OPTIONAL
       },    # OPTIONAL
     );
 

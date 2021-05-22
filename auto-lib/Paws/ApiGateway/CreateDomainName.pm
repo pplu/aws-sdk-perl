@@ -8,6 +8,7 @@ package Paws::ApiGateway::CreateDomainName;
   has CertificatePrivateKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePrivateKey');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
+  has MutualTlsAuthentication => (is => 'ro', isa => 'Paws::ApiGateway::MutualTlsAuthenticationInput', traits => ['NameInRequest'], request_name => 'mutualTlsAuthentication');
   has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
   has SecurityPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityPolicy');
@@ -51,6 +52,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                    # OPTIONAL
         VpcEndpointIds => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
+      MutualTlsAuthentication => {
+        TruststoreUri     => 'MyString',
+        TruststoreVersion => 'MyString',
+      },    # OPTIONAL
       RegionalCertificateArn  => 'MyString',                       # OPTIONAL
       RegionalCertificateName => 'MyString',                       # OPTIONAL
       SecurityPolicy          => 'TLS_1_0',                        # OPTIONAL
@@ -67,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DomainNameStatus         = $DomainName->DomainNameStatus;
     my $DomainNameStatusMessage  = $DomainName->DomainNameStatusMessage;
     my $EndpointConfiguration    = $DomainName->EndpointConfiguration;
+    my $MutualTlsAuthentication  = $DomainName->MutualTlsAuthentication;
     my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
     my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
     my $RegionalDomainName       = $DomainName->RegionalDomainName;
@@ -134,6 +140,12 @@ private key.
 
 The endpoint configuration of this DomainName showing the endpoint
 types of the domain name.
+
+
+
+=head2 MutualTlsAuthentication => L<Paws::ApiGateway::MutualTlsAuthenticationInput>
+
+
 
 
 
