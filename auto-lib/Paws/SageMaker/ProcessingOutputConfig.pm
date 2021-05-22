@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The output configuration for the processing job.
+Configuration for uploading output from the processing container.
 
 =head1 ATTRIBUTES
 
@@ -49,7 +49,8 @@ C<KmsKeyId> is applied to all outputs.
 
 =head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::SageMaker::ProcessingOutput>]
 
-Output configuration information for a processing job.
+An array of outputs configuring the data to upload from the processing
+container.
 
 
 

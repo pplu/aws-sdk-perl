@@ -28,23 +28,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $DescribeModelPackageOutput = $api . sagemaker->DescribeModelPackage(
-      ModelPackageName => 'MyArnOrName',
+      ModelPackageName => 'MyVersionedArnOrName',
 
     );
 
     # Results:
+    my $ApprovalDescription = $DescribeModelPackageOutput->ApprovalDescription;
     my $CertifyForMarketplace =
       $DescribeModelPackageOutput->CertifyForMarketplace;
+    my $CreatedBy    = $DescribeModelPackageOutput->CreatedBy;
     my $CreationTime = $DescribeModelPackageOutput->CreationTime;
     my $InferenceSpecification =
       $DescribeModelPackageOutput->InferenceSpecification;
-    my $ModelPackageArn = $DescribeModelPackageOutput->ModelPackageArn;
+    my $LastModifiedBy      = $DescribeModelPackageOutput->LastModifiedBy;
+    my $LastModifiedTime    = $DescribeModelPackageOutput->LastModifiedTime;
+    my $MetadataProperties  = $DescribeModelPackageOutput->MetadataProperties;
+    my $ModelApprovalStatus = $DescribeModelPackageOutput->ModelApprovalStatus;
+    my $ModelMetrics        = $DescribeModelPackageOutput->ModelMetrics;
+    my $ModelPackageArn     = $DescribeModelPackageOutput->ModelPackageArn;
     my $ModelPackageDescription =
       $DescribeModelPackageOutput->ModelPackageDescription;
+    my $ModelPackageGroupName =
+      $DescribeModelPackageOutput->ModelPackageGroupName;
     my $ModelPackageName   = $DescribeModelPackageOutput->ModelPackageName;
     my $ModelPackageStatus = $DescribeModelPackageOutput->ModelPackageStatus;
     my $ModelPackageStatusDetails =
       $DescribeModelPackageOutput->ModelPackageStatusDetails;
+    my $ModelPackageVersion = $DescribeModelPackageOutput->ModelPackageVersion;
     my $SourceAlgorithmSpecification =
       $DescribeModelPackageOutput->SourceAlgorithmSpecification;
     my $ValidationSpecification =

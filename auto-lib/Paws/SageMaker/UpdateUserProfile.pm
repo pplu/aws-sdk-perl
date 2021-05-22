@@ -36,16 +36,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExecutionRole            => 'MyRoleArn',  # min: 20, max: 2048; OPTIONAL
         JupyterServerAppSettings => {
           DefaultResourceSpec => {
-            EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-            InstanceType   => 'system'
+            InstanceType => 'system'
             , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+            SageMakerImageArn => 'MyImageArn',    # max: 256; OPTIONAL
+            SageMakerImageVersionArn =>
+              'MyImageVersionArn',                # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         KernelGatewayAppSettings => {
+          CustomImages => [
+            {
+              AppImageConfigName => 'MyAppImageConfigName',    # max: 63
+              ImageName          => 'MyImageName',             # min: 1, max: 63
+              ImageVersionNumber => 1,                         # OPTIONAL
+            },
+            ...
+          ],    # max: 30; OPTIONAL
           DefaultResourceSpec => {
-            EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-            InstanceType   => 'system'
+            InstanceType => 'system'
             , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+            SageMakerImageArn => 'MyImageArn',    # max: 256; OPTIONAL
+            SageMakerImageVersionArn =>
+              'MyImageVersionArn',                # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         SecurityGroups => [
@@ -59,9 +71,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         TensorBoardAppSettings => {
           DefaultResourceSpec => {
-            EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-            InstanceType   => 'system'
+            InstanceType => 'system'
             , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+            SageMakerImageArn => 'MyImageArn',    # max: 256; OPTIONAL
+            SageMakerImageVersionArn =>
+              'MyImageVersionArn',                # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL

@@ -2,6 +2,7 @@
 package Paws::SageMaker::CreatePresignedDomainUrl;
   use Moose;
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
+  has ExpiresInSeconds => (is => 'ro', isa => 'Int');
   has SessionExpirationDurationInSeconds => (is => 'ro', isa => 'Int');
   has UserProfileName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $api . sagemaker->CreatePresignedDomainUrl(
       DomainId                           => 'MyDomainId',
       UserProfileName                    => 'MyUserProfileName',
+      ExpiresInSeconds                   => 1,                     # OPTIONAL
       SessionExpirationDurationInSeconds => 1,                     # OPTIONAL
       );
 
@@ -53,9 +55,17 @@ The domain ID.
 
 
 
+=head2 ExpiresInSeconds => Int
+
+The number of seconds until the pre-signed URL expires. This value
+defaults to 300.
+
+
+
 =head2 SessionExpirationDurationInSeconds => Int
 
-The session expiration duration in seconds.
+The session expiration duration in seconds. This value defaults to
+43200.
 
 
 

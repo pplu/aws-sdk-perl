@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The app's details.
+Details about an Amazon SageMaker app.
 
 =head1 ATTRIBUTES
 

@@ -6,6 +6,7 @@ package Paws::SageMaker::CreateCompilationJob;
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -36,22 +37,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InputConfig        => {
         DataInputConfig => 'MyDataInputConfig',    # min: 1, max: 1024
         Framework       => 'TENSORFLOW'
-        ,    # values: TENSORFLOW, KERAS, MXNET, ONNX, PYTORCH, XGBOOST
-        S3Uri => 'MyS3Uri',    # max: 1024
-
+        , # values: TENSORFLOW, KERAS, MXNET, ONNX, PYTORCH, XGBOOST, TFLITE, DARKNET, SKLEARN
+        S3Uri            => 'MyS3Uri',               # max: 1024
+        FrameworkVersion => 'MyFrameworkVersion',    # min: 3, max: 10; OPTIONAL
       },
       OutputConfig => {
-        S3OutputLocation => 'MyS3Uri',    # max: 1024
+        S3OutputLocation => 'MyS3Uri',             # max: 1024
+        CompilerOptions  => 'MyCompilerOptions',   # min: 3, max: 1024; OPTIONAL
+        KmsKeyId         => 'MyKmsKeyId',          # max: 2048; OPTIONAL
         TargetDevice     => 'lambda'
-        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, ml_inf1, jetson_tx1, jetson_tx2, jetson_nano, rasp3b, deeplens, rk3399, rk3288, aisage, sbe_c, qcs605, qcs603
-
+        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, ml_g4dn, ml_inf1, ml_eia2, jetson_tx1, jetson_tx2, jetson_nano, jetson_xavier, rasp3b, imx8qm, deeplens, rk3399, rk3288, aisage, sbe_c, qcs605, qcs603, sitara_am57x, amba_cv22, x86_win32, x86_win64, coreml, jacinto_tda4vm; OPTIONAL
+        TargetPlatform => {
+          Arch => 'X86_64',   # values: X86_64, X86, ARM64, ARM_EABI, ARM_EABIHF
+          Os   => 'ANDROID',  # values: ANDROID, LINUX
+          Accelerator =>
+            'INTEL_GRAPHICS',   # values: INTEL_GRAPHICS, MALI, NVIDIA; OPTIONAL
+        },    # OPTIONAL
       },
       RoleArn           => 'MyRoleArn',
       StoppingCondition => {
         MaxRuntimeInSeconds  => 1,    # min: 1; OPTIONAL
         MaxWaitTimeInSeconds => 1,    # min: 1; OPTIONAL
       },
+      Tags => [
+        {
+          Key   => 'MyTagKey',        # min: 1, max: 128
+          Value => 'MyTagValue',      # max: 256
 
+        },
+        ...
+      ],                              # OPTIONAL
     );
 
     # Results:
@@ -127,6 +142,15 @@ Roles.
 Specifies a limit to how long a model compilation job can run. When the
 job reaches the time limit, Amazon SageMaker ends the compilation job.
 Use this API to cap model training costs.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+
+An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

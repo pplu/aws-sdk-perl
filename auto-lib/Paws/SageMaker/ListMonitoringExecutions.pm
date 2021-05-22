@@ -7,7 +7,9 @@ package Paws::SageMaker::ListMonitoringExecutions;
   has LastModifiedTimeAfter => (is => 'ro', isa => 'Str');
   has LastModifiedTimeBefore => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
+  has MonitoringJobDefinitionName => (is => 'ro', isa => 'Str');
   has MonitoringScheduleName => (is => 'ro', isa => 'Str');
+  has MonitoringTypeEquals => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has ScheduledTimeAfter => (is => 'ro', isa => 'Str');
   has ScheduledTimeBefore => (is => 'ro', isa => 'Str');
@@ -41,19 +43,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListMonitoringExecutionsResponse =
       $api . sagemaker->ListMonitoringExecutions(
-      CreationTimeAfter      => '1970-01-01T01:00:00',         # OPTIONAL
-      CreationTimeBefore     => '1970-01-01T01:00:00',         # OPTIONAL
-      EndpointName           => 'MyEndpointName',              # OPTIONAL
-      LastModifiedTimeAfter  => '1970-01-01T01:00:00',         # OPTIONAL
-      LastModifiedTimeBefore => '1970-01-01T01:00:00',         # OPTIONAL
-      MaxResults             => 1,                             # OPTIONAL
-      MonitoringScheduleName => 'MyMonitoringScheduleName',    # OPTIONAL
-      NextToken              => 'MyNextToken',                 # OPTIONAL
-      ScheduledTimeAfter     => '1970-01-01T01:00:00',         # OPTIONAL
-      ScheduledTimeBefore    => '1970-01-01T01:00:00',         # OPTIONAL
-      SortBy                 => 'CreationTime',                # OPTIONAL
-      SortOrder              => 'Ascending',                   # OPTIONAL
-      StatusEquals           => 'Pending',                     # OPTIONAL
+      CreationTimeAfter           => '1970-01-01T01:00:00',           # OPTIONAL
+      CreationTimeBefore          => '1970-01-01T01:00:00',           # OPTIONAL
+      EndpointName                => 'MyEndpointName',                # OPTIONAL
+      LastModifiedTimeAfter       => '1970-01-01T01:00:00',           # OPTIONAL
+      LastModifiedTimeBefore      => '1970-01-01T01:00:00',           # OPTIONAL
+      MaxResults                  => 1,                               # OPTIONAL
+      MonitoringJobDefinitionName => 'MyMonitoringJobDefinitionName', # OPTIONAL
+      MonitoringScheduleName      => 'MyMonitoringScheduleName',      # OPTIONAL
+      MonitoringTypeEquals        => 'DataQuality',                   # OPTIONAL
+      NextToken                   => 'MyNextToken',                   # OPTIONAL
+      ScheduledTimeAfter          => '1970-01-01T01:00:00',           # OPTIONAL
+      ScheduledTimeBefore         => '1970-01-01T01:00:00',           # OPTIONAL
+      SortBy                      => 'CreationTime',                  # OPTIONAL
+      SortOrder                   => 'Ascending',                     # OPTIONAL
+      StatusEquals                => 'Pending',                       # OPTIONAL
       );
 
     # Results:
@@ -106,11 +110,25 @@ is 10.
 
 
 
+=head2 MonitoringJobDefinitionName => Str
+
+Gets a list of the monitoring job runs of the specified monitoring job
+definitions.
+
+
+
 =head2 MonitoringScheduleName => Str
 
 Name of a specific schedule to fetch jobs for.
 
 
+
+=head2 MonitoringTypeEquals => Str
+
+A filter that returns only the monitoring job runs of the specified
+monitoring type.
+
+Valid values are: C<"DataQuality">, C<"ModelQuality">, C<"ModelBias">, C<"ModelExplainability">
 
 =head2 NextToken => Str
 

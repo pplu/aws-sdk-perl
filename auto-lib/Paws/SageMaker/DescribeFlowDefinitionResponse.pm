@@ -8,6 +8,7 @@ package Paws::SageMaker::DescribeFlowDefinitionResponse;
   has FlowDefinitionStatus => (is => 'ro', isa => 'Str', required => 1);
   has HumanLoopActivationConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopActivationConfig');
   has HumanLoopConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopConfig', required => 1);
+  has HumanLoopRequestSource => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopRequestSource');
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::FlowDefinitionOutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -29,7 +30,7 @@ The timestamp when the flow definition was created.
 
 =head2 FailureReason => Str
 
-
+The reason your flow definition failed.
 
 
 =head2 B<REQUIRED> FlowDefinitionArn => Str
@@ -46,7 +47,7 @@ The Amazon Resource Name (ARN) of the flow definition.
 
 The status of the flow definition. Valid values are listed below.
 
-Valid values are: C<"Initializing">, C<"Active">, C<"Failed">, C<"Deleting">, C<"Deleted">
+Valid values are: C<"Initializing">, C<"Active">, C<"Failed">, C<"Deleting">
 =head2 HumanLoopActivationConfig => L<Paws::SageMaker::HumanLoopActivationConfig>
 
 An object containing information about what triggers a human review
@@ -57,6 +58,13 @@ workflow.
 
 An object containing information about who works on the task, the
 workforce task price, and other task details.
+
+
+=head2 HumanLoopRequestSource => L<Paws::SageMaker::HumanLoopRequestSource>
+
+Container for configuring the source of human task requests. Used to
+specify if Amazon Rekognition or Amazon Textract is used as an
+integration source.
 
 
 =head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::FlowDefinitionOutputConfig>

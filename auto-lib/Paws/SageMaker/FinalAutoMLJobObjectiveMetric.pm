@@ -35,24 +35,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The candidate result from a job.
+The best candidate result from an AutoML training job.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-The name of the metric.
+The name of the metric with the best result. For a description of the
+possible objective metrics, see AutoMLJobObjective$MetricName.
 
 
 =head2 Type => Str
 
-The metric type used.
+The type of metric with the best result.
 
 
 =head2 B<REQUIRED> Value => Num
 
-The value of the metric.
+The value of the metric with the best result.
 
 
 

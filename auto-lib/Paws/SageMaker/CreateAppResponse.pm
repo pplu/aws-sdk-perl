@@ -16,7 +16,7 @@ Paws::SageMaker::CreateAppResponse
 
 =head2 AppArn => Str
 
-The app's Amazon Resource Name (ARN).
+The Amazon Resource Name (ARN) of the app.
 
 
 =head2 _request_id => Str

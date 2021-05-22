@@ -40,7 +40,7 @@ The job completion criteria.
 
 =head2 B<REQUIRED> TargetObjectiveMetricValue => Num
 
-The objective metric's value.
+The value of the objective metric.
 
 
 

@@ -11,6 +11,7 @@ package Paws::SageMaker::DescribeCompilationJobResponse;
   has InputConfig => (is => 'ro', isa => 'Paws::SageMaker::InputConfig', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has ModelArtifacts => (is => 'ro', isa => 'Paws::SageMaker::ModelArtifacts', required => 1);
+  has ModelDigests => (is => 'ro', isa => 'Paws::SageMaker::ModelDigests');
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
@@ -36,8 +37,7 @@ Amazon SageMaker detected that the job failed.
 
 =head2 B<REQUIRED> CompilationJobArn => Str
 
-The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker
-assumes to perform the model compilation job.
+The Amazon Resource Name (ARN) of the model compilation job.
 
 
 =head2 B<REQUIRED> CompilationJobName => Str
@@ -91,6 +91,12 @@ Information about the location in Amazon S3 that has been configured
 for storing the model artifacts used in the compilation job.
 
 
+=head2 ModelDigests => L<Paws::SageMaker::ModelDigests>
+
+Provides a BLAKE2 hash value that identifies the compiled model
+artifacts in Amazon S3.
+
+
 =head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::OutputConfig>
 
 Information about the output location for the compiled model and the
@@ -99,7 +105,8 @@ target device that the model runs on.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the model compilation job.
+The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker
+assumes to perform the model compilation job.
 
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>

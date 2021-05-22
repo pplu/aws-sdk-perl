@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Provides configuration information for labeling jobs.
+Configure encryption on the storage volume attached to the ML compute
+instance used to run automated data labeling model training and
+inference.
 
 =head1 ATTRIBUTES
 
@@ -42,20 +44,30 @@ Provides configuration information for labeling jobs.
 
 The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
 to encrypt data on the storage volume attached to the ML compute
-instance(s) that run the training job. The C<VolumeKmsKeyId> can be any
-of the following formats:
+instance(s) that run the training and inference jobs used for automated
+data labeling.
+
+You can only specify a C<VolumeKmsKeyId> when you create a labeling job
+with automated data labeling enabled using the API operation
+C<CreateLabelingJob>. You cannot specify an AWS KMS customer managed
+CMK to encrypt the storage volume used for automated data labeling
+model training and inference when you create a labeling job using the
+console. To learn more, see Output Data and Storage Volume Encryption
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-security.html).
+
+The C<VolumeKmsKeyId> can be any of the following formats:
 
 =over
 
 =item *
 
-// KMS Key ID
+KMS Key ID
 
 C<"1234abcd-12ab-34cd-56ef-1234567890ab">
 
 =item *
 
-// Amazon Resource Name (ARN) of a KMS Key
+Amazon Resource Name (ARN) of a KMS Key
 
 C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 

@@ -99,21 +99,20 @@ Request a list of jobs, using a search filter for name.
 
 =head2 NextToken => Str
 
-If the previous response was truncated, you will receive this token.
-Use it in your next request to receive the next set of results.
+If the previous response was truncated, you receive this token. Use it
+in your next request to receive the next set of results.
 
 
 
 =head2 SortBy => Str
 
-The parameter by which to sort the results. The default is
-AutoMLJobName.
+The parameter by which to sort the results. The default is C<Name>.
 
 Valid values are: C<"Name">, C<"CreationTime">, C<"Status">
 
 =head2 SortOrder => Str
 
-The sort order for the results. The default is Descending.
+The sort order for the results. The default is C<Descending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
 

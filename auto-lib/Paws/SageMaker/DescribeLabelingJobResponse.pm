@@ -77,7 +77,7 @@ Semantic segmentation labeling jobs using automated labeling: 20 labels
 
 =item *
 
-Box bounding labeling jobs (all): 10 lables
+Box bounding labeling jobs (all): 10 labels
 
 =back
 
@@ -145,7 +145,7 @@ The location of the output produced by the labeling job.
 
 The processing status of the labeling job.
 
-Valid values are: C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C<"Stopped">
+Valid values are: C<"Initializing">, C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C<"Stopped">
 =head2 B<REQUIRED> LastModifiedTime => Str
 
 The date and time that the labeling job was last updated.
@@ -171,10 +171,10 @@ conditions are met, the job is automatically stopped.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key/value pairs. For more information, see Using Cost
-Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 =head2 _request_id => Str

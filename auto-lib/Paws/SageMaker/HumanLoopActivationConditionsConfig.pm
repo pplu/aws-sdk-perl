@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 Defines under what conditions SageMaker creates a human loop. Used
-within .
+within . See for the required format of activation conditions.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,10 @@ within .
 JSON expressing use-case specific conditions declaratively. If any
 condition is matched, atomic tasks are created against the configured
 work team. The set of conditions is different for Rekognition and
-Textract.
+Textract. For more information about how to structure the JSON, see
+JSON Schema for Human Loop Activation Conditions in Amazon Augmented AI
+(https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-human-fallback-conditions-json-schema.html)
+in the I<Amazon SageMaker Developer Guide>.
 
 
 

@@ -6,6 +6,7 @@ package Paws::SageMaker::CreateAutoMLJob;
   has AutoMLJobObjective => (is => 'ro', isa => 'Paws::SageMaker::AutoMLJobObjective');
   has GenerateCandidateDefinitionsOnly => (is => 'ro', isa => 'Bool');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AutoMLChannel]', required => 1);
+  has ModelDeployConfig => (is => 'ro', isa => 'Paws::SageMaker::ModelDeployConfig');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::AutoMLOutputDataConfig', required => 1);
   has ProblemType => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -78,19 +79,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },    # OPTIONAL
       AutoMLJobObjective => {
-        MetricName => 'Accuracy',    # values: Accuracy, MSE, F1, F1macro
+        MetricName => 'Accuracy',    # values: Accuracy, MSE, F1, F1macro, AUC
 
       },    # OPTIONAL
-      GenerateCandidateDefinitionsOnly => 1,                         # OPTIONAL
-      ProblemType                      => 'BinaryClassification',    # OPTIONAL
-      Tags                             => [
+      GenerateCandidateDefinitionsOnly => 1,    # OPTIONAL
+      ModelDeployConfig                => {
+        AutoGenerateEndpointName => 1,                   # OPTIONAL
+        EndpointName             => 'MyEndpointName',    # max: 63; OPTIONAL
+      },    # OPTIONAL
+      ProblemType => 'BinaryClassification',    # OPTIONAL
+      Tags        => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256
+          Key   => 'MyTagKey',                  # min: 1, max: 128
+          Value => 'MyTagValue',                # max: 256
 
         },
         ...
-      ],                            # OPTIONAL
+      ],                                        # OPTIONAL
     );
 
     # Results:
@@ -106,58 +111,78 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 AutoMLJobConfig => L<Paws::SageMaker::AutoMLJobConfig>
 
-Contains CompletionCriteria and SecurityConfig.
+Contains C<CompletionCriteria> and C<SecurityConfig> settings for the
+AutoML job.
 
 
 
 =head2 B<REQUIRED> AutoMLJobName => Str
 
-Identifies an AutoPilot job. Must be unique to your account and is
-case-insensitive.
+Identifies an Autopilot job. The name must be unique to your account
+and is case-insensitive.
 
 
 
 =head2 AutoMLJobObjective => L<Paws::SageMaker::AutoMLJobObjective>
 
-Defines the job's objective. You provide a MetricName and AutoML will
-infer minimize or maximize. If this is not provided, the most commonly
-used ObjectiveMetric for problem type will be selected.
+Defines the objective metric used to measure the predictive quality of
+an AutoML job. You provide an AutoMLJobObjective$MetricName and
+Autopilot infers whether to minimize or maximize it.
 
 
 
 =head2 GenerateCandidateDefinitionsOnly => Bool
 
-This will generate possible candidates without training a model. A
-candidate is a combination of data preprocessors, algorithms, and
-algorithm parameter settings.
+Generates possible candidates without training the models. A candidate
+is a combination of data preprocessors, algorithms, and algorithm
+parameter settings.
 
 
 
 =head2 B<REQUIRED> InputDataConfig => ArrayRef[L<Paws::SageMaker::AutoMLChannel>]
 
-Similar to InputDataConfig supported by Tuning. Format(s) supported:
-CSV.
+An array of channel objects that describes the input data and its
+location. Each channel is a named input source. Similar to
+C<InputDataConfig> supported by . Format(s) supported: CSV. Minimum of
+500 rows.
+
+
+
+=head2 ModelDeployConfig => L<Paws::SageMaker::ModelDeployConfig>
+
+Specifies how to generate the endpoint name for an automatic one-click
+Autopilot model deployment.
 
 
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::SageMaker::AutoMLOutputDataConfig>
 
-Similar to OutputDataConfig supported by Tuning. Format(s) supported:
-CSV.
+Provides information about encryption and the Amazon S3 output path
+needed to store artifacts from an AutoML job. Format(s) supported: CSV.
+
+E<lt>paraE<gt>Specifies whether to automatically deploy the best &ATP;
+model to an endpoint and the name of that endpoint if deployed
+automatically.E<lt>/paraE<gt>
 
 
 
 =head2 ProblemType => Str
 
-Defines the kind of preprocessing and algorithms intended for the
-candidates. Options include: BinaryClassification,
-MulticlassClassification, and Regression.
+Defines the type of supervised learning available for the candidates.
+Options include: C<BinaryClassification>, C<MulticlassClassification>,
+and C<Regression>. For more information, see Amazon SageMaker Autopilot
+problem types and algorithm support
+(https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-problem-types.html).
 
 Valid values are: C<"BinaryClassification">, C<"MulticlassClassification">, C<"Regression">
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The ARN of the role that will be used to access the data.
+The ARN of the role that is used to access the data.
+
+E<lt>paraE<gt>Specifies whether to automatically deploy the best &ATP;
+model to an endpoint and the name of that endpoint if deployed
+automatically.E<lt>/paraE<gt>
 
 
 

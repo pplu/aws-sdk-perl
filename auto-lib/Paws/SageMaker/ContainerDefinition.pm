@@ -4,9 +4,11 @@ package Paws::SageMaker::ContainerDefinition;
   has ContainerHostname => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::EnvironmentMap');
   has Image => (is => 'ro', isa => 'Str');
+  has ImageConfig => (is => 'ro', isa => 'Paws::SageMaker::ImageConfig');
   has Mode => (is => 'ro', isa => 'Str');
   has ModelDataUrl => (is => 'ro', isa => 'Str');
   has ModelPackageName => (is => 'ro', isa => 'Str');
+  has MultiModelConfig => (is => 'ro', isa => 'Paws::SageMaker::MultiModelConfig');
 
 1;
 
@@ -27,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::ContainerDefinition object:
 
-  $service_obj->Method(Att1 => { ContainerHostname => $value, ..., ModelPackageName => $value  });
+  $service_obj->Method(Att1 => { ContainerHostname => $value, ..., MultiModelConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -72,14 +74,25 @@ to 1024. We support up to 16 entries in the map.
 
 =head2 Image => Str
 
-The Amazon EC2 Container Registry (Amazon ECR) path where inference
-code is stored. If you are using your own custom algorithm instead of
-an algorithm provided by Amazon SageMaker, the inference code must meet
-Amazon SageMaker requirements. Amazon SageMaker supports both
-C<registry/repository[:tag]> and C<registry/repository[@digest]> image
-path formats. For more information, see Using Your Own Algorithms with
-Amazon SageMaker
+The path where inference code is stored. This can be either in Amazon
+EC2 Container Registry or in a Docker registry that is accessible from
+the same VPC that you configure for your endpoint. If you are using
+your own custom algorithm instead of an algorithm provided by Amazon
+SageMaker, the inference code must meet Amazon SageMaker requirements.
+Amazon SageMaker supports both C<registry/repository[:tag]> and
+C<registry/repository[@digest]> image path formats. For more
+information, see Using Your Own Algorithms with Amazon SageMaker
 (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
+
+
+=head2 ImageConfig => L<Paws::SageMaker::ImageConfig>
+
+Specifies whether the model container is in Amazon ECR or a private
+Docker registry accessible from your Amazon Virtual Private Cloud
+(VPC). For information about storing containers in a private Docker
+registry, see Use a Private Docker Registry for Real-Time Inference
+Containers
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html)
 
 
 =head2 Mode => Str
@@ -95,6 +108,9 @@ tar archive (.tar.gz suffix). The S3 path is required for Amazon
 SageMaker built-in algorithms, but not if you use your own algorithms.
 For more information on built-in algorithms, see Common Parameters
 (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+
+The model artifacts must be in an S3 bucket that is in the same region
+as the model or endpoint you are creating.
 
 If you provide a value for this parameter, Amazon SageMaker uses AWS
 Security Token Service to download model artifacts from the S3 path you
@@ -114,6 +130,11 @@ C<ModelDataUrl>.
 
 The name or Amazon Resource Name (ARN) of the model package to use to
 create the model.
+
+
+=head2 MultiModelConfig => L<Paws::SageMaker::MultiModelConfig>
+
+Specifies additional configuration for multi-model endpoints.
 
 
 

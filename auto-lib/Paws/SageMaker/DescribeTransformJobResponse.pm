@@ -11,6 +11,7 @@ package Paws::SageMaker::DescribeTransformJobResponse;
   has LabelingJobArn => (is => 'ro', isa => 'Str');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
+  has ModelClientConfig => (is => 'ro', isa => 'Paws::SageMaker::ModelClientConfig');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has TransformEndTime => (is => 'ro', isa => 'Str');
   has TransformInput => (is => 'ro', isa => 'Paws::SageMaker::TransformInput', required => 1);
@@ -34,7 +35,7 @@ Paws::SageMaker::DescribeTransformJobResponse
 
 =head2 AutoMLJobArn => Str
 
-
+The Amazon Resource Name (ARN) of the AutoML transform job.
 
 
 =head2 BatchStrategy => Str
@@ -93,6 +94,12 @@ be launched in a transform job. The default value is 1.
 =head2 MaxPayloadInMB => Int
 
 The maximum payload size, in MB, used in the transform job.
+
+
+=head2 ModelClientConfig => L<Paws::SageMaker::ModelClientConfig>
+
+The timeout and maximum number of retries for processing a transform
+job invocation.
 
 
 =head2 B<REQUIRED> ModelName => Str

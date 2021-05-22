@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Configuration information for tensor collections.
+Configuration information for the Debugger output tensor collections.
 
 =head1 ATTRIBUTES
 

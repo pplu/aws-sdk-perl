@@ -37,9 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies the training algorithm to use in a CreateTrainingJob
-(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html)
-request.
+Specifies the training algorithm to use in a CreateTrainingJob request.
 
 For more information about algorithms provided by Amazon SageMaker, see
 Algorithms

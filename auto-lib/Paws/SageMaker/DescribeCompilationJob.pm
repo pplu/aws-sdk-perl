@@ -48,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $InputConfig       = $DescribeCompilationJobResponse->InputConfig;
     my $LastModifiedTime  = $DescribeCompilationJobResponse->LastModifiedTime;
     my $ModelArtifacts    = $DescribeCompilationJobResponse->ModelArtifacts;
+    my $ModelDigests      = $DescribeCompilationJobResponse->ModelDigests;
     my $OutputConfig      = $DescribeCompilationJobResponse->OutputConfig;
     my $RoleArn           = $DescribeCompilationJobResponse->RoleArn;
     my $StoppingCondition = $DescribeCompilationJobResponse->StoppingCondition;

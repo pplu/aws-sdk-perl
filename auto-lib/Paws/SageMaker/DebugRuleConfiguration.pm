@@ -39,14 +39,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Configuration information for debugging rules.
+Configuration information for SageMaker Debugger rules for debugging.
+To learn more about how to configure the C<DebugRuleConfiguration>
+parameter, see Use the SageMaker and Debugger Configuration API
+Operations to Create, Update, and Debug Your Training Job
+(https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-createtrainingjob-api.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 InstanceType => Str
 
-The instance type to deploy for a training job.
+The instance type to deploy a Debugger custom rule for debugging a
+training job.
 
 
 =head2 LocalPath => Str

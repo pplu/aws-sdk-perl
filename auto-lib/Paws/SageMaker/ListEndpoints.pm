@@ -91,7 +91,8 @@ specified timestamp.
 
 =head2 MaxResults => Int
 
-The maximum number of endpoints to return in the response.
+The maximum number of endpoints to return in the response. This value
+defaults to 10.
 
 
 

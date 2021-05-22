@@ -51,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeTrainingJobResponse->EnableManagedSpotTraining;
     my $EnableNetworkIsolation =
       $DescribeTrainingJobResponse->EnableNetworkIsolation;
+    my $Environment         = $DescribeTrainingJobResponse->Environment;
     my $ExperimentConfig    = $DescribeTrainingJobResponse->ExperimentConfig;
     my $FailureReason       = $DescribeTrainingJobResponse->FailureReason;
     my $FinalMetricDataList = $DescribeTrainingJobResponse->FinalMetricDataList;
@@ -60,9 +61,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastModifiedTime    = $DescribeTrainingJobResponse->LastModifiedTime;
     my $ModelArtifacts      = $DescribeTrainingJobResponse->ModelArtifacts;
     my $OutputDataConfig    = $DescribeTrainingJobResponse->OutputDataConfig;
-    my $ResourceConfig      = $DescribeTrainingJobResponse->ResourceConfig;
-    my $RoleArn             = $DescribeTrainingJobResponse->RoleArn;
-    my $SecondaryStatus     = $DescribeTrainingJobResponse->SecondaryStatus;
+    my $ProfilerConfig      = $DescribeTrainingJobResponse->ProfilerConfig;
+    my $ProfilerRuleConfigurations =
+      $DescribeTrainingJobResponse->ProfilerRuleConfigurations;
+    my $ProfilerRuleEvaluationStatuses =
+      $DescribeTrainingJobResponse->ProfilerRuleEvaluationStatuses;
+    my $ProfilingStatus = $DescribeTrainingJobResponse->ProfilingStatus;
+    my $ResourceConfig  = $DescribeTrainingJobResponse->ResourceConfig;
+    my $RetryStrategy   = $DescribeTrainingJobResponse->RetryStrategy;
+    my $RoleArn         = $DescribeTrainingJobResponse->RoleArn;
+    my $SecondaryStatus = $DescribeTrainingJobResponse->SecondaryStatus;
     my $SecondaryStatusTransitions =
       $DescribeTrainingJobResponse->SecondaryStatusTransitions;
     my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;

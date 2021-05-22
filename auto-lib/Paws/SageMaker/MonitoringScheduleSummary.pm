@@ -4,9 +4,11 @@ package Paws::SageMaker::MonitoringScheduleSummary;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has EndpointName => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has MonitoringJobDefinitionName => (is => 'ro', isa => 'Str');
   has MonitoringScheduleArn => (is => 'ro', isa => 'Str', required => 1);
   has MonitoringScheduleName => (is => 'ro', isa => 'Str', required => 1);
   has MonitoringScheduleStatus => (is => 'ro', isa => 'Str', required => 1);
+  has MonitoringType => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -27,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::MonitoringScheduleSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., MonitoringScheduleStatus => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., MonitoringType => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,6 +60,11 @@ The name of the endpoint using the monitoring schedule.
 The last time the monitoring schedule was modified.
 
 
+=head2 MonitoringJobDefinitionName => Str
+
+The name of the monitoring job definition that the schedule is for.
+
+
 =head2 B<REQUIRED> MonitoringScheduleArn => Str
 
 The Amazon Resource Name (ARN) of the monitoring schedule.
@@ -71,6 +78,11 @@ The name of the monitoring schedule.
 =head2 B<REQUIRED> MonitoringScheduleStatus => Str
 
 The status of the monitoring schedule.
+
+
+=head2 MonitoringType => Str
+
+The type of the monitoring job definition that the schedule is for.
 
 
 

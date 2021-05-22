@@ -2,6 +2,7 @@
 package Paws::SageMaker::ProductionVariant;
   use Moose;
   has AcceleratorType => (is => 'ro', isa => 'Str');
+  has CoreDumpConfig => (is => 'ro', isa => 'Paws::SageMaker::ProductionVariantCoreDumpConfig');
   has InitialInstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InitialVariantWeight => (is => 'ro', isa => 'Num');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -52,6 +53,12 @@ The size of the Elastic Inference (EI) instance to use for the
 production variant. EI instances provide on-demand GPU computing for
 inference. For more information, see Using Elastic Inference in Amazon
 SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+
+
+=head2 CoreDumpConfig => L<Paws::SageMaker::ProductionVariantCoreDumpConfig>
+
+Specifies configuration for a core dump from the model container when
+the process crashes.
 
 
 =head2 B<REQUIRED> InitialInstanceCount => Int

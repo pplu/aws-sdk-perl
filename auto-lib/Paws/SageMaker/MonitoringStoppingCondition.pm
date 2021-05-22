@@ -43,6 +43,11 @@ stopping.
 
 The maximum runtime allowed in seconds.
 
+The C<MaxRuntimeInSeconds> cannot exceed the frequency of the job. For
+data quality and model explainability, this can be up to 3600 seconds
+for an hourly schedule. For model bias and model quality hourly
+schedules, this can be up to 1800 seconds.
+
 
 
 =head1 SEE ALSO

@@ -44,7 +44,7 @@ Describes a work team of a vendor that does the a labelling job.
 
 =head2 ListingId => Str
 
-
+Marketplace product listing ID.
 
 
 =head2 MarketplaceDescription => Str

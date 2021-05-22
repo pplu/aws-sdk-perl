@@ -3,9 +3,9 @@ package Paws::SageMaker::InferenceSpecification;
   use Moose;
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ModelPackageContainerDefinition]', required => 1);
   has SupportedContentTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SupportedRealtimeInferenceInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has SupportedRealtimeInferenceInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedResponseMIMETypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SupportedTransformInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has SupportedTransformInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -54,10 +54,13 @@ inference code.
 The supported MIME types for the input data.
 
 
-=head2 B<REQUIRED> SupportedRealtimeInferenceInstanceTypes => ArrayRef[Str|Undef]
+=head2 SupportedRealtimeInferenceInstanceTypes => ArrayRef[Str|Undef]
 
 A list of the instance types that are used to generate inferences in
 real-time.
+
+This parameter is required for unversioned models, and optional for
+versioned models.
 
 
 =head2 B<REQUIRED> SupportedResponseMIMETypes => ArrayRef[Str|Undef]
@@ -65,10 +68,13 @@ real-time.
 The supported MIME types for the output data.
 
 
-=head2 B<REQUIRED> SupportedTransformInstanceTypes => ArrayRef[Str|Undef]
+=head2 SupportedTransformInstanceTypes => ArrayRef[Str|Undef]
 
 A list of the instance types on which a transformation job can be run
 or on which an endpoint can be deployed.
+
+This parameter is required for unversioned models, and optional for
+versioned models.
 
 
 

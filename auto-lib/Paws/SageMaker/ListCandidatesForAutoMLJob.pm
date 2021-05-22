@@ -58,44 +58,45 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> AutoMLJobName => Str
 
-List the Candidates created for the job by providing the job's name.
+List the candidates created for the job by providing the job's name.
 
 
 
 =head2 CandidateNameEquals => Str
 
-List the Candidates for the job and filter by candidate name.
+List the candidates for the job and filter by candidate name.
 
 
 
 =head2 MaxResults => Int
 
-List the job's Candidates up to a specified limit.
+List the job's candidates up to a specified limit.
 
 
 
 =head2 NextToken => Str
 
-If the previous response was truncated, you will receive this token.
-Use it in your next request to receive the next set of results.
+If the previous response was truncated, you receive this token. Use it
+in your next request to receive the next set of results.
 
 
 
 =head2 SortBy => Str
 
-The parameter by which to sort the results. The default is Descending.
+The parameter by which to sort the results. The default is
+C<Descending>.
 
 Valid values are: C<"CreationTime">, C<"Status">, C<"FinalObjectiveMetricValue">
 
 =head2 SortOrder => Str
 
-The sort order for the results. The default is Ascending.
+The sort order for the results. The default is C<Ascending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
 
 =head2 StatusEquals => Str
 
-List the Candidates for the job and filter by status.
+List the candidates for the job and filter by status.
 
 Valid values are: C<"Completed">, C<"InProgress">, C<"Failed">, C<"Stopped">, C<"Stopping">
 

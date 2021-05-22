@@ -4,6 +4,7 @@ package Paws::SageMaker::CreateModel;
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContainerDefinition]');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has InferenceExecutionConfig => (is => 'ro', isa => 'Paws::SageMaker::InferenceExecutionConfig');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
@@ -43,24 +44,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyEnvironmentKey' =>
               'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
           },    # max: 16; OPTIONAL
-          Image => 'MyImage',        # max: 255; OPTIONAL
-          Mode  => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
-          ModelDataUrl     => 'MyUrl',          # max: 1024; OPTIONAL
-          ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
+          Image       => 'MyContainerImage',    # max: 255; OPTIONAL
+          ImageConfig => {
+            RepositoryAccessMode => 'Platform',    # values: Platform, Vpc
+            RepositoryAuthConfig => {
+              RepositoryCredentialsProviderArn =>
+                'MyRepositoryCredentialsProviderArn',    # min: 1, max: 2048
+
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Mode => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
+          ModelDataUrl => 'MyUrl',  # max: 1024; OPTIONAL
+          ModelPackageName =>
+            'MyVersionedArnOrName',    # min: 1, max: 176; OPTIONAL
+          MultiModelConfig => {
+            ModelCacheSetting =>
+              'Enabled',               # values: Enabled, Disabled; OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
-      EnableNetworkIsolation => 1,              # OPTIONAL
-      PrimaryContainer       => {
+      ],        # OPTIONAL
+      EnableNetworkIsolation   => 1,    # OPTIONAL
+      InferenceExecutionConfig => {
+        Mode => 'Serial',               # values: Serial, Direct
+
+      },    # OPTIONAL
+      PrimaryContainer => {
         ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
         Environment       => {
           'MyEnvironmentKey' =>
             'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
         },    # max: 16; OPTIONAL
-        Image => 'MyImage',        # max: 255; OPTIONAL
-        Mode  => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
-        ModelDataUrl     => 'MyUrl',          # max: 1024; OPTIONAL
-        ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
+        Image       => 'MyContainerImage',    # max: 255; OPTIONAL
+        ImageConfig => {
+          RepositoryAccessMode => 'Platform',    # values: Platform, Vpc
+          RepositoryAuthConfig => {
+            RepositoryCredentialsProviderArn =>
+              'MyRepositoryCredentialsProviderArn',    # min: 1, max: 2048
+
+          },    # OPTIONAL
+        },    # OPTIONAL
+        Mode => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
+        ModelDataUrl     => 'MyUrl',                # max: 1024; OPTIONAL
+        ModelPackageName => 'MyVersionedArnOrName', # min: 1, max: 176; OPTIONAL
+        MultiModelConfig => {
+          ModelCacheSetting => 'Enabled',  # values: Enabled, Disabled; OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -119,6 +148,13 @@ API must have the C<iam:PassRole> permission.
 
 
 
+=head2 InferenceExecutionConfig => L<Paws::SageMaker::InferenceExecutionConfig>
+
+Specifies details of how containers in a multi-container endpoint are
+called.
+
+
+
 =head2 B<REQUIRED> ModelName => Str
 
 The name of the new model.
@@ -135,22 +171,20 @@ code uses when the model is deployed for predictions.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. For more information, see Using Cost
-Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A VpcConfig
-(https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html)
-object that specifies the VPC that you want your model to connect to.
-Control access to and from your model container by configuring the VPC.
-C<VpcConfig> is used in hosting services and in batch transform. For
-more information, see Protect Endpoints by Using an Amazon Virtual
-Private Cloud
+A VpcConfig object that specifies the VPC that you want your model to
+connect to. Control access to and from your model container by
+configuring the VPC. C<VpcConfig> is used in hosting services and in
+batch transform. For more information, see Protect Endpoints by Using
+an Amazon Virtual Private Cloud
 (https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
 Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private
 Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).

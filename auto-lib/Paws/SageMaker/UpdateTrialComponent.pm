@@ -70,9 +70,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                 # OPTIONAL
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL
       Status    => {
-        Message => 'MyTrialComponentStatusMessage',    # max: 1024; OPTIONAL
-        PrimaryStatus =>
-          'InProgress',    # values: InProgress, Completed, Failed; OPTIONAL
+        Message       => 'MyTrialComponentStatusMessage',  # max: 1024; OPTIONAL
+        PrimaryStatus => 'InProgress'
+        ,   # values: InProgress, Completed, Failed, Stopping, Stopped; OPTIONAL
       },    # OPTIONAL
     );
 

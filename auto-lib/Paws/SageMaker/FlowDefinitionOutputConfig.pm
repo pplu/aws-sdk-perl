@@ -50,6 +50,10 @@ encryption.
 The Amazon S3 path where the object containing human output will be
 made available.
 
+To learn more about the format of Amazon A2I output data, see Amazon
+A2I Output Data
+(https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-output-data.html).
+
 
 
 =head1 SEE ALSO

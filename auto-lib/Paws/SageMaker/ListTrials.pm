@@ -8,6 +8,7 @@ package Paws::SageMaker::ListTrials;
   has NextToken => (is => 'ro', isa => 'Str');
   has SortBy => (is => 'ro', isa => 'Str');
   has SortOrder => (is => 'ro', isa => 'Str');
+  has TrialComponentName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListTrialsResponse = $api . sagemaker->ListTrials(
-      CreatedAfter   => '1970-01-01T01:00:00',       # OPTIONAL
-      CreatedBefore  => '1970-01-01T01:00:00',       # OPTIONAL
-      ExperimentName => 'MyExperimentEntityName',    # OPTIONAL
-      MaxResults     => 1,                           # OPTIONAL
-      NextToken      => 'MyNextToken',               # OPTIONAL
-      SortBy         => 'Name',                      # OPTIONAL
-      SortOrder      => 'Ascending',                 # OPTIONAL
+      CreatedAfter       => '1970-01-01T01:00:00',       # OPTIONAL
+      CreatedBefore      => '1970-01-01T01:00:00',       # OPTIONAL
+      ExperimentName     => 'MyExperimentEntityName',    # OPTIONAL
+      MaxResults         => 1,                           # OPTIONAL
+      NextToken          => 'MyNextToken',               # OPTIONAL
+      SortBy             => 'Name',                      # OPTIONAL
+      SortOrder          => 'Ascending',                 # OPTIONAL
+      TrialComponentName => 'MyExperimentEntityName',    # OPTIONAL
     );
 
     # Results:
@@ -100,6 +102,13 @@ Valid values are: C<"Name">, C<"CreationTime">
 The sort order. The default value is C<Descending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
+
+=head2 TrialComponentName => Str
+
+A filter that returns only trials that are associated with the
+specified trial component.
+
+
 
 
 =head1 SEE ALSO

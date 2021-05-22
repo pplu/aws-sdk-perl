@@ -6,7 +6,10 @@ package Paws::SageMaker::CompilationJobSummary;
   has CompilationJobName => (is => 'ro', isa => 'Str', required => 1);
   has CompilationJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has CompilationStartTime => (is => 'ro', isa => 'Str');
-  has CompilationTargetDevice => (is => 'ro', isa => 'Str', required => 1);
+  has CompilationTargetDevice => (is => 'ro', isa => 'Str');
+  has CompilationTargetPlatformAccelerator => (is => 'ro', isa => 'Str');
+  has CompilationTargetPlatformArch => (is => 'ro', isa => 'Str');
+  has CompilationTargetPlatformOs => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str');
 
@@ -70,9 +73,27 @@ The status of the model compilation job.
 The time when the model compilation job started.
 
 
-=head2 B<REQUIRED> CompilationTargetDevice => Str
+=head2 CompilationTargetDevice => Str
 
-The type of device that the model will run on after compilation has
+The type of device that the model will run on after the compilation job
+has completed.
+
+
+=head2 CompilationTargetPlatformAccelerator => Str
+
+The type of accelerator that the model will run on after the
+compilation job has completed.
+
+
+=head2 CompilationTargetPlatformArch => Str
+
+The type of architecture that the model will run on after the
+compilation job has completed.
+
+
+=head2 CompilationTargetPlatformOs => Str
+
+The type of OS that the model will run on after the compilation job has
 completed.
 
 

@@ -4,6 +4,7 @@ package Paws::SageMaker::CreateFlowDefinition;
   has FlowDefinitionName => (is => 'ro', isa => 'Str', required => 1);
   has HumanLoopActivationConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopActivationConfig');
   has HumanLoopConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopConfig', required => 1);
+  has HumanLoopRequestSource => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopRequestSource');
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::FlowDefinitionOutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
@@ -64,12 +65,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyHumanLoopActivationConditions',    # max: 10240
 
         },
-        HumanLoopRequestSource => {
-          AwsManagedHumanLoopRequestSource =>
-            'AWS/Rekognition/DetectModerationLabels/Image/V3'
-          , # values: AWS/Rekognition/DetectModerationLabels/Image/V3, AWS/Textract/AnalyzeDocument/Forms/V1
 
-        },
+      },    # OPTIONAL
+      HumanLoopRequestSource => {
+        AwsManagedHumanLoopRequestSource =>
+          'AWS/Rekognition/DetectModerationLabels/Image/V3'
+        , # values: AWS/Rekognition/DetectModerationLabels/Image/V3, AWS/Textract/AnalyzeDocument/Forms/V1
 
       },    # OPTIONAL
       Tags => [
@@ -110,6 +111,14 @@ workflow.
 
 An object containing information about the tasks the human reviewers
 will perform.
+
+
+
+=head2 HumanLoopRequestSource => L<Paws::SageMaker::HumanLoopRequestSource>
+
+Container for configuring the source of human task requests. Use to
+specify if Amazon Rekognition or Amazon Textract is used as an
+integration source.
 
 
 

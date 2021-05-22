@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> WorkforceName => Str
 
 The name of the private workforce whose access you want to restrict.
-C<WorkforceName> is automatically set to C<"default"> when a workforce
-is created and cannot be modified.
+C<WorkforceName> is automatically set to C<default> when a workforce is
+created and cannot be modified.
 
 
 

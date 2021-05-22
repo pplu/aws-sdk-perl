@@ -56,24 +56,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> EndpointConfigName => Str
 
 The name of an endpoint configuration. For more information, see
-CreateEndpointConfig
-(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
+CreateEndpointConfig.
 
 
 
 =head2 B<REQUIRED> EndpointName => Str
 
-The name of the endpoint. The name must be unique within an AWS Region
-in your AWS account.
+The name of the endpoint.The name must be unique within an AWS Region
+in your AWS account. The name is case-insensitive in C<CreateEndpoint>,
+but the case is preserved and must be matched in .
 
 
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. For more information, see Using Cost
-Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
-the I<AWS Billing and Cost Management User Guide>.
+An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

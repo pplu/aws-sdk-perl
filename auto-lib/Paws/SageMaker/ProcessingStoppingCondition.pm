@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies a time limit for how long the processing job is allowed to
-run.
+Configures conditions under which the processing job should be stopped,
+such as how long the processing job has been running. After the
+condition is met, the processing job is stopped.
 
 =head1 ATTRIBUTES
 

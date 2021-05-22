@@ -68,9 +68,10 @@ volumes, to use for model training.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-Specifies a limit to how long a model training job can run. When the
-job reaches the time limit, Amazon SageMaker ends the training job. Use
-this API to cap model training costs.
+Specifies a limit to how long a model training job can run. It also
+specifies how long a managed Spot training job has to complete. When
+the job reaches the time limit, Amazon SageMaker ends the training job.
+Use this API to cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal,
 which delays job termination for 120 seconds. Algorithms can use this

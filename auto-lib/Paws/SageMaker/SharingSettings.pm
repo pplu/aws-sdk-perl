@@ -35,24 +35,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The sharing settings.
+Specifies options for sharing SageMaker Studio notebooks. These
+settings are specified as part of C<DefaultUserSettings> when the
+C<CreateDomain> API is called, and as part of C<UserSettings> when the
+C<CreateUserProfile> API is called. When C<SharingSettings> is not
+specified, notebook sharing isn't allowed.
 
 =head1 ATTRIBUTES
 
 
 =head2 NotebookOutputOption => Str
 
-The notebook output option.
+Whether to include the notebook cell output when sharing the notebook.
+The default is C<Disabled>.
 
 
 =head2 S3KmsKeyId => Str
 
-The AWS Key Management Service encryption key ID.
+When C<NotebookOutputOption> is C<Allowed>, the AWS Key Management
+Service (KMS) encryption key ID used to encrypt the notebook cell
+output in the Amazon S3 bucket.
 
 
 =head2 S3OutputPath => Str
 
-The Amazon S3 output path.
+When C<NotebookOutputOption> is C<Allowed>, the Amazon S3 bucket used
+to store the shared notebook snapshots.
 
 
 

@@ -34,14 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The source of the trial component.
+The Amazon Resource Name (ARN) and job type of the source of a trial
+component.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> SourceArn => Str
 
-The Amazon Resource Name (ARN) of the source.
+The source ARN.
 
 
 =head2 SourceType => Str

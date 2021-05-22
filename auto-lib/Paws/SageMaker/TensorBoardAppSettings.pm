@@ -40,7 +40,8 @@ The TensorBoard app settings.
 
 =head2 DefaultResourceSpec => L<Paws::SageMaker::ResourceSpec>
 
-The instance type and quantity.
+The default instance type and the Amazon Resource Name (ARN) of the
+SageMaker image created on the instance.
 
 
 

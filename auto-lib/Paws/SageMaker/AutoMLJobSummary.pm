@@ -9,6 +9,7 @@ package Paws::SageMaker::AutoMLJobSummary;
   has EndTime => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has PartialFailureReasons => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AutoMLPartialFailureReason]');
 
 1;
 
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::AutoMLJobSummary object:
 
-  $service_obj->Method(Att1 => { AutoMLJobArn => $value, ..., LastModifiedTime => $value  });
+  $service_obj->Method(Att1 => { AutoMLJobArn => $value, ..., PartialFailureReasons => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,49 +41,54 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Provides a summary about a job.
+Provides a summary about an AutoML job.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AutoMLJobArn => Str
 
-The ARN of the job.
+The ARN of the AutoML job.
 
 
 =head2 B<REQUIRED> AutoMLJobName => Str
 
-The name of the object you are requesting.
+The name of the AutoML you are requesting.
 
 
 =head2 B<REQUIRED> AutoMLJobSecondaryStatus => Str
 
-The job's secondary status.
+The secondary status of the AutoML job.
 
 
 =head2 B<REQUIRED> AutoMLJobStatus => Str
 
-The job's status.
+The status of the AutoML job.
 
 
 =head2 B<REQUIRED> CreationTime => Str
 
-When the job was created.
+When the AutoML job was created.
 
 
 =head2 EndTime => Str
 
-The end time.
+The end time of an AutoML job.
 
 
 =head2 FailureReason => Str
 
-The failure reason.
+The failure reason of an AutoML job.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
 
-When the job was last modified.
+When the AutoML job was last modified.
+
+
+=head2 PartialFailureReasons => ArrayRef[L<Paws::SageMaker::AutoMLPartialFailureReason>]
+
+The list of reasons for partial failures within an AutoML job.
 
 
 

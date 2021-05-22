@@ -2,10 +2,13 @@
 package Paws::SageMaker::ModelPackageSummary;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has ModelApprovalStatus => (is => 'ro', isa => 'Str');
   has ModelPackageArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelPackageDescription => (is => 'ro', isa => 'Str');
+  has ModelPackageGroupName => (is => 'ro', isa => 'Str');
   has ModelPackageName => (is => 'ro', isa => 'Str', required => 1);
   has ModelPackageStatus => (is => 'ro', isa => 'Str', required => 1);
+  has ModelPackageVersion => (is => 'ro', isa => 'Int');
 
 1;
 
@@ -26,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::ModelPackageSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., ModelPackageStatus => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., ModelPackageVersion => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +50,29 @@ Provides summary information about a model package.
 A timestamp that shows when the model package was created.
 
 
+=head2 ModelApprovalStatus => Str
+
+The approval status of the model. This can be one of the following
+values.
+
+=over
+
+=item *
+
+C<APPROVED> - The model is approved
+
+=item *
+
+C<REJECTED> - The model is rejected.
+
+=item *
+
+C<PENDING_MANUAL_APPROVAL> - The model is waiting for manual approval.
+
+=back
+
+
+
 =head2 B<REQUIRED> ModelPackageArn => Str
 
 The Amazon Resource Name (ARN) of the model package.
@@ -57,6 +83,12 @@ The Amazon Resource Name (ARN) of the model package.
 A brief description of the model package.
 
 
+=head2 ModelPackageGroupName => Str
+
+If the model package is a versioned model, the model group that the
+versioned model belongs to.
+
+
 =head2 B<REQUIRED> ModelPackageName => Str
 
 The name of the model package.
@@ -65,6 +97,11 @@ The name of the model package.
 =head2 B<REQUIRED> ModelPackageStatus => Str
 
 The overall status of the model package.
+
+
+=head2 ModelPackageVersion => Int
+
+If the model package is a versioned model, the version of the model.
 
 
 

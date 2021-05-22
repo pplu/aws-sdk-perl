@@ -50,6 +50,18 @@ Describes the work to be performed by human workers.
 
 The Amazon Resource Name (ARN) of the human task user interface.
 
+You can use standard HTML and Crowd HTML Elements to create a custom
+worker task template. You use this template to create a human task UI.
+
+To learn how to create a custom HTML template, see Create Custom Worker
+Task Template
+(https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-custom-templates.html).
+
+To learn how to create a human task UI, which is a worker task template
+that can be used in a flow definition, see Create and Delete a Worker
+Task Templates
+(https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-worker-template-console.html).
+
 
 =head2 PublicWorkforceTaskPrice => L<Paws::SageMaker::PublicWorkforceTaskPrice>
 
@@ -58,13 +70,16 @@ The Amazon Resource Name (ARN) of the human task user interface.
 
 =head2 TaskAvailabilityLifetimeInSeconds => Int
 
-The length of time that a task remains available for labeling by human
+The length of time that a task remains available for review by human
 workers.
 
 
 =head2 B<REQUIRED> TaskCount => Int
 
-The number of human tasks.
+The number of distinct workers who will perform the same task on each
+object. For example, if C<TaskCount> is set to C<3> for an image
+classification labeling job, three workers will classify each input
+image. Increasing C<TaskCount> can improve label accuracy.
 
 
 =head2 B<REQUIRED> TaskDescription => Str
@@ -80,7 +95,8 @@ task.
 
 =head2 TaskTimeLimitInSeconds => Int
 
-The amount of time that a worker has to complete a task.
+The amount of time that a worker has to complete a task. The default
+value is 3,600 seconds (1 hour).
 
 
 =head2 B<REQUIRED> TaskTitle => Str
@@ -90,7 +106,10 @@ A title for the human worker task.
 
 =head2 B<REQUIRED> WorkteamArn => Str
 
-Amazon Resource Name (ARN) of a team of workers.
+Amazon Resource Name (ARN) of a team of workers. To learn more about
+the types of workforces and work teams you can create and use with
+Amazon A2I, see Create and Manage Workforces
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html).
 
 
 

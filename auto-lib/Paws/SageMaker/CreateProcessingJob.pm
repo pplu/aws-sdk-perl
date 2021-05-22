@@ -64,54 +64,89 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyProcessingEnvironmentValue',    # key: max: 256, value: max: 256
       },    # OPTIONAL
       ExperimentConfig => {
-        ExperimentName => 'MyExperimentConfigName',  # min: 1, max: 64; OPTIONAL
+        ExperimentName => 'MyExperimentEntityName', # min: 1, max: 120; OPTIONAL
         TrialComponentDisplayName =>
-          'MyExperimentConfigName',                  # min: 1, max: 64; OPTIONAL
-        TrialName => 'MyExperimentConfigName',       # min: 1, max: 64; OPTIONAL
+          'MyExperimentEntityName',                 # min: 1, max: 120; OPTIONAL
+        TrialName => 'MyExperimentEntityName',      # min: 1, max: 120; OPTIONAL
       },    # OPTIONAL
       NetworkConfig => {
-        EnableNetworkIsolation => 1,    # OPTIONAL
-        VpcConfig              => {
+        EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+        EnableNetworkIsolation                => 1,    # OPTIONAL
+        VpcConfig                             => {
           SecurityGroupIds => [
-            'MySecurityGroupId', ...    # max: 32
-          ],                            # min: 1, max: 5
+            'MySecurityGroupId', ...                   # max: 32
+          ],                                           # min: 1, max: 5
           Subnets => [
-            'MySubnetId', ...           # max: 32
-          ],                            # min: 1, max: 16
+            'MySubnetId', ...                          # max: 32
+          ],                                           # min: 1, max: 16
 
         },    # OPTIONAL
       },    # OPTIONAL
       ProcessingInputs => [
         {
-          InputName => 'MyString',
-          S3Input   => {
-            LocalPath => 'MyProcessingLocalPath',    # max: 256
-            S3DataType  => 'ManifestFile',    # values: ManifestFile, S3Prefix
-            S3InputMode => 'Pipe',            # values: Pipe, File
-            S3Uri       => 'MyS3Uri',         # max: 1024
-            S3CompressionType => 'None',      # values: None, Gzip; OPTIONAL
+          InputName         => 'MyString',
+          AppManaged        => 1,            # OPTIONAL
+          DatasetDefinition => {
+            AthenaDatasetDefinition => {
+              Catalog  => 'MyAthenaCatalog',     # min: 1, max: 256
+              Database => 'MyAthenaDatabase',    # min: 1, max: 255
+              OutputFormat =>
+                'PARQUET',    # values: PARQUET, ORC, AVRO, JSON, TEXTFILE
+              OutputS3Uri => 'MyS3Uri',                # max: 1024
+              QueryString => 'MyAthenaQueryString',    # min: 1, max: 4096
+              KmsKeyId    => 'MyKmsKeyId',             # max: 2048; OPTIONAL
+              OutputCompression =>
+                'GZIP',    # values: GZIP, SNAPPY, ZLIB; OPTIONAL
+              WorkGroup => 'MyAthenaWorkGroup',    # min: 1, max: 128; OPTIONAL
+            },    # OPTIONAL
+            DataDistributionType => 'FullyReplicated'
+            ,     # values: FullyReplicated, ShardedByS3Key; OPTIONAL
+            InputMode => 'Pipe',                  # values: Pipe, File; OPTIONAL
+            LocalPath => 'MyProcessingLocalPath', # max: 256; OPTIONAL
+            RedshiftDatasetDefinition => {
+              ClusterId      => 'MyRedshiftClusterId',    # min: 1, max: 63
+              ClusterRoleArn => 'MyRoleArn',              # min: 20, max: 2048
+              Database       => 'MyRedshiftDatabase',     # min: 1, max: 64
+              DbUser         => 'MyRedshiftUserName',     # min: 1, max: 128
+              OutputFormat   => 'PARQUET',                # values: PARQUET, CSV
+              OutputS3Uri    => 'MyS3Uri',                # max: 1024
+              QueryString    => 'MyRedshiftQueryString',  # min: 1, max: 4096
+              KmsKeyId       => 'MyKmsKeyId',             # max: 2048; OPTIONAL
+              OutputCompression =>
+                'None',    # values: None, GZIP, BZIP2, ZSTD, SNAPPY; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          S3Input => {
+            S3DataType => 'ManifestFile',    # values: ManifestFile, S3Prefix
+            S3Uri      => 'MyS3Uri',         # max: 1024
+            LocalPath => 'MyProcessingLocalPath',    # max: 256; OPTIONAL
+            S3CompressionType => 'None',    # values: None, Gzip; OPTIONAL
             S3DataDistributionType => 'FullyReplicated'
             ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-          },
-
+            S3InputMode => 'Pipe',    # values: Pipe, File; OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],         # OPTIONAL
+      ],        # OPTIONAL
       ProcessingOutputConfig => {
         Outputs => [
           {
-            OutputName => 'MyString',
-            S3Output   => {
-              LocalPath => 'MyProcessingLocalPath',    # max: 256
+            OutputName         => 'MyString',
+            AppManaged         => 1,            # OPTIONAL
+            FeatureStoreOutput => {
+              FeatureGroupName => 'MyFeatureGroupName',    # min: 1, max: 64
+
+            },    # OPTIONAL
+            S3Output => {
+              LocalPath => 'MyProcessingLocalPath',    # max: 256; OPTIONAL
               S3UploadMode => 'Continuous',    # values: Continuous, EndOfJob
               S3Uri        => 'MyS3Uri',       # max: 1024
 
-            },
-
+            },    # OPTIONAL
           },
           ...
-        ],                                     # max: 10
-        KmsKeyId => 'MyKmsKeyId',              # max: 2048; OPTIONAL
+        ],        # max: 10
+        KmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },    # OPTIONAL
       StoppingCondition => {
         MaxRuntimeInSeconds => 1,    # min: 1, max: 604800
@@ -147,7 +182,8 @@ image.
 
 =head2 Environment => L<Paws::SageMaker::ProcessingEnvironmentMap>
 
-Sets the environment variables in the Docker container.
+The environment variables to set in the Docker container. Up to 100 key
+and values entries in the map are supported.
 
 
 
@@ -159,15 +195,17 @@ Sets the environment variables in the Docker container.
 
 =head2 NetworkConfig => L<Paws::SageMaker::NetworkConfig>
 
-Networking options for a processing job.
+Networking options for a processing job, such as whether to allow
+inbound and outbound network calls to and from processing containers,
+and the VPC subnets and security groups to use for VPC-enabled
+processing jobs.
 
 
 
 =head2 ProcessingInputs => ArrayRef[L<Paws::SageMaker::ProcessingInput>]
 
-For each input, data is downloaded from S3 into the processing
-container before the processing job begins running if "S3InputMode" is
-set to C<File>.
+An array of inputs configuring the data to download into the processing
+container.
 
 
 
@@ -209,7 +247,7 @@ The time limit for how long the processing job is allowed to run.
 
 (Optional) An array of key-value pairs. For more information, see Using
 Cost Allocation Tags
-(https://docs-aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

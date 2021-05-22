@@ -34,13 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $CreatedBy         = $DescribeTrialComponentResponse->CreatedBy;
-    my $CreationTime      = $DescribeTrialComponentResponse->CreationTime;
-    my $DisplayName       = $DescribeTrialComponentResponse->DisplayName;
-    my $EndTime           = $DescribeTrialComponentResponse->EndTime;
-    my $InputArtifacts    = $DescribeTrialComponentResponse->InputArtifacts;
-    my $LastModifiedBy    = $DescribeTrialComponentResponse->LastModifiedBy;
-    my $LastModifiedTime  = $DescribeTrialComponentResponse->LastModifiedTime;
+    my $CreatedBy        = $DescribeTrialComponentResponse->CreatedBy;
+    my $CreationTime     = $DescribeTrialComponentResponse->CreationTime;
+    my $DisplayName      = $DescribeTrialComponentResponse->DisplayName;
+    my $EndTime          = $DescribeTrialComponentResponse->EndTime;
+    my $InputArtifacts   = $DescribeTrialComponentResponse->InputArtifacts;
+    my $LastModifiedBy   = $DescribeTrialComponentResponse->LastModifiedBy;
+    my $LastModifiedTime = $DescribeTrialComponentResponse->LastModifiedTime;
+    my $MetadataProperties =
+      $DescribeTrialComponentResponse->MetadataProperties;
     my $Metrics           = $DescribeTrialComponentResponse->Metrics;
     my $OutputArtifacts   = $DescribeTrialComponentResponse->OutputArtifacts;
     my $Parameters        = $DescribeTrialComponentResponse->Parameters;

@@ -4,6 +4,9 @@ package Paws::SageMaker::ListModelPackages;
   has CreationTimeAfter => (is => 'ro', isa => 'Str');
   has CreationTimeBefore => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
+  has ModelApprovalStatus => (is => 'ro', isa => 'Str');
+  has ModelPackageGroupName => (is => 'ro', isa => 'Str');
+  has ModelPackageType => (is => 'ro', isa => 'Str');
   has NameContains => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has SortBy => (is => 'ro', isa => 'Str');
@@ -34,13 +37,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListModelPackagesOutput = $api . sagemaker->ListModelPackages(
-      CreationTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
-      CreationTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
-      MaxResults         => 1,                        # OPTIONAL
-      NameContains       => 'MyNameContains',         # OPTIONAL
-      NextToken          => 'MyNextToken',            # OPTIONAL
-      SortBy             => 'Name',                   # OPTIONAL
-      SortOrder          => 'Ascending',              # OPTIONAL
+      CreationTimeAfter     => '1970-01-01T01:00:00',    # OPTIONAL
+      CreationTimeBefore    => '1970-01-01T01:00:00',    # OPTIONAL
+      MaxResults            => 1,                        # OPTIONAL
+      ModelApprovalStatus   => 'Approved',               # OPTIONAL
+      ModelPackageGroupName => 'MyArnOrName',            # OPTIONAL
+      ModelPackageType      => 'Versioned',              # OPTIONAL
+      NameContains          => 'MyNameContains',         # OPTIONAL
+      NextToken             => 'MyNextToken',            # OPTIONAL
+      SortBy                => 'Name',                   # OPTIONAL
+      SortOrder             => 'Ascending',              # OPTIONAL
     );
 
     # Results:
@@ -75,6 +81,44 @@ time (timestamp).
 The maximum number of model packages to return in the response.
 
 
+
+=head2 ModelApprovalStatus => Str
+
+A filter that returns only the model packages with the specified
+approval status.
+
+Valid values are: C<"Approved">, C<"Rejected">, C<"PendingManualApproval">
+
+=head2 ModelPackageGroupName => Str
+
+A filter that returns only model versions that belong to the specified
+model group.
+
+
+
+=head2 ModelPackageType => Str
+
+A filter that returns onlyl the model packages of the specified type.
+This can be one of the following values.
+
+=over
+
+=item *
+
+C<VERSIONED> - List only versioned models.
+
+=item *
+
+C<UNVERSIONED> - List only unversioined models.
+
+=item *
+
+C<BOTH> - List both versioned and unversioned models.
+
+=back
+
+
+Valid values are: C<"Versioned">, C<"Unversioned">, C<"Both">
 
 =head2 NameContains => Str
 

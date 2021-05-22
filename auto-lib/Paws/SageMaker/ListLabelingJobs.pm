@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken              => 'MyNextToken',            # OPTIONAL
       SortBy                 => 'Name',                   # OPTIONAL
       SortOrder              => 'Ascending',              # OPTIONAL
-      StatusEquals           => 'InProgress',             # OPTIONAL
+      StatusEquals           => 'Initializing',           # OPTIONAL
     );
 
     # Results:
@@ -128,7 +128,7 @@ Valid values are: C<"Ascending">, C<"Descending">
 
 A filter that retrieves only labeling jobs with a specific status.
 
-Valid values are: C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C<"Stopped">
+Valid values are: C<"Initializing">, C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C<"Stopped">
 
 
 =head1 SEE ALSO

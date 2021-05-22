@@ -36,28 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 A list of container definitions that describe the different containers
-that make up one AutoML candidate. Refer to ContainerDefinition for
-more details.
+that make up an AutoML candidate. For more information, see .
 
 =head1 ATTRIBUTES
 
 
 =head2 Environment => L<Paws::SageMaker::EnvironmentMap>
 
-Environment variables to set in the container. Refer to
-ContainerDefinition for more details.
+The environment variables to set in the container. For more
+information, see .
 
 
 =head2 B<REQUIRED> Image => Str
 
-The ECR path of the container. Refer to ContainerDefinition for more
-details.
+The ECR path of the container. For more information, see .
 
 
 =head2 B<REQUIRED> ModelDataUrl => Str
 
-The location of the model artifacts. Refer to ContainerDefinition for
-more details.
+The location of the model artifacts. For more information, see .
 
 
 

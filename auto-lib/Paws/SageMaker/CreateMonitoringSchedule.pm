@@ -47,16 +47,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MonitoringInputs => [
             {
               EndpointInput => {
-                EndpointName           => 'MyEndpointName',           # max: 63
-                LocalPath              => 'MyProcessingLocalPath',    # max: 256
-                S3DataDistributionType => 'FullyReplicated'
+                EndpointName => 'MyEndpointName',           # max: 63
+                LocalPath    => 'MyProcessingLocalPath',    # max: 256
+                EndTimeOffset =>
+                  'MyMonitoringTimeOffsetString',    # min: 1, max: 15; OPTIONAL
+                FeaturesAttribute             => 'MyString',         # OPTIONAL
+                InferenceAttribute            => 'MyString',         # OPTIONAL
+                ProbabilityAttribute          => 'MyString',         # OPTIONAL
+                ProbabilityThresholdAttribute => 1,                  # OPTIONAL
+                S3DataDistributionType        => 'FullyReplicated'
                 ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
                 S3InputMode => 'Pipe',    # values: Pipe, File; OPTIONAL
+                StartTimeOffset =>
+                  'MyMonitoringTimeOffsetString',    # min: 1, max: 15; OPTIONAL
               },
 
             },
             ...
-          ],                              # min: 1, max: 1
+          ],                                         # min: 1, max: 1
           MonitoringOutputConfig => {
             MonitoringOutputs => [
               {
@@ -84,6 +92,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           RoleArn        => 'MyRoleArn',         # min: 20, max: 2048
           BaselineConfig => {
+            BaseliningJobName =>
+              'MyProcessingJobName',             # min: 1, max: 63; OPTIONAL
             ConstraintsResource => {
               S3Uri => 'MyS3Uri',                # max: 1024; OPTIONAL
             },    # OPTIONAL
@@ -96,14 +106,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyProcessingEnvironmentValue',   # key: max: 256, value: max: 256
           },    # max: 50; OPTIONAL
           NetworkConfig => {
-            EnableNetworkIsolation => 1,    # OPTIONAL
-            VpcConfig              => {
+            EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+            EnableNetworkIsolation                => 1,    # OPTIONAL
+            VpcConfig                             => {
               SecurityGroupIds => [
-                'MySecurityGroupId', ...    # max: 32
-              ],                            # min: 1, max: 5
+                'MySecurityGroupId', ...                   # max: 32
+              ],                                           # min: 1, max: 5
               Subnets => [
-                'MySubnetId', ...           # max: 32
-              ],                            # min: 1, max: 16
+                'MySubnetId', ...                          # max: 32
+              ],                                           # min: 1, max: 16
 
             },    # OPTIONAL
           },    # OPTIONAL
@@ -111,7 +122,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MaxRuntimeInSeconds => 1,    # min: 1, max: 86400
 
           },    # OPTIONAL
-        },
+        },    # OPTIONAL
+        MonitoringJobDefinitionName =>
+          'MyMonitoringJobDefinitionName',    # min: 1, max: 63; OPTIONAL
+        MonitoringType => 'DataQuality'
+        , # values: DataQuality, ModelQuality, ModelBias, ModelExplainability; OPTIONAL
         ScheduleConfig => {
           ScheduleExpression => 'MyScheduleExpression',    # min: 1, max: 256
 

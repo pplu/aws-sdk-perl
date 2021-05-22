@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 Provides information about the location that is configured for storing
 model artifacts.
 
+Model artifacts are the output that results from training a model, and
+typically consist of trained parameters, a model defintion that
+describes how to compute inferences, and other metadata.
+
 =head1 ATTRIBUTES
 
 

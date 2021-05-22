@@ -126,10 +126,10 @@ Notebook Instances
 =head2 DirectInternetAccess => Str
 
 Sets whether Amazon SageMaker provides internet access to the notebook
-instance. If you set this to C<Disabled> this notebook instance will be
-able to access resources only in your VPC, and will not be able to
-connect to Amazon SageMaker training and endpoint services unless your
-configure a NAT Gateway in your VPC.
+instance. If you set this to C<Disabled> this notebook instance is able
+to access resources only in your VPC, and is not be able to connect to
+Amazon SageMaker training and endpoint services unless you configure a
+NAT Gateway in your VPC.
 
 For more information, see Notebook Instances Are Internet-Enabled by
 Default
@@ -214,8 +214,10 @@ connectivity from your ML compute instance.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-A list of tags to associate with the notebook instance. You can add
-tags later by using the C<CreateTags> API.
+An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

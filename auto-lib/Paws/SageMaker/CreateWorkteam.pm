@@ -5,6 +5,7 @@ package Paws::SageMaker::CreateWorkteam;
   has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]', required => 1);
   has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+  has WorkforceName => (is => 'ro', isa => 'Str');
   has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -36,9 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MemberDefinitions => [
         {
           CognitoMemberDefinition => {
-            ClientId  => 'MyCognitoClientId',     # min: 1, max: 128
+            ClientId  => 'MyClientId',            # min: 1, max: 1024
             UserGroup => 'MyCognitoUserGroup',    # min: 1, max: 128
             UserPool  => 'MyCognitoUserPool',     # min: 1, max: 55
+
+          },    # OPTIONAL
+          OidcMemberDefinition => {
+            Groups => [
+              'MyGroup', ...    # min: 1, max: 63
+            ],                  # min: 1, max: 10
 
           },    # OPTIONAL
         },
@@ -56,6 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                            # OPTIONAL
+      WorkforceName => 'MyWorkforceName',    # OPTIONAL
     );
 
     # Results:
@@ -78,12 +86,26 @@ A description of the work team.
 =head2 B<REQUIRED> MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
 
 A list of C<MemberDefinition> objects that contains objects that
-identify the Amazon Cognito user pool that makes up the work team. For
-more information, see Amazon Cognito User Pools
+identify the workers that make up the work team.
+
+Workforces can be created using Amazon Cognito or your own OIDC
+Identity Provider (IdP). For private workforces created using Amazon
+Cognito use C<CognitoMemberDefinition>. For workforces created using
+your own OIDC identity provider (IdP) use C<OidcMemberDefinition>. Do
+not provide input for both of these parameters in a single request.
+
+For workforces created using Amazon Cognito, private work teams
+correspond to Amazon Cognito I<user groups> within the user pool used
+to create a workforce. All of the C<CognitoMemberDefinition> objects
+that make up the member definition must have the same C<ClientId> and
+C<UserPool> values. To add a Amazon Cognito user group to an existing
+worker pool, see Adding groups to a User Pool. For more information
+about user pools, see Amazon Cognito User Pools
 (https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
 
-All of the C<CognitoMemberDefinition> objects that make up the member
-definition must have the same C<ClientId> and C<UserPool> values.
+For workforces created using your own OIDC IdP, specify the user groups
+that you want to include in your private work team in
+C<OidcMemberDefinition> by listing those groups in C<Groups>.
 
 
 
@@ -103,6 +125,12 @@ For more information, see Resource Tag
 and Using Cost Allocation Tags
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I< AWS Billing and Cost Management User Guide>.
+
+
+
+=head2 WorkforceName => Str
+
+The name of the workforce.
 
 
 

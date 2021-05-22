@@ -1,9 +1,10 @@
 
 package Paws::SageMaker::RenderUiTemplate;
   use Moose;
+  has HumanTaskUiArn => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has Task => (is => 'ro', isa => 'Paws::SageMaker::RenderableTask', required => 1);
-  has UiTemplate => (is => 'ro', isa => 'Paws::SageMaker::UiTemplate', required => 1);
+  has UiTemplate => (is => 'ro', isa => 'Paws::SageMaker::UiTemplate');
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Input => 'MyTaskInput',    # min: 2, max: 128000
 
       },
-      UiTemplate => {
-        Content => 'MyTemplateContent',    # min: 1, max: 128000
+      HumanTaskUiArn => 'MyHumanTaskUiArn',    # OPTIONAL
+      UiTemplate     => {
+        Content => 'MyTemplateContent',        # min: 1, max: 128000
 
-      },
-
+      },    # OPTIONAL
     );
 
     # Results:
@@ -52,6 +53,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/RenderUiTemplate>
 
 =head1 ATTRIBUTES
+
+
+=head2 HumanTaskUiArn => Str
+
+The C<HumanTaskUiArn> of the worker UI that you want to render. Do not
+provide a C<HumanTaskUiArn> if you use the C<UiTemplate> parameter.
+
+See a list of available Human Ui Amazon Resource Names (ARNs) in
+UiConfig.
+
 
 
 =head2 B<REQUIRED> RoleArn => Str
@@ -67,7 +78,7 @@ A C<RenderableTask> object containing a representative task to render.
 
 
 
-=head2 B<REQUIRED> UiTemplate => L<Paws::SageMaker::UiTemplate>
+=head2 UiTemplate => L<Paws::SageMaker::UiTemplate>
 
 A C<Template> object containing the worker UI template to render.
 

@@ -33,10 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationTime    = $DescribeHumanTaskUiResponse->CreationTime;
-    my $HumanTaskUiArn  = $DescribeHumanTaskUiResponse->HumanTaskUiArn;
-    my $HumanTaskUiName = $DescribeHumanTaskUiResponse->HumanTaskUiName;
-    my $UiTemplate      = $DescribeHumanTaskUiResponse->UiTemplate;
+    my $CreationTime      = $DescribeHumanTaskUiResponse->CreationTime;
+    my $HumanTaskUiArn    = $DescribeHumanTaskUiResponse->HumanTaskUiArn;
+    my $HumanTaskUiName   = $DescribeHumanTaskUiResponse->HumanTaskUiName;
+    my $HumanTaskUiStatus = $DescribeHumanTaskUiResponse->HumanTaskUiStatus;
+    my $UiTemplate        = $DescribeHumanTaskUiResponse->UiTemplate;
 
     # Returns a L<Paws::SageMaker::DescribeHumanTaskUiResponse> object.
 
@@ -48,7 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> HumanTaskUiName => Str
 
-The name of the human task user interface you want information about.
+The name of the human task user interface (worker task template) you
+want information about.
 
 
 

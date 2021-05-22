@@ -38,7 +38,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A collection of settings.
+A collection of settings that apply to users of Amazon SageMaker
+Studio. These settings are specified when the C<CreateUserProfile> API
+is called, and as C<DefaultUserSettings> when the C<CreateDomain> API
+is called.
+
+C<SecurityGroups> is aggregated when specified in both calls. For all
+other settings in C<UserSettings>, the values specified in
+C<CreateUserProfile> take precedence over those specified in
+C<CreateDomain>.
 
 =head1 ATTRIBUTES
 
@@ -60,12 +68,23 @@ The kernel gateway app settings.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-The security groups.
+The security groups for the Amazon Virtual Private Cloud (VPC) that
+Studio uses for communication.
+
+Optional when the C<CreateDomain.AppNetworkAccessType> parameter is set
+to C<PublicInternetOnly>.
+
+Required when the C<CreateDomain.AppNetworkAccessType> parameter is set
+to C<VpcOnly>.
+
+Amazon SageMaker adds a security group to allow NFS traffic from
+SageMaker Studio. Therefore, the number of security groups that you can
+specify is one less than the maximum number shown.
 
 
 =head2 SharingSettings => L<Paws::SageMaker::SharingSettings>
 
-The sharing settings.
+Specifies options for sharing SageMaker Studio notebooks.
 
 
 =head2 TensorBoardAppSettings => L<Paws::SageMaker::TensorBoardAppSettings>

@@ -73,6 +73,9 @@ The Amazon S3 path where the model artifacts, which result from model
 training, are stored. This path must point to a single C<gzip>
 compressed tar archive (C<.tar.gz> suffix).
 
+The model artifacts must be in an S3 bucket that is in the same region
+as the model package.
+
 
 =head2 ProductId => Str
 

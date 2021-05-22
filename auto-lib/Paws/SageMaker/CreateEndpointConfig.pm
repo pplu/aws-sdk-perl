@@ -42,6 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VariantName     => 'MyVariantName',    # max: 63
           AcceleratorType => 'ml.eia1.medium'
           , # values: ml.eia1.medium, ml.eia1.large, ml.eia1.xlarge, ml.eia2.medium, ml.eia2.large, ml.eia2.xlarge; OPTIONAL
+          CoreDumpConfig => {
+            DestinationS3Uri => 'MyDestinationS3Uri',    # max: 512
+            KmsKeyId         => 'MyKmsKeyId',            # max: 2048; OPTIONAL
+          },    # OPTIONAL
           InitialVariantWeight => 1.0,    # OPTIONAL
         },
         ...
@@ -58,10 +62,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InitialSamplingPercentage => 1,                       # max: 100
         CaptureContentTypeHeader  => {
           CsvContentTypes => [
-            'MyCsvContentType', ...                           # min: 1
+            'MyCsvContentType', ...                           # min: 1, max: 256
           ],    # min: 1, max: 10; OPTIONAL
           JsonContentTypes => [
-            'MyJsonContentType', ...    # min: 1
+            'MyJsonContentType', ...    # min: 1, max: 256
           ],                            # min: 1, max: 10; OPTIONAL
         },    # OPTIONAL
         EnableCapture => 1,               # OPTIONAL
@@ -98,9 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> EndpointConfigName => Str
 
 The name of the endpoint configuration. You specify this name in a
-CreateEndpoint
-(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
-request.
+CreateEndpoint request.
 
 
 
@@ -169,10 +171,10 @@ want to host at this endpoint.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-A list of key-value pairs. For more information, see Using Cost
-Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I< AWS Billing and Cost Management User Guide>.
+An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

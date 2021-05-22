@@ -50,7 +50,7 @@ A C<SearchExpression> contains the following components:
 
 A list of C<Filter> objects. Each filter defines a simple Boolean
 expression comprised of a resource property name, Boolean operator, and
-value. A C<SearchExpression> can include only one C<Contains> operator.
+value.
 
 =item *
 

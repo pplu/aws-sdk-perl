@@ -85,7 +85,7 @@ C<"relative/path/custdata-N">
 
 C<]>
 
-The preceding JSON matches the following C<s3Uris>:
+The preceding JSON matches the following C<S3Uris>:
 
 C<s3://customer_bucket/some/prefix/relative/path/to/custdata-1>
 

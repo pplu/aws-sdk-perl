@@ -35,24 +35,45 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Configuration for the experiment.
+Associates a SageMaker job as a trial component with an experiment and
+trial. Specified when you call the following APIs:
+
+=over
+
+=item *
+
+CreateProcessingJob
+
+=item *
+
+CreateTrainingJob
+
+=item *
+
+CreateTransformJob
+
+=back
+
 
 =head1 ATTRIBUTES
 
 
 =head2 ExperimentName => Str
 
-The name of the experiment.
+The name of an existing experiment to associate the trial component
+with.
 
 
 =head2 TrialComponentDisplayName => Str
 
-Display name for the trial component.
+The display name for the trial component. If this key isn't specified,
+the display name is the trial component name.
 
 
 =head2 TrialName => Str
 
-The name of the trial.
+The name of an existing trial to associate the trial component with. If
+not specified, a new trial is created.
 
 
 

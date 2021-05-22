@@ -73,7 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> HyperParameterTuningJobName => Str
 
-The name of the tuning job to describe.
+The name of the tuning job.
 
 
 

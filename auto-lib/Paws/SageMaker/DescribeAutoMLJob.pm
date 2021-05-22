@@ -47,9 +47,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FailureReason   = $DescribeAutoMLJobResponse->FailureReason;
     my $GenerateCandidateDefinitionsOnly =
       $DescribeAutoMLJobResponse->GenerateCandidateDefinitionsOnly;
-    my $InputDataConfig    = $DescribeAutoMLJobResponse->InputDataConfig;
-    my $LastModifiedTime   = $DescribeAutoMLJobResponse->LastModifiedTime;
-    my $OutputDataConfig   = $DescribeAutoMLJobResponse->OutputDataConfig;
+    my $InputDataConfig   = $DescribeAutoMLJobResponse->InputDataConfig;
+    my $LastModifiedTime  = $DescribeAutoMLJobResponse->LastModifiedTime;
+    my $ModelDeployConfig = $DescribeAutoMLJobResponse->ModelDeployConfig;
+    my $ModelDeployResult = $DescribeAutoMLJobResponse->ModelDeployResult;
+    my $OutputDataConfig  = $DescribeAutoMLJobResponse->OutputDataConfig;
+    my $PartialFailureReasons =
+      $DescribeAutoMLJobResponse->PartialFailureReasons;
     my $ProblemType        = $DescribeAutoMLJobResponse->ProblemType;
     my $ResolvedAttributes = $DescribeAutoMLJobResponse->ResolvedAttributes;
     my $RoleArn            = $DescribeAutoMLJobResponse->RoleArn;
@@ -64,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> AutoMLJobName => Str
 
-Request information about a job using that job's unique name.
+Requests information about an AutoML job using its unique name.
 
 
 

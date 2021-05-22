@@ -8,6 +8,7 @@ package Paws::SageMaker::Workteam;
   has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
   has ProductListingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubDomain => (is => 'ro', isa => 'Str');
+  has WorkforceArn => (is => 'ro', isa => 'Str');
   has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
   has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -63,7 +64,13 @@ The date and time that the work team was last updated (timestamp).
 
 =head2 B<REQUIRED> MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
 
-The Amazon Cognito user groups that make up the work team.
+A list of C<MemberDefinition> objects that contains objects that
+identify the workers that make up the work team.
+
+Workforces can be created using Amazon Cognito or your own OIDC
+Identity Provider (IdP). For private workforces created using Amazon
+Cognito use C<CognitoMemberDefinition>. For workforces created using
+your own OIDC identity provider (IdP) use C<OidcMemberDefinition>.
 
 
 =head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
@@ -81,6 +88,11 @@ The Amazon Marketplace identifier for a vendor's work team.
 
 The URI of the labeling job's user interface. Workers open this URI to
 start labeling your data objects.
+
+
+=head2 WorkforceArn => Str
+
+The Amazon Resource Name (ARN) of the workforce.
 
 
 =head2 B<REQUIRED> WorkteamArn => Str

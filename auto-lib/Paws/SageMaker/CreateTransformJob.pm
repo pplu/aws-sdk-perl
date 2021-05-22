@@ -7,6 +7,7 @@ package Paws::SageMaker::CreateTransformJob;
   has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
+  has ModelClientConfig => (is => 'ro', isa => 'Paws::SageMaker::ModelClientConfig');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TransformInput => (is => 'ro', isa => 'Paws::SageMaker::TransformInput', required => 1);
@@ -78,21 +79,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyTransformEnvironmentValue',    # key: max: 1024, value: max: 10240
       },    # OPTIONAL
       ExperimentConfig => {
-        ExperimentName => 'MyExperimentConfigName',  # min: 1, max: 64; OPTIONAL
+        ExperimentName => 'MyExperimentEntityName', # min: 1, max: 120; OPTIONAL
         TrialComponentDisplayName =>
-          'MyExperimentConfigName',                  # min: 1, max: 64; OPTIONAL
-        TrialName => 'MyExperimentConfigName',       # min: 1, max: 64; OPTIONAL
+          'MyExperimentEntityName',                 # min: 1, max: 120; OPTIONAL
+        TrialName => 'MyExperimentEntityName',      # min: 1, max: 120; OPTIONAL
       },    # OPTIONAL
       MaxConcurrentTransforms => 1,    # OPTIONAL
       MaxPayloadInMB          => 1,    # OPTIONAL
-      Tags                    => [
+      ModelClientConfig       => {
+        InvocationsMaxRetries       => 1,    # max: 3; OPTIONAL
+        InvocationsTimeoutInSeconds => 1,    # min: 1, max: 3600; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
-          Key   => 'MyTagKey',         # min: 1, max: 128
-          Value => 'MyTagValue',       # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                               # OPTIONAL
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -113,8 +118,8 @@ inference request. A I<record> I< is a single unit of input data that
 inference can be made on. For example, a single line in a CSV file is a
 record.>
 
-To enable the batch strategy, you must set the C<SplitType> property of
-the DataProcessing object to C<Line>, C<RecordIO>, or C<TFRecord>.
+To enable the batch strategy, you must set the C<SplitType> property to
+C<Line>, C<RecordIO>, or C<TFRecord>.
 
 To use only one record when making an HTTP invocation request to a
 container, set C<BatchStrategy> to C<SingleRecord> and C<SplitType> to
@@ -182,6 +187,13 @@ For cases where the payload might be arbitrarily large and is
 transmitted using HTTP chunked encoding, set the value to C<0>. This
 feature works only in supported algorithms. Currently, Amazon SageMaker
 built-in algorithms do not support HTTP chunked encoding.
+
+
+
+=head2 ModelClientConfig => L<Paws::SageMaker::ModelClientConfig>
+
+Configures the timeout and maximum number of retries for processing a
+transform job invocation.
 
 
 

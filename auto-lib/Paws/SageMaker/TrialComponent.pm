@@ -8,6 +8,7 @@ package Paws::SageMaker::TrialComponent;
   has InputArtifacts => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentArtifacts');
   has LastModifiedBy => (is => 'ro', isa => 'Paws::SageMaker::UserContext');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
+  has MetadataProperties => (is => 'ro', isa => 'Paws::SageMaker::MetadataProperties');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::TrialComponentMetricSummary]');
   has OutputArtifacts => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentArtifacts');
   has Parameters => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentParameters');
@@ -50,8 +51,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A summary of the properties of a trial component as returned by the
-Search API.
+The properties of a trial component as returned by the Search API.
 
 =head1 ATTRIBUTES
 
@@ -92,6 +92,11 @@ The input artifacts of the component.
 When the component was last modified.
 
 
+=head2 MetadataProperties => L<Paws::SageMaker::MetadataProperties>
+
+
+
+
 =head2 Metrics => ArrayRef[L<Paws::SageMaker::TrialComponentMetricSummary>]
 
 The metrics for the component.
@@ -116,12 +121,13 @@ component might not have any parents.
 
 =head2 Source => L<Paws::SageMaker::TrialComponentSource>
 
-
+The Amazon Resource Name (ARN) and job type of the source of the
+component.
 
 
 =head2 SourceDetail => L<Paws::SageMaker::TrialComponentSourceDetail>
 
-The source of the trial component.E<gt>
+Details of the source of the component.
 
 
 =head2 StartTime => Str

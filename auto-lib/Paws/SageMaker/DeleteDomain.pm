@@ -49,7 +49,7 @@ The domain ID.
 
 =head2 RetentionPolicy => L<Paws::SageMaker::RetentionPolicy>
 
-The retention policy for this domain, which specifies which resources
+The retention policy for this domain, which specifies whether resources
 will be retained after the Domain is deleted. By default, all resources
 are retained (not automatically deleted).
 

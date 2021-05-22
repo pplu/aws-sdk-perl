@@ -8,6 +8,7 @@ package Paws::SageMaker::DescribeEndpointOutput;
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
   has EndpointStatus => (is => 'ro', isa => 'Str', required => 1);
   has FailureReason => (is => 'ro', isa => 'Str');
+  has LastDeploymentConfig => (is => 'ro', isa => 'Paws::SageMaker::DeploymentConfig');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has ProductionVariants => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProductionVariantSummary]');
 
@@ -107,6 +108,11 @@ Valid values are: C<"OutOfService">, C<"Creating">, C<"Updating">, C<"SystemUpda
 =head2 FailureReason => Str
 
 If the status of the endpoint is C<Failed>, the reason why it failed.
+
+
+=head2 LastDeploymentConfig => L<Paws::SageMaker::DeploymentConfig>
+
+The most recent deployment configuration for the endpoint.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str

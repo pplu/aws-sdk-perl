@@ -10,6 +10,7 @@ package Paws::SageMaker::DescribeMonitoringScheduleResponse;
   has MonitoringScheduleConfig => (is => 'ro', isa => 'Paws::SageMaker::MonitoringScheduleConfig', required => 1);
   has MonitoringScheduleName => (is => 'ro', isa => 'Str', required => 1);
   has MonitoringScheduleStatus => (is => 'ro', isa => 'Str', required => 1);
+  has MonitoringType => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -69,6 +70,34 @@ Name of the monitoring schedule.
 The status of an monitoring job.
 
 Valid values are: C<"Pending">, C<"Failed">, C<"Scheduled">, C<"Stopped">
+=head2 MonitoringType => Str
+
+The type of the monitoring job that this schedule runs. This is one of
+the following values.
+
+=over
+
+=item *
+
+C<DATA_QUALITY> - The schedule is for a data quality monitoring job.
+
+=item *
+
+C<MODEL_QUALITY> - The schedule is for a model quality monitoring job.
+
+=item *
+
+C<MODEL_BIAS> - The schedule is for a bias monitoring job.
+
+=item *
+
+C<MODEL_EXPLAINABILITY> - The schedule is for an explainability
+monitoring job.
+
+=back
+
+
+Valid values are: C<"DataQuality">, C<"ModelQuality">, C<"ModelBias">, C<"ModelExplainability">
 =head2 _request_id => Str
 
 
