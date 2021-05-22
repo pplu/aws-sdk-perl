@@ -37,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DefaultOu                       => 'MyDefaultOu',    # OPTIONAL
         EnableInternetAccess            => 1,                # OPTIONAL
         EnableMaintenanceMode           => 1,                # OPTIONAL
+        EnableWorkDocs                  => 1,                # OPTIONAL
         UserEnabledAsLocalAdministrator => 1,                # OPTIONAL
       },
 

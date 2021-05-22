@@ -2,6 +2,7 @@
 package Paws::WorkSpaces::DescribeWorkspaceImages;
   use Moose;
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ImageType => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $workspaces = Paws->service('WorkSpaces');
     my $DescribeWorkspaceImagesResult = $workspaces->DescribeWorkspaceImages(
       ImageIds   => [ 'MyWorkspaceImageId', ... ],    # OPTIONAL
+      ImageType  => 'OWNED',                          # OPTIONAL
       MaxResults => 1,                                # OPTIONAL
       NextToken  => 'MyPaginationToken',              # OPTIONAL
     );
@@ -52,6 +54,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 The identifier of the image.
 
 
+
+=head2 ImageType => Str
+
+The type (owned or shared) of the image.
+
+Valid values are: C<"OWNED">, C<"SHARED">
 
 =head2 MaxResults => Int
 

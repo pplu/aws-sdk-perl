@@ -59,7 +59,9 @@ The identifier of the bundle used to create the WorkSpace.
 
 =head2 ComputerName => Str
 
-The name of the WorkSpace, as seen by the operating system.
+The name of the WorkSpace, as seen by the operating system. The format
+of this name varies. For more information, see Launch a WorkSpace
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/launch-workspaces-tutorials.html).
 
 
 =head2 DirectoryId => Str
@@ -97,6 +99,14 @@ Indicates whether the data stored on the root volume is encrypted.
 =head2 State => Str
 
 The operational state of the WorkSpace.
+
+After a WorkSpace is terminated, the C<TERMINATED> state is returned
+only briefly before the WorkSpace directory metadata is cleaned up, so
+this state is rarely returned. To confirm that a WorkSpace is
+terminated, check for the WorkSpace ID by using DescribeWorkSpaces
+(https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html).
+If the WorkSpace ID isn't returned, then the WorkSpace has been
+successfully terminated.
 
 
 =head2 SubnetId => Str

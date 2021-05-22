@@ -66,8 +66,8 @@ previous call.)
 The owner of the bundles. You cannot combine this parameter with any
 other filter.
 
-Specify C<AMAZON> to describe the bundles provided by AWS or null to
-describe the bundles that belong to your account.
+To describe the bundles provided by AWS, specify C<AMAZON>. To describe
+the bundles that belong to your account, don't specify a value.
 
 
 

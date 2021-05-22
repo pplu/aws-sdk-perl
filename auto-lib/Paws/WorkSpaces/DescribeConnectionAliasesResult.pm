@@ -1,7 +1,7 @@
 
-package Paws::WorkSpaces::DescribeWorkspaceImagesResult;
+package Paws::WorkSpaces::DescribeConnectionAliasesResult;
   use Moose;
-  has Images => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceImage]');
+  has ConnectionAliases => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::ConnectionAlias]');
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -10,14 +10,14 @@ package Paws::WorkSpaces::DescribeWorkspaceImagesResult;
 
 =head1 NAME
 
-Paws::WorkSpaces::DescribeWorkspaceImagesResult
+Paws::WorkSpaces::DescribeConnectionAliasesResult
 
 =head1 ATTRIBUTES
 
 
-=head2 Images => ArrayRef[L<Paws::WorkSpaces::WorkspaceImage>]
+=head2 ConnectionAliases => ArrayRef[L<Paws::WorkSpaces::ConnectionAlias>]
 
-Information about the images.
+Information about the specified connection aliases.
 
 
 =head2 NextToken => Str

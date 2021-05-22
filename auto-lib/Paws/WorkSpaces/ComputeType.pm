@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes the compute type.
+Describes the compute type of the bundle.
 
 =head1 ATTRIBUTES
 

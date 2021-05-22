@@ -50,7 +50,9 @@ The compute type. For more information, see Amazon WorkSpaces Bundles
 
 =head2 RootVolumeSizeGib => Int
 
-The size of the root volume.
+The size of the root volume. For important information about how to
+modify the size of the root and user volumes, see Modify a WorkSpace
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
 
 
 =head2 RunningMode => Str
@@ -68,7 +70,9 @@ stopped. Configured in 60-minute intervals.
 
 =head2 UserVolumeSizeGib => Int
 
-The size of the user storage.
+The size of the user storage. For important information about how to
+modify the size of the root and user volumes, see Modify a WorkSpace
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
 
 
 

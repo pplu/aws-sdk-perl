@@ -17,8 +17,8 @@ Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next set of results, or null if no
-more results are available.
+The token to use to retrieve the next page of results. This value is
+null when there are no more results to return.
 
 
 =head2 WorkspacesConnectionStatus => ArrayRef[L<Paws::WorkSpaces::WorkspaceConnectionStatus>]
