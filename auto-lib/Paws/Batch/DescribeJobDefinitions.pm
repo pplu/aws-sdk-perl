@@ -66,12 +66,12 @@ A list of up to 100 job definition names or full Amazon Resource Name
 The maximum number of results returned by C<DescribeJobDefinitions> in
 paginated output. When this parameter is used,
 C<DescribeJobDefinitions> only returns C<maxResults> results in a
-single page along with a C<nextToken> response element. The remaining
-results of the initial request can be seen by sending another
+single page and a C<nextToken> response element. The remaining results
+of the initial request can be seen by sending another
 C<DescribeJobDefinitions> request with the returned C<nextToken> value.
-This value can be between 1 and 100. If this parameter is not used,
-then C<DescribeJobDefinitions> returns up to 100 results and a
-C<nextToken> value if applicable.
+This value can be between 1 and 100. If this parameter isn't used, then
+C<DescribeJobDefinitions> returns up to 100 results and a C<nextToken>
+value if applicable.
 
 
 
@@ -83,7 +83,7 @@ results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
 
-This token should be treated as an opaque identifier that is only used
+This token should be treated as an opaque identifier that's only used
 to retrieve the next items in a list and not for other programmatic
 purposes.
 
@@ -91,7 +91,7 @@ purposes.
 
 =head2 Status => Str
 
-The status with which to filter job definitions.
+The status used to filter job definitions.
 
 
 

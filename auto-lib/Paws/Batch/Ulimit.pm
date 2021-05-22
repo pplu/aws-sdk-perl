@@ -37,6 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Ulim
 
 The C<ulimit> settings to pass to the container.
 
+This object isn't applicable to jobs running on Fargate resources.
+
 =head1 ATTRIBUTES
 
 

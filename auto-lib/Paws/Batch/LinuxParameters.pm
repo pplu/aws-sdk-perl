@@ -2,6 +2,11 @@
 package Paws::Batch::LinuxParameters;
   use Moose;
   has Devices => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Device]', request_name => 'devices', traits => ['NameInRequest']);
+  has InitProcessEnabled => (is => 'ro', isa => 'Bool', request_name => 'initProcessEnabled', traits => ['NameInRequest']);
+  has MaxSwap => (is => 'ro', isa => 'Int', request_name => 'maxSwap', traits => ['NameInRequest']);
+  has SharedMemorySize => (is => 'ro', isa => 'Int', request_name => 'sharedMemorySize', traits => ['NameInRequest']);
+  has Swappiness => (is => 'ro', isa => 'Int', request_name => 'swappiness', traits => ['NameInRequest']);
+  has Tmpfs => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Tmpfs]', request_name => 'tmpfs', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::LinuxParameters object:
 
-  $service_obj->Method(Att1 => { Devices => $value, ..., Devices => $value  });
+  $service_obj->Method(Att1 => { Devices => $value, ..., Tmpfs => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +52,110 @@ C<Devices> in the Create a container
 of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--device> option to docker run
 (https://docs.docker.com/engine/reference/run/).
+
+This parameter isn't applicable to jobs running on Fargate resources
+and shouldn't be provided.
+
+
+=head2 InitProcessEnabled => Bool
+
+If true, run an C<init> process inside the container that forwards
+signals and reaps processes. This parameter maps to the C<--init>
+option to docker run (https://docs.docker.com/engine/reference/run/).
+This parameter requires version 1.25 of the Docker Remote API or
+greater on your container instance. To check the Docker Remote API
+version on your container instance, log into your container instance
+and run the following command: C<sudo docker version | grep "Server API
+version">
+
+
+=head2 MaxSwap => Int
+
+The total amount of swap memory (in MiB) a container can use. This
+parameter is translated to the C<--memory-swap> option to docker run
+(https://docs.docker.com/engine/reference/run/) where the value is the
+sum of the container memory plus the C<maxSwap> value. For more
+information, see C<--memory-swap> details
+(https://docs.docker.com/config/containers/resource_constraints/#--memory-swap-details)
+in the Docker documentation.
+
+If a C<maxSwap> value of C<0> is specified, the container doesn't use
+swap. Accepted values are C<0> or any positive integer. If the
+C<maxSwap> parameter is omitted, the container doesn't use the swap
+configuration for the container instance it is running on. A C<maxSwap>
+value must be set for the C<swappiness> parameter to be used.
+
+This parameter isn't applicable to jobs running on Fargate resources
+and shouldn't be provided.
+
+
+=head2 SharedMemorySize => Int
+
+The value for the size (in MiB) of the C</dev/shm> volume. This
+parameter maps to the C<--shm-size> option to docker run
+(https://docs.docker.com/engine/reference/run/).
+
+This parameter isn't applicable to jobs running on Fargate resources
+and shouldn't be provided.
+
+
+=head2 Swappiness => Int
+
+This allows you to tune a container's memory swappiness behavior. A
+C<swappiness> value of C<0> causes swapping not to happen unless
+absolutely necessary. A C<swappiness> value of C<100> causes pages to
+be swapped very aggressively. Accepted values are whole numbers between
+C<0> and C<100>. If the C<swappiness> parameter isn't specified, a
+default value of C<60> is used. If a value isn't specified for
+C<maxSwap> then this parameter is ignored. If C<maxSwap> is set to 0,
+the container doesn't use swap. This parameter maps to the
+C<--memory-swappiness> option to docker run
+(https://docs.docker.com/engine/reference/run/).
+
+Consider the following when you use a per-container swap configuration.
+
+=over
+
+=item *
+
+Swap space must be enabled and allocated on the container instance for
+the containers to use.
+
+The Amazon ECS optimized AMIs don't have swap enabled by default. You
+must enable swap on the instance to use this feature. For more
+information, see Instance Store Swap Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-swap-volumes.html)
+in the I<Amazon EC2 User Guide for Linux Instances> or How do I
+allocate memory to work as swap space in an Amazon EC2 instance by
+using a swap file?
+(http://aws.amazon.com/premiumsupport/knowledge-center/ec2-memory-swap-file/)
+
+=item *
+
+The swap space parameters are only supported for job definitions using
+EC2 resources.
+
+=item *
+
+If the C<maxSwap> and C<swappiness> parameters are omitted from a job
+definition, each container will have a default C<swappiness> value of
+60, and the total swap usage will be limited to two times the memory
+reservation of the container.
+
+=back
+
+This parameter isn't applicable to jobs running on Fargate resources
+and shouldn't be provided.
+
+
+=head2 Tmpfs => ArrayRef[L<Paws::Batch::Tmpfs>]
+
+The container path, mount options, and size (in MiB) of the tmpfs
+mount. This parameter maps to the C<--tmpfs> option to docker run
+(https://docs.docker.com/engine/reference/run/).
+
+This parameter isn't applicable to jobs running on Fargate resources
+and shouldn't be provided.
 
 
 

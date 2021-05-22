@@ -54,8 +54,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 
 Details the set of compute environments mapped to a job queue and their
 order relative to each other. This is one of the parameters used by the
-job scheduler to determine which compute environment should execute a
-given job.
+job scheduler to determine which compute environment should run a given
+job. Compute environments must be in the C<VALID> state before you can
+associate them with a job queue. All of the compute environments must
+be either EC2 (C<EC2> or C<SPOT>) or Fargate (C<FARGATE> or
+C<FARGATE_SPOT>). EC2 and Fargate compute environments can't be mixed.
+
+All compute environments that are associated with a job queue must
+share the same architecture. AWS Batch doesn't support mixing compute
+environment architecture types in a single job queue.
 
 
 
@@ -72,13 +79,18 @@ higher integer value for the C<priority> parameter) are evaluated first
 when associated with the same compute environment. Priority is
 determined in descending order, for example, a job queue with a
 priority value of C<10> is given scheduling preference over a job queue
-with a priority value of C<1>.
+with a priority value of C<1>. All of the compute environments must be
+either EC2 (C<EC2> or C<SPOT>) or Fargate (C<FARGATE> or
+C<FARGATE_SPOT>). EC2 and Fargate compute environments can't be mixed.
 
 
 
 =head2 State => Str
 
-Describes the queue's ability to accept new jobs.
+Describes the queue's ability to accept new jobs. If the job queue
+state is C<ENABLED>, it can accept jobs. If the job queue state is
+C<DISABLED>, new jobs can't be added to the queue, but jobs already in
+the queue can finish.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 

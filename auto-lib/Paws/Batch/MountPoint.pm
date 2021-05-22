@@ -35,9 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Moun
 
 =head1 DESCRIPTION
 
-Details on a Docker volume mount point that is used in a job's
-container properties. This parameter maps to C<Volumes> in the Create a
-container
+Details on a Docker volume mount point that's used in a job's container
+properties. This parameter maps to C<Volumes> in the Create a container
 (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.19/#create-a-container)
 section of the Docker Remote API and the C<--volume> option to docker
 run.
@@ -47,13 +46,13 @@ run.
 
 =head2 ContainerPath => Str
 
-The path on the container at which to mount the host volume.
+The path on the container where the host volume is mounted.
 
 
 =head2 ReadOnly => Bool
 
 If this value is C<true>, the container has read-only access to the
-volume; otherwise, the container can write to the volume. The default
+volume. Otherwise, the container can write to the volume. The default
 value is C<false>.
 
 

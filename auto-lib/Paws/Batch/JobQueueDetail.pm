@@ -8,6 +8,7 @@ package Paws::Batch::JobQueueDetail;
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagrisTagsMap', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
 
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::JobQueueDetail object:
 
-  $service_obj->Method(Att1 => { ComputeEnvironmentOrder => $value, ..., StatusReason => $value  });
+  $service_obj->Method(Att1 => { ComputeEnvironmentOrder => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,7 +48,7 @@ An object representing the details of an AWS Batch job queue.
 =head2 B<REQUIRED> ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>]
 
 The compute environments that are attached to the job queue and the
-order in which job placement is preferred. Compute environments are
+order that job placement is preferred. Compute environments are
 selected for job placement in ascending order.
 
 
@@ -63,12 +64,22 @@ The name of the job queue.
 
 =head2 B<REQUIRED> Priority => Int
 
-The priority of the job queue.
+The priority of the job queue. Job queues with a higher priority (or a
+higher integer value for the C<priority> parameter) are evaluated first
+when associated with the same compute environment. Priority is
+determined in descending order, for example, a job queue with a
+priority value of C<10> is given scheduling preference over a job queue
+with a priority value of C<1>. All of the compute environments must be
+either EC2 (C<EC2> or C<SPOT>) or Fargate (C<FARGATE> or
+C<FARGATE_SPOT>); EC2 and Fargate compute environments can't be mixed.
 
 
 =head2 B<REQUIRED> State => Str
 
-Describes the ability of the queue to accept new jobs.
+Describes the ability of the queue to accept new jobs. If the job queue
+state is C<ENABLED>, it's able to accept jobs. If the job queue state
+is C<DISABLED>, new jobs can't be added to the queue, but jobs already
+in the queue can finish.
 
 
 =head2 Status => Str
@@ -80,6 +91,14 @@ The status of the job queue (for example, C<CREATING> or C<VALID>).
 
 A short, human-readable string to provide additional details about the
 current status of the job queue.
+
+
+=head2 Tags => L<Paws::Batch::TagrisTagsMap>
+
+The tags applied to the job queue. For more information, see Tagging
+your AWS Batch resources
+(https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html) in
+I<AWS Batch User Guide>.
 
 
 

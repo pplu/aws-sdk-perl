@@ -4,6 +4,8 @@ package Paws::Batch::ComputeResourceUpdate;
   has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
   has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest']);
   has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest']);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::ComputeResourceUpdate object:
 
-  $service_obj->Method(Att1 => { DesiredvCpus => $value, ..., MinvCpus => $value  });
+  $service_obj->Method(Att1 => { DesiredvCpus => $value, ..., Subnets => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,7 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Comp
 =head1 DESCRIPTION
 
 An object representing the attributes of a compute environment that can
-be updated.
+be updated. For more information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -45,16 +49,48 @@ be updated.
 
 The desired number of Amazon EC2 vCPUS in the compute environment.
 
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
 
 =head2 MaxvCpus => Int
 
 The maximum number of Amazon EC2 vCPUs that an environment can reach.
+
+With both C<BEST_FIT_PROGRESSIVE> and C<SPOT_CAPACITY_OPTIMIZED>
+allocation strategies, AWS Batch might need to exceed C<maxvCpus> to
+meet your capacity requirements. In this event, AWS Batch never exceeds
+C<maxvCpus> by more than a single instance. That is, no more than a
+single instance from among those specified in your compute environment.
 
 
 =head2 MinvCpus => Int
 
 The minimum number of Amazon EC2 vCPUs that an environment should
 maintain.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
+
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+The Amazon EC2 security groups associated with instances launched in
+the compute environment. This parameter is required for Fargate compute
+resources, where it can contain up to 5 security groups. This can't be
+specified for EC2 compute resources. Providing an empty list is handled
+as if this parameter wasn't specified and no change is made.
+
+
+=head2 Subnets => ArrayRef[Str|Undef]
+
+The VPC subnets that the compute resources are launched into. Fargate
+compute resources can contain up to 16 subnets. Providing an empty list
+will be handled as if this parameter wasn't specified and no change is
+made. This can't be specified for EC2 compute resources. For more
+information, see VPCs and Subnets
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in
+the I<Amazon VPC User Guide>.
 
 
 

@@ -39,6 +39,13 @@ An object representing a launch template associated with a compute
 resource. You must specify either the launch template ID or launch
 template name in the request, but not both.
 
+If security groups are specified using both the C<securityGroupIds>
+parameter of C<CreateComputeEnvironment> and the launch template, the
+values in the C<securityGroupIds> parameter of
+C<CreateComputeEnvironment> will be used.
+
+This object isn't applicable to jobs running on Fargate resources.
+
 =head1 ATTRIBUTES
 
 
@@ -54,9 +61,20 @@ The name of the launch template.
 
 =head2 Version => Str
 
-The version number of the launch template.
+The version number of the launch template, C<$Latest>, or C<$Default>.
 
-Default: The default version of the launch template.
+If the value is C<$Latest>, the latest version of the launch template
+is used. If the value is C<$Default>, the default version of the launch
+template is used.
+
+After the compute environment is created, the launch template version
+used will not be changed, even if the C<$Default> or C<$Latest> version
+for the launch template is updated. To use a new launch template
+version, create a new compute environment, add the new compute
+environment to the existing job queue, remove the old compute
+environment from the job queue, and delete the old compute environment.
+
+Default: C<$Default>.
 
 
 

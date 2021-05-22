@@ -2,6 +2,7 @@
 package Paws::Batch::RetryStrategy;
   use Moose;
   has Attempts => (is => 'ro', isa => 'Int', request_name => 'attempts', traits => ['NameInRequest']);
+  has EvaluateOnExit => (is => 'ro', isa => 'ArrayRef[Paws::Batch::EvaluateOnExit]', request_name => 'evaluateOnExit', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::RetryStrategy object:
 
-  $service_obj->Method(Att1 => { Attempts => $value, ..., Attempts => $value  });
+  $service_obj->Method(Att1 => { Attempts => $value, ..., EvaluateOnExit => $value  });
 
 =head3 Results returned from an API call
 
@@ -33,17 +34,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Retr
 
 =head1 DESCRIPTION
 
-The retry strategy associated with a job.
+The retry strategy associated with a job. For more information, see
+Automated job retries
+(https://docs.aws.amazon.com/batch/latest/userguide/job_retries.html)
+in the I<AWS Batch User Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attempts => Int
 
-The number of times to move a job to the C<RUNNABLE> status. You may
+The number of times to move a job to the C<RUNNABLE> status. You can
 specify between 1 and 10 attempts. If the value of C<attempts> is
 greater than one, the job is retried on failure the same number of
 attempts as the value.
+
+
+=head2 EvaluateOnExit => ArrayRef[L<Paws::Batch::EvaluateOnExit>]
+
+Array of up to 5 objects that specify conditions under which the job
+should be retried or failed. If this parameter is specified, then the
+C<attempts> parameter must also be specified.
 
 
 

@@ -9,7 +9,9 @@ package Paws::Batch::SubmitJob;
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
   has NodeOverrides => (is => 'ro', isa => 'Paws::Batch::NodeOverrides', traits => ['NameInRequest'], request_name => 'nodeOverrides');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
+  has PropagateTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'propagateTags');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagrisTagsMap', traits => ['NameInRequest'], request_name => 'tags');
   has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
 
   use MooseX::ClassAttribute;
@@ -71,13 +73,13 @@ the I<AWS Batch User Guide>.
 
 =head2 ContainerOverrides => L<Paws::Batch::ContainerOverrides>
 
-A list of container overrides in JSON format that specify the name of a
-container in the specified job definition and the overrides it should
-receive. You can override the default command for a container (that is
-specified in the job definition or the Docker image) with a C<command>
-override. You can also override existing environment variables (that
-are specified in the job definition or Docker image) on a container or
-add new environment variables to it with an C<environment> override.
+A list of container overrides in the JSON format that specify the name
+of a container in the specified job definition and the overrides it
+should receive. You can override the default command for a container,
+which is specified in the job definition or the Docker image, with a
+C<command> override. You can also override existing environment
+variables on a container or add new environment variables to it with an
+C<environment> override.
 
 
 
@@ -112,8 +114,8 @@ underscores are allowed.
 
 =head2 B<REQUIRED> JobQueue => Str
 
-The job queue into which the job is submitted. You can specify either
-the name or the Amazon Resource Name (ARN) of the queue.
+The job queue where the job is submitted. You can specify either the
+name or the Amazon Resource Name (ARN) of the queue.
 
 
 
@@ -121,6 +123,9 @@ the name or the Amazon Resource Name (ARN) of the queue.
 
 A list of node overrides in JSON format that specify the node range to
 target and the container overrides for that node range.
+
+This parameter isn't applicable to jobs running on Fargate resources;
+use C<containerOverrides> instead.
 
 
 
@@ -134,6 +139,19 @@ from the job definition.
 
 
 
+=head2 PropagateTags => Bool
+
+Specifies whether to propagate the tags from the job or job definition
+to the corresponding Amazon ECS task. If no value is specified, the
+tags aren't propagated. Tags can only be propagated to the tasks during
+task creation. For tags with the same name, job tags are given priority
+over job definitions tags. If the total number of combined tags from
+the job and job definition is over 50, the job is moved to the
+C<FAILED> state. When specified, this overrides the tag propagation
+setting in the job definition.
+
+
+
 =head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
 
 The retry strategy to use for failed jobs from this SubmitJob
@@ -142,11 +160,21 @@ retry strategy defined in the job definition.
 
 
 
+=head2 Tags => L<Paws::Batch::TagrisTagsMap>
+
+The tags that you apply to the job request to help you categorize and
+organize your resources. Each tag consists of a key and an optional
+value. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in
+I<AWS General Reference>.
+
+
+
 =head2 Timeout => L<Paws::Batch::JobTimeout>
 
 The timeout configuration for this SubmitJob operation. You can specify
 a timeout duration after which AWS Batch terminates your jobs if they
-have not finished. If a job is terminated due to a timeout, it is not
+haven't finished. If a job is terminated due to a timeout, it isn't
 retried. The minimum value for the timeout is 60 seconds. This
 configuration overrides any timeout configuration specified in the job
 definition. For array jobs, child jobs have the same timeout

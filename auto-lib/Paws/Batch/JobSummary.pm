@@ -4,6 +4,7 @@ package Paws::Batch::JobSummary;
   has ArrayProperties => (is => 'ro', isa => 'Paws::Batch::ArrayPropertiesSummary', request_name => 'arrayProperties', traits => ['NameInRequest']);
   has Container => (is => 'ro', isa => 'Paws::Batch::ContainerSummary', request_name => 'container', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Int', request_name => 'createdAt', traits => ['NameInRequest']);
+  has JobArn => (is => 'ro', isa => 'Str', request_name => 'jobArn', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
   has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
   has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodePropertiesSummary', request_name => 'nodeProperties', traits => ['NameInRequest']);
@@ -54,7 +55,7 @@ The array properties of the job, if it is an array job.
 
 =head2 Container => L<Paws::Batch::ContainerSummary>
 
-An object representing the details of the container that is associated
+An object representing the details of the container that's associated
 with the job.
 
 
@@ -65,6 +66,11 @@ parent array jobs, this is when the job entered the C<SUBMITTED> state
 (at the time SubmitJob was called). For array child jobs, this is when
 the child job was spawned by its parent and entered the C<PENDING>
 state.
+
+
+=head2 JobArn => Str
+
+The Amazon Resource Name (ARN) of the job.
 
 
 =head2 B<REQUIRED> JobId => Str
@@ -80,6 +86,8 @@ The name of the job.
 =head2 NodeProperties => L<Paws::Batch::NodePropertiesSummary>
 
 The node properties for a single node in a job summary list.
+
+This isn't applicable to jobs running on Fargate resources.
 
 
 =head2 StartedAt => Int

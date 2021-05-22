@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Node
 
 =head1 DESCRIPTION
 
-An object representing the properties of a node that is associated with
+An object representing the properties of a node that's associated with
 a multi-node parallel job.
 
 =head1 ATTRIBUTES

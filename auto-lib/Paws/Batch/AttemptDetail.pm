@@ -48,9 +48,9 @@ Details about the container in this job attempt.
 
 =head2 StartedAt => Int
 
-The Unix timestamp (in seconds and milliseconds) for when the attempt
-was started (when the attempt transitioned from the C<STARTING> state
-to the C<RUNNING> state).
+The Unix timestamp (in milliseconds) for when the attempt was started
+(when the attempt transitioned from the C<STARTING> state to the
+C<RUNNING> state).
 
 
 =head2 StatusReason => Str
@@ -61,9 +61,9 @@ current status of the job attempt.
 
 =head2 StoppedAt => Int
 
-The Unix timestamp (in seconds and milliseconds) for when the attempt
-was stopped (when the attempt transitioned from the C<RUNNING> state to
-a terminal state, such as C<SUCCEEDED> or C<FAILED>).
+The Unix timestamp (in milliseconds) for when the attempt was stopped
+(when the attempt transitioned from the C<RUNNING> state to a terminal
+state, such as C<SUCCEEDED> or C<FAILED>).
 
 
 

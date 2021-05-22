@@ -9,6 +9,7 @@ package Paws::Batch::ComputeEnvironmentDetail;
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagrisTagsMap', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 
 1;
@@ -53,12 +54,16 @@ The Amazon Resource Name (ARN) of the compute environment.
 
 =head2 B<REQUIRED> ComputeEnvironmentName => Str
 
-The name of the compute environment.
+The name of the compute environment. Up to 128 letters (uppercase and
+lowercase), numbers, hyphens, and underscores are allowed.
 
 
 =head2 ComputeResources => L<Paws::Batch::ComputeResource>
 
-The compute resources defined for the compute environment.
+The compute resources defined for the compute environment. For more
+information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> EcsClusterArn => Str
@@ -70,7 +75,10 @@ used by the compute environment.
 =head2 ServiceRole => Str
 
 The service role associated with the compute environment that allows
-AWS Batch to make calls to AWS API operations on your behalf.
+AWS Batch to make calls to AWS API operations on your behalf. For more
+information, see AWS Batch service IAM role
+(https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 State => Str
@@ -84,10 +92,10 @@ the environment. If the compute environment is managed, then it can
 scale its instances out or in automatically, based on the job queue
 demand.
 
-If the state is C<DISABLED>, then the AWS Batch scheduler does not
+If the state is C<DISABLED>, then the AWS Batch scheduler doesn't
 attempt to place jobs within the environment. Jobs in a C<STARTING> or
 C<RUNNING> state continue to progress normally. Managed compute
-environments in the C<DISABLED> state do not scale out. However, they
+environments in the C<DISABLED> state don't scale out. However, they
 scale in to C<minvCpus> value after instances become idle.
 
 
@@ -103,9 +111,17 @@ A short, human-readable string to provide additional details about the
 current status of the compute environment.
 
 
+=head2 Tags => L<Paws::Batch::TagrisTagsMap>
+
+The tags applied to the compute environment.
+
+
 =head2 Type => Str
 
-The type of the compute environment.
+The type of the compute environment: C<MANAGED> or C<UNMANAGED>. For
+more information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 
 

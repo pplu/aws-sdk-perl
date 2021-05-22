@@ -34,8 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Node
 
 =head1 DESCRIPTION
 
-Object representing any node overrides to a job definition that is used
+Object representing any node overrides to a job definition that's used
 in a SubmitJob API operation.
+
+This isn't applicable to jobs running on Fargate resources and
+shouldn't be provided; use C<containerOverrides> instead.
 
 =head1 ATTRIBUTES
 
