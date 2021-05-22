@@ -51,8 +51,9 @@ settings.
 
 =head2 CaptionDescriptions => ArrayRef[L<Paws::MediaConvert::CaptionDescriptionPreset>]
 
-Caption settings for this preset. There can be multiple caption
-settings in a single output.
+This object holds groups of settings related to captions for one
+output. For each output that has captions, include one instance of
+CaptionDescriptions.
 
 
 =head2 ContainerSettings => L<Paws::MediaConvert::ContainerSettings>
@@ -62,10 +63,10 @@ Container specific settings.
 
 =head2 VideoDescription => L<Paws::MediaConvert::VideoDescription>
 
-(VideoDescription) contains a group of video encoding settings. The
-specific video settings depend on the video codec that you choose when
-you specify a value for Video codec (codec). Include one instance of
-(VideoDescription) per output.
+VideoDescription contains a group of video encoding settings. The
+specific video settings depend on the video codec that you choose for
+the property codec. Include one instance of VideoDescription per
+output.
 
 
 

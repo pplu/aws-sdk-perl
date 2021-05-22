@@ -45,34 +45,48 @@ Output Group settings, including type
 
 =head2 CmafGroupSettings => L<Paws::MediaConvert::CmafGroupSettings>
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each
-output in a CMAF Output Group may only contain a single video, audio,
-or caption output.
+Settings related to your CMAF output package. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to CMAF_GROUP_SETTINGS.
 
 
 =head2 DashIsoGroupSettings => L<Paws::MediaConvert::DashIsoGroupSettings>
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
+Settings related to your DASH output package. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to DASH_ISO_GROUP_SETTINGS.
 
 
 =head2 FileGroupSettings => L<Paws::MediaConvert::FileGroupSettings>
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to FILE_GROUP_SETTINGS.
+Settings related to your File output group. MediaConvert uses this
+group of settings to generate a single standalone file, rather than a
+streaming package. When you work directly in your JSON job
+specification, include this object and any required children when you
+set Type, under OutputGroupSettings, to FILE_GROUP_SETTINGS.
 
 
 =head2 HlsGroupSettings => L<Paws::MediaConvert::HlsGroupSettings>
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to HLS_GROUP_SETTINGS.
+Settings related to your HLS output package. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to HLS_GROUP_SETTINGS.
 
 
 =head2 MsSmoothGroupSettings => L<Paws::MediaConvert::MsSmoothGroupSettings>
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
+Settings related to your Microsoft Smooth Streaming output package. For
+more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to MS_SMOOTH_GROUP_SETTINGS.
 
 
 =head2 Type => Str

@@ -49,7 +49,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Burn-In Destination Settings.
+Settings related to burn-in captions. Set up burn-in captions in the
+same output as your video. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set destinationType to
+BURN_IN.
 
 =head1 ATTRIBUTES
 

@@ -64,10 +64,10 @@ Settings for embedded captions Source
 
 =head2 FileSourceSettings => L<Paws::MediaConvert::FileSourceSettings>
 
-If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an
-xml file, specify the URI of the input caption source file. If your
-caption source is IMSC in an IMF package, use TrackSourceSettings
-instead of FileSoureSettings.
+If your input captions are SCC, SMI, SRT, STL, TTML, WebVTT, or IMSC
+1.1 in an xml file, specify the URI of the input caption source file.
+If your caption source is IMSC in an IMF package, use
+TrackSourceSettings instead of FileSoureSettings.
 
 
 =head2 SourceType => Str

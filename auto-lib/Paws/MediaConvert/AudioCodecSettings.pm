@@ -9,6 +9,8 @@ package Paws::MediaConvert::AudioCodecSettings;
   has Eac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
   has Mp3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp3Settings', request_name => 'mp3Settings', traits => ['NameInRequest']);
+  has OpusSettings => (is => 'ro', isa => 'Paws::MediaConvert::OpusSettings', request_name => 'opusSettings', traits => ['NameInRequest']);
+  has VorbisSettings => (is => 'ro', isa => 'Paws::MediaConvert::VorbisSettings', request_name => 'vorbisSettings', traits => ['NameInRequest']);
   has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
 
 1;
@@ -41,14 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Audio codec settings (CodecSettings) under (AudioDescriptions) contains
-the group of settings related to audio encoding. The settings in this
-group vary depending on the value that you choose for Audio codec
-(Codec). For each codec enum that you choose, define the corresponding
-settings object. The following lists the codec enum, settings object
-pairs. * AAC, AacSettings * MP2, Mp2Settings * MP3, Mp3Settings * WAV,
-WavSettings * AIFF, AiffSettings * AC3, Ac3Settings * EAC3,
-Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
+Settings related to audio encoding. The settings in this group vary
+depending on the value that you choose for your audio codec.
 
 =head1 ATTRIBUTES
 
@@ -79,7 +75,17 @@ Required when you set (Codec) under
 
 =head2 Codec => Str
 
-Type of Audio codec.
+Choose the audio codec for this output. Note that the option Dolby
+Digital passthrough (PASSTHROUGH) applies only to Dolby Digital and
+Dolby Digital Plus audio inputs. Make sure that you choose a codec
+that's supported with your output container:
+https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#reference-codecs-containers-output-audio
+For audio-only outputs, make sure that both your input audio codec and
+your output audio codec are supported for audio-only workflows. For
+more information, see:
+https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers-input.html#reference-codecs-containers-input-audio-only
+and
+https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#audio-only-output
 
 
 =head2 Eac3AtmosSettings => L<Paws::MediaConvert::Eac3AtmosSettings>
@@ -104,6 +110,18 @@ Required when you set (Codec) under
 
 Required when you set Codec, under AudioDescriptionsE<gt>CodecSettings,
 to the value MP3.
+
+
+=head2 OpusSettings => L<Paws::MediaConvert::OpusSettings>
+
+Required when you set Codec, under AudioDescriptionsE<gt>CodecSettings,
+to the value OPUS.
+
+
+=head2 VorbisSettings => L<Paws::MediaConvert::VorbisSettings>
+
+Required when you set Codec, under AudioDescriptionsE<gt>CodecSettings,
+to the value Vorbis.
 
 
 =head2 WavSettings => L<Paws::MediaConvert::WavSettings>

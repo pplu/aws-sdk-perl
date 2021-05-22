@@ -14,6 +14,7 @@ package Paws::MediaConvert::CmafGroupSettings;
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
   has MpdProfile => (is => 'ro', isa => 'Str', request_name => 'mpdProfile', traits => ['NameInRequest']);
+  has PtsOffsetHandlingForBFrames => (is => 'ro', isa => 'Str', request_name => 'ptsOffsetHandlingForBFrames', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
@@ -51,10 +52,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each
-output in a CMAF Output Group may only contain a single video, audio,
-or caption output.
+Settings related to your CMAF output package. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to CMAF_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
 
@@ -79,8 +81,10 @@ different URL than the manifest file.
 
 =head2 ClientCache => Str
 
-When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents
-client from saving media segments for later replay.
+Disable this setting only when your workflow requires the
+
+(ENABLED) and control caching in your video distribution set up. For
+example, use the Cache-Control http header.
 
 
 =head2 CodecSpecification => Str
@@ -161,6 +165,20 @@ you choose On-demand (ON_DEMAND_PROFILE), the service signals
 urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you
 choose On-demand, you must also set the output group setting Segment
 control (SegmentControl) to Single file (SINGLE_FILE).
+
+
+=head2 PtsOffsetHandlingForBFrames => Str
+
+Use this setting only when your output video stream has B-frames, which
+causes the initial presentation time stamp (PTS) to be offset from the
+initial decode time stamp (DTS). Specify how MediaConvert handles PTS
+when writing time stamps in output DASH manifests. Choose Match initial
+PTS (MATCH_INITIAL_PTS) when you want MediaConvert to use the initial
+PTS as the first time stamp in the manifest. Choose Zero-based
+(ZERO_BASED) to have MediaConvert ignore the initial PTS in the video
+stream and instead write the initial time stamp as zero in the
+manifest. For outputs that don't have B-frames, the time stamps in your
+DASH manifests start at zero regardless of your choice here.
 
 
 =head2 SegmentControl => Str

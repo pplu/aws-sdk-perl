@@ -4,11 +4,15 @@ package Paws::MediaConvert::DvbSubDestinationSettings;
   has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest']);
   has BackgroundColor => (is => 'ro', isa => 'Str', request_name => 'backgroundColor', traits => ['NameInRequest']);
   has BackgroundOpacity => (is => 'ro', isa => 'Int', request_name => 'backgroundOpacity', traits => ['NameInRequest']);
+  has DdsHandling => (is => 'ro', isa => 'Str', request_name => 'ddsHandling', traits => ['NameInRequest']);
+  has DdsXCoordinate => (is => 'ro', isa => 'Int', request_name => 'ddsXCoordinate', traits => ['NameInRequest']);
+  has DdsYCoordinate => (is => 'ro', isa => 'Int', request_name => 'ddsYCoordinate', traits => ['NameInRequest']);
   has FontColor => (is => 'ro', isa => 'Str', request_name => 'fontColor', traits => ['NameInRequest']);
   has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest']);
   has FontResolution => (is => 'ro', isa => 'Int', request_name => 'fontResolution', traits => ['NameInRequest']);
   has FontScript => (is => 'ro', isa => 'Str', request_name => 'fontScript', traits => ['NameInRequest']);
   has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
+  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
   has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest']);
   has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest']);
   has ShadowColor => (is => 'ro', isa => 'Str', request_name => 'shadowColor', traits => ['NameInRequest']);
@@ -17,6 +21,7 @@ package Paws::MediaConvert::DvbSubDestinationSettings;
   has ShadowYOffset => (is => 'ro', isa => 'Int', request_name => 'shadowYOffset', traits => ['NameInRequest']);
   has SubtitlingType => (is => 'ro', isa => 'Str', request_name => 'subtitlingType', traits => ['NameInRequest']);
   has TeletextSpacing => (is => 'ro', isa => 'Str', request_name => 'teletextSpacing', traits => ['NameInRequest']);
+  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
   has XPosition => (is => 'ro', isa => 'Int', request_name => 'xPosition', traits => ['NameInRequest']);
   has YPosition => (is => 'ro', isa => 'Int', request_name => 'yPosition', traits => ['NameInRequest']);
 
@@ -50,7 +55,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-DVB-Sub Destination Settings
+Settings related to DVB-Sub captions. Set up DVB-Sub captions in the
+same output as your video. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set destinationType to
+DVB_SUB.
 
 =head1 ATTRIBUTES
 
@@ -79,6 +89,53 @@ and DVB-Sub font settings must match.
 Specifies the opacity of the background rectangle. 255 is opaque; 0 is
 transparent. Leaving this parameter blank is equivalent to setting it
 to 0 (transparent). All burn-in and DVB-Sub font settings must match.
+
+
+=head2 DdsHandling => Str
+
+Specify how MediaConvert handles the display definition segment (DDS).
+Keep the default, None (NONE), to exclude the DDS from this set of
+captions. Choose No display window (NO_DISPLAY_WINDOW) to have
+MediaConvert include the DDS but not include display window data. In
+this case, MediaConvert writes that information to the page composition
+segment (PCS) instead. Choose Specify (SPECIFIED) to have MediaConvert
+set up the display window based on the values that you specify in
+related job settings. For video resolutions that are 576 pixels or
+smaller in height, MediaConvert doesn't include the DDS, regardless of
+the value you choose for DDS handling (ddsHandling). In this case, it
+doesn't write the display window data to the PCS either. Related
+settings: Use the settings DDS x-coordinate (ddsXCoordinate) and DDS
+y-coordinate (ddsYCoordinate) to specify the offset between the top
+left corner of the display window and the top left corner of the video
+frame. All burn-in and DVB-Sub font settings must match.
+
+
+=head2 DdsXCoordinate => Int
+
+Use this setting, along with DDS y-coordinate (ddsYCoordinate), to
+specify the upper left corner of the display definition segment (DDS)
+display window. With this setting, specify the distance, in pixels,
+between the left side of the frame and the left side of the DDS display
+window. Keep the default value, 0, to have MediaConvert automatically
+choose this offset. Related setting: When you use this setting, you
+must set DDS handling (ddsHandling) to a value other than None (NONE).
+MediaConvert uses these values to determine whether to write page
+position data to the DDS or to the page composition segment (PCS). All
+burn-in and DVB-Sub font settings must match.
+
+
+=head2 DdsYCoordinate => Int
+
+Use this setting, along with DDS x-coordinate (ddsXCoordinate), to
+specify the upper left corner of the display definition segment (DDS)
+display window. With this setting, specify the distance, in pixels,
+between the top of the frame and the top of the DDS display window.
+Keep the default value, 0, to have MediaConvert automatically choose
+this offset. Related setting: When you use this setting, you must set
+DDS handling (ddsHandling) to a value other than None (NONE).
+MediaConvert uses these values to determine whether to write page
+position data to the DDS or to the page composition segment (PCS). All
+burn-in and DVB-Sub font settings must match.
 
 
 =head2 FontColor => Str
@@ -115,6 +172,14 @@ rendering DVB-Sub captions.
 A positive integer indicates the exact font size in points. Set to 0
 for automatic font size selection. All burn-in and DVB-Sub font
 settings must match.
+
+
+=head2 Height => Int
+
+Specify the height, in pixels, of this set of DVB-Sub captions. The
+default value is 576 pixels. Related setting: When you use this
+setting, you must set DDS handling (ddsHandling) to a value other than
+None (NONE). All burn-in and DVB-Sub font settings must match.
 
 
 =head2 OutlineColor => Str
@@ -176,6 +241,14 @@ the captions grid or varies depending on letter width. Choose fixed
 grid to conform to the spacing specified in the captions file more
 accurately. Choose proportional to make the text easier to read if the
 captions are closed caption.
+
+
+=head2 Width => Int
+
+Specify the width, in pixels, of this set of DVB-Sub captions. The
+default value is 720 pixels. Related setting: When you use this
+setting, you must set DDS handling (ddsHandling) to a value other than
+None (NONE). All burn-in and DVB-Sub font settings must match.
 
 
 =head2 XPosition => Int

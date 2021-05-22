@@ -40,8 +40,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-An output object describes the settings for a single output file or
-stream in an output group.
+Each output in your job is a collection of settings that describes how
+you want MediaConvert to encode a single output file or stream. For
+more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/create-outputs.html.
 
 =head1 ATTRIBUTES
 
@@ -73,8 +75,8 @@ Use Extension (Extension) to specify the file extension for outputs in
 File output groups. If you do not specify a value, the service will use
 default extensions by container type as follows * MPEG-2 transport
 stream, m2ts * Quicktime, mov * MXF container, mxf * MPEG-4 container,
-mp4 * No Container, the service will use codec extensions (e.g. AAC,
-H265, H265, AC3)
+mp4 * WebM container, webm * No Container, the service will use codec
+extensions (e.g. AAC, H265, H265, AC3)
 
 
 =head2 NameModifier => Str
@@ -95,17 +97,17 @@ Specific settings for this type of output.
 
 =head2 Preset => Str
 
-Use Preset (Preset) to specifiy a preset for your transcoding settings.
+Use Preset (Preset) to specify a preset for your transcoding settings.
 Provide the system or custom preset name. You can specify either Preset
 (Preset) or Container settings (ContainerSettings), but not both.
 
 
 =head2 VideoDescription => L<Paws::MediaConvert::VideoDescription>
 
-(VideoDescription) contains a group of video encoding settings. The
-specific video settings depend on the video codec that you choose when
-you specify a value for Video codec (codec). Include one instance of
-(VideoDescription) per output.
+VideoDescription contains a group of video encoding settings. The
+specific video settings depend on the video codec that you choose for
+the property codec. Include one instance of VideoDescription per
+output.
 
 
 

@@ -42,7 +42,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Selector for Audio
+Use Audio selectors (AudioSelectors) to specify a track or set of
+tracks from the input that you will use in your outputs. You can use
+multiple Audio selectors per input.
 
 =head1 ATTRIBUTES
 

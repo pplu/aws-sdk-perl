@@ -43,7 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings that specify how your still graphic overlay appears.
+These settings apply to a specific graphic overlay. You can include
+multiple overlays in your job.
 
 =head1 ATTRIBUTES
 

@@ -35,8 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Set up captions in your outputs by first selecting them from your input
-here.
+Use captions selectors to specify the captions data from your input
+that you use in your outputs. You can use up to 20 captions selectors
+per input.
 
 =head1 ATTRIBUTES
 

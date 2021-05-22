@@ -34,8 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to FILE_GROUP_SETTINGS.
+Settings related to your File output group. MediaConvert uses this
+group of settings to generate a single standalone file, rather than a
+streaming package. When you work directly in your JSON job
+specification, include this object and any required children when you
+set Type, under OutputGroupSettings, to FILE_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
 

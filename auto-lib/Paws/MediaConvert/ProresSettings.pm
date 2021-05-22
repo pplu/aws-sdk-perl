@@ -10,6 +10,7 @@ package Paws::MediaConvert::ProresSettings;
   has ParControl => (is => 'ro', isa => 'Str', request_name => 'parControl', traits => ['NameInRequest']);
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
+  has ScanTypeConversionMode => (is => 'ro', isa => 'Str', request_name => 'scanTypeConversionMode', traits => ['NameInRequest']);
   has SlowPal => (is => 'ro', isa => 'Str', request_name => 'slowPal', traits => ['NameInRequest']);
   has Telecine => (is => 'ro', isa => 'Str', request_name => 'telecine', traits => ['NameInRequest']);
 
@@ -51,7 +52,7 @@ Required when you set (Codec) under
 
 =head2 CodecProfile => Str
 
-Use Profile (ProResCodecProfile) to specifiy the type of Apple ProRes
+Use Profile (ProResCodecProfile) to specify the type of Apple ProRes
 codec to use for this output.
 
 
@@ -64,7 +65,7 @@ conversion, choose a frame rate from the dropdown list or choose
 Custom. The framerates shown in the dropdown list are decimal
 approximations of fractions. If you choose Custom, specify your frame
 rate as a fraction. If you are creating your transcoding job
-sepecification as a JSON file without the console, use FramerateControl
+specification as a JSON file without the console, use FramerateControl
 to specify which value the service uses for the frame rate for this
 output. Choose INITIALIZE_FROM_SOURCE if you want the service to use
 the frame rate from the input. Choose SPECIFIED if you want the service
@@ -74,13 +75,28 @@ and FramerateDenominator.
 
 =head2 FramerateConversionAlgorithm => Str
 
-When set to INTERPOLATE, produces smoother motion during frame rate
-conversion.
+Choose the method that you want MediaConvert to use when increasing or
+decreasing the frame rate. We recommend using drop duplicate
+(DUPLICATE_DROP) for numerically simple conversions, such as 60 fps to
+30 fps. For numerically complex conversions, you can use interpolate
+(INTERPOLATE) to avoid stutter. This results in a smooth picture, but
+might introduce undesirable video artifacts. For complex frame rate
+conversions, especially if your source video has already been converted
+from its original cadence, use FrameFormer (FRAMEFORMER) to do
+motion-compensated interpolation. FrameFormer chooses the best
+conversion method frame by frame. Note that using FrameFormer increases
+the transcoding time and incurs a significant add-on cost.
 
 
 =head2 FramerateDenominator => Int
 
-Frame rate denominator.
+When you use the API for transcode jobs that use frame rate conversion,
+specify the frame rate as a fraction. For example, 24000 / 1001 =
+23.976 fps. Use FramerateDenominator to specify the denominator of this
+fraction. In this example, use 1001 for the value of
+FramerateDenominator. When you use the console for transcode jobs that
+use frame rate conversion, provide the value as a decimal number for
+Framerate. In this example, specify 23.976.
 
 
 =head2 FramerateNumerator => Int
@@ -89,57 +105,99 @@ When you use the API for transcode jobs that use frame rate conversion,
 specify the frame rate as a fraction. For example, 24000 / 1001 =
 23.976 fps. Use FramerateNumerator to specify the numerator of this
 fraction. In this example, use 24000 for the value of
-FramerateNumerator.
+FramerateNumerator. When you use the console for transcode jobs that
+use frame rate conversion, provide the value as a decimal number for
+Framerate. In this example, specify 23.976.
 
 
 =head2 InterlaceMode => Str
 
-Use Interlace mode (InterlaceMode) to choose the scan line type for the
-output. * Top Field First (TOP_FIELD) and Bottom Field First
-(BOTTOM_FIELD) produce interlaced output with the entire output having
-the same field polarity (top or bottom first). * Follow, Default Top
-(FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use
-the same field polarity as the source. Therefore, behavior depends on
-the input scan type. - If the source is interlaced, the output will be
-interlaced with the same polarity as the source (it will follow the
-source). The output could therefore be a mix of "top field first" and
-"bottom field first". - If the source is progressive, the output will
-be interlaced with "top field first" or "bottom field first" polarity,
-depending on which of the Follow options you chose.
+Choose the scan line type for the output. Keep the default value,
+Progressive (PROGRESSIVE) to create a progressive output, regardless of
+the scan type of your input. Use Top field first (TOP_FIELD) or Bottom
+field first (BOTTOM_FIELD) to create an output that's interlaced with
+the same field polarity throughout. Use Follow, default top
+(FOLLOW_TOP_FIELD) or Follow, default bottom (FOLLOW_BOTTOM_FIELD) to
+produce outputs with the same field polarity as the source. For jobs
+that have multiple inputs, the output field polarity might change over
+the course of the output. Follow behavior depends on the input scan
+type. If the source is interlaced, the output will be interlaced with
+the same polarity as the source. If the source is progressive, the
+output will be interlaced with top field bottom field first, depending
+on which of the Follow options you choose.
 
 
 =head2 ParControl => Str
 
-Use (ProresParControl) to specify how the service determines the pixel
-aspect ratio. Set to Follow source (INITIALIZE_FROM_SOURCE) to use the
-pixel aspect ratio from the input. To specify a different pixel aspect
-ratio: Using the console, choose it from the dropdown menu. Using the
-API, set ProresParControl to (SPECIFIED) and provide for (ParNumerator)
-and (ParDenominator).
+Optional. Specify how the service determines the pixel aspect ratio
+(PAR) for this output. The default behavior, Follow source
+(INITIALIZE_FROM_SOURCE), uses the PAR from your input video for your
+output. To specify a different PAR in the console, choose any value
+other than Follow source. To specify a different PAR by editing the
+JSON job specification, choose SPECIFIED. When you choose SPECIFIED for
+this setting, you must also specify values for the parNumerator and
+parDenominator settings.
 
 
 =head2 ParDenominator => Int
 
-Pixel Aspect Ratio denominator.
+Required when you set Pixel aspect ratio (parControl) to SPECIFIED. On
+the console, this corresponds to any value other than Follow source.
+When you specify an output pixel aspect ratio (PAR) that is different
+from your input video PAR, provide your output PAR as a ratio. For
+example, for D1/DV NTSC widescreen, you would specify the ratio 40:33.
+In this example, the value for parDenominator is 33.
 
 
 =head2 ParNumerator => Int
 
-Pixel Aspect Ratio numerator.
+Required when you set Pixel aspect ratio (parControl) to SPECIFIED. On
+the console, this corresponds to any value other than Follow source.
+When you specify an output pixel aspect ratio (PAR) that is different
+from your input video PAR, provide your output PAR as a ratio. For
+example, for D1/DV NTSC widescreen, you would specify the ratio 40:33.
+In this example, the value for parNumerator is 40.
+
+
+=head2 ScanTypeConversionMode => Str
+
+Use this setting for interlaced outputs, when your output frame rate is
+half of your input frame rate. In this situation, choose Optimized
+interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced
+output. In this case, each progressive frame from the input corresponds
+to an interlaced field in the output. Keep the default value, Basic
+interlacing (INTERLACED), for all other output frame rates. With basic
+interlacing, MediaConvert performs any frame rate conversion first and
+then interlaces the frames. When you choose Optimized interlacing and
+you set your output frame rate to a value that isn't suitable for
+optimized interlacing, MediaConvert automatically falls back to basic
+interlacing. Required settings: To use optimized interlacing, you must
+set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use
+optimized interlacing for hard telecine outputs. You must also set
+Interlace mode (interlaceMode) to a value other than Progressive
+(PROGRESSIVE).
 
 
 =head2 SlowPal => Str
 
-Enables Slow PAL rate conversion. 23.976fps and 24fps input is
-relabeled as 25fps, and audio is sped up correspondingly.
+Ignore this setting unless your input frame rate is 23.976 or 24 frames
+per second (fps). Enable slow PAL to create a 25 fps output. When you
+enable slow PAL, MediaConvert relabels the video frames to 25 fps and
+resamples your audio to keep it synchronized with the video. Note that
+enabling this setting will slightly reduce the duration of your video.
+Required settings: You must also set Framerate to 25. In your JSON job
+specification, set (framerateControl) to (SPECIFIED),
+(framerateNumerator) to 25 and (framerateDenominator) to 1.
 
 
 =head2 Telecine => Str
 
-Only use Telecine (ProresTelecine) when you set Framerate (Framerate)
-to 29.970. Set Telecine (ProresTelecine) to Hard (hard) to produce a
-29.97i output from a 23.976 input. Set it to Soft (soft) to produce
-23.976 output and leave converstion to the player.
+When you do frame rate conversion from 23.976 frames per second (fps)
+to 29.97 fps, and your output scan type is interlaced, you can
+optionally enable hard telecine (HARD) to create a smoother picture.
+When you keep the default value, None (NONE), MediaConvert does a
+standard frame rate conversion to 29.97 without doing anything with the
+field polarity to create a smoother picture.
 
 
 

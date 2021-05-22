@@ -2,6 +2,7 @@
 package Paws::MediaConvert::FileSourceSettings;
   use Moose;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
+  has Framerate => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceFramerate', request_name => 'framerate', traits => ['NameInRequest']);
   has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest']);
   has TimeDelta => (is => 'ro', isa => 'Int', request_name => 'timeDelta', traits => ['NameInRequest']);
 
@@ -35,10 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an
-xml file, specify the URI of the input caption source file. If your
-caption source is IMSC in an IMF package, use TrackSourceSettings
-instead of FileSoureSettings.
+If your input captions are SCC, SMI, SRT, STL, TTML, WebVTT, or IMSC
+1.1 in an xml file, specify the URI of the input caption source file.
+If your caption source is IMSC in an IMF package, use
+TrackSourceSettings instead of FileSoureSettings.
 
 =head1 ATTRIBUTES
 
@@ -52,10 +53,23 @@ data through using the 608 compatibility bytes fields of the 708
 wrapper, and it also translates the 608 data into 708.
 
 
+=head2 Framerate => L<Paws::MediaConvert::CaptionSourceFramerate>
+
+Ignore this setting unless your input captions format is SCC. To have
+the service compensate for differing frame rates between your input
+captions and input video, specify the frame rate of the captions file.
+Specify this value as a fraction, using the settings Framerate
+numerator (framerateNumerator) and Framerate denominator
+(framerateDenominator). For example, you might specify 24 / 1 for 24
+fps, 25 / 1 for 25 fps, 24000 / 1001 for 23.976 fps, or 30000 / 1001
+for 29.97 fps.
+
+
 =head2 SourceFile => Str
 
 External caption file used for loading captions. Accepted file
-extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', 'xml', and 'smi'.
+extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', 'xml', 'smi', and
+'vtt'.
 
 
 =head2 TimeDelta => Int

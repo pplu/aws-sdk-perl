@@ -2,6 +2,7 @@
 package Paws::MediaConvert::OutputChannelMapping;
   use Moose;
   has InputChannels => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'inputChannels', traits => ['NameInRequest']);
+  has InputChannelsFineTune => (is => 'ro', isa => 'ArrayRef[Num]', request_name => 'inputChannelsFineTune', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::OutputChannelMapping object:
 
-  $service_obj->Method(Att1 => { InputChannels => $value, ..., InputChannels => $value  });
+  $service_obj->Method(Att1 => { InputChannels => $value, ..., InputChannelsFineTune => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,7 +41,15 @@ OutputChannel mapping settings.
 
 =head2 InputChannels => ArrayRef[Int]
 
-List of input channels
+Use this setting to specify your remix values when they are integers,
+such as -10, 0, or 4.
+
+
+=head2 InputChannelsFineTune => ArrayRef[Num]
+
+Use this setting to specify your remix values when they have a decimal
+component, such as -10.312, 0.08, or 4.9. MediaConvert rounds your
+remixing values to the nearest thousandth.
 
 
 

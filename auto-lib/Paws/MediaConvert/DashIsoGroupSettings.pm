@@ -2,6 +2,7 @@
 package Paws::MediaConvert::DashIsoGroupSettings;
   use Moose;
   has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::DashAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
+  has AudioChannelConfigSchemeIdUri => (is => 'ro', isa => 'Str', request_name => 'audioChannelConfigSchemeIdUri', traits => ['NameInRequest']);
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
@@ -9,7 +10,9 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
+  has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
   has MpdProfile => (is => 'ro', isa => 'Str', request_name => 'mpdProfile', traits => ['NameInRequest']);
+  has PtsOffsetHandlingForBFrames => (is => 'ro', isa => 'Str', request_name => 'ptsOffsetHandlingForBFrames', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
@@ -44,8 +47,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
+Settings related to your DASH output package. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to DASH_ISO_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
 
@@ -57,6 +63,20 @@ ISO output group in your job. This default manifest references every
 output in the output group. To create additional DASH manifests that
 reference a subset of the outputs in the output group, specify a list
 of them here.
+
+
+=head2 AudioChannelConfigSchemeIdUri => Str
+
+Use this setting only when your audio codec is a Dolby one (AC3, EAC3,
+or Atmos) and your downstream workflow requires that your DASH manifest
+use the Dolby channel configuration tag, rather than the MPEG one. For
+example, you might need to use this to make dynamic ad insertion work.
+Specify which audio channel configuration scheme ID URI MediaConvert
+writes in your DASH manifest. Keep the default value, MPEG channel
+configuration (MPEG_CHANNEL_CONFIGURATION), to have MediaConvert write
+this: urn:mpeg:mpegB:cicp:ChannelConfiguration. Choose Dolby channel
+configuration (DOLBY_CHANNEL_CONFIGURATION) to have MediaConvert write
+this instead: tag:dolby.com,2014:dash:audio_channel_configuration:2011.
 
 
 =head2 BaseUrl => Str
@@ -107,6 +127,22 @@ Minimum time of initially buffered media that is needed to ensure
 smooth playout.
 
 
+=head2 MinFinalSegmentLength => Num
+
+Keep this setting at the default value of 0, unless you are
+troubleshooting a problem with how devices play back the end of your
+video asset. If you know that player devices are hanging on the final
+segment of your video because the length of your final segment is too
+short, use this setting to specify a minimum final segment length, in
+seconds. Choose a value that is greater than or equal to 1 and less
+than your segment length. When you specify a value for this setting,
+the encoder will combine any final segment that is shorter than the
+length that you specify with the previous segment. For example, your
+segment length is 3 seconds and your final segment is .5 seconds
+without a minimum final segment length; when you set the minimum final
+segment length to 1, your final segment is 3.5 seconds.
+
+
 =head2 MpdProfile => Str
 
 Specify whether your DASH profile is on-demand or main. When you choose
@@ -116,6 +152,20 @@ you choose On-demand (ON_DEMAND_PROFILE), the service signals
 urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you
 choose On-demand, you must also set the output group setting Segment
 control (SegmentControl) to Single file (SINGLE_FILE).
+
+
+=head2 PtsOffsetHandlingForBFrames => Str
+
+Use this setting only when your output video stream has B-frames, which
+causes the initial presentation time stamp (PTS) to be offset from the
+initial decode time stamp (DTS). Specify how MediaConvert handles PTS
+when writing time stamps in output DASH manifests. Choose Match initial
+PTS (MATCH_INITIAL_PTS) when you want MediaConvert to use the initial
+PTS as the first time stamp in the manifest. Choose Zero-based
+(ZERO_BASED) to have MediaConvert ignore the initial PTS in the video
+stream and instead write the initial time stamp as zero in the
+manifest. For outputs that don't have B-frames, the time stamps in your
+DASH manifests start at zero regardless of your choice here.
 
 
 =head2 SegmentControl => Str

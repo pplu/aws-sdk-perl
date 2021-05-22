@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for Dolby Vision
+With AWS Elemental MediaConvert, you can create profile 5 Dolby Vision
+outputs from MXF and IMF sources that contain mastering information as
+frame-interleaved Dolby Vision metadata.
 
 =head1 ATTRIBUTES
 

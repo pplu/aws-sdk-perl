@@ -2,6 +2,7 @@
 package Paws::MediaConvert::NoiseReducerTemporalFilterSettings;
   use Moose;
   has AggressiveMode => (is => 'ro', isa => 'Int', request_name => 'aggressiveMode', traits => ['NameInRequest']);
+  has PostTemporalSharpening => (is => 'ro', isa => 'Str', request_name => 'postTemporalSharpening', traits => ['NameInRequest']);
   has Speed => (is => 'ro', isa => 'Int', request_name => 'speed', traits => ['NameInRequest']);
   has Strength => (is => 'ro', isa => 'Int', request_name => 'strength', traits => ['NameInRequest']);
 
@@ -45,6 +46,17 @@ Noise reducer filter settings for temporal filter.
 Use Aggressive mode for content that has complex motion. Higher values
 produce stronger temporal filtering. This filters highly complex scenes
 more aggressively and creates better VQ for low bitrate outputs.
+
+
+=head2 PostTemporalSharpening => Str
+
+Optional. When you set Noise reducer (noiseReducer) to Temporal
+(TEMPORAL), you can use this setting to apply sharpening. The default
+behavior, Auto (AUTO), allows the transcoder to determine whether to
+apply filtering, depending on input type and quality. When you set
+Noise reducer to Temporal, your output bandwidth is reduced. When Post
+temporal sharpening is also enabled, that bandwidth reduction is
+smaller.
 
 
 =head2 Speed => Int

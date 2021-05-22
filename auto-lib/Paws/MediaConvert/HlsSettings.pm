@@ -5,6 +5,7 @@ package Paws::MediaConvert::HlsSettings;
   has AudioOnlyContainer => (is => 'ro', isa => 'Str', request_name => 'audioOnlyContainer', traits => ['NameInRequest']);
   has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
   has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
+  has DescriptiveVideoServiceFlag => (is => 'ro', isa => 'Str', request_name => 'descriptiveVideoServiceFlag', traits => ['NameInRequest']);
   has IFrameOnlyManifest => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyManifest', traits => ['NameInRequest']);
   has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
 
@@ -45,7 +46,7 @@ Settings for HLS output groups
 
 =head2 AudioGroupId => Str
 
-Specifies the group to which the audio Rendition belongs.
+Specifies the group to which the audio rendition belongs.
 
 
 =head2 AudioOnlyContainer => Str
@@ -81,10 +82,27 @@ play back by default. Represented as an EXT-X-MEDIA in the HLS manifest
 with DEFAULT=NO, AUTOSELECT=NO
 
 
+=head2 DescriptiveVideoServiceFlag => Str
+
+Specify whether to flag this audio track as descriptive video service
+(DVS) in your HLS parent manifest. When you choose Flag (FLAG),
+MediaConvert includes the parameter
+CHARACTERISTICS="public.accessibility.describes-video" in the
+EXT-X-MEDIA entry for this track. When you keep the default choice,
+Don't flag (DONT_FLAG), MediaConvert leaves this parameter out. The DVS
+flag can help with accessibility on Apple devices. For more
+information, see the Apple documentation.
+
+
 =head2 IFrameOnlyManifest => Str
 
-When set to INCLUDE, writes I-Frame Only Manifest in addition to the
-HLS manifest
+Choose Include (INCLUDE) to have MediaConvert generate a child manifest
+that lists only the I-frames for this rendition, in addition to your
+regular manifest for this rendition. You might use this manifest as
+part of a workflow that creates preview functions for your video.
+MediaConvert adds both the I-frame only child manifest and the regular
+child manifest to the parent manifest. When you don't need the I-frame
+only child manifest, keep the default value Exclude (EXCLUDE).
 
 
 =head2 SegmentModifier => Str
