@@ -118,7 +118,7 @@ Interface) that was created for your subnet.
 The status of the task that was described.
 
 For detailed information about task execution statuses, see
-Understanding Task Statuses in the I<AWS DataSync User Guide.>
+Understanding Task Statuses in the I<AWS DataSync User Guide>.
 
 Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"QUEUED">, C<"RUNNING">, C<"UNAVAILABLE">
 =head2 TaskArn => Str

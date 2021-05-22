@@ -1,5 +1,5 @@
 
-package Paws::Datasync::CreateLocationFsxWindowsResponse;
+package Paws::Datasync::CreateLocationObjectStorageResponse;
   use Moose;
   has LocationArn => (is => 'ro', isa => 'Str');
 
@@ -9,15 +9,15 @@ package Paws::Datasync::CreateLocationFsxWindowsResponse;
 
 =head1 NAME
 
-Paws::Datasync::CreateLocationFsxWindowsResponse
+Paws::Datasync::CreateLocationObjectStorageResponse
 
 =head1 ATTRIBUTES
 
 
 =head2 LocationArn => Str
 
-The Amazon Resource Name (ARN) of the FSx for Windows File Server file
-system location that is created.
+The Amazon Resource Name (ARN) of the agents associated with the
+self-managed object storage server location.
 
 
 =head2 _request_id => Str

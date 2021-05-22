@@ -58,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+        TransferMode => 'CHANGED',    # values: CHANGED, ALL; OPTIONAL
         Uid => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         VerifyMode => 'POINT_IN_TIME_CONSISTENT'
         , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
@@ -91,12 +92,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 is used to monitor and log events in the task.
 
-For more information on these groups, see Working with Log Groups and
-Log Streams in the I<Amazon CloudWatch User Guide.>
-
-For more information about how to use CloudWatch Logs with DataSync,
-see Monitoring Your Task in the I<AWS DataSync User Guide.>
-
 
 
 =head2 B<REQUIRED> DestinationLocationArn => Str
@@ -110,7 +105,7 @@ The Amazon Resource Name (ARN) of an AWS storage resource's location.
 A list of filter rules that determines which files to exclude from a
 task. The list should contain a single filter string that consists of
 the patterns to exclude. The patterns are delimited by "|" (that is, a
-pipe), for example, C<"/folder1|/folder2">
+pipe), for example, C<"/folder1|/folder2">.
 
 
 
@@ -130,7 +125,7 @@ You can configure these options to preserve metadata such as user ID
 verification, and so on.
 
 For each individual task execution, you can override these options by
-specifying the C<OverrideOptions> before starting a the task execution.
+specifying the C<OverrideOptions> before starting the task execution.
 For more information, see the operation.
 
 

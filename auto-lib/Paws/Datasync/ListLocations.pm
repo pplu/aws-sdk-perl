@@ -1,6 +1,7 @@
 
 package Paws::Datasync::ListLocations;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::LocationFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -29,8 +30,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $datasync = Paws->service('Datasync');
     my $ListLocationsResponse = $datasync->ListLocations(
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      Filters => [
+        {
+          Name =>
+            'LocationUri',    # values: LocationUri, LocationType, CreationTime
+          Operator => 'Equals'
+          , # values: Equals, NotEquals, In, LessThanOrEqual, LessThan, GreaterThanOrEqual, GreaterThan, Contains, NotContains, BeginsWith
+          Values => [
+            'MyFilterAttributeValue', ...    # min: 1, max: 255
+          ],
+
+        },
+        ...
+      ],                                     # OPTIONAL
+      MaxResults => 1,                       # OPTIONAL
+      NextToken  => 'MyNextToken',           # OPTIONAL
     );
 
     # Results:
@@ -43,6 +57,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datasync/ListLocations>
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => ArrayRef[L<Paws::Datasync::LocationFilter>]
+
+You can use API filters to narrow down the list of resources returned
+by C<ListLocations>. For example, to retrieve all tasks on a specific
+source location, you can use C<ListLocations> with filter name
+C<LocationType S3> and C<Operator Equals>.
+
 
 
 =head2 MaxResults => Int

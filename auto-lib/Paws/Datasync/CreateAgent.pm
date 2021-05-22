@@ -121,12 +121,12 @@ representable in UTF-8 format, and the following special characters: +
 
 =head2 VpcEndpointId => Str
 
-The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
+The ID of the VPC (virtual private cloud) endpoint that the agent has
 access to. This is the client-side VPC endpoint, also called a
 PrivateLink. If you don't have a PrivateLink VPC endpoint, see Creating
 a VPC Endpoint Service Configuration
 (https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service)
-in the AWS VPC User Guide.
+in the Amazon VPC User Guide.
 
 VPC endpoint ID looks like this: C<vpce-01234d5aff67890e1>.
 

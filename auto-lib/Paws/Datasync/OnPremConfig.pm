@@ -41,7 +41,7 @@ File System (NFS) location.
 
 =head2 B<REQUIRED> AgentArns => ArrayRef[Str|Undef]
 
-ARNs)of the agents to use for an NFS location.
+ARNs of the agents to use for an NFS location.
 
 
 

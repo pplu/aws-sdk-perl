@@ -55,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+        TransferMode => 'CHANGED',    # values: CHANGED, ALL; OPTIONAL
         Uid => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         VerifyMode => 'POINT_IN_TIME_CONSISTENT'
         , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL

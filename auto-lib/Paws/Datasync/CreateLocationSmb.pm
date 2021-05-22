@@ -111,7 +111,7 @@ path should be a path that's exported by the SMB server, or a
 subdirectory of that path. The path should be such that it can be
 mounted by other SMB clients in your network.
 
-C<Subdirectory> must be specified with forward slashes. For example
+C<Subdirectory> must be specified with forward slashes. For example,
 C</path/to/folder>.
 
 To transfer all the data in the folder you specified, DataSync needs to

@@ -29,7 +29,7 @@ The time that the EFS location was created.
 
 =head2 LocationArn => Str
 
-The Amazon resource Name (ARN) of the EFS location that was described.
+The Amazon Resource Name (ARN) of the EFS location that was described.
 
 
 =head2 LocationUri => Str

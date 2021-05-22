@@ -64,37 +64,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 Domain => Str
 
-The name of the Windows domain that the FSx for Windows server belongs
-to.
+The name of the Windows domain that the FSx for Windows File Server
+belongs to.
 
 
 
 =head2 B<REQUIRED> FsxFilesystemArn => Str
 
-The Amazon Resource Name (ARN) for the FSx for Windows file system.
+The Amazon Resource Name (ARN) for the FSx for Windows File Server file
+system.
 
 
 
 =head2 B<REQUIRED> Password => Str
 
 The password of the user who has the permissions to access files and
-folders in the FSx for Windows file system.
+folders in the FSx for Windows File Server file system.
 
 
 
 =head2 B<REQUIRED> SecurityGroupArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARNs) of the security groups that are to use
-to configure the FSx for Windows file system.
+to configure the FSx for Windows File Server file system.
 
 
 
 =head2 Subdirectory => Str
 
 A subdirectory in the locationE<rsquo>s path. This subdirectory in the
-Amazon FSx for Windows file system is used to read data from the Amazon
-FSx for Windows source location or write data to the FSx for Windows
-destination.
+Amazon FSx for Windows File Server file system is used to read data
+from the Amazon FSx for Windows File Server source location or write
+data to the FSx for Windows File Server destination.
 
 
 
@@ -110,7 +111,7 @@ create a name tag for your location.
 =head2 B<REQUIRED> User => Str
 
 The user who has the permissions to access files and folders in the FSx
-for Windows file system.
+for Windows File Server file system.
 
 
 

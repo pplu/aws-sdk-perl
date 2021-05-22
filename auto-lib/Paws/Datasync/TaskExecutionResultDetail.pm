@@ -85,7 +85,7 @@ TRANSFERRING phase.
 
 =head2 TransferStatus => Str
 
-The status of the TRANSFERRING Phase.
+The status of the TRANSFERRING phase.
 
 
 =head2 VerifyDuration => Int
@@ -96,7 +96,7 @@ phase.
 
 =head2 VerifyStatus => Str
 
-The status of the VERIFYING Phase.
+The status of the VERIFYING phase.
 
 
 

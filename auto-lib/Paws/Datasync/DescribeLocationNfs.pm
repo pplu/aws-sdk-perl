@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 B<REQUIRED> LocationArn => Str
 
-The Amazon resource Name (ARN) of the NFS location to describe.
+The Amazon Resource Name (ARN) of the NFS location to describe.
 
 
 
