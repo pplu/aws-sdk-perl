@@ -4,6 +4,7 @@ package Paws::CloudFormation::StackResourceSummary;
   has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformationSummary');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
+  has ModuleInfo => (is => 'ro', isa => 'Paws::CloudFormation::ModuleInfo');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
@@ -62,6 +63,13 @@ Time the status was updated.
 =head2 B<REQUIRED> LogicalResourceId => Str
 
 The logical name of the resource specified in the template.
+
+
+=head2 ModuleInfo => L<Paws::CloudFormation::ModuleInfo>
+
+Contains information about the module from which the resource was
+created, if the resource was created from a module included in the
+stack template.
 
 
 =head2 PhysicalResourceId => Str

@@ -6,6 +6,7 @@ package Paws::CloudFormation::CreateChangeSet;
   has ChangeSetType => (is => 'ro', isa => 'Str');
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has IncludeNestedStacks => (is => 'ro', isa => 'Bool');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has ResourcesToImport => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceToImport]');
@@ -49,22 +50,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'CAPABILITY_IAM',
         ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
       ],    # OPTIONAL
-      ChangeSetType    => 'CREATE',                        # OPTIONAL
-      ClientToken      => 'MyClientToken',                 # OPTIONAL
-      Description      => 'MyDescription',                 # OPTIONAL
-      NotificationARNs => [ 'MyNotificationARN', ... ],    # OPTIONAL
-      Parameters       => [
+      ChangeSetType       => 'CREATE',                        # OPTIONAL
+      ClientToken         => 'MyClientToken',                 # OPTIONAL
+      Description         => 'MyDescription',                 # OPTIONAL
+      IncludeNestedStacks => 1,                               # OPTIONAL
+      NotificationARNs    => [ 'MyNotificationARN', ... ],    # OPTIONAL
+      Parameters          => [
         {
-          ParameterKey     => 'MyParameterKey',            # OPTIONAL
-          ParameterValue   => 'MyParameterValue',          # OPTIONAL
-          ResolvedValue    => 'MyParameterValue',          # OPTIONAL
-          UsePreviousValue => 1,                           # OPTIONAL
+          ParameterKey     => 'MyParameterKey',               # OPTIONAL
+          ParameterValue   => 'MyParameterValue',             # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',             # OPTIONAL
+          UsePreviousValue => 1,                              # OPTIONAL
         },
         ...
-      ],                                                   # OPTIONAL
+      ],                                                      # OPTIONAL
       ResourceTypes => [
-        'MyResourceType', ...                              # min: 1, max: 256
-      ],                                                   # OPTIONAL
+        'MyResourceType', ...                                 # min: 1, max: 256
+      ],                                                      # OPTIONAL
       ResourcesToImport => [
         {
           LogicalResourceId  => 'MyLogicalResourceId',
@@ -222,11 +224,10 @@ transforms, which are macros hosted by AWS CloudFormation.
 This capacity does not apply to creating change sets, and specifying it
 when creating change sets has no effect.
 
-Also, change sets do not currently support nested stacks. If you want
-to create a stack from a stack template that contains macros I<and>
-nested stacks, you must create or update the stack directly from the
-template using the CreateStack or UpdateStack action, and specifying
-this capability.
+If you want to create a stack from a stack template that contains
+macros I<and> nested stacks, you must create or update the stack
+directly from the template using the CreateStack or UpdateStack action,
+and specifying this capability.
 
 For more information on macros, see Using AWS CloudFormation Macros to
 Perform Custom Processing on Templates
@@ -280,6 +281,14 @@ CloudFormation successfully received them.
 =head2 Description => Str
 
 A description to help you identify this change set.
+
+
+
+=head2 IncludeNestedStacks => Bool
+
+Creates a change set for the all nested stacks specified in the
+template. The default behavior of this action is set to C<False>. To
+include nested sets in a change set, specify C<True>.
 
 
 
@@ -379,8 +388,9 @@ Conditional: You must specify only C<TemplateBody> or C<TemplateURL>.
 
 The location of the file that contains the revised template. The URL
 must point to a template (max size: 460,800 bytes) that is located in
-an S3 bucket. AWS CloudFormation generates the change set by comparing
-this template with the stack that you specified.
+an S3 bucket or a Systems Manager document. AWS CloudFormation
+generates the change set by comparing this template with the stack that
+you specified.
 
 Conditional: You must specify only C<TemplateBody> or C<TemplateURL>.
 

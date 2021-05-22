@@ -2,6 +2,7 @@
 package Paws::CloudFormation::DeploymentTargets;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AccountsUrl => (is => 'ro', isa => 'Str');
   has OrganizationalUnitIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -34,8 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-[C<Service-managed> permissions] The AWS Organizations accounts to
-which StackSets deploys.
+[Service-managed permissions] The AWS Organizations accounts to which
+StackSets deploys. StackSets does not deploy stack instances to the
+organization management account, even if the organization management
+account is in your organization or in an OU in your organization.
 
 For update operations, you can specify either C<Accounts> or
 C<OrganizationalUnitIds>. For create and delete operations, specify
@@ -50,9 +53,14 @@ The names of one or more AWS accounts for which you want to deploy
 stack set updates.
 
 
+=head2 AccountsUrl => Str
+
+Returns the value of the AccountsUrl property.
+
+
 =head2 OrganizationalUnitIds => ArrayRef[Str|Undef]
 
-The organization root ID or organizational unit (OUs) IDs to which
+The organization root ID or organizational unit (OU) IDs to which
 StackSets deploys.
 
 

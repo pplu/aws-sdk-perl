@@ -722,6 +722,8 @@ back to it, causing the update rollback to fail.
 
 =item [Description => Str]
 
+=item [IncludeNestedStacks => Bool]
+
 =item [NotificationARNs => ArrayRef[Str|Undef]]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
@@ -773,6 +775,9 @@ or to review it, use the DescribeChangeSet action.
 When you are satisfied with the changes the change set will make,
 execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
+
+To create a change set for the entire stack hierachy, set
+C<IncludeNestedStacks> to C<True>.
 
 
 =head2 CreateStack
@@ -835,6 +840,8 @@ the stack via the DescribeStacks API.
 
 =item [Accounts => ArrayRef[Str|Undef]]
 
+=item [CallAs => Str]
+
 =item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
@@ -851,8 +858,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::CreateStackInst
 Returns: a L<Paws::CloudFormation::CreateStackInstancesOutput> instance
 
 Creates stack instances for the specified accounts, within the
-specified regions. A stack instance refers to a stack in a specific
-account and region. You must specify at least one value for either
+specified Regions. A stack instance refers to a stack in a specific
+account and Region. You must specify at least one value for either
 C<Accounts> or C<DeploymentTargets>, and you must specify at least one
 value for C<Regions>.
 
@@ -866,6 +873,8 @@ value for C<Regions>.
 =item [AdministrationRoleARN => Str]
 
 =item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
+=item [CallAs => Str]
 
 =item [Capabilities => ArrayRef[Str|Undef]]
 
@@ -916,6 +925,11 @@ one executes the wrong change set.
 If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
 
+If C<IncludeNestedStacks> specifies C<True> during the creation of the
+nested change set, then C<DeleteChangeSet> will delete all change sets
+that belong to the stacks hierarchy and will also delete all change
+sets for nested stacks with the status of C<REVIEW_IN_PROGRESS>.
+
 
 =head2 DeleteStack
 
@@ -953,6 +967,8 @@ API if the deletion has been completed successfully.
 
 =item [Accounts => ArrayRef[Str|Undef]]
 
+=item [CallAs => Str]
+
 =item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
@@ -967,7 +983,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::DeleteStackInst
 Returns: a L<Paws::CloudFormation::DeleteStackInstancesOutput> instance
 
 Deletes stack instances for the specified accounts, in the specified
-regions.
+Regions.
 
 
 =head2 DeleteStackSet
@@ -975,6 +991,8 @@ regions.
 =over
 
 =item StackSetName => Str
+
+=item [CallAs => Str]
 
 
 =back
@@ -1007,18 +1025,24 @@ Each argument is described in detail in: L<Paws::CloudFormation::DeregisterType>
 
 Returns: a L<Paws::CloudFormation::DeregisterTypeOutput> instance
 
-Removes a type or type version from active use in the CloudFormation
-registry. If a type or type version is deregistered, it cannot be used
-in CloudFormation operations.
+Marks an extension or extension version as C<DEPRECATED> in the
+CloudFormation registry, removing it from active use. Deprecated
+extensions or extension versions cannot be used in CloudFormation
+operations.
 
-To deregister a type, you must individually deregister all registered
-versions of that type. If a type has only a single registered version,
-deregistering that version results in the type itself being
-deregistered.
+To deregister an entire extension, you must individually deregister all
+active versions of that extension. If an extension has only a single
+active version, deregistering that version results in the extension
+itself being deregistered and marked as deprecated in the registry.
 
-You cannot deregister the default version of a type, unless it is the
-only registered version of that type, in which case the type itself is
-deregistered as well.
+You cannot deregister the default version of an extension if there are
+other active version of that extension. If you do deregister the
+default version of an extension, the textensionype itself is
+deregistered as well and marked as deprecated.
+
+To view the deprecation status of an extension or extension version,
+use DescribeType
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html).
 
 
 =head2 DescribeAccountLimits
@@ -1131,6 +1155,8 @@ deleted by specifying the unique stack identifier (stack ID).
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 
 =back
 
@@ -1139,7 +1165,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackIn
 Returns: a L<Paws::CloudFormation::DescribeStackInstanceOutput> instance
 
 Returns the stack instance that's associated with the specified stack
-set, AWS account, and region.
+set, AWS account, and Region.
 
 For a list of stack instances that are associated with a specific stack
 set, use ListStackInstances.
@@ -1271,6 +1297,8 @@ returned.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 
 =back
 
@@ -1288,6 +1316,8 @@ Returns the description of the specified stack set.
 =item OperationId => Str
 
 =item StackSetName => Str
+
+=item [CallAs => Str]
 
 
 =back
@@ -1318,11 +1348,12 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeType>
 
 Returns: a L<Paws::CloudFormation::DescribeTypeOutput> instance
 
-Returns detailed information about a type that has been registered.
+Returns detailed information about an extension that has been
+registered.
 
 If you specify a C<VersionId>, C<DescribeType> returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.
+about that specific extension version. Otherwise, it returns
+information about the default extension version.
 
 
 =head2 DescribeTypeRegistration
@@ -1338,15 +1369,15 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeTypeReg
 
 Returns: a L<Paws::CloudFormation::DescribeTypeRegistrationOutput> instance
 
-Returns information about a type's registration, including its current
-status and type and version identifiers.
+Returns information about an extension's registration, including its
+current status and type and version identifiers.
 
 When you initiate a registration request using C< RegisterType >, you
 can then use C< DescribeTypeRegistration > to monitor the progress of
 that registration request.
 
 Once the registration request has completed, use C< DescribeType > to
-return detailed informaiton about a type.
+return detailed information about an extension.
 
 
 =head2 DetectStackDrift
@@ -1437,6 +1468,8 @@ Resources that Support Drift Detection
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 =item [OperationId => Str]
 
 =item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
@@ -1469,7 +1502,7 @@ drift information:
 
 =item *
 
-Use C< DescribeStackSet > to return detailed informaiton about the
+Use C< DescribeStackSet > to return detailed information about the
 stack set, including detailed information about the last I<completed>
 drift operation performed on the stack set. (Information about drift
 operations that are in progress is not included.)
@@ -1551,6 +1584,9 @@ If a stack policy is associated with the stack, AWS CloudFormation
 enforces the policy during the update. You can't specify a temporary
 stack policy that overrides the current policy.
 
+To create a change set for the entire stack hierachy,
+C<IncludeNestedStacks> must have been set to C<True>.
+
 
 =head2 GetStackPolicy
 
@@ -1598,6 +1634,8 @@ If the template does not exist, a C<ValidationError> is returned.
 =head2 GetTemplateSummary
 
 =over
+
+=item [CallAs => Str]
 
 =item [StackName => Str]
 
@@ -1661,7 +1699,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListExports>
 
 Returns: a L<Paws::CloudFormation::ListExportsOutput> instance
 
-Lists all exported output values in the account and region in which you
+Lists all exported output values in the account and Region in which you
 call this action. Use this action to see the exported output values
 that you can import into other stacks. To import values, use the
 C<Fn::ImportValue>
@@ -1704,6 +1742,10 @@ function.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
+=item [Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1721,7 +1763,8 @@ Returns: a L<Paws::CloudFormation::ListStackInstancesOutput> instance
 
 Returns summary information about stack instances that are associated
 with the specified stack set. You can filter for stack instances that
-are associated with a specific AWS account name or region.
+are associated with a specific AWS account name or Region, or that have
+a specific status.
 
 
 =head2 ListStackResources
@@ -1775,6 +1818,8 @@ returned (including existing stacks and stacks that have been deleted).
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1795,6 +1840,8 @@ Returns summary information about the results of a stack set operation.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1813,6 +1860,8 @@ Returns summary information about operations performed on a stack set.
 
 =over
 
+=item [CallAs => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1828,6 +1877,30 @@ Returns: a L<Paws::CloudFormation::ListStackSetsOutput> instance
 
 Returns summary information about stack sets that are associated with
 the user.
+
+=over
+
+=item *
+
+[Self-managed permissions] If you set the C<CallAs> parameter to
+C<SELF> while signed in to your AWS account, C<ListStackSets> returns
+all self-managed stack sets in your AWS account.
+
+=item *
+
+[Service-managed permissions] If you set the C<CallAs> parameter to
+C<SELF> while signed in to the organization's management account,
+C<ListStackSets> returns all stack sets in the management account.
+
+=item *
+
+[Service-managed permissions] If you set the C<CallAs> parameter to
+C<DELEGATED_ADMIN> while signed in to your member account,
+C<ListStackSets> returns all stack sets with service-managed
+permissions in the management account.
+
+=back
+
 
 
 =head2 ListTypeRegistrations
@@ -1853,7 +1926,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypeRegistr
 
 Returns: a L<Paws::CloudFormation::ListTypeRegistrationsOutput> instance
 
-Returns a list of registration tokens for the specified type(s).
+Returns a list of registration tokens for the specified extension(s).
 
 
 =head2 ListTypes
@@ -1868,6 +1941,8 @@ Returns a list of registration tokens for the specified type(s).
 
 =item [ProvisioningType => Str]
 
+=item [Type => Str]
+
 =item [Visibility => Str]
 
 
@@ -1877,8 +1952,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypes>
 
 Returns: a L<Paws::CloudFormation::ListTypesOutput> instance
 
-Returns summary information about types that have been registered with
-CloudFormation.
+Returns summary information about extension that have been registered
+with CloudFormation.
 
 
 =head2 ListTypeVersions
@@ -1904,7 +1979,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypeVersion
 
 Returns: a L<Paws::CloudFormation::ListTypeVersionsOutput> instance
 
-Returns summary information about the versions of a type.
+Returns summary information about the versions of an extension.
 
 
 =head2 RecordHandlerProgress
@@ -1962,30 +2037,35 @@ Each argument is described in detail in: L<Paws::CloudFormation::RegisterType>
 
 Returns: a L<Paws::CloudFormation::RegisterTypeOutput> instance
 
-Registers a type with the CloudFormation service. Registering a type
-makes it available for use in CloudFormation templates in your AWS
-account, and includes:
+Registers an extension with the CloudFormation service. Registering an
+extension makes it available for use in CloudFormation templates in
+your AWS account, and includes:
 
 =over
 
 =item *
 
-Validating the resource schema
+Validating the extension schema
 
 =item *
 
-Determining which handlers have been specified for the resource
+Determining which handlers, if any, have been specified for the
+extension
 
 =item *
 
-Making the resource type available for use in your account
+Making the extension available for use in your account
 
 =back
 
-For more information on how to develop types and ready them for
+For more information on how to develop extensions and ready them for
 registeration, see Creating Resource Providers
 (https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html)
 in the I<CloudFormation CLI User Guide>.
+
+You can have a maximum of 50 resource extension versions registered at
+a time. This maximum is per account and per region. Use DeregisterType
+to deregister specific extension versions if necessary.
 
 Once you have initiated a registration request using C< RegisterType >,
 you can use C< DescribeTypeRegistration > to monitor the progress of
@@ -2031,8 +2111,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::SetTypeDefaultV
 
 Returns: a L<Paws::CloudFormation::SetTypeDefaultVersionOutput> instance
 
-Specify the default version of a type. The default version of a type
-will be used in CloudFormation operations.
+Specify the default version of an extension. The default version of an
+extension will be used in CloudFormation operations.
 
 
 =head2 SignalResource
@@ -2070,6 +2150,8 @@ other than an Amazon EC2 instance.
 =item OperationId => Str
 
 =item StackSetName => Str
+
+=item [CallAs => Str]
 
 
 =back
@@ -2147,6 +2229,8 @@ stack, and monitoring the progress of the update, see Updating a Stack
 
 =item [Accounts => ArrayRef[Str|Undef]]
 
+=item [CallAs => Str]
+
 =item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
@@ -2163,10 +2247,10 @@ Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackInst
 Returns: a L<Paws::CloudFormation::UpdateStackInstancesOutput> instance
 
 Updates the parameter values for stack instances for the specified
-accounts, within the specified regions. A stack instance refers to a
-stack in a specific account and region.
+accounts, within the specified Regions. A stack instance refers to a
+stack in a specific account and Region.
 
-You can only update stack instances in regions and accounts where they
+You can only update stack instances in Regions and accounts where they
 already exist; to create additional stack instances, use
 CreateStackInstances
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
@@ -2198,6 +2282,8 @@ value using C<UpdateStackInstances>.
 =item [AdministrationRoleARN => Str]
 
 =item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
+=item [CallAs => Str]
 
 =item [Capabilities => ArrayRef[Str|Undef]]
 
@@ -2233,7 +2319,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackSet>
 Returns: a L<Paws::CloudFormation::UpdateStackSetOutput> instance
 
 Updates the stack set, and associated stack instances in the specified
-accounts and regions.
+accounts and Regions.
 
 Even if the stack set operation created by updating the stack set fails
 (completely or partially, below or above a specified failure
@@ -2381,9 +2467,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListImportsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackInstances(sub { },StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+=head2 ListAllStackInstances(sub { },StackSetName => Str, [CallAs => Str, Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>], MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
 
-=head2 ListAllStackInstances(StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+=head2 ListAllStackInstances(StackSetName => Str, [CallAs => Str, Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>], MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2417,9 +2503,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackSetOperationResults(sub { },OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperationResults(sub { },OperationId => Str, StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllStackSetOperationResults(OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperationResults(OperationId => Str, StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2429,9 +2515,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListStackSetOperationResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackSetOperations(sub { },StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperations(sub { },StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllStackSetOperations(StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperations(StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2441,9 +2527,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListStackSetOperationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackSets(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListAllStackSets(sub { },[CallAs => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
-=head2 ListAllStackSets([MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListAllStackSets([CallAs => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

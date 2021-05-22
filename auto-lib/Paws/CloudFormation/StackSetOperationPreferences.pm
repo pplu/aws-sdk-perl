@@ -5,6 +5,7 @@ package Paws::CloudFormation::StackSetOperationPreferences;
   has FailureTolerancePercentage => (is => 'ro', isa => 'Int');
   has MaxConcurrentCount => (is => 'ro', isa => 'Int');
   has MaxConcurrentPercentage => (is => 'ro', isa => 'Int');
+  has RegionConcurrencyType => (is => 'ro', isa => 'Str');
   has RegionOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -49,10 +50,10 @@ tolerance, see Stack set operation options
 
 =head2 FailureToleranceCount => Int
 
-The number of accounts, per region, for which this operation can fail
-before AWS CloudFormation stops the operation in that region. If the
-operation is stopped in a region, AWS CloudFormation doesn't attempt
-the operation in any subsequent regions.
+The number of accounts, per Region, for which this operation can fail
+before AWS CloudFormation stops the operation in that Region. If the
+operation is stopped in a Region, AWS CloudFormation doesn't attempt
+the operation in any subsequent Regions.
 
 Conditional: You must specify either C<FailureToleranceCount> or
 C<FailureTolerancePercentage> (but not both).
@@ -60,10 +61,10 @@ C<FailureTolerancePercentage> (but not both).
 
 =head2 FailureTolerancePercentage => Int
 
-The percentage of accounts, per region, for which this stack operation
-can fail before AWS CloudFormation stops the operation in that region.
-If the operation is stopped in a region, AWS CloudFormation doesn't
-attempt the operation in any subsequent regions.
+The percentage of accounts, per Region, for which this stack operation
+can fail before AWS CloudFormation stops the operation in that Region.
+If the operation is stopped in a Region, AWS CloudFormation doesn't
+attempt the operation in any subsequent Regions.
 
 When calculating the number of accounts based on the specified
 percentage, AWS CloudFormation rounds I<down> to the next whole number.
@@ -75,9 +76,9 @@ C<FailureTolerancePercentage>, but not both.
 =head2 MaxConcurrentCount => Int
 
 The maximum number of accounts in which to perform this operation at
-one time. This is dependent on the value of
-C<FailureToleranceCount>E<mdash>C<MaxConcurrentCount> is at most one
-more than the C<FailureToleranceCount> .
+one time. This is dependent on the value of C<FailureToleranceCount>.
+C<MaxConcurrentCount> is at most one more than the
+C<FailureToleranceCount>.
 
 Note that this setting lets you specify the I<maximum> for operations.
 For large deployments, under certain circumstances the actual number of
@@ -107,9 +108,15 @@ Conditional: You must specify either C<MaxConcurrentCount> or
 C<MaxConcurrentPercentage>, but not both.
 
 
+=head2 RegionConcurrencyType => Str
+
+The concurrency type of deploying StackSets operations in regions,
+could be in parallel or one region at a time.
+
+
 =head2 RegionOrder => ArrayRef[Str|Undef]
 
-The order of the regions in where you want to perform the stack
+The order of the Regions in where you want to perform the stack
 operation.
 
 

@@ -7,6 +7,7 @@ package Paws::CloudFormation::StackInstanceSummary;
   has OrganizationalUnitId => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
+  has StackInstanceStatus => (is => 'ro', isa => 'Paws::CloudFormation::StackInstanceComprehensiveStatus');
   has StackSetId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
@@ -94,18 +95,24 @@ stack instance on which drift detection has not yet been performed.
 
 =head2 OrganizationalUnitId => Str
 
-[C<Service-managed> permissions] The organization root ID or
-organizational unit (OU) ID that the stack instance is associated with.
+[Service-managed permissions] The organization root ID or
+organizational unit (OU) IDs that you specified for DeploymentTargets
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html).
 
 
 =head2 Region => Str
 
-The name of the AWS region that the stack instance is associated with.
+The name of the AWS Region that the stack instance is associated with.
 
 
 =head2 StackId => Str
 
 The ID of the stack instance.
+
+
+=head2 StackInstanceStatus => L<Paws::CloudFormation::StackInstanceComprehensiveStatus>
+
+The detailed status of the stack instance.
 
 
 =head2 StackSetId => Str

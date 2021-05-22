@@ -3,6 +3,7 @@ package Paws::CloudFormation::TypeVersionSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has IsDefaultVersion => (is => 'ro', isa => 'Bool');
   has TimeCreated => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
@@ -52,6 +53,11 @@ The Amazon Resource Name (ARN) of the type version.
 =head2 Description => Str
 
 The description of the type version.
+
+
+=head2 IsDefaultVersion => Bool
+
+Whether the specified type version is set as the default version.
 
 
 =head2 TimeCreated => Str

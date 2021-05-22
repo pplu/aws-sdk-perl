@@ -28,7 +28,7 @@ C<NextToken> is set to C<null>.
 =head2 TypeVersionSummaries => ArrayRef[L<Paws::CloudFormation::TypeVersionSummary>]
 
 A list of C<TypeVersionSummary> structures that contain information
-about the specified type's versions.
+about the specified extension's versions.
 
 
 =head2 _request_id => Str

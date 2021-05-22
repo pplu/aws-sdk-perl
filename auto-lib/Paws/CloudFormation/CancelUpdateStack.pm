@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloudformation = Paws->service('CloudFormation');
-    # To cancel a stack update in progress
-    # This example cancels an update of the specified stack.
-    $cloudformation->CancelUpdateStack( 'StackName' => 'MyStack' );
-
+    $cloudformation->CancelUpdateStack(
+      StackName          => 'MyStackName',
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/CancelUpdateStack>

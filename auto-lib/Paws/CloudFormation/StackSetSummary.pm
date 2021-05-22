@@ -48,9 +48,9 @@ stack set.
 
 =head2 AutoDeployment => L<Paws::CloudFormation::AutoDeployment>
 
-[C<Service-managed> permissions] Describes whether StackSets
-automatically deploys to AWS Organizations accounts that are added to a
-target organizational unit (OU).
+[Service-managed permissions] Describes whether StackSets automatically
+deploys to AWS Organizations accounts that are added to a target
+organizational unit (OU).
 
 
 =head2 Description => Str

@@ -2,8 +2,10 @@
 package Paws::CloudFormation::ResourceChange;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
+  has ChangeSetId => (is => 'ro', isa => 'Str');
   has Details => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceChangeDetail]');
   has LogicalResourceId => (is => 'ro', isa => 'Str');
+  has ModuleInfo => (is => 'ro', isa => 'Paws::CloudFormation::ModuleInfo');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has Replacement => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
@@ -49,8 +51,14 @@ set.
 =head2 Action => Str
 
 The action that AWS CloudFormation takes on the resource, such as
-C<Add> (adds a new resource), C<Modify> (changes a resource), or
-C<Remove> (deletes a resource).
+C<Add> (adds a new resource), C<Modify> (changes a resource), C<Remove>
+(deletes a resource), C<Import> (imports a resource), or C<Dynamic>
+(exact action for the resource cannot be determined).
+
+
+=head2 ChangeSetId => Str
+
+The change set ID of the nested change set.
 
 
 =head2 Details => ArrayRef[L<Paws::CloudFormation::ResourceChangeDetail>]
@@ -63,6 +71,13 @@ resource.
 =head2 LogicalResourceId => Str
 
 The resource's logical ID, which is defined in the stack's template.
+
+
+=head2 ModuleInfo => L<Paws::CloudFormation::ModuleInfo>
+
+Contains information about the module from which the resource was
+created, if the resource was created from a module included in the
+stack template.
 
 
 =head2 PhysicalResourceId => Str

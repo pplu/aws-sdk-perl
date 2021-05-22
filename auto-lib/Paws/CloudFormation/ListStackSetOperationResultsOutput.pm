@@ -29,7 +29,7 @@ C<NextToken> is set to C<null>.
 
 A list of C<StackSetOperationResultSummary> structures that contain
 information about the specified operation results, for accounts and
-regions that are included in the operation.
+Regions that are included in the operation.
 
 
 =head2 _request_id => Str

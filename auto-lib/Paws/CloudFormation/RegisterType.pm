@@ -60,68 +60,68 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 A unique identifier that acts as an idempotency key for this
 registration request. Specifying a client request token prevents
-CloudFormation from generating more than one version of a type from the
-same registeration request, even if the request is submitted multiple
-times.
+CloudFormation from generating more than one version of an extension
+from the same registeration request, even if the request is submitted
+multiple times.
 
 
 
 =head2 ExecutionRoleArn => Str
 
-The Amazon Resource Name (ARN) of the IAM execution role to use to
-register the type. If your resource type calls AWS APIs in any of its
-handlers, you must create an I< IAM execution role
+The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
+assume when invoking the extension. If your extension calls AWS APIs in
+any of its handlers, you must create an I< IAM execution role
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) > that
 includes the necessary permissions to call those AWS APIs, and
-provision that execution role in your account. CloudFormation then
-assumes that execution role to provide your resource type with the
-appropriate credentials.
+provision that execution role in your account. When CloudFormation
+needs to invoke the extension handler, CloudFormation assumes this
+execution role to create a temporary session token, which it then
+passes to the extension handler, thereby supplying your extension with
+the appropriate credentials.
 
 
 
 =head2 LoggingConfig => L<Paws::CloudFormation::LoggingConfig>
 
-Specifies logging configuration information for a type.
+Specifies logging configuration information for an extension.
 
 
 
 =head2 B<REQUIRED> SchemaHandlerPackage => Str
 
-A url to the S3 bucket containing the schema handler package that
-contains the schema, event handlers, and associated files for the type
-you want to register.
+A url to the S3 bucket containing the extension project package that
+contains the neccessary files for the extension you want to register.
 
-For information on generating a schema handler package for the type you
-want to register, see submit
+For information on generating a schema handler package for the
+extension you want to register, see submit
 (https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html)
 in the I<CloudFormation CLI User Guide>.
 
-As part of registering a resource provider type, CloudFormation must be
-able to access the S3 bucket which contains the schema handler package
-for that resource provider. For more information, see IAM Permissions
-for Registering a Resource Provider
-(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-register-permissions)
-in the I<AWS CloudFormation User Guide>.
+The user registering the extension must be able to access the package
+in the S3 bucket. That is, the user needs to have GetObject
+(https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+permissions for the schema handler package. For more information, see
+Actions, Resources, and Condition Keys for Amazon S3
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazons3.html)
+in the I<AWS Identity and Access Management User Guide>.
 
 
 
 =head2 Type => Str
 
-The kind of type.
+The kind of extension.
 
-Currently, the only valid value is C<RESOURCE>.
-
-Valid values are: C<"RESOURCE">
+Valid values are: C<"RESOURCE">, C<"MODULE">
 
 =head2 B<REQUIRED> TypeName => Str
 
-The name of the type being registered.
+The name of the extension being registered.
 
-We recommend that type names adhere to the following pattern:
+We recommend that extension names adhere to the following pattern:
 I<company_or_organization>::I<service>::I<type>.
 
 The following organization namespaces are reserved and cannot be used
-in your resource type names:
+in your extension names:
 
 =over
 

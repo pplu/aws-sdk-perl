@@ -43,10 +43,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreationTime          = $DescribeChangeSetOutput->CreationTime;
     my $Description           = $DescribeChangeSetOutput->Description;
     my $ExecutionStatus       = $DescribeChangeSetOutput->ExecutionStatus;
+    my $IncludeNestedStacks   = $DescribeChangeSetOutput->IncludeNestedStacks;
     my $NextToken             = $DescribeChangeSetOutput->NextToken;
     my $NotificationARNs      = $DescribeChangeSetOutput->NotificationARNs;
     my $Parameters            = $DescribeChangeSetOutput->Parameters;
+    my $ParentChangeSetId     = $DescribeChangeSetOutput->ParentChangeSetId;
     my $RollbackConfiguration = $DescribeChangeSetOutput->RollbackConfiguration;
+    my $RootChangeSetId       = $DescribeChangeSetOutput->RootChangeSetId;
     my $StackId               = $DescribeChangeSetOutput->StackId;
     my $StackName             = $DescribeChangeSetOutput->StackName;
     my $Status                = $DescribeChangeSetOutput->Status;

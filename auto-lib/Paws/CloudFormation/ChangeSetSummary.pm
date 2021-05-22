@@ -6,6 +6,9 @@ package Paws::CloudFormation::ChangeSetSummary;
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionStatus => (is => 'ro', isa => 'Str');
+  has IncludeNestedStacks => (is => 'ro', isa => 'Bool');
+  has ParentChangeSetId => (is => 'ro', isa => 'Str');
+  has RootChangeSetId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -74,6 +77,22 @@ change set. If you canE<rsquo>t execute the change set, the status
 indicates why. For example, a change set might be in an C<UNAVAILABLE>
 state because AWS CloudFormation is still creating it or in an
 C<OBSOLETE> state because the stack was already updated.
+
+
+=head2 IncludeNestedStacks => Bool
+
+Specifies the current setting of C<IncludeNestedStacks> for the change
+set.
+
+
+=head2 ParentChangeSetId => Str
+
+The parent change set ID.
+
+
+=head2 RootChangeSetId => Str
+
+The root change set ID.
 
 
 =head2 StackId => Str

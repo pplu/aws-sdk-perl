@@ -76,7 +76,7 @@ C<NextToken> parameter is set to C<null>.
 
 =head2 RegistrationStatusFilter => Str
 
-The current status of the type registration request.
+The current status of the extension registration request.
 
 The default is C<IN_PROGRESS>.
 
@@ -84,18 +84,16 @@ Valid values are: C<"COMPLETE">, C<"IN_PROGRESS">, C<"FAILED">
 
 =head2 Type => Str
 
-The kind of type.
-
-Currently the only valid value is C<RESOURCE>.
+The kind of extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
 
-Valid values are: C<"RESOURCE">
+Valid values are: C<"RESOURCE">, C<"MODULE">
 
 =head2 TypeArn => Str
 
-The Amazon Resource Name (ARN) of the type.
+The Amazon Resource Name (ARN) of the extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
@@ -104,7 +102,7 @@ C<Arn>.
 
 =head2 TypeName => Str
 
-The name of the type.
+The name of the extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.

@@ -208,10 +208,9 @@ and AWS::Serverless
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 transforms, which are macros hosted by AWS CloudFormation.
 
-Change sets do not currently support nested stacks. If you want to
-create a stack from a stack template that contains macros I<and> nested
-stacks, you must create the stack directly from the template using this
-capability.
+If you want to create a stack from a stack template that contains
+macros I<and> nested stacks, you must create the stack directly from
+the template using this capability.
 
 You should only create stacks directly from a stack template that
 contains macros if you know what processing the macro performs.
@@ -359,7 +358,7 @@ period afterwards.
 =head2 B<REQUIRED> StackName => Str
 
 The name that is associated with the stack. The name must be unique in
-the region in which you are creating the stack.
+the Region in which you are creating the stack.
 
 A stack name can contain only alphanumeric characters (case sensitive)
 and hyphens. It must start with an alphabetic character and cannot be
@@ -380,7 +379,7 @@ C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not both.
 =head2 StackPolicyURL => Str
 
 Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an S3 bucket in the same region
+policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 as the stack. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 
@@ -411,7 +410,8 @@ C<TemplateURL> parameter, but not both.
 
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information, go to the Template Anatomy
+bucket or a Systems Manager document. For more information, go to the
+Template Anatomy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 

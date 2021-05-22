@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the type for which you want version
-summary information.
+The Amazon Resource Name (ARN) of the extension for which you want
+version summary information.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
@@ -55,16 +55,16 @@ C<Arn>.
 
 =head2 Type => Str
 
-The kind of type.
+The kind of extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
 
-Valid values are: C<"RESOURCE">
+Valid values are: C<"RESOURCE">, C<"MODULE">
 
 =head2 TypeName => Str
 
-The name of the type.
+The name of the extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
@@ -73,9 +73,9 @@ C<Arn>.
 
 =head2 VersionId => Str
 
-The ID of a specific version of the type. The version ID is the value
-at the end of the Amazon Resource Name (ARN) assigned to the type
-version when it is registered.
+The ID of a specific version of the extension. The version ID is the
+value at the end of the Amazon Resource Name (ARN) assigned to the
+extension version when it is registered.
 
 
 

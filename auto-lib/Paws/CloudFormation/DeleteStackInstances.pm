@@ -2,6 +2,7 @@
 package Paws::CloudFormation::DeleteStackInstances;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CallAs => (is => 'ro', isa => 'Str');
   has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
@@ -38,8 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RetainStacks      => 1,
       StackSetName      => 'MyStackSetName',
       Accounts          => [ 'MyAccount', ... ],    # OPTIONAL
+      CallAs            => 'SELF',                  # OPTIONAL
       DeploymentTargets => {
-        Accounts              => [ 'MyAccount',              ... ],
+        Accounts    => [ 'MyAccount', ... ],
+        AccountsUrl => 'MyAccountsUrl',        # min: 1, max: 5120; OPTIONAL
         OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
       },    # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
@@ -48,6 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
+        RegionConcurrencyType =>
+          'SEQUENTIAL',    # values: SEQUENTIAL, PARALLEL; OPTIONAL
         RegionOrder => [ 'MyRegion', ... ],
       },    # OPTIONAL
     );
@@ -72,10 +77,41 @@ You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
 
 
+=head2 CallAs => Str
+
+[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, C<SELF> is specified. Use C<SELF> for stack sets with
+self-managed permissions.
+
+=over
+
+=item *
+
+If you are signed in to the management account, specify C<SELF>.
+
+=item *
+
+If you are signed in to a delegated administrator account, specify
+C<DELEGATED_ADMIN>.
+
+Your AWS account must be registered as a delegated administrator in the
+management account. For more information, see Register a delegated
+administrator
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+in the I<AWS CloudFormation User Guide>.
+
+=back
+
+
+Valid values are: C<"SELF">, C<"DELEGATED_ADMIN">
+
 =head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
 
-[C<Service-managed> permissions] The AWS Organizations accounts from
-which to delete stack instances.
+[Service-managed permissions] The AWS Organizations accounts from which
+to delete stack instances.
 
 You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
@@ -107,7 +143,7 @@ operation.
 
 =head2 B<REQUIRED> Regions => ArrayRef[Str|Undef]
 
-The regions where you want to delete stack set instances.
+The Regions where you want to delete stack set instances.
 
 
 

@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 =head1 DESCRIPTION
 
 The structure that contains information about a specified operation's
-results for a given account in a given region.
+results for a given account in a given Region.
 
 =head1 ATTRIBUTES
 
@@ -58,50 +58,51 @@ present, before proceeding with stack set operations in an account
 
 =head2 OrganizationalUnitId => Str
 
-[C<Service-managed> permissions] The organization root ID or
-organizational unit (OU) ID for this operation result.
+[Service-managed permissions] The organization root ID or
+organizational unit (OU) IDs that you specified for DeploymentTargets
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html).
 
 
 =head2 Region => Str
 
-The name of the AWS region for this operation result.
+The name of the AWS Region for this operation result.
 
 
 =head2 Status => Str
 
 The result status of the stack set operation for the given account in
-the given region.
+the given Region.
 
 =over
 
 =item *
 
-C<CANCELLED>: The operation in the specified account and region has
+C<CANCELLED>: The operation in the specified account and Region has
 been cancelled. This is either because a user has stopped the stack set
 operation, or because the failure tolerance of the stack set operation
 has been exceeded.
 
 =item *
 
-C<FAILED>: The operation in the specified account and region failed.
+C<FAILED>: The operation in the specified account and Region failed.
 
-If the stack set operation fails in enough accounts within a region,
+If the stack set operation fails in enough accounts within a Region,
 the failure tolerance for the stack set operation as a whole might be
 exceeded.
 
 =item *
 
-C<RUNNING>: The operation in the specified account and region is
+C<RUNNING>: The operation in the specified account and Region is
 currently in progress.
 
 =item *
 
-C<PENDING>: The operation in the specified account and region has yet
+C<PENDING>: The operation in the specified account and Region has yet
 to start.
 
 =item *
 
-C<SUCCEEDED>: The operation in the specified account and region
+C<SUCCEEDED>: The operation in the specified account and Region
 completed successfully.
 
 =back

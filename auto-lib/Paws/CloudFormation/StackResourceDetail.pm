@@ -6,6 +6,7 @@ package Paws::CloudFormation::StackResourceDetail;
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Str');
+  has ModuleInfo => (is => 'ro', isa => 'Paws::CloudFormation::ModuleInfo');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
@@ -79,6 +80,13 @@ The content of the C<Metadata> attribute declared for the resource. For
 more information, see Metadata Attribute
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html)
 in the AWS CloudFormation User Guide.
+
+
+=head2 ModuleInfo => L<Paws::CloudFormation::ModuleInfo>
+
+Contains information about the module from which the resource was
+created, if the resource was created from a module included in the
+stack template.
 
 
 =head2 PhysicalResourceId => Str

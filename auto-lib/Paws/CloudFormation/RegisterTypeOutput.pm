@@ -20,7 +20,7 @@ Paws::CloudFormation::RegisterTypeOutput
 The identifier for this registration request.
 
 Use this registration token when calling C< DescribeTypeRegistration >,
-which returns information about the status and IDs of the type
+which returns information about the status and IDs of the extension
 registration.
 
 

@@ -76,8 +76,8 @@ are passed, only C<TemplateBody> is used.
 =head2 TemplateURL => Str
 
 Location of file containing the template body. The URL must point to a
-template that is located in an Amazon S3 bucket. For more information,
-go to Template Anatomy
+template that is located in an Amazon S3 bucket or a Systems Manager
+document. For more information, go to Template Anatomy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 

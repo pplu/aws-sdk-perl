@@ -5,6 +5,7 @@ package Paws::CloudFormation::ListTypes;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ProvisioningType => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
   has Visibility => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults       => 1,                      # OPTIONAL
       NextToken        => 'MyNextToken',          # OPTIONAL
       ProvisioningType => 'NON_PROVISIONABLE',    # OPTIONAL
+      Type             => 'RESOURCE',             # OPTIONAL
       Visibility       => 'PUBLIC',               # OPTIONAL
     );
 
@@ -53,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 DeprecatedStatus => Str
 
-The deprecation status of the types that you want to get summary
+The deprecation status of the extension that you want to get summary
 information about.
 
 Valid values include:
@@ -62,12 +64,13 @@ Valid values include:
 
 =item *
 
-C<LIVE>: The type is registered for use in CloudFormation operations.
+C<LIVE>: The extension is registered for use in CloudFormation
+operations.
 
 =item *
 
-C<DEPRECATED>: The type has been deregistered and can no longer be used
-in CloudFormation operations.
+C<DEPRECATED>: The extension has been deregistered and can no longer be
+used in CloudFormation operations.
 
 =back
 
@@ -106,18 +109,18 @@ Valid values include:
 
 =item *
 
-C<FULLY_MUTABLE>: The type includes an update handler to process
-updates to the type during stack update operations.
+C<FULLY_MUTABLE>: The extension includes an update handler to process
+updates to the extension during stack update operations.
 
 =item *
 
-C<IMMUTABLE>: The type does not include an update handler, so the type
-cannot be updated and must instead be replaced during stack update
-operations.
+C<IMMUTABLE>: The extension does not include an update handler, so the
+extension cannot be updated and must instead be replaced during stack
+update operations.
 
 =item *
 
-C<NON_PROVISIONABLE>: The type does not include create, read, and
+C<NON_PROVISIONABLE>: The extension does not include create, read, and
 delete handlers, and therefore cannot actually be provisioned.
 
 =back
@@ -125,10 +128,16 @@ delete handlers, and therefore cannot actually be provisioned.
 
 Valid values are: C<"NON_PROVISIONABLE">, C<"IMMUTABLE">, C<"FULLY_MUTABLE">
 
+=head2 Type => Str
+
+The type of extension.
+
+Valid values are: C<"RESOURCE">, C<"MODULE">
+
 =head2 Visibility => Str
 
-The scope at which the type is visible and usable in CloudFormation
-operations.
+The scope at which the extension is visible and usable in
+CloudFormation operations.
 
 Valid values include:
 
@@ -136,14 +145,14 @@ Valid values include:
 
 =item *
 
-C<PRIVATE>: The type is only visible and usable within the account in
-which it is registered. Currently, AWS CloudFormation marks any types
-you create as C<PRIVATE>.
+C<PRIVATE>: The extension is only visible and usable within the account
+in which it is registered. Currently, AWS CloudFormation marks any
+extension you create as C<PRIVATE>.
 
 =item *
 
-C<PUBLIC>: The type is publically visible and usable within any Amazon
-account.
+C<PUBLIC>: The extension is publically visible and usable within any
+Amazon account.
 
 =back
 

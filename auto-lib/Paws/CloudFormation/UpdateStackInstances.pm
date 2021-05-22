@@ -2,6 +2,7 @@
 package Paws::CloudFormation::UpdateStackInstances;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CallAs => (is => 'ro', isa => 'Str');
   has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
@@ -37,8 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Regions           => [ 'MyRegion', ... ],
       StackSetName      => 'MyStackSetNameOrId',
       Accounts          => [ 'MyAccount', ... ],    # OPTIONAL
+      CallAs            => 'SELF',                  # OPTIONAL
       DeploymentTargets => {
-        Accounts              => [ 'MyAccount',              ... ],
+        Accounts    => [ 'MyAccount', ... ],
+        AccountsUrl => 'MyAccountsUrl',        # min: 1, max: 5120; OPTIONAL
         OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
       },    # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
@@ -47,6 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
+        RegionConcurrencyType =>
+          'SEQUENTIAL',    # values: SEQUENTIAL, PARALLEL; OPTIONAL
         RegionOrder => [ 'MyRegion', ... ],
       },    # OPTIONAL
       ParameterOverrides => [
@@ -76,20 +81,51 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 [Self-managed permissions] The names of one or more AWS accounts for
 which you want to update parameter values for stack instances. The
 overridden parameter values will be applied to all stack instances in
-the specified accounts and regions.
+the specified accounts and Regions.
 
 You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
 
 
+=head2 CallAs => Str
+
+[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, C<SELF> is specified. Use C<SELF> for stack sets with
+self-managed permissions.
+
+=over
+
+=item *
+
+If you are signed in to the management account, specify C<SELF>.
+
+=item *
+
+If you are signed in to a delegated administrator account, specify
+C<DELEGATED_ADMIN>.
+
+Your AWS account must be registered as a delegated administrator in the
+management account. For more information, see Register a delegated
+administrator
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+in the I<AWS CloudFormation User Guide>.
+
+=back
+
+
+Valid values are: C<"SELF">, C<"DELEGATED_ADMIN">
+
 =head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
 
-[C<Service-managed> permissions] The AWS Organizations accounts for
-which you want to update parameter values for stack instances. If your
-update targets OUs, the overridden parameter values only apply to the
-accounts that are currently in the target OUs and their child OUs.
-Accounts added to the target OUs and their child OUs in the future
-won't use the overridden values.
+[Service-managed permissions] The AWS Organizations accounts for which
+you want to update parameter values for stack instances. If your update
+targets OUs, the overridden parameter values only apply to the accounts
+that are currently in the target OUs and their child OUs. Accounts
+added to the target OUs and their child OUs in the future won't use the
+overridden values.
 
 You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
@@ -123,7 +159,7 @@ A list of input parameters whose values you want to update for the
 specified stack instances.
 
 Any overridden parameter values will be applied to all stack instances
-in the specified accounts and regions. When specifying parameters and
+in the specified accounts and Regions. When specifying parameters and
 their values, be aware of how AWS CloudFormation sets parameter values
 during stack instance update operations:
 
@@ -182,9 +218,9 @@ value using C<UpdateStackInstances>.
 
 =head2 B<REQUIRED> Regions => ArrayRef[Str|Undef]
 
-The names of one or more regions in which you want to update parameter
+The names of one or more Regions in which you want to update parameter
 values for stack instances. The overridden parameter values will be
-applied to all stack instances in the specified accounts and regions.
+applied to all stack instances in the specified accounts and Regions.
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::ListStackSets;
   use Moose;
+  has CallAs => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -30,6 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $ListStackSetsOutput = $cloudformation->ListStackSets(
+      CallAs     => 'SELF',           # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
       Status     => 'ACTIVE',         # OPTIONAL
@@ -46,6 +48,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head1 ATTRIBUTES
 
+
+=head2 CallAs => Str
+
+[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the management account or as a delegated
+administrator in a member account.
+
+By default, C<SELF> is specified. Use C<SELF> for stack sets with
+self-managed permissions.
+
+=over
+
+=item *
+
+If you are signed in to the management account, specify C<SELF>.
+
+=item *
+
+If you are signed in to a delegated administrator account, specify
+C<DELEGATED_ADMIN>.
+
+Your AWS account must be registered as a delegated administrator in the
+management account. For more information, see Register a delegated
+administrator
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+in the I<AWS CloudFormation User Guide>.
+
+=back
+
+
+Valid values are: C<"SELF">, C<"DELEGATED_ADMIN">
 
 =head2 MaxResults => Int
 
