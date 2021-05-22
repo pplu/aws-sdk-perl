@@ -43,7 +43,7 @@ broker.
 =head2 Audit => Bool
 
 Enables audit logging. Every user management action made using JMX or
-the ActiveMQ Web Console is logged.
+the ActiveMQ Web Console is logged. Does not apply to RabbitMQ brokers.
 
 
 =head2 General => Bool

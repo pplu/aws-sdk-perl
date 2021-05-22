@@ -7,6 +7,7 @@ package Paws::MQ::BrokerSummary;
   has BrokerState => (is => 'ro', isa => 'Str', request_name => 'brokerState', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has DeploymentMode => (is => 'ro', isa => 'Str', request_name => 'deploymentMode', traits => ['NameInRequest']);
+  has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
 
 1;
@@ -75,6 +76,11 @@ The time when the broker was created.
 =head2 DeploymentMode => Str
 
 Required. The deployment mode of the broker.
+
+
+=head2 EngineType => Str
+
+Required. The type of broker engine.
 
 
 =head2 HostInstanceType => Str

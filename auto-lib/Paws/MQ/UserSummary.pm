@@ -34,21 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::UserSum
 
 =head1 DESCRIPTION
 
-Returns a list of all ActiveMQ users.
+Returns a list of all broker users.
 
 =head1 ATTRIBUTES
 
 
 =head2 PendingChange => Str
 
-The type of change pending for the ActiveMQ user.
+The type of change pending for the broker user.
 
 
 =head2 Username => Str
 
-Required. The username of the ActiveMQ user. This value can contain
-only alphanumeric characters, dashes, periods, underscores, and tildes
-(- . _ ~). This value must be 2-100 characters long.
+Required. The username of the broker user. This value can contain only
+alphanumeric characters, dashes, periods, underscores, and tildes (- .
+_ ~). This value must be 2-100 characters long.
 
 
 

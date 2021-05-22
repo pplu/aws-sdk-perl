@@ -36,14 +36,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::User ob
 
 =head1 DESCRIPTION
 
-An ActiveMQ user associated with the broker.
+A user associated with the broker.
 
 =head1 ATTRIBUTES
 
 
 =head2 ConsoleAccess => Bool
 
-Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
+Enables access to the ActiveMQ Web Console for the ActiveMQ user (Does
+not apply to RabbitMQ brokers).
 
 
 =head2 Groups => ArrayRef[Str|Undef]
@@ -56,16 +57,16 @@ long.
 
 =head2 Password => Str
 
-Required. The password of the ActiveMQ user. This value must be at
-least 12 characters long, must contain at least 4 unique characters,
-and must not contain commas.
+Required. The password of the broker user. This value must be at least
+12 characters long, must contain at least 4 unique characters, and must
+not contain commas.
 
 
 =head2 Username => Str
 
-Required. The username of the ActiveMQ user. This value can contain
-only alphanumeric characters, dashes, periods, underscores, and tildes
-(- . _ ~). This value must be 2-100 characters long.
+Required. The username of the broker user. This value can contain only
+alphanumeric characters, dashes, periods, underscores, and tildes (- .
+_ ~). This value must be 2-100 characters long.
 
 
 

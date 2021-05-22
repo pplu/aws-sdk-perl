@@ -34,26 +34,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AuthenticationStrategy =
+      $DescribeBrokerResponse->AuthenticationStrategy;
     my $AutoMinorVersionUpgrade =
       $DescribeBrokerResponse->AutoMinorVersionUpgrade;
-    my $BrokerArn         = $DescribeBrokerResponse->BrokerArn;
-    my $BrokerId          = $DescribeBrokerResponse->BrokerId;
-    my $BrokerInstances   = $DescribeBrokerResponse->BrokerInstances;
-    my $BrokerName        = $DescribeBrokerResponse->BrokerName;
-    my $BrokerState       = $DescribeBrokerResponse->BrokerState;
-    my $Configurations    = $DescribeBrokerResponse->Configurations;
-    my $Created           = $DescribeBrokerResponse->Created;
-    my $DeploymentMode    = $DescribeBrokerResponse->DeploymentMode;
-    my $EncryptionOptions = $DescribeBrokerResponse->EncryptionOptions;
-    my $EngineType        = $DescribeBrokerResponse->EngineType;
-    my $EngineVersion     = $DescribeBrokerResponse->EngineVersion;
-    my $HostInstanceType  = $DescribeBrokerResponse->HostInstanceType;
-    my $Logs              = $DescribeBrokerResponse->Logs;
+    my $BrokerArn          = $DescribeBrokerResponse->BrokerArn;
+    my $BrokerId           = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances    = $DescribeBrokerResponse->BrokerInstances;
+    my $BrokerName         = $DescribeBrokerResponse->BrokerName;
+    my $BrokerState        = $DescribeBrokerResponse->BrokerState;
+    my $Configurations     = $DescribeBrokerResponse->Configurations;
+    my $Created            = $DescribeBrokerResponse->Created;
+    my $DeploymentMode     = $DescribeBrokerResponse->DeploymentMode;
+    my $EncryptionOptions  = $DescribeBrokerResponse->EncryptionOptions;
+    my $EngineType         = $DescribeBrokerResponse->EngineType;
+    my $EngineVersion      = $DescribeBrokerResponse->EngineVersion;
+    my $HostInstanceType   = $DescribeBrokerResponse->HostInstanceType;
+    my $LdapServerMetadata = $DescribeBrokerResponse->LdapServerMetadata;
+    my $Logs               = $DescribeBrokerResponse->Logs;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
+    my $PendingAuthenticationStrategy =
+      $DescribeBrokerResponse->PendingAuthenticationStrategy;
     my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;
     my $PendingHostInstanceType =
       $DescribeBrokerResponse->PendingHostInstanceType;
+    my $PendingLdapServerMetadata =
+      $DescribeBrokerResponse->PendingLdapServerMetadata;
     my $PendingSecurityGroups = $DescribeBrokerResponse->PendingSecurityGroups;
     my $PubliclyAccessible    = $DescribeBrokerResponse->PubliclyAccessible;
     my $SecurityGroups        = $DescribeBrokerResponse->SecurityGroups;

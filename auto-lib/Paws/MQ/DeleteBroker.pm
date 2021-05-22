@@ -46,10 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/
 
 =head2 B<REQUIRED> BrokerId => Str
 
-The name of the broker. This value must be unique in your AWS account,
-1-50 characters long, must contain only letters, numbers, dashes, and
-underscores, and must not contain whitespaces, brackets, wildcard
-characters, or special characters.
+The unique ID that Amazon MQ generates for the broker.
 
 
 

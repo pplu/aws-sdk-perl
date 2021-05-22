@@ -1,6 +1,7 @@
 
 package Paws::MQ::CreateBroker;
   use Moose;
+  has AuthenticationStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationStrategy');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
   has BrokerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerName');
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
@@ -10,6 +11,7 @@ package Paws::MQ::CreateBroker;
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
+  has LdapServerMetadata => (is => 'ro', isa => 'Paws::MQ::LdapServerMetadataInput', traits => ['NameInRequest'], request_name => 'ldapServerMetadata');
   has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
@@ -45,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mq = Paws->service('MQ');
     my $CreateBrokerResponse = $mq->CreateBroker(
+      AuthenticationStrategy  => 'SIMPLE',        # OPTIONAL
       AutoMinorVersionUpgrade => 1,               # OPTIONAL
       BrokerName              => 'My__string',    # OPTIONAL
       Configuration           => {
@@ -57,13 +60,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         UseAwsOwnedKey => 1,
         KmsKeyId       => 'My__string',
       },                                         # OPTIONAL
-      EngineType       => 'ACTIVEMQ',            # OPTIONAL
-      EngineVersion    => 'My__string',          # OPTIONAL
-      HostInstanceType => 'My__string',          # OPTIONAL
-      Logs             => {
+      EngineType         => 'ACTIVEMQ',          # OPTIONAL
+      EngineVersion      => 'My__string',        # OPTIONAL
+      HostInstanceType   => 'My__string',        # OPTIONAL
+      LdapServerMetadata => {
+        Hosts                  => [ 'My__string', ... ],    # OPTIONAL
+        RoleBase               => 'My__string',
+        RoleName               => 'My__string',
+        RoleSearchMatching     => 'My__string',
+        RoleSearchSubtree      => 1,
+        ServiceAccountPassword => 'My__string',
+        ServiceAccountUsername => 'My__string',
+        UserBase               => 'My__string',
+        UserRoleName           => 'My__string',
+        UserSearchMatching     => 'My__string',
+        UserSearchSubtree      => 1,
+      },    # OPTIONAL
+      Logs => {
         Audit   => 1,
         General => 1,
-      },                                         # OPTIONAL
+      },    # OPTIONAL
       MaintenanceWindowStartTime => {
         DayOfWeek => 'MONDAY'
         , # values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY; OPTIONAL
@@ -78,7 +94,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Users              => [
         {
           ConsoleAccess => 1,
-          Groups        => [ 'My__string', ... ],
+          Groups        => [ 'My__string', ... ],                 # OPTIONAL
           Password      => 'My__string',
           Username      => 'My__string',
         },
@@ -97,6 +113,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/
 
 =head1 ATTRIBUTES
 
+
+=head2 AuthenticationStrategy => Str
+
+The authentication strategy used to secure the broker.
+
+Valid values are: C<"SIMPLE">, C<"LDAP">
 
 =head2 AutoMinorVersionUpgrade => Bool
 
@@ -135,7 +157,7 @@ idempotency.
 
 Required. The deployment mode of the broker.
 
-Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
+Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">, C<"CLUSTER_MULTI_AZ">
 
 =head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
 
@@ -146,9 +168,9 @@ Encryption options for the broker.
 =head2 EngineType => Str
 
 Required. The type of broker engine. Note: Currently, Amazon MQ
-supports only ACTIVEMQ.
+supports ACTIVEMQ and RABBITMQ.
 
-Valid values are: C<"ACTIVEMQ">
+Valid values are: C<"ACTIVEMQ">, C<"RABBITMQ">
 
 =head2 EngineVersion => Str
 
@@ -161,6 +183,13 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 =head2 HostInstanceType => Str
 
 Required. The broker's instance type.
+
+
+
+=head2 LdapServerMetadata => L<Paws::MQ::LdapServerMetadataInput>
+
+The metadata of the LDAP server used to authenticate and authorize
+connections to the broker.
 
 
 
@@ -198,10 +227,13 @@ Valid values are: C<"EBS">, C<"EFS">
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-The list of groups (2 maximum) that define which subnets and IP ranges
-the broker can use from different Availability Zones. A SINGLE_INSTANCE
-deployment requires one subnet (for example, the default subnet). An
-ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+The list of groups that define which subnets and IP ranges the broker
+can use from different Availability Zones. A SINGLE_INSTANCE deployment
+requires one subnet (for example, the default subnet). An
+ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A
+CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when
+deployed with public accessibility, deployment without public
+accessibility requires at least one subnet.
 
 
 
@@ -213,10 +245,14 @@ Create tags when creating the broker.
 
 =head2 Users => ArrayRef[L<Paws::MQ::User>]
 
-Required. The list of ActiveMQ users (persons or applications) who can
-access queues and topics. This value can contain only alphanumeric
-characters, dashes, periods, underscores, and tildes (- . _ ~). This
-value must be 2-100 characters long.
+Required. The list of broker users (persons or applications) who can
+access queues and topics. For RabbitMQ brokers, one and only one
+administrative user is accepted and created when a broker is first
+provisioned. All subsequent broker users are created by making RabbitMQ
+API calls directly to brokers or via the RabbitMQ Web Console. This
+value can contain only alphanumeric characters, dashes, periods,
+underscores, and tildes (- . _ ~). This value must be 2-100 characters
+long.
 
 
 
