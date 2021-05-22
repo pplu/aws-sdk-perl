@@ -66,7 +66,9 @@ supported:
 
 =over
 
-=item * C<SGD> -- Stochastic gradient descent. The goal of C<SGD> is to
+=item *
+
+C<SGD> -- Stochastic gradient descent. The goal of C<SGD> is to
 minimize the gradient of the loss function.
 
 =back
@@ -131,14 +133,20 @@ types:
 
 =over
 
-=item * C<REGRESSION> - Produces a numeric result. For example, "What
-price should a house be listed at?"
+=item *
 
-=item * C<BINARY> - Produces one of two possible results. For example,
-"Is this a child-friendly web site?".
+C<REGRESSION> - Produces a numeric result. For example, "What price
+should a house be listed at?"
 
-=item * C<MULTICLASS> - Produces one of several possible results. For
-example, "Is this a HIGH-, LOW-, or MEDIUM-risk trade?".
+=item *
+
+C<BINARY> - Produces one of two possible results. For example, "Is this
+a child-friendly web site?".
+
+=item *
+
+C<MULTICLASS> - Produces one of several possible results. For example,
+"Is this a HIGH-, LOW-, or MEDIUM-risk trade?".
 
 =back
 
@@ -177,18 +185,27 @@ following values:
 
 =over
 
-=item * C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a
-request to create an C<MLModel>.
+=item *
 
-=item * C<INPROGRESS> - The creation process is underway.
+C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a request to
+create an C<MLModel>.
 
-=item * C<FAILED> - The request to create an C<MLModel> didn't run to
+=item *
+
+C<INPROGRESS> - The creation process is underway.
+
+=item *
+
+C<FAILED> - The request to create an C<MLModel> didn't run to
 completion. The model isn't usable.
 
-=item * C<COMPLETED> - The creation process completed successfully.
+=item *
 
-=item * C<DELETED> - The C<MLModel> is marked as deleted. It isn't
-usable.
+C<COMPLETED> - The creation process completed successfully.
+
+=item *
+
+C<DELETED> - The C<MLModel> is marked as deleted. It isn't usable.
 
 =back
 

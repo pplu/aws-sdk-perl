@@ -79,27 +79,40 @@ C<BatchPrediction>:
 
 =over
 
-=item * C<CreatedAt> - Sets the search criteria to the
-C<BatchPrediction> creation date.
+=item *
 
-=item * C<Status> - Sets the search criteria to the C<BatchPrediction>
-status.
+C<CreatedAt> - Sets the search criteria to the C<BatchPrediction>
+creation date.
 
-=item * C<Name> - Sets the search criteria to the contents of the
-C<BatchPrediction>B< > C<Name>.
+=item *
 
-=item * C<IAMUser> - Sets the search criteria to the user account that
-invoked the C<BatchPrediction> creation.
+C<Status> - Sets the search criteria to the C<BatchPrediction> status.
 
-=item * C<MLModelId> - Sets the search criteria to the C<MLModel> used
-in the C<BatchPrediction>.
+=item *
 
-=item * C<DataSourceId> - Sets the search criteria to the C<DataSource>
-used in the C<BatchPrediction>.
+C<Name> - Sets the search criteria to the contents of the
+C<BatchPrediction> B< > C<Name>.
 
-=item * C<DataURI> - Sets the search criteria to the data file(s) used
-in the C<BatchPrediction>. The URL can identify either a file or an
-Amazon Simple Storage Solution (Amazon S3) bucket or directory.
+=item *
+
+C<IAMUser> - Sets the search criteria to the user account that invoked
+the C<BatchPrediction> creation.
+
+=item *
+
+C<MLModelId> - Sets the search criteria to the C<MLModel> used in the
+C<BatchPrediction>.
+
+=item *
+
+C<DataSourceId> - Sets the search criteria to the C<DataSource> used in
+the C<BatchPrediction>.
+
+=item *
+
+C<DataURI> - Sets the search criteria to the data file(s) used in the
+C<BatchPrediction>. The URL can identify either a file or an Amazon
+Simple Storage Solution (Amazon S3) bucket or directory.
 
 =back
 
@@ -195,9 +208,13 @@ list of C<MLModel>s.
 
 =over
 
-=item * C<asc> - Arranges the list in ascending order (A-Z, 0-9).
+=item *
 
-=item * C<dsc> - Arranges the list in descending order (Z-A, 9-0).
+C<asc> - Arranges the list in ascending order (A-Z, 0-9).
+
+=item *
+
+C<dsc> - Arranges the list in descending order (Z-A, 9-0).
 
 =back
 

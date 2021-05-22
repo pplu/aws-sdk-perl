@@ -58,8 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 The compute statistics for a C<DataSource>. The statistics are
 generated from the observation data referenced by a C<DataSource>.
 Amazon ML uses the statistics internally during C<MLModel> training.
-This parameter must be set to C<true> if the C<>DataSourceC<> needs to
-be used for C<MLModel> training.
+This parameter must be set to C<true> if the C<DataSourceC< needs to be
+used for C<MLModel> training.>>
 
 
 

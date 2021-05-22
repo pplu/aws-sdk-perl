@@ -675,7 +675,8 @@ After invoking the C<DeleteEvaluation> operation, you can use the
 C<GetEvaluation> operation to verify that the status of the
 C<Evaluation> changed to C<DELETED>.
 
-The results of the C<DeleteEvaluation> operation are irreversible.
+B<Caution:> The results of the C<DeleteEvaluation> operation are
+irreversible.
 
 
 =head2 DeleteMLModel
@@ -1004,8 +1005,8 @@ Returns: a L<Paws::MachineLearning::PredictOutput> instance
 Generates a prediction for the observation using the specified C<ML
 Model>.
 
-Not all response parameters will be populated. Whether a response
-parameter is populated depends on the type of model requested.
+B<Note:> Not all response parameters will be populated. Whether a
+response parameter is populated depends on the type of model requested.
 
 
 =head2 UpdateBatchPrediction

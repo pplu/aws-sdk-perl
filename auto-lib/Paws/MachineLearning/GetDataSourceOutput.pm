@@ -88,7 +88,7 @@ identical to the value of the C<DataSourceId> in the request.
 
 The schema used by all of the data files of this C<DataSource>.
 
-This parameter is provided as part of the verbose format.
+B<Note:> This parameter is provided as part of the verbose format.
 
 
 =head2 FinishedAt => Str
@@ -155,18 +155,26 @@ the following values:
 
 =over
 
-=item * C<PENDING> - Amazon ML submitted a request to create a
-C<DataSource>.
+=item *
 
-=item * C<INPROGRESS> - The creation process is underway.
+C<PENDING> - Amazon ML submitted a request to create a C<DataSource>.
 
-=item * C<FAILED> - The request to create a C<DataSource> did not run
-to completion. It is not usable.
+=item *
 
-=item * C<COMPLETED> - The creation process completed successfully.
+C<INPROGRESS> - The creation process is underway.
 
-=item * C<DELETED> - The C<DataSource> is marked as deleted. It is not
-usable.
+=item *
+
+C<FAILED> - The request to create a C<DataSource> did not run to
+completion. It is not usable.
+
+=item *
+
+C<COMPLETED> - The creation process completed successfully.
+
+=item *
+
+C<DELETED> - The C<DataSource> is marked as deleted. It is not usable.
 
 =back
 

@@ -145,19 +145,28 @@ following values:
 
 =over
 
-=item * C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a
-request to generate predictions for a batch of observations.
+=item *
 
-=item * C<INPROGRESS> - The process is underway.
+C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a request to
+generate predictions for a batch of observations.
 
-=item * C<FAILED> - The request to perform a batch prediction did not
-run to completion. It is not usable.
+=item *
 
-=item * C<COMPLETED> - The batch prediction process completed
-successfully.
+C<INPROGRESS> - The process is underway.
 
-=item * C<DELETED> - The C<BatchPrediction> is marked as deleted. It is
-not usable.
+=item *
+
+C<FAILED> - The request to perform a batch prediction did not run to
+completion. It is not usable.
+
+=item *
+
+C<COMPLETED> - The batch prediction process completed successfully.
+
+=item *
+
+C<DELETED> - The C<BatchPrediction> is marked as deleted. It is not
+usable.
 
 =back
 

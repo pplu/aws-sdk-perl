@@ -103,14 +103,20 @@ types:
 
 =over
 
-=item * REGRESSION -- Produces a numeric result. For example, "What
-price should a house be listed at?"
+=item *
 
-=item * BINARY -- Produces one of two possible results. For example,
-"Is this an e-commerce website?"
+REGRESSION -- Produces a numeric result. For example, "What price
+should a house be listed at?"
 
-=item * MULTICLASS -- Produces one of several possible results. For
-example, "Is this a HIGH, LOW or MEDIUM risk trade?"
+=item *
+
+BINARY -- Produces one of two possible results. For example, "Is this
+an e-commerce website?"
+
+=item *
+
+MULTICLASS -- Produces one of several possible results. For example,
+"Is this a HIGH, LOW or MEDIUM risk trade?"
 
 =back
 
@@ -127,7 +133,7 @@ The recipe to use when training the C<MLModel>. The C<Recipe> provides
 detailed information about the observation data to use during training,
 and manipulations to perform on the observation data during training.
 
-This parameter is provided as part of the verbose format.
+B<Note:> This parameter is provided as part of the verbose format.
 
 
 =head2 Schema => Str
@@ -135,7 +141,7 @@ This parameter is provided as part of the verbose format.
 The schema used by all of the data files referenced by the
 C<DataSource>.
 
-This parameter is provided as part of the verbose format.
+B<Note:> This parameter is provided as part of the verbose format.
 
 
 =head2 ScoreThreshold => Num
@@ -175,18 +181,27 @@ following values:
 
 =over
 
-=item * C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a
-request to describe a C<MLModel>.
+=item *
 
-=item * C<INPROGRESS> - The request is processing.
+C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a request to
+describe a C<MLModel>.
 
-=item * C<FAILED> - The request did not run to completion. The ML model
-isn't usable.
+=item *
 
-=item * C<COMPLETED> - The request completed successfully.
+C<INPROGRESS> - The request is processing.
 
-=item * C<DELETED> - The C<MLModel> is marked as deleted. It isn't
+=item *
+
+C<FAILED> - The request did not run to completion. The ML model isn't
 usable.
+
+=item *
+
+C<COMPLETED> - The request completed successfully.
+
+=item *
+
+C<DELETED> - The C<MLModel> is marked as deleted. It isn't usable.
 
 =back
 

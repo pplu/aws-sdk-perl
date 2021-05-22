@@ -101,10 +101,13 @@ DatabaseInformation -
 
 =over
 
-=item * C<DatabaseName> - The name of the Amazon Redshift database.
+=item *
 
-=item * C< ClusterIdentifier> - The unique ID for the Amazon Redshift
-cluster.
+C<DatabaseName> - The name of the Amazon Redshift database.
+
+=item *
+
+C<ClusterIdentifier> - The unique ID for the Amazon Redshift cluster.
 
 =back
 
