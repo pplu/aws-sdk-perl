@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::QLDBSession
 
 =head1 DESCRIPTION
 
-A structure that can contains values in multiple encoding formats.
+A structure that can contain a value in multiple encoding formats.
 
 =head1 ATTRIBUTES
 

@@ -53,6 +53,32 @@ Paws::QLDBSession - Perl Interface to AWS Amazon QLDB Session
 
 The transactional data APIs for Amazon QLDB
 
+Instead of interacting directly with this API, we recommend using the
+QLDB driver or the QLDB shell to execute data transactions on a ledger.
+
+=over
+
+=item *
+
+If you are working with an AWS SDK, use the QLDB driver. The driver
+provides a high-level abstraction layer above this I<QLDB Session> data
+plane and manages C<SendCommand> API calls for you. For information and
+a list of supported programming languages, see Getting started with the
+driver
+(https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
+in the I<Amazon QLDB Developer Guide>.
+
+=item *
+
+If you are working with the AWS Command Line Interface (AWS CLI), use
+the QLDB shell. The shell is a command line interface that uses the
+QLDB driver to interact with a ledger. For information, see Accessing
+Amazon QLDB using the QLDB shell
+(https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html).
+
+=back
+
+
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/session.qldb-2019-07-11>
 
 
@@ -86,6 +112,32 @@ Each argument is described in detail in: L<Paws::QLDBSession::SendCommand>
 Returns: a L<Paws::QLDBSession::SendCommandResult> instance
 
 Sends a command to an Amazon QLDB ledger.
+
+Instead of interacting directly with this API, we recommend using the
+QLDB driver or the QLDB shell to execute data transactions on a ledger.
+
+=over
+
+=item *
+
+If you are working with an AWS SDK, use the QLDB driver. The driver
+provides a high-level abstraction layer above this I<QLDB Session> data
+plane and manages C<SendCommand> API calls for you. For information and
+a list of supported programming languages, see Getting started with the
+driver
+(https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
+in the I<Amazon QLDB Developer Guide>.
+
+=item *
+
+If you are working with the AWS Command Line Interface (AWS CLI), use
+the QLDB shell. The shell is a command line interface that uses the
+QLDB driver to interact with a ledger. For information, see Accessing
+Amazon QLDB using the QLDB shell
+(https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html).
+
+=back
+
 
 
 

@@ -2,6 +2,7 @@
 package Paws::QLDBSession::StartSessionResult;
   use Moose;
   has SessionToken => (is => 'ro', isa => 'Str');
+  has TimingInformation => (is => 'ro', isa => 'Paws::QLDBSession::TimingInformation');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::QLDBSession::StartSessionResult object:
 
-  $service_obj->Method(Att1 => { SessionToken => $value, ..., SessionToken => $value  });
+  $service_obj->Method(Att1 => { SessionToken => $value, ..., TimingInformation => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,6 +43,11 @@ Contains the details of the started session.
 
 Session token of the started session. This C<SessionToken> is required
 for every subsequent command that is issued during the current session.
+
+
+=head2 TimingInformation => L<Paws::QLDBSession::TimingInformation>
+
+Contains server-side performance information for the command.
 
 
 

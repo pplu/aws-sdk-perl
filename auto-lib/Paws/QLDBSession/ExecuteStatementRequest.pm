@@ -53,7 +53,7 @@ Specifies the statement of the request.
 
 =head2 B<REQUIRED> TransactionId => Str
 
-Specifies the transaction id of the request.
+Specifies the transaction ID of the request.
 
 
 

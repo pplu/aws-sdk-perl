@@ -2,6 +2,8 @@
 package Paws::QLDBSession::CommitTransactionResult;
   use Moose;
   has CommitDigest => (is => 'ro', isa => 'Str');
+  has ConsumedIOs => (is => 'ro', isa => 'Paws::QLDBSession::IOUsage');
+  has TimingInformation => (is => 'ro', isa => 'Paws::QLDBSession::TimingInformation');
   has TransactionId => (is => 'ro', isa => 'Str');
 
 1;
@@ -44,9 +46,19 @@ Contains the details of the committed transaction.
 The commit digest of the committed transaction.
 
 
+=head2 ConsumedIOs => L<Paws::QLDBSession::IOUsage>
+
+Contains metrics about the number of I/O requests that were consumed.
+
+
+=head2 TimingInformation => L<Paws::QLDBSession::TimingInformation>
+
+Contains server-side performance information for the command.
+
+
 =head2 TransactionId => Str
 
-The transaction id of the committed transaction.
+The transaction ID of the committed transaction.
 
 
 
