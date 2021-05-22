@@ -5,8 +5,10 @@ package Paws::EKS::Cluster;
   has CertificateAuthority => (is => 'ro', isa => 'Paws::EKS::Certificate', request_name => 'certificateAuthority', traits => ['NameInRequest']);
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has EncryptionConfig => (is => 'ro', isa => 'ArrayRef[Paws::EKS::EncryptionConfig]', request_name => 'encryptionConfig', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
   has Identity => (is => 'ro', isa => 'Paws::EKS::Identity', request_name => 'identity', traits => ['NameInRequest']);
+  has KubernetesNetworkConfig => (is => 'ro', isa => 'Paws::EKS::KubernetesNetworkConfigResponse', request_name => 'kubernetesNetworkConfig', traits => ['NameInRequest']);
   has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', request_name => 'logging', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
@@ -72,6 +74,11 @@ idempotency of the request.
 The Unix epoch timestamp in seconds for when the cluster was created.
 
 
+=head2 EncryptionConfig => ArrayRef[L<Paws::EKS::EncryptionConfig>]
+
+The encryption configuration for the cluster.
+
+
 =head2 Endpoint => Str
 
 The endpoint for your Kubernetes API server.
@@ -80,6 +87,11 @@ The endpoint for your Kubernetes API server.
 =head2 Identity => L<Paws::EKS::Identity>
 
 The identity provider information for the cluster.
+
+
+=head2 KubernetesNetworkConfig => L<Paws::EKS::KubernetesNetworkConfigResponse>
+
+The Kubernetes network configuration for the cluster.
 
 
 =head2 Logging => L<Paws::EKS::Logging>

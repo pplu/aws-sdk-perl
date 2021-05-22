@@ -1,6 +1,7 @@
 
 package Paws::EKS::ListUpdates;
   use Moose;
+  has AddonName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'addonName');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $eks = Paws->service('EKS');
     my $ListUpdatesResponse = $eks->ListUpdates(
       Name          => 'MyString',
+      AddonName     => 'MyString',    # OPTIONAL
       MaxResults    => 1,             # OPTIONAL
       NextToken     => 'MyString',    # OPTIONAL
       NodegroupName => 'MyString',    # OPTIONAL
@@ -48,6 +50,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks/ListUpdates>
 
 =head1 ATTRIBUTES
+
+
+=head2 AddonName => Str
+
+The names of the installed add-ons that have available updates.
+
 
 
 =head2 MaxResults => Int

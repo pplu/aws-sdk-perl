@@ -41,13 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken  => 'MyString',    # OPTIONAL
       Selectors           => [
         {
-          Labels => { 'MyString' => 'MyString', },    # OPTIONAL
+          Labels    => { 'MyString' => 'MyString', },    # OPTIONAL
           Namespace => 'MyString',
         },
         ...
-      ],                                              # OPTIONAL
-      Subnets => [ 'MyString', ... ],                 # OPTIONAL
-      Tags => {
+      ],                                                 # OPTIONAL
+      Subnets => [ 'MyString', ... ],                    # OPTIONAL
+      Tags    => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
     );
