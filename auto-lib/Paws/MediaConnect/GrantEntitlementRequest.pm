@@ -4,6 +4,7 @@ package Paws::MediaConnect::GrantEntitlementRequest;
   has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
+  has EntitlementStatus => (is => 'ro', isa => 'Str', request_name => 'entitlementStatus', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
 
@@ -59,6 +60,14 @@ subscriber or end user.
 
 The type of encryption that will be used on the output that is
 associated with this entitlement.
+
+
+=head2 EntitlementStatus => Str
+
+An indication of whether the new entitlement should be enabled or
+disabled as soon as it is created. If you donE<rsquo>t specify the
+entitlementStatus field in your request, MediaConnect sets it to
+ENABLED.
 
 
 =head2 Name => Str

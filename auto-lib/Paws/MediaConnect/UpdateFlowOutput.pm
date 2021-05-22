@@ -7,12 +7,15 @@ package Paws::MediaConnect::UpdateFlowOutput;
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::UpdateEncryption', traits => ['NameInRequest'], request_name => 'encryption');
   has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
   has MaxLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxLatency');
+  has MediaStreamOutputConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStreamOutputConfigurationRequest]', traits => ['NameInRequest'], request_name => 'mediaStreamOutputConfigurations');
+  has MinLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minLatency');
   has OutputArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'outputArn', required => 1);
   has Port => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'port');
   has Protocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocol');
   has RemoteId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'remoteId');
   has SmoothingLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'smoothingLatency');
   has StreamId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamId');
+  has VpcInterfaceAttachment => (is => 'ro', isa => 'Paws::MediaConnect::VpcInterfaceAttachment', traits => ['NameInRequest'], request_name => 'vpcInterfaceAttachment');
 
   use MooseX::ClassAttribute;
 
@@ -49,19 +52,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
         ConstantInitializationVector => 'My__string',
         DeviceId                     => 'My__string',
-        KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+        KeyType => 'speke',  # values: speke, static-key, srt-password; OPTIONAL
         Region     => 'My__string',
         ResourceId => 'My__string',
         RoleArn    => 'My__string',
         SecretArn  => 'My__string',
         Url        => 'My__string',
       },    # OPTIONAL
-      MaxLatency       => 1,               # OPTIONAL
-      Port             => 1,               # OPTIONAL
-      Protocol         => 'zixi-push',     # OPTIONAL
-      RemoteId         => 'My__string',    # OPTIONAL
-      SmoothingLatency => 1,               # OPTIONAL
-      StreamId         => 'My__string',    # OPTIONAL
+      MaxLatency                      => 1,    # OPTIONAL
+      MediaStreamOutputConfigurations => [
+        {
+          EncodingName    => 'jxsv',         # values: jxsv, raw, smpte291, pcm
+          MediaStreamName => 'My__string',
+          DestinationConfigurations => [
+            {
+              DestinationIp   => 'My__string',
+              DestinationPort => 1,
+              Interface       => {
+                Name => 'My__string',
+
+              },
+
+            },
+            ...
+          ],    # OPTIONAL
+          EncodingParameters => {
+            CompressionFactor => 1,
+            EncoderProfile    => 'main',    # values: main, high
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      MinLatency             => 1,                                    # OPTIONAL
+      Port                   => 1,                                    # OPTIONAL
+      Protocol               => 'zixi-push',                          # OPTIONAL
+      RemoteId               => 'My__string',                         # OPTIONAL
+      SmoothingLatency       => 1,                                    # OPTIONAL
+      StreamId               => 'My__string',                         # OPTIONAL
+      VpcInterfaceAttachment => { VpcInterfaceName => 'My__string', }
+      ,                                                               # OPTIONAL
     );
 
     # Results:
@@ -116,6 +146,24 @@ The maximum latency in milliseconds for Zixi-based streams.
 
 
 
+=head2 MediaStreamOutputConfigurations => ArrayRef[L<Paws::MediaConnect::MediaStreamOutputConfigurationRequest>]
+
+The media streams that are associated with the output, and the
+parameters for those associations.
+
+
+
+=head2 MinLatency => Int
+
+The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the senderE<rsquo>s minimum latency and the receiverE<rsquo>s
+minimum latency.
+
+
+
 =head2 B<REQUIRED> OutputArn => Str
 
 The ARN of the output that you want to update.
@@ -132,7 +180,7 @@ The port to use when content is distributed to this output.
 
 The protocol to use for the output.
 
-Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">, C<"zixi-pull">, C<"rist">
+Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">, C<"zixi-pull">, C<"rist">, C<"st2110-jpegxs">, C<"cdi">, C<"srt-listener">
 
 =head2 RemoteId => Str
 
@@ -151,6 +199,12 @@ streams.
 
 The stream ID that you want to use for this transport. This parameter
 applies only to Zixi-based streams.
+
+
+
+=head2 VpcInterfaceAttachment => L<Paws::MediaConnect::VpcInterfaceAttachment>
+
+The name of the VPC interface attachment to use for this output.
 
 
 

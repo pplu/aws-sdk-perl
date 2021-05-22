@@ -7,9 +7,13 @@ package Paws::MediaConnect::SetSourceRequest;
   has IngestPort => (is => 'ro', isa => 'Int', request_name => 'ingestPort', traits => ['NameInRequest']);
   has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
   has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
+  has MaxSyncBuffer => (is => 'ro', isa => 'Int', request_name => 'maxSyncBuffer', traits => ['NameInRequest']);
+  has MediaStreamSourceConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStreamSourceConfigurationRequest]', request_name => 'mediaStreamSourceConfigurations', traits => ['NameInRequest']);
+  has MinLatency => (is => 'ro', isa => 'Int', request_name => 'minLatency', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+  has VpcInterfaceName => (is => 'ro', isa => 'Str', request_name => 'vpcInterfaceName', traits => ['NameInRequest']);
   has WhitelistCidr => (is => 'ro', isa => 'Str', request_name => 'whitelistCidr', traits => ['NameInRequest']);
 
 1;
@@ -82,6 +86,28 @@ The maximum latency in milliseconds. This parameter applies only to
 RIST-based and Zixi-based streams.
 
 
+=head2 MaxSyncBuffer => Int
+
+The size of the buffer (in milliseconds) to use to sync incoming source
+data.
+
+
+=head2 MediaStreamSourceConfigurations => ArrayRef[L<Paws::MediaConnect::MediaStreamSourceConfigurationRequest>]
+
+The media streams that are associated with the source, and the
+parameters for those associations.
+
+
+=head2 MinLatency => Int
+
+The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the senderE<rsquo>s minimum latency and the receiverE<rsquo>s
+minimum latency.
+
+
 =head2 Name => Str
 
 The name of the source.
@@ -96,6 +122,11 @@ The protocol that is used by the source.
 
 The stream ID that you want to use for this transport. This parameter
 applies only to Zixi-based streams.
+
+
+=head2 VpcInterfaceName => Str
+
+The name of the VPC interface to use for this source.
 
 
 =head2 WhitelistCidr => Str

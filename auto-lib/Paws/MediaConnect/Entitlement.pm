@@ -5,6 +5,7 @@ package Paws::MediaConnect::Entitlement;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
+  has EntitlementStatus => (is => 'ro', isa => 'Str', request_name => 'entitlementStatus', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
 
@@ -63,6 +64,11 @@ associated with this entitlement.
 =head2 B<REQUIRED> EntitlementArn => Str
 
 The ARN of the entitlement.
+
+
+=head2 EntitlementStatus => Str
+
+An indication of whether the entitlement is enabled.
 
 
 =head2 B<REQUIRED> Name => Str

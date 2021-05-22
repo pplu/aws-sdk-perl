@@ -33,28 +33,56 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FlowArn => 'My__string',
       Outputs => [
         {
-          Protocol =>
-            'zixi-push',    # values: zixi-push, rtp-fec, rtp, zixi-pull, rist
+          Protocol => 'zixi-push'
+          , # values: zixi-push, rtp-fec, rtp, zixi-pull, rist, st2110-jpegxs, cdi, srt-listener
           CidrAllowList => [ 'My__string', ... ],    # OPTIONAL
           Description   => 'My__string',
           Destination   => 'My__string',
           Encryption    => {
-            Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
+            Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+            KeyType =>
+              'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
             SecretArn  => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
-          MaxLatency       => 1,              # OPTIONAL
+          MaxLatency                      => 1,    # OPTIONAL
+          MediaStreamOutputConfigurations => [
+            {
+              EncodingName    => 'jxsv',      # values: jxsv, raw, smpte291, pcm
+              MediaStreamName => 'My__string',
+              DestinationConfigurations => [
+                {
+                  DestinationIp   => 'My__string',
+                  DestinationPort => 1,              # OPTIONAL
+                  Interface       => {
+                    Name => 'My__string',
+
+                  },
+
+                },
+                ...
+              ],                                     # OPTIONAL
+              EncodingParameters => {
+                CompressionFactor => 1,
+                EncoderProfile    => 'main',         # values: main, high
+
+              },    # OPTIONAL
+            },
+            ...
+          ],        # OPTIONAL
+          MinLatency       => 1,              # OPTIONAL
           Name             => 'My__string',
           Port             => 1,              # OPTIONAL
           RemoteId         => 'My__string',
           SmoothingLatency => 1,              # OPTIONAL
           StreamId         => 'My__string',
+          VpcInterfaceAttachment => { VpcInterfaceName => 'My__string', }
+          ,                                   # OPTIONAL
         },
         ...
       ],

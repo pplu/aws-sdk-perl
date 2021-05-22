@@ -3,9 +3,13 @@ package Paws::MediaConnect::CreateFlow;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone');
   has Entitlements => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::GrantEntitlementRequest]', traits => ['NameInRequest'], request_name => 'entitlements');
+  has MediaStreams => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::AddMediaStreamRequest]', traits => ['NameInRequest'], request_name => 'mediaStreams');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::AddOutputRequest]', traits => ['NameInRequest'], request_name => 'outputs');
-  has Source => (is => 'ro', isa => 'Paws::MediaConnect::SetSourceRequest', traits => ['NameInRequest'], request_name => 'source', required => 1);
+  has Source => (is => 'ro', isa => 'Paws::MediaConnect::SetSourceRequest', traits => ['NameInRequest'], request_name => 'source');
+  has SourceFailoverConfig => (is => 'ro', isa => 'Paws::MediaConnect::FailoverConfig', traits => ['NameInRequest'], request_name => 'sourceFailoverConfig');
+  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::SetSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
+  has VpcInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::VpcInterfaceRequest]', traits => ['NameInRequest'], request_name => 'vpcInterfaces');
 
   use MooseX::ClassAttribute;
 
@@ -33,30 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediaconnect = Paws->service('MediaConnect');
     my $CreateFlowResponse = $mediaconnect->CreateFlow(
-      Name   => 'My__string',
-      Source => {
-        Decryption => {
-          Algorithm => 'aes128',       # values: aes128, aes192, aes256
-          RoleArn   => 'My__string',
-          ConstantInitializationVector => 'My__string',
-          DeviceId                     => 'My__string',
-          KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
-          Region     => 'My__string',
-          ResourceId => 'My__string',
-          SecretArn  => 'My__string',
-          Url        => 'My__string',
-        },    # OPTIONAL
-        Description    => 'My__string',
-        EntitlementArn => 'My__string',
-        IngestPort     => 1,              # OPTIONAL
-        MaxBitrate     => 1,              # OPTIONAL
-        MaxLatency     => 1,              # OPTIONAL
-        Name           => 'My__string',
-        Protocol       => 'zixi-push'
-        ,    # values: zixi-push, rtp-fec, rtp, zixi-pull, rist; OPTIONAL
-        StreamId      => 'My__string',
-        WhitelistCidr => 'My__string',
-      },
+      Name             => 'My__string',
       AvailabilityZone => 'My__string',    # OPTIONAL
       Entitlements     => [
         {
@@ -64,47 +45,210 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DataTransferSubscriberFeePercent => 1,                      # OPTIONAL
           Description                      => 'My__string',
           Encryption                       => {
-            Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
+            Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+            KeyType =>
+              'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
             SecretArn  => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
+          EntitlementStatus => 'ENABLED',  # values: ENABLED, DISABLED; OPTIONAL
           Name => 'My__string',
         },
         ...
-      ],        # OPTIONAL
+      ],                                   # OPTIONAL
+      MediaStreams => [
+        {
+          MediaStreamId   => 1,           # OPTIONAL
+          MediaStreamName => 'My__string',
+          MediaStreamType => 'video',     # values: video, audio, ancillary-data
+          Attributes      => {
+            Fmtp => {
+              ChannelOrder => 'My__string',
+              Colorimetry  => 'BT601'
+              , # values: BT601, BT709, BT2020, BT2100, ST2065-1, ST2065-3, XYZ; OPTIONAL
+              ExactFramerate => 'My__string',
+              Par            => 'My__string',
+              Range => 'NARROW',   # values: NARROW, FULL, FULLPROTECT; OPTIONAL
+              ScanMode => 'progressive'
+              , # values: progressive, interlace, progressive-segmented-frame; OPTIONAL
+              Tcs => 'SDR'
+              , # values: SDR, PQ, HLG, LINEAR, BT2100LINPQ, BT2100LINHLG, ST2065-1, ST428-1, DENSITY; OPTIONAL
+            },    # OPTIONAL
+            Lang => 'My__string',
+          },    # OPTIONAL
+          ClockRate   => 1,              # OPTIONAL
+          Description => 'My__string',
+          VideoFormat => 'My__string',
+        },
+        ...
+      ],                                 # OPTIONAL
       Outputs => [
         {
           Protocol => 'zixi-push'
-          ,     # values: zixi-push, rtp-fec, rtp, zixi-pull, rist; OPTIONAL
+          , # values: zixi-push, rtp-fec, rtp, zixi-pull, rist, st2110-jpegxs, cdi, srt-listener
           CidrAllowList => [ 'My__string', ... ],
           Description   => 'My__string',
           Destination   => 'My__string',
           Encryption    => {
-            Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
+            Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+            KeyType =>
+              'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
             SecretArn  => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
-          MaxLatency       => 1,              # OPTIONAL
+          MaxLatency                      => 1,    # OPTIONAL
+          MediaStreamOutputConfigurations => [
+            {
+              EncodingName    => 'jxsv',      # values: jxsv, raw, smpte291, pcm
+              MediaStreamName => 'My__string',
+              DestinationConfigurations => [
+                {
+                  DestinationIp   => 'My__string',
+                  DestinationPort => 1,              # OPTIONAL
+                  Interface       => {
+                    Name => 'My__string',
+
+                  },
+
+                },
+                ...
+              ],                                     # OPTIONAL
+              EncodingParameters => {
+                CompressionFactor => 1,
+                EncoderProfile    => 'main',         # values: main, high
+
+              },    # OPTIONAL
+            },
+            ...
+          ],        # OPTIONAL
+          MinLatency       => 1,              # OPTIONAL
           Name             => 'My__string',
           Port             => 1,              # OPTIONAL
           RemoteId         => 'My__string',
           SmoothingLatency => 1,              # OPTIONAL
           StreamId         => 'My__string',
+          VpcInterfaceAttachment => { VpcInterfaceName => 'My__string', }
+          ,                                   # OPTIONAL
         },
         ...
       ],                                      # OPTIONAL
+      Source => {
+        Decryption => {
+          RoleArn   => 'My__string',
+          Algorithm => 'aes128',      # values: aes128, aes192, aes256; OPTIONAL
+          ConstantInitializationVector => 'My__string',
+          DeviceId                     => 'My__string',
+          KeyType =>
+            'speke',    # values: speke, static-key, srt-password; OPTIONAL
+          Region     => 'My__string',
+          ResourceId => 'My__string',
+          SecretArn  => 'My__string',
+          Url        => 'My__string',
+        },    # OPTIONAL
+        Description                     => 'My__string',
+        EntitlementArn                  => 'My__string',
+        IngestPort                      => 1,              # OPTIONAL
+        MaxBitrate                      => 1,              # OPTIONAL
+        MaxLatency                      => 1,              # OPTIONAL
+        MaxSyncBuffer                   => 1,              # OPTIONAL
+        MediaStreamSourceConfigurations => [
+          {
+            EncodingName    => 'jxsv',        # values: jxsv, raw, smpte291, pcm
+            MediaStreamName => 'My__string',
+            InputConfigurations => [
+              {
+                InputPort => 1,               # OPTIONAL
+                Interface => {
+                  Name => 'My__string',
+
+                },
+
+              },
+              ...
+            ],                                # OPTIONAL
+          },
+          ...
+        ],                                    # OPTIONAL
+        MinLatency => 1,                      # OPTIONAL
+        Name       => 'My__string',
+        Protocol   => 'zixi-push'
+        , # values: zixi-push, rtp-fec, rtp, zixi-pull, rist, st2110-jpegxs, cdi, srt-listener
+        StreamId         => 'My__string',
+        VpcInterfaceName => 'My__string',
+        WhitelistCidr    => 'My__string',
+      },    # OPTIONAL
+      SourceFailoverConfig => {
+        RecoveryWindow => 1,            # OPTIONAL
+        State          => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+      },    # OPTIONAL
+      Sources => [
+        {
+          Decryption => {
+            RoleArn   => 'My__string',
+            Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
+            ConstantInitializationVector => 'My__string',
+            DeviceId                     => 'My__string',
+            KeyType =>
+              'speke',    # values: speke, static-key, srt-password; OPTIONAL
+            Region     => 'My__string',
+            ResourceId => 'My__string',
+            SecretArn  => 'My__string',
+            Url        => 'My__string',
+          },    # OPTIONAL
+          Description                     => 'My__string',
+          EntitlementArn                  => 'My__string',
+          IngestPort                      => 1,              # OPTIONAL
+          MaxBitrate                      => 1,              # OPTIONAL
+          MaxLatency                      => 1,              # OPTIONAL
+          MaxSyncBuffer                   => 1,              # OPTIONAL
+          MediaStreamSourceConfigurations => [
+            {
+              EncodingName    => 'jxsv',      # values: jxsv, raw, smpte291, pcm
+              MediaStreamName => 'My__string',
+              InputConfigurations => [
+                {
+                  InputPort => 1,             # OPTIONAL
+                  Interface => {
+                    Name => 'My__string',
+
+                  },
+
+                },
+                ...
+              ],                              # OPTIONAL
+            },
+            ...
+          ],                                  # OPTIONAL
+          MinLatency => 1,                    # OPTIONAL
+          Name       => 'My__string',
+          Protocol   => 'zixi-push'
+          , # values: zixi-push, rtp-fec, rtp, zixi-pull, rist, st2110-jpegxs, cdi, srt-listener
+          StreamId         => 'My__string',
+          VpcInterfaceName => 'My__string',
+          WhitelistCidr    => 'My__string',
+        },
+        ...
+      ],    # OPTIONAL
+      VpcInterfaces => [
+        {
+          Name             => 'My__string',
+          RoleArn          => 'My__string',
+          SecurityGroupIds => [ 'My__string', ... ],
+          SubnetId         => 'My__string',
+          NetworkInterfaceType => 'ena',    # values: ena, efa; OPTIONAL
+        },
+        ...
+      ],                                    # OPTIONAL
     );
 
     # Results:
@@ -132,6 +276,13 @@ The entitlements that you want to grant on a flow.
 
 
 
+=head2 MediaStreams => ArrayRef[L<Paws::MediaConnect::AddMediaStreamRequest>]
+
+The media streams that you want to add to the flow. You can associate
+these media streams with sources and outputs on the flow.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the flow.
@@ -144,9 +295,27 @@ The outputs that you want to add to this flow.
 
 
 
-=head2 B<REQUIRED> Source => L<Paws::MediaConnect::SetSourceRequest>
+=head2 Source => L<Paws::MediaConnect::SetSourceRequest>
 
 
+
+
+
+=head2 SourceFailoverConfig => L<Paws::MediaConnect::FailoverConfig>
+
+
+
+
+
+=head2 Sources => ArrayRef[L<Paws::MediaConnect::SetSourceRequest>]
+
+
+
+
+
+=head2 VpcInterfaces => ArrayRef[L<Paws::MediaConnect::VpcInterfaceRequest>]
+
+The VPC interfaces you want on the flow.
 
 
 

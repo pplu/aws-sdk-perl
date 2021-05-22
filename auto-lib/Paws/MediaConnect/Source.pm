@@ -7,9 +7,11 @@ package Paws::MediaConnect::Source;
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
   has IngestIp => (is => 'ro', isa => 'Str', request_name => 'ingestIp', traits => ['NameInRequest']);
   has IngestPort => (is => 'ro', isa => 'Int', request_name => 'ingestPort', traits => ['NameInRequest']);
+  has MediaStreamSourceConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStreamSourceConfiguration]', request_name => 'mediaStreamSourceConfigurations', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest'], required => 1);
   has Transport => (is => 'ro', isa => 'Paws::MediaConnect::Transport', request_name => 'transport', traits => ['NameInRequest']);
+  has VpcInterfaceName => (is => 'ro', isa => 'Str', request_name => 'vpcInterfaceName', traits => ['NameInRequest']);
   has WhitelistCidr => (is => 'ro', isa => 'Str', request_name => 'whitelistCidr', traits => ['NameInRequest']);
 
 1;
@@ -82,6 +84,12 @@ The IP address that the flow will be listening on for incoming content.
 The port that the flow will be listening on for incoming content.
 
 
+=head2 MediaStreamSourceConfigurations => ArrayRef[L<Paws::MediaConnect::MediaStreamSourceConfiguration>]
+
+The media streams that are associated with the source, and the
+parameters for those associations.
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the source.
@@ -95,6 +103,11 @@ The ARN of the source.
 =head2 Transport => L<Paws::MediaConnect::Transport>
 
 Attributes related to the transport stream that are used in the source.
+
+
+=head2 VpcInterfaceName => Str
+
+The name of the VPC interface that is used for this source.
 
 
 =head2 WhitelistCidr => Str

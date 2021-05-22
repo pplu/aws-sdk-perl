@@ -6,12 +6,15 @@ package Paws::MediaConnect::AddOutputRequest;
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
   has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
+  has MediaStreamOutputConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStreamOutputConfigurationRequest]', request_name => 'mediaStreamOutputConfigurations', traits => ['NameInRequest']);
+  has MinLatency => (is => 'ro', isa => 'Int', request_name => 'minLatency', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
   has RemoteId => (is => 'ro', isa => 'Str', request_name => 'remoteId', traits => ['NameInRequest']);
   has SmoothingLatency => (is => 'ro', isa => 'Int', request_name => 'smoothingLatency', traits => ['NameInRequest']);
   has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+  has VpcInterfaceAttachment => (is => 'ro', isa => 'Paws::MediaConnect::VpcInterfaceAttachment', request_name => 'vpcInterfaceAttachment', traits => ['NameInRequest']);
 
 1;
 
@@ -32,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::AddOutputRequest object:
 
-  $service_obj->Method(Att1 => { CidrAllowList => $value, ..., StreamId => $value  });
+  $service_obj->Method(Att1 => { CidrAllowList => $value, ..., VpcInterfaceAttachment => $value  });
 
 =head3 Results returned from an API call
 
@@ -77,6 +80,22 @@ service will use the default setting (static-key).
 The maximum latency in milliseconds for Zixi-based streams.
 
 
+=head2 MediaStreamOutputConfigurations => ArrayRef[L<Paws::MediaConnect::MediaStreamOutputConfigurationRequest>]
+
+The media streams that are associated with the output, and the
+parameters for those associations.
+
+
+=head2 MinLatency => Int
+
+The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the senderE<rsquo>s minimum latency and the receiverE<rsquo>s
+minimum latency.
+
+
 =head2 Name => Str
 
 The name of the output. This value must be unique within the current
@@ -108,6 +127,11 @@ streams.
 
 The stream ID that you want to use for this transport. This parameter
 applies only to Zixi-based streams.
+
+
+=head2 VpcInterfaceAttachment => L<Paws::MediaConnect::VpcInterfaceAttachment>
+
+The name of the VPC interface attachment to use for this output.
 
 
 
