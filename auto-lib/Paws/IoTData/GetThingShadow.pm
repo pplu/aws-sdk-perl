@@ -1,6 +1,7 @@
 
 package Paws::IoTData::GetThingShadow;
   use Moose;
+  has ShadowName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $data.iot = Paws->service('IoTData');
     my $GetThingShadowResponse = $data . iot->GetThingShadow(
-      ThingName => 'MyThingName',
-
+      ThingName  => 'MyThingName',
+      ShadowName => 'MyShadowName',    # OPTIONAL
     );
 
     # Results:
@@ -42,6 +43,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.iot/GetThingShadow>
 
 =head1 ATTRIBUTES
+
+
+=head2 ShadowName => Str
+
+The name of the shadow.
+
 
 
 =head2 B<REQUIRED> ThingName => Str

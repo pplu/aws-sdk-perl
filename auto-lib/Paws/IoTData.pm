@@ -24,6 +24,11 @@ package Paws::IoTData;
     my $call_object = $self->new_with_coercions('Paws::IoTData::GetThingShadow', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListNamedShadowsForThing {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTData::ListNamedShadowsForThing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub Publish {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTData::Publish', @_);
@@ -37,7 +42,7 @@ package Paws::IoTData;
   
 
 
-  sub operations { qw/DeleteThingShadow GetThingShadow Publish UpdateThingShadow / }
+  sub operations { qw/DeleteThingShadow GetThingShadow ListNamedShadowsForThing Publish UpdateThingShadow / }
 
 1;
 
@@ -71,9 +76,17 @@ AWS IoT-Data enables secure, bi-directional communication between
 Internet-connected things (such as sensors, actuators, embedded
 devices, or smart appliances) and the AWS cloud. It implements a broker
 for applications and things to publish messages over HTTP (Publish) and
-retrieve, update, and delete thing shadows. A thing shadow is a
-persistent representation of your things and their state in the AWS
-cloud.
+retrieve, update, and delete shadows. A shadow is a persistent
+representation of your things and their state in the AWS cloud.
+
+Find the endpoint address for actions in the AWS IoT data plane by
+running this CLI command:
+
+C<aws iot describe-endpoint --endpoint-type iot:Data-ATS>
+
+The service name used by AWS Signature Version 4
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
+to sign requests is: I<iotdevicegateway>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/iot/>
 
@@ -86,6 +99,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/iot/>
 
 =item ThingName => Str
 
+=item [ShadowName => Str]
+
 
 =back
 
@@ -93,11 +108,11 @@ Each argument is described in detail in: L<Paws::IoTData::DeleteThingShadow>
 
 Returns: a L<Paws::IoTData::DeleteThingShadowResponse> instance
 
-Deletes the thing shadow for the specified thing.
+Deletes the shadow for the specified thing.
 
 For more information, see DeleteThingShadow
 (http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html)
-in the I<AWS IoT Developer Guide>.
+in the AWS IoT Developer Guide.
 
 
 =head2 GetThingShadow
@@ -106,6 +121,8 @@ in the I<AWS IoT Developer Guide>.
 
 =item ThingName => Str
 
+=item [ShadowName => Str]
+
 
 =back
 
@@ -113,11 +130,31 @@ Each argument is described in detail in: L<Paws::IoTData::GetThingShadow>
 
 Returns: a L<Paws::IoTData::GetThingShadowResponse> instance
 
-Gets the thing shadow for the specified thing.
+Gets the shadow for the specified thing.
 
 For more information, see GetThingShadow
 (http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html)
-in the I<AWS IoT Developer Guide>.
+in the AWS IoT Developer Guide.
+
+
+=head2 ListNamedShadowsForThing
+
+=over
+
+=item ThingName => Str
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTData::ListNamedShadowsForThing>
+
+Returns: a L<Paws::IoTData::ListNamedShadowsForThingResponse> instance
+
+Lists the shadows for the specified thing.
 
 
 =head2 Publish
@@ -141,7 +178,7 @@ Publishes state information.
 
 For more information, see HTTP Protocol
 (http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http)
-in the I<AWS IoT Developer Guide>.
+in the AWS IoT Developer Guide.
 
 
 =head2 UpdateThingShadow
@@ -152,6 +189,8 @@ in the I<AWS IoT Developer Guide>.
 
 =item ThingName => Str
 
+=item [ShadowName => Str]
+
 
 =back
 
@@ -159,11 +198,11 @@ Each argument is described in detail in: L<Paws::IoTData::UpdateThingShadow>
 
 Returns: a L<Paws::IoTData::UpdateThingShadowResponse> instance
 
-Updates the thing shadow for the specified thing.
+Updates the shadow for the specified thing.
 
 For more information, see UpdateThingShadow
 (http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html)
-in the I<AWS IoT Developer Guide>.
+in the AWS IoT Developer Guide.
 
 
 
