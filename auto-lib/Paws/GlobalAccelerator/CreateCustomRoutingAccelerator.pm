@@ -1,5 +1,5 @@
 
-package Paws::GlobalAccelerator::CreateAccelerator;
+package Paws::GlobalAccelerator::CreateCustomRoutingAccelerator;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
@@ -10,8 +10,8 @@ package Paws::GlobalAccelerator::CreateAccelerator;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccelerator');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::CreateAcceleratorResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomRoutingAccelerator');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::CreateCustomRoutingAcceleratorResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -19,20 +19,21 @@ package Paws::GlobalAccelerator::CreateAccelerator;
 
 =head1 NAME
 
-Paws::GlobalAccelerator::CreateAccelerator - Arguments for method CreateAccelerator on L<Paws::GlobalAccelerator>
+Paws::GlobalAccelerator::CreateCustomRoutingAccelerator - Arguments for method CreateCustomRoutingAccelerator on L<Paws::GlobalAccelerator>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateAccelerator on the
+This class represents the parameters used for calling the method CreateCustomRoutingAccelerator on the
 L<AWS Global Accelerator|Paws::GlobalAccelerator> service. Use the attributes of this class
-as arguments to method CreateAccelerator.
+as arguments to method CreateCustomRoutingAccelerator.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccelerator.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCustomRoutingAccelerator.
 
 =head1 SYNOPSIS
 
     my $globalaccelerator = Paws->service('GlobalAccelerator');
-    my $CreateAcceleratorResponse = $globalaccelerator->CreateAccelerator(
+    my $CreateCustomRoutingAcceleratorResponse =
+      $globalaccelerator->CreateCustomRoutingAccelerator(
       IdempotencyToken => 'MyIdempotencyToken',
       Name             => 'MyGenericString',
       Enabled          => 1,                      # OPTIONAL
@@ -48,15 +49,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                          # OPTIONAL
-    );
+      );
 
     # Results:
-    my $Accelerator = $CreateAcceleratorResponse->Accelerator;
+    my $Accelerator = $CreateCustomRoutingAcceleratorResponse->Accelerator;
 
-    # Returns a L<Paws::GlobalAccelerator::CreateAcceleratorResponse> object.
+# Returns a L<Paws::GlobalAccelerator::CreateCustomRoutingAcceleratorResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/globalaccelerator/CreateAccelerator>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/globalaccelerator/CreateCustomRoutingAccelerator>
 
 =head1 ATTRIBUTES
 
@@ -74,7 +75,7 @@ to false, the accelerator can be deleted.
 =head2 B<REQUIRED> IdempotencyToken => Str
 
 A unique, case-sensitive identifier that you provide to ensure the
-idempotencyE<mdash>that is, the uniquenessE<mdash>of an accelerator.
+idempotencyE<mdash>that is, the uniquenessE<mdash>of the request.
 
 
 
@@ -94,7 +95,7 @@ for the accelerator from the AWS IP address pool.
 Note that you can't update IP addresses for an existing accelerator. To
 change them, you must create a new accelerator with the new addresses.
 
-For more information, see Bring Your Own IP Addresses (BYOIP)
+For more information, see Bring your own IP addresses (BYOIP)
 (https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
 in the I<AWS Global Accelerator Developer Guide>.
 
@@ -108,9 +109,9 @@ Valid values are: C<"IPV4">
 
 =head2 B<REQUIRED> Name => Str
 
-The name of an accelerator. The name can have a maximum of 32
-characters, must contain only alphanumeric characters or hyphens (-),
-and must not begin or end with a hyphen.
+The name of a custom routing accelerator. The name can have a maximum
+of 64 characters, must contain only alphanumeric characters or hyphens
+(-), and must not begin or end with a hyphen.
 
 
 
@@ -127,7 +128,7 @@ in the I<AWS Global Accelerator Developer Guide>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateAccelerator in L<Paws::GlobalAccelerator>
+This class forms part of L<Paws>, documenting arguments for method CreateCustomRoutingAccelerator in L<Paws::GlobalAccelerator>
 
 =head1 BUGS and CONTRIBUTIONS
 

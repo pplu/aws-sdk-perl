@@ -1,5 +1,5 @@
 
-package Paws::GlobalAccelerator::UpdateAcceleratorAttributes;
+package Paws::GlobalAccelerator::UpdateCustomRoutingAcceleratorAttributes;
   use Moose;
   has AcceleratorArn => (is => 'ro', isa => 'Str', required => 1);
   has FlowLogsEnabled => (is => 'ro', isa => 'Bool');
@@ -8,8 +8,8 @@ package Paws::GlobalAccelerator::UpdateAcceleratorAttributes;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAcceleratorAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::UpdateAcceleratorAttributesResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCustomRoutingAcceleratorAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::UpdateCustomRoutingAcceleratorAttributesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -17,21 +17,21 @@ package Paws::GlobalAccelerator::UpdateAcceleratorAttributes;
 
 =head1 NAME
 
-Paws::GlobalAccelerator::UpdateAcceleratorAttributes - Arguments for method UpdateAcceleratorAttributes on L<Paws::GlobalAccelerator>
+Paws::GlobalAccelerator::UpdateCustomRoutingAcceleratorAttributes - Arguments for method UpdateCustomRoutingAcceleratorAttributes on L<Paws::GlobalAccelerator>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateAcceleratorAttributes on the
+This class represents the parameters used for calling the method UpdateCustomRoutingAcceleratorAttributes on the
 L<AWS Global Accelerator|Paws::GlobalAccelerator> service. Use the attributes of this class
-as arguments to method UpdateAcceleratorAttributes.
+as arguments to method UpdateCustomRoutingAcceleratorAttributes.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAcceleratorAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateCustomRoutingAcceleratorAttributes.
 
 =head1 SYNOPSIS
 
     my $globalaccelerator = Paws->service('GlobalAccelerator');
-    my $UpdateAcceleratorAttributesResponse =
-      $globalaccelerator->UpdateAcceleratorAttributes(
+    my $UpdateCustomRoutingAcceleratorAttributesResponse =
+      $globalaccelerator->UpdateCustomRoutingAcceleratorAttributes(
       AcceleratorArn   => 'MyGenericString',
       FlowLogsEnabled  => 1,                    # OPTIONAL
       FlowLogsS3Bucket => 'MyGenericString',    # OPTIONAL
@@ -40,20 +40,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AcceleratorAttributes =
-      $UpdateAcceleratorAttributesResponse->AcceleratorAttributes;
+      $UpdateCustomRoutingAcceleratorAttributesResponse->AcceleratorAttributes;
 
-# Returns a L<Paws::GlobalAccelerator::UpdateAcceleratorAttributesResponse> object.
+# Returns a L<Paws::GlobalAccelerator::UpdateCustomRoutingAcceleratorAttributesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/globalaccelerator/UpdateAcceleratorAttributes>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/globalaccelerator/UpdateCustomRoutingAcceleratorAttributes>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AcceleratorArn => Str
 
-The Amazon Resource Name (ARN) of the accelerator that you want to
-update.
+The Amazon Resource Name (ARN) of the custom routing accelerator to
+update attributes for.
 
 
 
@@ -88,14 +88,14 @@ root of the bucket. If you specify slash (/) for the S3 bucket prefix,
 the log file bucket folder structure will include a double slash (//),
 like the following:
 
-s3-bucket_name//AWSLogs/aws_account_id
+DOC-EXAMPLE-BUCKET//AWSLogs/aws_account_id
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method UpdateAcceleratorAttributes in L<Paws::GlobalAccelerator>
+This class forms part of L<Paws>, documenting arguments for method UpdateCustomRoutingAcceleratorAttributes in L<Paws::GlobalAccelerator>
 
 =head1 BUGS and CONTRIBUTIONS
 

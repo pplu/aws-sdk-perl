@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlobalAccel
 
 =head1 DESCRIPTION
 
-A complex type for endpoints.
+A complex type for endpoints. A resource must be valid and active when
+you add it as an endpoint.
 
 =head1 ATTRIBUTES
 
@@ -51,9 +52,9 @@ the C<X-Forwarded-For> request header as traffic travels to
 applications on the Application Load Balancer endpoint fronted by the
 accelerator.
 
-For more information, see Viewing Client IP Addresses in AWS Global
+For more information, see Preserve Client IP Addresses in AWS Global
 Accelerator
-(https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html)
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html)
 in the I<AWS Global Accelerator Developer Guide>.
 
 
@@ -62,7 +63,11 @@ in the I<AWS Global Accelerator Developer Guide>.
 An ID for the endpoint. If the endpoint is a Network Load Balancer or
 Application Load Balancer, this is the Amazon Resource Name (ARN) of
 the resource. If the endpoint is an Elastic IP address, this is the
-Elastic IP address allocation ID.
+Elastic IP address allocation ID. For Amazon EC2 instances, this is the
+EC2 instance ID. A resource must be valid and active when you add it as
+an endpoint.
+
+An Application Load Balancer can be either internal or internet-facing.
 
 
 =head2 Weight => Int

@@ -8,6 +8,7 @@ package Paws::GlobalAccelerator::EndpointGroup;
   has HealthCheckPath => (is => 'ro', isa => 'Str');
   has HealthCheckPort => (is => 'ro', isa => 'Int');
   has HealthCheckProtocol => (is => 'ro', isa => 'Str');
+  has PortOverrides => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::PortOverride]');
   has ThresholdCount => (is => 'ro', isa => 'Int');
   has TrafficDialPercentage => (is => 'ro', isa => 'Num');
 
@@ -59,7 +60,7 @@ The Amazon Resource Name (ARN) of the endpoint group.
 
 =head2 EndpointGroupRegion => Str
 
-The AWS Region that this endpoint group belongs.
+The AWS Region where the endpoint group is located.
 
 
 =head2 HealthCheckIntervalSeconds => Int
@@ -90,6 +91,15 @@ uses the first specified port in the list of ports.
 The protocol that Global Accelerator uses to perform health checks on
 endpoints that are part of this endpoint group. The default value is
 TCP.
+
+
+=head2 PortOverrides => ArrayRef[L<Paws::GlobalAccelerator::PortOverride>]
+
+Allows you to override the destination ports used to route traffic to
+an endpoint. Using a port override lets you to map a list of external
+destination ports (that your users send traffic to) to a list of
+internal destination ports that you want an application endpoint to
+receive traffic on.
 
 
 =head2 ThresholdCount => Int

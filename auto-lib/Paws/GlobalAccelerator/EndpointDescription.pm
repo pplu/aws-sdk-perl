@@ -65,50 +65,15 @@ in the I<AWS Global Accelerator Developer Guide>.
 An ID for the endpoint. If the endpoint is a Network Load Balancer or
 Application Load Balancer, this is the Amazon Resource Name (ARN) of
 the resource. If the endpoint is an Elastic IP address, this is the
-Elastic IP address allocation ID. An Application Load Balancer can be
-either internal or internet-facing.
+Elastic IP address allocation ID. For Amazon EC2 instances, this is the
+EC2 instance ID.
+
+An Application Load Balancer can be either internal or internet-facing.
 
 
 =head2 HealthReason => Str
 
-The reason code associated with why the endpoint is not healthy. If the
-endpoint state is healthy, a reason code is not provided.
-
-If the endpoint state is B<unhealthy>, the reason code can be one of
-the following values:
-
-=over
-
-=item *
-
-B<Timeout>: The health check requests to the endpoint are timing out
-before returning a status.
-
-=item *
-
-B<Failed>: The health check failed, for example because the endpoint
-response was invalid (malformed).
-
-=back
-
-If the endpoint state is B<initial>, the reason code can be one of the
-following values:
-
-=over
-
-=item *
-
-B<ProvisioningInProgress>: The endpoint is in the process of being
-provisioned.
-
-=item *
-
-B<InitialHealthChecking>: Global Accelerator is still setting up the
-minimum number of health checks for the endpoint that are required to
-determine its health status.
-
-=back
-
+Returns a null result.
 
 
 =head2 HealthState => Str
