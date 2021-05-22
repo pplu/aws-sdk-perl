@@ -16,9 +16,8 @@ Paws::AutoScalingPlans::CreateScalingPlanResponse
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version number of the scaling plan. This value is always 1.
-
-Currently, you cannot specify multiple scaling plan versions.
+The version number of the scaling plan. This value is always C<1>.
+Currently, you cannot have multiple scaling plan versions.
 
 
 =head2 _request_id => Str

@@ -135,11 +135,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 A CloudFormation stack or set of tags. You can create one scaling plan
 per application source.
 
+For more information, see ApplicationSource
+(https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ApplicationSource.html)
+in the I<AWS Auto Scaling API Reference>.
+
 
 
 =head2 B<REQUIRED> ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
 
 The scaling instructions.
+
+For more information, see ScalingInstruction
+(https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html)
+in the I<AWS Auto Scaling API Reference>.
 
 
 

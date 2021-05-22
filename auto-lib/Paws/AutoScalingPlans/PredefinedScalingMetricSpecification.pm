@@ -54,7 +54,9 @@ C<ALBRequestCountPerTarget> and there is a target group for an
 Application Load Balancer attached to the Auto Scaling group, Spot
 Fleet request, or ECS service.
 
-The format is
+You create the resource label by appending the final portion of the
+load balancer ARN and the final portion of the target group ARN into a
+single value, separated by a forward slash (/). The format is
 app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt>/targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt>,
 where:
 
@@ -63,7 +65,7 @@ where:
 =item *
 
 app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt> is the
-final portion of the load balancer ARN.
+final portion of the load balancer ARN
 
 =item *
 
@@ -72,6 +74,16 @@ the final portion of the target group ARN.
 
 =back
 
+This is an example:
+app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defau-LDNM7Q3ZH1ZN/6d4ea56ca2d6a18d.
+
+To find the ARN for an Application Load Balancer, use the
+DescribeLoadBalancers
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
+API operation. To find the ARN for the target group, use the
+DescribeTargetGroups
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html)
+API operation.
 
 
 
