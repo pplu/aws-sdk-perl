@@ -43,9 +43,9 @@ Provides information about when a transcription job should be executed.
 
 Indicates whether a job should be queued by Amazon Transcribe when the
 concurrent execution limit is exceeded. When the
-C<AllowDeferredExecution> field is true, jobs are queued and will be
-executed when the number of executing jobs falls below the concurrent
-execution limit. If the field is false, Amazon Transcribe returns a
+C<AllowDeferredExecution> field is true, jobs are queued and executed
+when the number of executing jobs falls below the concurrent execution
+limit. If the field is false, Amazon Transcribe returns a
 C<LimitExceededException> exception.
 
 If you specify the C<AllowDeferredExecution> field, you must specify
@@ -55,10 +55,10 @@ the C<DataAccessRoleArn> field.
 =head2 DataAccessRoleArn => Str
 
 The Amazon Resource Name (ARN) of a role that has access to the S3
-bucket that contains the input files. Amazon Transcribe will assume
-this role to read queued media files. If you have specified an output
-S3 bucket for the transcription results, this role should have access
-to the output bucket as well.
+bucket that contains the input files. Amazon Transcribe assumes this
+role to read queued media files. If you have specified an output S3
+bucket for the transcription results, this role should have access to
+the output bucket as well.
 
 If you specify the C<AllowDeferredExecution> field, you must specify
 the C<DataAccessRoleArn> field.

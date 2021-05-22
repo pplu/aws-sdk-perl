@@ -2,13 +2,18 @@
 package Paws::Transcribe::TranscriptionJob;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Str');
+  has ContentRedaction => (is => 'ro', isa => 'Paws::Transcribe::ContentRedaction');
   has CreationTime => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has IdentifiedLanguageScore => (is => 'ro', isa => 'Num');
+  has IdentifyLanguage => (is => 'ro', isa => 'Bool');
   has JobExecutionSettings => (is => 'ro', isa => 'Paws::Transcribe::JobExecutionSettings');
   has LanguageCode => (is => 'ro', isa => 'Str');
+  has LanguageOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media');
   has MediaFormat => (is => 'ro', isa => 'Str');
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
+  has ModelSettings => (is => 'ro', isa => 'Paws::Transcribe::ModelSettings');
   has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
   has StartTime => (is => 'ro', isa => 'Str');
   has Transcript => (is => 'ro', isa => 'Paws::Transcribe::Transcript');
@@ -54,6 +59,12 @@ C<StartTranscriptionJob> operation.
 =head2 CompletionTime => Str
 
 A timestamp that shows when the job was completed.
+
+
+=head2 ContentRedaction => L<Paws::Transcribe::ContentRedaction>
+
+An object that describes content redaction settings for the
+transcription job.
 
 
 =head2 CreationTime => Str
@@ -117,6 +128,20 @@ in the I<Amazon Web Services General Reference>.
 
 
 
+=head2 IdentifiedLanguageScore => Num
+
+A value between zero and one that Amazon Transcribe assigned to the
+language that it identified in the source audio. Larger values indicate
+that Amazon Transcribe has higher confidence in the language it
+identified.
+
+
+=head2 IdentifyLanguage => Bool
+
+A value that shows if automatic language identification was enabled for
+a transcription job.
+
+
 =head2 JobExecutionSettings => L<Paws::Transcribe::JobExecutionSettings>
 
 Provides information about how a transcription job is executed.
@@ -125,6 +150,12 @@ Provides information about how a transcription job is executed.
 =head2 LanguageCode => Str
 
 The language code for the input speech.
+
+
+=head2 LanguageOptions => ArrayRef[Str|Undef]
+
+An object that shows the optional array of languages inputted for
+transcription jobs with automatic language identification enabled.
 
 
 =head2 Media => L<Paws::Transcribe::Media>
@@ -140,6 +171,11 @@ The format of the input media file.
 =head2 MediaSampleRateHertz => Int
 
 The sample rate, in Hertz, of the audio track in the input media file.
+
+
+=head2 ModelSettings => L<Paws::Transcribe::ModelSettings>
+
+An object containing the details of your custom language model.
 
 
 =head2 Settings => L<Paws::Transcribe::Settings>

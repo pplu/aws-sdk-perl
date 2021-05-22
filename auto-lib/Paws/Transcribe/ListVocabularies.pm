@@ -62,7 +62,7 @@ results.
 
 When specified, the vocabularies returned in the list are limited to
 vocabularies whose name contains the specified string. The search is
-case-insensitive, C<ListVocabularies> will return both "vocabularyname"
+not case sensitive, C<ListVocabularies> returns both "vocabularyname"
 and "VocabularyName" in the response list.
 
 

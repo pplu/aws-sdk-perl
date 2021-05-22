@@ -1,13 +1,18 @@
 
 package Paws::Transcribe::StartTranscriptionJob;
   use Moose;
+  has ContentRedaction => (is => 'ro', isa => 'Paws::Transcribe::ContentRedaction');
+  has IdentifyLanguage => (is => 'ro', isa => 'Bool');
   has JobExecutionSettings => (is => 'ro', isa => 'Paws::Transcribe::JobExecutionSettings');
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
+  has LanguageCode => (is => 'ro', isa => 'Str');
+  has LanguageOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media', required => 1);
   has MediaFormat => (is => 'ro', isa => 'Str');
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
+  has ModelSettings => (is => 'ro', isa => 'Paws::Transcribe::ModelSettings');
   has OutputBucketName => (is => 'ro', isa => 'Str');
   has OutputEncryptionKMSKeyId => (is => 'ro', isa => 'Str');
+  has OutputKey => (is => 'ro', isa => 'Str');
   has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
   has TranscriptionJobName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -36,29 +41,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $transcribe = Paws->service('Transcribe');
     my $StartTranscriptionJobResponse = $transcribe->StartTranscriptionJob(
-      LanguageCode => 'en-US',
-      Media        => {
+      Media => {
         MediaFileUri => 'MyUri',    # min: 1, max: 2000; OPTIONAL
       },
       TranscriptionJobName => 'MyTranscriptionJobName',
-      JobExecutionSettings => {
-        AllowDeferredExecution => 1,                        # OPTIONAL
-        DataAccessRoleArn      => 'MyDataAccessRoleArn',    # OPTIONAL
+      ContentRedaction     => {
+        RedactionOutput =>
+          'redacted',               # values: redacted, redacted_and_unredacted
+        RedactionType => 'PII',     # values: PII
+
       },    # OPTIONAL
-      MediaFormat              => 'mp3',                   # OPTIONAL
-      MediaSampleRateHertz     => 1,                       # OPTIONAL
+      IdentifyLanguage     => 1,    # OPTIONAL
+      JobExecutionSettings => {
+        AllowDeferredExecution => 1,
+        DataAccessRoleArn =>
+          'MyDataAccessRoleArn',    # min: 20, max: 2048; OPTIONAL
+      },    # OPTIONAL
+      LanguageCode    => 'af-ZA',    # OPTIONAL
+      LanguageOptions => [
+        'af-ZA',
+        ... # values: af-ZA, ar-AE, ar-SA, cy-GB, da-DK, de-CH, de-DE, en-AB, en-AU, en-GB, en-IE, en-IN, en-US, en-WL, es-ES, es-US, fa-IR, fr-CA, fr-FR, ga-IE, gd-GB, he-IL, hi-IN, id-ID, it-IT, ja-JP, ko-KR, ms-MY, nl-NL, pt-BR, pt-PT, ru-RU, ta-IN, te-IN, tr-TR, zh-CN
+      ],    # OPTIONAL
+      MediaFormat          => 'mp3',    # OPTIONAL
+      MediaSampleRateHertz => 1,        # OPTIONAL
+      ModelSettings        => {
+        LanguageModelName => 'MyModelName',    # min: 1, max: 200; OPTIONAL
+      },    # OPTIONAL
       OutputBucketName         => 'MyOutputBucketName',    # OPTIONAL
       OutputEncryptionKMSKeyId => 'MyKMSKeyId',            # OPTIONAL
+      OutputKey                => 'MyOutputKey',           # OPTIONAL
       Settings                 => {
-        ChannelIdentification  => 1,           # OPTIONAL
-        MaxAlternatives        => 1,           # min: 2, max: 10; OPTIONAL
-        MaxSpeakerLabels       => 1,           # min: 2, max: 10; OPTIONAL
-        ShowAlternatives       => 1,           # OPTIONAL
-        ShowSpeakerLabels      => 1,           # OPTIONAL
-        VocabularyFilterMethod => 'remove',    # values: remove, mask; OPTIONAL
+        ChannelIdentification => 1,
+        MaxAlternatives       => 1,    # min: 2, max: 10; OPTIONAL
+        MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
+        ShowAlternatives      => 1,
+        ShowSpeakerLabels     => 1,
+        VocabularyFilterMethod =>
+          'remove',                    # values: remove, mask, tag; OPTIONAL
         VocabularyFilterName =>
-          'MyVocabularyFilterName',            # min: 1, max: 200; OPTIONAL
-        VocabularyName => 'MyVocabularyName',  # min: 1, max: 200; OPTIONAL
+          'MyVocabularyFilterName',    # min: 1, max: 200; OPTIONAL
+        VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -73,6 +95,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head1 ATTRIBUTES
 
 
+=head2 ContentRedaction => L<Paws::Transcribe::ContentRedaction>
+
+An object that contains the request parameters for content redaction.
+
+
+
+=head2 IdentifyLanguage => Bool
+
+Set this field to C<true> to enable automatic language identification.
+Automatic language identification is disabled by default. You receive a
+C<BadRequestException> error if you enter a value for a
+C<LanguageCode>.
+
+
+
 =head2 JobExecutionSettings => L<Paws::Transcribe::JobExecutionSettings>
 
 Provides information about how a transcription job is executed. Use
@@ -82,11 +119,22 @@ available to immediately run the job.
 
 
 
-=head2 B<REQUIRED> LanguageCode => Str
+=head2 LanguageCode => Str
 
 The language code for the language used in the input media file.
 
-Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">, C<"en-IN">, C<"hi-IN">, C<"ar-SA">, C<"ru-RU">, C<"zh-CN">, C<"nl-NL">, C<"id-ID">, C<"ta-IN">, C<"fa-IR">, C<"en-IE">, C<"en-AB">, C<"en-WL">, C<"pt-PT">, C<"te-IN">, C<"tr-TR">, C<"de-CH">, C<"he-IL">, C<"ms-MY">, C<"ja-JP">, C<"ar-AE">
+To transcribe speech in Modern Standard Arabic (ar-SA), your audio or
+video file must be encoded at a sample rate of 16000 Hz or higher.
+
+Valid values are: C<"af-ZA">, C<"ar-AE">, C<"ar-SA">, C<"cy-GB">, C<"da-DK">, C<"de-CH">, C<"de-DE">, C<"en-AB">, C<"en-AU">, C<"en-GB">, C<"en-IE">, C<"en-IN">, C<"en-US">, C<"en-WL">, C<"es-ES">, C<"es-US">, C<"fa-IR">, C<"fr-CA">, C<"fr-FR">, C<"ga-IE">, C<"gd-GB">, C<"he-IL">, C<"hi-IN">, C<"id-ID">, C<"it-IT">, C<"ja-JP">, C<"ko-KR">, C<"ms-MY">, C<"nl-NL">, C<"pt-BR">, C<"pt-PT">, C<"ru-RU">, C<"ta-IN">, C<"te-IN">, C<"tr-TR">, C<"zh-CN">
+
+=head2 LanguageOptions => ArrayRef[Str|Undef]
+
+An object containing a list of languages that might be present in your
+collection of audio files. Automatic language identification chooses a
+language that best matches the source audio from that list.
+
+
 
 =head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
 
@@ -98,7 +146,7 @@ An object that describes the input media for a transcription job.
 
 The format of the input media file.
 
-Valid values are: C<"mp3">, C<"mp4">, C<"wav">, C<"flac">
+Valid values are: C<"mp3">, C<"mp4">, C<"wav">, C<"flac">, C<"ogg">, C<"amr">, C<"webm">
 
 =head2 MediaSampleRateHertz => Int
 
@@ -112,16 +160,27 @@ Transcribe determine the sample rate.
 
 
 
+=head2 ModelSettings => L<Paws::Transcribe::ModelSettings>
+
+Choose the custom language model you use for your transcription job in
+this parameter.
+
+
+
 =head2 OutputBucketName => Str
 
 The location where the transcription is stored.
 
 If you set the C<OutputBucketName>, Amazon Transcribe puts the
-transcription in the specified S3 bucket. When you call the
+transcript in the specified S3 bucket. When you call the
 GetTranscriptionJob operation, the operation returns this location in
-the C<TranscriptFileUri> field. The S3 bucket must have permissions
-that allow Amazon Transcribe to put files in the bucket. For more
-information, see Permissions Required for IAM User Roles
+the C<TranscriptFileUri> field. If you enable content redaction, the
+redacted transcript appears in C<RedactedTranscriptFileUri>. If you
+enable content redaction and choose to output an unredacted transcript,
+that transcript's location still appears in the C<TranscriptFileUri>.
+The S3 bucket must have permissions that allow Amazon Transcribe to put
+files in the bucket. For more information, see Permissions Required for
+IAM User Roles
 (https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 
 You can specify an AWS Key Management Service (KMS) key to encrypt the
@@ -184,6 +243,29 @@ an output location in the C<OutputBucketName> parameter.
 
 
 
+=head2 OutputKey => Str
+
+You can specify a location in an Amazon S3 bucket to store the output
+of your transcription job.
+
+If you don't specify an output key, Amazon Transcribe stores the output
+of your transcription job in the Amazon S3 bucket you specified. By
+default, the object key is "your-transcription-job-name.json".
+
+You can use output keys to specify the Amazon S3 prefix and file name
+of the transcription output. For example, specifying the Amazon S3
+prefix, "folder1/folder2/", as an output key would lead to the output
+being stored as "folder1/folder2/your-transcription-job-name.json". If
+you specify "my-other-job-name.json" as the output key, the object key
+is changed to "my-other-job-name.json". You can use an output key to
+change both the prefix and the file name, for example
+"folder/my-other-job-name.json".
+
+If you specify an output key, you must also specify an S3 bucket in the
+C<OutputBucketName> parameter.
+
+
+
 =head2 Settings => L<Paws::Transcribe::Settings>
 
 A C<Settings> object that provides optional settings for a
@@ -193,9 +275,10 @@ transcription job.
 
 =head2 B<REQUIRED> TranscriptionJobName => Str
 
-The name of the job. Note that you can't use the strings "." or ".." by
+The name of the job. You can't use the strings "C<.>" or "C<..>" by
 themselves as the job name. The name must also be unique within an AWS
-account.
+account. If you try to create a transcription job with the same name as
+a previous transcription job, you get a C<ConflictException> error.
 
 
 

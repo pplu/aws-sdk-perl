@@ -27,7 +27,7 @@ the next page of jobs.
 
 =head2 VocabularyFilters => ArrayRef[L<Paws::Transcribe::VocabularyFilterInfo>]
 
-The list of vocabulary filters. It will contain at most C<MaxResults>
+The list of vocabulary filters. It contains at most C<MaxResults>
 number of filters. If there are more filters, call the
 C<ListVocabularyFilters> operation again with the C<NextToken>
 parameter in the request set to the value of the C<NextToken> field in
