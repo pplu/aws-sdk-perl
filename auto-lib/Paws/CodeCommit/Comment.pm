@@ -2,6 +2,7 @@
 package Paws::CodeCommit::Comment;
   use Moose;
   has AuthorArn => (is => 'ro', isa => 'Str', request_name => 'authorArn', traits => ['NameInRequest']);
+  has CallerReactions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'callerReactions', traits => ['NameInRequest']);
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
   has CommentId => (is => 'ro', isa => 'Str', request_name => 'commentId', traits => ['NameInRequest']);
   has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest']);
@@ -9,6 +10,7 @@ package Paws::CodeCommit::Comment;
   has Deleted => (is => 'ro', isa => 'Bool', request_name => 'deleted', traits => ['NameInRequest']);
   has InReplyTo => (is => 'ro', isa => 'Str', request_name => 'inReplyTo', traits => ['NameInRequest']);
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
+  has ReactionCounts => (is => 'ro', isa => 'Paws::CodeCommit::ReactionCountsMap', request_name => 'reactionCounts', traits => ['NameInRequest']);
 
 1;
 
@@ -29,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeCommit::Comment object:
 
-  $service_obj->Method(Att1 => { AuthorArn => $value, ..., LastModifiedDate => $value  });
+  $service_obj->Method(Att1 => { AuthorArn => $value, ..., ReactionCounts => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,6 +50,12 @@ Returns information about a specific comment.
 =head2 AuthorArn => Str
 
 The Amazon Resource Name (ARN) of the person who posted the comment.
+
+
+=head2 CallerReactions => ArrayRef[Str|Undef]
+
+The emoji reactions to a comment, if any, submitted by the user whose
+credentials are associated with the call to the API.
 
 
 =head2 ClientRequestToken => Str
@@ -88,6 +96,12 @@ The ID of the comment for which this comment is a reply, if any.
 
 The date and time the comment was most recently modified, in timestamp
 format.
+
+
+=head2 ReactionCounts => L<Paws::CodeCommit::ReactionCountsMap>
+
+A string to integer map that represents the number of individual users
+who have responded to a comment with the specified reactions.
 
 
 
