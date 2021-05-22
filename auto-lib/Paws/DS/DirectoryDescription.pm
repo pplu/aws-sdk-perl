@@ -14,6 +14,7 @@ package Paws::DS::DirectoryDescription;
   has OwnerDirectoryDescription => (is => 'ro', isa => 'Paws::DS::OwnerDirectoryDescription');
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
   has RadiusStatus => (is => 'ro', isa => 'Str');
+  has RegionsInfo => (is => 'ro', isa => 'Paws::DS::RegionsInfo');
   has ShareMethod => (is => 'ro', isa => 'Str');
   has ShareNotes => (is => 'ro', isa => 'Str');
   has ShareStatus => (is => 'ro', isa => 'Str');
@@ -138,6 +139,11 @@ server configured for this directory.
 =head2 RadiusStatus => Str
 
 The status of the RADIUS MFA server connection.
+
+
+=head2 RegionsInfo => L<Paws::DS::RegionsInfo>
+
+Lists the Regions where the directory has replicated.
 
 
 =head2 ShareMethod => Str

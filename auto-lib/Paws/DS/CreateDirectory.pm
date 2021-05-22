@@ -87,6 +87,48 @@ C<Administrator> and this password.
 If you need to change the password for the administrator account, you
 can use the ResetUserPassword API call.
 
+The regex pattern for this string is made up of the following
+conditions:
+
+=over
+
+=item *
+
+Length (?=^.{8,64}$) E<ndash> Must be between 8 and 64 characters
+
+=back
+
+AND any 3 of the following password complexity rules required by Active
+Directory:
+
+=over
+
+=item *
+
+Numbers and upper case and lowercase (?=.*\d)(?=.*[A-Z])(?=.*[a-z])
+
+=item *
+
+Numbers and special characters and lower case
+(?=.*\d)(?=.*[^A-Za-z0-9\s])(?=.*[a-z])
+
+=item *
+
+Special characters and upper case and lower case
+(?=.*[^A-Za-z0-9\s])(?=.*[A-Z])(?=.*[a-z])
+
+=item *
+
+Numbers and upper case and special characters
+(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9\s])
+
+=back
+
+For additional information about how Active Directory passwords are
+enforced, see Password must meet complexity requirements
+(https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)
+on the Microsoft website.
+
 
 
 =head2 ShortName => Str
