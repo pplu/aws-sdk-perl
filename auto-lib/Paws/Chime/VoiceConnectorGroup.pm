@@ -47,7 +47,7 @@ a fault tolerant mechanism for fallback in case of availability events.
 
 =head2 CreatedTimestamp => Str
 
-The Amazon Chime Voice Connector group creation timestamp, in ISO 8601
+The Amazon Chime Voice Connector group creation time stamp, in ISO 8601
 format.
 
 
@@ -58,7 +58,7 @@ The name of the Amazon Chime Voice Connector group.
 
 =head2 UpdatedTimestamp => Str
 
-The updated Amazon Chime Voice Connector group timestamp, in ISO 8601
+The updated Amazon Chime Voice Connector group time stamp, in ISO 8601
 format.
 
 

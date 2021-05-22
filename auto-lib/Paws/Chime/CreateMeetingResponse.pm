@@ -17,8 +17,8 @@ Paws::Chime::CreateMeetingResponse
 
 =head2 Meeting => L<Paws::Chime::Meeting>
 
-The meeting information, including the meeting ID and
-C<MediaPlacement>.
+The meeting information, including the meeting ID and C<MediaPlacement>
+.
 
 
 =head2 _request_id => Str

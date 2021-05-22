@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head2 AwsRegion => Str
 
 The AWS Region in which the Amazon Chime Voice Connector is created.
-Default value: C<us-east-1>.
+Default value: C<us-east-1> .
 
 Valid values are: C<"us-east-1">, C<"us-west-2">
 

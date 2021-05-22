@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PhoneNumberId => 'MyNonEmptyString',
           CallingName   => 'MyCallingName',      # OPTIONAL
           ProductType   => 'BusinessCalling'
-          ,    # values: BusinessCalling, VoiceConnector; OPTIONAL
+          , # values: BusinessCalling, VoiceConnector, SipMediaApplicationDialIn; OPTIONAL
         },
         ...
       ],

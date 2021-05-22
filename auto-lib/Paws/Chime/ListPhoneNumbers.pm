@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 The filter to use to limit the number of results.
 
-Valid values are: C<"AccountId">, C<"UserId">, C<"VoiceConnectorId">, C<"VoiceConnectorGroupId">
+Valid values are: C<"AccountId">, C<"UserId">, C<"VoiceConnectorId">, C<"VoiceConnectorGroupId">, C<"SipRuleId">
 
 =head2 FilterValue => Str
 
@@ -82,7 +82,7 @@ The token to use to retrieve the next page of results.
 
 The phone number product type.
 
-Valid values are: C<"BusinessCalling">, C<"VoiceConnector">
+Valid values are: C<"BusinessCalling">, C<"VoiceConnector">, C<"SipMediaApplicationDialIn">
 
 =head2 Status => Str
 

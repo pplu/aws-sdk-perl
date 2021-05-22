@@ -69,7 +69,7 @@ Amazon Chime Voice Connectors use TCP protocol by default.
 =head2 Weight => Int
 
 The weight associated with the host. If hosts are equal in priority,
-calls are distributed among them based on their relative weight.
+calls are redistributed among them based on their relative weight.
 
 
 

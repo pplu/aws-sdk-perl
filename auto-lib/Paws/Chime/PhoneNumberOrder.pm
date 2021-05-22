@@ -45,7 +45,7 @@ The details of a phone number order created for Amazon Chime.
 
 =head2 CreatedTimestamp => Str
 
-The phone number order creation timestamp, in ISO 8601 format.
+The phone number order creation time stamp, in ISO 8601 format.
 
 
 =head2 OrderedPhoneNumbers => ArrayRef[L<Paws::Chime::OrderedPhoneNumber>]
@@ -71,7 +71,7 @@ The status of the phone number order.
 
 =head2 UpdatedTimestamp => Str
 
-The updated phone number order timestamp, in ISO 8601 format.
+The updated phone number order time stamp, in ISO 8601 format.
 
 
 

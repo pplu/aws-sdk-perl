@@ -2,9 +2,11 @@
 package Paws::Chime::CreateMeeting;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str', required => 1);
+  has ExternalMeetingId => (is => 'ro', isa => 'Str');
   has MediaRegion => (is => 'ro', isa => 'Str');
   has MeetingHostId => (is => 'ro', isa => 'Str');
   has NotificationsConfiguration => (is => 'ro', isa => 'Paws::Chime::MeetingNotificationConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Chime::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $chime = Paws->service('Chime');
     my $CreateMeetingResponse = $chime->CreateMeeting(
       ClientRequestToken         => 'MyClientRequestToken',
-      MediaRegion                => 'MyString',                # OPTIONAL
-      MeetingHostId              => 'MyExternalUserIdType',    # OPTIONAL
+      ExternalMeetingId          => 'MyExternalMeetingIdType',    # OPTIONAL
+      MediaRegion                => 'MyString',                   # OPTIONAL
+      MeetingHostId              => 'MyExternalUserIdType',       # OPTIONAL
       NotificationsConfiguration => {
         SnsTopicArn => 'MyArn',    # min: 1, max: 1024; OPTIONAL
         SqsQueueArn => 'MyArn',    # min: 1, max: 1024; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -59,13 +70,21 @@ different meetings.
 
 
 
+=head2 ExternalMeetingId => Str
+
+The external meeting ID.
+
+
+
 =head2 MediaRegion => Str
 
-The Region in which to create the meeting. Available values:
-C<ap-northeast-1>, C<ap-southeast-1>, C<ap-southeast-2>,
-C<ca-central-1>, C<eu-central-1>, C<eu-north-1>, C<eu-west-1>,
-C<eu-west-2>, C<eu-west-3>, C<sa-east-1>, C<us-east-1>, C<us-east-2>,
-C<us-west-1>, C<us-west-2>.
+The Region in which to create the meeting. Default: C<us-east-1>.
+
+Available values: C<af-south-1> , C<ap-northeast-1> , C<ap-northeast-2>
+, C<ap-south-1> , C<ap-southeast-1> , C<ap-southeast-2> ,
+C<ca-central-1> , C<eu-central-1> , C<eu-north-1> , C<eu-south-1> ,
+C<eu-west-1> , C<eu-west-2> , C<eu-west-3> , C<sa-east-1> ,
+C<us-east-1> , C<us-east-2> , C<us-west-1> , C<us-west-2> .
 
 
 
@@ -79,6 +98,12 @@ Reserved.
 
 The configuration for resource targets to receive notifications when
 meeting and attendee events occur.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Chime::Tag>]
+
+The tag key-value pairs.
 
 
 

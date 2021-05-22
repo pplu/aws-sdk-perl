@@ -56,7 +56,7 @@ List of phone numbers, in E.164 format.
 
 The phone number product type.
 
-Valid values are: C<"BusinessCalling">, C<"VoiceConnector">
+Valid values are: C<"BusinessCalling">, C<"VoiceConnector">, C<"SipMediaApplicationDialIn">
 
 
 =head1 SEE ALSO

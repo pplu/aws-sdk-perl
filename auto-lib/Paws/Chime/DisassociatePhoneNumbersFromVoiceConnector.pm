@@ -1,7 +1,7 @@
 
 package Paws::Chime::DisassociatePhoneNumbersFromVoiceConnector;
   use Moose;
-  has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $chime = Paws->service('Chime');
     my $DisassociatePhoneNumbersFromVoiceConnectorResponse =
       $chime->DisassociatePhoneNumbersFromVoiceConnector(
+      E164PhoneNumbers => [ 'MyE164PhoneNumber', ... ],
       VoiceConnectorId => 'MyNonEmptyString',
-      E164PhoneNumbers => [ 'MyE164PhoneNumber', ... ],    # OPTIONAL
+
       );
 
     # Results:
@@ -47,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head1 ATTRIBUTES
 
 
-=head2 E164PhoneNumbers => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> E164PhoneNumbers => ArrayRef[Str|Undef]
 
 List of phone numbers, in E.164 format.
 

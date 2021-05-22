@@ -54,8 +54,8 @@ The error message.
 
 =head2 ExternalUserId => Str
 
-The Amazon Chime SDK external user ID. Links the attendee to an
-identity managed by a builder application.
+The Amazon Chime SDK external user ID. An idempotency token. Links the
+attendee to an identity managed by a builder application.
 
 
 
