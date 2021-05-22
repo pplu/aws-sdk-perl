@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $events = Paws->service('CloudWatchEvents');
     my $ListRuleNamesByTargetResponse = $events->ListRuleNamesByTarget(
       TargetArn    => 'MyTargetArn',
-      EventBusName => 'MyEventBusName',    # OPTIONAL
-      Limit        => 1,                   # OPTIONAL
-      NextToken    => 'MyNextToken',       # OPTIONAL
+      EventBusName => 'MyEventBusNameOrArn',    # OPTIONAL
+      Limit        => 1,                        # OPTIONAL
+      NextToken    => 'MyNextToken',            # OPTIONAL
     );
 
     # Results:
@@ -51,8 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 EventBusName => Str
 
-Limits the results to show only the rules associated with the specified
-event bus.
+The name or ARN of the event bus to list rules for. If you omit this,
+the default event bus is used.
 
 
 

@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $events = Paws->service('CloudWatchEvents');
     $events->DisableRule(
       Name         => 'MyRuleName',
-      EventBusName => 'MyEventBusName',    # OPTIONAL
+      EventBusName => 'MyEventBusNameOrArn',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -41,8 +41,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 EventBusName => Str
 
-The event bus associated with the rule. If you omit this, the default
-event bus is used.
+The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.
 
 
 

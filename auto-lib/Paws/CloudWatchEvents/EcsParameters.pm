@@ -64,12 +64,12 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 Use this structure if the ECS task uses the C<awsvpc> network mode.
 This structure specifies the VPC subnets and security groups associated
-with the task and whether a public IP address is to be used. This
+with the task, and whether a public IP address is to be used. This
 structure is required if C<LaunchType> is C<FARGATE> because the
 C<awsvpc> mode is required for Fargate tasks.
 
-If you specify C<NetworkConfiguration> when the target ECS task doesn't
-use the C<awsvpc> network mode, the task fails.
+If you specify C<NetworkConfiguration> when the target ECS task does
+not use the C<awsvpc> network mode, the task fails.
 
 
 =head2 PlatformVersion => Str

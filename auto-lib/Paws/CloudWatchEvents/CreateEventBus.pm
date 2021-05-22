@@ -3,6 +3,7 @@ package Paws::CloudWatchEvents::CreateEventBus;
   use Moose;
   has EventSourceName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -31,6 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateEventBusResponse = $events->CreateEventBus(
       Name            => 'MyEventBusName',
       EventSourceName => 'MyEventSourceName',    # OPTIONAL
+      Tags            => [
+        {
+          Key   => 'MyTagKey',                   # min: 1, max: 128
+          Value => 'MyTagValue',                 # max: 256
+
+        },
+        ...
+      ],                                         # OPTIONAL
     );
 
     # Results:
@@ -46,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 EventSourceName => Str
 
-If you're creating a partner event bus, this specifies the partner
+If you are creating a partner event bus, this specifies the partner
 event source that the new event bus will be matched with.
 
 
@@ -55,13 +64,18 @@ event source that the new event bus will be matched with.
 
 The name of the new event bus.
 
-The names of custom event buses can't contain the C</> character. You
-can't use the name C<default> for a custom event bus because this name
-is already used for your account's default event bus.
+Event bus names cannot contain the / character. You can't use the name
+C<default> for a custom event bus, as this name is already used for
+your account's default event bus.
 
 If this is a partner event bus, the name must exactly match the name of
-the partner event source that this event bus is matched to. This name
-will include the C</> character.
+the partner event source that this event bus is matched to.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
+
+Tags to associate with the event bus.
 
 
 

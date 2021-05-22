@@ -3,14 +3,19 @@ package Paws::CloudWatchEvents::Target;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has BatchParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchParameters');
+  has DeadLetterConfig => (is => 'ro', isa => 'Paws::CloudWatchEvents::DeadLetterConfig');
   has EcsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::EcsParameters');
+  has HttpParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::HttpParameters');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Input => (is => 'ro', isa => 'Str');
   has InputPath => (is => 'ro', isa => 'Str');
   has InputTransformer => (is => 'ro', isa => 'Paws::CloudWatchEvents::InputTransformer');
   has KinesisParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::KinesisParameters');
+  has RedshiftDataParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RedshiftDataParameters');
+  has RetryPolicy => (is => 'ro', isa => 'Paws::CloudWatchEvents::RetryPolicy');
   has RoleArn => (is => 'ro', isa => 'Str');
   has RunCommandParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RunCommandParameters');
+  has SageMakerPipelineParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::SageMakerPipelineParameters');
   has SqsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::SqsParameters');
 
 1;
@@ -47,10 +52,10 @@ Targets are the resources to be invoked when a rule is triggered. For a
 complete list of services and resources that can be set as a target,
 see PutTargets.
 
-If you're setting the event bus of another account as the target and
+If you are setting the event bus of another account as the target, and
 that account granted permission to your account through an organization
-instead of directly by the account ID, you must specify a C<RoleArn>
-with proper permissions in the C<Target> structure. For more
+instead of directly by the account ID, then you must specify a
+C<RoleArn> with proper permissions in the C<Target> structure. For more
 information, see Sending and Receiving Events Between AWS Accounts
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
 in the I<Amazon EventBridge User Guide>.
@@ -71,20 +76,37 @@ Jobs (https://docs.aws.amazon.com/batch/latest/userguide/jobs.html) in
 the I<AWS Batch User Guide>.
 
 
+=head2 DeadLetterConfig => L<Paws::CloudWatchEvents::DeadLetterConfig>
+
+The C<DeadLetterConfig> that defines the target queue to send
+dead-letter queue events to.
+
+
 =head2 EcsParameters => L<Paws::CloudWatchEvents::EcsParameters>
 
-Contains the Amazon ECS task definition and task count to be used if
+Contains the Amazon ECS task definition and task count to be used, if
 the event target is an Amazon ECS task. For more information about
 Amazon ECS tasks, see Task Definitions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
 in the I<Amazon EC2 Container Service Developer Guide>.
 
 
+=head2 HttpParameters => L<Paws::CloudWatchEvents::HttpParameters>
+
+Contains the HTTP parameters to use when the target is a API Gateway
+REST endpoint or EventBridge ApiDestination.
+
+If you specify an API Gateway REST API or EventBridge ApiDestination as
+a target, you can use this parameter to specify headers, path
+parameters, and query string keys/values as part of your target
+invoking request. If you're using ApiDestinations, the corresponding
+Connection can also have these values configured. In case of any
+conflicting keys, values from the Connection take precedence.
+
+
 =head2 B<REQUIRED> Id => Str
 
-A name for the target. Use a string that will help you identify the
-target. Each target associated with a rule must have an C<Id> unique
-for that rule.
+The ID of the target.
 
 
 =head2 Input => Str
@@ -113,9 +135,25 @@ target.
 
 =head2 KinesisParameters => L<Paws::CloudWatchEvents::KinesisParameters>
 
-The custom parameter that you can use to control the shard assignment
-when the target is a Kinesis data stream. If you don't include this
+The custom parameter you can use to control the shard assignment, when
+the target is a Kinesis data stream. If you do not include this
 parameter, the default is to use the C<eventId> as the partition key.
+
+
+=head2 RedshiftDataParameters => L<Paws::CloudWatchEvents::RedshiftDataParameters>
+
+Contains the Redshift Data API parameters to use when the target is a
+Redshift cluster.
+
+If you specify a Redshift Cluster as a Target, you can use this to
+specify parameters to invoke the Redshift Data API ExecuteStatement
+based on EventBridge events.
+
+
+=head2 RetryPolicy => L<Paws::CloudWatchEvents::RetryPolicy>
+
+The C<RetryPolicy> object that contains the retry policy configuration
+to use for the dead-letter queue.
 
 
 =head2 RoleArn => Str
@@ -129,6 +167,16 @@ targets, you can use a different IAM role for each target.
 
 Parameters used when you are using the rule to invoke Amazon EC2 Run
 Command.
+
+
+=head2 SageMakerPipelineParameters => L<Paws::CloudWatchEvents::SageMakerPipelineParameters>
+
+Contains the SageMaker Model Building Pipeline parameters to start
+execution of a SageMaker Model Building Pipeline.
+
+If you specify a SageMaker Model Building Pipeline as a target, you can
+use this to specify parameters to start a pipeline execution based on
+EventBridge events.
 
 
 =head2 SqsParameters => L<Paws::CloudWatchEvents::SqsParameters>

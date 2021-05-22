@@ -59,8 +59,8 @@ about.
 =head2 Limit => Int
 
 Specifying this limits the number of results returned by this
-operation. The operation also returns a C<NextToken> that you can use
-in a subsequent operation to retrieve the next set of results.
+operation. The operation also returns a NextToken which you can use in
+a subsequent operation to retrieve the next set of results.
 
 
 

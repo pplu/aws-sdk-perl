@@ -1,11 +1,12 @@
 
 package Paws::CloudWatchEvents::PutPermission;
   use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
+  has Action => (is => 'ro', isa => 'Str');
   has Condition => (is => 'ro', isa => 'Paws::CloudWatchEvents::Condition');
   has EventBusName => (is => 'ro', isa => 'Str');
-  has Principal => (is => 'ro', isa => 'Str', required => 1);
-  has StatementId => (is => 'ro', isa => 'Str', required => 1);
+  has Policy => (is => 'ro', isa => 'Str');
+  has Principal => (is => 'ro', isa => 'Str');
+  has StatementId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,16 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $events = Paws->service('CloudWatchEvents');
     $events->PutPermission(
-      Action      => 'MyAction',
-      Principal   => 'MyPrincipal',
-      StatementId => 'MyStatementId',
-      Condition   => {
+      Action    => 'MyAction',    # OPTIONAL
+      Condition => {
         Key   => 'MyString',
         Type  => 'MyString',
         Value => 'MyString',
 
-      },    # OPTIONAL
+      },                          # OPTIONAL
       EventBusName => 'MyNonPartnerEventBusName',    # OPTIONAL
+      Policy       => 'MyString',                    # OPTIONAL
+      Principal    => 'MyPrincipal',                 # OPTIONAL
+      StatementId  => 'MyStatementId',               # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -50,9 +52,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Action => Str
+=head2 Action => Str
 
-The action that you're enabling the other account to perform.
+The action that you are enabling the other account to perform.
 Currently, this must be C<events:PutEvents>.
 
 
@@ -62,44 +64,51 @@ Currently, this must be C<events:PutEvents>.
 This parameter enables you to limit the permission to accounts that
 fulfill a certain condition, such as being a member of a certain AWS
 organization. For more information about AWS Organizations, see What Is
-AWS Organizations?
+AWS Organizations
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 in the I<AWS Organizations User Guide>.
 
-If you specify C<Condition> with an AWS organization ID and specify "*"
-as the value for C<Principal>, you grant permission to all the accounts
-in the named organization.
+If you specify C<Condition> with an AWS organization ID, and specify
+"*" as the value for C<Principal>, you grant permission to all the
+accounts in the named organization.
 
-The C<Condition> is a JSON string that must contain C<Type>, C<Key>,
+The C<Condition> is a JSON string which must contain C<Type>, C<Key>,
 and C<Value> fields.
 
 
 
 =head2 EventBusName => Str
 
-The event bus associated with the rule. If you omit this, the default
-event bus is used.
+The name of the event bus associated with the rule. If you omit this,
+the default event bus is used.
 
 
 
-=head2 B<REQUIRED> Principal => Str
+=head2 Policy => Str
+
+A JSON string that describes the permission policy statement. You can
+include a C<Policy> parameter in the request instead of using the
+C<StatementId>, C<Action>, C<Principal>, or C<Condition> parameters.
+
+
+
+=head2 Principal => Str
 
 The 12-digit AWS account ID that you are permitting to put events to
 your default event bus. Specify "*" to permit any account to put events
 to your default event bus.
 
 If you specify "*" without specifying C<Condition>, avoid creating
-rules that might match undesirable events. To create more secure rules,
+rules that may match undesirable events. To create more secure rules,
 make sure that the event pattern for each rule contains an C<account>
-field with a specific account ID to receive events from. Rules that
-have an account field match events sent only from accounts that are
-listed in the rule's C<account> field.
+field with a specific account ID from which to receive events. Rules
+with an account field do not match any events sent from other accounts.
 
 
 
-=head2 B<REQUIRED> StatementId => Str
+=head2 StatementId => Str
 
-An identifier string for the external account that you're granting
+An identifier string for the external account that you are granting
 permissions to. If you later want to revoke the permission for this
 external account, specify this C<StatementId> when you run
 RemovePermission.

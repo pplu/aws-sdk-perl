@@ -58,20 +58,23 @@ The description of the rule.
 
 =head2 EventBusName => Str
 
-The event bus associated with the rule.
+The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.
 
 
 =head2 EventPattern => Str
 
-The event pattern of the rule. For more information, see Event Patterns
+The event pattern of the rule. For more information, see Events and
+Event Patterns
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 in the I<Amazon EventBridge User Guide>.
 
 
 =head2 ManagedBy => Str
 
-If an AWS service created the rule on behalf of your account, this
-field displays the principal name of the service that created the rule.
+If the rule was created on behalf of your account by an AWS service,
+this field displays the principal name of the service that created the
+rule.
 
 
 =head2 Name => Str
@@ -87,8 +90,8 @@ invocation.
 
 =head2 ScheduleExpression => Str
 
-The scheduling expression: for example, C<"cron(0 20 * * ? *)"> or
-C<"rate(5 minutes)">.
+The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5
+minutes)".
 
 
 =head2 State => Str

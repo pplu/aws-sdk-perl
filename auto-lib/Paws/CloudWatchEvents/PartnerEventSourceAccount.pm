@@ -48,23 +48,23 @@ The AWS account ID that the partner event source was offered to.
 
 =head2 CreationTime => Str
 
-The date and time when the event source was created.
+The date and time the event source was created.
 
 
 =head2 ExpirationTime => Str
 
-The date and time when the event source will expire if the AWS account
+The date and time that the event source will expire, if the AWS account
 doesn't create a matching event bus for it.
 
 
 =head2 State => Str
 
-The state of the event source. If it's C<ACTIVE>, you have already
+The state of the event source. If it is ACTIVE, you have already
 created a matching event bus for this event source, and that event bus
-is active. If it's C<PENDING>, either you haven't yet created a
-matching event bus, or that event bus is deactivated. If it's
-C<DELETED>, you have created a matching event bus, but the event source
-has since been deleted.
+is active. If it is PENDING, either you haven't yet created a matching
+event bus, or that event bus is deactivated. If it is DELETED, you have
+created a matching event bus, but the event source has since been
+deleted.
 
 
 

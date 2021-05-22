@@ -33,16 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-This parameter contains the criteria (either C<InstanceIds> or a tag)
-used to specify which EC2 instances are to be sent the command.
+This parameter contains the criteria (either InstanceIds or a tag) used
+to specify which EC2 instances are to be sent the command.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> RunCommandTargets => ArrayRef[L<Paws::CloudWatchEvents::RunCommandTarget>]
 
-Currently, we support including only one C<RunCommandTarget> block,
-which specifies either an array of C<InstanceIds> or a tag.
+Currently, we support including only one RunCommandTarget block, which
+specifies either an array of InstanceIds or a tag.
 
 
 

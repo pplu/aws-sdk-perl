@@ -45,6 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Attempts => 1,    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
+          DeadLetterConfig => {
+            Arn => 'MyResourceArn',    # min: 1, max: 1600; OPTIONAL
+          },    # OPTIONAL
           EcsParameters => {
             TaskDefinitionArn    => 'MyArn',    # min: 1, max: 1600
             Group                => 'MyString',
@@ -60,6 +63,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PlatformVersion => 'MyString',
             TaskCount       => 1,            # min: 1; OPTIONAL
           },    # OPTIONAL
+          HttpParameters => {
+            HeaderParameters => {
+              'MyHeaderKey' => 'MyHeaderValue', # key: max: 512, value: max: 512
+            },    # OPTIONAL
+            PathParameterValues   => [ 'MyPathParameter', ... ],    # OPTIONAL
+            QueryStringParameters => {
+              'MyQueryStringKey' =>
+                'MyQueryStringValue',    # key: max: 512, value: max: 512
+            },    # OPTIONAL
+          },    # OPTIONAL
           Input            => 'MyTargetInput',        # max: 8192; OPTIONAL
           InputPath        => 'MyTargetInputPath',    # max: 256; OPTIONAL
           InputTransformer => {
@@ -67,11 +80,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             InputPathsMap => {
               'MyInputTransformerPathKey' => 'MyTargetInputPath'
               ,    # key: min: 1, max: 256, value: max: 256; OPTIONAL
-            },    # max: 10; OPTIONAL
+            },    # max: 100; OPTIONAL
           },    # OPTIONAL
           KinesisParameters => {
             PartitionKeyPath => 'MyTargetPartitionKeyPath',    # max: 256
 
+          },    # OPTIONAL
+          RedshiftDataParameters => {
+            Database => 'MyDatabase',    # min: 1, max: 64
+            Sql      => 'MySql',         # min: 1, max: 100000
+            DbUser   => 'MyDbUser',      # min: 1, max: 128; OPTIONAL
+            SecretManagerArn =>
+              'MyRedshiftSecretManagerArn',    # min: 1, max: 1600; OPTIONAL
+            StatementName => 'MyStatementName',    # min: 1, max: 500; OPTIONAL
+            WithEvent     => 1,                    # OPTIONAL
+          },    # OPTIONAL
+          RetryPolicy => {
+            MaximumEventAgeInSeconds => 1,    # min: 60, max: 86400; OPTIONAL
+            MaximumRetryAttempts     => 1,    # max: 185; OPTIONAL
           },    # OPTIONAL
           RoleArn              => 'MyRoleArn',    # min: 1, max: 1600; OPTIONAL
           RunCommandParameters => {
@@ -87,13 +113,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                                        # min: 1, max: 5
 
           },    # OPTIONAL
+          SageMakerPipelineParameters => {
+            PipelineParameterList => [
+              {
+                Name  => 'MySageMakerPipelineParameterName',  # min: 1, max: 256
+                Value => 'MySageMakerPipelineParameterValue', # max: 1024
+
+              },
+              ...
+            ],    # max: 200; OPTIONAL
+          },    # OPTIONAL
           SqsParameters => {
             MessageGroupId => 'MyMessageGroupId',    # OPTIONAL
           },    # OPTIONAL
         },
         ...
       ],
-      EventBusName => 'MyEventBusName',    # OPTIONAL
+      EventBusName => 'MyEventBusNameOrArn',    # OPTIONAL
     );
 
     # Results:
@@ -110,8 +146,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 EventBusName => Str
 
-The name of the event bus associated with the rule. If you omit this,
-the default event bus is used.
+The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.
 
 
 

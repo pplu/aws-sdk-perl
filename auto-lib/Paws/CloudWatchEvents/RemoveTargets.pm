@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTargetId', ...    # min: 1, max: 64
       ],
       Rule         => 'MyRuleName',
-      EventBusName => 'MyEventBusName',    # OPTIONAL
-      Force        => 1,                   # OPTIONAL
+      EventBusName => 'MyEventBusNameOrArn',    # OPTIONAL
+      Force        => 1,                        # OPTIONAL
     );
 
     # Results:
@@ -53,16 +53,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 EventBusName => Str
 
-The name of the event bus associated with the rule.
+The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.
 
 
 
 =head2 Force => Bool
 
-If this is a managed rule created by an AWS service on your behalf, you
-must specify C<Force> as C<True> to remove targets. This parameter is
-ignored for rules that aren't managed rules. You can check whether a
-rule is a managed rule by using C<DescribeRule> or C<ListRules> and
+If this is a managed rule, created by an AWS service on your behalf,
+you must specify C<Force> as C<True> to remove targets. This parameter
+is ignored for rules that are not managed rules. You can check whether
+a rule is a managed rule by using C<DescribeRule> or C<ListRules> and
 checking the C<ManagedBy> field of the response.
 
 

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutRuleResponse = $events->PutRule(
       Name               => 'MyRuleName',
       Description        => 'MyRuleDescription',       # OPTIONAL
-      EventBusName       => 'MyEventBusName',          # OPTIONAL
+      EventBusName       => 'MyEventBusNameOrArn',     # OPTIONAL
       EventPattern       => 'MyEventPattern',          # OPTIONAL
       RoleArn            => 'MyRoleArn',               # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
@@ -71,14 +71,14 @@ A description of the rule.
 
 =head2 EventBusName => Str
 
-The event bus to associate with this rule. If you omit this, the
-default event bus is used.
+The name or ARN of the event bus to associate with this rule. If you
+omit this, the default event bus is used.
 
 
 
 =head2 EventPattern => Str
 
-The event pattern. For more information, see Event Patterns
+The event pattern. For more information, see Events and Event Patterns
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 in the I<Amazon EventBridge User Guide>.
 
@@ -86,10 +86,7 @@ in the I<Amazon EventBridge User Guide>.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the rule that you're creating or updating.
-
-A rule can't have the same name as another rule in the same Region or
-on the same event bus.
+The name of the rule that you are creating or updating.
 
 
 
@@ -102,8 +99,8 @@ rule.
 
 =head2 ScheduleExpression => Str
 
-The scheduling expression: for example, C<"cron(0 20 * * ? *)"> or
-C<"rate(5 minutes)">.
+The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5
+minutes)".
 
 
 

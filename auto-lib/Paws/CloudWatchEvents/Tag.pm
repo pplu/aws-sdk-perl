@@ -35,15 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 =head1 DESCRIPTION
 
 A key-value pair associated with an AWS resource. In EventBridge, rules
-support tagging.
+and event buses support tagging.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-A string that you can use to assign a value. The combination of tag
-keys and values can help you organize and categorize your resources.
+A string you can use to assign a value. The combination of tag keys and
+values can help you organize and categorize your resources.
 
 
 =head2 B<REQUIRED> Value => Str

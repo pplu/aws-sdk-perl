@@ -23,7 +23,7 @@ to the partner event bus.
 
 =head2 FailedEntryCount => Int
 
-The number of events from this operation that couldn't be written to
+The number of events from this operation that could not be written to
 the partner event bus.
 
 

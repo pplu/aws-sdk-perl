@@ -20,6 +20,26 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ActivateEventSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelReplay {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::CancelReplay', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateApiDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::CreateApiDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateArchive {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::CreateArchive', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::CreateConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEventBus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::CreateEventBus', @_);
@@ -33,6 +53,26 @@ package Paws::CloudWatchEvents;
   sub DeactivateEventSource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeactivateEventSource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeauthorizeConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeauthorizeConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApiDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeleteApiDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteArchive {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeleteArchive', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeleteConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEventBus {
@@ -50,6 +90,21 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeleteRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeApiDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeApiDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeArchive {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeArchive', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEventBus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeEventBus', @_);
@@ -65,6 +120,11 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribePartnerEventSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeReplay {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeReplay', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeRule', @_);
@@ -78,6 +138,21 @@ package Paws::CloudWatchEvents;
   sub EnableRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::EnableRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListApiDestinations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListApiDestinations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListArchives {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListArchives', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListConnections', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListEventBuses {
@@ -98,6 +173,11 @@ package Paws::CloudWatchEvents;
   sub ListPartnerEventSources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListPartnerEventSources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListReplays {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListReplays', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListRuleNamesByTarget {
@@ -155,6 +235,11 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::RemoveTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartReplay {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::StartReplay', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::TagResource', @_);
@@ -168,6 +253,21 @@ package Paws::CloudWatchEvents;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApiDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::UpdateApiDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateArchive {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::UpdateArchive', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::UpdateConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -242,7 +342,7 @@ package Paws::CloudWatchEvents;
   }
 
 
-  sub operations { qw/ActivateEventSource CreateEventBus CreatePartnerEventSource DeactivateEventSource DeleteEventBus DeletePartnerEventSource DeleteRule DescribeEventBus DescribeEventSource DescribePartnerEventSource DescribeRule DisableRule EnableRule ListEventBuses ListEventSources ListPartnerEventSourceAccounts ListPartnerEventSources ListRuleNamesByTarget ListRules ListTagsForResource ListTargetsByRule PutEvents PutPartnerEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets TagResource TestEventPattern UntagResource / }
+  sub operations { qw/ActivateEventSource CancelReplay CreateApiDestination CreateArchive CreateConnection CreateEventBus CreatePartnerEventSource DeactivateEventSource DeauthorizeConnection DeleteApiDestination DeleteArchive DeleteConnection DeleteEventBus DeletePartnerEventSource DeleteRule DescribeApiDestination DescribeArchive DescribeConnection DescribeEventBus DescribeEventSource DescribePartnerEventSource DescribeReplay DescribeRule DisableRule EnableRule ListApiDestinations ListArchives ListConnections ListEventBuses ListEventSources ListPartnerEventSourceAccounts ListPartnerEventSources ListReplays ListRuleNamesByTarget ListRules ListTagsForResource ListTargetsByRule PutEvents PutPartnerEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets StartReplay TagResource TestEventPattern UntagResource UpdateApiDestination UpdateArchive UpdateConnection / }
 
 1;
 
@@ -282,24 +382,25 @@ you can configure rules to:
 =item *
 
 Automatically invoke an AWS Lambda function to update DNS entries when
-an event notifies you that Amazon EC2 instance enters the running state
+an event notifies you that Amazon EC2 instance enters the running
+state.
 
 =item *
 
 Direct specific API records from AWS CloudTrail to an Amazon Kinesis
 data stream for detailed analysis of potential security or availability
-risks
+risks.
 
 =item *
 
 Periodically invoke a built-in target to create a snapshot of an Amazon
-EBS volume
+EBS volume.
 
 =back
 
 For more information about the features of Amazon EventBridge, see the
 Amazon EventBridge User Guide
-(https://docs.aws.amazon.com/eventbridge/latest/userguide/).
+(https://docs.aws.amazon.com/eventbridge/latest/userguide).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/cloudwatch/>
 
@@ -323,7 +424,101 @@ Activates a partner event source that has been deactivated. Once
 activated, your matching event bus will start receiving events from the
 event source.
 
-This operation is performed by AWS customers, not by SaaS partners.
+
+=head2 CancelReplay
+
+=over
+
+=item ReplayName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::CancelReplay>
+
+Returns: a L<Paws::CloudWatchEvents::CancelReplayResponse> instance
+
+Cancels the specified replay.
+
+
+=head2 CreateApiDestination
+
+=over
+
+=item ConnectionArn => Str
+
+=item HttpMethod => Str
+
+=item InvocationEndpoint => Str
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [InvocationRateLimitPerSecond => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::CreateApiDestination>
+
+Returns: a L<Paws::CloudWatchEvents::CreateApiDestinationResponse> instance
+
+Creates an API destination, which is an HTTP invocation endpoint
+configured as a target for events.
+
+
+=head2 CreateArchive
+
+=over
+
+=item ArchiveName => Str
+
+=item EventSourceArn => Str
+
+=item [Description => Str]
+
+=item [EventPattern => Str]
+
+=item [RetentionDays => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::CreateArchive>
+
+Returns: a L<Paws::CloudWatchEvents::CreateArchiveResponse> instance
+
+Creates an archive of events with the specified settings. When you
+create an archive, incoming events might not immediately start being
+sent to the archive. Allow a short period of time for changes to take
+effect. If you do not specify a pattern to filter events sent to the
+archive, all events are sent to the archive except replayed events.
+Replayed events are not sent to an archive.
+
+
+=head2 CreateConnection
+
+=over
+
+=item AuthorizationType => Str
+
+=item AuthParameters => L<Paws::CloudWatchEvents::CreateConnectionAuthRequestParameters>
+
+=item Name => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::CreateConnection>
+
+Returns: a L<Paws::CloudWatchEvents::CreateConnectionResponse> instance
+
+Creates a connection. A connection defines the authorization type and
+credentials to use for authorization with an API destination HTTP
+endpoint.
 
 
 =head2 CreateEventBus
@@ -334,6 +529,8 @@ This operation is performed by AWS customers, not by SaaS partners.
 
 =item [EventSourceName => Str]
 
+=item [Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]]
+
 
 =back
 
@@ -342,11 +539,9 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::CreateEventBu
 Returns: a L<Paws::CloudWatchEvents::CreateEventBusResponse> instance
 
 Creates a new event bus within your account. This can be a custom event
-bus which you can use to receive events from your own custom
-applications and services, or it can be a partner event bus which can
-be matched to a partner event source.
-
-This operation is used by AWS customers, not by SaaS partners.
+bus which you can use to receive events from your custom applications
+and services, or it can be a partner event bus which can be matched to
+a partner event source.
 
 
 =head2 CreatePartnerEventSource
@@ -364,17 +559,16 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::CreatePartner
 
 Returns: a L<Paws::CloudWatchEvents::CreatePartnerEventSourceResponse> instance
 
-Called by an SaaS partner to create a partner event source.
-
-This operation is not used by AWS customers.
+Called by an SaaS partner to create a partner event source. This
+operation is not used by AWS customers.
 
 Each partner event source can be used by one AWS account to create a
 matching partner event bus in that AWS account. A SaaS partner must
 create one partner event source for each AWS account that wants to
 receive those event types.
 
-A partner event source creates events based on resources in the SaaS
-partner's service or application.
+A partner event source creates events based on resources within the
+SaaS partner's service or application.
 
 An AWS account that creates a partner event bus that matches the
 partner event source can use that event bus to receive events from the
@@ -382,30 +576,16 @@ partner, and then process them using AWS Events rules and targets.
 
 Partner event source names follow this format:
 
-C<aws.partner/I<partner_name>/I<event_namespace>/I<event_name>>
-
-=over
-
-=item *
+C<I<partner_name>/I<event_namespace>/I<event_name>>
 
 I<partner_name> is determined during partner registration and
-identifies the partner to AWS customers.
-
-=item *
-
-For I<event_namespace>, we recommend that partners use a string that
-identifies the AWS customer within the partner's system. This should
-not be the customer's AWS account ID.
-
-=item *
-
-I<event_name> is determined by the partner, and should uniquely
-identify an event-generating resource within the partner system. This
-should help AWS customers decide whether to create an event bus to
-receive these events.
-
-=back
-
+identifies the partner to AWS customers. I<event_namespace> is
+determined by the partner and is a way for the partner to categorize
+their events. I<event_name> is determined by the partner, and should
+uniquely identify an event-generating resource within the partner
+system. The combination of I<event_namespace> and I<event_name> should
+help AWS customers decide whether to create an event bus to receive
+these events.
 
 
 =head2 DeactivateEventSource
@@ -421,16 +601,82 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::DeactivateEve
 
 Returns: nothing
 
-An AWS customer uses this operation to temporarily stop receiving
-events from the specified partner event source. The matching event bus
-isn't deleted.
+You can use this operation to temporarily stop receiving events from
+the specified partner event source. The matching event bus is not
+deleted.
 
 When you deactivate a partner event source, the source goes into
-C<PENDING> state. If it remains in C<PENDING> state for more than two
-weeks, it's deleted.
+PENDING state. If it remains in PENDING state for more than two weeks,
+it is deleted.
 
 To activate a deactivated partner event source, use
 ActivateEventSource.
+
+
+=head2 DeauthorizeConnection
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DeauthorizeConnection>
+
+Returns: a L<Paws::CloudWatchEvents::DeauthorizeConnectionResponse> instance
+
+Removes all authorization parameters from the connection. This lets you
+remove the secret from the connection so you can reuse it without
+having to create a new connection.
+
+
+=head2 DeleteApiDestination
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DeleteApiDestination>
+
+Returns: a L<Paws::CloudWatchEvents::DeleteApiDestinationResponse> instance
+
+Deletes the specified API destination.
+
+
+=head2 DeleteArchive
+
+=over
+
+=item ArchiveName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DeleteArchive>
+
+Returns: a L<Paws::CloudWatchEvents::DeleteArchiveResponse> instance
+
+Deletes the specified archive.
+
+
+=head2 DeleteConnection
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DeleteConnection>
+
+Returns: a L<Paws::CloudWatchEvents::DeleteConnectionResponse> instance
+
+Deletes a connection.
 
 
 =head2 DeleteEventBus
@@ -447,10 +693,8 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::DeleteEventBu
 Returns: nothing
 
 Deletes the specified custom event bus or partner event bus. All rules
-associated with this event bus are also deleted. You can't delete your
-account's default event bus.
-
-This operation is performed by AWS customers, not by SaaS partners.
+associated with this event bus need to be deleted. You can't delete
+your account's default event bus.
 
 
 =head2 DeletePartnerEventSource
@@ -469,10 +713,10 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::DeletePartner
 Returns: nothing
 
 This operation is used by SaaS partners to delete a partner event
-source. AWS customers don't use this operation.
+source. This operation is not used by AWS customers.
 
 When you delete an event source, the status of the corresponding
-partner event bus in the AWS customer account becomes C<DELETED>.
+partner event bus in the AWS customer account becomes DELETED.
 
 
 =head2 DeleteRule
@@ -503,8 +747,56 @@ deleted rule. Allow a short period of time for changes to take effect.
 Managed rules are rules created and managed by another AWS service on
 your behalf. These rules are created by those other AWS services to
 support functionality in those services. You can delete these rules
-using the C<Force> option, but you should do so only if you're sure
-that the other service isn't still using that rule.
+using the C<Force> option, but you should do so only if you are sure
+the other service is not still using that rule.
+
+
+=head2 DescribeApiDestination
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeApiDestination>
+
+Returns: a L<Paws::CloudWatchEvents::DescribeApiDestinationResponse> instance
+
+Retrieves details about an API destination.
+
+
+=head2 DescribeArchive
+
+=over
+
+=item ArchiveName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeArchive>
+
+Returns: a L<Paws::CloudWatchEvents::DescribeArchiveResponse> instance
+
+Retrieves details about an archive.
+
+
+=head2 DescribeConnection
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeConnection>
+
+Returns: a L<Paws::CloudWatchEvents::DescribeConnectionResponse> instance
+
+Retrieves details about a connection.
 
 
 =head2 DescribeEventBus
@@ -548,8 +840,6 @@ Returns: a L<Paws::CloudWatchEvents::DescribeEventSourceResponse> instance
 This operation lists details about a partner event source that is
 shared with your account.
 
-This operation is run by AWS customers, not by SaaS partners.
-
 
 =head2 DescribePartnerEventSource
 
@@ -565,11 +855,34 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribePartn
 Returns: a L<Paws::CloudWatchEvents::DescribePartnerEventSourceResponse> instance
 
 An SaaS partner can use this operation to list details about a partner
-event source that they have created.
+event source that they have created. AWS customers do not use this
+operation. Instead, AWS customers can use DescribeEventSource to see
+details about a partner event source that is shared with them.
 
-AWS customers do not use this operation. Instead, AWS customers can use
-DescribeEventSource to see details about a partner event source that is
-shared with them.
+
+=head2 DescribeReplay
+
+=over
+
+=item ReplayName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeReplay>
+
+Returns: a L<Paws::CloudWatchEvents::DescribeReplayResponse> instance
+
+Retrieves details about a replay. Use C<DescribeReplay> to determine
+the progress of a running replay. A replay processes events to replay
+based on the time in the event, and replays them using 1 minute
+intervals. If you use C<StartReplay> and specify an C<EventStartTime>
+and an C<EventEndTime> that covers a 20 minute time range, the events
+are replayed from the first minute of that 20 minute range first. Then
+the events from the second minute are replayed. You can use
+C<DescribeReplay> to determine the progress of a replay. The value
+returned for C<EventLastReplayedTime> indicates the time within the
+specified time range associated with the last event replayed.
 
 
 =head2 DescribeRule
@@ -589,7 +902,7 @@ Returns: a L<Paws::CloudWatchEvents::DescribeRuleResponse> instance
 
 Describes the specified rule.
 
-C<DescribeRule> doesn't list the targets of a rule. To see the targets
+DescribeRule does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 
 
@@ -608,8 +921,8 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::DisableRule>
 
 Returns: nothing
 
-Disables the specified rule. A disabled rule won't match any events and
-won't self-trigger if it has a schedule expression.
+Disables the specified rule. A disabled rule won't match any events,
+and won't self-trigger if it has a schedule expression.
 
 When you disable a rule, incoming events might continue to match to the
 disabled rule. Allow a short period of time for changes to take effect.
@@ -630,12 +943,83 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::EnableRule>
 
 Returns: nothing
 
-Enables the specified rule. If the rule doesn't exist, the operation
+Enables the specified rule. If the rule does not exist, the operation
 fails.
 
 When you enable a rule, incoming events might not immediately start
 matching to a newly enabled rule. Allow a short period of time for
 changes to take effect.
+
+
+=head2 ListApiDestinations
+
+=over
+
+=item [ConnectionArn => Str]
+
+=item [Limit => Int]
+
+=item [NamePrefix => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::ListApiDestinations>
+
+Returns: a L<Paws::CloudWatchEvents::ListApiDestinationsResponse> instance
+
+Retrieves a list of API destination in the account in the current
+Region.
+
+
+=head2 ListArchives
+
+=over
+
+=item [EventSourceArn => Str]
+
+=item [Limit => Int]
+
+=item [NamePrefix => Str]
+
+=item [NextToken => Str]
+
+=item [State => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::ListArchives>
+
+Returns: a L<Paws::CloudWatchEvents::ListArchivesResponse> instance
+
+Lists your archives. You can either list all the archives or you can
+provide a prefix to match to the archive names. Filter parameters are
+exclusive.
+
+
+=head2 ListConnections
+
+=over
+
+=item [ConnectionState => Str]
+
+=item [Limit => Int]
+
+=item [NamePrefix => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::ListConnections>
+
+Returns: a L<Paws::CloudWatchEvents::ListConnectionsResponse> instance
+
+Retrieves a list of connections from the account.
 
 
 =head2 ListEventBuses
@@ -657,8 +1041,6 @@ Returns: a L<Paws::CloudWatchEvents::ListEventBusesResponse> instance
 
 Lists all the event buses in your account, including the default event
 bus, custom event buses, and partner event buses.
-
-This operation is run by AWS customers, not by SaaS partners.
 
 
 =head2 ListEventSources
@@ -682,8 +1064,6 @@ You can use this to see all the partner event sources that have been
 shared with your AWS account. For more information about partner event
 sources, see CreateEventBus.
 
-This operation is run by AWS customers, not by SaaS partners.
-
 
 =head2 ListPartnerEventSourceAccounts
 
@@ -703,9 +1083,8 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::ListPartnerEv
 Returns: a L<Paws::CloudWatchEvents::ListPartnerEventSourceAccountsResponse> instance
 
 An SaaS partner can use this operation to display the AWS account ID
-that a particular partner event source name is associated with.
-
-This operation is used by SaaS partners, not by AWS customers.
+that a particular partner event source name is associated with. This
+operation is not used by AWS customers.
 
 
 =head2 ListPartnerEventSources
@@ -726,9 +1105,34 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::ListPartnerEv
 Returns: a L<Paws::CloudWatchEvents::ListPartnerEventSourcesResponse> instance
 
 An SaaS partner can use this operation to list all the partner event
-source names that they have created.
+source names that they have created. This operation is not used by AWS
+customers.
 
-This operation is not used by AWS customers.
+
+=head2 ListReplays
+
+=over
+
+=item [EventSourceArn => Str]
+
+=item [Limit => Int]
+
+=item [NamePrefix => Str]
+
+=item [NextToken => Str]
+
+=item [State => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::ListReplays>
+
+Returns: a L<Paws::CloudWatchEvents::ListReplaysResponse> instance
+
+Lists your replays. You can either list all the replays or you can
+provide a prefix to match to the replay names. Filter parameters are
+exclusive.
 
 
 =head2 ListRuleNamesByTarget
@@ -750,8 +1154,9 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::ListRuleNames
 
 Returns: a L<Paws::CloudWatchEvents::ListRuleNamesByTargetResponse> instance
 
-Lists the rules for the specified target. You can see which rules can
-invoke a specific target in your account.
+Lists the rules for the specified target. You can see which of the
+rules in Amazon EventBridge can invoke a specific target in your
+account.
 
 
 =head2 ListRules
@@ -773,10 +1178,10 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::ListRules>
 
 Returns: a L<Paws::CloudWatchEvents::ListRulesResponse> instance
 
-Lists your EventBridge rules. You can either list all the rules or
-provide a prefix to match to the rule names.
+Lists your Amazon EventBridge rules. You can either list all the rules
+or you can provide a prefix to match to the rule names.
 
-C<ListRules> doesn't list the targets of a rule. To see the targets
+ListRules does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 
 
@@ -794,7 +1199,7 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::ListTagsForRe
 Returns: a L<Paws::CloudWatchEvents::ListTagsForResourceResponse> instance
 
 Displays the tags associated with an EventBridge resource. In
-EventBridge, rules can be tagged.
+EventBridge, rules and event buses can be tagged.
 
 
 =head2 ListTargetsByRule
@@ -832,8 +1237,8 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::PutEvents>
 
 Returns: a L<Paws::CloudWatchEvents::PutEventsResponse> instance
 
-Sends custom events to EventBridge so that they can be matched to
-rules. These events can be from your custom applications and services.
+Sends custom events to Amazon EventBridge so that they can be matched
+to rules.
 
 
 =head2 PutPartnerEvents
@@ -850,26 +1255,24 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::PutPartnerEve
 Returns: a L<Paws::CloudWatchEvents::PutPartnerEventsResponse> instance
 
 This is used by SaaS partners to write events to a customer's partner
-event bus.
-
-AWS customers do not use this operation. Instead, AWS customers can use
-PutEvents to write custom events from their own applications to an
-event bus.
+event bus. AWS customers do not use this operation.
 
 
 =head2 PutPermission
 
 =over
 
-=item Action => Str
-
-=item Principal => Str
-
-=item StatementId => Str
+=item [Action => Str]
 
 =item [Condition => L<Paws::CloudWatchEvents::Condition>]
 
 =item [EventBusName => Str]
+
+=item [Policy => Str]
+
+=item [Principal => Str]
+
+=item [StatementId => Str]
 
 
 =back
@@ -879,14 +1282,15 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::PutPermission
 Returns: nothing
 
 Running C<PutPermission> permits the specified AWS account or AWS
-organization to put events to the specified I<event bus>. Rules in your
-account are triggered by these events arriving to an event bus in your
-account.
+organization to put events to the specified I<event bus>. Amazon
+EventBridge (CloudWatch Events) rules in your account are triggered by
+these events arriving to an event bus in your account.
 
 For another account to send events to your account, that external
-account must have a rule with your account's event bus as a target.
+account must have an EventBridge rule with your account's event bus as
+a target.
 
-To enable multiple AWS accounts to put events to an event bus, run
+To enable multiple AWS accounts to put events to your event bus, run
 C<PutPermission> once for each of these accounts. Or, if all the
 accounts are members of the same AWS organization, you can run
 C<PutPermission> once specifying C<Principal> as "*" and specifying the
@@ -900,7 +1304,8 @@ more information, see Sending and Receiving Events Between AWS Accounts
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
 in the I<Amazon EventBridge User Guide>.
 
-The permission policy on an event bus can't exceed 10 KB in size.
+The permission policy on the default event bus cannot exceed 10 KB in
+size.
 
 
 =head2 PutRule
@@ -930,7 +1335,7 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::PutRule>
 
 Returns: a L<Paws::CloudWatchEvents::PutRuleResponse> instance
 
-Creates or updates the specified rule. Rules are enabled by default or
+Creates or updates the specified rule. Rules are enabled by default, or
 based on value of the state. You can disable a rule using DisableRule.
 
 A single rule watches for events from a single event bus. Events
@@ -941,21 +1346,21 @@ services, you can specify whether their events go to your default event
 bus or a custom event bus that you have created. For more information,
 see CreateEventBus.
 
-If you're updating an existing rule, the rule is replaced with what you
-specify in this C<PutRule> command. If you omit arguments in
-C<PutRule>, the old values for those arguments aren't kept. Instead,
-they're replaced with null values.
+If you are updating an existing rule, the rule is replaced with what
+you specify in this C<PutRule> command. If you omit arguments in
+C<PutRule>, the old values for those arguments are not kept. Instead,
+they are replaced with null values.
 
 When you create or update a rule, incoming events might not immediately
 start matching to new or updated rules. Allow a short period of time
 for changes to take effect.
 
-A rule must contain at least an C<EventPattern> or
-C<ScheduleExpression>. Rules with C<EventPatterns> are triggered when a
-matching event is observed. Rules with C<ScheduleExpressions>
-self-trigger based on the given schedule. A rule can have both an
-C<EventPattern> and a C<ScheduleExpression>, in which case the rule
-triggers on matching events as well as on a schedule.
+A rule must contain at least an EventPattern or ScheduleExpression.
+Rules with EventPatterns are triggered when a matching event is
+observed. Rules with ScheduleExpressions self-trigger based on the
+given schedule. A rule can have both an EventPattern and a
+ScheduleExpression, in which case the rule triggers on matching events
+as well as on a schedule.
 
 When you initially create a rule, you can optionally assign one or more
 tags to the rule. Tags can help you organize and categorize your
@@ -968,21 +1373,21 @@ If you are updating an existing rule, any tags you specify in the
 C<PutRule> operation are ignored. To update the tags of an existing
 rule, use TagResource and UntagResource.
 
-Most services in AWS treat C<:> or C</> as the same character in Amazon
+Most services in AWS treat : or / as the same character in Amazon
 Resource Names (ARNs). However, EventBridge uses an exact match in
 event patterns and rules. Be sure to use the correct ARN characters
 when creating event patterns so that they match the ARN syntax in the
-event that you want to match.
+event you want to match.
 
-In EventBridge, you could create rules that lead to infinite loops,
-where a rule is fired repeatedly. For example, a rule might detect that
-ACLs have changed on an S3 bucket, and trigger software to change them
-to the desired state. If you don't write the rule carefully, the
-subsequent change to the ACLs fires the rule again, creating an
+In EventBridge, it is possible to create rules that lead to infinite
+loops, where a rule is fired repeatedly. For example, a rule might
+detect that ACLs have changed on an S3 bucket, and trigger software to
+change them to the desired state. If the rule is not written carefully,
+the subsequent change to the ACLs fires the rule again, creating an
 infinite loop.
 
-To prevent this, write the rules so that the triggered actions don't
-refire the same rule. For example, your rule could fire only if ACLs
+To prevent this, write the rules so that the triggered actions do not
+re-fire the same rule. For example, your rule could fire only if ACLs
 are found to be in a bad state, instead of after any change.
 
 An infinite loop can quickly cause higher than expected charges. We
@@ -1010,11 +1415,11 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::PutTargets>
 Returns: a L<Paws::CloudWatchEvents::PutTargetsResponse> instance
 
 Adds the specified targets to the specified rule, or updates the
-targets if they're already associated with the rule.
+targets if they are already associated with the rule.
 
 Targets are the resources that are invoked when a rule is triggered.
 
-You can configure the following as targets in EventBridge:
+You can configure the following as targets for Events:
 
 =over
 
@@ -1078,9 +1483,25 @@ Amazon SQS queues, including FIFO queues
 
 The default event bus of another AWS account
 
+=item *
+
+Amazon API Gateway REST APIs
+
+=item *
+
+Redshift Clusters to invoke Data API ExecuteStatement on
+
+=item *
+
+Custom/SaaS HTTPS APIs via EventBridge API Destinations
+
+=item *
+
+Amazon SageMaker Model Building Pipelines
+
 =back
 
-Creating rules with built-in targets is supported only on the AWS
+Creating rules with built-in targets is supported only in the AWS
 Management Console. The built-in targets are C<EC2 CreateSnapshot API
 call>, C<EC2 RebootInstances API call>, C<EC2 StopInstances API call>,
 and C<EC2 TerminateInstances API call>.
@@ -1092,30 +1513,34 @@ argument. To invoke a command on multiple EC2 instances with one rule,
 you can use the C<RunCommandParameters> field.
 
 To be able to make API calls against the resources that you own, Amazon
-EventBridge needs the appropriate permissions. For AWS Lambda and
-Amazon SNS resources, EventBridge relies on resource-based policies.
-For EC2 instances, Kinesis data streams, and AWS Step Functions state
-machines, EventBridge relies on IAM roles that you specify in the
-C<RoleARN> argument in C<PutTargets>. For more information, see
-Authentication and Access Control
+EventBridge (CloudWatch Events) needs the appropriate permissions. For
+AWS Lambda and Amazon SNS resources, EventBridge relies on
+resource-based policies. For EC2 instances, Kinesis data streams, AWS
+Step Functions state machines and API Gateway REST APIs, EventBridge
+relies on IAM roles that you specify in the C<RoleARN> argument in
+C<PutTargets>. For more information, see Authentication and Access
+Control
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html)
 in the I<Amazon EventBridge User Guide>.
 
-If another AWS account is in the same Region and has granted you
+If another AWS account is in the same region and has granted you
 permission (using C<PutPermission>), you can send events to that
 account. Set that account's event bus as a target of the rules in your
 account. To send the matched events to the other account, specify that
 account's event bus as the C<Arn> value when you run C<PutTargets>. If
 your account sends events to another account, your account is charged
 for each sent event. Each event sent to another account is charged as a
-custom event. The account receiving the event isn't charged. For more
-information, see Amazon EventBridge Pricing
+custom event. The account receiving the event is not charged. For more
+information, see Amazon EventBridge (CloudWatch Events) Pricing
 (https://aws.amazon.com/eventbridge/pricing/).
 
-If you're setting an event bus in another account as the target and
+C<Input>, C<InputPath>, and C<InputTransformer> are not available with
+C<PutTarget> if the target is an event bus of a different AWS account.
+
+If you are setting the event bus of another account as the target, and
 that account granted permission to your account through an organization
-instead of directly by the account ID, you must specify a C<RoleArn>
-with proper permissions in the C<Target> structure. For more
+instead of directly by the account ID, then you must specify a
+C<RoleArn> with proper permissions in the C<Target> structure. For more
 information, see Sending and Receiving Events Between AWS Accounts
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
 in the I<Amazon EventBridge User Guide>.
@@ -1123,7 +1548,7 @@ in the I<Amazon EventBridge User Guide>.
 For more information about enabling cross-account events, see
 PutPermission.
 
-C<Input>, C<InputPath>, and C<InputTransformer> are mutually exclusive
+B<Input>, B<InputPath>, and B<InputTransformer> are mutually exclusive
 and optional parameters of a target. When a rule is triggered due to a
 matched event:
 
@@ -1131,28 +1556,28 @@ matched event:
 
 =item *
 
-If none of the following arguments are specified for a target, the
+If none of the following arguments are specified for a target, then the
 entire event is passed to the target in JSON format (unless the target
 is Amazon EC2 Run Command or Amazon ECS task, in which case nothing
 from the event is passed to the target).
 
 =item *
 
-If C<Input> is specified in the form of valid JSON, then the matched
+If B<Input> is specified in the form of valid JSON, then the matched
 event is overridden with this constant.
 
 =item *
 
-If C<InputPath> is specified in the form of JSONPath (for example,
-C<$.detail>), only the part of the event specified in the path is
+If B<InputPath> is specified in the form of JSONPath (for example,
+C<$.detail>), then only the part of the event specified in the path is
 passed to the target (for example, only the detail part of the event is
 passed).
 
 =item *
 
-If C<InputTransformer> is specified, one or more specified JSONPaths
-are extracted from the event and used as values in a template that you
-specify as the input to the target.
+If B<InputTransformer> is specified, then one or more specified
+JSONPaths are extracted from the event and used as values in a template
+that you specify as the input to the target.
 
 =back
 
@@ -1164,8 +1589,8 @@ after, new or updated targets might not be immediately invoked. Allow a
 short period of time for changes to take effect.
 
 This action can partially fail if too many requests are made at the
-same time. If that happens, C<FailedEntryCount> is nonzero in the
-response, and each entry in C<FailedEntries> provides the ID of the
+same time. If that happens, C<FailedEntryCount> is non-zero in the
+response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
@@ -1173,9 +1598,11 @@ failed target and the error code.
 
 =over
 
-=item StatementId => Str
-
 =item [EventBusName => Str]
+
+=item [RemoveAllPermissions => Bool]
+
+=item [StatementId => Str]
 
 
 =back
@@ -1223,6 +1650,41 @@ response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
+=head2 StartReplay
+
+=over
+
+=item Destination => L<Paws::CloudWatchEvents::ReplayDestination>
+
+=item EventEndTime => Str
+
+=item EventSourceArn => Str
+
+=item EventStartTime => Str
+
+=item ReplayName => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::StartReplay>
+
+Returns: a L<Paws::CloudWatchEvents::StartReplayResponse> instance
+
+Starts the specified replay. Events are not necessarily replayed in the
+exact same order that they were added to the archive. A replay
+processes events to replay based on the time in the event, and replays
+them using 1 minute intervals. If you specify an C<EventStartTime> and
+an C<EventEndTime> that covers a 20 minute time range, the events are
+replayed from the first minute of that 20 minute range first. Then the
+events from the second minute are replayed. You can use
+C<DescribeReplay> to determine the progress of a replay. The value
+returned for C<EventLastReplayedTime> indicates the time within the
+specified time range associated with the last event replayed.
+
+
 =head2 TagResource
 
 =over
@@ -1242,15 +1704,15 @@ Assigns one or more tags (key-value pairs) to the specified EventBridge
 resource. Tags can help you organize and categorize your resources. You
 can also use them to scope user permissions by granting a user
 permission to access or change only resources with certain tag values.
-In EventBridge, rules can be tagged.
+In EventBridge, rules and event buses can be tagged.
 
 Tags don't have any semantic meaning to AWS and are interpreted
 strictly as strings of characters.
 
-You can use the C<TagResource> action with a rule that already has
-tags. If you specify a new tag key for the rule, this tag is appended
-to the list of tags associated with the rule. If you specify a tag key
-that is already associated with the rule, the new tag value that you
+You can use the C<TagResource> action with a resource that already has
+tags. If you specify a new tag key, this tag is appended to the list of
+tags associated with the resource. If you specify a tag key that is
+already associated with the resource, the new tag value that you
 specify replaces the previous value for that tag.
 
 You can associate as many as 50 tags with a resource.
@@ -1273,11 +1735,11 @@ Returns: a L<Paws::CloudWatchEvents::TestEventPatternResponse> instance
 
 Tests whether the specified event pattern matches the provided event.
 
-Most services in AWS treat C<:> or C</> as the same character in Amazon
+Most services in AWS treat : or / as the same character in Amazon
 Resource Names (ARNs). However, EventBridge uses an exact match in
 event patterns and rules. Be sure to use the correct ARN characters
 when creating event patterns so that they match the ARN syntax in the
-event that you want to match.
+event you want to match.
 
 
 =head2 UntagResource
@@ -1296,7 +1758,78 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::UntagResource
 Returns: a L<Paws::CloudWatchEvents::UntagResourceResponse> instance
 
 Removes one or more tags from the specified EventBridge resource. In
-EventBridge, rules can be tagged.
+Amazon EventBridge (CloudWatch Events, rules and event buses can be
+tagged.
+
+
+=head2 UpdateApiDestination
+
+=over
+
+=item Name => Str
+
+=item [ConnectionArn => Str]
+
+=item [Description => Str]
+
+=item [HttpMethod => Str]
+
+=item [InvocationEndpoint => Str]
+
+=item [InvocationRateLimitPerSecond => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::UpdateApiDestination>
+
+Returns: a L<Paws::CloudWatchEvents::UpdateApiDestinationResponse> instance
+
+Updates an API destination.
+
+
+=head2 UpdateArchive
+
+=over
+
+=item ArchiveName => Str
+
+=item [Description => Str]
+
+=item [EventPattern => Str]
+
+=item [RetentionDays => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::UpdateArchive>
+
+Returns: a L<Paws::CloudWatchEvents::UpdateArchiveResponse> instance
+
+Updates the specified archive.
+
+
+=head2 UpdateConnection
+
+=over
+
+=item Name => Str
+
+=item [AuthorizationType => Str]
+
+=item [AuthParameters => L<Paws::CloudWatchEvents::UpdateConnectionAuthRequestParameters>]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::UpdateConnection>
+
+Returns: a L<Paws::CloudWatchEvents::UpdateConnectionResponse> instance
+
+Updates settings for a connection.
 
 
 
