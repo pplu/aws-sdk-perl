@@ -18,6 +18,7 @@ package Paws::RDS::CreateDBInstance;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EnableCustomerOwnedIp => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -31,6 +32,7 @@ package Paws::RDS::CreateDBInstance;
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
+  has NcharCharacterSetName => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -83,6 +85,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'MasterUsername'       => 'MyUser'
     );
 
+    # Results:
+    my $DBInstance = $CreateDBInstanceResult->DBInstance;
+
+    # Returns a L<Paws::RDS::CreateDBInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBInstance>
@@ -278,8 +284,8 @@ If you're creating a DB instance in an RDS on VMware environment,
 specify the identifier of the custom Availability Zone to create the DB
 instance in.
 
-For more information about RDS on VMware, see the I<RDS on VMware User
-Guide.>
+For more information about RDS on VMware, see the RDS on VMware User
+Guide.
 (https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
@@ -307,7 +313,7 @@ Must be a value from 0 to 35
 
 =item *
 
-Can't be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to read replicas
 
 =back
 
@@ -404,6 +410,11 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
+Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
+
+=item *
+
 Can't be a word reserved by the specified database engine
 
 =back
@@ -424,6 +435,11 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
+Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
+
+=item *
+
 Can't be a word reserved by the specified database engine
 
 =back
@@ -431,8 +447,8 @@ Can't be a word reserved by the specified database engine
 B<PostgreSQL>
 
 The name of the database to create when the DB instance is created. If
-this parameter isn't specified, the default "postgres" database is
-created in the DB instance.
+this parameter isn't specified, a database named C<postgres> is created
+in the DB instance.
 
 Constraints:
 
@@ -444,8 +460,8 @@ Must contain 1 to 63 letters, numbers, or underscores.
 
 =item *
 
-Must begin with a letter or an underscore. Subsequent characters can be
-letters, underscores, or digits (0-9).
+Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
 
 =item *
 
@@ -475,11 +491,12 @@ B<SQL Server>
 
 Not applicable. Must be null.
 
-B<Amazon Aurora>
+B<Amazon Aurora MySQL>
 
-The name of the database to create when the primary instance of the DB
-cluster is created. If this parameter isn't specified, no database is
-created in the DB instance.
+The name of the database to create when the primary DB instance of the
+Aurora MySQL DB cluster is created. If this parameter isn't specified
+for an Aurora MySQL DB cluster, no database is created in the DB
+cluster.
 
 Constraints:
 
@@ -487,11 +504,37 @@ Constraints:
 
 =item *
 
-Must contain 1 to 64 letters or numbers.
+It must contain 1 to 64 alphanumeric characters.
 
 =item *
 
-Can't be a word reserved by the specified database engine
+It can't be a word reserved by the database engine.
+
+=back
+
+B<Amazon Aurora PostgreSQL>
+
+The name of the database to create when the primary DB instance of the
+Aurora PostgreSQL DB cluster is created. If this parameter isn't
+specified for an Aurora PostgreSQL DB cluster, a database named
+C<postgres> is created in the DB cluster.
+
+Constraints:
+
+=over
+
+=item *
+
+It must contain 1 to 63 alphanumeric characters.
+
+=item *
+
+It must begin with a letter or an underscore. Subsequent characters can
+be letters, underscores, or digits (0 to 9).
+
+=item *
+
+It can't be a word reserved by the database engine.
 
 =back
 
@@ -561,21 +604,11 @@ for the DB cluster.
 =head2 Domain => Str
 
 The Active Directory directory ID to create the DB instance in.
-Currently, only Microsoft SQL Server and Oracle DB instances can be
-created in an Active Directory Domain.
+Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+instances can be created in an Active Directory Domain.
 
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see Using Windows Authentication with an Amazon
-RDS DB Instance Running Microsoft SQL Server
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
-in the I<Amazon RDS User Guide>.
-
-For Oracle DB instance, Amazon RDS can use Kerberos Authentication to
-authenticate users that connect to the DB instance. For more
-information, see Using Kerberos Authentication with Amazon RDS for
-Oracle
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/kerberos-authentication.html)
 in the I<Amazon RDS User Guide>.
 
 
@@ -596,6 +629,52 @@ CloudWatch Logs
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Relational Database Service User Guide>.
 
+B<Amazon Aurora>
+
+Not applicable. CloudWatch Logs exports are managed by the DB cluster.
+
+B<MariaDB>
+
+Possible values are C<audit>, C<error>, C<general>, and C<slowquery>.
+
+B<Microsoft SQL Server>
+
+Possible values are C<agent> and C<error>.
+
+B<MySQL>
+
+Possible values are C<audit>, C<error>, C<general>, and C<slowquery>.
+
+B<Oracle>
+
+Possible values are C<alert>, C<audit>, C<listener>, C<trace>, and
+C<oemagent>.
+
+B<PostgreSQL>
+
+Possible values are C<postgresql> and C<upgrade>.
+
+
+
+=head2 EnableCustomerOwnedIp => Bool
+
+A value that indicates whether to enable a customer-owned IP address
+(CoIP) for an RDS on Outposts DB instance.
+
+A I<CoIP> provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see Working with Amazon RDS
+on AWS Outposts
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+in the I<Amazon RDS User Guide>.
+
+For more information about CoIPs, see Customer-owned IP addresses
+(https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+in the I<AWS Outposts User Guide>.
+
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
@@ -604,49 +683,8 @@ A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
-You can enable IAM database authentication for the following database
-engines:
-
-B<Amazon Aurora>
-
-Not applicable. Mapping AWS IAM accounts to database accounts is
-managed by the DB cluster.
-
-B<MySQL>
-
-=over
-
-=item *
-
-For MySQL 5.6, minor version 5.6.34 or higher
-
-=item *
-
-For MySQL 5.7, minor version 5.7.16 or higher
-
-=item *
-
-For MySQL 8.0, minor version 8.0.16 or higher
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item *
-
-For PostgreSQL 9.5, minor version 9.5.15 or higher
-
-=item *
-
-For PostgreSQL 9.6, minor version 9.6.11 or higher
-
-=item *
-
-PostgreSQL 10.6, 10.7, and 10.9
-
-=back
+This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts
+to database accounts is managed by the DB cluster.
 
 For more information, see IAM Database Authentication for MySQL and
 PostgreSQL
@@ -761,8 +799,8 @@ in the I<Amazon RDS User Guide.>
 
 B<Microsoft SQL Server>
 
-See Version and Feature Support on Amazon RDS
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport)
+See Microsoft SQL Server Versions on Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport)
 in the I<Amazon RDS User Guide.>
 
 B<MySQL>
@@ -779,8 +817,8 @@ in the I<Amazon RDS User Guide.>
 
 B<PostgreSQL>
 
-See Supported PostgreSQL Database Versions
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
+See Amazon RDS for PostgreSQL versions and extensions
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts)
 in the I<Amazon RDS User Guide.>
 
 
@@ -805,22 +843,19 @@ instance. For SQL Server DB instances, must be a multiple between 1 and
 
 The AWS KMS key identifier for an encrypted DB instance.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB instance with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-instance, then you can use the KMS key alias instead of the ARN for the
-KM encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 B<Amazon Aurora>
 
-Not applicable. The KMS key identifier is managed by the DB cluster.
-For more information, see C<CreateDBCluster>.
+Not applicable. The AWS KMS key identifier is managed by the DB
+cluster. For more information, see C<CreateDBCluster>.
 
 If C<StorageEncrypted> is enabled, and you do not specify a value for
-the C<KmsKeyId> parameter, then Amazon RDS will use your default
-encryption key. AWS KMS creates the default encryption key for your AWS
-account. Your AWS account has a different default encryption key for
-each AWS Region.
+the C<KmsKeyId> parameter, then Amazon RDS uses your default CMK. There
+is a default CMK for your AWS account. Your AWS account has a different
+default CMK for each AWS Region.
 
 
 
@@ -998,6 +1033,12 @@ Constraints: Must contain from 8 to 128 characters.
 The upper limit to which Amazon RDS can automatically scale the storage
 of the DB instance.
 
+For more information about this setting, including limitations that
+apply to it, see Managing capacity automatically with Amazon RDS
+storage autoscaling
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+in the I<Amazon RDS User Guide>.
+
 
 
 =head2 MonitoringInterval => Int
@@ -1035,10 +1076,16 @@ instance is a Multi-AZ deployment.
 
 
 
+=head2 NcharCharacterSetName => Str
+
+The name of the NCHAR character set for the Oracle DB instance.
+
+
+
 =head2 OptionGroupName => Str
 
-Indicates that the DB instance should be associated with the specified
-option group.
+A value that indicates that the DB instance should be associated with
+the specified option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group. Also, that option group
@@ -1050,13 +1097,14 @@ instance
 =head2 PerformanceInsightsKMSKeyId => Str
 
 The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
-or the KMS key alias for the KMS encryption key.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
-Amazon RDS uses your default encryption key. AWS KMS creates the
-default encryption key for your AWS account. Your AWS account has a
-different default encryption key for each AWS Region.
+Amazon RDS uses your default CMK. There is a default CMK for your AWS
+account. Your AWS account has a different default CMK for each AWS
+Region.
 
 
 
@@ -1075,7 +1123,7 @@ B<MySQL>
 
 Default: C<3306>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 Type: Integer
 
@@ -1083,7 +1131,7 @@ B<MariaDB>
 
 Default: C<3306>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 Type: Integer
 
@@ -1091,7 +1139,7 @@ B<PostgreSQL>
 
 Default: C<5432>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 Type: Integer
 
@@ -1099,20 +1147,20 @@ B<Oracle>
 
 Default: C<1521>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 B<SQL Server>
 
 Default: C<1433>
 
-Valid Values: C<1150-65535> except for C<1434>, C<3389>, C<47001>,
-C<49152>, and C<49152> through C<49156>.
+Valid values: C<1150-65535> except C<1234>, C<1434>, C<3260>, C<3343>,
+C<3389>, C<47001>, and C<49152-49156>.
 
 B<Amazon Aurora>
 
 Default: C<3306>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 Type: Integer
 
@@ -1122,7 +1170,9 @@ Type: Integer
 
 The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
-parameter. For more information, see The Backup Window
+parameter. The default is a 30-minute window selected at random from an
+8-hour block of time for each AWS Region. For more information, see
+Backup window
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 in the I<Amazon RDS User Guide>.
 
@@ -1130,12 +1180,6 @@ B<Amazon Aurora>
 
 Not applicable. The daily time range for creating automated backups is
 managed by the DB cluster.
-
-The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred DB Instance Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
-in the I<Amazon RDS User Guide>.
 
 Constraints:
 
@@ -1206,11 +1250,16 @@ Valid Values: 0 - 15
 =head2 PubliclyAccessible => Bool
 
 A value that indicates whether the DB instance is publicly accessible.
-When the DB instance is publicly accessible, it is an Internet-facing
-instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance isn't publicly accessible, it
-is an internal instance with a DNS name that resolves to a private IP
-address.
+
+When the DB instance is publicly accessible, its DNS endpoint resolves
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
+DB instance is ultimately controlled by the security group it uses, and
+that public access is not permitted if the security group assigned to
+the DB instance doesn't permit it.
+
+When the DB instance isn't publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.
 
 Default: The default behavior varies depending on whether
 C<DBSubnetGroupName> is specified.

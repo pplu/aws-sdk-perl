@@ -45,8 +45,8 @@ pair.
 A key is the required name of the tag. The string value can be from 1
 to 128 Unicode characters in length and can't be prefixed with "aws:"
 or "rds:". The string can only contain only the set of Unicode letters,
-digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java
+regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$").
 
 
 =head2 Value => Str
@@ -54,8 +54,8 @@ digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
 A value is the optional value of the tag. The string value can be from
 1 to 256 Unicode characters in length and can't be prefixed with "aws:"
 or "rds:". The string can only contain only the set of Unicode letters,
-digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java
+regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$").
 
 
 

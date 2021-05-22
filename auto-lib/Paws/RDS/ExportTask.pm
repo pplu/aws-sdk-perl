@@ -37,23 +37,25 @@ The data exported from the snapshot. Valid values are the following:
 
 =item *
 
-C<database> - Export all the data of the snapshot.
+C<database> - Export all the data from a specified database.
 
 =item *
 
-C<database.table [table-name]> - Export a table of the snapshot.
+C<database.table> I<table-name> - Export a table of the snapshot. This
+format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora
+MySQL.
 
 =item *
 
-C<database.schema [schema-name]> - Export a database schema of the
-snapshot. This value isn't valid for RDS for MySQL, RDS for MariaDB, or
-Aurora MySQL.
+C<database.schema> I<schema-name> - Export a database schema of the
+snapshot. This format is valid only for RDS for PostgreSQL and Aurora
+PostgreSQL.
 
 =item *
 
-C<database.schema.table [table-name]> - Export a table of the database
-schema. This value isn't valid for RDS for MySQL, RDS for MariaDB, or
-Aurora MySQL.
+C<database.schema.table> I<table-name> - Export a table of the database
+schema. This format is valid only for RDS for PostgreSQL and Aurora
+PostgreSQL.
 
 =back
 
@@ -78,11 +80,11 @@ exporting a snapshot.
 
 =head2 KmsKeyId => Str
 
-The ID of the AWS KMS key that is used to encrypt the snapshot when
-it's exported to Amazon S3. The KMS key ID is the Amazon Resource Name
-(ARN), the KMS key identifier, or the KMS key alias for the KMS
-encryption key. The IAM role used for the snapshot export must have
-encryption and decryption permissions to use this KMS key.
+The key identifier of the AWS KMS customer master key (CMK) that is
+used to encrypt the snapshot when it's exported to Amazon S3. The AWS
+KMS CMK identifier is its key ARN, key ID, alias ARN, or alias name.
+The IAM role used for the snapshot export must have encryption and
+decryption permissions to use this AWS KMS CMK.
 
 
 =head2 PercentProgress => Int

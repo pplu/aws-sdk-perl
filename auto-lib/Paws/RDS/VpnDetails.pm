@@ -41,8 +41,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::VpnDet
 Information about the virtual private network (VPN) between the VMware
 vSphere cluster and the AWS website.
 
-For more information about RDS on VMware, see the I<RDS on VMware User
-Guide.>
+For more information about RDS on VMware, see the RDS on VMware User
+Guide.
 (https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 =head1 ATTRIBUTES

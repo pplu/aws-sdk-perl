@@ -112,11 +112,10 @@ safeguard any sensitive information that appears in the logs.
 
 The kinds of databases that the proxy can connect to. This value
 determines which database network protocol the proxy recognizes when it
-interprets network traffic to and from the database. Currently, this
-value is always C<MYSQL>. The engine family applies to both RDS MySQL
-and Aurora MySQL.
+interprets network traffic to and from the database. The engine family
+applies to MySQL and PostgreSQL for both RDS and Aurora.
 
-Valid values are: C<"MYSQL">
+Valid values are: C<"MYSQL">, C<"POSTGRESQL">
 
 =head2 IdleClientTimeout => Int
 

@@ -12,8 +12,11 @@ package Paws::RDS::DBEngineVersion;
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
   has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedFeatureNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SupportedNcharCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
   has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
+  has SupportsGlobalDatabases => (is => 'ro', isa => 'Bool');
   has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
+  has SupportsParallelQuery => (is => 'ro', isa => 'Bool');
   has SupportsReadReplica => (is => 'ro', isa => 'Bool');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
 
@@ -100,7 +103,7 @@ C<deprecated>.
 =head2 SupportedCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
 
 A list of the character sets supported by this engine for the
-C<CharacterSetName> parameter of the C<CreateDBInstance> action.
+C<CharacterSetName> parameter of the C<CreateDBInstance> operation.
 
 
 =head2 SupportedEngineModes => ArrayRef[Str|Undef]
@@ -123,10 +126,23 @@ s3Import
 
 
 
+=head2 SupportedNcharCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
+
+A list of the character sets supported by the Oracle DB engine for the
+C<NcharCharacterSetName> parameter of the C<CreateDBInstance>
+operation.
+
+
 =head2 SupportedTimezones => ArrayRef[L<Paws::RDS::Timezone>]
 
 A list of the time zones supported by this engine for the C<Timezone>
 parameter of the C<CreateDBInstance> action.
+
+
+=head2 SupportsGlobalDatabases => Bool
+
+A value that indicates whether you can use Aurora global databases with
+a specific DB engine version.
 
 
 =head2 SupportsLogExportsToCloudwatchLogs => Bool
@@ -135,9 +151,15 @@ A value that indicates whether the engine version supports exporting
 the log types specified by ExportableLogTypes to CloudWatch Logs.
 
 
+=head2 SupportsParallelQuery => Bool
+
+A value that indicates whether you can use Aurora parallel query with a
+specific DB engine version.
+
+
 =head2 SupportsReadReplica => Bool
 
-Indicates whether the database engine version supports Read Replicas.
+Indicates whether the database engine version supports read replicas.
 
 
 =head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]

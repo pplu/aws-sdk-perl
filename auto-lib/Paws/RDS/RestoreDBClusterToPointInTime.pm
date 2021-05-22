@@ -55,6 +55,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'SourceDBClusterIdentifier' => 'sample-cluster1'
       );
 
+    # Results:
+    my $DBCluster = $RestoreDBClusterToPointInTimeResult->DBCluster;
+
+    # Returns a L<Paws::RDS::RestoreDBClusterToPointInTimeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBClusterToPointInTime>
@@ -66,6 +70,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
+
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 
 Default: 0
 
@@ -174,9 +180,8 @@ The domain must be created prior to this operation.
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster.
-For more information, see Using Kerberos Authentication for Aurora
-MySQL
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -216,16 +221,14 @@ in the I<Amazon Aurora User Guide.>
 The AWS KMS key identifier to use when restoring an encrypted DB
 cluster from an encrypted DB cluster.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KMS encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 You can restore to a new DB cluster and encrypt the new DB cluster with
-a KMS key that is different than the KMS key used to encrypt the source
-DB cluster. The new DB cluster is encrypted with the KMS key identified
-by the C<KmsKeyId> parameter.
+a AWS KMS CMK that is different than the AWS KMS key used to encrypt
+the source DB cluster. The new DB cluster is encrypted with the AWS KMS
+CMK identified by the C<KmsKeyId> parameter.
 
 If you don't specify a value for the C<KmsKeyId> parameter, then the
 following occurs:
@@ -235,7 +238,7 @@ following occurs:
 =item *
 
 If the DB cluster is encrypted, then the restored DB cluster is
-encrypted using the KMS key that was used to encrypt the source DB
+encrypted using the AWS KMS CMK that was used to encrypt the source DB
 cluster.
 
 =item *

@@ -92,6 +92,8 @@ capacity.
 The time, in seconds, before an Aurora DB cluster in C<serverless> mode
 is paused.
 
+Specify a value between 300 and 86,400 seconds.
+
 
 =head2 TimeoutAction => Str
 

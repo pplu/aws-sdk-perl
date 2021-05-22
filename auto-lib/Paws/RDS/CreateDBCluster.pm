@@ -14,6 +14,7 @@ package Paws::RDS::CreateDBCluster;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EnableGlobalWriteForwarding => (is => 'ro', isa => 'Bool');
   has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -74,6 +75,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'StorageEncrypted'            => 1
     );
 
+    # Results:
+    my $DBCluster = $CreateDBClusterResult->DBCluster;
+
+    # Returns a L<Paws::RDS::CreateDBClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBCluster>
@@ -95,6 +100,8 @@ in the I<Amazon Aurora User Guide>.
 
 The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
+
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 
 Default: 0
 
@@ -225,9 +232,8 @@ The Active Directory directory ID to create the DB cluster in.
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster.
-For more information, see Using Kerberos Authentication for Aurora
-MySQL
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -247,6 +253,31 @@ used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Aurora User Guide>.
+
+B<Aurora MySQL>
+
+Possible values are C<audit>, C<error>, C<general>, and C<slowquery>.
+
+B<Aurora PostgreSQL>
+
+Possible value is C<postgresql>.
+
+
+
+=head2 EnableGlobalWriteForwarding => Bool
+
+A value that indicates whether to enable this DB cluster to forward
+write operations to the primary cluster of an Aurora global database
+(GlobalCluster). By default, write operations are not allowed on Aurora
+DB clusters that are secondary clusters in an Aurora global database.
+
+You can set this value only on Aurora DB clusters that are members of
+an Aurora global database. With this parameter enabled, a secondary
+cluster can forward writes to the current primary cluster and the
+resulting changes are replicated back to this cluster. For the primary
+DB cluster of an Aurora global database, this value is used immediately
+if the primary is demoted by the FailoverGlobalCluster API operation,
+but it does nothing until then.
 
 
 
@@ -294,6 +325,21 @@ C<aurora-postgresql>
 The DB engine mode of the DB cluster, either C<provisioned>,
 C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
 
+The C<parallelquery> engine mode isn't required for Aurora MySQL
+version 1.23 and higher 1.x versions, and version 2.09 and higher 2.x
+versions.
+
+The C<global> engine mode isn't required for Aurora MySQL version 1.22
+and higher 1.x versions, and C<global> engine mode isn't required for
+any 2.x versions.
+
+The C<multimaster> engine mode only applies for DB clusters created
+with Aurora MySQL version 5.6.10a.
+
+For Aurora PostgreSQL, the C<global> engine mode isn't required, and
+both the C<parallelquery> and the C<multimaster> engine modes currently
+aren't supported.
+
 Limitations and requirements apply to some DB engine modes. For more
 information, see the following sections in the I<Amazon Aurora User
 Guide>:
@@ -312,7 +358,7 @@ Limitations of Parallel Query
 
 =item *
 
-Requirements for Aurora Global Databases
+Limitations of Aurora Global Databases
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
 
 =item *
@@ -369,37 +415,35 @@ cluster in the new global database cluster.
 
 The AWS KMS key identifier for an encrypted DB cluster.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KMS encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
-If an encryption key isn't specified in C<KmsKeyId>:
+When a CMK isn't specified in C<KmsKeyId>:
 
 =over
 
 =item *
 
 If C<ReplicationSourceIdentifier> identifies an encrypted source, then
-Amazon RDS will use the encryption key used to encrypt the source.
-Otherwise, Amazon RDS will use your default encryption key.
+Amazon RDS will use the CMK used to encrypt the source. Otherwise,
+Amazon RDS will use your default CMK.
 
 =item *
 
 If the C<StorageEncrypted> parameter is enabled and
 C<ReplicationSourceIdentifier> isn't specified, then Amazon RDS will
-use your default encryption key.
+use your default CMK.
 
 =back
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
+There is a default CMK for your AWS account. Your AWS account has a
+different default CMK for each AWS Region.
 
-If you create a Read Replica of an encrypted DB cluster in another AWS
-Region, you must set C<KmsKeyId> to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the Read Replica in
-that AWS Region.
+If you create a read replica of an encrypted DB cluster in another AWS
+Region, you must set C<KmsKeyId> to a AWS KMS key identifier that is
+valid in the destination AWS Region. This CMK is used to encrypt the
+read replica in that AWS Region.
 
 
 
@@ -465,9 +509,9 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred DB Cluster Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+block of time for each AWS Region. To view the time blocks available,
+see Backup window
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -535,14 +579,14 @@ The pre-signed URL request must contain the following parameter values:
 
 C<KmsKeyId> - The AWS KMS key identifier for the key to use to encrypt
 the copy of the DB cluster in the destination AWS Region. This should
-refer to the same KMS key for both the C<CreateDBCluster> action that
-is called in the destination AWS Region, and the action contained in
-the pre-signed URL.
+refer to the same AWS KMS CMK for both the C<CreateDBCluster> action
+that is called in the destination AWS Region, and the action contained
+in the pre-signed URL.
 
 =item *
 
-C<DestinationRegion> - The name of the AWS Region that Aurora Read
-Replica will be created in.
+C<DestinationRegion> - The name of the AWS Region that Aurora read
+replica will be created in.
 
 =item *
 
@@ -573,7 +617,7 @@ operation that can be executed in the source AWS Region.
 =head2 ReplicationSourceIdentifier => Str
 
 The Amazon Resource Name (ARN) of the source DB instance or DB cluster
-if this DB cluster is created as a Read Replica.
+if this DB cluster is created as a read replica.
 
 
 

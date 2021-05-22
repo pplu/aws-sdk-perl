@@ -36,6 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'SubscriptionName' => 'mymysqleventsubscription'
       );
 
+    # Results:
+    my $EventSubscription =
+      $AddSourceIdentifierToSubscriptionResult->EventSubscription;
+
+    # Returns a L<Paws::RDS::AddSourceIdentifierToSubscriptionResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/AddSourceIdentifierToSubscription>
@@ -53,23 +58,33 @@ Constraints:
 
 =item *
 
-If the source type is a DB instance, then a C<DBInstanceIdentifier>
+If the source type is a DB instance, a C<DBInstanceIdentifier> value
 must be supplied.
 
 =item *
 
-If the source type is a DB security group, a C<DBSecurityGroupName>
-must be supplied.
+If the source type is a DB cluster, a C<DBClusterIdentifier> value must
+be supplied.
 
 =item *
 
 If the source type is a DB parameter group, a C<DBParameterGroupName>
+value must be supplied.
+
+=item *
+
+If the source type is a DB security group, a C<DBSecurityGroupName>
+value must be supplied.
+
+=item *
+
+If the source type is a DB snapshot, a C<DBSnapshotIdentifier> value
 must be supplied.
 
 =item *
 
-If the source type is a DB snapshot, a C<DBSnapshotIdentifier> must be
-supplied.
+If the source type is a DB cluster snapshot, a
+C<DBClusterSnapshotIdentifier> value must be supplied.
 
 =back
 

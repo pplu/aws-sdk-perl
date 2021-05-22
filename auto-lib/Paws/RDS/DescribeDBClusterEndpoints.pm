@@ -85,7 +85,7 @@ C<writer>, C<custom>. C<Values> for the
 C<db-cluster-endpoint-custom-type> filter can be one or more of:
 C<reader>, C<any>. C<Values> for the C<db-cluster-endpoint-status>
 filter can be one or more of: C<available>, C<creating>, C<deleting>,
-C<modifying>.
+C<inactive>, C<modifying>.
 
 
 

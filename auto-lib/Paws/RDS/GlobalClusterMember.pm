@@ -2,6 +2,7 @@
 package Paws::RDS::GlobalClusterMember;
   use Moose;
   has DBClusterArn => (is => 'ro', isa => 'Str');
+  has GlobalWriteForwardingStatus => (is => 'ro', isa => 'Str');
   has IsWriter => (is => 'ro', isa => 'Bool');
   has Readers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -44,6 +45,13 @@ clusters associated with an Aurora global database.
 =head2 DBClusterArn => Str
 
 The Amazon Resource Name (ARN) for each Aurora cluster.
+
+
+=head2 GlobalWriteForwardingStatus => Str
+
+Specifies whether a secondary cluster in an Aurora global database has
+write forwarding enabled, not enabled, or is in the process of enabling
+it.
 
 
 =head2 IsWriter => Bool

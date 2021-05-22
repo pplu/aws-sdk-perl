@@ -37,6 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'SkipFinalSnapshot'    => 1
     );
 
+    # Results:
+    my $DBInstance = $DeleteDBInstanceResult->DBInstance;
+
+    # Returns a L<Paws::RDS::DeleteDBInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DeleteDBInstance>
@@ -97,7 +101,7 @@ Can't end with a hyphen or contain two consecutive hyphens.
 
 =item *
 
-Can't be specified when deleting a Read Replica.
+Can't be specified when deleting a read replica.
 
 =back
 
@@ -116,7 +120,7 @@ When a DB instance is in a failure state and has a status of 'failed',
 'incompatible-restore', or 'incompatible-network', it can only be
 deleted when skip is specified.
 
-Specify skip when deleting a Read Replica.
+Specify skip when deleting a read replica.
 
 The FinalDBSnapshotIdentifier parameter must be specified if skip isn't
 specified.

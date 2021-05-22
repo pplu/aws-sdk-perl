@@ -1,7 +1,9 @@
 
 package Paws::RDS::ModifyGlobalCluster;
   use Moose;
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has EngineVersion => (is => 'ro', isa => 'Str');
   has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has NewGlobalClusterIdentifier => (is => 'ro', isa => 'Str');
 
@@ -30,7 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $rds = Paws->service('RDS');
     my $ModifyGlobalClusterResult = $rds->ModifyGlobalCluster(
+      AllowMajorVersionUpgrade   => 1,             # OPTIONAL
       DeletionProtection         => 1,             # OPTIONAL
+      EngineVersion              => 'MyString',    # OPTIONAL
       GlobalClusterIdentifier    => 'MyString',    # OPTIONAL
       NewGlobalClusterIdentifier => 'MyString',    # OPTIONAL
     );
@@ -46,11 +50,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
+=head2 AllowMajorVersionUpgrade => Bool
+
+A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the C<EngineVersion> parameter that is a different major
+version than the DB cluster's current version.
+
+If you upgrade the major version of a global database, the cluster and
+DB instance parameter groups are set to the default parameter groups
+for the new version. Apply any custom parameter groups after completing
+the upgrade.
+
+
+
 =head2 DeletionProtection => Bool
 
 Indicates if the global database cluster has deletion protection
 enabled. The global database cluster can't be deleted when deletion
 protection is enabled.
+
+
+
+=head2 EngineVersion => Str
+
+The version number of the database engine to which you want to upgrade.
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless C<ApplyImmediately> is
+enabled.
+
+To list all of the available engine versions for C<aurora> (for MySQL
+5.6-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora --query
+'*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'>
+
+To list all of the available engine versions for C<aurora-mysql> (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-mysql --query
+'*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'>
+
+To list all of the available engine versions for C<aurora-postgresql>,
+use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-postgresql
+--query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'>
 
 
 

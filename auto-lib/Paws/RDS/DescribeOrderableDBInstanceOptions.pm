@@ -1,6 +1,7 @@
 
 package Paws::RDS::DescribeOrderableDBInstanceOptions;
   use Moose;
+  has AvailabilityZoneGroup => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -54,6 +55,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
+=head2 AvailabilityZoneGroup => Str
+
+The Availability Zone group associated with a Local Zone. Specify this
+parameter to retrieve available offerings for the Local Zones in the
+group.
+
+Omit this parameter to show the available offerings in the specified
+AWS Region.
+
+
+
 =head2 DBInstanceClass => Str
 
 The DB instance class filter value. Specify this parameter to show only
@@ -64,6 +76,69 @@ the available offerings matching the specified DB instance class.
 =head2 B<REQUIRED> Engine => Str
 
 The name of the engine to retrieve DB instance options for.
+
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
+
+=item *
+
+C<aurora-postgresql>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 

@@ -81,6 +81,69 @@ specified engine or engine and major version combination is returned.
 
 The database engine to return.
 
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
+
+=item *
+
+C<aurora-postgresql>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
+
 
 
 =head2 EngineVersion => Str

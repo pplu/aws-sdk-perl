@@ -63,8 +63,8 @@ database.
 =head2 B<REQUIRED> KmsKeyId => Str
 
 The AWS KMS key identifier for encrypting messages in the database
-activity stream. The key identifier can be either a key ID, a key ARN,
-or a key alias.
+activity stream. The AWS KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the AWS KMS customer master key (CMK).
 
 
 
@@ -79,7 +79,7 @@ Valid values are: C<"sync">, C<"async">
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the DB cluster, for example
+The Amazon Resource Name (ARN) of the DB cluster, for example,
 C<arn:aws:rds:us-east-1:12345667890:cluster:das-cluster>.
 
 

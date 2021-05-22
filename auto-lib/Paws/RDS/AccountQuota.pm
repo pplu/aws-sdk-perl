@@ -119,8 +119,15 @@ The used value is the count of the event subscriptions in the account.
 
 =item *
 
-C<ManualSnapshots> - The number of manual DB snapshots per account. The
-used value is the count of the manual DB snapshots in the account.
+C<ManualClusterSnapshots> - The number of manual DB cluster snapshots
+per account. The used value is the count of the manual DB cluster
+snapshots in the account.
+
+=item *
+
+C<ManualSnapshots> - The number of manual DB instance snapshots per
+account. The used value is the count of the manual DB instance
+snapshots in the account.
 
 =item *
 
@@ -130,10 +137,10 @@ option groups in the account.
 
 =item *
 
-C<ReadReplicasPerMaster> - The number of Read Replicas per DB instance.
-The used value is the highest number of Read Replicas for a DB instance
+C<ReadReplicasPerMaster> - The number of read replicas per DB instance.
+The used value is the highest number of read replicas for a DB instance
 in the account. Other DB instances in the account might have a lower
-number of Read Replicas.
+number of read replicas.
 
 =item *
 

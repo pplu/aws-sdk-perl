@@ -50,8 +50,8 @@ This parameter isn't currently supported.
 
 The type of source that is generating the events.
 
-Valid values: db-instance | db-parameter-group | db-security-group |
-db-snapshot
+Valid values: C<db-instance> | C<db-cluster> | C<db-parameter-group> |
+C<db-security-group> | C<db-snapshot> | C<db-cluster-snapshot>
 
 
 

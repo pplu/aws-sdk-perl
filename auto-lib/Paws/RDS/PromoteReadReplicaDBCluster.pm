@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The identifier of the DB cluster Read Replica to promote. This
+The identifier of the DB cluster read replica to promote. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -54,7 +54,7 @@ Constraints:
 
 =item *
 
-Must match the identifier of an existing DBCluster Read Replica.
+Must match the identifier of an existing DB cluster read replica.
 
 =back
 

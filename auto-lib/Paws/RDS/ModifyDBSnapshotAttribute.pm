@@ -38,6 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'ValuesToAdd'          => ['all']
     );
 
+    # Results:
+    my $DBSnapshotAttributesResult =
+      $ModifyDBSnapshotAttributeResult->DBSnapshotAttributesResult;
+
+    # Returns a L<Paws::RDS::ModifyDBSnapshotAttributeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBSnapshotAttribute>
@@ -51,6 +56,9 @@ The name of the DB snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a
 manual DB snapshot, set this value to C<restore>.
+
+To view the list of attributes available to modify, use the
+DescribeDBSnapshotAttributes API action.
 
 
 

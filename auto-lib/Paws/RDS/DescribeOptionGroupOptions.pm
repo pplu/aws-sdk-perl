@@ -51,6 +51,57 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 A required parameter. Options available for the given engine name are
 described.
 
+Valid Values:
+
+=over
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
+
 
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]

@@ -1,6 +1,7 @@
 
 package Paws::RDS::DescribeDBInstanceAutomatedBackups;
   use Moose;
+  has DBInstanceAutomatedBackupsArn => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DbiResourceId => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -33,18 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     my $DBInstanceAutomatedBackupMessage =
       $rds->DescribeDBInstanceAutomatedBackups(
-      DBInstanceIdentifier => 'MyString',    # OPTIONAL
-      DbiResourceId        => 'MyString',    # OPTIONAL
-      Filters              => [
+      DBInstanceAutomatedBackupsArn => 'MyString',    # OPTIONAL
+      DBInstanceIdentifier          => 'MyString',    # OPTIONAL
+      DbiResourceId                 => 'MyString',    # OPTIONAL
+      Filters                       => [
         {
           Name   => 'MyString',
           Values => [ 'MyString', ... ],
 
         },
         ...
-      ],                                     # OPTIONAL
-      Marker     => 'MyString',              # OPTIONAL
-      MaxRecords => 1,                       # OPTIONAL
+      ],                                              # OPTIONAL
+      Marker     => 'MyString',                       # OPTIONAL
+      MaxRecords => 1,                                # OPTIONAL
       );
 
     # Results:
@@ -58,6 +60,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribeDBInstanceAutomatedBackups>
 
 =head1 ATTRIBUTES
+
+
+=head2 DBInstanceAutomatedBackupsArn => Str
+
+The Amazon Resource Name (ARN) of the replicated automated backups, for
+example,
+C<arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE>.
+
 
 
 =head2 DBInstanceIdentifier => Str
@@ -96,7 +106,8 @@ C<active> - automated backups for current instances
 
 =item *
 
-C<retained> - automated backups for deleted instances
+C<retained> - automated backups for deleted instances and after backup
+replication is stopped
 
 =item *
 
@@ -108,16 +119,14 @@ automated snapshot to be available
 =item *
 
 C<db-instance-id> - Accepts DB instance identifiers and Amazon Resource
-Names (ARNs) for DB instances. The results list includes only
-information about the DB instance automated backupss identified by
-these ARNs.
+Names (ARNs). The results list includes only information about the DB
+instance automated backups identified by these ARNs.
 
 =item *
 
-C<dbi-resource-id> - Accepts DB instance resource identifiers and DB
-Amazon Resource Names (ARNs) for DB instances. The results list
-includes only information about the DB instance resources identified by
-these ARNs.
+C<dbi-resource-id> - Accepts DB resource identifiers and Amazon
+Resource Names (ARNs). The results list includes only information about
+the DB instance resources identified by these ARNs.
 
 =back
 

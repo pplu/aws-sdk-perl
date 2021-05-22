@@ -4,6 +4,7 @@ package Paws::RDS::SourceRegion;
   has Endpoint => (is => 'ro', isa => 'Str');
   has RegionName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has SupportsDBInstanceAutomatedBackupsReplication => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::SourceRegion object:
 
-  $service_obj->Method(Att1 => { Endpoint => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { Endpoint => $value, ..., SupportsDBInstanceAutomatedBackupsReplication => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +55,12 @@ The name of the source AWS Region.
 =head2 Status => Str
 
 The status of the source AWS Region.
+
+
+=head2 SupportsDBInstanceAutomatedBackupsReplication => Bool
+
+Whether the source AWS Region supports replicating automated backups to
+the current AWS Region.
 
 
 

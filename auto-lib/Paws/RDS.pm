@@ -142,6 +142,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBProxy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDBProxyEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBProxyEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBSecurityGroup', @_);
@@ -215,6 +220,11 @@ package Paws::RDS;
   sub DeleteDBProxy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBProxyEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBProxyEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBSecurityGroup {
@@ -342,6 +352,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDBProxyEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxyEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBProxyTargetGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxyTargetGroups', @_);
@@ -462,6 +477,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::FailoverDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub FailoverGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::FailoverGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportInstallationMedia {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ImportInstallationMedia', @_);
@@ -515,6 +535,11 @@ package Paws::RDS;
   sub ModifyDBProxy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBProxyEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBProxyEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBProxyTargetGroup {
@@ -662,6 +687,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::StartDBInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDBInstanceAutomatedBackupsReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StartDBInstanceAutomatedBackupsReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartExportTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::StartExportTask', @_);
@@ -680,6 +710,11 @@ package Paws::RDS;
   sub StopDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::StopDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDBInstanceAutomatedBackupsReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StopDBInstanceAutomatedBackupsReplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -1024,6 +1059,29 @@ package Paws::RDS;
         $result = $self->DescribeDBProxies(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'DBProxies') foreach (@{ $result->DBProxies });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBProxyEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxyEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxyEndpoints(@_, Marker => $next_result->Marker);
+        push @{ $result->DBProxyEndpoints }, @{ $next_result->DBProxyEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBProxyEndpoints') foreach (@{ $result->DBProxyEndpoints });
+        $result = $self->DescribeDBProxyEndpoints(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBProxyEndpoints') foreach (@{ $result->DBProxyEndpoints });
     }
 
     return undef
@@ -1490,7 +1548,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CancelExportTask CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateCustomAvailabilityZone CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBProxy CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteCustomAvailabilityZone DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBProxy DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteInstallationMedia DeleteOptionGroup DeregisterDBProxyTargets DescribeAccountAttributes DescribeCertificates DescribeCustomAvailabilityZones DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBProxies DescribeDBProxyTargetGroups DescribeDBProxyTargets DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeExportTasks DescribeGlobalClusters DescribeInstallationMedia DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ImportInstallationMedia ListTagsForResource ModifyCertificates ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBProxy ModifyDBProxyTargetGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RegisterDBProxyTargets RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StartExportTask StopActivityStream StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CancelExportTask CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateCustomAvailabilityZone CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBProxy CreateDBProxyEndpoint CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteCustomAvailabilityZone DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBProxy DeleteDBProxyEndpoint DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteInstallationMedia DeleteOptionGroup DeregisterDBProxyTargets DescribeAccountAttributes DescribeCertificates DescribeCustomAvailabilityZones DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBProxies DescribeDBProxyEndpoints DescribeDBProxyTargetGroups DescribeDBProxyTargets DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeExportTasks DescribeGlobalClusters DescribeInstallationMedia DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster FailoverGlobalCluster ImportInstallationMedia ListTagsForResource ModifyCertificates ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBProxy ModifyDBProxyEndpoint ModifyDBProxyTargetGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RegisterDBProxyTargets RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StartDBInstanceAutomatedBackupsReplication StartExportTask StopActivityStream StopDBCluster StopDBInstance StopDBInstanceAutomatedBackupsReplication / }
 
 1;
 
@@ -1779,7 +1837,7 @@ Cluster
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html)
 in the I<Amazon Aurora User Guide.>
 
-This action only applies to Aurora DB clusters.
+This action only applies to Aurora MySQL DB clusters.
 
 
 =head2 CancelExportTask
@@ -1883,11 +1941,11 @@ The pre-signed URL request must contain the following parameter values:
 
 =item *
 
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster snapshot in the destination AWS Region. This is
-the same identifier for both the C<CopyDBClusterSnapshot> action that
-is called in the destination AWS Region, and the action contained in
-the pre-signed URL.
+C<KmsKeyId> - The AWS KMS key identifier for the customer master key
+(CMK) to use to encrypt the copy of the DB cluster snapshot in the
+destination AWS Region. This is the same identifier for both the
+C<CopyDBClusterSnapshot> action that is called in the destination AWS
+Region, and the action contained in the pre-signed URL.
 
 =item *
 
@@ -1990,6 +2048,8 @@ Copies the specified DB parameter group.
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
 
+=item [TargetCustomAvailabilityZone => Str]
+
 
 =back
 
@@ -1998,7 +2058,7 @@ Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
 
 Copies the specified DB snapshot. The source DB snapshot must be in the
-"available" state.
+C<available> state.
 
 You can copy a snapshot from one AWS Region to another. In that case,
 the AWS Region where you call the C<CopyDBSnapshot> action is the
@@ -2055,8 +2115,8 @@ Creates a custom Availability Zone (AZ).
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 
-For more information about RDS on VMware, see the I<RDS on VMware User
-Guide.>
+For more information about RDS on VMware, see the RDS on VMware User
+Guide.
 (https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
@@ -2091,6 +2151,8 @@ Guide.>
 =item [DomainIAMRoleName => Str]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
+=item [EnableGlobalWriteForwarding => Bool]
 
 =item [EnableHttpEndpoint => Bool]
 
@@ -2138,7 +2200,7 @@ Returns: a L<Paws::RDS::CreateDBClusterResult> instance
 Creates a new Amazon Aurora DB cluster.
 
 You can use the C<ReplicationSourceIdentifier> parameter to create the
-DB cluster as a Read Replica of another DB cluster or Amazon RDS MySQL
+DB cluster as a read replica of another DB cluster or Amazon RDS MySQL
 DB instance. For cross-region replication where the DB cluster
 identified by C<ReplicationSourceIdentifier> is encrypted, you must
 also specify the C<PreSignedUrl> parameter.
@@ -2298,6 +2360,8 @@ This action only applies to Aurora DB clusters.
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
+=item [EnableCustomerOwnedIp => Bool]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EnablePerformanceInsights => Bool]
@@ -2321,6 +2385,8 @@ This action only applies to Aurora DB clusters.
 =item [MonitoringRoleArn => Str]
 
 =item [MultiAZ => Bool]
+
+=item [NcharCharacterSetName => Str]
 
 =item [OptionGroupName => Str]
 
@@ -2400,6 +2466,8 @@ Creates a new DB instance.
 
 =item [KmsKeyId => Str]
 
+=item [MaxAllocatedStorage => Int]
+
 =item [MonitoringInterval => Int]
 
 =item [MonitoringRoleArn => Str]
@@ -2420,6 +2488,8 @@ Creates a new DB instance.
 
 =item [PubliclyAccessible => Bool]
 
+=item [ReplicaMode => Str]
+
 =item [StorageType => Str]
 
 =item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
@@ -2435,21 +2505,20 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplic
 
 Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
-Creates a new DB instance that acts as a Read Replica for an existing
-source DB instance. You can create a Read Replica for a DB instance
-running MySQL, MariaDB, Oracle, or PostgreSQL. For more information,
-see Working with Read Replicas
+Creates a new DB instance that acts as a read replica for an existing
+source DB instance. You can create a read replica for a DB instance
+running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. For more
+information, see Working with Read Replicas
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
 in the I<Amazon RDS User Guide>.
 
-Amazon Aurora doesn't support this action. You must call the
-C<CreateDBInstance> action to create a DB instance for an Aurora DB
-cluster.
+Amazon Aurora doesn't support this action. Call the C<CreateDBInstance>
+action to create a DB instance for an Aurora DB cluster.
 
-All Read Replica DB instances are created with backups disabled. All
+All read replica DB instances are created with backups disabled. All
 other DB instance attributes (including DB security groups and DB
 parameter groups) are inherited from the source DB instance, except as
-specified following.
+specified.
 
 Your source DB instance must have backup retention enabled.
 
@@ -2530,10 +2599,37 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBProxy>
 
 Returns: a L<Paws::RDS::CreateDBProxyResponse> instance
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Creates a new DB proxy.
+
+
+=head2 CreateDBProxyEndpoint
+
+=over
+
+=item DBProxyEndpointName => Str
+
+=item DBProxyName => Str
+
+=item VpcSubnetIds => ArrayRef[Str|Undef]
+
+=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+
+=item [TargetRole => Str]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBProxyEndpoint>
+
+Returns: a L<Paws::RDS::CreateDBProxyEndpointResponse> instance
+
+Creates a C<DBProxyEndpoint>. Only applies to proxies that are
+associated with Aurora DB clusters. You can use DB proxy endpoints to
+specify read/write or read-only access to the DB cluster. You can also
+use DB proxy endpoints to access a DB proxy through a different VPC
+than the proxy's default VPC.
 
 
 =head2 CreateDBSecurityGroup
@@ -2577,8 +2673,8 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBSnapshot>
 
 Returns: a L<Paws::RDS::CreateDBSnapshotResult> instance
 
-Creates a DBSnapshot. The source DBInstance must be in "available"
-state.
+Creates a snapshot of a DB instance. The source DB instance must be in
+the C<available> or C<storage-optimization> state.
 
 
 =head2 CreateDBSubnetGroup
@@ -2635,21 +2731,22 @@ SNS console, or the SNS API. To obtain an ARN with SNS, you must create
 a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
 in the SNS console.
 
-You can specify the type of source (SourceType) you want to be notified
-of, provide a list of RDS sources (SourceIds) that triggers the events,
-and provide a list of event categories (EventCategories) for events you
-want to be notified of. For example, you can specify SourceType =
-db-instance, SourceIds = mydbinstance1, mydbinstance2 and
-EventCategories = Availability, Backup.
+You can specify the type of source (C<SourceType>) that you want to be
+notified of and provide a list of RDS sources (C<SourceIds>) that
+triggers the events. You can also provide a list of event categories
+(C<EventCategories>) for events that you want to be notified of. For
+example, you can specify C<SourceType> = C<db-instance>, C<SourceIds> =
+C<mydbinstance1>, C<mydbinstance2> and C<EventCategories> =
+C<Availability>, C<Backup>.
 
-If you specify both the SourceType and SourceIds, such as SourceType =
-db-instance and SourceIdentifier = myDBInstance1, you are notified of
-all the db-instance events for the specified source. If you specify a
-SourceType but do not specify a SourceIdentifier, you receive notice of
-the events for that source type for all your RDS sources. If you don't
-specify either the SourceType or the SourceIdentifier, you are notified
-of events generated from all RDS sources belonging to your customer
-account.
+If you specify both the C<SourceType> and C<SourceIds>, such as
+C<SourceType> = C<db-instance> and C<SourceIdentifier> =
+C<myDBInstance1>, you are notified of all the C<db-instance> events for
+the specified source. If you specify a C<SourceType> but do not specify
+a C<SourceIdentifier>, you receive notice of the events for that source
+type for all your RDS sources. If you don't specify either the
+SourceType or the C<SourceIdentifier>, you are notified of events
+generated from all RDS sources belonging to your customer account.
 
 RDS event notification is only available for unencrypted SNS topics. If
 you specify an encrypted SNS topic, event notifications aren't sent for
@@ -2681,8 +2778,8 @@ Each argument is described in detail in: L<Paws::RDS::CreateGlobalCluster>
 
 Returns: a L<Paws::RDS::CreateGlobalClusterResult> instance
 
-Creates an Aurora global database spread across multiple regions. The
-global database contains a single primary cluster with read-write
+Creates an Aurora global database spread across multiple AWS Regions.
+The global database contains a single primary cluster with read-write
 capability, and a read-only secondary cluster that receives data from
 the primary cluster through high-speed replication performed by the
 Aurora storage subsystem.
@@ -2737,8 +2834,8 @@ Deletes a custom Availability Zone (AZ).
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 
-For more information about RDS on VMware, see the I<RDS on VMware User
-Guide.>
+For more information about RDS on VMware, see the RDS on VMware User
+Guide.
 (https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
@@ -2881,7 +2978,7 @@ are true:
 
 =item *
 
-The DB cluster is a Read Replica of another Amazon Aurora DB cluster.
+The DB cluster is a read replica of another Amazon Aurora DB cluster.
 
 =item *
 
@@ -2891,7 +2988,7 @@ The DB instance is the only instance in the DB cluster.
 
 To delete a DB instance in this case, first call the
 C<PromoteReadReplicaDBCluster> API action to promote the DB cluster so
-it's no longer a Read Replica. After the promotion completes, then call
+it's no longer a read replica. After the promotion completes, then call
 the C<DeleteDBInstance> API action to delete the final instance in the
 DB cluster.
 
@@ -2900,7 +2997,9 @@ DB cluster.
 
 =over
 
-=item DbiResourceId => Str
+=item [DBInstanceAutomatedBackupsArn => Str]
+
+=item [DbiResourceId => Str]
 
 
 =back
@@ -2909,8 +3008,9 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBInstanceAutomatedB
 
 Returns: a L<Paws::RDS::DeleteDBInstanceAutomatedBackupResult> instance
 
-Deletes automated backups based on the source instance's
-C<DbiResourceId> value or the restorable instance's resource ID.
+Deletes automated backups using the C<DbiResourceId> value of the
+source DB instance or the Amazon Resource Name (ARN) of the automated
+backups.
 
 
 =head2 DeleteDBParameterGroup
@@ -2943,10 +3043,26 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBProxy>
 
 Returns: a L<Paws::RDS::DeleteDBProxyResponse> instance
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
+Deletes an existing DB proxy.
 
-Deletes an existing proxy.
+
+=head2 DeleteDBProxyEndpoint
+
+=over
+
+=item DBProxyEndpointName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBProxyEndpoint>
+
+Returns: a L<Paws::RDS::DeleteDBProxyEndpointResponse> instance
+
+Deletes a C<DBProxyEndpoint>. Doing so removes the ability to access
+the DB proxy using the endpoint that you defined. The endpoint that you
+delete might have provided capabilities such as read/write or read-only
+operations, or using a different VPC than the DB proxy's default VPC.
 
 
 =head2 DeleteDBSecurityGroup
@@ -3093,9 +3209,6 @@ Each argument is described in detail in: L<Paws::RDS::DeregisterDBProxyTargets>
 
 Returns: a L<Paws::RDS::DeregisterDBProxyTargetsResponse> instance
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Remove the association between one or more C<DBProxyTarget> data
 structures and a C<DBProxyTargetGroup>.
 
@@ -3166,8 +3279,8 @@ Returns information about custom Availability Zones (AZs).
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 
-For more information about RDS on VMware, see the I<RDS on VMware User
-Guide.>
+For more information about RDS on VMware, see the RDS on VMware User
+Guide.
 (https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
@@ -3198,7 +3311,7 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 in the I<Amazon Aurora User Guide.>
 
-This action only applies to Aurora DB clusters.
+This action only applies to Aurora MySQL DB clusters.
 
 
 =head2 DescribeDBClusterEndpoints
@@ -3426,6 +3539,8 @@ Returns a list of the available DB engines.
 
 =over
 
+=item [DBInstanceAutomatedBackupsArn => Str]
+
 =item [DBInstanceIdentifier => Str]
 
 =item [DbiResourceId => Str]
@@ -3575,10 +3690,31 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBProxies>
 
 Returns: a L<Paws::RDS::DescribeDBProxiesResponse> instance
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Returns information about DB proxies.
+
+
+=head2 DescribeDBProxyEndpoints
+
+=over
+
+=item [DBProxyEndpointName => Str]
+
+=item [DBProxyName => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyEndpoints>
+
+Returns: a L<Paws::RDS::DescribeDBProxyEndpointsResponse> instance
+
+Returns information about DB proxy endpoints.
 
 
 =head2 DescribeDBProxyTargetGroups
@@ -3601,9 +3737,6 @@ Returns information about DB proxies.
 Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyTargetGroups>
 
 Returns: a L<Paws::RDS::DescribeDBProxyTargetGroupsResponse> instance
-
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
 
 Returns information about DB proxy target groups, represented by
 C<DBProxyTargetGroup> data structures.
@@ -3629,9 +3762,6 @@ C<DBProxyTargetGroup> data structures.
 Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyTargets>
 
 Returns: a L<Paws::RDS::DescribeDBProxyTargetsResponse> instance
-
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
 
 Returns information about C<DBProxyTarget> objects. This API supports
 pagination.
@@ -3816,9 +3946,9 @@ Returns: a L<Paws::RDS::EventCategoriesMessage> instance
 
 Displays a list of categories for all event source types, or, if
 specified, for a specified source type. You can see a list of the event
-categories and source types in the Events
+categories and source types in Events
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-topic in the I<Amazon RDS User Guide.>
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeEvents
@@ -3850,11 +3980,14 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEvents>
 
 Returns: a L<Paws::RDS::EventsMessage> instance
 
-Returns events related to DB instances, DB security groups, DB
-snapshots, and DB parameter groups for the past 14 days. Events
-specific to a particular DB instance, DB security group, database
-snapshot, or DB parameter group can be obtained by providing the name
-as a parameter. By default, the past hour of events are returned.
+Returns events related to DB instances, DB clusters, DB parameter
+groups, DB security groups, DB snapshots, and DB cluster snapshots for
+the past 14 days. Events specific to a particular DB instances, DB
+clusters, DB parameter groups, DB security groups, DB snapshots, and DB
+cluster snapshots group can be obtained by providing the name as a
+parameter.
+
+By default, the past hour of events are returned.
 
 
 =head2 DescribeEventSubscriptions
@@ -3877,10 +4010,11 @@ Each argument is described in detail in: L<Paws::RDS::DescribeEventSubscriptions
 Returns: a L<Paws::RDS::EventSubscriptionsMessage> instance
 
 Lists all the subscription descriptions for a customer account. The
-description for a subscription includes SubscriptionName, SNSTopicARN,
-CustomerID, SourceType, SourceID, CreationTime, and Status.
+description for a subscription includes C<SubscriptionName>,
+C<SNSTopicARN>, C<CustomerID>, C<SourceType>, C<SourceID>,
+C<CreationTime>, and C<Status>.
 
-If you specify a SubscriptionName, lists the description for that
+If you specify a C<SubscriptionName>, lists the description for that
 subscription.
 
 
@@ -3894,7 +4028,7 @@ subscription.
 
 =item [Marker => Str]
 
-=item [MaxRecords => Str]
+=item [MaxRecords => Int]
 
 =item [SourceArn => Str]
 
@@ -4017,6 +4151,8 @@ Describes the available option groups.
 =over
 
 =item Engine => Str
+
+=item [AvailabilityZoneGroup => Str]
 
 =item [DBInstanceClass => Str]
 
@@ -4155,8 +4291,8 @@ Each argument is described in detail in: L<Paws::RDS::DescribeSourceRegions>
 Returns: a L<Paws::RDS::SourceRegionMessage> instance
 
 Returns a list of the source AWS Regions where the current AWS Region
-can create a Read Replica or copy a DB snapshot from. This API action
-supports pagination.
+can create a read replica, copy a DB snapshot from, or replicate
+automated backups from. This API action supports pagination.
 
 
 =head2 DescribeValidDBInstanceModifications
@@ -4233,6 +4369,45 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 in the I<Amazon Aurora User Guide.>
 
 This action only applies to Aurora DB clusters.
+
+
+=head2 FailoverGlobalCluster
+
+=over
+
+=item GlobalClusterIdentifier => Str
+
+=item TargetDbClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::FailoverGlobalCluster>
+
+Returns: a L<Paws::RDS::FailoverGlobalClusterResult> instance
+
+Initiates the failover process for an Aurora global database
+(GlobalCluster).
+
+A failover for an Aurora global database promotes one of secondary
+read-only DB clusters to be the primary DB cluster and demotes the
+primary DB cluster to being a secondary (read-only) DB cluster. In
+other words, the role of the current primary DB cluster and the
+selected (target) DB cluster are switched. The selected secondary DB
+cluster assumes full read/write capabilities for the Aurora global
+database.
+
+For more information about failing over an Amazon Aurora global
+database, see Managed planned failover for Amazon Aurora global
+databases
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-disaster-recovery.managed-failover)
+in the I<Amazon Aurora User Guide.>
+
+This action applies to GlobalCluster (Aurora global databases) only.
+Use this action only on healthy Aurora global databases with running
+Aurora DB clusters and no Region-wide outages, to test disaster
+recovery scenarios or to reconfigure your Aurora global database
+topology.
 
 
 =head2 ImportInstallationMedia
@@ -4414,6 +4589,8 @@ This action only applies to Aurora DB clusters.
 
 =item [DomainIAMRoleName => Str]
 
+=item [EnableGlobalWriteForwarding => Bool]
+
 =item [EnableHttpEndpoint => Bool]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -4554,16 +4731,21 @@ C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
 to add a list of IDs of the AWS accounts that are authorized to restore
 the manual DB cluster snapshot. Use the value C<all> to make the manual
 DB cluster snapshot public, which means that it can be copied or
-restored by all AWS accounts. Do not add the C<all> value for any
-manual DB cluster snapshots that contain private information that you
-don't want available to all AWS accounts. If a manual DB cluster
-snapshot is encrypted, it can be shared, but only by specifying a list
-of authorized AWS account IDs for the C<ValuesToAdd> parameter. You
-can't use C<all> as a value for that parameter in this case.
+restored by all AWS accounts.
+
+Don't add the C<all> value for any manual DB cluster snapshots that
+contain private information that you don't want available to all AWS
+accounts.
+
+If a manual DB cluster snapshot is encrypted, it can be shared, but
+only by specifying a list of authorized AWS account IDs for the
+C<ValuesToAdd> parameter. You can't use C<all> as a value for that
+parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
-cluster snapshot, or whether a manual DB cluster snapshot public or
-private, use the C<DescribeDBClusterSnapshotAttributes> API action.
+cluster snapshot, or whether a manual DB cluster snapshot is public or
+private, use the DescribeDBClusterSnapshotAttributes API action. The
+accounts are returned as values for the C<restore> attribute.
 
 This action only applies to Aurora DB clusters.
 
@@ -4581,6 +4763,8 @@ This action only applies to Aurora DB clusters.
 =item [ApplyImmediately => Bool]
 
 =item [AutoMinorVersionUpgrade => Bool]
+
+=item [AwsBackupRecoveryPointArn => Str]
 
 =item [BackupRetentionPeriod => Int]
 
@@ -4607,6 +4791,8 @@ This action only applies to Aurora DB clusters.
 =item [Domain => Str]
 
 =item [DomainIAMRoleName => Str]
+
+=item [EnableCustomerOwnedIp => Bool]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -4645,6 +4831,8 @@ This action only applies to Aurora DB clusters.
 =item [PromotionTier => Int]
 
 =item [PubliclyAccessible => Bool]
+
+=item [ReplicaMode => Str]
 
 =item [StorageType => Str]
 
@@ -4735,10 +4923,27 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBProxy>
 
 Returns: a L<Paws::RDS::ModifyDBProxyResponse> instance
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Changes the settings for an existing DB proxy.
+
+
+=head2 ModifyDBProxyEndpoint
+
+=over
+
+=item DBProxyEndpointName => Str
+
+=item [NewDBProxyEndpointName => Str]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBProxyEndpoint>
+
+Returns: a L<Paws::RDS::ModifyDBProxyEndpointResponse> instance
+
+Changes the settings for an existing DB proxy endpoint.
 
 
 =head2 ModifyDBProxyTargetGroup
@@ -4760,9 +4965,6 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBProxyTargetGroup>
 
 Returns: a L<Paws::RDS::ModifyDBProxyTargetGroupResponse> instance
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Modifies the properties of a C<DBProxyTargetGroup>.
 
 
@@ -4783,8 +4985,8 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshot>
 
 Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 
-Updates a manual DB snapshot, which can be encrypted or not encrypted,
-with a new engine version.
+Updates a manual DB snapshot with a new engine version. The snapshot
+can be encrypted or unencrypted, but not shared or public.
 
 Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
 PostgreSQL.
@@ -4817,16 +5019,20 @@ C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
 to add a list of IDs of the AWS accounts that are authorized to restore
 the manual DB snapshot. Uses the value C<all> to make the manual DB
 snapshot public, which means it can be copied or restored by all AWS
-accounts. Do not add the C<all> value for any manual DB snapshots that
-contain private information that you don't want available to all AWS
-accounts. If the manual DB snapshot is encrypted, it can be shared, but
-only by specifying a list of authorized AWS account IDs for the
-C<ValuesToAdd> parameter. You can't use C<all> as a value for that
-parameter in this case.
+accounts.
+
+Don't add the C<all> value for any manual DB snapshots that contain
+private information that you don't want available to all AWS accounts.
+
+If the manual DB snapshot is encrypted, it can be shared, but only by
+specifying a list of authorized AWS account IDs for the C<ValuesToAdd>
+parameter. You can't use C<all> as a value for that parameter in this
+case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 snapshot, or whether a manual DB snapshot public or private, use the
-C<DescribeDBSnapshotAttributes> API action.
+DescribeDBSnapshotAttributes API action. The accounts are returned as
+values for the C<restore> attribute.
 
 
 =head2 ModifyDBSubnetGroup
@@ -4877,18 +5083,22 @@ identifiers for a subscription, use the
 C<AddSourceIdentifierToSubscription> and
 C<RemoveSourceIdentifierFromSubscription> calls.
 
-You can see a list of the event categories for a given SourceType in
-the Events
+You can see a list of the event categories for a given source type
+(C<SourceType>) in Events
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-topic in the I<Amazon RDS User Guide> or by using the
-B<DescribeEventCategories> action.
+in the I<Amazon RDS User Guide> or by using the
+C<DescribeEventCategories> operation.
 
 
 =head2 ModifyGlobalCluster
 
 =over
 
+=item [AllowMajorVersionUpgrade => Bool]
+
 =item [DeletionProtection => Bool]
+
+=item [EngineVersion => Str]
 
 =item [GlobalClusterIdentifier => Str]
 
@@ -4950,20 +5160,20 @@ Each argument is described in detail in: L<Paws::RDS::PromoteReadReplica>
 
 Returns: a L<Paws::RDS::PromoteReadReplicaResult> instance
 
-Promotes a Read Replica DB instance to a standalone DB instance.
+Promotes a read replica DB instance to a standalone DB instance.
 
 =over
 
 =item *
 
 Backup duration is a function of the amount of changes to the database
-since the previous backup. If you plan to promote a Read Replica to a
+since the previous backup. If you plan to promote a read replica to a
 standalone instance, we recommend that you enable backups and complete
-at least one backup prior to promotion. In addition, a Read Replica
+at least one backup prior to promotion. In addition, a read replica
 cannot be promoted to a standalone instance when it is in the
-C<backing-up> status. If you have enabled backups on your Read Replica,
+C<backing-up> status. If you have enabled backups on your read replica,
 configure the automated backup window so that daily backups do not
-interfere with Read Replica promotion.
+interfere with read replica promotion.
 
 =item *
 
@@ -4986,7 +5196,7 @@ Each argument is described in detail in: L<Paws::RDS::PromoteReadReplicaDBCluste
 
 Returns: a L<Paws::RDS::PromoteReadReplicaDBClusterResult> instance
 
-Promotes a Read Replica DB cluster to a standalone DB cluster.
+Promotes a read replica DB cluster to a standalone DB cluster.
 
 This action only applies to Aurora DB clusters.
 
@@ -5060,9 +5270,6 @@ in the I<Amazon RDS User Guide.>
 Each argument is described in detail in: L<Paws::RDS::RegisterDBProxyTargets>
 
 Returns: a L<Paws::RDS::RegisterDBProxyTargetsResponse> instance
-
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
 
 Associate one or more C<DBProxyTarget> data structures with a
 C<DBProxyTargetGroup>.
@@ -5316,14 +5523,26 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromS3>
 
 Returns: a L<Paws::RDS::RestoreDBClusterFromS3Result> instance
 
-Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
-bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
+Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
+S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
 and the data must be created using the Percona XtraBackup utility as
-described in Migrating Data to an Amazon Aurora MySQL DB Cluster
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.html)
+described in Migrating Data from MySQL by Using an Amazon S3 Bucket
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3)
 in the I<Amazon Aurora User Guide>.
 
-This action only applies to Aurora DB clusters.
+This action only restores the DB cluster, not the DB instances for that
+DB cluster. You must invoke the C<CreateDBInstance> action to create DB
+instances for the restored DB cluster, specifying the identifier of the
+restored DB cluster in C<DBClusterIdentifier>. You can create DB
+instances only after the C<RestoreDBClusterFromS3> action has completed
+and the DB cluster is available.
+
+For more information on Amazon Aurora, see What Is Amazon Aurora?
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+in the I<Amazon Aurora User Guide.>
+
+This action only applies to Aurora DB clusters. The source DB engine
+must be MySQL.
 
 
 =head2 RestoreDBClusterFromSnapshot
@@ -5382,15 +5601,18 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapsh
 Returns: a L<Paws::RDS::RestoreDBClusterFromSnapshotResult> instance
 
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+This action only applies to Aurora DB clusters.
 
-If a DB snapshot is specified, the target DB cluster is created from
-the source DB snapshot with a default configuration and default
-security group.
+The target DB cluster is created from the source snapshot with a
+default configuration. If you don't specify a security group, the new
+DB cluster is associated with the default security group.
 
-If a DB cluster snapshot is specified, the target DB cluster is created
-from the source DB cluster restore point with the same configuration as
-the original source DB cluster. If you don't specify a security group,
-the new DB cluster is associated with the default security group.
+This action only restores the DB cluster, not the DB instances for that
+DB cluster. You must invoke the C<CreateDBInstance> action to create DB
+instances for the restored DB cluster, specifying the identifier of the
+restored DB cluster in C<DBClusterIdentifier>. You can create DB
+instances only after the C<RestoreDBClusterFromSnapshot> action has
+completed and the DB cluster is available.
 
 For more information on Amazon Aurora, see What Is Amazon Aurora?
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -5499,6 +5721,8 @@ This action only applies to Aurora DB clusters.
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
+=item [EnableCustomerOwnedIp => Bool]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [Engine => Str]
@@ -5537,22 +5761,21 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSna
 Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
 
 Creates a new DB instance from a DB snapshot. The target database is
-created from the source database restore point with the most of
-original configuration with the default security group and the default
-DB parameter group. By default, the new DB instance is created as a
-single-AZ deployment except when the instance is a SQL Server instance
-that has an option group that is associated with mirroring; in this
-case, the instance becomes a mirrored AZ deployment and not a single-AZ
-deployment.
+created from the source database restore point with most of the
+source's original configuration, including the default security group
+and DB parameter group. By default, the new DB instance is created as a
+Single-AZ deployment, except when the instance is a SQL Server instance
+that has an option group associated with mirroring. In this case, the
+instance becomes a Multi-AZ deployment, not a Single-AZ deployment.
 
-If your intent is to replace your original DB instance with the new,
-restored DB instance, then rename your original DB instance before you
-call the RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two
-DB instances with the same name. Once you have renamed your original DB
+If you want to replace your original DB instance with the new, restored
+DB instance, then rename your original DB instance before you call the
+RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
+instances with the same name. After you have renamed your original DB
 instance with a different identifier, then you can pass the original
 name of the DB instance as the DBInstanceIdentifier in the call to the
-RestoreDBInstanceFromDBSnapshot action. The result is that you will
-replace the original DB instance with the DB instance created from the
+RestoreDBInstanceFromDBSnapshot action. The result is that you replace
+the original DB instance with the DB instance created from the
 snapshot.
 
 If you are restoring from a shared manual DB snapshot, the
@@ -5617,6 +5840,8 @@ Aurora, use C<RestoreDBClusterFromSnapshot>.
 =item [MasterUsername => Str]
 
 =item [MasterUserPassword => Str]
+
+=item [MaxAllocatedStorage => Int]
 
 =item [MonitoringInterval => Int]
 
@@ -5697,6 +5922,8 @@ in the I<Amazon RDS User Guide.>
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
+=item [EnableCustomerOwnedIp => Bool]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [Engine => Str]
@@ -5704,6 +5931,8 @@ in the I<Amazon RDS User Guide.>
 =item [Iops => Int]
 
 =item [LicenseModel => Str]
+
+=item [MaxAllocatedStorage => Int]
 
 =item [MultiAZ => Bool]
 
@@ -5716,6 +5945,8 @@ in the I<Amazon RDS User Guide.>
 =item [PubliclyAccessible => Bool]
 
 =item [RestoreTime => Str]
+
+=item [SourceDBInstanceAutomatedBackupsArn => Str]
 
 =item [SourceDBInstanceIdentifier => Str]
 
@@ -5781,7 +6012,7 @@ Each argument is described in detail in: L<Paws::RDS::RevokeDBSecurityGroupIngre
 Returns: a L<Paws::RDS::RevokeDBSecurityGroupIngressResult> instance
 
 Revokes ingress from a DBSecurityGroup for previously authorized IP
-ranges or EC2 or VPC Security Groups. Required parameters for this API
+ranges or EC2 or VPC security groups. Required parameters for this API
 are one of CIDRIP, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId).
@@ -5860,6 +6091,33 @@ in the I<Amazon RDS User Guide.>
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora DB clusters, use C<StartDBCluster> instead.
+
+
+=head2 StartDBInstanceAutomatedBackupsReplication
+
+=over
+
+=item SourceDBInstanceArn => Str
+
+=item [BackupRetentionPeriod => Int]
+
+=item [KmsKeyId => Str]
+
+=item [PreSignedUrl => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StartDBInstanceAutomatedBackupsReplication>
+
+Returns: a L<Paws::RDS::StartDBInstanceAutomatedBackupsReplicationResult> instance
+
+Enables replication of automated backups to a different AWS Region.
+
+For more information, see Replicating Automated Backups to Another AWS
+Region
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 StartExportTask
@@ -5968,6 +6226,27 @@ in the I<Amazon RDS User Guide.>
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora clusters, use C<StopDBCluster> instead.
+
+
+=head2 StopDBInstanceAutomatedBackupsReplication
+
+=over
+
+=item SourceDBInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StopDBInstanceAutomatedBackupsReplication>
+
+Returns: a L<Paws::RDS::StopDBInstanceAutomatedBackupsReplicationResult> instance
+
+Stops automated backup replication for a DB instance.
+
+For more information, see Replicating Automated Backups to Another AWS
+Region
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -6084,9 +6363,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBInstanceAutomatedBackups(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstanceAutomatedBackups(sub { },[DBInstanceAutomatedBackupsArn => Str, DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBInstanceAutomatedBackups([DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstanceAutomatedBackups([DBInstanceAutomatedBackupsArn => Str, DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6154,6 +6433,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DBProxies, passing the object as the first parameter, and the string 'DBProxies' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::DescribeDBProxiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBProxyEndpoints(sub { },[DBProxyEndpointName => Str, DBProxyName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBProxyEndpoints([DBProxyEndpointName => Str, DBProxyName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBProxyEndpoints, passing the object as the first parameter, and the string 'DBProxyEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxyEndpointsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllDBProxyTargetGroups(sub { },DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
@@ -6264,9 +6555,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllExportTasks(sub { },[ExportTaskIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Str, SourceArn => Str])
+=head2 DescribeAllExportTasks(sub { },[ExportTaskIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceArn => Str])
 
-=head2 DescribeAllExportTasks([ExportTaskIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Str, SourceArn => Str])
+=head2 DescribeAllExportTasks([ExportTaskIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceArn => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6324,9 +6615,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::OptionGroups> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [AvailabilityZoneGroup => Str, DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
-=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [AvailabilityZoneGroup => Str, DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -40,6 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'OptionGroupName'        => 'mymysqloptiongroup'
     );
 
+    # Results:
+    my $OptionGroup = $CreateOptionGroupResult->OptionGroup;
+
+    # Returns a L<Paws::RDS::CreateOptionGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateOptionGroup>
@@ -51,6 +55,57 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 Specifies the name of the engine that this option group should be
 associated with.
+
+Valid Values:
+
+=over
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 

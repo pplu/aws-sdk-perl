@@ -58,7 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBProxyName => Str
 
-The name of the DB proxy.
+The name of the DB proxy. If you omit this parameter, the output
+includes information about all DB proxies owned by your AWS account ID.
 
 
 

@@ -1,7 +1,8 @@
 
 package Paws::RDS::DeleteDBInstanceAutomatedBackup;
   use Moose;
-  has DbiResourceId => (is => 'ro', isa => 'Str', required => 1);
+  has DBInstanceAutomatedBackupsArn => (is => 'ro', isa => 'Str');
+  has DbiResourceId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     my $DeleteDBInstanceAutomatedBackupResult =
       $rds->DeleteDBInstanceAutomatedBackup(
-      DbiResourceId => 'MyString',
-
+      DBInstanceAutomatedBackupsArn => 'MyString',    # OPTIONAL
+      DbiResourceId                 => 'MyString',    # OPTIONAL
       );
 
     # Results:
@@ -45,7 +46,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DbiResourceId => Str
+=head2 DBInstanceAutomatedBackupsArn => Str
+
+The Amazon Resource Name (ARN) of the automated backups to delete, for
+example,
+C<arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE>.
+
+
+
+=head2 DbiResourceId => Str
 
 The identifier for the source DB instance, which can't be changed and
 which is unique to an AWS Region.

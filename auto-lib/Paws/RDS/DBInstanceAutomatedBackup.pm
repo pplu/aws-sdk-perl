@@ -3,7 +3,10 @@ package Paws::RDS::DBInstanceAutomatedBackup;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceArn => (is => 'ro', isa => 'Str');
+  has DBInstanceAutomatedBackupsArn => (is => 'ro', isa => 'Str');
+  has DBInstanceAutomatedBackupsReplications => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceAutomatedBackupsReplication]', request_name => 'DBInstanceAutomatedBackupsReplication', traits => ['NameInRequest']);
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DbiResourceId => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
@@ -55,7 +58,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
 =head1 DESCRIPTION
 
-An automated backup of a DB instance. It it consists of system backups,
+An automated backup of a DB instance. It consists of system backups,
 transaction logs, and the database instance properties that existed at
 the time you deleted the source instance.
 
@@ -75,9 +78,25 @@ Availability Zones
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
+=head2 BackupRetentionPeriod => Int
+
+The retention period for the automated backups.
+
+
 =head2 DBInstanceArn => Str
 
-The Amazon Resource Name (ARN) for the automated backup.
+The Amazon Resource Name (ARN) for the automated backups.
+
+
+=head2 DBInstanceAutomatedBackupsArn => Str
+
+The Amazon Resource Name (ARN) for the replicated automated backups.
+
+
+=head2 DBInstanceAutomatedBackupsReplications => ArrayRef[L<Paws::RDS::DBInstanceAutomatedBackupsReplication>]
+
+The list of replications to different AWS Regions associated with the
+automated backup.
 
 
 =head2 DBInstanceIdentifier => Str
@@ -125,9 +144,10 @@ The IOPS (I/O operations per second) value for the automated backup.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key ID for an automated backup. The KMS key ID is the
-Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias
-for the KMS encryption key.
+The AWS KMS key ID for an automated backup.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 
 =head2 LicenseModel => Str

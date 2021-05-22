@@ -23,6 +23,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -96,6 +97,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LicenseModel                       => 'MyString',             # OPTIONAL
       MasterUserPassword                 => 'MyString',             # OPTIONAL
       MasterUsername                     => 'MyString',             # OPTIONAL
+      MaxAllocatedStorage                => 1,                      # OPTIONAL
       MonitoringInterval                 => 1,                      # OPTIONAL
       MonitoringRoleArn                  => 'MyString',             # OPTIONAL
       MultiAZ                            => 1,                      # OPTIONAL
@@ -124,7 +126,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                                            # OPTIONAL
       UseDefaultProcessorFeatures => 1,                             # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],                   # OPTIONAL
+      VpcSecurityGroupIds         => [ 'MyString', ... ],           # OPTIONAL
     );
 
     # Results:
@@ -287,8 +289,7 @@ in the I<Amazon RDS User Guide>.
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines,
-see CreateDBInstance.
+mapping is disabled.
 
 For more information about IAM database authentication, see IAM
 Database Authentication for MySQL and PostgreSQL
@@ -339,17 +340,14 @@ in the I<Amazon RDS User Guide.>
 
 The AWS KMS key identifier for an encrypted DB instance.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB instance with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-instance, then you can use the KMS key alias instead of the ARN for the
-KM encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 If the C<StorageEncrypted> parameter is enabled, and you do not specify
 a value for the C<KmsKeyId> parameter, then Amazon RDS will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.
+default CMK. There is a default CMK for your AWS account. Your AWS
+account has a different default CMK for each AWS Region.
 
 
 
@@ -390,6 +388,19 @@ The password for the master user. The password can include any
 printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.
+
+
+
+=head2 MaxAllocatedStorage => Int
+
+The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see Managing capacity automatically with Amazon RDS
+storage autoscaling
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -441,13 +452,14 @@ engine is used.
 =head2 PerformanceInsightsKMSKeyId => Str
 
 The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), the KMS key
-identifier, or the KMS key alias for the KMS encryption key.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
-Amazon RDS uses your default encryption key. AWS KMS creates the
-default encryption key for your AWS account. Your AWS account has a
-different default encryption key for each AWS Region.
+Amazon RDS uses your default CMK. There is a default CMK for your AWS
+account. Your AWS account has a different default CMK for each AWS
+Region.
 
 
 
@@ -473,8 +485,7 @@ Default: C<3306>
 =head2 PreferredBackupWindow => Str
 
 The time range each day during which automated backups are created if
-automated backups are enabled. For more information, see The Backup
-Window
+automated backups are enabled. For more information, see Backup window
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 in the I<Amazon RDS User Guide.>
 
@@ -550,11 +561,18 @@ instance class of the DB instance.
 =head2 PubliclyAccessible => Bool
 
 A value that indicates whether the DB instance is publicly accessible.
-When the DB instance is publicly accessible, it is an Internet-facing
-instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance isn't publicly accessible, it
-is an internal instance with a DNS name that resolves to a private IP
-address. For more information, see CreateDBInstance.
+
+When the DB instance is publicly accessible, its DNS endpoint resolves
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
+DB instance is ultimately controlled by the security group it uses, and
+that public access is not permitted if the security group assigned to
+the DB instance doesn't permit it.
+
+When the DB instance isn't publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.
+
+For more information, see CreateDBInstance.
 
 
 
@@ -588,9 +606,11 @@ Valid Values: C<mysql>
 
 =head2 B<REQUIRED> SourceEngineVersion => Str
 
-The engine version of your source database.
+The version of the database that the backup files were created from.
 
-Valid Values: C<5.6>
+MySQL versions 5.6 and 5.7 are supported.
+
+Example: C<5.6.40>
 
 
 

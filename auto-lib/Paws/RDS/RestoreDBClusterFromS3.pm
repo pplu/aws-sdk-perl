@@ -120,6 +120,8 @@ cluster can be created.
 The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
 
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
+
 Default: 0
 
 Constraints:
@@ -180,7 +182,7 @@ The database name for the restored DB cluster.
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The name of the DB cluster to create from the source data in the Amazon
-S3 bucket. This parameter is isn't case-sensitive.
+S3 bucket. This parameter isn't case-sensitive.
 
 Constraints:
 
@@ -250,9 +252,8 @@ The domain must be created prior to this operation.
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster.
-For more information, see Using Kerberos Authentication for Aurora
-MySQL
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -289,9 +290,11 @@ in the I<Amazon Aurora User Guide.>
 
 =head2 B<REQUIRED> Engine => Str
 
-The name of the database engine to be used for the restored DB cluster.
+The name of the database engine to be used for this DB cluster.
 
-Valid Values: C<aurora>, C<aurora-postgresql>
+Valid Values: C<aurora> (for MySQL 5.6-compatible Aurora),
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora), and
+C<aurora-postgresql>
 
 
 
@@ -332,17 +335,14 @@ Example: C<9.6.3>, C<10.7>
 
 The AWS KMS key identifier for an encrypted DB cluster.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KM encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon RDS will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.
+default CMK. There is a default CMK for your AWS account. Your AWS
+account has a different default CMK for each AWS Region.
 
 
 
@@ -407,9 +407,9 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+block of time for each AWS Region. To view the time blocks available,
+see Backup window
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -494,9 +494,9 @@ Valid values: C<mysql>
 
 The version of the database that the backup files were created from.
 
-MySQL version 5.5 and 5.6 are supported.
+MySQL versions 5.5, 5.6, and 5.7 are supported.
 
-Example: C<5.6.22>
+Example: C<5.6.40>, C<5.7.28>
 
 
 

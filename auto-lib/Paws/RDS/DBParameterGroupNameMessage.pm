@@ -17,7 +17,7 @@ Paws::RDS::DBParameterGroupNameMessage
 
 =head2 DBParameterGroupName => Str
 
-Provides the name of the DB parameter group.
+The name of the DB parameter group.
 
 
 =head2 _request_id => Str

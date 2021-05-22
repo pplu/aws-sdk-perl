@@ -6,6 +6,9 @@ package Paws::RDS::UpgradeTarget;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has IsMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SupportsGlobalDatabases => (is => 'ro', isa => 'Bool');
+  has SupportsParallelQuery => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -26,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::UpgradeTarget object:
 
-  $service_obj->Method(Att1 => { AutoUpgrade => $value, ..., IsMajorVersionUpgrade => $value  });
+  $service_obj->Method(Att1 => { AutoUpgrade => $value, ..., SupportsParallelQuery => $value  });
 
 =head3 Results returned from an API call
 
@@ -67,8 +70,25 @@ The version number of the upgrade target database engine.
 
 =head2 IsMajorVersionUpgrade => Bool
 
-A value that indicates whether a database engine is upgraded to a major
-version.
+A value that indicates whether upgrading to the target version requires
+upgrading the major version of the database engine.
+
+
+=head2 SupportedEngineModes => ArrayRef[Str|Undef]
+
+A list of the supported DB engine modes for the target engine version.
+
+
+=head2 SupportsGlobalDatabases => Bool
+
+A value that indicates whether you can use Aurora global databases with
+the target engine version.
+
+
+=head2 SupportsParallelQuery => Bool
+
+A value that indicates whether you can use Aurora parallel query with
+the target engine version.
 
 
 
