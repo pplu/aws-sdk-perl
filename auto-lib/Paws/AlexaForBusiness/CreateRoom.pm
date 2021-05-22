@@ -74,7 +74,7 @@ The description for the room.
 
 =head2 ProfileArn => Str
 
-The profile ARN for the room.
+The profile ARN for the room. This is required.
 
 
 

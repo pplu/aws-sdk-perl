@@ -10,6 +10,7 @@ package Paws::AlexaForBusiness::CreateNetworkProfile;
   has NextPassword => (is => 'ro', isa => 'Str');
   has SecurityType => (is => 'ro', isa => 'Str', required => 1);
   has Ssid => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
   has TrustAnchors => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -46,7 +47,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description             => 'MyNetworkProfileDescription',    # OPTIONAL
       EapMethod               => 'EAP_TLS',                        # OPTIONAL
       NextPassword            => 'MyNextWiFiPassword',             # OPTIONAL
-      TrustAnchors            => [ 'MyTrustAnchor', ... ],         # OPTIONAL
+      Tags                    => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
+      TrustAnchors => [ 'MyTrustAnchor', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -117,6 +126,13 @@ Valid values are: C<"OPEN">, C<"WEP">, C<"WPA_PSK">, C<"WPA2_PSK">, C<"WPA2_ENTE
 =head2 B<REQUIRED> Ssid => Str
 
 The SSID of the Wi-Fi network.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags to be added to the specified resource. Do not provide system
+tags.
 
 
 

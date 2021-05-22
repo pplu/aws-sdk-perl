@@ -966,6 +966,8 @@ devices.
 
 =item [Description => Str]
 
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+
 
 =back
 
@@ -994,6 +996,8 @@ Creates an address book with the specified details.
 
 =item [ScheduleName => Str]
 
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+
 
 =back
 
@@ -1020,6 +1024,8 @@ specified S3 location with a specified daily or weekly interval.
 =item [IPDialIn => L<Paws::AlexaForBusiness::IPDialIn>]
 
 =item [PSTNDialIn => L<Paws::AlexaForBusiness::PSTNDialIn>]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
 
 
 =back
@@ -1049,6 +1055,8 @@ Adds a new conference provider under the user's AWS account.
 
 =item [SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]]
 
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+
 
 =back
 
@@ -1068,6 +1076,8 @@ Creates a contact with the specified details.
 =item Name => Str
 
 =item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
 
 
 =back
@@ -1101,6 +1111,8 @@ Creates a gateway group with the specified details.
 
 =item [NextPassword => Str]
 
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+
 =item [TrustAnchors => ArrayRef[Str|Undef]]
 
 
@@ -1131,6 +1143,8 @@ Creates a network profile with the specified details.
 
 =item [ClientRequestToken => Str]
 
+=item [DataRetentionOptIn => Bool]
+
 =item [Locale => Str]
 
 =item [MaxVolumeLimit => Int]
@@ -1140,6 +1154,8 @@ Creates a network profile with the specified details.
 =item [PSTNEnabled => Bool]
 
 =item [SetupModeDisabled => Bool]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
 
 
 =back
@@ -1186,6 +1202,8 @@ Creates a room with the specified details.
 =item [ClientRequestToken => Str]
 
 =item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
 
 
 =back
@@ -2074,11 +2092,15 @@ that assumed the IAM role.
 
 =item ClientId => Str
 
-=item DeviceSerialNumber => Str
-
 =item ProductId => Str
 
 =item UserCode => Str
+
+=item [DeviceSerialNumber => Str]
+
+=item [RoomArn => Str]
+
+=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
 
 
 =back
@@ -2127,6 +2149,14 @@ Returns: a L<Paws::AlexaForBusiness::ResolveRoomResponse> instance
 
 Determines the details for the room from which a skill request was
 invoked. This operation is used by skill developers.
+
+To query ResolveRoom from an Alexa skill, the skill ID needs to be
+authorized. When the skill is using an AWS Lambda function, the skill
+is automatically authorized when you publish your skill as a private
+skill to your AWS account. Skills that are hosted using a custom web
+service must be manually authorized. To get your skill authorized,
+contact AWS Support with your AWS account ID that queries the
+ResolveRoom API and skill ID.
 
 
 =head2 RevokeInvitation
@@ -2668,6 +2698,8 @@ Updates a network profile by the network profile ARN.
 =over
 
 =item [Address => Str]
+
+=item [DataRetentionOptIn => Bool]
 
 =item [DistanceUnit => Str]
 

@@ -8,6 +8,7 @@ package Paws::AlexaForBusiness::CreateContact;
   has PhoneNumber => (is => 'ro', isa => 'Str');
   has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::PhoneNumber]');
   has SipAddresses => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::SipAddress]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -51,6 +52,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Type => 'WORK',                  # values: WORK
           Uri  => 'MySipUri',              # min: 1, max: 256
+
+        },
+        ...
+      ],                                   # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',             # min: 1, max: 128
+          Value => 'MyTagValue',           # max: 256
 
         },
         ...
@@ -113,6 +122,13 @@ The list of phone numbers for the contact.
 =head2 SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]
 
 The list of SIP addresses for the contact.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags to be added to the specified resource. Do not provide system
+tags.
 
 
 

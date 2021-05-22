@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::CreateSkillGroup;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has SkillGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SkillGroupName     => 'MySkillGroupName',
       ClientRequestToken => 'MyClientRequestToken',       # OPTIONAL
       Description        => 'MySkillGroupDescription',    # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',                            # min: 1, max: 128
+          Value => 'MyTagValue',                          # max: 256
+
+        },
+        ...
+      ],                                                  # OPTIONAL
     );
 
     # Results:
@@ -62,6 +71,12 @@ The description for the skill group.
 =head2 B<REQUIRED> SkillGroupName => Str
 
 The name for the skill group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags for the skill group.
 
 
 

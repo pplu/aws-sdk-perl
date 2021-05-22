@@ -90,6 +90,8 @@ The date when the skill was released.
 
 =head2 Reviews => L<Paws::AlexaForBusiness::Reviews>
 
+I<This member has been deprecated.>
+
 The list of reviews for the skill, including Key and Value pair.
 
 
