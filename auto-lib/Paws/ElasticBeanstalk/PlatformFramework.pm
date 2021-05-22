@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-A framework supported by the custom platform.
+A framework supported by the platform.
 
 =head1 ATTRIBUTES
 

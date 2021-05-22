@@ -18,7 +18,7 @@ Paws::ElasticBeanstalk::ResourceTagsDescriptionMessage
 
 =head2 ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the resouce for which a tag list was
+The Amazon Resource Name (ARN) of the resource for which a tag list was
 requested.
 
 

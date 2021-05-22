@@ -86,7 +86,7 @@ Settings for an AWS CodeBuild build.
 
 =head2 Description => Str
 
-Describes this version.
+A description of this application version.
 
 
 

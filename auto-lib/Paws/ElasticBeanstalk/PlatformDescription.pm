@@ -10,7 +10,10 @@ package Paws::ElasticBeanstalk::PlatformDescription;
   has OperatingSystemName => (is => 'ro', isa => 'Str');
   has OperatingSystemVersion => (is => 'ro', isa => 'Str');
   has PlatformArn => (is => 'ro', isa => 'Str');
+  has PlatformBranchLifecycleState => (is => 'ro', isa => 'Str');
+  has PlatformBranchName => (is => 'ro', isa => 'Str');
   has PlatformCategory => (is => 'ro', isa => 'Str');
+  has PlatformLifecycleState => (is => 'ro', isa => 'Str');
   has PlatformName => (is => 'ro', isa => 'Str');
   has PlatformOwner => (is => 'ro', isa => 'Str');
   has PlatformStatus => (is => 'ro', isa => 'Str');
@@ -50,99 +53,122 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Detailed information about a platform.
+Detailed information about a platform version.
 
 =head1 ATTRIBUTES
 
 
 =head2 CustomAmiList => ArrayRef[L<Paws::ElasticBeanstalk::CustomAmi>]
 
-The custom AMIs supported by the platform.
+The custom AMIs supported by the platform version.
 
 
 =head2 DateCreated => Str
 
-The date when the platform was created.
+The date when the platform version was created.
 
 
 =head2 DateUpdated => Str
 
-The date when the platform was last updated.
+The date when the platform version was last updated.
 
 
 =head2 Description => Str
 
-The description of the platform.
+The description of the platform version.
 
 
 =head2 Frameworks => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFramework>]
 
-The frameworks supported by the platform.
+The frameworks supported by the platform version.
 
 
 =head2 Maintainer => Str
 
-Information about the maintainer of the platform.
+Information about the maintainer of the platform version.
 
 
 =head2 OperatingSystemName => Str
 
-The operating system used by the platform.
+The operating system used by the platform version.
 
 
 =head2 OperatingSystemVersion => Str
 
-The version of the operating system used by the platform.
+The version of the operating system used by the platform version.
 
 
 =head2 PlatformArn => Str
 
-The ARN of the platform.
+The ARN of the platform version.
+
+
+=head2 PlatformBranchLifecycleState => Str
+
+The state of the platform version's branch in its lifecycle.
+
+Possible values: C<Beta> | C<Supported> | C<Deprecated> | C<Retired>
+
+
+=head2 PlatformBranchName => Str
+
+The platform branch to which the platform version belongs.
 
 
 =head2 PlatformCategory => Str
 
-The category of the platform.
+The category of the platform version.
+
+
+=head2 PlatformLifecycleState => Str
+
+The state of the platform version in its lifecycle.
+
+Possible values: C<Recommended> | C<null>
+
+If a null value is returned, the platform version isn't the recommended
+one for its branch. Each platform branch has a single recommended
+platform version, typically the most recent one.
 
 
 =head2 PlatformName => Str
 
-The name of the platform.
+The name of the platform version.
 
 
 =head2 PlatformOwner => Str
 
-The AWS account ID of the person who created the platform.
+The AWS account ID of the person who created the platform version.
 
 
 =head2 PlatformStatus => Str
 
-The status of the platform.
+The status of the platform version.
 
 
 =head2 PlatformVersion => Str
 
-The version of the platform.
+The version of the platform version.
 
 
 =head2 ProgrammingLanguages => ArrayRef[L<Paws::ElasticBeanstalk::PlatformProgrammingLanguage>]
 
-The programming languages supported by the platform.
+The programming languages supported by the platform version.
 
 
 =head2 SolutionStackName => Str
 
-The name of the solution stack used by the platform.
+The name of the solution stack used by the platform version.
 
 
 =head2 SupportedAddonList => ArrayRef[Str|Undef]
 
-The additions supported by the platform.
+The additions supported by the platform version.
 
 
 =head2 SupportedTierList => ArrayRef[Str|Undef]
 
-The tiers supported by the platform.
+The tiers supported by the platform version.
 
 
 

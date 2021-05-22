@@ -1,8 +1,8 @@
 
-package Paws::ElasticBeanstalk::ListPlatformVersionsResult;
+package Paws::ElasticBeanstalk::ListPlatformBranchesResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has PlatformSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::PlatformSummary]');
+  has PlatformBranchSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::PlatformBranchSummary]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -11,7 +11,7 @@ package Paws::ElasticBeanstalk::ListPlatformVersionsResult;
 
 =head1 NAME
 
-Paws::ElasticBeanstalk::ListPlatformVersionsResult
+Paws::ElasticBeanstalk::ListPlatformBranchesResult
 
 =head1 ATTRIBUTES
 
@@ -23,9 +23,9 @@ that you can pass in a subsequent request to get the next response
 page.
 
 
-=head2 PlatformSummaryList => ArrayRef[L<Paws::ElasticBeanstalk::PlatformSummary>]
+=head2 PlatformBranchSummaryList => ArrayRef[L<Paws::ElasticBeanstalk::PlatformBranchSummary>]
 
-Summary information about the platform versions.
+Summary information about the platform branches.
 
 
 =head2 _request_id => Str

@@ -14,6 +14,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Health => (is => 'ro', isa => 'Str');
   has HealthStatus => (is => 'ro', isa => 'Str');
+  has OperationsRole => (is => 'ro', isa => 'Str');
   has PlatformArn => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourcesDescription');
   has SolutionStackName => (is => 'ro', isa => 'Str');
@@ -137,9 +138,17 @@ environment. For more information, see Health Colors and Statuses
 (https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">, C<"Suspended">
+=head2 OperationsRole => Str
+
+The Amazon Resource Name (ARN) of the environment's operations role.
+For more information, see Operations roles
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+in the I<AWS Elastic Beanstalk Developer Guide>.
+
+
 =head2 PlatformArn => Str
 
-The ARN of the platform.
+The ARN of the platform version.
 
 
 =head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>
@@ -183,7 +192,7 @@ C<Terminated>: Environment is not running.
 =back
 
 
-Valid values are: C<"Launching">, C<"Updating">, C<"Ready">, C<"Terminating">, C<"Terminated">
+Valid values are: C<"Aborting">, C<"Launching">, C<"Updating">, C<"LinkingFrom">, C<"LinkingTo">, C<"Ready">, C<"Terminating">, C<"Terminated">
 =head2 TemplateName => Str
 
 The name of the configuration template used to originally launch this

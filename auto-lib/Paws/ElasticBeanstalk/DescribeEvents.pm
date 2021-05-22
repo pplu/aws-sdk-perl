@@ -98,7 +98,9 @@ results.
 
 =head2 PlatformArn => Str
 
-The ARN of the version of the custom platform.
+The ARN of a custom platform version. If specified, AWS Elastic
+Beanstalk restricts the returned descriptions to those associated with
+this custom platform version.
 
 
 

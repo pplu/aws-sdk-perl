@@ -53,23 +53,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 The Amazon Resource Name (ARN) of the resouce to be updated.
 
-Must be the ARN of an Elastic Beanstalk environment.
+Must be the ARN of an Elastic Beanstalk resource.
 
 
 
 =head2 TagsToAdd => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
 
-A list of tags to add or update.
+A list of tags to add or update. If a key of an existing tag is added,
+the tag's value is updated.
 
-If a key of an existing tag is added, the tag's value is updated.
+Specify at least one of these parameters: C<TagsToAdd>,
+C<TagsToRemove>.
 
 
 
 =head2 TagsToRemove => ArrayRef[Str|Undef]
 
-A list of tag keys to remove.
+A list of tag keys to remove. If a tag key doesn't exist, it is
+silently ignored.
 
-If a tag key doesn't exist, it is silently ignored.
+Specify at least one of these parameters: C<TagsToAdd>,
+C<TagsToRemove>.
 
 
 

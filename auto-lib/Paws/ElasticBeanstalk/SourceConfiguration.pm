@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-A specification for an environment configuration
+A specification for an environment configuration.
 
 =head1 ATTRIBUTES
 

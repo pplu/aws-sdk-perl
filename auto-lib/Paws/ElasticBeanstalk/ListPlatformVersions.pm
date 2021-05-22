@@ -56,21 +56,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>]
 
-List only the platforms where the platform member value relates to one
-of the supplied values.
+Criteria for restricting the resulting list of platform versions. The
+filter is interpreted as a logical conjunction (AND) of the separate
+C<PlatformFilter> terms.
 
 
 
 =head2 MaxRecords => Int
 
-The maximum number of platform values returned in one call.
+The maximum number of platform version values returned in one call.
 
 
 
 =head2 NextToken => Str
 
-The starting index into the remaining list of platforms. Use the
-C<NextToken> value from a previous C<ListPlatformVersion> call.
+For a paginated request. Specify a token from a previous response page
+to retrieve the next response page. All other parameter values must be
+identical to the ones specified in the initial request.
+
+If no C<NextToken> is specified, the first page is retrieved.
 
 
 

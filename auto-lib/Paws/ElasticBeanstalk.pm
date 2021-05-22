@@ -24,6 +24,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ApplyEnvironmentManagedAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateEnvironmentOperationsRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::AssociateEnvironmentOperationsRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CheckDNSAvailability {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CheckDNSAvailability', @_);
@@ -154,9 +159,19 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribePlatformVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateEnvironmentOperationsRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DisassociateEnvironmentOperationsRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAvailableSolutionStacks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPlatformBranches {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListPlatformBranches', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPlatformVersions {
@@ -352,7 +367,7 @@ package Paws::ElasticBeanstalk;
   }
 
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeAccountAttributes DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions ListTagsForResource RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment UpdateTagsForResource ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction AssociateEnvironmentOperationsRole CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeAccountAttributes DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion DisassociateEnvironmentOperationsRole ListAvailableSolutionStacks ListPlatformBranches ListPlatformVersions ListTagsForResource RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment UpdateTagsForResource ValidateConfigurationSettings / }
 
 1;
 
@@ -389,8 +404,8 @@ Services cloud.
 For more information about this product, go to the AWS Elastic
 Beanstalk (http://aws.amazon.com/elasticbeanstalk/) details page. The
 location of the latest AWS Elastic Beanstalk WSDL is
-http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl
-(http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl).
+https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl
+(https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl).
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that enable you to
 access the API, go to Tools for Amazon Web Services
@@ -447,6 +462,29 @@ Returns: a L<Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult> instan
 Applies a scheduled managed action immediately. A managed action can be
 applied only if its status is C<Scheduled>. Get the status and action
 ID of a managed action with DescribeEnvironmentManagedActions.
+
+
+=head2 AssociateEnvironmentOperationsRole
+
+=over
+
+=item EnvironmentName => Str
+
+=item OperationsRole => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::AssociateEnvironmentOperationsRole>
+
+Returns: nothing
+
+Add or change the operations role used by an environment. After this
+call is made, Elastic Beanstalk uses the associated operations role for
+permissions to downstream services during subsequent calls acting on
+this environment. For more information, see Operations roles
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+in the I<AWS Elastic Beanstalk Developer Guide>.
 
 
 =head2 CheckDNSAvailability
@@ -560,8 +598,8 @@ Specify a source bundle in S3 with C<SourceBundle>
 Omit both C<SourceBuildInformation> and C<SourceBundle> to use the
 default sample application.
 
-Once you create an application version with a specified Amazon S3
-bucket and key location, you cannot change that Amazon S3 location. If
+After you create an application version with a specified Amazon S3
+bucket and key location, you can't change that Amazon S3 location. If
 you change the Amazon S3 location, you receive an exception when you
 attempt to launch an environment from the application version.
 
@@ -595,8 +633,10 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateConfigu
 
 Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> instance
 
-Creates a configuration template. Templates are associated with a
-specific application and are used to deploy different versions of the
+Creates an AWS Elastic Beanstalk configuration template, associated
+with a specific Elastic Beanstalk application. You define application
+configuration settings in a configuration template. You can then use
+the configuration template to deploy different versions of the
 application with the same configuration settings.
 
 Templates aren't associated with any environment. The
@@ -636,6 +676,8 @@ ListAvailableSolutionStacks
 
 =item [GroupName => Str]
 
+=item [OperationsRole => Str]
+
 =item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
 
 =item [OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]]
@@ -659,8 +701,8 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnviron
 
 Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
-Launches an environment for the specified application using the
-specified configuration.
+Launches an AWS Elastic Beanstalk environment for the specified
+application using the specified configuration.
 
 
 =head2 CreatePlatformVersion
@@ -1139,7 +1181,34 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribePlatf
 
 Returns: a L<Paws::ElasticBeanstalk::DescribePlatformVersionResult> instance
 
-Describes the version of the platform.
+Describes a platform version. Provides full details. Compare to
+ListPlatformVersions, which provides summary information about a list
+of platform versions.
+
+For definitions of platform version and other platform-related terms,
+see AWS Elastic Beanstalk Platforms Glossary
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
+
+
+=head2 DisassociateEnvironmentOperationsRole
+
+=over
+
+=item EnvironmentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DisassociateEnvironmentOperationsRole>
+
+Returns: nothing
+
+Disassociate the operations role from an environment. After this call
+is made, Elastic Beanstalk uses the caller's permissions for
+permissions to downstream services during subsequent calls acting on
+this environment. For more information, see Operations roles
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+in the I<AWS Elastic Beanstalk Developer Guide>.
 
 
 =head2 ListAvailableSolutionStacks
@@ -1159,6 +1228,31 @@ Returns a list of the available solution stack names, with the public
 version first and then in reverse chronological order.
 
 
+=head2 ListPlatformBranches
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ElasticBeanstalk::SearchFilter>]]
+
+=item [MaxRecords => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListPlatformBranches>
+
+Returns: a L<Paws::ElasticBeanstalk::ListPlatformBranchesResult> instance
+
+Lists the platform branches available for your account in an AWS
+Region. Provides summary information about each platform branch.
+
+For definitions of platform branch and other platform-related terms,
+see AWS Elastic Beanstalk Platforms Glossary
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
+
+
 =head2 ListPlatformVersions
 
 =over
@@ -1176,7 +1270,14 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListPlatformV
 
 Returns: a L<Paws::ElasticBeanstalk::ListPlatformVersionsResult> instance
 
-Lists the available platforms.
+Lists the platform versions available for your account in an AWS
+Region. Provides summary information about each platform version.
+Compare to DescribePlatformVersion, which provides full details about a
+single platform version.
+
+For definitions of platform version and other platform-related terms,
+see AWS Elastic Beanstalk Platforms Glossary
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
 
 
 =head2 ListTagsForResource
@@ -1192,13 +1293,12 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListTagsForRe
 
 Returns: a L<Paws::ElasticBeanstalk::ResourceTagsDescriptionMessage> instance
 
-Returns the tags applied to an AWS Elastic Beanstalk resource. The
+Return the tags applied to an AWS Elastic Beanstalk resource. The
 response contains a list of tag key-value pairs.
 
-Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-environments. For details about environment tagging, see Tagging
-Resources in Your Elastic Beanstalk Environment
-(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+Elastic Beanstalk supports tagging of all of its resources. For details
+about resource tagging, see Tagging Application Resources
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html).
 
 
 =head2 RebuildEnvironment
@@ -1532,10 +1632,9 @@ Update the list of tags applied to an AWS Elastic Beanstalk resource.
 Two lists can be passed: C<TagsToAdd> for tags to add or update, and
 C<TagsToRemove>.
 
-Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-environments. For details about environment tagging, see Tagging
-Resources in Your Elastic Beanstalk Environment
-(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+Elastic Beanstalk supports tagging of all of its resources. For details
+about resource tagging, see Tagging Application Resources
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html).
 
 If you create a custom IAM user policy to control permission to this
 operation, specify one of the following two virtual actions (or both)

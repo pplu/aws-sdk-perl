@@ -17,7 +17,7 @@ Paws::ElasticBeanstalk::DescribePlatformVersionResult
 
 =head2 PlatformDescription => L<Paws::ElasticBeanstalk::PlatformDescription>
 
-Detailed information about the version of the platform.
+Detailed information about the platform version.
 
 
 =head2 _request_id => Str

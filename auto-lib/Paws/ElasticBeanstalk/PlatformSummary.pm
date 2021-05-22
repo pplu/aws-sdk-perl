@@ -4,9 +4,13 @@ package Paws::ElasticBeanstalk::PlatformSummary;
   has OperatingSystemName => (is => 'ro', isa => 'Str');
   has OperatingSystemVersion => (is => 'ro', isa => 'Str');
   has PlatformArn => (is => 'ro', isa => 'Str');
+  has PlatformBranchLifecycleState => (is => 'ro', isa => 'Str');
+  has PlatformBranchName => (is => 'ro', isa => 'Str');
   has PlatformCategory => (is => 'ro', isa => 'Str');
+  has PlatformLifecycleState => (is => 'ro', isa => 'Str');
   has PlatformOwner => (is => 'ro', isa => 'Str');
   has PlatformStatus => (is => 'ro', isa => 'Str');
+  has PlatformVersion => (is => 'ro', isa => 'Str');
   has SupportedAddonList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedTierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -40,50 +44,77 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Detailed information about a platform.
+Summary information about a platform version.
 
 =head1 ATTRIBUTES
 
 
 =head2 OperatingSystemName => Str
 
-The operating system used by the platform.
+The operating system used by the platform version.
 
 
 =head2 OperatingSystemVersion => Str
 
-The version of the operating system used by the platform.
+The version of the operating system used by the platform version.
 
 
 =head2 PlatformArn => Str
 
-The ARN of the platform.
+The ARN of the platform version.
+
+
+=head2 PlatformBranchLifecycleState => Str
+
+The state of the platform version's branch in its lifecycle.
+
+Possible values: C<beta> | C<supported> | C<deprecated> | C<retired>
+
+
+=head2 PlatformBranchName => Str
+
+The platform branch to which the platform version belongs.
 
 
 =head2 PlatformCategory => Str
 
-The category of platform.
+The category of platform version.
+
+
+=head2 PlatformLifecycleState => Str
+
+The state of the platform version in its lifecycle.
+
+Possible values: C<recommended> | empty
+
+If an empty value is returned, the platform version is supported but
+isn't the recommended one for its branch.
 
 
 =head2 PlatformOwner => Str
 
-The AWS account ID of the person who created the platform.
+The AWS account ID of the person who created the platform version.
 
 
 =head2 PlatformStatus => Str
 
-The status of the platform. You can create an environment from the
-platform once it is ready.
+The status of the platform version. You can create an environment from
+the platform version once it is ready.
+
+
+=head2 PlatformVersion => Str
+
+The version string of the platform version.
 
 
 =head2 SupportedAddonList => ArrayRef[Str|Undef]
 
-The additions associated with the platform.
+The additions associated with the platform version.
 
 
 =head2 SupportedTierList => ArrayRef[Str|Undef]
 
-The tiers in which the platform runs.
+The tiers in which the platform version runs.
 
 
 

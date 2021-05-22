@@ -89,7 +89,7 @@ configuration set.
 
 =head2 PlatformArn => Str
 
-The ARN of the platform.
+The ARN of the platform version.
 
 
 =head2 SolutionStackName => Str
