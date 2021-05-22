@@ -1,7 +1,8 @@
 
 package Paws::CloudTrail::PutEventSelectors;
   use Moose;
-  has EventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::EventSelector]', required => 1);
+  has AdvancedEventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::AdvancedEventSelector]');
+  has EventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::EventSelector]');
   has TrailName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,6 +30,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudtrail = Paws->service('CloudTrail');
     my $PutEventSelectorsResponse = $cloudtrail->PutEventSelectors(
+      TrailName              => 'MyString',
+      AdvancedEventSelectors => [
+        {
+          FieldSelectors => [
+            {
+              Field    => 'MySelectorField',    # min: 1, max: 1000
+              EndsWith => [
+                'MyOperatorValue', ...          # min: 1, max: 2048
+              ],                                # min: 1; OPTIONAL
+              Equals => [
+                'MyOperatorValue', ...          # min: 1, max: 2048
+              ],                                # min: 1; OPTIONAL
+              NotEndsWith => [
+                'MyOperatorValue', ...          # min: 1, max: 2048
+              ],                                # min: 1; OPTIONAL
+              NotEquals => [
+                'MyOperatorValue', ...          # min: 1, max: 2048
+              ],                                # min: 1; OPTIONAL
+              NotStartsWith => [
+                'MyOperatorValue', ...          # min: 1, max: 2048
+              ],                                # min: 1; OPTIONAL
+              StartsWith => [
+                'MyOperatorValue', ...          # min: 1, max: 2048
+              ],                                # min: 1; OPTIONAL
+            },
+            ...
+          ],                                    # min: 1
+          Name => 'MySelectorName',             # max: 1000; OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
       EventSelectors => [
         {
           DataResources => [
@@ -39,17 +71,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                    # OPTIONAL
           ExcludeManagementEventSources => [ 'MyString', ... ],    # OPTIONAL
-          IncludeManagementEvents => 1,                            # OPTIONAL
+          IncludeManagementEvents       => 1,                      # OPTIONAL
           ReadWriteType =>
             'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
         },
         ...
-      ],
-      TrailName => 'MyString',
-
+      ],                   # OPTIONAL
     );
 
     # Results:
+    my $AdvancedEventSelectors =
+      $PutEventSelectorsResponse->AdvancedEventSelectors;
     my $EventSelectors = $PutEventSelectorsResponse->EventSelectors;
     my $TrailARN       = $PutEventSelectorsResponse->TrailARN;
 
@@ -61,10 +93,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
+=head2 AdvancedEventSelectors => ArrayRef[L<Paws::CloudTrail::AdvancedEventSelector>]
+
+Specifies the settings for advanced event selectors. You can add
+advanced event selectors, and conditions for your advanced event
+selectors, up to a maximum of 500 values for all conditions and
+selectors on a trail. You can use either C<AdvancedEventSelectors> or
+C<EventSelectors>, but not both. If you apply C<AdvancedEventSelectors>
+to a trail, any existing C<EventSelectors> are overwritten. For more
+information about advanced event selectors, see Logging data events for
+trails
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
+in the I<AWS CloudTrail User Guide>.
+
+
+
+=head2 EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
 
 Specifies the settings for your event selectors. You can configure up
-to five event selectors for a trail.
+to five event selectors for a trail. You can use either
+C<EventSelectors> or C<AdvancedEventSelectors> in a
+C<PutEventSelectors> request, but not both. If you apply
+C<EventSelectors> to a trail, any existing C<AdvancedEventSelectors>
+are overwritten.
 
 
 

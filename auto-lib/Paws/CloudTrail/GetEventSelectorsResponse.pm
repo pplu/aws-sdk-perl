@@ -1,6 +1,7 @@
 
 package Paws::CloudTrail::GetEventSelectorsResponse;
   use Moose;
+  has AdvancedEventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::AdvancedEventSelector]');
   has EventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::EventSelector]');
   has TrailARN => (is => 'ro', isa => 'Str');
 
@@ -13,6 +14,11 @@ package Paws::CloudTrail::GetEventSelectorsResponse;
 Paws::CloudTrail::GetEventSelectorsResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 AdvancedEventSelectors => ArrayRef[L<Paws::CloudTrail::AdvancedEventSelector>]
+
+The advanced event selectors that are configured for the trail.
 
 
 =head2 EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]

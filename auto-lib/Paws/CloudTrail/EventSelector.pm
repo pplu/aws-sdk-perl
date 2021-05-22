@@ -47,6 +47,9 @@ doesn't log the event.
 
 You can configure up to five event selectors for a trail.
 
+You cannot apply both event selectors and advanced event selectors to a
+trail.
+
 =head1 ATTRIBUTES
 
 
@@ -85,6 +88,12 @@ For more information, see Management Events
 in the I<AWS CloudTrail User Guide>.
 
 By default, the value is C<true>.
+
+The first copy of management events is free. You are charged for
+additional copies of management events that you are logging on any
+subsequent trail in the same region. For more information about
+CloudTrail pricing, see AWS CloudTrail Pricing
+(http://aws.amazon.com/cloudtrail/pricing/).
 
 
 =head2 ReadWriteType => Str

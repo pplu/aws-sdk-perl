@@ -44,6 +44,10 @@ The total number of allowed data resources is 250. This number can be
 distributed between 1 and 5 event selectors, but the total cannot
 exceed 250 across all selectors.
 
+If you are using advanced event selectors, the maximum total number of
+values for all conditions, across all advanced event selectors for the
+trail, is 500.
+
 The following example demonstrates how logging works when you configure
 logging of all data events for an S3 bucket named C<bucket-1>. In this
 example, the CloudTrail user specified an empty prefix, and the option
@@ -113,6 +117,10 @@ trail. The trail doesnE<rsquo>t log the event.
 
 The resource type in which you want to log data events. You can specify
 C<AWS::S3::Object> or C<AWS::Lambda::Function> resources.
+
+The C<AWS::S3Outposts::Object> resource type is not valid in basic
+event selectors. To log data events on this resource type, use advanced
+event selectors.
 
 
 =head2 Values => ArrayRef[Str|Undef]
