@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 B<REQUIRED> ChannelARN => Str
 
-The ARN of the signaling channel that you want to update.
+The Amazon Resource Name (ARN) of the signaling channel that you want
+to update.
 
 
 

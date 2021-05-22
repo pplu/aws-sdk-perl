@@ -320,8 +320,8 @@ Each argument is described in detail in: L<Paws::KinesisVideo::DescribeSignaling
 Returns: a L<Paws::KinesisVideo::DescribeSignalingChannelOutput> instance
 
 Returns the most current information about the signaling channel. You
-must specify either the name or the ARN of the channel that you want to
-describe.
+must specify either the name or the Amazon Resource Name (ARN) of the
+channel that you want to describe.
 
 
 =head2 DescribeStream
@@ -393,9 +393,9 @@ C<SingleMasterChannelEndpointConfiguration> input parameter, which
 consists of the C<Protocols> and C<Role> properties.
 
 C<Protocols> is used to determine the communication mechanism. For
-example, specifying C<WSS> as the protocol, results in this API
-producing a secure websocket endpoint, and specifying C<HTTPS> as the
-protocol, results in this API generating an HTTPS endpoint.
+example, if you specify C<WSS> as the protocol, this API produces a
+secure websocket endpoint. If you specify C<HTTPS> as the protocol,
+this API generates an HTTPS endpoint.
 
 C<Role> determines the messaging permissions. A C<MASTER> role results
 in this API generating an endpoint that a client can use to communicate
@@ -667,8 +667,8 @@ Updates the existing signaling channel. This is an asynchronous
 operation and takes time to complete.
 
 If the C<MessageTtlSeconds> value is updated (either increased or
-reduced), then it only applies to new messages sent via this channel
-after it's been updated. Existing messages are still expire as per the
+reduced), it only applies to new messages sent via this channel after
+it's been updated. Existing messages are still expired as per the
 previous C<MessageTtlSeconds> value.
 
 

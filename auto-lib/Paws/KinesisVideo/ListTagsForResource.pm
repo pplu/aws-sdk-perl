@@ -48,15 +48,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 NextToken => Str
 
-If you specify this parameter and the result of a ListTagsForResource
-call is truncated, the response includes a token that you can use in
-the next request to fetch the next batch of tags.
+If you specify this parameter and the result of a
+C<ListTagsForResource> call is truncated, the response includes a token
+that you can use in the next request to fetch the next batch of tags.
 
 
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the signaling channel for which you want to list tags.
+The Amazon Resource Name (ARN) of the signaling channel for which you
+want to list tags.
 
 
 

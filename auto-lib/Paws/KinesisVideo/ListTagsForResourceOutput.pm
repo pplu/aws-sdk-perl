@@ -18,9 +18,9 @@ Paws::KinesisVideo::ListTagsForResourceOutput
 
 =head2 NextToken => Str
 
-If you specify this parameter and the result of a ListTagsForResource
-call is truncated, the response includes a token that you can use in
-the next request to fetch the next set of tags.
+If you specify this parameter and the result of a
+C<ListTagsForResource> call is truncated, the response includes a token
+that you can use in the next request to fetch the next set of tags.
 
 
 =head2 Tags => L<Paws::KinesisVideo::ResourceTags>
