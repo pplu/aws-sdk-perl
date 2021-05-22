@@ -27,21 +27,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    my $DescribeSecretResponse = $secretsmanager->DescribeSecret(
-      SecretId => 'MySecretIdType',
-
-    );
+    # To retrieve the details of a secret
+    # The following example shows how to get the details about a secret.
+    my $DescribeSecretResponse =
+      $secretsmanager->DescribeSecret( 'SecretId' => 'MyTestDatabaseSecret' );
 
     # Results:
     my $ARN                = $DescribeSecretResponse->ARN;
-    my $DeletedDate        = $DescribeSecretResponse->DeletedDate;
     my $Description        = $DescribeSecretResponse->Description;
     my $KmsKeyId           = $DescribeSecretResponse->KmsKeyId;
     my $LastAccessedDate   = $DescribeSecretResponse->LastAccessedDate;
     my $LastChangedDate    = $DescribeSecretResponse->LastChangedDate;
     my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
     my $Name               = $DescribeSecretResponse->Name;
-    my $OwningService      = $DescribeSecretResponse->OwningService;
     my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
     my $RotationLambdaARN  = $DescribeSecretResponse->RotationLambdaARN;
     my $RotationRules      = $DescribeSecretResponse->RotationRules;
@@ -73,8 +71,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

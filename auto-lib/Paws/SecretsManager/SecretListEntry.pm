@@ -2,6 +2,7 @@
 package Paws::SecretsManager::SecretListEntry;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Str');
   has DeletedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -10,6 +11,7 @@ package Paws::SecretsManager::SecretListEntry;
   has LastRotatedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OwningService => (is => 'ro', isa => 'Str');
+  has PrimaryRegion => (is => 'ro', isa => 'Str');
   has RotationEnabled => (is => 'ro', isa => 'Bool');
   has RotationLambdaARN => (is => 'ro', isa => 'Str');
   has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
@@ -63,9 +65,14 @@ Resources
 in the I<AWS Secrets Manager User Guide>.
 
 
+=head2 CreatedDate => Str
+
+The date and time when a secret was created.
+
+
 =head2 DeletedDate => Str
 
-The date and time on which this secret was deleted. Not present on
+The date and time the deletion of the secret occurred. Not present on
 active secrets. The secret can be recovered until the number of days in
 the recovery window has passed, as specified in the
 C<RecoveryWindowInDays> parameter of the DeleteSecret operation.
@@ -78,11 +85,11 @@ The user-provided description of the secret.
 
 =head2 KmsKeyId => Str
 
-The ARN or alias of the AWS KMS customer master key (CMK) that's used
-to encrypt the C<SecretString> and C<SecretBinary> fields in each
-version of the secret. If you don't provide a key, then Secrets Manager
-defaults to encrypting the secret fields with the default KMS CMK (the
-one named C<awssecretsmanager>) for this account.
+The ARN or alias of the AWS KMS customer master key (CMK) used to
+encrypt the C<SecretString> and C<SecretBinary> fields in each version
+of the secret. If you don't provide a key, then Secrets Manager
+defaults to encrypting the secret fields with the default KMS CMK, the
+key named C<awssecretsmanager>, for this account.
 
 
 =head2 LastAccessedDate => Str
@@ -98,8 +105,9 @@ The last date and time that this secret was modified in any way.
 
 =head2 LastRotatedDate => Str
 
-The last date and time that the rotation process for this secret was
-invoked.
+The most recent date and time that the Secrets Manager rotation process
+was successfully completed. This value is null if the secret hasn't
+ever rotated.
 
 
 =head2 Name => Str
@@ -112,20 +120,25 @@ named C<dbserver1> in the folder C<databases> in the folder C<prod>.
 
 =head2 OwningService => Str
 
+Returns the name of the service that created the secret.
 
+
+=head2 PrimaryRegion => Str
+
+The Region where Secrets Manager originated the secret.
 
 
 =head2 RotationEnabled => Bool
 
-Indicated whether automatic, scheduled rotation is enabled for this
+Indicates whether automatic, scheduled rotation is enabled for this
 secret.
 
 
 =head2 RotationLambdaARN => Str
 
-The ARN of an AWS Lambda function that's invoked by Secrets Manager to
-rotate and expire the secret either automatically per the schedule or
-manually by a call to RotateSecret.
+The ARN of an AWS Lambda function invoked by Secrets Manager to rotate
+and expire the secret either automatically per the schedule or manually
+by a call to RotateSecret.
 
 
 =head2 RotationRules => L<Paws::SecretsManager::RotationRulesType>
@@ -136,9 +149,9 @@ A structure that defines the rotation configuration for the secret.
 =head2 SecretVersionsToStages => L<Paws::SecretsManager::SecretVersionsToStagesMapType>
 
 A list of all of the currently assigned C<SecretVersionStage> staging
-labels and the C<SecretVersionId> that each is attached to. Staging
-labels are used to keep track of the different versions during the
-rotation process.
+labels and the C<SecretVersionId> attached to each one. Staging labels
+are used to keep track of the different versions during the rotation
+process.
 
 A version that does not have any C<SecretVersionStage> is considered
 deprecated and subject to deletion. Such versions are not included in
@@ -147,9 +160,8 @@ this list.
 
 =head2 Tags => ArrayRef[L<Paws::SecretsManager::Tag>]
 
-The list of user-defined tags that are associated with the secret. To
-add tags to a secret, use TagResource. To remove tags, use
-UntagResource.
+The list of user-defined tags associated with the secret. To add tags
+to a secret, use TagResource. To remove tags, use UntagResource.
 
 
 

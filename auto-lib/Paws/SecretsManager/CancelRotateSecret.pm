@@ -27,15 +27,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+   # To cancel scheduled rotation for a secret
+   # The following example shows how to cancel rotation for a secret. The
+   # operation sets the RotationEnabled field to false and cancels all scheduled
+   # rotations. To resume scheduled rotations, you must re-enable rotation by
+   # calling the rotate-secret operation.
     my $CancelRotateSecretResponse = $secretsmanager->CancelRotateSecret(
-      SecretId => 'MySecretIdType',
-
-    );
+      'SecretId' => 'MyTestDatabaseSecret' );
 
     # Results:
-    my $ARN       = $CancelRotateSecretResponse->ARN;
-    my $Name      = $CancelRotateSecretResponse->Name;
-    my $VersionId = $CancelRotateSecretResponse->VersionId;
+    my $ARN  = $CancelRotateSecretResponse->ARN;
+    my $Name = $CancelRotateSecretResponse->Name;
 
     # Returns a L<Paws::SecretsManager::CancelRotateSecretResponse> object.
 
@@ -47,9 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> SecretId => Str
 
-Specifies the secret for which you want to cancel a rotation request.
-You can specify either the Amazon Resource Name (ARN) or the friendly
-name of the secret.
+Specifies the secret to cancel a rotation request. You can specify
+either the Amazon Resource Name (ARN) or the friendly name of the
+secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN tooE<mdash>for example, if
@@ -62,8 +64,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

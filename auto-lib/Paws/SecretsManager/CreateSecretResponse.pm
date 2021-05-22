@@ -3,6 +3,7 @@ package Paws::SecretsManager::CreateSecretResponse;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ReplicationStatus => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::ReplicationStatusType]');
   has VersionId => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -34,10 +35,16 @@ are different.
 The friendly name of the secret that you just created.
 
 
+=head2 ReplicationStatus => ArrayRef[L<Paws::SecretsManager::ReplicationStatusType>]
+
+Describes a list of replication status objects as C<InProgress>,
+C<Failed> or C<InSync>.
+
+
 =head2 VersionId => Str
 
-The unique identifier that's associated with the version of the secret
-you just created.
+The unique identifier associated with the version of the secret you
+just created.
 
 
 =head2 _request_id => Str

@@ -34,15 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+   # To generate a random password
+   # The following example shows how to request a randomly generated password.
+   # This example includes the optional flags to require spaces and at least one
+   # character of each included type. It specifies a length of 20 characters.
     my $GetRandomPasswordResponse = $secretsmanager->GetRandomPassword(
-      ExcludeCharacters       => 'MyExcludeCharactersType',    # OPTIONAL
-      ExcludeLowercase        => 1,                            # OPTIONAL
-      ExcludeNumbers          => 1,                            # OPTIONAL
-      ExcludePunctuation      => 1,                            # OPTIONAL
-      ExcludeUppercase        => 1,                            # OPTIONAL
-      IncludeSpace            => 1,                            # OPTIONAL
-      PasswordLength          => 1,                            # OPTIONAL
-      RequireEachIncludedType => 1,                            # OPTIONAL
+      'IncludeSpace'            => 1,
+      'PasswordLength'          => 20,
+      'RequireEachIncludedType' => 1
     );
 
     # Results:

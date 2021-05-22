@@ -17,13 +17,12 @@ Paws::SecretsManager::PutResourcePolicyResponse
 
 =head2 ARN => Str
 
-The ARN of the secret that the resource-based policy was retrieved for.
+The ARN of the secret retrieved by the resource-based policy.
 
 
 =head2 Name => Str
 
-The friendly name of the secret that the resource-based policy was
-retrieved for.
+The friendly name of the secret retrieved by the resource-based policy.
 
 
 =head2 _request_id => Str

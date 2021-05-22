@@ -1,8 +1,10 @@
 
 package Paws::SecretsManager::ListSecrets;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::Filter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SortOrder => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -28,13 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    my $ListSecretsResponse = $secretsmanager->ListSecrets(
-      MaxResults => 1,                    # OPTIONAL
-      NextToken  => 'MyNextTokenType',    # OPTIONAL
-    );
+   # To list the secrets in your account
+   # The following example shows how to list all of the secrets in your account.
+    my $ListSecretsResponse = $secretsmanager->ListSecrets();
 
     # Results:
-    my $NextToken  = $ListSecretsResponse->NextToken;
     my $SecretList = $ListSecretsResponse->SecretList;
 
     # Returns a L<Paws::SecretsManager::ListSecretsResponse> object.
@@ -45,9 +45,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
+=head2 Filters => ArrayRef[L<Paws::SecretsManager::Filter>]
+
+Lists the secret request filters.
+
+
+
 =head2 MaxResults => Int
 
-(Optional) Limits the number of results that you want to include in the
+(Optional) Limits the number of results you want to include in the
 response. If you don't include this parameter, it defaults to a value
 that's specific to the operation. If additional items exist beyond the
 maximum you specify, the C<NextToken> response element is present and
@@ -63,12 +69,18 @@ receive all of the results.
 =head2 NextToken => Str
 
 (Optional) Use this parameter in a request if you receive a
-C<NextToken> response in a previous request that indicates that there's
-more output available. In a subsequent call, set it to the value of the
-previous call's C<NextToken> response to indicate where the output
-should continue from.
+C<NextToken> response in a previous request indicating there's more
+output available. In a subsequent call, set it to the value of the
+previous call C<NextToken> response to indicate where the output should
+continue from.
 
 
+
+=head2 SortOrder => Str
+
+Lists secrets in the requested order.
+
+Valid values are: C<"asc">, C<"desc">
 
 
 =head1 SEE ALSO

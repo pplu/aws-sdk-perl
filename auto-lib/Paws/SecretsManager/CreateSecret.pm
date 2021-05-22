@@ -1,8 +1,10 @@
 
 package Paws::SecretsManager::CreateSecret;
   use Moose;
+  has AddReplicaRegions => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::ReplicaRegionType]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ForceOverwriteReplicaSecret => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has SecretBinary => (is => 'ro', isa => 'Str');
@@ -33,20 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+    # To create a basic secret
+    # The following example shows how to create a secret. The credentials stored
+    # in the encrypted secret value are retrieved from a file on disk named
+    # mycreds.json.
     my $CreateSecretResponse = $secretsmanager->CreateSecret(
-      Name               => 'MyNameType',
-      ClientRequestToken => 'MyClientRequestTokenType',    # OPTIONAL
-      Description        => 'MyDescriptionType',           # OPTIONAL
-      KmsKeyId           => 'MyKmsKeyIdType',              # OPTIONAL
-      SecretBinary       => 'BlobSecretBinaryType',        # OPTIONAL
-      SecretString       => 'MySecretStringType',          # OPTIONAL
-      Tags               => [
-        {
-          Key   => 'MyTagKeyType',      # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValueType',    # max: 256; OPTIONAL
-        },
-        ...
-      ],                                # OPTIONAL
+      'ClientRequestToken' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
+      'Description'        => 'My test database secret created with the CLI',
+      'Name'               => 'MyTestDatabaseSecret',
+      'SecretString' => '{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}'
     );
 
     # Results:
@@ -62,6 +59,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
+=head2 AddReplicaRegions => ArrayRef[L<Paws::SecretsManager::ReplicaRegionType>]
+
+(Optional) Add a list of regions to replicate secrets. Secrets Manager
+replicates the KMSKeyID objects to the list of regions specified in the
+parameter.
+
+
+
 =head2 ClientRequestToken => Str
 
 (Optional) If you include C<SecretString> or C<SecretBinary>, then an
@@ -73,7 +78,7 @@ then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes it as the value for this parameter in
 the request. If you don't use the SDK and instead generate a raw HTTP
 request to the Secrets Manager service endpoint, then you must generate
-a C<ClientRequestToken> yourself for the new version and include that
+a C<ClientRequestToken> yourself for the new version and include the
 value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
@@ -92,15 +97,15 @@ version of the secret then a new version of the secret is created.
 
 =item *
 
-If a version with this value already exists and that version's
+If a version with this value already exists and the version
 C<SecretString> and C<SecretBinary> values are the same as those in the
-request, then the request is ignored (the operation is idempotent).
+request, then the request is ignored.
 
 =item *
 
 If a version with this value already exists and that version's
 C<SecretString> and C<SecretBinary> values are different from those in
-the request then the request fails because you cannot modify an
+the request, then the request fails because you cannot modify an
 existing version. Instead, use PutSecretValue to create a new version.
 
 =back
@@ -112,6 +117,13 @@ This value becomes the C<VersionId> of the new version.
 =head2 Description => Str
 
 (Optional) Specifies a user-provided description of the secret.
+
+
+
+=head2 ForceOverwriteReplicaSecret => Bool
+
+(Optional) If set, the replication overwrites a secret with the same
+name in the destination region.
 
 
 
@@ -131,9 +143,9 @@ a AWS KMS CMK with that name doesn't yet exist, then Secrets Manager
 creates it for you automatically the first time it needs to encrypt a
 version's C<SecretString> or C<SecretBinary> fields.
 
-You can use the account's default CMK to encrypt and decrypt only if
-you call this operation using credentials from the same account that
-owns the secret. If the secret is in a different account, then you must
+You can use the account default CMK to encrypt and decrypt only if you
+call this operation using credentials from the same account that owns
+the secret. If the secret resides in a different account, then you must
 create a custom CMK and specify the ARN in this field.
 
 
@@ -145,10 +157,10 @@ Specifies the friendly name of the new secret.
 The secret name must be ASCII letters, digits, or the following
 characters : /_+=.@-
 
-Don't end your secret name with a hyphen followed by six characters. If
-you do so, you risk confusion and unexpected results when searching for
-a secret by partial ARN. This is because Secrets Manager automatically
-adds a hyphen and six random characters at the end of the ARN.
+Do not end your secret name with a hyphen followed by six characters.
+If you do so, you risk confusion and unexpected results when searching
+for a secret by partial ARN. Secrets Manager automatically adds a
+hyphen and six random characters at the end of the ARN.
 
 
 
@@ -189,7 +201,7 @@ see Using JSON for Parameters
 (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>. For example:
 
-C<[{"username":"bob"},{"password":"abc123xyz456"}]>
+C<{"username":"bob","password":"abc123xyz456"}>
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -255,18 +267,18 @@ Tag keys and values are case sensitive.
 
 =item *
 
-Do not use the C<aws:> prefix in your tag names or values because it is
-reserved for AWS use. You can't edit or delete tag names or values with
-this prefix. Tags with this prefix do not count against your tags per
-secret limit.
+Do not use the C<aws:> prefix in your tag names or values because AWS
+reserves it for AWS use. You can't edit or delete tag names or values
+with this prefix. Tags with this prefix do not count against your tags
+per secret limit.
 
 =item *
 
-If your tagging schema will be used across multiple services and
-resources, remember that other services might have restrictions on
-allowed characters. Generally allowed characters are: letters, spaces,
-and numbers representable in UTF-8, plus the following special
-characters: + - = . _ : / @.
+If you use your tagging schema across multiple services and resources,
+remember other services might have restrictions on allowed characters.
+Generally allowed characters: letters, spaces, and numbers
+representable in UTF-8, plus the following special characters: + - = .
+_ : / @.
 
 =back
 

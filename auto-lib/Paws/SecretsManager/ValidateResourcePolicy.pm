@@ -1,14 +1,13 @@
 
-package Paws::SecretsManager::PutResourcePolicy;
+package Paws::SecretsManager::ValidateResourcePolicy;
   use Moose;
-  has BlockPublicPolicy => (is => 'ro', isa => 'Bool');
   has ResourcePolicy => (is => 'ro', isa => 'Str', required => 1);
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
+  has SecretId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutResourcePolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::PutResourcePolicyResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateResourcePolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::ValidateResourcePolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -16,54 +15,36 @@ package Paws::SecretsManager::PutResourcePolicy;
 
 =head1 NAME
 
-Paws::SecretsManager::PutResourcePolicy - Arguments for method PutResourcePolicy on L<Paws::SecretsManager>
+Paws::SecretsManager::ValidateResourcePolicy - Arguments for method ValidateResourcePolicy on L<Paws::SecretsManager>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutResourcePolicy on the
+This class represents the parameters used for calling the method ValidateResourcePolicy on the
 L<AWS Secrets Manager|Paws::SecretsManager> service. Use the attributes of this class
-as arguments to method PutResourcePolicy.
+as arguments to method ValidateResourcePolicy.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutResourcePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ValidateResourcePolicy.
 
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-   # To add a resource-based policy to a secret
-   # The following example shows how to add a resource-based policy to a secret.
-    my $PutResourcePolicyResponse = $secretsmanager->PutResourcePolicy(
-      'ResourcePolicy' => '{
-"Version":"2012-10-17",
-"Statement":[{
-"Effect":"Allow",
-"Principal":{
-"AWS":"arn:aws:iam::123456789012:root"
-},
-"Action":"secretsmanager:GetSecretValue",
-"Resource":"*"
-}]
-}',
-      'SecretId' => 'MyTestDatabaseSecret'
-    );
+    my $ValidateResourcePolicyResponse =
+      $secretsmanager->ValidateResourcePolicy(
+      ResourcePolicy => 'MyNonEmptyResourcePolicyType',
+      SecretId       => 'MySecretIdType',                 # OPTIONAL
+      );
 
     # Results:
-    my $ARN  = $PutResourcePolicyResponse->ARN;
-    my $Name = $PutResourcePolicyResponse->Name;
+    my $PolicyValidationPassed =
+      $ValidateResourcePolicyResponse->PolicyValidationPassed;
+    my $ValidationErrors = $ValidateResourcePolicyResponse->ValidationErrors;
 
-    # Returns a L<Paws::SecretsManager::PutResourcePolicyResponse> object.
+    # Returns a L<Paws::SecretsManager::ValidateResourcePolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/PutResourcePolicy>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/ValidateResourcePolicy>
 
 =head1 ATTRIBUTES
-
-
-=head2 BlockPublicPolicy => Bool
-
-(Optional) If you set the parameter, C<BlockPublicPolicy> to true, then
-you block resource-based policies that allow broad access to the
-secret.
-
 
 
 =head2 B<REQUIRED> ResourcePolicy => Str
@@ -74,14 +55,15 @@ who can access or manage this secret and its versions. For information
 on how to format a JSON parameter for the various command line tool
 environments, see Using JSON for Parameters
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
-in the I<AWS CLI User Guide>.
+in the I<AWS CLI User Guide>.publi
 
 
 
-=head2 B<REQUIRED> SecretId => Str
+=head2 SecretId => Str
 
-Specifies the secret that you want to attach the resource-based policy.
-You can specify either the ARN or the friendly name of the secret.
+(Optional) The identifier of the secret with the resource-based policy
+you want to validate. You can specify either the Amazon Resource Name
+(ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN tooE<mdash>for example, if
@@ -108,7 +90,7 @@ I<AccessDeniedException> error, depending on your permissions.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method PutResourcePolicy in L<Paws::SecretsManager>
+This class forms part of L<Paws>, documenting arguments for method ValidateResourcePolicy in L<Paws::SecretsManager>
 
 =head1 BUGS and CONTRIBUTIONS
 

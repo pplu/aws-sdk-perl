@@ -2,6 +2,7 @@
 package Paws::SecretsManager::DescribeSecretResponse;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Str');
   has DeletedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -10,6 +11,8 @@ package Paws::SecretsManager::DescribeSecretResponse;
   has LastRotatedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OwningService => (is => 'ro', isa => 'Str');
+  has PrimaryRegion => (is => 'ro', isa => 'Str');
+  has ReplicationStatus => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::ReplicationStatusType]');
   has RotationEnabled => (is => 'ro', isa => 'Bool');
   has RotationLambdaARN => (is => 'ro', isa => 'Str');
   has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
@@ -30,6 +33,11 @@ Paws::SecretsManager::DescribeSecretResponse
 =head2 ARN => Str
 
 The ARN of the secret.
+
+
+=head2 CreatedDate => Str
+
+The date you created the secret.
 
 
 =head2 DeletedDate => Str
@@ -70,9 +78,12 @@ The last date and time that this secret was modified in any way.
 
 =head2 LastRotatedDate => Str
 
+The last date and time that the rotation process for this secret was
+invoked.
+
 The most recent date and time that the Secrets Manager rotation process
-was successfully completed. This value is null if the secret has never
-rotated.
+successfully completed. If the secret doesn't rotate, Secrets Manager
+returns a null value.
 
 
 =head2 Name => Str
@@ -82,7 +93,18 @@ The user-provided friendly name of the secret.
 
 =head2 OwningService => Str
 
+Returns the name of the service that created this secret.
 
+
+=head2 PrimaryRegion => Str
+
+Specifies the primary region for secret replication.
+
+
+=head2 ReplicationStatus => ArrayRef[L<Paws::SecretsManager::ReplicationStatusType>]
+
+Describes a list of replication status objects as C<InProgress>,
+C<Failed> or C<InSync>.C<P>
 
 
 =head2 RotationEnabled => Bool
@@ -103,7 +125,7 @@ a call to C<RotateSecret>.
 
 =head2 RotationRules => L<Paws::SecretsManager::RotationRulesType>
 
-A structure that contains the rotation configuration for this secret.
+A structure with the rotation configuration for this secret.
 
 
 =head2 Tags => ArrayRef[L<Paws::SecretsManager::Tag>]
