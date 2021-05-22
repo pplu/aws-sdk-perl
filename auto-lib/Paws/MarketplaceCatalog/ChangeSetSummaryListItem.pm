@@ -6,6 +6,7 @@ package Paws::MarketplaceCatalog::ChangeSetSummaryListItem;
   has ChangeSetName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has EntityIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has FailureCode => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
@@ -72,6 +73,15 @@ set was finished.
 This object is a list of entity IDs (string) that are a part of a
 change set. The entity ID list is a maximum of 20 entities. It must
 contain at least one entity.
+
+
+=head2 FailureCode => Str
+
+Returned if the change set is in C<FAILED> status. Can be either
+C<CLIENT_ERROR>, which means that there are issues with the request
+(see the C<ErrorDetailList> of C<DescribeChangeSet>), or
+C<SERVER_FAULT>, which means that there is a problem in the system, and
+you should retry your request.
 
 
 =head2 StartTime => Str

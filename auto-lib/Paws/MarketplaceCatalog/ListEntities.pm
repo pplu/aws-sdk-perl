@@ -38,13 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EntityType => 'MyEntityType',
       FilterList => [
         {
-          Name => 'MyFilterName',                   # min: 1, max: 255; OPTIONAL
-          ValueList => [ 'MyStringValue', ... ],    # min: 1, max: 10; OPTIONAL
+          Name      => 'MyFilterName',    # min: 1, max: 255; OPTIONAL
+          ValueList => [
+            'MyFilterValueContent', ...    # min: 1, max: 255
+          ],                               # min: 1, max: 10; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      MaxResults => 1,                              # OPTIONAL
-      NextToken  => 'MyNextToken',                  # OPTIONAL
+      ],                                   # OPTIONAL
+      MaxResults => 1,                     # OPTIONAL
+      NextToken  => 'MyNextToken',         # OPTIONAL
       Sort       => {
         SortBy    => 'MySortBy',     # min: 1, max: 255; OPTIONAL
         SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
@@ -98,7 +100,7 @@ results.
 
 =head2 Sort => L<Paws::MarketplaceCatalog::Sort>
 
-An object that contains two attributes, C<sortBy> and C<sortOrder>.
+An object that contains two attributes, C<SortBy> and C<SortOrder>.
 
 
 

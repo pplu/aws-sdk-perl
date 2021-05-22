@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Marketplace
 
 =head1 DESCRIPTION
 
-An object that contains two attributes, C<sortBy> and C<sortOrder>.
+An object that contains two attributes, C<SortBy> and C<SortOrder>.
 
 =head1 ATTRIBUTES
 
