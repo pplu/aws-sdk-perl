@@ -1,6 +1,7 @@
 
 package Paws::ECR::CreateRepository;
   use Moose;
+  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::ECR::EncryptionConfiguration', traits => ['NameInRequest'], request_name => 'encryptionConfiguration' );
   has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', traits => ['NameInRequest'], request_name => 'imageScanningConfiguration' );
   has ImageTagMutability => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageTagMutability' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
@@ -47,11 +48,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 EncryptionConfiguration => L<Paws::ECR::EncryptionConfiguration>
+
+The encryption configuration for the repository. This determines how
+the contents of your repository are encrypted at rest.
+
+
+
 =head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
 
-The image scanning configuration for the repository. This setting
-determines whether images are scanned for known vulnerabilities after
-being pushed to the repository.
+The image scanning configuration for the repository. This determines
+whether images are scanned for known vulnerabilities after being pushed
+to the repository.
 
 
 

@@ -63,13 +63,15 @@ The base64-encoded layer part payload.
 
 =head2 B<REQUIRED> PartFirstByte => Int
 
-The integer value of the first byte of the layer part.
+The position of the first byte of the layer part witin the overall
+image layer.
 
 
 
 =head2 B<REQUIRED> PartLastByte => Int
 
-The integer value of the last byte of the layer part.
+The position of the last byte of the layer part within the overall
+image layer.
 
 
 

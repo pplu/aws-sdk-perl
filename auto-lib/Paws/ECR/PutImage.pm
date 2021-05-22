@@ -1,7 +1,9 @@
 
 package Paws::ECR::PutImage;
   use Moose;
+  has ImageDigest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageDigest' );
   has ImageManifest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageManifest' , required => 1);
+  has ImageManifestMediaType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageManifestMediaType' );
   has ImageTag => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageTag' );
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
@@ -31,10 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.ecr = Paws->service('ECR');
     my $PutImageResponse = $api . ecr->PutImage(
-      ImageManifest  => 'MyImageManifest',
-      RepositoryName => 'MyRepositoryName',
-      ImageTag       => 'MyImageTag',         # OPTIONAL
-      RegistryId     => 'MyRegistryId',       # OPTIONAL
+      ImageManifest          => 'MyImageManifest',
+      RepositoryName         => 'MyRepositoryName',
+      ImageDigest            => 'MyImageDigest',      # OPTIONAL
+      ImageManifestMediaType => 'MyMediaType',        # OPTIONAL
+      ImageTag               => 'MyImageTag',         # OPTIONAL
+      RegistryId             => 'MyRegistryId',       # OPTIONAL
     );
 
     # Results:
@@ -48,16 +52,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 ImageDigest => Str
+
+The image digest of the image manifest corresponding to the image.
+
+
+
 =head2 B<REQUIRED> ImageManifest => Str
 
 The image manifest corresponding to the image to be uploaded.
 
 
 
+=head2 ImageManifestMediaType => Str
+
+The media type of the image manifest. If you push an image manifest
+that does not contain the C<mediaType> field, you must specify the
+C<imageManifestMediaType> in the request.
+
+
+
 =head2 ImageTag => Str
 
 The tag to associate with the image. This parameter is required for
-images that use the Docker Image Manifest V2 Schema 2 or OCI formats.
+images that use the Docker Image Manifest V2 Schema 2 or Open Container
+Initiative (OCI) formats.
 
 
 
