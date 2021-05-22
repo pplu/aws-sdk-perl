@@ -86,9 +86,9 @@ AWS IoT Secure Tunneling
 AWS IoT Secure Tunnling enables you to create remote connections to
 devices deployed in the field.
 
-For more information about how AWS IoT Secure Tunneling works, see the
-User Guide
-(https://docs.aws.amazon.com/secure-tunneling/latest/ug/what-is-secure-tunneling.html).
+For more information about how AWS IoT Secure Tunneling works, see AWS
+IoT Secure Tunneling
+(https://docs.aws.amazon.com/iot/latest/developerguide/secure-tunneling.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.tunneling.iot-2018-10-05>
 
@@ -189,7 +189,7 @@ Each argument is described in detail in: L<Paws::IoTSecureTunneling::OpenTunnel>
 Returns: a L<Paws::IoTSecureTunneling::OpenTunnelResponse> instance
 
 Creates a new tunnel, and returns two client access tokens for clients
-to use to connect to the AWS IoT Secure Tunneling proxy server. .
+to use to connect to the AWS IoT Secure Tunneling proxy server.
 
 
 =head2 TagResource
