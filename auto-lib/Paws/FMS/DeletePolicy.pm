@@ -92,8 +92,8 @@ accounts, all resources are in scope.
 
 =head2 B<REQUIRED> PolicyId => Str
 
-The ID of the policy that you want to delete. C<PolicyId> is returned
-by C<PutPolicy> and by C<ListPolicies>.
+The ID of the policy that you want to delete. You can retrieve this ID
+from C<PutPolicy> and C<ListPolicies>.
 
 
 

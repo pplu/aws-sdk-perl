@@ -50,8 +50,9 @@ The resource ID.
 The resource type. This is in the format shown in the AWS Resource
 Types Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
-C<AWS::CloudFront::Distribution>.
+For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer>,
+C<AWS::CloudFront::Distribution>, or
+C<AWS::NetworkFirewall::FirewallPolicy>.
 
 
 =head2 ViolationReason => Str

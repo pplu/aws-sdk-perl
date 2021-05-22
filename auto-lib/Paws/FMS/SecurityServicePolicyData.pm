@@ -50,26 +50,43 @@ string.
 
 =item *
 
-Example: C<WAF>
+Example: C<NETWORK_FIREWALL>
 
-C<ManagedServiceData": "{\"type\": \"WAF\", \"ruleGroups\": [{\"id\":
-\"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" :
-{\"type\": \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}>
+C<"{\"type\":\"NETWORK_FIREWALL\",\"networkFirewallStatelessRuleGroupReferences\":[{\"resourceARN\":\"arn:aws:network-firewall:us-west-1:1234567891011:stateless-rulegroup/rulegroup2\",\"priority\":10}],\"networkFirewallStatelessDefaultActions\":[\"aws:pass\",\"custom1\"],\"networkFirewallStatelessFragmentDefaultActions\":[\"custom2\",\"aws:pass\"],\"networkFirewallStatelessCustomActions\":[{\"actionName\":\"custom1\",\"actionDefinition\":{\"publishMetricAction\":{\"dimensions\":[{\"value\":\"dimension1\"}]}}},{\"actionName\":\"custom2\",\"actionDefinition\":{\"publishMetricAction\":{\"dimensions\":[{\"value\":\"dimension2\"}]}}}],\"networkFirewallStatefulRuleGroupReferences\":[{\"resourceARN\":\"arn:aws:network-firewall:us-west-1:1234567891011:stateful-rulegroup/rulegroup1\"}],\"networkFirewallOrchestrationConfig\":{\"singleFirewallEndpointPerVPC\":true,\"allowedIPV4CidrList\":[\"10.24.34.0/28\"]}
+}">
+
+=item *
+
+Example: C<WAFV2>
+
+C<"{\"type\":\"WAFV2\",\"preProcessRuleGroups\":[{\"ruleGroupArn\":null,\"overrideAction\":{\"type\":\"NONE\"},\"managedRuleGroupIdentifier\":{\"version\":null,\"vendorName\":\"AWS\",\"managedRuleGroupName\":\"AWSManagedRulesAmazonIpReputationList\"},\"ruleGroupType\":\"ManagedRuleGroup\",\"excludeRules\":[]}],\"postProcessRuleGroups\":[],\"defaultAction\":{\"type\":\"ALLOW\"},\"overrideCustomerWebACLAssociation\":false,\"loggingConfiguration\":{\"logDestinationConfigs\":[\"arn:aws:firehose:us-west-2:12345678912:deliverystream/aws-waf-logs-fms-admin-destination\"],\"redactedFields\":[{\"redactedFieldType\":\"SingleHeader\",\"redactedFieldValue\":\"Cookies\"},{\"redactedFieldType\":\"Method\"}]}}">
+
+In the C<loggingConfiguration>, you can specify one
+C<logDestinationConfigs>, you can optionally provide up to 20
+C<redactedFields>, and the C<RedactedFieldType> must be one of C<URI>,
+C<QUERY_STRING>, C<HEADER>, or C<METHOD>.
+
+=item *
+
+Example: C<WAF Classic>
+
+C<"{\"type\": \"WAF\", \"ruleGroups\":
+[{\"id\":\"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" :
+{\"type\": \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}">
 
 =item *
 
 Example: C<SECURITY_GROUPS_COMMON>
 
-C<"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false,\"securityGroups\":[{\"id\":\"
-sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}>
+C<"{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false,
+\"applyToAllEC2InstanceENIs\":false,\"securityGroups\":[{\"id\":\"
+sg-000e55995d61a06bd\"}]}">
 
 =item *
 
 Example: C<SECURITY_GROUPS_CONTENT_AUDIT>
 
-C<"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"
-sg-000e55995d61a06bd
-\"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}>
+C<"{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"sg-000e55995d61a06bd\"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}">
 
 The security group action for content audit can be C<ALLOW> or C<DENY>.
 For C<ALLOW>, all in-scope security group rules must be within the
@@ -81,8 +98,7 @@ matches a rule value or range in the policy security group.
 
 Example: C<SECURITY_GROUPS_USAGE_AUDIT>
 
-C<"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}"},"RemediationEnabled":false,"Resou
-rceType":"AWS::EC2::SecurityGroup"}>
+C<"{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}">
 
 =back
 

@@ -50,15 +50,45 @@ An AWS Firewall Manager policy.
 
 =head2 ExcludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
 
-Specifies the AWS account IDs to exclude from the policy. The
-C<IncludeMap> values are evaluated first, with all the appropriate
-account IDs added to the policy. Then the accounts listed in
-C<ExcludeMap> are removed, resulting in the final list of accounts to
-add to the policy.
+Specifies the AWS account IDs and AWS Organizations organizational
+units (OUs) to exclude from the policy. Specifying an OU is the
+equivalent of specifying all accounts in the OU and in any of its child
+OUs, including any child OUs and accounts that are added at a later
+time.
 
-The key to the map is C<ACCOUNT>. For example, a valid C<ExcludeMap>
-would be C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,
-E<ldquo>accountID2E<rdquo>]}>.
+You can specify inclusions or exclusions, but not both. If you specify
+an C<IncludeMap>, AWS Firewall Manager applies the policy to all
+accounts specified by the C<IncludeMap>, and does not evaluate any
+C<ExcludeMap> specifications. If you do not specify an C<IncludeMap>,
+then Firewall Manager applies the policy to all accounts except for
+those specified by the C<ExcludeMap>.
+
+You can specify account IDs, OUs, or a combination:
+
+=over
+
+=item *
+
+Specify account IDs by setting the key to C<ACCOUNT>. For example, the
+following is a valid map: C<{E<ldquo>ACCOUNTE<rdquo> :
+[E<ldquo>accountID1E<rdquo>, E<ldquo>accountID2E<rdquo>]}>.
+
+=item *
+
+Specify OUs by setting the key to C<ORG_UNIT>. For example, the
+following is a valid map: C<{E<ldquo>ORG_UNITE<rdquo> :
+[E<ldquo>ouid111E<rdquo>, E<ldquo>ouid112E<rdquo>]}>.
+
+=item *
+
+Specify accounts and OUs together in a single map, separated with a
+comma. For example, the following is a valid map:
+C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,
+E<ldquo>accountID2E<rdquo>], E<ldquo>ORG_UNITE<rdquo> :
+[E<ldquo>ouid111E<rdquo>, E<ldquo>ouid112E<rdquo>]}>.
+
+=back
+
 
 
 =head2 B<REQUIRED> ExcludeResourceTags => Bool
@@ -71,14 +101,45 @@ the specified tags are in scope of the policy.
 
 =head2 IncludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
 
-Specifies the AWS account IDs to include in the policy. If
-C<IncludeMap> is null, all accounts in the organization in AWS
-Organizations are included in the policy. If C<IncludeMap> is not null,
-only values listed in C<IncludeMap> are included in the policy.
+Specifies the AWS account IDs and AWS Organizations organizational
+units (OUs) to include in the policy. Specifying an OU is the
+equivalent of specifying all accounts in the OU and in any of its child
+OUs, including any child OUs and accounts that are added at a later
+time.
 
-The key to the map is C<ACCOUNT>. For example, a valid C<IncludeMap>
-would be C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,
-E<ldquo>accountID2E<rdquo>]}>.
+You can specify inclusions or exclusions, but not both. If you specify
+an C<IncludeMap>, AWS Firewall Manager applies the policy to all
+accounts specified by the C<IncludeMap>, and does not evaluate any
+C<ExcludeMap> specifications. If you do not specify an C<IncludeMap>,
+then Firewall Manager applies the policy to all accounts except for
+those specified by the C<ExcludeMap>.
+
+You can specify account IDs, OUs, or a combination:
+
+=over
+
+=item *
+
+Specify account IDs by setting the key to C<ACCOUNT>. For example, the
+following is a valid map: C<{E<ldquo>ACCOUNTE<rdquo> :
+[E<ldquo>accountID1E<rdquo>, E<ldquo>accountID2E<rdquo>]}>.
+
+=item *
+
+Specify OUs by setting the key to C<ORG_UNIT>. For example, the
+following is a valid map: C<{E<ldquo>ORG_UNITE<rdquo> :
+[E<ldquo>ouid111E<rdquo>, E<ldquo>ouid112E<rdquo>]}>.
+
+=item *
+
+Specify accounts and OUs together in a single map, separated with a
+comma. For example, the following is a valid map:
+C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,
+E<ldquo>accountID2E<rdquo>], E<ldquo>ORG_UNITE<rdquo> :
+[E<ldquo>ouid111E<rdquo>, E<ldquo>ouid112E<rdquo>]}>.
+
+=back
+
 
 
 =head2 PolicyId => Str
@@ -88,7 +149,7 @@ The ID of the AWS Firewall Manager policy.
 
 =head2 B<REQUIRED> PolicyName => Str
 
-The friendly name of the AWS Firewall Manager policy.
+The name of the AWS Firewall Manager policy.
 
 
 =head2 PolicyUpdateToken => Str
@@ -123,7 +184,8 @@ valid values are C<AWS::EC2::NetworkInterface> and
 C<AWS::EC2::Instance>. For a security group content audit policy, valid
 values are C<AWS::EC2::SecurityGroup>, C<AWS::EC2::NetworkInterface>,
 and C<AWS::EC2::Instance>. For a security group usage audit policy, the
-value is C<AWS::EC2::SecurityGroup>.
+value is C<AWS::EC2::SecurityGroup>. For an AWS Network Firewall
+policy, the value is C<AWS::EC2::VPC>.
 
 
 =head2 ResourceTypeList => ArrayRef[Str|Undef]

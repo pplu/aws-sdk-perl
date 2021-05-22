@@ -17,12 +17,12 @@ Paws::FMS::PutPolicyResponse
 
 =head2 Policy => L<Paws::FMS::Policy>
 
-The details of the AWS Firewall Manager policy that was created.
+The details of the AWS Firewall Manager policy.
 
 
 =head2 PolicyArn => Str
 
-The Amazon Resource Name (ARN) of the policy that was created.
+The Amazon Resource Name (ARN) of the policy.
 
 
 =head2 _request_id => Str
