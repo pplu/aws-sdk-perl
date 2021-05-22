@@ -1,7 +1,6 @@
 
-package Paws::CodeGuruReviewer::AssociateRepositoryResponse;
+package Paws::CodeGuruReviewer::ListTagsForResourceResponse;
   use Moose;
-  has RepositoryAssociation => (is => 'ro', isa => 'Paws::CodeGuruReviewer::RepositoryAssociation');
   has Tags => (is => 'ro', isa => 'Paws::CodeGuruReviewer::TagMap');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -11,14 +10,9 @@ package Paws::CodeGuruReviewer::AssociateRepositoryResponse;
 
 =head1 NAME
 
-Paws::CodeGuruReviewer::AssociateRepositoryResponse
+Paws::CodeGuruReviewer::ListTagsForResourceResponse
 
 =head1 ATTRIBUTES
-
-
-=head2 RepositoryAssociation => L<Paws::CodeGuruReviewer::RepositoryAssociation>
-
-Information about the repository association.
 
 
 =head2 Tags => L<Paws::CodeGuruReviewer::TagMap>

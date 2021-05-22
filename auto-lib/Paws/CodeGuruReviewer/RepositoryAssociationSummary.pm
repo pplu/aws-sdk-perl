@@ -3,6 +3,7 @@ package Paws::CodeGuruReviewer::RepositoryAssociationSummary;
   use Moose;
   has AssociationArn => (is => 'ro', isa => 'Str');
   has AssociationId => (is => 'ro', isa => 'Str');
+  has ConnectionArn => (is => 'ro', isa => 'Str');
   has LastUpdatedTimeStamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
@@ -39,19 +40,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruRev
 
 =head1 DESCRIPTION
 
-Information about a repository association.
+Summary information about a repository association. The
+C<ListRepositoryAssociations>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+operation returns a list of C<RepositoryAssociationSummary> objects.
 
 =head1 ATTRIBUTES
 
 
 =head2 AssociationArn => Str
 
-The Amazon Resource Name (ARN) identifying the repository association.
+The Amazon Resource Name (ARN) of the C<RepositoryAssociation>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+object. You can retrieve this ARN by calling
+C<ListRepositoryAssociations>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html).
 
 
 =head2 AssociationId => Str
 
 The repository association ID.
+
+
+=head2 ConnectionArn => Str
+
+The Amazon Resource Name (ARN) of an AWS CodeStar Connections
+connection. Its format is
+C<arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id>.
+For more information, see C<Connection>
+(https://docs.aws.amazon.com/codestar-connections/latest/APIReference/API_Connection.html)
+in the I<AWS CodeStar Connections API Reference>.
 
 
 =head2 LastUpdatedTimeStamp => Str
@@ -67,7 +85,10 @@ The name of the repository association.
 
 =head2 Owner => Str
 
-The owner of the repository association.
+The owner of the repository. For an AWS CodeCommit repository, this is
+the AWS account ID of the account that owns the repository. For a
+GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the
+username for the account that owns the repository.
 
 
 =head2 ProviderType => Str
@@ -79,25 +100,56 @@ The provider type of the repository association.
 
 The state of the repository association.
 
+The valid repository association states are:
+
 =over
 
-=item Associated
+=item *
 
-Amazon CodeGuru Reviewer is associated with the repository.
+B<Associated>: The repository association is complete.
 
-=item Associating
+=item *
 
-The association is in progress.
+B<Associating>: CodeGuru Reviewer is:
 
-=item Failed
+=over
 
-The association failed. For more information about troubleshooting (or
-why it failed), see [troubleshooting topic].
+=item *
 
-=item Disassociating
+Setting up pull request notifications. This is required for pull
+requests to trigger a CodeGuru Reviewer review.
 
-Amazon CodeGuru Reviewer is in the process of disassociating with the
-repository.
+If your repository C<ProviderType> is C<GitHub>, C<GitHub Enterprise
+Server>, or C<Bitbucket>, CodeGuru Reviewer creates webhooks in your
+repository to trigger CodeGuru Reviewer reviews. If you delete these
+webhooks, reviews of code in your repository cannot be triggered.
+
+=item *
+
+Setting up source code access. This is required for CodeGuru Reviewer
+to securely clone code in your repository.
+
+=back
+
+=item *
+
+B<Failed>: The repository failed to associate or disassociate.
+
+=item *
+
+B<Disassociating>: CodeGuru Reviewer is removing the repository's pull
+request notifications and source code access.
+
+=item *
+
+B<Disassociated>: CodeGuru Reviewer successfully disassociated the
+repository. You can create a new association with this repository if
+you want to review source code in it later. You can control access to
+code reviews created in an associated repository with tags after it has
+been disassociated. For more information, see Using tags to control
+access to associated repositories
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
+in the I<Amazon CodeGuru Reviewer User Guide>.
 
 =back
 

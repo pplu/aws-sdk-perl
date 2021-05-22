@@ -2,7 +2,9 @@
 package Paws::CodeGuruReviewer::AssociateRepository;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
+  has KMSKeyDetails => (is => 'ro', isa => 'Paws::CodeGuruReviewer::KMSKeyDetails');
   has Repository => (is => 'ro', isa => 'Paws::CodeGuruReviewer::Repository', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::CodeGuruReviewer::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -31,17 +33,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codeguru-reviewer = Paws->service('CodeGuruReviewer');
     my $AssociateRepositoryResponse = $codeguru -reviewer->AssociateRepository(
       Repository => {
+        Bitbucket => {
+          ConnectionArn => 'MyConnectionArn',    # max: 256
+          Name          => 'MyName',             # min: 1, max: 100
+          Owner         => 'MyOwner',            # min: 1, max: 100
+
+        },    # OPTIONAL
         CodeCommit => {
           Name => 'MyName',    # min: 1, max: 100
 
         },    # OPTIONAL
+        GitHubEnterpriseServer => {
+          ConnectionArn => 'MyConnectionArn',    # max: 256
+          Name          => 'MyName',             # min: 1, max: 100
+          Owner         => 'MyOwner',            # min: 1, max: 100
+
+        },    # OPTIONAL
       },
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      KMSKeyDetails      => {
+        EncryptionOption => 'AWS_OWNED_CMK'
+        ,    # values: AWS_OWNED_CMK, CUSTOMER_MANAGED_CMK; OPTIONAL
+        KMSKeyId => 'MyKMSKeyId',    # min: 1, max: 2048; OPTIONAL
+      },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
     my $RepositoryAssociation =
       $AssociateRepositoryResponse->RepositoryAssociation;
+    my $Tags = $AssociateRepositoryResponse->Tags;
 
     # Returns a L<Paws::CodeGuruReviewer::AssociateRepositoryResponse> object.
 
@@ -53,35 +76,61 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 ClientRequestToken => Str
 
-Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.
-
-If you want to add a new repository association, this parameter
-specifies a unique identifier for the new repository association that
-helps ensure idempotency.
-
-If you use the AWS CLI or one of the AWS SDK to call this operation,
-then you can leave this parameter empty. The CLI or SDK generates a
-random UUID for you and includes that in the request. If you don't use
-the SDK and instead generate a raw HTTP request to the Secrets Manager
-service endpoint, then you must generate a ClientRequestToken yourself
-for new versions and include that value in the request.
-
-You typically only need to interact with this value if you implement
-your own retry logic and want to ensure that a given repository
-association is not created twice. We recommend that you generate a
-UUID-type value to ensure uniqueness within the specified repository
-association.
-
 Amazon CodeGuru Reviewer uses this value to prevent the accidental
 creation of duplicate repository associations if there are failures and
 retries.
 
 
 
+=head2 KMSKeyDetails => L<Paws::CodeGuruReviewer::KMSKeyDetails>
+
+A C<KMSKeyDetails> object that contains:
+
+=over
+
+=item *
+
+The encryption option for this repository association. It is either
+owned by AWS Key Management Service (KMS) (C<AWS_OWNED_CMK>) or
+customer managed (C<CUSTOMER_MANAGED_CMK>).
+
+=item *
+
+The ID of the AWS KMS key that is associated with this respository
+association.
+
+=back
+
+
+
+
 =head2 B<REQUIRED> Repository => L<Paws::CodeGuruReviewer::Repository>
 
 The repository to associate.
+
+
+
+=head2 Tags => L<Paws::CodeGuruReviewer::TagMap>
+
+An array of key-value pairs used to tag an associated repository. A tag
+is a custom attribute label with two parts:
+
+=over
+
+=item *
+
+A I<tag key> (for example, C<CostCenter>, C<Environment>, C<Project>,
+or C<Secret>). Tag keys are case sensitive.
+
+=item *
+
+An optional field known as a I<tag value> (for example,
+C<111122223333>, C<Production>, or a team name). Omitting the tag value
+is the same as using an empty string. Like tag keys, tag values are
+case sensitive.
+
+=back
+
 
 
 

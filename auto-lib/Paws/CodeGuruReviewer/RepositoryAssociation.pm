@@ -3,7 +3,9 @@ package Paws::CodeGuruReviewer::RepositoryAssociation;
   use Moose;
   has AssociationArn => (is => 'ro', isa => 'Str');
   has AssociationId => (is => 'ro', isa => 'Str');
+  has ConnectionArn => (is => 'ro', isa => 'Str');
   has CreatedTimeStamp => (is => 'ro', isa => 'Str');
+  has KMSKeyDetails => (is => 'ro', isa => 'Paws::CodeGuruReviewer::KMSKeyDetails');
   has LastUpdatedTimeStamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
@@ -41,7 +43,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruRev
 
 =head1 DESCRIPTION
 
-Information about a repository association.
+Information about a repository association. The
+C<DescribeRepositoryAssociation>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_DescribeRepositoryAssociation.html)
+operation returns a C<RepositoryAssociation> object.
 
 =head1 ATTRIBUTES
 
@@ -53,13 +58,44 @@ The Amazon Resource Name (ARN) identifying the repository association.
 
 =head2 AssociationId => Str
 
-The id of the repository association.
+The ID of the repository association.
+
+
+=head2 ConnectionArn => Str
+
+The Amazon Resource Name (ARN) of an AWS CodeStar Connections
+connection. Its format is
+C<arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id>.
+For more information, see C<Connection>
+(https://docs.aws.amazon.com/codestar-connections/latest/APIReference/API_Connection.html)
+in the I<AWS CodeStar Connections API Reference>.
 
 
 =head2 CreatedTimeStamp => Str
 
 The time, in milliseconds since the epoch, when the repository
 association was created.
+
+
+=head2 KMSKeyDetails => L<Paws::CodeGuruReviewer::KMSKeyDetails>
+
+A C<KMSKeyDetails> object that contains:
+
+=over
+
+=item *
+
+The encryption option for this repository association. It is either
+owned by AWS Key Management Service (KMS) (C<AWS_OWNED_CMK>) or
+customer managed (C<CUSTOMER_MANAGED_CMK>).
+
+=item *
+
+The ID of the AWS KMS key that is associated with this respository
+association.
+
+=back
+
 
 
 =head2 LastUpdatedTimeStamp => Str
@@ -75,7 +111,10 @@ The name of the repository.
 
 =head2 Owner => Str
 
-The owner of the repository.
+The owner of the repository. For an AWS CodeCommit repository, this is
+the AWS account ID of the account that owns the repository. For a
+GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the
+username for the account that owns the repository.
 
 
 =head2 ProviderType => Str
@@ -86,6 +125,60 @@ The provider type of the repository association.
 =head2 State => Str
 
 The state of the repository association.
+
+The valid repository association states are:
+
+=over
+
+=item *
+
+B<Associated>: The repository association is complete.
+
+=item *
+
+B<Associating>: CodeGuru Reviewer is:
+
+=over
+
+=item *
+
+Setting up pull request notifications. This is required for pull
+requests to trigger a CodeGuru Reviewer review.
+
+If your repository C<ProviderType> is C<GitHub>, C<GitHub Enterprise
+Server>, or C<Bitbucket>, CodeGuru Reviewer creates webhooks in your
+repository to trigger CodeGuru Reviewer reviews. If you delete these
+webhooks, reviews of code in your repository cannot be triggered.
+
+=item *
+
+Setting up source code access. This is required for CodeGuru Reviewer
+to securely clone code in your repository.
+
+=back
+
+=item *
+
+B<Failed>: The repository failed to associate or disassociate.
+
+=item *
+
+B<Disassociating>: CodeGuru Reviewer is removing the repository's pull
+request notifications and source code access.
+
+=item *
+
+B<Disassociated>: CodeGuru Reviewer successfully disassociated the
+repository. You can create a new association with this repository if
+you want to review source code in it later. You can control access to
+code reviews created in an associated repository with tags after it has
+been disassociated. For more information, see Using tags to control
+access to associated repositories
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
+in the I<Amazon CodeGuru Reviewer User Guide>.
+
+=back
+
 
 
 =head2 StateReason => Str
