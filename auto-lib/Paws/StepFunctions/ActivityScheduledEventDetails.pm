@@ -3,6 +3,7 @@ package Paws::StepFunctions::ActivityScheduledEventDetails;
   use Moose;
   has HeartbeatInSeconds => (is => 'ro', isa => 'Int', request_name => 'heartbeatInSeconds', traits => ['NameInRequest']);
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has InputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'inputDetails', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
 
@@ -49,7 +50,13 @@ task.
 
 =head2 Input => Str
 
-The JSON data input to the activity task.
+The JSON data input to the activity task. Length constraints apply to
+the payload size, and are expressed as bytes in UTF-8 encoding.
+
+
+=head2 InputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the input for an execution history event.
 
 
 =head2 B<REQUIRED> Resource => Str

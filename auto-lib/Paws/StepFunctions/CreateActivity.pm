@@ -85,6 +85,8 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 =back
 
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and _.
 
 
 

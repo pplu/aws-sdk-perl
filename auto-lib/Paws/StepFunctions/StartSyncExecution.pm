@@ -1,5 +1,5 @@
 
-package Paws::StepFunctions::StartExecution;
+package Paws::StepFunctions::StartSyncExecution;
   use Moose;
   has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
@@ -8,8 +8,8 @@ package Paws::StepFunctions::StartExecution;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::StartExecutionOutput');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartSyncExecution');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::StartSyncExecutionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -17,20 +17,20 @@ package Paws::StepFunctions::StartExecution;
 
 =head1 NAME
 
-Paws::StepFunctions::StartExecution - Arguments for method StartExecution on L<Paws::StepFunctions>
+Paws::StepFunctions::StartSyncExecution - Arguments for method StartSyncExecution on L<Paws::StepFunctions>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartExecution on the
+This class represents the parameters used for calling the method StartSyncExecution on the
 L<AWS Step Functions|Paws::StepFunctions> service. Use the attributes of this class
-as arguments to method StartExecution.
+as arguments to method StartSyncExecution.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartExecution.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartSyncExecution.
 
 =head1 SYNOPSIS
 
     my $states = Paws->service('StepFunctions');
-    my $StartExecutionOutput = $states->StartExecution(
+    my $StartSyncExecutionOutput = $states->StartSyncExecution(
       StateMachineArn => 'MyArn',
       Input           => 'MySensitiveData',    # OPTIONAL
       Name            => 'MyName',             # OPTIONAL
@@ -38,13 +38,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ExecutionArn = $StartExecutionOutput->ExecutionArn;
-    my $StartDate    = $StartExecutionOutput->StartDate;
+    my $BillingDetails  = $StartSyncExecutionOutput->BillingDetails;
+    my $Cause           = $StartSyncExecutionOutput->Cause;
+    my $Error           = $StartSyncExecutionOutput->Error;
+    my $ExecutionArn    = $StartSyncExecutionOutput->ExecutionArn;
+    my $Input           = $StartSyncExecutionOutput->Input;
+    my $InputDetails    = $StartSyncExecutionOutput->InputDetails;
+    my $Name            = $StartSyncExecutionOutput->Name;
+    my $Output          = $StartSyncExecutionOutput->Output;
+    my $OutputDetails   = $StartSyncExecutionOutput->OutputDetails;
+    my $StartDate       = $StartSyncExecutionOutput->StartDate;
+    my $StateMachineArn = $StartSyncExecutionOutput->StateMachineArn;
+    my $Status          = $StartSyncExecutionOutput->Status;
+    my $StopDate        = $StartSyncExecutionOutput->StopDate;
+    my $TraceHeader     = $StartSyncExecutionOutput->TraceHeader;
 
-    # Returns a L<Paws::StepFunctions::StartExecutionOutput> object.
+    # Returns a L<Paws::StepFunctions::StartSyncExecutionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/states/StartExecution>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/states/StartSyncExecution>
 
 =head1 ATTRIBUTES
 
@@ -66,40 +78,7 @@ bytes in UTF-8 encoding.
 
 =head2 Name => Str
 
-The name of the execution. This name must be unique for your AWS
-account, region, and state machine for 90 days. For more information,
-see Limits Related to State Machine Executions
-(https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
-in the I<AWS Step Functions Developer Guide>.
-
-A name must I<not> contain:
-
-=over
-
-=item *
-
-white space
-
-=item *
-
-brackets C<E<lt> E<gt> { } [ ]>
-
-=item *
-
-wildcard characters C<? *>
-
-=item *
-
-special characters C<" # % \ ^ | ~ ` $ & , ; : />
-
-=item *
-
-control characters (C<U+0000-001F>, C<U+007F-009F>)
-
-=back
-
-To enable logging with CloudWatch Logs, the name should only contain
-0-9, A-Z, a-z, - and _.
+The name of the execution.
 
 
 
@@ -119,7 +98,7 @@ in the request payload.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method StartExecution in L<Paws::StepFunctions>
+This class forms part of L<Paws>, documenting arguments for method StartSyncExecution in L<Paws::StepFunctions>
 
 =head1 BUGS and CONTRIBUTIONS
 

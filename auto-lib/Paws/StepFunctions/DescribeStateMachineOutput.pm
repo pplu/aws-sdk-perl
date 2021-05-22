@@ -8,6 +8,7 @@ package Paws::StepFunctions::DescribeStateMachineOutput;
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
   has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  has TracingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::TracingConfiguration', traits => ['NameInRequest'], request_name => 'tracingConfiguration' );
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -68,6 +69,8 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 =back
 
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and _.
 
 
 =head2 B<REQUIRED> RoleArn => Str
@@ -87,9 +90,14 @@ The Amazon Resource Name (ARN) that identifies the state machine.
 The current status of the state machine.
 
 Valid values are: C<"ACTIVE">, C<"DELETING">
+=head2 TracingConfiguration => L<Paws::StepFunctions::TracingConfiguration>
+
+Selects whether AWS X-Ray tracing is enabled.
+
+
 =head2 B<REQUIRED> Type => Str
 
-
+The C<type> of the state machine (C<STANDARD> or C<EXPRESS>).
 
 Valid values are: C<"STANDARD">, C<"EXPRESS">
 =head2 _request_id => Str

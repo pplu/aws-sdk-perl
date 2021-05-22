@@ -1,6 +1,9 @@
 
-package Paws::StepFunctions::DescribeExecutionOutput;
+package Paws::StepFunctions::StartSyncExecutionOutput;
   use Moose;
+  has BillingDetails => (is => 'ro', isa => 'Paws::StepFunctions::BillingDetails', traits => ['NameInRequest'], request_name => 'billingDetails' );
+  has Cause => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cause' );
+  has Error => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'error' );
   has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
   has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
   has InputDetails => (is => 'ro', isa => 'Paws::StepFunctions::CloudWatchEventsExecutionDataDetails', traits => ['NameInRequest'], request_name => 'inputDetails' );
@@ -8,9 +11,9 @@ package Paws::StepFunctions::DescribeExecutionOutput;
   has Output => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'output' );
   has OutputDetails => (is => 'ro', isa => 'Paws::StepFunctions::CloudWatchEventsExecutionDataDetails', traits => ['NameInRequest'], request_name => 'outputDetails' );
   has StartDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startDate' , required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
+  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' );
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
-  has StopDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopDate' );
+  has StopDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopDate' , required => 1);
   has TraceHeader => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'traceHeader' );
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -19,9 +22,25 @@ package Paws::StepFunctions::DescribeExecutionOutput;
 
 =head1 NAME
 
-Paws::StepFunctions::DescribeExecutionOutput
+Paws::StepFunctions::StartSyncExecutionOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 BillingDetails => L<Paws::StepFunctions::BillingDetails>
+
+An object that describes workflow billing details, including billed
+duration and memory use.
+
+
+=head2 Cause => Str
+
+A more detailed explanation of the cause of the failure.
+
+
+=head2 Error => Str
+
+The error code of the failure.
 
 
 =head2 B<REQUIRED> ExecutionArn => Str
@@ -45,35 +64,6 @@ UTF-8 encoding.
 
 The name of the execution.
 
-A name must I<not> contain:
-
-=over
-
-=item *
-
-white space
-
-=item *
-
-brackets C<E<lt> E<gt> { } [ ]>
-
-=item *
-
-wildcard characters C<? *>
-
-=item *
-
-special characters C<" # % \ ^ | ~ ` $ & , ; : />
-
-=item *
-
-control characters (C<U+0000-001F>, C<U+007F-009F>)
-
-=back
-
-To enable logging with CloudWatch Logs, the name should only contain
-0-9, A-Z, a-z, - and _.
-
 
 =head2 Output => Str
 
@@ -94,17 +84,17 @@ fails, this field is null.
 The date the execution is started.
 
 
-=head2 B<REQUIRED> StateMachineArn => Str
+=head2 StateMachineArn => Str
 
-The Amazon Resource Name (ARN) of the executed stated machine.
+The Amazon Resource Name (ARN) that identifies the state machine.
 
 
 =head2 B<REQUIRED> Status => Str
 
 The current status of the execution.
 
-Valid values are: C<"RUNNING">, C<"SUCCEEDED">, C<"FAILED">, C<"TIMED_OUT">, C<"ABORTED">
-=head2 StopDate => Str
+Valid values are: C<"SUCCEEDED">, C<"FAILED">, C<"TIMED_OUT">
+=head2 B<REQUIRED> StopDate => Str
 
 If the execution has already ended, the date the execution stopped.
 

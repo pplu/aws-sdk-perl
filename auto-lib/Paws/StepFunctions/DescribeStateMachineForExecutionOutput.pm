@@ -2,9 +2,11 @@
 package Paws::StepFunctions::DescribeStateMachineForExecutionOutput;
   use Moose;
   has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
+  has LoggingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::LoggingConfiguration', traits => ['NameInRequest'], request_name => 'loggingConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
   has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
+  has TracingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::TracingConfiguration', traits => ['NameInRequest'], request_name => 'tracingConfiguration' );
   has UpdateDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'updateDate' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -25,6 +27,11 @@ States Language
 (https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
+=head2 LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>
+
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the state machine associated with the execution.
@@ -40,6 +47,11 @@ the execution.
 
 The Amazon Resource Name (ARN) of the state machine associated with the
 execution.
+
+
+=head2 TracingConfiguration => L<Paws::StepFunctions::TracingConfiguration>
+
+Selects whether AWS X-Ray tracing is enabled.
 
 
 =head2 B<REQUIRED> UpdateDate => Str

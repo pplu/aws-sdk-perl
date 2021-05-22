@@ -2,6 +2,7 @@
 package Paws::StepFunctions::StateEnteredEventDetails;
   use Moose;
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has InputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'inputDetails', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
 
 1;
@@ -41,7 +42,14 @@ Contains details about a state entered during an execution.
 
 =head2 Input => Str
 
-The string that contains the JSON input data for the state.
+The string that contains the JSON input data for the state. Length
+constraints apply to the payload size, and are expressed as bytes in
+UTF-8 encoding.
+
+
+=head2 InputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the input for an execution history event.
 
 
 =head2 B<REQUIRED> Name => Str

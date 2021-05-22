@@ -105,6 +105,11 @@ package Paws::StepFunctions;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::StartExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartSyncExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::StartSyncExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::StopExecution', @_);
@@ -220,7 +225,7 @@ package Paws::StepFunctions;
   }
 
 
-  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines ListTagsForResource SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution TagResource UntagResource UpdateStateMachine / }
+  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines ListTagsForResource SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StartSyncExecution StopExecution TagResource UntagResource UpdateStateMachine / }
 
 1;
 
@@ -325,6 +330,8 @@ are different.
 
 =item [Tags => ArrayRef[L<Paws::StepFunctions::Tag>]]
 
+=item [TracingConfiguration => L<Paws::StepFunctions::TracingConfiguration>]
+
 =item [Type => Str]
 
 
@@ -338,7 +345,10 @@ Creates a state machine. A state machine consists of a collection of
 states that can do work (C<Task> states), determine to which states to
 transition next (C<Choice> states), stop an execution with an error
 (C<Fail> states), and so on. State machines are specified using a
-JSON-based, structured language.
+JSON-based, structured language. For more information, see Amazon
+States Language
+(https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+in the AWS Step Functions User Guide.
 
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
@@ -346,7 +356,8 @@ and may not reflect very recent updates and changes.
 C<CreateStateMachine> is an idempotent API. Subsequent requests
 wonE<rsquo>t create a duplicate resource if it was already created.
 C<CreateStateMachine>'s idempotency check is based on the state machine
-C<name> and C<definition>. If a following request has a different
+C<name>, C<definition>, C<type>, C<LoggingConfiguration> and
+C<TracingConfiguration>. If a following request has a different
 C<roleArn> or C<tags>, Step Functions will ignore these differences and
 treat it as an idempotent request of the previous. In this case,
 C<roleArn> and C<tags> will not be updated, even if they are different.
@@ -383,11 +394,10 @@ Returns: a L<Paws::StepFunctions::DeleteStateMachineOutput> instance
 
 Deletes a state machine. This is an asynchronous operation: It sets the
 state machine's status to C<DELETING> and begins the deletion process.
-Each state machine execution is deleted the next time it makes a state
-transition.
 
-The state machine itself is deleted after all executions are completed
-or deleted.
+For C<EXPRESS>state machines, the deletion will happen eventually
+(usually less than a minute). Running executions may emit logs after
+C<DeleteStateMachine> API is called.
 
 
 =head2 DescribeActivity
@@ -427,6 +437,8 @@ Describes an execution.
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
 
+This API action is not supported by C<EXPRESS> state machines.
+
 
 =head2 DescribeStateMachine
 
@@ -464,6 +476,8 @@ Describes the state machine associated with a specific execution.
 
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
+
+This API action is not supported by C<EXPRESS> state machines.
 
 
 =head2 GetActivityTask
@@ -505,6 +519,8 @@ in the Step Functions Developer Guide.
 
 =item ExecutionArn => Str
 
+=item [IncludeExecutionData => Bool]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -529,6 +545,8 @@ the call again using the returned token to retrieve the next page. Keep
 all other arguments unchanged. Each pagination token expires after 24
 hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
+
+This API action is not supported by C<EXPRESS> state machines.
 
 
 =head2 ListActivities
@@ -591,6 +609,8 @@ InvalidToken> error.
 
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
+
+This API action is not supported by C<EXPRESS> state machines.
 
 
 =head2 ListStateMachines
@@ -727,6 +747,8 @@ completed successfully.
 
 =item [Name => Str]
 
+=item [TraceHeader => Str]
+
 
 =back
 
@@ -741,6 +763,28 @@ the same name and input as a running execution, the call will succeed
 and return the same response as the original request. If the execution
 is closed or if the input is different, it will return a 400
 C<ExecutionAlreadyExists> error. Names can be reused after 90 days.
+
+
+=head2 StartSyncExecution
+
+=over
+
+=item StateMachineArn => Str
+
+=item [Input => Str]
+
+=item [Name => Str]
+
+=item [TraceHeader => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::StartSyncExecution>
+
+Returns: a L<Paws::StepFunctions::StartSyncExecutionOutput> instance
+
+Starts a Synchronous Express state machine execution.
 
 
 =head2 StopExecution
@@ -761,6 +805,8 @@ Each argument is described in detail in: L<Paws::StepFunctions::StopExecution>
 Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 
 Stops an execution.
+
+This API action is not supported by C<EXPRESS> state machines.
 
 
 =head2 TagResource
@@ -821,6 +867,8 @@ Remove a tag from a Step Functions resource
 
 =item [RoleArn => Str]
 
+=item [TracingConfiguration => L<Paws::StepFunctions::TracingConfiguration>]
+
 
 =back
 
@@ -828,11 +876,11 @@ Each argument is described in detail in: L<Paws::StepFunctions::UpdateStateMachi
 
 Returns: a L<Paws::StepFunctions::UpdateStateMachineOutput> instance
 
-Updates an existing state machine by modifying its C<definition> and/or
-C<roleArn>. Running executions will continue to use the previous
-C<definition> and C<roleArn>. You must include at least one of
-C<definition> or C<roleArn> or you will receive a
-C<MissingRequiredParameter> error.
+Updates an existing state machine by modifying its C<definition>,
+C<roleArn>, or C<loggingConfiguration>. Running executions will
+continue to use the previous C<definition> and C<roleArn>. You must
+include at least one of C<definition> or C<roleArn> or you will receive
+a C<MissingRequiredParameter> error.
 
 All C<StartExecution> calls within a few seconds will use the updated
 C<definition> and C<roleArn>. Executions started immediately after
@@ -846,9 +894,9 @@ C<definition> and C<roleArn>.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllExecutionHistory(sub { },ExecutionArn => Str, [MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+=head2 GetAllExecutionHistory(sub { },ExecutionArn => Str, [IncludeExecutionData => Bool, MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
 
-=head2 GetAllExecutionHistory(ExecutionArn => Str, [MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+=head2 GetAllExecutionHistory(ExecutionArn => Str, [IncludeExecutionData => Bool, MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

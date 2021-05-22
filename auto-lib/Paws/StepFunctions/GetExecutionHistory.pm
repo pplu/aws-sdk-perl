@@ -2,6 +2,7 @@
 package Paws::StepFunctions::GetExecutionHistory;
   use Moose;
   has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
+  has IncludeExecutionData => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeExecutionData' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
@@ -31,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $states = Paws->service('StepFunctions');
     my $GetExecutionHistoryOutput = $states->GetExecutionHistory(
-      ExecutionArn => 'MyArn',
-      MaxResults   => 1,                # OPTIONAL
-      NextToken    => 'MyPageToken',    # OPTIONAL
-      ReverseOrder => 1,                # OPTIONAL
+      ExecutionArn         => 'MyArn',
+      IncludeExecutionData => 1,                # OPTIONAL
+      MaxResults           => 1,                # OPTIONAL
+      NextToken            => 'MyPageToken',    # OPTIONAL
+      ReverseOrder         => 1,                # OPTIONAL
     );
 
     # Results:
@@ -52,6 +54,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 =head2 B<REQUIRED> ExecutionArn => Str
 
 The Amazon Resource Name (ARN) of the execution.
+
+
+
+=head2 IncludeExecutionData => Bool
+
+You can select whether execution data (input or output of a history
+event) is returned. The default is C<true>.
 
 
 
