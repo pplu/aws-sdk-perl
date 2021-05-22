@@ -1,6 +1,7 @@
 
 package Paws::NetworkManager::UpdateDevice;
   use Moose;
+  has AWSLocation => (is => 'ro', isa => 'Paws::NetworkManager::AWSLocation');
   has Description => (is => 'ro', isa => 'Str');
   has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
   has GlobalNetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'globalNetworkId', required => 1);
@@ -39,17 +40,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateDeviceResponse = $networkmanager->UpdateDevice(
       DeviceId        => 'MyString',
       GlobalNetworkId => 'MyString',
-      Description     => 'MyString',    # OPTIONAL
-      Location        => {
+      AWSLocation     => {
+        SubnetArn => 'MyString',
+        Zone      => 'MyString',
+      },    # OPTIONAL
+      Description => 'MyString',    # OPTIONAL
+      Location    => {
         Address   => 'MyString',
         Latitude  => 'MyString',
         Longitude => 'MyString',
-      },                                # OPTIONAL
-      Model        => 'MyString',       # OPTIONAL
-      SerialNumber => 'MyString',       # OPTIONAL
-      SiteId       => 'MyString',       # OPTIONAL
-      Type         => 'MyString',       # OPTIONAL
-      Vendor       => 'MyString',       # OPTIONAL
+      },                            # OPTIONAL
+      Model        => 'MyString',   # OPTIONAL
+      SerialNumber => 'MyString',   # OPTIONAL
+      SiteId       => 'MyString',   # OPTIONAL
+      Type         => 'MyString',   # OPTIONAL
+      Vendor       => 'MyString',   # OPTIONAL
     );
 
     # Results:
@@ -61,6 +66,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/networkmanager/UpdateDevice>
 
 =head1 ATTRIBUTES
+
+
+=head2 AWSLocation => L<Paws::NetworkManager::AWSLocation>
+
+The AWS location of the device.
+
 
 
 =head2 Description => Str
