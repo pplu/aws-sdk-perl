@@ -35,6 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ManagedBloc
 
 The voting rules for the network to decide if a proposal is accepted
 
+Applies only to Hyperledger Fabric.
+
 =head1 ATTRIBUTES
 
 

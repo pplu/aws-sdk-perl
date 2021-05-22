@@ -45,9 +45,9 @@ Managed Blockchain network using the Hyperledger Fabric framework.
 The password for the member's initial administrative user. The
 C<AdminPassword> must be at least eight characters long and no more
 than 32 characters. It must contain at least one uppercase letter, one
-lowercase letter, and one digit. It cannot have a single
-quote(E<lsquo>), double quote(E<ldquo>), forward slash(/), backward
-slash(\), @, or a space.
+lowercase letter, and one digit. It cannot have a single quotation mark
+(E<lsquo>), a double quotation marks (E<ldquo>), a forward slash(/), a
+backward slash(\), @, or a space.
 
 
 =head2 B<REQUIRED> AdminUsername => Str

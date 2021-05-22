@@ -36,6 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ManagedBloc
 
 The actions to carry out if a proposal is C<APPROVED>.
 
+Applies only to Hyperledger Fabric.
+
 =head1 ATTRIBUTES
 
 

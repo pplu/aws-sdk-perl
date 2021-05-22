@@ -24,7 +24,7 @@ retrieve.
 
 =head2 ProposalVotes => ArrayRef[L<Paws::ManagedBlockchain::VoteSummary>]
 
-The listing of votes.
+The list of votes.
 
 
 =head2 _request_id => Str

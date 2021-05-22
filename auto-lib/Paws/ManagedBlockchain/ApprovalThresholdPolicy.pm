@@ -41,6 +41,8 @@ such as the percentage of C<YES> votes and the duration of the
 proposal. The policy applies to all proposals and is specified when the
 network is created.
 
+Applies only to Hyperledger Fabric.
+
 =head1 ATTRIBUTES
 
 

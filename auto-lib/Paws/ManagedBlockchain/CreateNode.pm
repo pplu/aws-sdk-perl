@@ -2,14 +2,15 @@
 package Paws::ManagedBlockchain::CreateNode;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str', required => 1);
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
+  has MemberId => (is => 'ro', isa => 'Str');
   has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
   has NodeConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::NodeConfiguration', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::ManagedBlockchain::InputTagMap');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/nodes');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::CreateNodeOutput');
 1;
@@ -33,14 +34,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $managedblockchain = Paws->service('ManagedBlockchain');
     my $CreateNodeOutput = $managedblockchain->CreateNode(
       ClientRequestToken => 'MyClientRequestTokenString',
-      MemberId           => 'MyResourceIdString',
       NetworkId          => 'MyResourceIdString',
       NodeConfiguration  => {
-        AvailabilityZone => 'MyAvailabilityZoneString',
-        InstanceType     => 'MyInstanceTypeString',
-
+        InstanceType               => 'MyInstanceTypeString',
+        AvailabilityZone           => 'MyAvailabilityZoneString',    # OPTIONAL
+        LogPublishingConfiguration => {
+          Fabric => {
+            ChaincodeLogs => {
+              Cloudwatch => {
+                Enabled => 1,                                        # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+            PeerLogs => {
+              Cloudwatch => {
+                Enabled => 1,    # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+        StateDB => 'LevelDB',    # values: LevelDB, CouchDB; OPTIONAL
       },
-
+      MemberId => 'MyResourceIdString',    # OPTIONAL
+      Tags     => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -64,21 +81,60 @@ you use an AWS SDK or the AWS CLI.
 
 
 
-=head2 B<REQUIRED> MemberId => Str
+=head2 MemberId => Str
 
 The unique identifier of the member that owns this node.
+
+Applies only to Hyperledger Fabric.
 
 
 
 =head2 B<REQUIRED> NetworkId => Str
 
-The unique identifier of the network in which this node runs.
+The unique identifier of the network for the node.
+
+Ethereum public networks have the following C<NetworkId>s:
+
+=over
+
+=item *
+
+C<n-ethereum-mainnet>
+
+=item *
+
+C<n-ethereum-rinkeby>
+
+=item *
+
+C<n-ethereum-ropsten>
+
+=back
+
 
 
 
 =head2 B<REQUIRED> NodeConfiguration => L<Paws::ManagedBlockchain::NodeConfiguration>
 
 The properties of a node configuration.
+
+
+
+=head2 Tags => L<Paws::ManagedBlockchain::InputTagMap>
+
+Tags to assign to the node. Each tag consists of a key and optional
+value.
+
+When specifying tags during creation, you can specify multiple
+key-value pairs in a single request, with an overall maximum of 50 tags
+added to each resource.
+
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Ethereum Developer Guide>, or
+Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
 
 
 

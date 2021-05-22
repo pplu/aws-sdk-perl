@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/man
 An optional framework specifier. If provided, only networks of this
 framework type are listed.
 
-Valid values are: C<"HYPERLEDGER_FABRIC">
+Valid values are: C<"HYPERLEDGER_FABRIC">, C<"ETHEREUM">
 
 =head2 MaxResults => Int
 
@@ -82,6 +82,8 @@ retrieve.
 
 An optional status specifier. If provided, only networks currently in
 this status are listed.
+
+Applies only to Hyperledger Fabric.
 
 Valid values are: C<"CREATING">, C<"AVAILABLE">, C<"CREATE_FAILED">, C<"DELETING">, C<"DELETED">
 
