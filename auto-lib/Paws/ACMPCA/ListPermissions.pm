@@ -50,11 +50,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =head2 B<REQUIRED> CertificateAuthorityArn => Str
 
 The Amazon Resource Number (ARN) of the private CA to inspect. You can
-find the ARN by calling the ListCertificateAuthorities action. This
-must be of the form:
+find the ARN by calling the ListCertificateAuthorities
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+action. This must be of the form:
 C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012>
 You can get a private CA's ARN by running the
-ListCertificateAuthorities action.
+ListCertificateAuthorities
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+action.
 
 
 

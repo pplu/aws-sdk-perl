@@ -54,7 +54,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =head2 B<REQUIRED> AuditReportId => Str
 
 The report ID returned by calling the
-CreateCertificateAuthorityAuditReport action.
+CreateCertificateAuthorityAuditReport
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
+action.
 
 
 

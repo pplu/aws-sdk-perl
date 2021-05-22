@@ -34,11 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::Rev
 =head1 DESCRIPTION
 
 Certificate revocation information used by the
-CreateCertificateAuthority and UpdateCertificateAuthority actions. Your
-private certificate authority (CA) can create and maintain a
-certificate revocation list (CRL). A CRL contains information about
-certificates revoked by your CA. For more information, see
-RevokeCertificate.
+CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+and UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+actions. Your private certificate authority (CA) can create and
+maintain a certificate revocation list (CRL). A CRL contains
+information about certificates revoked by your CA. For more
+information, see RevokeCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html).
 
 =head1 ATTRIBUTES
 

@@ -17,14 +17,14 @@ Paws::ACM::GetCertificateResponse
 
 =head2 Certificate => Str
 
-String that contains the ACM certificate represented by the ARN
-specified at input.
+The ACM-issued certificate corresponding to the ARN specified as input.
 
 
 =head2 CertificateChain => Str
 
-The certificate chain that contains the root certificate issued by the
-certificate authority (CA).
+Certificates forming the requested certificate's chain of trust. The
+chain consists of the certificate of the issuing CA and the
+intermediate certificates of any other subordinate CAs.
 
 
 =head2 _request_id => Str

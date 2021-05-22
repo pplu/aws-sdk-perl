@@ -4,6 +4,7 @@ package Paws::ACMPCA::CreateCertificateAuthority;
   has CertificateAuthorityConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::CertificateAuthorityConfiguration', required => 1);
   has CertificateAuthorityType => (is => 'ro', isa => 'Str', required => 1);
   has IdempotencyToken => (is => 'ro', isa => 'Str');
+  has KeyStorageSecurityStandard => (is => 'ro', isa => 'Str');
   has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACMPCA::Tag]');
 
@@ -40,28 +41,86 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         , # values: SHA256WITHECDSA, SHA384WITHECDSA, SHA512WITHECDSA, SHA256WITHRSA, SHA384WITHRSA, SHA512WITHRSA
         Subject => {
           CommonName => 'MyString64',             # max: 64; OPTIONAL
-          Country    => 'MyCountryCodeString',    # OPTIONAL
+          Country    => 'MyCountryCodeString',    # min: 2, max: 2; OPTIONAL
           DistinguishedNameQualifier =>
-            'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
-          GenerationQualifier => 'MyString3',        # max: 3; OPTIONAL
-          GivenName           => 'MyString16',       # max: 16; OPTIONAL
-          Initials            => 'MyString5',        # max: 5; OPTIONAL
-          Locality            => 'MyString128',      # max: 128; OPTIONAL
-          Organization        => 'MyString64',       # max: 64; OPTIONAL
-          OrganizationalUnit  => 'MyString64',       # max: 64; OPTIONAL
-          Pseudonym           => 'MyString128',      # max: 128; OPTIONAL
-          SerialNumber        => 'MyString64',       # max: 64; OPTIONAL
-          State               => 'MyString128',      # max: 128; OPTIONAL
-          Surname             => 'MyString40',       # max: 40; OPTIONAL
-          Title               => 'MyString64',       # max: 64; OPTIONAL
+            'MyASN1PrintableString64',            # max: 64; OPTIONAL
+          GenerationQualifier => 'MyString3',               # max: 3; OPTIONAL
+          GivenName           => 'MyString16',              # max: 16; OPTIONAL
+          Initials            => 'MyString5',               # max: 5; OPTIONAL
+          Locality            => 'MyString128',             # max: 128; OPTIONAL
+          Organization        => 'MyString64',              # max: 64; OPTIONAL
+          OrganizationalUnit  => 'MyString64',              # max: 64; OPTIONAL
+          Pseudonym           => 'MyString128',             # max: 128; OPTIONAL
+          SerialNumber        => 'MyASN1PrintableString64', # max: 64; OPTIONAL
+          State               => 'MyString128',             # max: 128; OPTIONAL
+          Surname             => 'MyString40',              # max: 40; OPTIONAL
+          Title               => 'MyString64',              # max: 64; OPTIONAL
         },
+        CsrExtensions => {
+          KeyUsage => {
+            CRLSign          => 1,                          # OPTIONAL
+            DataEncipherment => 1,                          # OPTIONAL
+            DecipherOnly     => 1,                          # OPTIONAL
+            DigitalSignature => 1,                          # OPTIONAL
+            EncipherOnly     => 1,                          # OPTIONAL
+            KeyAgreement     => 1,                          # OPTIONAL
+            KeyCertSign      => 1,                          # OPTIONAL
+            KeyEncipherment  => 1,                          # OPTIONAL
+            NonRepudiation   => 1,                          # OPTIONAL
+          },    # OPTIONAL
+          SubjectInformationAccess => [
+            {
+              AccessLocation => {
+                DirectoryName => {
+                  CommonName => 'MyString64',    # max: 64; OPTIONAL
+                  Country => 'MyCountryCodeString',   # min: 2, max: 2; OPTIONAL
+                  DistinguishedNameQualifier =>
+                    'MyASN1PrintableString64',        # max: 64; OPTIONAL
+                  GenerationQualifier => 'MyString3',      # max: 3; OPTIONAL
+                  GivenName           => 'MyString16',     # max: 16; OPTIONAL
+                  Initials            => 'MyString5',      # max: 5; OPTIONAL
+                  Locality            => 'MyString128',    # max: 128; OPTIONAL
+                  Organization        => 'MyString64',     # max: 64; OPTIONAL
+                  OrganizationalUnit  => 'MyString64',     # max: 64; OPTIONAL
+                  Pseudonym           => 'MyString128',    # max: 128; OPTIONAL
+                  SerialNumber => 'MyASN1PrintableString64', # max: 64; OPTIONAL
+                  State   => 'MyString128',    # max: 128; OPTIONAL
+                  Surname => 'MyString40',     # max: 40; OPTIONAL
+                  Title   => 'MyString64',     # max: 64; OPTIONAL
+                },
+                DnsName      => 'MyString253',    # max: 253; OPTIONAL
+                EdiPartyName => {
+                  PartyName    => 'MyString256',    # max: 256; OPTIONAL
+                  NameAssigner => 'MyString256',    # max: 256; OPTIONAL
+                },    # OPTIONAL
+                IpAddress => 'MyString39',    # max: 39; OPTIONAL
+                OtherName => {
+                  TypeId => 'MyCustomObjectIdentifier',    # max: 64; OPTIONAL
+                  Value  => 'MyString256',                 # max: 256; OPTIONAL
 
+                },    # OPTIONAL
+                RegisteredId => 'MyCustomObjectIdentifier', # max: 64; OPTIONAL
+                Rfc822Name   => 'MyString256',              # max: 256; OPTIONAL
+                UniformResourceIdentifier => 'MyString253', # max: 253; OPTIONAL
+              },
+              AccessMethod => {
+                AccessMethodType => 'CA_REPOSITORY'
+                , # values: CA_REPOSITORY, RESOURCE_PKI_MANIFEST, RESOURCE_PKI_NOTIFY; OPTIONAL
+                CustomObjectIdentifier =>
+                  'MyCustomObjectIdentifier',    # max: 64; OPTIONAL
+              },
+
+            },
+            ...
+          ],                                     # OPTIONAL
+        },    # OPTIONAL
       },
-      CertificateAuthorityType => 'ROOT',
-      IdempotencyToken         => 'MyIdempotencyToken',    # OPTIONAL
-      RevocationConfiguration  => {
+      CertificateAuthorityType   => 'ROOT',
+      IdempotencyToken           => 'MyIdempotencyToken',             # OPTIONAL
+      KeyStorageSecurityStandard => 'FIPS_140_2_LEVEL_2_OR_HIGHER',   # OPTIONAL
+      RevocationConfiguration    => {
         CrlConfiguration => {
-          Enabled          => 1,
+          Enabled          => 1,                   # OPTIONAL
           CustomCname      => 'MyString253',       # max: 253; OPTIONAL
           ExpirationInDays => 1,                   # min: 1, max: 5000; OPTIONAL
           S3BucketName     => 'MyString3To255',    # min: 3, max: 255; OPTIONAL
@@ -103,16 +162,32 @@ Valid values are: C<"ROOT">, C<"SUBORDINATE">
 
 =head2 IdempotencyToken => Str
 
-Alphanumeric string that can be used to distinguish between calls to
-B<CreateCertificateAuthority>. Idempotency tokens time out after five
-minutes. Therefore, if you call B<CreateCertificateAuthority> multiple
-times with the same idempotency token within a five minute period, ACM
-Private CA recognizes that you are requesting only one certificate. As
-a result, ACM Private CA issues only one. If you change the idempotency
-token for each call, however, ACM Private CA recognizes that you are
-requesting multiple certificates.
+Custom string that can be used to distinguish between calls to the
+B<CreateCertificateAuthority> action. Idempotency tokens for
+B<CreateCertificateAuthority> time out after five minutes. Therefore,
+if you call B<CreateCertificateAuthority> multiple times with the same
+idempotency token within five minutes, ACM Private CA recognizes that
+you are requesting only certificate authority and will issue only one.
+If you change the idempotency token for each call, PCA recognizes that
+you are requesting multiple certificate authorities.
 
 
+
+=head2 KeyStorageSecurityStandard => Str
+
+Specifies a cryptographic key management compliance standard used for
+handling CA keys.
+
+Default: FIPS_140_2_LEVEL_3_OR_HIGHER
+
+Note: AWS Region ap-northeast-3 supports only
+FIPS_140_2_LEVEL_2_OR_HIGHER. You must explicitly specify this
+parameter and value when creating a CA in that Region. Specifying a
+different value (or no value) results in an C<InvalidArgsException>
+with the message "A certificate authority cannot be created in this
+region with the specified security standard."
+
+Valid values are: C<"FIPS_140_2_LEVEL_2_OR_HIGHER">, C<"FIPS_140_2_LEVEL_3_OR_HIGHER">
 
 =head2 RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>
 
@@ -121,7 +196,9 @@ revocation list (CRL) for the CA, the name of the S3 bucket to which
 ACM Private CA will write the CRL, and an optional CNAME alias that you
 can use to hide the name of your bucket in the B<CRL Distribution
 Points> extension of your CA certificate. For more information, see the
-CrlConfiguration structure.
+CrlConfiguration
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CrlConfiguration.html)
+structure.
 
 
 
@@ -129,9 +206,7 @@ CrlConfiguration structure.
 
 Key-value pairs that will be attached to the new private CA. You can
 associate up to 50 tags with a private CA. For information using tags
-with
-
-IAM to manage permissions, see Controlling Access Using IAM Tags
+with IAM to manage permissions, see Controlling Access Using IAM Tags
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 
 

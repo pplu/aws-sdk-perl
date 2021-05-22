@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $acm -pca->CreateCertificateAuthorityAuditReport(
       AuditReportResponseFormat => 'JSON',
       CertificateAuthorityArn   => 'MyArn',
-      S3BucketName              => 'MyString',
+      S3BucketName              => 'MyS3BucketName',
 
       );
 

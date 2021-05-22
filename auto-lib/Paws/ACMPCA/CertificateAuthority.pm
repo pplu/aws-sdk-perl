@@ -5,9 +5,11 @@ package Paws::ACMPCA::CertificateAuthority;
   has CertificateAuthorityConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::CertificateAuthorityConfiguration');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has KeyStorageSecurityStandard => (is => 'ro', isa => 'Str');
   has LastStateChangeAt => (is => 'ro', isa => 'Str');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
+  has OwnerAccount => (is => 'ro', isa => 'Str');
   has RestorableUntil => (is => 'ro', isa => 'Str');
   has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
   has Serial => (is => 'ro', isa => 'Str');
@@ -49,12 +51,17 @@ Your private CA can issue and revoke X.509 digital certificates.
 Digital certificates verify that the entity named in the certificate
 B<Subject> field owns or controls the public key contained in the
 B<Subject Public Key Info> field. Call the CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
 action to create your private CA. You must then call the
-GetCertificateAuthorityCertificate action to retrieve a private CA
-certificate signing request (CSR). Sign the CSR with your ACM Private
-CA-hosted or on-premises root or subordinate CA certificate. Call the
-ImportCertificateAuthorityCertificate action to import the signed
-certificate into AWS Certificate Manager (ACM).
+GetCertificateAuthorityCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificateAuthorityCertificate.html)
+action to retrieve a private CA certificate signing request (CSR). Sign
+the CSR with your ACM Private CA-hosted or on-premises root or
+subordinate CA certificate. Call the
+ImportCertificateAuthorityCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html)
+action to import the signed certificate into AWS Certificate Manager
+(ACM).
 
 =head1 ATTRIBUTES
 
@@ -80,6 +87,21 @@ Date and time at which your private CA was created.
 Reason the request to create your private CA failed.
 
 
+=head2 KeyStorageSecurityStandard => Str
+
+Defines a cryptographic key management compliance standard used for
+handling CA keys.
+
+Default: FIPS_140_2_LEVEL_3_OR_HIGHER
+
+Note: AWS Region ap-northeast-3 supports only
+FIPS_140_2_LEVEL_2_OR_HIGHER. You must explicitly specify this
+parameter and value when creating a CA in that Region. Specifying a
+different value (or no value) results in an C<InvalidArgsException>
+with the message "A certificate authority cannot be created in this
+region with the specified security standard."
+
+
 =head2 LastStateChangeAt => Str
 
 Date and time at which your private CA was last updated.
@@ -95,11 +117,18 @@ Date and time after which your private CA certificate is not valid.
 Date and time before which your private CA certificate is not valid.
 
 
+=head2 OwnerAccount => Str
+
+The AWS account ID that owns the certificate authority.
+
+
 =head2 RestorableUntil => Str
 
 The period during which a deleted CA can be restored. For more
 information, see the C<PermanentDeletionTimeInDays> parameter of the
-DeleteCertificateAuthorityRequest action.
+DeleteCertificateAuthorityRequest
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthorityRequest.html)
+action.
 
 
 =head2 RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>

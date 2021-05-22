@@ -47,6 +47,10 @@ the S3 bucket name to the B<CRL Distribution Points> extension of each
 certificate it issues. Your S3 bucket policy must give write permission
 to ACM Private CA.
 
+ACM Private CA assets that are stored in Amazon S3 can be protected
+with encryption. For more information, see Encrypting Your CRLs
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption).
+
 Your private CA uses the value in the B<ExpirationInDays> parameter to
 calculate the B<nextUpdate> field in the CRL. The CRL is refreshed at
 1/2 the age of next update or when a certificate is revoked. When a
@@ -158,13 +162,16 @@ this value if you don't want the name of your S3 bucket to be public.
 Boolean value that specifies whether certificate revocation lists
 (CRLs) are enabled. You can use this value to enable certificate
 revocation for a new CA when you call the CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
 action or for an existing CA when you call the
-UpdateCertificateAuthority action.
+UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+action.
 
 
 =head2 ExpirationInDays => Int
 
-Number of days until a certificate expires.
+Validity period of the CRL in days.
 
 
 =head2 S3BucketName => Str
@@ -173,8 +180,10 @@ Name of the S3 bucket that contains the CRL. If you do not provide a
 value for the B<CustomCname> argument, the name of your S3 bucket is
 placed into the B<CRL Distribution Points> extension of the issued
 certificate. You can change the name of your bucket by calling the
-UpdateCertificateAuthority action. You must specify a bucket policy
-that allows ACM Private CA to write the CRL to your bucket.
+UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+action. You must specify a bucket policy that allows ACM Private CA to
+write the CRL to your bucket.
 
 
 
