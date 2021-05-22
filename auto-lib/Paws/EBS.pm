@@ -14,6 +14,11 @@ package Paws::EBS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub CompleteSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EBS::CompleteSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSnapshotBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EBS::GetSnapshotBlock', @_);
@@ -29,10 +34,20 @@ package Paws::EBS;
     my $call_object = $self->new_with_coercions('Paws::EBS::ListSnapshotBlocks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutSnapshotBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EBS::PutSnapshotBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EBS::StartSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/GetSnapshotBlock ListChangedBlocks ListSnapshotBlocks / }
+  sub operations { qw/CompleteSnapshot GetSnapshotBlock ListChangedBlocks ListSnapshotBlocks PutSnapshotBlock StartSnapshot / }
 
 1;
 
@@ -60,15 +75,23 @@ Paws::EBS - Perl Interface to AWS Amazon Elastic Block Store
 
 =head1 DESCRIPTION
 
-You can use the Amazon Elastic Block Store (EBS) direct APIs to
-directly read the data on your EBS snapshots, and identify the
-difference between two snapshots. You can view the details of blocks in
-an EBS snapshot, compare the block difference between two snapshots,
-and directly access the data in a snapshot. If youE<rsquo>re an
-independent software vendor (ISV) who offers backup services for EBS,
-the EBS direct APIs make it easier and more cost-effective to track
-incremental changes on your EBS volumes via EBS snapshots. This can be
-done without having to create new volumes from EBS snapshots.
+You can use the Amazon Elastic Block Store (Amazon EBS) direct APIs to
+create EBS snapshots, write data directly to your snapshots, read data
+on your snapshots, and identify the differences or changes between two
+snapshots. If youE<rsquo>re an independent software vendor (ISV) who
+offers backup services for Amazon EBS, the EBS direct APIs make it more
+efficient and cost-effective to track incremental changes on your EBS
+volumes through snapshots. This can be done without having to create
+new volumes from snapshots, and then use Amazon Elastic Compute Cloud
+(Amazon EC2) instances to compare the differences.
+
+You can create incremental snapshots directly from data on-premises
+into EBS volumes and the cloud to use for quick disaster recovery. With
+the ability to write and read snapshots, you can write your on-premises
+data to an EBS snapshot during a disaster. Then after recovery, you can
+restore it back to AWS or on-premises from the snapshot. You no longer
+need to build and maintain complex mechanisms to copy data to and from
+Amazon EBS.
 
 This API reference provides detailed information about the actions,
 data types, parameters, and errors of the EBS direct APIs. For more
@@ -86,6 +109,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ebs
 
 
 =head1 METHODS
+
+=head2 CompleteSnapshot
+
+=over
+
+=item ChangedBlocksCount => Int
+
+=item SnapshotId => Str
+
+=item [Checksum => Str]
+
+=item [ChecksumAggregationMethod => Str]
+
+=item [ChecksumAlgorithm => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EBS::CompleteSnapshot>
+
+Returns: a L<Paws::EBS::CompleteSnapshotResponse> instance
+
+Seals and completes the snapshot after all of the required blocks of
+data have been written to it. Completing the snapshot changes the
+status to C<completed>. You cannot write new blocks to a snapshot after
+it has been completed.
+
 
 =head2 GetSnapshotBlock
 
@@ -128,9 +178,9 @@ Each argument is described in detail in: L<Paws::EBS::ListChangedBlocks>
 
 Returns: a L<Paws::EBS::ListChangedBlocksResponse> instance
 
-Returns the block indexes and block tokens for blocks that are
-different between two Amazon Elastic Block Store snapshots of the same
-volume/snapshot lineage.
+Returns information about the blocks that are different between two
+Amazon Elastic Block Store snapshots of the same volume/snapshot
+lineage.
 
 
 =head2 ListSnapshotBlocks
@@ -152,8 +202,75 @@ Each argument is described in detail in: L<Paws::EBS::ListSnapshotBlocks>
 
 Returns: a L<Paws::EBS::ListSnapshotBlocksResponse> instance
 
-Returns the block indexes and block tokens for blocks in an Amazon
-Elastic Block Store snapshot.
+Returns information about the blocks in an Amazon Elastic Block Store
+snapshot.
+
+
+=head2 PutSnapshotBlock
+
+=over
+
+=item BlockData => Str
+
+=item BlockIndex => Int
+
+=item Checksum => Str
+
+=item ChecksumAlgorithm => Str
+
+=item DataLength => Int
+
+=item SnapshotId => Str
+
+=item [Progress => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EBS::PutSnapshotBlock>
+
+Returns: a L<Paws::EBS::PutSnapshotBlockResponse> instance
+
+Writes a block of data to a snapshot. If the specified block contains
+data, the existing data is overwritten. The target snapshot must be in
+the C<pending> state.
+
+Data written to a snapshot must be aligned with 512-byte sectors.
+
+
+=head2 StartSnapshot
+
+=over
+
+=item VolumeSize => Int
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [Encrypted => Bool]
+
+=item [KmsKeyArn => Str]
+
+=item [ParentSnapshotId => Str]
+
+=item [Tags => ArrayRef[L<Paws::EBS::Tag>]]
+
+=item [Timeout => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EBS::StartSnapshot>
+
+Returns: a L<Paws::EBS::StartSnapshotResponse> instance
+
+Creates a new Amazon EBS snapshot. The new snapshot enters the
+C<pending> state after the request completes.
+
+After creating the snapshot, use PutSnapshotBlock
+(https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html)
+to write blocks of data to the snapshot.
 
 
 
