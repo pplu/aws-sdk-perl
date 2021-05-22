@@ -42,9 +42,8 @@ if any, for this distribution.
 
 =head2 B<REQUIRED> HeaderName => Str
 
-The name of a header that you want CloudFront to forward to your
-origin. For more information, see Forwarding Custom Headers to Your
-Origin (Web Distributions Only)
+The name of a header that you want CloudFront to send to your origin.
+For more information, see Adding Custom Headers to Origin Requests
 (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html)
 in the I< Amazon CloudFront Developer Guide>.
 

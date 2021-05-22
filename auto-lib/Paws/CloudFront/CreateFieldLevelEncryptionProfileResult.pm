@@ -33,9 +33,7 @@ Returned when you create a new field-level encryption profile.
 
 =head2 Location => Str
 
-The fully qualified URI of the new profile resource just created. For
-example:
-C<https://cloudfront.amazonaws.com/2010-11-01/field-level-encryption-profile/EDFDVBD632BHDS5>.
+The fully qualified URI of the new profile resource just created.
 
 
 

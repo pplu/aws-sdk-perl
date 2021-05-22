@@ -37,34 +37,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex data type for public key information.
+Contains information about a public key.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comment => Str
 
-Comment for public key information summary.
+A comment to describe the public key. The comment cannot be longer than
+128 characters.
 
 
 =head2 B<REQUIRED> CreatedTime => Str
 
-Creation time for public key information summary.
+The date and time when the public key was uploaded.
 
 
 =head2 B<REQUIRED> EncodedKey => Str
 
-Encoded key for public key information summary.
+The public key.
 
 
 =head2 B<REQUIRED> Id => Str
 
-ID for public key information summary.
+The identifier of the public key.
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name for public key information summary.
+A name to help identify the public key.
 
 
 

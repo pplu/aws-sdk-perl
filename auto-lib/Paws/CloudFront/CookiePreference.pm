@@ -34,6 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include cookies in the cache key, use C<CookiesConfig>
+in a cache policy. See C<CachePolicy>.
+
+If you want to send cookies to the origin but not include them in the
+cache key, use C<CookiesConfig> in an origin request policy. See
+C<OriginRequestPolicy>.
+
 A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
 about forwarding cookies to the origin, see Caching Content Based on
@@ -46,6 +56,20 @@ in the I<Amazon CloudFront Developer Guide>.
 
 =head2 B<REQUIRED> Forward => Str
 
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include cookies in the cache key, use a cache policy.
+For more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send cookies to the origin but not include them in the
+cache key, use origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
 Specifies which cookies to forward to the origin for this cache
 behavior: all, none, or the list of cookies specified in the
 C<WhitelistedNames> complex type.
@@ -56,6 +80,20 @@ C<Forward> element.
 
 
 =head2 WhitelistedNames => L<Paws::CloudFront::CookieNames>
+
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include cookies in the cache key, use a cache policy.
+For more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send cookies to the origin but not include them in the
+cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
 
 Required if you specify C<whitelist> for the value of C<Forward>. A
 complex type that specifies how many different cookies you want

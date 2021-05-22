@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that contains information about the Amazon S3 origin. If
-the origin is a custom origin, use the C<CustomOriginConfig> element
-instead.
+the origin is a custom origin or an S3 bucket that is configured as a
+website endpoint, use the C<CustomOriginConfig> element instead.
 
 =head1 ATTRIBUTES
 

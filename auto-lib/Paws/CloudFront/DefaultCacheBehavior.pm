@@ -2,16 +2,21 @@
 package Paws::CloudFront::DefaultCacheBehavior;
   use Moose;
   has AllowedMethods => (is => 'ro', isa => 'Paws::CloudFront::AllowedMethods');
+  has CachePolicyId => (is => 'ro', isa => 'Str');
   has Compress => (is => 'ro', isa => 'Bool');
   has DefaultTTL => (is => 'ro', isa => 'Int');
   has FieldLevelEncryptionId => (is => 'ro', isa => 'Str');
-  has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
+  has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues');
+  has FunctionAssociations => (is => 'ro', isa => 'Paws::CloudFront::FunctionAssociations');
   has LambdaFunctionAssociations => (is => 'ro', isa => 'Paws::CloudFront::LambdaFunctionAssociations');
   has MaxTTL => (is => 'ro', isa => 'Int');
-  has MinTTL => (is => 'ro', isa => 'Int', required => 1);
+  has MinTTL => (is => 'ro', isa => 'Int');
+  has OriginRequestPolicyId => (is => 'ro', isa => 'Str');
+  has RealtimeLogConfigArn => (is => 'ro', isa => 'Str');
   has SmoothStreaming => (is => 'ro', isa => 'Bool');
   has TargetOriginId => (is => 'ro', isa => 'Str', required => 1);
-  has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners', required => 1);
+  has TrustedKeyGroups => (is => 'ro', isa => 'Paws::CloudFront::TrustedKeyGroups');
+  has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners');
   has ViewerProtocolPolicy => (is => 'ro', isa => 'Str', required => 1);
 
 1;
@@ -44,10 +49,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that describes the default cache behavior if you don't
-specify a C<CacheBehavior> element or if files don't match any of the
-values of C<PathPattern> in C<CacheBehavior> elements. You must create
-exactly one default cache behavior.
+A complex type that describes the default cache behavior if you
+donE<rsquo>t specify a C<CacheBehavior> element or if request URLs
+donE<rsquo>t match any of the values of C<PathPattern> in
+C<CacheBehavior> elements. You must create exactly one default cache
+behavior.
 
 =head1 ATTRIBUTES
 
@@ -55,6 +61,20 @@ exactly one default cache behavior.
 =head2 AllowedMethods => L<Paws::CloudFront::AllowedMethods>
 
 
+
+
+=head2 CachePolicyId => Str
+
+The unique identifier of the cache policy that is attached to the
+default cache behavior. For more information, see Creating cache
+policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+or Using the managed cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+A C<DefaultCacheBehavior> must include either a C<CachePolicyId> or
+C<ForwardedValues>. We recommend that you use a C<CachePolicyId>.
 
 
 =head2 Compress => Bool
@@ -67,6 +87,14 @@ in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 DefaultTTL => Int
+
+This field is deprecated. We recommend that you use the C<DefaultTTL>
+field in a cache policy instead of this field. For more information,
+see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+or Using the managed cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 The default amount of time that you want objects to stay in CloudFront
 caches before CloudFront forwards another request to your origin to
@@ -82,14 +110,45 @@ in the I<Amazon CloudFront Developer Guide>.
 =head2 FieldLevelEncryptionId => Str
 
 The value of C<ID> for the field-level encryption configuration that
-you want CloudFront to use for encrypting specific fields of data for a
-cache behavior or for the default cache behavior in your distribution.
+you want CloudFront to use for encrypting specific fields of data for
+the default cache behavior.
 
 
-=head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
+=head2 ForwardedValues => L<Paws::CloudFront::ForwardedValues>
+
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field. For more information,
+see Working with policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/working-with-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to include values in the cache key, use a cache policy. For
+more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+or Using the managed cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send values to the origin but not include them in the
+cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+or Using the managed origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+A C<DefaultCacheBehavior> must include either a C<CachePolicyId> or
+C<ForwardedValues>. We recommend that you use a C<CachePolicyId>.
 
 A complex type that specifies how CloudFront handles query strings,
 cookies, and HTTP headers.
+
+
+=head2 FunctionAssociations => L<Paws::CloudFront::FunctionAssociations>
+
+A list of CloudFront functions that are associated with this cache
+behavior. CloudFront functions must be published to the C<LIVE> stage
+to associate them with a cache behavior.
 
 
 =head2 LambdaFunctionAssociations => L<Paws::CloudFront::LambdaFunctionAssociations>
@@ -99,6 +158,14 @@ for a cache behavior.
 
 
 =head2 MaxTTL => Int
+
+This field is deprecated. We recommend that you use the C<MaxTTL> field
+in a cache policy instead of this field. For more information, see
+Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+or Using the managed cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 The maximum amount of time that you want objects to stay in CloudFront
 caches before CloudFront forwards another request to your origin to
@@ -111,7 +178,15 @@ an Edge Cache (Expiration)
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 B<REQUIRED> MinTTL => Int
+=head2 MinTTL => Int
+
+This field is deprecated. We recommend that you use the C<MinTTL> field
+in a cache policy instead of this field. For more information, see
+Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+or Using the managed cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 The minimum amount of time that you want objects to stay in CloudFront
 caches before CloudFront forwards another request to your origin to
@@ -123,6 +198,26 @@ in the I<Amazon CloudFront Developer Guide>.
 You must specify C<0> for C<MinTTL> if you configure CloudFront to
 forward all headers to your origin (under C<Headers>, if you specify
 C<1> for C<Quantity> and C<*> for C<Name>).
+
+
+=head2 OriginRequestPolicyId => Str
+
+The unique identifier of the origin request policy that is attached to
+the default cache behavior. For more information, see Creating origin
+request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+or Using the managed origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html)
+in the I<Amazon CloudFront Developer Guide>.
+
+
+=head2 RealtimeLogConfigArn => Str
+
+The Amazon Resource Name (ARN) of the real-time log configuration that
+is attached to this cache behavior. For more information, see Real-time
+logs
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 SmoothStreaming => Bool
@@ -138,31 +233,40 @@ value of C<PathPattern>.
 =head2 B<REQUIRED> TargetOriginId => Str
 
 The value of C<ID> for the origin that you want CloudFront to route
-requests to when a request matches the path pattern either for a cache
-behavior or for the default cache behavior in your distribution.
+requests to when they use the default cache behavior.
 
 
-=head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
+=head2 TrustedKeyGroups => L<Paws::CloudFront::TrustedKeyGroups>
 
-A complex type that specifies the AWS accounts, if any, that you want
-to allow to create signed URLs for private content.
+A list of key groups that CloudFront can use to validate signed URLs or
+signed cookies.
 
-If you want to require signed URLs in requests for objects in the
-target origin that match the C<PathPattern> for this cache behavior,
-specify C<true> for C<Enabled>, and specify the applicable values for
-C<Quantity> and C<Items>. For more information, see Serving Private
-Content through CloudFront
+When a cache behavior contains trusted key groups, CloudFront requires
+signed URLs or signed cookies for all requests that match the cache
+behavior. The URLs or cookies must be signed with a private key whose
+corresponding public key is in the key group. The signed URL or cookie
+contains information about which public key CloudFront should use to
+verify the signature. For more information, see Serving private content
 (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
-in the I< Amazon CloudFront Developer Guide>.
+in the I<Amazon CloudFront Developer Guide>.
 
-If you don't want to require signed URLs in requests for objects that
-match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for
-C<Quantity>. Omit C<Items>.
 
-To add, change, or remove one or more trusted signers, change
-C<Enabled> to C<true> (if it's currently C<false>), change C<Quantity>
-as applicable, and specify all of the trusted signers that you want to
-include in the updated distribution.
+=head2 TrustedSigners => L<Paws::CloudFront::TrustedSigners>
+
+We recommend using C<TrustedKeyGroups> instead of C<TrustedSigners>.
+
+A list of AWS account IDs whose public keys CloudFront can use to
+validate signed URLs or signed cookies.
+
+When a cache behavior contains trusted signers, CloudFront requires
+signed URLs or signed cookies for all requests that match the cache
+behavior. The URLs or cookies must be signed with the private key of a
+CloudFront key pair in a trusted signerE<rsquo>s AWS account. The
+signed URL or cookie contains information about which public key
+CloudFront should use to verify the signature. For more information,
+see Serving private content
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> ViewerProtocolPolicy => Str
@@ -191,19 +295,19 @@ HTTP status code of 403 (Forbidden).
 
 =back
 
-For more information about requiring the HTTPS protocol, see Using an
-HTTPS Connection to Access Your Objects
-(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html)
+For more information about requiring the HTTPS protocol, see Requiring
+HTTPS Between Viewers and CloudFront
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-viewers-to-cloudfront.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 The only way to guarantee that viewers retrieve an object that was
 fetched from the origin using HTTPS is never to use any other protocol
 to fetch the object. If you have recently changed from HTTP to HTTPS,
-we recommend that you clear your objects' cache because cached objects
-are protocol agnostic. That means that an edge location will return an
-object from the cache regardless of whether the current request
-protocol matches the protocol used previously. For more information,
-see Managing How Long Content Stays in an Edge Cache (Expiration)
+we recommend that you clear your objectsE<rsquo> cache because cached
+objects are protocol agnostic. That means that an edge location will
+return an object from the cache regardless of whether the current
+request protocol matches the protocol used previously. For more
+information, see Managing Cache Expiration
 (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
 

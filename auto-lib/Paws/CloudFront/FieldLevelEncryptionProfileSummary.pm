@@ -44,7 +44,8 @@ The field-level encryption profile summary.
 
 =head2 Comment => Str
 
-An optional comment for the field-level encryption profile summary.
+An optional comment for the field-level encryption profile summary. The
+comment cannot be longer than 128 characters.
 
 
 =head2 B<REQUIRED> EncryptionEntities => L<Paws::CloudFront::EncryptionEntities>

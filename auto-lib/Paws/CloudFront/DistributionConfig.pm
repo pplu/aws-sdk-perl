@@ -81,16 +81,8 @@ C<DistributionAlreadyExists> error.
 
 =head2 B<REQUIRED> Comment => Str
 
-Any comments you want to include about the distribution.
-
-If you don't want to specify a comment, include an empty C<Comment>
-element.
-
-To delete an existing comment, update the distribution configuration
-and include an empty C<Comment> element.
-
-To add or change a comment, update the distribution configuration and
-specify the new comment.
+An optional comment to describe the distribution. The comment cannot be
+longer than 128 characters.
 
 
 =head2 CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
@@ -261,8 +253,7 @@ for a CloudFront Distribution
 in the I<Amazon CloudFront Developer Guide>. For information about
 CloudFront pricing, including how price classes (such as Price Class
 100) map to CloudFront regions, see Amazon CloudFront Pricing
-(http://aws.amazon.com/cloudfront/pricing/). For price class
-information, scroll down to see the table at the bottom of the page.
+(http://aws.amazon.com/cloudfront/pricing/).
 
 
 =head2 Restrictions => L<Paws::CloudFront::Restrictions>

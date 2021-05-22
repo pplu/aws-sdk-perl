@@ -36,21 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A list of public keys you've added to CloudFront to use with features
-like field-level encryption.
+A list of public keys that you can use with signed URLs and signed
+cookies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html),
+or with field-level encryption
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::PublicKeySummary>]
 
-An array of information about a public key you add to CloudFront to use
-with features like field-level encryption.
+A list of public keys.
 
 
 =head2 B<REQUIRED> MaxItems => Int
 
-The maximum number of public keys you want in the response body.
+The maximum number of public keys you want in the response.
 
 
 =head2 NextMarker => Str
@@ -62,8 +64,7 @@ to continue listing your public keys where you left off.
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of public keys you added to CloudFront to use with features
-like field-level encryption.
+The number of public keys in the list.
 
 
 

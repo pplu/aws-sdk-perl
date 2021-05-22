@@ -34,21 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains information about origins and origin
-groups for this distribution.
+Contains information about the origins for this distribution.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Items => ArrayRef[L<Paws::CloudFront::Origin>]
 
-A complex type that contains origins or origin groups for this
-distribution.
+A list of origins.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of origins or origin groups for this distribution.
+The number of origins for this distribution.
 
 
 

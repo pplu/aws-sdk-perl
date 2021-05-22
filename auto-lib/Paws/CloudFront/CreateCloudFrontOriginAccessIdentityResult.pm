@@ -33,8 +33,6 @@ The current version of the origin access identity created.
 =head2 Location => Str
 
 The fully qualified URI of the new origin access identity just created.
-For example:
-C<https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A>.
 
 
 

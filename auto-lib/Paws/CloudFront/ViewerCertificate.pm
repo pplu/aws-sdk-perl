@@ -67,7 +67,7 @@ or all viewers including those that donE<rsquo>t support SNI.
 
 To accept HTTPS connections from only viewers that support SNI, set
 C<SSLSupportMethod> to C<sni-only>. This is recommended. Most browsers
-and clients released after 2010 support SNI.
+and clients support SNI.
 
 =item *
 
@@ -135,7 +135,7 @@ CloudFront only supports ACM certificates in the US East (N. Virginia)
 Region (C<us-east-1>).
 
 If you specify an ACM certificate ARN, you must also specify values for
-C<MinimumProtocolVerison> and C<SSLSupportMethod>.
+C<MinimumProtocolVersion> and C<SSLSupportMethod>.
 
 
 =head2 Certificate => Str
@@ -218,7 +218,7 @@ Management (AWS IAM)
 provide the ID of the IAM certificate.
 
 If you specify an IAM certificate ID, you must also specify values for
-C<MinimumProtocolVerison> and C<SSLSupportMethod>.
+C<MinimumProtocolVersion> and C<SSLSupportMethod>.
 
 
 =head2 MinimumProtocolVersion => Str
@@ -249,9 +249,6 @@ in the I<Amazon CloudFront Developer Guide>.
 
 On the CloudFront console, this setting is called B<Security Policy>.
 
-We recommend that you specify C<TLSv1.2_2018> unless your viewers are
-using browsers or devices that donE<rsquo>t support TLSv1.2.
-
 When youE<rsquo>re using SNI only (you set C<SSLSupportMethod> to
 C<sni-only>), you must specify C<TLSv1> or higher.
 
@@ -274,13 +271,21 @@ specify which viewers the distribution accepts HTTPS connections from.
 C<sni-only> E<ndash> The distribution accepts HTTPS connections from
 only viewers that support server name indication (SNI)
 (https://en.wikipedia.org/wiki/Server_Name_Indication). This is
-recommended. Most browsers and clients released after 2010 support SNI.
+recommended. Most browsers and clients support SNI.
 
 =item *
 
 C<vip> E<ndash> The distribution accepts HTTPS connections from all
 viewers including those that donE<rsquo>t support SNI. This is not
 recommended, and results in additional monthly charges from CloudFront.
+
+=item *
+
+C<static-ip> - Do not specify this value unless your distribution has
+been enabled for this feature by the CloudFront team. If you have a use
+case that requires static IP addresses for a distribution, contact
+CloudFront through the AWS Support Center
+(https://console.aws.amazon.com/support/home).
 
 =back
 

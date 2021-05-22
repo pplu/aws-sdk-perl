@@ -35,42 +35,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that lists the AWS accounts, if any, that you included
-in the C<TrustedSigners> complex type for this distribution. These are
-the accounts that you want to allow to create signed URLs for private
-content.
-
-The C<Signer> complex type lists the AWS account number of the trusted
-signer or C<self> if the signer is the AWS account that created the
-distribution. The C<Signer> element also includes the IDs of any active
-CloudFront key pairs that are associated with the trusted signer's AWS
-account. If no C<KeyPairId> element appears for a C<Signer>, that
-signer can't create signed URLs.
-
-For more information, see Serving Private Content through CloudFront
-(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
-in the I<Amazon CloudFront Developer Guide>.
+A list of AWS accounts and the active CloudFront key pairs in each
+account that CloudFront can use to verify the signatures of signed URLs
+and signed cookies.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-Enabled is C<true> if any of the AWS accounts listed in the
-C<TrustedSigners> complex type for this distribution have active
-CloudFront key pairs. If not, C<Enabled> is C<false>.
+This field is C<true> if any of the AWS accounts in the list have
+active CloudFront key pairs that CloudFront can use to verify the
+signatures of signed URLs and signed cookies. If not, this field is
+C<false>.
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::Signer>]
 
-A complex type that contains one C<Signer> complex type for each
-trusted signer that is specified in the C<TrustedSigners> complex type.
+A list of AWS accounts and the identifiers of active CloudFront key
+pairs in each account that CloudFront can use to verify the signatures
+of signed URLs and signed cookies.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of trusted signers specified in the C<TrustedSigners>
-complex type.
+The number of AWS accounts in the list.
 
 
 

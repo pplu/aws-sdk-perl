@@ -19,14 +19,13 @@ Paws::CloudFront::UpdatePublicKeyResult
 
 =head2 ETag => Str
 
-The current version of the update public key result. For example:
-C<E2QWRUHAPOMQZL>.
+The identifier of the current version of the public key.
 
 
 
 =head2 PublicKey => L<Paws::CloudFront::PublicKey>
 
-Return the results of updating the public key.
+The public key.
 
 
 

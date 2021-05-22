@@ -19,14 +19,13 @@ Paws::CloudFront::GetPublicKeyConfigResult
 
 =head2 ETag => Str
 
-The current version of the public key configuration. For example:
-C<E2QWRUHAPOMQZL>.
+The identifier for this version of the public key configuration.
 
 
 
 =head2 PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
 
-Return the result for the public key configuration.
+A public key configuration.
 
 
 

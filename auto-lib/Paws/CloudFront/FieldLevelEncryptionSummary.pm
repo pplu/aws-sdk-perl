@@ -44,7 +44,8 @@ A summary of a field-level encryption item.
 
 =head2 Comment => Str
 
-An optional comment about the field-level encryption item.
+An optional comment about the field-level encryption item. The comment
+cannot be longer than 128 characters.
 
 
 =head2 ContentTypeProfileConfig => L<Paws::CloudFront::ContentTypeProfileConfig>

@@ -36,32 +36,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-Information about a public key you add to CloudFront to use with
-features like field-level encryption.
+Configuration information about a public key that you can use with
+signed URLs and signed cookies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html),
+or with field-level encryption
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CallerReference => Str
 
-A unique number that ensures that the request can't be replayed.
+A string included in the request to help make sure that the request
+canE<rsquo>t be replayed.
 
 
 =head2 Comment => Str
 
-An optional comment about a public key.
+A comment to describe the public key. The comment cannot be longer than
+128 characters.
 
 
 =head2 B<REQUIRED> EncodedKey => Str
 
-The encoded public key that you want to add to CloudFront to use with
-features like field-level encryption.
+The public key that you can use with signed URLs and signed cookies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html),
+or with field-level encryption
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html).
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name for a public key you add to CloudFront to use with features
-like field-level encryption.
+A name to help identify the public key.
 
 
 

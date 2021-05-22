@@ -49,7 +49,8 @@ A unique number that ensures the request can't be replayed.
 
 =head2 Comment => Str
 
-An optional comment about the configuration.
+An optional comment about the configuration. The comment cannot be
+longer than 128 characters.
 
 
 =head2 ContentTypeProfileConfig => L<Paws::CloudFront::ContentTypeProfileConfig>

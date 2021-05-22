@@ -35,26 +35,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex data type of public keys you add to CloudFront to use with
-features like field-level encryption.
+A public key that you can use with signed URLs and signed cookies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html),
+or with field-level encryption
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CreatedTime => Str
 
-A time you added a public key to CloudFront.
+The date and time when the public key was uploaded.
 
 
 =head2 B<REQUIRED> Id => Str
 
-A unique ID assigned to a public key you've added to CloudFront.
+The identifier of the public key.
 
 
 =head2 B<REQUIRED> PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
 
-A complex data type for a public key you add to CloudFront to use with
-features like field-level encryption.
+Configuration information about a public key that you can use with
+signed URLs and signed cookies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html),
+or with field-level encryption
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html).
 
 
 

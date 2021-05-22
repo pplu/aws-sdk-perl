@@ -33,8 +33,6 @@ The current version of the distribution created.
 =head2 Location => Str
 
 The fully qualified URI of the new distribution resource just created.
-For example:
-C<https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5>.
 
 
 

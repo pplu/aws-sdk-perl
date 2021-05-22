@@ -8,7 +8,7 @@ package Paws::CloudFront::ListStreamingDistributions;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStreamingDistributions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/streaming-distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2020-05-31/streaming-distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListStreamingDistributionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -24,11 +24,11 @@ Paws::CloudFront::ListStreamingDistributions - Arguments for method ListStreamin
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListStreamingDistributions2019_03_26 on the
+This class represents the parameters used for calling the method ListStreamingDistributions2020_05_31 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method ListStreamingDistributions2019_03_26.
+as arguments to method ListStreamingDistributions2020_05_31.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStreamingDistributions2019_03_26.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStreamingDistributions2020_05_31.
 
 =head1 SYNOPSIS
 
@@ -66,7 +66,7 @@ The value that you provided for the C<MaxItems> request parameter.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListStreamingDistributions2019_03_26 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method ListStreamingDistributions2020_05_31 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

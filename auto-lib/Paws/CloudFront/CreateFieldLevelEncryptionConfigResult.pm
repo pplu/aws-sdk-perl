@@ -34,8 +34,6 @@ Returned when you create a new field-level encryption configuration.
 =head2 Location => Str
 
 The fully qualified URI of the new configuration resource just created.
-For example:
-C<https://cloudfront.amazonaws.com/2010-11-01/field-level-encryption-config/EDFDVBD632BHDS5>.
 
 
 
