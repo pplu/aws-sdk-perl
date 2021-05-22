@@ -20,7 +20,9 @@ Paws::KMS::GenerateDataKeyPairResponse
 
 =head2 KeyId => Str
 
-The identifier of the CMK that encrypted the private key.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the CMK that encrypted the private key.
 
 
 =head2 KeyPairSpec => Str

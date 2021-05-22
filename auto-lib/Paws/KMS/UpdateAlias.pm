@@ -54,8 +54,11 @@ name.
 
 =head2 B<REQUIRED> TargetKeyId => Str
 
-Identifies the CMK to associate with the alias. When the update
-operation completes, the alias will point to this CMK.
+Identifies the customer managed CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
+to associate with the alias. You don't have permission to associate an
+alias with an AWS managed CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 
 The CMK must be in the same AWS account and Region as the alias. Also,
 the new target CMK must be the same type as the current target CMK

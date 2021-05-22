@@ -31,7 +31,9 @@ The encryption algorithm that was used to reencrypt the data.
 Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">
 =head2 KeyId => Str
 
-Unique identifier of the CMK used to reencrypt the data.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the CMK that was used to reencrypt the data.
 
 
 =head2 SourceEncryptionAlgorithm => Str

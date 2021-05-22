@@ -87,7 +87,9 @@ in the I<AWS Key Management Service Developer Guide>.
 =head2 B<REQUIRED> KeyId => Str
 
 Specifies the symmetric CMK that encrypts the private key in the data
-key pair. You cannot specify an asymmetric CMKs.
+key pair. You cannot specify an asymmetric CMK or a CMK in a custom key
+store. To get the type and origin of your CMK, use the DescribeKey
+operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with

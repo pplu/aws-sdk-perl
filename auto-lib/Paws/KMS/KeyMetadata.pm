@@ -118,8 +118,8 @@ this value is true, otherwise it is false.
 
 =head2 EncryptionAlgorithms => ArrayRef[Str|Undef]
 
-A list of encryption algorithms that the CMK supports. You cannot use
-the CMK with other encryption algorithms within AWS KMS.
+The encryption algorithms that the CMK supports. You cannot use the CMK
+with other encryption algorithms within AWS KMS.
 
 This field appears only when the C<KeyUsage> of the CMK is
 C<ENCRYPT_DECRYPT>.
@@ -147,17 +147,19 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 KeyState => Str
 
-The state of the CMK.
+The current status of the CMK.
 
 For more information about how key state affects the use of a CMK, see
-How Key State Affects the Use of a Customer Master Key
+Key state: Effect on your CMK
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 KeyUsage => Str
 
-The cryptographic operations for which you can use the CMK.
+The cryptographic operations
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+for which you can use the CMK.
 
 
 =head2 Origin => Str
@@ -172,8 +174,8 @@ cluster associated with a custom key store.
 
 =head2 SigningAlgorithms => ArrayRef[Str|Undef]
 
-A list of signing algorithms that the CMK supports. You cannot use the
-CMK with other signing algorithms within AWS KMS.
+The signing algorithms that the CMK supports. You cannot use the CMK
+with other signing algorithms within AWS KMS.
 
 This field appears only when the C<KeyUsage> of the CMK is
 C<SIGN_VERIFY>.

@@ -36,7 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     # To create a customer master key (CMK)
     # The following example creates a CMK.
-    my $CreateKeyResponse = $kms->CreateKey();
+    my $CreateKeyResponse = $kms->CreateKey(
+      'Tags' => [
+
+        {
+          'TagKey'   => 'CreatedBy',
+          'TagValue' => 'ExampleUser'
+        }
+      ]
+    );
 
     # Results:
     my $KeyMetadata = $CreateKeyResponse->KeyMetadata;
@@ -209,10 +217,11 @@ for a task.
 
 =head2 KeyUsage => Str
 
-Determines the cryptographic operations for which you can use the CMK.
-The default value is C<ENCRYPT_DECRYPT>. This parameter is required
-only for asymmetric CMKs. You can't change the C<KeyUsage> value after
-the CMK is created.
+Determines the cryptographic operations
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+for which you can use the CMK. The default value is C<ENCRYPT_DECRYPT>.
+This parameter is required only for asymmetric CMKs. You can't change
+the C<KeyUsage> value after the CMK is created.
 
 Select only one valid value.
 
@@ -298,6 +307,11 @@ in the I<AWS Key Management Service Developer Guide>.
 
 The key policy size quota is 32 kilobytes (32768 bytes).
 
+For help writing and formatting a JSON policy document, see the IAM
+JSON Policy Reference
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+in the I< I<IAM User Guide> >.
+
 
 
 =head2 Tags => ArrayRef[L<Paws::KMS::Tag>]
@@ -313,6 +327,10 @@ adding, changing, deleting and listing tags for CMKs, see Tagging Keys
 
 Use this parameter to tag the CMK when it is created. To add tags to an
 existing CMK, use the TagResource operation.
+
+To use this parameter, you must have kms:TagResource
+(https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+permission in an IAM policy.
 
 
 

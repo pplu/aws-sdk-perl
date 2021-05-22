@@ -29,16 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
+    # To list tags for a customer master key (CMK)
+    # The following example lists tags for a CMK.
     my $ListResourceTagsResponse = $kms->ListResourceTags(
-      KeyId  => 'MyKeyIdType',
-      Limit  => 1,                 # OPTIONAL
-      Marker => 'MyMarkerType',    # OPTIONAL
-    );
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 
     # Results:
-    my $NextMarker = $ListResourceTagsResponse->NextMarker;
-    my $Tags       = $ListResourceTagsResponse->Tags;
-    my $Truncated  = $ListResourceTagsResponse->Truncated;
+    my $Tags      = $ListResourceTagsResponse->Tags;
+    my $Truncated = $ListResourceTagsResponse->Truncated;
 
     # Returns a L<Paws::KMS::ListResourceTagsResponse> object.
 

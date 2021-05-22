@@ -66,9 +66,10 @@ Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_S
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
 Specifies the encryption context that will be used to encrypt the data.
-An encryption context is valid only for cryptographic operations with a
-symmetric CMK. The standard asymmetric encryption algorithms that AWS
-KMS uses do not support an encryption context.
+An encryption context is valid only for cryptographic operations
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+with a symmetric CMK. The standard asymmetric encryption algorithms
+that AWS KMS uses do not support an encryption context.
 
 An I<encryption context> is a collection of non-secret key-value pairs
 that represents additional authenticated data. When you use an

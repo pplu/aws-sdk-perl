@@ -47,13 +47,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 KeyId => Str
 
-Lists only aliases that refer to the specified CMK. The value of this
-parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
-caller's account and region. You cannot use an alias name or alias ARN
-in this value.
+Lists only aliases that are associated with the specified CMK. Enter a
+CMK in your AWS account.
 
 This parameter is optional. If you omit it, C<ListAliases> returns all
-aliases in the account and region.
+aliases in the account and Region.
+
+Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+
+For example:
+
+=over
+
+=item *
+
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=item *
+
+Key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=back
+
+To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 

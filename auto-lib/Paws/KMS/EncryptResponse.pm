@@ -29,7 +29,9 @@ The encryption algorithm that was used to encrypt the plaintext.
 Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">
 =head2 KeyId => Str
 
-The ID of the key used during encryption.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the CMK that was used to encrypt the plaintext.
 
 
 =head2 _request_id => Str

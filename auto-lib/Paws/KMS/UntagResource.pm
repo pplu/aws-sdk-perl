@@ -28,13 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
+    # To remove tags from a customer master key (CMK)
+    # The following example removes tags from a CMK.
     $kms->UntagResource(
-      KeyId   => 'MyKeyIdType',
-      TagKeys => [
-        'MyTagKeyType', ...    # min: 1, max: 128
-      ],
-
+      'KeyId'   => '1234abcd-12ab-34cd-56ef-1234567890ab',
+      'TagKeys' => [ 'Purpose', 'CostCenter' ]
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/UntagResource>
@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the CMK from which you are removing tags.
+Identifies the CMK from which you are removing tags.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

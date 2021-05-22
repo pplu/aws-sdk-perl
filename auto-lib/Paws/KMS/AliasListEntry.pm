@@ -3,6 +3,8 @@ package Paws::KMS::AliasListEntry;
   use Moose;
   has AliasArn => (is => 'ro', isa => 'Str');
   has AliasName => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Str');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str');
   has TargetKeyId => (is => 'ro', isa => 'Str');
 
 1;
@@ -48,6 +50,16 @@ String that contains the key ARN.
 =head2 AliasName => Str
 
 String that contains the alias. This value begins with C<alias/>.
+
+
+=head2 CreationDate => Str
+
+
+
+
+=head2 LastUpdatedDate => Str
+
+
 
 
 =head2 TargetKeyId => Str

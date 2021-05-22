@@ -23,8 +23,9 @@ The encryption algorithm that was used to decrypt the ciphertext.
 Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">
 =head2 KeyId => Str
 
-The ARN of the customer master key that was used to perform the
-decryption.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the CMK that was used to decrypt the ciphertext.
 
 
 =head2 Plaintext => Str

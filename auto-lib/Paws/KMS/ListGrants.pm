@@ -1,6 +1,8 @@
 
 package Paws::KMS::ListGrants;
   use Moose;
+  has GranteePrincipal => (is => 'ro', isa => 'Str');
+  has GrantId => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
@@ -46,9 +48,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 =head1 ATTRIBUTES
 
 
+=head2 GranteePrincipal => Str
+
+Returns only grants where the specified principal is the grantee
+principal for the grant.
+
+
+
+=head2 GrantId => Str
+
+Returns only the grant with the specified grant ID. The grant ID
+uniquely identifies the grant.
+
+
+
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Returns only grants for the specified customer master key (CMK). This
+parameter is required.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
 specify a CMK in a different AWS account, you must use the key ARN.

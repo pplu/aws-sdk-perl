@@ -19,7 +19,7 @@ Paws::KMS::CreateGrantResponse
 
 The unique identifier for the grant.
 
-You can use the C<GrantId> in a subsequent RetireGrant or RevokeGrant
+You can use the C<GrantId> in a ListGrants, RetireGrant, or RevokeGrant
 operation.
 
 

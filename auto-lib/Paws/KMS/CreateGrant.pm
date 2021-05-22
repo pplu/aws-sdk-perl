@@ -57,11 +57,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-Allows a cryptographic operation only when the encryption context
-matches or includes the encryption context specified in this structure.
-For more information about encryption context, see Encryption Context
+Allows a cryptographic operation
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+only when the encryption context matches or includes the encryption
+context specified in this structure. For more information about
+encryption context, see Encryption Context
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
 in the I< I<AWS Key Management Service Developer Guide> >.
+
+Grant constraints are not applied to operations that do not support an
+encryption context, such as cryptographic operations with asymmetric
+CMKs and management operations, such as DescribeKey or RetireGrant.
 
 
 
@@ -120,8 +126,8 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 =head2 Name => Str
 
-A friendly name for identifying the grant. Use this value to prevent
-the unintended creation of duplicate grants when retrying this request.
+A friendly name for the grant. Use this value to prevent the unintended
+creation of duplicate grants when retrying this request.
 
 When this value is absent, all C<CreateGrant> requests result in a new
 grant with a unique C<GrantId> even if all the supplied parameters are
@@ -132,8 +138,8 @@ When this value is present, you can retry a C<CreateGrant> request with
 identical parameters; if the grant already exists, the original
 C<GrantId> is returned without creating a new grant. Note that the
 returned grant token is unique with every C<CreateGrant> request, even
-when a duplicate C<GrantId> is returned. All grant tokens obtained in
-this way can be used interchangeably.
+when a duplicate C<GrantId> is returned. All grant tokens for the same
+grant ID can be used interchangeably.
 
 
 
