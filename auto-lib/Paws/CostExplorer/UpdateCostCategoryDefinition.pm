@@ -2,6 +2,7 @@
 package Paws::CostExplorer::UpdateCostCategoryDefinition;
   use Moose;
   has CostCategoryArn => (is => 'ro', isa => 'Str', required => 1);
+  has DefaultValue => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::CostCategoryRule]', required => 1);
   has RuleVersion => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,30 +36,53 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RuleVersion     => 'CostCategoryExpression.v1',
       Rules           => [
         {
+          InheritedValue => {
+            DimensionKey  => 'MyGenericString',      # max: 1024; OPTIONAL
+            DimensionName => 'LINKED_ACCOUNT_NAME'
+            ,    # values: LINKED_ACCOUNT_NAME, TAG; OPTIONAL
+          },    # OPTIONAL
           Rule => {
-            And => [ <Expression>, ... ],    # OPTIONAL
+            And            => [ <Expression>, ... ],    # OPTIONAL
             CostCategories => {
-              Key => 'MyCostCategoryName',     # min: 1, max: 255; OPTIONAL
-              Values => [ 'MyValue', ... ],    # OPTIONAL
+              Key          => 'MyCostCategoryName',  # min: 1, max: 50; OPTIONAL
+              MatchOptions => [
+                'EQUALS',
+                ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+              ],    # OPTIONAL
+              Values => [
+                'MyValue', ...    # max: 1024
+              ],                  # OPTIONAL
             },    # OPTIONAL
             Dimensions => {
               Key => 'AZ'
-              , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
-              Values => [ 'MyValue', ... ],    # OPTIONAL
+              , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE; OPTIONAL
+              MatchOptions => [
+                'EQUALS',
+                ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+              ],    # OPTIONAL
+              Values => [
+                'MyValue', ...    # max: 1024
+              ],                  # OPTIONAL
             },    # OPTIONAL
             Not  => <Expression>,
             Or   => [ <Expression>, ... ],    # OPTIONAL
             Tags => {
-              Key => 'MyTagKey',               # OPTIONAL
-              Values => [ 'MyValue', ... ],    # OPTIONAL
+              Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+              MatchOptions => [
+                'EQUALS',
+                ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+              ],    # OPTIONAL
+              Values => [
+                'MyValue', ...    # max: 1024
+              ],                  # OPTIONAL
             },    # OPTIONAL
-          },
-          Value => 'MyCostCategoryValue',    # min: 1, max: 255
-
+          },    # OPTIONAL
+          Type => 'REGULAR',    # values: REGULAR, INHERITED_VALUE; OPTIONAL
+          Value => 'MyCostCategoryValue',    # min: 1, max: 50; OPTIONAL
         },
         ...
       ],
-
+      DefaultValue => 'MyCostCategoryValue',    # OPTIONAL
       );
 
     # Results:
@@ -80,18 +104,17 @@ The unique identifier for your Cost Category.
 
 
 
+=head2 DefaultValue => Str
+
+
+
+
+
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::CostExplorer::CostCategoryRule>]
 
-C<UpdateCostCategoryDefinition> supports dimensions, Tags, and nested
-expressions. Currently the only dimensions supported is
-C<LINKED_ACCOUNT>.
-
-Root level C<OR> is not supported. We recommend you create a separate
-rule instead.
-
-Rules are processed in order. If there are multiple rules that match
-the line item, then the first rule to match is used to determine that
-Cost Category value.
+The C<Expression> object used to categorize costs. For more
+information, see CostCategoryRule
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html).
 
 
 

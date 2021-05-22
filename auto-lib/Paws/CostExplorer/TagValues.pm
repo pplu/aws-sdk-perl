@@ -2,6 +2,7 @@
 package Paws::CostExplorer::TagValues;
   use Moose;
   has Key => (is => 'ro', isa => 'Str');
+  has MatchOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -36,12 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 The values that are available for a tag.
 
+If C<Values> and C<Key> are not specified, the C<ABSENT> C<MatchOption>
+is applied to all tags. That is, filtering on resources with no tags.
+
+If C<Values> is provided and C<Key> is not specified, the C<ABSENT>
+C<MatchOption> is applied to the tag C<Key> only. That is, filtering on
+resources without the given tag key.
+
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
 The key for the tag.
+
+
+=head2 MatchOptions => ArrayRef[Str|Undef]
+
+The match options that you can use to filter your results.
+C<MatchOptions> is only applicable for actions related to Cost
+Category. The default values for C<MatchOptions> are C<EQUALS> and
+C<CASE_SENSITIVE>.
 
 
 =head2 Values => ArrayRef[Str|Undef]

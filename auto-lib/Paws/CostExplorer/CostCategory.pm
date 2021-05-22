@@ -2,9 +2,11 @@
 package Paws::CostExplorer::CostCategory;
   use Moose;
   has CostCategoryArn => (is => 'ro', isa => 'Str', required => 1);
+  has DefaultValue => (is => 'ro', isa => 'Str');
   has EffectiveEnd => (is => 'ro', isa => 'Str');
   has EffectiveStart => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ProcessingStatus => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::CostCategoryProcessingStatus]');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::CostCategoryRule]', required => 1);
   has RuleVersion => (is => 'ro', isa => 'Str', required => 1);
 
@@ -38,11 +40,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
-
 The structure of Cost Categories. This includes detailed metadata and
 the set of rules for the C<CostCategory> object.
 
@@ -52,6 +49,11 @@ the set of rules for the C<CostCategory> object.
 =head2 B<REQUIRED> CostCategoryArn => Str
 
 The unique identifier for your Cost Category.
+
+
+=head2 DefaultValue => Str
+
+
 
 
 =head2 EffectiveEnd => Str
@@ -67,6 +69,12 @@ The Cost Category's effective start date.
 =head2 B<REQUIRED> Name => Str
 
 
+
+
+=head2 ProcessingStatus => ArrayRef[L<Paws::CostExplorer::CostCategoryProcessingStatus>]
+
+The list of processing statuses for Cost Management products for a
+specific cost category.
 
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::CostExplorer::CostCategoryRule>]

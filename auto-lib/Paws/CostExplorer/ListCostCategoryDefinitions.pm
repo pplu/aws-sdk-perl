@@ -2,6 +2,7 @@
 package Paws::CostExplorer::ListCostCategoryDefinitions;
   use Moose;
   has EffectiveOn => (is => 'ro', isa => 'Str');
+  has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -30,6 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $ListCostCategoryDefinitionsResponse = $ce->ListCostCategoryDefinitions(
       EffectiveOn => 'MyZonedDateTime',    # OPTIONAL
+      MaxResults  => 1,                    # OPTIONAL
       NextToken   => 'MyNextPageToken',    # OPTIONAL
     );
 
@@ -52,14 +54,17 @@ The date when the Cost Category was effective.
 
 
 
+=head2 MaxResults => Int
+
+The number of entries a paginated response contains.
+
+
+
 =head2 NextToken => Str
 
 The token to retrieve the next set of results. Amazon Web Services
 provides the token when the response from a previous call has more
 results than the maximum page size.
-
-You can use this information to retrieve the full Cost Category
-information using C<DescribeCostCategory>.
 
 
 

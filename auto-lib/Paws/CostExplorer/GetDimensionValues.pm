@@ -3,8 +3,11 @@ package Paws::CostExplorer::GetDimensionValues;
   use Moose;
   has Context => (is => 'ro', isa => 'Str');
   has Dimension => (is => 'ro', isa => 'Str', required => 1);
+  has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
+  has MaxResults => (is => 'ro', isa => 'Int');
   has NextPageToken => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
+  has SortBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::SortDefinition]');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,13 +37,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetDimensionValuesResponse = $ce->GetDimensionValues(
       Dimension  => 'AZ',
       TimePeriod => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',    # max: 40
+        Start => 'MyYearMonthDay',    # max: 40
 
       },
-      Context       => 'COST_AND_USAGE',     # OPTIONAL
+      Context => 'COST_AND_USAGE',    # OPTIONAL
+      Filter  => {
+        And            => [ <Expression>, ... ],    # OPTIONAL
+        CostCategories => {
+          Key          => 'MyCostCategoryName',     # min: 1, max: 50; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],                  # OPTIONAL
+        },    # OPTIONAL
+        Dimensions => {
+          Key => 'AZ'
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],                  # OPTIONAL
+        },    # OPTIONAL
+        Not  => <Expression>,
+        Or   => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
+          Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],                  # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      MaxResults    => 1,                    # OPTIONAL
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
       SearchString  => 'MySearchString',     # OPTIONAL
+      SortBy        => [
+        {
+          Key => 'MySortDefinitionKey',      # max: 1024
+          SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
     );
 
     # Results:
@@ -132,6 +179,10 @@ attribute. Examples include GB and Hrs.
 USAGE_TYPE_GROUP - The grouping of common usage types. An example is
 Amazon EC2: CloudWatch E<ndash> Alarms. The response for this operation
 includes a unit attribute.
+
+=item *
+
+REGION - The AWS Region.
 
 =item *
 
@@ -242,7 +293,24 @@ Valid values are: C<"COST_AND_USAGE">, C<"RESERVATIONS">, C<"SAVINGS_PLANS">
 The name of the dimension. Each C<Dimension> is available for a
 different C<Context>. For more information, see C<Context>.
 
-Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">, C<"BILLING_ENTITY">, C<"RESERVATION_ID">, C<"RESOURCE_ID">, C<"RIGHTSIZING_TYPE">, C<"SAVINGS_PLANS_TYPE">, C<"SAVINGS_PLAN_ARN">, C<"PAYMENT_OPTION">
+Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"LINKED_ACCOUNT_NAME">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"SERVICE_CODE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">, C<"BILLING_ENTITY">, C<"RESERVATION_ID">, C<"RESOURCE_ID">, C<"RIGHTSIZING_TYPE">, C<"SAVINGS_PLANS_TYPE">, C<"SAVINGS_PLAN_ARN">, C<"PAYMENT_OPTION">, C<"AGREEMENT_END_DATE_TIME_AFTER">, C<"AGREEMENT_END_DATE_TIME_BEFORE">
+
+=head2 Filter => L<Paws::CostExplorer::Expression>
+
+
+
+
+
+=head2 MaxResults => Int
+
+This field is only used when SortBy is provided in the request. The
+maximum number of objects that to be returned for this request. If
+MaxResults is not specified with SortBy, the request will return 1000
+results as the default value for this parameter.
+
+For C<GetDimensionValues>, MaxResults has an upper limit of 1000.
+
+
 
 =head2 NextPageToken => Str
 
@@ -255,6 +323,53 @@ maximum page size.
 =head2 SearchString => Str
 
 The value that you want to search the filter values for.
+
+
+
+=head2 SortBy => ArrayRef[L<Paws::CostExplorer::SortDefinition>]
+
+The value by which you want to sort the data.
+
+The key represents cost and usage metrics. The following values are
+supported:
+
+=over
+
+=item *
+
+C<BlendedCost>
+
+=item *
+
+C<UnblendedCost>
+
+=item *
+
+C<AmortizedCost>
+
+=item *
+
+C<NetAmortizedCost>
+
+=item *
+
+C<NetUnblendedCost>
+
+=item *
+
+C<UsageQuantity>
+
+=item *
+
+C<NormalizedUsageAmount>
+
+=back
+
+Supported values for C<SortOrder> are C<ASCENDING> or C<DESCENDING>.
+
+When you specify a C<SortBy> paramater, the context must be
+C<COST_AND_USAGE>. Further, when using C<SortBy>, C<NextPageToken> and
+C<SearchString> are not supported.
 
 
 

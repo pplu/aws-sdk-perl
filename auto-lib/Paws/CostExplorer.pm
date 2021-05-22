@@ -15,9 +15,29 @@ package Paws::CostExplorer;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateAnomalyMonitor {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::CreateAnomalyMonitor', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAnomalySubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::CreateAnomalySubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCostCategoryDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::CreateCostCategoryDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAnomalyMonitor {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::DeleteAnomalyMonitor', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAnomalySubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::DeleteAnomalySubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCostCategoryDefinition {
@@ -30,6 +50,21 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::DescribeCostCategoryDefinition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAnomalies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetAnomalies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAnomalyMonitors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetAnomalyMonitors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAnomalySubscriptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetAnomalySubscriptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCostAndUsage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsage', @_);
@@ -38,6 +73,11 @@ package Paws::CostExplorer;
   sub GetCostAndUsageWithResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsageWithResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCostCategories {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostCategories', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetCostForecast {
@@ -105,6 +145,21 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::ListCostCategoryDefinitions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ProvideAnomalyFeedback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::ProvideAnomalyFeedback', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAnomalyMonitor {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::UpdateAnomalyMonitor', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAnomalySubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::UpdateAnomalySubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateCostCategoryDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::UpdateCostCategoryDefinition', @_);
@@ -113,7 +168,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/CreateCostCategoryDefinition DeleteCostCategoryDefinition DescribeCostCategoryDefinition GetCostAndUsage GetCostAndUsageWithResources GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetSavingsPlansCoverage GetSavingsPlansPurchaseRecommendation GetSavingsPlansUtilization GetSavingsPlansUtilizationDetails GetTags GetUsageForecast ListCostCategoryDefinitions UpdateCostCategoryDefinition / }
+  sub operations { qw/CreateAnomalyMonitor CreateAnomalySubscription CreateCostCategoryDefinition DeleteAnomalyMonitor DeleteAnomalySubscription DeleteCostCategoryDefinition DescribeCostCategoryDefinition GetAnomalies GetAnomalyMonitors GetAnomalySubscriptions GetCostAndUsage GetCostAndUsageWithResources GetCostCategories GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetSavingsPlansCoverage GetSavingsPlansPurchaseRecommendation GetSavingsPlansUtilization GetSavingsPlansUtilizationDetails GetTags GetUsageForecast ListCostCategoryDefinitions ProvideAnomalyFeedback UpdateAnomalyMonitor UpdateAnomalySubscription UpdateCostCategoryDefinition / }
 
 1;
 
@@ -161,12 +216,48 @@ C<https://ce.us-east-1.amazonaws.com>
 
 For information about costs associated with the Cost Explorer API, see
 AWS Cost Management Pricing
-(https://aws.amazon.com/aws-cost-management/pricing/).
+(http://aws.amazon.com/aws-cost-management/pricing/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing/>
 
 
 =head1 METHODS
+
+=head2 CreateAnomalyMonitor
+
+=over
+
+=item AnomalyMonitor => L<Paws::CostExplorer::AnomalyMonitor>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::CreateAnomalyMonitor>
+
+Returns: a L<Paws::CostExplorer::CreateAnomalyMonitorResponse> instance
+
+Creates a new cost anomaly detection monitor with the requested type
+and monitor specification.
+
+
+=head2 CreateAnomalySubscription
+
+=over
+
+=item AnomalySubscription => L<Paws::CostExplorer::AnomalySubscription>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::CreateAnomalySubscription>
+
+Returns: a L<Paws::CostExplorer::CreateAnomalySubscriptionResponse> instance
+
+Adds a subscription to a cost anomaly detection monitor. You can use
+each subscription to define subscribers with email or SNS
+notifications. Email subscribers can set a dollar threshold and a time
+frequency for receiving notifications.
+
 
 =head2 CreateCostCategoryDefinition
 
@@ -178,6 +269,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 
 =item RuleVersion => Str
 
+=item [DefaultValue => Str]
+
 
 =back
 
@@ -185,12 +278,39 @@ Each argument is described in detail in: L<Paws::CostExplorer::CreateCostCategor
 
 Returns: a L<Paws::CostExplorer::CreateCostCategoryDefinitionResponse> instance
 
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
-
 Creates a new Cost Category with the requested name and rules.
+
+
+=head2 DeleteAnomalyMonitor
+
+=over
+
+=item MonitorArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::DeleteAnomalyMonitor>
+
+Returns: a L<Paws::CostExplorer::DeleteAnomalyMonitorResponse> instance
+
+Deletes a cost anomaly monitor.
+
+
+=head2 DeleteAnomalySubscription
+
+=over
+
+=item SubscriptionArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::DeleteAnomalySubscription>
+
+Returns: a L<Paws::CostExplorer::DeleteAnomalySubscriptionResponse> instance
+
+Deletes a cost anomaly subscription.
 
 
 =head2 DeleteCostCategoryDefinition
@@ -205,11 +325,6 @@ Creates a new Cost Category with the requested name and rules.
 Each argument is described in detail in: L<Paws::CostExplorer::DeleteCostCategoryDefinition>
 
 Returns: a L<Paws::CostExplorer::DeleteCostCategoryDefinitionResponse> instance
-
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Deletes a Cost Category. Expenses from this month going forward will no
 longer be categorized with this Cost Category.
@@ -230,11 +345,6 @@ Each argument is described in detail in: L<Paws::CostExplorer::DescribeCostCateg
 
 Returns: a L<Paws::CostExplorer::DescribeCostCategoryDefinitionResponse> instance
 
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
-
 Returns the name, ARN, rules, definition, and effective dates of a Cost
 Category that's defined in the account.
 
@@ -245,19 +355,92 @@ current date. If Cost Category is still effective, C<EffectiveEnd> is
 omitted in the response.
 
 
+=head2 GetAnomalies
+
+=over
+
+=item DateInterval => L<Paws::CostExplorer::AnomalyDateInterval>
+
+=item [Feedback => Str]
+
+=item [MaxResults => Int]
+
+=item [MonitorArn => Str]
+
+=item [NextPageToken => Str]
+
+=item [TotalImpact => L<Paws::CostExplorer::TotalImpactFilter>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetAnomalies>
+
+Returns: a L<Paws::CostExplorer::GetAnomaliesResponse> instance
+
+Retrieves all of the cost anomalies detected on your account, during
+the time period specified by the C<DateInterval> object.
+
+
+=head2 GetAnomalyMonitors
+
+=over
+
+=item [MaxResults => Int]
+
+=item [MonitorArnList => ArrayRef[Str|Undef]]
+
+=item [NextPageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetAnomalyMonitors>
+
+Returns: a L<Paws::CostExplorer::GetAnomalyMonitorsResponse> instance
+
+Retrieves the cost anomaly monitor definitions for your account. You
+can filter using a list of cost anomaly monitor Amazon Resource Names
+(ARNs).
+
+
+=head2 GetAnomalySubscriptions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [MonitorArn => Str]
+
+=item [NextPageToken => Str]
+
+=item [SubscriptionArnList => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetAnomalySubscriptions>
+
+Returns: a L<Paws::CostExplorer::GetAnomalySubscriptionsResponse> instance
+
+Retrieves the cost anomaly subscription objects for your account. You
+can filter using a list of cost anomaly monitor Amazon Resource Names
+(ARNs).
+
+
 =head2 GetCostAndUsage
 
 =over
+
+=item Granularity => Str
+
+=item Metrics => ArrayRef[Str|Undef]
 
 =item TimePeriod => L<Paws::CostExplorer::DateInterval>
 
 =item [Filter => L<Paws::CostExplorer::Expression>]
 
-=item [Granularity => Str]
-
 =item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
-
-=item [Metrics => ArrayRef[Str|Undef]]
 
 =item [NextPageToken => Str]
 
@@ -274,20 +457,24 @@ C<UsageQuantity>, that you want the request to return. You can also
 filter and group your data by various dimensions, such as C<SERVICE> or
 C<AZ>, in a specific time range. For a complete list of valid
 dimensions, see the GetDimensionValues
-(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
-operation. Master accounts in an organization in AWS Organizations have
-access to all member accounts.
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
+operation. Management account in an organization in AWS Organizations
+have access to all member accounts.
+
+For information about filter limitations, see Quotas and restrictions
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html)
+in the I<Billing and Cost Management User Guide>.
 
 
 =head2 GetCostAndUsageWithResources
 
 =over
 
+=item Filter => L<Paws::CostExplorer::Expression>
+
+=item Granularity => Str
+
 =item TimePeriod => L<Paws::CostExplorer::DateInterval>
-
-=item [Filter => L<Paws::CostExplorer::Expression>]
-
-=item [Granularity => Str]
 
 =item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
 
@@ -308,16 +495,47 @@ C<BlendedCosts> or C<UsageQuantity>, that you want the request to
 return. You can also filter and group your data by various dimensions,
 such as C<SERVICE> or C<AZ>, in a specific time range. For a complete
 list of valid dimensions, see the GetDimensionValues
-(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
-operation. Master accounts in an organization in AWS Organizations have
-access to all member accounts. This API is currently available for the
-Amazon Elastic Compute Cloud E<ndash> Compute service only.
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
+operation. Management account in an organization in AWS Organizations
+have access to all member accounts. This API is currently available for
+the Amazon Elastic Compute Cloud E<ndash> Compute service only.
 
 This is an opt-in only feature. You can enable this feature from the
 Cost Explorer Settings page. For information on how to access the
 Settings page, see Controlling Access for Cost Explorer
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html)
 in the I<AWS Billing and Cost Management User Guide>.
+
+
+=head2 GetCostCategories
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [CostCategoryName => Str]
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [MaxResults => Int]
+
+=item [NextPageToken => Str]
+
+=item [SearchString => Str]
+
+=item [SortBy => ArrayRef[L<Paws::CostExplorer::SortDefinition>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetCostCategories>
+
+Returns: a L<Paws::CostExplorer::GetCostCategoriesResponse> instance
+
+Retrieves an array of Cost Category names and values incurred cost.
+
+If some Cost Category names and values are not associated with any
+cost, they will not be returned by this API.
 
 
 =head2 GetCostForecast
@@ -356,9 +574,15 @@ past costs.
 
 =item [Context => Str]
 
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [MaxResults => Int]
+
 =item [NextPageToken => Str]
 
 =item [SearchString => Str]
+
+=item [SortBy => ArrayRef[L<Paws::CostExplorer::SortDefinition>]]
 
 
 =back
@@ -384,9 +608,13 @@ string.
 
 =item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
 
+=item [MaxResults => Int]
+
 =item [Metrics => ArrayRef[Str|Undef]]
 
 =item [NextPageToken => Str]
+
+=item [SortBy => L<Paws::CostExplorer::SortDefinition>]
 
 
 =back
@@ -398,8 +626,9 @@ Returns: a L<Paws::CostExplorer::GetReservationCoverageResponse> instance
 Retrieves the reservation coverage for your account. This enables you
 to see how much of your Amazon Elastic Compute Cloud, Amazon
 ElastiCache, Amazon Relational Database Service, or Amazon Redshift
-usage is covered by a reservation. An organization's master account can
-see the coverage of the associated member accounts. For any time
+usage is covered by a reservation. An organization's management account
+can see the coverage of the associated member accounts. This supports
+dimensions, Cost Categories, and nested expressions. For any time
 period, you can filter data about reservation usage by the following
 dimensions:
 
@@ -469,6 +698,8 @@ C<GetDimensionValues> operation.
 
 =item [AccountScope => Str]
 
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
 =item [LookbackPeriodInDays => Str]
 
 =item [NextPageToken => Str]
@@ -522,7 +753,11 @@ size instance in the c4 instance family.
 
 =item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
 
+=item [MaxResults => Int]
+
 =item [NextPageToken => Str]
+
+=item [SortBy => L<Paws::CostExplorer::SortDefinition>]
 
 
 =back
@@ -531,11 +766,11 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetReservationUti
 
 Returns: a L<Paws::CostExplorer::GetReservationUtilizationResponse> instance
 
-Retrieves the reservation utilization for your account. Master accounts
-in an organization have access to member accounts. You can filter data
-by dimensions in a time period. You can use C<GetDimensionValues> to
-determine the possible dimension values. Currently, you can group only
-by C<SUBSCRIPTION_ID>.
+Retrieves the reservation utilization for your account. Management
+account in an organization have access to member accounts. You can
+filter data by dimensions in a time period. You can use
+C<GetDimensionValues> to determine the possible dimension values.
+Currently, you can group only by C<SUBSCRIPTION_ID>.
 
 
 =head2 GetRightsizingRecommendation
@@ -543,6 +778,8 @@ by C<SUBSCRIPTION_ID>.
 =over
 
 =item Service => Str
+
+=item [Configuration => L<Paws::CostExplorer::RightsizingRecommendationConfiguration>]
 
 =item [Filter => L<Paws::CostExplorer::Expression>]
 
@@ -557,14 +794,15 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetRightsizingRec
 
 Returns: a L<Paws::CostExplorer::GetRightsizingRecommendationResponse> instance
 
-Creates recommendations that helps you save cost by identifying idle
-and underutilized Amazon EC2 instances.
+Creates recommendations that help you save cost by identifying idle and
+underutilized Amazon EC2 instances.
 
 Recommendations are generated to either downsize or terminate
 instances, along with providing savings detail and metrics. For details
 on calculation and function, see Optimizing Your Cost with Rightsizing
 Recommendations
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-what-is.html).
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 GetSavingsPlansCoverage
@@ -585,6 +823,8 @@ Recommendations
 
 =item [NextToken => Str]
 
+=item [SortBy => L<Paws::CostExplorer::SortDefinition>]
+
 
 =back
 
@@ -594,9 +834,10 @@ Returns: a L<Paws::CostExplorer::GetSavingsPlansCoverageResponse> instance
 
 Retrieves the Savings Plans covered for your account. This enables you
 to see how much of your cost is covered by a Savings Plan. An
-organizationE<rsquo>s master account can see the coverage of the
-associated member accounts. For any time period, you can filter data
-for Savings Plans usage with the following dimensions:
+organizationE<rsquo>s management account can see the coverage of the
+associated member accounts. This supports dimensions, Cost Categories,
+and nested expressions. For any time period, you can filter data for
+Savings Plans usage with the following dimensions:
 
 =over
 
@@ -634,6 +875,10 @@ C<GetDimensionValues> operation.
 
 =item TermInYears => Str
 
+=item [AccountScope => Str]
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
 =item [NextPageToken => Str]
 
 =item [PageSize => Int]
@@ -659,6 +904,8 @@ and Details.
 
 =item [Granularity => Str]
 
+=item [SortBy => L<Paws::CostExplorer::SortDefinition>]
+
 
 =back
 
@@ -667,7 +914,7 @@ Each argument is described in detail in: L<Paws::CostExplorer::GetSavingsPlansUt
 Returns: a L<Paws::CostExplorer::GetSavingsPlansUtilizationResponse> instance
 
 Retrieves the Savings Plans utilization for your account across date
-ranges with daily or monthly granularity. Master accounts in an
+ranges with daily or monthly granularity. Management account in an
 organization have access to member accounts. You can use
 C<GetDimensionValues> in C<SAVINGS_PLANS> to determine the possible
 dimension values.
@@ -682,11 +929,15 @@ C<GetSavingsPlansUtilization>.
 
 =item TimePeriod => L<Paws::CostExplorer::DateInterval>
 
+=item [DataType => ArrayRef[Str|Undef]]
+
 =item [Filter => L<Paws::CostExplorer::Expression>]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SortBy => L<Paws::CostExplorer::SortDefinition>]
 
 
 =back
@@ -714,9 +965,15 @@ C<SavingsPlansArn>.
 
 =item TimePeriod => L<Paws::CostExplorer::DateInterval>
 
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [MaxResults => Int]
+
 =item [NextPageToken => Str]
 
 =item [SearchString => Str]
+
+=item [SortBy => ArrayRef[L<Paws::CostExplorer::SortDefinition>]]
 
 =item [TagKey => Str]
 
@@ -763,6 +1020,8 @@ past usage.
 
 =item [EffectiveOn => Str]
 
+=item [MaxResults => Int]
+
 =item [NextToken => Str]
 
 
@@ -772,17 +1031,77 @@ Each argument is described in detail in: L<Paws::CostExplorer::ListCostCategoryD
 
 Returns: a L<Paws::CostExplorer::ListCostCategoryDefinitionsResponse> instance
 
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
+Returns the name, ARN, C<NumberOfRules> and effective dates of all Cost
+Categories defined in the account. You have the option to use
+C<EffectiveOn> to return a list of Cost Categories that were active on
+a specific date. If there is no C<EffectiveOn> specified, youE<rsquo>ll
+see Cost Categories that are effective on the current date. If Cost
+Category is still effective, C<EffectiveEnd> is omitted in the
+response. C<ListCostCategoryDefinitions> supports pagination. The
+request can have a C<MaxResults> range up to 100.
 
-Returns the name, ARN and effective dates of all Cost Categories
-defined in the account. You have the option to use C<EffectiveOn> to
-return a list of Cost Categories that were active on a specific date.
-If there is no C<EffectiveOn> specified, youE<rsquo>ll see Cost
-Categories that are effective on the current date. If Cost Category is
-still effective, C<EffectiveEnd> is omitted in the response.
+
+=head2 ProvideAnomalyFeedback
+
+=over
+
+=item AnomalyId => Str
+
+=item Feedback => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::ProvideAnomalyFeedback>
+
+Returns: a L<Paws::CostExplorer::ProvideAnomalyFeedbackResponse> instance
+
+Modifies the feedback property of a given cost anomaly.
+
+
+=head2 UpdateAnomalyMonitor
+
+=over
+
+=item MonitorArn => Str
+
+=item [MonitorName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::UpdateAnomalyMonitor>
+
+Returns: a L<Paws::CostExplorer::UpdateAnomalyMonitorResponse> instance
+
+Updates an existing cost anomaly monitor. The changes made are applied
+going forward, and does not change anomalies detected in the past.
+
+
+=head2 UpdateAnomalySubscription
+
+=over
+
+=item SubscriptionArn => Str
+
+=item [Frequency => Str]
+
+=item [MonitorArnList => ArrayRef[Str|Undef]]
+
+=item [Subscribers => ArrayRef[L<Paws::CostExplorer::Subscriber>]]
+
+=item [SubscriptionName => Str]
+
+=item [Threshold => Num]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::UpdateAnomalySubscription>
+
+Returns: a L<Paws::CostExplorer::UpdateAnomalySubscriptionResponse> instance
+
+Updates an existing cost anomaly monitor subscription.
 
 
 =head2 UpdateCostCategoryDefinition
@@ -795,17 +1114,14 @@ still effective, C<EffectiveEnd> is omitted in the response.
 
 =item RuleVersion => Str
 
+=item [DefaultValue => Str]
+
 
 =back
 
 Each argument is described in detail in: L<Paws::CostExplorer::UpdateCostCategoryDefinition>
 
 Returns: a L<Paws::CostExplorer::UpdateCostCategoryDefinitionResponse> instance
-
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 Updates an existing Cost Category. Changes made to the Cost Category
 rules will be used to categorize the current monthE<rsquo>s expenses

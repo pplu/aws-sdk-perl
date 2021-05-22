@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-How much it cost to run an instance.
+How much it costs to run an instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 OnDemandCost => Str
 
-How much an On-Demand instance cost.
+How much an On-Demand Instance costs.
 
 
 

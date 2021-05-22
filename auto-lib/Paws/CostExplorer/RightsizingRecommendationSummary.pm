@@ -49,14 +49,13 @@ basis.
 
 =head2 SavingsCurrencyCode => Str
 
-The currency code that Amazon Web Services used to calculate the
-savings.
+The currency code that AWS used to calculate the savings.
 
 
 =head2 SavingsPercentage => Str
 
 Savings percentage based on the recommended modifications, relative to
-the total On Demand costs associated with these instances.
+the total On-Demand costs associated with these instances.
 
 
 =head2 TotalRecommendationCount => Str

@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 =head1 DESCRIPTION
 
 A single daily or monthly Savings Plans utilization rate, and details
-for your account. Master accounts in an organization have access to
-member accounts. You can use C<GetDimensionValues> to determine the
+for your account. A management account in an organization have access
+to member accounts. You can use C<GetDimensionValues> to determine the
 possible dimension values.
 
 =head1 ATTRIBUTES

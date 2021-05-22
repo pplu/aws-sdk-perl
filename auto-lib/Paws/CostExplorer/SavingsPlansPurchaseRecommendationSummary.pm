@@ -50,8 +50,8 @@ Summary metrics for your Savings Plans Purchase Recommendations.
 
 =head2 CurrencyCode => Str
 
-The currency code Amazon Web Services used to generate the
-recommendations and present potential savings.
+The currency code AWS used to generate the recommendations and present
+potential savings.
 
 
 =head2 CurrentOnDemandSpend => Str

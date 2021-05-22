@@ -35,26 +35,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Granularity => 'DAILY',
       Metric      => 'BLENDED_COST',
       TimePeriod  => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',    # max: 40
+        Start => 'MyYearMonthDay',    # max: 40
 
       },
       Filter => {
-        And => [ <Expression>, ... ],    # OPTIONAL
+        And            => [ <Expression>, ... ],    # OPTIONAL
         CostCategories => {
-          Key => 'MyCostCategoryName',     # min: 1, max: 255; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key          => 'MyCostCategoryName',     # min: 1, max: 50; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],                  # OPTIONAL
         },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],                  # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key => 'MyTagKey',               # OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],                  # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       PredictionIntervalLevel => 1,    # OPTIONAL
@@ -75,8 +93,105 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/
 
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
-The filters that you want to use to filter your forecast. Cost Explorer
-API supports all of the Cost Explorer filters.
+The filters that you want to use to filter your forecast. The
+C<GetUsageForecast> API supports filtering by the following dimensions:
+
+=over
+
+=item *
+
+C<AZ>
+
+=item *
+
+C<INSTANCE_TYPE>
+
+=item *
+
+C<LINKED_ACCOUNT>
+
+=item *
+
+C<LINKED_ACCOUNT_NAME>
+
+=item *
+
+C<OPERATION>
+
+=item *
+
+C<PURCHASE_TYPE>
+
+=item *
+
+C<REGION>
+
+=item *
+
+C<SERVICE>
+
+=item *
+
+C<USAGE_TYPE>
+
+=item *
+
+C<USAGE_TYPE_GROUP>
+
+=item *
+
+C<RECORD_TYPE>
+
+=item *
+
+C<OPERATING_SYSTEM>
+
+=item *
+
+C<TENANCY>
+
+=item *
+
+C<SCOPE>
+
+=item *
+
+C<PLATFORM>
+
+=item *
+
+C<SUBSCRIPTION_ID>
+
+=item *
+
+C<LEGAL_ENTITY_NAME>
+
+=item *
+
+C<DEPLOYMENT_OPTION>
+
+=item *
+
+C<DATABASE_ENGINE>
+
+=item *
+
+C<INSTANCE_TYPE_FAMILY>
+
+=item *
+
+C<BILLING_ENTITY>
+
+=item *
+
+C<RESERVATION_ID>
+
+=item *
+
+C<SAVINGS_PLAN_ARN>
+
+=back
+
 
 
 
@@ -129,7 +244,8 @@ forecast for. The start date is inclusive, but the end date is
 exclusive. For example, if C<start> is C<2017-01-01> and C<end> is
 C<2017-05-01>, then the cost and usage data is retrieved from
 C<2017-01-01> up to and including C<2017-04-30> but not including
-C<2017-05-01>.
+C<2017-05-01>. The start date must be equal to or later than the
+current date to avoid a validation error.
 
 
 

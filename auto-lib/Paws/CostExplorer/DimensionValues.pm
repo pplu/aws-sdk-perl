@@ -2,6 +2,7 @@
 package Paws::CostExplorer::DimensionValues;
   use Moose;
   has Key => (is => 'ro', isa => 'Str');
+  has MatchOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -46,15 +47,18 @@ The names of the metadata types that you can use to filter and group
 your results. For example, C<AZ> returns a list of Availability Zones.
 
 
+=head2 MatchOptions => ArrayRef[Str|Undef]
+
+The match options that you can use to filter your results.
+C<MatchOptions> is only applicable for actions related to Cost
+Category. The default values for C<MatchOptions> are C<EQUALS> and
+C<CASE_SENSITIVE>.
+
+
 =head2 Values => ArrayRef[Str|Undef]
 
 The metadata values that you can use to filter and group your results.
 You can use C<GetDimensionValues> to find specific values.
-
-Valid values for the C<SERVICE> dimension are C<Amazon Elastic Compute
-Cloud - Compute>, C<Amazon Elasticsearch Service>, C<Amazon
-ElastiCache>, C<Amazon Redshift>, and C<Amazon Relational Database
-Service>.
 
 
 

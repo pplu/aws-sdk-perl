@@ -45,14 +45,14 @@ Details on recommended instance.
 
 =head2 CurrencyCode => Str
 
-The currency code that Amazon Web Services used to calculate the costs
-for this instance.
+The currency code that AWS used to calculate the costs for this
+instance.
 
 
 =head2 DefaultTargetInstance => Bool
 
-Indicates whether or not this recommendation is the defaulted Amazon
-Web Services recommendation.
+Indicates whether this recommendation is the defaulted AWS
+recommendation.
 
 
 =head2 EstimatedMonthlyCost => Str

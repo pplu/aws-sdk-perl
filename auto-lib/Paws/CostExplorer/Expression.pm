@@ -47,8 +47,10 @@ patterns:
 
 Simple dimension values - You can set the dimension name and values for
 the filters that you plan to use. For example, you can filter for
-C<REGION==us-east-1 OR REGION==us-west-1>. The C<Expression> for that
-looks like this:
+C<REGION==us-east-1 OR REGION==us-west-1>. For
+C<GetRightsizingRecommendation>, the Region is a full name (for
+example, C<REGION==US East (N. Virginia)>. The C<Expression> example
+looks like:
 
 C<{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
 E<ldquo>us-west-1E<rdquo> ] } }>
@@ -81,10 +83,14 @@ C<{ "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
 
 =back
 
-For C<GetRightsizingRecommendation> action, a combination of OR and NOT
-is not supported. OR is not supported between different dimensions, or
-dimensions and tags. NOT operators aren't supported. Dimensions are
+For the C<GetRightsizingRecommendation> action, a combination of OR and
+NOT is not supported. OR is not supported between different dimensions,
+or dimensions and tags. NOT operators aren't supported. Dimensions are
 also limited to C<LINKED_ACCOUNT>, C<REGION>, or C<RIGHTSIZING_TYPE>.
+
+For the C<GetReservationPurchaseRecommendation> action, only NOT is
+supported. AND and OR are not supported. Dimensions are limited to
+C<LINKED_ACCOUNT>.
 
 =head1 ATTRIBUTES
 
@@ -96,12 +102,7 @@ Return results that match both C<Dimension> objects.
 
 =head2 CostCategories => L<Paws::CostExplorer::CostCategoryValues>
 
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
-
-The specific C<CostCategory> used for C<Expression>.
+The filter based on C<CostCategory> values.
 
 
 =head2 Dimensions => L<Paws::CostExplorer::DimensionValues>

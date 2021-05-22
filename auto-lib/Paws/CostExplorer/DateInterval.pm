@@ -34,25 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-The time period that you want the usage and costs for.
+The time period of the request.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> End => Str
 
-The end of the time period that you want the usage and costs for. The
-end date is exclusive. For example, if C<end> is C<2017-05-01>, AWS
-retrieves cost and usage data from the start date up to, but not
-including, C<2017-05-01>.
+The end of the time period. The end date is exclusive. For example, if
+C<end> is C<2017-05-01>, AWS retrieves cost and usage data from the
+start date up to, but not including, C<2017-05-01>.
 
 
 =head2 B<REQUIRED> Start => Str
 
-The beginning of the time period that you want the usage and costs for.
-The start date is inclusive. For example, if C<start> is C<2017-01-01>,
-AWS retrieves cost and usage data starting at C<2017-01-01> up to the
-end date.
+The beginning of the time period. The start date is inclusive. For
+example, if C<start> is C<2017-01-01>, AWS retrieves cost and usage
+data starting at C<2017-01-01> up to the end date. The start date must
+be equal to or no later than the current date to avoid a validation
+error.
 
 
 
