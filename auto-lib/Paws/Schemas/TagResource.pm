@@ -43,13 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-
+The ARN of the resource.
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::Schemas::Tags>
 
-
+Tags associated with the resource.
 
 
 

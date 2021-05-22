@@ -25,7 +25,7 @@ Paws::Schemas::DescribeSchemaResponse
 
 =head2 Content => Str
 
-
+The source of the schema definition.
 
 
 =head2 Description => Str

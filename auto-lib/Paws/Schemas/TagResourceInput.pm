@@ -40,7 +40,7 @@ This class has no description
 
 =head2 B<REQUIRED> Tags => L<Paws::Schemas::Tags>
 
-
+Tags associated with the resource.
 
 
 

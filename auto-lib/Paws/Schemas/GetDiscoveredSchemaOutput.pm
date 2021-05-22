@@ -40,7 +40,7 @@ This class has no description
 
 =head2 Content => Str
 
-
+The source of the schema definition.
 
 
 

@@ -50,7 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
-An array of strings that
+An array of strings where each string is a JSON event. These are the
+events that were used to generate the schema. The array includes a
+single type of event and has a maximum size of 10 events.
 
 
 
@@ -58,7 +60,7 @@ An array of strings that
 
 The type of event.
 
-Valid values are: C<"OpenApi3">
+Valid values are: C<"OpenApi3">, C<"JSONSchemaDraft4">
 
 
 =head1 SEE ALSO

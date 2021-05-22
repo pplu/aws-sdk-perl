@@ -56,7 +56,7 @@ The description of the registry to update.
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 

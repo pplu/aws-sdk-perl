@@ -80,13 +80,13 @@ The description of the schema.
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 
 =head2 B<REQUIRED> SchemaName => Str
 
-
+The name of the schema.
 
 
 
@@ -94,7 +94,7 @@ The description of the schema.
 
 The schema type for the events schema.
 
-Valid values are: C<"OpenApi3">
+Valid values are: C<"OpenApi3">, C<"JSONSchemaDraft4">
 
 
 =head1 SEE ALSO

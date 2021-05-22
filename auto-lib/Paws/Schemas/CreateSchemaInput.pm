@@ -43,7 +43,7 @@ This class has no description
 
 =head2 B<REQUIRED> Content => Str
 
-
+The source of the schema definition.
 
 
 =head2 Description => Str
@@ -58,7 +58,7 @@ Tags associated with the schema.
 
 =head2 B<REQUIRED> Type => Str
 
-
+The type of schema.
 
 
 
