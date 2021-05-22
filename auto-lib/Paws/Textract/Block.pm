@@ -14,6 +14,7 @@ package Paws::Textract::Block;
   has RowSpan => (is => 'ro', isa => 'Int');
   has SelectionStatus => (is => 'ro', isa => 'Str');
   has Text => (is => 'ro', isa => 'Str');
+  has TextType => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -34,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Textract::Block object:
 
-  $service_obj->Method(Att1 => { BlockType => $value, ..., Text => $value  });
+  $service_obj->Method(Att1 => { BlockType => $value, ..., TextType => $value  });
 
 =head3 Results returned from an API call
 
@@ -249,6 +250,12 @@ or check box.
 =head2 Text => Str
 
 The word or line of text that's recognized by Amazon Textract.
+
+
+=head2 TextType => Str
+
+The kind of text that Amazon Textract has detected. Can check for
+handwritten text and printed text.
 
 
 

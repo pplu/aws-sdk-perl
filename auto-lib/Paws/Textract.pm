@@ -319,7 +319,11 @@ For more information, see Document Text Detection
 
 =item [JobTag => Str]
 
+=item [KMSKeyId => Str]
+
 =item [NotificationChannel => L<Paws::Textract::NotificationChannel>]
+
+=item [OutputConfig => L<Paws::Textract::OutputConfig>]
 
 
 =back
@@ -361,7 +365,11 @@ For more information, see Document Text Analysis
 
 =item [JobTag => Str]
 
+=item [KMSKeyId => Str]
+
 =item [NotificationChannel => L<Paws::Textract::NotificationChannel>]
+
+=item [OutputConfig => L<Paws::Textract::OutputConfig>]
 
 
 =back
