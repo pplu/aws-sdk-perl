@@ -2,6 +2,7 @@
 package Paws::SSM::DescribePatchGroupStateResult;
   use Moose;
   has Instances => (is => 'ro', isa => 'Int');
+  has InstancesWithCriticalNonCompliantPatches => (is => 'ro', isa => 'Int');
   has InstancesWithFailedPatches => (is => 'ro', isa => 'Int');
   has InstancesWithInstalledOtherPatches => (is => 'ro', isa => 'Int');
   has InstancesWithInstalledPatches => (is => 'ro', isa => 'Int');
@@ -9,6 +10,8 @@ package Paws::SSM::DescribePatchGroupStateResult;
   has InstancesWithInstalledRejectedPatches => (is => 'ro', isa => 'Int');
   has InstancesWithMissingPatches => (is => 'ro', isa => 'Int');
   has InstancesWithNotApplicablePatches => (is => 'ro', isa => 'Int');
+  has InstancesWithOtherNonCompliantPatches => (is => 'ro', isa => 'Int');
+  has InstancesWithSecurityNonCompliantPatches => (is => 'ro', isa => 'Int');
   has InstancesWithUnreportedNotApplicablePatches => (is => 'ro', isa => 'Int');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -25,6 +28,15 @@ Paws::SSM::DescribePatchGroupStateResult
 =head2 Instances => Int
 
 The number of instances in the patch group.
+
+
+=head2 InstancesWithCriticalNonCompliantPatches => Int
+
+The number of instances where patches that are specified as "Critical"
+for compliance reporting in the patch baseline are not installed. These
+patches might be missing, have failed installation, were rejected, or
+were installed but awaiting a required instance reboot. The status of
+these instances is C<NON_COMPLIANT>.
 
 
 =head2 InstancesWithFailedPatches => Int
@@ -71,6 +83,22 @@ The number of instances with missing patches from the patch baseline.
 =head2 InstancesWithNotApplicablePatches => Int
 
 The number of instances with patches that aren't applicable.
+
+
+=head2 InstancesWithOtherNonCompliantPatches => Int
+
+The number of instances with patches installed that are specified as
+other than "Critical" or "Security" but are not compliant with the
+patch baseline. The status of these instances is NON_COMPLIANT.
+
+
+=head2 InstancesWithSecurityNonCompliantPatches => Int
+
+The number of instances where patches that are specified as "Security"
+in a patch advisory are not installed. These patches might be missing,
+have failed installation, were rejected, or were installed but awaiting
+a required instance reboot. The status of these instances is
+C<NON_COMPLIANT>.
 
 
 =head2 InstancesWithUnreportedNotApplicablePatches => Int

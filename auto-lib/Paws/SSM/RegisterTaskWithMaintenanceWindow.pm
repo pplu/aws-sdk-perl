@@ -4,12 +4,12 @@ package Paws::SSM::RegisterTaskWithMaintenanceWindow;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has LoggingInfo => (is => 'ro', isa => 'Paws::SSM::LoggingInfo');
-  has MaxConcurrency => (is => 'ro', isa => 'Str', required => 1);
-  has MaxErrors => (is => 'ro', isa => 'Str', required => 1);
+  has MaxConcurrency => (is => 'ro', isa => 'Str');
+  has MaxErrors => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
   has TaskInvocationParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters');
   has TaskParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskParameters');
@@ -42,15 +42,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $RegisterTaskWithMaintenanceWindowResult =
       $ssm->RegisterTaskWithMaintenanceWindow(
-      MaxConcurrency => 'MyMaxConcurrency',
-      MaxErrors      => 'MyMaxErrors',
-      Targets        => [
-        {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
-          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
-        },
-        ...
-      ],
       TaskArn     => 'MyMaintenanceWindowTaskArn',
       TaskType    => 'RUN_COMMAND',
       WindowId    => 'MyMaintenanceWindowId',
@@ -61,16 +52,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         S3Region     => 'MyS3Region',                     # min: 3, max: 20
         S3KeyPrefix  => 'MyS3KeyPrefix',                  # max: 500; OPTIONAL
       },    # OPTIONAL
-      Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
-      Priority                 => 1,                            # OPTIONAL
-      ServiceRoleArn           => 'MyServiceRole',              # OPTIONAL
+      MaxConcurrency => 'MyMaxConcurrency',           # OPTIONAL
+      MaxErrors      => 'MyMaxErrors',                # OPTIONAL
+      Name           => 'MyMaintenanceWindowName',    # OPTIONAL
+      Priority       => 1,                            # OPTIONAL
+      ServiceRoleArn => 'MyServiceRole',              # OPTIONAL
+      Targets        => [
+        {
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
       TaskInvocationParameters => {
         Automation => {
-          DocumentVersion => 'MyDocumentVersion',               # OPTIONAL
+          DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
           Parameters      => {
             'MyAutomationParameterKey' => [
-              'MyAutomationParameterValue', ...    # min: 1, max: 512
-            ],    # key: min: 1, max: 50, value: max: 10
+              'MyAutomationParameterValue', ...      # min: 1, max: 512
+            ],    # key: min: 1, max: 50, value: max: 50
           },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
         Lambda => {
@@ -147,7 +147,7 @@ An optional description for the task.
 
 =head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
 
-A structure containing information about an Amazon S3 bucket to write
+A structure containing information about an S3 bucket to write
 instance-level logs to.
 
 C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
@@ -159,16 +159,26 @@ MaintenanceWindowTaskInvocationParameters.
 
 
 
-=head2 B<REQUIRED> MaxConcurrency => Str
+=head2 MaxConcurrency => Str
 
 The maximum number of targets this task can be run for in parallel.
 
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of C<1>. This value does not affect the running of
+your task.
 
 
-=head2 B<REQUIRED> MaxErrors => Str
+
+=head2 MaxErrors => Str
 
 The maximum number of errors allowed before this task stops being
 scheduled.
+
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of C<1>. This value does not affect the running of
+your task.
 
 
 
@@ -202,23 +212,32 @@ Systems Manager User Guide>:
 
 =item *
 
-Service-Linked Role Permissions for Systems Manager
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+Using service-linked roles for Systems Manager
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
 
 =item *
 
-Should I Use a Service-Linked Role or a Custom Service Role to Run
-Maintenance Window Tasks?
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+Should I use a service-linked role or a custom service role to run
+maintenance window tasks?
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
 
 =back
 
 
 
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
 The targets (either instances or maintenance window targets).
+
+One or more targets must be specified for maintenance window Run
+Command-type tasks. Depending on the task, targets are optional for
+other maintenance window task types (Automation, AWS Lambda, and AWS
+Step Functions). For more information about running tasks that do not
+specify targets, see Registering maintenance window tasks without
+targets
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+in the I<AWS Systems Manager User Guide>.
 
 Specify instances using the following format:
 
@@ -226,7 +245,7 @@ C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
 
 Specify maintenance window targets using the following format:
 
-C<Key=WindowTargetIds;,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
+C<Key=WindowTargetIds,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
 
 
 

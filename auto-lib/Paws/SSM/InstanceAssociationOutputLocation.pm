@@ -33,16 +33,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Instan
 
 =head1 DESCRIPTION
 
-An Amazon S3 bucket where you want to store the results of this
-request.
+An S3 bucket where you want to store the results of this request.
+
+For the minimal permissions required to enable Amazon S3 output for an
+association, see Creating associations
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-assoc.html)
+in the I<Systems Manager User Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 S3Location => L<Paws::SSM::S3OutputLocation>
 
-An Amazon S3 bucket where you want to store the results of this
-request.
+An S3 bucket where you want to store the results of this request.
 
 
 

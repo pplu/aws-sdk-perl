@@ -3,6 +3,7 @@ package Paws::SSM::ResourceDataSyncS3Destination;
   use Moose;
   has AWSKMSKeyARN => (is => 'ro', isa => 'Str');
   has BucketName => (is => 'ro', isa => 'Str', required => 1);
+  has DestinationDataSharing => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncDestinationDataSharing');
   has Prefix => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str', required => 1);
   has SyncFormat => (is => 'ro', isa => 'Str', required => 1);
@@ -37,8 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Resour
 
 =head1 DESCRIPTION
 
-Information about the target Amazon S3 bucket for the Resource Data
-Sync.
+Information about the target S3 bucket for the Resource Data Sync.
 
 =head1 ATTRIBUTES
 
@@ -46,12 +46,17 @@ Sync.
 =head2 AWSKMSKeyARN => Str
 
 The ARN of an encryption key for a destination in Amazon S3. Must
-belong to the same Region as the destination Amazon S3 bucket.
+belong to the same Region as the destination S3 bucket.
 
 
 =head2 B<REQUIRED> BucketName => Str
 
-The name of the Amazon S3 bucket where the aggregated data is stored.
+The name of the S3 bucket where the aggregated data is stored.
+
+
+=head2 DestinationDataSharing => L<Paws::SSM::ResourceDataSyncDestinationDataSharing>
+
+Enables destination data sharing. By default, this field is C<null>.
 
 
 =head2 Prefix => Str
@@ -61,8 +66,7 @@ An Amazon S3 prefix for the bucket.
 
 =head2 B<REQUIRED> Region => Str
 
-The AWS Region with the Amazon S3 bucket targeted by the Resource Data
-Sync.
+The AWS Region with the S3 bucket targeted by the Resource Data Sync.
 
 
 =head2 B<REQUIRED> SyncFormat => Str

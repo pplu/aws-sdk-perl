@@ -47,7 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],       # min: 1, max: 1000; OPTIONAL
         },    # OPTIONAL
-        IncludeFutureRegions => 1,    # OPTIONAL
+        EnableAllOpsDataSources => 1,    # OPTIONAL
+        IncludeFutureRegions    => 1,    # OPTIONAL
       },
       SyncType => 'MyResourceDataSyncType',
 
@@ -73,10 +74,8 @@ Specify information about the data sources to synchronize.
 
 =head2 B<REQUIRED> SyncType => Str
 
-The type of resource data sync. If C<SyncType> is C<SyncToDestination>,
-then the resource data sync synchronizes data to an Amazon S3 bucket.
-If the C<SyncType> is C<SyncFromSource> then the resource data sync
-synchronizes data from AWS Organizations or from multiple AWS Regions.
+The type of resource data sync. The supported C<SyncType> is
+SyncFromSource.
 
 
 

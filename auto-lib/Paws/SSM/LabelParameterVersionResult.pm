@@ -18,8 +18,8 @@ Paws::SSM::LabelParameterVersionResult
 =head2 InvalidLabels => ArrayRef[Str|Undef]
 
 The label does not meet the requirements. For information about
-parameter label requirements, see Labeling Parameters
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-labels.html)
+parameter label requirements, see Labeling parameters
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-labels.html)
 in the I<AWS Systems Manager User Guide>.
 
 

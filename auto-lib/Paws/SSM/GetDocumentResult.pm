@@ -3,11 +3,14 @@ package Paws::SSM::GetDocumentResult;
   use Moose;
   has AttachmentsContent => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentContent]');
   has Content => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Str');
+  has DisplayName => (is => 'ro', isa => 'Str');
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
+  has ReviewStatus => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusInformation => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
@@ -26,12 +29,24 @@ Paws::SSM::GetDocumentResult
 =head2 AttachmentsContent => ArrayRef[L<Paws::SSM::AttachmentContent>]
 
 A description of the document attachments, including names, locations,
-sizes, etc.
+sizes, and so on.
 
 
 =head2 Content => Str
 
 The contents of the Systems Manager document.
+
+
+=head2 CreatedDate => Str
+
+The date the Systems Manager document was created.
+
+
+=head2 DisplayName => Str
+
+The friendly name of the Systems Manager document. This value can
+differ for each version of the document. If you want to update this
+value, see UpdateDocument.
 
 
 =head2 DocumentFormat => Str
@@ -43,7 +58,7 @@ Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 The document type.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">, C<"Automation.ChangeTemplate">, C<"ProblemAnalysis">, C<"ProblemAnalysisTemplate">
 =head2 DocumentVersion => Str
 
 The document version.
@@ -61,6 +76,20 @@ C<ApplicationConfiguration> document requires an
 C<ApplicationConfigurationSchema> document.
 
 
+=head2 ReviewStatus => Str
+
+The current review status of a new custom Systems Manager document (SSM
+document) created by a member of your organization, or of the latest
+version of an existing SSM document.
+
+Only one version of an SSM document can be in the APPROVED state at a
+time. When a new version is approved, the status of the previous
+version changes to REJECTED.
+
+Only one version of an SSM document can be in review, or PENDING, at a
+time.
+
+Valid values are: C<"APPROVED">, C<"NOT_REVIEWED">, C<"PENDING">, C<"REJECTED">
 =head2 Status => Str
 
 The status of the Systems Manager document, such as C<Creating>,

@@ -48,11 +48,23 @@ MaintenanceWindowTaskInvocationParameters.
 
 The maximum number of targets allowed to run this task in parallel.
 
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of C<1>, which may be reported in the response to
+this command. This value does not affect the running of your task and
+can be ignored.
+
 
 =head2 MaxErrors => Str
 
 The maximum number of errors allowed before the task stops being
 scheduled.
+
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of C<1>, which may be reported in the response to
+this command. This value does not affect the running of your task and
+can be ignored.
 
 
 =head2 Name => Str

@@ -57,8 +57,8 @@ The UTC timestamp when the delete operation started.
 =head2 DeletionSummary => L<Paws::SSM::InventoryDeletionSummary>
 
 Information about the delete operation. For more information about this
-summary, see Understanding the Delete Inventory Summary
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-custom.html#sysman-inventory-delete)
+summary, see Understanding the delete inventory summary
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-custom.html#sysman-inventory-delete)
 in the I<AWS Systems Manager User Guide>.
 
 

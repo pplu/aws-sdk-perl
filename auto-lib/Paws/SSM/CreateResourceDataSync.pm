@@ -38,6 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         SyncFormat => 'JsonSerDe',                         # values: JsonSerDe
         AWSKMSKeyARN =>
           'MyResourceDataSyncAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
+        DestinationDataSharing => {
+          DestinationDataSharingType =>
+            'MyResourceDataSyncDestinationDataSharingType'
+          ,                                    # min: 1, max: 64; OPTIONAL
+        },    # OPTIONAL
         Prefix => 'MyResourceDataSyncS3Prefix',    # min: 1, max: 256; OPTIONAL
       },    # OPTIONAL
       SyncSource => {
@@ -56,7 +61,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],       # min: 1, max: 1000; OPTIONAL
         },    # OPTIONAL
-        IncludeFutureRegions => 1,    # OPTIONAL
+        EnableAllOpsDataSources => 1,    # OPTIONAL
+        IncludeFutureRegions    => 1,    # OPTIONAL
       },    # OPTIONAL
       SyncType => 'MyResourceDataSyncType',    # OPTIONAL
     );
@@ -69,7 +75,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
 
-Amazon S3 configuration details for the sync.
+Amazon S3 configuration details for the sync. This parameter is
+required if the C<SyncType> value is SyncToDestination.
 
 
 
@@ -81,16 +88,21 @@ A name for the configuration.
 
 =head2 SyncSource => L<Paws::SSM::ResourceDataSyncSource>
 
-Specify information about the data sources to synchronize.
+Specify information about the data sources to synchronize. This
+parameter is required if the C<SyncType> value is SyncFromSource.
 
 
 
 =head2 SyncType => Str
 
 Specify C<SyncToDestination> to create a resource data sync that
-synchronizes data from multiple AWS Regions to an Amazon S3 bucket.
-Specify C<SyncFromSource> to synchronize data from multiple AWS
-accounts and Regions, as listed in AWS Organizations.
+synchronizes data to an S3 bucket for Inventory. If you specify
+C<SyncToDestination>, you must provide a value for C<S3Destination>.
+Specify C<SyncFromSource> to synchronize data from a single account and
+multiple Regions, or multiple AWS accounts and Regions, as listed in
+AWS Organizations for Explorer. If you specify C<SyncFromSource>, you
+must provide a value for C<SyncSource>. The default value is
+C<SyncToDestination>.
 
 
 

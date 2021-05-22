@@ -50,6 +50,11 @@ The name of the filter key.
 
 The type of filter.
 
+The C<Exists> filter must be used with aggregators. For more
+information, see Aggregating inventory data
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-aggregate.html)
+in the I<AWS Systems Manager User Guide>.
+
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 

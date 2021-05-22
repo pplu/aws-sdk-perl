@@ -92,6 +92,7 @@ Information about the association.
 =head2 ScheduleExpression => Str
 
 A cron expression that specifies a schedule when the association runs.
+The schedule runs in Coordinated Universal Time (UTC).
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]

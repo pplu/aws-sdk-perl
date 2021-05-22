@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'INSTANCE',
       Targets      => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -99,6 +99,12 @@ Valid values are: C<"INSTANCE">, C<"RESOURCE_GROUP">
 The targets to register with the maintenance window. In other words,
 the instances to run commands on when the maintenance window runs.
 
+If a single maintenance window task is registered with multiple
+targets, its task invocations occur sequentially and not in parallel.
+If your task must run on multiple targets at the same time, register a
+task for each target individually and assign each task the same
+priority level.
+
 You can specify targets using instance IDs, resource group names, or
 tags that have been applied to instances.
 
@@ -128,8 +134,8 @@ in the following format
 C<Key=resource-groups:ResourceTypeFilters,Values=I<AWS::EC2::INSTANCE>,I<AWS::EC2::VPC>>
 
 For more information about these examples formats, including the best
-use case for each one, see Examples: Register Targets with a
-Maintenance Window
+use case for each one, see Examples: Register targets with a
+maintenance window
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
 in the I<AWS Systems Manager User Guide>.
 

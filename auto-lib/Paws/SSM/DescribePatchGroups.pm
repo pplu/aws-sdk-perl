@@ -60,6 +60,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 One or more filters. Use a filter to return a more specific list of
 results.
 
+For C<DescribePatchGroups>,valid filter keys include the following:
+
+=over
+
+=item *
+
+C<NAME_PREFIX>: The name of the patch group. Wildcards (*) are
+accepted.
+
+=item *
+
+C<OPERATING_SYSTEM>: The supported operating system type to return
+results for. For valid operating system values, see
+GetDefaultPatchBaselineRequest$OperatingSystem in CreatePatchBaseline.
+
+Examples:
+
+=over
+
+=item *
+
+C<--filters Key=NAME_PREFIX,Values=MyPatchGroup*>
+
+=item *
+
+C<--filters Key=OPERATING_SYSTEM,Values=AMAZON_LINUX_2>
+
+=back
+
+=back
+
+
 
 
 =head2 MaxResults => Int

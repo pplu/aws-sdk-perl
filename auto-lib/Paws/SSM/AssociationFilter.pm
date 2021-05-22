@@ -43,6 +43,8 @@ Describes a filter.
 
 The name of the filter.
 
+C<InstanceId> has been deprecated.
+
 
 =head2 B<REQUIRED> Value => Str
 

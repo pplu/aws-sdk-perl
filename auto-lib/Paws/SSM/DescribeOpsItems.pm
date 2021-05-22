@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OpsItemFilters => [
         {
           Key => 'Status'
-          , # values: Status, CreatedBy, Source, Priority, Title, OpsItemId, CreatedTime, LastModifiedTime, OperationalData, OperationalDataKey, OperationalDataValue, ResourceId, AutomationId, Category, Severity
+          , # values: Status, CreatedBy, Source, Priority, Title, OpsItemId, CreatedTime, LastModifiedTime, ActualStartTime, ActualEndTime, PlannedStartTime, PlannedEndTime, OperationalData, OperationalDataKey, OperationalDataValue, ResourceId, AutomationId, Category, Severity, OpsItemType, ChangeRequestByRequesterArn, ChangeRequestByRequesterName, ChangeRequestByApproverArn, ChangeRequestByApproverName, ChangeRequestByTemplate, ChangeRequestByTargetsResourceGroup
           Operator => 'Equal',  # values: Equal, Contains, GreaterThan, LessThan
           Values => [ 'MyOpsItemFilterValue', ... ],
 
@@ -73,7 +73,7 @@ results.
 
 =head2 OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]
 
-One or more filters to limit the reponse.
+One or more filters to limit the response.
 
 =over
 

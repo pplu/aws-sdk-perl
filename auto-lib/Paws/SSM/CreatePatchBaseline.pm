@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatchFilterGroup => {
               PatchFilters => [
                 {
-                  Key => 'PATCH_SET'
-                  , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+                  Key => 'ARCH'
+                  , # values: ARCH, ADVISORY_ID, BUGZILLA_ID, PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, CVE_ID, EPOCH, MSRC_SEVERITY, NAME, PATCH_ID, SECTION, PRIORITY, REPOSITORY, RELEASE, SEVERITY, SECURITY, VERSION
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
@@ -58,9 +58,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                 # max: 4
 
             },
-            ApproveAfterDays => 1,                   # max: 100; OPTIONAL
-            ApproveUntilDate => 'MyPatchStringDate', # min: 1, max: 10; OPTIONAL
-            ComplianceLevel  => 'CRITICAL'
+            ApproveAfterDays => 1,               # max: 360; OPTIONAL
+            ApproveUntilDate =>
+              'MyPatchStringDateTime',           # min: 1, max: 10; OPTIONAL
+            ComplianceLevel => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
             EnableNonSecurity => 1,    # OPTIONAL
           },
@@ -78,8 +79,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
-            Key => 'PATCH_SET'
-            , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+            Key => 'ARCH'
+            , # values: ARCH, ADVISORY_ID, BUGZILLA_ID, PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, CVE_ID, EPOCH, MSRC_SEVERITY, NAME, PATCH_ID, SECTION, PRIORITY, REPOSITORY, RELEASE, SEVERITY, SECURITY, VERSION
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
@@ -137,8 +138,8 @@ A set of rules used to include patches in the baseline.
 A list of explicitly approved patches for the baseline.
 
 For information about accepted formats for lists of approved patches
-and rejected patches, see Package Name Formats for Approved and
-Rejected Patch Lists
+and rejected patches, see About package name formats for approved and
+rejected patch lists
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -146,8 +147,8 @@ in the I<AWS Systems Manager User Guide>.
 
 =head2 ApprovedPatchesComplianceLevel => Str
 
-Defines the compliance level for approved patches. This means that if
-an approved patch is reported as missing, this is the severity of the
+Defines the compliance level for approved patches. When an approved
+patch is reported as missing, this value describes the severity of the
 compliance violation. The default value is UNSPECIFIED.
 
 Valid values are: C<"CRITICAL">, C<"HIGH">, C<"MEDIUM">, C<"LOW">, C<"INFORMATIONAL">, C<"UNSPECIFIED">
@@ -189,15 +190,15 @@ The name of the patch baseline.
 Defines the operating system the patch baseline applies to. The Default
 value is WINDOWS.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">, C<"ORACLE_LINUX">, C<"DEBIAN">, C<"MACOS">
 
 =head2 RejectedPatches => ArrayRef[Str|Undef]
 
 A list of explicitly rejected patches for the baseline.
 
 For information about accepted formats for lists of approved patches
-and rejected patches, see Package Name Formats for Approved and
-Rejected Patch Lists
+and rejected patches, see About package name formats for approved and
+rejected patch lists
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 

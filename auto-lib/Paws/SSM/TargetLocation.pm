@@ -51,6 +51,8 @@ The AWS accounts targeted by the current Automation execution.
 =head2 ExecutionRoleName => Str
 
 The Automation execution role used by the currently running Automation.
+If not specified, the default value is
+C<AWS-SystemsManager-AutomationExecutionRole>.
 
 
 =head2 Regions => ArrayRef[Str|Undef]
@@ -61,7 +63,7 @@ The AWS Regions targeted by the current Automation execution.
 =head2 TargetLocationMaxConcurrency => Str
 
 The maximum number of AWS accounts and AWS regions allowed to run the
-Automation concurrently
+Automation concurrently.
 
 
 =head2 TargetLocationMaxErrors => Str

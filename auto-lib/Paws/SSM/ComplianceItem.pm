@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Compli
 
 Information about the compliance as defined by the resource type. For
 example, for a patch resource type, C<Items> includes information about
-the PatchSeverity, Classification, etc.
+the PatchSeverity, Classification, and so on.
 
 =head1 ATTRIBUTES
 
@@ -93,8 +93,9 @@ following: Critical, High, Medium, Low, Informational, Unspecified.
 
 =head2 Status => Str
 
-The status of the compliance item. An item is either COMPLIANT or
-NON_COMPLIANT.
+The status of the compliance item. An item is either COMPLIANT,
+NON_COMPLIANT, or an empty string (for Windows patches that aren't
+applicable).
 
 
 =head2 Title => Str

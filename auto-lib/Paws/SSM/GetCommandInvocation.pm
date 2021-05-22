@@ -77,16 +77,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 B<REQUIRED> InstanceId => Str
 
 (Required) The ID of the managed instance targeted by the command. A
-managed instance can be an Amazon EC2 instance or an instance in your
-hybrid environment that is configured for Systems Manager.
+managed instance can be an Amazon Elastic Compute Cloud (Amazon EC2)
+instance or an instance in your hybrid environment that is configured
+for AWS Systems Manager.
 
 
 
 =head2 PluginName => Str
 
-(Optional) The name of the plugin for which you want detailed results.
-If the document contains only one plugin, the name can be omitted and
-the details will be returned.
+The name of the plugin for which you want detailed results. If the
+document contains only one plugin, you can omit the name and details
+for that plugin. If the document contains more than one plugin, you
+must specify the name of the plugin for which you want to view details.
+
+Plugin names are also referred to as I<step names> in Systems Manager
+documents. For example, C<aws:RunShellScript> is a plugin.
+
+To find the C<PluginName>, check the document content and find the name
+of the plugin. Alternatively, use ListCommandInvocations with the
+C<CommandId> and C<Details> parameters. The C<PluginName> is the
+C<Name> attribute of the C<CommandPlugin> object in the
+C<CommandPlugins> list.
 
 
 

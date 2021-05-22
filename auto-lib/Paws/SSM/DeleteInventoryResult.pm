@@ -27,8 +27,8 @@ operation has completed before you begin other actions.
 =head2 DeletionSummary => L<Paws::SSM::InventoryDeletionSummary>
 
 A summary of the delete operation. For more information about this
-summary, see Understanding the Delete Inventory Summary
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-delete.html#sysman-inventory-delete-summary)
+summary, see Deleting custom inventory
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-custom.html#sysman-inventory-delete-summary)
 in the I<AWS Systems Manager User Guide>.
 
 

@@ -70,12 +70,13 @@ from a previous call.)
 
 The operating system type for which to list patches.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">, C<"ORACLE_LINUX">, C<"DEBIAN">, C<"MACOS">
 
 =head2 PatchSet => Str
 
 Indicates whether to list patches for the Windows operating system or
-for Microsoft applications. Not applicable for Linux operating systems.
+for Microsoft applications. Not applicable for the Linux or macOS
+operating systems.
 
 Valid values are: C<"OS">, C<"APPLICATION">
 

@@ -112,12 +112,12 @@ on a per-instance basis.
 
 =head2 OutputS3BucketName => Str
 
-The name of the Amazon S3 bucket.
+The name of the S3 bucket.
 
 
 =head2 OutputS3KeyPrefix => Str
 
-The Amazon S3 bucket subfolder.
+The S3 bucket subfolder.
 
 
 =head2 Parameters => L<Paws::SSM::Parameters>

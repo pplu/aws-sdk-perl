@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters => [
         {
           Key => 'InvokedAfter'
-          ,    # values: InvokedAfter, InvokedBefore, Target, Owner, Status
+          , # values: InvokedAfter, InvokedBefore, Target, Owner, Status, SessionId
           Value => 'MySessionFilterValue',    # min: 1, max: 400
 
         },

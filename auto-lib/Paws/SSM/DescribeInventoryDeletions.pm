@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $DescribeInventoryDeletionsResult = $ssm->DescribeInventoryDeletions(
-      DeletionId => 'MyInventoryDeletionId',    # OPTIONAL
-      MaxResults => 1,                          # OPTIONAL
-      NextToken  => 'MyNextToken',              # OPTIONAL
+      DeletionId => 'MyUUID',         # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

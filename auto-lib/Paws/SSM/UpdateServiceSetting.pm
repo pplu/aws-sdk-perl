@@ -42,13 +42,69 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> SettingId => Str
 
-The ID of the service setting to update.
+The Amazon Resource Name (ARN) of the service setting to reset. For
+example,
+C<arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled>.
+The setting ID can be one of the following.
+
+=over
+
+=item *
+
+C</ssm/automation/customer-script-log-destination>
+
+=item *
+
+C</ssm/automation/customer-script-log-group-name>
+
+=item *
+
+C</ssm/parameter-store/default-parameter-tier>
+
+=item *
+
+C</ssm/parameter-store/high-throughput-enabled>
+
+=item *
+
+C</ssm/managed-instance/activation-tier>
+
+=back
+
 
 
 
 =head2 B<REQUIRED> SettingValue => Str
 
-The new value to specify for the service setting.
+The new value to specify for the service setting. For the
+C</ssm/parameter-store/default-parameter-tier> setting ID, the setting
+value can be one of the following.
+
+=over
+
+=item *
+
+Standard
+
+=item *
+
+Advanced
+
+=item *
+
+Intelligent-Tiering
+
+=back
+
+For the C</ssm/parameter-store/high-throughput-enabled>, and
+C</ssm/managed-instance/activation-tier> setting IDs, the setting value
+can be true or false.
+
+For the C</ssm/automation/customer-script-log-destination> setting ID,
+the setting value can be CloudWatch.
+
+For the C</ssm/automation/customer-script-log-group-name> setting ID,
+the setting value can be the name of a CloudWatch Logs log group.
 
 
 

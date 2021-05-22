@@ -42,8 +42,7 @@ are stored.
 
 =head2 OutputSourceId => Str
 
-The ID of the output source, for example the URL of an Amazon S3
-bucket.
+The ID of the output source, for example the URL of an S3 bucket.
 
 
 =head2 OutputSourceType => Str

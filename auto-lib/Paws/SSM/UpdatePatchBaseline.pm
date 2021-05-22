@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatchFilterGroup => {
               PatchFilters => [
                 {
-                  Key => 'PATCH_SET'
-                  , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+                  Key => 'ARCH'
+                  , # values: ARCH, ADVISORY_ID, BUGZILLA_ID, PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, CVE_ID, EPOCH, MSRC_SEVERITY, NAME, PATCH_ID, SECTION, PRIORITY, REPOSITORY, RELEASE, SEVERITY, SECURITY, VERSION
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
@@ -57,9 +57,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                 # max: 4
 
             },
-            ApproveAfterDays => 1,                   # max: 100; OPTIONAL
-            ApproveUntilDate => 'MyPatchStringDate', # min: 1, max: 10; OPTIONAL
-            ComplianceLevel  => 'CRITICAL'
+            ApproveAfterDays => 1,               # max: 360; OPTIONAL
+            ApproveUntilDate =>
+              'MyPatchStringDateTime',           # min: 1, max: 10; OPTIONAL
+            ComplianceLevel => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
             EnableNonSecurity => 1,    # OPTIONAL
           },
@@ -76,8 +77,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
-            Key => 'PATCH_SET'
-            , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+            Key => 'ARCH'
+            , # values: ARCH, ADVISORY_ID, BUGZILLA_ID, PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, CVE_ID, EPOCH, MSRC_SEVERITY, NAME, PATCH_ID, SECTION, PRIORITY, REPOSITORY, RELEASE, SEVERITY, SECURITY, VERSION
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
@@ -144,8 +145,8 @@ A set of rules used to include patches in the baseline.
 A list of explicitly approved patches for the baseline.
 
 For information about accepted formats for lists of approved patches
-and rejected patches, see Package Name Formats for Approved and
-Rejected Patch Lists
+and rejected patches, see About package name formats for approved and
+rejected patch lists
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -194,8 +195,8 @@ The name of the patch baseline.
 A list of explicitly rejected patches for the baseline.
 
 For information about accepted formats for lists of approved patches
-and rejected patches, see Package Name Formats for Approved and
-Rejected Patch Lists
+and rejected patches, see About package name formats for approved and
+rejected patch lists
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 

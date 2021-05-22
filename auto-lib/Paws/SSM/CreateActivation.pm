@@ -81,8 +81,10 @@ Do not enter personally identifiable information in this field.
 
 =head2 ExpirationDate => Str
 
-The date by which this activation request should expire. The default
-value is 24 hours.
+The date by which this activation request should expire, in timestamp
+format, such as "2021-07-07T00:00:00". You can specify a date up to 30
+days in advance. If you don't provide an expiration date, the
+activation code expires in 24 hours.
 
 
 
@@ -91,9 +93,9 @@ value is 24 hours.
 The Amazon Identity and Access Management (IAM) role that you want to
 assign to the managed instance. This IAM role must provide AssumeRole
 permissions for the Systems Manager service principal
-C<ssm.amazonaws.com>. For more information, see Create an IAM Service
-Role for a Hybrid Environment
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
+C<ssm.amazonaws.com>. For more information, see Create an IAM service
+role for a hybrid environment
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
 in the I<AWS Systems Manager User Guide>.
 
 

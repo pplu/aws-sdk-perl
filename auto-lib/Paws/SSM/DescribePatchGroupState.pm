@@ -34,6 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Instances = $DescribePatchGroupStateResult->Instances;
+    my $InstancesWithCriticalNonCompliantPatches =
+      $DescribePatchGroupStateResult->InstancesWithCriticalNonCompliantPatches;
     my $InstancesWithFailedPatches =
       $DescribePatchGroupStateResult->InstancesWithFailedPatches;
     my $InstancesWithInstalledOtherPatches =
@@ -49,6 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribePatchGroupStateResult->InstancesWithMissingPatches;
     my $InstancesWithNotApplicablePatches =
       $DescribePatchGroupStateResult->InstancesWithNotApplicablePatches;
+    my $InstancesWithOtherNonCompliantPatches =
+      $DescribePatchGroupStateResult->InstancesWithOtherNonCompliantPatches;
+    my $InstancesWithSecurityNonCompliantPatches =
+      $DescribePatchGroupStateResult->InstancesWithSecurityNonCompliantPatches;
     my $InstancesWithUnreportedNotApplicablePatches =
       $DescribePatchGroupStateResult
       ->InstancesWithUnreportedNotApplicablePatches;

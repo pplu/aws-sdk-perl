@@ -1,8 +1,10 @@
 
 package Paws::SSM::CreateAssociation;
   use Moose;
+  has ApplyOnlyAtCronInterval => (is => 'ro', isa => 'Bool');
   has AssociationName => (is => 'ro', isa => 'Str');
   has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
+  has CalendarNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -12,6 +14,8 @@ package Paws::SSM::CreateAssociation;
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
+  has SyncCompliance => (is => 'ro', isa => 'Str');
+  has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 
   use MooseX::ClassAttribute;
@@ -39,15 +43,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateAssociationResult = $ssm->CreateAssociation(
-      Name            => 'MyDocumentARN',
-      AssociationName => 'MyAssociationName',    # OPTIONAL
+      Name                    => 'MyDocumentARN',
+      ApplyOnlyAtCronInterval => 1,                      # OPTIONAL
+      AssociationName         => 'MyAssociationName',    # OPTIONAL
       AutomationTargetParameterName =>
-        'MyAutomationTargetParameterName',       # OPTIONAL
-      ComplianceSeverity => 'CRITICAL',          # OPTIONAL
-      DocumentVersion    => 'MyDocumentVersion', # OPTIONAL
-      InstanceId         => 'MyInstanceId',      # OPTIONAL
-      MaxConcurrency     => 'MyMaxConcurrency',  # OPTIONAL
-      MaxErrors          => 'MyMaxErrors',       # OPTIONAL
+        'MyAutomationTargetParameterName',               # OPTIONAL
+      CalendarNames      => [ 'MyCalendarNameOrARN', ... ],    # OPTIONAL
+      ComplianceSeverity => 'CRITICAL',                        # OPTIONAL
+      DocumentVersion    => 'MyDocumentVersion',               # OPTIONAL
+      InstanceId         => 'MyInstanceId',                    # OPTIONAL
+      MaxConcurrency     => 'MyMaxConcurrency',                # OPTIONAL
+      MaxErrors          => 'MyMaxErrors',                     # OPTIONAL
       OutputLocation     => {
         S3Location => {
           OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
@@ -58,9 +64,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
       ,     # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
-      Targets            => [
+      SyncCompliance     => 'AUTO',                    # OPTIONAL
+      TargetLocations    => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Accounts => [ 'MyAccount', ... ],    # min: 1, max: 50; OPTIONAL
+          ExecutionRoleName =>
+            'MyExecutionRoleName',             # min: 1, max: 64; OPTIONAL
+          Regions => [ 'MyRegion', ... ],      # min: 1, max: 50; OPTIONAL
+          TargetLocationMaxConcurrency => 'MyMaxConcurrency',   # min: 1, max: 7
+          TargetLocationMaxErrors      => 'MyMaxErrors',        # min: 1, max: 7
+        },
+        ...
+      ],                                                        # OPTIONAL
+      Targets => [
+        {
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -79,6 +97,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
+=head2 ApplyOnlyAtCronInterval => Bool
+
+By default, when you create a new association, the system runs it
+immediately after it is created and then according to the schedule you
+specified. Specify this option if you don't want an association to run
+immediately after you create it. This parameter is not supported for
+rate expressions.
+
+
+
 =head2 AssociationName => Str
 
 Specify a descriptive name for the association.
@@ -90,6 +118,16 @@ Specify a descriptive name for the association.
 Specify the target for the association. This target is required for
 associations that use an Automation document and target resources by
 using rate controls.
+
+
+
+=head2 CalendarNames => ArrayRef[Str|Undef]
+
+The names or Amazon Resource Names (ARNs) of the Systems Manager Change
+Calendar type documents you want to gate your associations under. The
+associations only run when that Change Calendar is open. For more
+information, see AWS Systems Manager Change Calendar
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar).
 
 
 
@@ -182,8 +220,7 @@ C<AWS-ApplyPatchBaseline> or C<My-Document>.
 
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
 
-An Amazon S3 bucket where you want to store the output details of the
-request.
+An S3 bucket where you want to store the output details of the request.
 
 
 
@@ -200,11 +237,41 @@ target(s).
 
 
 
+=head2 SyncCompliance => Str
+
+The mode for generating association compliance. You can specify C<AUTO>
+or C<MANUAL>. In C<AUTO> mode, the system uses the status of the
+association execution to determine the compliance status. If the
+association execution runs successfully, then the association is
+C<COMPLIANT>. If the association execution doesn't run successfully,
+the association is C<NON-COMPLIANT>.
+
+In C<MANUAL> mode, you must specify the C<AssociationId> as a parameter
+for the PutComplianceItems API action. In this case, compliance data is
+not managed by State Manager. It is managed by your direct call to the
+PutComplianceItems API action.
+
+By default, all associations use C<AUTO> mode.
+
+Valid values are: C<"AUTO">, C<"MANUAL">
+
+=head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
+
+A location is a combination of AWS Regions and AWS accounts where you
+want to run the association. Use this action to create an association
+in multiple Regions and multiple accounts.
+
+
+
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags) for the association. You must
-specify a value for C<Targets> if you don't specify a value for
-C<InstanceId>.
+The targets for the association. You can target instances by using
+tags, AWS Resource Groups, all instances in an AWS account, or
+individual instance IDs. For more information about choosing targets
+for an association, see Using targets and rate controls with State
+Manager associations
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 

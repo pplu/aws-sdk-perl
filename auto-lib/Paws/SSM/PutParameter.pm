@@ -2,6 +2,7 @@
 package Paws::SSM::PutParameter;
   use Moose;
   has AllowedPattern => (is => 'ro', isa => 'Str');
+  has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +10,7 @@ package Paws::SSM::PutParameter;
   has Policies => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has Tier => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -38,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $PutParameterResult = $ssm->PutParameter(
       Name           => 'MyPSParameterName',
-      Type           => 'String',
       Value          => 'MyPSParameterValue',
       AllowedPattern => 'MyAllowedPattern',          # OPTIONAL
+      DataType       => 'MyParameterDataType',       # OPTIONAL
       Description    => 'MyParameterDescription',    # OPTIONAL
       KeyId          => 'MyParameterKeyId',          # OPTIONAL
       Overwrite      => 1,                           # OPTIONAL
@@ -54,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                             # OPTIONAL
       Tier => 'Standard',                            # OPTIONAL
+      Type => 'String',                              # OPTIONAL
     );
 
     # Results:
@@ -73,6 +75,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
 following: AllowedPattern=^\d+$
+
+
+
+=head2 DataType => Str
+
+The data type for a C<String> parameter. Supported data types include
+plain text and Amazon Machine Image IDs.
+
+B<The following data type values are supported.>
+
+=over
+
+=item *
+
+C<text>
+
+=item *
+
+C<aws:ec2:image>
+
+=back
+
+When you create a C<String> parameter and specify C<aws:ec2:image>,
+Systems Manager validates the parameter value is in the required
+format, such as C<ami-12345abcdeEXAMPLE>, and that the specified AMI is
+available in your AWS account. For more information, see Native
+parameter support for Amazon Machine Image IDs
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -141,7 +172,11 @@ A parameter name can't be prefixed with "aws" or "ssm"
 =item *
 
 Parameter names can include only the following symbols and letters:
-C<a-zA-Z0-9_.-/>
+C<a-zA-Z0-9_.->
+
+In addition, the slash character ( / ) is used to delineate hierarchies
+in parameter names. For example:
+C</Dev/Production/East/Project-ABC/MyParameter>
 
 =item *
 
@@ -154,8 +189,8 @@ Parameter hierarchies are limited to a maximum depth of fifteen levels.
 =back
 
 For additional information about valid values for parameter names, see
-Requirements and Constraints for Parameter Names
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html)
+Creating Systems Manager parameters
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
 in the I<AWS Systems Manager User Guide>.
 
 The maximum length constraint listed below includes capacity for
@@ -170,8 +205,7 @@ C<arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName>
 
 =head2 Overwrite => Bool
 
-Overwrite an existing parameter. If not specified, will default to
-"false".
+Overwrite an existing parameter. The default value is 'false'.
 
 
 
@@ -198,8 +232,8 @@ within a period of time, but it has not been changed.
 
 All existing policies are preserved until you send new policies or an
 empty policy. For more information about parameter policies, see
-Working with Parameter Policies
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-policies.html).
+Assigning parameter policies
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html).
 
 
 
@@ -247,9 +281,9 @@ Standard parameters are offered at no additional cost.
 Advanced parameters have a content size limit of 8 KB and can be
 configured to use parameter policies. You can create a maximum of
 100,000 advanced parameters for each Region in an AWS account. Advanced
-parameters incur a charge. For more information, see About Advanced
-Parameters
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
+parameters incur a charge. For more information, see Standard and
+advanced parameter tiers
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
 in the I<AWS Systems Manager User Guide>.
 
 You can change a standard parameter to an advanced parameter any time.
@@ -320,23 +354,26 @@ current Region.
 =back
 
 For more information about configuring the default tier option, see
-Specifying a Default Parameter Tier
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/ps-default-tier.html)
+Specifying a default parameter tier
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-default-tier.html)
 in the I<AWS Systems Manager User Guide>.
 
 Valid values are: C<"Standard">, C<"Advanced">, C<"Intelligent-Tiering">
 
-=head2 B<REQUIRED> Type => Str
+=head2 Type => Str
 
 The type of parameter that you want to add to the system.
+
+C<SecureString> is not currently supported for AWS CloudFormation
+templates.
 
 Items in a C<StringList> must be separated by a comma (,). You can't
 use other punctuation or special character to escape items in the list.
 If you have a parameter value that requires a comma, then use the
 C<String> data type.
 
-C<SecureString> is not currently supported for AWS CloudFormation
-templates or in the China Regions.
+Specifying a parameter type is not required when updating a parameter.
+You must specify a parameter type when creating a parameter.
 
 Valid values are: C<"String">, C<"StringList">, C<"SecureString">
 
@@ -345,6 +382,10 @@ Valid values are: C<"String">, C<"StringList">, C<"SecureString">
 The parameter value that you want to add to the system. Standard
 parameters have a value limit of 4 KB. Advanced parameters have a value
 limit of 8 KB.
+
+Parameters can't be referenced or nested in the values of other
+parameters. You can't include C<{{}}> or C<{{ssm:I<parameter-name>}}>
+in a parameter value.
 
 
 

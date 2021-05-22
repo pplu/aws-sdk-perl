@@ -20,6 +20,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::AddTagsToResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateOpsItemRelatedItem {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::AssociateOpsItemRelatedItem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelCommand {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CancelCommand', @_);
@@ -60,6 +65,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateOpsItem', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateOpsMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CreateOpsMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreatePatchBaseline', @_);
@@ -93,6 +103,11 @@ package Paws::SSM;
   sub DeleteMaintenanceWindow {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteMaintenanceWindow', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteOpsMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteOpsMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteParameter {
@@ -295,6 +310,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateOpsItemRelatedItem {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DisassociateOpsItemRelatedItem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetAutomationExecution', @_);
@@ -368,6 +388,11 @@ package Paws::SSM;
   sub GetOpsItem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetOpsItem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOpsMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetOpsMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetOpsSummary {
@@ -445,6 +470,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListComplianceSummaries', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDocumentMetadataHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListDocumentMetadataHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDocuments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListDocuments', @_);
@@ -458,6 +488,21 @@ package Paws::SSM;
   sub ListInventoryEntries {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListInventoryEntries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOpsItemEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListOpsItemEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOpsItemRelatedItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListOpsItemRelatedItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOpsMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListOpsMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListResourceComplianceSummaries {
@@ -550,6 +595,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::StartAutomationExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartChangeRequestExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::StartChangeRequestExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartSession {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::StartSession', @_);
@@ -563,6 +613,11 @@ package Paws::SSM;
   sub TerminateSession {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::TerminateSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UnlabelParameterVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UnlabelParameterVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAssociation {
@@ -583,6 +638,11 @@ package Paws::SSM;
   sub UpdateDocumentDefaultVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateDocumentDefaultVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDocumentMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateDocumentMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateMaintenanceWindow {
@@ -608,6 +668,11 @@ package Paws::SSM;
   sub UpdateOpsItem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateOpsItem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateOpsMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateOpsMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePatchBaseline {
@@ -1132,6 +1197,29 @@ package Paws::SSM;
 
     return undef
   }
+  sub DescribeAllOpsItems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOpsItems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeOpsItems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OpsItemSummaries }, @{ $next_result->OpsItemSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OpsItemSummaries') foreach (@{ $result->OpsItemSummaries });
+        $result = $self->DescribeOpsItems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OpsItemSummaries') foreach (@{ $result->OpsItemSummaries });
+    }
+
+    return undef
+  }
   sub DescribeAllParameters {
     my $self = shift;
 
@@ -1201,6 +1289,29 @@ package Paws::SSM;
 
     return undef
   }
+  sub DescribeAllPatchProperties {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePatchProperties(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePatchProperties(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Properties }, @{ $next_result->Properties };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Properties') foreach (@{ $result->Properties });
+        $result = $self->DescribePatchProperties(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Properties') foreach (@{ $result->Properties });
+    }
+
+    return undef
+  }
   sub DescribeAllSessions {
     my $self = shift;
 
@@ -1266,6 +1377,29 @@ package Paws::SSM;
         $result = $self->GetInventorySchema(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+    }
+
+    return undef
+  }
+  sub GetAllOpsSummary {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetOpsSummary(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetOpsSummary(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Entities }, @{ $next_result->Entities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Entities') foreach (@{ $result->Entities });
+        $result = $self->GetOpsSummary(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Entities') foreach (@{ $result->Entities });
     }
 
     return undef
@@ -1500,6 +1634,75 @@ package Paws::SSM;
 
     return undef
   }
+  sub ListAllOpsItemEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOpsItemEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOpsItemEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListOpsItemEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+    }
+
+    return undef
+  }
+  sub ListAllOpsItemRelatedItems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOpsItemRelatedItems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOpsItemRelatedItems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListOpsItemRelatedItems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+    }
+
+    return undef
+  }
+  sub ListAllOpsMetadata {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOpsMetadata(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOpsMetadata(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OpsMetadataList }, @{ $next_result->OpsMetadataList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OpsMetadataList') foreach (@{ $result->OpsMetadataList });
+        $result = $self->ListOpsMetadata(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OpsMetadataList') foreach (@{ $result->OpsMetadataList });
+    }
+
+    return undef
+  }
   sub ListAllResourceComplianceSummaries {
     my $self = shift;
 
@@ -1548,7 +1751,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCalendarState GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateResourceDataSync UpdateServiceSetting / }
+  sub operations { qw/AddTagsToResource AssociateOpsItemRelatedItem CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreateOpsMetadata CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteOpsMetadata DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions DisassociateOpsItemRelatedItem GetAutomationExecution GetCalendarState GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsMetadata GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocumentMetadataHistory ListDocuments ListDocumentVersions ListInventoryEntries ListOpsItemEvents ListOpsItemRelatedItems ListOpsMetadata ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartChangeRequestExecution StartSession StopAutomationExecution TerminateSession UnlabelParameterVersion UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateDocumentMetadata UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdateOpsMetadata UpdatePatchBaseline UpdateResourceDataSync UpdateServiceSetting / }
 
 1;
 
@@ -1584,22 +1787,51 @@ operating system (OS) patches, automating the creation of Amazon
 Machine Images (AMIs), and configuring operating systems (OSs) and
 applications at scale. Systems Manager lets you remotely and securely
 manage the configuration of your managed instances. A I<managed
-instance> is any Amazon EC2 instance or on-premises machine in your
-hybrid environment that has been configured for Systems Manager.
+instance> is any Amazon Elastic Compute Cloud instance (EC2 instance),
+or any on-premises server or virtual machine (VM) in your hybrid
+environment that has been configured for Systems Manager.
 
 This reference is intended to be used with the AWS Systems Manager User
-Guide (http://docs.aws.amazon.com/systems-manager/latest/userguide/).
+Guide (https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 
 To get started, verify prerequisites and configure managed instances.
-For more information, see Setting Up AWS Systems Manager
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)
+For more information, see Setting up AWS Systems Manager
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)
 in the I<AWS Systems Manager User Guide>.
 
-For information about other API actions you can perform on Amazon EC2
+B<Related resources>
+
+=over
+
+=item *
+
+For information about how to use a Query API, see Making API requests
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
+
+=item *
+
+For information about other API actions you can perform on EC2
 instances, see the Amazon EC2 API Reference
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/). For
-information about how to use a Query API, see Making API Requests
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/).
+
+=item *
+
+For information about AWS AppConfig, a capability of Systems Manager,
+see the AWS AppConfig User Guide
+(https://docs.aws.amazon.com/appconfig/latest/userguide/) and the AWS
+AppConfig API Reference
+(https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/).
+
+=item *
+
+For information about AWS Incident Manager, a capability of Systems
+Manager, see the AWS Incident Manager User Guide
+(https://docs.aws.amazon.com/incident-manager/latest/userguide/) and
+the AWS Incident Manager API Reference
+(https://docs.aws.amazon.com/incident-manager/latest/APIReference/).
+
+=back
+
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06>
 
@@ -1640,12 +1872,37 @@ We recommend that you devise a set of tag keys that meets your needs
 for each resource type. Using a consistent set of tag keys makes it
 easier for you to manage your resources. You can search and filter the
 resources based on the tags you add. Tags don't have any semantic
-meaning to Amazon EC2 and are interpreted strictly as a string of
-characters.
+meaning to and are interpreted strictly as a string of characters.
 
-For more information about tags, see Tagging Your Amazon EC2 Resources
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in
-the I<Amazon EC2 User Guide>.
+For more information about using tags with EC2 instances, see Tagging
+your Amazon EC2 resources
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
+in the I<Amazon EC2 User Guide>.
+
+
+=head2 AssociateOpsItemRelatedItem
+
+=over
+
+=item AssociationType => Str
+
+=item OpsItemId => Str
+
+=item ResourceType => Str
+
+=item ResourceUri => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::AssociateOpsItemRelatedItem>
+
+Returns: a L<Paws::SSM::AssociateOpsItemRelatedItemResponse> instance
+
+Associates a related resource to a Systems Manager OpsCenter OpsItem.
+For example, you can associate an Incident Manager incident or analysis
+with an OpsItem. Incident Manager is a capability of AWS Systems
+Manager.
 
 
 =head2 CancelCommand
@@ -1715,14 +1972,14 @@ Registering these machines with Systems Manager makes it possible to
 manage them using Systems Manager capabilities. You use the activation
 code and ID when installing SSM Agent on machines in your hybrid
 environment. For more information about requirements for managing
-on-premises instances and VMs using Systems Manager, see Setting Up AWS
-Systems Manager for Hybrid Environments
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
+on-premises instances and VMs using Systems Manager, see Setting up AWS
+Systems Manager for hybrid environments
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
 in the I<AWS Systems Manager User Guide>.
 
 On-premises servers or VMs that are registered with Systems Manager and
-Amazon EC2 instances that you manage with Systems Manager are all
-called I<managed instances>.
+EC2 instances that you manage with Systems Manager are all called
+I<managed instances>.
 
 
 =head2 CreateAssociation
@@ -1731,9 +1988,13 @@ called I<managed instances>.
 
 =item Name => Str
 
+=item [ApplyOnlyAtCronInterval => Bool]
+
 =item [AssociationName => Str]
 
 =item [AutomationTargetParameterName => Str]
+
+=item [CalendarNames => ArrayRef[Str|Undef]]
 
 =item [ComplianceSeverity => Str]
 
@@ -1751,6 +2012,10 @@ called I<managed instances>.
 
 =item [ScheduleExpression => Str]
 
+=item [SyncCompliance => Str]
+
+=item [TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]]
+
 =item [Targets => ArrayRef[L<Paws::SSM::Target>]]
 
 
@@ -1760,16 +2025,19 @@ Each argument is described in detail in: L<Paws::SSM::CreateAssociation>
 
 Returns: a L<Paws::SSM::CreateAssociationResult> instance
 
-Associates the specified Systems Manager document with the specified
-instances or targets.
-
-When you associate a document with one or more instances using instance
-IDs or tags, SSM Agent running on the instance processes the document
-and configures the instance as specified.
-
-If you associate a document with an instance that already has an
-associated document, the system returns the AssociationAlreadyExists
-exception.
+A State Manager association defines the state that you want to maintain
+on your instances. For example, an association can specify that
+anti-virus software must be installed and running on your instances, or
+that certain ports must be closed. For static targets, the association
+specifies a schedule for when the configuration is reapplied. For
+dynamic targets, such as an AWS Resource Group or an AWS Autoscaling
+Group, State Manager applies the configuration when new instances are
+added to the group. The association also specifies actions to take when
+applying the configuration. For example, an association for anti-virus
+software might run once a day. If the software is not installed, then
+State Manager installs it. If the software is installed, but the
+service is not running, then the association might instruct State
+Manager to start the service.
 
 
 =head2 CreateAssociationBatch
@@ -1807,6 +2075,8 @@ exception.
 
 =item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
 
+=item [DisplayName => Str]
+
 =item [DocumentFormat => Str]
 
 =item [DocumentType => Str]
@@ -1826,10 +2096,13 @@ Each argument is described in detail in: L<Paws::SSM::CreateDocument>
 
 Returns: a L<Paws::SSM::CreateDocumentResult> instance
 
-Creates a Systems Manager document.
-
-After you create a document, you can use CreateAssociation to associate
-it with one or more running instances.
+Creates a Systems Manager (SSM) document. An SSM document defines the
+actions that Systems Manager performs on your managed instances. For
+more information about SSM documents, including information about
+supported schemas, features, and syntax, see AWS Systems Manager
+Documents
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 CreateMaintenanceWindow
@@ -1851,6 +2124,8 @@ it with one or more running instances.
 =item [Description => Str]
 
 =item [EndDate => Str]
+
+=item [ScheduleOffset => Int]
 
 =item [ScheduleTimezone => Str]
 
@@ -1886,11 +2161,21 @@ tasks can start after 5 PM.
 
 =item Title => Str
 
+=item [ActualEndTime => Str]
+
+=item [ActualStartTime => Str]
+
 =item [Category => Str]
 
 =item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
 
 =item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
+
+=item [OpsItemType => Str]
+
+=item [PlannedEndTime => Str]
+
+=item [PlannedStartTime => Str]
 
 =item [Priority => Int]
 
@@ -1909,16 +2194,38 @@ Returns: a L<Paws::SSM::CreateOpsItemResponse> instance
 
 Creates a new OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to create a new OpsItem. For more information,
-see Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+see Getting started with OpsCenter
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see AWS
 Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
+
+
+=head2 CreateOpsMetadata
+
+=over
+
+=item ResourceId => Str
+
+=item [Metadata => L<Paws::SSM::MetadataMap>]
+
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::CreateOpsMetadata>
+
+Returns: a L<Paws::SSM::CreateOpsMetadataResult> instance
+
+If you create a new application in Application Manager, Systems Manager
+calls this API action to specify information about the new application,
+including the application type.
 
 
 =head2 CreatePatchBaseline
@@ -1990,19 +2297,19 @@ sync: C<SyncToDestination> and C<SyncFromSource>.
 
 You can configure Systems Manager Inventory to use the
 C<SyncToDestination> type to synchronize Inventory data from multiple
-AWS Regions to a single Amazon S3 bucket. For more information, see
+AWS Regions to a single S3 bucket. For more information, see
 Configuring Resource Data Sync for Inventory
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
 in the I<AWS Systems Manager User Guide>.
 
 You can configure Systems Manager Explorer to use the C<SyncFromSource>
 type to synchronize operational work items (OpsItems) and operational
-data (OpsData) from multiple AWS Regions to a single Amazon S3 bucket.
-This type can synchronize OpsItems and OpsData from multiple AWS
-accounts and Regions or C<EntireOrganization> by using AWS
-Organizations. For more information, see Setting Up Explorer to Display
-Data from Multiple Accounts and Regions
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html)
+data (OpsData) from multiple AWS Regions to a single S3 bucket. This
+type can synchronize OpsItems and OpsData from multiple AWS accounts
+and Regions or C<EntireOrganization> by using AWS Organizations. For
+more information, see Setting up Systems Manager Explorer to display
+data from multiple accounts and Regions
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html)
 in the I<AWS Systems Manager User Guide>.
 
 A resource data sync is an asynchronous operation that returns
@@ -2109,7 +2416,7 @@ Each argument is described in detail in: L<Paws::SSM::DeleteInventory>
 
 Returns: a L<Paws::SSM::DeleteInventoryResult> instance
 
-Delete a custom inventory type, or the data associated with a custom
+Delete a custom inventory type or the data associated with a custom
 Inventory type. Deleting a custom inventory type is also referred to as
 deleting a custom inventory schema.
 
@@ -2128,6 +2435,22 @@ Each argument is described in detail in: L<Paws::SSM::DeleteMaintenanceWindow>
 Returns: a L<Paws::SSM::DeleteMaintenanceWindowResult> instance
 
 Deletes a maintenance window.
+
+
+=head2 DeleteOpsMetadata
+
+=over
+
+=item OpsMetadataArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DeleteOpsMetadata>
+
+Returns: a L<Paws::SSM::DeleteOpsMetadataResult> instance
+
+Delete OpsMetadata related to an application.
 
 
 =head2 DeleteParameter
@@ -2464,6 +2787,10 @@ Describes the specified Systems Manager document.
 
 =item PermissionType => Str
 
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
 
 =back
 
@@ -2558,17 +2885,18 @@ Each argument is described in detail in: L<Paws::SSM::DescribeInstanceInformatio
 
 Returns: a L<Paws::SSM::DescribeInstanceInformationResult> instance
 
-Describes one or more of your instances. You can use this to get
-information about instances like the operating system platform, the SSM
-Agent version (Linux), status etc. If you specify one or more instance
-IDs, it returns information for those instances. If you do not specify
-instance IDs, it returns information for all your instances. If you
-specify an instance ID that is not valid or an instance that you do not
-own, you receive an error.
+Describes one or more of your instances, including information about
+the operating system platform, the version of SSM Agent installed on
+the instance, instance status, and so on.
+
+If you specify one or more instance IDs, it returns information for
+those instances. If you do not specify instance IDs, it returns
+information for all your instances. If you specify an instance ID that
+is not valid or an instance that you do not own, you receive an error.
 
 The IamRole field for this API action is the Amazon Identity and Access
 Management (IAM) role assigned to on-premises instances. This call does
-not return the IAM role for Amazon EC2 instances.
+not return the IAM role for EC2 instances.
 
 
 =head2 DescribeInstancePatches
@@ -2842,6 +3170,12 @@ Returns: a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance
 
 Lists the tasks in a maintenance window.
 
+For maintenance window tasks without a specified target, you cannot
+supply values for C<--max-errors> and C<--max-concurrency>. Instead,
+the system inserts a placeholder value of C<1>, which may be reported
+in the response to this command. These values do not affect the running
+of your task and can be ignored.
+
 
 =head2 DescribeOpsItems
 
@@ -2862,15 +3196,15 @@ Returns: a L<Paws::SSM::DescribeOpsItemsResponse> instance
 
 Query a set of OpsItems. You must have permission in AWS Identity and
 Access Management (IAM) to query a list of OpsItems. For more
-information, see Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+information, see Getting started with OpsCenter
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see AWS
 Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -2994,11 +3328,6 @@ for each major operating system type:
 
 =over
 
-=item WINDOWS
-
-Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
-MSRC_SEVERITY
-
 =item AMAZON_LINUX
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
@@ -3007,9 +3336,21 @@ Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 
-=item UBUNTU
+=item CENTOS
+
+Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+
+=item DEBIAN
 
 Valid properties: PRODUCT, PRIORITY
+
+=item MACOS
+
+Valid properties: PRODUCT, CLASSIFICATION
+
+=item ORACLE_LINUX
+
+Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 
 =item REDHAT_ENTERPRISE_LINUX
 
@@ -3019,9 +3360,14 @@ Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 
-=item CENTOS
+=item UBUNTU
 
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+Valid properties: PRODUCT, PRIORITY
+
+=item WINDOWS
+
+Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
+MSRC_SEVERITY
 
 =back
 
@@ -3048,6 +3394,26 @@ Returns: a L<Paws::SSM::DescribeSessionsResponse> instance
 
 Retrieves a list of all active sessions (both connected and
 disconnected) or terminated sessions from the past 30 days.
+
+
+=head2 DisassociateOpsItemRelatedItem
+
+=over
+
+=item AssociationId => Str
+
+=item OpsItemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DisassociateOpsItemRelatedItem>
+
+Returns: a L<Paws::SSM::DisassociateOpsItemRelatedItemResponse> instance
+
+Deletes the association between an OpsItem and a related resource. For
+example, this API action can delete an Incident Manager incident from
+an OpsItem. Incident Manager is a capability of AWS Systems Manager.
 
 
 =head2 GetAutomationExecution
@@ -3086,9 +3452,15 @@ optional, specified time. If you specify a time, C<GetCalendarState>
 returns the state of the calendar at a specific time, and returns the
 next time that the Change Calendar state will transition. If you do not
 specify a time, C<GetCalendarState> assumes the current time. Change
-Calendar entries have two possible states: C<OPEN> or C<CLOSED>. For
-more information about Systems Manager Change Calendar, see AWS Systems
-Manager Change Calendar
+Calendar entries have two possible states: C<OPEN> or C<CLOSED>.
+
+If you specify more than one calendar in a request, the command returns
+the status of C<OPEN> only if all calendars in the request are open. If
+one or more calendars in the request are closed, the status returned is
+C<CLOSED>.
+
+For more information about Systems Manager Change Calendar, see AWS
+Systems Manager Change Calendar
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -3113,6 +3485,11 @@ Returns: a L<Paws::SSM::GetCommandInvocationResult> instance
 Returns detailed information about command execution for an invocation
 or plugin.
 
+C<GetCommandInvocation> only gives the execution status of a plugin in
+a document. To get the command execution status on a specific instance,
+use ListCommandInvocations. To get the command execution status across
+instances, use ListCommands.
+
 
 =head2 GetConnectionStatus
 
@@ -3128,7 +3505,7 @@ Each argument is described in detail in: L<Paws::SSM::GetConnectionStatus>
 Returns: a L<Paws::SSM::GetConnectionStatusResponse> instance
 
 Retrieves the Session Manager connection status for an instance to
-determine whether it is connected and ready to receive Session Manager
+determine whether it is running and ready to receive Session Manager
 connections.
 
 
@@ -3160,6 +3537,8 @@ baseline for Windows is returned.
 =item InstanceId => Str
 
 =item SnapshotId => Str
+
+=item [BaselineOverride => L<Paws::SSM::BaselineOverride>]
 
 
 =back
@@ -3333,6 +3712,12 @@ Returns: a L<Paws::SSM::GetMaintenanceWindowTaskResult> instance
 
 Lists the tasks in a maintenance window.
 
+For maintenance window tasks without a specified target, you cannot
+supply values for C<--max-errors> and C<--max-concurrency>. Instead,
+the system inserts a placeholder value of C<1>, which may be reported
+in the response to this command. These values do not affect the running
+of your task and can be ignored.
+
 
 =head2 GetOpsItem
 
@@ -3349,17 +3734,38 @@ Returns: a L<Paws::SSM::GetOpsItemResponse> instance
 
 Get information about an OpsItem by using the ID. You must have
 permission in AWS Identity and Access Management (IAM) to view
-information about an OpsItem. For more information, see Getting Started
+information about an OpsItem. For more information, see Getting started
 with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see AWS
 Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
+
+
+=head2 GetOpsMetadata
+
+=over
+
+=item OpsMetadataArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetOpsMetadata>
+
+Returns: a L<Paws::SSM::GetOpsMetadataResult> instance
+
+View operational metadata related to an application in Application
+Manager.
 
 
 =head2 GetOpsSummary
@@ -3426,7 +3832,7 @@ Each argument is described in detail in: L<Paws::SSM::GetParameterHistory>
 
 Returns: a L<Paws::SSM::GetParameterHistoryResult> instance
 
-Query a list of all parameters used by the AWS account.
+Retrieves the history of all changes to a parameter.
 
 
 =head2 GetParameters
@@ -3599,9 +4005,8 @@ attach a label to a specific version of a parameter.
 
 =item *
 
-You can't delete a parameter label. If you no longer want to use a
-parameter label, then you must move it to a different version of a
-parameter.
+If you no longer want to use a parameter label, then you can either
+delete it or move it to a different version of a parameter.
 
 =item *
 
@@ -3770,6 +4175,30 @@ associations, patches, or custom compliance types according to the
 filter criteria that you specify.
 
 
+=head2 ListDocumentMetadataHistory
+
+=over
+
+=item Metadata => Str
+
+=item Name => Str
+
+=item [DocumentVersion => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ListDocumentMetadataHistory>
+
+Returns: a L<Paws::SSM::ListDocumentMetadataHistoryResponse> instance
+
+Information about approval reviews for a version of an SSM document.
+
+
 =head2 ListDocuments
 
 =over
@@ -3836,6 +4265,71 @@ Each argument is described in detail in: L<Paws::SSM::ListInventoryEntries>
 Returns: a L<Paws::SSM::ListInventoryEntriesResult> instance
 
 A list of inventory items returned by the request.
+
+
+=head2 ListOpsItemEvents
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::SSM::OpsItemEventFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ListOpsItemEvents>
+
+Returns: a L<Paws::SSM::ListOpsItemEventsResponse> instance
+
+Returns a list of all OpsItem events in the current AWS account and
+Region. You can limit the results to events associated with specific
+OpsItems by specifying a filter.
+
+
+=head2 ListOpsItemRelatedItems
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::SSM::OpsItemRelatedItemsFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [OpsItemId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ListOpsItemRelatedItems>
+
+Returns: a L<Paws::SSM::ListOpsItemRelatedItemsResponse> instance
+
+Lists all related-item resources associated with an OpsItem.
+
+
+=head2 ListOpsMetadata
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::SSM::OpsMetadataFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ListOpsMetadata>
+
+Returns: a L<Paws::SSM::ListOpsMetadataResult> instance
+
+Systems Manager calls this API action when displaying all Application
+Manager OpsMetadata objects or blobs.
 
 
 =head2 ListResourceComplianceSummaries
@@ -3953,6 +4447,8 @@ must specify I<All> as the account ID.
 
 =item [ItemContentHash => Str]
 
+=item [UploadType => Str]
+
 
 =back
 
@@ -4066,11 +4562,11 @@ inventory item, if it does exist.
 
 =item Name => Str
 
-=item Type => Str
-
 =item Value => Str
 
 =item [AllowedPattern => Str]
+
+=item [DataType => Str]
 
 =item [Description => Str]
 
@@ -4083,6 +4579,8 @@ inventory item, if it does exist.
 =item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
 =item [Tier => Str]
+
+=item [Type => Str]
 
 
 =back
@@ -4166,12 +4664,6 @@ Registers a target with a maintenance window.
 
 =over
 
-=item MaxConcurrency => Str
-
-=item MaxErrors => Str
-
-=item Targets => ArrayRef[L<Paws::SSM::Target>]
-
 =item TaskArn => Str
 
 =item TaskType => Str
@@ -4184,11 +4676,17 @@ Registers a target with a maintenance window.
 
 =item [LoggingInfo => L<Paws::SSM::LoggingInfo>]
 
+=item [MaxConcurrency => Str]
+
+=item [MaxErrors => Str]
+
 =item [Name => Str]
 
 =item [Priority => Int]
 
 =item [ServiceRoleArn => Str]
+
+=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
 
 =item [TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>]
 
@@ -4402,6 +4900,42 @@ Returns: a L<Paws::SSM::StartAutomationExecutionResult> instance
 Initiates execution of an Automation document.
 
 
+=head2 StartChangeRequestExecution
+
+=over
+
+=item DocumentName => Str
+
+=item Runbooks => ArrayRef[L<Paws::SSM::Runbook>]
+
+=item [ChangeDetails => Str]
+
+=item [ChangeRequestName => Str]
+
+=item [ClientToken => Str]
+
+=item [DocumentVersion => Str]
+
+=item [Parameters => L<Paws::SSM::AutomationParameterMap>]
+
+=item [ScheduledEndTime => Str]
+
+=item [ScheduledTime => Str]
+
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::StartChangeRequestExecution>
+
+Returns: a L<Paws::SSM::StartChangeRequestExecutionResult> instance
+
+Creates a change request for Change Manager. The runbooks (Automation
+documents) specified in the change request run only after all required
+approvals for the change request have been received.
+
+
 =head2 StartSession
 
 =over
@@ -4425,9 +4959,9 @@ open a WebSocket connection for sending input and receiving outputs.
 
 AWS CLI usage: C<start-session> is an interactive command that requires
 the Session Manager plugin to be installed on the client machine making
-the call. For information, see Install the Session Manager Plugin for
+the call. For information, see Install the Session Manager plugin for
 the AWS CLI
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
 in the I<AWS Systems Manager User Guide>.
 
 AWS Tools for PowerShell usage: Start-SSMSession is not currently
@@ -4470,17 +5004,41 @@ Session Manager client and SSM Agent on the instance. A terminated
 session cannot be resumed.
 
 
+=head2 UnlabelParameterVersion
+
+=over
+
+=item Labels => ArrayRef[Str|Undef]
+
+=item Name => Str
+
+=item ParameterVersion => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UnlabelParameterVersion>
+
+Returns: a L<Paws::SSM::UnlabelParameterVersionResult> instance
+
+Remove a label or labels from a parameter.
+
+
 =head2 UpdateAssociation
 
 =over
 
 =item AssociationId => Str
 
+=item [ApplyOnlyAtCronInterval => Bool]
+
 =item [AssociationName => Str]
 
 =item [AssociationVersion => Str]
 
 =item [AutomationTargetParameterName => Str]
+
+=item [CalendarNames => ArrayRef[Str|Undef]]
 
 =item [ComplianceSeverity => Str]
 
@@ -4497,6 +5055,10 @@ session cannot be resumed.
 =item [Parameters => L<Paws::SSM::Parameters>]
 
 =item [ScheduleExpression => Str]
+
+=item [SyncCompliance => Str]
+
+=item [TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]]
 
 =item [Targets => ArrayRef[L<Paws::SSM::Target>]]
 
@@ -4554,6 +5116,8 @@ specified instance.
 
 =item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
 
+=item [DisplayName => Str]
+
 =item [DocumentFormat => Str]
 
 =item [DocumentVersion => Str]
@@ -4590,6 +5154,27 @@ Returns: a L<Paws::SSM::UpdateDocumentDefaultVersionResult> instance
 Set the default version of a document.
 
 
+=head2 UpdateDocumentMetadata
+
+=over
+
+=item DocumentReviews => L<Paws::SSM::DocumentReviews>
+
+=item Name => Str
+
+=item [DocumentVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UpdateDocumentMetadata>
+
+Returns: a L<Paws::SSM::UpdateDocumentMetadataResponse> instance
+
+Updates information related to approval reviews for a specific version
+of a document.
+
+
 =head2 UpdateMaintenanceWindow
 
 =over
@@ -4613,6 +5198,8 @@ Set the default version of a document.
 =item [Replace => Bool]
 
 =item [Schedule => Str]
+
+=item [ScheduleOffset => Int]
 
 =item [ScheduleTimezone => Str]
 
@@ -4769,10 +5356,31 @@ MaxErrors
 
 =back
 
-If a parameter is null, then the corresponding field is not modified.
-Also, if you set Replace to true, then all fields required by the
-RegisterTaskWithMaintenanceWindow action are required for this request.
-Optional fields that aren't specified are set to null.
+One or more targets must be specified for maintenance window Run
+Command-type tasks. Depending on the task, targets are optional for
+other maintenance window task types (Automation, AWS Lambda, and AWS
+Step Functions). For more information about running tasks that do not
+specify targets, see Registering maintenance window tasks without
+targets
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+in the I<AWS Systems Manager User Guide>.
+
+If the value for a parameter in C<UpdateMaintenanceWindowTask> is null,
+then the corresponding field is not modified. If you set C<Replace> to
+true, then all fields required by the RegisterTaskWithMaintenanceWindow
+action are required for this request. Optional fields that aren't
+specified are set to null.
+
+When you update a maintenance window task that has options specified in
+C<TaskInvocationParameters>, you must provide again all the
+C<TaskInvocationParameters> values that you want to retain. The values
+you do not specify again are removed. For example, suppose that when
+you registered a Run Command task, you specified
+C<TaskInvocationParameters> values for C<Comment>,
+C<NotificationConfig>, and C<OutputS3BucketName>. If you update the
+maintenance window task and specify only a different
+C<OutputS3BucketName> value, the values for C<Comment> and
+C<NotificationConfig> are removed.
 
 
 =head2 UpdateManagedInstanceRole
@@ -4790,8 +5398,10 @@ Each argument is described in detail in: L<Paws::SSM::UpdateManagedInstanceRole>
 
 Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
-Assigns or changes an Amazon Identity and Access Management (IAM) role
-for the managed instance.
+Changes the Amazon Identity and Access Management (IAM) role that is
+assigned to the on-premises instance or virtual machines (VM). IAM
+roles are first assigned to these hybrid instances during the
+activation process. For more information, see CreateActivation.
 
 
 =head2 UpdateOpsItem
@@ -4799,6 +5409,10 @@ for the managed instance.
 =over
 
 =item OpsItemId => Str
+
+=item [ActualEndTime => Str]
+
+=item [ActualStartTime => Str]
 
 =item [Category => Str]
 
@@ -4809,6 +5423,10 @@ for the managed instance.
 =item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
 
 =item [OperationalDataToDelete => ArrayRef[Str|Undef]]
+
+=item [PlannedEndTime => Str]
+
+=item [PlannedStartTime => Str]
 
 =item [Priority => Int]
 
@@ -4829,16 +5447,37 @@ Returns: a L<Paws::SSM::UpdateOpsItemResponse> instance
 
 Edit or change an OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to update an OpsItem. For more information, see
-Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+Getting started with OpsCenter
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see AWS
 Systems Manager OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
+
+
+=head2 UpdateOpsMetadata
+
+=over
+
+=item OpsMetadataArn => Str
+
+=item [KeysToDelete => ArrayRef[Str|Undef]]
+
+=item [MetadataToUpdate => L<Paws::SSM::MetadataMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UpdateOpsMetadata>
+
+Returns: a L<Paws::SSM::UpdateOpsMetadataResult> instance
+
+Systems Manager calls this API action when you edit OpsMetadata in
+Application Manager.
 
 
 =head2 UpdatePatchBaseline
@@ -4908,6 +5547,9 @@ choose the Include only the current account option, you can't edit that
 sync later and choose the Include all accounts from my AWS
 Organizations configuration option. Instead, you must delete the first
 resource data sync, and create a new one.
+
+This API action only supports a resource data sync that was created
+with a SyncFromSource C<SyncType>.
 
 
 =head2 UpdateServiceSetting
@@ -5214,6 +5856,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllOpsItems(sub { },[MaxResults => Int, NextToken => Str, OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]])
+
+=head2 DescribeAllOpsItems([MaxResults => Int, NextToken => Str, OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OpsItemSummaries, passing the object as the first parameter, and the string 'OpsItemSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeOpsItemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllParameters(sub { },[Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
 
 =head2 DescribeAllParameters([Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
@@ -5250,6 +5904,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribePatchGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllPatchProperties(sub { },OperatingSystem => Str, Property => Str, [MaxResults => Int, NextToken => Str, PatchSet => Str])
+
+=head2 DescribeAllPatchProperties(OperatingSystem => Str, Property => Str, [MaxResults => Int, NextToken => Str, PatchSet => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Properties, passing the object as the first parameter, and the string 'Properties' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribePatchPropertiesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllSessions(sub { },State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllSessions(State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
@@ -5284,6 +5950,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Schemas, passing the object as the first parameter, and the string 'Schemas' as the second parameter 
 
 If not, it will return a a L<Paws::SSM::GetInventorySchemaResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllOpsSummary(sub { },[Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>], Filters => ArrayRef[L<Paws::SSM::OpsFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>], SyncName => Str])
+
+=head2 GetAllOpsSummary([Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>], Filters => ArrayRef[L<Paws::SSM::OpsFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>], SyncName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Entities, passing the object as the first parameter, and the string 'Entities' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::GetOpsSummaryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllParameterHistory(sub { },Name => Str, [MaxResults => Int, NextToken => Str, WithDecryption => Bool])
@@ -5404,6 +6082,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DocumentVersions, passing the object as the first parameter, and the string 'DocumentVersions' as the second parameter 
 
 If not, it will return a a L<Paws::SSM::ListDocumentVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOpsItemEvents(sub { },[Filters => ArrayRef[L<Paws::SSM::OpsItemEventFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOpsItemEvents([Filters => ArrayRef[L<Paws::SSM::OpsItemEventFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListOpsItemEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOpsItemRelatedItems(sub { },[Filters => ArrayRef[L<Paws::SSM::OpsItemRelatedItemsFilter>], MaxResults => Int, NextToken => Str, OpsItemId => Str])
+
+=head2 ListAllOpsItemRelatedItems([Filters => ArrayRef[L<Paws::SSM::OpsItemRelatedItemsFilter>], MaxResults => Int, NextToken => Str, OpsItemId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListOpsItemRelatedItemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOpsMetadata(sub { },[Filters => ArrayRef[L<Paws::SSM::OpsMetadataFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOpsMetadata([Filters => ArrayRef[L<Paws::SSM::OpsMetadataFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OpsMetadataList, passing the object as the first parameter, and the string 'OpsMetadataList' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListOpsMetadataResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllResourceComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])

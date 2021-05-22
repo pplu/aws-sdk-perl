@@ -1,7 +1,9 @@
 
 package Paws::SSM::DescribeDocumentPermission;
   use Moose;
+  has MaxResults => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NextToken => (is => 'ro', isa => 'Str');
   has PermissionType => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,13 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeDocumentPermissionResponse = $ssm->DescribeDocumentPermission(
       Name           => 'MyDocumentName',
       PermissionType => 'Share',
-
+      MaxResults     => 1,                  # OPTIONAL
+      NextToken      => 'MyNextToken',      # OPTIONAL
     );
 
     # Results:
     my $AccountIds = $DescribeDocumentPermissionResponse->AccountIds;
     my $AccountSharingInfoList =
       $DescribeDocumentPermissionResponse->AccountSharingInfoList;
+    my $NextToken = $DescribeDocumentPermissionResponse->NextToken;
 
     # Returns a L<Paws::SSM::DescribeDocumentPermissionResponse> object.
 
@@ -47,9 +51,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
+=head2 MaxResults => Int
+
+The maximum number of items to return for this call. The call also
+returns a token that you can specify in a subsequent call to get the
+next set of results.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the document for which you are the owner.
+
+
+
+=head2 NextToken => Str
+
+The token for the next set of items to return. (You received this token
+from a previous call.)
 
 
 

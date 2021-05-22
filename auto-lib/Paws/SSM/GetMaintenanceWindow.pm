@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name              = $GetMaintenanceWindowResult->Name;
     my $NextExecutionTime = $GetMaintenanceWindowResult->NextExecutionTime;
     my $Schedule          = $GetMaintenanceWindowResult->Schedule;
+    my $ScheduleOffset    = $GetMaintenanceWindowResult->ScheduleOffset;
     my $ScheduleTimezone  = $GetMaintenanceWindowResult->ScheduleTimezone;
     my $StartDate         = $GetMaintenanceWindowResult->StartDate;
     my $WindowId          = $GetMaintenanceWindowResult->WindowId;

@@ -2,6 +2,7 @@
 package Paws::SSM::PatchComplianceData;
   use Moose;
   has Classification => (is => 'ro', isa => 'Str', required => 1);
+  has CVEIds => (is => 'ro', isa => 'Str');
   has InstalledTime => (is => 'ro', isa => 'Str', required => 1);
   has KBId => (is => 'ro', isa => 'Str', required => 1);
   has Severity => (is => 'ro', isa => 'Str', required => 1);
@@ -50,6 +51,12 @@ The classification of the patch (for example, SecurityUpdates, Updates,
 CriticalUpdates).
 
 
+=head2 CVEIds => Str
+
+The IDs of one or more Common Vulnerabilities and Exposure (CVE) issues
+that are resolved by the patch.
+
+
 =head2 B<REQUIRED> InstalledTime => Str
 
 The date/time the patch was installed on the instance. Note that not
@@ -70,8 +77,8 @@ The severity of the patch (for example, Critical, Important, Moderate).
 
 The state of the patch on the instance, such as INSTALLED or FAILED.
 
-For descriptions of each patch state, see About Patch Compliance
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#sysman-compliance-monitor-patch)
+For descriptions of each patch state, see About patch compliance
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#sysman-compliance-monitor-patch)
 in the I<AWS Systems Manager User Guide>.
 
 

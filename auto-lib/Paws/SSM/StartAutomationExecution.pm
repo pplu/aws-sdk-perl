@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters      => {
         'MyAutomationParameterKey' => [
           'MyAutomationParameterValue', ...       # min: 1, max: 512
-        ],    # key: min: 1, max: 50, value: max: 10
+        ],    # key: min: 1, max: 50, value: max: 50
       },    # OPTIONAL
       Tags => [
         {
@@ -80,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TargetParameterName => 'MyAutomationParameterKey',    # OPTIONAL
       Targets             => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -108,7 +108,12 @@ insensitive, enforces the UUID format, and can't be reused.
 
 =head2 B<REQUIRED> DocumentName => Str
 
-The name of the Automation document to use for this execution.
+The name of the Systems Manager document to run. This can be a public
+document or a custom document. To run a shared document belonging to
+another account, specify the document ARN. For more information about
+how to use shared documents, see Using shared SSM documents
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -192,8 +197,8 @@ action.
 A location is a combination of AWS Regions and/or AWS accounts where
 you want to run the Automation. Use this action to start an Automation
 in multiple Regions and multiple accounts. For more information, see
-Executing Automations in Multiple AWS Regions and Accounts
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
+Running Automation workflows in multiple AWS Regions and accounts
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
 in the I<AWS Systems Manager User Guide>.
 
 

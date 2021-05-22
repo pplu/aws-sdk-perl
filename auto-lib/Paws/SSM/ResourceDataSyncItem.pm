@@ -71,7 +71,7 @@ The last time the configuration attempted to sync (UTC).
 
 =head2 S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
 
-Configuration information for the target Amazon S3 bucket.
+Configuration information for the target S3 bucket.
 
 
 =head2 SyncCreatedTime => Str
@@ -97,8 +97,8 @@ Information about the source where the data was synchronized.
 =head2 SyncType => Str
 
 The type of resource data sync. If C<SyncType> is C<SyncToDestination>,
-then the resource data sync synchronizes data to an Amazon S3 bucket.
-If the C<SyncType> is C<SyncFromSource> then the resource data sync
+then the resource data sync synchronizes data to an S3 bucket. If the
+C<SyncType> is C<SyncFromSource> then the resource data sync
 synchronizes data from AWS Organizations or from multiple AWS Regions.
 
 

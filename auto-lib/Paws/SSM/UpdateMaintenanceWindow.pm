@@ -10,6 +10,7 @@ package Paws::SSM::UpdateMaintenanceWindow;
   has Name => (is => 'ro', isa => 'Str');
   has Replace => (is => 'ro', isa => 'Bool');
   has Schedule => (is => 'ro', isa => 'Str');
+  has ScheduleOffset => (is => 'ro', isa => 'Int');
   has ScheduleTimezone => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str', required => 1);
@@ -49,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name             => 'MyMaintenanceWindowName',                  # OPTIONAL
       Replace          => 1,                                          # OPTIONAL
       Schedule         => 'MyMaintenanceWindowSchedule',              # OPTIONAL
+      ScheduleOffset   => 1,                                          # OPTIONAL
       ScheduleTimezone => 'MyMaintenanceWindowTimezone',              # OPTIONAL
       StartDate        => 'MyMaintenanceWindowStringDateTime',        # OPTIONAL
     );
@@ -63,6 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EndDate          = $UpdateMaintenanceWindowResult->EndDate;
     my $Name             = $UpdateMaintenanceWindowResult->Name;
     my $Schedule         = $UpdateMaintenanceWindowResult->Schedule;
+    my $ScheduleOffset   = $UpdateMaintenanceWindowResult->ScheduleOffset;
     my $ScheduleTimezone = $UpdateMaintenanceWindowResult->ScheduleTimezone;
     my $StartDate        = $UpdateMaintenanceWindowResult->StartDate;
     my $WindowId         = $UpdateMaintenanceWindowResult->WindowId;
@@ -136,11 +139,26 @@ expression.
 
 
 
+=head2 ScheduleOffset => Int
+
+The number of days to wait after the date and time specified by a CRON
+expression before running the maintenance window.
+
+For example, the following cron expression schedules a maintenance
+window to run the third Tuesday of every month at 11:30 PM.
+
+C<cron(30 23 ? * TUE#3 *)>
+
+If the schedule offset is C<2>, the maintenance window won't run until
+two days later.
+
+
+
 =head2 ScheduleTimezone => Str
 
 The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format. For
-example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
+example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more
 information, see the Time Zone Database
 (https://www.iana.org/time-zones) on the IANA website.
 
@@ -150,7 +168,7 @@ information, see the Time Zone Database
 
 The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format. For
-example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
+example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more
 information, see the Time Zone Database
 (https://www.iana.org/time-zones) on the IANA website.
 

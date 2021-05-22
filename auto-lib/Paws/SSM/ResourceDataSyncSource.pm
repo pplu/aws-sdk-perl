@@ -2,6 +2,7 @@
 package Paws::SSM::ResourceDataSyncSource;
   use Moose;
   has AwsOrganizationsSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncAwsOrganizationsSource');
+  has EnableAllOpsDataSources => (is => 'ro', isa => 'Bool');
   has IncludeFutureRegions => (is => 'ro', isa => 'Bool');
   has SourceRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SourceType => (is => 'ro', isa => 'Str', required => 1);
@@ -46,6 +47,17 @@ sync.
 
 Information about the AwsOrganizationsSource resource data sync source.
 A sync source of this type can synchronize data from AWS Organizations.
+
+
+=head2 EnableAllOpsDataSources => Bool
+
+When you create a resource data sync, if you choose one of the AWS
+Organizations options, then Systems Manager automatically enables all
+OpsData sources in the selected AWS Regions for all AWS accounts in
+your organization (or in the selected organization units). For more
+information, see About multiple account and Region resource data syncs
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resouce-data-sync-multiple-accounts-and-regions.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 IncludeFutureRegions => Bool

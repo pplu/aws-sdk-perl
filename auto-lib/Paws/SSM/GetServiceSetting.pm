@@ -45,7 +45,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> SettingId => Str
 
-The ID of the service setting to get.
+The ID of the service setting to get. The setting ID can be
+C</ssm/automation/customer-script-log-destination>,
+C</ssm/automation/customer-script-log-group-name>,
+C</ssm/parameter-store/default-parameter-tier>,
+C</ssm/parameter-store/high-throughput-enabled>, or
+C</ssm/managed-instance/activation-tier>.
 
 
 

@@ -9,6 +9,7 @@ package Paws::SSM::MaintenanceWindowIdentity;
   has Name => (is => 'ro', isa => 'Str');
   has NextExecutionTime => (is => 'ro', isa => 'Str');
   has Schedule => (is => 'ro', isa => 'Str');
+  has ScheduleOffset => (is => 'ro', isa => 'Int');
   has ScheduleTimezone => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str');
@@ -91,6 +92,12 @@ or inactive.
 
 The schedule of the maintenance window in the form of a cron or rate
 expression.
+
+
+=head2 ScheduleOffset => Int
+
+The number of days to wait to run a maintenance window after the
+scheduled CRON expression date and time.
 
 
 =head2 ScheduleTimezone => Str

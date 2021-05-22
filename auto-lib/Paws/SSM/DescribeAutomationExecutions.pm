@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters => [
         {
           Key => 'DocumentNamePrefix'
-          , # values: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter, AutomationType, TagKey
+          , # values: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter, AutomationType, TagKey, TargetResourceGroup, AutomationSubtype, OpsItemId
           Values => [
             'MyAutomationExecutionFilterValue', ...    # min: 1, max: 150
           ],                                           # min: 1, max: 10

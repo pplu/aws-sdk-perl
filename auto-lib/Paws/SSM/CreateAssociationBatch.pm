@@ -30,10 +30,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAssociationBatchResult = $ssm->CreateAssociationBatch(
       Entries => [
         {
-          Name            => 'MyDocumentARN',
-          AssociationName => 'MyAssociationName',    # OPTIONAL
+          Name                    => 'MyDocumentARN',
+          ApplyOnlyAtCronInterval => 1,                      # OPTIONAL
+          AssociationName         => 'MyAssociationName',    # OPTIONAL
           AutomationTargetParameterName =>
-            'MyAutomationTargetParameterName',       # min: 1, max: 50; OPTIONAL
+            'MyAutomationTargetParameterName',    # min: 1, max: 50; OPTIONAL
+          CalendarNames      => [ 'MyCalendarNameOrARN', ... ],    # OPTIONAL
           ComplianceSeverity => 'CRITICAL'
           ,    # values: CRITICAL, HIGH, MEDIUM, LOW, UNSPECIFIED; OPTIONAL
           DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
@@ -52,9 +54,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ,     # OPTIONAL
           ScheduleExpression =>
             'MyScheduleExpression',    # min: 1, max: 256; OPTIONAL
+          SyncCompliance  => 'AUTO',   # values: AUTO, MANUAL; OPTIONAL
+          TargetLocations => [
+            {
+              Accounts => [ 'MyAccount', ... ],    # min: 1, max: 50; OPTIONAL
+              ExecutionRoleName =>
+                'MyExecutionRoleName',             # min: 1, max: 64; OPTIONAL
+              Regions => [ 'MyRegion', ... ],      # min: 1, max: 50; OPTIONAL
+              TargetLocationMaxConcurrency =>
+                'MyMaxConcurrency',                # min: 1, max: 7; OPTIONAL
+              TargetLocationMaxErrors =>
+                'MyMaxErrors',                     # min: 1, max: 7; OPTIONAL
+            },
+            ...
+          ],                                       # min: 1, max: 100; OPTIONAL
           Targets => [
             {
-              Key => 'MyTargetKey',                 # min: 1, max: 163; OPTIONAL
+              Key    => 'MyTargetKey',              # min: 1, max: 163; OPTIONAL
               Values => [ 'MyTargetValue', ... ],   # max: 50; OPTIONAL
             },
             ...

@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',              # OPTIONAL
       Targets        => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -69,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Parameters      => {
             'MyAutomationParameterKey' => [
               'MyAutomationParameterValue', ...    # min: 1, max: 512
-            ],    # key: min: 1, max: 50, value: max: 10
+            ],    # key: min: 1, max: 50, value: max: 50
           },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
         Lambda => {
@@ -169,6 +169,12 @@ MaintenanceWindowTaskInvocationParameters.
 The new C<MaxConcurrency> value you want to specify. C<MaxConcurrency>
 is the number of targets that are allowed to run this task in parallel.
 
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of C<1>, which may be reported in the response to
+this command. This value does not affect the running of your task and
+can be ignored.
+
 
 
 =head2 MaxErrors => Str
@@ -176,6 +182,12 @@ is the number of targets that are allowed to run this task in parallel.
 The new C<MaxErrors> value to specify. C<MaxErrors> is the maximum
 number of errors that are allowed before the task stops being
 scheduled.
+
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of C<1>, which may be reported in the response to
+this command. This value does not affect the running of your task and
+can be ignored.
 
 
 
@@ -195,7 +207,7 @@ priority. Tasks that have the same priority are scheduled in parallel.
 =head2 Replace => Bool
 
 If True, then all fields that are required by the
-RegisterTaskWithMaintenanceWndow action are also required for this API
+RegisterTaskWithMaintenanceWindow action are also required for this API
 request. Optional fields that are not specified are set to null.
 
 
@@ -215,14 +227,14 @@ Systems Manager User Guide>:
 
 =item *
 
-Service-Linked Role Permissions for Systems Manager
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+Using service-linked roles for Systems Manager
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
 
 =item *
 
-Should I Use a Service-Linked Role or a Custom Service Role to Run
-Maintenance Window Tasks?
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+Should I use a service-linked role or a custom service role to run
+maintenance window tasks?
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
 
 =back
 
@@ -234,6 +246,15 @@ Maintenance Window Tasks?
 The targets (either instances or tags) to modify. Instances are
 specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags
 are specified using Key=tag_name,Values=tag_value.
+
+One or more targets must be specified for maintenance window Run
+Command-type tasks. Depending on the task, targets are optional for
+other maintenance window task types (Automation, AWS Lambda, and AWS
+Step Functions). For more information about running tasks that do not
+specify targets, see Registering maintenance window tasks without
+targets
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -247,6 +268,17 @@ The task ARN to modify.
 
 The parameters that the task should use during execution. Populate only
 the fields that match the task type. All other fields should be empty.
+
+When you update a maintenance window task that has options specified in
+C<TaskInvocationParameters>, you must provide again all the
+C<TaskInvocationParameters> values that you want to retain. The values
+you do not specify again are removed. For example, suppose that when
+you registered a Run Command task, you specified
+C<TaskInvocationParameters> values for C<Comment>,
+C<NotificationConfig>, and C<OutputS3BucketName>. If you update the
+maintenance window task and specify only a different
+C<OutputS3BucketName> value, the values for C<Comment> and
+C<NotificationConfig> are removed.
 
 
 

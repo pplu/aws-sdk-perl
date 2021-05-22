@@ -67,8 +67,8 @@ results.
 
 View a list of resource data syncs according to the sync type. Specify
 C<SyncToDestination> to view resource data syncs that synchronize data
-to an Amazon S3 buckets. Specify C<SyncFromSource> to view resource
-data syncs from AWS Organizations or from multiple AWS Regions.
+to an Amazon S3 bucket. Specify C<SyncFromSource> to view resource data
+syncs from AWS Organizations or from multiple AWS Regions.
 
 
 

@@ -40,17 +40,110 @@ documents.
 For keys, you can specify one or more tags that have been applied to a
 document.
 
-Other valid values include Owner, Name, PlatformTypes, and
-DocumentType.
+You can also use AWS-provided keys, some of which have specific allowed
+values. These keys and their associated values are as follows:
 
-Note that only one Owner can be specified in a request. For example:
+=over
+
+=item DocumentType
+
+=over
+
+=item *
+
+ApplicationConfiguration
+
+=item *
+
+ApplicationConfigurationSchema
+
+=item *
+
+Automation
+
+=item *
+
+ChangeCalendar
+
+=item *
+
+Command
+
+=item *
+
+DeploymentStrategy
+
+=item *
+
+Package
+
+=item *
+
+Policy
+
+=item *
+
+Session
+
+=back
+
+=item Owner
+
+Note that only one C<Owner> can be specified in a request. For example:
 C<Key=Owner,Values=Self>.
 
-If you use Name as a key, you can use a name prefix to return a list of
-documents. For example, in the AWS CLI, to return a list of all
-documents that begin with C<Te>, run the following command:
+=over
+
+=item *
+
+Amazon
+
+=item *
+
+Private
+
+=item *
+
+Public
+
+=item *
+
+Self
+
+=item *
+
+ThirdParty
+
+=back
+
+=item PlatformTypes
+
+=over
+
+=item *
+
+Linux
+
+=item *
+
+Windows
+
+=back
+
+=back
+
+C<Name> is another AWS-provided key. If you use C<Name> as a key, you
+can use a name prefix to return a list of documents. For example, in
+the AWS CLI, to return a list of all documents that begin with C<Te>,
+run the following command:
 
 C<aws ssm list-documents --filters Key=Name,Values=Te>
+
+You can also use the C<TargetType> AWS-provided key. For a list of
+valid resource type values that can be used with this key, see AWS
+resource and property types reference
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the I<AWS CloudFormation User Guide>.
 
 If you specify more than two keys, only documents that are identified
 by all the tags are returned in the results. If you specify more than
@@ -58,9 +151,9 @@ two values for a key, documents that are identified by any of the
 values are returned in the results.
 
 To specify a custom key and value pair, use the format
-C<Key=tag:[tagName],Values=[valueName]>.
+C<Key=tag:tagName,Values=valueName>.
 
-For example, if you created a Key called region and are using the AWS
+For example, if you created a key called region and are using the AWS
 CLI to call the C<list-documents> command:
 
 C<aws ssm list-documents --filters Key=tag:region,Values=east,west
