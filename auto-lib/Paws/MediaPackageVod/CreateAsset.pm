@@ -6,6 +6,7 @@ package Paws::MediaPackageVod::CreateAsset;
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceId');
   has SourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceArn', required => 1);
   has SourceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceRoleArn', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PackagingGroupId => 'My__string',
       SourceArn        => 'My__string',
       SourceRoleArn    => 'My__string',
-      ResourceId       => 'My__string',    # OPTIONAL
+      ResourceId       => 'My__string',                         # OPTIONAL
+      Tags             => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -49,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ResourceId       = $CreateAssetResponse->ResourceId;
     my $SourceArn        = $CreateAssetResponse->SourceArn;
     my $SourceRoleArn    = $CreateAssetResponse->SourceRoleArn;
+    my $Tags             = $CreateAssetResponse->Tags;
 
     # Returns a L<Paws::MediaPackageVod::CreateAssetResponse> object.
 
@@ -85,6 +88,12 @@ ARN of the source object in S3.
 =head2 B<REQUIRED> SourceRoleArn => Str
 
 The IAM role ARN used to access the source S3 bucket.
+
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 

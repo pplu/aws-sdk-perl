@@ -3,6 +3,7 @@ package Paws::MediaPackageVod::CmafPackage;
   use Moose;
   has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafEncryption', request_name => 'encryption', traits => ['NameInRequest']);
   has HlsManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::HlsManifest]', request_name => 'hlsManifests', traits => ['NameInRequest'], required => 1);
+  has IncludeEncoderConfigurationInSegments => (is => 'ro', isa => 'Bool', request_name => 'includeEncoderConfigurationInSegments', traits => ['NameInRequest']);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
 
 1;
@@ -48,6 +49,15 @@ A CMAF packaging configuration.
 =head2 B<REQUIRED> HlsManifests => ArrayRef[L<Paws::MediaPackageVod::HlsManifest>]
 
 A list of HLS manifest configurations.
+
+
+=head2 IncludeEncoderConfigurationInSegments => Bool
+
+When includeEncoderConfigurationInSegments is set to true, MediaPackage
+places your encoder's Sequence Parameter Set (SPS), Picture Parameter
+Set (PPS), and Video Parameter Set (VPS) metadata in every video
+segment instead of in the init fragment. This lets you use different
+SPS/PPS/VPS settings for your assets during content playback.
 
 
 =head2 SegmentDurationSeconds => Int

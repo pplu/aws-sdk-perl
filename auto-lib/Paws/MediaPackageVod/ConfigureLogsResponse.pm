@@ -1,5 +1,5 @@
 
-package Paws::MediaPackageVod::CreatePackagingGroupResponse;
+package Paws::MediaPackageVod::ConfigureLogsResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
   has Authorization => (is => 'ro', isa => 'Paws::MediaPackageVod::Authorization', traits => ['NameInRequest'], request_name => 'authorization');
@@ -15,7 +15,7 @@ package Paws::MediaPackageVod::CreatePackagingGroupResponse;
 
 =head1 NAME
 
-Paws::MediaPackageVod::CreatePackagingGroupResponse
+Paws::MediaPackageVod::ConfigureLogsResponse
 
 =head1 ATTRIBUTES
 

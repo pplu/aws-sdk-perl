@@ -43,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MssPackage  = $DescribePackagingConfigurationResponse->MssPackage;
     my $PackagingGroupId =
       $DescribePackagingConfigurationResponse->PackagingGroupId;
+    my $Tags = $DescribePackagingConfigurationResponse->Tags;
 
 # Returns a L<Paws::MediaPackageVod::DescribePackagingConfigurationResponse> object.
 

@@ -14,6 +14,11 @@ package Paws::MediaPackageVod;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub ConfigureLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::ConfigureLogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAsset {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::CreateAsset', @_);
@@ -72,6 +77,26 @@ package Paws::MediaPackageVod;
   sub ListPackagingGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::ListPackagingGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePackagingGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackageVod::UpdatePackagingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -146,7 +171,7 @@ package Paws::MediaPackageVod;
   }
 
 
-  sub operations { qw/CreateAsset CreatePackagingConfiguration CreatePackagingGroup DeleteAsset DeletePackagingConfiguration DeletePackagingGroup DescribeAsset DescribePackagingConfiguration DescribePackagingGroup ListAssets ListPackagingConfigurations ListPackagingGroups / }
+  sub operations { qw/ConfigureLogs CreateAsset CreatePackagingConfiguration CreatePackagingGroup DeleteAsset DeletePackagingConfiguration DeletePackagingGroup DescribeAsset DescribePackagingConfiguration DescribePackagingGroup ListAssets ListPackagingConfigurations ListPackagingGroups ListTagsForResource TagResource UntagResource UpdatePackagingGroup / }
 
 1;
 
@@ -181,6 +206,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head1 METHODS
 
+=head2 ConfigureLogs
+
+=over
+
+=item Id => Str
+
+=item [EgressAccessLogs => L<Paws::MediaPackageVod::EgressAccessLogs>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackageVod::ConfigureLogs>
+
+Returns: a L<Paws::MediaPackageVod::ConfigureLogsResponse> instance
+
+Changes the packaging group's properities to configure log subscription
+
+
 =head2 CreateAsset
 
 =over
@@ -194,6 +237,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =item SourceRoleArn => Str
 
 =item [ResourceId => Str]
+
+=item [Tags => L<Paws::MediaPackageVod::Tags>]
 
 
 =back
@@ -221,6 +266,8 @@ Creates a new MediaPackage VOD Asset resource.
 
 =item [MssPackage => L<Paws::MediaPackageVod::MssPackage>]
 
+=item [Tags => L<Paws::MediaPackageVod::Tags>]
+
 
 =back
 
@@ -236,6 +283,12 @@ Creates a new MediaPackage VOD PackagingConfiguration resource.
 =over
 
 =item Id => Str
+
+=item [Authorization => L<Paws::MediaPackageVod::Authorization>]
+
+=item [EgressAccessLogs => L<Paws::MediaPackageVod::EgressAccessLogs>]
+
+=item [Tags => L<Paws::MediaPackageVod::Tags>]
 
 
 =back
@@ -401,6 +454,79 @@ Each argument is described in detail in: L<Paws::MediaPackageVod::ListPackagingG
 Returns: a L<Paws::MediaPackageVod::ListPackagingGroupsResponse> instance
 
 Returns a collection of MediaPackage VOD PackagingGroup resources.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackageVod::ListTagsForResource>
+
+Returns: a L<Paws::MediaPackageVod::ListTagsForResourceResponse> instance
+
+Returns a list of the tags assigned to the specified resource.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::MediaPackageVod::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackageVod::TagResource>
+
+Returns: nothing
+
+Adds tags to the specified resource. You can specify one or more tags
+to add.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackageVod::UntagResource>
+
+Returns: nothing
+
+Removes tags from the specified resource. You can specify one or more
+tags to remove.
+
+
+=head2 UpdatePackagingGroup
+
+=over
+
+=item Id => Str
+
+=item [Authorization => L<Paws::MediaPackageVod::Authorization>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackageVod::UpdatePackagingGroup>
+
+Returns: a L<Paws::MediaPackageVod::UpdatePackagingGroupResponse> instance
+
+Updates a specific packaging group. You can't change the id attribute
+or any other system-generated attributes.
 
 
 

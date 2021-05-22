@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ResourceId       = $DescribeAssetResponse->ResourceId;
     my $SourceArn        = $DescribeAssetResponse->SourceArn;
     my $SourceRoleArn    = $DescribeAssetResponse->SourceRoleArn;
+    my $Tags             = $DescribeAssetResponse->Tags;
 
     # Returns a L<Paws::MediaPackageVod::DescribeAssetResponse> object.
 

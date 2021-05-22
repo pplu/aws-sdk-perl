@@ -2,8 +2,11 @@
 package Paws::MediaPackageVod::PackagingGroup;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Authorization => (is => 'ro', isa => 'Paws::MediaPackageVod::Authorization', request_name => 'authorization', traits => ['NameInRequest']);
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest']);
+  has EgressAccessLogs => (is => 'ro', isa => 'Paws::MediaPackageVod::EgressAccessLogs', request_name => 'egressAccessLogs', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackageVod::PackagingGroup object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Id => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,14 +48,29 @@ A MediaPackage VOD PackagingGroup resource.
 The ARN of the PackagingGroup.
 
 
+=head2 Authorization => L<Paws::MediaPackageVod::Authorization>
+
+
+
+
 =head2 DomainName => Str
 
 The fully qualified domain name for Assets in the PackagingGroup.
 
 
+=head2 EgressAccessLogs => L<Paws::MediaPackageVod::EgressAccessLogs>
+
+
+
+
 =head2 Id => Str
 
 The ID of the PackagingGroup.
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 
