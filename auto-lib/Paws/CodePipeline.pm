@@ -65,6 +65,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::EnableStageTransition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetActionType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetActionType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetJobDetails {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetJobDetails', @_);
@@ -193,6 +198,11 @@ package Paws::CodePipeline;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateActionType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdateActionType', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePipeline {
@@ -341,7 +351,7 @@ package Paws::CodePipeline;
   }
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListTagsForResource ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution StopPipelineExecution TagResource UntagResource UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetActionType GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListTagsForResource ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution StopPipelineExecution TagResource UntagResource UpdateActionType UpdatePipeline / }
 
 1;
 
@@ -811,6 +821,31 @@ Returns: nothing
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 
 
+=head2 GetActionType
+
+=over
+
+=item Category => Str
+
+=item Owner => Str
+
+=item Provider => Str
+
+=item Version => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::GetActionType>
+
+Returns: a L<Paws::CodePipeline::GetActionTypeOutput> instance
+
+Returns information about an action type created for an external
+provider, where the action is to be used by customers of the external
+provider. The action can be created with any supported integration
+model.
+
+
 =head2 GetJobDetails
 
 =over
@@ -948,6 +983,8 @@ Lists the action executions that have occurred in a pipeline.
 
 =item [NextToken => Str]
 
+=item [RegionFilter => Str]
+
 
 =back
 
@@ -982,6 +1019,8 @@ Gets a summary of the most recent executions for a pipeline.
 =head2 ListPipelines
 
 =over
+
+=item [MaxResults => Int]
 
 =item [NextToken => Str]
 
@@ -1376,6 +1415,25 @@ Returns: a L<Paws::CodePipeline::UntagResourceOutput> instance
 Removes tags from an AWS resource.
 
 
+=head2 UpdateActionType
+
+=over
+
+=item ActionType => L<Paws::CodePipeline::ActionTypeDeclaration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::UpdateActionType>
+
+Returns: nothing
+
+Updates an action type that was created with any supported integration
+model, where the action type is to be used by customers of the action
+type provider. Use a JSON file with the action definition and
+C<UpdateActionType> to provide the full structure.
+
+
 =head2 UpdatePipeline
 
 =over
@@ -1413,9 +1471,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodePipeline::ListActionExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllActionTypes(sub { },[ActionOwnerFilter => Str, NextToken => Str])
+=head2 ListAllActionTypes(sub { },[ActionOwnerFilter => Str, NextToken => Str, RegionFilter => Str])
 
-=head2 ListAllActionTypes([ActionOwnerFilter => Str, NextToken => Str])
+=head2 ListAllActionTypes([ActionOwnerFilter => Str, NextToken => Str, RegionFilter => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1437,9 +1495,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodePipeline::ListPipelineExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllPipelines(sub { },[NextToken => Str])
+=head2 ListAllPipelines(sub { },[MaxResults => Int, NextToken => Str])
 
-=head2 ListAllPipelines([NextToken => Str])
+=head2 ListAllPipelines([MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

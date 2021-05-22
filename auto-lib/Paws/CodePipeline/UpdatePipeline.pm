@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Category => 'Source'
                   ,    # values: Source, Build, Deploy, Test, Invoke, Approval
                   Owner => 'AWS',    # values: AWS, ThirdParty, Custom
-                  Provider => 'MyActionProvider',    # min: 1, max: 25
+                  Provider => 'MyActionProvider',    # min: 1, max: 35
                   Version  => 'MyVersion',           # min: 1, max: 9
 
                 },
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
           Type          => 'S3',                         # values: S3
           EncryptionKey => {
-            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 400
             Type => 'KMS',                               # values: KMS
 
           },    # OPTIONAL
@@ -95,7 +95,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
             Type          => 'S3',                         # values: S3
             EncryptionKey => {
-              Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+              Id   => 'MyEncryptionKeyId',                 # min: 1, max: 400
               Type => 'KMS',                               # values: KMS
 
             },    # OPTIONAL

@@ -1,6 +1,7 @@
 
 package Paws::CodePipeline::ListPipelines;
   use Moose;
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
@@ -28,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $codepipeline = Paws->service('CodePipeline');
     my $ListPipelinesOutput = $codepipeline->ListPipelines(
-      NextToken => 'MyNextToken',    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:
@@ -41,6 +43,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/ListPipelines>
 
 =head1 ATTRIBUTES
+
+
+=head2 MaxResults => Int
+
+The maximum number of pipelines to return in a single call. To retrieve
+the remaining pipelines, make another call with the returned nextToken
+value. The minimum value you can specify is 1. The maximum accepted
+value is 1000.
+
 
 
 =head2 NextToken => Str

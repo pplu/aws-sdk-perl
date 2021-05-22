@@ -2,6 +2,7 @@
 package Paws::CodePipeline::StageState;
   use Moose;
   has ActionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]', request_name => 'actionStates', traits => ['NameInRequest']);
+  has InboundExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', request_name => 'inboundExecution', traits => ['NameInRequest']);
   has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', request_name => 'inboundTransitionState', traits => ['NameInRequest']);
   has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
   has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
@@ -44,6 +45,11 @@ Represents information about the state of the stage.
 =head2 ActionStates => ArrayRef[L<Paws::CodePipeline::ActionState>]
 
 The state of the stage.
+
+
+=head2 InboundExecution => L<Paws::CodePipeline::StageExecution>
+
+
 
 
 =head2 InboundTransitionState => L<Paws::CodePipeline::TransitionState>

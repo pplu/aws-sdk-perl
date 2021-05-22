@@ -67,7 +67,7 @@ in your pipeline, you must use C<artifactStores>.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the action to be performed.
+The name of the pipeline.
 
 
 =head2 B<REQUIRED> RoleArn => Str
