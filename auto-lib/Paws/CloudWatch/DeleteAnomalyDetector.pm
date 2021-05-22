@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteAnomalyDetectorOutput = $monitoring->DeleteAnomalyDetector(
       MetricName => 'MyMetricName',
       Namespace  => 'MyNamespace',
-      Stat       => 'MyStat',
+      Stat       => 'MyAnomalyDetectorMetricStat',
       Dimensions => [
         {
           Name  => 'MyDimensionName',     # min: 1, max: 255

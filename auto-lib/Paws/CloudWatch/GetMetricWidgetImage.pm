@@ -52,7 +52,8 @@ title, axis limits, and so on. You can include only one C<MetricWidget>
 parameter in each C<GetMetricWidgetImage> call.
 
 For more information about the syntax of C<MetricWidget> see
-CloudWatch-Metric-Widget-Structure.
+GetMetricWidgetImage: Metric Widget Structure and Syntax
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html).
 
 If any metric on the graph could not load all the requested data
 points, an orange triangle with an exclamation point appears next to

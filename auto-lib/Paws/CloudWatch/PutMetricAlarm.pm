@@ -145,7 +145,8 @@ C<arn:aws:automate:I<region>:ec2:terminate> |
 C<arn:aws:automate:I<region>:ec2:recover> |
 C<arn:aws:automate:I<region>:ec2:reboot> |
 C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
-C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
+C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>:autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>
+> | C<arn:aws:ssm:I<region>:I<account-id>:opsitem:I<severity>>
 
 Valid Values (for use with IAM roles):
 C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0>
@@ -164,8 +165,7 @@ The description for the alarm.
 
 =head2 B<REQUIRED> AlarmName => Str
 
-The name for the alarm. This name must be unique within your AWS
-account.
+The name for the alarm. This name must be unique within the Region.
 
 
 
@@ -247,7 +247,7 @@ C<arn:aws:automate:I<region>:ec2:terminate> |
 C<arn:aws:automate:I<region>:ec2:recover> |
 C<arn:aws:automate:I<region>:ec2:reboot> |
 C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
-C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
+C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>:autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
 Valid Values (for use with IAM roles):
 C<E<gt>arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0>
@@ -282,9 +282,9 @@ Each item in the C<Metrics> array either retrieves a metric or performs
 a math expression.
 
 One item in the C<Metrics> array is the expression that the alarm
-watches. You designate this expression by setting C<ReturnValue> to
-true for this object in the array. For more information, see
-MetricDataQuery.
+watches. You designate this expression by setting C<ReturnData> to true
+for this object in the array. For more information, see MetricDataQuery
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html).
 
 If you use the C<Metrics> parameter, you cannot include the
 C<MetricName>, C<Dimensions>, C<Period>, C<Namespace>, C<Statistic>, or
@@ -311,7 +311,7 @@ C<arn:aws:automate:I<region>:ec2:terminate> |
 C<arn:aws:automate:I<region>:ec2:recover> |
 C<arn:aws:automate:I<region>:ec2:reboot> |
 C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
-C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
+C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>:autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
 Valid Values (for use with IAM roles):
 C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0>
@@ -319,6 +319,8 @@ C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Stop/1.0
 C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Terminate/1.0>
 |
 C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1.0>
+|
+C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Recover/1.0>
 
 
 
@@ -338,7 +340,7 @@ a period of 10 or 30 for a metric that does not have sub-minute
 resolution, the alarm still attempts to gather data at the period rate
 that you specify. In this case, it does not receive data for the
 attempts that do not correspond to a one-minute data resolution, and
-the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10
+the alarm might often lapse into INSUFFICENT_DATA status. Specifying 10
 or 30 also sets this alarm as a high-resolution alarm, which has a
 higher charge than other alarms. For more information about pricing,
 see Amazon CloudWatch Pricing
@@ -365,8 +367,15 @@ A list of key-value pairs to associate with the alarm. You can
 associate as many as 50 tags with an alarm.
 
 Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
+use them to scope user permissions by granting a user permission to
 access or change only resources with certain tag values.
+
+If you are using this operation to update an existing alarm, any tags
+you specify in this parameter are ignored. To change the tags of an
+existing alarm, use TagResource
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html)
+or UntagResource
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_UntagResource.html).
 
 
 
@@ -414,12 +423,12 @@ specify a unit of measure, such as Percent, are aggregated separately.
 
 If you don't specify C<Unit>, CloudWatch retrieves all unit types that
 have been published for the metric and attempts to evaluate the alarm.
-Usually metrics are published with only one unit, so the alarm will
-work as intended.
+Usually, metrics are published with only one unit, so the alarm works
+as intended.
 
 However, if the metric is published with multiple types of units and
-you don't specify a unit, the alarm's behavior is not defined and will
-behave un-predictably.
+you don't specify a unit, the alarm's behavior is not defined and it
+behaves predictably.
 
 We recommend omitting C<Unit> so that you don't inadvertently specify
 an incorrect unit that is not published for this metric. Doing so

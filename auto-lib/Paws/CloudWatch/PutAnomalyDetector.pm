@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutAnomalyDetectorOutput = $monitoring->PutAnomalyDetector(
       MetricName    => 'MyMetricName',
       Namespace     => 'MyNamespace',
-      Stat          => 'MyStat',
+      Stat          => 'MyAnomalyDetectorMetricStat',
       Configuration => {
         ExcludedTimeRanges => [
           {
@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
-        MetricTimezone => 'MyAnomalyDetectorMetricTimezone',    # OPTIONAL
+        MetricTimezone => 'MyAnomalyDetectorMetricTimezone', # max: 50; OPTIONAL
       },    # OPTIONAL
       Dimensions => [
         {
@@ -69,8 +69,6 @@ model is to be trained, including time ranges to exclude when training
 and updating the model. You can specify as many as 10 time ranges.
 
 The configuration can also include the time zone to use for the metric.
-
-You can in
 
 
 

@@ -2,6 +2,7 @@
 package Paws::CloudWatch::GetMetricData;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str', required => 1);
+  has LabelOptions => (is => 'ro', isa => 'Paws::CloudWatch::LabelOptions');
   has MaxDatapoints => (is => 'ro', isa => 'Int');
   has MetricDataQueries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDataQuery]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
@@ -62,7 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      StartTime     => '1970-01-01T01:00:00',
+      StartTime    => '1970-01-01T01:00:00',
+      LabelOptions => {
+        Timezone => 'MyGetMetricDataLabelTimezone',    # OPTIONAL
+      },    # OPTIONAL
       MaxDatapoints => 1,                        # OPTIONAL
       NextToken     => 'MyNextToken',            # OPTIONAL
       ScanBy        => 'TimestampDescending',    # OPTIONAL
@@ -96,6 +100,14 @@ response from CloudWatch than setting 12:07 or 12:29 as the C<EndTime>.
 
 
 
+=head2 LabelOptions => L<Paws::CloudWatch::LabelOptions>
+
+This structure includes the C<Timezone> parameter, which you can use to
+specify your time zone so that the labels of returned data display the
+correct time for your time zone.
+
+
+
 =head2 MaxDatapoints => Int
 
 The maximum number of data points the request should return before
@@ -106,7 +118,7 @@ paginating. If you omit this, the default of 100,800 is used.
 =head2 B<REQUIRED> MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
 
 The metric queries to be returned. A single C<GetMetricData> call can
-include as many as 100 C<MetricDataQuery> structures. Each of these
+include as many as 500 C<MetricDataQuery> structures. Each of these
 structures can specify either a metric to retrieve, or a math
 expression to perform on retrieved data.
 
@@ -114,8 +126,8 @@ expression to perform on retrieved data.
 
 =head2 NextToken => Str
 
-Include this value, if it was returned by the previous call, to get the
-next set of data points.
+Include this value, if it was returned by the previous C<GetMetricData>
+operation, to get the next set of data points.
 
 
 

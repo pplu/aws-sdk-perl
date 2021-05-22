@@ -48,7 +48,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head2 B<REQUIRED> RuleNames => ArrayRef[Str|Undef]
 
 An array of the rule names to disable. If you need to find out the
-names of your rules, use DescribeInsightRules.
+names of your rules, use DescribeInsightRules
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
 
 
 

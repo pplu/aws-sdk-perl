@@ -34,6 +34,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteInsightRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteMetricStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteMetricStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAlarmHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarmHistory', @_);
@@ -99,6 +104,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricStatistics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMetricStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetMetricWidgetImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricWidgetImage', @_);
@@ -114,6 +124,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListMetrics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMetricStreams {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListMetricStreams', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListTagsForResource', @_);
@@ -122,6 +137,11 @@ package Paws::CloudWatch;
   sub PutAnomalyDetector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutAnomalyDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutCompositeAlarm {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutCompositeAlarm', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutDashboard {
@@ -144,9 +164,24 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutMetricData', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutMetricStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutMetricStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetAlarmState {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::SetAlarmState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartMetricStreams {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::StartMetricStreams', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopMetricStreams {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::StopMetricStreams', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -194,14 +229,17 @@ package Paws::CloudWatch;
       while ($next_result->NextToken) {
         $next_result = $self->DescribeAlarms(@_, NextToken => $next_result->NextToken);
         push @{ $result->MetricAlarms }, @{ $next_result->MetricAlarms };
+        push @{ $result->CompositeAlarms }, @{ $next_result->CompositeAlarms };
       }
       return $result;
     } else {
       while ($result->NextToken) {
         $callback->($_ => 'MetricAlarms') foreach (@{ $result->MetricAlarms });
+        $callback->($_ => 'CompositeAlarms') foreach (@{ $result->CompositeAlarms });
         $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'MetricAlarms') foreach (@{ $result->MetricAlarms });
+      $callback->($_ => 'CompositeAlarms') foreach (@{ $result->CompositeAlarms });
     }
 
     return undef
@@ -280,7 +318,7 @@ package Paws::CloudWatch;
   }
 
 
-  sub operations { qw/DeleteAlarms DeleteAnomalyDetector DeleteDashboards DeleteInsightRules DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DescribeAnomalyDetectors DescribeInsightRules DisableAlarmActions DisableInsightRules EnableAlarmActions EnableInsightRules GetDashboard GetInsightRuleReport GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics ListTagsForResource PutAnomalyDetector PutDashboard PutInsightRule PutMetricAlarm PutMetricData SetAlarmState TagResource UntagResource / }
+  sub operations { qw/DeleteAlarms DeleteAnomalyDetector DeleteDashboards DeleteInsightRules DeleteMetricStream DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DescribeAnomalyDetectors DescribeInsightRules DisableAlarmActions DisableInsightRules EnableAlarmActions EnableInsightRules GetDashboard GetInsightRuleReport GetMetricData GetMetricStatistics GetMetricStream GetMetricWidgetImage ListDashboards ListMetrics ListMetricStreams ListTagsForResource PutAnomalyDetector PutCompositeAlarm PutDashboard PutInsightRule PutMetricAlarm PutMetricData PutMetricStream SetAlarmState StartMetricStreams StopMetricStreams TagResource UntagResource / }
 
 1;
 
@@ -343,8 +381,28 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-Deletes the specified alarms. You can delete up to 50 alarms in one
-operation. In the event of an error, no alarms are deleted.
+Deletes the specified alarms. You can delete up to 100 alarms in one
+operation. However, this total can include no more than one composite
+alarm. For example, you could delete 99 metric alarms and one composite
+alarms with one operation, but you can't delete two composite alarms
+with one operation.
+
+In the event of an error, no alarms are deleted.
+
+It is possible to create a loop or cycle of composite alarms, where
+composite alarm A depends on composite alarm B, and composite alarm B
+also depends on composite alarm A. In this scenario, you can't delete
+any composite alarm that is part of the cycle because there is always
+still a composite alarm that depends on that alarm that you want to
+delete.
+
+To get out of such a situation, you must break the cycle by changing
+the rule of one of the composite alarms in the cycle to remove a
+dependency that creates the cycle. The simplest change to make to break
+a cycle is to change the C<AlarmRule> of one of the alarms to C<False>.
+
+Additionally, the evaluation of composite alarms stops if CloudWatch
+detects a cycle in the evaluation path.
 
 
 =head2 DeleteAnomalyDetector
@@ -382,7 +440,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteDashboards>
 
 Returns: a L<Paws::CloudWatch::DeleteDashboardsOutput> instance
 
-Deletes all dashboards that you specify. You may specify up to 100
+Deletes all dashboards that you specify. You can specify up to 100
 dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 
@@ -403,8 +461,24 @@ Returns: a L<Paws::CloudWatch::DeleteInsightRulesOutput> instance
 Permanently deletes the specified Contributor Insights rules.
 
 If you create a rule, delete it, and then re-create it with the same
-name, historical data from the first time the rule was created may or
-may not be available.
+name, historical data from the first time the rule was created might
+not be available.
+
+
+=head2 DeleteMetricStream
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DeleteMetricStream>
+
+Returns: a L<Paws::CloudWatch::DeleteMetricStreamOutput> instance
+
+Permanently deletes the metric stream that you specify.
 
 
 =head2 DescribeAlarmHistory
@@ -413,6 +487,8 @@ may not be available.
 
 =item [AlarmName => Str]
 
+=item [AlarmTypes => ArrayRef[Str|Undef]]
+
 =item [EndDate => Str]
 
 =item [HistoryItemType => Str]
@@ -420,6 +496,8 @@ may not be available.
 =item [MaxRecords => Int]
 
 =item [NextToken => Str]
+
+=item [ScanBy => Str]
 
 =item [StartDate => Str]
 
@@ -432,7 +510,8 @@ Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
 
 Retrieves the history for the specified alarm. You can filter the
 results by date range or item type. If an alarm name is not specified,
-the histories for all alarms are returned.
+the histories for either all metric alarms or all composite alarms are
+returned.
 
 CloudWatch retains the history of an alarm even if you delete the
 alarm.
@@ -448,9 +527,15 @@ alarm.
 
 =item [AlarmNames => ArrayRef[Str|Undef]]
 
+=item [AlarmTypes => ArrayRef[Str|Undef]]
+
+=item [ChildrenOfAlarmName => Str]
+
 =item [MaxRecords => Int]
 
 =item [NextToken => Str]
+
+=item [ParentsOfAlarmName => Str]
 
 =item [StateValue => Str]
 
@@ -461,9 +546,9 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsOutput> instance
 
-Retrieves the specified alarms. If no alarms are specified, all alarms
-are returned. Alarms can be retrieved by using only a prefix for the
-alarm name, the alarm state, or a prefix for any action.
+Retrieves the specified alarms. You can filter the results by
+specifying a prefix for the alarm name, the alarm state, or a prefix
+for any action.
 
 
 =head2 DescribeAlarmsForMetric
@@ -493,6 +578,11 @@ Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
 Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
+
+This operation retrieves only standard alarms that are based on the
+specified metric. It does not return alarms based on math expressions
+that use the specified metric, or composite alarms that use the
+specified metric.
 
 
 =head2 DescribeAnomalyDetectors
@@ -538,7 +628,6 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeInsightRule
 Returns: a L<Paws::CloudWatch::DescribeInsightRulesOutput> instance
 
 Returns a list of all the Contributor Insights rules in your account.
-All rules in your account are returned with a single operation.
 
 For more information about Contributor Insights, see Using Contributor
 Insights to Analyze High-Cardinality Data
@@ -675,7 +764,7 @@ data point.
 =item *
 
 C<MaxContributorValue> -- the value of the top contributor for each
-data point. The identity of the contributor may change for each data
+data point. The identity of the contributor might change for each data
 point in the graph.
 
 If this rule aggregates by COUNT, the top contributor for each data
@@ -722,6 +811,8 @@ period represented by that data point.
 
 =item StartTime => Str
 
+=item [LabelOptions => L<Paws::CloudWatch::LabelOptions>]
+
 =item [MaxDatapoints => Int]
 
 =item [NextToken => Str]
@@ -735,7 +826,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::GetMetricData>
 
 Returns: a L<Paws::CloudWatch::GetMetricDataOutput> instance
 
-You can use the C<GetMetricData> API to retrieve as many as 100
+You can use the C<GetMetricData> API to retrieve as many as 500
 different metrics in a single request, with a total of as many as
 100,800 data points. You can also optionally perform math expressions
 on the values of the returned statistics, to create new time series
@@ -790,8 +881,8 @@ resolution of 1 hour.
 If you omit C<Unit> in your request, all data that was collected with
 any unit is returned, along with the corresponding units that were
 specified when the data was reported to CloudWatch. If you specify a
-unit, the operation returns only data data that was collected with that
-unit specified. If you specify a unit that does not match the data
+unit, the operation returns only data that was collected with that unit
+specified. If you specify a unit that does not match the data
 collected, the results of the operation are null. CloudWatch does not
 perform unit conversions.
 
@@ -906,6 +997,22 @@ see the Amazon CloudWatch Metrics and Dimensions Reference
 in the I<Amazon CloudWatch User Guide>.
 
 
+=head2 GetMetricStream
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStream>
+
+Returns: a L<Paws::CloudWatch::GetMetricStreamOutput> instance
+
+Returns information about the metric stream that you specify.
+
+
 =head2 GetMetricWidgetImage
 
 =over
@@ -987,6 +1094,8 @@ receive the next 1000 results.
 
 =item [NextToken => Str]
 
+=item [RecentlyActive => Str]
+
 
 =back
 
@@ -995,14 +1104,46 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
 List the specified metrics. You can use the returned metrics with
-GetMetricData or GetMetricStatistics to obtain statistical data.
+GetMetricData
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+or GetMetricStatistics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
+to obtain statistical data.
 
 Up to 500 results are returned for any one call. To retrieve additional
 results, use the returned token with subsequent calls.
 
-After you create a metric, allow up to fifteen minutes before the
-metric appears. Statistics about the metric, however, are available
-sooner using GetMetricData or GetMetricStatistics.
+After you create a metric, allow up to 15 minutes before the metric
+appears. You can see statistics about the metric sooner by using
+GetMetricData
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+or GetMetricStatistics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
+
+C<ListMetrics> doesn't return information about metrics if those
+metrics haven't reported data in the past two weeks. To retrieve those
+metrics, use GetMetricData
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+or GetMetricStatistics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
+
+
+=head2 ListMetricStreams
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::ListMetricStreams>
+
+Returns: a L<Paws::CloudWatch::ListMetricStreamsOutput> instance
+
+Returns a list of metric streams in this account.
 
 
 =head2 ListTagsForResource
@@ -1018,8 +1159,8 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListTagsForResource
 
 Returns: a L<Paws::CloudWatch::ListTagsForResourceOutput> instance
 
-Displays the tags associated with a CloudWatch resource. Alarms support
-tagging.
+Displays the tags associated with a CloudWatch resource. Currently,
+alarms and Contributor Insights rules support tagging.
 
 
 =head2 PutAnomalyDetector
@@ -1049,6 +1190,79 @@ is graphed.
 
 For more information, see CloudWatch Anomaly Detection
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html).
+
+
+=head2 PutCompositeAlarm
+
+=over
+
+=item AlarmName => Str
+
+=item AlarmRule => Str
+
+=item [ActionsEnabled => Bool]
+
+=item [AlarmActions => ArrayRef[Str|Undef]]
+
+=item [AlarmDescription => Str]
+
+=item [InsufficientDataActions => ArrayRef[Str|Undef]]
+
+=item [OKActions => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::CloudWatch::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::PutCompositeAlarm>
+
+Returns: nothing
+
+Creates or updates a I<composite alarm>. When you create a composite
+alarm, you specify a rule expression for the alarm that takes into
+account the alarm states of other alarms that you have created. The
+composite alarm goes into ALARM state only if all conditions of the
+rule are met.
+
+The alarms specified in a composite alarm's rule expression can include
+metric alarms and other composite alarms.
+
+Using composite alarms can reduce alarm noise. You can create multiple
+metric alarms, and also create a composite alarm and set up alerts only
+for the composite alarm. For example, you could create a composite
+alarm that goes into ALARM state only when more than one of the
+underlying metric alarms are in ALARM state.
+
+Currently, the only alarm actions that can be taken by composite alarms
+are notifying SNS topics.
+
+It is possible to create a loop or cycle of composite alarms, where
+composite alarm A depends on composite alarm B, and composite alarm B
+also depends on composite alarm A. In this scenario, you can't delete
+any composite alarm that is part of the cycle because there is always
+still a composite alarm that depends on that alarm that you want to
+delete.
+
+To get out of such a situation, you must break the cycle by changing
+the rule of one of the composite alarms in the cycle to remove a
+dependency that creates the cycle. The simplest change to make to break
+a cycle is to change the C<AlarmRule> of one of the alarms to C<False>.
+
+Additionally, the evaluation of composite alarms stops if CloudWatch
+detects a cycle in the evaluation path.
+
+When this operation creates an alarm, the alarm state is immediately
+set to C<INSUFFICIENT_DATA>. The alarm is then evaluated and its state
+is set appropriately. Any actions associated with the new state are
+then executed. For a composite alarm, this initial time after creation
+is the only time that the alarm can be in C<INSUFFICIENT_DATA> state.
+
+When you update an existing alarm, its state is left unchanged, but the
+update completely overwrites the previous configuration of the alarm.
+
+If you are an IAM user, you must have C<iam:CreateServiceLinkedRole> to
+create a composite alarm that has Systems Manager OpsItem actions.
 
 
 =head2 PutDashboard
@@ -1098,6 +1312,8 @@ create the dashboard.
 
 =item [RuleState => Str]
 
+=item [Tags => ArrayRef[L<Paws::CloudWatch::Tag>]]
+
 
 =back
 
@@ -1112,8 +1328,8 @@ Contributor Insights to Analyze High-Cardinality Data
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html).
 
 If you create a rule, delete it, and then re-create it with the same
-name, historical data from the first time the rule was created may or
-may not be available.
+name, historical data from the first time the rule was created might
+not be available.
 
 
 =head2 PutMetricAlarm
@@ -1192,46 +1408,21 @@ alarm operations:
 
 =item *
 
-C<iam:CreateServiceLinkedRole> for all alarms with EC2 actions
+The C<iam:CreateServiceLinkedRole> for all alarms with EC2 actions
 
 =item *
 
-C<ec2:DescribeInstanceStatus> and C<ec2:DescribeInstances> for all
-alarms on EC2 instance status metrics
-
-=item *
-
-C<ec2:StopInstances> for alarms with stop actions
-
-=item *
-
-C<ec2:TerminateInstances> for alarms with terminate actions
-
-=item *
-
-No specific permissions are needed for alarms with recover actions
+The C<iam:CreateServiceLinkedRole> to create an alarm with Systems
+Manager OpsItem actions.
 
 =back
 
-If you have read/write permissions for Amazon CloudWatch but not for
-Amazon EC2, you can still create an alarm, but the stop or terminate
-actions are not performed. However, if you are later granted the
-required permissions, the alarm actions that you created earlier are
-performed.
-
-If you are using an IAM role (for example, an EC2 instance profile),
-you cannot stop or terminate the instance using alarm actions. However,
-you can still see the alarm state and perform any other actions such as
-Amazon SNS notifications or Auto Scaling policies.
-
-If you are using temporary security credentials granted using AWS STS,
-you cannot stop or terminate an EC2 instance using alarm actions.
-
 The first time you create an alarm in the AWS Management Console, the
 CLI, or by using the PutMetricAlarm API, CloudWatch creates the
-necessary service-linked role for you. The service-linked role is
-called C<AWSServiceRoleForCloudWatchEvents>. For more information, see
-AWS service-linked role
+necessary service-linked role for you. The service-linked roles are
+called C<AWSServiceRoleForCloudWatchEvents> and
+C<AWSServiceRoleForCloudWatchAlarms_ActionSSM>. For more information,
+see AWS service-linked role
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
 
 
@@ -1254,7 +1445,8 @@ Publishes metric data points to Amazon CloudWatch. CloudWatch
 associates the data points with the specified metric. If the specified
 metric does not exist, CloudWatch creates the metric. When CloudWatch
 creates a metric, it can take up to fifteen minutes for the metric to
-appear in calls to ListMetrics.
+appear in calls to ListMetrics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html).
 
 You can publish either individual data points in the C<Value> field, or
 arrays of values and the number of times each value occurred during the
@@ -1280,9 +1472,21 @@ Metrics
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
 in the I<Amazon CloudWatch User Guide>.
 
+You specify the time stamp to be associated with each data point. You
+can specify time stamps that are as much as two weeks before the
+current date, and as much as 2 hours after the current day and time.
+
 Data points with time stamps from 24 hours ago or longer can take at
-least 48 hours to become available for GetMetricData or
-GetMetricStatistics from the time they are submitted.
+least 48 hours to become available for GetMetricData
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+or GetMetricStatistics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
+from the time they are submitted. Data points with time stamps between
+3 and 24 hours ago can take as much as 2 hours to become available for
+for GetMetricData
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+or GetMetricStatistics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
 
 CloudWatch needs raw data points to calculate percentile statistics. If
 you publish data using a statistic set instead, you can only retrieve
@@ -1303,6 +1507,68 @@ multiplied by C<SampleCount>.
 
 =back
 
+
+
+=head2 PutMetricStream
+
+=over
+
+=item FirehoseArn => Str
+
+=item Name => Str
+
+=item OutputFormat => Str
+
+=item RoleArn => Str
+
+=item [ExcludeFilters => ArrayRef[L<Paws::CloudWatch::MetricStreamFilter>]]
+
+=item [IncludeFilters => ArrayRef[L<Paws::CloudWatch::MetricStreamFilter>]]
+
+=item [Tags => ArrayRef[L<Paws::CloudWatch::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::PutMetricStream>
+
+Returns: a L<Paws::CloudWatch::PutMetricStreamOutput> instance
+
+Creates or updates a metric stream. Metric streams can automatically
+stream CloudWatch metrics to AWS destinations including Amazon S3 and
+to many third-party solutions.
+
+For more information, see Using Metric Streams
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Metric-Streams.html).
+
+To create a metric stream, you must be logged on to an account that has
+the C<iam:PassRole> permission and either the C<CloudWatchFullAccess>
+policy or the C<cloudwatch:PutMetricStream> permission.
+
+When you create or update a metric stream, you choose one of the
+following:
+
+=over
+
+=item *
+
+Stream metrics from all metric namespaces in the account.
+
+=item *
+
+Stream metrics from all metric namespaces in the account, except for
+the namespaces that you list in C<ExcludeFilters>.
+
+=item *
+
+Stream metrics from only the metric namespaces that you list in
+C<IncludeFilters>.
+
+=back
+
+When you use C<PutMetricStream> to create a new metric stream, the
+stream is created in the C<running> state. If you use it to update an
+existing stream, the state of the stream is not changed.
 
 
 =head2 SetAlarmState
@@ -1329,10 +1595,54 @@ updated state differs from the previous value, the action configured
 for the appropriate state is invoked. For example, if your alarm is
 configured to send an Amazon SNS message when an alarm is triggered,
 temporarily changing the alarm state to C<ALARM> sends an SNS message.
-The alarm returns to its actual state (often within seconds). Because
-the alarm state change happens quickly, it is typically only visible in
-the alarm's B<History> tab in the Amazon CloudWatch console or through
-DescribeAlarmHistory.
+
+Metric alarms returns to their actual state quickly, often within
+seconds. Because the metric alarm state change happens quickly, it is
+typically only visible in the alarm's B<History> tab in the Amazon
+CloudWatch console or through DescribeAlarmHistory
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html).
+
+If you use C<SetAlarmState> on a composite alarm, the composite alarm
+is not guaranteed to return to its actual state. It returns to its
+actual state only once any of its children alarms change state. It is
+also reevaluated if you update its configuration.
+
+If an alarm triggers EC2 Auto Scaling policies or application Auto
+Scaling policies, you must include information in the
+C<StateReasonData> parameter to enable the policy to take the correct
+action.
+
+
+=head2 StartMetricStreams
+
+=over
+
+=item Names => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::StartMetricStreams>
+
+Returns: a L<Paws::CloudWatch::StartMetricStreamsOutput> instance
+
+Starts the streaming of metrics for one or more of your metric streams.
+
+
+=head2 StopMetricStreams
+
+=over
+
+=item Names => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::StopMetricStreams>
+
+Returns: a L<Paws::CloudWatch::StopMetricStreamsOutput> instance
+
+Stops the streaming of metrics for one or more of your metric streams.
 
 
 =head2 TagResource
@@ -1352,10 +1662,10 @@ Returns: a L<Paws::CloudWatch::TagResourceOutput> instance
 
 Assigns one or more tags (key-value pairs) to the specified CloudWatch
 resource. Currently, the only CloudWatch resources that can be tagged
-are alarms.
+are alarms and Contributor Insights rules.
 
 Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
+use them to scope user permissions by granting a user permission to
 access or change only resources with certain tag values.
 
 Tags don't have any semantic meaning to AWS and are interpreted
@@ -1367,7 +1677,7 @@ to the list of tags associated with the alarm. If you specify a tag key
 that is already associated with the alarm, the new tag value that you
 specify replaces the previous value for that tag.
 
-You can associate as many as 50 tags with a resource.
+You can associate as many as 50 tags with a CloudWatch resource.
 
 
 =head2 UntagResource
@@ -1394,9 +1704,9 @@ Removes one or more tags from the specified resource.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllAlarmHistory(sub { },[AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
+=head2 DescribeAllAlarmHistory(sub { },[AlarmName => Str, AlarmTypes => ArrayRef[Str|Undef], EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, ScanBy => Str, StartDate => Str])
 
-=head2 DescribeAllAlarmHistory([AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
+=head2 DescribeAllAlarmHistory([AlarmName => Str, AlarmTypes => ArrayRef[Str|Undef], EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, ScanBy => Str, StartDate => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1406,21 +1716,23 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAlarms(sub { },[ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
+=head2 DescribeAllAlarms(sub { },[ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], AlarmTypes => ArrayRef[Str|Undef], ChildrenOfAlarmName => Str, MaxRecords => Int, NextToken => Str, ParentsOfAlarmName => Str, StateValue => Str])
 
-=head2 DescribeAllAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
+=head2 DescribeAllAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], AlarmTypes => ArrayRef[Str|Undef], ChildrenOfAlarmName => Str, MaxRecords => Int, NextToken => Str, ParentsOfAlarmName => Str, StateValue => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
 
  - MetricAlarms, passing the object as the first parameter, and the string 'MetricAlarms' as the second parameter 
 
-If not, it will return a a L<Paws::CloudWatch::DescribeAlarmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+ - CompositeAlarms, passing the object as the first parameter, and the string 'CompositeAlarms' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::DescribeAlarmsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllMetricData(sub { },EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+=head2 GetAllMetricData(sub { },EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [LabelOptions => L<Paws::CloudWatch::LabelOptions>, MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
 
-=head2 GetAllMetricData(EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+=head2 GetAllMetricData(EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [LabelOptions => L<Paws::CloudWatch::LabelOptions>, MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1444,9 +1756,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatch::ListDashboardsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllMetrics(sub { },[Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+=head2 ListAllMetrics(sub { },[Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str, RecentlyActive => Str])
 
-=head2 ListAllMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+=head2 ListAllMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str, RecentlyActive => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

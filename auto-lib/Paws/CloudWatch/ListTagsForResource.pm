@@ -45,9 +45,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the CloudWatch resource that you want to view tags for. For
-more information on ARN format, see Example ARNs
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
+The ARN of the CloudWatch resource that you want to view tags for.
+
+The ARN format of an alarm is
+C<arn:aws:cloudwatch:I<Region>:I<account-id>:alarm:I<alarm-name>>
+
+The ARN format of a Contributor Insights rule is
+C<arn:aws:cloudwatch:I<Region>:I<account-id>:insight-rule:I<insight-rule-name>>
+
+For more information about ARN format, see Resource Types Defined by
+Amazon CloudWatch
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 in the I<Amazon Web Services General Reference>.
 
 

@@ -70,7 +70,7 @@ associated, they're all returned.
 =head2 MaxResults => Int
 
 The maximum number of results to return in one operation. The maximum
-value you can specify is 10.
+value that you can specify is 100.
 
 To retrieve the remaining results, make another call with the returned
 C<NextToken> value.

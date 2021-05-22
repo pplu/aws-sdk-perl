@@ -26,8 +26,9 @@ The Amazon Resource Name (ARN) of the dashboard.
 
 The detailed information about the dashboard, including what widgets
 are included and their location on the dashboard. For more information
-about the C<DashboardBody> syntax, see
-CloudWatch-Dashboard-Body-Structure.
+about the C<DashboardBody> syntax, see Dashboard Body Structure and
+Syntax
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
 
 
 =head2 DashboardName => Str

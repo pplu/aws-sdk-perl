@@ -20,7 +20,7 @@ Paws::CloudWatch::GetMetricDataOutput
 =head2 Messages => ArrayRef[L<Paws::CloudWatch::MessageData>]
 
 Contains a message about this C<GetMetricData> operation, if the
-operation results in such a message. An example of a message that may
+operation results in such a message. An example of a message that might
 be returned is C<Maximum number of allowed metrics exceeded>. If there
 is a message, as much of the operation as possible is still executed.
 

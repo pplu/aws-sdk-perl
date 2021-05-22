@@ -17,7 +17,8 @@ Paws::CloudWatch::GetMetricWidgetImageOutput
 
 =head2 MetricWidgetImage => Str
 
-The image of the graph, in the output format specified.
+The image of the graph, in the output format specified. The output is
+base64-encoded.
 
 
 =head2 _request_id => Str

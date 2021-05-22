@@ -4,8 +4,11 @@ package Paws::CloudWatch::DescribeAlarms;
   has ActionPrefix => (is => 'ro', isa => 'Str');
   has AlarmNamePrefix => (is => 'ro', isa => 'Str');
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AlarmTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ChildrenOfAlarmName => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ParentsOfAlarmName => (is => 'ro', isa => 'Str');
   has StateValue => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -38,14 +41,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AlarmNames      => [
         'MyAlarmName', ...                       # min: 1, max: 255
       ],                                         # OPTIONAL
-      MaxRecords => 1,                           # OPTIONAL
-      NextToken  => 'MyNextToken',               # OPTIONAL
-      StateValue => 'OK',                        # OPTIONAL
+      AlarmTypes => [
+        'CompositeAlarm', ...    # values: CompositeAlarm, MetricAlarm
+      ],                         # OPTIONAL
+      ChildrenOfAlarmName => 'MyAlarmName',    # OPTIONAL
+      MaxRecords          => 1,                # OPTIONAL
+      NextToken           => 'MyNextToken',    # OPTIONAL
+      ParentsOfAlarmName  => 'MyAlarmName',    # OPTIONAL
+      StateValue          => 'OK',             # OPTIONAL
     );
 
     # Results:
-    my $MetricAlarms = $DescribeAlarmsOutput->MetricAlarms;
-    my $NextToken    = $DescribeAlarmsOutput->NextToken;
+    my $CompositeAlarms = $DescribeAlarmsOutput->CompositeAlarms;
+    my $MetricAlarms    = $DescribeAlarmsOutput->MetricAlarms;
+    my $NextToken       = $DescribeAlarmsOutput->NextToken;
 
     # Returns a L<Paws::CloudWatch::DescribeAlarmsOutput> object.
 
@@ -57,20 +66,56 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 ActionPrefix => Str
 
-The action name prefix.
+Use this parameter to filter the results of the operation to only those
+alarms that use a certain alarm action. For example, you could specify
+the ARN of an SNS topic to find all alarms that send notifications to
+that topic.
 
 
 
 =head2 AlarmNamePrefix => Str
 
-The alarm name prefix. If this parameter is specified, you cannot
-specify C<AlarmNames>.
+An alarm name prefix. If you specify this parameter, you receive
+information about all alarms that have names that start with this
+prefix.
+
+If this parameter is specified, you cannot specify C<AlarmNames>.
 
 
 
 =head2 AlarmNames => ArrayRef[Str|Undef]
 
-The names of the alarms.
+The names of the alarms to retrieve information about.
+
+
+
+=head2 AlarmTypes => ArrayRef[Str|Undef]
+
+Use this parameter to specify whether you want the operation to return
+metric alarms or composite alarms. If you omit this parameter, only
+metric alarms are returned.
+
+
+
+=head2 ChildrenOfAlarmName => Str
+
+If you use this parameter and specify the name of a composite alarm,
+the operation returns information about the "children" alarms of the
+alarm you specify. These are the metric alarms and composite alarms
+referenced in the C<AlarmRule> field of the composite alarm that you
+specify in C<ChildrenOfAlarmName>. Information about the composite
+alarm that you name in C<ChildrenOfAlarmName> is not returned.
+
+If you specify C<ChildrenOfAlarmName>, you cannot specify any other
+parameters in the request except for C<MaxRecords> and C<NextToken>. If
+you do so, you receive a validation error.
+
+Only the C<Alarm Name>, C<ARN>, C<StateValue>
+(OK/ALARM/INSUFFICIENT_DATA), and C<StateUpdatedTimestamp> information
+are returned by this operation when you use this parameter. To get
+complete information about these alarms, perform another
+C<DescribeAlarms> operation and specify the parent alarm names in the
+C<AlarmNames> parameter.
 
 
 
@@ -87,9 +132,30 @@ data available.
 
 
 
+=head2 ParentsOfAlarmName => Str
+
+If you use this parameter and specify the name of a metric or composite
+alarm, the operation returns information about the "parent" alarms of
+the alarm you specify. These are the composite alarms that have
+C<AlarmRule> parameters that reference the alarm named in
+C<ParentsOfAlarmName>. Information about the alarm that you specify in
+C<ParentsOfAlarmName> is not returned.
+
+If you specify C<ParentsOfAlarmName>, you cannot specify any other
+parameters in the request except for C<MaxRecords> and C<NextToken>. If
+you do so, you receive a validation error.
+
+Only the Alarm Name and ARN are returned by this operation when you use
+this parameter. To get complete information about these alarms, perform
+another C<DescribeAlarms> operation and specify the parent alarm names
+in the C<AlarmNames> parameter.
+
+
+
 =head2 StateValue => Str
 
-The state value to be used in matching alarms.
+Specify this parameter to receive information only about alarms that
+are currently in the state that you specify.
 
 Valid values are: C<"OK">, C<"ALARM">, C<"INSUFFICIENT_DATA">
 

@@ -45,8 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 B<REQUIRED> AlarmName => Str
 
-The name for the alarm. This name must be unique within the AWS
-account. The maximum length is 255 characters.
+The name of the alarm.
 
 
 
@@ -61,6 +60,11 @@ format.
 
 The reason that this alarm is set to this specific state, in JSON
 format.
+
+For SNS or EC2 alarm actions, this is just informational. But for EC2
+Auto Scaling or application Auto Scaling alarm actions, the Auto
+Scaling policy uses the information in this field to take the correct
+action.
 
 
 

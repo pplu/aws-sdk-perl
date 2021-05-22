@@ -42,7 +42,8 @@ combination of values from all the keys in the rule.
 If the rule contains a single key, then each unique contributor is each
 unique value for this key.
 
-For more information, see GetInsightRuleReport.
+For more information, see GetInsightRuleReport
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetInsightRuleReport.html).
 
 =head1 ATTRIBUTES
 

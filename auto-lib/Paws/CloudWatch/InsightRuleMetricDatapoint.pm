@@ -43,7 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 One data point from the metric time series returned in a Contributor
 Insights rule report.
 
-For more information, see GetInsightRuleReport.
+For more information, see GetInsightRuleReport
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetInsightRuleReport.html).
 
 =head1 ATTRIBUTES
 

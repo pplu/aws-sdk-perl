@@ -4,6 +4,7 @@ package Paws::CloudWatch::PutInsightRule;
   has RuleDefinition => (is => 'ro', isa => 'Str', required => 1);
   has RuleName => (is => 'ro', isa => 'Str', required => 1);
   has RuleState => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RuleDefinition => 'MyInsightRuleDefinition',
       RuleName       => 'MyInsightRuleName',
       RuleState      => 'MyInsightRuleState',        # OPTIONAL
+      Tags           => [
+        {
+          Key   => 'MyTagKey',                       # min: 1, max: 128
+          Value => 'MyTagValue',                     # max: 256
+
+        },
+        ...
+      ],                                             # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -58,6 +67,26 @@ A unique name for the rule.
 =head2 RuleState => Str
 
 The state of the rule. Valid values are ENABLED and DISABLED.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CloudWatch::Tag>]
+
+A list of key-value pairs to associate with the Contributor Insights
+rule. You can associate as many as 50 tags with a rule.
+
+Tags can help you organize and categorize your resources. You can also
+use them to scope user permissions, by granting a user permission to
+access or change only the resources that have certain tag values.
+
+To be able to associate tags with a rule, you must have the
+C<cloudwatch:TagResource> permission in addition to the
+C<cloudwatch:PutInsightRule> permission.
+
+If you are using this operation to update an existing Contributor
+Insights rule, any tags you specify in this parameter are ignored. To
+change the tags of an existing rule, use TagResource
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html).
 
 
 

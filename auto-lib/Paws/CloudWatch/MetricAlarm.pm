@@ -59,7 +59,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-Represents an alarm.
+The details about a metric alarm.
 
 =head1 ATTRIBUTES
 
@@ -154,7 +154,7 @@ An array of MetricDataQuery structures, used in an alarm based on a
 metric math expression. Each structure either retrieves a metric or
 performs a math expression. One item in the Metrics array is the math
 expression that the alarm watches. This expression by designated by
-having C<ReturnValue> set to true.
+having C<ReturnData> set to true.
 
 
 =head2 Namespace => Str
