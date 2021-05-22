@@ -3,6 +3,7 @@ package Paws::XRay::Trace;
   use Moose;
   has Duration => (is => 'ro', isa => 'Num');
   has Id => (is => 'ro', isa => 'Str');
+  has LimitExceeded => (is => 'ro', isa => 'Bool');
   has Segments => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Segment]');
 
 1;
@@ -50,6 +51,14 @@ segment and the end time of the last segment that completed.
 
 The unique identifier for the request that generated the trace's
 segments and subsegments.
+
+
+=head2 LimitExceeded => Bool
+
+LimitExceeded is set to true when the trace has exceeded one of the
+defined quotas. For more information about quotas, see AWS X-Ray
+endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/xray.html).
 
 
 =head2 Segments => ArrayRef[L<Paws::XRay::Segment>]

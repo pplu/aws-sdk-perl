@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::XRay::Sampl
 =head1 DESCRIPTION
 
 Aggregated request sampling data for a sampling rule across all
-services for a 10 second window.
+services for a 10-second window.
 
 =head1 ATTRIBUTES
 

@@ -3,6 +3,8 @@ package Paws::XRay::CreateGroup;
   use Moose;
   has FilterExpression => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
+  has InsightsConfiguration => (is => 'ro', isa => 'Paws::XRay::InsightsConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $xray = Paws->service('XRay');
     my $CreateGroupResult = $xray->CreateGroup(
-      GroupName        => 'MyGroupName',
-      FilterExpression => 'MyFilterExpression',    # OPTIONAL
+      GroupName             => 'MyGroupName',
+      FilterExpression      => 'MyFilterExpression',    # OPTIONAL
+      InsightsConfiguration => {
+        InsightsEnabled      => 1,                      # OPTIONAL
+        NotificationsEnabled => 1,                      # OPTIONAL
+      },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -55,6 +69,70 @@ The filter expression defining criteria by which to group traces.
 
 The case-sensitive name of the new group. Default is a reserved name
 and names must be unique.
+
+
+
+=head2 InsightsConfiguration => L<Paws::XRay::InsightsConfiguration>
+
+The structure containing configurations related to insights.
+
+=over
+
+=item *
+
+The InsightsEnabled boolean can be set to true to enable insights for
+the new group or false to disable insights for the new group.
+
+=item *
+
+The NotifcationsEnabled boolean can be set to true to enable insights
+notifications for the new group. Notifications may only be enabled on a
+group with InsightsEnabled set to true.
+
+=back
+
+
+
+
+=head2 Tags => ArrayRef[L<Paws::XRay::Tag>]
+
+A map that contains one or more tag keys and tag values to attach to an
+X-Ray group. For more information about ways to use tags, see Tagging
+AWS resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>.
+
+The following restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of user-applied tags per resource: 50
+
+=item *
+
+Maximum tag key length: 128 Unicode characters
+
+=item *
+
+Maximum tag value length: 256 Unicode characters
+
+=item *
+
+Valid values for key and value: a-z, A-Z, 0-9, space, and the following
+characters: _ . : / = + - and @
+
+=item *
+
+Tag keys and values are case sensitive.
+
+=item *
+
+Don't use C<aws:> as a prefix for keys; it's reserved for AWS use.
+
+=back
+
 
 
 

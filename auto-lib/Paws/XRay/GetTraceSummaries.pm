@@ -89,7 +89,7 @@ Set to C<true> to get summaries for only a subset of available traces.
 
 =head2 SamplingStrategy => L<Paws::XRay::SamplingStrategy>
 
-A paramater to indicate whether to enable sampling on trace summaries.
+A parameter to indicate whether to enable sampling on trace summaries.
 Input parameters are Name and Value.
 
 

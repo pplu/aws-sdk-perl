@@ -27,8 +27,7 @@ The start time of this page of results.
 
 If the requested time frame contained more than one page of results,
 you can use this token to retrieve the next page. The first page
-contains the most most recent results, closest to the end of the time
-frame.
+contains the most recent results, closest to the end of the time frame.
 
 
 =head2 TracesProcessedCount => Int

@@ -4,6 +4,7 @@ package Paws::XRay::UpdateGroup;
   has FilterExpression => (is => 'ro', isa => 'Str');
   has GroupARN => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+  has InsightsConfiguration => (is => 'ro', isa => 'Paws::XRay::InsightsConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $xray = Paws->service('XRay');
     my $UpdateGroupResult = $xray->UpdateGroup(
-      FilterExpression => 'MyFilterExpression',    # OPTIONAL
-      GroupARN         => 'MyGroupARN',            # OPTIONAL
-      GroupName        => 'MyGroupName',           # OPTIONAL
+      FilterExpression      => 'MyFilterExpression',    # OPTIONAL
+      GroupARN              => 'MyGroupARN',            # OPTIONAL
+      GroupName             => 'MyGroupName',           # OPTIONAL
+      InsightsConfiguration => {
+        InsightsEnabled      => 1,                      # OPTIONAL
+        NotificationsEnabled => 1,                      # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -63,6 +68,28 @@ The ARN that was generated upon creation.
 =head2 GroupName => Str
 
 The case-sensitive name of the group.
+
+
+
+=head2 InsightsConfiguration => L<Paws::XRay::InsightsConfiguration>
+
+The structure containing configurations related to insights.
+
+=over
+
+=item *
+
+The InsightsEnabled boolean can be set to true to enable insights for
+the group or false to disable insights for the group.
+
+=item *
+
+The NotifcationsEnabled boolean can be set to true to enable insights
+notifications for the group. Notifications can only be enabled on a
+group with InsightsEnabled set to true.
+
+=back
+
 
 
 

@@ -20,7 +20,7 @@ Paws::XRay::GetTimeSeriesServiceStatisticsResult
 =head2 ContainsOldGroupVersions => Bool
 
 A flag indicating whether or not a group's filter expression has been
-consistent, or if a returned aggregation may show statistics from an
+consistent, or if a returned aggregation might show statistics from an
 older version of the group's filter expression.
 
 

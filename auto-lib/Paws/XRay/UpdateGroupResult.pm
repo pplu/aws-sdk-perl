@@ -18,8 +18,9 @@ Paws::XRay::UpdateGroupResult
 =head2 Group => L<Paws::XRay::Group>
 
 The group that was updated. Contains the name of the group that was
-updated, the ARN of the group that was updated, and the updated filter
-expression assigned to the group.
+updated, the ARN of the group that was updated, the updated filter
+expression, and the updated insight configuration assigned to the
+group.
 
 
 =head2 _request_id => Str

@@ -64,7 +64,7 @@ Annotations from the trace's segment documents.
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::XRay::AvailabilityZoneDetail>]
 
-A list of availability zones for any zone corresponding to the trace
+A list of Availability Zones for any zone corresponding to the trace
 segments.
 
 
@@ -87,8 +87,8 @@ segments.
 
 =head2 FaultRootCauses => ArrayRef[L<Paws::XRay::FaultRootCause>]
 
-A collection of FaultRootCause structures corresponding to the the
-trace segments.
+A collection of FaultRootCause structures corresponding to the trace
+segments.
 
 
 =head2 HasError => Bool

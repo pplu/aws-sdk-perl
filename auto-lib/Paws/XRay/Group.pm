@@ -4,6 +4,7 @@ package Paws::XRay::Group;
   has FilterExpression => (is => 'ro', isa => 'Str');
   has GroupARN => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+  has InsightsConfiguration => (is => 'ro', isa => 'Paws::XRay::InsightsConfiguration');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::XRay::Group object:
 
-  $service_obj->Method(Att1 => { FilterExpression => $value, ..., GroupName => $value  });
+  $service_obj->Method(Att1 => { FilterExpression => $value, ..., InsightsConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,12 +48,33 @@ The filter expression defining the parameters to include traces.
 
 =head2 GroupARN => Str
 
-The ARN of the group generated based on the GroupName.
+The Amazon Resource Name (ARN) of the group generated based on the
+GroupName.
 
 
 =head2 GroupName => Str
 
 The unique case-sensitive name of the group.
+
+
+=head2 InsightsConfiguration => L<Paws::XRay::InsightsConfiguration>
+
+The structure containing configurations related to insights.
+
+=over
+
+=item *
+
+The InsightsEnabled boolean can be set to true to enable insights for
+the group or false to disable insights for the group.
+
+=item *
+
+The NotifcationsEnabled boolean can be set to true to enable insights
+notifications through Amazon EventBridge for the group.
+
+=back
+
 
 
 
