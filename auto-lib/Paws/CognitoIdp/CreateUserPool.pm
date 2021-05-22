@@ -94,8 +94,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL
       LambdaConfig             => {
         CreateAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        CustomMessage       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CustomEmailSender   => {
+          LambdaArn     => 'MyArnType',        # min: 20, max: 2048; OPTIONAL
+          LambdaVersion => 'V1_0',             # values: V1_0
+
+        },    # OPTIONAL
+        CustomMessage   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CustomSMSSender => {
+          LambdaArn     => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+          LambdaVersion => 'V1_0',         # values: V1_0
+
+        },    # OPTIONAL
         DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        KMSKeyID            => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         PostAuthentication  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         PostConfirmation    => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         PreAuthentication   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
@@ -193,10 +204,6 @@ password recovery mechanism if the user also has SMS MFA enabled. In
 the absence of this setting, Cognito uses the legacy behavior to
 determine the recovery method where SMS is preferred over email.
 
-Starting February 1, 2020, the value of C<AccountRecoverySetting> will
-default to C<verified_email> first and C<verified_phone_number> as the
-second option for newly created user pools if no value is provided.
-
 
 
 =head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
@@ -234,12 +241,18 @@ The email configuration.
 =head2 EmailVerificationMessage => Str
 
 A string representing the email verification message.
+EmailVerificationMessage is allowed only if EmailSendingAccount
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
+is DEVELOPER.
 
 
 
 =head2 EmailVerificationSubject => Str
 
 A string representing the email verification subject.
+EmailVerificationSubject is allowed only if EmailSendingAccount
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
+is DEVELOPER.
 
 
 
@@ -317,7 +330,8 @@ You can choose to set case sensitivity on the username input for the
 selected sign-in option. For example, when this is set to C<False>,
 users will be able to sign in using either "username" or "Username".
 This configuration is immutable once it has been set. For more
-information, see .
+information, see UsernameConfigurationType
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html).
 
 
 

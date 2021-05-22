@@ -87,8 +87,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL
       LambdaConfig             => {
         CreateAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
-        CustomMessage       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CustomEmailSender   => {
+          LambdaArn     => 'MyArnType',        # min: 20, max: 2048; OPTIONAL
+          LambdaVersion => 'V1_0',             # values: V1_0
+
+        },    # OPTIONAL
+        CustomMessage   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CustomSMSSender => {
+          LambdaArn     => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+          LambdaVersion => 'V1_0',         # values: V1_0
+
+        },    # OPTIONAL
         DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        KMSKeyID            => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         PostAuthentication  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         PostConfirmation    => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
         PreAuthentication   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
@@ -215,7 +226,10 @@ user registration.
 =item *
 
 C<ON> - MFA tokens are required for all user registrations. You can
-only specify required when you are initially creating a user pool.
+only specify ON when you are initially creating a user pool. You can
+use the SetUserPoolMfaConfig
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SetUserPoolMfaConfig.html)
+API operation to turn MFA "ON" for existing user pools.
 
 =item *
 

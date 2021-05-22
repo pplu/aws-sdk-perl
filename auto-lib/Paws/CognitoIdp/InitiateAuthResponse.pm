@@ -67,9 +67,23 @@ devices only.
 
 =item *
 
-C<NEW_PASSWORD_REQUIRED>: For users which are required to change their
+C<NEW_PASSWORD_REQUIRED>: For users who are required to change their
 passwords after successful first login. This challenge should be passed
 with C<NEW_PASSWORD> and any other required attributes.
+
+=item *
+
+C<MFA_SETUP>: For users who are required to setup an MFA factor before
+they can sign-in. The MFA types enabled for the user pool will be
+listed in the challenge parameters C<MFA_CAN_SETUP> value.
+
+To setup software token MFA, use the session returned here from
+C<InitiateAuth> as an input to C<AssociateSoftwareToken>, and use the
+session returned by C<VerifySoftwareToken> as an input to
+C<RespondToAuthChallenge> with challenge name C<MFA_SETUP> to complete
+sign-in. To setup SMS MFA, users will need help from an administrator
+to add a phone number to their account and then call C<InitiateAuth>
+again to restart sign-in.
 
 =back
 
@@ -88,10 +102,10 @@ All challenges require C<USERNAME> and C<SECRET_HASH> (if applicable).
 =head2 Session => Str
 
 The session which should be passed both ways in challenge-response
-calls to the service. If the or API call determines that the caller
-needs to go through another challenge, they return a session with other
-challenge parameters. This session should be passed as it is to the
-next C<RespondToAuthChallenge> API call.
+calls to the service. If the caller needs to go through another
+challenge, they return a session with other challenge parameters. This
+session should be passed as it is to the next C<RespondToAuthChallenge>
+API call.
 
 
 =head2 _request_id => Str

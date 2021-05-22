@@ -75,7 +75,7 @@ provider detail keys for each identity provider type.
 
 =item *
 
-For Google, Facebook and Login with Amazon:
+For Google and Login with Amazon:
 
 =over
 
@@ -90,6 +90,30 @@ client_secret
 =item *
 
 authorize_scopes
+
+=back
+
+=item *
+
+For Facebook:
+
+=over
+
+=item *
+
+client_id
+
+=item *
+
+client_secret
+
+=item *
+
+authorize_scopes
+
+=item *
+
+api_version
 
 =back
 

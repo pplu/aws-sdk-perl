@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AnalyticsEndpointId => 'MyStringType',    # OPTIONAL
       },    # OPTIONAL
       AuthParameters => {
-        'MyStringType' => 'MyAuthParametersValueType',    # key: OPTIONAL
+        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
       },    # OPTIONAL
       ClientMetadata => {
         'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
@@ -162,24 +162,26 @@ value of C<AuthFlow>:
 
 For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRP_A> (required),
 C<SECRET_HASH> (required if the app client is configured with a client
-secret), C<DEVICE_KEY>
+secret), C<DEVICE_KEY>.
 
 =item *
 
 For C<REFRESH_TOKEN_AUTH/REFRESH_TOKEN>: C<REFRESH_TOKEN> (required),
 C<SECRET_HASH> (required if the app client is configured with a client
-secret), C<DEVICE_KEY>
+secret), C<DEVICE_KEY>.
 
 =item *
 
 For C<ADMIN_NO_SRP_AUTH>: C<USERNAME> (required), C<SECRET_HASH> (if
 app client is configured with client secret), C<PASSWORD> (required),
-C<DEVICE_KEY>
+C<DEVICE_KEY>.
 
 =item *
 
 For C<CUSTOM_AUTH>: C<USERNAME> (required), C<SECRET_HASH> (if app
-client is configured with client secret), C<DEVICE_KEY>
+client is configured with client secret), C<DEVICE_KEY>. To start the
+authentication flow with password verification, include
+C<ChallengeName: SRP_A> and C<SRP_A: (The SRP_A Value)>.
 
 =back
 

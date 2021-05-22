@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdp::CreateUserPoolClient;
   use Moose;
+  has AccessTokenValidity => (is => 'ro', isa => 'Int');
   has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
   has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -10,11 +11,13 @@ package Paws::CognitoIdp::CreateUserPoolClient;
   has DefaultRedirectURI => (is => 'ro', isa => 'Str');
   has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GenerateSecret => (is => 'ro', isa => 'Bool');
+  has IdTokenValidity => (is => 'ro', isa => 'Int');
   has LogoutURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PreventUserExistenceErrors => (is => 'ro', isa => 'Str');
   has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has SupportedIdentityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TokenValidityUnits => (is => 'ro', isa => 'Paws::CognitoIdp::TokenValidityUnitsType');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
   has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -43,9 +46,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cognito-idp = Paws->service('CognitoIdp');
     my $CreateUserPoolClientResponse = $cognito -idp->CreateUserPoolClient(
-      ClientName        => 'MyClientNameType',
-      UserPoolId        => 'MyUserPoolIdType',
-      AllowedOAuthFlows => [
+      ClientName          => 'MyClientNameType',
+      UserPoolId          => 'MyUserPoolIdType',
+      AccessTokenValidity => 1,                    # OPTIONAL
+      AllowedOAuthFlows   => [
         'code', ...    # values: code, implicit, client_credentials
       ],               # OPTIONAL
       AllowedOAuthFlowsUserPoolClient => 1,    # OPTIONAL
@@ -53,9 +57,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyScopeType', ...                     # min: 1, max: 256
       ],                                       # OPTIONAL
       AnalyticsConfiguration => {
-        ApplicationId  => 'MyHexStringType',
-        ExternalId     => 'MyStringType',
-        RoleArn        => 'MyArnType',         # min: 20, max: 2048
+        ApplicationArn => 'MyArnType',          # min: 20, max: 2048; OPTIONAL
+        ApplicationId  => 'MyHexStringType',    # OPTIONAL
+        ExternalId     => 'MyStringType',       # OPTIONAL
+        RoleArn        => 'MyArnType',          # min: 20, max: 2048; OPTIONAL
         UserDataShared => 1,
       },    # OPTIONAL
       CallbackURLs => [
@@ -66,8 +71,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'ADMIN_NO_SRP_AUTH',
         ... # values: ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH
       ],    # OPTIONAL
-      GenerateSecret => 1,    # OPTIONAL
-      LogoutURLs     => [
+      GenerateSecret  => 1,    # OPTIONAL
+      IdTokenValidity => 1,    # OPTIONAL
+      LogoutURLs      => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
       ],                            # OPTIONAL
       PreventUserExistenceErrors => 'LEGACY',    # OPTIONAL
@@ -78,9 +84,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SupportedIdentityProviders => [
         'MyProviderNameType', ...                # min: 1, max: 32
       ],                                         # OPTIONAL
+      TokenValidityUnits => {
+        AccessToken =>
+          'seconds',    # values: seconds, minutes, hours, days; OPTIONAL
+        IdToken => 'seconds',  # values: seconds, minutes, hours, days; OPTIONAL
+        RefreshToken =>
+          'seconds',           # values: seconds, minutes, hours, days; OPTIONAL
+      },    # OPTIONAL
       WriteAttributes => [
-        'MyClientPermissionType', ...            # min: 1, max: 2048
-      ],                                         # OPTIONAL
+        'MyClientPermissionType', ...    # min: 1, max: 2048
+      ],                                 # OPTIONAL
     );
 
     # Results:
@@ -92,6 +105,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateUserPoolClient>
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessTokenValidity => Int
+
+The time limit, between 5 minutes and 1 day, after which the access
+token is no longer valid and cannot be used. This value will be
+overridden if you have entered a value in TokenValidityUnits.
+
 
 
 =head2 AllowedOAuthFlows => ArrayRef[Str|Undef]
@@ -131,6 +152,11 @@ Resource Servers are also supported.
 
 The Amazon Pinpoint analytics configuration for collecting metrics for
 this user pool.
+
+In regions where Pinpoint is not available, Cognito User Pools only
+supports sending events to Amazon Pinpoint projects in us-east-1. In
+regions where Pinpoint is available, Cognito User Pools will support
+sending events to Amazon Pinpoint projects within that same region.
 
 
 
@@ -253,6 +279,14 @@ pool client being created.
 
 
 
+=head2 IdTokenValidity => Int
+
+The time limit, between 5 minutes and 1 day, after which the ID token
+is no longer valid and cannot be used. This value will be overridden if
+you have entered a value in TokenValidityUnits.
+
+
+
 =head2 LogoutURLs => ArrayRef[Str|Undef]
 
 A list of allowed logout URLs for the identity providers.
@@ -286,44 +320,6 @@ existence related errors are not prevented.
 
 =back
 
-This setting affects the behavior of following APIs:
-
-=over
-
-=item *
-
-AdminInitiateAuth
-
-=item *
-
-AdminRespondToAuthChallenge
-
-=item *
-
-InitiateAuth
-
-=item *
-
-RespondToAuthChallenge
-
-=item *
-
-ForgotPassword
-
-=item *
-
-ConfirmForgotPassword
-
-=item *
-
-ConfirmSignUp
-
-=item *
-
-ResendConfirmationCode
-
-=back
-
 After February 15th 2020, the value of C<PreventUserExistenceErrors>
 will default to C<ENABLED> for newly created user pool clients if no
 value is provided.
@@ -348,6 +344,13 @@ valid and cannot be used.
 A list of provider names for the identity providers that are supported
 on this client. The following are supported: C<COGNITO>, C<Facebook>,
 C<Google> and C<LoginWithAmazon>.
+
+
+
+=head2 TokenValidityUnits => L<Paws::CognitoIdp::TokenValidityUnitsType>
+
+The units in which the validity times are represented in. Default for
+RefreshToken is days, and default for ID and access tokens are hours.
 
 
 

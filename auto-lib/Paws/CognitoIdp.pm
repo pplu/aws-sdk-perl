@@ -760,7 +760,8 @@ tokens related to user identity and access policies.
 This API reference provides information about user pools in Amazon
 Cognito User Pools.
 
-For more information, see the Amazon Cognito Documentation.
+For more information, see the Amazon Cognito Documentation
+(https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
@@ -865,17 +866,18 @@ If C<MessageAction> is not set, the default is to send a welcome
 message via email or phone (SMS).
 
 This message is based on a template that you configured in your call to
-or . This template includes your custom sign-up instructions and
-placeholders for user name and temporary password.
+create or update a user pool. This template includes your custom
+sign-up instructions and placeholders for user name and temporary
+password.
 
-Alternatively, you can call AdminCreateUser with
+Alternatively, you can call C<AdminCreateUser> with
 E<ldquo>SUPPRESSE<rdquo> for the C<MessageAction> parameter, and Amazon
 Cognito will not send any email.
 
 In either case, the user will be in the C<FORCE_CHANGE_PASSWORD> state
 until they sign in and change their password.
 
-AdminCreateUser requires developer credentials.
+C<AdminCreateUser> requires developer credentials.
 
 
 =head2 AdminDeleteUser
@@ -943,7 +945,8 @@ their password to sign-in. If the user to disable is a linked external
 IdP user, any link between that user and an existing user is removed.
 The next time the external user (no longer attached to the previously
 linked C<DestinationUser>) signs in, they must create a new user
-account. See .
+account. See AdminLinkProviderForUser
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html).
 
 This action is enabled only for admin access and requires developer
 credentials.
@@ -964,12 +967,12 @@ a source user.
 For de-linking a SAML identity, there are two scenarios. If the linked
 identity has not yet been used to sign-in, the C<ProviderAttributeName>
 and C<ProviderAttributeValue> must be the same values that were used
-for the C<SourceUser> when the identities were originally linked in the
-call. (If the linking was done with C<ProviderAttributeName> set to
-C<Cognito_Subject>, the same applies here). However, if the user has
-already signed in, the C<ProviderAttributeName> must be
-C<Cognito_Subject> and C<ProviderAttributeValue> must be the subject of
-the SAML assertion.
+for the C<SourceUser> when the identities were originally linked using
+C< AdminLinkProviderForUser> call. (If the linking was done with
+C<ProviderAttributeName> set to C<Cognito_Subject>, the same applies
+here). However, if the user has already signed in, the
+C<ProviderAttributeName> must be C<Cognito_Subject> and
+C<ProviderAttributeValue> must be the subject of the SAML assertion.
 
 
 =head2 AdminDisableUser
@@ -1137,12 +1140,12 @@ this API links that user to a federated user identity, so that when the
 federated user identity is used, the user signs in as the existing user
 account.
 
+The maximum number of federated identities linked to a user is 5.
+
 Because this API allows a user with an external federated identity to
 sign in as an existing user in the user pool, it is critical that it
 only be used with external identity providers and provider attributes
 that have been trusted by the application owner.
-
-See also .
 
 This action is enabled only for admin access and requires developer
 credentials.
@@ -1385,7 +1388,8 @@ Returns: a L<Paws::CognitoIdp::AdminSetUserSettingsResponse> instance
 
 I<This action is no longer supported.> You can use it to configure only
 SMS MFA. You can't use it to configure TOTP software token MFA. To
-configure either type of MFA, use the AdminSetUserMFAPreference action
+configure either type of MFA, use AdminSetUserMFAPreference
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserMFAPreference.html)
 instead.
 
 
@@ -1774,6 +1778,8 @@ the pool.
 
 =item UserPoolId => Str
 
+=item [AccessTokenValidity => Int]
+
 =item [AllowedOAuthFlows => ArrayRef[Str|Undef]]
 
 =item [AllowedOAuthFlowsUserPoolClient => Bool]
@@ -1790,6 +1796,8 @@ the pool.
 
 =item [GenerateSecret => Bool]
 
+=item [IdTokenValidity => Int]
+
 =item [LogoutURLs => ArrayRef[Str|Undef]]
 
 =item [PreventUserExistenceErrors => Str]
@@ -1799,6 +1807,8 @@ the pool.
 =item [RefreshTokenValidity => Int]
 
 =item [SupportedIdentityProviders => ArrayRef[Str|Undef]]
+
+=item [TokenValidityUnits => L<Paws::CognitoIdp::TokenValidityUnitsType>]
 
 =item [WriteAttributes => ArrayRef[Str|Undef]]
 
@@ -1847,7 +1857,7 @@ Each argument is described in detail in: L<Paws::CognitoIdp::DeleteGroup>
 
 Returns: nothing
 
-Deletes a group. Currently only groups with no members can be deleted.
+Deletes a group.
 
 Calling this action requires developer credentials.
 
@@ -2141,12 +2151,16 @@ Returns: a L<Paws::CognitoIdp::ForgotPasswordResponse> instance
 
 Calling this API causes a message to be sent to the end user with a
 confirmation code that is required to change the user's password. For
-the C<Username> parameter, you can use the username or user alias. If a
-verified phone number exists for the user, the confirmation code is
-sent to the phone number. Otherwise, if a verified email exists, the
-confirmation code is sent to the email. If neither a verified phone
-number nor a verified email exists, C<InvalidParameterException> is
-thrown. To use the confirmation code for resetting the password, call .
+the C<Username> parameter, you can use the username or user alias. The
+method used to send the confirmation code is sent according to the
+specified AccountRecoverySetting. For more information, see Recovering
+User Accounts
+(https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html)
+in the I<Amazon Cognito Developer Guide>. If neither a verified phone
+number nor a verified email exists, an C<InvalidParameterException> is
+thrown. To use the confirmation code for resetting the password, call
+ConfirmForgotPassword
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html).
 
 
 =head2 GetCSVHeader
@@ -2651,8 +2665,6 @@ configuration types.
 To enable Amazon Cognito advanced security features, update the user
 pool to include the C<UserPoolAddOns> keyC<AdvancedSecurityMode>.
 
-See .
-
 
 =head2 SetUICustomization
 
@@ -2710,7 +2722,12 @@ including which MFA factors are enabled and if any are preferred. Only
 one factor can be set as preferred. The preferred MFA factor will be
 used to authenticate a user if multiple factors are enabled. If
 multiple options are enabled and no preference is set, a challenge to
-choose an MFA option will be returned during sign in.
+choose an MFA option will be returned during sign in. If an MFA type is
+enabled for a user, the user will be prompted for MFA during all sign
+in attempts, unless device tracking is turned on and the device has
+been trusted. If you would like MFA to be applied selectively based on
+the assessed risk level of sign in attempts, disable MFA for users and
+turn on Adaptive Authentication for the user pool.
 
 
 =head2 SetUserPoolMfaConfig
@@ -2752,7 +2769,8 @@ Returns: a L<Paws::CognitoIdp::SetUserSettingsResponse> instance
 
 I<This action is no longer supported.> You can use it to configure only
 SMS MFA. You can't use it to configure TOTP software token MFA. To
-configure either type of MFA, use the SetUserMFAPreference action
+configure either type of MFA, use SetUserMFAPreference
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SetUserMFAPreference.html)
 instead.
 
 
@@ -3072,7 +3090,8 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
 
 Updates the specified user pool with the specified attributes. You can
-get a list of the current user pool settings with .
+get a list of the current user pool settings using DescribeUserPool
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html).
 
 If you don't provide a value for an attribute, it will be set to the
 default value.
@@ -3085,6 +3104,8 @@ default value.
 =item ClientId => Str
 
 =item UserPoolId => Str
+
+=item [AccessTokenValidity => Int]
 
 =item [AllowedOAuthFlows => ArrayRef[Str|Undef]]
 
@@ -3102,6 +3123,8 @@ default value.
 
 =item [ExplicitAuthFlows => ArrayRef[Str|Undef]]
 
+=item [IdTokenValidity => Int]
+
 =item [LogoutURLs => ArrayRef[Str|Undef]]
 
 =item [PreventUserExistenceErrors => Str]
@@ -3111,6 +3134,8 @@ default value.
 =item [RefreshTokenValidity => Int]
 
 =item [SupportedIdentityProviders => ArrayRef[Str|Undef]]
+
+=item [TokenValidityUnits => L<Paws::CognitoIdp::TokenValidityUnitsType>]
 
 =item [WriteAttributes => ArrayRef[Str|Undef]]
 
@@ -3123,7 +3148,8 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> instance
 
 Updates the specified user pool app client with the specified
 attributes. You can get a list of the current user pool app client
-settings with .
+settings using DescribeUserPoolClient
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html).
 
 If you don't provide a value for an attribute, it will be set to the
 default value.

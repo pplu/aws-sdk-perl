@@ -245,7 +245,8 @@ You can choose to enable case sensitivity on the username input for the
 selected sign-in option. For example, when this is set to C<False>,
 users will be able to sign in using either "username" or "Username".
 This configuration is immutable once it has been set. For more
-information, see .
+information, see UsernameConfigurationType
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html).
 
 
 =head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>

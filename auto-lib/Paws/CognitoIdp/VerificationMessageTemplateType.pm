@@ -50,23 +50,35 @@ The default email option.
 
 =head2 EmailMessage => Str
 
-The email message template.
+The email message template. EmailMessage is allowed only if
+EmailSendingAccount
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
+is DEVELOPER.
 
 
 =head2 EmailMessageByLink => Str
 
 The email message template for sending a confirmation link to the user.
+EmailMessageByLink is allowed only if EmailSendingAccount
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
+is DEVELOPER.
 
 
 =head2 EmailSubject => Str
 
-The subject line for the email message template.
+The subject line for the email message template. EmailSubject is
+allowed only if EmailSendingAccount
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
+is DEVELOPER.
 
 
 =head2 EmailSubjectByLink => Str
 
 The subject line for the email message template for sending a
-confirmation link to the user.
+confirmation link to the user. EmailSubjectByLink is allowed only
+EmailSendingAccount
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
+is DEVELOPER.
 
 
 =head2 SmsMessage => Str

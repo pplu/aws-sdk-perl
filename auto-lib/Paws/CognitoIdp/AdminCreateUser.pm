@@ -178,10 +178,10 @@ C<MessageAction> parameter.
 An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user
 without specifying any attributes other than C<Username>. However, any
-attributes that you specify as required (in or in the B<Attributes> tab
-of the console) must be supplied either by you (in your call to
-C<AdminCreateUser>) or by the user (when he or she signs up in response
-to your welcome message).
+attributes that you specify as required (when creating a user pool or
+in the B<Attributes> tab of the console) must be supplied either by you
+(in your call to C<AdminCreateUser>) or by the user (when he or she
+signs up in response to your welcome message).
 
 For custom attributes, you must prepend the C<custom:> prefix to the
 attribute name.
@@ -193,7 +193,9 @@ for managing your user pools.
 
 In your call to C<AdminCreateUser>, you can set the C<email_verified>
 attribute to C<True>, and you can set the C<phone_number_verified>
-attribute to C<True>. (You can also do this by calling .)
+attribute to C<True>. (You can also do this by calling
+AdminUpdateUserAttributes
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminUpdateUserAttributes.html).)
 
 =over
 

@@ -39,6 +39,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 The email configuration type.
 
+Amazon Cognito has specific regions for use with Amazon SES. For more
+information on the supported regions, see Email Settings for Amazon
+Cognito User Pools
+(https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-email.html).
+
 =head1 ATTRIBUTES
 
 
@@ -96,6 +101,47 @@ in the I<Amazon Cognito Developer Guide>.
 The default FROM address is no-reply@verificationemail.com. To
 customize the FROM address, provide the ARN of an Amazon SES verified
 email address for the C<SourceArn> parameter.
+
+If EmailSendingAccount is COGNITO_DEFAULT, the following parameters
+aren't allowed:
+
+=over
+
+=item *
+
+EmailVerificationMessage
+
+=item *
+
+EmailVerificationSubject
+
+=item *
+
+InviteMessageTemplate.EmailMessage
+
+=item *
+
+InviteMessageTemplate.EmailSubject
+
+=item *
+
+VerificationMessageTemplate.EmailMessage
+
+=item *
+
+VerificationMessageTemplate.EmailMessageByLink
+
+=item *
+
+VerificationMessageTemplate.EmailSubject,
+
+=item *
+
+VerificationMessageTemplate.EmailSubjectByLink
+
+=back
+
+DEVELOPER EmailSendingAccount is required.
 
 =item DEVELOPER
 

@@ -2,8 +2,11 @@
 package Paws::CognitoIdp::LambdaConfigType;
   use Moose;
   has CreateAuthChallenge => (is => 'ro', isa => 'Str');
+  has CustomEmailSender => (is => 'ro', isa => 'Paws::CognitoIdp::CustomEmailLambdaVersionConfigType');
   has CustomMessage => (is => 'ro', isa => 'Str');
+  has CustomSMSSender => (is => 'ro', isa => 'Paws::CognitoIdp::CustomSMSLambdaVersionConfigType');
   has DefineAuthChallenge => (is => 'ro', isa => 'Str');
+  has KMSKeyID => (is => 'ro', isa => 'Str');
   has PostAuthentication => (is => 'ro', isa => 'Str');
   has PostConfirmation => (is => 'ro', isa => 'Str');
   has PreAuthentication => (is => 'ro', isa => 'Str');
@@ -52,14 +55,31 @@ Specifies the configuration for AWS Lambda triggers.
 Creates an authentication challenge.
 
 
+=head2 CustomEmailSender => L<Paws::CognitoIdp::CustomEmailLambdaVersionConfigType>
+
+A custom email sender AWS Lambda trigger.
+
+
 =head2 CustomMessage => Str
 
 A custom Message AWS Lambda trigger.
 
 
+=head2 CustomSMSSender => L<Paws::CognitoIdp::CustomSMSLambdaVersionConfigType>
+
+A custom SMS sender AWS Lambda trigger.
+
+
 =head2 DefineAuthChallenge => Str
 
 Defines the authentication challenge.
+
+
+=head2 KMSKeyID => Str
+
+The Amazon Resource Name of Key Management Service Customer master keys
+. Amazon Cognito uses the key to encrypt codes and temporary passwords
+sent to C<CustomEmailSender> and C<CustomSMSSender>.
 
 
 =head2 PostAuthentication => Str
