@@ -2,7 +2,7 @@
 package Paws::ServiceDiscovery::ServiceChange;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfigChange', required => 1);
+  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfigChange');
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
 
 1;
@@ -45,15 +45,18 @@ A complex type that contains changes to an existing service.
 A description for the service.
 
 
-=head2 B<REQUIRED> DnsConfig => L<Paws::ServiceDiscovery::DnsConfigChange>
+=head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfigChange>
 
-A complex type that contains information about the Route 53 DNS records
-that you want AWS Cloud Map to create when you register an instance.
+Information about the Route 53 DNS records that you want AWS Cloud Map
+to create when you register an instance.
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
-
+I<Public DNS and HTTP namespaces only.> Settings for an optional health
+check. If you specify settings for a health check, AWS Cloud Map
+associates the health check with the records that you specify in
+C<DnsConfig>.
 
 
 

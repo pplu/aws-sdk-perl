@@ -4,6 +4,7 @@ package Paws::ServiceDiscovery::DiscoverInstances;
   has HealthStatus => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NamespaceName => (is => 'ro', isa => 'Str', required => 1);
+  has OptionalParameters => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
   has QueryParameters => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -32,12 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicediscovery = Paws->service('ServiceDiscovery');
     my $DiscoverInstancesResponse = $servicediscovery->DiscoverInstances(
-      NamespaceName   => 'MyNamespaceName',
-      ServiceName     => 'MyServiceName',
-      HealthStatus    => 'HEALTHY',           # OPTIONAL
-      MaxResults      => 1,                   # OPTIONAL
+      NamespaceName      => 'MyNamespaceName',
+      ServiceName        => 'MyServiceName',
+      HealthStatus       => 'HEALTHY',           # OPTIONAL
+      MaxResults         => 1,                   # OPTIONAL
+      OptionalParameters => {
+        'MyAttrKey' => 'MyAttrValue',    # key: max: 255, value: max: 1024
+      },    # OPTIONAL
       QueryParameters => {
-        'MyAttrKey' => 'MyAttrValue',         # key: max: 255, value: max: 1024
+        'MyAttrKey' => 'MyAttrValue',    # key: max: 255, value: max: 1024
       },    # OPTIONAL
     );
 
@@ -60,25 +64,34 @@ Valid values are: C<"HEALTHY">, C<"UNHEALTHY">, C<"ALL">
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want Cloud Map to return in
-the response to a C<DiscoverInstances> request. If you don't specify a
-value for C<MaxResults>, Cloud Map returns up to 100 instances.
+The maximum number of instances that you want AWS Cloud Map to return
+in the response to a C<DiscoverInstances> request. If you don't specify
+a value for C<MaxResults>, AWS Cloud Map returns up to 100 instances.
 
 
 
 =head2 B<REQUIRED> NamespaceName => Str
 
-The name of the namespace that you specified when you registered the
-instance.
+The C<HttpName> name of the namespace, found in the C<HttpProperties>
+member of the C<Properties> member of the namespace.
+
+
+
+=head2 OptionalParameters => L<Paws::ServiceDiscovery::Attributes>
+
+Opportunistic filters to scope the results based on custom attributes.
+If there are instances that match both the filters specified in both
+the C<QueryParameters> parameter and this parameter, they are returned.
+Otherwise, these filters are ignored and only instances that match the
+filters specified in the C<QueryParameters> parameter are returned.
 
 
 
 =head2 QueryParameters => L<Paws::ServiceDiscovery::Attributes>
 
-A string map that contains attributes with values that you can use to
-filter instances by any custom attribute that you specified when you
-registered the instance. Only instances that match all the specified
-key/value pairs will be returned.
+Filters to scope the results based on custom attributes for the
+instance. For example, C<{version=v1, az=1a}>. Only instances that
+match all the specified key-value pairs are returned.
 
 
 

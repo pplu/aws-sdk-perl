@@ -61,7 +61,9 @@ If you omit C<Instances>, AWS Cloud Map returns the health status for
 all the instances that are associated with the specified service.
 
 To get the IDs for the instances that you've registered by using a
-specified service, submit a ListInstances request.
+specified service, submit a ListInstances
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_ListInstances.html)
+request.
 
 
 

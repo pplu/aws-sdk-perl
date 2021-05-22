@@ -49,20 +49,20 @@ include:
 
 =over
 
-=item *
+=item EQ
 
-C<EQ>: When you specify C<EQ> for the condition, you can choose to list
-only public namespaces or private namespaces, but not both. C<EQ> is
-the default condition and can be omitted.
+When you specify C<EQ> for the condition, you can choose to list only
+public namespaces or private namespaces, but not both. C<EQ> is the
+default condition and can be omitted.
 
-=item *
+=item IN
 
-C<IN>: When you specify C<IN> for the condition, you can choose to list
-public namespaces, private namespaces, or both.
+When you specify C<IN> for the condition, you can choose to list public
+namespaces, private namespaces, or both.
 
-=item *
+=item BETWEEN
 
-C<BETWEEN>: Not applicable
+Not applicable
 
 =back
 

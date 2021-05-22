@@ -109,23 +109,21 @@ The status of the operation. Values include the following:
 
 =over
 
-=item *
+=item SUBMITTED
 
-B<SUBMITTED>: This is the initial state immediately after you submit a
-request.
+This is the initial state immediately after you submit a request.
 
-=item *
+=item PENDING
 
-B<PENDING>: AWS Cloud Map is performing the operation.
+AWS Cloud Map is performing the operation.
 
-=item *
+=item SUCCESS
 
-B<SUCCESS>: The operation succeeded.
+The operation succeeded.
 
-=item *
+=item FAIL
 
-B<FAIL>: The operation failed. For the failure reason, see
-C<ErrorMessage>.
+The operation failed. For the failure reason, see C<ErrorMessage>.
 
 =back
 
@@ -137,18 +135,17 @@ The name of the target entity that is associated with the operation:
 
 =over
 
-=item *
+=item NAMESPACE
 
-B<NAMESPACE>: The namespace ID is returned in the C<ResourceId>
-property.
+The namespace ID is returned in the C<ResourceId> property.
 
-=item *
+=item SERVICE
 
-B<SERVICE>: The service ID is returned in the C<ResourceId> property.
+The service ID is returned in the C<ResourceId> property.
 
-=item *
+=item INSTANCE
 
-B<INSTANCE>: The instance ID is returned in the C<ResourceId> property.
+The instance ID is returned in the C<ResourceId> property.
 
 =back
 

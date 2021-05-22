@@ -35,10 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-I<Public DNS namespaces only.> A complex type that contains settings
-for an optional health check. If you specify settings for a health
-check, AWS Cloud Map associates the health check with the records that
-you specify in C<DnsConfig>.
+I<Public DNS and HTTP namespaces only.> A complex type that contains
+settings for an optional health check. If you specify settings for a
+health check, AWS Cloud Map associates the health check with the
+records that you specify in C<DnsConfig>.
 
 If you specify a health check configuration, you can specify either
 C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
@@ -49,21 +49,23 @@ Route 53 Pricing (http://aws.amazon.com/route53/pricing/).
 
 Note the following about configuring health checks.
 
-B<A and AAAA records>
+=over
 
-If C<DnsConfig> includes configurations for both A and AAAA records,
-AWS Cloud Map creates a health check that uses the IPv4 address to
-check the health of the resource. If the endpoint that is specified by
-the IPv4 address is unhealthy, Route 53 considers both the A and AAAA
-records to be unhealthy.
+=item A and AAAA records
 
-B<CNAME records>
+If C<DnsConfig> includes configurations for both C<A> and C<AAAA>
+records, AWS Cloud Map creates a health check that uses the IPv4
+address to check the health of the resource. If the endpoint that is
+specified by the IPv4 address is unhealthy, Route 53 considers both the
+C<A> and C<AAAA> records to be unhealthy.
+
+=item CNAME records
 
 You can't specify settings for C<HealthCheckConfig> when the
 C<DNSConfig> includes C<CNAME> for the value of C<Type>. If you do, the
 C<CreateService> request will fail with an C<InvalidInput> error.
 
-B<Request interval>
+=item Request interval
 
 A Route 53 health checker in each health-checking region sends a health
 check request to an endpoint every 30 seconds. On average, your
@@ -72,13 +74,13 @@ However, health checkers don't coordinate with one another, so you'll
 sometimes see several requests per second followed by a few seconds
 with no health checks at all.
 
-B<Health checking regions>
+=item Health checking regions
 
 Health checkers perform checks from all Route 53 health-checking
 regions. For a list of the current regions, see Regions
-(http://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions).
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions).
 
-B<Alias records>
+=item Alias records
 
 When you register an instance, if you include the C<AWS_ALIAS_DNS_NAME>
 attribute, AWS Cloud Map creates a Route 53 alias record. Note the
@@ -92,7 +94,7 @@ Route 53 automatically sets C<EvaluateTargetHealth> to true for alias
 records. When C<EvaluateTargetHealth> is true, the alias record
 inherits the health of the referenced AWS resource. such as an ELB load
 balancer. For more information, see EvaluateTargetHealth
-(http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html#Route53-Type-AliasTarget-EvaluateTargetHealth).
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html#Route53-Type-AliasTarget-EvaluateTargetHealth).
 
 =item *
 
@@ -102,11 +104,14 @@ create the health check.
 
 =back
 
-B<Charges for health checks>
+=item Charges for health checks
 
 Health checks are basic Route 53 health checks that monitor an AWS
 endpoint. For information about pricing for health checks, see Amazon
 Route 53 Pricing (http://aws.amazon.com/route53/pricing/).
+
+=back
+
 
 =head1 ATTRIBUTES
 
@@ -115,20 +120,20 @@ Route 53 Pricing (http://aws.amazon.com/route53/pricing/).
 
 The number of consecutive health checks that an endpoint must pass or
 fail for Route 53 to change the current status of the endpoint from
-unhealthy to healthy or vice versa. For more information, see How Route
-53 Determines Whether an Endpoint Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+unhealthy to healthy or the other way around. For more information, see
+How Route 53 Determines Whether an Endpoint Is Healthy
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 in the I<Route 53 Developer Guide>.
 
 
 =head2 ResourcePath => Str
 
 The path that you want Route 53 to request when performing health
-checks. The path can be any value for which your endpoint will return
-an HTTP status code of 2xx or 3xx when the endpoint is healthy, such as
-the file C</docs/route53-health-check.html>. Route 53 automatically
-adds the DNS name for the service. If you don't specify a value for
-C<ResourcePath>, the default value is C</>.
+checks. The path can be any value for which your endpoint returns an
+HTTP status code of a 2xx or 3xx format when the endpoint is healthy,
+such as the file C</docs/route53-health-check.html>. Route 53
+automatically adds the DNS name for the service. If you don't specify a
+value for C<ResourcePath>, the default value is C</>.
 
 If you specify C<TCP> for C<Type>, you must I<not> specify a value for
 C<ResourcePath>.
@@ -171,7 +176,7 @@ C<ResourcePath>.
 
 For more information, see How Route 53 Determines Whether an Endpoint
 Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 in the I<Route 53 Developer Guide>.
 
 

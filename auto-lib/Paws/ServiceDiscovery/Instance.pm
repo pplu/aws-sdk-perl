@@ -61,15 +61,16 @@ For each attribute, the applicable value.
 
 Supported attribute keys include the following:
 
-B<AWS_ALIAS_DNS_NAME>
+=over
 
-B<>
+=item AWS_ALIAS_DNS_NAME
 
 If you want AWS Cloud Map to create a Route 53 alias record that routes
 traffic to an Elastic Load Balancing load balancer, specify the DNS
 name that is associated with the load balancer. For information about
-how to get the DNS name, see "DNSName" in the topic AliasTarget
-(http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
+how to get the DNS name, see AliasTarget-E<gt>DNSName
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html#Route53-Type-AliasTarget-DNSName)
+in the I<Route 53 API Reference>.
 
 Note the following:
 
@@ -78,7 +79,7 @@ Note the following:
 =item *
 
 The configuration for the service that is specified by C<ServiceId>
-must include settings for an A record, an AAAA record, or both.
+must include settings for an C<A> record, an C<AAAA> record, or both.
 
 =item *
 
@@ -88,8 +89,8 @@ C<RoutingPolicy> must be C<WEIGHTED>.
 =item *
 
 If the service that is specified by C<ServiceId> includes
-C<HealthCheckConfig> settings, AWS Cloud Map will create the health
-check, but it won't associate the health check with the alias record.
+C<HealthCheckConfig> settings, AWS Cloud Map creates the health check,
+but it won't associate the health check with the alias record.
 
 =item *
 
@@ -103,47 +104,64 @@ for any of the C<AWS_INSTANCE> attributes.
 
 =back
 
-B<AWS_INSTANCE_CNAME>
+=item AWS_EC2_INSTANCE_ID
 
-If the service configuration includes a CNAME record, the domain name
-that you want Route 53 to return in response to DNS queries, for
+I<HTTP namespaces only.> The Amazon EC2 instance ID for the instance.
+The C<AWS_INSTANCE_IPV4> attribute contains the primary private IPv4
+address.
+
+=item AWS_INIT_HEALTH_STATUS
+
+If the service configuration includes C<HealthCheckCustomConfig>, you
+can optionally use C<AWS_INIT_HEALTH_STATUS> to specify the initial
+status of the custom health check, C<HEALTHY> or C<UNHEALTHY>. If you
+don't specify a value for C<AWS_INIT_HEALTH_STATUS>, the initial status
+is C<HEALTHY>.
+
+=item AWS_INSTANCE_CNAME
+
+If the service configuration includes a C<CNAME> record, the domain
+name that you want Route 53 to return in response to DNS queries, for
 example, C<example.com>.
 
 This value is required if the service specified by C<ServiceId>
-includes settings for an CNAME record.
+includes settings for an C<CNAME> record.
 
-B<AWS_INSTANCE_IPV4>
+=item AWS_INSTANCE_IPV4
 
-If the service configuration includes an A record, the IPv4 address
+If the service configuration includes an C<A> record, the IPv4 address
 that you want Route 53 to return in response to DNS queries, for
 example, C<192.0.2.44>.
 
 This value is required if the service specified by C<ServiceId>
-includes settings for an A record. If the service includes settings for
-an SRV record, you must specify a value for C<AWS_INSTANCE_IPV4>,
-C<AWS_INSTANCE_IPV6>, or both.
+includes settings for an C<A> record. If the service includes settings
+for an C<SRV> record, you must specify a value for
+C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>, or both.
 
-B<AWS_INSTANCE_IPV6>
+=item AWS_INSTANCE_IPV6
 
-If the service configuration includes an AAAA record, the IPv6 address
-that you want Route 53 to return in response to DNS queries, for
-example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+If the service configuration includes an C<AAAA> record, the IPv6
+address that you want Route 53 to return in response to DNS queries,
+for example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
 
 This value is required if the service specified by C<ServiceId>
-includes settings for an AAAA record. If the service includes settings
-for an SRV record, you must specify a value for C<AWS_INSTANCE_IPV4>,
-C<AWS_INSTANCE_IPV6>, or both.
+includes settings for an C<AAAA> record. If the service includes
+settings for an C<SRV> record, you must specify a value for
+C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>, or both.
 
-B<AWS_INSTANCE_PORT>
+=item AWS_INSTANCE_PORT
 
-If the service includes an SRV record, the value that you want Route 53
-to return for the port.
+If the service includes an C<SRV> record, the value that you want Route
+53 to return for the port.
 
 If the service includes C<HealthCheckConfig>, the port on the endpoint
 that you want Route 53 to send requests to.
 
-This value is required if you specified settings for an SRV record when
-you created the service.
+This value is required if you specified settings for an C<SRV> record
+or a Route 53 health check when you created the service.
+
+=back
+
 
 
 =head2 CreatorRequestId => Str
@@ -167,9 +185,10 @@ following:
 =item *
 
 If the service that is specified by C<ServiceId> includes settings for
-an SRV record, the value of C<InstanceId> is automatically included as
-part of the value for the SRV record. For more information, see
-DnsRecord$Type.
+an C<SRV> record, the value of C<InstanceId> is automatically included
+as part of the value for the C<SRV> record. For more information, see
+DnsRecord E<gt> Type
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type).
 
 =item *
 

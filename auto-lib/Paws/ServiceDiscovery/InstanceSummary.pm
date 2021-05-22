@@ -60,34 +60,47 @@ Supported attribute keys include the following:
 
 =over
 
-=item *
+=item AWS_ALIAS_DNS_NAME
 
-C<AWS_ALIAS_DNS_NAME>: For an alias record that routes traffic to an
-Elastic Load Balancing load balancer, the DNS name that is associated
-with the load balancer.
+For an alias record that routes traffic to an Elastic Load Balancing
+load balancer, the DNS name that is associated with the load balancer.
 
-=item *
+=item AWS_EC2_INSTANCE_ID (HTTP namespaces only)
 
-C<AWS_INSTANCE_CNAME>: For a CNAME record, the domain name that Route
-53 returns in response to DNS queries, for example, C<example.com>.
+The Amazon EC2 instance ID for the instance. When the
+C<AWS_EC2_INSTANCE_ID> attribute is specified, then the
+C<AWS_INSTANCE_IPV4> attribute contains the primary private IPv4
+address.
 
-=item *
+=item AWS_INIT_HEALTH_STATUS
 
-C<AWS_INSTANCE_IPV4>: For an A record, the IPv4 address that Route 53
-returns in response to DNS queries, for example, C<192.0.2.44>.
+If the service configuration includes C<HealthCheckCustomConfig>, you
+can optionally use C<AWS_INIT_HEALTH_STATUS> to specify the initial
+status of the custom health check, C<HEALTHY> or C<UNHEALTHY>. If you
+don't specify a value for C<AWS_INIT_HEALTH_STATUS>, the initial status
+is C<HEALTHY>.
 
-=item *
+=item AWS_INSTANCE_CNAME
 
-C<AWS_INSTANCE_IPV6>: For an AAAA record, the IPv6 address that Route
-53 returns in response to DNS queries, for example,
+For a C<CNAME> record, the domain name that Route 53 returns in
+response to DNS queries, for example, C<example.com>.
+
+=item AWS_INSTANCE_IPV4
+
+For an C<A> record, the IPv4 address that Route 53 returns in response
+to DNS queries, for example, C<192.0.2.44>.
+
+=item AWS_INSTANCE_IPV6
+
+For an C<AAAA> record, the IPv6 address that Route 53 returns in
+response to DNS queries, for example,
 C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
 
-=item *
+=item AWS_INSTANCE_PORT
 
-C<AWS_INSTANCE_PORT>: For an SRV record, the value that Route 53
-returns for the port. In addition, if the service includes
-C<HealthCheckConfig>, the port on the endpoint that Route 53 sends
-requests to.
+For an C<SRV> record, the value that Route 53 returns for the port. In
+addition, if the service includes C<HealthCheckConfig>, the port on the
+endpoint that Route 53 sends requests to.
 
 =back
 

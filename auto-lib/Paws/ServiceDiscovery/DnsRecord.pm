@@ -48,6 +48,7 @@ the settings for this record.
 Alias records don't include a TTL because Route 53 uses the TTL for the
 AWS resource that an alias record routes traffic to. If you include the
 C<AWS_ALIAS_DNS_NAME> attribute when you submit a RegisterInstance
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html)
 request, the C<TTL> value is ignored. Always specify a TTL for the
 service; you can use a service to register instances that create either
 alias or non-alias records.
@@ -56,51 +57,56 @@ alias or non-alias records.
 =head2 B<REQUIRED> Type => Str
 
 The type of the resource, which indicates the type of value that Route
-53 returns in response to DNS queries.
-
-Note the following:
+53 returns in response to DNS queries. You can specify values for
+C<Type> in the following combinations:
 
 =over
 
 =item *
 
-B<A, AAAA, and SRV records:> You can specify settings for a maximum of
-one A, one AAAA, and one SRV record. You can specify them in any
-combination.
+B<C<A>>
 
 =item *
 
-B<CNAME records:> If you specify C<CNAME> for C<Type>, you can't define
-any other records. This is a limitation of DNS: you can't create a
-CNAME record and any other type of record that has the same name as a
-CNAME record.
+B<C<AAAA>>
 
 =item *
 
-B<Alias records:> If you want AWS Cloud Map to create a Route 53 alias
-record when you register an instance, specify C<A> or C<AAAA> for
-C<Type>.
+B<C<A> > and B< C<AAAA>>
 
 =item *
 
-B<All records:> You specify settings other than C<TTL> and C<Type> when
-you register an instance.
+B<C<SRV>>
+
+=item *
+
+B<C<CNAME>>
 
 =back
 
+If you want AWS Cloud Map to create a Route 53 alias record when you
+register an instance, specify C<A> or C<AAAA> for C<Type>.
+
+You specify other settings, such as the IP address for C<A> and C<AAAA>
+records, when you register an instance. For more information, see
+RegisterInstance
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html).
+
 The following values are supported:
 
-B<A>
+=over
+
+=item A
 
 Route 53 returns the IP address of the resource in IPv4 format, such as
 192.0.2.44.
 
-B<AAAA>
+=item AAAA
 
 Route 53 returns the IP address of the resource in IPv6 format, such as
 2001:0db8:85a3:0000:0000:abcd:0001:2345.
 
-B<CNAME>
+=item CNAME
 
 Route 53 returns the domain name of the resource, such as
 www.example.com. Note the following:
@@ -110,8 +116,10 @@ www.example.com. Note the following:
 =item *
 
 You specify the domain name that you want to route traffic to when you
-register an instance. For more information, see
-RegisterInstanceRequest$Attributes.
+register an instance. For more information, see Attributes
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html#cloudmap-RegisterInstance-request-Attributes)
+in the topic RegisterInstance
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html).
 
 =item *
 
@@ -125,10 +133,10 @@ C<InvalidInput> error.
 
 =back
 
-B<SRV>
+=item SRV
 
-Route 53 returns the value for an SRV record. The value for an SRV
-record uses the following values:
+Route 53 returns the value for an C<SRV> record. The value for an
+C<SRV> record uses the following values:
 
 C<priority weight port service-hostname>
 
@@ -145,6 +153,7 @@ be changed.
 
 The value of C<port> comes from the value that you specify for the
 C<AWS_INSTANCE_PORT> attribute when you submit a RegisterInstance
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html)
 request.
 
 =item *
@@ -171,17 +180,36 @@ The name of the namespace.
 
 For example, if the value of C<InstanceId> is C<test>, the name of the
 service is C<backend>, and the name of the namespace is C<example.com>,
-the value of C<service-hostname> is:
+the value of C<service-hostname> is the following:
 
 C<test.backend.example.com>
 
 =back
 
-If you specify settings for an SRV record and if you specify values for
-C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>, or both in the
-C<RegisterInstance> request, AWS Cloud Map automatically creates C<A>
-and/or C<AAAA> records that have the same name as the value of
-C<service-hostname> in the SRV record. You can ignore these records.
+If you specify settings for an C<SRV> record, note the following:
+
+=over
+
+=item *
+
+If you specify values for C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>,
+or both in the C<RegisterInstance> request, AWS Cloud Map automatically
+creates C<A> and/or C<AAAA> records that have the same name as the
+value of C<service-hostname> in the C<SRV> record. You can ignore these
+records.
+
+=item *
+
+If you're using a system that requires a specific C<SRV> format, such
+as HAProxy, see the Name
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_CreateService.html#cloudmap-CreateService-request-Name)
+element in the documentation about C<CreateService> for information
+about how to specify the correct name format.
+
+=back
+
+=back
+
 
 
 

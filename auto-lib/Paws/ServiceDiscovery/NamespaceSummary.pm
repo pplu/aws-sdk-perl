@@ -75,7 +75,7 @@ the namespace.
 
 =head2 Properties => L<Paws::ServiceDiscovery::NamespaceProperties>
 
-
+The properties of the namespace.
 
 
 =head2 ServiceCount => Int

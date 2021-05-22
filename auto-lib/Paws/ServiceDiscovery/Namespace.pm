@@ -63,8 +63,7 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing an operation
-twice.
+requests to be retried without the risk of running an operation twice.
 
 
 =head2 Description => Str
@@ -95,8 +94,28 @@ The number of services that are associated with the namespace.
 
 =head2 Type => Str
 
-The type of the namespace. Valid values are C<DNS_PUBLIC> and
-C<DNS_PRIVATE>.
+The type of the namespace. The methods for discovering instances
+depends on the value that you specify:
+
+=over
+
+=item HTTP
+
+Instances can be discovered only programmatically, using the AWS Cloud
+Map C<DiscoverInstances> API.
+
+=item DNS_PUBLIC
+
+Instances can be discovered using public DNS queries and using the
+C<DiscoverInstances> API.
+
+=item DNS_PRIVATE
+
+Instances can be discovered using DNS queries in VPCs and using the
+C<DiscoverInstances> API.
+
+=back
+
 
 
 

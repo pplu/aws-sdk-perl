@@ -17,7 +17,8 @@ Paws::ServiceDiscovery::CreatePublicDnsNamespaceResponse
 =head2 OperationId => Str
 
 A value that you can use to determine whether the request completed
-successfully. To get the status of the operation, see GetOperation.
+successfully. To get the status of the operation, see GetOperation
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_GetOperation.html).
 
 
 =head2 _request_id => Str

@@ -12,6 +12,7 @@ package Paws::ServiceDiscovery::Service;
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has NamespaceId => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -32,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceDiscovery::Service object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., NamespaceId => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -65,9 +66,9 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing the operation
-twice. C<CreatorRequestId> can be any unique string, for example, a
-date/time stamp.
+requests to be retried without the risk of running the operation twice.
+C<CreatorRequestId> can be any unique string, for example, a
+date/timestamp.
 
 
 =head2 Description => Str
@@ -83,10 +84,10 @@ that you want AWS Cloud Map to create when you register an instance.
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
-I<Public DNS namespaces only.> A complex type that contains settings
-for an optional health check. If you specify settings for a health
-check, AWS Cloud Map associates the health check with the records that
-you specify in C<DnsConfig>.
+I<Public DNS and HTTP namespaces only.> A complex type that contains
+settings for an optional health check. If you specify settings for a
+health check, AWS Cloud Map associates the health check with the
+records that you specify in C<DnsConfig>.
 
 For information about the charges for health checks, see Amazon Route
 53 Pricing (http://aws.amazon.com/route53/pricing/).
@@ -110,7 +111,8 @@ The ID that AWS Cloud Map assigned to the service when you created it.
 
 The number of instances that are currently associated with the service.
 Instances that were previously associated with the service but that
-have been deleted are not included in the count.
+have been deleted are not included in the count. The count might not
+reflect pending registrations and deregistrations.
 
 
 =head2 Name => Str
@@ -121,6 +123,31 @@ The name of the service.
 =head2 NamespaceId => Str
 
 The ID of the namespace that was used to create the service.
+
+
+=head2 Type => Str
+
+Describes the systems that can be used to discover the service
+instances.
+
+=over
+
+=item DNS_HTTP
+
+The service instances can be discovered using either DNS queries or the
+C<DiscoverInstances> API operation.
+
+=item HTTP
+
+The service instances can only be discovered using the
+C<DiscoverInstances> API operation.
+
+=item DNS
+
+Reserved.
+
+=back
+
 
 
 
