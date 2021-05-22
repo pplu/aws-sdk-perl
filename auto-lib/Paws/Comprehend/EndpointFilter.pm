@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend:
 
 =head1 DESCRIPTION
 
-The filter used to determine which endpoints are are returned. You can
+The filter used to determine which endpoints are returned. You can
 filter jobs on their name, model, status, or the date and time that
 they were created. You can only set one filter at a time.
 

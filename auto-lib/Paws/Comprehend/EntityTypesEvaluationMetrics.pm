@@ -43,7 +43,7 @@ specific entity type.
 
 =head2 F1Score => Num
 
-A measure of how accurate the recognizer results are for for a specific
+A measure of how accurate the recognizer results are for a specific
 entity type in the test data. It is derived from the C<Precision> and
 C<Recall> values. The C<F1Score> is the harmonic average of the two
 scores. The highest score is 1, and the worst score is 0.

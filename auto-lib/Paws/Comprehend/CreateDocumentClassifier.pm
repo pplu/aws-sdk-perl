@@ -7,6 +7,7 @@ package Paws::Comprehend::CreateDocumentClassifier;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierInputDataConfig', required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has Mode => (is => 'ro', isa => 'Str');
+  has ModelKmsKeyId => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Tag]');
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
@@ -41,15 +42,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataAccessRoleArn      => 'MyIamRoleArn',
       DocumentClassifierName => 'MyComprehendArnName',
       InputDataConfig        => {
-        S3Uri          => 'MyS3Uri',             # max: 1024
+        AugmentedManifests => [
+          {
+            AttributeNames => [
+              'MyAttributeNamesListItem', ...    # min: 1, max: 63
+            ],
+            S3Uri => 'MyS3Uri',                  # max: 1024; OPTIONAL
+
+          },
+          ...
+        ],                                       # OPTIONAL
+        DataFormat => 'COMPREHEND_CSV'
+        ,    # values: COMPREHEND_CSV, AUGMENTED_MANIFEST; OPTIONAL
         LabelDelimiter => 'MyLabelDelimiter',    # min: 1, max: 1; OPTIONAL
+        S3Uri          => 'MyS3Uri',             # max: 1024; OPTIONAL
       },
       LanguageCode       => 'en',
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
       Mode               => 'MULTI_CLASS',                   # OPTIONAL
+      ModelKmsKeyId      => 'MyKmsKeyId',                    # OPTIONAL
       OutputDataConfig   => {
-        KmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
-        S3Uri    => 'MyS3Uri',       # max: 1024
+        KmsKeyId => 'MyKmsKeyId',    # max: 2048
+        S3Uri    => 'MyS3Uri',       # max: 1024; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -127,6 +141,28 @@ labels for an individual document are separated by a delimiter. The
 default delimiter between labels is a pipe (|).
 
 Valid values are: C<"MULTI_CLASS">, C<"MULTI_LABEL">
+
+=head2 ModelKmsKeyId => Str
+
+ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt trained custom models. The ModelKmsKeyId can be either
+of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
+
+
 
 =head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>
 

@@ -1,7 +1,8 @@
 
 package Paws::Comprehend::DetectEntities;
   use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
+  has EndpointArn => (is => 'ro', isa => 'Str');
+  has LanguageCode => (is => 'ro', isa => 'Str');
   has Text => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $comprehend = Paws->service('Comprehend');
     my $DetectEntitiesResponse = $comprehend->DetectEntities(
-      LanguageCode => 'en',
-      Text         => 'MyString',
-
+      Text         => 'MyCustomerInputString',
+      EndpointArn  => 'MyEntityRecognizerEndpointArn',    # OPTIONAL
+      LanguageCode => 'en',                               # OPTIONAL
     );
 
     # Results:
@@ -45,11 +46,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LanguageCode => Str
+=head2 EndpointArn => Str
+
+The Amazon Resource Name of an endpoint that is associated with a
+custom entity recognition model. Provide an endpoint if you want to
+detect entities by using your own custom model instead of the default
+model that is used by Amazon Comprehend.
+
+If you specify an endpoint, Amazon Comprehend uses the language of your
+custom model, and it ignores any language code that you provide in your
+request.
+
+
+
+=head2 LanguageCode => Str
 
 The language of the input documents. You can specify any of the primary
 languages supported by Amazon Comprehend. All documents must be in the
 same language.
+
+If your request includes the endpoint for a custom entity recognition
+model, Amazon Comprehend uses the language of your custom model, and it
+ignores any language code that you specify here.
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 

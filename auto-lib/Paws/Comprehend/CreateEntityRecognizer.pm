@@ -5,6 +5,7 @@ package Paws::Comprehend::CreateEntityRecognizer;
   has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerInputDataConfig', required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
+  has ModelKmsKeyId => (is => 'ro', isa => 'Str');
   has RecognizerName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Tag]');
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
@@ -37,10 +38,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateEntityRecognizerResponse = $comprehend->CreateEntityRecognizer(
       DataAccessRoleArn => 'MyIamRoleArn',
       InputDataConfig   => {
-        Documents => {
-          S3Uri => 'MyS3Uri',    # max: 1024
-
-        },
         EntityTypes => [
           {
             Type => 'MyEntityTypeName',    # max: 64
@@ -52,6 +49,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           S3Uri => 'MyS3Uri',              # max: 1024
 
         },    # OPTIONAL
+        AugmentedManifests => [
+          {
+            AttributeNames => [
+              'MyAttributeNamesListItem', ...    # min: 1, max: 63
+            ],
+            S3Uri => 'MyS3Uri',                  # max: 1024
+
+          },
+          ...
+        ],                                       # OPTIONAL
+        DataFormat => 'COMPREHEND_CSV'
+        ,    # values: COMPREHEND_CSV, AUGMENTED_MANIFEST; OPTIONAL
+        Documents => {
+          S3Uri => 'MyS3Uri',    # max: 1024
+
+        },    # OPTIONAL
         EntityList => {
           S3Uri => 'MyS3Uri',    # max: 1024
 
@@ -60,6 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LanguageCode       => 'en',
       RecognizerName     => 'MyComprehendArnName',
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
+      ModelKmsKeyId      => 'MyKmsKeyId',                    # OPTIONAL
       Tags               => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -115,10 +129,34 @@ entity recognizer being created.
 
 =head2 B<REQUIRED> LanguageCode => Str
 
-The language of the input documents. All documents must be in the same
-language. Only English ("en") is currently supported.
+You can specify any of the following languages supported by Amazon
+Comprehend: English ("en"), Spanish ("es"), French ("fr"), Italian
+("it"), German ("de"), or Portuguese ("pt"). All documents must be in
+the same language.
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
+
+=head2 ModelKmsKeyId => Str
+
+ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt trained custom models. The ModelKmsKeyId can be either
+of the following formats
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
+
+
 
 =head2 B<REQUIRED> RecognizerName => Str
 

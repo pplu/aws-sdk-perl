@@ -2,6 +2,7 @@
 package Paws::Comprehend::CreateEndpoint;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
+  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
   has DesiredInferenceUnits => (is => 'ro', isa => 'Int', required => 1);
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
   has ModelArn => (is => 'ro', isa => 'Str', required => 1);
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndpointName          => 'MyComprehendEndpointName',
       ModelArn              => 'MyComprehendModelArn',
       ClientRequestToken    => 'MyClientRequestTokenString',    # OPTIONAL
+      DataAccessRoleArn     => 'MyIamRoleArn',                  # OPTIONAL
       Tags                  => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -61,6 +63,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 An idempotency token provided by the customer. If this token matches a
 previous endpoint creation request, Amazon Comprehend will not return a
 C<ResourceInUseException>.
+
+
+
+=head2 DataAccessRoleArn => Str
+
+The Amazon Resource Name (ARN) of the AWS identity and Access
+Management (IAM) role that grants Amazon Comprehend read access to
+trained custom models encrypted with a customer managed key
+(ModelKmsKeyId).
 
 
 

@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $BatchDetectKeyPhrasesResponse = $comprehend->BatchDetectKeyPhrases(
       LanguageCode => 'en',
       TextList     => [
-        'MyString', ...    # min: 1
+        'MyCustomerInputString', ...    # min: 1
       ],
 
     );
