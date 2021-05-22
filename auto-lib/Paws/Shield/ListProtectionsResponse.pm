@@ -24,9 +24,10 @@ Protections. For the second and subsequent ListProtections requests,
 specify the value of NextToken from the previous response to get
 information about another batch of Protections.
 
-AWS WAF might return the list of Protection objects in batches smaller
-than the number specified by MaxResults. If there are more Protection
-objects to return, AWS WAF will always also return a C<NextToken>.
+Shield Advanced might return the list of Protection objects in batches
+smaller than the number specified by MaxResults. If there are more
+Protection objects to return, Shield Advanced will always also return a
+C<NextToken>.
 
 
 =head2 Protections => ArrayRef[L<Paws::Shield::Protection>]

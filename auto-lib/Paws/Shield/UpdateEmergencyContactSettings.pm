@@ -32,7 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EmergencyContactList => [
         {
           EmailAddress => 'MyEmailAddress',    # min: 1, max: 150
-
+          ContactNotes => 'MyContactNotes',    # min: 1, max: 1024; OPTIONAL
+          PhoneNumber  => 'MyPhoneNumber',     # min: 1, max: 16; OPTIONAL
         },
         ...
       ],                                       # OPTIONAL
@@ -46,8 +47,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shi
 
 =head2 EmergencyContactList => ArrayRef[L<Paws::Shield::EmergencyContact>]
 
-A list of email addresses that the DRT can use to contact you during a
-suspected attack.
+A list of email addresses and phone numbers that the DDoS Response Team
+(DRT) can use to contact you if you have proactive engagement enabled,
+for escalations to the DRT and to initiate proactive customer support.
+
+If you have proactive engagement enabled, the contact list must include
+at least one phone number.
 
 
 

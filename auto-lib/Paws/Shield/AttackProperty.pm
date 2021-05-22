@@ -58,7 +58,7 @@ are valid only for WordPress reflective pingback DDoS attacks.
 
 =head2 TopContributors => ArrayRef[L<Paws::Shield::Contributor>]
 
-The array of Contributor objects that includes the top five
+The array of contributor objects that includes the top five
 contributors to an attack.
 
 
