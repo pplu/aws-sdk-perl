@@ -65,6 +65,11 @@ package Paws::CognitoIdentity;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPrincipalTagAttributeMap {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetPrincipalTagAttributeMap', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListIdentities {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::ListIdentities', @_);
@@ -93,6 +98,11 @@ package Paws::CognitoIdentity;
   sub SetIdentityPoolRoles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::SetIdentityPoolRoles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetPrincipalTagAttributeMap {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::SetPrincipalTagAttributeMap', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -146,7 +156,7 @@ package Paws::CognitoIdentity;
   }
 
 
-  sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity ListIdentities ListIdentityPools ListTagsForResource LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles TagResource UnlinkDeveloperIdentity UnlinkIdentity UntagResource UpdateIdentityPool / }
+  sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity GetPrincipalTagAttributeMap ListIdentities ListIdentityPools ListTagsForResource LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles SetPrincipalTagAttributeMap TagResource UnlinkDeveloperIdentity UnlinkIdentity UntagResource UpdateIdentityPool / }
 
 1;
 
@@ -422,7 +432,7 @@ Gets an OpenID token, using a known Cognito ID. This known Cognito ID
 is returned by GetId. You can optionally add additional logins for the
 identity. Supplying multiple logins creates an implicit link.
 
-The OpenId token is valid for 10 minutes.
+The OpenID token is valid for 10 minutes.
 
 This is a public API. You do not need any credentials to call this API.
 
@@ -436,6 +446,8 @@ This is a public API. You do not need any credentials to call this API.
 =item Logins => L<Paws::CognitoIdentity::LoginsMap>
 
 =item [IdentityId => Str]
+
+=item [PrincipalTags => L<Paws::CognitoIdentity::PrincipalTags>]
 
 =item [TokenDuration => Int]
 
@@ -463,6 +475,25 @@ existing C<IdentityId>. This API will create the identity in the
 specified C<IdentityPoolId>.
 
 You must use AWS Developer credentials to call this API.
+
+
+=head2 GetPrincipalTagAttributeMap
+
+=over
+
+=item IdentityPoolId => Str
+
+=item IdentityProviderName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdentity::GetPrincipalTagAttributeMap>
+
+Returns: a L<Paws::CognitoIdentity::GetPrincipalTagAttributeMapResponse> instance
+
+Use C<GetPrincipalTagAttributeMap> to list all mappings between
+C<PrincipalTags> and user attributes.
 
 
 =head2 ListIdentities
@@ -633,6 +664,29 @@ calls to GetCredentialsForIdentity action.
 You must use AWS Developer credentials to call this API.
 
 
+=head2 SetPrincipalTagAttributeMap
+
+=over
+
+=item IdentityPoolId => Str
+
+=item IdentityProviderName => Str
+
+=item [PrincipalTags => L<Paws::CognitoIdentity::PrincipalTags>]
+
+=item [UseDefaults => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdentity::SetPrincipalTagAttributeMap>
+
+Returns: a L<Paws::CognitoIdentity::SetPrincipalTagAttributeMapResponse> instance
+
+You can use this operation to use default (username and clientID)
+attribute or custom attribute mappings.
+
+
 =head2 TagResource
 
 =over
@@ -648,9 +702,9 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::TagResource>
 
 Returns: a L<Paws::CognitoIdentity::TagResourceResponse> instance
 
-Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
-label that you can use to categorize and manage identity pools in
-different ways, such as by purpose, owner, environment, or other
+Assigns a set of tags to the specified Amazon Cognito identity pool. A
+tag is a label that you can use to categorize and manage identity pools
+in different ways, such as by purpose, owner, environment, or other
 criteria.
 
 Each tag consists of a key and value, both of which you define. A key
@@ -737,8 +791,8 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::UntagResource>
 
 Returns: a L<Paws::CognitoIdentity::UntagResourceResponse> instance
 
-Removes the specified tags from an Amazon Cognito identity pool. You
-can use this action up to 5 times per second, per account
+Removes the specified tags from the specified Amazon Cognito identity
+pool. You can use this action up to 5 times per second, per account
 
 
 =head2 UpdateIdentityPool
