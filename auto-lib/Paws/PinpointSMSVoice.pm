@@ -39,11 +39,6 @@ package Paws::PinpointSMSVoice;
     my $call_object = $self->new_with_coercions('Paws::PinpointSMSVoice::GetConfigurationSetEventDestinations', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListConfigurationSets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::PinpointSMSVoice::ListConfigurationSets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub SendVoiceMessage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointSMSVoice::SendVoiceMessage', @_);
@@ -57,7 +52,7 @@ package Paws::PinpointSMSVoice;
   
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination DeleteConfigurationSet DeleteConfigurationSetEventDestination GetConfigurationSetEventDestinations ListConfigurationSets SendVoiceMessage UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination DeleteConfigurationSet DeleteConfigurationSetEventDestination GetConfigurationSetEventDestinations SendVoiceMessage UpdateConfigurationSetEventDestination / }
 
 1;
 
@@ -179,25 +174,6 @@ Returns: a L<Paws::PinpointSMSVoice::GetConfigurationSetEventDestinationsRespons
 Obtain information about an event destination, including the types of
 events it reports, the Amazon Resource Name (ARN) of the destination,
 and the name of the event destination.
-
-
-=head2 ListConfigurationSets
-
-=over
-
-=item [NextToken => Str]
-
-=item [PageSize => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::PinpointSMSVoice::ListConfigurationSets>
-
-Returns: a L<Paws::PinpointSMSVoice::ListConfigurationSetsResponse> instance
-
-List all of the configuration sets associated with your Amazon Pinpoint
-account in the current region.
 
 
 =head2 SendVoiceMessage
