@@ -10,6 +10,7 @@ package Paws::AutoScaling::PutScheduledUpdateGroupAction;
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
   has StartTime => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
+  has TimeZone => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -63,40 +64,43 @@ The name of the Auto Scaling group.
 
 =head2 DesiredCapacity => Int
 
-The number of EC2 instances that should be running in the Auto Scaling
-group.
+The desired capacity is the initial capacity of the Auto Scaling group
+after the scheduled action runs and the capacity it attempts to
+maintain. It can scale beyond this capacity if you add more scaling
+conditions.
 
 
 
 =head2 EndTime => Str
 
-The date and time for the recurring schedule to end. Amazon EC2 Auto
-Scaling does not perform the action after this time.
+The date and time for the recurring schedule to end, in UTC.
 
 
 
 =head2 MaxSize => Int
 
-The maximum number of instances in the Auto Scaling group.
+The maximum size of the Auto Scaling group.
 
 
 
 =head2 MinSize => Int
 
-The minimum number of instances in the Auto Scaling group.
+The minimum size of the Auto Scaling group.
 
 
 
 =head2 Recurrence => Str
 
-The recurring schedule for this action, in Unix cron syntax format.
-This format consists of five fields separated by white spaces: [Minute]
-[Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value must be
-in quotes (for example, C<"30 0 1 1,6,12 *">). For more information
-about this format, see Crontab (http://crontab.org).
+The recurring schedule for this action. This format consists of five
+fields separated by white spaces: [Minute] [Hour] [Day_of_Month]
+[Month_of_Year] [Day_of_Week]. The value must be in quotes (for
+example, C<"30 0 1 1,6,12 *">). For more information about this format,
+see Crontab (http://crontab.org).
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action starts and stops.
+
+Cron expressions use Universal Coordinated Time (UTC) by default.
 
 
 
@@ -124,6 +128,19 @@ returns an error message.
 =head2 Time => Str
 
 This parameter is no longer used.
+
+
+
+=head2 TimeZone => Str
+
+Specifies the time zone for a cron expression. If a time zone is not
+provided, UTC is used by default.
+
+Valid values are the canonical names of the IANA time zones, derived
+from the IANA Time Zone Database (such as C<Etc/GMT+9> or
+C<Pacific/Tahiti>). For more information, see
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+(https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 
 

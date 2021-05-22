@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('AutoScaling');
     my $BatchPutScheduledUpdateGroupActionAnswer =
       $autoscaling->BatchPutScheduledUpdateGroupAction(
-      AutoScalingGroupName        => 'MyResourceName',
+      AutoScalingGroupName        => 'MyXmlStringMaxLen255',
       ScheduledUpdateGroupActions => [
         {
           ScheduledActionName => 'MyXmlStringMaxLen255',    # min: 1, max: 255
@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MinSize             => 1,                         # OPTIONAL
           Recurrence          => 'MyXmlStringMaxLen255',    # min: 1, max: 255
           StartTime           => '1970-01-01T01:00:00',     # OPTIONAL
+          TimeZone            => 'MyXmlStringMaxLen255',    # min: 1, max: 255
         },
         ...
       ],

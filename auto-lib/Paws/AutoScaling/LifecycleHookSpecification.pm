@@ -39,8 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a lifecycle hook. Used in combination with
-CreateAutoScalingGroup.
+Describes information used to specify a lifecycle hook for an Auto
+Scaling group.
 
 A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on
 an instance when the instance launches (before it is put into service)
@@ -72,23 +72,18 @@ instances launch or terminate.>
 =item 4.
 
 If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using RecordLifecycleActionHeartbeat.
+the instance in a pending state.
 
 =item 5.
 
 If you finish before the timeout period ends, complete the lifecycle
-action using CompleteLifecycleAction.
+action.
 
 =back
 
-For more information, see Amazon EC2 Auto Scaling Lifecycle Hooks
+For more information, see Amazon EC2 Auto Scaling lifecycle hooks
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
-
-You can view the lifecycle hooks for an Auto Scaling group using
-DescribeLifecycleHooks. You can modify an existing lifecycle hook or
-create new lifecycle hooks using PutLifecycleHook. If you are no longer
-using a lifecycle hook, you can delete it using DeleteLifecycleHook.
 
 =head1 ATTRIBUTES
 

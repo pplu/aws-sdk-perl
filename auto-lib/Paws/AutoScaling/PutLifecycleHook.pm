@@ -75,8 +75,8 @@ value is C<3600> seconds (1 hour).
 
 If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
 action that you specified in the C<DefaultResult> parameter. You can
-prevent the lifecycle hook from timing out by calling
-RecordLifecycleActionHeartbeat.
+prevent the lifecycle hook from timing out by calling the
+RecordLifecycleActionHeartbeat API.
 
 
 
@@ -103,8 +103,8 @@ autoscaling:EC2_INSTANCE_TERMINATING
 
 =back
 
-Conditional: This parameter is required for new lifecycle hooks, but
-optional when updating existing hooks.
+Required for new lifecycle hooks, but optional when updating existing
+hooks.
 
 
 
@@ -139,8 +139,8 @@ The ARN of the IAM role that allows the Auto Scaling group to publish
 to the specified notification target, for example, an Amazon SNS topic
 or an Amazon SQS queue.
 
-Conditional: This parameter is required for new lifecycle hooks, but
-optional when updating existing hooks.
+Required for new lifecycle hooks, but optional when updating existing
+hooks.
 
 
 

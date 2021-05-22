@@ -88,7 +88,19 @@ The launch template for the instance.
 
 =head2 B<REQUIRED> LifecycleState => Str
 
-The lifecycle state for the instance.
+The lifecycle state for the instance. The C<Quarantined> state is not
+used. For information about lifecycle states, see Instance lifecycle
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+Valid Values: C<Pending> | C<Pending:Wait> | C<Pending:Proceed> |
+C<Quarantined> | C<InService> | C<Terminating> | C<Terminating:Wait> |
+C<Terminating:Proceed> | C<Terminated> | C<Detaching> | C<Detached> |
+C<EnteringStandby> | C<Standby> | C<Warmed:Pending> |
+C<Warmed:Pending:Wait> | C<Warmed:Pending:Proceed> |
+C<Warmed:Terminating> | C<Warmed:Terminating:Wait> |
+C<Warmed:Terminating:Proceed> | C<Warmed:Terminated> |
+C<Warmed:Stopped> | C<Warmed:Running>
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool

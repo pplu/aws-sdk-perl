@@ -15,6 +15,7 @@ package Paws::AutoScaling::LaunchConfiguration;
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchConfigurationARN => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::AutoScaling::InstanceMetadataOptions');
   has PlacementTenancy => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -59,9 +60,8 @@ Describes a launch configuration.
 =head2 AssociatePublicIpAddress => Bool
 
 For Auto Scaling groups that are running in a VPC, specifies whether to
-assign a public IP address to the group's instances.
-
-For more information, see Launching Auto Scaling Instances in a VPC
+assign a public IP address to the group's instances. For more
+information, see Launching Auto Scaling instances in a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -69,9 +69,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 
 A block device mapping, which specifies the block devices for the
-instance.
-
-For more information, see Block Device Mapping
+instance. For more information, see Block Device Mapping
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -79,12 +77,10 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 =head2 ClassicLinkVPCId => Str
 
 The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
-to.
-
-For more information, see ClassicLink
+to. For more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon EC2 User Guide for Linux Instances> and Linking
-EC2-Classic Instances to a VPC
+EC2-Classic instances to a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -97,7 +93,7 @@ C<ClassicLinkVPCId>.
 For more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon EC2 User Guide for Linux Instances> and Linking
-EC2-Classic Instances to a VPC
+EC2-Classic instances to a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -110,9 +106,8 @@ The creation date and time for the launch configuration.
 =head2 EbsOptimized => Bool
 
 Specifies whether the launch configuration is optimized for EBS I/O
-(C<true>) or not (C<false>).
-
-For more information, see Amazon EBS-Optimized Instances
+(C<true>) or not (C<false>). For more information, see Amazon
+EBS-Optimized Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -121,10 +116,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance. The instance profile
-contains the IAM role.
-
-For more information, see IAM Role for Applications That Run on Amazon
-EC2 Instances
+contains the IAM role. For more information, see IAM role for
+applications that run on Amazon EC2 instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -132,9 +125,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =head2 B<REQUIRED> ImageId => Str
 
 The ID of the Amazon Machine Image (AMI) to use to launch your EC2
-instances.
-
-For more information, see Finding an AMI
+instances. For more information, see Finding an AMI
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -146,7 +137,7 @@ Controls whether instances in this group are launched with detailed
 
 For more information, see Configure Monitoring for Auto Scaling
 Instances
-(https://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html#enable-as-instance-metrics)
+(https://docs.aws.amazon.com/autoscaling/latest/userguide/enable-as-instance-metrics.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -157,7 +148,7 @@ The instance type for the instances.
 For information about available instance types, see Available Instance
 Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
-in the I<Amazon EC2 User Guide for Linux Instances.>
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 KernelId => Str
@@ -184,14 +175,23 @@ The Amazon Resource Name (ARN) of the launch configuration.
 The name of the launch configuration.
 
 
+=head2 MetadataOptions => L<Paws::AutoScaling::InstanceMetadataOptions>
+
+The metadata options for the instances. For more information, see
+Configuring the Instance Metadata Options
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
 =head2 PlacementTenancy => Str
 
 The tenancy of the instance, either C<default> or C<dedicated>. An
 instance with C<dedicated> tenancy runs on isolated, single-tenant
 hardware and can only be launched into a VPC.
 
-For more information, see Instance Placement Tenancy
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy)
+For more information, see Configuring instance tenancy with Amazon EC2
+Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -203,9 +203,8 @@ The ID of the RAM disk associated with the AMI.
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
 A list that contains the security groups to assign to the instances in
-the Auto Scaling group.
-
-For more information, see Security Groups for Your VPC
+the Auto Scaling group. For more information, see Security Groups for
+Your VPC
 (https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -214,22 +213,22 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
-specify exceeds the current Spot price.
-
-For more information, see Launching Spot Instances in Your Auto Scaling
-Group
+specify exceeds the current Spot price. For more information, see
+Requesting Spot Instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 UserData => Str
 
-The Base64-encoded user data to make available to the launched EC2
-instances.
-
-For more information, see Instance Metadata and User Data
+The user data to make available to the launched EC2 instances. For more
+information, see Instance metadata and user data
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+(Linux) and Instance metadata and user data
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html)
+(Windows). If you are using a command line tool, base64-encoding is
+performed for you, and you can load the text from a file. Otherwise,
+you must provide base64-encoded text. User data is limited to 16 KB.
 
 
 

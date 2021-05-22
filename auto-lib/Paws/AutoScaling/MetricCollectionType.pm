@@ -76,6 +76,54 @@ C<GroupTerminatingInstances>
 
 C<GroupTotalInstances>
 
+=item *
+
+C<GroupInServiceCapacity>
+
+=item *
+
+C<GroupPendingCapacity>
+
+=item *
+
+C<GroupStandbyCapacity>
+
+=item *
+
+C<GroupTerminatingCapacity>
+
+=item *
+
+C<GroupTotalCapacity>
+
+=item *
+
+C<WarmPoolDesiredCapacity>
+
+=item *
+
+C<WarmPoolWarmedCapacity>
+
+=item *
+
+C<WarmPoolPendingCapacity>
+
+=item *
+
+C<WarmPoolTerminatingCapacity>
+
+=item *
+
+C<WarmPoolTotalCapacity>
+
+=item *
+
+C<GroupAndWarmPoolDesiredCapacity>
+
+=item *
+
+C<GroupAndWarmPoolTotalCapacity>
+
 =back
 
 

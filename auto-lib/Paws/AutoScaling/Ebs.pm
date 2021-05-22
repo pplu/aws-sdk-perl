@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an Amazon EBS volume. Used in combination with
-BlockDeviceMapping.
+Describes information used to set up an Amazon EBS volume specified in
+a block device mapping.
 
 =head1 ATTRIBUTES
 
@@ -77,7 +77,7 @@ a customer managed CMK, whether or not the snapshot was encrypted.
 For more information, see Using Encryption with EBS-Backed AMIs
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html)
 in the I<Amazon EC2 User Guide for Linux Instances> and Required CMK
-Key Policy for Use with Encrypted Volumes
+key policy for use with encrypted volumes
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/key-policy-requirements-EBS-encryption.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -90,17 +90,15 @@ more information, see Amazon EBS Volume Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Conditional: This parameter is required when the volume type is C<io1>.
-(Not used with C<standard>, C<gp2>, C<st1>, or C<sc1> volumes.)
+Required when the volume type is C<io1>. (Not used with C<standard>,
+C<gp2>, C<st1>, or C<sc1> volumes.)
 
 
 =head2 SnapshotId => Str
 
 The snapshot ID of the volume to use.
 
-Conditional: This parameter is optional if you specify a volume size.
-If you specify both C<SnapshotId> and C<VolumeSize>, C<VolumeSize> must
-be equal or greater than the size of the snapshot.
+You must specify either a C<VolumeSize> or a C<SnapshotId>.
 
 
 =head2 VolumeSize => Int
@@ -115,7 +113,9 @@ snapshot size.
 Default: If you create a volume from a snapshot and you don't specify a
 volume size, the default is the snapshot size.
 
-At least one of VolumeSize or SnapshotId is required.
+You must specify either a C<VolumeSize> or a C<SnapshotId>. If you
+specify both C<SnapshotId> and C<VolumeSize>, the volume size must be
+equal or greater than the size of the snapshot.
 
 
 =head2 VolumeType => Str

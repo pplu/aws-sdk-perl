@@ -38,13 +38,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an instances distribution for an Auto Scaling group with
+Describes an instances distribution for an Auto Scaling group with a
 MixedInstancesPolicy.
 
 The instances distribution specifies the distribution of On-Demand
 Instances and Spot Instances, the maximum price to pay for Spot
 Instances, and how the Auto Scaling group allocates instance types to
-fulfill On-Demand and Spot capacity.
+fulfill On-Demand and Spot capacities.
 
 When you update C<SpotAllocationStrategy>, C<SpotInstancePools>, or
 C<SpotMaxPrice>, this update action does not deploy any changes across
@@ -61,46 +61,33 @@ according to the group's termination policies.
 =head2 OnDemandAllocationStrategy => Str
 
 Indicates how to allocate instance types to fulfill On-Demand capacity.
-
 The only valid value is C<prioritized>, which is also the default
-value. This strategy uses the order of instance type overrides for the
-LaunchTemplate to define the launch priority of each instance type. The
-first instance type in the array is prioritized higher than the last.
-If all your On-Demand capacity cannot be fulfilled using your highest
-priority instance, then the Auto Scaling groups launches the remaining
-capacity using the second priority instance type, and so on.
+value. This strategy uses the order of instance types in the
+C<LaunchTemplateOverrides> to define the launch priority of each
+instance type. The first instance type in the array is prioritized
+higher than the last. If all your On-Demand capacity cannot be
+fulfilled using your highest priority instance, then the Auto Scaling
+groups launches the remaining capacity using the second priority
+instance type, and so on.
 
 
 =head2 OnDemandBaseCapacity => Int
 
 The minimum amount of the Auto Scaling group's capacity that must be
 fulfilled by On-Demand Instances. This base portion is provisioned
-first as your group scales.
-
-Default if not set is 0. If you leave it set to 0, On-Demand Instances
-are launched as a percentage of the Auto Scaling group's desired
-capacity, per the C<OnDemandPercentageAboveBaseCapacity> setting.
-
-An update to this setting means a gradual replacement of instances to
-maintain the specified number of On-Demand Instances for your base
-capacity. When replacing instances, Amazon EC2 Auto Scaling launches
-new instances before terminating the old ones.
+first as your group scales. Defaults to 0 if not specified. If you
+specify weights for the instance types in the overrides, set the value
+of C<OnDemandBaseCapacity> in terms of the number of capacity units,
+and not the number of instances.
 
 
 =head2 OnDemandPercentageAboveBaseCapacity => Int
 
 Controls the percentages of On-Demand Instances and Spot Instances for
-your additional capacity beyond C<OnDemandBaseCapacity>.
-
-Default if not set is 100. If you leave it set to 100, the percentages
-are 100% for On-Demand Instances and 0% for Spot Instances.
-
-An update to this setting means a gradual replacement of instances to
-maintain the percentage of On-Demand Instances for your additional
-capacity above the base capacity. When replacing instances, Amazon EC2
-Auto Scaling launches new instances before terminating the old ones.
-
-Valid Range: Minimum value of 0. Maximum value of 100.
+your additional capacity beyond C<OnDemandBaseCapacity>. Expressed as a
+number (for example, 20 specifies 20% On-Demand Instances, 80% Spot
+Instances). Defaults to 100 if not specified. If set to 100, only
+On-Demand Instances are provisioned.
 
 
 =head2 SpotAllocationStrategy => Str
@@ -110,38 +97,34 @@ Indicates how to allocate instances across Spot Instance pools.
 If the allocation strategy is C<lowest-price>, the Auto Scaling group
 launches instances using the Spot pools with the lowest price, and
 evenly allocates your instances across the number of Spot pools that
-you specify. If the allocation strategy is C<capacity-optimized>, the
+you specify. Defaults to C<lowest-price> if not specified.
+
+If the allocation strategy is C<capacity-optimized> (recommended), the
 Auto Scaling group launches instances using Spot pools that are
-optimally chosen based on the available Spot capacity.
-
-The default Spot allocation strategy for calls that you make through
-the API, the AWS CLI, or the AWS SDKs is C<lowest-price>. The default
-Spot allocation strategy for the AWS Management Console is
-C<capacity-optimized>.
-
-Valid values: C<lowest-price> | C<capacity-optimized>
+optimally chosen based on the available Spot capacity. Alternatively,
+you can use C<capacity-optimized-prioritized> and set the order of
+instance types in the list of launch template overrides from highest to
+lowest priority (from first to last in the list). Amazon EC2 Auto
+Scaling honors the instance type priorities on a best-effort basis but
+optimizes for capacity first.
 
 
 =head2 SpotInstancePools => Int
 
 The number of Spot Instance pools across which to allocate your Spot
 Instances. The Spot pools are determined from the different instance
-types in the Overrides array of LaunchTemplate. Default if not set is
-2.
-
-Used only when the Spot allocation strategy is C<lowest-price>.
-
-Valid Range: Minimum value of 1. Maximum value of 20.
+types in the overrides. Valid only when the Spot allocation strategy is
+C<lowest-price>. Value must be in the range of 1 to 20. Defaults to 2
+if not specified.
 
 
 =head2 SpotMaxPrice => Str
 
 The maximum price per unit hour that you are willing to pay for a Spot
-Instance. If you leave the value of this parameter blank (which is the
-default), the maximum Spot price is set at the On-Demand price.
-
-To remove a value that you previously set, include the parameter but
-leave the value blank.
+Instance. If you leave the value at its default (empty), Amazon EC2
+Auto Scaling uses the On-Demand price as the maximum Spot price. To
+remove a value that you previously set, include the property but
+specify an empty string ("") for the value.
 
 
 

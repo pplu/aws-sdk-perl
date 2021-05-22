@@ -8,6 +8,7 @@ package Paws::AutoScaling::ScheduledUpdateGroupActionRequest;
   has Recurrence => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
   has StartTime => (is => 'ro', isa => 'Str');
+  has TimeZone => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::ScheduledUpdateGroupActionRequest object:
 
-  $service_obj->Method(Att1 => { DesiredCapacity => $value, ..., StartTime => $value  });
+  $service_obj->Method(Att1 => { DesiredCapacity => $value, ..., TimeZone => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,35 +40,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes one or more scheduled scaling action updates for a specified
-Auto Scaling group. Used in combination with
-BatchPutScheduledUpdateGroupAction.
-
-When updating a scheduled scaling action, all optional parameters are
-left unchanged if not specified.
+Describes information used for one or more scheduled scaling action
+updates in a BatchPutScheduledUpdateGroupAction operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 DesiredCapacity => Int
 
-The number of EC2 instances that should be running in the group.
+The desired capacity is the initial capacity of the Auto Scaling group
+after the scheduled action runs and the capacity it attempts to
+maintain.
 
 
 =head2 EndTime => Str
 
-The date and time for the recurring schedule to end. Amazon EC2 Auto
-Scaling does not perform the action after this time.
+The date and time for the recurring schedule to end, in UTC.
 
 
 =head2 MaxSize => Int
 
-The maximum number of instances in the Auto Scaling group.
+The maximum size of the Auto Scaling group.
 
 
 =head2 MinSize => Int
 
-The minimum number of instances in the Auto Scaling group.
+The minimum size of the Auto Scaling group.
 
 
 =head2 Recurrence => Str
@@ -80,6 +78,8 @@ about this format, see Crontab (http://crontab.org).
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action starts and stops.
+
+Cron expressions use Universal Coordinated Time (UTC) by default.
 
 
 =head2 B<REQUIRED> ScheduledActionName => Str
@@ -99,6 +99,18 @@ the specified recurrence.
 
 If you try to schedule the action in the past, Amazon EC2 Auto Scaling
 returns an error message.
+
+
+=head2 TimeZone => Str
+
+Specifies the time zone for a cron expression. If a time zone is not
+provided, UTC is used by default.
+
+Valid values are the canonical names of the IANA time zones, derived
+from the IANA Time Zone Database (such as C<Etc/GMT+9> or
+C<Pacific/Tahiti>). For more information, see
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+(https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 
 

@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To describe Auto Scaling policies
+    # To describe scaling policies
     # This example describes the policies for the specified Auto Scaling group.
     my $PoliciesType = $autoscaling->DescribePolicies(
       'AutoScalingGroupName' => 'my-auto-scaling-group' );
@@ -79,7 +79,7 @@ an unknown policy name, it is ignored with no error.
 =head2 PolicyTypes => ArrayRef[Str|Undef]
 
 One or more policy types. The valid values are C<SimpleScaling>,
-C<StepScaling>, and C<TargetTrackingScaling>.
+C<StepScaling>, C<TargetTrackingScaling>, and C<PredictiveScaling>.
 
 
 

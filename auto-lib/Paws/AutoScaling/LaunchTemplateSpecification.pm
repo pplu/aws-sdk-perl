@@ -35,11 +35,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a launch template and the launch template version.
+Describes the Amazon EC2 launch template and the launch template
+version that can be used by an Auto Scaling group to configure Amazon
+EC2 instances.
 
 The launch template that is specified must be configured for use with
-an Auto Scaling group. For more information, see Creating a Launch
-Template for an Auto Scaling Group
+an Auto Scaling group. For more information, see Creating a launch
+template for an Auto Scaling group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -48,23 +50,45 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 LaunchTemplateId => Str
 
-The ID of the launch template. You must specify either a template ID or
-a template name.
+The ID of the launch template. To get the template ID, use the Amazon
+EC2 DescribeLaunchTemplates
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html)
+API operation. New launch templates can be created using the Amazon EC2
+CreateLaunchTemplate
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplate.html)
+API.
+
+Conditional: You must specify either a C<LaunchTemplateId> or a
+C<LaunchTemplateName>.
 
 
 =head2 LaunchTemplateName => Str
 
-The name of the launch template. You must specify either a template
-name or a template ID.
+The name of the launch template. To get the template name, use the
+Amazon EC2 DescribeLaunchTemplates
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html)
+API operation. New launch templates can be created using the Amazon EC2
+CreateLaunchTemplate
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplate.html)
+API.
+
+Conditional: You must specify either a C<LaunchTemplateId> or a
+C<LaunchTemplateName>.
 
 
 =head2 Version => Str
 
-The version number, C<$Latest>, or C<$Default>. If the value is
-C<$Latest>, Amazon EC2 Auto Scaling selects the latest version of the
-launch template when launching instances. If the value is C<$Default>,
-Amazon EC2 Auto Scaling selects the default version of the launch
-template when launching instances. The default value is C<$Default>.
+The version number, C<$Latest>, or C<$Default>. To get the version
+number, use the Amazon EC2 DescribeLaunchTemplateVersions
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplateVersions.html)
+API operation. New launch template versions can be created using the
+Amazon EC2 CreateLaunchTemplateVersion
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html)
+API. If the value is C<$Latest>, Amazon EC2 Auto Scaling selects the
+latest version of the launch template when launching instances. If the
+value is C<$Default>, Amazon EC2 Auto Scaling selects the default
+version of the launch template when launching instances. The default
+value is C<$Default>.
 
 
 

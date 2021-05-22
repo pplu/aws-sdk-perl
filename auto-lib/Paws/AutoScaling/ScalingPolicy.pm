@@ -13,6 +13,7 @@ package Paws::AutoScaling::ScalingPolicy;
   has PolicyARN => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyType => (is => 'ro', isa => 'Str');
+  has PredictiveScalingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::PredictiveScalingConfiguration');
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
   has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
   has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::TargetTrackingConfiguration');
@@ -54,9 +55,9 @@ Describes a scaling policy.
 
 =head2 AdjustmentType => Str
 
-The adjustment type, which specifies how C<ScalingAdjustment> is
-interpreted. The valid values are C<ChangeInCapacity>,
-C<ExactCapacity>, and C<PercentChangeInCapacity>.
+Specifies how the scaling adjustment is interpreted (for example, an
+absolute number or a percentage). The valid values are
+C<ChangeInCapacity>, C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
 
 =head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
@@ -71,8 +72,7 @@ The name of the Auto Scaling group.
 
 =head2 Cooldown => Int
 
-The amount of time, in seconds, after a scaling activity completes
-before any further dynamic scaling activities can start.
+The duration of the policy's cooldown period, in seconds.
 
 
 =head2 Enabled => Bool
@@ -95,10 +95,8 @@ C<Minimum>, C<Maximum>, and C<Average>.
 
 =head2 MinAdjustmentMagnitude => Int
 
-The minimum number of instances to scale. If the value of
-C<AdjustmentType> is C<PercentChangeInCapacity>, the scaling policy
-changes the C<DesiredCapacity> of the Auto Scaling group by at least
-this many instances. Otherwise, the error is C<ValidationError>.
+The minimum value to scale by when the adjustment type is
+C<PercentChangeInCapacity>.
 
 
 =head2 MinAdjustmentStep => Int
@@ -119,8 +117,38 @@ The name of the scaling policy.
 
 =head2 PolicyType => Str
 
-The policy type. The valid values are C<SimpleScaling>, C<StepScaling>,
-and C<TargetTrackingScaling>.
+One of the following policy types:
+
+=over
+
+=item *
+
+C<TargetTrackingScaling>
+
+=item *
+
+C<StepScaling>
+
+=item *
+
+C<SimpleScaling> (default)
+
+=item *
+
+C<PredictiveScaling>
+
+=back
+
+For more information, see Target tracking scaling policies
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html)
+and Step and simple scaling policies
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+=head2 PredictiveScalingConfiguration => L<Paws::AutoScaling::PredictiveScalingConfiguration>
+
+A predictive scaling policy.
 
 
 =head2 ScalingAdjustment => Int

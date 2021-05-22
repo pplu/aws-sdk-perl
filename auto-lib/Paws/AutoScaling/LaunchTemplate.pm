@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes a launch template and overrides.
 
-The overrides are used to override the instance type specified by the
-launch template with multiple instance types that can be used to launch
-On-Demand Instances and Spot Instances.
+You specify these properties as part of a mixed instances policy.
 
 When you update the launch template or overrides, existing Amazon EC2
 instances continue to run. When scale out occurs, Amazon EC2 Auto
@@ -51,16 +49,15 @@ group's termination policies.
 
 =head2 LaunchTemplateSpecification => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
-The launch template to use. You must specify either the launch template
-ID or launch template name in the request.
+The launch template to use.
 
 
 =head2 Overrides => ArrayRef[L<Paws::AutoScaling::LaunchTemplateOverrides>]
 
-An optional setting. Any parameters that you specify override the same
-parameters in the launch template. Currently, the only supported
-override is instance type. You can specify between 1 and 20 instance
-types.
+Any properties that you specify override the same properties in the
+launch template. If not provided, Amazon EC2 Auto Scaling uses the
+instance type specified in the launch template when it launches an
+instance.
 
 
 

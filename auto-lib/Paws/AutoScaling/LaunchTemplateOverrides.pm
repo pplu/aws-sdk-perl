@@ -2,6 +2,7 @@
 package Paws::AutoScaling::LaunchTemplateOverrides;
   use Moose;
   has InstanceType => (is => 'ro', isa => 'Str');
+  has LaunchTemplateSpecification => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has WeightedCapacity => (is => 'ro', isa => 'Str');
 
 1;
@@ -34,36 +35,54 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an override for a launch template.
+Describes an override for a launch template. The maximum number of
+instance types that can be associated with an Auto Scaling group is 40.
+The maximum number of distinct launch templates you can define for an
+Auto Scaling group is 20. For more information about configuring
+overrides, see Configuring overrides
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-override-options.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 InstanceType => Str
 
-The instance type.
+The instance type, such as C<m3.xlarge>. You must use an instance type
+that is supported in your requested Region and Availability Zones. For
+more information, see Instance types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
-For information about available instance types, see Available Instance
-Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
-in the I<Amazon Elastic Compute Cloud User Guide.>
+
+=head2 LaunchTemplateSpecification => L<Paws::AutoScaling::LaunchTemplateSpecification>
+
+Provides the launch template to be used when launching the instance
+type. For example, some instance types might require a launch template
+with a different AMI. If not provided, Amazon EC2 Auto Scaling uses the
+launch template that's defined for your mixed instances policy. For
+more information, see Specifying a different launch template for an
+instance type
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-template-overrides.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 WeightedCapacity => Str
 
-The number of capacity units, which gives the instance type a
-proportional weight to other instance types. For example, larger
-instance types are generally weighted more than smaller instance types.
-These are the same units that you chose to set the desired capacity in
-terms of instances, or a performance attribute such as vCPUs, memory,
-or I/O.
-
-For more information, see Instance Weighting for Amazon EC2 Auto
-Scaling
+The number of capacity units provided by the specified instance type in
+terms of virtual CPUs, memory, storage, throughput, or other relative
+performance characteristic. When a Spot or On-Demand Instance is
+provisioned, the capacity units count toward the desired capacity.
+Amazon EC2 Auto Scaling provisions instances until the desired capacity
+is totally fulfilled, even if this results in an overage. For example,
+if there are 2 units remaining to fulfill capacity, and Amazon EC2 Auto
+Scaling can only provision an instance with a C<WeightedCapacity> of 5
+units, the instance is provisioned, and the desired capacity is
+exceeded by 3 units. For more information, see Instance weighting for
+Amazon EC2 Auto Scaling
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html)
-in the I<Amazon EC2 Auto Scaling User Guide>.
-
-Valid Range: Minimum value of 1. Maximum value of 999.
+in the I<Amazon EC2 Auto Scaling User Guide>. Value must be in the
+range of 1 to 999.
 
 
 

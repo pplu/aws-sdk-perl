@@ -47,9 +47,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 AutoScalingGroupNames => ArrayRef[Str|Undef]
 
-The names of the Auto Scaling groups. Each name can be a maximum of
-1600 characters. By default, you can only specify up to 50 names. You
-can optionally increase this limit using the C<MaxRecords> parameter.
+The names of the Auto Scaling groups. By default, you can only specify
+up to 50 names. You can optionally increase this limit using the
+C<MaxRecords> parameter.
 
 If you omit this parameter, all Auto Scaling groups are described.
 

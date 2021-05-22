@@ -51,21 +51,29 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =head2 Ebs => L<Paws::AutoScaling::Ebs>
 
-The information about the Amazon EBS volume.
+Parameters used to automatically set up EBS volumes when an instance is
+launched.
+
+You can specify either C<VirtualName> or C<Ebs>, but not both.
 
 
 =head2 NoDevice => Bool
 
-Suppresses a device mapping.
+Setting this value to C<true> suppresses the specified device included
+in the block device mapping of the AMI.
 
-If this parameter is true for the root device, the instance might fail
-the EC2 health check. In that case, Amazon EC2 Auto Scaling launches a
-replacement instance.
+If C<NoDevice> is C<true> for the root device, instances might fail the
+EC2 health check. In that case, Amazon EC2 Auto Scaling launches
+replacement instances.
+
+If you specify C<NoDevice>, you cannot specify C<Ebs>.
 
 
 =head2 VirtualName => Str
 
 The name of the virtual device (for example, C<ephemeral0>).
+
+You can specify either C<VirtualName> or C<Ebs>, but not both.
 
 
 

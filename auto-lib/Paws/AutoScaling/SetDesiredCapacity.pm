@@ -53,8 +53,9 @@ The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> DesiredCapacity => Int
 
-The number of EC2 instances that should be running in the Auto Scaling
-group.
+The desired capacity is the initial capacity of the Auto Scaling group
+after this operation completes and the capacity it attempts to
+maintain.
 
 
 

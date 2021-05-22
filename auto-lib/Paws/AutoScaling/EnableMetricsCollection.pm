@@ -58,8 +58,8 @@ valid value is C<1Minute>.
 
 =head2 Metrics => ArrayRef[Str|Undef]
 
-One or more of the following metrics. If you omit this parameter, all
-metrics are enabled.
+Specifies which group-level metrics to start collecting. You can
+specify one or more of the following metrics:
 
 =over
 
@@ -97,6 +97,68 @@ C<GroupTotalInstances>
 
 =back
 
+The instance weighting feature supports the following additional
+metrics:
+
+=over
+
+=item *
+
+C<GroupInServiceCapacity>
+
+=item *
+
+C<GroupPendingCapacity>
+
+=item *
+
+C<GroupStandbyCapacity>
+
+=item *
+
+C<GroupTerminatingCapacity>
+
+=item *
+
+C<GroupTotalCapacity>
+
+=back
+
+The warm pools feature supports the following additional metrics:
+
+=over
+
+=item *
+
+C<WarmPoolDesiredCapacity>
+
+=item *
+
+C<WarmPoolWarmedCapacity>
+
+=item *
+
+C<WarmPoolPendingCapacity>
+
+=item *
+
+C<WarmPoolTerminatingCapacity>
+
+=item *
+
+C<WarmPoolTotalCapacity>
+
+=item *
+
+C<GroupAndWarmPoolDesiredCapacity>
+
+=item *
+
+C<GroupAndWarmPoolTotalCapacity>
+
+=back
+
+If you omit this parameter, all metrics are enabled.
 
 
 

@@ -2,7 +2,9 @@
 package Paws::AutoScaling::Activity;
   use Moose;
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
+  has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has AutoScalingGroupState => (is => 'ro', isa => 'Str');
   has Cause => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Details => (is => 'ro', isa => 'Str');
@@ -54,9 +56,20 @@ size or replacing an instance.
 The ID of the activity.
 
 
+=head2 AutoScalingGroupARN => Str
+
+The Amazon Resource Name (ARN) of the Auto Scaling group.
+
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
 The name of the Auto Scaling group.
+
+
+=head2 AutoScalingGroupState => Str
+
+The state of the Auto Scaling group, which is either C<InService> or
+C<Deleted>.
 
 
 =head2 Cause => Str
