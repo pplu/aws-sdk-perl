@@ -1,0 +1,46 @@
+
+package Paws::LexModelsV2::ListBotVersionsResponse;
+  use Moose;
+  has BotId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botId');
+  has BotVersionSummaries => (is => 'ro', isa => 'ArrayRef[Paws::LexModelsV2::BotVersionSummary]', traits => ['NameInRequest'], request_name => 'botVersionSummaries');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+
+  has _request_id => (is => 'ro', isa => 'Str');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::LexModelsV2::ListBotVersionsResponse
+
+=head1 ATTRIBUTES
+
+
+=head2 BotId => Str
+
+The identifier of the bot to list versions for.
+
+
+=head2 BotVersionSummaries => ArrayRef[L<Paws::LexModelsV2::BotVersionSummary>]
+
+Summary information for the bot versions that meet the filter criteria
+specified in the request. The length of the list is specified in the
+C<maxResults> parameter of the request. If there are more versions
+available, the C<nextToken> field contains a token to get the next page
+of results.
+
+
+=head2 NextToken => Str
+
+A token that indicates whether there are more results to return in a
+response to the C<ListBotVersions> operation. If the C<nextToken> field
+is present, you send the contents as the C<nextToken> parameter of a
+C<ListBotAliases> operation request to get the next page of results.
+
+
+=head2 _request_id => Str
+
+
+=cut
+
