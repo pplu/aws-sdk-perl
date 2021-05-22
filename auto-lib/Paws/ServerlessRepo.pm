@@ -74,6 +74,11 @@ package Paws::ServerlessRepo;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::PutApplicationPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UnshareApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::UnshareApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServerlessRepo::UpdateApplication', @_);
@@ -151,7 +156,7 @@ package Paws::ServerlessRepo;
   }
 
 
-  sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet CreateCloudFormationTemplate DeleteApplication GetApplication GetApplicationPolicy GetCloudFormationTemplate ListApplicationDependencies ListApplications ListApplicationVersions PutApplicationPolicy UpdateApplication / }
+  sub operations { qw/CreateApplication CreateApplicationVersion CreateCloudFormationChangeSet CreateCloudFormationTemplate DeleteApplication GetApplication GetApplicationPolicy GetCloudFormationTemplate ListApplicationDependencies ListApplications ListApplicationVersions PutApplicationPolicy UnshareApplication UpdateApplication / }
 
 1;
 
@@ -502,6 +507,27 @@ Sets the permission policy for an application. For the list of actions
 supported for this operation, see Application Permissions
 (https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions)
 .
+
+
+=head2 UnshareApplication
+
+=over
+
+=item ApplicationId => Str
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServerlessRepo::UnshareApplication>
+
+Returns: nothing
+
+Unshares an application from an AWS Organization.
+
+This operation can be called only from the organization's master
+account.
 
 
 =head2 UpdateApplication
