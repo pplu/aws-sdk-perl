@@ -34,9 +34,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFRegional
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 In a GetSampledRequests request, the C<StartTime> and C<EndTime>
 objects specify the time range for which you want AWS WAF to return a
 sample of web requests.
+
+You must specify the times in Coordinated Universal Time (UTC) format.
+UTC format includes the special designator, C<Z>. For example,
+C<"2016-09-27T14:50Z">.
 
 In a GetSampledRequests response, the C<StartTime> and C<EndTime>
 objects specify the time range for which AWS WAF actually returned a
@@ -53,8 +68,9 @@ received the 5,000th request.
 =head2 B<REQUIRED> EndTime => Str
 
 The end of the time range from which you want C<GetSampledRequests> to
-return a sample of the requests that your AWS resource received.
-Specify the date and time in the following format:
+return a sample of the requests that your AWS resource received. You
+must specify the date and time in Coordinated Universal Time (UTC)
+format. UTC format includes the special designator, C<Z>. For example,
 C<"2016-09-27T14:50Z">. You can specify any time range in the previous
 three hours.
 
@@ -63,9 +79,10 @@ three hours.
 
 The beginning of the time range from which you want
 C<GetSampledRequests> to return a sample of the requests that your AWS
-resource received. Specify the date and time in the following format:
-C<"2016-09-27T14:50Z">. You can specify any time range in the previous
-three hours.
+resource received. You must specify the date and time in Coordinated
+Universal Time (UTC) format. UTC format includes the special
+designator, C<Z>. For example, C<"2016-09-27T14:50Z">. You can specify
+any time range in the previous three hours.
 
 
 
