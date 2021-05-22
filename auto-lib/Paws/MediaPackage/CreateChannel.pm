@@ -37,11 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn         = $CreateChannelResponse->Arn;
-    my $Description = $CreateChannelResponse->Description;
-    my $HlsIngest   = $CreateChannelResponse->HlsIngest;
-    my $Id          = $CreateChannelResponse->Id;
-    my $Tags        = $CreateChannelResponse->Tags;
+    my $Arn               = $CreateChannelResponse->Arn;
+    my $Description       = $CreateChannelResponse->Description;
+    my $EgressAccessLogs  = $CreateChannelResponse->EgressAccessLogs;
+    my $HlsIngest         = $CreateChannelResponse->HlsIngest;
+    my $Id                = $CreateChannelResponse->Id;
+    my $IngressAccessLogs = $CreateChannelResponse->IngressAccessLogs;
+    my $Tags              = $CreateChannelResponse->Tags;
 
     # Returns a L<Paws::MediaPackage::CreateChannelResponse> object.
 

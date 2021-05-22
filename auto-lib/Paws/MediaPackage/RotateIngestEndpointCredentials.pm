@@ -39,9 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Arn         = $RotateIngestEndpointCredentialsResponse->Arn;
     my $Description = $RotateIngestEndpointCredentialsResponse->Description;
-    my $HlsIngest   = $RotateIngestEndpointCredentialsResponse->HlsIngest;
-    my $Id          = $RotateIngestEndpointCredentialsResponse->Id;
-    my $Tags        = $RotateIngestEndpointCredentialsResponse->Tags;
+    my $EgressAccessLogs =
+      $RotateIngestEndpointCredentialsResponse->EgressAccessLogs;
+    my $HlsIngest = $RotateIngestEndpointCredentialsResponse->HlsIngest;
+    my $Id        = $RotateIngestEndpointCredentialsResponse->Id;
+    my $IngressAccessLogs =
+      $RotateIngestEndpointCredentialsResponse->IngressAccessLogs;
+    my $Tags = $RotateIngestEndpointCredentialsResponse->Tags;
 
 # Returns a L<Paws::MediaPackage::RotateIngestEndpointCredentialsResponse> object.
 

@@ -2,6 +2,7 @@
 package Paws::MediaPackage::SpekeKeyProvider;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
+  has EncryptionContractConfiguration => (is => 'ro', isa => 'Paws::MediaPackage::EncryptionContractConfiguration', request_name => 'encryptionContractConfiguration', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
@@ -48,6 +49,11 @@ Key Exchange (SPEKE) service that will provide encryption keys.
 An Amazon Resource Name (ARN) of a Certificate Manager certificate that
 MediaPackage will use for enforcing secure end-to-end data transfer
 with the key provider service.
+
+
+=head2 EncryptionContractConfiguration => L<Paws::MediaPackage::EncryptionContractConfiguration>
+
+
 
 
 =head2 B<REQUIRED> ResourceId => Str

@@ -1,5 +1,5 @@
 
-package Paws::MediaPackage::RotateChannelCredentialsResponse;
+package Paws::MediaPackage::ConfigureLogsResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
@@ -16,7 +16,7 @@ package Paws::MediaPackage::RotateChannelCredentialsResponse;
 
 =head1 NAME
 
-Paws::MediaPackage::RotateChannelCredentialsResponse
+Paws::MediaPackage::ConfigureLogsResponse
 
 =head1 ATTRIBUTES
 
