@@ -34,9 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Detective::
 
 =head1 DESCRIPTION
 
-Amazon Detective is currently in preview.
-
-An AWS account that is the master of or a member of a behavior graph.
+An AWS account that is the administrator account of or a member of a
+behavior graph.
 
 =head1 ATTRIBUTES
 

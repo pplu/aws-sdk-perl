@@ -2,12 +2,18 @@
 package Paws::Detective::MemberDetail;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
+  has AdministratorId => (is => 'ro', isa => 'Str');
+  has DisabledReason => (is => 'ro', isa => 'Str');
   has EmailAddress => (is => 'ro', isa => 'Str');
   has GraphArn => (is => 'ro', isa => 'Str');
   has InvitedTime => (is => 'ro', isa => 'Str');
   has MasterId => (is => 'ro', isa => 'Str');
+  has PercentOfGraphUtilization => (is => 'ro', isa => 'Num');
+  has PercentOfGraphUtilizationUpdatedTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UpdatedTime => (is => 'ro', isa => 'Str');
+  has VolumeUsageInBytes => (is => 'ro', isa => 'Int');
+  has VolumeUsageUpdatedTime => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -28,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Detective::MemberDetail object:
 
-  $service_obj->Method(Att1 => { AccountId => $value, ..., UpdatedTime => $value  });
+  $service_obj->Method(Att1 => { AccountId => $value, ..., VolumeUsageUpdatedTime => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,8 +45,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Detective::
 
 =head1 DESCRIPTION
 
-Amazon Detective is currently in preview.
-
 Details about a member account that was invited to contribute to a
 behavior graph.
 
@@ -50,6 +54,36 @@ behavior graph.
 =head2 AccountId => Str
 
 The AWS account identifier for the member account.
+
+
+=head2 AdministratorId => Str
+
+The AWS account identifier of the administrator account for the
+behavior graph.
+
+
+=head2 DisabledReason => Str
+
+For member accounts with a status of C<ACCEPTED_BUT_DISABLED>, the
+reason that the member account is not enabled.
+
+The reason can have one of the following values:
+
+=over
+
+=item *
+
+C<VOLUME_TOO_HIGH> - Indicates that adding the member account would
+cause the data volume for the behavior graph to be too high.
+
+=item *
+
+C<VOLUME_UNKNOWN> - Indicates that Detective is unable to verify the
+data volume for the member account. This is usually because the member
+account is not enrolled in Amazon GuardDuty.
+
+=back
+
 
 
 =head2 EmailAddress => Str
@@ -70,8 +104,27 @@ account. The value is in milliseconds since the epoch.
 
 =head2 MasterId => Str
 
-The AWS account identifier of the master account for the behavior
-graph.
+The AWS account identifier of the administrator account for the
+behavior graph.
+
+
+=head2 PercentOfGraphUtilization => Num
+
+The member account data volume as a percentage of the maximum allowed
+data volume. 0 indicates 0 percent, and 100 indicates 100 percent.
+
+Note that this is not the percentage of the behavior graph data volume.
+
+For example, the data volume for the behavior graph is 80 GB per day.
+The maximum data volume is 160 GB per day. If the data volume for the
+member account is 40 GB per day, then C<PercentOfGraphUtilization> is
+25. It represents 25% of the maximum allowed data volume.
+
+
+=head2 PercentOfGraphUtilizationUpdatedTime => Str
+
+The date and time when the graph utilization percentage was last
+updated.
 
 
 =head2 Status => Str
@@ -105,6 +158,13 @@ send an invitation to the account.
 C<ENABLED> - Indicates that the member account accepted the invitation
 to contribute to the behavior graph.
 
+=item *
+
+C<ACCEPTED_BUT_DISABLED> - Indicates that the member account accepted
+the invitation but is prevented from contributing data to the behavior
+graph. C<DisabledReason> provides the reason why the member account is
+not enabled.
+
 =back
 
 Member accounts that declined an invitation or that were removed from
@@ -115,6 +175,16 @@ the behavior graph are not included.
 
 The date and time that the member account was last updated. The value
 is in milliseconds since the epoch.
+
+
+=head2 VolumeUsageInBytes => Int
+
+The data volume in bytes per day for the member account.
+
+
+=head2 VolumeUsageUpdatedTime => Str
+
+The data and time when the member account data volume was last updated.
 
 
 
