@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       TargetInstances => {
         AutoScalingGroups => [ 'MyAutoScalingGroupName', ... ],    # OPTIONAL
-        Ec2TagSet => {
+        Ec2TagSet         => {
           Ec2TagSetList => [
             [
               {
@@ -86,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],
-            ...                        # OPTIONAL
+            ...
           ],                           # OPTIONAL
         },    # OPTIONAL
         TagFilters => [
@@ -97,7 +97,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyValue',    # OPTIONAL
           },
           ...
-        ],                         # OPTIONAL
+        ],
       },    # OPTIONAL
       UpdateOutdatedInstancesOnly => 1,    # OPTIONAL
     );
@@ -134,8 +134,8 @@ AWS account.
 
 If not specified, the value configured in the deployment group is used
 as the default. If the deployment group does not have a deployment
-configuration associated with it, CodeDeployDefault.OneAtATime is used
-by default.
+configuration associated with it, C<CodeDeployDefault>.C<OneAtATime> is
+used by default.
 
 
 
@@ -157,7 +157,7 @@ Information about how AWS CodeDeploy handles files that already exist
 in a deployment target location but weren't part of the previous
 successful deployment.
 
-The fileExistsBehavior parameter takes any of the following values:
+The C<fileExistsBehavior> parameter takes any of the following values:
 
 =over
 
@@ -183,13 +183,13 @@ Valid values are: C<"DISALLOW">, C<"OVERWRITE">, C<"RETAIN">
 
 =head2 IgnoreApplicationStopFailures => Bool
 
-If true, then if an ApplicationStop, BeforeBlockTraffic, or
-AfterBlockTraffic deployment lifecycle event to an instance fails, then
-the deployment continues to the next deployment lifecycle event. For
-example, if ApplicationStop fails, the deployment continues with
-DownloadBundle. If BeforeBlockTraffic fails, the deployment continues
-with BlockTraffic. If AfterBlockTraffic fails, the deployment continues
-with ApplicationStop.
+If true, then if an C<ApplicationStop>, C<BeforeBlockTraffic>, or
+C<AfterBlockTraffic> deployment lifecycle event to an instance fails,
+then the deployment continues to the next deployment lifecycle event.
+For example, if C<ApplicationStop> fails, the deployment continues with
+C<DownloadBundle>. If C<BeforeBlockTraffic> fails, the deployment
+continues with C<BlockTraffic>. If C<AfterBlockTraffic> fails, the
+deployment continues with C<ApplicationStop>.
 
 If false or not specified, then if a lifecycle event fails during a
 deployment to an instance, that deployment fails. If deployment to that
@@ -198,8 +198,8 @@ hosts is not less than the minimum number of healthy hosts, then a
 deployment to the next instance is attempted.
 
 During a deployment, the AWS CodeDeploy agent runs the scripts
-specified for ApplicationStop, BeforeBlockTraffic, and
-AfterBlockTraffic in the AppSpec file from the previous successful
+specified for C<ApplicationStop>, C<BeforeBlockTraffic>, and
+C<AfterBlockTraffic> in the AppSpec file from the previous successful
 deployment. (All other scripts are run from the AppSpec file in the
 current deployment.) If one of these scripts contains an error and does
 not run successfully, the deployment can fail.
@@ -207,8 +207,8 @@ not run successfully, the deployment can fail.
 If the cause of the failure is a script from the last successful
 deployment that will never run successfully, create a new deployment
 and use C<ignoreApplicationStopFailures> to specify that the
-ApplicationStop, BeforeBlockTraffic, and AfterBlockTraffic failures
-should be ignored.
+C<ApplicationStop>, C<BeforeBlockTraffic>, and C<AfterBlockTraffic>
+failures should be ignored.
 
 
 

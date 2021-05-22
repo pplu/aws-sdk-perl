@@ -4,6 +4,7 @@ package Paws::CodeDeploy::ListDeployments;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
   has CreateTimeRange => (is => 'ro', isa => 'Paws::CodeDeploy::TimeRange', traits => ['NameInRequest'], request_name => 'createTimeRange' );
   has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
+  has ExternalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'externalId' );
   has IncludeOnlyStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'includeOnlyStatuses' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -38,9 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Start => '1970-01-01T01:00:00',          # OPTIONAL
       },    # OPTIONAL
       DeploymentGroupName => 'MyDeploymentGroupName',    # OPTIONAL
+      ExternalId          => 'MyExternalId',             # OPTIONAL
       IncludeOnlyStatuses => [
         'Created',
-        ... # values: Created, Queued, InProgress, Succeeded, Failed, Stopped, Ready
+        ... # values: Created, Queued, InProgress, Baking, Succeeded, Failed, Stopped, Ready
       ],    # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL
     );
@@ -85,6 +87,13 @@ specified.
 
 
 
+=head2 ExternalId => Str
+
+The unique ID of an external resource for returning deployments linked
+to the external resource.
+
+
+
 =head2 IncludeOnlyStatuses => ArrayRef[Str|Undef]
 
 A subset of deployments to list by status:
@@ -93,27 +102,27 @@ A subset of deployments to list by status:
 
 =item *
 
-Created: Include created deployments in the resulting list.
+C<Created>: Include created deployments in the resulting list.
 
 =item *
 
-Queued: Include queued deployments in the resulting list.
+C<Queued>: Include queued deployments in the resulting list.
 
 =item *
 
-In Progress: Include in-progress deployments in the resulting list.
+C<In Progress>: Include in-progress deployments in the resulting list.
 
 =item *
 
-Succeeded: Include successful deployments in the resulting list.
+C<Succeeded>: Include successful deployments in the resulting list.
 
 =item *
 
-Failed: Include failed deployments in the resulting list.
+C<Failed>: Include failed deployments in the resulting list.
 
 =item *
 
-Stopped: Include stopped deployments in the resulting list.
+C<Stopped>: Include stopped deployments in the resulting list.
 
 =back
 

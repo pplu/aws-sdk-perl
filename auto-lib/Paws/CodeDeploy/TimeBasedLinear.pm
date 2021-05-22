@@ -35,9 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 =head1 DESCRIPTION
 
 A configuration that shifts traffic from one version of a Lambda
-function to another in equal increments, with an equal number of
-minutes between each increment. The original and target Lambda function
-versions are specified in the deployment's AppSpec file.
+function or ECS task set to another in equal increments, with an equal
+number of minutes between each increment. The original and target
+Lambda function versions or ECS task sets are specified in the
+deployment's AppSpec file.
 
 =head1 ATTRIBUTES
 

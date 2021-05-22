@@ -61,12 +61,12 @@ default value is false.
 
 =item *
 
-true: The deployment proceeds even if alarm status information can't be
-retrieved from Amazon CloudWatch.
+C<true>: The deployment proceeds even if alarm status information can't
+be retrieved from Amazon CloudWatch.
 
 =item *
 
-false: The deployment stops if alarm status information can't be
+C<false>: The deployment stops if alarm status information can't be
 retrieved from Amazon CloudWatch.
 
 =back

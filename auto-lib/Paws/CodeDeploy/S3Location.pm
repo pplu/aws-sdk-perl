@@ -58,15 +58,15 @@ following:
 
 =item *
 
-tar: A tar archive file.
+C<tar>: A tar archive file.
 
 =item *
 
-tgz: A compressed tar archive file.
+C<tgz>: A compressed tar archive file.
 
 =item *
 
-zip: A zip archive file.
+C<zip>: A zip archive file.
 
 =back
 

@@ -68,7 +68,8 @@ file.
 =head2 Status => Str
 
 The result of a Lambda function that validates a deployment lifecycle
-event (C<Succeeded> or C<Failed>).
+event. C<Succeeded> and C<Failed> are the only valid values for
+C<status>.
 
 Valid values are: C<"Pending">, C<"InProgress">, C<"Succeeded">, C<"Failed">, C<"Skipped">, C<"Unknown">
 

@@ -68,7 +68,7 @@ The status an Amazon ECS deployment's target ECS application.
 
 =head2 TargetArn => Str
 
-The ARN of the target.
+The Amazon Resource Name (ARN) of the target.
 
 
 =head2 TargetId => Str

@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codedeploy = Paws->service('CodeDeploy');
     my $BatchGetDeploymentTargetsOutput =
       $codedeploy->BatchGetDeploymentTargets(
-      DeploymentId => 'MyDeploymentId',      # OPTIONAL
-      TargetIds => [ 'MyTargetId', ... ],    # OPTIONAL
+      DeploymentId => 'MyDeploymentId',         # OPTIONAL
+      TargetIds    => [ 'MyTargetId', ... ],    # OPTIONAL
       );
 
     # Results:
@@ -77,6 +77,12 @@ For deployments that use the Amazon ECS compute platform, the target
 IDs are pairs of Amazon ECS clusters and services specified using the
 format C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>. Their target
 type is C<ecsTarget>.
+
+=item *
+
+For deployments that are deployed with AWS CloudFormation, the target
+IDs are CloudFormation stack IDs. Their target type is
+C<cloudFormationTarget>.
 
 =back
 

@@ -49,9 +49,10 @@ The version of a Lambda function that production traffic points to.
 
 =head2 FunctionAlias => Str
 
-The alias of a Lambda function. For more information, see Introduction
-to AWS Lambda Aliases
-(https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html).
+The alias of a Lambda function. For more information, see AWS Lambda
+Function Aliases
+(https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html) in
+the I<AWS Lambda Developer Guide>.
 
 
 =head2 FunctionName => Str

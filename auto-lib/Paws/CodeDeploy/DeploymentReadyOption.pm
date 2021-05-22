@@ -68,7 +68,7 @@ period, the deployment status is changed to Stopped.
 
 The number of minutes to wait before the status of a blue/green
 deployment is changed to Stopped if rerouting is not started manually.
-Applies only to the STOP_DEPLOYMENT option for actionOnTimeout
+Applies only to the C<STOP_DEPLOYMENT> option for C<actionOnTimeout>.
 
 
 

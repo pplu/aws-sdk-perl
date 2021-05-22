@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> ApplicationNames => ArrayRef[Str|Undef]
 
 A list of application names separated by spaces. The maximum number of
-application names you can specify is 25.
+application names you can specify is 100.
 
 
 

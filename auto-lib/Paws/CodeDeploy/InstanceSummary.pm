@@ -74,7 +74,7 @@ GREEN: The instance is part of the replacement environment.
 
 =head2 LastUpdatedAt => Str
 
-A timestamp that indicaties when the instance information was last
+A timestamp that indicates when the instance information was last
 updated.
 
 
@@ -91,27 +91,27 @@ The deployment status for this instance:
 
 =item *
 
-Pending: The deployment is pending for this instance.
+C<Pending>: The deployment is pending for this instance.
 
 =item *
 
-In Progress: The deployment is in progress for this instance.
+C<In Progress>: The deployment is in progress for this instance.
 
 =item *
 
-Succeeded: The deployment has succeeded for this instance.
+C<Succeeded>: The deployment has succeeded for this instance.
 
 =item *
 
-Failed: The deployment has failed for this instance.
+C<Failed>: The deployment has failed for this instance.
 
 =item *
 
-Skipped: The deployment has been skipped for this instance.
+C<Skipped>: The deployment has been skipped for this instance.
 
 =item *
 
-Unknown: The deployment status is unknown for this instance.
+C<Unknown>: The deployment status is unknown for this instance.
 
 =back
 

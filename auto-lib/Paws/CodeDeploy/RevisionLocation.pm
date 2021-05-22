@@ -75,6 +75,12 @@ deployments only).
 String: A YAML-formatted or JSON-formatted string (AWS Lambda
 deployments only).
 
+=item *
+
+AppSpecContent: An C<AppSpecContent> object that contains the contents
+of an AppSpec file for an AWS Lambda or Amazon ECS deployment. The
+content is formatted as JSON or YAML stored as a RawString.
+
 =back
 
 

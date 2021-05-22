@@ -15,6 +15,7 @@ package Paws::CodeDeploy::CreateDeploymentGroup;
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
+  has OutdatedInstancesStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'outdatedInstancesStrategy' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
@@ -170,13 +171,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
-      Tags => [
+      OutdatedInstancesStrategy => 'UPDATE',    # OPTIONAL
+      Tags                      => [
         {
-          Key   => 'MyKey',      # OPTIONAL
-          Value => 'MyValue',    # OPTIONAL
+          Key   => 'MyKey',                     # OPTIONAL
+          Value => 'MyValue',                   # OPTIONAL
         },
         ...
-      ],                         # OPTIONAL
+      ],                                        # OPTIONAL
       TriggerConfigurations => [
         {
           TriggerEvents => [
@@ -241,14 +243,15 @@ the predefined configurations provided with AWS CodeDeploy or a custom
 deployment configuration that you create by calling the create
 deployment configuration operation.
 
-CodeDeployDefault.OneAtATime is the default deployment configuration.
-It is used if a configuration isn't specified for the deployment or
-deployment group.
+C<CodeDeployDefault.OneAtATime> is the default deployment
+configuration. It is used if a configuration isn't specified for the
+deployment or deployment group.
 
 For more information about the predefined deployment configurations in
-AWS CodeDeploy, see Working with Deployment Groups in AWS CodeDeploy
+AWS CodeDeploy, see Working with Deployment Configurations in
+CodeDeploy
 (https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
-in the AWS CodeDeploy User Guide.
+in the I<AWS CodeDeploy User Guide>.
 
 
 
@@ -278,7 +281,7 @@ same call as ec2TagSet.
 
 Information about groups of tags applied to EC2 instances. The
 deployment group includes only EC2 instances identified by all the tag
-groups. Cannot be used in the same call as ec2TagFilters.
+groups. Cannot be used in the same call as C<ec2TagFilters>.
 
 
 
@@ -302,7 +305,7 @@ Information about the load balancer used in a deployment.
 
 The on-premises instance tags on which to filter. The deployment group
 includes on-premises instances with any of the specified tags. Cannot
-be used in the same call as OnPremisesTagSet.
+be used in the same call as C<OnPremisesTagSet>.
 
 
 
@@ -311,14 +314,29 @@ be used in the same call as OnPremisesTagSet.
 Information about groups of tags applied to on-premises instances. The
 deployment group includes only on-premises instances identified by all
 of the tag groups. Cannot be used in the same call as
-onPremisesInstanceTagFilters.
+C<onPremisesInstanceTagFilters>.
 
 
+
+=head2 OutdatedInstancesStrategy => Str
+
+Indicates what happens when new EC2 instances are launched
+mid-deployment and do not receive the deployed application revision.
+
+If this option is set to C<UPDATE> or is unspecified, CodeDeploy
+initiates one or more 'auto-update outdated instances' deployments to
+apply the deployed application revision to the new EC2 instances.
+
+If this option is set to C<IGNORE>, CodeDeploy does not initiate a
+deployment to update the new EC2 instances. This may result in
+instances having different revisions.
+
+Valid values are: C<"UPDATE">, C<"IGNORE">
 
 =head2 B<REQUIRED> ServiceRoleArn => Str
 
-A service role ARN that allows AWS CodeDeploy to act on the user's
-behalf when interacting with AWS services.
+A service role Amazon Resource Name (ARN) that allows AWS CodeDeploy to
+act on the user's behalf when interacting with AWS services.
 
 
 
@@ -335,7 +353,7 @@ optional value, both of which you define.
 Information about triggers to create when the deployment group is
 created. For examples, see Create a Trigger for an AWS CodeDeploy Event
 (https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
-in the AWS CodeDeploy User Guide.
+in the I<AWS CodeDeploy User Guide>.
 
 
 

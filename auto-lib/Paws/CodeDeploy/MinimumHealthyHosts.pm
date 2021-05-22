@@ -47,22 +47,22 @@ The minimum healthy instance type:
 
 =item *
 
-HOST_COUNT: The minimum number of healthy instance as an absolute
+C<HOST_COUNT>: The minimum number of healthy instances as an absolute
 value.
 
 =item *
 
-FLEET_PERCENT: The minimum number of healthy instance as a percentage
-of the total number of instance in the deployment.
+C<FLEET_PERCENT>: The minimum number of healthy instances as a
+percentage of the total number of instances in the deployment.
 
 =back
 
-In an example of nine instance, if a HOST_COUNT of six is specified,
+In an example of nine instances, if a HOST_COUNT of six is specified,
 deploy to up to three instances at a time. The deployment is successful
 if six or more instances are deployed to successfully. Otherwise, the
 deployment fails. If a FLEET_PERCENT of 40 is specified, deploy to up
-to five instance at a time. The deployment is successful if four or
-more instance are deployed to successfully. Otherwise, the deployment
+to five instances at a time. The deployment is successful if four or
+more instances are deployed to successfully. Otherwise, the deployment
 fails.
 
 In a call to the C<GetDeploymentConfig>, CodeDeployDefault.OneAtATime

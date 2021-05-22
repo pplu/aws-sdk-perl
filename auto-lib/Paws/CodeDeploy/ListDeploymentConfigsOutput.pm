@@ -18,7 +18,7 @@ Paws::CodeDeploy::ListDeploymentConfigsOutput
 =head2 DeploymentConfigsList => ArrayRef[Str|Undef]
 
 A list of deployment configurations, including built-in configurations
-such as CodeDeployDefault.OneAtATime.
+such as C<CodeDeployDefault.OneAtATime>.
 
 
 =head2 NextToken => Str

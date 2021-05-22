@@ -50,12 +50,12 @@ successful blue/green deployment.
 
 =item *
 
-TERMINATE: Instances are terminated after a specified wait time.
+C<TERMINATE>: Instances are terminated after a specified wait time.
 
 =item *
 
-KEEP_ALIVE: Instances are left running after they are deregistered from
-the load balancer and removed from the deployment group.
+C<KEEP_ALIVE>: Instances are left running after they are deregistered
+from the load balancer and removed from the deployment group.
 
 =back
 

@@ -17,11 +17,13 @@ package Paws::CodeDeploy::DeploymentInfo;
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', request_name => 'deploymentStyle', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', request_name => 'errorInformation', traits => ['NameInRequest']);
+  has ExternalId => (is => 'ro', isa => 'Str', request_name => 'externalId', traits => ['NameInRequest']);
   has FileExistsBehavior => (is => 'ro', isa => 'Str', request_name => 'fileExistsBehavior', traits => ['NameInRequest']);
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', request_name => 'ignoreApplicationStopFailures', traits => ['NameInRequest']);
   has InstanceTerminationWaitTimeStarted => (is => 'ro', isa => 'Bool', request_name => 'instanceTerminationWaitTimeStarted', traits => ['NameInRequest']);
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['NameInRequest']);
   has PreviousRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'previousRevision', traits => ['NameInRequest']);
+  has RelatedDeployments => (is => 'ro', isa => 'Paws::CodeDeploy::RelatedDeployments', request_name => 'relatedDeployments', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'revision', traits => ['NameInRequest']);
   has RollbackInfo => (is => 'ro', isa => 'Paws::CodeDeploy::RollbackInfo', request_name => 'rollbackInfo', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
@@ -111,15 +113,20 @@ The means by which the deployment was created:
 
 =item *
 
-user: A user created the deployment.
+C<user>: A user created the deployment.
 
 =item *
 
-autoscaling: Amazon EC2 Auto Scaling created the deployment.
+C<autoscaling>: Amazon EC2 Auto Scaling created the deployment.
 
 =item *
 
-codeDeployRollback: A rollback process created the deployment.
+C<codeDeployRollback>: A rollback process created the deployment.
+
+=item *
+
+C<CodeDeployAutoUpdate>: An auto-update process created the deployment
+when it detected outdated EC2 instances.
 
 =back
 
@@ -167,6 +174,12 @@ A comment about the deployment.
 Information about any error associated with this deployment.
 
 
+=head2 ExternalId => Str
+
+The unique ID for an external resource (for example, a CloudFormation
+stack ID) that is linked to this deployment.
+
+
 =head2 FileExistsBehavior => Str
 
 Information about how AWS CodeDeploy handles files that already exist
@@ -177,17 +190,17 @@ successful deployment.
 
 =item *
 
-DISALLOW: The deployment fails. This is also the default behavior if no
-option is specified.
+C<DISALLOW>: The deployment fails. This is also the default behavior if
+no option is specified.
 
 =item *
 
-OVERWRITE: The version of the file from the application revision
+C<OVERWRITE>: The version of the file from the application revision
 currently being deployed replaces the version already on the instance.
 
 =item *
 
-RETAIN: The version of the file already on the instance is kept and
+C<RETAIN>: The version of the file already on the instance is kept and
 used as part of the new deployment.
 
 =back
@@ -241,6 +254,11 @@ Information about the load balancer used in the deployment.
 
 Information about the application revision that was deployed to the
 deployment group before the most recent successful deployment.
+
+
+=head2 RelatedDeployments => L<Paws::CodeDeploy::RelatedDeployments>
+
+
 
 
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>

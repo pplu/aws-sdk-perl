@@ -65,23 +65,23 @@ or AWS account.
 =head2 Deployed => Str
 
 Whether to list revisions based on whether the revision is the target
-revision of an deployment group:
+revision of a deployment group:
 
 =over
 
 =item *
 
-include: List revisions that are target revisions of a deployment
+C<include>: List revisions that are target revisions of a deployment
 group.
 
 =item *
 
-exclude: Do not list revisions that are target revisions of a
+C<exclude>: Do not list revisions that are target revisions of a
 deployment group.
 
 =item *
 
-ignore: List all revisions.
+C<ignore>: List all revisions.
 
 =back
 
@@ -119,17 +119,17 @@ The column name to use to sort the list results:
 
 =item *
 
-registerTime: Sort by the time the revisions were registered with AWS
-CodeDeploy.
+C<registerTime>: Sort by the time the revisions were registered with
+AWS CodeDeploy.
 
 =item *
 
-firstUsedTime: Sort by the time the revisions were first used in a
+C<firstUsedTime>: Sort by the time the revisions were first used in a
 deployment.
 
 =item *
 
-lastUsedTime: Sort by the time the revisions were last used in a
+C<lastUsedTime>: Sort by the time the revisions were last used in a
 deployment.
 
 =back
@@ -147,11 +147,11 @@ The order in which to sort the list results:
 
 =item *
 
-ascending: ascending order.
+C<ascending>: ascending order.
 
 =item *
 
-descending: descending order.
+C<descending>: descending order.
 
 =back
 

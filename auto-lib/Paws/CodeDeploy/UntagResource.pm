@@ -42,8 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN that specifies from which resource to disassociate the tags
-with the keys in the C<TagKeys> input paramter.
+The Amazon Resource Name (ARN) that specifies from which resource to
+disassociate the tags with the keys in the C<TagKeys> input parameter.
 
 
 

@@ -16,6 +16,7 @@ package Paws::CodeDeploy::UpdateDeploymentGroup;
   has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
+  has OutdatedInstancesStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'outdatedInstancesStrategy' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
@@ -170,8 +171,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
-      ServiceRoleArn        => 'MyRole',    # OPTIONAL
-      TriggerConfigurations => [
+      OutdatedInstancesStrategy => 'UPDATE',    # OPTIONAL
+      ServiceRoleArn            => 'MyRole',    # OPTIONAL
+      TriggerConfigurations     => [
         {
           TriggerEvents => [
             'DeploymentStart',
@@ -305,6 +307,21 @@ includes only on-premises instances identified by all the tag groups.
 
 
 
+=head2 OutdatedInstancesStrategy => Str
+
+Indicates what happens when new EC2 instances are launched
+mid-deployment and do not receive the deployed application revision.
+
+If this option is set to C<UPDATE> or is unspecified, CodeDeploy
+initiates one or more 'auto-update outdated instances' deployments to
+apply the deployed application revision to the new EC2 instances.
+
+If this option is set to C<IGNORE>, CodeDeploy does not initiate a
+deployment to update the new EC2 instances. This may result in
+instances having different revisions.
+
+Valid values are: C<"UPDATE">, C<"IGNORE">
+
 =head2 ServiceRoleArn => Str
 
 A replacement ARN for the service role, if you want to change it.
@@ -314,10 +331,10 @@ A replacement ARN for the service role, if you want to change it.
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
 
 Information about triggers to change when the deployment group is
-updated. For examples, see Modify Triggers in an AWS CodeDeploy
-Deployment Group
+updated. For examples, see Edit a Trigger in a CodeDeploy Deployment
+Group
 (https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
-in the AWS CodeDeploy User Guide.
+in the I<AWS CodeDeploy User Guide>.
 
 
 

@@ -52,8 +52,9 @@ The name of the notification trigger.
 
 =head2 TriggerTargetArn => Str
 
-The ARN of the Amazon Simple Notification Service topic through which
-notifications about deployment or instance events are sent.
+The Amazon Resource Name (ARN) of the Amazon Simple Notification
+Service topic through which notifications about deployment or instance
+events are sent.
 
 
 
