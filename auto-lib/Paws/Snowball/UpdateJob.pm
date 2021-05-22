@@ -113,7 +113,13 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 The updated C<SnowballCapacityPreference> of this job's JobMetadata
 object. The 50 TB Snowballs are only available in the US regions.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
+
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"T98">, C<"T8">, C<"T14">, C<"NoPreference">
 
 
 =head1 SEE ALSO

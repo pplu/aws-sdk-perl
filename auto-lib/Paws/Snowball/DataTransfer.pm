@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Snowball::D
 
 =head1 DESCRIPTION
 
-Defines the real-time status of a Snowball's data transfer while the
+Defines the real-time status of a Snow device's data transfer while the
 device is at AWS. This data is only available while a job has a
 C<JobState> value of C<InProgress>, for both import and export jobs.
 
@@ -45,24 +45,24 @@ C<JobState> value of C<InProgress>, for both import and export jobs.
 
 =head2 BytesTransferred => Int
 
-The number of bytes transferred between a Snowball and Amazon S3.
+The number of bytes transferred between a Snow device and Amazon S3.
 
 
 =head2 ObjectsTransferred => Int
 
-The number of objects transferred between a Snowball and Amazon S3.
+The number of objects transferred between a Snow device and Amazon S3.
 
 
 =head2 TotalBytes => Int
 
-The total bytes of data for a transfer between a Snowball and Amazon
+The total bytes of data for a transfer between a Snow device and Amazon
 S3. This value is set to 0 (zero) until all the keys that will be
 transferred have been listed.
 
 
 =head2 TotalObjects => Int
 
-The total number of objects for a transfer between a Snowball and
+The total number of objects for a transfer between a Snow device and
 Amazon S3. This value is set to 0 (zero) until all the keys that will
 be transferred have been listed.
 

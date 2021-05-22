@@ -17,7 +17,7 @@ Paws::Snowball::GetJobUnlockCodeResult
 =head2 UnlockCode => Str
 
 The C<UnlockCode> value for the specified job. The C<UnlockCode> value
-can be accessed for up to 90 days after the job has been created.
+can be accessed for up to 360 days after the job has been created.
 
 
 =head2 _request_id => Str

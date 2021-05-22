@@ -14,6 +14,7 @@ package Paws::Snowball::ClusterMetadata;
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingOption => (is => 'ro', isa => 'Str');
   has SnowballType => (is => 'ro', isa => 'Str');
+  has TaxDocuments => (is => 'ro', isa => 'Paws::Snowball::TaxDocuments');
 
 1;
 
@@ -34,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Snowball::ClusterMetadata object:
 
-  $service_obj->Method(Att1 => { AddressId => $value, ..., SnowballType => $value  });
+  $service_obj->Method(Att1 => { AddressId => $value, ..., TaxDocuments => $value  });
 
 =head3 Results returned from an API call
 
@@ -119,9 +120,9 @@ API action in AWS Identity and Access Management (IAM).
 =head2 ShippingOption => Str
 
 The shipping speed for each node in this cluster. This speed doesn't
-dictate how soon you'll get each Snowball Edge device, rather it
-represents how quickly each device moves to its destination while in
-transit. Regional shipping speeds are as follows:
+dictate how soon you'll get each device, rather it represents how
+quickly each device moves to its destination while in transit. Regional
+shipping speeds are as follows:
 
 =over
 
@@ -133,13 +134,13 @@ shipped express are delivered in about a day.
 =item *
 
 In the European Union (EU), you have access to express shipping.
-Typically, Snowball Edges shipped express are delivered in about a day.
+Typically, Snow devices shipped express are delivered in about a day.
 In addition, most countries in the EU have access to standard shipping,
 which typically takes less than a week, one way.
 
 =item *
 
-In India, Snowball Edges are delivered in one to seven days.
+In India, Snow devices are delivered in one to seven days.
 
 =item *
 
@@ -151,8 +152,15 @@ In the US, you have access to one-day shipping and two-day shipping.
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball device to use for this cluster. Currently, the
-only supported device type for cluster jobs is C<EDGE>.
+The type of AWS Snow device to use for this cluster.
+
+For cluster jobs, AWS Snow Family currently supports only the C<EDGE>
+device type.
+
+
+=head2 TaxDocuments => L<Paws::Snowball::TaxDocuments>
+
+The tax documents required in your AWS Region.
 
 
 

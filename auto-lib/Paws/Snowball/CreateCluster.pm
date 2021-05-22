@@ -10,7 +10,8 @@ package Paws::Snowball::CreateCluster;
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has ShippingOption => (is => 'ro', isa => 'Str', required => 1);
-  has SnowballType => (is => 'ro', isa => 'Str');
+  has SnowballType => (is => 'ro', isa => 'Str', required => 1);
+  has TaxDocuments => (is => 'ro', isa => 'Paws::Snowball::TaxDocuments');
 
   use MooseX::ClassAttribute;
 
@@ -104,6 +105,12 @@ most regions.
 The type of job for this cluster. Currently, the only job type
 supported for clusters is C<LOCAL_USE>.
 
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
+
 Valid values are: C<"IMPORT">, C<"EXPORT">, C<"LOCAL_USE">
 
 =head2 KmsKeyARN => Str
@@ -150,19 +157,44 @@ transit. Regional shipping speeds are as follows:
 
 =item *
 
+In Australia, you have access to express shipping. Typically, Snow
+devices shipped express are delivered in about a day.
+
+=item *
+
+In the European Union (EU), you have access to express shipping.
+Typically, Snow devices shipped express are delivered in about a day.
+In addition, most countries in the EU have access to standard shipping,
+which typically takes less than a week, one way.
+
+=item *
+
+In India, Snow device are delivered in one to seven days.
+
+=item *
+
+In the United States of America (US), you have access to one-day
+shipping and two-day shipping.
+
+=back
+
+=over
+
+=item *
+
 In Australia, you have access to express shipping. Typically, devices
 shipped express are delivered in about a day.
 
 =item *
 
 In the European Union (EU), you have access to express shipping.
-Typically, Snowball Edges shipped express are delivered in about a day.
+Typically, Snow devices shipped express are delivered in about a day.
 In addition, most countries in the EU have access to standard shipping,
 which typically takes less than a week, one way.
 
 =item *
 
-In India, Snowball Edges are delivered in one to seven days.
+In India, Snow device are delivered in one to seven days.
 
 =item *
 
@@ -173,12 +205,26 @@ In the US, you have access to one-day shipping and two-day shipping.
 
 Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 
-=head2 SnowballType => Str
+=head2 B<REQUIRED> SnowballType => Str
 
-The type of AWS Snowball device to use for this cluster. Currently, the
-only supported device type for cluster jobs is C<EDGE>.
+The type of AWS Snow Family device to use for this cluster.
 
-Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
+For cluster jobs, AWS Snow Family currently supports only the C<EDGE>
+device type.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
+
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">, C<"EDGE_S">, C<"SNC1_HDD">, C<"SNC1_SSD">
+
+=head2 TaxDocuments => L<Paws::Snowball::TaxDocuments>
+
+The tax documents required in your AWS Region.
+
+
 
 
 =head1 SEE ALSO

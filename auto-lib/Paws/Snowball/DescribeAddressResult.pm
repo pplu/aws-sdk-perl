@@ -16,8 +16,8 @@ Paws::Snowball::DescribeAddressResult
 
 =head2 Address => L<Paws::Snowball::Address>
 
-The address that you want the Snowball or Snowballs associated with a
-specific job to be shipped to.
+The address that you want the Snow device(s) associated with a specific
+job to be shipped to.
 
 
 =head2 _request_id => Str

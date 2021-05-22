@@ -17,8 +17,8 @@ Paws::Snowball::CreateAddressResult
 =head2 AddressId => Str
 
 The automatically generated ID for a specific address. You'll use this
-ID when you create a job to specify which address you want the Snowball
-for that job shipped to.
+ID when you create a job to specify which address you want the Snow
+device for that job shipped to.
 
 
 =head2 _request_id => Str

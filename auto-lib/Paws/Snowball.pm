@@ -40,6 +40,16 @@ package Paws::Snowball;
     my $call_object = $self->new_with_coercions('Paws::Snowball::CreateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateLongTermPricing {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::CreateLongTermPricing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateReturnShippingLabel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::CreateReturnShippingLabel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAddress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::DescribeAddress', @_);
@@ -58,6 +68,11 @@ package Paws::Snowball;
   sub DescribeJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::DescribeJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReturnShippingLabel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::DescribeReturnShippingLabel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetJobManifest {
@@ -100,6 +115,11 @@ package Paws::Snowball;
     my $call_object = $self->new_with_coercions('Paws::Snowball::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListLongTermPricing {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::ListLongTermPricing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::UpdateCluster', @_);
@@ -108,6 +128,16 @@ package Paws::Snowball;
   sub UpdateJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::UpdateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateJobShipmentState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::UpdateJobShipmentState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateLongTermPricing {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::UpdateLongTermPricing', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -228,7 +258,7 @@ package Paws::Snowball;
   }
 
 
-  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage GetSoftwareUpdates ListClusterJobs ListClusters ListCompatibleImages ListJobs UpdateCluster UpdateJob / }
+  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob CreateLongTermPricing CreateReturnShippingLabel DescribeAddress DescribeAddresses DescribeCluster DescribeJob DescribeReturnShippingLabel GetJobManifest GetJobUnlockCode GetSnowballUsage GetSoftwareUpdates ListClusterJobs ListClusters ListCompatibleImages ListJobs ListLongTermPricing UpdateCluster UpdateJob UpdateJobShipmentState UpdateLongTermPricing / }
 
 1;
 
@@ -256,15 +286,15 @@ Paws::Snowball - Perl Interface to AWS Amazon Import/Export Snowball
 
 =head1 DESCRIPTION
 
-AWS Snowball is a petabyte-scale data transport solution that uses
+AWS Snow Family is a petabyte-scale data transport solution that uses
 secure devices to transfer large amounts of data between your
 on-premises data centers and Amazon Simple Storage Service (Amazon S3).
-The Snowball commands described here provide access to the same
-functionality that is available in the AWS Snowball Management Console,
-which enables you to create and manage jobs for Snowball. To transfer
-data locally with a Snowball device, you'll need to use the Snowball
-client or the Amazon S3 API adapter for Snowball. For more information,
-see the User Guide
+The Snow commands described here provide access to the same
+functionality that is available in the AWS Snow Family Management
+Console, which enables you to create and manage jobs for a Snow device.
+To transfer data locally with a Snow device, you'll need to use the
+Snowball Edge client or the Amazon S3 API Interface for Snowball or AWS
+OpsHub for Snow Family. For more information, see the User Guide
 (https://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30>
@@ -322,7 +352,7 @@ Each argument is described in detail in: L<Paws::Snowball::CreateAddress>
 
 Returns: a L<Paws::Snowball::CreateAddressResult> instance
 
-Creates an address for a Snowball to be shipped to. In most regions,
+Creates an address for a Snow device to be shipped to. In most regions,
 addresses are validated at the time of creation. The address you
 provide must be located within the serviceable area of your region. If
 the address is invalid or unsupported, then an exception is thrown.
@@ -342,6 +372,8 @@ the address is invalid or unsupported, then an exception is thrown.
 
 =item ShippingOption => Str
 
+=item SnowballType => Str
+
 =item [Description => Str]
 
 =item [ForwardingAddressId => Str]
@@ -350,7 +382,7 @@ the address is invalid or unsupported, then an exception is thrown.
 
 =item [Notification => L<Paws::Snowball::Notification>]
 
-=item [SnowballType => Str]
+=item [TaxDocuments => L<Paws::Snowball::TaxDocuments>]
 
 
 =back
@@ -374,11 +406,15 @@ The cluster does not ship until these five node jobs have been created.
 
 =item [Description => Str]
 
+=item [DeviceConfiguration => L<Paws::Snowball::DeviceConfiguration>]
+
 =item [ForwardingAddressId => Str]
 
 =item [JobType => Str]
 
 =item [KmsKeyARN => Str]
+
+=item [LongTermPricingId => Str]
 
 =item [Notification => L<Paws::Snowball::Notification>]
 
@@ -392,6 +428,8 @@ The cluster does not ship until these five node jobs have been created.
 
 =item [SnowballType => Str]
 
+=item [TaxDocuments => L<Paws::Snowball::TaxDocuments>]
+
 
 =back
 
@@ -401,10 +439,202 @@ Returns: a L<Paws::Snowball::CreateJobResult> instance
 
 Creates a job to import or export data between Amazon S3 and your
 on-premises data center. Your AWS account must have the right trust
-policies and permissions in place to create a job for Snowball. If
+policies and permissions in place to create a job for a Snow device. If
 you're creating a job for a node in a cluster, you only need to provide
 the C<clusterId> value; the other job attributes are inherited from the
 cluster.
+
+Only the Snowball; Edge device type is supported when ordering
+clustered jobs.
+
+The device capacity is optional.
+
+Availability of device types differ by AWS Region. For more information
+about region availability, see AWS Regional Services
+(https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4).
+
+B<AWS Snow Family device types and their capacities.>
+
+=over
+
+=item *
+
+Snow Family device type: B<SNC1_SSD>
+
+=over
+
+=item *
+
+Capacity: T14
+
+=item *
+
+Description: Snowcone
+
+=back
+
+=item *
+
+Snow Family device type: B<SNC1_HDD>
+
+=over
+
+=item *
+
+Capacity: T8
+
+=item *
+
+Description: Snowcone
+
+=back
+
+=item *
+
+Device type: B<EDGE_S>
+
+=over
+
+=item *
+
+Capacity: T98
+
+=item *
+
+Description: Snowball Edge Storage Optimized for data transfer only
+
+=back
+
+=item *
+
+Device type: B<EDGE_CG>
+
+=over
+
+=item *
+
+Capacity: T42
+
+=item *
+
+Description: Snowball Edge Compute Optimized with GPU
+
+=back
+
+=item *
+
+Device type: B<EDGE_C>
+
+=over
+
+=item *
+
+Capacity: T42
+
+=item *
+
+Description: Snowball Edge Compute Optimized without GPU
+
+=back
+
+=item *
+
+Device type: B<EDGE>
+
+=over
+
+=item *
+
+Capacity: T100
+
+=item *
+
+Description: Snowball Edge Storage Optimized with EC2 Compute
+
+=back
+
+=item *
+
+Device type: B<STANDARD>
+
+=over
+
+=item *
+
+Capacity: T50
+
+=item *
+
+Description: Original Snowball device
+
+This device is only available in the Ningxia, Beijing, and Singapore
+AWS Regions.
+
+=back
+
+=item *
+
+Device type: B<STANDARD>
+
+=over
+
+=item *
+
+Capacity: T80
+
+=item *
+
+Description: Original Snowball device
+
+This device is only available in the Ningxia, Beijing, and Singapore
+AWS Regions.
+
+=back
+
+=back
+
+
+
+=head2 CreateLongTermPricing
+
+=over
+
+=item LongTermPricingType => Str
+
+=item [IsLongTermPricingAutoRenew => Bool]
+
+=item [SnowballType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::CreateLongTermPricing>
+
+Returns: a L<Paws::Snowball::CreateLongTermPricingResult> instance
+
+Creates a job with long term usage option for a device. The long term
+usage is a one year or three year long term pricing type for the
+device. You are billed upfront and AWS give discounts for long term
+pricing. For detailed information see XXXXXXXX
+
+
+=head2 CreateReturnShippingLabel
+
+=over
+
+=item JobId => Str
+
+=item [ShippingOption => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::CreateReturnShippingLabel>
+
+Returns: a L<Paws::Snowball::CreateReturnShippingLabelResult> instance
+
+Creates a shipping label that will be used to return the Snow device to
+AWS.
 
 
 =head2 DescribeAddress
@@ -478,6 +708,23 @@ Returns information about a specific job including shipping
 information, job status, and other important metadata.
 
 
+=head2 DescribeReturnShippingLabel
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::DescribeReturnShippingLabel>
+
+Returns: a L<Paws::Snowball::DescribeReturnShippingLabelResult> instance
+
+Information on the shipping label of a Snow device that is being
+returned to AWS.
+
+
 =head2 GetJobManifest
 
 =over
@@ -499,17 +746,17 @@ make another call to the C<GetJobManifest> action.
 
 The manifest is an encrypted file that you can download after your job
 enters the C<WithCustomer> status. The manifest is decrypted by using
-the C<UnlockCode> code value, when you pass both values to the Snowball
-through the Snowball client when the client is started for the first
-time.
+the C<UnlockCode> code value, when you pass both values to the Snow
+device through the Snowball client when the client is started for the
+first time.
 
 As a best practice, we recommend that you don't save a copy of an
 C<UnlockCode> value in the same location as the manifest file for that
 job. Saving these separately helps prevent unauthorized parties from
-gaining access to the Snowball associated with that job.
+gaining access to the Snow device associated with that job.
 
 The credentials of a given job, including its manifest file and unlock
-code, expire 90 days after the job is created.
+code, expire 360 days after the job is created.
 
 
 =head2 GetJobUnlockCode
@@ -526,18 +773,19 @@ Each argument is described in detail in: L<Paws::Snowball::GetJobUnlockCode>
 Returns: a L<Paws::Snowball::GetJobUnlockCodeResult> instance
 
 Returns the C<UnlockCode> code value for the specified job. A
-particular C<UnlockCode> value can be accessed for up to 90 days after
+particular C<UnlockCode> value can be accessed for up to 360 days after
 the associated job has been created.
 
 The C<UnlockCode> value is a 29-character code with 25 alphanumeric
 characters and 4 hyphens. This code is used to decrypt the manifest
-file when it is passed along with the manifest to the Snowball through
-the Snowball client when the client is started for the first time.
+file when it is passed along with the manifest to the Snow device
+through the Snowball client when the client is started for the first
+time.
 
 As a best practice, we recommend that you don't save a copy of the
 C<UnlockCode> in the same location as the manifest file for that job.
 Saving these separately helps prevent unauthorized parties from gaining
-access to the Snowball associated with that job.
+access to the Snow device associated with that job.
 
 
 =head2 GetSnowballUsage
@@ -551,12 +799,12 @@ Each argument is described in detail in: L<Paws::Snowball::GetSnowballUsage>
 
 Returns: a L<Paws::Snowball::GetSnowballUsageResult> instance
 
-Returns information about the Snowball service limit for your account,
-and also the number of Snowballs your account has in use.
+Returns information about the Snow Family service limit for your
+account, and also the number of Snow devices your account has in use.
 
-The default service limit for the number of Snowballs that you can have
-at one time is 1. If you want to increase your service limit, contact
-AWS Support.
+The default service limit for the number of Snow devices that you can
+have at one time is 1. If you want to increase your service limit,
+contact AWS Support.
 
 
 =head2 GetSoftwareUpdates
@@ -635,10 +883,10 @@ Returns: a L<Paws::Snowball::ListCompatibleImagesResult> instance
 
 This action returns a list of the different Amazon EC2 Amazon Machine
 Images (AMIs) that are owned by your AWS account that would be
-supported for use on a Snowball Edge device. Currently, supported AMIs
-are based on the CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server
-14.04 LTS (HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available
-on the AWS Marketplace.
+supported for use on a Snow device. Currently, supported AMIs are based
+on the CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS
+(HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
+Marketplace.
 
 
 =head2 ListJobs
@@ -662,6 +910,24 @@ value that indicates whether the job is a job part, in the case of
 export jobs. Calling this API action in one of the US regions will
 return jobs from the list of all jobs associated with this account in
 all US regions.
+
+
+=head2 ListLongTermPricing
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::ListLongTermPricing>
+
+Returns: a L<Paws::Snowball::ListLongTermPricingResult> instance
+
+Lists all long term pricing types.
 
 
 =head2 UpdateCluster
@@ -731,6 +997,45 @@ While a job's C<JobState> value is C<New>, you can update some of the
 information associated with a job. Once the job changes to a different
 job state, usually within 60 minutes of the job being created, this
 action is no longer available.
+
+
+=head2 UpdateJobShipmentState
+
+=over
+
+=item JobId => Str
+
+=item ShipmentState => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::UpdateJobShipmentState>
+
+Returns: a L<Paws::Snowball::UpdateJobShipmentStateResult> instance
+
+Updates the state when a the shipment states changes to a different
+state.
+
+
+=head2 UpdateLongTermPricing
+
+=over
+
+=item LongTermPricingId => Str
+
+=item [IsLongTermPricingAutoRenew => Bool]
+
+=item [ReplacementJob => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::UpdateLongTermPricing>
+
+Returns: a L<Paws::Snowball::UpdateLongTermPricingResult> instance
+
+Updates the long term pricing type.
 
 
 

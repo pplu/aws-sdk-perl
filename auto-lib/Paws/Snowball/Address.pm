@@ -46,12 +46,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Snowball::A
 
 =head1 DESCRIPTION
 
-The address that you want the Snowball or Snowballs associated with a
-specific job to be shipped to. Addresses are validated at the time of
-creation. The address you provide must be located within the
-serviceable area of your region. Although no individual elements of the
-C<Address> are required, if the address is invalid or unsupported, then
-an exception is thrown.
+The address that you want the Snow device(s) associated with a specific
+job to be shipped to. Addresses are validated at the time of creation.
+The address you provide must be located within the serviceable area of
+your region. Although no individual elements of the C<Address> are
+required, if the address is invalid or unsupported, then an exception
+is thrown.
 
 =head1 ATTRIBUTES
 
@@ -63,17 +63,17 @@ The unique ID for an address.
 
 =head2 City => Str
 
-The city in an address that a Snowball is to be delivered to.
+The city in an address that a Snow device is to be delivered to.
 
 
 =head2 Company => Str
 
-The name of the company to receive a Snowball at an address.
+The name of the company to receive a Snow device at an address.
 
 
 =head2 Country => Str
 
-The country in an address that a Snowball is to be delivered to.
+The country in an address that a Snow device is to be delivered to.
 
 
 =head2 IsRestricted => Bool
@@ -89,18 +89,18 @@ This field is no longer used and the value is ignored.
 
 =head2 Name => Str
 
-The name of a person to receive a Snowball at an address.
+The name of a person to receive a Snow device at an address.
 
 
 =head2 PhoneNumber => Str
 
-The phone number associated with an address that a Snowball is to be
+The phone number associated with an address that a Snow device is to be
 delivered to.
 
 
 =head2 PostalCode => Str
 
-The postal code in an address that a Snowball is to be delivered to.
+The postal code in an address that a Snow device is to be delivered to.
 
 
 =head2 PrefectureOrDistrict => Str
@@ -110,26 +110,26 @@ This field is no longer used and the value is ignored.
 
 =head2 StateOrProvince => Str
 
-The state or province in an address that a Snowball is to be delivered
-to.
+The state or province in an address that a Snow device is to be
+delivered to.
 
 
 =head2 Street1 => Str
 
-The first line in a street address that a Snowball is to be delivered
-to.
+The first line in a street address that a Snow device is to be
+delivered to.
 
 
 =head2 Street2 => Str
 
-The second line in a street address that a Snowball is to be delivered
-to.
+The second line in a street address that a Snow device is to be
+delivered to.
 
 
 =head2 Street3 => Str
 
-The third line in a street address that a Snowball is to be delivered
-to.
+The third line in a street address that a Snow device is to be
+delivered to.
 
 
 

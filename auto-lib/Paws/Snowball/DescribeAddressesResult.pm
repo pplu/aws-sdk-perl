@@ -17,7 +17,7 @@ Paws::Snowball::DescribeAddressesResult
 
 =head2 Addresses => ArrayRef[L<Paws::Snowball::Address>]
 
-The Snowball shipping addresses that were created for this account.
+The Snow device shipping addresses that were created for this account.
 
 
 =head2 NextToken => Str
