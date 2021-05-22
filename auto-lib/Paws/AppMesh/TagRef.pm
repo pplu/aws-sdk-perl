@@ -2,7 +2,7 @@
 package Paws::AppMesh::TagRef;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 
 1;
 
@@ -49,7 +49,7 @@ One part of a key-value pair that make up a tag. A C<key> is a general
 label that acts like a category for more specific tag values.
 
 
-=head2 Value => Str
+=head2 B<REQUIRED> Value => Str
 
 The optional part of a key-value pair that make up a tag. A C<value>
 acts as a descriptor within a tag category (key).

@@ -2,6 +2,7 @@
 package Paws::AppMesh::TcpRoute;
   use Moose;
   has Action => (is => 'ro', isa => 'Paws::AppMesh::TcpRouteAction', request_name => 'action', traits => ['NameInRequest'], required => 1);
+  has Timeout => (is => 'ro', isa => 'Paws::AppMesh::TcpTimeout', request_name => 'timeout', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::TcpRoute object:
 
-  $service_obj->Method(Att1 => { Action => $value, ..., Action => $value  });
+  $service_obj->Method(Att1 => { Action => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,11 @@ An object that represents a TCP route type.
 =head2 B<REQUIRED> Action => L<Paws::AppMesh::TcpRouteAction>
 
 The action to take if a match is determined.
+
+
+=head2 Timeout => L<Paws::AppMesh::TcpTimeout>
+
+An object that represents types of timeouts.
 
 
 

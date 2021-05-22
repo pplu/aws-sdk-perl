@@ -38,6 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Aw
 An object that represents the AWS Cloud Map service discovery
 information for your virtual node.
 
+AWS Cloud Map is not available in the eu-south-1 Region.
+
 =head1 ATTRIBUTES
 
 

@@ -4,6 +4,7 @@ package Paws::AppMesh::HttpRoute;
   has Action => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteAction', request_name => 'action', traits => ['NameInRequest'], required => 1);
   has Match => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteMatch', request_name => 'match', traits => ['NameInRequest'], required => 1);
   has RetryPolicy => (is => 'ro', isa => 'Paws::AppMesh::HttpRetryPolicy', request_name => 'retryPolicy', traits => ['NameInRequest']);
+  has Timeout => (is => 'ro', isa => 'Paws::AppMesh::HttpTimeout', request_name => 'timeout', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::HttpRoute object:
 
-  $service_obj->Method(Att1 => { Action => $value, ..., RetryPolicy => $value  });
+  $service_obj->Method(Att1 => { Action => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Ht
 
 =head1 DESCRIPTION
 
-An object that represents an HTTP or HTTP2 route type.
+An object that represents an HTTP or HTTP/2 route type.
 
 =head1 ATTRIBUTES
 
@@ -53,6 +54,11 @@ An object that represents the criteria for determining a request match.
 =head2 RetryPolicy => L<Paws::AppMesh::HttpRetryPolicy>
 
 An object that represents a retry policy.
+
+
+=head2 Timeout => L<Paws::AppMesh::HttpTimeout>
+
+An object that represents types of timeouts.
 
 
 

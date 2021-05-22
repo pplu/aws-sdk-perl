@@ -4,6 +4,8 @@ package Paws::AppMesh::ResourceMetadata;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest'], required => 1);
+  has MeshOwner => (is => 'ro', isa => 'Str', request_name => 'meshOwner', traits => ['NameInRequest'], required => 1);
+  has ResourceOwner => (is => 'ro', isa => 'Str', request_name => 'resourceOwner', traits => ['NameInRequest'], required => 1);
   has Uid => (is => 'ro', isa => 'Str', request_name => 'uid', traits => ['NameInRequest'], required => 1);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest'], required => 1);
 
@@ -56,6 +58,24 @@ The Unix epoch timestamp in seconds for when the resource was created.
 
 The Unix epoch timestamp in seconds for when the resource was last
 updated.
+
+
+=head2 B<REQUIRED> MeshOwner => Str
+
+The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it's the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see Working with
+shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+
+
+=head2 B<REQUIRED> ResourceOwner => Str
+
+The AWS IAM account ID of the resource owner. If the account ID is not
+your own, then it's the ID of the mesh owner or of another account that
+the mesh is shared with. For more information about mesh sharing, see
+Working with shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 
 
 =head2 B<REQUIRED> Uid => Str

@@ -3,6 +3,7 @@ package Paws::AppMesh::UpdateVirtualRouter;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
+  has MeshOwner => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'meshOwner');
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
 
@@ -38,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             PortMapping => {
               Port     => 1,         # min: 1, max: 65535
-              Protocol => 'grpc',    # values: grpc, http, http2, tcp
+              Protocol => 'http',    # values: http, tcp, http2, grpc
 
             },
 
@@ -48,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       VirtualRouterName => 'MyResourceName',
       ClientToken       => 'MyString',         # OPTIONAL
+      MeshOwner         => 'MyAccountId',      # OPTIONAL
     );
 
     # Results:
@@ -72,6 +74,16 @@ underscores are allowed.
 =head2 B<REQUIRED> MeshName => Str
 
 The name of the service mesh that the virtual router resides in.
+
+
+
+=head2 MeshOwner => Str
+
+The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it's the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see Working with
+shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 
 
 

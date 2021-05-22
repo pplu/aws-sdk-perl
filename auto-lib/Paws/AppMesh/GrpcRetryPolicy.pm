@@ -83,12 +83,14 @@ The maximum number of retry attempts.
 
 =head2 B<REQUIRED> PerRetryTimeout => L<Paws::AppMesh::Duration>
 
-An object that represents a duration of time.
+The timeout for each retry attempt.
 
 
 =head2 TcpRetryEvents => ArrayRef[Str|Undef]
 
-Specify a valid value.
+Specify a valid value. The event occurs before any processing of a
+request has started and is encountered when the upstream is temporarily
+or permanently unavailable.
 
 
 

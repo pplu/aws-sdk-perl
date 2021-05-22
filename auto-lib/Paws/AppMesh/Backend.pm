@@ -41,7 +41,7 @@ to send outbound traffic to.
 
 =head2 VirtualService => L<Paws::AppMesh::VirtualServiceBackend>
 
-Specifies a virtual service to use as a backend for a virtual node.
+Specifies a virtual service to use as a backend.
 
 
 
