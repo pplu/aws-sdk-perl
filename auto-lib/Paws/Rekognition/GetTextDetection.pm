@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =head2 B<REQUIRED> JobId => Str
 
-Job identifier for the label detection operation for which you want
+Job identifier for the text detection operation for which you want
 results returned. You get the job identifer from an initial call to
 C<StartTextDetection>.
 

@@ -2,6 +2,7 @@
 package Paws::Rekognition::CreateCollection;
   use Moose;
   has CollectionId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Rekognition::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -47,6 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head2 B<REQUIRED> CollectionId => Str
 
 ID for the collection that you are creating.
+
+
+
+=head2 Tags => L<Paws::Rekognition::TagMap>
+
+A set of tags (key-value pairs) that you want to attach to the
+collection.
 
 
 

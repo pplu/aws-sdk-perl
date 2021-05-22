@@ -50,6 +50,16 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DeleteFaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DeleteProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteProjectVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DeleteProjectVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteStreamProcessor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DeleteStreamProcessor', @_);
@@ -95,6 +105,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectModerationLabels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DetectProtectiveEquipment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectProtectiveEquipment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DetectText {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectText', @_);
@@ -135,6 +150,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::GetPersonTracking', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSegmentDetection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::GetSegmentDetection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTextDetection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::GetTextDetection', @_);
@@ -158,6 +178,11 @@ package Paws::Rekognition;
   sub ListStreamProcessors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::ListStreamProcessors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RecognizeCelebrities {
@@ -210,6 +235,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::StartProjectVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartSegmentDetection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::StartSegmentDetection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartStreamProcessor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::StartStreamProcessor', @_);
@@ -228,6 +258,16 @@ package Paws::Rekognition;
   sub StopStreamProcessor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::StopStreamProcessor', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -351,7 +391,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection CreateProject CreateProjectVersion CreateStreamProcessor DeleteCollection DeleteFaces DeleteStreamProcessor DescribeCollection DescribeProjects DescribeProjectVersions DescribeStreamProcessor DetectCustomLabels DetectFaces DetectLabels DetectModerationLabels DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking GetTextDetection IndexFaces ListCollections ListFaces ListStreamProcessors RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartProjectVersion StartStreamProcessor StartTextDetection StopProjectVersion StopStreamProcessor / }
+  sub operations { qw/CompareFaces CreateCollection CreateProject CreateProjectVersion CreateStreamProcessor DeleteCollection DeleteFaces DeleteProject DeleteProjectVersion DeleteStreamProcessor DescribeCollection DescribeProjects DescribeProjectVersions DescribeStreamProcessor DetectCustomLabels DetectFaces DetectLabels DetectModerationLabels DetectProtectiveEquipment DetectText GetCelebrityInfo GetCelebrityRecognition GetContentModeration GetFaceDetection GetFaceSearch GetLabelDetection GetPersonTracking GetSegmentDetection GetTextDetection IndexFaces ListCollections ListFaces ListStreamProcessors ListTagsForResource RecognizeCelebrities SearchFaces SearchFacesByImage StartCelebrityRecognition StartContentModeration StartFaceDetection StartFaceSearch StartLabelDetection StartPersonTracking StartProjectVersion StartSegmentDetection StartStreamProcessor StartTextDetection StopProjectVersion StopStreamProcessor TagResource UntagResource / }
 
 1;
 
@@ -412,6 +452,16 @@ If the source image contains multiple faces, the service detects the
 largest face and compares it with each face detected in the target
 image.
 
+CompareFaces uses machine learning algorithms, which are probabilistic.
+A false negative is an incorrect prediction that a face in the target
+image has a low similarity confidence score when compared to the face
+in the source image. To reduce the probability of false negatives, we
+recommend that you compare the target image against multiple source
+images. If you plan to use C<CompareFaces> to make a decision that
+impacts an individual's rights, privacy, or access to services, we
+recommend that you pass the result to a human for review and further
+validation before taking action.
+
 You pass the input and target images either as base64-encoded image
 bytes or as references to images in an Amazon S3 bucket. If you use the
 AWS CLI to call Amazon Rekognition operations, passing image bytes
@@ -442,10 +492,6 @@ quality bar by specifying C<LOW>, C<MEDIUM>, or C<HIGH>. If you do not
 want to filter detected faces, specify C<NONE>. The default value is
 C<NONE>.
 
-To use quality filtering, you need a collection associated with version
-3 of the face model or higher. To get the version of the face model
-associated with a collection, call DescribeCollection.
-
 If the image doesn't contain Exif metadata, C<CompareFaces> returns
 orientation information for the source and target images. Use these
 values to display the images with the correct image orientation.
@@ -469,6 +515,8 @@ C<rekognition:CompareFaces> action.
 
 =item CollectionId => Str
 
+=item [Tags => L<Paws::Rekognition::TagMap>]
+
 
 =back
 
@@ -490,7 +538,9 @@ of the face model version.
 Collection names are case-sensitive.
 
 This operation requires permissions to perform the
-C<rekognition:CreateCollection> action.
+C<rekognition:CreateCollection> action. If you want to tag your
+collection, you also require permission to perform the
+C<rekognition:TagResource> operation.
 
 
 =head2 CreateProject
@@ -527,6 +577,10 @@ C<rekognition:CreateProject> action.
 =item TrainingData => L<Paws::Rekognition::TrainingData>
 
 =item VersionName => Str
+
+=item [KmsKeyId => Str]
+
+=item [Tags => L<Paws::Rekognition::TagMap>]
 
 
 =back
@@ -568,6 +622,8 @@ C<rekognition:CreateProjectVersion> action.
 
 =item Settings => L<Paws::Rekognition::StreamProcessorSettings>
 
+=item [Tags => L<Paws::Rekognition::TagMap>]
+
 
 =back
 
@@ -593,6 +649,11 @@ StartStreamProcessor with the C<Name> field.
 After you have finished analyzing a streaming video, use
 StopStreamProcessor to stop processing. You can delete the stream
 processor by calling DeleteStreamProcessor.
+
+This operation requires permissions to perform the
+C<rekognition:CreateStreamProcessor> action. If you want to tag your
+stream processor, you also require permission to perform the
+C<rekognition:TagResource> operation.
 
 
 =head2 DeleteCollection
@@ -636,6 +697,51 @@ array of face IDs to remove from the collection.
 
 This operation requires permissions to perform the
 C<rekognition:DeleteFaces> action.
+
+
+=head2 DeleteProject
+
+=over
+
+=item ProjectArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::DeleteProject>
+
+Returns: a L<Paws::Rekognition::DeleteProjectResponse> instance
+
+Deletes an Amazon Rekognition Custom Labels project. To delete a
+project you must first delete all models associated with the project.
+To delete a model, see DeleteProjectVersion.
+
+This operation requires permissions to perform the
+C<rekognition:DeleteProject> action.
+
+
+=head2 DeleteProjectVersion
+
+=over
+
+=item ProjectVersionArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::DeleteProjectVersion>
+
+Returns: a L<Paws::Rekognition::DeleteProjectVersionResponse> instance
+
+Deletes an Amazon Rekognition Custom Labels model.
+
+You can't delete a model if it is running or if it is training. To
+check the status of a model, use the C<Status> field returned from
+DescribeProjectVersions. To stop a running model call
+StopProjectVersion. If the model is training, wait until it finishes.
+
+This operation requires permissions to perform the
+C<rekognition:DeleteProjectVersion> action.
 
 
 =head2 DeleteStreamProcessor
@@ -969,6 +1075,84 @@ You pass the input image either as base64-encoded image bytes or as a
 reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
 call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
+
+
+=head2 DetectProtectiveEquipment
+
+=over
+
+=item Image => L<Paws::Rekognition::Image>
+
+=item [SummarizationAttributes => L<Paws::Rekognition::ProtectiveEquipmentSummarizationAttributes>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::DetectProtectiveEquipment>
+
+Returns: a L<Paws::Rekognition::DetectProtectiveEquipmentResponse> instance
+
+Detects Personal Protective Equipment (PPE) worn by people detected in
+an image. Amazon Rekognition can detect the following types of PPE.
+
+=over
+
+=item *
+
+Face cover
+
+=item *
+
+Hand cover
+
+=item *
+
+Head cover
+
+=back
+
+You pass the input image as base64-encoded image bytes or as a
+reference to an image in an Amazon S3 bucket. The image must be either
+a PNG or JPG formatted file.
+
+C<DetectProtectiveEquipment> detects PPE worn by up to 15 persons
+detected in an image.
+
+For each person detected in the image the API returns an array of body
+parts (face, head, left-hand, right-hand). For each body part, an array
+of detected items of PPE is returned, including an indicator of whether
+or not the PPE covers the body part. The API returns the confidence it
+has in each detection (person, PPE, body part and body part coverage).
+It also returns a bounding box (BoundingBox) for each detected person
+and each detected item of PPE.
+
+You can optionally request a summary of detected PPE items with the
+C<SummarizationAttributes> input parameter. The summary provides the
+following information.
+
+=over
+
+=item *
+
+The persons detected as wearing all of the types of PPE that you
+specify.
+
+=item *
+
+The persons detected as not wearing all of the types PPE that you
+specify.
+
+=item *
+
+The persons detected where PPE adornment could not be determined.
+
+=back
+
+This is a stateless API operation. That is, the operation does not
+persist any data.
+
+This operation requires permissions to perform the
+C<rekognition:DetectProtectiveEquipment> action.
 
 
 =head2 DetectText
@@ -1382,6 +1566,60 @@ with the token value returned from the previous call to
 C<GetPersonTracking>.
 
 
+=head2 GetSegmentDetection
+
+=over
+
+=item JobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::GetSegmentDetection>
+
+Returns: a L<Paws::Rekognition::GetSegmentDetectionResponse> instance
+
+Gets the segment detection results of a Amazon Rekognition Video
+analysis started by StartSegmentDetection.
+
+Segment detection with Amazon Rekognition Video is an asynchronous
+operation. You start segment detection by calling StartSegmentDetection
+which returns a job identifier (C<JobId>). When the segment detection
+operation finishes, Amazon Rekognition publishes a completion status to
+the Amazon Simple Notification Service topic registered in the initial
+call to C<StartSegmentDetection>. To get the results of the segment
+detection operation, first check that the status value published to the
+Amazon SNS topic is C<SUCCEEDED>. if so, call C<GetSegmentDetection>
+and pass the job identifier (C<JobId>) from the initial call of
+C<StartSegmentDetection>.
+
+C<GetSegmentDetection> returns detected segments in an array
+(C<Segments>) of SegmentDetection objects. C<Segments> is sorted by the
+segment types specified in the C<SegmentTypes> input parameter of
+C<StartSegmentDetection>. Each element of the array includes the
+detected segment, the precentage confidence in the acuracy of the
+detected segment, the type of the segment, and the frame in which the
+segment was detected.
+
+Use C<SelectedSegmentTypes> to find out the type of segment detection
+requested in the call to C<StartSegmentDetection>.
+
+Use the C<MaxResults> parameter to limit the number of segment
+detections returned. If there are more results than specified in
+C<MaxResults>, the value of C<NextToken> in the operation response
+contains a pagination token for getting the next set of results. To get
+the next page of results, call C<GetSegmentDetection> and populate the
+C<NextToken> request parameter with the token value returned from the
+previous call to C<GetSegmentDetection>.
+
+For more information, see Detecting Video Segments in Stored Video in
+the Amazon Rekognition Developer Guide.
+
+
 =head2 GetTextDetection
 
 =over
@@ -1484,7 +1722,7 @@ from C<IndexFaces>
 For more information, see Model Versioning in the Amazon Rekognition
 Developer Guide.
 
-If you provide the optional C<ExternalImageID> for the input image you
+If you provide the optional C<ExternalImageId> for the input image you
 provided, Amazon Rekognition associates this ID with all faces that it
 detects. When you call the ListFaces operation, the response returns
 the external ID. You can use this external image ID to create a
@@ -1656,6 +1894,26 @@ Gets a list of stream processors that you have created with
 CreateStreamProcessor.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::ListTagsForResource>
+
+Returns: a L<Paws::Rekognition::ListTagsForResourceResponse> instance
+
+Returns a list of tags in an Amazon Rekognition collection, stream
+processor, or Custom Labels model.
+
+This operation requires permissions to perform the
+C<rekognition:ListTagsForResource> action.
+
+
 =head2 RecognizeCelebrities
 
 =over
@@ -1673,11 +1931,11 @@ Returns an array of celebrities recognized in the input image. For more
 information, see Recognizing Celebrities in the Amazon Rekognition
 Developer Guide.
 
-C<RecognizeCelebrities> returns the 100 largest faces in the image. It
+C<RecognizeCelebrities> returns the 64 largest faces in the image. It
 lists recognized celebrities in the C<CelebrityFaces> array and
 unrecognized faces in the C<UnrecognizedFaces> array.
 C<RecognizeCelebrities> doesn't return celebrities whose faces aren't
-among the largest 100 faces in the image.
+among the largest 64 faces in the image.
 
 For each celebrity recognized, C<RecognizeCelebrities> returns a
 C<Celebrity> object. The C<Celebrity> object contains the celebrity
@@ -1794,6 +2052,9 @@ similar the face is to the input face. In the response, the operation
 also returns the bounding box (and a confidence level that the bounding
 box contains a face) of the face that Amazon Rekognition used for the
 input image.
+
+If no faces are detected in the input image, C<SearchFacesByImage>
+returns an C<InvalidParameterException> error.
 
 For an example, Searching for a Face Using an Image in the Amazon
 Rekognition Developer Guide.
@@ -2074,6 +2335,55 @@ This operation requires permissions to perform the
 C<rekognition:StartProjectVersion> action.
 
 
+=head2 StartSegmentDetection
+
+=over
+
+=item SegmentTypes => ArrayRef[Str|Undef]
+
+=item Video => L<Paws::Rekognition::Video>
+
+=item [ClientRequestToken => Str]
+
+=item [Filters => L<Paws::Rekognition::StartSegmentDetectionFilters>]
+
+=item [JobTag => Str]
+
+=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::StartSegmentDetection>
+
+Returns: a L<Paws::Rekognition::StartSegmentDetectionResponse> instance
+
+Starts asynchronous detection of segment detection in a stored video.
+
+Amazon Rekognition Video can detect segments in a video stored in an
+Amazon S3 bucket. Use Video to specify the bucket name and the filename
+of the video. C<StartSegmentDetection> returns a job identifier
+(C<JobId>) which you use to get the results of the operation. When
+segment detection is finished, Amazon Rekognition Video publishes a
+completion status to the Amazon Simple Notification Service topic that
+you specify in C<NotificationChannel>.
+
+You can use the C<Filters> (StartSegmentDetectionFilters) input
+parameter to specify the minimum detection confidence returned in the
+response. Within C<Filters>, use C<ShotFilter>
+(StartShotDetectionFilter) to filter detected shots. Use
+C<TechnicalCueFilter> (StartTechnicalCueDetectionFilter) to filter
+technical cues.
+
+To get the results of the segment detection operation, first check that
+the status value published to the Amazon SNS topic is C<SUCCEEDED>. if
+so, call GetSegmentDetection and pass the job identifier (C<JobId>)
+from the initial call to C<StartSegmentDetection>.
+
+For more information, see Detecting Video Segments in Stored Video in
+the Amazon Rekognition Developer Guide.
+
+
 =head2 StartStreamProcessor
 
 =over
@@ -2162,6 +2472,52 @@ Returns: a L<Paws::Rekognition::StopStreamProcessorResponse> instance
 
 Stops a running stream processor that was created by
 CreateStreamProcessor.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Rekognition::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::TagResource>
+
+Returns: a L<Paws::Rekognition::TagResourceResponse> instance
+
+Adds one or more key-value tags to an Amazon Rekognition collection,
+stream processor, or Custom Labels model. For more information, see
+Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+
+This operation requires permissions to perform the
+C<rekognition:TagResource> action.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Rekognition::UntagResource>
+
+Returns: a L<Paws::Rekognition::UntagResourceResponse> instance
+
+Removes one or more tags from an Amazon Rekognition collection, stream
+processor, or Custom Labels model.
+
+This operation requires permissions to perform the
+C<rekognition:UntagResource> action.
 
 
 

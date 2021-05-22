@@ -1,8 +1,10 @@
 
 package Paws::Rekognition::CreateProjectVersion;
   use Moose;
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has OutputConfig => (is => 'ro', isa => 'Paws::Rekognition::OutputConfig', required => 1);
   has ProjectArn => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Rekognition::TagMap');
   has TestingData => (is => 'ro', isa => 'Paws::Rekognition::TestingData', required => 1);
   has TrainingData => (is => 'ro', isa => 'Paws::Rekognition::TrainingData', required => 1);
   has VersionName => (is => 'ro', isa => 'Str', required => 1);
@@ -67,7 +69,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],        # OPTIONAL
       },
       VersionName => 'MyVersionName',
-
+      KmsKeyId    => 'MyKmsKeyId',      # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',     # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -81,6 +86,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head1 ATTRIBUTES
 
 
+=head2 KmsKeyId => Str
+
+The identifier for your AWS Key Management Service (AWS KMS) customer
+master key (CMK). You can supply the Amazon Resource Name (ARN) of your
+CMK, the ID of your CMK, or an alias for your CMK. The key is used to
+encrypt training and test images copied into the service for model
+training. Your source images are unaffected. The key is also used to
+encrypt training results and manifest files written to the output
+Amazon S3 bucket (C<OutputConfig>).
+
+If you don't specify a value for C<KmsKeyId>, images copied into the
+service are encrypted using a key that AWS owns and manages.
+
+
+
 =head2 B<REQUIRED> OutputConfig => L<Paws::Rekognition::OutputConfig>
 
 The Amazon S3 location to store the results of training.
@@ -91,6 +111,12 @@ The Amazon S3 location to store the results of training.
 
 The ARN of the Amazon Rekognition Custom Labels project that manages
 the model that you want to train.
+
+
+
+=head2 Tags => L<Paws::Rekognition::TagMap>
+
+A set of tags (key-value pairs) that you want to attach to the model.
 
 
 

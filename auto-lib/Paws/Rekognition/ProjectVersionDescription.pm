@@ -4,6 +4,8 @@ package Paws::Rekognition::ProjectVersionDescription;
   has BillableTrainingTimeInSeconds => (is => 'ro', isa => 'Int');
   has CreationTimestamp => (is => 'ro', isa => 'Str');
   has EvaluationResult => (is => 'ro', isa => 'Paws::Rekognition::EvaluationResult');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
+  has ManifestSummary => (is => 'ro', isa => 'Paws::Rekognition::GroundTruthManifest');
   has MinInferenceUnits => (is => 'ro', isa => 'Int');
   has OutputConfig => (is => 'ro', isa => 'Paws::Rekognition::OutputConfig');
   has ProjectVersionArn => (is => 'ro', isa => 'Str');
@@ -66,6 +68,18 @@ The training results. C<EvaluationResult> is only returned if training
 is successful.
 
 
+=head2 KmsKeyId => Str
+
+The identifer for the AWS Key Management Service (AWS KMS) customer
+master key that was used to encrypt the model during training.
+
+
+=head2 ManifestSummary => L<Paws::Rekognition::GroundTruthManifest>
+
+The location of the summary manifest. The summary manifest provides
+aggregate data validation results for the training and test datasets.
+
+
 =head2 MinInferenceUnits => Int
 
 The minimum number of inference units used by the model. For more
@@ -94,12 +108,12 @@ A descriptive message for an error or warning that occurred.
 
 =head2 TestingDataResult => L<Paws::Rekognition::TestingDataResult>
 
-The manifest file that represents the testing results.
+Contains information about the testing results.
 
 
 =head2 TrainingDataResult => L<Paws::Rekognition::TrainingDataResult>
 
-The manifest file that represents the training results.
+Contains information about the training results.
 
 
 =head2 TrainingEndTimestamp => Str
