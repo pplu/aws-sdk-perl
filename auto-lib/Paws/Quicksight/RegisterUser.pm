@@ -2,6 +2,7 @@
 package Paws::Quicksight::RegisterUser;
   use Moose;
   has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
+  has CustomPermissionsName => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str', required => 1);
   has IamArn => (is => 'ro', isa => 'Str');
   has IdentityType => (is => 'ro', isa => 'Str', required => 1);
@@ -36,14 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $quicksight = Paws->service('Quicksight');
     my $RegisterUserResponse = $quicksight->RegisterUser(
-      AwsAccountId => 'MyAwsAccountId',
-      Email        => 'MyString',
-      IdentityType => 'IAM',
-      Namespace    => 'MyNamespace',
-      UserRole     => 'ADMIN',
-      IamArn       => 'MyString',             # OPTIONAL
-      SessionName  => 'MyRoleSessionName',    # OPTIONAL
-      UserName     => 'MyUserName',           # OPTIONAL
+      AwsAccountId          => 'MyAwsAccountId',
+      Email                 => 'MyString',
+      IdentityType          => 'IAM',
+      Namespace             => 'MyNamespace',
+      UserRole              => 'ADMIN',
+      CustomPermissionsName => 'MyRoleName',           # OPTIONAL
+      IamArn                => 'MyString',             # OPTIONAL
+      SessionName           => 'MyRoleSessionName',    # OPTIONAL
+      UserName              => 'MyUserName',           # OPTIONAL
     );
 
     # Results:
@@ -64,6 +66,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 The ID for the AWS account that the user is in. Currently, you use the
 ID for the AWS account that contains your Amazon QuickSight account.
+
+
+
+=head2 CustomPermissionsName => Str
+
+(Enterprise edition only) The name of the custom permissions profile
+that you want to assign to this user. Customized permissions allows you
+to control a user's access by restricting access the following
+operations:
+
+=over
+
+=item *
+
+Create and update data sources
+
+=item *
+
+Create and update datasets
+
+=item *
+
+Create and update email reports
+
+=item *
+
+Subscribe to email reports
+
+=back
+
+To add custom permissions to an existing user, use C< UpdateUser >
+instead.
+
+A set of custom permissions includes any combination of these
+restrictions. Currently, you need to create the profile names for
+custom permission sets by using the QuickSight console. Then, you use
+the C<RegisterUser> API operation to assign the named set of
+permissions to a QuickSight user.
+
+QuickSight custom permissions are applied through IAM policies.
+Therefore, they override the permissions typically granted by assigning
+QuickSight users to one of the default security cohorts in QuickSight
+(admin, author, reader).
+
+This feature is available only to QuickSight Enterprise edition
+subscriptions that use SAML 2.0-Based Federation for Single Sign-On
+(SSO).
 
 
 
@@ -115,7 +164,7 @@ for other scenarios, for example when you are registering an IAM user
 or an Amazon QuickSight user. You can register multiple users using the
 same IAM role if each user has a different session name. For more
 information on assuming IAM roles, see C<assume-role>
-(https://docs.aws.example.com/cli/latest/reference/sts/assume-role.html)
+(https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html)
 in the I<AWS CLI Reference.>
 
 

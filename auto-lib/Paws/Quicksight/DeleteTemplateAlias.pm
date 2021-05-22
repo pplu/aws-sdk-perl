@@ -54,10 +54,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AliasName => Str
 
-The name for the template alias. If you name a specific alias, you
-delete the version that the alias points to. You can specify the latest
-version of the template by providing the keyword C<$LATEST> in the
-C<AliasName> parameter.
+The name for the template alias. To delete a specific alias, you delete
+the version that the alias points to. You can specify the alias name,
+or specify the latest version of the template by providing the keyword
+C<$LATEST> in the C<AliasName> parameter.
 
 
 

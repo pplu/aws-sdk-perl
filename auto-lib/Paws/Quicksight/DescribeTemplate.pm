@@ -39,8 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Status   = $DescribeTemplateResponse->Status;
-    my $Template = $DescribeTemplateResponse->Template;
+    my $RequestId = $DescribeTemplateResponse->RequestId;
+    my $Status    = $DescribeTemplateResponse->Status;
+    my $Template  = $DescribeTemplateResponse->Template;
 
     # Returns a L<Paws::Quicksight::DescribeTemplateResponse> object.
 

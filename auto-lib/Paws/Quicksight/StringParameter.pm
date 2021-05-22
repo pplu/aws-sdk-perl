@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-String parameter.
+A string parameter.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-A display name for the dataset.
+A display name for a string parameter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-Values.
+The values of a string parameter.
 
 
 

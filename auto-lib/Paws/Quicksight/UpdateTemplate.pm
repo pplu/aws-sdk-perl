@@ -88,9 +88,19 @@ The name for the template.
 
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::TemplateSourceEntity>
 
-The source QuickSight entity from which this template is being updated.
-You can currently update templates from an Analysis or another
-template.
+The entity that you are using as a source when you update the template.
+In C<SourceEntity>, you specify the type of object you're using as
+source: C<SourceTemplate> for a template or C<SourceAnalysis> for an
+analysis. Both of these require an Amazon Resource Name (ARN). For
+C<SourceTemplate>, specify the ARN of the source template. For
+C<SourceAnalysis>, specify the ARN of the source analysis. The
+C<SourceTemplate> ARN can contain any AWS Account and any
+QuickSight-supported AWS Region.
+
+Use the C<DataSetReferences> entity within C<SourceTemplate> or
+C<SourceAnalysis> to list the replacement datasets for the placeholders
+listed in the original. The schema in each dataset must match its
+placeholder.
 
 
 

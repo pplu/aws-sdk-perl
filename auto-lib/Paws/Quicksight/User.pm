@@ -3,6 +3,7 @@ package Paws::Quicksight::User;
   use Moose;
   has Active => (is => 'ro', isa => 'Bool');
   has Arn => (is => 'ro', isa => 'Str');
+  has CustomPermissionsName => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str');
   has IdentityType => (is => 'ro', isa => 'Str');
   has PrincipalId => (is => 'ro', isa => 'Str');
@@ -39,8 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-A registered user of Amazon QuickSight. Currently, an Amazon QuickSight
-subscription can't contain more than 20 million users.
+A registered user of Amazon QuickSight.
 
 =head1 ATTRIBUTES
 
@@ -55,6 +55,11 @@ inactive until they sign in and provide a password.
 =head2 Arn => Str
 
 The Amazon Resource Name (ARN) for the user.
+
+
+=head2 CustomPermissionsName => Str
+
+The custom permissions profile associated with this user.
 
 
 =head2 Email => Str

@@ -1,6 +1,7 @@
 
 package Paws::Quicksight::DescribeTemplateResponse;
   use Moose;
+  has RequestId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Int');
   has Template => (is => 'ro', isa => 'Paws::Quicksight::Template');
 
@@ -14,6 +15,11 @@ package Paws::Quicksight::DescribeTemplateResponse;
 Paws::Quicksight::DescribeTemplateResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 RequestId => Str
+
+The AWS request ID for this operation.
 
 
 =head2 Status => Int

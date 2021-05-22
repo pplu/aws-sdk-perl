@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Parameters.
+A list of QuickSight parameters and the list's override values.
 
 =head1 ATTRIBUTES
 
 
 =head2 DateTimeParameters => ArrayRef[L<Paws::Quicksight::DateTimeParameter>]
 
-DateTime parameters.
+Date-time parameters.
 
 
 =head2 DecimalParameters => ArrayRef[L<Paws::Quicksight::DecimalParameter>]

@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AssignmentName => Str
 
-The name of the assignment.
+The name of the assignment, also called a rule.
 
 
 

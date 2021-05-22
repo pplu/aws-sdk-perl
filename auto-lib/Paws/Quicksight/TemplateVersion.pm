@@ -5,8 +5,10 @@ package Paws::Quicksight::TemplateVersion;
   has DataSetConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::DataSetConfiguration]');
   has Description => (is => 'ro', isa => 'Str');
   has Errors => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::TemplateError]');
+  has Sheets => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::Sheet]');
   has SourceEntityArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has ThemeArn => (is => 'ro', isa => 'Str');
   has VersionNumber => (is => 'ro', isa => 'Int');
 
 1;
@@ -51,9 +53,9 @@ The time that this template version was created.
 
 =head2 DataSetConfigurations => ArrayRef[L<Paws::Quicksight::DataSetConfiguration>]
 
-Schema of the dataset identified by the placeholder. The idea is that
-any dashboard created from the template should be bound to new datasets
-matching the same schema described through this API. .
+Schema of the dataset identified by the placeholder. Any dashboard
+created from this template should be bound to new datasets matching the
+same schema described through this API operation.
 
 
 =head2 Description => Str
@@ -63,13 +65,19 @@ The description of the template.
 
 =head2 Errors => ArrayRef[L<Paws::Quicksight::TemplateError>]
 
-Errors associated with the template.
+Errors associated with this template version.
+
+
+=head2 Sheets => ArrayRef[L<Paws::Quicksight::Sheet>]
+
+A list of the associated sheets with the unique identifier and name of
+each sheet.
 
 
 =head2 SourceEntityArn => Str
 
-The Amazon Resource Name (ARN) of the analysis or template which was
-used to create this template.
+The Amazon Resource Name (ARN) of an analysis or template that was used
+to create this template.
 
 
 =head2 Status => Str
@@ -77,9 +85,14 @@ used to create this template.
 The HTTP status of the request.
 
 
+=head2 ThemeArn => Str
+
+The ARN of the theme associated with this version of the template.
+
+
 =head2 VersionNumber => Int
 
-The version number of the template.
+The version number of the template version.
 
 
 

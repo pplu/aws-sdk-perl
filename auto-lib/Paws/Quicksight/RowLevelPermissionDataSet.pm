@@ -2,6 +2,8 @@
 package Paws::Quicksight::RowLevelPermissionDataSet;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has FormatVersion => (is => 'ro', isa => 'Str');
+  has Namespace => (is => 'ro', isa => 'Str');
   has PermissionPolicy => (is => 'ro', isa => 'Str', required => 1);
 
 1;
@@ -34,19 +36,46 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-The row-level security configuration for the dataset.
+Information about a dataset that contains permissions for row-level
+security (RLS). The permissions dataset maps fields to users or groups.
+For more information, see Using Row-Level Security (RLS) to Restrict
+Access to a Dataset
+(https://docs.aws.amazon.com/quicksight/latest/user/restrict-access-to-a-data-set-using-row-level-security.html)
+in the I<Amazon QuickSight User Guide>.
+
+The option to deny permissions by setting C<PermissionPolicy> to
+C<DENY_ACCESS> is not supported for new RLS datasets.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the permission dataset.
+The Amazon Resource Name (ARN) of the dataset that contains permissions
+for RLS.
+
+
+=head2 FormatVersion => Str
+
+The user or group rules associated with the dataset that contains
+permissions for RLS.
+
+By default, C<FormatVersion> is C<VERSION_1>. When C<FormatVersion> is
+C<VERSION_1>, C<UserName> and C<GroupName> are required. When
+C<FormatVersion> is C<VERSION_2>, C<UserARN> and C<GroupARN> are
+required, and C<Namespace> must not exist.
+
+
+=head2 Namespace => Str
+
+The namespace associated with the dataset that contains permissions for
+RLS.
 
 
 =head2 B<REQUIRED> PermissionPolicy => Str
 
-Permission policy.
+The type of permissions to use when interpretting the permissions for
+RLS. C<DENY_ACCESS> is included for backward compatibility only.
 
 
 

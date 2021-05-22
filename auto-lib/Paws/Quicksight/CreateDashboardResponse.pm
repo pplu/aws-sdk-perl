@@ -22,14 +22,14 @@ Paws::Quicksight::CreateDashboardResponse
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the dashboard.
+The ARN of the dashboard.
 
 
 =head2 CreationStatus => Str
 
 The status of the dashboard creation request.
 
-Valid values are: C<"CREATION_IN_PROGRESS">, C<"CREATION_SUCCESSFUL">, C<"CREATION_FAILED">, C<"UPDATE_IN_PROGRESS">, C<"UPDATE_SUCCESSFUL">, C<"UPDATE_FAILED">
+Valid values are: C<"CREATION_IN_PROGRESS">, C<"CREATION_SUCCESSFUL">, C<"CREATION_FAILED">, C<"UPDATE_IN_PROGRESS">, C<"UPDATE_SUCCESSFUL">, C<"UPDATE_FAILED">, C<"DELETED">
 =head2 DashboardId => Str
 
 The ID for the dashboard.

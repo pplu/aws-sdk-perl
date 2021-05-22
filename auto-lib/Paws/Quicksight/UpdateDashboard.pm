@@ -7,6 +7,7 @@ package Paws::Quicksight::UpdateDashboard;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Quicksight::Parameters');
   has SourceEntity => (is => 'ro', isa => 'Paws::Quicksight::DashboardSourceEntity', required => 1);
+  has ThemeArn => (is => 'ro', isa => 'Str');
   has VersionDescription => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -97,6 +98,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],    # max: 100; OPTIONAL
       },    # OPTIONAL
+      ThemeArn           => 'MyArn',                   # OPTIONAL
       VersionDescription => 'MyVersionDescription',    # OPTIONAL
     );
 
@@ -147,15 +149,14 @@ C<ENABLED> by default.
 
 C<AvailabilityStatus> for C<ExportToCSVOption> - This status can be
 either C<ENABLED> or C<DISABLED>. The visual option to export data to
-.csv format isn't enabled when this is set to C<DISABLED>. This option
+.CSV format isn't enabled when this is set to C<DISABLED>. This option
 is C<ENABLED> by default.
 
 =item *
 
 C<VisibilityState> for C<SheetControlsOption> - This visibility state
-can be either C<COLLAPSED> or C<EXPANDED>. The sheet controls pane is
-collapsed by default when set to true. This option is C<COLLAPSED> by
-default.
+can be either C<COLLAPSED> or C<EXPANDED>. This option is C<COLLAPSED>
+by default.
 
 =back
 
@@ -170,18 +171,35 @@ The display name of the dashboard.
 
 =head2 Parameters => L<Paws::Quicksight::Parameters>
 
-A structure that contains the parameters of the dashboard.
+A structure that contains the parameters of the dashboard. These are
+parameter overrides for a dashboard. A dashboard can have any type of
+parameters, and some parameters might accept multiple values.
 
 
 
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::DashboardSourceEntity>
 
-The template or analysis from which the dashboard is created. The
-C<SouceTemplate> entity accepts the Amazon Resource Name (ARN) of the
-template and also references to replacement datasets for the
-placeholders set when creating the template. The replacement datasets
-need to follow the same schema as the datasets for which placeholders
-were created when creating the template.
+The entity that you are using as a source when you update the
+dashboard. In C<SourceEntity>, you specify the type of object you're
+using as source. You can only update a dashboard from a template, so
+you use a C<SourceTemplate> entity. If you need to update a dashboard
+from an analysis, first convert the analysis to a template by using the
+CreateTemplate API operation. For C<SourceTemplate>, specify the Amazon
+Resource Name (ARN) of the source template. The C<SourceTemplate> ARN
+can contain any AWS Account and any QuickSight-supported AWS Region.
+
+Use the C<DataSetReferences> entity within C<SourceTemplate> to list
+the replacement datasets for the placeholders listed in the original.
+The schema in each dataset must match its placeholder.
+
+
+
+=head2 ThemeArn => Str
+
+The Amazon Resource Name (ARN) of the theme that is being used for this
+dashboard. If you add a value for this field, it overrides the value
+that was originally associated with the entity. The theme ARN must
+exist in the same AWS account where you create the dashboard.
 
 
 

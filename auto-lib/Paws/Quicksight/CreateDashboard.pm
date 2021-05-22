@@ -9,6 +9,7 @@ package Paws::Quicksight::CreateDashboard;
   has Permissions => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ResourcePermission]');
   has SourceEntity => (is => 'ro', isa => 'Paws::Quicksight::DashboardSourceEntity', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::Tag]');
+  has ThemeArn => (is => 'ro', isa => 'Str');
   has VersionDescription => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -101,20 +102,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Permissions => [
         {
-          Actions => [ 'MyString', ... ],    # min: 1, max: 16
-          Principal => 'MyPrincipal',        # min: 1, max: 256
+          Actions   => [ 'MyString', ... ],    # min: 1, max: 16
+          Principal => 'MyPrincipal',          # min: 1, max: 256
 
         },
         ...
-      ],                                     # OPTIONAL
+      ],                                       # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',               # min: 1, max: 128
-          Value => 'MyTagValue',             # min: 1, max: 256
+          Key   => 'MyTagKey',                 # min: 1, max: 128
+          Value => 'MyTagValue',               # min: 1, max: 256
 
         },
         ...
-      ],                                     # OPTIONAL
+      ],                                       # OPTIONAL
+      ThemeArn           => 'MyArn',                   # OPTIONAL
       VersionDescription => 'MyVersionDescription',    # OPTIONAL
     );
 
@@ -164,15 +166,14 @@ C<ENABLED> by default.
 
 C<AvailabilityStatus> for C<ExportToCSVOption> - This status can be
 either C<ENABLED> or C<DISABLED>. The visual option to export data to
-.csv format isn't enabled when this is set to C<DISABLED>. This option
+.CSV format isn't enabled when this is set to C<DISABLED>. This option
 is C<ENABLED> by default.
 
 =item *
 
 C<VisibilityState> for C<SheetControlsOption> - This visibility state
-can be either C<COLLAPSED> or C<EXPANDED>. The sheet controls pane is
-collapsed by default when set to true. This option is C<COLLAPSED> by
-default.
+can be either C<COLLAPSED> or C<EXPANDED>. This option is C<COLLAPSED>
+by default.
 
 =back
 
@@ -187,33 +188,36 @@ The display name of the dashboard.
 
 =head2 Parameters => L<Paws::Quicksight::Parameters>
 
-A structure that contains the parameters of the dashboard. These are
-parameter overrides for a dashboard. A dashboard can have any type of
-parameters, and some parameters might accept multiple values. You can
-use the dashboard permissions structure described following to override
-two string parameters that accept multiple values.
+The parameters for the creation of the dashboard, which you want to use
+to override the default settings. A dashboard can have any type of
+parameters, and some parameters might accept multiple values.
 
 
 
 =head2 Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]
 
 A structure that contains the permissions of the dashboard. You can use
-this structure for granting permissions with principal and action
-information.
+this structure for granting permissions by providing a list of IAM
+action information for each principal ARN.
+
+To specify no permissions, omit the permissions list.
 
 
 
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::DashboardSourceEntity>
 
-The source entity from which the dashboard is created. The source
-entity accepts the Amazon Resource Name (ARN) of the source template or
-analysis and also references the replacement datasets for the
-placeholders set when creating the template. The replacement datasets
-need to follow the same schema as the datasets for which placeholders
-were created when creating the template.
+The entity that you are using as a source when you create the
+dashboard. In C<SourceEntity>, you specify the type of object you're
+using as source. You can only create a dashboard from a template, so
+you use a C<SourceTemplate> entity. If you need to create a dashboard
+from an analysis, first convert the analysis to a template by using the
+CreateTemplate API operation. For C<SourceTemplate>, specify the Amazon
+Resource Name (ARN) of the source template. The C<SourceTemplate>ARN
+can contain any AWS Account and any QuickSight-supported AWS Region.
 
-If you are creating a dashboard from a source entity in a different AWS
-account, use the ARN of the source template.
+Use the C<DataSetReferences> entity within C<SourceTemplate> to list
+the replacement datasets for the placeholders listed in the original.
+The schema in each dataset must match its placeholder.
 
 
 
@@ -221,6 +225,15 @@ account, use the ARN of the source template.
 
 Contains a map of the key-value pairs for the resource tag or tags
 assigned to the dashboard.
+
+
+
+=head2 ThemeArn => Str
+
+The Amazon Resource Name (ARN) of the theme that is being used for this
+dashboard. If you add a value for this field, it overrides the value
+that is used in the source entity. The theme ARN must exist in the same
+AWS account where you create the dashboard.
 
 
 

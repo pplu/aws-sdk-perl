@@ -9,6 +9,7 @@ package Paws::Quicksight::DataSourceParameters;
   has JiraParameters => (is => 'ro', isa => 'Paws::Quicksight::JiraParameters');
   has MariaDbParameters => (is => 'ro', isa => 'Paws::Quicksight::MariaDbParameters');
   has MySqlParameters => (is => 'ro', isa => 'Paws::Quicksight::MySqlParameters');
+  has OracleParameters => (is => 'ro', isa => 'Paws::Quicksight::OracleParameters');
   has PostgreSqlParameters => (is => 'ro', isa => 'Paws::Quicksight::PostgreSqlParameters');
   has PrestoParameters => (is => 'ro', isa => 'Paws::Quicksight::PrestoParameters');
   has RdsParameters => (is => 'ro', isa => 'Paws::Quicksight::RdsParameters');
@@ -96,6 +97,11 @@ MariaDB parameters.
 =head2 MySqlParameters => L<Paws::Quicksight::MySqlParameters>
 
 MySQL parameters.
+
+
+=head2 OracleParameters => L<Paws::Quicksight::OracleParameters>
+
+Oracle parameters.
 
 
 =head2 PostgreSqlParameters => L<Paws::Quicksight::PostgreSqlParameters>

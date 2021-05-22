@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 A template object. A I<template> is an entity in QuickSight that
 encapsulates the metadata required to create an analysis and that you
 can use to create a dashboard. A template adds a layer of abstraction
-by using placeholders to replace the dataset associated with the
+by using placeholders to replace the dataset associated with an
 analysis. You can use templates to create dashboards by replacing
 dataset placeholders with datasets that follow the same schema that was
 used to create the source analysis and template.

@@ -44,7 +44,7 @@ The template version.
 
 =head2 Arn => Str
 
-The ARN of the template version.
+The Amazon Resource Name (ARN) of the template version.
 
 
 =head2 CreatedTime => Str

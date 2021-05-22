@@ -26,7 +26,7 @@ The name for the template alias.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the resource.
+The Amazon Resource Name (ARN) of the template you want to delete.
 
 
 =head2 RequestId => Str
