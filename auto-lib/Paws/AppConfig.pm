@@ -34,6 +34,11 @@ package Paws::AppConfig;
     my $call_object = $self->new_with_coercions('Paws::AppConfig::CreateEnvironment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateHostedConfigurationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppConfig::CreateHostedConfigurationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppConfig::DeleteApplication', @_);
@@ -52,6 +57,11 @@ package Paws::AppConfig;
   sub DeleteEnvironment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppConfig::DeleteEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteHostedConfigurationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppConfig::DeleteHostedConfigurationVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetApplication {
@@ -84,6 +94,11 @@ package Paws::AppConfig;
     my $call_object = $self->new_with_coercions('Paws::AppConfig::GetEnvironment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetHostedConfigurationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppConfig::GetHostedConfigurationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppConfig::ListApplications', @_);
@@ -107,6 +122,11 @@ package Paws::AppConfig;
   sub ListEnvironments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppConfig::ListEnvironments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListHostedConfigurationVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppConfig::ListHostedConfigurationVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -162,7 +182,7 @@ package Paws::AppConfig;
   
 
 
-  sub operations { qw/CreateApplication CreateConfigurationProfile CreateDeploymentStrategy CreateEnvironment DeleteApplication DeleteConfigurationProfile DeleteDeploymentStrategy DeleteEnvironment GetApplication GetConfiguration GetConfigurationProfile GetDeployment GetDeploymentStrategy GetEnvironment ListApplications ListConfigurationProfiles ListDeployments ListDeploymentStrategies ListEnvironments ListTagsForResource StartDeployment StopDeployment TagResource UntagResource UpdateApplication UpdateConfigurationProfile UpdateDeploymentStrategy UpdateEnvironment ValidateConfiguration / }
+  sub operations { qw/CreateApplication CreateConfigurationProfile CreateDeploymentStrategy CreateEnvironment CreateHostedConfigurationVersion DeleteApplication DeleteConfigurationProfile DeleteDeploymentStrategy DeleteEnvironment DeleteHostedConfigurationVersion GetApplication GetConfiguration GetConfigurationProfile GetDeployment GetDeploymentStrategy GetEnvironment GetHostedConfigurationVersion ListApplications ListConfigurationProfiles ListDeployments ListDeploymentStrategies ListEnvironments ListHostedConfigurationVersions ListTagsForResource StartDeployment StopDeployment TagResource UntagResource UpdateApplication UpdateConfigurationProfile UpdateDeploymentStrategy UpdateEnvironment ValidateConfiguration / }
 
 1;
 
@@ -233,8 +253,8 @@ timely deployment, such as a product launch or announcement.
 
 =item *
 
-B<User membership>: Use AppConfig to allow premium subscribers to
-access paid content.
+B<Allow list>: Use AppConfig to allow premium subscribers to access
+paid content.
 
 =item *
 
@@ -286,9 +306,9 @@ Gateway and AWS Lambda, or any system you run on behalf of others.
 
 =item Name => Str
 
-=item RetrievalRoleArn => Str
-
 =item [Description => Str]
+
+=item [RetrievalRoleArn => Str]
 
 =item [Tags => L<Paws::AppConfig::TagMap>]
 
@@ -302,9 +322,9 @@ Each argument is described in detail in: L<Paws::AppConfig::CreateConfigurationP
 Returns: a L<Paws::AppConfig::ConfigurationProfile> instance
 
 Information that enables AppConfig to access the configuration source.
-Valid configuration sources include Systems Manager (SSM) documents and
-SSM Parameter Store parameters. A configuration profile includes the
-following information.
+Valid configuration sources include Systems Manager (SSM) documents,
+SSM Parameter Store parameters, and Amazon S3 objects. A configuration
+profile includes the following information.
 
 =over
 
@@ -324,6 +344,10 @@ either a JSON Schema or an AWS Lambda function.
 
 =back
 
+For more information, see Create a Configuration and a Configuration
+Profile
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html)
+in the I<AWS AppConfig User Guide>.
 
 
 =head2 CreateDeploymentStrategy
@@ -389,6 +413,32 @@ C<Mobile> and C<Back-end> components for your application. You can
 configure Amazon CloudWatch alarms for each environment. The system
 monitors alarms during a configuration deployment. If an alarm is
 triggered, the system rolls back the configuration.
+
+
+=head2 CreateHostedConfigurationVersion
+
+=over
+
+=item ApplicationId => Str
+
+=item ConfigurationProfileId => Str
+
+=item Content => Str
+
+=item ContentType => Str
+
+=item [Description => Str]
+
+=item [LatestVersionNumber => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppConfig::CreateHostedConfigurationVersion>
+
+Returns: a L<Paws::AppConfig::HostedConfigurationVersion> instance
+
+Create a new configuration in the AppConfig configuration store.
 
 
 =head2 DeleteApplication
@@ -463,6 +513,27 @@ Delete an environment. Deleting an environment does not delete a
 configuration from a host.
 
 
+=head2 DeleteHostedConfigurationVersion
+
+=over
+
+=item ApplicationId => Str
+
+=item ConfigurationProfileId => Str
+
+=item VersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppConfig::DeleteHostedConfigurationVersion>
+
+Returns: nothing
+
+Delete a version of a configuration from the AppConfig configuration
+store.
+
+
 =head2 GetApplication
 
 =over
@@ -500,7 +571,19 @@ Each argument is described in detail in: L<Paws::AppConfig::GetConfiguration>
 
 Returns: a L<Paws::AppConfig::Configuration> instance
 
-Retrieve information about a configuration.
+Receive information about a configuration.
+
+AWS AppConfig uses the value of the C<ClientConfigurationVersion>
+parameter to identify the configuration version on your clients. If you
+donE<rsquo>t send C<ClientConfigurationVersion> with each call to
+C<GetConfiguration>, your clients receive the current configuration.
+You are charged each time your clients receive a configuration.
+
+To avoid excess charges, we recommend that you include the
+C<ClientConfigurationVersion> value with every call to
+C<GetConfiguration>. This value must be saved on your client.
+Subsequent calls to C<GetConfiguration> must pass this value by using
+the C<ClientConfigurationVersion> parameter.
 
 
 =head2 GetConfigurationProfile
@@ -583,6 +666,26 @@ C<Production> environment or in an C<EU_Region> environment. Each
 configuration deployment targets an environment. You can enable one or
 more Amazon CloudWatch alarms for an environment. If an alarm is
 triggered during a deployment, AppConfig roles back the configuration.
+
+
+=head2 GetHostedConfigurationVersion
+
+=over
+
+=item ApplicationId => Str
+
+=item ConfigurationProfileId => Str
+
+=item VersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppConfig::GetHostedConfigurationVersion>
+
+Returns: a L<Paws::AppConfig::HostedConfigurationVersion> instance
+
+Get information about a specific configuration version.
 
 
 =head2 ListApplications
@@ -681,6 +784,29 @@ Each argument is described in detail in: L<Paws::AppConfig::ListEnvironments>
 Returns: a L<Paws::AppConfig::Environments> instance
 
 List the environments for an application.
+
+
+=head2 ListHostedConfigurationVersions
+
+=over
+
+=item ApplicationId => Str
+
+=item ConfigurationProfileId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppConfig::ListHostedConfigurationVersions>
+
+Returns: a L<Paws::AppConfig::HostedConfigurationVersions> instance
+
+View a list of configurations stored in the AppConfig configuration
+store by version.
 
 
 =head2 ListTagsForResource

@@ -12,6 +12,7 @@ package Paws::AppConfig::Deployment;
   has DeploymentStrategyId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
+  has EventLog => (is => 'ro', isa => 'ArrayRef[Paws::AppConfig::DeploymentEvent]');
   has FinalBakeTimeInMinutes => (is => 'ro', isa => 'Int');
   has GrowthFactor => (is => 'ro', isa => 'Num');
   has GrowthType => (is => 'ro', isa => 'Str');
@@ -86,6 +87,12 @@ The description of the deployment.
 The ID of the environment that was deployed.
 
 
+=head2 EventLog => ArrayRef[L<Paws::AppConfig::DeploymentEvent>]
+
+A list containing all events related to a deployment. The most recent
+events are displayed first.
+
+
 =head2 FinalBakeTimeInMinutes => Int
 
 The amount of time AppConfig monitored for alarms before considering
@@ -103,7 +110,7 @@ each interval.
 
 The algorithm used to define how percentage grew over time.
 
-Valid values are: C<"LINEAR">
+Valid values are: C<"LINEAR">, C<"EXPONENTIAL">
 =head2 PercentageComplete => Num
 
 The percentage of targets for which the deployment is available.

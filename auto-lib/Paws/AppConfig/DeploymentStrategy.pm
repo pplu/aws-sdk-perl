@@ -49,7 +49,7 @@ each interval.
 
 The algorithm used to define how percentage grew over time.
 
-Valid values are: C<"LINEAR">
+Valid values are: C<"LINEAR">, C<"EXPONENTIAL">
 =head2 Id => Str
 
 The deployment strategy ID.

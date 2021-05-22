@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Monitors      => [
         {
           AlarmArn     => 'MyArn',         # min: 20, max: 2048; OPTIONAL
-          AlarmRoleArn => 'MyArn',         # min: 20, max: 2048; OPTIONAL
+          AlarmRoleArn => 'MyRoleArn',     # min: 20, max: 2048; OPTIONAL
         },
         ...
       ],                                   # OPTIONAL
