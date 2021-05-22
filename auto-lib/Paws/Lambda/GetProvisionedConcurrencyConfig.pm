@@ -29,11 +29,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To get a provisioned concurrency configuration
+    # The following example returns details for the provisioned concurrency
+    # configuration for the BLUE alias of the specified function.
     my $GetProvisionedConcurrencyConfigResponse =
       $lambda->GetProvisionedConcurrencyConfig(
-      FunctionName => 'MyFunctionName',
-      Qualifier    => 'MyQualifier',
-
+      'FunctionName' => 'my-function',
+      'Qualifier'    => 'BLUE'
       );
 
     # Results:
@@ -47,8 +49,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RequestedProvisionedConcurrentExecutions =
       $GetProvisionedConcurrencyConfigResponse
       ->RequestedProvisionedConcurrentExecutions;
-    my $Status       = $GetProvisionedConcurrencyConfigResponse->Status;
-    my $StatusReason = $GetProvisionedConcurrencyConfigResponse->StatusReason;
+    my $Status = $GetProvisionedConcurrencyConfigResponse->Status;
+
+    # Returns a L<Paws::Lambda::GetProvisionedConcurrencyConfigResponse> object.
+    # To view a provisioned concurrency configuration
+    # The following example displays details for the provisioned concurrency
+    # configuration for the BLUE alias of the specified function.
+    my $GetProvisionedConcurrencyConfigResponse =
+      $lambda->GetProvisionedConcurrencyConfig(
+      'FunctionName' => 'my-function',
+      'Qualifier'    => 'BLUE'
+      );
+
+    # Results:
+    my $AllocatedProvisionedConcurrentExecutions =
+      $GetProvisionedConcurrencyConfigResponse
+      ->AllocatedProvisionedConcurrentExecutions;
+    my $AvailableProvisionedConcurrentExecutions =
+      $GetProvisionedConcurrencyConfigResponse
+      ->AvailableProvisionedConcurrentExecutions;
+    my $LastModified = $GetProvisionedConcurrencyConfigResponse->LastModified;
+    my $RequestedProvisionedConcurrentExecutions =
+      $GetProvisionedConcurrencyConfigResponse
+      ->RequestedProvisionedConcurrentExecutions;
+    my $Status = $GetProvisionedConcurrencyConfigResponse->Status;
 
     # Returns a L<Paws::Lambda::GetProvisionedConcurrencyConfigResponse> object.
 

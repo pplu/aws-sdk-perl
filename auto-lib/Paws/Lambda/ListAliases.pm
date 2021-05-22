@@ -31,18 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieve a Lambda function aliases
-    # This operation retrieves a Lambda function's aliases
-    my $ListAliasesResponse = $lambda->ListAliases(
-      'FunctionName'    => 'myFunction',
-      'FunctionVersion' => 1,
-      'Marker'          => '',
-      'MaxItems'        => 123
-    );
+    # To list a function's aliases
+    # The following example returns a list of aliases for a function named
+    # my-function.
+    my $ListAliasesResponse =
+      $lambda->ListAliases( 'FunctionName' => 'my-function' );
 
     # Results:
-    my $Aliases    = $ListAliasesResponse->Aliases;
-    my $NextMarker = $ListAliasesResponse->NextMarker;
+    my $Aliases = $ListAliasesResponse->Aliases;
 
     # Returns a L<Paws::Lambda::ListAliasesResponse> object.
 

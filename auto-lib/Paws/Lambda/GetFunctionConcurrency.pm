@@ -28,10 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    my $GetFunctionConcurrencyResponse = $lambda->GetFunctionConcurrency(
-      FunctionName => 'MyFunctionName',
-
-    );
+    # To get the reserved concurrency setting for a function
+    # The following example returns the reserved concurrency setting for a
+    # function named my-function.
+    my $GetFunctionConcurrencyResponse =
+      $lambda->GetFunctionConcurrency( 'FunctionName' => 'my-function' );
 
     # Results:
     my $ReservedConcurrentExecutions =

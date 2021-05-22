@@ -34,14 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+   # To add permissions to a layer version
+   # The following example grants permission for the account 223456789012 to use
+   # version 1 of a layer named my-layer.
     my $AddLayerVersionPermissionResponse = $lambda->AddLayerVersionPermission(
-      Action         => 'MyLayerPermissionAllowedAction',
-      LayerName      => 'MyLayerName',
-      Principal      => 'MyLayerPermissionAllowedPrincipal',
-      StatementId    => 'MyStatementId',
-      VersionNumber  => 1,
-      OrganizationId => 'MyOrganizationId',                    # OPTIONAL
-      RevisionId     => 'MyString',                            # OPTIONAL
+      'Action'        => 'lambda:GetLayerVersion',
+      'LayerName'     => 'my-layer',
+      'Principal'     => 223456789012,
+      'StatementId'   => 'xaccount',
+      'VersionNumber' => 1
     );
 
     # Results:

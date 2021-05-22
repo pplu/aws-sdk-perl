@@ -6,9 +6,11 @@ package Paws::Lambda::FunctionConfiguration;
   has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::EnvironmentResponse');
+  has FileSystemConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::FileSystemConfig]');
   has FunctionArn => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str');
   has Handler => (is => 'ro', isa => 'Str');
+  has ImageConfigResponse => (is => 'ro', isa => 'Paws::Lambda::ImageConfigResponse');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
   has LastUpdateStatus => (is => 'ro', isa => 'Str');
@@ -17,9 +19,12 @@ package Paws::Lambda::FunctionConfiguration;
   has Layers => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::Layer]');
   has MasterArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
+  has PackageType => (is => 'ro', isa => 'Str');
   has RevisionId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
+  has SigningJobArn => (is => 'ro', isa => 'Str');
+  has SigningProfileVersionArn => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StateReason => (is => 'ro', isa => 'Str');
   has StateReasonCode => (is => 'ro', isa => 'Str');
@@ -65,6 +70,11 @@ The function's description.
 The function's environment variables.
 
 
+=head2 FileSystemConfigs => ArrayRef[L<Paws::Lambda::FileSystemConfig>]
+
+Connection settings for an Amazon EFS file system.
+
+
 =head2 FunctionArn => Str
 
 The function's Amazon Resource Name (ARN).
@@ -78,6 +88,11 @@ The name of the function.
 =head2 Handler => Str
 
 The function that Lambda calls to begin executing your function.
+
+
+=head2 ImageConfigResponse => L<Paws::Lambda::ImageConfigResponse>
+
+The function's image configuration values.
 
 
 =head2 KMSKeyArn => Str
@@ -109,7 +124,7 @@ The reason for the last update that was performed on the function.
 
 The reason code for the last update that was performed on the function.
 
-Valid values are: C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">, C<"InvalidSubnet">, C<"InvalidSecurityGroup">
+Valid values are: C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">, C<"InvalidSubnet">, C<"InvalidSecurityGroup">, C<"ImageDeleted">, C<"ImageAccessDenied">, C<"InvalidImage">
 =head2 Layers => ArrayRef[L<Paws::Lambda::Layer>]
 
 The function's layers
@@ -123,9 +138,15 @@ For Lambda@Edge functions, the ARN of the master function.
 
 =head2 MemorySize => Int
 
-The memory that's allocated to the function.
+The amount of memory available to the function at runtime.
 
 
+=head2 PackageType => Str
+
+The type of deployment package. Set to C<Image> for container image and
+set C<Zip> for .zip file archive.
+
+Valid values are: C<"Zip">, C<"Image">
 =head2 RevisionId => Str
 
 The latest updated revision of the function or alias.
@@ -140,7 +161,17 @@ The function's execution role.
 
 The runtime environment for the Lambda function.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"nodejs14.x">, C<"java8">, C<"java8.al2">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"dotnetcore3.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">, C<"provided.al2">
+=head2 SigningJobArn => Str
+
+The ARN of the signing job.
+
+
+=head2 SigningProfileVersionArn => Str
+
+The ARN of the signing profile version.
+
+
 =head2 State => Str
 
 The current state of the function. When the state is C<Inactive>, you
@@ -157,11 +188,11 @@ The reason for the function's current state.
 The reason code for the function's current state. When the code is
 C<Creating>, you can't invoke or modify the function.
 
-Valid values are: C<"Idle">, C<"Creating">, C<"Restoring">, C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">, C<"InvalidSubnet">, C<"InvalidSecurityGroup">
+Valid values are: C<"Idle">, C<"Creating">, C<"Restoring">, C<"EniLimitExceeded">, C<"InsufficientRolePermissions">, C<"InvalidConfiguration">, C<"InternalError">, C<"SubnetOutOfIPAddresses">, C<"InvalidSubnet">, C<"InvalidSecurityGroup">, C<"ImageDeleted">, C<"ImageAccessDenied">, C<"InvalidImage">
 =head2 Timeout => Int
 
-The amount of time that Lambda allows a function to run before stopping
-it.
+The amount of time in seconds that Lambda allows a function to run
+before stopping it.
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfigResponse>

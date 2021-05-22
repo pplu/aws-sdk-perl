@@ -29,18 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lambda = Paws->service('Lambda');
     # To delete a Lambda function event source mapping
-    # This operation deletes a Lambda function event source mapping
-    my $EventSourceMappingConfiguration =
-      $lambda->DeleteEventSourceMapping( 'UUID' => '12345kxodurf3443' );
+    # The following example deletes an event source mapping. To get a mapping's
+    # UUID, use ListEventSourceMappings.
+    my $EventSourceMappingConfiguration = $lambda->DeleteEventSourceMapping(
+      'UUID' => '14e0db71-xmpl-4eb5-b481-8945cf9d10c2' );
 
     # Results:
     my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
     my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
     my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
     my $LastModified   = $EventSourceMappingConfiguration->LastModified;
-    my $LastProcessingResult =
-      $EventSourceMappingConfiguration->LastProcessingResult;
-    my $State = $EventSourceMappingConfiguration->State;
+    my $State          = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
     my $UUID = $EventSourceMappingConfiguration->UUID;

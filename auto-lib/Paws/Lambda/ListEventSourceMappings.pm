@@ -31,17 +31,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    my $ListEventSourceMappingsResponse = $lambda->ListEventSourceMappings(
-      EventSourceArn => 'MyArn',             # OPTIONAL
-      FunctionName   => 'MyFunctionName',    # OPTIONAL
-      Marker         => 'MyString',          # OPTIONAL
-      MaxItems       => 1,                   # OPTIONAL
-    );
+    # To list the event source mappings for a function
+    # The following example returns a list of the event source mappings for a
+    # function named my-function.
+    my $ListEventSourceMappingsResponse =
+      $lambda->ListEventSourceMappings( 'FunctionName' => 'my-function' );
 
     # Results:
     my $EventSourceMappings =
       $ListEventSourceMappingsResponse->EventSourceMappings;
-    my $NextMarker = $ListEventSourceMappingsResponse->NextMarker;
 
     # Returns a L<Paws::Lambda::ListEventSourceMappingsResponse> object.
 
@@ -68,6 +66,10 @@ B<Amazon DynamoDB Streams> - The ARN of the stream.
 =item *
 
 B<Amazon Simple Queue Service> - The ARN of the queue.
+
+=item *
+
+B<Amazon Managed Streaming for Apache Kafka> - The ARN of the cluster.
 
 =back
 

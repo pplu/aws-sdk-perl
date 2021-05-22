@@ -29,11 +29,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+   # To remove tags from an existing Lambda function
+   # The following example removes the tag with the key name DEPARTMENT tag from
+   # the my-function Lambda function.
     $lambda->UntagResource(
-      Resource => 'MyFunctionArn',
-      TagKeys  => [ 'MyTagKey', ... ],
-
+      'Resource' =>
+        'arn:aws:lambda:us-west-2:123456789012:function:my-function',
+      'TagKeys' => ['DEPARTMENT']
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/UntagResource>

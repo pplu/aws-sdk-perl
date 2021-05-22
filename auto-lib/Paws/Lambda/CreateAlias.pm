@@ -32,16 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To create an alias for a Lambda function
+    # The following example creates an alias named LIVE that points to version 1
+    # of the my-function Lambda function.
     my $AliasConfiguration = $lambda->CreateAlias(
-      FunctionName    => 'MyFunctionName',
-      FunctionVersion => 'MyVersion',
-      Name            => 'MyAlias',
-      Description     => 'MyDescription',    # OPTIONAL
-      RoutingConfig   => {
-        AdditionalVersionWeights => {
-          'MyAdditionalVersion' => 1,    # key: min: 1, max: 1024, value: max: 1
-        },    # OPTIONAL
-      },    # OPTIONAL
+      'Description'     => 'alias for live version of function',
+      'FunctionName'    => 'my-function',
+      'FunctionVersion' => 1,
+      'Name'            => 'LIVE'
     );
 
     # Results:
@@ -50,7 +48,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FunctionVersion = $AliasConfiguration->FunctionVersion;
     my $Name            = $AliasConfiguration->Name;
     my $RevisionId      = $AliasConfiguration->RevisionId;
-    my $RoutingConfig   = $AliasConfiguration->RoutingConfig;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 
@@ -109,7 +106,7 @@ The name of the alias.
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
 The routing configuration
-(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing)
 of the alias.
 
 

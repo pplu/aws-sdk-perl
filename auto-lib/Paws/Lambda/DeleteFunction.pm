@@ -29,10 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To delete a Lambda function
-    # This operation deletes a Lambda function
+    # To delete a version of a Lambda function
+    # The following example deletes version 1 of a Lambda function named
+    # my-function.
     $lambda->DeleteFunction(
-      'FunctionName' => 'myFunction',
+      'FunctionName' => 'my-function',
       'Qualifier'    => 1
     );
 

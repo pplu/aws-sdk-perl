@@ -28,18 +28,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieve a Lambda function's event source mapping
-    # This operation retrieves a Lambda function's event source mapping
-    my $EventSourceMappingConfiguration =
-      $lambda->GetEventSourceMapping( 'UUID' => '123489-xxxxx-kdla8d89d7' );
+   # To get a Lambda function's event source mapping
+   # The following example returns details about an event source mapping. To get
+   # a mapping's UUID, use ListEventSourceMappings.
+    my $EventSourceMappingConfiguration = $lambda->GetEventSourceMapping(
+      'UUID' => '14e0db71-xmpl-4eb5-b481-8945cf9d10c2' );
 
     # Results:
-    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
-    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
+    my $BatchSize = $EventSourceMappingConfiguration->BatchSize;
+    my $BisectBatchOnFunctionError =
+      $EventSourceMappingConfiguration->BisectBatchOnFunctionError;
+    my $DestinationConfig = $EventSourceMappingConfiguration->DestinationConfig;
+    my $EventSourceArn    = $EventSourceMappingConfiguration->EventSourceArn;
+    my $FunctionArn       = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastModified      = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
+    my $MaximumRecordAgeInSeconds =
+      $EventSourceMappingConfiguration->MaximumRecordAgeInSeconds;
+    my $MaximumRetryAttempts =
+      $EventSourceMappingConfiguration->MaximumRetryAttempts;
     my $State = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;

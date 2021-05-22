@@ -29,17 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieve a Lambda function's event source mapping
-    # This operation retrieves a Lambda function's event source mapping
+    # To get a Lambda function's event source mapping
+    # The following example returns and configuration details for version 1 of a
+    # function named my-function.
     my $FunctionConfiguration = $lambda->GetFunctionConfiguration(
-      'FunctionName' => 'myFunction',
+      'FunctionName' => 'my-function',
       'Qualifier'    => 1
     );
 
     # Results:
     my $CodeSha256       = $FunctionConfiguration->CodeSha256;
     my $CodeSize         = $FunctionConfiguration->CodeSize;
-    my $DeadLetterConfig = $FunctionConfiguration->DeadLetterConfig;
     my $Description      = $FunctionConfiguration->Description;
     my $Environment      = $FunctionConfiguration->Environment;
     my $FunctionArn      = $FunctionConfiguration->FunctionArn;
@@ -47,12 +47,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Handler          = $FunctionConfiguration->Handler;
     my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
     my $LastModified     = $FunctionConfiguration->LastModified;
+    my $LastUpdateStatus = $FunctionConfiguration->LastUpdateStatus;
     my $MemorySize       = $FunctionConfiguration->MemorySize;
+    my $RevisionId       = $FunctionConfiguration->RevisionId;
     my $Role             = $FunctionConfiguration->Role;
     my $Runtime          = $FunctionConfiguration->Runtime;
+    my $State            = $FunctionConfiguration->State;
     my $Timeout          = $FunctionConfiguration->Timeout;
+    my $TracingConfig    = $FunctionConfiguration->TracingConfig;
     my $Version          = $FunctionConfiguration->Version;
-    my $VpcConfig        = $FunctionConfiguration->VpcConfig;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

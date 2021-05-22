@@ -29,11 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To add tags to an existing Lambda function
+    # The following example adds a tag with the key name DEPARTMENT and a value
+    # of 'Department A' to the specified Lambda function.
     $lambda->TagResource(
-      Resource => 'MyFunctionArn',
-      Tags     => { 'MyTagKey' => 'MyTagValue', },
-
+      'Resource' =>
+        'arn:aws:lambda:us-west-2:123456789012:function:my-function',
+      'Tags' => {
+        'DEPARTMENT' => 'Department A'
+      }
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/TagResource>

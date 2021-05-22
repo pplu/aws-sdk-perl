@@ -28,10 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    my $ListTagsResponse = $lambda->ListTags(
-      Resource => 'MyFunctionArn',
-
-    );
+    # To retrieve the list of tags for a Lambda function
+    # The following example displays the tags attached to the my-function Lambda
+    # function.
+    my $ListTagsResponse = $lambda->ListTags( 'Resource' =>
+        'arn:aws:lambda:us-west-2:123456789012:function:my-function' );
 
     # Results:
     my $Tags = $ListTagsResponse->Tags;

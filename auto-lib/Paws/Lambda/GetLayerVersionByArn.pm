@@ -28,10 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    my $GetLayerVersionResponse = $lambda->GetLayerVersionByArn(
-      Arn => 'MyLayerVersionArn',
-
-    );
+    # To get information about a Lambda layer version
+    # The following example returns information about the layer version with the
+    # specified Amazon Resource Name (ARN).
+    my $GetLayerVersionResponse = $lambda->GetLayerVersionByArn( 'Arn' =>
+        'arn:aws:lambda:ca-central-1:123456789012:layer:blank-python-lib:3' );
 
     # Results:
     my $CompatibleRuntimes = $GetLayerVersionResponse->CompatibleRuntimes;
@@ -40,7 +41,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description        = $GetLayerVersionResponse->Description;
     my $LayerArn           = $GetLayerVersionResponse->LayerArn;
     my $LayerVersionArn    = $GetLayerVersionResponse->LayerVersionArn;
-    my $LicenseInfo        = $GetLayerVersionResponse->LicenseInfo;
     my $Version            = $GetLayerVersionResponse->Version;
 
     # Returns a L<Paws::Lambda::GetLayerVersionResponse> object.

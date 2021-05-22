@@ -30,27 +30,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To allocate provisioned concurrency
+    # The following example allocates 100 provisioned concurrency for the BLUE
+    # alias of the specified function.
     my $PutProvisionedConcurrencyConfigResponse =
       $lambda->PutProvisionedConcurrencyConfig(
-      FunctionName                    => 'MyFunctionName',
-      ProvisionedConcurrentExecutions => 1,
-      Qualifier                       => 'MyQualifier',
-
+      'FunctionName'                    => 'my-function',
+      'ProvisionedConcurrentExecutions' => 100,
+      'Qualifier'                       => 'BLUE'
       );
 
     # Results:
     my $AllocatedProvisionedConcurrentExecutions =
       $PutProvisionedConcurrencyConfigResponse
       ->AllocatedProvisionedConcurrentExecutions;
-    my $AvailableProvisionedConcurrentExecutions =
-      $PutProvisionedConcurrencyConfigResponse
-      ->AvailableProvisionedConcurrentExecutions;
     my $LastModified = $PutProvisionedConcurrencyConfigResponse->LastModified;
     my $RequestedProvisionedConcurrentExecutions =
       $PutProvisionedConcurrencyConfigResponse
       ->RequestedProvisionedConcurrentExecutions;
-    my $Status       = $PutProvisionedConcurrencyConfigResponse->Status;
-    my $StatusReason = $PutProvisionedConcurrencyConfigResponse->StatusReason;
+    my $Status = $PutProvisionedConcurrencyConfigResponse->Status;
 
     # Returns a L<Paws::Lambda::PutProvisionedConcurrencyConfigResponse> object.
 

@@ -30,10 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lambda = Paws->service('Lambda');
     # To delete a Lambda function alias
-    # This operation deletes a Lambda function alias
+    # The following example deletes an alias named BLUE from a function named
+    # my-function
     $lambda->DeleteAlias(
-      'FunctionName' => 'myFunction',
-      'Name'         => 'alias'
+      'FunctionName' => 'my-function',
+      'Name'         => 'BLUE'
     );
 
 

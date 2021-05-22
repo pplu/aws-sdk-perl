@@ -27,8 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieves a Lambda customer's account settings
-    # This operation retrieves a Lambda customer's account settings
+    # To get account settings
+    # This operation takes no parameters and returns details about storage and
+    # concurrency quotas in the current Region.
     my $GetAccountSettingsResponse = $lambda->GetAccountSettings();
 
     # Results:

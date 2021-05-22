@@ -30,17 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To view a list of asynchronous invocation configurations
+    # The following example returns a list of asynchronous invocation
+    # configurations for a function named my-function.
     my $ListFunctionEventInvokeConfigsResponse =
       $lambda->ListFunctionEventInvokeConfigs(
-      FunctionName => 'MyFunctionName',
-      Marker       => 'MyString',         # OPTIONAL
-      MaxItems     => 1,                  # OPTIONAL
-      );
+      'FunctionName' => 'my-function' );
 
     # Results:
     my $FunctionEventInvokeConfigs =
       $ListFunctionEventInvokeConfigsResponse->FunctionEventInvokeConfigs;
-    my $NextMarker = $ListFunctionEventInvokeConfigsResponse->NextMarker;
 
     # Returns a L<Paws::Lambda::ListFunctionEventInvokeConfigsResponse> object.
 

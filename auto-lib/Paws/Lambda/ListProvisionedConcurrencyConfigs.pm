@@ -30,15 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To get a list of provisioned concurrency configurations
+    # The following example returns a list of provisioned concurrency
+    # configurations for a function named my-function.
     my $ListProvisionedConcurrencyConfigsResponse =
       $lambda->ListProvisionedConcurrencyConfigs(
-      FunctionName => 'MyFunctionName',
-      Marker       => 'MyString',         # OPTIONAL
-      MaxItems     => 1,                  # OPTIONAL
-      );
+      'FunctionName' => 'my-function' );
 
     # Results:
-    my $NextMarker = $ListProvisionedConcurrencyConfigsResponse->NextMarker;
     my $ProvisionedConcurrencyConfigs =
       $ListProvisionedConcurrencyConfigsResponse->ProvisionedConcurrencyConfigs;
 

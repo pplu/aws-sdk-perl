@@ -4,6 +4,8 @@ package Paws::Lambda::LayerVersionContentOutput;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
   has Location => (is => 'ro', isa => 'Str');
+  has SigningJobArn => (is => 'ro', isa => 'Str');
+  has SigningProfileVersionArn => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -24,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lambda::LayerVersionContentOutput object:
 
-  $service_obj->Method(Att1 => { CodeSha256 => $value, ..., Location => $value  });
+  $service_obj->Method(Att1 => { CodeSha256 => $value, ..., SigningProfileVersionArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +56,16 @@ The size of the layer archive in bytes.
 =head2 Location => Str
 
 A link to the layer archive in Amazon S3 that is valid for 10 minutes.
+
+
+=head2 SigningJobArn => Str
+
+The Amazon Resource Name (ARN) of a signing job.
+
+
+=head2 SigningProfileVersionArn => Str
+
+The Amazon Resource Name (ARN) for a signing profile version.
 
 
 

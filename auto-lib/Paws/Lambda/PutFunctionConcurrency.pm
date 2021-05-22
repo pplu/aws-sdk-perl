@@ -29,10 +29,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+   # To configure a reserved concurrency limit for a function
+   # The following example configures 100 reserved concurrent executions for the
+   # my-function function.
     my $Concurrency = $lambda->PutFunctionConcurrency(
-      FunctionName                 => 'MyFunctionName',
-      ReservedConcurrentExecutions => 1,
-
+      'FunctionName'                 => 'my-function',
+      'ReservedConcurrentExecutions' => 100
     );
 
     # Results:
