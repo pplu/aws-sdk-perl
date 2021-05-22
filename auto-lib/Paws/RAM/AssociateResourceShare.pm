@@ -60,7 +60,9 @@ idempotency of the request.
 
 =head2 Principals => ArrayRef[Str|Undef]
 
-The principals.
+The principals to associate with the resource share. The possible
+values are IDs of AWS accounts, and the ARNs of organizational units
+(OU) or organizations from AWS Organizations.
 
 
 

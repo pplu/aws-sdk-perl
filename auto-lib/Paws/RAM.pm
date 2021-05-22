@@ -104,6 +104,11 @@ package Paws::RAM;
     my $call_object = $self->new_with_coercions('Paws::RAM::ListResourceSharePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListResourceTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::ListResourceTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PromoteResourceShareCreatedFromPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::PromoteResourceShareCreatedFromPolicy', @_);
@@ -270,7 +275,7 @@ package Paws::RAM;
   }
 
 
-  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare AssociateResourceSharePermission CreateResourceShare DeleteResourceShare DisassociateResourceShare DisassociateResourceSharePermission EnableSharingWithAwsOrganization GetPermission GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPermissions ListPrincipals ListResources ListResourceSharePermissions PromoteResourceShareCreatedFromPolicy RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
+  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare AssociateResourceSharePermission CreateResourceShare DeleteResourceShare DisassociateResourceShare DisassociateResourceSharePermission EnableSharingWithAwsOrganization GetPermission GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPermissions ListPrincipals ListResources ListResourceSharePermissions ListResourceTypes PromoteResourceShareCreatedFromPolicy RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
 
 1;
 
@@ -719,6 +724,24 @@ Returns: a L<Paws::RAM::ListResourceSharePermissionsResponse> instance
 
 Lists the AWS RAM permissions that are associated with a resource
 share.
+
+
+=head2 ListResourceTypes
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::ListResourceTypes>
+
+Returns: a L<Paws::RAM::ListResourceTypesResponse> instance
+
+Lists the shareable resource types supported by AWS RAM.
 
 
 =head2 PromoteResourceShareCreatedFromPolicy
