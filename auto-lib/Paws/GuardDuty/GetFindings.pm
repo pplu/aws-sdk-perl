@@ -61,7 +61,7 @@ findings you want to retrieve.
 
 =head2 B<REQUIRED> FindingIds => ArrayRef[Str|Undef]
 
-IDs of the findings that you want to retrieve.
+The IDs of the findings that you want to retrieve.
 
 
 

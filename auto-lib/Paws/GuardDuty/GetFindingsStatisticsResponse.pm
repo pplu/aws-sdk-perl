@@ -17,7 +17,7 @@ Paws::GuardDuty::GetFindingsStatisticsResponse
 
 =head2 B<REQUIRED> FindingStatistics => L<Paws::GuardDuty::FindingStatistics>
 
-Finding statistics object.
+The finding statistics object.
 
 
 =head2 _request_id => Str

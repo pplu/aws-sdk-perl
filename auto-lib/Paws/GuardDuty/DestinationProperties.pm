@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains the ARN of the resource to publish to, such as an S3 bucket,
-and the ARN of the KMS key to use to encrypt published findings.
+Contains the Amazon Resource Name (ARN) of the resource to publish to,
+such as an S3 bucket, and the ARN of the KMS key to use to encrypt
+published findings.
 
 =head1 ATTRIBUTES
 

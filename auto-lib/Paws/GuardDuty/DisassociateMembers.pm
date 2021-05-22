@@ -51,14 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
 A list of account IDs of the GuardDuty member accounts that you want to
-disassociate from master.
+disassociate from the administrator account.
 
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
 The unique ID of the detector of the GuardDuty account whose members
-you want to disassociate from master.
+you want to disassociate from the administrator account.
 
 
 

@@ -60,7 +60,7 @@ The ID of the account in which the finding was generated.
 
 =head2 B<REQUIRED> Arn => Str
 
-The ARN for the finding.
+The ARN of the finding.
 
 
 =head2 Confidence => Num
@@ -70,7 +70,7 @@ The confidence score for the finding.
 
 =head2 B<REQUIRED> CreatedAt => Str
 
-The time and date at which the finding was created.
+The time and date when the finding was created.
 
 
 =head2 Description => Str
@@ -90,7 +90,7 @@ The partition associated with the finding.
 
 =head2 B<REQUIRED> Region => Str
 
-The Region in which the finding was generated.
+The Region where the finding was generated.
 
 
 =head2 B<REQUIRED> Resource => L<Paws::GuardDuty::Resource>
@@ -115,17 +115,17 @@ The severity of the finding.
 
 =head2 Title => Str
 
-The title for the finding.
+The title of the finding.
 
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the finding.
+The type of finding.
 
 
 =head2 B<REQUIRED> UpdatedAt => Str
 
-The time and date at which the finding was laste updated.
+The time and date when the finding was last updated.
 
 
 

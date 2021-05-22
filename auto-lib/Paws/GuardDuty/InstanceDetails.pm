@@ -10,6 +10,7 @@ package Paws::GuardDuty::InstanceDetails;
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has LaunchTime => (is => 'ro', isa => 'Str', request_name => 'launchTime', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Tag]', request_name => 'tags', traits => ['NameInRequest']);
@@ -51,7 +52,7 @@ Contains information about the details of an instance.
 
 =head2 AvailabilityZone => Str
 
-The availability zone of the EC2 instance.
+The Availability Zone of the EC2 instance.
 
 
 =head2 IamInstanceProfile => L<Paws::GuardDuty::IamInstanceProfile>
@@ -91,7 +92,13 @@ The launch time of the EC2 instance.
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::GuardDuty::NetworkInterface>]
 
-The network interface information of the EC2 instance.
+The elastic network interface information of the EC2 instance.
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the AWS Outpost. Only applicable to
+AWS Outposts instances.
 
 
 =head2 Platform => Str

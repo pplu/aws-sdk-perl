@@ -58,7 +58,7 @@ monitoring.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty master account
+The unique ID of the detector of the GuardDuty administrator account
 associated with the member accounts to monitor.
 
 

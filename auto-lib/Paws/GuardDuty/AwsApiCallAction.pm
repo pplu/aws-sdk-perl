@@ -4,6 +4,7 @@ package Paws::GuardDuty::AwsApiCallAction;
   has Api => (is => 'ro', isa => 'Str', request_name => 'api', traits => ['NameInRequest']);
   has CallerType => (is => 'ro', isa => 'Str', request_name => 'callerType', traits => ['NameInRequest']);
   has DomainDetails => (is => 'ro', isa => 'Paws::GuardDuty::DomainDetails', request_name => 'domainDetails', traits => ['NameInRequest']);
+  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
 
@@ -37,34 +38,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the API operation.
+Contains information about the API action.
 
 =head1 ATTRIBUTES
 
 
 =head2 Api => Str
 
-AWS API name.
+The AWS API name.
 
 
 =head2 CallerType => Str
 
-AWS API caller type.
+The AWS API caller type.
 
 
 =head2 DomainDetails => L<Paws::GuardDuty::DomainDetails>
 
-Domain information for the AWS API call.
+The domain information for the AWS API call.
+
+
+=head2 ErrorCode => Str
+
+The error code of the failed AWS API action.
 
 
 =head2 RemoteIpDetails => L<Paws::GuardDuty::RemoteIpDetails>
 
-Remote IP information of the connection.
+The remote IP information of the connection that initiated the AWS API
+call.
 
 
 =head2 ServiceName => Str
 
-AWS service name whose API was invoked.
+The AWS service name whose API was invoked.
 
 
 

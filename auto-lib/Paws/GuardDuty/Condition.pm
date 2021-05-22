@@ -51,74 +51,74 @@ Contains information about the condition.
 
 =head2 Eq => ArrayRef[Str|Undef]
 
-Represents the equal condition to be applied to a single field when
+Represents the I<equal> condition to be applied to a single field when
 querying for findings.
 
 
 =head2 Equals => ArrayRef[Str|Undef]
 
-Represents an B<equal> condition to be applied to a single field when
-querying for findings.
+Represents an I<equal> B< condition to be applied to a single field
+when querying for findings.>
 
 
 =head2 GreaterThan => Int
 
-Represents a greater than condition to be applied to a single field
+Represents a I<greater than> condition to be applied to a single field
 when querying for findings.
 
 
 =head2 GreaterThanOrEqual => Int
 
-Represents a greater than equal condition to be applied to a single
-field when querying for findings.
+Represents a I<greater than or equal> condition to be applied to a
+single field when querying for findings.
 
 
 =head2 Gt => Int
 
-Represents a greater than condition to be applied to a single field
+Represents a I<greater than> condition to be applied to a single field
 when querying for findings.
 
 
 =head2 Gte => Int
 
-Represents a greater than equal condition to be applied to a single
-field when querying for findings.
+Represents a I<greater than or equal> condition to be applied to a
+single field when querying for findings.
 
 
 =head2 LessThan => Int
 
-Represents a less than condition to be applied to a single field when
-querying for findings.
+Represents a I<less than> condition to be applied to a single field
+when querying for findings.
 
 
 =head2 LessThanOrEqual => Int
 
-Represents a less than equal condition to be applied to a single field
-when querying for findings.
+Represents a I<less than or equal> condition to be applied to a single
+field when querying for findings.
 
 
 =head2 Lt => Int
 
-Represents a less than condition to be applied to a single field when
-querying for findings.
+Represents a I<less than> condition to be applied to a single field
+when querying for findings.
 
 
 =head2 Lte => Int
 
-Represents a less than equal condition to be applied to a single field
-when querying for findings.
+Represents a I<less than or equal> condition to be applied to a single
+field when querying for findings.
 
 
 =head2 Neq => ArrayRef[Str|Undef]
 
-Represents the not equal condition to be applied to a single field when
-querying for findings.
+Represents the I<not equal> condition to be applied to a single field
+when querying for findings.
 
 
 =head2 NotEquals => ArrayRef[Str|Undef]
 
-Represents an B<not equal> condition to be applied to a single field
-when querying for findings.
+Represents a I<not equal> B< condition to be applied to a single field
+when querying for findings.>
 
 
 

@@ -56,14 +56,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 =head2 B<REQUIRED> AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]
 
 A list of account ID and email address pairs of the accounts that you
-want to associate with the master GuardDuty account.
+want to associate with the GuardDuty administrator account.
 
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty account with which you
-want to associate member accounts.
+The unique ID of the detector of the GuardDuty account that you want to
+associate member accounts with.
 
 
 

@@ -43,7 +43,7 @@ Contains information about the invitation to become a member account.
 
 =head2 AccountId => Str
 
-The ID of the account from which the invitations was sent.
+The ID of the account that the invitation was sent from.
 
 
 =head2 InvitationId => Str
@@ -54,7 +54,7 @@ account to the member account.
 
 =head2 InvitedAt => Str
 
-Timestamp at which the invitation was sent.
+The timestamp when the invitation was sent.
 
 
 =head2 RelationshipStatus => Str

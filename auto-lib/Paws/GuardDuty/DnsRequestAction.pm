@@ -41,7 +41,7 @@ finding.
 
 =head2 Domain => Str
 
-Domain information for the API request.
+The domain information for the API request.
 
 
 

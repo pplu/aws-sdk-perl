@@ -41,12 +41,12 @@ Contains information about the account.
 
 =head2 B<REQUIRED> AccountId => Str
 
-Member account ID.
+The member account ID.
 
 
 =head2 B<REQUIRED> Email => Str
 
-Member account's email address.
+The email address of the member account.
 
 
 

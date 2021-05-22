@@ -36,30 +36,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the Master account and invitation.
+Contains information about the administrator account and invitation.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-The ID of the account used as the Master account.
+The ID of the account used as the administrator account.
 
 
 =head2 InvitationId => Str
 
-This value is used to validate the master account to the member
+The value used to validate the administrator account to the member
 account.
 
 
 =head2 InvitedAt => Str
 
-Timestamp at which the invitation was sent.
+The timestamp when the invitation was sent.
 
 
 =head2 RelationshipStatus => Str
 
-The status of the relationship between the master and member accounts.
+The status of the relationship between the administrator and member
+accounts.
 
 
 

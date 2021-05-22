@@ -18,13 +18,13 @@ Paws::GuardDuty::ListDetectorsResponse
 
 =head2 B<REQUIRED> DetectorIds => ArrayRef[Str|Undef]
 
-A list of detector Ids.
+A list of detector IDs.
 
 
 =head2 NextToken => Str
 
-Pagination parameter to be used on the next list operation to retrieve
-more items.
+The pagination parameter to be used on the next list operation to
+retrieve more items.
 
 
 =head2 _request_id => Str

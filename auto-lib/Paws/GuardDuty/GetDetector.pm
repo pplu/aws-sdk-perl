@@ -34,7 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedAt = $GetDetectorResponse->CreatedAt;
+    my $CreatedAt   = $GetDetectorResponse->CreatedAt;
+    my $DataSources = $GetDetectorResponse->DataSources;
     my $FindingPublishingFrequency =
       $GetDetectorResponse->FindingPublishingFrequency;
     my $ServiceRole = $GetDetectorResponse->ServiceRole;

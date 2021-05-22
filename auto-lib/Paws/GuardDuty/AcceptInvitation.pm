@@ -51,15 +51,15 @@ The unique ID of the detector of the GuardDuty member account.
 
 =head2 B<REQUIRED> InvitationId => Str
 
-This value is used to validate the master account to the member
-account.
+The value that is used to validate the administrator account to the
+member account.
 
 
 
 =head2 B<REQUIRED> MasterId => Str
 
-The account ID of the master GuardDuty account whose invitation you're
-accepting.
+The account ID of the GuardDuty administrator account whose invitation
+you're accepting.
 
 
 

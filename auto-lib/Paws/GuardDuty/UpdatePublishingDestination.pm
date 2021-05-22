@@ -48,8 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DestinationId => Str
 
-The ID of the detector associated with the publishing destinations to
-update.
+The ID of the publishing destination to update.
 
 
 
@@ -62,7 +61,8 @@ and C<KmsKeyArn> of the publishing destination.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The ID of the
+The ID of the detector associated with the publishing destinations to
+update.
 
 
 

@@ -43,7 +43,7 @@ Contains information about the access keys.
 
 =head2 AccessKeyId => Str
 
-Access key ID of the user.
+The access key ID of the user.
 
 
 =head2 PrincipalId => Str

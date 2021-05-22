@@ -17,7 +17,7 @@ Paws::GuardDuty::CreatePublishingDestinationResponse
 
 =head2 B<REQUIRED> DestinationId => Str
 
-The ID of the publishing destination created.
+The ID of the publishing destination that is created.
 
 
 =head2 _request_id => Str

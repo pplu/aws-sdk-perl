@@ -60,23 +60,23 @@ GuardDuty as members.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty account with which you
-want to invite members.
+The unique ID of the detector of the GuardDuty account that you want to
+invite members with.
 
 
 
 =head2 DisableEmailNotification => Bool
 
-A boolean value that specifies whether you want to disable email
-notification to the accounts that youE<rsquo>re inviting to GuardDuty
-as members.
+A Boolean value that specifies whether you want to disable email
+notification to the accounts that you are inviting to GuardDuty as
+members.
 
 
 
 =head2 Message => Str
 
 The invitation message that you want to send to the accounts that
-youE<rsquo>re inviting to GuardDuty as members.
+you're inviting to GuardDuty as members.
 
 
 

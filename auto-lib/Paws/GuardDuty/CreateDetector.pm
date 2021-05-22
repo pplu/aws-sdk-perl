@@ -2,6 +2,7 @@
 package Paws::GuardDuty::CreateDetector;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
+  has DataSources => (is => 'ro', isa => 'Paws::GuardDuty::DataSourceConfigurations', traits => ['NameInRequest'], request_name => 'dataSources');
   has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable', required => 1);
   has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
   has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
@@ -32,8 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $CreateDetectorResponse = $guardduty->CreateDetector(
-      Enable                     => 1,
-      ClientToken                => 'MyClientToken',      # OPTIONAL
+      Enable      => 1,
+      ClientToken => 'MyClientToken',    # OPTIONAL
+      DataSources => {
+        S3Logs => {
+          Enable => 1,
+
+        },                               # OPTIONAL
+      },    # OPTIONAL
       FindingPublishingFrequency => 'FIFTEEN_MINUTES',    # OPTIONAL
       Tags                       => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
@@ -57,16 +64,21 @@ The idempotency token for the create request.
 
 
 
+=head2 DataSources => L<Paws::GuardDuty::DataSourceConfigurations>
+
+Describes which data sources will be enabled for the detector.
+
+
+
 =head2 B<REQUIRED> Enable => Bool
 
-A boolean value that specifies whether the detector is to be enabled.
+A Boolean value that specifies whether the detector is to be enabled.
 
 
 
 =head2 FindingPublishingFrequency => Str
 
-A enum value that specifies how frequently customer got Finding updates
-published.
+A value that specifies how frequently updated findings are exported.
 
 Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
 

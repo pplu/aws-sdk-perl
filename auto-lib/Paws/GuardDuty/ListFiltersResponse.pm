@@ -18,13 +18,13 @@ Paws::GuardDuty::ListFiltersResponse
 
 =head2 B<REQUIRED> FilterNames => ArrayRef[Str|Undef]
 
-A list of filter names
+A list of filter names.
 
 
 =head2 NextToken => Str
 
-Pagination parameter to be used on the next list operation to retrieve
-more items.
+The pagination parameter to be used on the next list operation to
+retrieve more items.
 
 
 =head2 _request_id => Str

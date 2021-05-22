@@ -37,34 +37,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Continas information about the remote IP address of the connection.
+Contains information about the remote IP address of the connection.
 
 =head1 ATTRIBUTES
 
 
 =head2 City => L<Paws::GuardDuty::City>
 
-City information of the remote IP address.
+The city information of the remote IP address.
 
 
 =head2 Country => L<Paws::GuardDuty::Country>
 
-Country code of the remote IP address.
+The country code of the remote IP address.
 
 
 =head2 GeoLocation => L<Paws::GuardDuty::GeoLocation>
 
-Location information of the remote IP address.
+The location information of the remote IP address.
 
 
 =head2 IpAddressV4 => Str
 
-IPV4 remote address of the connection.
+The IPv4 remote address of the connection.
 
 
 =head2 Organization => L<Paws::GuardDuty::Organization>
 
-ISP Organization information of the remote IP address.
+The ISP organization information of the remote IP address.
 
 
 

@@ -42,12 +42,13 @@ finding.
 
 =head2 Blocked => Bool
 
-Port probe blocked information.
+Indicates whether EC2 blocked the port probe to the instance, such as
+with an ACL.
 
 
 =head2 PortProbeDetails => ArrayRef[L<Paws::GuardDuty::PortProbeDetail>]
 
-A list of port probe details objects.
+A list of objects related to port probe details.
 
 
 

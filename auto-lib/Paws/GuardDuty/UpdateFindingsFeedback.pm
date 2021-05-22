@@ -67,7 +67,7 @@ Valid values are: C<"USEFUL">, C<"NOT_USEFUL">
 
 =head2 B<REQUIRED> FindingIds => ArrayRef[Str|Undef]
 
-IDs of the findings that you want to mark as useful or not useful.
+The IDs of the findings that you want to mark as useful or not useful.
 
 
 

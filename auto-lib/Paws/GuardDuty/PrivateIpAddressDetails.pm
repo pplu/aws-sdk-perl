@@ -41,12 +41,12 @@ Contains other private IP address information of the EC2 instance.
 
 =head2 PrivateDnsName => Str
 
-Private DNS name of the EC2 instance.
+The private DNS name of the EC2 instance.
 
 
 =head2 PrivateIpAddress => Str
 
-Private IP address of the EC2 instance.
+The private IP address of the EC2 instance.
 
 
 

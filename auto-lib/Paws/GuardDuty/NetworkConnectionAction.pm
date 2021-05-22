@@ -3,6 +3,7 @@ package Paws::GuardDuty::NetworkConnectionAction;
   use Moose;
   has Blocked => (is => 'ro', isa => 'Bool', request_name => 'blocked', traits => ['NameInRequest']);
   has ConnectionDirection => (is => 'ro', isa => 'Str', request_name => 'connectionDirection', traits => ['NameInRequest']);
+  has LocalIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::LocalIpDetails', request_name => 'localIpDetails', traits => ['NameInRequest']);
   has LocalPortDetails => (is => 'ro', isa => 'Paws::GuardDuty::LocalPortDetails', request_name => 'localPortDetails', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
@@ -46,32 +47,37 @@ the finding.
 
 =head2 Blocked => Bool
 
-Network connection blocked information.
+Indicates whether EC2 blocked the network connection to your instance.
 
 
 =head2 ConnectionDirection => Str
 
-Network connection direction.
+The network connection direction.
+
+
+=head2 LocalIpDetails => L<Paws::GuardDuty::LocalIpDetails>
+
+The local IP information of the connection.
 
 
 =head2 LocalPortDetails => L<Paws::GuardDuty::LocalPortDetails>
 
-Local port information of the connection.
+The local port information of the connection.
 
 
 =head2 Protocol => Str
 
-Network connection protocol.
+The network connection protocol.
 
 
 =head2 RemoteIpDetails => L<Paws::GuardDuty::RemoteIpDetails>
 
-Remote IP information of the connection.
+The remote IP information of the connection.
 
 
 =head2 RemotePortDetails => L<Paws::GuardDuty::RemotePortDetails>
 
-Remote port information of the connection.
+The remote port information of the connection.
 
 
 

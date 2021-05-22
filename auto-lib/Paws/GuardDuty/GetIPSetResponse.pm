@@ -26,23 +26,23 @@ The format of the file that contains the IPSet.
 Valid values are: C<"TXT">, C<"STIX">, C<"OTX_CSV">, C<"ALIEN_VAULT">, C<"PROOF_POINT">, C<"FIRE_EYE">
 =head2 B<REQUIRED> Location => Str
 
-The URI of the file that contains the IPSet. For example
-(https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)
+The URI of the file that contains the IPSet. For example:
+https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
 
 
 =head2 B<REQUIRED> Name => Str
 
-The user friendly name for the IPSet.
+The user-friendly name for the IPSet.
 
 
 =head2 B<REQUIRED> Status => Str
 
-The status of ipSet file uploaded.
+The status of IPSet file that was uploaded.
 
 Valid values are: C<"INACTIVE">, C<"ACTIVATING">, C<"ACTIVE">, C<"DEACTIVATING">, C<"ERROR">, C<"DELETE_PENDING">, C<"DELETED">
 =head2 Tags => L<Paws::GuardDuty::TagMap>
 
-The tags of the IP set resource.
+The tags of the IPSet resource.
 
 
 =head2 _request_id => Str

@@ -63,10 +63,11 @@ The maximum number of results to return in the response.
 
 =head2 NextToken => Str
 
-A token to use for paginating results returned in the repsonse. Set the
-value of this parameter to null for the first request to a list action.
-For subsequent calls, use the C<NextToken> value returned from the
-previous request to continue listing results after the first page.
+A token to use for paginating results that are returned in the
+response. Set the value of this parameter to null for the first request
+to a list action. For subsequent calls, use the C<NextToken> value
+returned from the previous request to continue listing results after
+the first page.
 
 
 

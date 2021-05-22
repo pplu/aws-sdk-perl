@@ -41,12 +41,12 @@ Contains information about the port for the local connection.
 
 =head2 Port => Int
 
-Port number of the local connection.
+The port number of the local connection.
 
 
 =head2 PortName => Str
 
-Port name of the local connection.
+The port name of the local connection.
 
 
 

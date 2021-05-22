@@ -42,12 +42,12 @@ instance.
 
 =head2 GroupId => Str
 
-EC2 instance's security group ID.
+The security group ID of the EC2 instance.
 
 
 =head2 GroupName => Str
 
-EC2 instance's security group name.
+The security group name of the EC2 instance.
 
 
 
