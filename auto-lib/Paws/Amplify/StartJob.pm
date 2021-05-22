@@ -59,52 +59,54 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for the branch, for the Job.
+The branch name for the job.
 
 
 
 =head2 CommitId => Str
 
-Commit Id from 3rd party repository provider for the Job.
+The commit ID from a third-party repository provider for the job.
 
 
 
 =head2 CommitMessage => Str
 
-Commit message from 3rd party repository provider for the Job.
+The commit message from a third-party repository provider for the job.
 
 
 
 =head2 CommitTime => Str
 
-Commit date / time for the Job.
+The commit date and time for the job.
 
 
 
 =head2 JobId => Str
 
-Unique Id for an existing job. Required for "RETRY" JobType.
+The unique ID for an existing job. This is required if the value of
+C<jobType> is C<RETRY>.
 
 
 
 =head2 JobReason => Str
 
-Descriptive reason for starting this job.
+A descriptive reason for starting this job.
 
 
 
 =head2 B<REQUIRED> JobType => Str
 
-Type for the Job. Available JobTypes are: \n "RELEASE": Start a new job
-with the latest change from the specified branch. Only available for
-apps that have connected to a repository. "RETRY": Retry an existing
-job. JobId is required for this type of job.
+Describes the type for the job. The job type C<RELEASE> starts a new
+job with the latest change from the specified branch. This value is
+available only for apps that are connected to a repository. The job
+type C<RETRY> retries an existing job. If the job type value is
+C<RETRY>, the C<jobId> is also required.
 
 Valid values are: C<"RELEASE">, C<"RETRY">, C<"MANUAL">, C<"WEB_HOOK">
 

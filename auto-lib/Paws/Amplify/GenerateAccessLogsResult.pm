@@ -17,7 +17,7 @@ Paws::Amplify::GenerateAccessLogsResult
 
 =head2 LogUrl => Str
 
-Pre-signed URL for the requested access logs.
+The pre-signed URL for the requested access logs.
 
 
 =head2 _request_id => Str

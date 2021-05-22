@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> ArtifactId => Str
 
-Unique Id for a artifact.
+The unique ID for an artifact.
 
 
 

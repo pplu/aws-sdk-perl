@@ -45,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-Resource arn used to untag resource.
+The Amazon Resource Name (ARN) to use to untag a resource.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-Tag keys used to untag resource.
+The tag keys to use to untag a resource.
 
 
 

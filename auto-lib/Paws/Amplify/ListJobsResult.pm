@@ -18,13 +18,13 @@ Paws::Amplify::ListJobsResult
 
 =head2 B<REQUIRED> JobSummaries => ArrayRef[L<Paws::Amplify::JobSummary>]
 
-Result structure for list job result request.
+The result structure for the list job result request.
 
 
 =head2 NextToken => Str
 
-Pagination token. If non-null pagination token is returned in a result,
-then pass its value in another request to fetch more entries.
+A pagination token. If non-null the pagination token is returned in a
+result. Pass its value in another request to retrieve more entries.
 
 
 =head2 _request_id => Str

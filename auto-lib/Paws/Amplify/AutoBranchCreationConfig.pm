@@ -5,6 +5,7 @@ package Paws::Amplify::AutoBranchCreationConfig;
   has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest']);
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest']);
+  has EnablePerformanceMode => (is => 'ro', isa => 'Bool', request_name => 'enablePerformanceMode', traits => ['NameInRequest']);
   has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', request_name => 'enablePullRequestPreview', traits => ['NameInRequest']);
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest']);
   has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest']);
@@ -41,54 +42,64 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Au
 
 =head1 DESCRIPTION
 
-Structure with auto branch creation config.
+Describes the automated branch creation configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 BasicAuthCredentials => Str
 
-Basic Authorization credentials for the auto created branch.
+The basic authorization credentials for the autocreated branch.
 
 
 =head2 BuildSpec => Str
 
-BuildSpec for the auto created branch.
+The build specification (build spec) for the autocreated branch.
 
 
 =head2 EnableAutoBuild => Bool
 
-Enables auto building for the auto created branch.
+Enables auto building for the autocreated branch.
 
 
 =head2 EnableBasicAuth => Bool
 
-Enables Basic Auth for the auto created branch.
+Enables basic authorization for the autocreated branch.
+
+
+=head2 EnablePerformanceMode => Bool
+
+Enables performance mode for the branch.
+
+Performance mode optimizes for faster hosting performance by keeping
+content cached at the edge for a longer interval. When performance mode
+is enabled, hosting configuration or code changes can take up to 10
+minutes to roll out.
 
 
 =head2 EnablePullRequestPreview => Bool
 
-Enables Pull Request Preview for auto created branch.
+Enables pull request previews for the autocreated branch.
 
 
 =head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
-Environment Variables for the auto created branch.
+The environment variables for the autocreated branch.
 
 
 =head2 Framework => Str
 
-Framework for the auto created branch.
+The framework for the autocreated branch.
 
 
 =head2 PullRequestEnvironmentName => Str
 
-The Amplify Environment name for the pull request.
+The Amplify environment name for the pull request.
 
 
 =head2 Stage => Str
 
-Stage for the auto created branch.
+Describes the current stage for the autocreated branch.
 
 
 

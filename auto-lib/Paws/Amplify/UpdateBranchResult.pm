@@ -17,7 +17,8 @@ Paws::Amplify::UpdateBranchResult
 
 =head2 B<REQUIRED> Branch => L<Paws::Amplify::Branch>
 
-Branch structure for an Amplify App.
+The branch for an Amplify app, which maps to a third-party repository
+branch.
 
 
 =head2 _request_id => Str

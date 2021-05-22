@@ -18,13 +18,13 @@ Paws::Amplify::ListDomainAssociationsResult
 
 =head2 B<REQUIRED> DomainAssociations => ArrayRef[L<Paws::Amplify::DomainAssociation>]
 
-List of Domain Associations.
+A list of domain associations.
 
 
 =head2 NextToken => Str
 
-Pagination token. If non-null pagination token is returned in a result,
-then pass its value in another request to fetch more entries.
+A pagination token. If non-null, a pagination token is returned in a
+result. Pass its value in another request to retrieve more entries.
 
 
 =head2 _request_id => Str

@@ -48,14 +48,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 MaxResults => Int
 
-Maximum number of records to list in a single response.
+The maximum number of records to list in a single response.
 
 
 
 =head2 NextToken => Str
 
-Pagination token. If non-null pagination token is returned in a result,
-then pass its value in another request to fetch more entries.
+A pagination token. If non-null, the pagination token is returned in a
+result. Pass its value in another request to retrieve more entries.
 
 
 

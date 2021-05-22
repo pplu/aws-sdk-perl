@@ -322,8 +322,14 @@ Paws::Amplify - Perl Interface to AWS AWS Amplify
 
 =head1 DESCRIPTION
 
-Amplify is a fully managed continuous deployment and hosting service
-for modern web apps.
+Amplify enables developers to develop and deploy cloud-powered mobile
+and web apps. The Amplify Console provides a continuous delivery and
+hosting service for web applications. For more information, see the
+Amplify Console User Guide
+(https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html).
+The Amplify Framework is a comprehensive set of SDKs, libraries, tools,
+and documentation for client app development. For more information, see
+the Amplify Framework. (https://docs.amplify.aws/)
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25>
 
@@ -346,6 +352,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [BuildSpec => Str]
 
+=item [CustomHeaders => Str]
+
 =item [CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]]
 
 =item [Description => Str]
@@ -355,6 +363,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 =item [EnableBasicAuth => Bool]
 
 =item [EnableBranchAutoBuild => Bool]
+
+=item [EnableBranchAutoDeletion => Bool]
 
 =item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
 
@@ -375,7 +385,7 @@ Each argument is described in detail in: L<Paws::Amplify::CreateApp>
 
 Returns: a L<Paws::Amplify::CreateAppResult> instance
 
-Creates a new Amplify App.
+Creates a new Amplify app.
 
 
 =head2 CreateBackendEnvironment
@@ -397,7 +407,7 @@ Each argument is described in detail in: L<Paws::Amplify::CreateBackendEnvironme
 
 Returns: a L<Paws::Amplify::CreateBackendEnvironmentResult> instance
 
-Creates a new backend environment for an Amplify App.
+Creates a new backend environment for an Amplify app.
 
 
 =head2 CreateBranch
@@ -424,6 +434,8 @@ Creates a new backend environment for an Amplify App.
 
 =item [EnableNotification => Bool]
 
+=item [EnablePerformanceMode => Bool]
+
 =item [EnablePullRequestPreview => Bool]
 
 =item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
@@ -445,7 +457,7 @@ Each argument is described in detail in: L<Paws::Amplify::CreateBranch>
 
 Returns: a L<Paws::Amplify::CreateBranchResult> instance
 
-Creates a new Branch for an Amplify App.
+Creates a new branch for an Amplify app.
 
 
 =head2 CreateDeployment
@@ -465,8 +477,8 @@ Each argument is described in detail in: L<Paws::Amplify::CreateDeployment>
 
 Returns: a L<Paws::Amplify::CreateDeploymentResult> instance
 
-Create a deployment for manual deploy apps. (Apps are not connected to
-repository)
+Creates a deployment for a manually deployed Amplify app. Manually
+deployed apps are not connected to a repository.
 
 
 =head2 CreateDomainAssociation
@@ -479,6 +491,10 @@ repository)
 
 =item SubDomainSettings => ArrayRef[L<Paws::Amplify::SubDomainSetting>]
 
+=item [AutoSubDomainCreationPatterns => ArrayRef[Str|Undef]]
+
+=item [AutoSubDomainIAMRole => Str]
+
 =item [EnableAutoSubDomain => Bool]
 
 
@@ -488,7 +504,8 @@ Each argument is described in detail in: L<Paws::Amplify::CreateDomainAssociatio
 
 Returns: a L<Paws::Amplify::CreateDomainAssociationResult> instance
 
-Create a new DomainAssociation on an App
+Creates a new domain association for an Amplify app. This action
+associates a custom domain with the Amplify app
 
 
 =head2 CreateWebhook
@@ -508,7 +525,7 @@ Each argument is described in detail in: L<Paws::Amplify::CreateWebhook>
 
 Returns: a L<Paws::Amplify::CreateWebhookResult> instance
 
-Create a new webhook on an App.
+Creates a new webhook on an Amplify app.
 
 
 =head2 DeleteApp
@@ -524,7 +541,7 @@ Each argument is described in detail in: L<Paws::Amplify::DeleteApp>
 
 Returns: a L<Paws::Amplify::DeleteAppResult> instance
 
-Delete an existing Amplify App by appId.
+Deletes an existing Amplify app specified by an app ID.
 
 
 =head2 DeleteBackendEnvironment
@@ -542,7 +559,7 @@ Each argument is described in detail in: L<Paws::Amplify::DeleteBackendEnvironme
 
 Returns: a L<Paws::Amplify::DeleteBackendEnvironmentResult> instance
 
-Delete backend environment for an Amplify App.
+Deletes a backend environment for an Amplify app.
 
 
 =head2 DeleteBranch
@@ -560,7 +577,7 @@ Each argument is described in detail in: L<Paws::Amplify::DeleteBranch>
 
 Returns: a L<Paws::Amplify::DeleteBranchResult> instance
 
-Deletes a branch for an Amplify App.
+Deletes a branch for an Amplify app.
 
 
 =head2 DeleteDomainAssociation
@@ -578,7 +595,7 @@ Each argument is described in detail in: L<Paws::Amplify::DeleteDomainAssociatio
 
 Returns: a L<Paws::Amplify::DeleteDomainAssociationResult> instance
 
-Deletes a DomainAssociation.
+Deletes a domain association for an Amplify app.
 
 
 =head2 DeleteJob
@@ -598,7 +615,7 @@ Each argument is described in detail in: L<Paws::Amplify::DeleteJob>
 
 Returns: a L<Paws::Amplify::DeleteJobResult> instance
 
-Delete a job, for an Amplify branch, part of Amplify App.
+Deletes a job for a branch of an Amplify app.
 
 
 =head2 DeleteWebhook
@@ -636,8 +653,8 @@ Each argument is described in detail in: L<Paws::Amplify::GenerateAccessLogs>
 
 Returns: a L<Paws::Amplify::GenerateAccessLogsResult> instance
 
-Retrieve website access logs for a specific time range via a pre-signed
-URL.
+Returns the website access logs for a specific time range using a
+presigned URL.
 
 
 =head2 GetApp
@@ -653,7 +670,7 @@ Each argument is described in detail in: L<Paws::Amplify::GetApp>
 
 Returns: a L<Paws::Amplify::GetAppResult> instance
 
-Retrieves an existing Amplify App by appId.
+Returns an existing Amplify app by appID.
 
 
 =head2 GetArtifactUrl
@@ -669,7 +686,7 @@ Each argument is described in detail in: L<Paws::Amplify::GetArtifactUrl>
 
 Returns: a L<Paws::Amplify::GetArtifactUrlResult> instance
 
-Retrieves artifact info that corresponds to a artifactId.
+Returns the artifact info that corresponds to an artifact id.
 
 
 =head2 GetBackendEnvironment
@@ -687,7 +704,7 @@ Each argument is described in detail in: L<Paws::Amplify::GetBackendEnvironment>
 
 Returns: a L<Paws::Amplify::GetBackendEnvironmentResult> instance
 
-Retrieves a backend environment for an Amplify App.
+Returns a backend environment for an Amplify app.
 
 
 =head2 GetBranch
@@ -705,7 +722,7 @@ Each argument is described in detail in: L<Paws::Amplify::GetBranch>
 
 Returns: a L<Paws::Amplify::GetBranchResult> instance
 
-Retrieves a branch for an Amplify App.
+Returns a branch for an Amplify app.
 
 
 =head2 GetDomainAssociation
@@ -723,7 +740,7 @@ Each argument is described in detail in: L<Paws::Amplify::GetDomainAssociation>
 
 Returns: a L<Paws::Amplify::GetDomainAssociationResult> instance
 
-Retrieves domain info that corresponds to an appId and domainName.
+Returns the domain information for an Amplify app.
 
 
 =head2 GetJob
@@ -743,7 +760,7 @@ Each argument is described in detail in: L<Paws::Amplify::GetJob>
 
 Returns: a L<Paws::Amplify::GetJobResult> instance
 
-Get a job for a branch, part of an Amplify App.
+Returns a job for a branch of an Amplify app.
 
 
 =head2 GetWebhook
@@ -759,7 +776,8 @@ Each argument is described in detail in: L<Paws::Amplify::GetWebhook>
 
 Returns: a L<Paws::Amplify::GetWebhookResult> instance
 
-Retrieves webhook info that corresponds to a webhookId.
+Returns the webhook information that corresponds to a specified webhook
+ID.
 
 
 =head2 ListApps
@@ -777,7 +795,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListApps>
 
 Returns: a L<Paws::Amplify::ListAppsResult> instance
 
-Lists existing Amplify Apps.
+Returns a list of the existing Amplify apps.
 
 
 =head2 ListArtifacts
@@ -801,7 +819,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListArtifacts>
 
 Returns: a L<Paws::Amplify::ListArtifactsResult> instance
 
-List artifacts with an app, a branch, a job and an artifact type.
+Returns a list of artifacts for a specified app, branch, and job.
 
 
 =head2 ListBackendEnvironments
@@ -823,7 +841,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListBackendEnvironment
 
 Returns: a L<Paws::Amplify::ListBackendEnvironmentsResult> instance
 
-Lists backend environments for an Amplify App.
+Lists the backend environments for an Amplify app.
 
 
 =head2 ListBranches
@@ -843,7 +861,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListBranches>
 
 Returns: a L<Paws::Amplify::ListBranchesResult> instance
 
-Lists branches for an Amplify App.
+Lists the branches of an Amplify app.
 
 
 =head2 ListDomainAssociations
@@ -863,7 +881,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListDomainAssociations
 
 Returns: a L<Paws::Amplify::ListDomainAssociationsResult> instance
 
-List domains with an app
+Returns the domain associations for an Amplify app.
 
 
 =head2 ListJobs
@@ -885,7 +903,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListJobs>
 
 Returns: a L<Paws::Amplify::ListJobsResult> instance
 
-List Jobs for a branch, part of an Amplify App.
+Lists the jobs for a branch of an Amplify app.
 
 
 =head2 ListTagsForResource
@@ -901,7 +919,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListTagsForResource>
 
 Returns: a L<Paws::Amplify::ListTagsForResourceResponse> instance
 
-List tags for resource.
+Returns a list of tags for a specified Amazon Resource Name (ARN).
 
 
 =head2 ListWebhooks
@@ -921,7 +939,7 @@ Each argument is described in detail in: L<Paws::Amplify::ListWebhooks>
 
 Returns: a L<Paws::Amplify::ListWebhooksResult> instance
 
-List webhooks with an app.
+Returns a list of webhooks for an Amplify app.
 
 
 =head2 StartDeployment
@@ -943,8 +961,8 @@ Each argument is described in detail in: L<Paws::Amplify::StartDeployment>
 
 Returns: a L<Paws::Amplify::StartDeploymentResult> instance
 
-Start a deployment for manual deploy apps. (Apps are not connected to
-repository)
+Starts a deployment for a manually deployed app. Manually deployed apps
+are not connected to a repository.
 
 
 =head2 StartJob
@@ -974,7 +992,7 @@ Each argument is described in detail in: L<Paws::Amplify::StartJob>
 
 Returns: a L<Paws::Amplify::StartJobResult> instance
 
-Starts a new job for a branch, part of an Amplify App.
+Starts a new job for a branch of an Amplify app.
 
 
 =head2 StopJob
@@ -994,8 +1012,7 @@ Each argument is described in detail in: L<Paws::Amplify::StopJob>
 
 Returns: a L<Paws::Amplify::StopJobResult> instance
 
-Stop a job that is in progress, for an Amplify branch, part of Amplify
-App.
+Stops a job that is in progress for a branch of an Amplify app.
 
 
 =head2 TagResource
@@ -1013,7 +1030,7 @@ Each argument is described in detail in: L<Paws::Amplify::TagResource>
 
 Returns: a L<Paws::Amplify::TagResourceResponse> instance
 
-Tag resource with tag key and value.
+Tags the resource with a tag key and value.
 
 
 =head2 UntagResource
@@ -1031,7 +1048,7 @@ Each argument is described in detail in: L<Paws::Amplify::UntagResource>
 
 Returns: a L<Paws::Amplify::UntagResourceResponse> instance
 
-Untag resource with resourceArn.
+Untags a resource with a specified Amazon Resource Name (ARN).
 
 
 =head2 UpdateApp
@@ -1050,6 +1067,8 @@ Untag resource with resourceArn.
 
 =item [BuildSpec => Str]
 
+=item [CustomHeaders => Str]
+
 =item [CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]]
 
 =item [Description => Str]
@@ -1059,6 +1078,8 @@ Untag resource with resourceArn.
 =item [EnableBasicAuth => Bool]
 
 =item [EnableBranchAutoBuild => Bool]
+
+=item [EnableBranchAutoDeletion => Bool]
 
 =item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
 
@@ -1079,7 +1100,7 @@ Each argument is described in detail in: L<Paws::Amplify::UpdateApp>
 
 Returns: a L<Paws::Amplify::UpdateAppResult> instance
 
-Updates an existing Amplify App.
+Updates an existing Amplify app.
 
 
 =head2 UpdateBranch
@@ -1106,6 +1127,8 @@ Updates an existing Amplify App.
 
 =item [EnableNotification => Bool]
 
+=item [EnablePerformanceMode => Bool]
+
 =item [EnablePullRequestPreview => Bool]
 
 =item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
@@ -1125,7 +1148,7 @@ Each argument is described in detail in: L<Paws::Amplify::UpdateBranch>
 
 Returns: a L<Paws::Amplify::UpdateBranchResult> instance
 
-Updates a branch for an Amplify App.
+Updates a branch for an Amplify app.
 
 
 =head2 UpdateDomainAssociation
@@ -1138,6 +1161,10 @@ Updates a branch for an Amplify App.
 
 =item SubDomainSettings => ArrayRef[L<Paws::Amplify::SubDomainSetting>]
 
+=item [AutoSubDomainCreationPatterns => ArrayRef[Str|Undef]]
+
+=item [AutoSubDomainIAMRole => Str]
+
 =item [EnableAutoSubDomain => Bool]
 
 
@@ -1147,7 +1174,7 @@ Each argument is described in detail in: L<Paws::Amplify::UpdateDomainAssociatio
 
 Returns: a L<Paws::Amplify::UpdateDomainAssociationResult> instance
 
-Create a new DomainAssociation on an App
+Creates a new domain association for an Amplify app.
 
 
 =head2 UpdateWebhook
@@ -1167,7 +1194,7 @@ Each argument is described in detail in: L<Paws::Amplify::UpdateWebhook>
 
 Returns: a L<Paws::Amplify::UpdateWebhookResult> instance
 
-Update a webhook.
+Updates a webhook.
 
 
 

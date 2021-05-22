@@ -7,11 +7,13 @@ package Paws::Amplify::UpdateApp;
   has AutoBranchCreationPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoBranchCreationPatterns');
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basicAuthCredentials');
   has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
+  has CustomHeaders => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customHeaders');
   has CustomRules => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::CustomRule]', traits => ['NameInRequest'], request_name => 'customRules');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EnableAutoBranchCreation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBranchCreation');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableBranchAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBranchAutoBuild');
+  has EnableBranchAutoDeletion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBranchAutoDeletion');
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
   has IamServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamServiceRoleArn');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -49,12 +51,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccessToken              => 'MyAccessToken',    # OPTIONAL
       AutoBranchCreationConfig => {
         BasicAuthCredentials => 'MyBasicAuthCredentials',  # max: 2000; OPTIONAL
-        BuildSpec       => 'MyBuildSpec',    # min: 1, max: 25000; OPTIONAL
-        EnableAutoBuild => 1,                # OPTIONAL
-        EnableBasicAuth => 1,                # OPTIONAL
-        EnablePullRequestPreview => 1,       # OPTIONAL
+        BuildSpec             => 'MyBuildSpec',   # min: 1, max: 25000; OPTIONAL
+        EnableAutoBuild       => 1,               # OPTIONAL
+        EnableBasicAuth       => 1,               # OPTIONAL
+        EnablePerformanceMode => 1,               # OPTIONAL
+        EnablePullRequestPreview => 1,            # OPTIONAL
         EnvironmentVariables     => {
-          'MyEnvKey' => 'MyEnvValue',        # key: max: 255, value: max: 1000
+          'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
         },    # OPTIONAL
         Framework => 'MyFramework',    # max: 255; OPTIONAL
         PullRequestEnvironmentName =>
@@ -67,6 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                      # OPTIONAL
       BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
       BuildSpec            => 'MyBuildSpec',               # OPTIONAL
+      CustomHeaders        => 'MyCustomHeaders',           # OPTIONAL
       CustomRules          => [
         {
           Source    => 'MySource',       # min: 1, max: 2048
@@ -80,6 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableAutoBranchCreation => 1,                  # OPTIONAL
       EnableBasicAuth          => 1,                  # OPTIONAL
       EnableBranchAutoBuild    => 1,                  # OPTIONAL
+      EnableBranchAutoDeletion => 1,                  # OPTIONAL
       EnvironmentVariables     => {
         'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
       },    # OPTIONAL
@@ -103,107 +108,122 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 AccessToken => Str
 
-Personal Access token for 3rd party source control system for an
-Amplify App, used to create webhook and read-only deploy key. Token is
-not stored.
+The personal access token for a third-party source control system for
+an Amplify app. The token is used to create webhook and a read-only
+deploy key. The token is not stored.
 
 
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>
 
-Automated branch creation branchConfig for the Amplify App.
+The automated branch creation configuration for an Amplify app.
 
 
 
 =head2 AutoBranchCreationPatterns => ArrayRef[Str|Undef]
 
-Automated branch creation glob patterns for the Amplify App.
+Describes the automated branch creation glob patterns for an Amplify
+app.
 
 
 
 =head2 BasicAuthCredentials => Str
 
-Basic Authorization credentials for an Amplify App.
+The basic authorization credentials for an Amplify app.
 
 
 
 =head2 BuildSpec => Str
 
-BuildSpec for an Amplify App.
+The build specification (build spec) for an Amplify app.
+
+
+
+=head2 CustomHeaders => Str
+
+The custom HTTP headers for an Amplify app.
 
 
 
 =head2 CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]
 
-Custom redirect / rewrite rules for an Amplify App.
+The custom redirect and rewrite rules for an Amplify app.
 
 
 
 =head2 Description => Str
 
-Description for an Amplify App.
+The description for an Amplify app.
 
 
 
 =head2 EnableAutoBranchCreation => Bool
 
-Enables automated branch creation for the Amplify App.
+Enables automated branch creation for an Amplify app.
 
 
 
 =head2 EnableBasicAuth => Bool
 
-Enables Basic Authorization for an Amplify App.
+Enables basic authorization for an Amplify app.
 
 
 
 =head2 EnableBranchAutoBuild => Bool
 
-Enables branch auto-building for an Amplify App.
+Enables branch auto-building for an Amplify app.
+
+
+
+=head2 EnableBranchAutoDeletion => Bool
+
+Automatically disconnects a branch in the Amplify Console when you
+delete a branch from your Git repository.
 
 
 
 =head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
-Environment Variables for an Amplify App.
+The environment variables for an Amplify app.
 
 
 
 =head2 IamServiceRoleArn => Str
 
-IAM service role for an Amplify App.
+The AWS Identity and Access Management (IAM) service role for an
+Amplify app.
 
 
 
 =head2 Name => Str
 
-Name for an Amplify App.
+The name for an Amplify app.
 
 
 
 =head2 OauthToken => Str
 
-OAuth token for 3rd party source control system for an Amplify App,
-used to create webhook and read-only deploy key. OAuth token is not
-stored.
+The OAuth token for a third-party source control system for an Amplify
+app. The token is used to create a webhook and a read-only deploy key.
+The OAuth token is not stored.
 
 
 
 =head2 Platform => Str
 
-Platform for an Amplify App.
+The platform for an Amplify app.
 
 Valid values are: C<"WEB">
 
 =head2 Repository => Str
 
-Repository for an Amplify App
+The name of the repository for an Amplify app
 
 
 

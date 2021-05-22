@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Jo
 
 =head1 DESCRIPTION
 
-Structure for an execution job for an Amplify App.
+Describes an execution job for an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Steps => ArrayRef[L<Paws::Amplify::Step>]
 
-Execution steps for an execution job, for an Amplify App.
+The execution steps for an execution job, for an Amplify app.
 
 
 =head2 B<REQUIRED> Summary => L<Paws::Amplify::JobSummary>
 
-Summary for an execution job for an Amplify App.
+Describes the summary for an execution job for an Amplify app.
 
 
 

@@ -49,19 +49,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for a branch, part of an Amplify App.
+The name for a branch that is part of an Amplify app.
 
 
 
 =head2 Description => Str
 
-Description for a webhook.
+The description for a webhook.
 
 
 

@@ -17,7 +17,7 @@ Paws::Amplify::UpdateAppResult
 
 =head2 B<REQUIRED> App => L<Paws::Amplify::App>
 
-App structure for the updated App.
+Represents the updated Amplify app.
 
 
 =head2 _request_id => Str

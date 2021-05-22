@@ -36,29 +36,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Pr
 
 =head1 DESCRIPTION
 
-Structure with Production Branch information.
+Describes the information about a production branch for an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 BranchName => Str
 
-Branch Name for Production Branch.
+The branch name for the production branch.
 
 
 =head2 LastDeployTime => Str
 
-Last Deploy Time of Production Branch.
+The last deploy time of the production branch.
 
 
 =head2 Status => Str
 
-Status of Production Branch.
+The status of the production branch.
 
 
 =head2 ThumbnailUrl => Str
 
-Thumbnail URL for Production Branch.
+The thumbnail URL for the production branch.
 
 
 

@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Ar
 
 =head1 DESCRIPTION
 
-Structure for artifact.
+Describes an artifact.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ArtifactFileName => Str
 
-File name for the artifact.
+The file name for the artifact.
 
 
 =head2 B<REQUIRED> ArtifactId => Str
 
-Unique Id for a artifact.
+The unique ID for the artifact.
 
 
 

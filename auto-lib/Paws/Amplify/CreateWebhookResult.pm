@@ -17,7 +17,7 @@ Paws::Amplify::CreateWebhookResult
 
 =head2 B<REQUIRED> Webhook => L<Paws::Amplify::Webhook>
 
-Webhook structure.
+Describes a webhook that connects repository events to an Amplify app.
 
 
 =head2 _request_id => Str

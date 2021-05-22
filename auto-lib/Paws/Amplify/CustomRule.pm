@@ -36,14 +36,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Cu
 
 =head1 DESCRIPTION
 
-Custom rewrite / redirect rule.
+Describes a custom rewrite or redirect rule.
 
 =head1 ATTRIBUTES
 
 
 =head2 Condition => Str
 
-The condition for a URL rewrite or redirect rule, e.g. country code.
+The condition for a URL rewrite or redirect rule, such as a country
+code.
 
 
 =head2 B<REQUIRED> Source => Str
@@ -54,6 +55,32 @@ The source pattern for a URL rewrite or redirect rule.
 =head2 Status => Str
 
 The status code for a URL rewrite or redirect rule.
+
+=over
+
+=item 200
+
+Represents a 200 rewrite rule.
+
+=item 301
+
+Represents a 301 (moved pemanently) redirect rule. This and all future
+requests should be directed to the target URL.
+
+=item 302
+
+Represents a 302 temporary redirect rule.
+
+=item 404
+
+Represents a 404 redirect rule.
+
+=item 404-200
+
+Represents a 404 rewrite rule.
+
+=back
+
 
 
 =head2 B<REQUIRED> Target => Str

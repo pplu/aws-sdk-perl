@@ -17,7 +17,7 @@ Paws::Amplify::StopJobResult
 
 =head2 B<REQUIRED> JobSummary => L<Paws::Amplify::JobSummary>
 
-Summary for the Job.
+The summary for the job.
 
 
 =head2 _request_id => Str

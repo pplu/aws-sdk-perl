@@ -18,12 +18,12 @@ Paws::Amplify::GetArtifactUrlResult
 
 =head2 B<REQUIRED> ArtifactId => Str
 
-Unique Id for a artifact.
+The unique ID for an artifact.
 
 
 =head2 B<REQUIRED> ArtifactUrl => Str
 
-Presigned url for the artifact.
+The presigned URL for the artifact.
 
 
 =head2 _request_id => Str

@@ -16,6 +16,7 @@ package Paws::Amplify::Branch;
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest'], required => 1);
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
   has EnableNotification => (is => 'ro', isa => 'Bool', request_name => 'enableNotification', traits => ['NameInRequest'], required => 1);
+  has EnablePerformanceMode => (is => 'ro', isa => 'Bool', request_name => 'enablePerformanceMode', traits => ['NameInRequest']);
   has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', request_name => 'enablePullRequestPreview', traits => ['NameInRequest'], required => 1);
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
   has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest'], required => 1);
@@ -58,59 +59,63 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Br
 
 =head1 DESCRIPTION
 
-Branch for an Amplify App, which maps to a 3rd party repository branch.
+The branch for an Amplify app, which maps to a third-party repository
+branch.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ActiveJobId => Str
 
-Id of the active job for a branch, part of an Amplify App.
+The ID of the active job for a branch of an Amplify app.
 
 
 =head2 AssociatedResources => ArrayRef[Str|Undef]
 
-List of custom resources that are linked to this branch.
+A list of custom resources that are linked to this branch.
 
 
 =head2 BackendEnvironmentArn => Str
 
-ARN for a Backend Environment, part of an Amplify App.
+The Amazon Resource Name (ARN) for a backend environment that is part
+of an Amplify app.
 
 
 =head2 BasicAuthCredentials => Str
 
-Basic Authorization credentials for a branch, part of an Amplify App.
+The basic authorization credentials for a branch of an Amplify app.
 
 
 =head2 B<REQUIRED> BranchArn => Str
 
-ARN for a branch, part of an Amplify App.
+The Amazon Resource Name (ARN) for a branch that is part of an Amplify
+app.
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for a branch, part of an Amplify App.
+The name for the branch that is part of an Amplify app.
 
 
 =head2 BuildSpec => Str
 
-BuildSpec content for branch for Amplify App.
+The build specification (build spec) content for the branch of an
+Amplify app.
 
 
 =head2 B<REQUIRED> CreateTime => Str
 
-Creation date and time for a branch, part of an Amplify App.
+The creation date and time for a branch that is part of an Amplify app.
 
 
 =head2 B<REQUIRED> CustomDomains => ArrayRef[Str|Undef]
 
-Custom domains for a branch, part of an Amplify App.
+The custom domains for a branch of an Amplify app.
 
 
 =head2 B<REQUIRED> Description => Str
 
-Description for a branch, part of an Amplify App.
+The description for the branch that is part of an Amplify app.
 
 
 =head2 DestinationBranch => Str
@@ -120,42 +125,53 @@ The destination branch if the branch is a pull request branch.
 
 =head2 B<REQUIRED> DisplayName => Str
 
-Display name for a branch, will use as the default domain prefix.
+The display name for the branch. This is used as the default domain
+prefix.
 
 
 =head2 B<REQUIRED> EnableAutoBuild => Bool
 
-Enables auto-building on push for a branch, part of an Amplify App.
+Enables auto-building on push for a branch of an Amplify app.
 
 
 =head2 B<REQUIRED> EnableBasicAuth => Bool
 
-Enables Basic Authorization for a branch, part of an Amplify App.
+Enables basic authorization for a branch of an Amplify app.
 
 
 =head2 B<REQUIRED> EnableNotification => Bool
 
-Enables notifications for a branch, part of an Amplify App.
+Enables notifications for a branch that is part of an Amplify app.
+
+
+=head2 EnablePerformanceMode => Bool
+
+Enables performance mode for the branch.
+
+Performance mode optimizes for faster hosting performance by keeping
+content cached at the edge for a longer interval. When performance mode
+is enabled, hosting configuration or code changes can take up to 10
+minutes to roll out.
 
 
 =head2 B<REQUIRED> EnablePullRequestPreview => Bool
 
-Enables Pull Request Preview for this branch.
+Enables pull request previews for the branch.
 
 
 =head2 B<REQUIRED> EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
-Environment Variables specific to a branch, part of an Amplify App.
+The environment variables specific to a branch of an Amplify app.
 
 
 =head2 B<REQUIRED> Framework => Str
 
-Framework for a branch, part of an Amplify App.
+The framework for a branch of an Amplify app.
 
 
 =head2 PullRequestEnvironmentName => Str
 
-The Amplify Environment name for the pull request.
+The Amplify environment name for the pull request.
 
 
 =head2 SourceBranch => Str
@@ -165,32 +181,33 @@ The source branch if the branch is a pull request branch.
 
 =head2 B<REQUIRED> Stage => Str
 
-Stage for a branch, part of an Amplify App.
+The current stage for the branch that is part of an Amplify app.
 
 
 =head2 Tags => L<Paws::Amplify::TagMap>
 
-Tag for branch for Amplify App.
+The tag for the branch of an Amplify app.
 
 
 =head2 ThumbnailUrl => Str
 
-Thumbnail URL for the branch.
+The thumbnail URL for the branch of an Amplify app.
 
 
 =head2 B<REQUIRED> TotalNumberOfJobs => Str
 
-Total number of Jobs part of an Amplify App.
+The total number of jobs that are part of an Amplify app.
 
 
 =head2 B<REQUIRED> Ttl => Str
 
-The content TTL for the website in seconds.
+The content Time to Live (TTL) for the website in seconds.
 
 
 =head2 B<REQUIRED> UpdateTime => Str
 
-Last updated date and time for a branch, part of an Amplify App.
+The last updated date and time for a branch that is part of an Amplify
+app.
 
 
 

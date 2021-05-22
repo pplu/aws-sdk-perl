@@ -38,41 +38,42 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Ba
 
 =head1 DESCRIPTION
 
-Backend environment for an Amplify App.
+Describes the backend environment for an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BackendEnvironmentArn => Str
 
-Arn for a backend environment, part of an Amplify App.
+The Amazon Resource Name (ARN) for a backend environment that is part
+of an Amplify app.
 
 
 =head2 B<REQUIRED> CreateTime => Str
 
-Creation date and time for a backend environment, part of an Amplify
-App.
+The creation date and time for a backend environment that is part of an
+Amplify app.
 
 
 =head2 DeploymentArtifacts => Str
 
-Name of deployment artifacts.
+The name of deployment artifacts.
 
 
 =head2 B<REQUIRED> EnvironmentName => Str
 
-Name for a backend environment, part of an Amplify App.
+The name for a backend environment that is part of an Amplify app.
 
 
 =head2 StackName => Str
 
-CloudFormation stack name of backend environment.
+The AWS CloudFormation stack name of a backend environment.
 
 
 =head2 B<REQUIRED> UpdateTime => Str
 
-Last updated date and time for a backend environment, part of an
-Amplify App.
+The last updated date and time for a backend environment that is part
+of an Amplify app.
 
 
 
