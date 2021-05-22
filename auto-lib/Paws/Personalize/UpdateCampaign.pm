@@ -2,6 +2,7 @@
 package Paws::Personalize::UpdateCampaign;
   use Moose;
   has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn' , required => 1);
+  has CampaignConfig => (is => 'ro', isa => 'Paws::Personalize::CampaignConfig', traits => ['NameInRequest'], request_name => 'campaignConfig' );
   has MinProvisionedTPS => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minProvisionedTPS' );
   has SolutionVersionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionVersionArn' );
 
@@ -30,7 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $personalize = Paws->service('Personalize');
     my $UpdateCampaignResponse = $personalize->UpdateCampaign(
-      CampaignArn        => 'MyArn',
+      CampaignArn    => 'MyArn',
+      CampaignConfig => {
+        ItemExplorationConfig => {
+          'MyParameterName' =>
+            'MyParameterValue',    # key: max: 256, value: max: 1000
+        },    # max: 100; OPTIONAL
+      },    # OPTIONAL
       MinProvisionedTPS  => 1,          # OPTIONAL
       SolutionVersionArn => 'MyArn',    # OPTIONAL
     );
@@ -49,6 +56,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/per
 =head2 B<REQUIRED> CampaignArn => Str
 
 The Amazon Resource Name (ARN) of the campaign.
+
+
+
+=head2 CampaignConfig => L<Paws::Personalize::CampaignConfig>
+
+The configuration details of a campaign.
 
 
 

@@ -62,8 +62,11 @@ your solution version instead of creating an entirely new one.
 
 The C<UPDATE> option can only be used when you already have an active
 solution version created from the input solution using the C<FULL>
-option and the input solution was trained with the
-native-recipe-hrnn-coldstart recipe.
+option and the input solution was trained with the User-Personalization
+(https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html)
+recipe or the HRNN-Coldstart
+(https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html)
+recipe.
 
 Valid values are: C<"FULL">, C<"UPDATE">
 

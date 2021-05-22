@@ -37,6 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Personalize
 
 The metric to optimize during hyperparameter optimization (HPO).
 
+Amazon Personalize doesn't support configuring the C<hpoObjective> at
+this time.
+
 =head1 ATTRIBUTES
 
 
@@ -52,7 +55,7 @@ A regular expression for finding the metric in the training job logs.
 
 =head2 Type => Str
 
-The data type of the metric.
+The type of the metric. Valid values are C<Maximize> and C<Minimize>.
 
 
 

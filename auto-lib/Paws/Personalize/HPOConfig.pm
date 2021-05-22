@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Personalize
 
 =head1 DESCRIPTION
 
-Describes the properties for hyperparameter optimization (HPO). For use
-with the bring-your-own-recipe feature. Do not use for Amazon
-Personalize native recipes.
+Describes the properties for hyperparameter optimization (HPO).
 
 =head1 ATTRIBUTES
 
@@ -50,6 +48,9 @@ The hyperparameters and their allowable ranges.
 =head2 HpoObjective => L<Paws::Personalize::HPOObjective>
 
 The metric to optimize during HPO.
+
+Amazon Personalize doesn't support configuring the C<hpoObjective> at
+this time.
 
 
 =head2 HpoResourceConfig => L<Paws::Personalize::HPOResourceConfig>

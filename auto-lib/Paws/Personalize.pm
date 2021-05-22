@@ -30,6 +30,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::CreateDataset', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDatasetExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::CreateDatasetExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDatasetGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::CreateDatasetGroup', @_);
@@ -43,6 +48,11 @@ package Paws::Personalize;
   sub CreateEventTracker {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::CreateEventTracker', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::CreateFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateSchema {
@@ -80,6 +90,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DeleteEventTracker', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::DeleteFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSchema {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DeleteSchema', @_);
@@ -110,6 +125,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeDataset', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDatasetExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeDatasetExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDatasetGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeDatasetGroup', @_);
@@ -128,6 +148,11 @@ package Paws::Personalize;
   sub DescribeFeatureTransformation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeFeatureTransformation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRecipe {
@@ -165,6 +190,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::ListCampaigns', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDatasetExportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::ListDatasetExportJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDatasetGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::ListDatasetGroups', @_);
@@ -185,6 +215,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::ListEventTrackers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::ListFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRecipes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::ListRecipes', @_);
@@ -203,6 +238,11 @@ package Paws::Personalize;
   sub ListSolutionVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::ListSolutionVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopSolutionVersionCreation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::StopSolutionVersionCreation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateCampaign {
@@ -253,6 +293,29 @@ package Paws::Personalize;
         $result = $self->ListCampaigns(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'campaigns') foreach (@{ $result->campaigns });
+    }
+
+    return undef
+  }
+  sub ListAllDatasetExportJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatasetExportJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatasetExportJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datasetExportJobs }, @{ $next_result->datasetExportJobs };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datasetExportJobs') foreach (@{ $result->datasetExportJobs });
+        $result = $self->ListDatasetExportJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datasetExportJobs') foreach (@{ $result->datasetExportJobs });
     }
 
     return undef
@@ -345,6 +408,29 @@ package Paws::Personalize;
         $result = $self->ListEventTrackers(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'eventTrackers') foreach (@{ $result->eventTrackers });
+    }
+
+    return undef
+  }
+  sub ListAllFilters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFilters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->Filters }, @{ $next_result->Filters };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'Filters') foreach (@{ $result->Filters });
+        $result = $self->ListFilters(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'Filters') foreach (@{ $result->Filters });
     }
 
     return undef
@@ -443,7 +529,7 @@ package Paws::Personalize;
   }
 
 
-  sub operations { qw/CreateBatchInferenceJob CreateCampaign CreateDataset CreateDatasetGroup CreateDatasetImportJob CreateEventTracker CreateSchema CreateSolution CreateSolutionVersion DeleteCampaign DeleteDataset DeleteDatasetGroup DeleteEventTracker DeleteSchema DeleteSolution DescribeAlgorithm DescribeBatchInferenceJob DescribeCampaign DescribeDataset DescribeDatasetGroup DescribeDatasetImportJob DescribeEventTracker DescribeFeatureTransformation DescribeRecipe DescribeSchema DescribeSolution DescribeSolutionVersion GetSolutionMetrics ListBatchInferenceJobs ListCampaigns ListDatasetGroups ListDatasetImportJobs ListDatasets ListEventTrackers ListRecipes ListSchemas ListSolutions ListSolutionVersions UpdateCampaign / }
+  sub operations { qw/CreateBatchInferenceJob CreateCampaign CreateDataset CreateDatasetExportJob CreateDatasetGroup CreateDatasetImportJob CreateEventTracker CreateFilter CreateSchema CreateSolution CreateSolutionVersion DeleteCampaign DeleteDataset DeleteDatasetGroup DeleteEventTracker DeleteFilter DeleteSchema DeleteSolution DescribeAlgorithm DescribeBatchInferenceJob DescribeCampaign DescribeDataset DescribeDatasetExportJob DescribeDatasetGroup DescribeDatasetImportJob DescribeEventTracker DescribeFeatureTransformation DescribeFilter DescribeRecipe DescribeSchema DescribeSolution DescribeSolutionVersion GetSolutionMetrics ListBatchInferenceJobs ListCampaigns ListDatasetExportJobs ListDatasetGroups ListDatasetImportJobs ListDatasets ListEventTrackers ListFilters ListRecipes ListSchemas ListSolutions ListSolutionVersions StopSolutionVersionCreation UpdateCampaign / }
 
 1;
 
@@ -493,6 +579,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/per
 
 =item SolutionVersionArn => Str
 
+=item [BatchInferenceJobConfig => L<Paws::Personalize::BatchInferenceJobConfig>]
+
+=item [FilterArn => Str]
+
 =item [NumResults => Int]
 
 
@@ -517,6 +607,8 @@ information, see recommendations-batch.
 
 =item SolutionVersionArn => Str
 
+=item [CampaignConfig => L<Paws::Personalize::CampaignConfig>]
+
 
 =back
 
@@ -538,11 +630,16 @@ C<GetPersonalizedRanking> call. Transactions per second (TPS) is the
 throughput and unit of billing for Amazon Personalize. The minimum
 provisioned TPS (C<minProvisionedTPS>) specifies the baseline
 throughput provisioned by Amazon Personalize, and thus, the minimum
-billing charge. If your TPS increases beyond C<minProvisionedTPS>,
-Amazon Personalize auto-scales the provisioned capacity up and down,
-but never below C<minProvisionedTPS>, to maintain a 70% utilization.
-There's a short time delay while the capacity is increased that might
-cause loss of transactions. It's recommended to start with a low
+billing charge.
+
+If your TPS increases beyond C<minProvisionedTPS>, Amazon Personalize
+auto-scales the provisioned capacity up and down, but never below
+C<minProvisionedTPS>. There's a short time delay while the capacity is
+increased that might cause loss of transactions.
+
+The actual TPS used is calculated as the average requests/second within
+a 5-minute window. You pay for maximum of either the minimum
+provisioned TPS or the actual TPS. We recommend starting with a low
 C<minProvisionedTPS>, track your usage using Amazon CloudWatch metrics,
 and then increase the C<minProvisionedTPS> as necessary.
 
@@ -675,6 +772,54 @@ DeleteDataset
 
 
 
+=head2 CreateDatasetExportJob
+
+=over
+
+=item DatasetArn => Str
+
+=item JobName => Str
+
+=item JobOutput => L<Paws::Personalize::DatasetExportJobOutput>
+
+=item RoleArn => Str
+
+=item [IngestionMode => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::CreateDatasetExportJob>
+
+Returns: a L<Paws::Personalize::CreateDatasetExportJobResponse> instance
+
+Creates a job that exports data from your dataset to an Amazon S3
+bucket. To allow Amazon Personalize to export the training data, you
+must specify an service-linked AWS Identity and Access Management (IAM)
+role that gives Amazon Personalize C<PutObject> permissions for your
+Amazon S3 bucket. For information, see Exporting a dataset
+(https://docs.aws.amazon.com/personalize/latest/dg/export-data.html) in
+the Amazon Personalize developer guide.
+
+B<Status>
+
+A dataset export job can be in one of the following states:
+
+=over
+
+=item *
+
+CREATE PENDING E<gt> CREATE IN_PROGRESS E<gt> ACTIVE -or- CREATE FAILED
+
+=back
+
+To get the status of the export job, call DescribeDatasetExportJob, and
+specify the Amazon Resource Name (ARN) of the dataset export job. The
+dataset export is complete when the status shows as ACTIVE. If the
+status shows as CREATE FAILED, the response includes a C<failureReason>
+key, which describes why the job failed.
+
+
 =head2 CreateDatasetGroup
 
 =over
@@ -802,10 +947,15 @@ Returns: a L<Paws::Personalize::CreateDatasetImportJobResponse> instance
 Creates a job that imports training data from your data source (an
 Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon
 Personalize to import the training data, you must specify an AWS
-Identity and Access Management (IAM) role that has permission to read
-from the data source.
+Identity and Access Management (IAM) service role that has permission
+to read from the data source, as Amazon Personalize makes a copy of
+your data and processes it in an internal AWS system. For information
+on granting access to your Amazon S3 bucket, see Giving Amazon
+Personalize Access to Amazon S3 Resources
+(https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html).
 
-The dataset import job replaces any previous data in the dataset.
+The dataset import job replaces any existing data in the dataset that
+you imported in bulk.
 
 B<Status>
 
@@ -859,23 +1009,21 @@ Each argument is described in detail in: L<Paws::Personalize::CreateEventTracker
 
 Returns: a L<Paws::Personalize::CreateEventTrackerResponse> instance
 
-Creates an event tracker that you use when sending event data to the
+Creates an event tracker that you use when adding event data to a
 specified dataset group using the PutEvents
 (https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html)
 API.
-
-When Amazon Personalize creates an event tracker, it also creates an
-I<event-interactions> dataset in the dataset group associated with the
-event tracker. The event-interactions dataset stores the event data
-from the C<PutEvents> call. The contents of this dataset are not
-available to the user.
 
 Only one event tracker can be associated with a dataset group. You will
 get an error if you call C<CreateEventTracker> using the same dataset
 group as an existing event tracker.
 
-When you send event data you include your tracking ID. The tracking ID
-identifies the customer and authorizes the customer to send the data.
+When you create an event tracker, the response includes a tracking ID,
+which you pass as a parameter when you use the PutEvents
+(https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html)
+operation. Amazon Personalize then appends the event data to the
+Interactions dataset of the dataset group you specify in your event
+tracker.
 
 The event tracker can be in one of the following states:
 
@@ -914,6 +1062,26 @@ DeleteEventTracker
 
 =back
 
+
+
+=head2 CreateFilter
+
+=over
+
+=item DatasetGroupArn => Str
+
+=item FilterExpression => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::CreateFilter>
+
+Returns: a L<Paws::Personalize::CreateFilterResponse> instance
+
+Creates a recommendation filter. For more information, see filter.
 
 
 =head2 CreateSchema
@@ -1004,6 +1172,9 @@ by Amazon Personalize. Alternatively, you can specify C<performAutoML>
 and Amazon Personalize will analyze your data and select the optimum
 USER_PERSONALIZATION recipe for you.
 
+Amazon Personalize doesn't support configuring the C<hpoObjective> for
+solution hyperparameter optimization at this time.
+
 B<Status>
 
 A solution can be in one of the following states:
@@ -1087,7 +1258,27 @@ A solution version can be in one of the following states:
 
 =item *
 
-CREATE PENDING E<gt> CREATE IN_PROGRESS E<gt> ACTIVE -or- CREATE FAILED
+CREATE PENDING
+
+=item *
+
+CREATE IN_PROGRESS
+
+=item *
+
+ACTIVE
+
+=item *
+
+CREATE FAILED
+
+=item *
+
+CREATE STOPPING
+
+=item *
+
+CREATE STOPPED
 
 =back
 
@@ -1224,6 +1415,22 @@ dataset from the associated dataset group. For more information on
 event trackers, see CreateEventTracker.
 
 
+=head2 DeleteFilter
+
+=over
+
+=item FilterArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::DeleteFilter>
+
+Returns: nothing
+
+Deletes a filter.
+
+
 =head2 DeleteSchema
 
 =over
@@ -1350,6 +1557,23 @@ Describes the given dataset. For more information on datasets, see
 CreateDataset.
 
 
+=head2 DescribeDatasetExportJob
+
+=over
+
+=item DatasetExportJobArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::DescribeDatasetExportJob>
+
+Returns: a L<Paws::Personalize::DescribeDatasetExportJobResponse> instance
+
+Describes the dataset export job created by CreateDatasetExportJob,
+including the export job status.
+
+
 =head2 DescribeDatasetGroup
 
 =over
@@ -1416,6 +1640,22 @@ Each argument is described in detail in: L<Paws::Personalize::DescribeFeatureTra
 Returns: a L<Paws::Personalize::DescribeFeatureTransformationResponse> instance
 
 Describes the given feature transformation.
+
+
+=head2 DescribeFilter
+
+=over
+
+=item FilterArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::DescribeFilter>
+
+Returns: a L<Paws::Personalize::DescribeFilterResponse> instance
+
+Describes a filter's properties.
 
 
 =head2 DescribeRecipe
@@ -1572,6 +1812,31 @@ campaign, including the Amazon Resource Name (ARN). For more
 information on campaigns, see CreateCampaign.
 
 
+=head2 ListDatasetExportJobs
+
+=over
+
+=item [DatasetArn => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::ListDatasetExportJobs>
+
+Returns: a L<Paws::Personalize::ListDatasetExportJobsResponse> instance
+
+Returns a list of dataset export jobs that use the given dataset. When
+a dataset is not specified, all the dataset export jobs associated with
+the account are listed. The response provides the properties for each
+dataset export job, including the Amazon Resource Name (ARN). For more
+information on dataset export jobs, see CreateDatasetExportJob. For
+more information on datasets, see CreateDataset.
+
+
 =head2 ListDatasetGroups
 
 =over
@@ -1661,6 +1926,26 @@ Returns the list of event trackers associated with the account. The
 response provides the properties for each event tracker, including the
 Amazon Resource Name (ARN) and tracking ID. For more information on
 event trackers, see CreateEventTracker.
+
+
+=head2 ListFilters
+
+=over
+
+=item [DatasetGroupArn => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::ListFilters>
+
+Returns: a L<Paws::Personalize::ListFiltersResponse> instance
+
+Lists all filters that belong to a given dataset group.
 
 
 =head2 ListRecipes
@@ -1753,11 +2038,51 @@ solution version, including the Amazon Resource Name (ARN). For more
 information on solutions, see CreateSolution.
 
 
+=head2 StopSolutionVersionCreation
+
+=over
+
+=item SolutionVersionArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::StopSolutionVersionCreation>
+
+Returns: nothing
+
+Stops creating a solution version that is in a state of CREATE_PENDING
+or CREATE IN_PROGRESS.
+
+Depending on the current state of the solution version, the solution
+version state changes as follows:
+
+=over
+
+=item *
+
+CREATE_PENDING E<gt> CREATE_STOPPED
+
+or
+
+=item *
+
+CREATE_IN_PROGRESS E<gt> CREATE_STOPPING E<gt> CREATE_STOPPED
+
+=back
+
+You are billed for all of the training completed up until you stop the
+solution version creation. You cannot resume creating a solution
+version once it has been stopped.
+
+
 =head2 UpdateCampaign
 
 =over
 
 =item CampaignArn => Str
+
+=item [CampaignConfig => L<Paws::Personalize::CampaignConfig>]
 
 =item [MinProvisionedTPS => Int]
 
@@ -1812,6 +2137,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Personalize::ListCampaignsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllDatasetExportJobs(sub { },[DatasetArn => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatasetExportJobs([DatasetArn => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datasetExportJobs, passing the object as the first parameter, and the string 'datasetExportJobs' as the second parameter 
+
+If not, it will return a a L<Paws::Personalize::ListDatasetExportJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllDatasetGroups(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllDatasetGroups([MaxResults => Int, NextToken => Str])
@@ -1858,6 +2195,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - eventTrackers, passing the object as the first parameter, and the string 'eventTrackers' as the second parameter 
 
 If not, it will return a a L<Paws::Personalize::ListEventTrackersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFilters(sub { },[DatasetGroupArn => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFilters([DatasetGroupArn => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Filters, passing the object as the first parameter, and the string 'Filters' as the second parameter 
+
+If not, it will return a a L<Paws::Personalize::ListFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllRecipes(sub { },[MaxResults => Int, NextToken => Str, RecipeProvider => Str])

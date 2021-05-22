@@ -1,6 +1,7 @@
 
 package Paws::Personalize::CreateCampaign;
   use Moose;
+  has CampaignConfig => (is => 'ro', isa => 'Paws::Personalize::CampaignConfig', traits => ['NameInRequest'], request_name => 'campaignConfig' );
   has MinProvisionedTPS => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minProvisionedTPS' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has SolutionVersionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionVersionArn' , required => 1);
@@ -33,7 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MinProvisionedTPS  => 1,
       Name               => 'MyName',
       SolutionVersionArn => 'MyArn',
-
+      CampaignConfig     => {
+        ItemExplorationConfig => {
+          'MyParameterName' =>
+            'MyParameterValue',    # key: max: 256, value: max: 1000
+        },    # max: 100; OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -45,6 +51,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/personalize/CreateCampaign>
 
 =head1 ATTRIBUTES
+
+
+=head2 CampaignConfig => L<Paws::Personalize::CampaignConfig>
+
+The configuration details of a campaign.
+
 
 
 =head2 B<REQUIRED> MinProvisionedTPS => Int

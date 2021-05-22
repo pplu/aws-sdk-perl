@@ -6,6 +6,7 @@ package Paws::Personalize::SolutionConfig;
   has EventValueThreshold => (is => 'ro', isa => 'Str', request_name => 'eventValueThreshold', traits => ['NameInRequest']);
   has FeatureTransformationParameters => (is => 'ro', isa => 'Paws::Personalize::FeatureTransformationParameters', request_name => 'featureTransformationParameters', traits => ['NameInRequest']);
   has HpoConfig => (is => 'ro', isa => 'Paws::Personalize::HPOConfig', request_name => 'hpoConfig', traits => ['NameInRequest']);
+  has OptimizationObjective => (is => 'ro', isa => 'Paws::Personalize::OptimizationObjective', request_name => 'optimizationObjective', traits => ['NameInRequest']);
 
 1;
 
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Personalize::SolutionConfig object:
 
-  $service_obj->Method(Att1 => { AlgorithmHyperParameters => $value, ..., HpoConfig => $value  });
+  $service_obj->Method(Att1 => { AlgorithmHyperParameters => $value, ..., OptimizationObjective => $value  });
 
 =head3 Results returned from an API call
 
@@ -67,6 +68,14 @@ Lists the feature transformation parameters.
 =head2 HpoConfig => L<Paws::Personalize::HPOConfig>
 
 Describes the properties for hyperparameter optimization (HPO).
+
+
+=head2 OptimizationObjective => L<Paws::Personalize::OptimizationObjective>
+
+Describes the additional objective for the solution, such as maximizing
+streaming minutes or increasing revenue. For more information see
+Optimizing a solution
+(https://docs.aws.amazon.com/personalize/latest/dg/optimizing-solution-for-objective.html).
 
 
 

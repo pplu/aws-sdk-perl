@@ -15,6 +15,7 @@ package Paws::Personalize::SolutionVersion;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TrainingHours => (is => 'ro', isa => 'Num', request_name => 'trainingHours', traits => ['NameInRequest']);
   has TrainingMode => (is => 'ro', isa => 'Str', request_name => 'trainingMode', traits => ['NameInRequest']);
+  has TunedHPOParams => (is => 'ro', isa => 'Paws::Personalize::TunedHPOParams', request_name => 'tunedHPOParams', traits => ['NameInRequest']);
 
 1;
 
@@ -35,7 +36,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Personalize::SolutionVersion object:
 
-  $service_obj->Method(Att1 => { CreationDateTime => $value, ..., TrainingMode => $value  });
+  $service_obj->Method(Att1 => { CreationDateTime => $value, ..., TunedHPOParams => $value  });
 
 =head3 Results returned from an API call
 
@@ -137,6 +138,14 @@ ACTIVE
 
 CREATE FAILED
 
+=item *
+
+CREATE STOPPING
+
+=item *
+
+CREATE STOPPED
+
 =back
 
 
@@ -150,16 +159,26 @@ successfully trains a model.
 
 =head2 TrainingMode => Str
 
-The scope of training used to create the solution version. The C<FULL>
-option trains the solution version based on the entirety of the input
-solution's training data, while the C<UPDATE> option processes only the
-training data that has changed since the creation of the last solution
-version. Choose C<UPDATE> when you want to start recommending items
-added to the dataset without retraining the model.
+The scope of training to be performed when creating the solution
+version. The C<FULL> option trains the solution version based on the
+entirety of the input solution's training data, while the C<UPDATE>
+option processes only the data that has changed in comparison to the
+input solution. Choose C<UPDATE> when you want to incrementally update
+your solution version instead of creating an entirely new one.
 
-The C<UPDATE> option can only be used after you've created a solution
-version with the C<FULL> option and the training solution uses the
-native-recipe-hrnn-coldstart.
+The C<UPDATE> option can only be used when you already have an active
+solution version created from the input solution using the C<FULL>
+option and the input solution was trained with the User-Personalization
+(https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html)
+recipe or the HRNN-Coldstart
+(https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html)
+recipe.
+
+
+=head2 TunedHPOParams => L<Paws::Personalize::TunedHPOParams>
+
+If hyperparameter optimization was performed, contains the
+hyperparameter values of the best performing model.
 
 
 

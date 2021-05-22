@@ -6,6 +6,7 @@ package Paws::Personalize::BatchInferenceJobSummary;
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest']);
   has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
+  has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 
 1;
@@ -68,6 +69,11 @@ The name of the batch inference job.
 =head2 LastUpdatedDateTime => Str
 
 The time at which the batch inference job was last updated.
+
+
+=head2 SolutionVersionArn => Str
+
+The ARN of the solution version used by the batch inference job.
 
 
 =head2 Status => Str
