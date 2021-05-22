@@ -51,7 +51,7 @@ update.
 =head2 B<REQUIRED> ClassificationTypeUpdate => L<Paws::Macie::ClassificationTypeUpdate>
 
 The classification type that you want to update for the resource
-associated with Amazon Macie.
+associated with Amazon Macie Classic.
 
 
 =head2 Prefix => Str

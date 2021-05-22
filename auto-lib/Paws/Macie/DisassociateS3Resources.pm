@@ -53,14 +53,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 =head2 B<REQUIRED> AssociatedS3Resources => ArrayRef[L<Paws::Macie::S3Resource>]
 
 The S3 resources (buckets or prefixes) that you want to remove from
-being monitored and classified by Amazon Macie.
+being monitored and classified by Amazon Macie Classic.
 
 
 
 =head2 MemberAccountId => Str
 
-The ID of the Amazon Macie member account whose resources you want to
-remove from being monitored by Amazon Macie.
+The ID of the Amazon Macie Classic member account whose resources you
+want to remove from being monitored by Macie Classic.
 
 
 

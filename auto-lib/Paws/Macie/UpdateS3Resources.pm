@@ -56,8 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 MemberAccountId => Str
 
-The AWS ID of the Amazon Macie member account whose S3 resources'
-classification types you want to update.
+The AWS ID of the Amazon Macie Classic member account whose S3
+resources' classification types you want to update.
 
 
 

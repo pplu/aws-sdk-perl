@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie::Memb
 
 =head1 DESCRIPTION
 
-Contains information about the Amazon Macie member account.
+Contains information about the Amazon Macie Classic member account.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-The AWS account ID of the Amazon Macie member account.
+The AWS account ID of the Amazon Macie Classic member account.
 
 
 

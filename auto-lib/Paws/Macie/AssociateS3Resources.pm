@@ -57,15 +57,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 MemberAccountId => Str
 
-The ID of the Amazon Macie member account whose resources you want to
-associate with Macie.
+The ID of the Amazon Macie Classic member account whose resources you
+want to associate with Macie Classic.
 
 
 
 =head2 B<REQUIRED> S3Resources => ArrayRef[L<Paws::Macie::S3ResourceClassification>]
 
-The S3 resources that you want to associate with Amazon Macie for
-monitoring and data classification.
+The S3 resources that you want to associate with Amazon Macie Classic
+for monitoring and data classification.
 
 
 

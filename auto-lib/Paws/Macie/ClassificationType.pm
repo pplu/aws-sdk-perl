@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie::Clas
 
 =head1 DESCRIPTION
 
-The classification type that Amazon Macie applies to the associated S3
-resources.
+The classification type that Amazon Macie Classic applies to the
+associated S3 resources.
 
 =head1 ATTRIBUTES
 
@@ -43,9 +43,9 @@ resources.
 =head2 B<REQUIRED> Continuous => Str
 
 A continuous classification of the objects that are added to a
-specified S3 bucket. Amazon Macie begins performing continuous
-classification after a bucket is successfully associated with Amazon
-Macie.
+specified S3 bucket. Amazon Macie Classic begins performing continuous
+classification after a bucket is successfully associated with Macie
+Classic.
 
 
 =head2 B<REQUIRED> OneTime => Str
