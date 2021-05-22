@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Name         => 'MyChannelName',    # min: 1, max: 256; OPTIONAL
         S3BucketName => 'MyString',         # OPTIONAL
         S3KeyPrefix  => 'MyString',         # OPTIONAL
+        S3KmsKeyArn  => 'MyString',         # OPTIONAL
         SnsTopicARN  => 'MyString',         # OPTIONAL
       },
 

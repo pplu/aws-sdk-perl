@@ -95,6 +95,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteRetentionConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteStoredQuery {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteStoredQuery', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeliverConfigSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeliverConfigSnapshot', @_);
@@ -103,6 +108,11 @@ package Paws::Config;
   sub DescribeAggregateComplianceByConfigRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeAggregateComplianceByConfigRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAggregateComplianceByConformancePacks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeAggregateComplianceByConformancePacks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAggregationAuthorizations {
@@ -230,6 +240,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateConfigRuleComplianceSummary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAggregateConformancePackComplianceSummary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateConformancePackComplianceSummary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAggregateDiscoveredResourceCounts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateDiscoveredResourceCounts', @_);
@@ -290,6 +305,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetStoredQuery {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetStoredQuery', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAggregateDiscoveredResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::ListAggregateDiscoveredResources', @_);
@@ -298,6 +318,11 @@ package Paws::Config;
   sub ListDiscoveredResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::ListDiscoveredResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListStoredQueries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::ListStoredQueries', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -340,6 +365,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutExternalEvaluation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutExternalEvaluation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutOrganizationConfigRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutOrganizationConfigRule', @_);
@@ -368,6 +398,16 @@ package Paws::Config;
   sub PutRetentionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutRetentionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutStoredQuery {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutStoredQuery', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SelectAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::SelectAggregateResourceConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SelectResourceConfig {
@@ -425,6 +465,29 @@ package Paws::Config;
         $result = $self->DescribeAggregateComplianceByConfigRules(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'AggregateComplianceByConfigRules') foreach (@{ $result->AggregateComplianceByConfigRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllAggregateComplianceByConformancePacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAggregateComplianceByConformancePacks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAggregateComplianceByConformancePacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregateComplianceByConformancePacks }, @{ $next_result->AggregateComplianceByConformancePacks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregateComplianceByConformancePacks') foreach (@{ $result->AggregateComplianceByConformancePacks });
+        $result = $self->DescribeAggregateComplianceByConformancePacks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregateComplianceByConformancePacks') foreach (@{ $result->AggregateComplianceByConformancePacks });
     }
 
     return undef
@@ -590,6 +653,144 @@ package Paws::Config;
 
     return undef
   }
+  sub DescribeAllConformancePacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConformancePacks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConformancePacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConformancePackDetails }, @{ $next_result->ConformancePackDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConformancePackDetails') foreach (@{ $result->ConformancePackDetails });
+        $result = $self->DescribeConformancePacks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConformancePackDetails') foreach (@{ $result->ConformancePackDetails });
+    }
+
+    return undef
+  }
+  sub DescribeAllConformancePackStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConformancePackStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConformancePackStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConformancePackStatusDetails }, @{ $next_result->ConformancePackStatusDetails };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConformancePackStatusDetails') foreach (@{ $result->ConformancePackStatusDetails });
+        $result = $self->DescribeConformancePackStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConformancePackStatusDetails') foreach (@{ $result->ConformancePackStatusDetails });
+    }
+
+    return undef
+  }
+  sub DescribeAllOrganizationConfigRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrganizationConfigRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeOrganizationConfigRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationConfigRules }, @{ $next_result->OrganizationConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationConfigRules') foreach (@{ $result->OrganizationConfigRules });
+        $result = $self->DescribeOrganizationConfigRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationConfigRules') foreach (@{ $result->OrganizationConfigRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllOrganizationConfigRuleStatuses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrganizationConfigRuleStatuses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeOrganizationConfigRuleStatuses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationConfigRuleStatuses }, @{ $next_result->OrganizationConfigRuleStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationConfigRuleStatuses') foreach (@{ $result->OrganizationConfigRuleStatuses });
+        $result = $self->DescribeOrganizationConfigRuleStatuses(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationConfigRuleStatuses') foreach (@{ $result->OrganizationConfigRuleStatuses });
+    }
+
+    return undef
+  }
+  sub DescribeAllOrganizationConformancePacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrganizationConformancePacks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeOrganizationConformancePacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationConformancePacks }, @{ $next_result->OrganizationConformancePacks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationConformancePacks') foreach (@{ $result->OrganizationConformancePacks });
+        $result = $self->DescribeOrganizationConformancePacks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationConformancePacks') foreach (@{ $result->OrganizationConformancePacks });
+    }
+
+    return undef
+  }
+  sub DescribeAllOrganizationConformancePackStatuses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrganizationConformancePackStatuses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeOrganizationConformancePackStatuses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationConformancePackStatuses }, @{ $next_result->OrganizationConformancePackStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationConformancePackStatuses') foreach (@{ $result->OrganizationConformancePackStatuses });
+        $result = $self->DescribeOrganizationConformancePackStatuses(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationConformancePackStatuses') foreach (@{ $result->OrganizationConformancePackStatuses });
+    }
+
+    return undef
+  }
   sub DescribeAllPendingAggregationRequests {
     my $self = shift;
 
@@ -728,6 +929,75 @@ package Paws::Config;
 
     return undef
   }
+  sub GetAllConformancePackComplianceSummary {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetConformancePackComplianceSummary(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetConformancePackComplianceSummary(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConformancePackComplianceSummaryList }, @{ $next_result->ConformancePackComplianceSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConformancePackComplianceSummaryList') foreach (@{ $result->ConformancePackComplianceSummaryList });
+        $result = $self->GetConformancePackComplianceSummary(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConformancePackComplianceSummaryList') foreach (@{ $result->ConformancePackComplianceSummaryList });
+    }
+
+    return undef
+  }
+  sub GetAllOrganizationConfigRuleDetailedStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetOrganizationConfigRuleDetailedStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetOrganizationConfigRuleDetailedStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationConfigRuleDetailedStatus }, @{ $next_result->OrganizationConfigRuleDetailedStatus };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationConfigRuleDetailedStatus') foreach (@{ $result->OrganizationConfigRuleDetailedStatus });
+        $result = $self->GetOrganizationConfigRuleDetailedStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationConfigRuleDetailedStatus') foreach (@{ $result->OrganizationConfigRuleDetailedStatus });
+    }
+
+    return undef
+  }
+  sub GetAllOrganizationConformancePackDetailedStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetOrganizationConformancePackDetailedStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetOrganizationConformancePackDetailedStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationConformancePackDetailedStatuses }, @{ $next_result->OrganizationConformancePackDetailedStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationConformancePackDetailedStatuses') foreach (@{ $result->OrganizationConformancePackDetailedStatuses });
+        $result = $self->GetOrganizationConformancePackDetailedStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationConformancePackDetailedStatuses') foreach (@{ $result->OrganizationConformancePackDetailedStatuses });
+    }
+
+    return undef
+  }
   sub GetAllResourceConfigHistory {
     my $self = shift;
 
@@ -797,9 +1067,78 @@ package Paws::Config;
 
     return undef
   }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub SelectAllAggregateResourceConfig {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SelectAggregateResourceConfig(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SelectAggregateResourceConfig(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->SelectAggregateResourceConfig(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
+    }
+
+    return undef
+  }
+  sub SelectAllResourceConfig {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SelectResourceConfig(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SelectResourceConfig(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->SelectResourceConfig(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteConformancePack DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeleteOrganizationConformancePack DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRemediationExceptions DeleteResourceConfig DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeConformancePackCompliance DescribeConformancePacks DescribeConformancePackStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribeOrganizationConformancePacks DescribeOrganizationConformancePackStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExceptions DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetConformancePackComplianceDetails GetConformancePackComplianceSummary GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetOrganizationConformancePackDetailedStatus GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutConformancePack PutDeliveryChannel PutEvaluations PutOrganizationConfigRule PutOrganizationConformancePack PutRemediationConfigurations PutRemediationExceptions PutResourceConfig PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteConformancePack DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeleteOrganizationConformancePack DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRemediationExceptions DeleteResourceConfig DeleteRetentionConfiguration DeleteStoredQuery DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregateComplianceByConformancePacks DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeConformancePackCompliance DescribeConformancePacks DescribeConformancePackStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribeOrganizationConformancePacks DescribeOrganizationConformancePackStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExceptions DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateConformancePackComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetConformancePackComplianceDetails GetConformancePackComplianceSummary GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetOrganizationConformancePackDetailedStatus GetResourceConfigHistory GetStoredQuery ListAggregateDiscoveredResources ListDiscoveredResources ListStoredQueries ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutConformancePack PutDeliveryChannel PutEvaluations PutExternalEvaluation PutOrganizationConfigRule PutOrganizationConformancePack PutRemediationConfigurations PutRemediationExceptions PutResourceConfig PutRetentionConfiguration PutStoredQuery SelectAggregateResourceConfig SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
 
 1;
 
@@ -1089,8 +1428,12 @@ Each argument is described in detail in: L<Paws::Config::DeleteOrganizationConfi
 Returns: nothing
 
 Deletes the specified organization config rule and all of its
-evaluation results from all member accounts in that organization. Only
-a master account can delete an organization config rule.
+evaluation results from all member accounts in that organization.
+
+Only a master account and a delegated administrator account can delete
+an organization config rule. When calling this API with a delegated
+administrator, you must ensure AWS Organizations
+C<ListDelegatedAdministrator> permissions are added.
 
 AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
 deletion is complete. You cannot update a rule while it is in this
@@ -1112,8 +1455,12 @@ Returns: nothing
 
 Deletes the specified organization conformance pack and all of the
 config rules and remediation actions from all member accounts in that
-organization. Only a master account can delete an organization
-conformance pack.
+organization.
+
+Only a master account or a delegated administrator account can delete
+an organization conformance pack. When calling this API with a
+delegated administrator, you must ensure AWS Organizations
+C<ListDelegatedAdministrator> permissions are added.
 
 AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
 until the deletion is complete. You cannot update a conformance pack
@@ -1175,6 +1522,10 @@ Returns: a L<Paws::Config::DeleteRemediationExceptionsResponse> instance
 Deletes one or more remediation exceptions mentioned in the resource
 keys.
 
+AWS Config generates a remediation exception when a problem occurs
+executing a remediation action to a specific resource. Remediation
+exceptions blocks auto-remediation until the exception is cleared.
+
 
 =head2 DeleteResourceConfig
 
@@ -1211,6 +1562,23 @@ Each argument is described in detail in: L<Paws::Config::DeleteRetentionConfigur
 Returns: nothing
 
 Deletes the retention configuration.
+
+
+=head2 DeleteStoredQuery
+
+=over
+
+=item QueryName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteStoredQuery>
+
+Returns: a L<Paws::Config::DeleteStoredQueryResponse> instance
+
+Deletes the stored query for a single AWS account and a single AWS
+Region.
 
 
 =head2 DeliverConfigSnapshot
@@ -1271,6 +1639,35 @@ Returns: a L<Paws::Config::DescribeAggregateComplianceByConfigRulesResponse> ins
 
 Returns a list of compliant and noncompliant rules with the number of
 resources for compliant and noncompliant rules.
+
+The results can return an empty result page, but if you have a
+C<nextToken>, the results are displayed on the next page.
+
+
+=head2 DescribeAggregateComplianceByConformancePacks
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::AggregateConformancePackComplianceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeAggregateComplianceByConformancePacks>
+
+Returns: a L<Paws::Config::DescribeAggregateComplianceByConformancePacksResponse> instance
+
+Returns a list of the conformance packs and their associated compliance
+status with the count of compliant and noncompliant AWS Config rules
+within each conformance pack. Also returns the total rule count which
+includes compliant rules, noncompliant rules, and rules that cannot be
+evaluated due to insufficient data.
 
 The results can return an empty result page, but if you have a
 C<nextToken>, the results are displayed on the next page.
@@ -1674,8 +2071,6 @@ response. Limit and next token are not applicable if you specify
 organization config rule names. It is only applicable, when you request
 all the organization config rules.
 
-Only a master account can call this API.
-
 
 =head2 DescribeOrganizationConfigRuleStatuses
 
@@ -1706,8 +2101,6 @@ response. Limit and next token are not applicable if you specify
 organization config rule names. It is only applicable, when you request
 all the organization config rules.
 
-Only a master account can call this API.
-
 
 =head2 DescribeOrganizationConformancePacks
 
@@ -1734,8 +2127,6 @@ response.
 Limit and next token are not applicable if you specify organization
 conformance packs names. They are only applicable, when you request all
 the organization conformance packs.
-
-Only a master account can call this API.
 
 
 =head2 DescribeOrganizationConformancePackStatuses
@@ -1766,8 +2157,6 @@ When you specify the limit and the next token, you receive a paginated
 response. Limit and next token are not applicable if you specify
 organization conformance pack names. They are only applicable, when you
 request all the organization conformance packs.
-
-Only a master account can call this API.
 
 
 =head2 DescribePendingAggregationRequests
@@ -1828,6 +2217,10 @@ view of a remediation exception for a set of resources that includes an
 explanation of an exception and the time when the exception will be
 deleted. When you specify the limit and the next token, you receive a
 paginated response.
+
+AWS Config generates a remediation exception when a problem occurs
+executing a remediation action to a specific resource. Remediation
+exceptions blocks auto-remediation until the exception is cleared.
 
 When you specify the limit and the next token, you receive a paginated
 response.
@@ -1942,6 +2335,35 @@ Returns: a L<Paws::Config::GetAggregateConfigRuleComplianceSummaryResponse> inst
 
 Returns the number of compliant and noncompliant rules for one or more
 accounts and regions in an aggregator.
+
+The results can return an empty result page, but if you have a
+nextToken, the results are displayed on the next page.
+
+
+=head2 GetAggregateConformancePackComplianceSummary
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::AggregateConformancePackComplianceSummaryFilters>]
+
+=item [GroupByKey => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateConformancePackComplianceSummary>
+
+Returns: a L<Paws::Config::GetAggregateConformancePackComplianceSummaryResponse> instance
+
+Returns the count of compliant and noncompliant conformance packs
+across all AWS Accounts and AWS Regions in an aggregator. You can
+filter based on AWS Account ID or AWS Region.
 
 The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
@@ -2235,8 +2657,6 @@ Returns: a L<Paws::Config::GetOrganizationConfigRuleDetailedStatusResponse> inst
 Returns detailed status for each member account within an organization
 for a given organization config rule.
 
-Only a master account can call this API.
-
 
 =head2 GetOrganizationConformancePackDetailedStatus
 
@@ -2259,8 +2679,6 @@ Returns: a L<Paws::Config::GetOrganizationConformancePackDetailedStatusResponse>
 
 Returns detailed status for each member account within an organization
 for a given organization conformance pack.
-
-Only a master account can call this API.
 
 
 =head2 GetResourceConfigHistory
@@ -2305,6 +2723,22 @@ Each call to the API is limited to span a duration of seven days. It is
 likely that the number of records returned is smaller than the
 specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
+
+
+=head2 GetStoredQuery
+
+=over
+
+=item QueryName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetStoredQuery>
+
+Returns: a L<Paws::Config::GetStoredQueryResponse> instance
+
+Returns the details of a specific stored query.
 
 
 =head2 ListAggregateDiscoveredResources
@@ -2381,6 +2815,25 @@ identifiers on each page. You can customize this number with the
 C<limit> parameter. The response includes a C<nextToken> string. To get
 the next page of results, run the request again and specify the string
 for the C<nextToken> parameter.
+
+
+=head2 ListStoredQueries
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::ListStoredQueries>
+
+Returns: a L<Paws::Config::ListStoredQueriesResponse> instance
+
+Lists the stored queries for a single AWS account and a single AWS
+Region. The default is 100.
 
 
 =head2 ListTagsForResource
@@ -2505,13 +2958,27 @@ Creates and updates the configuration aggregator with the selected
 source accounts and regions. The source account can be individual
 account(s) or an organization.
 
+C<accountIds> that are passed will be replaced with existing accounts.
+If you want to add additional accounts into the aggregator, call
+C<DescribeAggregator> to get the previous accounts and then append new
+ones.
+
 AWS Config should be enabled in source accounts and regions you want to
 aggregate.
 
 If your source type is an organization, you must be signed in to the
-master account and all features must be enabled in your organization.
-AWS Config calls C<EnableAwsServiceAccess> API to enable integration
-between AWS Config and AWS Organizations.
+management account or a registered delegated administrator and all the
+features must be enabled in your organization. If the caller is a
+management account, AWS Config calls C<EnableAwsServiceAccess> API to
+enable integration between AWS Config and AWS Organizations. If the
+caller is a registered delegated administrator, AWS Config calls
+C<ListDelegatedAdministrators> API to verify whether the caller is a
+valid delegated administrator.
+
+To register a delegated administrator, see Register a Delegated
+Administrator
+(https://docs.aws.amazon.com/config/latest/developerguide/set-up-aggregator-cli.html#register-a-delegated-administrator-cli)
+in the AWS Config developer guide.
 
 
 =head2 PutConfigurationRecorder
@@ -2548,9 +3015,9 @@ types.
 
 =item ConformancePackName => Str
 
-=item DeliveryS3Bucket => Str
-
 =item [ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]]
+
+=item [DeliveryS3Bucket => Str]
 
 =item [DeliveryS3KeyPrefix => Str]
 
@@ -2571,8 +3038,7 @@ account and a region and across AWS Organization.
 
 This API creates a service linked role
 C<AWSServiceRoleForConfigConforms> in your account. The service linked
-role is created only when the role does not exist in your account. AWS
-Config verifies the existence of role with C<GetRole> action.
+role is created only when the role does not exist in your account.
 
 You must specify either the C<TemplateS3Uri> or the C<TemplateBody>
 parameter, but not both. If you provide both AWS Config uses the
@@ -2630,6 +3096,26 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
 
+=head2 PutExternalEvaluation
+
+=over
+
+=item ConfigRuleName => Str
+
+=item ExternalEvaluation => L<Paws::Config::ExternalEvaluation>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutExternalEvaluation>
+
+Returns: a L<Paws::Config::PutExternalEvaluationResponse> instance
+
+Add or updates the evaluations for process checks. This API checks if
+the rule is a process check when the name of the AWS Config rule is
+provided.
+
+
 =head2 PutOrganizationConfigRule
 
 =over
@@ -2651,27 +3137,40 @@ Returns: a L<Paws::Config::PutOrganizationConfigRuleResponse> instance
 
 Adds or updates organization config rule for your entire organization
 evaluating whether your AWS resources comply with your desired
-configurations. Only a master account can create or update an
-organization config rule.
+configurations.
+
+Only a master account and a delegated administrator can create or
+update an organization config rule. When calling this API with a
+delegated administrator, you must ensure AWS Organizations
+C<ListDelegatedAdministrator> permissions are added.
 
 This API enables organization service access through the
 C<EnableAWSServiceAccess> action and creates a service linked role
-C<AWSServiceRoleForConfigMultiAccountSetup> in the master account of
-your organization. The service linked role is created only when the
-role does not exist in the master account. AWS Config verifies the
-existence of role with C<GetRole> action.
+C<AWSServiceRoleForConfigMultiAccountSetup> in the master or delegated
+administrator account of your organization. The service linked role is
+created only when the role does not exist in the caller account. AWS
+Config verifies the existence of role with C<GetRole> action.
+
+To use this API with delegated administrator, register a delegated
+administrator by calling AWS Organization
+C<register-delegated-administrator> for
+C<config-multiaccountsetup.amazonaws.com>.
 
 You can use this action to create both custom AWS Config rules and AWS
 managed Config rules. If you are adding a new custom AWS Config rule,
-you must first create AWS Lambda function in the master account that
-the rule invokes to evaluate your resources. When you use the
-C<PutOrganizationConfigRule> action to add the rule to AWS Config, you
-must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
-the function. If you are adding an AWS managed Config rule, specify the
-rule's identifier for the C<RuleIdentifier> key.
+you must first create AWS Lambda function in the master account or a
+delegated administrator that the rule invokes to evaluate your
+resources. When you use the C<PutOrganizationConfigRule> action to add
+the rule to AWS Config, you must specify the Amazon Resource Name (ARN)
+that AWS Lambda assigns to the function. If you are adding an AWS
+managed Config rule, specify the rule's identifier for the
+C<RuleIdentifier> key.
 
 The maximum number of organization config rules that AWS Config
-supports is 150.
+supports is 150 and 3 delegated administrator per organization.
+
+Prerequisite: Ensure you call C<EnableAllFeatures> API to enable all
+features in an organization.
 
 Specify either C<OrganizationCustomRuleMetadata> or
 C<OrganizationManagedRuleMetadata>.
@@ -2681,11 +3180,11 @@ C<OrganizationManagedRuleMetadata>.
 
 =over
 
-=item DeliveryS3Bucket => Str
-
 =item OrganizationConformancePackName => Str
 
 =item [ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]]
+
+=item [DeliveryS3Bucket => Str]
 
 =item [DeliveryS3KeyPrefix => Str]
 
@@ -2705,24 +3204,34 @@ Returns: a L<Paws::Config::PutOrganizationConformancePackResponse> instance
 Deploys conformance packs across member accounts in an AWS
 Organization.
 
+Only a master account and a delegated administrator can call this API.
+When calling this API with a delegated administrator, you must ensure
+AWS Organizations C<ListDelegatedAdministrator> permissions are added.
+
 This API enables organization service access for
 C<config-multiaccountsetup.amazonaws.com> through the
 C<EnableAWSServiceAccess> action and creates a service linked role
-C<AWSServiceRoleForConfigMultiAccountSetup> in the master account of
-your organization. The service linked role is created only when the
-role does not exist in the master account. AWS Config verifies the
-existence of role with GetRole action.
+C<AWSServiceRoleForConfigMultiAccountSetup> in the master or delegated
+administrator account of your organization. The service linked role is
+created only when the role does not exist in the caller account. To use
+this API with delegated administrator, register a delegated
+administrator by calling AWS Organization C<register-delegate-admin>
+for C<config-multiaccountsetup.amazonaws.com>.
+
+Prerequisite: Ensure you call C<EnableAllFeatures> API to enable all
+features in an organization.
 
 You must specify either the C<TemplateS3Uri> or the C<TemplateBody>
 parameter, but not both. If you provide both AWS Config uses the
 C<TemplateS3Uri> parameter and ignores the C<TemplateBody> parameter.
 
 AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
-and UPDATE_IN_PROGRESS until the confomance pack is created or updated.
-You cannot update a conformance pack while it is in this state.
+and UPDATE_IN_PROGRESS until the conformance pack is created or
+updated. You cannot update a conformance pack while it is in this
+state.
 
-You can create 6 conformance packs with 25 AWS Config rules in each
-pack.
+You can create 50 conformance packs with 25 AWS Config rules in each
+pack and 3 delegated administrator per organization.
 
 
 =head2 PutRemediationConfigurations
@@ -2744,6 +3253,14 @@ C<RemediationConfiguration> object for the AWS Config rule. The AWS
 Config rule must already exist for you to add a remediation
 configuration. The target (SSM document) must exist and have
 permissions to use the target.
+
+If you make backward incompatible changes to the SSM document, you must
+call this again to ensure the remediations can run.
+
+This API does not support adding remediation configurations for
+service-linked AWS Config Rules such as Organization Config rules, the
+rules deployed by conformance packs, and rules deployed by AWS Security
+Hub.
 
 
 =head2 PutRemediationExceptions
@@ -2767,8 +3284,12 @@ Returns: a L<Paws::Config::PutRemediationExceptionsResponse> instance
 
 A remediation exception is when a specific resource is no longer
 considered for auto-remediation. This API adds a new exception or
-updates an exisiting exception for a specific resource with a specific
+updates an existing exception for a specific resource with a specific
 AWS Config rule.
+
+AWS Config generates a remediation exception when a problem occurs
+executing a remediation action to a specific resource. Remediation
+exceptions blocks auto-remediation until the exception is cleared.
 
 
 =head2 PutResourceConfig
@@ -2808,6 +3329,9 @@ When you call this API, AWS Config only stores configuration state of
 the resource provided in the request. This API does not change or
 remediate the configuration of the resource.
 
+Write-only schema properites are not recorded as part of the published
+configuration item.
+
 
 =head2 PutRetentionConfiguration
 
@@ -2831,6 +3355,59 @@ modifies the default object.
 
 Currently, AWS Config supports only one retention configuration per
 region in your account.
+
+
+=head2 PutStoredQuery
+
+=over
+
+=item StoredQuery => L<Paws::Config::StoredQuery>
+
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutStoredQuery>
+
+Returns: a L<Paws::Config::PutStoredQueryResponse> instance
+
+Saves a new query or updates an existing saved query. The C<QueryName>
+must be unique for a single AWS account and a single AWS Region. You
+can create upto 300 queries in a single AWS account and a single AWS
+Region.
+
+
+=head2 SelectAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item Expression => Str
+
+=item [Limit => Int]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::SelectAggregateResourceConfig>
+
+Returns: a L<Paws::Config::SelectAggregateResourceConfigResponse> instance
+
+Accepts a structured query language (SQL) SELECT command and an
+aggregator to query configuration state of AWS resources across
+multiple accounts and regions, performs the corresponding search, and
+returns resource configurations matching the properties.
+
+For more information about query components, see the B<Query
+Components>
+(https://docs.aws.amazon.com/config/latest/developerguide/query-components.html)
+section in the AWS Config Developer Guide.
 
 
 =head2 SelectResourceConfig
@@ -3043,6 +3620,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::DescribeAggregateComplianceByConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllAggregateComplianceByConformancePacks(sub { },ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::AggregateConformancePackComplianceFilters>, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllAggregateComplianceByConformancePacks(ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::AggregateConformancePackComplianceFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregateComplianceByConformancePacks, passing the object as the first parameter, and the string 'AggregateComplianceByConformancePacks' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeAggregateComplianceByConformancePacksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllAggregationAuthorizations(sub { },[Limit => Int, NextToken => Str])
 
 =head2 DescribeAllAggregationAuthorizations([Limit => Int, NextToken => Str])
@@ -3127,6 +3716,78 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllConformancePacks(sub { },[ConformancePackNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllConformancePacks([ConformancePackNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConformancePackDetails, passing the object as the first parameter, and the string 'ConformancePackDetails' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConformancePacksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConformancePackStatus(sub { },[ConformancePackNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllConformancePackStatus([ConformancePackNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConformancePackStatusDetails, passing the object as the first parameter, and the string 'ConformancePackStatusDetails' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConformancePackStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrganizationConfigRules(sub { },[Limit => Int, NextToken => Str, OrganizationConfigRuleNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllOrganizationConfigRules([Limit => Int, NextToken => Str, OrganizationConfigRuleNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationConfigRules, passing the object as the first parameter, and the string 'OrganizationConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeOrganizationConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrganizationConfigRuleStatuses(sub { },[Limit => Int, NextToken => Str, OrganizationConfigRuleNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllOrganizationConfigRuleStatuses([Limit => Int, NextToken => Str, OrganizationConfigRuleNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationConfigRuleStatuses, passing the object as the first parameter, and the string 'OrganizationConfigRuleStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeOrganizationConfigRuleStatusesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrganizationConformancePacks(sub { },[Limit => Int, NextToken => Str, OrganizationConformancePackNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllOrganizationConformancePacks([Limit => Int, NextToken => Str, OrganizationConformancePackNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationConformancePacks, passing the object as the first parameter, and the string 'OrganizationConformancePacks' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeOrganizationConformancePacksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrganizationConformancePackStatuses(sub { },[Limit => Int, NextToken => Str, OrganizationConformancePackNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllOrganizationConformancePackStatuses([Limit => Int, NextToken => Str, OrganizationConformancePackNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationConformancePackStatuses, passing the object as the first parameter, and the string 'OrganizationConformancePackStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeOrganizationConformancePackStatusesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllPendingAggregationRequests(sub { },[Limit => Int, NextToken => Str])
 
 =head2 DescribeAllPendingAggregationRequests([Limit => Int, NextToken => Str])
@@ -3199,6 +3860,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllConformancePackComplianceSummary(sub { },ConformancePackNames => ArrayRef[Str|Undef], [Limit => Int, NextToken => Str])
+
+=head2 GetAllConformancePackComplianceSummary(ConformancePackNames => ArrayRef[Str|Undef], [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConformancePackComplianceSummaryList, passing the object as the first parameter, and the string 'ConformancePackComplianceSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetConformancePackComplianceSummaryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllOrganizationConfigRuleDetailedStatus(sub { },OrganizationConfigRuleName => Str, [Filters => L<Paws::Config::StatusDetailFilters>, Limit => Int, NextToken => Str])
+
+=head2 GetAllOrganizationConfigRuleDetailedStatus(OrganizationConfigRuleName => Str, [Filters => L<Paws::Config::StatusDetailFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationConfigRuleDetailedStatus, passing the object as the first parameter, and the string 'OrganizationConfigRuleDetailedStatus' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetOrganizationConfigRuleDetailedStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllOrganizationConformancePackDetailedStatus(sub { },OrganizationConformancePackName => Str, [Filters => L<Paws::Config::OrganizationResourceDetailedStatusFilters>, Limit => Int, NextToken => Str])
+
+=head2 GetAllOrganizationConformancePackDetailedStatus(OrganizationConformancePackName => Str, [Filters => L<Paws::Config::OrganizationResourceDetailedStatusFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationConformancePackDetailedStatuses, passing the object as the first parameter, and the string 'OrganizationConformancePackDetailedStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetOrganizationConformancePackDetailedStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllResourceConfigHistory(sub { },ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
 
 =head2 GetAllResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
@@ -3233,6 +3930,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - resourceIdentifiers, passing the object as the first parameter, and the string 'resourceIdentifiers' as the second parameter 
 
 If not, it will return a a L<Paws::Config::ListDiscoveredResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::Config::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SelectAllAggregateResourceConfig(sub { },ConfigurationAggregatorName => Str, Expression => Str, [Limit => Int, MaxResults => Int, NextToken => Str])
+
+=head2 SelectAllAggregateResourceConfig(ConfigurationAggregatorName => Str, Expression => Str, [Limit => Int, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Results, passing the object as the first parameter, and the string 'Results' as the second parameter 
+
+If not, it will return a a L<Paws::Config::SelectAggregateResourceConfigResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SelectAllResourceConfig(sub { },Expression => Str, [Limit => Int, NextToken => Str])
+
+=head2 SelectAllResourceConfig(Expression => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Results, passing the object as the first parameter, and the string 'Results' as the second parameter 
+
+If not, it will return a a L<Paws::Config::SelectResourceConfigResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

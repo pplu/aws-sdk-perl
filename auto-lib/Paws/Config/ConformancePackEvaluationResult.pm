@@ -53,7 +53,7 @@ compliance.
 =head2 B<REQUIRED> ComplianceType => Str
 
 The compliance type. The allowed values are C<COMPLIANT> and
-C<NON_COMPLIANT>.
+C<NON_COMPLIANT>. C<INSUFFICIENT_DATA> is not supported.
 
 
 =head2 B<REQUIRED> ConfigRuleInvokedTime => Str

@@ -6,6 +6,7 @@ package Paws::Config::ConfigRuleEvaluationStatus;
   has ConfigRuleName => (is => 'ro', isa => 'Str');
   has FirstActivatedTime => (is => 'ro', isa => 'Str');
   has FirstEvaluationStarted => (is => 'ro', isa => 'Bool');
+  has LastDeactivatedTime => (is => 'ro', isa => 'Str');
   has LastErrorCode => (is => 'ro', isa => 'Str');
   has LastErrorMessage => (is => 'ro', isa => 'Str');
   has LastFailedEvaluationTime => (is => 'ro', isa => 'Str');
@@ -92,6 +93,11 @@ resources against the rule.
 
 =back
 
+
+
+=head2 LastDeactivatedTime => Str
+
+The time that you last turned off the AWS Config rule.
 
 
 =head2 LastErrorCode => Str

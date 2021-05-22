@@ -3,6 +3,7 @@ package Paws::Config::ConformancePackRuleCompliance;
   use Moose;
   has ComplianceType => (is => 'ro', isa => 'Str');
   has ConfigRuleName => (is => 'ro', isa => 'Str');
+  has Controls => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::ConformancePackRuleCompliance object:
 
-  $service_obj->Method(Att1 => { ComplianceType => $value, ..., ConfigRuleName => $value  });
+  $service_obj->Method(Att1 => { ComplianceType => $value, ..., Controls => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,14 +44,23 @@ compliance types.
 
 =head2 ComplianceType => Str
 
-Compliance of the AWS Config rule
+Compliance of the AWS Config rule.
 
-The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
+The allowed values are C<COMPLIANT>, C<NON_COMPLIANT>, and
+C<INSUFFICIENT_DATA>.
 
 
 =head2 ConfigRuleName => Str
 
 Name of the config rule.
+
+
+=head2 Controls => ArrayRef[Str|Undef]
+
+Controls for the conformance pack. A control is a process to prevent or
+detect problems while meeting objectives. A control can align with a
+specific compliance regime or map to internal controls defined by an
+organization.
 
 
 

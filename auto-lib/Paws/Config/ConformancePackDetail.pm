@@ -6,7 +6,7 @@ package Paws::Config::ConformancePackDetail;
   has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
   has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
   has CreatedBy => (is => 'ro', isa => 'Str');
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryS3Bucket => (is => 'ro', isa => 'Str');
   has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
   has LastUpdateRequestedTime => (is => 'ro', isa => 'Str');
 
@@ -72,16 +72,18 @@ Name of the conformance pack.
 AWS service that created the conformance pack.
 
 
-=head2 B<REQUIRED> DeliveryS3Bucket => Str
+=head2 DeliveryS3Bucket => Str
 
-Conformance pack template that is used to create a pack. The delivery
-bucket name should start with awsconfigconforms. For example:
-"Resource": "arn:aws:s3:::your_bucket_name/*".
+Amazon S3 bucket where AWS Config stores conformance pack templates.
+
+This field is optional.
 
 
 =head2 DeliveryS3KeyPrefix => Str
 
 The prefix for the Amazon S3 bucket.
+
+This field is optional.
 
 
 =head2 LastUpdateRequestedTime => Str

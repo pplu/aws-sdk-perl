@@ -152,6 +152,8 @@ value. Specify a scope to constrain the resources that can trigger an
 evaluation for the rule. If you do not specify a scope, evaluations are
 triggered when any resource in the recording group changes.
 
+The scope can be empty.
+
 
 =head2 B<REQUIRED> Source => L<Paws::Config::Source>
 
