@@ -30,12 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.pricing = Paws->service('Pricing');
-    my $DescribeServicesResponse = $api . pricing->DescribeServices(
-      FormatVersion => 'MyString',    # OPTIONAL
-      MaxResults    => 1,             # OPTIONAL
-      NextToken     => 'MyString',    # OPTIONAL
-      ServiceCode   => 'MyString',    # OPTIONAL
-    );
+    # To retrieve a list of services and service codes
+    my $DescribeServicesResponse = $api
+      . pricing->DescribeServices(
+      'FormatVersion' => 'aws_v1',
+      'MaxResults'    => 1,
+      'ServiceCode'   => 'AmazonEC2'
+      );
 
     # Results:
     my $FormatVersion = $DescribeServicesResponse->FormatVersion;

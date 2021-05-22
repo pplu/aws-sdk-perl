@@ -221,9 +221,9 @@ Returns: a L<Paws::Pricing::GetAttributeValuesResponse> instance
 Returns a list of attribute values. Attibutes are similar to the
 details in a Price List API offer file. For a list of available
 attributes, see Offer File Definitions
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs)
 in the AWS Billing and Cost Management User Guide
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
 
 
 =head2 GetProducts
