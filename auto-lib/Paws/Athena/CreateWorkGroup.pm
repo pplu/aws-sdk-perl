@@ -33,8 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateWorkGroupOutput = $athena->CreateWorkGroup(
       Name          => 'MyWorkGroupName',
       Configuration => {
-        BytesScannedCutoffPerQuery      => 1,    # min: 10000000; OPTIONAL
-        EnforceWorkGroupConfiguration   => 1,    # OPTIONAL
+        BytesScannedCutoffPerQuery    => 1,    # min: 10000000; OPTIONAL
+        EnforceWorkGroupConfiguration => 1,    # OPTIONAL
+        EngineVersion                 => {
+          EffectiveEngineVersion => 'MyNameString', # min: 1, max: 128; OPTIONAL
+          SelectedEngineVersion  => 'MyNameString', # min: 1, max: 128; OPTIONAL
+        },    # OPTIONAL
         PublishCloudWatchMetricsEnabled => 1,    # OPTIONAL
         RequesterPaysEnabled            => 1,    # OPTIONAL
         ResultConfiguration             => {
@@ -89,8 +93,7 @@ The workgroup name.
 
 =head2 Tags => ArrayRef[L<Paws::Athena::Tag>]
 
-One or more tags, separated by commas, that you want to attach to the
-workgroup as you create it.
+A list of comma separated tags to add to the workgroup that is created.
 
 
 

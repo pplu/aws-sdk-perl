@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ath
 =head2 MaxResults => Int
 
 The maximum number of results to be returned per request that lists the
-tags for the workgroup resource.
+tags for the resource.
 
 
 
@@ -58,13 +58,13 @@ tags for the workgroup resource.
 
 The token for the next set of results, or null if there are no
 additional results for this request, where the request lists the tags
-for the workgroup resource with the specified ARN.
+for the resource with the specified ARN.
 
 
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-Lists the tags for the workgroup resource with the specified ARN.
+Lists the tags for the resource with the specified ARN.
 
 
 

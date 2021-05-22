@@ -42,7 +42,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ath
 =head2 RecursiveDeleteOption => Bool
 
 The option to delete the workgroup and its contents even if the
-workgroup contains any named queries.
+workgroup contains any named queries or query executions.
 
 
 

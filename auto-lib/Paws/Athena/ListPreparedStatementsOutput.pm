@@ -1,8 +1,8 @@
 
-package Paws::Athena::ListWorkGroupsOutput;
+package Paws::Athena::ListPreparedStatementsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has WorkGroups => (is => 'ro', isa => 'ArrayRef[Paws::Athena::WorkGroupSummary]');
+  has PreparedStatements => (is => 'ro', isa => 'ArrayRef[Paws::Athena::PreparedStatementSummary]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -10,7 +10,7 @@ package Paws::Athena::ListWorkGroupsOutput;
 
 =head1 NAME
 
-Paws::Athena::ListWorkGroupsOutput
+Paws::Athena::ListPreparedStatementsOutput
 
 =head1 ATTRIBUTES
 
@@ -23,10 +23,9 @@ next set of pages, pass in the C<NextToken> from the response object of
 the previous page call.
 
 
-=head2 WorkGroups => ArrayRef[L<Paws::Athena::WorkGroupSummary>]
+=head2 PreparedStatements => ArrayRef[L<Paws::Athena::PreparedStatementSummary>]
 
-A list of WorkGroupSummary objects that include the names,
-descriptions, creation times, and states for each workgroup.
+The list of prepared statements for the workgroup.
 
 
 =head2 _request_id => Str

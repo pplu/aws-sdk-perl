@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Athena::Res
 =head1 DESCRIPTION
 
 The metadata and rows that comprise a query result set. The metadata
-describes the column structure and data types.
+describes the column structure and data types. To return a C<ResultSet>
+object, use GetQueryResults.
 
 =head1 ATTRIBUTES
 
