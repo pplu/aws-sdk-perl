@@ -3,6 +3,7 @@ package Paws::Organizations::CreateOrganizationalUnit;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ParentId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -28,11 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+   # To create a new organization unit
+   # The following example shows how to create an OU that is named AccountingOU.
+   # The new OU is directly under the root.:
+
     my $CreateOrganizationalUnitResponse =
       $organizations->CreateOrganizationalUnit(
-      Name     => 'MyOrganizationalUnitName',
-      ParentId => 'MyParentId',
-
+      'Name'     => 'AccountingOU',
+      'ParentId' => 'r-examplerootid111'
       );
 
     # Results:
@@ -77,6 +81,22 @@ to 32 additional lowercase letters or digits.
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Organizations::Tag>]
+
+A list of tags that you want to attach to the newly created OU. For
+each tag in the list, you must specify both a tag key and a value. You
+can set the value to an empty string, but you can't set it to C<null>.
+For more information about tagging, see Tagging AWS Organizations
+resources
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
+in the AWS Organizations User Guide.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags for an OU, then the entire request fails and the OU is not
+created.
 
 
 

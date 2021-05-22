@@ -1,13 +1,14 @@
 
-package Paws::Organizations::ListRoots;
+package Paws::Organizations::ListDelegatedServicesForAccount;
   use Moose;
+  has AccountId => (is => 'ro', isa => 'Str', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRoots');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Organizations::ListRootsResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDelegatedServicesForAccount');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Organizations::ListDelegatedServicesForAccountResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -15,33 +16,44 @@ package Paws::Organizations::ListRoots;
 
 =head1 NAME
 
-Paws::Organizations::ListRoots - Arguments for method ListRoots on L<Paws::Organizations>
+Paws::Organizations::ListDelegatedServicesForAccount - Arguments for method ListDelegatedServicesForAccount on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListRoots on the
+This class represents the parameters used for calling the method ListDelegatedServicesForAccount on the
 L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
-as arguments to method ListRoots.
+as arguments to method ListDelegatedServicesForAccount.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRoots.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDelegatedServicesForAccount.
 
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-   # To retrieve a list of roots in the organization
-   # The following example shows how to get the list of the roots in the current
-   # organization:/n/n
-    my $ListRootsResponse = $organizations->ListRoots();
+    my $ListDelegatedServicesForAccountResponse =
+      $organizations->ListDelegatedServicesForAccount(
+      AccountId  => 'MyAccountId',
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      );
 
     # Results:
-    my $Roots = $ListRootsResponse->Roots;
+    my $DelegatedServices =
+      $ListDelegatedServicesForAccountResponse->DelegatedServices;
+    my $NextToken = $ListDelegatedServicesForAccountResponse->NextToken;
 
-    # Returns a L<Paws::Organizations::ListRootsResponse> object.
+# Returns a L<Paws::Organizations::ListDelegatedServicesForAccountResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/ListRoots>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/ListDelegatedServicesForAccount>
 
 =head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> AccountId => Str
+
+The account ID number of a delegated administrator account in the
+organization.
+
 
 
 =head2 MaxResults => Int
@@ -72,7 +84,7 @@ the output should continue from.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListRoots in L<Paws::Organizations>
+This class forms part of L<Paws>, documenting arguments for method ListDelegatedServicesForAccount in L<Paws::Organizations>
 
 =head1 BUGS and CONTRIBUTIONS
 

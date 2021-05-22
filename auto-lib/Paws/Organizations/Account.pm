@@ -51,8 +51,8 @@ The Amazon Resource Name (ARN) of the account.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies)
+in the I<AWS Service Authorization Reference>.
 
 
 =head2 Email => Str

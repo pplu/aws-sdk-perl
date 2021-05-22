@@ -27,10 +27,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+   # To get information about a handshake
+   # The following example shows you how to request details about a handshake.
+   # The handshake ID comes either from the original call to
+   # "InviteAccountToOrganization", or from a call to "ListHandshakesForAccount"
+   # or "ListHandshakesForOrganization":
     my $DescribeHandshakeResponse = $organizations->DescribeHandshake(
-      HandshakeId => 'MyHandshakeId',
-
-    );
+      'HandshakeId' => 'h-examplehandshakeid111' );
 
     # Results:
     my $Handshake = $DescribeHandshakeResponse->Handshake;

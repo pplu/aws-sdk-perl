@@ -28,11 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+    # To detach a policy from a root, OU, or account
+    # The following example shows how to detach a policy from an OU:/n/n
     $organizations->DetachPolicy(
-      PolicyId => 'MyPolicyId',
-      TargetId => 'MyPolicyTargetId',
-
+      'PolicyId' => 'p-examplepolicyid111',
+      'TargetId' => 'ou-examplerootid111-exampleouid111'
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/DetachPolicy>

@@ -50,13 +50,13 @@ The Amazon Resource Name (ARN) of the policy.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies)
+in the I<AWS Service Authorization Reference>.
 
 
 =head2 AwsManaged => Bool
 
-A Boolean value that indicates whether the specified policy is an AWS
+A boolean value that indicates whether the specified policy is an AWS
 managed policy. If true, then you can attach the policy to roots, OUs,
 or accounts, but you cannot edit it.
 
@@ -71,8 +71,8 @@ The description of the policy.
 The unique identifier (ID) of the policy.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
-digits.
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
+letters, digits, or the underscore character (_).
 
 
 =head2 Name => Str

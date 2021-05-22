@@ -28,10 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+    # To enable a policy type in a root
+    # The following example shows how to enable the service control policy (SCP)
+    # policy type in a root. The output shows a root object with a PolicyTypes
+    # response element showing that SCPs are now enabled:/n/n
     my $EnablePolicyTypeResponse = $organizations->EnablePolicyType(
-      PolicyType => 'SERVICE_CONTROL_POLICY',
-      RootId     => 'MyRootId',
-
+      'PolicyType' => 'SERVICE_CONTROL_POLICY',
+      'RootId'     => 'r-examplerootid111'
     );
 
     # Results:
@@ -47,9 +50,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 =head2 B<REQUIRED> PolicyType => Str
 
-The policy type that you want to enable.
+The policy type that you want to enable. You can specify one of the
+following values:
 
-Valid values are: C<"SERVICE_CONTROL_POLICY">, C<"TAG_POLICY">
+=over
+
+=item *
+
+AISERVICES_OPT_OUT_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+
+=item *
+
+BACKUP_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+
+=item *
+
+SERVICE_CONTROL_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+
+=item *
+
+TAG_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+
+=back
+
+
+Valid values are: C<"SERVICE_CONTROL_POLICY">, C<"TAG_POLICY">, C<"BACKUP_POLICY">, C<"AISERVICES_OPT_OUT_POLICY">
 
 =head2 B<REQUIRED> RootId => Str
 

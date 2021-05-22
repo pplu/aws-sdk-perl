@@ -27,11 +27,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+    # To get information about an organizational unit
+    # The following example shows how to request details about an OU:/n/n
     my $DescribeOrganizationalUnitResponse =
       $organizations->DescribeOrganizationalUnit(
-      OrganizationalUnitId => 'MyOrganizationalUnitId',
-
-      );
+      'OrganizationalUnitId' => 'ou-examplerootid111-exampleouid111' );
 
     # Results:
     my $OrganizationalUnit =

@@ -27,10 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    my $DescribePolicyResponse = $organizations->DescribePolicy(
-      PolicyId => 'MyPolicyId',
-
-    );
+    # To get information about a policy
+    # The following example shows how to request information about a policy:/n/n
+    my $DescribePolicyResponse =
+      $organizations->DescribePolicy( 'PolicyId' => 'p-examplepolicyid111' );
 
     # Results:
     my $Policy = $DescribePolicyResponse->Policy;

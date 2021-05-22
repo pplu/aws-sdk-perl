@@ -27,10 +27,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+    # To decline a handshake sent from the master account
+    # The following example shows Susan declining an invitation to join Bill's
+    # organization. The DeclineHandshake operation returns a handshake object,
+    # showing that the state is now DECLINED:
     my $DeclineHandshakeResponse = $organizations->DeclineHandshake(
-      HandshakeId => 'MyHandshakeId',
-
-    );
+      'HandshakeId' => 'h-examplehandshakeid111' );
 
     # Results:
     my $Handshake = $DeclineHandshakeResponse->Handshake;

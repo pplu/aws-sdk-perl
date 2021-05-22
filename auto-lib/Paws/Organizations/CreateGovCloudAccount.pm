@@ -5,6 +5,7 @@ package Paws::Organizations::CreateGovCloudAccount;
   has Email => (is => 'ro', isa => 'Str', required => 1);
   has IamUserAccessToBilling => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Email                  => 'MyEmail',
       IamUserAccessToBilling => 'ALLOW',           # OPTIONAL
       RoleName               => 'MyRoleName',      # OPTIONAL
+      Tags                   => [
+        {
+          Key   => 'MyTagKey',                     # min: 1, max: 128
+          Value => 'MyTagValue',                   # max: 256
+
+        },
+        ...
+      ],                                           # OPTIONAL
     );
 
     # Results:
@@ -64,8 +73,8 @@ to complete account creation. You can't access the root user of the
 account or remove an account that was created with an invalid email
 address. Like all request parameters for C<CreateGovCloudAccount>, the
 request for the email address for the AWS GovCloud (US) account
-originates from the commercial Region. It does not come from the AWS
-GovCloud (US) Region.
+originates from the commercial Region, not from the AWS GovCloud (US)
+Region.
 
 
 
@@ -92,9 +101,9 @@ Valid values are: C<"ALLOW">, C<"DENY">
 
 The name of an IAM role that AWS Organizations automatically
 preconfigures in the new member accounts in both the AWS GovCloud (US)
-Region and in the commercial Region. This role trusts the master
-account, allowing users in the master account to assume the role, as
-permitted by the master account administrator. The role has
+Region and in the commercial Region. This role trusts the management
+account, allowing users in the management account to assume the role,
+as permitted by the management account administrator. The role has
 administrator permissions in the new member account.
 
 If you don't specify this parameter, the role name defaults to
@@ -104,8 +113,8 @@ For more information about how to use this role to access the member
 account, see Accessing and Administering the Member Accounts in Your
 Organization
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-in the I<AWS Organizations User Guide>. See also steps 2 and 3 in
-Tutorial: Delegate Access Across AWS Accounts Using IAM Roles
+in the I<AWS Organizations User Guide> and steps 2 and 3 in Tutorial:
+Delegate Access Across AWS Accounts Using IAM Roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 in the I<IAM User Guide.>
 
@@ -113,6 +122,27 @@ The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter. The pattern can include uppercase letters,
 lowercase letters, digits with no spaces, and any of the following
 characters: =,.@-
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Organizations::Tag>]
+
+A list of tags that you want to attach to the newly created account.
+These tags are attached to the commercial account associated with the
+GovCloud account, and not to the GovCloud account itself. To add tags
+to the actual GovCloud account, call the TagResource operation in the
+GovCloud region after the new GovCloud account exists.
+
+For each tag in the list, you must specify both a tag key and a value.
+You can set the value to an empty string, but you can't set it to
+C<null>. For more information about tagging, see Tagging AWS
+Organizations resources
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
+in the AWS Organizations User Guide.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags for an account, then the entire request fails and the account
+is not created.
 
 
 

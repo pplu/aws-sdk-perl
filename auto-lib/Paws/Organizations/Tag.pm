@@ -34,8 +34,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 
 =head1 DESCRIPTION
 
-A custom key-value pair associated with a resource such as an account
-within your organization.
+A custom key-value pair associated with a resource within your
+organization.
+
+You can attach tags to any of the following organization resources.
+
+=over
+
+=item *
+
+AWS account
+
+=item *
+
+Organizational unit (OU)
+
+=item *
+
+Organization root
+
+=item *
+
+Policy
+
+=back
+
 
 =head1 ATTRIBUTES
 

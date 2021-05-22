@@ -1,8 +1,8 @@
 
-package Paws::Organizations::ListTagsForResourceResponse;
+package Paws::Organizations::ListDelegatedAdministratorsResponse;
   use Moose;
+  has DelegatedAdministrators => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::DelegatedAdministrator]');
   has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Tag]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -10,9 +10,14 @@ package Paws::Organizations::ListTagsForResourceResponse;
 
 =head1 NAME
 
-Paws::Organizations::ListTagsForResourceResponse
+Paws::Organizations::ListDelegatedAdministratorsResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 DelegatedAdministrators => ArrayRef[L<Paws::Organizations::DelegatedAdministrator>]
+
+The list of delegated administrators in your organization.
 
 
 =head2 NextToken => Str
@@ -22,11 +27,6 @@ the current response. Use this value in the C<NextToken> request
 parameter in a subsequent call to the operation to get the next part of
 the output. You should repeat this until the C<NextToken> response
 element comes back as C<null>.
-
-
-=head2 Tags => ArrayRef[L<Paws::Organizations::Tag>]
-
-The tags that are assigned to the resource.
 
 
 =head2 _request_id => Str

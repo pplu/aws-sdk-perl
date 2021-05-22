@@ -47,15 +47,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 =head2 B<REQUIRED> PolicyType => Str
 
-The type of policy that you want information about.
+The type of policy that you want information about. You can specify one
+of the following values:
 
-Valid values are: C<"TAG_POLICY">
+=over
+
+=item *
+
+AISERVICES_OPT_OUT_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+
+=item *
+
+BACKUP_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+
+=item *
+
+TAG_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+
+=back
+
+
+Valid values are: C<"TAG_POLICY">, C<"BACKUP_POLICY">, C<"AISERVICES_OPT_OUT_POLICY">
 
 =head2 TargetId => Str
 
-When you're signed in as the master account, specify the ID of the
+When you're signed in as the management account, specify the ID of the
 account that you want details about. Specifying an organization root or
-OU as the target is not supported.
+organizational unit (OU) as the target is not supported.
 
 
 

@@ -27,10 +27,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+   # To accept a handshake from another account
+   # Bill is the owner of an organization, and he invites Juan's account
+   # (222222222222) to join his organization. The following example shows Juan's
+   # account accepting the handshake and thus agreeing to the invitation.
     my $AcceptHandshakeResponse = $organizations->AcceptHandshake(
-      HandshakeId => 'MyHandshakeId',
-
-    );
+      'HandshakeId' => 'h-examplehandshakeid111' );
 
     # Results:
     my $Handshake = $AcceptHandshakeResponse->Handshake;

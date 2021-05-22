@@ -44,7 +44,7 @@ Identifies a participant in a handshake.
 The unique identifier (ID) for the party.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
-string requires "h-" followed by from 8 to 32 lower-case letters or
+string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.
 
 

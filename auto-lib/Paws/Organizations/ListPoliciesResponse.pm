@@ -17,11 +17,11 @@ Paws::Organizations::ListPoliciesResponse
 
 =head2 NextToken => Str
 
-If present, this value indicates that there is more output available
-than is included in the current response. Use this value in the
-C<NextToken> request parameter in a subsequent call to the operation to
-get the next part of the output. You should repeat this until the
-C<NextToken> response element comes back as C<null>.
+If present, indicates that more output is available than is included in
+the current response. Use this value in the C<NextToken> request
+parameter in a subsequent call to the operation to get the next part of
+the output. You should repeat this until the C<NextToken> response
+element comes back as C<null>.
 
 
 =head2 Policies => ArrayRef[L<Paws::Organizations::PolicySummary>]

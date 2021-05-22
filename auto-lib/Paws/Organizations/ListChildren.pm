@@ -30,16 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+# To retrieve a list of all of the child accounts and OUs in a parent root or OU
+# The following example shows how to request a list of the child OUs in a
+# parent root or OU:/n/n
     my $ListChildrenResponse = $organizations->ListChildren(
-      ChildType  => 'ACCOUNT',
-      ParentId   => 'MyParentId',
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      'ChildType' => 'ORGANIZATIONAL_UNIT',
+      'ParentId'  => 'ou-examplerootid111-exampleouid111'
     );
 
     # Results:
-    my $Children  = $ListChildrenResponse->Children;
-    my $NextToken = $ListChildrenResponse->NextToken;
+    my $Children = $ListChildrenResponse->Children;
 
     # Returns a L<Paws::Organizations::ListChildrenResponse> object.
 
@@ -57,25 +57,26 @@ Valid values are: C<"ACCOUNT">, C<"ORGANIZATIONAL_UNIT">
 
 =head2 MaxResults => Int
 
-(Optional) Use this to limit the number of results you want included
-per page in the response. If you do not include this parameter, it
-defaults to a value that is specific to the operation. If additional
-items exist beyond the maximum you specify, the C<NextToken> response
-element is present and has a value (is not null). Include that value as
-the C<NextToken> request parameter in the next call to the operation to
-get the next part of the results. Note that Organizations might return
-fewer results than the maximum even when there are more results
-available. You should check C<NextToken> after every operation to
-ensure that you receive all of the results.
+The total number of results that you want included on each page of the
+response. If you do not include this parameter, it defaults to a value
+that is specific to the operation. If additional items exist beyond the
+maximum you specify, the C<NextToken> response element is present and
+has a value (is not null). Include that value as the C<NextToken>
+request parameter in the next call to the operation to get the next
+part of the results. Note that Organizations might return fewer results
+than the maximum even when there are more results available. You should
+check C<NextToken> after every operation to ensure that you receive all
+of the results.
 
 
 
 =head2 NextToken => Str
 
-Use this parameter if you receive a C<NextToken> response in a previous
-request that indicates that there is more output available. Set it to
-the value of the previous call's C<NextToken> response to indicate
-where the output should continue from.
+The parameter for receiving additional results if you receive a
+C<NextToken> response in a previous request. A C<NextToken> response
+indicates that more output is available. Set this parameter to the
+value of the previous call's C<NextToken> response to indicate where
+the output should continue from.
 
 
 
