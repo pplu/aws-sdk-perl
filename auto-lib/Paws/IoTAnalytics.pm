@@ -432,6 +432,8 @@ pipeline.
 
 =item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
 
+=item [LateDataRules => ArrayRef[L<Paws::IoTAnalytics::LateDataRule>]]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
@@ -447,12 +449,12 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDataset>
 
 Returns: a L<Paws::IoTAnalytics::CreateDatasetResponse> instance
 
-Creates a data set. A data set stores data retrieved from a data store
-by applying a "queryAction" (a SQL query) or a "containerAction"
+Creates a dataset. A dataset stores data retrieved from a data store by
+applying a C<queryAction> (a SQL query) or a C<containerAction>
 (executing a containerized application). This operation creates the
-skeleton of a data set. The data set can be populated manually by
-calling "CreateDatasetContent" or automatically according to a
-"trigger" you specify.
+skeleton of a dataset. The dataset can be populated manually by calling
+C<CreateDatasetContent> or automatically according to a trigger you
+specify.
 
 
 =head2 CreateDatasetContent
@@ -461,6 +463,8 @@ calling "CreateDatasetContent" or automatically according to a
 
 =item DatasetName => Str
 
+=item [VersionId => Str]
+
 
 =back
 
@@ -468,8 +472,8 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatasetCont
 
 Returns: a L<Paws::IoTAnalytics::CreateDatasetContentResponse> instance
 
-Creates the content of a data set by applying a "queryAction" (a SQL
-query) or a "containerAction" (executing a containerized application).
+Creates the content of a data set by applying a C<queryAction> (a SQL
+query) or a C<containerAction> (executing a containerized application).
 
 
 =head2 CreateDatastore
@@ -479,6 +483,8 @@ query) or a "containerAction" (executing a containerized application).
 =item DatastoreName => Str
 
 =item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
+
+=item [FileFormatConfiguration => L<Paws::IoTAnalytics::FileFormatConfiguration>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
@@ -547,10 +553,10 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::DeleteDataset>
 
 Returns: nothing
 
-Deletes the specified data set.
+Deletes the specified dataset.
 
-You do not have to delete the content of the data set before you
-perform this operation.
+You do not have to delete the content of the dataset before you perform
+this operation.
 
 
 =head2 DeleteDatasetContent
@@ -568,7 +574,7 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::DeleteDatasetCont
 
 Returns: nothing
 
-Deletes the content of the specified data set.
+Deletes the content of the specified dataset.
 
 
 =head2 DeleteDatastore
@@ -634,7 +640,7 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::DescribeDataset>
 
 Returns: a L<Paws::IoTAnalytics::DescribeDatasetResponse> instance
 
-Retrieves information about a data set.
+Retrieves information about a dataset.
 
 
 =head2 DescribeDatastore
@@ -701,7 +707,7 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::GetDatasetContent
 
 Returns: a L<Paws::IoTAnalytics::GetDatasetContentResponse> instance
 
-Retrieves the contents of a data set as pre-signed URIs.
+Retrieves the contents of a data set as presigned URIs.
 
 
 =head2 ListChannels
@@ -813,7 +819,7 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::ListTagsForResour
 
 Returns: a L<Paws::IoTAnalytics::ListTagsForResourceResponse> instance
 
-Lists the tags (metadata) which you have assigned to the resource.
+Lists the tags (metadata) that you have assigned to the resource.
 
 
 =head2 PutLoggingOptions
@@ -831,11 +837,11 @@ Returns: nothing
 
 Sets or updates the AWS IoT Analytics logging options.
 
-Note that if you update the value of any C<loggingOptions> field, it
-takes up to one minute for the change to take effect. Also, if you
-change the policy attached to the role you specified in the roleArn
-field (for example, to correct an invalid policy) it takes up to 5
-minutes for that change to take effect.
+If you update the value of any C<loggingOptions> field, it takes up to
+one minute for the change to take effect. Also, if you change the
+policy attached to the role you specified in the C<roleArn> field (for
+example, to correct an invalid policy), it takes up to five minutes for
+that change to take effect.
 
 
 =head2 RunPipelineActivity
@@ -886,6 +892,8 @@ during the specified timeframe. Up to 10 messages can be retrieved.
 
 =item PipelineName => Str
 
+=item [ChannelMessages => L<Paws::IoTAnalytics::ChannelMessages>]
+
 =item [EndTime => Str]
 
 =item [StartTime => Str]
@@ -916,7 +924,7 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::TagResource>
 Returns: a L<Paws::IoTAnalytics::TagResourceResponse> instance
 
 Adds to or modifies the tags of the given resource. Tags are metadata
-which can be used to manage a resource.
+that can be used to manage a resource.
 
 
 =head2 UntagResource
@@ -967,6 +975,8 @@ Updates the settings of a channel.
 
 =item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
 
+=item [LateDataRules => ArrayRef[L<Paws::IoTAnalytics::LateDataRule>]]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
@@ -990,6 +1000,8 @@ Updates the settings of a data set.
 =item DatastoreName => Str
 
 =item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
+
+=item [FileFormatConfiguration => L<Paws::IoTAnalytics::FileFormatConfiguration>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Information about the action which automatically creates the data set's
+Information about the action that automatically creates the dataset's
 contents.
 
 =head1 ATTRIBUTES
@@ -42,13 +42,13 @@ contents.
 
 =head2 ActionName => Str
 
-The name of the action which automatically creates the data set's
+The name of the action that automatically creates the dataset's
 contents.
 
 
 =head2 ActionType => Str
 
-The type of action by which the data set's contents are automatically
+The type of action by which the dataset's contents are automatically
 created.
 
 

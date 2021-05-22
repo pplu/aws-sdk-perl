@@ -41,7 +41,7 @@ The SQL query to modify the message.
 
 =head2 Filters => ArrayRef[L<Paws::IoTAnalytics::QueryFilter>]
 
-Pre-filters applied to message data.
+Prefilters applied to message data.
 
 
 =head2 B<REQUIRED> SqlQuery => Str

@@ -17,7 +17,7 @@ Paws::IoTAnalytics::ListTagsForResourceResponse
 
 =head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
 
-The tags (metadata) which you have assigned to the resource.
+The tags (metadata) that you have assigned to the resource.
 
 
 =head2 _request_id => Str

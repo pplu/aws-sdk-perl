@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-A "DatasetAction" object that specifies how data set contents are
+A C<DatasetAction> object that specifies how data set contents are
 automatically created.
 
 =head1 ATTRIBUTES
@@ -49,14 +49,14 @@ automatically created.
 
 =head2 ContainerAction => L<Paws::IoTAnalytics::ContainerDatasetAction>
 
-Information which allows the system to run a containerized application
-in order to create the data set contents. The application must be in a
-Docker container along with any needed support libraries.
+Information that allows the system to run a containerized application
+to create the dataset contents. The application must be in a Docker
+container along with any required support libraries.
 
 
 =head2 QueryAction => L<Paws::IoTAnalytics::SqlQueryDatasetAction>
 
-An "SqlQueryDatasetAction" object that uses an SQL query to
+An C<SqlQueryDatasetAction> object that uses an SQL query to
 automatically create data set contents.
 
 

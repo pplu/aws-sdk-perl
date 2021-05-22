@@ -19,17 +19,17 @@ Paws::IoTAnalytics::CreateDatasetResponse
 
 =head2 DatasetArn => Str
 
-The ARN of the data set.
+The ARN of the dataset.
 
 
 =head2 DatasetName => Str
 
-The name of the data set.
+The name of the dataset.
 
 
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
-How long, in days, data set contents are kept for the data set.
+How long, in days, dataset contents are kept for the dataset.
 
 
 =head2 _request_id => Str

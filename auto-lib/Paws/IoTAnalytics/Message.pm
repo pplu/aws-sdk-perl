@@ -41,15 +41,15 @@ Information about a message.
 
 =head2 B<REQUIRED> MessageId => Str
 
-The ID you wish to assign to the message. Each "messageId" must be
+The ID you want to assign to the message. Each C<messageId> must be
 unique within each batch sent.
 
 
 =head2 B<REQUIRED> Payload => Str
 
-The payload of the message. This may be a JSON string or a
-Base64-encoded string representing binary data (in which case you must
-decode it by means of a pipeline activity).
+The payload of the message. This can be a JSON string or a
+base64-encoded string representing binary data, in which case you must
+decode it by means of a pipeline activity.
 
 
 

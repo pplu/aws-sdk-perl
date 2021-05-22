@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Information needed to run the "containerAction" to produce data set
+Information required to run the C<containerAction> to produce dataset
 contents.
 
 =head1 ATTRIBUTES
@@ -44,31 +44,31 @@ contents.
 
 =head2 B<REQUIRED> ExecutionRoleArn => Str
 
-The ARN of the role which gives permission to the system to access
-needed resources in order to run the "containerAction". This includes,
-at minimum, permission to retrieve the data set contents which are the
-input to the containerized application.
+The ARN of the role that gives permission to the system to access
+required resources to run the C<containerAction>. This includes, at
+minimum, permission to retrieve the dataset contents that are the input
+to the containerized application.
 
 
 =head2 B<REQUIRED> Image => Str
 
 The ARN of the Docker container stored in your account. The Docker
-container contains an application and needed support libraries and is
-used to generate data set contents.
+container contains an application and required support libraries and is
+used to generate dataset contents.
 
 
 =head2 B<REQUIRED> ResourceConfiguration => L<Paws::IoTAnalytics::ResourceConfiguration>
 
-Configuration of the resource which executes the "containerAction".
+Configuration of the resource that executes the C<containerAction>.
 
 
 =head2 Variables => ArrayRef[L<Paws::IoTAnalytics::Variable>]
 
-The values of variables used within the context of the execution of the
+The values of variables used in the context of the execution of the
 containerized application (basically, parameters passed to the
 application). Each variable must have a name and a value given by one
-of "stringValue", "datasetContentVersionValue", or
-"outputFileUriValue".
+of C<stringValue>, C<datasetContentVersionValue>, or
+C<outputFileUriValue>.
 
 
 

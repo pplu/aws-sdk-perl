@@ -18,7 +18,7 @@ Paws::IoTAnalytics::ListChannelsResponse
 
 =head2 ChannelSummaries => ArrayRef[L<Paws::IoTAnalytics::ChannelSummary>]
 
-A list of "ChannelSummary" objects.
+A list of C<ChannelSummary> objects.
 
 
 =head2 NextToken => Str

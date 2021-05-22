@@ -47,7 +47,7 @@ The time the pipeline reprocessing was created.
 
 =head2 Id => Str
 
-The 'reprocessingId' returned by "StartPipelineReprocessing".
+The C<reprocessingId> returned by C<StartPipelineReprocessing>.
 
 
 =head2 Status => Str

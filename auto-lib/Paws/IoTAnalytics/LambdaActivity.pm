@@ -45,7 +45,7 @@ An activity that runs a Lambda function to modify the message.
 
 The number of messages passed to the Lambda function for processing.
 
-The AWS Lambda function must be able to process all of these messages
+The Lambda function must be able to process all of these messages
 within five minutes, which is the maximum timeout duration for Lambda
 functions.
 
@@ -57,7 +57,7 @@ The name of the Lambda function that is run on the message.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'lambda' activity.
+The name of the lambda activity.
 
 
 =head2 Next => Str

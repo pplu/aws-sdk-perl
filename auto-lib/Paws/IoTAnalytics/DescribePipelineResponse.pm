@@ -17,7 +17,7 @@ Paws::IoTAnalytics::DescribePipelineResponse
 
 =head2 Pipeline => L<Paws::IoTAnalytics::Pipeline>
 
-A "Pipeline" object that contains information about the pipeline.
+A C<Pipeline> object that contains information about the pipeline.
 
 
 =head2 _request_id => Str

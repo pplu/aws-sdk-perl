@@ -42,13 +42,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> DatasetName => Str
 
-The name of the data set whose content is deleted.
+The name of the dataset whose content is deleted.
 
 
 
 =head2 VersionId => Str
 
-The version of the data set whose content is deleted. You can also use
+The version of the dataset whose content is deleted. You can also use
 the strings "$LATEST" or "$LATEST_SUCCEEDED" to delete the latest or
 latest successfully completed data set. If not specified,
 "$LATEST_SUCCEEDED" is the default.

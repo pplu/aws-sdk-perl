@@ -34,20 +34,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-The destination to which data set contents are delivered.
+The destination to which dataset contents are delivered.
 
 =head1 ATTRIBUTES
 
 
 =head2 IotEventsDestinationConfiguration => L<Paws::IoTAnalytics::IotEventsDestinationConfiguration>
 
-Configuration information for delivery of data set contents to AWS IoT
+Configuration information for delivery of dataset contents to AWS IoT
 Events.
 
 
 =head2 S3DestinationConfiguration => L<Paws::IoTAnalytics::S3DestinationConfiguration>
 
-Configuration information for delivery of data set contents to Amazon
+Configuration information for delivery of dataset contents to Amazon
 S3.
 
 

@@ -41,7 +41,7 @@ URI.
 
 =head2 B<REQUIRED> FileName => Str
 
-The URI of the location where data set contents are stored, usually the
+The URI of the location where dataset contents are stored, usually the
 URI of a file in an S3 bucket.
 
 

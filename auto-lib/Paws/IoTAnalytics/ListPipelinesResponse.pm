@@ -24,7 +24,7 @@ no more results.
 
 =head2 PipelineSummaries => ArrayRef[L<Paws::IoTAnalytics::PipelineSummary>]
 
-A list of "PipelineSummary" objects.
+A list of C<PipelineSummary> objects.
 
 
 =head2 _request_id => Str

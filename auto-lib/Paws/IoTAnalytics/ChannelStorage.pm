@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Where channel data is stored. You may choose one of "serviceManagedS3"
-or "customerManagedS3" storage. If not specified, the default is
-"serviceManagedS3". This cannot be changed after creation of the
+Where channel data is stored. You may choose one of C<serviceManagedS3>
+or C<customerManagedS3> storage. If not specified, the default is
+C<serviceManagedS3>. This cannot be changed after creation of the
 channel.
 
 =head1 ATTRIBUTES
@@ -45,16 +45,16 @@ channel.
 =head2 CustomerManagedS3 => L<Paws::IoTAnalytics::CustomerManagedChannelS3Storage>
 
 Use this to store channel data in an S3 bucket that you manage. If
-customer managed storage is selected, the "retentionPeriod" parameter
-is ignored. The choice of service-managed or customer-managed S3
-storage cannot be changed after creation of the channel.
+customer managed storage is selected, the C<retentionPeriod> parameter
+is ignored. You cannot change the choice of service-managed or
+customer-managed S3 storage after the channel is created.
 
 
 =head2 ServiceManagedS3 => L<Paws::IoTAnalytics::ServiceManagedChannelS3Storage>
 
-Use this to store channel data in an S3 bucket managed by the AWS IoT
-Analytics service. The choice of service-managed or customer-managed S3
-storage cannot be changed after creation of the channel.
+Use this to store channel data in an S3 bucket managed by AWS IoT
+Analytics. You cannot change the choice of service-managed or
+customer-managed S3 storage after the channel is created.
 
 
 

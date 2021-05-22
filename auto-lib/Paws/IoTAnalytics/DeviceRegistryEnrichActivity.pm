@@ -50,7 +50,7 @@ The name of the attribute that is added to the message.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'deviceRegistryEnrich' activity.
+The name of the C<deviceRegistryEnrich> activity.
 
 
 =head2 Next => Str

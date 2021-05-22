@@ -43,7 +43,7 @@ The schedule for when to trigger an update.
 The expression that defines when to trigger an update. For more
 information, see Schedule Expressions for Rules
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html)
-in the Amazon CloudWatch Events User Guide.
+in the I<Amazon CloudWatch Events User Guide>.
 
 
 

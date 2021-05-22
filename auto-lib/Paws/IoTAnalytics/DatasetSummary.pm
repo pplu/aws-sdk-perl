@@ -45,7 +45,7 @@ A summary of information about a data set.
 
 =head2 Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetActionSummary>]
 
-A list of "DataActionSummary" objects.
+A list of C<DataActionSummary> objects.
 
 
 =head2 CreationTime => Str
@@ -72,7 +72,7 @@ The status of the data set.
 
 A list of triggers. A trigger causes data set content to be populated
 at a specified time interval or when another data set is populated. The
-list of triggers can be empty or contain up to five DataSetTrigger
+list of triggers can be empty or contain up to five C<DataSetTrigger>
 objects
 
 

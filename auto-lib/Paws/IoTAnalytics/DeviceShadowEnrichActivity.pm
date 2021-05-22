@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-An activity that adds information from the AWS IoT Device Shadows
+An activity that adds information from the AWS IoT Device Shadow
 service to a message.
 
 =head1 ATTRIBUTES
@@ -50,7 +50,7 @@ The name of the attribute that is added to the message.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'deviceShadowEnrich' activity.
+The name of the C<deviceShadowEnrich> activity.
 
 
 =head2 Next => Str

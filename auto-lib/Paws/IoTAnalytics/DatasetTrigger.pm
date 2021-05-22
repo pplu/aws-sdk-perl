@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-The "DatasetTrigger" that specifies when the data set is automatically
+The C<DatasetTrigger> that specifies when the data set is automatically
 updated.
 
 =head1 ATTRIBUTES
@@ -48,7 +48,7 @@ set's contents.
 
 =head2 Schedule => L<Paws::IoTAnalytics::Schedule>
 
-The "Schedule" when the trigger is initiated.
+The Schedule when the trigger is initiated.
 
 
 

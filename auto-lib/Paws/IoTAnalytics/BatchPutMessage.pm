@@ -62,17 +62,17 @@ The name of the channel where the messages are sent.
 
 =head2 B<REQUIRED> Messages => ArrayRef[L<Paws::IoTAnalytics::Message>]
 
-The list of messages to be sent. Each message has format: '{
-"messageId": "string", "payload": "string"}'.
+The list of messages to be sent. Each message has the format: {
+"messageId": "string", "payload": "string"}.
 
-Note that the field names of message payloads (data) that you send to
-AWS IoT Analytics:
+The field names of message payloads (data) that you send to AWS IoT
+Analytics:
 
 =over
 
 =item *
 
-Must contain only alphanumeric characters and undescores (_); no other
+Must contain only alphanumeric characters and undescores (_). No other
 special characters are allowed.
 
 =item *
@@ -90,12 +90,12 @@ In regular expression terms:
 
 =item *
 
-Cannot be greater than 255 characters.
+Cannot be more than 255 characters.
 
 =item *
 
-Are case-insensitive. (Fields named "foo" and "FOO" in the same payload
-are considered duplicates.)
+Are case insensitive. (Fields named foo and FOO in the same payload are
+considered duplicates.)
 
 =back
 

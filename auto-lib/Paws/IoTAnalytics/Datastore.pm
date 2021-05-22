@@ -3,6 +3,8 @@ package Paws::IoTAnalytics::Datastore;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
+  has FileFormatConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::FileFormatConfiguration', request_name => 'fileFormatConfiguration', traits => ['NameInRequest']);
+  has LastMessageArrivalTime => (is => 'ro', isa => 'Str', request_name => 'lastMessageArrivalTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
@@ -54,6 +56,29 @@ The ARN of the data store.
 When the data store was created.
 
 
+=head2 FileFormatConfiguration => L<Paws::IoTAnalytics::FileFormatConfiguration>
+
+Contains the configuration information of file formats. AWS IoT
+Analytics data stores support JSON and Parquet
+(https://parquet.apache.org/).
+
+The default file format is JSON. You can specify only one format.
+
+You can't change the file format after you create the data store.
+
+
+=head2 LastMessageArrivalTime => Str
+
+The last time when a new message arrived in the data store.
+
+AWS IoT Analytics updates this value at most once per minute for one
+data store. Hence, the C<lastMessageArrivalTime> value is an
+approximation.
+
+This feature only applies to messages that arrived in the data store
+after October 23, 2020.
+
+
 =head2 LastUpdateTime => Str
 
 The last time the data store was updated.
@@ -67,7 +92,7 @@ The name of the data store.
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
 How long, in days, message data is kept for the data store. When
-"customerManagedS3" storage is selected, this parameter is ignored.
+C<customerManagedS3> storage is selected, this parameter is ignored.
 
 
 =head2 Status => Str
@@ -94,10 +119,10 @@ The data store is being deleted.
 
 =head2 Storage => L<Paws::IoTAnalytics::DatastoreStorage>
 
-Where data store data is stored. You may choose one of
-"serviceManagedS3" or "customerManagedS3" storage. If not specified,
-the default is "serviceManagedS3". This cannot be changed after the
-data store is created.
+Where data store data is stored. You can choose one of
+C<serviceManagedS3> or C<customerManagedS3> storage. If not specified,
+the default is C<serviceManagedS3>. You cannot change this storage
+option after the data store is created.
 
 
 
