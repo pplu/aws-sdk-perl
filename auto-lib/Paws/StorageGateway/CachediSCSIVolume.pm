@@ -53,7 +53,7 @@ Describes an iSCSI cached volume.
 =head2 CreatedDate => Str
 
 The date the volume was created. Volumes created prior to March 28,
-2017 donE<rsquo>t have this time stamp.
+2017 donE<rsquo>t have this timestamp.
 
 
 =head2 KMSKey => Str
@@ -64,7 +64,7 @@ The date the volume was created. Volumes created prior to March 28,
 =head2 SourceSnapshotId => Str
 
 If the cached volume was created from a snapshot, this field contains
-the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not
+the snapshot ID used, e.g., snap-78e22663. Otherwise, this field is not
 included.
 
 
@@ -88,14 +88,14 @@ The Amazon Resource Name (ARN) of the storage volume.
 =head2 VolumeAttachmentStatus => Str
 
 A value that indicates whether a storage volume is attached to or
-detached from a gateway. For more information, see Moving Your Volumes
-to a Different Gateway
+detached from a gateway. For more information, see Moving your volumes
+to a different gateway
 (https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#attach-detach-volume).
 
 
 =head2 VolumeId => Str
 
-The unique identifier of the volume, e.g. vol-AE4B946D.
+The unique identifier of the volume, e.g., vol-AE4B946D.
 
 
 =head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>

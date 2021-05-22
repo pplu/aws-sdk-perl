@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 One of the BandwidthType values that indicates the gateway bandwidth
 rate limit to delete.
 
-Valid Values: C<Upload>, C<Download>, C<All>.
+Valid Values: C<UPLOAD> | C<DOWNLOAD> | C<ALL>
 
 
 

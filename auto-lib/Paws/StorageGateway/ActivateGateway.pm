@@ -68,9 +68,9 @@ parameters, however, these are merely defaults -- the arguments you
 pass to the C<ActivateGateway> API call determine the actual
 configuration of your gateway.
 
-For more information, see
-https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html
-in the Storage Gateway User Guide.
+For more information, see Getting activation key
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html)
+in the I<AWS Storage Gateway User Guide>.
 
 
 
@@ -86,13 +86,13 @@ A value that indicates the AWS Region where you want to store your
 data. The gateway AWS Region specified must be the same AWS Region as
 the AWS Region in your C<Host> header in the request. For more
 information about available AWS Regions and endpoints for AWS Storage
-Gateway, see Regions and Endpoints
-(https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
-the I<Amazon Web Services Glossary>.
+Gateway, see AWS Storage Gateway endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/sg.html) in the I<AWS
+General Reference>.
 
-Valid Values: See AWS Storage Gateway Regions and Endpoints
-(https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
-the AWS General Reference.
+Valid Values: See AWS Storage Gateway endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/sg.html) in the I<AWS
+General Reference>.
 
 
 
@@ -112,7 +112,7 @@ A value that defines the type of gateway to activate. The type
 specified is critical to all later functions of the gateway and cannot
 be changed after activation. The default value is C<CACHED>.
 
-Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"
+Valid Values: C<STORED> | C<CACHED> | C<VTL> | C<FILE_S3>
 
 
 
@@ -121,7 +121,7 @@ Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"
 The value that indicates the type of medium changer to use for tape
 gateway. This field is optional.
 
-Valid Values: "STK-L700", "AWS-Gateway-VTL"
+Valid Values: C<STK-L700> | C<AWS-Gateway-VTL> | C<IBM-03584L32-0402>
 
 
 
@@ -142,7 +142,7 @@ characters, and the maximum length for a tag's value is 256 characters.
 The value that indicates the type of tape drive to use for tape
 gateway. This field is optional.
 
-Valid Values: "IBM-ULT3580-TD5"
+Valid Values: C<IBM-ULT3580-TD5>
 
 
 

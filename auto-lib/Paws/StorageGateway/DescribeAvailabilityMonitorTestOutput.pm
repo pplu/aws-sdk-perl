@@ -23,13 +23,13 @@ Paws::StorageGateway::DescribeAvailabilityMonitorTestOutput
 
 =head2 StartTime => Str
 
-The time the High Availability monitoring test was started. If a test
+The time the high availability monitoring test was started. If a test
 hasn't been performed, the value of this field is null.
 
 
 =head2 Status => Str
 
-The status of the High Availability monitoring test. If a test hasn't
+The status of the high availability monitoring test. If a test hasn't
 been performed, the value of this field is null.
 
 Valid values are: C<"COMPLETE">, C<"FAILED">, C<"PENDING">

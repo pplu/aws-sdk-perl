@@ -76,7 +76,7 @@ The name of the gateway.
 
 The state of the gateway.
 
-Valid Values: DISABLED or ACTIVE
+Valid Values: C<DISABLED> | C<ACTIVE>
 
 
 =head2 GatewayType => Str

@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::DeleteTape;
   use Moose;
+  has BypassGovernanceRetention => (is => 'ro', isa => 'Bool');
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -46,6 +47,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/DeleteTape>
 
 =head1 ATTRIBUTES
+
+
+=head2 BypassGovernanceRetention => Bool
+
+Set to C<TRUE> to delete an archived tape that belongs to a custom pool
+with tape retention lock. Only archived tapes with tape retention lock
+set to C<governance> can be deleted. Archived tapes with tape retention
+lock set to C<compliance> can't be deleted.
+
 
 
 =head2 B<REQUIRED> GatewayARN => Str

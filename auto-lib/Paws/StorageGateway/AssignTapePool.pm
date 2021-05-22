@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::AssignTapePool;
   use Moose;
+  has BypassGovernanceRetention => (is => 'ro', isa => 'Bool');
   has PoolId => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -29,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $storagegateway = Paws->service('StorageGateway');
     my $AssignTapePoolOutput = $storagegateway->AssignTapePool(
-      PoolId  => 'MyPoolId',
-      TapeARN => 'MyTapeARN',
-
+      PoolId                    => 'MyPoolId',
+      TapeARN                   => 'MyTapeARN',
+      BypassGovernanceRetention => 1,             # OPTIONAL
     );
 
     # Results:
@@ -45,15 +46,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 =head1 ATTRIBUTES
 
 
+=head2 BypassGovernanceRetention => Bool
+
+Set permissions to bypass governance retention. If the lock type of the
+archived tape is C<Governance>, the tape's archived age is not older
+than C<RetentionLockInDays>, and the user does not already have
+C<BypassGovernanceRetention>, setting this to TRUE enables the user to
+bypass the retention lock. This parameter is set to true by default for
+calls from the console.
+
+Valid values: C<TRUE> | C<FALSE>
+
+
+
 =head2 B<REQUIRED> PoolId => Str
 
 The ID of the pool that you want to add your tape to for archiving. The
 tape in this pool is archived in the S3 storage class that is
 associated with the pool. When you use your backup application to eject
-the tape, the tape is archived directly into the storage class (Glacier
-or Deep Archive) that corresponds to the pool.
+the tape, the tape is archived directly into the storage class (S3
+Glacier or S3 Glacier Deep Archive) that corresponds to the pool.
 
-Valid values: "GLACIER", "DEEP_ARCHIVE"
+Valid Values: C<GLACIER> | C<DEEP_ARCHIVE>
 
 
 

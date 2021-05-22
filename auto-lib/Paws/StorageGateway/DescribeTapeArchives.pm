@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 Limit => Int
 
-Specifies that the number of virtual tapes descried be limited to the
+Specifies that the number of virtual tapes described be limited to the
 specified number.
 
 

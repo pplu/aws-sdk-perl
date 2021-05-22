@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 An array of strings where each string represents the Amazon Resource
 Name (ARN) of a stored volume. All of the specified stored volumes must
-from the same gateway. Use ListVolumes to get volume ARNs for a
+be from the same gateway. Use ListVolumes to get volume ARNs for a
 gateway.
 
 

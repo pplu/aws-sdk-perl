@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 A key-value pair that helps you manage, filter, and search for your
 resource. Allowed characters: letters, white space, and numbers,
-representable in UTF-8, and the following characters: + - = . _ : /
+representable in UTF-8, and the following characters: + - = . _ : /.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-Tag key (String). The key can't start with aws:.
+Tag key. The key can't start with aws:.
 
 
 =head2 B<REQUIRED> Value => Str

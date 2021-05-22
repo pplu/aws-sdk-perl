@@ -55,7 +55,7 @@ Describes an iSCSI stored volume.
 =head2 CreatedDate => Str
 
 The date the volume was created. Volumes created prior to March 28,
-2017 donE<rsquo>t have this time stamp.
+2017 donE<rsquo>t have this timestamp.
 
 
 =head2 KMSKey => Str
@@ -68,7 +68,7 @@ The date the volume was created. Volumes created prior to March 28,
 Indicates if when the stored volume was created, existing data on the
 underlying local disk was preserved.
 
-Valid Values: true, false
+Valid Values: C<true> | C<false>
 
 
 =head2 SourceSnapshotId => Str
@@ -99,7 +99,7 @@ The Amazon Resource Name (ARN) of the storage volume.
 
 A value that indicates whether a storage volume is attached to,
 detached from, or is in the process of detaching from a gateway. For
-more information, see Moving Your Volumes to a Different Gateway
+more information, see Moving your volumes to a different gateway
 (https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#attach-detach-volume).
 
 
@@ -111,7 +111,7 @@ CreateStorediSCSIVolume operation.
 
 =head2 VolumeId => Str
 
-The unique identifier of the volume, e.g. vol-AE4B946D.
+The unique identifier of the volume, e.g., vol-AE4B946D.
 
 
 =head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>

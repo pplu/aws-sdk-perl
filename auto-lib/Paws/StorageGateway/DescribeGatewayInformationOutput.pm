@@ -2,8 +2,10 @@
 package Paws::StorageGateway::DescribeGatewayInformationOutput;
   use Moose;
   has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
+  has DeprecationDate => (is => 'ro', isa => 'Str');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
+  has EndpointType => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
   has GatewayName => (is => 'ro', isa => 'Str');
@@ -14,6 +16,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
   has HostEnvironment => (is => 'ro', isa => 'Str');
   has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
+  has SoftwareUpdatesEndDate => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has VPCEndpoint => (is => 'ro', isa => 'Str');
 
@@ -30,8 +33,14 @@ Paws::StorageGateway::DescribeGatewayInformationOutput
 
 =head2 CloudWatchLogGroupARN => Str
 
-The Amazon Resource Name (ARN) of the Amazon CloudWatch Log Group that
+The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 is used to monitor events in the gateway.
+
+
+=head2 DeprecationDate => Str
+
+Date after which this gateway will not receive software updates for new
+features and bug fixes.
 
 
 =head2 Ec2InstanceId => Str
@@ -42,6 +51,13 @@ The ID of the Amazon EC2 instance that was used to launch the gateway.
 =head2 Ec2InstanceRegion => Str
 
 The AWS Region where the Amazon EC2 instance is located.
+
+
+=head2 EndpointType => Str
+
+The type of endpoint for your gateway.
+
+Valid Values: C<STANDARD> | C<FIPS>
 
 
 =head2 GatewayARN => Str
@@ -99,6 +115,12 @@ value in the response.
 The date on which an update to the gateway is available. This date is
 in the time zone of the gateway. If the gateway is not available for an
 update this field is not returned in the response.
+
+
+=head2 SoftwareUpdatesEndDate => Str
+
+Date after which this gateway will not receive software updates for new
+features.
 
 
 =head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]

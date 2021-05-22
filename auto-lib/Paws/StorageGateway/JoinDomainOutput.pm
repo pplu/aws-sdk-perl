@@ -24,35 +24,35 @@ domain.
 
 =item *
 
-ACCESS_DENIED: Indicates that the C<JoinDomain> operation failed due to
-an authentication error.
+C<ACCESS_DENIED>: Indicates that the C<JoinDomain> operation failed due
+to an authentication error.
 
 =item *
 
-DETACHED: Indicates that gateway is not joined to a domain.
+C<DETACHED>: Indicates that gateway is not joined to a domain.
 
 =item *
 
-JOINED: Indicates that the gateway has successfully joined a domain.
+C<JOINED>: Indicates that the gateway has successfully joined a domain.
 
 =item *
 
-JOINING: Indicates that a C<JoinDomain> operation is in progress.
+C<JOINING>: Indicates that a C<JoinDomain> operation is in progress.
 
 =item *
 
-NETWORK_ERROR: Indicates that C<JoinDomain> operation failed due to a
-network or connectivity error.
+C<NETWORK_ERROR>: Indicates that C<JoinDomain> operation failed due to
+a network or connectivity error.
 
 =item *
 
-TIMEOUT: Indicates that the C<JoinDomain> operation failed because the
-operation didn't complete within the allotted time.
+C<TIMEOUT>: Indicates that the C<JoinDomain> operation failed because
+the operation didn't complete within the allotted time.
 
 =item *
 
-UNKNOWN_ERROR: Indicates that the C<JoinDomain> operation failed due to
-another type of error.
+C<UNKNOWN_ERROR>: Indicates that the C<JoinDomain> operation failed due
+to another type of error.
 
 =back
 

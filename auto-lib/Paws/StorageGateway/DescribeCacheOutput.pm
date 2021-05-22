@@ -22,7 +22,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 =head2 CacheAllocatedInBytes => Int
 
-The amount of cache in bytes allocated to the a gateway.
+The amount of cache in bytes allocated to a gateway.
 
 
 =head2 CacheDirtyPercentage => Num
@@ -56,7 +56,7 @@ reporting period.
 =head2 DiskIds => ArrayRef[Str|Undef]
 
 An array of strings that identify disks that are to be configured as
-working storage. Each string have a minimum length of 1 and maximum
+working storage. Each string has a minimum length of 1 and maximum
 length of 300. You can get the disk IDs from the ListLocalDisks API.
 
 

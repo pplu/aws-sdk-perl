@@ -58,7 +58,7 @@ tags from.
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The keys of the tags you want to remove from the specified resource. A
-tag is composed of a key/value pair.
+tag is composed of a key-value pair.
 
 
 
