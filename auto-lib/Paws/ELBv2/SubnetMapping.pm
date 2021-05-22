@@ -2,6 +2,7 @@
 package Paws::ELBv2::SubnetMapping;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
+  has IPv6Address => (is => 'ro', isa => 'Str');
   has PrivateIPv4Address => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
 
@@ -44,6 +45,11 @@ Information about a subnet mapping.
 
 [Network Load Balancers] The allocation ID of the Elastic IP address
 for an internet-facing load balancer.
+
+
+=head2 IPv6Address => Str
+
+[Network Load Balancers] The IPv6 address.
 
 
 =head2 PrivateIPv4Address => Str

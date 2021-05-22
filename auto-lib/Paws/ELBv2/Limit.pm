@@ -57,6 +57,26 @@ application-load-balancers
 
 =item *
 
+condition-values-per-alb-rule
+
+=item *
+
+condition-wildcards-per-alb-rule
+
+=item *
+
+gateway-load-balancers
+
+=item *
+
+gateway-load-balancers-per-vpc
+
+=item *
+
+geneve-target-groups
+
+=item *
+
 listeners-per-application-load-balancer
 
 =item *
@@ -90,6 +110,10 @@ target-groups-per-application-load-balancer
 =item *
 
 targets-per-application-load-balancer
+
+=item *
+
+targets-per-availability-zone-per-gateway-load-balancer
 
 =item *
 

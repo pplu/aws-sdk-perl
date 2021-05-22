@@ -24,7 +24,7 @@ results. Otherwise, this is null.
 
 =head2 SslPolicies => ArrayRef[L<Paws::ELBv2::SslPolicy>]
 
-Information about the policies.
+Information about the security policies.
 
 
 =head2 _request_id => Str

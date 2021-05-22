@@ -48,7 +48,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> ResourceArns => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARN) of the resources.
+The Amazon Resource Names (ARN) of the resources. You can specify up to
+20 resources in a single call.
 
 
 

@@ -12,6 +12,8 @@ package Paws::ELBv2::CreateTargetGroup;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
+  has ProtocolVersion => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
   has UnhealthyThresholdCount => (is => 'ro', isa => 'Int');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -74,26 +76,34 @@ enabled and cannot be disabled.
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. For HTTP and HTTPS health checks, the range is
-5E<ndash>300 seconds. For TCP health checks, the supported values are
-10 and 30 seconds. If the target type is C<instance> or C<ip>, the
-default is 30 seconds. If the target type is C<lambda>, the default is
-35 seconds.
+individual target. If the target group protocol is TCP, TLS, UDP, or
+TCP_UDP, the supported values are 10 and 30 seconds. If the target
+group protocol is HTTP or HTTPS, the default is 30 seconds. If the
+target group protocol is GENEVE, the default is 10 seconds. If the
+target type is C<lambda>, the default is 35 seconds.
 
 
 
 =head2 HealthCheckPath => Str
 
-[HTTP/HTTPS health checks] The ping path that is the destination on the
-targets for health checks. The default is /.
+[HTTP/HTTPS health checks] The destination for health checks on the
+targets.
+
+[HTTP1 or HTTP2 protocol version] The ping path. The default is /.
+
+[GRPC protocol version] The path of a custom health check method with
+the format /package.service/method. The default is
+/AWS.ALB/healthcheck.
 
 
 
 =head2 HealthCheckPort => Str
 
 The port the load balancer uses when performing health checks on
-targets. The default is C<traffic-port>, which is the port on which
-each target receives traffic from the load balancer.
+targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the
+default is C<traffic-port>, which is the port on which each target
+receives traffic from the load balancer. If the protocol is GENEVE, the
+default is port 80.
 
 
 
@@ -101,21 +111,21 @@ each target receives traffic from the load balancer.
 
 The protocol the load balancer uses when performing health checks on
 targets. For Application Load Balancers, the default is HTTP. For
-Network Load Balancers, the default is TCP. The TCP protocol is
-supported for health checks only if the protocol of the target group is
-TCP, TLS, UDP, or TCP_UDP. The TLS, UDP, and TCP_UDP protocols are not
-supported for health checks.
+Network Load Balancers and Gateway Load Balancers, the default is TCP.
+The TCP protocol is not supported for health checks if the protocol of
+the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP
+protocols are not supported for health checks.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">, C<"GENEVE">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
 The amount of time, in seconds, during which no response from a target
-means a failed health check. For target groups with a protocol of HTTP
-or HTTPS, the default is 5 seconds. For target groups with a protocol
-of TCP or TLS, this value must be 6 seconds for HTTP health checks and
-10 seconds for TCP and HTTPS health checks. If the target type is
-C<lambda>, the default is 30 seconds.
+means a failed health check. For target groups with a protocol of HTTP,
+HTTPS, or GENEVE, the default is 5 seconds. For target groups with a
+protocol of TCP or TLS, this value must be 6 seconds for HTTP health
+checks and 10 seconds for TCP and HTTPS health checks. If the target
+type is C<lambda>, the default is 30 seconds.
 
 
 
@@ -124,15 +134,15 @@ C<lambda>, the default is 30 seconds.
 The number of consecutive health checks successes required before
 considering an unhealthy target healthy. For target groups with a
 protocol of HTTP or HTTPS, the default is 5. For target groups with a
-protocol of TCP or TLS, the default is 3. If the target type is
-C<lambda>, the default is 5.
+protocol of TCP, TLS, or GENEVE, the default is 3. If the target type
+is C<lambda>, the default is 5.
 
 
 
 =head2 Matcher => L<Paws::ELBv2::Matcher>
 
-[HTTP/HTTPS health checks] The HTTP codes to use when checking for a
-successful response from a target.
+[HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking
+for a successful response from a target.
 
 
 
@@ -150,7 +160,8 @@ and must not begin or end with a hyphen.
 
 The port on which the targets receive traffic. This port is used unless
 you specify a port override when registering the target. If the target
-is a Lambda function, this parameter does not apply.
+is a Lambda function, this parameter does not apply. If the protocol is
+GENEVE, the supported port is 6081.
 
 
 
@@ -159,10 +170,26 @@ is a Lambda function, this parameter does not apply.
 The protocol to use for routing traffic to the targets. For Application
 Load Balancers, the supported protocols are HTTP and HTTPS. For Network
 Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP_UDP.
-A TCP_UDP listener must be associated with a TCP_UDP target group. If
-the target is a Lambda function, this parameter does not apply.
+For Gateway Load Balancers, the supported protocol is GENEVE. A TCP_UDP
+listener must be associated with a TCP_UDP target group. If the target
+is a Lambda function, this parameter does not apply.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">, C<"GENEVE">
+
+=head2 ProtocolVersion => Str
+
+[HTTP/HTTPS protocol] The protocol version. Specify C<GRPC> to send
+requests to targets using gRPC. Specify C<HTTP2> to send requests to
+targets using HTTP/2. The default is C<HTTP1>, which sends requests to
+targets using HTTP/1.1.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+
+The tags to assign to the target group.
+
+
 
 =head2 TargetType => Str
 
@@ -174,21 +201,20 @@ more than one target type.
 
 =item *
 
-C<instance> - Targets are specified by instance ID. This is the default
-value. If the target group protocol is UDP or TCP_UDP, the target type
-must be C<instance>.
+C<instance> - Register targets by instance ID. This is the default
+value.
 
 =item *
 
-C<ip> - Targets are specified by IP address. You can specify IP
-addresses from the subnets of the virtual private cloud (VPC) for the
-target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
+C<ip> - Register targets by IP address. You can specify IP addresses
+from the subnets of the virtual private cloud (VPC) for the target
+group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
 specify publicly routable IP addresses.
 
 =item *
 
-C<lambda> - The target groups contains a single Lambda function.
+C<lambda> - Register a single Lambda function as a target.
 
 =back
 
@@ -198,10 +224,11 @@ Valid values are: C<"instance">, C<"ip">, C<"lambda">
 =head2 UnhealthyThresholdCount => Int
 
 The number of consecutive health check failures required before
-considering a target unhealthy. For target groups with a protocol of
-HTTP or HTTPS, the default is 2. For target groups with a protocol of
-TCP or TLS, this value must be the same as the healthy threshold count.
-If the target type is C<lambda>, the default is 2.
+considering a target unhealthy. If the target group protocol is HTTP or
+HTTPS, the default is 2. If the target group protocol is TCP or TLS,
+this value must be the same as the healthy threshold count. If the
+target group protocol is GENEVE, the default is 3. If the target type
+is C<lambda>, the default is 2.
 
 
 

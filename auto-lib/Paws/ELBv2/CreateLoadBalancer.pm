@@ -1,6 +1,7 @@
 
 package Paws::ELBv2::CreateLoadBalancer;
   use Moose;
+  has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str');
   has IpAddressType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Scheme => (is => 'ro', isa => 'Str');
@@ -69,12 +70,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
+=head2 CustomerOwnedIpv4Pool => Str
+
+[Application Load Balancers on Outposts] The ID of the customer-owned
+address pool (CoIP pool).
+
+
+
 =head2 IpAddressType => Str
 
-[Application Load Balancers] The type of IP addresses used by the
-subnets for your load balancer. The possible values are C<ipv4> (for
-IPv4 addresses) and C<dualstack> (for IPv4 and IPv6 addresses).
-Internal load balancers must use C<ipv4>.
+The type of IP addresses used by the subnets for your load balancer.
+The possible values are C<ipv4> (for IPv4 addresses) and C<dualstack>
+(for IPv4 and IPv6 addresses). Internal load balancers must use
+C<ipv4>.
 
 Valid values are: C<"ipv4">, C<"dualstack">
 
@@ -104,6 +112,8 @@ load balancer.
 
 The default is an Internet-facing load balancer.
 
+You cannot specify a scheme for a Gateway Load Balancer.
+
 Valid values are: C<"internet-facing">, C<"internal">
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
@@ -122,11 +132,22 @@ Availability Zone. You must specify either subnets or subnet mappings.
 Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.
 
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
 [Network Load Balancers] You can specify subnets from one or more
 Availability Zones. You can specify one Elastic IP address per subnet
 if you need static IP addresses for your internet-facing load balancer.
 For internal load balancers, you can specify one private IP address per
-subnet from the IPv4 range of the subnet.
+subnet from the IPv4 range of the subnet. For internet-facing load
+balancer, you can specify one IPv6 address per subnet.
+
+[Gateway Load Balancers] You can specify subnets from one or more
+Availability Zones. You cannot specify Elastic IP addresses for your
+subnets.
 
 
 
@@ -138,14 +159,23 @@ Availability Zone. You must specify either subnets or subnet mappings.
 [Application Load Balancers] You must specify subnets from at least two
 Availability Zones.
 
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
 [Network Load Balancers] You can specify subnets from one or more
+Availability Zones.
+
+[Gateway Load Balancers] You can specify subnets from one or more
 Availability Zones.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::ELBv2::Tag>]
 
-One or more tags to assign to the load balancer.
+The tags to assign to the load balancer.
 
 
 
@@ -153,7 +183,7 @@ One or more tags to assign to the load balancer.
 
 The type of load balancer. The default is C<application>.
 
-Valid values are: C<"application">, C<"network">
+Valid values are: C<"application">, C<"network">, C<"gateway">
 
 
 =head1 SEE ALSO

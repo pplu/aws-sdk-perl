@@ -42,6 +42,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Rule
 
 Information about a condition for a rule.
 
+Each rule can optionally include up to one of each of the following
+conditions: C<http-request-method>, C<host-header>, C<path-pattern>,
+and C<source-ip>. Each rule can also optionally include one or more of
+each of the following conditions: C<http-header> and C<query-string>.
+
 =head1 ATTRIBUTES
 
 
@@ -117,14 +122,15 @@ C<source-ip>.
 
 =head2 Values => ArrayRef[Str|Undef]
 
-The condition value. You can use C<Values> if the rule contains only
-C<host-header> and C<path-pattern> conditions. Otherwise, you can use
-C<HostHeaderConfig> for C<host-header> conditions and
-C<PathPatternConfig> for C<path-pattern> conditions.
+The condition value. Specify only when C<Field> is C<host-header> or
+C<path-pattern>. Alternatively, to specify multiple host names or
+multiple path patterns, use C<HostHeaderConfig> or
+C<PathPatternConfig>.
 
-If C<Field> is C<host-header>, you can specify a single host name (for
-example, my.example.com). A host name is case insensitive, can be up to
-128 characters in length, and can contain any of the following
+If C<Field> is C<host-header> and you are not using
+C<HostHeaderConfig>, you can specify a single host name (for example,
+my.example.com) in C<Values>. A host name is case insensitive, can be
+up to 128 characters in length, and can contain any of the following
 characters.
 
 =over
@@ -147,9 +153,10 @@ A-Z, a-z, 0-9
 
 =back
 
-If C<Field> is C<path-pattern>, you can specify a single path pattern
-(for example, /img/*). A path pattern is case-sensitive, can be up to
-128 characters in length, and can contain any of the following
+If C<Field> is C<path-pattern> and you are not using
+C<PathPatternConfig>, you can specify a single path pattern (for
+example, /img/*) in C<Values>. A path pattern is case-sensitive, can be
+up to 128 characters in length, and can contain any of the following
 characters.
 
 =over

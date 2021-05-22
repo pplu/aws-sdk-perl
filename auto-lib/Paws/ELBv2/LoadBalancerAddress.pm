@@ -3,6 +3,7 @@ package Paws::ELBv2::LoadBalancerAddress;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has IPv6Address => (is => 'ro', isa => 'Str');
   has PrivateIPv4Address => (is => 'ro', isa => 'Str');
 
 1;
@@ -49,6 +50,11 @@ for an internal-facing load balancer.
 =head2 IpAddress => Str
 
 The static IP address.
+
+
+=head2 IPv6Address => Str
+
+[Network Load Balancers] The IPv6 address.
 
 
 =head2 PrivateIPv4Address => Str

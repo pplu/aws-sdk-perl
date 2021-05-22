@@ -73,7 +73,8 @@ of the Lambda function.
 
 =head2 Port => Int
 
-The port on which the target is listening. Not used if the target is a
+The port on which the target is listening. If the target group protocol
+is GENEVE, the supported port is 6081. Not used if the target is a
 Lambda function.
 
 

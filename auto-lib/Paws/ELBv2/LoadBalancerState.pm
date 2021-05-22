@@ -43,8 +43,10 @@ Information about the state of the load balancer.
 
 The state code. The initial state of the load balancer is
 C<provisioning>. After the load balancer is fully set up and ready to
-route traffic, its state is C<active>. If the load balancer could not
-be set up, its state is C<failed>.
+route traffic, its state is C<active>. If load balancer is routing
+traffic but does not have the resources it needs to scale, its state
+isC<active_impaired>. If the load balancer could not be set up, its
+state is C<failed>.
 
 
 =head2 Reason => Str

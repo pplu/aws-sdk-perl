@@ -4,6 +4,7 @@ package Paws::ELBv2::LoadBalancer;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::AvailabilityZone]');
   has CanonicalHostedZoneId => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
+  has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str');
   has DNSName => (is => 'ro', isa => 'Str');
   has IpAddressType => (is => 'ro', isa => 'Str');
   has LoadBalancerArn => (is => 'ro', isa => 'Str');
@@ -51,7 +52,7 @@ Information about a load balancer.
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::ELBv2::AvailabilityZone>]
 
-The Availability Zones for the load balancer.
+The subnets for the load balancer.
 
 
 =head2 CanonicalHostedZoneId => Str
@@ -63,6 +64,12 @@ balancer.
 =head2 CreatedTime => Str
 
 The date and time the load balancer was created.
+
+
+=head2 CustomerOwnedIpv4Pool => Str
+
+[Application Load Balancers on Outposts] The ID of the customer-owned
+address pool.
 
 
 =head2 DNSName => Str

@@ -66,9 +66,8 @@ Indicates whether health checks are enabled.
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. For Application Load Balancers, the range is 5 to
-300 seconds. For Network Load Balancers, the supported values are 10 or
-30 seconds.
+individual target. For TCP health checks, the supported values are 10
+or 30 seconds.
 
 With Network Load Balancers, you can't modify this setting.
 
@@ -76,8 +75,14 @@ With Network Load Balancers, you can't modify this setting.
 
 =head2 HealthCheckPath => Str
 
-[HTTP/HTTPS health checks] The ping path that is the destination for
-the health check request.
+[HTTP/HTTPS health checks] The destination for health checks on the
+targets.
+
+[HTTP1 or HTTP2 protocol version] The ping path. The default is /.
+
+[GRPC protocol version] The path of a custom health check method with
+the format /package.service/method. The default is
+/AWS.ALB/healthcheck.
 
 
 
@@ -92,12 +97,12 @@ targets.
 
 The protocol the load balancer uses when performing health checks on
 targets. The TCP protocol is supported for health checks only if the
-protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The TLS,
-UDP, and TCP_UDP protocols are not supported for health checks.
+protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The GENEVE,
+TLS, UDP, and TCP_UDP protocols are not supported for health checks.
 
 With Network Load Balancers, you can't modify this setting.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">, C<"GENEVE">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
@@ -117,8 +122,8 @@ considering an unhealthy target healthy.
 
 =head2 Matcher => L<Paws::ELBv2::Matcher>
 
-[HTTP/HTTPS health checks] The HTTP codes to use when checking for a
-successful response from a target.
+[HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking
+for a successful response from a target.
 
 With Network Load Balancers, you can't modify this setting.
 
@@ -133,8 +138,8 @@ The Amazon Resource Name (ARN) of the target group.
 =head2 UnhealthyThresholdCount => Int
 
 The number of consecutive health check failures required before
-considering the target unhealthy. For Network Load Balancers, this
-value must be the same as the healthy threshold count.
+considering the target unhealthy. For target groups with a protocol of
+TCP or TLS, this value must be the same as the healthy threshold count.
 
 
 
