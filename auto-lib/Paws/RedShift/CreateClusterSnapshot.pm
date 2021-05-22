@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ManualSnapshotRetentionPeriod => 1,            # OPTIONAL
       Tags                          => [
         {
-          Key   => 'MyString',
-          Value => 'MyString',
+          Key   => 'MyString',                       # max: 2147483647
+          Value => 'MyString',                       # max: 2147483647
         },
         ...
       ],                                             # OPTIONAL

@@ -2,11 +2,14 @@
 package Paws::RedShift::Cluster;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has AquaConfiguration => (is => 'ro', isa => 'Paws::RedShift::AquaConfiguration');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneRelocationStatus => (is => 'ro', isa => 'Str');
   has ClusterAvailabilityStatus => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
+  has ClusterNamespaceArn => (is => 'ro', isa => 'Str');
   has ClusterNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterNode]');
   has ClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterParameterGroupStatus]', request_name => 'ClusterParameterGroup', traits => ['NameInRequest']);
   has ClusterPublicKey => (is => 'ro', isa => 'Str');
@@ -45,6 +48,7 @@ package Paws::RedShift::Cluster;
   has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotScheduleState => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  has TotalStorageCapacityInMegaBytes => (is => 'ro', isa => 'Int');
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroup', traits => ['NameInRequest']);
 
@@ -90,6 +94,11 @@ will be applied automatically to the cluster during the maintenance
 window.
 
 
+=head2 AquaConfiguration => L<Paws::RedShift::AquaConfiguration>
+
+The AQUA (Advanced Query Accelerator) configuration of the cluster.
+
+
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
 The number of days that automatic cluster snapshots are retained.
@@ -98,6 +107,11 @@ The number of days that automatic cluster snapshots are retained.
 =head2 AvailabilityZone => Str
 
 The name of the Availability Zone in which the cluster is located.
+
+
+=head2 AvailabilityZoneRelocationStatus => Str
+
+Describes the status of the Availability Zone relocation operation.
 
 
 =head2 ClusterAvailabilityStatus => Str
@@ -141,6 +155,11 @@ The date and time that the cluster was created.
 =head2 ClusterIdentifier => Str
 
 The unique identifier of the cluster.
+
+
+=head2 ClusterNamespaceArn => Str
+
+The namespace Amazon Resource Name (ARN) of the cluster.
 
 
 =head2 ClusterNodes => ArrayRef[L<Paws::RedShift::ClusterNode>]
@@ -240,6 +259,10 @@ C<incompatible-restore>
 =item *
 
 C<modifying>
+
+=item *
+
+C<paused>
 
 =item *
 
@@ -484,6 +507,11 @@ The current state of the cluster snapshot schedule.
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
 The list of tags for the cluster.
+
+
+=head2 TotalStorageCapacityInMegaBytes => Int
+
+The total storage capacity of the cluster in megabytes.
 
 
 =head2 VpcId => Str

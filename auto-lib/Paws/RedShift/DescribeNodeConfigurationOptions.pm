@@ -42,14 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name => 'NodeType'
           , # values: NodeType, NumberOfNodes, EstimatedDiskUtilizationPercent, Mode; OPTIONAL
           Operator => 'eq',  # values: eq, lt, gt, le, ge, in, between; OPTIONAL
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Values   => [
+            'MyString', ...    # max: 2147483647
+          ],                   # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      Marker             => 'MyString',     # OPTIONAL
-      MaxRecords         => 1,              # OPTIONAL
-      OwnerAccount       => 'MyString',     # OPTIONAL
-      SnapshotIdentifier => 'MyString',     # OPTIONAL
+      ],                       # OPTIONAL
+      Marker             => 'MyString',    # OPTIONAL
+      MaxRecords         => 1,             # OPTIONAL
+      OwnerAccount       => 'MyString',    # OPTIONAL
+      SnapshotIdentifier => 'MyString',    # OPTIONAL
       );
 
     # Results:
@@ -70,9 +72,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 The action type to evaluate for possible node configurations. Specify
 "restore-cluster" to get configuration combinations based on an
 existing snapshot. Specify "recommend-node-config" to get configuration
-recommendations based on an existing cluster or snapshot.
+recommendations based on an existing cluster or snapshot. Specify
+"resize-cluster" to get configuration combinations for elastic resize
+based on an existing cluster.
 
-Valid values are: C<"restore-cluster">, C<"recommend-node-config">
+Valid values are: C<"restore-cluster">, C<"recommend-node-config">, C<"resize-cluster">
 
 =head2 ClusterIdentifier => Str
 

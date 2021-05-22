@@ -33,18 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $redshift = Paws->service('RedShift');
     my $SnapshotSchedule = $redshift->CreateSnapshotSchedule(
-      DryRun              => 1,                      # OPTIONAL
-      NextInvocations     => 1,                      # OPTIONAL
-      ScheduleDefinitions => [ 'MyString', ... ],    # OPTIONAL
-      ScheduleDescription => 'MyString',             # OPTIONAL
-      ScheduleIdentifier  => 'MyString',             # OPTIONAL
+      DryRun              => 1,    # OPTIONAL
+      NextInvocations     => 1,    # OPTIONAL
+      ScheduleDefinitions => [
+        'MyString', ...            # max: 2147483647
+      ],                           # OPTIONAL
+      ScheduleDescription => 'MyString',    # OPTIONAL
+      ScheduleIdentifier  => 'MyString',    # OPTIONAL
       Tags                => [
         {
-          Key   => 'MyString',
-          Value => 'MyString',
+          Key   => 'MyString',              # max: 2147483647
+          Value => 'MyString',              # max: 2147483647
         },
         ...
-      ],                                             # OPTIONAL
+      ],                                    # OPTIONAL
     );
 
     # Results:

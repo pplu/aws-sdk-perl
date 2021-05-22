@@ -35,12 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $ModifyEventSubscriptionResult = $redshift->ModifyEventSubscription(
       SubscriptionName => 'MyString',
-      Enabled          => 1,                      # OPTIONAL
-      EventCategories  => [ 'MyString', ... ],    # OPTIONAL
-      Severity         => 'MyString',             # OPTIONAL
-      SnsTopicArn      => 'MyString',             # OPTIONAL
-      SourceIds        => [ 'MyString', ... ],    # OPTIONAL
-      SourceType       => 'MyString',             # OPTIONAL
+      Enabled          => 1,            # OPTIONAL
+      EventCategories  => [
+        'MyString', ...                 # max: 2147483647
+      ],                                # OPTIONAL
+      Severity    => 'MyString',        # OPTIONAL
+      SnsTopicArn => 'MyString',        # OPTIONAL
+      SourceIds   => [
+        'MyString', ...                 # max: 2147483647
+      ],                                # OPTIONAL
+      SourceType => 'MyString',         # OPTIONAL
     );
 
     # Results:

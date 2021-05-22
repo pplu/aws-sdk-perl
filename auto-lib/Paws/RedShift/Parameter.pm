@@ -91,7 +91,9 @@ The name of the parameter.
 
 =head2 ParameterValue => Str
 
-The value of the parameter.
+The value of the parameter. If C<ParameterName> is
+C<wlm_json_configuration>, then the maximum size of C<ParameterValue>
+is 8000 characters.
 
 
 =head2 Source => Str

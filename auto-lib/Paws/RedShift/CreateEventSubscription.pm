@@ -37,18 +37,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateEventSubscriptionResult = $redshift->CreateEventSubscription(
       SnsTopicArn      => 'MyString',
       SubscriptionName => 'MyString',
-      Enabled          => 1,                      # OPTIONAL
-      EventCategories  => [ 'MyString', ... ],    # OPTIONAL
-      Severity         => 'MyString',             # OPTIONAL
-      SourceIds        => [ 'MyString', ... ],    # OPTIONAL
-      SourceType       => 'MyString',             # OPTIONAL
-      Tags             => [
+      Enabled          => 1,            # OPTIONAL
+      EventCategories  => [
+        'MyString', ...                 # max: 2147483647
+      ],                                # OPTIONAL
+      Severity  => 'MyString',          # OPTIONAL
+      SourceIds => [
+        'MyString', ...                 # max: 2147483647
+      ],                                # OPTIONAL
+      SourceType => 'MyString',         # OPTIONAL
+      Tags       => [
         {
-          Key   => 'MyString',
-          Value => 'MyString',
+          Key   => 'MyString',          # max: 2147483647
+          Value => 'MyString',          # max: 2147483647
         },
         ...
-      ],                                          # OPTIONAL
+      ],                                # OPTIONAL
     );
 
     # Results:

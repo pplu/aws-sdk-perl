@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $redshift->BatchDeleteClusterSnapshots(
       Identifiers => [
         {
-          SnapshotIdentifier        => 'MyString',
-          SnapshotClusterIdentifier => 'MyString',
+          SnapshotIdentifier        => 'MyString',    # max: 2147483647
+          SnapshotClusterIdentifier => 'MyString',    # max: 2147483647
         },
         ...
       ],

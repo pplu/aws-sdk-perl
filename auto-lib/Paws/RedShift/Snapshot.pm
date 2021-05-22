@@ -13,6 +13,7 @@ package Paws::RedShift::Snapshot;
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has EncryptedWithHSM => (is => 'ro', isa => 'Bool');
+  has EngineFullVersion => (is => 'ro', isa => 'Str');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -136,6 +137,12 @@ If C<true>, the data in the snapshot is encrypted at rest.
 A boolean that indicates whether the snapshot data is encrypted using
 the HSM keys of the source cluster. C<true> indicates that the data is
 encrypted using HSM keys.
+
+
+=head2 EngineFullVersion => Str
+
+The cluster version of the cluster used to create the snapshot. For
+example, 1.0.15503.
 
 
 =head2 EnhancedVpcRouting => Bool

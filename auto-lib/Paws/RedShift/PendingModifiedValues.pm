@@ -75,7 +75,6 @@ The pending or in-progress change of the service version.
 =head2 EncryptionType => Str
 
 The encryption type for a cluster. Possible values are: KMS and None.
-For the China region the possible values are None, and Legacy.
 
 
 =head2 EnhancedVpcRouting => Bool

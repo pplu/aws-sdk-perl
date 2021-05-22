@@ -119,8 +119,7 @@ Valid Values: C<multi-node> | C<single-node>
 
 The type of encryption for the cluster after the resize is complete.
 
-Possible values are C<KMS> and C<None>. In the China region possible
-values are: C<Legacy> and C<None>.
+Possible values are C<KMS> and C<None>.
 
 
 =head2 TargetNodeType => Str

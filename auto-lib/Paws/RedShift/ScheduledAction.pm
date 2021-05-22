@@ -57,8 +57,8 @@ Format of at expressions is "C<at(yyyy-mm-ddThh:mm:ss)>". For example,
 "C<at(2016-03-04T17:27:00)>".
 
 Format of cron expressions is "C<cron(Minutes Hours Day-of-month Month
-Day-of-week Year)>". For example, "C<cron(0, 10, *, *, MON, *)>". For
-more information, see Cron Expressions
+Day-of-week Year)>". For example, "C<cron(0 10 ? * MON *)>". For more
+information, see Cron Expressions
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
 in the I<Amazon CloudWatch Events User Guide>.
 

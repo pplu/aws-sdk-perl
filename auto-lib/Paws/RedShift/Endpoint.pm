@@ -3,6 +3,7 @@ package Paws::RedShift::Endpoint;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has VpcEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcEndpoint]', request_name => 'VpcEndpoint', traits => ['NameInRequest']);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RedShift::Endpoint object:
 
-  $service_obj->Method(Att1 => { Address => $value, ..., Port => $value  });
+  $service_obj->Method(Att1 => { Address => $value, ..., VpcEndpoints => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,11 @@ The DNS address of the Cluster.
 =head2 Port => Int
 
 The port that the database engine is listening on.
+
+
+=head2 VpcEndpoints => ArrayRef[L<Paws::RedShift::VpcEndpoint>]
+
+Describes a connection endpoint.
 
 
 

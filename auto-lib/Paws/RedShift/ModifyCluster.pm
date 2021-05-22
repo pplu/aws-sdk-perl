@@ -3,6 +3,8 @@ package Paws::RedShift::ModifyCluster;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+  has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneRelocation => (is => 'ro', isa => 'Bool');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -20,6 +22,7 @@ package Paws::RedShift::ModifyCluster;
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -50,27 +53,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $ModifyClusterResult = $redshift->ModifyCluster(
       ClusterIdentifier                => 'MyString',
-      AllowVersionUpgrade              => 1,                      # OPTIONAL
-      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
-      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
-      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
-      ClusterType                      => 'MyString',             # OPTIONAL
-      ClusterVersion                   => 'MyString',             # OPTIONAL
-      ElasticIp                        => 'MyString',             # OPTIONAL
-      Encrypted                        => 1,                      # OPTIONAL
-      EnhancedVpcRouting               => 1,                      # OPTIONAL
-      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
-      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
-      KmsKeyId                         => 'MyString',             # OPTIONAL
-      MaintenanceTrackName             => 'MyString',             # OPTIONAL
-      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
-      MasterUserPassword               => 'MyString',             # OPTIONAL
-      NewClusterIdentifier             => 'MyString',             # OPTIONAL
-      NodeType                         => 'MyString',             # OPTIONAL
-      NumberOfNodes                    => 1,                      # OPTIONAL
-      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
-      PubliclyAccessible               => 1,                      # OPTIONAL
-      VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
+      AllowVersionUpgrade              => 1,             # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,             # OPTIONAL
+      AvailabilityZone                 => 'MyString',    # OPTIONAL
+      AvailabilityZoneRelocation       => 1,             # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',    # OPTIONAL
+      ClusterSecurityGroups            => [
+        'MyString', ...                                  # max: 2147483647
+      ],                                                 # OPTIONAL
+      ClusterType                    => 'MyString',      # OPTIONAL
+      ClusterVersion                 => 'MyString',      # OPTIONAL
+      ElasticIp                      => 'MyString',      # OPTIONAL
+      Encrypted                      => 1,               # OPTIONAL
+      EnhancedVpcRouting             => 1,               # OPTIONAL
+      HsmClientCertificateIdentifier => 'MyString',      # OPTIONAL
+      HsmConfigurationIdentifier     => 'MyString',      # OPTIONAL
+      KmsKeyId                       => 'MyString',      # OPTIONAL
+      MaintenanceTrackName           => 'MyString',      # OPTIONAL
+      ManualSnapshotRetentionPeriod  => 1,               # OPTIONAL
+      MasterUserPassword             => 'MyString',      # OPTIONAL
+      NewClusterIdentifier           => 'MyString',      # OPTIONAL
+      NodeType                       => 'MyString',      # OPTIONAL
+      NumberOfNodes                  => 1,               # OPTIONAL
+      Port                           => 1,               # OPTIONAL
+      PreferredMaintenanceWindow     => 'MyString',      # OPTIONAL
+      PubliclyAccessible             => 1,               # OPTIONAL
+      VpcSecurityGroupIds            => [
+        'MyString', ...                                  # max: 2147483647
+      ],                                                 # OPTIONAL
     );
 
     # Results:
@@ -104,9 +114,26 @@ If you decrease the automated snapshot retention period from its
 current value, existing automated snapshots that fall outside of the
 new retention period will be immediately deleted.
 
+You can't disable automated snapshots for RA3 node types. Set the
+automated retention period from 1-35 days.
+
 Default: Uses existing setting.
 
 Constraints: Must be a value from 0 to 35.
+
+
+
+=head2 AvailabilityZone => Str
+
+The option to initiate relocation for an Amazon Redshift cluster to the
+target Availability Zone.
+
+
+
+=head2 AvailabilityZoneRelocation => Bool
+
+The option to enable relocation for an Amazon Redshift cluster between
+Availability Zones after the cluster modification is complete.
 
 
 
@@ -210,8 +237,7 @@ in the Amazon Redshift Cluster Management Guide.
 Indicates whether the cluster is encrypted. If the value is encrypted
 (true) and you provide a value for the C<KmsKeyId> parameter, we
 encrypt the cluster with the provided C<KmsKeyId>. If you don't provide
-a C<KmsKeyId>, we encrypt with the default key. In the China region we
-use legacy encryption if you specify that the cluster is encrypted.
+a C<KmsKeyId>, we encrypt with the default key.
 
 If the value is not encrypted (false), then the cluster is decrypted.
 
@@ -367,7 +393,8 @@ in Amazon Redshift
 in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
-C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.16xlarge>
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.xlplus> |
+C<ra3.4xlarge> | C<ra3.16xlarge>
 
 
 
@@ -382,6 +409,12 @@ in Amazon Redshift
 in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: Integer greater than C<0>.
+
+
+
+=head2 Port => Int
+
+The option to change the port of an Amazon Redshift cluster.
 
 
 
