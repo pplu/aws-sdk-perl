@@ -75,7 +75,7 @@ resource record sets in a private hosted zone is unsupported.
 
 For information about creating failover resource record sets in a
 private hosted zone, see Configuring Failover in a Private Hosted Zone
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 =back
@@ -140,12 +140,12 @@ following topics in the I<Amazon Route 53 Developer Guide>:
 =item *
 
 Route 53 Health Checks and DNS Failover
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 
 =item *
 
 Configuring Failover in a Private Hosted Zone
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
 
 =back
 
@@ -160,8 +160,8 @@ from Africa to be routed to a web server with an IP address of
 C<192.0.2.111>, create a resource record set with a C<Type> of C<A> and
 a C<ContinentCode> of C<AF>.
 
-Creating geolocation and geolocation alias resource record sets in
-private hosted zones is not supported.
+Although creating geolocation and geolocation alias resource record
+sets in a private hosted zone is allowed, it's not supported.
 
 If you create separate resource record sets for overlapping geographic
 regions (for example, one resource record set for a continent and one
@@ -182,12 +182,12 @@ IP addresses aren't mapped to geographic locations, so even if you
 create geolocation resource record sets that cover all seven
 continents, Route 53 will receive some DNS queries from locations that
 it can't identify. We recommend that you create a resource record set
-for which the value of C<CountryCode> is C<*>, which handles both
-queries that come from locations for which you haven't created
-geolocation resource record sets and queries from IP addresses that
-aren't mapped to a location. If you don't create a C<*> resource record
-set, Route 53 returns a "no answer" response for queries from those
-locations.
+for which the value of C<CountryCode> is C<*>. Two groups of queries
+are routed to the resource that you specify in this record: queries
+that come from locations for which you haven't created geolocation
+resource record sets and queries from IP addresses that aren't mapped
+to a location. If you don't create a C<*> resource record set, Route 53
+returns a "no answer" response for queries from those locations.
 
 You can't create non-geolocation resource record sets that have the
 same values for the C<Name> and C<Type> elements as geolocation
@@ -242,12 +242,12 @@ How Amazon Route 53 Determines Whether an Endpoint Is Healthy
 =item *
 
 Route 53 Health Checks and DNS Failover
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 
 =item *
 
 Configuring Failover in a Private Hosted Zone
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
 
 =back
 
@@ -440,7 +440,7 @@ as identical.
 For information about how to specify characters other than C<a-z>,
 C<0-9>, and C<-> (hyphen) and how to specify internationalized domain
 names, see DNS Domain Name Format
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 You can use the asterisk (*) wildcard to replace the leftmost label in
@@ -484,8 +484,8 @@ resource typically is an AWS resource, such as an EC2 instance or an
 ELB load balancer, and is referred to by an IP address or a DNS domain
 name, depending on the record type.
 
-Creating latency and latency alias resource record sets in private
-hosted zones is not supported.
+Although creating latency and latency alias resource record sets in a
+private hosted zone is allowed, it's not supported.
 
 When Amazon Route 53 receives a DNS query for a domain name and type
 for which you have created latency resource record sets, Route 53
@@ -605,12 +605,12 @@ C<Weight>.
 
 The DNS record type. For information about different record types and
 how data is encoded for them, see Supported DNS Resource Record Types
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
-C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
-| C<TXT>
+C<CNAME> | C<DS> |C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> |
+C<SRV> | C<TXT>
 
 Values for weighted, latency, geolocation, and failover resource record
 sets: C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> |
@@ -651,7 +651,7 @@ and one with a value of C<AAAA>.
 
 =item *
 
-B<AWS Elastic Beanstalk environment that has a regionalized subdomain>:
+B<Amazon API Gateway environment that has a regionalized subdomain>:
 C<A>
 
 =item *
@@ -729,7 +729,7 @@ The effect of setting C<Weight> to C<0> is different when you associate
 health checks with weighted resource record sets. For more information,
 see Options for Configuring Route 53 Active-Active and Active-Passive
 Failover
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 =back

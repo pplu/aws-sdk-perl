@@ -54,7 +54,7 @@ Route 53 supports CloudWatch alarms with the following features:
 
 Standard-resolution metrics. High-resolution metrics aren't supported.
 For more information, see High-Resolution Metrics
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html#high-resolution-metrics)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html#high-resolution-metrics)
 in the I<Amazon CloudWatch User Guide>.
 
 =item *
@@ -73,9 +73,9 @@ to determine whether this health check is healthy, the region that the
 alarm was created in.
 
 For the current list of CloudWatch regions, see Amazon CloudWatch
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region) in
-the I<AWS Regions and Endpoints> chapter of the I<Amazon Web Services
-General Reference>.
+endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/cw_region.html) in the
+I<Amazon Web Services General Reference>.
 
 
 

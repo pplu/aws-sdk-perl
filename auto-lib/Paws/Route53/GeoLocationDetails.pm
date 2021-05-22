@@ -66,8 +66,14 @@ The name of the country.
 
 =head2 SubdivisionCode => Str
 
-The code for the subdivision. Route 53 currently supports only states
-in the United States.
+The code for the subdivision, such as a particular state within the
+United States. For a list of US state abbreviations, see Appendix B:
+TwoE<ndash>Letter State and Possession Abbreviations
+(https://pe.usps.com/text/pub28/28apb.htm) on the United States Postal
+Service website. For a list of all supported subdivision codes, use the
+ListGeoLocations
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListGeoLocations.html)
+API.
 
 
 =head2 SubdivisionName => Str

@@ -44,7 +44,39 @@ A complex type that contains information about a geographic location.
 
 The two-letter code for the continent.
 
-Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
+Amazon Route 53 supports the following continent codes:
+
+=over
+
+=item *
+
+B<AF>: Africa
+
+=item *
+
+B<AN>: Antarctica
+
+=item *
+
+B<AS>: Asia
+
+=item *
+
+B<EU>: Europe
+
+=item *
+
+B<OC>: Oceania
+
+=item *
+
+B<NA>: North America
+
+=item *
+
+B<SA>: South America
+
+=back
 
 Constraint: Specifying C<ContinentCode> with either C<CountryCode> or
 C<SubdivisionCode> returns an C<InvalidInput> error.
@@ -52,13 +84,25 @@ C<SubdivisionCode> returns an C<InvalidInput> error.
 
 =head2 CountryCode => Str
 
-The two-letter code for the country.
+For geolocation resource record sets, the two-letter code for a
+country.
+
+Amazon Route 53 uses the two-letter country codes that are specified in
+ISO standard 3166-1 alpha-2
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
 =head2 SubdivisionCode => Str
 
-The code for the subdivision. Route 53 currently supports only states
-in the United States.
+For geolocation resource record sets, the two-letter code for a state
+of the United States. Route 53 doesn't support any other values for
+C<SubdivisionCode>. For a list of state abbreviations, see Appendix B:
+TwoE<ndash>Letter State and Possession Abbreviations
+(https://pe.usps.com/text/pub28/28apb.htm) on the United States Postal
+Service website.
+
+If you specify C<subdivisioncode>, you must also specify C<US> for
+C<CountryCode>.
 
 
 

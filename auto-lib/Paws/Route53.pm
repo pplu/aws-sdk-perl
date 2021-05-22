@@ -40,6 +40,11 @@ package Paws::Route53;
   });
 
   
+  sub ActivateKeySigningKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ActivateKeySigningKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateVPCWithHostedZone {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::AssociateVPCWithHostedZone', @_);
@@ -63,6 +68,11 @@ package Paws::Route53;
   sub CreateHostedZone {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::CreateHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateKeySigningKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateKeySigningKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateQueryLoggingConfig {
@@ -95,6 +105,11 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::CreateVPCAssociationAuthorization', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeactivateKeySigningKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeactivateKeySigningKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteHealthCheck {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::DeleteHealthCheck', @_);
@@ -103,6 +118,11 @@ package Paws::Route53;
   sub DeleteHostedZone {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::DeleteHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteKeySigningKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteKeySigningKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteQueryLoggingConfig {
@@ -130,9 +150,19 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::DeleteVPCAssociationAuthorization', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableHostedZoneDNSSEC {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::DisableHostedZoneDNSSEC', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateVPCFromHostedZone {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::DisassociateVPCFromHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableHostedZoneDNSSEC {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::EnableHostedZoneDNSSEC', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAccountLimit {
@@ -148,6 +178,11 @@ package Paws::Route53;
   sub GetCheckerIpRanges {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetCheckerIpRanges', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDNSSEC {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetDNSSEC', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetGeoLocation {
@@ -238,6 +273,11 @@ package Paws::Route53;
   sub ListHostedZonesByName {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::ListHostedZonesByName', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListHostedZonesByVPC {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListHostedZonesByVPC', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListQueryLoggingConfigs {
@@ -438,7 +478,7 @@ package Paws::Route53;
   }
 
 
-  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateQueryLoggingConfig CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeleteHealthCheck DeleteHostedZone DeleteQueryLoggingConfig DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisassociateVPCFromHostedZone GetAccountLimit GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetHostedZoneLimit GetQueryLoggingConfig GetReusableDelegationSet GetReusableDelegationSetLimit GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListQueryLoggingConfigs ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
+  sub operations { qw/ActivateKeySigningKey AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateKeySigningKey CreateQueryLoggingConfig CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeactivateKeySigningKey DeleteHealthCheck DeleteHostedZone DeleteKeySigningKey DeleteQueryLoggingConfig DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisableHostedZoneDNSSEC DisassociateVPCFromHostedZone EnableHostedZoneDNSSEC GetAccountLimit GetChange GetCheckerIpRanges GetDNSSEC GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetHostedZoneLimit GetQueryLoggingConfig GetReusableDelegationSet GetReusableDelegationSetLimit GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListHostedZonesByVPC ListQueryLoggingConfigs ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
 
 1;
 
@@ -487,6 +527,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 
 =head1 METHODS
+
+=head2 ActivateKeySigningKey
+
+=over
+
+=item HostedZoneId => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::ActivateKeySigningKey>
+
+Returns: a L<Paws::Route53::ActivateKeySigningKeyResponse> instance
+
+Activates a key-signing key (KSK) so that it can be used for signing by
+DNSSEC. This operation changes the KSK status to C<ACTIVE>.
+
 
 =head2 AssociateVPCWithHostedZone
 
@@ -540,29 +599,32 @@ name. For example, you can use C<ChangeResourceRecordSets> to create a
 resource record set that routes traffic for test.example.com to a web
 server that has an IP address of 192.0.2.44.
 
+B<Deleting Resource Record Sets>
+
+To delete a resource record set, you must specify all the same values
+that you specified when you created it.
+
 B<Change Batches and Transactional Changes>
 
 The request body must include a document with a
 C<ChangeResourceRecordSetsRequest> element. The request body contains a
 list of change items, known as a change batch. Change batches are
-considered transactional changes. When using the Amazon Route 53 API to
-change resource record sets, Route 53 either makes all or none of the
-changes in a change batch request. This ensures that Route 53 never
-partially implements the intended changes to the resource record sets
-in a hosted zone.
+considered transactional changes. Route 53 validates the changes in the
+request and then either makes all or none of the changes in the change
+batch request. This ensures that DNS routing isn't adversely affected
+by partial changes to the resource record sets in a hosted zone.
 
-For example, a change batch request that deletes the C<CNAME> record
-for www.example.com and creates an alias resource record set for
-www.example.com. Route 53 deletes the first resource record set and
-creates the second resource record set in a single operation. If either
-the C<DELETE> or the C<CREATE> action fails, then both changes (plus
-any other changes in the batch) fail, and the original C<CNAME> record
+For example, suppose a change batch request contains two changes: it
+deletes the C<CNAME> resource record set for www.example.com and
+creates an alias resource record set for www.example.com. If validation
+for both records succeeds, Route 53 deletes the first resource record
+set and creates the second resource record set in a single operation.
+If validation for either the C<DELETE> or the C<CREATE> action fails,
+then the request is canceled, and the original C<CNAME> record
 continues to exist.
 
-Due to the nature of transactional changes, you can't delete the same
-resource record set more than once in a single change batch. If you
-attempt to delete the same change batch more than once, Route 53
-returns an C<InvalidChangeBatch> error.
+If you try to delete the same resource record set more than once in a
+single change batch, Route 53 returns an C<InvalidChangeBatch> error.
 
 B<Traffic Flow>
 
@@ -575,7 +637,7 @@ with one or more domain names (such as example.com) or subdomain names
 hosted zones. You can roll back the updates if the new configuration
 isn't performing as expected. For more information, see Using Traffic
 Flow to Route DNS Traffic
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 B<Create, Delete, and Upsert>
@@ -719,7 +781,7 @@ the metric, and then create a health check that is based on the state
 of the alarm. For information about creating CloudWatch metrics and
 alarms by using the CloudWatch console, see the Amazon CloudWatch User
 Guide
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html).
 
 =back
 
@@ -772,11 +834,11 @@ You can't create a hosted zone for a top-level domain (TLD) such as
 
 =item *
 
-For public hosted zones, Amazon Route 53 automatically creates a
-default SOA record and four NS records for the zone. For more
-information about SOA and NS records, see NS and SOA Records that Route
-53 Creates for a Hosted Zone
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
+For public hosted zones, Route 53 automatically creates a default SOA
+record and four NS records for the zone. For more information about SOA
+and NS records, see NS and SOA Records that Route 53 Creates for a
+Hosted Zone
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 If you want to use the same name servers for multiple public hosted
@@ -789,7 +851,7 @@ If your domain is registered with a registrar other than Route 53, you
 must update the name servers with your registrar to make Route 53 the
 DNS service for the domain. For more information, see Migrating DNS
 Service for an Existing Domain to Amazon Route 53
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 =back
@@ -799,6 +861,34 @@ the hosted zone is C<PENDING>. For public hosted zones, this means that
 the NS and SOA records are not yet available on all Route 53 DNS
 servers. When the NS and SOA records are available, the status of the
 zone changes to C<INSYNC>.
+
+The C<CreateHostedZone> request requires the caller to have an
+C<ec2:DescribeVpcs> permission.
+
+
+=head2 CreateKeySigningKey
+
+=over
+
+=item CallerReference => Str
+
+=item HostedZoneId => Str
+
+=item KeyManagementServiceArn => Str
+
+=item Name => Str
+
+=item Status => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::CreateKeySigningKey>
+
+Returns: a L<Paws::Route53::CreateKeySigningKeyResponse> instance
+
+Creates a new key-signing key (KSK) associated with a hosted zone. You
+can only have two KSKs per hosted zone.
 
 
 =head2 CreateQueryLoggingConfig
@@ -993,16 +1083,19 @@ Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegati
 Returns: a L<Paws::Route53::CreateReusableDelegationSetResponse> instance
 
 Creates a delegation set (a group of four name servers) that can be
-reused by multiple hosted zones. If a hosted zoned ID is specified,
-C<CreateReusableDelegationSet> marks the delegation set associated with
-that zone as reusable.
+reused by multiple hosted zones that were created by the same AWS
+account.
+
+You can also create a reusable delegation set that uses the four name
+servers that are associated with an existing hosted zone. Specify the
+hosted zone ID in the C<CreateReusableDelegationSet> request.
 
 You can't associate a reusable delegation set with a private hosted
 zone.
 
 For information about using a reusable delegation set to configure
 white label name servers, see Configuring White Label Name Servers
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
 
 The process for migrating existing hosted zones to use a reusable
 delegation set is comparable to the process for configuring white label
@@ -1175,6 +1268,26 @@ account with a hosted zone that you created by using a different
 account, you must submit one authorization request for each VPC.
 
 
+=head2 DeactivateKeySigningKey
+
+=over
+
+=item HostedZoneId => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::DeactivateKeySigningKey>
+
+Returns: a L<Paws::Route53::DeactivateKeySigningKeyResponse> instance
+
+Deactivates a key-signing key (KSK) so that it will not be used for
+signing by DNSSEC. This operation changes the KSK status to
+C<INACTIVE>.
+
+
 =head2 DeleteHealthCheck
 
 =over
@@ -1197,8 +1310,15 @@ resource record sets, the future status of the health check can't be
 predicted and may change. This will affect the routing of DNS queries
 for your DNS failover configuration. For more information, see
 Replacing and Deleting Health Checks
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html)
 in the I<Amazon Route 53 Developer Guide>.
+
+If you're using AWS Cloud Map and you configured Cloud Map to create a
+Route 53 health check when you register an instance, you can't use the
+Route 53 C<DeleteHealthCheck> command to delete the health check. The
+health check is deleted automatically when you deregister the instance;
+there can be a delay of several hours before the health check is
+deleted from Route 53.
 
 
 =head2 DeleteHostedZone
@@ -1278,6 +1398,26 @@ associated with the current AWS account.
 
 
 
+=head2 DeleteKeySigningKey
+
+=over
+
+=item HostedZoneId => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::DeleteKeySigningKey>
+
+Returns: a L<Paws::Route53::DeleteKeySigningKeyResponse> instance
+
+Deletes a key-signing key (KSK). Before you can delete a KSK, you must
+deactivate it. The KSK must be deactivated before you can delete it
+regardless of whether the hosted zone is enabled for DNSSEC signing.
+
+
 =head2 DeleteQueryLoggingConfig
 
 =over
@@ -1342,6 +1482,31 @@ Returns: a L<Paws::Route53::DeleteTrafficPolicyResponse> instance
 
 Deletes a traffic policy.
 
+When you delete a traffic policy, Route 53 sets a flag on the policy to
+indicate that it has been deleted. However, Route 53 never fully
+deletes the traffic policy. Note the following:
+
+=over
+
+=item *
+
+Deleted traffic policies aren't listed if you run ListTrafficPolicies
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html).
+
+=item *
+
+There's no way to get a list of deleted policies.
+
+=item *
+
+If you retain the ID of the policy, you can get information about the
+policy, including the traffic policy document, by running
+GetTrafficPolicy
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html).
+
+=back
+
+
 
 =head2 DeleteTrafficPolicyInstance
 
@@ -1392,6 +1557,24 @@ the hosted zone. If you want to delete an existing association, use
 C<DisassociateVPCFromHostedZone>.
 
 
+=head2 DisableHostedZoneDNSSEC
+
+=over
+
+=item HostedZoneId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::DisableHostedZoneDNSSEC>
+
+Returns: a L<Paws::Route53::DisableHostedZoneDNSSECResponse> instance
+
+Disables DNSSEC signing in a specific hosted zone. This action does not
+deactivate any key-signing keys (KSKs) that are active in the hosted
+zone.
+
+
 =head2 DisassociateVPCFromHostedZone
 
 =over
@@ -1409,14 +1592,14 @@ Each argument is described in detail in: L<Paws::Route53::DisassociateVPCFromHos
 
 Returns: a L<Paws::Route53::DisassociateVPCFromHostedZoneResponse> instance
 
-Disassociates a VPC from a Amazon Route 53 private hosted zone. Note
-the following:
+Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
+Amazon Route 53 private hosted zone. Note the following:
 
 =over
 
 =item *
 
-You can't disassociate the last VPC from a private hosted zone.
+You can't disassociate the last Amazon VPC from a private hosted zone.
 
 =item *
 
@@ -1426,10 +1609,40 @@ You can't convert a private hosted zone into a public hosted zone.
 
 You can submit a C<DisassociateVPCFromHostedZone> request using either
 the account that created the hosted zone or the account that created
-the VPC.
+the Amazon VPC.
+
+=item *
+
+Some services, such as AWS Cloud Map and Amazon Elastic File System
+(Amazon EFS) automatically create hosted zones and associate VPCs with
+the hosted zones. A service can create a hosted zone using your account
+or using its own account. You can disassociate a VPC from a hosted zone
+only if the service created the hosted zone using your account.
+
+When you run DisassociateVPCFromHostedZone
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html),
+if the hosted zone has a value for C<OwningAccount>, you can use
+C<DisassociateVPCFromHostedZone>. If the hosted zone has a value for
+C<OwningService>, you can't use C<DisassociateVPCFromHostedZone>.
 
 =back
 
+
+
+=head2 EnableHostedZoneDNSSEC
+
+=over
+
+=item HostedZoneId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::EnableHostedZoneDNSSEC>
+
+Returns: a L<Paws::Route53::EnableHostedZoneDNSSECResponse> instance
+
+Enables DNSSEC signing in a specific hosted zone.
 
 
 =head2 GetAccountLimit
@@ -1505,11 +1718,31 @@ Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
 Returns: a L<Paws::Route53::GetCheckerIpRangesResponse> instance
 
+Route 53 does not perform authorization for this API because it
+retrieves information that is already available to the public.
+
 C<GetCheckerIpRanges> still works, but we recommend that you download
 ip-ranges.json, which includes IP address ranges for all AWS services.
 For more information, see IP Address Ranges of Amazon Route 53 Servers
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
 in the I<Amazon Route 53 Developer Guide>.
+
+
+=head2 GetDNSSEC
+
+=over
+
+=item HostedZoneId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::GetDNSSEC>
+
+Returns: a L<Paws::Route53::GetDNSSECResponse> instance
+
+Returns information about DNSSEC for a specific hosted zone, including
+the key-signing keys (KSKs) in the hosted zone.
 
 
 =head2 GetGeoLocation
@@ -1531,6 +1764,9 @@ Returns: a L<Paws::Route53::GetGeoLocationResponse> instance
 
 Gets information about whether a specified geographic location is
 supported for Amazon Route 53 geolocation resource record sets.
+
+Route 53 does not perform authorization for this API because it
+retrieves information that is already available to the public.
 
 Use the following syntax to determine whether a continent is supported
 for geolocation:
@@ -1752,6 +1988,10 @@ Returns: a L<Paws::Route53::GetTrafficPolicyResponse> instance
 
 Gets information about a specific traffic policy version.
 
+For information about how of deleting a traffic policy affects the
+response from C<GetTrafficPolicy>, see DeleteTrafficPolicy
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html).
+
 
 =head2 GetTrafficPolicyInstance
 
@@ -1818,6 +2058,13 @@ Countries are listed first, and continents are listed last. If Amazon
 Route 53 supports subdivisions for a country (for example, states or
 provinces), the subdivisions for that country are listed in
 alphabetical order immediately after the corresponding country.
+
+Route 53 does not perform authorization for this API because it
+retrieves information that is already available to the public.
+
+For a list of supported geolocation codes, see the GeoLocation
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html)
+data type.
 
 
 =head2 ListHealthChecks
@@ -1906,7 +2153,7 @@ C<com.ex\344mple.>
 The labels are reversed and alphabetized using the escaped value. For
 more information about valid domain name formats, including
 internationalized domain names, see DNS Domain Name Format
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 Route 53 returns up to 100 items in each response. If you have a lot of
@@ -1945,6 +2192,49 @@ that is associated with the current AWS account. If you want to list
 more hosted zones, make another call to C<ListHostedZonesByName>, and
 specify the value of C<NextDNSName> and C<NextHostedZoneId> in the
 C<dnsname> and C<hostedzoneid> parameters, respectively.
+
+=back
+
+
+
+=head2 ListHostedZonesByVPC
+
+=over
+
+=item VPCId => Str
+
+=item VPCRegion => Str
+
+=item [MaxItems => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Route53::ListHostedZonesByVPC>
+
+Returns: a L<Paws::Route53::ListHostedZonesByVPCResponse> instance
+
+Lists all the private hosted zones that a specified VPC is associated
+with, regardless of which AWS account or AWS service owns the hosted
+zones. The C<HostedZoneOwner> structure in the response contains one of
+the following values:
+
+=over
+
+=item *
+
+An C<OwningAccount> element, which contains the account number of
+either the current AWS account or another AWS account. Some services,
+such as AWS Cloud Map, create hosted zones using the current account.
+
+=item *
+
+An C<OwningService> element, which identifies the AWS service that
+created and owns the hosted zone. For example, if a hosted zone was
+created by Amazon Elastic File System (Amazon EFS), the value of
+C<Owner> is C<efs.amazonaws.com>.
 
 =back
 
@@ -2002,7 +2292,7 @@ Returns: a L<Paws::Route53::ListResourceRecordSetsResponse> instance
 
 Lists the resource record sets in a specified hosted zone.
 
-C<ListResourceRecordSets> returns up to 100 resource record sets at a
+C<ListResourceRecordSets> returns up to 300 resource record sets at a
 time in ASCII order, beginning at a position specified by the C<name>
 and C<type> elements.
 
@@ -2159,6 +2449,10 @@ Returns: a L<Paws::Route53::ListTrafficPoliciesResponse> instance
 Gets information about the latest version for every traffic policy that
 is associated with the current AWS account. Policies are listed in the
 order that they were created in.
+
+For information about how of deleting a traffic policy affects the
+response from C<ListTrafficPolicies>, see DeleteTrafficPolicy
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html).
 
 
 =head2 ListTrafficPolicyInstances
@@ -2340,6 +2634,8 @@ request for a specified record name and type. You can optionally
 specify the IP address of a DNS resolver, an EDNS0 client subnet IP
 address, and a subnet mask.
 
+This call only supports querying public hosted zones.
+
 
 =head2 UpdateHealthCheck
 
@@ -2391,7 +2687,7 @@ updated.
 
 For more information about updating health checks, see Creating,
 Updating, and Deleting Health Checks
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 
