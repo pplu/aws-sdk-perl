@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceGro
 
 =head1 DESCRIPTION
 
-A filter name and value pair that is used to obtain more specific
-results from a list of groups.
+A filter collection that you can use to restrict the results from a
+C<List> operation to only those you want to include.
 
 =head1 ATTRIBUTES
 

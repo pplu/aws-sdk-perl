@@ -34,21 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceGro
 
 =head1 DESCRIPTION
 
-The underlying resource query of a resource group. Resources that match
-query results are part of the group.
+A mapping of a query attached to a resource group that determines the
+AWS resources that are members of the group.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> GroupName => Str
 
-The name of a resource group that is associated with a specific
+The name of the resource group that is associated with the specified
 resource query.
 
 
 =head2 B<REQUIRED> ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
 
-The resource query which determines which AWS resources are members of
+The resource query that determines which AWS resources are members of
 the associated resource group.
 
 

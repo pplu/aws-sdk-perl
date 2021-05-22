@@ -56,23 +56,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =head2 MaxResults => Int
 
-The maximum number of group member ARNs returned by C<SearchResources>
-in paginated output. By default, this number is 50.
+The total number of results that you want included on each page of the
+response. If you do not include this parameter, it defaults to a value
+that is specific to the operation. If additional items exist beyond the
+maximum you specify, the C<NextToken> response element is present and
+has a value (is not null). Include that value as the C<NextToken>
+request parameter in the next call to the operation to get the next
+part of the results. Note that the service might return fewer results
+than the maximum even when there are more results available. You should
+check C<NextToken> after every operation to ensure that you receive all
+of the results.
 
 
 
 =head2 NextToken => Str
 
-The NextToken value that is returned in a paginated C<SearchResources>
-request. To get the next page of results, run the call again, add the
-NextToken parameter, and specify the NextToken value.
+The parameter for receiving additional results if you receive a
+C<NextToken> response in a previous request. A C<NextToken> response
+indicates that more output is available. Set this parameter to the
+value provided by a previous call's C<NextToken> response to indicate
+where the output should continue from.
 
 
 
 =head2 B<REQUIRED> ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
 
 The search query, using the same formats that are supported for
-resource group definition.
+resource group definition. For more information, see CreateGroup.
 
 
 

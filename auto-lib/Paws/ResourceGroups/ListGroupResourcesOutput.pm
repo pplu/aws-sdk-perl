@@ -4,6 +4,7 @@ package Paws::ResourceGroups::ListGroupResourcesOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has QueryErrors => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::QueryError]');
   has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::ResourceIdentifier]');
+  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::ListGroupResourcesItem]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -19,8 +20,11 @@ Paws::ResourceGroups::ListGroupResourcesOutput
 
 =head2 NextToken => Str
 
-The NextToken value to include in a subsequent C<ListGroupResources>
-request, to get more results.
+If present, indicates that more output is available than is included in
+the current response. Use this value in the C<NextToken> request
+parameter in a subsequent call to the operation to get the next part of
+the output. You should repeat this until the C<NextToken> response
+element comes back as C<null>.
 
 
 =head2 QueryErrors => ArrayRef[L<Paws::ResourceGroups::QueryError>]
@@ -33,8 +37,14 @@ C<CLOUDFORMATION_STACK_NOT_EXISTING>.
 
 =head2 ResourceIdentifiers => ArrayRef[L<Paws::ResourceGroups::ResourceIdentifier>]
 
-The ARNs and resource types of resources that are members of the group
-that you specified.
+B<I<Deprecated - don't use this parameter. Use the C<Resources>
+response field instead.>>
+
+
+=head2 Resources => ArrayRef[L<Paws::ResourceGroups::ListGroupResourcesItem>]
+
+An array of resources from which you can determine each resource's
+identity, type, and group membership status.
 
 
 =head2 _request_id => Str

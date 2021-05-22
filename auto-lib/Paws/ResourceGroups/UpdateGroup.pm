@@ -2,13 +2,14 @@
 package Paws::ResourceGroups::UpdateGroup;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupName', required => 1);
+  has Group => (is => 'ro', isa => 'Str');
+  has GroupName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups/{GroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/update-group');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::UpdateGroupOutput');
 1;
 
@@ -30,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $resource-groups = Paws->service('ResourceGroups');
     my $UpdateGroupOutput = $resource -groups->UpdateGroup(
-      GroupName   => 'MyGroupName',
-      Description => 'MyGroupDescription',    # OPTIONAL
+      Description => 'MyDescription',    # OPTIONAL
+      Group       => 'MyGroupString',    # OPTIONAL
+      GroupName   => 'MyGroupName',      # OPTIONAL
     );
 
     # Results:
@@ -47,16 +49,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =head2 Description => Str
 
-The description of the resource group. Descriptions can have a maximum
-of 511 characters, including letters, numbers, hyphens, underscores,
-punctuation, and spaces.
+The new description that you want to update the resource group with.
+Descriptions can contain letters, numbers, hyphens, underscores,
+periods, and spaces.
 
 
 
-=head2 B<REQUIRED> GroupName => Str
+=head2 Group => Str
 
-The name of the resource group for which you want to update its
-description.
+The name or the ARN of the resource group to modify.
+
+
+
+=head2 GroupName => Str
+
+Don't use this parameter. Use C<Group> instead.
 
 
 

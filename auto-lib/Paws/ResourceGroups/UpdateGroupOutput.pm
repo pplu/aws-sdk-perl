@@ -17,7 +17,7 @@ Paws::ResourceGroups::UpdateGroupOutput
 
 =head2 Group => L<Paws::ResourceGroups::Group>
 
-The full description of the resource group after it has been updated.
+The update description of the resource group.
 
 
 =head2 _request_id => Str

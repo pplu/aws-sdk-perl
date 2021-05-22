@@ -18,12 +18,12 @@ Paws::ResourceGroups::UntagOutput
 
 =head2 Arn => Str
 
-The ARN of the resource from which tags have been removed.
+The ARN of the resource group from which tags have been removed.
 
 
 =head2 Keys => ArrayRef[Str|Undef]
 
-The keys of tags that have been removed.
+The keys of the tags that were removed.
 
 
 =head2 _request_id => Str

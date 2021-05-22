@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListGroupsOutput = $resource -groups->ListGroups(
       Filters => [
         {
-          Name   => 'resource-type',    # values: resource-type
+          Name   => 'resource-type', # values: resource-type, configuration-type
           Values => [
             'MyGroupFilterValue', ...    # min: 1, max: 128
           ],                             # min: 1, max: 5
@@ -61,15 +61,34 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 =head2 Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>]
 
 Filters, formatted as GroupFilter objects, that you want to apply to a
-ListGroups operation.
+C<ListGroups> operation.
 
 =over
 
 =item *
 
-C<resource-type> - Filter groups by resource type. Specify up to five
-resource types in the format AWS::ServiceCode::ResourceType. For
-example, AWS::EC2::Instance, or AWS::S3::Bucket.
+C<resource-type> - Filter the results to include only those of the
+specified resource types. Specify up to five resource types in the
+format C<AWS::I<ServiceCode>::I<ResourceType> >. For example,
+C<AWS::EC2::Instance>, or C<AWS::S3::Bucket>.
+
+=item *
+
+C<configuration-type> - Filter the results to include only those groups
+that have the specified configuration types attached. The current
+supported values are:
+
+=over
+
+=item *
+
+C<AWS:EC2::CapacityReservationPool>
+
+=item *
+
+C<AWS:EC2::HostManagement>
+
+=back
 
 =back
 
@@ -78,16 +97,26 @@ example, AWS::EC2::Instance, or AWS::S3::Bucket.
 
 =head2 MaxResults => Int
 
-The maximum number of resource group results that are returned by
-ListGroups in paginated output. By default, this number is 50.
+The total number of results that you want included on each page of the
+response. If you do not include this parameter, it defaults to a value
+that is specific to the operation. If additional items exist beyond the
+maximum you specify, the C<NextToken> response element is present and
+has a value (is not null). Include that value as the C<NextToken>
+request parameter in the next call to the operation to get the next
+part of the results. Note that the service might return fewer results
+than the maximum even when there are more results available. You should
+check C<NextToken> after every operation to ensure that you receive all
+of the results.
 
 
 
 =head2 NextToken => Str
 
-The NextToken value that is returned in a paginated C<ListGroups>
-request. To get the next page of results, run the call again, add the
-NextToken parameter, and specify the NextToken value.
+The parameter for receiving additional results if you receive a
+C<NextToken> response in a previous request. A C<NextToken> response
+indicates that more output is available. Set this parameter to the
+value provided by a previous call's C<NextToken> response to indicate
+where the output should continue from.
 
 
 
