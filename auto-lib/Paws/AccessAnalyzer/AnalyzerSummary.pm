@@ -6,6 +6,8 @@ package Paws::AccessAnalyzer::AnalyzerSummary;
   has LastResourceAnalyzed => (is => 'ro', isa => 'Str', request_name => 'lastResourceAnalyzed', traits => ['NameInRequest']);
   has LastResourceAnalyzedAt => (is => 'ro', isa => 'Str', request_name => 'lastResourceAnalyzedAt', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has StatusReason => (is => 'ro', isa => 'Paws::AccessAnalyzer::StatusReason', request_name => 'statusReason', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::AccessAnalyzer::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 
@@ -67,6 +69,27 @@ The time at which the most recently analyzed resource was analyzed.
 =head2 B<REQUIRED> Name => Str
 
 The name of the analyzer.
+
+
+=head2 B<REQUIRED> Status => Str
+
+The status of the analyzer. An C<Active> analyzer successfully monitors
+supported resources and generates new findings. The analyzer is
+C<Disabled> when a user action, such as removing trusted access for AWS
+IAM Access Analyzer from AWS Organizations, causes the analyzer to stop
+generating new findings. The status is C<Creating> when the analyzer
+creation is in progress and C<Failed> when the analyzer creation has
+failed.
+
+
+=head2 StatusReason => L<Paws::AccessAnalyzer::StatusReason>
+
+The C<statusReason> provides more details about the current status of
+the analyzer. For example, if the creation for the analyzer fails, a
+C<Failed> status is returned. For an analyzer with organization as the
+type, this failure can be due to an issue with creating the
+service-linked roles required in the member accounts of the AWS
+organization.
 
 
 =head2 Tags => L<Paws::AccessAnalyzer::TagsMap>

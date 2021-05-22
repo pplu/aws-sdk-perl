@@ -17,7 +17,7 @@ Paws::AccessAnalyzer::GetAnalyzedResourceResponse
 
 =head2 Resource => L<Paws::AccessAnalyzer::AnalyzedResource>
 
-An C<AnalyedResource> object that contains information that Access
+An C<AnalyzedResource> object that contains information that Access
 Analyzer found when it analyzed the resource.
 
 

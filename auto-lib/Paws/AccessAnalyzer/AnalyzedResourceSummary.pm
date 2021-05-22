@@ -2,6 +2,7 @@
 package Paws::AccessAnalyzer::AnalyzedResourceSummary;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
+  has ResourceOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'resourceOwnerAccount', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
 
 1;
@@ -42,6 +43,11 @@ Contains the ARN of the analyzed resource.
 =head2 B<REQUIRED> ResourceArn => Str
 
 The ARN of the analyzed resource.
+
+
+=head2 B<REQUIRED> ResourceOwnerAccount => Str
+
+The AWS account ID that owns the resource.
 
 
 =head2 B<REQUIRED> ResourceType => Str

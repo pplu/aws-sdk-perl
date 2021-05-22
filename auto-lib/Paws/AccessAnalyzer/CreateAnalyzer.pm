@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Contains => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
               Eq       => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
               Exists => 1,                        # OPTIONAL
-              Neq => [ 'MyString', ... ],         # min: 1, max: 20; OPTIONAL
+              Neq    => [ 'MyString', ... ],      # min: 1, max: 20; OPTIONAL
             },
           },
           RuleName => 'MyName',                   # min: 1, max: 255
@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                          # OPTIONAL
-      ClientToken => 'MyString',                  # OPTIONAL
-      Tags => { 'MyString' => 'MyString', },      # OPTIONAL
+      ClientToken => 'MyString',                       # OPTIONAL
+      Tags        => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
@@ -93,10 +93,11 @@ The tags to apply to the analyzer.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of analyzer to create. Only ACCOUNT analyzers are supported.
-You can create only one analyzer per account per Region.
+The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
+are supported. You can create only one analyzer per account per Region.
+You can create up to 5 analyzers per organization per Region.
 
-Valid values are: C<"ACCOUNT">
+Valid values are: C<"ACCOUNT">, C<"ORGANIZATION">
 
 
 =head1 SEE ALSO

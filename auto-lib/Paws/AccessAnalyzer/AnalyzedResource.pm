@@ -7,6 +7,7 @@ package Paws::AccessAnalyzer::AnalyzedResource;
   has Error => (is => 'ro', isa => 'Str', request_name => 'error', traits => ['NameInRequest']);
   has IsPublic => (is => 'ro', isa => 'Bool', request_name => 'isPublic', traits => ['NameInRequest'], required => 1);
   has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
+  has ResourceOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'resourceOwnerAccount', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
   has SharedVia => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sharedVia', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -79,6 +80,11 @@ access to the resource.
 The ARN of the resource that was analyzed.
 
 
+=head2 B<REQUIRED> ResourceOwnerAccount => Str
+
+The AWS account ID that owns the resource.
+
+
 =head2 B<REQUIRED> ResourceType => Str
 
 The type of the resource that was analyzed.
@@ -86,7 +92,8 @@ The type of the resource that was analyzed.
 
 =head2 SharedVia => ArrayRef[Str|Undef]
 
-Indicates how the access that generated the finding is granted.
+Indicates how the access that generated the finding is granted. This is
+populated for Amazon S3 bucket findings.
 
 
 =head2 Status => Str

@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Contains => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
           Eq       => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
           Exists => 1,                        # OPTIONAL
-          Neq => [ 'MyString', ... ],         # min: 1, max: 20; OPTIONAL
+          Neq    => [ 'MyString', ... ],      # min: 1, max: 20; OPTIONAL
         },
       },    # OPTIONAL
       MaxResults => 1,            # OPTIONAL
@@ -64,7 +64,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acc
 
 =head2 B<REQUIRED> AnalyzerArn => Str
 
-The ARN of the analyzer to retrieve findings from.
+The ARN of the analyzer
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+to retrieve findings from.
 
 
 
