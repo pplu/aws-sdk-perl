@@ -62,6 +62,13 @@ C<5>.
 An array of objects that describe the projected utilization metrics of
 the instance recommendation option.
 
+The C<Cpu> and C<Memory> metrics are the only projected utilization
+metrics returned. Additionally, the C<Memory> metric is returned only
+for resources that have the unified CloudWatch agent installed on them.
+For more information, see Enabling Memory Utilization with the
+CloudWatch Agent
+(https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent).
+
 
 =head2 Rank => Int
 

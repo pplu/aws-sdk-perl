@@ -19,7 +19,8 @@ Paws::ComputeOptimizer::GetEnrollmentStatusResponse
 =head2 MemberAccountsEnrolled => Bool
 
 Confirms the enrollment status of member accounts within the
-organization, if the account is a master account of an organization.
+organization, if the account is a management account of an
+organization.
 
 
 =head2 Status => Str

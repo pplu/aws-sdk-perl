@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetEC2InstanceRecommendationsResponse =
       $compute -optimizer->GetEC2InstanceRecommendations(
       AccountIds => [ 'MyAccountId', ... ],    # OPTIONAL
-      Filters => [
+      Filters    => [
         {
           Name =>
             'Finding',    # values: Finding, RecommendationSourceType; OPTIONAL
@@ -63,7 +63,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-The AWS account IDs for which to return instance recommendations.
+The ID of the AWS account for which to return instance recommendations.
+
+If your account is the management account of an organization, use this
+parameter to specify the member account for which you want to return
+instance recommendations.
 
 Only one account ID can be specified per request.
 
@@ -86,10 +90,10 @@ recommendations.
 =head2 MaxResults => Int
 
 The maximum number of instance recommendations to return with a single
-call.
+request.
 
-To retrieve the remaining results, make another call with the returned
-C<NextToken> value.
+To retrieve the remaining results, make another request with the
+returned C<NextToken> value.
 
 
 

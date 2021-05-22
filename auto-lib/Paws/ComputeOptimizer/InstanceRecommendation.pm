@@ -49,7 +49,7 @@ Describes an Amazon EC2 instance recommendation.
 
 =head2 AccountId => Str
 
-The AWS account ID of the instance recommendation.
+The AWS account ID of the instance.
 
 
 =head2 CurrentInstanceType => Str
@@ -93,8 +93,6 @@ Compute Optimizer might recommend a new generation instance type.
 
 =back
 
-The values that are returned might be C<UNDER_PROVISIONED>,
-C<OVER_PROVISIONED>, or C<OPTIMIZED>.
 
 
 =head2 InstanceArn => Str

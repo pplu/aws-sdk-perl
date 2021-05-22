@@ -91,7 +91,6 @@ instance type.
 
 =back
 
-The values that are returned might be C<NOT_OPTIMIZED> or C<OPTIMIZED>.
 
 
 =head2 LastRefreshTimestamp => Str

@@ -37,6 +37,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComputeOpti
 
 Describes a projected utilization metric of a recommendation option.
 
+The C<Cpu> and C<Memory> metrics are the only projected utilization
+metrics returned when you run the
+C<GetEC2RecommendationProjectedMetrics> action. Additionally, the
+C<Memory> metric is returned only for resources that have the unified
+CloudWatch agent installed on them. For more information, see Enabling
+Memory Utilization with the CloudWatch Agent
+(https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent).
+
 =head1 ATTRIBUTES
 
 
