@@ -3,6 +3,7 @@ package Paws::Health::OrganizationEvent;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
+  has EventScopeCode => (is => 'ro', isa => 'Str', request_name => 'eventScopeCode', traits => ['NameInRequest']);
   has EventTypeCategory => (is => 'ro', isa => 'Str', request_name => 'eventTypeCategory', traits => ['NameInRequest']);
   has EventTypeCode => (is => 'ro', isa => 'Str', request_name => 'eventTypeCode', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
@@ -42,22 +43,56 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Org
 =head1 DESCRIPTION
 
 Summary information about an event, returned by the
-DescribeEventsForOrganization operation.
+DescribeEventsForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventsForOrganization.html)
+operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-The unique identifier for the event. Format:
+The unique identifier for the event. The event ARN has the
 C<arn:aws:health:I<event-region>::event/I<SERVICE>/I<EVENT_TYPE_CODE>/I<EVENT_TYPE_PLUS_ID>
->. Example: C<Example:
-arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
+> format.
+
+For example, an event ARN might look like the following:
+
+C<arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
 
 
 =head2 EndTime => Str
 
 The date and time that the event ended.
+
+
+=head2 EventScopeCode => Str
+
+This parameter specifies if the AWS Health event is a public AWS
+service event or an account-specific event.
+
+=over
+
+=item *
+
+If the C<eventScopeCode> value is C<PUBLIC>, then the
+C<affectedAccounts> value is always empty.
+
+=item *
+
+If the C<eventScopeCode> value is C<ACCOUNT_SPECIFIC>, then the
+C<affectedAccounts> value lists the affected AWS accounts in your
+organization. For example, if an event affects a service such as Amazon
+Elastic Compute Cloud and you have AWS accounts that use that service,
+those account IDs appear in the response.
+
+=item *
+
+If the C<eventScopeCode> value is C<NONE>, then the C<eventArn> that
+you specified in the request is invalid or doesn't exist.
+
+=back
+
 
 
 =head2 EventTypeCategory => Str
@@ -84,7 +119,7 @@ The AWS Region name of the event.
 
 =head2 Service => Str
 
-The AWS service that is affected by the event. For example, EC2, RDS.
+The AWS service that is affected by the event, such as EC2 and RDS.
 
 
 =head2 StartTime => Str

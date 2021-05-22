@@ -34,7 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Eve
 =head1 DESCRIPTION
 
 The detailed description of the event. Included in the information
-returned by the DescribeEventDetails operation.
+returned by the DescribeEventDetails
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetails.html)
+operation.
 
 =head1 ATTRIBUTES
 

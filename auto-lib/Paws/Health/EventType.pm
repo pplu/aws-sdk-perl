@@ -35,10 +35,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Eve
 
 =head1 DESCRIPTION
 
-Metadata about a type of event that is reported by AWS Health. Data
-consists of the category (for example, C<issue>), the service (for
-example, C<EC2>), and the event type code (for example,
-C<AWS_EC2_SYSTEM_MAINTENANCE_EVENT>).
+Contains the metadata about a type of event that is reported by AWS
+Health. The C<EventType> shows the category, service, and the event
+type code of the event. For example, an C<issue> might be the category,
+C<EC2> the service, and C<AWS_EC2_SYSTEM_MAINTENANCE_EVENT> the event
+type code.
+
+You can use the DescribeEventTypes
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventTypes.html)
+API operation to return this information about an event.
+
+You can also use the Amazon CloudWatch Events console to create a rule
+so that you can get notified or take action when AWS Health delivers a
+specific event to your AWS account. For more information, see Monitor
+for AWS Health events with Amazon CloudWatch Events
+(https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html)
+in the I<AWS Health User Guide>.
 
 =head1 ATTRIBUTES
 

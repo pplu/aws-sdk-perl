@@ -44,6 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Org
 =head1 DESCRIPTION
 
 The values to filter results from the DescribeEventsForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventsForOrganization.html)
 operation.
 
 =head1 ATTRIBUTES
@@ -62,7 +63,7 @@ entities.
 
 =head2 EntityArns => ArrayRef[Str|Undef]
 
-REPLACEME
+A list of entity ARNs (unique identifiers).
 
 
 =head2 EntityValues => ArrayRef[Str|Undef]
@@ -78,7 +79,8 @@ A list of event status codes.
 
 =head2 EventTypeCategories => ArrayRef[Str|Undef]
 
-REPLACEME
+A list of event type category codes (issue, scheduledChange, or
+accountNotification).
 
 
 =head2 EventTypeCodes => ArrayRef[Str|Undef]

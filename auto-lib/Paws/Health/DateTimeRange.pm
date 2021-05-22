@@ -34,13 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Dat
 
 =head1 DESCRIPTION
 
-A range of dates and times that is used by the EventFilter and
-EntityFilter objects. If C<from> is set and C<to> is set: match items
-where the timestamp (C<startTime>, C<endTime>, or C<lastUpdatedTime>)
-is between C<from> and C<to> inclusive. If C<from> is set and C<to> is
-not set: match items where the timestamp value is equal to or after
-C<from>. If C<from> is not set and C<to> is set: match items where the
-timestamp value is equal to or before C<to>.
+A range of dates and times that is used by the EventFilter
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EventFilter.html)
+and EntityFilter
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EntityFilter.html)
+objects. If C<from> is set and C<to> is set: match items where the
+timestamp (C<startTime>, C<endTime>, or C<lastUpdatedTime>) is between
+C<from> and C<to> inclusive. If C<from> is set and C<to> is not set:
+match items where the timestamp value is equal to or after C<from>. If
+C<from> is not set and C<to> is set: match items where the timestamp
+value is equal to or before C<to>.
 
 =head1 ATTRIBUTES
 

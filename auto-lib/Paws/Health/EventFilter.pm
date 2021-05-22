@@ -45,15 +45,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Eve
 
 =head1 DESCRIPTION
 
-The values to use to filter results from the DescribeEvents and
-DescribeEventAggregates operations.
+The values to use to filter results from the DescribeEvents
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEvents.html)
+and DescribeEventAggregates
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventAggregates.html)
+operations.
 
 =head1 ATTRIBUTES
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-A list of AWS availability zones.
+A list of AWS Availability Zones.
 
 
 =head2 EndTimes => ArrayRef[L<Paws::Health::DateTimeRange>]
@@ -103,7 +106,7 @@ A list of dates and times that the event was last updated.
 
 =head2 Regions => ArrayRef[Str|Undef]
 
-A list of AWS regions.
+A list of AWS Regions.
 
 
 =head2 Services => ArrayRef[Str|Undef]
@@ -120,6 +123,8 @@ A list of dates and times that the event began.
 =head2 Tags => ArrayRef[L<Paws::Health::TagSet>]
 
 A map of entity tags attached to the affected entity.
+
+Currently, the C<tags> property isn't supported.
 
 
 

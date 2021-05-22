@@ -70,10 +70,13 @@ The ID of the affected entity.
 
 =head2 EventArn => Str
 
-The unique identifier for the event. Format:
+The unique identifier for the event. The event ARN has the
 C<arn:aws:health:I<event-region>::event/I<SERVICE>/I<EVENT_TYPE_CODE>/I<EVENT_TYPE_PLUS_ID>
->. Example: C<Example:
-arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
+> format.
+
+For example, an event ARN might look like the following:
+
+C<arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
 
 
 =head2 LastUpdatedTime => Str
@@ -90,6 +93,8 @@ possible values are C<IMPAIRED>, C<UNIMPAIRED>, and C<UNKNOWN>.
 =head2 Tags => L<Paws::Health::TagSet>
 
 A map of entity tags attached to the affected entity.
+
+Currently, the C<tags> property isn't supported.
 
 
 

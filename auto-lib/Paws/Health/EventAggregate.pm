@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Eve
 =head1 DESCRIPTION
 
 The number of events of each issue type. Returned by the
-DescribeEventAggregates operation.
+DescribeEventAggregates
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventAggregates.html)
+operation.
 
 =head1 ATTRIBUTES
 

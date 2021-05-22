@@ -38,7 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Ent
 
 =head1 DESCRIPTION
 
-The values to use to filter results from the DescribeAffectedEntities
+The values to use to filter results from the EntityFilter
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EntityFilter.html)
 operation.
 
 =head1 ATTRIBUTES
@@ -75,6 +76,8 @@ C<UNKNOWN>).
 =head2 Tags => ArrayRef[L<Paws::Health::TagSet>]
 
 A map of entity tags attached to the affected entity.
+
+Currently, the C<tags> property isn't supported.
 
 
 
