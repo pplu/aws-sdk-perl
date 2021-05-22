@@ -36,8 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Se
 
 A code and name pair that represents the severity level of a support
 case. The available values depend on the support plan for the account.
-For more information, see Choosing a Severity
-(https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity).
+For more information, see Choosing a severity
+(https://docs.aws.amazon.com/awssupport/latest/user/case-management.html#choosing-severity)
+in the I<AWS Support User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -54,37 +55,40 @@ Valid values: C<low> | C<normal> | C<high> | C<urgent> | C<critical>
 The name of the severity level that corresponds to the severity level
 code.
 
-The values returned by the API differ from the values that are
-displayed in the AWS Support Center. For example, for the code "low",
-the API name is "Low", but the name in the Support Center is "General
-guidance". These are the Support Center code/name mappings:
+The values returned by the API are different from the values that
+appear in the AWS Support Center. For example, the API uses the code
+C<low>, but the name appears as General guidance in Support Center.
+
+The following are the API code names and how they appear in the
+console:
 
 =over
 
 =item *
 
-C<low>: General guidance
+C<low> - General guidance
 
 =item *
 
-C<normal>: System impaired
+C<normal> - System impaired
 
 =item *
 
-C<high>: Production system impaired
+C<high> - Production system impaired
 
 =item *
 
-C<urgent>: Production system down
+C<urgent> - Production system down
 
 =item *
 
-C<critical>: Business-critical system down
+C<critical> - Business-critical system down
 
 =back
 
-For more information, see Choosing a Severity
-(https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity)
+For more information, see Choosing a severity
+(https://docs.aws.amazon.com/awssupport/latest/user/case-management.html#choosing-severity)
+in the I<AWS Support User Guide>.
 
 
 

@@ -45,75 +45,102 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Ca
 =head1 DESCRIPTION
 
 A JSON-formatted object that contains the metadata for a support case.
-It is contained the response from a DescribeCases request.
+It is contained in the response from a DescribeCases request.
 B<CaseDetails> contains the following fields:
 
 =over
 
 =item *
 
-B<caseId.> The AWS Support case ID requested or returned in the call.
-The case ID is an alphanumeric string formatted as shown in this
-example: case-I<12345678910-2013-c4c1d2bf33c5cf47>.
+B<caseId> - The support case ID requested or returned in the call. The
+case ID is an alphanumeric string formatted as shown in this example:
+case-I<12345678910-2013-c4c1d2bf33c5cf47>.
 
 =item *
 
-B<categoryCode.> The category of problem for the AWS Support case.
-Corresponds to the CategoryCode values returned by a call to
+B<categoryCode> - The category of problem for the support case.
+Corresponds to the C<CategoryCode> values returned by a call to
 DescribeServices.
 
 =item *
 
-B<displayId.> The identifier for the case on pages in the AWS Support
+B<displayId> - The identifier for the case on pages in the AWS Support
 Center.
 
 =item *
 
-B<language.> The ISO 639-1 code for the language in which AWS provides
+B<language> - The ISO 639-1 code for the language in which AWS provides
 support. AWS Support currently supports English ("en") and Japanese
 ("ja"). Language parameters must be passed explicitly for operations
 that take them.
 
 =item *
 
-B<recentCommunications.> One or more Communication objects. Fields of
+B<nextToken> - A resumption point for pagination.
+
+=item *
+
+B<recentCommunications> - One or more Communication objects. Fields of
 these objects are C<attachments>, C<body>, C<caseId>, C<submittedBy>,
 and C<timeCreated>.
 
 =item *
 
-B<nextToken.> A resumption point for pagination.
-
-=item *
-
-B<serviceCode.> The identifier for the AWS service that corresponds to
+B<serviceCode> - The identifier for the AWS service that corresponds to
 the service code defined in the call to DescribeServices.
 
 =item *
 
-B<severityCode.> The severity code assigned to the case. Contains one
+B<severityCode> - The severity code assigned to the case. Contains one
 of the values returned by the call to DescribeSeverityLevels. The
 possible values are: C<low>, C<normal>, C<high>, C<urgent>, and
 C<critical>.
 
 =item *
 
-B<status.> The status of the case in the AWS Support Center. The
-possible values are: C<resolved>, C<pending-customer-action>,
-C<opened>, C<unassigned>, and C<work-in-progress>.
+B<status> - The status of the case in the AWS Support Center. Valid
+values:
+
+=over
 
 =item *
 
-B<subject.> The subject line of the case.
+C<opened>
 
 =item *
 
-B<submittedBy.> The email address of the account that submitted the
+C<pending-customer-action>
+
+=item *
+
+C<reopened>
+
+=item *
+
+C<resolved>
+
+=item *
+
+C<unassigned>
+
+=item *
+
+C<work-in-progress>
+
+=back
+
+=item *
+
+B<subject> - The subject line of the case.
+
+=item *
+
+B<submittedBy> - The email address of the account that submitted the
 case.
 
 =item *
 
-B<timeCreated.> The time the case was created, in ISO-8601 format.
+B<timeCreated> - The time the case was created, in ISO-8601 format.
 
 =back
 
@@ -123,14 +150,14 @@ B<timeCreated.> The time the case was created, in ISO-8601 format.
 
 =head2 CaseId => Str
 
-The AWS Support case ID requested or returned in the call. The case ID
-is an alphanumeric string formatted as shown in this example:
+The support case ID requested or returned in the call. The case ID is
+an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
 
 =head2 CategoryCode => Str
 
-The category of problem for the AWS Support case.
+The category of problem for the support case.
 
 
 =head2 CcEmailAddresses => ArrayRef[Str|Undef]
@@ -174,9 +201,38 @@ DescribeSeverityLevels.
 
 =head2 Status => Str
 
-The status of the case. Valid values: C<resolved> |
-C<pending-customer-action> | C<opened> | C<unassigned> |
-C<work-in-progress>.
+The status of the case.
+
+Valid values:
+
+=over
+
+=item *
+
+C<opened>
+
+=item *
+
+C<pending-customer-action>
+
+=item *
+
+C<reopened>
+
+=item *
+
+C<resolved>
+
+=item *
+
+C<unassigned>
+
+=item *
+
+C<work-in-progress>
+
+=back
+
 
 
 =head2 Subject => Str
@@ -191,7 +247,7 @@ The email address of the account that submitted the case.
 
 =head2 TimeCreated => Str
 
-The time that the case was case created in the AWS Support Center.
+The time that the case was created in the AWS Support Center.
 
 
 

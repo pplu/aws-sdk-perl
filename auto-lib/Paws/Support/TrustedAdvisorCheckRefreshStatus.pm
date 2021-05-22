@@ -60,25 +60,25 @@ requested:
 
 =item *
 
-C<none:> The check is not refreshed or the non-success status exceeds
+C<none> - The check is not refreshed or the non-success status exceeds
 the timeout
 
 =item *
 
-C<enqueued:> The check refresh requests has entered the refresh queue
+C<enqueued> - The check refresh requests has entered the refresh queue
 
 =item *
 
-C<processing:> The check refresh request is picked up by the rule
+C<processing> - The check refresh request is picked up by the rule
 processing engine
 
 =item *
 
-C<success:> The check is successfully refreshed
+C<success> - The check is successfully refreshed
 
 =item *
 
-C<abandoned:> The check refresh has failed
+C<abandoned> - The check refresh has failed
 
 =back
 

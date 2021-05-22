@@ -16,7 +16,12 @@ Paws::Support::DescribeAttachmentResponse
 
 =head2 Attachment => L<Paws::Support::Attachment>
 
-The attachment content and file name.
+This object includes the attachment content and file name.
+
+In the previous response syntax, the value for the C<data> parameter
+appears as C<blob>, which is represented as a base64-encoded string.
+The value for C<fileName> is the name of the attachment, such as
+C<troubleshoot-screenshot.png>.
 
 
 =head2 _request_id => Str

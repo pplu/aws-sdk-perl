@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Co
 
 =head1 DESCRIPTION
 
-A communication associated with an AWS Support case. The communication
+A communication associated with a support case. The communication
 consists of the case ID, the message body, attachment information, the
 submitter of the communication, and the date and time of the
 communication.
@@ -57,8 +57,8 @@ The text of the communication between the customer and AWS Support.
 
 =head2 CaseId => Str
 
-The AWS Support case ID requested or returned in the call. The case ID
-is an alphanumeric string formatted as shown in this example:
+The support case ID requested or returned in the call. The case ID is
+an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
 
@@ -67,8 +67,8 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
 The identity of the account that submitted, or responded to, the
 support case. Customer entries include the role or IAM user as well as
 the email address. For example, "AdminRole (Role)
-E<lt>someone@example.comE<gt>. Entries from the AWS Support team
-display "Amazon Web Services," and do not show an email address.
+E<lt>janedoe@example.comE<gt>. Entries from the AWS Support team
+display "Amazon Web Services," and don't show an email address.
 
 
 =head2 TimeCreated => Str

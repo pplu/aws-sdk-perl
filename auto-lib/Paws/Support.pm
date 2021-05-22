@@ -164,13 +164,29 @@ Paws::Support - Perl Interface to AWS AWS Support
 
 AWS Support
 
-The AWS Support API reference is intended for programmers who need
+The I<AWS Support API Reference> is intended for programmers who need
 detailed information about the AWS Support operations and data types.
-This service enables you to manage your AWS Support cases
-programmatically. It uses HTTP methods that return results in JSON
-format.
+You can use the API to manage your support cases programmatically. The
+AWS Support API uses HTTP methods that return results in JSON format.
 
-The AWS Support service also exposes a set of Trusted Advisor
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
+The AWS Support service also exposes a set of AWS Trusted Advisor
 (http://aws.amazon.com/premiumsupport/trustedadvisor/) features. You
 can retrieve a list of checks and their descriptions, get check
 results, specify checks to refresh, and get the refresh status of
@@ -183,20 +199,20 @@ operations:
 
 =item *
 
-B<Service names, issue categories, and available severity levels. >The
+Service names, issue categories, and available severity levels - The
 DescribeServices and DescribeSeverityLevels operations return AWS
 service names, service codes, service categories, and problem severity
 levels. You use these values when you call the CreateCase operation.
 
 =item *
 
-B<Case creation, case details, and case resolution.> The CreateCase,
+Case creation, case details, and case resolution - The CreateCase,
 DescribeCases, DescribeAttachment, and ResolveCase operations create
 AWS Support cases, retrieve information about cases, and resolve cases.
 
 =item *
 
-B<Case communication.> The DescribeCommunications,
+Case communication - The DescribeCommunications,
 AddCommunicationToCase, and AddAttachmentsToSet operations retrieve and
 add communications and attachments to AWS Support cases.
 
@@ -217,7 +233,7 @@ against your AWS resources.
 Using the C<checkId> for a specific check returned by
 DescribeTrustedAdvisorChecks, you can call
 DescribeTrustedAdvisorCheckResult to obtain the results for the check
-you specified.
+that you specified.
 
 =item *
 
@@ -266,17 +282,30 @@ Each argument is described in detail in: L<Paws::Support::AddAttachmentsToSet>
 
 Returns: a L<Paws::Support::AddAttachmentsToSetResponse> instance
 
-Adds one or more attachments to an attachment set. If an
-C<attachmentSetId> is not specified, a new attachment set is created,
-and the ID of the set is returned in the response. If an
-C<attachmentSetId> is specified, the attachments are added to the
-specified set, if it exists.
+Adds one or more attachments to an attachment set.
 
-An attachment set is a temporary container for attachments that are to
-be added to a case or case communication. The set is available for one
-hour after it is created; the C<expiryTime> returned in the response
-indicates when the set expires. The maximum number of attachments in a
-set is 3, and the maximum size of any attachment in the set is 5 MB.
+An attachment set is a temporary container for attachments that you add
+to a case or case communication. The set is available for 1 hour after
+it's created. The C<expiryTime> returned in the response is when the
+set expires.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 AddCommunicationToCase
@@ -298,16 +327,29 @@ Each argument is described in detail in: L<Paws::Support::AddCommunicationToCase
 
 Returns: a L<Paws::Support::AddCommunicationToCaseResponse> instance
 
-Adds additional customer communication to an AWS Support case. You use
-the C<caseId> value to identify the case to add communication to. You
-can list a set of email addresses to copy on the communication using
-the C<ccEmailAddresses> value. The C<communicationBody> value contains
-the text of the communication.
+Adds additional customer communication to an AWS Support case. Use the
+C<caseId> parameter to identify the case to which to add communication.
+You can list a set of email addresses to copy on the communication by
+using the C<ccEmailAddresses> parameter. The C<communicationBody> value
+contains the text of the communication.
 
-The response indicates the success or failure of the request.
+=over
 
-This operation implements a subset of the features of the AWS Support
-Center.
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 CreateCase
@@ -339,87 +381,55 @@ Each argument is described in detail in: L<Paws::Support::CreateCase>
 
 Returns: a L<Paws::Support::CreateCaseResponse> instance
 
-Creates a new case in the AWS Support Center. This operation is modeled
-on the behavior of the AWS Support Center Create Case
-(https://console.aws.amazon.com/support/home#/case/create) page. Its
-parameters require you to specify the following information:
+Creates a case in the AWS Support Center. This operation is similar to
+how you create a case in the AWS Support Center Create Case
+(https://console.aws.amazon.com/support/home#/case/create) page.
+
+The AWS Support API doesn't support requesting service limit increases.
+You can submit a service limit increase in the following ways:
 
 =over
 
 =item *
 
-B<issueType.> The type of issue for the case. You can specify either
-"customer-service" or "technical." If you do not indicate a value, the
-default is "technical."
-
-Service limit increases are not supported by the Support API; you must
-submit service limit increase requests in Support Center
-(https://console.aws.amazon.com/support).
-
-The C<caseId> is not the C<displayId> that appears in Support Center
-(https://console.aws.amazon.com/support). You can use the DescribeCases
-API to get the C<displayId>.
-
-=item *
-
-B<serviceCode.> The code for an AWS service. You can get the possible
-C<serviceCode> values by calling DescribeServices.
-
-=item *
-
-B<categoryCode.> The category for the service defined for the
-C<serviceCode> value. You also get the category code for a service by
-calling DescribeServices. Each AWS service defines its own set of
-category codes.
-
-=item *
-
-B<severityCode.> A value that indicates the urgency of the case, which
-in turn determines the response time according to your service level
-agreement with AWS Support. You can get the possible C<severityCode>
-values by calling DescribeSeverityLevels. For more information about
-the meaning of the codes, see SeverityLevel and Choosing a Severity
-(https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity).
-
-=item *
-
-B<subject.> The B<Subject> field on the AWS Support Center Create Case
+Submit a request from the AWS Support Center Create Case
 (https://console.aws.amazon.com/support/home#/case/create) page.
 
 =item *
 
-B<communicationBody.> The B<Description> field on the AWS Support
-Center Create Case
-(https://console.aws.amazon.com/support/home#/case/create) page.
-
-=item *
-
-B<attachmentSetId.> The ID of a set of attachments that has been
-created by using AddAttachmentsToSet.
-
-=item *
-
-B<language.> The human language in which AWS Support handles the case.
-English and Japanese are currently supported.
-
-=item *
-
-B<ccEmailAddresses.> The AWS Support Center B<CC> field on the Create
-Case (https://console.aws.amazon.com/support/home#/case/create) page.
-You can list email addresses to be copied on any correspondence about
-the case. The account that opens the case is already identified by
-passing the AWS Credentials in the HTTP POST method or in a method or
-function call from one of the programming languages supported by an AWS
-SDK (http://aws.amazon.com/tools/).
+Use the Service Quotas RequestServiceQuotaIncrease
+(https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html)
+operation.
 
 =back
 
-To add additional communication or attachments to an existing case, use
-AddCommunicationToCase.
+A successful C<CreateCase> request returns an AWS Support case number.
+You can use the DescribeCases operation and specify the case number to
+get existing AWS Support cases. After you create a case, use the
+AddCommunicationToCase operation to add additional communication or
+attachments to an existing case.
 
-A successful CreateCase request returns an AWS Support case number.
-Case numbers are used by the DescribeCases operation to retrieve
-existing AWS Support cases.
+The C<caseId> is separate from the C<displayId> that appears in the AWS
+Support Center (https://console.aws.amazon.com/support). Use the
+DescribeCases operation to get the C<displayId>.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 DescribeAttachment
@@ -435,11 +445,30 @@ Each argument is described in detail in: L<Paws::Support::DescribeAttachment>
 
 Returns: a L<Paws::Support::DescribeAttachmentResponse> instance
 
-Returns the attachment that has the specified ID. Attachment IDs are
-generated by the case management system when you add an attachment to a
-case or case communication. Attachment IDs are returned in the
-AttachmentDetails objects that are returned by the
+Returns the attachment that has the specified ID. Attachments can
+include screenshots, error logs, or other files that describe your
+issue. Attachment IDs are generated by the case management system when
+you add an attachment to a case or case communication. Attachment IDs
+are returned in the AttachmentDetails objects that are returned by the
 DescribeCommunications operation.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 DescribeCases
@@ -472,14 +501,10 @@ Each argument is described in detail in: L<Paws::Support::DescribeCases>
 Returns: a L<Paws::Support::DescribeCasesResponse> instance
 
 Returns a list of cases that you specify by passing one or more case
-IDs. In addition, you can filter the cases by date by setting values
-for the C<afterTime> and C<beforeTime> request parameters. You can set
-values for the C<includeResolvedCases> and C<includeCommunications>
-request parameters to control how much information is returned.
-
-Case data is available for 12 months after creation. If a case was
-created more than 12 months ago, a request for data might cause an
-error.
+IDs. You can use the C<afterTime> and C<beforeTime> parameters to
+filter the cases by date. You can set values for the
+C<includeResolvedCases> and C<includeCommunications> parameters to
+specify how much information to return.
 
 The response returns the following in JSON format:
 
@@ -487,12 +512,34 @@ The response returns the following in JSON format:
 
 =item *
 
-One or more CaseDetails data types.
+One or more CaseDetails
+(https://docs.aws.amazon.com/awssupport/latest/APIReference/API_CaseDetails.html)
+data types.
 
 =item *
 
 One or more C<nextToken> values, which specify where to paginate the
 returned records represented by the C<CaseDetails> objects.
+
+=back
+
+Case data is available for 12 months after creation. If a case was
+created more than 12 months ago, a request might return an error.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
 
 =back
 
@@ -519,19 +566,37 @@ Each argument is described in detail in: L<Paws::Support::DescribeCommunications
 
 Returns: a L<Paws::Support::DescribeCommunicationsResponse> instance
 
-Returns communications (and attachments) for one or more support cases.
-You can use the C<afterTime> and C<beforeTime> parameters to filter by
-date. You can use the C<caseId> parameter to restrict the results to a
-particular case.
+Returns communications and attachments for one or more support cases.
+Use the C<afterTime> and C<beforeTime> parameters to filter by date.
+You can use the C<caseId> parameter to restrict the results to a
+specific case.
 
 Case data is available for 12 months after creation. If a case was
 created more than 12 months ago, a request for data might cause an
 error.
 
 You can use the C<maxResults> and C<nextToken> parameters to control
-the pagination of the result set. Set C<maxResults> to the number of
-cases you want displayed on each page, and use C<nextToken> to specify
+the pagination of the results. Set C<maxResults> to the number of cases
+that you want to display on each page, and use C<nextToken> to specify
 the resumption of pagination.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 DescribeServices
@@ -550,19 +615,37 @@ Each argument is described in detail in: L<Paws::Support::DescribeServices>
 Returns: a L<Paws::Support::DescribeServicesResponse> instance
 
 Returns the current list of AWS services and a list of service
-categories that applies to each one. You then use service names and
-categories in your CreateCase requests. Each AWS service has its own
-set of categories.
+categories for each service. You then use service names and categories
+in your CreateCase requests. Each AWS service has its own set of
+categories.
 
-The service codes and category codes correspond to the values that are
-displayed in the B<Service> and B<Category> drop-down lists on the AWS
-Support Center Create Case
+The service codes and category codes correspond to the values that
+appear in the B<Service> and B<Category> lists on the AWS Support
+Center Create Case
 (https://console.aws.amazon.com/support/home#/case/create) page. The
-values in those fields, however, do not necessarily match the service
-codes and categories returned by the C<DescribeServices> request.
-Always use the service codes and categories obtained programmatically.
-This practice ensures that you always have the most recent set of
-service and category codes.
+values in those fields don't necessarily match the service codes and
+categories returned by the C<DescribeServices> operation. Always use
+the service codes and categories that the C<DescribeServices> operation
+returns, so that you have the most recent set of service and category
+codes.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 DescribeSeverityLevels
@@ -578,9 +661,27 @@ Each argument is described in detail in: L<Paws::Support::DescribeSeverityLevels
 
 Returns: a L<Paws::Support::DescribeSeverityLevelsResponse> instance
 
-Returns the list of severity levels that you can assign to an AWS
-Support case. The severity level for a case is also a field in the
-CaseDetails data type included in any CreateCase request.
+Returns the list of severity levels that you can assign to a support
+case. The severity level for a case is also a field in the CaseDetails
+data type that you include for a CreateCase request.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 DescribeTrustedAdvisorCheckRefreshStatuses
@@ -596,14 +697,33 @@ Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisor
 
 Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse> instance
 
-Returns the refresh status of the Trusted Advisor checks that have the
-specified check IDs. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Returns the refresh status of the AWS Trusted Advisor checks that have
+the specified check IDs. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 
-Some checks are refreshed automatically, and their refresh statuses
-cannot be retrieved by using this operation. Use of the
-C<DescribeTrustedAdvisorCheckRefreshStatuses> operation for these
-checks causes an C<InvalidParameterValue> error.
+Some checks are refreshed automatically, and you can't return their
+refresh statuses by using the
+C<DescribeTrustedAdvisorCheckRefreshStatuses> operation. If you call
+this operation for these checks, you might see an
+C<InvalidParameterValue> error.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 DescribeTrustedAdvisorCheckResult
@@ -621,9 +741,9 @@ Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisor
 
 Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckResultResponse> instance
 
-Returns the results of the Trusted Advisor check that has the specified
-check ID. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Returns the results of the AWS Trusted Advisor check that has the
+specified check ID. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 
 The response contains a TrustedAdvisorCheckResult object, which
 contains these three objects:
@@ -650,16 +770,33 @@ In addition, the response contains these fields:
 
 =item *
 
-B<status.> The alert status of the check: "ok" (green), "warning"
-(yellow), "error" (red), or "not_available".
+B<status> - The alert status of the check can be C<ok> (green),
+C<warning> (yellow), C<error> (red), or C<not_available>.
 
 =item *
 
-B<timestamp.> The time of the last refresh of the check.
+B<timestamp> - The time of the last refresh of the check.
 
 =item *
 
-B<checkId.> The unique identifier for the check.
+B<checkId> - The unique identifier for the check.
+
+=back
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
 
 =back
 
@@ -678,12 +815,36 @@ Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisor
 
 Returns: a L<Paws::Support::DescribeTrustedAdvisorChecksResponse> instance
 
-Returns information about all available Trusted Advisor checks,
-including name, ID, category, description, and metadata. You must
-specify a language code; English ("en") and Japanese ("ja") are
-currently supported. The response contains a
-TrustedAdvisorCheckDescription for each check. The region must be set
-to us-east-1.
+Returns information about all available AWS Trusted Advisor checks,
+including the name, ID, category, description, and metadata. You must
+specify a language code. The AWS Support API currently supports English
+("en") and Japanese ("ja"). The response contains a
+TrustedAdvisorCheckDescription object for each check. You must set the
+AWS Region to us-east-1.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=item *
+
+The names and descriptions for Trusted Advisor checks are subject to
+change. We recommend that you specify the check ID in your code to
+uniquely identify a check.
+
+=back
+
 
 
 =head2 DescribeTrustedAdvisorCheckSummaries
@@ -699,11 +860,29 @@ Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisor
 
 Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse> instance
 
-Returns the summaries of the results of the Trusted Advisor checks that
-have the specified check IDs. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Returns the results for the AWS Trusted Advisor check summaries for the
+check IDs that you specified. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 
 The response contains an array of TrustedAdvisorCheckSummary objects.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 =head2 RefreshTrustedAdvisorCheck
@@ -719,57 +898,30 @@ Each argument is described in detail in: L<Paws::Support::RefreshTrustedAdvisorC
 
 Returns: a L<Paws::Support::RefreshTrustedAdvisorCheckResponse> instance
 
-Requests a refresh of the Trusted Advisor check that has the specified
-check ID. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Refreshes the AWS Trusted Advisor check that you specify using the
+check ID. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 
-Some checks are refreshed automatically, and they cannot be refreshed
-by using this operation. Use of the C<RefreshTrustedAdvisorCheck>
-operation for these checks causes an C<InvalidParameterValue> error.
+Some checks are refreshed automatically. If you call the
+C<RefreshTrustedAdvisorCheck> operation to refresh them, you might see
+the C<InvalidParameterValue> error.
 
-The response contains a TrustedAdvisorCheckRefreshStatus object, which
-contains these fields:
-
-=over
-
-=item *
-
-B<status.> The refresh status of the check:
+The response contains a TrustedAdvisorCheckRefreshStatus object.
 
 =over
 
 =item *
 
-C<none:> The check is not refreshed or the non-success status exceeds
-the timeout
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
 
 =item *
 
-C<enqueued:> The check refresh requests has entered the refresh queue
-
-=item *
-
-C<processing:> The check refresh request is picked up by the rule
-processing engine
-
-=item *
-
-C<success:> The check is successfully refreshed
-
-=item *
-
-C<abandoned:> The check refresh has failed
-
-=back
-
-=item *
-
-B<millisUntilNextRefreshable.> The amount of time, in milliseconds,
-until the check is eligible for refresh.
-
-=item *
-
-B<checkId.> The unique identifier for the check.
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
 
 =back
 
@@ -788,8 +940,26 @@ Each argument is described in detail in: L<Paws::Support::ResolveCase>
 
 Returns: a L<Paws::Support::ResolveCaseResponse> instance
 
-Takes a C<caseId> and returns the initial state of the case along with
-the state of the case after the call to ResolveCase completed.
+Resolves a support case. This operation takes a C<caseId> and returns
+the initial and final state of the case.
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan to use the AWS
+Support API.
+
+=item *
+
+If you call the AWS Support API from an account that does not have a
+Business or Enterprise Support plan, the
+C<SubscriptionRequiredException> error message appears. For information
+about changing your support plan, see AWS Support
+(http://aws.amazon.com/premiumsupport/).
+
+=back
+
 
 
 

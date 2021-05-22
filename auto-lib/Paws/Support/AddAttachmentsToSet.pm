@@ -53,8 +53,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sup
 
 =head2 B<REQUIRED> Attachments => ArrayRef[L<Paws::Support::Attachment>]
 
-One or more attachments to add to the set. The limit is 3 attachments
-per set, and the size limit is 5 MB per attachment.
+One or more attachments to add to the set. You can add up to three
+attachments per set. The size limit is 5 MB per attachment.
+
+In the C<Attachment> object, use the C<data> parameter to specify the
+contents of the attachment file. In the previous request syntax, the
+value for C<data> appear as C<blob>, which is represented as a
+base64-encoded string. The value for C<fileName> is the name of the
+attachment, such as C<troubleshoot-screenshot.png>.
 
 
 
