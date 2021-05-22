@@ -16,7 +16,7 @@ Paws::ECS::UpdateServicePrimaryTaskSetResponse
 
 =head2 TaskSet => L<Paws::ECS::TaskSet>
 
-
+Details about the task set.
 
 
 =head2 _request_id => Str

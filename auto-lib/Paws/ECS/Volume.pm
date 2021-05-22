@@ -3,6 +3,7 @@ package Paws::ECS::Volume;
   use Moose;
   has DockerVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::DockerVolumeConfiguration', request_name => 'dockerVolumeConfiguration', traits => ['NameInRequest']);
   has EfsVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::EFSVolumeConfiguration', request_name => 'efsVolumeConfiguration', traits => ['NameInRequest']);
+  has FsxWindowsFileServerVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::FSxWindowsFileServerVolumeConfiguration', request_name => 'fsxWindowsFileServerVolumeConfiguration', traits => ['NameInRequest']);
   has Host => (is => 'ro', isa => 'Paws::ECS::HostVolumeProperties', request_name => 'host', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 
@@ -36,10 +37,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Volume
 
 =head1 DESCRIPTION
 
-A data volume used in a task definition. For tasks that use a Docker
-volume, specify a C<DockerVolumeConfiguration>. For tasks that use a
-bind mount host volume, specify a C<host> and optional C<sourcePath>.
-For more information, see Using Data Volumes in Tasks
+A data volume used in a task definition. For tasks that use the Amazon
+Elastic File System (Amazon EFS), specify an C<efsVolumeConfiguration>.
+For Windows tasks that use Amazon FSx for Windows File Server file
+system, specify a C<fsxWindowsFileServerVolumeConfiguration>. For tasks
+that use a Docker volume, specify a C<DockerVolumeConfiguration>. For
+tasks that use a bind mount host volume, specify a C<host> and optional
+C<sourcePath>. For more information, see Using Data Volumes in Tasks
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html).
 
 =head1 ATTRIBUTES
@@ -47,36 +51,35 @@ For more information, see Using Data Volumes in Tasks
 
 =head2 DockerVolumeConfiguration => L<Paws::ECS::DockerVolumeConfiguration>
 
-This parameter is specified when you are using Docker volumes. Docker
-volumes are only supported when you are using the EC2 launch type.
+This parameter is specified when you are using Docker volumes.
+
 Windows containers only support the use of the C<local> driver. To use
 bind mounts, specify the C<host> parameter instead.
+
+Docker volumes are not supported by tasks run on AWS Fargate.
 
 
 =head2 EfsVolumeConfiguration => L<Paws::ECS::EFSVolumeConfiguration>
 
 This parameter is specified when you are using an Amazon Elastic File
-System (Amazon EFS) file storage. Amazon EFS file systems are only
-supported when you are using the EC2 launch type.
+System file system for task storage.
 
-C<EFSVolumeConfiguration> remains in preview and is a Beta Service as
-defined by and subject to the Beta Service Participation Service Terms
-located at https://aws.amazon.com/service-terms
-(https://aws.amazon.com/service-terms) ("Beta Terms"). These Beta Terms
-apply to your participation in this preview of
-C<EFSVolumeConfiguration>.
+
+=head2 FsxWindowsFileServerVolumeConfiguration => L<Paws::ECS::FSxWindowsFileServerVolumeConfiguration>
+
+This parameter is specified when you are using Amazon FSx for Windows
+File Server file system for task storage.
 
 
 =head2 Host => L<Paws::ECS::HostVolumeProperties>
 
 This parameter is specified when you are using bind mount host volumes.
-Bind mount host volumes are supported when you are using either the EC2
-or Fargate launch types. The contents of the C<host> parameter
-determine whether your bind mount host volume persists on the host
-container instance and where it is stored. If the C<host> parameter is
-empty, then the Docker daemon assigns a host path for your data volume.
-However, the data is not guaranteed to persist after the containers
-associated with it stop running.
+The contents of the C<host> parameter determine whether your bind mount
+host volume persists on the host container instance and where it is
+stored. If the C<host> parameter is empty, then the Docker daemon
+assigns a host path for your data volume. However, the data is not
+guaranteed to persist after the containers associated with it stop
+running.
 
 Windows containers can mount whole directories on the same drive as
 C<$env:ProgramData>. Windows containers cannot mount directories on a
@@ -88,8 +91,9 @@ C<D:\my\path:C:\my\path> or C<D:\:C:\my\path>.
 =head2 Name => Str
 
 The name of the volume. Up to 255 letters (uppercase and lowercase),
-numbers, and hyphens are allowed. This name is referenced in the
-C<sourceVolume> parameter of container definition C<mountPoints>.
+numbers, underscores, and hyphens are allowed. This name is referenced
+in the C<sourceVolume> parameter of container definition
+C<mountPoints>.
 
 
 

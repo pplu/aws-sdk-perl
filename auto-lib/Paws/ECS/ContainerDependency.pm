@@ -77,12 +77,13 @@ permitting other containers to start.
 C<COMPLETE> - This condition validates that a dependent container runs
 to completion (exits) before permitting other containers to start. This
 can be useful for nonessential containers that run a script and then
-exit.
+exit. This condition cannot be set on an essential container.
 
 =item *
 
 C<SUCCESS> - This condition is the same as C<COMPLETE>, but it also
-requires that the container exits with a C<zero> status.
+requires that the container exits with a C<zero> status. This condition
+cannot be set on an essential container.
 
 =item *
 

@@ -16,7 +16,7 @@ Paws::ECS::PutAccountSettingDefaultResponse
 
 =head2 Setting => L<Paws::ECS::Setting>
 
-
+The current setting for a resource.
 
 
 =head2 _request_id => Str

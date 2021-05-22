@@ -181,7 +181,7 @@ Load Balancer or a Network Load Balancer.
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
-
+An object representing the network configuration for a task set.
 
 
 
@@ -196,7 +196,8 @@ default.
 
 =head2 Scale => L<Paws::ECS::Scale>
 
-
+A floating-point percentage of the desired number of tasks to place and
+keep running in the task set.
 
 
 

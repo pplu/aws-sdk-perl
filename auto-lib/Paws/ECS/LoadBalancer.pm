@@ -36,8 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
 =head1 DESCRIPTION
 
-Details on the load balancer or load balancers to use with a service or
-task set.
+The load balancer configuration to use with a service or task set.
+
+For specific notes and restrictions regarding the use of load balancers
+with services and task sets, see the CreateService and CreateTaskSet
+actions.
 
 =head1 ATTRIBUTES
 
@@ -64,7 +67,7 @@ or task set.
 
 A load balancer name is only specified when using a Classic Load
 Balancer. If you are using an Application Load Balancer or a Network
-Load Balancer this should be omitted.
+Load Balancer the load balancer name parameter should be omitted.
 
 
 =head2 TargetGroupArn => Str
@@ -74,7 +77,7 @@ target group or groups associated with a service or task set.
 
 A target group ARN is only specified when using an Application Load
 Balancer or Network Load Balancer. If you are using a Classic Load
-Balancer this should be omitted.
+Balancer the target group ARN should be omitted.
 
 For services using the C<ECS> deployment controller, you can specify
 one or multiple target groups. For more information, see Registering

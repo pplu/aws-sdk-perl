@@ -7,6 +7,7 @@ package Paws::ECS::Cluster;
   has CapacityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'capacityProviders', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
+  has Configuration => (is => 'ro', isa => 'Paws::ECS::ClusterConfiguration', request_name => 'configuration', traits => ['NameInRequest']);
   has DefaultCapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', request_name => 'defaultCapacityProviderStrategy', traits => ['NameInRequest']);
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
   has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
@@ -109,6 +110,11 @@ C<arn:aws:ecs:region:012345678910:cluster/test>.
 =head2 ClusterName => Str
 
 A user-generated string that you use to identify your cluster.
+
+
+=head2 Configuration => L<Paws::ECS::ClusterConfiguration>
+
+The execute command configuration for the cluster.
 
 
 =head2 DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]

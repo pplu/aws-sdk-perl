@@ -5,6 +5,7 @@ package Paws::ECS::SubmitTaskStateChange;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerStateChange]', traits => ['NameInRequest'], request_name => 'containers' );
   has ExecutionStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStoppedAt' );
+  has ManagedAgents => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ManagedAgentStateChange]', traits => ['NameInRequest'], request_name => 'managedAgents' );
   has PullStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStartedAt' );
   has PullStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStoppedAt' );
   has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
@@ -66,11 +67,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                     # OPTIONAL
       ExecutionStoppedAt => '1970-01-01T01:00:00',    # OPTIONAL
-      PullStartedAt      => '1970-01-01T01:00:00',    # OPTIONAL
-      PullStoppedAt      => '1970-01-01T01:00:00',    # OPTIONAL
-      Reason             => 'MyString',               # OPTIONAL
-      Status             => 'MyString',               # OPTIONAL
-      Task               => 'MyString',               # OPTIONAL
+      ManagedAgents      => [
+        {
+          ContainerName => 'MyString',
+          ManagedAgentName =>
+            'ExecuteCommandAgent',    # values: ExecuteCommandAgent
+          Status => 'MyString',
+          Reason => 'MyString',
+        },
+        ...
+      ],                              # OPTIONAL
+      PullStartedAt => '1970-01-01T01:00:00',    # OPTIONAL
+      PullStoppedAt => '1970-01-01T01:00:00',    # OPTIONAL
+      Reason        => 'MyString',               # OPTIONAL
+      Status        => 'MyString',               # OPTIONAL
+      Task          => 'MyString',               # OPTIONAL
     );
 
     # Results:
@@ -106,6 +117,12 @@ Any containers associated with the state change request.
 =head2 ExecutionStoppedAt => Str
 
 The Unix timestamp for when the task execution stopped.
+
+
+
+=head2 ManagedAgents => ArrayRef[L<Paws::ECS::ManagedAgentStateChange>]
+
+The details for the managed agent associated with the task.
 
 
 

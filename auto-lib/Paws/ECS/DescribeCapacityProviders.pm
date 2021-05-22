@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     my $DescribeCapacityProvidersResponse = $ecs->DescribeCapacityProviders(
       CapacityProviders => [ 'MyString', ... ],    # OPTIONAL
-      Include => [
+      Include           => [
         'TAGS', ...                                # values: TAGS
       ],                                           # OPTIONAL
       MaxResults => 1,                             # OPTIONAL

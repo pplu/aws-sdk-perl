@@ -4,6 +4,7 @@ package Paws::ECS::ContainerOverride;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Int', request_name => 'cpu', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
+  has EnvironmentFiles => (is => 'ro', isa => 'ArrayRef[Paws::ECS::EnvironmentFile]', request_name => 'environmentFiles', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -67,6 +68,12 @@ The environment variables to send to the container. You can add new
 environment variables, which are added to the container at launch, or
 you can override the existing environment variables from the Docker
 image or the task definition. You must also specify a container name.
+
+
+=head2 EnvironmentFiles => ArrayRef[L<Paws::ECS::EnvironmentFile>]
+
+A list of files containing the environment variables to pass to a
+container, instead of the value from the container definition.
 
 
 =head2 Memory => Int

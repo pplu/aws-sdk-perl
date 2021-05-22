@@ -8,6 +8,7 @@ package Paws::ECS::CreateService;
   has DeploymentController => (is => 'ro', isa => 'Paws::ECS::DeploymentController', traits => ['NameInRequest'], request_name => 'deploymentController' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
+  has EnableExecuteCommand => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableExecuteCommand' );
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
   has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
@@ -96,30 +97,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The capacity provider strategy to use for the service.
 
-A capacity provider strategy consists of one or more capacity providers
-along with the C<base> and C<weight> to assign to them. A capacity
-provider must be associated with the cluster to be used in a capacity
-provider strategy. The PutClusterCapacityProviders API is used to
-associate a capacity provider with a cluster. Only capacity providers
-with an C<ACTIVE> or C<UPDATING> status can be used.
-
 If a C<capacityProviderStrategy> is specified, the C<launchType>
 parameter must be omitted. If no C<capacityProviderStrategy> or
 C<launchType> is specified, the C<defaultCapacityProviderStrategy> for
 the cluster is used.
-
-If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created. New capacity providers can
-be created with the CreateCapacityProvider API operation.
-
-To use a AWS Fargate capacity provider, specify either the C<FARGATE>
-or C<FARGATE_SPOT> capacity providers. The AWS Fargate capacity
-providers are available to all accounts and only need to be associated
-with a cluster to be used.
-
-The PutClusterCapacityProviders API operation is used to update the
-list of available capacity providers for a cluster after the cluster is
-created.
 
 
 
@@ -147,7 +128,8 @@ the deployment and the ordering of stopping and starting tasks.
 
 =head2 DeploymentController => L<Paws::ECS::DeploymentController>
 
-The deployment controller to use for the service.
+The deployment controller to use for the service. If no deployment
+controller is specified, the default value of C<ECS> is used.
 
 
 
@@ -172,27 +154,46 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
+=head2 EnableExecuteCommand => Bool
+
+Whether or not the execute command functionality is enabled for the
+service. If C<true>, this enables execute command functionality on all
+containers in the service tasks.
+
+
+
 =head2 HealthCheckGracePeriodSeconds => Int
 
 The period of time, in seconds, that the Amazon ECS service scheduler
 should ignore unhealthy Elastic Load Balancing target health checks
-after a task has first started. This is only valid if your service is
-configured to use a load balancer. If your service's tasks take a while
-to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 2,147,483,647 seconds.
-During that time, the ECS service scheduler ignores health check
-status. This grace period can prevent the ECS service scheduler from
-marking tasks as unhealthy and stopping them before they have time to
-come up.
+after a task has first started. This is only used when your service is
+configured to use a load balancer. If your service has a load balancer
+defined and you don't specify a health check grace period value, the
+default value of C<0> is used.
+
+If your service's tasks take a while to start and respond to Elastic
+Load Balancing health checks, you can specify a health check grace
+period of up to 2,147,483,647 seconds. During that time, the Amazon ECS
+service scheduler ignores health check status. This grace period can
+prevent the service scheduler from marking tasks as unhealthy and
+stopping them before they have time to come up.
 
 
 
 =head2 LaunchType => Str
 
-The launch type on which to run your service. For more information, see
-Amazon ECS Launch Types
+The launch type on which to run your service. The accepted values are
+C<FARGATE> and C<EC2>. For more information, see Amazon ECS launch
+types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+When a value of C<FARGATE> is specified, your tasks are launched on AWS
+Fargate On-Demand infrastructure. To use Fargate Spot, you must use a
+capacity provider strategy with the C<FARGATE_SPOT> capacity provider.
+
+When a value of C<EC2> is specified, your tasks are launched on Amazon
+EC2 instances registered to your cluster.
 
 If a C<launchType> is specified, the C<capacityProviderStrategy>
 parameter must be omitted.
@@ -208,10 +209,10 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 If the service is using the rolling update (C<ECS>) deployment
 controller and using either an Application Load Balancer or Network
-Load Balancer, you can specify multiple target groups to attach to the
-service. The service-linked role is required for services that make use
-of multiple target groups. For more information, see Using
-Service-Linked Roles for Amazon ECS
+Load Balancer, you must specify one or more target group ARNs to attach
+to the service. The service-linked role is required for services that
+make use of multiple target groups. For more information, see Using
+service-linked roles for Amazon ECS
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -236,15 +237,17 @@ changed when updating the service.
 For Application Load Balancers and Network Load Balancers, this object
 must contain the load balancer target group ARN, the container name (as
 it appears in a container definition), and the container port to access
-from the load balancer. When a task from this service is placed on a
-container instance, the container instance and port combination is
-registered as a target in the target group specified here.
+from the load balancer. The load balancer name parameter must be
+omitted. When a task from this service is placed on a container
+instance, the container instance and port combination is registered as
+a target in the target group specified here.
 
 For Classic Load Balancers, this object must contain the load balancer
 name, the container name (as it appears in a container definition), and
-the container port to access from the load balancer. When a task from
-this service is placed on a container instance, the container instance
-is registered with the load balancer specified here.
+the container port to access from the load balancer. The target group
+ARN parameter must be omitted. When a task from this service is placed
+on a container instance, the container instance is registered with the
+load balancer specified here.
 
 Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
@@ -261,7 +264,7 @@ elastic network interface, not an Amazon EC2 instance.
 The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
 their own elastic network interface, and it is not supported for other
-network modes. For more information, see Task Networking
+network modes. For more information, see Task networking
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -288,7 +291,7 @@ can specify a maximum of five strategy rules per service.
 The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the C<LATEST> platform version is used by
-default. For more information, see AWS Fargate Platform Versions
+default. For more information, see AWS Fargate platform versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -319,8 +322,8 @@ here. The service-linked role is required if your task definition uses
 the C<awsvpc> network mode or if the service is configured to use
 service discovery, an external deployment controller, multiple target
 groups, or Elastic Inference accelerators in which case you should not
-specify a role here. For more information, see Using Service-Linked
-Roles for Amazon ECS
+specify a role here. For more information, see Using service-linked
+roles for Amazon ECS
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -328,7 +331,7 @@ If your specified role has a path other than C</>, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path. For example, if a role with the name C<bar> has a path
 of C</foo/> then you would specify C</foo/bar> as the role name. For
-more information, see Friendly Names and Paths
+more information, see Friendly names and paths
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
 in the I<IAM User Guide>.
 
@@ -357,9 +360,11 @@ the C<CODE_DEPLOY> or C<EXTERNAL> deployment controller types.
 
 C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
-constraints that you specify in your cluster. When you're using this
-strategy, you don't need to specify a desired number of tasks, a task
-placement strategy, or use Service Auto Scaling policies.
+constraints that you specify in your cluster. The service scheduler
+also evaluates the task placement constraints for running tasks and
+will stop tasks that do not meet the placement constraints. When you're
+using this strategy, you don't need to specify a desired number of
+tasks, a task placement strategy, or use Service Auto Scaling policies.
 
 Tasks using the Fargate launch type or the C<CODE_DEPLOY> or
 C<EXTERNAL> deployment controller types don't support the C<DAEMON>
@@ -373,22 +378,20 @@ Valid values are: C<"REPLICA">, C<"DAEMON">
 =head2 B<REQUIRED> ServiceName => Str
 
 The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, and hyphens are allowed. Service names must be unique within a
-cluster, but you can have similarly named services in multiple clusters
-within a Region or across multiple Regions.
+numbers, underscores, and hyphens are allowed. Service names must be
+unique within a cluster, but you can have similarly named services in
+multiple clusters within a Region or across multiple Regions.
 
 
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
 
-The details of the service discovery registries to assign to this
-service. For more information, see Service Discovery
+The details of the service discovery registry to associate with this
+service. For more information, see Service discovery
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
-Service discovery is supported for Fargate tasks if you are using
-platform version v1.1.0 or later. For more information, see AWS Fargate
-Platform Versions
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+Each service may be associated with one service registry. Multiple
+service registries per service isn't supported.
 
 
 
@@ -451,8 +454,8 @@ The C<family> and C<revision> (C<family:revision>) or full ARN of the
 task definition to run in your service. If a C<revision> is not
 specified, the latest C<ACTIVE> revision is used.
 
-A task definition must be specified if the service is using the C<ECS>
-deployment controller.
+A task definition must be specified if the service is using either the
+C<ECS> or C<CODE_DEPLOY> deployment controllers.
 
 
 

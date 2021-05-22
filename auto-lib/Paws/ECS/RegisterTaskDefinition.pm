@@ -3,6 +3,7 @@ package Paws::ECS::RegisterTaskDefinition;
   use Moose;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
   has Cpu => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cpu' );
+  has EphemeralStorage => (is => 'ro', isa => 'Paws::ECS::EphemeralStorage', traits => ['NameInRequest'], request_name => 'ephemeralStorage' );
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionRoleArn' );
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
   has InferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAccelerator]', traits => ['NameInRequest'], request_name => 'inferenceAccelerators' );
@@ -132,10 +133,29 @@ of supported values for the C<memory> parameter:
 
 
 
+=head2 EphemeralStorage => L<Paws::ECS::EphemeralStorage>
+
+The amount of ephemeral storage to allocate for the task. This
+parameter is used to expand the total amount of ephemeral storage
+available, beyond the default amount, for tasks hosted on AWS Fargate.
+For more information, see Fargate task storage
+(https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html)
+in the I<Amazon ECS User Guide for AWS Fargate>.
+
+This parameter is only supported for tasks hosted on AWS Fargate using
+platform version C<1.4.0> or later.
+
+
+
 =head2 ExecutionRoleArn => Str
 
-The Amazon Resource Name (ARN) of the task execution role that the
-Amazon ECS container agent and the Docker daemon can assume.
+The Amazon Resource Name (ARN) of the task execution role that grants
+the Amazon ECS container agent permission to make AWS API calls on your
+behalf. The task execution IAM role is required depending on the
+requirements of your task. For more information, see Amazon ECS task
+execution IAM role
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
@@ -144,7 +164,7 @@ Amazon ECS container agent and the Docker daemon can assume.
 You must specify a C<family> for a task definition, which allows you to
 track multiple versions of the same task definition. The C<family> is
 used as a name for your task definition. Up to 255 letters (uppercase
-and lowercase), numbers, and hyphens are allowed.
+and lowercase), numbers, underscores, and hyphens are allowed.
 
 
 
@@ -195,8 +215,8 @@ C<systemControls> will apply to all containers within a task.
 
 =back
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.
+This parameter is not supported for Windows containers or tasks run on
+AWS Fargate.
 
 Valid values are: C<"host">, C<"task">, C<"none">
 
@@ -253,22 +273,27 @@ Available C<cpu> values: 4096 (4 vCPU)
 =head2 NetworkMode => Str
 
 The Docker networking mode to use for the containers in the task. The
-valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. The
-default Docker network mode is C<bridge>. If you are using the Fargate
-launch type, the C<awsvpc> network mode is required. If you are using
-the EC2 launch type, any network mode can be used. If the network mode
-is set to C<none>, you cannot specify port mappings in your container
-definitions, and the tasks containers do not have external
-connectivity. The C<host> and C<awsvpc> network modes offer the highest
-networking performance for containers because they use the EC2 network
-stack instead of the virtualized network stack provided by the
-C<bridge> mode.
+valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. If no
+network mode is specified, the default is C<bridge>.
+
+For Amazon ECS tasks on Fargate, the C<awsvpc> network mode is
+required. For Amazon ECS tasks on Amazon EC2 instances, any network
+mode can be used. If the network mode is set to C<none>, you cannot
+specify port mappings in your container definitions, and the tasks
+containers do not have external connectivity. The C<host> and C<awsvpc>
+network modes offer the highest networking performance for containers
+because they use the EC2 network stack instead of the virtualized
+network stack provided by the C<bridge> mode.
 
 With the C<host> and C<awsvpc> network modes, exposed container ports
 are mapped directly to the corresponding host port (for the C<host>
 network mode) or the attached elastic network interface port (for the
 C<awsvpc> network mode), so you cannot take advantage of dynamic host
 port mappings.
+
+When using the C<host> network mode, you should not run containers
+using the root user (UID 0). It is considered best practice to use a
+non-root user.
 
 If the network mode is C<awsvpc>, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
@@ -314,8 +339,8 @@ If the C<host> PID mode is used, be aware that there is a heightened
 risk of undesired process namespace expose. For more information, see
 Docker security (https://docs.docker.com/engine/security/security/).
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.
+This parameter is not supported for Windows containers or tasks run on
+AWS Fargate.
 
 Valid values are: C<"host">, C<"task">
 
@@ -329,14 +354,26 @@ constraints in the task definition and those specified at runtime).
 
 =head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
 
+The configuration details for the App Mesh proxy.
 
+For tasks hosted on Amazon EC2 instances, the container instances
+require at least version C<1.26.0> of the container agent and at least
+version C<1.26.0-1> of the C<ecs-init> package to enable a proxy
+configuration. If your container instances are launched from the Amazon
+ECS-optimized AMI version C<20190301> or later, then they contain the
+required versions of the container agent and C<ecs-init>. For more
+information, see Amazon ECS-optimized AMI versions
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-versions.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
 =head2 RequiresCompatibilities => ArrayRef[Str|Undef]
 
-The launch type required by the task. If no value is specified, it
-defaults to C<EC2>.
+The task launch type that Amazon ECS should validate the task
+definition against. A client exception is returned if the task
+definition doesn't validate against the compatibilities specified. If
+no value is specified, the parameter is omitted from the response.
 
 
 

@@ -61,7 +61,8 @@ hosts the service that the task set exists in.
 
 =head2 B<REQUIRED> Scale => L<Paws::ECS::Scale>
 
-
+A floating-point percentage of the desired number of tasks to place and
+keep running in the task set.
 
 
 

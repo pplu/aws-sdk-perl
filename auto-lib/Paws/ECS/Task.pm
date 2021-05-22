@@ -13,6 +13,8 @@ package Paws::ECS::Task;
   has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has DesiredStatus => (is => 'ro', isa => 'Str', request_name => 'desiredStatus', traits => ['NameInRequest']);
+  has EnableExecuteCommand => (is => 'ro', isa => 'Bool', request_name => 'enableExecuteCommand', traits => ['NameInRequest']);
+  has EphemeralStorage => (is => 'ro', isa => 'Paws::ECS::EphemeralStorage', request_name => 'ephemeralStorage', traits => ['NameInRequest']);
   has ExecutionStoppedAt => (is => 'ro', isa => 'Str', request_name => 'executionStoppedAt', traits => ['NameInRequest']);
   has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
   has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
@@ -176,6 +178,18 @@ C<PENDING> state).
 The desired status of the task. For more information, see Task
 Lifecycle
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html).
+
+
+=head2 EnableExecuteCommand => Bool
+
+Whether or not execute command functionality is enabled for this task.
+If C<true>, this enables execute command functionality on all
+containers in the task.
+
+
+=head2 EphemeralStorage => L<Paws::ECS::EphemeralStorage>
+
+The ephemeral storage settings for the task.
 
 
 =head2 ExecutionStoppedAt => Str

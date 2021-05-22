@@ -45,6 +45,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCapacityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteCapacityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteCluster', @_);
@@ -108,6 +113,11 @@ package Paws::ECS;
   sub DiscoverPollEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DiscoverPollEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExecuteCommand {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ExecuteCommand', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAccountSettings {
@@ -223,6 +233,16 @@ package Paws::ECS;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateCapacityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateCapacityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateClusterSettings {
@@ -442,7 +462,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCapacityProvider CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeCapacityProviders DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes PutClusterCapacityProviders RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateClusterSettings UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
+  sub operations { qw/CreateCapacityProvider CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCapacityProvider DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeCapacityProviders DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ExecuteCommand ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes PutClusterCapacityProviders RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateCapacityProvider UpdateCluster UpdateClusterSettings UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
 
 1;
 
@@ -476,16 +496,14 @@ Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
 fast, container management service that makes it easy to run, stop, and
 manage Docker containers on a cluster. You can host your cluster on a
 serverless infrastructure that is managed by Amazon ECS by launching
-your services or tasks using the Fargate launch type. For more control,
-you can host your tasks on a cluster of Amazon Elastic Compute Cloud
-(Amazon EC2) instances that you manage by using the EC2 launch type.
-For more information about launch types, see Amazon ECS Launch Types
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
+your services or tasks on AWS Fargate. For more control, you can host
+your tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2)
+instances that you manage.
 
-Amazon ECS lets you launch and stop container-based applications with
-simple API calls, allows you to get the state of your cluster from a
-centralized service, and gives you access to many familiar Amazon EC2
-features.
+Amazon ECS makes it easy to launch and stop container-based
+applications with simple API calls, allows you to get the state of your
+cluster from a centralized service, and gives you access to many
+familiar Amazon EC2 features.
 
 You can use Amazon ECS to schedule the placement of containers across
 your cluster based on your resource needs, isolation policies, and
@@ -532,6 +550,8 @@ accounts in Regions supported by AWS Fargate.
 =item [CapacityProviders => ArrayRef[Str|Undef]]
 
 =item [ClusterName => Str]
+
+=item [Configuration => L<Paws::ECS::ClusterConfiguration>]
 
 =item [DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
@@ -581,6 +601,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [EnableECSManagedTags => Bool]
 
+=item [EnableExecuteCommand => Bool]
+
 =item [HealthCheckGracePeriodSeconds => Int]
 
 =item [LaunchType => Str]
@@ -617,7 +639,8 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
 Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below the
 C<desiredCount>, Amazon ECS runs another copy of the task in the
-specified cluster. To update an existing service, see UpdateService.
+specified cluster. To update an existing service, see the UpdateService
+action.
 
 In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind one or more load balancers.
@@ -651,10 +674,12 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 C<DAEMON> - The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
-constraints that you specify in your cluster. When using this strategy,
-you don't need to specify a desired number of tasks, a task placement
-strategy, or use Service Auto Scaling policies. For more information,
-see Service Scheduler Concepts
+constraints that you specify in your cluster. The service scheduler
+also evaluates the task placement constraints for running tasks and
+will stop tasks that do not meet the placement constraints. When using
+this strategy, you don't need to specify a desired number of tasks, a
+task placement strategy, or use Service Auto Scaling policies. For more
+information, see Service Scheduler Concepts
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -832,6 +857,37 @@ Each argument is described in detail in: L<Paws::ECS::DeleteAttributes>
 Returns: a L<Paws::ECS::DeleteAttributesResponse> instance
 
 Deletes one or more custom attributes from an Amazon ECS resource.
+
+
+=head2 DeleteCapacityProvider
+
+=over
+
+=item CapacityProvider => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DeleteCapacityProvider>
+
+Returns: a L<Paws::ECS::DeleteCapacityProviderResponse> instance
+
+Deletes the specified capacity provider.
+
+The C<FARGATE> and C<FARGATE_SPOT> capacity providers are reserved and
+cannot be deleted. You can disassociate them from a cluster using
+either the PutClusterCapacityProviders API or by deleting the cluster.
+
+Prior to a capacity provider being deleted, the capacity provider must
+be removed from the capacity provider strategy from all services. The
+UpdateService API can be used to remove a capacity provider from a
+service's capacity provider strategy. When updating a service, the
+C<forceNewDeployment> option can be used to ensure that any tasks using
+the Amazon EC2 instance capacity provided by the capacity provider are
+transitioned to use the capacity from the remaining capacity providers.
+Only capacity providers that are not associated with a cluster can be
+deleted. To remove a capacity provider from a cluster, you can either
+use PutClusterCapacityProviders or delete the cluster.
 
 
 =head2 DeleteCluster
@@ -1163,6 +1219,30 @@ This action is only used by the Amazon ECS agent, and it is not
 intended for use outside of the agent.
 
 Returns an endpoint for the Amazon ECS agent to poll for updates.
+
+
+=head2 ExecuteCommand
+
+=over
+
+=item Command => Str
+
+=item Interactive => Bool
+
+=item Task => Str
+
+=item [Cluster => Str]
+
+=item [Container => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::ExecuteCommand>
+
+Returns: a L<Paws::ECS::ExecuteCommandResponse> instance
+
+Runs a command remotely on a container within a task.
 
 
 =head2 ListAccountSettings
@@ -1586,6 +1666,8 @@ becomes available to place containers on.
 
 =item [Cpu => Str]
 
+=item [EphemeralStorage => L<Paws::ECS::EphemeralStorage>]
+
 =item [ExecutionRoleArn => Str]
 
 =item [InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]]
@@ -1658,6 +1740,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =item [Count => Int]
 
 =item [EnableECSManagedTags => Bool]
+
+=item [EnableExecuteCommand => Bool]
 
 =item [Group => Str]
 
@@ -1741,6 +1825,8 @@ gradually up to about five minutes of wait time.
 =item [Cluster => Str]
 
 =item [EnableECSManagedTags => Bool]
+
+=item [EnableExecuteCommand => Bool]
 
 =item [Group => Str]
 
@@ -1872,6 +1958,8 @@ Sent to acknowledge that a container changed states.
 
 =item [ExecutionStoppedAt => Str]
 
+=item [ManagedAgents => ArrayRef[L<Paws::ECS::ManagedAgentStateChange>]]
+
 =item [PullStartedAt => Str]
 
 =item [PullStoppedAt => Str]
@@ -1934,6 +2022,44 @@ Returns: a L<Paws::ECS::UntagResourceResponse> instance
 Deletes specified tags from a resource.
 
 
+=head2 UpdateCapacityProvider
+
+=over
+
+=item AutoScalingGroupProvider => L<Paws::ECS::AutoScalingGroupProviderUpdate>
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UpdateCapacityProvider>
+
+Returns: a L<Paws::ECS::UpdateCapacityProviderResponse> instance
+
+Modifies the parameters for a capacity provider.
+
+
+=head2 UpdateCluster
+
+=over
+
+=item Cluster => Str
+
+=item [Configuration => L<Paws::ECS::ClusterConfiguration>]
+
+=item [Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UpdateCluster>
+
+Returns: a L<Paws::ECS::UpdateClusterResponse> instance
+
+Updates the cluster.
+
+
 =head2 UpdateClusterSettings
 
 =over
@@ -1974,10 +2100,18 @@ updating the agent differs depending on whether your container instance
 was launched with the Amazon ECS-optimized AMI or another operating
 system.
 
-C<UpdateContainerAgent> requires the Amazon ECS-optimized AMI or Amazon
-Linux with the C<ecs-init> service installed and running. For help
-updating the Amazon ECS container agent on other operating systems, see
-Manually Updating the Amazon ECS Container Agent
+The C<UpdateContainerAgent> API isn't supported for container instances
+using the Amazon ECS-optimized Amazon Linux 2 (arm64) AMI. To update
+the container agent, you can update the C<ecs-init> package which will
+update the agent. For more information, see Updating the Amazon ECS
+container agent
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/agent-update-ecs-ami.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+The C<UpdateContainerAgent> API requires an Amazon ECS-optimized AMI or
+Amazon Linux AMI with the C<ecs-init> service installed and running.
+For help updating the Amazon ECS container agent on other operating
+systems, see Manually updating the Amazon ECS container agent
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -2076,11 +2210,17 @@ Amazon ECS scheduler can begin scheduling tasks on the instance again.
 
 =item [DesiredCount => Int]
 
+=item [EnableExecuteCommand => Bool]
+
 =item [ForceNewDeployment => Bool]
 
 =item [HealthCheckGracePeriodSeconds => Int]
 
 =item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+
+=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
 
 =item [PlatformVersion => Str]
 
@@ -2093,26 +2233,36 @@ Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
+Updating the task placement strategies and constraints on an Amazon ECS
+service remains in preview and is a Beta Service as defined by and
+subject to the Beta Service Participation Service Terms located at
+https://aws.amazon.com/service-terms
+(https://aws.amazon.com/service-terms) ("Beta Terms"). These Beta Terms
+apply to your participation in this preview.
+
 Modifies the parameters of a service.
 
 For services using the rolling update (C<ECS>) deployment controller,
-the desired count, deployment configuration, network configuration, or
-task definition used can be updated.
+the desired count, deployment configuration, network configuration,
+task placement constraints and strategies, or task definition used can
+be updated.
 
 For services using the blue/green (C<CODE_DEPLOY>) deployment
-controller, only the desired count, deployment configuration, and
-health check grace period can be updated using this API. If the network
-configuration, platform version, or task definition need to be updated,
-a new AWS CodeDeploy deployment should be created. For more
-information, see CreateDeployment
+controller, only the desired count, deployment configuration, task
+placement constraints and strategies, and health check grace period can
+be updated using this API. If the network configuration, platform
+version, or task definition need to be updated, a new AWS CodeDeploy
+deployment should be created. For more information, see
+CreateDeployment
 (https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
 in the I<AWS CodeDeploy API Reference>.
 
 For services using an external deployment controller, you can update
-only the desired count and health check grace period using this API. If
-the launch type, load balancer, network configuration, platform
-version, or task definition need to be updated, you should create a new
-task set. For more information, see CreateTaskSet.
+only the desired count, task placement constraints and strategies, and
+health check grace period using this API. If the launch type, load
+balancer, network configuration, platform version, or task definition
+need to be updated, you should create a new task set. For more
+information, see CreateTaskSet.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is

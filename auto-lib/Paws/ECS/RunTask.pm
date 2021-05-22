@@ -5,6 +5,7 @@ package Paws::ECS::RunTask;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
+  has EnableExecuteCommand => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableExecuteCommand' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
@@ -64,30 +65,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The capacity provider strategy to use for the task.
 
-A capacity provider strategy consists of one or more capacity providers
-along with the C<base> and C<weight> to assign to them. A capacity
-provider must be associated with the cluster to be used in a capacity
-provider strategy. The PutClusterCapacityProviders API is used to
-associate a capacity provider with a cluster. Only capacity providers
-with an C<ACTIVE> or C<UPDATING> status can be used.
-
 If a C<capacityProviderStrategy> is specified, the C<launchType>
 parameter must be omitted. If no C<capacityProviderStrategy> or
 C<launchType> is specified, the C<defaultCapacityProviderStrategy> for
 the cluster is used.
-
-If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created. New capacity providers can
-be created with the CreateCapacityProvider API operation.
-
-To use a AWS Fargate capacity provider, specify either the C<FARGATE>
-or C<FARGATE_SPOT> capacity providers. The AWS Fargate capacity
-providers are available to all accounts and only need to be associated
-with a cluster to be used.
-
-The PutClusterCapacityProviders API operation is used to update the
-list of available capacity providers for a cluster after the cluster is
-created.
 
 
 
@@ -115,6 +96,14 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
+=head2 EnableExecuteCommand => Bool
+
+Whether or not to enable the execute command functionality for the
+containers in this task. If C<true>, this enables execute command
+functionality on all containers in the task.
+
+
+
 =head2 Group => Str
 
 The name of the task group to associate with the task. The default
@@ -125,10 +114,18 @@ family:my-family-name).
 
 =head2 LaunchType => Str
 
-The launch type on which to run your task. For more information, see
-Amazon ECS Launch Types
+The launch type on which to run your task. The accepted values are
+C<FARGATE> and C<EC2>. For more information, see Amazon ECS Launch
+Types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+When a value of C<FARGATE> is specified, your tasks are launched on AWS
+Fargate On-Demand infrastructure. To use Fargate Spot, you must use a
+capacity provider strategy with the C<FARGATE_SPOT> capacity provider.
+
+When a value of C<EC2> is specified, your tasks are launched on Amazon
+EC2 instances registered to your cluster.
 
 If a C<launchType> is specified, the C<capacityProviderStrategy>
 parameter must be omitted.

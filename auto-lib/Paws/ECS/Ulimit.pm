@@ -37,6 +37,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Ulimit
 
 The C<ulimit> settings to pass to the container.
 
+Amazon ECS tasks hosted on Fargate use the default resource limit
+values set by the operating system with the exception of the C<nofile>
+resource limit parameter which Fargate overrides. The C<nofile>
+resource limit sets a restriction on the number of open files that a
+container can use. The default C<nofile> soft limit is C<1024> and hard
+limit is C<4096>.
+
 =head1 ATTRIBUTES
 
 

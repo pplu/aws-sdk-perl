@@ -56,6 +56,9 @@ FireLens Configuration
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
+Tasks hosted on AWS Fargate only support the C<file> configuration file
+type.
+
 
 =head2 B<REQUIRED> Type => Str
 

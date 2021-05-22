@@ -3,6 +3,7 @@ package Paws::ECS::TaskOverride;
   use Moose;
   has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
+  has EphemeralStorage => (is => 'ro', isa => 'Paws::ECS::EphemeralStorage', request_name => 'ephemeralStorage', traits => ['NameInRequest']);
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has InferenceAcceleratorOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAcceleratorOverride]', request_name => 'inferenceAcceleratorOverrides', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
@@ -53,10 +54,18 @@ One or more container overrides sent to a task.
 The cpu override for the task.
 
 
+=head2 EphemeralStorage => L<Paws::ECS::EphemeralStorage>
+
+The ephemeral storage setting override for the task.
+
+This parameter is only supported for tasks hosted on AWS Fargate using
+platform version C<1.4.0> or later.
+
+
 =head2 ExecutionRoleArn => Str
 
-The Amazon Resource Name (ARN) of the task execution role that the
-Amazon ECS container agent and the Docker daemon can assume.
+The Amazon Resource Name (ARN) of the task execution IAM role override
+for the task.
 
 
 =head2 InferenceAcceleratorOverrides => ArrayRef[L<Paws::ECS::InferenceAcceleratorOverride>]
