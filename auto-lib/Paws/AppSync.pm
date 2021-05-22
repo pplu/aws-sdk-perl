@@ -512,11 +512,13 @@ Creates a C<DataSource> object.
 
 =item Name => Str
 
-=item RequestMappingTemplate => Str
-
 =item [Description => Str]
 
+=item [RequestMappingTemplate => Str]
+
 =item [ResponseMappingTemplate => Str]
+
+=item [SyncConfig => L<Paws::AppSync::SyncConfig>]
 
 
 =back
@@ -569,8 +571,6 @@ Creates a C<GraphqlApi> object.
 
 =item FieldName => Str
 
-=item RequestMappingTemplate => Str
-
 =item TypeName => Str
 
 =item [CachingConfig => L<Paws::AppSync::CachingConfig>]
@@ -580,6 +580,8 @@ Creates a C<GraphqlApi> object.
 =item [Kind => Str]
 
 =item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
+
+=item [RequestMappingTemplate => Str]
 
 =item [ResponseMappingTemplate => Str]
 
@@ -921,7 +923,7 @@ Returns: a L<Paws::AppSync::ListApiKeysResponse> instance
 
 Lists the API keys for a given API.
 
-API keys are deleted automatically sometime after they expire. However,
+API keys are deleted automatically 60 days after they expire. However,
 they may still be included in the response until they have actually
 been deleted. You can safely call C<DeleteApiKey> to manually delete a
 key before it's automatically deleted.
@@ -1164,7 +1166,7 @@ Each argument is described in detail in: L<Paws::AppSync::UpdateApiKey>
 
 Returns: a L<Paws::AppSync::UpdateApiKeyResponse> instance
 
-Updates an API key.
+Updates an API key. The key can be updated while it is not deleted.
 
 
 =head2 UpdateDataSource
@@ -1215,11 +1217,13 @@ Updates a C<DataSource> object.
 
 =item Name => Str
 
-=item RequestMappingTemplate => Str
-
 =item [Description => Str]
 
+=item [RequestMappingTemplate => Str]
+
 =item [ResponseMappingTemplate => Str]
+
+=item [SyncConfig => L<Paws::AppSync::SyncConfig>]
 
 
 =back
@@ -1269,8 +1273,6 @@ Updates a C<GraphqlApi> object.
 
 =item FieldName => Str
 
-=item RequestMappingTemplate => Str
-
 =item TypeName => Str
 
 =item [CachingConfig => L<Paws::AppSync::CachingConfig>]
@@ -1280,6 +1282,8 @@ Updates a C<GraphqlApi> object.
 =item [Kind => Str]
 
 =item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
+
+=item [RequestMappingTemplate => Str]
 
 =item [ResponseMappingTemplate => Str]
 
