@@ -95,7 +95,8 @@ specified C<WebACL>.
 
 The start date and time and the end date and time of the range for
 which you want C<GetSampledRequests> to return a sample of requests.
-Specify the date and time in the following format:
+You must specify the times in Coordinated Universal Time (UTC) format.
+UTC format includes the special designator, C<Z>. For example,
 C<"2016-09-27T14:50Z">. You can specify any time range in the previous
 three hours.
 

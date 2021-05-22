@@ -38,6 +38,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::RateBa
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 A C<RateBasedRule> is identical to a regular Rule, with one addition: a
 C<RateBasedRule> counts the number of requests that arrive from a
 specified IP address every five minutes. For example, based on recent
@@ -56,9 +67,9 @@ They contain the value C<BadBot> in the C<User-Agent> header.
 
 =back
 
-In the rule, you also define the rate limit as 15,000.
+In the rule, you also define the rate limit as 1,000.
 
-Requests that meet both of these conditions and exceed 15,000 requests
+Requests that meet both of these conditions and exceed 1,000 requests
 every five minutes trigger the rule's action (block or count), which is
 defined in the web ACL.
 

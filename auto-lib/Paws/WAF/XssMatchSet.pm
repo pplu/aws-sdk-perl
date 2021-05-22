@@ -35,6 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::XssMat
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 A complex type that contains C<XssMatchTuple> objects, which specify
 the parts of web requests that you want AWS WAF to inspect for
 cross-site scripting attacks and, if you want AWS WAF to inspect a
