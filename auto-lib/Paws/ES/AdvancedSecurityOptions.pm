@@ -3,6 +3,7 @@ package Paws::ES::AdvancedSecurityOptions;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has InternalUserDatabaseEnabled => (is => 'ro', isa => 'Bool');
+  has SAMLOptions => (is => 'ro', isa => 'Paws::ES::SAMLOptionsOutput');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ES::AdvancedSecurityOptions object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., InternalUserDatabaseEnabled => $value  });
+  $service_obj->Method(Att1 => { Enabled => $value, ..., SAMLOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,6 +49,11 @@ True if advanced security is enabled.
 =head2 InternalUserDatabaseEnabled => Bool
 
 True if the internal user database is enabled.
+
+
+=head2 SAMLOptions => L<Paws::ES::SAMLOptionsOutput>
+
+Describes the SAML application configured for a domain.
 
 
 

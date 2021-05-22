@@ -6,6 +6,7 @@ package Paws::ES::ServiceSoftwareOptions;
   has CurrentVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NewVersion => (is => 'ro', isa => 'Str');
+  has OptionalDeployment => (is => 'ro', isa => 'Bool');
   has UpdateAvailable => (is => 'ro', isa => 'Bool');
   has UpdateStatus => (is => 'ro', isa => 'Str');
 
@@ -71,6 +72,13 @@ The description of the C<UpdateStatus>.
 =head2 NewVersion => Str
 
 The new service software version if one is available.
+
+
+=head2 OptionalDeployment => Bool
+
+C<True> if a service software is never automatically updated. C<False>
+if a service software is automatically updated after
+C<AutomatedUpdateDate>.
 
 
 =head2 UpdateAvailable => Bool

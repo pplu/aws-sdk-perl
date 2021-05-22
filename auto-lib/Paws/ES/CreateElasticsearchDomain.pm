@@ -4,6 +4,7 @@ package Paws::ES::CreateElasticsearchDomain;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
   has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptionsInput');
+  has AutoTuneOptions => (is => 'ro', isa => 'Paws::ES::AutoTuneOptionsInput');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -14,6 +15,7 @@ package Paws::ES::CreateElasticsearchDomain;
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ES::Tag]');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
 
   use MooseX::ClassAttribute;
@@ -53,6 +55,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MasterUserName     => 'MyUsername',    # min: 1; OPTIONAL
           MasterUserPassword => 'MyPassword',    # min: 8; OPTIONAL
         },    # OPTIONAL
+        SAMLOptions => {
+          Enabled => 1,    # OPTIONAL
+          Idp     => {
+            EntityId        => 'MySAMLEntityId',    # min: 8, max: 512
+            MetadataContent => 'MySAMLMetadata',    # min: 1, max: 1048576
+
+          },    # OPTIONAL
+          MasterBackendRole     => 'MyBackendRole', # min: 1, max: 256; OPTIONAL
+          MasterUserName        => 'MyUsername',    # min: 1; OPTIONAL
+          RolesKey              => 'MyString',
+          SessionTimeoutMinutes => 1,               # OPTIONAL
+          SubjectKey            => 'MyString',
+        },    # OPTIONAL
+      },    # OPTIONAL
+      AutoTuneOptions => {
+        DesiredState         => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
+        MaintenanceSchedules => [
+          {
+            CronExpressionForRecurrence => 'MyString',
+            Duration                    => {
+              Unit  => 'HOURS',            # values: HOURS; OPTIONAL
+              Value => 1,                  # min: 1, max: 24; OPTIONAL
+            },    # OPTIONAL
+            StartAt => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                       # max: 100; OPTIONAL
       },    # OPTIONAL
       CognitoOptions => {
         Enabled        => 1,                     # OPTIONAL
@@ -61,8 +90,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         UserPoolId     => 'MyUserPoolId',        # min: 1, max: 55; OPTIONAL
       },    # OPTIONAL
       DomainEndpointOptions => {
-        EnforceHTTPS      => 1,                             # OPTIONAL
-        TLSSecurityPolicy => 'Policy-Min-TLS-1-0-2019-07'
+        CustomEndpoint => 'MyDomainNameFqdn',    # min: 1, max: 255; OPTIONAL
+        CustomEndpointCertificateArn => 'MyARN',                      # OPTIONAL
+        CustomEndpointEnabled        => 1,                            # OPTIONAL
+        EnforceHTTPS                 => 1,                            # OPTIONAL
+        TLSSecurityPolicy            => 'Policy-Min-TLS-1-0-2019-07'
         , # values: Policy-Min-TLS-1-0-2019-07, Policy-Min-TLS-1-2-2019-07; OPTIONAL
       },    # OPTIONAL
       EBSOptions => {
@@ -72,6 +104,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         VolumeType => 'standard',    # values: standard, gp2, io1; OPTIONAL
       },    # OPTIONAL
       ElasticsearchClusterConfig => {
+        ColdStorageOptions => {
+          Enabled => 1,    # OPTIONAL
+
+        },    # OPTIONAL
         DedicatedMasterCount   => 1,                          # OPTIONAL
         DedicatedMasterEnabled => 1,                          # OPTIONAL
         DedicatedMasterType    => 'm3.medium.elasticsearch'
@@ -97,7 +133,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'INDEX_SLOW_LOGS' => {
           CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
-        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
+        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS, AUDIT_LOGS
       },    # OPTIONAL
       NodeToNodeEncryptionOptions => {
         Enabled => 1,    # OPTIONAL
@@ -105,6 +141,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SnapshotOptions => {
         AutomatedSnapshotStartHour => 1,    # OPTIONAL
       },    # OPTIONAL
+      TagList => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
       VPCOptions => {
         SecurityGroupIds => [ 'MyString', ... ],    # OPTIONAL
         SubnetIds        => [ 'MyString', ... ],    # OPTIONAL
@@ -141,6 +185,12 @@ for more information.
 =head2 AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>
 
 Specifies advanced security options.
+
+
+
+=head2 AutoTuneOptions => L<Paws::ES::AutoTuneOptionsInput>
+
+Specifies Auto-Tune options.
 
 
 
@@ -216,6 +266,12 @@ Specifies the NodeToNodeEncryptionOptions.
 
 Option to set time, in UTC format, of the daily automated snapshot.
 Default value is 0 hours.
+
+
+
+=head2 TagList => ArrayRef[L<Paws::ES::Tag>]
+
+A list of C<Tag> added during domain creation.
 
 
 

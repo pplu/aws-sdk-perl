@@ -4,6 +4,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has AccessPolicies => (is => 'ro', isa => 'Paws::ES::AccessPoliciesStatus');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptionsStatus');
   has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptionsStatus');
+  has AutoTuneOptions => (is => 'ro', isa => 'Paws::ES::AutoTuneOptionsStatus');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptionsStatus');
   has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptionsStatus');
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
@@ -66,6 +67,11 @@ for more information.
 =head2 AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsStatus>
 
 Specifies C<AdvancedSecurityOptions> for the domain.
+
+
+=head2 AutoTuneOptions => L<Paws::ES::AutoTuneOptionsStatus>
+
+Specifies C<AutoTuneOptions> for the domain.
 
 
 =head2 CognitoOptions => L<Paws::ES::CognitoOptionsStatus>

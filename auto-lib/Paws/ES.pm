@@ -14,9 +14,19 @@ package Paws::ES;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AcceptInboundCrossClusterSearchConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::AcceptInboundCrossClusterSearchConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::AddTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociatePackage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::AssociatePackage', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CancelElasticsearchServiceSoftwareUpdate {
@@ -29,6 +39,16 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::CreateElasticsearchDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateOutboundCrossClusterSearchConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::CreateOutboundCrossClusterSearchConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePackage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::CreatePackage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteElasticsearchDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::DeleteElasticsearchDomain', @_);
@@ -37,6 +57,26 @@ package Paws::ES;
   sub DeleteElasticsearchServiceRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::DeleteElasticsearchServiceRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteInboundCrossClusterSearchConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DeleteInboundCrossClusterSearchConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteOutboundCrossClusterSearchConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DeleteOutboundCrossClusterSearchConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePackage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DeletePackage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDomainAutoTunes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribeDomainAutoTunes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeElasticsearchDomain {
@@ -59,6 +99,21 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchInstanceTypeLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInboundCrossClusterSearchConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribeInboundCrossClusterSearchConnections', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeOutboundCrossClusterSearchConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribeOutboundCrossClusterSearchConnections', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePackages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribePackages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeReservedElasticsearchInstanceOfferings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeReservedElasticsearchInstanceOfferings', @_);
@@ -69,9 +124,19 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeReservedElasticsearchInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DissociatePackage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DissociatePackage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCompatibleElasticsearchVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::GetCompatibleElasticsearchVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPackageVersionHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetPackageVersionHistory', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetUpgradeHistory {
@@ -89,6 +154,11 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::ListDomainNames', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDomainsForPackage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::ListDomainsForPackage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListElasticsearchInstanceTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListElasticsearchInstanceTypes', @_);
@@ -99,6 +169,11 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::ListElasticsearchVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPackagesForDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::ListPackagesForDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListTags', @_);
@@ -107,6 +182,11 @@ package Paws::ES;
   sub PurchaseReservedElasticsearchInstanceOffering {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::PurchaseReservedElasticsearchInstanceOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RejectInboundCrossClusterSearchConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::RejectInboundCrossClusterSearchConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -122,6 +202,11 @@ package Paws::ES;
   sub UpdateElasticsearchDomainConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePackage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::UpdatePackage', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpgradeElasticsearchDomain {
@@ -247,7 +332,7 @@ package Paws::ES;
   }
 
 
-  sub operations { qw/AddTags CancelElasticsearchServiceSoftwareUpdate CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances GetCompatibleElasticsearchVersions GetUpgradeHistory GetUpgradeStatus ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags StartElasticsearchServiceSoftwareUpdate UpdateElasticsearchDomainConfig UpgradeElasticsearchDomain / }
+  sub operations { qw/AcceptInboundCrossClusterSearchConnection AddTags AssociatePackage CancelElasticsearchServiceSoftwareUpdate CreateElasticsearchDomain CreateOutboundCrossClusterSearchConnection CreatePackage DeleteElasticsearchDomain DeleteElasticsearchServiceRole DeleteInboundCrossClusterSearchConnection DeleteOutboundCrossClusterSearchConnection DeletePackage DescribeDomainAutoTunes DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeInboundCrossClusterSearchConnections DescribeOutboundCrossClusterSearchConnections DescribePackages DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances DissociatePackage GetCompatibleElasticsearchVersions GetPackageVersionHistory GetUpgradeHistory GetUpgradeStatus ListDomainNames ListDomainsForPackage ListElasticsearchInstanceTypes ListElasticsearchVersions ListPackagesForDomain ListTags PurchaseReservedElasticsearchInstanceOffering RejectInboundCrossClusterSearchConnection RemoveTags StartElasticsearchServiceSoftwareUpdate UpdateElasticsearchDomainConfig UpdatePackage UpgradeElasticsearchDomain / }
 
 1;
 
@@ -298,6 +383,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/elasticsearch-s
 
 =head1 METHODS
 
+=head2 AcceptInboundCrossClusterSearchConnection
+
+=over
+
+=item CrossClusterSearchConnectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::AcceptInboundCrossClusterSearchConnection>
+
+Returns: a L<Paws::ES::AcceptInboundCrossClusterSearchConnectionResponse> instance
+
+Allows the destination domain owner to accept an inbound cross-cluster
+search connection request.
+
+
 =head2 AddTags
 
 =over
@@ -318,6 +420,24 @@ case-sensitive key value pairs. An Elasticsearch domain may have up to
 10 tags. See Tagging Amazon Elasticsearch Service Domains for more
 information.
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging)
+
+
+=head2 AssociatePackage
+
+=over
+
+=item DomainName => Str
+
+=item PackageID => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::AssociatePackage>
+
+Returns: a L<Paws::ES::AssociatePackageResponse> instance
+
+Associates a package with an Amazon ES domain.
 
 
 =head2 CancelElasticsearchServiceSoftwareUpdate
@@ -350,6 +470,8 @@ and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
 
 =item [AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>]
 
+=item [AutoTuneOptions => L<Paws::ES::AutoTuneOptionsInput>]
+
 =item [CognitoOptions => L<Paws::ES::CognitoOptions>]
 
 =item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
@@ -368,6 +490,8 @@ and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
 
 =item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
 
+=item [TagList => ArrayRef[L<Paws::ES::Tag>]]
+
 =item [VPCOptions => L<Paws::ES::VPCOptions>]
 
 
@@ -381,6 +505,49 @@ Creates a new Elasticsearch domain. For more information, see Creating
 Elasticsearch Domains
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
 in the I<Amazon Elasticsearch Service Developer Guide>.
+
+
+=head2 CreateOutboundCrossClusterSearchConnection
+
+=over
+
+=item ConnectionAlias => Str
+
+=item DestinationDomainInfo => L<Paws::ES::DomainInformation>
+
+=item SourceDomainInfo => L<Paws::ES::DomainInformation>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::CreateOutboundCrossClusterSearchConnection>
+
+Returns: a L<Paws::ES::CreateOutboundCrossClusterSearchConnectionResponse> instance
+
+Creates a new cross-cluster search connection from a source domain to a
+destination domain.
+
+
+=head2 CreatePackage
+
+=over
+
+=item PackageName => Str
+
+=item PackageSource => L<Paws::ES::PackageSource>
+
+=item PackageType => Str
+
+=item [PackageDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::CreatePackage>
+
+Returns: a L<Paws::ES::CreatePackageResponse> instance
+
+Create a package for use with Amazon ES domains.
 
 
 =head2 DeleteElasticsearchDomain
@@ -420,6 +587,78 @@ Elasticsearch domains before deleting the role. See Deleting
 Elasticsearch Service Role
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr)
 in I<VPC Endpoints for Amazon Elasticsearch Service Domains>.
+
+
+=head2 DeleteInboundCrossClusterSearchConnection
+
+=over
+
+=item CrossClusterSearchConnectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DeleteInboundCrossClusterSearchConnection>
+
+Returns: a L<Paws::ES::DeleteInboundCrossClusterSearchConnectionResponse> instance
+
+Allows the destination domain owner to delete an existing inbound
+cross-cluster search connection.
+
+
+=head2 DeleteOutboundCrossClusterSearchConnection
+
+=over
+
+=item CrossClusterSearchConnectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DeleteOutboundCrossClusterSearchConnection>
+
+Returns: a L<Paws::ES::DeleteOutboundCrossClusterSearchConnectionResponse> instance
+
+Allows the source domain owner to delete an existing outbound
+cross-cluster search connection.
+
+
+=head2 DeletePackage
+
+=over
+
+=item PackageID => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DeletePackage>
+
+Returns: a L<Paws::ES::DeletePackageResponse> instance
+
+Delete the package.
+
+
+=head2 DescribeDomainAutoTunes
+
+=over
+
+=item DomainName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DescribeDomainAutoTunes>
+
+Returns: a L<Paws::ES::DescribeDomainAutoTunesResponse> instance
+
+Provides scheduled Auto-Tune action details for the Elasticsearch
+domain, such as Auto-Tune action type, description, severity, and
+scheduled date.
 
 
 =head2 DescribeElasticsearchDomain
@@ -498,6 +737,69 @@ ElasticsearchVersion. When modifying existing Domain, specify the C<
 DomainName > to know what Limits are supported for modifying.
 
 
+=head2 DescribeInboundCrossClusterSearchConnections
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ES::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DescribeInboundCrossClusterSearchConnections>
+
+Returns: a L<Paws::ES::DescribeInboundCrossClusterSearchConnectionsResponse> instance
+
+Lists all the inbound cross-cluster search connections for a
+destination domain.
+
+
+=head2 DescribeOutboundCrossClusterSearchConnections
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ES::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DescribeOutboundCrossClusterSearchConnections>
+
+Returns: a L<Paws::ES::DescribeOutboundCrossClusterSearchConnectionsResponse> instance
+
+Lists all the outbound cross-cluster search connections for a source
+domain.
+
+
+=head2 DescribePackages
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ES::DescribePackagesFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DescribePackages>
+
+Returns: a L<Paws::ES::DescribePackagesResponse> instance
+
+Describes all packages available to Amazon ES. Includes options for
+filtering, limiting the number of results, and pagination.
+
+
 =head2 DescribeReservedElasticsearchInstanceOfferings
 
 =over
@@ -539,6 +841,24 @@ Returns information about reserved Elasticsearch instances for this
 account.
 
 
+=head2 DissociatePackage
+
+=over
+
+=item DomainName => Str
+
+=item PackageID => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::DissociatePackage>
+
+Returns: a L<Paws::ES::DissociatePackageResponse> instance
+
+Dissociates a package from the Amazon ES domain.
+
+
 =head2 GetCompatibleElasticsearchVersions
 
 =over
@@ -555,6 +875,27 @@ Returns: a L<Paws::ES::GetCompatibleElasticsearchVersionsResponse> instance
 Returns a list of upgrade compatible Elastisearch versions. You can
 optionally pass a C< DomainName > to get all upgrade compatible
 Elasticsearch versions for that specific domain.
+
+
+=head2 GetPackageVersionHistory
+
+=over
+
+=item PackageID => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetPackageVersionHistory>
+
+Returns: a L<Paws::ES::GetPackageVersionHistoryResponse> instance
+
+Returns a list of versions of the package, along with their creation
+time and commit message.
 
 
 =head2 GetUpgradeHistory
@@ -612,6 +953,26 @@ Returns the name of all Elasticsearch domains owned by the current
 user's account.
 
 
+=head2 ListDomainsForPackage
+
+=over
+
+=item PackageID => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::ListDomainsForPackage>
+
+Returns: a L<Paws::ES::ListDomainsForPackageResponse> instance
+
+Lists all Amazon ES domains associated with the package.
+
+
 =head2 ListElasticsearchInstanceTypes
 
 =over
@@ -653,6 +1014,26 @@ Returns: a L<Paws::ES::ListElasticsearchVersionsResponse> instance
 List all supported Elasticsearch versions
 
 
+=head2 ListPackagesForDomain
+
+=over
+
+=item DomainName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::ListPackagesForDomain>
+
+Returns: a L<Paws::ES::ListPackagesForDomainResponse> instance
+
+Lists all packages associated with the Amazon ES domain.
+
+
 =head2 ListTags
 
 =over
@@ -687,6 +1068,23 @@ Each argument is described in detail in: L<Paws::ES::PurchaseReservedElasticsear
 Returns: a L<Paws::ES::PurchaseReservedElasticsearchInstanceOfferingResponse> instance
 
 Allows you to purchase reserved Elasticsearch instances.
+
+
+=head2 RejectInboundCrossClusterSearchConnection
+
+=over
+
+=item CrossClusterSearchConnectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::RejectInboundCrossClusterSearchConnection>
+
+Returns: a L<Paws::ES::RejectInboundCrossClusterSearchConnectionResponse> instance
+
+Allows the destination domain owner to reject an inbound cross-cluster
+search connection request.
 
 
 =head2 RemoveTags
@@ -736,6 +1134,8 @@ Schedules a service software update for an Amazon ES domain.
 
 =item [AdvancedSecurityOptions => L<Paws::ES::AdvancedSecurityOptionsInput>]
 
+=item [AutoTuneOptions => L<Paws::ES::AutoTuneOptions>]
+
 =item [CognitoOptions => L<Paws::ES::CognitoOptions>]
 
 =item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
@@ -744,7 +1144,11 @@ Schedules a service software update for an Amazon ES domain.
 
 =item [ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>]
 
+=item [EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>]
+
 =item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
+
+=item [NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>]
 
 =item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
 
@@ -760,6 +1164,28 @@ Returns: a L<Paws::ES::UpdateElasticsearchDomainConfigResponse> instance
 Modifies the cluster configuration of the specified Elasticsearch
 domain, setting as setting the instance type and the number of
 instances.
+
+
+=head2 UpdatePackage
+
+=over
+
+=item PackageID => Str
+
+=item PackageSource => L<Paws::ES::PackageSource>
+
+=item [CommitMessage => Str]
+
+=item [PackageDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::UpdatePackage>
+
+Returns: a L<Paws::ES::UpdatePackageResponse> instance
+
+Updates a package for use with Amazon ES domains.
 
 
 =head2 UpgradeElasticsearchDomain

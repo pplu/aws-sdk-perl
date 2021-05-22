@@ -5,6 +5,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
   has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptions');
   has ARN => (is => 'ro', isa => 'Str', required => 1);
+  has AutoTuneOptions => (is => 'ro', isa => 'Paws::ES::AutoTuneOptionsOutput');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
@@ -82,6 +83,11 @@ The Amazon resource name (ARN) of an Elasticsearch domain. See
 Identifiers for IAM Entities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html)
 in I<Using AWS Identity and Access Management> for more information.
+
+
+=head2 AutoTuneOptions => L<Paws::ES::AutoTuneOptionsOutput>
+
+The current status of the Elasticsearch domain's Auto-Tune options.
 
 
 =head2 CognitoOptions => L<Paws::ES::CognitoOptions>
