@@ -3,9 +3,11 @@ package Paws::CodeGuruProfiler::ProfilingGroupDescription;
   use Moose;
   has AgentOrchestrationConfig => (is => 'ro', isa => 'Paws::CodeGuruProfiler::AgentOrchestrationConfig', request_name => 'agentOrchestrationConfig', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ProfilingStatus => (is => 'ro', isa => 'Paws::CodeGuruProfiler::ProfilingStatus', request_name => 'profilingStatus', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::CodeGuruProfiler::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
 
 1;
@@ -38,39 +40,65 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruPro
 
 =head1 DESCRIPTION
 
-The description of a profiling group.
+Contains information about a profiling group.
 
 =head1 ATTRIBUTES
 
 
 =head2 AgentOrchestrationConfig => L<Paws::CodeGuruProfiler::AgentOrchestrationConfig>
 
-
+An C<AgentOrchestrationConfig>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentOrchestrationConfig.html)
+object that indicates if the profiling group is enabled for profiled or
+not.
 
 
 =head2 Arn => Str
 
+The Amazon Resource Name (ARN) identifying the profiling group
+resource.
 
+
+=head2 ComputePlatform => Str
+
+The compute platform of the profiling group. If it is set to
+C<AWSLambda>, then the profiled application runs on AWS Lambda. If it
+is set to C<Default>, then the profiled application runs on a compute
+platform that is not AWS Lambda, such an Amazon EC2 instance, an
+on-premises server, or a different platform. The default is C<Default>.
 
 
 =head2 CreatedAt => Str
 
-The timestamp of when the profiling group was created.
+The time when the profiling group was created. Specify using the ISO
+8601 format. For example, 2020-06-01T13:15:02.001Z represents 1
+millisecond past June 1, 2020 1:15:02 PM UTC.
 
 
 =head2 Name => Str
 
-
+The name of the profiling group.
 
 
 =head2 ProfilingStatus => L<Paws::CodeGuruProfiler::ProfilingStatus>
 
+A C<ProfilingStatus>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingStatus.html)
+object that includes information about the last time a profile agent
+pinged back, the last time a profile was received, and the aggregation
+period and start time for the most recent aggregated profile.
 
+
+=head2 Tags => L<Paws::CodeGuruProfiler::TagsMap>
+
+A list of the tags that belong to this profiling group.
 
 
 =head2 UpdatedAt => Str
 
-The timestamp of when the profiling group was last updated.
+The date and time when the profiling group was last updated. Specify
+using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
+represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
 
 
 

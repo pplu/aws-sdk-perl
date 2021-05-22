@@ -35,25 +35,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruPro
 
 =head1 DESCRIPTION
 
-The status of profiling of a profiling group.
+Profiling status includes information about the last time a profile
+agent pinged back, the last time a profile was received, and the
+aggregation period and start time for the most recent aggregated
+profile.
 
 =head1 ATTRIBUTES
 
 
 =head2 LatestAgentOrchestratedAt => Str
 
-Timestamp of when the last interaction of the agent with configureAgent
-API for orchestration.
+The date and time when the profiling agent most recently pinged back.
+Specify using the ISO 8601 format. For example,
+2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
+1:15:02 PM UTC.
 
 
 =head2 LatestAgentProfileReportedAt => Str
 
-Timestamp of when the latest agent profile was successfully reported.
+The date and time when the most recent profile was received. Specify
+using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
+represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
 
 
 =head2 LatestAggregatedProfile => L<Paws::CodeGuruProfiler::AggregatedProfileTime>
 
-The time range of latest aggregated profile available.
+An C<AggregatedProfileTime>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html)
+object that contains the aggregation period and start time for an
+aggregated profile.
 
 
 

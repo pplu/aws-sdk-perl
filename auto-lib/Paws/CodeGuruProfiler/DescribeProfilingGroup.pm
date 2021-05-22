@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ProfilingGroupName => Str
 
-
+The name of the profiling group to get information about.
 
 
 

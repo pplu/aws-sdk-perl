@@ -18,7 +18,9 @@ Paws::CodeGuruProfiler::UpdateProfilingGroupResponse
 
 =head2 B<REQUIRED> ProfilingGroup => L<Paws::CodeGuruProfiler::ProfilingGroupDescription>
 
-
+A C<ProfilingGroupDescription>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
+that contains information about the returned updated profiling group.
 
 
 =head2 _request_id => Str

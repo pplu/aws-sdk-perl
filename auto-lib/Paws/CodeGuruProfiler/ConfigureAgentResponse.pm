@@ -18,7 +18,10 @@ Paws::CodeGuruProfiler::ConfigureAgentResponse
 
 =head2 B<REQUIRED> Configuration => L<Paws::CodeGuruProfiler::AgentConfiguration>
 
-The configuration for the agent to use.
+An C<AgentConfiguration>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentConfiguration.html)
+object that specifies if an agent profiles or not and for how long to
+return profiling data.
 
 
 =head2 _request_id => Str

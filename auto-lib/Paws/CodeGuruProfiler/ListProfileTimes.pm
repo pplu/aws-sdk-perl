@@ -36,12 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codeguru-profiler = Paws->service('CodeGuruProfiler');
     my $ListProfileTimesResponse = $codeguru -profiler->ListProfileTimes(
       EndTime            => '1970-01-01T01:00:00',
-      Period             => 'P1D',
+      Period             => 'PT5M',
       ProfilingGroupName => 'MyProfilingGroupName',
       StartTime          => '1970-01-01T01:00:00',
       MaxResults         => 1,                        # OPTIONAL
       NextToken          => 'MyPaginationToken',      # OPTIONAL
-      OrderBy            => 'TimestampAscending',     # OPTIONAL
+      OrderBy            => 'TimestampDescending',    # OPTIONAL
     );
 
     # Results:
@@ -58,44 +58,75 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> EndTime => Str
 
-The end time of the time range to list profiles until.
+The end time of the time range from which to list the profiles.
 
 
 
 =head2 MaxResults => Int
 
-
+The maximum number of profile time results returned by
+C<ListProfileTimes> in paginated output. When this parameter is used,
+C<ListProfileTimes> only returns C<maxResults> results in a single page
+with a C<nextToken> response element. The remaining results of the
+initial request can be seen by sending another C<ListProfileTimes>
+request with the returned C<nextToken> value.
 
 
 
 =head2 NextToken => Str
 
+The C<nextToken> value returned from a previous paginated
+C<ListProfileTimes> request where C<maxResults> was used and the
+results exceeded the value of that parameter. Pagination continues from
+the end of the previous results that returned the C<nextToken> value.
 
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.
 
 
 
 =head2 OrderBy => Str
 
-The order (ascending or descending by start time of the profile) to
-list the profiles by. Defaults to TIMESTAMP_DESCENDING.
+The order (ascending or descending by start time of the profile) to use
+when listing profiles. Defaults to C<TIMESTAMP_DESCENDING>.
 
-Valid values are: C<"TimestampAscending">, C<"TimestampDescending">
+Valid values are: C<"TimestampDescending">, C<"TimestampAscending">
 
 =head2 B<REQUIRED> Period => Str
 
-The aggregation period to list the profiles for.
+The aggregation period. This specifies the period during which an
+aggregation profile collects posted agent profiles for a profiling
+group. There are 3 valid values.
 
-Valid values are: C<"P1D">, C<"PT1H">, C<"PT5M">
+=over
+
+=item *
+
+C<P1D> E<mdash> 1 day
+
+=item *
+
+C<PT1H> E<mdash> 1 hour
+
+=item *
+
+C<PT5M> E<mdash> 5 minutes
+
+=back
+
+
+Valid values are: C<"PT5M">, C<"PT1H">, C<"P1D">
 
 =head2 B<REQUIRED> ProfilingGroupName => Str
 
-
+The name of the profiling group.
 
 
 
 =head2 B<REQUIRED> StartTime => Str
 
-The start time of the time range to list the profiles from.
+The start time of the time range from which to list the profiles.
 
 
 

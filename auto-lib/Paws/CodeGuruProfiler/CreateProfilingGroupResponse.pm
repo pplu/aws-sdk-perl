@@ -18,7 +18,9 @@ Paws::CodeGuruProfiler::CreateProfilingGroupResponse
 
 =head2 B<REQUIRED> ProfilingGroup => L<Paws::CodeGuruProfiler::ProfilingGroupDescription>
 
-
+The returned C<ProfilingGroupDescription>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
+object that contains information about the created profiling group.
 
 
 =head2 _request_id => Str

@@ -20,19 +20,18 @@ Paws::CodeGuruProfiler::GetProfileResponse
 
 =head2 ContentEncoding => Str
 
-The content encoding of the profile in the payload.
+The content encoding of the profile.
 
 
 =head2 B<REQUIRED> ContentType => Str
 
-The content type of the profile in the payload. Will be
-application/json or application/x-amzn-ion based on Accept header in
-the request.
+The content type of the profile in the payload. It is either
+C<application/json> or the default C<application/x-amzn-ion>.
 
 
 =head2 B<REQUIRED> Profile => Str
 
-
+Information about the profile.
 
 
 =head2 _request_id => Str

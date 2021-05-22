@@ -51,20 +51,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 IncludeDescription => Bool
 
-If set to true, returns the full description of the profiling groups
-instead of the names. Defaults to false.
+A C<Boolean> value indicating whether to include a description. If
+C<true>, then a list of C<ProfilingGroupDescription>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
+objects that contain detailed information about profiling groups is
+returned. If C<false>, then a list of profiling group names is
+returned.
 
 
 
 =head2 MaxResults => Int
 
-
+The maximum number of profiling groups results returned by
+C<ListProfilingGroups> in paginated output. When this parameter is
+used, C<ListProfilingGroups> only returns C<maxResults> results in a
+single page along with a C<nextToken> response element. The remaining
+results of the initial request can be seen by sending another
+C<ListProfilingGroups> request with the returned C<nextToken> value.
 
 
 
 =head2 NextToken => Str
 
+The C<nextToken> value returned from a previous paginated
+C<ListProfilingGroups> request where C<maxResults> was used and the
+results exceeded the value of that parameter. Pagination continues from
+the end of the previous results that returned the C<nextToken> value.
 
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.
 
 
 

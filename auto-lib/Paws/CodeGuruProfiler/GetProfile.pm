@@ -57,42 +57,59 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 Accept => Str
 
-The format of the profile to return. Supports application/json or
-application/x-amzn-ion. Defaults to application/x-amzn-ion.
+The format of the returned profiling data. The format maps to the
+C<Accept> and C<Content-Type> headers of the HTTP request. You can
+specify one of the following: or the default .
+
+ <ul> <li> <p> <code>application/json</code> — standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> — the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul>
 
 
 
 =head2 EndTime => Str
 
-The end time of the profile to get. Either period or endTime must be
-specified. Must be greater than start and the overall time range to be
-in the past and not larger than a week.
+The end time of the requested profile. Specify using the ISO 8601
+format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
+past June 1, 2020 1:15:02 PM UTC.
+
+If you specify C<endTime>, then you must also specify C<period> or
+C<startTime>, but not both.
 
 
 
 =head2 MaxDepth => Int
 
-
+The maximum depth of the stacks in the code that is represented in the
+aggregated profile. For example, if CodeGuru Profiler finds a method
+C<A>, which calls method C<B>, which calls method C<C>, which calls
+method C<D>, then the depth is 4. If the C<maxDepth> is set to 2, then
+the aggregated profile contains representations of methods C<A> and
+C<B>.
 
 
 
 =head2 Period => Str
 
-The period of the profile to get. Exactly two of C<startTime>,
-C<period> and C<endTime> must be specified. Must be positive and the
-overall time range to be in the past and not larger than a week.
+Used with C<startTime> or C<endTime> to specify the time range for the
+returned aggregated profile. Specify using the ISO 8601 format. For
+example, C<P1DT1H1M1S>.
+
+ <p> To get the latest aggregated profile, specify only <code>period</code>. </p>
 
 
 
 =head2 B<REQUIRED> ProfilingGroupName => Str
 
-
+The name of the profiling group to get.
 
 
 
 =head2 StartTime => Str
 
-The start time of the profile to get.
+The start time of the profile to get. Specify using the ISO 8601
+format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
+past June 1, 2020 1:15:02 PM UTC.
+
+ <p> If you specify <code>startTime</code>, then you must also specify <code>period</code> or <code>endTime</code>, but not both. </p>
 
 
 

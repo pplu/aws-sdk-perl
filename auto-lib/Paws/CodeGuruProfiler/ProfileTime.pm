@@ -33,15 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruPro
 
 =head1 DESCRIPTION
 
-Periods of time used for aggregation of profiles, represented using ISO
-8601 format.
+Contains the start time of a profile.
 
 =head1 ATTRIBUTES
 
 
 =head2 Start => Str
 
-The start time of the profile.
+The start time of a profile. It is specified using the ISO 8601 format.
+For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past
+June 1, 2020 1:15:02 PM UTC.
 
 
 
