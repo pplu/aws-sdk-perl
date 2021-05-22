@@ -17,6 +17,7 @@ package Paws::Glue::GetMLTransformResponse;
   has Schema => (is => 'ro', isa => 'ArrayRef[Paws::Glue::SchemaColumn]');
   has Status => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+  has TransformEncryption => (is => 'ro', isa => 'Paws::Glue::TransformEncryption');
   has TransformId => (is => 'ro', isa => 'Str');
   has WorkerType => (is => 'ro', isa => 'Str');
 
@@ -130,6 +131,13 @@ The timeout for a task run for this transform in minutes. This is the
 maximum time that a task run for this transform can consume resources
 before it is terminated and enters C<TIMEOUT> status. The default is
 2,880 minutes (48 hours).
+
+
+=head2 TransformEncryption => L<Paws::Glue::TransformEncryption>
+
+The encryption-at-rest settings of the transform that apply to
+accessing user data. Machine learning transforms can access user data
+encrypted in Amazon S3 using KMS.
 
 
 =head2 TransformId => Str

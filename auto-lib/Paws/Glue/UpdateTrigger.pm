@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Conditions => [
             {
               CrawlState => 'RUNNING'
-              ,    # values: RUNNING, SUCCEEDED, CANCELLED, FAILED; OPTIONAL
+              , # values: RUNNING, CANCELLING, CANCELLED, SUCCEEDED, FAILED; OPTIONAL
               CrawlerName     => 'MyNameString',    # min: 1, max: 255
               JobName         => 'MyNameString',    # min: 1, max: 255
               LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL

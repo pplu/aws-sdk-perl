@@ -6,7 +6,9 @@ package Paws::Glue::CreateCrawler;
   has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has LineageConfiguration => (is => 'ro', isa => 'Paws::Glue::LineageConfiguration');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has RecrawlPolicy => (is => 'ro', isa => 'Paws::Glue::RecrawlPolicy');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Schedule => (is => 'ro', isa => 'Str');
   has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
@@ -54,26 +56,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                     # OPTIONAL
         DynamoDBTargets => [
           {
-            Path => 'MyPath',                  # OPTIONAL
+            Path     => 'MyPath',
+            ScanAll  => 1,                     # OPTIONAL
+            ScanRate => 1,                     # OPTIONAL
           },
           ...
         ],                                     # OPTIONAL
         JdbcTargets => [
           {
             ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Exclusions     => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
+            Path           => 'MyPath',
+          },
+          ...
+        ],                                           # OPTIONAL
+        MongoDBTargets => [
+          {
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Path           => 'MyPath',
+            ScanAll        => 1,                     # OPTIONAL
           },
           ...
         ],                                           # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
+            Path           => 'MyPath',
           },
           ...
         ],                                           # OPTIONAL
@@ -84,9 +93,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Configuration => 'MyCrawlerConfiguration',     # OPTIONAL
       CrawlerSecurityConfiguration =>
         'MyCrawlerSecurityConfiguration',            # OPTIONAL
-      DatabaseName       => 'MyDatabaseName',        # OPTIONAL
-      Description        => 'MyDescriptionString',   # OPTIONAL
-      Schedule           => 'MyCronExpression',      # OPTIONAL
+      DatabaseName         => 'MyDatabaseName',      # OPTIONAL
+      Description          => 'MyDescriptionString', # OPTIONAL
+      LineageConfiguration => {
+        CrawlerLineageSettings => 'ENABLE',  # values: ENABLE, DISABLE; OPTIONAL
+      },    # OPTIONAL
+      RecrawlPolicy => {
+        RecrawlBehavior => 'CRAWL_EVERYTHING'
+        ,    # values: CRAWL_EVERYTHING, CRAWL_NEW_FOLDERS_ONLY; OPTIONAL
+      },    # OPTIONAL
+      Schedule           => 'MyCronExpression',    # OPTIONAL
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
@@ -115,10 +131,10 @@ classification.
 
 =head2 Configuration => Str
 
-The crawler configuration information. This versioned JSON string
-allows users to specify aspects of a crawler's behavior. For more
-information, see Configuring a Crawler
-(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+Crawler configuration information. This versioned JSON string allows
+users to specify aspects of a crawler's behavior. For more information,
+see Configuring a Crawler
+(https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 
@@ -142,9 +158,22 @@ A description of the new crawler.
 
 
 
+=head2 LineageConfiguration => L<Paws::Glue::LineageConfiguration>
+
+Specifies data lineage configuration settings for the crawler.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 Name of the new crawler.
+
+
+
+=head2 RecrawlPolicy => L<Paws::Glue::RecrawlPolicy>
+
+A policy that specifies whether to crawl the entire dataset again, or
+to crawl only folders that were added since the last crawler run.
 
 
 
@@ -157,11 +186,11 @@ new crawler to access customer resources.
 
 =head2 Schedule => Str
 
-A C<cron> expression used to specify the schedule. For more
-information, see Time-Based Schedules for Jobs and Crawlers
-(http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-For example, to run something every day at 12:15 UTC, specify C<cron(15
-12 * * ? *)>.
+A C<cron> expression used to specify the schedule (see Time-Based
+Schedules for Jobs and Crawlers
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+For example, to run something every day at 12:15 UTC, you would
+specify: C<cron(15 12 * * ? *)>.
 
 
 
@@ -179,9 +208,11 @@ The table prefix used for catalog tables that are created.
 
 =head2 Tags => L<Paws::Glue::TagsMap>
 
-The tags to use with this crawler request. You can use tags to limit
-access to the crawler. For more information, see AWS Tags in AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
+The tags to use with this crawler request. You may use tags to limit
+access to the crawler. For more information about tags in AWS Glue, see
+AWS Tags in AWS Glue
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+developer guide.
 
 
 

@@ -197,10 +197,10 @@ you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
 
 =item *
 
-When you specify an Apache Spark ETL job
-(C<JobCommand.Name>="glueetl"), you can allocate from 2 to 100 DPUs.
-The default is 10 DPUs. This job type cannot have a fractional DPU
-allocation.
+When you specify an Apache Spark ETL job (C<JobCommand.Name>="glueetl")
+or Apache Spark streaming ETL job (C<JobCommand.Name>="gluestreaming"),
+you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+type cannot have a fractional DPU allocation.
 
 =back
 

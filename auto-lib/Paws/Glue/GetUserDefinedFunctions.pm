@@ -2,7 +2,7 @@
 package Paws::Glue::GetUserDefinedFunctions;
   use Moose;
   has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has DatabaseName => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has Pattern => (is => 'ro', isa => 'Str', required => 1);
@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $GetUserDefinedFunctionsResponse = $glue->GetUserDefinedFunctions(
-      DatabaseName => 'MyNameString',
       Pattern      => 'MyNameString',
       CatalogId    => 'MyCatalogIdString',    # OPTIONAL
+      DatabaseName => 'MyNameString',         # OPTIONAL
       MaxResults   => 1,                      # OPTIONAL
       NextToken    => 'MyToken',              # OPTIONAL
     );
@@ -59,9 +59,11 @@ located. If none is provided, the AWS account ID is used by default.
 
 
 
-=head2 B<REQUIRED> DatabaseName => Str
+=head2 DatabaseName => Str
 
-The name of the catalog database where the functions are located.
+The name of the catalog database where the functions are located. If
+none is provided, functions from all the databases across the catalog
+will be returned.
 
 
 

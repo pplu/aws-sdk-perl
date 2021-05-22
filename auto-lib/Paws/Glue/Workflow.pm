@@ -7,6 +7,7 @@ package Paws::Glue::Workflow;
   has Graph => (is => 'ro', isa => 'Paws::Glue::WorkflowGraph');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
   has LastRun => (is => 'ro', isa => 'Paws::Glue::WorkflowRun');
+  has MaxConcurrentRuns => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
 
 1;
@@ -75,6 +76,15 @@ The date and time when the workflow was last modified.
 =head2 LastRun => L<Paws::Glue::WorkflowRun>
 
 The information about the last execution of the workflow.
+
+
+=head2 MaxConcurrentRuns => Int
+
+You can use this parameter to prevent unwanted multiple updates to
+data, to control costs, or in some cases, to prevent exceeding the
+maximum number of concurrent runs of any of the component jobs. If you
+leave this parameter blank, there is no limit to the number of
+concurrent workflow runs.
 
 
 =head2 Name => Str

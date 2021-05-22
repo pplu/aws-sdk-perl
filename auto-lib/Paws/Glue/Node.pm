@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Node 
 
 =head1 DESCRIPTION
 
-A node represents an AWS Glue component like Trigger, Job etc. which is
-part of a workflow.
+A node represents an AWS Glue component such as a trigger, or job,
+etc., that is part of a workflow.
 
 =head1 ATTRIBUTES
 

@@ -42,8 +42,7 @@ C<GetConnections> API operation.
 
 =head2 ConnectionType => Str
 
-The type of connections to return. Currently, only JDBC is supported;
-SFTP is not supported.
+The type of connections to return. Currently, SFTP is not supported.
 
 
 =head2 MatchCriteria => ArrayRef[Str|Undef]

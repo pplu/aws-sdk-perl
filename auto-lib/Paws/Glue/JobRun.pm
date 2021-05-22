@@ -136,7 +136,10 @@ The name of the job definition being used in this run.
 
 =head2 JobRunState => Str
 
-The current state of the job run.
+The current state of the job run. For more information about the
+statuses of jobs that have terminated abnormally, see AWS Glue Job Run
+Statuses
+(https://docs.aws.amazon.com/glue/latest/dg/job-run-statuses.html).
 
 
 =head2 LastModifiedOn => Str

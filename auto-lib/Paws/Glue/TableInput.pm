@@ -11,6 +11,7 @@ package Paws::Glue::TableInput;
   has Retention => (is => 'ro', isa => 'Int');
   has StorageDescriptor => (is => 'ro', isa => 'Paws::Glue::StorageDescriptor');
   has TableType => (is => 'ro', isa => 'Str');
+  has TargetTable => (is => 'ro', isa => 'Paws::Glue::TableIdentifier');
   has ViewExpandedText => (is => 'ro', isa => 'Str');
   has ViewOriginalText => (is => 'ro', isa => 'Str');
 
@@ -106,6 +107,12 @@ of this table.
 =head2 TableType => Str
 
 The type of this table (C<EXTERNAL_TABLE>, C<VIRTUAL_VIEW>, etc.).
+
+
+=head2 TargetTable => L<Paws::Glue::TableIdentifier>
+
+A C<TableIdentifier> structure that describes a target table for
+resource linking.
 
 
 =head2 ViewExpandedText => Str

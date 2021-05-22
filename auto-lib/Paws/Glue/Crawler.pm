@@ -10,7 +10,9 @@ package Paws::Glue::Crawler;
   has Description => (is => 'ro', isa => 'Str');
   has LastCrawl => (is => 'ro', isa => 'Paws::Glue::LastCrawlInfo');
   has LastUpdated => (is => 'ro', isa => 'Str');
+  has LineageConfiguration => (is => 'ro', isa => 'Paws::Glue::LineageConfiguration');
   has Name => (is => 'ro', isa => 'Str');
+  has RecrawlPolicy => (is => 'ro', isa => 'Paws::Glue::RecrawlPolicy');
   has Role => (is => 'ro', isa => 'Str');
   has Schedule => (is => 'ro', isa => 'Paws::Glue::Schedule');
   has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
@@ -68,7 +70,7 @@ associated with the crawler.
 Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
 see Configuring a Crawler
-(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+(https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 =head2 CrawlElapsedTime => Int
@@ -109,9 +111,21 @@ error occurred.
 The time that the crawler was last updated.
 
 
+=head2 LineageConfiguration => L<Paws::Glue::LineageConfiguration>
+
+A configuration that specifies whether data lineage is enabled for the
+crawler.
+
+
 =head2 Name => Str
 
 The name of the crawler.
+
+
+=head2 RecrawlPolicy => L<Paws::Glue::RecrawlPolicy>
+
+A policy that specifies whether to crawl the entire dataset again, or
+to crawl only folders that were added since the last crawler run.
 
 
 =head2 Role => Str

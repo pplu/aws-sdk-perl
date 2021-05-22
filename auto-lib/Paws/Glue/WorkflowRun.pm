@@ -2,8 +2,10 @@
 package Paws::Glue::WorkflowRun;
   use Moose;
   has CompletedOn => (is => 'ro', isa => 'Str');
+  has ErrorMessage => (is => 'ro', isa => 'Str');
   has Graph => (is => 'ro', isa => 'Paws::Glue::WorkflowGraph');
   has Name => (is => 'ro', isa => 'Str');
+  has PreviousRunId => (is => 'ro', isa => 'Str');
   has StartedOn => (is => 'ro', isa => 'Str');
   has Statistics => (is => 'ro', isa => 'Paws::Glue::WorkflowRunStatistics');
   has Status => (is => 'ro', isa => 'Str');
@@ -51,6 +53,13 @@ information.
 The date and time when the workflow run completed.
 
 
+=head2 ErrorMessage => Str
+
+This error message describes any error that may have occurred in
+starting the workflow run. Currently the only error message is
+"Concurrent runs exceeded for workflow: C<foo>."
+
+
 =head2 Graph => L<Paws::Glue::WorkflowGraph>
 
 The graph representing all the AWS Glue components that belong to the
@@ -59,7 +68,12 @@ workflow as nodes and directed connections between them as edges.
 
 =head2 Name => Str
 
-Name of the workflow which was executed.
+Name of the workflow that was executed.
+
+
+=head2 PreviousRunId => Str
+
+The ID of the previous workflow run.
 
 
 =head2 StartedOn => Str

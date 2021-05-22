@@ -49,7 +49,7 @@ The name of the connection to use to connect to the JDBC target.
 
 A list of glob patterns used to exclude from the crawl. For more
 information, see Catalog Tables with a Crawler
-(http://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
+(https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
 
 
 =head2 Path => Str

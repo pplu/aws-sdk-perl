@@ -75,9 +75,19 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchStopJobRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchUpdatePartition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchUpdatePartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelMLTaskRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::CancelMLTaskRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CheckSchemaVersionValidity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CheckSchemaVersionValidity', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateClassifier {
@@ -120,6 +130,21 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreatePartition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePartitionIndex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CreatePartitionIndex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRegistry {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CreateRegistry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CreateSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateScript {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateScript', @_);
@@ -153,6 +178,16 @@ package Paws::Glue;
   sub DeleteClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteColumnStatisticsForPartition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteColumnStatisticsForPartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteColumnStatisticsForTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteColumnStatisticsForTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteConnection {
@@ -190,9 +225,29 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeletePartition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePartitionIndex {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeletePartitionIndex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRegistry {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteRegistry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteResourcePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSchemaVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteSchemaVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSecurityConfiguration {
@@ -238,6 +293,16 @@ package Paws::Glue;
   sub GetClassifiers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetClassifiers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetColumnStatisticsForPartition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetColumnStatisticsForPartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetColumnStatisticsForTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetColumnStatisticsForTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetConnection {
@@ -350,6 +415,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetPartition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPartitionIndexes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetPartitionIndexes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPartitions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetPartitions', @_);
@@ -360,9 +430,39 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetPlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRegistry {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetRegistry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourcePolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetResourcePolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResourcePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSchemaByDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetSchemaByDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSchemaVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetSchemaVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSchemaVersionsDiff {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetSchemaVersionsDiff', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSecurityConfiguration {
@@ -460,6 +560,26 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMLTransforms {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListMLTransforms', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRegistries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListRegistries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSchemas {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListSchemas', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSchemaVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListSchemaVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTriggers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::ListTriggers', @_);
@@ -480,14 +600,39 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutSchemaVersionMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::PutSchemaVersionMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutWorkflowRunProperties {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::PutWorkflowRunProperties', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub QuerySchemaVersionMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::QuerySchemaVersionMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterSchemaVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::RegisterSchemaVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveSchemaVersionMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::RemoveSchemaVersionMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ResetJobBookmark {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::ResetJobBookmark', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResumeWorkflowRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ResumeWorkflowRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SearchTables {
@@ -555,6 +700,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::StopTrigger', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StopWorkflowRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::StopWorkflowRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::TagResource', @_);
@@ -568,6 +718,16 @@ package Paws::Glue;
   sub UpdateClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::UpdateClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateColumnStatisticsForPartition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UpdateColumnStatisticsForPartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateColumnStatisticsForTable {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UpdateColumnStatisticsForTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateConnection {
@@ -608,6 +768,16 @@ package Paws::Glue;
   sub UpdatePartition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::UpdatePartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRegistry {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UpdateRegistry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UpdateSchema', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateTable {
@@ -815,6 +985,29 @@ package Paws::Glue;
 
     return undef
   }
+  sub GetAllPartitionIndexes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetPartitionIndexes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetPartitionIndexes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PartitionIndexDescriptorList }, @{ $next_result->PartitionIndexDescriptorList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PartitionIndexDescriptorList') foreach (@{ $result->PartitionIndexDescriptorList });
+        $result = $self->GetPartitionIndexes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PartitionIndexDescriptorList') foreach (@{ $result->PartitionIndexDescriptorList });
+    }
+
+    return undef
+  }
   sub GetAllPartitions {
     my $self = shift;
 
@@ -834,6 +1027,29 @@ package Paws::Glue;
         $result = $self->GetPartitions(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Partitions') foreach (@{ $result->Partitions });
+    }
+
+    return undef
+  }
+  sub GetAllResourcePolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourcePolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetResourcePolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GetResourcePoliciesResponseList }, @{ $next_result->GetResourcePoliciesResponseList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'GetResourcePoliciesResponseList') foreach (@{ $result->GetResourcePoliciesResponseList });
+        $result = $self->GetResourcePolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'GetResourcePoliciesResponseList') foreach (@{ $result->GetResourcePoliciesResponseList });
     }
 
     return undef
@@ -953,9 +1169,78 @@ package Paws::Glue;
 
     return undef
   }
+  sub ListAllRegistries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRegistries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRegistries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Registries }, @{ $next_result->Registries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Registries') foreach (@{ $result->Registries });
+        $result = $self->ListRegistries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Registries') foreach (@{ $result->Registries });
+    }
+
+    return undef
+  }
+  sub ListAllSchemas {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSchemas(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSchemas(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Schemas }, @{ $next_result->Schemas };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+        $result = $self->ListSchemas(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+    }
+
+    return undef
+  }
+  sub ListAllSchemaVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSchemaVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSchemaVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Schemas }, @{ $next_result->Schemas };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+        $result = $self->ListSchemaVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Schemas') foreach (@{ $result->Schemas });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun CancelMLTaskRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreateMLTransform CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeleteMLTransform DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobBookmark GetJobRun GetJobRuns GetJobs GetMapping GetMLTaskRun GetMLTaskRuns GetMLTransform GetMLTransforms GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutWorkflowRunProperties ResetJobBookmark SearchTables StartCrawler StartCrawlerSchedule StartExportLabelsTaskRun StartImportLabelsTaskRun StartJobRun StartMLEvaluationTaskRun StartMLLabelingSetGenerationTaskRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdateMLTransform UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun BatchUpdatePartition CancelMLTaskRun CheckSchemaVersionValidity CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreateMLTransform CreatePartition CreatePartitionIndex CreateRegistry CreateSchema CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteColumnStatisticsForPartition DeleteColumnStatisticsForTable DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeleteMLTransform DeletePartition DeletePartitionIndex DeleteRegistry DeleteResourcePolicy DeleteSchema DeleteSchemaVersions DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetColumnStatisticsForPartition GetColumnStatisticsForTable GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobBookmark GetJobRun GetJobRuns GetJobs GetMapping GetMLTaskRun GetMLTaskRuns GetMLTransform GetMLTransforms GetPartition GetPartitionIndexes GetPartitions GetPlan GetRegistry GetResourcePolicies GetResourcePolicy GetSchema GetSchemaByDefinition GetSchemaVersion GetSchemaVersionsDiff GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListMLTransforms ListRegistries ListSchemas ListSchemaVersions ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutSchemaVersionMetadata PutWorkflowRunProperties QuerySchemaVersionMetadata RegisterSchemaVersion RemoveSchemaVersionMetadata ResetJobBookmark ResumeWorkflowRun SearchTables StartCrawler StartCrawlerSchedule StartExportLabelsTaskRun StartImportLabelsTaskRun StartJobRun StartMLEvaluationTaskRun StartMLLabelingSetGenerationTaskRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger StopWorkflowRun TagResource UntagResource UpdateClassifier UpdateColumnStatisticsForPartition UpdateColumnStatisticsForTable UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdateMLTransform UpdatePartition UpdateRegistry UpdateSchema UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
 
 1;
 
@@ -1249,6 +1534,28 @@ Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 Stops one or more job runs for a specified job definition.
 
 
+=head2 BatchUpdatePartition
+
+=over
+
+=item DatabaseName => Str
+
+=item Entries => ArrayRef[L<Paws::Glue::BatchUpdatePartitionRequestEntry>]
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::BatchUpdatePartition>
+
+Returns: a L<Paws::Glue::BatchUpdatePartitionResponse> instance
+
+Updates one or more partitions in a batch operation.
+
+
 =head2 CancelMLTaskRun
 
 =over
@@ -1269,6 +1576,27 @@ tasks that AWS Glue runs on your behalf as part of various machine
 learning workflows. You can cancel a machine learning task run at any
 time by calling C<CancelMLTaskRun> with a task run's parent transform's
 C<TransformID> and the task run's C<TaskRunId>.
+
+
+=head2 CheckSchemaVersionValidity
+
+=over
+
+=item DataFormat => Str
+
+=item SchemaDefinition => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CheckSchemaVersionValidity>
+
+Returns: a L<Paws::Glue::CheckSchemaVersionValidityResponse> instance
+
+Validates the supplied schema. This call has no side effects, it simply
+validates using the supplied schema using C<DataFormat> as the format.
+Since it does not take a schema set name, no compatibility checks are
+performed.
 
 
 =head2 CreateClassifier
@@ -1332,6 +1660,10 @@ Creates a connection definition in the Data Catalog.
 =item [DatabaseName => Str]
 
 =item [Description => Str]
+
+=item [LineageConfiguration => L<Paws::Glue::LineageConfiguration>]
+
+=item [RecrawlPolicy => L<Paws::Glue::RecrawlPolicy>]
 
 =item [Schedule => Str]
 
@@ -1490,7 +1822,11 @@ Creates a new job definition.
 
 =item [NumberOfWorkers => Int]
 
+=item [Tags => L<Paws::Glue::TagsMap>]
+
 =item [Timeout => Int]
+
+=item [TransformEncryption => L<Paws::Glue::TransformEncryption>]
 
 =item [WorkerType => Str]
 
@@ -1537,6 +1873,90 @@ Each argument is described in detail in: L<Paws::Glue::CreatePartition>
 Returns: a L<Paws::Glue::CreatePartitionResponse> instance
 
 Creates a new partition.
+
+
+=head2 CreatePartitionIndex
+
+=over
+
+=item DatabaseName => Str
+
+=item PartitionIndex => L<Paws::Glue::PartitionIndex>
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CreatePartitionIndex>
+
+Returns: a L<Paws::Glue::CreatePartitionIndexResponse> instance
+
+Creates a specified partition index in an existing table.
+
+
+=head2 CreateRegistry
+
+=over
+
+=item RegistryName => Str
+
+=item [Description => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CreateRegistry>
+
+Returns: a L<Paws::Glue::CreateRegistryResponse> instance
+
+Creates a new registry which may be used to hold a collection of
+schemas.
+
+
+=head2 CreateSchema
+
+=over
+
+=item DataFormat => Str
+
+=item SchemaName => Str
+
+=item [Compatibility => Str]
+
+=item [Description => Str]
+
+=item [RegistryId => L<Paws::Glue::RegistryId>]
+
+=item [SchemaDefinition => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CreateSchema>
+
+Returns: a L<Paws::Glue::CreateSchemaResponse> instance
+
+Creates a new schema set and registers the schema definition. Returns
+an error if the schema set already exists without actually registering
+the version.
+
+When the schema set is created, a version checkpoint will be set to the
+first version. Compatibility mode "DISABLED" restricts any additional
+schema versions from being added after the first schema version. For
+all other compatibility modes, validation of compatibility settings
+will be applied only from the second version onwards when the
+C<RegisterSchemaVersion> API is used.
+
+When this API is called without a C<RegistryId>, this will create an
+entry for a "default-registry" in the registry database tables, if it
+is not already present.
 
 
 =head2 CreateScript
@@ -1591,6 +2011,8 @@ by Crawlers, Jobs, and Development Endpoints
 =item TableInput => L<Paws::Glue::TableInput>
 
 =item [CatalogId => Str]
+
+=item [PartitionIndexes => ArrayRef[L<Paws::Glue::PartitionIndex>]]
 
 
 =back
@@ -1664,6 +2086,8 @@ Creates a new function definition in the Data Catalog.
 
 =item [Description => Str]
 
+=item [MaxConcurrentRuns => Int]
+
 =item [Tags => L<Paws::Glue::TagsMap>]
 
 
@@ -1690,6 +2114,58 @@ Each argument is described in detail in: L<Paws::Glue::DeleteClassifier>
 Returns: a L<Paws::Glue::DeleteClassifierResponse> instance
 
 Removes a classifier from the Data Catalog.
+
+
+=head2 DeleteColumnStatisticsForPartition
+
+=over
+
+=item ColumnName => Str
+
+=item DatabaseName => Str
+
+=item PartitionValues => ArrayRef[Str|Undef]
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteColumnStatisticsForPartition>
+
+Returns: a L<Paws::Glue::DeleteColumnStatisticsForPartitionResponse> instance
+
+Delete the partition column statistics of a column.
+
+The Identity and Access Management (IAM) permission required for this
+operation is C<DeletePartition>.
+
+
+=head2 DeleteColumnStatisticsForTable
+
+=over
+
+=item ColumnName => Str
+
+=item DatabaseName => Str
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteColumnStatisticsForTable>
+
+Returns: a L<Paws::Glue::DeleteColumnStatisticsForTableResponse> instance
+
+Retrieves table statistics of columns.
+
+The Identity and Access Management (IAM) permission required for this
+operation is C<DeleteTable>.
 
 
 =head2 DeleteConnection
@@ -1835,11 +2311,55 @@ Returns: a L<Paws::Glue::DeletePartitionResponse> instance
 Deletes a specified partition.
 
 
+=head2 DeletePartitionIndex
+
+=over
+
+=item DatabaseName => Str
+
+=item IndexName => Str
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeletePartitionIndex>
+
+Returns: a L<Paws::Glue::DeletePartitionIndexResponse> instance
+
+Deletes a specified partition index from an existing table.
+
+
+=head2 DeleteRegistry
+
+=over
+
+=item RegistryId => L<Paws::Glue::RegistryId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteRegistry>
+
+Returns: a L<Paws::Glue::DeleteRegistryResponse> instance
+
+Delete the entire registry including schema and all of its versions. To
+get the status of the delete operation, you can call the C<GetRegistry>
+API after the asynchronous call. Deleting a registry will disable all
+online operations for the registry such as the C<UpdateRegistry>,
+C<CreateSchema>, C<UpdateSchema>, and C<RegisterSchemaVersion> APIs.
+
+
 =head2 DeleteResourcePolicy
 
 =over
 
 =item [PolicyHashCondition => Str]
+
+=item [ResourceArn => Str]
 
 
 =back
@@ -1849,6 +2369,62 @@ Each argument is described in detail in: L<Paws::Glue::DeleteResourcePolicy>
 Returns: a L<Paws::Glue::DeleteResourcePolicyResponse> instance
 
 Deletes a specified policy.
+
+
+=head2 DeleteSchema
+
+=over
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteSchema>
+
+Returns: a L<Paws::Glue::DeleteSchemaResponse> instance
+
+Deletes the entire schema set, including the schema set and all of its
+versions. To get the status of the delete operation, you can call
+C<GetSchema> API after the asynchronous call. Deleting a registry will
+disable all online operations for the schema, such as the
+C<GetSchemaByDefinition>, and C<RegisterSchemaVersion> APIs.
+
+
+=head2 DeleteSchemaVersions
+
+=over
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+=item Versions => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteSchemaVersions>
+
+Returns: a L<Paws::Glue::DeleteSchemaVersionsResponse> instance
+
+Remove versions from the specified schema. A version number or range
+may be supplied. If the compatibility mode forbids deleting of a
+version that is necessary, such as BACKWARDS_FULL, an error is
+returned. Calling the C<GetSchemaVersions> API after this call will
+list the status of the deleted versions.
+
+When the range of version numbers contain check pointed version, the
+API will return a 409 conflict and will not proceed with the deletion.
+You have to remove the checkpoint first using the
+C<DeleteSchemaCheckpoint> API before using this API.
+
+You cannot use the C<DeleteSchemaVersions> API to delete the first
+schema version in the schema set. The first schema version can only be
+deleted by the C<DeleteSchema> API. This operation will also delete the
+attached C<SchemaVersionMetadata> under the schema versions. Hard
+deletes will be enforced on the database.
+
+If the compatibility mode forbids deleting of a version that is
+necessary, such as BACKWARDS_FULL, an error is returned.
 
 
 =head2 DeleteSecurityConfiguration
@@ -2023,6 +2599,58 @@ Returns: a L<Paws::Glue::GetClassifiersResponse> instance
 Lists all classifier objects in the Data Catalog.
 
 
+=head2 GetColumnStatisticsForPartition
+
+=over
+
+=item ColumnNames => ArrayRef[Str|Undef]
+
+=item DatabaseName => Str
+
+=item PartitionValues => ArrayRef[Str|Undef]
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetColumnStatisticsForPartition>
+
+Returns: a L<Paws::Glue::GetColumnStatisticsForPartitionResponse> instance
+
+Retrieves partition statistics of columns.
+
+The Identity and Access Management (IAM) permission required for this
+operation is C<GetPartition>.
+
+
+=head2 GetColumnStatisticsForTable
+
+=over
+
+=item ColumnNames => ArrayRef[Str|Undef]
+
+=item DatabaseName => Str
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetColumnStatisticsForTable>
+
+Returns: a L<Paws::Glue::GetColumnStatisticsForTableResponse> instance
+
+Retrieves table statistics of columns.
+
+The Identity and Access Management (IAM) permission required for this
+operation is C<GetTable>.
+
+
 =head2 GetConnection
 
 =over
@@ -2148,6 +2776,8 @@ Retrieves the definition of a specified database.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [ResourceShareType => Str]
 
 
 =back
@@ -2470,6 +3100,28 @@ Returns: a L<Paws::Glue::GetPartitionResponse> instance
 Retrieves information about a specified partition.
 
 
+=head2 GetPartitionIndexes
+
+=over
+
+=item DatabaseName => Str
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetPartitionIndexes>
+
+Returns: a L<Paws::Glue::GetPartitionIndexesResponse> instance
+
+Retrieves the partition indexes associated with a table.
+
+
 =head2 GetPartitions
 
 =over
@@ -2479,6 +3131,8 @@ Retrieves information about a specified partition.
 =item TableName => Str
 
 =item [CatalogId => Str]
+
+=item [ExcludeColumnSchema => Bool]
 
 =item [Expression => Str]
 
@@ -2506,6 +3160,8 @@ Retrieves information about the partitions in a table.
 
 =item Source => L<Paws::Glue::CatalogEntry>
 
+=item [AdditionalPlanOptionsMap => L<Paws::Glue::AdditionalPlanOptionsMap>]
+
 =item [Language => Str]
 
 =item [Location => L<Paws::Glue::Location>]
@@ -2522,18 +3178,147 @@ Returns: a L<Paws::Glue::GetPlanResponse> instance
 Gets code to perform a specified mapping.
 
 
+=head2 GetRegistry
+
+=over
+
+=item RegistryId => L<Paws::Glue::RegistryId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetRegistry>
+
+Returns: a L<Paws::Glue::GetRegistryResponse> instance
+
+Describes the specified registry in detail.
+
+
+=head2 GetResourcePolicies
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetResourcePolicies>
+
+Returns: a L<Paws::Glue::GetResourcePoliciesResponse> instance
+
+Retrieves the resource policies set on individual resources by AWS
+Resource Access Manager during cross-account permission grants. Also
+retrieves the Data Catalog resource policy.
+
+If you enabled metadata encryption in Data Catalog settings, and you do
+not have permission on the AWS KMS key, the operation can't return the
+Data Catalog resource policy.
+
+
 =head2 GetResourcePolicy
 
+=over
+
+=item [ResourceArn => Str]
 
 
-
-
+=back
 
 Each argument is described in detail in: L<Paws::Glue::GetResourcePolicy>
 
 Returns: a L<Paws::Glue::GetResourcePolicyResponse> instance
 
 Retrieves a specified resource policy.
+
+
+=head2 GetSchema
+
+=over
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetSchema>
+
+Returns: a L<Paws::Glue::GetSchemaResponse> instance
+
+Describes the specified schema in detail.
+
+
+=head2 GetSchemaByDefinition
+
+=over
+
+=item SchemaDefinition => Str
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetSchemaByDefinition>
+
+Returns: a L<Paws::Glue::GetSchemaByDefinitionResponse> instance
+
+Retrieves a schema by the C<SchemaDefinition>. The schema definition is
+sent to the Schema Registry, canonicalized, and hashed. If the hash is
+matched within the scope of the C<SchemaName> or ARN (or the default
+registry, if none is supplied), that schemaE<rsquo>s metadata is
+returned. Otherwise, a 404 or NotFound error is returned. Schema
+versions in C<Deleted> statuses will not be included in the results.
+
+
+=head2 GetSchemaVersion
+
+=over
+
+=item [SchemaId => L<Paws::Glue::SchemaId>]
+
+=item [SchemaVersionId => Str]
+
+=item [SchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetSchemaVersion>
+
+Returns: a L<Paws::Glue::GetSchemaVersionResponse> instance
+
+Get the specified schema by its unique ID assigned when a version of
+the schema is created or registered. Schema versions in Deleted status
+will not be included in the results.
+
+
+=head2 GetSchemaVersionsDiff
+
+=over
+
+=item FirstSchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>
+
+=item SchemaDiffType => Str
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+=item SecondSchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetSchemaVersionsDiff>
+
+Returns: a L<Paws::Glue::GetSchemaVersionsDiffResponse> instance
+
+Fetches the schema version difference in the specified difference type
+between two stored schema versions in the Schema Registry.
+
+This API allows you to compare two schema versions between two schema
+definitions under the same schema.
 
 
 =head2 GetSecurityConfiguration
@@ -2739,11 +3524,11 @@ Retrieves a specified function definition from the Data Catalog.
 
 =over
 
-=item DatabaseName => Str
-
 =item Pattern => Str
 
 =item [CatalogId => Str]
+
+=item [DatabaseName => Str]
 
 =item [MaxResults => Int]
 
@@ -2935,6 +3720,104 @@ group. If you choose to use tags filtering, only resources with the tag
 are retrieved.
 
 
+=head2 ListMLTransforms
+
+=over
+
+=item [Filter => L<Paws::Glue::TransformFilterCriteria>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Sort => L<Paws::Glue::TransformSortCriteria>]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListMLTransforms>
+
+Returns: a L<Paws::Glue::ListMLTransformsResponse> instance
+
+Retrieves a sortable, filterable list of existing AWS Glue machine
+learning transforms in this AWS account, or the resources with the
+specified tag. This operation takes the optional C<Tags> field, which
+you can use as a filter of the responses so that tagged resources can
+be retrieved as a group. If you choose to use tag filtering, only
+resources with the tags are retrieved.
+
+
+=head2 ListRegistries
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListRegistries>
+
+Returns: a L<Paws::Glue::ListRegistriesResponse> instance
+
+Returns a list of registries that you have created, with minimal
+registry information. Registries in the C<Deleting> status will not be
+included in the results. Empty results will be returned if there are no
+registries available.
+
+
+=head2 ListSchemas
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistryId => L<Paws::Glue::RegistryId>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListSchemas>
+
+Returns: a L<Paws::Glue::ListSchemasResponse> instance
+
+Returns a list of schemas with minimal details. Schemas in Deleting
+status will not be included in the results. Empty results will be
+returned if there are no schemas available.
+
+When the C<RegistryId> is not provided, all the schemas across
+registries will be part of the API response.
+
+
+=head2 ListSchemaVersions
+
+=over
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListSchemaVersions>
+
+Returns: a L<Paws::Glue::ListSchemaVersionsResponse> instance
+
+Returns a list of schema versions that you have created, with minimal
+information. Schema versions in Deleted status will not be included in
+the results. Empty results will be returned if there are no schema
+versions available.
+
+
 =head2 ListTriggers
 
 =over
@@ -3008,9 +3891,13 @@ every catalog write thereafter.
 
 =item PolicyInJson => Str
 
+=item [EnableHybrid => Str]
+
 =item [PolicyExistsCondition => Str]
 
 =item [PolicyHashCondition => Str]
+
+=item [ResourceArn => Str]
 
 
 =back
@@ -3020,6 +3907,30 @@ Each argument is described in detail in: L<Paws::Glue::PutResourcePolicy>
 Returns: a L<Paws::Glue::PutResourcePolicyResponse> instance
 
 Sets the Data Catalog resource policy for access control.
+
+
+=head2 PutSchemaVersionMetadata
+
+=over
+
+=item MetadataKeyValue => L<Paws::Glue::MetadataKeyValuePair>
+
+=item [SchemaId => L<Paws::Glue::SchemaId>]
+
+=item [SchemaVersionId => Str]
+
+=item [SchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::PutSchemaVersionMetadata>
+
+Returns: a L<Paws::Glue::PutSchemaVersionMetadataResponse> instance
+
+Puts the metadata key value pair for a specified schema version ID. A
+maximum of 10 key value pairs will be allowed per schema version. They
+can be added over one or more calls.
 
 
 =head2 PutWorkflowRunProperties
@@ -3044,6 +3955,88 @@ If a property already exists for the specified run, then it overrides
 the value otherwise adds the property to existing properties.
 
 
+=head2 QuerySchemaVersionMetadata
+
+=over
+
+=item [MaxResults => Int]
+
+=item [MetadataList => ArrayRef[L<Paws::Glue::MetadataKeyValuePair>]]
+
+=item [NextToken => Str]
+
+=item [SchemaId => L<Paws::Glue::SchemaId>]
+
+=item [SchemaVersionId => Str]
+
+=item [SchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::QuerySchemaVersionMetadata>
+
+Returns: a L<Paws::Glue::QuerySchemaVersionMetadataResponse> instance
+
+Queries for the schema version metadata information.
+
+
+=head2 RegisterSchemaVersion
+
+=over
+
+=item SchemaDefinition => Str
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::RegisterSchemaVersion>
+
+Returns: a L<Paws::Glue::RegisterSchemaVersionResponse> instance
+
+Adds a new version to the existing schema. Returns an error if new
+version of schema does not meet the compatibility requirements of the
+schema set. This API will not create a new schema set and will return a
+404 error if the schema set is not already present in the Schema
+Registry.
+
+If this is the first schema definition to be registered in the Schema
+Registry, this API will store the schema version and return
+immediately. Otherwise, this call has the potential to run longer than
+other operations due to compatibility modes. You can call the
+C<GetSchemaVersion> API with the C<SchemaVersionId> to check
+compatibility modes.
+
+If the same schema definition is already stored in Schema Registry as a
+version, the schema ID of the existing schema is returned to the
+caller.
+
+
+=head2 RemoveSchemaVersionMetadata
+
+=over
+
+=item MetadataKeyValue => L<Paws::Glue::MetadataKeyValuePair>
+
+=item [SchemaId => L<Paws::Glue::SchemaId>]
+
+=item [SchemaVersionId => Str]
+
+=item [SchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::RemoveSchemaVersionMetadata>
+
+Returns: a L<Paws::Glue::RemoveSchemaVersionMetadataResponse> instance
+
+Removes a key value pair from the schema version metadata for the
+specified schema version ID.
+
+
 =head2 ResetJobBookmark
 
 =over
@@ -3062,6 +4055,28 @@ Returns: a L<Paws::Glue::ResetJobBookmarkResponse> instance
 Resets a bookmark entry.
 
 
+=head2 ResumeWorkflowRun
+
+=over
+
+=item Name => Str
+
+=item NodeIds => ArrayRef[Str|Undef]
+
+=item RunId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ResumeWorkflowRun>
+
+Returns: a L<Paws::Glue::ResumeWorkflowRunResponse> instance
+
+Restarts selected nodes of a previous partially completed workflow run
+and resumes the workflow run. The selected nodes and all nodes that are
+downstream from the selected nodes are run.
+
+
 =head2 SearchTables
 
 =over
@@ -3073,6 +4088,8 @@ Resets a bookmark entry.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [ResourceShareType => Str]
 
 =item [SearchText => Str]
 
@@ -3385,6 +4402,24 @@ Returns: a L<Paws::Glue::StopTriggerResponse> instance
 Stops a specified trigger.
 
 
+=head2 StopWorkflowRun
+
+=over
+
+=item Name => Str
+
+=item RunId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::StopWorkflowRun>
+
+Returns: a L<Paws::Glue::StopWorkflowRunResponse> instance
+
+Stops the execution of the specified workflow run.
+
+
 =head2 TagResource
 
 =over
@@ -3448,6 +4483,58 @@ C<XMLClassifier>, a C<JsonClassifier>, or a C<CsvClassifier>, depending
 on which field is present).
 
 
+=head2 UpdateColumnStatisticsForPartition
+
+=over
+
+=item ColumnStatisticsList => ArrayRef[L<Paws::Glue::ColumnStatistics>]
+
+=item DatabaseName => Str
+
+=item PartitionValues => ArrayRef[Str|Undef]
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UpdateColumnStatisticsForPartition>
+
+Returns: a L<Paws::Glue::UpdateColumnStatisticsForPartitionResponse> instance
+
+Creates or updates partition statistics of columns.
+
+The Identity and Access Management (IAM) permission required for this
+operation is C<UpdatePartition>.
+
+
+=head2 UpdateColumnStatisticsForTable
+
+=over
+
+=item ColumnStatisticsList => ArrayRef[L<Paws::Glue::ColumnStatistics>]
+
+=item DatabaseName => Str
+
+=item TableName => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UpdateColumnStatisticsForTable>
+
+Returns: a L<Paws::Glue::UpdateColumnStatisticsForTableResponse> instance
+
+Creates or updates table statistics of columns.
+
+The Identity and Access Management (IAM) permission required for this
+operation is C<UpdateTable>.
+
+
 =head2 UpdateConnection
 
 =over
@@ -3483,6 +4570,10 @@ Updates a connection definition in the Data Catalog.
 =item [DatabaseName => Str]
 
 =item [Description => Str]
+
+=item [LineageConfiguration => L<Paws::Glue::LineageConfiguration>]
+
+=item [RecrawlPolicy => L<Paws::Glue::RecrawlPolicy>]
 
 =item [Role => Str]
 
@@ -3657,6 +4748,61 @@ Returns: a L<Paws::Glue::UpdatePartitionResponse> instance
 Updates a partition.
 
 
+=head2 UpdateRegistry
+
+=over
+
+=item Description => Str
+
+=item RegistryId => L<Paws::Glue::RegistryId>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UpdateRegistry>
+
+Returns: a L<Paws::Glue::UpdateRegistryResponse> instance
+
+Updates an existing registry which is used to hold a collection of
+schemas. The updated properties relate to the registry, and do not
+modify any of the schemas within the registry.
+
+
+=head2 UpdateSchema
+
+=over
+
+=item SchemaId => L<Paws::Glue::SchemaId>
+
+=item [Compatibility => Str]
+
+=item [Description => Str]
+
+=item [SchemaVersionNumber => L<Paws::Glue::SchemaVersionNumber>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UpdateSchema>
+
+Returns: a L<Paws::Glue::UpdateSchemaResponse> instance
+
+Updates the description, compatibility setting, or version checkpoint
+for a schema set.
+
+For updating the compatibility setting, the call will not validate
+compatibility for the entire set of schema versions with the new
+compatibility setting. If the value for C<Compatibility> is provided,
+the C<VersionNumber> (a checkpoint) is also required. The API will
+validate the checkpoint version number for consistency.
+
+If the value for the C<VersionNumber> (checkpoint) is provided,
+C<Compatibility> is optional and this can be used to set/reset a
+checkpoint for the schema.
+
+This update will happen only if the schema is in the AVAILABLE state.
+
+
 =head2 UpdateTable
 
 =over
@@ -3729,6 +4875,8 @@ Updates an existing function definition in the Data Catalog.
 
 =item [Description => Str]
 
+=item [MaxConcurrentRuns => Int]
+
 
 =back
 
@@ -3793,9 +4941,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Glue::GetCrawlersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllDatabases(sub { },[CatalogId => Str, MaxResults => Int, NextToken => Str])
+=head2 GetAllDatabases(sub { },[CatalogId => Str, MaxResults => Int, NextToken => Str, ResourceShareType => Str])
 
-=head2 GetAllDatabases([CatalogId => Str, MaxResults => Int, NextToken => Str])
+=head2 GetAllDatabases([CatalogId => Str, MaxResults => Int, NextToken => Str, ResourceShareType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3841,9 +4989,21 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Glue::GetJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllPartitions(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+=head2 GetAllPartitionIndexes(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, NextToken => Str])
 
-=head2 GetAllPartitions(DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+=head2 GetAllPartitionIndexes(DatabaseName => Str, TableName => Str, [CatalogId => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PartitionIndexDescriptorList, passing the object as the first parameter, and the string 'PartitionIndexDescriptorList' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetPartitionIndexesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllPartitions(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, ExcludeColumnSchema => Bool, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+
+=head2 GetAllPartitions(DatabaseName => Str, TableName => Str, [CatalogId => Str, ExcludeColumnSchema => Bool, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3851,6 +5011,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Partitions, passing the object as the first parameter, and the string 'Partitions' as the second parameter 
 
 If not, it will return a a L<Paws::Glue::GetPartitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResourcePolicies(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllResourcePolicies([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GetResourcePoliciesResponseList, passing the object as the first parameter, and the string 'GetResourcePoliciesResponseList' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetResourcePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllSecurityConfigurations(sub { },[MaxResults => Int, NextToken => Str])
@@ -3901,9 +5073,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Glue::GetTriggersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllUserDefinedFunctions(sub { },DatabaseName => Str, Pattern => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
+=head2 GetAllUserDefinedFunctions(sub { },Pattern => Str, [CatalogId => Str, DatabaseName => Str, MaxResults => Int, NextToken => Str])
 
-=head2 GetAllUserDefinedFunctions(DatabaseName => Str, Pattern => Str, [CatalogId => Str, MaxResults => Int, NextToken => Str])
+=head2 GetAllUserDefinedFunctions(Pattern => Str, [CatalogId => Str, DatabaseName => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3911,6 +5083,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - UserDefinedFunctions, passing the object as the first parameter, and the string 'UserDefinedFunctions' as the second parameter 
 
 If not, it will return a a L<Paws::Glue::GetUserDefinedFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRegistries(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRegistries([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Registries, passing the object as the first parameter, and the string 'Registries' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::ListRegistriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSchemas(sub { },[MaxResults => Int, NextToken => Str, RegistryId => L<Paws::Glue::RegistryId>])
+
+=head2 ListAllSchemas([MaxResults => Int, NextToken => Str, RegistryId => L<Paws::Glue::RegistryId>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Schemas, passing the object as the first parameter, and the string 'Schemas' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::ListSchemasResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSchemaVersions(sub { },SchemaId => L<Paws::Glue::SchemaId>, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSchemaVersions(SchemaId => L<Paws::Glue::SchemaId>, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Schemas, passing the object as the first parameter, and the string 'Schemas' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::ListSchemaVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

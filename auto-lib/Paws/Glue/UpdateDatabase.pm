@@ -51,6 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyKeyString' =>
             'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
         },    # OPTIONAL
+        TargetDatabase => {
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+          DatabaseName => 'MyNameString',         # min: 1, max: 255
+        },    # OPTIONAL
       },
       Name      => 'MyNameString',
       CatalogId => 'MyCatalogIdString',    # OPTIONAL

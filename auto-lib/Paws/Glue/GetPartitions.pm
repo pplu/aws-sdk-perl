@@ -3,6 +3,7 @@ package Paws::Glue::GetPartitions;
   use Moose;
   has CatalogId => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has ExcludeColumnSchema => (is => 'ro', isa => 'Bool');
   has Expression => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -34,15 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $GetPartitionsResponse = $glue->GetPartitions(
-      DatabaseName => 'MyNameString',
-      TableName    => 'MyNameString',
-      CatalogId    => 'MyCatalogIdString',    # OPTIONAL
-      Expression   => 'MyPredicateString',    # OPTIONAL
-      MaxResults   => 1,                      # OPTIONAL
-      NextToken    => 'MyToken',              # OPTIONAL
-      Segment      => {
+      DatabaseName        => 'MyNameString',
+      TableName           => 'MyNameString',
+      CatalogId           => 'MyCatalogIdString',    # OPTIONAL
+      ExcludeColumnSchema => 1,                      # OPTIONAL
+      Expression          => 'MyPredicateString',    # OPTIONAL
+      MaxResults          => 1,                      # OPTIONAL
+      NextToken           => 'MyToken',              # OPTIONAL
+      Segment             => {
         SegmentNumber => 1,
-        TotalSegments => 1,                   # min: 1, max: 10
+        TotalSegments => 1,                          # min: 1, max: 10
 
       },    # OPTIONAL
     );
@@ -69,6 +71,12 @@ none is provided, the AWS account ID is used by default.
 =head2 B<REQUIRED> DatabaseName => Str
 
 The name of the catalog database where the partitions reside.
+
+
+
+=head2 ExcludeColumnSchema => Bool
+
+
 
 
 

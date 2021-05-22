@@ -10,7 +10,9 @@ package Paws::Glue::CreateMLTransform;
   has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has Parameters => (is => 'ro', isa => 'Paws::Glue::TransformParameters', required => 1);
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
   has Timeout => (is => 'ro', isa => 'Int');
+  has TransformEncryption => (is => 'ro', isa => 'Paws::Glue::TransformEncryption');
   has WorkerType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -64,8 +66,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxCapacity     => 1,                        # OPTIONAL
       MaxRetries      => 1,                        # OPTIONAL
       NumberOfWorkers => 1,                        # OPTIONAL
-      Timeout         => 1,                        # OPTIONAL
-      WorkerType      => 'Standard',               # OPTIONAL
+      Tags            => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
+      Timeout             => 1,    # OPTIONAL
+      TransformEncryption => {
+        MlUserDataEncryption => {
+          MlUserDataEncryptionMode => 'DISABLED',    # values: DISABLED, SSE-KMS
+          KmsKeyId => 'MyNameString',                # min: 1, max: 255
+        },    # OPTIONAL
+        TaskRunSecurityConfigurationName => 'MyNameString',   # min: 1, max: 255
+      },    # OPTIONAL
+      WorkerType => 'Standard',    # OPTIONAL
     );
 
     # Results:
@@ -203,12 +215,30 @@ libraries used by the task run for this transform.
 
 
 
+=head2 Tags => L<Paws::Glue::TagsMap>
+
+The tags to use with this machine learning transform. You may use tags
+to limit access to the machine learning transform. For more information
+about tags in AWS Glue, see AWS Tags in AWS Glue
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+developer guide.
+
+
+
 =head2 Timeout => Int
 
 The timeout of the task run for this transform in minutes. This is the
 maximum time that a task run for this transform can consume resources
 before it is terminated and enters C<TIMEOUT> status. The default is
 2,880 minutes (48 hours).
+
+
+
+=head2 TransformEncryption => L<Paws::Glue::TransformEncryption>
+
+The encryption-at-rest settings of the transform that apply to
+accessing user data. Machine learning transforms can access user data
+encrypted in Amazon S3 using KMS.
 
 
 

@@ -33,15 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobUpdate => {
         AllocatedCapacity => 1,    # OPTIONAL
         Command           => {
-          Name           => 'MyGenericString',
+          Name           => 'MyGenericString',           # OPTIONAL
           PythonVersion  => 'MyPythonVersionString',     # OPTIONAL
           ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
         Connections => {
-          Connections => [ 'MyGenericString', ... ],    # OPTIONAL
+          Connections => [
+            'MyGenericString', ...    # OPTIONAL
+          ],                          # OPTIONAL
         },    # OPTIONAL
-        DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
-        ,     # OPTIONAL
+        DefaultArguments => {
+          'MyGenericString' =>
+            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
         ExecutionProperty => {
           MaxConcurrentRuns => 1,                      # OPTIONAL
@@ -50,10 +54,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         LogUri      => 'MyUriString',            # OPTIONAL
         MaxCapacity => 1,                        # OPTIONAL
         MaxRetries  => 1,                        # OPTIONAL
-        NonOverridableArguments => { 'MyGenericString' => 'MyGenericString', }
-        ,                                        # OPTIONAL
+        NonOverridableArguments => {
+          'MyGenericString' =>
+            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
         NotificationProperty => {
-          NotifyDelayAfter => 1,                 # min: 1; OPTIONAL
+          NotifyDelayAfter => 1,    # min: 1; OPTIONAL
         },    # OPTIONAL
         NumberOfWorkers       => 1,                 # OPTIONAL
         Role                  => 'MyRoleString',    # OPTIONAL

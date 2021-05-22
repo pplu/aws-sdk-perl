@@ -9,6 +9,7 @@ package Paws::Glue::StorageDescriptor;
   has NumberOfBuckets => (is => 'ro', isa => 'Int');
   has OutputFormat => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
+  has SchemaReference => (is => 'ro', isa => 'Paws::Glue::SchemaReference');
   has SerdeInfo => (is => 'ro', isa => 'Paws::Glue::SerDeInfo');
   has SkewedInfo => (is => 'ro', isa => 'Paws::Glue::SkewedInfo');
   has SortColumns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Order]');
@@ -92,6 +93,15 @@ C<IgnoreKeyTextOutputFormat>, or a custom format.
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
 The user-supplied properties in key-value form.
+
+
+=head2 SchemaReference => L<Paws::Glue::SchemaReference>
+
+An object that references a schema stored in the AWS Glue Schema
+Registry.
+
+When creating a table, you can pass an empty list of columns for the
+schema, and instead use a schema reference.
 
 
 =head2 SerdeInfo => L<Paws::Glue::SerDeInfo>

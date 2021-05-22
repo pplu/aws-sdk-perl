@@ -43,7 +43,8 @@ Specifies code executed when a job is run.
 =head2 Name => Str
 
 The name of the job command. For an Apache Spark ETL job, this must be
-C<glueetl>. For a Python shell job, it must be C<pythonshell>.
+C<glueetl>. For a Python shell job, it must be C<pythonshell>. For an
+Apache Spark streaming ETL job, this must be C<gluestreaming>.
 
 
 =head2 PythonVersion => Str

@@ -7,8 +7,14 @@ package Paws::Glue::ConnectionProperties;
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has CONFIG_FILES => (is => 'ro', isa => 'Str');
+  has CONNECTION_URL => (is => 'ro', isa => 'Str');
+  has CONNECTOR_CLASS_NAME => (is => 'ro', isa => 'Str');
+  has CONNECTOR_TYPE => (is => 'ro', isa => 'Str');
+  has CONNECTOR_URL => (is => 'ro', isa => 'Str');
   has CUSTOM_JDBC_CERT => (is => 'ro', isa => 'Str');
   has CUSTOM_JDBC_CERT_STRING => (is => 'ro', isa => 'Str');
+  has ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD => (is => 'ro', isa => 'Str');
+  has ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD => (is => 'ro', isa => 'Str');
   has ENCRYPTED_PASSWORD => (is => 'ro', isa => 'Str');
   has HOST => (is => 'ro', isa => 'Str');
   has INSTANCE_ID => (is => 'ro', isa => 'Str');
@@ -18,8 +24,16 @@ package Paws::Glue::ConnectionProperties;
   has JDBC_ENFORCE_SSL => (is => 'ro', isa => 'Str');
   has JDBC_ENGINE => (is => 'ro', isa => 'Str');
   has JDBC_ENGINE_VERSION => (is => 'ro', isa => 'Str');
+  has KAFKA_BOOTSTRAP_SERVERS => (is => 'ro', isa => 'Str');
+  has KAFKA_CLIENT_KEY_PASSWORD => (is => 'ro', isa => 'Str');
+  has KAFKA_CLIENT_KEYSTORE => (is => 'ro', isa => 'Str');
+  has KAFKA_CLIENT_KEYSTORE_PASSWORD => (is => 'ro', isa => 'Str');
+  has KAFKA_CUSTOM_CERT => (is => 'ro', isa => 'Str');
+  has KAFKA_SKIP_CUSTOM_CERT_VALIDATION => (is => 'ro', isa => 'Str');
+  has KAFKA_SSL_ENABLED => (is => 'ro', isa => 'Str');
   has PASSWORD => (is => 'ro', isa => 'Str');
   has PORT => (is => 'ro', isa => 'Str');
+  has SECRET_ID => (is => 'ro', isa => 'Str');
   has SKIP_CUSTOM_JDBC_CERT_VALIDATION => (is => 'ro', isa => 'Str');
   has USERNAME => (is => 'ro', isa => 'Str');
 1;
@@ -60,10 +74,28 @@ This class has no description
 =head2 CONFIG_FILES => Str
 
 
+=head2 CONNECTION_URL => Str
+
+
+=head2 CONNECTOR_CLASS_NAME => Str
+
+
+=head2 CONNECTOR_TYPE => Str
+
+
+=head2 CONNECTOR_URL => Str
+
+
 =head2 CUSTOM_JDBC_CERT => Str
 
 
 =head2 CUSTOM_JDBC_CERT_STRING => Str
+
+
+=head2 ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD => Str
+
+
+=head2 ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD => Str
 
 
 =head2 ENCRYPTED_PASSWORD => Str
@@ -93,10 +125,34 @@ This class has no description
 =head2 JDBC_ENGINE_VERSION => Str
 
 
+=head2 KAFKA_BOOTSTRAP_SERVERS => Str
+
+
+=head2 KAFKA_CLIENT_KEY_PASSWORD => Str
+
+
+=head2 KAFKA_CLIENT_KEYSTORE => Str
+
+
+=head2 KAFKA_CLIENT_KEYSTORE_PASSWORD => Str
+
+
+=head2 KAFKA_CUSTOM_CERT => Str
+
+
+=head2 KAFKA_SKIP_CUSTOM_CERT_VALIDATION => Str
+
+
+=head2 KAFKA_SSL_ENABLED => Str
+
+
 =head2 PASSWORD => Str
 
 
 =head2 PORT => Str
+
+
+=head2 SECRET_ID => Str
 
 
 =head2 SKIP_CUSTOM_JDBC_CERT_VALIDATION => Str

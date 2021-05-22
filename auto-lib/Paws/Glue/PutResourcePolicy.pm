@@ -1,9 +1,11 @@
 
 package Paws::Glue::PutResourcePolicy;
   use Moose;
+  has EnableHybrid => (is => 'ro', isa => 'Str');
   has PolicyExistsCondition => (is => 'ro', isa => 'Str');
   has PolicyHashCondition => (is => 'ro', isa => 'Str');
   has PolicyInJson => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $PutResourcePolicyResponse = $glue->PutResourcePolicy(
       PolicyInJson          => 'MyPolicyJsonString',
+      EnableHybrid          => 'TRUE',                 # OPTIONAL
       PolicyExistsCondition => 'MUST_EXIST',           # OPTIONAL
       PolicyHashCondition   => 'MyHashString',         # OPTIONAL
+      ResourceArn           => 'MyGlueResourceArn',    # OPTIONAL
     );
 
     # Results:
@@ -46,11 +50,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
+=head2 EnableHybrid => Str
+
+If C<'TRUE'>, indicates that you are using both methods to grant
+cross-account access to Data Catalog resources:
+
+=over
+
+=item *
+
+By directly updating the resource policy with C<PutResourePolicy>
+
+=item *
+
+By using the B<Grant permissions> command on the AWS Management
+Console.
+
+=back
+
+Must be set to C<'TRUE'> if you have already used the Management
+Console to grant cross-account access, otherwise the call fails.
+Default is 'FALSE'.
+
+Valid values are: C<"TRUE">, C<"FALSE">
+
 =head2 PolicyExistsCondition => Str
 
 A value of C<MUST_EXIST> is used to update a policy. A value of
 C<NOT_EXIST> is used to create a new policy. If a value of C<NONE> or a
-null value is used, the call will not depend on the existence of a
+null value is used, the call does not depend on the existence of a
 policy.
 
 Valid values are: C<"MUST_EXIST">, C<"NOT_EXIST">, C<"NONE">
@@ -67,6 +95,12 @@ policy has been set.
 =head2 B<REQUIRED> PolicyInJson => Str
 
 Contains the policy document to set, in JSON format.
+
+
+
+=head2 ResourceArn => Str
+
+Do not use. For internal use only.
 
 
 

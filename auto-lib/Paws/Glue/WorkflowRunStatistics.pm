@@ -45,7 +45,7 @@ Workflow run statistics provides statistics about the workflow run.
 
 =head2 FailedActions => Int
 
-Total number of Actions which have failed.
+Total number of Actions that have failed.
 
 
 =head2 RunningActions => Int
@@ -55,17 +55,17 @@ Total number Actions in running state.
 
 =head2 StoppedActions => Int
 
-Total number of Actions which have stopped.
+Total number of Actions that have stopped.
 
 
 =head2 SucceededActions => Int
 
-Total number of Actions which have succeeded.
+Total number of Actions that have succeeded.
 
 
 =head2 TimeoutActions => Int
 
-Total number of Actions which timed out.
+Total number of Actions that timed out.
 
 
 =head2 TotalActions => Int
