@@ -3,7 +3,8 @@ package Paws::Signer::StartSigningJob;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken', required => 1);
   has Destination => (is => 'ro', isa => 'Paws::Signer::Destination', traits => ['NameInRequest'], request_name => 'destination', required => 1);
-  has ProfileName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profileName');
+  has ProfileName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profileName', required => 1);
+  has ProfileOwner => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profileOwner');
   has Source => (is => 'ro', isa => 'Paws::Signer::Source', traits => ['NameInRequest'], request_name => 'source', required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,7 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Prefix     => 'MyPrefix',        # OPTIONAL
         },    # OPTIONAL
       },
-      Source => {
+      ProfileName => 'MyProfileName',
+      Source      => {
         S3 => {
           BucketName => 'MyBucketName',    # OPTIONAL
           Key        => 'MyKey',
@@ -47,11 +49,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
       },
-      ProfileName => 'MyProfileName',    # OPTIONAL
+      ProfileOwner => 'MyAccountId',    # OPTIONAL
     );
 
     # Results:
-    my $JobId = $StartSigningJobResponse->JobId;
+    my $JobId    = $StartSigningJobResponse->JobId;
+    my $JobOwner = $StartSigningJobResponse->JobOwner;
 
     # Returns a L<Paws::Signer::StartSigningJobResponse> object.
 
@@ -75,9 +78,15 @@ contains the name of your bucket and an optional prefix.
 
 
 
-=head2 ProfileName => Str
+=head2 B<REQUIRED> ProfileName => Str
 
 The name of the signing profile.
+
+
+
+=head2 ProfileOwner => Str
+
+The AWS account ID of the signing profile owner.
 
 
 

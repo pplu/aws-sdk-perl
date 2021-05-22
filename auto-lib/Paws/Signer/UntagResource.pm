@@ -45,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sig
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-Amazon Resource Name (ARN) for the signing profile .
+The Amazon Resource Name (ARN) for the signing profile.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-A list of tag keys to be removed from the signing profile .
+A list of tag keys to be removed from the signing profile.
 
 
 

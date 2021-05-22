@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sig
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-Amazon Resource Name (ARN) for the signing profile.
+The Amazon Resource Name (ARN) for the signing profile.
 
 
 

@@ -1,10 +1,14 @@
 
 package Paws::Signer::ListSigningJobs;
   use Moose;
+  has IsRevoked => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isRevoked');
+  has JobInvoker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'jobInvoker');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has PlatformId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'platformId');
   has RequestedBy => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'requestedBy');
+  has SignatureExpiresAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'signatureExpiresAfter');
+  has SignatureExpiresBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'signatureExpiresBefore');
   has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
 
   use MooseX::ClassAttribute;
@@ -33,11 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $signer = Paws->service('Signer');
     my $ListSigningJobsResponse = $signer->ListSigningJobs(
-      MaxResults  => 1,                  # OPTIONAL
-      NextToken   => 'MyNextToken',      # OPTIONAL
-      PlatformId  => 'MyPlatformId',     # OPTIONAL
-      RequestedBy => 'MyRequestedBy',    # OPTIONAL
-      Status      => 'InProgress',       # OPTIONAL
+      IsRevoked              => 1,                        # OPTIONAL
+      JobInvoker             => 'MyAccountId',            # OPTIONAL
+      MaxResults             => 1,                        # OPTIONAL
+      NextToken              => 'MyNextToken',            # OPTIONAL
+      PlatformId             => 'MyPlatformId',           # OPTIONAL
+      RequestedBy            => 'MyRequestedBy',          # OPTIONAL
+      SignatureExpiresAfter  => '1970-01-01T01:00:00',    # OPTIONAL
+      SignatureExpiresBefore => '1970-01-01T01:00:00',    # OPTIONAL
+      Status                 => 'InProgress',             # OPTIONAL
     );
 
     # Results:
@@ -50,6 +58,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/signer/ListSigningJobs>
 
 =head1 ATTRIBUTES
+
+
+=head2 IsRevoked => Bool
+
+Filters results to return only signing jobs with revoked signatures.
+
+
+
+=head2 JobInvoker => Str
+
+Filters results to return only signing jobs initiated by a specified
+IAM entity.
+
 
 
 =head2 MaxResults => Int
@@ -81,6 +102,20 @@ distribution of your code image.
 =head2 RequestedBy => Str
 
 The IAM principal that requested the signing job.
+
+
+
+=head2 SignatureExpiresAfter => Str
+
+Filters results to return only signing jobs with signatures expiring
+after a specified timestamp.
+
+
+
+=head2 SignatureExpiresBefore => Str
+
+Filters results to return only signing jobs with signatures expiring
+before a specified timestamp.
 
 
 

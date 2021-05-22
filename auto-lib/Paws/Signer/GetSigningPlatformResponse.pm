@@ -6,6 +6,7 @@ package Paws::Signer::GetSigningPlatformResponse;
   has MaxSizeInMB => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxSizeInMB');
   has Partner => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partner');
   has PlatformId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformId');
+  has RevocationSupported => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'revocationSupported');
   has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfiguration', traits => ['NameInRequest'], request_name => 'signingConfiguration');
   has SigningImageFormat => (is => 'ro', isa => 'Paws::Signer::SigningImageFormat', traits => ['NameInRequest'], request_name => 'signingImageFormat');
   has Target => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'target');
@@ -46,6 +47,12 @@ A list of partner entities that use the target signing platform.
 =head2 PlatformId => Str
 
 The ID of the target signing platform.
+
+
+=head2 RevocationSupported => Bool
+
+A flag indicating whether signatures generated for the signing platform
+can be revoked.
 
 
 =head2 SigningConfiguration => L<Paws::Signer::SigningConfiguration>

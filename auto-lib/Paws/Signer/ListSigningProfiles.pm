@@ -4,6 +4,8 @@ package Paws::Signer::ListSigningProfiles;
   has IncludeCanceled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCanceled');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has PlatformId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'platformId');
+  has Statuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'statuses');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $signer = Paws->service('Signer');
     my $ListSigningProfilesResponse = $signer->ListSigningProfiles(
-      IncludeCanceled => 1,                # OPTIONAL
-      MaxResults      => 1,                # OPTIONAL
-      NextToken       => 'MyNextToken',    # OPTIONAL
+      IncludeCanceled => 1,                 # OPTIONAL
+      MaxResults      => 1,                 # OPTIONAL
+      NextToken       => 'MyNextToken',     # OPTIONAL
+      PlatformId      => 'MyPlatformId',    # OPTIONAL
+      Statuses        => [
+        'Active', ...                       # values: Active, Canceled, Revoked
+      ],                                    # OPTIONAL
     );
 
     # Results:
@@ -66,6 +72,20 @@ Value for specifying the next set of paginated results to return. After
 you receive a response with truncated results, use this parameter in a
 subsequent request. Set it to the value of C<nextToken> from the
 response that you just received.
+
+
+
+=head2 PlatformId => Str
+
+Filters results to return only signing jobs initiated for a specified
+signing platform.
+
+
+
+=head2 Statuses => ArrayRef[Str|Undef]
+
+Filters results to return only signing jobs with statuses in the
+specified list.
 
 
 

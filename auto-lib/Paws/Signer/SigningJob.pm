@@ -2,7 +2,15 @@
 package Paws::Signer::SigningJob;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has IsRevoked => (is => 'ro', isa => 'Bool', request_name => 'isRevoked', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
+  has JobInvoker => (is => 'ro', isa => 'Str', request_name => 'jobInvoker', traits => ['NameInRequest']);
+  has JobOwner => (is => 'ro', isa => 'Str', request_name => 'jobOwner', traits => ['NameInRequest']);
+  has PlatformDisplayName => (is => 'ro', isa => 'Str', request_name => 'platformDisplayName', traits => ['NameInRequest']);
+  has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
+  has ProfileName => (is => 'ro', isa => 'Str', request_name => 'profileName', traits => ['NameInRequest']);
+  has ProfileVersion => (is => 'ro', isa => 'Str', request_name => 'profileVersion', traits => ['NameInRequest']);
+  has SignatureExpiresAt => (is => 'ro', isa => 'Str', request_name => 'signatureExpiresAt', traits => ['NameInRequest']);
   has SignedObject => (is => 'ro', isa => 'Paws::Signer::SignedObject', request_name => 'signedObject', traits => ['NameInRequest']);
   has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::Signer::Source', request_name => 'source', traits => ['NameInRequest']);
@@ -48,9 +56,49 @@ Contains information about a signing job.
 The date and time that the signing job was created.
 
 
+=head2 IsRevoked => Bool
+
+Indicates whether the signing job is revoked.
+
+
 =head2 JobId => Str
 
 The ID of the signing job.
+
+
+=head2 JobInvoker => Str
+
+The AWS account ID of the job invoker.
+
+
+=head2 JobOwner => Str
+
+The AWS account ID of the job owner.
+
+
+=head2 PlatformDisplayName => Str
+
+The name of a signing platform.
+
+
+=head2 PlatformId => Str
+
+The unique identifier for a signing platform.
+
+
+=head2 ProfileName => Str
+
+The name of the signing profile that created a signing job.
+
+
+=head2 ProfileVersion => Str
+
+The version of the signing profile that created a signing job.
+
+
+=head2 SignatureExpiresAt => Str
+
+The time when the signature of a signing job expires.
 
 
 =head2 SignedObject => L<Paws::Signer::SignedObject>

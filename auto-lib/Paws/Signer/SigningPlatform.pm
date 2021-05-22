@@ -6,6 +6,7 @@ package Paws::Signer::SigningPlatform;
   has MaxSizeInMB => (is => 'ro', isa => 'Int', request_name => 'maxSizeInMB', traits => ['NameInRequest']);
   has Partner => (is => 'ro', isa => 'Str', request_name => 'partner', traits => ['NameInRequest']);
   has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
+  has RevocationSupported => (is => 'ro', isa => 'Bool', request_name => 'revocationSupported', traits => ['NameInRequest']);
   has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfiguration', request_name => 'signingConfiguration', traits => ['NameInRequest']);
   has SigningImageFormat => (is => 'ro', isa => 'Paws::Signer::SigningImageFormat', request_name => 'signingImageFormat', traits => ['NameInRequest']);
   has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
@@ -41,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::Sig
 =head1 DESCRIPTION
 
 Contains information about the signing configurations and parameters
-that is used to perform a code signing job.
+that are used to perform a code signing job.
 
 =head1 ATTRIBUTES
 
@@ -70,6 +71,11 @@ Any partner entities linked to a code signing platform.
 =head2 PlatformId => Str
 
 The ID of a code signing; platform.
+
+
+=head2 RevocationSupported => Bool
+
+Indicates whether revocation is supported for the platform.
 
 
 =head2 SigningConfiguration => L<Paws::Signer::SigningConfiguration>

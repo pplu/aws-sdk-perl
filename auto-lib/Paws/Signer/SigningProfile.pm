@@ -2,8 +2,12 @@
 package Paws::Signer::SigningProfile;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has PlatformDisplayName => (is => 'ro', isa => 'Str', request_name => 'platformDisplayName', traits => ['NameInRequest']);
   has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
   has ProfileName => (is => 'ro', isa => 'Str', request_name => 'profileName', traits => ['NameInRequest']);
+  has ProfileVersion => (is => 'ro', isa => 'Str', request_name => 'profileVersion', traits => ['NameInRequest']);
+  has ProfileVersionArn => (is => 'ro', isa => 'Str', request_name => 'profileVersionArn', traits => ['NameInRequest']);
+  has SignatureValidityPeriod => (is => 'ro', isa => 'Paws::Signer::SignatureValidityPeriod', request_name => 'signatureValidityPeriod', traits => ['NameInRequest']);
   has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
   has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', request_name => 'signingParameters', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -47,7 +51,12 @@ configuration parameters that can be used by a given code signing user.
 
 =head2 Arn => Str
 
-Amazon Resource Name (ARN) for the signing profile.
+The Amazon Resource Name (ARN) for the signing profile.
+
+
+=head2 PlatformDisplayName => Str
+
+The name of the signing platform.
 
 
 =head2 PlatformId => Str
@@ -58,6 +67,22 @@ The ID of a platform that is available for use by a signing profile.
 =head2 ProfileName => Str
 
 The name of the signing profile.
+
+
+=head2 ProfileVersion => Str
+
+The version of a signing profile.
+
+
+=head2 ProfileVersionArn => Str
+
+The ARN of a signing profile, including the profile version.
+
+
+=head2 SignatureValidityPeriod => L<Paws::Signer::SignatureValidityPeriod>
+
+The validity period for a signing job created using this signing
+profile.
 
 
 =head2 SigningMaterial => L<Paws::Signer::SigningMaterial>

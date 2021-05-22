@@ -34,19 +34,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CompletedAt       = $DescribeSigningJobResponse->CompletedAt;
-    my $CreatedAt         = $DescribeSigningJobResponse->CreatedAt;
-    my $JobId             = $DescribeSigningJobResponse->JobId;
-    my $Overrides         = $DescribeSigningJobResponse->Overrides;
-    my $PlatformId        = $DescribeSigningJobResponse->PlatformId;
-    my $ProfileName       = $DescribeSigningJobResponse->ProfileName;
-    my $RequestedBy       = $DescribeSigningJobResponse->RequestedBy;
-    my $SignedObject      = $DescribeSigningJobResponse->SignedObject;
-    my $SigningMaterial   = $DescribeSigningJobResponse->SigningMaterial;
-    my $SigningParameters = $DescribeSigningJobResponse->SigningParameters;
-    my $Source            = $DescribeSigningJobResponse->Source;
-    my $Status            = $DescribeSigningJobResponse->Status;
-    my $StatusReason      = $DescribeSigningJobResponse->StatusReason;
+    my $CompletedAt         = $DescribeSigningJobResponse->CompletedAt;
+    my $CreatedAt           = $DescribeSigningJobResponse->CreatedAt;
+    my $JobId               = $DescribeSigningJobResponse->JobId;
+    my $JobInvoker          = $DescribeSigningJobResponse->JobInvoker;
+    my $JobOwner            = $DescribeSigningJobResponse->JobOwner;
+    my $Overrides           = $DescribeSigningJobResponse->Overrides;
+    my $PlatformDisplayName = $DescribeSigningJobResponse->PlatformDisplayName;
+    my $PlatformId          = $DescribeSigningJobResponse->PlatformId;
+    my $ProfileName         = $DescribeSigningJobResponse->ProfileName;
+    my $ProfileVersion      = $DescribeSigningJobResponse->ProfileVersion;
+    my $RequestedBy         = $DescribeSigningJobResponse->RequestedBy;
+    my $RevocationRecord    = $DescribeSigningJobResponse->RevocationRecord;
+    my $SignatureExpiresAt  = $DescribeSigningJobResponse->SignatureExpiresAt;
+    my $SignedObject        = $DescribeSigningJobResponse->SignedObject;
+    my $SigningMaterial     = $DescribeSigningJobResponse->SigningMaterial;
+    my $SigningParameters   = $DescribeSigningJobResponse->SigningParameters;
+    my $Source              = $DescribeSigningJobResponse->Source;
+    my $Status              = $DescribeSigningJobResponse->Status;
+    my $StatusReason        = $DescribeSigningJobResponse->StatusReason;
 
     # Returns a L<Paws::Signer::DescribeSigningJobResponse> object.
 
