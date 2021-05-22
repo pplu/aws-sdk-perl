@@ -3,7 +3,9 @@ package Paws::Cloud9::CreateEnvironmentEC2;
   use Moose;
   has AutomaticStopTimeMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'automaticStopTimeMinutes' );
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
+  has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has ImageId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageId' );
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has OwnerArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerArn' );
@@ -34,26 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloud9 = Paws->service('Cloud9');
+    # CreateEnvironmentEC2
     my $CreateEnvironmentEC2Result = $cloud9->CreateEnvironmentEC2(
-      InstanceType             => 'MyInstanceType',
-      Name                     => 'MyEnvironmentName',
-      AutomaticStopTimeMinutes => 1,                             # OPTIONAL
-      ClientRequestToken       => 'MyClientRequestToken',        # OPTIONAL
-      Description              => 'MyEnvironmentDescription',    # OPTIONAL
-      OwnerArn                 => 'MyUserArn',                   # OPTIONAL
-      SubnetId                 => 'MySubnetId',                  # OPTIONAL
-      Tags                     => [
-        {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256
-
-        },
-        ...
-      ],                            # OPTIONAL
+      'AutomaticStopTimeMinutes' => 60,
+      'Description'              => 'This is my demonstration environment.',
+      'InstanceType'             => 't2.micro',
+      'Name'                     => 'my-demo-environment',
+      'OwnerArn'                 => 'arn:aws:iam::123456789012:user/MyDemoUser',
+      'SubnetId'                 => 'subnet-1fab8aEX'
     );
 
     # Results:
-    my $EnvironmentId = $CreateEnvironmentEC2Result->EnvironmentId;
+    my $environmentId = $CreateEnvironmentEC2Result->environmentId;
 
     # Returns a L<Paws::Cloud9::CreateEnvironmentEC2Result> object.
 
@@ -81,9 +75,73 @@ in the I<Amazon EC2 API Reference>.
 
 
 
+=head2 ConnectionType => Str
+
+The connection type used for connecting to an Amazon EC2 environment.
+Valid values are C<CONNECT_SSH> (default) and C<CONNECT_SSM> (connected
+through AWS Systems Manager).
+
+For more information, see Accessing no-ingress EC2 instances with AWS
+Systems Manager
+(https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html) in
+the I<AWS Cloud9 User Guide>.
+
+Valid values are: C<"CONNECT_SSH">, C<"CONNECT_SSM">
+
 =head2 Description => Str
 
 The description of the environment to create.
+
+
+
+=head2 ImageId => Str
+
+The identifier for the Amazon Machine Image (AMI) that's used to create
+the EC2 instance. To choose an AMI for the instance, you must specify a
+valid AMI alias or a valid AWS Systems Manager (SSM) path.
+
+The default AMI is used if the parameter isn't explicitly assigned a
+value in the request.
+
+B<AMI aliases>
+
+=over
+
+=item *
+
+B<Amazon Linux (default): C<amazonlinux-1-x86_64>>
+
+=item *
+
+Amazon Linux 2: C<amazonlinux-2-x86_64>
+
+=item *
+
+Ubuntu 18.04: C<ubuntu-18.04-x86_64>
+
+=back
+
+B<SSM paths>
+
+=over
+
+=item *
+
+B<Amazon Linux (default):
+C<resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64>>
+
+=item *
+
+Amazon Linux 2:
+C<resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64>
+
+=item *
+
+Ubuntu 18.04:
+C<resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64>
+
+=back
+
 
 
 

@@ -28,14 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloud9 = Paws->service('Cloud9');
-    my $ListEnvironmentsResult = $cloud9->ListEnvironments(
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
-    );
+    # ListEnvironments
+    my $ListEnvironmentsResult = $cloud9->ListEnvironments();
 
     # Results:
-    my $EnvironmentIds = $ListEnvironmentsResult->EnvironmentIds;
-    my $NextToken      = $ListEnvironmentsResult->NextToken;
+    my $environmentIds = $ListEnvironmentsResult->environmentIds;
 
     # Returns a L<Paws::Cloud9::ListEnvironmentsResult> object.
 

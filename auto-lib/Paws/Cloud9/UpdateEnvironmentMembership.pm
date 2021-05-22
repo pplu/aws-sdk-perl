@@ -29,16 +29,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloud9 = Paws->service('Cloud9');
+    # UpdateEnvironmentMembership
     my $UpdateEnvironmentMembershipResult =
       $cloud9->UpdateEnvironmentMembership(
-      EnvironmentId => 'MyEnvironmentId',
-      Permissions   => 'read-write',
-      UserArn       => 'MyUserArn',
-
+      'EnvironmentId' => '8d9967e2f0624182b74e7690ad69ebEX',
+      'Permissions'   => 'read-only',
+      'UserArn'       => 'arn:aws:iam::123456789012:user/AnotherDemoUser'
       );
 
     # Results:
-    my $Membership = $UpdateEnvironmentMembershipResult->Membership;
+    my $membership = $UpdateEnvironmentMembershipResult->membership;
 
     # Returns a L<Paws::Cloud9::UpdateEnvironmentMembershipResult> object.
 
