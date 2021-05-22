@@ -101,7 +101,7 @@ Paws::Credential::File
   my $paws = Paws->new(config => {
     credentials => Paws::Credential::File->new(
       profile => 'profile1',
-      dir => '/etc/', 
+      path => '/etc/',
     )
   });
   # will open /etc/credentials
