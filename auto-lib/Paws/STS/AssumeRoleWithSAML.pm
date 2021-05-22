@@ -53,6 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Issuer           = $AssumeRoleWithSAMLResponse->Issuer;
     my $NameQualifier    = $AssumeRoleWithSAMLResponse->NameQualifier;
     my $PackedPolicySize = $AssumeRoleWithSAMLResponse->PackedPolicySize;
+    my $SourceIdentity   = $AssumeRoleWithSAMLResponse->SourceIdentity;
     my $Subject          = $AssumeRoleWithSAMLResponse->Subject;
     my $SubjectType      = $AssumeRoleWithSAMLResponse->SubjectType;
 
@@ -110,15 +111,15 @@ For more information, see Session Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 in the I<IAM User Guide>.
 
-The plain text that you use for both inline and managed session
-policies can't exceed 2,048 characters. The JSON policy characters can
-be any ASCII character from the space character to the end of the valid
+The plaintext that you use for both inline and managed session policies
+can't exceed 2,048 characters. The JSON policy characters can be any
+ASCII character from the space character to the end of the valid
 character list (\u0020 through \u00FF). It can also include the tab
 (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -132,7 +133,7 @@ want to use as managed session policies. The policies must exist in the
 same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
-ARNs. However, the plain text that you use for both inline and managed
+ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
@@ -140,7 +141,7 @@ in the AWS General Reference.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -173,7 +174,7 @@ The Amazon Resource Name (ARN) of the role that the caller is assuming.
 
 =head2 B<REQUIRED> SAMLAssertion => Str
 
-The base-64 encoded SAML authentication response provided by the IdP.
+The base64 encoded SAML authentication response provided by the IdP.
 
 For more information, see Configuring a Relying Party and Adding Claims
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html)

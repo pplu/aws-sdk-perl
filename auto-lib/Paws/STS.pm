@@ -134,103 +134,12 @@ Paws::STS - Perl Interface to AWS AWS Security Token Service
 
 AWS Security Token Service
 
-The AWS Security Token Service (STS) is a web service that enables you
-to request temporary, limited-privilege credentials for AWS Identity
-and Access Management (IAM) users or for users that you authenticate
-(federated users). This guide provides descriptions of the STS API. For
-more detailed information about using this service, go to Temporary
-Security Credentials
+AWS Security Token Service (STS) enables you to request temporary,
+limited-privilege credentials for AWS Identity and Access Management
+(IAM) users or for users that you authenticate (federated users). This
+guide provides descriptions of the STS API. For more information about
+using this service, see Temporary Security Credentials
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html).
-
-For information about setting up signatures and authorization through
-the API, go to Signing AWS API Requests
-(https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
-in the I<AWS General Reference>. For general information about the
-Query API, go to Making Query Requests
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html)
-in I<Using IAM>. For information about using security tokens with other
-AWS products, go to AWS Services That Work with IAM
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
-in the I<IAM User Guide>.
-
-If you're new to AWS and need additional technical information about a
-specific AWS product, you can find the product's technical
-documentation at http://aws.amazon.com/documentation/
-(http://aws.amazon.com/documentation/).
-
-B<Endpoints>
-
-By default, AWS Security Token Service (STS) is available as a global
-service, and all AWS STS requests go to a single endpoint at
-C<https://sts.amazonaws.com>. Global requests map to the US East (N.
-Virginia) region. AWS recommends using Regional AWS STS endpoints
-instead of the global endpoint to reduce latency, build in redundancy,
-and increase session token validity. For more information, see Managing
-AWS STS in an AWS Region
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
-in the I<IAM User Guide>.
-
-Most AWS Regions are enabled for operations in all AWS services by
-default. Those Regions are automatically activated for use with AWS
-STS. Some Regions, such as Asia Pacific (Hong Kong), must be manually
-enabled. To learn more about enabling and disabling AWS Regions, see
-Managing AWS Regions
-(https://docs.aws.amazon.com/general/latest/gr/rande-manage.html) in
-the I<AWS General Reference>. When you enable these AWS Regions, they
-are automatically activated for use with AWS STS. You cannot activate
-the STS endpoint for a Region that is disabled. Tokens that are valid
-in all AWS Regions are longer than tokens that are valid in Regions
-that are enabled by default. Changing this setting might affect
-existing systems where you temporarily store tokens. For more
-information, see Managing Global Endpoint Session Tokens
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#sts-regions-manage-tokens)
-in the I<IAM User Guide>.
-
-After you activate a Region for use with AWS STS, you can direct AWS
-STS API calls to that Region. AWS STS recommends that you provide both
-the Region and endpoint when you make calls to a Regional endpoint. You
-can provide the Region alone for manually enabled Regions, such as Asia
-Pacific (Hong Kong). In this case, the calls are directed to the STS
-Regional endpoint. However, if you provide the Region alone for Regions
-enabled by default, the calls are directed to the global endpoint of
-C<https://sts.amazonaws.com>.
-
-To view the list of AWS STS endpoints and whether they are active by
-default, see Writing Code to Use AWS STS Regions
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#id_credentials_temp_enable-regions_writing_code)
-in the I<IAM User Guide>.
-
-B<Recording API requests>
-
-STS supports AWS CloudTrail, which is a service that records AWS calls
-for your AWS account and delivers log files to an Amazon S3 bucket. By
-using information collected by CloudTrail, you can determine what
-requests were successfully made to STS, who made the request, when it
-was made, and so on.
-
-If you activate AWS STS endpoints in Regions other than the default
-global endpoint, then you must also turn on CloudTrail logging in those
-Regions. This is necessary to record any AWS STS API calls that are
-made in those Regions. For more information, see Turning On CloudTrail
-in Additional Regions
-(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_regions_turn_on_ct.html)
-in the I<AWS CloudTrail User Guide>.
-
-AWS Security Token Service (STS) is a global service with a single
-endpoint at C<https://sts.amazonaws.com>. Calls to this endpoint are
-logged as calls to a global service. However, because this endpoint is
-physically located in the US East (N. Virginia) Region, your logs list
-C<us-east-1> as the event Region. CloudTrail does not write these logs
-to the US East (Ohio) Region unless you choose to include global
-service logs in that Region. CloudTrail writes calls to all Regional
-endpoints to their respective Regions. For example, calls to
-sts.us-east-2.amazonaws.com are published to the US East (Ohio) Region
-and calls to sts.eu-central-1.amazonaws.com are published to the EU
-(Frankfurt) Region.
-
-To learn more about CloudTrail, including how to turn it on and find
-your log files, see the AWS CloudTrail User Guide
-(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/iam/>
 
@@ -254,6 +163,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/iam/>
 =item [PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]]
 
 =item [SerialNumber => Str]
+
+=item [SourceIdentity => Str]
 
 =item [Tags => ArrayRef[L<Paws::STS::Tag>]]
 
@@ -280,39 +191,6 @@ and Comparing the AWS STS API operations
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
 in the I<IAM User Guide>.
 
-You cannot use AWS account root user credentials to call C<AssumeRole>.
-You must use credentials for an IAM user or an IAM role to call
-C<AssumeRole>.
-
-For cross-account access, imagine that you own multiple accounts and
-need to access resources in each account. You could create long-term
-credentials in each account to access those resources. However,
-managing all those credentials and remembering which one can access
-which account can be time consuming. Instead, you can create one set of
-long-term credentials in one account. Then use temporary security
-credentials to access all the other accounts by assuming roles in those
-accounts. For more information about roles, see IAM Roles
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the
-I<IAM User Guide>.
-
-B<Session Duration>
-
-By default, the temporary security credentials created by C<AssumeRole>
-last for one hour. However, you can use the optional C<DurationSeconds>
-parameter to specify the duration of your session. You can provide a
-value from 900 seconds (15 minutes) up to the maximum session duration
-setting for the role. This setting can have a value from 1 hour to 12
-hours. To learn how to view the maximum value for your role, see View
-the Maximum Session Duration Setting for a Role
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
-in the I<IAM User Guide>. The maximum session duration limit applies
-when you use the C<AssumeRole*> API operations or the C<assume-role*>
-CLI commands. However the limit does not apply when you use those
-operations to create a console URL. For more information, see Using IAM
-Roles
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
-the I<IAM User Guide>.
-
 B<Permissions>
 
 The temporary security credentials created by C<AssumeRole> can be used
@@ -324,8 +202,8 @@ operations.
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed
-policies to use as managed session policies. The plain text that you
-use for both inline and managed session policies can't exceed 2,048
+policies to use as managed session policies. The plaintext that you use
+for both inline and managed session policies can't exceed 2,048
 characters. Passing policies to this operation returns new temporary
 credentials. The resulting session's permissions are the intersection
 of the role's identity-based policy and the session policies. You can
@@ -475,6 +353,17 @@ Roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
 the I<IAM User Guide>.
 
+Role chaining
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining)
+limits your AWS CLI or AWS API role session to a maximum of one hour.
+When you use the C<AssumeRole> API operation to assume a role, you can
+specify the duration of your role session with the C<DurationSeconds>
+parameter. You can specify a parameter value of up to 43200 seconds (12
+hours), depending on the maximum session duration setting for your
+role. However, if you assume a role using role chaining and provide a
+C<DurationSeconds> parameter value greater than one hour, the operation
+fails.
+
 B<Permissions>
 
 The temporary security credentials created by C<AssumeRoleWithSAML> can
@@ -486,8 +375,8 @@ C<GetSessionToken> API operations.
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed
-policies to use as managed session policies. The plain text that you
-use for both inline and managed session policies can't exceed 2,048
+policies to use as managed session policies. The plaintext that you use
+for both inline and managed session policies can't exceed 2,048
 characters. Passing policies to this operation returns new temporary
 credentials. The resulting session's permissions are the intersection
 of the role's identity-based policy and the session policies. You can
@@ -520,7 +409,7 @@ Passing Session Tags in STS
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
 in the I<IAM User Guide>.
 
-You can pass up to 50 session tags. The plain text session tag keys
+You can pass up to 50 session tags. The plaintext session tag keys
 canE<rsquo>t exceed 128 characters and the values canE<rsquo>t exceed
 256 characters. For these and additional limits, see IAM and STS
 Character Limits
@@ -529,7 +418,7 @@ in the I<IAM User Guide>.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -685,8 +574,8 @@ C<GetFederationToken> or C<GetSessionToken> API operations.
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed
-policies to use as managed session policies. The plain text that you
-use for both inline and managed session policies can't exceed 2,048
+policies to use as managed session policies. The plaintext that you use
+for both inline and managed session policies can't exceed 2,048
 characters. Passing policies to this operation returns new temporary
 credentials. The resulting session's permissions are the intersection
 of the role's identity-based policy and the session policies. You can
@@ -707,7 +596,7 @@ Passing Session Tags in STS
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
 in the I<IAM User Guide>.
 
-You can pass up to 50 session tags. The plain text session tag keys
+You can pass up to 50 session tags. The plaintext session tag keys
 canE<rsquo>t exceed 128 characters and the values canE<rsquo>t exceed
 256 characters. For these and additional limits, see IAM and STS
 Character Limits
@@ -716,7 +605,7 @@ in the I<IAM User Guide>.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -750,7 +639,7 @@ in the role's trust policy.
 Calling C<AssumeRoleWithWebIdentity> can result in an entry in your AWS
 CloudTrail logs. The entry includes the Subject
 (http://openid.net/specs/openid-connect-core-1_0.html#Claims) of the
-provided Web Identity Token. We recommend that you avoid using any
+provided web identity token. We recommend that you avoid using any
 personally identifiable information (PII) in this field. For example,
 you could instead use a GUID or a pairwise identifier, as suggested in
 the OIDC specification
@@ -771,7 +660,7 @@ and Federation Through a Web-based Identity Provider
 =item *
 
 Web Identity Federation Playground
-(https://web-identity-federation-playground.s3.amazonaws.com/index.html).
+(https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/).
 Walk through the process of authenticating through Login with Amazon,
 Facebook, or Google, getting temporary security credentials, and then
 using those credentials to make a request to AWS.
@@ -966,6 +855,86 @@ Credentials
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html)
 and Comparing the AWS STS API operations
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
+in the I<IAM User Guide>.
+
+You can create a mobile-based or browser-based app that can
+authenticate users using a web identity provider like Login with
+Amazon, Facebook, Google, or an OpenID Connect-compatible identity
+provider. In this case, we recommend that you use Amazon Cognito
+(http://aws.amazon.com/cognito/) or C<AssumeRoleWithWebIdentity>. For
+more information, see Federation Through a Web-based Identity Provider
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity)
+in the I<IAM User Guide>.
+
+You can also call C<GetFederationToken> using the security credentials
+of an AWS account root user, but we do not recommend it. Instead, we
+recommend that you create an IAM user for the purpose of the proxy
+application. Then attach a policy to the IAM user that limits federated
+users to only the actions and resources that they need to access. For
+more information, see IAM Best Practices
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+in the I<IAM User Guide>.
+
+B<Session duration>
+
+The temporary credentials are valid for the specified duration, from
+900 seconds (15 minutes) up to a maximum of 129,600 seconds (36 hours).
+The default session duration is 43,200 seconds (12 hours). Temporary
+credentials that are obtained by using AWS account root user
+credentials have a maximum duration of 3,600 seconds (1 hour).
+
+B<Permissions>
+
+You can use the temporary credentials created by C<GetFederationToken>
+in any AWS service except the following:
+
+=over
+
+=item *
+
+You cannot call any IAM operations using the AWS CLI or the AWS API.
+
+=item *
+
+You cannot call any STS operations except C<GetCallerIdentity>.
+
+=back
+
+You must pass an inline or managed session policy
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
+to this operation. You can pass a single JSON policy document to use as
+an inline session policy. You can also specify up to 10 managed
+policies to use as managed session policies. The plaintext that you use
+for both inline and managed session policies can't exceed 2,048
+characters.
+
+Though the session policy parameters are optional, if you do not pass a
+policy, then the resulting federated user session has no permissions.
+When you pass session policies, the session permissions are the
+intersection of the IAM user policies and the session policies that you
+pass. This gives you a way to further restrict the permissions for a
+federated user. You cannot use session policies to grant more
+permissions than those that are defined in the permissions policy of
+the IAM user. For more information, see Session Policies
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
+in the I<IAM User Guide>. For information about using
+C<GetFederationToken> to create temporary security credentials, see
+GetFederationTokenE<mdash>Federation Through a Custom Identity Broker
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken).
+
+You can use the credentials to access a resource that has a
+resource-based policy. If that policy specifically references the
+federated user session in the C<Principal> element of the policy, the
+session has the permissions allowed by the policy. These permissions
+are granted in addition to the permissions granted by the session
+policies.
+
+B<Tags>
+
+(Optional) You can pass tag key-value pairs to your session. These are
+called session tags. For more information about session tags, see
+Passing Session Tags in STS
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html)
 in the I<IAM User Guide>.
 
 You can create a mobile-based or browser-based app that can
