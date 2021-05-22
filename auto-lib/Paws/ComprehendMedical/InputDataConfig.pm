@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComprehendM
 
 =head1 DESCRIPTION
 
-The input properties for an entities detection job
+The input properties for an entities detection job. This includes the
+name of the S3 bucket and the path to the files to be analyzed.
 
 =head1 ATTRIBUTES
 

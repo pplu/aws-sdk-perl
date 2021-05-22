@@ -110,7 +110,8 @@ by InferICD10CM are C<DIAGNOSIS>, C<SIGN>, C<SYMPTOM>, and C<NEGATION.>
 =head2 Type => Str
 
 Describes the specific type of entity with category of entities.
-InferICD10CM detects entities of the type C<DX_NAME>.
+InferICD10CM detects entities of the type C<DX_NAME> and
+C<TIME_EXPRESSION>.
 
 
 
