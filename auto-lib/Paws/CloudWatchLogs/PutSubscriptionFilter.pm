@@ -81,7 +81,7 @@ subscription filter, for same-account delivery.
 
 =head2 Distribution => Str
 
-The method used to distribute log data to the destination. By default
+The method used to distribute log data to the destination. By default,
 log data is grouped by log stream, but the grouping can be set to
 random for a more even distribution. This property is only applicable
 when the destination is an Amazon Kinesis stream.
@@ -94,7 +94,8 @@ A name for the subscription filter. If you are updating an existing
 filter, you must specify the correct name in C<filterName>. Otherwise,
 the call fails because you cannot associate a second filter with a log
 group. To find the name of the filter currently associated with a log
-group, use DescribeSubscriptionFilters.
+group, use DescribeSubscriptionFilters
+(https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeSubscriptionFilters.html).
 
 
 

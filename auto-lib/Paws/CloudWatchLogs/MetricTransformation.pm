@@ -55,7 +55,10 @@ The name of the CloudWatch metric.
 
 =head2 B<REQUIRED> MetricNamespace => Str
 
-The namespace of the CloudWatch metric.
+A custom namespace to contain your metric in CloudWatch. Use namespaces
+to group together metrics that are similar. For more information, see
+Namespaces
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Namespace).
 
 
 =head2 B<REQUIRED> MetricValue => Str

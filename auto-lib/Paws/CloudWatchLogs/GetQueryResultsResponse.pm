@@ -30,7 +30,8 @@ array of C<field>/C<value> pairs.
 
 Includes the number of log events scanned by the query, the number of
 log events that matched the query criteria, and the total number of
-bytes in the log events that were scanned.
+bytes in the log events that were scanned. These values reflect the
+full raw results of the query.
 
 
 =head2 Status => Str
@@ -40,7 +41,7 @@ C<Cancelled>, C<Complete>, C<Failed>, C<Running>, C<Scheduled>,
 C<Timeout>, and C<Unknown>.
 
 Queries time out after 15 minutes of execution. To avoid having your
-queries time out, reduce the time range being searched, or partition
+queries time out, reduce the time range being searched or partition
 your query into a number of queries.
 
 Valid values are: C<"Scheduled">, C<"Running">, C<"Complete">, C<"Failed">, C<"Cancelled">

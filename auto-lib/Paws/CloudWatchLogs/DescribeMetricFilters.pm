@@ -55,7 +55,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 
 =head2 FilterNamePrefix => Str
 
-The prefix to match.
+The prefix to match. CloudWatch Logs uses the value you set here only
+if you also include the C<logGroupName> parameter in your request.
 
 
 

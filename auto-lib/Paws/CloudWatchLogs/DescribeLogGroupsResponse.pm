@@ -19,6 +19,9 @@ Paws::CloudWatchLogs::DescribeLogGroupsResponse
 
 The log groups.
 
+If the C<retentionInDays> value if not included for a log group, then
+that log group is set to have its events never expire.
+
 
 =head2 NextToken => Str
 

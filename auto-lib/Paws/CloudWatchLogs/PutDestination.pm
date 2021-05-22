@@ -56,7 +56,7 @@ A name for the destination.
 =head2 B<REQUIRED> RoleArn => Str
 
 The ARN of an IAM role that grants CloudWatch Logs permissions to call
-the Amazon Kinesis PutRecord operation on the destination stream.
+the Amazon Kinesis C<PutRecord> operation on the destination stream.
 
 
 
