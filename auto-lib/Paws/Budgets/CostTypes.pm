@@ -46,8 +46,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Co
 The types of cost that are included in a C<COST> budget, such as tax
 and subscriptions.
 
-C<USAGE>, C<RI_UTILIZATION>, and C<RI_COVERAGE> budgets do not have
-C<CostTypes>.
+C<USAGE>, C<RI_UTILIZATION>, C<RI_COVERAGE>,
+C<SAVINGS_PLANS_UTILIZATION>, and C<SAVINGS_PLANS_COVERAGE> budgets do
+not have C<CostTypes>.
 
 =head1 ATTRIBUTES
 

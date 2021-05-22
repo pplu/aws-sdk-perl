@@ -48,7 +48,7 @@ current status of the C<budget> object.
 
 This is the ARN pattern for a budget:
 
-C<arn:aws:budgetservice::AccountId:budget/budgetName>
+C<arn:aws:budgets::AccountId:budget/budgetName>
 
 =head1 ATTRIBUTES
 
@@ -121,7 +121,7 @@ Amazon Elasticsearch Service
 The types of costs that are included in this C<COST> budget.
 
 C<USAGE>, C<RI_UTILIZATION>, C<RI_COVERAGE>,
-C<Savings_Plans_Utilization>, and C<Savings_Plans_Coverage> budgets do
+C<SAVINGS_PLANS_UTILIZATION>, and C<SAVINGS_PLANS_COVERAGE> budgets do
 not have C<CostTypes>.
 
 
@@ -191,9 +191,7 @@ notifications and subscribers.
 =head2 B<REQUIRED> TimeUnit => Str
 
 The length of time until a budget resets the actual and forecasted
-spend. C<DAILY> is available only for C<RI_UTILIZATION>,
-C<RI_COVERAGE>, C<Savings_Plans_Utilization>, and
-C<Savings_Plans_Coverage> budgets.
+spend.
 
 
 

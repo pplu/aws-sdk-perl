@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::No
 =head1 DESCRIPTION
 
 A notification that is associated with a budget. A budget can have up
-to five notifications.
+to ten notifications.
 
 Each notification must have at least one subscriber. A notification can
 have one SNS subscriber and up to 10 email subscribers, for a total of
@@ -92,7 +92,9 @@ for how much you're forecasted to spend (C<FORECASTED>).
 =head2 B<REQUIRED> Threshold => Num
 
 The threshold that is associated with a notification. Thresholds are
-always a percentage.
+always a percentage, and many customers find value being alerted
+between 50% - 200% of the budgeted amount. The maximum limit for your
+threshold is 1,000,000% above the budgeted amount.
 
 
 =head2 ThresholdType => Str
