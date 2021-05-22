@@ -1,11 +1,14 @@
 
 package Paws::Kendra::CreateFaq;
   use Moose;
+  has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has FileFormat => (is => 'ro', isa => 'Str');
   has IndexId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has S3Path => (is => 'ro', isa => 'Paws::Kendra::S3Path', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +43,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Key    => 'MyS3ObjectKey',     # min: 1, max: 1024
 
       },
-      Description => 'MyDescription',    # OPTIONAL
+      ClientToken => 'MyClientTokenName',    # OPTIONAL
+      Description => 'MyDescription',        # OPTIONAL
+      FileFormat  => 'CSV',                  # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',               # min: 1, max: 128
+          Value => 'MyTagValue',             # max: 256
+
+        },
+        ...
+      ],                                     # OPTIONAL
     );
 
     # Results:
@@ -54,11 +67,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ken
 =head1 ATTRIBUTES
 
 
+=head2 ClientToken => Str
+
+A token that you provide to identify the request to create a FAQ.
+Multiple calls to the C<CreateFaqRequest> operation with the same
+client token will create only one FAQ.
+
+
+
 =head2 Description => Str
 
 A description of the FAQ.
 
 
+
+=head2 FileFormat => Str
+
+The format of the input file. You can choose between a basic CSV
+format, a CSV format that includes customs attributes in a header, and
+a JSON format that includes custom attributes.
+
+The format must match the format of the file stored in the S3 bucket
+identified in the C<S3Path> parameter.
+
+For more information, see Adding questions and answers
+(https://docs.aws.amazon.com/kendra/latest/dg/in-creating-faq.html).
+
+Valid values are: C<"CSV">, C<"CSV_WITH_HEADER">, C<"JSON">
 
 =head2 B<REQUIRED> IndexId => Str
 
@@ -84,6 +119,14 @@ for Amazon Kendra
 =head2 B<REQUIRED> S3Path => L<Paws::Kendra::S3Path>
 
 The S3 location of the FAQ input data.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Kendra::Tag>]
+
+A list of key-value pairs that identify the FAQ. You can use the tags
+to identify and organize your resources and to control access to
+resources.
 
 
 

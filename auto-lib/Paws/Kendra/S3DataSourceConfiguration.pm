@@ -5,6 +5,7 @@ package Paws::Kendra::S3DataSourceConfiguration;
   has BucketName => (is => 'ro', isa => 'Str', required => 1);
   has DocumentsMetadataConfiguration => (is => 'ro', isa => 'Paws::Kendra::DocumentsMetadataConfiguration');
   has ExclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has InclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InclusionPrefixes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -46,7 +47,9 @@ in an Amazon S3 bucket.
 =head2 AccessControlListConfiguration => L<Paws::Kendra::AccessControlListConfiguration>
 
 Provides the path to the S3 bucket that contains the user context
-filtering files for the data source.
+filtering files for the data source. For the format of the file, see
+Access control for S3 data sources
+(https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html).
 
 
 =head2 B<REQUIRED> BucketName => Str
@@ -62,11 +65,21 @@ The name of the bucket that contains the documents.
 =head2 ExclusionPatterns => ArrayRef[Str|Undef]
 
 A list of glob patterns for documents that should not be indexed. If a
-document that matches an inclusion prefix also matches an exclusion
+document that matches an inclusion prefix or inclusion pattern also
+matches an exclusion pattern, the document is not indexed.
+
+For more information about glob patterns, see glob (programming)
+(https://en.wikipedia.org/wiki/Glob_(programming)) in I<Wikipedia>.
+
+
+=head2 InclusionPatterns => ArrayRef[Str|Undef]
+
+A list of glob patterns for documents that should be indexed. If a
+document that matches an inclusion pattern also matches an exclusion
 pattern, the document is not indexed.
 
 For more information about glob patterns, see glob (programming)
-(http://wikipedia.org/wiki/Glob_%28programming%29) in I<Wikipedia>.
+(https://en.wikipedia.org/wiki/Glob_(programming)) in I<Wikipedia>.
 
 
 =head2 InclusionPrefixes => ArrayRef[Str|Undef]

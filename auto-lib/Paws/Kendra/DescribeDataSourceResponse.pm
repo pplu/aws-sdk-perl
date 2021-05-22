@@ -86,7 +86,7 @@ Valid values are: C<"CREATING">, C<"DELETING">, C<"FAILED">, C<"UPDATING">, C<"A
 
 The type of the data source.
 
-Valid values are: C<"S3">, C<"SHAREPOINT">, C<"DATABASE">
+Valid values are: C<"S3">, C<"SHAREPOINT">, C<"DATABASE">, C<"SALESFORCE">, C<"ONEDRIVE">, C<"SERVICENOW">, C<"CUSTOM">, C<"CONFLUENCE">, C<"GOOGLEDRIVE">
 =head2 UpdatedAt => Str
 
 The Unix timestamp of when the data source was last updated.

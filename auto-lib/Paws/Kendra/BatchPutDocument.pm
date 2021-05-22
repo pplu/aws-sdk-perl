@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                      # min: 1, max: 200; OPTIONAL
+          ],                                      # OPTIONAL
           Attributes => [
             {
               Key   => 'MyDocumentAttributeKey',    # min: 1, max: 200
@@ -50,15 +50,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 LongValue       => 1,                        # OPTIONAL
                 StringListValue => [
                   'MyString', ...                            # min: 1, max: 2048
-                ],    # min: 1, max: 5; OPTIONAL
+                ],                                           # OPTIONAL
                 StringValue => 'MyDocumentAttributeStringValue'
-                ,     # min: 1, max: 2048; OPTIONAL
+                ,    # min: 1, max: 2048; OPTIONAL
               },
 
             },
             ...
-          ],          # min: 1, max: 100; OPTIONAL
-          Blob => 'BlobBlob',    # min: 1, max: 153600; OPTIONAL
+          ],         # OPTIONAL
+          Blob => 'BlobBlob',    # OPTIONAL
           ContentType =>
             'PDF',    # values: PDF, HTML, MS_WORD, PLAIN_TEXT, PPT; OPTIONAL
           S3Path => {
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key    => 'MyS3ObjectKey',     # min: 1, max: 1024
 
           },    # OPTIONAL
-          Title => 'MyTitle',    # min: 1, max: 1024; OPTIONAL
+          Title => 'MyTitle',    # OPTIONAL
         },
         ...
       ],
@@ -89,15 +89,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ken
 
 One or more documents to add to the index.
 
-Each document is limited to 5 Mb, the total size of the list is limited
-to 50 Mb.
+Documents have the following file size limits.
+
+=over
+
+=item *
+
+5 MB total size for inline documents
+
+=item *
+
+50 MB total size for files from an S3 bucket
+
+=item *
+
+5 MB extracted text for any file
+
+=back
+
+For more information about file size and transaction per second quotas,
+see Quotas (https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
 
 
 
 =head2 B<REQUIRED> IndexId => Str
 
 The identifier of the index to add the documents to. You need to create
-the index first using the CreateIndex operation.
+the index first using the C<CreateIndex> operation.
 
 
 

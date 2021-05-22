@@ -36,8 +36,9 @@ The results of the search.
 
 =head2 TotalNumberOfResults => Int
 
-The number of items returned by the search. Use this to determine when
-you have requested the last set of results.
+The total number of items found by the search; however, you can only
+retrieve up to 100 items. For example, if the search found 192 items,
+you can only retrieve the first 100 of the items.
 
 
 =head2 _request_id => Str

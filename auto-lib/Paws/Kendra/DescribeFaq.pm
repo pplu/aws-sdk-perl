@@ -38,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatedAt    = $DescribeFaqResponse->CreatedAt;
     my $Description  = $DescribeFaqResponse->Description;
     my $ErrorMessage = $DescribeFaqResponse->ErrorMessage;
+    my $FileFormat   = $DescribeFaqResponse->FileFormat;
     my $Id           = $DescribeFaqResponse->Id;
     my $IndexId      = $DescribeFaqResponse->IndexId;
     my $Name         = $DescribeFaqResponse->Name;

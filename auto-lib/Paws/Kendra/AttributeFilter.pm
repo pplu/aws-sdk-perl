@@ -44,6 +44,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Att
 
 Provides filtering the query results based on document attributes.
 
+When you use the C<AndAllFilters> or C<OrAllFilters>, filters you can
+use 2 layers under the first attribute filter. For example, you can
+use:
+
+C<E<lt>AndAllFiltersE<gt>>
+
+=over
+
+=item 1.
+
+C<E<lt>OrAllFiltersE<gt>>
+
+=item 2.
+
+C<E<lt>EqualToE<gt>>
+
+=back
+
+If you use more than 2 layers, you receive a C<ValidationException>
+exception with the message "C<AttributeFilter> cannot have a depth of
+more than 2."
+
 =head1 ATTRIBUTES
 
 
@@ -55,13 +77,15 @@ Performs a logical C<AND> operation on all supplied filters.
 =head2 ContainsAll => L<Paws::Kendra::DocumentAttribute>
 
 Returns true when a document contains all of the specified document
-attributes.
+attributes. This filter is only applicable to C<StringListValue>
+metadata.
 
 
 =head2 ContainsAny => L<Paws::Kendra::DocumentAttribute>
 
 Returns true when a document contains any of the specified document
-attributes.
+attributes. This filter is only applicable to C<StringListValue>
+metadata.
 
 
 =head2 EqualsTo => L<Paws::Kendra::DocumentAttribute>

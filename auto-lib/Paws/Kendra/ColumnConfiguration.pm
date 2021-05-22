@@ -68,7 +68,7 @@ The column that contains the title of the document.
 
 An array of objects that map database column names to the corresponding
 fields in an index. You must first create the fields in the index using
-the UpdateIndex operation.
+the C<UpdateIndex> operation.
 
 
 

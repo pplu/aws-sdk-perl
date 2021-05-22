@@ -37,6 +37,89 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Id            => 'MyDataSourceId',
       IndexId       => 'MyIndexId',
       Configuration => {
+        ConfluenceConfiguration => {
+          SecretArn               => 'MySecretArn',    # min: 1, max: 1284
+          ServerUrl               => 'MyUrl',          # min: 1, max: 2048
+          Version                 => 'CLOUD',          # values: CLOUD, SERVER
+          AttachmentConfiguration => {
+            AttachmentFieldMappings => [
+              {
+                DataSourceFieldName => 'AUTHOR'
+                , # values: AUTHOR, CONTENT_TYPE, CREATED_DATE, DISPLAY_URL, FILE_SIZE, ITEM_TYPE, PARENT_ID, SPACE_KEY, SPACE_NAME, URL, VERSION; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+                IndexFieldName =>
+                  'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 11; OPTIONAL
+            CrawlAttachments => 1,                  # OPTIONAL
+          },    # OPTIONAL
+          BlogConfiguration => {
+            BlogFieldMappings => [
+              {
+                DataSourceFieldName => 'AUTHOR'
+                , # values: AUTHOR, DISPLAY_URL, ITEM_TYPE, LABELS, PUBLISH_DATE, SPACE_KEY, SPACE_NAME, URL, VERSION; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+                IndexFieldName =>
+                  'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 9; OPTIONAL
+          },    # OPTIONAL
+          ExclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],       # max: 100; OPTIONAL
+          InclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],       # max: 100; OPTIONAL
+          PageConfiguration => {
+            PageFieldMappings => [
+              {
+                DataSourceFieldName => 'AUTHOR'
+                , # values: AUTHOR, CONTENT_STATUS, CREATED_DATE, DISPLAY_URL, ITEM_TYPE, LABELS, MODIFIED_DATE, PARENT_ID, SPACE_KEY, SPACE_NAME, URL, VERSION; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+                IndexFieldName =>
+                  'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 12; OPTIONAL
+          },    # OPTIONAL
+          SpaceConfiguration => {
+            CrawlArchivedSpaces => 1,    # OPTIONAL
+            CrawlPersonalSpaces => 1,    # OPTIONAL
+            ExcludeSpaces       => [
+              'MyConfluenceSpaceIdentifier', ...    # min: 1, max: 255
+            ],                                      # min: 1; OPTIONAL
+            IncludeSpaces => [
+              'MyConfluenceSpaceIdentifier', ...    # min: 1, max: 255
+            ],                                      # min: 1; OPTIONAL
+            SpaceFieldMappings => [
+              {
+                DataSourceFieldName => 'DISPLAY_URL'
+                ,    # values: DISPLAY_URL, ITEM_TYPE, SPACE_KEY, URL; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+                IndexFieldName =>
+                  'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 4; OPTIONAL
+          },    # OPTIONAL
+          VpcConfiguration => {
+            SecurityGroupIds => [
+              'MyVpcSecurityGroupId', ...    # min: 1, max: 200
+            ],                               # min: 1, max: 10
+            SubnetIds => [
+              'MySubnetId', ...              # min: 1, max: 200
+            ],                               # min: 1, max: 6
+
+          },    # OPTIONAL
+        },    # OPTIONAL
         DatabaseConfiguration => {
           ColumnConfiguration => {
             ChangeDetectingColumns => [
@@ -49,7 +132,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 DataSourceFieldName =>
                   'MyDataSourceFieldName',                # min: 1, max: 100
-                IndexFieldName => 'MyIndexFieldName',     # min: 1, max: 30
+                IndexFieldName =>
+                  'MyIndexFieldName',    # min: 1, max: 30; OPTIONAL
                 DateFieldFormat =>
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
@@ -70,6 +154,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AllowedGroupsColumnName => 'MyColumnName',    # min: 1, max: 100
 
           },    # OPTIONAL
+          SqlConfiguration => {
+            QueryIdentifiersEnclosingOption =>
+              'DOUBLE_QUOTES',    # values: DOUBLE_QUOTES, NONE; OPTIONAL
+          },    # OPTIONAL
           VpcConfiguration => {
             SecurityGroupIds => [
               'MyVpcSecurityGroupId', ...    # min: 1, max: 200
@@ -79,6 +167,67 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                               # min: 1, max: 6
 
           },    # OPTIONAL
+        },    # OPTIONAL
+        GoogleDriveConfiguration => {
+          SecretArn        => 'MySecretArn',    # min: 1, max: 1284
+          ExcludeMimeTypes => [
+            'MyMimeType', ...                   # min: 1, max: 256
+          ],                                    # max: 30; OPTIONAL
+          ExcludeSharedDrives => [
+            'MySharedDriveId', ...              # min: 1, max: 256
+          ],                                    # max: 100; OPTIONAL
+          ExcludeUserAccounts => [
+            'MyUserAccount', ...                # min: 1, max: 256
+          ],                                    # max: 100; OPTIONAL
+          ExclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...                                 # min: 1, max: 150
+          ],                                    # max: 100; OPTIONAL
+          FieldMappings => [
+            {
+              DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
+              IndexFieldName => 'MyIndexFieldName',  # min: 1, max: 30; OPTIONAL
+              DateFieldFormat =>
+                'MyDataSourceDateFieldFormat',       # min: 4, max: 40; OPTIONAL
+            },
+            ...
+          ],    # min: 1, max: 100; OPTIONAL
+          InclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],       # max: 100; OPTIONAL
+        },    # OPTIONAL
+        OneDriveConfiguration => {
+          OneDriveUsers => {
+            OneDriveUserList => [
+              'MyOneDriveUser', ...    # min: 1, max: 256
+            ],                         # min: 1, max: 100; OPTIONAL
+            OneDriveUserS3Path => {
+              Bucket => 'MyS3BucketName',    # min: 3, max: 63
+              Key    => 'MyS3ObjectKey',     # min: 1, max: 1024; OPTIONAL
+
+            },    # OPTIONAL
+          },
+          SecretArn          => 'MySecretArn',       # min: 1, max: 1284
+          TenantDomain       => 'MyTenantDomain',    # min: 1, max: 256
+          DisableLocalGroups => 1,                   # OPTIONAL
+          ExclusionPatterns  => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...                                      # min: 1, max: 150
+          ],                                         # max: 100; OPTIONAL
+          FieldMappings => [
+            {
+              DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
+              IndexFieldName => 'MyIndexFieldName',  # min: 1, max: 30; OPTIONAL
+              DateFieldFormat =>
+                'MyDataSourceDateFieldFormat',       # min: 4, max: 40; OPTIONAL
+            },
+            ...
+          ],    # min: 1, max: 100; OPTIONAL
+          InclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],       # max: 100; OPTIONAL
         },    # OPTIONAL
         S3Configuration => {
           BucketName                     => 'MyS3BucketName',  # min: 3, max: 63
@@ -90,12 +239,188 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ExclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
-            ...    # min: 1, max: 50
+            ...    # min: 1, max: 150
+          ],       # max: 100; OPTIONAL
+          InclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
           ],       # max: 100; OPTIONAL
           InclusionPrefixes => [
             'MyDataSourceInclusionsExclusionsStringsMember',
-            ...    # min: 1, max: 50
+            ...    # min: 1, max: 150
           ],       # max: 100; OPTIONAL
+        },    # OPTIONAL
+        SalesforceConfiguration => {
+          SecretArn                => 'MySecretArn',    # min: 1, max: 1284
+          ServerUrl                => 'MyUrl',          # min: 1, max: 2048
+          ChatterFeedConfiguration => {
+            DocumentDataFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
+            DocumentTitleFieldName =>
+              'MyDataSourceFieldName',                        # min: 1, max: 100
+            FieldMappings => [
+              {
+                DataSourceFieldName =>
+                  'MyDataSourceFieldName',                    # min: 1, max: 100
+                IndexFieldName =>
+                  'MyIndexFieldName',    # min: 1, max: 30; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 100; OPTIONAL
+            IncludeFilterTypes => [
+              'ACTIVE_USER', ...    # values: ACTIVE_USER, STANDARD_USER
+            ],                      # min: 1, max: 2; OPTIONAL
+          },    # OPTIONAL
+          CrawlAttachments              => 1,    # OPTIONAL
+          ExcludeAttachmentFilePatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...                                  # min: 1, max: 150
+          ],                                     # max: 100; OPTIONAL
+          IncludeAttachmentFilePatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...                                  # min: 1, max: 150
+          ],                                     # max: 100; OPTIONAL
+          KnowledgeArticleConfiguration => {
+            IncludedStates => [
+              'DRAFT', ...    # values: DRAFT, PUBLISHED, ARCHIVED
+            ],                # min: 1, max: 3
+            CustomKnowledgeArticleTypeConfigurations => [
+              {
+                DocumentDataFieldName =>
+                  'MyDataSourceFieldName',    # min: 1, max: 100
+                Name => 'MySalesforceCustomKnowledgeArticleTypeName'
+                ,                             # min: 1, max: 100
+                DocumentTitleFieldName =>
+                  'MyDataSourceFieldName',    # min: 1, max: 100
+                FieldMappings => [
+                  {
+                    DataSourceFieldName =>
+                      'MyDataSourceFieldName',    # min: 1, max: 100
+                    IndexFieldName =>
+                      'MyIndexFieldName',         # min: 1, max: 30; OPTIONAL
+                    DateFieldFormat =>
+                      'MyDataSourceDateFieldFormat', # min: 4, max: 40; OPTIONAL
+                  },
+                  ...
+                ],    # min: 1, max: 100; OPTIONAL
+              },
+              ...
+            ],        # min: 1, max: 10; OPTIONAL
+            StandardKnowledgeArticleTypeConfiguration => {
+              DocumentDataFieldName =>
+                'MyDataSourceFieldName',    # min: 1, max: 100
+              DocumentTitleFieldName =>
+                'MyDataSourceFieldName',    # min: 1, max: 100
+              FieldMappings => [
+                {
+                  DataSourceFieldName =>
+                    'MyDataSourceFieldName',    # min: 1, max: 100
+                  IndexFieldName =>
+                    'MyIndexFieldName',         # min: 1, max: 30; OPTIONAL
+                  DateFieldFormat =>
+                    'MyDataSourceDateFieldFormat',   # min: 4, max: 40; OPTIONAL
+                },
+                ...
+              ],    # min: 1, max: 100; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          StandardObjectAttachmentConfiguration => {
+            DocumentTitleFieldName =>
+              'MyDataSourceFieldName',    # min: 1, max: 100
+            FieldMappings => [
+              {
+                DataSourceFieldName =>
+                  'MyDataSourceFieldName',    # min: 1, max: 100
+                IndexFieldName =>
+                  'MyIndexFieldName',         # min: 1, max: 30; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 100; OPTIONAL
+          },    # OPTIONAL
+          StandardObjectConfigurations => [
+            {
+              DocumentDataFieldName =>
+                'MyDataSourceFieldName',    # min: 1, max: 100
+              Name => 'ACCOUNT'
+              , # values: ACCOUNT, CAMPAIGN, CASE, CONTACT, CONTRACT, DOCUMENT, GROUP, IDEA, LEAD, OPPORTUNITY, PARTNER, PRICEBOOK, PRODUCT, PROFILE, SOLUTION, TASK, USER
+              DocumentTitleFieldName =>
+                'MyDataSourceFieldName',    # min: 1, max: 100
+              FieldMappings => [
+                {
+                  DataSourceFieldName =>
+                    'MyDataSourceFieldName',    # min: 1, max: 100
+                  IndexFieldName =>
+                    'MyIndexFieldName',         # min: 1, max: 30; OPTIONAL
+                  DateFieldFormat =>
+                    'MyDataSourceDateFieldFormat',   # min: 4, max: 40; OPTIONAL
+                },
+                ...
+              ],    # min: 1, max: 100; OPTIONAL
+            },
+            ...
+          ],        # min: 1, max: 17; OPTIONAL
+        },    # OPTIONAL
+        ServiceNowConfiguration => {
+          HostUrl   => 'MyServiceNowHostUrl',    # min: 1, max: 2048
+          SecretArn => 'MySecretArn',            # min: 1, max: 1284
+          ServiceNowBuildVersion => 'LONDON',    # values: LONDON, OTHERS
+          AuthenticationType =>
+            'HTTP_BASIC',    # values: HTTP_BASIC, OAUTH2; OPTIONAL
+          KnowledgeArticleConfiguration => {
+            DocumentDataFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
+            CrawlAttachments      => 1,                       # OPTIONAL
+            DocumentTitleFieldName =>
+              'MyDataSourceFieldName',                        # min: 1, max: 100
+            ExcludeAttachmentFilePatterns => [
+              'MyDataSourceInclusionsExclusionsStringsMember',
+              ...                                             # min: 1, max: 150
+            ],    # max: 100; OPTIONAL
+            FieldMappings => [
+              {
+                DataSourceFieldName =>
+                  'MyDataSourceFieldName',    # min: 1, max: 100
+                IndexFieldName =>
+                  'MyIndexFieldName',         # min: 1, max: 30; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 100; OPTIONAL
+            FilterQuery => 'MyServiceNowKnowledgeArticleFilterQuery'
+            ,    # min: 1, max: 2048; OPTIONAL
+            IncludeAttachmentFilePatterns => [
+              'MyDataSourceInclusionsExclusionsStringsMember',
+              ...    # min: 1, max: 150
+            ],       # max: 100; OPTIONAL
+          },    # OPTIONAL
+          ServiceCatalogConfiguration => {
+            DocumentDataFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
+            CrawlAttachments      => 1,                       # OPTIONAL
+            DocumentTitleFieldName =>
+              'MyDataSourceFieldName',                        # min: 1, max: 100
+            ExcludeAttachmentFilePatterns => [
+              'MyDataSourceInclusionsExclusionsStringsMember',
+              ...                                             # min: 1, max: 150
+            ],    # max: 100; OPTIONAL
+            FieldMappings => [
+              {
+                DataSourceFieldName =>
+                  'MyDataSourceFieldName',    # min: 1, max: 100
+                IndexFieldName =>
+                  'MyIndexFieldName',         # min: 1, max: 30; OPTIONAL
+                DateFieldFormat =>
+                  'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+              },
+              ...
+            ],                                      # min: 1, max: 100; OPTIONAL
+            IncludeAttachmentFilePatterns => [
+              'MyDataSourceInclusionsExclusionsStringsMember',
+              ...                                   # min: 1, max: 150
+            ],                                      # max: 100; OPTIONAL
+          },    # OPTIONAL
         },    # OPTIONAL
         SharePointConfiguration => {
           SecretArn         => 'MySecretArn',        # min: 1, max: 1284
@@ -104,23 +429,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyUrl', ...                             # min: 1, max: 2048
           ],                                         # min: 1, max: 100
           CrawlAttachments       => 1,                        # OPTIONAL
+          DisableLocalGroups     => 1,                        # OPTIONAL
           DocumentTitleFieldName => 'MyDataSourceFieldName',  # min: 1, max: 100
-          FieldMappings          => [
+          ExclusionPatterns      => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...                                               # min: 1, max: 150
+          ],    # max: 100; OPTIONAL
+          FieldMappings => [
             {
               DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
-              IndexFieldName      => 'MyIndexFieldName',      # min: 1, max: 30
+              IndexFieldName => 'MyIndexFieldName',  # min: 1, max: 30; OPTIONAL
               DateFieldFormat =>
-                'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
+                'MyDataSourceDateFieldFormat',       # min: 4, max: 40; OPTIONAL
             },
             ...
-          ],                                      # min: 1, max: 100; OPTIONAL
+          ],    # min: 1, max: 100; OPTIONAL
+          InclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],       # max: 100; OPTIONAL
+          UseChangeLog     => 1,    # OPTIONAL
           VpcConfiguration => {
             SecurityGroupIds => [
-              'MyVpcSecurityGroupId', ...         # min: 1, max: 200
-            ],                                    # min: 1, max: 10
+              'MyVpcSecurityGroupId', ...    # min: 1, max: 200
+            ],                               # min: 1, max: 10
             SubnetIds => [
-              'MySubnetId', ...                   # min: 1, max: 200
-            ],                                    # min: 1, max: 6
+              'MySubnetId', ...              # min: 1, max: 200
+            ],                               # min: 1, max: 6
 
           },    # OPTIONAL
         },    # OPTIONAL

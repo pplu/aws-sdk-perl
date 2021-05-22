@@ -95,7 +95,7 @@ limited to jobs between the specified dates.
 When specified, only returns synchronization jobs with the C<Status>
 field equal to the specified status.
 
-Valid values are: C<"FAILED">, C<"SUCCEEDED">, C<"SYNCING">, C<"INCOMPLETE">, C<"STOPPING">, C<"ABORTED">
+Valid values are: C<"FAILED">, C<"SUCCEEDED">, C<"SYNCING">, C<"INCOMPLETE">, C<"STOPPING">, C<"ABORTED">, C<"SYNCING_INDEXING">
 
 
 =head1 SEE ALSO

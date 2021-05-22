@@ -1,6 +1,7 @@
 
 package Paws::Kendra::BatchDeleteDocument;
   use Moose;
+  has DataSourceSyncJobMetricTarget => (is => 'ro', isa => 'Paws::Kendra::DataSourceSyncJobMetricTarget');
   has DocumentIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has IndexId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -32,8 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DocumentIdList => [
         'MyDocumentId', ...    # min: 1, max: 2048
       ],
-      IndexId => 'MyIndexId',
+      IndexId                       => 'MyIndexId',
+      DataSourceSyncJobMetricTarget => {
+        DataSourceId        => 'MyDataSourceId',           # min: 1, max: 100
+        DataSourceSyncJobId => 'MyDataSourceSyncJobId',    # min: 1, max: 100
 
+      },    # OPTIONAL
     );
 
     # Results:
@@ -45,6 +50,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kendra/BatchDeleteDocument>
 
 =head1 ATTRIBUTES
+
+
+=head2 DataSourceSyncJobMetricTarget => L<Paws::Kendra::DataSourceSyncJobMetricTarget>
+
+
+
 
 
 =head2 B<REQUIRED> DocumentIdList => ArrayRef[Str|Undef]

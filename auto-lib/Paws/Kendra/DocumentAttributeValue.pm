@@ -44,7 +44,7 @@ value for a custom attribute.
 
 =head2 DateValue => Str
 
-A date value expressed as seconds from the Unix epoch.
+A date expressed as an ISO 8601 string.
 
 
 =head2 LongValue => Int
