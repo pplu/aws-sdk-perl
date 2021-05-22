@@ -29,10 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # ModifyCacheSubnetGroup
+    # Modifies an existing ElastiCache subnet group.
     my $ModifyCacheSubnetGroupResult = $elasticache->ModifyCacheSubnetGroup(
-      CacheSubnetGroupName        => 'MyString',
-      CacheSubnetGroupDescription => 'MyString',             # OPTIONAL
-      SubnetIds                   => [ 'MyString', ... ],    # OPTIONAL
+      'CacheSubnetGroupName' => 'my-sn-grp',
+      'SubnetIds'            => ['subnet-bcde2345']
     );
 
     # Results:

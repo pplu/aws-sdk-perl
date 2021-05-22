@@ -27,10 +27,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    my $TagListMessage = $elasticache->ListTagsForResource(
-      ResourceName => 'MyString',
-
-    );
+   # ListTagsForResource
+   # Lists all cost allocation tags currently on the named resource. A cost
+   # allocation tag is a key-value pair where the key is case-sensitive and the
+   # value is optional. You can use cost allocation tags to categorize and track
+   # your AWS costs.
+    my $TagListMessage = $elasticache->ListTagsForResource( 'ResourceName' =>
+        'arn:aws:elasticache:us-west-2:<my-account-id>:cluster:mycluster' );
 
     # Results:
     my $TagList = $TagListMessage->TagList;

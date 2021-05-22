@@ -4,6 +4,7 @@ package Paws::ElastiCache::CreateCacheParameterGroup;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -29,12 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # CreateCacheParameterGroup
+    # Creates the Amazon ElastiCache parameter group custom-redis2-8.
     my $CreateCacheParameterGroupResult =
       $elasticache->CreateCacheParameterGroup(
-      CacheParameterGroupFamily => 'MyString',
-      CacheParameterGroupName   => 'MyString',
-      Description               => 'MyString',
-
+      'CacheParameterGroupFamily' => 'redis2.8',
+      'CacheParameterGroupName'   => 'custom-redis2-8',
+      'Description'               => 'Custom Redis 2.8 parameter group.'
       );
 
     # Results:
@@ -54,8 +56,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 The name of the cache parameter group family that the cache parameter
 group can be used with.
 
-Valid values are: C<memcached1.4> | C<memcached1.5> | C<redis2.6> |
-C<redis2.8> | C<redis3.2> | C<redis4.0> | C<redis5.0> |
+Valid values are: C<memcached1.4> | C<memcached1.5> | C<memcached1.6> |
+C<redis2.6> | C<redis2.8> | C<redis3.2> | C<redis4.0> | C<redis5.0> |
+C<redis6.x> |
 
 
 
@@ -68,6 +71,14 @@ A user-specified name for the cache parameter group.
 =head2 B<REQUIRED> Description => Str
 
 A user-specified description for the cache parameter group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 

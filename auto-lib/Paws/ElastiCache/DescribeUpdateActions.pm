@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ShowNodeLevelUpdateStatus => 1,    # OPTIONAL
       UpdateActionStatus        => [
         'not-applied',
-        ... # values: not-applied, waiting-to-start, in-progress, stopping, stopped, complete
+        ... # values: not-applied, waiting-to-start, in-progress, stopping, stopped, complete, scheduling, scheduled, not-applicable
       ],    # OPTIONAL
     );
 

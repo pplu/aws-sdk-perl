@@ -29,19 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DescribeCacheSecurityGroups
+    # Returns a list of cache security group descriptions. If a cache security
+    # group name is specified, the list contains only the description of that
+    # group.
     my $RevokeCacheSecurityGroupIngressResult =
       $elasticache->RevokeCacheSecurityGroupIngress(
-      CacheSecurityGroupName  => 'MyString',
-      EC2SecurityGroupName    => 'MyString',
-      EC2SecurityGroupOwnerId => 'MyString',
-
+      'CacheSecurityGroupName'  => 'my-sec-grp',
+      'EC2SecurityGroupName'    => 'my-ec2-sec-grp',
+      'EC2SecurityGroupOwnerId' => 1234567890
       );
 
-    # Results:
-    my $CacheSecurityGroup =
-      $RevokeCacheSecurityGroupIngressResult->CacheSecurityGroup;
-
- # Returns a L<Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/RevokeCacheSecurityGroupIngress>

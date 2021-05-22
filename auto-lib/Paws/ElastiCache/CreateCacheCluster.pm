@@ -11,12 +11,16 @@ package Paws::ElastiCache::CreateCacheCluster;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has LogDeliveryConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::LogDeliveryConfigurationRequest]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
+  has OutpostMode => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
   has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PreferredOutpostArn => (is => 'ro', isa => 'Str');
+  has PreferredOutpostArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -49,36 +53,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # CreateCacheCluster
+    # Creates a Memcached cluster with 2 nodes.
     my $CreateCacheClusterResult = $elasticache->CreateCacheCluster(
-      CacheClusterId             => 'MyString',
-      AZMode                     => 'single-az',            # OPTIONAL
-      AuthToken                  => 'MyString',             # OPTIONAL
-      AutoMinorVersionUpgrade    => 1,                      # OPTIONAL
-      CacheNodeType              => 'MyString',             # OPTIONAL
-      CacheParameterGroupName    => 'MyString',             # OPTIONAL
-      CacheSecurityGroupNames    => [ 'MyString', ... ],    # OPTIONAL
-      CacheSubnetGroupName       => 'MyString',             # OPTIONAL
-      Engine                     => 'MyString',             # OPTIONAL
-      EngineVersion              => 'MyString',             # OPTIONAL
-      NotificationTopicArn       => 'MyString',             # OPTIONAL
-      NumCacheNodes              => 1,                      # OPTIONAL
-      Port                       => 1,                      # OPTIONAL
-      PreferredAvailabilityZone  => 'MyString',             # OPTIONAL
-      PreferredAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
-      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
-      ReplicationGroupId         => 'MyString',             # OPTIONAL
-      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
-      SnapshotArns               => [ 'MyString', ... ],    # OPTIONAL
-      SnapshotName               => 'MyString',             # OPTIONAL
-      SnapshotRetentionLimit     => 1,                      # OPTIONAL
-      SnapshotWindow             => 'MyString',             # OPTIONAL
-      Tags                       => [
-        {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                    # OPTIONAL
+      'AZMode'               => 'cross-az',
+      'CacheClusterId'       => 'my-memcached-cluster',
+      'CacheNodeType'        => 'cache.r3.large',
+      'CacheSubnetGroupName' => 'default',
+      'Engine'               => 'memcached',
+      'EngineVersion'        => '1.4.24',
+      'NumCacheNodes'        => 2,
+      'Port'                 => 11211
+    );
+
+    # Results:
+    my $CacheCluster = $CreateCacheClusterResult->CacheCluster;
+
+    # Returns a L<Paws::ElastiCache::CreateCacheClusterResult> object.
+    # CreateCacheCluster
+    # Creates a Redis cluster with 1 node.
+    my $CreateCacheClusterResult = $elasticache->CreateCacheCluster(
+      'AutoMinorVersionUpgrade'   => 1,
+      'CacheClusterId'            => 'my-redis',
+      'CacheNodeType'             => 'cache.r3.larage',
+      'CacheSubnetGroupName'      => 'default',
+      'Engine'                    => 'redis',
+      'EngineVersion'             => '3.2.4',
+      'NumCacheNodes'             => 1,
+      'Port'                      => 6379,
+      'PreferredAvailabilityZone' => 'us-east-1c',
+      'SnapshotRetentionLimit'    => 7
     );
 
     # Results:
@@ -189,12 +193,25 @@ General purpose:
 
 Current generation:
 
+B<M6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.m6g.large>, C<cache.m6g.xlarge>, C<cache.m6g.2xlarge>,
+C<cache.m6g.4xlarge>, C<cache.m6g.8xlarge>, C<cache.m6g.12xlarge>,
+C<cache.m6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+
 B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
 C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
 C<cache.m5.24xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
+
+B<T3 node types:> C<cache.t3.micro>, C<cache.t3.small>,
+C<cache.t3.medium>
 
 B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>
@@ -236,6 +253,16 @@ Memory optimized:
 =item *
 
 Current generation:
+
+B<R6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.r6g.large>, C<cache.r6g.xlarge>, C<cache.r6g.2xlarge>,
+C<cache.r6g.4xlarge>, C<cache.r6g.8xlarge>, C<cache.r6g.12xlarge>,
+C<cache.r6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 
 B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
 C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,
@@ -342,6 +369,12 @@ replication group and create it anew with the earlier engine version.
 
 
 
+=head2 LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]
+
+Specifies the destination, format and type of the logs.
+
+
+
 =head2 NotificationTopicArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
@@ -356,14 +389,21 @@ The Amazon SNS topic owner must be the same as the cluster owner.
 The initial number of cache nodes that the cluster has.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
-If you need more than 20 nodes for your Memcached cluster, please fill
+If you need more than 40 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request/
 (http://aws.amazon.com/contact-us/elasticache-node-limit-request/).
 
 
+
+=head2 OutpostMode => Str
+
+Specifies whether the nodes in the cluster are created in a single
+outpost or across multiple outposts.
+
+Valid values are: C<"single-outpost">, C<"cross-outpost">
 
 =head2 Port => Int
 
@@ -375,9 +415,9 @@ The port number on which each of the cache nodes accepts connections.
 
 The EC2 Availability Zone in which the cluster is created.
 
-All nodes belonging to this Memcached cluster are placed in the
-preferred Availability Zone. If you want to create your nodes across
-multiple Availability Zones, use C<PreferredAvailabilityZones>.
+All nodes belonging to this cluster are placed in the preferred
+Availability Zone. If you want to create your nodes across multiple
+Availability Zones, use C<PreferredAvailabilityZones>.
 
 Default: System chosen Availability Zone.
 
@@ -412,46 +452,17 @@ is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
 
-Specifies the weekly time range during which maintenance on the cluster
-is performed. It is specified as a range in the format
-ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period.
 
-Valid values for C<ddd> are:
 
-=over
+=head2 PreferredOutpostArn => Str
 
-=item *
+The outpost ARN in which the cache cluster is created.
 
-C<sun>
 
-=item *
 
-C<mon>
+=head2 PreferredOutpostArns => ArrayRef[Str|Undef]
 
-=item *
-
-C<tue>
-
-=item *
-
-C<wed>
-
-=item *
-
-C<thu>
-
-=item *
-
-C<fri>
-
-=item *
-
-C<sat>
-
-=back
-
-Example: C<sun:23:00-mon:01:30>
+The outpost ARNs in which the cache cluster is created.
 
 
 
@@ -533,7 +544,7 @@ This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-A list of cost allocation tags to be added to this resource.
+A list of tags to be added to this resource.
 
 
 

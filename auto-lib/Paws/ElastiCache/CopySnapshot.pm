@@ -3,6 +3,7 @@ package Paws::ElastiCache::CopySnapshot;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has SourceSnapshotName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
   has TargetBucket => (is => 'ro', isa => 'Str');
   has TargetSnapshotName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -30,11 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # CopySnapshot
+    # Copies a snapshot to a specified name.
     my $CopySnapshotResult = $elasticache->CopySnapshot(
-      SourceSnapshotName => 'MyString',
-      TargetSnapshotName => 'MyString',
-      KmsKeyId           => 'MyString',    # OPTIONAL
-      TargetBucket       => 'MyString',    # OPTIONAL
+      'SourceSnapshotName' => 'my-snapshot',
+      'TargetBucket'       => '',
+      'TargetSnapshotName' => 'my-snapshot-copy'
     );
 
     # Results:
@@ -60,6 +62,14 @@ The name of an existing snapshot from which to make a copy.
 
 
 
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
+
+
+
 =head2 TargetBucket => Str
 
 The Amazon S3 bucket to which the snapshot is exported. This parameter
@@ -73,7 +83,7 @@ Bucket
 in the I<Amazon ElastiCache User Guide>.
 
 For more information, see Exporting a Snapshot
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
 in the I<Amazon ElastiCache User Guide>.
 
 

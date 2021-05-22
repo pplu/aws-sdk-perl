@@ -3,8 +3,10 @@ package Paws::ElastiCache::NodeGroupConfiguration;
   use Moose;
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has PrimaryAvailabilityZone => (is => 'ro', isa => 'Str');
+  has PrimaryOutpostArn => (is => 'ro', isa => 'Str');
   has ReplicaAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has ReplicaCount => (is => 'ro', isa => 'Int');
+  has ReplicaOutpostArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'OutpostArn', traits => ['NameInRequest']);
   has Slots => (is => 'ro', isa => 'Str');
 
 1;
@@ -56,6 +58,11 @@ The Availability Zone where the primary node of this node group (shard)
 is launched.
 
 
+=head2 PrimaryOutpostArn => Str
+
+The outpost ARN of the primary node.
+
+
 =head2 ReplicaAvailabilityZones => ArrayRef[Str|Undef]
 
 A list of Availability Zones to be used for the read replicas. The
@@ -66,6 +73,11 @@ C<ReplicaCount> or C<ReplicasPerNodeGroup> if not specified.
 =head2 ReplicaCount => Int
 
 The number of read replica nodes in this node group (shard).
+
+
+=head2 ReplicaOutpostArns => ArrayRef[Str|Undef]
+
+The outpost ARN of the node replicas.
 
 
 =head2 Slots => Str

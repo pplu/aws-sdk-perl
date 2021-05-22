@@ -5,6 +5,7 @@ package Paws::ElastiCache::CreateSnapshot;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,11 +31,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+   # CreateSnapshot - NonClustered Redis, no read-replicas
+   # Creates a snapshot of a non-clustered Redis cluster that has only one node.
     my $CreateSnapshotResult = $elasticache->CreateSnapshot(
-      SnapshotName       => 'MyString',
-      CacheClusterId     => 'MyString',    # OPTIONAL
-      KmsKeyId           => 'MyString',    # OPTIONAL
-      ReplicationGroupId => 'MyString',    # OPTIONAL
+      'CacheClusterId' => 'onenoderedis',
+      'SnapshotName'   => 'snapshot-1'
+    );
+
+    # Results:
+    my $Snapshot = $CreateSnapshotResult->Snapshot;
+
+    # Returns a L<Paws::ElastiCache::CreateSnapshotResult> object.
+    # CreateSnapshot - NonClustered Redis, 2 read-replicas
+    # Creates a snapshot of a non-clustered Redis cluster that has only three
+    # nodes, primary and two read-replicas. CacheClusterId must be a specific
+    # node in the cluster.
+    my $CreateSnapshotResult = $elasticache->CreateSnapshot(
+      'CacheClusterId' => 'threenoderedis-001',
+      'SnapshotName'   => 'snapshot-2'
+    );
+
+    # Results:
+    my $Snapshot = $CreateSnapshotResult->Snapshot;
+
+    # Returns a L<Paws::ElastiCache::CreateSnapshotResult> object.
+    # CreateSnapshot-clustered Redis
+    # Creates a snapshot of a clustered Redis cluster that has 2 shards, each
+    # with a primary and 4 read-replicas.
+    my $CreateSnapshotResult = $elasticache->CreateSnapshot(
+      'ReplicationGroupId' => 'clusteredredis',
+      'SnapshotName'       => 'snapshot-2x5'
     );
 
     # Results:
@@ -71,6 +97,14 @@ created from this replication group.
 =head2 B<REQUIRED> SnapshotName => Str
 
 A name for the snapshot being created.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 

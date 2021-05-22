@@ -5,6 +5,7 @@ package Paws::ElastiCache::PendingModifiedValues;
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CacheNodeId', traits => ['NameInRequest']);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has LogDeliveryConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::PendingLogDeliveryConfiguration]');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
 
 1;
@@ -66,12 +67,17 @@ to.
 The new cache engine version that the cluster runs.
 
 
+=head2 LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::PendingLogDeliveryConfiguration>]
+
+The log delivery configurations being modified
+
+
 =head2 NumCacheNodes => Int
 
 The new number of cache nodes for the cluster.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
 
 

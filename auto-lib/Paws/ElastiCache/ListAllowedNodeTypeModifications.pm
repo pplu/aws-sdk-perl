@@ -28,15 +28,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # ListAllowedNodeTypeModifications
+    # Lists all available node types that you can scale your Redis cluster's or
+    # replication group's current node type up to.
     my $AllowedNodeTypeModificationsMessage =
       $elasticache->ListAllowedNodeTypeModifications(
-      CacheClusterId     => 'MyString',    # OPTIONAL
-      ReplicationGroupId => 'MyString',    # OPTIONAL
-      );
+      'ReplicationGroupId' => 'myreplgroup' );
 
     # Results:
-    my $ScaleDownModifications =
-      $AllowedNodeTypeModificationsMessage->ScaleDownModifications;
+    my $ScaleUpModifications =
+      $AllowedNodeTypeModificationsMessage->ScaleUpModifications;
+
+   # Returns a L<Paws::ElastiCache::AllowedNodeTypeModificationsMessage> object.
+   # ListAllowedNodeTypeModifications
+   # Lists all available node types that you can scale your Redis cluster's or
+   # replication group's current node type up to.
+    my $AllowedNodeTypeModificationsMessage =
+      $elasticache->ListAllowedNodeTypeModifications(
+      'CacheClusterId' => 'mycluster' );
+
+    # Results:
     my $ScaleUpModifications =
       $AllowedNodeTypeModificationsMessage->ScaleUpModifications;
 

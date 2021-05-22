@@ -5,6 +5,7 @@ package Paws::ElastiCache::NodeGroupMember;
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CurrentRole => (is => 'ro', isa => 'Str');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
+  has PreferredOutpostArn => (is => 'ro', isa => 'Str');
   has ReadEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
 
 1;
@@ -63,6 +64,11 @@ disabled) replication groups.
 =head2 PreferredAvailabilityZone => Str
 
 The name of the Availability Zone in which the node is located.
+
+
+=head2 PreferredOutpostArn => Str
+
+The outpost ARN of the node group member.
 
 
 =head2 ReadEndpoint => L<Paws::ElastiCache::Endpoint>

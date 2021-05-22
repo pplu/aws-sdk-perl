@@ -10,17 +10,22 @@ package Paws::ElastiCache::ModifyReplicationGroup;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has LogDeliveryConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::LogDeliveryConfigurationRequest]');
+  has MultiAZEnabled => (is => 'ro', isa => 'Bool');
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
+  has RemoveUserGroups => (is => 'ro', isa => 'Bool');
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
+  has UserGroupIdsToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UserGroupIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -46,27 +51,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # ModifyReplicationGroup
     my $ModifyReplicationGroupResult = $elasticache->ModifyReplicationGroup(
-      ReplicationGroupId          => 'MyString',
-      ApplyImmediately            => 1,                      # OPTIONAL
-      AuthToken                   => 'MyString',             # OPTIONAL
-      AuthTokenUpdateStrategy     => 'SET',                  # OPTIONAL
-      AutoMinorVersionUpgrade     => 1,                      # OPTIONAL
-      AutomaticFailoverEnabled    => 1,                      # OPTIONAL
-      CacheNodeType               => 'MyString',             # OPTIONAL
-      CacheParameterGroupName     => 'MyString',             # OPTIONAL
-      CacheSecurityGroupNames     => [ 'MyString', ... ],    # OPTIONAL
-      EngineVersion               => 'MyString',             # OPTIONAL
-      NodeGroupId                 => 'MyString',             # OPTIONAL
-      NotificationTopicArn        => 'MyString',             # OPTIONAL
-      NotificationTopicStatus     => 'MyString',             # OPTIONAL
-      PreferredMaintenanceWindow  => 'MyString',             # OPTIONAL
-      PrimaryClusterId            => 'MyString',             # OPTIONAL
-      ReplicationGroupDescription => 'MyString',             # OPTIONAL
-      SecurityGroupIds            => [ 'MyString', ... ],    # OPTIONAL
-      SnapshotRetentionLimit      => 1,                      # OPTIONAL
-      SnapshotWindow              => 'MyString',             # OPTIONAL
-      SnapshottingClusterId       => 'MyString',             # OPTIONAL
+      'ApplyImmediately'            => 1,
+      'ReplicationGroupDescription' => 'Modified replication group',
+      'ReplicationGroupId'          => 'my-redis-rg',
+      'SnapshotRetentionLimit'      => 30,
+      'SnapshottingClusterId'       => 'my-redis-rg-001'
     );
 
     # Results:
@@ -143,9 +134,9 @@ Set
 =back
 
 For more information, see Authenticating Users with Redis AUTH
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
 
-Valid values are: C<"SET">, C<"ROTATE">
+Valid values are: C<"SET">, C<"ROTATE">, C<"DELETE">
 
 =head2 AutomaticFailoverEnabled => Bool
 
@@ -153,26 +144,6 @@ Determines whether a read replica is automatically promoted to
 read/write primary if the existing primary encounters a failure.
 
 Valid values: C<true> | C<false>
-
-Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-failover on:
-
-=over
-
-=item *
-
-Redis versions earlier than 2.8.6.
-
-=item *
-
-Redis (cluster mode disabled): T1 node types.
-
-=item *
-
-Redis (cluster mode enabled): T1 node types.
-
-=back
-
 
 
 
@@ -224,6 +195,20 @@ a Cache Engine and Version
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.
+
+
+
+=head2 LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]
+
+Specifies the destination, format and type of the logs.
+
+
+
+=head2 MultiAZEnabled => Bool
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 
@@ -305,6 +290,12 @@ in the replication group are read replicas.
 
 
 
+=head2 RemoveUserGroups => Bool
+
+Removes the user groups that can access this replication group.
+
+
+
 =head2 ReplicationGroupDescription => Str
 
 A description for the replication group. Maximum length is 255
@@ -358,6 +349,19 @@ Example: C<05:00-09:00>
 
 If you do not specify this parameter, ElastiCache automatically chooses
 an appropriate time range.
+
+
+
+=head2 UserGroupIdsToAdd => ArrayRef[Str|Undef]
+
+The user group you are associating with the replication group.
+
+
+
+=head2 UserGroupIdsToRemove => ArrayRef[Str|Undef]
+
+The user group to remove, meaning the users in the group no longer can
+access the replication group.
 
 
 

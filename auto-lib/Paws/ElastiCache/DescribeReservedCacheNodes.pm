@@ -34,22 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    my $ReservedCacheNodeMessage = $elasticache->DescribeReservedCacheNodes(
-      CacheNodeType                => 'MyString',    # OPTIONAL
-      Duration                     => 'MyString',    # OPTIONAL
-      Marker                       => 'MyString',    # OPTIONAL
-      MaxRecords                   => 1,             # OPTIONAL
-      OfferingType                 => 'MyString',    # OPTIONAL
-      ProductDescription           => 'MyString',    # OPTIONAL
-      ReservedCacheNodeId          => 'MyString',    # OPTIONAL
-      ReservedCacheNodesOfferingId => 'MyString',    # OPTIONAL
-    );
+   # DescribeReservedCacheNodes
+   # Returns information about reserved cache nodes for this account, or about a
+   # specified reserved cache node. If the account has no reserved cache nodes,
+   # the operation returns an empty list, as shown here.
+    my $ReservedCacheNodeMessage =
+      $elasticache->DescribeReservedCacheNodes( 'MaxRecords' => 25 );
 
-    # Results:
-    my $Marker             = $ReservedCacheNodeMessage->Marker;
-    my $ReservedCacheNodes = $ReservedCacheNodeMessage->ReservedCacheNodes;
-
-    # Returns a L<Paws::ElastiCache::ReservedCacheNodeMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/DescribeReservedCacheNodes>
@@ -79,12 +70,25 @@ General purpose:
 
 Current generation:
 
+B<M6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.m6g.large>, C<cache.m6g.xlarge>, C<cache.m6g.2xlarge>,
+C<cache.m6g.4xlarge>, C<cache.m6g.8xlarge>, C<cache.m6g.12xlarge>,
+C<cache.m6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+
 B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
 C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
 C<cache.m5.24xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
+
+B<T3 node types:> C<cache.t3.micro>, C<cache.t3.small>,
+C<cache.t3.medium>
 
 B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>
@@ -126,6 +130,16 @@ Memory optimized:
 =item *
 
 Current generation:
+
+B<R6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.r6g.large>, C<cache.r6g.xlarge>, C<cache.r6g.2xlarge>,
+C<cache.r6g.4xlarge>, C<cache.r6g.8xlarge>, C<cache.r6g.12xlarge>,
+C<cache.r6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 
 B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
 C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,
@@ -214,7 +228,7 @@ The offering type filter value. Use this parameter to show only the
 available offerings matching the specified offering type.
 
 Valid values: C<"Light Utilization"|"Medium Utilization"|"Heavy
-Utilization">
+Utilization"|"All Upfront"|"Partial Upfront"| "No Upfront">
 
 
 

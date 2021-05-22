@@ -12,6 +12,7 @@ package Paws::ElastiCache::ModifyCacheCluster;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has LogDeliveryConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::LogDeliveryConfigurationRequest]');
   has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
@@ -45,26 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # ModifyCacheCluster
+    # Copies a snapshot to a specified name.
     my $ModifyCacheClusterResult = $elasticache->ModifyCacheCluster(
-      CacheClusterId             => 'MyString',
-      AZMode                     => 'single-az',            # OPTIONAL
-      ApplyImmediately           => 1,                      # OPTIONAL
-      AuthToken                  => 'MyString',             # OPTIONAL
-      AuthTokenUpdateStrategy    => 'SET',                  # OPTIONAL
-      AutoMinorVersionUpgrade    => 1,                      # OPTIONAL
-      CacheNodeIdsToRemove       => [ 'MyString', ... ],    # OPTIONAL
-      CacheNodeType              => 'MyString',             # OPTIONAL
-      CacheParameterGroupName    => 'MyString',             # OPTIONAL
-      CacheSecurityGroupNames    => [ 'MyString', ... ],    # OPTIONAL
-      EngineVersion              => 'MyString',             # OPTIONAL
-      NewAvailabilityZones       => [ 'MyString', ... ],    # OPTIONAL
-      NotificationTopicArn       => 'MyString',             # OPTIONAL
-      NotificationTopicStatus    => 'MyString',             # OPTIONAL
-      NumCacheNodes              => 1,                      # OPTIONAL
-      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
-      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
-      SnapshotRetentionLimit     => 1,                      # OPTIONAL
-      SnapshotWindow             => 'MyString',             # OPTIONAL
+      'ApplyImmediately'       => 1,
+      'CacheClusterId'         => 'redis-cluster',
+      'SnapshotRetentionLimit' => 14
     );
 
     # Results:
@@ -144,9 +131,9 @@ Set
 =back
 
 For more information, see Authenticating Users with Redis AUTH
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
 
-Valid values are: C<"SET">, C<"ROTATE">
+Valid values are: C<"SET">, C<"ROTATE">, C<"DELETE">
 
 =head2 AutoMinorVersionUpgrade => Bool
 
@@ -236,7 +223,15 @@ create it anew with the earlier engine version.
 
 
 
+=head2 LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]
+
+Specifies the destination, format and type of the logs.
+
+
+
 =head2 NewAvailabilityZones => ArrayRef[Str|Undef]
+
+This option is only supported on Memcached clusters.
 
 The list of Availability Zones where the new Memcached cache nodes are
 created.
@@ -246,8 +241,6 @@ greater than the sum of the number of active cache nodes and the number
 of cache nodes pending creation (which may be zero). The number of
 Availability Zones supplied in this list must match the cache nodes
 being added in this request.
-
-This option is only supported on Memcached clusters.
 
 Scenarios:
 
@@ -413,7 +406,7 @@ C<CacheNodeIdsToRemove> parameter to provide the IDs of the specific
 cache nodes to remove.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
 Adding or removing Memcached cache nodes can be applied immediately or
 as a pending operation (see C<ApplyImmediately>).

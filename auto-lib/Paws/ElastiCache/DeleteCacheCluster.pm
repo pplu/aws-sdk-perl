@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    my $DeleteCacheClusterResult = $elasticache->DeleteCacheCluster(
-      CacheClusterId          => 'MyString',
-      FinalSnapshotIdentifier => 'MyString',    # OPTIONAL
-    );
+    # DeleteCacheCluster
+    # Deletes an Amazon ElastiCache cluster.
+    my $DeleteCacheClusterResult =
+      $elasticache->DeleteCacheCluster( 'CacheClusterId' => 'my-memcached' );
 
     # Results:
     my $CacheCluster = $DeleteCacheClusterResult->CacheCluster;

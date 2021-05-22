@@ -28,10 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # RebootCacheCluster
+    # Reboots the specified nodes in the names cluster.
     my $RebootCacheClusterResult = $elasticache->RebootCacheCluster(
-      CacheClusterId       => 'MyString',
-      CacheNodeIdsToReboot => [ 'MyString', ... ],
-
+      'CacheClusterId'       => 'custom-mem1-4  ',
+      'CacheNodeIdsToReboot' => [ 0001, 0002 ]
     );
 
     # Results:

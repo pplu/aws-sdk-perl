@@ -3,6 +3,7 @@ package Paws::ElastiCache::Subnet;
   use Moose;
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::ElastiCache::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
+  has SubnetOutpost => (is => 'ro', isa => 'Paws::ElastiCache::SubnetOutpost');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::Subnet object:
 
-  $service_obj->Method(Att1 => { SubnetAvailabilityZone => $value, ..., SubnetIdentifier => $value  });
+  $service_obj->Method(Att1 => { SubnetAvailabilityZone => $value, ..., SubnetOutpost => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,6 +50,11 @@ The Availability Zone associated with the subnet.
 =head2 SubnetIdentifier => Str
 
 The unique identifier for the subnet.
+
+
+=head2 SubnetOutpost => L<Paws::ElastiCache::SubnetOutpost>
+
+The outpost ARN of the subnet.
 
 
 

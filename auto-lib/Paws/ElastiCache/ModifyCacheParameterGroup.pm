@@ -28,17 +28,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+   # ModifyCacheParameterGroup
+   # Modifies one or more parameter values in the specified parameter group. You
+   # cannot modify any default parameter group.
     my $CacheParameterGroupNameMessage =
       $elasticache->ModifyCacheParameterGroup(
-      CacheParameterGroupName => 'MyString',
-      ParameterNameValues     => [
-        {
-          ParameterName  => 'MyString',
-          ParameterValue => 'MyString',
-        },
-        ...
-      ],
+      'CacheParameterGroupName' => 'custom-mem1-4',
+      'ParameterNameValues'     => [
 
+        {
+          'ParameterName'  => 'binding_protocol',
+          'ParameterValue' => 'ascii'
+        },
+
+        {
+          'ParameterName'  => 'chunk_size',
+          'ParameterValue' => 96
+        }
+      ]
       );
 
     # Results:

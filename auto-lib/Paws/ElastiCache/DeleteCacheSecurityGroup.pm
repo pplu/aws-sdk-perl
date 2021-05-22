@@ -27,10 +27,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DeleteCacheSecurityGroup
+    # Deletes a cache security group.
     $elasticache->DeleteCacheSecurityGroup(
-      CacheSecurityGroupName => 'MyString',
+      'CacheSecurityGroupName' => 'my-sec-group' );
 
-    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/DeleteCacheSecurityGroup>

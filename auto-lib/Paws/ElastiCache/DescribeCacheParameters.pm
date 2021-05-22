@@ -30,16 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DescribeCacheParameters
+    # Lists up to 100 user parameter values for the parameter group
+    # custom.redis2.8.
     my $CacheParameterGroupDetails = $elasticache->DescribeCacheParameters(
-      CacheParameterGroupName => 'MyString',
-      Marker                  => 'MyString',    # OPTIONAL
-      MaxRecords              => 1,             # OPTIONAL
-      Source                  => 'MyString',    # OPTIONAL
+      'CacheParameterGroupName' => 'custom-redis2-8',
+      'MaxRecords'              => 100,
+      'Source'                  => 'user'
     );
 
     # Results:
-    my $CacheNodeTypeSpecificParameters =
-      $CacheParameterGroupDetails->CacheNodeTypeSpecificParameters;
     my $Marker     = $CacheParameterGroupDetails->Marker;
     my $Parameters = $CacheParameterGroupDetails->Parameters;
 
