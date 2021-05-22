@@ -94,9 +94,25 @@ constraint type as follows:
 
 =item LAUNCH
 
+You are required to specify either the C<RoleArn> or the
+C<LocalRoleName> but can't use both.
+
 Specify the C<RoleArn> property as follows:
 
 C<{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}>
+
+Specify the C<LocalRoleName> property as follows:
+
+C<{"LocalRoleName": "SCBasicLaunchRole"}>
+
+If you specify the C<LocalRoleName> property, when an account uses the
+launch constraint, the IAM role with that name in the account will be
+used. This allows launch-role constraints to be account-agnostic so the
+administrator can create fewer resources per shared account.
+
+The given role name must exist in the account used to create the launch
+constraint and the account of the user who launches a product with this
+launch constraint.
 
 You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
 

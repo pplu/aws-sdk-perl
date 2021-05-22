@@ -5,7 +5,10 @@ package Paws::ServiceCatalog::ProvisionedProductDetail;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
+  has LastProvisioningRecordId => (is => 'ro', isa => 'Str');
   has LastRecordId => (is => 'ro', isa => 'Str');
+  has LastSuccessfulProvisioningRecordId => (is => 'ro', isa => 'Str');
+  has LaunchRoleArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str');
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
@@ -70,10 +73,69 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.
 
 
+=head2 LastProvisioningRecordId => Str
+
+The record identifier of the last request performed on this provisioned
+product of the following types:
+
+=over
+
+=item *
+
+ProvisionedProduct
+
+=item *
+
+UpdateProvisionedProduct
+
+=item *
+
+ExecuteProvisionedProductPlan
+
+=item *
+
+TerminateProvisionedProduct
+
+=back
+
+
+
 =head2 LastRecordId => Str
 
 The record identifier of the last request performed on this provisioned
 product.
+
+
+=head2 LastSuccessfulProvisioningRecordId => Str
+
+The record identifier of the last successful request performed on this
+provisioned product of the following types:
+
+=over
+
+=item *
+
+ProvisionedProduct
+
+=item *
+
+UpdateProvisionedProduct
+
+=item *
+
+ExecuteProvisionedProductPlan
+
+=item *
+
+TerminateProvisionedProduct
+
+=back
+
+
+
+=head2 LaunchRoleArn => Str
+
+The ARN of the launch role associated with the provisioned product.
 
 
 =head2 Name => Str

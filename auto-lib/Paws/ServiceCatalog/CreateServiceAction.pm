@@ -86,8 +86,11 @@ The self-service action definition. Can be one of the following:
 
 =item Name
 
-The name of the AWS Systems Manager Document. For example,
-C<AWS-RestartEC2Instance>.
+The name of the AWS Systems Manager document (SSM document). For
+example, C<AWS-RestartEC2Instance>.
+
+If you are using a shared SSM document, you must provide the ARN
+instead of the name.
 
 =item Version
 

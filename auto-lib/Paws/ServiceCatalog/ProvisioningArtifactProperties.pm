@@ -57,11 +57,20 @@ provisioning artifact even if it is invalid.
 
 =head2 B<REQUIRED> Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
+Specify the template source with one of the following options, but not
+both. Keys accepted: [ C<LoadTemplateFromURL>, C<ImportFromPhysicalId>
+]
+
 The URL of the CloudFormation template in Amazon S3. Specify the URL in
 JSON format as follows:
 
 C<"LoadTemplateFromURL":
 "https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/...">
+
+C<ImportFromPhysicalId>: The physical id of the resource that contains
+the template. Currently only supports CloudFormation stack arn. Specify
+the physical id in JSON format as follows: C<ImportFromPhysicalId:
+E<ldquo>arn:aws:cloudformation:[us-east-1]:[accountId]:stack/[StackName]/[resourceId]>
 
 
 =head2 Name => Str

@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::TerminateProvisionedProduct;
   has IgnoreErrors => (is => 'ro', isa => 'Bool');
   has ProvisionedProductId => (is => 'ro', isa => 'Str');
   has ProvisionedProductName => (is => 'ro', isa => 'Str');
+  has RetainPhysicalResources => (is => 'ro', isa => 'Bool');
   has TerminateToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,11 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $TerminateProvisionedProductOutput =
       $servicecatalog->TerminateProvisionedProduct(
-      TerminateToken         => 'MyIdempotencyToken',
-      AcceptLanguage         => 'MyAcceptLanguage',                 # OPTIONAL
-      IgnoreErrors           => 1,                                  # OPTIONAL
-      ProvisionedProductId   => 'MyId',                             # OPTIONAL
-      ProvisionedProductName => 'MyProvisionedProductNameOrArn',    # OPTIONAL
+      TerminateToken          => 'MyIdempotencyToken',
+      AcceptLanguage          => 'MyAcceptLanguage',                 # OPTIONAL
+      IgnoreErrors            => 1,                                  # OPTIONAL
+      ProvisionedProductId    => 'MyId',                             # OPTIONAL
+      ProvisionedProductName  => 'MyProvisionedProductNameOrArn',    # OPTIONAL
+      RetainPhysicalResources => 1,                                  # OPTIONAL
       );
 
     # Results:
@@ -92,6 +94,16 @@ C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 The name of the provisioned product. You cannot specify both
 C<ProvisionedProductName> and C<ProvisionedProductId>.
+
+
+
+=head2 RetainPhysicalResources => Bool
+
+When this boolean parameter is set to true, the
+C<TerminateProvisionedProduct> API deletes the Service Catalog
+provisioned product. However, it does not remove the CloudFormation
+stack, stack set, or the underlying resources of the deleted
+provisioned product. The default value is false.
 
 
 

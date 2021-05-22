@@ -2,6 +2,7 @@
 package Paws::ServiceCatalog::DescribeProvisioningParametersOutput;
   use Moose;
   has ConstraintSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ConstraintSummary]');
+  has ProvisioningArtifactOutputs => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifactOutput]');
   has ProvisioningArtifactParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifactParameter]');
   has ProvisioningArtifactPreferences => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactPreferences');
   has TagOptions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::TagOptionSummary]');
@@ -21,6 +22,11 @@ Paws::ServiceCatalog::DescribeProvisioningParametersOutput
 =head2 ConstraintSummaries => ArrayRef[L<Paws::ServiceCatalog::ConstraintSummary>]
 
 Information about the constraints used to provision the product.
+
+
+=head2 ProvisioningArtifactOutputs => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifactOutput>]
+
+The output of the provisioning artifact.
 
 
 =head2 ProvisioningArtifactParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifactParameter>]

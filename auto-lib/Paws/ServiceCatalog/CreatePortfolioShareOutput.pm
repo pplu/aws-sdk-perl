@@ -16,7 +16,7 @@ Paws::ServiceCatalog::CreatePortfolioShareOutput
 
 =head2 PortfolioShareToken => Str
 
-The portfolio share unique identifier. This will only be returned if
+The portfolio shares a unique identifier that only returns if the
 portfolio is shared to an organization node.
 
 

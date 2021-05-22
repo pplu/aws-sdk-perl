@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProvisionedProductId         => 'MyId',
       ProvisionedProductProperties => {
         'OWNER' => 'MyPropertyValue'
-        ,    # key: values: OWNERmin: 1, max: 128, value: min: 1, max: 1024
+        ,    # key: values: OWNER, LAUNCH_ROLEmin: 1, max: 128, value: max: 1024
       },
       AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
       );
@@ -97,9 +97,17 @@ The identifier of the provisioned product.
 
 A map that contains the provisioned product properties to be updated.
 
-The C<OWNER> key only accepts user ARNs. The owner is the user that is
-allowed to see, update, terminate, and execute service actions in the
-provisioned product.
+The C<LAUNCH_ROLE> key accepts role ARNs. This key allows an
+administrator to call C<UpdateProvisionedProductProperties> to update
+the launch role that is associated with a provisioned product. This
+role is used when an end user calls a provisioning operation such as
+C<UpdateProvisionedProduct>, C<TerminateProvisionedProduct>, or
+C<ExecuteProvisionedProductServiceAction>. Only a role ARN is valid. A
+user ARN is invalid.
+
+The C<OWNER> key accepts user ARNs and role ARNs. The owner is the user
+that has permission to see, update, terminate, and execute service
+actions in the provisioned product.
 
 The administrator can change the owner of a provisioned product to
 another IAM user within the same account. Both end user owners and

@@ -3,8 +3,11 @@ package Paws::ServiceCatalog::DescribeProvisioningParameters;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has PathId => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
+  has PathName => (is => 'ro', isa => 'Str');
+  has ProductId => (is => 'ro', isa => 'Str');
+  has ProductName => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,15 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DescribeProvisioningParametersOutput =
       $servicecatalog->DescribeProvisioningParameters(
-      ProductId              => 'MyId',
-      ProvisioningArtifactId => 'MyId',
-      AcceptLanguage         => 'MyAcceptLanguage',    # OPTIONAL
-      PathId                 => 'MyId',                # OPTIONAL
+      AcceptLanguage           => 'MyAcceptLanguage',              # OPTIONAL
+      PathId                   => 'MyId',                          # OPTIONAL
+      PathName                 => 'MyPortfolioDisplayName',        # OPTIONAL
+      ProductId                => 'MyId',                          # OPTIONAL
+      ProductName              => 'MyProductViewName',             # OPTIONAL
+      ProvisioningArtifactId   => 'MyId',                          # OPTIONAL
+      ProvisioningArtifactName => 'MyProvisioningArtifactName',    # OPTIONAL
       );
 
     # Results:
     my $ConstraintSummaries =
       $DescribeProvisioningParametersOutput->ConstraintSummaries;
+    my $ProvisioningArtifactOutputs =
+      $DescribeProvisioningParametersOutput->ProvisioningArtifactOutputs;
     my $ProvisioningArtifactParameters =
       $DescribeProvisioningParametersOutput->ProvisioningArtifactParameters;
     my $ProvisioningArtifactPreferences =
@@ -84,19 +92,41 @@ C<zh> - Chinese
 
 The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths.
+one path. To list the paths for a product, use ListLaunchPaths. You
+must provide the name or ID, but not both.
 
 
 
-=head2 B<REQUIRED> ProductId => Str
+=head2 PathName => Str
 
-The product identifier.
+The name of the path. You must provide the name or ID, but not both.
 
 
 
-=head2 B<REQUIRED> ProvisioningArtifactId => Str
+=head2 ProductId => Str
 
-The identifier of the provisioning artifact.
+The product identifier. You must provide the product name or ID, but
+not both.
+
+
+
+=head2 ProductName => Str
+
+The name of the product. You must provide the name or ID, but not both.
+
+
+
+=head2 ProvisioningArtifactId => Str
+
+The identifier of the provisioning artifact. You must provide the name
+or ID, but not both.
+
+
+
+=head2 ProvisioningArtifactName => Str
+
+The name of the provisioning artifact. You must provide the name or ID,
+but not both.
 
 
 

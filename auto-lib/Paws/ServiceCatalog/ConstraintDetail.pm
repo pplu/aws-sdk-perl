@@ -4,6 +4,8 @@ package Paws::ServiceCatalog::ConstraintDetail;
   has ConstraintId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
+  has PortfolioId => (is => 'ro', isa => 'Str');
+  has ProductId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 
 1;
@@ -54,6 +56,20 @@ The description of the constraint.
 =head2 Owner => Str
 
 The owner of the constraint.
+
+
+=head2 PortfolioId => Str
+
+The identifier of the portfolio the product resides in. The constraint
+applies only to the instance of the product that lives within this
+portfolio.
+
+
+=head2 ProductId => Str
+
+The identifier of the product the constraint applies to. Note that a
+constraint applies to a specific instance of a product within a certain
+portfolio.
 
 
 =head2 Type => Str

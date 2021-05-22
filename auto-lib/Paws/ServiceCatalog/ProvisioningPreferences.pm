@@ -40,12 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 The user-defined preferences that will be applied when updating a
 provisioned product. Not all preferences are applicable to all
-provisioned product types.
-
-=head1 ATTRIBUTES
-
-
-=head2 StackSetAccounts => ArrayRef[Str|Undef]
+provisioned product type
 
 One or more AWS accounts that will have access to the provisioned
 product.
@@ -57,6 +52,23 @@ C<STACKSET> constraint. To get the list of accounts in the C<STACKSET>
 constraint, use the C<DescribeProvisioningParameters> operation.
 
 If no values are specified, the default value is all accounts from the
+C<STACKSET> constraint.
+
+=head1 ATTRIBUTES
+
+
+=head2 StackSetAccounts => ArrayRef[Str|Undef]
+
+One or more AWS accounts where the provisioned product will be
+available.
+
+Applicable only to a C<CFN_STACKSET> provisioned product type.
+
+The specified accounts should be within the list of accounts from the
+C<STACKSET> constraint. To get the list of accounts in the C<STACKSET>
+constraint, use the C<DescribeProvisioningParameters> operation.
+
+If no values are specified, the default value is all acounts from the
 C<STACKSET> constraint.
 
 

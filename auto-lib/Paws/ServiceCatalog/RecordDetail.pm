@@ -2,6 +2,7 @@
 package Paws::ServiceCatalog::RecordDetail;
   use Moose;
   has CreatedTime => (is => 'ro', isa => 'Str');
+  has LaunchRoleArn => (is => 'ro', isa => 'Str');
   has PathId => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str');
   has ProvisionedProductId => (is => 'ro', isa => 'Str');
@@ -53,6 +54,11 @@ Information about a request operation.
 =head2 CreatedTime => Str
 
 The UTC time stamp of the creation time.
+
+
+=head2 LaunchRoleArn => Str
+
+The ARN of the launch role associated with the provisioned product.
 
 
 =head2 PathId => Str

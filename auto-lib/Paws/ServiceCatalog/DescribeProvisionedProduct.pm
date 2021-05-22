@@ -2,7 +2,8 @@
 package Paws::ServiceCatalog::DescribeProvisionedProduct;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DescribeProvisionedProductOutput =
       $servicecatalog->DescribeProvisionedProduct(
-      Id             => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      AcceptLanguage => 'MyAcceptLanguage',            # OPTIONAL
+      Id             => 'MyId',                        # OPTIONAL
+      Name           => 'MyProvisionedProductName',    # OPTIONAL
       );
 
     # Results:
@@ -71,9 +73,23 @@ C<zh> - Chinese
 
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
-The provisioned product identifier.
+The provisioned product identifier. You must provide the name or ID,
+but not both.
+
+If you do not provide a name or ID, or you provide both name and ID, an
+C<InvalidParametersException> will occur.
+
+
+
+=head2 Name => Str
+
+The name of the provisioned product. You must provide the name or ID,
+but not both.
+
+If you do not provide a name or ID, or you provide both name and ID, an
+C<InvalidParametersException> will occur.
 
 
 

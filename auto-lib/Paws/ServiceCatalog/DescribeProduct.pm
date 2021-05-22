@@ -2,7 +2,8 @@
 package Paws::ServiceCatalog::DescribeProduct;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,12 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DescribeProductOutput = $servicecatalog->DescribeProduct(
-      Id             => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      AcceptLanguage => 'MyAcceptLanguage',     # OPTIONAL
+      Id             => 'MyId',                 # OPTIONAL
+      Name           => 'MyProductViewName',    # OPTIONAL
     );
 
     # Results:
     my $Budgets               = $DescribeProductOutput->Budgets;
+    my $LaunchPaths           = $DescribeProductOutput->LaunchPaths;
     my $ProductViewSummary    = $DescribeProductOutput->ProductViewSummary;
     my $ProvisioningArtifacts = $DescribeProductOutput->ProvisioningArtifacts;
 
@@ -69,9 +72,15 @@ C<zh> - Chinese
 
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
 The product identifier.
+
+
+
+=head2 Name => Str
+
+The product name.
 
 
 
