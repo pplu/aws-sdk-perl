@@ -3,6 +3,7 @@ package Paws::Backup::BackupRule;
   use Moose;
   has CompletionWindowMinutes => (is => 'ro', isa => 'Int');
   has CopyActions => (is => 'ro', isa => 'ArrayRef[Paws::Backup::CopyAction]');
+  has EnableContinuousBackup => (is => 'ro', isa => 'Bool');
   has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
   has RecoveryPointTags => (is => 'ro', isa => 'Paws::Backup::Tags');
   has RuleId => (is => 'ro', isa => 'Str');
@@ -49,7 +50,7 @@ Specifies a scheduled task used to back up a selection of resources.
 =head2 CompletionWindowMinutes => Int
 
 A value in minutes after a backup job is successfully started before it
-must be completed or it is canceled by AWS Backup. This value is
+must be completed or it will be canceled by AWS Backup. This value is
 optional.
 
 
@@ -57,6 +58,14 @@ optional.
 
 An array of C<CopyAction> objects, which contains the details of the
 copy operation.
+
+
+=head2 EnableContinuousBackup => Bool
+
+Specifies whether AWS Backup creates continuous backups. True causes
+AWS Backup to create continuous backups capable of point-in-time
+restore (PITR). False (or not specified) causes AWS Backup to create
+snapshot backups.
 
 
 =head2 Lifecycle => L<Paws::Backup::Lifecycle>
@@ -71,6 +80,9 @@ setting must be 90 days greater than the E<ldquo>transition to cold
 after daysE<rdquo> setting. The E<ldquo>transition to cold after
 daysE<rdquo> setting cannot be changed after a backup has been
 transitioned to cold.
+
+Only Amazon EFS file system backups can be transitioned to cold
+storage.
 
 
 =head2 RecoveryPointTags => L<Paws::Backup::Tags>
@@ -93,13 +105,18 @@ An optional display name for a backup rule.
 =head2 ScheduleExpression => Str
 
 A CRON expression specifying when AWS Backup initiates a backup job.
+For more information about cron expressions, see Schedule Expressions
+for Rules
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html)
+in the I<Amazon CloudWatch Events User Guide.>. Prior to specifying a
+value for this parameter, we recommend testing your cron expression
+using one of the many available cron generator and testing tools.
 
 
 =head2 StartWindowMinutes => Int
 
-An optional value that specifies a period of time in minutes after a
-backup is scheduled before a job is canceled if it doesn't start
-successfully.
+A value in minutes after a backup is scheduled before a job will be
+canceled if it doesn't start successfully. This value is optional.
 
 
 =head2 B<REQUIRED> TargetBackupVaultName => Str

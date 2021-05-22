@@ -33,7 +33,7 @@ Uniquely identifies a backup plan.
 =head2 DeletionDate => Str
 
 The date and time a backup plan is deleted, in Unix format and
-Coordinated Universal Time (UTC). The value of C<CreationDate> is
+Coordinated Universal Time (UTC). The value of C<DeletionDate> is
 accurate to milliseconds. For example, the value 1516925490.087
 represents Friday, January 26, 2018 12:11:30.087 AM.
 
@@ -41,7 +41,7 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 =head2 VersionId => Str
 
 Unique, randomly generated, Unicode, UTF-8 encoded strings that are at
-most 1,024 bytes long. Version Ids cannot be edited.
+most 1,024 bytes long. Version IDs cannot be edited.
 
 
 =head2 _request_id => Str

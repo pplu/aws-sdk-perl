@@ -51,8 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RecoveryPointArn    = $DescribeRecoveryPointOutput->RecoveryPointArn;
     my $ResourceArn         = $DescribeRecoveryPointOutput->ResourceArn;
     my $ResourceType        = $DescribeRecoveryPointOutput->ResourceType;
-    my $Status              = $DescribeRecoveryPointOutput->Status;
-    my $StorageClass        = $DescribeRecoveryPointOutput->StorageClass;
+    my $SourceBackupVaultArn =
+      $DescribeRecoveryPointOutput->SourceBackupVaultArn;
+    my $Status       = $DescribeRecoveryPointOutput->Status;
+    my $StorageClass = $DescribeRecoveryPointOutput->StorageClass;
 
     # Returns a L<Paws::Backup::DescribeRecoveryPointOutput> object.
 

@@ -56,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
 them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.
+letters, numbers, and hyphens.
 
 
 
@@ -70,7 +70,7 @@ create. Each tag is a key-value pair.
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.
+to be retried without the risk of running the operation twice.
 
 
 

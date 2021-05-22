@@ -43,7 +43,7 @@ The details of the copy operation.
 
 An Amazon Resource Name (ARN) that uniquely identifies the destination
 backup vault for the copied backup. For example,
-arn:aws:backup:us-east-1:123456789012:vault:aBackupVault.
+C<arn:aws:backup:us-east-1:123456789012:vault:aBackupVault>.
 
 
 =head2 Lifecycle => L<Paws::Backup::Lifecycle>

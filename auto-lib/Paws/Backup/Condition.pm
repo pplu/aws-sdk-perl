@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Backup::Con
 =head1 DESCRIPTION
 
 Contains an array of triplets made up of a condition type (such as
-C<STRINGEQUALS>), a key, and a value. Conditions are used to filter
+C<StringEquals>), a key, and a value. Conditions are used to filter
 resources in a selection that is assigned to a backup plan.
 
 =head1 ATTRIBUTES
@@ -51,7 +51,7 @@ C<"ec2:ResourceTag/Department"> is the key.
 
 =head2 B<REQUIRED> ConditionType => Str
 
-An operation, such as C<STRINGEQUALS>, that is applied to a key-value
+An operation, such as C<StringEquals>, that is applied to a key-value
 pair used to filter resources in a selection.
 
 

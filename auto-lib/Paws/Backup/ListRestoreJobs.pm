@@ -1,6 +1,10 @@
 
 package Paws::Backup::ListRestoreJobs;
   use Moose;
+  has ByAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'accountId');
+  has ByCreatedAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdAfter');
+  has ByCreatedBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdBefore');
+  has ByStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
 
@@ -30,8 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $backup = Paws->service('Backup');
     my $ListRestoreJobsOutput = $backup->ListRestoreJobs(
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'Mystring',    # OPTIONAL
+      ByAccountId     => 'MyAccountId',            # OPTIONAL
+      ByCreatedAfter  => '1970-01-01T01:00:00',    # OPTIONAL
+      ByCreatedBefore => '1970-01-01T01:00:00',    # OPTIONAL
+      ByStatus        => 'PENDING',                # OPTIONAL
+      MaxResults      => 1,                        # OPTIONAL
+      NextToken       => 'Mystring',               # OPTIONAL
     );
 
     # Results:
@@ -45,6 +53,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 
 =head1 ATTRIBUTES
 
+
+=head2 ByAccountId => Str
+
+The account ID to list the jobs from. Returns only restore jobs
+associated with the specified account ID.
+
+
+
+=head2 ByCreatedAfter => Str
+
+Returns only restore jobs that were created after the specified date.
+
+
+
+=head2 ByCreatedBefore => Str
+
+Returns only restore jobs that were created before the specified date.
+
+
+
+=head2 ByStatus => Str
+
+Returns only restore jobs associated with the specified job status.
+
+Valid values are: C<"PENDING">, C<"RUNNING">, C<"COMPLETED">, C<"ABORTED">, C<"FAILED">
 
 =head2 MaxResults => Int
 

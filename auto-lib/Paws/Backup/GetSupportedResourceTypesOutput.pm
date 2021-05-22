@@ -23,11 +23,19 @@ Contains a string with the supported AWS resource types:
 
 =item *
 
+C<DynamoDB> for Amazon DynamoDB
+
+=item *
+
 C<EBS> for Amazon Elastic Block Store
 
 =item *
 
-C<Storage Gateway> for AWS Storage Gateway
+C<EC2> for Amazon Elastic Compute Cloud
+
+=item *
+
+C<EFS> for Amazon Elastic File System
 
 =item *
 
@@ -35,11 +43,11 @@ C<RDS> for Amazon Relational Database Service
 
 =item *
 
-C<DDB> for Amazon DynamoDB
+C<Aurora> for Amazon Aurora
 
 =item *
 
-C<EFS> for Amazon Elastic File System
+C<Storage Gateway> for AWS Storage Gateway
 
 =back
 

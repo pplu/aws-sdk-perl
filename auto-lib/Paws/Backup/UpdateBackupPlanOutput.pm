@@ -1,6 +1,7 @@
 
 package Paws::Backup::UpdateBackupPlanOutput;
   use Moose;
+  has AdvancedBackupSettings => (is => 'ro', isa => 'ArrayRef[Paws::Backup::AdvancedBackupSetting]');
   has BackupPlanArn => (is => 'ro', isa => 'Str');
   has BackupPlanId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
@@ -16,6 +17,11 @@ package Paws::Backup::UpdateBackupPlanOutput;
 Paws::Backup::UpdateBackupPlanOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 AdvancedBackupSettings => ArrayRef[L<Paws::Backup::AdvancedBackupSetting>]
+
+Contains a list of C<BackupOptions> for each resource type.
 
 
 =head2 BackupPlanArn => Str

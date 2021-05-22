@@ -72,7 +72,7 @@ A set of metadata key-value pairs. Contains information, such as a
 resource name, required to restore a recovery point.
 
 You can get configuration metadata about a resource at the time it was
-backed-up by calling C<GetRecoveryPointRestoreMetadata>. However,
+backed up by calling C<GetRecoveryPointRestoreMetadata>. However,
 values in addition to those provided by
 C<GetRecoveryPointRestoreMetadata> might be required to restore a
 resource. For example, you might need to provide a new resource name if
@@ -85,8 +85,8 @@ System (Amazon EFS) instance:
 
 =item *
 
-C<file-system-id>: ID of the Amazon EFS file system that is backed up
-by AWS Backup. Returned in C<GetRecoveryPointRestoreMetadata>.
+C<file-system-id>: The ID of the Amazon EFS file system that is backed
+up by AWS Backup. Returned in C<GetRecoveryPointRestoreMetadata>.
 
 =item *
 
@@ -97,7 +97,8 @@ set to C<true>.
 =item *
 
 C<KmsKeyId>: Specifies the AWS KMS key that is used to encrypt the
-restored file system.
+restored file system. You can specify a key from another AWS account
+provided that key it is properly shared with your account via AWS KMS.
 
 =item *
 
@@ -112,6 +113,13 @@ C<CreationToken>: A user-supplied value that ensures the uniqueness
 
 C<newFileSystem>: A Boolean value that, if true, specifies that the
 recovery point is restored to a new Amazon EFS file system.
+
+=item *
+
+C<ItemsToRestore >: An array of one to five strings where each string
+is a file path. Use C<ItemsToRestore> to restore specific files or
+directories rather than the entire file system. This parameter is
+optional. For example, C<"itemsToRestore":"[\"/my.test\"]">.
 
 =back
 
@@ -134,11 +142,19 @@ resources:
 
 =item *
 
+C<DynamoDB> for Amazon DynamoDB
+
+=item *
+
 C<EBS> for Amazon Elastic Block Store
 
 =item *
 
-C<Storage Gateway> for AWS Storage Gateway
+C<EC2> for Amazon Elastic Compute Cloud
+
+=item *
+
+C<EFS> for Amazon Elastic File System
 
 =item *
 
@@ -146,11 +162,11 @@ C<RDS> for Amazon Relational Database Service
 
 =item *
 
-C<DDB> for Amazon DynamoDB
+C<Aurora> for Amazon Aurora
 
 =item *
 
-C<EFS> for Amazon Elastic File System
+C<Storage Gateway> for AWS Storage Gateway
 
 =back
 

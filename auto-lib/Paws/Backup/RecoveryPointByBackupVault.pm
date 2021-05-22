@@ -16,6 +16,7 @@ package Paws::Backup::RecoveryPointByBackupVault;
   has RecoveryPointArn => (is => 'ro', isa => 'Str');
   has ResourceArn => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
+  has SourceBackupVaultArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
 1;
@@ -143,6 +144,9 @@ after daysE<rdquo> setting. The E<ldquo>transition to cold after
 daysE<rdquo> setting cannot be changed after a backup has been
 transitioned to cold.
 
+Only Amazon EFS file system backups can be transitioned to cold
+storage.
+
 
 =head2 RecoveryPointArn => Str
 
@@ -161,7 +165,15 @@ depends on the resource type.
 
 The type of AWS resource saved as a recovery point; for example, an
 Amazon Elastic Block Store (Amazon EBS) volume or an Amazon Relational
-Database Service (Amazon RDS) database.
+Database Service (Amazon RDS) database. For VSS Windows backups, the
+only supported resource type is Amazon EC2.
+
+
+=head2 SourceBackupVaultArn => Str
+
+The backup vault where the recovery point was originally copied from.
+If the recovery point is restored to the same account this value will
+be C<null>.
 
 
 =head2 Status => Str

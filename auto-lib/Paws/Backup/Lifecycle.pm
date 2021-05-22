@@ -44,6 +44,9 @@ E<ldquo>transition to cold after daysE<rdquo> setting. The
 E<ldquo>transition to cold after daysE<rdquo> setting cannot be changed
 after a backup has been transitioned to cold.
 
+Only Amazon EFS file system backups can be transitioned to cold
+storage.
+
 =head1 ATTRIBUTES
 
 

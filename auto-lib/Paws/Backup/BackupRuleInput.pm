@@ -3,6 +3,7 @@ package Paws::Backup::BackupRuleInput;
   use Moose;
   has CompletionWindowMinutes => (is => 'ro', isa => 'Int');
   has CopyActions => (is => 'ro', isa => 'ArrayRef[Paws::Backup::CopyAction]');
+  has EnableContinuousBackup => (is => 'ro', isa => 'Bool');
   has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
   has RecoveryPointTags => (is => 'ro', isa => 'Paws::Backup::Tags');
   has RuleName => (is => 'ro', isa => 'Str', required => 1);
@@ -47,14 +48,23 @@ Specifies a scheduled task used to back up a selection of resources.
 
 =head2 CompletionWindowMinutes => Int
 
-The amount of time AWS Backup attempts a backup before canceling the
-job and returning an error.
+A value in minutes after a backup job is successfully started before it
+must be completed or it will be canceled by AWS Backup. This value is
+optional.
 
 
 =head2 CopyActions => ArrayRef[L<Paws::Backup::CopyAction>]
 
 An array of C<CopyAction> objects, which contains the details of the
 copy operation.
+
+
+=head2 EnableContinuousBackup => Bool
+
+Specifies whether AWS Backup creates continuous backups. True causes
+AWS Backup to create continuous backups capable of point-in-time
+restore (PITR). False (or not specified) causes AWS Backup to create
+snapshot backups.
 
 
 =head2 Lifecycle => L<Paws::Backup::Lifecycle>
@@ -66,8 +76,12 @@ backups automatically according to the lifecycle that you define.
 Backups transitioned to cold storage must be stored in cold storage for
 a minimum of 90 days. Therefore, the E<ldquo>expire after daysE<rdquo>
 setting must be 90 days greater than the E<ldquo>transition to cold
-after daysE<rdquo>. The E<ldquo>transition to cold after daysE<rdquo>
-setting cannot be changed after a backup has been transitioned to cold.
+after daysE<rdquo> setting. The E<ldquo>transition to cold after
+daysE<rdquo> setting cannot be changed after a backup has been
+transitioned to cold.
+
+Only Amazon EFS file system backups can be transitioned to cold
+storage.
 
 
 =head2 RecoveryPointTags => L<Paws::Backup::Tags>
@@ -78,7 +92,7 @@ the resources that you create. Each tag is a key-value pair.
 
 =head2 B<REQUIRED> RuleName => Str
 
-E<gt>An optional display name for a backup rule.
+An optional display name for a backup rule.
 
 
 =head2 ScheduleExpression => Str
@@ -88,7 +102,8 @@ A CRON expression specifying when AWS Backup initiates a backup job.
 
 =head2 StartWindowMinutes => Int
 
-The amount of time in minutes before beginning a backup.
+A value in minutes after a backup is scheduled before a job will be
+canceled if it doesn't start successfully. This value is optional.
 
 
 =head2 B<REQUIRED> TargetBackupVaultName => Str

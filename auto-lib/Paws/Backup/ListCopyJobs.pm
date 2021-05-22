@@ -1,6 +1,7 @@
 
 package Paws::Backup::ListCopyJobs;
   use Moose;
+  has ByAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'accountId');
   has ByCreatedAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdAfter');
   has ByCreatedBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdBefore');
   has ByDestinationVaultArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'destinationVaultArn');
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $backup = Paws->service('Backup');
     my $ListCopyJobsOutput = $backup->ListCopyJobs(
+      ByAccountId           => 'MyAccountId',            # OPTIONAL
       ByCreatedAfter        => '1970-01-01T01:00:00',    # OPTIONAL
       ByCreatedBefore       => '1970-01-01T01:00:00',    # OPTIONAL
       ByDestinationVaultArn => 'Mystring',               # OPTIONAL
@@ -58,6 +60,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 =head1 ATTRIBUTES
 
 
+=head2 ByAccountId => Str
+
+The account ID to list the jobs from. Returns only copy jobs associated
+with the specified account ID.
+
+
+
 =head2 ByCreatedAfter => Str
 
 Returns only copy jobs that were created after the specified date.
@@ -74,7 +83,7 @@ Returns only copy jobs that were created before the specified date.
 
 An Amazon Resource Name (ARN) that uniquely identifies a source backup
 vault to copy from; for example,
-arn:aws:backup:us-east-1:123456789012:vault:aBackupVault.
+C<arn:aws:backup:us-east-1:123456789012:vault:aBackupVault>.
 
 
 
@@ -101,11 +110,19 @@ C<EBS> for Amazon Elastic Block Store
 
 =item *
 
+C<EC2> for Amazon Elastic Compute Cloud
+
+=item *
+
 C<EFS> for Amazon Elastic File System
 
 =item *
 
 C<RDS> for Amazon Relational Database Service
+
+=item *
+
+C<Aurora> for Amazon Aurora
 
 =item *
 

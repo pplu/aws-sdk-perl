@@ -47,7 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],        # OPTIONAL
-            Lifecycle => {
+            EnableContinuousBackup => 1,    # OPTIONAL
+            Lifecycle              => {
               DeleteAfterDays            => 1,    # OPTIONAL
               MoveToColdStorageAfterDays => 1,    # OPTIONAL
             },    # OPTIONAL
@@ -57,13 +58,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-
+        AdvancedBackupSettings => [
+          {
+            BackupOptions => { 'MyBackupOptionKey' => 'MyBackupOptionValue', }
+            ,                                                         # OPTIONAL
+            ResourceType => 'MyResourceType',                         # OPTIONAL
+          },
+          ...
+        ],                                                            # OPTIONAL
       },
       BackupPlanId => 'Mystring',
 
     );
 
     # Results:
+    my $AdvancedBackupSettings =
+      $UpdateBackupPlanOutput->AdvancedBackupSettings;
     my $BackupPlanArn = $UpdateBackupPlanOutput->BackupPlanArn;
     my $BackupPlanId  = $UpdateBackupPlanOutput->BackupPlanId;
     my $CreationDate  = $UpdateBackupPlanOutput->CreationDate;

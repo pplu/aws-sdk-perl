@@ -34,8 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AccountId         = $DescribeBackupJobOutput->AccountId;
     my $BackupJobId       = $DescribeBackupJobOutput->BackupJobId;
+    my $BackupOptions     = $DescribeBackupJobOutput->BackupOptions;
     my $BackupSizeInBytes = $DescribeBackupJobOutput->BackupSizeInBytes;
+    my $BackupType        = $DescribeBackupJobOutput->BackupType;
     my $BackupVaultArn    = $DescribeBackupJobOutput->BackupVaultArn;
     my $BackupVaultName   = $DescribeBackupJobOutput->BackupVaultName;
     my $BytesTransferred  = $DescribeBackupJobOutput->BytesTransferred;

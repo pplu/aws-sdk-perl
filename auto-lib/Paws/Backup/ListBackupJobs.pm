@@ -1,6 +1,7 @@
 
 package Paws::Backup::ListBackupJobs;
   use Moose;
+  has ByAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'accountId');
   has ByBackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'backupVaultName');
   has ByCreatedAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdAfter');
   has ByCreatedBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdBefore');
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $backup = Paws->service('Backup');
     my $ListBackupJobsOutput = $backup->ListBackupJobs(
+      ByAccountId       => 'MyAccountId',            # OPTIONAL
       ByBackupVaultName => 'MyBackupVaultName',      # OPTIONAL
       ByCreatedAfter    => '1970-01-01T01:00:00',    # OPTIONAL
       ByCreatedBefore   => '1970-01-01T01:00:00',    # OPTIONAL
@@ -56,6 +58,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/backup/ListBackupJobs>
 
 =head1 ATTRIBUTES
+
+
+=head2 ByAccountId => Str
+
+The account ID to list the jobs from. Returns only backup jobs
+associated with the specified account ID.
+
+If used from an AWS Organizations management account, passing C<*>
+returns all jobs across the organization.
+
 
 
 =head2 ByBackupVaultName => Str
@@ -102,11 +114,19 @@ C<EBS> for Amazon Elastic Block Store
 
 =item *
 
+C<EC2> for Amazon Elastic Compute Cloud
+
+=item *
+
 C<EFS> for Amazon Elastic File System
 
 =item *
 
 C<RDS> for Amazon Relational Database Service
+
+=item *
+
+C<Aurora> for Amazon Aurora
 
 =item *
 

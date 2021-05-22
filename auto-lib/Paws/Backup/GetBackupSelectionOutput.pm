@@ -41,7 +41,7 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.
+to be retried without the risk of running the operation twice.
 
 
 =head2 SelectionId => Str

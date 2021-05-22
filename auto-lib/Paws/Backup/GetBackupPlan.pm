@@ -35,14 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BackupPlan        = $GetBackupPlanOutput->BackupPlan;
-    my $BackupPlanArn     = $GetBackupPlanOutput->BackupPlanArn;
-    my $BackupPlanId      = $GetBackupPlanOutput->BackupPlanId;
-    my $CreationDate      = $GetBackupPlanOutput->CreationDate;
-    my $CreatorRequestId  = $GetBackupPlanOutput->CreatorRequestId;
-    my $DeletionDate      = $GetBackupPlanOutput->DeletionDate;
-    my $LastExecutionDate = $GetBackupPlanOutput->LastExecutionDate;
-    my $VersionId         = $GetBackupPlanOutput->VersionId;
+    my $AdvancedBackupSettings = $GetBackupPlanOutput->AdvancedBackupSettings;
+    my $BackupPlan             = $GetBackupPlanOutput->BackupPlan;
+    my $BackupPlanArn          = $GetBackupPlanOutput->BackupPlanArn;
+    my $BackupPlanId           = $GetBackupPlanOutput->BackupPlanId;
+    my $CreationDate           = $GetBackupPlanOutput->CreationDate;
+    my $CreatorRequestId       = $GetBackupPlanOutput->CreatorRequestId;
+    my $DeletionDate           = $GetBackupPlanOutput->DeletionDate;
+    my $LastExecutionDate      = $GetBackupPlanOutput->LastExecutionDate;
+    my $VersionId              = $GetBackupPlanOutput->VersionId;
 
     # Returns a L<Paws::Backup::GetBackupPlanOutput> object.
 

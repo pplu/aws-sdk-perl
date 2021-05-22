@@ -44,15 +44,16 @@ Used to specify a set of resources to a backup plan.
 =head2 B<REQUIRED> IamRoleArn => Str
 
 The ARN of the IAM role that AWS Backup uses to authenticate when
-restoring the target resource; for example,
+backing up the target resource; for example,
 C<arn:aws:iam::123456789012:role/S3Access>.
 
 
 =head2 ListOfTags => ArrayRef[L<Paws::Backup::Condition>]
 
 An array of conditions used to specify a set of resources to assign to
-a backup plan; for example, C<"STRINGEQUALS":
-{"ec2:ResourceTag/Department": "accounting">.
+a backup plan; for example, C<"StringEquals":
+{"ec2:ResourceTag/Department": "accounting">. Assigns the backup plan
+to every resource with at least one matching tag.
 
 
 =head2 Resources => ArrayRef[Str|Undef]
