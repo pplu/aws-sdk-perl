@@ -4,8 +4,9 @@ package Paws::Outposts::CreateOutpost;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has AvailabilityZoneId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has SiteId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Outposts::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $outposts = Paws->service('Outposts');
     my $CreateOutpostOutput = $outposts->CreateOutpost(
+      Name               => 'MyOutpostName',
       SiteId             => 'MySiteId',
       AvailabilityZone   => 'MyAvailabilityZone',      # OPTIONAL
       AvailabilityZoneId => 'MyAvailabilityZoneId',    # OPTIONAL
       Description        => 'MyOutpostDescription',    # OPTIONAL
-      Name               => 'MyOutpostName',           # OPTIONAL
+      Tags               => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -69,7 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/out
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 
 
@@ -78,6 +82,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/out
 =head2 B<REQUIRED> SiteId => Str
 
 
+
+
+
+=head2 Tags => L<Paws::Outposts::TagMap>
+
+The tags to apply to the Outpost.
 
 
 

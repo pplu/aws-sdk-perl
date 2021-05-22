@@ -5,6 +5,7 @@ package Paws::Outposts::Site;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SiteId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Outposts::TagMap');
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Outposts::Site object:
 
-  $service_obj->Method(Att1 => { AccountId => $value, ..., SiteId => $value  });
+  $service_obj->Method(Att1 => { AccountId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -59,6 +60,11 @@ Information about a site.
 =head2 SiteId => Str
 
 
+
+
+=head2 Tags => L<Paws::Outposts::TagMap>
+
+The site tags.
 
 
 
