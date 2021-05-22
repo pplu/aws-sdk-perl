@@ -1,4 +1,8 @@
-0.43 06 Apr 2021 
+0.44
+ - Added GitHub Actions as CI (thanks shogo82148)
+
+0.43 06 Apr 2021
+ - First Community driven release (thanks BYTEROCK)
  - Fix POD generation errors (#380)
  - Fix issues with generating correct XML for Route53 methods
  - Fix double-encoding in URIs (requires URI::Template upgrade)
