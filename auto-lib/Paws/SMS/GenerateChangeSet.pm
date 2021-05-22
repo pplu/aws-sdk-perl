@@ -46,13 +46,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application associated with the change set.
+The ID of the application associated with the change set.
 
 
 
 =head2 ChangesetFormat => Str
 
-Format for the change set.
+The format for the change set.
 
 Valid values are: C<"JSON">, C<"YAML">
 

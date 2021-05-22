@@ -65,7 +65,7 @@ tree.
 
 =head2 VmServerAddress => L<Paws::SMS::VmServerAddress>
 
-Information about the VM server location.
+The VM server location.
 
 
 

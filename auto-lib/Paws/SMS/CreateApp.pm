@@ -89,38 +89,39 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 ClientToken => Str
 
-A unique, case-sensitive identifier you provide to ensure idempotency
-of application creation.
+A unique, case-sensitive identifier that you provide to ensure the
+idempotency of application creation.
 
 
 
 =head2 Description => Str
 
-Description of the new application
+The description of the new application
 
 
 
 =head2 Name => Str
 
-Name of the new application.
+The name of the new application.
 
 
 
 =head2 RoleName => Str
 
-Name of service role in customer's account to be used by AWS SMS.
+The name of the service role in the customer's account to be used by
+AWS SMS.
 
 
 
 =head2 ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]
 
-List of server groups to include in the application.
+The server groups to include in the application.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::SMS::Tag>]
 
-List of tags to be associated with the application.
+The tags to be associated with the application.
 
 
 

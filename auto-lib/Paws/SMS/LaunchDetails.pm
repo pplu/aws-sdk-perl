@@ -42,17 +42,17 @@ Details about the latest launch of an application.
 
 =head2 LatestLaunchTime => Str
 
-Latest time this application was launched successfully.
+The latest time that this application was launched successfully.
 
 
 =head2 StackId => Str
 
-Identifier of the latest stack launched for this application.
+The ID of the latest stack launched for this application.
 
 
 =head2 StackName => Str
 
-Name of the latest stack launched for this application.
+The name of the latest stack launched for this application.
 
 
 

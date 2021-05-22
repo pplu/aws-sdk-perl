@@ -71,7 +71,7 @@ The token for the next set of results.
 
 =head2 VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]
 
-List of C<VmServerAddress> objects
+The server addresses.
 
 
 

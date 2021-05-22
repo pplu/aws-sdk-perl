@@ -44,7 +44,7 @@ Represents a server.
 
 =head2 ReplicationJobId => Str
 
-The identifier of the replication job.
+The ID of the replication job.
 
 
 =head2 ReplicationJobTerminated => Bool
@@ -54,7 +54,7 @@ Indicates whether the replication job is deleted or failed.
 
 =head2 ServerId => Str
 
-The identifier of the server.
+The ID of the server.
 
 
 =head2 ServerType => Str

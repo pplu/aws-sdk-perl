@@ -41,13 +41,13 @@ Replication configuration of a server.
 
 =head2 Server => L<Paws::SMS::Server>
 
-Identifier of the server this replication configuration is associated
-with.
+The ID of the server with which this replication configuration is
+associated.
 
 
 =head2 ServerReplicationParameters => L<Paws::SMS::ServerReplicationParameters>
 
-Parameters for replicating the server.
+The parameters for replicating the server.
 
 
 

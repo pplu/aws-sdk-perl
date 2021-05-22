@@ -39,7 +39,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application to launch.
+The ID of the application.
 
 
 

@@ -39,26 +39,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::Server
 
 =head1 DESCRIPTION
 
-Replication parameters for replicating a server.
+The replication parameters for replicating a server.
 
 =head1 ATTRIBUTES
 
 
 =head2 Encrypted => Bool
 
-When true, the replication job produces encrypted AMIs. See also
-C<KmsKeyId> below.
+Indicates whether the replication job produces encrypted AMIs.
 
 
 =head2 Frequency => Int
 
-Frequency of creating replication jobs for the server.
+The frequency of creating replication jobs for the server.
 
 
 =head2 KmsKeyId => Str
 
-KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-of the following:
+The ID of the KMS key for replication jobs that produce encrypted AMIs.
+This value can be any of the following:
 
 =over
 
@@ -72,37 +71,37 @@ KMS key alias
 
 =item *
 
-ARN referring to KMS key ID
+ARN referring to the KMS key ID
 
 =item *
 
-ARN referring to KMS key alias
+ARN referring to the KMS key alias
 
 =back
 
-If encrypted is I<true> but a KMS key id is not specified, the
-customer's default KMS key for EBS is used.
+If encrypted is enabled but a KMS key ID is not specified, the
+customer's default KMS key for Amazon EBS is used.
 
 
 =head2 LicenseType => Str
 
-License type for creating a replication job for the server.
+The license type for creating a replication job for the server.
 
 
 =head2 NumberOfRecentAmisToKeep => Int
 
-Number of recent AMIs to keep when creating a replication job for this
-server.
+The number of recent AMIs to keep when creating a replication job for
+this server.
 
 
 =head2 RunOnce => Bool
 
-
+Indicates whether to run the replication job one time.
 
 
 =head2 SeedTime => Str
 
-Seed time for creating a replication job for the server.
+The seed time for creating a replication job for the server.
 
 
 

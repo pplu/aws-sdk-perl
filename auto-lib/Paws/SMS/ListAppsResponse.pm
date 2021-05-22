@@ -17,7 +17,7 @@ Paws::SMS::ListAppsResponse
 
 =head2 Apps => ArrayRef[L<Paws::SMS::AppSummary>]
 
-A list of application summaries.
+The application summaries.
 
 
 =head2 NextToken => Str

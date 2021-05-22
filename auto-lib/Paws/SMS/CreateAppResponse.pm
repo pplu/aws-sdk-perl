@@ -18,17 +18,17 @@ Paws::SMS::CreateAppResponse
 
 =head2 AppSummary => L<Paws::SMS::AppSummary>
 
-Summary description of the application.
+A summary description of the application.
 
 
 =head2 ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]
 
-List of server groups included in the application.
+The server groups included in the application.
 
 
 =head2 Tags => ArrayRef[L<Paws::SMS::Tag>]
 
-List of taags associated with the application.
+The tags associated with the application.
 
 
 =head2 _request_id => Str

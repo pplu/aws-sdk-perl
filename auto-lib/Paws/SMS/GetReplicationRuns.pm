@@ -64,7 +64,7 @@ The token for the next set of results.
 
 =head2 B<REQUIRED> ReplicationJobId => Str
 
-The identifier of the replication job.
+The ID of the replication job.
 
 
 

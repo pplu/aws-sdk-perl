@@ -42,18 +42,18 @@ Launch configuration for a server group.
 
 =head2 LaunchOrder => Int
 
-Launch order of servers in the server group.
+The launch order of servers in the server group.
 
 
 =head2 ServerGroupId => Str
 
-Identifier of the server group the launch configuration is associated
-with.
+The ID of the server group with which the launch configuration is
+associated.
 
 
 =head2 ServerLaunchConfigurations => ArrayRef[L<Paws::SMS::ServerLaunchConfiguration>]
 
-Launch configuration for servers in the server group.
+The launch configuration for servers in the server group.
 
 
 

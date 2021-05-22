@@ -16,7 +16,7 @@ Paws::SMS::GenerateTemplateResponse
 
 =head2 S3Location => L<Paws::SMS::S3Location>
 
-Location of the Amazon S3 object.
+The location of the Amazon S3 object.
 
 
 =head2 _request_id => Str

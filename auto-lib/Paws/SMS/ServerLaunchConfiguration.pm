@@ -2,7 +2,10 @@
 package Paws::SMS::ServerLaunchConfiguration;
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', request_name => 'associatePublicIpAddress', traits => ['NameInRequest']);
+  has ConfigureScript => (is => 'ro', isa => 'Paws::SMS::S3Location', request_name => 'configureScript', traits => ['NameInRequest']);
+  has ConfigureScriptType => (is => 'ro', isa => 'Str', request_name => 'configureScriptType', traits => ['NameInRequest']);
   has Ec2KeyName => (is => 'ro', isa => 'Str', request_name => 'ec2KeyName', traits => ['NameInRequest']);
+  has IamInstanceProfileName => (is => 'ro', isa => 'Str', request_name => 'iamInstanceProfileName', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has LogicalId => (is => 'ro', isa => 'Str', request_name => 'logicalId', traits => ['NameInRequest']);
   has SecurityGroup => (is => 'ro', isa => 'Str', request_name => 'securityGroup', traits => ['NameInRequest']);
@@ -48,39 +51,54 @@ Launch configuration for a server.
 
 =head2 AssociatePublicIpAddress => Bool
 
-If true, a publicly accessible IP address is created when launching the
-server.
+Indicates whether a publicly accessible IP address is created when
+launching the server.
+
+
+=head2 ConfigureScript => L<Paws::SMS::S3Location>
+
+
+
+
+=head2 ConfigureScriptType => Str
+
+The type of configuration script.
 
 
 =head2 Ec2KeyName => Str
 
-Name of the EC2 SSH Key to be used for connecting to the launched
-server.
+The name of the Amazon EC2 SSH key to be used for connecting to the
+launched server.
+
+
+=head2 IamInstanceProfileName => Str
+
+The name of the IAM instance profile.
 
 
 =head2 InstanceType => Str
 
-Instance type to be used for launching the server.
+The instance type to use when launching the server.
 
 
 =head2 LogicalId => Str
 
-Logical ID of the server in the Amazon CloudFormation template.
+The logical ID of the server in the AWS CloudFormation template.
 
 
 =head2 SecurityGroup => Str
 
-Identifier of the security group that applies to the launched server.
+The ID of the security group that applies to the launched server.
 
 
 =head2 Server => L<Paws::SMS::Server>
 
-Identifier of the server the launch configuration is associated with.
+The ID of the server with which the launch configuration is associated.
 
 
 =head2 Subnet => Str
 
-Identifier of the subnet the server should be launched into.
+The ID of the subnet the server should be launched into.
 
 
 =head2 UserData => L<Paws::SMS::UserData>
@@ -91,7 +109,7 @@ server.
 
 =head2 Vpc => Str
 
-Identifier of the VPC the server should be launched into.
+The ID of the VPC into which the server should be launched.
 
 
 
