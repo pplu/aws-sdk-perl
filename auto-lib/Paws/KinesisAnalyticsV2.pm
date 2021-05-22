@@ -50,6 +50,11 @@ package Paws::KinesisAnalyticsV2;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::CreateApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateApplicationPresignedUrl {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::CreateApplicationPresignedUrl', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateApplicationSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::CreateApplicationSnapshot', @_);
@@ -100,6 +105,11 @@ package Paws::KinesisAnalyticsV2;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::DescribeApplicationSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeApplicationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::DescribeApplicationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DiscoverInputSchema {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::DiscoverInputSchema', @_);
@@ -115,9 +125,19 @@ package Paws::KinesisAnalyticsV2;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::ListApplicationSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListApplicationVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::ListApplicationVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RollbackApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::RollbackApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartApplication {
@@ -143,6 +163,11 @@ package Paws::KinesisAnalyticsV2;
   sub UpdateApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::UpdateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApplicationMaintenanceConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::UpdateApplicationMaintenanceConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -194,7 +219,7 @@ package Paws::KinesisAnalyticsV2;
   }
 
 
-  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource AddApplicationVpcConfiguration CreateApplication CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DeleteApplicationVpcConfiguration DescribeApplication DescribeApplicationSnapshot DiscoverInputSchema ListApplications ListApplicationSnapshots ListTagsForResource StartApplication StopApplication TagResource UntagResource UpdateApplication / }
+  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource AddApplicationVpcConfiguration CreateApplication CreateApplicationPresignedUrl CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DeleteApplicationVpcConfiguration DescribeApplication DescribeApplicationSnapshot DescribeApplicationVersion DiscoverInputSchema ListApplications ListApplicationSnapshots ListApplicationVersions ListTagsForResource RollbackApplication StartApplication StopApplication TagResource UntagResource UpdateApplication UpdateApplicationMaintenanceConfiguration / }
 
 1;
 
@@ -223,10 +248,10 @@ Paws::KinesisAnalyticsV2 - Perl Interface to AWS Amazon Kinesis Analytics
 =head1 DESCRIPTION
 
 Amazon Kinesis Data Analytics is a fully managed service that you can
-use to process and analyze streaming data using SQL or Java. The
-service enables you to quickly author and run SQL or Java code against
-streaming sources to perform time series analytics, feed real-time
-dashboards, and create real-time metrics.
+use to process and analyze streaming data using Java, SQL, or Scala.
+The service enables you to quickly author and run Java, SQL, or Scala
+code against streaming sources to perform time series analytics, feed
+real-time dashboards, and create real-time metrics.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2018-05-23>
 
@@ -241,7 +266,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =item CloudWatchLoggingOption => L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>
 
-=item CurrentApplicationVersionId => Int
+=item [ConditionalToken => Str]
+
+=item [CurrentApplicationVersionId => Int]
 
 
 =back
@@ -271,7 +298,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::AddApplicat
 
 Returns: a L<Paws::KinesisAnalyticsV2::AddApplicationInputResponse> instance
 
-Adds a streaming source to your SQL-based Amazon Kinesis Data Analytics
+Adds a streaming source to your SQL-based Kinesis Data Analytics
 application.
 
 You can add a streaming source when you create an application, or you
@@ -303,11 +330,11 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::AddApplicat
 
 Returns: a L<Paws::KinesisAnalyticsV2::AddApplicationInputProcessingConfigurationResponse> instance
 
-Adds an InputProcessingConfiguration to an SQL-based Kinesis Data
+Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
 Analytics application. An input processor pre-processes records on the
 input stream before the application's SQL code executes. Currently, the
 only input processor available is AWS Lambda
-(https://aws.amazon.com/documentation/lambda/).
+(https://docs.aws.amazon.com/lambda/).
 
 
 =head2 AddApplicationOutput
@@ -327,8 +354,8 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::AddApplicat
 
 Returns: a L<Paws::KinesisAnalyticsV2::AddApplicationOutputResponse> instance
 
-Adds an external destination to your SQL-based Amazon Kinesis Data
-Analytics application.
+Adds an external destination to your SQL-based Kinesis Data Analytics
+application.
 
 If you want Kinesis Data Analytics to deliver data from an
 in-application stream within your application to an external
@@ -366,8 +393,8 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::AddApplicat
 
 Returns: a L<Paws::KinesisAnalyticsV2::AddApplicationReferenceDataSourceResponse> instance
 
-Adds a reference data source to an existing SQL-based Amazon Kinesis
-Data Analytics application.
+Adds a reference data source to an existing SQL-based Kinesis Data
+Analytics application.
 
 Kinesis Data Analytics reads reference data (that is, an Amazon S3
 object) and creates an in-application table within your application. In
@@ -383,9 +410,11 @@ to columns in the resulting in-application table.
 
 =item ApplicationName => Str
 
-=item CurrentApplicationVersionId => Int
-
 =item VpcConfiguration => L<Paws::KinesisAnalyticsV2::VpcConfiguration>
+
+=item [ConditionalToken => Str]
+
+=item [CurrentApplicationVersionId => Int]
 
 
 =back
@@ -431,6 +460,8 @@ your VPC.
 
 =item [ApplicationDescription => Str]
 
+=item [ApplicationMode => Str]
+
 =item [CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>]]
 
 =item [Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]]
@@ -442,10 +473,47 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::CreateAppli
 
 Returns: a L<Paws::KinesisAnalyticsV2::CreateApplicationResponse> instance
 
-Creates an Amazon Kinesis Data Analytics application. For information
-about creating a Kinesis Data Analytics application, see Creating an
+Creates a Kinesis Data Analytics application. For information about
+creating a Kinesis Data Analytics application, see Creating an
 Application
 (https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
+
+
+=head2 CreateApplicationPresignedUrl
+
+=over
+
+=item ApplicationName => Str
+
+=item UrlType => Str
+
+=item [SessionExpirationDurationInSeconds => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::CreateApplicationPresignedUrl>
+
+Returns: a L<Paws::KinesisAnalyticsV2::CreateApplicationPresignedUrlResponse> instance
+
+Creates and returns a URL that you can use to connect to an
+application's extension. Currently, the only available extension is the
+Apache Flink dashboard.
+
+The IAM role or user used to call this API defines the permissions to
+access the extension. After the presigned URL is created, no additional
+permission is required to access this URL. IAM authorization policies
+for this API are also enforced for every HTTP request that attempts to
+connect to the extension.
+
+You control the amount of time that the URL will be valid using the
+C<SessionExpirationDurationInSeconds> parameter. If you do not provide
+this parameter, the returned URL is valid for twelve hours.
+
+The URL that you get from a call to CreateApplicationPresignedUrl must
+be used within 3 minutes to be valid. If you first try to use the URL
+after the 3-minute limit expires, the service returns an HTTP 403
+Forbidden error.
 
 
 =head2 CreateApplicationSnapshot
@@ -493,7 +561,9 @@ application execution and deletes the application.
 
 =item CloudWatchLoggingOptionId => Str
 
-=item CurrentApplicationVersionId => Int
+=item [ConditionalToken => Str]
+
+=item [CurrentApplicationVersionId => Int]
 
 
 =back
@@ -502,8 +572,8 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DeleteAppli
 
 Returns: a L<Paws::KinesisAnalyticsV2::DeleteApplicationCloudWatchLoggingOptionResponse> instance
 
-Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data
-Analytics application.
+Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
+application.
 
 
 =head2 DeleteApplicationInputProcessingConfiguration
@@ -543,7 +613,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DeleteAppli
 
 Returns: a L<Paws::KinesisAnalyticsV2::DeleteApplicationOutputResponse> instance
 
-Deletes the output destination configuration from your SQL-based Amazon
+Deletes the output destination configuration from your SQL-based
 Kinesis Data Analytics application's configuration. Kinesis Data
 Analytics will no longer write data from the corresponding
 in-application stream to the external output destination.
@@ -567,7 +637,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DeleteAppli
 Returns: a L<Paws::KinesisAnalyticsV2::DeleteApplicationReferenceDataSourceResponse> instance
 
 Deletes a reference data source configuration from the specified
-SQL-based Amazon Kinesis Data Analytics application's configuration.
+SQL-based Kinesis Data Analytics application's configuration.
 
 If the application is running, Kinesis Data Analytics immediately
 removes the in-application table that you created using the
@@ -600,9 +670,11 @@ Deletes a snapshot of application state.
 
 =item ApplicationName => Str
 
-=item CurrentApplicationVersionId => Int
-
 =item VpcConfigurationId => Str
+
+=item [ConditionalToken => Str]
+
+=item [CurrentApplicationVersionId => Int]
 
 
 =back
@@ -629,7 +701,7 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DescribeApp
 
 Returns: a L<Paws::KinesisAnalyticsV2::DescribeApplicationResponse> instance
 
-Returns information about a specific Amazon Kinesis Data Analytics
+Returns information about a specific Kinesis Data Analytics
 application.
 
 If you want to retrieve a list of all applications in your account, use
@@ -654,6 +726,29 @@ Returns: a L<Paws::KinesisAnalyticsV2::DescribeApplicationSnapshotResponse> inst
 Returns information about a snapshot of application state data.
 
 
+=head2 DescribeApplicationVersion
+
+=over
+
+=item ApplicationName => Str
+
+=item ApplicationVersionId => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DescribeApplicationVersion>
+
+Returns: a L<Paws::KinesisAnalyticsV2::DescribeApplicationVersionResponse> instance
+
+Provides a detailed description of a specified version of the
+application. To see a list of all the versions of an application,
+invoke the ListApplicationVersions operation.
+
+This operation is supported only for Amazon Kinesis Data Analytics for
+Apache Flink.
+
+
 =head2 DiscoverInputSchema
 
 =over
@@ -675,12 +770,11 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DiscoverInp
 
 Returns: a L<Paws::KinesisAnalyticsV2::DiscoverInputSchemaResponse> instance
 
-Infers a schema for an SQL-based Amazon Kinesis Data Analytics
-application by evaluating sample records on the specified streaming
-source (Kinesis data stream or Kinesis Data Firehose delivery stream)
-or Amazon S3 object. In the response, the operation returns the
-inferred schema and also the sample records that the operation used to
-infer the schema.
+Infers a schema for a SQL-based Kinesis Data Analytics application by
+evaluating sample records on the specified streaming source (Kinesis
+data stream or Kinesis Data Firehose delivery stream) or Amazon S3
+object. In the response, the operation returns the inferred schema and
+also the sample records that the operation used to infer the schema.
 
 You can use the inferred schema when configuring a streaming source for
 your application. When you create an application using the Kinesis Data
@@ -703,9 +797,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::ListApplica
 
 Returns: a L<Paws::KinesisAnalyticsV2::ListApplicationsResponse> instance
 
-Returns a list of Amazon Kinesis Data Analytics applications in your
-account. For each application, the response includes the application
-name, Amazon Resource Name (ARN), and status.
+Returns a list of Kinesis Data Analytics applications in your account.
+For each application, the response includes the application name,
+Amazon Resource Name (ARN), and status.
 
 If you want detailed information about a specific application, use
 DescribeApplication.
@@ -731,6 +825,34 @@ Returns: a L<Paws::KinesisAnalyticsV2::ListApplicationSnapshotsResponse> instanc
 Lists information about the current application snapshots.
 
 
+=head2 ListApplicationVersions
+
+=over
+
+=item ApplicationName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::ListApplicationVersions>
+
+Returns: a L<Paws::KinesisAnalyticsV2::ListApplicationVersionsResponse> instance
+
+Lists all the versions for the specified application, including
+versions that were rolled back. The response also includes a summary of
+the configuration associated with each version.
+
+To get the complete description of a specific application version,
+invoke the DescribeApplicationVersion operation.
+
+This operation is supported only for Amazon Kinesis Data Analytics for
+Apache Flink.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -749,13 +871,42 @@ more information, see Using Tagging
 (https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 
+=head2 RollbackApplication
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::RollbackApplication>
+
+Returns: a L<Paws::KinesisAnalyticsV2::RollbackApplicationResponse> instance
+
+Reverts the application to the previous running version. You can roll
+back an application if you suspect it is stuck in a transient status.
+
+You can roll back an application only if it is in the C<UPDATING> or
+C<AUTOSCALING> status.
+
+When you rollback an application, it loads state data from the last
+successful snapshot. If the application has no snapshots, Kinesis Data
+Analytics rejects the rollback request.
+
+This action is not supported for Kinesis Data Analytics for SQL
+applications.
+
+
 =head2 StartApplication
 
 =over
 
 =item ApplicationName => Str
 
-=item RunConfiguration => L<Paws::KinesisAnalyticsV2::RunConfiguration>
+=item [RunConfiguration => L<Paws::KinesisAnalyticsV2::RunConfiguration>]
 
 
 =back
@@ -764,9 +915,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::StartApplic
 
 Returns: a L<Paws::KinesisAnalyticsV2::StartApplicationResponse> instance
 
-Starts the specified Amazon Kinesis Data Analytics application. After
-creating an application, you must exclusively call this operation to
-start your application.
+Starts the specified Kinesis Data Analytics application. After creating
+an application, you must exclusively call this operation to start your
+application.
 
 
 =head2 StopApplication
@@ -774,6 +925,8 @@ start your application.
 =over
 
 =item ApplicationName => Str
+
+=item [Force => Bool]
 
 
 =back
@@ -783,8 +936,14 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::StopApplica
 Returns: a L<Paws::KinesisAnalyticsV2::StopApplicationResponse> instance
 
 Stops the application from processing data. You can stop an application
-only if it is in the running state. You can use the DescribeApplication
-operation to find the application state.
+only if it is in the running status, unless you set the C<Force>
+parameter to C<true>.
+
+You can use the DescribeApplication operation to find the application
+status.
+
+Kinesis Data Analytics takes a snapshot when the application is
+stopped, unless C<Force> is set to C<true>.
 
 
 =head2 TagResource
@@ -802,10 +961,10 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::TagResource
 
 Returns: a L<Paws::KinesisAnalyticsV2::TagResourceResponse> instance
 
-Adds one or more key-value tags to a Kinesis Analytics application.
-Note that the maximum number of application tags includes system tags.
-The maximum number of user-defined application tags is 50. For more
-information, see Using Tagging
+Adds one or more key-value tags to a Kinesis Data Analytics
+application. Note that the maximum number of application tags includes
+system tags. The maximum number of user-defined application tags is 50.
+For more information, see Using Tagging
 (https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 
@@ -824,8 +983,8 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::UntagResour
 
 Returns: a L<Paws::KinesisAnalyticsV2::UntagResourceResponse> instance
 
-Removes one or more tags from a Kinesis Analytics application. For more
-information, see Using Tagging
+Removes one or more tags from a Kinesis Data Analytics application. For
+more information, see Using Tagging
 (https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 
@@ -835,11 +994,13 @@ information, see Using Tagging
 
 =item ApplicationName => Str
 
-=item CurrentApplicationVersionId => Int
-
 =item [ApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate>]
 
 =item [CloudWatchLoggingOptionUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate>]]
+
+=item [ConditionalToken => Str]
+
+=item [CurrentApplicationVersionId => Int]
 
 =item [RunConfigurationUpdate => L<Paws::KinesisAnalyticsV2::RunConfigurationUpdate>]
 
@@ -852,12 +1013,57 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::UpdateAppli
 
 Returns: a L<Paws::KinesisAnalyticsV2::UpdateApplicationResponse> instance
 
-Updates an existing Amazon Kinesis Data Analytics application. Using
-this operation, you can update application code, input configuration,
-and output configuration.
+Updates an existing Kinesis Data Analytics application. Using this
+operation, you can update application code, input configuration, and
+output configuration.
 
 Kinesis Data Analytics updates the C<ApplicationVersionId> each time
 you update your application.
+
+You cannot update the C<RuntimeEnvironment> of an existing application.
+If you need to update an application's C<RuntimeEnvironment>, you must
+delete the application and create it again.
+
+
+=head2 UpdateApplicationMaintenanceConfiguration
+
+=over
+
+=item ApplicationMaintenanceConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationMaintenanceConfigurationUpdate>
+
+=item ApplicationName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::UpdateApplicationMaintenanceConfiguration>
+
+Returns: a L<Paws::KinesisAnalyticsV2::UpdateApplicationMaintenanceConfigurationResponse> instance
+
+Updates the maintenance configuration of the Kinesis Data Analytics
+application.
+
+You can invoke this operation on an application that is in one of the
+two following states: C<READY> or C<RUNNING>. If you invoke it when the
+application is in a state other than these two states, it throws a
+C<ResourceInUseException>. The service makes use of the updated
+configuration the next time it schedules maintenance for the
+application. If you invoke this operation after the service schedules
+maintenance, the service will apply the configuration update the next
+time it schedules maintenance for the application. This means that you
+might not see the maintenance configuration update applied to the
+maintenance process that follows a successful invocation of this
+operation, but to the following maintenance process instead.
+
+To see the current maintenance configuration of your application,
+invoke the DescribeApplication operation.
+
+For information about application maintenance, see Kinesis Data
+Analytics for Apache Flink Maintenance
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/maintenance.html).
+
+This operation is supported only for Amazon Kinesis Data Analytics for
+Apache Flink.
 
 
 

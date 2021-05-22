@@ -34,8 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes code configuration for a Java-based Kinesis Data Analytics
-application.
+Describes code configuration for an application.
 
 =head1 ATTRIBUTES
 

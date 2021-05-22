@@ -36,26 +36,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Specifies either the application code, or the location of the
-application code, for a Java-based Amazon Kinesis Data Analytics
-application.
+application code, for a Flink-based Kinesis Data Analytics application.
 
 =head1 ATTRIBUTES
 
 
 =head2 S3ContentLocation => L<Paws::KinesisAnalyticsV2::S3ContentLocation>
 
-Information about the Amazon S3 bucket containing the application code.
+Information about the Amazon S3 bucket that contains the application
+code.
 
 
 =head2 TextContent => Str
 
-The text-format code for a Java-based Kinesis Data Analytics
+The text-format code for a Flink-based Kinesis Data Analytics
 application.
 
 
 =head2 ZipFileContent => Str
 
-The zip-format code for a Java-based Kinesis Data Analytics
+The zip-format code for a Flink-based Kinesis Data Analytics
 application.
 
 

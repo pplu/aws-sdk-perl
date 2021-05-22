@@ -41,8 +41,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes the application input configuration for an SQL-based Amazon
-Kinesis Data Analytics application.
+Describes the application input configuration for a SQL-based Kinesis
+Data Analytics application.
 
 =head1 ATTRIBUTES
 

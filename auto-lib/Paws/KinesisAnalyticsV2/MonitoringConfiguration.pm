@@ -35,9 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes configuration parameters for Amazon CloudWatch logging for a
-Java-based Kinesis Data Analytics application. For more information
-about CloudWatch logging, see Monitoring
+Describes configuration parameters for Amazon CloudWatch logging for an
+application. For more information about CloudWatch logging, see
+Monitoring
 (https://docs.aws.amazon.com/kinesisanalytics/latest/java/monitoring-overview.html).
 
 =head1 ATTRIBUTES
@@ -58,6 +58,8 @@ Describes the verbosity of the CloudWatch Logs for an application.
 =head2 MetricsLevel => Str
 
 Describes the granularity of the CloudWatch Logs for an application.
+The C<Parallelism> level is not recommended for applications with a
+Parallelism over 64 due to excessive costs.
 
 
 

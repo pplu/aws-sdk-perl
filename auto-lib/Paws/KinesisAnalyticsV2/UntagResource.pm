@@ -44,8 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the Kinesis Analytics application from which to remove the
-tags.
+The ARN of the Kinesis Data Analytics application from which to remove
+the tags.
 
 
 

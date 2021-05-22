@@ -23,8 +23,8 @@ The application Amazon Resource Name (ARN).
 
 =head2 ApplicationVersionId => Int
 
-The updated application version ID. Amazon Kinesis Data Analytics
-increments this ID when the application is updated.
+The updated application version ID. Kinesis Data Analytics increments
+this ID when the application is updated.
 
 
 =head2 ReferenceDataSourceDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::ReferenceDataSourceDescription>]

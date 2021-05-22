@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates for an SQL-based Amazon Kinesis Data Analytics
-application's input schema.
+Describes updates for an SQL-based Kinesis Data Analytics application's
+input schema.
 
 =head1 ATTRIBUTES
 

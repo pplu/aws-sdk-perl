@@ -2,7 +2,8 @@
 package Paws::KinesisAnalyticsV2::DeleteApplicationVpcConfiguration;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  has ConditionalToken => (is => 'ro', isa => 'Str');
+  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int');
   has VpcConfigurationId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteApplicationVpcConfigurationResponse =
       $kinesisanalytics->DeleteApplicationVpcConfiguration(
       ApplicationName             => 'MyApplicationName',
-      CurrentApplicationVersionId => 1,
       VpcConfigurationId          => 'MyId',
-
+      ConditionalToken            => 'MyConditionalToken',    # OPTIONAL
+      CurrentApplicationVersionId => 1,                       # OPTIONAL
       );
 
     # Results:
@@ -57,10 +58,24 @@ The name of an existing application.
 
 
 
-=head2 B<REQUIRED> CurrentApplicationVersionId => Int
+=head2 ConditionalToken => Str
 
-The current application version ID. You can retrieve the application
-version ID using DescribeApplication.
+A value you use to implement strong concurrency for application
+updates. You must provide the C<CurrentApplicationVersionId> or the
+C<ConditionalToken>. You get the application's current
+C<ConditionalToken> using DescribeApplication. For better concurrency
+support, use the C<ConditionalToken> parameter instead of
+C<CurrentApplicationVersionId>.
+
+
+
+=head2 CurrentApplicationVersionId => Int
+
+The current application version ID. You must provide the
+C<CurrentApplicationVersionId> or the C<ConditionalToken>. You can
+retrieve the application version ID using DescribeApplication. For
+better concurrency support, use the C<ConditionalToken> parameter
+instead of C<CurrentApplicationVersionId>.
 
 
 

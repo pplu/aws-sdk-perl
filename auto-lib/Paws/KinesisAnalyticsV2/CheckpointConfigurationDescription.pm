@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes checkpointing parameters for a Java-based Amazon Kinesis Data
+Describes checkpointing parameters for a Flink-based Kinesis Data
 Analytics application.
 
 =head1 ATTRIBUTES
@@ -44,7 +44,7 @@ Analytics application.
 
 =head2 CheckpointingEnabled => Bool
 
-Describes whether checkpointing is enabled for a Java-based Kinesis
+Describes whether checkpointing is enabled for a Flink-based Kinesis
 Data Analytics application.
 
 If C<CheckpointConfiguration.ConfigurationType> is C<DEFAULT>, the
@@ -58,7 +58,7 @@ code.
 Describes the interval in milliseconds between checkpoint operations.
 
 If C<CheckpointConfiguration.ConfigurationType> is C<DEFAULT>, the
-application will use a C<CheckpointInterval> vaue of 60000, even if
+application will use a C<CheckpointInterval> value of 60000, even if
 this value is set to another value using this API or in application
 code.
 

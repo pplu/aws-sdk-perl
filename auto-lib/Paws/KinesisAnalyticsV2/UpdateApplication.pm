@@ -4,7 +4,8 @@ package Paws::KinesisAnalyticsV2::UpdateApplication;
   has ApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate');
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate]');
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  has ConditionalToken => (is => 'ro', isa => 'Str');
+  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int');
   has RunConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationUpdate');
   has ServiceExecutionRoleUpdate => (is => 'ro', isa => 'Str');
 
@@ -34,16 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kinesisanalytics = Paws->service('KinesisAnalyticsV2');
     my $UpdateApplicationResponse = $kinesisanalytics->UpdateApplication(
       ApplicationName                => 'MyApplicationName',
-      CurrentApplicationVersionId    => 1,
       ApplicationConfigurationUpdate => {
         ApplicationCodeConfigurationUpdate => {
           CodeContentTypeUpdate =>
             'PLAINTEXT',    # values: PLAINTEXT, ZIPFILE; OPTIONAL
           CodeContentUpdate => {
             S3ContentLocationUpdate => {
-              BucketARNUpdate => 'MyBucketARN',    # min: 1, max: 2048; OPTIONAL
-              FileKeyUpdate   => 'MyFileKey',      # min: 1, max: 1024; OPTIONAL
-              ObjectVersionUpdate => 'MyObjectVersion',    # OPTIONAL
+              BucketARNUpdate     => 'MyBucketARN',        # min: 1, max: 2048
+              FileKeyUpdate       => 'MyFileKey',          # min: 1, max: 1024
+              ObjectVersionUpdate => 'MyObjectVersion',    # max: 1024; OPTIONAL
             },    # OPTIONAL
             TextContentUpdate => 'MyTextContent',    # max: 102400; OPTIONAL
             ZipFileContentUpdate =>
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
         ApplicationSnapshotConfigurationUpdate => {
-          SnapshotsEnabledUpdate => 1,    # OPTIONAL
+          SnapshotsEnabledUpdate => 1,
 
         },    # OPTIONAL
         EnvironmentPropertyUpdates => {
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FlinkApplicationConfigurationUpdate => {
           CheckpointConfigurationUpdate => {
             CheckpointIntervalUpdate   => 1,    # min: 1; OPTIONAL
-            CheckpointingEnabledUpdate => 1,    # OPTIONAL
+            CheckpointingEnabledUpdate => 1,
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             MinPauseBetweenCheckpointsUpdate => 1,    # OPTIONAL
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
           ParallelismConfigurationUpdate => {
-            AutoScalingEnabledUpdate => 1,    # OPTIONAL
+            AutoScalingEnabledUpdate => 1,
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             ParallelismPerKPUUpdate => 1,    # min: 1; OPTIONAL
@@ -110,24 +110,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               InputSchemaUpdate => {
                 RecordColumnUpdates => [
                   {
-                    Name    => 'MyRecordColumnName',
-                    SqlType => 'MyRecordColumnSqlType',    # min: 1
-                    Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+                    Name    => 'MyRecordColumnName',      # min: 1, max: 256
+                    SqlType => 'MyRecordColumnSqlType',   # min: 1, max: 100
+                    Mapping => 'MyRecordColumnMapping',   # max: 65535; OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
-                RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
-                RecordFormatUpdate   => {
+                ],                                        # min: 1, max: 1000
+                RecordEncodingUpdate =>
+                  'MyRecordEncoding',    # min: 5, max: 5; OPTIONAL
+                RecordFormatUpdate => {
                   RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',    # min: 1
-                      RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1, max: 1024
+                      RecordRowDelimiter =>
+                        'MyRecordRowDelimiter',       # min: 1, max: 1024
 
                     },    # OPTIONAL
                     JSONMappingParameters => {
-                      RecordRowPath => 'MyRecordRowPath',    # min: 1
+                      RecordRowPath => 'MyRecordRowPath',   # min: 1, max: 65535
 
                     },    # OPTIONAL
                   },    # OPTIONAL
@@ -175,32 +177,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ReferenceSchemaUpdate => {
                 RecordColumns => [
                   {
-                    Name    => 'MyRecordColumnName',
-                    SqlType => 'MyRecordColumnSqlType',    # min: 1
-                    Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+                    Name    => 'MyRecordColumnName',      # min: 1, max: 256
+                    SqlType => 'MyRecordColumnSqlType',   # min: 1, max: 100
+                    Mapping => 'MyRecordColumnMapping',   # max: 65535; OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],                                        # min: 1, max: 1000
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',             # values: JSON, CSV
+                  RecordFormatType  => 'JSON',            # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',         # min: 1
-                      RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
+                        'MyRecordColumnDelimiter',        # min: 1, max: 1024
+                      RecordRowDelimiter =>
+                        'MyRecordRowDelimiter',           # min: 1, max: 1024
 
                     },    # OPTIONAL
                     JSONMappingParameters => {
-                      RecordRowPath => 'MyRecordRowPath',    # min: 1
+                      RecordRowPath => 'MyRecordRowPath',   # min: 1, max: 65535
 
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },
-                RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
+                RecordEncoding => 'MyRecordEncoding', # min: 5, max: 5; OPTIONAL
               },    # OPTIONAL
               S3ReferenceDataSourceUpdate => {
-                BucketARNUpdate => 'MyBucketARN',  # min: 1, max: 2048; OPTIONAL
-                FileKeyUpdate   => 'MyFileKey',    # min: 1, max: 1024; OPTIONAL
+                BucketARNUpdate => 'MyBucketARN',    # min: 1, max: 2048
+                FileKeyUpdate   => 'MyFileKey',      # min: 1, max: 1024
               },    # OPTIONAL
               TableNameUpdate => 'MyInAppTableName', # min: 1, max: 32; OPTIONAL
             },
@@ -217,6 +220,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                   # OPTIONAL
+        ZeppelinApplicationConfigurationUpdate => {
+          CatalogConfigurationUpdate => {
+            GlueDataCatalogConfigurationUpdate => {
+              DatabaseARNUpdate =>
+                'MyDatabaseARN',             # min: 1, max: 2048; OPTIONAL
+            },
+
+          },    # OPTIONAL
+          CustomArtifactsConfigurationUpdate => [
+            {
+              ArtifactType   => 'UDF',    # values: UDF, DEPENDENCY_JAR
+              MavenReference => {
+                ArtifactId => 'MyMavenArtifactId',    # min: 1, max: 256
+                GroupId    => 'MyMavenGroupId',       # min: 1, max: 256
+                Version    => 'MyMavenVersion',       # min: 1, max: 256
+
+              },    # OPTIONAL
+              S3ContentLocation => {
+                BucketARN     => 'MyBucketARN',        # min: 1, max: 2048
+                FileKey       => 'MyFileKey',          # min: 1, max: 1024
+                ObjectVersion => 'MyObjectVersion',    # max: 1024; OPTIONAL
+              },    # OPTIONAL
+            },
+            ...
+          ],        # max: 50; OPTIONAL
+          DeployAsApplicationConfigurationUpdate => {
+            S3ContentLocationUpdate => {
+              BucketARNUpdate => 'MyBucketARN',    # min: 1, max: 2048
+              BasePathUpdate  => 'MyBasePath',     # min: 1, max: 1024; OPTIONAL
+            },
+
+          },    # OPTIONAL
+          MonitoringConfigurationUpdate => {
+            LogLevelUpdate =>
+              'INFO',    # values: INFO, WARN, ERROR, DEBUG; OPTIONAL
+
+          },    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       CloudWatchLoggingOptionUpdates => [
         {
@@ -225,15 +266,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                          # OPTIONAL
-      RunConfigurationUpdate => {
+      ConditionalToken            => 'MyConditionalToken',    # OPTIONAL
+      CurrentApplicationVersionId => 1,                       # OPTIONAL
+      RunConfigurationUpdate      => {
         ApplicationRestoreConfiguration => {
           ApplicationRestoreType => 'SKIP_RESTORE_FROM_SNAPSHOT'
           , # values: SKIP_RESTORE_FROM_SNAPSHOT, RESTORE_FROM_LATEST_SNAPSHOT, RESTORE_FROM_CUSTOM_SNAPSHOT
           SnapshotName => 'MySnapshotName',    # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
-        FlinkRunConfiguration => {
-          AllowNonRestoredState => 1,    # OPTIONAL
-        },    # OPTIONAL
+        FlinkRunConfiguration => { AllowNonRestoredState => 1, },    # OPTIONAL
       },    # OPTIONAL
       ServiceExecutionRoleUpdate => 'MyRoleARN',    # OPTIONAL
     );
@@ -270,10 +311,24 @@ AddApplicationCloudWatchLoggingOption.
 
 
 
-=head2 B<REQUIRED> CurrentApplicationVersionId => Int
+=head2 ConditionalToken => Str
 
-The current application version ID. You can retrieve the application
-version ID using DescribeApplication.
+A value you use to implement strong concurrency for application
+updates. You must provide the C<CurrentApplicationVersionId> or the
+C<ConditionalToken>. You get the application's current
+C<ConditionalToken> using DescribeApplication. For better concurrency
+support, use the C<ConditionalToken> parameter instead of
+C<CurrentApplicationVersionId>.
+
+
+
+=head2 CurrentApplicationVersionId => Int
+
+The current application version ID. You must provide the
+C<CurrentApplicationVersionId> or the C<ConditionalToken>.You can
+retrieve the application version ID using DescribeApplication. For
+better concurrency support, use the C<ConditionalToken> parameter
+instead of C<CurrentApplicationVersionId>.
 
 
 

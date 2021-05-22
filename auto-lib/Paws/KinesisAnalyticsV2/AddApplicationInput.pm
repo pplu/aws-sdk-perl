@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InputSchema => {
           RecordColumns => [
             {
-              Name    => 'MyRecordColumnName',
-              SqlType => 'MyRecordColumnSqlType',    # min: 1
-              Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+              Name    => 'MyRecordColumnName',       # min: 1, max: 256
+              SqlType => 'MyRecordColumnSqlType',    # min: 1, max: 100
+              Mapping => 'MyRecordColumnMapping',    # max: 65535; OPTIONAL
             },
             ...
           ],                                         # min: 1, max: 1000
@@ -46,17 +46,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordFormatType  => 'JSON',             # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1
+                RecordColumnDelimiter =>
+                  'MyRecordColumnDelimiter',         # min: 1, max: 1024
+                RecordRowDelimiter =>
+                  'MyRecordRowDelimiter',            # min: 1, max: 1024
 
               },    # OPTIONAL
               JSONMappingParameters => {
-                RecordRowPath => 'MyRecordRowPath',    # min: 1
+                RecordRowPath => 'MyRecordRowPath',    # min: 1, max: 65535
 
               },    # OPTIONAL
             },    # OPTIONAL
           },
-          RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
+          RecordEncoding => 'MyRecordEncoding',    # min: 5, max: 5; OPTIONAL
         },
         NamePrefix       => 'MyInAppStreamName',    # min: 1, max: 32
         InputParallelism => {
@@ -104,7 +106,8 @@ streaming source.
 
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
-The current version of your application. You can use the
+The current version of your application. You must provide the
+C<ApplicationVersionID> or the C<ConditionalToken>.You can use the
 DescribeApplication operation to find the current application version.
 
 

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes the starting parameters for an Amazon Kinesis Data Analytics
+Describes the starting parameters for an Kinesis Data Analytics
 application.
 
 =head1 ATTRIBUTES
@@ -48,14 +48,14 @@ Describes the restore behavior of a restarting application.
 
 =head2 FlinkRunConfiguration => L<Paws::KinesisAnalyticsV2::FlinkRunConfiguration>
 
-Describes the starting parameters for an Apache Flink-based Kinesis
-Data Analytics application.
+Describes the starting parameters for a Flink-based Kinesis Data
+Analytics application.
 
 
 =head2 SqlRunConfigurations => ArrayRef[L<Paws::KinesisAnalyticsV2::SqlRunConfiguration>]
 
-Describes the starting parameters for an SQL-based Kinesis Data
-Analytics application.
+Describes the starting parameters for a SQL-based Kinesis Data
+Analytics application application.
 
 
 

@@ -33,10 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-When you update an SQL-based Amazon Kinesis Data Analytics
-application's output configuration using the UpdateApplication
-operation, provides information about a Kinesis data stream that is
-configured as the destination.
+When you update a SQL-based Kinesis Data Analytics application's output
+configuration using the UpdateApplication operation, provides
+information about a Kinesis data stream that is configured as the
+destination.
 
 =head1 ATTRIBUTES
 

@@ -8,6 +8,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription;
   has RunConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationDescription');
   has SqlApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription');
   has VpcConfigurationDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfigurationDescription]');
+  has ZeppelinApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ZeppelinApplicationConfigurationDescription');
 
 1;
 
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription object:
 
-  $service_obj->Method(Att1 => { ApplicationCodeConfigurationDescription => $value, ..., VpcConfigurationDescriptions => $value  });
+  $service_obj->Method(Att1 => { ApplicationCodeConfigurationDescription => $value, ..., ZeppelinApplicationConfigurationDescription => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,32 +41,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Describes details about the application code and starting parameters
-for an Amazon Kinesis Data Analytics application.
+for a Kinesis Data Analytics application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationCodeConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationDescription>
 
-The details about the application code for a Java-based Kinesis Data
+The details about the application code for a Flink-based Kinesis Data
 Analytics application.
 
 
 =head2 ApplicationSnapshotConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationDescription>
 
-Describes whether snapshots are enabled for a Java-based Kinesis Data
+Describes whether snapshots are enabled for a Flink-based Kinesis Data
 Analytics application.
 
 
 =head2 EnvironmentPropertyDescriptions => L<Paws::KinesisAnalyticsV2::EnvironmentPropertyDescriptions>
 
-Describes execution properties for a Java-based Kinesis Data Analytics
+Describes execution properties for a Flink-based Kinesis Data Analytics
 application.
 
 
 =head2 FlinkApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription>
 
-The details about a Java-based Kinesis Data Analytics application.
+The details about a Flink-based Kinesis Data Analytics application.
 
 
 =head2 RunConfigurationDescription => L<Paws::KinesisAnalyticsV2::RunConfigurationDescription>
@@ -76,7 +77,7 @@ application.
 
 =head2 SqlApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription>
 
-The details about inputs, outputs, and reference data sources for an
+The details about inputs, outputs, and reference data sources for a
 SQL-based Kinesis Data Analytics application.
 
 
@@ -84,6 +85,12 @@ SQL-based Kinesis Data Analytics application.
 
 The array of descriptions of VPC configurations available to the
 application.
+
+
+=head2 ZeppelinApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::ZeppelinApplicationConfigurationDescription>
+
+The configuration parameters for a Kinesis Data Analytics Studio
+notebook.
 
 
 

@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes the location of a Java-based Amazon Kinesis Data Analytics
-application's code stored in an S3 bucket.
+Describes the location of an application's code stored in an S3 bucket.
 
 =head1 ATTRIBUTES
 

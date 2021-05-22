@@ -35,11 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For a Java-based Amazon Kinesis Data Analytics application, provides a
-description of an Amazon S3 object, including the Amazon Resource Name
-(ARN) of the S3 bucket, the name of the Amazon S3 object that contains
-the data, and the version number of the Amazon S3 object that contains
-the data.
+For a Kinesis Data Analytics application provides a description of an
+Amazon S3 object, including the Amazon Resource Name (ARN) of the S3
+bucket, the name of the Amazon S3 object that contains the data, and
+the version number of the Amazon S3 object that contains the data.
 
 =head1 ATTRIBUTES
 

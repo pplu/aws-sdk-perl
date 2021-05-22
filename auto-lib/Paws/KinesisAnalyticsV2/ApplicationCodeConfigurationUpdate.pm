@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates to a Java-based Amazon Kinesis Data Analytics
-application.
+Describes code configuration updates for an application. This is
+supported for a Flink-based Kinesis Data Analytics application or a
+SQL-based Kinesis Data Analytics application.
 
 =head1 ATTRIBUTES
 

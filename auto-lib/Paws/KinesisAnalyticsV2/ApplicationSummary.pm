@@ -2,6 +2,7 @@
 package Paws::KinesisAnalyticsV2::ApplicationSummary;
   use Moose;
   has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationMode => (is => 'ro', isa => 'Str');
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
@@ -48,6 +49,13 @@ Amazon Resource Name (ARN), name, and status.
 The ARN of the application.
 
 
+=head2 ApplicationMode => Str
+
+For a Kinesis Data Analytics for Apache Flink application, the mode is
+C<STREAMING>. For a Kinesis Data Analytics Studio notebook, it is
+C<INTERACTIVE>.
+
+
 =head2 B<REQUIRED> ApplicationName => Str
 
 The name of the application.
@@ -65,8 +73,7 @@ Provides the current application version.
 
 =head2 B<REQUIRED> RuntimeEnvironment => Str
 
-The runtime environment for the application (C<SQL-1.0> or
-C<FLINK-1_6>).
+The runtime environment for the application.
 
 
 

@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates to the execution property groups for a Java-based
-Amazon Kinesis Data Analytics application.
+Describes updates to the execution property groups for a Flink-based
+Kinesis Data Analytics application or a Studio notebook.
 
 =head1 ATTRIBUTES
 

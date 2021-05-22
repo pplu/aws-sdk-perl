@@ -34,11 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-When you configure an SQL-based Amazon Kinesis Data Analytics
-application's input at the time of creating or updating an application,
-provides additional mapping information specific to the record format
-(such as JSON, CSV, or record fields delimited by some delimiter) on
-the streaming source.
+When you configure a SQL-based Kinesis Data Analytics application's
+input at the time of creating or updating an application, provides
+additional mapping information specific to the record format (such as
+JSON, CSV, or record fields delimited by some delimiter) on the
+streaming source.
 
 =head1 ATTRIBUTES
 

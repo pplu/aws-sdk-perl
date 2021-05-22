@@ -3,7 +3,8 @@ package Paws::KinesisAnalyticsV2::AddApplicationCloudWatchLoggingOption;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has CloudWatchLoggingOption => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOption', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  has ConditionalToken => (is => 'ro', isa => 'Str');
+  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -36,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
 
       },
-      CurrentApplicationVersionId => 1,
-
+      ConditionalToken            => 'MyConditionalToken',    # OPTIONAL
+      CurrentApplicationVersionId => 1,                       # OPTIONAL
       );
 
     # Results:
@@ -69,10 +70,25 @@ Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).
 
 
 
-=head2 B<REQUIRED> CurrentApplicationVersionId => Int
+=head2 ConditionalToken => Str
 
-The version ID of the Kinesis Data Analytics application. You can
-retrieve the application version ID using DescribeApplication.
+A value you use to implement strong concurrency for application
+updates. You must provide the C<CurrentApplicationVersionId> or the
+C<ConditionalToken>. You get the application's current
+C<ConditionalToken> using DescribeApplication. For better concurrency
+support, use the C<ConditionalToken> parameter instead of
+C<CurrentApplicationVersionId>.
+
+
+
+=head2 CurrentApplicationVersionId => Int
+
+The version ID of the Kinesis Data Analytics application. You must
+provide the C<CurrentApplicationVersionId> or the
+C<ConditionalToken>.You can retrieve the application version ID using
+DescribeApplication. For better concurrency support, use the
+C<ConditionalToken> parameter instead of
+C<CurrentApplicationVersionId>.
 
 
 

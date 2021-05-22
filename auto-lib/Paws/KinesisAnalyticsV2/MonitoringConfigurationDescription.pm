@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes configuration parameters for CloudWatch logging for a
-Java-based Kinesis Data Analytics application.
+Describes configuration parameters for CloudWatch logging for an
+application.
 
 =head1 ATTRIBUTES
 

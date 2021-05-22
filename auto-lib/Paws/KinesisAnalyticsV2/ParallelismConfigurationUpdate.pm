@@ -36,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates to parameters for how a Java-based Kinesis Data
-Analytics application executes multiple tasks simultaneously.
+Describes updates to parameters for how an application executes
+multiple tasks simultaneously.
 
 =head1 ATTRIBUTES
 
@@ -45,8 +45,8 @@ Analytics application executes multiple tasks simultaneously.
 =head2 AutoScalingEnabledUpdate => Bool
 
 Describes updates to whether the Kinesis Data Analytics service can
-increase the parallelism of the application in response to increased
-throughput.
+increase the parallelism of a Flink-based Kinesis Data Analytics
+application in response to increased throughput.
 
 
 =head2 ConfigurationTypeUpdate => Str

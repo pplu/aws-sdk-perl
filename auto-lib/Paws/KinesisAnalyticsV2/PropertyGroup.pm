@@ -34,8 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Property key-value pairs passed into a Java-based Kinesis Data
-Analytics application.
+Property key-value pairs passed into an application.
 
 =head1 ATTRIBUTES
 

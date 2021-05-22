@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, describes a
+For a SQL-based Kinesis Data Analytics application, describes a
 processor that is used to preprocess the records in the stream before
 being processed by your application code. Currently, the only input
 processor available is AWS Lambda
-(https://aws.amazon.com/documentation/lambda/).
+(https://docs.aws.amazon.com/lambda/).
 
 =head1 ATTRIBUTES
 

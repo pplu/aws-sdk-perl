@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, provides
-additional mapping information when JSON is the record format on the
-streaming source.
+For a SQL-based Kinesis Data Analytics application, provides additional
+mapping information when JSON is the record format on the streaming
+source.
 
 =head1 ATTRIBUTES
 

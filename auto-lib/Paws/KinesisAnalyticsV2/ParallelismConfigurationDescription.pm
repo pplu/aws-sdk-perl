@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes parameters for how a Java-based Kinesis Data Analytics
+Describes parameters for how a Flink-based Kinesis Data Analytics
 application executes multiple tasks simultaneously.
 
 =head1 ATTRIBUTES
@@ -57,7 +57,7 @@ Kinesis Data Analytics service.
 
 =head2 CurrentParallelism => Int
 
-Describes the current number of parallel tasks that a Java-based
+Describes the current number of parallel tasks that a Flink-based
 Kinesis Data Analytics application can perform. If
 C<AutoScalingEnabled> is set to True, Kinesis Data Analytics can
 increase this value in response to application load. The service can
@@ -71,7 +71,7 @@ C<Parallelism> setting.
 
 =head2 Parallelism => Int
 
-Describes the initial number of parallel tasks that a Java-based
+Describes the initial number of parallel tasks that a Flink-based
 Kinesis Data Analytics application can perform. If
 C<AutoScalingEnabled> is set to True, then Kinesis Data Analytics can
 increase the C<CurrentParallelism> value in response to application
@@ -85,7 +85,7 @@ down to the C<Parallelism> setting.
 
 =head2 ParallelismPerKPU => Int
 
-Describes the number of parallel tasks that a Java-based Kinesis Data
+Describes the number of parallel tasks that a Flink-based Kinesis Data
 Analytics application can perform per Kinesis Processing Unit (KPU)
 used by the application.
 

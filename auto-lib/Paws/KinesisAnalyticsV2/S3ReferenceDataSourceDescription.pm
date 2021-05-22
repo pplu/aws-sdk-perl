@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, provides
-the bucket name and object key name that stores the reference data.
+For a SQL-based Kinesis Data Analytics application, provides the bucket
+name and object key name that stores the reference data.
 
 =head1 ATTRIBUTES
 
