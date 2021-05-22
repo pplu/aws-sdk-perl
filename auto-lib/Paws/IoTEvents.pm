@@ -39,6 +39,11 @@ package Paws::IoTEvents;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::DescribeDetectorModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDetectorModelAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::DescribeDetectorModelAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::DescribeInput', @_);
@@ -47,6 +52,11 @@ package Paws::IoTEvents;
   sub DescribeLoggingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::DescribeLoggingOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDetectorModelAnalysisResults {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::GetDetectorModelAnalysisResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDetectorModels {
@@ -74,6 +84,11 @@ package Paws::IoTEvents;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::PutLoggingOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDetectorModelAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::StartDetectorModelAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::TagResource', @_);
@@ -97,7 +112,7 @@ package Paws::IoTEvents;
   
 
 
-  sub operations { qw/CreateDetectorModel CreateInput DeleteDetectorModel DeleteInput DescribeDetectorModel DescribeInput DescribeLoggingOptions ListDetectorModels ListDetectorModelVersions ListInputs ListTagsForResource PutLoggingOptions TagResource UntagResource UpdateDetectorModel UpdateInput / }
+  sub operations { qw/CreateDetectorModel CreateInput DeleteDetectorModel DeleteInput DescribeDetectorModel DescribeDetectorModelAnalysis DescribeInput DescribeLoggingOptions GetDetectorModelAnalysisResults ListDetectorModels ListDetectorModelVersions ListInputs ListTagsForResource PutLoggingOptions StartDetectorModelAnalysis TagResource UntagResource UpdateDetectorModel UpdateInput / }
 
 1;
 
@@ -126,9 +141,9 @@ Paws::IoTEvents - Perl Interface to AWS AWS IoT Events
 =head1 DESCRIPTION
 
 AWS IoT Events monitors your equipment or device fleets for failures or
-changes in operation, and triggers actions when such events occur. AWS
-IoT Events API commands enable you to create, read, update and delete
-inputs and detector models, and to list their versions.
+changes in operation, and triggers actions when such events occur. You
+can use AWS IoT Events API operations to create, read, update, and
+delete inputs and detector models, and to list their versions.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iotevents-2018-07-27>
 
@@ -233,8 +248,24 @@ Each argument is described in detail in: L<Paws::IoTEvents::DescribeDetectorMode
 
 Returns: a L<Paws::IoTEvents::DescribeDetectorModelResponse> instance
 
-Describes a detector model. If the C<"version"> parameter is not
+Describes a detector model. If the C<version> parameter is not
 specified, information about the latest version is returned.
+
+
+=head2 DescribeDetectorModelAnalysis
+
+=over
+
+=item AnalysisId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::DescribeDetectorModelAnalysis>
+
+Returns: a L<Paws::IoTEvents::DescribeDetectorModelAnalysisResponse> instance
+
+Retrieves execution information about a detector model analysis
 
 
 =head2 DescribeInput
@@ -265,6 +296,26 @@ Each argument is described in detail in: L<Paws::IoTEvents::DescribeLoggingOptio
 Returns: a L<Paws::IoTEvents::DescribeLoggingOptionsResponse> instance
 
 Retrieves the current settings of the AWS IoT Events logging options.
+
+
+=head2 GetDetectorModelAnalysisResults
+
+=over
+
+=item AnalysisId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::GetDetectorModelAnalysisResults>
+
+Returns: a L<Paws::IoTEvents::GetDetectorModelAnalysisResultsResponse> instance
+
+Retrieves one or more analysis results of the detector model.
 
 
 =head2 ListDetectorModels
@@ -356,11 +407,30 @@ Returns: nothing
 
 Sets or updates the AWS IoT Events logging options.
 
-If you update the value of any C<"loggingOptions"> field, it takes up
-to one minute for the change to take effect. Also, if you change the
-policy attached to the role you specified in the C<"roleArn"> field
-(for example, to correct an invalid policy) it takes up to five minutes
-for that change to take effect.
+If you update the value of any C<loggingOptions> field, it takes up to
+one minute for the change to take effect. If you change the policy
+attached to the role you specified in the C<roleArn> field (for
+example, to correct an invalid policy), it takes up to five minutes for
+that change to take effect.
+
+
+=head2 StartDetectorModelAnalysis
+
+=over
+
+=item DetectorModelDefinition => L<Paws::IoTEvents::DetectorModelDefinition>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::StartDetectorModelAnalysis>
+
+Returns: a L<Paws::IoTEvents::StartDetectorModelAnalysisResponse> instance
+
+Performs an analysis of your detector model. For more information, see
+Running detector model analyses
+(https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html)
+in the I<AWS IoT Events Developer Guide>.
 
 
 =head2 TagResource

@@ -36,9 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 The attributes from the JSON payload that are made available by the
 input. Inputs are derived from messages sent to the AWS IoT Events
 system using C<BatchPutMessage>. Each such message contains a JSON
-payload, and those attributes (and their paired values) specified here
-are available for use in the C<condition> expressions used by
-detectors.
+payload. Those attributes (and their paired values) specified here are
+available for use in the C<condition> expressions used by detectors.
 
 =head1 ATTRIBUTES
 
@@ -48,10 +47,9 @@ detectors.
 An expression that specifies an attribute-value pair in a JSON
 structure. Use this to specify an attribute from the JSON payload that
 is made available by the input. Inputs are derived from messages sent
-to the AWS IoT Events system (C<BatchPutMessage>). Each such message
-contains a JSON payload, and the attribute (and its paired value)
-specified here are available for use in the C<"condition"> expressions
-used by detectors.
+to AWS IoT Events (C<BatchPutMessage>). Each such message contains a
+JSON payload. The attribute (and its paired value) specified here are
+available for use in the C<condition> expressions used by detectors.
 
 Syntax: C<E<lt>field-nameE<gt>.E<lt>field-nameE<gt>...>
 

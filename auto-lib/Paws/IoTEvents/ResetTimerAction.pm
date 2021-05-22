@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Information needed to reset the timer.
+Information required to reset the timer. The timer is reset to the
+previously evaluated result of the duration. The duration expression
+isn't reevaluated when you reset the timer.
 
 =head1 ATTRIBUTES
 

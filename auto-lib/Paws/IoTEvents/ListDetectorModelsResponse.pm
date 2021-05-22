@@ -23,8 +23,8 @@ Summary information about the detector models.
 
 =head2 NextToken => Str
 
-A token to retrieve the next set of results, or C<null> if there are no
-additional results.
+The token that you can use to return the next set of results, or
+C<null> if there are no more results.
 
 
 =head2 _request_id => Str

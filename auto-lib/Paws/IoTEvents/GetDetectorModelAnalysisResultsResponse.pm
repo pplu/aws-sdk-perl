@@ -1,7 +1,7 @@
 
-package Paws::IoTEvents::ListInputsResponse;
+package Paws::IoTEvents::GetDetectorModelAnalysisResultsResponse;
   use Moose;
-  has InputSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::InputSummary]', traits => ['NameInRequest'], request_name => 'inputSummaries');
+  has AnalysisResults => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::AnalysisResult]', traits => ['NameInRequest'], request_name => 'analysisResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -11,14 +11,14 @@ package Paws::IoTEvents::ListInputsResponse;
 
 =head1 NAME
 
-Paws::IoTEvents::ListInputsResponse
+Paws::IoTEvents::GetDetectorModelAnalysisResultsResponse
 
 =head1 ATTRIBUTES
 
 
-=head2 InputSummaries => ArrayRef[L<Paws::IoTEvents::InputSummary>]
+=head2 AnalysisResults => ArrayRef[L<Paws::IoTEvents::AnalysisResult>]
 
-Summary information about the inputs.
+Contains information about one or more analysis results.
 
 
 =head2 NextToken => Str

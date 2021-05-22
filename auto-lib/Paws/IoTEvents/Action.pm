@@ -2,8 +2,11 @@
 package Paws::IoTEvents::Action;
   use Moose;
   has ClearTimer => (is => 'ro', isa => 'Paws::IoTEvents::ClearTimerAction', request_name => 'clearTimer', traits => ['NameInRequest']);
+  has DynamoDB => (is => 'ro', isa => 'Paws::IoTEvents::DynamoDBAction', request_name => 'dynamoDB', traits => ['NameInRequest']);
+  has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoTEvents::DynamoDBv2Action', request_name => 'dynamoDBv2', traits => ['NameInRequest']);
   has Firehose => (is => 'ro', isa => 'Paws::IoTEvents::FirehoseAction', request_name => 'firehose', traits => ['NameInRequest']);
   has IotEvents => (is => 'ro', isa => 'Paws::IoTEvents::IotEventsAction', request_name => 'iotEvents', traits => ['NameInRequest']);
+  has IotSiteWise => (is => 'ro', isa => 'Paws::IoTEvents::IotSiteWiseAction', request_name => 'iotSiteWise', traits => ['NameInRequest']);
   has IotTopicPublish => (is => 'ro', isa => 'Paws::IoTEvents::IotTopicPublishAction', request_name => 'iotTopicPublish', traits => ['NameInRequest']);
   has Lambda => (is => 'ro', isa => 'Paws::IoTEvents::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
   has ResetTimer => (is => 'ro', isa => 'Paws::IoTEvents::ResetTimerAction', request_name => 'resetTimer', traits => ['NameInRequest']);
@@ -42,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-An action to be performed when the C<"condition"> is TRUE.
+An action to be performed when the C<condition> is TRUE.
 
 =head1 ATTRIBUTES
 
@@ -52,16 +55,49 @@ An action to be performed when the C<"condition"> is TRUE.
 Information needed to clear the timer.
 
 
+=head2 DynamoDB => L<Paws::IoTEvents::DynamoDBAction>
+
+Writes to the DynamoDB table that you created. The default action
+payload contains all attribute-value pairs that have the information
+about the detector model instance and the event that triggered the
+action. You can customize the payload
+(https://docs.aws.amazon.com/iotevents/latest/apireference/API_Payload.html).
+One column of the DynamoDB table receives all attribute-value pairs in
+the payload that you specify. For more information, see Actions
+(https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-event-actions.html)
+in I<AWS IoT Events Developer Guide>.
+
+
+=head2 DynamoDBv2 => L<Paws::IoTEvents::DynamoDBv2Action>
+
+Writes to the DynamoDB table that you created. The default action
+payload contains all attribute-value pairs that have the information
+about the detector model instance and the event that triggered the
+action. You can customize the payload
+(https://docs.aws.amazon.com/iotevents/latest/apireference/API_Payload.html).
+A separate column of the DynamoDB table receives one attribute-value
+pair in the payload that you specify. For more information, see Actions
+(https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-event-actions.html)
+in I<AWS IoT Events Developer Guide>.
+
+
 =head2 Firehose => L<Paws::IoTEvents::FirehoseAction>
 
 Sends information about the detector model instance and the event that
-triggered the action to a Kinesis Data Firehose delivery stream.
+triggered the action to an Amazon Kinesis Data Firehose delivery
+stream.
 
 
 =head2 IotEvents => L<Paws::IoTEvents::IotEventsAction>
 
-Sends an IoT Events input, passing in information about the detector
+Sends AWS IoT Events input, which passes information about the detector
 model instance and the event that triggered the action.
+
+
+=head2 IotSiteWise => L<Paws::IoTEvents::IotSiteWiseAction>
+
+Sends information about the detector model instance and the event that
+triggered the action to an asset property in AWS IoT SiteWise .
 
 
 =head2 IotTopicPublish => L<Paws::IoTEvents::IotTopicPublishAction>

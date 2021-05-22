@@ -2,6 +2,7 @@
 package Paws::IoTEvents::FirehoseAction;
   use Moose;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', request_name => 'deliveryStreamName', traits => ['NameInRequest'], required => 1);
+  has Payload => (is => 'ro', isa => 'Paws::IoTEvents::Payload', request_name => 'payload', traits => ['NameInRequest']);
   has Separator => (is => 'ro', isa => 'Str', request_name => 'separator', traits => ['NameInRequest']);
 
 1;
@@ -35,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 =head1 DESCRIPTION
 
 Sends information about the detector model instance and the event that
-triggered the action to a Kinesis Data Firehose delivery stream.
+triggered the action to an Amazon Kinesis Data Firehose delivery
+stream.
 
 =head1 ATTRIBUTES
 
@@ -44,6 +46,12 @@ triggered the action to a Kinesis Data Firehose delivery stream.
 
 The name of the Kinesis Data Firehose delivery stream where the data is
 written.
+
+
+=head2 Payload => L<Paws::IoTEvents::Payload>
+
+You can configure the action payload when you send a message to an
+Amazon Kinesis Data Firehose delivery stream.
 
 
 =head2 Separator => Str
