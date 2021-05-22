@@ -64,7 +64,7 @@ The ID for the specified job.
 
 =head2 Operation => Str
 
-The operation that the specified job is configured to run on each
+The operation that the specified job is configured to run on every
 object listed in the manifest.
 
 
@@ -75,9 +75,8 @@ The current priority for the specified job.
 
 =head2 ProgressSummary => L<Paws::S3Control::JobProgressSummary>
 
-Describes the total number of tasks that the specified job has
-executed, the number of tasks that succeeded, and the number of tasks
-that failed.
+Describes the total number of tasks that the specified job has run, the
+number of tasks that succeeded, and the number of tasks that failed.
 
 
 =head2 Status => Str

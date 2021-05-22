@@ -41,7 +41,7 @@ Contains the configuration parameters for a C<Lambda Invoke> operation.
 =head2 FunctionArn => Str
 
 The Amazon Resource Name (ARN) for the AWS Lambda function that the
-specified job will invoke for each object in the manifest.
+specified job will invoke on every object in the manifest.
 
 
 

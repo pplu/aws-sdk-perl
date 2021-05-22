@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Active',
         ... # values: Active, Cancelled, Cancelling, Complete, Completing, Failed, Failing, New, Paused, Pausing, Preparing, Ready, Suspended
       ],    # OPTIONAL
-      MaxResults => 1,                                  # OPTIONAL
-      NextToken  => 'MyNonEmptyMaxLength1024String',    # OPTIONAL
+      MaxResults => 1,                         # OPTIONAL
+      NextToken  => 'MyStringForNextToken',    # OPTIONAL
     );
 
     # Results:
@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The AWS account ID associated with the S3 Batch Operations job.
 
 
 

@@ -34,10 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 
 =head1 DESCRIPTION
 
-Contains the configuration parameters for an Initiate Glacier Restore
-job. Amazon S3 batch operations passes each value through to the
-underlying POST Object restore API. For more information about the
-parameters for this operation, see Restoring Archives
+Contains the configuration parameters for an S3 Initiate Restore Object
+job. S3 Batch Operations passes every object to the underlying POST
+Object restore API. For more information about the parameters for this
+operation, see RestoreObject
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOSTrestore.html#RESTObjectPOSTrestore-restore-request).
 
 =head1 ATTRIBUTES
@@ -45,12 +45,28 @@ parameters for this operation, see Restoring Archives
 
 =head2 ExpirationInDays => Int
 
+This argument specifies how long the S3 Glacier or S3 Glacier Deep
+Archive object remains available in Amazon S3. S3 Initiate Restore
+Object jobs that target S3 Glacier and S3 Glacier Deep Archive objects
+require C<ExpirationInDays> set to 1 or greater.
 
+Conversely, do I<not> set C<ExpirationInDays> when creating S3 Initiate
+Restore Object jobs that target S3 Intelligent-Tiering Archive Access
+and Deep Archive Access tier objects. Objects in S3 Intelligent-Tiering
+archive access tiers are not subject to restore expiry, so specifying
+C<ExpirationInDays> results in restore request failure.
+
+S3 Batch Operations jobs can operate either on S3 Glacier and S3
+Glacier Deep Archive storage class objects or on S3 Intelligent-Tiering
+Archive Access and Deep Archive Access storage tier objects, but not
+both types in the same job. If you need to restore objects of both
+types you I<must> create separate Batch Operations jobs.
 
 
 =head2 GlacierJobTier => Str
 
-
+S3 Batch Operations supports C<STANDARD> and C<BULK> retrieval tiers,
+but not the C<EXPEDITED> retrieval tier.
 
 
 

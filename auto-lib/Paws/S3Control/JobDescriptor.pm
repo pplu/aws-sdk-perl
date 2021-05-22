@@ -96,7 +96,7 @@ The configuration information for the specified job's manifest object.
 
 =head2 Operation => L<Paws::S3Control::JobOperation>
 
-The operation that the specified job is configured to execute on the
+The operation that the specified job is configured to run on the
 objects listed in the manifest.
 
 
@@ -107,9 +107,8 @@ The priority of the specified job.
 
 =head2 ProgressSummary => L<Paws::S3Control::JobProgressSummary>
 
-Describes the total number of tasks that the specified job has
-executed, the number of tasks that succeeded, and the number of tasks
-that failed.
+Describes the total number of tasks that the specified job has run, the
+number of tasks that succeeded, and the number of tasks that failed.
 
 
 =head2 Report => L<Paws::S3Control::JobReport>
@@ -120,8 +119,8 @@ you requested one in the C<Create Job> request.
 
 =head2 RoleArn => Str
 
-The Amazon Resource Name (ARN) for the Identity and Access Management
-(IAM) Role assigned to execute the tasks for this job.
+The Amazon Resource Name (ARN) for the AWS Identity and Access
+Management (IAM) role assigned to run the tasks for this job.
 
 
 =head2 Status => Str
@@ -131,7 +130,7 @@ The current status of the specified job.
 
 =head2 StatusUpdateReason => Str
 
-
+The reason for updating the job.
 
 
 =head2 SuspendedCause => Str

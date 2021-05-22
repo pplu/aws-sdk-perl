@@ -42,11 +42,13 @@ The name of the specified access point.
 =head2 NetworkOrigin => Str
 
 Indicates whether this access point allows access from the public
-Internet. If C<VpcConfiguration> is specified for this access point,
+internet. If C<VpcConfiguration> is specified for this access point,
 then C<NetworkOrigin> is C<VPC>, and the access point doesn't allow
-access from the public Internet. Otherwise, C<NetworkOrigin> is
+access from the public internet. Otherwise, C<NetworkOrigin> is
 C<Internet>, and the access point allows access from the public
-Internet, subject to the access point and bucket access policies.
+internet, subject to the access point and bucket access policies.
+
+This will always be true for an Amazon S3 on Outposts access point
 
 Valid values are: C<"Internet">, C<"VPC">
 
@@ -58,8 +60,11 @@ Valid values are: C<"Internet">, C<"VPC">
 
 =head2 VpcConfiguration => L<Paws::S3Control::VpcConfiguration>
 
-Contains the Virtual Private Cloud (VPC) configuration for the
+Contains the virtual private cloud (VPC) configuration for the
 specified access point.
+
+This element is empty if this access point is an Amazon S3 on Outposts
+access point that is used by other AWS services.
 
 
 

@@ -62,9 +62,9 @@ The format of the specified job-completion report.
 =head2 Prefix => Str
 
 An optional prefix to describe where in the specified bucket the
-job-completion report will be stored. Amazon S3 will store the
+job-completion report will be stored. Amazon S3 stores the
 job-completion report at
-E<lt>prefixE<gt>/job-E<lt>job-idE<gt>/report.json.
+C<E<lt>prefixE<gt>/job-E<lt>job-idE<gt>/report.json>.
 
 
 =head2 ReportScope => Str

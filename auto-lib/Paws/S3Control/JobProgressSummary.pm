@@ -35,9 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 
 =head1 DESCRIPTION
 
-Describes the total number of tasks that the specified job has
-executed, the number of tasks that succeeded, and the number of tasks
-that failed.
+Describes the total number of tasks that the specified job has started,
+the number of tasks that succeeded, and the number of tasks that
+failed.
 
 =head1 ATTRIBUTES
 

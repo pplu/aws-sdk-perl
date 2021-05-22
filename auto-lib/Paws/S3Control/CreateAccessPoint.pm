@@ -13,7 +13,7 @@ package Paws::S3Control::CreateAccessPoint;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccessPoint');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20180820/accesspoint/{name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::CreateAccessPointResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'CreateAccessPointRequest');
   class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'http://awss3control.amazonaws.com/doc/2018-08-20/');  
@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3-control = Paws->service('S3Control');
-    $s3 -control->CreateAccessPoint(
+    my $CreateAccessPointResult = $s3 -control->CreateAccessPoint(
       AccountId                      => 'MyAccountId',
       Bucket                         => 'MyBucketName',
       Name                           => 'MyAccessPointName',
@@ -51,6 +51,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },    # OPTIONAL
     );
+
+    # Results:
+    my $AccessPointArn = $CreateAccessPointResult->AccessPointArn;
+
+    # Returns a L<Paws::S3Control::CreateAccessPointResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-control/CreateAccessPoint>
@@ -70,6 +75,18 @@ create an access point.
 The name of the bucket that you want to associate this access point
 with.
 
+For using this parameter with Amazon S3 on Outposts with the REST API,
+you must specify the name and the x-amz-outpost-id as well.
+
+For using this parameter with S3 on Outposts with the AWS SDK and CLI,
+you must specify the ARN of the bucket accessed in the format
+C<arn:aws:s3-outposts:E<lt>RegionE<gt>:E<lt>account-idE<gt>:outpost/E<lt>outpost-idE<gt>/bucket/E<lt>my-bucket-nameE<gt>>.
+For example, to access the bucket C<reports> through outpost
+C<my-outpost> owned by account C<123456789012> in Region C<us-west-2>,
+use the URL encoding of
+C<arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports>.
+The value must be URL encoded.
+
 
 
 =head2 B<REQUIRED> Name => Str
@@ -80,14 +97,18 @@ The name you want to assign to this access point.
 
 =head2 PublicAccessBlockConfiguration => L<Paws::S3Control::PublicAccessBlockConfiguration>
 
-
+The C<PublicAccessBlock> configuration that you want to apply to the
+access point.
 
 
 
 =head2 VpcConfiguration => L<Paws::S3Control::VpcConfiguration>
 
 If you include this field, Amazon S3 restricts access to this access
-point to requests from the specified Virtual Private Cloud (VPC).
+point to requests from the specified virtual private cloud (VPC).
+
+This is required for creating an access point for Amazon S3 on Outposts
+buckets.
 
 
 
