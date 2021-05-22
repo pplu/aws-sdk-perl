@@ -17,7 +17,7 @@ Paws::WorkLink::CreateFleetResponse
 
 =head2 FleetArn => Str
 
-The ARN of the fleet.
+The Amazon Resource Name (ARN) of the fleet.
 
 
 =head2 _request_id => Str

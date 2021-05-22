@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastUpdatedTime = $DescribeFleetMetadataResponse->LastUpdatedTime;
     my $OptimizeForEndUserLocation =
       $DescribeFleetMetadataResponse->OptimizeForEndUserLocation;
+    my $Tags = $DescribeFleetMetadataResponse->Tags;
 
     # Returns a L<Paws::WorkLink::DescribeFleetMetadataResponse> object.
 
@@ -53,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> FleetArn => Str
 
-The ARN of the fleet.
+The Amazon Resource Name (ARN) of the fleet.
 
 
 
