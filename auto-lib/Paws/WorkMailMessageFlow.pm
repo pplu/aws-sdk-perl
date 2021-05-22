@@ -19,10 +19,15 @@ package Paws::WorkMailMessageFlow;
     my $call_object = $self->new_with_coercions('Paws::WorkMailMessageFlow::GetRawMessageContent', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutRawMessageContent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMailMessageFlow::PutRawMessageContent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/GetRawMessageContent / }
+  sub operations { qw/GetRawMessageContent PutRawMessageContent / }
 
 1;
 
@@ -73,6 +78,39 @@ Returns: a L<Paws::WorkMailMessageFlow::GetRawMessageContentResponse> instance
 
 Retrieves the raw content of an in-transit email message, in MIME
 format.
+
+
+=head2 PutRawMessageContent
+
+=over
+
+=item Content => L<Paws::WorkMailMessageFlow::RawMessageContent>
+
+=item MessageId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMailMessageFlow::PutRawMessageContent>
+
+Returns: a L<Paws::WorkMailMessageFlow::PutRawMessageContentResponse> instance
+
+Updates the raw content of an in-transit email message, in MIME format.
+
+This example describes how to update in-transit email message. For more
+information and examples for using this API, see Updating message
+content with AWS Lambda
+(https://docs.aws.amazon.com/workmail/latest/adminguide/update-with-lambda.html).
+
+Updates to an in-transit message only appear when you call
+C<PutRawMessageContent> from an AWS Lambda function configured with a
+synchronous Run Lambda
+(https://docs.aws.amazon.com/workmail/latest/adminguide/lambda.html#synchronous-rules)
+rule. If you call C<PutRawMessageContent> on a delivered or sent
+message, the message remains unchanged, even though
+GetRawMessageContent
+(https://docs.aws.amazon.com/workmail/latest/APIReference/API_messageflow_GetRawMessageContent.html)
+returns an updated message.
 
 
 
