@@ -45,35 +45,110 @@ Auto Scaling.
 
 =head2 AdjustmentType => Str
 
-Specifies whether the C<ScalingAdjustment> value in a StepAdjustment is
-an absolute number or a percentage of the current capacity.
+Specifies how the C<ScalingAdjustment> value in a StepAdjustment
+(https://docs.aws.amazon.com/autoscaling/application/APIReference/API_StepAdjustment.html)
+is interpreted (for example, an absolute number or a percentage). The
+valid values are C<ChangeInCapacity>, C<ExactCapacity>, and
+C<PercentChangeInCapacity>.
+
+C<AdjustmentType> is required if you are adding a new step scaling
+policy configuration.
 
 
 =head2 Cooldown => Int
 
-The amount of time, in seconds, after a scaling activity completes
-where previous trigger-related scaling activities can influence future
-scaling events.
+The amount of time, in seconds, to wait for a previous scaling activity
+to take effect.
 
-For scale-out policies, while the cooldown period is in effect, the
-capacity that has been added by the previous scale-out event that
-initiated the cooldown is calculated as part of the desired capacity
-for the next scale out. The intention is to continuously (but not
-excessively) scale out. For example, an alarm triggers a step scaling
-policy to scale out an Amazon ECS service by 2 tasks, the scaling
-activity completes successfully, and a cooldown period of 5 minutes
-starts. During the cooldown period, if the alarm triggers the same
-policy again but at a more aggressive step adjustment to scale out the
-service by 3 tasks, the 2 tasks that were added in the previous
-scale-out event are considered part of that capacity and only 1
-additional task is added to the desired count.
+With scale-out policies, the intention is to continuously (but not
+excessively) scale out. After Application Auto Scaling successfully
+scales out using a step scaling policy, it starts to calculate the
+cooldown time. The scaling policy won't increase the desired capacity
+again unless either a larger scale out is triggered or the cooldown
+period ends. While the cooldown period is in effect, capacity added by
+the initiating scale-out activity is calculated as part of the desired
+capacity for the next scale-out activity. For example, when an alarm
+triggers a step scaling policy to increase the capacity by 2, the
+scaling activity completes successfully, and a cooldown period starts.
+If the alarm triggers again during the cooldown period but at a more
+aggressive step adjustment of 3, the previous increase of 2 is
+considered part of the current capacity. Therefore, only 1 is added to
+the capacity.
 
-For scale-in policies, the cooldown period is used to block subsequent
-scale-in requests until it has expired. The intention is to scale in
-conservatively to protect your application's availability. However, if
-another alarm triggers a scale-out policy during the cooldown period
-after a scale-in, Application Auto Scaling scales out your scalable
-target immediately.
+With scale-in policies, the intention is to scale in conservatively to
+protect your applicationE<rsquo>s availability, so scale-in activities
+are blocked until the cooldown period has expired. However, if another
+alarm triggers a scale-out activity during the cooldown period after a
+scale-in activity, Application Auto Scaling scales out the target
+immediately. In this case, the cooldown period for the scale-in
+activity stops and doesn't complete.
+
+Application Auto Scaling provides a default value of 300 for the
+following scalable targets:
+
+=over
+
+=item *
+
+ECS services
+
+=item *
+
+Spot Fleet requests
+
+=item *
+
+EMR clusters
+
+=item *
+
+AppStream 2.0 fleets
+
+=item *
+
+Aurora DB clusters
+
+=item *
+
+Amazon SageMaker endpoint variants
+
+=item *
+
+Custom resources
+
+=back
+
+For all other scalable targets, the default value is 0:
+
+=over
+
+=item *
+
+DynamoDB tables
+
+=item *
+
+DynamoDB global secondary indexes
+
+=item *
+
+Amazon Comprehend document classification and entity recognizer
+endpoints
+
+=item *
+
+Lambda provisioned concurrency
+
+=item *
+
+Amazon Keyspaces tables
+
+=item *
+
+Amazon MSK broker storage
+
+=back
+
 
 
 =head2 MetricAggregationType => Str
@@ -85,23 +160,22 @@ null, the value is treated as C<Average>.
 
 =head2 MinAdjustmentMagnitude => Int
 
-The minimum number to adjust your scalable dimension as a result of a
-scaling activity. If the adjustment type is C<PercentChangeInCapacity>,
-the scaling policy changes the scalable dimension of the scalable
-target by this amount.
-
-For example, suppose that you create a step scaling policy to scale out
-an Amazon ECS service by 25 percent and you specify a
-C<MinAdjustmentMagnitude> of 2. If the service has 4 tasks and the
-scaling policy is performed, 25 percent of 4 is 1. However, because you
-specified a C<MinAdjustmentMagnitude> of 2, Application Auto Scaling
-scales out the service by 2 tasks.
+The minimum value to scale by when the adjustment type is
+C<PercentChangeInCapacity>. For example, suppose that you create a step
+scaling policy to scale out an Amazon ECS service by 25 percent and you
+specify a C<MinAdjustmentMagnitude> of 2. If the service has 4 tasks
+and the scaling policy is performed, 25 percent of 4 is 1. However,
+because you specified a C<MinAdjustmentMagnitude> of 2, Application
+Auto Scaling scales out the service by 2 tasks.
 
 
 =head2 StepAdjustments => ArrayRef[L<Paws::ApplicationAutoScaling::StepAdjustment>]
 
 A set of adjustments that enable you to scale based on the size of the
 alarm breach.
+
+At least one step adjustment is required if you are adding a new step
+scaling policy configuration.
 
 
 

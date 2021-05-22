@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-Represents a step adjustment for a StepScalingPolicyConfiguration.
+Represents a step adjustment for a StepScalingPolicyConfiguration
+(https://docs.aws.amazon.com/autoscaling/application/APIReference/API_StepScalingPolicyConfiguration.html).
 Describes an adjustment based on the difference between the value of
 the aggregated CloudWatch metric and the breach threshold that you've
 defined for the alarm.
@@ -114,8 +115,9 @@ The upper bound must be greater than the lower bound.
 =head2 B<REQUIRED> ScalingAdjustment => Int
 
 The amount by which to scale, based on the specified adjustment type. A
-positive value adds to the current scalable dimension while a negative
-number removes from the current scalable dimension.
+positive value adds to the current capacity while a negative number
+removes from the current capacity. For exact capacity, you must specify
+a positive value.
 
 
 
