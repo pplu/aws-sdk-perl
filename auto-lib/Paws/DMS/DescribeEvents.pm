@@ -86,7 +86,7 @@ A list of event categories for the source type that you've chosen.
 
 =head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
 
-Filters applied to the action.
+Filters applied to events.
 
 
 

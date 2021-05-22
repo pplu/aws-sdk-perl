@@ -41,7 +41,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Ordera
 
 =head1 DESCRIPTION
 
-This class has no description
+In response to the C<DescribeOrderableReplicationInstances> operation,
+this object describes an available replication instance. This
+description includes the replication instance's type, engine version,
+and allocated storage.
 
 =head1 ATTRIBUTES
 
@@ -92,11 +95,15 @@ later.
 
 =head2 ReplicationInstanceClass => Str
 
-The compute and memory capacity of the replication instance.
+The compute and memory capacity of the replication instance as defined
+for the specified replication instance class. For example to specify
+the instance class dms.c4.large, set this parameter to
+C<"dms.c4.large">.
 
-Valid Values: C<dms.t2.micro | dms.t2.small | dms.t2.medium |
-dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge |
-dms.c4.4xlarge>
+For more information on the settings and capacities for the available
+replication instance classes, see Selecting the right AWS DMS
+replication instance for your migration
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth).
 
 
 =head2 StorageType => Str

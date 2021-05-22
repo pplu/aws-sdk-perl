@@ -38,22 +38,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Connec
 
 =head1 DESCRIPTION
 
-This class has no description
+Status of the connection between an endpoint and a replication
+instance, including Amazon Resource Names (ARNs) and the last error
+message issued.
 
 =head1 ATTRIBUTES
 
 
 =head2 EndpointArn => Str
 
-The Amazon Resource Name (ARN) string that uniquely identifies the
-endpoint.
+The ARN string that uniquely identifies the endpoint.
 
 
 =head2 EndpointIdentifier => Str
 
-The identifier of the endpoint. Identifiers must begin with a letter;
-must contain only ASCII letters, digits, and hyphens; and must not end
-with a hyphen or contain two consecutive hyphens.
+The identifier of the endpoint. Identifiers must begin with a letter
+and must contain only ASCII letters, digits, and hyphens. They can't
+end with a hyphen or contain two consecutive hyphens.
 
 
 =head2 LastFailureMessage => Str
@@ -63,7 +64,7 @@ The error message when the connection last failed.
 
 =head2 ReplicationInstanceArn => Str
 
-The Amazon Resource Name (ARN) of the replication instance.
+The ARN of the replication instance.
 
 
 =head2 ReplicationInstanceIdentifier => Str
@@ -74,7 +75,29 @@ lowercase string.
 
 =head2 Status => Str
 
-The connection status.
+The connection status. This parameter can return one of the following
+values:
+
+=over
+
+=item *
+
+C<"successful">
+
+=item *
+
+C<"testing">
+
+=item *
+
+C<"failed">
+
+=item *
+
+C<"deleting">
+
+=back
+
 
 
 

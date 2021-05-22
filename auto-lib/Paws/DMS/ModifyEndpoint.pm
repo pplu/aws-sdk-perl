@@ -4,6 +4,7 @@ package Paws::DMS::ModifyEndpoint;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
+  has DocDbSettings => (is => 'ro', isa => 'Paws::DMS::DocDbSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has ElasticsearchSettings => (is => 'ro', isa => 'Paws::DMS::ElasticsearchSettings');
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
@@ -12,15 +13,23 @@ package Paws::DMS::ModifyEndpoint;
   has EngineName => (is => 'ro', isa => 'Str');
   has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
+  has IBMDb2Settings => (is => 'ro', isa => 'Paws::DMS::IBMDb2Settings');
+  has KafkaSettings => (is => 'ro', isa => 'Paws::DMS::KafkaSettings');
   has KinesisSettings => (is => 'ro', isa => 'Paws::DMS::KinesisSettings');
+  has MicrosoftSQLServerSettings => (is => 'ro', isa => 'Paws::DMS::MicrosoftSQLServerSettings');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
+  has MySQLSettings => (is => 'ro', isa => 'Paws::DMS::MySQLSettings');
+  has NeptuneSettings => (is => 'ro', isa => 'Paws::DMS::NeptuneSettings');
+  has OracleSettings => (is => 'ro', isa => 'Paws::DMS::OracleSettings');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has PostgreSQLSettings => (is => 'ro', isa => 'Paws::DMS::PostgreSQLSettings');
   has RedshiftSettings => (is => 'ro', isa => 'Paws::DMS::RedshiftSettings');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
+  has SybaseSettings => (is => 'ro', isa => 'Paws::DMS::SybaseSettings');
   has Username => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -47,106 +56,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Modify endpoint
+    # Modifies the specified endpoint.
     my $ModifyEndpointResponse = $dms->ModifyEndpoint(
-      EndpointArn         => 'MyString',
-      CertificateArn      => 'MyString',    # OPTIONAL
-      DatabaseName        => 'MyString',    # OPTIONAL
-      DmsTransferSettings => {
-        BucketName           => 'MyString',
-        ServiceAccessRoleArn => 'MyString',
-      },                                    # OPTIONAL
-      DynamoDbSettings => {
-        ServiceAccessRoleArn => 'MyString',
-
-      },                                    # OPTIONAL
-      ElasticsearchSettings => {
-        EndpointUri             => 'MyString',
-        ServiceAccessRoleArn    => 'MyString',
-        ErrorRetryDuration      => 1,            # OPTIONAL
-        FullLoadErrorPercentage => 1,            # OPTIONAL
-      },    # OPTIONAL
-      EndpointIdentifier        => 'MyString',    # OPTIONAL
-      EndpointType              => 'source',      # OPTIONAL
-      EngineName                => 'MyString',    # OPTIONAL
-      ExternalTableDefinition   => 'MyString',    # OPTIONAL
-      ExtraConnectionAttributes => 'MyString',    # OPTIONAL
-      KinesisSettings           => {
-        MessageFormat        => 'json',           # values: json; OPTIONAL
-        ServiceAccessRoleArn => 'MyString',
-        StreamArn            => 'MyString',
-      },    # OPTIONAL
-      MongoDbSettings => {
-        AuthMechanism =>
-          'default',    # values: default, mongodb_cr, scram_sha_1; OPTIONAL
-        AuthSource        => 'MyString',
-        AuthType          => 'no',              # values: no, password; OPTIONAL
-        DatabaseName      => 'MyString',
-        DocsToInvestigate => 'MyString',
-        ExtractDocId      => 'MyString',
-        KmsKeyId          => 'MyString',
-        NestingLevel      => 'none',            # values: none, one; OPTIONAL
-        Password          => 'MySecretString',  # OPTIONAL
-        Port              => 1,                 # OPTIONAL
-        ServerName        => 'MyString',
-        Username          => 'MyString',
-      },    # OPTIONAL
-      Password         => 'MySecretString',    # OPTIONAL
-      Port             => 1,                   # OPTIONAL
-      RedshiftSettings => {
-        AcceptAnyDate      => 1,            # OPTIONAL
-        AfterConnectScript => 'MyString',
-        BucketFolder       => 'MyString',
-        BucketName         => 'MyString',
-        ConnectionTimeout  => 1,            # OPTIONAL
-        DatabaseName       => 'MyString',
-        DateFormat         => 'MyString',
-        EmptyAsNull        => 1,            # OPTIONAL
-        EncryptionMode     => 'sse-s3',     # values: sse-s3, sse-kms; OPTIONAL
-        FileTransferUploadStreams    => 1,                   # OPTIONAL
-        LoadTimeout                  => 1,                   # OPTIONAL
-        MaxFileSize                  => 1,                   # OPTIONAL
-        Password                     => 'MySecretString',    # OPTIONAL
-        Port                         => 1,                   # OPTIONAL
-        RemoveQuotes                 => 1,                   # OPTIONAL
-        ReplaceChars                 => 'MyString',
-        ReplaceInvalidChars          => 'MyString',
-        ServerName                   => 'MyString',
-        ServerSideEncryptionKmsKeyId => 'MyString',
-        ServiceAccessRoleArn         => 'MyString',
-        TimeFormat                   => 'MyString',
-        TrimBlanks                   => 1,                   # OPTIONAL
-        TruncateColumns              => 1,                   # OPTIONAL
-        Username                     => 'MyString',
-        WriteBufferSize              => 1,                   # OPTIONAL
-      },    # OPTIONAL
-      S3Settings => {
-        BucketFolder      => 'MyString',
-        BucketName        => 'MyString',
-        CdcInsertsOnly    => 1,            # OPTIONAL
-        CompressionType   => 'none',       # values: none, gzip; OPTIONAL
-        CsvDelimiter      => 'MyString',
-        CsvRowDelimiter   => 'MyString',
-        DataFormat        => 'csv',        # values: csv, parquet; OPTIONAL
-        DataPageSize      => 1,            # OPTIONAL
-        DictPageSizeLimit => 1,            # OPTIONAL
-        EnableStatistics  => 1,            # OPTIONAL
-        EncodingType =>
-          'plain',   # values: plain, plain-dictionary, rle-dictionary; OPTIONAL
-        EncryptionMode => 'sse-s3',    # values: sse-s3, sse-kms; OPTIONAL
-        ExternalTableDefinition       => 'MyString',
-        IncludeOpForFullLoad          => 1,            # OPTIONAL
-        ParquetTimestampInMillisecond => 1,            # OPTIONAL
-        ParquetVersion =>
-          'parquet-1-0',    # values: parquet-1-0, parquet-2-0; OPTIONAL
-        RowGroupLength               => 1,            # OPTIONAL
-        ServerSideEncryptionKmsKeyId => 'MyString',
-        ServiceAccessRoleArn         => 'MyString',
-        TimestampColumnName          => 'MyString',
-      },    # OPTIONAL
-      ServerName           => 'MyString',    # OPTIONAL
-      ServiceAccessRoleArn => 'MyString',    # OPTIONAL
-      SslMode              => 'none',        # OPTIONAL
-      Username             => 'MyString',    # OPTIONAL
+      'CertificateArn'            => '',
+      'DatabaseName'              => '',
+      'EndpointArn'               => '',
+      'EndpointIdentifier'        => '',
+      'EndpointType'              => 'source',
+      'EngineName'                => '',
+      'ExtraConnectionAttributes' => '',
+      'Password'                  => '',
+      'Port'                      => 123,
+      'ServerName'                => '',
+      'SslMode'                   => 'require',
+      'Username'                  => ''
     );
 
     # Results:
@@ -184,8 +108,8 @@ Attributes include the following:
 
 =item *
 
-serviceAccessRoleArn - The IAM role that has permission to access the
-Amazon S3 bucket.
+serviceAccessRoleArn - The AWS Identity and Access Management (IAM)
+role that has permission to access the Amazon S3 bucket.
 
 =item *
 
@@ -194,26 +118,37 @@ BucketName - The name of the S3 bucket to use.
 =item *
 
 compressionType - An optional parameter to use GZIP to compress the
-target files. Set to NONE (the default) or do not use to leave the
-files uncompressed.
+target files. Either set this parameter to NONE (the default) or don't
+use it to leave the files uncompressed.
 
 =back
 
-Shorthand syntax: ServiceAccessRoleArn=string
-,BucketName=string,CompressionType=string
+Shorthand syntax for these settings is as follows:
+C<ServiceAccessRoleArn=string
+,BucketName=string,CompressionType=string>
 
-JSON syntax:
+JSON syntax for these settings is as follows: C<{
+"ServiceAccessRoleArn": "string", "BucketName": "string",
+"CompressionType": "none"|"gzip" }>
 
-{ "ServiceAccessRoleArn": "string", "BucketName": "string",
-"CompressionType": "none"|"gzip" }
+
+
+=head2 DocDbSettings => L<Paws::DMS::DocDbSettings>
+
+Settings in JSON format for the source DocumentDB endpoint. For more
+information about the available settings, see the configuration
+properties section in Using DocumentDB as a Target for AWS Database
+Migration Service
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.DocumentDB.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
 =head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
 
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
-more information about the available settings, see Using Object Mapping
-to Migrate Data to DynamoDB
+information about other available settings, see Using Object Mapping to
+Migrate Data to DynamoDB
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
 in the I<AWS Database Migration Service User Guide.>
 
@@ -225,7 +160,7 @@ Settings in JSON format for the target Elasticsearch endpoint. For more
 information about the available settings, see Extra Connection
 Attributes When Using Elasticsearch as a Target for AWS DMS
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
-in the I<AWS Database Migration User Guide.>
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -238,9 +173,9 @@ endpoint.
 
 =head2 EndpointIdentifier => Str
 
-The database endpoint identifier. Identifiers must begin with a letter;
-must contain only ASCII letters, digits, and hyphens; and must not end
-with a hyphen or contain two consecutive hyphens.
+The database endpoint identifier. Identifiers must begin with a letter
+and must contain only ASCII letters, digits, and hyphens. They can't
+end with a hyphen or contain two consecutive hyphens.
 
 
 
@@ -253,9 +188,11 @@ Valid values are: C<"source">, C<"target">
 =head2 EngineName => Str
 
 The type of engine for the endpoint. Valid values, depending on the
-EndpointType, include mysql, oracle, postgres, mariadb, aurora,
-aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb,
-mongodb, and sqlserver.
+EndpointType, include C<"mysql">, C<"oracle">, C<"postgres">,
+C<"mariadb">, C<"aurora">, C<"aurora-postgresql">, C<"redshift">,
+C<"s3">, C<"db2">, C<"azuredb">, C<"sybase">, C<"dynamodb">,
+C<"mongodb">, C<"kinesis">, C<"kafka">, C<"elasticsearch">,
+C<"documentdb">, C<"sqlserver">, and C<"neptune">.
 
 
 
@@ -272,13 +209,47 @@ parameter, pass the empty string ("") as an argument.
 
 
 
+=head2 IBMDb2Settings => L<Paws::DMS::IBMDb2Settings>
+
+Settings in JSON format for the source IBM Db2 LUW endpoint. For
+information about other available settings, see Extra connection
+attributes when using Db2 LUW as a source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.DB2.ConnectionAttrib)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
+=head2 KafkaSettings => L<Paws::DMS::KafkaSettings>
+
+Settings in JSON format for the target Apache Kafka endpoint. For more
+information about the available settings, see Using Apache Kafka as a
+Target for AWS Database Migration Service
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kafka.html)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
 =head2 KinesisSettings => L<Paws::DMS::KinesisSettings>
 
-Settings in JSON format for the target Amazon Kinesis Data Streams
-endpoint. For more information about the available settings, see Using
-Object Mapping to Migrate Data to a Kinesis Data Stream
-(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping)
-in the I<AWS Database Migration User Guide.>
+Settings in JSON format for the target endpoint for Amazon Kinesis Data
+Streams. For more information about the available settings, see Using
+Amazon Kinesis Data Streams as a Target for AWS Database Migration
+Service
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
+=head2 MicrosoftSQLServerSettings => L<Paws::DMS::MicrosoftSQLServerSettings>
+
+Settings in JSON format for the source and target Microsoft SQL Server
+endpoint. For information about other available settings, see Extra
+connection attributes when using SQL Server as a source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.SQLServer.ConnectionAttrib)
+and Extra connection attributes when using SQL Server as a target for
+AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.SQLServer.ConnectionAttrib)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -293,6 +264,42 @@ in the I<AWS Database Migration Service User Guide.>
 
 
 
+=head2 MySQLSettings => L<Paws::DMS::MySQLSettings>
+
+Settings in JSON format for the source and target MySQL endpoint. For
+information about other available settings, see Extra connection
+attributes when using MySQL as a source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MySQL.ConnectionAttrib)
+and Extra connection attributes when using a MySQL-compatible database
+as a target for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.MySQL.ConnectionAttrib)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
+=head2 NeptuneSettings => L<Paws::DMS::NeptuneSettings>
+
+Settings in JSON format for the target Amazon Neptune endpoint. For
+more information about the available settings, see Specifying Endpoint
+Settings for Amazon Neptune as a Target
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Neptune.html#CHAP_Target.Neptune.EndpointSettings)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
+=head2 OracleSettings => L<Paws::DMS::OracleSettings>
+
+Settings in JSON format for the source and target Oracle endpoint. For
+information about other available settings, see Extra connection
+attributes when using Oracle as a source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.ConnectionAttrib)
+and Extra connection attributes when using Oracle as a target for AWS
+DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Oracle.ConnectionAttrib)
+in the I<AWS Database Migration Service User Guide.>
+
+
+
 =head2 Password => Str
 
 The password to be used to login to the endpoint database.
@@ -302,6 +309,19 @@ The password to be used to login to the endpoint database.
 =head2 Port => Int
 
 The port used by the endpoint database.
+
+
+
+=head2 PostgreSQLSettings => L<Paws::DMS::PostgreSQLSettings>
+
+Settings in JSON format for the source and target PostgreSQL endpoint.
+For information about other available settings, see Extra connection
+attributes when using PostgreSQL as a source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.ConnectionAttrib)
+and Extra connection attributes when using PostgreSQL as a target for
+AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.PostgreSQL.ConnectionAttrib)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -340,6 +360,19 @@ The SSL mode used to connect to the endpoint. The default value is
 C<none>.
 
 Valid values are: C<"none">, C<"require">, C<"verify-ca">, C<"verify-full">
+
+=head2 SybaseSettings => L<Paws::DMS::SybaseSettings>
+
+Settings in JSON format for the source and target SAP ASE endpoint. For
+information about other available settings, see Extra connection
+attributes when using SAP ASE as a source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.SAP.ConnectionAttrib)
+and Extra connection attributes when using SAP ASE as a target for AWS
+DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.SAP.ConnectionAttrib)
+in the I<AWS Database Migration Service User Guide.>
+
+
 
 =head2 Username => Str
 

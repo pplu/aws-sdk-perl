@@ -33,14 +33,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Availa
 
 =head1 DESCRIPTION
 
-This class has no description
+The name of an Availability Zone for use during database migration.
+C<AvailabilityZone> is an optional parameter to the
+C<CreateReplicationInstance>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateReplicationInstance.html)
+operation, and itE<rsquo>s value relates to the AWS Region of an
+endpoint. For example, the availability zone of an endpoint in the
+us-east-1 region might be us-east-1a, us-east-1b, us-east-1c, or
+us-east-1d.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-The name of the availability zone.
+The name of the Availability Zone.
 
 
 

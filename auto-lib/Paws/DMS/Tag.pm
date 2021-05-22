@@ -34,27 +34,45 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Tag ob
 
 =head1 DESCRIPTION
 
-This class has no description
+A user-defined key-value pair that describes metadata added to an AWS
+DMS resource and that is used by operations such as the following:
+
+=over
+
+=item *
+
+C<AddTagsToResource>
+
+=item *
+
+C<ListTagsForResource>
+
+=item *
+
+C<RemoveTagsFromResource>
+
+=back
+
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-A key is the required name of the tag. The string value can be from 1
-to 128 Unicode characters in length and cannot be prefixed with "aws:"
-or "dms:". The string can only contain only the set of Unicode letters,
-digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+A key is the required name of the tag. The string value can be 1-128
+Unicode characters in length and can't be prefixed with "aws:" or
+"dms:". The string can only contain only the set of Unicode letters,
+digits, white-space, '_', '.', '/', '=', '+', '-' (Java regular
+expressions: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
 
 =head2 Value => Str
 
-A value is the optional value of the tag. The string value can be from
-1 to 256 Unicode characters in length and cannot be prefixed with
-"aws:" or "dms:". The string can only contain only the set of Unicode
-letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+A value is the optional value of the tag. The string value can be 1-256
+Unicode characters in length and can't be prefixed with "aws:" or
+"dms:". The string can only contain only the set of Unicode letters,
+digits, white-space, '_', '.', '/', '=', '+', '-' (Java regular
+expressions: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
 
 

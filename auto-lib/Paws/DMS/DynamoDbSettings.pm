@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Dynamo
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides the Amazon Resource Name (ARN) of the AWS Identity and Access
+Management (IAM) role used to define an Amazon DynamoDB target
+endpoint.
 
 =head1 ATTRIBUTES
 

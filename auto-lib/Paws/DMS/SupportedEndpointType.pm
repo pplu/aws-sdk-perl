@@ -4,6 +4,7 @@ package Paws::DMS::SupportedEndpointType;
   has EndpointType => (is => 'ro', isa => 'Str');
   has EngineDisplayName => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
+  has ReplicationInstanceEngineMinimumVersion => (is => 'ro', isa => 'Str');
   has SupportsCDC => (is => 'ro', isa => 'Bool');
 
 1;
@@ -36,7 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Suppor
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information about types of supported endpoints in response to
+a request by the C<DescribeEndpointTypes> operation. This information
+includes the type of endpoint, the database engine name, and whether
+change data capture (CDC) is supported.
 
 =head1 ATTRIBUTES
 
@@ -56,8 +60,18 @@ MySQL."
 =head2 EngineName => Str
 
 The database engine name. Valid values, depending on the EndpointType,
-include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql,
-redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
+include C<"mysql">, C<"oracle">, C<"postgres">, C<"mariadb">,
+C<"aurora">, C<"aurora-postgresql">, C<"redshift">, C<"s3">, C<"db2">,
+C<"azuredb">, C<"sybase">, C<"dynamodb">, C<"mongodb">, C<"kinesis">,
+C<"kafka">, C<"elasticsearch">, C<"documentdb">, C<"sqlserver">, and
+C<"neptune">.
+
+
+=head2 ReplicationInstanceEngineMinimumVersion => Str
+
+The earliest AWS DMS engine version that supports this endpoint engine.
+Note that endpoint engines released with AWS DMS versions earlier than
+3.1.1 do not return a value for this parameter.
 
 
 =head2 SupportsCDC => Bool

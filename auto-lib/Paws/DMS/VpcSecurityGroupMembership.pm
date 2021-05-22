@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::VpcSec
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes the status of a security group associated with the virtual
+private cloud (VPC) hosting your replication and DB instances.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +47,7 @@ The status of the VPC security group.
 
 =head2 VpcSecurityGroupId => Str
 
-The VPC security group Id.
+The VPC security group ID.
 
 
 

@@ -37,18 +37,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+   # Modify replication instance
+   # Modifies the replication instance to apply new settings. You can change one
+   # or more parameters by specifying these parameters and the new values in the
+   # request. Some settings are applied during the maintenance window.
     my $ModifyReplicationInstanceResponse = $dms->ModifyReplicationInstance(
-      ReplicationInstanceArn        => 'MyString',
-      AllocatedStorage              => 1,                      # OPTIONAL
-      AllowMajorVersionUpgrade      => 1,                      # OPTIONAL
-      ApplyImmediately              => 1,                      # OPTIONAL
-      AutoMinorVersionUpgrade       => 1,                      # OPTIONAL
-      EngineVersion                 => 'MyString',             # OPTIONAL
-      MultiAZ                       => 1,                      # OPTIONAL
-      PreferredMaintenanceWindow    => 'MyString',             # OPTIONAL
-      ReplicationInstanceClass      => 'MyString',             # OPTIONAL
-      ReplicationInstanceIdentifier => 'MyString',             # OPTIONAL
-      VpcSecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
+      'AllocatedStorage'           => 123,
+      'AllowMajorVersionUpgrade'   => 1,
+      'ApplyImmediately'           => 1,
+      'AutoMinorVersionUpgrade'    => 1,
+      'EngineVersion'              => '1.5.0',
+      'MultiAZ'                    => 1,
+      'PreferredMaintenanceWindow' => 'sun:06:00-sun:14:00',
+      'ReplicationInstanceArn' =>
+        'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ',
+      'ReplicationInstanceClass'      => 'dms.t2.micro',
+      'ReplicationInstanceIdentifier' => 'test-rep-1',
+      'VpcSecurityGroupIds'           => [
+
+      ]
     );
 
     # Results:
@@ -91,13 +98,30 @@ the next maintenance window.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version upgrades will be applied automatically to
-the replication instance during the maintenance window. Changing this
-parameter does not result in an outage except in the following case and
-the change is asynchronously applied as soon as possible. An outage
-will result if this parameter is set to C<true> during the maintenance
-window, and a newer minor version is available, and AWS DMS has enabled
-auto patching for that engine version.
+A value that indicates that minor version upgrades are applied
+automatically to the replication instance during the maintenance
+window. Changing this parameter doesn't result in an outage, except in
+the case described following. The change is asynchronously applied as
+soon as possible.
+
+An outage does result if these factors apply:
+
+=over
+
+=item *
+
+This parameter is set to C<true> during the maintenance window.
+
+=item *
+
+A newer minor version is available.
+
+=item *
+
+AWS DMS has enabled automatic patching for the given engine version.
+
+=back
+
 
 
 
@@ -105,12 +129,15 @@ auto patching for that engine version.
 
 The engine version number of the replication instance.
 
+When modifying a major engine version of an instance, also set
+C<AllowMajorVersionUpgrade> to C<true>.
+
 
 
 =head2 MultiAZ => Bool
 
 Specifies whether the replication instance is a Multi-AZ deployment.
-You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+You can't set the C<AvailabilityZone> parameter if the Multi-AZ
 parameter is set to C<true>.
 
 
@@ -143,11 +170,15 @@ The Amazon Resource Name (ARN) of the replication instance.
 
 =head2 ReplicationInstanceClass => Str
 
-The compute and memory capacity of the replication instance.
+The compute and memory capacity of the replication instance as defined
+for the specified replication instance class. For example to specify
+the instance class dms.c4.large, set this parameter to
+C<"dms.c4.large">.
 
-Valid Values: C<dms.t2.micro | dms.t2.small | dms.t2.medium |
-dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge |
-dms.c4.4xlarge>
+For more information on the settings and capacities for the available
+replication instance classes, see Selecting the right AWS DMS
+replication instance for your migration
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth).
 
 
 

@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Replic
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a subnet group in response to a request by the
+C<DescribeReplicationSubnetGroups> operation.
 
 =head1 ATTRIBUTES
 

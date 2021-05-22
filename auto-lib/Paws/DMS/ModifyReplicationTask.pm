@@ -9,6 +9,7 @@ package Paws::DMS::ModifyReplicationTask;
   has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
   has ReplicationTaskSettings => (is => 'ro', isa => 'Str');
   has TableMappings => (is => 'ro', isa => 'Str');
+  has TaskData => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -43,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReplicationTaskIdentifier => 'MyString',               # OPTIONAL
       ReplicationTaskSettings   => 'MyString',               # OPTIONAL
       TableMappings             => 'MyString',               # OPTIONAL
+      TaskData                  => 'MyString',               # OPTIONAL
     );
 
     # Results:
@@ -98,10 +100,10 @@ Indicates when you want a change data capture (CDC) operation to stop.
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-E<ldquo>server_time:3018-02-09T12:12:12E<rdquo>
+E<ldquo>server_time:2018-02-09T12:12:12E<rdquo>
 
 Commit time example: --cdc-stop-position E<ldquo>commit_time:
-3018-02-09T12:12:12 E<ldquo>
+2018-02-09T12:12:12 E<ldquo>
 
 
 
@@ -128,7 +130,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens.
+Must contain 1-255 alphanumeric characters or hyphens.
 
 =item *
 
@@ -145,7 +147,7 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 
 =head2 ReplicationTaskSettings => Str
 
-JSON file that contains settings for the task, such as target metadata
+JSON file that contains settings for the task, such as task metadata
 settings.
 
 
@@ -153,9 +155,19 @@ settings.
 =head2 TableMappings => Str
 
 When using the AWS CLI or boto3, provide the path of the JSON file that
-contains the table mappings. Precede the path with C<file://>. When
-working with the DMS API, provide the JSON as the parameter value, for
-example: C<--table-mappings file://mappingfile.json>
+contains the table mappings. Precede the path with C<file://>. For
+example, C<--table-mappings file://mappingfile.json>. When working with
+the DMS API, provide the JSON as the parameter value.
+
+
+
+=head2 TaskData => Str
+
+Supplemental information that the task requires to migrate the data for
+certain source and target endpoints. For more information, see
+Specifying Supplemental Data for Task Settings
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 

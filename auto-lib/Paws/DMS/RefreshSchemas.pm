@@ -28,10 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Refresh schema
+    # Populates the schema for the specified endpoint. This is an asynchronous
+    # operation and can take several minutes. You can check the status of this
+    # operation by calling the describe-refresh-schemas-status operation.
     my $RefreshSchemasResponse = $dms->RefreshSchemas(
-      EndpointArn            => 'MyString',
-      ReplicationInstanceArn => 'MyString',
-
+      'EndpointArn'            => '',
+      'ReplicationInstanceArn' => ''
     );
 
     # Results:

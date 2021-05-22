@@ -27,10 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    my $ListTagsForResourceResponse = $dms->ListTagsForResource(
-      ResourceArn => 'MyString',
-
-    );
+    # List tags for resource
+    # Lists all tags for an AWS DMS resource.
+    my $ListTagsForResourceResponse =
+      $dms->ListTagsForResource( 'ResourceArn' => '' );
 
     # Results:
     my $TagList = $ListTagsForResourceResponse->TagList;

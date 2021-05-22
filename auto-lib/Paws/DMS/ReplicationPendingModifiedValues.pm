@@ -36,7 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Replic
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information about the values of pending modifications to a
+replication instance. This data type is an object of the
+C<ReplicationInstance>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_ReplicationInstance.html)
+user-defined data type.
 
 =head1 ATTRIBUTES
 
@@ -55,17 +59,19 @@ The engine version number of the replication instance.
 =head2 MultiAZ => Bool
 
 Specifies whether the replication instance is a Multi-AZ deployment.
-You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+You can't set the C<AvailabilityZone> parameter if the Multi-AZ
 parameter is set to C<true>.
 
 
 =head2 ReplicationInstanceClass => Str
 
-The compute and memory capacity of the replication instance.
+The compute and memory capacity of the replication instance as defined
+for the specified replication instance class.
 
-Valid Values: C<dms.t2.micro | dms.t2.small | dms.t2.medium |
-dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge |
-dms.c4.4xlarge>
+For more information on the settings and capacities for the available
+replication instance classes, see Selecting the right AWS DMS
+replication instance for your migration
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth).
 
 
 

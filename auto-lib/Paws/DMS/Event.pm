@@ -37,7 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Event 
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes an identifiable significant activity that affects a
+replication instance or task. This object can provide the message, the
+available event categories, the date and source of the event, and the
+AWS DMS resource type.
 
 =head1 ATTRIBUTES
 

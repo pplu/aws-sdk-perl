@@ -18,6 +18,8 @@ package Paws::DMS::ReplicationTask;
   has StopReason => (is => 'ro', isa => 'Str');
   has TableMappings => (is => 'ro', isa => 'Str');
   has TargetEndpointArn => (is => 'ro', isa => 'Str');
+  has TargetReplicationInstanceArn => (is => 'ro', isa => 'Str');
+  has TaskData => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -38,7 +40,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DMS::ReplicationTask object:
 
-  $service_obj->Method(Att1 => { CdcStartPosition => $value, ..., TargetEndpointArn => $value  });
+  $service_obj->Method(Att1 => { CdcStartPosition => $value, ..., TaskData => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,7 +51,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Replic
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information that describes a replication task created by the
+C<CreateReplicationTask> operation.
 
 =head1 ATTRIBUTES
 
@@ -78,16 +81,15 @@ Indicates when you want a change data capture (CDC) operation to stop.
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-E<ldquo>server_time:3018-02-09T12:12:12E<rdquo>
+E<ldquo>server_time:2018-02-09T12:12:12E<rdquo>
 
 Commit time example: --cdc-stop-position E<ldquo>commit_time:
-3018-02-09T12:12:12 E<ldquo>
+2018-02-09T12:12:12 E<ldquo>
 
 
 =head2 LastFailureMessage => Str
 
-The last error (failure) message generated for the replication
-instance.
+The last error (failure) message generated for the replication task.
 
 
 =head2 MigrationType => Str
@@ -105,7 +107,7 @@ that checkpoint.
 
 =head2 ReplicationInstanceArn => Str
 
-The Amazon Resource Name (ARN) of the replication instance.
+The ARN of the replication instance.
 
 
 =head2 ReplicationTaskArn => Str
@@ -128,7 +130,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens.
+Must contain 1-255 alphanumeric characters or hyphens.
 
 =item *
 
@@ -160,18 +162,152 @@ table errors.
 
 =head2 SourceEndpointArn => Str
 
-The Amazon Resource Name (ARN) string that uniquely identifies the
-endpoint.
+The Amazon Resource Name (ARN) that uniquely identifies the endpoint.
 
 
 =head2 Status => Str
 
-The status of the replication task.
+The status of the replication task. This response parameter can return
+one of the following values:
+
+=over
+
+=item *
+
+C<"moving"> E<ndash> The task is being moved in response to running the
+C<MoveReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_MoveReplicationTask.html)
+operation.
+
+=item *
+
+C<"creating"> E<ndash> The task is being created in response to running
+the C<CreateReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateReplicationTask.html)
+operation.
+
+=item *
+
+C<"deleting"> E<ndash> The task is being deleted in response to running
+the C<DeleteReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_DeleteReplicationTask.html)
+operation.
+
+=item *
+
+C<"failed"> E<ndash> The task failed to successfully complete the
+database migration in response to running the C<StartReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html)
+operation.
+
+=item *
+
+C<"failed-move"> E<ndash> The task failed to move in response to
+running the C<MoveReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_MoveReplicationTask.html)
+operation.
+
+=item *
+
+C<"modifying"> E<ndash> The task definition is being modified in
+response to running the C<ModifyReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_ModifyReplicationTask.html)
+operation.
+
+=item *
+
+C<"ready"> E<ndash> The task is in a C<ready> state where it can
+respond to other task operations, such as C<StartReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html)
+or C<DeleteReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_DeleteReplicationTask.html).
+
+=item *
+
+C<"running"> E<ndash> The task is performing a database migration in
+response to running the C<StartReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html)
+operation.
+
+=item *
+
+C<"starting"> E<ndash> The task is preparing to perform a database
+migration in response to running the C<StartReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html)
+operation.
+
+=item *
+
+C<"stopped"> E<ndash> The task has stopped in response to running the
+C<StopReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StopReplicationTask.html)
+operation.
+
+=item *
+
+C<"stopping"> E<ndash> The task is preparing to stop in response to
+running the C<StopReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StopReplicationTask.html)
+operation.
+
+=item *
+
+C<"testing"> E<ndash> The database migration specified for this task is
+being tested in response to running either the
+C<StartReplicationTaskAssessmentRun>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTaskAssessmentRun.html)
+or the C<StartReplicationTaskAssessment>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTaskAssessment.html)
+operation.
+
+C<StartReplicationTaskAssessmentRun>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTaskAssessmentRun.html)
+is an improved premigration task assessment operation. The
+C<StartReplicationTaskAssessment>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTaskAssessment.html)
+operation assesses data type compatibility only between the source and
+target database of a given migration task. In contrast,
+C<StartReplicationTaskAssessmentRun>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTaskAssessmentRun.html)
+enables you to specify a variety of premigration task assessments in
+addition to data type compatibility. These assessments include ones for
+the validity of primary key definitions and likely issues with database
+migration performance, among others.
+
+=back
+
 
 
 =head2 StopReason => Str
 
-The reason the replication task was stopped.
+The reason the replication task was stopped. This response parameter
+can return one of the following values:
+
+=over
+
+=item *
+
+C<"STOP_REASON_FULL_LOAD_COMPLETED"> E<ndash> Full-load migration
+completed.
+
+=item *
+
+C<"STOP_REASON_CACHED_CHANGES_APPLIED"> E<ndash> Change data capture
+(CDC) load completed.
+
+=item *
+
+C<"STOP_REASON_CACHED_CHANGES_NOT_APPLIED"> E<ndash> In a full-load and
+CDC migration, the full load stopped as specified before starting the
+CDC migration.
+
+=item *
+
+C<"STOP_REASON_SERVER_TIME"> E<ndash> The migration stopped at the
+specified server time.
+
+=back
+
 
 
 =head2 TableMappings => Str
@@ -181,8 +317,25 @@ Table mappings specified in the task.
 
 =head2 TargetEndpointArn => Str
 
-The Amazon Resource Name (ARN) string that uniquely identifies the
-endpoint.
+The ARN that uniquely identifies the endpoint.
+
+
+=head2 TargetReplicationInstanceArn => Str
+
+The ARN of the replication instance to which this task is moved in
+response to running the C<MoveReplicationTask>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_MoveReplicationTask.html)
+operation. Otherwise, this response parameter isn't a member of the
+C<ReplicationTask> object.
+
+
+=head2 TaskData => Str
+
+Supplemental information that the task requires to migrate the data for
+certain source and target endpoints. For more information, see
+Specifying Supplemental Data for Task Settings
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 

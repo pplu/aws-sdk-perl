@@ -27,10 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    my $DeleteCertificateResponse = $dms->DeleteCertificate(
-      CertificateArn => 'MyString',
-
-    );
+    # Delete Certificate
+    # Deletes the specified certificate.
+    my $DeleteCertificateResponse = $dms->DeleteCertificate( 'CertificateArn' =>
+        'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUSM457DE6XFJCJQ' );
 
     # Results:
     my $Certificate = $DeleteCertificateResponse->Certificate;

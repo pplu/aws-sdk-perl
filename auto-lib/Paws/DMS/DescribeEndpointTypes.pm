@@ -29,17 +29,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Describe endpoint types
+    # Returns information about the type of endpoints available.
     my $DescribeEndpointTypesResponse = $dms->DescribeEndpointTypes(
-      Filters => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],
+      'Filters' => [
 
-        },
-        ...
-      ],    # OPTIONAL
-      Marker     => 'MyString',    # OPTIONAL
-      MaxRecords => 1,             # OPTIONAL
+        {
+          'Name'   => 'string',
+          'Values' => [ 'string', 'string' ]
+        }
+      ],
+      'Marker'     => '',
+      'MaxRecords' => 123
     );
 
     # Results:
@@ -57,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
 
-Filters applied to the describe action.
+Filters applied to the endpoint types.
 
 Valid filter names: engine-name | endpoint-type
 

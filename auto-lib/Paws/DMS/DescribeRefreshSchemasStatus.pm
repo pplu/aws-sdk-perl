@@ -27,11 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Describe refresh schema status
+    # Returns the status of the refresh-schemas operation.
     my $DescribeRefreshSchemasStatusResponse =
-      $dms->DescribeRefreshSchemasStatus(
-      EndpointArn => 'MyString',
-
-      );
+      $dms->DescribeRefreshSchemasStatus( 'EndpointArn' => '' );
 
     # Results:
     my $RefreshSchemasStatus =

@@ -75,9 +75,9 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 ReplicationTaskArn => Str
 
-- The Amazon Resource Name (ARN) string that uniquely identifies the
-task. When this input parameter is specified the API will return only
-one result and ignore the values of the max-records and marker
+The Amazon Resource Name (ARN) string that uniquely identifies the
+task. When this input parameter is specified, the API returns only one
+result and ignore the values of the C<MaxRecords> and C<Marker>
 parameters.
 
 

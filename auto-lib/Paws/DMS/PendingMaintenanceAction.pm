@@ -38,7 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Pendin
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a maintenance action pending for an AWS DMS resource,
+including when and how it will be applied. This data type is a response
+element to the C<DescribePendingMaintenanceActions> operation.
 
 =head1 ATTRIBUTES
 
@@ -51,8 +53,8 @@ resource.
 
 =head2 AutoAppliedAfterDate => Str
 
-The date of the maintenance window when the action will be applied. The
-maintenance action will be applied to the resource during its first
+The date of the maintenance window when the action is to be applied.
+The maintenance action is applied to the resource during its first
 maintenance window after this date. If this date is specified, any
 C<next-maintenance> opt-in requests are ignored.
 
@@ -61,10 +63,10 @@ C<next-maintenance> opt-in requests are ignored.
 
 The effective date when the pending maintenance action will be applied
 to the resource. This date takes into account opt-in requests received
-from the C<ApplyPendingMaintenanceAction> API, the
-C<AutoAppliedAfterDate>, and the C<ForcedApplyDate>. This value is
-blank if an opt-in request has not been received and nothing has been
-specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
+from the C<ApplyPendingMaintenanceAction> API operation, and also the
+C<AutoAppliedAfterDate> and C<ForcedApplyDate> parameter values. This
+value is blank if an opt-in request has not been received and nothing
+has been specified for C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
 
 
 =head2 Description => Str
@@ -75,15 +77,14 @@ A description providing more detail about the maintenance action.
 =head2 ForcedApplyDate => Str
 
 The date when the maintenance action will be automatically applied. The
-maintenance action will be applied to the resource on this date
-regardless of the maintenance window for the resource. If this date is
-specified, any C<immediate> opt-in requests are ignored.
+maintenance action is applied to the resource on this date regardless
+of the maintenance window for the resource. If this date is specified,
+any C<immediate> opt-in requests are ignored.
 
 
 =head2 OptInStatus => Str
 
-Indicates the type of opt-in request that has been received for the
-resource.
+The type of opt-in request that has been received for the resource.
 
 
 

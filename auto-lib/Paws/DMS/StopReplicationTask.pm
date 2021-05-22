@@ -27,10 +27,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    my $StopReplicationTaskResponse = $dms->StopReplicationTask(
-      ReplicationTaskArn => 'MyString',
-
-    );
+    # Stop replication task
+    # Stops the replication task.
+    my $StopReplicationTaskResponse =
+      $dms->StopReplicationTask( 'ReplicationTaskArn' =>
+        'arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E'
+      );
 
     # Results:
     my $ReplicationTask = $StopReplicationTaskResponse->ReplicationTask;

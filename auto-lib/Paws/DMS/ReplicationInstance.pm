@@ -55,7 +55,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Replic
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information that defines a replication instance.
 
 =head1 ATTRIBUTES
 
@@ -79,12 +79,20 @@ The Availability Zone for the instance.
 
 =head2 DnsNameServers => Str
 
-The DNS name servers for the replication instance.
+The DNS name servers supported for the replication instance to access
+your on-premise source or target database.
 
 
 =head2 EngineVersion => Str
 
 The engine version number of the replication instance.
+
+If an engine version number is not specified when a replication
+instance is created, the default is the latest engine version
+available.
+
+When modifying a major engine version of an instance, also set
+C<AllowMajorVersionUpgrade> to C<true>.
 
 
 =head2 FreeUntil => Str
@@ -113,7 +121,7 @@ AWS account has a different default encryption key for each AWS Region.
 =head2 MultiAZ => Bool
 
 Specifies whether the replication instance is a Multi-AZ deployment.
-You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+You can't set the C<AvailabilityZone> parameter if the Multi-AZ
 parameter is set to C<true>.
 
 
@@ -124,7 +132,8 @@ The pending modification values.
 
 =head2 PreferredMaintenanceWindow => Str
 
-The maintenance window times for the replication instance.
+The maintenance window times for the replication instance. Any pending
+upgrades to the replication instance are performed during this time.
 
 
 =head2 PubliclyAccessible => Bool
@@ -142,17 +151,20 @@ The Amazon Resource Name (ARN) of the replication instance.
 
 =head2 ReplicationInstanceClass => Str
 
-The compute and memory capacity of the replication instance.
+The compute and memory capacity of the replication instance as defined
+for the specified replication instance class. It is a required
+parameter, although a defualt value is pre-selected in the DMS console.
 
-Valid Values: C<dms.t2.micro | dms.t2.small | dms.t2.medium |
-dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge |
-dms.c4.4xlarge>
+For more information on the settings and capacities for the available
+replication instance classes, see Selecting the right AWS DMS
+replication instance for your migration
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth).
 
 
 =head2 ReplicationInstanceIdentifier => Str
 
-The replication instance identifier. This parameter is stored as a
-lowercase string.
+The replication instance identifier is a required parameter. This
+parameter is stored as a lowercase string.
 
 Constraints:
 
@@ -160,7 +172,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain 1-63 alphanumeric characters or hyphens.
 
 =item *
 
@@ -197,7 +209,65 @@ One or more public IP addresses for the replication instance.
 
 =head2 ReplicationInstanceStatus => Str
 
-The status of the replication instance.
+The status of the replication instance. The possible return values
+include:
+
+=over
+
+=item *
+
+C<"available">
+
+=item *
+
+C<"creating">
+
+=item *
+
+C<"deleted">
+
+=item *
+
+C<"deleting">
+
+=item *
+
+C<"failed">
+
+=item *
+
+C<"modifying">
+
+=item *
+
+C<"upgrading">
+
+=item *
+
+C<"rebooting">
+
+=item *
+
+C<"resetting-master-credentials">
+
+=item *
+
+C<"storage-full">
+
+=item *
+
+C<"incompatible-credentials">
+
+=item *
+
+C<"incompatible-network">
+
+=item *
+
+C<"maintenance">
+
+=back
+
 
 
 =head2 ReplicationSubnetGroup => L<Paws::DMS::ReplicationSubnetGroup>
@@ -207,7 +277,7 @@ The subnet group for the replication instance.
 
 =head2 SecondaryAvailabilityZone => Str
 
-The availability zone of the standby replication instance in a Multi-AZ
+The Availability Zone of the standby replication instance in a Multi-AZ
 deployment.
 
 

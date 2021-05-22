@@ -29,10 +29,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Describe schemas
+    # Returns information about the schema for the specified endpoint.
     my $DescribeSchemasResponse = $dms->DescribeSchemas(
-      EndpointArn => 'MyString',
-      Marker      => 'MyString',    # OPTIONAL
-      MaxRecords  => 1,             # OPTIONAL
+      'EndpointArn' => '',
+      'Marker'      => '',
+      'MaxRecords'  => 123
     );
 
     # Results:
