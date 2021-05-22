@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationTime         = $DescribeForecastResponse->CreationTime;
-    my $DatasetGroupArn      = $DescribeForecastResponse->DatasetGroupArn;
+    my $CreationTime    = $DescribeForecastResponse->CreationTime;
+    my $DatasetGroupArn = $DescribeForecastResponse->DatasetGroupArn;
+    my $EstimatedTimeRemainingInMinutes =
+      $DescribeForecastResponse->EstimatedTimeRemainingInMinutes;
     my $ForecastArn          = $DescribeForecastResponse->ForecastArn;
     my $ForecastName         = $DescribeForecastResponse->ForecastName;
     my $ForecastTypes        = $DescribeForecastResponse->ForecastTypes;

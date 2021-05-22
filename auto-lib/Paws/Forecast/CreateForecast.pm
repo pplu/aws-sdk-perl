@@ -4,6 +4,7 @@ package Paws::Forecast::CreateForecast;
   has ForecastName => (is => 'ro', isa => 'Str', required => 1);
   has ForecastTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PredictorArn => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ForecastName  => 'MyName',
       PredictorArn  => 'MyArn',
       ForecastTypes => [ 'MyForecastType', ... ],    # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MyTagKey',                       # min: 1, max: 128
+          Value => 'MyTagValue',                     # max: 256
+
+        },
+        ...
+      ],                                             # OPTIONAL
     );
 
     # Results:
@@ -54,12 +63,12 @@ A name for the forecast.
 
 =head2 ForecastTypes => ArrayRef[Str|Undef]
 
-The quantiles at which probabilistic forecasts are generated. You can
-specify up to 5 quantiles per forecast. Accepted values include C<0.01
-to 0.99> (increments of .01 only) and C<mean>. The mean forecast is
-different from the median (0.50) when the distribution is not symmetric
-(e.g. Beta, Negative Binomial). The default value is C<["0.1", "0.5",
-"0.9"]>.
+The quantiles at which probabilistic forecasts are generated. B<You can
+currently specify up to 5 quantiles per forecast>. Accepted values
+include C<0.01 to 0.99> (increments of .01 only) and C<mean>. The mean
+forecast is different from the median (0.50) when the distribution is
+not symmetric (for example, Beta and Negative Binomial). The default
+value is C<["0.1", "0.5", "0.9"]>.
 
 
 
@@ -67,6 +76,60 @@ different from the median (0.50) when the distribution is not symmetric
 
 The Amazon Resource Name (ARN) of the predictor to use to generate the
 forecast.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Forecast::Tag>]
+
+The optional metadata that you apply to the forecast to help you
+categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50.
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8.
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8.
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this prefix.
+If a tag value has C<aws> as its prefix but the key does not, then
+Forecast considers it to be a user tag and will count against the limit
+of 50 tags. Tags with only the key prefix of C<aws> do not count
+against your tags per resource limit.
+
+=back
+
 
 
 

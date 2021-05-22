@@ -6,11 +6,13 @@ package Paws::Forecast::CreatePredictor;
   has EvaluationParameters => (is => 'ro', isa => 'Paws::Forecast::EvaluationParameters');
   has FeaturizationConfig => (is => 'ro', isa => 'Paws::Forecast::FeaturizationConfig', required => 1);
   has ForecastHorizon => (is => 'ro', isa => 'Int', required => 1);
+  has ForecastTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has HPOConfig => (is => 'ro', isa => 'Paws::Forecast::HyperParameterTuningJobConfig');
   has InputDataConfig => (is => 'ro', isa => 'Paws::Forecast::InputDataConfig', required => 1);
   has PerformAutoML => (is => 'ro', isa => 'Bool');
   has PerformHPO => (is => 'ro', isa => 'Bool');
   has PredictorName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::Tag]');
   has TrainingParameters => (is => 'ro', isa => 'Paws::Forecast::TrainingParameters');
 
   use MooseX::ClassAttribute;
@@ -55,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],        # min: 1, max: 1; OPTIONAL
           },
           ...
-        ],            # min: 1, max: 1; OPTIONAL
+        ],            # min: 1, max: 50; OPTIONAL
         ForecastDimensions => [
           'MyName', ...    # min: 1, max: 63
         ],                 # min: 1, max: 5; OPTIONAL
@@ -70,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # min: 1, max: 1; OPTIONAL
+        ],                                   # min: 1, max: 2; OPTIONAL
       },
       PredictorName    => 'MyName',
       AlgorithmArn     => 'MyArn',           # OPTIONAL
@@ -83,23 +85,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BackTestWindowOffset    => 1,
         NumberOfBacktestWindows => 1,
       },    # OPTIONAL
-      HPOConfig => {
+      ForecastTypes => [ 'MyForecastType', ... ],    # OPTIONAL
+      HPOConfig     => {
         ParameterRanges => {
           CategoricalParameterRanges => [
             {
-              Name   => 'MyName',    # min: 1, max: 63
+              Name   => 'MyName',                    # min: 1, max: 63
               Values => [
-                'MyValue', ...       # max: 256
-              ],                     # min: 1, max: 20
+                'MyValue', ...                       # max: 256
+              ],                                     # min: 1, max: 20
 
             },
             ...
-          ],                         # min: 1, max: 20; OPTIONAL
+          ],                                         # min: 1, max: 20; OPTIONAL
           ContinuousParameterRanges => [
             {
               MaxValue    => 1,
               MinValue    => 1,
-              Name        => 'MyName',    # min: 1, max: 63
+              Name        => 'MyName',               # min: 1, max: 63
               ScalingType => 'Auto'
               , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
             },
@@ -117,8 +120,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # min: 1, max: 20; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      PerformAutoML      => 1,    # OPTIONAL
-      PerformHPO         => 1,    # OPTIONAL
+      PerformAutoML => 1,    # OPTIONAL
+      PerformHPO    => 1,    # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
       TrainingParameters => {
         'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
       },    # OPTIONAL
@@ -150,9 +161,11 @@ C<arn:aws:forecast:::algorithm/ARIMA>
 
 =item *
 
-C<arn:aws:forecast:::algorithm/Deep_AR_Plus>
+C<arn:aws:forecast:::algorithm/CNN-QR>
 
-Supports hyperparameter optimization (HPO)
+=item *
+
+C<arn:aws:forecast:::algorithm/Deep_AR_Plus>
 
 =item *
 
@@ -209,6 +222,17 @@ the TARGET_TIME_SERIES dataset length.
 
 
 
+=head2 ForecastTypes => ArrayRef[Str|Undef]
+
+Specifies the forecast types used to train a predictor. You can specify
+up to five forecast types. Forecast types can be quantiles from 0.01 to
+0.99, by increments of 0.01 or higher. You can also specify the mean
+forecast with C<mean>.
+
+The default value is C<["0.10", "0.50", "0.9"]>.
+
+
+
 =head2 HPOConfig => L<Paws::Forecast::HyperParameterTuningJobConfig>
 
 Provides hyperparameter override values for the algorithm. If you don't
@@ -260,13 +284,17 @@ in tuning, and the valid range for each tunable hyperparameter. In this
 case, you are required to specify an algorithm and C<PerformAutoML>
 must be false.
 
-The following algorithm supports HPO:
+The following algorithms support HPO:
 
 =over
 
 =item *
 
 DeepAR+
+
+=item *
+
+CNN-QR
 
 =back
 
@@ -276,6 +304,60 @@ DeepAR+
 =head2 B<REQUIRED> PredictorName => Str
 
 A name for the predictor.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Forecast::Tag>]
+
+The optional metadata that you apply to the predictor to help you
+categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50.
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8.
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8.
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this prefix.
+If a tag value has C<aws> as its prefix but the key does not, then
+Forecast considers it to be a user tag and will count against the limit
+of 50 tags. Tags with only the key prefix of C<aws> do not count
+against your tags per resource limit.
+
+=back
+
 
 
 

@@ -45,6 +45,11 @@ package Paws::Forecast;
     my $call_object = $self->new_with_coercions('Paws::Forecast::CreatePredictor', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePredictorBacktestExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::CreatePredictorBacktestExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDataset {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Forecast::DeleteDataset', @_);
@@ -73,6 +78,16 @@ package Paws::Forecast;
   sub DeletePredictor {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Forecast::DeletePredictor', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePredictorBacktestExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::DeletePredictorBacktestExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteResourceTree {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::DeleteResourceTree', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDataset {
@@ -105,6 +120,11 @@ package Paws::Forecast;
     my $call_object = $self->new_with_coercions('Paws::Forecast::DescribePredictor', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribePredictorBacktestExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::DescribePredictorBacktestExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAccuracyMetrics {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Forecast::GetAccuracyMetrics', @_);
@@ -135,9 +155,34 @@ package Paws::Forecast;
     my $call_object = $self->new_with_coercions('Paws::Forecast::ListForecasts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPredictorBacktestExportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::ListPredictorBacktestExportJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPredictors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Forecast::ListPredictors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::StopResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Forecast::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDatasetGroup {
@@ -261,6 +306,29 @@ package Paws::Forecast;
 
     return undef
   }
+  sub ListAllPredictorBacktestExportJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPredictorBacktestExportJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPredictorBacktestExportJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PredictorBacktestExportJobs }, @{ $next_result->PredictorBacktestExportJobs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PredictorBacktestExportJobs') foreach (@{ $result->PredictorBacktestExportJobs });
+        $result = $self->ListPredictorBacktestExportJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PredictorBacktestExportJobs') foreach (@{ $result->PredictorBacktestExportJobs });
+    }
+
+    return undef
+  }
   sub ListAllPredictors {
     my $self = shift;
 
@@ -286,7 +354,7 @@ package Paws::Forecast;
   }
 
 
-  sub operations { qw/CreateDataset CreateDatasetGroup CreateDatasetImportJob CreateForecast CreateForecastExportJob CreatePredictor DeleteDataset DeleteDatasetGroup DeleteDatasetImportJob DeleteForecast DeleteForecastExportJob DeletePredictor DescribeDataset DescribeDatasetGroup DescribeDatasetImportJob DescribeForecast DescribeForecastExportJob DescribePredictor GetAccuracyMetrics ListDatasetGroups ListDatasetImportJobs ListDatasets ListForecastExportJobs ListForecasts ListPredictors UpdateDatasetGroup / }
+  sub operations { qw/CreateDataset CreateDatasetGroup CreateDatasetImportJob CreateForecast CreateForecastExportJob CreatePredictor CreatePredictorBacktestExportJob DeleteDataset DeleteDatasetGroup DeleteDatasetImportJob DeleteForecast DeleteForecastExportJob DeletePredictor DeletePredictorBacktestExportJob DeleteResourceTree DescribeDataset DescribeDatasetGroup DescribeDatasetImportJob DescribeForecast DescribeForecastExportJob DescribePredictor DescribePredictorBacktestExportJob GetAccuracyMetrics ListDatasetGroups ListDatasetImportJobs ListDatasets ListForecastExportJobs ListForecasts ListPredictorBacktestExportJobs ListPredictors ListTagsForResource StopResource TagResource UntagResource UpdateDatasetGroup / }
 
 1;
 
@@ -337,6 +405,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 =item [EncryptionConfig => L<Paws::Forecast::EncryptionConfig>]
 
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
+
 
 =back
 
@@ -377,8 +447,7 @@ predictor. For more information, see howitworks-datasets-groups.
 To get a list of all your datasets, use the ListDatasets operation.
 
 For example Forecast datasets, see the Amazon Forecast Sample GitHub
-repository
-(https://github.com/aws-samples/amazon-forecast-samples/tree/master/data).
+repository (https://github.com/aws-samples/amazon-forecast-samples).
 
 The C<Status> of a dataset must be C<ACTIVE> before you can import
 training data. Use the DescribeDataset operation to get the status.
@@ -393,6 +462,8 @@ training data. Use the DescribeDataset operation to get the status.
 =item Domain => Str
 
 =item [DatasetArns => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
 
 
 =back
@@ -412,9 +483,9 @@ howitworks-datasets-groups.
 To get a list of all your datasets groups, use the ListDatasetGroups
 operation.
 
-The C<Status> of a dataset group must be C<ACTIVE> before you can
-create use the dataset group to create a predictor. To get the status,
-use the DescribeDatasetGroup operation.
+The C<Status> of a dataset group must be C<ACTIVE> before you can use
+the dataset group to create a predictor. To get the status, use the
+DescribeDatasetGroup operation.
 
 
 =head2 CreateDatasetImportJob
@@ -427,7 +498,15 @@ use the DescribeDatasetGroup operation.
 
 =item DataSource => L<Paws::Forecast::DataSource>
 
+=item [GeolocationFormat => Str]
+
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
+
 =item [TimestampFormat => Str]
+
+=item [TimeZone => Str]
+
+=item [UseGeolocationForTimeZone => Bool]
 
 
 =back
@@ -443,7 +522,9 @@ that you want to import the data to.
 
 You must specify a DataSource object that includes an AWS Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access
-the data. For more information, see aws-forecast-iam-roles.
+the data, as Amazon Forecast makes a copy of your data and processes it
+in an internal AWS system. For more information, see
+aws-forecast-iam-roles.
 
 The training data must be in CSV format. The delimiter must be a comma
 (,).
@@ -451,6 +532,12 @@ The training data must be in CSV format. The delimiter must be a comma
 You can specify the path to a specific CSV file, the S3 bucket, or to a
 folder in the S3 bucket. For the latter two cases, Amazon Forecast
 imports all files up to the limit of 10,000 files.
+
+Because dataset imports are not aggregated, your most recent dataset
+import is the one that is used when training a predictor or generating
+a forecast. Make sure that your most recent dataset import contains all
+of the data you want to model off of, and not just the new data
+collected since the previous import.
 
 To get a list of all your dataset import jobs, filtered by specified
 criteria, use the ListDatasetImportJobs operation.
@@ -465,6 +552,8 @@ criteria, use the ListDatasetImportJobs operation.
 =item PredictorArn => Str
 
 =item [ForecastTypes => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
 
 
 =back
@@ -481,10 +570,8 @@ Storage Service (Amazon S3) bucket, use the CreateForecastExportJob
 operation.
 
 The range of the forecast is determined by the C<ForecastHorizon>
-value, which you specify in the CreatePredictor request, multiplied by
-the C<DataFrequency> value, which you specify in the CreateDataset
-request. When you query a forecast, you can request a specific date
-range within the forecast.
+value, which you specify in the CreatePredictor request. When you query
+a forecast, you can request a specific date range within the forecast.
 
 To get a list of all your forecasts, use the ListForecasts operation.
 
@@ -508,6 +595,8 @@ status.
 
 =item ForecastExportJobName => Str
 
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
+
 
 =back
 
@@ -519,7 +608,7 @@ Exports a forecast created by the CreateForecast operation to your
 Amazon Simple Storage Service (Amazon S3) bucket. The forecast file
 name will match the following conventions:
 
-E<lt>ForecastExportJobNameE<gt>_E<lt>ExportTimestampE<gt>_E<lt>PageNumberE<gt>
+E<lt>ForecastExportJobNameE<gt>_E<lt>ExportTimestampE<gt>_E<lt>PartNumberE<gt>
 
 where the E<lt>ExportTimestampE<gt> component is in Java
 SimpleDateFormat (yyyy-MM-ddTHH-mm-ssZ).
@@ -557,11 +646,15 @@ use the DescribeForecastExportJob operation.
 
 =item [EvaluationParameters => L<Paws::Forecast::EvaluationParameters>]
 
+=item [ForecastTypes => ArrayRef[Str|Undef]]
+
 =item [HPOConfig => L<Paws::Forecast::HyperParameterTuningJobConfig>]
 
 =item [PerformAutoML => Bool]
 
 =item [PerformHPO => Bool]
+
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
 
 =item [TrainingParameters => L<Paws::Forecast::TrainingParameters>]
 
@@ -574,24 +667,20 @@ Returns: a L<Paws::Forecast::CreatePredictorResponse> instance
 
 Creates an Amazon Forecast predictor.
 
-In the request, you provide a dataset group and either specify an
-algorithm or let Amazon Forecast choose the algorithm for you using
-AutoML. If you specify an algorithm, you also can override
-algorithm-specific hyperparameters.
+In the request, provide a dataset group and either specify an algorithm
+or let Amazon Forecast choose an algorithm for you using AutoML. If you
+specify an algorithm, you also can override algorithm-specific
+hyperparameters.
 
-Amazon Forecast uses the chosen algorithm to train a model using the
-latest version of the datasets in the specified dataset group. The
-result is called a predictor. You then generate a forecast using the
-CreateForecast operation.
+Amazon Forecast uses the algorithm to train a predictor using the
+latest version of the datasets in the specified dataset group. You can
+then generate a forecast using the CreateForecast operation.
 
-After training a model, the C<CreatePredictor> operation also evaluates
-it. To see the evaluation metrics, use the GetAccuracyMetrics
-operation. Always review the evaluation metrics before deciding to use
-the predictor to generate a forecast.
+To see the evaluation metrics, use the GetAccuracyMetrics operation.
 
-Optionally, you can specify a featurization configuration to fill and
-aggregate the data fields in the C<TARGET_TIME_SERIES> dataset to
-improve model training. For more information, see FeaturizationConfig.
+You can specify a featurization configuration to fill and aggregate the
+data fields in the C<TARGET_TIME_SERIES> dataset to improve model
+training. For more information, see FeaturizationConfig.
 
 For RELATED_TIME_SERIES datasets, C<CreatePredictor> verifies that the
 C<DataFrequency> specified when the dataset was created matches the
@@ -599,12 +688,17 @@ C<ForecastFrequency>. TARGET_TIME_SERIES datasets don't have this
 restriction. Amazon Forecast also verifies the delimiter and timestamp
 format. For more information, see howitworks-datasets-groups.
 
+By default, predictors are trained and evaluated at the 0.1 (P10), 0.5
+(P50), and 0.9 (P90) quantiles. You can choose custom forecast types to
+train and evaluate your predictor by setting the C<ForecastTypes>.
+
 B<AutoML>
 
 If you want Amazon Forecast to evaluate each algorithm and choose the
 one that minimizes the C<objective function>, set C<PerformAutoML> to
 C<true>. The C<objective function> is defined as the mean of the
-weighted p10, p50, and p90 quantile losses. For more information, see
+weighted losses over the forecast types. By default, these are the p10,
+p50, and p90 quantile losses. For more information, see
 EvaluationResult.
 
 When AutoML is enabled, the following properties are disallowed:
@@ -637,6 +731,46 @@ the predictor must be C<ACTIVE>, signifying that training has
 completed. To get the status, use the DescribePredictor operation.
 
 
+=head2 CreatePredictorBacktestExportJob
+
+=over
+
+=item Destination => L<Paws::Forecast::DataDestination>
+
+=item PredictorArn => Str
+
+=item PredictorBacktestExportJobName => Str
+
+=item [Tags => ArrayRef[L<Paws::Forecast::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::CreatePredictorBacktestExportJob>
+
+Returns: a L<Paws::Forecast::CreatePredictorBacktestExportJobResponse> instance
+
+Exports backtest forecasts and accuracy metrics generated by the
+CreatePredictor operation. Two folders containing CSV files are
+exported to your specified S3 bucket.
+
+The export file names will match the following conventions:
+
+C<E<lt>ExportJobNameE<gt>_E<lt>ExportTimestampE<gt>_E<lt>PartNumberE<gt>.csv>
+
+The E<lt>ExportTimestampE<gt> component is in Java SimpleDate format
+(yyyy-MM-ddTHH-mm-ssZ).
+
+You must specify a DataDestination object that includes an Amazon S3
+bucket and an AWS Identity and Access Management (IAM) role that Amazon
+Forecast can assume to access the Amazon S3 bucket. For more
+information, see aws-forecast-iam-roles.
+
+The C<Status> of the export job must be C<ACTIVE> before you can access
+the export in your Amazon S3 bucket. To get the status, use the
+DescribePredictorBacktestExportJob operation.
+
+
 =head2 DeleteDataset
 
 =over
@@ -654,6 +788,10 @@ Deletes an Amazon Forecast dataset that was created using the
 CreateDataset operation. You can only delete datasets that have a
 status of C<ACTIVE> or C<CREATE_FAILED>. To get the status use the
 DescribeDataset operation.
+
+Forecast does not automatically update any dataset groups that contain
+the deleted dataset. In order to update the dataset group, use the
+operation, omitting the deleted dataset's ARN.
 
 
 =head2 DeleteDatasetGroup
@@ -755,6 +893,72 @@ Deletes a predictor created using the CreatePredictor operation. You
 can delete only predictor that have a status of C<ACTIVE> or
 C<CREATE_FAILED>. To get the status, use the DescribePredictor
 operation.
+
+
+=head2 DeletePredictorBacktestExportJob
+
+=over
+
+=item PredictorBacktestExportJobArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::DeletePredictorBacktestExportJob>
+
+Returns: nothing
+
+Deletes a predictor backtest export job.
+
+
+=head2 DeleteResourceTree
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::DeleteResourceTree>
+
+Returns: nothing
+
+Deletes an entire resource tree. This operation will delete the parent
+resource and its child resources.
+
+Child resources are resources that were created from another resource.
+For example, when a forecast is generated from a predictor, the
+forecast is the child resource and the predictor is the parent
+resource.
+
+Amazon Forecast resources possess the following parent-child resource
+hierarchies:
+
+=over
+
+=item *
+
+B<Dataset>: dataset import jobs
+
+=item *
+
+B<Dataset Group>: predictors, predictor backtest export jobs,
+forecasts, forecast export jobs
+
+=item *
+
+B<Predictor>: predictor backtest export jobs, forecasts, forecast
+export jobs
+
+=item *
+
+B<Forecast>: forecast export jobs
+
+=back
+
+C<DeleteResourceTree> will only delete Amazon Forecast resources, and
+will not delete datasets or exported files stored in Amazon S3.
 
 
 =head2 DescribeDataset
@@ -1023,6 +1227,48 @@ C<Message> - If an error occurred, information about the error.
 
 
 
+=head2 DescribePredictorBacktestExportJob
+
+=over
+
+=item PredictorBacktestExportJobArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::DescribePredictorBacktestExportJob>
+
+Returns: a L<Paws::Forecast::DescribePredictorBacktestExportJobResponse> instance
+
+Describes a predictor backtest export job created using the
+CreatePredictorBacktestExportJob operation.
+
+In addition to listing the properties provided by the user in the
+C<CreatePredictorBacktestExportJob> request, this operation lists the
+following properties:
+
+=over
+
+=item *
+
+C<CreationTime>
+
+=item *
+
+C<LastModificationTime>
+
+=item *
+
+C<Status>
+
+=item *
+
+C<Message> (if an error occurred)
+
+=back
+
+
+
 =head2 GetAccuracyMetrics
 
 =over
@@ -1039,7 +1285,8 @@ Returns: a L<Paws::Forecast::GetAccuracyMetricsResponse> instance
 Provides metrics on the accuracy of the models that were trained by the
 CreatePredictor operation. Use metrics to see how well the model
 performed and to decide whether to use the predictor to generate a
-forecast. For more information, see metrics.
+forecast. For more information, see Predictor Metrics
+(https://docs.aws.amazon.com/forecast/latest/dg/metrics.html).
 
 This operation generates metrics for each backtest window that was
 evaluated. The number of backtest windows (C<NumberOfBacktestWindows>)
@@ -1175,6 +1422,33 @@ of properties, specify the ARN with the DescribeForecast operation. You
 can filter the list using an array of Filter objects.
 
 
+=head2 ListPredictorBacktestExportJobs
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Forecast::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::ListPredictorBacktestExportJobs>
+
+Returns: a L<Paws::Forecast::ListPredictorBacktestExportJobsResponse> instance
+
+Returns a list of predictor backtest export jobs created using the
+CreatePredictorBacktestExportJob operation. This operation returns a
+summary for each backtest export job. You can filter the list using an
+array of Filter objects.
+
+To retrieve the complete set of properties for a particular backtest
+export job, use the ARN with the DescribePredictorBacktestExportJob
+operation.
+
+
 =head2 ListPredictors
 
 =over
@@ -1198,6 +1472,109 @@ properties, including its Amazon Resource Name (ARN). You can retrieve
 the complete set of properties by using the ARN with the
 DescribePredictor operation. You can filter the list using an array of
 Filter objects.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::ListTagsForResource>
+
+Returns: a L<Paws::Forecast::ListTagsForResourceResponse> instance
+
+Lists the tags for an Amazon Forecast resource.
+
+
+=head2 StopResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::StopResource>
+
+Returns: nothing
+
+Stops a resource.
+
+The resource undergoes the following states: C<CREATE_STOPPING> and
+C<CREATE_STOPPED>. You cannot resume a resource once it has been
+stopped.
+
+This operation can be applied to the following resources (and their
+corresponding child resources):
+
+=over
+
+=item *
+
+Dataset Import Job
+
+=item *
+
+Predictor Job
+
+=item *
+
+Forecast Job
+
+=item *
+
+Forecast Export Job
+
+=item *
+
+Predictor Backtest Export Job
+
+=back
+
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::Forecast::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::TagResource>
+
+Returns: a L<Paws::Forecast::TagResourceResponse> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are also deleted.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Forecast::UntagResource>
+
+Returns: a L<Paws::Forecast::UntagResourceResponse> instance
+
+Deletes the specified tags from a resource.
 
 
 =head2 UpdateDatasetGroup
@@ -1286,6 +1663,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Forecasts, passing the object as the first parameter, and the string 'Forecasts' as the second parameter 
 
 If not, it will return a a L<Paws::Forecast::ListForecastsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPredictorBacktestExportJobs(sub { },[Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPredictorBacktestExportJobs([Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PredictorBacktestExportJobs, passing the object as the first parameter, and the string 'PredictorBacktestExportJobs' as the second parameter 
+
+If not, it will return a a L<Paws::Forecast::ListPredictorBacktestExportJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllPredictors(sub { },[Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])

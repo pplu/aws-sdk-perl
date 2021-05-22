@@ -4,8 +4,12 @@ package Paws::Forecast::Statistics;
   has Avg => (is => 'ro', isa => 'Num');
   has Count => (is => 'ro', isa => 'Int');
   has CountDistinct => (is => 'ro', isa => 'Int');
+  has CountDistinctLong => (is => 'ro', isa => 'Int');
+  has CountLong => (is => 'ro', isa => 'Int');
   has CountNan => (is => 'ro', isa => 'Int');
+  has CountNanLong => (is => 'ro', isa => 'Int');
   has CountNull => (is => 'ro', isa => 'Int');
+  has CountNullLong => (is => 'ro', isa => 'Int');
   has Max => (is => 'ro', isa => 'Str');
   has Min => (is => 'ro', isa => 'Str');
   has Stddev => (is => 'ro', isa => 'Num');
@@ -53,22 +57,52 @@ For a numeric field, the average value in the field.
 
 =head2 Count => Int
 
-The number of values in the field.
+The number of values in the field. If the response value is -1, refer
+to C<CountLong>.
 
 
 =head2 CountDistinct => Int
 
-The number of distinct values in the field.
+The number of distinct values in the field. If the response value is
+-1, refer to C<CountDistinctLong>.
+
+
+=head2 CountDistinctLong => Int
+
+The number of distinct values in the field. C<CountDistinctLong> is
+used instead of C<CountDistinct> if the value is greater than
+2,147,483,647.
+
+
+=head2 CountLong => Int
+
+The number of values in the field. C<CountLong> is used instead of
+C<Count> if the value is greater than 2,147,483,647.
 
 
 =head2 CountNan => Int
 
-The number of NAN (not a number) values in the field.
+The number of NAN (not a number) values in the field. If the response
+value is -1, refer to C<CountNanLong>.
+
+
+=head2 CountNanLong => Int
+
+The number of NAN (not a number) values in the field. C<CountNanLong>
+is used instead of C<CountNan> if the value is greater than
+2,147,483,647.
 
 
 =head2 CountNull => Int
 
-The number of null values in the field.
+The number of null values in the field. If the response value is -1,
+refer to C<CountNullLong>.
+
+
+=head2 CountNullLong => Int
+
+The number of null values in the field. C<CountNullLong> is used
+instead of C<CountNull> if the value is greater than 2,147,483,647.
 
 
 =head2 Max => Str

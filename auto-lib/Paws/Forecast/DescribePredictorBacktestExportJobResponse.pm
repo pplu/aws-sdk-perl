@@ -1,13 +1,13 @@
 
-package Paws::Forecast::DescribeForecastExportJobResponse;
+package Paws::Forecast::DescribePredictorBacktestExportJobResponse;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
   has Destination => (is => 'ro', isa => 'Paws::Forecast::DataDestination');
-  has ForecastArn => (is => 'ro', isa => 'Str');
-  has ForecastExportJobArn => (is => 'ro', isa => 'Str');
-  has ForecastExportJobName => (is => 'ro', isa => 'Str');
   has LastModificationTime => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+  has PredictorArn => (is => 'ro', isa => 'Str');
+  has PredictorBacktestExportJobArn => (is => 'ro', isa => 'Str');
+  has PredictorBacktestExportJobName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -16,35 +16,19 @@ package Paws::Forecast::DescribeForecastExportJobResponse;
 
 =head1 NAME
 
-Paws::Forecast::DescribeForecastExportJobResponse
+Paws::Forecast::DescribePredictorBacktestExportJobResponse
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Str
 
-When the forecast export job was created.
+When the predictor backtest export job was created.
 
 
 =head2 Destination => L<Paws::Forecast::DataDestination>
 
-The path to the Amazon Simple Storage Service (Amazon S3) bucket where
-the forecast is exported.
 
-
-=head2 ForecastArn => Str
-
-The Amazon Resource Name (ARN) of the exported forecast.
-
-
-=head2 ForecastExportJobArn => Str
-
-The ARN of the forecast export job.
-
-
-=head2 ForecastExportJobName => Str
-
-The name of the forecast export job.
 
 
 =head2 LastModificationTime => Str
@@ -80,12 +64,28 @@ C<ACTIVE> or C<CREATE_FAILED> - When the job finished or failed.
 
 =head2 Message => Str
 
-If an error occurred, an informational message about the error.
+Information about any errors that may have occurred during the backtest
+export.
+
+
+=head2 PredictorArn => Str
+
+The Amazon Resource Name (ARN) of the predictor.
+
+
+=head2 PredictorBacktestExportJobArn => Str
+
+The Amazon Resource Name (ARN) of the predictor backtest export job.
+
+
+=head2 PredictorBacktestExportJobName => Str
+
+The name of the predictor backtest export job.
 
 
 =head2 Status => Str
 
-The status of the forecast export job. States include:
+The status of the predictor backtest export job. States include:
 
 =over
 
@@ -107,8 +107,6 @@ C<DELETE_PENDING>, C<DELETE_IN_PROGRESS>, C<DELETE_FAILED>
 
 =back
 
-The C<Status> of the forecast export job must be C<ACTIVE> before you
-can access the forecast in your S3 bucket.
 
 
 =head2 _request_id => Str

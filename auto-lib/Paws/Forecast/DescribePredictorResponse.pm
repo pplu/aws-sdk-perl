@@ -6,9 +6,11 @@ package Paws::Forecast::DescribePredictorResponse;
   has CreationTime => (is => 'ro', isa => 'Str');
   has DatasetImportJobArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EncryptionConfig => (is => 'ro', isa => 'Paws::Forecast::EncryptionConfig');
+  has EstimatedTimeRemainingInMinutes => (is => 'ro', isa => 'Int');
   has EvaluationParameters => (is => 'ro', isa => 'Paws::Forecast::EvaluationParameters');
   has FeaturizationConfig => (is => 'ro', isa => 'Paws::Forecast::FeaturizationConfig');
   has ForecastHorizon => (is => 'ro', isa => 'Int');
+  has ForecastTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has HPOConfig => (is => 'ro', isa => 'Paws::Forecast::HyperParameterTuningJobConfig');
   has InputDataConfig => (is => 'ro', isa => 'Paws::Forecast::InputDataConfig');
   has LastModificationTime => (is => 'ro', isa => 'Str');
@@ -61,6 +63,12 @@ Management (IAM) role that Amazon Forecast can assume to access the
 key.
 
 
+=head2 EstimatedTimeRemainingInMinutes => Int
+
+The estimated time remaining in minutes for the predictor training job
+to complete.
+
+
 =head2 EvaluationParameters => L<Paws::Forecast::EvaluationParameters>
 
 Used to override the default evaluation parameters of the specified
@@ -80,6 +88,12 @@ The number of time-steps of the forecast. The forecast horizon is also
 called the prediction length.
 
 
+=head2 ForecastTypes => ArrayRef[Str|Undef]
+
+The forecast types used during predictor training. Default value is
+C<["0.1","0.5","0.9"]>
+
+
 =head2 HPOConfig => L<Paws::Forecast::HyperParameterTuningJobConfig>
 
 The hyperparameter override values for the algorithm.
@@ -93,11 +107,33 @@ predictor.
 
 =head2 LastModificationTime => Str
 
-Initially, the same as C<CreationTime> (when the status is
-C<CREATE_PENDING>). This value is updated when training starts (when
-the status changes to C<CREATE_IN_PROGRESS>), and when training has
-completed (when the status changes to C<ACTIVE>) or fails (when the
-status changes to C<CREATE_FAILED>).
+The last time the resource was modified. The timestamp depends on the
+status of the job:
+
+=over
+
+=item *
+
+C<CREATE_PENDING> - The C<CreationTime>.
+
+=item *
+
+C<CREATE_IN_PROGRESS> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPING> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPED> - When the job stopped.
+
+=item *
+
+C<ACTIVE> or C<CREATE_FAILED> - When the job finished or failed.
+
+=back
+
 
 
 =head2 Message => Str
@@ -153,7 +189,7 @@ C<DELETE_PENDING>, C<DELETE_IN_PROGRESS>, C<DELETE_FAILED>
 
 =item *
 
-C<UPDATE_PENDING>, C<UPDATE_IN_PROGRESS>, C<UPDATE_FAILED>
+C<CREATE_STOPPING>, C<CREATE_STOPPED>
 
 =back
 
@@ -164,10 +200,9 @@ predictor to create a forecast.
 =head2 TrainingParameters => L<Paws::Forecast::TrainingParameters>
 
 The default training parameters or overrides selected during model
-training. If using the AutoML algorithm or if HPO is turned on while
-using the DeepAR+ algorithms, the optimized values for the chosen
-hyperparameters are returned. For more information, see
-aws-forecast-choosing-recipes.
+training. When running AutoML or choosing HPO with CNN-QR or DeepAR+,
+the optimized values for the chosen hyperparameters are returned. For
+more information, see aws-forecast-choosing-recipes.
 
 
 =head2 _request_id => Str
