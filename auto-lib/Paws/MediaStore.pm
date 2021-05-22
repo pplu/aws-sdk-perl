@@ -40,6 +40,11 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteLifecyclePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteMetricPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteMetricPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeContainer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DescribeContainer', @_);
@@ -58,6 +63,11 @@ package Paws::MediaStore;
   sub GetLifecyclePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::GetLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMetricPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetMetricPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListContainers {
@@ -83,6 +93,11 @@ package Paws::MediaStore;
   sub PutLifecyclePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::PutLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutMetricPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutMetricPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartAccessLogging {
@@ -131,7 +146,7 @@ package Paws::MediaStore;
   }
 
 
-  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers ListTagsForResource PutContainerPolicy PutCorsPolicy PutLifecyclePolicy StartAccessLogging StopAccessLogging TagResource UntagResource / }
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DeleteMetricPolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy GetMetricPolicy ListContainers ListTagsForResource PutContainerPolicy PutCorsPolicy PutLifecyclePolicy PutMetricPolicy StartAccessLogging StopAccessLogging TagResource UntagResource / }
 
 1;
 
@@ -260,6 +275,24 @@ Removes an object lifecycle policy from a container. It takes up to 20
 minutes for the change to take effect.
 
 
+=head2 DeleteMetricPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteMetricPolicy>
+
+Returns: a L<Paws::MediaStore::DeleteMetricPolicyOutput> instance
+
+Deletes the metric policy that is associated with the specified
+container. If there is no metric policy associated with the container,
+MediaStore doesn't send metrics to CloudWatch.
+
+
 =head2 DescribeContainer
 
 =over
@@ -336,6 +369,22 @@ Each argument is described in detail in: L<Paws::MediaStore::GetLifecyclePolicy>
 Returns: a L<Paws::MediaStore::GetLifecyclePolicyOutput> instance
 
 Retrieves the object lifecycle policy that is assigned to a container.
+
+
+=head2 GetMetricPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::GetMetricPolicy>
+
+Returns: a L<Paws::MediaStore::GetMetricPolicyOutput> instance
+
+Returns the metric policy for the specified container.
 
 
 =head2 ListContainers
@@ -464,6 +513,27 @@ change to take effect.
 For information about how to construct an object lifecycle policy, see
 Components of an Object Lifecycle Policy
 (https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html).
+
+
+=head2 PutMetricPolicy
+
+=over
+
+=item ContainerName => Str
+
+=item MetricPolicy => L<Paws::MediaStore::MetricPolicy>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::PutMetricPolicy>
+
+Returns: a L<Paws::MediaStore::PutMetricPolicyOutput> instance
+
+The metric policy that you want to add to the container. A metric
+policy allows AWS Elemental MediaStore to send metrics to Amazon
+CloudWatch. It takes up to 20 minutes for the new policy to take
+effect.
 
 
 =head2 StartAccessLogging
