@@ -56,7 +56,7 @@ The identifier of the Amazon Connect instance.
 
 =head2 MaxResults => Int
 
-The maximimum number of results to return per page.
+The maximum number of results to return per page.
 
 
 

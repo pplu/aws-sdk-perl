@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       Filters => {
         Channels => [
-          'VOICE', ...          # values: VOICE, CHAT
+          'VOICE', ...          # values: VOICE, CHAT, TASK
         ],                      # max: 1; OPTIONAL
         Queues => [ 'MyQueueId', ... ],    # min: 1, max: 100; OPTIONAL
       },
@@ -72,7 +72,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head2 B<REQUIRED> CurrentMetrics => ArrayRef[L<Paws::Connect::CurrentMetric>]
 
 The metrics to retrieve. Specify the name and unit for each metric. The
-following metrics are available:
+following metrics are available. For a description of all the metrics,
+see Real-time Metrics Definitions
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html)
+in the I<Amazon Connect Administrator Guide>.
 
 =over
 
@@ -80,53 +83,100 @@ following metrics are available:
 
 Unit: COUNT
 
+Name in real-time metrics report: ACW
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#aftercallwork-real-time)
+
 =item AGENTS_AVAILABLE
 
 Unit: COUNT
+
+Name in real-time metrics report: Available
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#available-real-time)
 
 =item AGENTS_ERROR
 
 Unit: COUNT
 
+Name in real-time metrics report: Error
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#error-real-time)
+
 =item AGENTS_NON_PRODUCTIVE
 
 Unit: COUNT
+
+Name in real-time metrics report: NPT (Non-Productive Time)
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#non-productive-time-real-time)
 
 =item AGENTS_ON_CALL
 
 Unit: COUNT
 
+Name in real-time metrics report: On contact
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time)
+
 =item AGENTS_ON_CONTACT
 
 Unit: COUNT
+
+Name in real-time metrics report: On contact
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time)
 
 =item AGENTS_ONLINE
 
 Unit: COUNT
 
+Name in real-time metrics report: Online
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#online-real-time)
+
 =item AGENTS_STAFFED
 
 Unit: COUNT
+
+Name in real-time metrics report: Staffed
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#staffed-real-time)
 
 =item CONTACTS_IN_QUEUE
 
 Unit: COUNT
 
+Name in real-time metrics report: In queue
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#in-queue-real-time)
+
 =item CONTACTS_SCHEDULED
 
 Unit: COUNT
+
+Name in real-time metrics report: Scheduled
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#scheduled-real-time)
 
 =item OLDEST_CONTACT_AGE
 
 Unit: SECONDS
 
+When you use groupings, Unit says SECONDS but the Value is returned in
+MILLISECONDS. For example, if you get a response like this:
+
+C<{ "Metric": { "Name": "OLDEST_CONTACT_AGE", "Unit": "SECONDS" },
+"Value": 24113.0 >}
+
+The actual OLDEST_CONTACT_AGE is 24 seconds.
+
+Name in real-time metrics report: Oldest
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#oldest-real-time)
+
 =item SLOTS_ACTIVE
 
 Unit: COUNT
 
+Name in real-time metrics report: Active
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#active-real-time)
+
 =item SLOTS_AVAILABLE
 
 Unit: COUNT
+
+Name in real-time metrics report: Availability
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#availability-real-time)
 
 =back
 
@@ -138,8 +188,8 @@ Unit: COUNT
 The queues, up to 100, or channels, to use to filter the metrics
 returned. Metric data is retrieved only for the resources associated
 with the queues or channels included in the filter. You can include
-both queue IDs and queue ARNs in the same request. The only supported
-channel is C<VOICE>.
+both queue IDs and queue ARNs in the same request. VOICE, CHAT, and
+TASK channels are supported.
 
 
 
@@ -148,7 +198,8 @@ channel is C<VOICE>.
 The grouping applied to the metrics returned. For example, when grouped
 by C<QUEUE>, the metrics returned apply to each queue rather than
 aggregated for all queues. If you group by C<CHANNEL>, you should
-include a Channels filter. The only supported channel is C<VOICE>.
+include a Channels filter. VOICE, CHAT, and TASK channels are
+supported.
 
 If no C<Grouping> is included in the request, a summary of metrics is
 returned.
@@ -163,7 +214,7 @@ The identifier of the Amazon Connect instance.
 
 =head2 MaxResults => Int
 
-The maximimum number of results to return per page.
+The maximum number of results to return per page.
 
 
 

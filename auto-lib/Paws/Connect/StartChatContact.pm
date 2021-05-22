@@ -68,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head2 Attributes => L<Paws::Connect::Attributes>
 
 A custom key-value pair using an attribute map. The attributes are
-standard Amazon Connect attributes, and can be accessed in contact
+standard Amazon Connect attributes. They can be accessed in contact
 flows just like any other contact attributes.
 
 There can be up to 32,768 UTF-8 bytes across all key-value pairs per
@@ -86,7 +86,14 @@ idempotency of the request.
 
 =head2 B<REQUIRED> ContactFlowId => Str
 
-The identifier of the contact flow for the chat.
+The identifier of the contact flow for initiating the chat. To see the
+ContactFlowId in the Amazon Connect console user interface, on the
+navigation menu go to B<Routing>, B<Contact Flows>. Choose the contact
+flow. On the contact flow page, under the name of the contact flow,
+choose B<Show additional flow information>. The ContactFlowId is the
+last part of the ARN, shown here in bold:
+
+arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/B<846ec553-a005-41c0-8341-xxxxxxxxxxxx>
 
 
 

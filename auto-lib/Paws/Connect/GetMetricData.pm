@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime => '1970-01-01T01:00:00',
       Filters => {
         Channels => [
-          'VOICE', ...    # values: VOICE, CHAT
+          'VOICE', ...    # values: VOICE, CHAT, TASK
         ],                # max: 1; OPTIONAL
         Queues => [ 'MyQueueId', ... ],    # min: 1, max: 100; OPTIONAL
       },
@@ -95,8 +95,11 @@ hours.
 The queues, up to 100, or channels, to use to filter the metrics
 returned. Metric data is retrieved only for the resources associated
 with the queues or channels included in the filter. You can include
-both queue IDs and queue ARNs in the same request. The only supported
-channel is C<VOICE>.
+both queue IDs and queue ARNs in the same request. VOICE, CHAT, and
+TASK channels are supported.
+
+To filter by C<Queues>, enter the queue ID/ARN, not the name of the
+queue.
 
 
 
@@ -107,8 +110,6 @@ are grouped by queue, the metrics returned are grouped by queue. The
 values returned apply to the metrics for each queue rather than
 aggregated for all queues.
 
-The only supported grouping is C<QUEUE>.
-
 If no grouping is specified, a summary of metrics for all queues is
 returned.
 
@@ -117,7 +118,10 @@ returned.
 =head2 B<REQUIRED> HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>]
 
 The metrics to retrieve. Specify the name, unit, and statistic for each
-metric. The following historical metrics are available:
+metric. The following historical metrics are available. For a
+description of each metric, see Historical Metrics Definitions
+(https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+in the I<Amazon Connect Administrator Guide>.
 
 =over
 
@@ -267,13 +271,15 @@ Statistic: MAX
 
 =item SERVICE_LEVEL
 
+You can include up to 20 SERVICE_LEVEL metrics in a request.
+
 Unit: PERCENT
 
 Statistic: AVG
 
-Threshold: Only "Less than" comparisons are supported, with the
-following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
-180, 240, 300, 600
+Threshold: For C<ThresholdValue>, enter any whole number from 1 to
+604800 (inclusive), in seconds. For C<Comparison>, you must enter C<LT>
+(for "Less than").
 
 =back
 
@@ -288,7 +294,7 @@ The identifier of the Amazon Connect instance.
 
 =head2 MaxResults => Int
 
-The maximimum number of results to return per page.
+The maximum number of results to return per page.
 
 
 
