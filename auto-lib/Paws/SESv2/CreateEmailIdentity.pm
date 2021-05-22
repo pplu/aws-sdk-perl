@@ -1,6 +1,7 @@
 
 package Paws::SESv2::CreateEmailIdentity;
   use Moose;
+  has ConfigurationSetName => (is => 'ro', isa => 'Str');
   has DkimSigningAttributes => (is => 'ro', isa => 'Paws::SESv2::DkimSigningAttributes');
   has EmailIdentity => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
@@ -32,9 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $email = Paws->service('SESv2');
     my $CreateEmailIdentityResponse = $email->CreateEmailIdentity(
       EmailIdentity         => 'MyIdentity',
+      ConfigurationSetName  => 'MyConfigurationSetName',    # OPTIONAL
       DkimSigningAttributes => {
-        DomainSigningPrivateKey => 'MyPrivateKey',    # min: 1, max: 20480
-        DomainSigningSelector   => 'MySelector',      # min: 1, max: 63
+        DomainSigningPrivateKey => 'MyPrivateKey',          # min: 1, max: 20480
+        DomainSigningSelector   => 'MySelector',            # min: 1, max: 63
 
       },    # OPTIONAL
       Tags => [
@@ -59,6 +61,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/CreateEmailIdentity>
 
 =head1 ATTRIBUTES
+
+
+=head2 ConfigurationSetName => Str
+
+The configuration set to use by default when sending from this
+identity. Note that any configuration set defined in the email sending
+request takes precedence.
+
 
 
 =head2 DkimSigningAttributes => L<Paws::SESv2::DkimSigningAttributes>

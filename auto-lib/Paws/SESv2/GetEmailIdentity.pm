@@ -34,11 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DkimAttributes = $GetEmailIdentityResponse->DkimAttributes;
+    my $ConfigurationSetName = $GetEmailIdentityResponse->ConfigurationSetName;
+    my $DkimAttributes       = $GetEmailIdentityResponse->DkimAttributes;
     my $FeedbackForwardingStatus =
       $GetEmailIdentityResponse->FeedbackForwardingStatus;
     my $IdentityType       = $GetEmailIdentityResponse->IdentityType;
     my $MailFromAttributes = $GetEmailIdentityResponse->MailFromAttributes;
+    my $Policies           = $GetEmailIdentityResponse->Policies;
     my $Tags               = $GetEmailIdentityResponse->Tags;
     my $VerifiedForSendingStatus =
       $GetEmailIdentityResponse->VerifiedForSendingStatus;

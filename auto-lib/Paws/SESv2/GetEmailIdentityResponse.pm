@@ -1,10 +1,12 @@
 
 package Paws::SESv2::GetEmailIdentityResponse;
   use Moose;
+  has ConfigurationSetName => (is => 'ro', isa => 'Str');
   has DkimAttributes => (is => 'ro', isa => 'Paws::SESv2::DkimAttributes');
   has FeedbackForwardingStatus => (is => 'ro', isa => 'Bool');
   has IdentityType => (is => 'ro', isa => 'Str');
   has MailFromAttributes => (is => 'ro', isa => 'Paws::SESv2::MailFromAttributes');
+  has Policies => (is => 'ro', isa => 'Paws::SESv2::PolicyMap');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
   has VerifiedForSendingStatus => (is => 'ro', isa => 'Bool');
 
@@ -18,6 +20,11 @@ package Paws::SESv2::GetEmailIdentityResponse;
 Paws::SESv2::GetEmailIdentityResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 ConfigurationSetName => Str
+
+The configuration set used by default when sending from this identity.
 
 
 =head2 DkimAttributes => L<Paws::SESv2::DkimAttributes>
@@ -50,6 +57,11 @@ Valid values are: C<"EMAIL_ADDRESS">, C<"DOMAIN">, C<"MANAGED_DOMAIN">
 
 An object that contains information about the Mail-From attributes for
 the email identity.
+
+
+=head2 Policies => L<Paws::SESv2::PolicyMap>
+
+A map of policy names to policies.
 
 
 =head2 Tags => ArrayRef[L<Paws::SESv2::Tag>]

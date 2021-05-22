@@ -3,6 +3,7 @@ package Paws::SESv2::Template;
   use Moose;
   has TemplateArn => (is => 'ro', isa => 'Str');
   has TemplateData => (is => 'ro', isa => 'Str');
+  has TemplateName => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SESv2::Template object:
 
-  $service_obj->Method(Att1 => { TemplateArn => $value, ..., TemplateData => $value  });
+  $service_obj->Method(Att1 => { TemplateArn => $value, ..., TemplateName => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +55,13 @@ An object that defines the values to use for message variables in the
 template. This object is a set of key-value pairs. Each key defines a
 message variable in the template. The corresponding value defines the
 value to use for that variable.
+
+
+=head2 TemplateName => Str
+
+The name of the template. You will refer to this name when you send
+email using the C<SendTemplatedEmail> or C<SendBulkTemplatedEmail>
+operations.
 
 
 

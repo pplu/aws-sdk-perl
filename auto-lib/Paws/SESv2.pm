@@ -24,6 +24,21 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::CreateConfigurationSetEventDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::CreateContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateContactList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::CreateContactList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::CreateCustomVerificationEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDedicatedIpPool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::CreateDedicatedIpPool', @_);
@@ -39,6 +54,21 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::CreateEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateEmailIdentityPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::CreateEmailIdentityPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::CreateEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateImportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::CreateImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteConfigurationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteConfigurationSet', @_);
@@ -49,6 +79,21 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteConfigurationSetEventDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContactList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteContactList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteCustomVerificationEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDedicatedIpPool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteDedicatedIpPool', @_);
@@ -57,6 +102,16 @@ package Paws::SESv2;
   sub DeleteEmailIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteEmailIdentity', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEmailIdentityPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteEmailIdentityPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::DeleteEmailTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSuppressedDestination {
@@ -82,6 +137,21 @@ package Paws::SESv2;
   sub GetConfigurationSetEventDestinations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::GetConfigurationSetEventDestinations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContactList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetContactList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetCustomVerificationEmailTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDedicatedIp {
@@ -119,6 +189,21 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::GetEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetEmailIdentityPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetEmailIdentityPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetImportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::GetImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSuppressedDestination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::GetSuppressedDestination', @_);
@@ -127,6 +212,21 @@ package Paws::SESv2;
   sub ListConfigurationSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::ListConfigurationSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListContactLists {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::ListContactLists', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListContacts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::ListContacts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListCustomVerificationEmailTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::ListCustomVerificationEmailTemplates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDedicatedIpPools {
@@ -149,6 +249,16 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::ListEmailIdentities', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListEmailTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::ListEmailTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListImportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::ListImportJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSuppressedDestinations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::ListSuppressedDestinations', @_);
@@ -162,6 +272,11 @@ package Paws::SESv2;
   sub PutAccountDedicatedIpWarmupAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutAccountDedicatedIpWarmupAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccountDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::PutAccountDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutAccountSendingAttributes {
@@ -214,6 +329,11 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutDeliverabilityDashboardOption', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutEmailIdentityConfigurationSetAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::PutEmailIdentityConfigurationSetAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEmailIdentityDkimAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutEmailIdentityDkimAttributes', @_);
@@ -239,6 +359,16 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::PutSuppressedDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendBulkEmail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::SendBulkEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendCustomVerificationEmail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::SendCustomVerificationEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::SendEmail', @_);
@@ -247,6 +377,11 @@ package Paws::SESv2;
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SESv2::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TestRenderEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::TestRenderEmailTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UntagResource {
@@ -259,10 +394,35 @@ package Paws::SESv2;
     my $call_object = $self->new_with_coercions('Paws::SESv2::UpdateConfigurationSetEventDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::UpdateContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateContactList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::UpdateContactList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateCustomVerificationEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::UpdateCustomVerificationEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateEmailIdentityPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::UpdateEmailIdentityPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateEmailTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SESv2::UpdateEmailTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity DeleteSuppressedDestination GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity GetSuppressedDestination ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListSuppressedDestinations ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutAccountSuppressionAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetSuppressionOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityDkimSigningAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes PutSuppressedDestination SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateContact CreateContactList CreateCustomVerificationEmailTemplate CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity CreateEmailIdentityPolicy CreateEmailTemplate CreateImportJob DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteContact DeleteContactList DeleteCustomVerificationEmailTemplate DeleteDedicatedIpPool DeleteEmailIdentity DeleteEmailIdentityPolicy DeleteEmailTemplate DeleteSuppressedDestination GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetContact GetContactList GetCustomVerificationEmailTemplate GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity GetEmailIdentityPolicies GetEmailTemplate GetImportJob GetSuppressedDestination ListConfigurationSets ListContactLists ListContacts ListCustomVerificationEmailTemplates ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListEmailTemplates ListImportJobs ListSuppressedDestinations ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountDetails PutAccountSendingAttributes PutAccountSuppressionAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetSuppressionOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityConfigurationSetAttributes PutEmailIdentityDkimAttributes PutEmailIdentityDkimSigningAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes PutSuppressedDestination SendBulkEmail SendCustomVerificationEmail SendEmail TagResource TestRenderEmailTemplate UntagResource UpdateConfigurationSetEventDestination UpdateContact UpdateContactList UpdateCustomVerificationEmailTemplate UpdateEmailIdentityPolicy UpdateEmailTemplate / }
 
 1;
 
@@ -390,6 +550,86 @@ long-term storage.
 A single configuration set can include more than one event destination.
 
 
+=head2 CreateContact
+
+=over
+
+=item ContactListName => Str
+
+=item EmailAddress => Str
+
+=item [AttributesData => Str]
+
+=item [TopicPreferences => ArrayRef[L<Paws::SESv2::TopicPreference>]]
+
+=item [UnsubscribeAll => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::CreateContact>
+
+Returns: a L<Paws::SESv2::CreateContactResponse> instance
+
+Creates a contact, which is an end-user who is receiving the email, and
+adds them to a contact list.
+
+
+=head2 CreateContactList
+
+=over
+
+=item ContactListName => Str
+
+=item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
+
+=item [Topics => ArrayRef[L<Paws::SESv2::Topic>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::CreateContactList>
+
+Returns: a L<Paws::SESv2::CreateContactListResponse> instance
+
+Creates a contact list.
+
+
+=head2 CreateCustomVerificationEmailTemplate
+
+=over
+
+=item FailureRedirectionURL => Str
+
+=item FromEmailAddress => Str
+
+=item SuccessRedirectionURL => Str
+
+=item TemplateContent => Str
+
+=item TemplateName => Str
+
+=item TemplateSubject => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::CreateCustomVerificationEmailTemplate>
+
+Returns: a L<Paws::SESv2::CreateCustomVerificationEmailTemplateResponse> instance
+
+Creates a new custom verification email template.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
+
+
 =head2 CreateDedicatedIpPool
 
 =over
@@ -448,6 +688,8 @@ to view the results of the test.
 
 =item EmailIdentity => Str
 
+=item [ConfigurationSetName => Str]
+
 =item [DkimSigningAttributes => L<Paws::SESv2::DkimSigningAttributes>]
 
 =item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
@@ -486,6 +728,88 @@ C<DkimSigningAttributes> object. When you specify this object, you
 provide a selector (a component of the DNS record name that identifies
 the public key that you want to use for DKIM authentication) and a
 private key.
+
+When you verify a domain, this operation provides a set of DKIM tokens,
+which you can convert into CNAME tokens. You add these CNAME tokens to
+the DNS configuration for your domain. Your domain is verified when
+Amazon SES detects these records in the DNS configuration for your
+domain. For some DNS providers, it can take 72 hours or more to
+complete the domain verification process.
+
+Additionally, you can associate an existing configuration set with the
+email identity that you're verifying.
+
+
+=head2 CreateEmailIdentityPolicy
+
+=over
+
+=item EmailIdentity => Str
+
+=item Policy => Str
+
+=item PolicyName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::CreateEmailIdentityPolicy>
+
+Returns: a L<Paws::SESv2::CreateEmailIdentityPolicyResponse> instance
+
+Creates the specified sending authorization policy for the given
+identity (an email address or a domain).
+
+This API is for the identity owner only. If you have not verified the
+identity, this API will return an error.
+
+Sending authorization is a feature that enables an identity owner to
+authorize other senders to use its identities. For information about
+using sending authorization, see the Amazon SES Developer Guide
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+You can execute this operation no more than once per second.
+
+
+=head2 CreateEmailTemplate
+
+=over
+
+=item TemplateContent => L<Paws::SESv2::EmailTemplateContent>
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::CreateEmailTemplate>
+
+Returns: a L<Paws::SESv2::CreateEmailTemplateResponse> instance
+
+Creates an email template. Email templates enable you to send
+personalized email to one or more destinations in a single API
+operation. For more information, see the Amazon SES Developer Guide
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+
+You can execute this operation no more than once per second.
+
+
+=head2 CreateImportJob
+
+=over
+
+=item ImportDataSource => L<Paws::SESv2::ImportDataSource>
+
+=item ImportDestination => L<Paws::SESv2::ImportDestination>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::CreateImportJob>
+
+Returns: a L<Paws::SESv2::CreateImportJobResponse> instance
+
+Creates an import job for a data destination.
 
 
 =head2 DeleteConfigurationSet
@@ -535,6 +859,63 @@ complaints, or you can use Amazon Kinesis Data Firehose to stream data
 to Amazon S3 for long-term storage.
 
 
+=head2 DeleteContact
+
+=over
+
+=item ContactListName => Str
+
+=item EmailAddress => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::DeleteContact>
+
+Returns: a L<Paws::SESv2::DeleteContactResponse> instance
+
+Removes a contact from a contact list.
+
+
+=head2 DeleteContactList
+
+=over
+
+=item ContactListName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::DeleteContactList>
+
+Returns: a L<Paws::SESv2::DeleteContactListResponse> instance
+
+Deletes a contact list and all of the contacts on that list.
+
+
+=head2 DeleteCustomVerificationEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::DeleteCustomVerificationEmailTemplate>
+
+Returns: a L<Paws::SESv2::DeleteCustomVerificationEmailTemplateResponse> instance
+
+Deletes an existing custom verification email template.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/es/latest/DeveloperGuide/send-email-verify-address-custom.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
+
+
 =head2 DeleteDedicatedIpPool
 
 =over
@@ -566,6 +947,54 @@ Returns: a L<Paws::SESv2::DeleteEmailIdentityResponse> instance
 
 Deletes an email identity. An identity can be either an email address
 or a domain name.
+
+
+=head2 DeleteEmailIdentityPolicy
+
+=over
+
+=item EmailIdentity => Str
+
+=item PolicyName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::DeleteEmailIdentityPolicy>
+
+Returns: a L<Paws::SESv2::DeleteEmailIdentityPolicyResponse> instance
+
+Deletes the specified sending authorization policy for the given
+identity (an email address or a domain). This API returns successfully
+even if a policy with the specified name does not exist.
+
+This API is for the identity owner only. If you have not verified the
+identity, this API will return an error.
+
+Sending authorization is a feature that enables an identity owner to
+authorize other senders to use its identities. For information about
+using sending authorization, see the Amazon SES Developer Guide
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+You can execute this operation no more than once per second.
+
+
+=head2 DeleteEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::DeleteEmailTemplate>
+
+Returns: a L<Paws::SESv2::DeleteEmailTemplateResponse> instance
+
+Deletes an email template.
+
+You can execute this operation no more than once per second.
 
 
 =head2 DeleteSuppressedDestination
@@ -662,6 +1091,65 @@ information about these events to. For example, you can send event data
 to Amazon SNS to receive notifications when you receive bounces or
 complaints, or you can use Amazon Kinesis Data Firehose to stream data
 to Amazon S3 for long-term storage.
+
+
+=head2 GetContact
+
+=over
+
+=item ContactListName => Str
+
+=item EmailAddress => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetContact>
+
+Returns: a L<Paws::SESv2::GetContactResponse> instance
+
+Returns a contact from a contact list.
+
+
+=head2 GetContactList
+
+=over
+
+=item ContactListName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetContactList>
+
+Returns: a L<Paws::SESv2::GetContactListResponse> instance
+
+Returns contact list metadata. It does not return any information about
+the contacts present in the list.
+
+
+=head2 GetCustomVerificationEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetCustomVerificationEmailTemplate>
+
+Returns: a L<Paws::SESv2::GetCustomVerificationEmailTemplateResponse> instance
+
+Returns the custom email verification template for the template name
+you specify.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
 
 
 =head2 GetDedicatedIp
@@ -796,8 +1284,72 @@ Each argument is described in detail in: L<Paws::SESv2::GetEmailIdentity>
 Returns: a L<Paws::SESv2::GetEmailIdentityResponse> instance
 
 Provides information about a specific identity, including the
-identity's verification status, its DKIM authentication status, and its
-custom Mail-From settings.
+identity's verification status, sending authorization policies, its
+DKIM authentication status, and its custom Mail-From settings.
+
+
+=head2 GetEmailIdentityPolicies
+
+=over
+
+=item EmailIdentity => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetEmailIdentityPolicies>
+
+Returns: a L<Paws::SESv2::GetEmailIdentityPoliciesResponse> instance
+
+Returns the requested sending authorization policies for the given
+identity (an email address or a domain). The policies are returned as a
+map of policy names to policy contents. You can retrieve a maximum of
+20 policies at a time.
+
+This API is for the identity owner only. If you have not verified the
+identity, this API will return an error.
+
+Sending authorization is a feature that enables an identity owner to
+authorize other senders to use its identities. For information about
+using sending authorization, see the Amazon SES Developer Guide
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+You can execute this operation no more than once per second.
+
+
+=head2 GetEmailTemplate
+
+=over
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetEmailTemplate>
+
+Returns: a L<Paws::SESv2::GetEmailTemplateResponse> instance
+
+Displays the template object (which includes the subject line, HTML
+part and text part) for the template you specify.
+
+You can execute this operation no more than once per second.
+
+
+=head2 GetImportJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::GetImportJob>
+
+Returns: a L<Paws::SESv2::GetImportJobResponse> instance
+
+Provides information about an import job.
 
 
 =head2 GetSuppressedDestination
@@ -840,6 +1392,72 @@ emails you send. You apply a configuration set to an email by including
 a reference to the configuration set in the headers of the email. When
 you apply a configuration set to an email, all of the rules in that
 configuration set are applied to the email.
+
+
+=head2 ListContactLists
+
+=over
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::ListContactLists>
+
+Returns: a L<Paws::SESv2::ListContactListsResponse> instance
+
+Lists all of the contact lists available.
+
+
+=head2 ListContacts
+
+=over
+
+=item ContactListName => Str
+
+=item [Filter => L<Paws::SESv2::ListContactsFilter>]
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::ListContacts>
+
+Returns: a L<Paws::SESv2::ListContactsResponse> instance
+
+Lists the contacts present in a specific contact list.
+
+
+=head2 ListCustomVerificationEmailTemplates
+
+=over
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::ListCustomVerificationEmailTemplates>
+
+Returns: a L<Paws::SESv2::ListCustomVerificationEmailTemplatesResponse> instance
+
+Lists the existing custom verification email templates for your account
+in the current AWS Region.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
 
 
 =head2 ListDedicatedIpPools
@@ -931,6 +1549,47 @@ those that aren't. This operation returns identities that are
 associated with Amazon SES and Amazon Pinpoint.
 
 
+=head2 ListEmailTemplates
+
+=over
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::ListEmailTemplates>
+
+Returns: a L<Paws::SESv2::ListEmailTemplatesResponse> instance
+
+Lists the email templates present in your Amazon SES account in the
+current AWS Region.
+
+You can execute this operation no more than once per second.
+
+
+=head2 ListImportJobs
+
+=over
+
+=item [ImportDestinationType => Str]
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::ListImportJobs>
+
+Returns: a L<Paws::SESv2::ListImportJobsResponse> instance
+
+Lists all of the import jobs.
+
+
 =head2 ListSuppressedDestinations
 
 =over
@@ -992,6 +1651,32 @@ Returns: a L<Paws::SESv2::PutAccountDedicatedIpWarmupAttributesResponse> instanc
 
 Enable or disable the automatic warm-up feature for dedicated IP
 addresses.
+
+
+=head2 PutAccountDetails
+
+=over
+
+=item MailType => Str
+
+=item UseCaseDescription => Str
+
+=item WebsiteURL => Str
+
+=item [AdditionalContactEmailAddresses => ArrayRef[Str|Undef]]
+
+=item [ContactLanguage => Str]
+
+=item [ProductionAccessEnabled => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::PutAccountDetails>
+
+Returns: a L<Paws::SESv2::PutAccountDetailsResponse> instance
+
+Update your Amazon SES account details.
 
 
 =head2 PutAccountSendingAttributes
@@ -1194,6 +1879,24 @@ features and cost of a Deliverability dashboard subscription, see
 Amazon SES Pricing (http://aws.amazon.com/ses/pricing/).
 
 
+=head2 PutEmailIdentityConfigurationSetAttributes
+
+=over
+
+=item EmailIdentity => Str
+
+=item [ConfigurationSetName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::PutEmailIdentityConfigurationSetAttributes>
+
+Returns: a L<Paws::SESv2::PutEmailIdentityConfigurationSetAttributesResponse> instance
+
+Used to associate a configuration set with an email identity.
+
+
 =head2 PutEmailIdentityDkimAttributes
 
 =over
@@ -1329,21 +2032,91 @@ Returns: a L<Paws::SESv2::PutSuppressedDestinationResponse> instance
 Adds an email address to the suppression list for your account.
 
 
+=head2 SendBulkEmail
+
+=over
+
+=item BulkEmailEntries => ArrayRef[L<Paws::SESv2::BulkEmailEntry>]
+
+=item DefaultContent => L<Paws::SESv2::BulkEmailContent>
+
+=item [ConfigurationSetName => Str]
+
+=item [DefaultEmailTags => ArrayRef[L<Paws::SESv2::MessageTag>]]
+
+=item [FeedbackForwardingEmailAddress => Str]
+
+=item [FeedbackForwardingEmailAddressIdentityArn => Str]
+
+=item [FromEmailAddress => Str]
+
+=item [FromEmailAddressIdentityArn => Str]
+
+=item [ReplyToAddresses => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::SendBulkEmail>
+
+Returns: a L<Paws::SESv2::SendBulkEmailResponse> instance
+
+Composes an email message to multiple destinations.
+
+
+=head2 SendCustomVerificationEmail
+
+=over
+
+=item EmailAddress => Str
+
+=item TemplateName => Str
+
+=item [ConfigurationSetName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::SendCustomVerificationEmail>
+
+Returns: a L<Paws::SESv2::SendCustomVerificationEmailResponse> instance
+
+Adds an email address to the list of identities for your Amazon SES
+account in the current AWS Region and attempts to verify it. As a
+result of executing this operation, a customized verification email is
+sent to the specified address.
+
+To use this operation, you must first create a custom verification
+email template. For more information about creating and using custom
+verification email templates, see Using Custom Verification Email
+Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
+
+
 =head2 SendEmail
 
 =over
 
 =item Content => L<Paws::SESv2::EmailContent>
 
-=item Destination => L<Paws::SESv2::Destination>
-
 =item [ConfigurationSetName => Str]
+
+=item [Destination => L<Paws::SESv2::Destination>]
 
 =item [EmailTags => ArrayRef[L<Paws::SESv2::MessageTag>]]
 
 =item [FeedbackForwardingEmailAddress => Str]
 
+=item [FeedbackForwardingEmailAddressIdentityArn => Str]
+
 =item [FromEmailAddress => Str]
+
+=item [FromEmailAddressIdentityArn => Str]
+
+=item [ListManagementOptions => L<Paws::SESv2::ListManagementOptions>]
 
 =item [ReplyToAddresses => ArrayRef[Str|Undef]]
 
@@ -1372,6 +2145,12 @@ type of email, you have to specify all of the message headers, as well
 as the message body. You can use this message type to send messages
 that contain attachments. The message that you specify has to be a
 valid MIME message.
+
+=item *
+
+B<Templated> E<ndash> A message that contains personalization tags.
+When you send this type of email, Amazon SES API v2 automatically
+replaces the tags with values that you specify.
 
 =back
 
@@ -1402,6 +2181,27 @@ Each tag consists of a required I<tag key> and an associated I<tag
 value>, both of which you define. A tag key is a general label that
 acts as a category for more specific tag values. A tag value acts as a
 descriptor within a tag key.
+
+
+=head2 TestRenderEmailTemplate
+
+=over
+
+=item TemplateData => Str
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::TestRenderEmailTemplate>
+
+Returns: a L<Paws::SESv2::TestRenderEmailTemplateResponse> instance
+
+Creates a preview of the MIME content of an email when provided with a
+template and a set of replacement data.
+
+You can execute this operation no more than once per second.
 
 
 =head2 UntagResource
@@ -1448,6 +2248,141 @@ information about these events to. For example, you can send event data
 to Amazon SNS to receive notifications when you receive bounces or
 complaints, or you can use Amazon Kinesis Data Firehose to stream data
 to Amazon S3 for long-term storage.
+
+
+=head2 UpdateContact
+
+=over
+
+=item ContactListName => Str
+
+=item EmailAddress => Str
+
+=item [AttributesData => Str]
+
+=item [TopicPreferences => ArrayRef[L<Paws::SESv2::TopicPreference>]]
+
+=item [UnsubscribeAll => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::UpdateContact>
+
+Returns: a L<Paws::SESv2::UpdateContactResponse> instance
+
+Updates a contact's preferences for a list. It is not necessary to
+specify all existing topic preferences in the TopicPreferences object,
+just the ones that need updating.
+
+
+=head2 UpdateContactList
+
+=over
+
+=item ContactListName => Str
+
+=item [Description => Str]
+
+=item [Topics => ArrayRef[L<Paws::SESv2::Topic>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::UpdateContactList>
+
+Returns: a L<Paws::SESv2::UpdateContactListResponse> instance
+
+Updates contact list metadata. This operation does a complete
+replacement.
+
+
+=head2 UpdateCustomVerificationEmailTemplate
+
+=over
+
+=item FailureRedirectionURL => Str
+
+=item FromEmailAddress => Str
+
+=item SuccessRedirectionURL => Str
+
+=item TemplateContent => Str
+
+=item TemplateName => Str
+
+=item TemplateSubject => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::UpdateCustomVerificationEmailTemplate>
+
+Returns: a L<Paws::SESv2::UpdateCustomVerificationEmailTemplateResponse> instance
+
+Updates an existing custom verification email template.
+
+For more information about custom verification email templates, see
+Using Custom Verification Email Templates
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+in the I<Amazon SES Developer Guide>.
+
+You can execute this operation no more than once per second.
+
+
+=head2 UpdateEmailIdentityPolicy
+
+=over
+
+=item EmailIdentity => Str
+
+=item Policy => Str
+
+=item PolicyName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::UpdateEmailIdentityPolicy>
+
+Returns: a L<Paws::SESv2::UpdateEmailIdentityPolicyResponse> instance
+
+Updates the specified sending authorization policy for the given
+identity (an email address or a domain). This API returns successfully
+even if a policy with the specified name does not exist.
+
+This API is for the identity owner only. If you have not verified the
+identity, this API will return an error.
+
+Sending authorization is a feature that enables an identity owner to
+authorize other senders to use its identities. For information about
+using sending authorization, see the Amazon SES Developer Guide
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+
+You can execute this operation no more than once per second.
+
+
+=head2 UpdateEmailTemplate
+
+=over
+
+=item TemplateContent => L<Paws::SESv2::EmailTemplateContent>
+
+=item TemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SESv2::UpdateEmailTemplate>
+
+Returns: a L<Paws::SESv2::UpdateEmailTemplateResponse> instance
+
+Updates an email template. Email templates enable you to send
+personalized email to one or more destinations in a single API
+operation. For more information, see the Amazon SES Developer Guide
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+
+You can execute this operation no more than once per second.
 
 
 
