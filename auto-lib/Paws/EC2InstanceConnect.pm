@@ -15,6 +15,11 @@ package Paws::EC2InstanceConnect;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub SendSerialConsoleSSHPublicKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2InstanceConnect::SendSerialConsoleSSHPublicKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendSSHPublicKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2InstanceConnect::SendSSHPublicKey', @_);
@@ -23,7 +28,7 @@ package Paws::EC2InstanceConnect;
   
 
 
-  sub operations { qw/SendSSHPublicKey / }
+  sub operations { qw/SendSerialConsoleSSHPublicKey SendSSHPublicKey / }
 
 1;
 
@@ -51,15 +56,39 @@ Paws::EC2InstanceConnect - Perl Interface to AWS AWS EC2 Instance Connect
 
 =head1 DESCRIPTION
 
-AWS EC2 Connect Service is a service that enables system administrators
-to publish temporary SSH keys to their EC2 instances in order to
-establish connections to their instances without leaving a permanent
-authentication option.
+Amazon EC2 Instance Connect enables system administrators to publish
+one-time use SSH public keys to EC2, providing users a simple and
+secure way to connect to their instances.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2-instance-connect-2018-04-02>
 
 
 =head1 METHODS
+
+=head2 SendSerialConsoleSSHPublicKey
+
+=over
+
+=item InstanceId => Str
+
+=item SSHPublicKey => Str
+
+=item [SerialPort => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2InstanceConnect::SendSerialConsoleSSHPublicKey>
+
+Returns: a L<Paws::EC2InstanceConnect::SendSerialConsoleSSHPublicKeyResponse> instance
+
+Pushes an SSH public key to the specified EC2 instance. The key remains
+for 60 seconds, which gives you 60 seconds to establish a serial
+console connection to the instance using SSH. For more information, see
+EC2 Serial Console
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-serial-console.html)
+in the I<Amazon EC2 User Guide>.
+
 
 =head2 SendSSHPublicKey
 
@@ -80,8 +109,11 @@ Each argument is described in detail in: L<Paws::EC2InstanceConnect::SendSSHPubl
 
 Returns: a L<Paws::EC2InstanceConnect::SendSSHPublicKeyResponse> instance
 
-Pushes an SSH public key to a particular OS user on a given EC2
-instance for 60 seconds.
+Pushes an SSH public key to the specified EC2 instance for use by the
+specified user. The key remains for 60 seconds. For more information,
+see Connect to your Linux instance using EC2 Instance Connect
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html)
+in the I<Amazon EC2 User Guide>.
 
 
 

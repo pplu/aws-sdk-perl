@@ -1,5 +1,5 @@
 
-package Paws::EC2InstanceConnect::SendSSHPublicKeyResponse;
+package Paws::EC2InstanceConnect::SendSerialConsoleSSHPublicKeyResponse;
   use Moose;
   has RequestId => (is => 'ro', isa => 'Str');
   has Success => (is => 'ro', isa => 'Bool');
@@ -10,7 +10,7 @@ package Paws::EC2InstanceConnect::SendSSHPublicKeyResponse;
 
 =head1 NAME
 
-Paws::EC2InstanceConnect::SendSSHPublicKeyResponse
+Paws::EC2InstanceConnect::SendSerialConsoleSSHPublicKeyResponse
 
 =head1 ATTRIBUTES
 
