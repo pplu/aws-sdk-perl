@@ -24,7 +24,7 @@ The ID of the backup deleted.
 
 The lifecycle of the backup. Should be C<DELETED>.
 
-Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"DELETED">, C<"FAILED">
+Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"TRANSFERRING">, C<"DELETED">, C<"FAILED">, C<"PENDING">, C<"COPYING">
 =head2 _request_id => Str
 
 

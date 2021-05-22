@@ -3,6 +3,7 @@ package Paws::FSX::DeleteFileSystemResponse;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str');
   has Lifecycle => (is => 'ro', isa => 'Str');
+  has LustreResponse => (is => 'ro', isa => 'Paws::FSX::DeleteFileSystemLustreResponse');
   has WindowsResponse => (is => 'ro', isa => 'Paws::FSX::DeleteFileSystemWindowsResponse');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -27,6 +28,11 @@ The file system lifecycle for the deletion request. Should be
 C<DELETING>.
 
 Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"FAILED">, C<"DELETING">, C<"MISCONFIGURED">, C<"UPDATING">
+=head2 LustreResponse => L<Paws::FSX::DeleteFileSystemLustreResponse>
+
+
+
+
 =head2 WindowsResponse => L<Paws::FSX::DeleteFileSystemWindowsResponse>
 
 

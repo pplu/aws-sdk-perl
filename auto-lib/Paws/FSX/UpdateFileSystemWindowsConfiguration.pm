@@ -4,6 +4,7 @@ package Paws::FSX::UpdateFileSystemWindowsConfiguration;
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
   has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates');
+  has ThroughputCapacity => (is => 'ro', isa => 'Int');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
 
 1;
@@ -36,36 +37,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::Update
 
 =head1 DESCRIPTION
 
-Updates the Microsoft Windows configuration for an existing Amazon FSx
-for Windows File Server file system. Amazon FSx overwrites existing
-properties with non-null values provided in the request. If you don't
-specify a non-null value for a property, that property is not updated.
+Updates the configuration for an existing Amazon FSx for Windows File
+Server file system. Amazon FSx only overwrites existing properties with
+non-null values provided in the request.
 
 =head1 ATTRIBUTES
 
 
 =head2 AutomaticBackupRetentionDays => Int
 
-The number of days to retain automatic backups. Setting this to 0
-disables automatic backups. You can retain automatic backups for a
-maximum of 35 days.
+The number of days to retain automatic daily backups. Setting this to
+zero (0) disables automatic daily backups. You can retain automatic
+daily backups for a maximum of 90 days. For more information, see
+Working with Automatic Daily Backups
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html#automatic-backups).
 
 
 =head2 DailyAutomaticBackupStartTime => Str
 
-The preferred time to take daily automatic backups, in the UTC time
-zone.
+The preferred time to start the daily automatic backup, in the UTC time
+zone, for example, C<02:00>
 
 
 =head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates>
 
 The configuration Amazon FSx uses to join the Windows File Server
-instance to the self-managed Microsoft AD directory.
+instance to the self-managed Microsoft AD directory. You cannot make a
+self-managed Microsoft AD update request if there is an existing
+self-managed Microsoft AD update request in progress.
+
+
+=head2 ThroughputCapacity => Int
+
+Sets the target value for a file system's throughput capacity, in MB/s,
+that you are updating the file system to. Valid values are 8, 16, 32,
+64, 128, 256, 512, 1024, 2048. You cannot make a throughput capacity
+update request if there is an existing throughput capacity update
+request in progress. For more information, see Managing Throughput
+Capacity
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-throughput-capacity.html).
 
 
 =head2 WeeklyMaintenanceStartTime => Str
 
-The preferred time to perform weekly maintenance, in the UTC time zone.
+The preferred start time to perform weekly maintenance, formatted
+d:HH:MM in the UTC time zone. Where d is the weekday number, from 1
+through 7, with 1 = Monday and 7 = Sunday.
 
 
 

@@ -3,6 +3,7 @@ package Paws::FSX::DeleteFileSystem;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
+  has LustreConfiguration => (is => 'ro', isa => 'Paws::FSX::DeleteFileSystemLustreConfiguration');
   has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::DeleteFileSystemWindowsConfiguration');
 
   use MooseX::ClassAttribute;
@@ -30,13 +31,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $fsx = Paws->service('FSX');
     my $DeleteFileSystemResponse = $fsx->DeleteFileSystem(
-      FileSystemId         => 'MyFileSystemId',
-      ClientRequestToken   => 'MyClientRequestToken',    # OPTIONAL
+      FileSystemId        => 'MyFileSystemId',
+      ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
+      LustreConfiguration => {
+        FinalBackupTags => [
+          {
+            Key   => 'MyTagKey',                        # min: 1, max: 128
+            Value => 'MyTagValue',                      # max: 256
+
+          },
+          ...
+        ],    # min: 1, max: 50; OPTIONAL
+        SkipFinalBackup => 1,    # OPTIONAL
+      },    # OPTIONAL
       WindowsConfiguration => {
         FinalBackupTags => [
           {
-            Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
-            Value => 'MyTagValue',    # max: 256; OPTIONAL
+            Key   => 'MyTagKey',      # min: 1, max: 128
+            Value => 'MyTagValue',    # max: 256
+
           },
           ...
         ],                            # min: 1, max: 50; OPTIONAL
@@ -47,6 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $FileSystemId    = $DeleteFileSystemResponse->FileSystemId;
     my $Lifecycle       = $DeleteFileSystemResponse->Lifecycle;
+    my $LustreResponse  = $DeleteFileSystemResponse->LustreResponse;
     my $WindowsResponse = $DeleteFileSystemResponse->WindowsResponse;
 
     # Returns a L<Paws::FSX::DeleteFileSystemResponse> object.
@@ -59,15 +73,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 =head2 ClientRequestToken => Str
 
-(Optional) A string of up to 64 ASCII characters that Amazon FSx uses
-to ensure idempotent deletion. This is automatically filled on your
-behalf when using the AWS CLI or SDK.
+A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent deletion. This is automatically filled on your behalf when
+using the AWS CLI or SDK.
 
 
 
 =head2 B<REQUIRED> FileSystemId => Str
 
 The ID of the file system you want to delete.
+
+
+
+=head2 LustreConfiguration => L<Paws::FSX::DeleteFileSystemLustreConfiguration>
+
+
 
 
 

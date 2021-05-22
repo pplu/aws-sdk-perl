@@ -3,7 +3,10 @@ package Paws::FSX::CreateFileSystemFromBackup;
   use Moose;
   has BackupId => (is => 'ro', isa => 'Str', required => 1);
   has ClientRequestToken => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
+  has LustreConfiguration => (is => 'ro', isa => 'Paws::FSX::CreateFileSystemLustreConfiguration');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has StorageType => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
   has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::CreateFileSystemWindowsConfiguration');
@@ -37,26 +40,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SubnetIds => [
         'MySubnetId', ...    # min: 15, max: 24
       ],
-      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
-      SecurityGroupIds   => [
-        'MySecurityGroupId', ...                       # min: 11, max: 20
-      ],                                               # OPTIONAL
-      Tags => [
+      ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
+      KmsKeyId            => 'MyKmsKeyId',              # OPTIONAL
+      LustreConfiguration => {
+        AutoImportPolicy => 'NONE',   # values: NONE, NEW, NEW_CHANGED; OPTIONAL
+        AutomaticBackupRetentionDays => 1,    # max: 90; OPTIONAL
+        CopyTagsToBackups            => 1,    # OPTIONAL
+        DailyAutomaticBackupStartTime =>
+          'MyDailyTime',                      # min: 5, max: 5; OPTIONAL
+        DeploymentType =>
+          'SCRATCH_1',    # values: SCRATCH_1, SCRATCH_2, PERSISTENT_1; OPTIONAL
+        DriveCacheType => 'NONE',             # values: NONE, READ; OPTIONAL
+        ExportPath     => 'MyArchivePath',    # min: 3, max: 4357; OPTIONAL
+        ImportPath     => 'MyArchivePath',    # min: 3, max: 4357; OPTIONAL
+        ImportedFileChunkSize    => 1,        # min: 1, max: 512000; OPTIONAL
+        PerUnitStorageThroughput => 1,        # min: 12, max: 200; OPTIONAL
+        WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
+      },    # OPTIONAL
+      SecurityGroupIds => [
+        'MySecurityGroupId', ...    # min: 11, max: 20
+      ],                            # OPTIONAL
+      StorageType => 'SSD',         # OPTIONAL
+      Tags        => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],                            # OPTIONAL
       WindowsConfiguration => {
         ThroughputCapacity => 1,                  # min: 8, max: 2048
         ActiveDirectoryId  => 'MyDirectoryId',    # min: 12, max: 12; OPTIONAL
-        AutomaticBackupRetentionDays => 1,        # max: 35; OPTIONAL
+        Aliases            => [
+          'MyAlternateDNSName', ...               # min: 4, max: 253
+        ],                                        # max: 50; OPTIONAL
+        AutomaticBackupRetentionDays => 1,        # max: 90; OPTIONAL
         CopyTagsToBackups            => 1,        # OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                          # min: 5, max: 5; OPTIONAL
         DeploymentType =>
-          'MULTI_AZ_1',    # values: MULTI_AZ_1, SINGLE_AZ_1; OPTIONAL
+          'MULTI_AZ_1', # values: MULTI_AZ_1, SINGLE_AZ_1, SINGLE_AZ_2; OPTIONAL
         PreferredSubnetId => 'MySubnetId',    # min: 15, max: 24
         SelfManagedActiveDirectoryConfiguration => {
           DnsIps => [
@@ -95,10 +119,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 =head2 ClientRequestToken => Str
 
-(Optional) A string of up to 64 ASCII characters that Amazon FSx uses
-to ensure idempotent creation. This string is automatically filled on
-your behalf when you use the AWS Command Line Interface (AWS CLI) or an
-AWS SDK.
+A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent creation. This string is automatically filled on your behalf
+when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
+
+
+
+=head2 KmsKeyId => Str
+
+
+
+
+
+=head2 LustreConfiguration => L<Paws::FSX::CreateFileSystemLustreConfiguration>
+
+
 
 
 
@@ -107,15 +142,52 @@ AWS SDK.
 A list of IDs for the security groups that apply to the specified
 network interfaces created for file system access. These security
 groups apply to all network interfaces. This value isn't returned in
-later describe requests.
+later DescribeFileSystem requests.
 
 
+
+=head2 StorageType => Str
+
+Sets the storage type for the Windows file system you're creating from
+a backup. Valid values are C<SSD> and C<HDD>.
+
+=over
+
+=item *
+
+Set to C<SSD> to use solid state drive storage. Supported on all
+Windows deployment types.
+
+=item *
+
+Set to C<HDD> to use hard disk drive storage. Supported on
+C<SINGLE_AZ_2> and C<MULTI_AZ_1> Windows file system deployment types.
+
+=back
+
+Default value is C<SSD>.
+
+HDD and SSD storage types have different minimum storage capacity
+requirements. A restored file system's storage capacity is tied to the
+file system that was backed up. You can create a file system that uses
+HDD storage from a backup of a file system that used SSD storage only
+if the original SSD file system had a storage capacity of at least 2000
+GiB.
+
+Valid values are: C<"SSD">, C<"HDD">
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
-A list of IDs for the subnets that the file system will be accessible
-from. Currently, you can specify only one subnet. The file server is
-also launched in that subnet's Availability Zone.
+Specifies the IDs of the subnets that the file system will be
+accessible from. For Windows C<MULTI_AZ_1> file system deployment
+types, provide exactly two subnet IDs, one for the preferred file
+server and one for the standby file server. You specify one of these
+subnets as the preferred subnet using the C<WindowsConfiguration E<gt>
+PreferredSubnetID> property.
+
+For Windows C<SINGLE_AZ_1> and C<SINGLE_AZ_2> deployment types and
+Lustre file systems, provide exactly one subnet ID. The file server is
+launched in that subnet's Availability Zone.
 
 
 

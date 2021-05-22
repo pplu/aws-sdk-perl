@@ -8,8 +8,11 @@ package Paws::FSX::Backup;
   has FileSystem => (is => 'ro', isa => 'Paws::FSX::FileSystem', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Lifecycle => (is => 'ro', isa => 'Str', required => 1);
+  has OwnerId => (is => 'ro', isa => 'Str');
   has ProgressPercent => (is => 'ro', isa => 'Int');
   has ResourceARN => (is => 'ro', isa => 'Str');
+  has SourceBackupId => (is => 'ro', isa => 'Str');
+  has SourceBackupRegion => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
@@ -43,8 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::Backup
 
 =head1 DESCRIPTION
 
-A backup of an Amazon FSx for Windows File Server file system. You can
-create a new file system from a backup to protect against data loss.
+A backup of an Amazon FSx file system.
 
 =head1 ATTRIBUTES
 
@@ -79,13 +81,53 @@ is persisted even if the file system is deleted.
 =head2 KmsKeyId => Str
 
 The ID of the AWS Key Management Service (AWS KMS) key used to encrypt
-this backup of the Amazon FSx for Windows file system's data at rest.
-Amazon FSx for Lustre does not support KMS encryption.
+the backup of the Amazon FSx file system's data at rest.
 
 
 =head2 B<REQUIRED> Lifecycle => Str
 
 The lifecycle status of the backup.
+
+=over
+
+=item *
+
+C<AVAILABLE> - The backup is fully available.
+
+=item *
+
+C<PENDING> - For user-initiated backups on Lustre file systems only;
+Amazon FSx has not started creating the backup.
+
+=item *
+
+C<CREATING> - Amazon FSx is creating the backup.
+
+=item *
+
+C<TRANSFERRING> - For user-initiated backups on Lustre file systems
+only; Amazon FSx is transferring the backup to S3.
+
+=item *
+
+C<COPYING> - Amazon FSx is copying the backup.
+
+=item *
+
+C<DELETED> - Amazon FSx deleted the backup and it is no longer
+available.
+
+=item *
+
+C<FAILED> - Amazon FSx could not complete the backup.
+
+=back
+
+
+
+=head2 OwnerId => Str
+
+
 
 
 =head2 ProgressPercent => Int
@@ -98,6 +140,17 @@ The lifecycle status of the backup.
 The Amazon Resource Name (ARN) for the backup resource.
 
 
+=head2 SourceBackupId => Str
+
+
+
+
+=head2 SourceBackupRegion => Str
+
+The source Region of the backup. Specifies the Region from where this
+backup is copied.
+
+
 =head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
 
 Tags associated with a particular file system.
@@ -105,7 +158,7 @@ Tags associated with a particular file system.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the backup.
+The type of the file system backup.
 
 
 

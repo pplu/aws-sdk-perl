@@ -53,9 +53,9 @@ The ID of the backup you want to delete.
 
 =head2 ClientRequestToken => Str
 
-(Optional) A string of up to 64 ASCII characters that Amazon FSx uses
-to ensure idempotent deletion. This is automatically filled on your
-behalf when using the AWS CLI or SDK.
+A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent deletion. This is automatically filled on your behalf when
+using the AWS CLI or SDK.
 
 
 
