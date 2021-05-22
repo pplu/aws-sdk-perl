@@ -18,11 +18,12 @@ Paws::Robomaker::ListSimulationJobBatchesResponse
 
 =head2 NextToken => Str
 
-The C<nextToken> value to include in a future
-C<ListSimulationJobBatches> request. When the results of a
-C<ListSimulationJobBatches> request exceed C<maxResults>, this value
-can be used to retrieve the next page of results. This value is C<null>
-when there are no more results to return.
+If the previous paginated request did not return all of the remaining
+results, the response object's C<nextToken> parameter value is set to a
+token. To retrieve the next set of results, call
+C<ListSimulationJobBatches> again and assign that token to the request
+object's C<nextToken> parameter. If there are no remaining results, the
+previous response object's NextToken parameter is set to null.
 
 
 =head2 SimulationJobBatchSummaries => ArrayRef[L<Paws::Robomaker::SimulationJobBatchSummary>]

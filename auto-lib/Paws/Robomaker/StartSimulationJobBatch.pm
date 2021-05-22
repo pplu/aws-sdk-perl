@@ -35,12 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CreateSimulationJobRequests => [
         {
           MaxJobDurationInSeconds => 1,
-          DataSources             => [
+          Compute                 => {
+            SimulationUnitLimit => 1,    # min: 1, max: 15; OPTIONAL
+          },    # OPTIONAL
+          DataSources => [
             {
               Name     => 'MyName',        # min: 1, max: 255
-              S3Bucket => 'MyS3Bucket',    # min: 3, max: 63; OPTIONAL
+              S3Bucket => 'MyS3Bucket',    # min: 3, max: 63
               S3Keys   => [
-                'MyS3Key', ...             # min: 1, max: 1024; OPTIONAL
+                'MyS3Key', ...             # min: 1, max: 1024
               ],                           # min: 1, max: 100
 
             },
@@ -53,8 +56,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },                               # OPTIONAL
           OutputLocation => {
-            S3Bucket => 'MyS3Bucket',      # min: 3, max: 63; OPTIONAL
-            S3Prefix => 'MyS3Key',         # min: 1, max: 1024; OPTIONAL
+            S3Bucket => 'MyS3Bucket',      # min: 3, max: 63
+            S3Prefix => 'MyS3Key',         # min: 1, max: 1024
           },    # OPTIONAL
           RobotApplications => [
             {
@@ -76,14 +79,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ...
                   ],                            # max: 10; OPTIONAL
                 },    # OPTIONAL
+                StreamUI => 1,    # OPTIONAL
               },
               ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
+              Tools              => [
+                {
+                  Command => 'MyUnrestrictedCommand',    # min: 1, max: 1024
+                  Name    => 'MyName',                   # min: 1, max: 255
+                  ExitBehavior => 'FAIL',    # values: FAIL, RESTART; OPTIONAL
+                  StreamOutputToCloudWatch => 1,
+                  StreamUI                 => 1,
+                },
+                ...
+              ],                             # max: 10; OPTIONAL
+              UploadConfigurations => [
+                {
+                  Name           => 'MyName',               # min: 1, max: 255
+                  Path           => 'MyPath',               # min: 1, max: 1024
+                  UploadBehavior => 'UPLOAD_ON_TERMINATE'
+                  ,    # values: UPLOAD_ON_TERMINATE, UPLOAD_ROLLING_AUTO_REMOVE
+
+                },
+                ...
+              ],       # max: 10; OPTIONAL
+              UseDefaultTools                => 1,
+              UseDefaultUploadConfigurations => 1,
             },
             ...
-          ],                                        # min: 1, max: 1; OPTIONAL
+          ],           # min: 1, max: 1; OPTIONAL
           SimulationApplications => [
             {
-              Application  => 'MyArn',              # min: 1, max: 1224
+              Application  => 'MyArn',    # min: 1, max: 1224
               LaunchConfig => {
                 LaunchFile           => 'MyCommand',    # min: 1, max: 1024
                 PackageName          => 'MyCommand',    # min: 1, max: 1024
@@ -101,11 +127,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     ...
                   ],                            # max: 10; OPTIONAL
                 },    # OPTIONAL
+                StreamUI => 1,    # OPTIONAL
               },
               ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
+              Tools              => [
+                {
+                  Command => 'MyUnrestrictedCommand',    # min: 1, max: 1024
+                  Name    => 'MyName',                   # min: 1, max: 255
+                  ExitBehavior => 'FAIL',    # values: FAIL, RESTART; OPTIONAL
+                  StreamOutputToCloudWatch => 1,
+                  StreamUI                 => 1,
+                },
+                ...
+              ],                             # max: 10; OPTIONAL
+              UploadConfigurations => [
+                {
+                  Name           => 'MyName',               # min: 1, max: 255
+                  Path           => 'MyPath',               # min: 1, max: 1024
+                  UploadBehavior => 'UPLOAD_ON_TERMINATE'
+                  ,    # values: UPLOAD_ON_TERMINATE, UPLOAD_ROLLING_AUTO_REMOVE
+
+                },
+                ...
+              ],       # max: 10; OPTIONAL
+              UseDefaultTools                => 1,
+              UseDefaultUploadConfigurations => 1,
+              WorldConfigs                   => [
+                {
+                  World => 'MyArn',    # min: 1, max: 1224
+                },
+                ...
+              ],                       # max: 1; OPTIONAL
             },
             ...
-          ],                                        # min: 1, max: 1; OPTIONAL
+          ],                           # min: 1, max: 1; OPTIONAL
           Tags => {
             'MyTagKey' => 'MyTagValue', # key: min: 1, max: 128, value: max: 256
           },    # max: 50; OPTIONAL

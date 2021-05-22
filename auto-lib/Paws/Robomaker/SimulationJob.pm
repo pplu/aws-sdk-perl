@@ -3,6 +3,7 @@ package Paws::Robomaker::SimulationJob;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
+  has Compute => (is => 'ro', isa => 'Paws::Robomaker::ComputeResponse', request_name => 'compute', traits => ['NameInRequest']);
   has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DataSource]', request_name => 'dataSources', traits => ['NameInRequest']);
   has FailureBehavior => (is => 'ro', isa => 'Str', request_name => 'failureBehavior', traits => ['NameInRequest']);
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
@@ -65,6 +66,11 @@ The Amazon Resource Name (ARN) of the simulation job.
 =head2 ClientRequestToken => Str
 
 A unique identifier for this C<SimulationJob> request.
+
+
+=head2 Compute => L<Paws::Robomaker::ComputeResponse>
+
+Compute information for the simulation job
 
 
 =head2 DataSources => ArrayRef[L<Paws::Robomaker::DataSource>]

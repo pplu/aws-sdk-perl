@@ -5,6 +5,7 @@ package Paws::Robomaker::LaunchConfig;
   has LaunchFile => (is => 'ro', isa => 'Str', request_name => 'launchFile', traits => ['NameInRequest'], required => 1);
   has PackageName => (is => 'ro', isa => 'Str', request_name => 'packageName', traits => ['NameInRequest'], required => 1);
   has PortForwardingConfig => (is => 'ro', isa => 'Paws::Robomaker::PortForwardingConfig', request_name => 'portForwardingConfig', traits => ['NameInRequest']);
+  has StreamUI => (is => 'ro', isa => 'Bool', request_name => 'streamUI', traits => ['NameInRequest']);
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Robomaker::LaunchConfig object:
 
-  $service_obj->Method(Att1 => { EnvironmentVariables => $value, ..., PortForwardingConfig => $value  });
+  $service_obj->Method(Att1 => { EnvironmentVariables => $value, ..., StreamUI => $value  });
 
 =head3 Results returned from an API call
 
@@ -59,6 +60,15 @@ The package name.
 =head2 PortForwardingConfig => L<Paws::Robomaker::PortForwardingConfig>
 
 The port forwarding configuration.
+
+
+=head2 StreamUI => Bool
+
+Boolean indicating whether a streaming session will be configured for
+the application. If C<True>, AWS RoboMaker will configure a connection
+so you can interact with your application as it is running in the
+simulation. You must configure and launch the component. It must have a
+graphical user interface.
 
 
 

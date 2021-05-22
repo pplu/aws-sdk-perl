@@ -37,12 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $robomaker->UpdateSimulationApplication(
       Application        => 'MyArn',
       RobotSoftwareSuite => {
-        Name    => 'ROS',        # values: ROS, ROS2; OPTIONAL
-        Version => 'Kinetic',    # values: Kinetic, Melodic, Dashing; OPTIONAL
+        Name => 'ROS',    # values: ROS, ROS2; OPTIONAL
+        Version =>
+          'Kinetic',      # values: Kinetic, Melodic, Dashing, Foxy; OPTIONAL
       },
       SimulationSoftwareSuite => {
-        Name => 'Gazebo',        # values: Gazebo, RosbagPlay; OPTIONAL
-        Version => 'MySimulationSoftwareSuiteVersionType',    # OPTIONAL
+        Name => 'Gazebo',    # values: Gazebo, RosbagPlay; OPTIONAL
+        Version => 'MySimulationSoftwareSuiteVersionType', # max: 1024; OPTIONAL
       },
       Sources => [
         {
@@ -55,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CurrentRevisionId => 'MyRevisionId',    # OPTIONAL
       RenderingEngine   => {
         Name    => 'OGRE',                            # values: OGRE; OPTIONAL
-        Version => 'MyRenderingEngineVersionType',    # OPTIONAL
+        Version => 'MyRenderingEngineVersionType',    # min: 1, max: 4; OPTIONAL
       },    # OPTIONAL
       );
 

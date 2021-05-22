@@ -4,6 +4,10 @@ package Paws::Robomaker::RobotApplicationConfig;
   has Application => (is => 'ro', isa => 'Str', request_name => 'application', traits => ['NameInRequest'], required => 1);
   has ApplicationVersion => (is => 'ro', isa => 'Str', request_name => 'applicationVersion', traits => ['NameInRequest']);
   has LaunchConfig => (is => 'ro', isa => 'Paws::Robomaker::LaunchConfig', request_name => 'launchConfig', traits => ['NameInRequest'], required => 1);
+  has Tools => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Tool]', request_name => 'tools', traits => ['NameInRequest']);
+  has UploadConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::UploadConfiguration]', request_name => 'uploadConfigurations', traits => ['NameInRequest']);
+  has UseDefaultTools => (is => 'ro', isa => 'Bool', request_name => 'useDefaultTools', traits => ['NameInRequest']);
+  has UseDefaultUploadConfigurations => (is => 'ro', isa => 'Bool', request_name => 'useDefaultUploadConfigurations', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Robomaker::RobotApplicationConfig object:
 
-  $service_obj->Method(Att1 => { Application => $value, ..., LaunchConfig => $value  });
+  $service_obj->Method(Att1 => { Application => $value, ..., UseDefaultUploadConfigurations => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,6 +57,32 @@ The version of the robot application.
 =head2 B<REQUIRED> LaunchConfig => L<Paws::Robomaker::LaunchConfig>
 
 The launch configuration for the robot application.
+
+
+=head2 Tools => ArrayRef[L<Paws::Robomaker::Tool>]
+
+Information about tools configured for the robot application.
+
+
+=head2 UploadConfigurations => ArrayRef[L<Paws::Robomaker::UploadConfiguration>]
+
+The upload configurations for the robot application.
+
+
+=head2 UseDefaultTools => Bool
+
+A Boolean indicating whether to use default robot application tools.
+The default tools are rviz, rqt, terminal and rosbag record. The
+default is C<False>.
+
+
+=head2 UseDefaultUploadConfigurations => Bool
+
+A Boolean indicating whether to use default upload configurations. By
+default, C<.ros> and C<.gazebo> files are uploaded when the application
+terminates and all ROS topics will be recorded.
+
+If you set this value, you must specify an C<outputLocation>.
 
 
 

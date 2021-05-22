@@ -14,6 +14,11 @@ package Paws::Robomaker;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub BatchDeleteWorlds {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::BatchDeleteWorlds', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchDescribeSimulationJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::BatchDescribeSimulationJob', @_);
@@ -32,6 +37,16 @@ package Paws::Robomaker;
   sub CancelSimulationJobBatch {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelSimulationJobBatch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelWorldExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelWorldExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelWorldGenerationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelWorldGenerationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDeploymentJob {
@@ -74,6 +89,21 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::CreateSimulationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateWorldExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CreateWorldExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateWorldGenerationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CreateWorldGenerationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateWorldTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CreateWorldTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::DeleteFleet', @_);
@@ -92,6 +122,11 @@ package Paws::Robomaker;
   sub DeleteSimulationApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::DeleteSimulationApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteWorldTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::DeleteWorldTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterRobot {
@@ -134,6 +169,31 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeSimulationJobBatch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorld {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeWorld', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeWorldExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeWorldExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeWorldGenerationJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeWorldGenerationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeWorldTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::DescribeWorldTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetWorldTemplateBody {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::GetWorldTemplateBody', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDeploymentJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::ListDeploymentJobs', @_);
@@ -174,6 +234,26 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListWorldExportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::ListWorldExportJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListWorldGenerationJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::ListWorldGenerationJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListWorlds {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::ListWorlds', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListWorldTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::ListWorldTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterRobot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::RegisterRobot', @_);
@@ -212,6 +292,11 @@ package Paws::Robomaker;
   sub UpdateSimulationApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::UpdateSimulationApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateWorldTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::UpdateWorldTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -376,9 +461,101 @@ package Paws::Robomaker;
 
     return undef
   }
+  sub ListAllWorldExportJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorldExportJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListWorldExportJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->worldExportJobSummaries }, @{ $next_result->worldExportJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'worldExportJobSummaries') foreach (@{ $result->worldExportJobSummaries });
+        $result = $self->ListWorldExportJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'worldExportJobSummaries') foreach (@{ $result->worldExportJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllWorldGenerationJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorldGenerationJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListWorldGenerationJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->worldGenerationJobSummaries }, @{ $next_result->worldGenerationJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'worldGenerationJobSummaries') foreach (@{ $result->worldGenerationJobSummaries });
+        $result = $self->ListWorldGenerationJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'worldGenerationJobSummaries') foreach (@{ $result->worldGenerationJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllWorlds {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorlds(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListWorlds(@_, nextToken => $next_result->nextToken);
+        push @{ $result->worldSummaries }, @{ $next_result->worldSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'worldSummaries') foreach (@{ $result->worldSummaries });
+        $result = $self->ListWorlds(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'worldSummaries') foreach (@{ $result->worldSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllWorldTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorldTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListWorldTemplates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->templateSummaries }, @{ $next_result->templateSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'templateSummaries') foreach (@{ $result->templateSummaries });
+        $result = $self->ListWorldTemplates(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'templateSummaries') foreach (@{ $result->templateSummaries });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchDescribeSimulationJob CancelDeploymentJob CancelSimulationJob CancelSimulationJobBatch CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob DescribeSimulationJobBatch ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobBatches ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob StartSimulationJobBatch SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
+  sub operations { qw/BatchDeleteWorlds BatchDescribeSimulationJob CancelDeploymentJob CancelSimulationJob CancelSimulationJobBatch CancelWorldExportJob CancelWorldGenerationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob CreateWorldExportJob CreateWorldGenerationJob CreateWorldTemplate DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeleteWorldTemplate DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob DescribeSimulationJobBatch DescribeWorld DescribeWorldExportJob DescribeWorldGenerationJob DescribeWorldTemplate GetWorldTemplateBody ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobBatches ListSimulationJobs ListTagsForResource ListWorldExportJobs ListWorldGenerationJobs ListWorlds ListWorldTemplates RegisterRobot RestartSimulationJob StartSimulationJobBatch SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication UpdateWorldTemplate / }
 
 1;
 
@@ -413,6 +590,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 
 
 =head1 METHODS
+
+=head2 BatchDeleteWorlds
+
+=over
+
+=item Worlds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::BatchDeleteWorlds>
+
+Returns: a L<Paws::Robomaker::BatchDeleteWorldsResponse> instance
+
+Deletes one or more worlds in a batch operation.
+
 
 =head2 BatchDescribeSimulationJob
 
@@ -478,6 +671,38 @@ Returns: a L<Paws::Robomaker::CancelSimulationJobBatchResponse> instance
 Cancels a simulation job batch. When you cancel a simulation job batch,
 you are also cancelling all of the active simulation jobs created as
 part of the batch.
+
+
+=head2 CancelWorldExportJob
+
+=over
+
+=item Job => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CancelWorldExportJob>
+
+Returns: a L<Paws::Robomaker::CancelWorldExportJobResponse> instance
+
+Cancels the specified export job.
+
+
+=head2 CancelWorldGenerationJob
+
+=over
+
+=item Job => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CancelWorldGenerationJob>
+
+Returns: a L<Paws::Robomaker::CancelWorldGenerationJobResponse> instance
+
+Cancels the specified world generator job.
 
 
 =head2 CreateDeploymentJob
@@ -648,6 +873,8 @@ Creates a simulation application with a specific revision id.
 
 =item [ClientRequestToken => Str]
 
+=item [Compute => L<Paws::Robomaker::Compute>]
+
 =item [DataSources => ArrayRef[L<Paws::Robomaker::DataSourceConfig>]]
 
 =item [FailureBehavior => Str]
@@ -675,6 +902,78 @@ Creates a simulation job.
 
 After 90 days, simulation jobs expire and will be deleted. They will no
 longer be accessible.
+
+
+=head2 CreateWorldExportJob
+
+=over
+
+=item IamRole => Str
+
+=item OutputLocation => L<Paws::Robomaker::OutputLocation>
+
+=item Worlds => ArrayRef[Str|Undef]
+
+=item [ClientRequestToken => Str]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CreateWorldExportJob>
+
+Returns: a L<Paws::Robomaker::CreateWorldExportJobResponse> instance
+
+Creates a world export job.
+
+
+=head2 CreateWorldGenerationJob
+
+=over
+
+=item Template => Str
+
+=item WorldCount => L<Paws::Robomaker::WorldCount>
+
+=item [ClientRequestToken => Str]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
+
+=item [WorldTags => L<Paws::Robomaker::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CreateWorldGenerationJob>
+
+Returns: a L<Paws::Robomaker::CreateWorldGenerationJobResponse> instance
+
+Creates worlds using the specified template.
+
+
+=head2 CreateWorldTemplate
+
+=over
+
+=item [ClientRequestToken => Str]
+
+=item [Name => Str]
+
+=item [Tags => L<Paws::Robomaker::TagMap>]
+
+=item [TemplateBody => Str]
+
+=item [TemplateLocation => L<Paws::Robomaker::TemplateLocation>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CreateWorldTemplate>
+
+Returns: a L<Paws::Robomaker::CreateWorldTemplateResponse> instance
+
+Creates a world template.
 
 
 =head2 DeleteFleet
@@ -743,6 +1042,22 @@ Each argument is described in detail in: L<Paws::Robomaker::DeleteSimulationAppl
 Returns: a L<Paws::Robomaker::DeleteSimulationApplicationResponse> instance
 
 Deletes a simulation application.
+
+
+=head2 DeleteWorldTemplate
+
+=over
+
+=item Template => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::DeleteWorldTemplate>
+
+Returns: a L<Paws::Robomaker::DeleteWorldTemplateResponse> instance
+
+Deletes a world template.
 
 
 =head2 DeregisterRobot
@@ -877,6 +1192,88 @@ Each argument is described in detail in: L<Paws::Robomaker::DescribeSimulationJo
 Returns: a L<Paws::Robomaker::DescribeSimulationJobBatchResponse> instance
 
 Describes a simulation job batch.
+
+
+=head2 DescribeWorld
+
+=over
+
+=item World => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::DescribeWorld>
+
+Returns: a L<Paws::Robomaker::DescribeWorldResponse> instance
+
+Describes a world.
+
+
+=head2 DescribeWorldExportJob
+
+=over
+
+=item Job => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::DescribeWorldExportJob>
+
+Returns: a L<Paws::Robomaker::DescribeWorldExportJobResponse> instance
+
+Describes a world export job.
+
+
+=head2 DescribeWorldGenerationJob
+
+=over
+
+=item Job => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::DescribeWorldGenerationJob>
+
+Returns: a L<Paws::Robomaker::DescribeWorldGenerationJobResponse> instance
+
+Describes a world generation job.
+
+
+=head2 DescribeWorldTemplate
+
+=over
+
+=item Template => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::DescribeWorldTemplate>
+
+Returns: a L<Paws::Robomaker::DescribeWorldTemplateResponse> instance
+
+Describes a world template.
+
+
+=head2 GetWorldTemplateBody
+
+=over
+
+=item [GenerationJob => Str]
+
+=item [Template => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::GetWorldTemplateBody>
+
+Returns: a L<Paws::Robomaker::GetWorldTemplateBodyResponse> instance
+
+Gets the world template body.
 
 
 =head2 ListDeploymentJobs
@@ -1044,6 +1441,84 @@ Each argument is described in detail in: L<Paws::Robomaker::ListTagsForResource>
 Returns: a L<Paws::Robomaker::ListTagsForResourceResponse> instance
 
 Lists all tags on a AWS RoboMaker resource.
+
+
+=head2 ListWorldExportJobs
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::ListWorldExportJobs>
+
+Returns: a L<Paws::Robomaker::ListWorldExportJobsResponse> instance
+
+Lists world export jobs.
+
+
+=head2 ListWorldGenerationJobs
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::ListWorldGenerationJobs>
+
+Returns: a L<Paws::Robomaker::ListWorldGenerationJobsResponse> instance
+
+Lists world generator jobs.
+
+
+=head2 ListWorlds
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::ListWorlds>
+
+Returns: a L<Paws::Robomaker::ListWorldsResponse> instance
+
+Lists worlds.
+
+
+=head2 ListWorldTemplates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::ListWorldTemplates>
+
+Returns: a L<Paws::Robomaker::ListWorldTemplatesResponse> instance
+
+Lists world templates.
 
 
 =head2 RegisterRobot
@@ -1218,6 +1693,28 @@ Returns: a L<Paws::Robomaker::UpdateSimulationApplicationResponse> instance
 Updates a simulation application.
 
 
+=head2 UpdateWorldTemplate
+
+=over
+
+=item Template => Str
+
+=item [Name => Str]
+
+=item [TemplateBody => Str]
+
+=item [TemplateLocation => L<Paws::Robomaker::TemplateLocation>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::UpdateWorldTemplate>
+
+Returns: a L<Paws::Robomaker::UpdateWorldTemplateResponse> instance
+
+Updates a world template.
+
+
 
 
 =head1 PAGINATORS
@@ -1306,6 +1803,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - simulationJobSummaries, passing the object as the first parameter, and the string 'simulationJobSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::Robomaker::ListSimulationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorldExportJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllWorldExportJobs([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - worldExportJobSummaries, passing the object as the first parameter, and the string 'worldExportJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListWorldExportJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorldGenerationJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllWorldGenerationJobs([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - worldGenerationJobSummaries, passing the object as the first parameter, and the string 'worldGenerationJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListWorldGenerationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorlds(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllWorlds([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - worldSummaries, passing the object as the first parameter, and the string 'worldSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListWorldsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorldTemplates(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllWorldTemplates([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - templateSummaries, passing the object as the first parameter, and the string 'templateSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Robomaker::ListWorldTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 
