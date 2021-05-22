@@ -3,6 +3,7 @@ package Paws::GameLift::StartFleetActions;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
+  has Location => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,9 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Actions => [
         'AUTO_SCALING', ...    # values: AUTO_SCALING
       ],
-      FleetId => 'MyFleetId',
-
+      FleetId  => 'MyFleetIdOrArn',
+      Location => 'MyLocationStringModel',    # OPTIONAL
     );
+
+    # Results:
+    my $FleetArn = $StartFleetActionsOutput->FleetArn;
+    my $FleetId  = $StartFleetActionsOutput->FleetId;
+
+    # Returns a L<Paws::GameLift::StartFleetActionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/StartFleetActions>
@@ -50,8 +57,15 @@ List of actions to restart on the fleet.
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to start actions on. You can use either
-the fleet ID or ARN value.
+A unique identifier for the fleet to restart actions on. You can use
+either the fleet ID or ARN value.
+
+
+
+=head2 Location => Str
+
+The fleet location to restart fleet actions for. Specify a location in
+the form of an AWS Region code, such as C<us-west-2>.
 
 
 

@@ -4,6 +4,7 @@ package Paws::GameLift::DescribeInstances;
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
+  has Location => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -31,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeInstancesOutput = $gamelift->DescribeInstances(
-      FleetId    => 'MyFleetId',
+      FleetId    => 'MyFleetIdOrArn',
       InstanceId => 'MyInstanceId',             # OPTIONAL
       Limit      => 1,                          # OPTIONAL
+      Location   => 'MyLocationStringModel',    # OPTIONAL
       NextToken  => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
 
@@ -51,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to retrieve instance information for.
+A unique identifier for the fleet to retrieve instance information for.
 You can use either the fleet ID or ARN value.
 
 
@@ -70,11 +72,19 @@ C<NextToken> to get results as a set of sequential pages.
 
 
 
+=head2 Location => Str
+
+The name of a location to retrieve instance information for, in the
+form of an AWS Region code such as C<us-west-2>.
+
+
+
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value.
 
 
 

@@ -44,34 +44,13 @@ accounts and the VPC for your Amazon GameLift fleets. This record may
 be for an active peering connection or a pending connection that has
 not yet been established.
 
-=over
+B<Related actions>
 
-=item *
-
-CreateVpcPeeringAuthorization
-
-=item *
-
-DescribeVpcPeeringAuthorizations
-
-=item *
-
-DeleteVpcPeeringAuthorization
-
-=item *
-
-CreateVpcPeeringConnection
-
-=item *
-
-DescribeVpcPeeringConnections
-
-=item *
-
-DeleteVpcPeeringConnection
-
-=back
-
+CreateVpcPeeringAuthorization | DescribeVpcPeeringAuthorizations |
+DeleteVpcPeeringAuthorization | CreateVpcPeeringConnection |
+DescribeVpcPeeringConnections | DeleteVpcPeeringConnection | All APIs
+by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
@@ -79,13 +58,13 @@ DeleteVpcPeeringConnection
 =head2 FleetArn => Str
 
 The Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 associated with the GameLift fleet resource for this connection.
 
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet. This ID determines the ID of the
+A unique identifier for the fleet. This ID determines the ID of the
 Amazon GameLift VPC for your fleet.
 
 
@@ -107,10 +86,10 @@ be created.
 =head2 PeerVpcId => Str
 
 A unique identifier for a VPC with resources to be accessed by your
-Amazon GameLift fleet. The VPC must be in the same Region where your
-fleet is deployed. Look up a VPC ID using the VPC Dashboard
+GameLift fleet. The VPC must be in the same Region as your fleet. To
+look up a VPC ID, use the VPC Dashboard
 (https://console.aws.amazon.com/vpc/) in the AWS Management Console.
-Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+Learn more about VPC peering in VPC Peering with GameLift Fleets
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 

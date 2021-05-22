@@ -16,8 +16,8 @@ Paws::GameLift::UpdateRuntimeConfigurationOutput
 
 =head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 
-The runtime configuration currently in force. If the update was
-successful, this object matches the one in the request.
+The runtime configuration currently in use by all instances in the
+fleet. If the update was successful, all property changes are shown.
 
 
 =head2 _request_id => Str

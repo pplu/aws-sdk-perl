@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeFleetCapacityOutput = $gamelift->DescribeFleetCapacity(
-      FleetIds  => [ 'MyFleetId', ... ],       # OPTIONAL
-      Limit     => 1,                          # OPTIONAL
-      NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
+      FleetIds  => [ 'MyFleetIdOrArn', ... ],    # OPTIONAL
+      Limit     => 1,                            # OPTIONAL
+      NextToken => 'MyNonZeroAndMaxString',      # OPTIONAL
     );
 
     # Results:
@@ -49,8 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 FleetIds => ArrayRef[Str|Undef]
 
-A unique identifier for a fleet(s) to retrieve capacity information
-for. You can use either the fleet ID or ARN value.
+A unique identifier for the fleet(s) to retrieve capacity information
+for. You can use either the fleet ID or ARN value. Leave this parameter
+empty to retrieve capacity information for all fleets.
 
 
 
@@ -65,11 +66,11 @@ IDs.
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value. This
-parameter is ignored when the request specifies one or a list of fleet
-IDs.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value. This parameter is ignored when the request specifies one or a
+list of fleet IDs.
 
 
 

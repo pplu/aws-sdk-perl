@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeScriptOutput = $gamelift->DescribeScript(
-      ScriptId => 'MyScriptId',
+      ScriptId => 'MyScriptIdOrArn',
 
     );
 
@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> ScriptId => Str
 
-A unique identifier for a Realtime script to retrieve properties for.
+A unique identifier for the Realtime script to retrieve properties for.
 You can use either the script ID or ARN value.
 
 

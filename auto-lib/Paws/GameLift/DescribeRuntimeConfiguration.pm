@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $gamelift = Paws->service('GameLift');
     my $DescribeRuntimeConfigurationOutput =
       $gamelift->DescribeRuntimeConfiguration(
-      FleetId => 'MyFleetId',
+      FleetId => 'MyFleetIdOrArn',
 
       );
 
@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to get the runtime configuration for.
+A unique identifier for the fleet to get the runtime configuration for.
 You can use either the fleet ID or ARN value.
 
 

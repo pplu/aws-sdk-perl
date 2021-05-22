@@ -33,20 +33,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::C
 
 =head1 DESCRIPTION
 
-Information about the use of a TLS/SSL certificate for a fleet. TLS
-certificate generation is enabled at the fleet level, with one
-certificate generated for the fleet. When this feature is enabled, the
-certificate can be retrieved using the GameLift Server SDK
+Determines whether a TLS/SSL certificate is generated for a fleet. This
+feature must be enabled when creating the fleet. All instances in a
+fleet share the same certificate. The certificate can be retrieved by
+calling the GameLift Server SDK
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html)
-call C<GetInstanceCertificate>. All instances in a fleet share the same
-certificate.
+operation C<GetInstanceCertificate>.
+
+A fleet's certificate configuration is part of FleetAttributes.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CertificateType => Str
 
-Indicates whether a TLS/SSL certificate was generated for a fleet.
+Indicates whether a TLS/SSL certificate is generated for a fleet.
+
+Valid values include:
+
+=over
+
+=item *
+
+B<GENERATED> - Generate a TLS/SSL certificate for this fleet.
+
+=item *
+
+B<DISABLED> - (default) Do not generate a TLS/SSL certificate for this
+fleet.
+
+=back
+
 
 
 

@@ -44,69 +44,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::P
 
 =head1 DESCRIPTION
 
-Properties describing a player session. Player session objects are
-created either by creating a player session for a specific game
-session, or as part of a game session placement. A player session
-represents either a player reservation for a game session (status
-C<RESERVED>) or actual player activity in a game session (status
-C<ACTIVE>). A player session object (including player data) is
-automatically passed to a game session when the player connects to the
-game session and is validated.
+Represents a player session. Player sessions are created either for a
+specific game session, or as part of a game session placement or
+matchmaking request. A player session can represents a reserved player
+slot in a game session (when status is C<RESERVED>) or actual player
+activity in a game session (when status is C<ACTIVE>). A player session
+object, including player data, is automatically passed to a game
+session when the player connects to the game session and is validated.
+After the game session ends, player sessions information is retained
+for 30 days and then removed.
 
-When a player disconnects, the player session status changes to
-C<COMPLETED>. Once the session ends, the player session object is
-retained for 30 days and then removed.
+B<Related actions>
 
-=over
-
-=item *
-
-CreatePlayerSession
-
-=item *
-
-CreatePlayerSessions
-
-=item *
-
-DescribePlayerSessions
-
-=item *
-
-Game session placements
-
-=over
-
-=item *
-
-StartGameSessionPlacement
-
-=item *
-
-DescribeGameSessionPlacement
-
-=item *
-
-StopGameSessionPlacement
-
-=back
-
-=back
-
+CreatePlayerSession | CreatePlayerSessions | DescribePlayerSessions |
+StartGameSessionPlacement | DescribeGameSessionPlacement | All APIs by
+task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Str
 
-Time stamp indicating when this data object was created. Format is a
+A time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 DnsName => Str
 
-DNS identifier assigned to the instance that is running the game
+The DNS identifier assigned to the instance that is running the game
 session. Values have the following format:
 
 =over
@@ -132,14 +99,14 @@ fleet, you must use the DNS name, not the IP address.
 =head2 FleetArn => Str
 
 The Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 associated with the GameLift fleet that the player's game session is
 running on.
 
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet that the player's game session is
+A unique identifier for the fleet that the player's game session is
 running on.
 
 
@@ -151,16 +118,14 @@ connected to.
 
 =head2 IpAddress => Str
 
-IP address of the instance that is running the game session. When
-connecting to a Amazon GameLift game server, a client needs to
-reference an IP address (or DNS name) and port number.
+The IP address of the game session. To connect to a GameLift game
+server, an app needs both the IP address and port number.
 
 
 =head2 PlayerData => Str
 
-Developer-defined information related to a player. Amazon GameLift does
-not use this data, so it can be formatted as needed for use in the
-game.
+Developer-defined information related to a player. GameLift does not
+use this data, so it can be formatted as needed for use in the game.
 
 
 =head2 PlayerId => Str
@@ -215,9 +180,9 @@ seconds).
 
 =head2 TerminationTime => Str
 
-Time stamp indicating when this data object was terminated. Format is a
-number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+A time stamp indicating when this data object was terminated. Format is
+a number expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 

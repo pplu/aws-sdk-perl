@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $PutScalingPolicyOutput = $gamelift->PutScalingPolicy(
-      FleetId               => 'MyFleetId',
+      FleetId               => 'MyFleetIdOrArn',
       MetricName            => 'ActivatingGameSessions',
       Name                  => 'MyNonZeroAndMaxString',
       ComparisonOperator    => 'GreaterThanOrEqualToThreshold',    # OPTIONAL
@@ -79,7 +79,7 @@ threshold before a scaling event is triggered.
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to apply this policy to. You can use
+A unique identifier for the fleet to apply this policy to. You can use
 either the fleet ID or ARN value. The fleet cannot be in any of the
 following statuses: ERROR or DELETING.
 
@@ -158,9 +158,9 @@ Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"Activ
 
 =head2 B<REQUIRED> Name => Str
 
-A descriptive label that is associated with a scaling policy. Policy
-names do not need to be unique. A fleet can have only one scaling
-policy with the same name.
+A descriptive label that is associated with a fleet's scaling policy.
+Policy names do not need to be unique. A fleet can have only one
+scaling policy with the same name.
 
 
 
@@ -213,7 +213,7 @@ Valid values are: C<"ChangeInCapacity">, C<"ExactCapacity">, C<"PercentChangeInC
 
 =head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
 
-The settings for a target-based scaling policy.
+An object that contains settings for a target-based scaling policy.
 
 
 

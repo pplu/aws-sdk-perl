@@ -45,24 +45,10 @@ I<AWS General Reference>
 AWS Tagging Strategies
 (http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
 
-B<Related operations>
+B<Related actions>
 
-=over
-
-=item *
-
-TagResource
-
-=item *
-
-UntagResource
-
-=item *
-
-ListTagsForResource
-
-=back
-
+TagResource | UntagResource | ListTagsForResource | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 

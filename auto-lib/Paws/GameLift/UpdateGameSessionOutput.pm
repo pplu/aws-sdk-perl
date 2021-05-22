@@ -16,7 +16,7 @@ Paws::GameLift::UpdateGameSessionOutput
 
 =head2 GameSession => L<Paws::GameLift::GameSession>
 
-The updated game session metadata.
+The updated game session properties.
 
 
 =head2 _request_id => Str

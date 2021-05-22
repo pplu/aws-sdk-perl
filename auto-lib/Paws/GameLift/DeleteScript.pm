@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     $gamelift->DeleteScript(
-      ScriptId => 'MyScriptId',
+      ScriptId => 'MyScriptIdOrArn',
 
     );
 
@@ -40,8 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> ScriptId => Str
 
-A unique identifier for a Realtime script to delete. You can use either
-the script ID or ARN value.
+A unique identifier for the Realtime script to delete. You can use
+either the script ID or ARN value.
 
 
 

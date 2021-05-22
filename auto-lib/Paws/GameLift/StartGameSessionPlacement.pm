@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $StartGameSessionPlacementOutput = $gamelift->StartGameSessionPlacement(
-      GameSessionQueueName      => 'MyGameSessionQueueName',
+      GameSessionQueueName      => 'MyGameSessionQueueNameOrArn',
       MaximumPlayerSessionCount => 1,
       PlacementId               => 'MyIdStringModel',
       DesiredPlayerSessions     => [
@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                           # OPTIONAL
-      GameSessionData => 'MyGameSessionData',      # OPTIONAL
+      GameSessionData => 'MyLargeGameSessionData', # OPTIONAL
       GameSessionName => 'MyNonZeroAndMaxString',  # OPTIONAL
       PlayerLatencies => [
         {
@@ -86,7 +86,7 @@ Set of information on each player to create a player session for.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of custom properties for a game session, formatted as key:value
+A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
@@ -96,7 +96,7 @@ Start a Game Session
 
 =head2 GameSessionData => Str
 
-Set of custom game session properties, formatted as a single string
+A set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
@@ -114,7 +114,7 @@ names do not need to be unique.
 =head2 B<REQUIRED> GameSessionQueueName => Str
 
 Name of the queue to use to place the new game session. You can use
-either the qieue name or ARN value.
+either the queue name or ARN value.
 
 
 
@@ -136,10 +136,10 @@ timed-out placement request.
 
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
-Set of values, expressed in milliseconds, indicating the amount of
-latency that a player experiences when connected to AWS Regions. This
-information is used to try to place the new game session where it can
-offer the best possible gameplay experience for the players.
+A set of values, expressed in milliseconds, that indicates the amount
+of latency that a player experiences when connected to AWS Regions.
+This information is used to try to place the new game session where it
+can offer the best possible gameplay experience for the players.
 
 
 

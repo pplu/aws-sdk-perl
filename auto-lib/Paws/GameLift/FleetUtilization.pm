@@ -4,7 +4,9 @@ package Paws::GameLift::FleetUtilization;
   has ActiveGameSessionCount => (is => 'ro', isa => 'Int');
   has ActiveServerProcessCount => (is => 'ro', isa => 'Int');
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
 
 1;
@@ -37,80 +39,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::F
 
 =head1 DESCRIPTION
 
-Current status of fleet utilization, including the number of game and
-player sessions being hosted.
+Current resource utilization statistics in a specified fleet or
+location. The location value might refer to a fleet's remote location
+or its home Region.
 
-=over
+B<Related actions>
 
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-DeleteFleet
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-Manage fleet actions:
-
-=over
-
-=item *
-
-StartFleetActions
-
-=item *
-
-StopFleetActions
-
-=back
-
-=back
-
+DescribeFleetUtilization | DescribeFleetLocationUtilization
 
 =head1 ATTRIBUTES
 
 
 =head2 ActiveGameSessionCount => Int
 
-Number of active game sessions currently being hosted on all instances
-in the fleet.
+The number of active game sessions that are currently being hosted
+across all instances in the fleet location.
 
 
 =head2 ActiveServerProcessCount => Int
 
-Number of server processes in an C<ACTIVE> status currently running
-across all instances in the fleet
+The number of server processes in C<ACTIVE> status that are currently
+running across all instances in the fleet location.
 
 
 =head2 CurrentPlayerSessionCount => Int
 
-Number of active player sessions currently being hosted on all
-instances in the fleet.
+The number of active player sessions that are currently being hosted
+across all instances in the fleet location.
+
+
+=head2 FleetArn => Str
+
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+that is assigned to a GameLift fleet resource and uniquely identifies
+it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
 
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet.
+A unique identifier for the fleet associated with the location.
+
+
+=head2 Location => Str
+
+The fleet location for the fleet utilization information, expressed as
+an AWS Region code, such as C<us-west-2>.
 
 
 =head2 MaximumPlayerSessionCount => Int
 
-The maximum number of players allowed across all game sessions
-currently being hosted on all instances in the fleet.
+The maximum number of players allowed across all game sessions that are
+currently being hosted across all instances in the fleet location.
 
 
 

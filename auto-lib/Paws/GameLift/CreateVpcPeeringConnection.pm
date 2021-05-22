@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet. You can use either the fleet ID or ARN
-value. This tells Amazon GameLift which GameLift VPC to peer with.
+A unique identifier for the fleet. You can use either the fleet ID or
+ARN value. This tells Amazon GameLift which GameLift VPC to peer with.
 
 
 
@@ -61,10 +61,10 @@ the AWS Management Console under account settings.
 =head2 B<REQUIRED> PeerVpcId => Str
 
 A unique identifier for a VPC with resources to be accessed by your
-Amazon GameLift fleet. The VPC must be in the same Region where your
-fleet is deployed. Look up a VPC ID using the VPC Dashboard
+GameLift fleet. The VPC must be in the same Region as your fleet. To
+look up a VPC ID, use the VPC Dashboard
 (https://console.aws.amazon.com/vpc/) in the AWS Management Console.
-Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+Learn more about VPC peering in VPC Peering with GameLift Fleets
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 

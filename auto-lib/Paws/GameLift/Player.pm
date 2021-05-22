@@ -46,8 +46,8 @@ completed.
 
 =head2 LatencyInMs => L<Paws::GameLift::LatencyMap>
 
-Set of values, expressed in milliseconds, indicating the amount of
-latency that a player experiences when connected to AWS Regions. If
+A set of values, expressed in milliseconds, that indicates the amount
+of latency that a player experiences when connected to AWS Regions. If
 this property is present, FlexMatch considers placing the match only in
 Regions for which latency is reported.
 

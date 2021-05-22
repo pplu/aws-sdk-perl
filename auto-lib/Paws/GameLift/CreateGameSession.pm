@@ -8,6 +8,7 @@ package Paws::GameLift::CreateGameSession;
   has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
@@ -37,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $gamelift = Paws->service('GameLift');
     my $CreateGameSessionOutput = $gamelift->CreateGameSession(
       MaximumPlayerSessionCount => 1,
-      AliasId                   => 'MyAliasId',                # OPTIONAL
+      AliasId                   => 'MyAliasIdOrArn',           # OPTIONAL
       CreatorId                 => 'MyNonZeroAndMaxString',    # OPTIONAL
-      FleetId                   => 'MyFleetId',                # OPTIONAL
+      FleetId                   => 'MyFleetIdOrArn',           # OPTIONAL
       GameProperties            => [
         {
           Key   => 'MyGamePropertyKey',                        # max: 32
@@ -48,9 +49,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                       # OPTIONAL
-      GameSessionData  => 'MyGameSessionData',                 # OPTIONAL
+      GameSessionData  => 'MyLargeGameSessionData',            # OPTIONAL
       GameSessionId    => 'MyIdStringModel',                   # OPTIONAL
       IdempotencyToken => 'MyIdStringModel',                   # OPTIONAL
+      Location         => 'MyLocationStringModel',             # OPTIONAL
       Name             => 'MyNonZeroAndMaxString',             # OPTIONAL
     );
 
@@ -67,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AliasId => Str
 
-A unique identifier for an alias associated with the fleet to create a
+A unique identifier for the alias associated with the fleet to create a
 game session in. You can use either the alias ID or ARN value. Each
 request must reference either a fleet ID or alias ID, but not both.
 
@@ -76,15 +78,17 @@ request must reference either a fleet ID or alias ID, but not both.
 =head2 CreatorId => Str
 
 A unique identifier for a player or entity creating the game session.
-This ID is used to enforce a resource protection policy (if one exists)
-that limits the number of concurrent active game sessions one player
-can have.
+This parameter is required when requesting a new game session on a
+fleet with a resource creation limit policy. This type of policy limits
+the number of concurrent active game sessions that one player can
+create within a certain time span. GameLift uses the CreatorId to
+evaluate the new request against the policy.
 
 
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet to create a game session in. You can
+A unique identifier for the fleet to create a game session in. You can
 use either the fleet ID or ARN value. Each request must reference
 either a fleet ID or alias ID, but not both.
 
@@ -92,21 +96,17 @@ either a fleet ID or alias ID, but not both.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of custom properties for a game session, formatted as key:value
+A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
-GameSession object with a request to start a new game session (see
-Start a Game Session
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+GameSession object with a request to start a new game session.
 
 
 
 =head2 GameSessionData => Str
 
-Set of custom game session properties, formatted as a single string
+A set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
-object with a request to start a new game session (see Start a Game
-Session
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+object with a request to start a new game session.
 
 
 
@@ -115,23 +115,32 @@ Session
 I<This parameter is no longer preferred. Please use C<IdempotencyToken>
 instead.> Custom string that uniquely identifies a request for a new
 game session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session's ID. (A game session ARN
-has the following format:
-C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
-IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
+string is included in the new game session's ID.
 
 
 
 =head2 IdempotencyToken => Str
 
-Custom string that uniquely identifies a request for a new game
-session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session's ID. (A game session ARN
-has the following format:
+Custom string that uniquely identifies the new game session request.
+This is useful for ensuring that game session requests with the same
+idempotency token are processed only once. Subsequent requests with the
+same string return the original C<GameSession> object, with an updated
+status. Maximum token length is 48 characters. If provided, this string
+is included in the new game session's ID. A game session ARN has the
+following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
-IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.) Idempotency
+IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>. Idempotency
 tokens remain in use for 30 days after a game session has ended; game
 session objects are retained for this time period and then deleted.
+
+
+
+=head2 Location => Str
+
+A fleet's remote location to place the new game session in. If this
+parameter is not set, the new game session is placed in the fleet's
+home Region. Specify a remote location with an AWS Region code such as
+C<us-west-2>.
 
 
 

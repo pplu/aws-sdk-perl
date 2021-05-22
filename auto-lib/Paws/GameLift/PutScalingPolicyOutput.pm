@@ -16,8 +16,8 @@ Paws::GameLift::PutScalingPolicyOutput
 
 =head2 Name => Str
 
-A descriptive label that is associated with a scaling policy. Policy
-names do not need to be unique.
+A descriptive label that is associated with a fleet's scaling policy.
+Policy names do not need to be unique.
 
 
 =head2 _request_id => Str

@@ -3,7 +3,9 @@ package Paws::GameLift::ScalingPolicy;
   use Moose;
   has ComparisonOperator => (is => 'ro', isa => 'Str');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
   has MetricName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has PolicyType => (is => 'ro', isa => 'Str');
@@ -12,6 +14,7 @@ package Paws::GameLift::ScalingPolicy;
   has Status => (is => 'ro', isa => 'Str');
   has TargetConfiguration => (is => 'ro', isa => 'Paws::GameLift::TargetConfiguration');
   has Threshold => (is => 'ro', isa => 'Num');
+  has UpdateStatus => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -32,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::ScalingPolicy object:
 
-  $service_obj->Method(Att1 => { ComparisonOperator => $value, ..., Threshold => $value  });
+  $service_obj->Method(Att1 => { ComparisonOperator => $value, ..., UpdateStatus => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,58 +49,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 Rule that controls how a fleet is scaled. Scaling policies are uniquely
 identified by the combination of name and fleet ID.
 
-=over
+B<Related actions>
 
-=item *
-
-DescribeFleetCapacity
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-Manage scaling policies:
-
-=over
-
-=item *
-
-PutScalingPolicy (auto-scaling)
-
-=item *
-
-DescribeScalingPolicies (auto-scaling)
-
-=item *
-
-DeleteScalingPolicy (auto-scaling)
-
-=back
-
-=item *
-
-Manage fleet actions:
-
-=over
-
-=item *
-
-StartFleetActions
-
-=item *
-
-StopFleetActions
-
-=back
-
-=back
-
+DescribeFleetCapacity | UpdateFleetCapacity | DescribeEC2InstanceLimits
+| PutScalingPolicy | DescribeScalingPolicies | DeleteScalingPolicy |
+StopFleetActions | StartFleetActions | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
@@ -114,10 +71,24 @@ Length of time (in minutes) the metric must be at or beyond the
 threshold before a scaling event is triggered.
 
 
+=head2 FleetArn => Str
+
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+that is assigned to a GameLift fleet resource and uniquely identifies
+it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
+
+
 =head2 FleetId => Str
 
-A unique identifier for a fleet that is associated with this scaling
+A unique identifier for the fleet that is associated with this scaling
 policy.
+
+
+=head2 Location => Str
+
+
 
 
 =head2 MetricName => Str
@@ -192,8 +163,8 @@ destination.
 
 =head2 Name => Str
 
-A descriptive label that is associated with a scaling policy. Policy
-names do not need to be unique.
+A descriptive label that is associated with a fleet's scaling policy.
+Policy names do not need to be unique.
 
 
 =head2 PolicyType => Str
@@ -286,12 +257,20 @@ removed and recreated.
 
 =head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
 
-The settings for a target-based scaling policy.
+An object that contains settings for a target-based scaling policy.
 
 
 =head2 Threshold => Num
 
 Metric value used to trigger a scaling event.
+
+
+=head2 UpdateStatus => Str
+
+The current status of the fleet's scaling policies in a requested fleet
+location. The status C<PENDING_UPDATE> indicates that an update was
+requested for the fleet but has not yet been completed for the
+location.
 
 
 

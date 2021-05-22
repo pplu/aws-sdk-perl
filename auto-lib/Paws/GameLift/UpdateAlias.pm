@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $UpdateAliasOutput = $gamelift->UpdateAlias(
-      AliasId         => 'MyAliasId',
+      AliasId         => 'MyAliasIdOrArn',
       Description     => 'MyNonZeroAndMaxString',                  # OPTIONAL
       Name            => 'MyNonBlankAndLengthConstraintString',    # OPTIONAL
       RoutingStrategy => {

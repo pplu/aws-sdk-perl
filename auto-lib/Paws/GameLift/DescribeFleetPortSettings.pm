@@ -2,6 +2,7 @@
 package Paws::GameLift::DescribeFleetPortSettings;
   use Moose;
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
+  has Location => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -28,13 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeFleetPortSettingsOutput = $gamelift->DescribeFleetPortSettings(
-      FleetId => 'MyFleetId',
-
+      FleetId  => 'MyFleetIdOrArn',
+      Location => 'MyLocationStringModel',    # OPTIONAL
     );
 
     # Results:
+    my $FleetArn = $DescribeFleetPortSettingsOutput->FleetArn;
+    my $FleetId  = $DescribeFleetPortSettingsOutput->FleetId;
     my $InboundPermissions =
       $DescribeFleetPortSettingsOutput->InboundPermissions;
+    my $Location     = $DescribeFleetPortSettingsOutput->Location;
+    my $UpdateStatus = $DescribeFleetPortSettingsOutput->UpdateStatus;
 
     # Returns a L<Paws::GameLift::DescribeFleetPortSettingsOutput> object.
 
@@ -46,8 +51,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to retrieve port settings for. You can
-use either the fleet ID or ARN value.
+A unique identifier for the fleet to retrieve port settings for. You
+can use either the fleet ID or ARN value.
+
+
+
+=head2 Location => Str
+
+A remote location to check for status of port setting updates. Use the
+AWS Region code format, such as C<us-west-2>.
 
 
 

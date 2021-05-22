@@ -55,7 +55,7 @@ ID.
 =head2 ConfigurationArn => Str
 
 The Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 associated with the GameLift matchmaking configuration resource that is
 used with this ticket.
 
@@ -71,7 +71,8 @@ match and how a new game session is created for the match.
 
 Time stamp indicating when this matchmaking request stopped being
 processed due to success, failure, or cancellation. Format is a number
-expressed in Unix time as milliseconds (for example "1469498468.057").
+expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 =head2 EstimatedWaitTime => Int
@@ -85,7 +86,8 @@ empty.
 
 Identifier and connection information of the game session created for
 the match. This information is added to the ticket only after the
-matchmaking request has been successfully completed.
+matchmaking request has been successfully completed. This parameter is
+not set when FlexMatch is being used without GameLift hosting.
 
 
 =head2 Players => ArrayRef[L<Paws::GameLift::Player>]
@@ -101,7 +103,7 @@ assigned to in the resulting match.
 
 Time stamp indicating when this matchmaking request was received.
 Format is a number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 Status => Str

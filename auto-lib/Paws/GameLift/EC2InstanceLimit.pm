@@ -4,6 +4,7 @@ package Paws::GameLift::EC2InstanceLimit;
   has CurrentInstances => (is => 'ro', isa => 'Int');
   has EC2InstanceType => (is => 'ro', isa => 'Str');
   has InstanceLimit => (is => 'ro', isa => 'Int');
+  has Location => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::EC2InstanceLimit object:
 
-  $service_obj->Method(Att1 => { CurrentInstances => $value, ..., InstanceLimit => $value  });
+  $service_obj->Method(Att1 => { CurrentInstances => $value, ..., Location => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,32 +36,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::E
 
 =head1 DESCRIPTION
 
-The maximum number of instances allowed based on the Amazon Elastic
-Compute Cloud (Amazon EC2) instance type. Instance limits can be
-retrieved by calling DescribeEC2InstanceLimits.
+The GameLift service limits for an EC2 instance type and current
+utilization. GameLift allows AWS accounts a maximum number of
+instances, per instance type, per AWS Region or location, for use with
+GameLift. You can request an limit increase for your account by using
+the B<Service limits> page in the GameLift console.
+
+B<Related actions>
+
+DescribeEC2InstanceLimits
 
 =head1 ATTRIBUTES
 
 
 =head2 CurrentInstances => Int
 
-Number of instances of the specified type that are currently in use by
-this AWS account.
+The number of instances for the specified type and location that are
+currently being used by the AWS account.
 
 
 =head2 EC2InstanceType => Str
 
-Name of an EC2 instance type that is supported in Amazon GameLift. A
-fleet instance type determines the computing resources of each instance
-in the fleet, including CPU, memory, storage, and networking capacity.
-Amazon GameLift supports the following EC2 instance types. See Amazon
-EC2 Instance Types (http://aws.amazon.com/ec2/instance-types/) for
-detailed descriptions.
+The name of an EC2 instance type. See Amazon EC2 Instance Types
+(http://aws.amazon.com/ec2/instance-types/) for detailed descriptions.
 
 
 =head2 InstanceLimit => Int
 
-Number of instances allowed.
+The number of instances that is allowed for the specified instance type
+and location.
+
+
+=head2 Location => Str
+
+An AWS Region code, such as C<us-west-2>.
 
 
 

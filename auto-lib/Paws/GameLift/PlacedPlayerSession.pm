@@ -39,42 +39,12 @@ StartGameSessionPlacement request. This object contains only the player
 ID and player session ID. To retrieve full details on a player session,
 call DescribePlayerSessions with the player session ID.
 
-=over
+B<Related actions>
 
-=item *
-
-CreatePlayerSession
-
-=item *
-
-CreatePlayerSessions
-
-=item *
-
-DescribePlayerSessions
-
-=item *
-
-Game session placements
-
-=over
-
-=item *
-
-StartGameSessionPlacement
-
-=item *
-
-DescribeGameSessionPlacement
-
-=item *
-
-StopGameSessionPlacement
-
-=back
-
-=back
-
+CreatePlayerSession | CreatePlayerSessions | DescribePlayerSessions |
+StartGameSessionPlacement | DescribeGameSessionPlacement |
+StopGameSessionPlacement | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 

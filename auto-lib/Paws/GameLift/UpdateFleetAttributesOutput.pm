@@ -16,8 +16,7 @@ Paws::GameLift::UpdateFleetAttributesOutput
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet that was updated. Use either the fleet
-ID or ARN value.
+A unique identifier for the fleet that was updated.
 
 
 =head2 _request_id => Str

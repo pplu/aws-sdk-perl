@@ -41,41 +41,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 
 Properties describing a Realtime script.
 
-B<Related operations>
+B<Related actions>
 
-=over
-
-=item *
-
-CreateScript
-
-=item *
-
-ListScripts
-
-=item *
-
-DescribeScript
-
-=item *
-
-UpdateScript
-
-=item *
-
-DeleteScript
-
-=back
-
+CreateScript | ListScripts | DescribeScript | UpdateScript |
+DeleteScript | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Str
 
-A time stamp indicating when this data object was created. The format
-is a number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+A time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 =head2 Name => Str
@@ -86,8 +65,8 @@ not need to be unique.
 
 =head2 ScriptArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a GameLift script resource and uniquely identifies
 it. ARNs are unique across all Regions. In a GameLift script ARN, the
 resource ID matches the I<ScriptId> value.
@@ -95,7 +74,7 @@ resource ID matches the I<ScriptId> value.
 
 =head2 ScriptId => Str
 
-A unique identifier for a Realtime script
+A unique identifier for the Realtime script
 
 
 =head2 SizeOnDisk => Int
@@ -111,8 +90,8 @@ files are uploaded from an S3 location, this value remains at "0".
 
 =head2 Version => Str
 
-The version that is associated with a build or script. Version strings
-do not need to be unique.
+Version information that is associated with a build or script. Version
+strings do not need to be unique.
 
 
 

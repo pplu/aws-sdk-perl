@@ -37,41 +37,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::R
 
 The routing configuration for a fleet alias.
 
-=over
+B<Related actions>
 
-=item *
-
-CreateAlias
-
-=item *
-
-ListAliases
-
-=item *
-
-DescribeAlias
-
-=item *
-
-UpdateAlias
-
-=item *
-
-DeleteAlias
-
-=item *
-
-ResolveAlias
-
-=back
-
+CreateAlias | ListAliases | DescribeAlias | UpdateAlias | DeleteAlias |
+ResolveAlias | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
 
 =head2 FleetId => Str
 
-The unique identifier for a fleet that the alias points to. This value
+A unique identifier for the fleet that the alias points to. This value
 is the fleet ID, not the fleet ARN.
 
 

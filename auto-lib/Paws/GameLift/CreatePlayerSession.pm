@@ -54,9 +54,8 @@ A unique identifier for the game session to add a player to.
 
 =head2 PlayerData => Str
 
-Developer-defined information related to a player. Amazon GameLift does
-not use this data, so it can be formatted as needed for use in the
-game.
+Developer-defined information related to a player. GameLift does not
+use this data, so it can be formatted as needed for use in the game.
 
 
 

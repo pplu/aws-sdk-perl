@@ -41,8 +41,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-A unique identifier for a matchmaking configuration. You can use either
-the configuration name or ARN value.
+A unique identifier for the matchmaking configuration. You can use
+either the configuration name or ARN value.
 
 
 

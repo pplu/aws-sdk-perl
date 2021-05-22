@@ -23,8 +23,8 @@ A collection of alias resources that match the request parameters.
 =head2 NextToken => Str
 
 A token that indicates where to resume retrieving results on the next
-call to this action. If no token is returned, these results represent
-the end of the list.
+call to this operation. If no token is returned, these results
+represent the end of the list.
 
 
 =head2 _request_id => Str

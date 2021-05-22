@@ -72,7 +72,8 @@ names do not need to be unique.
 
 =head2 PlayerSessionCreationPolicy => Str
 
-Policy determining whether or not the game session accepts new players.
+A policy that determines whether the game session is accepting new
+players.
 
 Valid values are: C<"ACCEPT_ALL">, C<"DENY_ALL">
 

@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $UpdateFleetPortSettingsOutput = $gamelift->UpdateFleetPortSettings(
-      FleetId                         => 'MyFleetId',
+      FleetId                         => 'MyFleetIdOrArn',
       InboundPermissionAuthorizations => [
         {
           FromPort => 1,                    # min: 1, max: 60000
@@ -66,20 +66,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to update port settings for. You can
+A unique identifier for the fleet to update port settings for. You can
 use either the fleet ID or ARN value.
 
 
 
 =head2 InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>]
 
-A collection of port settings to be added to the fleet record.
+A collection of port settings to be added to the fleet resource.
 
 
 
 =head2 InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]
 
-A collection of port settings to be removed from the fleet record.
+A collection of port settings to be removed from the fleet resource.
 
 
 

@@ -5,6 +5,7 @@ package Paws::GameLift::DescribeGameSessions;
   has FleetId => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
+  has Location => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusFilter => (is => 'ro', isa => 'Str');
 
@@ -33,10 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeGameSessionsOutput = $gamelift->DescribeGameSessions(
-      AliasId       => 'MyAliasId',                # OPTIONAL
-      FleetId       => 'MyFleetId',                # OPTIONAL
+      AliasId       => 'MyAliasIdOrArn',           # OPTIONAL
+      FleetId       => 'MyFleetIdOrArn',           # OPTIONAL
       GameSessionId => 'MyArnStringModel',         # OPTIONAL
       Limit         => 1,                          # OPTIONAL
+      Location      => 'MyLocationStringModel',    # OPTIONAL
       NextToken     => 'MyNonZeroAndMaxString',    # OPTIONAL
       StatusFilter  => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
@@ -55,14 +57,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AliasId => Str
 
-A unique identifier for an alias associated with the fleet to retrieve
-all game sessions for. You can use either the alias ID or ARN value.
+A unique identifier for the alias associated with the fleet to retrieve
+game sessions for. You can use either the alias ID or ARN value.
 
 
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet to retrieve all game sessions for. You
+A unique identifier for the fleet to retrieve game sessions for. You
 can use either the fleet ID or ARN value.
 
 
@@ -80,19 +82,29 @@ C<NextToken> to get results as a set of sequential pages.
 
 
 
+=head2 Location => Str
+
+A fleet location to get game session details for. You can specify a
+fleet's home Region or a remote location. Use the AWS Region code
+format, such as C<us-west-2>.
+
+
+
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value.
 
 
 
 =head2 StatusFilter => Str
 
-Game session status to filter results on. Possible game session
-statuses include C<ACTIVE>, C<TERMINATED>, C<ACTIVATING>, and
-C<TERMINATING> (the last two are transitory).
+Game session status to filter results on. You can filter on the
+following states: C<ACTIVE>, C<TERMINATED>, C<ACTIVATING>, and
+C<TERMINATING>. The last two are transitory and used for only very
+brief periods of time.
 
 
 
