@@ -164,8 +164,8 @@ C<Monolithic> for Puppet and C<Single> for Chef.
 =head2 EngineVersion => Str
 
 The engine version of the server. For a Chef server, the valid value
-for EngineVersion is currently C<12>. For a Puppet server, the valid
-value is C<2017>.
+for EngineVersion is currently C<2>. For a Puppet server, specify
+either C<2019> or C<2017>.
 
 
 =head2 InstanceProfileArn => Str

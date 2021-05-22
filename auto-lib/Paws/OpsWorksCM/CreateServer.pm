@@ -8,7 +8,7 @@ package Paws::OpsWorksCM::CreateServer;
   has CustomDomain => (is => 'ro', isa => 'Str');
   has CustomPrivateKey => (is => 'ro', isa => 'Str');
   has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
+  has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
   has EngineModel => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -48,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $opsworks-cm = Paws->service('OpsWorksCM');
     my $CreateServerResponse = $opsworks -cm->CreateServer(
+      Engine                   => 'MyString',
       InstanceProfileArn       => 'MyInstanceProfileArn',
       InstanceType             => 'MyString',
       ServerName               => 'MyServerName',
@@ -59,7 +60,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CustomDomain             => 'MyCustomDomain',         # OPTIONAL
       CustomPrivateKey         => 'MyCustomPrivateKey',     # OPTIONAL
       DisableAutomatedBackup   => 1,                        # OPTIONAL
-      Engine                   => 'MyString',               # OPTIONAL
       EngineAttributes         => [
         {
           Name  => 'MyEngineAttributeName',     # max: 10000; OPTIONAL
@@ -123,11 +123,11 @@ number is exceeded. The default value is C<1>.
 
 =head2 CustomCertificate => Str
 
-Supported on servers running Chef Automate 2. A PEM-formatted HTTPS
-certificate. The value can be be a single, self-signed certificate, or
-a certificate chain. If you specify a custom certificate, you must also
-specify values for C<CustomDomain> and C<CustomPrivateKey>. The
-following are requirements for the C<CustomCertificate> value:
+A PEM-formatted HTTPS certificate. The value can be be a single,
+self-signed certificate, or a certificate chain. If you specify a
+custom certificate, you must also specify values for C<CustomDomain>
+and C<CustomPrivateKey>. The following are requirements for the
+C<CustomCertificate> value:
 
 =over
 
@@ -164,25 +164,23 @@ The certificate must match the value of C<CustomPrivateKey>.
 
 =head2 CustomDomain => Str
 
-Supported on servers running Chef Automate 2. An optional public
-endpoint of a server, such as C<https://aws.my-company.com>. To access
-the server, create a CNAME DNS record in your preferred DNS service
-that points the custom domain to the endpoint that is generated when
-the server is created (the value of the CreateServer Endpoint
-attribute). You cannot access the server by using the generated
-C<Endpoint> value if the server is using a custom domain. If you
-specify a custom domain, you must also specify values for
-C<CustomCertificate> and C<CustomPrivateKey>.
+An optional public endpoint of a server, such as
+C<https://aws.my-company.com>. To access the server, create a CNAME DNS
+record in your preferred DNS service that points the custom domain to
+the endpoint that is generated when the server is created (the value of
+the CreateServer Endpoint attribute). You cannot access the server by
+using the generated C<Endpoint> value if the server is using a custom
+domain. If you specify a custom domain, you must also specify values
+for C<CustomCertificate> and C<CustomPrivateKey>.
 
 
 
 =head2 CustomPrivateKey => Str
 
-Supported on servers running Chef Automate 2. A private key in PEM
-format for connecting to the server by using HTTPS. The private key
-must not be encrypted; it cannot be protected by a password or
-passphrase. If you specify a custom private key, you must also specify
-values for C<CustomDomain> and C<CustomCertificate>.
+A private key in PEM format for connecting to the server by using
+HTTPS. The private key must not be encrypted; it cannot be protected by
+a password or passphrase. If you specify a custom private key, you must
+also specify values for C<CustomDomain> and C<CustomCertificate>.
 
 
 
@@ -193,7 +191,7 @@ C<false>. The default value is C<true>.
 
 
 
-=head2 Engine => Str
+=head2 B<REQUIRED> Engine => Str
 
 The configuration management engine to use. Valid values include
 C<ChefAutomate> and C<Puppet>.
@@ -264,8 +262,8 @@ C<Monolithic> for Puppet and C<Single> for Chef.
 =head2 EngineVersion => Str
 
 The major release version of the engine that you want to use. For a
-Chef server, the valid value for EngineVersion is currently C<12>. For
-a Puppet server, the valid value is C<2017>.
+Chef server, the valid value for EngineVersion is currently C<2>. For a
+Puppet server, valid values are C<2019> or C<2017>.
 
 
 
@@ -314,8 +312,8 @@ C<DDD:HH:MM> for weekly backups
 
 =back
 
-The specified time is in coordinated universal time (UTC). The default
-value is a random, daily start time.
+C<MM> must be specified as C<00>. The specified time is in coordinated
+universal time (UTC). The default value is a random, daily start time.
 
 B<Example:> C<08:00>, which represents a daily start time of 08:00 UTC.
 
@@ -328,10 +326,10 @@ at 08:00 UTC. (8:00 a.m.)
 
 The start time for a one-hour period each week during which AWS
 OpsWorks CM performs maintenance on the instance. Valid values must be
-specified in the following format: C<DDD:HH:MM>. The specified time is
-in coordinated universal time (UTC). The default value is a random
-one-hour period on Tuesday, Wednesday, or Friday. See
-C<TimeWindowDefinition> for more information.
+specified in the following format: C<DDD:HH:MM>. C<MM> must be
+specified as C<00>. The specified time is in coordinated universal time
+(UTC). The default value is a random one-hour period on Tuesday,
+Wednesday, or Friday. See C<TimeWindowDefinition> for more information.
 
 B<Example:> C<Mon:08:00>, which represents a start time of every Monday
 at 08:00 UTC. (8:00 a.m.)
@@ -406,13 +404,13 @@ The key cannot be empty.
 
 The key can be a maximum of 127 characters, and can contain only
 Unicode letters, numbers, or separators, or the following special
-characters: C<+ - = . _ : />
+characters: C<+ - = . _ : / @>
 
 =item *
 
 The value can be a maximum 255 characters, and contain only Unicode
 letters, numbers, or separators, or the following special characters:
-C<+ - = . _ : />
+C<+ - = . _ : / @>
 
 =item *
 

@@ -180,6 +180,29 @@ package Paws::OpsWorksCM;
 
     return undef
   }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute ListTagsForResource RestoreServer StartMaintenance TagResource UntagResource UpdateServer UpdateServerEngineAttributes / }
@@ -309,6 +332,10 @@ opsworks-cm.eu-west-1.amazonaws.com
 
 =back
 
+For more information, see AWS OpsWorks endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html)
+in the AWS General Reference.
+
 B<Throttling limits>
 
 All API operations allow for five requests per second with a burst of
@@ -349,7 +376,7 @@ I<MyServer> --node-name I<MyManagedNode> --engine-attributes
 On a Puppet server, this command is an alternative to the C<puppet cert
 sign> command that signs a Puppet node CSR.
 
-Example (Chef): C<aws opsworks-cm associate-node --server-name
+Example (Puppet): C<aws opsworks-cm associate-node --server-name
 I<MyServer> --node-name I<MyManagedNode> --engine-attributes
 "Name=I<PUPPET_NODE_CSR>,Value=I<csr-pem>">
 
@@ -401,6 +428,8 @@ request are not valid.
 
 =over
 
+=item Engine => Str
+
 =item InstanceProfileArn => Str
 
 =item InstanceType => Str
@@ -422,8 +451,6 @@ request are not valid.
 =item [CustomPrivateKey => Str]
 
 =item [DisableAutomatedBackup => Bool]
-
-=item [Engine => Str]
 
 =item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
 
@@ -945,6 +972,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Servers, passing the object as the first parameter, and the string 'Servers' as the second parameter 
 
 If not, it will return a a L<Paws::OpsWorksCM::DescribeServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 
