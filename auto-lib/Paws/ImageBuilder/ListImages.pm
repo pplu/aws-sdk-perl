@@ -1,7 +1,9 @@
 
 package Paws::ImageBuilder::ListImages;
   use Moose;
+  has ByName => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'byName');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Filter]', traits => ['NameInRequest'], request_name => 'filters');
+  has IncludeDeprecated => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeDeprecated');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
   has Owner => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'owner');
@@ -32,16 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $imagebuilder = Paws->service('ImageBuilder');
     my $ListImagesResponse = $imagebuilder->ListImages(
+      ByName  => 1,    # OPTIONAL
       Filters => [
         {
-          Name => 'MyFilterName',                # OPTIONAL
+          Name   => 'MyFilterName',              # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...
       ],                                         # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyNonEmptyString',          # OPTIONAL
-      Owner      => 'Self',                      # OPTIONAL
+      IncludeDeprecated => 1,                    # OPTIONAL
+      MaxResults        => 1,                    # OPTIONAL
+      NextToken         => 'MyPaginationToken',  # OPTIONAL
+      Owner             => 'Self',               # OPTIONAL
     );
 
     # Results:
@@ -57,9 +61,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 =head1 ATTRIBUTES
 
 
+=head2 ByName => Bool
+
+Requests a list of images with a specific recipe name.
+
+
+
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
 The filters.
+
+
+
+=head2 IncludeDeprecated => Bool
+
+Includes deprecated images in the response list.
 
 
 

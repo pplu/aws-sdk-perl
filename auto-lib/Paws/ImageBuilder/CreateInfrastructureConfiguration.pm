@@ -8,6 +8,7 @@ package Paws::ImageBuilder::CreateInfrastructureConfiguration;
   has KeyPair => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPair');
   has Logging => (is => 'ro', isa => 'Paws::ImageBuilder::Logging', traits => ['NameInRequest'], request_name => 'logging');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has ResourceTags => (is => 'ro', isa => 'Paws::ImageBuilder::ResourceTagMap', traits => ['NameInRequest'], request_name => 'resourceTags');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroupIds');
   has SnsTopicArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'snsTopicArn');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId');
@@ -42,16 +43,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateInfrastructureConfigurationResponse =
       $imagebuilder->CreateInfrastructureConfiguration(
       ClientToken         => 'MyClientToken',
-      InstanceProfileName => 'MyNonEmptyString',
+      InstanceProfileName => 'MyInstanceProfileNameType',
       Name                => 'MyResourceName',
-      Description         => 'MyNonEmptyString',           # OPTIONAL
-      InstanceTypes       => [ 'MyInstanceType', ... ],    # OPTIONAL
-      KeyPair             => 'MyNonEmptyString',           # OPTIONAL
+      Description         => 'MyNonEmptyString',            # OPTIONAL
+      InstanceTypes       => [ 'MyInstanceType', ... ],     # OPTIONAL
+      KeyPair             => 'MyNonEmptyString',            # OPTIONAL
       Logging             => {
         S3Logs => {
-          S3BucketName => 'MyNonEmptyString',              # min: 1, max: 1024
-          S3KeyPrefix  => 'MyNonEmptyString',              # min: 1, max: 1024
+          S3BucketName => 'MyNonEmptyString',               # min: 1, max: 1024
+          S3KeyPrefix  => 'MyNonEmptyString',               # min: 1, max: 1024
         },    # OPTIONAL
+      },    # OPTIONAL
+      ResourceTags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       SecurityGroupIds => [
         'MyNonEmptyString', ...    # min: 1, max: 1024
@@ -122,6 +126,12 @@ The logging configuration of the infrastructure configuration.
 =head2 B<REQUIRED> Name => Str
 
 The name of the infrastructure configuration.
+
+
+
+=head2 ResourceTags => L<Paws::ImageBuilder::ResourceTagMap>
+
+The tags attached to the resource created by Image Builder.
 
 
 

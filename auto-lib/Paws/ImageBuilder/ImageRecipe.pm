@@ -11,7 +11,9 @@ package Paws::ImageBuilder::ImageRecipe;
   has ParentImage => (is => 'ro', isa => 'Str', request_name => 'parentImage', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  has WorkingDirectory => (is => 'ro', isa => 'Str', request_name => 'workingDirectory', traits => ['NameInRequest']);
 
 1;
 
@@ -32,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ImageBuilder::ImageRecipe object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., WorkingDirectory => $value  });
 
 =head3 Results returned from an API call
 
@@ -99,9 +101,20 @@ The platform of the image recipe.
 The tags of the image recipe.
 
 
+=head2 Type => Str
+
+Specifies which type of image is created by the recipe - an AMI or a
+container image.
+
+
 =head2 Version => Str
 
 The version of the image recipe.
+
+
+=head2 WorkingDirectory => Str
+
+The working directory to be used during build and test workflows.
 
 
 

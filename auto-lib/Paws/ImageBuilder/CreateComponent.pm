@@ -9,6 +9,7 @@ package Paws::ImageBuilder::CreateComponent;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Platform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platform', required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion', required => 1);
+  has SupportedOsVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'supportedOsVersions');
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
@@ -38,15 +39,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $imagebuilder = Paws->service('ImageBuilder');
     my $CreateComponentResponse = $imagebuilder->CreateComponent(
-      ClientToken       => 'MyClientToken',
-      Name              => 'MyResourceName',
-      Platform          => 'Windows',
-      SemanticVersion   => 'MyVersionNumber',
-      ChangeDescription => 'MyNonEmptyString',         # OPTIONAL
-      Data              => 'MyInlineComponentData',    # OPTIONAL
-      Description       => 'MyNonEmptyString',         # OPTIONAL
-      KmsKeyId          => 'MyNonEmptyString',         # OPTIONAL
-      Tags              => {
+      ClientToken         => 'MyClientToken',
+      Name                => 'MyResourceName',
+      Platform            => 'Windows',
+      SemanticVersion     => 'MyVersionNumber',
+      ChangeDescription   => 'MyNonEmptyString',         # OPTIONAL
+      Data                => 'MyInlineComponentData',    # OPTIONAL
+      Description         => 'MyNonEmptyString',         # OPTIONAL
+      KmsKeyId            => 'MyNonEmptyString',         # OPTIONAL
+      SupportedOsVersions => [
+        'MyOsVersion', ...                               # min: 1
+      ],                                                 # OPTIONAL
+      Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       Uri => 'MyUri',    # OPTIONAL
@@ -117,6 +121,14 @@ Valid values are: C<"Windows">, C<"Linux">
 The semantic version of the component. This version follows the
 semantic version syntax. For example, major.minor.patch. This could be
 versioned like software (2.0.1) or like a date (2019.12.01).
+
+
+
+=head2 SupportedOsVersions => ArrayRef[Str|Undef]
+
+The operating system (OS) version supported by the component. If the OS
+information is available, a prefix match is performed against the
+parent image OS version during image recipe creation.
 
 
 

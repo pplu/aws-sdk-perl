@@ -1,5 +1,5 @@
 
-package Paws::ImageBuilder::ListImageRecipes;
+package Paws::ImageBuilder::ListContainerRecipes;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Filter]', traits => ['NameInRequest'], request_name => 'filters');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
@@ -8,30 +8,30 @@ package Paws::ImageBuilder::ListImageRecipes;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListImageRecipes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ListImageRecipes');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListContainerRecipes');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ListContainerRecipes');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImageBuilder::ListImageRecipesResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImageBuilder::ListContainerRecipesResponse');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ImageBuilder::ListImageRecipes - Arguments for method ListImageRecipes on L<Paws::ImageBuilder>
+Paws::ImageBuilder::ListContainerRecipes - Arguments for method ListContainerRecipes on L<Paws::ImageBuilder>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListImageRecipes on the
+This class represents the parameters used for calling the method ListContainerRecipes on the
 L<EC2 Image Builder|Paws::ImageBuilder> service. Use the attributes of this class
-as arguments to method ListImageRecipes.
+as arguments to method ListContainerRecipes.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListImageRecipes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListContainerRecipes.
 
 =head1 SYNOPSIS
 
     my $imagebuilder = Paws->service('ImageBuilder');
-    my $ListImageRecipesResponse = $imagebuilder->ListImageRecipes(
+    my $ListContainerRecipesResponse = $imagebuilder->ListContainerRecipes(
       Filters => [
         {
           Name   => 'MyFilterName',              # OPTIONAL
@@ -40,57 +40,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                         # OPTIONAL
       MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyPaginationToken',         # OPTIONAL
+      NextToken  => 'MyNonEmptyString',          # OPTIONAL
       Owner      => 'Self',                      # OPTIONAL
     );
 
     # Results:
-    my $ImageRecipeSummaryList =
-      $ListImageRecipesResponse->ImageRecipeSummaryList;
-    my $NextToken = $ListImageRecipesResponse->NextToken;
-    my $RequestId = $ListImageRecipesResponse->RequestId;
+    my $ContainerRecipeSummaryList =
+      $ListContainerRecipesResponse->ContainerRecipeSummaryList;
+    my $NextToken = $ListContainerRecipesResponse->NextToken;
+    my $RequestId = $ListContainerRecipesResponse->RequestId;
 
-    # Returns a L<Paws::ImageBuilder::ListImageRecipesResponse> object.
+    # Returns a L<Paws::ImageBuilder::ListContainerRecipesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder/ListImageRecipes>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder/ListContainerRecipes>
 
 =head1 ATTRIBUTES
 
 
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
-The filters.
+Request filters that are used to narrow the list of container images
+that are returned.
 
 
 
 =head2 MaxResults => Int
 
-The maximum items to return in a request.
+The maximum number of results to return in the list.
 
 
 
 =head2 NextToken => Str
 
-A token to specify where to start paginating. This is the NextToken
-from a previously truncated response.
+Provides a token for pagination, which determines where to begin the
+next set of results when the current set reaches the maximum for one
+request.
 
 
 
 =head2 Owner => Str
 
-The owner defines which image recipes you want to list. By default,
-this request will only show image recipes owned by your account. You
-can use this field to specify if you want to view image recipes owned
-by yourself, by Amazon, or those image recipes that have been shared
-with you by other customers.
+Returns container recipes belonging to the specified owner, that have
+been shared with you. You can omit this field to return container
+recipes belonging to your account.
 
 Valid values are: C<"Self">, C<"Shared">, C<"Amazon">
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListImageRecipes in L<Paws::ImageBuilder>
+This class forms part of L<Paws>, documenting arguments for method ListContainerRecipes in L<Paws::ImageBuilder>
 
 =head1 BUGS and CONTRIBUTIONS
 

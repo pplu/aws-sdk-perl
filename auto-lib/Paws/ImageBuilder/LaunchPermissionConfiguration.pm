@@ -38,7 +38,10 @@ Describes the configuration for a launch permission. The launch
 permission modification request is sent to the EC2 ModifyImageAttribute
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyImageAttribute.html)
 API on behalf of the user for each Region they have selected to
-distribute the AMI.
+distribute the AMI. To make an AMI public, set the launch permission
+authorized accounts to C<all>. See the examples for making an AMI
+public at EC2 ModifyImageAttribute
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyImageAttribute.html).
 
 =head1 ATTRIBUTES
 

@@ -2,6 +2,7 @@
 package Paws::ImageBuilder::OutputResources;
   use Moose;
   has Amis => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Ami]', request_name => 'amis', traits => ['NameInRequest']);
+  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Container]', request_name => 'containers', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ImageBuilder::OutputResources object:
 
-  $service_obj->Method(Att1 => { Amis => $value, ..., Amis => $value  });
+  $service_obj->Method(Att1 => { Amis => $value, ..., Containers => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,12 @@ The resources produced by this image.
 =head2 Amis => ArrayRef[L<Paws::ImageBuilder::Ami>]
 
 The EC2 AMIs created by this image.
+
+
+=head2 Containers => ArrayRef[L<Paws::ImageBuilder::Container>]
+
+Container images that the pipeline has generated and stored in the
+output repository.
 
 
 

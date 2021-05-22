@@ -2,9 +2,11 @@
 package Paws::ImageBuilder::CreateImagePipeline;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken', required => 1);
+  has ContainerRecipeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerRecipeArn');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DistributionConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionConfigurationArn');
-  has ImageRecipeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageRecipeArn', required => 1);
+  has EnhancedImageMetadataEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enhancedImageMetadataEnabled');
+  has ImageRecipeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageRecipeArn');
   has ImageTestsConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::ImageTestsConfiguration', traits => ['NameInRequest'], request_name => 'imageTestsConfiguration');
   has InfrastructureConfigurationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'infrastructureConfigurationArn', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
@@ -39,20 +41,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $imagebuilder = Paws->service('ImageBuilder');
     my $CreateImagePipelineResponse = $imagebuilder->CreateImagePipeline(
       ClientToken                    => 'MyClientToken',
-      ImageRecipeArn                 => 'MyImageRecipeArn',
       InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
       Name                           => 'MyResourceName',
-      Description => 'MyNonEmptyString',    # OPTIONAL
+      ContainerRecipeArn => 'MyContainerRecipeArn',    # OPTIONAL
+      Description        => 'MyNonEmptyString',        # OPTIONAL
       DistributionConfigurationArn =>
-        'MyDistributionConfigurationArn',    # OPTIONAL
-      ImageTestsConfiguration => {
-        ImageTestsEnabled => 1,              # OPTIONAL
-        TimeoutMinutes    => 1,              # min: 60, max: 1440; OPTIONAL
+        'MyDistributionConfigurationArn',              # OPTIONAL
+      EnhancedImageMetadataEnabled => 1,                     # OPTIONAL
+      ImageRecipeArn               => 'MyImageRecipeArn',    # OPTIONAL
+      ImageTestsConfiguration      => {
+        ImageTestsEnabled => 1,
+        TimeoutMinutes    => 1,    # min: 60, max: 1440; OPTIONAL
       },    # OPTIONAL
       Schedule => {
         PipelineExecutionStartCondition => 'EXPRESSION_MATCH_ONLY'
         , # values: EXPRESSION_MATCH_ONLY, EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE; OPTIONAL
-        ScheduleExpression => 'MyNonEmptyString',    # min: 1, max: 1024
+        ScheduleExpression => 'MyNonEmptyString',   # min: 1, max: 1024
+        Timezone           => 'MyTimezone',         # min: 3, max: 100; OPTIONAL
       },    # OPTIONAL
       Status => 'DISABLED',    # OPTIONAL
       Tags   => {
@@ -79,6 +84,13 @@ The idempotency token used to make this request idempotent.
 
 
 
+=head2 ContainerRecipeArn => Str
+
+The Amazon Resource Name (ARN) of the container recipe that is used to
+configure images created by this container pipeline.
+
+
+
 =head2 Description => Str
 
 The description of the image pipeline.
@@ -93,7 +105,16 @@ pipeline.
 
 
 
-=head2 B<REQUIRED> ImageRecipeArn => Str
+=head2 EnhancedImageMetadataEnabled => Bool
+
+Collects additional information about the image being created,
+including the operating system (OS) version and package list. This
+information is used to enhance the overall experience of using EC2
+Image Builder. Enabled by default.
+
+
+
+=head2 ImageRecipeArn => Str
 
 The Amazon Resource Name (ARN) of the image recipe that will be used to
 configure images created by this image pipeline.

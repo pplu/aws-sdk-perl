@@ -4,11 +4,13 @@ package Paws::ImageBuilder::ImageSummary;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has DateCreated => (is => 'ro', isa => 'Str', request_name => 'dateCreated', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has OsVersion => (is => 'ro', isa => 'Str', request_name => 'osVersion', traits => ['NameInRequest']);
   has OutputResources => (is => 'ro', isa => 'Paws::ImageBuilder::OutputResources', request_name => 'outputResources', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Paws::ImageBuilder::ImageState', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 
 1;
@@ -61,6 +63,12 @@ The date on which this image was created.
 The name of the image.
 
 
+=head2 OsVersion => Str
+
+The operating system version of the instance. For example, Amazon Linux
+2, Ubuntu 18, or Microsoft Windows Server 2019.
+
+
 =head2 OutputResources => L<Paws::ImageBuilder::OutputResources>
 
 The output resources produced when creating this image.
@@ -84,6 +92,11 @@ The state of the image.
 =head2 Tags => L<Paws::ImageBuilder::TagMap>
 
 The tags of the image.
+
+
+=head2 Type => Str
+
+Specifies whether this is an AMI or container image.
 
 
 =head2 Version => Str
