@@ -3,7 +3,9 @@ package Paws::IoT::Behavior;
   use Moose;
   has Criteria => (is => 'ro', isa => 'Paws::IoT::BehaviorCriteria', request_name => 'criteria', traits => ['NameInRequest']);
   has Metric => (is => 'ro', isa => 'Str', request_name => 'metric', traits => ['NameInRequest']);
+  has MetricDimension => (is => 'ro', isa => 'Paws::IoT::MetricDimension', request_name => 'metricDimension', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has SuppressAlerts => (is => 'ro', isa => 'Bool', request_name => 'suppressAlerts', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::Behavior object:
 
-  $service_obj->Method(Att1 => { Criteria => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Criteria => $value, ..., SuppressAlerts => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,9 +53,22 @@ to the C<metric>.
 What is measured by the behavior.
 
 
+=head2 MetricDimension => L<Paws::IoT::MetricDimension>
+
+The dimension for a metric in your behavior. For example, using a
+C<TOPIC_FILTER> dimension, you can narrow down the scope of the metric
+to only MQTT topics where the name matches the pattern specified in the
+dimension. This can't be used with custom metrics.
+
+
 =head2 B<REQUIRED> Name => Str
 
-The name you have given to the behavior.
+The name you've given to the behavior.
+
+
+=head2 SuppressAlerts => Bool
+
+Suppresses alerts.
 
 
 

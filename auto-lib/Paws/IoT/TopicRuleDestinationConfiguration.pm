@@ -2,6 +2,7 @@
 package Paws::IoT::TopicRuleDestinationConfiguration;
   use Moose;
   has HttpUrlConfiguration => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationConfiguration', request_name => 'httpUrlConfiguration', traits => ['NameInRequest']);
+  has VpcConfiguration => (is => 'ro', isa => 'Paws::IoT::VpcDestinationConfiguration', request_name => 'vpcConfiguration', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::TopicRuleDestinationConfiguration object:
 
-  $service_obj->Method(Att1 => { HttpUrlConfiguration => $value, ..., HttpUrlConfiguration => $value  });
+  $service_obj->Method(Att1 => { HttpUrlConfiguration => $value, ..., VpcConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,11 @@ Configuration of the topic rule destination.
 =head2 HttpUrlConfiguration => L<Paws::IoT::HttpUrlDestinationConfiguration>
 
 Configuration of the HTTP URL.
+
+
+=head2 VpcConfiguration => L<Paws::IoT::VpcDestinationConfiguration>
+
+Configuration of the virtual private cloud (VPC) connection.
 
 
 

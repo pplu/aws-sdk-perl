@@ -48,16 +48,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 Parameters => L<Paws::IoT::Parameters>
 
-The parameters for provisioning a thing. See Programmatic Provisioning
-(https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+The parameters for provisioning a thing. See Provisioning Templates
+(https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html)
 for more information.
 
 
 
 =head2 B<REQUIRED> TemplateBody => Str
 
-The provisioning template. See Programmatic Provisioning
-(https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+The provisioning template. See Provisioning Devices That Have Device
+Certificates
+(https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html)
 for more information.
 
 

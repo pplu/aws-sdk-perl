@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::AbortC
 
 =head1 DESCRIPTION
 
-Details of abort criteria to abort the job.
+The criteria that determine when and how a job abort takes place.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CriteriaList => ArrayRef[L<Paws::IoT::AbortCriteria>]
 
-The list of abort criteria to define rules to abort the job.
+The list of criteria that determine when and how to abort the job.
 
 
 

@@ -18,8 +18,8 @@ Paws::IoT::ListThingTypesResponse
 
 =head2 NextToken => Str
 
-The token for the next set of results, or B<null> if there are no
-additional results.
+The token for the next set of results. Will not be returned if
+operation has returned all results.
 
 
 =head2 ThingTypes => ArrayRef[L<Paws::IoT::ThingTypeDefinition>]

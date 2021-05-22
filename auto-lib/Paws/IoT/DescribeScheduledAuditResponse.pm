@@ -22,23 +22,23 @@ Paws::IoT::DescribeScheduledAuditResponse
 
 =head2 DayOfMonth => Str
 
-The day of the month on which the scheduled audit takes place. Will be
-"1" through "31" or "LAST". If days 29-31 are specified, and the month
-does not have that many days, the audit takes place on the "LAST" day
-of the month.
+The day of the month on which the scheduled audit takes place. This is
+will be C<1> through C<31> or C<LAST>. If days C<29>-C<31> are
+specified, and the month does not have that many days, the audit takes
+place on the C<LAST> day of the month.
 
 
 =head2 DayOfWeek => Str
 
-The day of the week on which the scheduled audit takes place. One of
-"SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT".
+The day of the week on which the scheduled audit takes place, either
+one of C<SUN>, C<MON>, C<TUE>, C<WED>, C<THU>, C<FRI>, or C<SAT>.
 
 Valid values are: C<"SUN">, C<"MON">, C<"TUE">, C<"WED">, C<"THU">, C<"FRI">, C<"SAT">
 =head2 Frequency => Str
 
-How often the scheduled audit takes place. One of "DAILY", "WEEKLY",
-"BIWEEKLY", or "MONTHLY". The start time of each audit is determined by
-the system.
+How often the scheduled audit takes place, either one of C<DAILY>,
+C<WEEKLY>, C<BIWEEKLY>, or C<MONTHLY>. The start time of each audit is
+determined by the system.
 
 Valid values are: C<"DAILY">, C<"WEEKLY">, C<"BIWEEKLY">, C<"MONTHLY">
 =head2 ScheduledAuditArn => Str

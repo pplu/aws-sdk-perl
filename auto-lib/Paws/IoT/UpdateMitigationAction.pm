@@ -78,9 +78,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> ActionName => Str
 
-The friendly name for the mitigation action. You can't change the name
+The friendly name for the mitigation action. You cannot change the name
 by using C<UpdateMitigationAction>. Instead, you must delete and
-re-create the mitigation action with the new name.
+recreate the mitigation action with the new name.
 
 
 

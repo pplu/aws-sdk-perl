@@ -2,7 +2,7 @@
 package Paws::IoT::AuthInfo;
   use Moose;
   has ActionType => (is => 'ro', isa => 'Str', request_name => 'actionType', traits => ['NameInRequest']);
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resources', traits => ['NameInRequest']);
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resources', traits => ['NameInRequest'], required => 1);
 
 1;
 
@@ -44,7 +44,7 @@ A collection of authorization information.
 The type of action for which the principal is being authorized.
 
 
-=head2 Resources => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
 The resources for which the principal is being authorized to perform
 the specified action.

@@ -4,6 +4,7 @@ package Paws::IoT::DeleteJobExecution;
   has ExecutionNumber => (is => 'ro', isa => 'Int', traits => ['ParamInURI'], uri_name => 'executionNumber', required => 1);
   has Force => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'force');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  has NamespaceId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'namespaceId');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -35,7 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionNumber => 1,
       JobId           => 'MyJobId',
       ThingName       => 'MyThingName',
-      Force           => 1,               # OPTIONAL
+      Force           => 1,                  # OPTIONAL
+      NamespaceId     => 'MyNamespaceId',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -72,6 +74,20 @@ valid state.
 
 The ID of the job whose execution on a particular device will be
 deleted.
+
+
+
+=head2 NamespaceId => Str
+
+The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+C<$aws/things/I<THING_NAME>/jobs/I<JOB_ID>/notify-namespace-I<NAMESPACE_ID>/>
+
+The C<namespaceId> feature is in public preview.
 
 
 

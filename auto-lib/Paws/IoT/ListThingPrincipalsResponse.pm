@@ -1,6 +1,7 @@
 
 package Paws::IoT::ListThingPrincipalsResponse;
   use Moose;
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
   has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'principals');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -13,6 +14,12 @@ package Paws::IoT::ListThingPrincipalsResponse;
 Paws::IoT::ListThingPrincipalsResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 NextToken => Str
+
+The token to use to get the next set of results, or B<null> if there
+are no additional results.
 
 
 =head2 Principals => ArrayRef[Str|Undef]

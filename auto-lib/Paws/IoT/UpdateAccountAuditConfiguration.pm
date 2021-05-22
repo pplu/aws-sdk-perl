@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'SNS' => {
           Enabled   => 1,                # OPTIONAL
           RoleArn   => 'MyRoleArn',      # min: 20, max: 2048; OPTIONAL
-          TargetArn => 'MyTargetArn',    # OPTIONAL
+          TargetArn => 'MyTargetArn',    # max: 2048; OPTIONAL
         },    # key: values: SNS
       },    # OPTIONAL
       RoleArn => 'MyRoleArn',    # OPTIONAL
@@ -63,7 +63,7 @@ Some data collection might start immediately when certain checks are
 enabled. When a check is disabled, any data collected so far in
 relation to the check is deleted.
 
-You cannot disable a check if it is used by any scheduled audit. You
+You cannot disable a check if it's used by any scheduled audit. You
 must first delete the check from the scheduled audit or delete the
 scheduled audit itself.
 
@@ -80,9 +80,9 @@ Information about the targets to which audit notifications are sent.
 
 =head2 RoleArn => Str
 
-The ARN of the role that grants permission to AWS IoT to access
-information about your devices, policies, certificates and other items
-as required when performing an audit.
+The Amazon Resource Name (ARN) of the role that grants permission to
+AWS IoT to access information about your devices, policies,
+certificates, and other items as required when performing an audit.
 
 
 

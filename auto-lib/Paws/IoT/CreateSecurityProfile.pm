@@ -2,6 +2,7 @@
 package Paws::IoT::CreateSecurityProfile;
   use Moose;
   has AdditionalMetricsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetain');
+  has AdditionalMetricsToRetainV2 => (is => 'ro', isa => 'ArrayRef[Paws::IoT::MetricToRetain]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetainV2');
   has AlertTargets => (is => 'ro', isa => 'Paws::IoT::AlertTargets', traits => ['NameInRequest'], request_name => 'alertTargets');
   has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors');
   has SecurityProfileDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityProfileDescription');
@@ -34,9 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateSecurityProfileResponse = $iot->CreateSecurityProfile(
-      SecurityProfileName       => 'MySecurityProfileName',
-      AdditionalMetricsToRetain => [ 'MyBehaviorMetric', ... ],    # OPTIONAL
-      AlertTargets              => {
+      SecurityProfileName         => 'MySecurityProfileName',
+      AdditionalMetricsToRetain   => [ 'MyBehaviorMetric', ... ],    # OPTIONAL
+      AdditionalMetricsToRetainV2 => [
+        {
+          Metric          => 'MyBehaviorMetric',
+          MetricDimension => {
+            DimensionName => 'MyDimensionName',   # min: 1, max: 128
+            Operator      => 'IN',                # values: IN, NOT_IN; OPTIONAL
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      AlertTargets => {
         'SNS' => {
           AlertTargetArn => 'MyAlertTargetArn',
           RoleArn        => 'MyRoleArn',          # min: 20, max: 2048
@@ -48,35 +59,49 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name     => 'MyBehaviorName',    # min: 1, max: 128
           Criteria => {
             ComparisonOperator => 'less-than'
-            , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set; OPTIONAL
+            , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set, in-set, not-in-set; OPTIONAL
             ConsecutiveDatapointsToAlarm => 1,    # min: 1, max: 10; OPTIONAL
             ConsecutiveDatapointsToClear => 1,    # min: 1, max: 10; OPTIONAL
             DurationSeconds              => 1,    # OPTIONAL
-            StatisticalThreshold         => {
+            MlDetectionConfig            => {
+              ConfidenceLevel => 'LOW',           # values: LOW, MEDIUM, HIGH
+
+            },    # OPTIONAL
+            StatisticalThreshold => {
               Statistic => 'MyEvaluationStatistic',    # OPTIONAL
             },    # OPTIONAL
             Value => {
               Cidrs => [
                 'MyCidr', ...    # min: 2, max: 43
               ],                 # OPTIONAL
-              Count => 1,        # OPTIONAL
+              Count   => 1,      # OPTIONAL
+              Number  => 1,      # OPTIONAL
+              Numbers => [
+                1, ...           # OPTIONAL
+              ],                 # OPTIONAL
               Ports => [
                 1, ...           # max: 65535
               ],                 # OPTIONAL
+              Strings => [ 'MystringValue', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          Metric => 'MyBehaviorMetric',
+          Metric          => 'MyBehaviorMetric',
+          MetricDimension => {
+            DimensionName => 'MyDimensionName',   # min: 1, max: 128
+            Operator      => 'IN',                # values: IN, NOT_IN; OPTIONAL
+          },    # OPTIONAL
+          SuppressAlerts => 1,    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],                          # OPTIONAL
       SecurityProfileDescription => 'MySecurityProfileDescription',   # OPTIONAL
       Tags                       => [
         {
-          Key   => 'MyTagKey',                                        # OPTIONAL
-          Value => 'MyTagValue',                                      # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                                              # OPTIONAL
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -94,9 +119,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
 
+I<Please use CreateSecurityProfileRequest$additionalMetricsToRetainV2
+instead.>
+
 A list of metrics whose data is retained (stored). By default, data is
 retained for any metric used in the profile's C<behaviors>, but it is
-also retained for any metric specified here.
+also retained for any metric specified here. Can be used with custom
+metrics; cannot be used with dimensions.
+
+
+
+=head2 AdditionalMetricsToRetainV2 => ArrayRef[L<Paws::IoT::MetricToRetain>]
+
+A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's C<behaviors>, but it is
+also retained for any metric specified here. Can be used with custom
+metrics; cannot be used with dimensions.
 
 
 

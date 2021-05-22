@@ -83,6 +83,10 @@ removed.
 
 The name of the thing to update.
 
+You can't change a thing's name. To change a thing's name, you must
+create a new thing, give it the new name, and then delete the old
+thing.
+
 
 
 =head2 ThingTypeName => Str

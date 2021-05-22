@@ -48,7 +48,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 NextToken => Str
 
-The token to retrieve the next set of results.
+To retrieve the next set of results, the C<nextToken> value from a
+previous response; otherwise B<null> to receive the first set of
+results.
 
 
 

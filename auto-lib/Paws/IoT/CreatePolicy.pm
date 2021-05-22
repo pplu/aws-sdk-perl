@@ -3,6 +3,7 @@ package Paws::IoT::CreatePolicy;
   use Moose;
   has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatePolicyResponse = $iot->CreatePolicy(
       PolicyDocument => 'MyPolicyDocument',
       PolicyName     => 'MyPolicyName',
-
+      Tags           => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -60,6 +67,20 @@ whitespace.
 =head2 B<REQUIRED> PolicyName => Str
 
 The policy name.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the policy.
+
+For URI Request parameters use format: ...key1=value1&key2=value2...
+
+For the CLI command-line parameter use format: &&tags
+"key1=value1&key2=value2..."
+
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."
 
 
 

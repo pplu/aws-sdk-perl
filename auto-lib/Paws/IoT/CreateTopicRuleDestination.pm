@@ -34,6 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ConfirmationUrl => 'MyUrl',    # max: 2000
 
         },    # OPTIONAL
+        VpcConfiguration => {
+          RoleArn        => 'MyAwsArn',
+          SubnetIds      => [ 'MySubnetId', ... ],
+          VpcId          => 'MyVpcId',
+          SecurityGroups => [ 'MySecurityGroupId', ... ],    # OPTIONAL
+        },    # OPTIONAL
       },
 
     );

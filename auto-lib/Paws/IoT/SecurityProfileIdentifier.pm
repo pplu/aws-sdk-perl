@@ -46,7 +46,7 @@ The ARN of the security profile.
 
 =head2 B<REQUIRED> Name => Str
 
-The name you have given to the security profile.
+The name you've given to the security profile.
 
 
 

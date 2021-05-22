@@ -72,7 +72,7 @@ Specifies whether the rule is disabled.
 
 The SQL statement used to query the topic. For more information, see
 AWS IoT SQL Reference
-(https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference)
+(https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-reference.html)
 in the I<AWS IoT Developer Guide>.
 
 

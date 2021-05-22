@@ -35,24 +35,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name     => 'MyBehaviorName',    # min: 1, max: 128
           Criteria => {
             ComparisonOperator => 'less-than'
-            , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set; OPTIONAL
+            , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set, in-set, not-in-set; OPTIONAL
             ConsecutiveDatapointsToAlarm => 1,    # min: 1, max: 10; OPTIONAL
             ConsecutiveDatapointsToClear => 1,    # min: 1, max: 10; OPTIONAL
             DurationSeconds              => 1,    # OPTIONAL
-            StatisticalThreshold         => {
+            MlDetectionConfig            => {
+              ConfidenceLevel => 'LOW',           # values: LOW, MEDIUM, HIGH
+
+            },    # OPTIONAL
+            StatisticalThreshold => {
               Statistic => 'MyEvaluationStatistic',    # OPTIONAL
             },    # OPTIONAL
             Value => {
               Cidrs => [
                 'MyCidr', ...    # min: 2, max: 43
               ],                 # OPTIONAL
-              Count => 1,        # OPTIONAL
+              Count   => 1,      # OPTIONAL
+              Number  => 1,      # OPTIONAL
+              Numbers => [
+                1, ...           # OPTIONAL
+              ],                 # OPTIONAL
               Ports => [
                 1, ...           # max: 65535
               ],                 # OPTIONAL
+              Strings => [ 'MystringValue', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          Metric => 'MyBehaviorMetric',    # OPTIONAL
+          Metric          => 'MyBehaviorMetric',    # OPTIONAL
+          MetricDimension => {
+            DimensionName => 'MyDimensionName',   # min: 1, max: 128
+            Operator      => 'IN',                # values: IN, NOT_IN; OPTIONAL
+          },    # OPTIONAL
+          SuppressAlerts => 1,    # OPTIONAL
         },
         ...
       ],

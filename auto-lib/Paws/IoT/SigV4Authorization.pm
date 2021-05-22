@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::SigV4A
 
 =head1 DESCRIPTION
 
-Use Sig V4 authorization.
+For more information, see Signature Version 4 signing process
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 =head1 ATTRIBUTES
 

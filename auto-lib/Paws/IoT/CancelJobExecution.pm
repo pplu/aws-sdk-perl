@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Force           => 1,               # OPTIONAL
       StatusDetails   => {
         'MyDetailsKey' =>
-          'MyDetailsValue',    # key: min: 1, max: 128, value: min: 1, max: 1024
+          'MyDetailsValue',               # key: min: 1, max: 128, value: min: 1
       },    # OPTIONAL
     );
 

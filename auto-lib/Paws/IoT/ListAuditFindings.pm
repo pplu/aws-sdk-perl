@@ -3,6 +3,7 @@ package Paws::IoT::ListAuditFindings;
   use Moose;
   has CheckName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checkName');
   has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime');
+  has ListSuppressedFindings => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'listSuppressedFindings');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
   has ResourceIdentifier => (is => 'ro', isa => 'Paws::IoT::ResourceIdentifier', traits => ['NameInRequest'], request_name => 'resourceIdentifier');
@@ -35,11 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListAuditFindingsResponse = $iot->ListAuditFindings(
-      CheckName          => 'MyAuditCheckName',       # OPTIONAL
-      EndTime            => '1970-01-01T01:00:00',    # OPTIONAL
-      MaxResults         => 1,                        # OPTIONAL
-      NextToken          => 'MyNextToken',            # OPTIONAL
-      ResourceIdentifier => {
+      CheckName              => 'MyAuditCheckName',       # OPTIONAL
+      EndTime                => '1970-01-01T01:00:00',    # OPTIONAL
+      ListSuppressedFindings => 1,                        # OPTIONAL
+      MaxResults             => 1,                        # OPTIONAL
+      NextToken              => 'MyNextToken',            # OPTIONAL
+      ResourceIdentifier     => {
         Account         => 'MyAwsAccountId',     # min: 12, max: 12; OPTIONAL
         CaCertificateId => 'MyCertificateId',    # min: 64, max: 64; OPTIONAL
         ClientId        => 'MyClientId',         # OPTIONAL
@@ -80,6 +82,15 @@ check.
 A filter to limit results to those found before the specified time. You
 must specify either the startTime and endTime or the taskId, but not
 both.
+
+
+
+=head2 ListSuppressedFindings => Bool
+
+Boolean flag indicating whether only the suppressed findings or the
+unsuppressed findings should be listed. If this parameter isn't
+provided, the response will list both suppressed and unsuppressed
+findings.
 
 
 

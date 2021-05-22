@@ -3,6 +3,7 @@ package Paws::IoT::AssociateTargetsWithJob;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'comment');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  has NamespaceId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'namespaceId');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,8 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iot = Paws->service('IoT');
     my $AssociateTargetsWithJobResponse = $iot->AssociateTargetsWithJob(
       JobId   => 'MyJobId',
-      Targets => [ 'MyTargetArn', ... ],
-      Comment => 'MyComment',              # OPTIONAL
+      Targets => [
+        'MyTargetArn', ...    # max: 2048
+      ],
+      Comment     => 'MyComment',        # OPTIONAL
+      NamespaceId => 'MyNamespaceId',    # OPTIONAL
     );
 
     # Results:
@@ -59,6 +63,20 @@ the targets.
 =head2 B<REQUIRED> JobId => Str
 
 The unique identifier you assigned to this job when it was created.
+
+
+
+=head2 NamespaceId => Str
+
+The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+C<$aws/things/I<THING_NAME>/jobs/I<JOB_ID>/notify-namespace-I<NAMESPACE_ID>/>
+
+The C<namespaceId> feature is in public preview.
 
 
 

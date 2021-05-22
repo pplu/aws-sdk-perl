@@ -1,7 +1,9 @@
 
 package Paws::IoT::ListSecurityProfiles;
   use Moose;
+  has DimensionName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'dimensionName');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has MetricName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'metricName');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
 
   use MooseX::ClassAttribute;
@@ -30,8 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListSecurityProfilesResponse = $iot->ListSecurityProfiles(
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      DimensionName => 'MyDimensionName',    # OPTIONAL
+      MaxResults    => 1,                    # OPTIONAL
+      MetricName    => 'MyMetricName',       # OPTIONAL
+      NextToken     => 'MyNextToken',        # OPTIONAL
     );
 
     # Results:
@@ -47,9 +51,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
+=head2 DimensionName => Str
+
+A filter to limit results to the security profiles that use the defined
+dimension. Cannot be used with C<metricName>
+
+
+
 =head2 MaxResults => Int
 
 The maximum number of results to return at one time.
+
+
+
+=head2 MetricName => Str
+
+The name of the custom metric. Cannot be used with C<dimensionName>.
 
 
 

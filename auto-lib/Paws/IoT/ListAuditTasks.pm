@@ -75,7 +75,7 @@ The token for the next set of results.
 =head2 B<REQUIRED> StartTime => Str
 
 The beginning of the time period. Audit information is retained for a
-limited time (180 days). Requesting a start time prior to what is
+limited time (90 days). Requesting a start time prior to what is
 retained results in an "InvalidRequestException".
 
 

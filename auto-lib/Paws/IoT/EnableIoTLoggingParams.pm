@@ -42,12 +42,12 @@ logging.
 
 =head2 B<REQUIRED> LogLevel => Str
 
-Specifies the types of information to be logged.
+Specifies the type of information to be logged.
 
 
 =head2 B<REQUIRED> RoleArnForLogging => Str
 
-The ARN of the IAM role used for logging.
+The Amazon Resource Name (ARN) of the IAM role used for logging.
 
 
 

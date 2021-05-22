@@ -36,9 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $TestAuthorizationResponse = $iot->TestAuthorization(
       AuthInfos => [
         {
+          Resources => [
+            'MyResource', ...    # max: 2048
+          ],
           ActionType =>
             'PUBLISH',  # values: PUBLISH, SUBSCRIBE, RECEIVE, CONNECT; OPTIONAL
-          Resources => [ 'MyResource', ... ],    # OPTIONAL
         },
         ...
       ],
@@ -99,7 +101,11 @@ treated as if they are not attached to the principal being authorized.
 
 =head2 Principal => Str
 
-The principal.
+The principal. Valid principals are CertificateArn
+(arn:aws:iot:I<region>:I<accountId>:cert/I<certificateId>),
+thingGroupArn
+(arn:aws:iot:I<region>:I<accountId>:thinggroup/I<groupName>) and
+CognitoId (I<region>:I<id>).
 
 
 

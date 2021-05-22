@@ -42,6 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Enabled     = $DescribeProvisioningTemplateResponse->Enabled;
     my $LastModifiedDate =
       $DescribeProvisioningTemplateResponse->LastModifiedDate;
+    my $PreProvisioningHook =
+      $DescribeProvisioningTemplateResponse->PreProvisioningHook;
     my $ProvisioningRoleArn =
       $DescribeProvisioningTemplateResponse->ProvisioningRoleArn;
     my $TemplateArn  = $DescribeProvisioningTemplateResponse->TemplateArn;

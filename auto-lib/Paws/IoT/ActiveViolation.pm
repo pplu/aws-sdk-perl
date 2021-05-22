@@ -6,6 +6,7 @@ package Paws::IoT::ActiveViolation;
   has LastViolationValue => (is => 'ro', isa => 'Paws::IoT::MetricValue', request_name => 'lastViolationValue', traits => ['NameInRequest']);
   has SecurityProfileName => (is => 'ro', isa => 'Str', request_name => 'securityProfileName', traits => ['NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
+  has ViolationEventAdditionalInfo => (is => 'ro', isa => 'Paws::IoT::ViolationEventAdditionalInfo', request_name => 'violationEventAdditionalInfo', traits => ['NameInRequest']);
   has ViolationId => (is => 'ro', isa => 'Str', request_name => 'violationId', traits => ['NameInRequest']);
   has ViolationStartTime => (is => 'ro', isa => 'Str', request_name => 'violationStartTime', traits => ['NameInRequest']);
 
@@ -47,7 +48,7 @@ violation.
 
 =head2 Behavior => L<Paws::IoT::Behavior>
 
-The behavior which is being violated.
+The behavior that is being violated.
 
 
 =head2 LastViolationTime => Str
@@ -57,18 +58,23 @@ The time the most recent violation occurred.
 
 =head2 LastViolationValue => L<Paws::IoT::MetricValue>
 
-The value of the metric (the measurement) which caused the most recent
+The value of the metric (the measurement) that caused the most recent
 violation.
 
 
 =head2 SecurityProfileName => Str
 
-The security profile whose behavior is in violation.
+The security profile with the behavior is in violation.
 
 
 =head2 ThingName => Str
 
 The name of the thing responsible for the active violation.
+
+
+=head2 ViolationEventAdditionalInfo => L<Paws::IoT::ViolationEventAdditionalInfo>
+
+The details of a violation event.
 
 
 =head2 ViolationId => Str

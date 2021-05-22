@@ -5,6 +5,7 @@ package Paws::IoT::RegisterCACertificate;
   has CaCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificate', required => 1);
   has RegistrationConfig => (is => 'ro', isa => 'Paws::IoT::RegistrationConfig', traits => ['NameInRequest'], request_name => 'registrationConfig');
   has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has VerificationCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verificationCertificate', required => 1);
 
   use MooseX::ClassAttribute;
@@ -41,6 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TemplateBody => 'MyTemplateBody',    # OPTIONAL
       },    # OPTIONAL
       SetAsActive => 1,    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -77,6 +85,20 @@ Information about the registration configuration.
 =head2 SetAsActive => Bool
 
 A boolean value that specifies if the CA certificate is set to active.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the CA certificate.
+
+For URI Request parameters use format: ...key1=value1&key2=value2...
+
+For the CLI command-line parameter use format: &&tags
+"key1=value1&key2=value2..."
+
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."
 
 
 

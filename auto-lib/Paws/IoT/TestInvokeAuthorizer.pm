@@ -104,7 +104,7 @@ The token returned by your custom authentication service.
 =head2 TokenSignature => Str
 
 The signature made with the token and your custom authentication
-service's private key.
+service's private key. This value must be Base-64-encoded.
 
 
 

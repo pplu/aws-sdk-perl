@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Statis
 
 =head1 DESCRIPTION
 
-A statistical ranking (percentile) which indicates a threshold value by
+A statistical ranking (percentile) that indicates a threshold value by
 which a behavior is determined to be in compliance or in violation of
 the behavior.
 
@@ -42,7 +42,7 @@ the behavior.
 
 =head2 Statistic => Str
 
-The percentile which resolves to a threshold value by which compliance
+The percentile that resolves to a threshold value by which compliance
 with a behavior is determined. Metrics are collected over the specified
 period (C<durationSeconds>) from all reporting devices in your account
 and statistical ranks are calculated. Then, the measurements from a

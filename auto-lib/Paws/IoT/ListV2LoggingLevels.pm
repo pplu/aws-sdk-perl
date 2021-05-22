@@ -57,8 +57,9 @@ The maximum number of results to return at one time.
 
 =head2 NextToken => Str
 
-The token used to get the next set of results, or B<null> if there are
-no additional results.
+To retrieve the next set of results, the C<nextToken> value from a
+previous response; otherwise B<null> to receive the first set of
+results.
 
 
 

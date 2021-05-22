@@ -80,6 +80,9 @@ C<iot:Jobs> - Returns an AWS IoT device management Jobs API endpoint.
 
 =back
 
+We strongly recommend that customers use the newer C<iot:Data-ATS>
+endpoint type to avoid issues related to the widespread distrust of
+Symantec certificate authorities.
 
 
 

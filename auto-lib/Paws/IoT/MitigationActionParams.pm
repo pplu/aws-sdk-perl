@@ -61,8 +61,8 @@ at a specified level of detail.
 =head2 PublishFindingToSnsParams => L<Paws::IoT::PublishFindingToSnsParams>
 
 Parameters to define a mitigation action that publishes findings to
-Amazon SNS. You can implement your own custom actions in response to
-the Amazon SNS messages.
+Amazon Simple Notification Service (Amazon SNS. You can implement your
+own custom actions in response to the Amazon SNS messages.
 
 
 =head2 ReplaceDefaultPolicyVersionParams => L<Paws::IoT::ReplaceDefaultPolicyVersionParams>

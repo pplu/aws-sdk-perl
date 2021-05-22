@@ -6,6 +6,7 @@ package Paws::IoT::AuditCheckDetails;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has NonCompliantResourcesCount => (is => 'ro', isa => 'Int', request_name => 'nonCompliantResourcesCount', traits => ['NameInRequest']);
+  has SuppressedNonCompliantResourcesCount => (is => 'ro', isa => 'Int', request_name => 'suppressedNonCompliantResourcesCount', traits => ['NameInRequest']);
   has TotalResourcesCount => (is => 'ro', isa => 'Int', request_name => 'totalResourcesCount', traits => ['NameInRequest']);
 
 1;
@@ -71,6 +72,12 @@ performed during this audit.
 =head2 NonCompliantResourcesCount => Int
 
 The number of resources that were found noncompliant during the check.
+
+
+=head2 SuppressedNonCompliantResourcesCount => Int
+
+Describes how many of the non-compliant resources created during the
+evaluation of an audit check were marked as suppressed.
 
 
 =head2 TotalResourcesCount => Int

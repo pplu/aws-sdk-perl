@@ -51,8 +51,11 @@ The name of the policy to detach.
 
 The principal.
 
-If the principal is a certificate, specify the certificate ARN. If the
-principal is an Amazon Cognito identity, specify the identity ID.
+Valid principals are CertificateArn
+(arn:aws:iot:I<region>:I<accountId>:cert/I<certificateId>),
+thingGroupArn
+(arn:aws:iot:I<region>:I<accountId>:thinggroup/I<groupName>) and
+CognitoId (I<region>:I<id>).
 
 
 

@@ -7,6 +7,7 @@ package Paws::IoT::CreateJob;
   has DocumentSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentSource');
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'jobExecutionsRolloutConfig');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  has NamespaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceId');
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', traits => ['NameInRequest'], request_name => 'presignedUrlConfig');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
@@ -39,8 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateJobResponse = $iot->CreateJob(
-      JobId       => 'MyJobId',
-      Targets     => [ 'MyTargetArn', ... ],
+      JobId   => 'MyJobId',
+      Targets => [
+        'MyTargetArn', ...    # max: 2048
+      ],
       AbortConfig => {
         CriteriaList => [
           {
@@ -67,16 +70,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        MaximumPerMinute => 1,    # min: 1; OPTIONAL
+        MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
       },    # OPTIONAL
+      NamespaceId        => 'MyNamespaceId',    # OPTIONAL
       PresignedUrlConfig => {
-        ExpiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
-        RoleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
+        ExpiresInSec => 1,                      # min: 60, max: 3600; OPTIONAL
+        RoleArn      => 'MyRoleArn',            # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
       ],                            # OPTIONAL
@@ -144,6 +148,20 @@ Allows you to create a staged rollout of the job.
 A job identifier which must be unique for your AWS account. We
 recommend using a UUID. Alpha-numeric characters, "-" and "_" are valid
 for use here.
+
+
+
+=head2 NamespaceId => Str
+
+The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+C<$aws/things/I<THING_NAME>/jobs/I<JOB_ID>/notify-namespace-I<NAMESPACE_ID>/>
+
+The C<namespaceId> feature is in public preview.
 
 
 

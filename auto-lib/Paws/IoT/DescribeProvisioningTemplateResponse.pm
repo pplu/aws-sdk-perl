@@ -6,6 +6,7 @@ package Paws::IoT::DescribeProvisioningTemplateResponse;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
   has LastModifiedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedDate');
+  has PreProvisioningHook => (is => 'ro', isa => 'Paws::IoT::ProvisioningHook', traits => ['NameInRequest'], request_name => 'preProvisioningHook');
   has ProvisioningRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provisioningRoleArn');
   has TemplateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateArn');
   has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody');
@@ -46,6 +47,11 @@ True if the fleet provisioning template is enabled, otherwise false.
 =head2 LastModifiedDate => Str
 
 The date when the fleet provisioning template was last modified.
+
+
+=head2 PreProvisioningHook => L<Paws::IoT::ProvisioningHook>
+
+Gets information about a pre-provisioned hook.
 
 
 =head2 ProvisioningRoleArn => Str

@@ -42,6 +42,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               StateValue  => 'MyStateValue',
 
             },    # OPTIONAL
+            CloudwatchLogs => {
+              LogGroupName => 'MyLogGroupName',
+              RoleArn      => 'MyAwsArn',
+
+            },    # OPTIONAL
             CloudwatchMetric => {
               MetricName      => 'MyString',
               MetricNamespace => 'MyString',
@@ -81,6 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Firehose => {
               DeliveryStreamName => 'MyDeliveryStreamName',
               RoleArn            => 'MyAwsArn',
+              BatchMode          => 1,                        # OPTIONAL
               Separator          => 'MyFirehoseSeparator',    # OPTIONAL
             },    # OPTIONAL
             Http => {
@@ -104,6 +110,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                              # max: 100; OPTIONAL
             },    # OPTIONAL
             IotAnalytics => {
+              BatchMode   => 1,                  # OPTIONAL
               ChannelArn  => 'MyAwsArn',
               ChannelName => 'MyChannelName',    # OPTIONAL
               RoleArn     => 'MyAwsArn',
@@ -111,6 +118,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             IotEvents => {
               InputName => 'MyInputName',    # min: 1, max: 128
               RoleArn   => 'MyAwsArn',
+              BatchMode => 1,                # OPTIONAL
               MessageId => 'MyMessageId',    # max: 128; OPTIONAL
             },    # OPTIONAL
             IotSiteWise => {
@@ -136,16 +144,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                     ...
                   ],                                          # min: 1
-                  AssetId => 'MyAssetId',                     # OPTIONAL
-                  EntryId => 'MyAssetPropertyEntryId',        # OPTIONAL
-                  PropertyAlias =>
-                    'MyAssetPropertyAlias',    # min: 1, max: 2048; OPTIONAL
-                  PropertyId => 'MyAssetPropertyId',    # OPTIONAL
+                  AssetId       => 'MyAssetId',               # OPTIONAL
+                  EntryId       => 'MyAssetPropertyEntryId',  # OPTIONAL
+                  PropertyAlias => 'MyAssetPropertyAlias',    # min: 1; OPTIONAL
+                  PropertyId    => 'MyAssetPropertyId',       # OPTIONAL
                 },
                 ...
-              ],                                        # min: 1
+              ],                                              # min: 1
               RoleArn => 'MyAwsArn',
 
+            },    # OPTIONAL
+            Kafka => {
+              ClientProperties => { 'MyString' => 'MyString', },
+              DestinationArn   => 'MyAwsArn',
+              Topic            => 'MyString',
+              Key              => 'MyString',
+              Partition        => 'MyString',
             },    # OPTIONAL
             Kinesis => {
               RoleArn      => 'MyAwsArn',
@@ -188,6 +202,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               StateMachineName    => 'MyStateMachineName',
               ExecutionNamePrefix => 'MyExecutionNamePrefix',    # OPTIONAL
             },    # OPTIONAL
+            Timestream => {
+              DatabaseName => 'MyTimestreamDatabaseName',
+              Dimensions   => [
+                {
+                  Name  => 'MyTimestreamDimensionName',
+                  Value => 'MyTimestreamDimensionValue',
+
+                },
+                ...
+              ],    # min: 1, max: 128
+              RoleArn   => 'MyAwsArn',
+              TableName => 'MyTimestreamTableName',
+              Timestamp => {
+                Unit  => 'MyTimestreamTimestampUnit',
+                Value => 'MyTimestreamTimestampValue',
+
+              },    # OPTIONAL
+            },    # OPTIONAL
           },
           ...
         ],        # max: 10
@@ -200,6 +232,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RoleArn     => 'MyAwsArn',
             StateReason => 'MyStateReason',
             StateValue  => 'MyStateValue',
+
+          },                                         # OPTIONAL
+          CloudwatchLogs => {
+            LogGroupName => 'MyLogGroupName',
+            RoleArn      => 'MyAwsArn',
 
           },                                         # OPTIONAL
           CloudwatchMetric => {
@@ -241,6 +278,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Firehose => {
             DeliveryStreamName => 'MyDeliveryStreamName',
             RoleArn            => 'MyAwsArn',
+            BatchMode          => 1,                        # OPTIONAL
             Separator          => 'MyFirehoseSeparator',    # OPTIONAL
           },    # OPTIONAL
           Http => {
@@ -264,6 +302,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                              # max: 100; OPTIONAL
           },    # OPTIONAL
           IotAnalytics => {
+            BatchMode   => 1,                  # OPTIONAL
             ChannelArn  => 'MyAwsArn',
             ChannelName => 'MyChannelName',    # OPTIONAL
             RoleArn     => 'MyAwsArn',
@@ -271,6 +310,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           IotEvents => {
             InputName => 'MyInputName',    # min: 1, max: 128
             RoleArn   => 'MyAwsArn',
+            BatchMode => 1,                # OPTIONAL
             MessageId => 'MyMessageId',    # max: 128; OPTIONAL
           },    # OPTIONAL
           IotSiteWise => {
@@ -294,16 +334,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                                          # min: 1
-                AssetId => 'MyAssetId',                     # OPTIONAL
-                EntryId => 'MyAssetPropertyEntryId',        # OPTIONAL
-                PropertyAlias =>
-                  'MyAssetPropertyAlias',    # min: 1, max: 2048; OPTIONAL
-                PropertyId => 'MyAssetPropertyId',    # OPTIONAL
+                AssetId       => 'MyAssetId',               # OPTIONAL
+                EntryId       => 'MyAssetPropertyEntryId',  # OPTIONAL
+                PropertyAlias => 'MyAssetPropertyAlias',    # min: 1; OPTIONAL
+                PropertyId    => 'MyAssetPropertyId',       # OPTIONAL
               },
               ...
-            ],                                        # min: 1
+            ],                                              # min: 1
             RoleArn => 'MyAwsArn',
 
+          },    # OPTIONAL
+          Kafka => {
+            ClientProperties => { 'MyString' => 'MyString', },
+            DestinationArn   => 'MyAwsArn',
+            Topic            => 'MyString',
+            Key              => 'MyString',
+            Partition        => 'MyString',
           },    # OPTIONAL
           Kinesis => {
             RoleArn      => 'MyAwsArn',
@@ -345,6 +391,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RoleArn             => 'MyAwsArn',
             StateMachineName    => 'MyStateMachineName',
             ExecutionNamePrefix => 'MyExecutionNamePrefix',    # OPTIONAL
+          },    # OPTIONAL
+          Timestream => {
+            DatabaseName => 'MyTimestreamDatabaseName',
+            Dimensions   => [
+              {
+                Name  => 'MyTimestreamDimensionName',
+                Value => 'MyTimestreamDimensionValue',
+
+              },
+              ...
+            ],    # min: 1, max: 128
+            RoleArn   => 'MyAwsArn',
+            TableName => 'MyTimestreamTableName',
+            Timestamp => {
+              Unit  => 'MyTimestreamTimestampUnit',
+              Value => 'MyTimestreamTimestampValue',
+
+            },    # OPTIONAL
           },    # OPTIONAL
         },
         RuleDisabled => 1,    # OPTIONAL

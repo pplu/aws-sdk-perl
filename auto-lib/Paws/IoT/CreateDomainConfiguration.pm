@@ -6,6 +6,7 @@ package Paws::IoT::CreateDomainConfiguration;
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
   has ServerCertificateArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'serverCertificateArns');
   has ServiceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceType');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has ValidationCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validationCertificateArn');
 
   use MooseX::ClassAttribute;
@@ -44,7 +45,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServerCertificateArns => [
         'MyAcmCertificateArn', ...                # min: 1, max: 2048
       ],                                          # OPTIONAL
-      ServiceType              => 'DATA',                   # OPTIONAL
+      ServiceType => 'DATA',                      # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',                    # min: 1, max: 128
+          Value => 'MyTagValue',                  # min: 1, max: 256; OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
       ValidationCertificateArn => 'MyAcmCertificateArn',    # OPTIONAL
     );
 
@@ -93,7 +101,23 @@ This value is not required for AWS-managed domains.
 
 The type of service delivered by the endpoint.
 
+AWS IoT Core currently supports only the C<DATA> service type.
+
 Valid values are: C<"DATA">, C<"CREDENTIAL_PROVIDER">, C<"JOBS">
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the domain configuration.
+
+For URI Request parameters use format: ...key1=value1&key2=value2...
+
+For the CLI command-line parameter use format: &&tags
+"key1=value1&key2=value2..."
+
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."
+
+
 
 =head2 ValidationCertificateArn => Str
 

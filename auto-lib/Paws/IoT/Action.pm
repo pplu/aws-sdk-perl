@@ -2,6 +2,7 @@
 package Paws::IoT::Action;
   use Moose;
   has CloudwatchAlarm => (is => 'ro', isa => 'Paws::IoT::CloudwatchAlarmAction', request_name => 'cloudwatchAlarm', traits => ['NameInRequest']);
+  has CloudwatchLogs => (is => 'ro', isa => 'Paws::IoT::CloudwatchLogsAction', request_name => 'cloudwatchLogs', traits => ['NameInRequest']);
   has CloudwatchMetric => (is => 'ro', isa => 'Paws::IoT::CloudwatchMetricAction', request_name => 'cloudwatchMetric', traits => ['NameInRequest']);
   has DynamoDB => (is => 'ro', isa => 'Paws::IoT::DynamoDBAction', request_name => 'dynamoDB', traits => ['NameInRequest']);
   has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', request_name => 'dynamoDBv2', traits => ['NameInRequest']);
@@ -11,6 +12,7 @@ package Paws::IoT::Action;
   has IotAnalytics => (is => 'ro', isa => 'Paws::IoT::IotAnalyticsAction', request_name => 'iotAnalytics', traits => ['NameInRequest']);
   has IotEvents => (is => 'ro', isa => 'Paws::IoT::IotEventsAction', request_name => 'iotEvents', traits => ['NameInRequest']);
   has IotSiteWise => (is => 'ro', isa => 'Paws::IoT::IotSiteWiseAction', request_name => 'iotSiteWise', traits => ['NameInRequest']);
+  has Kafka => (is => 'ro', isa => 'Paws::IoT::KafkaAction', request_name => 'kafka', traits => ['NameInRequest']);
   has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', request_name => 'kinesis', traits => ['NameInRequest']);
   has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
   has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
@@ -19,6 +21,7 @@ package Paws::IoT::Action;
   has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
   has StepFunctions => (is => 'ro', isa => 'Paws::IoT::StepFunctionsAction', request_name => 'stepFunctions', traits => ['NameInRequest']);
+  has Timestream => (is => 'ro', isa => 'Paws::IoT::TimestreamAction', request_name => 'timestream', traits => ['NameInRequest']);
 
 1;
 
@@ -39,7 +42,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::Action object:
 
-  $service_obj->Method(Att1 => { CloudwatchAlarm => $value, ..., StepFunctions => $value  });
+  $service_obj->Method(Att1 => { CloudwatchAlarm => $value, ..., Timestream => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,6 +61,11 @@ Describes the actions associated with a rule.
 =head2 CloudwatchAlarm => L<Paws::IoT::CloudwatchAlarmAction>
 
 Change the state of a CloudWatch alarm.
+
+
+=head2 CloudwatchLogs => L<Paws::IoT::CloudwatchLogsAction>
+
+Send data to CloudWatch Logs.
 
 
 =head2 CloudwatchMetric => L<Paws::IoT::CloudwatchMetricAction>
@@ -108,6 +116,12 @@ Sends data from the MQTT message that triggered the rule to AWS IoT
 SiteWise asset properties.
 
 
+=head2 Kafka => L<Paws::IoT::KafkaAction>
+
+Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon
+MSK) or self-managed Apache Kafka cluster.
+
+
 =head2 Kinesis => L<Paws::IoT::KinesisAction>
 
 Write data to an Amazon Kinesis stream.
@@ -146,6 +160,15 @@ Publish to an Amazon SQS queue.
 =head2 StepFunctions => L<Paws::IoT::StepFunctionsAction>
 
 Starts execution of a Step Functions state machine.
+
+
+=head2 Timestream => L<Paws::IoT::TimestreamAction>
+
+The Timestream rule action writes attributes (measures) from an MQTT
+message into an Amazon Timestream table. For more information, see the
+Timestream
+(https://docs.aws.amazon.com/iot/latest/developerguide/timestream-rule-action.html)
+topic rule action documentation.
 
 
 

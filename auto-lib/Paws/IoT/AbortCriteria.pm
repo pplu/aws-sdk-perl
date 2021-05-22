@@ -36,31 +36,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::AbortC
 
 =head1 DESCRIPTION
 
-Details of abort criteria to define rules to abort the job.
+The criteria that determine when and how a job abort takes place.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Action => Str
 
-The type of abort action to initiate a job abort.
+The type of job action to take to initiate the job abort.
 
 
 =head2 B<REQUIRED> FailureType => Str
 
-The type of job execution failure to define a rule to initiate a job
-abort.
+The type of job execution failures that can initiate a job abort.
 
 
 =head2 B<REQUIRED> MinNumberOfExecutedThings => Int
 
-Minimum number of executed things before evaluating an abort rule.
+The minimum number of things which must receive job execution
+notifications before the job can be aborted.
 
 
 =head2 B<REQUIRED> ThresholdPercentage => Num
 
-The threshold as a percentage of the total number of executed things
-that will initiate a job abort.
+The minimum percentage of job execution failures that must occur to
+initiate the job abort.
 
 AWS IoT supports up to two digits after the decimal (for example, 10.9
 and 10.99, but not 10.999).

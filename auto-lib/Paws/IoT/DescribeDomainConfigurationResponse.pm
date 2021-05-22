@@ -7,6 +7,7 @@ package Paws::IoT::DescribeDomainConfigurationResponse;
   has DomainConfigurationStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainConfigurationStatus');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
   has DomainType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainType');
+  has LastStatusChangeDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastStatusChangeDate');
   has ServerCertificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ServerCertificateSummary]', traits => ['NameInRequest'], request_name => 'serverCertificates');
   has ServiceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceType');
 
@@ -53,6 +54,11 @@ The name of the domain.
 The type of the domain.
 
 Valid values are: C<"ENDPOINT">, C<"AWS_MANAGED">, C<"CUSTOMER_MANAGED">
+=head2 LastStatusChangeDate => Str
+
+The date and time the domain configuration's status was last changed.
+
+
 =head2 ServerCertificates => ArrayRef[L<Paws::IoT::ServerCertificateSummary>]
 
 A list containing summary information about the server certificate

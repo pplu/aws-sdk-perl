@@ -1,6 +1,8 @@
 
 package Paws::IoT::ListThingPrincipals;
   use Moose;
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,11 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListThingPrincipalsResponse = $iot->ListThingPrincipals(
-      ThingName => 'MyThingName',
-
+      ThingName  => 'MyThingName',
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:
+    my $NextToken  = $ListThingPrincipalsResponse->NextToken;
     my $Principals = $ListThingPrincipalsResponse->Principals;
 
     # Returns a L<Paws::IoT::ListThingPrincipalsResponse> object.
@@ -42,6 +46,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListThingPrincipals>
 
 =head1 ATTRIBUTES
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return in this operation.
+
+
+
+=head2 NextToken => Str
+
+To retrieve the next set of results, the C<nextToken> value from a
+previous response; otherwise B<null> to receive the first set of
+results.
+
 
 
 =head2 B<REQUIRED> ThingName => Str
