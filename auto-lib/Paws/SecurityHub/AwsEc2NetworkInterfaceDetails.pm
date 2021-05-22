@@ -2,7 +2,11 @@
 package Paws::SecurityHub::AwsEc2NetworkInterfaceDetails;
   use Moose;
   has Attachment => (is => 'ro', isa => 'Paws::SecurityHub::AwsEc2NetworkInterfaceAttachment');
+  has IpV6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2NetworkInterfaceIpV6AddressDetail]');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2NetworkInterfacePrivateIpAddressDetail]');
+  has PublicDnsName => (is => 'ro', isa => 'Str');
+  has PublicIp => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2NetworkInterfaceSecurityGroup]');
   has SourceDestCheck => (is => 'ro', isa => 'Bool');
 
@@ -46,9 +50,29 @@ Details about the network interface
 The network interface attachment.
 
 
+=head2 IpV6Addresses => ArrayRef[L<Paws::SecurityHub::AwsEc2NetworkInterfaceIpV6AddressDetail>]
+
+The IPv6 addresses associated with the network interface.
+
+
 =head2 NetworkInterfaceId => Str
 
 The ID of the network interface.
+
+
+=head2 PrivateIpAddresses => ArrayRef[L<Paws::SecurityHub::AwsEc2NetworkInterfacePrivateIpAddressDetail>]
+
+The private IPv4 addresses associated with the network interface.
+
+
+=head2 PublicDnsName => Str
+
+The public DNS name of the network interface.
+
+
+=head2 PublicIp => Str
+
+The address of the Elastic IP address bound to the network interface.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::SecurityHub::AwsEc2NetworkInterfaceSecurityGroup>]

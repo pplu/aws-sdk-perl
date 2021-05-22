@@ -1,7 +1,7 @@
 
 package Paws::SecurityHub::CreateMembers;
   use Moose;
-  has AccountDetails => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AccountDetails]');
+  has AccountDetails => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AccountDetails]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -31,11 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateMembersResponse = $securityhub->CreateMembers(
       AccountDetails => [
         {
-          AccountId => 'MyAccountId',         # OPTIONAL
+          AccountId => 'MyAccountId',
           Email     => 'MyNonEmptyString',    # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],
+
     );
 
     # Results:
@@ -49,11 +50,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 AccountDetails => ArrayRef[L<Paws::SecurityHub::AccountDetails>]
+=head2 B<REQUIRED> AccountDetails => ArrayRef[L<Paws::SecurityHub::AccountDetails>]
 
-The list of accounts to associate with the Security Hub master account.
-For each account, the list includes the account ID and the email
-address.
+The list of accounts to associate with the Security Hub administrator
+account. For each account, the list includes the account ID and
+optionally the email address.
 
 
 

@@ -51,7 +51,12 @@ The identifier of the network interface attachment
 
 =head2 AttachTime => Str
 
-The timestamp indicating when the attachment initiated.
+Indicates when the attachment initiated.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 =head2 DeleteOnTermination => Bool

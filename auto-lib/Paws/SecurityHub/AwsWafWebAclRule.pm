@@ -46,7 +46,7 @@ Details for a rule in a WAF WebACL.
 =head2 Action => L<Paws::SecurityHub::WafAction>
 
 Specifies the action that CloudFront or AWS WAF takes when a web
-request matches the conditions in the Rule.
+request matches the conditions in the rule.
 
 
 =head2 ExcludedRules => ArrayRef[L<Paws::SecurityHub::WafExcludedRule>]
@@ -77,15 +77,15 @@ C<ActivatedRule>|C<OverrideAction>.
 
 =head2 Priority => Int
 
-Specifies the order in which the Rules in a WebACL are evaluated. Rules
-with a lower value for Priority are evaluated before Rules with a
+Specifies the order in which the rules in a WebACL are evaluated. Rules
+with a lower value for C<Priority> are evaluated before rules with a
 higher value. The value must be a unique integer. If you add multiple
-Rules to a WebACL, the values do not need to be consecutive.
+rules to a WebACL, the values do not need to be consecutive.
 
 
 =head2 RuleId => Str
 
-The identifier for a Rule.
+The identifier for a rule.
 
 
 =head2 Type => Str

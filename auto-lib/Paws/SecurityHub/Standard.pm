@@ -2,6 +2,7 @@
 package Paws::SecurityHub::Standard;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has EnabledByDefault => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has StandardsArn => (is => 'ro', isa => 'Str');
 
@@ -43,6 +44,17 @@ Provides information about a specific standard.
 =head2 Description => Str
 
 A description of the standard.
+
+
+=head2 EnabledByDefault => Bool
+
+Whether the standard is enabled by default. When Security Hub is
+enabled from the console, if a standard is enabled by default, the
+check box for that standard is selected by default.
+
+When Security Hub is enabled using the C<EnableSecurityHub> API
+operation, the standard is enabled by default unless
+C<EnableDefaultStandards> is set to C<false>.
 
 
 =head2 Name => Str

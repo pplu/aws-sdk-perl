@@ -40,9 +40,9 @@ A range of IPv6 addresses.
 
 =head2 CidrIpv6 => Str
 
-The IPv6 CIDR range. You can either specify either a CIDR range or a
-source security group, but not both. To specify a single IPv6 address,
-use the /128 prefix length.
+The IPv6 CIDR range. You can specify either a CIDR range or a source
+security group, but not both. To specify a single IPv6 address, use the
+/128 prefix length.
 
 
 

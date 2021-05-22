@@ -41,7 +41,7 @@ Details about an override action for a rule.
 =head2 Type => Str
 
 C<COUNT> overrides the action specified by the individual rule within a
-RuleGroup .
+C<RuleGroup> .
 
 If set to C<NONE>, the rule's action takes place.
 

@@ -1,6 +1,7 @@
 
 package Paws::SecurityHub::EnableSecurityHub;
   use Moose;
+  has EnableDefaultStandards => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'Paws::SecurityHub::TagMap');
 
   use MooseX::ClassAttribute;
@@ -29,7 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $securityhub = Paws->service('SecurityHub');
     my $EnableSecurityHubResponse = $securityhub->EnableSecurityHub(
-      Tags => {
+      EnableDefaultStandards => 1,    # OPTIONAL
+      Tags                   => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
     );
@@ -40,9 +42,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
+=head2 EnableDefaultStandards => Bool
+
+Whether to enable the security standards that Security Hub has
+designated as automatically enabled. If you do not provide a value for
+C<EnableDefaultStandards>, it is set to C<true>. To not enable the
+automatically enabled standards, set C<EnableDefaultStandards> to
+C<false>.
+
+
+
 =head2 Tags => L<Paws::SecurityHub::TagMap>
 
-The tags to add to the Hub resource when you enable Security Hub.
+The tags to add to the hub resource when you enable Security Hub.
 
 
 

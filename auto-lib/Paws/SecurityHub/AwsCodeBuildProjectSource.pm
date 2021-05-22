@@ -71,7 +71,7 @@ this value.
 =item *
 
 For source code in an AWS CodeCommit repository, the HTTPS clone URL to
-the repository that contains the source code and the buildspec file
+the repository that contains the source code and the build spec file
 (for example,
 C<https://git-codecommit.region-ID.amazonaws.com/v1/repos/repo-name> ).
 
@@ -96,12 +96,12 @@ C<bucket-name/path/to/source-code/folder/>).
 =item *
 
 For source code in a GitHub repository, the HTTPS clone URL to the
-repository that contains the source and the buildspec file.
+repository that contains the source and the build spec file.
 
 =item *
 
 For source code in a Bitbucket repository, the HTTPS clone URL to the
-repository that contains the source and the buildspec file.
+repository that contains the source and the build spec file.
 
 =back
 

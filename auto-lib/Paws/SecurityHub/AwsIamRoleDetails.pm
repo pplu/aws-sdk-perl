@@ -2,11 +2,15 @@
 package Paws::SecurityHub::AwsIamRoleDetails;
   use Moose;
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str');
+  has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsIamAttachedManagedPolicy]');
   has CreateDate => (is => 'ro', isa => 'Str');
+  has InstanceProfileList => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsIamInstanceProfile]');
   has MaxSessionDuration => (is => 'ro', isa => 'Int');
   has Path => (is => 'ro', isa => 'Str');
+  has PermissionsBoundary => (is => 'ro', isa => 'Paws::SecurityHub::AwsIamPermissionsBoundary');
   has RoleId => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+  has RolePolicyList => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsIamRolePolicy]');
 
 1;
 
@@ -27,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SecurityHub::AwsIamRoleDetails object:
 
-  $service_obj->Method(Att1 => { AssumeRolePolicyDocument => $value, ..., RoleName => $value  });
+  $service_obj->Method(Att1 => { AssumeRolePolicyDocument => $value, ..., RolePolicyList => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,10 +53,24 @@ policies.
 The trust policy that grants permission to assume the role.
 
 
+=head2 AttachedManagedPolicies => ArrayRef[L<Paws::SecurityHub::AwsIamAttachedManagedPolicy>]
+
+The list of the managed policies that are attached to the role.
+
+
 =head2 CreateDate => Str
 
-The date and time, in ISO 8601 date-time format, when the role was
-created.
+Indicates when the role was created.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
+
+
+=head2 InstanceProfileList => ArrayRef[L<Paws::SecurityHub::AwsIamInstanceProfile>]
+
+The list of instance profiles that contain this role.
 
 
 =head2 MaxSessionDuration => Int
@@ -66,6 +84,11 @@ specified role.
 The path to the role.
 
 
+=head2 PermissionsBoundary => L<Paws::SecurityHub::AwsIamPermissionsBoundary>
+
+
+
+
 =head2 RoleId => Str
 
 The stable and unique string identifying the role.
@@ -74,6 +97,11 @@ The stable and unique string identifying the role.
 =head2 RoleName => Str
 
 The friendly name that identifies the role.
+
+
+=head2 RolePolicyList => ArrayRef[L<Paws::SecurityHub::AwsIamRolePolicy>]
+
+The list of inline policies that are embedded in the role.
 
 
 

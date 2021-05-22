@@ -42,32 +42,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Details for an individual compliance standard control.
+Details for an individual security standard control.
 
 =head1 ATTRIBUTES
 
 
 =head2 ControlId => Str
 
-The identifier of the compliance standard control.
+The identifier of the security standard control.
 
 
 =head2 ControlStatus => Str
 
-The current status of the compliance standard control. Indicates
-whether the control is enabled or disabled. Security Hub does not check
-against disabled controls.
+The current status of the security standard control. Indicates whether
+the control is enabled or disabled. Security Hub does not check against
+disabled controls.
 
 
 =head2 ControlStatusUpdatedAt => Str
 
-The date and time that the status of the compliance standard control
-was most recently updated.
+The date and time that the status of the security standard control was
+most recently updated.
 
 
 =head2 Description => Str
 
-The longer description of the compliance standard control. Provides
+The longer description of the security standard control. Provides
 information about what the control is checking for.
 
 
@@ -90,21 +90,20 @@ user documentation.
 
 =head2 SeverityRating => Str
 
-The severity of findings generated from this compliance standard
-control.
+The severity of findings generated from this security standard control.
 
 The finding severity is based on an assessment of how easy it would be
-to compromise AWS resources if the compliance issue is detected.
+to compromise AWS resources if the issue is detected.
 
 
 =head2 StandardsControlArn => Str
 
-The ARN of the compliance standard control.
+The ARN of the security standard control.
 
 
 =head2 Title => Str
 
-The title of the compliance standard control.
+The title of the security standard control.
 
 
 

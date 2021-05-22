@@ -6,6 +6,7 @@ package Paws::SecurityHub::Network;
   has DestinationIpV6 => (is => 'ro', isa => 'Str');
   has DestinationPort => (is => 'ro', isa => 'Int');
   has Direction => (is => 'ro', isa => 'Str');
+  has OpenPortRange => (is => 'ro', isa => 'Paws::SecurityHub::PortRange');
   has Protocol => (is => 'ro', isa => 'Str');
   has SourceDomain => (is => 'ro', isa => 'Str');
   has SourceIpV4 => (is => 'ro', isa => 'Str');
@@ -73,6 +74,11 @@ The destination port of network-related information about a finding.
 =head2 Direction => Str
 
 The direction of network traffic associated with a finding.
+
+
+=head2 OpenPortRange => L<Paws::SecurityHub::PortRange>
+
+The range of open ports that is present on the network.
 
 
 =head2 Protocol => Str

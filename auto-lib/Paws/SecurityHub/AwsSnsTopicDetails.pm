@@ -43,7 +43,7 @@ A wrapper type for the topic's Amazon Resource Name (ARN).
 
 =head2 KmsMasterKeyId => Str
 
-The ID of an AWS-managed customer master key (CMK) for Amazon SNS or a
+The ID of an AWS managed customer master key (CMK) for Amazon SNS or a
 custom CMK.
 
 

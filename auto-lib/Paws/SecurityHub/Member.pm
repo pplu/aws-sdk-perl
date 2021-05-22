@@ -2,6 +2,7 @@
 package Paws::SecurityHub::Member;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
+  has AdministratorId => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str');
   has InvitedAt => (is => 'ro', isa => 'Str');
   has MasterId => (is => 'ro', isa => 'Str');
@@ -48,6 +49,12 @@ The details about a member account.
 The AWS account ID of the member account.
 
 
+=head2 AdministratorId => Str
+
+The AWS account ID of the Security Hub administrator account associated
+with this member account.
+
+
 =head2 Email => Str
 
 The email address of the member account.
@@ -61,14 +68,55 @@ member account.
 
 =head2 MasterId => Str
 
-The AWS account ID of the Security Hub master account associated with
-this member account.
+This is replaced by C<AdministratorID>.
+
+The AWS account ID of the Security Hub administrator account associated
+with this member account.
 
 
 =head2 MemberStatus => Str
 
 The status of the relationship between the member account and its
-master account.
+administrator account.
+
+The status can have one of the following values:
+
+=over
+
+=item *
+
+C<CREATED> - Indicates that the administrator account added the member
+account, but has not yet invited the member account.
+
+=item *
+
+C<INVITED> - Indicates that the administrator account invited the
+member account. The member account has not yet responded to the
+invitation.
+
+=item *
+
+C<ENABLED> - Indicates that the member account is currently active. For
+manually invited member accounts, indicates that the member account
+accepted the invitation.
+
+=item *
+
+C<REMOVED> - Indicates that the administrator account disassociated the
+member account.
+
+=item *
+
+C<RESIGNED> - Indicates that the member account disassociated
+themselves from the administrator account.
+
+=item *
+
+C<DELETED> - Indicates that the administrator account deleted the
+member account.
+
+=back
+
 
 
 =head2 UpdatedAt => Str

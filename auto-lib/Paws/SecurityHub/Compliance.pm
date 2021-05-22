@@ -3,6 +3,7 @@ package Paws::SecurityHub::Compliance;
   use Moose;
   has RelatedRequirements => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
+  has StatusReasons => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StatusReason]');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SecurityHub::Compliance object:
 
-  $service_obj->Method(Att1 => { RelatedRequirements => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { RelatedRequirements => $value, ..., StatusReasons => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,58 +35,65 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Exclusive to findings that are generated as the result of a check run
-against a specific rule in a supported standard, such as CIS AWS
-Foundations. Contains compliance-related finding details.
-
-Values include the following:
-
-=over
-
-=item *
-
-Allowed values are the following:
-
-=over
-
-=item *
-
-C<PASSED> - Compliance check passed for all evaluated resources.
-
-=item *
-
-C<WARNING> - Some information is missing or this check is not supported
-given your configuration.
-
-=item *
-
-C<FAILED> - Compliance check failed for at least one evaluated
-resource.
-
-=item *
-
-C<NOT_AVAILABLE> - Check could not be performed due to a service
-outage, API error, or because the result of the AWS Config evaluation
-was C<NOT_APPLICABLE>. If the AWS Config evaluation result was C<
-NOT_APPLICABLE>, then after 3 days, Security Hub automatically archives
-the finding.
-
-=back
-
-=back
-
+Contains finding details that are specific to control-based findings.
+Only returned for findings generated from controls.
 
 =head1 ATTRIBUTES
 
 
 =head2 RelatedRequirements => ArrayRef[Str|Undef]
 
-List of requirements that are related to a standards control.
+For a control, the industry or regulatory framework requirements that
+are related to the control. The check for that control is aligned with
+these requirements.
 
 
 =head2 Status => Str
 
-The result of a compliance check.
+The result of a standards check.
+
+The valid values for C<Status> are as follows.
+
+=over
+
+=item *
+
+=over
+
+=item *
+
+C<PASSED> - Standards check passed for all evaluated resources.
+
+=item *
+
+C<WARNING> - Some information is missing or this check is not supported
+for your configuration.
+
+=item *
+
+C<FAILED> - Standards check failed for at least one evaluated resource.
+
+=item *
+
+C<NOT_AVAILABLE> - Check could not be performed due to a service
+outage, API error, or because the result of the AWS Config evaluation
+was C<NOT_APPLICABLE>. If the AWS Config evaluation result was
+C<NOT_APPLICABLE>, then after 3 days, Security Hub automatically
+archives the finding.
+
+=back
+
+=back
+
+
+
+=head2 StatusReasons => ArrayRef[L<Paws::SecurityHub::StatusReason>]
+
+For findings generated from controls, a list of reasons behind the
+value of C<Status>. For the list of status reason codes and their
+meanings, see Standards-related information in the ASFF
+(https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-results.html#securityhub-standards-results-asff)
+in the I<AWS Security Hub User Guide>.
 
 
 

@@ -3,6 +3,7 @@ package Paws::SecurityHub::DescribeProducts;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  has ProductArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'ProductArn');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $securityhub = Paws->service('SecurityHub');
     my $DescribeProductsResponse = $securityhub->DescribeProducts(
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      MaxResults => 1,                     # OPTIONAL
+      NextToken  => 'MyNextToken',         # OPTIONAL
+      ProductArn => 'MyNonEmptyString',    # OPTIONAL
     );
 
     # Results:
@@ -61,6 +63,12 @@ C<NULL>.
 For subsequent calls to the operation, to continue listing data, set
 the value of this parameter to the value returned from the previous
 response.
+
+
+
+=head2 ProductArn => Str
+
+The ARN of the integration to return.
 
 
 

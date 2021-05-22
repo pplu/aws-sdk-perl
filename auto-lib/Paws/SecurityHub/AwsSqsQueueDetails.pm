@@ -55,7 +55,7 @@ key to encrypt or decrypt messages before calling AWS KMS again.
 
 =head2 KmsMasterKeyId => Str
 
-The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a
+The ID of an AWS managed customer master key (CMK) for Amazon SQS or a
 custom CMK.
 
 

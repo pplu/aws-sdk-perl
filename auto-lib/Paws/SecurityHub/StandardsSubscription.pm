@@ -53,7 +53,35 @@ A key-value pair of input for the standard.
 
 =head2 B<REQUIRED> StandardsStatus => Str
 
-The status of the standards subscription.
+The status of the standard subscription.
+
+The status values are as follows:
+
+=over
+
+=item *
+
+C<PENDING> - Standard is in the process of being enabled.
+
+=item *
+
+C<READY> - Standard is enabled.
+
+=item *
+
+C<INCOMPLETE> - Standard could not be enabled completely. Some controls
+may not be available.
+
+=item *
+
+C<DELETING> - Standard is in the process of being disabled.
+
+=item *
+
+C<FAILED> - Standard could not be disabled.
+
+=back
+
 
 
 =head2 B<REQUIRED> StandardsSubscriptionArn => Str

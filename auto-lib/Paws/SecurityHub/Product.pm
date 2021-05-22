@@ -5,6 +5,7 @@ package Paws::SecurityHub::Product;
   has Categories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CompanyName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has IntegrationTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MarketplaceUrl => (is => 'ro', isa => 'Str');
   has ProductArn => (is => 'ro', isa => 'Str', required => 1);
   has ProductName => (is => 'ro', isa => 'Str');
@@ -47,7 +48,8 @@ Contains details about a product.
 
 =head2 ActivationUrl => Str
 
-The URL used to activate the product.
+The URL to the service or product documentation about the integration
+with Security Hub, including how to activate the integration.
 
 
 =head2 Categories => ArrayRef[Str|Undef]
@@ -65,9 +67,40 @@ The name of the company that provides the product.
 A description of the product.
 
 
+=head2 IntegrationTypes => ArrayRef[Str|Undef]
+
+The types of integration that the product supports. Available values
+are the following.
+
+=over
+
+=item *
+
+C<SEND_FINDINGS_TO_SECURITY_HUB> - The integration sends findings to
+Security Hub.
+
+=item *
+
+C<RECEIVE_FINDINGS_FROM_SECURITY_HUB> - The integration receives
+findings from Security Hub.
+
+=item *
+
+C<UPDATE_FINDINGS_IN_SECURITY_HUB> - The integration does not send new
+findings to Security Hub, but does make updates to the findings that it
+receives from Security Hub.
+
+=back
+
+
+
 =head2 MarketplaceUrl => Str
 
-The URL for the page that contains more information about the product.
+For integrations with AWS services, the AWS Console URL from which to
+activate the service.
+
+For integrations with third-party products, the AWS Marketplace URL
+from which to subscribe to or purchase the product.
 
 
 =head2 B<REQUIRED> ProductArn => Str

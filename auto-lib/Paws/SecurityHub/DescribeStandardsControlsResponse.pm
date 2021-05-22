@@ -18,7 +18,7 @@ Paws::SecurityHub::DescribeStandardsControlsResponse
 
 =head2 Controls => ArrayRef[L<Paws::SecurityHub::StandardsControl>]
 
-A list of compliance standards controls.
+A list of security standards controls.
 
 
 =head2 NextToken => Str

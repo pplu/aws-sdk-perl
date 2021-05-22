@@ -51,7 +51,8 @@ The ARN of the resource to remove the tags from.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The tag keys associated with the tags to remove from the resource.
+The tag keys associated with the tags to remove from the resource. You
+can remove up to 50 tags at a time.
 
 
 

@@ -43,7 +43,7 @@ Details about a WAF WebACL.
 
 =head2 DefaultAction => Str
 
-The action to perform if none of the Rules contained in the WebACL
+The action to perform if none of the rules contained in the WebACL
 match.
 
 

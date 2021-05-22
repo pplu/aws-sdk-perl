@@ -50,8 +50,13 @@ The category of a threat intelligence indicator.
 
 =head2 LastObservedAt => Str
 
-The date and time when the most recent instance of a threat
-intelligence indicator was observed.
+Indicates when the most recent instance of a threat intelligence
+indicator was observed.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 =head2 Source => Str

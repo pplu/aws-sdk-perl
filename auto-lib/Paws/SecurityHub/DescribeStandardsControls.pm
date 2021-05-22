@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 MaxResults => Int
 
-The maximum number of compliance standard controls to return.
+The maximum number of security standard controls to return.
 
 
 
@@ -70,7 +70,8 @@ response.
 =head2 B<REQUIRED> StandardsSubscriptionArn => Str
 
 The ARN of a resource that represents your subscription to a supported
-standard.
+standard. To get the subscription ARNs of the standards you have
+enabled, use the C< GetEnabledStandards > operation.
 
 
 

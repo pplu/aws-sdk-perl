@@ -8,6 +8,13 @@ package Paws::SecurityHub::AwsSecurityFindingFilters;
   has CreatedAt => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::DateFilter]');
   has Criticality => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::NumberFilter]');
   has Description => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+  has FindingProviderFieldsConfidence => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::NumberFilter]');
+  has FindingProviderFieldsCriticality => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::NumberFilter]');
+  has FindingProviderFieldsRelatedFindingsId => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+  has FindingProviderFieldsRelatedFindingsProductArn => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+  has FindingProviderFieldsSeverityLabel => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+  has FindingProviderFieldsSeverityOriginal => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+  has FindingProviderFieldsTypes => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
   has FirstObservedAt => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::DateFilter]');
   has GeneratorId => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
   has Id => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
@@ -84,6 +91,7 @@ package Paws::SecurityHub::AwsSecurityFindingFilters;
   has UserDefinedFields => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::MapFilter]');
   has VerificationState => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
   has WorkflowState => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
+  has WorkflowStatus => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StringFilter]');
 
 1;
 
@@ -104,7 +112,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SecurityHub::AwsSecurityFindingFilters object:
 
-  $service_obj->Method(Att1 => { AwsAccountId => $value, ..., WorkflowState => $value  });
+  $service_obj->Method(Att1 => { AwsAccountId => $value, ..., WorkflowStatus => $value  });
 
 =head3 Results returned from an API call
 
@@ -118,6 +126,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 A collection of attributes that are applied to all active Security
 Hub-aggregated findings and that result in a subset of findings that
 are included in this insight.
+
+You can filter by up to 10 finding attributes. For each attribute, you
+can provide up to 20 filter values.
 
 =head1 ATTRIBUTES
 
@@ -137,7 +148,7 @@ The name of the findings provider (company) that owns the solution
 
 Exclusive to findings that are generated as the result of a check run
 against a specific rule in a supported standard, such as CIS AWS
-Foundations. Contains compliance-related finding details.
+Foundations. Contains security standard-related finding details.
 
 
 =head2 Confidence => ArrayRef[L<Paws::SecurityHub::NumberFilter>]
@@ -171,6 +182,57 @@ and a score of 100 is reserved for the most critical resources.
 A finding's description.
 
 
+=head2 FindingProviderFieldsConfidence => ArrayRef[L<Paws::SecurityHub::NumberFilter>]
+
+The finding provider value for the finding confidence. Confidence is
+defined as the likelihood that a finding accurately identifies the
+behavior or issue that it was intended to identify.
+
+Confidence is scored on a 0-100 basis using a ratio scale, where 0
+means zero percent confidence and 100 means 100 percent confidence.
+
+
+=head2 FindingProviderFieldsCriticality => ArrayRef[L<Paws::SecurityHub::NumberFilter>]
+
+The finding provider value for the level of importance assigned to the
+resources associated with the findings.
+
+A score of 0 means that the underlying resources have no criticality,
+and a score of 100 is reserved for the most critical resources.
+
+
+=head2 FindingProviderFieldsRelatedFindingsId => ArrayRef[L<Paws::SecurityHub::StringFilter>]
+
+The finding identifier of a related finding that is identified by the
+finding provider.
+
+
+=head2 FindingProviderFieldsRelatedFindingsProductArn => ArrayRef[L<Paws::SecurityHub::StringFilter>]
+
+The ARN of the solution that generated a related finding that is
+identified by the finding provider.
+
+
+=head2 FindingProviderFieldsSeverityLabel => ArrayRef[L<Paws::SecurityHub::StringFilter>]
+
+The finding provider value for the severity label.
+
+
+=head2 FindingProviderFieldsSeverityOriginal => ArrayRef[L<Paws::SecurityHub::StringFilter>]
+
+The finding provider's original value for the severity.
+
+
+=head2 FindingProviderFieldsTypes => ArrayRef[L<Paws::SecurityHub::StringFilter>]
+
+One or more finding types that the finding provider assigned to the
+finding. Uses the format of C<namespace/category/classifier> that
+classify a finding.
+
+Valid namespace values are: Software and Configuration Checks | TTPs |
+Effects | Unusual Behaviors | Sensitive Data Identifications
+
+
 =head2 FirstObservedAt => ArrayRef[L<Paws::SecurityHub::DateFilter>]
 
 An ISO8601-formatted timestamp that indicates when the
@@ -183,7 +245,7 @@ that a finding captured.
 The identifier for the solution-specific component (a discrete unit of
 logic) that generated a finding. In various security-findings
 providers' solutions, this generator can be called a rule, a check, a
-detector, a plug-in, etc.
+detector, a plugin, etc.
 
 
 =head2 Id => ArrayRef[L<Paws::SecurityHub::StringFilter>]
@@ -573,6 +635,56 @@ The veracity of a finding.
 =head2 WorkflowState => ArrayRef[L<Paws::SecurityHub::StringFilter>]
 
 The workflow state of a finding.
+
+Note that this field is deprecated. To search for a finding based on
+its workflow status, use C<WorkflowStatus>.
+
+
+=head2 WorkflowStatus => ArrayRef[L<Paws::SecurityHub::StringFilter>]
+
+The status of the investigation into a finding. Allowed values are the
+following.
+
+=over
+
+=item *
+
+C<NEW> - The initial state of a finding, before it is reviewed.
+
+Security Hub also resets the workflow status from C<NOTIFIED> or
+C<RESOLVED> to C<NEW> in the following cases:
+
+=over
+
+=item *
+
+The record state changes from C<ARCHIVED> to C<ACTIVE>.
+
+=item *
+
+The compliance status changes from C<PASSED> to either C<WARNING>,
+C<FAILED>, or C<NOT_AVAILABLE>.
+
+=back
+
+=item *
+
+C<NOTIFIED> - Indicates that the resource owner has been notified about
+the security issue. Used when the initial reviewer is not the resource
+owner, and needs intervention from the resource owner.
+
+=item *
+
+C<SUPPRESSED> - The finding will not be reviewed again and will not be
+acted upon.
+
+=item *
+
+C<RESOLVED> - The finding was reviewed and remediated and is now
+considered resolved.
+
+=back
+
 
 
 
