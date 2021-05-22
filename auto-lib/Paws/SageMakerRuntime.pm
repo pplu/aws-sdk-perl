@@ -71,7 +71,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/run
 
 =item [CustomAttributes => Str]
 
+=item [InferenceId => Str]
+
+=item [TargetContainerHostname => Str]
+
 =item [TargetModel => Str]
+
+=item [TargetVariant => Str]
 
 
 =back
@@ -95,14 +101,14 @@ syntax.
 Calls to C<InvokeEndpoint> are authenticated by using AWS Signature
 Version 4. For information, see Authenticating Requests (AWS Signature
 Version 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 in the I<Amazon S3 API Reference>.
 
 A customer's model containers must respond to requests within 60
 seconds. The model itself can have a maximum processing time of 60
-seconds before responding to the /invocations. If your model is going
-to take 50-60 seconds of processing time, the SDK socket timeout should
-be set to be 70 seconds.
+seconds before responding to invocations. If your model is going to
+take 50-60 seconds of processing time, the SDK socket timeout should be
+set to be 70 seconds.
 
 Endpoints are scoped to an individual account, and are not public. The
 URL does not contain the account ID, but Amazon SageMaker determines
