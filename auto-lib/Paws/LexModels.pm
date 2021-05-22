@@ -169,6 +169,11 @@ package Paws::LexModels;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetUtterancesView', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutBot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::PutBot', @_);
@@ -192,6 +197,16 @@ package Paws::LexModels;
   sub StartImport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::StartImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -427,7 +442,7 @@ package Paws::LexModels;
   }
 
 
-  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetImport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType StartImport / }
+  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetImport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView ListTagsForResource PutBot PutBotAlias PutIntent PutSlotType StartImport TagResource UntagResource / }
 
 1;
 
@@ -1334,6 +1349,23 @@ This operation requires permissions for the C<lex:GetUtterancesView>
 action.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexModels::ListTagsForResource>
+
+Returns: a L<Paws::LexModels::ListTagsForResourceResponse> instance
+
+Gets a list of tags associated with the specified resource. Only bots,
+bot aliases, and bot channels can have tags associated with them.
+
+
 =head2 PutBot
 
 =over
@@ -1356,11 +1388,17 @@ action.
 
 =item [DetectSentiment => Bool]
 
+=item [EnableModelImprovements => Bool]
+
 =item [IdleSessionTTLInSeconds => Int]
 
 =item [Intents => ArrayRef[L<Paws::LexModels::Intent>]]
 
+=item [NluIntentConfidenceThreshold => Num]
+
 =item [ProcessBehavior => Str]
+
+=item [Tags => ArrayRef[L<Paws::LexModels::Tag>]]
 
 =item [VoiceId => Str]
 
@@ -1407,6 +1445,8 @@ more information, see security-iam.
 
 =item [Description => Str]
 
+=item [Tags => ArrayRef[L<Paws::LexModels::Tag>]]
+
 
 =back
 
@@ -1443,6 +1483,12 @@ This operation requires permissions for the C<lex:PutBotAlias> action.
 =item [FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>]
 
 =item [FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>]
+
+=item [InputContexts => ArrayRef[L<Paws::LexModels::InputContext>]]
+
+=item [KendraConfiguration => L<Paws::LexModels::KendraConfiguration>]
+
+=item [OutputContexts => ArrayRef[L<Paws::LexModels::OutputContext>]]
 
 =item [ParentIntentSignature => Str]
 
@@ -1585,6 +1631,8 @@ This operation requires permissions for the C<lex:PutSlotType> action.
 
 =item ResourceType => Str
 
+=item [Tags => ArrayRef[L<Paws::LexModels::Tag>]]
+
 
 =back
 
@@ -1593,6 +1641,43 @@ Each argument is described in detail in: L<Paws::LexModels::StartImport>
 Returns: a L<Paws::LexModels::StartImportResponse> instance
 
 Starts a job to import a resource to Amazon Lex.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::LexModels::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexModels::TagResource>
+
+Returns: a L<Paws::LexModels::TagResourceResponse> instance
+
+Adds the specified tags to the specified resource. If a tag key already
+exists, the existing value is replaced with the new value.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexModels::UntagResource>
+
+Returns: a L<Paws::LexModels::UntagResourceResponse> instance
+
+Removes tags from a bot, bot alias or bot channel.
 
 
 

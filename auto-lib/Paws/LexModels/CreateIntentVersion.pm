@@ -43,8 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DialogCodeHook      = $CreateIntentVersionResponse->DialogCodeHook;
     my $FollowUpPrompt      = $CreateIntentVersionResponse->FollowUpPrompt;
     my $FulfillmentActivity = $CreateIntentVersionResponse->FulfillmentActivity;
+    my $InputContexts       = $CreateIntentVersionResponse->InputContexts;
+    my $KendraConfiguration = $CreateIntentVersionResponse->KendraConfiguration;
     my $LastUpdatedDate     = $CreateIntentVersionResponse->LastUpdatedDate;
     my $Name                = $CreateIntentVersionResponse->Name;
+    my $OutputContexts      = $CreateIntentVersionResponse->OutputContexts;
     my $ParentIntentSignature =
       $CreateIntentVersionResponse->ParentIntentSignature;
     my $RejectionStatement = $CreateIntentVersionResponse->RejectionStatement;

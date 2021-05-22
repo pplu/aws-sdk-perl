@@ -29,23 +29,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $GetSlotTypeResponse = $models . lex->GetSlotType(
-      Name    => 'MySlotTypeName',
-      Version => 'MyVersion',
-
-    );
+    # To get information about a slot type
+    # This example shows how to get information about a slot type.
+    my $GetSlotTypeResponse = $models
+      . lex->GetSlotType(
+      'Name'    => 'DocPizzaCrustType',
+      'Version' => '$LATEST'
+      );
 
     # Results:
-    my $Checksum                = $GetSlotTypeResponse->Checksum;
-    my $CreatedDate             = $GetSlotTypeResponse->CreatedDate;
-    my $Description             = $GetSlotTypeResponse->Description;
-    my $EnumerationValues       = $GetSlotTypeResponse->EnumerationValues;
-    my $LastUpdatedDate         = $GetSlotTypeResponse->LastUpdatedDate;
-    my $Name                    = $GetSlotTypeResponse->Name;
-    my $ParentSlotTypeSignature = $GetSlotTypeResponse->ParentSlotTypeSignature;
-    my $SlotTypeConfigurations  = $GetSlotTypeResponse->SlotTypeConfigurations;
-    my $ValueSelectionStrategy  = $GetSlotTypeResponse->ValueSelectionStrategy;
-    my $Version                 = $GetSlotTypeResponse->Version;
+    my $checksum          = $GetSlotTypeResponse->checksum;
+    my $createdDate       = $GetSlotTypeResponse->createdDate;
+    my $description       = $GetSlotTypeResponse->description;
+    my $enumerationValues = $GetSlotTypeResponse->enumerationValues;
+    my $lastUpdatedDate   = $GetSlotTypeResponse->lastUpdatedDate;
+    my $name              = $GetSlotTypeResponse->name;
+    my $version           = $GetSlotTypeResponse->version;
 
     # Returns a L<Paws::LexModels::GetSlotTypeResponse> object.
 

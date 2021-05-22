@@ -42,7 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatedDate         = $CreateBotVersionResponse->CreatedDate;
     my $Description         = $CreateBotVersionResponse->Description;
     my $DetectSentiment     = $CreateBotVersionResponse->DetectSentiment;
-    my $FailureReason       = $CreateBotVersionResponse->FailureReason;
+    my $EnableModelImprovements =
+      $CreateBotVersionResponse->EnableModelImprovements;
+    my $FailureReason = $CreateBotVersionResponse->FailureReason;
     my $IdleSessionTTLInSeconds =
       $CreateBotVersionResponse->IdleSessionTTLInSeconds;
     my $Intents         = $CreateBotVersionResponse->Intents;

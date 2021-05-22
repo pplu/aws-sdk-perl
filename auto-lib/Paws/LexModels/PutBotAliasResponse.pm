@@ -9,6 +9,7 @@ package Paws::LexModels::PutBotAliasResponse;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -62,6 +63,11 @@ the creation date and the last updated date are the same.
 =head2 Name => Str
 
 The name of the alias.
+
+
+=head2 Tags => ArrayRef[L<Paws::LexModels::Tag>]
+
+A list of tags associated with a bot.
 
 
 =head2 _request_id => Str

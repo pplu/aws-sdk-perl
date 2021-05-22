@@ -9,8 +9,11 @@ package Paws::LexModels::CreateIntentVersionResponse;
   has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
   has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
   has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity', traits => ['NameInRequest'], request_name => 'fulfillmentActivity');
+  has InputContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::InputContext]', traits => ['NameInRequest'], request_name => 'inputContexts');
+  has KendraConfiguration => (is => 'ro', isa => 'Paws::LexModels::KendraConfiguration', traits => ['NameInRequest'], request_name => 'kendraConfiguration');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has OutputContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::OutputContext]', traits => ['NameInRequest'], request_name => 'outputContexts');
   has ParentIntentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentIntentSignature');
   has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'rejectionStatement');
   has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'sampleUtterances');
@@ -73,6 +76,19 @@ activity after the intent is fulfilled.
 Describes how the intent is fulfilled.
 
 
+=head2 InputContexts => ArrayRef[L<Paws::LexModels::InputContext>]
+
+An array of C<InputContext> objects that lists the contexts that must
+be active for Amazon Lex to choose the intent in a conversation with
+the user.
+
+
+=head2 KendraConfiguration => L<Paws::LexModels::KendraConfiguration>
+
+Configuration information, if any, for connecting an Amazon Kendra
+index with the C<AMAZON.KendraSearchIntent> intent.
+
+
 =head2 LastUpdatedDate => Str
 
 The date that the intent was updated.
@@ -81,6 +97,12 @@ The date that the intent was updated.
 =head2 Name => Str
 
 The name of the intent.
+
+
+=head2 OutputContexts => ArrayRef[L<Paws::LexModels::OutputContext>]
+
+An array of C<OutputContext> objects that lists the contexts that the
+intent activates when the intent is fulfilled.
 
 
 =head2 ParentIntentSignature => Str

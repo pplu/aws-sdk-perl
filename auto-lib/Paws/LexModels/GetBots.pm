@@ -30,15 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $GetBotsResponse = $models . lex->GetBots(
-      MaxResults   => 1,                # OPTIONAL
-      NameContains => 'MyBotName',      # OPTIONAL
-      NextToken    => 'MyNextToken',    # OPTIONAL
-    );
+    # To get a list of bots
+    # This example shows how to get a list of all of the bots in your account.
+    my $GetBotsResponse = $models
+      . lex->GetBots(
+      'MaxResults' => 5,
+      'NextToken'  => ''
+      );
 
     # Results:
-    my $Bots      = $GetBotsResponse->Bots;
-    my $NextToken = $GetBotsResponse->NextToken;
+    my $bots = $GetBotsResponse->bots;
 
     # Returns a L<Paws::LexModels::GetBotsResponse> object.
 

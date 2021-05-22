@@ -8,11 +8,14 @@ package Paws::LexModels::PutBot;
   has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DetectSentiment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'detectSentiment');
+  has EnableModelImprovements => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableModelImprovements');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
   has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has NluIntentConfidenceThreshold => (is => 'ro', isa => 'Num', traits => ['NameInRequest'], request_name => 'nluIntentConfidenceThreshold');
   has ProcessBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'processBehavior');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
 
   use MooseX::ClassAttribute;
@@ -40,70 +43,77 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
+    # To create a bot
+    # This example shows how to create a bot for ordering pizzas.
     my $PutBotResponse = $models . lex->PutBot(
-      ChildDirected  => 1,
-      Locale         => 'en-US',
-      Name           => 'MyBotName',
-      AbortStatement => {
-        Messages => [
+      'AbortStatement' => {
+        'Messages' => [
+
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
-          },
-          ...
-        ],                              # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-      },    # OPTIONAL
-      Checksum            => 'MyString',    # OPTIONAL
-      ClarificationPrompt => {
-        MaxAttempts => 1,                   # min: 1, max: 5
-        Messages    => [
-          {
-            Content => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
-          },
-          ...
-        ],                              # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-      },    # OPTIONAL
-      CreateVersion           => 1,                  # OPTIONAL
-      Description             => 'MyDescription',    # OPTIONAL
-      DetectSentiment         => 1,                  # OPTIONAL
-      IdleSessionTTLInSeconds => 1,                  # OPTIONAL
-      Intents                 => [
-        {
-          IntentName    => 'MyIntentName',           # min: 1, max: 100
-          IntentVersion => 'MyVersion',              # min: 1, max: 64
+              'Content' => 'I don' t understand . Can you try again
+            ? ',
+' ContentType ' => ' PlainText '
+},
 
-        },
-        ...
-      ],                                             # OPTIONAL
-      ProcessBehavior => 'SAVE',                     # OPTIONAL
-      VoiceId         => 'MyString',                 # OPTIONAL
-    );
+{
+' Content ' => ' I'm sorry, I don't understand . ',
+' ContentType ' => ' PlainText '
+}
+]
+},
+' ChildDirected ' => 1,
+' ClarificationPrompt ' => 
+{
+' MaxAttempts ' => 1,
+' Messages ' => 
+[
 
-    # Results:
-    my $AbortStatement          = $PutBotResponse->AbortStatement;
-    my $Checksum                = $PutBotResponse->Checksum;
-    my $ChildDirected           = $PutBotResponse->ChildDirected;
-    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
-    my $CreateVersion           = $PutBotResponse->CreateVersion;
-    my $CreatedDate             = $PutBotResponse->CreatedDate;
-    my $Description             = $PutBotResponse->Description;
-    my $DetectSentiment         = $PutBotResponse->DetectSentiment;
-    my $FailureReason           = $PutBotResponse->FailureReason;
-    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
-    my $Intents                 = $PutBotResponse->Intents;
-    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
-    my $Locale                  = $PutBotResponse->Locale;
-    my $Name                    = $PutBotResponse->Name;
-    my $Status                  = $PutBotResponse->Status;
-    my $Version                 = $PutBotResponse->Version;
-    my $VoiceId                 = $PutBotResponse->VoiceId;
+{
+' Content ' => ' I'm sorry,
+            I didn't hear that . Can you repeate what you just said
+                ? ',
+' ContentType ' => ' PlainText '
+},
 
-    # Returns a L<Paws::LexModels::PutBotResponse> object.
+{
+' Content ' => ' Can you say that again
+                  ? ',
+' ContentType ' => ' PlainText '
+}
+]
+},
+' Description ' => ' Orders a pizza from a local pizzeria . ',
+' IdleSessionTTLInSeconds ' => 300,
+' Intents ' => 
+[
+
+{
+' IntentName ' => ' DocOrderPizza ',
+' IntentVersion ' => '$LATEST'
+              }
+            ],
+            'Locale'          => 'en-US',
+            'Name'            => 'DocOrderPizzaBot',
+            'ProcessBehavior' => 'SAVE'
+          );
+
+          # Results:
+          my $abortStatement      = $PutBotResponse->abortStatement;
+          my $checksum            = $PutBotResponse->checksum;
+          my $childDirected       = $PutBotResponse->childDirected;
+          my $clarificationPrompt = $PutBotResponse->clarificationPrompt;
+          my $createdDate         = $PutBotResponse->createdDate;
+          my $description         = $PutBotResponse->description;
+          my $idleSessionTTLInSeconds =
+            $PutBotResponse->idleSessionTTLInSeconds;
+          my $intents         = $PutBotResponse->intents;
+          my $lastUpdatedDate = $PutBotResponse->lastUpdatedDate;
+          my $locale          = $PutBotResponse->locale;
+          my $name            = $PutBotResponse->name;
+          my $status          = $PutBotResponse->status;
+          my $version         = $PutBotResponse->version;
+
+          # Returns a L<Paws::LexModels::PutBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutBot>
@@ -115,7 +125,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mod
 
 When Amazon Lex can't understand the user's input in context, it tries
 to elicit the information a few times. After that, Amazon Lex sends the
-message defined in C<abortStatement> to the user, and then aborts the
+message defined in C<abortStatement> to the user, and then cancels the
 conversation. To set the number of retries, use the
 C<valueElicitationPrompt> field for the slot type.
 
@@ -129,7 +139,7 @@ one of the intents. This intent might require the C<CrustType> slot.
 You specify the C<valueElicitationPrompt> field when you create the
 C<CrustType> slot.
 
-If you have defined a fallback intent the abort statement will not be
+If you have defined a fallback intent the cancel statement will not be
 sent to the user, the fallback intent is used instead. For more
 information, see AMAZON.FallbackIntent
 (https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
@@ -254,6 +264,49 @@ default is C<false>.
 
 
 
+=head2 EnableModelImprovements => Bool
+
+Set to C<true> to enable access to natural language understanding
+improvements.
+
+When you set the C<enableModelImprovements> parameter to C<true> you
+can use the C<nluIntentConfidenceThreshold> parameter to configure
+confidence scores. For more information, see Confidence Scores
+(https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html).
+
+You can only set the C<enableModelImprovements> parameter in certain
+Regions. If you set the parameter to C<true>, your bot has access to
+accuracy improvements.
+
+The Regions where you can set the C<enableModelImprovements> parameter
+to C<true> are:
+
+=over
+
+=item *
+
+US East (N. Virginia) (us-east-1)
+
+=item *
+
+US West (Oregon) (us-west-2)
+
+=item *
+
+Asia Pacific (Sydney) (ap-southeast-2)
+
+=item *
+
+EU (Ireland) (eu-west-1)
+
+=back
+
+In other Regions, the C<enableModelImprovements> parameter is set to
+C<true> by default. In these Regions setting the parameter to C<false>
+throws a C<ValidationException> exception.
+
+
+
 =head2 IdleSessionTTLInSeconds => Int
 
 The maximum time in seconds that Amazon Lex retains the data gathered
@@ -291,11 +344,77 @@ must be compatible with the locale of the bot.
 
 The default is C<en-US>.
 
-Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
+Valid values are: C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-US">, C<"es-419">, C<"es-ES">, C<"es-US">, C<"fr-FR">, C<"fr-CA">, C<"it-IT">, C<"ja-JP">
 
 =head2 B<REQUIRED> Name => Str
 
 The name of the bot. The name is I<not> case sensitive.
+
+
+
+=head2 NluIntentConfidenceThreshold => Num
+
+Determines the threshold where Amazon Lex will insert the
+C<AMAZON.FallbackIntent>, C<AMAZON.KendraSearchIntent>, or both when
+returning alternative intents in a PostContent
+(https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
+or PostText
+(https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
+response. C<AMAZON.FallbackIntent> and C<AMAZON.KendraSearchIntent> are
+only inserted if they are configured for the bot.
+
+You must set the C<enableModelImprovements> parameter to C<true> to use
+confidence scores in the following regions.
+
+=over
+
+=item *
+
+US East (N. Virginia) (us-east-1)
+
+=item *
+
+US West (Oregon) (us-west-2)
+
+=item *
+
+Asia Pacific (Sydney) (ap-southeast-2)
+
+=item *
+
+EU (Ireland) (eu-west-1)
+
+=back
+
+In other Regions, the C<enableModelImprovements> parameter is set to
+C<true> by default.
+
+For example, suppose a bot is configured with the confidence threshold
+of 0.80 and the C<AMAZON.FallbackIntent>. Amazon Lex returns three
+alternative intents with the following confidence scores: IntentA
+(0.70), IntentB (0.60), IntentC (0.50). The response from the
+C<PostText> operation would be:
+
+=over
+
+=item *
+
+AMAZON.FallbackIntent
+
+=item *
+
+IntentA
+
+=item *
+
+IntentB
+
+=item *
+
+IntentC
+
+=back
+
 
 
 
@@ -308,6 +427,14 @@ Amazon Lex saves the bot, but doesn't build it.
 If you don't specify this value, the default value is C<BUILD>.
 
 Valid values are: C<"SAVE">, C<"BUILD">
+
+=head2 Tags => ArrayRef[L<Paws::LexModels::Tag>]
+
+A list of tags to add to the bot. You can only add tags when you create
+a bot, you can't use the C<PutBot> operation to update the tags on a
+bot. To update tags, use the C<TagResource> operation.
+
+
 
 =head2 VoiceId => Str
 

@@ -7,6 +7,7 @@ package Paws::LexModels::PutBotAlias;
   has ConversationLogs => (is => 'ro', isa => 'Paws::LexModels::ConversationLogsRequest', traits => ['NameInRequest'], request_name => 'conversationLogs');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -52,6 +53,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',           # min: 1, max: 128
+          Value => 'MyTagValue',         # max: 256
+
+        },
+        ...
+      ],                                 # OPTIONAL
     );
 
     # Results:
@@ -63,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description      = $PutBotAliasResponse->Description;
     my $LastUpdatedDate  = $PutBotAliasResponse->LastUpdatedDate;
     my $Name             = $PutBotAliasResponse->Name;
+    my $Tags             = $PutBotAliasResponse->Tags;
 
     # Returns a L<Paws::LexModels::PutBotAliasResponse> object.
 
@@ -114,6 +124,15 @@ A description of the alias.
 =head2 B<REQUIRED> Name => Str
 
 The name of the alias. The name is I<not> case sensitive.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::LexModels::Tag>]
+
+A list of tags to add to the bot alias. You can only add tags when you
+create an alias, you can't use the C<PutBotAlias> operation to update
+the tags on a bot alias. To update tags, use the C<TagResource>
+operation.
 
 
 
