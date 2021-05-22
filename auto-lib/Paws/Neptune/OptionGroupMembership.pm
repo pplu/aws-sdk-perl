@@ -34,23 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Op
 
 =head1 DESCRIPTION
 
-Provides information on the option groups the DB instance is a member
-of.
+Not supported by Neptune.
 
 =head1 ATTRIBUTES
 
 
 =head2 OptionGroupName => Str
 
-The name of the option group that the instance belongs to.
+Not supported by Neptune.
 
 
 =head2 Status => Str
 
-The status of the DB instance's option group membership. Valid values
-are: C<in-sync>, C<pending-apply>, C<pending-removal>,
-C<pending-maintenance-apply>, C<pending-maintenance-removal>,
-C<applying>, C<removing>, and C<failed>.
+Not supported by Neptune.
 
 
 

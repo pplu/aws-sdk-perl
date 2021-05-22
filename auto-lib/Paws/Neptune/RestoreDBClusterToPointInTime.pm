@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                                           # OPTIONAL
       UseLatestRestorableTime => 1,                                # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],                  # OPTIONAL
+      VpcSecurityGroupIds     => [ 'MyString', ... ],              # OPTIONAL
       );
 
     # Results:
@@ -149,7 +149,7 @@ CloudWatch Logs.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
+True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 Default: C<false>
@@ -158,11 +158,11 @@ Default: C<false>
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted DB
+The Amazon KMS key identifier to use when restoring an encrypted DB
 cluster from an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
+encryption key. If you are restoring a DB cluster with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.

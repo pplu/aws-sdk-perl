@@ -37,6 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::En
 
 Specifies a connection endpoint.
 
+For the data structure that represents Amazon Neptune DB cluster
+endpoints, see C<DBClusterEndpoint>.
+
 =head1 ATTRIBUTES
 
 

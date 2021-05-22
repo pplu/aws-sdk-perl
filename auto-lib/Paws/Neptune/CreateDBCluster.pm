@@ -4,6 +4,7 @@ package Paws::Neptune::CreateDBCluster;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
@@ -56,6 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AvailabilityZones               => [ 'MyString', ... ],    # OPTIONAL
       BackupRetentionPeriod           => 1,                      # OPTIONAL
       CharacterSetName                => 'MyString',             # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
@@ -124,6 +126,13 @@ Must be a value from 1 to 35
 =head2 CharacterSetName => Str
 
 I<(Not supported by Neptune)>
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+I<If set to C<true>, tags are copied to any snapshot of the DB cluster
+that is created.>
 
 
 
@@ -209,10 +218,11 @@ CloudWatch Logs.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+If set to C<true>, enables Amazon Identity and Access Management (IAM)
+authentication for the entire DB cluster (this cannot be set at an
+instance level).
 
-Default: C<false>
+Default: C<false>.
 
 
 
@@ -226,19 +236,19 @@ Valid Values: C<neptune>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine to use. Currently, setting
-this parameter has no effect.
+The version number of the database engine to use for the new DB
+cluster.
 
-Example: C<1.0.1>
+Example: C<1.0.2.1>
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for an encrypted DB cluster.
+The Amazon KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB cluster with the same AWS
+encryption key. If you are creating a DB cluster with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
@@ -261,47 +271,26 @@ will use your default encryption key.
 
 =back
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
+Amazon KMS creates the default encryption key for your Amazon account.
+Your Amazon account has a different default encryption key for each
+Amazon Region.
 
-If you create a Read Replica of an encrypted DB cluster in another AWS
-Region, you must set C<KmsKeyId> to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the Read Replica in
-that AWS Region.
+If you create a Read Replica of an encrypted DB cluster in another
+Amazon Region, you must set C<KmsKeyId> to a KMS key ID that is valid
+in the destination Amazon Region. This key is used to encrypt the Read
+Replica in that Amazon Region.
 
 
 
 =head2 MasterUsername => Str
 
-The name of the master user for the DB cluster.
-
-Constraints:
-
-=over
-
-=item *
-
-Must be 1 to 16 letters or numbers.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Cannot be a reserved word for the chosen database engine.
-
-=back
-
+Not supported by Neptune.
 
 
 
 =head2 MasterUserPassword => Str
 
-The password for the master database user. This password can contain
-any printable ASCII character except "/", """, or "@".
-
-Constraints: Must contain from 8 to 41 characters.
+Not supported by Neptune.
 
 
 
@@ -327,7 +316,7 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available,
+block of time for each Amazon Region. To see the time blocks available,
 see Adjusting the Preferred Maintenance Window
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon Neptune User Guide.>
@@ -365,7 +354,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
+block of time for each Amazon Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred
 Maintenance Window
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)

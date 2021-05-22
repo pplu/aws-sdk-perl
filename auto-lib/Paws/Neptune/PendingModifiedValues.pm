@@ -99,16 +99,12 @@ be applied or is currently being applied.
 
 =head2 LicenseModel => Str
 
-The license model for the DB instance.
-
-Valid values: C<license-included> | C<bring-your-own-license> |
-C<general-public-license>
+Not supported by Neptune.
 
 
 =head2 MasterUserPassword => Str
 
-Contains the pending or currently-in-progress change of the master
-credentials for the DB instance.
+Not supported by Neptune.
 
 
 =head2 MultiAZ => Bool

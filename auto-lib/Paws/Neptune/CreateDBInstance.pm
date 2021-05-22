@@ -134,13 +134,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AllocatedStorage => Int
 
-The amount of storage (in gibibytes) to allocate for the DB instance.
-
-Type: Integer
-
-Not applicable. Neptune cluster volumes automatically grow as the
-amount of data in your database increases, though you are only charged
-for the space that you use in a Neptune cluster volume.
+Not supported by Neptune.
 
 
 
@@ -158,13 +152,13 @@ Default: C<true>
 The EC2 Availability Zone that the DB instance is created in
 
 Default: A random, system-chosen Availability Zone in the endpoint's
-AWS Region.
+Amazon Region.
 
 Example: C<us-east-1d>
 
 Constraint: The AvailabilityZone parameter can't be specified if the
 MultiAZ parameter is set to C<true>. The specified Availability Zone
-must be in the same AWS Region as the current endpoint.
+must be in the same Amazon Region as the current endpoint.
 
 
 
@@ -220,7 +214,7 @@ Type: String
 =head2 B<REQUIRED> DBInstanceClass => Str
 
 The compute and memory capacity of the DB instance, for example,
-C<db.m4.large>. Not all DB instance classes are available in all AWS
+C<db.m4.large>. Not all DB instance classes are available in all Amazon
 Regions.
 
 
@@ -336,10 +330,7 @@ CloudWatch Logs.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable AWS Identity and Access Management (IAM) authentication
-for Neptune.
-
-Default: C<false>
+Not supported by Neptune (ignored).
 
 
 
@@ -373,10 +364,10 @@ be initially allocated for the DB instance.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for an encrypted DB instance.
+The Amazon KMS key identifier for an encrypted DB instance.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB instance with the same AWS
+encryption key. If you are creating a DB instance with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 instance, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
@@ -386,9 +377,9 @@ For more information, see CreateDBCluster.
 
 If the C<StorageEncrypted> parameter is true, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon Neptune will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.
+default encryption key. Amazon KMS creates the default encryption key
+for your Amazon account. Your Amazon account has a different default
+encryption key for each Amazon Region.
 
 
 
@@ -403,16 +394,13 @@ C<general-public-license>
 
 =head2 MasterUsername => Str
 
-The name for the master user. Not used.
+Not supported by Neptune.
 
 
 
 =head2 MasterUserPassword => Str
 
-The password for the master user. The password can include any
-printable ASCII character except "/", """, or "@".
-
-Not used.
+Not supported by Neptune.
 
 
 
@@ -489,7 +477,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
+block of time for each Amazon Region, occurring on a random day of the
 week.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.

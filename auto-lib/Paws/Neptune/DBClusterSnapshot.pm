@@ -120,13 +120,13 @@ snapshot.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Identity and Access Management (IAM) accounts
+to database accounts is enabled, and otherwise false.
 
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is true, the AWS KMS key identifier for the
+If C<StorageEncrypted> is true, the Amazon KMS key identifier for the
 encrypted DB cluster snapshot.
 
 
@@ -137,7 +137,7 @@ Provides the license model information for this DB cluster snapshot.
 
 =head2 MasterUsername => Str
 
-Provides the master username for the DB cluster snapshot.
+Not supported by Neptune.
 
 
 =head2 PercentProgress => Int

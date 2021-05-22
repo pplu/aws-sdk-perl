@@ -4,6 +4,7 @@ package Paws::Neptune::ModifyDBCluster;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::Neptune::CloudwatchLogsExportConfiguration');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
@@ -49,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DisableLogTypes => [ 'MyString', ... ],          # OPTIONAL
         EnableLogTypes  => [ 'MyString', ... ],          # OPTIONAL
       },    # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DeletionProtection              => 1,                      # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
@@ -81,13 +83,12 @@ possible, regardless of the C<PreferredMaintenanceWindow> setting for
 the DB cluster. If this parameter is set to C<false>, changes to the DB
 cluster are applied during the next maintenance window.
 
-The C<ApplyImmediately> parameter only affects the
-C<NewDBClusterIdentifier> and C<MasterUserPassword> values. If you set
-the C<ApplyImmediately> parameter value to false, then changes to the
-C<NewDBClusterIdentifier> and C<MasterUserPassword> values are applied
-during the next maintenance window. All other changes are applied
-immediately, regardless of the value of the C<ApplyImmediately>
-parameter.
+The C<ApplyImmediately> parameter only affects
+C<NewDBClusterIdentifier> values. If you set the C<ApplyImmediately>
+parameter value to false, then changes to C<NewDBClusterIdentifier>
+values are applied during the next maintenance window. All other
+changes are applied immediately, regardless of the value of the
+C<ApplyImmediately> parameter.
 
 Default: C<false>
 
@@ -117,6 +118,13 @@ Must be a value from 1 to 35
 
 The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB cluster.
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+I<If set to C<true>, tags are copied to any snapshot of the DB cluster
+that is created.>
 
 
 
@@ -154,7 +162,7 @@ enabled. By default, deletion protection is disabled.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
+True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 Default: C<false>
@@ -163,21 +171,22 @@ Default: C<false>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine. Currently, setting this
-parameter has no effect. To upgrade your database engine to the most
-recent release, use the ApplyPendingMaintenanceAction API.
+The version number of the database engine to which you want to upgrade.
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless the C<ApplyImmediately>
+parameter is set to true.
 
-For a list of valid engine versions, see CreateDBInstance, or call
-DescribeDBEngineVersions.
+For a list of valid engine versions, see Engine Releases for Amazon
+Neptune
+(https://docs.aws.amazon.com/neptune/latest/userguide/engine-releases.html),
+or call DescribeDBEngineVersions
+(https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DescribeDBEngineVersions).
 
 
 
 =head2 MasterUserPassword => Str
 
-The new password for the master database user. This password can
-contain any printable ASCII character except "/", """, or "@".
-
-Constraints: Must contain from 8 to 41 characters.
+Not supported by Neptune.
 
 
 
@@ -210,7 +219,7 @@ Example: C<my-cluster2>
 
 =head2 OptionGroupName => Str
 
-I<(Not supported by Neptune)>
+I<Not supported by Neptune.>
 
 
 
@@ -231,7 +240,7 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Amazon Region.
 
 Constraints:
 
@@ -266,7 +275,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
+block of time for each Amazon Region, occurring on a random day of the
 week.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.

@@ -50,7 +50,7 @@ DescribeEventSubscriptions action.
 
 =head2 CustomerAwsId => Str
 
-The AWS customer account associated with the event notification
+The Amazon customer account associated with the event notification
 subscription.
 
 

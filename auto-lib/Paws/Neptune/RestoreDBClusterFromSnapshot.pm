@@ -2,6 +2,7 @@
 package Paws::Neptune::RestoreDBClusterFromSnapshot;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
@@ -47,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Engine                          => 'MyString',
       SnapshotIdentifier              => 'MyString',
       AvailabilityZones               => [ 'MyString', ... ],    # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
@@ -82,6 +84,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 Provides the list of EC2 Availability Zones that instances in the
 restored DB cluster can be created in.
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+I<If set to C<true>, tags are copied to any snapshot of the restored DB
+cluster that is created.>
 
 
 
@@ -165,7 +174,7 @@ CloudWatch Logs.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
+True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 Default: C<false>
@@ -190,11 +199,11 @@ The version of the database engine to use for the new DB cluster.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted DB
+The Amazon KMS key identifier to use when restoring an encrypted DB
 cluster from a DB snapshot or DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
+encryption key. If you are restoring a DB cluster with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.

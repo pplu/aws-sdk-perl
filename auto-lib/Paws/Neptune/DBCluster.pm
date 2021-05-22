@@ -3,11 +3,14 @@ package Paws::Neptune::DBCluster;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
+  has AutomaticRestartTime => (is => 'ro', isa => 'Str');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
+  has CrossAccountClone => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -85,10 +88,15 @@ storage size is not fixed, but instead automatically adjusts as needed.
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::Neptune::DBClusterRole>]
 
-Provides a list of the AWS Identity and Access Management (IAM) roles
-that are associated with the DB cluster. IAM roles that are associated
-with a DB cluster grant permission for the DB cluster to access other
-AWS services on your behalf.
+Provides a list of the Amazon Identity and Access Management (IAM)
+roles that are associated with the DB cluster. IAM roles that are
+associated with a DB cluster grant permission for the DB cluster to
+access other Amazon services on your behalf.
+
+
+=head2 AutomaticRestartTime => Str
+
+Time at which the DB cluster will be automatically restarted.
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
@@ -105,7 +113,7 @@ retained.
 
 =head2 CharacterSetName => Str
 
-I<(Not supported by Neptune)>
+Not supported by Neptune.
 
 
 =head2 CloneGroupId => Str
@@ -117,6 +125,17 @@ Identifies the clone group to which the DB cluster is associated.
 
 Specifies the time when the DB cluster was created, in Universal
 Coordinated Time (UTC).
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+I<If set to C<true>, tags are copied to any snapshot of the DB cluster
+that is created.>
+
+
+=head2 CrossAccountClone => Bool
+
+If set to C<true>, the DB cluster can be cloned across accounts.
 
 
 =head2 DatabaseName => Str
@@ -144,7 +163,7 @@ Provides the list of instances that make up the DB cluster.
 
 =head2 DBClusterOptionGroupMemberships => ArrayRef[L<Paws::Neptune::DBClusterOptionGroupStatus>]
 
-I<(Not supported by Neptune)>
+Not supported by Neptune.
 
 
 =head2 DBClusterParameterGroup => Str
@@ -155,9 +174,9 @@ cluster.
 
 =head2 DbClusterResourceId => Str
 
-The AWS Region-unique, immutable identifier for the DB cluster. This
-identifier is found in AWS CloudTrail log entries whenever the AWS KMS
-key for the DB cluster is accessed.
+The Amazon Region-unique, immutable identifier for the DB cluster. This
+identifier is found in Amazon CloudTrail log entries whenever the
+Amazon KMS key for the DB cluster is accessed.
 
 
 =head2 DBSubnetGroup => Str
@@ -211,13 +230,13 @@ zone.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Identity and Access Management (IAM) accounts
+to database accounts is enabled, and otherwise false.
 
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is true, the AWS KMS key identifier for the
+If C<StorageEncrypted> is true, the Amazon KMS key identifier for the
 encrypted DB cluster.
 
 
@@ -229,7 +248,7 @@ point-in-time restore.
 
 =head2 MasterUsername => Str
 
-Contains the master username for the DB cluster.
+Not supported by Neptune.
 
 
 =head2 MultiAZ => Bool

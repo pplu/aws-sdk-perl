@@ -119,10 +119,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AllocatedStorage => Int
 
-The new amount of storage (in gibibytes) to allocate for the DB
-instance.
-
-Not applicable. Storage is managed by the DB Cluster.
+Not supported by Neptune.
 
 
 
@@ -313,13 +310,13 @@ Not supported
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
+True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database
 engines
 
-Not applicable. Mapping AWS IAM accounts to database accounts is
+Not applicable. Mapping Amazon IAM accounts to database accounts is
 managed by the DB cluster. For more information, see ModifyDBCluster.
 
 Default: C<false>
@@ -355,13 +352,13 @@ Default: Uses existing setting
 
 =head2 LicenseModel => Str
 
-Not supported.
+Not supported by Neptune.
 
 
 
 =head2 MasterUserPassword => Str
 
-Not applicable.
+Not supported by Neptune.
 
 
 
