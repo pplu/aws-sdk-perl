@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> EntityId => Str
 
-The identifier of the member (user or group)that owns the mailbox.
+The identifier of the member (user or group) that owns the mailbox.
 
 
 

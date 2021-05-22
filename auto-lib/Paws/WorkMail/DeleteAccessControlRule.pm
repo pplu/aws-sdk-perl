@@ -2,7 +2,7 @@
 package Paws::WorkMail::DeleteAccessControlRule;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str');
+  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $workmail = Paws->service('WorkMail');
     my $DeleteAccessControlRuleResponse = $workmail->DeleteAccessControlRule(
       Name           => 'MyAccessControlRuleName',
-      OrganizationId => 'MyOrganizationId',          # OPTIONAL
+      OrganizationId => 'MyOrganizationId',
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -45,7 +46,7 @@ The name of the access control rule.
 
 
 
-=head2 OrganizationId => Str
+=head2 B<REQUIRED> OrganizationId => Str
 
 The identifier for the organization.
 
