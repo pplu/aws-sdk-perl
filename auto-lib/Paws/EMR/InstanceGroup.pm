@@ -66,10 +66,10 @@ response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
 
 =head2 BidPrice => Str
 
-The bid price for each EC2 Spot instance type as defined by
-C<InstanceType>. Expressed in USD. If neither C<BidPrice> nor
-C<BidPriceAsPercentageOfOnDemandPrice> is provided,
-C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
+If specified, indicates that the instance group uses Spot Instances.
+This is the maximum price you are willing to pay for Spot Instances.
+Specify C<OnDemandPrice> to set the amount equal to the On-Demand
+price, or specify an amount in USD.
 
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Suppor
 
 =head1 DESCRIPTION
 
-The list of supported product configurations which allow user-supplied
+The list of supported product configurations that allow user-supplied
 arguments. EMR accepts these arguments and forwards them to the
 corresponding installation script as bootstrap action arguments.
 

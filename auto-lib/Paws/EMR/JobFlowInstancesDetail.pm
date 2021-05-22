@@ -53,8 +53,8 @@ runs on.
 
 =head2 Ec2KeyName => Str
 
-The name of an Amazon EC2 key pair that can be used to ssh to the
-master node.
+The name of an Amazon EC2 key pair that can be used to connect to the
+master node using SSH.
 
 
 =head2 Ec2SubnetId => Str
@@ -107,11 +107,12 @@ DNS name.
 =head2 NormalizedInstanceHours => Int
 
 An approximation of the cost of the cluster, represented in
-m1.small/hours. This value is incremented one time for every hour that
-an m1.small runs. Larger instances are weighted more, so an Amazon EC2
-instance that is roughly four times more expensive would result in the
-normalized instance hours being incremented by four. This result is
-only an approximation and does not reflect the actual billing rate.
+m1.small/hours. This value is increased one time for every hour that an
+m1.small instance runs. Larger instances are weighted more heavily, so
+an Amazon EC2 instance that is roughly four times more expensive would
+result in the normalized instance hours being increased incrementally
+four times. This result is only an approximation and does not reflect
+the actual billing rate.
 
 
 =head2 Placement => L<Paws::EMR::PlacementType>

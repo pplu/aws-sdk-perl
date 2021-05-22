@@ -42,7 +42,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> JobFlowIds => ArrayRef[Str|Undef]
 
-A list of job flows to be shutdown.
+A list of job flows to be shut down.
 
 
 

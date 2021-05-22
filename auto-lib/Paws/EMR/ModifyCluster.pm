@@ -53,7 +53,7 @@ The unique identifier of the cluster.
 =head2 StepConcurrencyLevel => Int
 
 The number of steps that can be executed concurrently. You can specify
-a maximum of 256 steps.
+a minimum of 1 step and a maximum of 256 steps.
 
 
 

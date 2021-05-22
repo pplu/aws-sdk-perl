@@ -50,14 +50,14 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
 =head2 BidPrice => Str
 
-The bid price for each EC2 Spot instance type as defined by
+The bid price for each EC2 Spot Instance type as defined by
 C<InstanceType>. Expressed in USD.
 
 
 =head2 BidPriceAsPercentageOfOnDemandPrice => Num
 
 The bid price, as a percentage of On-Demand price, for each EC2 Spot
-instance as defined by C<InstanceType>. Expressed as a number (for
+Instance as defined by C<InstanceType>. Expressed as a number (for
 example, 20 specifies 20%).
 
 
@@ -70,8 +70,8 @@ software bundled with Amazon EMR.
 
 =head2 EbsBlockDevices => ArrayRef[L<Paws::EMR::EbsBlockDevice>]
 
-The configuration of Amazon Elastic Block Storage (EBS) attached to
-each instance as defined by C<InstanceType>.
+The configuration of Amazon Elastic Block Storage (Amazon EBS) attached
+to each instance as defined by C<InstanceType>.
 
 
 =head2 EbsOptimized => Bool

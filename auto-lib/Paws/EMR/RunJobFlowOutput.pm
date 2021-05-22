@@ -17,12 +17,12 @@ Paws::EMR::RunJobFlowOutput
 
 =head2 ClusterArn => Str
 
-The Amazon Resource Name of the cluster.
+The Amazon Resource Name (ARN) of the cluster.
 
 
 =head2 JobFlowId => Str
 
-An unique identifier for the job flow.
+A unique identifier for the job flow.
 
 
 =head2 _request_id => Str

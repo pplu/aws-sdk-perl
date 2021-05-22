@@ -12,11 +12,13 @@ package Paws::EMR::Cluster;
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCollectionType => (is => 'ro', isa => 'Str');
   has KerberosAttributes => (is => 'ro', isa => 'Paws::EMR::KerberosAttributes');
+  has LogEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has MasterPublicDnsName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
   has OutpostArn => (is => 'ro', isa => 'Str');
+  has PlacementGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::PlacementGroupConfig]');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
   has RepoUpgradeOnBoot => (is => 'ro', isa => 'Str');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
@@ -103,9 +105,9 @@ custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
 
 =head2 EbsRootVolumeSize => Int
 
-The size, in GiB, of the EBS root device volume of the Linux AMI that
-is used for each EC2 instance. Available in Amazon EMR version 4.x and
-later.
+The size, in GiB, of the Amazon EBS root device volume of the Linux AMI
+that is used for each EC2 instance. Available in Amazon EMR version 4.x
+and later.
 
 
 =head2 Ec2InstanceAttributes => L<Paws::EMR::Ec2InstanceAttributes>
@@ -136,7 +138,14 @@ Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
 Kerberos Authentication
 (https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
-in the I<EMR Management Guide>.
+in the I<Amazon EMR Management Guide>.
+
+
+=head2 LogEncryptionKmsKeyId => Str
+
+The AWS KMS customer master key (CMK) used for encrypting log files.
+This attribute is only available with EMR version 5.30.0 and later,
+excluding EMR 6.0.0.
 
 
 =head2 LogUri => Str
@@ -171,6 +180,11 @@ only an approximation and does not reflect the actual billing rate.
 
 The Amazon Resource Name (ARN) of the Outpost where the cluster is
 launched.
+
+
+=head2 PlacementGroups => ArrayRef[L<Paws::EMR::PlacementGroupConfig>]
+
+Placement group configured for an Amazon EMR cluster.
 
 
 =head2 ReleaseLabel => Str
@@ -212,13 +226,13 @@ nodes at the instance-hour boundary, regardless of when the request to
 terminate the instance was submitted. This option is only available
 with Amazon EMR 5.1.0 and later and is the default for clusters created
 using that version. C<TERMINATE_AT_TASK_COMPLETION> indicates that
-Amazon EMR blacklists and drains tasks from nodes before terminating
-the Amazon EC2 instances, regardless of the instance-hour boundary.
-With either behavior, Amazon EMR removes the least active nodes first
-and blocks instance termination if it could lead to HDFS corruption.
-C<TERMINATE_AT_TASK_COMPLETION> is available only in Amazon EMR version
-4.1.0 and later, and is the default for versions of Amazon EMR earlier
-than 5.1.0.
+Amazon EMR adds nodes to a deny list and drains tasks from nodes before
+terminating the Amazon EC2 instances, regardless of the instance-hour
+boundary. With either behavior, Amazon EMR removes the least active
+nodes first and blocks instance termination if it could lead to HDFS
+corruption. C<TERMINATE_AT_TASK_COMPLETION> is available only in Amazon
+EMR version 4.1.0 and later, and is the default for versions of Amazon
+EMR earlier than 5.1.0.
 
 
 =head2 SecurityConfiguration => Str

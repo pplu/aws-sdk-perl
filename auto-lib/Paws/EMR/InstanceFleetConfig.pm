@@ -48,8 +48,8 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
 =head2 B<REQUIRED> InstanceFleetType => Str
 
-The node type that the instance fleet hosts. Valid values are
-MASTER,CORE,and TASK.
+The node type that the instance fleet hosts. Valid values are MASTER,
+CORE, and TASK.
 
 
 =head2 InstanceTypeConfigs => ArrayRef[L<Paws::EMR::InstanceTypeConfig>]
@@ -71,10 +71,10 @@ The friendly name of the instance fleet.
 =head2 TargetOnDemandCapacity => Int
 
 The target capacity of On-Demand units for the instance fleet, which
-determines how many On-Demand instances to provision. When the instance
-fleet launches, Amazon EMR tries to provision On-Demand instances as
+determines how many On-Demand Instances to provision. When the instance
+fleet launches, Amazon EMR tries to provision On-Demand Instances as
 specified by InstanceTypeConfig. Each instance configuration has a
-specified C<WeightedCapacity>. When an On-Demand instance is
+specified C<WeightedCapacity>. When an On-Demand Instance is
 provisioned, the C<WeightedCapacity> units count toward the target
 capacity. Amazon EMR provisions instances until the target capacity is
 totally fulfilled, even if this results in an overage. For example, if
@@ -83,7 +83,7 @@ only provision an instance with a C<WeightedCapacity> of 5 units, the
 instance is provisioned, and the target capacity is exceeded by 3
 units.
 
-If not specified or set to 0, only Spot instances are provisioned for
+If not specified or set to 0, only Spot Instances are provisioned for
 the instance fleet using C<TargetSpotCapacity>. At least one of
 C<TargetSpotCapacity> and C<TargetOnDemandCapacity> should be greater
 than 0. For a master instance fleet, only one of C<TargetSpotCapacity>
@@ -94,10 +94,10 @@ and C<TargetOnDemandCapacity> can be specified, and its value must be
 =head2 TargetSpotCapacity => Int
 
 The target capacity of Spot units for the instance fleet, which
-determines how many Spot instances to provision. When the instance
-fleet launches, Amazon EMR tries to provision Spot instances as
+determines how many Spot Instances to provision. When the instance
+fleet launches, Amazon EMR tries to provision Spot Instances as
 specified by InstanceTypeConfig. Each instance configuration has a
-specified C<WeightedCapacity>. When a Spot instance is provisioned, the
+specified C<WeightedCapacity>. When a Spot Instance is provisioned, the
 C<WeightedCapacity> units count toward the target capacity. Amazon EMR
 provisions instances until the target capacity is totally fulfilled,
 even if this results in an overage. For example, if there are 2 units
@@ -105,7 +105,7 @@ remaining to fulfill capacity, and Amazon EMR can only provision an
 instance with a C<WeightedCapacity> of 5 units, the instance is
 provisioned, and the target capacity is exceeded by 3 units.
 
-If not specified or set to 0, only On-Demand instances are provisioned
+If not specified or set to 0, only On-Demand Instances are provisioned
 for the instance fleet. At least one of C<TargetSpotCapacity> and
 C<TargetOnDemandCapacity> should be greater than 0. For a master
 instance fleet, only one of C<TargetSpotCapacity> and

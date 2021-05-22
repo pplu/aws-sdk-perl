@@ -52,7 +52,7 @@ The date and time when the cluster was terminated.
 
 =head2 ReadyDateTime => Str
 
-The date and time when the cluster was ready to execute steps.
+The date and time when the cluster was ready to run steps.
 
 
 
