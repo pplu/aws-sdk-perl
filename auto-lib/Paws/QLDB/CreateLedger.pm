@@ -74,6 +74,11 @@ deletion protection for you when you use it to delete a ledger.
 The name of the ledger that you want to create. The name must be unique
 among all of your ledgers in the current AWS Region.
 
+Naming constraints for ledger names are defined in Quotas in Amazon
+QLDB
+(https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming)
+in the I<Amazon QLDB Developer Guide>.
+
 
 
 =head2 B<REQUIRED> PermissionsMode => Str
