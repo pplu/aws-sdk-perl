@@ -2,6 +2,7 @@
 package Paws::LicenseManager::UpdateLicenseConfiguration;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DisassociateWhenNotFound => (is => 'ro', isa => 'Bool');
   has LicenseConfigurationArn => (is => 'ro', isa => 'Str', required => 1);
   has LicenseConfigurationStatus => (is => 'ro', isa => 'Str');
   has LicenseCount => (is => 'ro', isa => 'Int');
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $license -manager->UpdateLicenseConfiguration(
       LicenseConfigurationArn    => 'MyString',
       Description                => 'MyString',             # OPTIONAL
+      DisassociateWhenNotFound   => 1,                      # OPTIONAL
       LicenseConfigurationStatus => 'AVAILABLE',            # OPTIONAL
       LicenseCount               => 1,                      # OPTIONAL
       LicenseCountHardLimit      => 1,                      # OPTIONAL
@@ -50,7 +52,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ProductInformationFilterComparator => 'MyString',
               ProductInformationFilterName       => 'MyString',
               ProductInformationFilterValue      => [ 'MyString', ... ],
-
             },
             ...
           ],
@@ -70,6 +71,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 =head2 Description => Str
 
 New description of the license configuration.
+
+
+
+=head2 DisassociateWhenNotFound => Bool
+
+When true, disassociates a resource when software is uninstalled.
 
 
 
@@ -99,7 +106,8 @@ New hard limit of the number of available licenses.
 
 =head2 LicenseRules => ArrayRef[Str|Undef]
 
-New license rules.
+New license rule. The only rule that you can add after you create a
+license configuration is licenseAffinityToHost.
 
 
 

@@ -40,6 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $GetLicenseConfigurationResponse->ConsumedLicenseSummaryList;
     my $ConsumedLicenses = $GetLicenseConfigurationResponse->ConsumedLicenses;
     my $Description      = $GetLicenseConfigurationResponse->Description;
+    my $DisassociateWhenNotFound =
+      $GetLicenseConfigurationResponse->DisassociateWhenNotFound;
     my $LicenseConfigurationArn =
       $GetLicenseConfigurationResponse->LicenseConfigurationArn;
     my $LicenseConfigurationId =

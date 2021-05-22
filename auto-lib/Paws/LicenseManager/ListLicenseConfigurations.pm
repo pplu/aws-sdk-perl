@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $license -manager->ListLicenseConfigurations(
       Filters => [
         {
-          Name => 'MyFilterName',                # OPTIONAL
+          Name   => 'MyFilterName',              # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
@@ -66,8 +66,9 @@ operators are supported:
 
 =item *
 
-C<licenseCountingType> - The dimension on which licenses are counted
-(vCPU). Logical operators are C<EQUALS> | C<NOT_EQUALS>.
+C<licenseCountingType> - The dimension on which licenses are counted.
+Possible values are C<vCPU> | C<Instance> | C<Core> | C<Socket>.
+Logical operators are C<EQUALS> | C<NOT_EQUALS>.
 
 =item *
 

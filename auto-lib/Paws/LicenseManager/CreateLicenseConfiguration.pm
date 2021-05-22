@@ -2,6 +2,7 @@
 package Paws::LicenseManager::CreateLicenseConfiguration;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DisassociateWhenNotFound => (is => 'ro', isa => 'Bool');
   has LicenseCount => (is => 'ro', isa => 'Int');
   has LicenseCountHardLimit => (is => 'ro', isa => 'Bool');
   has LicenseCountingType => (is => 'ro', isa => 'Str', required => 1);
@@ -36,20 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $license-manager = Paws->service('LicenseManager');
     my $CreateLicenseConfigurationResponse =
       $license -manager->CreateLicenseConfiguration(
-      LicenseCountingType    => 'vCPU',
-      Name                   => 'MyString',
-      Description            => 'MyString',             # OPTIONAL
-      LicenseCount           => 1,                      # OPTIONAL
-      LicenseCountHardLimit  => 1,                      # OPTIONAL
-      LicenseRules           => [ 'MyString', ... ],    # OPTIONAL
-      ProductInformationList => [
+      LicenseCountingType      => 'vCPU',
+      Name                     => 'MyString',
+      Description              => 'MyString',             # OPTIONAL
+      DisassociateWhenNotFound => 1,                      # OPTIONAL
+      LicenseCount             => 1,                      # OPTIONAL
+      LicenseCountHardLimit    => 1,                      # OPTIONAL
+      LicenseRules             => [ 'MyString', ... ],    # OPTIONAL
+      ProductInformationList   => [
         {
           ProductInformationFilterList => [
             {
               ProductInformationFilterComparator => 'MyString',
               ProductInformationFilterName       => 'MyString',
               ProductInformationFilterValue      => [ 'MyString', ... ],
-
             },
             ...
           ],
@@ -85,6 +86,12 @@ Description of the license configuration.
 
 
 
+=head2 DisassociateWhenNotFound => Bool
+
+When true, disassociates a resource when software is uninstalled.
+
+
+
 =head2 LicenseCount => Int
 
 Number of licenses managed by the license configuration.
@@ -108,13 +115,14 @@ Valid values are: C<"vCPU">, C<"Instance">, C<"Core">, C<"Socket">
 
 License rules. The syntax is #name=value (for example,
 
+dimension, as follows.
 
 =over
 
 =item *
 
-C<Cores> dimension: C<allowedTenancy> | C<maximumCores> |
-C<minimumCores>
+C<Cores> dimension: C<allowedTenancy> | C<licenseAffinityToHost> |
+C<maximumCores> | C<minimumCores>
 
 =item *
 
@@ -124,8 +132,8 @@ C<maximumVcpus> | C<minimumVcpus>
 
 =item *
 
-C<Sockets> dimension: C<allowedTenancy> | C<maximumSockets> |
-C<minimumSockets>
+C<Sockets> dimension: C<allowedTenancy> | C<licenseAffinityToHost> |
+C<maximumSockets> | C<minimumSockets>
 
 =item *
 
@@ -134,6 +142,10 @@ C<maximumVcpus> | C<minimumVcpus>
 
 =back
 
+The unit for C<licenseAffinityToHost> is days and the range is 1 to
+180. The possible values for C<allowedTenancy> are C<EC2-Default>,
+C<EC2-DedicatedHost>, and C<EC2-DedicatedInstance>. The possible values
+for C<honorVcpuOptimization> are C<True> and C<False>.
 
 
 

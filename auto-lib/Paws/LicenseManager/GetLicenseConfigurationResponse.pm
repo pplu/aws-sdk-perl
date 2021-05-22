@@ -5,6 +5,7 @@ package Paws::LicenseManager::GetLicenseConfigurationResponse;
   has ConsumedLicenses => (is => 'ro', isa => 'Int');
   has ConsumedLicenseSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ConsumedLicenseSummary]');
   has Description => (is => 'ro', isa => 'Str');
+  has DisassociateWhenNotFound => (is => 'ro', isa => 'Bool');
   has LicenseConfigurationArn => (is => 'ro', isa => 'Str');
   has LicenseConfigurationId => (is => 'ro', isa => 'Str');
   has LicenseCount => (is => 'ro', isa => 'Int');
@@ -47,6 +48,11 @@ Summaries of the licenses consumed by resources.
 =head2 Description => Str
 
 Description of the license configuration.
+
+
+=head2 DisassociateWhenNotFound => Bool
+
+When true, disassociates a resource when software is uninstalled.
 
 
 =head2 LicenseConfigurationArn => Str

@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LicenseMana
 
 =head1 DESCRIPTION
 
-Reserved.
+Describes key/value pairs.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-Reserved.
+The key name.
 
 
 =head2 Value => Str
 
-Reserved.
+The value.
 
 
 
