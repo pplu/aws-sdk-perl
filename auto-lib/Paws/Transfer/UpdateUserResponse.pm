@@ -17,14 +17,14 @@ Paws::Transfer::UpdateUserResponse
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server instance that
-the user account is assigned to.
+A system-assigned unique identifier for a server instance that the user
+account is assigned to.
 
 
 =head2 B<REQUIRED> UserName => Str
 
-The unique identifier for a user that is assigned to the SFTP server
-instance that was specified in the request.
+The unique identifier for a user that is assigned to a server instance
+that was specified in the request.
 
 
 =head2 _request_id => Str

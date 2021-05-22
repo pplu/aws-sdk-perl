@@ -19,7 +19,7 @@ Paws::Transfer::StartServer - Arguments for method StartServer on L<Paws::Transf
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StartServer on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method StartServer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartServer.
@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server that you start.
+A system-assigned unique identifier for a server that you start.
 
 
 

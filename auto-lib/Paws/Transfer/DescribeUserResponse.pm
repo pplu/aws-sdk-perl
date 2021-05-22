@@ -17,8 +17,8 @@ Paws::Transfer::DescribeUserResponse
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server that has this
-user assigned.
+A system-assigned unique identifier for a server that has this user
+assigned.
 
 
 =head2 B<REQUIRED> User => L<Paws::Transfer::DescribedUser>

@@ -40,6 +40,11 @@ package Paws::Transfer;
     my $call_object = $self->new_with_coercions('Paws::Transfer::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSecurityPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transfer::DescribeSecurityPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeServer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transfer::DescribeServer', @_);
@@ -53,6 +58,11 @@ package Paws::Transfer;
   sub ImportSshPublicKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transfer::ImportSshPublicKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSecurityPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transfer::ListSecurityPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListServers {
@@ -131,7 +141,7 @@ package Paws::Transfer;
   }
 
 
-  sub operations { qw/CreateServer CreateUser DeleteServer DeleteSshPublicKey DeleteUser DescribeServer DescribeUser ImportSshPublicKey ListServers ListTagsForResource ListUsers StartServer StopServer TagResource TestIdentityProvider UntagResource UpdateServer UpdateUser / }
+  sub operations { qw/CreateServer CreateUser DeleteServer DeleteSshPublicKey DeleteUser DescribeSecurityPolicy DescribeServer DescribeUser ImportSshPublicKey ListSecurityPolicies ListServers ListTagsForResource ListUsers StartServer StopServer TagResource TestIdentityProvider UntagResource UpdateServer UpdateUser / }
 
 1;
 
@@ -139,7 +149,7 @@ package Paws::Transfer;
 
 =head1 NAME
 
-Paws::Transfer - Perl Interface to AWS AWS Transfer for SFTP
+Paws::Transfer - Perl Interface to AWS AWS Transfer Family
 
 =head1 SYNOPSIS
 
@@ -159,17 +169,18 @@ Paws::Transfer - Perl Interface to AWS AWS Transfer for SFTP
 
 =head1 DESCRIPTION
 
-AWS Transfer for SFTP is a fully managed service that enables the
-transfer of files directly into and out of Amazon S3 using the Secure
-File Transfer Protocol (SFTP)E<mdash>also known as Secure Shell (SSH)
-File Transfer Protocol. AWS helps you seamlessly migrate your file
-transfer workflows to AWS Transfer for SFTPE<mdash>by integrating with
-existing authentication systems, and providing DNS routing with Amazon
-Route 53E<mdash>so nothing changes for your customers and partners, or
-their applications. With your data in S3, you can use it with AWS
-services for processing, analytics, machine learning, and archiving.
-Getting started with AWS Transfer for SFTP (AWS SFTP) is easy; there is
-no infrastructure to buy and set up.
+AWS Transfer Family is a fully managed service that enables the
+transfer of files over the File Transfer Protocol (FTP), File Transfer
+Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol
+(SFTP) directly into and out of Amazon Simple Storage Service (Amazon
+S3). AWS helps you seamlessly migrate your file transfer workflows to
+AWS Transfer Family by integrating with existing authentication
+systems, and providing DNS routing with Amazon Route 53 so nothing
+changes for your customers and partners, or their applications. With
+your data in Amazon S3, you can use it with AWS services for
+processing, analytics, machine learning, and archiving. Getting started
+with AWS Transfer Family is easy since there is no infrastructure to
+buy and set up.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transfer-2018-11-05>
 
@@ -179,6 +190,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 CreateServer
 
 =over
+
+=item [Certificate => Str]
+
+=item [Domain => Str]
 
 =item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
 
@@ -192,6 +207,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =item [LoggingRole => Str]
 
+=item [Protocols => ArrayRef[Str|Undef]]
+
+=item [SecurityPolicyName => Str]
+
 =item [Tags => ArrayRef[L<Paws::Transfer::Tag>]]
 
 
@@ -201,10 +220,11 @@ Each argument is described in detail in: L<Paws::Transfer::CreateServer>
 
 Returns: a L<Paws::Transfer::CreateServerResponse> instance
 
-Instantiates an autoscaling virtual server based on Secure File
-Transfer Protocol (SFTP) in AWS. When you make updates to your server
-or when you work with users, use the service-generated C<ServerId>
-property that is assigned to the newly created server.
+Instantiates an autoscaling virtual server based on the selected file
+transfer protocol in AWS. When you make updates to your file transfer
+protocol-enabled server or when you work with users, use the
+service-generated C<ServerId> property that is assigned to the newly
+created server.
 
 
 =head2 CreateUser
@@ -225,6 +245,8 @@ property that is assigned to the newly created server.
 
 =item [Policy => Str]
 
+=item [PosixProfile => L<Paws::Transfer::PosixProfile>]
+
 =item [SshPublicKeyBody => Str]
 
 =item [Tags => ArrayRef[L<Paws::Transfer::Tag>]]
@@ -236,9 +258,9 @@ Each argument is described in detail in: L<Paws::Transfer::CreateUser>
 
 Returns: a L<Paws::Transfer::CreateUserResponse> instance
 
-Creates a user and associates them with an existing Secure File
-Transfer Protocol (SFTP) server. You can only create and associate
-users with SFTP servers that have the C<IdentityProviderType> set to
+Creates a user and associates them with an existing file transfer
+protocol-enabled server. You can only create and associate users with
+servers that have the C<IdentityProviderType> set to
 C<SERVICE_MANAGED>. Using parameters for C<CreateUser>, you can specify
 the user name, set the home directory, store the user's public key, and
 assign the user's AWS Identity and Access Management (IAM) role. You
@@ -259,8 +281,7 @@ Each argument is described in detail in: L<Paws::Transfer::DeleteServer>
 
 Returns: nothing
 
-Deletes the Secure File Transfer Protocol (SFTP) server that you
-specify.
+Deletes the file transfer protocol-enabled server that you specify.
 
 No response returns from this operation.
 
@@ -302,11 +323,32 @@ Each argument is described in detail in: L<Paws::Transfer::DeleteUser>
 
 Returns: nothing
 
-Deletes the user belonging to the server you specify.
+Deletes the user belonging to a file transfer protocol-enabled server
+you specify.
 
 No response returns from this operation.
 
 When you delete a user from a server, the user's information is lost.
+
+
+=head2 DescribeSecurityPolicy
+
+=over
+
+=item SecurityPolicyName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transfer::DescribeSecurityPolicy>
+
+Returns: a L<Paws::Transfer::DescribeSecurityPolicyResponse> instance
+
+Describes the security policy that is attached to your file transfer
+protocol-enabled server. The response contains a description of the
+security policy's properties. For more information about security
+policies, see Working with security policies
+(https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html).
 
 
 =head2 DescribeServer
@@ -322,11 +364,11 @@ Each argument is described in detail in: L<Paws::Transfer::DescribeServer>
 
 Returns: a L<Paws::Transfer::DescribeServerResponse> instance
 
-Describes the server that you specify by passing the C<ServerId>
-parameter.
+Describes a file transfer protocol-enabled server that you specify by
+passing the C<ServerId> parameter.
 
-The response contains a description of the server's properties. When
-you set C<EndpointType> to VPC, the response will contain the
+The response contains a description of a server's properties. When you
+set C<EndpointType> to VPC, the response will contain the
 C<EndpointDetails>.
 
 
@@ -345,8 +387,8 @@ Each argument is described in detail in: L<Paws::Transfer::DescribeUser>
 
 Returns: a L<Paws::Transfer::DescribeUserResponse> instance
 
-Describes the user assigned to a specific server, as identified by its
-C<ServerId> property.
+Describes the user assigned to the specific file transfer
+protocol-enabled server, as identified by its C<ServerId> property.
 
 The response from this call returns the properties of the user
 associated with the C<ServerId> value that was specified.
@@ -370,11 +412,30 @@ Each argument is described in detail in: L<Paws::Transfer::ImportSshPublicKey>
 Returns: a L<Paws::Transfer::ImportSshPublicKeyResponse> instance
 
 Adds a Secure Shell (SSH) public key to a user account identified by a
-C<UserName> value assigned to a specific server, identified by
-C<ServerId>.
+C<UserName> value assigned to the specific file transfer
+protocol-enabled server, identified by C<ServerId>.
 
 The response returns the C<UserName> value, the C<ServerId> value, and
 the name of the C<SshPublicKeyId>.
+
+
+=head2 ListSecurityPolicies
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transfer::ListSecurityPolicies>
+
+Returns: a L<Paws::Transfer::ListSecurityPoliciesResponse> instance
+
+Lists the security policies that are attached to your file transfer
+protocol-enabled servers.
 
 
 =head2 ListServers
@@ -392,8 +453,8 @@ Each argument is described in detail in: L<Paws::Transfer::ListServers>
 
 Returns: a L<Paws::Transfer::ListServersResponse> instance
 
-Lists the Secure File Transfer Protocol (SFTP) servers that are
-associated with your AWS account.
+Lists the file transfer protocol-enabled servers that are associated
+with your AWS account.
 
 
 =head2 ListTagsForResource
@@ -434,8 +495,8 @@ Each argument is described in detail in: L<Paws::Transfer::ListUsers>
 
 Returns: a L<Paws::Transfer::ListUsersResponse> instance
 
-Lists the users for the server that you specify by passing the
-C<ServerId> parameter.
+Lists the users for a file transfer protocol-enabled server that you
+specify by passing the C<ServerId> parameter.
 
 
 =head2 StartServer
@@ -451,10 +512,10 @@ Each argument is described in detail in: L<Paws::Transfer::StartServer>
 
 Returns: nothing
 
-Changes the state of a Secure File Transfer Protocol (SFTP) server from
-C<OFFLINE> to C<ONLINE>. It has no impact on an SFTP server that is
-already C<ONLINE>. An C<ONLINE> server can accept and process file
-transfer jobs.
+Changes the state of a file transfer protocol-enabled server from
+C<OFFLINE> to C<ONLINE>. It has no impact on a server that is already
+C<ONLINE>. An C<ONLINE> server can accept and process file transfer
+jobs.
 
 The state of C<STARTING> indicates that the server is in an
 intermediate state, either not fully able to respond, or not fully
@@ -476,11 +537,14 @@ Each argument is described in detail in: L<Paws::Transfer::StopServer>
 
 Returns: nothing
 
-Changes the state of an SFTP server from C<ONLINE> to C<OFFLINE>. An
-C<OFFLINE> server cannot accept and process file transfer jobs.
-Information tied to your server such as server and user properties are
-not affected by stopping your server. Stopping a server will not reduce
-or impact your Secure File Transfer Protocol (SFTP) endpoint billing.
+Changes the state of a file transfer protocol-enabled server from
+C<ONLINE> to C<OFFLINE>. An C<OFFLINE> server cannot accept and process
+file transfer jobs. Information tied to your server, such as server and
+user properties, are not affected by stopping your server.
+
+Stopping the server will not reduce or impact your file transfer
+protocol endpoint billing; you must delete the server to stop being
+billed.
 
 The state of C<STOPPING> indicates that the server is in an
 intermediate state, either not fully able to respond, or not fully
@@ -519,6 +583,10 @@ There is no response returned from this call.
 
 =item UserName => Str
 
+=item [ServerProtocol => Str]
+
+=item [SourceIp => Str]
+
 =item [UserPassword => Str]
 
 
@@ -528,12 +596,12 @@ Each argument is described in detail in: L<Paws::Transfer::TestIdentityProvider>
 
 Returns: a L<Paws::Transfer::TestIdentityProviderResponse> instance
 
-If the C<IdentityProviderType> of the server is C<API_Gateway>, tests
-whether your API Gateway is set up successfully. We highly recommend
-that you call this operation to test your authentication method as soon
-as you create your server. By doing so, you can troubleshoot issues
-with the API Gateway integration to ensure that your users can
-successfully use the service.
+If the C<IdentityProviderType> of a file transfer protocol-enabled
+server is C<API_Gateway>, tests whether your API Gateway is set up
+successfully. We highly recommend that you call this operation to test
+your authentication method as soon as you create your server. By doing
+so, you can troubleshoot issues with the API Gateway integration to
+ensure that your users can successfully use the service.
 
 
 =head2 UntagResource
@@ -564,6 +632,8 @@ No response is returned from this call.
 
 =item ServerId => Str
 
+=item [Certificate => Str]
+
 =item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
 
 =item [EndpointType => Str]
@@ -574,6 +644,10 @@ No response is returned from this call.
 
 =item [LoggingRole => Str]
 
+=item [Protocols => ArrayRef[Str|Undef]]
+
+=item [SecurityPolicyName => Str]
+
 
 =back
 
@@ -581,10 +655,11 @@ Each argument is described in detail in: L<Paws::Transfer::UpdateServer>
 
 Returns: a L<Paws::Transfer::UpdateServerResponse> instance
 
-Updates the server properties after that server has been created.
+Updates the file transfer protocol-enabled server's properties after
+that server has been created.
 
-The C<UpdateServer> call returns the C<ServerId> of the Secure File
-Transfer Protocol (SFTP) server you updated.
+The C<UpdateServer> call returns the C<ServerId> of the server you
+updated.
 
 
 =head2 UpdateUser
@@ -602,6 +677,8 @@ Transfer Protocol (SFTP) server you updated.
 =item [HomeDirectoryType => Str]
 
 =item [Policy => Str]
+
+=item [PosixProfile => L<Paws::Transfer::PosixProfile>]
 
 =item [Role => Str]
 

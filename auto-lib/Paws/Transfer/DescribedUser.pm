@@ -6,6 +6,7 @@ package Paws::Transfer::DescribedUser;
   has HomeDirectoryMappings => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::HomeDirectoryMapEntry]');
   has HomeDirectoryType => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
+  has PosixProfile => (is => 'ro', isa => 'Paws::Transfer::PosixProfile');
   has Role => (is => 'ro', isa => 'Str');
   has SshPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::SshPublicKey]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
@@ -41,41 +42,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::D
 
 =head1 DESCRIPTION
 
-Returns properties of the user that you want to describe.
+Describes the properties of a user that was specified.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-This property contains the unique Amazon Resource Name (ARN) for the
-user that was requested to be described.
+Specifies the unique Amazon Resource Name (ARN) for the user that was
+requested to be described.
 
 
 =head2 HomeDirectory => Str
 
-This property specifies the landing directory (or folder), which is the
-location that files are written to or read from in an Amazon S3 bucket
-for the described user. An example is C</I<your s3 bucket
-name>/home/I<username> >.
+Specifies the landing directory (or folder), which is the location that
+files are written to or read from in an Amazon S3 bucket, for the
+described user. An example is I<
+C<your-Amazon-S3-bucket-nameE<gt>/home/username> >.
 
 
 =head2 HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]
 
-Logical directory mappings that you specified for what S3 paths and
-keys should be visible to your user and how you want to make them
-visible. You will need to specify the "C<Entry>" and "C<Target>" pair,
-where C<Entry> shows how the path is made visible and C<Target> is the
-actual S3 path. If you only specify a target, it will be displayed as
-is. You will need to also make sure that your AWS IAM Role provides
-access to paths in C<Target>.
+Specifies the logical directory mappings that specify what Amazon S3
+paths and keys should be visible to your user and how you want to make
+them visible. You will need to specify the "C<Entry>" and "C<Target>"
+pair, where C<Entry> shows how the path is made visible and C<Target>
+is the actual Amazon S3 path. If you only specify a target, it will be
+displayed as is. You will need to also make sure that your AWS Identity
+and Access Management (IAM) role provides access to paths in C<Target>.
 
-In most cases, you can use this value instead of the scope down policy
-to lock your user down to the designated home directory ("chroot"). To
-do this, you can set C<Entry> to '/' and set C<Target> to the
-HomeDirectory parameter value.
-
-In most cases, you can use this value instead of the scope down policy
+In most cases, you can use this value instead of the scope-down policy
 to lock your user down to the designated home directory ("chroot"). To
 do this, you can set C<Entry> to '/' and set C<Target> to the
 HomeDirectory parameter value.
@@ -83,12 +79,13 @@ HomeDirectory parameter value.
 
 =head2 HomeDirectoryType => Str
 
-The type of landing directory (folder) you mapped for your users' to
-see when they log into the SFTP server. If you set it to C<PATH>, the
-user will see the absolute Amazon S3 bucket paths as is in their SFTP
-clients. If you set it C<LOGICAL>, you will need to provide mappings in
-the C<HomeDirectoryMappings> for how you want to make S3 paths visible
-to your user.
+Specifies the type of landing directory (folder) you mapped for your
+users to see when they log into the file transfer protocol-enabled
+server. If you set it to C<PATH>, the user will see the absolute Amazon
+S3 bucket paths as is in their file transfer protocol clients. If you
+set it C<LOGICAL>, you will need to provide mappings in the
+C<HomeDirectoryMappings> for how you want to make Amazon S3 paths
+visible to your users.
 
 
 =head2 Policy => Str
@@ -96,35 +93,38 @@ to your user.
 Specifies the name of the policy in use for the described user.
 
 
+=head2 PosixProfile => L<Paws::Transfer::PosixProfile>
+
+
+
+
 =head2 Role => Str
 
-This property specifies the IAM role that controls your user's access
-to your Amazon S3 bucket. The policies attached to this role will
-determine the level of access you want to provide your users when
-transferring files into and out of your Amazon S3 bucket or buckets.
-The IAM role should also contain a trust relationship that allows the
-SFTP server to access your resources when servicing your SFTP user's
-transfer requests.
+Specifies the IAM role that controls your users' access to your Amazon
+S3 bucket. The policies attached to this role will determine the level
+of access you want to provide your users when transferring files into
+and out of your Amazon S3 bucket or buckets. The IAM role should also
+contain a trust relationship that allows a server to access your
+resources when servicing your users' transfer requests.
 
 
 =head2 SshPublicKeys => ArrayRef[L<Paws::Transfer::SshPublicKey>]
 
-This property contains the public key portion of the Secure Shell (SSH)
-keys stored for the described user.
+Specifies the public key portion of the Secure Shell (SSH) keys stored
+for the described user.
 
 
 =head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]
 
-This property contains the key-value pairs for the user requested. Tag
-can be used to search for and group users for a variety of purposes.
+Specifies the key-value pairs for the user requested. Tag can be used
+to search for and group users for a variety of purposes.
 
 
 =head2 UserName => Str
 
-This property is the name of the user that was requested to be
-described. User names are used for authentication purposes. This is the
-string that will be used by your user when they log in to your SFTP
-server.
+Specifies the name of the user that was requested to be described. User
+names are used for authentication purposes. This is the string that
+will be used by your user when they log in to your server.
 
 
 

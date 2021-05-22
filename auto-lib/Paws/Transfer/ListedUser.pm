@@ -45,45 +45,45 @@ Returns properties of the user that you specify.
 
 =head2 B<REQUIRED> Arn => Str
 
-This property is the unique Amazon Resource Name (ARN) for the user
-that you want to learn about.
+Provides the unique Amazon Resource Name (ARN) for the user that you
+want to learn about.
 
 
 =head2 HomeDirectory => Str
 
-This value specifies the location that files are written to or read
-from an Amazon S3 bucket for the user you specify by their ARN.
+Specifies the location that files are written to or read from an Amazon
+S3 bucket for the user you specify by their ARN.
 
 
 =head2 HomeDirectoryType => Str
 
-The type of landing directory (folder) you mapped for your users' home
-directory. If you set it to C<PATH>, the user will see the absolute
-Amazon S3 bucket paths as is in their SFTP clients. If you set it
-C<LOGICAL>, you will need to provide mappings in the
-C<HomeDirectoryMappings> for how you want to make S3 paths visible to
-your user.
+Specifies the type of landing directory (folder) you mapped for your
+users' home directory. If you set it to C<PATH>, the user will see the
+absolute Amazon S3 bucket paths as is in their file transfer protocol
+clients. If you set it C<LOGICAL>, you will need to provide mappings in
+the C<HomeDirectoryMappings> for how you want to make Amazon S3 paths
+visible to your users.
 
 
 =head2 Role => Str
 
-The role in use by this user. A I<role> is an AWS Identity and Access
-Management (IAM) entity that, in this case, allows the SFTP server to
-act on a user's behalf. It allows the server to inherit the trust
-relationship that enables that user to perform file operations to their
-Amazon S3 bucket.
+Specifies the role that is in use by this user. A I<role> is an AWS
+Identity and Access Management (IAM) entity that, in this case, allows
+a file transfer protocol-enabled server to act on a user's behalf. It
+allows the server to inherit the trust relationship that enables that
+user to perform file operations to their Amazon S3 bucket.
 
 
 =head2 SshPublicKeyCount => Int
 
-This value is the number of SSH public keys stored for the user you
+Specifies the number of SSH public keys stored for the user you
 specified.
 
 
 =head2 UserName => Str
 
-The name of the user whose ARN was specified. User names are used for
-authentication purposes.
+Specifies the name of the user whose ARN was specified. User names are
+used for authentication purposes.
 
 
 

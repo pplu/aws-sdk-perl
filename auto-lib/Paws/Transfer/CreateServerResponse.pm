@@ -16,7 +16,7 @@ Paws::Transfer::CreateServerResponse
 
 =head2 B<REQUIRED> ServerId => Str
 
-The service-assigned ID of the SFTP server that is created.
+The service-assigned ID of the server that is created.
 
 
 =head2 _request_id => Str

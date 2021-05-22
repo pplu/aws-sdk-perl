@@ -2,6 +2,8 @@
 package Paws::Transfer::TestIdentityProvider;
   use Moose;
   has ServerId => (is => 'ro', isa => 'Str', required => 1);
+  has ServerProtocol => (is => 'ro', isa => 'Str');
+  has SourceIp => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
   has UserPassword => (is => 'ro', isa => 'Str');
 
@@ -21,7 +23,7 @@ Paws::Transfer::TestIdentityProvider - Arguments for method TestIdentityProvider
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TestIdentityProvider on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method TestIdentityProvider.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TestIdentityProvider.
@@ -30,9 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $transfer = Paws->service('Transfer');
     my $TestIdentityProviderResponse = $transfer->TestIdentityProvider(
-      ServerId     => 'MyServerId',
-      UserName     => 'MyUserName',
-      UserPassword => 'MyUserPassword',    # OPTIONAL
+      ServerId       => 'MyServerId',
+      UserName       => 'MyUserName',
+      ServerProtocol => 'SFTP',              # OPTIONAL
+      SourceIp       => 'MySourceIp',        # OPTIONAL
+      UserPassword   => 'MyUserPassword',    # OPTIONAL
     );
 
     # Results:
@@ -56,9 +60,40 @@ authentication method is tested with a user name and password.
 
 
 
+=head2 ServerProtocol => Str
+
+The type of file transfer protocol to be tested.
+
+The available protocols are:
+
+=over
+
+=item *
+
+Secure Shell (SSH) File Transfer Protocol (SFTP)
+
+=item *
+
+File Transfer Protocol Secure (FTPS)
+
+=item *
+
+File Transfer Protocol (FTP)
+
+=back
+
+
+Valid values are: C<"SFTP">, C<"FTP">, C<"FTPS">
+
+=head2 SourceIp => Str
+
+The source IP address of the user account to be tested.
+
+
+
 =head2 B<REQUIRED> UserName => Str
 
-This request parameter is the name of the user account to be tested.
+The name of the user account to be tested.
 
 
 

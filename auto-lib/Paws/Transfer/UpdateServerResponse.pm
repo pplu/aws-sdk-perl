@@ -16,8 +16,8 @@ Paws::Transfer::UpdateServerResponse
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server that the user
-account is assigned to.
+A system-assigned unique identifier for a server that the user account
+is assigned to.
 
 
 =head2 _request_id => Str

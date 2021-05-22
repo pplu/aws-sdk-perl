@@ -2,6 +2,7 @@
 package Paws::Transfer::ListedServer;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Domain => (is => 'ro', isa => 'Str');
   has EndpointType => (is => 'ro', isa => 'Str');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
@@ -39,49 +40,56 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::L
 
 =head1 DESCRIPTION
 
-Returns properties of the server that was specified.
+Returns properties of a file transfer protocol-enabled server that was
+specified.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-The unique Amazon Resource Name (ARN) for the server to be listed.
+Specifies the unique Amazon Resource Name (ARN) for a server to be
+listed.
+
+
+=head2 Domain => Str
+
+
 
 
 =head2 EndpointType => Str
 
-The type of VPC endpoint that your SFTP server is connected to. If your
-SFTP server is connected to a VPC endpoint, your server isn't
+Specifies the type of VPC endpoint that your server is connected to. If
+your server is connected to a VPC endpoint, your server isn't
 accessible over the public internet.
 
 
 =head2 IdentityProviderType => Str
 
-The authentication method used to validate a user for the server that
-was specified. This can include Secure Shell (SSH), user name and
-password combinations, or your own custom authentication method. Valid
-values include C<SERVICE_MANAGED> or C<API_GATEWAY>.
+Specifies the authentication method used to validate a user for a
+server that was specified. This can include Secure Shell (SSH), user
+name and password combinations, or your own custom authentication
+method. Valid values include C<SERVICE_MANAGED> or C<API_GATEWAY>.
 
 
 =head2 LoggingRole => Str
 
-The AWS Identity and Access Management entity that allows the server to
-turn on Amazon CloudWatch logging.
+Specifies the AWS Identity and Access Management (IAM) role that allows
+a server to turn on Amazon CloudWatch logging.
 
 
 =head2 ServerId => Str
 
-This value is the unique system assigned identifier for the SFTP
-servers that were listed.
+Specifies the unique system assigned identifier for the servers that
+were listed.
 
 
 =head2 State => Str
 
-This property describes the condition of the SFTP server for the server
-that was described. A value of C<ONLINE>E<gt> indicates that the server
-can accept jobs and transfer files. A C<State> value of C<OFFLINE>
-means that the server cannot perform file transfer operations.
+Specifies the condition of a server for the server that was described.
+A value of C<ONLINE> indicates that the server can accept jobs and
+transfer files. A C<State> value of C<OFFLINE> means that the server
+cannot perform file transfer operations.
 
 The states of C<STARTING> and C<STOPPING> indicate that the server is
 in an intermediate state, either not fully able to respond, or not
@@ -91,9 +99,8 @@ indicate an error condition.
 
 =head2 UserCount => Int
 
-This property is a numeric value that indicates the number of users
-that are assigned to the SFTP server you specified with the
-C<ServerId>.
+Specifies the number of users that are assigned to a server you
+specified with the C<ServerId>.
 
 
 

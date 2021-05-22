@@ -36,29 +36,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::S
 =head1 DESCRIPTION
 
 Provides information about the public Secure Shell (SSH) key that is
-associated with a user account for a specific server (as identified by
-C<ServerId>). The information returned includes the date the key was
-imported, the public key contents, and the public key ID. A user can
-store more than one SSH public key associated with their user name on a
-specific SFTP server.
+associated with a user account for the specific file transfer
+protocol-enabled server (as identified by C<ServerId>). The information
+returned includes the date the key was imported, the public key
+contents, and the public key ID. A user can store more than one SSH
+public key associated with their user name on a specific server.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DateImported => Str
 
-The date that the public key was added to the user account.
+Specifies the date that the public key was added to the user account.
 
 
 =head2 B<REQUIRED> SshPublicKeyBody => Str
 
-The content of the SSH public key as specified by the C<PublicKeyId>.
+Specifies the content of the SSH public key as specified by the
+C<PublicKeyId>.
 
 
 =head2 B<REQUIRED> SshPublicKeyId => Str
 
-The C<SshPublicKeyId> parameter contains the identifier of the public
-key.
+Specifies the C<SshPublicKeyId> parameter contains the identifier of
+the public key.
 
 
 

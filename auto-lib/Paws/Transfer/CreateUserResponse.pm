@@ -17,12 +17,12 @@ Paws::Transfer::CreateUserResponse
 
 =head2 B<REQUIRED> ServerId => Str
 
-The ID of the SFTP server that the user is attached to.
+The ID of the server that the user is attached to.
 
 
 =head2 B<REQUIRED> UserName => Str
 
-A unique string that identifies a user account associated with an SFTP
+A unique string that identifies a user account associated with a
 server.
 
 

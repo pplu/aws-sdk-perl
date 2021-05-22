@@ -21,7 +21,7 @@ Paws::Transfer::ListUsers - Arguments for method ListUsers on L<Paws::Transfer>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListUsers on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method ListUsers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListUsers.
@@ -66,8 +66,8 @@ additional users.
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for a Secure File Transfer Protocol
-(SFTP) server that has users assigned to it.
+A system-assigned unique identifier for a server that has users
+assigned to it.
 
 
 

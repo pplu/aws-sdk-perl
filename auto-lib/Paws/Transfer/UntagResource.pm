@@ -20,7 +20,7 @@ Paws::Transfer::UntagResource - Arguments for method UntagResource on L<Paws::Tr
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UntagResource on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method UntagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagResource.
@@ -44,9 +44,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> Arn => Str
 
-This is the value of the resource that will have the tag removed. An
-Amazon Resource Name (ARN) is an identifier for a specific AWS
-resource, such as a server, user, or role.
+The value of the resource that will have the tag removed. An Amazon
+Resource Name (ARN) is an identifier for a specific AWS resource, such
+as a server, user, or role.
 
 
 

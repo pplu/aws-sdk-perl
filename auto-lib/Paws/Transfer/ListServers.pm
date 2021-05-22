@@ -20,7 +20,7 @@ Paws::Transfer::ListServers - Arguments for method ListServers on L<Paws::Transf
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListServers on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method ListServers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListServers.

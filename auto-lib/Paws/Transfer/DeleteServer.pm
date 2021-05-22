@@ -19,7 +19,7 @@ Paws::Transfer::DeleteServer - Arguments for method DeleteServer on L<Paws::Tran
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteServer on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method DeleteServer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteServer.
@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> ServerId => Str
 
-A unique system-assigned identifier for an SFTP server instance.
+A unique system-assigned identifier for a server instance.
 
 
 

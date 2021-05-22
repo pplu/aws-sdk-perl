@@ -20,7 +20,7 @@ Paws::Transfer::DescribeUser - Arguments for method DescribeUser on L<Paws::Tran
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeUser on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method DescribeUser.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeUser.
@@ -48,16 +48,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server that has this
-user assigned.
+A system-assigned unique identifier for a server that has this user
+assigned.
 
 
 
 =head2 B<REQUIRED> UserName => Str
 
 The name of the user assigned to one or more servers. User names are
-part of the sign-in credentials to use the AWS Transfer for SFTP
-service and perform file transfer tasks.
+part of the sign-in credentials to use the AWS Transfer Family service
+and perform file transfer tasks.
 
 
 
