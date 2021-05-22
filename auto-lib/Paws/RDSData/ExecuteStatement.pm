@@ -46,37 +46,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IncludeResultMetadata => 1,                  # OPTIONAL
       Parameters            => [
         {
-          Name => 'MyParameterName',               # OPTIONAL
-          TypeHint => 'DATE', # values: DATE, DECIMAL, TIME, TIMESTAMP; OPTIONAL
-          Value    => {
+          Name     => 'MyParameterName',           # OPTIONAL
+          TypeHint => 'JSON'
+          ,    # values: JSON, UUID, TIMESTAMP, DATE, TIME, DECIMAL; OPTIONAL
+          Value => {
             ArrayValue => {
-              ArrayValues => [ <ArrayValue>, ... ],    # OPTIONAL
+              ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
               BooleanValues => [
-                1, ...                                 # OPTIONAL
-              ],                                       # OPTIONAL
+                1, ...                                   # OPTIONAL
+              ],                                         # OPTIONAL
               DoubleValues => [
-                1, ...                                 # OPTIONAL
-              ],                                       # OPTIONAL
+                1, ...                                   # OPTIONAL
+              ],                                         # OPTIONAL
               LongValues => [
-                1, ...                                 # OPTIONAL
-              ],                                       # OPTIONAL
-              StringValues => [
-                'MyString', ...                        # OPTIONAL
-              ],                                       # OPTIONAL
+                1, ...                                   # OPTIONAL
+              ],                                         # OPTIONAL
+              StringValues => [ 'MyString', ... ],       # OPTIONAL
             },    # OPTIONAL
             BlobValue    => 'BlobBlob',    # OPTIONAL
             BooleanValue => 1,             # OPTIONAL
             DoubleValue  => 1,             # OPTIONAL
             IsNull       => 1,             # OPTIONAL
             LongValue    => 1,             # OPTIONAL
-            StringValue  => 'MyString',    # OPTIONAL
+            StringValue  => 'MyString',
           },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
       ResultSetOptions => {
         DecimalReturnType =>
-          'DOUBLE_OR_LONG',    # values: DOUBLE_OR_LONG, STRING; OPTIONAL
+          'STRING',    # values: STRING, DOUBLE_OR_LONG; OPTIONAL
       },    # OPTIONAL
       Schema        => 'MyDbName',    # OPTIONAL
       TransactionId => 'MyId',        # OPTIONAL
@@ -126,6 +125,8 @@ A value that indicates whether to include metadata in the results.
 
 The parameters for the SQL statement.
 
+Array parameters are not supported.
+
 
 
 =head2 B<REQUIRED> ResourceArn => Str
@@ -143,6 +144,8 @@ Options that control how the result set is returned.
 =head2 Schema => Str
 
 The name of the database schema.
+
+Currently, the C<schema> parameter isn't supported.
 
 
 

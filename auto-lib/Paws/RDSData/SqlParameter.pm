@@ -48,10 +48,15 @@ The name of the parameter.
 =head2 TypeHint => Str
 
 A hint that specifies the correct object type for data type mapping.
-
-B<Values:>
+Possible values are as follows:
 
 =over
+
+=item *
+
+C<DATE> - The corresponding C<String> parameter value is sent as an
+object of C<DATE> type to the database. The accepted format is
+C<YYYY-MM-DD>.
 
 =item *
 
@@ -60,9 +65,8 @@ object of C<DECIMAL> type to the database.
 
 =item *
 
-C<TIMESTAMP> - The corresponding C<String> parameter value is sent as
-an object of C<TIMESTAMP> type to the database. The accepted format is
-C<YYYY-MM-DD HH:MM:SS[.FFF]>.
+C<JSON> - The corresponding C<String> parameter value is sent as an
+object of C<JSON> type to the database.
 
 =item *
 
@@ -72,9 +76,14 @@ C<HH:MM:SS[.FFF]>.
 
 =item *
 
-C<DATE> - The corresponding C<String> parameter value is sent as an
-object of C<DATE> type to the database. The accepted format is
-C<YYYY-MM-DD>.
+C<TIMESTAMP> - The corresponding C<String> parameter value is sent as
+an object of C<TIMESTAMP> type to the database. The accepted format is
+C<YYYY-MM-DD HH:MM:SS[.FFF]>.
+
+=item *
+
+C<UUID> - The corresponding C<String> parameter value is sent as an
+object of C<UUID> type to the database.
 
 =back
 
