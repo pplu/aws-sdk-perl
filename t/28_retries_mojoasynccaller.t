@@ -14,7 +14,7 @@ use Test::CustomCredentials;
 
 # Do a Volkswagen if we are in Travis. Timeout tests are very instable (since
 # when running in Travis)
-if ($ENV{IN_TRAVIS} == 1 or not defined $ENV{AUTHOR_TESTS}) {
+if ($ENV{TRAVIS} or not defined $ENV{AUTHOR_TESTS}) {
   ok(1, 'Travis CI detected. Skipping timeout tests');
   done_testing;
   exit

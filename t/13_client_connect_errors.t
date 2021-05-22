@@ -10,7 +10,7 @@ use lib 't/lib';
 
 use Test::CustomCredentials;
 
-my $match_message_tests = $ENV{IN_TRAVIS} == 1;
+my $match_message_tests = $ENV{CI};
 
 my $closed_server_endpoint = 'http://localhost:65511';
 
@@ -25,7 +25,7 @@ throws_ok {
              )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Connection refused/, 'Correct message') if ($match_message_tests);
+like($@->message, qr/Connection refused|Operation timed out/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 diag "LWP caller";
 
@@ -44,7 +44,7 @@ throws_ok {
                )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Connection refused/, 'Correct message') if ($match_message_tests);
+like($@->message, qr/Connection refused|Operation timed out/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 MOJO:
@@ -87,7 +87,7 @@ throws_ok {
                )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Connection refused/, 'Correct message') if ($match_message_tests);
+like($@->message, qr/Connection refused|Broken pipe/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 END:
