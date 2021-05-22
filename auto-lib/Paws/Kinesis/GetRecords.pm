@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ChildShards        = $GetRecordsOutput->ChildShards;
     my $MillisBehindLatest = $GetRecordsOutput->MillisBehindLatest;
     my $NextShardIterator  = $GetRecordsOutput->NextShardIterator;
     my $Records            = $GetRecordsOutput->Records;
@@ -50,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 The maximum number of records to return. Specify a value of up to
 10,000. If you specify a value that is greater than 10,000, GetRecords
-throws C<InvalidArgumentException>.
+throws C<InvalidArgumentException>. The default value is 10,000.
 
 
 

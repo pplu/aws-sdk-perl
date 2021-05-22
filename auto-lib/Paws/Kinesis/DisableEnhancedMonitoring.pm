@@ -97,7 +97,7 @@ C<ALL>
 
 For more information, see Monitoring the Amazon Kinesis Data Streams
 Service with Amazon CloudWatch
-(http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html)
+(https://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html)
 in the I<Amazon Kinesis Data Streams Developer Guide>.
 
 

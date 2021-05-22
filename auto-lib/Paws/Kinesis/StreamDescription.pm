@@ -115,7 +115,8 @@ Master key owned by Kinesis Data Streams: C<alias/aws/kinesis>
 
 =head2 B<REQUIRED> RetentionPeriodHours => Int
 
-The current retention period, in hours.
+The current retention period, in hours. Minimum value of 24. Maximum
+value of 168.
 
 
 =head2 B<REQUIRED> Shards => ArrayRef[L<Paws::Kinesis::Shard>]

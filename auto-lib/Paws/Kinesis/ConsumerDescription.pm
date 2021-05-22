@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Co
 
 =head1 DESCRIPTION
 
-An object that represents the details of a registered consumer.
+An object that represents the details of a registered consumer. This
+type of object is returned by DescribeStreamConsumer.
 
 =head1 ATTRIBUTES
 

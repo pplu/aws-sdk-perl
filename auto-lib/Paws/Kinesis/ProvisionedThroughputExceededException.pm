@@ -36,10 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Pr
 The request rate for the stream is too high, or the requested data is
 too large for the available throughput. Reduce the frequency or size of
 your requests. For more information, see Streams Limits
-(http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html)
+(https://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html)
 in the I<Amazon Kinesis Data Streams Developer Guide>, and Error
 Retries and Exponential Backoff in AWS
-(http://docs.aws.amazon.com/general/latest/gr/api-retries.html) in the
+(https://docs.aws.amazon.com/general/latest/gr/api-retries.html) in the
 I<AWS General Reference>.
 
 =head1 ATTRIBUTES
