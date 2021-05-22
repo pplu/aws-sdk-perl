@@ -71,9 +71,8 @@ field is left empty, all activity types are returned.
 
 =head2 AuthenticationToken => Str
 
-Amazon WorkDocs authentication token. Do not set this field when using
-administrative API actions, as in accessing the API using AWS
-credentials.
+Amazon WorkDocs authentication token. Not required when using AWS
+administrator credentials to access the API.
 
 
 
