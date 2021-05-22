@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 B<REQUIRED> ResourceName => Str
 
 The Amazon DocumentDB resource that the tags are added to. This value
-is an Amazon Resource Name (ARN).
+is an Amazon Resource Name .
 
 
 

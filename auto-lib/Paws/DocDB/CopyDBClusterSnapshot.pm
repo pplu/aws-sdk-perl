@@ -85,8 +85,8 @@ To copy an encrypted cluster snapshot to another AWS Region, set
 C<KmsKeyId> to the AWS KMS key ID that you want to use to encrypt the
 copy of the cluster snapshot in the destination Region. AWS KMS
 encryption keys are specific to the AWS Region that they are created
-in, and you can't use encryption keys from one Region in another
-Region.
+in, and you can't use encryption keys from one AWS Region in another
+AWS Region.
 
 If you copy an unencrypted cluster snapshot and specify a value for the
 C<KmsKeyId> parameter, an error is returned.
@@ -98,39 +98,40 @@ C<KmsKeyId> parameter, an error is returned.
 The URL that contains a Signature Version 4 signed request for the
 C<CopyDBClusterSnapshot> API action in the AWS Region that contains the
 source cluster snapshot to copy. You must use the C<PreSignedUrl>
-parameter when copying an encrypted cluster snapshot from another AWS
-Region.
+parameter when copying a cluster snapshot from another AWS Region.
+
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
 
 The presigned URL must be a valid request for the
-C<CopyDBSClusterSnapshot> API action that can be executed in the source
-AWS Region that contains the encrypted DB cluster snapshot to be
-copied. The presigned URL request must contain the following parameter
-values:
+C<CopyDBClusterSnapshot> API action that can be executed in the source
+AWS Region that contains the cluster snapshot to be copied. The
+presigned URL request must contain the following parameter values:
 
 =over
 
 =item *
 
-C<KmsKeyId> - The AWS KMS key identifier for the key to use to encrypt
-the copy of the cluster snapshot in the destination AWS Region. This is
-the same identifier for both the C<CopyDBClusterSnapshot> action that
-is called in the destination AWS Region, and the action contained in
-the presigned URL.
+C<SourceRegion> - The ID of the region that contains the snapshot to be
+copied.
 
 =item *
 
-C<DestinationRegion> - The name of the AWS Region that the DB cluster
-snapshot will be created in.
+C<SourceDBClusterSnapshotIdentifier> - The identifier for the the
+encrypted cluster snapshot to be copied. This identifier must be in the
+Amazon Resource Name (ARN) format for the source AWS Region. For
+example, if you are copying an encrypted cluster snapshot from the
+us-east-1 AWS Region, then your C<SourceDBClusterSnapshotIdentifier>
+looks something like the following:
+C<arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot>.
 
 =item *
 
-C<SourceDBClusterSnapshotIdentifier> - The cluster snapshot identifier
-for the encrypted cluster snapshot to be copied. This identifier must
-be in the Amazon Resource Name (ARN) format for the source AWS Region.
-For example, if you are copying an encrypted cluster snapshot from the
-us-west-2 AWS Region, then your C<SourceDBClusterSnapshotIdentifier>
-looks like the following example:
-C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:my-cluster-snapshot-20161115>.
+C<TargetDBClusterSnapshotIdentifier> - The identifier for the new
+cluster snapshot to be created. This parameter isn't case sensitive.
 
 =back
 
@@ -142,16 +143,13 @@ C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:my-cluster-snapshot-201611
 The identifier of the cluster snapshot to copy. This parameter is not
 case sensitive.
 
-You can't copy an encrypted, shared cluster snapshot from one AWS
-Region to another.
-
 Constraints:
 
 =over
 
 =item *
 
-Must specify a valid system snapshot in the "available" state.
+Must specify a valid system snapshot in the I<available> state.
 
 =item *
 

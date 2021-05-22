@@ -66,7 +66,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing C<DBClusterParameterGroup>.
+Must not match the name of an existing C<DBClusterParameterGroup>.
 
 =back
 

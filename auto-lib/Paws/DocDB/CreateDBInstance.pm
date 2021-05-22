@@ -82,10 +82,6 @@ AWS Region.
 
 Example: C<us-east-1d>
 
-Constraint: The C<AvailabilityZone> parameter can't be specified if the
-C<MultiAZ> parameter is set to C<true>. The specified Availability Zone
-must be in the same AWS Region as the current endpoint.
-
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
