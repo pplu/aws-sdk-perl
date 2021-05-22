@@ -53,18 +53,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MySavingsPlanRateOperation', ...                      # max: 255
       ],                                                       # OPTIONAL
       Products => [
-        'EC2', ...    # values: EC2, Fargate
+        'EC2', ...    # values: EC2, Fargate, Lambda, SageMaker
       ],              # OPTIONAL
-      SavingsPlanOfferingIds => [ 'MyUUID', ... ],    # OPTIONAL
+      SavingsPlanOfferingIds    => [ 'MyUUID', ... ],    # OPTIONAL
       SavingsPlanPaymentOptions => [
         'All Upfront', ...    # values: All Upfront, Partial Upfront, No Upfront
       ],                      # OPTIONAL
       SavingsPlanTypes => [
-        'Compute', ...        # values: Compute, EC2Instance
+        'Compute', ...        # values: Compute, EC2Instance, SageMaker
       ],                      # OPTIONAL
       ServiceCodes => [
-        'AmazonEC2', ...      # values: AmazonEC2, AmazonECS
-      ],                      # OPTIONAL
+        'AmazonEC2',
+        ... # values: AmazonEC2, AmazonECS, AmazonEKS, AWSLambda, AmazonSageMaker
+      ],    # OPTIONAL
       UsageTypes => [
         'MySavingsPlanRateUsageType', ...    # max: 255
       ],                                     # OPTIONAL

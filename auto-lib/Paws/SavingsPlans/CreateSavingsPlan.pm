@@ -3,6 +3,7 @@ package Paws::SavingsPlans::CreateSavingsPlan;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has Commitment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitment', required => 1);
+  has PurchaseTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'purchaseTime');
   has SavingsPlanOfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'savingsPlanOfferingId', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::SavingsPlans::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has UpfrontPaymentAmount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'upfrontPaymentAmount');
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Commitment            => 'MyAmount',
       SavingsPlanOfferingId => 'MySavingsPlanOfferingId',
       ClientToken           => 'MyClientToken',                    # OPTIONAL
+      PurchaseTime          => '1970-01-01T01:00:00',              # OPTIONAL
       Tags                  => { 'MyTagKey' => 'MyTagValue', },    # OPTIONAL
       UpfrontPaymentAmount  => 'MyAmount',                         # OPTIONAL
     );
@@ -63,6 +65,13 @@ idempotency of the request.
 The hourly commitment, in USD. This is a value between 0.001 and 1
 million. You cannot specify more than three digits after the decimal
 point.
+
+
+
+=head2 PurchaseTime => Str
+
+The time at which to purchase the Savings Plan, in UTC format
+(YYYY-MM-DDTHH:MM:SSZ).
 
 
 

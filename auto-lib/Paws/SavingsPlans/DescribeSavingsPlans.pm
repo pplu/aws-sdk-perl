@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SavingsPlanIds  => [ 'MySavingsPlanId', ... ],     # OPTIONAL
       States          => [
         'payment-pending',
-        ...    # values: payment-pending, payment-failed, active, retired
-      ],       # OPTIONAL
+        ... # values: payment-pending, payment-failed, active, retired, queued, queued-deleted
+      ],    # OPTIONAL
     );
 
     # Results:

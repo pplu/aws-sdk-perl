@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'All Upfront', ...    # values: All Upfront, Partial Upfront, No Upfront
       ],                      # OPTIONAL
       PlanTypes => [
-        'Compute', ...        # values: Compute, EC2Instance
+        'Compute', ...        # values: Compute, EC2Instance, SageMaker
       ],                      # OPTIONAL
       ProductType  => 'EC2',  # OPTIONAL
       ServiceCodes => [
@@ -152,7 +152,7 @@ The plan type.
 
 The product type.
 
-Valid values are: C<"EC2">, C<"Fargate">
+Valid values are: C<"EC2">, C<"Fargate">, C<"Lambda">, C<"SageMaker">
 
 =head2 ServiceCodes => ArrayRef[Str|Undef]
 
