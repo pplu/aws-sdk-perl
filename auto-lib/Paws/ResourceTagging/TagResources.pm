@@ -51,10 +51,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tag
 
 =head2 B<REQUIRED> ResourceARNList => ArrayRef[Str|Undef]
 
-A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-resource. You can specify a minimum of 1 and a maximum of 20 ARNs
-(resources) to tag. An ARN can be set to a maximum of 1600 characters.
-For more information, see Amazon Resource Names (ARNs) and AWS Service
+Specifies the list of ARNs of the resources that you want to apply tags
+to.
+
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
 Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
@@ -63,8 +64,8 @@ in the I<AWS General Reference>.
 
 =head2 B<REQUIRED> Tags => L<Paws::ResourceTagging::TagMap>
 
-The tags that you want to add to the specified resources. A tag
-consists of a key and a value that you define.
+Specifies a list of tags that you want to add to the specified
+resources. A tag consists of a key and a value that you define.
 
 
 

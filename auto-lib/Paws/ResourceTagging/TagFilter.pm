@@ -48,8 +48,8 @@ label that acts like a category for more specific tag values.
 
 =head2 Values => ArrayRef[Str|Undef]
 
-The optional part of a key-value pair that make up a tag. A value acts
-as a descriptor within a tag category (key).
+One part of a key-value pair that make up a tag. A value acts as a
+descriptor within a tag category (key). The value can be empty or null.
 
 
 

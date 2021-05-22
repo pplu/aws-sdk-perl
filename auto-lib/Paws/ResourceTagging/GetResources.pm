@@ -4,6 +4,7 @@ package Paws::ResourceTagging::GetResources;
   has ExcludeCompliantResources => (is => 'ro', isa => 'Bool');
   has IncludeComplianceDetails => (is => 'ro', isa => 'Bool');
   has PaginationToken => (is => 'ro', isa => 'Str');
+  has ResourceARNList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourcesPerPage => (is => 'ro', isa => 'Int');
   has ResourceTypeFilters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::TagFilter]');
@@ -37,7 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExcludeCompliantResources => 1,                      # OPTIONAL
       IncludeComplianceDetails  => 1,                      # OPTIONAL
       PaginationToken           => 'MyPaginationToken',    # OPTIONAL
-      ResourceTypeFilters       => [
+      ResourceARNList           => [
+        'MyResourceARN', ...                               # min: 1, max: 1011
+      ],                                                   # OPTIONAL
+      ResourceTypeFilters => [
         'MyAmazonResourceType', ...                        # max: 256
       ],                                                   # OPTIONAL
       ResourcesPerPage => 1,                               # OPTIONAL
@@ -86,52 +90,56 @@ resources are compliant with the tag policy and to get details.
 
 =head2 PaginationToken => Str
 
-A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-C<PaginationToken>, use that string for this value to request an
-additional page of data.
+Specifies a C<PaginationToken> response value from a previous request
+to indicate that you want the next page of results. Leave this
+parameter empty in your initial request.
+
+
+
+=head2 ResourceARNList => ArrayRef[Str|Undef]
+
+Specifies a list of ARNs of resources for which you want to retrieve
+tag data. You can't specify both this parameter and any of the
+pagination parameters (C<ResourcesPerPage>, C<TagsPerPage>,
+C<PaginationToken>) in the same request. If you specify both, you get
+an C<Invalid Parameter> exception.
+
+If a resource specified by this parameter doesn't exist, it doesn't
+generate an error; it simply isn't included in the response.
+
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
 =head2 ResourcesPerPage => Int
 
-A limit that restricts the number of resources returned by GetResources
-in paginated output. You can set ResourcesPerPage to a minimum of 1
-item and the maximum of 100 items.
+Specifies the maximum number of results to be returned in each page. A
+query can return fewer than this maximum, even if there are more
+results still to return. You should always check the C<PaginationToken>
+response value to see if there are more results. You can specify a
+minimum of 1 and a maximum value of 100.
 
 
 
 =head2 ResourceTypeFilters => ArrayRef[Str|Undef]
 
-The constraints on the resources that you want returned. The format of
-each resource type is C<service[:resourceType]>. For example,
-specifying a resource type of C<ec2> returns all Amazon EC2 resources
-(which includes EC2 instances). Specifying a resource type of
+Specifies the resource types that you want included in the response.
+The format of each resource type is C<service[:resourceType]>. For
+example, specifying a resource type of C<ec2> returns all Amazon EC2
+resources (which includes EC2 instances). Specifying a resource type of
 C<ec2:instance> returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
 embedded in a resource's Amazon Resource Name (ARN). Consult the I<AWS
 General Reference> for the following:
 
-=over
-
-=item *
-
-For a list of service name strings, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
-
-=item *
-
-For resource type strings, see Example ARNs
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
-
-=item *
-
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
-
-=back
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 You can specify multiple resource types by using an array. The array
 can include up to 100 items. Note that the length constraint
@@ -141,9 +149,11 @@ requirement applies to each resource type filter.
 
 =head2 TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>]
 
-A list of TagFilters (keys and values). Each TagFilter specified must
-contain a key with values as optional. A request can include up to 50
-keys, and each key can include up to 20 values.
+Specifies a list of TagFilters (keys and values) to restrict the output
+to only those resources that have the specified tag and, if included,
+the specified value. Each C<TagFilter> must contain a key with values
+optional. A request can include up to 50 keys, and each key can include
+up to 20 values.
 
 Note the following when deciding how to use TagFilters:
 
@@ -151,20 +161,15 @@ Note the following when deciding how to use TagFilters:
 
 =item *
 
-If you I<do> specify a TagFilter, the response returns only those
-resources that are currently associated with the specified tag.
-
-=item *
-
-If you I<don't> specify a TagFilter, the response includes all
-resources that were ever associated with tags. Resources that currently
-don't have associated tags are shown with an empty tag set, like this:
+If you I<don't> specify a C<TagFilter>, the response includes all
+resources that are currently tagged or ever had a tag. Resources that
+currently don't have tags are shown with an empty tag set, like this:
 C<"Tags": []>.
 
 =item *
 
 If you specify more than one filter in a single request, the response
-returns only those resources that satisfy all specified filters.
+returns only those resources that satisfy all filters.
 
 =item *
 
@@ -175,32 +180,32 @@ for that key.
 =item *
 
 If you don't specify any values for a key, the response returns
-resources that are tagged with that key irrespective of the value.
+resources that are tagged with that key and any or no value.
 
-For example, for filters: filter1 = {key1, {value1}}, filter2 = {key2,
-{value2,value3,value4}} , filter3 = {key3}:
+For example, for the following filters: C<filter1= {keyA,{value1}}>,
+C<filter2={keyB,{value2,value3,value4}}>, C<filter3= {keyC}>:
 
 =over
 
 =item *
 
-GetResources( {filter1} ) returns resources tagged with key1=value1
+C<GetResources({filter1})> returns resources tagged with C<key1=value1>
 
 =item *
 
-GetResources( {filter2} ) returns resources tagged with key2=value2 or
-key2=value3 or key2=value4
+C<GetResources({filter2})> returns resources tagged with C<key2=value2>
+or C<key2=value3> or C<key2=value4>
 
 =item *
 
-GetResources( {filter3} ) returns resources tagged with any tag
-containing key3 as its tag key, irrespective of its value
+C<GetResources({filter3})> returns resources tagged with any tag with
+the key C<key3>, and with any or no value
 
 =item *
 
-GetResources( {filter1,filter2,filter3} ) returns resources tagged with
-( key1=value1) and ( key2=value2 or key2=value3 or key2=value4) and
-(key3, irrespective of the value)
+C<GetResources({filter1,filter2,filter3})> returns resources tagged
+with C<(key1=value1) and (key2=value2 or key2=value3 or key2=value4)
+and (key3, any or no value)>
 
 =back
 
@@ -214,8 +219,8 @@ GetResources( {filter1,filter2,filter3} ) returns resources tagged with
 AWS recommends using C<ResourcesPerPage> instead of this parameter.
 
 A limit that restricts the number of tags (key and value pairs)
-returned by GetResources in paginated output. A resource with no tags
-is counted as having one tag (one key and value pair).
+returned by C<GetResources> in paginated output. A resource with no
+tags is counted as having one tag (one key and value pair).
 
 C<GetResources> does not split a resource and its associated tags
 across pages. If the specified C<TagsPerPage> would cause such a break,
@@ -228,7 +233,7 @@ page displays the first 10 resources, each with its 10 tags. The second
 page displays the next 10 resources, each with its 10 tags. The third
 page displays the remaining 2 resources, each with its 10 tags.
 
-You can set C<TagsPerPage> to a minimum of 100 items and the maximum of
+You can set C<TagsPerPage> to a minimum of 100 items up to a maximum of
 500 items.
 
 

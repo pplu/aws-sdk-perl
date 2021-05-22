@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceTag
 =head1 DESCRIPTION
 
 The metadata that you apply to AWS resources to help you categorize and
-organize them. Each tag consists of a key and an optional value, both
-of which you define. For more information, see Tagging AWS Resources
+organize them. Each tag consists of a key and a value, both of which
+you define. For more information, see Tagging AWS Resources
 (http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
 I<AWS General Reference>.
 
@@ -51,8 +51,8 @@ label that acts like a category for more specific tag values.
 
 =head2 B<REQUIRED> Value => Str
 
-The optional part of a key-value pair that make up a tag. A value acts
-as a descriptor within a tag category (key).
+One part of a key-value pair that make up a tag. A value acts as a
+descriptor within a tag category (key). The value can be empty or null.
 
 
 

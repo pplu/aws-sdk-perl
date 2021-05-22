@@ -67,42 +67,45 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tag
 
 =head2 GroupBy => ArrayRef[Str|Undef]
 
-A list of attributes to group the counts of noncompliant resources by.
-If supplied, the counts are sorted by those attributes.
+Specifies a list of attributes to group the counts of noncompliant
+resources by. If supplied, the counts are sorted by those attributes.
 
 
 
 =head2 MaxResults => Int
 
-A limit that restricts the number of results that are returned per
-page.
+Specifies the maximum number of results to be returned in each page. A
+query can return fewer than this maximum, even if there are more
+results still to return. You should always check the C<PaginationToken>
+response value to see if there are more results. You can specify a
+minimum of 1 and a maximum value of 100.
 
 
 
 =head2 PaginationToken => Str
 
-A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-C<PaginationToken>, use that string for this value to request an
-additional page of data.
+Specifies a C<PaginationToken> response value from a previous request
+to indicate that you want the next page of results. Leave this
+parameter empty in your initial request.
 
 
 
 =head2 RegionFilters => ArrayRef[Str|Undef]
 
-A list of Regions to limit the output by. If you use this parameter,
-the count of returned noncompliant resources includes only resources in
-the specified Regions.
+Specifies a list of AWS Regions to limit the output by. If you use this
+parameter, the count of returned noncompliant resources includes only
+resources in the specified Regions.
 
 
 
 =head2 ResourceTypeFilters => ArrayRef[Str|Undef]
 
-The constraints on the resources that you want returned. The format of
-each resource type is C<service[:resourceType]>. For example,
-specifying a resource type of C<ec2> returns all Amazon EC2 resources
-(which includes EC2 instances). Specifying a resource type of
-C<ec2:instance> returns only EC2 instances.
+Specifies that you want the response to include information for only
+resources of the specified types. The format of each resource type is
+C<service[:resourceType]>. For example, specifying a resource type of
+C<ec2> returns all Amazon EC2 resources (which includes EC2 instances).
+Specifying a resource type of C<ec2:instance> returns only EC2
+instances.
 
 The string for each service name and resource type is the same as that
 embedded in a resource's Amazon Resource Name (ARN). Consult the I<AWS
@@ -113,39 +116,40 @@ General Reference> for the following:
 =item *
 
 For a list of service name strings, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
 
 =item *
 
 For resource type strings, see Example ARNs
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
 
 =item *
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 =back
 
-You can specify multiple resource types by using an array. The array
-can include up to 100 items. Note that the length constraint
-requirement applies to each resource type filter.
+You can specify multiple resource types by using a comma separated
+array. The array can include up to 100 items. Note that the length
+constraint requirement applies to each resource type filter.
 
 
 
 =head2 TagKeyFilters => ArrayRef[Str|Undef]
 
-A list of tag keys to limit the output by. If you use this parameter,
-the count of returned noncompliant resources includes only resources
-that have the specified tag keys.
+Specifies that you want the response to include information for only
+resources that have tags with the specified tag keys. If you use this
+parameter, the count of returned noncompliant resources includes only
+resources that have the specified tag keys.
 
 
 
 =head2 TargetIdFilters => ArrayRef[Str|Undef]
 
-The target identifiers (usually, specific account IDs) to limit the
-output by. If you use this parameter, the count of returned
+Specifies target identifiers (usually, specific account IDs) to limit
+the output by. If you use this parameter, the count of returned
 noncompliant resources includes only resources with the specified
 target IDs.
 
