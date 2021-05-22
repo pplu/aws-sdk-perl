@@ -34,28 +34,309 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-For C<List> operations, an optional specification to return a subset of
-objects, such as resolver endpoints or resolver rules.
+For Resolver list operations (ListResolverEndpoints
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html),
+ListResolverRules
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html),
+ListResolverRuleAssociations
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html),
+ListResolverQueryLogConfigs
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverQueryLogConfigs.html),
+ListResolverQueryLogConfigAssociations
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverQueryLogConfigAssociations.html)),
+and ListResolverDnssecConfigs
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverDnssecConfigs.html)),
+an optional specification to return a subset of objects.
+
+To filter objects, such as Resolver endpoints or Resolver rules, you
+specify C<Name> and C<Values>. For example, to list only inbound
+Resolver endpoints, specify C<Direction> for C<Name> and specify
+C<INBOUND> for C<Values>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-When you're using a C<List> operation and you want the operation to
-return a subset of objects, such as resolver endpoints or resolver
-rules, the name of the parameter that you want to use to filter
-objects. For example, to list only inbound resolver endpoints, specify
-C<Direction> for the value of C<Name>.
+The name of the parameter that you want to use to filter objects.
+
+The valid values for C<Name> depend on the action that you're including
+the filter in, ListResolverEndpoints
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html),
+ListResolverRules
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html),
+ListResolverRuleAssociations
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html),
+ListResolverQueryLogConfigs
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverQueryLogConfigs.html),
+or ListResolverQueryLogConfigAssociations
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverQueryLogConfigAssociations.html).
+
+In early versions of Resolver, values for C<Name> were listed as
+uppercase, with underscore (_) delimiters. For example,
+C<CreatorRequestId> was originally listed as C<CREATOR_REQUEST_ID>.
+Uppercase values for C<Name> are still supported.
+
+B<ListResolverEndpoints>
+
+Valid values for C<Name> include the following:
+
+=over
+
+=item *
+
+C<CreatorRequestId>: The value that you specified when you created the
+Resolver endpoint.
+
+=item *
+
+C<Direction>: Whether you want to return inbound or outbound Resolver
+endpoints. If you specify C<DIRECTION> for C<Name>, specify C<INBOUND>
+or C<OUTBOUND> for C<Values>.
+
+=item *
+
+C<HostVpcId>: The ID of the VPC that inbound DNS queries pass through
+on the way from your network to your VPCs in a region, or the VPC that
+outbound queries pass through on the way from your VPCs to your
+network. In a CreateResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverEndpoint.html)
+request, C<SubnetId> indirectly identifies the VPC. In a
+GetResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
+request, the VPC ID for a Resolver endpoint is returned in the
+C<HostVPCId> element.
+
+=item *
+
+C<IpAddressCount>: The number of IP addresses that you have associated
+with the Resolver endpoint.
+
+=item *
+
+C<Name>: The name of the Resolver endpoint.
+
+=item *
+
+C<SecurityGroupIds>: The IDs of the VPC security groups that you
+specified when you created the Resolver endpoint.
+
+=item *
+
+C<Status>: The status of the Resolver endpoint. If you specify
+C<Status> for C<Name>, specify one of the following status codes for
+C<Values>: C<CREATING>, C<OPERATIONAL>, C<UPDATING>,
+C<AUTO_RECOVERING>, C<ACTION_NEEDED>, or C<DELETING>. For more
+information, see C<Status> in ResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ResolverEndpoint.html).
+
+=back
+
+B<ListResolverRules>
+
+Valid values for C<Name> include the following:
+
+=over
+
+=item *
+
+C<CreatorRequestId>: The value that you specified when you created the
+Resolver rule.
+
+=item *
+
+C<DomainName>: The domain name for which Resolver is forwarding DNS
+queries to your network. In the value that you specify for C<Values>,
+include a trailing dot (.) after the domain name. For example, if the
+domain name is example.com, specify the following value. Note the "."
+after C<com>:
+
+C<example.com.>
+
+=item *
+
+C<Name>: The name of the Resolver rule.
+
+=item *
+
+C<ResolverEndpointId>: The ID of the Resolver endpoint that the
+Resolver rule is associated with.
+
+You can filter on the Resolver endpoint only for rules that have a
+value of C<FORWARD> for C<RuleType>.
+
+=item *
+
+C<Status>: The status of the Resolver rule. If you specify C<Status>
+for C<Name>, specify one of the following status codes for C<Values>:
+C<COMPLETE>, C<DELETING>, C<UPDATING>, or C<FAILED>.
+
+=item *
+
+C<Type>: The type of the Resolver rule. If you specify C<TYPE> for
+C<Name>, specify C<FORWARD> or C<SYSTEM> for C<Values>.
+
+=back
+
+B<ListResolverRuleAssociations>
+
+Valid values for C<Name> include the following:
+
+=over
+
+=item *
+
+C<Name>: The name of the Resolver rule association.
+
+=item *
+
+C<ResolverRuleId>: The ID of the Resolver rule that is associated with
+one or more VPCs.
+
+=item *
+
+C<Status>: The status of the Resolver rule association. If you specify
+C<Status> for C<Name>, specify one of the following status codes for
+C<Values>: C<CREATING>, C<COMPLETE>, C<DELETING>, or C<FAILED>.
+
+=item *
+
+C<VPCId>: The ID of the VPC that the Resolver rule is associated with.
+
+=back
+
+B<ListResolverQueryLogConfigs>
+
+Valid values for C<Name> include the following:
+
+=over
+
+=item *
+
+C<Arn>: The ARN for the query logging configuration.
+
+=item *
+
+C<AssociationCount>: The number of VPCs that are associated with the
+query logging configuration.
+
+=item *
+
+C<CreationTime>: The date and time that the query logging configuration
+was created, in Unix time format and Coordinated Universal Time (UTC).
+
+=item *
+
+C<CreatorRequestId>: A unique string that identifies the request that
+created the query logging configuration.
+
+=item *
+
+C<Destination>: The AWS service that you want to forward query logs to.
+Valid values include the following:
+
+=over
+
+=item *
+
+C<S3>
+
+=item *
+
+C<CloudWatchLogs>
+
+=item *
+
+C<KinesisFirehose>
+
+=back
+
+=item *
+
+C<DestinationArn>: The ARN of the location that Resolver is sending
+query logs to. This value can be the ARN for an S3 bucket, a CloudWatch
+Logs log group, or a Kinesis Data Firehose delivery stream.
+
+=item *
+
+C<Id>: The ID of the query logging configuration
+
+=item *
+
+C<Name>: The name of the query logging configuration
+
+=item *
+
+C<OwnerId>: The AWS account ID for the account that created the query
+logging configuration.
+
+=item *
+
+C<ShareStatus>: An indication of whether the query logging
+configuration is shared with other AWS accounts, or was shared with the
+current account by another AWS account. Valid values include:
+C<NOT_SHARED>, C<SHARED_WITH_ME>, or C<SHARED_BY_ME>.
+
+=item *
+
+C<Status>: The status of the query logging configuration. If you
+specify C<Status> for C<Name>, specify the applicable status code for
+C<Values>: C<CREATING>, C<CREATED>, C<DELETING>, or C<FAILED>. For more
+information, see Status
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ResolverQueryLogConfig.html#Route53Resolver-Type-route53resolver_ResolverQueryLogConfig-Status).
+
+=back
+
+B<ListResolverQueryLogConfigAssociations>
+
+Valid values for C<Name> include the following:
+
+=over
+
+=item *
+
+C<CreationTime>: The date and time that the VPC was associated with the
+query logging configuration, in Unix time format and Coordinated
+Universal Time (UTC).
+
+=item *
+
+C<Error>: If the value of C<Status> is C<FAILED>, specify the cause:
+C<DESTINATION_NOT_FOUND> or C<ACCESS_DENIED>.
+
+=item *
+
+C<Id>: The ID of the query logging association.
+
+=item *
+
+C<ResolverQueryLogConfigId>: The ID of the query logging configuration
+that a VPC is associated with.
+
+=item *
+
+C<ResourceId>: The ID of the Amazon VPC that is associated with the
+query logging configuration.
+
+=item *
+
+C<Status>: The status of the query logging association. If you specify
+C<Status> for C<Name>, specify the applicable status code for
+C<Values>: C<CREATING>, C<CREATED>, C<DELETING>, or C<FAILED>. For more
+information, see Status
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ResolverQueryLogConfigAssociation.html#Route53Resolver-Type-route53resolver_ResolverQueryLogConfigAssociation-Status).
+
+=back
+
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
 When you're using a C<List> operation and you want the operation to
-return a subset of objects, such as resolver endpoints or resolver
+return a subset of objects, such as Resolver endpoints or Resolver
 rules, the value of the parameter that you want to use to filter
-objects. For example, to list only inbound resolver endpoints, specify
-C<INBOUND> for the value of C<Values>.
+objects. For example, to list only inbound Resolver endpoints, specify
+C<Direction> for C<Name> and specify C<INBOUND> for C<Values>.
 
 
 

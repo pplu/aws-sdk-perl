@@ -57,13 +57,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> Config => L<Paws::Route53Resolver::ResolverRuleConfig>
 
-The new settings for the resolver rule.
+The new settings for the Resolver rule.
 
 
 
 =head2 B<REQUIRED> ResolverRuleId => Str
 
-The ID of the resolver rule that you want to update.
+The ID of the Resolver rule that you want to update.
 
 
 

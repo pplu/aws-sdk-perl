@@ -32,8 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceArn => 'MyArn',
       Tags        => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],
@@ -57,26 +58,32 @@ C<List> command:
 =item *
 
 GetResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
 
 =item *
 
 GetResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html)
 
 =item *
 
 GetResolverRuleAssociation
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRuleAssociation.html)
 
 =item *
 
 ListResolverEndpoints
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html)
 
 =item *
 
 ListResolverRuleAssociations
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html)
 
 =item *
 
 ListResolverRules
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html)
 
 =back
 

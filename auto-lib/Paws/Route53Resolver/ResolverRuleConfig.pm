@@ -35,21 +35,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-In an UpdateResolverRule request, information about the changes that
-you want to make.
+In an UpdateResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_UpdateResolverRule.html)
+request, information about the changes that you want to make.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-The new name for the resolver rule. The name that you specify appears
+The new name for the Resolver rule. The name that you specify appears
 in the Resolver dashboard in the Route 53 console.
 
 
 =head2 ResolverEndpointId => Str
 
-The ID of the new outbound resolver endpoint that you want to use to
+The ID of the new outbound Resolver endpoint that you want to use to
 route DNS queries to the IP addresses that you specify in C<TargetIps>.
 
 

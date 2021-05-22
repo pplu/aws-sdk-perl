@@ -39,8 +39,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-In the response to a GetResolverEndpoint request, information about the
-IP addresses that the resolver endpoint uses for DNS queries.
+In the response to a GetResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
+request, information about the IP addresses that the Resolver endpoint
+uses for DNS queries.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +55,7 @@ and Coordinated Universal Time (UTC).
 
 =head2 Ip => Str
 
-One IP address that the resolver endpoint uses for DNS queries.
+One IP address that the Resolver endpoint uses for DNS queries.
 
 
 =head2 IpId => Str

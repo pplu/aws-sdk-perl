@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Name   => 'MyFilterName',    # min: 1, max: 64; OPTIONAL
           Values => [
-            'MyFilterValue', ...       # min: 1, max: 64
+            'MyFilterValue', ...       # min: 1, max: 600
           ],                           # OPTIONAL
         },
         ...
@@ -58,8 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]
 
-An optional specification to return a subset of resolver rules, such as
-all resolver rules that are associated with the same resolver endpoint.
+An optional specification to return a subset of Resolver rules, such as
+all Resolver rules that are associated with the same Resolver endpoint.
 
 If you submit a second or subsequent C<ListResolverRules> request and
 specify the C<NextToken> parameter, you must use the same values for
@@ -69,9 +69,9 @@ C<Filters>, if any, as in the previous request.
 
 =head2 MaxResults => Int
 
-The maximum number of resolver rules that you want to return in the
+The maximum number of Resolver rules that you want to return in the
 response to a C<ListResolverRules> request. If you don't specify a
-value for C<MaxResults>, Resolver returns up to 100 resolver rules.
+value for C<MaxResults>, Resolver returns up to 100 Resolver rules.
 
 
 
@@ -79,8 +79,8 @@ value for C<MaxResults>, Resolver returns up to 100 resolver rules.
 
 For the first C<ListResolverRules> request, omit this value.
 
-If you have more than C<MaxResults> resolver rules, you can submit
-another C<ListResolverRules> request to get the next group of resolver
+If you have more than C<MaxResults> Resolver rules, you can submit
+another C<ListResolverRules> request to get the next group of Resolver
 rules. In the next request, specify the value of C<NextToken> from the
 previous response.
 

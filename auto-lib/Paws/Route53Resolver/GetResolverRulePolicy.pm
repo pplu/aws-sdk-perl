@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> Arn => Str
 
-The ID of the resolver rule policy that you want to get information
-about.
+The ID of the Resolver rule that you want to get the Resolver rule
+policy for.
 
 
 

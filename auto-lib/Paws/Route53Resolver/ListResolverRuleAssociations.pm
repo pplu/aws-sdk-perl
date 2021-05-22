@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Name   => 'MyFilterName',    # min: 1, max: 64; OPTIONAL
           Values => [
-            'MyFilterValue', ...       # min: 1, max: 64
+            'MyFilterValue', ...       # min: 1, max: 600
           ],                           # OPTIONAL
         },
         ...
@@ -60,8 +60,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]
 
-An optional specification to return a subset of resolver rules, such as
-resolver rules that are associated with the same VPC ID.
+An optional specification to return a subset of Resolver rules, such as
+Resolver rules that are associated with the same VPC ID.
 
 If you submit a second or subsequent C<ListResolverRuleAssociations>
 request and specify the C<NextToken> parameter, you must use the same

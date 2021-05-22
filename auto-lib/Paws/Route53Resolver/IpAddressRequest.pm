@@ -34,8 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-In an CreateResolverEndpoint request, a subnet and IP address that you
-want to use for DNS queries.
+In a CreateResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverEndpoint.html)
+request, the IP address that DNS queries originate from (for outbound
+endpoints) or that you forward DNS queries to (for inbound endpoints).
+C<IpAddressRequest> also includes the ID of the subnet that contains
+the IP address.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +51,7 @@ The IP address that you want to use for DNS queries.
 
 =head2 B<REQUIRED> SubnetId => Str
 
-The subnet that contains the IP address.
+The ID of the subnet that contains the IP address.
 
 
 

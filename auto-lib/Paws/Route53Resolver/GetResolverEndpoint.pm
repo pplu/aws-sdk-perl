@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> ResolverEndpointId => Str
 
-The ID of the resolver endpoint that you want to get information about.
+The ID of the Resolver endpoint that you want to get information about.
 
 
 

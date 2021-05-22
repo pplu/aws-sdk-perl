@@ -47,15 +47,46 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the account that you want to grant
-permissions to.
+The Amazon Resource Name (ARN) of the rule that you want to share with
+another account.
 
 
 
 =head2 B<REQUIRED> ResolverRulePolicy => Str
 
 An AWS Identity and Access Management policy statement that lists the
-permissions that you want to grant to another AWS account.
+rules that you want to share with another AWS account and the
+operations that you want the account to be able to perform. You can
+specify the following operations in the C<Action> section of the
+statement:
+
+=over
+
+=item *
+
+C<route53resolver:GetResolverRule>
+
+=item *
+
+C<route53resolver:AssociateResolverRule>
+
+=item *
+
+C<route53resolver:DisassociateResolverRule>
+
+=item *
+
+C<route53resolver:ListResolverRules>
+
+=item *
+
+C<route53resolver:ListResolverRuleAssociations>
+
+=back
+
+In the C<Resource> section of the statement, specify the ARN for the
+rule that you want to share with another account. Specify the same ARN
+that you specified in C<Arn>.
 
 
 

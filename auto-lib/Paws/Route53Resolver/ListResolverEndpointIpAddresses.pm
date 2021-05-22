@@ -63,7 +63,7 @@ addresses.
 For the first C<ListResolverEndpointIpAddresses> request, omit this
 value.
 
-If the specified resolver endpoint has more than C<MaxResults> IP
+If the specified Resolver endpoint has more than C<MaxResults> IP
 addresses, you can submit another C<ListResolverEndpointIpAddresses>
 request to get the next group of IP addresses. In the next request,
 specify the value of C<NextToken> from the previous response.
@@ -72,7 +72,7 @@ specify the value of C<NextToken> from the previous response.
 
 =head2 B<REQUIRED> ResolverEndpointId => Str
 
-The ID of the resolver endpoint that you want to get IP addresses for.
+The ID of the Resolver endpoint that you want to get IP addresses for.
 
 
 

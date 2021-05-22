@@ -23,7 +23,7 @@ The value that you specified for C<MaxResults> in the request.
 
 =head2 NextToken => Str
 
-If more than C<MaxResults> resolver rules match the specified criteria,
+If more than C<MaxResults> Resolver rules match the specified criteria,
 you can submit another C<ListResolverRules> request to get the next
 group of results. In the next request, specify the value of
 C<NextToken> from the previous response.
@@ -31,7 +31,7 @@ C<NextToken> from the previous response.
 
 =head2 ResolverRules => ArrayRef[L<Paws::Route53Resolver::ResolverRule>]
 
-The resolver rules that were created using the current AWS account and
+The Resolver rules that were created using the current AWS account and
 that match the specified filters, if any.
 
 

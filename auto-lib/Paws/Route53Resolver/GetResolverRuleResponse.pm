@@ -16,7 +16,7 @@ Paws::Route53Resolver::GetResolverRuleResponse
 
 =head2 ResolverRule => L<Paws::Route53Resolver::ResolverRule>
 
-Information about the resolver rule that you specified in a
+Information about the Resolver rule that you specified in a
 C<GetResolverRule> request.
 
 

@@ -31,7 +31,7 @@ C<NextToken> from the previous response.
 
 =head2 ResolverEndpoints => ArrayRef[L<Paws::Route53Resolver::ResolverEndpoint>]
 
-The resolver endpoints that were created by using the current AWS
+The Resolver endpoints that were created by using the current AWS
 account, and that match the specified filters, if any.
 
 

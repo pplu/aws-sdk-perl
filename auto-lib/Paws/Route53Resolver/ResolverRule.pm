@@ -2,9 +2,11 @@
 package Paws::Route53Resolver::ResolverRule;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Str');
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has ModificationTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OwnerId => (is => 'ro', isa => 'Str');
   has ResolverEndpointId => (is => 'ro', isa => 'Str');
@@ -45,45 +47,66 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 =head1 DESCRIPTION
 
 For queries that originate in your VPC, detailed information about a
-resolver rule, which specifies how to route DNS queries out of the VPC.
+Resolver rule, which specifies how to route DNS queries out of the VPC.
 The C<ResolverRule> parameter appears in the response to a
-CreateResolverRule, DeleteResolverRule, GetResolverRule,
-ListResolverRules, or UpdateResolverRule request.
+CreateResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html),
+DeleteResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DeleteResolverRule.html),
+GetResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html),
+ListResolverRules
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html),
+or UpdateResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_UpdateResolverRule.html)
+request.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-The ARN (Amazon Resource Name) for the resolver rule specified by
+The ARN (Amazon Resource Name) for the Resolver rule specified by
 C<Id>.
+
+
+=head2 CreationTime => Str
+
+The date and time that the Resolver rule was created, in Unix time
+format and Coordinated Universal Time (UTC).
 
 
 =head2 CreatorRequestId => Str
 
-A unique string that you specified when you created the resolver rule.
-C<CreatorRequestId>identifies the request and allows failed requests to
-be retried without the risk of executing the operation twice.
+A unique string that you specified when you created the Resolver rule.
+C<CreatorRequestId> identifies the request and allows failed requests
+to be retried without the risk of executing the operation twice.
 
 
 =head2 DomainName => Str
 
 DNS queries for this domain name are forwarded to the IP addresses that
-are specified in C<TargetIps>. If a query matches multiple resolver
+are specified in C<TargetIps>. If a query matches multiple Resolver
 rules (example.com and www.example.com), the query is routed using the
-resolver rule that contains the most specific domain name
+Resolver rule that contains the most specific domain name
 (www.example.com).
 
 
 =head2 Id => Str
 
-The ID that Resolver assigned to the resolver rule when you created it.
+The ID that Resolver assigned to the Resolver rule when you created it.
+
+
+=head2 ModificationTime => Str
+
+The date and time that the Resolver rule was last updated, in Unix time
+format and Coordinated Universal Time (UTC).
 
 
 =head2 Name => Str
 
-The name for the resolver rule, which you specified when you created
-the resolver rule.
+The name for the Resolver rule, which you specified when you created
+the Resolver rule.
 
 
 =head2 OwnerId => Str
@@ -99,8 +122,20 @@ The ID of the endpoint that the rule is associated with.
 
 =head2 RuleType => Str
 
-This value is always C<FORWARD>. Other resolver rule types aren't
-supported.
+When you want to forward DNS queries for specified domain name to
+resolvers on your network, specify C<FORWARD>.
+
+When you have a forwarding rule to forward DNS queries for a domain to
+your network and you want Resolver to process queries for a subdomain
+of that domain, specify C<SYSTEM>.
+
+For example, to forward DNS queries for example.com to resolvers on
+your network, you create a rule and specify C<FORWARD> for C<RuleType>.
+To then have Resolver process queries for apex.example.com, you create
+a rule and specify C<SYSTEM> for C<RuleType>.
+
+Currently, only Resolver can create rules that have a value of
+C<RECURSIVE> for C<RuleType>.
 
 
 =head2 ShareStatus => Str
@@ -112,18 +147,20 @@ the rule with the current account.
 
 =head2 Status => Str
 
-A code that specifies the current status of the resolver rule.
+A code that specifies the current status of the Resolver rule.
 
 
 =head2 StatusMessage => Str
 
-A detailed description of the status of a resolver rule.
+A detailed description of the status of a Resolver rule.
 
 
 =head2 TargetIps => ArrayRef[L<Paws::Route53Resolver::TargetAddress>]
 
-An array that contains the IP addresses and ports that you want to
-forward
+An array that contains the IP addresses and ports that an outbound
+endpoint forwards DNS queries to. Typically, these are the IP addresses
+of DNS resolvers on your network. Specify IPv4 addresses. IPv6 is not
+supported.
 
 
 
