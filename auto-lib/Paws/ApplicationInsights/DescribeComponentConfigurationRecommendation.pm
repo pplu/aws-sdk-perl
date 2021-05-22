@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $applicationinsights->DescribeComponentConfigurationRecommendation(
       ComponentName     => 'MyComponentName',
       ResourceGroupName => 'MyResourceGroupName',
-      Tier              => 'DEFAULT',
+      Tier              => 'CUSTOM',
 
       );
 
@@ -68,7 +68,7 @@ The tier of the application component. Supported tiers include
 C<DOT_NET_CORE>, C<DOT_NET_WORKER>, C<DOT_NET_WEB>, C<SQL_SERVER>, and
 C<DEFAULT>.
 
-Valid values are: C<"DEFAULT">, C<"DOT_NET_CORE">, C<"DOT_NET_WORKER">, C<"DOT_NET_WEB">, C<"SQL_SERVER">
+Valid values are: C<"CUSTOM">, C<"DEFAULT">, C<"DOT_NET_CORE">, C<"DOT_NET_WORKER">, C<"DOT_NET_WEB_TIER">, C<"DOT_NET_WEB">, C<"SQL_SERVER">, C<"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP">, C<"MYSQL">, C<"POSTGRESQL">, C<"JAVA_JMX">, C<"ORACLE">
 
 
 =head1 SEE ALSO

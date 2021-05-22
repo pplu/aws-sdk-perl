@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceGroupName      => 'MyResourceGroupName',
       ComponentConfiguration => 'MyComponentConfiguration',    # OPTIONAL
       Monitor                => 1,                             # OPTIONAL
-      Tier                   => 'DEFAULT',                     # OPTIONAL
+      Tier                   => 'CUSTOM',                      # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -84,7 +84,7 @@ The tier of the application component. Supported tiers include
 C<DOT_NET_WORKER>, C<DOT_NET_WEB>, C<DOT_NET_CORE>, C<SQL_SERVER>, and
 C<DEFAULT>.
 
-Valid values are: C<"DEFAULT">, C<"DOT_NET_CORE">, C<"DOT_NET_WORKER">, C<"DOT_NET_WEB">, C<"SQL_SERVER">
+Valid values are: C<"CUSTOM">, C<"DEFAULT">, C<"DOT_NET_CORE">, C<"DOT_NET_WORKER">, C<"DOT_NET_WEB_TIER">, C<"DOT_NET_WEB">, C<"SQL_SERVER">, C<"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP">, C<"MYSQL">, C<"POSTGRESQL">, C<"JAVA_JMX">, C<"ORACLE">
 
 
 =head1 SEE ALSO

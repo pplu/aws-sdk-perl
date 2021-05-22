@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $applicationinsights = Paws->service('ApplicationInsights');
     my $CreateComponentResponse = $applicationinsights->CreateComponent(
-      ComponentName     => 'MyComponentName',
+      ComponentName     => 'MyCustomComponentName',
       ResourceGroupName => 'MyResourceGroupName',
       ResourceList      => [
         'MyResourceARN', ...    # min: 1, max: 1011

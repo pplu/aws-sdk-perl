@@ -2,7 +2,10 @@
 package Paws::ApplicationInsights::ApplicationComponent;
   use Moose;
   has ComponentName => (is => 'ro', isa => 'Str');
+  has ComponentRemarks => (is => 'ro', isa => 'Str');
+  has DetectedWorkload => (is => 'ro', isa => 'Paws::ApplicationInsights::DetectedWorkload');
   has Monitor => (is => 'ro', isa => 'Bool');
+  has OsType => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Str');
 
@@ -47,9 +50,25 @@ application is made up of.
 The name of the component.
 
 
+=head2 ComponentRemarks => Str
+
+If logging is supported for the resource type, indicates whether the
+component has configured logs to be monitored.
+
+
+=head2 DetectedWorkload => L<Paws::ApplicationInsights::DetectedWorkload>
+
+Workloads detected in the application component.
+
+
 =head2 Monitor => Bool
 
 Indicates whether the application component is monitored.
+
+
+=head2 OsType => Str
+
+The operating system of the component.
 
 
 =head2 ResourceType => Str
