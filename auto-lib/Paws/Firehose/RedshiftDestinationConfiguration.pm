@@ -94,7 +94,9 @@ The configuration for backup in Amazon S3.
 
 =head2 S3BackupMode => Str
 
-The Amazon S3 backup mode.
+The Amazon S3 backup mode. After you create a delivery stream, you can
+update it to enable Amazon S3 backup if it is disabled. If backup is
+enabled, you can't update the delivery stream to disable it.
 
 
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>

@@ -90,12 +90,16 @@ from Splunk.
 
 =head2 S3BackupMode => Str
 
-Defines how documents should be delivered to Amazon S3. When set to
-C<FailedDocumentsOnly>, Kinesis Data Firehose writes any data that
-could not be indexed to the configured Amazon S3 destination. When set
-to C<AllDocuments>, Kinesis Data Firehose delivers all incoming records
-to Amazon S3, and also writes failed documents to Amazon S3. Default
-value is C<FailedDocumentsOnly>.
+Specifies how you want Kinesis Data Firehose to back up documents to
+Amazon S3. When set to C<FailedDocumentsOnly>, Kinesis Data Firehose
+writes any data that could not be indexed to the configured Amazon S3
+destination. When set to C<AllEvents>, Kinesis Data Firehose delivers
+all incoming records to Amazon S3, and also writes failed documents to
+Amazon S3. The default value is C<FailedEventsOnly>.
+
+You can update this backup mode from C<FailedEventsOnly> to
+C<AllEvents>. You can't update it from C<AllEvents> to
+C<FailedEventsOnly>.
 
 
 =head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>

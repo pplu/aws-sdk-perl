@@ -4,6 +4,7 @@ package Paws::Firehose::DestinationDescription;
   has DestinationId => (is => 'ro', isa => 'Str', required => 1);
   has ElasticsearchDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationDescription');
   has ExtendedS3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationDescription');
+  has HttpEndpointDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::HttpEndpointDestinationDescription');
   has RedshiftDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationDescription');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
   has SplunkDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationDescription');
@@ -56,6 +57,11 @@ The destination in Amazon ES.
 =head2 ExtendedS3DestinationDescription => L<Paws::Firehose::ExtendedS3DestinationDescription>
 
 The destination in Amazon S3.
+
+
+=head2 HttpEndpointDestinationDescription => L<Paws::Firehose::HttpEndpointDestinationDescription>
+
+Describes the specified HTTP endpoint destination.
 
 
 =head2 RedshiftDestinationDescription => L<Paws::Firehose::RedshiftDestinationDescription>

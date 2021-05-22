@@ -57,19 +57,21 @@ conversion while preserving the configuration details.
 =head2 InputFormatConfiguration => L<Paws::Firehose::InputFormatConfiguration>
 
 Specifies the deserializer that you want Kinesis Data Firehose to use
-to convert the format of your data from JSON.
+to convert the format of your data from JSON. This parameter is
+required if C<Enabled> is set to true.
 
 
 =head2 OutputFormatConfiguration => L<Paws::Firehose::OutputFormatConfiguration>
 
 Specifies the serializer that you want Kinesis Data Firehose to use to
-convert the format of your data to the Parquet or ORC format.
+convert the format of your data to the Parquet or ORC format. This
+parameter is required if C<Enabled> is set to true.
 
 
 =head2 SchemaConfiguration => L<Paws::Firehose::SchemaConfiguration>
 
 Specifies the AWS Glue Data Catalog table that contains the column
-information.
+information. This parameter is required if C<Enabled> is set to true.
 
 
 

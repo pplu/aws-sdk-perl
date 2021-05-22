@@ -13,6 +13,7 @@ package Paws::Firehose::ElasticsearchDestinationDescription;
   has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
   has TypeName => (is => 'ro', isa => 'Str');
+  has VpcConfigurationDescription => (is => 'ro', isa => 'Paws::Firehose::VpcConfigurationDescription');
 
 1;
 
@@ -33,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::ElasticsearchDestinationDescription object:
 
-  $service_obj->Method(Att1 => { BufferingHints => $value, ..., TypeName => $value  });
+  $service_obj->Method(Att1 => { BufferingHints => $value, ..., VpcConfigurationDescription => $value  });
 
 =head3 Results returned from an API call
 
@@ -119,6 +120,11 @@ The Amazon S3 destination.
 The Elasticsearch type name. This applies to Elasticsearch 6.x and
 lower versions. For Elasticsearch 7.x, there's no value for
 C<TypeName>.
+
+
+=head2 VpcConfigurationDescription => L<Paws::Firehose::VpcConfigurationDescription>
+
+The details of the VPC of the Amazon ES destination.
 
 
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::I
 =head1 DESCRIPTION
 
 Specifies the deserializer you want to use to convert the format of the
-input data.
+input data. This parameter is required if C<Enabled> is set to true.
 
 =head1 ATTRIBUTES
 

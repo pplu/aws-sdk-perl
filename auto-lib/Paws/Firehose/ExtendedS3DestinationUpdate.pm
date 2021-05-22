@@ -117,7 +117,9 @@ Namespaces
 
 =head2 S3BackupMode => Str
 
-Enables or disables Amazon S3 backup mode.
+You can update a delivery stream to enable Amazon S3 backup if it is
+disabled. If backup is enabled, you can't update the delivery stream to
+disable it.
 
 
 =head2 S3BackupUpdate => L<Paws::Firehose::S3DestinationUpdate>
