@@ -3,6 +3,8 @@ package Paws::SNS::Publish;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has MessageAttributes => (is => 'ro', isa => 'Paws::SNS::MessageAttributeMap');
+  has MessageDeduplicationId => (is => 'ro', isa => 'Str');
+  has MessageGroupId => (is => 'ro', isa => 'Str');
   has MessageStructure => (is => 'ro', isa => 'Str');
   has PhoneNumber => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
@@ -42,15 +44,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StringValue => 'MyString',
         },
       },    # OPTIONAL
-      MessageStructure => 'MymessageStructure',    # OPTIONAL
-      PhoneNumber      => 'MyString',              # OPTIONAL
-      Subject          => 'Mysubject',             # OPTIONAL
-      TargetArn        => 'MyString',              # OPTIONAL
-      TopicArn         => 'MytopicARN',            # OPTIONAL
+      MessageDeduplicationId => 'MyString',              # OPTIONAL
+      MessageGroupId         => 'MyString',              # OPTIONAL
+      MessageStructure       => 'MymessageStructure',    # OPTIONAL
+      PhoneNumber            => 'MyString',              # OPTIONAL
+      Subject                => 'Mysubject',             # OPTIONAL
+      TargetArn              => 'MyString',              # OPTIONAL
+      TopicArn               => 'MytopicARN',            # OPTIONAL
     );
 
     # Results:
-    my $MessageId = $PublishResponse->MessageId;
+    my $MessageId      = $PublishResponse->MessageId;
+    my $SequenceNumber = $PublishResponse->SequenceNumber;
 
     # Returns a L<Paws::SNS::PublishResponse> object.
 
@@ -150,6 +155,40 @@ the C<Publish> call to return an error (no partial delivery).
 =head2 MessageAttributes => L<Paws::SNS::MessageAttributeMap>
 
 Message attributes for Publish action.
+
+
+
+=head2 MessageDeduplicationId => Str
+
+This parameter applies only to FIFO (first-in-first-out) topics. The
+C<MessageDeduplicationId> can contain up to 128 alphanumeric characters
+(a-z, A-Z, 0-9) and punctuation
+C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
+
+Every message must have a unique C<MessageDeduplicationId>, which is a
+token used for deduplication of sent messages. If a message with a
+particular C<MessageDeduplicationId> is sent successfully, any message
+sent with the same C<MessageDeduplicationId> during the 5-minute
+deduplication interval is treated as a duplicate.
+
+If the topic has C<ContentBasedDeduplication> set, the system generates
+a C<MessageDeduplicationId> based on the contents of the message. Your
+C<MessageDeduplicationId> overrides the generated one.
+
+
+
+=head2 MessageGroupId => Str
+
+This parameter applies only to FIFO (first-in-first-out) topics. The
+C<MessageGroupId> can contain up to 128 alphanumeric characters (a-z,
+A-Z, 0-9) and punctuation
+C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
+
+The C<MessageGroupId> is a tag that specifies that a message belongs to
+a specific message group. Messages that belong to the same message
+group are processed in a FIFO manner (however, messages in different
+message groups might be processed out of order). Every message must
+include a C<MessageGroupId>.
 
 
 

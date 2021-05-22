@@ -354,10 +354,15 @@ Amazon Simple Notification Service (Amazon SNS) is a web service that
 enables you to build distributed web-enabled applications. Applications
 can use Amazon SNS to easily push real-time notification messages to
 interested subscribers over multiple delivery protocols. For more
-information about this product see https://aws.amazon.com/sns
+information about this product see the Amazon SNS product page
 (http://aws.amazon.com/sns/). For detailed information about Amazon SNS
 features and their associated API calls, see the Amazon SNS Developer
 Guide (https://docs.aws.amazon.com/sns/latest/dg/).
+
+For information on the permissions you need to use this API, see
+Identity and access management in Amazon SNS
+(https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html)
+in the I<Amazon SNS Developer Guide.>
 
 We also provide SDKs that enable you to access Amazon SNS from your
 preferred programming language. The SDKs contain functionality that
@@ -457,24 +462,50 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 Returns: a L<Paws::SNS::CreatePlatformApplicationResponse> instance
 
 Creates a platform application object for one of the supported push
-notification services, such as APNS and FCM, to which devices and
-mobile apps may register. You must specify PlatformPrincipal and
-PlatformCredential attributes when using the
-C<CreatePlatformApplication> action. The PlatformPrincipal is received
-from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal
-is "SSL certificate". For FCM, PlatformPrincipal is not applicable. For
-ADM, PlatformPrincipal is "client id". The PlatformCredential is also
-received from the notification service. For WNS, PlatformPrincipal is
-"Package Security Identifier". For MPNS, PlatformPrincipal is "TLS
-certificate". For Baidu, PlatformPrincipal is "API key".
+notification services, such as APNS and GCM (Firebase Cloud Messaging),
+to which devices and mobile apps may register. You must specify
+C<PlatformPrincipal> and C<PlatformCredential> attributes when using
+the C<CreatePlatformApplication> action.
 
-For APNS/APNS_SANDBOX, PlatformCredential is "private key". For FCM,
-PlatformCredential is "API key". For ADM, PlatformCredential is "client
-secret". For WNS, PlatformCredential is "secret key". For MPNS,
-PlatformCredential is "private key". For Baidu, PlatformCredential is
-"secret key". The PlatformApplicationArn that is returned when using
-C<CreatePlatformApplication> is then used as an attribute for the
-C<CreatePlatformEndpoint> action.
+C<PlatformPrincipal> and C<PlatformCredential> are received from the
+notification service.
+
+=over
+
+=item *
+
+For C<ADM>, C<PlatformPrincipal> is C<client id> and
+C<PlatformCredential> is C<client secret>.
+
+=item *
+
+For C<Baidu>, C<PlatformPrincipal> is C<API key> and
+C<PlatformCredential> is C<secret key>.
+
+=item *
+
+For C<APNS> and C<APNS_SANDBOX>, C<PlatformPrincipal> is C<SSL
+certificate> and C<PlatformCredential> is C<private key>.
+
+=item *
+
+For C<GCM> (Firebase Cloud Messaging), there is no C<PlatformPrincipal>
+and the C<PlatformCredential> is C<API key>.
+
+=item *
+
+For C<MPNS>, C<PlatformPrincipal> is C<TLS certificate> and
+C<PlatformCredential> is C<private key>.
+
+=item *
+
+For C<WNS>, C<PlatformPrincipal> is C<Package Security Identifier> and
+C<PlatformCredential> is C<secret key>.
+
+=back
+
+You can use the returned C<PlatformApplicationArn> as an attribute for
+the C<CreatePlatformEndpoint> action.
 
 
 =head2 CreatePlatformEndpoint
@@ -497,11 +528,10 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 Returns: a L<Paws::SNS::CreateEndpointResponse> instance
 
 Creates an endpoint for a device and mobile app on one of the supported
-push notification services, such as FCM and APNS.
-C<CreatePlatformEndpoint> requires the PlatformApplicationArn that is
-returned from C<CreatePlatformApplication>. The EndpointArn that is
-returned when using C<CreatePlatformEndpoint> can then be used by the
-C<Publish> action to send a message to a mobile app or by the
+push notification services, such as GCM (Firebase Cloud Messaging) and
+APNS. C<CreatePlatformEndpoint> requires the C<PlatformApplicationArn>
+that is returned from C<CreatePlatformApplication>. You can use the
+returned C<EndpointArn> to send a message to a mobile app or by the
 C<Subscribe> action for subscription to a topic. The
 C<CreatePlatformEndpoint> action is idempotent, so if the requester
 already owns an endpoint with the same device token and attributes,
@@ -534,10 +564,11 @@ Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
 Creates a topic to which notifications can be published. Users can
-create at most 100,000 topics. For more information, see
-https://aws.amazon.com/sns (http://aws.amazon.com/sns/). This action is
-idempotent, so if the requester already owns a topic with the specified
-name, that topic's ARN is returned without creating a new topic.
+create at most 100,000 standard topics (at most 1,000 FIFO topics). For
+more information, see https://aws.amazon.com/sns
+(http://aws.amazon.com/sns/). This action is idempotent, so if the
+requester already owns a topic with the specified name, that topic's
+ARN is returned without creating a new topic.
 
 
 =head2 DeleteEndpoint
@@ -576,8 +607,8 @@ Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 Returns: nothing
 
 Deletes a platform application object for one of the supported push
-notification services, such as APNS and FCM. For more information, see
-Using Amazon SNS Mobile Push Notifications
+notification services, such as APNS and GCM (Firebase Cloud Messaging).
+For more information, see Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -614,8 +645,9 @@ Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
 Retrieves the endpoint attributes for a device on one of the supported
-push notification services, such as FCM and APNS. For more information,
-see Using Amazon SNS Mobile Push Notifications
+push notification services, such as GCM (Firebase Cloud Messaging) and
+APNS. For more information, see Using Amazon SNS Mobile Push
+Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -633,8 +665,9 @@ Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttr
 Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
 Retrieves the attributes of the platform application object for the
-supported push notification services, such as APNS and FCM. For more
-information, see Using Amazon SNS Mobile Push Notifications
+supported push notification services, such as APNS and GCM (Firebase
+Cloud Messaging). For more information, see Using Amazon SNS Mobile
+Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -705,11 +738,11 @@ Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApp
 Returns: a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance
 
 Lists the endpoints and endpoint attributes for devices in a supported
-push notification service, such as FCM and APNS. The results for
-C<ListEndpointsByPlatformApplication> are paginated and return a
-limited list of endpoints, up to 100. If additional records are
-available after the first page results, then a NextToken string will be
-returned. To receive the next page, you call
+push notification service, such as GCM (Firebase Cloud Messaging) and
+APNS. The results for C<ListEndpointsByPlatformApplication> are
+paginated and return a limited list of endpoints, up to 100. If
+additional records are available after the first page results, then a
+NextToken string will be returned. To receive the next page, you call
 C<ListEndpointsByPlatformApplication> again using the NextToken string
 received from the previous call. When there are no more records to
 return, NextToken will be null. For more information, see Using Amazon
@@ -758,14 +791,15 @@ Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 Returns: a L<Paws::SNS::ListPlatformApplicationsResponse> instance
 
 Lists the platform application objects for the supported push
-notification services, such as APNS and FCM. The results for
-C<ListPlatformApplications> are paginated and return a limited list of
-applications, up to 100. If additional records are available after the
-first page results, then a NextToken string will be returned. To
-receive the next page, you call C<ListPlatformApplications> using the
-NextToken string received from the previous call. When there are no
-more records to return, NextToken will be null. For more information,
-see Using Amazon SNS Mobile Push Notifications
+notification services, such as APNS and GCM (Firebase Cloud Messaging).
+The results for C<ListPlatformApplications> are paginated and return a
+limited list of applications, up to 100. If additional records are
+available after the first page results, then a NextToken string will be
+returned. To receive the next page, you call
+C<ListPlatformApplications> using the NextToken string received from
+the previous call. When there are no more records to return,
+C<NextToken> will be null. For more information, see Using Amazon SNS
+Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 This action is throttled at 15 transactions per second (TPS).
@@ -883,6 +917,10 @@ You can opt in a phone number only once every 30 days.
 
 =item [MessageAttributes => L<Paws::SNS::MessageAttributeMap>]
 
+=item [MessageDeduplicationId => Str]
+
+=item [MessageGroupId => Str]
+
 =item [MessageStructure => Str]
 
 =item [PhoneNumber => Str]
@@ -900,8 +938,9 @@ Each argument is described in detail in: L<Paws::SNS::Publish>
 
 Returns: a L<Paws::SNS::PublishResponse> instance
 
-Sends a message to an Amazon SNS topic or sends a text message (SMS
-message) directly to a phone number.
+Sends a message to an Amazon SNS topic, a text message (SMS message)
+directly to a phone number, or a message to a mobile platform endpoint
+(when you specify the C<TargetArn>).
 
 If you send a message to a topic, Amazon SNS delivers the message to
 each endpoint that is subscribed to the topic. The format of the
@@ -919,6 +958,9 @@ returned when making a call with the C<CreatePlatformEndpoint> action.
 For more information about formatting messages, see Send Custom
 Platform-Specific Payloads in Messages to Mobile Devices
 (https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
+
+You can publish messages only to topics and endpoints in the same AWS
+Region.
 
 
 =head2 RemovePermission
@@ -955,8 +997,9 @@ Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 Returns: nothing
 
 Sets the attributes for an endpoint for a device on one of the
-supported push notification services, such as FCM and APNS. For more
-information, see Using Amazon SNS Mobile Push Notifications
+supported push notification services, such as GCM (Firebase Cloud
+Messaging) and APNS. For more information, see Using Amazon SNS Mobile
+Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -976,8 +1019,9 @@ Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttr
 Returns: nothing
 
 Sets the attributes of the platform application object for the
-supported push notification services, such as APNS and FCM. For more
-information, see Using Amazon SNS Mobile Push Notifications
+supported push notification services, such as APNS and GCM (Firebase
+Cloud Messaging). For more information, see Using Amazon SNS Mobile
+Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html). For
 information on configuring attributes for message delivery status, see
 Using Amazon SNS Application Attributes for Message Delivery Status
@@ -1002,9 +1046,13 @@ and receiving daily SMS usage reports.
 
 You can override some of these settings for a single message when you
 use the C<Publish> action with the C<MessageAttributes.entry.N>
-parameter. For more information, see Sending an SMS Message
+parameter. For more information, see Publishing to a mobile phone
 (https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
 in the I<Amazon SNS Developer Guide>.
+
+To use this operation, you must grant the Amazon SNS service principal
+(C<sns.amazonaws.com>) permission to perform the C<s3:ListBucket>
+action.
 
 
 =head2 SetSubscriptionAttributes
@@ -1069,10 +1117,13 @@ Each argument is described in detail in: L<Paws::SNS::Subscribe>
 
 Returns: a L<Paws::SNS::SubscribeResponse> instance
 
-Prepares to subscribe an endpoint by sending the endpoint a
-confirmation message. To actually create a subscription, the endpoint
-owner must call the C<ConfirmSubscription> action with the token from
-the confirmation message. Confirmation tokens are valid for three days.
+Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
+HTTP/S or email, or if the endpoint and the topic are not in the same
+AWS account, the endpoint owner must run the C<ConfirmSubscription>
+action to confirm the subscription.
+
+You call the C<ConfirmSubscription> action with the token from the
+subscription response. Confirmation tokens are valid for three days.
 
 This action is throttled at 100 transactions per second (TPS).
 

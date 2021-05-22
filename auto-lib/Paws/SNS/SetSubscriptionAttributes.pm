@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the C<SetTopicAttributes> action uses:
+request parameters that this action uses:
 
 =over
 
@@ -76,6 +76,36 @@ delivered due to client errors (for example, when the subscribed
 endpoint is unreachable) or server errors (for example, when the
 service that powers the subscribed endpoint becomes unavailable) are
 held in the dead-letter queue for further analysis or reprocessing.
+
+=back
+
+The following attribute applies only to Amazon Kinesis Data Firehose
+delivery stream subscriptions:
+
+=over
+
+=item *
+
+C<SubscriptionRoleArn> E<ndash> The ARN of the IAM role that has the
+following:
+
+=over
+
+=item *
+
+Permission to write to the Kinesis Data Firehose delivery stream
+
+=item *
+
+Amazon SNS listed as a trusted entity
+
+=back
+
+Specifying a valid ARN for this attribute is required for Kinesis Data
+Firehose delivery stream subscriptions. For more information, see
+Fanout to Kinesis Data Firehose delivery streams
+(https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+in the I<Amazon SNS Developer Guide>.
 
 =back
 
