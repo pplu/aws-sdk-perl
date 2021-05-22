@@ -200,7 +200,7 @@ mode.
 
 B<C<ON_DEMAND> >: For sessions of this type, the MPEG-DASH manifest
 contains all the fragments for the session, up to the number that is
-specified in C<MaxMediaPlaylistFragmentResults>. The manifest must be
+specified in C<MaxManifestFragmentResults>. The manifest must be
 retrieved only once for each session. When this type of session is
 played in a media player, the user interface typically displays a
 scrubber control for choosing the position in the playback window to
