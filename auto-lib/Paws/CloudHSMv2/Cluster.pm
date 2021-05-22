@@ -2,6 +2,7 @@
 package Paws::CloudHSMv2::Cluster;
   use Moose;
   has BackupPolicy => (is => 'ro', isa => 'Str');
+  has BackupRetentionPolicy => (is => 'ro', isa => 'Paws::CloudHSMv2::BackupRetentionPolicy');
   has Certificates => (is => 'ro', isa => 'Paws::CloudHSMv2::Certificates');
   has ClusterId => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
@@ -54,6 +55,11 @@ Contains information about an AWS CloudHSM cluster.
 =head2 BackupPolicy => Str
 
 The cluster's backup policy.
+
+
+=head2 BackupRetentionPolicy => L<Paws::CloudHSMv2::BackupRetentionPolicy>
+
+A policy that defines how the service retains backups.
 
 
 =head2 Certificates => L<Paws::CloudHSMv2::Certificates>
@@ -116,7 +122,7 @@ availability zone.
 
 =head2 TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
 
-
+The list of tags for the cluster.
 
 
 =head2 VpcId => Str

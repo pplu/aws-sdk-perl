@@ -66,6 +66,11 @@ specified clusters. Specify clusters by their cluster identifier (ID).
 Use the C<states> filter to return only backups that match the
 specified state.
 
+Use the C<neverExpires> filter to return backups filtered by the value
+in the C<neverExpires> parameter. C<True> returns all backups exempt
+from the backup retention policy. C<False> returns all backups with a
+backup retention policy defined at the cluster.
+
 
 
 =head2 MaxResults => Int
