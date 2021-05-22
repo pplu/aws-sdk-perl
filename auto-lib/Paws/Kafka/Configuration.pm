@@ -7,6 +7,7 @@ package Paws::Kafka::Configuration;
   has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'kafkaVersions', traits => ['NameInRequest'], required => 1);
   has LatestRevision => (is => 'ro', isa => 'Paws::Kafka::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest'], required => 1);
 
 1;
 
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kafka::Configuration object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., State => $value  });
 
 =head3 Results returned from an API call
 
@@ -74,6 +75,12 @@ Latest revision of the configuration.
 =head2 B<REQUIRED> Name => Str
 
 The name of the configuration.
+
+
+=head2 B<REQUIRED> State => Str
+
+The state of the configuration. The possible states are ACTIVE,
+DELETING, and DELETE_FAILED.
 
 
 

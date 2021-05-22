@@ -8,6 +8,7 @@ package Paws::Kafka::CreateCluster;
   has EncryptionInfo => (is => 'ro', isa => 'Paws::Kafka::EncryptionInfo', traits => ['NameInRequest'], request_name => 'encryptionInfo');
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'enhancedMonitoring');
   has KafkaVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kafkaVersion', required => 1);
+  has LoggingInfo => (is => 'ro', isa => 'Paws::Kafka::LoggingInfo', traits => ['NameInRequest'], request_name => 'loggingInfo');
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfBrokerNodes', required => 1);
   has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoringInfo', traits => ['NameInRequest'], request_name => 'openMonitoring');
   has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
@@ -53,6 +54,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KafkaVersion         => 'My__stringMin1Max128',
       NumberOfBrokerNodes  => 1,
       ClientAuthentication => {
+        Sasl => {
+          Iam => {
+            Enabled => 1,    # OPTIONAL
+          },    # OPTIONAL
+          Scram => {
+            Enabled => 1,    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
         Tls => { CertificateAuthorityArnList => [ 'My__string', ... ], }
         ,     # OPTIONAL
       },    # OPTIONAL
@@ -73,10 +82,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },    # OPTIONAL
       EnhancedMonitoring => 'DEFAULT',    # OPTIONAL
-      OpenMonitoring     => {
+      LoggingInfo        => {
+        BrokerLogs => {
+          CloudWatchLogs => {
+            Enabled  => 1,                # OPTIONAL
+            LogGroup => 'My__string',
+          },    # OPTIONAL
+          Firehose => {
+            Enabled        => 1,              # OPTIONAL
+            DeliveryStream => 'My__string',
+          },    # OPTIONAL
+          S3 => {
+            Enabled => 1,              # OPTIONAL
+            Bucket  => 'My__string',
+            Prefix  => 'My__string',
+          },    # OPTIONAL
+        },
+
+      },    # OPTIONAL
+      OpenMonitoring => {
         Prometheus => {
           JmxExporter => {
-            EnabledInBroker => 1,         # OPTIONAL
+            EnabledInBroker => 1,    # OPTIONAL
 
           },    # OPTIONAL
           NodeExporter => {
@@ -136,13 +163,20 @@ Includes all encryption-related information.
 =head2 EnhancedMonitoring => Str
 
 Specifies the level of monitoring for the MSK cluster. The possible
-values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.
+values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+PER_TOPIC_PER_PARTITION.
 
-Valid values are: C<"DEFAULT">, C<"PER_BROKER">, C<"PER_TOPIC_PER_BROKER">
+Valid values are: C<"DEFAULT">, C<"PER_BROKER">, C<"PER_TOPIC_PER_BROKER">, C<"PER_TOPIC_PER_PARTITION">
 
 =head2 B<REQUIRED> KafkaVersion => Str
 
 The version of Apache Kafka.
+
+
+
+=head2 LoggingInfo => L<Paws::Kafka::LoggingInfo>
+
+
 
 
 

@@ -2,7 +2,7 @@
 package Paws::Kafka::CreateConfiguration;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'kafkaVersions', required => 1);
+  has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'kafkaVersions');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ServerProperties => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverProperties', required => 1);
 
@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $kafka = Paws->service('Kafka');
     my $CreateConfigurationResponse = $kafka->CreateConfiguration(
-      KafkaVersions    => [ 'My__string', ... ],
       Name             => 'My__string',
       ServerProperties => 'Blob__blob',
-      Description      => 'My__string',            # OPTIONAL
+      Description      => 'My__string',             # OPTIONAL
+      KafkaVersions    => [ 'My__string', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -43,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreationTime   = $CreateConfigurationResponse->CreationTime;
     my $LatestRevision = $CreateConfigurationResponse->LatestRevision;
     my $Name           = $CreateConfigurationResponse->Name;
+    my $State          = $CreateConfigurationResponse->State;
 
     # Returns a L<Paws::Kafka::CreateConfigurationResponse> object.
 
@@ -58,7 +59,7 @@ The description of the configuration.
 
 
 
-=head2 B<REQUIRED> KafkaVersions => ArrayRef[Str|Undef]
+=head2 KafkaVersions => ArrayRef[Str|Undef]
 
 The versions of Apache Kafka with which you can use this MSK
 configuration.

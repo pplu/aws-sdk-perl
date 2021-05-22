@@ -36,6 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $BootstrapBrokerString =
       $GetBootstrapBrokersResponse->BootstrapBrokerString;
+    my $BootstrapBrokerStringSaslIam =
+      $GetBootstrapBrokersResponse->BootstrapBrokerStringSaslIam;
+    my $BootstrapBrokerStringSaslScram =
+      $GetBootstrapBrokersResponse->BootstrapBrokerStringSaslScram;
     my $BootstrapBrokerStringTls =
       $GetBootstrapBrokersResponse->BootstrapBrokerStringTls;
 
