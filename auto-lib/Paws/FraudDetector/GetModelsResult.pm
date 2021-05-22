@@ -17,12 +17,12 @@ Paws::FraudDetector::GetModelsResult
 
 =head2 Models => ArrayRef[L<Paws::FraudDetector::Model>]
 
-The returned models.
+The array of models.
 
 
 =head2 NextToken => Str
 
-The next token for subsequent requests.
+The next page token to be used in subsequent requests.
 
 
 =head2 _request_id => Str

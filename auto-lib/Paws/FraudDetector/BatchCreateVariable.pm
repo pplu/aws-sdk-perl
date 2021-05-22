@@ -1,6 +1,7 @@
 
 package Paws::FraudDetector::BatchCreateVariable;
   use Moose;
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has VariableEntries => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::VariableEntry]', traits => ['NameInRequest'], request_name => 'variableEntries' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,7 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
+      Tags => [
+        {
+          Key   => 'MytagKey',           # min: 1, max: 128
+          Value => 'MytagValue',         # max: 256
 
+        },
+        ...
+      ],                                 # OPTIONAL
     );
 
     # Results:
@@ -51,6 +59,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/frauddetector/BatchCreateVariable>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
+
 
 
 =head2 B<REQUIRED> VariableEntries => ArrayRef[L<Paws::FraudDetector::VariableEntry>]

@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateDetectorVersionStatusResult =
       $frauddetector->UpdateDetectorVersionStatus(
       DetectorId        => 'Myidentifier',
-      DetectorVersionId => 'MynonEmptyString',
+      DetectorVersionId => 'MywholeNumberVersionString',
       Status            => 'DRAFT',
 
       );

@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $frauddetector->UpdateDetectorVersionMetadata(
       Description       => 'Mydescription',
       DetectorId        => 'Myidentifier',
-      DetectorVersionId => 'MynonEmptyString',
+      DetectorVersionId => 'MywholeNumberVersionString',
 
       );
 

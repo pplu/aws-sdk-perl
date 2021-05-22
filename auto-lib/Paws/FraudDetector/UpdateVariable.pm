@@ -63,7 +63,8 @@ The name of the variable.
 
 =head2 VariableType => Str
 
-The variable type.
+The variable type. For more information see Variable types
+(https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
 
 
 

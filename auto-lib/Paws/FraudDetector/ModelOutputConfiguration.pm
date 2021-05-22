@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FraudDetect
 
 =head1 DESCRIPTION
 
-Provides the model output configuration.
+Provides the Amazon Sagemaker model output configuration.
 
 =head1 ATTRIBUTES
 

@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $frauddetector = Paws->service('FraudDetector');
     my $DeleteDetectorVersionResult = $frauddetector->DeleteDetectorVersion(
       DetectorId        => 'Myidentifier',
-      DetectorVersionId => 'MynonEmptyString',
+      DetectorVersionId => 'MywholeNumberVersionString',
 
     );
 

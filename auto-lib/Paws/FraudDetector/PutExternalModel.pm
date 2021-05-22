@@ -2,11 +2,12 @@
 package Paws::FraudDetector::PutExternalModel;
   use Moose;
   has InputConfiguration => (is => 'ro', isa => 'Paws::FraudDetector::ModelInputConfiguration', traits => ['NameInRequest'], request_name => 'inputConfiguration' , required => 1);
+  has InvokeModelEndpointRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'invokeModelEndpointRoleArn' , required => 1);
   has ModelEndpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelEndpoint' , required => 1);
   has ModelEndpointStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelEndpointStatus' , required => 1);
   has ModelSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelSource' , required => 1);
   has OutputConfiguration => (is => 'ro', isa => 'Paws::FraudDetector::ModelOutputConfiguration', traits => ['NameInRequest'], request_name => 'outputConfiguration' , required => 1);
-  has Role => (is => 'ro', isa => 'Paws::FraudDetector::Role', traits => ['NameInRequest'], request_name => 'role' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -34,15 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $frauddetector = Paws->service('FraudDetector');
     my $PutExternalModelResult = $frauddetector->PutExternalModel(
       InputConfiguration => {
-        IsOpaque         => 1,
-        CsvInputTemplate => 'Mystring',    # OPTIONAL
+        UseEventVariables => 1,
+        CsvInputTemplate  => 'Mystring',        # OPTIONAL
+        EventTypeName     => 'Myidentifier',    # min: 1, max: 64; OPTIONAL
         Format => 'TEXT_CSV',    # values: TEXT_CSV, APPLICATION_JSON; OPTIONAL
         JsonInputTemplate => 'Mystring',    # OPTIONAL
       },
-      ModelEndpoint       => 'Mystring',
-      ModelEndpointStatus => 'ASSOCIATED',
-      ModelSource         => 'SAGEMAKER',
-      OutputConfiguration => {
+      InvokeModelEndpointRoleArn => 'Mystring',
+      ModelEndpoint              => 'MysageMakerEndpointIdentifier',
+      ModelEndpointStatus        => 'ASSOCIATED',
+      ModelSource                => 'SAGEMAKER',
+      OutputConfiguration        => {
         Format => 'TEXT_CSV',    # values: TEXT_CSV, APPLICATION_JSONLINES
         CsvIndexToVariableMap => {
           'Mystring' => 'Mystring',    # key: OPTIONAL, value: OPTIONAL
@@ -51,12 +54,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'Mystring' => 'Mystring',    # key: OPTIONAL, value: OPTIONAL
         },    # OPTIONAL
       },
-      Role => {
-        Arn  => 'Mystring',    # OPTIONAL
-        Name => 'Mystring',    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
 
-      },
-
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -68,6 +73,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fra
 =head2 B<REQUIRED> InputConfiguration => L<Paws::FraudDetector::ModelInputConfiguration>
 
 The model endpoint input configuration.
+
+
+
+=head2 B<REQUIRED> InvokeModelEndpointRoleArn => Str
+
+The IAM role used to invoke the model endpoint.
 
 
 
@@ -95,9 +106,9 @@ The model endpoint output configuration.
 
 
 
-=head2 B<REQUIRED> Role => L<Paws::FraudDetector::Role>
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
 
-The IAM role used to invoke the model endpoint.
+A collection of key and value pairs.
 
 
 

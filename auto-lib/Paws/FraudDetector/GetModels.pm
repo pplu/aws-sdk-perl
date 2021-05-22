@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $frauddetector = Paws->service('FraudDetector');
     my $GetModelsResult = $frauddetector->GetModels(
       MaxResults => 1,                          # OPTIONAL
-      ModelId    => 'Myidentifier',             # OPTIONAL
+      ModelId    => 'MymodelIdentifier',        # OPTIONAL
       ModelType  => 'ONLINE_FRAUD_INSIGHTS',    # OPTIONAL
       NextToken  => 'Mystring',                 # OPTIONAL
     );
@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fra
 
 =head2 MaxResults => Int
 
-The maximum results to return for the request.
+The maximum number of objects to return for the request.
 
 
 
@@ -69,7 +69,7 @@ Valid values are: C<"ONLINE_FRAUD_INSIGHTS">
 
 =head2 NextToken => Str
 
-The next token for the request.
+The next token for the subsequent request.
 
 
 

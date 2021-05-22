@@ -3,6 +3,7 @@ package Paws::FraudDetector::PutOutcome;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -31,6 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutOutcomeResult = $frauddetector->PutOutcome(
       Name        => 'Myidentifier',
       Description => 'Mydescription',    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MytagKey',           # min: 1, max: 128
+          Value => 'MytagValue',         # max: 256
+
+        },
+        ...
+      ],                                 # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -48,6 +57,12 @@ The outcome description.
 =head2 B<REQUIRED> Name => Str
 
 The name of the outcome.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
 
 
 

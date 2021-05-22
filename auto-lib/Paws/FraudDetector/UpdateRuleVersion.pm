@@ -6,6 +6,7 @@ package Paws::FraudDetector::UpdateRuleVersion;
   has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' , required => 1);
   has Outcomes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'outcomes' , required => 1);
   has Rule => (is => 'ro', isa => 'Paws::FraudDetector::Rule', traits => ['NameInRequest'], request_name => 'rule' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -36,12 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Language   => 'DETECTORPL',
       Outcomes   => [ 'Mystring', ... ],
       Rule       => {
-        DetectorId  => 'Myidentifier',        # min: 1, max: 64
-        RuleId      => 'Myidentifier',        # min: 1, max: 64
-        RuleVersion => 'MynonEmptyString',    # min: 1
+        DetectorId  => 'Myidentifier',                  # min: 1, max: 64
+        RuleId      => 'Myidentifier',                  # min: 1, max: 64
+        RuleVersion => 'MywholeNumberVersionString',    # min: 1, max: 5
 
       },
-      Description => 'Mydescription',         # OPTIONAL
+      Description => 'Mydescription',                   # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MytagKey',                          # min: 1, max: 128
+          Value => 'MytagValue',                        # max: 256
+
+        },
+        ...
+      ],                                                # OPTIONAL
     );
 
     # Results:
@@ -82,6 +91,12 @@ The outcomes.
 =head2 B<REQUIRED> Rule => L<Paws::FraudDetector::Rule>
 
 The rule to update.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+The tags to assign to the rule version.
 
 
 

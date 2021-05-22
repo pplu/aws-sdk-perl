@@ -7,6 +7,7 @@ package Paws::FraudDetector::CreateRule;
   has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' , required => 1);
   has Outcomes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'outcomes' , required => 1);
   has RuleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ruleId' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -39,6 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Outcomes    => [ 'Mystring', ... ],
       RuleId      => 'Myidentifier',
       Description => 'Mydescription',       # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MytagKey',              # min: 1, max: 128
+          Value => 'MytagValue',            # max: 256
+
+        },
+        ...
+      ],                                    # OPTIONAL
     );
 
     # Results:
@@ -85,6 +94,12 @@ The outcome or outcomes returned when the rule expression matches.
 =head2 B<REQUIRED> RuleId => Str
 
 The rule ID.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
 
 
 

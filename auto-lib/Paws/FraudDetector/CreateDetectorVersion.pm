@@ -5,7 +5,9 @@ package Paws::FraudDetector::CreateDetectorVersion;
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorId' , required => 1);
   has ExternalModelEndpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'externalModelEndpoints' );
   has ModelVersions => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::ModelVersion]', traits => ['NameInRequest'], request_name => 'modelVersions' );
+  has RuleExecutionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ruleExecutionMode' );
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Rule]', traits => ['NameInRequest'], request_name => 'rules' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -35,24 +37,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DetectorId => 'Myidentifier',
       Rules      => [
         {
-          DetectorId  => 'Myidentifier',        # min: 1, max: 64
-          RuleId      => 'Myidentifier',        # min: 1, max: 64
-          RuleVersion => 'MynonEmptyString',    # min: 1
+          DetectorId  => 'Myidentifier',                  # min: 1, max: 64
+          RuleId      => 'Myidentifier',                  # min: 1, max: 64
+          RuleVersion => 'MywholeNumberVersionString',    # min: 1, max: 5
 
         },
         ...
       ],
-      Description            => 'Mydescription',        # OPTIONAL
-      ExternalModelEndpoints => [ 'Mystring', ... ],    # OPTIONAL
+      Description            => 'Mydescription',          # OPTIONAL
+      ExternalModelEndpoints => [ 'Mystring', ... ],      # OPTIONAL
       ModelVersions          => [
         {
-          ModelId   => 'Myidentifier',           # min: 1, max: 64
+          ModelId   => 'MymodelIdentifier',      # min: 1, max: 64
           ModelType => 'ONLINE_FRAUD_INSIGHTS',  # values: ONLINE_FRAUD_INSIGHTS
           ModelVersionNumber => 'MynonEmptyString',    # min: 1
+          Arn => 'MyfraudDetectorArn',    # min: 1, max: 256; OPTIONAL
+        },
+        ...
+      ],                                  # OPTIONAL
+      RuleExecutionMode => 'ALL_MATCHED', # OPTIONAL
+      Tags              => [
+        {
+          Key   => 'MytagKey',            # min: 1, max: 128
+          Value => 'MytagValue',          # max: 256
 
         },
         ...
-      ],                                               # OPTIONAL
+      ],                                  # OPTIONAL
     );
 
     # Results:
@@ -93,9 +104,33 @@ The model versions to include in the detector version.
 
 
 
+=head2 RuleExecutionMode => Str
+
+The rule execution mode for the rules included in the detector version.
+
+You can define and edit the rule mode at the detector version level,
+when it is in draft status.
+
+If you specify C<FIRST_MATCHED>, Amazon Fraud Detector evaluates rules
+sequentially, first to last, stopping at the first matched rule. Amazon
+Fraud dectector then provides the outcomes for that single rule.
+
+If you specifiy C<ALL_MATCHED>, Amazon Fraud Detector evaluates all
+rules and returns the outcomes for all matched rules.
+
+The default behavior is C<FIRST_MATCHED>.
+
+Valid values are: C<"ALL_MATCHED">, C<"FIRST_MATCHED">
+
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::FraudDetector::Rule>]
 
 The rules to include in the detector version.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
 
 
 

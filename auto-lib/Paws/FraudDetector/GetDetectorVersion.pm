@@ -30,21 +30,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $frauddetector = Paws->service('FraudDetector');
     my $GetDetectorVersionResult = $frauddetector->GetDetectorVersion(
       DetectorId        => 'Myidentifier',
-      DetectorVersionId => 'MynonEmptyString',
+      DetectorVersionId => 'MywholeNumberVersionString',
 
     );
 
     # Results:
+    my $Arn               = $GetDetectorVersionResult->Arn;
     my $CreatedTime       = $GetDetectorVersionResult->CreatedTime;
     my $Description       = $GetDetectorVersionResult->Description;
     my $DetectorId        = $GetDetectorVersionResult->DetectorId;
     my $DetectorVersionId = $GetDetectorVersionResult->DetectorVersionId;
     my $ExternalModelEndpoints =
       $GetDetectorVersionResult->ExternalModelEndpoints;
-    my $LastUpdatedTime = $GetDetectorVersionResult->LastUpdatedTime;
-    my $ModelVersions   = $GetDetectorVersionResult->ModelVersions;
-    my $Rules           = $GetDetectorVersionResult->Rules;
-    my $Status          = $GetDetectorVersionResult->Status;
+    my $LastUpdatedTime   = $GetDetectorVersionResult->LastUpdatedTime;
+    my $ModelVersions     = $GetDetectorVersionResult->ModelVersions;
+    my $RuleExecutionMode = $GetDetectorVersionResult->RuleExecutionMode;
+    my $Rules             = $GetDetectorVersionResult->Rules;
+    my $Status            = $GetDetectorVersionResult->Status;
 
     # Returns a L<Paws::FraudDetector::GetDetectorVersionResult> object.
 

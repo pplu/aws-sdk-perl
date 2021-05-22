@@ -2,6 +2,7 @@
 package Paws::FraudDetector::DeleteEvent;
   use Moose;
   has EventId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'eventId' , required => 1);
+  has EventTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'eventTypeName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -28,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $frauddetector = Paws->service('FraudDetector');
     my $DeleteEventResult = $frauddetector->DeleteEvent(
-      EventId => 'Mystring',
+      EventId       => 'Myidentifier',
+      EventTypeName => 'Myidentifier',
 
     );
 
@@ -41,6 +43,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fra
 =head2 B<REQUIRED> EventId => Str
 
 The ID of the event to delete.
+
+
+
+=head2 B<REQUIRED> EventTypeName => Str
+
+The name of the event type.
 
 
 
