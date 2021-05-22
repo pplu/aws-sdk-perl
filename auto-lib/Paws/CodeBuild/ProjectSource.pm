@@ -3,6 +3,7 @@ package Paws::CodeBuild::ProjectSource;
   use Moose;
   has Auth => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', request_name => 'auth', traits => ['NameInRequest']);
   has Buildspec => (is => 'ro', isa => 'Str', request_name => 'buildspec', traits => ['NameInRequest']);
+  has BuildStatusConfig => (is => 'ro', isa => 'Paws::CodeBuild::BuildStatusConfig', request_name => 'buildStatusConfig', traits => ['NameInRequest']);
   has GitCloneDepth => (is => 'ro', isa => 'Int', request_name => 'gitCloneDepth', traits => ['NameInRequest']);
   has GitSubmodulesConfig => (is => 'ro', isa => 'Paws::CodeBuild::GitSubmodulesConfig', request_name => 'gitSubmodulesConfig', traits => ['NameInRequest']);
   has InsecureSsl => (is => 'ro', isa => 'Bool', request_name => 'insecureSsl', traits => ['NameInRequest']);
@@ -72,6 +73,13 @@ Buildspec File Name and Storage Location
 (https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage).
 
 
+=head2 BuildStatusConfig => L<Paws::CodeBuild::BuildStatusConfig>
+
+Contains information that defines how the build project reports the
+build status to the source provider. This option is only used when the
+source provider is C<GITHUB>, C<GITHUB_ENTERPRISE>, or C<BITBUCKET>.
+
+
 =head2 GitCloneDepth => Int
 
 Information about the Git clone depth for the build project.
@@ -109,25 +117,23 @@ this value.
 For source code in an AWS CodeCommit repository, the HTTPS clone URL to
 the repository that contains the source code and the buildspec file
 (for example,
-C<https://git-codecommit.I<region-ID>.amazonaws.com/v1/repos/I<repo-name>
->).
+C<https://git-codecommit.E<lt>region-IDE<gt>.amazonaws.com/v1/repos/E<lt>repo-nameE<gt>>).
 
 =item *
 
-For source code in an Amazon Simple Storage Service (Amazon S3) input
-bucket, one of the following.
+For source code in an Amazon S3 input bucket, one of the following.
 
 =over
 
 =item *
 
-The path to the ZIP file that contains the source code (for example, C<
-I<bucket-name>/I<path>/I<to>/I<object-name>.zip>).
+The path to the ZIP file that contains the source code (for example,
+C<E<lt>bucket-nameE<gt>/E<lt>pathE<gt>/E<lt>object-nameE<gt>.zip>).
 
 =item *
 
-The path to the folder that contains the source code (for example, C<
-I<bucket-name>/I<path>/I<to>/I<source-code>/I<folder>/>).
+The path to the folder that contains the source code (for example,
+C<E<lt>bucket-nameE<gt>/E<lt>path-to-source-codeE<gt>/E<lt>folderE<gt>/>).
 
 =back
 
@@ -168,7 +174,14 @@ object, set the C<auth> object's C<type> value to C<OAUTH>.
 Set to true to report the status of a build's start and finish to your
 source provider. This option is valid only when your source provider is
 GitHub, GitHub Enterprise, or Bitbucket. If this is set and you use a
-different source provider, an invalidInputException is thrown.
+different source provider, an C<invalidInputException> is thrown.
+
+To be able to report the build status to the source provider, the user
+associated with the source provider must have write access to the repo.
+If the user does not have write access, the build status cannot be
+updated. For more information, see Source provider access
+(https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html)
+in the I<AWS CodeBuild User Guide>.
 
 The status of a build triggered by a webhook is always reported to your
 source provider.
@@ -176,7 +189,9 @@ source provider.
 
 =head2 SourceIdentifier => Str
 
-An identifier for this project source.
+An identifier for this project source. The identifier can only contain
+alphanumeric characters and underscores, and must be less than 128
+characters in length.
 
 
 =head2 B<REQUIRED> Type => Str
@@ -201,11 +216,12 @@ action of a pipeline in AWS CodePipeline.
 
 =item *
 
-C<GITHUB>: The source code is in a GitHub repository.
+C<GITHUB>: The source code is in a GitHub or GitHub Enterprise Cloud
+repository.
 
 =item *
 
-C<GITHUB_ENTERPRISE>: The source code is in a GitHub Enterprise
+C<GITHUB_ENTERPRISE>: The source code is in a GitHub Enterprise Server
 repository.
 
 =item *
@@ -214,8 +230,7 @@ C<NO_SOURCE>: The project does not have input source code.
 
 =item *
 
-C<S3>: The source code is in an Amazon Simple Storage Service (Amazon
-S3) input bucket.
+C<S3>: The source code is in an Amazon S3 bucket.
 
 =back
 

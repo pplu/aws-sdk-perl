@@ -55,7 +55,10 @@ The type of environment variable. Valid values include:
 =item *
 
 C<PARAMETER_STORE>: An environment variable stored in Amazon EC2
-Systems Manager Parameter Store.
+Systems Manager Parameter Store. To learn how to specify a parameter
+store environment variable, see env/parameter-store
+(https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.parameter-store)
+in the I<AWS CodeBuild User Guide>.
 
 =item *
 
@@ -65,7 +68,10 @@ default value.
 =item *
 
 C<SECRETS_MANAGER>: An environment variable stored in AWS Secrets
-Manager.
+Manager. To learn how to specify a secrets manager environment
+variable, see env/secrets-manager
+(https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.secrets-manager)
+in the I<AWS CodeBuild User Guide>.
 
 =back
 

@@ -2,6 +2,7 @@
 package Paws::CodeBuild::Webhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', request_name => 'branchFilter', traits => ['NameInRequest']);
+  has BuildType => (is => 'ro', isa => 'Str', request_name => 'buildType', traits => ['NameInRequest']);
   has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', request_name => 'filterGroups', traits => ['NameInRequest']);
   has LastModifiedSecret => (is => 'ro', isa => 'Str', request_name => 'lastModifiedSecret', traits => ['NameInRequest']);
   has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
@@ -53,6 +54,11 @@ all branches are built.
 
 It is recommended that you use C<filterGroups> instead of
 C<branchFilter>.
+
+
+=head2 BuildType => Str
+
+Specifies the type of build this webhook will trigger.
 
 
 =head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]

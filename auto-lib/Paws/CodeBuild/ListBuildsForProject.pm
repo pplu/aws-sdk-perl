@@ -66,7 +66,10 @@ The name of the AWS CodeBuild project.
 
 =head2 SortOrder => Str
 
-The order to list build IDs. Valid values include:
+The order to list results in. The results are sorted by build number,
+not the build identifier.
+
+Valid values include:
 
 =over
 
@@ -80,6 +83,8 @@ C<DESCENDING>: List the build IDs in descending order by build ID.
 
 =back
 
+If the project has more than 100 builds, setting the sort order will
+result in an error.
 
 Valid values are: C<"ASCENDING">, C<"DESCENDING">
 

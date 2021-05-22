@@ -48,9 +48,9 @@ Information about a file system created by Amazon Elastic File System
 
 The name used to access a file system created by Amazon EFS. CodeBuild
 creates an environment variable by appending the C<identifier> in all
-capital letters to C<CODEBUILD_>. For example, if you specify C<my-efs>
+capital letters to C<CODEBUILD_>. For example, if you specify C<my_efs>
 for C<identifier>, a new environment variable is create named
-C<CODEBUILD_MY-EFS>.
+C<CODEBUILD_MY_EFS>.
 
 The C<identifier> is used to mount your file system.
 

@@ -3,9 +3,11 @@ package Paws::CodeBuild::StartBuild;
   use Moose;
   has ArtifactsOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', traits => ['NameInRequest'], request_name => 'artifactsOverride' );
   has BuildspecOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildspecOverride' );
+  has BuildStatusConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::BuildStatusConfig', traits => ['NameInRequest'], request_name => 'buildStatusConfigOverride' );
   has CacheOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cacheOverride' );
   has CertificateOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateOverride' );
   has ComputeTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeTypeOverride' );
+  has DebugSessionEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'debugSessionEnabled' );
   has EncryptionKeyOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKeyOverride' );
   has EnvironmentTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentTypeOverride' );
   has EnvironmentVariablesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', traits => ['NameInRequest'], request_name => 'environmentVariablesOverride' );
@@ -59,14 +61,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
         Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        ArtifactIdentifier   => 'MyString',   # OPTIONAL
-        EncryptionDisabled   => 1,            # OPTIONAL
+        ArtifactIdentifier => 'MyString',    # OPTIONAL
+        BucketOwnerAccess  => 'NONE',  # values: NONE, READ_ONLY, FULL; OPTIONAL
+        EncryptionDisabled => 1,       # OPTIONAL
         Location             => 'MyString',   # OPTIONAL
         Name                 => 'MyString',   # OPTIONAL
         NamespaceType        => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
         OverrideArtifactName => 1,            # OPTIONAL
         Packaging            => 'NONE',       # values: NONE, ZIP; OPTIONAL
         Path                 => 'MyString',   # OPTIONAL
+      },    # OPTIONAL
+      BuildStatusConfigOverride => {
+        Context   => 'MyString',    # OPTIONAL
+        TargetUrl => 'MyString',    # OPTIONAL
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
@@ -79,6 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       CertificateOverride          => 'MyString',                # OPTIONAL
       ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
+      DebugSessionEnabled          => 1,                         # OPTIONAL
       EncryptionKeyOverride        => 'MyNonEmptyString',        # OPTIONAL
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
@@ -106,7 +114,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
-          Status             => 'ENABLED',     # values: ENABLED, DISABLED
+          Status => 'ENABLED',    # values: ENABLED, DISABLED
+          BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
           EncryptionDisabled => 1,             # OPTIONAL
           Location           => 'MyString',    # OPTIONAL
         },    # OPTIONAL
@@ -122,7 +131,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SecondaryArtifactsOverride => [
         {
           Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
-          ArtifactIdentifier   => 'MyString', # OPTIONAL
+          ArtifactIdentifier => 'MyString',    # OPTIONAL
+          BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
           EncryptionDisabled   => 1,          # OPTIONAL
           Location             => 'MyString', # OPTIONAL
           Name                 => 'MyString', # OPTIONAL
@@ -141,6 +151,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type     => 'OAUTH',       # values: OAUTH
             Resource => 'MyString',    # OPTIONAL
           },    # OPTIONAL
+          BuildStatusConfig => {
+            Context   => 'MyString',    # OPTIONAL
+            TargetUrl => 'MyString',    # OPTIONAL
+          },
           Buildspec           => 'MyString',    # OPTIONAL
           GitCloneDepth       => 1,
           GitSubmodulesConfig => {
@@ -209,6 +223,14 @@ Buildspec File Name and Storage Location
 
 
 
+=head2 BuildStatusConfigOverride => L<Paws::CodeBuild::BuildStatusConfig>
+
+Contains information that defines how the build project reports the
+build status to the source provider. This option is only used when the
+source provider is C<GITHUB>, C<GITHUB_ENTERPRISE>, or C<BITBUCKET>.
+
+
+
 =head2 CacheOverride => L<Paws::CodeBuild::ProjectCache>
 
 A ProjectCache object specified for this build that overrides the one
@@ -230,6 +252,14 @@ specified in the build project.
 
 Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUILD_GENERAL1_LARGE">, C<"BUILD_GENERAL1_2XLARGE">
 
+=head2 DebugSessionEnabled => Bool
+
+Specifies if session debugging is enabled for this build. For more
+information, see Viewing a running build in Session Manager
+(https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
+
+
+
 =head2 EncryptionKeyOverride => Str
 
 The AWS Key Management Service (AWS KMS) customer master key (CMK) that
@@ -240,7 +270,8 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format C<alias/I<alias-name> >).
+available, the CMK's alias (using the format
+C<alias/E<lt>alias-nameE<gt>>).
 
 
 
@@ -249,7 +280,7 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 A container type for this build that overrides the one specified in the
 build project.
 
-Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">, C<"LINUX_GPU_CONTAINER">, C<"ARM_CONTAINER">
+Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">, C<"LINUX_GPU_CONTAINER">, C<"ARM_CONTAINER">, C<"WINDOWS_SERVER_2019_CONTAINER">
 
 =head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
 
@@ -277,7 +308,7 @@ AWS CodeBuild build project.
 
 A unique, case sensitive identifier you provide to ensure the
 idempotency of the StartBuild request. The token is included in the
-StartBuild request and is valid for 12 hours. If you repeat the
+StartBuild request and is valid for 5 minutes. If you repeat the
 StartBuild request with the same token, but change a parameter, AWS
 CodeBuild returns a parameter mismatch error.
 
@@ -297,22 +328,21 @@ build. There are two valid values:
 
 =over
 
-=item *
+=item CODEBUILD
 
-C<CODEBUILD> specifies that AWS CodeBuild uses its own credentials.
-This requires that you modify your ECR repository policy to trust AWS
-CodeBuild's service principal.
+Specifies that AWS CodeBuild uses its own credentials. This requires
+that you modify your ECR repository policy to trust AWS CodeBuild's
+service principal.
 
-=item *
+=item SERVICE_ROLE
 
-C<SERVICE_ROLE> specifies that AWS CodeBuild uses your build project's
-service role.
+Specifies that AWS CodeBuild uses your build project's service role.
 
 =back
 
 When using a cross-account or private registry image, you must use
-SERVICE_ROLE credentials. When using an AWS CodeBuild curated image,
-you must use CODEBUILD credentials.
+C<SERVICE_ROLE> credentials. When using an AWS CodeBuild curated image,
+you must use C<CODEBUILD> credentials.
 
 Valid values are: C<"CODEBUILD">, C<"SERVICE_ROLE">
 
@@ -362,7 +392,14 @@ The credentials for access to a private registry.
 Set to true to report to your source provider the status of a build's
 start and completion. If you use this option with a source provider
 other than GitHub, GitHub Enterprise, or Bitbucket, an
-invalidInputException is thrown.
+C<invalidInputException> is thrown.
+
+To be able to report the build status to the source provider, the user
+associated with the source provider must have write access to the repo.
+If the user does not have write access, the build status cannot be
+updated. For more information, see Source provider access
+(https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html)
+in the I<AWS CodeBuild User Guide>.
 
 The status of a build triggered by a webhook is always reported to your
 source provider.
@@ -420,35 +457,36 @@ Valid values are: C<"CODECOMMIT">, C<"CODEPIPELINE">, C<"GITHUB">, C<"S3">, C<"B
 
 =head2 SourceVersion => Str
 
-A version of the build input to be built, for this build only. If not
-specified, the latest version is used. If specified, must be one of:
+The version of the build input to be built, for this build only. If not
+specified, the latest version is used. If specified, the contents
+depends on the source provider:
 
 =over
 
-=item *
+=item AWS CodeCommit
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+The commit ID, branch, or Git tag to use.
 
-=item *
+=item GitHub
 
-For GitHub: the commit ID, pull request ID, branch name, or tag name
-that corresponds to the version of the source code you want to build.
-If a pull request ID is specified, it must use the format
+The commit ID, pull request ID, branch name, or tag name that
+corresponds to the version of the source code you want to build. If a
+pull request ID is specified, it must use the format
 C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
 specified, the branch's HEAD commit ID is used. If not specified, the
 default branch's HEAD commit ID is used.
 
-=item *
+=item Bitbucket
 
-For Bitbucket: the commit ID, branch name, or tag name that corresponds
-to the version of the source code you want to build. If a branch name
-is specified, the branch's HEAD commit ID is used. If not specified,
-the default branch's HEAD commit ID is used.
+The commit ID, branch name, or tag name that corresponds to the version
+of the source code you want to build. If a branch name is specified,
+the branch's HEAD commit ID is used. If not specified, the default
+branch's HEAD commit ID is used.
 
-=item *
+=item Amazon S3
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+The version ID of the object that represents the build input ZIP file
+to use.
 
 =back
 

@@ -2,6 +2,7 @@
 package Paws::CodeBuild::BuildArtifacts;
   use Moose;
   has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
+  has BucketOwnerAccess => (is => 'ro', isa => 'Str', request_name => 'bucketOwnerAccess', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Md5sum => (is => 'ro', isa => 'Str', request_name => 'md5sum', traits => ['NameInRequest']);
@@ -46,6 +47,11 @@ Information about build output artifacts.
 =head2 ArtifactIdentifier => Str
 
 An identifier for this artifact definition.
+
+
+=head2 BucketOwnerAccess => Str
+
+
 
 
 =head2 EncryptionDisabled => Bool

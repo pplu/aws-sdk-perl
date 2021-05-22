@@ -2,6 +2,7 @@
 package Paws::CodeBuild::Report;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CodeCoverageSummary => (is => 'ro', isa => 'Paws::CodeBuild::CodeCoverageReportSummary', request_name => 'codeCoverageSummary', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has ExecutionId => (is => 'ro', isa => 'Str', request_name => 'executionId', traits => ['NameInRequest']);
   has Expired => (is => 'ro', isa => 'Str', request_name => 'expired', traits => ['NameInRequest']);
@@ -57,6 +58,12 @@ tests, integration tests, and functional tests.
 The ARN of the report run.
 
 
+=head2 CodeCoverageSummary => L<Paws::CodeBuild::CodeCoverageReportSummary>
+
+A C<CodeCoverageReportSummary> object that contains a code coverage
+summary for this report.
+
+
 =head2 Created => Str
 
 The date and time this report run occurred.
@@ -110,6 +117,19 @@ reached.
 =head2 Type => Str
 
 The type of the report that was run.
+
+=over
+
+=item CODE_COVERAGE
+
+A code coverage report.
+
+=item TEST
+
+A test report.
+
+=back
+
 
 
 

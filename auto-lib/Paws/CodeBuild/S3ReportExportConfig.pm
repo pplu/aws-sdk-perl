@@ -2,6 +2,7 @@
 package Paws::CodeBuild::S3ReportExportConfig;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
+  has BucketOwner => (is => 'ro', isa => 'Str', request_name => 'bucketOwner', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has Packaging => (is => 'ro', isa => 'Str', request_name => 'packaging', traits => ['NameInRequest']);
@@ -46,6 +47,13 @@ exported.
 =head2 Bucket => Str
 
 The name of the S3 bucket where the raw data of a report are exported.
+
+
+=head2 BucketOwner => Str
+
+The AWS account identifier of the owner of the Amazon S3 bucket. This
+allows report data to be exported to an Amazon S3 bucket that is owned
+by an account other than the account running the build.
 
 
 =head2 EncryptionDisabled => Bool

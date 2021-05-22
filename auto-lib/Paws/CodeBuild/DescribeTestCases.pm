@@ -31,10 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $codebuild = Paws->service('CodeBuild');
     my $DescribeTestCasesOutput = $codebuild->DescribeTestCases(
-      ReportArn  => 'MyString',
-      Filter     => { Status => 'MyString', },    # OPTIONAL
-      MaxResults => 1,                            # OPTIONAL
-      NextToken  => 'MyString',                   # OPTIONAL
+      ReportArn => 'MyString',
+      Filter    => {
+        Keyword => 'MyString',
+        Status  => 'MyString',
+      },    # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:

@@ -41,7 +41,9 @@ A source identifier and its corresponding version.
 
 =head2 B<REQUIRED> SourceIdentifier => Str
 
-An identifier for a source in the build project.
+An identifier for a source in the build project. The identifier can
+only contain alphanumeric characters and underscores, and must be less
+than 128 characters in length.
 
 
 =head2 B<REQUIRED> SourceVersion => Str
@@ -73,8 +75,8 @@ the default branch's HEAD commit ID is used.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+For Amazon S3: the version ID of the object that represents the build
+input ZIP file to use.
 
 =back
 

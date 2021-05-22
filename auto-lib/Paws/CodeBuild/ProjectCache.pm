@@ -60,27 +60,28 @@ C<S3>: This is the S3 bucket name/prefix.
 
 =head2 Modes => ArrayRef[Str|Undef]
 
-If you use a C<LOCAL> cache, the local cache mode. You can use one or
-more local cache modes at the same time.
+An array of strings that specify the local cache modes. You can use one
+or more local cache modes at the same time. This is only used for
+C<LOCAL> cache types.
+
+Possible values are:
 
 =over
 
-=item *
+=item LOCAL_SOURCE_CACHE
 
-C<LOCAL_SOURCE_CACHE> mode caches Git metadata for primary and
-secondary sources. After the cache is created, subsequent builds pull
-only the change between commits. This mode is a good choice for
-projects with a clean working directory and a source that is a large
-Git repository. If you choose this option and your project does not use
-a Git repository (GitHub, GitHub Enterprise, or Bitbucket), the option
-is ignored.
+Caches Git metadata for primary and secondary sources. After the cache
+is created, subsequent builds pull only the change between commits.
+This mode is a good choice for projects with a clean working directory
+and a source that is a large Git repository. If you choose this option
+and your project does not use a Git repository (GitHub, GitHub
+Enterprise, or Bitbucket), the option is ignored.
 
-=item *
+=item LOCAL_DOCKER_LAYER_CACHE
 
-C<LOCAL_DOCKER_LAYER_CACHE> mode caches existing Docker layers. This
-mode is a good choice for projects that build or pull large Docker
-images. It can prevent the performance issues caused by pulling large
-Docker images down from the network.
+Caches existing Docker layers. This mode is a good choice for projects
+that build or pull large Docker images. It can prevent the performance
+issues caused by pulling large Docker images down from the network.
 
 =over
 
@@ -100,16 +101,11 @@ layer cache.
 
 =back
 
-=back
+=item LOCAL_CUSTOM_CACHE
 
-=over
-
-=item *
-
-C<LOCAL_CUSTOM_CACHE> mode caches directories you specify in the
-buildspec file. This mode is a good choice if your build scenario is
-not suited to one of the other three local cache modes. If you use a
-custom cache:
+Caches directories you specify in the buildspec file. This mode is a
+good choice if your build scenario is not suited to one of the other
+three local cache modes. If you use a custom cache:
 
 =over
 

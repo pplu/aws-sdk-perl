@@ -4,7 +4,9 @@ package Paws::CodeBuild::Project;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
   has Badge => (is => 'ro', isa => 'Paws::CodeBuild::ProjectBadge', request_name => 'badge', traits => ['NameInRequest']);
+  has BuildBatchConfig => (is => 'ro', isa => 'Paws::CodeBuild::ProjectBuildBatchConfig', request_name => 'buildBatchConfig', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
+  has ConcurrentBuildLimit => (is => 'ro', isa => 'Int', request_name => 'concurrentBuildLimit', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
@@ -75,9 +77,25 @@ Information about the build output artifacts for the build project.
 Information about the build badge for the build project.
 
 
+=head2 BuildBatchConfig => L<Paws::CodeBuild::ProjectBuildBatchConfig>
+
+A ProjectBuildBatchConfig object that defines the batch build options
+for the project.
+
+
 =head2 Cache => L<Paws::CodeBuild::ProjectCache>
 
 Information about the cache for the build project.
+
+
+=head2 ConcurrentBuildLimit => Int
+
+The maximum number of concurrent builds that are allowed for this
+project.
+
+New builds are only started if the current number of builds is less
+than or equal to this limit. If the current build count meets this
+limit, new builds are throttled and are not run.
 
 
 =head2 Created => Str
@@ -99,7 +117,8 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format C<alias/I<alias-name> >).
+available, the CMK's alias (using the format
+C<alias/E<lt>alias-nameE<gt>>).
 
 
 =head2 Environment => L<Paws::CodeBuild::ProjectEnvironment>
@@ -196,8 +215,8 @@ the default branch's HEAD commit ID is used.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+For Amazon S3: the version ID of the object that represents the build
+input ZIP file to use.
 
 =back
 
@@ -211,7 +230,7 @@ in the I<AWS CodeBuild User Guide>.
 
 =head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
 
-The tags for this build project.
+A list of tag key and value pairs associated with this build project.
 
 These tags are available for use by AWS services that support AWS
 CodeBuild build project tags.

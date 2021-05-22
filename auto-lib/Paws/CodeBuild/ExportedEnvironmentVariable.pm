@@ -34,24 +34,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about an exported environment variable.
+Contains information about an exported environment variable.
+
+Exported environment variables are used in conjunction with AWS
+CodePipeline to export environment variables from the current build
+stage to subsequent stages in the pipeline. For more information, see
+Working with variables
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-variables.html)
+in the I<AWS CodePipeline User Guide>.
+
+During a build, the value of a variable is available starting with the
+C<install> phase. It can be updated between the start of the C<install>
+phase and the end of the C<post_build> phase. After the C<post_build>
+phase ends, the value of exported variables cannot change.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-The name of this exported environment variable.
+The name of the exported environment variable.
 
 
 =head2 Value => Str
 
-The value assigned to this exported environment variable.
-
-During a build, the value of a variable is available starting with the
-C<install> phase. It can be updated between the start of the C<install>
-phase and the end of the C<post_build> phase. After the C<post_build>
-phase ends, the value of exported variables cannot change.
+The value assigned to the exported environment variable.
 
 
 

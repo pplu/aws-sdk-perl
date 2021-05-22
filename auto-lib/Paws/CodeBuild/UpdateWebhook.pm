@@ -2,6 +2,7 @@
 package Paws::CodeBuild::UpdateWebhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchFilter' );
+  has BuildType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildType' );
   has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', traits => ['NameInRequest'], request_name => 'filterGroups' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
   has RotateSecret => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'rotateSecret' );
@@ -33,12 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateWebhookOutput = $codebuild->UpdateWebhook(
       ProjectName  => 'MyProjectName',
       BranchFilter => 'MyString',        # OPTIONAL
+      BuildType    => 'BUILD',           # OPTIONAL
       FilterGroups => [
         [
           {
             Pattern => 'MyString',
             Type    => 'EVENT'
-            ,   # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH
+            , # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH, COMMIT_MESSAGE
             ExcludeMatchedPattern => 1,    # OPTIONAL
           },
           ...
@@ -70,6 +72,12 @@ It is recommended that you use C<filterGroups> instead of
 C<branchFilter>.
 
 
+
+=head2 BuildType => Str
+
+Specifies the type of build this webhook will trigger.
+
+Valid values are: C<"BUILD">, C<"BUILD_BATCH">
 
 =head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
 

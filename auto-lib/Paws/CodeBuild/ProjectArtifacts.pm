@@ -2,6 +2,7 @@
 package Paws::CodeBuild::ProjectArtifacts;
   use Moose;
   has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
+  has BucketOwnerAccess => (is => 'ro', isa => 'Str', request_name => 'bucketOwnerAccess', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -51,12 +52,16 @@ Information about the build output artifacts for the build project.
 An identifier for this artifact definition.
 
 
+=head2 BucketOwnerAccess => Str
+
+
+
+
 =head2 EncryptionDisabled => Bool
 
 Set to true if you do not want your output artifacts encrypted. This
-option is valid only if your artifacts type is Amazon Simple Storage
-Service (Amazon S3). If this is set with another artifacts type, an
-invalidInputException is thrown.
+option is valid only if your artifacts type is Amazon S3. If this is
+set with another artifacts type, an invalidInputException is thrown.
 
 
 =head2 Location => Str
@@ -118,7 +123,7 @@ For example:
 
 If C<path> is set to C<MyArtifacts>, C<namespaceType> is set to
 C<BUILD_ID>, and C<name> is set to C<MyArtifact.zip>, then the output
-artifact is stored in C<MyArtifacts/I<build-ID>/MyArtifact.zip>.
+artifact is stored in C<MyArtifacts/E<lt>build-IDE<gt>/MyArtifact.zip>.
 
 =item *
 
@@ -130,7 +135,7 @@ bucket.
 
 If C<path> is set to C<MyArtifacts>, C<namespaceType> is set to
 C<BUILD_ID>, and C<name> is set to "C</>", the output artifact is
-stored in C<MyArtifacts/I<build-ID> >.
+stored in C<MyArtifacts/E<lt>build-IDE<gt>>.
 
 =back
 
@@ -176,7 +181,7 @@ C<namespaceType> is not specified.
 
 For example, if C<path> is set to C<MyArtifacts>, C<namespaceType> is
 set to C<BUILD_ID>, and C<name> is set to C<MyArtifact.zip>, the output
-artifact is stored in C<MyArtifacts/I<build-ID>/MyArtifact.zip>.
+artifact is stored in C<MyArtifacts/E<lt>build-IDE<gt>/MyArtifact.zip>.
 
 
 =head2 OverrideArtifactName => Bool
@@ -278,8 +283,7 @@ C<NO_ARTIFACTS>: The build project does not produce any build output.
 
 =item *
 
-C<S3>: The build project stores build output in Amazon Simple Storage
-Service (Amazon S3).
+C<S3>: The build project stores build output in Amazon S3.
 
 =back
 

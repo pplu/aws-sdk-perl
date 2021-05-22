@@ -65,20 +65,21 @@ C<refs/heads/branch-name>.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of webhook filter. There are five webhook filter types:
-C<EVENT>, C<ACTOR_ACCOUNT_ID>, C<HEAD_REF>, C<BASE_REF>, and
-C<FILE_PATH>.
+The type of webhook filter. There are six webhook filter types:
+C<EVENT>, C<ACTOR_ACCOUNT_ID>, C<HEAD_REF>, C<BASE_REF>, C<FILE_PATH>,
+and C<COMMIT_MESSAGE>.
 
 =over
 
 =item EVENT
 
 A webhook event triggers a build when the provided C<pattern> matches
-one of four event types: C<PUSH>, C<PULL_REQUEST_CREATED>,
-C<PULL_REQUEST_UPDATED>, and C<PULL_REQUEST_REOPENED>. The C<EVENT>
-patterns are specified as a comma-separated string. For example,
-C<PUSH, PULL_REQUEST_CREATED, PULL_REQUEST_UPDATED> filters all push,
-pull request created, and pull request updated events.
+one of five event types: C<PUSH>, C<PULL_REQUEST_CREATED>,
+C<PULL_REQUEST_UPDATED>, C<PULL_REQUEST_REOPENED>, and
+C<PULL_REQUEST_MERGED>. The C<EVENT> patterns are specified as a
+comma-separated string. For example, C<PUSH, PULL_REQUEST_CREATED,
+PULL_REQUEST_UPDATED> filters all push, pull request created, and pull
+request updated events.
 
 The C<PULL_REQUEST_REOPENED> works with GitHub and GitHub Enterprise
 only.
@@ -110,7 +111,18 @@ Works with pull request events only.
 A webhook triggers a build when the path of a changed file matches the
 regular expression C<pattern>.
 
-Works with GitHub and GitHub Enterprise push events only.
+Works with GitHub and Bitbucket events push and pull requests events.
+Also works with GitHub Enterprise push events, but does not work with
+GitHub Enterprise pull request events.
+
+=item COMMIT_MESSAGE
+
+A webhook triggers a build when the head commit message matches the
+regular expression C<pattern>.
+
+Works with GitHub and Bitbucket events push and pull requests events.
+Also works with GitHub Enterprise push events, but does not work with
+GitHub Enterprise pull request events.
 
 =back
 

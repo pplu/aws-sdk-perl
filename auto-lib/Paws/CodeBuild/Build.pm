@@ -3,11 +3,13 @@ package Paws::CodeBuild::Build;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::BuildArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
+  has BuildBatchArn => (is => 'ro', isa => 'Str', request_name => 'buildBatchArn', traits => ['NameInRequest']);
   has BuildComplete => (is => 'ro', isa => 'Bool', request_name => 'buildComplete', traits => ['NameInRequest']);
   has BuildNumber => (is => 'ro', isa => 'Int', request_name => 'buildNumber', traits => ['NameInRequest']);
   has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
+  has DebugSession => (is => 'ro', isa => 'Paws::CodeBuild::DebugSession', request_name => 'debugSession', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
@@ -77,6 +79,12 @@ The Amazon Resource Name (ARN) of the build.
 Information about the output artifacts for the build.
 
 
+=head2 BuildBatchArn => Str
+
+The ARN of the batch build that this build is a member of, if
+applicable.
+
+
 =head2 BuildComplete => Bool
 
 Whether the build is complete. True if complete; otherwise, false.
@@ -134,6 +142,11 @@ Information about the cache for the build.
 The current build phase.
 
 
+=head2 DebugSession => L<Paws::CodeBuild::DebugSession>
+
+Contains information about the debug session for this build.
+
+
 =head2 EncryptionKey => Str
 
 The AWS Key Management Service (AWS KMS) customer master key (CMK) to
@@ -143,7 +156,8 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format C<alias/I<alias-name> >).
+available, the CMK's alias (using the format
+C<alias/E<lt>alias-nameE<gt>>).
 
 
 =head2 EndTime => Str
@@ -159,6 +173,13 @@ Information about the build environment for this build.
 =head2 ExportedEnvironmentVariables => ArrayRef[L<Paws::CodeBuild::ExportedEnvironmentVariable>]
 
 A list of exported environment variables for this build.
+
+Exported environment variables are used in conjunction with AWS
+CodePipeline to export environment variables from the current build
+stage to subsequent stages in the pipeline. For more information, see
+Working with variables
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-variables.html)
+in the I<AWS CodePipeline User Guide>.
 
 
 =head2 FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]
@@ -248,7 +269,7 @@ For AWS CodePipeline, the source revision provided by AWS CodePipeline.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3), this does not apply.
+For Amazon S3, this does not apply.
 
 =back
 
@@ -293,8 +314,8 @@ the default branch's HEAD commit ID is used.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+For Amazon S3: the version ID of the object that represents the build
+input ZIP file to use.
 
 =back
 
