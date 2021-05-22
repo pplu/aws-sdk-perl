@@ -37,12 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AdDecisionServerUrl =
       $GetPlaybackConfigurationResponse->AdDecisionServerUrl;
+    my $AvailSuppression = $GetPlaybackConfigurationResponse->AvailSuppression;
+    my $Bumper           = $GetPlaybackConfigurationResponse->Bumper;
     my $CdnConfiguration = $GetPlaybackConfigurationResponse->CdnConfiguration;
+    my $ConfigurationAliases =
+      $GetPlaybackConfigurationResponse->ConfigurationAliases;
     my $DashConfiguration =
       $GetPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $GetPlaybackConfigurationResponse->HlsConfiguration;
     my $LivePreRollConfiguration =
       $GetPlaybackConfigurationResponse->LivePreRollConfiguration;
+    my $ManifestProcessingRules =
+      $GetPlaybackConfigurationResponse->ManifestProcessingRules;
     my $Name = $GetPlaybackConfigurationResponse->Name;
     my $PersonalizationThresholdSeconds =
       $GetPlaybackConfigurationResponse->PersonalizationThresholdSeconds;

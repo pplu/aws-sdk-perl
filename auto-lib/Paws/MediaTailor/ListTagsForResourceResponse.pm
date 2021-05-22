@@ -17,8 +17,7 @@ Paws::MediaTailor::ListTagsForResourceResponse
 
 =head2 Tags => L<Paws::MediaTailor::__mapOf__string>
 
-A comma-separated list of tag key:value pairs. For example: { "Key1":
-"Value1", "Key2": "Value2" }
+A comma-separated list of tag key:value pairs.
 
 
 =head2 _request_id => Str

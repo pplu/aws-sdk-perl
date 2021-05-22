@@ -2,9 +2,13 @@
 package Paws::MediaTailor::PutPlaybackConfiguration;
   use Moose;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
+  has AvailSuppression => (is => 'ro', isa => 'Paws::MediaTailor::AvailSuppression');
+  has Bumper => (is => 'ro', isa => 'Paws::MediaTailor::Bumper');
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
+  has ConfigurationAliases => (is => 'ro', isa => 'Paws::MediaTailor::ConfigurationAliasesRequest');
   has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfigurationForPut');
   has LivePreRollConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::LivePreRollConfiguration');
+  has ManifestProcessingRules => (is => 'ro', isa => 'Paws::MediaTailor::ManifestProcessingRules');
   has Name => (is => 'ro', isa => 'Str');
   has PersonalizationThresholdSeconds => (is => 'ro', isa => 'Int');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
@@ -40,10 +44,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutPlaybackConfigurationResponse =
       $api . mediatailor->PutPlaybackConfiguration(
       AdDecisionServerUrl => 'My__string',    # OPTIONAL
-      CdnConfiguration    => {
+      AvailSuppression    => {
+        Mode  => 'OFF',          # values: OFF, BEHIND_LIVE_EDGE; OPTIONAL
+        Value => 'My__string',
+      },    # OPTIONAL
+      Bumper => {
+        EndUrl   => 'My__string',
+        StartUrl => 'My__string',
+      },    # OPTIONAL
+      CdnConfiguration => {
         AdSegmentUrlPrefix      => 'My__string',
         ContentSegmentUrlPrefix => 'My__string',
-      },                                      # OPTIONAL
+      },    # OPTIONAL
+      ConfigurationAliases =>
+        { 'My__string' => { 'My__string' => 'My__string', }, },    # OPTIONAL
       DashConfiguration => {
         MpdLocation => 'My__string',
         OriginManifestType =>
@@ -52,6 +66,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LivePreRollConfiguration => {
         AdDecisionServerUrl => 'My__string',
         MaxDurationSeconds  => 1,              # OPTIONAL
+      },    # OPTIONAL
+      ManifestProcessingRules => {
+        AdMarkerPassthrough => {
+          Enabled => 1,    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       Name                            => 'My__string',    # OPTIONAL
       PersonalizationThresholdSeconds => 1,               # OPTIONAL
@@ -64,12 +83,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AdDecisionServerUrl =
       $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
+    my $AvailSuppression = $PutPlaybackConfigurationResponse->AvailSuppression;
+    my $Bumper           = $PutPlaybackConfigurationResponse->Bumper;
     my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
+    my $ConfigurationAliases =
+      $PutPlaybackConfigurationResponse->ConfigurationAliases;
     my $DashConfiguration =
       $PutPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
     my $LivePreRollConfiguration =
       $PutPlaybackConfigurationResponse->LivePreRollConfiguration;
+    my $ManifestProcessingRules =
+      $PutPlaybackConfigurationResponse->ManifestProcessingRules;
     my $Name = $PutPlaybackConfigurationResponse->Name;
     my $PersonalizationThresholdSeconds =
       $PutPlaybackConfigurationResponse->PersonalizationThresholdSeconds;
@@ -105,10 +130,35 @@ length is 25,000 characters.
 
 
 
+=head2 AvailSuppression => L<Paws::MediaTailor::AvailSuppression>
+
+The configuration for avail suppression, also known as ad suppression.
+For more information about ad suppression, see Ad Suppression
+(https://docs.aws.amazon.com/mediatailor/latest/ug/ad-behavior.html).
+
+
+
+=head2 Bumper => L<Paws::MediaTailor::Bumper>
+
+The configuration for bumpers. Bumpers are short audio or video clips
+that play at the start or before the end of an ad break. To learn more
+about bumpers, see Bumpers
+(https://docs.aws.amazon.com/mediatailor/latest/ug/bumpers.html).
+
+
+
 =head2 CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>
 
 The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.
+
+
+
+=head2 ConfigurationAliases => L<Paws::MediaTailor::ConfigurationAliasesRequest>
+
+The player parameters and aliases used as dynamic variables during
+session initialization. For more information, see Domain Variables
+(https://docs.aws.amazon.com/mediatailor/latest/ug/variables-domain.html).
 
 
 
@@ -124,6 +174,14 @@ The configuration for pre-roll ad insertion.
 
 
 
+=head2 ManifestProcessingRules => L<Paws::MediaTailor::ManifestProcessingRules>
+
+The configuration for manifest processing rules. Manifest processing
+rules enable customization of the personalized manifests created by
+MediaTailor.
+
+
+
 =head2 Name => Str
 
 The identifier for the playback configuration.
@@ -132,8 +190,15 @@ The identifier for the playback configuration.
 
 =head2 PersonalizationThresholdSeconds => Int
 
-The maximum duration of underfilled ad time (in seconds) allowed in an
-ad break.
+Defines the maximum duration of underfilled ad time (in seconds)
+allowed in an ad break. If the duration of underfilled ad time exceeds
+the personalization threshold, then the personalization of the ad break
+is abandoned and the underlying content is shown. This feature applies
+to I<ad replacement> in live and VOD streams, rather than ad insertion,
+because it relies on an underlying content stream. For more information
+about ad break behavior, including ad replacement and insertion, see Ad
+Behavior in AWS Elemental MediaTailor
+(https://docs.aws.amazon.com/mediatailor/latest/ug/ad-behavior.html).
 
 
 
@@ -166,7 +231,7 @@ custom profiles with the help of AWS Support.
 
 =head2 VideoContentSourceUrl => Str
 
-The URL prefix for the master playlist for the stream, minus the asset
+The URL prefix for the parent manifest for the stream, minus the asset
 ID. The maximum length is 512 characters.
 
 
