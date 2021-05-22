@@ -3,6 +3,7 @@ package Paws::DLM::LifecyclePolicySummary;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has PolicyId => (is => 'ro', isa => 'Str');
+  has PolicyType => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
 
@@ -49,6 +50,14 @@ The description of the lifecycle policy.
 =head2 PolicyId => Str
 
 The identifier of the lifecycle policy.
+
+
+=head2 PolicyType => Str
+
+The type of policy. C<EBS_SNAPSHOT_MANAGEMENT> indicates that the
+policy manages the lifecycle of Amazon EBS snapshots.
+C<IMAGE_MANAGEMENT> indicates that the policy manages the lifecycle of
+EBS-backed AMIs.
 
 
 =head2 State => Str

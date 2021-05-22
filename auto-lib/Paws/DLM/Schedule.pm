@@ -7,6 +7,7 @@ package Paws::DLM::Schedule;
   has FastRestoreRule => (is => 'ro', isa => 'Paws::DLM::FastRestoreRule');
   has Name => (is => 'ro', isa => 'Str');
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
+  has ShareRules => (is => 'ro', isa => 'ArrayRef[Paws::DLM::ShareRule]');
   has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
   has VariableTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
 
@@ -40,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::Schedu
 
 =head1 DESCRIPTION
 
-Specifies a backup schedule.
+Specifies a backup schedule for a snapshot or AMI lifecycle policy.
 
 =head1 ATTRIBUTES
 
@@ -60,6 +61,12 @@ The creation rule.
 
 The rule for cross-Region snapshot copies.
 
+You can only specify cross-Region copy rules for policies that create
+snapshots in a Region. If the policy creates snapshots on an Outpost,
+then you cannot copy the snapshots to a Region or to an Outpost. If the
+policy creates snapshots in a Region, then snapshots can be copied to
+up to three Regions or Outposts.
+
 
 =head2 FastRestoreRule => L<Paws::DLM::FastRestoreRule>
 
@@ -74,6 +81,11 @@ The name of the schedule.
 =head2 RetainRule => L<Paws::DLM::RetainRule>
 
 The retention rule.
+
+
+=head2 ShareRules => ArrayRef[L<Paws::DLM::ShareRule>]
+
+The rule for sharing snapshots with other AWS accounts.
 
 
 =head2 TagsToAdd => ArrayRef[L<Paws::DLM::Tag>]

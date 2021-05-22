@@ -36,54 +36,106 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description      => 'MyPolicyDescription',
       ExecutionRoleArn => 'MyExecutionRoleArn',
       PolicyDetails    => {
-        Parameters => {
-          ExcludeBootVolume => 1,    # OPTIONAL
-        },    # OPTIONAL
-        PolicyType =>
-          'EBS_SNAPSHOT_MANAGEMENT', # values: EBS_SNAPSHOT_MANAGEMENT; OPTIONAL
-        ResourceTypes => [
-          'VOLUME', ...              # values: VOLUME, INSTANCE
-        ],                           # min: 1, max: 1; OPTIONAL
-        Schedules => [
+        Actions => [
           {
-            CopyTags   => 1,         # OPTIONAL
-            CreateRule => {
-              Interval     => 1,          # min: 1; OPTIONAL
-              IntervalUnit => 'HOURS',    # values: HOURS
-              Times        => [
-                'MyTime', ...             # min: 5, max: 5
-              ],                          # max: 1; OPTIONAL
-            },    # OPTIONAL
-            CrossRegionCopyRules => [
+            CrossRegionCopy => [
               {
-                Encrypted    => 1,
-                TargetRegion => 'MyTargetRegion',    # max: 16
-                CmkArn       => 'MyCmkArn',          # max: 2048; OPTIONAL
-                CopyTags     => 1,                   # OPTIONAL
-                RetainRule   => {
-                  Interval => 1,                     # min: 1; OPTIONAL
+                EncryptionConfiguration => {
+                  Encrypted => 1,
+                  CmkArn    => 'MyCmkArn',    # max: 2048; OPTIONAL
+                },
+                Target     => 'MyTarget',     # max: 2048
+                RetainRule => {
+                  Interval => 1,              # min: 1; OPTIONAL
                   IntervalUnit =>
                     'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
                 },    # OPTIONAL
               },
               ...
-            ],        # max: 3; OPTIONAL
+            ],        # max: 3
+            Name => 'MyActionName',    # max: 120
+
+          },
+          ...
+        ],                             # min: 1, max: 1; OPTIONAL
+        EventSource => {
+          Type       => 'MANAGED_CWE',    # values: MANAGED_CWE
+          Parameters => {
+            DescriptionRegex => 'MyDescriptionRegex',    # max: 1000
+            EventType        => 'shareSnapshot',         # values: shareSnapshot
+            SnapshotOwner    => [
+              'MyAwsAccountId', ...                      # min: 12, max: 12
+            ],                                           # max: 50
+
+          },    # OPTIONAL
+        },    # OPTIONAL
+        Parameters => {
+          ExcludeBootVolume => 1,    # OPTIONAL
+          NoReboot          => 1,    # OPTIONAL
+        },    # OPTIONAL
+        PolicyType => 'EBS_SNAPSHOT_MANAGEMENT'
+        , # values: EBS_SNAPSHOT_MANAGEMENT, IMAGE_MANAGEMENT, EVENT_BASED_POLICY; OPTIONAL
+        ResourceLocations => [
+          'CLOUD', ...    # values: CLOUD, OUTPOST
+        ],                # min: 1, max: 1; OPTIONAL
+        ResourceTypes => [
+          'VOLUME', ...    # values: VOLUME, INSTANCE
+        ],                 # min: 1, max: 1; OPTIONAL
+        Schedules => [
+          {
+            CopyTags   => 1,    # OPTIONAL
+            CreateRule => {
+              CronExpression =>
+                'MyCronExpression',    # min: 17, max: 106; OPTIONAL
+              Interval     => 1,       # min: 1; OPTIONAL
+              IntervalUnit => 'HOURS', # values: HOURS; OPTIONAL
+              Location     => 'CLOUD', # values: CLOUD, OUTPOST_LOCAL; OPTIONAL
+              Times        => [
+                'MyTime', ...          # min: 5, max: 5
+              ],                       # max: 1; OPTIONAL
+            },    # OPTIONAL
+            CrossRegionCopyRules => [
+              {
+                Encrypted  => 1,
+                CmkArn     => 'MyCmkArn',    # max: 2048; OPTIONAL
+                CopyTags   => 1,             # OPTIONAL
+                RetainRule => {
+                  Interval => 1,             # min: 1; OPTIONAL
+                  IntervalUnit =>
+                    'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
+                },    # OPTIONAL
+                Target       => 'MyTarget',          # max: 2048
+                TargetRegion => 'MyTargetRegion',    # max: 16; OPTIONAL
+              },
+              ...
+            ],                                       # max: 3; OPTIONAL
             FastRestoreRule => {
               AvailabilityZones => [
-                'MyAvailabilityZone', ...    # max: 16
-              ],                             # min: 1, max: 10
-              Count    => 1,                 # min: 1, max: 1000; OPTIONAL
-              Interval => 1,                 # min: 1; OPTIONAL
+                'MyAvailabilityZone', ...            # max: 16
+              ],                                     # min: 1, max: 10
+              Count    => 1,    # min: 1, max: 1000; OPTIONAL
+              Interval => 1,    # min: 1; OPTIONAL
               IntervalUnit =>
-                'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
+                'DAYS',         # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
-            Name       => 'MyScheduleName',    # max: 500; OPTIONAL
+            Name       => 'MyScheduleName',    # max: 120; OPTIONAL
             RetainRule => {
               Count    => 1,                   # min: 1, max: 1000; OPTIONAL
               Interval => 1,                   # min: 1; OPTIONAL
               IntervalUnit =>
                 'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
+            ShareRules => [
+              {
+                TargetAccounts => [
+                  'MyAwsAccountId', ...    # min: 12, max: 12
+                ],                         # min: 1
+                UnshareInterval => 1,      # min: 1; OPTIONAL
+                UnshareIntervalUnit =>
+                  'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
+              },
+              ...
+            ],               # max: 1; OPTIONAL
             TagsToAdd => [
               {
                 Key   => 'MyString',    # max: 500
@@ -102,7 +154,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                          # max: 45; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 1; OPTIONAL
+        ],                              # min: 1, max: 4; OPTIONAL
         TargetTags => [
           {
             Key   => 'MyString',        # max: 500
