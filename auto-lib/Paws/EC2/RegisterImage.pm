@@ -4,6 +4,7 @@ package Paws::EC2::RegisterImage;
   has Architecture => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'architecture' );
   has BillingProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'BillingProduct' );
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
+  has BootMode => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EnaSupport => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enaSupport' );
@@ -51,16 +52,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Encrypted           => 1,                # OPTIONAL
             Iops                => 1,                # OPTIONAL
             KmsKeyId            => 'MyString',
+            OutpostArn          => 'MyString',
             SnapshotId          => 'MyString',
+            Throughput          => 1,                # OPTIONAL
             VolumeSize          => 1,                # OPTIONAL
-            VolumeType =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
+            VolumeType          => 'standard'
+            ,    # values: standard, io1, io2, gp2, sc1, st1, gp3; OPTIONAL
           },    # OPTIONAL
           NoDevice    => 'MyString',
           VirtualName => 'MyString',
         },
         ...
       ],        # OPTIONAL
+      BootMode           => 'legacy-bios',    # OPTIONAL
       Description        => 'MyString',       # OPTIONAL
       DryRun             => 1,                # OPTIONAL
       EnaSupport         => 1,                # OPTIONAL
@@ -104,7 +108,26 @@ bill for the use of an AMI.
 
 The block device mapping entries.
 
+If you specify an EBS volume using the ID of an EBS snapshot, you can't
+specify the encryption state of the volume.
 
+If you create an AMI on an Outpost, then all backing snapshots must be
+on the same Outpost or in the Region of that Outpost. AMIs on an
+Outpost that include local snapshots can be used to launch instances on
+the same Outpost only. For more information, Amazon EBS local snapshots
+on Outposts
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+=head2 BootMode => Str
+
+The boot mode of the AMI. For more information, see Boot modes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
+
+Valid values are: C<"legacy-bios">, C<"uefi">
 
 =head2 Description => Str
 

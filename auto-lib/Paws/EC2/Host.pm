@@ -60,10 +60,9 @@ The time that the Dedicated Host was allocated.
 =head2 AllowsMultipleInstanceTypes => Str
 
 Indicates whether the Dedicated Host supports multiple instance types
-of the same instance family, or a specific instance type only. C<one>
-indicates that the Dedicated Host supports multiple instance types in
-the instance family. C<off> indicates that the Dedicated Host supports
-a single instance type only.
+of the same instance family. If the value is C<on>, the Dedicated Host
+supports multiple instance types in the instance family. If the value
+is C<off>, the Dedicated Host supports a single instance type only.
 
 
 =head2 AutoPlacement => Str
@@ -90,7 +89,7 @@ Information about the instances running on the Dedicated Host.
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see How to Ensure
+idempotency of the request. For more information, see Ensuring
 Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 

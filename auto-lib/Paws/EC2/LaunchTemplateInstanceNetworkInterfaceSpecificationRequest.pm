@@ -1,5 +1,6 @@
 package Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest;
   use Moose;
+  has AssociateCarrierIpAddress => (is => 'ro', isa => 'Bool');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
@@ -8,6 +9,7 @@ package Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest;
   has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int');
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6AddressRequest]');
+  has NetworkCardIndex => (is => 'ro', isa => 'Int');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]');
@@ -32,20 +34,31 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest object:
 
-  $service_obj->Method(Att1 => { AssociatePublicIpAddress => $value, ..., SubnetId => $value  });
+  $service_obj->Method(Att1 => { AssociateCarrierIpAddress => $value, ..., SubnetId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AssociatePublicIpAddress
+  $result->Att1->AssociateCarrierIpAddress
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociateCarrierIpAddress => Bool
+
+Associates a Carrier IP address with eth0 for a new network interface.
+
+Use this option when you launch an instance in a Wavelength Zone and
+want to associate a Carrier IP address with the network interface. For
+more information about Carrier IP addresses, see Carrier IP addresses
+(https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#provider-owned-ip)
+in the I<AWS Wavelength Developer Guide>.
 
 
 =head2 AssociatePublicIpAddress => Bool
@@ -99,6 +112,13 @@ can't use this option if specifying specific IPv6 addresses.
 One or more specific IPv6 addresses from the IPv6 CIDR block range of
 your subnet. You can't use this option if you're specifying a number of
 IPv6 addresses.
+
+
+=head2 NetworkCardIndex => Int
+
+The index of the network card. Some instance types support multiple
+network cards. The primary network interface must be assigned to
+network card index 0. The default is network card index 0.
 
 
 =head2 NetworkInterfaceId => Str

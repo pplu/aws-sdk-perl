@@ -2,6 +2,7 @@ package Paws::EC2::Image;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
+  has BootMode => (is => 'ro', isa => 'Str', request_name => 'bootMode', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
@@ -69,6 +70,13 @@ The architecture of the image.
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
 Any block device mapping entries.
+
+
+=head2 BootMode => Str
+
+The boot mode of the image. For more information, see Boot modes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreationDate => Str

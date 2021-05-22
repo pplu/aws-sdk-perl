@@ -120,9 +120,8 @@ C<owner-id> - The ID of the AWS account that owns the transit gateway.
 
 =item *
 
-C<state> - The state of the attachment (C<available> | C<deleted> |
-C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
-C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
+C<state> - The state of the transit gateway (C<available> | C<deleted>
+| C<deleting> | C<modifying> | C<pending>).
 
 =item *
 

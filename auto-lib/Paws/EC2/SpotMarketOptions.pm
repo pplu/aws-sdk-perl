@@ -46,6 +46,19 @@ The required duration for the Spot Instances (also known as Spot
 blocks), in minutes. This value must be a multiple of 60 (60, 120, 180,
 240, 300, or 360).
 
+The duration period starts as soon as your Spot Instance receives its
+instance ID. At the end of the duration period, Amazon EC2 marks the
+Spot Instance for termination and provides a Spot Instance termination
+notice, which gives the instance a two-minute warning before it
+terminates.
+
+You can't specify an Availability Zone group or a launch group if you
+specify a duration.
+
+New accounts or accounts with no previous billing history with AWS are
+not eligible for Spot Instances with a defined duration (also known as
+Spot blocks).
+
 
 =head2 InstanceInterruptionBehavior => Str
 
@@ -61,19 +74,33 @@ The default is the On-Demand price.
 
 =head2 SpotInstanceType => Str
 
-The Spot Instance request type. For RunInstances, persistent Spot
-Instance requests are only supported when
-B<InstanceInterruptionBehavior> is set to either C<hibernate> or
-C<stop>.
+The Spot Instance request type. For RunInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances),
+persistent Spot Instance requests are only supported when the instance
+interruption behavior is either C<hibernate> or C<stop>.
 
 
 =head2 ValidUntil => Str
 
-The end date of the request. For a one-time request, the request
-remains active until all instances launch, the request is canceled, or
-this date is reached. If the request is persistent, it remains active
-until it is canceled or this date and time is reached. The default end
-date is 7 days from the current date.
+The end date of the request, in UTC format
+(I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). Supported only for persistent
+requests.
+
+=over
+
+=item *
+
+For a persistent request, the request remains active until the
+C<ValidUntil> date and time is reached. Otherwise, the request remains
+active until you cancel it.
+
+=item *
+
+For a one-time request, C<ValidUntil> is not supported. The request
+remains active until all instances launch or you cancel the request.
+
+=back
+
 
 
 

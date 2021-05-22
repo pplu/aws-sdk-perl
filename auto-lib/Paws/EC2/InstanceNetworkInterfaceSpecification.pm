@@ -1,5 +1,6 @@
 package Paws::EC2::InstanceNetworkInterfaceSpecification;
   use Moose;
+  has AssociateCarrierIpAddress => (is => 'ro', isa => 'Bool');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', request_name => 'associatePublicIpAddress', traits => ['NameInRequest']);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
@@ -8,6 +9,7 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
   has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int', request_name => 'ipv6AddressCount', traits => ['NameInRequest']);
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
+  has NetworkCardIndex => (is => 'ro', isa => 'Int');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', request_name => 'privateIpAddressesSet', traits => ['NameInRequest']);
@@ -32,20 +34,31 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::InstanceNetworkInterfaceSpecification object:
 
-  $service_obj->Method(Att1 => { AssociatePublicIpAddress => $value, ..., SubnetId => $value  });
+  $service_obj->Method(Att1 => { AssociateCarrierIpAddress => $value, ..., SubnetId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::InstanceNetworkInterfaceSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AssociatePublicIpAddress
+  $result->Att1->AssociateCarrierIpAddress
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociateCarrierIpAddress => Bool
+
+Indicates whether to assign a carrier IP address to the network
+interface.
+
+You can only assign a carrier IP address to a network interface that is
+in a subnet in a Wavelength Zone. For more information about carrier IP
+addresses, see Carrier IP addresses in the AWS Wavelength Developer
+Guide.
 
 
 =head2 AssociatePublicIpAddress => Bool
@@ -88,8 +101,10 @@ if creating a network interface when launching an instance.
 
 =head2 InterfaceType => Str
 
-The type of network interface. To create an Elastic Fabric Adapter
-(EFA), specify C<efa>. For more information, see Elastic Fabric Adapter
+The type of network interface.
+
+To create an Elastic Fabric Adapter (EFA), specify C<efa>. For more
+information, see Elastic Fabric Adapter
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -114,6 +129,13 @@ One or more IPv6 addresses to assign to the network interface. You
 cannot specify this option and the option to assign a number of IPv6
 addresses in the same request. You cannot specify this option if you've
 specified a minimum number of instances to launch.
+
+
+=head2 NetworkCardIndex => Int
+
+The index of the network card. Some instance types support multiple
+network cards. The primary network interface must be assigned to
+network card index 0. The default is network card index 0.
 
 
 =head2 NetworkInterfaceId => Str

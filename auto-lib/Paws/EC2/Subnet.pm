@@ -5,8 +5,10 @@ package Paws::EC2::Subnet;
   has AvailabilityZoneId => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneId', traits => ['NameInRequest']);
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int', request_name => 'availableIpAddressCount', traits => ['NameInRequest']);
   has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIpv4Pool', traits => ['NameInRequest']);
   has DefaultForAz => (is => 'ro', isa => 'Bool', request_name => 'defaultForAz', traits => ['NameInRequest']);
   has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SubnetIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
+  has MapCustomerOwnedIpOnLaunch => (is => 'ro', isa => 'Bool', request_name => 'mapCustomerOwnedIpOnLaunch', traits => ['NameInRequest']);
   has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', request_name => 'mapPublicIpOnLaunch', traits => ['NameInRequest']);
   has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
@@ -77,6 +79,11 @@ addresses for any stopped instances are considered unavailable.
 The IPv4 CIDR block assigned to the subnet.
 
 
+=head2 CustomerOwnedIpv4Pool => Str
+
+The customer-owned IPv4 address pool associated with the subnet.
+
+
 =head2 DefaultForAz => Bool
 
 Indicates whether this is the default subnet for the Availability Zone.
@@ -85,6 +92,13 @@ Indicates whether this is the default subnet for the Availability Zone.
 =head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::SubnetIpv6CidrBlockAssociation>]
 
 Information about the IPv6 CIDR blocks associated with the subnet.
+
+
+=head2 MapCustomerOwnedIpOnLaunch => Bool
+
+Indicates whether a network interface created in this subnet (including
+a network interface created by RunInstances) receives a customer-owned
+IPv4 address.
 
 
 =head2 MapPublicIpOnLaunch => Bool

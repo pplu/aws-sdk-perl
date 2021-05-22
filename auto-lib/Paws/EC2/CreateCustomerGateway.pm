@@ -6,6 +6,7 @@ package Paws::EC2::CreateCustomerGateway;
   has DeviceName => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -87,6 +88,12 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The Internet-routable IP address for the customer gateway's outside
 interface. The address must be static.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the customer gateway.
 
 
 

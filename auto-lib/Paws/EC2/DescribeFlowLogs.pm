@@ -81,7 +81,7 @@ C<FAILED>).
 
 C<log-destination-type> - The type of destination to which the flow log
 publishes data. Possible destination types include C<cloud-watch-logs>
-and C<S3>.
+and C<s3>.
 
 =item *
 
@@ -98,6 +98,20 @@ C<resource-id> - The ID of the VPC, subnet, or network interface.
 =item *
 
 C<traffic-type> - The type of traffic (C<ACCEPT> | C<REJECT> | C<ALL>).
+
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =back
 

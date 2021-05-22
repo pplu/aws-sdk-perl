@@ -1,13 +1,17 @@
 
 package Paws::EC2::ModifyClientVpnEndpoint;
   use Moose;
+  has ClientConnectOptions => (is => 'ro', isa => 'Paws::EC2::ClientConnectOptions');
   has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
   has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogOptions');
   has Description => (is => 'ro', isa => 'Str');
   has DnsServers => (is => 'ro', isa => 'Paws::EC2::DnsServersOptionsModifyStructure');
   has DryRun => (is => 'ro', isa => 'Bool');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SelfServicePortal => (is => 'ro', isa => 'Str');
   has ServerCertificateArn => (is => 'ro', isa => 'Str');
   has SplitTunnel => (is => 'ro', isa => 'Bool');
+  has VpcId => (is => 'ro', isa => 'Str');
   has VpnPort => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -36,6 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyClientVpnEndpointResult = $ec2->ModifyClientVpnEndpoint(
       ClientVpnEndpointId  => 'MyClientVpnEndpointId',
+      ClientConnectOptions => {
+        Enabled           => 1,             # OPTIONAL
+        LambdaFunctionArn => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
       ConnectionLogOptions => {
         CloudwatchLogGroup  => 'MyString',    # OPTIONAL
         CloudwatchLogStream => 'MyString',    # OPTIONAL
@@ -48,10 +56,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                          # OPTIONAL
         Enabled => 1,               # OPTIONAL
       },    # OPTIONAL
-      DryRun               => 1,             # OPTIONAL
-      ServerCertificateArn => 'MyString',    # OPTIONAL
-      SplitTunnel          => 1,             # OPTIONAL
-      VpnPort              => 1,             # OPTIONAL
+      DryRun               => 1,                               # OPTIONAL
+      SecurityGroupIds     => [ 'MySecurityGroupId', ... ],    # OPTIONAL
+      SelfServicePortal    => 'enabled',                       # OPTIONAL
+      ServerCertificateArn => 'MyString',                      # OPTIONAL
+      SplitTunnel          => 1,                               # OPTIONAL
+      VpcId                => 'MyVpcId',                       # OPTIONAL
+      VpnPort              => 1,                               # OPTIONAL
     );
 
     # Results:
@@ -63,6 +74,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyClientVpnEndpoint>
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientConnectOptions => L<Paws::EC2::ClientConnectOptions>
+
+The options for managing connection authorization for new client
+connections.
+
 
 
 =head2 B<REQUIRED> ClientVpnEndpointId => Str
@@ -124,6 +142,19 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+The IDs of one or more security groups to apply to the target network.
+
+
+
+=head2 SelfServicePortal => Str
+
+Specify whether to enable the self-service portal for the Client VPN
+endpoint.
+
+Valid values are: C<"enabled">, C<"disabled">
+
 =head2 ServerCertificateArn => Str
 
 The ARN of the server certificate to be used. The server certificate
@@ -139,6 +170,12 @@ For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
 Client VPN Endpoint
 (https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
 in the I<AWS Client VPN Administrator Guide>.
+
+
+
+=head2 VpcId => Str
+
+The ID of the VPC to associate with the Client VPN endpoint.
 
 
 

@@ -64,7 +64,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 NetworkBorderGroup => Str
 
-The location that the IP address is released from.
+The set of Availability Zones, Local Zones, or Wavelength Zones from
+which AWS advertises IP addresses.
 
 If you provide an incorrect network border group, you will receive an
 C<InvalidAddress.NotFound> error. For more information, see Error Codes

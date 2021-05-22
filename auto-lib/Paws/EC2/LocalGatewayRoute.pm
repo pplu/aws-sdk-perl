@@ -1,8 +1,10 @@
 package Paws::EC2::LocalGatewayRoute;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationCidrBlock', traits => ['NameInRequest']);
+  has LocalGatewayRouteTableArn => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableArn', traits => ['NameInRequest']);
   has LocalGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceGroupId => (is => 'ro', isa => 'Str', request_name => 'localGatewayVirtualInterfaceGroupId', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
@@ -45,6 +47,11 @@ This class has no description
 The CIDR block used for destination matches.
 
 
+=head2 LocalGatewayRouteTableArn => Str
+
+The Amazon Resource Name (ARN) of the local gateway route table.
+
+
 =head2 LocalGatewayRouteTableId => Str
 
 The ID of the local gateway route table.
@@ -53,6 +60,11 @@ The ID of the local gateway route table.
 =head2 LocalGatewayVirtualInterfaceGroupId => Str
 
 The ID of the virtual interface group.
+
+
+=head2 OwnerId => Str
+
+The AWS account ID that owns the local gateway route.
 
 
 =head2 State => Str

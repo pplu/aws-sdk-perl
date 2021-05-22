@@ -4,6 +4,7 @@ package Paws::EC2::InstanceNetworkInterfaceAttachment;
   has AttachTime => (is => 'ro', isa => 'Str', request_name => 'attachTime', traits => ['NameInRequest']);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
   has DeviceIndex => (is => 'ro', isa => 'Int', request_name => 'deviceIndex', traits => ['NameInRequest']);
+  has NetworkCardIndex => (is => 'ro', isa => 'Int', request_name => 'networkCardIndex', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
@@ -60,6 +61,11 @@ terminated.
 
 The index of the device on the instance for the network interface
 attachment.
+
+
+=head2 NetworkCardIndex => Int
+
+The index of the network card.
 
 
 =head2 Status => Str

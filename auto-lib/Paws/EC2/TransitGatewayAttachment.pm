@@ -67,12 +67,14 @@ The ID of the AWS account that owns the resource.
 
 =head2 ResourceType => Str
 
-The resource type.
+The resource type. Note that the C<tgw-peering> resource type has been
+deprecated.
 
 
 =head2 State => Str
 
-The attachment state.
+The attachment state. Note that the C<initiating> state has been
+deprecated.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

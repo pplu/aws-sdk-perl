@@ -6,6 +6,7 @@ package Paws::EC2::ServiceDetail;
   has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
+  has PrivateDnsNames => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateDnsDetails]', request_name => 'privateDnsNameSet', traits => ['NameInRequest']);
   has PrivateDnsNameVerificationState => (is => 'ro', isa => 'Str', request_name => 'privateDnsNameVerificationState', traits => ['NameInRequest']);
   has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
@@ -77,6 +78,11 @@ The AWS account ID of the service owner.
 =head2 PrivateDnsName => Str
 
 The private DNS name for the service.
+
+
+=head2 PrivateDnsNames => ArrayRef[L<Paws::EC2::PrivateDnsDetails>]
+
+The private DNS names assigned to the VPC endpoint service.
 
 
 =head2 PrivateDnsNameVerificationState => Str

@@ -41,9 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                    # OPTIONAL
-      MaxResults                  => 1,                      # OPTIONAL
-      NextToken                   => 'MyString',             # OPTIONAL
-      TransitGatewayRouteTableIds => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyString',             # OPTIONAL
+      TransitGatewayRouteTableIds => [ 'MyTransitGatewayRouteTableId', ... ]
+      ,                                     # OPTIONAL
       );
 
     # Results:
@@ -88,9 +89,8 @@ C<false>).
 
 =item *
 
-C<state> - The state of the attachment (C<available> | C<deleted> |
-C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
-C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
+C<state> - The state of the route table (C<available> | C<deleting> |
+C<deleted> | C<pending>).
 
 =item *
 

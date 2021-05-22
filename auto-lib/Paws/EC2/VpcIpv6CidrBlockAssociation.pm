@@ -63,7 +63,9 @@ allocated.
 
 =head2 NetworkBorderGroup => Str
 
-The name of the location from which we advertise the IPV6 CIDR block.
+The name of the unique set of Availability Zones, Local Zones, or
+Wavelength Zones from which AWS advertises IP addresses, for example,
+C<us-east-1-wl1-bos-wlz-1>.
 
 
 

@@ -60,7 +60,8 @@ one is available. The instance runs in On-Demand capacity.
 
 =head2 CapacityReservationTarget => L<Paws::EC2::CapacityReservationTargetResponse>
 
-Information about the target Capacity Reservation.
+Information about the target Capacity Reservation or Capacity
+Reservation group.
 
 
 

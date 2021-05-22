@@ -40,7 +40,8 @@ This class has no description
 
 =head2 CloudwatchLogGroup => Str
 
-The name of the CloudWatch Logs log group.
+The name of the CloudWatch Logs log group. Required if connection
+logging is enabled.
 
 
 =head2 CloudwatchLogStream => Str

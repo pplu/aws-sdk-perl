@@ -117,8 +117,7 @@ interface.
 
 =head2 SourceDestCheck => Bool
 
-Indicates whether to validate network traffic to or from this network
-interface.
+Indicates whether source/destination checking is enabled.
 
 
 =head2 Status => Str

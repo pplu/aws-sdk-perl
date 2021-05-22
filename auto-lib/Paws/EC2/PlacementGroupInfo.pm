@@ -38,7 +38,7 @@ This class has no description
 
 =head2 SupportedStrategies => ArrayRef[Str|Undef]
 
-A list of supported placement groups types.
+The supported placement group types.
 
 
 

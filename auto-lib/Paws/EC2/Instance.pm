@@ -3,6 +3,7 @@ package Paws::EC2::Instance;
   has AmiLaunchIndex => (is => 'ro', isa => 'Int', request_name => 'amiLaunchIndex', traits => ['NameInRequest']);
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
+  has BootMode => (is => 'ro', isa => 'Str', request_name => 'bootMode', traits => ['NameInRequest']);
   has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
   has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::CapacityReservationSpecificationResponse', request_name => 'capacityReservationSpecification', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
@@ -11,6 +12,7 @@ package Paws::EC2::Instance;
   has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
   has ElasticInferenceAcceleratorAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAcceleratorAssociation]', request_name => 'elasticInferenceAcceleratorAssociationSet', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
+  has EnclaveOptions => (is => 'ro', isa => 'Paws::EC2::EnclaveOptions', request_name => 'enclaveOptions', traits => ['NameInRequest']);
   has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptions', request_name => 'hibernationOptions', traits => ['NameInRequest']);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
@@ -98,6 +100,13 @@ The architecture of the image.
 Any block device mapping entries for the instance.
 
 
+=head2 BootMode => Str
+
+The boot mode of the instance. For more information, see Boot modes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in
+the I<Amazon EC2 User Guide>.
+
+
 =head2 CapacityReservationId => Str
 
 The ID of the Capacity Reservation.
@@ -143,6 +152,11 @@ The elastic inference accelerator associated with the instance.
 Specifies whether enhanced networking with ENA is enabled.
 
 
+=head2 EnclaveOptions => L<Paws::EC2::EnclaveOptions>
+
+Indicates whether the instance is enabled for AWS Nitro Enclaves.
+
+
 =head2 HibernationOptions => L<Paws::EC2::HibernationOptions>
 
 Indicates whether the instance is enabled for hibernation.
@@ -150,7 +164,8 @@ Indicates whether the instance is enabled for hibernation.
 
 =head2 Hypervisor => Str
 
-The hypervisor type of the instance.
+The hypervisor type of the instance. The value C<xen> is used for both
+Xen and Nitro hypervisors.
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
@@ -262,7 +277,11 @@ for your VPC.
 
 =head2 PublicIpAddress => Str
 
-The public IPv4 address assigned to the instance, if applicable.
+The public IPv4 address, or the Carrier IP address assigned to the
+instance, if applicable.
+
+A Carrier IP address only applies to an instance launched in a subnet
+associated with a Wavelength Zone.
 
 
 =head2 RamdiskId => Str
@@ -288,14 +307,7 @@ The security groups for the instance.
 
 =head2 SourceDestCheck => Bool
 
-Specifies whether to enable an instance launched in a VPC to perform
-NAT. This controls whether source/destination checking is enabled on
-the instance. A value of C<true> means that checking is enabled, and
-C<false> means that checking is disabled. The value must be C<false>
-for the instance to perform NAT. For more information, see NAT
-Instances
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+Indicates whether source/destination checking is enabled.
 
 
 =head2 SpotInstanceRequestId => Str

@@ -6,6 +6,7 @@ package Paws::EC2::NetworkInterfaceAttachment;
   has DeviceIndex => (is => 'ro', isa => 'Int', request_name => 'deviceIndex', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
   has InstanceOwnerId => (is => 'ro', isa => 'Str', request_name => 'instanceOwnerId', traits => ['NameInRequest']);
+  has NetworkCardIndex => (is => 'ro', isa => 'Int', request_name => 'networkCardIndex', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
@@ -71,6 +72,11 @@ The ID of the instance.
 =head2 InstanceOwnerId => Str
 
 The AWS account ID of the owner of the instance.
+
+
+=head2 NetworkCardIndex => Int
+
+The index of the network card.
 
 
 =head2 Status => Str

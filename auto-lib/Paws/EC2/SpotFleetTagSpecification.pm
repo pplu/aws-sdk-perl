@@ -39,8 +39,10 @@ This class has no description
 
 =head2 ResourceType => Str
 
-The type of resource. Currently, the only resource types that are
-supported are C<spot-fleet-request> and C<instance>.
+The type of resource. Currently, the only resource type that is
+supported is C<instance>. To tag the Spot Fleet request on creation,
+use the C<TagSpecifications> parameter in C<SpotFleetRequestConfigData>
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetRequestConfigData.html).
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

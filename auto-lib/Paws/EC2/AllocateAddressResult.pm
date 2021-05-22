@@ -2,6 +2,7 @@
 package Paws::EC2::AllocateAddressResult;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest',]);
+  has CarrierIp => (is => 'ro', isa => 'Str', request_name => 'carrierIp', traits => ['NameInRequest',]);
   has CustomerOwnedIp => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIp', traits => ['NameInRequest',]);
   has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIpv4Pool', traits => ['NameInRequest',]);
   has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest',]);
@@ -27,6 +28,13 @@ Paws::EC2::AllocateAddressResult
 Elastic IP address for use with instances in a VPC.
 
 
+=head2 CarrierIp => Str
+
+The carrier IP address. This option is only available for network
+interfaces which reside in a subnet in a Wavelength Zone (for example
+an EC2 instance).
+
+
 =head2 CustomerOwnedIp => Str
 
 The customer-owned IP address.
@@ -39,13 +47,14 @@ The ID of the customer-owned address pool.
 
 =head2 Domain => Str
 
-Indicates whether this Elastic IP address is for use with instances in
-EC2-Classic (C<standard>) or instances in a VPC (C<vpc>).
+Indicates whether the Elastic IP address is for use with instances in a
+VPC (C<vpc>) or instances in EC2-Classic (C<standard>).
 
 Valid values are: C<"vpc">, C<"standard">
 =head2 NetworkBorderGroup => Str
 
-The location from which the IP address is advertised.
+The set of Availability Zones, Local Zones, or Wavelength Zones from
+which AWS advertises IP addresses.
 
 
 =head2 PublicIp => Str

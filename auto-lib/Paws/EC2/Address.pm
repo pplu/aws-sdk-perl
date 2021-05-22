@@ -2,6 +2,7 @@ package Paws::EC2::Address;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
   has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
+  has CarrierIp => (is => 'ro', isa => 'Str', request_name => 'carrierIp', traits => ['NameInRequest']);
   has CustomerOwnedIp => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIp', traits => ['NameInRequest']);
   has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIpv4Pool', traits => ['NameInRequest']);
   has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
@@ -59,6 +60,13 @@ The ID representing the association of the address with an instance in
 a VPC.
 
 
+=head2 CarrierIp => Str
+
+The carrier IP address associated. This option is only available for
+network interfaces which reside in a subnet in a Wavelength Zone (for
+example an EC2 instance).
+
+
 =head2 CustomerOwnedIp => Str
 
 The customer-owned IP address.
@@ -82,7 +90,8 @@ The ID of the instance that the address is associated with (if any).
 
 =head2 NetworkBorderGroup => Str
 
-The name of the location from which the IP address is advertised.
+The name of the unique set of Availability Zones, Local Zones, or
+Wavelength Zones from which AWS advertises IP addresses.
 
 
 =head2 NetworkInterfaceId => Str

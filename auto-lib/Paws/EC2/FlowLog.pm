@@ -12,6 +12,7 @@ package Paws::EC2::FlowLog;
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
   has MaxAggregationInterval => (is => 'ro', isa => 'Int', request_name => 'maxAggregationInterval', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TrafficType => (is => 'ro', isa => 'Str', request_name => 'trafficType', traits => ['NameInRequest']);
 1;
 
@@ -128,6 +129,11 @@ Valid Values: C<60> | C<600>
 =head2 ResourceId => Str
 
 The ID of the resource on which the flow log was created.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+The tags for the flow log.
 
 
 =head2 TrafficType => Str

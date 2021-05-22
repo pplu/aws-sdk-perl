@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $TerminateInstancesResult = $ec2->TerminateInstances(
-      InstanceIds => [ 'MyInstanceId', ... ],
-      DryRun      => 1,                         # OPTIONAL
-    );
+    # To terminate an EC2 instance
+    # This example terminates the specified EC2 instance.
+    my $TerminateInstancesResult =
+      $ec2->TerminateInstances( 'InstanceIds' => ['i-1234567890abcdef0'] );
 
     # Results:
     my $TerminatingInstances = $TerminateInstancesResult->TerminatingInstances;

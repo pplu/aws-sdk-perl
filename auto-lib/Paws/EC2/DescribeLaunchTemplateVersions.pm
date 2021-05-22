@@ -35,29 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe the versions for a launch template
+    # This example describes the versions for the specified launch template.
     my $DescribeLaunchTemplateVersionsResult =
       $ec2->DescribeLaunchTemplateVersions(
-      DryRun  => 1,    # OPTIONAL
-      Filters => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
-        },
-        ...
-      ],                                    # OPTIONAL
-      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
-      LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
-      MaxResults         => 1,                         # OPTIONAL
-      MaxVersion         => 'MyString',                # OPTIONAL
-      MinVersion         => 'MyString',                # OPTIONAL
-      NextToken          => 'MyString',                # OPTIONAL
-      Versions           => [ 'MyString', ... ],       # OPTIONAL
-      );
+      'LaunchTemplateId' => '068f72b72934aff71' );
 
     # Results:
     my $LaunchTemplateVersions =
       $DescribeLaunchTemplateVersionsResult->LaunchTemplateVersions;
-    my $NextToken = $DescribeLaunchTemplateVersionsResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> object.
 
@@ -123,15 +109,21 @@ C<ram-disk-id> - The RAM disk ID.
 
 =head2 LaunchTemplateId => Str
 
-The ID of the launch template. You must specify either the launch
-template ID or launch template name in the request.
+The ID of the launch template. To describe one or more versions of a
+specified launch template, you must specify either the launch template
+ID or the launch template name in the request. To describe all the
+latest or default launch template versions in your account, you must
+omit this parameter.
 
 
 
 =head2 LaunchTemplateName => Str
 
-The name of the launch template. You must specify either the launch
-template ID or launch template name in the request.
+The name of the launch template. To describe one or more versions of a
+specified launch template, you must specify either the launch template
+ID or the launch template name in the request. To describe all the
+latest or default launch template versions in your account, you must
+omit this parameter.
 
 
 
@@ -163,7 +155,18 @@ The token to request the next page of results.
 
 =head2 Versions => ArrayRef[Str|Undef]
 
-One or more versions of the launch template.
+One or more versions of the launch template. Valid values depend on
+whether you are describing a specified launch template (by ID or name)
+or all launch templates in your account.
+
+To describe one or more versions of a specified launch template, valid
+values are C<$Latest>, C<$Default>, and numbers.
+
+To describe all launch templates in your account that are defined as
+the latest version, the valid value is C<$Latest>. To describe all
+launch templates in your account that are defined as the default
+version, the valid value is C<$Default>. You can specify C<$Latest> and
+C<$Default> in the same call. You cannot specify numbers.
 
 
 

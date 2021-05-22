@@ -83,8 +83,13 @@ attachment.
 
 =item *
 
-C<attachment.resource-type> - The attachment resource type (C<vpc> |
-C<vpn>).
+C<attachment.resource-type> - The attachment resource type. Valid
+values are C<vpc> | C<vpn> | C<direct-connect-gateway> | C<peering> |
+C<connect>.
+
+=item *
+
+C<prefix-list-id> - The ID of the prefix list.
 
 =item *
 

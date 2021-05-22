@@ -8,6 +8,7 @@ package Paws::EC2::ResponseLaunchTemplateData;
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
   has ElasticGpuSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecificationResponse]', request_name => 'elasticGpuSpecificationSet', traits => ['NameInRequest']);
   has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse]', request_name => 'elasticInferenceAcceleratorSet', traits => ['NameInRequest']);
+  has EnclaveOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateEnclaveOptions', request_name => 'enclaveOptions', traits => ['NameInRequest']);
   has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateHibernationOptions', request_name => 'hibernationOptions', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateIamInstanceProfileSpecification', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
@@ -103,6 +104,11 @@ The elastic GPU specification.
 =head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse>]
 
 The elastic inference accelerator for the instance.
+
+
+=head2 EnclaveOptions => L<Paws::EC2::LaunchTemplateEnclaveOptions>
+
+Indicates whether the instance is enabled for AWS Nitro Enclaves.
 
 
 =head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptions>

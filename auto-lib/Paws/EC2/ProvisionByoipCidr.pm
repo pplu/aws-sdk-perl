@@ -5,6 +5,7 @@ package Paws::EC2::ProvisionByoipCidr;
   has CidrAuthorizationContext => (is => 'ro', isa => 'Paws::EC2::CidrAuthorizationContext');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
+  has PoolTagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'PoolTagSpecification' );
   has PubliclyAdvertisable => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -38,9 +39,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Signature => 'MyString',
 
       },    # OPTIONAL
-      Description          => 'MyString',    # OPTIONAL
-      DryRun               => 1,             # OPTIONAL
-      PubliclyAdvertisable => 1,             # OPTIONAL
+      Description           => 'MyString',    # OPTIONAL
+      DryRun                => 1,             # OPTIONAL
+      PoolTagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      PubliclyAdvertisable => 1,    # OPTIONAL
     );
 
     # Results:
@@ -83,6 +98,12 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 PoolTagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the address pool.
 
 
 

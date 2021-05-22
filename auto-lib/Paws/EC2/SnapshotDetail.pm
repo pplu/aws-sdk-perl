@@ -92,7 +92,7 @@ The URL used to access the disk image.
 
 =head2 UserBucket => L<Paws::EC2::UserBucketDetails>
 
-The S3 bucket for the disk image.
+The Amazon S3 bucket for the disk image.
 
 
 

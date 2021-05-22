@@ -138,11 +138,6 @@ the network interface is attached.
 
 =item *
 
-C<attachment.nat-gateway-id> - The ID of the NAT gateway to which the
-network interface is attached.
-
-=item *
-
 C<attachment.status> - The status of the attachment (C<attaching> |
 C<attached> | C<detaching> | C<detached>).
 
@@ -193,9 +188,8 @@ C<private-dns-name> - The private DNS name of the network interface
 
 =item *
 
-C<requester-id> - The ID of the entity that launched the instance on
-your behalf (for example, AWS Management Console, Auto Scaling, and so
-on).
+C<requester-id> - The alias or AWS account ID of the principal or
+service that created the network interface.
 
 =item *
 

@@ -97,8 +97,9 @@ C<instance-type> - The type of instance (for example, C<m3.medium>).
 =item *
 
 C<product-description> - The product description for the Spot price
-(C<Linux/UNIX> | C<SUSE Linux> | C<Windows> | C<Linux/UNIX (Amazon
-VPC)> | C<SUSE Linux (Amazon VPC)> | C<Windows (Amazon VPC)>).
+(C<Linux/UNIX> | C<Red Hat Enterprise Linux> | C<SUSE Linux> |
+C<Windows> | C<Linux/UNIX (Amazon VPC)> | C<Red Hat Enterprise Linux
+(Amazon VPC)> | C<SUSE Linux (Amazon VPC)> | C<Windows (Amazon VPC)>).
 
 =item *
 

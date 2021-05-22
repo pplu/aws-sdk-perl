@@ -133,7 +133,11 @@ The allocation strategy of On-Demand Instances in an EC2 Fleet.
 
 =head2 ReplaceUnhealthyInstances => Bool
 
-Indicates whether EC2 Fleet should replace unhealthy instances.
+Indicates whether EC2 Fleet should replace unhealthy Spot Instances.
+Supported only for fleets of type C<maintain>. For more information,
+see EC2 Fleet health checks
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#ec2-fleet-health-checks)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 SpotOptions => L<Paws::EC2::SpotOptions>

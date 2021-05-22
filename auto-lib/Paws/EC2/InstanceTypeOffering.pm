@@ -40,9 +40,9 @@ This class has no description
 
 =head2 InstanceType => Str
 
-The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 Location => Str

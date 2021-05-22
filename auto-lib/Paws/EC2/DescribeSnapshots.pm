@@ -96,14 +96,15 @@ C<false>)
 
 =item *
 
-C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
-C<self> | C<all> | C<aws-marketplace> | C<microsoft>) of snapshot
-owners. Not to be confused with the user-configured AWS account alias,
-which is set from the IAM console.
+C<owner-alias> - The owner alias, from an Amazon-maintained list
+(C<amazon>). This is not the user-configured AWS account alias set
+using the IAM console. We recommend that you use the related parameter
+instead of this filter.
 
 =item *
 
-C<owner-id> - The ID of the AWS account that owns the snapshot.
+C<owner-id> - The AWS account ID of the owner. We recommend that you
+use the related parameter instead of this filter.
 
 =item *
 
@@ -158,7 +159,7 @@ only returns C<MaxResults> results in a single page along with a
 C<NextToken> response element. The remaining results of the initial
 request can be seen by sending another C<DescribeSnapshots> request
 with the returned C<NextToken> value. This value can be between 5 and
-1000; if C<MaxResults> is given a value larger than 1000, only 1000
+1,000; if C<MaxResults> is given a value larger than 1,000, only 1,000
 results are returned. If this parameter is not used, then
 C<DescribeSnapshots> returns all results. You cannot specify this
 parameter and the snapshot IDs parameter in the same request.
@@ -177,7 +178,8 @@ This value is C<null> when there are no more results to return.
 
 =head2 OwnerIds => ArrayRef[Str|Undef]
 
-Describes the snapshots owned by these owners.
+Scopes the results to snapshots with the specified owners. You can
+specify a combination of AWS account IDs, C<self>, and C<amazon>.
 
 
 

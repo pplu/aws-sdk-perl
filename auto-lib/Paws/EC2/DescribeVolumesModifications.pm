@@ -69,11 +69,61 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-The filters. Supported filters: C<volume-id> | C<modification-state> |
-C<target-size> | C<target-iops> | C<target-volume-type> |
-C<original-size> | C<original-iops> | C<original-volume-type> |
-C<start-time> | C<originalMultiAttachEnabled> |
-C<targetMultiAttachEnabled>.
+The filters.
+
+=over
+
+=item *
+
+C<modification-state> - The current modification state (modifying |
+optimizing | completed | failed).
+
+=item *
+
+C<original-iops> - The original IOPS rate of the volume.
+
+=item *
+
+C<original-size> - The original size of the volume, in GiB.
+
+=item *
+
+C<original-volume-type> - The original volume type of the volume
+(standard | io1 | io2 | gp2 | sc1 | st1).
+
+=item *
+
+C<originalMultiAttachEnabled> - Indicates whether Multi-Attach support
+was enabled (true | false).
+
+=item *
+
+C<start-time> - The modification start time.
+
+=item *
+
+C<target-iops> - The target IOPS rate of the volume.
+
+=item *
+
+C<target-size> - The target size of the volume, in GiB.
+
+=item *
+
+C<target-volume-type> - The target volume type of the volume (standard
+| io1 | io2 | gp2 | sc1 | st1).
+
+=item *
+
+C<targetMultiAttachEnabled> - Indicates whether Multi-Attach support is
+to be enabled (true | false).
+
+=item *
+
+C<volume-id> - The ID of the volume.
+
+=back
+
 
 
 
@@ -92,8 +142,7 @@ The C<nextToken> value returned by a previous paginated request.
 
 =head2 VolumeIds => ArrayRef[Str|Undef]
 
-The IDs of the volumes for which in-progress modifications will be
-described.
+The IDs of the volumes.
 
 
 

@@ -48,7 +48,7 @@ The description of the disk image being imported.
 
 The format of the disk image being imported.
 
-Valid values: C<VHD> | C<VMDK>
+Valid values: C<VHD> | C<VMDK> | C<RAW>
 
 
 =head2 Url => Str
@@ -59,7 +59,7 @@ be a https URL (https://..) or an Amazon S3 URL (s3://..).
 
 =head2 UserBucket => L<Paws::EC2::UserBucket>
 
-The S3 bucket for the disk image.
+The Amazon S3 bucket for the disk image.
 
 
 

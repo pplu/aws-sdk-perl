@@ -77,6 +77,34 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more filters.
 
+=over
+
+=item *
+
+C<local-gateway-id> - The ID of a local gateway.
+
+=item *
+
+C<local-gateway-route-table-id> - The ID of the local gateway route
+table.
+
+=item *
+
+C<local-gateway-route-table-virtual-interface-group-association-id> -
+The ID of the association.
+
+=item *
+
+C<local-gateway-route-table-virtual-interface-group-id> - The ID of the
+virtual interface group.
+
+=item *
+
+C<state> - The state of the association.
+
+=back
+
+
 
 
 =head2 LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds => ArrayRef[Str|Undef]

@@ -29,11 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $StartInstancesResult = $ec2->StartInstances(
-      InstanceIds    => [ 'MyInstanceId', ... ],
-      AdditionalInfo => 'MyString',                # OPTIONAL
-      DryRun         => 1,                         # OPTIONAL
-    );
+    # To start a stopped EC2 instance
+    # This example starts the specified EC2 instance.
+    my $StartInstancesResult =
+      $ec2->StartInstances( 'InstanceIds' => ['i-1234567890abcdef0'] );
 
     # Results:
     my $StartingInstances = $StartInstancesResult->StartingInstances;

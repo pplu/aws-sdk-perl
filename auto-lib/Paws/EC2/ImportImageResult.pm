@@ -15,6 +15,7 @@ package Paws::EC2::ImportImageResult;
   has SnapshotDetails => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SnapshotDetail]', request_name => 'snapshotDetailSet', traits => ['NameInRequest',]);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest',]);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -40,7 +41,7 @@ A description of the import task.
 
 =head2 Encrypted => Bool
 
-Indicates whether the AMI is encypted.
+Indicates whether the AMI is encrypted.
 
 
 =head2 Hypervisor => Str
@@ -97,6 +98,11 @@ A brief status of the task.
 =head2 StatusMessage => Str
 
 A detailed status message of the import task.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+Any tags assigned to the import image task.
 
 
 =head2 _request_id => Str

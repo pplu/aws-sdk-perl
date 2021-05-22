@@ -63,7 +63,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 CidrBlock => Str
 
 The IPv4 network range to allow or deny, in CIDR notation (for example
-C<172.16.0.0/24>).
+C<172.16.0.0/24>). We modify the specified CIDR block to its canonical
+form; for example, if you specify C<100.68.0.18/18>, we modify it to
+C<100.68.0.0/18>.
 
 
 

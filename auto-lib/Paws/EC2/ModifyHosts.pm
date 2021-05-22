@@ -66,9 +66,9 @@ The IDs of the Dedicated Hosts to modify.
 =head2 HostRecovery => Str
 
 Indicates whether to enable or disable host recovery for the Dedicated
-Host. For more information, see Host Recovery
+Host. For more information, see Host recovery
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 Valid values are: C<"on">, C<"off">
 

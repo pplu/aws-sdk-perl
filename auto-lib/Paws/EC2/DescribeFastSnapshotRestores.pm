@@ -77,7 +77,8 @@ C<availability-zone>: The Availability Zone of the snapshot.
 
 =item *
 
-C<owner-id>: The ID of the AWS account that owns the snapshot.
+C<owner-id>: The ID of the AWS account that enabled fast snapshot
+restore on the snapshot.
 
 =item *
 

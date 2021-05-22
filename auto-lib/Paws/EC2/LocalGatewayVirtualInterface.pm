@@ -4,6 +4,7 @@ package Paws::EC2::LocalGatewayVirtualInterface;
   has LocalBgpAsn => (is => 'ro', isa => 'Int', request_name => 'localBgpAsn', traits => ['NameInRequest']);
   has LocalGatewayId => (is => 'ro', isa => 'Str', request_name => 'localGatewayId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceId => (is => 'ro', isa => 'Str', request_name => 'localGatewayVirtualInterfaceId', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PeerAddress => (is => 'ro', isa => 'Str', request_name => 'peerAddress', traits => ['NameInRequest']);
   has PeerBgpAsn => (is => 'ro', isa => 'Int', request_name => 'peerBgpAsn', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -62,6 +63,11 @@ The ID of the local gateway.
 =head2 LocalGatewayVirtualInterfaceId => Str
 
 The ID of the virtual interface.
+
+
+=head2 OwnerId => Str
+
+The AWS account ID that owns the local gateway virtual interface.
 
 
 =head2 PeerAddress => Str

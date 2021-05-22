@@ -82,7 +82,7 @@ location type is C<region> (default), the location is the Region code
 
 =item *
 
-C<instance-type> - The instance type.
+C<instance-type> - The instance type. For example, C<c5.2xlarge>.
 
 =back
 

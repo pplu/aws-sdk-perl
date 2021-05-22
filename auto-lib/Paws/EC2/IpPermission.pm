@@ -77,9 +77,7 @@ The IPv4 ranges.
 
 =head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
 
-[VPC only] The prefix list IDs for an AWS service. With outbound rules,
-this is the AWS service to access through a VPC endpoint from instances
-associated with the security group.
+[VPC only] The prefix list IDs.
 
 
 =head2 ToPort => Int

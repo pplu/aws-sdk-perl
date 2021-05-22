@@ -8,6 +8,7 @@ package Paws::EC2::TransitGatewayOptions;
   has DnsSupport => (is => 'ro', isa => 'Str', request_name => 'dnsSupport', traits => ['NameInRequest']);
   has MulticastSupport => (is => 'ro', isa => 'Str', request_name => 'multicastSupport', traits => ['NameInRequest']);
   has PropagationDefaultRouteTableId => (is => 'ro', isa => 'Str', request_name => 'propagationDefaultRouteTableId', traits => ['NameInRequest']);
+  has TransitGatewayCidrBlocks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'transitGatewayCidrBlocks', traits => ['NameInRequest']);
   has VpnEcmpSupport => (is => 'ro', isa => 'Str', request_name => 'vpnEcmpSupport', traits => ['NameInRequest']);
 1;
 
@@ -86,6 +87,11 @@ Indicates whether multicast is enabled on the transit gateway
 =head2 PropagationDefaultRouteTableId => Str
 
 The ID of the default propagation route table.
+
+
+=head2 TransitGatewayCidrBlocks => ArrayRef[Str|Undef]
+
+The transit gateway CIDR blocks.
 
 
 =head2 VpnEcmpSupport => Str

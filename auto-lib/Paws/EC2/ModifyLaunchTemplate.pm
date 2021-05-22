@@ -31,12 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To change the default version of a launch template
+    # This example specifies version 2 as the default version of the specified
+    # launch template.
     my $ModifyLaunchTemplateResult = $ec2->ModifyLaunchTemplate(
-      ClientToken        => 'MyString',                # OPTIONAL
-      DefaultVersion     => 'MyString',                # OPTIONAL
-      DryRun             => 1,                         # OPTIONAL
-      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
-      LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
+      'DefaultVersion'   => 2,
+      'LaunchTemplateId' => 'lt-0abcd290751193123'
     );
 
     # Results:

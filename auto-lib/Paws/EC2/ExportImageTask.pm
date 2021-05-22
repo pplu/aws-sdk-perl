@@ -7,6 +7,7 @@ package Paws::EC2::ExportImageTask;
   has S3ExportLocation => (is => 'ro', isa => 'Paws::EC2::ExportTaskS3Location', request_name => 's3ExportLocation', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ExportImageTask object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., StatusMessage => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -64,7 +65,7 @@ The percent complete of the export image task.
 
 =head2 S3ExportLocation => L<Paws::EC2::ExportTaskS3Location>
 
-Information about the destination S3 bucket.
+Information about the destination Amazon S3 bucket.
 
 
 =head2 Status => Str
@@ -76,6 +77,11 @@ C<completed>, C<deleting>, and C<deleted>.
 =head2 StatusMessage => Str
 
 The status message for the export image task.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+Any tags assigned to the export image task.
 
 
 

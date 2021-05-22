@@ -31,25 +31,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe an Amazon EC2 instance
+    # This example describes the specified instance.
+    my $DescribeInstancesResult =
+      $ec2->DescribeInstances( 'InstanceIds' => ['i-1234567890abcdef0'] );
+
+    # To describe the instances with a specific instance type
+    # This example describes the instances with the t2.micro instance type.
     my $DescribeInstancesResult = $ec2->DescribeInstances(
-      DryRun  => 1,    # OPTIONAL
-      Filters => [
+      'Filters' => [
+
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
-        },
-        ...
-      ],                                    # OPTIONAL
-      InstanceIds => [ 'MyInstanceId', ... ],    # OPTIONAL
-      MaxResults  => 1,                          # OPTIONAL
-      NextToken   => 'MyString',                 # OPTIONAL
+          'Name'   => 'instance-type',
+          'Values' => ['t2.micro']
+        }
+      ]
     );
 
-    # Results:
-    my $NextToken    = $DescribeInstancesResult->NextToken;
-    my $Reservations = $DescribeInstancesResult->Reservations;
+    # To describe the instances with a specific tag
+    # This example describes the instances with the Purpose=test tag.
+    my $DescribeInstancesResult = $ec2->DescribeInstances(
+      'Filters' => [
 
-    # Returns a L<Paws::EC2::DescribeInstancesResult> object.
+        {
+          'Name'   => 'tag:Purpose',
+          'Values' => ['test']
+        }
+      ]
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeInstances>
@@ -143,6 +153,7 @@ running, if applicable.
 =item *
 
 C<hypervisor> - The hypervisor type of the instance (C<ovm> | C<xen>).
+The value C<xen> is used for both Xen and Nitro hypervisors.
 
 =item *
 
@@ -385,6 +396,10 @@ interface.
 
 C<network-interface.vpc-id> - The ID of the VPC for the network
 interface.
+
+=item *
+
+C<outpost-arn> - The Amazon Resource Name (ARN) of the Outpost.
 
 =item *
 

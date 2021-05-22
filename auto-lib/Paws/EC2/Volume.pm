@@ -14,6 +14,7 @@ package Paws::EC2::Volume;
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
   has State => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
+  has Throughput => (is => 'ro', isa => 'Int', request_name => 'throughput', traits => ['NameInRequest',]);
   has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest',]);
   has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest',]);
 
@@ -56,24 +57,11 @@ Indicates whether the volume was created using fast snapshot restore.
 
 =head2 Iops => Int
 
-The number of I/O operations per second (IOPS) that the volume
-supports. For Provisioned IOPS SSD volumes, this represents the number
-of IOPS that are provisioned for the volume. For General Purpose SSD
-volumes, this represents the baseline performance of the volume and the
-rate at which the volume accumulates I/O credits for bursting. For more
-information, see Amazon EBS Volume Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
-
-Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
-64,000IOPS for C<io1> volumes, in most Regions. The maximum IOPS for
-C<io1> of 64,000 is guaranteed only on Nitro-based instances
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
-Other instance families guarantee performance up to 32,000 IOPS.
-
-Condition: This parameter is required for requests to create C<io1>
-volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
-or C<standard> volumes.
+The number of I/O operations per second (IOPS). For C<gp3>, C<io1>, and
+C<io2> volumes, this represents the number of IOPS that are provisioned
+for the volume. For C<gp2> volumes, this represents the baseline
+performance of the volume and the rate at which the volume accumulates
+I/O credits for bursting.
 
 
 =head2 KmsKeyId => Str
@@ -113,6 +101,11 @@ Valid values are: C<"creating">, C<"available">, C<"in-use">, C<"deleting">, C<"
 Any tags assigned to the volume.
 
 
+=head2 Throughput => Int
+
+The throughput that the volume supports, in MiB/s.
+
+
 =head2 VolumeId => Str
 
 The ID of the volume.
@@ -120,11 +113,9 @@ The ID of the volume.
 
 =head2 VolumeType => Str
 
-The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
-Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
-Cold HDD, or C<standard> for Magnetic volumes.
+The volume type.
 
-Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
+Valid values are: C<"standard">, C<"io1">, C<"io2">, C<"gp2">, C<"sc1">, C<"st1">, C<"gp3">
 =head2 _request_id => Str
 
 

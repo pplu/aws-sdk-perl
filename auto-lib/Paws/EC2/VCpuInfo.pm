@@ -57,14 +57,13 @@ The default number of vCPUs for the instance type.
 
 =head2 ValidCores => ArrayRef[Int]
 
-List of the valid number of cores that can be configured for the
-instance type.
+The valid number of cores that can be configured for the instance type.
 
 
 =head2 ValidThreadsPerCore => ArrayRef[Int]
 
-List of the valid number of threads per core that can be configured for
-the instance type.
+The valid number of threads per core that can be configured for the
+instance type.
 
 
 

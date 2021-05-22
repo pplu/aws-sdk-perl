@@ -69,8 +69,8 @@ available for your use.
 
 =item *
 
-C<cancelled> - The Capacity Reservation was manually cancelled. The
-reserved capacity is no longer available for your use.
+C<cancelled> - The Capacity Reservation was cancelled. The reserved
+capacity is no longer available for your use.
 
 =item *
 

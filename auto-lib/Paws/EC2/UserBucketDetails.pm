@@ -39,7 +39,7 @@ This class has no description
 
 =head2 S3Bucket => Str
 
-The S3 bucket from which the disk image was created.
+The Amazon S3 bucket from which the disk image was created.
 
 
 =head2 S3Key => Str

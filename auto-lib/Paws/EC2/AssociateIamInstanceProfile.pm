@@ -28,13 +28,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To associate an IAM instance profile with an instance
+    # This example associates an IAM instance profile named admin-role with the
+    # specified instance.
     my $AssociateIamInstanceProfileResult = $ec2->AssociateIamInstanceProfile(
-      IamInstanceProfile => {
-        Arn  => 'MyString',    # OPTIONAL
-        Name => 'MyString',    # OPTIONAL
+      'IamInstanceProfile' => {
+        'Name' => 'admin-role'
       },
-      InstanceId => 'MyInstanceId',
-
+      'InstanceId' => 'i-123456789abcde123'
     );
 
     # Results:

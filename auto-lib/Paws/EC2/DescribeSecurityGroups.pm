@@ -32,26 +32,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe a security group
+    # This example describes the specified security group.
+    my $DescribeSecurityGroupsResult =
+      $ec2->DescribeSecurityGroups( 'GroupIds' => ['sg-903004f8'] );
+
+    # To describe a tagged security group
+    # This example describes the security groups that include the specified tag
+    # (Purpose=test).
     my $DescribeSecurityGroupsResult = $ec2->DescribeSecurityGroups(
-      DryRun  => 1,    # OPTIONAL
-      Filters => [
+      'Filters' => [
+
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
-        },
-        ...
-      ],                                    # OPTIONAL
-      GroupIds   => [ 'MyString',            ... ],    # OPTIONAL
-      GroupNames => [ 'MySecurityGroupName', ... ],    # OPTIONAL
-      MaxResults => 1,                                 # OPTIONAL
-      NextToken  => 'MyString',                        # OPTIONAL
+          'Name'   => 'tag:Purpose',
+          'Values' => ['test']
+        }
+      ]
     );
 
-    # Results:
-    my $NextToken      = $DescribeSecurityGroupsResult->NextToken;
-    my $SecurityGroups = $DescribeSecurityGroupsResult->SecurityGroups;
-
-    # Returns a L<Paws::EC2::DescribeSecurityGroupsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeSecurityGroups>
@@ -98,7 +96,7 @@ been referenced in an outbound security group rule.
 =item *
 
 C<egress.ip-permission.group-name> - The name of a security group that
-has been referenced in an outbound security group rule.
+is referenced in an outbound security group rule.
 
 =item *
 
@@ -107,13 +105,14 @@ security group rule.
 
 =item *
 
-C<egress.ip-permission.prefix-list-id> - The ID (prefix) of the AWS
-service to which a security group rule allows outbound access.
+C<egress.ip-permission.prefix-list-id> - The ID of a prefix list to
+which a security group rule allows outbound access.
 
 =item *
 
 C<egress.ip-permission.protocol> - The IP protocol for an outbound
-security group rule (C<tcp> | C<udp> | C<icmp> or a protocol number).
+security group rule (C<tcp> | C<udp> | C<icmp>, a protocol number, or
+-1 for all protocols).
 
 =item *
 
@@ -150,8 +149,8 @@ referenced in an inbound security group rule.
 
 =item *
 
-C<ip-permission.group-name> - The name of a security group that has
-been referenced in an inbound security group rule.
+C<ip-permission.group-name> - The name of a security group that is
+referenced in an inbound security group rule.
 
 =item *
 
@@ -160,13 +159,14 @@ group rule.
 
 =item *
 
-C<ip-permission.prefix-list-id> - The ID (prefix) of the AWS service
-from which a security group rule allows inbound access.
+C<ip-permission.prefix-list-id> - The ID of a prefix list from which a
+security group rule allows inbound access.
 
 =item *
 
 C<ip-permission.protocol> - The IP protocol for an inbound security
-group rule (C<tcp> | C<udp> | C<icmp> or a protocol number).
+group rule (C<tcp> | C<udp> | C<icmp>, a protocol number, or -1 for all
+protocols).
 
 =item *
 

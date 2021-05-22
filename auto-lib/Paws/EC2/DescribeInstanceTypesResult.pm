@@ -18,9 +18,9 @@ Paws::EC2::DescribeInstanceTypesResult
 
 =head2 InstanceTypes => ArrayRef[L<Paws::EC2::InstanceTypeInfo>]
 
-The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 NextToken => Str

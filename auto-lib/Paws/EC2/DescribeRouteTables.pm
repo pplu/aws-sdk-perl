@@ -166,10 +166,6 @@ the tag value.
 
 =item *
 
-C<transit-gateway-id> - The ID of a transit gateway.
-
-=item *
-
 C<vpc-id> - The ID of the VPC for the route table.
 
 =back

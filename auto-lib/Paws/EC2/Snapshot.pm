@@ -5,6 +5,7 @@ package Paws::EC2::Snapshot;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
   has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest',]);
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest',]);
   has OwnerAlias => (is => 'ro', isa => 'Str', request_name => 'ownerAlias', traits => ['NameInRequest',]);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest',]);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest',]);
@@ -56,12 +57,18 @@ KMS) customer master key (CMK) that was used to protect the volume
 encryption key for the parent volume.
 
 
+=head2 OutpostArn => Str
+
+The ARN of the AWS Outpost on which the snapshot is stored. For more
+information, see EBS Local Snapshot on Outposts
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 OwnerAlias => Str
 
-Value from an Amazon-maintained list (C<amazon> | C<self> | C<all> |
-C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
-confused with the user-configured AWS account alias, which is set from
-the IAM console.
+The AWS owner alias, from an Amazon-maintained list (C<amazon>). This
+is not the user-configured AWS account alias set using the IAM console.
 
 
 =head2 OwnerId => Str

@@ -15,6 +15,7 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has OnDemandMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'onDemandMaxTotalPrice', traits => ['NameInRequest']);
   has OnDemandTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'onDemandTargetCapacity', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
+  has SpotMaintenanceStrategies => (is => 'ro', isa => 'Paws::EC2::SpotMaintenanceStrategies', request_name => 'spotMaintenanceStrategies', traits => ['NameInRequest']);
   has SpotMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'spotMaxTotalPrice', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', request_name => 'TagSpecification', traits => ['NameInRequest']);
@@ -70,9 +71,18 @@ the default allocation strategy.
 If the allocation strategy is C<diversified>, Spot Fleet launches
 instances from all the Spot Instance pools that you specify.
 
-If the allocation strategy is C<capacityOptimized>, Spot Fleet launches
-instances from Spot Instance pools with optimal capacity for the number
-of instances that are launching.
+If the allocation strategy is C<capacityOptimized> (recommended), Spot
+Fleet launches instances from Spot Instance pools with optimal capacity
+for the number of instances that are launching. To give certain
+instance types a higher chance of launching first, use
+C<capacityOptimizedPrioritized>. Set a priority for each instance type
+by using the C<Priority> parameter for C<LaunchTemplateOverrides>. You
+can assign the same priority to different C<LaunchTemplateOverrides>.
+EC2 implements the priorities on a best-effort basis, but optimizes for
+capacity first. C<capacityOptimizedPrioritized> is supported only if
+your Spot Fleet uses a launch template. Note that if the
+C<OnDemandAllocationStrategy> is set to C<prioritized>, the same
+priority is applied when fulfilling On-Demand capacity.
 
 
 =head2 ClientToken => Str
@@ -101,12 +111,14 @@ target capacity. You cannot set this value.
 The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that grants the Spot Fleet the permission to request,
 launch, terminate, and tag instances on your behalf. For more
-information, see Spot Fleet Prerequisites
+information, see Spot Fleet prerequisites
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites)
 in the I<Amazon EC2 User Guide for Linux Instances>. Spot Fleet can
 terminate Spot Instances on your behalf when you cancel its Spot Fleet
-request using CancelSpotFleetRequests or when the Spot Fleet request
-expires, if you set C<TerminateInstancesWithExpiration>.
+request using CancelSpotFleetRequests
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests)
+or when the Spot Fleet request expires, if you set
+C<TerminateInstancesWithExpiration>.
 
 
 =head2 InstanceInterruptionBehavior => Str
@@ -195,6 +207,12 @@ capacity of 0 and add capacity later.
 Indicates whether Spot Fleet should replace unhealthy instances.
 
 
+=head2 SpotMaintenanceStrategies => L<Paws::EC2::SpotMaintenanceStrategies>
+
+The strategies for managing your Spot Instances that are at an elevated
+risk of being interrupted.
+
+
 =head2 SpotMaxTotalPrice => Str
 
 The maximum amount per hour for Spot Instances that you're willing to
@@ -220,8 +238,12 @@ The key-value pair for tagging the Spot Fleet request on creation. The
 value for C<ResourceType> must be C<spot-fleet-request>, otherwise the
 Spot Fleet request fails. To tag instances at launch, specify the tags
 in the launch template
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
-For information about tagging after launch, see Tagging Your Resources
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template)
+(valid only if you use C<LaunchTemplateConfigs>) or in the
+C<SpotFleetTagSpecification>
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html)
+(valid only if you use C<LaunchSpecifications>). For information about
+tagging after launch, see Tagging Your Resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
 
 

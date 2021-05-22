@@ -18,7 +18,9 @@ Paws::EC2::AssignIpv6AddressesResult
 
 =head2 AssignedIpv6Addresses => ArrayRef[Str|Undef]
 
-The IPv6 addresses assigned to the network interface.
+The new IPv6 addresses assigned to the network interface. Existing IPv6
+addresses that were assigned to the network interface before the
+request are not included.
 
 
 =head2 NetworkInterfaceId => Str

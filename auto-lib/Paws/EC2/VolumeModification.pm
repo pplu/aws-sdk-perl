@@ -3,13 +3,17 @@ package Paws::EC2::VolumeModification;
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has ModificationState => (is => 'ro', isa => 'Str', request_name => 'modificationState', traits => ['NameInRequest']);
   has OriginalIops => (is => 'ro', isa => 'Int', request_name => 'originalIops', traits => ['NameInRequest']);
+  has OriginalMultiAttachEnabled => (is => 'ro', isa => 'Bool', request_name => 'originalMultiAttachEnabled', traits => ['NameInRequest']);
   has OriginalSize => (is => 'ro', isa => 'Int', request_name => 'originalSize', traits => ['NameInRequest']);
+  has OriginalThroughput => (is => 'ro', isa => 'Int', request_name => 'originalThroughput', traits => ['NameInRequest']);
   has OriginalVolumeType => (is => 'ro', isa => 'Str', request_name => 'originalVolumeType', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Int', request_name => 'progress', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
   has TargetIops => (is => 'ro', isa => 'Int', request_name => 'targetIops', traits => ['NameInRequest']);
+  has TargetMultiAttachEnabled => (is => 'ro', isa => 'Bool', request_name => 'targetMultiAttachEnabled', traits => ['NameInRequest']);
   has TargetSize => (is => 'ro', isa => 'Int', request_name => 'targetSize', traits => ['NameInRequest']);
+  has TargetThroughput => (is => 'ro', isa => 'Int', request_name => 'targetThroughput', traits => ['NameInRequest']);
   has TargetVolumeType => (is => 'ro', isa => 'Str', request_name => 'targetVolumeType', traits => ['NameInRequest']);
   has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
 1;
@@ -63,9 +67,19 @@ unmodified volumes.
 The original IOPS rate of the volume.
 
 
+=head2 OriginalMultiAttachEnabled => Bool
+
+The original setting for Amazon EBS Multi-Attach.
+
+
 =head2 OriginalSize => Int
 
-The original size of the volume.
+The original size of the volume, in GiB.
+
+
+=head2 OriginalThroughput => Int
+
+The original throughput of the volume, in MiB/s.
 
 
 =head2 OriginalVolumeType => Str
@@ -93,9 +107,19 @@ A status message about the modification progress or failure.
 The target IOPS rate of the volume.
 
 
+=head2 TargetMultiAttachEnabled => Bool
+
+The target setting for Amazon EBS Multi-Attach.
+
+
 =head2 TargetSize => Int
 
 The target size of the volume, in GiB.
+
+
+=head2 TargetThroughput => Int
+
+The target throughput of the volume, in MiB/s.
 
 
 =head2 TargetVolumeType => Str

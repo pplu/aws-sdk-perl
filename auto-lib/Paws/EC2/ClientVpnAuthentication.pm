@@ -1,6 +1,7 @@
 package Paws::EC2::ClientVpnAuthentication;
   use Moose;
   has ActiveDirectory => (is => 'ro', isa => 'Paws::EC2::DirectoryServiceAuthentication', request_name => 'activeDirectory', traits => ['NameInRequest']);
+  has FederatedAuthentication => (is => 'ro', isa => 'Paws::EC2::FederatedAuthentication', request_name => 'federatedAuthentication', traits => ['NameInRequest']);
   has MutualAuthentication => (is => 'ro', isa => 'Paws::EC2::CertificateAuthentication', request_name => 'mutualAuthentication', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
@@ -41,6 +42,11 @@ This class has no description
 =head2 ActiveDirectory => L<Paws::EC2::DirectoryServiceAuthentication>
 
 Information about the Active Directory, if applicable.
+
+
+=head2 FederatedAuthentication => L<Paws::EC2::FederatedAuthentication>
+
+Information about the IAM SAML identity provider, if applicable.
 
 
 =head2 MutualAuthentication => L<Paws::EC2::CertificateAuthentication>

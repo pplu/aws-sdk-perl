@@ -51,7 +51,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> Bucket => Str
 
-The Amazon S3 bucket in which to store the Spot Instance data feed.
+The name of the Amazon S3 bucket in which to store the Spot Instance
+data feed. For more information about bucket names, see Rules for
+bucket naming
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)
+in the I<Amazon S3 Developer Guide>.
 
 
 
@@ -66,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Prefix => Str
 
-A prefix for the data feed file names.
+The prefix for the data feed file names.
 
 
 

@@ -46,7 +46,8 @@ The ID of the resource.
 
 =head2 ResourceType => Str
 
-The resource type.
+The resource type. Note that the C<tgw-peering> resource type has been
+deprecated.
 
 
 =head2 State => Str

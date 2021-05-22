@@ -4,10 +4,13 @@ package Paws::EC2::AvailabilityZone;
   has Messages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZoneMessage]', request_name => 'messageSet', traits => ['NameInRequest']);
   has NetworkBorderGroup => (is => 'ro', isa => 'Str', request_name => 'networkBorderGroup', traits => ['NameInRequest']);
   has OptInStatus => (is => 'ro', isa => 'Str', request_name => 'optInStatus', traits => ['NameInRequest']);
+  has ParentZoneId => (is => 'ro', isa => 'Str', request_name => 'parentZoneId', traits => ['NameInRequest']);
+  has ParentZoneName => (is => 'ro', isa => 'Str', request_name => 'parentZoneName', traits => ['NameInRequest']);
   has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'zoneState', traits => ['NameInRequest']);
   has ZoneId => (is => 'ro', isa => 'Str', request_name => 'zoneId', traits => ['NameInRequest']);
   has ZoneName => (is => 'ro', isa => 'Str', request_name => 'zoneName', traits => ['NameInRequest']);
+  has ZoneType => (is => 'ro', isa => 'Str', request_name => 'zoneType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::AvailabilityZone object:
 
-  $service_obj->Method(Att1 => { GroupName => $value, ..., ZoneName => $value  });
+  $service_obj->Method(Att1 => { GroupName => $value, ..., ZoneType => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,15 +54,19 @@ name.
 For Local Zones, the name of the associated group, for example
 C<us-west-2-lax-1>.
 
+For Wavelength Zones, the name of the associated group, for example
+C<us-east-1-wl1-bos-wlz-1>.
+
 
 =head2 Messages => ArrayRef[L<Paws::EC2::AvailabilityZoneMessage>]
 
-Any messages about the Availability Zone or Local Zone.
+Any messages about the Availability Zone, Local Zone, or Wavelength
+Zone.
 
 
 =head2 NetworkBorderGroup => Str
 
-The name of the location from which the address is advertised.
+The name of the network border group.
 
 
 =head2 OptInStatus => Str
@@ -67,8 +74,20 @@ The name of the location from which the address is advertised.
 For Availability Zones, this parameter always has the value of
 C<opt-in-not-required>.
 
-For Local Zones, this parameter is the opt in status. The possible
-values are C<opted-in>, and C<not-opted-in>.
+For Local Zones and Wavelength Zones, this parameter is the opt-in
+status. The possible values are C<opted-in>, and C<not-opted-in>.
+
+
+=head2 ParentZoneId => Str
+
+The ID of the zone that handles some of the Local Zone or Wavelength
+Zone control plane operations, such as API calls.
+
+
+=head2 ParentZoneName => Str
+
+The name of the zone that handles some of the Local Zone or Wavelength
+Zone control plane operations, such as API calls.
 
 
 =head2 RegionName => Str
@@ -78,17 +97,23 @@ The name of the Region.
 
 =head2 State => Str
 
-The state of the Availability Zone or Local Zone.
+The state of the Availability Zone, Local Zone, or Wavelength Zone.
 
 
 =head2 ZoneId => Str
 
-The ID of the Availability Zone or Local Zone.
+The ID of the Availability Zone, Local Zone, or Wavelength Zone.
 
 
 =head2 ZoneName => Str
 
-The name of the Availability Zone or Local Zone.
+The name of the Availability Zone, Local Zone, or Wavelength Zone.
+
+
+=head2 ZoneType => Str
+
+The type of zone. The valid values are C<availability-zone>,
+C<local-zone>, and C<wavelength-zone>.
 
 
 

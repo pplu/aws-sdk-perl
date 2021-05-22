@@ -80,12 +80,14 @@ state.
 
 =head2 OwnerAlias => Str
 
-The alias of the snapshot owner.
+The AWS owner alias that enabled fast snapshot restores on the
+snapshot. This is intended for future use.
 
 
 =head2 OwnerId => Str
 
-The ID of the AWS account that owns the snapshot.
+The ID of the AWS account that enabled fast snapshot restores on the
+snapshot.
 
 
 =head2 SnapshotId => Str

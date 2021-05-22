@@ -2,9 +2,10 @@
 package Paws::EC2::CreateInstanceExportTask;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has ExportToS3Task => (is => 'ro', isa => 'Paws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'exportToS3' );
+  has ExportToS3Task => (is => 'ro', isa => 'Paws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'exportToS3' , required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has TargetEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetEnvironment' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  has TargetEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetEnvironment' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -31,15 +32,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateInstanceExportTaskResult = $ec2->CreateInstanceExportTask(
-      InstanceId     => 'MyInstanceId',
-      Description    => 'MyString',       # OPTIONAL
       ExportToS3Task => {
         ContainerFormat => 'ova',         # values: ova; OPTIONAL
         DiskImageFormat => 'VMDK',        # values: VMDK, RAW, VHD; OPTIONAL
-        S3Bucket        => 'MyString',
-        S3Prefix        => 'MyString',
-      },    # OPTIONAL
-      TargetEnvironment => 'citrix',    # OPTIONAL
+        S3Bucket        => 'MyString',    # OPTIONAL
+        S3Prefix        => 'MyString',    # OPTIONAL
+      },
+      InstanceId        => 'MyInstanceId',
+      TargetEnvironment => 'citrix',
+      Description       => 'MyString',       # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',    # OPTIONAL
+              Value => 'MyString',    # OPTIONAL
+            },
+            ...
+          ],                          # OPTIONAL
+        },
+        ...
+      ],                              # OPTIONAL
     );
 
     # Results:
@@ -56,13 +71,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 Description => Str
 
 A description for the conversion task or the resource being exported.
-The maximum length is 255 bytes.
+The maximum length is 255 characters.
 
 
 
-=head2 ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>
+=head2 B<REQUIRED> ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>
 
-The format and location for an instance export task.
+The format and location for an export instance task.
 
 
 
@@ -72,7 +87,13 @@ The ID of the instance.
 
 
 
-=head2 TargetEnvironment => Str
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the export instance task during creation.
+
+
+
+=head2 B<REQUIRED> TargetEnvironment => Str
 
 The target virtualization environment.
 

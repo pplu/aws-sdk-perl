@@ -5,6 +5,7 @@ package Paws::EC2::CreateVpcPeeringConnection;
   has PeerOwnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerOwnerId' );
   has PeerRegion => (is => 'ro', isa => 'Str');
   has PeerVpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerVpcId' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' );
 
   use MooseX::ClassAttribute;
@@ -32,11 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateVpcPeeringConnectionResult = $ec2->CreateVpcPeeringConnection(
-      DryRun      => 1,             # OPTIONAL
-      PeerOwnerId => 'MyString',    # OPTIONAL
-      PeerRegion  => 'MyString',    # OPTIONAL
-      PeerVpcId   => 'MyString',    # OPTIONAL
-      VpcId       => 'MyVpcId',     # OPTIONAL
+      DryRun            => 1,             # OPTIONAL
+      PeerOwnerId       => 'MyString',    # OPTIONAL
+      PeerRegion        => 'MyString',    # OPTIONAL
+      PeerVpcId         => 'MyString',    # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      VpcId => 'MyVpcId',    # OPTIONAL
     );
 
     # Results:
@@ -81,6 +96,12 @@ Default: The Region in which you make the request.
 
 The ID of the VPC with which you are creating the VPC peering
 connection. You must specify this parameter in the request.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to assign to the peering connection.
 
 
 

@@ -14,6 +14,7 @@ package Paws::EC2::CapacityReservation;
   has InstancePlatform => (is => 'ro', isa => 'Str', request_name => 'instancePlatform', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
+  has StartDate => (is => 'ro', isa => 'Str', request_name => 'startDate', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
@@ -170,6 +171,11 @@ capacity.
 The ID of the AWS account that owns the Capacity Reservation.
 
 
+=head2 StartDate => Str
+
+The date and time at which the Capacity Reservation was started.
+
+
 =head2 State => Str
 
 The current state of the Capacity Reservation. A Capacity Reservation
@@ -190,8 +196,8 @@ available for your use.
 
 =item *
 
-C<cancelled> - The Capacity Reservation was manually cancelled. The
-reserved capacity is no longer available for your use.
+C<cancelled> - The Capacity Reservation was cancelled. The reserved
+capacity is no longer available for your use.
 
 =item *
 

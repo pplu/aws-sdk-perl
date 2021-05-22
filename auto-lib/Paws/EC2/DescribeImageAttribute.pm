@@ -29,21 +29,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe the launch permissions for an AMI
+    # This example describes the launch permissions for the specified AMI.
     my $ImageAttribute = $ec2->DescribeImageAttribute(
-      Attribute => 'description',
-      ImageId   => 'MyImageId',
-      DryRun    => 1,               # OPTIONAL
+      'Attribute' => 'launchPermission',
+      'ImageId'   => 'ami-5731123e'
     );
 
     # Results:
-    my $BlockDeviceMappings = $ImageAttribute->BlockDeviceMappings;
-    my $Description         = $ImageAttribute->Description;
-    my $ImageId             = $ImageAttribute->ImageId;
-    my $KernelId            = $ImageAttribute->KernelId;
-    my $LaunchPermissions   = $ImageAttribute->LaunchPermissions;
-    my $ProductCodes        = $ImageAttribute->ProductCodes;
-    my $RamdiskId           = $ImageAttribute->RamdiskId;
-    my $SriovNetSupport     = $ImageAttribute->SriovNetSupport;
+    my $ImageId           = $ImageAttribute->ImageId;
+    my $LaunchPermissions = $ImageAttribute->LaunchPermissions;
 
     # Returns a L<Paws::EC2::ImageAttribute> object.
 
@@ -57,12 +52,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 The AMI attribute.
 
-B<Note>: Depending on your account privileges, the
-C<blockDeviceMapping> attribute may return a C<Client.AuthFailure>
-error. If this happens, use DescribeImages to get information about the
-block device mapping for the AMI.
+B<Note>: The C<blockDeviceMapping> attribute is deprecated. Using this
+attribute returns the C<Client.AuthFailure> error. To get information
+about the block device mappings for an AMI, use the DescribeImages
+action.
 
-Valid values are: C<"description">, C<"kernel">, C<"ramdisk">, C<"launchPermission">, C<"productCodes">, C<"blockDeviceMapping">, C<"sriovNetSupport">
+Valid values are: C<"description">, C<"kernel">, C<"ramdisk">, C<"launchPermission">, C<"productCodes">, C<"blockDeviceMapping">, C<"sriovNetSupport">, C<"bootMode">
 
 =head2 DryRun => Bool
 

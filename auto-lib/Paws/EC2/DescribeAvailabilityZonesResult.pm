@@ -17,7 +17,8 @@ Paws::EC2::DescribeAvailabilityZonesResult
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::EC2::AvailabilityZone>]
 
-Information about the Availability Zones and Local Zones.
+Information about the Availability Zones, Local Zones, and Wavelength
+Zones.
 
 
 =head2 _request_id => Str

@@ -3,7 +3,9 @@ package Paws::EC2::CreateNatGateway;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', required => 1);
   has ClientToken => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -68,9 +70,24 @@ Constraint: Maximum 64 ASCII characters.
 
 
 
+=head2 DryRun => Bool
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
 =head2 B<REQUIRED> SubnetId => Str
 
 The subnet in which to create the NAT gateway.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to assign to the NAT gateway.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::EC2::TransitGatewayRoute;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationCidrBlock', traits => ['NameInRequest']);
+  has PrefixListId => (is => 'ro', isa => 'Str', request_name => 'prefixListId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has TransitGatewayAttachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TransitGatewayRouteAttachment]', request_name => 'transitGatewayAttachments', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
@@ -42,6 +43,11 @@ This class has no description
 =head2 DestinationCidrBlock => Str
 
 The CIDR block used for destination matches.
+
+
+=head2 PrefixListId => Str
+
+The ID of the prefix list used for destination matches.
 
 
 =head2 State => Str

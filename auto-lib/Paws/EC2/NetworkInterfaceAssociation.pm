@@ -2,6 +2,8 @@ package Paws::EC2::NetworkInterfaceAssociation;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
   has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
+  has CarrierIp => (is => 'ro', isa => 'Str', request_name => 'carrierIp', traits => ['NameInRequest']);
+  has CustomerOwnedIp => (is => 'ro', isa => 'Str', request_name => 'customerOwnedIp', traits => ['NameInRequest']);
   has IpOwnerId => (is => 'ro', isa => 'Str', request_name => 'ipOwnerId', traits => ['NameInRequest']);
   has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'publicDnsName', traits => ['NameInRequest']);
   has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
@@ -48,6 +50,19 @@ The allocation ID.
 =head2 AssociationId => Str
 
 The association ID.
+
+
+=head2 CarrierIp => Str
+
+The carrier IP address associated with the network interface.
+
+This option is only available when the network interface is in a subnet
+which is associated with a Wavelength Zone.
+
+
+=head2 CustomerOwnedIp => Str
+
+The customer-owned IP address associated with the network interface.
 
 
 =head2 IpOwnerId => Str

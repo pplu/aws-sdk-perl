@@ -45,7 +45,7 @@ Describes the GPU accelerators for the instance type.
 =head2 TotalGpuMemoryInMiB => Int
 
 The total size of the memory for the GPU accelerators for the instance
-type.
+type, in MiB.
 
 
 

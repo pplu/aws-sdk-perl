@@ -1,9 +1,12 @@
 package Paws::EC2::TransitGatewayMulticastDomain;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
+  has Options => (is => 'ro', isa => 'Paws::EC2::TransitGatewayMulticastDomainOptions', request_name => 'options', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
+  has TransitGatewayMulticastDomainArn => (is => 'ro', isa => 'Str', request_name => 'transitGatewayMulticastDomainArn', traits => ['NameInRequest']);
   has TransitGatewayMulticastDomainId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayMulticastDomainId', traits => ['NameInRequest']);
 1;
 
@@ -45,6 +48,17 @@ This class has no description
 The time the transit gateway multicast domain was created.
 
 
+=head2 Options => L<Paws::EC2::TransitGatewayMulticastDomainOptions>
+
+The options for the transit gateway multicast domain.
+
+
+=head2 OwnerId => Str
+
+The ID of the AWS account that owns the transit gateway multiicast
+domain.
+
+
 =head2 State => Str
 
 The state of the transit gateway multicast domain.
@@ -58,6 +72,11 @@ The tags for the transit gateway multicast domain.
 =head2 TransitGatewayId => Str
 
 The ID of the transit gateway.
+
+
+=head2 TransitGatewayMulticastDomainArn => Str
+
+The Amazon Resource Name (ARN) of the transit gateway multicast domain.
 
 
 =head2 TransitGatewayMulticastDomainId => Str

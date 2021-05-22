@@ -2,9 +2,11 @@
 package Paws::EC2::ModifyVpcEndpointServiceConfiguration;
   use Moose;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool');
+  has AddGatewayLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddGatewayLoadBalancerArn' );
   has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddNetworkLoadBalancerArn' );
   has DryRun => (is => 'ro', isa => 'Bool');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
+  has RemoveGatewayLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveGatewayLoadBalancerArn' );
   has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveNetworkLoadBalancerArn' );
   has RemovePrivateDnsName => (is => 'ro', isa => 'Bool');
   has ServiceId => (is => 'ro', isa => 'Str', required => 1);
@@ -37,9 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->ModifyVpcEndpointServiceConfiguration(
       ServiceId                     => 'MyVpcEndpointServiceId',
       AcceptanceRequired            => 1,                          # OPTIONAL
+      AddGatewayLoadBalancerArns    => [ 'MyString', ... ],        # OPTIONAL
       AddNetworkLoadBalancerArns    => [ 'MyString', ... ],        # OPTIONAL
       DryRun                        => 1,                          # OPTIONAL
       PrivateDnsName                => 'MyString',                 # OPTIONAL
+      RemoveGatewayLoadBalancerArns => [ 'MyString', ... ],        # OPTIONAL
       RemoveNetworkLoadBalancerArns => [ 'MyString', ... ],        # OPTIONAL
       RemovePrivateDnsName          => 1,                          # OPTIONAL
       );
@@ -62,6 +66,13 @@ be accepted.
 
 
 
+=head2 AddGatewayLoadBalancerArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Names (ARNs) of Gateway Load Balancers to add to
+your service configuration.
+
+
+
 =head2 AddNetworkLoadBalancerArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARNs) of Network Load Balancers to add to
@@ -80,7 +91,15 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PrivateDnsName => Str
 
-The private DNS name to assign to the endpoint service.
+(Interface endpoint configuration) The private DNS name to assign to
+the endpoint service.
+
+
+
+=head2 RemoveGatewayLoadBalancerArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Names (ARNs) of Gateway Load Balancers to remove
+from your service configuration.
 
 
 
@@ -93,7 +112,8 @@ from your service configuration.
 
 =head2 RemovePrivateDnsName => Bool
 
-Removes the private DNS name of the endpoint service.
+(Interface endpoint configuration) Removes the private DNS name of the
+endpoint service.
 
 
 

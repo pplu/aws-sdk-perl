@@ -114,6 +114,11 @@ One or more network interfaces. If you specify a network interface, you
 must specify subnet IDs and security group IDs using the network
 interface.
 
+C<SpotFleetLaunchSpecification> currently does not support Elastic
+Fabric Adapter (EFA). To specify an EFA, you must use
+LaunchTemplateConfig
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateConfig.html).
+
 
 =head2 Placement => L<Paws::EC2::SpotPlacement>
 

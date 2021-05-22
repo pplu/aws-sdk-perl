@@ -7,6 +7,7 @@ package Paws::EC2::AllocateAddress;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has NetworkBorderGroup => (is => 'ro', isa => 'Str');
   has PublicIpv4Pool => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -77,9 +78,11 @@ specify a specific address from the address pool.
 
 =head2 Domain => Str
 
-Set to C<vpc> to allocate the address for use with instances in a VPC.
+Indicates whether the Elastic IP address is for use with instances in a
+VPC or instances in EC2-Classic.
 
-Default: The address is for use with instances in EC2-Classic.
+Default: If the Region supports EC2-Classic, the default is
+C<standard>. Otherwise, the default is C<vpc>.
 
 Valid values are: C<"vpc">, C<"standard">
 
@@ -94,11 +97,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 NetworkBorderGroup => Str
 
-The location from which the IP address is advertised. Use this
-parameter to limit the address to this location.
+A unique set of Availability Zones, Local Zones, or Wavelength Zones
+from which AWS advertises IP addresses. Use this parameter to limit the
+IP address to this location. IP addresses cannot move between network
+border groups.
 
-Use DescribeVpcs
-(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html)
+Use DescribeAvailabilityZones
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html)
 to view the network border groups.
 
 You cannot use a network border group with EC2 Classic. If you attempt
@@ -115,6 +120,12 @@ The ID of an address pool that you own. Use this parameter to let
 Amazon EC2 select an address from the address pool. To specify a
 specific address from the address pool, use the C<Address> parameter
 instead.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to assign to the Elastic IP address.
 
 
 

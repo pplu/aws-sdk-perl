@@ -7,6 +7,7 @@ package Paws::EC2::CreateImage;
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has NoReboot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'noReboot' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -32,30 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To create an AMI from an Amazon EBS-backed instance
+    # This example creates an AMI from the specified instance and adds an EBS
+    # volume with the device name /dev/sdh and an instance store volume with the
+    # device name /dev/sdc.
     my $CreateImageResult = $ec2->CreateImage(
-      InstanceId          => 'MyInstanceId',
-      Name                => 'MyString',
-      BlockDeviceMappings => [
+      'BlockDeviceMappings' => [
+
         {
-          DeviceName => 'MyString',
-          Ebs        => {
-            DeleteOnTermination => 1,            # OPTIONAL
-            Encrypted           => 1,            # OPTIONAL
-            Iops                => 1,            # OPTIONAL
-            KmsKeyId            => 'MyString',
-            SnapshotId          => 'MyString',
-            VolumeSize          => 1,            # OPTIONAL
-            VolumeType =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
-          },    # OPTIONAL
-          NoDevice    => 'MyString',
-          VirtualName => 'MyString',
+          'DeviceName' => '/dev/sdh',
+          'Ebs'        => {
+            'VolumeSize' => 100
+          }
         },
-        ...
-      ],        # OPTIONAL
-      Description => 'MyString',    # OPTIONAL
-      DryRun      => 1,             # OPTIONAL
-      NoReboot    => 1,             # OPTIONAL
+
+        {
+          'DeviceName'  => '/dev/sdc',
+          'VirtualName' => 'ephemeral1'
+        }
+      ],
+      'Description' => 'An AMI for my server',
+      'InstanceId'  => 'i-1234567890abcdef0',
+      'Name'        => 'My server',
+      'NoReboot'    => 1
     );
 
     # Results:
@@ -111,10 +111,37 @@ quotes ('), at-signs (@), or underscores(_)
 =head2 NoReboot => Bool
 
 By default, Amazon EC2 attempts to shut down and reboot the instance
-before creating the image. If the 'No Reboot' option is set, Amazon EC2
-doesn't shut down the instance before creating the image. When this
+before creating the image. If the C<No Reboot> option is set, Amazon
+EC2 doesn't shut down the instance before creating the image. When this
 option is used, file system integrity on the created image can't be
 guaranteed.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the AMI and snapshots on creation. You can tag the
+AMI, the snapshots, or both.
+
+=over
+
+=item *
+
+To tag the AMI, the value for C<ResourceType> must be C<image>.
+
+=item *
+
+To tag the snapshots that are created of the root volume and of other
+EBS volumes that are attached to the instance, the value for
+C<ResourceType> must be C<snapshot>. The same tag is applied to all of
+the snapshots that are created.
+
+=back
+
+If you specify other values for C<ResourceType>, the request fails.
+
+To tag an AMI or snapshot after it has been created, see CreateTags
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
 
 
 

@@ -56,15 +56,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AccessGroupId => Str
 
-The ID of the Active Directory group to grant access.
+The ID of the group to grant access to, for example, the Active
+Directory group or identity provider (IdP) group. Required if
+C<AuthorizeAllGroups> is C<false> or not specified.
 
 
 
 =head2 AuthorizeAllGroups => Bool
 
-Indicates whether to grant access to all clients. Use C<true> to grant
-all clients who successfully establish a VPN connection access to the
-network.
+Indicates whether to grant access to all clients. Specify C<true> to
+grant all clients who successfully establish a VPN connection access to
+the network. Must be set to C<true> if C<AccessGroupId> is not
+specified.
 
 
 

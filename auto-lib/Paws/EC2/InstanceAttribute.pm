@@ -5,6 +5,7 @@ package Paws::EC2::InstanceAttribute;
   has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'disableApiTermination', traits => ['NameInRequest',]);
   has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'ebsOptimized', traits => ['NameInRequest',]);
   has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'enaSupport', traits => ['NameInRequest',]);
+  has EnclaveOptions => (is => 'ro', isa => 'Paws::EC2::EnclaveOptions', request_name => 'enclaveOptions', traits => ['NameInRequest',]);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest',]);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'instanceInitiatedShutdownBehavior', traits => ['NameInRequest',]);
@@ -48,6 +49,12 @@ Indicates whether the instance is optimized for Amazon EBS I/O.
 =head2 EnaSupport => L<Paws::EC2::AttributeBooleanValue>
 
 Indicates whether enhanced networking with ENA is enabled.
+
+
+=head2 EnclaveOptions => L<Paws::EC2::EnclaveOptions>
+
+To enable the instance for AWS Nitro Enclaves, set this parameter to
+C<true>; otherwise, set it to C<false>.
 
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
@@ -94,10 +101,12 @@ The device name of the root device volume (for example, C</dev/sda1>).
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
-Indicates whether source/destination checking is enabled. A value of
-C<true> means that checking is enabled, and C<false> means that
-checking is disabled. This value must be C<false> for a NAT instance to
-perform NAT.
+Enable or disable source/destination checks, which ensure that the
+instance is either the source or the destination of any traffic that it
+receives. If the value is C<true>, source/destination checks are
+enabled; otherwise, they are disabled. The default value is C<true>.
+You must disable source/destination checks if the instance runs
+services such as network address translation, routing, or firewalls.
 
 
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>

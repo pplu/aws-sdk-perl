@@ -1,6 +1,7 @@
 package Paws::EC2::ClientVpnAuthenticationRequest;
   use Moose;
   has ActiveDirectory => (is => 'ro', isa => 'Paws::EC2::DirectoryServiceAuthenticationRequest');
+  has FederatedAuthentication => (is => 'ro', isa => 'Paws::EC2::FederatedAuthenticationRequest');
   has MutualAuthentication => (is => 'ro', isa => 'Paws::EC2::CertificateAuthenticationRequest');
   has Type => (is => 'ro', isa => 'Str');
 1;
@@ -45,6 +46,13 @@ must provide this information if B<Type> is
 C<directory-service-authentication>.
 
 
+=head2 FederatedAuthentication => L<Paws::EC2::FederatedAuthenticationRequest>
+
+Information about the IAM SAML identity provider to be used, if
+applicable. You must provide this information if B<Type> is
+C<federated-authentication>.
+
+
 =head2 MutualAuthentication => L<Paws::EC2::CertificateAuthenticationRequest>
 
 Information about the authentication certificates to be used, if
@@ -54,10 +62,7 @@ C<certificate-authentication>.
 
 =head2 Type => Str
 
-The type of client authentication to be used. Specify
-C<certificate-authentication> to use certificate-based authentication,
-or C<directory-service-authentication> to use Active Directory
-authentication.
+The type of client authentication to be used.
 
 
 

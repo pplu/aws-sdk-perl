@@ -35,57 +35,48 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+   # To add a rule that allows outbound traffic to a specific address range
+   # This example adds a rule that grants access to the specified address ranges
+   # on TCP port 80.
     $ec2->AuthorizeSecurityGroupEgress(
-      GroupId       => 'MySecurityGroupId',
-      CidrIp        => 'MyString',            # OPTIONAL
-      DryRun        => 1,                     # OPTIONAL
-      FromPort      => 1,                     # OPTIONAL
-      IpPermissions => [
+      'GroupId'       => 'sg-1a2b3c4d',
+      'IpPermissions' => [
+
         {
-          FromPort   => 1,
-          IpProtocol => 'MyString',
-          IpRanges   => [
+          'FromPort'   => 80,
+          'IpProtocol' => 'tcp',
+          'IpRanges'   => [
+
             {
-              CidrIp      => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],                                  # OPTIONAL
-          Ipv6Ranges => [
-            {
-              CidrIpv6    => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],                                  # OPTIONAL
-          PrefixListIds => [
-            {
-              Description  => 'MyString',
-              PrefixListId => 'MyString',
-            },
-            ...
-          ],                                  # OPTIONAL
-          ToPort           => 1,
-          UserIdGroupPairs => [
-            {
-              Description            => 'MyString',
-              GroupId                => 'MyString',
-              GroupName              => 'MyString',
-              PeeringStatus          => 'MyString',
-              UserId                 => 'MyString',
-              VpcId                  => 'MyString',
-              VpcPeeringConnectionId => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-        },
-        ...
-      ],        # OPTIONAL
-      IpProtocol                 => 'MyString',    # OPTIONAL
-      SourceSecurityGroupName    => 'MyString',    # OPTIONAL
-      SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL
-      ToPort                     => 1,             # OPTIONAL
+              'CidrIp' => '10.0.0.0/16'
+            }
+          ],
+          'ToPort' => 80
+        }
+      ]
     );
+
+   # To add a rule that allows outbound traffic to a specific security group
+   # This example adds a rule that grants access to the specified security group
+   # on TCP port 80.
+    $ec2->AuthorizeSecurityGroupEgress(
+      'GroupId'       => 'sg-1a2b3c4d',
+      'IpPermissions' => [
+
+        {
+          'FromPort'         => 80,
+          'IpProtocol'       => 'tcp',
+          'ToPort'           => 80,
+          'UserIdGroupPairs' => [
+
+            {
+              'GroupId' => 'sg-4b51a32f'
+            }
+          ]
+        }
+      ]
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AuthorizeSecurityGroupEgress>

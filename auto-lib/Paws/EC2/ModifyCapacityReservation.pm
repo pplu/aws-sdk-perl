@@ -1,6 +1,7 @@
 
 package Paws::EC2::ModifyCapacityReservation;
   use Moose;
+  has Accept => (is => 'ro', isa => 'Bool');
   has CapacityReservationId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
   has EndDate => (is => 'ro', isa => 'Str');
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyCapacityReservationResult = $ec2->ModifyCapacityReservation(
       CapacityReservationId => 'MyCapacityReservationId',
+      Accept                => 1,                           # OPTIONAL
       DryRun                => 1,                           # OPTIONAL
       EndDate               => '1970-01-01T01:00:00',       # OPTIONAL
       EndDateType           => 'unlimited',                 # OPTIONAL
@@ -48,6 +50,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyCapacityReservation>
 
 =head1 ATTRIBUTES
+
+
+=head2 Accept => Bool
+
+Reserved. Capacity Reservations you have created are accepted by
+default.
+
 
 
 =head2 B<REQUIRED> CapacityReservationId => Str

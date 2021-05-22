@@ -1,7 +1,9 @@
 package Paws::EC2::EbsInfo;
   use Moose;
+  has EbsOptimizedInfo => (is => 'ro', isa => 'Paws::EC2::EbsOptimizedInfo', request_name => 'ebsOptimizedInfo', traits => ['NameInRequest']);
   has EbsOptimizedSupport => (is => 'ro', isa => 'Str', request_name => 'ebsOptimizedSupport', traits => ['NameInRequest']);
   has EncryptionSupport => (is => 'ro', isa => 'Str', request_name => 'encryptionSupport', traits => ['NameInRequest']);
+  has NvmeSupport => (is => 'ro', isa => 'Str', request_name => 'nvmeSupport', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::EbsInfo object:
 
-  $service_obj->Method(Att1 => { EbsOptimizedSupport => $value, ..., EncryptionSupport => $value  });
+  $service_obj->Method(Att1 => { EbsOptimizedInfo => $value, ..., NvmeSupport => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::EbsInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EbsOptimizedSupport
+  $result->Att1->EbsOptimizedInfo
 
 =head1 DESCRIPTION
 
@@ -37,17 +39,27 @@ This class has no description
 =head1 ATTRIBUTES
 
 
+=head2 EbsOptimizedInfo => L<Paws::EC2::EbsOptimizedInfo>
+
+Describes the optimized EBS performance for the instance type.
+
+
 =head2 EbsOptimizedSupport => Str
 
-Indicates that the instance type is Amazon EBS-optimized. For more
-information, see Amazon EBS-Optimized Instances
+Indicates whether the instance type is Amazon EBS-optimized. For more
+information, see Amazon EBS-optimized instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)
-in I<Amazon EC2 User Guide for Linux Instances>.
+in I<Amazon EC2 User Guide>.
 
 
 =head2 EncryptionSupport => Str
 
 Indicates whether Amazon EBS encryption is supported.
+
+
+=head2 NvmeSupport => Str
+
+Indicates whether non-volatile memory express (NVMe) is supported.
 
 
 

@@ -4,6 +4,7 @@ package Paws::EC2::ImportKeyPair;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has KeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyName' , required => 1);
   has PublicKeyMaterial => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyMaterial' , required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KeyName           => 'MyString',
       PublicKeyMaterial => 'BlobBlob',
       DryRun            => 1,            # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
     );
 
     # Results:
     my $KeyFingerprint = $ImportKeyPairResult->KeyFingerprint;
     my $KeyName        = $ImportKeyPairResult->KeyName;
+    my $KeyPairId      = $ImportKeyPairResult->KeyPairId;
+    my $Tags           = $ImportKeyPairResult->Tags;
 
     # Returns a L<Paws::EC2::ImportKeyPairResult> object.
 
@@ -66,6 +83,12 @@ A unique name for the key pair.
 
 The public key. For API calls, the text must be base64-encoded. For
 command line tools, base64 encoding is performed for you.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the imported key pair.
 
 
 

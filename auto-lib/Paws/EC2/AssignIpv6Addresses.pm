@@ -50,9 +50,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Ipv6AddressCount => Int
 
-The number of IPv6 addresses to assign to the network interface. Amazon
-EC2 automatically selects the IPv6 addresses from the subnet range. You
-can't use this option if specifying specific IPv6 addresses.
+The number of additional IPv6 addresses to assign to the network
+interface. The specified number of IPv6 addresses are assigned in
+addition to the existing IPv6 addresses that are already assigned to
+the network interface. Amazon EC2 automatically selects the IPv6
+addresses from the subnet range. You can't use this option if
+specifying specific IPv6 addresses.
 
 
 

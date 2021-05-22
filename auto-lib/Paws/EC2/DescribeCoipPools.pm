@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
-      PoolIds    => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                          # OPTIONAL
+      NextToken  => 'MyString',                 # OPTIONAL
+      PoolIds    => [ 'MyCoipPoolId', ... ],    # OPTIONAL
     );
 
     # Results:

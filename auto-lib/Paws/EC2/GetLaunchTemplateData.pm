@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $GetLaunchTemplateDataResult = $ec2->GetLaunchTemplateData(
-      InstanceId => 'MyInstanceId',
-      DryRun     => 1,                # OPTIONAL
-    );
+    # To get the launch template data for an instance
+    # This example gets the launch template data for the specified instance.
+    my $GetLaunchTemplateDataResult =
+      $ec2->GetLaunchTemplateData( 'InstanceId' => '0123d646e8048babc' );
 
     # Results:
     my $LaunchTemplateData = $GetLaunchTemplateDataResult->LaunchTemplateData;

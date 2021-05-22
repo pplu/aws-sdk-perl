@@ -57,8 +57,7 @@ Information about the IPv4 CIDR blocks associated with the VPC.
 
 =head2 DhcpOptionsId => Str
 
-The ID of the set of DHCP options you've associated with the VPC (or
-C<default> if the default options are associated with the VPC).
+The ID of the set of DHCP options you've associated with the VPC.
 
 
 =head2 InstanceTenancy => Str

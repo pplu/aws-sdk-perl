@@ -55,7 +55,7 @@ The block device mapping for the disk.
 
 The format of the disk image being imported.
 
-Valid values: C<VHD> | C<VMDK> | C<OVA>
+Valid values: C<OVA> | C<VHD> | C<VHDX> | C<VMDK> | C<RAW>
 
 
 =head2 SnapshotId => Str

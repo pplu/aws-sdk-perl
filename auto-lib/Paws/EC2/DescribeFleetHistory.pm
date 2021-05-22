@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeFleetHistoryResult = $ec2->DescribeFleetHistory(
-      FleetId    => 'MyFleetIdentifier',
+      FleetId    => 'MyFleetId',
       StartTime  => '1970-01-01T01:00:00',
       DryRun     => 1,                       # OPTIONAL
       EventType  => 'instance-change',       # OPTIONAL

@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeCapacityReservationsResult = $ec2->DescribeCapacityReservations(
-      CapacityReservationIds => [ 'MyString', ... ],    # OPTIONAL
-      DryRun                 => 1,                      # OPTIONAL
+      CapacityReservationIds => [ 'MyCapacityReservationId', ... ],   # OPTIONAL
+      DryRun                 => 1,                                    # OPTIONAL
       Filters                => [
         {
           Name   => 'MyString',
-          Values => [ 'MyString', ... ],                # OPTIONAL
+          Values => [ 'MyString', ... ],                              # OPTIONAL
         },
         ...
-      ],                                                # OPTIONAL
-      MaxResults => 1,                                  # OPTIONAL
-      NextToken  => 'MyString',                         # OPTIONAL
+      ],                                                              # OPTIONAL
+      MaxResults => 1,                                                # OPTIONAL
+      NextToken  => 'MyString',                                       # OPTIONAL
     );
 
     # Results:
@@ -77,19 +77,162 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more filters.
 
+=over
+
+=item *
+
+C<instance-type> - The type of instance for which the Capacity
+Reservation reserves capacity.
+
+=item *
+
+C<owner-id> - The ID of the AWS account that owns the Capacity
+Reservation.
+
+=item *
+
+C<availability-zone-id> - The Availability Zone ID of the Capacity
+Reservation.
+
+=item *
+
+C<instance-platform> - The type of operating system for which the
+Capacity Reservation reserves capacity.
+
+=item *
+
+C<availability-zone> - The Availability Zone ID of the Capacity
+Reservation.
+
+=item *
+
+C<tenancy> - Indicates the tenancy of the Capacity Reservation. A
+Capacity Reservation can have one of the following tenancy settings:
+
+=over
+
+=item *
+
+C<default> - The Capacity Reservation is created on hardware that is
+shared with other AWS accounts.
+
+=item *
+
+C<dedicated> - The Capacity Reservation is created on single-tenant
+hardware that is dedicated to a single AWS account.
+
+=back
+
+=item *
+
+C<state> - The current state of the Capacity Reservation. A Capacity
+Reservation can be in one of the following states:
+
+=over
+
+=item *
+
+C<active>- The Capacity Reservation is active and the capacity is
+available for your use.
+
+=item *
+
+C<expired> - The Capacity Reservation expired automatically at the date
+and time specified in your request. The reserved capacity is no longer
+available for your use.
+
+=item *
+
+C<cancelled> - The Capacity Reservation was cancelled. The reserved
+capacity is no longer available for your use.
+
+=item *
+
+C<pending> - The Capacity Reservation request was successful but the
+capacity provisioning is still pending.
+
+=item *
+
+C<failed> - The Capacity Reservation request has failed. A request
+might fail due to invalid request parameters, capacity constraints, or
+instance limit constraints. Failed requests are retained for 60
+minutes.
+
+=back
+
+=item *
+
+C<start-date> - The date and time at which the Capacity Reservation was
+started.
+
+=item *
+
+C<end-date> - The date and time at which the Capacity Reservation
+expires. When a Capacity Reservation expires, the reserved capacity is
+released and you can no longer launch instances into it. The Capacity
+Reservation's state changes to expired when it reaches its end date and
+time.
+
+=item *
+
+C<end-date-type> - Indicates the way in which the Capacity Reservation
+ends. A Capacity Reservation can have one of the following end types:
+
+=over
+
+=item *
+
+C<unlimited> - The Capacity Reservation remains active until you
+explicitly cancel it.
+
+=item *
+
+C<limited> - The Capacity Reservation expires automatically at a
+specified date and time.
+
+=back
+
+=item *
+
+C<instance-match-criteria> - Indicates the type of instance launches
+that the Capacity Reservation accepts. The options include:
+
+=over
+
+=item *
+
+C<open> - The Capacity Reservation accepts all instances that have
+matching attributes (instance type, platform, and Availability Zone).
+Instances that have matching attributes launch into the Capacity
+Reservation automatically without specifying any additional parameters.
+
+=item *
+
+C<targeted> - The Capacity Reservation only accepts instances that have
+matching attributes (instance type, platform, and Availability Zone),
+and explicitly target the Capacity Reservation. This ensures that only
+permitted instances can use the reserved capacity.
+
+=back
+
+=back
+
+
 
 
 =head2 MaxResults => Int
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned nextToken value.
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
+error.
 
 
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token to use to retrieve the next page of results.
 
 
 

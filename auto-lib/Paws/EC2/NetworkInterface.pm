@@ -129,8 +129,8 @@ The private IPv4 addresses associated with the network interface.
 
 =head2 RequesterId => Str
 
-The ID of the entity that launched the instance on your behalf (for
-example, AWS Management Console or Auto Scaling).
+The alias or AWS account ID of the principal or service that created
+the network interface.
 
 
 =head2 RequesterManaged => Bool
@@ -140,7 +140,7 @@ Indicates whether the network interface is being managed by AWS.
 
 =head2 SourceDestCheck => Bool
 
-Indicates whether traffic to or from the instance is validated.
+Indicates whether source/destination checking is enabled.
 
 
 =head2 Status => Str
