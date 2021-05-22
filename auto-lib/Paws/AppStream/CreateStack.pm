@@ -63,18 +63,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
           Domains => [
             'MyDomain', ...    # min: 1, max: 64
-          ],                   # max: 10; OPTIONAL
-          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
+          ],                   # max: 50; OPTIONAL
+          ResourceIdentifier =>
+            'MyResourceIdentifier',    # min: 1, max: 2048; OPTIONAL
         },
         ...
-      ],                                                   # OPTIONAL
+      ],                               # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       UserSettings => [
         {
           Action => 'CLIPBOARD_COPY_FROM_LOCAL_DEVICE'
-          , # values: CLIPBOARD_COPY_FROM_LOCAL_DEVICE, CLIPBOARD_COPY_TO_LOCAL_DEVICE, FILE_UPLOAD, FILE_DOWNLOAD, PRINTING_TO_LOCAL_DEVICE
+          , # values: CLIPBOARD_COPY_FROM_LOCAL_DEVICE, CLIPBOARD_COPY_TO_LOCAL_DEVICE, FILE_UPLOAD, FILE_DOWNLOAD, PRINTING_TO_LOCAL_DEVICE, DOMAIN_PASSWORD_SIGNIN, DOMAIN_SMART_CARD_SIGNIN
           Permission => 'ENABLED',    # values: ENABLED, DISABLED
 
         },

@@ -65,6 +65,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateStreamingURL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUpdatedImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CreateUpdatedImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUsageReportSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateUsageReportSubscription', @_);
@@ -483,7 +488,7 @@ package Paws::AppStream;
   }
 
 
-  sub operations { qw/AssociateFleet BatchAssociateUserStack BatchDisassociateUserStack CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL CreateUsageReportSubscription CreateUser DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DeleteUsageReportSubscription DeleteUser DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DescribeUsageReportSubscriptions DescribeUsers DescribeUserStackAssociations DisableUser DisassociateFleet EnableUser ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
+  sub operations { qw/AssociateFleet BatchAssociateUserStack BatchDisassociateUserStack CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL CreateUpdatedImage CreateUsageReportSubscription CreateUser DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DeleteUsageReportSubscription DeleteUser DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DescribeUsageReportSubscriptions DescribeUsers DescribeUserStackAssociations DisableUser DisassociateFleet EnableUser ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
 
 1;
 
@@ -633,7 +638,7 @@ copied.
 
 =item OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef]
 
-=item ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
+=item [ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>]
 
 
 =back
@@ -678,6 +683,8 @@ image builders to Microsoft Active Directory domains.
 =item [ImageName => Str]
 
 =item [MaxUserDurationInSeconds => Int]
+
+=item [StreamView => Str]
 
 =item [Tags => L<Paws::AppStream::Tags>]
 
@@ -820,6 +827,39 @@ Returns: a L<Paws::AppStream::CreateStreamingURLResult> instance
 Creates a temporary URL to start an AppStream 2.0 streaming session for
 the specified user. A streaming URL enables application streaming to be
 tested without user setup.
+
+
+=head2 CreateUpdatedImage
+
+=over
+
+=item ExistingImageName => Str
+
+=item NewImageName => Str
+
+=item [DryRun => Bool]
+
+=item [NewImageDescription => Str]
+
+=item [NewImageDisplayName => Str]
+
+=item [NewImageTags => L<Paws::AppStream::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::CreateUpdatedImage>
+
+Returns: a L<Paws::AppStream::CreateUpdatedImageResult> instance
+
+Creates a new image with the latest Windows operating system updates,
+driver updates, and AppStream 2.0 agent software.
+
+For more information, see the "Update an Image by Using Managed
+AppStream 2.0 Image Updates" section in Administer Your AppStream 2.0
+Images
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/administer-images.html),
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 =head2 CreateUsageReportSubscription
@@ -1554,6 +1594,8 @@ and image builders to Microsoft Active Directory domains.
 =item [MaxUserDurationInSeconds => Int]
 
 =item [Name => Str]
+
+=item [StreamView => Str]
 
 =item [VpcConfig => L<Paws::AppStream::VpcConfig>]
 

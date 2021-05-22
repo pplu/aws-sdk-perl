@@ -16,6 +16,7 @@ package Paws::AppStream::UpdateFleet;
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
+  has StreamView => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
 
   use MooseX::ClassAttribute;
@@ -68,6 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceType                   => 'MyString',    # OPTIONAL
       MaxUserDurationInSeconds       => 1,             # OPTIONAL
       Name                           => 'MyString',    # OPTIONAL
+      StreamView                     => 'APP',         # OPTIONAL
       VpcConfig                      => {
         SecurityGroupIds => [
           'MyString', ...                              # min: 1
@@ -151,7 +153,7 @@ To assume a role, a fleet instance calls the AWS Security Token Service
 (STS) C<AssumeRole> API operation and passes the ARN of the role to
 use. The operation creates a new session with temporary credentials.
 AppStream 2.0 retrieves the temporary credentials and creates the
-B<AppStream_Machine_Role> credential profile on the instance.
+B<appstream_machine_role> credential profile on the instance.
 
 For more information, see Using an IAM Role to Grant Permissions to
 Applications and Scripts Running on AppStream 2.0 Streaming Instances
@@ -210,6 +212,10 @@ instance types are available:
 
 =item *
 
+stream.standard.small
+
+=item *
+
 stream.standard.medium
 
 =item *
@@ -258,6 +264,30 @@ stream.memory.8xlarge
 
 =item *
 
+stream.memory.z1d.large
+
+=item *
+
+stream.memory.z1d.xlarge
+
+=item *
+
+stream.memory.z1d.2xlarge
+
+=item *
+
+stream.memory.z1d.3xlarge
+
+=item *
+
+stream.memory.z1d.6xlarge
+
+=item *
+
+stream.memory.z1d.12xlarge
+
+=item *
+
 stream.graphics-design.large
 
 =item *
@@ -275,6 +305,30 @@ stream.graphics-design.4xlarge
 =item *
 
 stream.graphics-desktop.2xlarge
+
+=item *
+
+stream.graphics.g4dn.xlarge
+
+=item *
+
+stream.graphics.g4dn.2xlarge
+
+=item *
+
+stream.graphics.g4dn.4xlarge
+
+=item *
+
+stream.graphics.g4dn.8xlarge
+
+=item *
+
+stream.graphics.g4dn.12xlarge
+
+=item *
+
+stream.graphics.g4dn.16xlarge
 
 =item *
 
@@ -310,6 +364,17 @@ Specify a value between 600 and 360000.
 A unique name for the fleet.
 
 
+
+=head2 StreamView => Str
+
+The AppStream 2.0 view that is displayed to your users when they stream
+from the fleet. When C<APP> is specified, only the windows of
+applications opened by users display. When C<DESKTOP> is specified, the
+standard desktop that is provided by the operating system displays.
+
+The default value is C<APP>.
+
+Valid values are: C<"APP">, C<"DESKTOP">
 
 =head2 VpcConfig => L<Paws::AppStream::VpcConfig>
 

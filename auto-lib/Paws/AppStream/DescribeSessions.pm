@@ -89,7 +89,8 @@ The name of the stack. This value is case-sensitive.
 
 =head2 UserId => Str
 
-The user identifier.
+The user identifier (ID). If you specify a user ID, you must also
+specify the authentication type.
 
 
 
