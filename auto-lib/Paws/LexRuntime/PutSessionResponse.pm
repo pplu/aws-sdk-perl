@@ -1,9 +1,11 @@
 
 package Paws::LexRuntime::PutSessionResponse;
   use Moose;
+  has ActiveContexts => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-active-contexts');
   has AudioStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'audioStream');
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-dialog-state');
+  has EncodedMessage => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-encoded-message');
   has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-intent-name');
   has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message');
   has MessageFormat => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message-format');
@@ -23,6 +25,11 @@ package Paws::LexRuntime::PutSessionResponse;
 Paws::LexRuntime::PutSessionResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 ActiveContexts => Str
+
+A list of active contexts for the session.
 
 
 =head2 AudioStream => Str
@@ -74,6 +81,14 @@ intent.
 
 
 Valid values are: C<"ElicitIntent">, C<"ConfirmIntent">, C<"ElicitSlot">, C<"Fulfilled">, C<"ReadyForFulfillment">, C<"Failed">
+=head2 EncodedMessage => Str
+
+The next message that should be presented to the user.
+
+The C<encodedMessage> field is base-64 encoded. You must decode the
+field before you can use the value.
+
+
 =head2 IntentName => Str
 
 The name of the current intent.
@@ -82,6 +97,11 @@ The name of the current intent.
 =head2 Message => Str
 
 The next message that should be presented to the user.
+
+You can only use this field in the de-DE, en-AU, en-GB, en-US, es-419,
+es-ES, es-US, fr-CA, fr-FR, and it-IT locales. In all other locales,
+the C<message> field is null. You should use the C<encodedMessage>
+field instead.
 
 
 =head2 MessageFormat => Str

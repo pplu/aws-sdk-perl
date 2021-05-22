@@ -1,6 +1,7 @@
 
 package Paws::LexRuntime::GetSessionResponse;
   use Moose;
+  has ActiveContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::ActiveContext]', traits => ['NameInRequest'], request_name => 'activeContexts');
   has DialogAction => (is => 'ro', isa => 'Paws::LexRuntime::DialogAction', traits => ['NameInRequest'], request_name => 'dialogAction');
   has RecentIntentSummaryView => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::IntentSummary]', traits => ['NameInRequest'], request_name => 'recentIntentSummaryView');
   has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
@@ -16,6 +17,16 @@ package Paws::LexRuntime::GetSessionResponse;
 Paws::LexRuntime::GetSessionResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 ActiveContexts => ArrayRef[L<Paws::LexRuntime::ActiveContext>]
+
+A list of active contexts for the session. A context can be set when an
+intent is fulfilled or by calling the C<PostContent>, C<PostText>, or
+C<PutSession> operation.
+
+You can use a context to control the intents that can follow up an
+intent, or to modify the operation of your application.
 
 
 =head2 DialogAction => L<Paws::LexRuntime::DialogAction>

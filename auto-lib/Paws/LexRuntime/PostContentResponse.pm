@@ -1,13 +1,19 @@
 
 package Paws::LexRuntime::PostContentResponse;
   use Moose;
+  has ActiveContexts => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-active-contexts');
+  has AlternativeIntents => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-alternative-intents');
   has AudioStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'audioStream');
+  has BotVersion => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-bot-version');
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-dialog-state');
+  has EncodedInputTranscript => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-encoded-input-transcript');
+  has EncodedMessage => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-encoded-message');
   has InputTranscript => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-input-transcript');
   has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-intent-name');
   has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message');
   has MessageFormat => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message-format');
+  has NluIntentConfidence => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-nlu-intent-confidence');
   has SentimentResponse => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-sentiment');
   has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
   has SessionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-id');
@@ -27,6 +33,26 @@ Paws::LexRuntime::PostContentResponse
 =head1 ATTRIBUTES
 
 
+=head2 ActiveContexts => Str
+
+A list of active contexts for the session. A context can be set when an
+intent is fulfilled or by calling the C<PostContent>, C<PostText>, or
+C<PutSession> operation.
+
+You can use a context to control the intents that can follow up an
+intent, or to modify the operation of your application.
+
+
+=head2 AlternativeIntents => Str
+
+One to four alternative intents that may be applicable to the user's
+intent.
+
+Each alternative includes a score that indicates how confident Amazon
+Lex is that the intent matches the user's intent. The intents are
+sorted by the confidence score.
+
+
 =head2 AudioStream => Str
 
 The prompt (or statement) to convey to the user. This is based on the
@@ -37,6 +63,13 @@ taking the fulfillment action, it sends the C<confirmationPrompt>.
 Another example: Suppose that the Lambda function successfully
 fulfilled the intent, and sent a message to convey to the user. Then
 Amazon Lex sends that message in the response.
+
+
+=head2 BotVersion => Str
+
+The version of the bot that responded to the conversation. You can use
+this information to help determine if one version of a bot is
+performing better than another version.
 
 
 =head2 ContentType => Str
@@ -106,9 +139,53 @@ information), or if the Lambda function fails to fulfill the intent.
 
 
 Valid values are: C<"ElicitIntent">, C<"ConfirmIntent">, C<"ElicitSlot">, C<"Fulfilled">, C<"ReadyForFulfillment">, C<"Failed">
+=head2 EncodedInputTranscript => Str
+
+The text used to process the request.
+
+If the input was an audio stream, the C<encodedInputTranscript> field
+contains the text extracted from the audio stream. This is the text
+that is actually processed to recognize intents and slot values. You
+can use this information to determine if Amazon Lex is correctly
+processing the audio that you send.
+
+The C<encodedInputTranscript> field is base-64 encoded. You must decode
+the field before you can use the value.
+
+
+=head2 EncodedMessage => Str
+
+The message to convey to the user. The message can come from the bot's
+configuration or from a Lambda function.
+
+If the intent is not configured with a Lambda function, or if the
+Lambda function returned C<Delegate> as the C<dialogAction.type> in its
+response, Amazon Lex decides on the next course of action and selects
+an appropriate message from the bot's configuration based on the
+current interaction context. For example, if Amazon Lex isn't able to
+understand user input, it uses a clarification prompt message.
+
+When you create an intent you can assign messages to groups. When
+messages are assigned to groups Amazon Lex returns one message from
+each group in the response. The message field is an escaped JSON string
+containing the messages. For more information about the structure of
+the JSON string returned, see msg-prompts-formats.
+
+If the Lambda function returns a message, Amazon Lex passes it to the
+client in its response.
+
+The C<encodedMessage> field is base-64 encoded. You must decode the
+field before you can use the value.
+
+
 =head2 InputTranscript => Str
 
 The text used to process the request.
+
+You can use this field only in the de-DE, en-AU, en-GB, en-US, es-419,
+es-ES, es-US, fr-CA, fr-FR, and it-IT locales. In all other locales,
+the C<inputTranscript> field is null. You should use the
+C<encodedInputTranscript> field instead.
 
 If the input was an audio stream, the C<inputTranscript> field contains
 the text extracted from the audio stream. This is the text that is
@@ -123,6 +200,11 @@ Current user intent that Amazon Lex is aware of.
 
 
 =head2 Message => Str
+
+You can only use this field in the de-DE, en-AU, en-GB, en-US, es-419,
+es-ES, es-US, fr-CA, fr-FR, and it-IT locales. In all other locales,
+the C<message> field is null. You should use the C<encodedMessage>
+field instead.
 
 The message to convey to the user. The message can come from the bot's
 configuration or from a Lambda function.
@@ -172,9 +254,19 @@ when the intent was created.
 
 
 Valid values are: C<"PlainText">, C<"CustomPayload">, C<"SSML">, C<"Composite">
+=head2 NluIntentConfidence => Str
+
+Provides a score that indicates how confident Amazon Lex is that the
+returned intent is the one that matches the user's intent. The score is
+between 0.0 and 1.0.
+
+The score is a relative score, not an absolute score. The score may
+change based on improvements to Amazon Lex.
+
+
 =head2 SentimentResponse => Str
 
-The sentiment expressed in and utterance.
+The sentiment expressed in an utterance.
 
 When the bot is configured to send utterances to Amazon Comprehend for
 sentiment analysis, this field contains the result of the analysis.

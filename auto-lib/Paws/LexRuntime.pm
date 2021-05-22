@@ -146,6 +146,8 @@ Returns session information for a specified bot, alias, and user ID.
 
 =item [Accept => Str]
 
+=item [ActiveContexts => Str]
+
 =item [RequestAttributes => Str]
 
 =item [SessionAttributes => Str]
@@ -261,6 +263,8 @@ Context (https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 =item UserId => Str
 
+=item [ActiveContexts => ArrayRef[L<Paws::LexRuntime::ActiveContext>]]
+
 =item [RequestAttributes => L<Paws::LexRuntime::StringMap>]
 
 =item [SessionAttributes => L<Paws::LexRuntime::StringMap>]
@@ -369,6 +373,8 @@ Context (https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 =item UserId => Str
 
 =item [Accept => Str]
+
+=item [ActiveContexts => ArrayRef[L<Paws::LexRuntime::ActiveContext>]]
 
 =item [DialogAction => L<Paws::LexRuntime::DialogAction>]
 

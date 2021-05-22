@@ -1,10 +1,14 @@
 
 package Paws::LexRuntime::PostTextResponse;
   use Moose;
+  has ActiveContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::ActiveContext]', traits => ['NameInRequest'], request_name => 'activeContexts');
+  has AlternativeIntents => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::PredictedIntent]', traits => ['NameInRequest'], request_name => 'alternativeIntents');
+  has BotVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botVersion');
   has DialogState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dialogState');
   has IntentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'intentName');
   has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
   has MessageFormat => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'messageFormat');
+  has NluIntentConfidence => (is => 'ro', isa => 'Paws::LexRuntime::IntentConfidence', traits => ['NameInRequest'], request_name => 'nluIntentConfidence');
   has ResponseCard => (is => 'ro', isa => 'Paws::LexRuntime::ResponseCard', traits => ['NameInRequest'], request_name => 'responseCard');
   has SentimentResponse => (is => 'ro', isa => 'Paws::LexRuntime::SentimentResponse', traits => ['NameInRequest'], request_name => 'sentimentResponse');
   has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
@@ -22,6 +26,33 @@ package Paws::LexRuntime::PostTextResponse;
 Paws::LexRuntime::PostTextResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 ActiveContexts => ArrayRef[L<Paws::LexRuntime::ActiveContext>]
+
+A list of active contexts for the session. A context can be set when an
+intent is fulfilled or by calling the C<PostContent>, C<PostText>, or
+C<PutSession> operation.
+
+You can use a context to control the intents that can follow up an
+intent, or to modify the operation of your application.
+
+
+=head2 AlternativeIntents => ArrayRef[L<Paws::LexRuntime::PredictedIntent>]
+
+One to four alternative intents that may be applicable to the user's
+intent.
+
+Each alternative includes a score that indicates how confident Amazon
+Lex is that the intent matches the user's intent. The intents are
+sorted by the confidence score.
+
+
+=head2 BotVersion => Str
+
+The version of the bot that responded to the conversation. You can use
+this information to help determine if one version of a bot is
+performing better than another version.
 
 
 =head2 DialogState => Str
@@ -143,6 +174,17 @@ when the intent was created.
 
 
 Valid values are: C<"PlainText">, C<"CustomPayload">, C<"SSML">, C<"Composite">
+=head2 NluIntentConfidence => L<Paws::LexRuntime::IntentConfidence>
+
+Provides a score that indicates how confident Amazon Lex is that the
+returned intent is the one that matches the user's intent. The score is
+between 0.0 and 1.0. For more information, see Confidence Scores
+(https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html).
+
+The score is a relative score, not an absolute score. The score may
+change based on improvements to Amazon Lex.
+
+
 =head2 ResponseCard => L<Paws::LexRuntime::ResponseCard>
 
 Represents the options that the user has to respond to the current

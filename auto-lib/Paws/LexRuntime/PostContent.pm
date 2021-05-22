@@ -2,6 +2,7 @@
 package Paws::LexRuntime::PostContent;
   use Moose;
   has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
+  has ActiveContexts => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-active-contexts');
   has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
   has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type', required => 1);
@@ -41,24 +42,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContentType       => 'MyHttpContentType',
       InputStream       => 'BlobBlobStream',
       UserId            => 'MyUserId',
-      Accept            => 'MyAccept',              # OPTIONAL
-      RequestAttributes => 'MyAttributesString',    # OPTIONAL
-      SessionAttributes => 'MyAttributesString',    # OPTIONAL
+      Accept            => 'MyAccept',                  # OPTIONAL
+      ActiveContexts    => 'MyActiveContextsString',    # OPTIONAL
+      RequestAttributes => 'MyAttributesString',        # OPTIONAL
+      SessionAttributes => 'MyAttributesString',        # OPTIONAL
     );
 
     # Results:
-    my $AudioStream       = $PostContentResponse->AudioStream;
-    my $ContentType       = $PostContentResponse->ContentType;
-    my $DialogState       = $PostContentResponse->DialogState;
-    my $InputTranscript   = $PostContentResponse->InputTranscript;
-    my $IntentName        = $PostContentResponse->IntentName;
-    my $Message           = $PostContentResponse->Message;
-    my $MessageFormat     = $PostContentResponse->MessageFormat;
-    my $SentimentResponse = $PostContentResponse->SentimentResponse;
-    my $SessionAttributes = $PostContentResponse->SessionAttributes;
-    my $SessionId         = $PostContentResponse->SessionId;
-    my $SlotToElicit      = $PostContentResponse->SlotToElicit;
-    my $Slots             = $PostContentResponse->Slots;
+    my $ActiveContexts         = $PostContentResponse->ActiveContexts;
+    my $AlternativeIntents     = $PostContentResponse->AlternativeIntents;
+    my $AudioStream            = $PostContentResponse->AudioStream;
+    my $BotVersion             = $PostContentResponse->BotVersion;
+    my $ContentType            = $PostContentResponse->ContentType;
+    my $DialogState            = $PostContentResponse->DialogState;
+    my $EncodedInputTranscript = $PostContentResponse->EncodedInputTranscript;
+    my $EncodedMessage         = $PostContentResponse->EncodedMessage;
+    my $InputTranscript        = $PostContentResponse->InputTranscript;
+    my $IntentName             = $PostContentResponse->IntentName;
+    my $Message                = $PostContentResponse->Message;
+    my $MessageFormat          = $PostContentResponse->MessageFormat;
+    my $NluIntentConfidence    = $PostContentResponse->NluIntentConfidence;
+    my $SentimentResponse      = $PostContentResponse->SentimentResponse;
+    my $SessionAttributes      = $PostContentResponse->SessionAttributes;
+    my $SessionId              = $PostContentResponse->SessionId;
+    my $SlotToElicit           = $PostContentResponse->SlotToElicit;
+    my $Slots                  = $PostContentResponse->Slots;
 
     # Returns a L<Paws::LexRuntime::PostContentResponse> object.
 
@@ -125,6 +133,18 @@ audio/* (defaults to mpeg)
 
 =back
 
+
+
+
+=head2 ActiveContexts => Str
+
+A list of contexts active for the request. A context can be activated
+when a previous intent is fulfilled, or by including the context in the
+request,
+
+If you don't specify a list of contexts, Amazon Lex will use the
+current list of contexts for the session. If you specify an empty list,
+all contexts for the session are cleared.
 
 
 
