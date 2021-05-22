@@ -4,6 +4,7 @@ package Paws::MarketplaceMetering::MeterUsage;
   has DryRun => (is => 'ro', isa => 'Bool');
   has ProductCode => (is => 'ro', isa => 'Str', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  has UsageAllocations => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceMetering::UsageAllocation]');
   has UsageDimension => (is => 'ro', isa => 'Str', required => 1);
   has UsageQuantity => (is => 'ro', isa => 'Int');
 
@@ -32,11 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $metering.marketplace = Paws->service('MarketplaceMetering');
     my $MeterUsageResult = $metering . marketplace->MeterUsage(
-      ProductCode    => 'MyProductCode',
-      Timestamp      => '1970-01-01T01:00:00',
-      UsageDimension => 'MyUsageDimension',
-      DryRun         => 1,                       # OPTIONAL
-      UsageQuantity  => 1,                       # OPTIONAL
+      ProductCode      => 'MyProductCode',
+      Timestamp        => '1970-01-01T01:00:00',
+      UsageDimension   => 'MyUsageDimension',
+      DryRun           => 1,                       # OPTIONAL
+      UsageAllocations => [
+        {
+          AllocatedUsageQuantity => 1,             # max: 2147483647
+          Tags                   => [
+            {
+              Key   => 'MyTagKey',                 # min: 1, max: 100
+              Value => 'MyTagValue',               # min: 1, max: 256
+
+            },
+            ...
+          ],                                       # min: 1, max: 5; OPTIONAL
+        },
+        ...
+      ],                                           # OPTIONAL
+      UsageQuantity => 1,                          # OPTIONAL
     );
 
     # Results:
@@ -72,6 +87,16 @@ publishing of a new product.
 Timestamp, in UTC, for which the usage is being reported. Your
 application can meter usage for up to one hour in the past. Make sure
 the timestamp value is not before the start of the software usage.
+
+
+
+=head2 UsageAllocations => ArrayRef[L<Paws::MarketplaceMetering::UsageAllocation>]
+
+The set of UsageAllocations to submit.
+
+The sum of all UsageAllocation quantities must equal the UsageQuantity
+of the MeterUsage request, and each UsageAllocation must have a unique
+set of tags (include no tags).
 
 
 
