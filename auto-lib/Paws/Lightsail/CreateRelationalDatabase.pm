@@ -81,8 +81,14 @@ Availability Zones> parameter to your request.
 
 =head2 B<REQUIRED> MasterDatabaseName => Str
 
-The name of the master database created when the Lightsail database
-resource is created.
+The meaning of this parameter differs according to the database engine
+you use.
+
+B<MySQL>
+
+The name of the database to create when the Lightsail database resource
+is created. If this parameter isn't specified, no database is created
+in the database resource.
 
 Constraints:
 
@@ -90,11 +96,57 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 64 alphanumeric characters.
+Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0- 9).
+
+=item *
+
+Can't be a word reserved by the specified database engine.
+
+For more information about reserved words in MySQL, see the Keywords
+and Reserved Words articles for MySQL 5.6
+(https://dev.mysql.com/doc/refman/5.6/en/keywords.html), MySQL 5.7
+(https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and MySQL 8.0
+(https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+
+=back
+
+B<PostgreSQL>
+
+The name of the database to create when the Lightsail database resource
+is created. If this parameter isn't specified, a database named
+C<postgres> is created in the database resource.
+
+Constraints:
+
+=over
+
+=item *
+
+Must contain 1 to 63 letters or numbers.
+
+=item *
+
+Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0- 9).
+
+=item *
+
+Can't be a word reserved by the specified database engine.
+
+For more information about reserved words in PostgreSQL, see the SQL
+Key Words articles for PostgreSQL 9.6
+(https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
+PostgreSQL 10
+(https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
+PostgreSQL 11
+(https://www.postgresql.org/docs/11/sql-keywords-appendix.html), and
+PostgreSQL 12
+(https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
 
 =back
 
@@ -103,7 +155,9 @@ Cannot be a word reserved by the specified database engine
 
 =head2 B<REQUIRED> MasterUsername => Str
 
-The master user name for your new database.
+The name for the master user.
+
+B<MySQL>
 
 Constraints:
 
@@ -111,24 +165,59 @@ Constraints:
 
 =item *
 
-Master user name is required.
+Required for MySQL.
 
 =item *
 
-Must contain from 1 to 16 alphanumeric characters.
+Must be 1 to 16 letters or numbers. Can contain underscores.
 
 =item *
 
-The first character must be a letter.
+First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the database engine you choose.
+Can't be a reserved word for the chosen database engine.
 
 For more information about reserved words in MySQL 5.6 or 5.7, see the
 Keywords and Reserved Words articles for MySQL 5.6
-(https://dev.mysql.com/doc/refman/5.6/en/keywords.html) or MySQL 5.7
-(https://dev.mysql.com/doc/refman/5.7/en/keywords.html) respectively.
+(https://dev.mysql.com/doc/refman/5.6/en/keywords.html), MySQL 5.7
+(https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or MySQL 8.0
+(https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+
+=back
+
+B<PostgreSQL>
+
+Constraints:
+
+=over
+
+=item *
+
+Required for PostgreSQL.
+
+=item *
+
+Must be 1 to 63 letters or numbers. Can contain underscores.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't be a reserved word for the chosen database engine.
+
+For more information about reserved words in MySQL 5.6 or 5.7, see the
+Keywords and Reserved Words articles for PostgreSQL 9.6
+(https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
+PostgreSQL 10
+(https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
+PostgreSQL 11
+(https://www.postgresql.org/docs/11/sql-keywords-appendix.html), and
+PostgreSQL 12
+(https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
 
 =back
 
@@ -137,10 +226,17 @@ Keywords and Reserved Words articles for MySQL 5.6
 
 =head2 MasterUserPassword => Str
 
-The password for the master user of your new database. The password can
-include any printable ASCII character except "/", """, or "@".
+The password for the master user. The password can include any
+printable ASCII character except "/", """, or "@". It cannot contain
+spaces.
 
-Constraints: Must contain 8 to 41 characters.
+B<MySQL>
+
+Constraints: Must contain from 8 to 41 characters.
+
+B<PostgreSQL>
+
+Constraints: Must contain from 8 to 128 characters.
 
 
 
@@ -254,7 +350,7 @@ database bundles> operation.
 
 =head2 B<REQUIRED> RelationalDatabaseName => Str
 
-The name to use for your new database.
+The name to use for your new Lightsail database resource.
 
 Constraints:
 
@@ -277,8 +373,7 @@ The first and last character must be a letter or number.
 
 The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the C<tag resource>
-operation.
+Use the C<TagResource> action to tag a resource after it's created.
 
 
 

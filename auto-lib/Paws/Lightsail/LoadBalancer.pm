@@ -8,6 +8,7 @@ package Paws::Lightsail::LoadBalancer;
   has HealthCheckPath => (is => 'ro', isa => 'Str', request_name => 'healthCheckPath', traits => ['NameInRequest']);
   has InstanceHealthSummary => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstanceHealthSummary]', request_name => 'instanceHealthSummary', traits => ['NameInRequest']);
   has InstancePort => (is => 'ro', isa => 'Int', request_name => 'instancePort', traits => ['NameInRequest']);
+  has IpAddressType => (is => 'ro', isa => 'Str', request_name => 'ipAddressType', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
@@ -92,6 +93,14 @@ load balancer.
 The port where the load balancer will direct traffic to your Lightsail
 instances. For HTTP traffic, it's port 80. For HTTPS traffic, it's port
 443.
+
+
+=head2 IpAddressType => Str
+
+The IP address type of the load balancer.
+
+The possible values are C<ipv4> for IPv4 only, and C<dualstack> for
+IPv4 and IPv6.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>

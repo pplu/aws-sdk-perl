@@ -17,13 +17,12 @@ Paws::Lightsail::GetRelationalDatabaseMetricDataResult
 
 =head2 MetricData => ArrayRef[L<Paws::Lightsail::MetricDatapoint>]
 
-An object describing the result of your get relational database metric
-data request.
+An array of objects that describe the metric data returned.
 
 
 =head2 MetricName => Str
 
-The name of the metric.
+The name of the metric returned.
 
 Valid values are: C<"CPUUtilization">, C<"DatabaseConnections">, C<"DiskQueueDepth">, C<"FreeStorageSpace">, C<"NetworkReceiveThroughput">, C<"NetworkTransmitThroughput">
 =head2 _request_id => Str

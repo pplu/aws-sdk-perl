@@ -45,7 +45,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 PageToken => Str
 
-A token used for paginating results from your get active names request.
+The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial C<GetActiveNames> request. If
+your results are paginated, the response will return a next page token
+that you can specify as the page token in a subsequent request.
 
 
 

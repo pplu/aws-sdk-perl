@@ -16,8 +16,9 @@ Paws::Lightsail::CloseInstancePublicPortsResult
 
 =head2 Operation => L<Paws::Lightsail::Operation>
 
-An array of key-value pairs that contains information about the
-operation.
+An object that describes the result of the action, such as the status
+of the request, the timestamp of the request, and the resources
+affected by the request.
 
 
 =head2 _request_id => Str

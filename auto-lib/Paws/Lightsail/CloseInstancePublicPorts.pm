@@ -31,9 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CloseInstancePublicPortsResult = $lightsail->CloseInstancePublicPorts(
       InstanceName => 'MyResourceName',
       PortInfo     => {
-        FromPort => 1,        # max: 65535; OPTIONAL
-        Protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
-        ToPort   => 1,        # max: 65535; OPTIONAL
+        CidrListAliases => [ 'Mystring', ... ],    # OPTIONAL
+        Cidrs           => [ 'Mystring', ... ],    # OPTIONAL
+        FromPort  => 1,                      # min: -1, max: 65535; OPTIONAL
+        Ipv6Cidrs => [ 'Mystring', ... ],    # OPTIONAL
+        Protocol => 'tcp',    # values: tcp, all, udp, icmp; OPTIONAL
+        ToPort   => 1,        # min: -1, max: 65535; OPTIONAL
       },
 
     );
@@ -51,14 +54,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 B<REQUIRED> InstanceName => Str
 
-The name of the instance on which you're attempting to close the public
-ports.
+The name of the instance for which to close ports.
 
 
 
 =head2 B<REQUIRED> PortInfo => L<Paws::Lightsail::PortInfo>
 
-Information about the public port you are trying to close.
+An object to describe the ports to close for the specified instance.
 
 
 

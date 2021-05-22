@@ -22,8 +22,14 @@ The list of active names returned by the get active names request.
 
 =head2 NextPageToken => Str
 
-A token used for advancing to the next page of results from your get
-active names request.
+The token to advance to the next page of results from your request.
+
+A next page token is not returned if there are no more results to
+display.
+
+To get the next page of results, perform another C<GetActiveNames>
+request and specify the next page token using the C<pageToken>
+parameter.
 
 
 =head2 _request_id => Str

@@ -32,9 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceName => 'MyResourceName',
       PortInfos    => [
         {
-          FromPort => 1,        # max: 65535; OPTIONAL
-          Protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
-          ToPort   => 1,        # max: 65535; OPTIONAL
+          CidrListAliases => [ 'Mystring', ... ],    # OPTIONAL
+          Cidrs           => [ 'Mystring', ... ],    # OPTIONAL
+          FromPort  => 1,                      # min: -1, max: 65535; OPTIONAL
+          Ipv6Cidrs => [ 'Mystring', ... ],    # OPTIONAL
+          Protocol => 'tcp',    # values: tcp, all, udp, icmp; OPTIONAL
+          ToPort   => 1,        # min: -1, max: 65535; OPTIONAL
         },
         ...
       ],
@@ -54,13 +57,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 B<REQUIRED> InstanceName => Str
 
-The Lightsail instance name of the public port(s) you are setting.
+The name of the instance for which to open ports.
 
 
 
 =head2 B<REQUIRED> PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>]
 
-Specifies information about the public port(s).
+An array of objects to describe the ports to open for the specified
+instance.
 
 
 

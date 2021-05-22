@@ -31,7 +31,7 @@ The name of the source instance or disk for the automatic snapshots.
 
 The resource type (e.g., C<Instance> or C<Disk>).
 
-Valid values are: C<"Instance">, C<"StaticIp">, C<"KeyPair">, C<"InstanceSnapshot">, C<"Domain">, C<"PeeredVpc">, C<"LoadBalancer">, C<"LoadBalancerTlsCertificate">, C<"Disk">, C<"DiskSnapshot">, C<"RelationalDatabase">, C<"RelationalDatabaseSnapshot">, C<"ExportSnapshotRecord">, C<"CloudFormationStackRecord">
+Valid values are: C<"ContainerService">, C<"Instance">, C<"StaticIp">, C<"KeyPair">, C<"InstanceSnapshot">, C<"Domain">, C<"PeeredVpc">, C<"LoadBalancer">, C<"LoadBalancerTlsCertificate">, C<"Disk">, C<"DiskSnapshot">, C<"RelationalDatabase">, C<"RelationalDatabaseSnapshot">, C<"ExportSnapshotRecord">, C<"CloudFormationStackRecord">, C<"Alarm">, C<"ContactMethod">, C<"Distribution">, C<"Certificate">
 =head2 _request_id => Str
 
 

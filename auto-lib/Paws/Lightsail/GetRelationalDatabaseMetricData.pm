@@ -85,13 +85,81 @@ UTC, then you input C<1538424000> as the end time.
 
 =head2 B<REQUIRED> MetricName => Str
 
-The name of the metric data to return.
+The metric for which you want to return information.
+
+Valid relational database metric names are listed below, along with the
+most useful C<statistics> to include in your request, and the published
+C<unit> value. All relational database metric data is available in
+1-minute (60 seconds) granularity.
+
+=over
+
+=item *
+
+B<C<CPUUtilization> > - The percentage of CPU utilization currently in
+use on the database.
+
+C<Statistics>: The most useful statistics are C<Maximum> and
+C<Average>.
+
+C<Unit>: The published unit is C<Percent>.
+
+=item *
+
+B<C<DatabaseConnections> > - The number of database connections in use.
+
+C<Statistics>: The most useful statistics are C<Maximum> and C<Sum>.
+
+C<Unit>: The published unit is C<Count>.
+
+=item *
+
+B<C<DiskQueueDepth> > - The number of outstanding IOs (read/write
+requests) that are waiting to access the disk.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Count>.
+
+=item *
+
+B<C<FreeStorageSpace> > - The amount of available storage space.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Bytes>.
+
+=item *
+
+B<C<NetworkReceiveThroughput> > - The incoming (Receive) network
+traffic on the database, including both customer database traffic and
+AWS traffic used for monitoring and replication.
+
+C<Statistics>: The most useful statistic is C<Average>.
+
+C<Unit>: The published unit is C<Bytes/Second>.
+
+=item *
+
+B<C<NetworkTransmitThroughput> > - The outgoing (Transmit) network
+traffic on the database, including both customer database traffic and
+AWS traffic used for monitoring and replication.
+
+C<Statistics>: The most useful statistic is C<Average>.
+
+C<Unit>: The published unit is C<Bytes/Second>.
+
+=back
+
 
 Valid values are: C<"CPUUtilization">, C<"DatabaseConnections">, C<"DiskQueueDepth">, C<"FreeStorageSpace">, C<"NetworkReceiveThroughput">, C<"NetworkTransmitThroughput">
 
 =head2 B<REQUIRED> Period => Int
 
 The granularity, in seconds, of the returned data points.
+
+All relational database metric data is available in 1-minute (60
+seconds) granularity.
 
 
 
@@ -127,13 +195,51 @@ PM UTC, then you input C<1538424000> as the start time.
 
 =head2 B<REQUIRED> Statistics => ArrayRef[Str|Undef]
 
-The array of statistics for your metric data request.
+The statistic for the metric.
+
+The following statistics are available:
+
+=over
+
+=item *
+
+C<Minimum> - The lowest value observed during the specified period. Use
+this value to determine low volumes of activity for your application.
+
+=item *
+
+C<Maximum> - The highest value observed during the specified period.
+Use this value to determine high volumes of activity for your
+application.
+
+=item *
+
+C<Sum> - All values submitted for the matching metric added together.
+You can use this statistic to determine the total volume of a metric.
+
+=item *
+
+C<Average> - The value of Sum / SampleCount during the specified
+period. By comparing this statistic with the Minimum and Maximum
+values, you can determine the full scope of a metric and how close the
+average use is to the Minimum and Maximum values. This comparison helps
+you to know when to increase or decrease your resources.
+
+=item *
+
+C<SampleCount> - The count, or number, of data points used for the
+statistical calculation.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> Unit => Str
 
-The unit for the metric data request.
+The unit for the metric data request. Valid units depend on the metric
+data being requested. For the valid units with each available metric,
+see the C<metricName> parameter.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

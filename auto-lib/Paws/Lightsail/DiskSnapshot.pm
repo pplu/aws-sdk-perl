@@ -105,7 +105,7 @@ The name of the disk snapshot (e.g., C<my-disk-snapshot>).
 
 =head2 Progress => Str
 
-The progress of the disk snapshot operation.
+The progress of the snapshot.
 
 
 =head2 ResourceType => Str

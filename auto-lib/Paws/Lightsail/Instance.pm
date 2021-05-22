@@ -8,7 +8,8 @@ package Paws::Lightsail::Instance;
   has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Hardware => (is => 'ro', isa => 'Paws::Lightsail::InstanceHardware', request_name => 'hardware', traits => ['NameInRequest']);
-  has Ipv6Address => (is => 'ro', isa => 'Str', request_name => 'ipv6Address', traits => ['NameInRequest']);
+  has IpAddressType => (is => 'ro', isa => 'Str', request_name => 'ipAddressType', traits => ['NameInRequest']);
+  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv6Addresses', traits => ['NameInRequest']);
   has IsStaticIp => (is => 'ro', isa => 'Bool', request_name => 'isStaticIp', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -85,7 +86,8 @@ The bundle for the instance (e.g., C<micro_1_0>).
 
 =head2 CreatedAt => Str
 
-The timestamp when the instance was created (e.g., C<1479734909.17>).
+The timestamp when the instance was created (e.g., C<1479734909.17>) in
+Unix time format.
 
 
 =head2 Hardware => L<Paws::Lightsail::InstanceHardware>
@@ -93,9 +95,17 @@ The timestamp when the instance was created (e.g., C<1479734909.17>).
 The size of the vCPU and the amount of RAM for the instance.
 
 
-=head2 Ipv6Address => Str
+=head2 IpAddressType => Str
 
-The IPv6 address of the instance.
+The IP address type of the instance.
+
+The possible values are C<ipv4> for IPv4 only, and C<dualstack> for
+IPv4 and IPv6.
+
+
+=head2 Ipv6Addresses => ArrayRef[Str|Undef]
+
+The IPv6 addresses of the instance.
 
 
 =head2 IsStaticIp => Bool

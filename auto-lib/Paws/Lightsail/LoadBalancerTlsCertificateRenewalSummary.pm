@@ -37,6 +37,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::
 Contains information about the status of Lightsail's managed renewal
 for the certificate.
 
+The renewal status of the certificate.
+
+The following renewal status are possible:
+
+=over
+
+=item *
+
+B<C<PendingAutoRenewal> > - Lightsail is attempting to automatically
+validate the domain names in the certificate. No further action is
+required.
+
+=item *
+
+B<C<PendingValidation> > - Lightsail couldn't automatically validate
+one or more domain names in the certificate. You must take action to
+validate these domain names or the certificate won't be renewed. If you
+used DNS validation, check to make sure your certificate's domain
+validation records exist in your domain's DNS, and that your
+certificate remains in use.
+
+=item *
+
+B<C<Success> > - All domain names in the certificate are validated, and
+Lightsail renewed the certificate. No further action is required.
+
+=item *
+
+B<C<Failed> > - One or more domain names were not validated before the
+certificate expired, and Lightsail did not renew the certificate. You
+can request a new certificate using the C<CreateCertificate> action.
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -50,8 +85,39 @@ RequestCertificate request.
 
 =head2 RenewalStatus => Str
 
-The status of Lightsail's managed renewal of the certificate. Valid
-values are listed below.
+The renewal status of the certificate.
+
+The following renewal status are possible:
+
+=over
+
+=item *
+
+B<C<PendingAutoRenewal> > - Lightsail is attempting to automatically
+validate the domain names of the certificate. No further action is
+required.
+
+=item *
+
+B<C<PendingValidation> > - Lightsail couldn't automatically validate
+one or more domain names of the certificate. You must take action to
+validate these domain names or the certificate won't be renewed. Check
+to make sure your certificate's domain validation records exist in your
+domain's DNS, and that your certificate remains in use.
+
+=item *
+
+B<C<Success> > - All domain names in the certificate are validated, and
+Lightsail renewed the certificate. No further action is required.
+
+=item *
+
+B<C<Failed> > - One or more domain names were not validated before the
+certificate expired, and Lightsail did not renew the certificate. You
+can request a new certificate using the C<CreateCertificate> action.
+
+=back
+
 
 
 

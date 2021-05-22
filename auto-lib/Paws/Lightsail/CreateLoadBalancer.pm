@@ -6,6 +6,7 @@ package Paws::Lightsail::CreateLoadBalancer;
   has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName' );
   has HealthCheckPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'healthCheckPath' );
   has InstancePort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instancePort' , required => 1);
+  has IpAddressType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipAddressType' );
   has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
@@ -40,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateDomainName       => 'MyDomainName',             # OPTIONAL
       CertificateName             => 'MyResourceName',           # OPTIONAL
       HealthCheckPath             => 'Mystring',                 # OPTIONAL
+      IpAddressType               => 'dualstack',                # OPTIONAL
       Tags                        => [
         {
           Key   => 'MyTagKey',                                   # OPTIONAL
@@ -105,6 +107,17 @@ The instance port where you're creating your load balancer.
 
 
 
+=head2 IpAddressType => Str
+
+The IP address type for the load balancer.
+
+The possible values are C<ipv4> for IPv4 only, and C<dualstack> for
+IPv4 and IPv6.
+
+The default value is C<dualstack>.
+
+Valid values are: C<"dualstack">, C<"ipv4">
+
 =head2 B<REQUIRED> LoadBalancerName => Str
 
 The name of your load balancer.
@@ -115,8 +128,7 @@ The name of your load balancer.
 
 The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the C<tag resource>
-operation.
+Use the C<TagResource> action to tag a resource after it's created.
 
 
 

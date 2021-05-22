@@ -53,7 +53,7 @@ The ID of the domain recordset entry.
 When C<true>, specifies whether the domain entry is an alias used by
 the Lightsail load balancer. You can include an alias (A type) record
 in your request, which points to a load balancer DNS name and routes
-traffic to your load balancer
+traffic to your load balancer.
 
 
 =head2 Name => Str

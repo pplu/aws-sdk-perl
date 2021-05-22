@@ -72,13 +72,135 @@ The name of the instance for which you want to get metrics data.
 
 =head2 B<REQUIRED> MetricName => Str
 
-The metric name to get data about.
+The metric for which you want to return information.
 
-Valid values are: C<"CPUUtilization">, C<"NetworkIn">, C<"NetworkOut">, C<"StatusCheckFailed">, C<"StatusCheckFailed_Instance">, C<"StatusCheckFailed_System">
+Valid instance metric names are listed below, along with the most
+useful C<statistics> to include in your request, and the published
+C<unit> value.
+
+=over
+
+=item *
+
+B<C<BurstCapacityPercentage> > - The percentage of CPU performance
+available for your instance to burst above its baseline. Your instance
+continuously accrues and consumes burst capacity. Burst capacity stops
+accruing when your instance's C<BurstCapacityPercentage> reaches 100%.
+For more information, see Viewing instance burst capacity in Amazon
+Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity).
+
+C<Statistics>: The most useful statistics are C<Maximum> and
+C<Average>.
+
+C<Unit>: The published unit is C<Percent>.
+
+=item *
+
+B<C<BurstCapacityTime> > - The available amount of time for your
+instance to burst at 100% CPU utilization. Your instance continuously
+accrues and consumes burst capacity. Burst capacity time stops accruing
+when your instance's C<BurstCapacityPercentage> metric reaches 100%.
+
+Burst capacity time is consumed at the full rate only when your
+instance operates at 100% CPU utilization. For example, if your
+instance operates at 50% CPU utilization in the burstable zone for a
+5-minute period, then it consumes CPU burst capacity minutes at a 50%
+rate in that period. Your instance consumed 2 minutes and 30 seconds of
+CPU burst capacity minutes in the 5-minute period. For more
+information, see Viewing instance burst capacity in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity).
+
+C<Statistics>: The most useful statistics are C<Maximum> and
+C<Average>.
+
+C<Unit>: The published unit is C<Seconds>.
+
+=item *
+
+B<C<CPUUtilization> > - The percentage of allocated compute units that
+are currently in use on the instance. This metric identifies the
+processing power to run the applications on the instance. Tools in your
+operating system can show a lower percentage than Lightsail when the
+instance is not allocated a full processor core.
+
+C<Statistics>: The most useful statistics are C<Maximum> and
+C<Average>.
+
+C<Unit>: The published unit is C<Percent>.
+
+=item *
+
+B<C<NetworkIn> > - The number of bytes received on all network
+interfaces by the instance. This metric identifies the volume of
+incoming network traffic to the instance. The number reported is the
+number of bytes received during the period. Because this metric is
+reported in 5-minute intervals, divide the reported number by 300 to
+find Bytes/second.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Bytes>.
+
+=item *
+
+B<C<NetworkOut> > - The number of bytes sent out on all network
+interfaces by the instance. This metric identifies the volume of
+outgoing network traffic from the instance. The number reported is the
+number of bytes sent during the period. Because this metric is reported
+in 5-minute intervals, divide the reported number by 300 to find
+Bytes/second.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Bytes>.
+
+=item *
+
+B<C<StatusCheckFailed> > - Reports whether the instance passed or
+failed both the instance status check and the system status check. This
+metric can be either 0 (passed) or 1 (failed). This metric data is
+available in 1-minute (60 seconds) granularity.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Count>.
+
+=item *
+
+B<C<StatusCheckFailed_Instance> > - Reports whether the instance passed
+or failed the instance status check. This metric can be either 0
+(passed) or 1 (failed). This metric data is available in 1-minute (60
+seconds) granularity.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Count>.
+
+=item *
+
+B<C<StatusCheckFailed_System> > - Reports whether the instance passed
+or failed the system status check. This metric can be either 0 (passed)
+or 1 (failed). This metric data is available in 1-minute (60 seconds)
+granularity.
+
+C<Statistics>: The most useful statistic is C<Sum>.
+
+C<Unit>: The published unit is C<Count>.
+
+=back
+
+
+Valid values are: C<"CPUUtilization">, C<"NetworkIn">, C<"NetworkOut">, C<"StatusCheckFailed">, C<"StatusCheckFailed_Instance">, C<"StatusCheckFailed_System">, C<"BurstCapacityTime">, C<"BurstCapacityPercentage">
 
 =head2 B<REQUIRED> Period => Int
 
 The granularity, in seconds, of the returned data points.
+
+The C<StatusCheckFailed>, C<StatusCheckFailed_Instance>, and
+C<StatusCheckFailed_System> instance metric data is available in
+1-minute (60 seconds) granularity. All other instance metric data is
+available in 5-minute (300 seconds) granularity.
 
 
 
@@ -90,13 +212,51 @@ The start time of the time period.
 
 =head2 B<REQUIRED> Statistics => ArrayRef[Str|Undef]
 
-The instance statistics.
+The statistic for the metric.
+
+The following statistics are available:
+
+=over
+
+=item *
+
+C<Minimum> - The lowest value observed during the specified period. Use
+this value to determine low volumes of activity for your application.
+
+=item *
+
+C<Maximum> - The highest value observed during the specified period.
+Use this value to determine high volumes of activity for your
+application.
+
+=item *
+
+C<Sum> - All values submitted for the matching metric added together.
+You can use this statistic to determine the total volume of a metric.
+
+=item *
+
+C<Average> - The value of Sum / SampleCount during the specified
+period. By comparing this statistic with the Minimum and Maximum
+values, you can determine the full scope of a metric and how close the
+average use is to the Minimum and Maximum values. This comparison helps
+you to know when to increase or decrease your resources.
+
+=item *
+
+C<SampleCount> - The count, or number, of data points used for the
+statistical calculation.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> Unit => Str
 
-The unit. The list of valid values is below.
+The unit for the metric data request. Valid units depend on the metric
+data being requested. For the valid units to specify with each
+available metric, see the C<metricName> parameter.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

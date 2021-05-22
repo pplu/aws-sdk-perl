@@ -98,8 +98,7 @@ The size of the disk in GB (e.g., C<32>).
 
 The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the C<tag resource>
-operation.
+Use the C<TagResource> action to tag a resource after it's created.
 
 
 

@@ -7,6 +7,7 @@ package Paws::Lightsail::CreateInstancesFromSnapshot;
   has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
   has InstanceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceSnapshotName' );
+  has IpAddressType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipAddressType' );
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
   has RestoreDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreDate' );
   has SourceInstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceInstanceName' );
@@ -62,6 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
       },        # OPTIONAL
       InstanceSnapshotName => 'MyResourceName',    # OPTIONAL
+      IpAddressType        => 'dualstack',         # OPTIONAL
       KeyPairName          => 'MyResourceName',    # OPTIONAL
       RestoreDate          => 'Mystring',          # OPTIONAL
       SourceInstanceName   => 'Mystring',          # OPTIONAL
@@ -145,6 +147,17 @@ name> parameters are mutually exclusive.
 
 
 
+=head2 IpAddressType => Str
+
+The IP address type for the instance.
+
+The possible values are C<ipv4> for IPv4 only, and C<dualstack> for
+IPv4 and IPv6.
+
+The default value is C<dualstack>.
+
+Valid values are: C<"dualstack">, C<"ipv4">
+
 =head2 KeyPairName => Str
 
 The name for your key pair.
@@ -212,8 +225,7 @@ automatic snapshot. For more information, see the Lightsail Dev Guide
 
 The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the C<tag resource>
-operation.
+Use the C<TagResource> action to tag a resource after it's created.
 
 
 

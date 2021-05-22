@@ -16,8 +16,9 @@ Paws::Lightsail::CreateRelationalDatabaseFromSnapshotResult
 
 =head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
 
-An object describing the result of your create relational database from
-snapshot request.
+An array of objects that describe the result of the action, such as the
+status of the request, the timestamp of the request, and the resources
+affected by the request.
 
 
 =head2 _request_id => Str
