@@ -4,7 +4,7 @@ package Paws::Pinpoint::CampaignEmailMessage;
   has Body => (is => 'ro', isa => 'Str');
   has FromAddress => (is => 'ro', isa => 'Str');
   has HtmlBody => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str', required => 1);
+  has Title => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -60,7 +60,7 @@ The body of the email, in HTML format, for recipients whose email
 clients render HTML content.
 
 
-=head2 B<REQUIRED> Title => Str
+=head2 Title => Str
 
 The subject line, or title, of the email.
 

@@ -46,10 +46,13 @@ Specifies the configuration and other settings for a message.
 =head2 Addresses => L<Paws::Pinpoint::MapOfAddressConfiguration>
 
 A map of key-value pairs, where each key is an address and each value
-is an AddressConfiguration object. An address can be a push
-notification token, a phone number, or an email address. You can use an
-AddressConfiguration object to tailor the message for an address by
-specifying settings such as content overrides and message variables.
+is an AddressConfiguration
+(https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-addressconfiguration)
+object. An address can be a push notification token, a phone number, or
+an email address. You can use an AddressConfiguration
+(https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-addressconfiguration)
+object to tailor the message for an address by specifying settings such
+as content overrides and message variables.
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
@@ -63,9 +66,12 @@ receipt event attributes.
 =head2 Endpoints => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
 
 A map of key-value pairs, where each key is an endpoint ID and each
-value is an EndpointSendConfiguration object. You can use an
-EndpointSendConfiguration object to tailor the message for an endpoint
-by specifying settings such as content overrides and message variables.
+value is an EndpointSendConfiguration
+(https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-endpointsendconfiguration)
+object. You can use an EndpointSendConfiguration
+(https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-endpointsendconfiguration)
+object to tailor the message for an endpoint by specifying settings
+such as content overrides and message variables.
 
 
 =head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>

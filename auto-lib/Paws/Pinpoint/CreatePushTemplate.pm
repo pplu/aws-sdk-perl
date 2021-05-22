@@ -81,7 +81,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Title             => 'My__string',    # OPTIONAL
           Url               => 'My__string',    # OPTIONAL
         },    # OPTIONAL
-        Tags => {
+        RecommenderId => 'My__string',    # OPTIONAL
+        Tags          => {
           'My__string' => 'My__string',    # key: OPTIONAL, value: OPTIONAL
         },    # OPTIONAL
         TemplateDescription => 'My__string',    # OPTIONAL

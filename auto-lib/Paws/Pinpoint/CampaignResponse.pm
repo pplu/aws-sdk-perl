@@ -5,6 +5,7 @@ package Paws::Pinpoint::CampaignResponse;
   has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
+  has CustomDeliveryConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::CustomDeliveryConfiguration');
   has DefaultState => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
   has Description => (is => 'ro', isa => 'Str');
   has HoldoutPercent => (is => 'ro', isa => 'Int');
@@ -82,11 +83,16 @@ The Amazon Resource Name (ARN) of the campaign.
 The date, in ISO 8601 format, when the campaign was created.
 
 
+=head2 CustomDeliveryConfiguration => L<Paws::Pinpoint::CustomDeliveryConfiguration>
+
+The delivery configuration settings for sending the campaign through a
+custom channel.
+
+
 =head2 DefaultState => L<Paws::Pinpoint::CampaignState>
 
 The current status of the campaign's default treatment. This value
-exists only for campaigns that have more than one treatment, to support
-A/B testing.
+exists only for campaigns that have more than one treatment.
 
 
 =head2 Description => Str
@@ -103,7 +109,8 @@ receive messages from the campaign.
 =head2 Hook => L<Paws::Pinpoint::CampaignHook>
 
 The settings for the AWS Lambda function to use as a code hook for the
-campaign.
+campaign. You can use this hook to customize the segment that's used by
+the campaign.
 
 
 =head2 B<REQUIRED> Id => Str
@@ -172,14 +179,14 @@ The message template thatE<rsquo>s used for the campaign.
 
 =head2 TreatmentDescription => Str
 
-The custom description of a variation of the campaign that's used for
-A/B testing.
+The custom description of the default treatment for the campaign.
 
 
 =head2 TreatmentName => Str
 
-The custom name of a variation of the campaign that's used for A/B
-testing.
+The custom name of the default treatment for the campaign, if the
+campaign has multiple treatments. A I<treatment> is a variation of a
+campaign that's used for A/B testing.
 
 
 =head2 Version => Int

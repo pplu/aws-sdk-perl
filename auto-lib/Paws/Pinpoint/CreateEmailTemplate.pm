@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EmailTemplateRequest => {
         DefaultSubstitutions => 'My__string',    # OPTIONAL
         HtmlPart             => 'My__string',    # OPTIONAL
+        RecommenderId        => 'My__string',    # OPTIONAL
         Subject              => 'My__string',    # OPTIONAL
         Tags                 => {
           'My__string' => 'My__string',    # key: OPTIONAL, value: OPTIONAL

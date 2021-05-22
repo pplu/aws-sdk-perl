@@ -3,6 +3,7 @@ package Paws::Pinpoint::EmailTemplateRequest;
   use Moose;
   has DefaultSubstitutions => (is => 'ro', isa => 'Str');
   has HtmlPart => (is => 'ro', isa => 'Str');
+  has RecommenderId => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TemplateDescription => (is => 'ro', isa => 'Str');
@@ -61,6 +62,15 @@ The message body, in HTML format, to use in email messages that are
 based on the message template. We recommend using HTML format for email
 clients that render HTML content. You can include links, formatted
 text, and more in an HTML message.
+
+
+=head2 RecommenderId => Str
+
+The unique identifier for the recommender model to use for the message
+template. Amazon Pinpoint uses this value to determine how to retrieve
+and process data from a recommender model when it sends messages that
+use the template, if the template contains message variables for
+recommendation data.
 
 
 =head2 Subject => Str

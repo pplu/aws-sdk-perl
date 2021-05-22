@@ -2,6 +2,7 @@
 package Paws::Pinpoint::StartCondition;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has EventStartCondition => (is => 'ro', isa => 'Paws::Pinpoint::EventStartCondition');
   has SegmentStartCondition => (is => 'ro', isa => 'Paws::Pinpoint::SegmentCondition');
 
 1;
@@ -44,6 +45,11 @@ journey.
 =head2 Description => Str
 
 The custom description of the condition.
+
+
+=head2 EventStartCondition => L<Paws::Pinpoint::EventStartCondition>
+
+
 
 
 =head2 SegmentStartCondition => L<Paws::Pinpoint::SegmentCondition>

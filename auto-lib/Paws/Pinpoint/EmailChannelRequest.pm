@@ -45,8 +45,9 @@ application.
 
 =head2 ConfigurationSet => Str
 
-The configuration set that you want to apply to email that you send
-through the channel by using the Amazon Pinpoint Email API.
+The Amazon SES configuration set
+(https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html)
+that you want to apply to messages that you send through the channel.
 
 
 =head2 Enabled => Bool

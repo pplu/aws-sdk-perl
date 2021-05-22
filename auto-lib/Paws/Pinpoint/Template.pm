@@ -56,7 +56,7 @@ version identifiers for a template, use the
 Template Versions resource.
 
 If you don't specify a value for this property, Amazon Pinpoint uses
-the I<active> version of the template. The I<active> version is
+the I<active version> of the template. The I<active version> is
 typically the version of a template that's been most recently reviewed
 and approved for use, depending on your workflow. It isn't necessarily
 the latest version of a template.

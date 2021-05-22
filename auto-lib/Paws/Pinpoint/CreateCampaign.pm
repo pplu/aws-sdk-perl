@@ -34,7 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       WriteCampaignRequest => {
         AdditionalTreatments => [
           {
-            SizePercent          => 1,    # OPTIONAL
+            SizePercent                 => 1,    # OPTIONAL
+            CustomDeliveryConfiguration => {
+              DeliveryUri   => 'My__string',
+              EndpointTypes => [
+                'PUSH',
+                ... # values: PUSH, GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM
+              ],    # OPTIONAL
+            },    # OPTIONAL
             MessageConfiguration => {
               ADMMessage => {
                 Action =>
@@ -81,6 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
+              CustomMessage  => { Data => 'My__string', },    # OPTIONAL
               DefaultMessage => {
                 Action =>
                   'OPEN_APP',    # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -97,10 +105,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Url               => 'My__string',
               },    # OPTIONAL
               EmailMessage => {
-                Title       => 'My__string',
                 Body        => 'My__string',
                 FromAddress => 'My__string',
                 HtmlBody    => 'My__string',
+                Title       => 'My__string',
               },    # OPTIONAL
               GCMMessage => {
                 Action =>
@@ -119,9 +127,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               SMSMessage => {
                 Body        => 'My__string',
+                EntityId    => 'My__string',
                 MessageType => 'TRANSACTIONAL'
                 ,    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
-                SenderId => 'My__string',
+                OriginationNumber => 'My__string',
+                SenderId          => 'My__string',
+                TemplateId        => 'My__string',
               },    # OPTIONAL
             },    # OPTIONAL
             Schedule => {
@@ -131,9 +142,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Dimensions => {
                   Attributes => {
                     'My__string' => {
-                      Values => [ 'My__string', ... ],
-                      AttributeType =>
-                        'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                      Values        => [ 'My__string', ... ],
+                      AttributeType => 'INCLUSIVE'
+                      , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                     },
                   },    # OPTIONAL
                   EventType => {
@@ -184,6 +195,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],        # OPTIONAL
+        CustomDeliveryConfiguration => {
+          DeliveryUri   => 'My__string',
+          EndpointTypes => [
+            'PUSH',
+            ... # values: PUSH, GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM
+          ],    # OPTIONAL
+        },    # OPTIONAL
         Description    => 'My__string',
         HoldoutPercent => 1,              # OPTIONAL
         Hook           => {
@@ -241,6 +259,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
+          CustomMessage  => { Data => 'My__string', },    # OPTIONAL
           DefaultMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',
@@ -256,10 +275,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url               => 'My__string',
           },    # OPTIONAL
           EmailMessage => {
-            Title       => 'My__string',
             Body        => 'My__string',
             FromAddress => 'My__string',
             HtmlBody    => 'My__string',
+            Title       => 'My__string',
           },    # OPTIONAL
           GCMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -276,10 +295,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url               => 'My__string',
           },    # OPTIONAL
           SMSMessage => {
-            Body => 'My__string',
+            Body     => 'My__string',
+            EntityId => 'My__string',
             MessageType =>
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
-            SenderId => 'My__string',
+            OriginationNumber => 'My__string',
+            SenderId          => 'My__string',
+            TemplateId        => 'My__string',
           },    # OPTIONAL
         },    # OPTIONAL
         Name     => 'My__string',
@@ -290,9 +312,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Dimensions => {
               Attributes => {
                 'My__string' => {
-                  Values => [ 'My__string', ... ],
-                  AttributeType =>
-                    'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                  Values        => [ 'My__string', ... ],
+                  AttributeType => 'INCLUSIVE'
+                  , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                 },
               },    # OPTIONAL
               EventType => {

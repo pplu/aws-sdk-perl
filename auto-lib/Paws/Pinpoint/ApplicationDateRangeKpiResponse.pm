@@ -64,7 +64,7 @@ indicator (KPI)>, that the data was retrieved for. This value describes
 the associated metric and consists of two or more terms, which are
 comprised of lowercase alphanumeric characters, separated by a hyphen.
 For a list of possible values, see the Amazon Pinpoint Developer Guide
-(https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+(https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 
 
 =head2 B<REQUIRED> KpiResult => L<Paws::Pinpoint::BaseKpiResult>

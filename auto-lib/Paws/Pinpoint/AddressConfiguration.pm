@@ -58,9 +58,11 @@ The channel to use when sending the message.
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
 An object that maps custom attributes to attributes for the address and
-is attached to the message. For a push notification, this payload is
-added to the data.pinpoint object. For an email or text message, this
-payload is added to email/SMS delivery receipt event attributes.
+is attached to the message. Attribute names are case sensitive.
+
+For a push notification, this payload is added to the data.pinpoint
+object. For an email or text message, this payload is added to
+email/SMS delivery receipt event attributes.
 
 
 =head2 RawContent => Str

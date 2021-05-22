@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SMSTemplateRequest => {
         Body                 => 'My__string',    # OPTIONAL
         DefaultSubstitutions => 'My__string',    # OPTIONAL
+        RecommenderId        => 'My__string',    # OPTIONAL
         Tags                 => {
           'My__string' => 'My__string',    # key: OPTIONAL, value: OPTIONAL
         },    # OPTIONAL

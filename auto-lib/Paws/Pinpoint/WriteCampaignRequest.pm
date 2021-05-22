@@ -2,6 +2,7 @@
 package Paws::Pinpoint::WriteCampaignRequest;
   use Moose;
   has AdditionalTreatments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::WriteTreatmentResource]');
+  has CustomDeliveryConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::CustomDeliveryConfiguration');
   has Description => (is => 'ro', isa => 'Str');
   has HoldoutPercent => (is => 'ro', isa => 'Int');
   has Hook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
@@ -58,6 +59,13 @@ An array of requests that defines additional treatments for the
 campaign, in addition to the default treatment for the campaign.
 
 
+=head2 CustomDeliveryConfiguration => L<Paws::Pinpoint::CustomDeliveryConfiguration>
+
+The delivery configuration settings for sending the campaign through a
+custom channel. This object is required if the MessageConfiguration
+object for the campaign specifies a CustomMessage object.
+
+
 =head2 Description => Str
 
 A custom description of the campaign.
@@ -71,14 +79,15 @@ receive messages from the campaign.
 
 =head2 Hook => L<Paws::Pinpoint::CampaignHook>
 
-The settings for the AWS Lambda function to use as a code hook for the
-campaign.
+The settings for the AWS Lambda function to invoke as a code hook for
+the campaign. You can use this hook to customize the segment that's
+used by the campaign.
 
 
 =head2 IsPaused => Bool
 
 Specifies whether to pause the campaign. A paused campaign doesn't run
-unless you resume it by setting this value to false.
+unless you resume it by changing this value to false.
 
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
@@ -93,7 +102,7 @@ The message configuration settings for the campaign.
 
 =head2 Name => Str
 
-The custom name of the campaign.
+A custom name for the campaign.
 
 
 =head2 Schedule => L<Paws::Pinpoint::Schedule>
@@ -125,13 +134,14 @@ The message template to use for the campaign.
 
 =head2 TreatmentDescription => Str
 
-A custom description of a variation of the campaign to use for A/B
-testing.
+A custom description of the default treatment for the campaign.
 
 
 =head2 TreatmentName => Str
 
-The custom name of a variation of the campaign to use for A/B testing.
+A custom name of the default treatment for the campaign, if the
+campaign has multiple treatments. A I<treatment> is a variation of a
+campaign that's used for A/B testing.
 
 
 

@@ -40,8 +40,8 @@ Changes the status of a journey.
 
 =head2 State => Str
 
-The status of the journey. Currently, the only supported value is
-CANCELLED.
+The status of the journey. Currently, Supported values are ACTIVE,
+PAUSED, and CANCELLED
 
 If you cancel a journey, Amazon Pinpoint continues to perform
 activities that are currently in progress, until those activities are
@@ -53,6 +53,14 @@ After you cancel a journey, you can't add, change, or remove any
 activities from the journey. In addition, Amazon Pinpoint stops
 evaluating the journey and doesn't perform any activities that haven't
 started.
+
+When the journey is paused, Amazon Pinpoint continues to perform
+activities that are currently in progress, until those activities are
+complete. Endpoints will stop entering journeys when the journey is
+paused and will resume entering the journey after the journey is
+resumed. For wait activities, wait time is paused when the journey is
+paused. Currently, PAUSED only supports journeys with a segment refresh
+interval.
 
 
 

@@ -2,11 +2,14 @@
 package Paws::Pinpoint::Activity;
   use Moose;
   has ConditionalSplit => (is => 'ro', isa => 'Paws::Pinpoint::ConditionalSplitActivity');
+  has CUSTOM => (is => 'ro', isa => 'Paws::Pinpoint::CustomMessageActivity');
   has Description => (is => 'ro', isa => 'Str');
   has EMAIL => (is => 'ro', isa => 'Paws::Pinpoint::EmailMessageActivity');
   has Holdout => (is => 'ro', isa => 'Paws::Pinpoint::HoldoutActivity');
   has MultiCondition => (is => 'ro', isa => 'Paws::Pinpoint::MultiConditionalSplitActivity');
+  has PUSH => (is => 'ro', isa => 'Paws::Pinpoint::PushMessageActivity');
   has RandomSplit => (is => 'ro', isa => 'Paws::Pinpoint::RandomSplitActivity');
+  has SMS => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessageActivity');
   has Wait => (is => 'ro', isa => 'Paws::Pinpoint::WaitActivity');
 
 1;
@@ -52,6 +55,12 @@ participants down one of two paths in a journey, based on conditions
 that you specify.
 
 
+=head2 CUSTOM => L<Paws::Pinpoint::CustomMessageActivity>
+
+The settings for a custom message activity. This type of activity calls
+an AWS Lambda function or web hook that sends messages to participants.
+
+
 =head2 Description => Str
 
 The custom description of the activity.
@@ -77,11 +86,23 @@ default I<Else> path) in a journey, based on conditions that you
 specify.
 
 
+=head2 PUSH => L<Paws::Pinpoint::PushMessageActivity>
+
+The settings for a push notification activity. This type of activity
+sends a push notification to participants.
+
+
 =head2 RandomSplit => L<Paws::Pinpoint::RandomSplitActivity>
 
 The settings for a random split activity. This type of activity
 randomly sends specified percentages of participants down one of as
 many as five paths in a journey, based on conditions that you specify.
+
+
+=head2 SMS => L<Paws::Pinpoint::SMSMessageActivity>
+
+The settings for an SMS activity. This type of activity sends a text
+message to participants.
 
 
 =head2 Wait => L<Paws::Pinpoint::WaitActivity>

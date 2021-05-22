@@ -52,6 +52,8 @@ message body.
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
 A map of custom attributes to attach to the message for the address.
+Attribute names are case sensitive.
+
 For a push notification, this payload is added to the data.pinpoint
 object. For an email or text message, this payload is added to
 email/SMS delivery receipt event attributes.

@@ -9,10 +9,12 @@ package Paws::Pinpoint::WriteJourneyRequest;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
   has RefreshFrequency => (is => 'ro', isa => 'Str');
+  has RefreshOnSegmentUpdate => (is => 'ro', isa => 'Bool');
   has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::JourneySchedule');
   has StartActivity => (is => 'ro', isa => 'Str');
   has StartCondition => (is => 'ro', isa => 'Paws::Pinpoint::StartCondition');
   has State => (is => 'ro', isa => 'Str');
+  has WaitForQuietTime => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -33,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::WriteJourneyRequest object:
 
-  $service_obj->Method(Att1 => { Activities => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { Activities => $value, ..., WaitForQuietTime => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,7 +57,7 @@ A map that contains a set of Activity objects, one object for each
 activity in the journey. For each Activity object, the key is the
 unique identifier (string) for an activity and the value is the
 settings for the activity. An activity identifier can contain a maximum
-of 128 characters. The characters must be alphanumeric characters.
+of 100 characters. The characters must be alphanumeric characters.
 
 
 =head2 CreationDate => Str
@@ -124,6 +126,11 @@ The frequency with which Amazon Pinpoint evaluates segment and event
 data for the journey, as a duration in ISO 8601 format.
 
 
+=head2 RefreshOnSegmentUpdate => Bool
+
+Specifies whether a journey should be refreshed on segment update.
+
+
 =head2 Schedule => L<Paws::Pinpoint::JourneySchedule>
 
 The schedule settings for the journey.
@@ -131,9 +138,9 @@ The schedule settings for the journey.
 
 =head2 StartActivity => Str
 
-The unique identifier for the first activity in the journey. An
-activity identifier can contain a maximum of 128 characters. The
-characters must be alphanumeric characters.
+The unique identifier for the first activity in the journey. The
+identifier for this activity can contain a maximum of 128 characters.
+The characters must be alphanumeric characters.
 
 
 =head2 StartCondition => L<Paws::Pinpoint::StartCondition>
@@ -160,10 +167,17 @@ remove activities from it.
 
 =back
 
-The CANCELLED, COMPLETED, and CLOSED values are not supported in
-requests to create or update a journey. To cancel a journey, use the
+PAUSED, CANCELLED, COMPLETED, and CLOSED states are not supported in
+requests to create or update a journey. To cancel, pause, or resume a
+journey, use the
 
 Journey State resource.
+
+
+=head2 WaitForQuietTime => Bool
+
+Specifies whether endpoints in quiet hours should enter a wait till the
+end of their quiet hours.
 
 
 

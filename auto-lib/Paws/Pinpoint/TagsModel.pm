@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::T
 =head1 DESCRIPTION
 
 Specifies the tags (keys and values) for an application, campaign,
-journey, message template, or segment.
+message template, or segment.
 
 =head1 ATTRIBUTES
 
@@ -42,8 +42,8 @@ journey, message template, or segment.
 =head2 B<REQUIRED> Tags => L<Paws::Pinpoint::MapOf__string>
 
 A string-to-string map of key-value pairs that defines the tags for an
-application, campaign, journey, message template, or segment. Each of
-these resources can have a maximum of 50 tags.
+application, campaign, message template, or segment. Each of these
+resources can have a maximum of 50 tags.
 
 Each tag consists of a required tag key and an associated tag value.
 The maximum length of a tag key is 128 characters. The maximum length

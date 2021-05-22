@@ -100,8 +100,9 @@ messages from the campaign, even if quiet time is enabled.
 
 =head2 B<REQUIRED> StartTime => Str
 
-The scheduled time, in ISO 8601 format, when the campaign began or will
-begin.
+The scheduled time when the campaign began or will begin. Valid values
+are: IMMEDIATE, to start the campaign immediately; or, a specific time
+in ISO 8601 format.
 
 
 =head2 Timezone => Str
