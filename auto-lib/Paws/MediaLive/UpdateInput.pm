@@ -2,6 +2,7 @@
 package Paws::MediaLive::UpdateInput;
   use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
+  has InputDevices => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDeviceRequest]', traits => ['NameInRequest'], request_name => 'inputDevices');
   has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
   has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -40,6 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                 # OPTIONAL
+      InputDevices => [
+        {
+          Id => 'My__string',            # OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
       InputSecurityGroups => [
         'My__string', ...                # OPTIONAL
       ],                                 # OPTIONAL
@@ -75,6 +82,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]
 
 Destination settings for PUSH type inputs.
+
+
+
+=head2 InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceRequest>]
+
+Settings for the devices.
 
 
 

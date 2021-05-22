@@ -70,7 +70,7 @@ Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
 
 =head2 Codec => Str
 
-Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
 
 
 

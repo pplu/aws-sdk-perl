@@ -3,6 +3,7 @@ package Paws::MediaLive::MultiplexStatmuxVideoSettings;
   use Moose;
   has MaximumBitrate => (is => 'ro', isa => 'Int', request_name => 'maximumBitrate', traits => ['NameInRequest']);
   has MinimumBitrate => (is => 'ro', isa => 'Int', request_name => 'minimumBitrate', traits => ['NameInRequest']);
+  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::MultiplexStatmuxVideoSettings object:
 
-  $service_obj->Method(Att1 => { MaximumBitrate => $value, ..., MinimumBitrate => $value  });
+  $service_obj->Method(Att1 => { MaximumBitrate => $value, ..., Priority => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,16 @@ Maximum statmux bitrate.
 =head2 MinimumBitrate => Int
 
 Minimum statmux bitrate.
+
+
+=head2 Priority => Int
+
+The purpose of the priority is to use a combination of the\nmultiplex
+rate control algorithm and the QVBR capability of the\nencoder to
+prioritize the video quality of some channels in a\nmultiplex over
+others. Channels that have a higher priority will\nget higher video
+quality at the expense of the video quality of\nother channels in the
+multiplex with lower priority.
 
 
 

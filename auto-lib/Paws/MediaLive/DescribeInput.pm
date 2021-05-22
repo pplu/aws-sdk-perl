@@ -39,6 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Destinations      = $DescribeInputResponse->Destinations;
     my $Id                = $DescribeInputResponse->Id;
     my $InputClass        = $DescribeInputResponse->InputClass;
+    my $InputDevices      = $DescribeInputResponse->InputDevices;
+    my $InputPartnerIds   = $DescribeInputResponse->InputPartnerIds;
     my $InputSourceType   = $DescribeInputResponse->InputSourceType;
     my $MediaConnectFlows = $DescribeInputResponse->MediaConnectFlows;
     my $Name              = $DescribeInputResponse->Name;

@@ -4,6 +4,7 @@ package Paws::MediaLive::CaptionDestinationSettings;
   has AribDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::AribDestinationSettings', request_name => 'aribDestinationSettings', traits => ['NameInRequest']);
   has BurnInDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::BurnInDestinationSettings', request_name => 'burnInDestinationSettings', traits => ['NameInRequest']);
   has DvbSubDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::DvbSubDestinationSettings', request_name => 'dvbSubDestinationSettings', traits => ['NameInRequest']);
+  has EbuTtDDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EbuTtDDestinationSettings', request_name => 'ebuTtDDestinationSettings', traits => ['NameInRequest']);
   has EmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedDestinationSettings', request_name => 'embeddedDestinationSettings', traits => ['NameInRequest']);
   has EmbeddedPlusScte20DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedPlusScte20DestinationSettings', request_name => 'embeddedPlusScte20DestinationSettings', traits => ['NameInRequest']);
   has RtmpCaptionInfoDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpCaptionInfoDestinationSettings', request_name => 'rtmpCaptionInfoDestinationSettings', traits => ['NameInRequest']);
@@ -60,6 +61,11 @@ Caption Destination Settings
 
 
 =head2 DvbSubDestinationSettings => L<Paws::MediaLive::DvbSubDestinationSettings>
+
+
+
+
+=head2 EbuTtDDestinationSettings => L<Paws::MediaLive::EbuTtDDestinationSettings>
 
 
 

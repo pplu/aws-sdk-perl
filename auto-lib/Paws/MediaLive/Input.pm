@@ -6,6 +6,8 @@ package Paws::MediaLive::Input;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has InputClass => (is => 'ro', isa => 'Str', request_name => 'inputClass', traits => ['NameInRequest']);
+  has InputDevices => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDeviceSettings]', request_name => 'inputDevices', traits => ['NameInRequest']);
+  has InputPartnerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'inputPartnerIds', traits => ['NameInRequest']);
   has InputSourceType => (is => 'ro', isa => 'Str', request_name => 'inputSourceType', traits => ['NameInRequest']);
   has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlow]', request_name => 'mediaConnectFlows', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -82,6 +84,16 @@ SINGLE_PIPELINE - You can connect only one source to this input. If the
 ChannelClass is also SINGLE_PIPELINE, this value is valid. If the
 ChannelClass is STANDARD, this value is not valid because the channel
 requires two sources in the input.
+
+
+=head2 InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceSettings>]
+
+Settings for the input devices.
+
+
+=head2 InputPartnerIds => ArrayRef[Str|Undef]
+
+A list of IDs for all Inputs which are partners of this one.
 
 
 =head2 InputSourceType => Str

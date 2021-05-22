@@ -6,7 +6,9 @@ package Paws::MediaLive::EncoderSettings;
   has AvailConfiguration => (is => 'ro', isa => 'Paws::MediaLive::AvailConfiguration', request_name => 'availConfiguration', traits => ['NameInRequest']);
   has BlackoutSlate => (is => 'ro', isa => 'Paws::MediaLive::BlackoutSlate', request_name => 'blackoutSlate', traits => ['NameInRequest']);
   has CaptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::CaptionDescription]', request_name => 'captionDescriptions', traits => ['NameInRequest']);
+  has FeatureActivations => (is => 'ro', isa => 'Paws::MediaLive::FeatureActivations', request_name => 'featureActivations', traits => ['NameInRequest']);
   has GlobalConfiguration => (is => 'ro', isa => 'Paws::MediaLive::GlobalConfiguration', request_name => 'globalConfiguration', traits => ['NameInRequest']);
+  has MotionGraphicsConfiguration => (is => 'ro', isa => 'Paws::MediaLive::MotionGraphicsConfiguration', request_name => 'motionGraphicsConfiguration', traits => ['NameInRequest']);
   has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaLive::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
   has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest'], required => 1);
   has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaLive::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest'], required => 1);
@@ -72,9 +74,19 @@ Settings for blackout slate.
 Settings for caption decriptions
 
 
+=head2 FeatureActivations => L<Paws::MediaLive::FeatureActivations>
+
+Feature Activations
+
+
 =head2 GlobalConfiguration => L<Paws::MediaLive::GlobalConfiguration>
 
 Configuration settings that apply to the event as a whole.
+
+
+=head2 MotionGraphicsConfiguration => L<Paws::MediaLive::MotionGraphicsConfiguration>
+
+Settings for motion graphics.
 
 
 =head2 NielsenConfiguration => L<Paws::MediaLive::NielsenConfiguration>

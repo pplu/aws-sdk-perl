@@ -9,8 +9,10 @@ package Paws::MediaLive::H264Settings;
   has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
   has ColorSpaceSettings => (is => 'ro', isa => 'Paws::MediaLive::H264ColorSpaceSettings', request_name => 'colorSpaceSettings', traits => ['NameInRequest']);
   has EntropyEncoding => (is => 'ro', isa => 'Str', request_name => 'entropyEncoding', traits => ['NameInRequest']);
+  has FilterSettings => (is => 'ro', isa => 'Paws::MediaLive::H264FilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has FixedAfd => (is => 'ro', isa => 'Str', request_name => 'fixedAfd', traits => ['NameInRequest']);
   has FlickerAq => (is => 'ro', isa => 'Str', request_name => 'flickerAq', traits => ['NameInRequest']);
+  has ForceFieldPictures => (is => 'ro', isa => 'Str', request_name => 'forceFieldPictures', traits => ['NameInRequest']);
   has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
   has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
   has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
@@ -28,6 +30,7 @@ package Paws::MediaLive::H264Settings;
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
+  has QualityLevel => (is => 'ro', isa => 'Str', request_name => 'qualityLevel', traits => ['NameInRequest']);
   has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has ScanType => (is => 'ro', isa => 'Str', request_name => 'scanType', traits => ['NameInRequest']);
@@ -125,6 +128,11 @@ Entropy encoding mode. Use cabac (must be in Main or High profile) or
 cavlc.
 
 
+=head2 FilterSettings => L<Paws::MediaLive::H264FilterSettings>
+
+Optional filters that you can apply to an encode.
+
+
 =head2 FixedAfd => Str
 
 Four bit AFD value to write on all frames of video in the output
@@ -135,6 +143,18 @@ stream. Only valid when afdSignaling is set to 'Fixed'.
 
 If set to enabled, adjust quantization within each frame to reduce
 flicker or 'pop' on I-frames.
+
+
+=head2 ForceFieldPictures => Str
+
+This setting applies only when scan type is "interlaced." It controls
+whether coding is performed on a field basis or on a frame basis. (When
+the video is progressive, the coding is always performed on a frame
+basis.) enabled: Force MediaLive to code on a field basis, so that odd
+and even sets of fields are coded separately. disabled: Code the two
+sets of fields separately (on a field basis) or together (on a frame
+basis using PAFF), depending on what is most appropriate for the
+content.
 
 
 =head2 FramerateControl => Str
@@ -250,6 +270,16 @@ Pixel Aspect Ratio numerator.
 H.264 Profile.
 
 
+=head2 QualityLevel => Str
+
+Leave as STANDARD_QUALITY or choose a different value (which might
+result in additional costs to run the channel). - ENHANCED_QUALITY:
+Produces a slightly better video quality without an increase in the
+bitrate. Has an effect only when the Rate control mode is QVBR or CBR.
+If this channel is in a MediaLive multiplex, the value must be
+ENHANCED_QUALITY. - STANDARD_QUALITY: Valid for any Rate control mode.
+
+
 =head2 QvbrQualityLevel => Int
 
 Controls the target quality for the video encode. Applies only when the
@@ -300,7 +330,8 @@ number of slices based on encode resolution.
 =head2 Softness => Int
 
 Softness. Selects quantizer matrix, larger values reduce high-frequency
-content in the encoded image.
+content in the encoded image. If not set to zero, must be greater than
+15.
 
 
 =head2 SpatialAq => Str

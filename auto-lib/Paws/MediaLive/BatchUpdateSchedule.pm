@@ -45,19 +45,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Id3 => 'My__string',
 
               },    # OPTIONAL
-              InputSwitchSettings => {
+              InputPrepareSettings => {
                 InputAttachmentNameReference => 'My__string',
                 InputClippingSettings        => {
                   InputTimecodeSource =>
                     'ZEROBASED',    # values: ZEROBASED, EMBEDDED
                   StartTimecode => { Timecode => 'My__string', },    # OPTIONAL
-                  StopTimecode => {
+                  StopTimecode  => {
                     LastFrameClippingBehavior => 'EXCLUDE_LAST_FRAME'
                     , # values: EXCLUDE_LAST_FRAME, INCLUDE_LAST_FRAME; OPTIONAL
                     Timecode => 'My__string',
                   },    # OPTIONAL
                 },    # OPTIONAL
                 UrlPath => [ 'My__string', ... ],    # OPTIONAL
+              },    # OPTIONAL
+              InputSwitchSettings => {
+                InputAttachmentNameReference => 'My__string',
+                InputClippingSettings        => {
+                  InputTimecodeSource =>
+                    'ZEROBASED',    # values: ZEROBASED, EMBEDDED
+                  StartTimecode => { Timecode => 'My__string', },    # OPTIONAL
+                  StopTimecode  => {
+                    LastFrameClippingBehavior => 'EXCLUDE_LAST_FRAME'
+                    , # values: EXCLUDE_LAST_FRAME, INCLUDE_LAST_FRAME; OPTIONAL
+                    Timecode => 'My__string',
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                UrlPath => [ 'My__string', ... ],    # OPTIONAL
+              },    # OPTIONAL
+              MotionGraphicsImageActivateSettings => {
+                Duration      => 1,              # max: 86400000; OPTIONAL
+                PasswordParam => 'My__string',
+                Url           => 'My__string',
+                Username      => 'My__string',
+              },    # OPTIONAL
+              MotionGraphicsImageDeactivateSettings => {
+
               },    # OPTIONAL
               PauseStateSettings => {
                 Pipelines => [

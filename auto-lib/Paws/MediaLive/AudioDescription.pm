@@ -81,9 +81,9 @@ Audio codec settings.
 
 =head2 LanguageCode => Str
 
-Indicates the language of the audio output track. Only used if
-languageControlMode is useConfigured, or there is no ISO 639 language
-code specified in the input.
+RFC 5646 language code representing the language of the audio output
+track. Only used if languageControlMode is useConfigured, or there is
+no ISO 639 language code specified in the input.
 
 
 =head2 LanguageCodeControl => Str

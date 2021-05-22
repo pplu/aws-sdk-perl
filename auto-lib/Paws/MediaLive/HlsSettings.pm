@@ -3,6 +3,7 @@ package Paws::MediaLive::HlsSettings;
   use Moose;
   has AudioOnlyHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioOnlyHlsSettings', request_name => 'audioOnlyHlsSettings', traits => ['NameInRequest']);
   has Fmp4HlsSettings => (is => 'ro', isa => 'Paws::MediaLive::Fmp4HlsSettings', request_name => 'fmp4HlsSettings', traits => ['NameInRequest']);
+  has FrameCaptureHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureHlsSettings', request_name => 'frameCaptureHlsSettings', traits => ['NameInRequest']);
   has StandardHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::StandardHlsSettings', request_name => 'standardHlsSettings', traits => ['NameInRequest']);
 
 1;
@@ -46,6 +47,11 @@ Hls Settings
 
 
 =head2 Fmp4HlsSettings => L<Paws::MediaLive::Fmp4HlsSettings>
+
+
+
+
+=head2 FrameCaptureHlsSettings => L<Paws::MediaLive::FrameCaptureHlsSettings>
 
 
 

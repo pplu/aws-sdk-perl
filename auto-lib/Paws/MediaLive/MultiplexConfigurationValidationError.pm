@@ -2,7 +2,7 @@
 package Paws::MediaLive::MultiplexConfigurationValidationError;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MultiplexValidationError]', request_name => 'validationErrors', traits => ['NameInRequest']);
+  has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ValidationError]', request_name => 'validationErrors', traits => ['NameInRequest']);
 
 1;
 
@@ -44,7 +44,7 @@ Placeholder documentation for MultiplexConfigurationValidationError
 The error message.
 
 
-=head2 ValidationErrors => ArrayRef[L<Paws::MediaLive::MultiplexValidationError>]
+=head2 ValidationErrors => ArrayRef[L<Paws::MediaLive::ValidationError>]
 
 A collection of validation error responses.
 

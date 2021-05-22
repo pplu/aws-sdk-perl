@@ -3,7 +3,10 @@ package Paws::MediaLive::ScheduleActionSettings;
   use Moose;
   has HlsId3SegmentTaggingSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsId3SegmentTaggingScheduleActionSettings', request_name => 'hlsId3SegmentTaggingSettings', traits => ['NameInRequest']);
   has HlsTimedMetadataSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsTimedMetadataScheduleActionSettings', request_name => 'hlsTimedMetadataSettings', traits => ['NameInRequest']);
+  has InputPrepareSettings => (is => 'ro', isa => 'Paws::MediaLive::InputPrepareScheduleActionSettings', request_name => 'inputPrepareSettings', traits => ['NameInRequest']);
   has InputSwitchSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSwitchScheduleActionSettings', request_name => 'inputSwitchSettings', traits => ['NameInRequest']);
+  has MotionGraphicsImageActivateSettings => (is => 'ro', isa => 'Paws::MediaLive::MotionGraphicsActivateScheduleActionSettings', request_name => 'motionGraphicsImageActivateSettings', traits => ['NameInRequest']);
+  has MotionGraphicsImageDeactivateSettings => (is => 'ro', isa => 'Paws::MediaLive::MotionGraphicsDeactivateScheduleActionSettings', request_name => 'motionGraphicsImageDeactivateSettings', traits => ['NameInRequest']);
   has PauseStateSettings => (is => 'ro', isa => 'Paws::MediaLive::PauseStateScheduleActionSettings', request_name => 'pauseStateSettings', traits => ['NameInRequest']);
   has Scte35ReturnToNetworkSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings', request_name => 'scte35ReturnToNetworkSettings', traits => ['NameInRequest']);
   has Scte35SpliceInsertSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings', request_name => 'scte35SpliceInsertSettings', traits => ['NameInRequest']);
@@ -56,9 +59,24 @@ Action to insert HLS ID3 segment tagging
 Action to insert HLS metadata
 
 
+=head2 InputPrepareSettings => L<Paws::MediaLive::InputPrepareScheduleActionSettings>
+
+Action to prepare an input for a future immediate input switch
+
+
 =head2 InputSwitchSettings => L<Paws::MediaLive::InputSwitchScheduleActionSettings>
 
 Action to switch the input
+
+
+=head2 MotionGraphicsImageActivateSettings => L<Paws::MediaLive::MotionGraphicsActivateScheduleActionSettings>
+
+Action to activate a motion graphics image overlay
+
+
+=head2 MotionGraphicsImageDeactivateSettings => L<Paws::MediaLive::MotionGraphicsDeactivateScheduleActionSettings>
+
+Action to deactivate a motion graphics image overlay
 
 
 =head2 PauseStateSettings => L<Paws::MediaLive::PauseStateScheduleActionSettings>

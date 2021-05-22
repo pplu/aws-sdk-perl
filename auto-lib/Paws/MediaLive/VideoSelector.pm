@@ -2,6 +2,7 @@
 package Paws::MediaLive::VideoSelector;
   use Moose;
   has ColorSpace => (is => 'ro', isa => 'Str', request_name => 'colorSpace', traits => ['NameInRequest']);
+  has ColorSpaceSettings => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorColorSpaceSettings', request_name => 'colorSpaceSettings', traits => ['NameInRequest']);
   has ColorSpaceUsage => (is => 'ro', isa => 'Str', request_name => 'colorSpaceUsage', traits => ['NameInRequest']);
   has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
 
@@ -46,6 +47,11 @@ may have only a single video selector.
 Specifies the color space of an input. This setting works in tandem
 with colorSpaceUsage and a video description's colorSpaceSettingsChoice
 to determine if any conversion will be performed.
+
+
+=head2 ColorSpaceSettings => L<Paws::MediaLive::VideoSelectorColorSpaceSettings>
+
+Color space settings
 
 
 =head2 ColorSpaceUsage => Str

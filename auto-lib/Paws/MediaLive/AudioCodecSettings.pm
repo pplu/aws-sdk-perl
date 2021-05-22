@@ -6,6 +6,7 @@ package Paws::MediaLive::AudioCodecSettings;
   has Eac3Settings => (is => 'ro', isa => 'Paws::MediaLive::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaLive::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
   has PassThroughSettings => (is => 'ro', isa => 'Paws::MediaLive::PassThroughSettings', request_name => 'passThroughSettings', traits => ['NameInRequest']);
+  has WavSettings => (is => 'ro', isa => 'Paws::MediaLive::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
 
 1;
 
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::AudioCodecSettings object:
 
-  $service_obj->Method(Att1 => { AacSettings => $value, ..., PassThroughSettings => $value  });
+  $service_obj->Method(Att1 => { AacSettings => $value, ..., WavSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,6 +64,11 @@ Audio Codec Settings
 
 
 =head2 PassThroughSettings => L<Paws::MediaLive::PassThroughSettings>
+
+
+
+
+=head2 WavSettings => L<Paws::MediaLive::WavSettings>
 
 
 

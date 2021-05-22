@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::CreateChannelResponse;
   use Moose;
+  has CdiInputSpecification => (is => 'ro', isa => 'Paws::MediaLive::CdiInputSpecification', traits => ['NameInRequest'], request_name => 'cdiInputSpecification');
   has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
@@ -12,6 +13,7 @@ package Paws::MediaLive::CreateChannelResponse;
   has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::VpcOutputSettings', traits => ['NameInRequest'], request_name => 'vpc');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -23,6 +25,11 @@ package Paws::MediaLive::CreateChannelResponse;
 Paws::MediaLive::CreateChannelResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 CdiInputSpecification => L<Paws::MediaLive::CdiInputSpecification>
+
+Specification of CDI inputs for this channel
 
 
 =head2 ChannelClass => Str
@@ -48,8 +55,7 @@ List of input attachments for channel.
 
 =head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
 
-Specification of input for this channel (max. bitrate, resolution,
-codec, etc.)
+Specification of network and file inputs for this channel
 
 
 =head2 LogLevel => Str
@@ -82,6 +88,11 @@ running the Channel.
 =head2 Tags => L<Paws::MediaLive::Tags>
 
 A collection of key-value pairs.
+
+
+=head2 Vpc => L<Paws::MediaLive::VpcOutputSettings>
+
+Settings for VPC output
 
 
 =head2 _request_id => Str

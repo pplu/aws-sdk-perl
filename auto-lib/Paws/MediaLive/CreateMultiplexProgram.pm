@@ -32,7 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $medialive = Paws->service('MediaLive');
     my $CreateMultiplexProgramResponse = $medialive->CreateMultiplexProgram(
       MultiplexProgramSettings => {
-        ProgramNumber     => 1,    # max: 65535
+        ProgramNumber            => 1,                   # max: 65535
+        PreferredChannelPipeline => 'CURRENTLY_ACTIVE'
+        ,    # values: CURRENTLY_ACTIVE, PIPELINE_0, PIPELINE_1; OPTIONAL
         ServiceDescriptor => {
           ProviderName => 'My__stringMax256',    # max: 256
           ServiceName  => 'My__stringMax256',    # max: 256
@@ -43,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StatmuxSettings => {
             MaximumBitrate => 1,    # min: 100000, max: 100000000; OPTIONAL
             MinimumBitrate => 1,    # min: 100000, max: 100000000; OPTIONAL
+            Priority       => 1,    # min: -5, max: 5; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

@@ -4,6 +4,7 @@ package Paws::MediaLive::HlsCdnSettings;
   has HlsAkamaiSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsAkamaiSettings', request_name => 'hlsAkamaiSettings', traits => ['NameInRequest']);
   has HlsBasicPutSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsBasicPutSettings', request_name => 'hlsBasicPutSettings', traits => ['NameInRequest']);
   has HlsMediaStoreSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsMediaStoreSettings', request_name => 'hlsMediaStoreSettings', traits => ['NameInRequest']);
+  has HlsS3Settings => (is => 'ro', isa => 'Paws::MediaLive::HlsS3Settings', request_name => 'hlsS3Settings', traits => ['NameInRequest']);
   has HlsWebdavSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsWebdavSettings', request_name => 'hlsWebdavSettings', traits => ['NameInRequest']);
 
 1;
@@ -52,6 +53,11 @@ Hls Cdn Settings
 
 
 =head2 HlsMediaStoreSettings => L<Paws::MediaLive::HlsMediaStoreSettings>
+
+
+
+
+=head2 HlsS3Settings => L<Paws::MediaLive::HlsS3Settings>
 
 
 

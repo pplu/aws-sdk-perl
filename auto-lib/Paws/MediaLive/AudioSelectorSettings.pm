@@ -3,6 +3,7 @@ package Paws::MediaLive::AudioSelectorSettings;
   use Moose;
   has AudioLanguageSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioLanguageSelection', request_name => 'audioLanguageSelection', traits => ['NameInRequest']);
   has AudioPidSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioPidSelection', request_name => 'audioPidSelection', traits => ['NameInRequest']);
+  has AudioTrackSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioTrackSelection', request_name => 'audioTrackSelection', traits => ['NameInRequest']);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::AudioSelectorSettings object:
 
-  $service_obj->Method(Att1 => { AudioLanguageSelection => $value, ..., AudioPidSelection => $value  });
+  $service_obj->Method(Att1 => { AudioLanguageSelection => $value, ..., AudioTrackSelection => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ Audio Selector Settings
 
 
 =head2 AudioPidSelection => L<Paws::MediaLive::AudioPidSelection>
+
+
+
+
+=head2 AudioTrackSelection => L<Paws::MediaLive::AudioTrackSelection>
 
 
 

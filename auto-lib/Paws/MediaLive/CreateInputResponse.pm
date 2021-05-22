@@ -2,6 +2,7 @@
 package Paws::MediaLive::CreateInputResponse;
   use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
+  has InputDevices => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDeviceSettings]', traits => ['NameInRequest'], request_name => 'inputDevices');
   has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
   has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -27,6 +28,11 @@ Paws::MediaLive::CreateInputResponse
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]
 
 Destination settings for PUSH type inputs.
+
+
+=head2 InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceSettings>]
+
+Settings for the devices.
 
 
 =head2 InputSecurityGroups => ArrayRef[Str|Undef]
@@ -76,7 +82,7 @@ A collection of key-value pairs.
 
 
 
-Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
+Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">, C<"INPUT_DEVICE">, C<"AWS_CDI">
 =head2 Vpc => L<Paws::MediaLive::InputVpcRequest>
 
 
