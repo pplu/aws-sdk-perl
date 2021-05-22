@@ -6,6 +6,7 @@ package Paws::Translate::StartTextTranslationJob;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Translate::InputDataConfig', required => 1);
   has JobName => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Translate::OutputDataConfig', required => 1);
+  has ParallelDataNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceLanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has TargetLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has TerminologyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -50,7 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TargetLanguageCodes => [
         'MyLanguageCodeString', ...        # min: 2, max: 5
       ],
-      JobName          => 'MyJobName',     # OPTIONAL
+      JobName           => 'MyJobName',    # OPTIONAL
+      ParallelDataNames => [
+        'MyResourceName', ...              # min: 1, max: 256
+      ],                                   # OPTIONAL
       TerminologyNames => [
         'MyResourceName', ...              # min: 1, max: 256
       ],                                   # OPTIONAL
@@ -70,10 +74,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> ClientToken => Str
 
-The client token of the EC2 instance calling the request. This token is
-auto-generated when using the Amazon Translate SDK. Otherwise, use the
-DescribeInstances EC2 operation to retreive an instance's client token.
-For more information, see Client Tokens in the EC2 User Guide.
+A unique identifier for the request. This token is auto-generated when
+using the Amazon Translate SDK.
 
 
 
@@ -101,6 +103,14 @@ The name of the batch translation job to be performed.
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Translate::OutputDataConfig>
 
 Specifies the S3 folder to which your job output will be saved.
+
+
+
+=head2 ParallelDataNames => ArrayRef[Str|Undef]
+
+The names of the parallel data resources to use in the batch
+translation job. For a list of available parallel data resources, use
+the ListParallelData operation.
 
 
 

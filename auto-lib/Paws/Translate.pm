@@ -15,6 +15,16 @@ package Paws::Translate;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateParallelData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::CreateParallelData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteParallelData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::DeleteParallelData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTerminology {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Translate::DeleteTerminology', @_);
@@ -25,6 +35,11 @@ package Paws::Translate;
     my $call_object = $self->new_with_coercions('Paws::Translate::DescribeTextTranslationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetParallelData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::GetParallelData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTerminology {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Translate::GetTerminology', @_);
@@ -33,6 +48,11 @@ package Paws::Translate;
   sub ImportTerminology {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Translate::ImportTerminology', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListParallelData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::ListParallelData', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTerminologies {
@@ -58,6 +78,11 @@ package Paws::Translate;
   sub TranslateText {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Translate::TranslateText', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateParallelData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Translate::UpdateParallelData', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -86,7 +111,7 @@ package Paws::Translate;
   }
 
 
-  sub operations { qw/DeleteTerminology DescribeTextTranslationJob GetTerminology ImportTerminology ListTerminologies ListTextTranslationJobs StartTextTranslationJob StopTextTranslationJob TranslateText / }
+  sub operations { qw/CreateParallelData DeleteParallelData DeleteTerminology DescribeTextTranslationJob GetParallelData GetTerminology ImportTerminology ListParallelData ListTerminologies ListTextTranslationJobs StartTextTranslationJob StopTextTranslationJob TranslateText UpdateParallelData / }
 
 1;
 
@@ -122,6 +147,50 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head1 METHODS
 
+=head2 CreateParallelData
+
+=over
+
+=item ClientToken => Str
+
+=item Name => Str
+
+=item ParallelDataConfig => L<Paws::Translate::ParallelDataConfig>
+
+=item [Description => Str]
+
+=item [EncryptionKey => L<Paws::Translate::EncryptionKey>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::CreateParallelData>
+
+Returns: a L<Paws::Translate::CreateParallelDataResponse> instance
+
+Creates a parallel data resource in Amazon Translate by importing an
+input file from Amazon S3. Parallel data files contain examples of
+source phrases and their translations from your translation memory. By
+adding parallel data, you can influence the style, tone, and word
+choice in your translation output.
+
+
+=head2 DeleteParallelData
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::DeleteParallelData>
+
+Returns: a L<Paws::Translate::DeleteParallelDataResponse> instance
+
+Deletes a parallel data resource in Amazon Translate.
+
+
 =head2 DeleteTerminology
 
 =over
@@ -154,6 +223,22 @@ Returns: a L<Paws::Translate::DescribeTextTranslationJobResponse> instance
 Gets the properties associated with an asycnhronous batch translation
 job including name, ID, status, source and target languages,
 input/output S3 buckets, and so on.
+
+
+=head2 GetParallelData
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::GetParallelData>
+
+Returns: a L<Paws::Translate::GetParallelDataResponse> instance
+
+Provides information about a parallel data resource.
 
 
 =head2 GetTerminology
@@ -206,6 +291,24 @@ If you import a terminology that overwrites an existing one, the new
 terminology take up to 10 minutes to fully propagate and be available
 for use in a translation due to cache policies with the DataPlane
 service that performs the translations.
+
+
+=head2 ListParallelData
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::ListParallelData>
+
+Returns: a L<Paws::Translate::ListParallelDataResponse> instance
+
+Provides a list of your parallel data resources in Amazon Translate.
 
 
 =head2 ListTerminologies
@@ -263,6 +366,8 @@ Gets a list of the batch translation jobs that you have submitted.
 =item TargetLanguageCodes => ArrayRef[Str|Undef]
 
 =item [JobName => Str]
+
+=item [ParallelDataNames => ArrayRef[Str|Undef]]
 
 =item [TerminologyNames => ArrayRef[Str|Undef]]
 
@@ -334,6 +439,29 @@ Returns: a L<Paws::Translate::TranslateTextResponse> instance
 Translates input text from the source language to the target language.
 For a list of available languages and language codes, see
 what-is-languages.
+
+
+=head2 UpdateParallelData
+
+=over
+
+=item ClientToken => Str
+
+=item Name => Str
+
+=item ParallelDataConfig => L<Paws::Translate::ParallelDataConfig>
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Translate::UpdateParallelData>
+
+Returns: a L<Paws::Translate::UpdateParallelDataResponse> instance
+
+Updates a previously created parallel data resource by importing a new
+input file from Amazon S3.
 
 
 
