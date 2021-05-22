@@ -28,11 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticfilesystem = Paws->service('EFS');
+    # To describe the lifecycle configuration for a file system
+    # This operation describes a file system's LifecycleConfiguration. EFS
+    # lifecycle management uses the LifecycleConfiguration object to identify
+    # which files to move to the EFS Infrequent Access (IA) storage class.
     my $LifecycleConfigurationDescription =
       $elasticfilesystem->DescribeLifecycleConfiguration(
-      FileSystemId => 'MyFileSystemId',
-
-      );
+      'FileSystemId' => 'fs-01234567' );
 
     # Results:
     my $LifecyclePolicies =

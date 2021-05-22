@@ -56,7 +56,8 @@ The ID specifying the EFS resource that you want to create a tag for.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
-
+An array of C<Tag> objects to add. Each C<Tag> object is a key-value
+pair.
 
 
 

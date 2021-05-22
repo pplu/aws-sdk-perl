@@ -1,6 +1,8 @@
 
 package Paws::EFS::CreateFileSystem;
   use Moose;
+  has AvailabilityZoneName => (is => 'ro', isa => 'Str');
+  has Backup => (is => 'ro', isa => 'Bool');
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
   has Encrypted => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -39,7 +41,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # performance mode.
     my $FileSystemDescription = $elasticfilesystem->CreateFileSystem(
       'CreationToken'   => 'tokenstring',
-      'PerformanceMode' => 'generalPurpose'
+      'PerformanceMode' => 'generalPurpose',
+      'Tags'            => [
+
+        {
+          'Key'   => 'Name',
+          'Value' => 'MyFileSystem'
+        }
+      ]
     );
 
     # Results:
@@ -51,6 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OwnerId              = $FileSystemDescription->OwnerId;
     my $PerformanceMode      = $FileSystemDescription->PerformanceMode;
     my $SizeInBytes          = $FileSystemDescription->SizeInBytes;
+    my $Tags                 = $FileSystemDescription->Tags;
 
     # Returns a L<Paws::EFS::FileSystemDescription> object.
 
@@ -58,6 +68,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem/CreateFileSystem>
 
 =head1 ATTRIBUTES
+
+
+=head2 AvailabilityZoneName => Str
+
+Used to create a file system that uses One Zone storage classes. It
+specifies the AWS Availability Zone in which to create the file system.
+Use the format C<us-east-1a> to specify the Availability Zone. For more
+information about One Zone storage classes, see Using EFS storage
+classes
+(https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html) in the
+I<Amazon EFS User Guide>.
+
+One Zone storage classes are not available in all Availability Zones in
+AWS Regions where Amazon EFS is available.
+
+
+
+=head2 Backup => Bool
+
+Specifies whether automatic backups are enabled on the file system that
+you are creating. Set the value to C<true> to enable automatic backups.
+If you are creating a file system that uses One Zone storage classes,
+automatic backups are enabled by default. For more information, see
+Automatic backups
+(https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups)
+in the I<Amazon EFS User Guide>.
+
+Default is C<false>. However, if you specify an
+C<AvailabilityZoneName>, the default is C<true>.
+
+AWS Backup is not available in all AWS Regions where Amazon EFS is
+available.
+
 
 
 =head2 B<REQUIRED> CreationToken => Str
@@ -80,10 +123,11 @@ used to protect the encrypted file system.
 
 =head2 KmsKeyId => Str
 
-The ID of the AWS KMS CMK to be used to protect the encrypted file
-system. This parameter is only required if you want to use a nondefault
-CMK. If this parameter is not specified, the default CMK for Amazon EFS
-is used. This ID can be in one of the following formats:
+The ID of the AWS KMS CMK that you want to use to protect the encrypted
+file system. This parameter is only required if you want to use a
+non-default KMS key. If this parameter is not specified, the default
+CMK for Amazon EFS is used. This ID can be in one of the following
+formats:
 
 =over
 
@@ -112,6 +156,9 @@ C<arn:aws:kms:us-west-2:444455556666:alias/projectKey1>.
 If C<KmsKeyId> is specified, the CreateFileSystemRequest$Encrypted
 parameter must be set to true.
 
+EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys
+with EFS file systems.
+
 
 
 =head2 PerformanceMode => Str
@@ -123,6 +170,9 @@ operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
 file system has been created.
 
+The C<maxIO> mode is not supported on file systems using One Zone
+storage classes.
+
 Valid values are: C<"generalPurpose">, C<"maxIO">
 
 =head2 ProvisionedThroughputInMibps => Num
@@ -130,11 +180,10 @@ Valid values are: C<"generalPurpose">, C<"maxIO">
 The throughput, measured in MiB/s, that you want to provision for a
 file system that you're creating. Valid values are 1-1024. Required if
 C<ThroughputMode> is set to C<provisioned>. The upper limit for
-throughput is 1024 MiB/s. You can get this limit increased by
-contacting AWS Support. For more information, see Amazon EFS Limits
-That You Can Increase
+throughput is 1024 MiB/s. To increase this limit, contact AWS Support.
+For more information, see Amazon EFS quotas that you can increase
 (https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in
-the I<Amazon EFS User Guide.>
+the I<Amazon EFS User Guide>.
 
 
 
@@ -149,16 +198,18 @@ key-value pair.
 
 =head2 ThroughputMode => Str
 
-The throughput mode for the file system to be created. There are two
-throughput modes to choose from for your file system: C<bursting> and
-C<provisioned>. If you set C<ThroughputMode> to C<provisioned>, you
-must also set a value for C<ProvisionedThroughPutInMibps>. You can
-decrease your file system's throughput in Provisioned Throughput mode
-or change between the throughput modes as long as itE<rsquo>s been more
-than 24 hours since the last decrease or throughput mode change. For
-more, see Specifying Throughput with Provisioned Mode
+Specifies the throughput mode for the file system, either C<bursting>
+or C<provisioned>. If you set C<ThroughputMode> to C<provisioned>, you
+must also set a value for C<ProvisionedThroughputInMibps>. After you
+create the file system, you can decrease your file system's throughput
+in Provisioned Throughput mode or change between the throughput modes,
+as long as itE<rsquo>s been more than 24 hours since the last decrease
+or throughput mode change. For more information, see Specifying
+throughput with provisioned mode
 (https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
-in the I<Amazon EFS User Guide.>
+in the I<Amazon EFS User Guide>.
+
+Default is C<bursting>.
 
 Valid values are: C<"bursting">, C<"provisioned">
 

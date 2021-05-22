@@ -37,9 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AvailabilityZoneId   = $FileSystemDescription->AvailabilityZoneId;
+    my $AvailabilityZoneName = $FileSystemDescription->AvailabilityZoneName;
     my $CreationTime         = $FileSystemDescription->CreationTime;
     my $CreationToken        = $FileSystemDescription->CreationToken;
     my $Encrypted            = $FileSystemDescription->Encrypted;
+    my $FileSystemArn        = $FileSystemDescription->FileSystemArn;
     my $FileSystemId         = $FileSystemDescription->FileSystemId;
     my $KmsKeyId             = $FileSystemDescription->KmsKeyId;
     my $LifeCycleState       = $FileSystemDescription->LifeCycleState;
@@ -69,20 +72,20 @@ The ID of the file system that you want to update.
 
 =head2 ProvisionedThroughputInMibps => Num
 
-(Optional) The amount of throughput, in MiB/s, that you want to
-provision for your file system. Valid values are 1-1024. Required if
-C<ThroughputMode> is changed to C<provisioned> on update. If you're not
-updating the amount of provisioned throughput for your file system, you
-don't need to provide this value in your request.
+(Optional) Sets the amount of provisioned throughput, in MiB/s, for the
+file system. Valid values are 1-1024. If you are changing the
+throughput mode to provisioned, you must also provide the amount of
+provisioned throughput. Required if C<ThroughputMode> is changed to
+C<provisioned> on update.
 
 
 
 =head2 ThroughputMode => Str
 
-(Optional) The throughput mode that you want your file system to use.
-If you're not updating your throughput mode, you don't need to provide
-this value in your request. If you are changing the C<ThroughputMode>
-to C<provisioned>, you must also set a value for
+(Optional) Updates the file system's throughput mode. If you're not
+updating your throughput mode, you don't need to provide this value in
+your request. If you are changing the C<ThroughputMode> to
+C<provisioned>, you must also set a value for
 C<ProvisionedThroughputInMibps>.
 
 Valid values are: C<"bursting">, C<"provisioned">

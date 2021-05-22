@@ -57,8 +57,9 @@ response. The default value is 100.
 
 =head2 NextToken => Str
 
-You can use C<NextToken> in a subsequent request to fetch the next page
-of access point descriptions if the response payload was paginated.
+(Optional) You can use C<NextToken> in a subsequent request to fetch
+the next page of access point descriptions if the response payload was
+paginated.
 
 
 

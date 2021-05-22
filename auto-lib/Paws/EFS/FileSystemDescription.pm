@@ -1,9 +1,12 @@
 
 package Paws::EFS::FileSystemDescription;
   use Moose;
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneName => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
   has Encrypted => (is => 'ro', isa => 'Bool');
+  has FileSystemArn => (is => 'ro', isa => 'Str');
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);
@@ -28,6 +31,23 @@ Paws::EFS::FileSystemDescription
 =head1 ATTRIBUTES
 
 
+=head2 AvailabilityZoneId => Str
+
+The unique and consistent identifier of the Availability Zone in which
+the file system's One Zone storage classes exist. For example,
+C<use1-az1> is an Availability Zone ID for the us-east-1 AWS Region,
+and it has the same location in every AWS account.
+
+
+=head2 AvailabilityZoneName => Str
+
+Describes the AWS Availability Zone in which the file system is
+located, and is valid only for file systems using One Zone storage
+classes. For more information, see Using EFS storage classes
+(https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html) in the
+I<Amazon EFS User Guide>.
+
+
 =head2 B<REQUIRED> CreationTime => Str
 
 The time that the file system was created, in seconds (since
@@ -45,6 +65,14 @@ A Boolean value that, if true, indicates that the file system is
 encrypted.
 
 
+=head2 FileSystemArn => Str
+
+The Amazon Resource Name (ARN) for the EFS file system, in the format
+C<arn:aws:elasticfilesystem:I<region>:I<account-id>:file-system/I<file-system-id>
+>. Example with sample data:
+C<arn:aws:elasticfilesystem:us-west-2:1111333322228888:file-system/fs-01234567>
+
+
 =head2 B<REQUIRED> FileSystemId => Str
 
 The ID of the file system, assigned by Amazon EFS.
@@ -60,7 +88,7 @@ The ID of an AWS Key Management Service (AWS KMS) customer master key
 
 The lifecycle phase of the file system.
 
-Valid values are: C<"creating">, C<"available">, C<"updating">, C<"deleting">, C<"deleted">
+Valid values are: C<"creating">, C<"available">, C<"updating">, C<"deleting">, C<"deleted">, C<"error">
 =head2 Name => Str
 
 You can add tags to a file system, including a C<Name> tag. For more
@@ -88,13 +116,9 @@ The performance mode of the file system.
 Valid values are: C<"generalPurpose">, C<"maxIO">
 =head2 ProvisionedThroughputInMibps => Num
 
-The throughput, measured in MiB/s, that you want to provision for a
-file system. Valid values are 1-1024. Required if C<ThroughputMode> is
-set to C<provisioned>. The limit on throughput is 1024 MiB/s. You can
-get these limits increased by contacting AWS Support. For more
-information, see Amazon EFS Limits That You Can Increase
-(https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in
-the I<Amazon EFS User Guide.>
+The amount of provisioned throughput, measured in MiB/s, for the file
+system. Valid for file systems using C<ThroughputMode> set to
+C<provisioned>.
 
 
 =head2 B<REQUIRED> SizeInBytes => L<Paws::EFS::FileSystemSize>
@@ -119,13 +143,10 @@ C<Tag> objects.
 
 =head2 ThroughputMode => Str
 
-The throughput mode for a file system. There are two throughput modes
-to choose from for your file system: C<bursting> and C<provisioned>. If
-you set C<ThroughputMode> to C<provisioned>, you must also set a value
-for C<ProvisionedThroughPutInMibps>. You can decrease your file
-system's throughput in Provisioned Throughput mode or change between
-the throughput modes as long as itE<rsquo>s been more than 24 hours
-since the last decrease or throughput mode change.
+Displays the file system's throughput mode. For more information, see
+Throughput modes
+(https://docs.aws.amazon.com/efs/latest/ug/performance.html#throughput-modes)
+in the I<Amazon EFS User Guide>.
 
 Valid values are: C<"bursting">, C<"provisioned">
 =head2 _request_id => Str

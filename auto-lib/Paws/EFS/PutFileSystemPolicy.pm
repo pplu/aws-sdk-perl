@@ -71,8 +71,9 @@ C<FileSystemPolicy> for.
 =head2 B<REQUIRED> Policy => Str
 
 The C<FileSystemPolicy> that you're creating. Accepts a JSON formatted
-policy definition. To find out more about the elements that make up a
-file system policy, see EFS Resource-based Policies
+policy definition. EFS file system policies have a 20,000 character
+limit. To find out more about the elements that make up a file system
+policy, see EFS Resource-based Policies
 (https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies).
 
 

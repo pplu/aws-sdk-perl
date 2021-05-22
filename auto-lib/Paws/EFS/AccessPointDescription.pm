@@ -49,7 +49,7 @@ The ID of the EFS file system that the access point applies to.
 
 Identifies the lifecycle phase of the access point.
 
-Valid values are: C<"creating">, C<"available">, C<"updating">, C<"deleting">, C<"deleted">
+Valid values are: C<"creating">, C<"available">, C<"updating">, C<"deleting">, C<"deleted">, C<"error">
 =head2 Name => Str
 
 The name of the access point. This is the value of the C<Name> tag.

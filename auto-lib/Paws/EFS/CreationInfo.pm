@@ -42,6 +42,12 @@ directory does not exist, EFS creates it with these settings when a
 client connects to the access point. When specifying C<CreationInfo>,
 you must include values for all properties.
 
+Amazon EFS creates a root directory only if you have provided the
+CreationInfo: OwnUid, OwnGID, and permissions for the directory. If you
+do not provide this information, Amazon EFS does not create the root
+directory. If the root directory does not exist, attempts to mount
+using the access point will fail.
+
 If you do not provide C<CreationInfo> and the specified
 C<RootDirectory> does not exist, attempts to mount the file system
 using the access point will fail.

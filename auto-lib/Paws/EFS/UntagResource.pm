@@ -2,7 +2,7 @@
 package Paws::EFS::UntagResource;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'tagKeys', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceId => 'MyResourceId',
       TagKeys    => [
         'MyTagKey', ...    # min: 1, max: 128
-      ],                   # OPTIONAL
+      ],
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -48,9 +49,9 @@ Specifies the EFS resource that you want to remove tags from.
 
 
 
-=head2 TagKeys => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The keys of the key:value tag pairs that you want to remove from the
+The keys of the key-value tag pairs that you want to remove from the
 specified EFS resource.
 
 
