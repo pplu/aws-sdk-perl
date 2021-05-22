@@ -14,6 +14,11 @@ package Paws::ConnectParticipant;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub CompleteAttachmentUpload {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ConnectParticipant::CompleteAttachmentUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateParticipantConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ConnectParticipant::CreateParticipantConnection', @_);
@@ -22,6 +27,11 @@ package Paws::ConnectParticipant;
   sub DisconnectParticipant {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ConnectParticipant::DisconnectParticipant', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAttachment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ConnectParticipant::GetAttachment', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTranscript {
@@ -39,10 +49,15 @@ package Paws::ConnectParticipant;
     my $call_object = $self->new_with_coercions('Paws::ConnectParticipant::SendMessage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartAttachmentUpload {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ConnectParticipant::StartAttachmentUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateParticipantConnection DisconnectParticipant GetTranscript SendEvent SendMessage / }
+  sub operations { qw/CompleteAttachmentUpload CreateParticipantConnection DisconnectParticipant GetAttachment GetTranscript SendEvent SendMessage StartAttachmentUpload / }
 
 1;
 
@@ -84,6 +99,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/par
 
 =head1 METHODS
 
+=head2 CompleteAttachmentUpload
+
+=over
+
+=item AttachmentIds => ArrayRef[Str|Undef]
+
+=item ClientToken => Str
+
+=item ConnectionToken => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ConnectParticipant::CompleteAttachmentUpload>
+
+Returns: a L<Paws::ConnectParticipant::CompleteAttachmentUploadResponse> instance
+
+Allows you to confirm that the attachment has been uploaded using the
+pre-signed URL provided in StartAttachmentUpload API.
+
+
 =head2 CreateParticipantConnection
 
 =over
@@ -103,7 +139,7 @@ Creates the participant's connection. Note that ParticipantToken is
 used for invoking this API instead of ConnectionToken.
 
 The participant token is valid for the lifetime of the participant
-E<ndash> until the they are part of a contact.
+E<ndash> until they are part of a contact.
 
 The response URL for C<WEBSOCKET> Type has a connect expiry timeout of
 100s. Clients must manually connect to the returned websocket URL and
@@ -117,6 +153,10 @@ C<{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}>
 Upon websocket URL expiry, as specified in the response
 ConnectionExpiry parameter, clients need to call this API again to
 obtain a new websocket URL and perform the same steps as before.
+
+The Amazon Connect Participant Service APIs do not use Signature
+Version 4 authentication
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 =head2 DisconnectParticipant
@@ -136,6 +176,29 @@ Returns: a L<Paws::ConnectParticipant::DisconnectParticipantResponse> instance
 
 Disconnects a participant. Note that ConnectionToken is used for
 invoking this API instead of ParticipantToken.
+
+The Amazon Connect Participant Service APIs do not use Signature
+Version 4 authentication
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+
+=head2 GetAttachment
+
+=over
+
+=item AttachmentId => Str
+
+=item ConnectionToken => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ConnectParticipant::GetAttachment>
+
+Returns: a L<Paws::ConnectParticipant::GetAttachmentResponse> instance
+
+Provides a pre-signed URL for download of a completed attachment. This
+is an asynchronous API for use with active contacts.
 
 
 =head2 GetTranscript
@@ -163,8 +226,13 @@ Each argument is described in detail in: L<Paws::ConnectParticipant::GetTranscri
 
 Returns: a L<Paws::ConnectParticipant::GetTranscriptResponse> instance
 
-Retrieves a transcript of the session. Note that ConnectionToken is
-used for invoking this API instead of ParticipantToken.
+Retrieves a transcript of the session, including details about any
+attachments. Note that ConnectionToken is used for invoking this API
+instead of ParticipantToken.
+
+The Amazon Connect Participant Service APIs do not use Signature
+Version 4 authentication
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 =head2 SendEvent
@@ -189,6 +257,10 @@ Returns: a L<Paws::ConnectParticipant::SendEventResponse> instance
 Sends an event. Note that ConnectionToken is used for invoking this API
 instead of ParticipantToken.
 
+The Amazon Connect Participant Service APIs do not use Signature
+Version 4 authentication
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
 
 =head2 SendMessage
 
@@ -211,6 +283,35 @@ Returns: a L<Paws::ConnectParticipant::SendMessageResponse> instance
 
 Sends a message. Note that ConnectionToken is used for invoking this
 API instead of ParticipantToken.
+
+The Amazon Connect Participant Service APIs do not use Signature
+Version 4 authentication
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+
+=head2 StartAttachmentUpload
+
+=over
+
+=item AttachmentName => Str
+
+=item AttachmentSizeInBytes => Int
+
+=item ClientToken => Str
+
+=item ConnectionToken => Str
+
+=item ContentType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ConnectParticipant::StartAttachmentUpload>
+
+Returns: a L<Paws::ConnectParticipant::StartAttachmentUploadResponse> instance
+
+Provides a pre-signed Amazon S3 URL in response for uploading the file
+directly to S3.
 
 
 

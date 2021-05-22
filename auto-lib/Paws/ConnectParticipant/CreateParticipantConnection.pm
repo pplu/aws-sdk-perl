@@ -53,8 +53,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/par
 
 =head2 B<REQUIRED> ParticipantToken => Str
 
-Participant Token as obtained from StartChatContact
-(https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContactResponse.html)
+This is a header parameter.
+
+The Participant Token as obtained from StartChatContact
+(https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html)
 API response.
 
 
