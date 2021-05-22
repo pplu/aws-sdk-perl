@@ -3,6 +3,7 @@ package Paws::GroundStation::AntennaUplinkConfig;
   use Moose;
   has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::UplinkSpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
   has TargetEirp => (is => 'ro', isa => 'Paws::GroundStation::Eirp', request_name => 'targetEirp', traits => ['NameInRequest'], required => 1);
+  has TransmitDisabled => (is => 'ro', isa => 'Bool', request_name => 'transmitDisabled', traits => ['NameInRequest']);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GroundStation::AntennaUplinkConfig object:
 
-  $service_obj->Method(Att1 => { SpectrumConfig => $value, ..., TargetEirp => $value  });
+  $service_obj->Method(Att1 => { SpectrumConfig => $value, ..., TransmitDisabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,11 @@ Information about the uplink spectral C<Config>.
 =head2 B<REQUIRED> TargetEirp => L<Paws::GroundStation::Eirp>
 
 EIRP of the target.
+
+
+=head2 TransmitDisabled => Bool
+
+Whether or not uplink transmit is disabled.
 
 
 

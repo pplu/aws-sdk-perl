@@ -42,17 +42,39 @@ Object that describes a spectral C<Config>.
 
 =head2 B<REQUIRED> Bandwidth => L<Paws::GroundStation::FrequencyBandwidth>
 
-Bandwidth of a spectral C<Config>.
+Bandwidth of a spectral C<Config>. AWS Ground Station currently has the
+following bandwidth limitations:
+
+=over
+
+=item *
+
+For C<AntennaDownlinkDemodDecodeconfig>, valid values are between 125
+kHz to 650 MHz.
+
+=item *
+
+For C<AntennaDownlinkconfig> valid values are between 10 kHz to 54 MHz.
+
+=item *
+
+For C<AntennaUplinkConfig>, valid values are between 10 kHz to 54 MHz.
+
+=back
+
 
 
 =head2 B<REQUIRED> CenterFrequency => L<Paws::GroundStation::Frequency>
 
-Center frequency of a spectral C<Config>.
+Center frequency of a spectral C<Config>. Valid values are between 2200
+to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for
+uplink.
 
 
 =head2 Polarization => Str
 
-Polarization of a spectral C<Config>.
+Polarization of a spectral C<Config>. Capturing both C<"RIGHT_HAND">
+and C<"LEFT_HAND"> polarization requires two separate configs.
 
 
 

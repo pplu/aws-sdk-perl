@@ -41,12 +41,15 @@ Information about the uplink spectral C<Config>.
 
 =head2 B<REQUIRED> CenterFrequency => L<Paws::GroundStation::Frequency>
 
-Center frequency of an uplink spectral C<Config>.
+Center frequency of an uplink spectral C<Config>. Valid values are
+between 2025 to 2120 MHz.
 
 
 =head2 Polarization => Str
 
-Polarization of an uplink spectral C<Config>.
+Polarization of an uplink spectral C<Config>. Capturing both
+C<"RIGHT_HAND"> and C<"LEFT_HAND"> polarization requires two separate
+configs.
 
 
 

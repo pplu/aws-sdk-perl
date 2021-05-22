@@ -89,11 +89,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 1,
 
           },
-
+          TransmitDisabled => 1,
         },    # OPTIONAL
         DataflowEndpointConfig => {
           DataflowEndpointName   => 'MyString',
           DataflowEndpointRegion => 'MyString',
+        },    # OPTIONAL
+        S3RecordingConfig => {
+          BucketArn => 'MyBucketArn',
+          RoleArn   => 'MyRoleArn',
+          Prefix    => 'MyS3KeyPrefix',    # min: 1, max: 900; OPTIONAL
         },    # OPTIONAL
         TrackingConfig => {
           Autotrack => 'PREFERRED',    # values: PREFERRED, REMOVED, REQUIRED

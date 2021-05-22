@@ -5,6 +5,7 @@ package Paws::GroundStation::ConfigTypeData;
   has AntennaDownlinkDemodDecodeConfig => (is => 'ro', isa => 'Paws::GroundStation::AntennaDownlinkDemodDecodeConfig', request_name => 'antennaDownlinkDemodDecodeConfig', traits => ['NameInRequest']);
   has AntennaUplinkConfig => (is => 'ro', isa => 'Paws::GroundStation::AntennaUplinkConfig', request_name => 'antennaUplinkConfig', traits => ['NameInRequest']);
   has DataflowEndpointConfig => (is => 'ro', isa => 'Paws::GroundStation::DataflowEndpointConfig', request_name => 'dataflowEndpointConfig', traits => ['NameInRequest']);
+  has S3RecordingConfig => (is => 'ro', isa => 'Paws::GroundStation::S3RecordingConfig', request_name => 's3RecordingConfig', traits => ['NameInRequest']);
   has TrackingConfig => (is => 'ro', isa => 'Paws::GroundStation::TrackingConfig', request_name => 'trackingConfig', traits => ['NameInRequest']);
   has UplinkEchoConfig => (is => 'ro', isa => 'Paws::GroundStation::UplinkEchoConfig', request_name => 'uplinkEchoConfig', traits => ['NameInRequest']);
 
@@ -66,6 +67,11 @@ uplink during a contact.
 =head2 DataflowEndpointConfig => L<Paws::GroundStation::DataflowEndpointConfig>
 
 Information about the dataflow endpoint C<Config>.
+
+
+=head2 S3RecordingConfig => L<Paws::GroundStation::S3RecordingConfig>
+
+Information about an S3 recording C<Config>.
 
 
 =head2 TrackingConfig => L<Paws::GroundStation::TrackingConfig>

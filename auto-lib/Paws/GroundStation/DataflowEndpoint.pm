@@ -2,6 +2,7 @@
 package Paws::GroundStation::DataflowEndpoint;
   use Moose;
   has Address => (is => 'ro', isa => 'Paws::GroundStation::SocketAddress', request_name => 'address', traits => ['NameInRequest']);
+  has Mtu => (is => 'ro', isa => 'Int', request_name => 'mtu', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 
@@ -43,6 +44,11 @@ Information about a dataflow endpoint.
 =head2 Address => L<Paws::GroundStation::SocketAddress>
 
 Socket address of a dataflow endpoint.
+
+
+=head2 Mtu => Int
+
+Maximum transmission unit (MTU) size in bytes of a dataflow endpoint.
 
 
 =head2 Name => Str

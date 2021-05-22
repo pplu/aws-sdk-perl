@@ -46,7 +46,27 @@ Frequency bandwidth units.
 
 =head2 B<REQUIRED> Value => Num
 
-Frequency bandwidth value.
+Frequency bandwidth value. AWS Ground Station currently has the
+following bandwidth limitations:
+
+=over
+
+=item *
+
+For C<AntennaDownlinkDemodDecodeconfig>, valid values are between 125
+kHz to 650 MHz.
+
+=item *
+
+For C<AntennaDownlinkconfig>, valid values are between 10 kHz to 54
+MHz.
+
+=item *
+
+For C<AntennaUplinkConfig>, valid values are between 10 kHz to 54 MHz.
+
+=back
+
 
 
 

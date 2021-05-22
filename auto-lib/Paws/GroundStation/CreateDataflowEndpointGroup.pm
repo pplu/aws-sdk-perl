@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Port => 1,
 
             },    # OPTIONAL
+            Mtu    => 1,               # min: 1400, max: 1500; OPTIONAL
             Name   => 'MySafeName',    # min: 1, max: 256; OPTIONAL
             Status => 'created'
             ,   # values: created, creating, deleted, deleting, failed; OPTIONAL
