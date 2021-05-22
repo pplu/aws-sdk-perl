@@ -62,7 +62,7 @@ You can set this parameter only on a queue level.
 An identifier for a message in this batch used to communicate the
 result.
 
-The C<Id>s of a batch request need to be unique within a request
+The C<Id>s of a batch request need to be unique within a request.
 
 This identifier can have up to 80 characters. The following characters
 are accepted: alphanumeric characters, hyphens(-), and underscores (_).
@@ -72,7 +72,7 @@ are accepted: alphanumeric characters, hyphens(-), and underscores (_).
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
@@ -213,7 +213,7 @@ consists of a C<Name>, C<Type>, and C<Value>.
 
 Currently, the only supported message system attribute is
 C<AWSTraceHeader>. Its type must be C<String> and its value must be a
-correctly formatted AWS X-Ray trace string.
+correctly formatted AWS X-Ray trace header string.
 
 =item *
 

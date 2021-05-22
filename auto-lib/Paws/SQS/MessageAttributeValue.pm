@@ -68,7 +68,7 @@ C<StringValue>.
 
 You can also append custom labels. For more information, see Amazon SQS
 Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 

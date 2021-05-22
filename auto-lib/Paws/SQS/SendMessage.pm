@@ -40,9 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MessageAttributes => {
         'MyString' => {
           DataType         => 'MyString',
-          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
-          BinaryValue      => 'BlobBinary',
-          StringListValues => [ 'MyString', ... ],      # OPTIONAL
+          BinaryListValues => [
+            'BlobBinary', ...            # OPTIONAL
+          ],                             # OPTIONAL
+          BinaryValue      => 'BlobBinary',           # OPTIONAL
+          StringListValues => [ 'MyString', ... ],    # OPTIONAL
           StringValue      => 'MyString',
         },
       },    # OPTIONAL
@@ -51,9 +53,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MessageSystemAttributes => {
         'AWSTraceHeader' => {
           DataType         => 'MyString',
-          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
-          BinaryValue      => 'BlobBinary',
-          StringListValues => [ 'MyString', ... ],      # OPTIONAL
+          BinaryListValues => [
+            'BlobBinary', ...                   # OPTIONAL
+          ],                                    # OPTIONAL
+          BinaryValue      => 'BlobBinary',           # OPTIONAL
+          StringListValues => [ 'MyString', ... ],    # OPTIONAL
           StringValue      => 'MyString',
         },    # key: values: AWSTraceHeader
       },    # OPTIONAL
@@ -92,14 +96,15 @@ You can set this parameter only on a queue level.
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 
 =head2 B<REQUIRED> MessageBody => Str
 
-The message to send. The maximum string size is 256 KB.
+The message to send. The minimum size is one character. The maximum
+size is 256 KB.
 
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
@@ -182,7 +187,7 @@ deduplication interval, Amazon SQS can't detect duplicate messages.
 Amazon SQS continues to keep track of the message deduplication ID even
 after the message is received and deleted.
 
-The length of C<MessageDeduplicationId> is 128 characters.
+The maximum length of C<MessageDeduplicationId> is 128 characters.
 C<MessageDeduplicationId> can contain alphanumeric characters (C<a-z>,
 C<A-Z>, C<0-9>) and punctuation
 (C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
@@ -247,7 +252,7 @@ consists of a C<Name>, C<Type>, and C<Value>.
 
 Currently, the only supported message system attribute is
 C<AWSTraceHeader>. Its type must be C<String> and its value must be a
-correctly formatted AWS X-Ray trace string.
+correctly formatted AWS X-Ray trace header string.
 
 =item *
 

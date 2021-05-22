@@ -29,9 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $sqs = Paws->service('SQS');
-    # Create an SQS queue
-    # The following operation creates an SQS queue named MyQueue.
-    my $CreateQueueResult = $sqs->CreateQueue( 'QueueName' => 'MyQueue' );
+    my $CreateQueueResult = $sqs->CreateQueue(
+      QueueName  => 'MyString',
+      Attributes => {
+        'All' => 'MyString'
+        , # key: values: All, Policy, VisibilityTimeout, MaximumMessageSize, MessageRetentionPeriod, ApproximateNumberOfMessages, ApproximateNumberOfMessagesNotVisible, CreatedTimestamp, LastModifiedTimestamp, QueueArn, ApproximateNumberOfMessagesDelayed, DelaySeconds, ReceiveMessageWaitTimeSeconds, RedrivePolicy, FifoQueue, ContentBasedDeduplication, KmsMasterKeyId, KmsDataKeyReusePeriodSeconds, DeduplicationScope, FifoThroughputLimit
+      },    # OPTIONAL
+      Tags => { 'MyTagKey' => 'MyTagValue', },    # OPTIONAL
+    );
 
     # Results:
     my $QueueUrl = $CreateQueueResult->QueueUrl;
@@ -55,42 +60,43 @@ request parameters that the C<CreateQueue> action uses:
 
 =item *
 
-C<DelaySeconds> - The length of time, in seconds, for which the
+C<DelaySeconds> E<ndash> The length of time, in seconds, for which the
 delivery of all messages in the queue is delayed. Valid values: An
 integer from 0 to 900 seconds (15 minutes). Default: 0.
 
 =item *
 
-C<MaximumMessageSize> - The limit of how many bytes a message can
-contain before Amazon SQS rejects it. Valid values: An integer from
+C<MaximumMessageSize> E<ndash> The limit of how many bytes a message
+can contain before Amazon SQS rejects it. Valid values: An integer from
 1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144 (256
 KiB).
 
 =item *
 
-C<MessageRetentionPeriod> - The length of time, in seconds, for which
-Amazon SQS retains a message. Valid values: An integer from 60 seconds
-(1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4 days).
+C<MessageRetentionPeriod> E<ndash> The length of time, in seconds, for
+which Amazon SQS retains a message. Valid values: An integer from 60
+seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4
+days).
 
 =item *
 
-C<Policy> - The queue's policy. A valid AWS policy. For more
+C<Policy> E<ndash> The queue's policy. A valid AWS policy. For more
 information about policy structure, see Overview of AWS IAM Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
 in the I<Amazon IAM User Guide>.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - The length of time, in seconds, for
-which a C< ReceiveMessage > action waits for a message to arrive. Valid
-values: An integer from 0 to 20 (seconds). Default: 0.
+C<ReceiveMessageWaitTimeSeconds> E<ndash> The length of time, in
+seconds, for which a C< ReceiveMessage > action waits for a message to
+arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
 
 =item *
 
-C<RedrivePolicy> - The string that includes the parameters for the
-dead-letter queue functionality of the source queue. For more
-information about the redrive policy and dead-letter queues, see Using
-Amazon SQS Dead-Letter Queues
+C<RedrivePolicy> E<ndash> The string that includes the parameters for
+the dead-letter queue functionality of the source queue as a JSON
+object. For more information about the redrive policy and dead-letter
+queues, see Using Amazon SQS Dead-Letter Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
@@ -98,15 +104,15 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 
 =item *
 
-C<deadLetterTargetArn> - The Amazon Resource Name (ARN) of the
+C<deadLetterTargetArn> E<ndash> The Amazon Resource Name (ARN) of the
 dead-letter queue to which Amazon SQS moves messages after the value of
 C<maxReceiveCount> is exceeded.
 
 =item *
 
-C<maxReceiveCount> - The number of times a message is delivered to the
-source queue before being moved to the dead-letter queue. When the
-C<ReceiveCount> for a message exceeds the C<maxReceiveCount> for a
+C<maxReceiveCount> E<ndash> The number of times a message is delivered
+to the source queue before being moved to the dead-letter queue. When
+the C<ReceiveCount> for a message exceeds the C<maxReceiveCount> for a
 queue, Amazon SQS moves the message to the dead-letter-queue.
 
 =back
@@ -117,7 +123,7 @@ standard queue.
 
 =item *
 
-C<VisibilityTimeout> - The visibility timeout for the queue, in
+C<VisibilityTimeout> E<ndash> The visibility timeout for the queue, in
 seconds. Valid values: An integer from 0 to 43,200 (12 hours). Default:
 30. For more information about the visibility timeout, see Visibility
 Timeout
@@ -133,8 +139,9 @@ The following attributes apply only to server-side-encryption
 
 =item *
 
-C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
-for Amazon SQS or a custom CMK. For more information, see Key Terms
+C<KmsMasterKeyId> E<ndash> The ID of an AWS-managed customer master key
+(CMK) for Amazon SQS or a custom CMK. For more information, see Key
+Terms
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 While the alias of the AWS-managed CMK for Amazon SQS is always
 C<alias/aws/sqs>, the alias of a custom CMK can, for example, be
@@ -144,8 +151,8 @@ in the I<AWS Key Management Service API Reference>.
 
 =item *
 
-C<KmsDataKeyReusePeriodSeconds> - The length of time, in seconds, for
-which Amazon SQS can reuse a data key
+C<KmsDataKeyReusePeriodSeconds> E<ndash> The length of time, in
+seconds, for which Amazon SQS can reuse a data key
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 to encrypt or decrypt messages before calling AWS KMS again. An integer
 representing seconds, between 60 seconds (1 minute) and 86,400 seconds
@@ -164,12 +171,12 @@ The following attributes apply only to FIFO (first-in-first-out) queues
 
 =item *
 
-C<FifoQueue> - Designates a queue as FIFO. Valid values: C<true>,
-C<false>. If you don't specify the C<FifoQueue> attribute, Amazon SQS
-creates a standard queue. You can provide this attribute only during
-queue creation. You can't change it for an existing queue. When you set
-this attribute, you must also provide the C<MessageGroupId> for your
-messages explicitly.
+C<FifoQueue> E<ndash> Designates a queue as FIFO. Valid values are
+C<true> and C<false>. If you don't specify the C<FifoQueue> attribute,
+Amazon SQS creates a standard queue. You can provide this attribute
+only during queue creation. You can't change it for an existing queue.
+When you set this attribute, you must also provide the
+C<MessageGroupId> for your messages explicitly.
 
 For more information, see FIFO Queue Logic
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
@@ -177,17 +184,18 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 
 =item *
 
-C<ContentBasedDeduplication> - Enables content-based deduplication.
-Valid values: C<true>, C<false>. For more information, see Exactly-Once
-Processing
+C<ContentBasedDeduplication> E<ndash> Enables content-based
+deduplication. Valid values are C<true> and C<false>. For more
+information, see Exactly-Once Processing
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon Simple Queue Service Developer Guide>. Note the
+following:
 
 =over
 
 =item *
 
-Every message must have a unique C<MessageDeduplicationId>,
+Every message must have a unique C<MessageDeduplicationId>.
 
 =over
 
@@ -232,6 +240,79 @@ delivered.
 
 =back
 
+B<Preview: High throughput for FIFO queues>
+
+B<High throughput for Amazon SQS FIFO queues is in preview release and
+is subject to change.> This feature provides a high number of
+transactions per second (TPS) for messages in FIFO queues. For
+information on throughput quotas, see Quotas related to messages
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
+
+This preview includes two new attributes:
+
+=over
+
+=item *
+
+C<DeduplicationScope> E<ndash> Specifies whether message deduplication
+occurs at the message group or queue level. Valid values are
+C<messageGroup> and C<queue>.
+
+=item *
+
+C<FifoThroughputLimit> E<ndash> Specifies whether the FIFO queue
+throughput quota applies to the entire queue or per message group.
+Valid values are C<perQueue> and C<perMessageGroupId>. The
+C<perMessageGroupId> value is allowed only when the value for
+C<DeduplicationScope> is C<messageGroup>.
+
+=back
+
+To enable high throughput for FIFO queues, do the following:
+
+=over
+
+=item *
+
+Set C<DeduplicationScope> to C<messageGroup>.
+
+=item *
+
+Set C<FifoThroughputLimit> to C<perMessageGroupId>.
+
+=back
+
+If you set these attributes to anything other than the values shown for
+enabling high throughput, standard throughput is in effect and
+deduplication occurs as specified.
+
+This preview is available in the following AWS Regions:
+
+=over
+
+=item *
+
+US East (Ohio); us-east-2
+
+=item *
+
+US East (N. Virginia); us-east-1
+
+=item *
+
+US West (Oregon); us-west-2
+
+=item *
+
+Europe (Ireland); eu-west-1
+
+=back
+
+For more information about high throughput for FIFO queues, see
+Preview: High throughput for FIFO queues
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 
@@ -299,8 +380,8 @@ To be able to tag a queue on creation, you must have the
 C<sqs:CreateQueue> and C<sqs:TagQueue> permissions.
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 in the I<Amazon Simple Queue Service Developer Guide>.
 

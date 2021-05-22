@@ -61,7 +61,7 @@ action.
 =head2 B<REQUIRED> VisibilityTimeout => Int
 
 The new value for the message's visibility timeout (in seconds). Values
-values: C<0> to C<43200>. Maximum: 12 hours.
+range: C<0> to C<43200>. Maximum: 12 hours.
 
 
 

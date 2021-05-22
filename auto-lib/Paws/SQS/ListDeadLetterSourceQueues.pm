@@ -1,6 +1,8 @@
 
 package Paws::SQS::ListDeadLetterSourceQueues;
   use Moose;
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,11 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $sqs = Paws->service('SQS');
     my $ListDeadLetterSourceQueuesResult = $sqs->ListDeadLetterSourceQueues(
-      QueueUrl => 'MyString',
-
+      QueueUrl   => 'MyString',
+      MaxResults => 1,            # OPTIONAL
+      NextToken  => 'MyToken',    # OPTIONAL
     );
 
     # Results:
+    my $NextToken = $ListDeadLetterSourceQueuesResult->NextToken;
     my $QueueUrls = $ListDeadLetterSourceQueuesResult->QueueUrls;
 
     # Returns a L<Paws::SQS::ListDeadLetterSourceQueuesResult> object.
@@ -41,6 +45,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs/ListDeadLetterSourceQueues>
 
 =head1 ATTRIBUTES
+
+
+=head2 MaxResults => Int
+
+Maximum number of results to include in the response. Value range is 1
+to 1000. You must set C<MaxResults> to receive a value for C<NextToken>
+in the response.
+
+
+
+=head2 NextToken => Str
+
+Pagination token to request the next set of results.
+
 
 
 =head2 B<REQUIRED> QueueUrl => Str

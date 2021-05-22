@@ -57,76 +57,87 @@ can handle new attributes gracefully.
 
 The following attributes are supported:
 
+The C<ApproximateNumberOfMessagesDelayed>,
+C<ApproximateNumberOfMessagesNotVisible>, and
+C<ApproximateNumberOfMessagesVisible> metrics may not achieve
+consistency until at least 1 minute after the producers stop sending
+messages. This period is required for the queue metadata to reach
+eventual consistency.
+
 =over
 
 =item *
 
-C<All> - Returns all values.
+C<All> E<ndash> Returns all values.
 
 =item *
 
-C<ApproximateNumberOfMessages> - Returns the approximate number of
-messages available for retrieval from the queue.
+C<ApproximateNumberOfMessages> E<ndash> Returns the approximate number
+of messages available for retrieval from the queue.
 
 =item *
 
-C<ApproximateNumberOfMessagesDelayed> - Returns the approximate number
-of messages in the queue that are delayed and not available for reading
-immediately. This can happen when the queue is configured as a delay
-queue or when a message has been sent with a delay parameter.
+C<ApproximateNumberOfMessagesDelayed> E<ndash> Returns the approximate
+number of messages in the queue that are delayed and not available for
+reading immediately. This can happen when the queue is configured as a
+delay queue or when a message has been sent with a delay parameter.
 
 =item *
 
-C<ApproximateNumberOfMessagesNotVisible> - Returns the approximate
-number of messages that are in flight. Messages are considered to be
-I<in flight> if they have been sent to a client but have not yet been
-deleted or have not yet reached the end of their visibility window.
+C<ApproximateNumberOfMessagesNotVisible> E<ndash> Returns the
+approximate number of messages that are in flight. Messages are
+considered to be I<in flight> if they have been sent to a client but
+have not yet been deleted or have not yet reached the end of their
+visibility window.
 
 =item *
 
-C<CreatedTimestamp> - Returns the time when the queue was created in
-seconds (epoch time (http://en.wikipedia.org/wiki/Unix_time)).
-
-=item *
-
-C<DelaySeconds> - Returns the default delay on the queue in seconds.
-
-=item *
-
-C<LastModifiedTimestamp> - Returns the time when the queue was last
-changed in seconds (epoch time
+C<CreatedTimestamp> E<ndash> Returns the time when the queue was
+created in seconds (epoch time
 (http://en.wikipedia.org/wiki/Unix_time)).
 
 =item *
 
-C<MaximumMessageSize> - Returns the limit of how many bytes a message
-can contain before Amazon SQS rejects it.
+C<DelaySeconds> E<ndash> Returns the default delay on the queue in
+seconds.
 
 =item *
 
-C<MessageRetentionPeriod> - Returns the length of time, in seconds, for
-which Amazon SQS retains a message.
+C<LastModifiedTimestamp> E<ndash> Returns the time when the queue was
+last changed in seconds (epoch time
+(http://en.wikipedia.org/wiki/Unix_time)).
 
 =item *
 
-C<Policy> - Returns the policy of the queue.
+C<MaximumMessageSize> E<ndash> Returns the limit of how many bytes a
+message can contain before Amazon SQS rejects it.
 
 =item *
 
-C<QueueArn> - Returns the Amazon resource name (ARN) of the queue.
+C<MessageRetentionPeriod> E<ndash> Returns the length of time, in
+seconds, for which Amazon SQS retains a message.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - Returns the length of time, in
-seconds, for which the C<ReceiveMessage> action waits for a message to
-arrive.
+C<Policy> E<ndash> Returns the policy of the queue.
 
 =item *
 
-C<RedrivePolicy> - Returns the string that includes the parameters for
-dead-letter queue functionality of the source queue. For more
-information about the redrive policy and dead-letter queues, see Using
-Amazon SQS Dead-Letter Queues
+C<QueueArn> E<ndash> Returns the Amazon resource name (ARN) of the
+queue.
+
+=item *
+
+C<ReceiveMessageWaitTimeSeconds> E<ndash> Returns the length of time,
+in seconds, for which the C<ReceiveMessage> action waits for a message
+to arrive.
+
+=item *
+
+C<RedrivePolicy> E<ndash> The string that includes the parameters for
+the dead-letter queue functionality of the source queue as a JSON
+object. For more information about the redrive policy and dead-letter
+queues, see Using Amazon SQS Dead-Letter Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
@@ -134,24 +145,24 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 
 =item *
 
-C<deadLetterTargetArn> - The Amazon Resource Name (ARN) of the
+C<deadLetterTargetArn> E<ndash> The Amazon Resource Name (ARN) of the
 dead-letter queue to which Amazon SQS moves messages after the value of
 C<maxReceiveCount> is exceeded.
 
 =item *
 
-C<maxReceiveCount> - The number of times a message is delivered to the
-source queue before being moved to the dead-letter queue. When the
-C<ReceiveCount> for a message exceeds the C<maxReceiveCount> for a
+C<maxReceiveCount> E<ndash> The number of times a message is delivered
+to the source queue before being moved to the dead-letter queue. When
+the C<ReceiveCount> for a message exceeds the C<maxReceiveCount> for a
 queue, Amazon SQS moves the message to the dead-letter-queue.
 
 =back
 
 =item *
 
-C<VisibilityTimeout> - Returns the visibility timeout for the queue.
-For more information about the visibility timeout, see Visibility
-Timeout
+C<VisibilityTimeout> E<ndash> Returns the visibility timeout for the
+queue. For more information about the visibility timeout, see
+Visibility Timeout
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
@@ -164,14 +175,14 @@ The following attributes apply only to server-side-encryption
 
 =item *
 
-C<KmsMasterKeyId> - Returns the ID of an AWS-managed customer master
-key (CMK) for Amazon SQS or a custom CMK. For more information, see Key
-Terms
+C<KmsMasterKeyId> E<ndash> Returns the ID of an AWS-managed customer
+master key (CMK) for Amazon SQS or a custom CMK. For more information,
+see Key Terms
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 
 =item *
 
-C<KmsDataKeyReusePeriodSeconds> - Returns the length of time, in
+C<KmsDataKeyReusePeriodSeconds> E<ndash> Returns the length of time, in
 seconds, for which Amazon SQS can reuse a data key to encrypt or
 decrypt messages before calling AWS KMS again. For more information,
 see How Does the Data Key Reuse Period Work?
@@ -186,8 +197,8 @@ The following attributes apply only to FIFO (first-in-first-out) queues
 
 =item *
 
-C<FifoQueue> - Returns whether the queue is FIFO. For more information,
-see FIFO Queue Logic
+C<FifoQueue> E<ndash> Returns information about whether the queue is
+FIFO. For more information, see FIFO Queue Logic
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
@@ -197,7 +208,7 @@ you can check whether C<QueueName> ends with the C<.fifo> suffix.
 
 =item *
 
-C<ContentBasedDeduplication> - Returns whether content-based
+C<ContentBasedDeduplication> E<ndash> Returns whether content-based
 deduplication is enabled for the queue. For more information, see
 Exactly-Once Processing
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
@@ -205,6 +216,79 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 
+B<Preview: High throughput for FIFO queues>
+
+B<High throughput for Amazon SQS FIFO queues is in preview release and
+is subject to change.> This feature provides a high number of
+transactions per second (TPS) for messages in FIFO queues. For
+information on throughput quotas, see Quotas related to messages
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
+
+This preview includes two new attributes:
+
+=over
+
+=item *
+
+C<DeduplicationScope> E<ndash> Specifies whether message deduplication
+occurs at the message group or queue level. Valid values are
+C<messageGroup> and C<queue>.
+
+=item *
+
+C<FifoThroughputLimit> E<ndash> Specifies whether the FIFO queue
+throughput quota applies to the entire queue or per message group.
+Valid values are C<perQueue> and C<perMessageGroupId>. The
+C<perMessageGroupId> value is allowed only when the value for
+C<DeduplicationScope> is C<messageGroup>.
+
+=back
+
+To enable high throughput for FIFO queues, do the following:
+
+=over
+
+=item *
+
+Set C<DeduplicationScope> to C<messageGroup>.
+
+=item *
+
+Set C<FifoThroughputLimit> to C<perMessageGroupId>.
+
+=back
+
+If you set these attributes to anything other than the values shown for
+enabling high throughput, standard throughput is in effect and
+deduplication occurs as specified.
+
+This preview is available in the following AWS Regions:
+
+=over
+
+=item *
+
+US East (Ohio); us-east-2
+
+=item *
+
+US East (N. Virginia); us-east-1
+
+=item *
+
+US West (Oregon); us-west-2
+
+=item *
+
+Europe (Ireland); eu-west-1
+
+=back
+
+For more information about high throughput for FIFO queues, see
+Preview: High throughput for FIFO queues
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 

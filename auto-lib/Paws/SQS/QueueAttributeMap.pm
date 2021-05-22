@@ -12,8 +12,10 @@ package Paws::SQS::QueueAttributeMap;
   has ApproximateNumberOfMessagesNotVisible => (is => 'ro', isa => 'Str');
   has ContentBasedDeduplication => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
+  has DeduplicationScope => (is => 'ro', isa => 'Str');
   has DelaySeconds => (is => 'ro', isa => 'Str');
   has FifoQueue => (is => 'ro', isa => 'Str');
+  has FifoThroughputLimit => (is => 'ro', isa => 'Str');
   has KmsDataKeyReusePeriodSeconds => (is => 'ro', isa => 'Str');
   has KmsMasterKeyId => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
@@ -77,10 +79,16 @@ This class has no description
 =head2 CreatedTimestamp => Str
 
 
+=head2 DeduplicationScope => Str
+
+
 =head2 DelaySeconds => Str
 
 
 =head2 FifoQueue => Str
+
+
+=head2 FifoThroughputLimit => Str
 
 
 =head2 KmsDataKeyReusePeriodSeconds => Str

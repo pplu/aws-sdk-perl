@@ -28,11 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $sqs = Paws->service('SQS');
-    # Retrieve queue attributes from an SQS queue
-    # The following example retrieves the queue ARN.
     my $GetQueueUrlResult = $sqs->GetQueueUrl(
-      'QueueName'              => 'MyQueue',
-      'QueueOwnerAWSAccountId' => 12345678910
+      QueueName              => 'MyString',
+      QueueOwnerAWSAccountId => 'MyString',    # OPTIONAL
     );
 
     # Results:
