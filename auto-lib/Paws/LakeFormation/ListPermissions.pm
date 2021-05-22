@@ -46,28 +46,53 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         DataLocation => {
           ResourceArn => 'MyResourceArnString',
-
+          CatalogId   => 'MyCatalogIdString',     # min: 1, max: 255
         },    # OPTIONAL
         Database => {
-          Name => 'MyNameString',    # min: 1, max: 255
+          Name      => 'MyNameString',         # min: 1, max: 255
+          CatalogId => 'MyCatalogIdString',    # min: 1, max: 255
+        },    # OPTIONAL
+        LFTag => {
+          TagKey    => 'MyNameString',    # min: 1, max: 255
+          TagValues => [
+            'MyLFTagValue', ...           # max: 256
+          ],                              # min: 1, max: 50
+          CatalogId => 'MyCatalogIdString',    # min: 1, max: 255
+        },    # OPTIONAL
+        LFTagPolicy => {
+          Expression => [
+            {
+              TagKey    => 'MyLFTagKey',    # min: 1, max: 128
+              TagValues => [
+                'MyLFTagValue', ...         # max: 256
+              ],                            # min: 1, max: 50
 
+            },
+            ...
+          ],                                # min: 1, max: 5
+          ResourceType => 'DATABASE',             # values: DATABASE, TABLE
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255
         },    # OPTIONAL
         Table => {
-          DatabaseName => 'MyNameString',    # min: 1, max: 255
-          Name         => 'MyNameString',    # min: 1, max: 255
+          DatabaseName  => 'MyNameString',         # min: 1, max: 255
+          CatalogId     => 'MyCatalogIdString',    # min: 1, max: 255
+          Name          => 'MyNameString',         # min: 1, max: 255
+          TableWildcard => {
 
+          },                                       # OPTIONAL
         },    # OPTIONAL
         TableWithColumns => {
-          ColumnNames => [
-            'MyNameString', ...    # min: 1, max: 255
-          ],                       # OPTIONAL
+          DatabaseName => 'MyNameString',         # min: 1, max: 255
+          Name         => 'MyNameString',         # min: 1, max: 255
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255
+          ColumnNames  => [
+            'MyNameString', ...                   # min: 1, max: 255
+          ],                                      # OPTIONAL
           ColumnWildcard => {
             ExcludedColumnNames => [
-              'MyNameString', ...    # min: 1, max: 255
-            ],                       # OPTIONAL
+              'MyNameString', ...                 # min: 1, max: 255
+            ],                                    # OPTIONAL
           },    # OPTIONAL
-          DatabaseName => 'MyNameString',    # min: 1, max: 255
-          Name         => 'MyNameString',    # min: 1, max: 255
         },    # OPTIONAL
       },    # OPTIONAL
       ResourceType => 'CATALOG',    # OPTIONAL
@@ -128,7 +153,7 @@ returns the table and the table w columns.
 
 Specifies a resource type to filter the permissions returned.
 
-Valid values are: C<"CATALOG">, C<"DATABASE">, C<"TABLE">, C<"DATA_LOCATION">
+Valid values are: C<"CATALOG">, C<"DATABASE">, C<"TABLE">, C<"DATA_LOCATION">, C<"LF_TAG">, C<"LF_TAG_POLICY">, C<"LF_TAG_POLICY_DATABASE">, C<"LF_TAG_POLICY_TABLE">
 
 
 =head1 SEE ALSO

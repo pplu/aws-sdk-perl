@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RevokePermissionsResponse = $lakeformation->RevokePermissions(
       Permissions => [
         'ALL',
-        ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+        ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
       ],
       Principal => {
         DataLakePrincipalIdentifier =>
@@ -46,34 +46,59 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },                                # OPTIONAL
         DataLocation => {
           ResourceArn => 'MyResourceArnString',
-
-        },                                # OPTIONAL
+          CatalogId   => 'MyCatalogIdString',     # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
         Database => {
-          Name => 'MyNameString',         # min: 1, max: 255
+          Name      => 'MyNameString',         # min: 1, max: 255
+          CatalogId => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
+        LFTag => {
+          TagKey    => 'MyNameString',    # min: 1, max: 255
+          TagValues => [
+            'MyLFTagValue', ...           # max: 256
+          ],                              # min: 1, max: 50
+          CatalogId => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
+        LFTagPolicy => {
+          Expression => [
+            {
+              TagKey    => 'MyLFTagKey',    # min: 1, max: 128
+              TagValues => [
+                'MyLFTagValue', ...         # max: 256
+              ],                            # min: 1, max: 50
 
+            },
+            ...
+          ],                                # min: 1, max: 5
+          ResourceType => 'DATABASE',             # values: DATABASE, TABLE
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
         },    # OPTIONAL
         Table => {
-          DatabaseName => 'MyNameString',    # min: 1, max: 255
-          Name         => 'MyNameString',    # min: 1, max: 255
+          DatabaseName  => 'MyNameString',         # min: 1, max: 255
+          CatalogId     => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+          Name          => 'MyNameString',         # min: 1, max: 255
+          TableWildcard => {
 
+          },                                       # OPTIONAL
         },    # OPTIONAL
         TableWithColumns => {
-          ColumnNames => [
-            'MyNameString', ...    # min: 1, max: 255
-          ],                       # OPTIONAL
+          DatabaseName => 'MyNameString',         # min: 1, max: 255
+          Name         => 'MyNameString',         # min: 1, max: 255
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+          ColumnNames  => [
+            'MyNameString', ...                   # min: 1, max: 255
+          ],                                      # OPTIONAL
           ColumnWildcard => {
             ExcludedColumnNames => [
-              'MyNameString', ...    # min: 1, max: 255
-            ],                       # OPTIONAL
+              'MyNameString', ...                 # min: 1, max: 255
+            ],                                    # OPTIONAL
           },    # OPTIONAL
-          DatabaseName => 'MyNameString',    # min: 1, max: 255
-          Name         => 'MyNameString',    # min: 1, max: 255
         },    # OPTIONAL
       },
       CatalogId                  => 'MyCatalogIdString',    # OPTIONAL
       PermissionsWithGrantOption => [
         'ALL',
-        ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+        ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
       ],    # OPTIONAL
     );
 
@@ -97,7 +122,7 @@ your AWS Lake Formation environment.
 The permissions revoked to the principal on the resource. For
 information about permissions, see Security and Access Control to
 Metadata and Data
-(https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html).
+(https://docs-aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
 
 
 

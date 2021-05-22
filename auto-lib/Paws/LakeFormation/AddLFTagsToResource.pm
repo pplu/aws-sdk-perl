@@ -1,16 +1,14 @@
 
-package Paws::LakeFormation::GrantPermissions;
+package Paws::LakeFormation::AddLFTagsToResource;
   use Moose;
   has CatalogId => (is => 'ro', isa => 'Str');
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has PermissionsWithGrantOption => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal', required => 1);
+  has LFTags => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::LFTagPair]', required => 1);
   has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GrantPermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::GrantPermissionsResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddLFTagsToResource');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::AddLFTagsToResourceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -18,32 +16,34 @@ package Paws::LakeFormation::GrantPermissions;
 
 =head1 NAME
 
-Paws::LakeFormation::GrantPermissions - Arguments for method GrantPermissions on L<Paws::LakeFormation>
+Paws::LakeFormation::AddLFTagsToResource - Arguments for method AddLFTagsToResource on L<Paws::LakeFormation>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GrantPermissions on the
+This class represents the parameters used for calling the method AddLFTagsToResource on the
 L<AWS Lake Formation|Paws::LakeFormation> service. Use the attributes of this class
-as arguments to method GrantPermissions.
+as arguments to method AddLFTagsToResource.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GrantPermissions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddLFTagsToResource.
 
 =head1 SYNOPSIS
 
     my $lakeformation = Paws->service('LakeFormation');
-    my $GrantPermissionsResponse = $lakeformation->GrantPermissions(
-      Permissions => [
-        'ALL',
-        ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
+    my $AddLFTagsToResourceResponse = $lakeformation->AddLFTagsToResource(
+      LFTags => [
+        {
+          TagKey    => 'MyLFTagKey',    # min: 1, max: 128
+          TagValues => [
+            'MyLFTagValue', ...         # max: 256
+          ],                            # min: 1, max: 50
+          CatalogId => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+        },
+        ...
       ],
-      Principal => {
-        DataLakePrincipalIdentifier =>
-          'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
-      },
       Resource => {
         Catalog => {
 
-        },                                # OPTIONAL
+        },    # OPTIONAL
         DataLocation => {
           ResourceArn => 'MyResourceArnString',
           CatalogId   => 'MyCatalogIdString',     # min: 1, max: 255; OPTIONAL
@@ -95,15 +95,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
       },
-      CatalogId                  => 'MyCatalogIdString',    # OPTIONAL
-      PermissionsWithGrantOption => [
-        'ALL',
-        ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
-      ],    # OPTIONAL
+      CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
 
+    # Results:
+    my $Failures = $AddLFTagsToResourceResponse->Failures;
+
+    # Returns a L<Paws::LakeFormation::AddLFTagsToResourceResponse> object.
+
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lakeformation/GrantPermissions>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lakeformation/AddLFTagsToResource>
 
 =head1 ATTRIBUTES
 
@@ -117,47 +118,22 @@ your AWS Lake Formation environment.
 
 
 
-=head2 B<REQUIRED> Permissions => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> LFTags => ArrayRef[L<Paws::LakeFormation::LFTagPair>]
 
-The permissions granted to the principal on the resource. AWS Lake
-Formation defines privileges to grant and revoke access to metadata in
-the Data Catalog and data organized in underlying data storage such as
-Amazon S3. AWS Lake Formation requires that each principal be
-authorized to perform a specific task on AWS Lake Formation resources.
-
-
-
-=head2 PermissionsWithGrantOption => ArrayRef[Str|Undef]
-
-Indicates a list of the granted permissions that the principal may pass
-to other users. These permissions may only be a subset of the
-permissions granted in the C<Privileges>.
-
-
-
-=head2 B<REQUIRED> Principal => L<Paws::LakeFormation::DataLakePrincipal>
-
-The principal to be granted the permissions on the resource. Supported
-principals are IAM users or IAM roles, and they are defined by their
-principal type and their ARN.
-
-Note that if you define a resource with a particular ARN, then later
-delete, and recreate a resource with that same ARN, the resource
-maintains the permissions already granted.
+The tags to attach to the resource.
 
 
 
 =head2 B<REQUIRED> Resource => L<Paws::LakeFormation::Resource>
 
-The resource to which permissions are to be granted. Resources in AWS
-Lake Formation are the Data Catalog, databases, and tables.
+The resource to which to attach a tag.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GrantPermissions in L<Paws::LakeFormation>
+This class forms part of L<Paws>, documenting arguments for method AddLFTagsToResource in L<Paws::LakeFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -16,7 +16,8 @@ Paws::LakeFormation::GetDataLakeSettingsResponse
 
 =head2 DataLakeSettings => L<Paws::LakeFormation::DataLakeSettings>
 
-A list of AWS Lake Formation principals.
+A structure representing a list of AWS Lake Formation principals
+designated as data lake administrators.
 
 
 =head2 _request_id => Str

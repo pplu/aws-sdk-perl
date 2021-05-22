@@ -34,37 +34,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Permissions => [
               'ALL',
-              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
             ],    # OPTIONAL
             Principal => {
               DataLakePrincipalIdentifier =>
                 'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
-            },    # OPTIONAL
+            },
           },
           ...
-        ],        # OPTIONAL
+        ],                                      # OPTIONAL
         CreateTableDefaultPermissions => [
           {
             Permissions => [
               'ALL',
-              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
             ],    # OPTIONAL
             Principal => {
               DataLakePrincipalIdentifier =>
                 'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
-            },    # OPTIONAL
+            },
           },
           ...
-        ],        # OPTIONAL
+        ],                                      # OPTIONAL
         DataLakeAdmins => [
           {
             DataLakePrincipalIdentifier =>
-              'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
+              'MyDataLakePrincipalString',      # min: 1, max: 255; OPTIONAL
           },
-          ...                                 # OPTIONAL
-        ],                                    # max: 10; OPTIONAL
+          ...
+        ],                                      # max: 10; OPTIONAL
+        TrustedResourceOwners => [
+          'MyCatalogIdString', ...              # min: 1, max: 255
+        ],                                      # OPTIONAL
       },
-      CatalogId => 'MyCatalogIdString',       # OPTIONAL
+      CatalogId => 'MyCatalogIdString',         # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -84,7 +87,8 @@ your AWS Lake Formation environment.
 
 =head2 B<REQUIRED> DataLakeSettings => L<Paws::LakeFormation::DataLakeSettings>
 
-A list of AWS Lake Formation principals.
+A structure representing a list of AWS Lake Formation principals
+designated as data lake administrators.
 
 
 

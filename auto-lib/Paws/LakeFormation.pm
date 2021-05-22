@@ -15,6 +15,11 @@ package Paws::LakeFormation;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub AddLFTagsToResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::AddLFTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGrantPermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LakeFormation::BatchGrantPermissions', @_);
@@ -23,6 +28,16 @@ package Paws::LakeFormation;
   sub BatchRevokePermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LakeFormation::BatchRevokePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateLFTag {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::CreateLFTag', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteLFTag {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::DeleteLFTag', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterResource {
@@ -45,9 +60,24 @@ package Paws::LakeFormation;
     my $call_object = $self->new_with_coercions('Paws::LakeFormation::GetEffectivePermissionsForPath', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLFTag {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::GetLFTag', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourceLFTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::GetResourceLFTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GrantPermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LakeFormation::GrantPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListLFTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::ListLFTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPermissions {
@@ -70,9 +100,29 @@ package Paws::LakeFormation;
     my $call_object = $self->new_with_coercions('Paws::LakeFormation::RegisterResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RemoveLFTagsFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::RemoveLFTagsFromResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RevokePermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LakeFormation::RevokePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchDatabasesByLFTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::SearchDatabasesByLFTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchTablesByLFTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::SearchTablesByLFTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateLFTag {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LakeFormation::UpdateLFTag', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateResource {
@@ -83,7 +133,7 @@ package Paws::LakeFormation;
   
 
 
-  sub operations { qw/BatchGrantPermissions BatchRevokePermissions DeregisterResource DescribeResource GetDataLakeSettings GetEffectivePermissionsForPath GrantPermissions ListPermissions ListResources PutDataLakeSettings RegisterResource RevokePermissions UpdateResource / }
+  sub operations { qw/AddLFTagsToResource BatchGrantPermissions BatchRevokePermissions CreateLFTag DeleteLFTag DeregisterResource DescribeResource GetDataLakeSettings GetEffectivePermissionsForPath GetLFTag GetResourceLFTags GrantPermissions ListLFTags ListPermissions ListResources PutDataLakeSettings RegisterResource RemoveLFTagsFromResource RevokePermissions SearchDatabasesByLFTags SearchTablesByLFTags UpdateLFTag UpdateResource / }
 
 1;
 
@@ -120,6 +170,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lak
 
 =head1 METHODS
 
+=head2 AddLFTagsToResource
+
+=over
+
+=item LFTags => ArrayRef[L<Paws::LakeFormation::LFTagPair>]
+
+=item Resource => L<Paws::LakeFormation::Resource>
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::AddLFTagsToResource>
+
+Returns: a L<Paws::LakeFormation::AddLFTagsToResourceResponse> instance
+
+Attaches one or more tags to an existing resource.
+
+
 =head2 BatchGrantPermissions
 
 =over
@@ -154,6 +224,50 @@ Each argument is described in detail in: L<Paws::LakeFormation::BatchRevokePermi
 Returns: a L<Paws::LakeFormation::BatchRevokePermissionsResponse> instance
 
 Batch operation to revoke permissions from the principal.
+
+
+=head2 CreateLFTag
+
+=over
+
+=item TagKey => Str
+
+=item TagValues => ArrayRef[Str|Undef]
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::CreateLFTag>
+
+Returns: a L<Paws::LakeFormation::CreateLFTagResponse> instance
+
+Creates a tag with the specified name and values.
+
+
+=head2 DeleteLFTag
+
+=over
+
+=item TagKey => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::DeleteLFTag>
+
+Returns: a L<Paws::LakeFormation::DeleteLFTagResponse> instance
+
+Deletes the specified tag key name. If the attribute key does not exist
+or the tag does not exist, then the operation will not do anything. If
+the attribute key exists, then the operation checks if any resources
+are tagged with this attribute key, if yes, the API throws a 400
+Exception with the message "Delete not allowed" as the tag key is still
+attached with resources. You can consider untagging resources with this
+tag key.
 
 
 =head2 DeregisterResource
@@ -205,7 +319,8 @@ Each argument is described in detail in: L<Paws::LakeFormation::GetDataLakeSetti
 
 Returns: a L<Paws::LakeFormation::GetDataLakeSettingsResponse> instance
 
-The AWS Lake Formation principal.
+Retrieves the list of the data lake administrators of a Lake
+Formation-managed data lake.
 
 
 =head2 GetEffectivePermissionsForPath
@@ -227,8 +342,48 @@ Each argument is described in detail in: L<Paws::LakeFormation::GetEffectivePerm
 
 Returns: a L<Paws::LakeFormation::GetEffectivePermissionsForPathResponse> instance
 
-Returns the permissions for a specified table or database resource
-located at a path in Amazon S3.
+Returns the Lake Formation permissions for a specified table or
+database resource located at a path in Amazon S3.
+C<GetEffectivePermissionsForPath> will not return databases and tables
+if the catalog is encrypted.
+
+
+=head2 GetLFTag
+
+=over
+
+=item TagKey => Str
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::GetLFTag>
+
+Returns: a L<Paws::LakeFormation::GetLFTagResponse> instance
+
+Returns a tag definition.
+
+
+=head2 GetResourceLFTags
+
+=over
+
+=item Resource => L<Paws::LakeFormation::Resource>
+
+=item [CatalogId => Str]
+
+=item [ShowAssignedLFTags => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::GetResourceLFTags>
+
+Returns: a L<Paws::LakeFormation::GetResourceLFTagsResponse> instance
+
+Returns the tags applied to a resource.
 
 
 =head2 GrantPermissions
@@ -258,7 +413,29 @@ S3.
 
 For information about permissions, see Security and Access Control to
 Metadata and Data
-(https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html).
+(https://docs-aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
+
+
+=head2 ListLFTags
+
+=over
+
+=item [CatalogId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceShareType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::ListLFTags>
+
+Returns: a L<Paws::LakeFormation::ListLFTagsResponse> instance
+
+Lists tags that the requester has permission to view.
 
 
 =head2 ListPermissions
@@ -294,7 +471,7 @@ granted.
 
 For information about permissions, see Security and Access Control to
 Metadata and Data
-(https://docs-aws.amazon.com/michigan/latest/dg/security-data-access.html).
+(https://docs-aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
 
 
 =head2 ListResources
@@ -332,7 +509,14 @@ Each argument is described in detail in: L<Paws::LakeFormation::PutDataLakeSetti
 
 Returns: a L<Paws::LakeFormation::PutDataLakeSettingsResponse> instance
 
-The AWS Lake Formation principal.
+Sets the list of data lake administrators who have admin privileges on
+all resources managed by Lake Formation. For more information on admin
+privileges, see Granting Lake Formation Permissions
+(https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html).
+
+This API replaces the current list of data lake admins with the new
+list being passed. To add an admin, fetch the current list and add the
+new admin to that list and pass that list in this API.
 
 
 =head2 RegisterResource
@@ -363,6 +547,39 @@ Lake Formation adds the first path to the inline policy and attaches it
 to the service-linked role. When you register subsequent paths, Lake
 Formation adds the path to the existing policy.
 
+The following request registers a new location and gives AWS Lake
+Formation permission to use the service-linked role to access that
+location.
+
+C<ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true>
+
+If C<UseServiceLinkedRole> is not set to true, you must provide or set
+the C<RoleArn>:
+
+C<arn:aws:iam::12345:role/my-data-access-role>
+
+
+=head2 RemoveLFTagsFromResource
+
+=over
+
+=item LFTags => ArrayRef[L<Paws::LakeFormation::LFTagPair>]
+
+=item Resource => L<Paws::LakeFormation::Resource>
+
+=item [CatalogId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::RemoveLFTagsFromResource>
+
+Returns: a L<Paws::LakeFormation::RemoveLFTagsFromResourceResponse> instance
+
+Removes a tag from the resource. Only database, table, or
+tableWithColumns resource are allowed. To tag columns, use the column
+inclusion list in C<tableWithColumns> to specify column input.
+
 
 =head2 RevokePermissions
 
@@ -388,6 +605,86 @@ Returns: a L<Paws::LakeFormation::RevokePermissionsResponse> instance
 Revokes permissions to the principal to access metadata in the Data
 Catalog and data organized in underlying data storage such as Amazon
 S3.
+
+
+=head2 SearchDatabasesByLFTags
+
+=over
+
+=item Expression => ArrayRef[L<Paws::LakeFormation::LFTag>]
+
+=item [CatalogId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::SearchDatabasesByLFTags>
+
+Returns: a L<Paws::LakeFormation::SearchDatabasesByLFTagsResponse> instance
+
+This operation allows a search on C<DATABASE> resources by
+C<TagCondition>. This operation is used by admins who want to grant
+user permissions on certain C<TagConditions>. Before making a grant,
+the admin can use C<SearchDatabasesByTags> to find all resources where
+the given C<TagConditions> are valid to verify whether the returned
+resources can be shared.
+
+
+=head2 SearchTablesByLFTags
+
+=over
+
+=item Expression => ArrayRef[L<Paws::LakeFormation::LFTag>]
+
+=item [CatalogId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::SearchTablesByLFTags>
+
+Returns: a L<Paws::LakeFormation::SearchTablesByLFTagsResponse> instance
+
+This operation allows a search on C<TABLE> resources by C<LFTag>s. This
+will be used by admins who want to grant user permissions on certain
+LFTags. Before making a grant, the admin can use
+C<SearchTablesByLFTags> to find all resources where the given C<LFTag>s
+are valid to verify whether the returned resources can be shared.
+
+
+=head2 UpdateLFTag
+
+=over
+
+=item TagKey => Str
+
+=item [CatalogId => Str]
+
+=item [TagValuesToAdd => ArrayRef[Str|Undef]]
+
+=item [TagValuesToDelete => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LakeFormation::UpdateLFTag>
+
+Returns: a L<Paws::LakeFormation::UpdateLFTagResponse> instance
+
+Updates the list of possible values for the specified tag key. If the
+tag does not exist, the operation throws an EntityNotFoundException.
+The values in the delete key values will be deleted from list of
+possible values. If any value in the delete key values is attached to a
+resource, then API errors out with a 400 Exception - "Update not
+allowed". Untag the attribute before deleting the tag key's value.
 
 
 =head2 UpdateResource

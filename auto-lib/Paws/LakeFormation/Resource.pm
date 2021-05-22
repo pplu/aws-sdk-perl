@@ -4,6 +4,8 @@ package Paws::LakeFormation::Resource;
   has Catalog => (is => 'ro', isa => 'Paws::LakeFormation::CatalogResource');
   has Database => (is => 'ro', isa => 'Paws::LakeFormation::DatabaseResource');
   has DataLocation => (is => 'ro', isa => 'Paws::LakeFormation::DataLocationResource');
+  has LFTag => (is => 'ro', isa => 'Paws::LakeFormation::LFTagKeyResource');
+  has LFTagPolicy => (is => 'ro', isa => 'Paws::LakeFormation::LFTagPolicyResource');
   has Table => (is => 'ro', isa => 'Paws::LakeFormation::TableResource');
   has TableWithColumns => (is => 'ro', isa => 'Paws::LakeFormation::TableWithColumnsResource');
 
@@ -61,6 +63,16 @@ group. You can Grant and Revoke database permissions to a principal.
 
 The location of an Amazon S3 path where permissions are granted or
 revoked.
+
+
+=head2 LFTag => L<Paws::LakeFormation::LFTagKeyResource>
+
+The tag key and values attached to a resource.
+
+
+=head2 LFTagPolicy => L<Paws::LakeFormation::LFTagPolicyResource>
+
+A list of tag conditions that define a resource's tag policy.
 
 
 =head2 Table => L<Paws::LakeFormation::TableResource>
