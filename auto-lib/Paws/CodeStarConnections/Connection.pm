@@ -4,6 +4,7 @@ package Paws::CodeStarConnections::Connection;
   has ConnectionArn => (is => 'ro', isa => 'Str');
   has ConnectionName => (is => 'ro', isa => 'Str');
   has ConnectionStatus => (is => 'ro', isa => 'Str');
+  has HostArn => (is => 'ro', isa => 'Str');
   has OwnerAccountId => (is => 'ro', isa => 'Str');
   has ProviderType => (is => 'ro', isa => 'Str');
 
@@ -37,8 +38,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeStarCon
 
 =head1 DESCRIPTION
 
-The configuration that allows a service such as CodePipeline to connect
-to a third-party code repository.
+A resource that is used to connect third-party source providers with
+services like AWS CodePipeline.
+
+Note: A connection created through CloudFormation, the CLI, or the SDK
+is in `PENDING` status by default. You can make its status `AVAILABLE`
+by updating the connection in the console.
 
 =head1 ATTRIBUTES
 
@@ -63,9 +68,15 @@ user account.
 The current status of the connection.
 
 
+=head2 HostArn => Str
+
+The Amazon Resource Name (ARN) of the host associated with the
+connection.
+
+
 =head2 OwnerAccountId => Str
 
-The name of the external provider where your third-party code
+The identifier of the external provider where your third-party code
 repository is configured. For Bitbucket, this is the account ID of the
 owner of the Bitbucket repository.
 
@@ -73,8 +84,7 @@ owner of the Bitbucket repository.
 =head2 ProviderType => Str
 
 The name of the external provider where your third-party code
-repository is configured. Currently, the valid provider type is
-Bitbucket.
+repository is configured.
 
 
 
