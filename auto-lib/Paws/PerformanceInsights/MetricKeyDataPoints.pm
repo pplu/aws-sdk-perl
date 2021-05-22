@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Performance
 
 =head1 DESCRIPTION
 
-A time-ordered series of data points, correpsonding to a dimension of a
+A time-ordered series of data points, corresponding to a dimension of a
 Performance Insights metric.
 
 =head1 ATTRIBUTES

@@ -37,8 +37,8 @@ be less than or equal to the value of the user-specified C<StartTime>.
 An immutable, AWS Region-unique identifier for a data source.
 Performance Insights gathers metrics from this data source.
 
-To use an Amazon RDS instance as a data source, you specify its
-C<DbiResourceId> value - for example: C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>
+To use a DB instance as a data source, you specify its C<DbiResourceId>
+value - for example: C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>
 
 
 =head2 MetricList => ArrayRef[L<Paws::PerformanceInsights::MetricKeyDataPoints>]

@@ -77,8 +77,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pi/
 =head2 B<REQUIRED> EndTime => Str
 
 The date and time specifying the end of the requested time series data.
-The value specified is I<exclusive> - data points less than (but not
-equal to) C<EndTime> will be returned.
+The value specified is I<exclusive>, which means that data points less
+than (but not equal to) C<EndTime> are returned.
 
 The value for C<EndTime> must be later than the value for C<StartTime>.
 
@@ -108,10 +108,9 @@ A single filter for any other dimension in this dimension group.
 
 A specification for how to aggregate the data points from a query
 result. You must specify a valid dimension group. Performance Insights
-will return all of the dimensions within that group, unless you provide
-the names of specific dimensions within that group. You can also
-request that Performance Insights return a limited number of values for
-a dimension.
+returns all dimensions within this group, unless you provide the names
+of specific dimensions within this group. You can also request that
+Performance Insights return a limited number of values for a dimension.
 
 
 
@@ -121,7 +120,8 @@ An immutable, AWS Region-unique identifier for a data source.
 Performance Insights gathers metrics from this data source.
 
 To use an Amazon RDS instance as a data source, you specify its
-C<DbiResourceId> value - for example: C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>
+C<DbiResourceId> value. For example, specify
+C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>
 
 
 
@@ -154,6 +154,13 @@ database engine.
 
 =back
 
+If the number of active sessions is less than an internal Performance
+Insights threshold, C<db.load.avg> and C<db.sampledload.avg> are the
+same value. If the number of active sessions is greater than the
+internal threshold, Performance Insights samples the active sessions,
+with C<db.load.avg> showing the scaled values, C<db.sampledload.avg>
+showing the raw values, and C<db.sampledload.avg> less than
+C<db.load.avg>. For most use cases, you can query C<db.load.avg> only.
 
 
 
@@ -202,8 +209,8 @@ C<86400> (twenty-four hours)
 
 =back
 
-If you don't specify C<PeriodInSeconds>, then Performance Insights will
-choose a value for you, with a goal of returning roughly 100-200 data
+If you don't specify C<PeriodInSeconds>, then Performance Insights
+chooses a value for you, with a goal of returning roughly 100-200 data
 points in the response.
 
 
@@ -211,16 +218,16 @@ points in the response.
 =head2 B<REQUIRED> ServiceType => Str
 
 The AWS service for which Performance Insights will return metrics. The
-only valid value for I<ServiceType> is: C<RDS>
+only valid value for I<ServiceType> is C<RDS>.
 
 Valid values are: C<"RDS">
 
 =head2 B<REQUIRED> StartTime => Str
 
 The date and time specifying the beginning of the requested time series
-data. You can't specify a C<StartTime> that's earlier than 7 days ago.
-The value specified is I<inclusive> - data points equal to or greater
-than C<StartTime> will be returned.
+data. You must specify a C<StartTime> within the past 7 days. The value
+specified is I<inclusive>, which means that data points equal to or
+greater than C<StartTime> are returned.
 
 The value for C<StartTime> must be earlier than the value for
 C<EndTime>.

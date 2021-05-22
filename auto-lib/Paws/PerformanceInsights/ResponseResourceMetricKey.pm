@@ -65,6 +65,13 @@ database engine.
 
 =back
 
+If the number of active sessions is less than an internal Performance
+Insights threshold, C<db.load.avg> and C<db.sampledload.avg> are the
+same value. If the number of active sessions is greater than the
+internal threshold, Performance Insights samples the active sessions,
+with C<db.load.avg> showing the scaled values, C<db.sampledload.avg>
+showing the raw values, and C<db.sampledload.avg> less than
+C<db.load.avg>. For most use cases, you can query C<db.load.avg> only.
 
 
 
