@@ -113,7 +113,7 @@ C<DurationSeconds> parameter, their security credentials are valid for
 one hour by default. This applies when you use the C<AssumeRole*> API
 operations or the C<assume-role*> CLI operations but does not apply
 when you use those operations to create a console URL. For more
-information, see Using IAM Roles
+information, see Using IAM roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
 the I<IAM User Guide>.
 
@@ -158,14 +158,14 @@ create resources named both "MyResource" and "myresource".
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-A list of tags that you want to attach to the newly created role. Each
-tag consists of a key name and an associated value. For more
-information about tagging, see Tagging IAM Identities
+A list of tags that you want to attach to the new role. Each tag
+consists of a key name and an associated value. For more information
+about tagging, see Tagging IAM resources
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
-If any one of the tags is invalid or if you exceed the allowed number
-of tags per role, then the entire request fails and the role is not
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
 created.
 
 

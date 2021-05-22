@@ -2,6 +2,7 @@
 package Paws::IAM::CreateOpenIDConnectProvider;
   use Moose;
   has ClientIDList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Url => (is => 'ro', isa => 'Str', required => 1);
 
@@ -69,6 +70,20 @@ to 255 characters long.
 
 
 
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the new IAM OpenID Connect
+(OIDC) provider. Each tag consists of a key name and an associated
+value. For more information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.
+
+
+
 =head2 B<REQUIRED> ThumbprintList => ArrayRef[Str|Undef]
 
 A list of server certificate thumbprints for the OpenID Connect (OIDC)
@@ -89,7 +104,7 @@ thumbprint string would be the hex-encoded SHA-1 hash value of the
 certificate used by https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint,
-see Obtaining the Thumbprint for an OpenID Connect Provider
+see Obtaining the thumbprint for an OpenID Connect provider
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html)
 in the I<IAM User Guide>.
 

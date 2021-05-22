@@ -42,8 +42,8 @@ the ListAttachedGroupPolicies, ListAttachedRolePolicies,
 ListAttachedUserPolicies, and GetAccountAuthorizationDetails
 operations.
 
-For more information about managed policies, refer to Managed Policies
-and Inline Policies
+For more information about managed policies, refer to Managed policies
+and inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<IAM User Guide>.
 

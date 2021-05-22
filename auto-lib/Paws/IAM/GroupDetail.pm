@@ -67,7 +67,7 @@ The date and time, in ISO 8601 date-time format
 =head2 GroupId => Str
 
 The stable and unique string identifying the group. For more
-information about IDs, see IAM Identifiers
+information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -85,7 +85,7 @@ A list of the inline policies embedded in the group.
 =head2 Path => Str
 
 The path to the group. For more information about paths, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

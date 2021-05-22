@@ -2,6 +2,7 @@
 package Paws::IAM::CreateVirtualMFADevice;
   use Moose;
   has Path => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has VirtualMFADeviceName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateVirtualMFADeviceResponse = $iam->CreateVirtualMFADevice(
       VirtualMFADeviceName => 'MyvirtualMFADeviceName',
       Path                 => 'MypathType',               # OPTIONAL
+      Tags                 => [
+        {
+          Key   => 'MytagKeyType',                        # min: 1, max: 128
+          Value => 'MytagValueType',                      # max: 256
+
+        },
+        ...
+      ],                                                  # OPTIONAL
     );
 
     # Results:
@@ -47,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 =head2 Path => Str
 
 The path for the virtual MFA device. For more information about paths,
-see IAM Identifiers
+see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -61,6 +70,20 @@ end with forward slashes. In addition, it can contain any ASCII
 character from the ! (C<\u0021>) through the DEL character (C<\u007F>),
 including most punctuation characters, digits, and upper and lowercased
 letters.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the new IAM virtual MFA
+device. Each tag consists of a key name and an associated value. For
+more information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.
 
 
 

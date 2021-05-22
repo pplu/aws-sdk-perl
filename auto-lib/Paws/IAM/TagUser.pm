@@ -49,14 +49,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-The list of tags that you want to attach to the user. Each tag consists
-of a key name and an associated value.
+The list of tags that you want to attach to the IAM user. Each tag
+consists of a key name and an associated value.
 
 
 
 =head2 B<REQUIRED> UserName => Str
 
-The name of the user that you want to add tags to.
+The name of the IAM user to which you want to add tags.
 
 This parameter accepts (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that consist

@@ -2,6 +2,7 @@
 package Paws::IAM::GenerateServiceLastAccessedDetails;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Granularity => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iam = Paws->service('IAM');
     my $GenerateServiceLastAccessedDetailsResponse =
       $iam->GenerateServiceLastAccessedDetails(
-      Arn => 'MyarnType',
-
+      Arn         => 'MyarnType',
+      Granularity => 'SERVICE_LEVEL',    # OPTIONAL
       );
 
     # Results:
@@ -51,6 +52,17 @@ to generate information about when the resource was last used in an
 attempt to access an AWS service.
 
 
+
+=head2 Granularity => Str
+
+The level of detail that you want to generate. You can specify whether
+you want to generate information about the last attempt to access
+services or actions. If you specify service-level granularity, this
+operation generates only service data. If you specify action-level
+granularity, it generates service and action data. If you don't include
+this optional parameter, the operation generates service data.
+
+Valid values are: C<"SERVICE_LEVEL">, C<"ACTION_LEVEL">
 
 
 =head1 SEE ALSO

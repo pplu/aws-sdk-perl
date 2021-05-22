@@ -138,7 +138,7 @@ The IAM permissions boundary policy to simulate. The permissions
 boundary sets the maximum permissions that an IAM entity can have. You
 can input only one permissions boundary when you pass a policy to this
 operation. For more information about permissions boundaries, see
-Permissions Boundaries for IAM Entities
+Permissions boundaries for IAM entities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>. The policy input is specified as a string
 that contains the complete, valid JSON text of a permissions boundary
@@ -215,6 +215,7 @@ parameter is not provided, then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
+You can simulate resources that don't exist in your account.
 
 The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
@@ -225,8 +226,7 @@ If you include a C<ResourcePolicy>, then it must be applicable to all
 of the resources included in the simulation or you receive an invalid
 input error.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -249,7 +249,7 @@ then you must specify that volume as a resource. If the EC2 scenario
 includes VPC, then you must supply the network-interface resource. If
 it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
-Platforms
+platforms
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
 in the I<Amazon EC2 User Guide>.
 

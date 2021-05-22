@@ -3,6 +3,7 @@ package Paws::IAM::CreateSAMLProvider;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -31,11 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateSAMLProviderResponse = $iam->CreateSAMLProvider(
       Name                 => 'MySAMLProviderNameType',
       SAMLMetadataDocument => 'MySAMLMetadataDocumentType',
+      Tags                 => [
+        {
+          Key   => 'MytagKeyType',      # min: 1, max: 128
+          Value => 'MytagValueType',    # max: 256
 
+        },
+        ...
+      ],                                # OPTIONAL
     );
 
     # Results:
     my $SAMLProviderArn = $CreateSAMLProviderResponse->SAMLProviderArn;
+    my $Tags            = $CreateSAMLProviderResponse->Tags;
 
     # Returns a L<Paws::IAM::CreateSAMLProviderResponse> object.
 
@@ -65,9 +74,23 @@ authentication response (assertions) that are received from the IdP.
 You must generate the metadata document using the identity management
 software that is used as your organization's IdP.
 
-For more information, see About SAML 2.0-based Federation
+For more information, see About SAML 2.0-based federation
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
 in the I<IAM User Guide>
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the new IAM SAML provider.
+Each tag consists of a key name and an associated value. For more
+information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.
 
 
 

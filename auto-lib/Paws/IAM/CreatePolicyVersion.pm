@@ -51,8 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The Amazon Resource Name (ARN) of the IAM policy to which you want to
 add a new version.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -102,7 +101,7 @@ operative version. That is, it becomes the version that is in effect
 for the IAM users, groups, and roles that the policy is attached to.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies
+managed policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
 in the I<IAM User Guide>.
 

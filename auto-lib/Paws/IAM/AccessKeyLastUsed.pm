@@ -91,7 +91,7 @@ There is no sign-in data associated with the user.
 
 =back
 
-For more information about AWS Regions, see Regions and Endpoints
+For more information about AWS Regions, see Regions and endpoints
 (https://docs.aws.amazon.com/general/latest/gr/rande.html) in the
 Amazon Web Services General Reference.
 

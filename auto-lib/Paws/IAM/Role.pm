@@ -53,7 +53,7 @@ response element in several API operations that interact with roles.
 
 The Amazon Resource Name (ARN) specifying the role. For more
 information about ARNs and how to use them in policies, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide> guide.
 
@@ -85,7 +85,7 @@ C<duration-seconds> CLI parameter.
 =head2 B<REQUIRED> Path => Str
 
 The path to the role. For more information about paths, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -96,7 +96,7 @@ The ARN of the policy used to set the permissions boundary for the
 role.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
+boundaries for IAM identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
@@ -104,7 +104,7 @@ in the I<IAM User Guide>.
 =head2 B<REQUIRED> RoleId => Str
 
 The stable and unique string identifying the role. For more information
-about IDs, see IAM Identifiers
+about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -116,7 +116,7 @@ This includes the date and time and the Region in which the role was
 last used. Activity is only reported for the trailing 400 days. This
 period can be shorter if your Region began supporting these features
 within the last year. The role might have been used more than 400 days
-ago. For more information, see Regions Where Data Is Tracked
+ago. For more information, see Regions where data is tracked
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period)
 in the I<IAM User Guide>.
 
@@ -128,8 +128,8 @@ The friendly name that identifies the role.
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-A list of tags that are attached to the specified role. For more
-information about tagging, see Tagging IAM Identities
+A list of tags that are attached to the role. For more information
+about tagging, see Tagging IAM resources
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 

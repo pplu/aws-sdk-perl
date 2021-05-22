@@ -4,6 +4,7 @@ package Paws::IAM::ServerCertificate;
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has CertificateChain => (is => 'ro', isa => 'Str');
   has ServerCertificateMetadata => (is => 'ro', isa => 'Paws::IAM::ServerCertificateMetadata', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::ServerCertificate object:
 
-  $service_obj->Method(Att1 => { CertificateBody => $value, ..., ServerCertificateMetadata => $value  });
+  $service_obj->Method(Att1 => { CertificateBody => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,6 +58,14 @@ The contents of the public key certificate chain.
 
 The meta information of the server certificate, such as its name, path,
 ID, and ARN.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that are attached to the server certificate. For more
+information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 

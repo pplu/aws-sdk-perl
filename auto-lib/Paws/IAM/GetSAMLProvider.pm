@@ -35,6 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreateDate           = $GetSAMLProviderResponse->CreateDate;
     my $SAMLMetadataDocument = $GetSAMLProviderResponse->SAMLMetadataDocument;
+    my $Tags                 = $GetSAMLProviderResponse->Tags;
     my $ValidUntil           = $GetSAMLProviderResponse->ValidUntil;
 
     # Returns a L<Paws::IAM::GetSAMLProviderResponse> object.
@@ -50,8 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The Amazon Resource Name (ARN) of the SAML provider resource object in
 IAM to get information about.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 

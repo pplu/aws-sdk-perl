@@ -5,6 +5,7 @@ package Paws::IAM::VirtualMFADevice;
   has EnableDate => (is => 'ro', isa => 'Str');
   has QRCodePNG => (is => 'ro', isa => 'Str');
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has User => (is => 'ro', isa => 'Paws::IAM::User');
 
 1;
@@ -67,6 +68,14 @@ C<Base32String> value is base64-encoded.
 =head2 B<REQUIRED> SerialNumber => Str
 
 The serial number associated with C<VirtualMFADevice>.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that are attached to the virtual MFA device. For more
+information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 User => L<Paws::IAM::User>

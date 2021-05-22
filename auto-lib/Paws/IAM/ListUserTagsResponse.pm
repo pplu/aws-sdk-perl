@@ -38,7 +38,7 @@ request.
 
 The list of tags that are currently attached to the user. Each tag
 consists of a key name and an associated value. If no tags are attached
-to the specified user, the response contains an empty list.
+to the specified resource, the response contains an empty list.
 
 
 =head2 _request_id => Str

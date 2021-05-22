@@ -46,7 +46,7 @@ work in manually enabled Regions, such as Asia Pacific (Hong Kong).
 Version 2 tokens are valid in all Regions. However, version 2 tokens
 are longer and might affect systems where you temporarily store tokens.
 
-For information, see Activating and Deactivating STS in an AWS Region
+For information, see Activating and deactivating STS in an AWS region
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 in the I<IAM User Guide>.
 

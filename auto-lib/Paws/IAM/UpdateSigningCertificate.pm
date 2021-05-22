@@ -58,8 +58,8 @@ consist of any upper or lowercased letter or digit.
 =head2 B<REQUIRED> Status => Str
 
 The status you want to assign to the certificate. C<Active> means that
-the certificate can be used for API calls to AWS C<Inactive> means that
-the certificate cannot be used.
+the certificate can be used for programmatic calls to AWS C<Inactive>
+means that the certificate cannot be used.
 
 Valid values are: C<"Active">, C<"Inactive">
 

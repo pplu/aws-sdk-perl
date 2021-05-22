@@ -11,6 +11,7 @@ package Paws::IAM::Policy;
   has PermissionsBoundaryUsageCount => (is => 'ro', isa => 'Int');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has UpdateDate => (is => 'ro', isa => 'Str');
 
 1;
@@ -48,8 +49,8 @@ Contains information about a managed policy.
 This data type is used as a response element in the CreatePolicy,
 GetPolicy, and ListPolicies operations.
 
-For more information about managed policies, refer to Managed Policies
-and Inline Policies
+For more information about managed policies, refer to Managed policies
+and inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<IAM User Guide>.
 
@@ -97,7 +98,7 @@ role.
 
 The path to the policy.
 
-For more information about paths, see IAM Identifiers
+For more information about paths, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -108,7 +109,7 @@ The number of entities (users and roles) for which the policy is used
 to set the permissions boundary.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
+boundaries for IAM identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
@@ -117,7 +118,7 @@ in the I<IAM User Guide>.
 
 The stable and unique string identifying the policy.
 
-For more information about IDs, see IAM Identifiers
+For more information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -125,6 +126,14 @@ in the I<IAM User Guide>.
 =head2 PolicyName => Str
 
 The friendly name (not ARN) identifying the policy.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that are attached to the instance profile. For more
+information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 UpdateDate => Str

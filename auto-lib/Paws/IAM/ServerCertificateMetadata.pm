@@ -51,7 +51,7 @@ UploadServerCertificate and ListServerCertificates operations.
 
 The Amazon Resource Name (ARN) specifying the server certificate. For
 more information about ARNs and how to use them in policies, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -64,7 +64,7 @@ The date on which the certificate is set to expire.
 =head2 B<REQUIRED> Path => Str
 
 The path to the server certificate. For more information about paths,
-see IAM Identifiers
+see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -72,7 +72,7 @@ in the I<IAM User Guide>.
 =head2 B<REQUIRED> ServerCertificateId => Str
 
 The stable and unique string identifying the server certificate. For
-more information about IDs, see IAM Identifiers
+more information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

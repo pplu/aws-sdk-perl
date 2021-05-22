@@ -75,7 +75,7 @@ A list of IAM groups that the user is in.
 =head2 Path => Str
 
 The path to the user. For more information about paths, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -86,15 +86,15 @@ The ARN of the policy used to set the permissions boundary for the
 user.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
+boundaries for IAM identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-A list of tags that are associated with the specified user. For more
-information about tagging, see Tagging IAM Identities
+A list of tags that are associated with the user. For more information
+about tagging, see Tagging IAM resources
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
@@ -102,7 +102,7 @@ I<IAM User Guide>.
 =head2 UserId => Str
 
 The stable and unique string identifying the user. For more information
-about IDs, see IAM Identifiers
+about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

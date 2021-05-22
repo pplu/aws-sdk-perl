@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 Allows all IAM users in your account to use the AWS Management Console
 to change their own passwords. For more information, see Letting IAM
-Users Change Their Own Passwords
+users change their own passwords
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html)
 in the I<IAM User Guide>.
 

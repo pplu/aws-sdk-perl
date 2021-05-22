@@ -6,6 +6,7 @@ package Paws::IAM::GetServiceLastAccessedDetailsResponse;
   has JobCompletionDate => (is => 'ro', isa => 'Str', required => 1);
   has JobCreationDate => (is => 'ro', isa => 'Str', required => 1);
   has JobStatus => (is => 'ro', isa => 'Str', required => 1);
+  has JobType => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has ServicesLastAccessed => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ServiceLastAccessed]', required => 1);
 
@@ -58,6 +59,13 @@ The date and time, in ISO 8601 date-time format
 The status of the job.
 
 Valid values are: C<"IN_PROGRESS">, C<"COMPLETED">, C<"FAILED">
+=head2 JobType => Str
+
+The type of job. Service jobs return information about when each
+service was last accessed. Action jobs also include information about
+when tracked actions within the service were last accessed.
+
+Valid values are: C<"SERVICE_LEVEL">, C<"ACTION_LEVEL">
 =head2 Marker => Str
 
 When C<IsTruncated> is C<true>, this element is present and contains
