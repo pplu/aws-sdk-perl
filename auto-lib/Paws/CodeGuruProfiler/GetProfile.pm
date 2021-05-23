@@ -61,7 +61,7 @@ The format of the returned profiling data. The format maps to the
 C<Accept> and C<Content-Type> headers of the HTTP request. You can
 specify one of the following: or the default .
 
- <ul> <li> <p> <code>application/json</code> — standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> — the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul>
+ <ul> <li> <p> <code>application/json</code> - standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> - the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul>
 
 
 

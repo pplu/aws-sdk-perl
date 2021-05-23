@@ -54,15 +54,15 @@ series. There are 3 valid values.
 
 =item *
 
-C<P1D> E<mdash> 1 day
+C<P1D> - 1 day
 
 =item *
 
-C<PT1H> E<mdash> 1 hour
+C<PT1H> - 1 hour
 
 =item *
 
-C<PT5M> E<mdash> 5 minutes
+C<PT5M> - 5 minutes
 
 =back
 
