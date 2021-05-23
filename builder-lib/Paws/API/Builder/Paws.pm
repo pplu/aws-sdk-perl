@@ -262,6 +262,7 @@ package Paws::API::Builder::Paws {
   has servicefile_to_builder_overrides => (is => 'ro', default => sub { {
    'ec2'        => 'EC2',
    'kinesis'    => 'Kinesis',
+   'lexv2-runtime' => 'LexRuntimeV2',
   } });
 
   sub get_builder_for {
