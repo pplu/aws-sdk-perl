@@ -7,9 +7,9 @@ package Paws::CodeArtifact::AssetHashes;
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has MD5 => (is => 'ro', isa => 'Str');
-  has SHA-1 => (is => 'ro', isa => 'Str');
-  has SHA-256 => (is => 'ro', isa => 'Str');
-  has SHA-512 => (is => 'ro', isa => 'Str');
+  has SHA1 => (is => 'ro', isa => 'Str');
+  has SHA256 => (is => 'ro', isa => 'Str');
+  has SHA512 => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeArtifact::AssetHashes object:
 
-  $service_obj->Method(Att1 => { MD5 => $value, ..., SHA-512 => $value  });
+  $service_obj->Method(Att1 => { MD5 => $value, ..., SHA512 => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,13 +48,13 @@ This class has no description
 =head2 MD5 => Str
 
 
-=head2 SHA-1 => Str
+=head2 SHA1 => Str
 
 
-=head2 SHA-256 => Str
+=head2 SHA256 => Str
 
 
-=head2 SHA-512 => Str
+=head2 SHA512 => Str
 
 
 

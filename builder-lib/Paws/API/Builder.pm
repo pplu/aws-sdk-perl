@@ -1146,8 +1146,9 @@ package Paws::API::Builder {
     if ($iclass->{type} eq 'map') {
       my $keys_shape = $self->shape($iclass->{key}->{shape});
       my $values_shape = $self->shape($iclass->{value}->{shape});
-
       if ($keys_shape->{enum}){
+        # Some enums have names like SHA-1, SHA-256, etc that cannot be used as attributes in a Moose class. Sanitize them
+        $keys_shape->{enum} = [ map { $_ =~ s/-//; $_ } @{ $keys_shape->{ enum } }  ];
         $self->process_template('map_enum.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
         $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Maybe[Str]]' });
