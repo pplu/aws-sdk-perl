@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName        => 'MyDomainName',
       ScalingParameters => {
         DesiredInstanceType => 'search.m1.small'
-        , # values: search.m1.small, search.m1.large, search.m2.xlarge, search.m2.2xlarge, search.m3.medium, search.m3.large, search.m3.xlarge, search.m3.2xlarge; OPTIONAL
+        , # values: search.m1.small, search.m1.large, search.m2.xlarge, search.m2.2xlarge, search.m3.medium, search.m3.large, search.m3.xlarge, search.m3.2xlarge, search.small, search.medium, search.large, search.xlarge, search.2xlarge; OPTIONAL
         DesiredPartitionCount   => 1,    # OPTIONAL
         DesiredReplicationCount => 1,    # OPTIONAL
       },
