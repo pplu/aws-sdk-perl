@@ -248,6 +248,9 @@ package Paws::API::Builder {
     return 'AdminListAllUserAuthEvents' if ($name eq 'AdminListUserAuthEvents');
     return 'ViewAllBilling' if ($name eq 'ViewBilling');
     return 'ScanAllProvisionedProducts' if ($name eq 'ScanProvisionedProducts');
+    return 'ValidateAllPolicies' if ($name eq 'ValidatePolicy');
+    return 'SelectAllAggregateResourceConfig' if ($name eq 'SelectAggregateResourceConfig');
+    return 'SelectAllResourceConfig' if ($name eq 'SelectResourceConfig');
 
     die "Please help me generate a good name for the paginator $name";
   }
