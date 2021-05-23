@@ -240,8 +240,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv =>
-                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 DiscontinuityTags =>
@@ -303,12 +302,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue =>
-                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
                     KeyProviderServer => {
-                      Uri           => 'My__string',    # OPTIONAL
-                      PasswordParam => 'My__string',    # OPTIONAL
-                      Username      => 'My__string',    # OPTIONAL
+                      Uri           => 'My__string',          # OPTIONAL
+                      PasswordParam => 'My__string',          # OPTIONAL
+                      Username      => 'My__string',          # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL

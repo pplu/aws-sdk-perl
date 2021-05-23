@@ -960,8 +960,17 @@ package Paws::API::Builder {
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);
       $self->shape($shape_name)->{ example_code } = ( $self->get_example_code($shape_name) )[0];
-
     }
+
+    my $shape_conflicts = 0;
+    foreach my $op_name ($self->operations) {
+      if ($self->is_inner_shape($op_name)) {
+        warn "$op_name conflicts with a shape";
+	$shape_conflicts = 1;
+      }
+    }
+
+    die "Stopping generation due to conflicts between method names and shape names" if ($shape_conflicts);
 
     foreach my $op_name ($self->operations) {
       my $op_example = '';
