@@ -1,5 +1,60 @@
 0.44
  - Added GitHub Actions as CI (thanks shogo82148)
+ - New API: AmplifyBackend
+ - New API: AppIntegrations
+ - New API: AppRunner
+ - New API: Appflow
+ - New API: ApplicationCostProfiler
+ - New API: AuditManager
+ - New API: Braket
+ - New API: GreengrassV2
+ - New API: HealthLake
+ - New API: Honeycode
+ - New API: IoTFleetHub
+ - New API: IoTSiteWise
+ - New API: LookoutEquipment
+ - New API: LookoutMetrics
+ - New API: MWAA
+ - New API: Macie2
+ - New API: WAFv2
+ - New API: WellArchitected
+ - New API: WAFV2
+ - New API: S3Outposts
+ - New API: CodeGuruReviewer
+ - New API: ComputeOptimizer
+ - New API: CodeArtifact
+ - New API: TimestreamQuery
+ - New API: TimestreamWrite
+ - New API: Finspace
+ - New API: SagemakerEdge
+ - New API: SSOAdmin
+ - New API: Synthetics
+ - New API: Kendra
+ - New API: NimbleStudio
+ - New API: IoTWireless
+ - New API: LocationService
+ - New API: FIS
+ - New API: ApplicationMigration
+ - New API: GlueDataBrew
+ - New API: NetworkFirewall
+ - New API: SSMIncidents
+ - New API: SSMContacts
+ - New API: ConnectContactLens
+ - New API: CustomerProfiles
+ - New API: LookoutVision
+ - New API: LexModelsV2
+ - New API: LexRuntimeV2
+ - New API: Prometheus
+ - New API: RedshiftData
+ - New API: DevOpsGuru
+ - New API: FinspaceData
+ - New API: SageMakerFeatureStoreRuntime
+ - New API: ServiceCatalogAppRegistry
+ - New API: ECRPublic
+ - New API: EMRContainers
+ - New API: IVS
+ - New API: IoTDeviceAdvisor
+ - New API: SSOIdentityStore
 
 0.43 06 Apr 2021
  - First Community driven release (thanks BYTEROCK)
@@ -875,3 +930,4 @@
    deactivated paginators on json, query and restxml classes
    The only guys who conserves paginators is EC2
  
+
