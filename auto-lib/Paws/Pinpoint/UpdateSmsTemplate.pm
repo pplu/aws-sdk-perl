@@ -33,17 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $pinpoint = Paws->service('Pinpoint');
     my $UpdateSmsTemplateResponse = $pinpoint->UpdateSmsTemplate(
       SMSTemplateRequest => {
-        Body                 => 'My__string',    # OPTIONAL
-        DefaultSubstitutions => 'My__string',    # OPTIONAL
-        RecommenderId        => 'My__string',    # OPTIONAL
-        Tags                 => {
-          'My__string' => 'My__string',    # key: OPTIONAL, value: OPTIONAL
-        },    # OPTIONAL
-        TemplateDescription => 'My__string',    # OPTIONAL
+        Body                 => 'My__string',
+        DefaultSubstitutions => 'My__string',
+        RecommenderId        => 'My__string',
+        Tags                 => { 'My__string' => 'My__string', },    # OPTIONAL
+        TemplateDescription  => 'My__string',
       },
       TemplateName     => 'My__string',
-      CreateNewVersion => 1,                    # OPTIONAL
-      Version          => 'My__string',         # OPTIONAL
+      CreateNewVersion => 1,                                          # OPTIONAL
+      Version          => 'My__string',                               # OPTIONAL
     );
 
     # Results:

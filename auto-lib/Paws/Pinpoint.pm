@@ -743,7 +743,7 @@ notification channel.
 
 =over
 
-=item CreateRecommenderConfiguration => L<Paws::Pinpoint::CreateRecommenderConfiguration>
+=item CreateRecommenderConfiguration => L<Paws::Pinpoint::CreateRecommenderConfigurationObj>
 
 
 =back
@@ -2635,7 +2635,7 @@ a push notification channel.
 
 =item RecommenderId => Str
 
-=item UpdateRecommenderConfiguration => L<Paws::Pinpoint::UpdateRecommenderConfiguration>
+=item UpdateRecommenderConfiguration => L<Paws::Pinpoint::UpdateRecommenderConfigurationObj>
 
 
 =back

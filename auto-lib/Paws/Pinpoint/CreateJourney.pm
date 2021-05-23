@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                           },
                         },    # OPTIONAL
-                      },
+                      },    # OPTIONAL
                       MessageActivity => 'My__string',
                     },    # OPTIONAL
                     SegmentCondition => {
@@ -176,7 +176,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TemplateVersion => 'My__string',
             },    # OPTIONAL
             Holdout => {
-              Percentage   => 1,              # OPTIONAL
+              Percentage   => 1,
               NextActivity => 'My__string',
             },    # OPTIONAL
             MultiCondition => {
@@ -204,7 +204,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                           },
                         },    # OPTIONAL
-                      },
+                      },    # OPTIONAL
                       MessageActivity => 'My__string',
                     },    # OPTIONAL
                     SegmentCondition => {
@@ -310,10 +310,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Branches => [
                 {
                   NextActivity => 'My__string',
-                  Percentage   => 1,              # OPTIONAL
+                  Percentage   => 1,
                 },
                 ...
-              ],                                  # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             SMS => {
               MessageConfig => {
@@ -340,10 +340,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CreationDate     => 'My__string',
         LastModifiedDate => 'My__string',
         Limits           => {
-          DailyCap                => 1,              # OPTIONAL
-          EndpointReentryCap      => 1,              # OPTIONAL
+          DailyCap                => 1,
+          EndpointReentryCap      => 1,
           EndpointReentryInterval => 'My__string',
-          MessagesPerSecond       => 1,              # OPTIONAL
+          MessagesPerSecond       => 1,
         },    # OPTIONAL
         LocalTime => 1,    # OPTIONAL
         QuietTime => {
@@ -382,7 +382,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                 },    # OPTIONAL
-              },
+              },    # OPTIONAL
               FilterType => 'SYSTEM',    # values: SYSTEM, ENDPOINT
 
             },    # OPTIONAL
