@@ -47,6 +47,11 @@ package Paws::API::Builder::Paws {
         if (not defined $api_ns) {
           $api_ns = $api_struct->{ metadata }->{ serviceId };
           die "No serviceId in API metadata" if (not defined $api_ns);
+	  # Fix some serviceIds, so that we don't need an explicit mappings
+	  # Capitalize first letter of the serviceId
+	  substr($api_ns,0,1) = uc(substr($api_ns,0,1));
+	  # Eliminate whitespace
+	  $api_ns =~ s/\s//g;
         }
 
         my $builder = $self->servicefile_to_builder_overrides->{ $service_dir };
