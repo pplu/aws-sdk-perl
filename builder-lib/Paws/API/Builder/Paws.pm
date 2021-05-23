@@ -272,6 +272,11 @@ package Paws::API::Builder::Paws {
 
     my $struct = decode_json(read_binary($service->{ file }));
     my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
+    # we used to be able to use the protocol property as the key to template dirs.
+    # now it needs some fixing up
+    $type = 'restjson' if ($type eq 'rest-json');
+    $type = 'restxml' if ($type eq 'rest-xml');
+    $type = 'EC2' if ($type eq 'ec2');
   
     my $class_maker = "Paws::API::Builder::$service->{ builder }";
     require_module $class_maker;
