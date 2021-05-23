@@ -77,6 +77,7 @@ package Paws::API::ServiceToClass;
     pi => 'PerformanceInsights',
    'pinpoint-email' => 'PinpointEmail',
    'pinpoint-sms-voice' => 'PinpointSMSVoice',
+    polly => 'Polly',
    'qldb-session' => 'QLDBSession',
     quicksight => 'Quicksight',
    'rds-data' => 'RDSData',
@@ -102,6 +103,8 @@ package Paws::API::ServiceToClass;
    'sso-oidc' => 'SSOOidc',
     stepfunctions => 'StepFunctions',
     storagegateway => 'StorageGateway',
+    sts => 'STS',
+    s3 => 'S3',
     swf => 'SimpleWorkflow',
    'waf-regional' => 'WAFRegional',
   };
