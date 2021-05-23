@@ -1,9 +1,9 @@
 
 package Paws::SageMakerA2IRuntime::StartHumanLoop;
   use Moose;
-  has DataAttributes => (is => 'ro', isa => 'Paws::SageMakerA2IRuntime::HumanReviewDataAttributes');
+  has DataAttributes => (is => 'ro', isa => 'Paws::SageMakerA2IRuntime::HumanLoopDataAttributes');
   has FlowDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
-  has HumanLoopInput => (is => 'ro', isa => 'Paws::SageMakerA2IRuntime::HumanLoopInputContent', required => 1);
+  has HumanLoopInput => (is => 'ro', isa => 'Paws::SageMakerA2IRuntime::HumanLoopInput', required => 1);
   has HumanLoopName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartHumanLoopResponse = $a2i -runtime . sagemaker->StartHumanLoop(
       FlowDefinitionArn => 'MyFlowDefinitionArn',
       HumanLoopInput    => {
-        InputContent => 'MyInputContent',    # max: 4194304
+        InputContent => 'MyInputContent',    # max: 3145728
 
       },
       HumanLoopName  => 'MyHumanLoopName',
@@ -48,8 +48,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $HumanLoopActivationResults =
-      $StartHumanLoopResponse->HumanLoopActivationResults;
     my $HumanLoopArn = $StartHumanLoopResponse->HumanLoopArn;
 
     # Returns a L<Paws::SageMakerA2IRuntime::StartHumanLoopResponse> object.
@@ -60,21 +58,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a2i
 =head1 ATTRIBUTES
 
 
-=head2 DataAttributes => L<Paws::SageMakerA2IRuntime::HumanReviewDataAttributes>
+=head2 DataAttributes => L<Paws::SageMakerA2IRuntime::HumanLoopDataAttributes>
 
-Attributes of the data specified by the customer.
+Attributes of the specified data. Use C<DataAttributes> to specify if
+your data is free of personally identifiable information and/or free of
+adult content.
 
 
 
 =head2 B<REQUIRED> FlowDefinitionArn => Str
 
-The Amazon Resource Name (ARN) of the flow definition.
+The Amazon Resource Name (ARN) of the flow definition associated with
+this human loop.
 
 
 
-=head2 B<REQUIRED> HumanLoopInput => L<Paws::SageMakerA2IRuntime::HumanLoopInputContent>
+=head2 B<REQUIRED> HumanLoopInput => L<Paws::SageMakerA2IRuntime::HumanLoopInput>
 
-An object containing information about the human loop.
+An object that contains information about the human loop.
 
 
 

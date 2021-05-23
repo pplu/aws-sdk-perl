@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a2i
 
 =head2 B<REQUIRED> HumanLoopName => Str
 
-The name of the human loop you want to stop.
+The name of the human loop that you want to stop.
 
 
 
