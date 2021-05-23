@@ -69,11 +69,13 @@ information from other systems.
 =head2 B<REQUIRED> DataSetPublicationDate => Str
 
 The date a data set was published. For daily data sets, provide a date
-with day-level granularity for the desired day. For weekly data sets,
-provide a date with day-level granularity within the desired week (the
-day value will be ignored). For monthly data sets, provide a date with
+with day-level granularity for the desired day. For monthly data sets
+except those with prefix disbursed_amount, provide a date with
 month-level granularity for the desired month (the day value will be
-ignored).
+ignored). For data sets with prefix disbursed_amount, provide a date
+with day-level granularity for the desired day. For these data sets we
+will look backwards in time over the range of 31 days until the first
+data set is found (the latest one).
 
 
 
@@ -176,6 +178,26 @@ one month prior.
 
 From 2017-09-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC.
+
+=item * B<disbursed_amount_by_product_with_uncollected_funds>
+
+This data set is deprecated. Download related reports from AMMP
+instead!
+
+=item * B<customer_profile_by_industry>
+
+This data set is deprecated. Download related reports from AMMP
+instead!
+
+=item * B<customer_profile_by_revenue>
+
+This data set is deprecated. Download related reports from AMMP
+instead!
+
+=item * B<customer_profile_by_geography>
+
+This data set is deprecated. Download related reports from AMMP
+instead!
 
 =back
 
