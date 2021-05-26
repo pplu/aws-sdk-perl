@@ -1,0 +1,7 @@
+---
+call: PutBucketRequestPayment
+service: S3
+tests:
+  - expected: 9978E1E1DBD151DE
+    op: eq
+    path: _request_id

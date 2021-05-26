@@ -1,0 +1,7 @@
+---
+call: DeleteBucketInventoryConfiguration
+service: S3
+tests:
+  - expected: B1B5552784608QQQ
+    op: eq
+    path: _request_id

@@ -1,0 +1,16 @@
+---
+content: '{"Name" : "perl_PAWS_test","Id" : "fd89d30f64104bfcb4809eacbcc261af","Arn" : "arn:aws:mobiletargeting:us-east-1:999999999991:apps/fd89d30f64104bfcb4809eacbcc261af","tags" : {"key1":"value1","key2":"value2" }}'
+headers:
+  'content-type': 'application/json'
+  'content-length': '190'
+  'x-amzn-trace-id': 'Root=1-5d272c40-8fd6eef5d1270e7f683a87ee'
+  'x-amzn-requestid': 'e16d3fa0-a3d7-11e9-b0d7-1923289cbffa'
+  'connection': 'keep-alive'
+  'x-amz-apigw-id': 'cqPaGFnGIAMFeag='
+  'x-amz-cf-pop': 'ORD52-C2'
+  'access-control-allow-origin': '*'
+  'x-amz-cf-id': '7D9kcNW3l4Gi1vJ9EIr_6YaKEdD7-FbxhY9PhugkMAruxg_Alw0yKw=='
+  'date': 'Thu, 11 Jul 2019 12:32:00 GMT'
+  'x-cache': 'Miss from cloudfront'
+  'via': '1.1 bb8a4e32b7413c1fbb32dbaa86a9a575.cloudfront.net (CloudFront)'
+status: 200

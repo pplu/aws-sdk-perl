@@ -1,0 +1,7 @@
+---
+call: PutBucketAcl
+service: S3
+tests:
+  - expected: 6A1E957777D49C68
+    op: eq
+    path: _request_id

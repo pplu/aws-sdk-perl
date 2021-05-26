@@ -1,0 +1,7 @@
+---
+call: PutBucketLogging
+service: S3
+tests:
+  - expected: 3CE45417D610C2DC
+    op: eq
+    path: _request_id

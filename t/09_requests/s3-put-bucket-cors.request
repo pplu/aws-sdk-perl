@@ -1,0 +1,15 @@
+---
+Bucket: oneoffpaws
+CORSConfiguration:
+  CORSRules:
+    - AllowedOrigins:
+        - http://www.example.com
+      AllowedMethods:
+        - PUT
+        - POST
+        - DELETE,
+    - AllowedOrigins:
+        - http://www.aws.com
+      AllowedMethods:
+        - PUT
+        - POST

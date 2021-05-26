@@ -1,0 +1,7 @@
+---
+call: PutBucketNotificationConfiguration
+service: S3
+tests:
+  - expected: 1121037C92F5F5E4
+    op: eq
+    path: _request_id

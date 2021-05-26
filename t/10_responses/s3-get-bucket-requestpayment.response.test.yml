@@ -1,0 +1,10 @@
+---
+call: GetBucketRequestPayment
+service: S3
+tests:
+  - expected: Requester
+    op: eq
+    path: Payer
+  - expected: 33EE6872697D6DE1
+    op: eq
+    path: _request_id

@@ -1,0 +1,35 @@
+---
+call: PutObjectLegalHold
+service: S3
+tests:
+  - expected: <LegalHold xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Status>ON</Status></LegalHold>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - key: Key
+    expected: one/to/delete/image.jpg
+    op: eq
+    path: parameters
+  - key: LegalHold.Status
+    expected: ON
+    op: eq
+    path: parameters
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image.jpg
+    path: url
+    op: eq
+  - expected: /oneoffpaws/one/to/delete/image.jpg?
+    path: uri
+    op: eq
+  - expected: legal-hold
+    path: url
+    op: eq
+  - expected: legal-hold
+    path: uri
+    op: eq
+

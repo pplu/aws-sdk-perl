@@ -1,0 +1,37 @@
+---
+call: RestoreObject
+service: S3
+tests:
+  - expected: <RestoreRequest xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Days>2</Days><GlacierJobParameters><Tier>Standard</Tier></GlacierJobParameters></RestoreRequest>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: 2
+    op: eq
+    path: parameters
+    key: RestoreRequest.Days
+  - expected: lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+    op: eq
+    path: parameters
+    key: Key
+  - expected: Standard
+    op: eq
+    path: parameters
+    key: RestoreRequest.GlacierJobParameters.Tier 
+  - path: parameters
+    key: versionId
+    key: AccessControlPolicy.Grants.Grant.1.Grantee.DisplayName
+  - expected: POST
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+    path: url
+  - expected: restore
+    path: url
+  - expected: /oneoffpaws/lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+    path: uri
+  - expected: restore
+    path: uri

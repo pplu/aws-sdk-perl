@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <StreamingDistributionList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Marker></Marker><NextMarker>E2NTUK2D9QNN2P</NextMarker><MaxItems>1</MaxItems><IsTruncated>true</IsTruncated><Quantity>1</Quantity><Items><StreamingDistributionSummary><Id>E2NTUK2D9QNN2P</Id><ARN>arn:aws:cloudfront::985173205561:streaming-distribution/E2NTUK2D9QNN2P</ARN><Status>Deployed</Status><LastModifiedTime>2020-01-11T02:06:37.678Z</LastModifiedTime><DomainName>s4lzay6ct4xc1.cloudfront.net</DomainName><S3Origin><DomainName>pawsexamplebucket.s3.amazonaws.com</DomainName><OriginAccessIdentity></OriginAccessIdentity></S3Origin><Aliases><Quantity>0</Quantity></Aliases><TrustedSigners><Enabled>false</Enabled><Quantity>0</Quantity></TrustedSigners><Comment></Comment><PriceClass>PriceClass_All</PriceClass><Enabled>false</Enabled></StreamingDistributionSummary></Items></StreamingDistributionList>
+headers:
+  client-date: 'Sat, 11 Jan 2020 18:41:00 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 910
+  content-type: text/xml
+  date: 'Sat, 11 Jan 2020 18:41:00 GMT'
+  x-amzn-requestid: 68b91529-e68a-411f-bd02-6bdb5e456919
+status: 200

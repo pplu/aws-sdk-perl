@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <PublicAccessBlockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><BlockPublicAcls>true</BlockPublicAcls><IgnorePublicAcls>true</IgnorePublicAcls><BlockPublicPolicy>true</BlockPublicPolicy><RestrictPublicBuckets>true</RestrictPublicBuckets></PublicAccessBlockConfiguration>
+headers: 
+  x-amz-request-id: A7B79823CE53314F
+status: 200

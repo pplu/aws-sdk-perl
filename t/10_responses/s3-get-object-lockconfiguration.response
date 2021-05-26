@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <ObjectLockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><ObjectLockEnabled>Enabled</ObjectLockEnabled></ObjectLockConfiguration>
+headers:
+  x-amz-request-id: A4A21CAF428E490D
+status: 200

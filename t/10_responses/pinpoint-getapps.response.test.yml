@@ -1,0 +1,37 @@
+---
+call: GetApps 
+service: Pinpoint
+tests:
+  - expected: eyJDcmVhdGlvbkRhdGUiOiIyMDE5LTAxLTA3VDE4OjAxOjU3LjE5M1oiLCJBY2NvdW50SWQiOiI5ODUxNzMyMDU1NjEiLCJBcHBJZCI6ImMwMGQxYTE1YTk5ZTRjYmVhYWFiMzllM2RjY2Q2NmUxIn0
+    op: eq
+    path: NextToken
+  - expected: Test
+    op: eq
+    path: Item.0.Name
+  - expected: arn:aws:mobiletargeting:us-east-1:999999999991:apps/8108c09a0cc54e88aac855e657e80204
+    op: eq
+    path: Item.0.Arn
+  - expected: 8108c09a0cc54e88aac855e657e80204
+    op: eq
+    path: Item.0.Id
+  - expected: value1
+    op: eq
+    path: Item.0.Tags.Map.key1
+  - expected: value2
+    op: eq
+    path: Item.0.Tags.Map.key2
+  - expected: CGT
+    op: eq
+    path: Item.1.Name
+  - expected: arn:aws:mobiletargeting:us-east-1:999999999991:apps/c00d1a15a99e4cbeaaab39e3dccd66e1
+    op: eq
+    path: Item.1.Arn
+  - expected: c00d1a15a99e4cbeaaab39e3dccd66e1
+    op: eq
+    path: Item.1.Id
+  - expected: value3
+    op: eq
+    path: Item.1.Tags.Map.key3
+  - expected: value4
+    op: eq
+    path: Item.1.Tags.Map.key4

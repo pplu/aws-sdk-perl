@@ -1,0 +1,22 @@
+---
+call: GetBucketInventoryConfiguration
+service: S3
+tests:
+  - expected: arn:aws:s3:::dev.somesite.paws.config
+    op: eq
+    path: InventoryConfiguration.Destination.S3BucketDestination.Bucket
+  - expected: CSV
+    op: eq
+    path: InventoryConfiguration.Destination.S3BucketDestination.Format
+  - expected: Test_Inventory
+    op: eq
+    path: InventoryConfiguration.Id
+  - expected: Current
+    op: eq
+    path: InventoryConfiguration.IncludedObjectVersions
+  - expected: 0
+    op: eq
+    path: InventoryConfiguration.IsEnabled
+  - expected: Weekly
+    op: eq
+    path: InventoryConfiguration.Schedule.Frequency

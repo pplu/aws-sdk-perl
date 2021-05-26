@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <FieldLevelEncryptionProfileList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><MaxItems>100</MaxItems><Quantity>1</Quantity><Items><FieldLevelEncryptionProfileSummary><Id>P14TNUMMKLEPXX</Id><LastModifiedTime>2020-01-09T20:33:35.676Z</LastModifiedTime><Name>PawsCloudConfig</Name><EncryptionEntities><Quantity>1</Quantity><Items><EncryptionEntity><PublicKeyId>K3ODSO6SYTI4ZG</PublicKeyId><ProviderId>OpenSSL</ProviderId><FieldPatterns><Quantity>2</Quantity><Items><FieldPattern>some*</FieldPattern><FieldPattern>None*</FieldPattern></Items></FieldPatterns></EncryptionEntity></Items></EncryptionEntities><Comment>Rick was here</Comment></FieldLevelEncryptionProfileSummary></Items></FieldLevelEncryptionProfileList>
+headers:
+  client-date: 'Thu, 09 Jan 2020 20:37:21 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 747
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 20:37:20 GMT'
+  x-amzn-requestid: 8199ade2-7536-407c-854c-a9f804af44a5
+status: 200

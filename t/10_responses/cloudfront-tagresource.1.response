@@ -1,0 +1,15 @@
+---
+content: ''
+headers:
+  client-date: 'Fri, 10 Jan 2020 19:58:39 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-type: text/xml
+  date: 'Fri, 10 Jan 2020 19:58:38 GMT'
+  x-amzn-requestid: a8ea8be8-7ef7-4b7a-b009-49e44ccff835
+status: 204

@@ -1,0 +1,31 @@
+---
+call: UploadPartCopy
+service: S3
+tests:
+  - expected: 418521EC473D3599
+    op: eq
+    path: _request_id
+  - path: CopyPartResult.ETag
+    expected: 3858f62230ac3c915f300c664312c63f
+    op: eq 
+  - path: CopyPartResult.LastModified
+    expected: 2016-11-02T09:06:53.000Z
+    op: eq
+  - path: CopySourceVersionId
+    expected: id
+    op: eq
+  - path: RequestCharged
+    expected: charged
+    op: eq
+  - path: ServerSideEncryption
+    expected: encryption
+    op: eq
+  - path: SSECustomerAlgorithm
+    expected: algorithm
+    op: eq
+  - path: SSECustomerKeyMD5
+    expected: key-MD5
+    op: eq
+  - path: SSEKMSKeyId
+    expected: key-id
+    op: eq

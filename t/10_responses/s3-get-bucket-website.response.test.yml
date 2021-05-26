@@ -1,0 +1,13 @@
+---
+call: GetBucketWebsite
+service: S3
+tests:
+  - expected: SomeErrorDocument.html
+    op: eq
+    path: ErrorDocument.Key
+  - expected: index.html
+    op: eq
+    path: IndexDocument.Suffix
+  - expected: 4F549587A44E64B2
+    op: eq
+    path: _request_id

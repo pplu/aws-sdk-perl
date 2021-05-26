@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <CloudFrontOriginAccessIdentityList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Marker></Marker><MaxItems>10</MaxItems><IsTruncated>false</IsTruncated><Quantity>2</Quantity><Items><CloudFrontOriginAccessIdentitySummary><Id>EY07SKBZ90C5A</Id><S3CanonicalUserId>6c6128425717e67ab264c31cde579615871a69065a82c900bfe23587a07f869016dae0126aca6b9dff95dc4db990ebc4</S3CanonicalUserId><Comment>This is a comment</Comment></CloudFrontOriginAccessIdentitySummary><CloudFrontOriginAccessIdentitySummary><Id>E3D5Y5RWA05QO1</Id><S3CanonicalUserId>84f47125a87a26ea5ba42f3be65fbefebdb7440d82e7d27907c52c969ac4f6c05ef03046db8cd6f74dab632e70ffcd71</S3CanonicalUserId><Comment>This is Mr Poopy Buthole calling</Comment></CloudFrontOriginAccessIdentitySummary></Items></CloudFrontOriginAccessIdentityList>
+headers:
+  client-date: 'Tue, 07 Jan 2020 21:38:47 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 820
+  content-type: text/xml
+  date: 'Tue, 07 Jan 2020 21:38:47 GMT'
+  x-amzn-requestid: 15ec3bba-3196-11ea-8ca3-5bf4b56aa0ba
+status: 200

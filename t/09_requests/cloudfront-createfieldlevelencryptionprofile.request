@@ -1,0 +1,15 @@
+---
+FieldLevelEncryptionProfileConfig:
+  CallerReference: 2020-01-01-20:01
+  Comment: Rick was here
+  EncryptionEntities:
+    Items:
+      - FieldPatterns:
+          Items:
+            - None*
+            - some*
+          Quantity: 2
+        ProviderId: OpenSSL
+        PublicKeyId: K3ODSO6SYTI4ZG
+    Quantity: 1
+  Name: PawsCloudConfig

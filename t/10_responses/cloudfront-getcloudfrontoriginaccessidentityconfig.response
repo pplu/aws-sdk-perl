@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <CloudFrontOriginAccessIdentityConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>some test here</CallerReference><Comment>This is Mr Poopy Buthole calling</Comment></CloudFrontOriginAccessIdentityConfig>
+headers:
+  client-date: 'Tue, 07 Jan 2020 21:28:09 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 255
+  content-type: text/xml
+  date: 'Tue, 07 Jan 2020 21:28:08 GMT'
+  etag: E2J612BD0LRDHQ
+  x-amzn-requestid: 9a01ee7e-3194-11ea-984b-c7d48b548267
+status: 200

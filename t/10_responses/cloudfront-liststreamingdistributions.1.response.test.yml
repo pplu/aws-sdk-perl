@@ -1,0 +1,136 @@
+---
+call: ListStreamingDistributions
+service: CloudFront
+tests:
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.IsTruncated
+  - expected: arn:aws:cloudfront::985173205561:streaming-distribution/E2NTUK2D9QNN2P
+    op: eq
+    path: StreamingDistributionList.Items.0.ARN
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.Aliases.Quantity
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Items.0.Comment
+  - expected: s4lzay6ct4xc1.cloudfront.net
+    op: eq
+    path: StreamingDistributionList.Items.0.DomainName
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.Enabled
+  - expected: E2NTUK2D9QNN2P
+    op: eq
+    path: StreamingDistributionList.Items.0.Id
+  - expected: 2020-01-11T02:06:37.678Z
+    op: eq
+    path: StreamingDistributionList.Items.0.LastModifiedTime
+  - expected: PriceClass_All
+    op: eq
+    path: StreamingDistributionList.Items.0.PriceClass
+  - expected: pawsexamplebucket.s3.amazonaws.com
+    op: eq
+    path: StreamingDistributionList.Items.0.S3Origin.DomainName
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Items.0.S3Origin.OriginAccessIdentity
+  - expected: Deployed
+    op: eq
+    path: StreamingDistributionList.Items.0.Status
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.TrustedSigners.Quantity
+  - expected: arn:aws:cloudfront::985173205561:streaming-distribution/E1MH0EIPT4AYI7
+    op: eq
+    path: StreamingDistributionList.Items.1.ARN
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.1.Aliases.Quantity
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Items.1.Comment
+  - expected: s3up0qnnejm0h2.cloudfront.net
+    op: eq
+    path: StreamingDistributionList.Items.1.DomainName
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.1.Enabled
+  - expected: E1MH0EIPT4AYI7
+    op: eq
+    path: StreamingDistributionList.Items.1.Id
+  - expected: 2020-01-11T18:13:17.556Z
+    op: eq
+    path: StreamingDistributionList.Items.1.LastModifiedTime
+  - expected: PriceClass_All
+    op: eq
+    path: StreamingDistributionList.Items.1.PriceClass
+  - expected: pawsexamplebucket.s3.amazonaws.com
+    op: eq
+    path: StreamingDistributionList.Items.1.S3Origin.DomainName
+  - expected: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+    op: eq
+    path: StreamingDistributionList.Items.1.S3Origin.OriginAccessIdentity
+  - expected: Deployed
+    op: eq
+    path: StreamingDistributionList.Items.1.Status
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.1.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.1.TrustedSigners.Quantity
+  - expected: arn:aws:cloudfront::985173205561:streaming-distribution/E17937UBVFIW2L
+    op: eq
+    path: StreamingDistributionList.Items.2.ARN
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.2.Aliases.Quantity
+  - expected: 'I squanch, your Squanch, Squance'
+    op: eq
+    path: StreamingDistributionList.Items.2.Comment
+  - expected: s3pn52kbh66jq2.cloudfront.net
+    op: eq
+    path: StreamingDistributionList.Items.2.DomainName
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.2.Enabled
+  - expected: E17937UBVFIW2L
+    op: eq
+    path: StreamingDistributionList.Items.2.Id
+  - expected: 2020-01-11T18:34:18.239Z
+    op: eq
+    path: StreamingDistributionList.Items.2.LastModifiedTime
+  - expected: PriceClass_100
+    op: eq
+    path: StreamingDistributionList.Items.2.PriceClass
+  - expected: oneoffpaws.s3.amazonaws.com
+    op: eq
+    path: StreamingDistributionList.Items.2.S3Origin.DomainName
+  - expected: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+    op: eq
+    path: StreamingDistributionList.Items.2.S3Origin.OriginAccessIdentity
+  - expected: InProgress
+    op: eq
+    path: StreamingDistributionList.Items.2.Status
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.2.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.2.TrustedSigners.Quantity
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Marker
+  - expected: 10
+    op: eq
+    path: StreamingDistributionList.MaxItems
+  - expected: 3
+    op: eq
+    path: StreamingDistributionList.Quantity
+  - expected: 683ef1ad-d68e-49de-9ed7-d7899d44c2ea
+    op: eq
+    path: _request_id

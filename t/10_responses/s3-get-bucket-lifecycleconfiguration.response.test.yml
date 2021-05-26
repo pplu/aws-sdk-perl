@@ -1,0 +1,19 @@
+---
+call: GetBucketLifecycleConfiguration
+service: S3
+tests:
+  - expected: 365
+    op: eq
+    path: Rules.0.Expiration.Days
+  - expected: test
+    op: eq
+    path: Rules.0.Filter.And.Prefix
+  - expected: test
+    op: eq
+    path: Rules.0.Filter.Prefix
+  - expected: Rule1
+    op: eq
+    path: Rules.0.ID
+  - expected: Enabled
+    op: eq
+    path: Rules.0.Status

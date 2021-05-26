@@ -1,0 +1,4 @@
+---
+content: '<?xml version="1.0" encoding="UTF-8"?><MetricsConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Id>ImportantBlueDocuments</Id><Filter><And><Prefix>documents</Prefix><Tag><Key>priority</Key><Value>high</Value></Tag><Tag><Key>class</Key><Value>blue</Value></Tag></And></Filter></MetricsConfiguration>'
+headers: []
+status: 200

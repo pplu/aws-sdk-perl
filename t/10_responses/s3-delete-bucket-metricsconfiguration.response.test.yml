@@ -1,0 +1,7 @@
+---
+call: DeleteBucketMetricsConfiguration
+service: S3
+Tests:
+  - expected: QA3379DA02E1B7DD4
+    op: eq
+    path: _request_id

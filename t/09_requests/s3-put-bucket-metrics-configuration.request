@@ -1,0 +1,17 @@
+---
+Bucket: oneoffpaws
+Id: ImportantBlueDocuments
+MetricsConfiguration:
+  Id: ImportantBlueDocuments
+  Filter:
+    And:
+      Prefix: documents
+      Tags:
+        - Key: priority
+          Value: high
+        - Key: class
+          Value: blue
+    Prefix: MyPrefix
+    Tag:
+      Key: priority
+      Value: high

@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <PolicyStatus xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><IsPublic>true</IsPublic></PolicyStatus>
+headers: 
+  x-amz-request-id: FBFF735467D561F6
+status: 200

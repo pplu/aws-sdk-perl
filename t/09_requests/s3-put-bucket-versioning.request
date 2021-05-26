@@ -1,0 +1,7 @@
+---
+Bucket: oneoffpaws
+VersioningConfiguration:
+  MFADelete: Enabled
+  Status: Enabled
+MFA: MyMFA
+

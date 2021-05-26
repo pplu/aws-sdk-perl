@@ -1,0 +1,17 @@
+---
+call: HeadBucket
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: HEAD
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws
+    path: url
+    op: eq
+  - expected: /oneoffpaws
+    path: uri
+    op: eq

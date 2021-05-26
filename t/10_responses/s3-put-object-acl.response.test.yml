@@ -1,0 +1,10 @@
+---
+call: PutObjectAcl
+service: S3
+tests:
+  - path: RequestCharged
+    op: eq
+    expected: mrs poopy buthole
+  - expected: A3379DA02E1B7DD4 
+    op: eq
+    path: _request_id

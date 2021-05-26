@@ -1,0 +1,61 @@
+---
+call: ListStreamingDistributions
+service: CloudFront
+tests:
+  - expected: 1
+    op: eq
+    path: StreamingDistributionList.IsTruncated
+  - expected: arn:aws:cloudfront::985173205561:streaming-distribution/E2NTUK2D9QNN2P
+    op: eq
+    path: StreamingDistributionList.Items.0.ARN
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.Aliases.Quantity
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Items.0.Comment
+  - expected: s4lzay6ct4xc1.cloudfront.net
+    op: eq
+    path: StreamingDistributionList.Items.0.DomainName
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.Enabled
+  - expected: E2NTUK2D9QNN2P
+    op: eq
+    path: StreamingDistributionList.Items.0.Id
+  - expected: 2020-01-11T02:06:37.678Z
+    op: eq
+    path: StreamingDistributionList.Items.0.LastModifiedTime
+  - expected: PriceClass_All
+    op: eq
+    path: StreamingDistributionList.Items.0.PriceClass
+  - expected: pawsexamplebucket.s3.amazonaws.com
+    op: eq
+    path: StreamingDistributionList.Items.0.S3Origin.DomainName
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Items.0.S3Origin.OriginAccessIdentity
+  - expected: Deployed
+    op: eq
+    path: StreamingDistributionList.Items.0.Status
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistributionList.Items.0.TrustedSigners.Quantity
+  - expected: ''
+    op: eq
+    path: StreamingDistributionList.Marker
+  - expected: 1
+    op: eq
+    path: StreamingDistributionList.MaxItems
+  - expected: E2NTUK2D9QNN2P
+    op: eq
+    path: StreamingDistributionList.NextMarker
+  - expected: 1
+    op: eq
+    path: StreamingDistributionList.Quantity
+  - expected: 68b91529-e68a-411f-bd02-6bdb5e456919
+    op: eq
+    path: _request_id

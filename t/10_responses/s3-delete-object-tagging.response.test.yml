@@ -1,0 +1,10 @@
+---
+call: DeleteObjectTagging
+service: S3
+tests:
+  - expected: B8fS4HKDLzvoZVCxg6imKZTnzWF.jSer
+    op: eq
+    path: VersionId
+  - expected: B1B5552784608B76 
+    op: eq
+    path: _request_id

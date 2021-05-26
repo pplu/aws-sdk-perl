@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <NotificationConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><QueueConfiguration><Id>EventOneoffPaws</Id><Queue>arn:aws:sqs:us-east-1:985173205561:oneoffpaws</Queue><Event>s3:ObjectCreated:Put</Event><Event>s3:ObjectCreated:Post</Event><Event>s3:ObjectCreated:Copy</Event><Filter><S3Key><FilterRule><Name>Suffix</Name><Value>.jpg</Value></FilterRule></S3Key></Filter></QueueConfiguration></NotificationConfiguration>
+headers:
+  x-amz-request-id: 6B2C62638C5862C3
+status: 200

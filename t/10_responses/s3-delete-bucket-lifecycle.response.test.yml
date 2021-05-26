@@ -1,0 +1,8 @@
+---
+call: DeleteBucketLifecycle
+service: S3
+tests:  
+  - expected: BQB5552784608B76 
+    op: eq
+    path: _request_id
+

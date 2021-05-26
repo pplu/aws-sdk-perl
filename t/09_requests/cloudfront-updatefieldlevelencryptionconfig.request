@@ -1,0 +1,21 @@
+---
+FieldLevelEncryptionConfig:
+  CallerReference: 01-01-2020:00001
+  Comment: Yeah Dad! You take away all the fun
+  ContentTypeProfileConfig:
+    ContentTypeProfiles:
+      Items:
+        - ContentType: application/x-www-form-urlencoded
+          Format: URLEncoded
+          ProfileId: P14TNUMMKLEPXX
+      Quantity: 1
+    ForwardWhenContentTypeIsUnknown: 0
+  QueryArgProfileConfig:
+    ForwardWhenQueryArgProfileIsUnknown: 0
+    QueryArgProfiles:
+      Items:
+        - ProfileId: P14TNUMMKLEPXX
+          QueryArg: gee_dad
+      Quantity: 1
+Id: C26GE31LXDSQZI
+IfMatch: E3MYZU38G7JCEI

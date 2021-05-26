@@ -1,0 +1,16 @@
+---
+content: '{"QuietTime":{},"Limits":{},"RequestID":"e1900965-a3d7-11e9-b96c-755d5f59bd77","Message":"Accepted","ApplicationId":"35ec2088193b4f56986cec0fc59d9ca4","CampaignHook":{}}'
+headers:
+  'connection': 'keep-alive'
+  'x-amz-apigw-id': 'cqPaJFb6IAMFg6A='
+  'date': 'Thu, 11 Jul 2019 12:32:00 GMT'
+  'x-amz-cf-id': 'Xr8MU0oR7-7RfUd9u2ib3euSF7gSNG6-Fe_XJCWYLNM0cO-kJVS2xA=='
+  'x-amz-cf-pop': 'ORD52-C2'
+  'access-control-allow-origin': '*'
+  'via': '1.1 bb8a4e32b7413c1fbb32dbaa86a9a575.cloudfront.net (CloudFront)'
+  'x-cache': 'Miss from cloudfront'
+  'content-type': 'application/json'
+  'content-length': '73'
+  'x-amzn-requestid': 'e1900965-a3d7-11e9-b96c-755d5f59bd77'
+  'x-amzn-trace-id': 'Root=1-5d272c40-436c0b4278b9a0182edb1a0a'
+status: 202

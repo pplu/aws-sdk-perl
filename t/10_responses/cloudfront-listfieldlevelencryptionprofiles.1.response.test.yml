@@ -1,0 +1,73 @@
+---
+call: ListFieldLevelEncryptionProfiles
+service: CloudFront
+tests:
+  - expected: Rick was here
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.Comment
+  - expected: some*
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.EncryptionEntities.Items.0.FieldPatterns.Items.0
+  - expected: None*
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.EncryptionEntities.Items.0.FieldPatterns.Items.1
+  - expected: 2
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.EncryptionEntities.Items.0.FieldPatterns.Quantity
+  - expected: OpenSSL
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.EncryptionEntities.Items.0.ProviderId
+  - expected: K3ODSO6SYTI4ZG
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.EncryptionEntities.Items.0.PublicKeyId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.EncryptionEntities.Quantity
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.Id
+  - expected: 2020-01-09T20:33:35.676Z
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.LastModifiedTime
+  - expected: PawsCloudConfig
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.0.Name
+  - expected: Rick was here. Yet Again
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.Comment
+  - expected: Never*
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.EncryptionEntities.Items.0.FieldPatterns.Items.0
+  - expected: Please*
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.EncryptionEntities.Items.0.FieldPatterns.Items.1
+  - expected: 2
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.EncryptionEntities.Items.0.FieldPatterns.Quantity
+  - expected: OpenSSL
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.EncryptionEntities.Items.0.ProviderId
+  - expected: K3ODSO6SYTI4ZG
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.EncryptionEntities.Items.0.PublicKeyId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.EncryptionEntities.Quantity
+  - expected: P11YIB8QUZ31DB
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.Id
+  - expected: 2020-01-09T20:40:51.296Z
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.LastModifiedTime
+  - expected: PawsCloudConfigTwo
+    op: eq
+    path: FieldLevelEncryptionProfileList.Items.1.Name
+  - expected: 100
+    op: eq
+    path: FieldLevelEncryptionProfileList.MaxItems
+  - expected: 2
+    op: eq
+    path: FieldLevelEncryptionProfileList.Quantity
+  - expected: 2347866e-6fd6-4041-afeb-8155a8f5d44d
+    op: eq
+    path: _request_id

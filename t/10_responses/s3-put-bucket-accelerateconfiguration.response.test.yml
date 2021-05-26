@@ -1,0 +1,7 @@
+---
+call: PutBucketAccelerateConfiguration
+service: S3
+tests:
+  - expected: BA418D17C565D929
+    op: eq
+    path: _request_id

@@ -1,0 +1,16 @@
+---
+call: GetCloudFrontOriginAccessIdentityConfig
+service: CloudFront
+tests:
+  - expected: some test here
+    op: eq
+    path: CloudFrontOriginAccessIdentityConfig.CallerReference
+  - expected: This is Mr Poopy Buthole calling
+    op: eq
+    path: CloudFrontOriginAccessIdentityConfig.Comment
+  - expected: E2J612BD0LRDHQ
+    op: eq
+    path: ETag
+  - expected: 9a01ee7e-3194-11ea-984b-c7d48b548267
+    op: eq
+    path: _request_id

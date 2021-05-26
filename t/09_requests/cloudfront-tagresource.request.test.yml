@@ -1,0 +1,53 @@
+---
+call: TagResource
+service: CloudFront
+tests:
+  - expected: '<Tags xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Items><Tag><Key>Tag1</Key><Value>Value 1</Value></Tag></Items></Tags>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: cdgPWy0T0riRipR2xEBC7g==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: e78f0b464228bee6ca23c71fcb82b6e3cdfcb3d049590e593f2c6a02799b7602
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: arn:aws:cloudfront::985173205561:distribution/E2F696NMEQJ5SH
+    key: Resource
+    op: eq
+    path: parameters
+  - expected: Tag1
+    key: Tags.Items.member.1.Key
+    op: eq
+    path: parameters
+  - expected: Value 1
+    key: Tags.Items.member.1.Value
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/tagging
+    op: eq
+    path: url
+  - expected: /2019-03-26/tagging
+    op: eq
+    path: url
+  - expected: /2019-03-26/tagging
+    op: eq
+    path: uri
+  - expected: Resource=arn%3Aaws%3Acloudfront%3A%3A985173205561%3Adistribution%2FE2F696NMEQJ5SH
+    op: eq
+    path: uri
+  - expected: Operation=Tag
+    op: eq
+    path: uri

@@ -1,0 +1,40 @@
+---
+call: DeleteObject
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - key: Key
+    expected: one/to/delete/image.jpg
+    op: eq
+    path: parameters
+  - expected: my version id
+    op: eq
+    path: parameters
+    key: versionId
+  - key: RequestPayer
+    expected: requester
+    op: eq
+    path: parameters
+  - key: MFA
+    expected: MyMFA
+    op: eq
+    path: parameters
+  - expected: DELETE
+    op: eq
+    path: method
+  - expected: versionId=my+version+id
+    path: url
+    op: eq
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image.jpg
+    path: url
+    op: eq
+  - expected: versionId=my+version+id
+    path: uri
+    op: eq
+  - expected: /oneoffpaws/one/to/delete/image.jpg
+    path: url
+    op: eq
+

@@ -1,0 +1,19 @@
+---
+call: GetPublicAccessBlock
+service: S3
+tests:
+  - expected: 1
+    op: eq
+    path: PublicAccessBlockConfiguration.BlockPublicAcls
+  - expected: 1
+    op: eq
+    path: PublicAccessBlockConfiguration.BlockPublicPolicy
+  - expected: 1
+    op: eq
+    path: PublicAccessBlockConfiguration.IgnorePublicAcls
+  - expected: 1
+    op: eq
+    path: PublicAccessBlockConfiguration.RestrictPublicBuckets
+  - expected: A7B79823CE53314F
+    op: eq
+    path: _request_id

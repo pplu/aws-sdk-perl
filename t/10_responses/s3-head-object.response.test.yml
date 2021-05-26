@@ -1,0 +1,25 @@
+---
+call: HeadObject
+service: S3
+tests:
+  - expected: bytes
+    op: eq
+    path: AcceptRanges
+  - expected: 7211
+    op: eq
+    path: ContentLength
+  - expected: image/jpeg
+    op: eq
+    path: ContentType
+  - expected: 4eb621a762b59d1a7130c1904e23a6e2
+    op: eq
+    path: ETag
+  - expected: 'Tue, 10 Dec 2019 23:48:17 GMT'
+    op: eq
+    path: LastModified
+  - expected: pl_2CX7EKJGuzliYwf0ad0nrIpip_4LY
+    op: eq
+    path: VersionId
+  - expected: 69532AF8EC8DDCB9
+    op: eq
+    path: _request_id

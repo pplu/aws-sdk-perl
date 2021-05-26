@@ -1,0 +1,45 @@
+---
+call: ListObjectVersions 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: key-marker=MyKeyMarker 
+    path: url
+  - expected: /oneoffpaws?
+    path: url
+  - expected: version-id-marker=MyVersionIdMarker
+    path: url
+  - expected: encoding-type=url
+    path: url
+  - expected: max-keys=1
+    path: url
+  - expected: versions=
+    path: url
+  - expected: delimiter=MyDelimiter
+    path: url
+  - expected: prefix=MyPrefix
+    path: url
+  - expected: key-marker=MyKeyMarker
+    path: uri
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: version-id-marker=MyVersionIdMarker
+    path: uri
+  - expected: encoding-type=url
+    path: uri
+  - expected: max-keys=1
+    path: uri
+  - expected: versions=
+    path: uri
+  - expected: delimiter=MyDelimiter
+    path: uri
+  - expected: prefix=MyPrefix
+    path: uri

@@ -1,0 +1,11 @@
+---
+Bucket: oneoffpaws
+Key: Some Key
+UploadId: AN Id
+RequestPayer: requester
+MultipartUpload:
+  Parts:
+    - ETag: MyETag
+      PartNumber: 1
+    - ETag: MyETag2
+      PartNumber: 3

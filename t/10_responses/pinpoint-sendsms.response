@@ -1,0 +1,16 @@
+---
+content: '{"ApplicationId":"c00d1a15a99e4cbeaaab39e3dccd66e1","RequestId":"1432a912-a4b9-11e9-ad48-95ff3a078952","Result":{"1-939-555-0113":{"DeliveryStatus":"SUCCESSFUL","StatusCode":200,"StatusMessage":"MessageId: af6279vo9087299nu28mupnmbpb7sa23q2aguh80","MessageId":"af6279vo9087299nu28mupnmbpb7sa23q2aguh80"}}}'
+headers:
+  'x-amz-cf-id': 'q5ejg7SrfDtQ7x2QaCa9BWpTXYul3kNPXNJwwodnzw_bll8SydRFRQ=='
+  'content-length': '305'
+  'date': 'Fri, 12 Jul 2019 15:24:02 GMT'
+  'access-control-allow-origin': '*'
+  'x-amzn-requestid': '1432a912-a4b9-11e9-ad48-95ff3a078952'
+  'connection': 'keep-alive'
+  'x-amz-cf-pop': 'ORD52-C2'
+  'x-amzn-trace-id': 'Root=1-5d28a612-84b887b0486432b837648ae0'
+  'content-type': 'application/json'
+  'x-amz-apigw-id': 'ct7i6Hv-oAMFqgA='
+  'via': '1.1 c8a21a7610b30a71d259ed6dd5d8a6bb.cloudfront.net (CloudFront)'
+  'x-cache': 'Miss from cloudfront'
+status: 200

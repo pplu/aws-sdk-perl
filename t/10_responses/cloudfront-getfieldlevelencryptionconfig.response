@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <FieldLevelEncryptionConfig xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>01-01-2020:00001</CallerReference><Comment>No Gerry you can't come!</Comment><QueryArgProfileConfig><ForwardWhenQueryArgProfileIsUnknown>true</ForwardWhenQueryArgProfileIsUnknown><QueryArgProfiles><Quantity>1</Quantity><Items><QueryArgProfile><QueryArg>no_conig</QueryArg><ProfileId>P14TNUMMKLEPXX</ProfileId></QueryArgProfile></Items></QueryArgProfiles></QueryArgProfileConfig><ContentTypeProfileConfig><ForwardWhenContentTypeIsUnknown>true</ForwardWhenContentTypeIsUnknown><ContentTypeProfiles><Quantity>1</Quantity><Items><ContentTypeProfile><Format>URLEncoded</Format><ProfileId>P14TNUMMKLEPXX</ProfileId><ContentType>application/x-www-form-urlencoded</ContentType></ContentTypeProfile></Items></ContentTypeProfiles></ContentTypeProfileConfig></FieldLevelEncryptionConfig>
+headers:
+  client-date: 'Thu, 09 Jan 2020 21:40:16 GMT'
+  client-peer: 54.239.29.51:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 899
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 21:40:15 GMT'
+  etag: E3MYZU38G7JCEI
+  x-amzn-requestid: 8ef1c638-e62a-48df-a818-109453bd2b79
+status: 200

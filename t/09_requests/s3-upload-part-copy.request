@@ -1,0 +1,6 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image_copy.jpg
+PartNumber: 1
+UploadId: MyMultipartUploadId
+CopySource: one/to/delete/image.jpg

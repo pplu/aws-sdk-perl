@@ -1,0 +1,10 @@
+---
+call: ListBucketAnalyticsConfigurations
+service: S3
+tests:
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: E671BFABB8521E40
+    op: eq
+    path: _request_id

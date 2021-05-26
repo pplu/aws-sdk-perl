@@ -1,0 +1,20 @@
+---
+StreamingDistributionConfig:
+  Aliases:
+    Items:
+      - Mystring
+      - Mystring3
+    Quantity: 2
+  CallerReference: 2020-01-01-2020
+  Comment: Way to go Summer
+  Enabled: 0
+  PriceClass: PriceClass_100
+  S3Origin:
+    DomainName: oneoffpaws.s3.amazonaws.com
+    OriginAccessIdentity: E3D5Y5RWA05QO1
+  TrustedSigners:
+    Enabled: 0
+    Items:
+      - Mystring
+      - Mystring2
+    Quantity: 2

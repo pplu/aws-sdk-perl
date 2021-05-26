@@ -1,0 +1,7 @@
+---
+call: DeleteBucketWebsite
+service: S3
+tests:
+  - expected: C24304B731C3F719
+    op: eq
+    path: _request_id

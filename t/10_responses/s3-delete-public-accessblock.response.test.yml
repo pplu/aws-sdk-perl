@@ -1,0 +1,7 @@
+---
+call: DeletePublicAccessBlock
+service: S3
+tests:
+  - expected: 7E58444613D9E9D1
+    op: eq
+    path: _request_id

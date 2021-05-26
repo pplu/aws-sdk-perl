@@ -1,0 +1,5 @@
+---
+Bucket: oneoffpaws
+Key: Some Key
+UploadId: AN Id
+RequestPayer: requester

@@ -1,0 +1,16 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <CopyPartResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <LastModified>2016-11-02T09:06:53.000Z</LastModified>
+    <ETag>3858f62230ac3c915f300c664312c63f</ETag>
+  </CopyPartResult>
+headers: 
+  x-amz-request-id: 418521EC473D3599
+  x-amz-copy-source-version-id: id
+  x-amz-request-charged: charged 
+  x-amz-server-side-encryption: encryption
+  x-amz-server-side-encryption-customer-algorithm: algorithm
+  x-amz-server-side-encryption-customer-key-MD5: key-MD5
+  x-amz-server-side-encryption-aws-kms-key-id: key-id
+status: 200

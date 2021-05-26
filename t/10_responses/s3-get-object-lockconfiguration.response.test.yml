@@ -1,0 +1,10 @@
+---
+call: GetObjectLockConfiguration
+service: S3
+tests:
+  - expected: Enabled
+    op: eq
+    path: ObjectLockConfiguration.ObjectLockEnabled
+  - expected: A4A21CAF428E490D
+    op: eq
+    path: _request_id

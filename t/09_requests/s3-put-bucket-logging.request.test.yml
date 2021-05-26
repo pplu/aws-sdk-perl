@@ -1,0 +1,42 @@
+---
+call: PutBucketLogging 
+service: S3
+tests:
+  - expected: <BucketLoggingStatus xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LoggingEnabled><TargetBucket>MyTargetBucket</TargetBucket><TargetGrants><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><DisplayName>OwnerDisplayName</DisplayName><ID>852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID</ID></Grantee><Permission>FULL_CONTROL</Permission></Grant></TargetGrants><TargetPrefix>mylog</TargetPrefix></LoggingEnabled></BucketLoggingStatus>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: OwnerDisplayName
+    op: eq
+    path: parameters
+    key: BucketLoggingStatus.LoggingEnabled.TargetGrants.Grant.1.Grantee.DisplayName
+  - expected: 852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID
+    op: eq
+    path: parameters
+    key: BucketLoggingStatus.LoggingEnabled.TargetGrants.Grant.1.Grantee.ID
+  - expected: CanonicalUser
+    op: eq
+    path: parameters
+    key: BucketLoggingStatus.LoggingEnabled.TargetGrants.Grant.1.Grantee.Type
+  - expected: FULL_CONTROL
+    op: eq
+    path: parameters
+    key: BucketLoggingStatus.LoggingEnabled.TargetGrants.Grant.1.Permission
+  - expected: mylog
+    op: eq
+    path: parameters
+    key: BucketLoggingStatus.LoggingEnabled.TargetPrefix
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: logging
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: logging
+    path: uri

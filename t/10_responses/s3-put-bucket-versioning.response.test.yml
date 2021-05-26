@@ -1,0 +1,7 @@
+---
+call: PutBucketVersioning
+service: S3
+tests:
+  - expected: 63314030D5C34AB2
+    op: eq
+    path: _request_id

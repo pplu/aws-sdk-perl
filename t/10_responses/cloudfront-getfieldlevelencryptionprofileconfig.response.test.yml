@@ -1,0 +1,37 @@
+---
+call: GetFieldLevelEncryptionProfileConfig
+service: CloudFront
+tests:
+  - expected: E7FXFS7252NGR
+    op: eq
+    path: ETag
+  - expected: 2020-01-01-20:01
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.CallerReference
+  - expected: Rick was here
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.Comment
+  - expected: some*
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Items.0
+  - expected: None*
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Items.1
+  - expected: 2
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.FieldPatterns.Quantity
+  - expected: OpenSSL
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.ProviderId
+  - expected: K3ODSO6SYTI4ZG
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.EncryptionEntities.Items.0.PublicKeyId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.EncryptionEntities.Quantity
+  - expected: PawsCloudConfig
+    op: eq
+    path: FieldLevelEncryptionProfileConfig.Name
+  - expected: 73cad0bd-684e-4cdb-a9cf-682a1daeaaa6
+    op: eq
+    path: _request_id

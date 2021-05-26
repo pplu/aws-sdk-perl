@@ -1,0 +1,49 @@
+---
+call: UpdateFieldLevelEncryptionConfig
+service: CloudFront
+tests:
+  - expected: E2LIL66SYPFJM2
+    op: eq
+    path: ETag
+  - expected: 01-01-2020:00001
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.CallerReference
+  - expected: Yeah Dad! You take away all the fun
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.Comment
+  - expected: application/x-www-form-urlencoded
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ContentType
+  - expected: URLEncoded
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.Format
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ProfileId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Quantity
+  - expected: 0
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ForwardWhenContentTypeIsUnknown
+  - expected: 0
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.ForwardWhenQueryArgProfileIsUnknown
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Items.0.ProfileId
+  - expected: gee_dad
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Items.0.QueryArg
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Quantity
+  - expected: C26GE31LXDSQZI
+    op: eq
+    path: FieldLevelEncryption.Id
+  - expected: 2020-01-09T21:45:37.119Z
+    op: eq
+    path: FieldLevelEncryption.LastModifiedTime
+  - expected: 3b0f7704-399e-4eeb-80b7-449661cef71f
+    op: eq
+    path: _request_id

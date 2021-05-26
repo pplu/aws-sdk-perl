@@ -1,0 +1,16 @@
+---
+content: '{"Channels":{"testchannel":{"ApplicationId":"fd89d30f64104bfcb4809eacbcc261af","CreationDate":"2019-07-11T12:32:01.063Z","Enabled":"true","HasCredential":"false","Id":"a229e2976552419fa7a61a3fea89069e","IsArchived":"true","LastModifiedBy":"Testme","LastModifiedDate":"2019-07-11T12:32:01.063Z","Version":"2"}}}'
+headers:
+  'date': 'Fri, 12 Jul 2019 12:42:32 GMT'
+  'x-amz-cf-pop': 'ORD51'
+  'x-amzn-requestid': '84659e8f-a4a2-11e9-b99c-9b75f4ae6e34'
+  'content-length': '15'
+  'via': '1.1 a9663235241a881e6187d8d87d15b277.cloudfront.net (CloudFront)'
+  'access-control-allow-origin': '*'
+  'x-cache': 'Miss from cloudfront'
+  'x-amzn-trace-id': 'Root=1-5d288038-ec9382001d51660098795000'
+  'content-type': 'application/json'
+  'connection': 'keep-alive'
+  'x-amz-apigw-id': 'ctj40HOJIAMFZUg='
+  'x-amz-cf-id': '_7ikp1Wr-zxMXRgrLL927Qda8MzlTEGtlGhDrF6p2Bb1ilUNW2pHPg=='
+status: 200

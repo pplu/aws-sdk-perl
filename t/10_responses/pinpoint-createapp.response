@@ -1,0 +1,14 @@
+---
+content: '{"Name" : "perl_PAWS_test", "Id" : "fd89d30f64104bfcb4809eacbcc261af", "Arn" : "arn:aws:mobiletargeting:us-east-1:985173205561:apps/fd89d30f64104bfcb4809eacbcc261af", "tags" : {"key1":"value1","key2":"value2" }}'
+headers:
+  x-cache: Miss from cloudfront
+  via: 1.1 bb8a4e32b7413c1fbb32dbaa86a9a575.cloudfront.net (CloudFront)
+  date: Thu, 11 Jul 2019 12:32:00 GMT
+  x-amz-cf-pop: ORD52-C2
+  access-control-allow-origin: '*'
+  x-amz-cf-id: '6AM7HW38WqSMwSAJ39leNMJqEyr3SIv5AlQxwTWxJ0LCD_52I6Wlyg=='
+  x-amz-apigw-id: cqPaEGtGoAMFkrg=
+  connection: keep-alive
+  x-amzn-requestid: e148792f-a3d7-11e9-8bbe-b73b6337531c
+  x-amzn-trace-id: Root=1-5d272c40-aae7452008720820a796a7a0
+status: 200

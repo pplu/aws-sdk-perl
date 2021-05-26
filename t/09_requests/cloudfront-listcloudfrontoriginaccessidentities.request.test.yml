@@ -1,0 +1,46 @@
+---
+call: ListCloudFrontOriginAccessIdentities
+service: CloudFront
+tests:
+  - expected: ''
+    op: eq
+    path: content
+  - expected: GET
+    op: eq
+    path: method
+  - expected: 1B2M2Y8AsgTpgAmY7PhCfg==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: EY07SKBZ90C5A
+    key: Marker
+    op: eq
+    path: parameters
+  - expected: 10
+    key: MaxItems
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/origin-access-identity/cloudfront
+    op: eq
+    path: url
+  - expected: /2019-03-26/origin-access-identity/cloudfront
+    op: eq
+    path: url
+  - expected: /2019-03-26/origin-access-identity/cloudfront
+    op: eq
+    path: uri
+  - expected: Marker=EY07SKBZ90C5A
+    op: eq
+    path: uri
+  - expected: MaxItems=10
+    op: eq
+    path: uri
+

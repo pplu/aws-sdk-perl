@@ -1,0 +1,31 @@
+---
+call: GetChannels 
+service: Pinpoint
+tests:
+  - expected: 1
+    op: ==
+    path: Channels.Map.testchannel.IsArchived
+  - expected: 2019-07-11T12:32:01.063Z
+    op: eq
+    path: Channels.Map.testchannel.CreationDate
+  - expected: a229e2976552419fa7a61a3fea89069e
+    op: eq
+    path: Channels.Map.testchannel.Id
+  - expected: 0
+    op: ==
+    path: Channels.Map.testchannel.HasCredential
+  - expected: 2
+    op: ==
+    path: Channels.Map.testchannel.Version
+  - expected: 1
+    op: ==
+    path: Channels.Map.testchannel.Enabled
+  - expected: 2019-07-11T12:32:01.063Z
+    op: eq
+    path: Channels.Map.testchannel.LastModifiedDate
+  - expected: Testme
+    op: eq
+    path: Channels.Map.testchannel.LastModifiedBy
+  - expected: fd89d30f64104bfcb4809eacbcc261af
+    op: eq
+    path: Channels.Map.testchannel.ApplicationId

@@ -1,0 +1,49 @@
+---
+call: GetCampaignActivities 
+service: Pinpoint
+tests:
+  - expected: 962c226d1c9b497f939d036f1b5e5a2d 
+    op: eq
+    path: Item.0.Id
+  - expected: 35ec2088193b4f56986cec0fc59d9ca4
+    op: eq
+    path: Item.0.ApplicationId 
+  - expected: a229e2976552419fa7a61a3fea89069e
+    op: eq
+    path: Item.0.CampaignId
+  - expected: f484f921960b4e11a417c926f3146229
+    op: eq
+    path: Item.0.TreatmentId
+  - expected: PENDING
+    op: eq
+    path: Item.0.State
+  - expected: SUCCESS
+    op: eq
+    path: Item.0.Result
+  - expected: 2019-07-11T12:32:01.431Z
+    op: eq
+    path: Item.0.ScheduledStart
+  - expected: 2019-07-11T12:32:04.231Z
+    op: eq
+    path: Item.0.Start
+  - expected:  2019-07-12T12:32:01.431Z
+    op: eq
+    path: Item.0.End
+  - expected: 1
+    op: ==
+    path: Item.0.SuccessfulEndpointCount
+  - expected: 2
+    op: ==
+    path: Item.0.TotalEndpointCount
+  - expected: 3
+    op: ==
+    path: Item.0.TimezonesTotalCount
+  - expected: 4
+    op: ==
+    path: Item.0.TimezonesCompletedCount
+  - expected: eyJDcmVhdGlvbkRhdGUiOiIyMDE5LTAxLTA3VDE4OjAxOjU3LjE5M1oiLCJBY2NvdW50SWQiOiI5ODUxNzMyMDU1NjEiLCJBcHBJZCI6ImMwMGQxYTE1YTk5ZTRjYmVhYWFiMzllM2RjY2Q2NmUxIn0
+    op: eq
+    path: NextToken
+  - expected: e20d7676-a3d7-11e9-915f-b76e879c245d 
+    op: eq
+    path: _request_id

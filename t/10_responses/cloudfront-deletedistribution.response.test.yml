@@ -1,0 +1,7 @@
+---
+call: DeleteDistribution
+service: CloudFront
+tests:
+  - expected: fc23940d-d256-4d77-9646-46c1074973d0
+    op: eq
+    path: _request_id

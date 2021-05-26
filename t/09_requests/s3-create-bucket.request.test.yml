@@ -1,0 +1,42 @@
+---
+call: CreateBucket
+service: S3
+tests:
+  - expected: <CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LocationConstraint>us-east-1</LocationConstraint></CreateBucketConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: private 
+    op: eq
+    path: headers
+    key: x-amz-acl 
+  - expected: emailAddress="full_control_1@amazon.com", emailAddress="full_control_2@amazon.com"
+    op: eq
+    path: headers
+    key: x-amz-grant-full-control
+  - expected: emailAddress="read_1@amazon.com", emailAddress="read_2@amazon.com"
+    op: eq
+    path: headers
+    key: x-amz-grant-read
+  - expected: emailAddress="read_acp_1@amazon.com", emailAddress="read_acp_2@amazon.com"
+    op: eq
+    path: headers
+    key: x-amz-grant-read-acp
+  - expected: emailAddress="write_1@amazon.com", emailAddress="write_2@amazon.com"
+    op: eq
+    path: headers
+    key: x-amz-grant-write
+  - expected: emailAddress="write_acp_1@amazon.com", emailAddress="write_acp_2@amazon.com"
+    op: eq
+    path: headers
+    key: x-amz-grant-write-acp
+  - expected: 1
+    op: eq
+    path: headers
+    key: x-amz-bucket-object-lock-enabled
+  - expected: PUT
+    op: eq
+    path: method

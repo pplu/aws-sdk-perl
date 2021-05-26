@@ -1,0 +1,24 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <DeleteResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Deleted>
+      <Key>sample1.txt</Key>
+    </Deleted>
+    <Deleted>
+      <Key>sample2.txt</Key>
+    </Deleted>
+    <Error>
+      <Key>sample3.txt</Key>
+      <Code>AccessDenied</Code>
+      <Message>Access Denied</Message>
+    </Error>
+    <Error>
+      <Key>sample4.txt</Key>
+      <Code>AccessDenied</Code>
+      <Message>Access Denied</Message>
+    </Error>
+  </DeleteResult>
+headers:
+  x-amz-request-id: B1B5552784608B76
+status: 200

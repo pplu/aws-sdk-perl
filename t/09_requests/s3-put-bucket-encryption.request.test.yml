@@ -1,0 +1,22 @@
+---
+call: PutBucketEncryption 
+service: S3
+tests:
+  - expected: <ServerSideEncryptionConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><ApplyServerSideEncryptionByDefault><KMSMasterKeyID>xxxxxswsddfsdfsrew</KMSMasterKeyID><SSEAlgorithm>aws:kms</SSEAlgorithm></ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration> 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: encryption
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: encryption
+    path: uri   

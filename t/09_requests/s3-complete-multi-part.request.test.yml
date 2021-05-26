@@ -1,0 +1,51 @@
+---
+call: CompleteMultipartUpload 
+service: S3
+tests:
+  - expected: <CompleteMultipartUpload xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Part><ETag>MyETag</ETag><PartNumber>1</PartNumber></Part><Part><ETag>MyETag2</ETag><PartNumber>3</PartNumber></Part></CompleteMultipartUpload>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: requester
+    op: eq
+    path: parameters
+    key: RequestPayer
+  - expected: 3
+    op: eq
+    path: parameters
+    key: MultipartUpload.Parts.Part.2.PartNumber
+  - expected: Some Key
+    op: eq
+    path: parameters
+    key: Key
+  - expected: MyETag
+    op: eq
+    path: parameters
+    key: MultipartUpload.Parts.Part.1.ETag
+  - expected: AN Id
+    op: eq
+    path: parameters
+    key: uploadId
+  - expected: 1
+    op: eq
+    path: parameters
+    key: MultipartUpload.Parts.Part.1.PartNumber
+  - expected: MyETag2
+    op: eq
+    path: parameters
+    key: MultipartUpload.Parts.Part.2.ETag
+  - expected: POST 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/Some%20Key?
+    p: eq
+    path: url
+  - expected: uploadId=AN+Id
+    ep: eq
+    path: url
+  - expected: uploadId=AN+Id
+    ep: eq
+    path: uri

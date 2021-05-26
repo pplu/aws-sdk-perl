@@ -1,0 +1,73 @@
+---
+DistributionConfig:
+  Aliases:
+    Quantity: 0
+  CacheBehaviors:
+    Quantity: 0
+  CallerReference: cli-example
+  Comment: ''
+  CustomErrorResponses:
+    Quantity: 0
+  DefaultCacheBehavior:
+    AllowedMethods:
+      CachedMethods:
+        Items:
+          - HEAD
+          - GET
+        Quantity: 2
+      Items:
+        - HEAD
+        - GET
+      Quantity: 2
+    Compress: 0
+    DefaultTTL: 86400
+    FieldLevelEncryptionId: ''
+    ForwardedValues:
+      Cookies:
+        Forward: none
+      Headers:
+        Quantity: 0
+      QueryString: 0
+      QueryStringCacheKeys:
+        Quantity: 0
+    LambdaFunctionAssociations:
+      Quantity: 0
+    MaxTTL: 31536000
+    MinTTL: 0
+    SmoothStreaming: 0
+    TargetOriginId: pawsexamplebucket.s3.amazonaws.com-cli-example
+    TrustedSigners:
+      Enabled: 0
+      Quantity: 0
+    ViewerProtocolPolicy: allow-all
+  DefaultRootObject: index.html
+  Enabled: 1
+  HttpVersion: http2
+  IsIPV6Enabled: 1
+  Logging:
+    Bucket: ''
+    Enabled: 0
+    IncludeCookies: 0
+    Prefix: ''
+  OriginGroups:
+    Quantity: 0
+  Origins:
+    Items:
+      - CustomHeaders:
+          Quantity: 0
+        DomainName: pawsexamplebucket.s3.amazonaws.com
+        Id: pawsexamplebucket.s3.amazonaws.com-cli-example
+        OriginPath: ''
+        S3OriginConfig:
+          OriginAccessIdentity: ''
+    Quantity: 1
+  PriceClass: PriceClass_All
+  Restrictions:
+    GeoRestriction:
+      Quantity: 0
+      RestrictionType: none
+  ViewerCertificate:
+    CertificateSource: cloudfront
+    CloudFrontDefaultCertificate: 1
+    MinimumProtocolVersion: TLSv1
+  WebACLId: ''

@@ -1,0 +1,10 @@
+---
+call: GetObjectTorrent
+service: S3
+tests:
+  - expected: "d8:announce42:http://tracker.amazonaws.com:6969/announce13:announce-listll42:http://tracker.amazonaws.com:6969/announceee4:infod6:lengthi7211e4:name8:fish.jpg12:piece lengthi262144e6:pieces20:º©Çªõ­\x02\rß{>æ%[+\x1912:x-amz-bucket10:oneoffpaws9:x-amz-key8:fish.jpgee"
+    op: eq
+    path: Body
+  - expected: 3B4BFFBD40B03491
+    op: eq
+    path: _request_id

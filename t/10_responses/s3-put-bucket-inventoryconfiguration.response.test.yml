@@ -1,0 +1,11 @@
+---
+call: PutBucketInventoryConfiguration
+service: S3
+Tests:
+  - expected: XX3379DA02E1B7DD4
+    op: eq
+    path: _request_id
+  - path: status
+    op: eq
+    expected: 200`
+

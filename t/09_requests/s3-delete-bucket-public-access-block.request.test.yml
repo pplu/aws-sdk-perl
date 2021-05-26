@@ -1,0 +1,23 @@
+---
+call: DeletePublicAccessBlock 
+service: S3
+tests:
+  - expected: '' 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: DELETE 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: publicAccessBlock
+    path: url
+  - expected: /oneoffpaws?publicAccessBlock
+    path: uri
+  - expected: publicAccessBlock
+    path: uri
+

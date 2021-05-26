@@ -1,0 +1,46 @@
+---
+call: GetStreamingDistributionConfig
+service: CloudFront
+tests:
+  - expected: EL9J97I2UK4RD
+    op: eq
+    path: ETag
+  - expected: 0
+    op: eq
+    path: StreamingDistributionConfig.Aliases.Quantity
+  - expected: 2020:010101
+    op: eq
+    path: StreamingDistributionConfig.CallerReference
+  - expected: 'I squanch, your Squanch, Squance'
+    op: eq
+    path: StreamingDistributionConfig.Comment
+  - expected: 0
+    op: eq
+    path: StreamingDistributionConfig.Enabled
+  - expected: ''
+    op: eq
+    path: StreamingDistributionConfig.Logging.Bucket
+  - expected: 0
+    op: eq
+    path: StreamingDistributionConfig.Logging.Enabled
+  - expected: ''
+    op: eq
+    path: StreamingDistributionConfig.Logging.Prefix
+  - expected: PriceClass_100
+    op: eq
+    path: StreamingDistributionConfig.PriceClass
+  - expected: oneoffpaws.s3.amazonaws.com
+    op: eq
+    path: StreamingDistributionConfig.S3Origin.DomainName
+  - expected: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+    op: eq
+    path: StreamingDistributionConfig.S3Origin.OriginAccessIdentity
+  - expected: 0
+    op: eq
+    path: StreamingDistributionConfig.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistributionConfig.TrustedSigners.Quantity
+  - expected: dcce09f4-83b1-4444-986b-0adf717e02d3
+    op: eq
+    path: _request_id

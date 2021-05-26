@@ -1,0 +1,7 @@
+---
+call: DeleteFieldLevelEncryptionConfig
+service: CloudFront
+tests:
+  - expected: 5a89f879-e171-480b-bc91-78b72b091f7e
+    op: eq
+    path: _request_id

@@ -1,0 +1,12 @@
+---
+Bucket: oneoffpaws
+BucketLoggingStatus:
+  LoggingEnabled:
+    TargetBucket: MyTargetBucket
+    TargetPrefix: mylog
+    TargetGrants:
+      - Grantee:
+          Type: CanonicalUser
+          DisplayName: OwnerDisplayName
+          ID: 852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID
+        Permission: FULL_CONTROL

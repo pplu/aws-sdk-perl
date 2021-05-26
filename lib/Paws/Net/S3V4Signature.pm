@@ -5,8 +5,9 @@ package Paws::Net::S3V4Signature;
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';
+  use utf8;
   use POSIX qw(strftime);
-
+use Data::Dumper;
   sub BUILD {
     my $self = shift;
 
@@ -19,24 +20,36 @@ package Paws::Net::S3V4Signature;
     # It's much better to have them throw when $paws->service('...') is called
     # as this is the point where the user had specified "incorrect" information,
     # instead of the problem happening in the first method call.
-    $self->endpoint;
+	# Update 12/27/2019 JPS
+	# Seems that the API calls S3Control, need to have the account_id in them
+	# I added that in here;  Will 
+	$self->endpoint;
     $self->_region_for_signature;
   }
 
   sub sign {
-    my ($self, $request) = @_;
+    my ($self, $request,$account_id) = @_;
 
     $request->header( Date => $request->header('X-Amz-Date') // strftime( '%Y%m%dT%H%M%SZ', gmtime ) );
-    $request->header(
-        'Host' => $self->endpoint->default_port == $self->endpoint->port
-        ? $self->endpoint->host
-        : $self->endpoint->host_port);
-    if ($self->session_token) {
+	#$request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', gmtime ) );
+	#
+#	 $request->header( 'content-type' => 'application/xml');
+#$request->header( 'X-Amz-Date' =>"20191225T194607Z");
+    my $url = $request->url();
+    $url =~ s/s3-control/$account_id\.s3-control/g;
+    $request->url($url); 
+	$request->header(
+        'host' => $self->endpoint->default_port == $self->endpoint->port
+        ? $account_id.".".$self->endpoint->host
+        : $account_id.".".$self->endpoint->host_port);
+    
+	if ($self->session_token) {
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
+	
 
     my $name = $self->can('signing_name') ? $self->signing_name : $self->service;
     my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->_region_for_signature, $name );
     $sig->sign( $request );
-  }
+}
 1;

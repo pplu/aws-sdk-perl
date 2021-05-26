@@ -1,0 +1,6 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Error><Code>InternalError</Code><Message>We encountered an internal error. Please try again.</Message><RequestId>DF9C23B890EE4B40</RequestId><HostId>S0LDJu8e/xinpdiyNq1b7u7PHIQnYL4OSPZZh3dWTii9SgbnwxlXYtSGWaCGeU3X4ixYGErWkMg=</HostId></Error>
+headers: []
+status: 500

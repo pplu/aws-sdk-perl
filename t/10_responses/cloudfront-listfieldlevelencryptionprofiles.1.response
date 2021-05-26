@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <FieldLevelEncryptionProfileList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><MaxItems>100</MaxItems><Quantity>2</Quantity><Items><FieldLevelEncryptionProfileSummary><Id>P14TNUMMKLEPXX</Id><LastModifiedTime>2020-01-09T20:33:35.676Z</LastModifiedTime><Name>PawsCloudConfig</Name><EncryptionEntities><Quantity>1</Quantity><Items><EncryptionEntity><PublicKeyId>K3ODSO6SYTI4ZG</PublicKeyId><ProviderId>OpenSSL</ProviderId><FieldPatterns><Quantity>2</Quantity><Items><FieldPattern>some*</FieldPattern><FieldPattern>None*</FieldPattern></Items></FieldPatterns></EncryptionEntity></Items></EncryptionEntities><Comment>Rick was here</Comment></FieldLevelEncryptionProfileSummary><FieldLevelEncryptionProfileSummary><Id>P11YIB8QUZ31DB</Id><LastModifiedTime>2020-01-09T20:40:51.296Z</LastModifiedTime><Name>PawsCloudConfigTwo</Name><EncryptionEntities><Quantity>1</Quantity><Items><EncryptionEntity><PublicKeyId>K3ODSO6SYTI4ZG</PublicKeyId><ProviderId>OpenSSL</ProviderId><FieldPatterns><Quantity>2</Quantity><Items><FieldPattern>Never*</FieldPattern><FieldPattern>Please*</FieldPattern></Items></FieldPatterns></EncryptionEntity></Items></EncryptionEntities><Comment>Rick was here. Yet Again</Comment></FieldLevelEncryptionProfileSummary></Items></FieldLevelEncryptionProfileList>
+headers:
+  client-date: 'Thu, 09 Jan 2020 20:41:20 GMT'
+  client-peer: 54.239.29.65:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 1305
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 20:41:19 GMT'
+  x-amzn-requestid: 2347866e-6fd6-4041-afeb-8155a8f5d44d
+status: 200

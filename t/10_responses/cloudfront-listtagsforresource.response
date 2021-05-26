@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <Tags xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Items><Tag><Key>Tag1</Key><Value>Value 1</Value></Tag><Tag><Key>Tag2</Key><Value>Value 2</Value></Tag><Tag><Key>Tag3</Key><Value>Value 3</Value></Tag><Tag><Key>Tag4</Key><Value>Value 4</Value></Tag></Items></Tags>
+headers:
+  client-date: 'Fri, 10 Jan 2020 20:02:07 GMT'
+  client-peer: 54.239.29.51:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 298
+  content-type: text/xml
+  date: 'Fri, 10 Jan 2020 20:02:07 GMT'
+  x-amzn-requestid: c8f47479-9a26-4d2f-9cb9-298eca142f6d
+status: 200

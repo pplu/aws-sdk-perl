@@ -1,0 +1,13 @@
+---
+call: PutBucketLifecycleConfiguration
+service: S3
+tests:
+  - expected: InternalError
+    op: eq
+    path: code
+  - expected: 500
+    op: eq
+    path: http_status
+  - expected: DF9C23B890EE4B40
+    op: eq
+    path: request_id

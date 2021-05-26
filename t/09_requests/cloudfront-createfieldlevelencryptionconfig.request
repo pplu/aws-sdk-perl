@@ -1,0 +1,19 @@
+---
+FieldLevelEncryptionConfig:
+  CallerReference: 01-01-2020:00001
+  Comment: No Gerry you can't come!
+  ContentTypeProfileConfig:
+    ContentTypeProfiles:
+      Items:
+        - ContentType: application/x-www-form-urlencoded
+          Format: URLEncoded
+          ProfileId: P14TNUMMKLEPXX
+      Quantity: 1
+    ForwardWhenContentTypeIsUnknown: 1
+  QueryArgProfileConfig:
+    ForwardWhenQueryArgProfileIsUnknown: 1
+    QueryArgProfiles:
+      Items:
+        - ProfileId: P14TNUMMKLEPXX
+          QueryArg: no_conig
+      Quantity: 1

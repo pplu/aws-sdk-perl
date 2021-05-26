@@ -1,0 +1,7 @@
+---
+call: DeleteBucketReplication
+service: S3
+tests:
+  - expected: CEA1D86C48FB265A
+    op: eq
+    path: _request_id

@@ -1,0 +1,16 @@
+---
+content: '{"CountryCodeIso2":"US","CountryCodeNumeric":"1","Country":"United States","City":"Ann Arbor","ZipCode":"48104","County":"Washtenaw","Timezone":"America/New_York","CleansedPhoneNumberNational":"9395550113","CleansedPhoneNumberE164":"+19395550113","Carrier":"Verizon Wireless","PhoneTypeCode":0,"PhoneType":"MOBILE","OriginalPhoneNumber":"+19395550113"}'
+headers:
+  'x-amzn-requestid': '84adca3b-a4a2-11e9-9db1-fd016d35ac6e'
+  'access-control-allow-origin': '*'
+  'content-length': '352'
+  'via': '1.1 a9663235241a881e6187d8d87d15b277.cloudfront.net (CloudFront)'
+  'x-cache': 'Miss from cloudfront'
+  'date': 'Fri, 12 Jul 2019 12:42:33 GMT'
+  'x-amz-cf-pop': 'ORD51'
+  'x-amz-apigw-id': 'ctj45E-fIAMF-fQ='
+  'x-amz-cf-id': 'jODqpgZ9akQs3buHTlB7DKvQ0P7_VGkkDK-KugR8saoeeayhyPKgXw=='
+  'x-amzn-trace-id': 'Root=1-5d288038-1eefb283fd0a73b9133c7e4f'
+  'content-type': 'application/json'
+  'connection': 'keep-alive'
+status: 200

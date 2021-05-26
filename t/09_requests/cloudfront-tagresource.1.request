@@ -1,0 +1,10 @@
+---
+Resource: arn:aws:cloudfront::985173205561:distribution/E2F696NMEQJ5SH
+Tags:
+  Items:
+    - Key: Tag2
+      Value: Value 2
+    - Key: Tag3
+      Value: Value 3
+    - Key: Tag4
+      Value: Value 4

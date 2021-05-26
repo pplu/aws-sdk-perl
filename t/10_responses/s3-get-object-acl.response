@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Owner><ID>61fc60cb3564d2688646074ceaa202e56ee65cf6e56c28b3a034eabd193d54c8</ID><DisplayName>mr squanchy</DisplayName></Owner><AccessControlList><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID>61fc60cb3564d2688646074ceaa202e56ee65cf6e56c28b3a034eabd193d54c8</ID><DisplayName>mr squanchy</DisplayName></Grantee><Permission>FULL_CONTROL</Permission></Grant></AccessControlList></AccessControlPolicy>
+headers:
+  x-amz-request-id: 1B2A37336046737E
+status: 200

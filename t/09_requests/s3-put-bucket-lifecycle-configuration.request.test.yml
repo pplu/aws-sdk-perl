@@ -1,0 +1,50 @@
+---
+call: PutBucketLifecycleConfiguration 
+service: S3
+tests:
+  - expected: <LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><Filter><Prefix>documents</Prefix></Filter><ID>rule1</ID><Status>Enabled</Status><Transition><Days>30</Days><StorageClass>GLACIER</StorageClass></Transition></Rule><Rule><Filter><Prefix>documents</Prefix></Filter><ID>rule1</ID><Status>Enabled</Status><Transition><Days>30</Days><StorageClass>GLACIER</StorageClass></Transition></Rule></LifecycleConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: Enabled 
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.2.Status
+  - expected: documents
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.2.Filter.Prefix
+  - expected: GLACIER
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.2.Transitions.Transition.1.StorageClass
+  - expected: 30
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.1.Transitions.Transition.1.Days 
+  - expected: 30
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.2.Transitions.Transition.1.Days
+  - expected: Enabled
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.1.Status
+  - expected: rule1
+    op: eq
+    path: parameters
+    key: LifecycleConfiguration.Rules.Rule.1.ID
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: lifecycle
+    path: url
+  - expected: lifecycle
+    path: uri   
+  - expected: /oneoffpaws?
+    path: uri

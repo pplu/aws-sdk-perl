@@ -4,11 +4,10 @@ content: |
   <BucketLoggingStatus xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
     <LoggingEnabled>
       <TargetBucket>mybucketlogs</TargetBucket>
-      <TargetPrefix>mybucket-access_log-/</TargetPrefix>
+      <TargetPrefix>mybucket-access_log</TargetPrefix>
       <TargetGrants>
         <Grant>
-          <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:type="AmazonCustomerByEmail">
+          <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail">
             <EmailAddress>user@company.com</EmailAddress>
           </Grantee>
           <Permission>READ</Permission>
@@ -16,5 +15,6 @@ content: |
       </TargetGrants>
     </LoggingEnabled>
   </BucketLoggingStatus>
-headers: []
+headers: 
+  x-amz-request-id: 6B2C62638C5862C3
 status: 200

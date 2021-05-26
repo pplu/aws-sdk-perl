@@ -1,0 +1,7 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Retention xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Mode>GOVERNANCE</Mode><RetainUntilDate>2070-01-01T01:00:00.000Z</RetainUntilDate></Retention>
+headers: 
+  x-amz-request-id: 1C0808712A62A80F
+status: 200

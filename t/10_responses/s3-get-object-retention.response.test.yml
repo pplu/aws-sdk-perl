@@ -1,0 +1,13 @@
+---
+call: GetObjectRetention
+service: S3
+tests:
+  - expected: GOVERNANCE
+    op: eq
+    path: Retention.Mode
+  - expected: 2070-01-01T01:00:00.000Z
+    op: eq
+    path: Retention.RetainUntilDate
+  - expected: 1C0808712A62A80F
+    op: eq
+    path: _request_id

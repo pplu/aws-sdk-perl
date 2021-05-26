@@ -1,0 +1,20 @@
+---
+Id: E17937UBVFIW2L
+IfMatch: EL9J97I2UK4RD
+StreamingDistributionConfig:
+  Aliases:
+    Quantity: 0
+  CallerReference: 2020:010101
+  Comment: No Dad this is not right
+  Enabled: 0
+  Logging:
+    Bucket: ''
+    Enabled: 0
+    Prefix: 0
+  PriceClass: PriceClass_100
+  S3Origin:
+    DomainName: oneoffpaws.s3.amazonaws.com
+    OriginAccessIdentity: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+  TrustedSigners:
+    Enabled: 0
+    Quantity: 0

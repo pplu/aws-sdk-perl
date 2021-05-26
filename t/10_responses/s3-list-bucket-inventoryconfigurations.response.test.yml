@@ -1,0 +1,25 @@
+---
+call: ListBucketInventoryConfigurations
+service: S3
+tests:
+  - expected: arn:aws:s3:::dev.somesite.paws.config
+    op: eq
+    path: InventoryConfigurationList.0.Destination.S3BucketDestination.Bucket
+  - expected: CSV
+    op: eq
+    path: InventoryConfigurationList.0.Destination.S3BucketDestination.Format
+  - expected: Test_Inventory
+    op: eq
+    path: InventoryConfigurationList.0.Id
+  - expected: Current
+    op: eq
+    path: InventoryConfigurationList.0.IncludedObjectVersions
+  - expected: 0
+    op: eq
+    path: InventoryConfigurationList.0.IsEnabled
+  - expected: Weekly
+    op: eq
+    path: InventoryConfigurationList.0.Schedule.Frequency
+  - expected: 0
+    op: eq
+    path: IsTruncated

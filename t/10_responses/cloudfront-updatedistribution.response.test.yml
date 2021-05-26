@@ -1,0 +1,184 @@
+---
+call: UpdateDistribution
+service: CloudFront
+tests:
+  - expected: arn:aws:cloudfront::985173205561:distribution/EJ143D8LZET8Z
+    op: eq
+    path: Distribution.ARN
+  - expected: 0
+    op: eq
+    path: Distribution.ActiveTrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: Distribution.ActiveTrustedSigners.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Aliases.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.CacheBehaviors.Quantity
+  - expected: cli-example
+    op: eq
+    path: Distribution.DistributionConfig.CallerReference
+  - expected: ''
+    op: eq
+    path: Distribution.DistributionConfig.Comment
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.CustomErrorResponses.Quantity
+  - expected: HEAD
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Items.0
+  - expected: GET
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Items.1
+  - expected: 2
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Quantity
+  - expected: HEAD
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.AllowedMethods.Items.0
+  - expected: GET
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.AllowedMethods.Items.1
+  - expected: 2
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.AllowedMethods.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.Compress
+  - expected: 86400
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.DefaultTTL
+  - expected: none
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.ForwardedValues.Cookies.Forward
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.ForwardedValues.Cookies.WhitelistedNames.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.ForwardedValues.Headers.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.ForwardedValues.QueryString
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.ForwardedValues.QueryStringCacheKeys.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations.Quantity
+  - expected: 31536000
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.MaxTTL
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.MinTTL
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.SmoothStreaming
+  - expected: pawsexamplebucket.s3.amazonaws.com-cli-example
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.TargetOriginId
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.TrustedSigners.Quantity
+  - expected: allow-all
+    op: eq
+    path: Distribution.DistributionConfig.DefaultCacheBehavior.ViewerProtocolPolicy
+  - expected: index.html
+    op: eq
+    path: Distribution.DistributionConfig.DefaultRootObject
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Enabled
+  - expected: http2
+    op: eq
+    path: Distribution.DistributionConfig.HttpVersion
+  - expected: 1
+    op: eq
+    path: Distribution.DistributionConfig.IsIPV6Enabled
+  - expected: ''
+    op: eq
+    path: Distribution.DistributionConfig.Logging.Bucket
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Logging.Enabled
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Logging.IncludeCookies
+  - expected: ''
+    op: eq
+    path: Distribution.DistributionConfig.Logging.Prefix
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.OriginGroups.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.CustomHeaders.Quantity
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.CustomOriginConfig.HTTPPort
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.CustomOriginConfig.HTTPSPort
+  - expected: ''
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.CustomOriginConfig.OriginProtocolPolicy
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.CustomOriginConfig.OriginSslProtocols.Quantity
+  - expected: pawsexamplebucket.s3.amazonaws.com
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.DomainName
+  - expected: pawsexamplebucket.s3.amazonaws.com-cli-example
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.Id
+  - expected: ''
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Items.0.S3OriginConfig.OriginAccessIdentity
+  - expected: 1
+    op: eq
+    path: Distribution.DistributionConfig.Origins.Quantity
+  - expected: PriceClass_All
+    op: eq
+    path: Distribution.DistributionConfig.PriceClass
+  - expected: 0
+    op: eq
+    path: Distribution.DistributionConfig.Restrictions.GeoRestriction.Quantity
+  - expected: none
+    op: eq
+    path: Distribution.DistributionConfig.Restrictions.GeoRestriction.RestrictionType
+  - expected: cloudfront
+    op: eq
+    path: Distribution.DistributionConfig.ViewerCertificate.CertificateSource
+  - expected: 1
+    op: eq
+    path: Distribution.DistributionConfig.ViewerCertificate.CloudFrontDefaultCertificate
+  - expected: TLSv1
+    op: eq
+    path: Distribution.DistributionConfig.ViewerCertificate.MinimumProtocolVersion
+  - expected: d10e955chuoza2.cloudfront.net
+    op: eq
+    path: Distribution.DomainName
+  - expected: EJ143D8LZET8Z
+    op: eq
+    path: Distribution.Id
+  - expected: 0
+    op: eq
+    path: Distribution.InProgressInvalidationBatches
+  - expected: 2020-01-10T22:38:05.381Z
+    op: eq
+    path: Distribution.LastModifiedTime
+  - expected: InProgress
+    op: eq
+    path: Distribution.Status
+  - expected: E241H0GCT8QGML
+    op: eq
+    path: ETag
+  - expected: d6da09f5-b67c-4a53-89e4-1011c26d0f2b
+    op: eq
+    path: _request_id

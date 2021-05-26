@@ -1,0 +1,7 @@
+---
+call: PutObjectRetention
+service: S3
+tests:
+  - expected: 051B79A667880E4F
+    op: eq
+    path: _request_id

@@ -1,0 +1,39 @@
+---
+call: UploadPartCopy 
+service: S3
+tests:
+  - expected: one/to/delete/image_copy.jpg 
+    op: eq
+    path: parameters
+    key: Key
+  - key: partNumber
+    expected: 1
+    op: eq
+    path: parameters
+  - key: CopySource
+    expected: one/to/delete/image.jpg
+    op: eq
+    path: parameters
+  - key: Bucket
+    expected: oneoffpaws
+    op: eq
+    path: parameters
+  - key: uploadId
+    expected: MyMultipartUploadId
+    op: eq
+    path: parameters
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image_copy.jpg?
+    path: url
+    op: eq
+  - expected: /oneoffpaws/one/to/delete/image_copy.jpg
+    path: uri
+    op: eq
+  - expected: uploadId=MyMultipartUploadId 
+    path: uri
+    op: eq
+  - expected: partNumber=1
+    path: uri
+    op: eq

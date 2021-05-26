@@ -1,0 +1,38 @@
+---
+call: ListPublicKeys
+service: CloudFront
+tests:
+  - expected: ''
+    op: eq
+    path: content
+  - expected: GET
+    op: eq
+    path: method
+  - expected: 1B2M2Y8AsgTpgAmY7PhCfg==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: 4
+    key: MaxItems
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/public-key
+    op: eq
+    path: url
+  - expected: /2019-03-26/public-key
+    op: eq
+    path: url
+  - expected: /2019-03-26/public-key
+    op: eq
+    path: uri
+  - expected: MaxItems=4
+    op: eq
+    path: uri

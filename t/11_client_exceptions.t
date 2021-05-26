@@ -94,8 +94,9 @@ foreach my $caller_name ('Paws::Net::FurlCaller', 'Paws::Net::Caller', 'Paws::Ne
     $p->service('S3', region => 'eu-west-1')->ListBuckets;
   } 'Paws::Exception', 'got exception';
   
-  cmp_ok($@->message, 'eq', 'Forbidden', 'S3 exception');
-  cmp_ok($@->code, 'eq', '403', 'Correct code');
+  cmp_ok($@->message, 'eq', 'The AWS Access Key Id you provided does not exist in our records.', 'S3 exception');
+  cmp_ok($@->code, 'eq', 'InvalidAccessKeyId', 'Correct code');
+  cmp_ok($@->http_status, 'eq', '403', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
   
   throws_ok {

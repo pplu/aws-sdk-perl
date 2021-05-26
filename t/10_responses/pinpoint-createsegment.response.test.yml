@@ -1,0 +1,104 @@
+---
+call: CreateSegment 
+service: Pinpoint
+tests:
+  - expected: arn:aws:mobiletargeting:us-east-1:985173205561:apps/fd89d30f64104bfcb4809eacbcc261af/segments/a229e2976552419fa7a61a3fea89069e 
+    op: eq
+    path: Arn
+  - expected: fd89d30f64104bfcb4809eacbcc261af 
+    op: eq
+    path: ApplicationId
+  - expected: 1
+    op: eq
+    path: Version
+  - expected: e1a7fe92-a3d7-11e9-b38f-19e7483bc844
+    op: eq 
+    path: _request_id
+  - expected: 2019-07-11T12:32:01.063Z
+    op: eq
+    path: CreationDate
+  - expected: a229e2976552419fa7a61a3fea89069e 
+    op: eq
+    path: Id
+  - expected: value1
+    op: eq
+    path: Tags.Map.key1
+  - expected: value2
+    op: eq
+    path: Tags.Map.key2
+  - expected: Test segment 
+    op: eq
+    path: Name
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.Demographic.Platform.DimensionType
+  - expected: ios
+    op: eq
+    path: Dimensions.Demographic.Platform.Values.0 
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.Demographic.AppVersion.DimensionType
+  - expected: 1.0
+    op: eq
+    path: Dimensions.Demographic.AppVersion.Values.0
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.Demographic.Make.DimensionType
+  - expected: apple
+    op: eq
+    path: Dimensions.Demographic.Make.Values.0
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.Demographic.Model.DimensionType
+  - expected: iPhone
+    op: eq
+    path: Dimensions.Demographic.Model.Values.0
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.Location.Country.DimensionType
+  - expected: US
+    op: eq
+    path: Dimensions.Location.Country.Values.0
+  - expected: 123 
+    op: eq
+    path: Dimensions.Behavior.Recency.Duration
+  - expected: ACTIVE
+    op: eq
+    path: Dimensions.Behavior.Recency.RecencyType
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.Attributes.Map.interests.AttributeType
+  - expected: technology
+    op: eq
+    path: Dimensions.Attributes.Map.interests.Values.0
+  - expected: music 
+    op: eq
+    path: Dimensions.Attributes.Map.interests.Values.1
+  - expected: travel
+    op: eq
+    path: Dimensions.Attributes.Map.interests.Values.2
+  - expected: GREATER_THAN_OR_EQUAL 
+    op: eq
+    path: Dimensions.Metrics.Map.interests.ComparisonOperator
+  - expected: 102
+    op: ==
+    path: Dimensions.Metrics.Map.interests.Value
+  - expected: INCLUSIVE
+    op: eq
+    path: Dimensions.UserAttributes.Map.interests.AttributeType
+  - expected: technology
+    op: eq
+    path: Dimensions.UserAttributes.Map.interests.Values.0
+  - expected: music
+    op: eq
+    path: Dimensions.UserAttributes.Map.interests.Values.1
+  - expected: travel
+    op: eq
+    path: Dimensions.UserAttributes.Map.interests.Values.2
+  - expected: GREATER_THAN_OR_EQUAL
+    op: eq
+    path: Dimensions.Metrics.Map.interests.ComparisonOperator
+  - expected: 102
+    op: ==
+    path: Dimensions.Metrics.Map.interests.Value
+

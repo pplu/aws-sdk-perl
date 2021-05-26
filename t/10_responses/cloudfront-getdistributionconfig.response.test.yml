@@ -1,0 +1,160 @@
+---
+call: GetDistributionConfig
+service: CloudFront
+tests:
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Aliases.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.CacheBehaviors.Quantity
+  - expected: 1577734994792
+    op: eq
+    path: DistributionConfig.CallerReference
+  - expected: ''
+    op: eq
+    path: DistributionConfig.Comment
+  - expected: 0
+    op: eq
+    path: DistributionConfig.CustomErrorResponses.Quantity
+  - expected: HEAD
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Items.0
+  - expected: GET
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Items.1
+  - expected: 2
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.AllowedMethods.CachedMethods.Quantity
+  - expected: HEAD
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.AllowedMethods.Items.0
+  - expected: GET
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.AllowedMethods.Items.1
+  - expected: 2
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.AllowedMethods.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.Compress
+  - expected: 86400
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.DefaultTTL
+  - expected: none
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.ForwardedValues.Cookies.Forward
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.ForwardedValues.Cookies.WhitelistedNames.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.ForwardedValues.Headers.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.ForwardedValues.QueryString
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.ForwardedValues.QueryStringCacheKeys.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations.Quantity
+  - expected: 31536000
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.MaxTTL
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.MinTTL
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.SmoothStreaming
+  - expected: S3-paws.coudfront.test/images
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.TargetOriginId
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.TrustedSigners.Quantity
+  - expected: allow-all
+    op: eq
+    path: DistributionConfig.DefaultCacheBehavior.ViewerProtocolPolicy
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Enabled
+  - expected: http2
+    op: eq
+    path: DistributionConfig.HttpVersion
+  - expected: 1
+    op: eq
+    path: DistributionConfig.IsIPV6Enabled
+  - expected: ''
+    op: eq
+    path: DistributionConfig.Logging.Bucket
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Logging.Enabled
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Logging.IncludeCookies
+  - expected: ''
+    op: eq
+    path: DistributionConfig.Logging.Prefix
+  - expected: 0
+    op: eq
+    path: DistributionConfig.OriginGroups.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Origins.Items.0.CustomHeaders.Quantity
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Origins.Items.0.CustomOriginConfig.HTTPPort
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Origins.Items.0.CustomOriginConfig.HTTPSPort
+  - expected: ''
+    op: eq
+    path: DistributionConfig.Origins.Items.0.CustomOriginConfig.OriginProtocolPolicy
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Origins.Items.0.CustomOriginConfig.OriginSslProtocols.Quantity
+  - expected: paws.coudfront.test.s3.us-east-1.amazonaws.com
+    op: eq
+    path: DistributionConfig.Origins.Items.0.DomainName
+  - expected: S3-paws.coudfront.test/images
+    op: eq
+    path: DistributionConfig.Origins.Items.0.Id
+  - expected: /images
+    op: eq
+    path: DistributionConfig.Origins.Items.0.OriginPath
+  - expected: ''
+    op: eq
+    path: DistributionConfig.Origins.Items.0.S3OriginConfig.OriginAccessIdentity
+  - expected: 1
+    op: eq
+    path: DistributionConfig.Origins.Quantity
+  - expected: PriceClass_All
+    op: eq
+    path: DistributionConfig.PriceClass
+  - expected: 0
+    op: eq
+    path: DistributionConfig.Restrictions.GeoRestriction.Quantity
+  - expected: none
+    op: eq
+    path: DistributionConfig.Restrictions.GeoRestriction.RestrictionType
+  - expected: cloudfront
+    op: eq
+    path: DistributionConfig.ViewerCertificate.CertificateSource
+  - expected: 1
+    op: eq
+    path: DistributionConfig.ViewerCertificate.CloudFrontDefaultCertificate
+  - expected: TLSv1
+    op: eq
+    path: DistributionConfig.ViewerCertificate.MinimumProtocolVersion
+  - expected: E22WXSE7DVIZBC
+    op: eq
+    path: ETag
+  - expected: 32282964-5da8-44be-8a43-103f80dc3c3f
+    op: eq
+    path: _request_id

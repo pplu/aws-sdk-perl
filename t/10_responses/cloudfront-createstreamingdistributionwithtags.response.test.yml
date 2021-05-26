@@ -1,0 +1,70 @@
+---
+call: CreateStreamingDistributionWithTags
+service: CloudFront
+tests:
+  - expected: EL9J97I2UK4RD
+    op: eq
+    path: ETag
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/streaming-distribution/E17937UBVFIW2L
+    op: eq
+    path: Location
+  - expected: arn:aws:cloudfront::985173205561:streaming-distribution/E17937UBVFIW2L
+    op: eq
+    path: StreamingDistribution.ARN
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.ActiveTrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.ActiveTrustedSigners.Quantity
+  - expected: s3pn52kbh66jq2.cloudfront.net
+    op: eq
+    path: StreamingDistribution.DomainName
+  - expected: E17937UBVFIW2L
+    op: eq
+    path: StreamingDistribution.Id
+  - expected: 2020-01-11T18:34:18.239Z
+    op: eq
+    path: StreamingDistribution.LastModifiedTime
+  - expected: InProgress
+    op: eq
+    path: StreamingDistribution.Status
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.Aliases.Quantity
+  - expected: 2020:010101
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.CallerReference
+  - expected: 'I squanch, your Squanch, Squance'
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.Comment
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.Enabled
+  - expected: ''
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.Logging.Bucket
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.Logging.Enabled
+  - expected: ''
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.Logging.Prefix
+  - expected: PriceClass_100
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.PriceClass
+  - expected: oneoffpaws.s3.amazonaws.com
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.S3Origin.DomainName
+  - expected: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.S3Origin.OriginAccessIdentity
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.TrustedSigners.Enabled
+  - expected: 0
+    op: eq
+    path: StreamingDistribution.StreamingDistributionConfig.TrustedSigners.Quantity
+  - expected: 6830b8f6-4dcc-4fc8-9d03-62a2383085b2
+    op: eq
+    path: _request_id

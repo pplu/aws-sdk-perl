@@ -1,0 +1,37 @@
+---
+call: ListInvalidations
+service: CloudFront
+tests:
+  - expected: 0
+    op: eq
+    path: InvalidationList.IsTruncated
+  - expected: 2020-01-09T22:42:47.577Z
+    op: eq
+    path: InvalidationList.Items.0.CreateTime
+  - expected: I2ICM4994YF3KQ
+    op: eq
+    path: InvalidationList.Items.0.Id
+  - expected: Completed
+    op: eq
+    path: InvalidationList.Items.0.Status
+  - expected: 2020-01-09T22:39:50.002Z
+    op: eq
+    path: InvalidationList.Items.1.CreateTime
+  - expected: I2IH0KUHCUPI0W
+    op: eq
+    path: InvalidationList.Items.1.Id
+  - expected: Completed
+    op: eq
+    path: InvalidationList.Items.1.Status
+  - expected: ''
+    op: eq
+    path: InvalidationList.Marker
+  - expected: 3
+    op: eq
+    path: InvalidationList.MaxItems
+  - expected: 2
+    op: eq
+    path: InvalidationList.Quantity
+  - expected: 578218d0-9558-4d27-9c09-7464b76c1696
+    op: eq
+    path: _request_id

@@ -7,7 +7,10 @@ tests:
     expected: 195AF4042CD6DF80
   - path: message
     op: eq
-    expected: Bad Request
+    expected: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
   - path: code
+    op: eq
+    expected: IllegalLocationConstraintException
+  - path: http_status
     op: eq
     expected: 400

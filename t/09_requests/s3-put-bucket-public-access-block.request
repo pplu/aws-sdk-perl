@@ -1,0 +1,7 @@
+---
+Bucket: oneoffpaws
+PublicAccessBlockConfiguration:
+  BlockPublicAcls: 1
+  IgnorePublicAcls: 0
+  BlockPublicPolicy: 0
+  RestrictPublicBuckets: 1

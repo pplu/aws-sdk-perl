@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <Invalidation xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Id>I2IH0KUHCUPI0W</Id><Status>Completed</Status><CreateTime>2020-01-09T22:39:50.002Z</CreateTime><InvalidationBatch><Paths><Quantity>1</Quantity><Items><Path>/images/*.png</Path></Items></Paths><CallerReference>1578609589853</CallerReference></InvalidationBatch></Invalidation>
+headers:
+  client-date: 'Thu, 09 Jan 2020 22:41:54 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 370
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 22:41:54 GMT'
+  x-amzn-requestid: a57323ac-226a-4c4b-ade7-54b7d161e760
+status: 200

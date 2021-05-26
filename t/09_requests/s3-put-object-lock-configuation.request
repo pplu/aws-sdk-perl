@@ -1,0 +1,11 @@
+---
+Bucket: oneoffpaws 
+ObjectLockConfiguration:
+  ObjectLockEnabled: Enabled
+  Rule:
+    DefaultRetention:
+      Days: 1
+      Mode: GOVERNANCE
+      Years: 1
+RequestPayer: requester
+Token: MyObjectLockToken

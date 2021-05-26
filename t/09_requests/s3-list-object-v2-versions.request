@@ -1,0 +1,10 @@
+---
+Bucket: oneoffpaws
+ContinuationToken: Mytoken
+Delimiter: MyDelimiter
+EncodingType: url
+FetchOwner: 1
+RequestPayer: requester 
+MaxKeys: 1
+Prefix: MyPrefix
+StartAfter: MyStartAfter

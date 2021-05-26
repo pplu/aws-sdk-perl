@@ -1,0 +1,18 @@
+---
+Bucket: oneoffpaws
+LifecycleConfiguration:
+  Rules:
+   - ID: rule1
+     Filter:
+       Prefix: documents
+     Status: Enabled
+     Transitions:
+       - Days: 30
+         StorageClass: GLACIER
+   - ID: rule1
+     Filter:
+       Prefix: documents
+     Status: Enabled
+     Transitions:
+       - Days: 30
+         StorageClass: GLACIER

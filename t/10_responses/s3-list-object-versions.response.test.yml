@@ -1,4 +1,3 @@
 ---
-todo: test not completed
 call: ListObjectVersions
 service: S3

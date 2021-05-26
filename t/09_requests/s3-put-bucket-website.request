@@ -1,0 +1,7 @@
+---
+Bucket: oneoffpaws
+WebsiteConfiguration:
+  IndexDocument:
+    Suffix: index.html
+  ErrorDocument:
+    Key: SomeErrorDocument.html

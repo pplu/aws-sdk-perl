@@ -1,0 +1,7 @@
+---
+call: UntagResource
+service: CloudFront
+tests:
+  - expected: 052c0c6b-7bb0-4b50-9558-b41d7aed5371
+    op: eq
+    path: _request_id

@@ -1,0 +1,30 @@
+---
+call: PutBucketWebsite
+service: S3
+tests:
+  - expected: <WebsiteConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><ErrorDocument><Key>SomeErrorDocument.html</Key></ErrorDocument><IndexDocument><Suffix>index.html</Suffix></IndexDocument></WebsiteConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: SomeErrorDocument.html 
+    op: eq
+    path: parameters
+    key: WebsiteConfiguration.ErrorDocument.Key
+  - expected: index.html
+    op: eq
+    path: parameters
+    key: WebsiteConfiguration.IndexDocument.Suffix
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: website
+    path: url
+  - expected: website
+    path: uri   
+  - expected: /oneoffpaws?
+    path: uri

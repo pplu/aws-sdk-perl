@@ -1,0 +1,8 @@
+---
+DistributionId: E2F696NMEQJ5SH
+InvalidationBatch:
+  CallerReference: 2020-01010-001
+  Paths:
+    Items:
+      - /images/*.bmp
+    Quantity: 1
