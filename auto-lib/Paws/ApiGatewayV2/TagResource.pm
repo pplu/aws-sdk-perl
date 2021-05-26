@@ -43,15 +43,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-AWS resource arn
+The resource ARN for the tag.
 
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>
 
-The key-value map of strings. The valid character set is
-[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
-start with aws:. The tag value can be up to 256 characters..
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 

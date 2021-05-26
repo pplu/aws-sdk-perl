@@ -41,22 +41,22 @@ This class has no description
 
 =head2 AttachTime => Str
 
-  The time stamp when the attachment initiated.
+The time stamp when the attachment initiated.
 
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the volume is deleted on instance termination.
+Indicates whether the volume is deleted on instance termination.
 
 
 =head2 Status => Str
 
-  The attachment state.
+The attachment state.
 
 
 =head2 VolumeId => Str
 
-  The ID of the EBS volume.
+The ID of the EBS volume.
 
 
 

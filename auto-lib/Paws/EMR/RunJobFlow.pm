@@ -20,6 +20,7 @@ package Paws::EMR::RunJobFlow;
   has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
+  has StepConcurrencyLevel => (is => 'ro', isa => 'Int');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
@@ -65,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EmrManagedMasterSecurityGroup => 'MyXmlStringMaxLen256',    # max: 256
         EmrManagedSlaveSecurityGroup  => 'MyXmlStringMaxLen256',    # max: 256
         HadoopVersion                 => 'MyXmlStringMaxLen256',    # max: 256
-        InstanceCount                 => 1,                         # OPTIONAL
+        InstanceCount                 => 1,
         InstanceFleets                => [
           {
             InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
@@ -73,7 +74,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 InstanceType => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
                 BidPrice => 'MyXmlStringMaxLen256', # max: 256
-                BidPriceAsPercentageOfOnDemandPrice => 1,
+                BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
                 Configurations                      => [
                   {
                     Classification => 'MyString',
@@ -86,11 +87,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EbsBlockDeviceConfigs => [
                     {
                       VolumeSpecification => {
-                        SizeInGB   => 1,                              # OPTIONAL
+                        SizeInGB   => 1,
                         VolumeType => 'MyString',
-                        Iops       => 1,                              # OPTIONAL
+                        Iops       => 1,
                       },
-                      VolumesPerInstance => 1,                        # OPTIONAL
+                      VolumesPerInstance => 1,
                     },
                     ...
                   ],                                                  # OPTIONAL
@@ -117,23 +118,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                                       # OPTIONAL
         InstanceGroups => [
           {
-            InstanceCount     => 1,                 # OPTIONAL
+            InstanceCount     => 1,
             InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
             InstanceType      => 'MyInstanceType',  # min: 1, max: 256; OPTIONAL
             AutoScalingPolicy => {
               Constraints => {
-                MaxCapacity => 1,                   # OPTIONAL
-                MinCapacity => 1,                   # OPTIONAL
+                MaxCapacity => 1,
+                MinCapacity => 1,
 
               },
               Rules => [
                 {
                   Action => {
                     SimpleScalingPolicyConfiguration => {
-                      ScalingAdjustment => 1,                     # OPTIONAL
+                      ScalingAdjustment => 1,
                       AdjustmentType    => 'CHANGE_IN_CAPACITY'
                       , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-                      CoolDown => 1,    # OPTIONAL
+                      CoolDown => 1,
                     },
                     Market => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
                   },
@@ -143,8 +144,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                       , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
                       MetricName => 'MyString',
-                      Period     => 1,            # OPTIONAL
-                      Threshold  => 1,
+                      Period     => 1,
+                      Threshold  => 1,            # OPTIONAL
                       Dimensions => [
                         {
                           Key   => 'MyString',
@@ -152,7 +153,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },
                         ...
                       ],                          # OPTIONAL
-                      EvaluationPeriods => 1,               # OPTIONAL
+                      EvaluationPeriods => 1,
                       Namespace         => 'MyString',
                       Statistic         => 'SAMPLE_COUNT'
                       , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
@@ -180,11 +181,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
-                    SizeInGB   => 1,                                # OPTIONAL
+                    SizeInGB   => 1,
                     VolumeType => 'MyString',
-                    Iops       => 1,                                # OPTIONAL
+                    Iops       => 1,
                   },
-                  VolumesPerInstance => 1,                          # OPTIONAL
+                  VolumesPerInstance => 1,
                 },
                 ...
               ],                                                    # OPTIONAL
@@ -266,6 +267,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ScaleDownBehavior     => 'TERMINATE_AT_INSTANCE_HOUR',    # OPTIONAL
       SecurityConfiguration => 'MyXmlString',                   # OPTIONAL
       ServiceRole           => 'MyXmlString',                   # OPTIONAL
+      StepConcurrencyLevel  => 1,                               # OPTIONAL
       Steps                 => [
         {
           HadoopJarStep => {
@@ -302,7 +304,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $JobFlowId = $RunJobFlowOutput->JobFlowId;
+    my $ClusterArn = $RunJobFlowOutput->ClusterArn;
+    my $JobFlowId  = $RunJobFlowOutput->JobFlowId;
 
     # Returns a L<Paws::EMR::RunJobFlowOutput> object.
 
@@ -485,11 +488,11 @@ installed.
 The Amazon EMR release label, which determines the version of
 open-source application packages installed on the cluster. Release
 labels are in the form C<emr-x.x.x>, where x.x.x is an Amazon EMR
-release version, for example, C<emr-5.14.0>. For more information about
+release version such as C<emr-5.14.0>. For more information about
 Amazon EMR release versions and included application versions and
 features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
 (https://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release
-label applies only to Amazon EMR releases versions 4.x and later.
+label applies only to Amazon EMR releases version 4.0 and later.
 Earlier versions use C<AmiVersion>.
 
 
@@ -537,6 +540,13 @@ AWS resources on your behalf.
 
 
 
+=head2 StepConcurrencyLevel => Int
+
+Specifies the number of steps that can be executed concurrently. The
+default value is C<1>. The maximum value is C<256>.
+
+
+
 =head2 Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
 A list of steps to run.
@@ -577,11 +587,10 @@ instances.
 
 =head2 VisibleToAllUsers => Bool
 
-Whether the cluster is visible to all IAM users of the AWS account
-associated with the cluster. If this value is set to C<true>, all IAM
-users of that AWS account can view and (if they have the proper policy
-permissions set) manage the cluster. If it is set to C<false>, only the
-IAM user that created the cluster can view and manage it.
+A value of C<true> indicates that all IAM users in the AWS account can
+perform cluster actions if they have the proper IAM policy permissions.
+This is the default. A value of C<false> indicates that only the IAM
+user who created the cluster can perform actions.
 
 
 

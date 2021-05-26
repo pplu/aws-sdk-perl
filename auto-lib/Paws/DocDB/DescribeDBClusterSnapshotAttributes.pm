@@ -48,8 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterSnapshotIdentifier => Str
 
-The identifier for the DB cluster snapshot to describe the attributes
-for.
+The identifier for the cluster snapshot to describe the attributes for.
 
 
 

@@ -30,9 +30,24 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchGetProjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetReportGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchGetReportGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetReports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchGetReports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::CreateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateReportGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::CreateReportGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateWebhook {
@@ -45,6 +60,21 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteReportGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteReportGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSourceCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteSourceCredentials', @_);
@@ -53,6 +83,16 @@ package Paws::CodeBuild;
   sub DeleteWebhook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTestCases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DescribeTestCases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::GetResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ImportSourceCredentials {
@@ -85,9 +125,39 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListProjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListReportGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListReportGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListReports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListReports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListReportsForReportGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListReportsForReportGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSharedProjects {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSharedProjects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSharedReportGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSharedReportGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSourceCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSourceCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartBuild {
@@ -103,6 +173,11 @@ package Paws::CodeBuild;
   sub UpdateProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::UpdateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateReportGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::UpdateReportGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateWebhook {
@@ -182,7 +257,7 @@ package Paws::CodeBuild;
   }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteSourceCredentials DeleteWebhook ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListSourceCredentials StartBuild StopBuild UpdateProject UpdateWebhook / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects BatchGetReportGroups BatchGetReports CreateProject CreateReportGroup CreateWebhook DeleteProject DeleteReport DeleteReportGroup DeleteResourcePolicy DeleteSourceCredentials DeleteWebhook DescribeTestCases GetResourcePolicy ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListReportGroups ListReports ListReportsForReportGroup ListSharedProjects ListSharedReportGroups ListSourceCredentials PutResourcePolicy StartBuild StopBuild UpdateProject UpdateReportGroup UpdateWebhook / }
 
 1;
 
@@ -221,7 +296,8 @@ languages and build tools, such as Apache Maven, Gradle, and more. You
 can also fully customize build environments in AWS CodeBuild to use
 your own build tools. AWS CodeBuild scales automatically to meet peak
 build requests. You pay only for the build time you consume. For more
-information about AWS CodeBuild, see the I<AWS CodeBuild User Guide>.
+information about AWS CodeBuild, see the I< AWS CodeBuild User Guide
+(https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html).>
 
 AWS CodeBuild supports these operations:
 
@@ -230,6 +306,10 @@ AWS CodeBuild supports these operations:
 =item *
 
 C<BatchDeleteBuilds>: Deletes one or more builds.
+
+=item *
+
+C<BatchGetBuilds>: Gets information about one or more builds.
 
 =item *
 
@@ -244,7 +324,20 @@ help manage your resources and costs.
 
 =item *
 
+C<BatchGetReportGroups>: Returns an array of report groups.
+
+=item *
+
+C<BatchGetReports>: Returns an array of reports.
+
+=item *
+
 C<CreateProject>: Creates a build project.
+
+=item *
+
+C<CreateReportGroup>: Creates a report group. A report group contains a
+collection of reports.
 
 =item *
 
@@ -255,11 +348,25 @@ is pushed to the repository.
 
 =item *
 
-C<UpdateWebhook>: Changes the settings of an existing webhook.
+C<DeleteProject>: Deletes a build project.
 
 =item *
 
-C<DeleteProject>: Deletes a build project.
+C<DeleteReport>: Deletes a report.
+
+=item *
+
+C<DeleteReportGroup>: Deletes a report group.
+
+=item *
+
+C<DeleteResourcePolicy>: Deletes a resource policy that is identified
+by its resource ARN.
+
+=item *
+
+C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
+or Bitbucket source credentials.
 
 =item *
 
@@ -270,16 +377,23 @@ pushed to the repository.
 
 =item *
 
-C<ListProjects>: Gets a list of build project names, with each build
-project name representing a single build project.
+C<DescribeTestCases>: Returns a list of details about test cases for a
+report.
 
 =item *
 
-C<UpdateProject>: Changes the settings of an existing build project.
+C<GetResourcePolicy>: Gets a resource policy that is identified by its
+resource ARN.
 
 =item *
 
-C<BatchGetBuilds>: Gets information about one or more builds.
+C<ImportSourceCredentials>: Imports the source repository credentials
+for an AWS CodeBuild project that has its source code stored in a
+GitHub, GitHub Enterprise, or Bitbucket repository.
+
+=item *
+
+C<InvalidateProjectCache>: Resets the cache for a project.
 
 =item *
 
@@ -293,6 +407,53 @@ build project, with each build ID representing a single build.
 
 =item *
 
+C<ListCuratedEnvironmentImages>: Gets information about Docker images
+that are managed by AWS CodeBuild.
+
+=item *
+
+C<ListProjects>: Gets a list of build project names, with each build
+project name representing a single build project.
+
+=item *
+
+C<ListReportGroups>: Gets a list ARNs for the report groups in the
+current AWS account.
+
+=item *
+
+C<ListReports>: Gets a list ARNs for the reports in the current AWS
+account.
+
+=item *
+
+C<ListReportsForReportGroup>: Returns a list of ARNs for the reports
+that belong to a C<ReportGroup>.
+
+=item *
+
+C<ListSharedProjects>: Gets a list of ARNs associated with projects
+shared with the current AWS account or user.
+
+=item *
+
+C<ListSharedReportGroups>: Gets a list of ARNs associated with report
+groups shared with the current AWS account or user
+
+=item *
+
+C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
+objects. Each C<SourceCredentialsInfo> object includes the
+authentication type, token ARN, and type of source provider for one set
+of credentials.
+
+=item *
+
+C<PutResourcePolicy>: Stores a resource policy for the ARN of a
+C<Project> or C<ReportGroup> object.
+
+=item *
+
 C<StartBuild>: Starts running a build.
 
 =item *
@@ -301,26 +462,15 @@ C<StopBuild>: Attempts to stop running a build.
 
 =item *
 
-C<ListCuratedEnvironmentImages>: Gets information about Docker images
-that are managed by AWS CodeBuild.
+C<UpdateProject>: Changes the settings of an existing build project.
 
 =item *
 
-C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
-or Bitbucket source credentials.
+C<UpdateReportGroup>: Changes a report group.
 
 =item *
 
-C<ImportSourceCredentials>: Imports the source repository credentials
-for an AWS CodeBuild project that has its source code stored in a
-GitHub, GitHub Enterprise, or Bitbucket repository.
-
-=item *
-
-C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
-objects. Each C<SourceCredentialsInfo> object includes the
-authentication type, token ARN, and type of source provider for one set
-of credentials.
+C<UpdateWebhook>: Changes the settings of an existing webhook.
 
 =back
 
@@ -359,7 +509,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuilds>
 
 Returns: a L<Paws::CodeBuild::BatchGetBuildsOutput> instance
 
-Gets information about builds.
+Gets information about one or more builds.
 
 
 =head2 BatchGetProjects
@@ -375,7 +525,39 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetProjects>
 
 Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 
-Gets information about build projects.
+Gets information about one or more build projects.
+
+
+=head2 BatchGetReportGroups
+
+=over
+
+=item ReportGroupArns => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::BatchGetReportGroups>
+
+Returns: a L<Paws::CodeBuild::BatchGetReportGroupsOutput> instance
+
+Returns an array of report groups.
+
+
+=head2 BatchGetReports
+
+=over
+
+=item ReportArns => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::BatchGetReports>
+
+Returns: a L<Paws::CodeBuild::BatchGetReportsOutput> instance
+
+Returns an array of reports.
 
 
 =head2 CreateProject
@@ -399,6 +581,8 @@ Gets information about build projects.
 =item [Description => Str]
 
 =item [EncryptionKey => Str]
+
+=item [FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]]
 
 =item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 
@@ -426,6 +610,27 @@ Each argument is described in detail in: L<Paws::CodeBuild::CreateProject>
 Returns: a L<Paws::CodeBuild::CreateProjectOutput> instance
 
 Creates a build project.
+
+
+=head2 CreateReportGroup
+
+=over
+
+=item ExportConfig => L<Paws::CodeBuild::ReportExportConfig>
+
+=item Name => Str
+
+=item Type => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::CreateReportGroup>
+
+Returns: a L<Paws::CodeBuild::CreateReportGroupOutput> instance
+
+Creates a report group. A report group contains a collection of
+reports.
 
 
 =head2 CreateWebhook
@@ -474,7 +679,63 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteProject>
 
 Returns: a L<Paws::CodeBuild::DeleteProjectOutput> instance
 
-Deletes a build project.
+Deletes a build project. When you delete a project, its builds are not
+deleted.
+
+
+=head2 DeleteReport
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteReport>
+
+Returns: a L<Paws::CodeBuild::DeleteReportOutput> instance
+
+Deletes a report.
+
+
+=head2 DeleteReportGroup
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteReportGroup>
+
+Returns: a L<Paws::CodeBuild::DeleteReportGroupOutput> instance
+
+C<DeleteReportGroup>: Deletes a report group. Before you delete a
+report group, you must delete its reports. Use
+ListReportsForReportGroup
+(https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html)
+to get the reports in a report group. Use DeleteReport
+(https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html)
+to delete the reports. If you call C<DeleteReportGroup> for a report
+group that contains one or more reports, an exception is thrown.
+
+
+=head2 DeleteResourcePolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteResourcePolicy>
+
+Returns: a L<Paws::CodeBuild::DeleteResourcePolicyOutput> instance
+
+Deletes a resource policy that is identified by its resource ARN.
 
 
 =head2 DeleteSourceCredentials
@@ -513,6 +774,44 @@ rebuilding the source code every time a code change is pushed to the
 repository.
 
 
+=head2 DescribeTestCases
+
+=over
+
+=item ReportArn => Str
+
+=item [Filter => L<Paws::CodeBuild::TestCaseFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DescribeTestCases>
+
+Returns: a L<Paws::CodeBuild::DescribeTestCasesOutput> instance
+
+Returns a list of details about test cases for a report.
+
+
+=head2 GetResourcePolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::GetResourcePolicy>
+
+Returns: a L<Paws::CodeBuild::GetResourcePolicyOutput> instance
+
+Gets a resource policy that is identified by its resource ARN.
+
+
 =head2 ImportSourceCredentials
 
 =over
@@ -522,6 +821,8 @@ repository.
 =item ServerType => Str
 
 =item Token => Str
+
+=item [ShouldOverwrite => Bool]
 
 =item [Username => Str]
 
@@ -628,6 +929,120 @@ Gets a list of build project names, with each build project name
 representing a single build project.
 
 
+=head2 ListReportGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListReportGroups>
+
+Returns: a L<Paws::CodeBuild::ListReportGroupsOutput> instance
+
+Gets a list ARNs for the report groups in the current AWS account.
+
+
+=head2 ListReports
+
+=over
+
+=item [Filter => L<Paws::CodeBuild::ReportFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListReports>
+
+Returns: a L<Paws::CodeBuild::ListReportsOutput> instance
+
+Returns a list of ARNs for the reports in the current AWS account.
+
+
+=head2 ListReportsForReportGroup
+
+=over
+
+=item ReportGroupArn => Str
+
+=item [Filter => L<Paws::CodeBuild::ReportFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListReportsForReportGroup>
+
+Returns: a L<Paws::CodeBuild::ListReportsForReportGroupOutput> instance
+
+Returns a list of ARNs for the reports that belong to a C<ReportGroup>.
+
+
+=head2 ListSharedProjects
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListSharedProjects>
+
+Returns: a L<Paws::CodeBuild::ListSharedProjectsOutput> instance
+
+Gets a list of projects that are shared with other AWS accounts or
+users.
+
+
+=head2 ListSharedReportGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListSharedReportGroups>
+
+Returns: a L<Paws::CodeBuild::ListSharedReportGroupsOutput> instance
+
+Gets a list of report groups that are shared with other AWS accounts or
+users.
+
+
 =head2 ListSourceCredentials
 
 
@@ -640,6 +1055,25 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListSourceCredential
 Returns: a L<Paws::CodeBuild::ListSourceCredentialsOutput> instance
 
 Returns a list of C<SourceCredentialsInfo> objects.
+
+
+=head2 PutResourcePolicy
+
+=over
+
+=item Policy => Str
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::PutResourcePolicy>
+
+Returns: a L<Paws::CodeBuild::PutResourcePolicyOutput> instance
+
+Stores a resource policy for the ARN of a C<Project> or C<ReportGroup>
+object.
 
 
 =head2 StartBuild
@@ -657,6 +1091,8 @@ Returns a list of C<SourceCredentialsInfo> objects.
 =item [CertificateOverride => Str]
 
 =item [ComputeTypeOverride => Str]
+
+=item [EncryptionKeyOverride => Str]
 
 =item [EnvironmentTypeOverride => Str]
 
@@ -746,6 +1182,8 @@ Attempts to stop running a build.
 
 =item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
 
+=item [FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]]
+
 =item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
 
 =item [QueuedTimeoutInMinutes => Int]
@@ -776,6 +1214,24 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 
 Changes the settings of a build project.
+
+
+=head2 UpdateReportGroup
+
+=over
+
+=item Arn => Str
+
+=item [ExportConfig => L<Paws::CodeBuild::ReportExportConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::UpdateReportGroup>
+
+Returns: a L<Paws::CodeBuild::UpdateReportGroupOutput> instance
+
+Updates a report group.
 
 
 =head2 UpdateWebhook

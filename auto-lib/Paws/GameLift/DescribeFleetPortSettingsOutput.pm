@@ -16,7 +16,7 @@ Paws::GameLift::DescribeFleetPortSettingsOutput
 
 =head2 InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]
 
-Object that contains port settings for the requested fleet ID.
+The port settings for the requested fleet ID.
 
 
 =head2 _request_id => Str

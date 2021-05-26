@@ -66,27 +66,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> AfterCommitId => Str
 
 To establish the directionality of the comparison, the full commit ID
-of the 'after' commit.
+of the after commit.
 
 
 
 =head2 BeforeCommitId => Str
 
 To establish the directionality of the comparison, the full commit ID
-of the 'before' commit.
-
-This is required for commenting on any commit unless that commit is the
-initial commit.
+of the before commit. Required for commenting on any commit unless that
+commit is the initial commit.
 
 
 
 =head2 ClientRequestToken => Str
 
-A unique, client-generated idempotency token that when provided in a
+A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a
-token is included, the request will return information about the
-initial request that used that token.
+token is included, the request returns information about the initial
+request that used that token.
 
 
 

@@ -79,8 +79,8 @@ ASCII character range.
 The unique identifier (ID) of the policy that you want to update.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
-digits.
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
+letters, digits, or the underscore character (_).
 
 
 

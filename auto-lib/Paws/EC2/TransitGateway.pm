@@ -45,42 +45,42 @@ This class has no description
 
 =head2 CreationTime => Str
 
-  The creation time.
+The creation time.
 
 
 =head2 Description => Str
 
-  The description of the transit gateway.
+The description of the transit gateway.
 
 
 =head2 Options => L<Paws::EC2::TransitGatewayOptions>
 
-  The transit gateway options.
+The transit gateway options.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account ID that owns the transit gateway.
+The ID of the AWS account ID that owns the transit gateway.
 
 
 =head2 State => Str
 
-  The state of the transit gateway.
+The state of the transit gateway.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the transit gateway.
+The tags for the transit gateway.
 
 
 =head2 TransitGatewayArn => Str
 
-  The Amazon Resource Name (ARN) of the transit gateway.
+The Amazon Resource Name (ARN) of the transit gateway.
 
 
 =head2 TransitGatewayId => Str
 
-  The ID of the transit gateway.
+The ID of the transit gateway.
 
 
 

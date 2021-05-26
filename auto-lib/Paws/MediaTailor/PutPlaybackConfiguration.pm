@@ -4,7 +4,9 @@ package Paws::MediaTailor::PutPlaybackConfiguration;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
   has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfigurationForPut');
+  has LivePreRollConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::LivePreRollConfiguration');
   has Name => (is => 'ro', isa => 'Str');
+  has PersonalizationThresholdSeconds => (is => 'ro', isa => 'Int');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has TranscodeProfileName => (is => 'ro', isa => 'Str');
@@ -47,8 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         OriginManifestType =>
           'SINGLE_PERIOD',    # values: SINGLE_PERIOD, MULTI_PERIOD; OPTIONAL
       },    # OPTIONAL
-      Name                  => 'My__string',                         # OPTIONAL
-      SlateAdUrl            => 'My__string',                         # OPTIONAL
+      LivePreRollConfiguration => {
+        AdDecisionServerUrl => 'My__string',
+        MaxDurationSeconds  => 1,              # OPTIONAL
+      },    # OPTIONAL
+      Name                            => 'My__string',    # OPTIONAL
+      PersonalizationThresholdSeconds => 1,               # OPTIONAL
+      SlateAdUrl                      => 'My__string',    # OPTIONAL
       Tags                  => { 'My__string' => 'My__string', },    # OPTIONAL
       TranscodeProfileName  => 'My__string',                         # OPTIONAL
       VideoContentSourceUrl => 'My__string',                         # OPTIONAL
@@ -61,7 +68,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DashConfiguration =
       $PutPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
-    my $Name             = $PutPlaybackConfigurationResponse->Name;
+    my $LivePreRollConfiguration =
+      $PutPlaybackConfigurationResponse->LivePreRollConfiguration;
+    my $Name = $PutPlaybackConfigurationResponse->Name;
+    my $PersonalizationThresholdSeconds =
+      $PutPlaybackConfigurationResponse->PersonalizationThresholdSeconds;
     my $PlaybackConfigurationArn =
       $PutPlaybackConfigurationResponse->PlaybackConfigurationArn;
     my $PlaybackEndpointPrefix =
@@ -107,9 +118,22 @@ The configuration for DASH content.
 
 
 
+=head2 LivePreRollConfiguration => L<Paws::MediaTailor::LivePreRollConfiguration>
+
+The configuration for pre-roll ad insertion.
+
+
+
 =head2 Name => Str
 
 The identifier for the playback configuration.
+
+
+
+=head2 PersonalizationThresholdSeconds => Int
+
+The maximum duration of underfilled ad time (in seconds) allowed in an
+ad break.
 
 
 

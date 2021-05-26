@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 The policy type that you want to disable in this root.
 
-Valid values are: C<"SERVICE_CONTROL_POLICY">
+Valid values are: C<"SERVICE_CONTROL_POLICY">, C<"TAG_POLICY">
 
 =head2 B<REQUIRED> RootId => Str
 
@@ -57,7 +57,7 @@ The unique identifier (ID) of the root in which you want to disable a
 policy type. You can get the ID from the ListRoots operation.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a root ID
-string requires "r-" followed by from 4 to 32 lower-case letters or
+string requires "r-" followed by from 4 to 32 lowercase letters or
 digits.
 
 

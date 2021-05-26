@@ -39,13 +39,13 @@ This class has no description
 
 =head2 ReservationValue => L<Paws::EC2::ReservationValue>
 
-  The total value of the Convertible Reserved Instance that you are
+The total value of the Convertible Reserved Instance that you are
 exchanging.
 
 
 =head2 ReservedInstanceId => Str
 
-  The ID of the Convertible Reserved Instance that you are exchanging.
+The ID of the Convertible Reserved Instance that you are exchanging.
 
 
 

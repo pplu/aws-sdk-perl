@@ -69,7 +69,7 @@ Constraints:
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 
@@ -111,7 +111,7 @@ Constraints:
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 

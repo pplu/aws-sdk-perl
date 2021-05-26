@@ -7,6 +7,7 @@ package Paws::LicenseManager::CreateLicenseConfiguration;
   has LicenseCountingType => (is => 'ro', isa => 'Str', required => 1);
   has LicenseRules => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ProductInformationList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ProductInformation]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::Tag]');
 
   use MooseX::ClassAttribute;
@@ -35,19 +36,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $license-manager = Paws->service('LicenseManager');
     my $CreateLicenseConfigurationResponse =
       $license -manager->CreateLicenseConfiguration(
-      LicenseCountingType   => 'vCPU',
-      Name                  => 'MyString',
-      Description           => 'MyString',             # OPTIONAL
-      LicenseCount          => 1,                      # OPTIONAL
-      LicenseCountHardLimit => 1,                      # OPTIONAL
-      LicenseRules          => [ 'MyString', ... ],    # OPTIONAL
-      Tags                  => [
+      LicenseCountingType    => 'vCPU',
+      Name                   => 'MyString',
+      Description            => 'MyString',             # OPTIONAL
+      LicenseCount           => 1,                      # OPTIONAL
+      LicenseCountHardLimit  => 1,                      # OPTIONAL
+      LicenseRules           => [ 'MyString', ... ],    # OPTIONAL
+      ProductInformationList => [
+        {
+          ProductInformationFilterList => [
+            {
+              ProductInformationFilterComparator => 'MyString',
+              ProductInformationFilterName       => 'MyString',
+              ProductInformationFilterValue      => [ 'MyString', ... ],
+
+            },
+            ...
+          ],
+          ResourceType => 'MyString',
+
+        },
+        ...
+      ],    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:
@@ -64,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 Description => Str
 
-Human-friendly description of the license configuration.
+Description of the license configuration.
 
 
 
@@ -76,21 +93,47 @@ Number of licenses managed by the license configuration.
 
 =head2 LicenseCountHardLimit => Bool
 
-Flag indicating whether hard or soft license enforcement is used.
-Exceeding a hard limit results in the blocked deployment of new
-instances.
+Indicates whether hard or soft license enforcement is used. Exceeding a
+hard limit blocks the launch of new instances.
 
 
 
 =head2 B<REQUIRED> LicenseCountingType => Str
 
-Dimension to use to track the license inventory.
+Dimension used to track the license inventory.
 
 Valid values are: C<"vCPU">, C<"Instance">, C<"Core">, C<"Socket">
 
 =head2 LicenseRules => ArrayRef[Str|Undef]
 
-Array of configured License Manager rules.
+License rules. The syntax is #name=value (for example,
+
+
+=over
+
+=item *
+
+C<Cores> dimension: C<allowedTenancy> | C<maximumCores> |
+C<minimumCores>
+
+=item *
+
+C<Instances> dimension: C<allowedTenancy> | C<maximumCores> |
+C<minimumCores> | C<maximumSockets> | C<minimumSockets> |
+C<maximumVcpus> | C<minimumVcpus>
+
+=item *
+
+C<Sockets> dimension: C<allowedTenancy> | C<maximumSockets> |
+C<minimumSockets>
+
+=item *
+
+C<vCPUs> dimension: C<allowedTenancy> | C<honorVcpuOptimization> |
+C<maximumVcpus> | C<minimumVcpus>
+
+=back
+
 
 
 
@@ -100,12 +143,15 @@ Name of the license configuration.
 
 
 
+=head2 ProductInformationList => ArrayRef[L<Paws::LicenseManager::ProductInformation>]
+
+Product information.
+
+
+
 =head2 Tags => ArrayRef[L<Paws::LicenseManager::Tag>]
 
-The tags to apply to the resources during launch. You can only tag
-instances and volumes on launch. The specified tags are applied to all
-instances or volumes that are created during launch. To tag a resource
-after it has been created, see CreateTags .
+Tags to add to the license configuration.
 
 
 

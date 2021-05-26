@@ -2,6 +2,7 @@
 package Paws::CloudWatchEvents::PutRule;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has EventBusName => (is => 'ro', isa => 'Str');
   has EventPattern => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
@@ -25,7 +26,7 @@ Paws::CloudWatchEvents::PutRule - Arguments for method PutRule on L<Paws::CloudW
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutRule on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method PutRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRule.
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutRuleResponse = $events->PutRule(
       Name               => 'MyRuleName',
       Description        => 'MyRuleDescription',       # OPTIONAL
+      EventBusName       => 'MyEventBusName',          # OPTIONAL
       EventPattern       => 'MyEventPattern',          # OPTIONAL
       RoleArn            => 'MyRoleArn',               # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
@@ -67,17 +69,27 @@ A description of the rule.
 
 
 
+=head2 EventBusName => Str
+
+The event bus to associate with this rule. If you omit this, the
+default event bus is used.
+
+
+
 =head2 EventPattern => Str
 
-The event pattern. For more information, see Events and Event Patterns
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
-in the I<Amazon CloudWatch Events User Guide>.
+The event pattern. For more information, see Event Patterns
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+in the I<Amazon EventBridge User Guide>.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the rule that you are creating or updating.
+The name of the rule that you're creating or updating.
+
+A rule can't have the same name as another rule in the same Region or
+on the same event bus.
 
 
 
@@ -90,8 +102,8 @@ rule.
 
 =head2 ScheduleExpression => Str
 
-The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5
-minutes)".
+The scheduling expression: for example, C<"cron(0 20 * * ? *)"> or
+C<"rate(5 minutes)">.
 
 
 

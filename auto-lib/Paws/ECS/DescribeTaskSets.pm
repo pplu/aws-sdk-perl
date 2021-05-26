@@ -2,6 +2,7 @@
 package Paws::ECS::DescribeTaskSets;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
+  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
   has TaskSets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'taskSets' );
 
@@ -30,8 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ecs = Paws->service('ECS');
     my $DescribeTaskSetsResponse = $ecs->DescribeTaskSets(
-      Cluster  => 'MyString',
-      Service  => 'MyString',
+      Cluster => 'MyString',
+      Service => 'MyString',
+      Include => [
+        'TAGS', ...    # values: TAGS
+      ],               # OPTIONAL
       TaskSets => [ 'MyString', ... ],    # OPTIONAL
     );
 
@@ -51,6 +55,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the service that the task sets exist in.
+
+
+
+=head2 Include => ArrayRef[Str|Undef]
+
+Specifies whether to see the resource tags for the task set. If C<TAGS>
+is specified, the tags are included in the response. If this field is
+omitted, tags are not included in the response.
 
 
 

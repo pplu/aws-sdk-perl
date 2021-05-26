@@ -2,6 +2,11 @@
 package Paws::DynamoDB::RestoreTableFromBackup;
   use Moose;
   has BackupArn => (is => 'ro', isa => 'Str', required => 1);
+  has BillingModeOverride => (is => 'ro', isa => 'Str');
+  has GlobalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
+  has LocalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
+  has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has SSESpecificationOverride => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has TargetTableName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,9 +34,65 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dynamodb = Paws->service('DynamoDB');
     my $RestoreTableFromBackupOutput = $dynamodb->RestoreTableFromBackup(
-      BackupArn       => 'MyBackupArn',
-      TargetTableName => 'MyTableName',
+      BackupArn                    => 'MyBackupArn',
+      TargetTableName              => 'MyTableName',
+      BillingModeOverride          => 'PROVISIONED',    # OPTIONAL
+      GlobalSecondaryIndexOverride => [
+        {
+          IndexName => 'MyIndexName',                   # min: 3, max: 255
+          KeySchema => [
+            {
+              AttributeName => 'MyKeySchemaAttributeName', # min: 1, max: 255
+              KeyType       => 'HASH',                     # values: HASH, RANGE
 
+            },
+            ...
+          ],                                               # min: 1, max: 2
+          Projection => {
+            NonKeyAttributes => [
+              'MyNonKeyAttributeName', ...                 # min: 1, max: 255
+            ],    # min: 1, max: 20; OPTIONAL
+            ProjectionType => 'ALL', # values: ALL, KEYS_ONLY, INCLUDE; OPTIONAL
+          },
+          ProvisionedThroughput => {
+            ReadCapacityUnits  => 1,    # min: 1
+            WriteCapacityUnits => 1,    # min: 1
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      LocalSecondaryIndexOverride => [
+        {
+          IndexName => 'MyIndexName',    # min: 3, max: 255
+          KeySchema => [
+            {
+              AttributeName => 'MyKeySchemaAttributeName', # min: 1, max: 255
+              KeyType       => 'HASH',                     # values: HASH, RANGE
+
+            },
+            ...
+          ],                                               # min: 1, max: 2
+          Projection => {
+            NonKeyAttributes => [
+              'MyNonKeyAttributeName', ...                 # min: 1, max: 255
+            ],    # min: 1, max: 20; OPTIONAL
+            ProjectionType => 'ALL', # values: ALL, KEYS_ONLY, INCLUDE; OPTIONAL
+          },
+
+        },
+        ...
+      ],                             # OPTIONAL
+      ProvisionedThroughputOverride => {
+        ReadCapacityUnits  => 1,     # min: 1
+        WriteCapacityUnits => 1,     # min: 1
+
+      },    # OPTIONAL
+      SSESpecificationOverride => {
+        Enabled        => 1,                     # OPTIONAL
+        KMSMasterKeyId => 'MyKMSMasterKeyId',    # OPTIONAL
+        SSEType        => 'AES256',              # values: AES256, KMS; OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -48,6 +109,40 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head2 B<REQUIRED> BackupArn => Str
 
 The Amazon Resource Name (ARN) associated with the backup.
+
+
+
+=head2 BillingModeOverride => Str
+
+The billing mode of the restored table.
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
+
+=head2 GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
+
+List of global secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.
+
+
+
+=head2 LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
+
+List of local secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.
+
+
+
+=head2 ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>
+
+Provisioned throughput settings for the restored table.
+
+
+
+=head2 SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the restored table.
 
 
 

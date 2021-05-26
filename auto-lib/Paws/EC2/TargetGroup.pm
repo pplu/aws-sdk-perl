@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the target group.
+The Amazon Resource Name (ARN) of the target group.
 
 
 

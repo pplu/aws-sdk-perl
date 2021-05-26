@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Enabled => Bool
 
-  Enables monitoring for the instance.
+Enables monitoring for the instance.
 
 Default: C<false>
 

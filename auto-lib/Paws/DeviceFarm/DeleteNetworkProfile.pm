@@ -40,8 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the network profile you want to
-delete.
+The ARN of the network profile to delete.
 
 
 

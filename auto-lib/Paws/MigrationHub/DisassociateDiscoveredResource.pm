@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh
 
 =head2 B<REQUIRED> ConfigurationId => Str
 
-ConfigurationId of the ADS resource to be disassociated.
+ConfigurationId of the Application Discovery Service resource to be
+disassociated.
 
 
 
@@ -59,7 +60,8 @@ Used to test if the caller has permission to make the call.
 
 =head2 B<REQUIRED> MigrationTaskName => Str
 
-The identifier given to the MigrationTask.
+The identifier given to the MigrationTask. I<Do not store personal data
+in this field.>
 
 
 

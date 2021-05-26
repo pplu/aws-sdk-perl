@@ -59,8 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 DBInstanceIdentifier => Str
 
 The user-provided instance identifier. If this parameter is specified,
-information from only the specific DB instance is returned. This
-parameter isn't case sensitive.
+information from only the specific instance is returned. This parameter
+isn't case sensitive.
 
 Constraints:
 
@@ -77,7 +77,7 @@ If provided, must match the identifier of an existing C<DBInstance>.
 
 =head2 Filters => ArrayRef[L<Paws::DocDB::Filter>]
 
-A filter that specifies one or more DB instances to describe.
+A filter that specifies one or more instances to describe.
 
 Supported filters:
 
@@ -85,16 +85,16 @@ Supported filters:
 
 =item *
 
-C<db-cluster-id> - Accepts DB cluster identifiers and DB cluster Amazon
+C<db-cluster-id> - Accepts cluster identifiers and cluster Amazon
 Resource Names (ARNs). The results list includes only the information
-about the DB instances that are associated with the DB clusters that
-are identified by these ARNs.
+about the instances that are associated with the clusters that are
+identified by these ARNs.
 
 =item *
 
-C<db-instance-id> - Accepts DB instance identifiers and DB instance
-ARNs. The results list includes only the information about the DB
-instances that are identified by these ARNs.
+C<db-instance-id> - Accepts instance identifiers and instance ARNs. The
+results list includes only the information about the instances that are
+identified by these ARNs.
 
 =back
 

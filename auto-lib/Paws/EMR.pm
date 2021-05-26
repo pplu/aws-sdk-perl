@@ -118,6 +118,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeStep', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBlockPublicAccessConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::GetBlockPublicAccessConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListBootstrapActions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListBootstrapActions', @_);
@@ -153,6 +158,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListSteps', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyInstanceFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ModifyInstanceFleet', @_);
@@ -166,6 +176,11 @@ package Paws::EMR;
   sub PutAutoScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::PutAutoScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBlockPublicAccessConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::PutBlockPublicAccessConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveAutoScalingPolicy {
@@ -362,7 +377,7 @@ package Paws::EMR;
   }
 
 
-  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep GetBlockPublicAccessConfiguration ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyCluster ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy PutBlockPublicAccessConfiguration RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
 1;
 
@@ -508,9 +523,11 @@ Clusters
 
 =over
 
-=item [ClusterId => Str]
+=item ClusterId => Str
 
-=item [StepIds => ArrayRef[Str|Undef]]
+=item StepIds => ArrayRef[Str|Undef]
+
+=item [StepCancellationOption => Str]
 
 
 =back
@@ -661,6 +678,24 @@ Each argument is described in detail in: L<Paws::EMR::DescribeStep>
 Returns: a L<Paws::EMR::DescribeStepOutput> instance
 
 Provides more detail about the cluster step.
+
+
+=head2 GetBlockPublicAccessConfiguration
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::EMR::GetBlockPublicAccessConfiguration>
+
+Returns: a L<Paws::EMR::GetBlockPublicAccessConfigurationOutput> instance
+
+Returns the Amazon EMR block public access configuration for your AWS
+account in the current Region. For more information see Configure Block
+Public Access for Amazon EMR
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
+in the I<Amazon EMR Management Guide>.
 
 
 =head2 ListBootstrapActions
@@ -819,7 +854,27 @@ Each argument is described in detail in: L<Paws::EMR::ListSteps>
 Returns: a L<Paws::EMR::ListStepsOutput> instance
 
 Provides a list of steps for the cluster in reverse order unless you
-specify stepIds with the request.
+specify C<stepIds> with the request of filter by C<StepStates>. You can
+specify a maximum of ten C<stepIDs>.
+
+
+=head2 ModifyCluster
+
+=over
+
+=item ClusterId => Str
+
+=item [StepConcurrencyLevel => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::ModifyCluster>
+
+Returns: a L<Paws::EMR::ModifyClusterOutput> instance
+
+Modifies the number of steps that can be executed concurrently for the
+cluster specified using ClusterID.
 
 
 =head2 ModifyInstanceFleet
@@ -889,6 +944,26 @@ group or task instance group in an Amazon EMR cluster. The automatic
 scaling policy defines how an instance group dynamically adds and
 terminates EC2 instances in response to the value of a CloudWatch
 metric.
+
+
+=head2 PutBlockPublicAccessConfiguration
+
+=over
+
+=item BlockPublicAccessConfiguration => L<Paws::EMR::BlockPublicAccessConfiguration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::PutBlockPublicAccessConfiguration>
+
+Returns: a L<Paws::EMR::PutBlockPublicAccessConfigurationOutput> instance
+
+Creates or updates an Amazon EMR block public access configuration for
+your AWS account in the current Region. For more information see
+Configure Block Public Access for Amazon EMR
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
+in the I<Amazon EMR Management Guide>.
 
 
 =head2 RemoveAutoScalingPolicy
@@ -976,6 +1051,8 @@ cluster:
 =item [SecurityConfiguration => Str]
 
 =item [ServiceRole => Str]
+
+=item [StepConcurrencyLevel => Int]
 
 =item [Steps => ArrayRef[L<Paws::EMR::StepConfig>]]
 
@@ -1079,13 +1156,16 @@ Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
 Returns: nothing
 
-Sets whether all AWS Identity and Access Management (IAM) users under
-your account can access the specified clusters (job flows). This action
-works on running clusters. You can also set the visibility of a cluster
-when you launch it using the C<VisibleToAllUsers> parameter of
-RunJobFlow. The SetVisibleToAllUsers action can be called only by an
-IAM user who created the cluster or the AWS account that owns the
-cluster.
+Sets the Cluster$VisibleToAllUsers value, which determines whether the
+cluster is visible to all IAM users of the AWS account associated with
+the cluster. Only the IAM user who created the cluster or the AWS
+account root user can call this action. The default value, C<true>,
+indicates that all IAM users in the AWS account can perform cluster
+actions if they have the proper IAM policy permissions. If set to
+C<false>, only the IAM user that created the cluster can perform
+actions. This action works on running clusters. You can override the
+default C<true> setting when you create a cluster by using the
+C<VisibleToAllUsers> parameter with C<RunJobFlow>.
 
 
 =head2 TerminateJobFlows

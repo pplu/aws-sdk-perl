@@ -62,19 +62,59 @@ C<arn:aws:iam::123456789012:role/S3Access>.
 =head2 IdempotencyToken => Str
 
 A customer chosen string that can be used to distinguish between calls
-to C<StartRestoreJob>. Idempotency tokens time out after one hour.
-Therefore, if you call C<StartRestoreJob> multiple times with the same
-idempotency token within one hour, AWS Backup recognizes that you are
-requesting only one restore job and initiates only one. If you change
-the idempotency token for each call, AWS Backup recognizes that you are
-requesting to start multiple restores.
+to C<StartRestoreJob>.
 
 
 
 =head2 B<REQUIRED> Metadata => L<Paws::Backup::Metadata>
 
-A set of metadata key-value pairs. Lists the metadata that the recovery
-point was created with.
+A set of metadata key-value pairs. Contains information, such as a
+resource name, required to restore a recovery point.
+
+You can get configuration metadata about a resource at the time it was
+backed-up by calling C<GetRecoveryPointRestoreMetadata>. However,
+values in addition to those provided by
+C<GetRecoveryPointRestoreMetadata> might be required to restore a
+resource. For example, you might need to provide a new resource name if
+the original already exists.
+
+You need to specify specific metadata to restore an Amazon Elastic File
+System (Amazon EFS) instance:
+
+=over
+
+=item *
+
+C<file-system-id>: ID of the Amazon EFS file system that is backed up
+by AWS Backup. Returned in C<GetRecoveryPointRestoreMetadata>.
+
+=item *
+
+C<Encrypted>: A Boolean value that, if true, specifies that the file
+system is encrypted. If C<KmsKeyId> is specified, C<Encrypted> must be
+set to C<true>.
+
+=item *
+
+C<KmsKeyId>: Specifies the AWS KMS key that is used to encrypt the
+restored file system.
+
+=item *
+
+C<PerformanceMode>: Specifies the throughput mode of the file system.
+
+=item *
+
+C<CreationToken>: A user-supplied value that ensures the uniqueness
+(idempotency) of the request.
+
+=item *
+
+C<newFileSystem>: A Boolean value that, if true, specifies that the
+recovery point is restored to a new Amazon EFS file system.
+
+=back
+
 
 
 
@@ -98,7 +138,7 @@ C<EBS> for Amazon Elastic Block Store
 
 =item *
 
-C<SGW> for AWS Storage Gateway
+C<Storage Gateway> for AWS Storage Gateway
 
 =item *
 

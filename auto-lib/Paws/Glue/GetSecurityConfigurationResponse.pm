@@ -16,7 +16,7 @@ Paws::Glue::GetSecurityConfigurationResponse
 
 =head2 SecurityConfiguration => L<Paws::Glue::SecurityConfiguration>
 
-The requested security configuration
+The requested security configuration.
 
 
 =head2 _request_id => Str

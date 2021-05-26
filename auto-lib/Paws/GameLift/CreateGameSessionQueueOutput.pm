@@ -16,7 +16,7 @@ Paws::GameLift::CreateGameSessionQueueOutput
 
 =head2 GameSessionQueue => L<Paws::GameLift::GameSessionQueue>
 
-Object that describes the newly created game session queue.
+An object that describes the newly created game session queue.
 
 
 =head2 _request_id => Str

@@ -16,7 +16,7 @@ Paws::GameLift::PutScalingPolicyOutput
 
 =head2 Name => Str
 
-Descriptive label that is associated with a scaling policy. Policy
+A descriptive label that is associated with a scaling policy. Policy
 names do not need to be unique.
 
 

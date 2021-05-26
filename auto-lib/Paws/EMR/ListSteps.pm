@@ -70,6 +70,8 @@ retrieve.
 =head2 StepIds => ArrayRef[Str|Undef]
 
 The filter to limit the step list based on the identifier of the steps.
+You can specify a maximum of ten Step IDs. The character constraint
+applies to the overall length of the array.
 
 
 

@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetProjectResult
 
 =head2 Project => L<Paws::DeviceFarm::Project>
 
-The project you wish to get information about.
+The project to get information about.
 
 
 =head2 _request_id => Str

@@ -60,13 +60,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ram
 
 =head2 AssociationStatus => Str
 
-The status of the association.
+The association status.
 
 Valid values are: C<"ASSOCIATING">, C<"ASSOCIATED">, C<"FAILED">, C<"DISASSOCIATING">, C<"DISASSOCIATED">
 
 =head2 B<REQUIRED> AssociationType => Str
 
-The association type.
+The association type. Specify C<PRINCIPAL> to list the principals that
+are associated with the specified resource share. Specify C<RESOURCE>
+to list the resources that are associated with the specified resource
+share.
 
 Valid values are: C<"PRINCIPAL">, C<"RESOURCE">
 
@@ -86,13 +89,15 @@ The token for the next page of results.
 
 =head2 Principal => Str
 
-The principal.
+The principal. You cannot specify this parameter if the association
+type is C<RESOURCE>.
 
 
 
 =head2 ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the resource.
+The Amazon Resource Name (ARN) of the resource. You cannot specify this
+parameter if the association type is C<PRINCIPAL>.
 
 
 

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DetachClassicLinkVpcResult = $ec2->DetachClassicLinkVpc(
-      InstanceId => 'MyString',
-      VpcId      => 'MyString',
-      DryRun     => 1,            # OPTIONAL
+      InstanceId => 'MyInstanceId',
+      VpcId      => 'MyVpcId',
+      DryRun     => 1,                # OPTIONAL
     );
 
     # Results:

@@ -4,6 +4,7 @@ package Paws::IoTEvents::UpdateDetectorModel;
   has DetectorModelDefinition => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelDefinition', traits => ['NameInRequest'], request_name => 'detectorModelDefinition', required => 1);
   has DetectorModelDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorModelDescription');
   has DetectorModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorModelName', required => 1);
+  has EvaluationMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'evaluationMethod');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
 
   use MooseX::ClassAttribute;
@@ -47,8 +48,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -68,6 +82,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -87,8 +105,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -108,6 +139,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -127,8 +162,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -148,6 +196,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -167,8 +219,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -189,6 +254,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
                       },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
+                      },    # OPTIONAL
                     },
                     ...
                   ],        # OPTIONAL
@@ -204,6 +273,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DetectorModelName        => 'MyDetectorModelName',
       RoleArn                  => 'MyAmazonResourceName',
       DetectorModelDescription => 'MyDetectorModelDescription',    # OPTIONAL
+      EvaluationMethod         => 'BATCH',                         # OPTIONAL
     );
 
     # Results:
@@ -232,9 +302,16 @@ A brief description of the detector model.
 
 =head2 B<REQUIRED> DetectorModelName => Str
 
-The name of the detector model to be updated.
+The name of the detector model that is updated.
 
 
+
+=head2 EvaluationMethod => Str
+
+Information about the order in which events are evaluated and how
+actions are executed.
+
+Valid values are: C<"BATCH">, C<"SERIAL">
 
 =head2 B<REQUIRED> RoleArn => Str
 

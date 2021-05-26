@@ -7,6 +7,7 @@ package Paws::EC2::CreateFpgaImage;
   has InputStorageLocation => (is => 'ro', isa => 'Paws::EC2::StorageLocation', required => 1);
   has LogsStorageLocation => (is => 'ro', isa => 'Paws::EC2::StorageLocation');
   has Name => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -44,7 +45,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Bucket => 'MyString',               # OPTIONAL
         Key    => 'MyString',               # OPTIONAL
       },    # OPTIONAL
-      Name => 'MyString',    # OPTIONAL
+      Name              => 'MyString',    # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',    # OPTIONAL
+              Value => 'MyString',    # OPTIONAL
+            },
+            ...
+          ],                          # OPTIONAL
+        },
+        ...
+      ],                              # OPTIONAL
     );
 
     # Results:
@@ -99,6 +114,12 @@ The location in Amazon S3 for the output logs.
 =head2 Name => Str
 
 A name for the AFI.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the FPGA image during creation.
 
 
 

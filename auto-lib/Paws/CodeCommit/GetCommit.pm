@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> CommitId => Str
 
-The commit ID. Commit IDs are the full SHA of the commit.
+The commit ID. Commit IDs are the full SHA ID of the commit.
 
 
 

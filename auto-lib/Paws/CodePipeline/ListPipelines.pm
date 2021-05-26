@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 NextToken => Str
 
-An identifier that was returned from the previous list pipelines call,
-which can be used to return the next set of pipelines in the list.
+An identifier that was returned from the previous list pipelines call.
+It can be used to return the next set of pipelines in the list.
 
 
 

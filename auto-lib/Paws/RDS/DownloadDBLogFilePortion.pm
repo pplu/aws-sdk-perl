@@ -97,8 +97,8 @@ recent log entries first.
 
 =item *
 
-If NumberOfLines is specified and Marker is not specified, then the
-most recent lines from the end of the log file are returned.
+If NumberOfLines is specified and Marker isn't specified, then the most
+recent lines from the end of the log file are returned.
 
 =item *
 

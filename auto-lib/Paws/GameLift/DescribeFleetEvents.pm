@@ -62,13 +62,14 @@ milliseconds (ex: "1469498468.057").
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to get event logs for.
+A unique identifier for a fleet to get event logs for. You can use
+either the fleet ID or ARN value.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 

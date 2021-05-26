@@ -64,10 +64,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 
 The message you want to send.
 
-The C<Message> parameter is always a string. If you set
-C<MessageStructure> to C<json>, you must string-encode the C<Message>
-parameter.
-
 If you are publishing to a topic and you want to send the same message
 to all transport protocols, include the text of the message as a String
 value. If you want to send different messages for each transport
@@ -180,12 +176,6 @@ a string.
 
 You can define other top-level keys that define the message you want to
 send to a specific transport protocol (e.g., "http").
-
-For information about sending different messages for each protocol
-using the AWS Management Console, go to Create Different Messages for
-Each Protocol
-(https://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol)
-in the I<Amazon Simple Notification Service Getting Started Guide>.
 
 Valid value: C<json>
 

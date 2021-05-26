@@ -40,17 +40,17 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the disk image.
+A description of the disk image.
 
 
 =head2 Image => L<Paws::EC2::DiskImageDetail>
 
-  Information about the disk image.
+Information about the disk image.
 
 
 =head2 Volume => L<Paws::EC2::VolumeDetail>
 
-  Information about the volume.
+Information about the volume.
 
 
 

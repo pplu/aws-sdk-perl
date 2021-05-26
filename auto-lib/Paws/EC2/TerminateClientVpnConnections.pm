@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $TerminateClientVpnConnectionsResult =
       $ec2->TerminateClientVpnConnections(
-      ClientVpnEndpointId => 'MyString',
-      ConnectionId        => 'MyString',    # OPTIONAL
-      DryRun              => 1,             # OPTIONAL
-      Username            => 'MyString',    # OPTIONAL
+      ClientVpnEndpointId => 'MyClientVpnEndpointId',
+      ConnectionId        => 'MyString',                # OPTIONAL
+      DryRun              => 1,                         # OPTIONAL
+      Username            => 'MyString',                # OPTIONAL
       );
 
     # Results:

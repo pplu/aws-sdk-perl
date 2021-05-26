@@ -32,6 +32,7 @@ package Paws::S3::PutObject;
   has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObject');
@@ -40,6 +41,7 @@ package Paws::S3::PutObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   class_has _stream_param => (is => 'ro', default => 'Body');
+    
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +115,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 ACL => Str
 
-The canned ACL to apply to the object.
+The canned ACL to apply to the object. For more information, see Canned
+ACL
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"aws-exec-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">
 
@@ -125,19 +129,34 @@ Object data.
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the PUT operation was initiated.
+Bucket name to which the PUT operation was initiated.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
 =head2 CacheControl => Str
 
-Specifies caching behavior along the request/reply chain.
+Can be used to specify caching behavior along the request/reply chain.
+For more information, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9).
 
 
 
 =head2 ContentDisposition => Str
 
-Specifies presentational information for the object.
+Specifies presentational information for the object. For more
+information, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1).
 
 
 
@@ -145,7 +164,9 @@ Specifies presentational information for the object.
 
 Specifies what content encodings have been applied to the object and
 thus what decoding mechanisms must be applied to obtain the media-type
-referenced by the Content-Type header field.
+referenced by the Content-Type header field. For more information, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11).
 
 
 
@@ -158,27 +179,39 @@ The language the content is in.
 =head2 ContentLength => Int
 
 Size of the body in bytes. This parameter is useful when the size of
-the body cannot be determined automatically.
+the body cannot be determined automatically. For more information, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13).
 
 
 
 =head2 ContentMD5 => Str
 
-The base64-encoded 128-bit MD5 digest of the part data. This parameter
-is auto-populated when using the command from the CLI. This parameted
-is required if object lock parameters are specified.
+The base64-encoded 128-bit MD5 digest of the message (without the
+headers) according to RFC 1864. This header can be used as a message
+integrity check to verify that the data is the same data that was
+originally sent. Although it is optional, we recommend using the
+Content-MD5 mechanism as an end-to-end integrity check. For more
+information about REST request authentication, see REST Authentication
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html).
 
 
 
 =head2 ContentType => Str
 
-A standard MIME type describing the format of the object data.
+A standard MIME type describing the format of the contents. For more
+information, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
 
 
 
 =head2 Expires => Str
 
-The date and time at which the object is no longer cacheable.
+The date and time at which the object is no longer cacheable. For more
+information, see
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21).
 
 
 
@@ -221,19 +254,21 @@ A map of metadata to store with the object in S3.
 
 =head2 ObjectLockLegalHoldStatus => Str
 
-The Legal Hold status that you want to apply to the specified object.
+Specifies whether a legal hold will be applied to this object. For more
+information about S3 Object Lock, see Object Lock
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
 
 Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The object lock mode that you want to apply to this object.
+The Object Lock mode that you want to apply to this object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when you want this object's object lock to expire.
+The date and time when you want this object's Object Lock to expire.
 
 
 
@@ -245,15 +280,15 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+The server-side encryption algorithm used when storing this object in
+Amazon S3 (for example, AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -261,9 +296,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -271,7 +306,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 
@@ -285,17 +320,24 @@ with the encryption context key-value pairs.
 
 =head2 SSEKMSKeyId => Str
 
-Specifies the AWS KMS key ID to use for object encryption. All GET and
-PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. Documentation on configuring any of the
-officially supported AWS SDKs and CLI can be found at
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+If C<x-amz-server-side-encryption> is present and has the value of
+C<aws:kms>, this header specifies the ID of the AWS Key Management
+Service (AWS KMS) symmetrical customer managed customer master key
+(CMK) that was used for the object.
+
+If the value of C<x-amz-server-side-encryption> is C<aws:kms>, this
+header specifies the ID of the symmetric customer managed AWS KMS CMK
+that will be used for the object. If you specify
+C<x-amz-server-side-encryption:aws:kms>, but do not provideC<
+x-amz-server-side-encryption-aws-kms-key-id>, Amazon S3 uses the AWS
+managed CMK in AWS to protect the data.
 
 
 
 =head2 StorageClass => Str
 
-The type of storage to use for the object. Defaults to 'STANDARD'.
+If you don't specify, Standard is the default storage class. Amazon S3
+supports other storage classes.
 
 Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
@@ -310,7 +352,25 @@ parameters. (For example, "Key1=Value1")
 
 If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
-Amazon S3 stores the value of this header in the object metadata.
+Amazon S3 stores the value of this header in the object metadata. For
+information about object metadata, see Object Key and Metadata
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html).
+
+In the following example, the request header sets the redirect to an
+object (anotherPage.html) in the same bucket:
+
+C<x-amz-website-redirect-location: /anotherPage.html>
+
+In the following example, the request header sets the object redirect
+to another website:
+
+C<x-amz-website-redirect-location: http://www.example.com/>
+
+For more information about website hosting in Amazon S3, see Hosting
+Websites on Amazon S3
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
+and How to Configure Website Page Redirects
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
 
 
 

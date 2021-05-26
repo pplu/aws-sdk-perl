@@ -1,6 +1,7 @@
 
 package Paws::EMR::AddInstanceGroupsOutput;
   use Moose;
+  has ClusterArn => (is => 'ro', isa => 'Str');
   has InstanceGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has JobFlowId => (is => 'ro', isa => 'Str');
 
@@ -13,6 +14,11 @@ package Paws::EMR::AddInstanceGroupsOutput;
 Paws::EMR::AddInstanceGroupsOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterArn => Str
+
+The Amazon Resource Name of the cluster.
 
 
 =head2 InstanceGroupIds => ArrayRef[Str|Undef]

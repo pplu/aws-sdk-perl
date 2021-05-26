@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.41';
+our $VERSION = '0.43_01';
 
 use Carp;
 
@@ -319,6 +319,8 @@ kept stable, and changes to it should be notified via ChangeLog
 =head1 SUPPORTED SERVICES
 
 
+L<Paws::AccessAnalyzer>
+
 L<Paws::ACM>
 
 L<Paws::ACMPCA>
@@ -332,6 +334,8 @@ L<Paws::ApiGateway>
 L<Paws::ApiGatewayManagement>
 
 L<Paws::ApiGatewayV2>
+
+L<Paws::AppConfig>
 
 L<Paws::ApplicationAutoScaling>
 
@@ -389,9 +393,17 @@ L<Paws::CodeCommit>
 
 L<Paws::CodeDeploy>
 
+L<Paws::CodeGuruProfiler>
+
+L<Paws::CodeGuruReviewer>
+
 L<Paws::CodePipeline>
 
 L<Paws::CodeStar>
+
+L<Paws::CodeStarConnections>
+
+L<Paws::CodeStarNotifications>
 
 L<Paws::CognitoIdentity>
 
@@ -403,19 +415,27 @@ L<Paws::Comprehend>
 
 L<Paws::ComprehendMedical>
 
+L<Paws::ComputeOptimizer>
+
 L<Paws::Config>
 
 L<Paws::Connect>
 
+L<Paws::ConnectParticipant>
+
 L<Paws::CostExplorer>
 
 L<Paws::CUR>
+
+L<Paws::DataExchange>
 
 L<Paws::DataPipeline>
 
 L<Paws::Datasync>
 
 L<Paws::DAX>
+
+L<Paws::Detective>
 
 L<Paws::DeviceFarm>
 
@@ -435,6 +455,8 @@ L<Paws::DynamoDB>
 
 L<Paws::DynamoDBStreams>
 
+L<Paws::EBS>
+
 L<Paws::EC2>
 
 L<Paws::EC2InstanceConnect>
@@ -453,6 +475,8 @@ L<Paws::ElastiCache>
 
 L<Paws::ElasticBeanstalk>
 
+L<Paws::ElasticInference>
+
 L<Paws::ElasticTranscoder>
 
 L<Paws::ELB>
@@ -470,6 +494,12 @@ L<Paws::ES>
 L<Paws::Firehose>
 
 L<Paws::FMS>
+
+L<Paws::Forecast>
+
+L<Paws::ForecastQuery>
+
+L<Paws::FraudDetector>
 
 L<Paws::FSX>
 
@@ -491,6 +521,8 @@ L<Paws::Health>
 
 L<Paws::IAM>
 
+L<Paws::ImageBuilder>
+
 L<Paws::ImportExport>
 
 L<Paws::Inspector>
@@ -511,9 +543,13 @@ L<Paws::IoTEventsData>
 
 L<Paws::IoTJobsData>
 
+L<Paws::IoTSecureTunneling>
+
 L<Paws::IoTThingsGraph>
 
 L<Paws::Kafka>
+
+L<Paws::Kendra>
 
 L<Paws::Kinesis>
 
@@ -527,7 +563,11 @@ L<Paws::KinesisVideoArchivedMedia>
 
 L<Paws::KinesisVideoMedia>
 
+L<Paws::KinesisVideoSignaling>
+
 L<Paws::KMS>
+
+L<Paws::LakeFormation>
 
 L<Paws::Lambda>
 
@@ -544,6 +584,8 @@ L<Paws::MachineLearning>
 L<Paws::Macie>
 
 L<Paws::ManagedBlockchain>
+
+L<Paws::MarketplaceCatalog>
 
 L<Paws::MarketplaceCommerceAnalytics>
 
@@ -569,6 +611,8 @@ L<Paws::MediaTailor>
 
 L<Paws::MigrationHub>
 
+L<Paws::MigrationHubConfig>
+
 L<Paws::MobileHub>
 
 L<Paws::MQ>
@@ -577,11 +621,15 @@ L<Paws::MTurk>
 
 L<Paws::Neptune>
 
+L<Paws::NetworkManager>
+
 L<Paws::OpsWorks>
 
 L<Paws::OpsWorksCM>
 
 L<Paws::Organizations>
+
+L<Paws::Outposts>
 
 L<Paws::PerformanceInsights>
 
@@ -602,6 +650,10 @@ L<Paws::PinpointSMSVoice>
 L<Paws::Polly>
 
 L<Paws::Pricing>
+
+L<Paws::QLDB>
+
+L<Paws::QLDBSession>
 
 L<Paws::Quicksight>
 
@@ -633,7 +685,13 @@ L<Paws::S3Control>
 
 L<Paws::SageMaker>
 
+L<Paws::SageMakerA2IRuntime>
+
 L<Paws::SageMakerRuntime>
+
+L<Paws::SavingsPlans>
+
+L<Paws::Schemas>
 
 L<Paws::SDB>
 
@@ -652,6 +710,8 @@ L<Paws::ServiceQuotas>
 L<Paws::SES>
 
 L<Paws::SES>
+
+L<Paws::SESv2>
 
 L<Paws::Shield>
 
@@ -673,6 +733,10 @@ L<Paws::SQS>
 
 L<Paws::SSM>
 
+L<Paws::SSO>
+
+L<Paws::SSOOidc>
+
 L<Paws::StepFunctions>
 
 L<Paws::StorageGateway>
@@ -693,11 +757,15 @@ L<Paws::WAF>
 
 L<Paws::WAFRegional>
 
+L<Paws::WAFv2>
+
 L<Paws::WorkDocs>
 
 L<Paws::WorkLink>
 
 L<Paws::WorkMail>
+
+L<Paws::WorkMailMessageFlow>
 
 L<Paws::WorkSpaces>
 
@@ -958,6 +1026,12 @@ and giving me time to build and maintain it regularly.
 ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
 from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
+castaway for contributing to fixing documentation problems
+ - taking the reigns of Paws, become part of the core team that pushes it forward
+ - properly providing backlinks between related pages
+ - making TOCs render correctly on search.cpan.org
+ - generating helpful copy-paste ready scenarios in the synopsis of each method call
+
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
@@ -1046,11 +1120,6 @@ gadgetjunkie for contributing the ECS credential provider
 
 mla for contributing a fix to correct dependencies
 
-castaway for contributing to fixing documentation problems
- - properly providing backlinks between related pages
- - making TOCs render correctly on search.cpan.org
- - generating helpful copy-paste ready scenarios in the synopsis of each method call
-
 autarch for correcting signature generation for a bunch of services
 
 piratefinn for linking calls to documentation AWS URLs
@@ -1070,6 +1139,11 @@ leonerd for (between others)
 campus-explorer for contributing to test suite
 
 byterock for testing and fixing PinPoint
+
+torrentale for fixing QueryCaller to correctly signal empty arrays
+
+Jess Robinson and shadowcat.co.uk  for setting up ver 0.43
+ 
 
 
 =cut

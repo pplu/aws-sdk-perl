@@ -17,7 +17,7 @@ Paws::Connect::DescribeUserHierarchyStructureResponse
 
 =head2 HierarchyStructure => L<Paws::Connect::HierarchyStructure>
 
-A C<HierarchyStructure> object.
+Information about the hierarchy structure.
 
 
 =head2 _request_id => Str

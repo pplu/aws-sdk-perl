@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         NumberOfHumanWorkersPerDataObject => 1,    # min: 1, max: 9
-        PreHumanTaskLambdaArn  => 'MyLambdaFunctionArn',    # max: 2048
-        TaskDescription        => 'MyTaskDescription',      # min: 1, max: 255
-        TaskTimeLimitInSeconds => 1,                        # min: 1, max: 28800
-        TaskTitle              => 'MyTaskTitle',            # min: 1, max: 128
+        PreHumanTaskLambdaArn  => 'MyLambdaFunctionArn',   # max: 2048
+        TaskDescription        => 'MyTaskDescription',     # min: 1, max: 255
+        TaskTimeLimitInSeconds => 1,                       # min: 30, max: 28800
+        TaskTitle              => 'MyTaskTitle',           # min: 1, max: 128
         UiConfig               => {
-          UiTemplateS3Uri => 'MyS3Uri',                     # max: 1024
+          UiTemplateS3Uri => 'MyS3Uri',                    # max: 1024
 
         },
         WorkteamArn            => 'MyWorkteamArn', # max: 256
@@ -56,19 +56,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PublicWorkforceTaskPrice => {
           AmountInUsd => {
             Cents                 => 1,            # max: 99; OPTIONAL
-            Dollars               => 1,            # max: 1; OPTIONAL
+            Dollars               => 1,            # max: 2; OPTIONAL
             TenthFractionsOfACent => 1,            # max: 9; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        TaskAvailabilityLifetimeInSeconds => 1,  # min: 1, max: 864000; OPTIONAL
+        TaskAvailabilityLifetimeInSeconds => 1, # min: 60, max: 864000; OPTIONAL
         TaskKeywords                      => [
-          'MyTaskKeyword', ...                   # min: 1, max: 30
-        ],                                       # min: 1, max: 5; OPTIONAL
+          'MyTaskKeyword', ...                  # min: 1, max: 30
+        ],                                      # min: 1, max: 5; OPTIONAL
       },
       InputConfig => {
         DataSource => {
           S3DataSource => {
-            ManifestS3Uri => 'MyS3Uri',          # max: 1024
+            ManifestS3Uri => 'MyS3Uri',         # max: 1024
 
           },
 
@@ -124,8 +124,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> HumanTaskConfig => L<Paws::SageMaker::HumanTaskConfig>
 
-Configures the information required for human workers to complete a
-labeling task.
+Configures the labeling task and how it is presented to workers;
+including, but not limited to price, keywords, and batch size (task
+count).
 
 
 
@@ -228,7 +229,7 @@ conditions to control the cost of data labeling.
 
 An array of key/value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

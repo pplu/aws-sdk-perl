@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partitions in question reside. If
-none is supplied, the AWS account ID is used by default.
+none is provided, the AWS account ID is used by default.
 
 
 
@@ -74,7 +74,7 @@ The name of the catalog database where the partitions reside.
 
 =head2 Expression => Str
 
-An expression filtering the partitions to be returned.
+An expression that filters the partitions to be returned.
 
 The expression uses SQL syntax similar to the SQL C<WHERE> filter
 clause. The SQL statement parser JSQLParser
@@ -87,7 +87,7 @@ C<Expression> API call:
 
 =item E<61>
 
-Checks if the values of the two operands are equal or not; if yes, then
+Checks whether the values of the two operands are equal; if yes, then
 the condition becomes true.
 
 Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
@@ -96,36 +96,38 @@ Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
 
 =item E<lt> E<gt>
 
-Checks if the values of two operands are equal or not; if the values
-are not equal, then the condition becomes true.
+Checks whether the values of two operands are equal; if the values are
+not equal, then the condition becomes true.
 
 Example: (a E<lt> E<gt> b) is true.
 
 =item E<gt>
 
-Checks if the value of the left operand is greater than the value of
-the right operand; if yes, then the condition becomes true.
+Checks whether the value of the left operand is greater than the value
+of the right operand; if yes, then the condition becomes true.
 
 Example: (a E<gt> b) is not true.
 
 =item E<lt>
 
-Checks if the value of the left operand is less than the value of the
-right operand; if yes, then the condition becomes true.
+Checks whether the value of the left operand is less than the value of
+the right operand; if yes, then the condition becomes true.
 
 Example: (a E<lt> b) is true.
 
 =item E<gt>=
 
-Checks if the value of the left operand is greater than or equal to the
-value of the right operand; if yes, then the condition becomes true.
+Checks whether the value of the left operand is greater than or equal
+to the value of the right operand; if yes, then the condition becomes
+true.
 
 Example: (a E<gt>= b) is not true.
 
 =item E<lt>=
 
-Checks if the value of the left operand is less than or equal to the
-value of the right operand; if yes, then the condition becomes true.
+Checks whether the value of the left operand is less than or equal to
+the value of the right operand; if yes, then the condition becomes
+true.
 
 Example: (a E<lt>= b) is true.
 
@@ -135,7 +137,7 @@ Logical operators.
 
 =back
 
-I<Supported Partition Key Types>: The following are the the supported
+I<Supported Partition Key Types>: The following are the supported
 partition keys.
 
 =over

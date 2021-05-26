@@ -8,7 +8,7 @@ package Paws::Greengrass::GetLoggerDefinitionResponse;
   has LatestVersion => (is => 'ro', isa => 'Str');
   has LatestVersionArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -46,12 +46,12 @@ updated.
 
 =head2 LatestVersion => Str
 
-The latest version of the definition.
+The ID of the latest version associated with the definition.
 
 
 =head2 LatestVersionArn => Str
 
-The ARN of the latest version of the definition.
+The ARN of the latest version associated with the definition.
 
 
 =head2 Name => Str
@@ -59,9 +59,9 @@ The ARN of the latest version of the definition.
 The name of the definition.
 
 
-=head2 Tags => L<Paws::Greengrass::__mapOf__string>
+=head2 Tags => L<Paws::Greengrass::Tags>
 
-The tags for the definition.
+Tag(s) attached to the resource arn.
 
 
 =head2 _request_id => Str

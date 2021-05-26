@@ -39,6 +39,7 @@ package Paws::S3::CopyObject;
   has TaggingDirective => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging-directive', traits => ['ParamInHeader']);
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyObject');
@@ -47,6 +48,7 @@ package Paws::S3::CopyObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CopyObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -135,7 +137,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the destination bucket.
 
 
 
@@ -205,8 +207,8 @@ Copies the object if it hasn't been modified since the specified time.
 
 =head2 CopySourceSSECustomerAlgorithm => Str
 
-Specifies the algorithm to use when decrypting the source object (e.g.,
-AES256).
+Specifies the algorithm to use when decrypting the source object (for
+example, AES256).
 
 
 
@@ -222,7 +224,7 @@ must be one that was used when the source object was created.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 
@@ -259,7 +261,7 @@ Allows grantee to write the ACL for the applicable object.
 
 =head2 B<REQUIRED> Key => Str
 
-
+The key of the destination object.
 
 
 
@@ -284,13 +286,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The object lock mode that you want to apply to the copied object.
+The Object Lock mode that you want to apply to the copied object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when you want the copied object's object lock to
+The date and time when you want the copied object's Object Lock to
 expire.
 
 
@@ -303,15 +305,15 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+The server-side encryption algorithm used when storing this object in
+Amazon S3 (for example, AES256, aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -319,9 +321,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -329,7 +331,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 
@@ -345,9 +347,11 @@ with the encryption context key-value pairs.
 
 Specifies the AWS KMS key ID to use for object encryption. All GET and
 PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. Documentation on configuring any of the
-officially supported AWS SDKs and CLI can be found at
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+via SSL or using SigV4. For information about configuring using any of
+the officially supported AWS SDKs and AWS CLI, see Specifying the
+Signature Version in Request Authentication
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
+in the I<Amazon S3 Developer Guide>.
 
 
 
@@ -360,8 +364,8 @@ Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"O
 =head2 Tagging => Str
 
 The tag-set for the object destination object this value must be used
-in conjunction with the TaggingDirective. The tag-set must be encoded
-as URL Query parameters
+in conjunction with the C<TaggingDirective>. The tag-set must be
+encoded as URL Query parameters.
 
 
 

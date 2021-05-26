@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBParameterGroupFamily => Str
 
-The name of the DB cluster parameter group family to return the engine
+The name of the cluster parameter group family to return the engine
 parameter information for.
 
 

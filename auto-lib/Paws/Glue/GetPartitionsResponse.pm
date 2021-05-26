@@ -17,8 +17,8 @@ Paws::Glue::GetPartitionsResponse
 
 =head2 NextToken => Str
 
-A continuation token, if the returned list of partitions does not does
-not include the last one.
+A continuation token, if the returned list of partitions does not
+include the last one.
 
 
 =head2 Partitions => ArrayRef[L<Paws::Glue::Partition>]

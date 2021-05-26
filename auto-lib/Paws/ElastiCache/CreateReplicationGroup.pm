@@ -11,6 +11,7 @@ package Paws::ElastiCache::CreateReplicationGroup;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeGroupConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupConfiguration]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NumCacheClusters => (is => 'ro', isa => 'Int');
@@ -67,6 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheSubnetGroupName        => 'MyString',             # OPTIONAL
       Engine                      => 'MyString',             # OPTIONAL
       EngineVersion               => 'MyString',             # OPTIONAL
+      KmsKeyId                    => 'MyString',             # OPTIONAL
       NodeGroupConfiguration      => [
         {
           NodeGroupId => 'MyAllowedNodeGroupId',    # min: 1, max: 4; OPTIONAL
@@ -121,7 +123,7 @@ replication group you must set C<AtRestEncryptionEnabled> to C<true>
 when you create the replication group.
 
 B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6> or C<4.x>.
+Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
 
 Default: C<false>
 
@@ -153,7 +155,9 @@ length.
 
 =item *
 
-Cannot contain any of the following characters: '/', '"', or '@'.
+The only permitted printable special characters are !, &, #, $, ^,
+E<lt>, E<gt>, and -. Other printable special characters cannot be used
+in the AUTH token.
 
 =back
 
@@ -395,6 +399,12 @@ anew with the earlier engine version.
 
 
 
+=head2 KmsKeyId => Str
+
+The ID of the KMS key used to encrypt the disk on the cluster.
+
+
+
 =head2 NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]
 
 A list of node group (shard) configuration options. Each node group
@@ -560,7 +570,7 @@ Constraints:
 
 =item *
 
-A name must contain from 1 to 20 alphanumeric characters or hyphens.
+A name must contain from 1 to 40 alphanumeric characters or hyphens.
 
 =item *
 
@@ -651,14 +661,14 @@ must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
 
 This parameter is valid only if the C<Engine> parameter is C<redis>,
-the C<EngineVersion> parameter is C<3.2.6> or C<4.x>, and the cluster
-is being created in an Amazon VPC.
+the C<EngineVersion> parameter is C<3.2.6>, C<4.x> or later, and the
+cluster is being created in an Amazon VPC.
 
 If you enable in-transit encryption, you must also specify a value for
 C<CacheSubnetGroup>.
 
 B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6> or C<4.x>.
+Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
 
 Default: C<false>
 

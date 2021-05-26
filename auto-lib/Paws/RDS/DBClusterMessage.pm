@@ -23,7 +23,7 @@ Contains a list of DB clusters for the user.
 
 =head2 Marker => Str
 
-A pagination token that can be used in a subsequent DescribeDBClusters
+A pagination token that can be used in a later DescribeDBClusters
 request.
 
 

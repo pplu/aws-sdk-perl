@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $tagging = Paws->service('ResourceTagging');
     my $UntagResourcesOutput = $tagging->UntagResources(
       ResourceARNList => [
-        'MyResourceARN', ...    # min: 1, max: 1600
+        'MyResourceARN', ...    # min: 1, max: 1011
       ],
       TagKeys => [
         'MyTagKey', ...         # min: 1, max: 128

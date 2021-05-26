@@ -16,7 +16,7 @@ Paws::Glue::GetDatabaseResponse
 
 =head2 Database => L<Paws::Glue::Database>
 
-The definition of the specified database in the catalog.
+The definition of the specified database in the Data Catalog.
 
 
 =head2 _request_id => Str

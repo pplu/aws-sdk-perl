@@ -79,7 +79,7 @@ the restored DB cluster can be created in.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The name of the DB cluster to create from the DB snapshot or DB cluster
+The name of the cluster to create from the snapshot or cluster
 snapshot. This parameter isn't case sensitive.
 
 Constraints:
@@ -106,7 +106,7 @@ Example: C<my-snapshot-id>
 
 =head2 DBSubnetGroupName => Str
 
-The name of the DB subnet group to use for the new DB cluster.
+The name of the subnet group to use for the new cluster.
 
 Constraints: If provided, must match the name of an existing
 C<DBSubnetGroup>.
@@ -133,7 +133,7 @@ CloudWatch Logs.
 
 =head2 B<REQUIRED> Engine => Str
 
-The database engine to use for the new DB cluster.
+The database engine to use for the new cluster.
 
 Default: The same as source.
 
@@ -143,20 +143,20 @@ Constraint: Must be compatible with the engine of the source.
 
 =head2 EngineVersion => Str
 
-The version of the database engine to use for the new DB cluster.
+The version of the database engine to use for the new cluster.
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted DB
-cluster from a DB snapshot or DB cluster snapshot.
+The AWS KMS key identifier to use when restoring an encrypted cluster
+from a DB snapshot or cluster snapshot.
 
 The AWS KMS key identifier is the Amazon Resource Name (ARN) for the
-AWS KMS encryption key. If you are restoring a DB cluster with the same
+AWS KMS encryption key. If you are restoring a cluster with the same
 AWS account that owns the AWS KMS encryption key used to encrypt the
-new DB cluster, then you can use the AWS KMS key alias instead of the
-ARN for the AWS KMS encryption key.
+new cluster, then you can use the AWS KMS key alias instead of the ARN
+for the AWS KMS encryption key.
 
 If you do not specify a value for the C<KmsKeyId> parameter, then the
 following occurs:
@@ -165,15 +165,14 @@ following occurs:
 
 =item *
 
-If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
-encrypted, then the restored DB cluster is encrypted using the AWS KMS
-key that was used to encrypt the DB snapshot or the DB cluster
-snapshot.
+If the snapshot or cluster snapshot in C<SnapshotIdentifier> is
+encrypted, then the restored cluster is encrypted using the AWS KMS key
+that was used to encrypt the snapshot or the cluster snapshot.
 
 =item *
 
-If the DB snapshot or the DB cluster snapshot in C<SnapshotIdentifier>
-is not encrypted, then the restored DB cluster is not encrypted.
+If the snapshot or the cluster snapshot in C<SnapshotIdentifier> is not
+encrypted, then the restored DB cluster is not encrypted.
 
 =back
 
@@ -182,22 +181,21 @@ is not encrypted, then the restored DB cluster is not encrypted.
 
 =head2 Port => Int
 
-The port number on which the new DB cluster accepts connections.
+The port number on which the new cluster accepts connections.
 
 Constraints: Must be a value from C<1150> to C<65535>.
 
-Default: The same port as the original DB cluster.
+Default: The same port as the original cluster.
 
 
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-The identifier for the DB snapshot or DB cluster snapshot to restore
-from.
+The identifier for the snapshot or cluster snapshot to restore from.
 
 You can use either the name or the Amazon Resource Name (ARN) to
-specify a DB cluster snapshot. However, you can use only the ARN to
-specify a DB snapshot.
+specify a cluster snapshot. However, you can use only the ARN to
+specify a snapshot.
 
 Constraints:
 
@@ -214,13 +212,13 @@ Must match the identifier of an existing snapshot.
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the restored DB cluster.
+The tags to be assigned to the restored cluster.
 
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A list of virtual private cloud (VPC) security groups that the new DB
+A list of virtual private cloud (VPC) security groups that the new
 cluster will belong to.
 
 

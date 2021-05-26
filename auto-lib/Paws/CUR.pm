@@ -25,6 +25,11 @@ package Paws::CUR;
     my $call_object = $self->new_with_coercions('Paws::CUR::DescribeReportDefinitions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyReportDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CUR::ModifyReportDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutReportDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CUR::PutReportDefinition', @_);
@@ -56,7 +61,7 @@ package Paws::CUR;
   }
 
 
-  sub operations { qw/DeleteReportDefinition DescribeReportDefinitions PutReportDefinition / }
+  sub operations { qw/DeleteReportDefinition DescribeReportDefinitions ModifyReportDefinition PutReportDefinition / }
 
 1;
 
@@ -143,6 +148,24 @@ Each argument is described in detail in: L<Paws::CUR::DescribeReportDefinitions>
 Returns: a L<Paws::CUR::DescribeReportDefinitionsResponse> instance
 
 Lists the AWS Cost and Usage reports available to this account.
+
+
+=head2 ModifyReportDefinition
+
+=over
+
+=item ReportDefinition => L<Paws::CUR::ReportDefinition>
+
+=item ReportName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CUR::ModifyReportDefinition>
+
+Returns: a L<Paws::CUR::ModifyReportDefinitionResponse> instance
+
+Allows you to programatically update your report preferences.
 
 
 =head2 PutReportDefinition

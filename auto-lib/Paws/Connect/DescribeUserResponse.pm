@@ -17,8 +17,7 @@ Paws::Connect::DescribeUserResponse
 
 =head2 User => L<Paws::Connect::User>
 
-A C<User> object that contains information about the user account and
-configuration settings.
+Information about the user account and configuration settings.
 
 
 =head2 _request_id => Str

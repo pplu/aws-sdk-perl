@@ -84,8 +84,9 @@ replication instance.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor engine upgrades will be applied automatically to
-the replication instance during the maintenance window.
+Indicates whether minor engine upgrades will be applied automatically
+to the replication instance during the maintenance window. This
+parameter defaults to C<true>.
 
 Default: C<true>
 
@@ -93,13 +94,9 @@ Default: C<true>
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the replication instance will be created
-in.
-
-Default: A random, system-chosen Availability Zone in the endpoint's
-region.
-
-Example: C<us-east-1d>
+The AWS Availability Zone where the replication instance will be
+created. The default value is a random, system-chosen Availability Zone
+in the endpoint's AWS Region, for example: C<us-east-1d>
 
 
 
@@ -117,19 +114,22 @@ The engine version number of the replication instance.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier that is used to encrypt the content on the
-replication instance. If you don't specify a value for the C<KmsKeyId>
-parameter, then AWS DMS uses your default encryption key. AWS KMS
-creates the default encryption key for your AWS account. Your AWS
-account has a different default encryption key for each AWS Region.
+An AWS KMS key identifier that is used to encrypt the data on the
+replication instance.
+
+If you don't specify a value for the C<KmsKeyId> parameter, then AWS
+DMS uses your default encryption key.
+
+AWS KMS creates the default encryption key for your AWS account. Your
+AWS account has a different default encryption key for each AWS Region.
 
 
 
 =head2 MultiAZ => Bool
 
-Specifies if the replication instance is a Multi-AZ deployment. You
-cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
-is set to C<true>.
+Specifies whether the replication instance is a Multi-AZ deployment.
+You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+parameter is set to C<true>.
 
 
 
@@ -141,7 +141,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region, occurring on a random day of the week.
+time per AWS Region, occurring on a random day of the week.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -204,7 +204,7 @@ A subnet group to associate with the replication instance.
 
 =head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
 
-Tags to be associated with the replication instance.
+One or more tags to be assigned to the replication instance.
 
 
 

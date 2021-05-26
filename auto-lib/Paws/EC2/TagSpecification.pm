@@ -39,15 +39,22 @@ This class has no description
 
 =head2 ResourceType => Str
 
-  The type of resource to tag. Currently, the resource types that support
-tagging on creation are C<fleet>, C<dedicated-host>, C<instance>,
-C<snapshot>, and C<volume>. To tag a resource after it has been
-created, see CreateTags.
+The type of resource to tag. Currently, the resource types that support
+tagging on creation are: C<capacity-reservation> |
+C<client-vpn-endpoint> | C<dedicated-host> | C<fleet> | C<fpga-image> |
+C<instance> | C<key-pair> | C<launch-template> | C<placement-group> |
+C<snapshot> | C<traffic-mirror-filter> | C<traffic-mirror-session> |
+C<traffic-mirror-target> | C<transit-gateway> |
+C<transit-gateway-attachment> | C<transit-gateway-route-table> |
+C<volume>.
+
+To tag a resource after it has been created, see CreateTags
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags to apply to the resource.
+The tags to apply to the resource.
 
 
 

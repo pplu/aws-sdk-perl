@@ -43,32 +43,32 @@ This class has no description
 
 =head2 Description => Str
 
-  The description of the security group.
+The description of the security group.
 
 
 =head2 GroupId => Str
 
-  The ID of the security group.
+The ID of the security group.
 
 
 =head2 GroupName => Str
 
-  The name of the security group.
+The name of the security group.
 
 
 =head2 StaleIpPermissions => ArrayRef[L<Paws::EC2::StaleIpPermission>]
 
-  Information about the stale inbound rules in the security group.
+Information about the stale inbound rules in the security group.
 
 
 =head2 StaleIpPermissionsEgress => ArrayRef[L<Paws::EC2::StaleIpPermission>]
 
-  Information about the stale outbound rules in the security group.
+Information about the stale outbound rules in the security group.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC for the security group.
+The ID of the VPC for the security group.
 
 
 

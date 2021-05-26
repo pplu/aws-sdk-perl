@@ -54,8 +54,9 @@ The name of the data store
 
 =head2 IncludeStatistics => Bool
 
-If true, additional statistical information about the datastore is
-included in the response.
+If true, additional statistical information about the data store is
+included in the response. This feature cannot be used with a data store
+whose S3 storage is customer-managed.
 
 
 

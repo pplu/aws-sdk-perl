@@ -66,18 +66,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character (\u0020)
-through the end of the ASCII character range
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \u00FF)
+character set (through C<\u00FF>)
 
 =item *
 
-The special characters tab (\u0009), line feed (\u000A), and carriage
-return (\u000D)
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
 
 =back
 
@@ -96,18 +96,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character (\u0020)
-through the end of the ASCII character range
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \u00FF)
+character set (through C<\u00FF>)
 
 =item *
 
-The special characters tab (\u0009), line feed (\u000A), and carriage
-return (\u000D)
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
 
 =back
 
@@ -126,7 +126,7 @@ slash (/). This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII
-character from the ! (\u0021) through the DEL character (\u007F),
+character from the ! (C<\u0021>) through the DEL character (C<\u007F>),
 including most punctuation characters, digits, and upper and lowercased
 letters.
 
@@ -148,18 +148,18 @@ this parameter is a string of characters consisting of the following:
 
 =item *
 
-Any printable ASCII character ranging from the space character (\u0020)
-through the end of the ASCII character range
+Any printable ASCII character ranging from the space character
+(C<\u0020>) through the end of the ASCII character range
 
 =item *
 
 The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \u00FF)
+character set (through C<\u00FF>)
 
 =item *
 
-The special characters tab (\u0009), line feed (\u000A), and carriage
-return (\u000D)
+The special characters tab (C<\u0009>), line feed (C<\u000A>), and
+carriage return (C<\u000D>)
 
 =back
 

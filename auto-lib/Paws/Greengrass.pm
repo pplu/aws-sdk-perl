@@ -951,7 +951,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/greengrass/>
 
 =item GroupId => Str
 
-=item [RoleArn => Str]
+=item RoleArn => Str
 
 
 =back
@@ -969,7 +969,7 @@ Greengrass core Lambda functions to perform actions against the cloud.
 
 =over
 
-=item [RoleArn => Str]
+=item RoleArn => Str
 
 
 =back
@@ -1079,13 +1079,13 @@ Greengrass groups must each contain exactly one Greengrass core.
 
 =over
 
+=item DeploymentType => Str
+
 =item GroupId => Str
 
 =item [AmznClientToken => Str]
 
 =item [DeploymentId => Str]
-
-=item [DeploymentType => Str]
 
 =item [GroupVersionId => Str]
 
@@ -1365,19 +1365,19 @@ defined.
 
 =over
 
+=item S3UrlSignerRole => Str
+
+=item SoftwareToUpdate => Str
+
+=item UpdateTargets => ArrayRef[Str|Undef]
+
+=item UpdateTargetsArchitecture => Str
+
+=item UpdateTargetsOperatingSystem => Str
+
 =item [AmznClientToken => Str]
 
-=item [S3UrlSignerRole => Str]
-
-=item [SoftwareToUpdate => Str]
-
 =item [UpdateAgentLogLevel => Str]
-
-=item [UpdateTargets => ArrayRef[Str|Undef]]
-
-=item [UpdateTargetsArchitecture => Str]
-
-=item [UpdateTargetsOperatingSystem => Str]
 
 
 =back
@@ -2397,7 +2397,7 @@ Each argument is described in detail in: L<Paws::Greengrass::ListTagsForResource
 
 Returns: a L<Paws::Greengrass::ListTagsForResourceResponse> instance
 
-Retrieves the tags for a resource.
+Retrieves a list of resource tags for a resource arn.
 
 
 =head2 ResetDeployments
@@ -2424,11 +2424,11 @@ Resets a group's deployments.
 
 =over
 
+=item ExecutionRoleArn => Str
+
+=item InputFileUri => Str
+
 =item [AmznClientToken => Str]
-
-=item [ExecutionRoleArn => Str]
-
-=item [InputFileUri => Str]
 
 =item [Tags => L<Paws::Greengrass::Tags>]
 
@@ -2473,7 +2473,7 @@ pending deployments.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::Greengrass::__mapOf__string>
+=item [Tags => L<Paws::Greengrass::Tags>]
 
 
 =back
@@ -2482,7 +2482,10 @@ Each argument is described in detail in: L<Paws::Greengrass::TagResource>
 
 Returns: nothing
 
-Add tags to a resource.
+Adds tags to a Greengrass resource. Valid resources are 'Group',
+'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition',
+'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition',
+'ResourceDefinition', and 'BulkDeployment'.
 
 
 =head2 UntagResource
@@ -2500,7 +2503,7 @@ Each argument is described in detail in: L<Paws::Greengrass::UntagResource>
 
 Returns: nothing
 
-Remove tags with specified keys from a resource.
+Remove resource tags from a Greengrass Resource.
 
 
 =head2 UpdateConnectivityInfo

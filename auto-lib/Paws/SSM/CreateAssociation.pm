@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
       Targets            => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -109,6 +109,15 @@ specific version or the default version.
 =head2 InstanceId => Str
 
 The instance ID.
+
+C<InstanceId> has been deprecated. To specify an instance ID for an
+association, use the C<Targets> parameter. Requests that include the
+parameter C<InstanceID> with SSM documents that use schema version 2.0
+or later will fail. In addition, if you use the parameter
+C<InstanceId>, you cannot use the parameters C<AssociationName>,
+C<DocumentVersion>, C<MaxErrors>, C<MaxConcurrency>, C<OutputLocation>,
+or C<ScheduleExpression>. To use these parameters, you must use the
+C<Targets> parameter.
 
 
 
@@ -193,7 +202,9 @@ target(s).
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags) for the association.
+The targets (either instances or tags) for the association. You must
+specify a value for C<Targets> if you don't specify a value for
+C<InstanceId>.
 
 
 

@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 RegistryIds => ArrayRef[Str|Undef]
 
 A list of AWS account IDs that are associated with the registries for
-which to get authorization tokens. If you do not specify a registry,
-the default registry is assumed.
+which to get AuthorizationData objects. If you do not specify a
+registry, the default registry is assumed.
 
 
 

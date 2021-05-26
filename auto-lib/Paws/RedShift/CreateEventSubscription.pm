@@ -118,7 +118,7 @@ returned for all Amazon Redshift objects in your AWS account. You must
 specify a source type in order to specify source IDs.
 
 Valid values: cluster, cluster-parameter-group, cluster-security-group,
-and cluster-snapshot.
+cluster-snapshot, and scheduled-action.
 
 
 

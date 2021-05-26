@@ -2,6 +2,7 @@
 package Paws::PersonalizeRuntime::GetPersonalizedRanking;
   use Moose;
   has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn', required => 1);
+  has Context => (is => 'ro', isa => 'Paws::PersonalizeRuntime::Context', traits => ['NameInRequest'], request_name => 'context');
   has InputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputList', required => 1);
   has UserId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userId', required => 1);
 
@@ -36,8 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InputList   => [
         'MyItemID', ...    # max: 256
       ],
-      UserId => 'MyUserID',
-
+      UserId  => 'MyUserID',
+      Context => {
+        'MyAttributeName' =>
+          'MyAttributeValue',    # key: max: 150, value: max: 1000
+      },    # OPTIONAL
       );
 
     # Results:
@@ -59,10 +63,20 @@ the personalized ranking.
 
 
 
+=head2 Context => L<Paws::PersonalizeRuntime::Context>
+
+The contextual metadata to use when getting recommendations. Contextual
+metadata includes any interaction information that might be relevant
+when getting a user's recommendations, such as the user's current
+location or device type. For more information, see Contextual Metadata.
+
+
+
 =head2 B<REQUIRED> InputList => ArrayRef[Str|Undef]
 
 A list of items (itemId's) to rank. If an item was not included in the
 training dataset, the item is appended to the end of the reranked list.
+The maximum is 500.
 
 
 

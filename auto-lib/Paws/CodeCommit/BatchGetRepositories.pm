@@ -51,6 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 The names of the repositories to get information about.
 
+The length constraint limit is for each string in the array. The array
+itself can be empty.
+
 
 
 

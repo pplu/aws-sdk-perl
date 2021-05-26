@@ -88,7 +88,7 @@ The rule that you want to add to your account.
 
 =head2 Tags => ArrayRef[L<Paws::Config::Tag>]
 
-
+An array of tag object.
 
 
 

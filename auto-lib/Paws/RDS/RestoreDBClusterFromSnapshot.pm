@@ -9,6 +9,8 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -182,6 +184,20 @@ enabled. By default, deletion protection is disabled.
 
 
 
+=head2 Domain => Str
+
+Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to Amazon
@@ -199,6 +215,10 @@ A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
+
 
 
 =head2 B<REQUIRED> Engine => Str
@@ -214,13 +234,43 @@ Constraint: Must be compatible with the engine of the source
 =head2 EngineMode => Str
 
 The DB engine mode of the DB cluster, either C<provisioned>,
-C<serverless>, or C<parallelquery>.
+C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
 
 
 
 =head2 EngineVersion => Str
 
 The version of the database engine to use for the new DB cluster.
+
+To list all of the available engine versions for C<aurora> (for MySQL
+5.6-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-mysql> (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-mysql --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-postgresql>,
+use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-postgresql
+--query "DBEngineVersions[].EngineVersion">
+
+If you aren't using the default engine version, then you must specify
+the engine version.
+
+B<Aurora MySQL>
+
+Example: C<5.6.10a>, C<5.6.mysql_aurora.1.19.2>, C<5.7.12>,
+C<5.7.mysql_aurora.2.04.5>
+
+B<Aurora PostgreSQL>
+
+Example: C<9.6.3>, C<10.7>
 
 
 
@@ -248,8 +298,8 @@ that was used to encrypt the DB snapshot or DB cluster snapshot.
 
 =item *
 
-If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
-not encrypted, then the restored DB cluster is not encrypted.
+If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier>
+isn't encrypted, then the restored DB cluster isn't encrypted.
 
 =back
 

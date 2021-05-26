@@ -54,7 +54,13 @@ The maximum number of results to return.
 
 =head2 NextToken => Str
 
-The token that is required for pagination.
+The token that is required for pagination. On your first call to the
+C<DescribeProducts> operation, set the value of this parameter to
+C<NULL>.
+
+For subsequent calls to the operation, to continue listing data, set
+the value of this parameter to the value returned from the previous
+response.
 
 
 

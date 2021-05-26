@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListFleetsResponse = $robomaker->ListFleets(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
+          Name   => 'MyName',    # min: 1, max: 255
           Values => [
-            'MyName', ...        # min: 1, max: 255; OPTIONAL
+            'MyName', ...        # min: 1, max: 255
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -67,14 +67,13 @@ complete value of the filtered item. You can use up to three filters.
 
 =head2 MaxResults => Int
 
-The maximum number of deployment job results returned by C<ListFleets>
-in paginated output. When this parameter is used, C<ListFleets> only
-returns C<maxResults> results in a single page along with a
-C<nextToken> response element. The remaining results of the initial
-request can be seen by sending another C<ListFleets> request with the
-returned C<nextToken> value. This value can be between 1 and 100. If
-this parameter is not used, then C<ListFleets> returns up to 100
-results and a C<nextToken> value if applicable.
+When this parameter is used, C<ListFleets> only returns C<maxResults>
+results in a single page along with a C<nextToken> response element.
+The remaining results of the initial request can be seen by sending
+another C<ListFleets> request with the returned C<nextToken> value.
+This value can be between 1 and 200. If this parameter is not used,
+then C<ListFleets> returns up to 200 results and a C<nextToken> value
+if applicable.
 
 
 

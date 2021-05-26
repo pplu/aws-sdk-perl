@@ -18,15 +18,13 @@ Paws::Connect::ListUsersResponse
 
 =head2 NextToken => Str
 
-A string returned in the response. Use the value returned in the
-response as the value of the NextToken in a subsequent request to
-retrieve the next set of results.
+If there are additional results, this is the token for the next set of
+results.
 
 
 =head2 UserSummaryList => ArrayRef[L<Paws::Connect::UserSummary>]
 
-An array of C<UserSummary> objects that contain information about the
-users in your instance.
+Information about the users.
 
 
 =head2 _request_id => Str

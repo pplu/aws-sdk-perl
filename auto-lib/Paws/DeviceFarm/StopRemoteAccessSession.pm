@@ -46,8 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the remote access session you wish to
-stop.
+The Amazon Resource Name (ARN) of the remote access session to stop.
 
 
 

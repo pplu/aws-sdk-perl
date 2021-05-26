@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 The unique Amazon Resource Name (ARN) of the gateway that the virtual
 tape to delete is associated with. Use the ListGateways operation to
-return a list of gateways for your account and region.
+return a list of gateways for your account and AWS Region.
 
 
 

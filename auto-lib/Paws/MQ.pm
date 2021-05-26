@@ -203,6 +203,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [DeploymentMode => Str]
 
+=item [EncryptionOptions => L<Paws::MQ::EncryptionOptions>]
+
 =item [EngineType => Str]
 
 =item [EngineVersion => Str]
@@ -216,6 +218,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 =item [PubliclyAccessible => Bool]
 
 =item [SecurityGroups => ArrayRef[Str|Undef]]
+
+=item [StorageType => Str]
 
 =item [SubnetIds => ArrayRef[Str|Undef]]
 
@@ -397,6 +401,8 @@ Describe available engine types and versions.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [StorageType => Str]
 
 
 =back
@@ -581,7 +587,11 @@ Reboots a broker. Note: This API is asynchronous.
 
 =item [EngineVersion => Str]
 
+=item [HostInstanceType => Str]
+
 =item [Logs => L<Paws::MQ::Logs>]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
 
 
 =back

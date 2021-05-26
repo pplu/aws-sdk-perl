@@ -43,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MissionProfileArn = $DescribeContactResponse->MissionProfileArn;
     my $PostPassEndTime   = $DescribeContactResponse->PostPassEndTime;
     my $PrePassStartTime  = $DescribeContactResponse->PrePassStartTime;
+    my $Region            = $DescribeContactResponse->Region;
     my $SatelliteArn      = $DescribeContactResponse->SatelliteArn;
     my $StartTime         = $DescribeContactResponse->StartTime;
     my $Tags              = $DescribeContactResponse->Tags;

@@ -17,7 +17,8 @@ Paws::PersonalizeRuntime::GetRecommendationsResponse
 
 =head2 ItemList => ArrayRef[L<Paws::PersonalizeRuntime::PredictedItem>]
 
-A list of recommendations.
+A list of recommendations sorted in ascending order by prediction
+score. There can be a maximum of 500 items in the list.
 
 
 =head2 _request_id => Str

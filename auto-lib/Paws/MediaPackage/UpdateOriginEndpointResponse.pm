@@ -2,6 +2,7 @@
 package Paws::MediaPackage::UpdateOriginEndpointResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
+  has Authorization => (is => 'ro', isa => 'Paws::MediaPackage::Authorization', traits => ['NameInRequest'], request_name => 'authorization');
   has ChannelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelId');
   has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackage', traits => ['NameInRequest'], request_name => 'cmafPackage');
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
@@ -10,6 +11,7 @@ package Paws::MediaPackage::UpdateOriginEndpointResponse;
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has ManifestName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'manifestName');
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
+  has Origination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'origination');
   has StartoverWindowSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startoverWindowSeconds');
   has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has TimeDelaySeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeDelaySeconds');
@@ -31,6 +33,11 @@ Paws::MediaPackage::UpdateOriginEndpointResponse
 =head2 Arn => Str
 
 The Amazon Resource Name (ARN) assigned to the OriginEndpoint.
+
+
+=head2 Authorization => L<Paws::MediaPackage::Authorization>
+
+
 
 
 =head2 ChannelId => Str
@@ -73,6 +80,15 @@ A short string appended to the end of the OriginEndpoint URL.
 
 
 
+=head2 Origination => Str
+
+Control whether origination of video is allowed for this
+OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested,
+pursuant to any other form of access control. If set to DENY, the
+OriginEndpoint may not be requested. This can be helpful for Live to
+VOD harvesting, or for temporarily disabling origination
+
+Valid values are: C<"ALLOW">, C<"DENY">
 =head2 StartoverWindowSeconds => Int
 
 Maximum duration (seconds) of content to retain for startover playback.

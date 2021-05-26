@@ -3,6 +3,7 @@ package Paws::Route53::GetHealthCheckCountResponse;
   use Moose;
   has HealthCheckCount => (is => 'ro', isa => 'Int', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

@@ -60,7 +60,7 @@ The API identifier.
 
 =head2 ApiMappingKey => Str
 
-
+The API mapping key.
 
 
 

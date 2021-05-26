@@ -100,9 +100,9 @@ C<CopyDBSnapshot> API action in the source AWS Region that contains the
 source DB snapshot to copy.
 
 You must specify this parameter when you copy an encrypted DB snapshot
-from another AWS Region by using the Amazon RDS API. You can specify
-the C<--source-region> option instead of this parameter when you copy
-an encrypted DB snapshot from another AWS Region by using the AWS CLI.
+from another AWS Region by using the Amazon RDS API. Don't specify
+C<PreSignedUrl> when you are copying an encrypted DB snapshot in the
+same AWS Region.
 
 The presigned URL must be a valid request for the C<CopyDBSnapshot> API
 action that can be executed in the source AWS Region that contains the
@@ -150,6 +150,12 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 (https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
 
 
 

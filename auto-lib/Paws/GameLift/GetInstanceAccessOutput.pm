@@ -16,8 +16,8 @@ Paws::GameLift::GetInstanceAccessOutput
 
 =head2 InstanceAccess => L<Paws::GameLift::InstanceAccess>
 
-Object that contains connection information for a fleet instance,
-including IP address and access credentials.
+The connection information for a fleet instance, including IP address
+and access credentials.
 
 
 =head2 _request_id => Str

@@ -577,7 +577,13 @@ Returns: nothing
 
 Deletes all versions of the bot, including the C<$LATEST> version. To
 delete a specific version of the bot, use the DeleteBotVersion
-operation.
+operation. The C<DeleteBot> operation doesn't immediately remove the
+bot schema. Instead, it is marked for deletion and removed later.
+
+Amazon Lex stores utterances indefinitely for improving the ability of
+your bot to respond to user inputs. These utterances are not removed
+when the bot is deleted. To remove the utterances, use the
+DeleteUtterances operation.
 
 If a bot has an alias, you can't delete it. Instead, the C<DeleteBot>
 operation returns a C<ResourceInUseException> exception that includes a
@@ -791,8 +797,11 @@ Utterances are stored for 15 days for use with the GetUtterancesView
 operation, and then stored indefinitely for use in improving the
 ability of your bot to respond to user input.
 
-Use the C<DeleteStoredUtterances> operation to manually delete stored
-utterances for a specific user.
+Use the C<DeleteUtterances> operation to manually delete stored
+utterances for a specific user. When you use the C<DeleteUtterances>
+operation, utterances stored for improving your bot's ability to
+respond to user input are deleted immediately. Utterances stored for
+use with the C<GetUtterancesView> operation are deleted after 15 days.
 
 This operation requires permissions for the C<lex:DeleteUtterances>
 action.
@@ -1311,9 +1320,15 @@ the old version and the new so that you can compare the performance
 across the two versions.
 
 Utterance statistics are generated once a day. Data is available for
-the last 15 days. You can request information for up to 5 versions in
-each request. The response contains information about a maximum of 100
-utterances for each version.
+the last 15 days. You can request information for up to 5 versions of
+your bot in each request. Amazon Lex returns the most frequent
+utterances received by the bot in the last 15 days. The response
+contains information about a maximum of 100 utterances for each
+version.
+
+If you set C<childDirected> field to true when you created your bot, or
+if you opted out of participating in improving Amazon Lex, utterances
+are not available.
 
 This operation requires permissions for the C<lex:GetUtterancesView>
 action.
@@ -1338,6 +1353,8 @@ action.
 =item [CreateVersion => Bool]
 
 =item [Description => Str]
+
+=item [DetectSentiment => Bool]
 
 =item [IdleSessionTTLInSeconds => Int]
 
@@ -1371,7 +1388,7 @@ fields, which are set to their default values. If you don't specify
 values for required fields, Amazon Lex throws an exception.
 
 This operation requires permissions for the C<lex:PutBot> action. For
-more information, see auth-and-access-control.
+more information, see security-iam.
 
 
 =head2 PutBotAlias
@@ -1385,6 +1402,8 @@ more information, see auth-and-access-control.
 =item Name => Str
 
 =item [Checksum => Str]
+
+=item [ConversationLogs => L<Paws::LexModels::ConversationLogsRequest>]
 
 =item [Description => Str]
 
@@ -1525,6 +1544,10 @@ This operation requires permissions for the C<lex:PutIntent> action.
 =item [Description => Str]
 
 =item [EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]]
+
+=item [ParentSlotTypeSignature => Str]
+
+=item [SlotTypeConfigurations => ArrayRef[L<Paws::LexModels::SlotTypeConfiguration>]]
 
 =item [ValueSelectionStrategy => Str]
 

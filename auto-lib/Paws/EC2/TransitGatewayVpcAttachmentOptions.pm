@@ -39,12 +39,12 @@ This class has no description
 
 =head2 DnsSupport => Str
 
-  Indicates whether DNS support is enabled.
+Indicates whether DNS support is enabled.
 
 
 =head2 Ipv6Support => Str
 
-  Indicates whether IPv6 support is enabled.
+Indicates whether IPv6 support is disabled.
 
 
 

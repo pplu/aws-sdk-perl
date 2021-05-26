@@ -274,6 +274,14 @@ Constraint: The C<AvailabilityZone> parameter can't be specified if the
 DB instance is a Multi-AZ deployment. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.
 
+If you're creating a DB instance in an RDS on VMware environment,
+specify the identifier of the custom Availability Zone to create the DB
+instance in.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+
 
 
 =head2 BackupRetentionPeriod => Int
@@ -383,7 +391,7 @@ you use.
 B<MySQL>
 
 The name of the database to create when the DB instance is created. If
-this parameter is not specified, no database is created in the DB
+this parameter isn't specified, no database is created in the DB
 instance.
 
 Constraints:
@@ -403,7 +411,7 @@ Can't be a word reserved by the specified database engine
 B<MariaDB>
 
 The name of the database to create when the DB instance is created. If
-this parameter is not specified, no database is created in the DB
+this parameter isn't specified, no database is created in the DB
 instance.
 
 Constraints:
@@ -423,7 +431,7 @@ Can't be a word reserved by the specified database engine
 B<PostgreSQL>
 
 The name of the database to create when the DB instance is created. If
-this parameter is not specified, the default "postgres" database is
+this parameter isn't specified, the default "postgres" database is
 created in the DB instance.
 
 Constraints:
@@ -470,7 +478,7 @@ Not applicable. Must be null.
 B<Amazon Aurora>
 
 The name of the database to create when the primary instance of the DB
-cluster is created. If this parameter is not specified, no database is
+cluster is created. If this parameter isn't specified, no database is
 created in the DB instance.
 
 Constraints:
@@ -493,8 +501,8 @@ Can't be a word reserved by the specified database engine
 =head2 DBParameterGroupName => Str
 
 The name of the DB parameter group to associate with this DB instance.
-If this argument is omitted, the default DBParameterGroup for the
-specified engine is used.
+If you do not specify a value, then the default DB parameter group for
+the specified DB engine and version is used.
 
 Constraints:
 
@@ -541,17 +549,33 @@ enabled. By default, deletion protection is disabled. For more
 information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
+B<Amazon Aurora>
+
+Not applicable. You can enable or disable deletion protection for the
+DB cluster. For more information, see C<CreateDBCluster>. DB instances
+in a DB cluster can be deleted even when deletion protection is enabled
+for the DB cluster.
+
 
 
 =head2 Domain => Str
 
-For an Amazon RDS DB instance that's running Microsoft SQL Server, this
-parameter specifies the Active Directory directory ID to create the
-instance in. Amazon RDS uses Windows Authentication to authenticate
-users that connect to the DB instance. For more information, see Using
-Windows Authentication with an Amazon RDS DB Instance Running Microsoft
-SQL Server
-(https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html)
+The Active Directory directory ID to create the DB instance in.
+Currently, only Microsoft SQL Server and Oracle DB instances can be
+created in an Active Directory Domain.
+
+For Microsoft SQL Server DB instances, Amazon RDS can use Windows
+Authentication to authenticate users that connect to the DB instance.
+For more information, see Using Windows Authentication with an Amazon
+RDS DB Instance Running Microsoft SQL Server
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
+in the I<Amazon RDS User Guide>.
+
+For Oracle DB instance, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see Using Kerberos Authentication with Amazon RDS for
+Oracle
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
 in the I<Amazon RDS User Guide>.
 
 
@@ -600,8 +624,34 @@ For MySQL 5.6, minor version 5.6.34 or higher
 
 For MySQL 5.7, minor version 5.7.16 or higher
 
+=item *
+
+For MySQL 8.0, minor version 8.0.16 or higher
+
 =back
 
+B<PostgreSQL>
+
+=over
+
+=item *
+
+For PostgreSQL 9.5, minor version 9.5.15 or higher
+
+=item *
+
+For PostgreSQL 9.6, minor version 9.6.11 or higher
+
+=item *
+
+PostgreSQL 10.6, 10.7, and 10.9
+
+=back
+
+For more information, see IAM Database Authentication for MySQL and
+PostgreSQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -739,13 +789,15 @@ in the I<Amazon RDS User Guide.>
 
 The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
-Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
+Iops values, see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
 in the I<Amazon RDS User Guide>.
 
-Constraints: Must be a multiple between 1 and 50 of the storage amount
-for the DB instance.
+Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances,
+must be a multiple between .5 and 50 of the storage amount for the DB
+instance. For SQL Server DB instances, must be a multiple between 1 and
+50 of the storage amount for the DB instance.
 
 
 
@@ -989,8 +1041,9 @@ Indicates that the DB instance should be associated with the specified
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group can't
-be removed from a DB instance once it is associated with a DB instance
+TDE, can't be removed from an option group. Also, that option group
+can't be removed from a DB instance once it is associated with a DB
+instance
 
 
 
@@ -1155,15 +1208,15 @@ Valid Values: 0 - 15
 A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance is not publicly accessible, it
+public IP address. When the DB instance isn't publicly accessible, it
 is an internal instance with a DNS name that resolves to a private IP
 address.
 
 Default: The default behavior varies depending on whether
 C<DBSubnetGroupName> is specified.
 
-If C<DBSubnetGroupName> is not specified, and C<PubliclyAccessible> is
-not specified, the following applies:
+If C<DBSubnetGroupName> isn't specified, and C<PubliclyAccessible>
+isn't specified, the following applies:
 
 =over
 
@@ -1179,7 +1232,7 @@ attached to it, the DB instance is public.
 
 =back
 
-If C<DBSubnetGroupName> is specified, and C<PubliclyAccessible> is not
+If C<DBSubnetGroupName> is specified, and C<PubliclyAccessible> isn't
 specified, the following applies:
 
 =over
@@ -1202,7 +1255,7 @@ to it, the DB instance is public.
 =head2 StorageEncrypted => Bool
 
 A value that indicates whether the DB instance is encrypted. By
-default, it is not encrypted.
+default, it isn't encrypted.
 
 B<Amazon Aurora>
 

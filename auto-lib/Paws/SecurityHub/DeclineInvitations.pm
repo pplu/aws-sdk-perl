@@ -1,7 +1,7 @@
 
 package Paws::SecurityHub::DeclineInvitations;
   use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $securityhub = Paws->service('SecurityHub');
     my $DeclineInvitationsResponse = $securityhub->DeclineInvitations(
-      AccountIds => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+      AccountIds => [ 'MyNonEmptyString', ... ],
+
     );
 
     # Results:
@@ -43,10 +44,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 AccountIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs that specify the accounts that invitations to
-Security Hub are declined from.
+The list of account IDs for the accounts from which to decline the
+invitations to Security Hub.
 
 
 

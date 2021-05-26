@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> EndpointName => Str
 
-Name of the DevEndpoint for which to retrieve information.
+Name of the C<DevEndpoint> to retrieve information for.
 
 
 

@@ -48,16 +48,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 MaxResults => Int
 
-The maximum number of items that you want in the response.
+The maximum number of items to return in the response.
 
 
 
 =head2 NextToken => Str
 
-Paginates results. On your first call to the C<ListInvitations>
-operation, set the value of this parameter to C<NULL>. For subsequent
-calls to the operation, fill C<nextToken> in the request with the value
-of C<NextToken> from the previous response to continue listing data.
+The token that is required for pagination. On your first call to the
+C<ListInvitations> operation, set the value of this parameter to
+C<NULL>.
+
+For subsequent calls to the operation, to continue listing data, set
+the value of this parameter to the value returned from the previous
+response.
 
 
 

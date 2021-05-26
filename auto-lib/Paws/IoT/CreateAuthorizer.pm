@@ -3,9 +3,10 @@ package Paws::IoT::CreateAuthorizer;
   use Moose;
   has AuthorizerFunctionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerFunctionArn', required => 1);
   has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerName', required => 1);
+  has SigningDisabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'signingDisabled');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has TokenKeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenKeyName', required => 1);
-  has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', traits => ['NameInRequest'], request_name => 'tokenSigningPublicKeys', required => 1);
+  has TokenKeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenKeyName');
+  has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', traits => ['NameInRequest'], request_name => 'tokenSigningPublicKeys');
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAuthorizerResponse = $iot->CreateAuthorizer(
       AuthorizerFunctionArn  => 'MyAuthorizerFunctionArn',
       AuthorizerName         => 'MyAuthorizerName',
-      TokenKeyName           => 'MyTokenKeyName',
+      SigningDisabled        => 1,                           # OPTIONAL
+      Status                 => 'ACTIVE',                    # OPTIONAL
+      TokenKeyName           => 'MyTokenKeyName',            # OPTIONAL
       TokenSigningPublicKeys => {
         'MyKeyName' => 'MyKeyValue',   # key: min: 1, max: 128, value: max: 5120
-      },
-      Status => 'ACTIVE',              # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -66,20 +68,27 @@ The authorizer name.
 
 
 
+=head2 SigningDisabled => Bool
+
+Specifies whether AWS IoT validates the token signature in an
+authorization request.
+
+
+
 =head2 Status => Str
 
 The status of the create authorizer request.
 
 Valid values are: C<"ACTIVE">, C<"INACTIVE">
 
-=head2 B<REQUIRED> TokenKeyName => Str
+=head2 TokenKeyName => Str
 
 The name of the token key used to extract the token from the HTTP
 headers.
 
 
 
-=head2 B<REQUIRED> TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
+=head2 TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
 
 The public keys used to verify the digital signature returned by your
 custom authentication service.

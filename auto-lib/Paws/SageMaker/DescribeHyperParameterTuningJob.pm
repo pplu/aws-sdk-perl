@@ -56,6 +56,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeHyperParameterTuningJobResponse->OverallBestTrainingJob;
     my $TrainingJobDefinition =
       $DescribeHyperParameterTuningJobResponse->TrainingJobDefinition;
+    my $TrainingJobDefinitions =
+      $DescribeHyperParameterTuningJobResponse->TrainingJobDefinitions;
     my $TrainingJobStatusCounters =
       $DescribeHyperParameterTuningJobResponse->TrainingJobStatusCounters;
     my $WarmStartConfig =

@@ -39,13 +39,13 @@ This class has no description
 
 =head2 LaunchTemplateSpecification => L<Paws::EC2::FleetLaunchTemplateSpecificationRequest>
 
-  The launch template to use. You must specify either the launch template
+The launch template to use. You must specify either the launch template
 ID or launch template name in the request.
 
 
 =head2 Overrides => ArrayRef[L<Paws::EC2::FleetLaunchTemplateOverridesRequest>]
 
-  Any parameters that you specify override the same parameters in the
+Any parameters that you specify override the same parameters in the
 launch template.
 
 

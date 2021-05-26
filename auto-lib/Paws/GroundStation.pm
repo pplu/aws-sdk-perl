@@ -411,7 +411,7 @@ Returns: a L<Paws::GroundStation::MissionProfileIdResponse> instance
 Creates a mission profile.
 
 C<dataflowEdges> is a list of lists of strings. Each lower level list
-of strings has two elements: a I<from ARN> and a I<to ARN>.
+of strings has two elements: a I<from> ARN and a I<to> ARN.
 
 
 =head2 DeleteConfig
@@ -614,7 +614,7 @@ Returns: a L<Paws::GroundStation::ListContactsResponse> instance
 Returns a list of contacts.
 
 If C<statusList> contains AVAILABLE, the request must include
-C<groundstation>, C<missionprofileArn>, and C<satelliteArn>.
+C<groundStation>, C<missionprofileArn>, and C<satelliteArn>.
 
 
 =head2 ListDataflowEndpointGroups
@@ -642,6 +642,8 @@ Returns a list of C<DataflowEndpoint> groups.
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SatelliteId => Str]
 
 
 =back
@@ -702,7 +704,7 @@ Each argument is described in detail in: L<Paws::GroundStation::ListTagsForResou
 
 Returns: a L<Paws::GroundStation::ListTagsForResourceResponse> instance
 
-Returns a list of tags or a specified resource.
+Returns a list of tags for a specified resource.
 
 
 =head2 ReserveContact
@@ -737,7 +739,7 @@ Reserves a contact using specified parameters.
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::GroundStation::TagsMap>]
+=item Tags => L<Paws::GroundStation::TagsMap>
 
 
 =back
@@ -865,9 +867,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::GroundStation::ListDataflowEndpointGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllGroundStations(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllGroundStations(sub { },[MaxResults => Int, NextToken => Str, SatelliteId => Str])
 
-=head2 ListAllGroundStations([MaxResults => Int, NextToken => Str])
+=head2 ListAllGroundStations([MaxResults => Int, NextToken => Str, SatelliteId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

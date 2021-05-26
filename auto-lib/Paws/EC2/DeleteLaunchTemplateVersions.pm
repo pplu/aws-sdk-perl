@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteLaunchTemplateVersionsResult = $ec2->DeleteLaunchTemplateVersions(
       Versions           => [ 'MyString', ... ],
       DryRun             => 1,                         # OPTIONAL
-      LaunchTemplateId   => 'MyString',                # OPTIONAL
+      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
       LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
     );
 

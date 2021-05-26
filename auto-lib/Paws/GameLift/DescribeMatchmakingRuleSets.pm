@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $gamelift->DescribeMatchmakingRuleSets(
       Limit => 1,    # OPTIONAL
       Names => [
-        'MyMatchmakingIdStringModel', ...    # max: 128
-      ],                                     # OPTIONAL
-      NextToken => 'MyNonZeroAndMaxString',  # OPTIONAL
+        'MyMatchmakingRuleSetName', ...    # min: 1, max: 256
+      ],                                   # OPTIONAL
+      NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
       );
 
     # Results:
@@ -52,24 +52,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 
 
 =head2 Names => ArrayRef[Str|Undef]
 
-List of one or more matchmaking rule set names to retrieve details for.
-(Note: The rule set name is different from the optional "name" field in
-the rule set body.)
+A list of one or more matchmaking rule set names to retrieve details
+for. (Note: The rule set name is different from the optional "name"
+field in the rule set body.) You can use either the rule set name or
+ARN value.
 
 
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+action. To start at the beginning of the result set, do not specify a
+value.
 
 
 

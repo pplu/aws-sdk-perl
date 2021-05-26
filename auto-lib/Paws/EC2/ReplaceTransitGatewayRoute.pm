@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ReplaceTransitGatewayRouteResult = $ec2->ReplaceTransitGatewayRoute(
       DestinationCidrBlock       => 'MyString',
-      TransitGatewayRouteTableId => 'MyString',
-      Blackhole                  => 1,             # OPTIONAL
-      DryRun                     => 1,             # OPTIONAL
-      TransitGatewayAttachmentId => 'MyString',    # OPTIONAL
+      TransitGatewayRouteTableId => 'MyTransitGatewayRouteTableId',
+      Blackhole                  => 1,                                # OPTIONAL
+      DryRun                     => 1,                                # OPTIONAL
+      TransitGatewayAttachmentId => 'MyTransitGatewayAttachmentId',   # OPTIONAL
     );
 
     # Results:

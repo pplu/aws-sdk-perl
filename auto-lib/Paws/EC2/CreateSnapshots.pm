@@ -33,26 +33,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $CreateSnapshotsResult = $ec2->CreateSnapshots(
       InstanceSpecification => {
-        ExcludeBootVolume => 1,             # OPTIONAL
-        InstanceId        => 'MyString',    # OPTIONAL
+        ExcludeBootVolume => 1,                 # OPTIONAL
+        InstanceId        => 'MyInstanceId',    # OPTIONAL
       },
-      CopyTagsFromSource => 'volume',       # OPTIONAL
-      Description        => 'MyString',     # OPTIONAL
-      DryRun             => 1,              # OPTIONAL
+      CopyTagsFromSource => 'volume',           # OPTIONAL
+      Description        => 'MyString',         # OPTIONAL
+      DryRun             => 1,                  # OPTIONAL
       TagSpecifications  => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
-              Key   => 'MyString',    # OPTIONAL
-              Value => 'MyString',    # OPTIONAL
+              Key   => 'MyString',
+              Value => 'MyString',
             },
             ...
-          ],                          # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
+      ],        # OPTIONAL
     );
 
     # Results:
@@ -68,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 CopyTagsFromSource => Str
 
-Copies the tags from the specified instance to all snapshots.
+Copies the tags from the specified volume to corresponding snapshot.
 
 Valid values are: C<"volume">
 
@@ -80,10 +80,10 @@ A description propagated to every snapshot specified by the instance.
 
 =head2 DryRun => Bool
 
-Checks whether you have the required permissions for the action without
-actually making the request. Provides an error response. If you have
-the required permissions, the error response is DryRunOperation.
-Otherwise, it is UnauthorizedOperation.
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 

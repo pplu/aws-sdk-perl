@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },    # OPTIONAL
+                },
                 Value => {
                   BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   BooleanValue  => 1,                             # OPTIONAL
@@ -55,9 +55,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],
             ObjectReference => {
               Selector => 'MySelectorObjectReference',            # OPTIONAL
-            },
+            },    # OPTIONAL
             SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+              FacetName => 'MyFacetName',    # min: 1, max: 64
               SchemaArn => 'MyArn',
             },
 
@@ -65,29 +65,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AttachObject => {
             ChildReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           AttachPolicy => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             PolicyReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           AttachToIndex => {
             IndexReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             TargetReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           AttachTypedLink => {
@@ -107,10 +107,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],
             SourceObjectReference => {
               Selector => 'MySelectorObjectReference',            # OPTIONAL
-            },
+            },    # OPTIONAL
             TargetObjectReference => {
-              Selector => 'MySelectorObjectReference',            # OPTIONAL
-            },
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
+            },    # OPTIONAL
             TypedLinkFacet => {
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
@@ -122,28 +122,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             IsUnique                    => 1,
             OrderedIndexedAttributeList => [
               {
-                FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                FacetName => 'MyFacetName',        # min: 1, max: 64
                 Name      => 'MyAttributeName',    # min: 1, max: 230
                 SchemaArn => 'MyArn',
 
               },
-              ...                                  # OPTIONAL
+              ...
             ],
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
             LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
           },    # OPTIONAL
           CreateObject => {
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },    # OPTIONAL
+                },
                 Value => {
                   BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
                   BooleanValue  => 1,                             # OPTIONAL
@@ -157,7 +157,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],
             SchemaFacet => [
               {
-                FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+                FacetName => 'MyFacetName',    # min: 1, max: 64
                 SchemaArn => 'MyArn',
               },
               ...
@@ -166,37 +166,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
           },    # OPTIONAL
           DeleteObject => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           DetachFromIndex => {
             IndexReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             TargetReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           DetachObject => {
             LinkName        => 'MyLinkName',    # min: 1, max: 64; OPTIONAL
             ParentReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             BatchReferenceName => 'MyBatchReferenceName',    # OPTIONAL
           },    # OPTIONAL
           DetachPolicy => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             PolicyReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
           DetachTypedLink => {
@@ -217,10 +217,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],
               SourceObjectReference => {
                 Selector => 'MySelectorObjectReference',            # OPTIONAL
-              },
+              },    # OPTIONAL
               TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',            # OPTIONAL
-              },
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
+              },    # OPTIONAL
               TypedLinkFacet => {
                 SchemaArn     => 'MyArn',
                 TypedLinkName => 'MyTypedLinkName',
@@ -233,9 +233,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RemoveFacetFromObject => {
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
             SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+              FacetName => 'MyFacetName',    # min: 1, max: 64
               SchemaArn => 'MyArn',
             },
 
@@ -255,11 +255,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                 },    # OPTIONAL
                 AttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },    # OPTIONAL
+                },
               },
               ...
             ],
@@ -280,10 +280,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],
               SourceObjectReference => {
                 Selector => 'MySelectorObjectReference',            # OPTIONAL
-              },
+              },    # OPTIONAL
               TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',            # OPTIONAL
-              },
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
+              },    # OPTIONAL
               TypedLinkFacet => {
                 SchemaArn     => 'MyArn',
                 TypedLinkName => 'MyTypedLinkName',
@@ -308,17 +308,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                 },    # OPTIONAL
                 ObjectAttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
-                },    # OPTIONAL
+                },
               },
               ...
             ],
             ObjectReference => {
               Selector => 'MySelectorObjectReference',    # OPTIONAL
-            },
+            },    # OPTIONAL
 
           },    # OPTIONAL
         },

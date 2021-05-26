@@ -16,7 +16,7 @@ Paws::LicenseManager::ListTagsForResourceResponse
 
 =head2 Tags => ArrayRef[L<Paws::LicenseManager::Tag>]
 
-List of tags attached to the resource.
+Information about the tags.
 
 
 =head2 _request_id => Str

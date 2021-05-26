@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::TagResource;
   use Moose;
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' );
   has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
 
@@ -37,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-
+      ResourceArn => 'MyResourceArn',    # OPTIONAL
     );
 
     # Results:
@@ -49,6 +50,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/TagResource>
 
 =head1 ATTRIBUTES
+
+
+=head2 ResourceArn => Str
+
+The Amazon Resource Name (ARN) of the resource to which you want to add
+a tag.
+
 
 
 =head2 B<REQUIRED> ResourceName => Str

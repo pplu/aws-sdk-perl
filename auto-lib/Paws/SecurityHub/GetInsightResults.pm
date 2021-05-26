@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> InsightArn => Str
 
-The ARN of the insight whose results you want to see.
+The ARN of the insight for which to return results.
 
 
 

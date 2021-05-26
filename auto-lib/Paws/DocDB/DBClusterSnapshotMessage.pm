@@ -18,7 +18,7 @@ Paws::DocDB::DBClusterSnapshotMessage
 
 =head2 DBClusterSnapshots => ArrayRef[L<Paws::DocDB::DBClusterSnapshot>]
 
-Provides a list of DB cluster snapshots.
+Provides a list of cluster snapshots.
 
 
 =head2 Marker => Str

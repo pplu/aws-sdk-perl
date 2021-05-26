@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-ARN for the resource.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 

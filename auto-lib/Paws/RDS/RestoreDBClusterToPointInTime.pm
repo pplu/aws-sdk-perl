@@ -7,6 +7,8 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -165,6 +167,27 @@ enabled. By default, deletion protection is disabled.
 
 
 
+=head2 Domain => Str
+
+Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster.
+For more information, see Using Kerberos Authentication for Aurora
+MySQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+in the I<Amazon Aurora User Guide>.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to
@@ -181,6 +204,10 @@ in the I<Amazon Aurora User Guide>.
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
+
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
 
 
 
@@ -213,12 +240,12 @@ cluster.
 
 =item *
 
-If the DB cluster is not encrypted, then the restored DB cluster is not
+If the DB cluster isn't encrypted, then the restored DB cluster isn't
 encrypted.
 
 =back
 
-If C<DBClusterIdentifier> refers to a DB cluster that is not encrypted,
+If C<DBClusterIdentifier> refers to a DB cluster that isn't encrypted,
 then the restore request is rejected.
 
 
@@ -256,7 +283,7 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
-Must be specified if C<UseLatestRestorableTime> parameter is not
+Must be specified if C<UseLatestRestorableTime> parameter isn't
 provided
 
 =item *
@@ -327,7 +354,7 @@ Must match the identifier of an existing DBCluster.
 =head2 UseLatestRestorableTime => Bool
 
 A value that indicates whether to restore the DB cluster to the latest
-restorable backup time. By default, the DB cluster is not restored to
+restorable backup time. By default, the DB cluster isn't restored to
 the latest restorable backup time.
 
 Constraints: Can't be specified if C<RestoreToTime> parameter is

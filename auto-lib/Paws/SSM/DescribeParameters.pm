@@ -69,8 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 Filters => ArrayRef[L<Paws::SSM::ParametersFilter>]
 
-One or more filters. Use a filter to return a more specific list of
-results.
+This data type is deprecated. Instead, use C<ParameterFilters>.
 
 
 

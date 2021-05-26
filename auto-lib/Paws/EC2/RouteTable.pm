@@ -44,37 +44,38 @@ This class has no description
 
 =head2 Associations => ArrayRef[L<Paws::EC2::RouteTableAssociation>]
 
-  The associations between the route table and one or more subnets.
+The associations between the route table and one or more subnets or a
+gateway.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the route table.
+The ID of the AWS account that owns the route table.
 
 
 =head2 PropagatingVgws => ArrayRef[L<Paws::EC2::PropagatingVgw>]
 
-  Any virtual private gateway (VGW) propagating routes.
+Any virtual private gateway (VGW) propagating routes.
 
 
 =head2 Routes => ArrayRef[L<Paws::EC2::Route>]
 
-  The routes in the route table.
+The routes in the route table.
 
 
 =head2 RouteTableId => Str
 
-  The ID of the route table.
+The ID of the route table.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the route table.
+Any tags assigned to the route table.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

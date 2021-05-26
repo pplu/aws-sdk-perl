@@ -556,9 +556,9 @@ Returns: a L<Paws::XRay::GetServiceGraphResult> instance
 Retrieves a document that describes services that process incoming
 requests, and downstream services that they call as a result. Root
 services process incoming requests and make calls to downstream
-services. Root services are applications that use the AWS X-Ray SDK.
-Downstream services can be other applications, AWS resources, HTTP web
-APIs, or SQL databases.
+services. Root services are applications that use the AWS X-Ray SDK
+(https://docs.aws.amazon.com/xray/index.html). Downstream services can
+be other applications, AWS resources, HTTP web APIs, or SQL databases.
 
 
 =head2 GetTimeSeriesServiceStatistics
@@ -633,7 +633,7 @@ Each argument is described in detail in: L<Paws::XRay::GetTraceSummaries>
 
 Returns: a L<Paws::XRay::GetTraceSummariesResult> instance
 
-Retrieves IDs and metadata for traces available for a specified time
+Retrieves IDs and annotations for traces available for a specified time
 frame using an optional filter. To get the full traces, pass the trace
 IDs to C<BatchGetTraces>.
 
@@ -708,7 +708,8 @@ Each argument is described in detail in: L<Paws::XRay::PutTraceSegments>
 
 Returns: a L<Paws::XRay::PutTraceSegmentsResult> instance
 
-Uploads segment documents to AWS X-Ray. The X-Ray SDK generates segment
+Uploads segment documents to AWS X-Ray. The X-Ray SDK
+(https://docs.aws.amazon.com/xray/index.html) generates segment
 documents and sends them to the X-Ray daemon, which uploads them in
 batches. A segment document can be a completed segment, an in-progress
 segment, or an array of subsegments.

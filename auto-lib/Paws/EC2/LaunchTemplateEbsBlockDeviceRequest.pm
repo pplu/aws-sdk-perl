@@ -44,12 +44,12 @@ This class has no description
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the EBS volume is deleted on instance termination.
+Indicates whether the EBS volume is deleted on instance termination.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the EBS volume is encrypted. Encrypted volumes can
+Indicates whether the EBS volume is encrypted. Encrypted volumes can
 only be attached to instances that support Amazon EBS encryption. If
 you are creating a volume from a snapshot, you can't specify an
 encryption value.
@@ -57,7 +57,7 @@ encryption value.
 
 =head2 Iops => Int
 
-  The number of I/O operations per second (IOPS) that the volume
+The number of I/O operations per second (IOPS) that the volume
 supports. For io1, this represents the number of IOPS that are
 provisioned for the volume. For gp2, this represents the baseline
 performance of the volume and the rate at which the volume accumulates
@@ -74,18 +74,18 @@ standard volumes.
 
 =head2 KmsKeyId => Str
 
-  The ARN of the AWS Key Management Service (AWS KMS) CMK used for
-encryption.
+The ARN of the symmetric AWS Key Management Service (AWS KMS) CMK used
+for encryption.
 
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+The ID of the snapshot.
 
 
 =head2 VolumeSize => Int
 
-  The size of the volume, in GiB.
+The size of the volume, in GiB.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
@@ -93,7 +93,7 @@ specify a volume size, the default is the snapshot size.
 
 =head2 VolumeType => Str
 
-  The volume type.
+The volume type.
 
 
 

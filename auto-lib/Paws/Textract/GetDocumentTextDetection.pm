@@ -36,7 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Blocks           = $GetDocumentTextDetectionResponse->Blocks;
+    my $Blocks = $GetDocumentTextDetectionResponse->Blocks;
+    my $DetectDocumentTextModelVersion =
+      $GetDocumentTextDetectionResponse->DetectDocumentTextModelVersion;
     my $DocumentMetadata = $GetDocumentTextDetectionResponse->DocumentMetadata;
     my $JobStatus        = $GetDocumentTextDetectionResponse->JobStatus;
     my $NextToken        = $GetDocumentTextDetectionResponse->NextToken;
@@ -54,7 +56,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 =head2 B<REQUIRED> JobId => Str
 
 A unique identifier for the text detection job. The C<JobId> is
-returned from C<StartDocumentTextDetection>.
+returned from C<StartDocumentTextDetection>. A C<JobId> value is only
+valid for 7 days.
 
 
 

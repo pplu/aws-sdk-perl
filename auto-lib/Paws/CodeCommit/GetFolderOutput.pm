@@ -22,34 +22,34 @@ Paws::CodeCommit::GetFolderOutput
 
 =head2 B<REQUIRED> CommitId => Str
 
-The full commit ID used as a reference for which version of the folder
-content is returned.
+The full commit ID used as a reference for the returned version of the
+folder content.
 
 
 =head2 Files => ArrayRef[L<Paws::CodeCommit::File>]
 
-The list of files that exist in the specified folder, if any.
+The list of files in the specified folder, if any.
 
 
 =head2 B<REQUIRED> FolderPath => Str
 
-The fully-qualified path of the folder whose contents are returned.
+The fully qualified path of the folder whose contents are returned.
 
 
 =head2 SubFolders => ArrayRef[L<Paws::CodeCommit::Folder>]
 
-The list of folders that exist beneath the specified folder, if any.
+The list of folders that exist under the specified folder, if any.
 
 
 =head2 SubModules => ArrayRef[L<Paws::CodeCommit::SubModule>]
 
-The list of submodules that exist in the specified folder, if any.
+The list of submodules in the specified folder, if any.
 
 
 =head2 SymbolicLinks => ArrayRef[L<Paws::CodeCommit::SymbolicLink>]
 
-The list of symbolic links to other files and folders that exist in the
-specified folder, if any.
+The list of symbolic links to other files and folders in the specified
+folder, if any.
 
 
 =head2 TreeId => Str

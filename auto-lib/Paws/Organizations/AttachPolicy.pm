@@ -47,8 +47,8 @@ target. You can get the ID for the policy by calling the ListPolicies
 operation.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
-string requires "p-" followed by from 8 to 128 lower-case letters or
-digits.
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
+letters, digits, or the underscore character (_).
 
 
 
@@ -65,19 +65,19 @@ string requires one of the following:
 
 =item *
 
-Root: a string that begins with "r-" followed by from 4 to 32
-lower-case letters or digits.
+B<Root> - A string that begins with "r-" followed by from 4 to 32
+lowercase letters or digits.
 
 =item *
 
-Account: a string that consists of exactly 12 digits.
+B<Account> - A string that consists of exactly 12 digits.
 
 =item *
 
-Organizational unit (OU): a string that begins with "ou-" followed by
-from 4 to 32 lower-case letters or digits (the ID of the root that the
-OU is in) followed by a second "-" dash and from 8 to 32 additional
-lower-case letters or digits.
+B<Organizational unit (OU)> - A string that begins with "ou-" followed
+by from 4 to 32 lowercase letters or digits (the ID of the root that
+the OU is in). This string is followed by a second "-" dash and from 8
+to 32 additional lowercase letters or digits.
 
 =back
 

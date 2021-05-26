@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Enabled => Bool
 
-  Specify C<true> to enable detailed monitoring. Otherwise, basic
+Specify C<true> to enable detailed monitoring. Otherwise, basic
 monitoring is enabled.
 
 

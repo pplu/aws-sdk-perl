@@ -17,7 +17,7 @@ Paws::GameLift::ListBuildsOutput
 
 =head2 Builds => ArrayRef[L<Paws::GameLift::Build>]
 
-Collection of build records that match the request.
+A collection of build records that match the request.
 
 
 =head2 NextToken => Str

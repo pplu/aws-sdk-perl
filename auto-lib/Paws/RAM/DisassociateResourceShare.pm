@@ -66,7 +66,7 @@ The principals.
 
 =head2 ResourceArns => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARN) of the resources.
+The Amazon Resource Names (ARNs) of the resources.
 
 
 

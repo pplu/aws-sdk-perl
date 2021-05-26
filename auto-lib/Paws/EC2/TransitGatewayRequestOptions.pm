@@ -5,6 +5,7 @@ package Paws::EC2::TransitGatewayRequestOptions;
   has DefaultRouteTableAssociation => (is => 'ro', isa => 'Str');
   has DefaultRouteTablePropagation => (is => 'ro', isa => 'Str');
   has DnsSupport => (is => 'ro', isa => 'Str');
+  has MulticastSupport => (is => 'ro', isa => 'Str');
   has VpnEcmpSupport => (is => 'ro', isa => 'Str');
 1;
 
@@ -43,37 +44,42 @@ This class has no description
 
 =head2 AmazonSideAsn => Int
 
-  A private Autonomous System Number (ASN) for the Amazon side of a BGP
+A private Autonomous System Number (ASN) for the Amazon side of a BGP
 session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
 4294967294 for 32-bit ASNs.
 
 
 =head2 AutoAcceptSharedAttachments => Str
 
-  Enable or disable automatic acceptance of attachment requests. The
+Enable or disable automatic acceptance of attachment requests. The
 default is C<disable>.
 
 
 =head2 DefaultRouteTableAssociation => Str
 
-  Enable or disable automatic association with the default association
+Enable or disable automatic association with the default association
 route table. The default is C<enable>.
 
 
 =head2 DefaultRouteTablePropagation => Str
 
-  Enable or disable automatic propagation of routes to the default
+Enable or disable automatic propagation of routes to the default
 propagation route table. The default is C<enable>.
 
 
 =head2 DnsSupport => Str
 
-  Enable or disable DNS support.
+Enable or disable DNS support.
+
+
+=head2 MulticastSupport => Str
+
+Indicates whether multicast is enabled on the transit gateway
 
 
 =head2 VpnEcmpSupport => Str
 
-  Enable or disable Equal Cost Multipath Protocol support.
+Enable or disable Equal Cost Multipath Protocol support.
 
 
 

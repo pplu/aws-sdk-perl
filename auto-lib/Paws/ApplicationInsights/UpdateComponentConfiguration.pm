@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceGroupName      => 'MyResourceGroupName',
       ComponentConfiguration => 'MyComponentConfiguration',    # OPTIONAL
       Monitor                => 1,                             # OPTIONAL
-      Tier                   => 'MyTier',                      # OPTIONAL
+      Tier                   => 'DEFAULT',                     # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -54,7 +54,9 @@ see Working with JSON
 (https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html).
 You can send a request to
 C<DescribeComponentConfigurationRecommendation> to see the recommended
-configuration for a component.
+configuration for a component. For the complete format of the component
+configuration file, see Component Configuration
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
 
 
 
@@ -79,9 +81,10 @@ The name of the resource group.
 =head2 Tier => Str
 
 The tier of the application component. Supported tiers include
-C<DOT_NET_WORKER>, C<DOT_NET_WEB_TIER>, C<SQL_SERVER>, and C<DEFAULT>.
+C<DOT_NET_WORKER>, C<DOT_NET_WEB>, C<DOT_NET_CORE>, C<SQL_SERVER>, and
+C<DEFAULT>.
 
-
+Valid values are: C<"DEFAULT">, C<"DOT_NET_CORE">, C<"DOT_NET_WORKER">, C<"DOT_NET_WEB">, C<"SQL_SERVER">
 
 
 =head1 SEE ALSO

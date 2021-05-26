@@ -2,6 +2,7 @@
 package Paws::MediaPackageVod::DescribeAssetResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
+  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::EgressEndpoint]', traits => ['NameInRequest'], request_name => 'egressEndpoints');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has PackagingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'packagingGroupId');
@@ -24,6 +25,11 @@ Paws::MediaPackageVod::DescribeAssetResponse
 =head2 Arn => Str
 
 The ARN of the Asset.
+
+
+=head2 CreatedAt => Str
+
+The time the Asset was initially submitted for Ingest.
 
 
 =head2 EgressEndpoints => ArrayRef[L<Paws::MediaPackageVod::EgressEndpoint>]

@@ -3,14 +3,17 @@ package Paws::Robomaker::DescribeSimulationJobResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
+  has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DataSource]', traits => ['NameInRequest'], request_name => 'dataSources');
   has FailureBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureBehavior');
   has FailureCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureCode');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IamRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamRole');
   has LastStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastStartedAt');
   has LastUpdatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedAt');
+  has LoggingConfig => (is => 'ro', isa => 'Paws::Robomaker::LoggingConfig', traits => ['NameInRequest'], request_name => 'loggingConfig');
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxJobDurationInSeconds');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has NetworkInterface => (is => 'ro', isa => 'Paws::Robomaker::NetworkInterface', traits => ['NameInRequest'], request_name => 'networkInterface');
   has OutputLocation => (is => 'ro', isa => 'Paws::Robomaker::OutputLocation', traits => ['NameInRequest'], request_name => 'outputLocation');
   has RobotApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotApplicationConfig]', traits => ['NameInRequest'], request_name => 'robotApplications');
   has SimulationApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationConfig]', traits => ['NameInRequest'], request_name => 'simulationApplications');
@@ -40,6 +43,11 @@ The Amazon Resource Name (ARN) of the simulation job.
 
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.
+
+
+=head2 DataSources => ArrayRef[L<Paws::Robomaker::DataSource>]
+
+The data sources for the simulation job.
 
 
 =head2 FailureBehavior => Str
@@ -115,7 +123,7 @@ creation.
 =back
 
 
-Valid values are: C<"InternalServiceError">, C<"RobotApplicationCrash">, C<"SimulationApplicationCrash">, C<"BadPermissionsRobotApplication">, C<"BadPermissionsSimulationApplication">, C<"BadPermissionsS3Output">, C<"BadPermissionsCloudwatchLogs">, C<"SubnetIpLimitExceeded">, C<"ENILimitExceeded">, C<"BadPermissionsUserCredentials">, C<"InvalidBundleRobotApplication">, C<"InvalidBundleSimulationApplication">, C<"RobotApplicationVersionMismatchedEtag">, C<"SimulationApplicationVersionMismatchedEtag">, C<"WrongRegionS3Output">, C<"WrongRegionRobotApplication">, C<"WrongRegionSimulationApplication">
+Valid values are: C<"InternalServiceError">, C<"RobotApplicationCrash">, C<"SimulationApplicationCrash">, C<"BadPermissionsRobotApplication">, C<"BadPermissionsSimulationApplication">, C<"BadPermissionsS3Object">, C<"BadPermissionsS3Output">, C<"BadPermissionsCloudwatchLogs">, C<"SubnetIpLimitExceeded">, C<"ENILimitExceeded">, C<"BadPermissionsUserCredentials">, C<"InvalidBundleRobotApplication">, C<"InvalidBundleSimulationApplication">, C<"InvalidS3Resource">, C<"LimitExceeded">, C<"MismatchedEtag">, C<"RobotApplicationVersionMismatchedEtag">, C<"SimulationApplicationVersionMismatchedEtag">, C<"ResourceNotFound">, C<"RequestThrottled">, C<"BatchTimedOut">, C<"BatchCanceled">, C<"InvalidInput">, C<"WrongRegionS3Bucket">, C<"WrongRegionS3Output">, C<"WrongRegionRobotApplication">, C<"WrongRegionSimulationApplication">
 =head2 FailureReason => Str
 
 Details about why the simulation job failed. For more information about
@@ -141,6 +149,11 @@ The time, in milliseconds since the epoch, when the simulation job was
 last updated.
 
 
+=head2 LoggingConfig => L<Paws::Robomaker::LoggingConfig>
+
+The logging configuration.
+
+
 =head2 MaxJobDurationInSeconds => Int
 
 The maximum job duration in seconds. The value must be 8 days (691,200
@@ -150,6 +163,11 @@ seconds) or less.
 =head2 Name => Str
 
 The name of the simulation job.
+
+
+=head2 NetworkInterface => L<Paws::Robomaker::NetworkInterface>
+
+The network interface information for the simulation job.
 
 
 =head2 OutputLocation => L<Paws::Robomaker::OutputLocation>

@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-A DB cluster identifier to force a failover for. This parameter is not
+A DB cluster identifier to force a failover for. This parameter isn't
 case-sensitive.
 
 Constraints:

@@ -18,14 +18,13 @@ Paws::Connect::ListUserHierarchyGroupsResponse
 
 =head2 NextToken => Str
 
-A string returned in the response. Use the value returned in the
-response as the value of the NextToken in a subsequent request to
-retrieve the next set of results.
+If there are additional results, this is the token for the next set of
+results.
 
 
 =head2 UserHierarchyGroupSummaryList => ArrayRef[L<Paws::Connect::HierarchyGroupSummary>]
 
-An array of C<HierarchyGroupSummary> objects.
+Information about the hierarchy groups.
 
 
 =head2 _request_id => Str

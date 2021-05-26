@@ -1,7 +1,7 @@
 
 package Paws::GlobalAccelerator::UpdateAcceleratorAttributes;
   use Moose;
-  has AcceleratorArn => (is => 'ro', isa => 'Str');
+  has AcceleratorArn => (is => 'ro', isa => 'Str', required => 1);
   has FlowLogsEnabled => (is => 'ro', isa => 'Bool');
   has FlowLogsS3Bucket => (is => 'ro', isa => 'Str');
   has FlowLogsS3Prefix => (is => 'ro', isa => 'Str');
@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $globalaccelerator = Paws->service('GlobalAccelerator');
     my $UpdateAcceleratorAttributesResponse =
       $globalaccelerator->UpdateAcceleratorAttributes(
-      AcceleratorArn   => 'MyGenericString',    # OPTIONAL
+      AcceleratorArn   => 'MyGenericString',
       FlowLogsEnabled  => 1,                    # OPTIONAL
       FlowLogsS3Bucket => 'MyGenericString',    # OPTIONAL
       FlowLogsS3Prefix => 'MyGenericString',    # OPTIONAL
@@ -50,10 +50,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glo
 =head1 ATTRIBUTES
 
 
-=head2 AcceleratorArn => Str
+=head2 B<REQUIRED> AcceleratorArn => Str
 
 The Amazon Resource Name (ARN) of the accelerator that you want to
-update. Attribute is required.
+update.
 
 
 

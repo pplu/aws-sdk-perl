@@ -118,7 +118,7 @@ entity recognizer being created.
 The language of the input documents. All documents must be in the same
 language. Only English ("en") is currently supported.
 
-Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 
 =head2 B<REQUIRED> RecognizerName => Str
 

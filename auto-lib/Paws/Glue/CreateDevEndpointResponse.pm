@@ -8,13 +8,16 @@ package Paws::Glue::CreateDevEndpointResponse;
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has RoleArn => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+  has WorkerType => (is => 'ro', isa => 'Str');
   has YarnEndpointAddress => (is => 'ro', isa => 'Str');
   has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
 
@@ -31,39 +34,69 @@ Paws::Glue::CreateDevEndpointResponse
 
 =head2 Arguments => L<Paws::Glue::MapValue>
 
-The map of arguments used to configure this DevEndpoint.
+The map of arguments used to configure this C<DevEndpoint>.
+
+Valid arguments are:
+
+=over
+
+=item *
+
+C<"--enable-glue-datacatalog": "">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "3">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "2">
+
+=back
+
+You can specify a version of Python support for development endpoints
+by using the C<Arguments> parameter in the C<CreateDevEndpoint> or
+C<UpdateDevEndpoint> APIs. If no arguments are provided, the version
+defaults to Python 2.
 
 
 =head2 AvailabilityZone => Str
 
-The AWS availability zone where this DevEndpoint is located.
+The AWS Availability Zone where this C<DevEndpoint> is located.
 
 
 =head2 CreatedTimestamp => Str
 
-The point in time at which this DevEndpoint was created.
+The point in time at which this C<DevEndpoint> was created.
 
 
 =head2 EndpointName => Str
 
-The name assigned to the new DevEndpoint.
+The name assigned to the new C<DevEndpoint>.
 
 
 =head2 ExtraJarsS3Path => Str
 
-Path to one or more Java Jars in an S3 bucket that will be loaded in
-your DevEndpoint.
+Path to one or more Java C<.jar> files in an S3 bucket that will be
+loaded in your C<DevEndpoint>.
 
 
 =head2 ExtraPythonLibsS3Path => Str
 
-Path(s) to one or more Python libraries in an S3 bucket that will be
-loaded in your DevEndpoint.
+The paths to one or more Python libraries in an S3 bucket that will be
+loaded in your C<DevEndpoint>.
 
 
 =head2 FailureReason => Str
 
-The reason for a current failure in this DevEndpoint.
+The reason for a current failure in this C<DevEndpoint>.
+
+
+=head2 GlueVersion => Str
+
+Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for running your ETL scripts on development endpoints.
 
 
 =head2 NumberOfNodes => Int
@@ -72,40 +105,53 @@ The number of AWS Glue Data Processing Units (DPUs) allocated to this
 DevEndpoint.
 
 
+=head2 NumberOfWorkers => Int
+
+The number of workers of a defined C<workerType> that are allocated to
+the development endpoint.
+
+
 =head2 RoleArn => Str
 
-The AWS ARN of the role assigned to the new DevEndpoint.
+The Amazon Resource Name (ARN) of the role assigned to the new
+C<DevEndpoint>.
 
 
 =head2 SecurityConfiguration => Str
 
-The name of the SecurityConfiguration structure being used with this
-DevEndpoint.
+The name of the C<SecurityConfiguration> structure being used with this
+C<DevEndpoint>.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-The security groups assigned to the new DevEndpoint.
+The security groups assigned to the new C<DevEndpoint>.
 
 
 =head2 Status => Str
 
-The current status of the new DevEndpoint.
+The current status of the new C<DevEndpoint>.
 
 
 =head2 SubnetId => Str
 
-The subnet ID assigned to the new DevEndpoint.
+The subnet ID assigned to the new C<DevEndpoint>.
 
 
 =head2 VpcId => Str
 
-The ID of the VPC used by this DevEndpoint.
+The ID of the virtual private cloud (VPC) used by this C<DevEndpoint>.
 
 
+=head2 WorkerType => Str
+
+The type of predefined worker that is allocated to the development
+endpoint. May be a value of Standard, G.1X, or G.2X.
+
+Valid values are: C<"Standard">, C<"G.1X">, C<"G.2X">
 =head2 YarnEndpointAddress => Str
 
-The address of the YARN endpoint used by this DevEndpoint.
+The address of the YARN endpoint used by this C<DevEndpoint>.
 
 
 =head2 ZeppelinRemoteSparkInterpreterPort => Int

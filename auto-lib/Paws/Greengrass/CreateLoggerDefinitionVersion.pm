@@ -36,15 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AmznClientToken    => 'My__string',    # OPTIONAL
       Loggers            => [
         {
-          Component =>
-            'GreengrassSystem',    # values: GreengrassSystem, Lambda; OPTIONAL
-          Id => 'My__string',
-          Level => 'DEBUG',  # values: DEBUG, INFO, WARN, ERROR, FATAL; OPTIONAL
-          Space => 1,        # OPTIONAL
-          Type => 'FileSystem',    # values: FileSystem, AWSCloudWatch; OPTIONAL
+          Component => 'GreengrassSystem',    # values: GreengrassSystem, Lambda
+          Id        => 'My__string',
+          Level => 'DEBUG',         # values: DEBUG, INFO, WARN, ERROR, FATAL
+          Type  => 'FileSystem',    # values: FileSystem, AWSCloudWatch
+          Space => 1,               # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
+      ],                            # OPTIONAL
       );
 
     # Results:

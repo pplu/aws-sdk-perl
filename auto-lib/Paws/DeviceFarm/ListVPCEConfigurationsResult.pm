@@ -24,7 +24,7 @@ list.
 
 =head2 VpceConfigurations => ArrayRef[L<Paws::DeviceFarm::VPCEConfiguration>]
 
-An array of C<VPCEConfiguration> objects containing information about
+An array of C<VPCEConfiguration> objects that contain information about
 your VPC endpoint configuration.
 
 

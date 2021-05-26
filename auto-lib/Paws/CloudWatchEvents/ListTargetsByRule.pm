@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchEvents::ListTargetsByRule;
   use Moose;
+  has EventBusName => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has Rule => (is => 'ro', isa => 'Str', required => 1);
@@ -21,7 +22,7 @@ Paws::CloudWatchEvents::ListTargetsByRule - Arguments for method ListTargetsByRu
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTargetsByRule on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method ListTargetsByRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTargetsByRule.
@@ -30,9 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $events = Paws->service('CloudWatchEvents');
     my $ListTargetsByRuleResponse = $events->ListTargetsByRule(
-      Rule      => 'MyRuleName',
-      Limit     => 1,                # OPTIONAL
-      NextToken => 'MyNextToken',    # OPTIONAL
+      Rule         => 'MyRuleName',
+      EventBusName => 'MyEventBusName',    # OPTIONAL
+      Limit        => 1,                   # OPTIONAL
+      NextToken    => 'MyNextToken',       # OPTIONAL
     );
 
     # Results:
@@ -45,6 +47,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/ListTargetsByRule>
 
 =head1 ATTRIBUTES
+
+
+=head2 EventBusName => Str
+
+The event bus associated with the rule. If you omit this, the default
+event bus is used.
+
 
 
 =head2 Limit => Int

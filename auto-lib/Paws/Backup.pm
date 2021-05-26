@@ -69,6 +69,11 @@ package Paws::Backup;
     my $call_object = $self->new_with_coercions('Paws::Backup::DescribeBackupVault', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCopyJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Backup::DescribeCopyJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeProtectedResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Backup::DescribeProtectedResource', @_);
@@ -159,6 +164,11 @@ package Paws::Backup;
     my $call_object = $self->new_with_coercions('Paws::Backup::ListBackupVaults', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCopyJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Backup::ListCopyJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListProtectedResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Backup::ListProtectedResources', @_);
@@ -199,6 +209,11 @@ package Paws::Backup;
     my $call_object = $self->new_with_coercions('Paws::Backup::StartBackupJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartCopyJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Backup::StartCopyJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartRestoreJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Backup::StartRestoreJob', @_);
@@ -232,7 +247,7 @@ package Paws::Backup;
   
 
 
-  sub operations { qw/CreateBackupPlan CreateBackupSelection CreateBackupVault DeleteBackupPlan DeleteBackupSelection DeleteBackupVault DeleteBackupVaultAccessPolicy DeleteBackupVaultNotifications DeleteRecoveryPoint DescribeBackupJob DescribeBackupVault DescribeProtectedResource DescribeRecoveryPoint DescribeRestoreJob ExportBackupPlanTemplate GetBackupPlan GetBackupPlanFromJSON GetBackupPlanFromTemplate GetBackupSelection GetBackupVaultAccessPolicy GetBackupVaultNotifications GetRecoveryPointRestoreMetadata GetSupportedResourceTypes ListBackupJobs ListBackupPlans ListBackupPlanTemplates ListBackupPlanVersions ListBackupSelections ListBackupVaults ListProtectedResources ListRecoveryPointsByBackupVault ListRecoveryPointsByResource ListRestoreJobs ListTags PutBackupVaultAccessPolicy PutBackupVaultNotifications StartBackupJob StartRestoreJob StopBackupJob TagResource UntagResource UpdateBackupPlan UpdateRecoveryPointLifecycle / }
+  sub operations { qw/CreateBackupPlan CreateBackupSelection CreateBackupVault DeleteBackupPlan DeleteBackupSelection DeleteBackupVault DeleteBackupVaultAccessPolicy DeleteBackupVaultNotifications DeleteRecoveryPoint DescribeBackupJob DescribeBackupVault DescribeCopyJob DescribeProtectedResource DescribeRecoveryPoint DescribeRestoreJob ExportBackupPlanTemplate GetBackupPlan GetBackupPlanFromJSON GetBackupPlanFromTemplate GetBackupSelection GetBackupVaultAccessPolicy GetBackupVaultNotifications GetRecoveryPointRestoreMetadata GetSupportedResourceTypes ListBackupJobs ListBackupPlans ListBackupPlanTemplates ListBackupPlanVersions ListBackupSelections ListBackupVaults ListCopyJobs ListProtectedResources ListRecoveryPointsByBackupVault ListRecoveryPointsByResource ListRestoreJobs ListTags PutBackupVaultAccessPolicy PutBackupVaultNotifications StartBackupJob StartCopyJob StartRestoreJob StopBackupJob TagResource UntagResource UpdateBackupPlan UpdateRecoveryPointLifecycle / }
 
 1;
 
@@ -292,8 +307,8 @@ Returns: a L<Paws::Backup::CreateBackupPlanOutput> instance
 Backup plans are documents that contain information that AWS Backup
 uses to schedule tasks that create recovery points of resources.
 
-If you call C<CreateBackupPlan> with a plan that already exists, the
-existing C<backupPlanId> is returned.
+If you call C<CreateBackupPlan> with a plan that already exists, an
+C<AlreadyExistsException> is returned.
 
 
 =head2 CreateBackupSelection
@@ -331,7 +346,7 @@ C<ConditionKey:"department">
 
 C<ConditionValue:"finance">
 
-C<ConditionType:"StringEquals">
+C<ConditionType:"STRINGEQUALS">
 
 =item *
 
@@ -339,7 +354,7 @@ C<ConditionKey:"importance">
 
 C<ConditionValue:"critical">
 
-C<ConditionType:"StringEquals">
+C<ConditionType:"STRINGEQUALS">
 
 =back
 
@@ -517,6 +532,22 @@ Each argument is described in detail in: L<Paws::Backup::DescribeBackupVault>
 Returns: a L<Paws::Backup::DescribeBackupVaultOutput> instance
 
 Returns metadata about a backup vault specified by its name.
+
+
+=head2 DescribeCopyJob
+
+=over
+
+=item CopyJobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Backup::DescribeCopyJob>
+
+Returns: a L<Paws::Backup::DescribeCopyJobOutput> instance
+
+Returns metadata associated with creating a copy of a resource.
 
 
 =head2 DescribeProtectedResource
@@ -708,15 +739,8 @@ Each argument is described in detail in: L<Paws::Backup::GetRecoveryPointRestore
 
 Returns: a L<Paws::Backup::GetRecoveryPointRestoreMetadataOutput> instance
 
-Returns two sets of metadata key-value pairs. The first set lists the
-metadata that the recovery point was created with. The second set lists
-the metadata key-value pairs that are required to restore the recovery
-point.
-
-These sets can be the same, or the restore metadata set can contain
-different values if the target service to be restored has changed since
-the recovery point was created and now requires additional or different
-information in order to be restored.
+Returns a set of metadata key-value pairs that were used to create the
+backup.
 
 
 =head2 GetSupportedResourceTypes
@@ -866,6 +890,36 @@ Returns: a L<Paws::Backup::ListBackupVaultsOutput> instance
 
 Returns a list of recovery point storage containers along with
 information about them.
+
+
+=head2 ListCopyJobs
+
+=over
+
+=item [ByCreatedAfter => Str]
+
+=item [ByCreatedBefore => Str]
+
+=item [ByDestinationVaultArn => Str]
+
+=item [ByResourceArn => Str]
+
+=item [ByResourceType => Str]
+
+=item [ByState => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Backup::ListCopyJobs>
+
+Returns: a L<Paws::Backup::ListCopyJobsOutput> instance
+
+Returns metadata about your copy jobs.
 
 
 =head2 ListProtectedResources
@@ -1049,6 +1103,32 @@ Each argument is described in detail in: L<Paws::Backup::StartBackupJob>
 Returns: a L<Paws::Backup::StartBackupJobOutput> instance
 
 Starts a job to create a one-time backup of the specified resource.
+
+
+=head2 StartCopyJob
+
+=over
+
+=item DestinationBackupVaultArn => Str
+
+=item IamRoleArn => Str
+
+=item RecoveryPointArn => Str
+
+=item SourceBackupVaultName => Str
+
+=item [IdempotencyToken => Str]
+
+=item [Lifecycle => L<Paws::Backup::Lifecycle>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Backup::StartCopyJob>
+
+Returns: a L<Paws::Backup::StartCopyJobOutput> instance
+
+Starts a job to create a one-time copy of the specified resource.
 
 
 =head2 StartRestoreJob

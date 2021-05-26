@@ -2,6 +2,7 @@
 package Paws::Amplify::CreateBranch;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
+  has BackendEnvironmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'backendEnvironmentArn');
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basicAuthCredentials');
   has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName', required => 1);
   has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
@@ -10,8 +11,10 @@ package Paws::Amplify::CreateBranch;
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBuild');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableNotification');
+  has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enablePullRequestPreview');
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
   has Framework => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'framework');
+  has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestEnvironmentName');
   has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
   has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Ttl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ttl');
@@ -42,21 +45,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $amplify = Paws->service('Amplify');
     my $CreateBranchResult = $amplify->CreateBranch(
-      AppId                => 'MyAppId',
-      BranchName           => 'MyBranchName',
-      BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
-      BuildSpec            => 'MyBuildSpec',               # OPTIONAL
-      Description          => 'MyDescription',             # OPTIONAL
-      DisplayName          => 'MyDisplayName',             # OPTIONAL
-      EnableAutoBuild      => 1,                           # OPTIONAL
-      EnableBasicAuth      => 1,                           # OPTIONAL
-      EnableNotification   => 1,                           # OPTIONAL
-      EnvironmentVariables => {
+      AppId                    => 'MyAppId',
+      BranchName               => 'MyBranchName',
+      BackendEnvironmentArn    => 'MyBackendEnvironmentArn',    # OPTIONAL
+      BasicAuthCredentials     => 'MyBasicAuthCredentials',     # OPTIONAL
+      BuildSpec                => 'MyBuildSpec',                # OPTIONAL
+      Description              => 'MyDescription',              # OPTIONAL
+      DisplayName              => 'MyDisplayName',              # OPTIONAL
+      EnableAutoBuild          => 1,                            # OPTIONAL
+      EnableBasicAuth          => 1,                            # OPTIONAL
+      EnableNotification       => 1,                            # OPTIONAL
+      EnablePullRequestPreview => 1,                            # OPTIONAL
+      EnvironmentVariables     => {
         'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
       },    # OPTIONAL
-      Framework => 'MyFramework',    # OPTIONAL
-      Stage     => 'PRODUCTION',     # OPTIONAL
-      Tags      => {
+      Framework                  => 'MyFramework',                    # OPTIONAL
+      PullRequestEnvironmentName => 'MyPullRequestEnvironmentName',   # OPTIONAL
+      Stage                      => 'PRODUCTION',                     # OPTIONAL
+      Tags                       => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       Ttl => 'MyTTL',    # OPTIONAL
@@ -76,6 +82,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 =head2 B<REQUIRED> AppId => Str
 
 Unique Id for an Amplify App.
+
+
+
+=head2 BackendEnvironmentArn => Str
+
+ARN for a Backend Environment, part of an Amplify App.
 
 
 
@@ -127,6 +139,12 @@ Enables notifications for the branch.
 
 
 
+=head2 EnablePullRequestPreview => Bool
+
+Enables Pull Request Preview for this branch.
+
+
+
 =head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
 Environment Variables for the branch.
@@ -139,11 +157,17 @@ Framework for the branch.
 
 
 
+=head2 PullRequestEnvironmentName => Str
+
+The Amplify Environment name for the pull request.
+
+
+
 =head2 Stage => Str
 
 Stage for the branch.
 
-Valid values are: C<"PRODUCTION">, C<"BETA">, C<"DEVELOPMENT">, C<"EXPERIMENTAL">
+Valid values are: C<"PRODUCTION">, C<"BETA">, C<"DEVELOPMENT">, C<"EXPERIMENTAL">, C<"PULL_REQUEST">
 
 =head2 Tags => L<Paws::Amplify::TagMap>
 

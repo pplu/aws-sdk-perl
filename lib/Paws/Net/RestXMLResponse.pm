@@ -1,21 +1,40 @@
 package Paws::Net::RestXMLResponse;
   use Moose;
+  with 'Paws::Net::ResponseRole';
   use XML::Simple qw//;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
   use Data::Dumper;
   sub unserialize_response {
-    my ($self, $data) = @_;
 
+#    my ($self, $response) = @_;
+#    my $data = $response->content;
+#    return Paws::Exception->new(
+#        message => $@,
+#        code => 'InvalidContent',
+#        request_id => '', #$request_id,
+#        http_status => $response->status,
+#      ) if (not defined $data or $data eq '');
+    my ($self, $data,$keep_root) = @_;
     return {} if (not defined $data or $data eq '');
     
     my $xml = XML::Simple->new(
-      ForceArray    => qr/^(?:item|Errors)/i,
+      ForceArray    => qr/^(?:^item$|Errors)/i,
       KeyAttr       => '',
       SuppressEmpty => undef,
     );
+#   my $struct = eval { $xml->parse_string($data) };
+#    if ($@){
+#      return Paws::Exception->new(
+#        message => $@,
+#        code => 'InvalidContent',
+#        request_id => '', #$request_id,
+#        http_status => $response->status,
+#      );
+#    }
 
+#    return $struct;
     return $xml->parse_string($data);
   }
 
@@ -31,6 +50,7 @@ package Paws::Net::RestXMLResponse;
   sub error_to_exception {
     my ($self, $call_object, $response) = @_;
 
+#   my $struct = eval { $self->unserialize_response( $response ) };
     my $struct = eval { $self->unserialize_response( $response->content ) };
 	if ($@){
       return Paws::Exception->new(
@@ -41,7 +61,7 @@ package Paws::Net::RestXMLResponse;
       );
     }
 
-    my ($message, $code, $request_id, $host_id);
+  my ($message, $code, $request_id, $host_id);
 	$message = exists($struct->{Message})? $struct->{Message}: status_message($response->status);
 	$code    = exists($struct->{Code})   ? $struct->{Code}   : $response->status;
 

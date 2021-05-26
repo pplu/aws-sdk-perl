@@ -31,6 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $EnableCrossAccountsDiscovery =
       $GetServiceSettingsResponse->EnableCrossAccountsDiscovery;
+    my $LicenseManagerResourceShareArn =
+      $GetServiceSettingsResponse->LicenseManagerResourceShareArn;
     my $OrganizationConfiguration =
       $GetServiceSettingsResponse->OrganizationConfiguration;
     my $S3BucketArn = $GetServiceSettingsResponse->S3BucketArn;

@@ -32,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UpdatePhoneNumberRequestItems => [
         {
           PhoneNumberId => 'MyNonEmptyString',
+          CallingName   => 'MyCallingName',      # OPTIONAL
           ProductType   => 'BusinessCalling'
           ,    # values: BusinessCalling, VoiceConnector; OPTIONAL
         },
@@ -53,8 +54,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 =head2 B<REQUIRED> UpdatePhoneNumberRequestItems => ArrayRef[L<Paws::Chime::UpdatePhoneNumberRequestItem>]
 
-The request containing the phone number IDs and product types to
-update.
+The request containing the phone number IDs and product types or
+calling names to update.
 
 
 

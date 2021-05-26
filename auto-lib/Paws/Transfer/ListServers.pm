@@ -54,7 +54,7 @@ C<ListServers> query.
 
 =head2 NextToken => Str
 
-When additional results are obtained from the ListServers command, a
+When additional results are obtained from the C<ListServers> command, a
 C<NextToken> parameter is returned in the output. You can then pass the
 C<NextToken> parameter in a subsequent command to continue listing
 additional servers.

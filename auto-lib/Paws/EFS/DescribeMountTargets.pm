@@ -1,6 +1,7 @@
 
 package Paws::EFS::DescribeMountTargets;
   use Moose;
+  has AccessPointId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'AccessPointId');
   has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId');
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
   has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
@@ -47,11 +48,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
+=head2 AccessPointId => Str
+
+(Optional) The ID of the access point whose mount targets that you want
+to list. It must be included in your request if a C<FileSystemId> or
+C<MountTargetId> is not included in your request. Accepts either an
+access point ID or ARN as input.
+
+
+
 =head2 FileSystemId => Str
 
 (Optional) ID of the file system whose mount targets you want to list
-(String). It must be included in your request if C<MountTargetId> is
-not included.
+(String). It must be included in your request if an C<AccessPointId> or
+C<MountTargetId> is not included. Accepts either a file system ID or
+ARN as input.
 
 
 
@@ -67,8 +78,8 @@ continue the list from where the previous returning call left off.
 
 (Optional) Maximum number of mount targets to return in the response.
 Currently, this number is automatically set to 10, and other values are
-ignored. The response is paginated at 10 per page if you have more than
-10 mount targets.
+ignored. The response is paginated at 100 per page if you have more
+than 100 mount targets.
 
 
 
@@ -76,7 +87,7 @@ ignored. The response is paginated at 10 per page if you have more than
 
 (Optional) ID of the mount target that you want to have described
 (String). It must be included in your request if C<FileSystemId> is not
-included.
+included. Accepts either a mount target ID or ARN as input.
 
 
 

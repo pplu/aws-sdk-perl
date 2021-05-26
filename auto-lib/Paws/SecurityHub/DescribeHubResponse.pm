@@ -18,7 +18,7 @@ Paws::SecurityHub::DescribeHubResponse
 
 =head2 HubArn => Str
 
-The ARN of the Hub resource retrieved.
+The ARN of the Hub resource that was retrieved.
 
 
 =head2 SubscribedAt => Str

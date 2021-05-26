@@ -43,9 +43,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Type           => 'AWS_LAMBDA',
       Description    => 'MyString',         # OPTIONAL
       DynamodbConfig => {
-        AwsRegion            => 'MyString',
-        TableName            => 'MyString',
-        UseCallerCredentials => 1,            # OPTIONAL
+        AwsRegion       => 'MyString',
+        TableName       => 'MyString',
+        DeltaSyncConfig => {
+          BaseTableTTL       => 1,            # OPTIONAL
+          DeltaSyncTableName => 'MyString',
+          DeltaSyncTableTTL  => 1,            # OPTIONAL
+        },    # OPTIONAL
+        UseCallerCredentials => 1,    # OPTIONAL
+        Versioned            => 1,    # OPTIONAL
       },    # OPTIONAL
       ElasticsearchConfig => {
         AwsRegion => 'MyString',

@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleArn              => 'MyRoleArn',
       AcceleratorTypes     => [
         'ml.eia1.medium',
-        ...    # values: ml.eia1.medium, ml.eia1.large, ml.eia1.xlarge
-      ],       # OPTIONAL
+        ... # values: ml.eia1.medium, ml.eia1.large, ml.eia1.xlarge, ml.eia2.medium, ml.eia2.large, ml.eia2.xlarge
+      ],    # OPTIONAL
       AdditionalCodeRepositories => [
         'MyCodeRepositoryNameOrUrl', ...    # min: 1, max: 1024
       ],                                    # OPTIONAL
@@ -89,7 +89,7 @@ A list of Elastic Inference (EI) instance types to associate with this
 notebook instance. Currently, only one instance type can be associated
 with a notebook instance. For more information, see Using Elastic
 Inference in Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 
 
 
@@ -99,12 +99,12 @@ An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in AWS
 CodeCommit
-(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+(https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For
 more information, see Associating Git Repositories with Amazon
 SageMaker Notebook Instances
-(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 
 
 
@@ -114,12 +114,12 @@ A Git repository to associate with the notebook instance as its default
 code repository. This can be either the name of a Git repository stored
 as a resource in your account, or the URL of a Git repository in AWS
 CodeCommit
-(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+(https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
 information, see Associating Git Repositories with Amazon SageMaker
 Notebook Instances
-(http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 
 
 
@@ -151,7 +151,7 @@ The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 Amazon SageMaker uses to encrypt data on the storage volume attached to
 your notebook instance. The KMS key you provide must be enabled. For
 information, see Enabling and Disabling Keys
-(http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 

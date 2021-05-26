@@ -39,12 +39,12 @@ This class has no description
 
 =head2 State => Str
 
-  The state of the association.
+The state of the association.
 
 
 =head2 TransitGatewayRouteTableId => Str
 
-  The ID of the route table for the transit gateway.
+The ID of the route table for the transit gateway.
 
 
 

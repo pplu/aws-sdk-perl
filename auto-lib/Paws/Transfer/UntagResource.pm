@@ -30,7 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $transfer = Paws->service('Transfer');
     $transfer->UntagResource(
       Arn     => 'MyArn',
-      TagKeys => [ 'MyTagKey', ... ],
+      TagKeys => [
+        'MyTagKey', ...    # max: 128
+      ],
 
     );
 

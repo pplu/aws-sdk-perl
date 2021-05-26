@@ -65,7 +65,8 @@ Human-readable description of a fleet.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to update attribute metadata for.
+A unique identifier for a fleet to update attribute metadata for. You
+can use either the fleet ID or ARN value.
 
 
 
@@ -81,7 +82,7 @@ one metric group at a time.
 
 =head2 Name => Str
 
-Descriptive label that is associated with a fleet. Fleet names do not
+A descriptive label that is associated with a fleet. Fleet names do not
 need to be unique.
 
 

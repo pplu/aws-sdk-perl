@@ -33,13 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->ModifyInstanceCreditSpecification(
       InstanceCreditSpecifications => [
         {
-          CpuCredits => 'MyString',    # OPTIONAL
-          InstanceId => 'MyString',    # OPTIONAL
+          CpuCredits => 'MyString',        # OPTIONAL
+          InstanceId => 'MyInstanceId',    # OPTIONAL
         },
         ...
       ],
-      ClientToken => 'MyString',       # OPTIONAL
-      DryRun      => 1,                # OPTIONAL
+      ClientToken => 'MyString',           # OPTIONAL
+      DryRun      => 1,                    # OPTIONAL
       );
 
     # Results:

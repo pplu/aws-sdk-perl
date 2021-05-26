@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Code => Str
 
-  The code identifying the operation, for example, C<enable-volume-io>.
+The code identifying the operation, for example, C<enable-volume-io>.
 
 
 =head2 Description => Str
 
-  A description of the operation.
+A description of the operation.
 
 
 =head2 EventId => Str
 
-  The ID of the event associated with this operation.
+The ID of the event associated with this operation.
 
 
 =head2 EventType => Str
 
-  The event type associated with this operation.
+The event type associated with this operation.
 
 
 

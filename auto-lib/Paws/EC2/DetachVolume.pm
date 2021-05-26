@@ -81,7 +81,8 @@ option, you must perform file system check and repair procedures.
 
 =head2 InstanceId => Str
 
-The ID of the instance.
+The ID of the instance. If you are detaching a Multi-Attach enabled
+volume, you must specify an instance ID.
 
 
 

@@ -16,7 +16,7 @@ Paws::GameLift::DescribeScriptOutput
 
 =head2 Script => L<Paws::GameLift::Script>
 
-Set of properties describing the requested script.
+A set of properties describing the requested script.
 
 
 =head2 _request_id => Str

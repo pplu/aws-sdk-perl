@@ -8,6 +8,7 @@ package Paws::Neptune::CreateDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -58,6 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
@@ -121,8 +123,7 @@ Must be a value from 1 to 35
 
 =head2 CharacterSetName => Str
 
-A value that indicates that the DB cluster should be associated with
-the specified CharacterSet.
+I<(Not supported by Neptune)>
 
 
 
@@ -191,6 +192,14 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is enabled.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
@@ -217,7 +226,8 @@ Valid Values: C<neptune>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine to use.
+The version number of the database engine to use. Currently, setting
+this parameter has no effect.
 
 Example: C<1.0.1>
 
@@ -297,12 +307,7 @@ Constraints: Must contain from 8 to 41 characters.
 
 =head2 OptionGroupName => Str
 
-A value that indicates that the DB cluster should be associated with
-the specified option group.
-
-Permanent options can't be removed from an option group. The option
-group can't be removed from a DB cluster once it is associated with a
-DB cluster.
+I<(Not supported by Neptune)>
 
 
 

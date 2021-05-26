@@ -67,6 +67,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::BacktrackDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelExportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CancelExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBClusterParameterGroup', @_);
@@ -90,6 +95,11 @@ package Paws::RDS;
   sub CopyOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateCustomAvailabilityZone {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateCustomAvailabilityZone', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBCluster {
@@ -127,6 +137,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDBProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBSecurityGroup', @_);
@@ -155,6 +170,11 @@ package Paws::RDS;
   sub CreateOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteCustomAvailabilityZone {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteCustomAvailabilityZone', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBCluster {
@@ -192,6 +212,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDBProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDBSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBSecurityGroup', @_);
@@ -217,9 +242,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteGlobalCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteInstallationMedia {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteInstallationMedia', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeregisterDBProxyTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeregisterDBProxyTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAccountAttributes {
@@ -230,6 +265,11 @@ package Paws::RDS;
   sub DescribeCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCustomAvailabilityZones {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCustomAvailabilityZones', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBClusterBacktracks {
@@ -297,6 +337,21 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBParameters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDBProxies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBProxyTargetGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxyTargetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBProxyTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBProxyTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSecurityGroups', @_);
@@ -342,9 +397,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEventSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeExportTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeExportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGlobalClusters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeGlobalClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstallationMedia {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeInstallationMedia', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOptionGroupOptions {
@@ -397,9 +462,19 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::FailoverDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportInstallationMedia {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ImportInstallationMedia', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCurrentDBClusterCapacity {
@@ -435,6 +510,16 @@ package Paws::RDS;
   sub ModifyDBParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBProxy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBProxyTargetGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBProxyTargetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBSnapshot {
@@ -485,6 +570,11 @@ package Paws::RDS;
   sub RebootDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::RebootDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterDBProxyTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RegisterDBProxyTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveFromGlobalCluster {
@@ -572,6 +662,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::StartDBInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartExportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StartExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopActivityStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::StopActivityStream', @_);
@@ -607,6 +702,29 @@ package Paws::RDS;
         $result = $self->DescribeCertificates(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
+  sub DescribeAllCustomAvailabilityZones {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCustomAvailabilityZones(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeCustomAvailabilityZones(@_, Marker => $next_result->Marker);
+        push @{ $result->CustomAvailabilityZones }, @{ $next_result->CustomAvailabilityZones };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'CustomAvailabilityZones') foreach (@{ $result->CustomAvailabilityZones });
+        $result = $self->DescribeCustomAvailabilityZones(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'CustomAvailabilityZones') foreach (@{ $result->CustomAvailabilityZones });
     }
 
     return undef
@@ -887,6 +1005,75 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllDBProxies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxies(@_, Marker => $next_result->Marker);
+        push @{ $result->DBProxies }, @{ $next_result->DBProxies };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBProxies') foreach (@{ $result->DBProxies });
+        $result = $self->DescribeDBProxies(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBProxies') foreach (@{ $result->DBProxies });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBProxyTargetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxyTargetGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxyTargetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+        $result = $self->DescribeDBProxyTargetGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBProxyTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBProxyTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBProxyTargets(@_, Marker => $next_result->Marker);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->DescribeDBProxyTargets(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
   sub DescribeAllDBSecurityGroups {
     my $self = shift;
 
@@ -1048,6 +1235,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllExportTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeExportTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeExportTasks(@_, Marker => $next_result->Marker);
+        push @{ $result->ExportTasks }, @{ $next_result->ExportTasks };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ExportTasks') foreach (@{ $result->ExportTasks });
+        $result = $self->DescribeExportTasks(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ExportTasks') foreach (@{ $result->ExportTasks });
+    }
+
+    return undef
+  }
   sub DescribeAllGlobalClusters {
     my $self = shift;
 
@@ -1067,6 +1277,29 @@ package Paws::RDS;
         $result = $self->DescribeGlobalClusters(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstallationMedia {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstallationMedia(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeInstallationMedia(@_, Marker => $next_result->Marker);
+        push @{ $result->InstallationMedia }, @{ $next_result->InstallationMedia };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'InstallationMedia') foreach (@{ $result->InstallationMedia });
+        $result = $self->DescribeInstallationMedia(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'InstallationMedia') foreach (@{ $result->InstallationMedia });
     }
 
     return undef
@@ -1257,7 +1490,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StopActivityStream StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CancelExportTask CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateCustomAvailabilityZone CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBProxy CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteCustomAvailabilityZone DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBProxy DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteInstallationMedia DeleteOptionGroup DeregisterDBProxyTargets DescribeAccountAttributes DescribeCertificates DescribeCustomAvailabilityZones DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBProxies DescribeDBProxyTargetGroups DescribeDBProxyTargets DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeExportTasks DescribeGlobalClusters DescribeInstallationMedia DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ImportInstallationMedia ListTagsForResource ModifyCertificates ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBProxy ModifyDBProxyTargetGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RegisterDBProxyTargets RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StartExportTask StopActivityStream StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1289,7 +1522,7 @@ Amazon Relational Database Service
 
 Amazon Relational Database Service (Amazon RDS) is a web service that
 makes it easier to set up, operate, and scale a relational database in
-the cloud. It provides cost-efficient, resizable capacity for an
+the cloud. It provides cost-efficient, resizeable capacity for an
 industry-standard relational database and manages common database
 administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
@@ -1307,13 +1540,13 @@ you pay only for the resources you use.
 
 This interface reference for Amazon RDS contains documentation for a
 programming or command line interface you can use to manage Amazon RDS.
-Note that Amazon RDS is asynchronous, which means that some interfaces
-might require techniques such as polling or callback functions to
-determine when a command has been applied. In this reference, the
-parameter descriptions indicate whether a command is applied
-immediately, on the next instance reboot, or during the maintenance
-window. The reference structure is as follows, and we list following
-some related topics from the user guide.
+Amazon RDS is asynchronous, which means that some interfaces might
+require techniques such as polling or callback functions to determine
+when a command has been applied. In this reference, the parameter
+descriptions indicate whether a command is applied immediately, on the
+next instance reboot, or during the maintenance window. The reference
+structure is as follows, and we list following some related topics from
+the user guide.
 
 B<Amazon RDS API Reference>
 
@@ -1549,6 +1782,24 @@ in the I<Amazon Aurora User Guide.>
 This action only applies to Aurora DB clusters.
 
 
+=head2 CancelExportTask
+
+=over
+
+=item ExportTaskIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CancelExportTask>
+
+Returns: a L<Paws::RDS::ExportTask> instance
+
+Cancels an export task in progress that is exporting a snapshot to
+Amazon S3. Any data that has already been written to the S3 bucket
+isn't removed.
+
+
 =head2 CopyDBClusterParameterGroup
 
 =over
@@ -1641,7 +1892,7 @@ the pre-signed URL.
 =item *
 
 C<DestinationRegion> - The name of the AWS Region that the DB cluster
-snapshot will be created in.
+snapshot is to be created in.
 
 =item *
 
@@ -1661,6 +1912,12 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 (https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
 
 =item *
 
@@ -1748,7 +2005,7 @@ the AWS Region where you call the C<CopyDBSnapshot> action is the
 destination AWS Region for the DB snapshot copy.
 
 For more information about copying snapshots, see Copying a DB Snapshot
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot)
 in the I<Amazon RDS User Guide.>
 
 
@@ -1772,6 +2029,35 @@ Each argument is described in detail in: L<Paws::RDS::CopyOptionGroup>
 Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
 
 Copies the specified option group.
+
+
+=head2 CreateCustomAvailabilityZone
+
+=over
+
+=item CustomAvailabilityZoneName => Str
+
+=item [ExistingVpnId => Str]
+
+=item [NewVpnTunnelName => Str]
+
+=item [VpnTunnelOriginatorIP => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateCustomAvailabilityZone>
+
+Returns: a L<Paws::RDS::CreateCustomAvailabilityZoneResult> instance
+
+Creates a custom Availability Zone (AZ).
+
+A custom AZ is an on-premises AZ that is integrated with a VMware
+vSphere cluster.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
 =head2 CreateDBCluster
@@ -1800,7 +2086,13 @@ Copies the specified option group.
 
 =item [DeletionProtection => Bool]
 
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
+=item [EnableHttpEndpoint => Bool]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -1871,6 +2163,8 @@ This action only applies to Aurora DB clusters.
 =item [ExcludedMembers => ArrayRef[Str|Undef]]
 
 =item [StaticMembers => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
 
 
 =back
@@ -2086,9 +2380,15 @@ Creates a new DB instance.
 
 =item [DBInstanceClass => Str]
 
+=item [DBParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
 
 =item [DeletionProtection => Bool]
+
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
@@ -2199,6 +2499,43 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
+=head2 CreateDBProxy
+
+=over
+
+=item Auth => ArrayRef[L<Paws::RDS::UserAuthConfig>]
+
+=item DBProxyName => Str
+
+=item EngineFamily => Str
+
+=item RoleArn => Str
+
+=item VpcSubnetIds => ArrayRef[Str|Undef]
+
+=item [DebugLogging => Bool]
+
+=item [IdleClientTimeout => Int]
+
+=item [RequireTLS => Bool]
+
+=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBProxy>
+
+Returns: a L<Paws::RDS::CreateDBProxyResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Creates a new DB proxy.
+
+
 =head2 CreateDBSecurityGroup
 
 =over
@@ -2293,7 +2630,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateEventSubscription>
 Returns: a L<Paws::RDS::CreateEventSubscriptionResult> instance
 
 Creates an RDS event notification subscription. This action requires a
-topic ARN (Amazon Resource Name) created by either the RDS console, the
+topic Amazon Resource Name (ARN) created by either the RDS console, the
 SNS console, or the SNS API. To obtain an ARN with SNS, you must create
 a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
 in the SNS console.
@@ -2309,10 +2646,14 @@ If you specify both the SourceType and SourceIds, such as SourceType =
 db-instance and SourceIdentifier = myDBInstance1, you are notified of
 all the db-instance events for the specified source. If you specify a
 SourceType but do not specify a SourceIdentifier, you receive notice of
-the events for that source type for all your RDS sources. If you do not
-specify either the SourceType nor the SourceIdentifier, you are
-notified of events generated from all RDS sources belonging to your
-customer account.
+the events for that source type for all your RDS sources. If you don't
+specify either the SourceType or the SourceIdentifier, you are notified
+of events generated from all RDS sources belonging to your customer
+account.
+
+RDS event notification is only available for unencrypted SNS topics. If
+you specify an encrypted SNS topic, event notifications aren't sent for
+the topic.
 
 
 =head2 CreateGlobalCluster
@@ -2376,6 +2717,29 @@ Each argument is described in detail in: L<Paws::RDS::CreateOptionGroup>
 Returns: a L<Paws::RDS::CreateOptionGroupResult> instance
 
 Creates a new option group. You can create up to 20 option groups.
+
+
+=head2 DeleteCustomAvailabilityZone
+
+=over
+
+=item CustomAvailabilityZoneId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteCustomAvailabilityZone>
+
+Returns: a L<Paws::RDS::DeleteCustomAvailabilityZoneResult> instance
+
+Deletes a custom Availability Zone (AZ).
+
+A custom AZ is an on-premises AZ that is integrated with a VMware
+vSphere cluster.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
 =head2 DeleteDBCluster
@@ -2504,9 +2868,9 @@ instance is C<deleting> until the DB snapshot is created. The API
 action C<DescribeDBInstance> is used to monitor the status of this
 operation. The action can't be canceled or reverted once submitted.
 
-Note that when a DB instance is in a failure state and has a status of
-C<failed>, C<incompatible-restore>, or C<incompatible-network>, you can
-only delete it when you skip creation of the final snapshot with the
+When a DB instance is in a failure state and has a status of C<failed>,
+C<incompatible-restore>, or C<incompatible-network>, you can only
+delete it when you skip creation of the final snapshot with the
 C<SkipFinalSnapshot> parameter.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster,
@@ -2564,6 +2928,25 @@ Returns: nothing
 
 Deletes a specified DB parameter group. The DB parameter group to be
 deleted can't be associated with any DB instances.
+
+
+=head2 DeleteDBProxy
+
+=over
+
+=item DBProxyName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBProxy>
+
+Returns: a L<Paws::RDS::DeleteDBProxyResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Deletes an existing proxy.
 
 
 =head2 DeleteDBSecurityGroup
@@ -2658,6 +3041,23 @@ must already be detached or destroyed first.
 This action only applies to Aurora DB clusters.
 
 
+=head2 DeleteInstallationMedia
+
+=over
+
+=item InstallationMediaId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteInstallationMedia>
+
+Returns: a L<Paws::RDS::InstallationMedia> instance
+
+Deletes the installation medium for a DB engine that requires an
+on-premises customer provided license, such as Microsoft SQL Server.
+
+
 =head2 DeleteOptionGroup
 
 =over
@@ -2672,6 +3072,32 @@ Each argument is described in detail in: L<Paws::RDS::DeleteOptionGroup>
 Returns: nothing
 
 Deletes an existing option group.
+
+
+=head2 DeregisterDBProxyTargets
+
+=over
+
+=item DBProxyName => Str
+
+=item [DBClusterIdentifiers => ArrayRef[Str|Undef]]
+
+=item [DBInstanceIdentifiers => ArrayRef[Str|Undef]]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeregisterDBProxyTargets>
+
+Returns: a L<Paws::RDS::DeregisterDBProxyTargetsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Remove the association between one or more C<DBProxyTarget> data
+structures and a C<DBProxyTargetGroup>.
 
 
 =head2 DescribeAccountAttributes
@@ -2714,6 +3140,35 @@ Returns: a L<Paws::RDS::CertificateMessage> instance
 
 Lists the set of CA certificates provided by Amazon RDS for this AWS
 account.
+
+
+=head2 DescribeCustomAvailabilityZones
+
+=over
+
+=item [CustomAvailabilityZoneId => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeCustomAvailabilityZones>
+
+Returns: a L<Paws::RDS::CustomAvailabilityZoneMessage> instance
+
+Returns information about custom Availability Zones (AZs).
+
+A custom AZ is an on-premises AZ that is integrated with a VMware
+vSphere cluster.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
 =head2 DescribeDBClusterBacktracks
@@ -2862,7 +3317,8 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 in the I<Amazon Aurora User Guide.>
 
-This action only applies to Aurora DB clusters.
+This operation can also return information for Amazon Neptune DB
+instances and Amazon DocumentDB instances.
 
 
 =head2 DescribeDBClusterSnapshotAttributes
@@ -3019,6 +3475,9 @@ Returns: a L<Paws::RDS::DBInstanceMessage> instance
 Returns information about provisioned RDS instances. This API supports
 pagination.
 
+This operation can also return information for Amazon Neptune DB
+instances and Amazon DocumentDB instances.
+
 
 =head2 DescribeDBLogFiles
 
@@ -3095,6 +3554,87 @@ Returns: a L<Paws::RDS::DBParameterGroupDetails> instance
 
 Returns the detailed parameter list for a particular DB parameter
 group.
+
+
+=head2 DescribeDBProxies
+
+=over
+
+=item [DBProxyName => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxies>
+
+Returns: a L<Paws::RDS::DescribeDBProxiesResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Returns information about DB proxies.
+
+
+=head2 DescribeDBProxyTargetGroups
+
+=over
+
+=item DBProxyName => Str
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyTargetGroups>
+
+Returns: a L<Paws::RDS::DescribeDBProxyTargetGroupsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Returns information about DB proxy target groups, represented by
+C<DBProxyTargetGroup> data structures.
+
+
+=head2 DescribeDBProxyTargets
+
+=over
+
+=item DBProxyName => Str
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBProxyTargets>
+
+Returns: a L<Paws::RDS::DescribeDBProxyTargetsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Returns information about C<DBProxyTarget> objects. This API supports
+pagination.
 
 
 =head2 DescribeDBSecurityGroups
@@ -3344,6 +3884,31 @@ If you specify a SubscriptionName, lists the description for that
 subscription.
 
 
+=head2 DescribeExportTasks
+
+=over
+
+=item [ExportTaskIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Str]
+
+=item [SourceArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeExportTasks>
+
+Returns: a L<Paws::RDS::ExportTasksMessage> instance
+
+Returns information about a snapshot export to Amazon S3. This API
+operation supports pagination.
+
+
 =head2 DescribeGlobalClusters
 
 =over
@@ -3371,6 +3936,30 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 in the I<Amazon Aurora User Guide.>
 
 This action only applies to Aurora DB clusters.
+
+
+=head2 DescribeInstallationMedia
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [InstallationMediaId => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeInstallationMedia>
+
+Returns: a L<Paws::RDS::InstallationMediaMessage> instance
+
+Describes the available installation media for a DB engine that
+requires an on-premises customer provided license, such as Microsoft
+SQL Server.
 
 
 =head2 DescribeOptionGroupOptions
@@ -3486,6 +4075,8 @@ least one pending maintenance action.
 =item [Duration => Str]
 
 =item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [LeaseId => Str]
 
 =item [Marker => Str]
 
@@ -3644,6 +4235,31 @@ in the I<Amazon Aurora User Guide.>
 This action only applies to Aurora DB clusters.
 
 
+=head2 ImportInstallationMedia
+
+=over
+
+=item CustomAvailabilityZoneId => Str
+
+=item Engine => Str
+
+=item EngineInstallationMediaPath => Str
+
+=item EngineVersion => Str
+
+=item OSInstallationMediaPath => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ImportInstallationMedia>
+
+Returns: a L<Paws::RDS::InstallationMedia> instance
+
+Imports the installation media for a DB engine that requires an
+on-premises customer provided license, such as SQL Server.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -3665,6 +4281,62 @@ For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html)
 in the I<Amazon RDS User Guide>.
+
+
+=head2 ModifyCertificates
+
+=over
+
+=item [CertificateIdentifier => Str]
+
+=item [RemoveCustomerOverride => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyCertificates>
+
+Returns: a L<Paws::RDS::ModifyCertificatesResult> instance
+
+Override the system-default Secure Sockets Layer/Transport Layer
+Security (SSL/TLS) certificate for Amazon RDS for new DB instances
+temporarily, or remove the override.
+
+By using this operation, you can specify an RDS-approved SSL/TLS
+certificate for new DB instances that is different from the default
+certificate provided by RDS. You can also use this operation to remove
+the override, so that new DB instances use the default certificate
+provided by RDS.
+
+You might need to override the default certificate in the following
+situations:
+
+=over
+
+=item *
+
+You already migrated your applications to support the latest
+certificate authority (CA) certificate, but the new CA certificate is
+not yet the RDS default CA certificate for the specified AWS Region.
+
+=item *
+
+RDS has already moved to a new default CA certificate for the specified
+AWS Region, but you are still in the process of supporting the new CA
+certificate. In this case, you temporarily need additional time to
+finish your application changes.
+
+=back
+
+For more information about rotating your SSL/TLS certificate for RDS DB
+engines, see Rotating Your SSL/TLS Certificate
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+in the I<Amazon RDS User Guide>.
+
+For more information about rotating your SSL/TLS certificate for Aurora
+DB engines, see Rotating Your SSL/TLS Certificate
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 ModifyCurrentDBClusterCapacity
@@ -3737,6 +4409,10 @@ This action only applies to Aurora DB clusters.
 =item [DBInstanceParameterGroupName => Str]
 
 =item [DeletionProtection => Bool]
+
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
 
 =item [EnableHttpEndpoint => Bool]
 
@@ -3842,6 +4518,12 @@ use the I<Parameter Groups> option of the Amazon RDS console
 C<DescribeDBClusterParameters> action to verify that your DB cluster
 parameter group has been created or modified.
 
+If the modified DB cluster parameter group is used by an Aurora
+Serverless cluster, Aurora applies the update immediately. The cluster
+restart might interrupt your workload. In that case, your application
+must reopen any connections and retry any transactions that were active
+when the parameter changes took effect.
+
 This action only applies to Aurora DB clusters.
 
 
@@ -3903,6 +4585,8 @@ This action only applies to Aurora DB clusters.
 =item [BackupRetentionPeriod => Int]
 
 =item [CACertificateIdentifier => Str]
+
+=item [CertificateRotationRestart => Bool]
 
 =item [CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>]
 
@@ -4024,6 +4708,64 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
+=head2 ModifyDBProxy
+
+=over
+
+=item DBProxyName => Str
+
+=item [Auth => ArrayRef[L<Paws::RDS::UserAuthConfig>]]
+
+=item [DebugLogging => Bool]
+
+=item [IdleClientTimeout => Int]
+
+=item [NewDBProxyName => Str]
+
+=item [RequireTLS => Bool]
+
+=item [RoleArn => Str]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBProxy>
+
+Returns: a L<Paws::RDS::ModifyDBProxyResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Changes the settings for an existing DB proxy.
+
+
+=head2 ModifyDBProxyTargetGroup
+
+=over
+
+=item DBProxyName => Str
+
+=item TargetGroupName => Str
+
+=item [ConnectionPoolConfig => L<Paws::RDS::ConnectionPoolConfiguration>]
+
+=item [NewName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBProxyTargetGroup>
+
+Returns: a L<Paws::RDS::ModifyDBProxyTargetGroupResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Modifies the properties of a C<DBProxyTargetGroup>.
+
+
 =head2 ModifyDBSnapshot
 
 =over
@@ -4044,7 +4786,8 @@ Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 Updates a manual DB snapshot, which can be encrypted or not encrypted,
 with a new engine version.
 
-Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
+Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
+PostgreSQL.
 
 
 =head2 ModifyDBSnapshotAttribute
@@ -4128,8 +4871,8 @@ Each argument is described in detail in: L<Paws::RDS::ModifyEventSubscription>
 
 Returns: a L<Paws::RDS::ModifyEventSubscriptionResult> instance
 
-Modifies an existing RDS event notification subscription. Note that you
-can't modify the source identifiers using this call; to change source
+Modifies an existing RDS event notification subscription. You can't
+modify the source identifiers using this call. To change source
 identifiers for a subscription, use the
 C<AddSourceIdentifierToSubscription> and
 C<RemoveSourceIdentifierFromSubscription> calls.
@@ -4297,6 +5040,32 @@ instance status is set to rebooting.
 For more information about rebooting, see Rebooting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html)
 in the I<Amazon RDS User Guide.>
+
+
+=head2 RegisterDBProxyTargets
+
+=over
+
+=item DBProxyName => Str
+
+=item [DBClusterIdentifiers => ArrayRef[Str|Undef]]
+
+=item [DBInstanceIdentifiers => ArrayRef[Str|Undef]]
+
+=item [TargetGroupName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::RegisterDBProxyTargets>
+
+Returns: a L<Paws::RDS::RegisterDBProxyTargetsResponse> instance
+
+This is prerelease documentation for the RDS Database Proxy feature in
+preview release. It is subject to change.
+
+Associate one or more C<DBProxyTarget> data structures with a
+C<DBProxyTargetGroup>.
 
 
 =head2 RemoveFromGlobalCluster
@@ -4512,6 +5281,10 @@ or C<RebootDBInstance> request.
 
 =item [DeletionProtection => Bool]
 
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -4577,6 +5350,10 @@ This action only applies to Aurora DB clusters.
 
 =item [DeletionProtection => Bool]
 
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -4612,8 +5389,8 @@ security group.
 
 If a DB cluster snapshot is specified, the target DB cluster is created
 from the source DB cluster restore point with the same configuration as
-the original source DB cluster, except that the new DB cluster is
-created with the default security group.
+the original source DB cluster. If you don't specify a security group,
+the new DB cluster is associated with the default security group.
 
 For more information on Amazon Aurora, see What Is Amazon Aurora?
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -4639,6 +5416,10 @@ This action only applies to Aurora DB clusters.
 =item [DBSubnetGroupName => Str]
 
 =item [DeletionProtection => Bool]
+
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
@@ -5081,6 +5862,35 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora DB clusters, use C<StartDBCluster> instead.
 
 
+=head2 StartExportTask
+
+=over
+
+=item ExportTaskIdentifier => Str
+
+=item IamRoleArn => Str
+
+=item KmsKeyId => Str
+
+=item S3BucketName => Str
+
+=item SourceArn => Str
+
+=item [ExportOnly => ArrayRef[Str|Undef]]
+
+=item [S3Prefix => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::StartExportTask>
+
+Returns: a L<Paws::RDS::ExportTask> instance
+
+Starts an export of a snapshot to Amazon S3. The provided IAM role must
+have access to the S3 bucket.
+
+
 =head2 StopActivityStream
 
 =over
@@ -5176,6 +5986,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::CertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCustomAvailabilityZones(sub { },[CustomAvailabilityZoneId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCustomAvailabilityZones([CustomAvailabilityZoneId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CustomAvailabilityZones, passing the object as the first parameter, and the string 'CustomAvailabilityZones' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::CustomAvailabilityZoneMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllDBClusterBacktracks(sub { },DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -5322,6 +6144,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllDBProxies(sub { },[DBProxyName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBProxies([DBProxyName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBProxies, passing the object as the first parameter, and the string 'DBProxies' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBProxyTargetGroups(sub { },DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+=head2 DescribeAllDBProxyTargetGroups(DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TargetGroups, passing the object as the first parameter, and the string 'TargetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxyTargetGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBProxyTargets(sub { },DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+=head2 DescribeAllDBProxyTargets(DBProxyName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, TargetGroupName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBProxyTargetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDBSecurityGroups(sub { },[DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -5406,6 +6264,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllExportTasks(sub { },[ExportTaskIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Str, SourceArn => Str])
+
+=head2 DescribeAllExportTasks([ExportTaskIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Str, SourceArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ExportTasks, passing the object as the first parameter, and the string 'ExportTasks' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::ExportTasksMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllGlobalClusters(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllGlobalClusters([Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
@@ -5416,6 +6286,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - GlobalClusters, passing the object as the first parameter, and the string 'GlobalClusters' as the second parameter 
 
 If not, it will return a a L<Paws::RDS::GlobalClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstallationMedia(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], InstallationMediaId => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllInstallationMedia([Filters => ArrayRef[L<Paws::RDS::Filter>], InstallationMediaId => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstallationMedia, passing the object as the first parameter, and the string 'InstallationMedia' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::InstallationMediaMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
@@ -5466,9 +6348,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LeaseId => Str, Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
-=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LeaseId => Str, Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

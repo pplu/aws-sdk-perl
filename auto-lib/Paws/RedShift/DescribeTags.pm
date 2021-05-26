@@ -78,7 +78,7 @@ command with the returned C<marker> value.
 
 The Amazon Resource Name (ARN) for which you want to describe the tag
 or tags. For example,
-C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+C<arn:aws:redshift:us-east-2:123456789:cluster:t1>.
 
 
 

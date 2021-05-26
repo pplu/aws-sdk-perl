@@ -50,8 +50,7 @@ End time of the attack (ongoing attacks will not have an end time)
 
 =back
 
-The details are in JSON format. An example is shown in the Examples
-section below.
+The details are in JSON format.
 
 
 =head2 NextToken => Str
@@ -74,7 +73,7 @@ C<NextToken> using your own processes.
 The service type that is protected by the policy. Currently, this is
 always C<SHIELD_ADVANCED>.
 
-Valid values are: C<"WAF">, C<"SHIELD_ADVANCED">
+Valid values are: C<"WAF">, C<"SHIELD_ADVANCED">, C<"SECURITY_GROUPS_COMMON">, C<"SECURITY_GROUPS_CONTENT_AUDIT">, C<"SECURITY_GROUPS_USAGE_AUDIT">
 =head2 _request_id => Str
 
 

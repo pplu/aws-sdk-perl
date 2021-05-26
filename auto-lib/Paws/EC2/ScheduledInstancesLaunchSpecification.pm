@@ -51,12 +51,12 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::ScheduledInstancesBlockDeviceMapping>]
 
-  The block device mapping entries.
+The block device mapping entries.
 
 
 =head2 EbsOptimized => Bool
 
-  Indicates whether the instances are optimized for EBS I/O. This
+Indicates whether the instances are optimized for EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
@@ -67,62 +67,62 @@ Default: C<false>
 
 =head2 IamInstanceProfile => L<Paws::EC2::ScheduledInstancesIamInstanceProfile>
 
-  The IAM instance profile.
+The IAM instance profile.
 
 
 =head2 B<REQUIRED> ImageId => Str
 
-  The ID of the Amazon Machine Image (AMI).
+The ID of the Amazon Machine Image (AMI).
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 KernelId => Str
 
-  The ID of the kernel.
+The ID of the kernel.
 
 
 =head2 KeyName => Str
 
-  The name of the key pair.
+The name of the key pair.
 
 
 =head2 Monitoring => L<Paws::EC2::ScheduledInstancesMonitoring>
 
-  Enable or disable monitoring for the instances.
+Enable or disable monitoring for the instances.
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::ScheduledInstancesNetworkInterface>]
 
-  The network interfaces.
+The network interfaces.
 
 
 =head2 Placement => L<Paws::EC2::ScheduledInstancesPlacement>
 
-  The placement information.
+The placement information.
 
 
 =head2 RamdiskId => Str
 
-  The ID of the RAM disk.
+The ID of the RAM disk.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  The IDs of the security groups.
+The IDs of the security groups.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which to launch the instances.
+The ID of the subnet in which to launch the instances.
 
 
 =head2 UserData => Str
 
-  The base64-encoded MIME user data.
+The base64-encoded MIME user data.
 
 
 

@@ -9,6 +9,7 @@ package Paws::SecretsManager::DescribeSecretResponse;
   has LastChangedDate => (is => 'ro', isa => 'Str');
   has LastRotatedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OwningService => (is => 'ro', isa => 'Str');
   has RotationEnabled => (is => 'ro', isa => 'Bool');
   has RotationLambdaARN => (is => 'ro', isa => 'Str');
   has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
@@ -77,6 +78,11 @@ rotated.
 =head2 Name => Str
 
 The user-provided friendly name of the secret.
+
+
+=head2 OwningService => Str
+
+
 
 
 =head2 RotationEnabled => Bool

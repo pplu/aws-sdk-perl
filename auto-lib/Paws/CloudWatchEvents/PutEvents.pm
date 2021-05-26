@@ -19,7 +19,7 @@ Paws::CloudWatchEvents::PutEvents - Arguments for method PutEvents on L<Paws::Cl
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutEvents on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method PutEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutEvents.
@@ -30,11 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutEventsResponse = $events->PutEvents(
       Entries => [
         {
-          Detail     => 'MyString',                    # OPTIONAL
-          DetailType => 'MyString',                    # OPTIONAL
-          Resources  => [ 'MyEventResource', ... ],    # OPTIONAL
-          Source     => 'MyString',                    # OPTIONAL
-          Time       => '1970-01-01T01:00:00',         # OPTIONAL
+          Detail     => 'MyString',    # OPTIONAL
+          DetailType => 'MyString',    # OPTIONAL
+          EventBusName =>
+            'MyNonPartnerEventBusName',    # min: 1, max: 256; OPTIONAL
+          Resources => [ 'MyEventResource', ... ],    # OPTIONAL
+          Source    => 'MyString',                    # OPTIONAL
+          Time      => '1970-01-01T01:00:00',         # OPTIONAL
         },
         ...
       ],

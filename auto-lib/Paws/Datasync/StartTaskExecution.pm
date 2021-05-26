@@ -42,15 +42,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OverrideOptions => {
         Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
         BytesPerSecond => 1,           # min: -1; OPTIONAL
-        Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
-        Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
-        PosixPermissions =>
-          'NONE',           # values: NONE, BEST_EFFORT, PRESERVE; OPTIONAL
+        Gid      => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
+        LogLevel => 'OFF',     # values: OFF, BASIC, TRANSFER; OPTIONAL
+        Mtime    => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
+        OverwriteMode        => 'ALWAYS',   # values: ALWAYS, NEVER; OPTIONAL
+        PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
+        TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
         Uid => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         VerifyMode => 'POINT_IN_TIME_CONSISTENT'
-        ,                 # values: POINT_IN_TIME_CONSISTENT, NONE; OPTIONAL
+        , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -67,9 +69,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 Includes => ArrayRef[L<Paws::Datasync::FilterRule>]
 
-A filter that determines which files to include in the transfer during
-a task execution based on the specified pattern in the filter. When
-multiple include filters are set, they are interpreted as an OR.
+A list of filter rules that determines which files to include when
+running a task. The pattern should contain a single filter string that
+consists of the patterns to include. The patterns are delimited by "|"
+(that is, a pipe). For example: C<"/folder1|/folder2">
 
 
 

@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 Specifies the type of policy that you want to include in the response.
 
-Valid values are: C<"SERVICE_CONTROL_POLICY">
+Valid values are: C<"SERVICE_CONTROL_POLICY">, C<"TAG_POLICY">
 
 =head2 MaxResults => Int
 

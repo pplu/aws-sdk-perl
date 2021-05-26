@@ -7,6 +7,8 @@ package Paws::EC2::ModifyClientVpnEndpoint;
   has DnsServers => (is => 'ro', isa => 'Paws::EC2::DnsServersOptionsModifyStructure');
   has DryRun => (is => 'ro', isa => 'Bool');
   has ServerCertificateArn => (is => 'ro', isa => 'Str');
+  has SplitTunnel => (is => 'ro', isa => 'Bool');
+  has VpnPort => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -33,19 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyClientVpnEndpointResult = $ec2->ModifyClientVpnEndpoint(
-      ClientVpnEndpointId  => 'MyString',
+      ClientVpnEndpointId  => 'MyClientVpnEndpointId',
       ConnectionLogOptions => {
-        CloudwatchLogGroup  => 'MyString',
-        CloudwatchLogStream => 'MyString',
-        Enabled             => 1,            # OPTIONAL
+        CloudwatchLogGroup  => 'MyString',    # OPTIONAL
+        CloudwatchLogStream => 'MyString',    # OPTIONAL
+        Enabled             => 1,             # OPTIONAL
       },    # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       DnsServers  => {
-        CustomDnsServers => [ 'MyString', ... ],    # OPTIONAL
-        Enabled          => 1,                      # OPTIONAL
+        CustomDnsServers => [
+          'MyString', ...           # OPTIONAL
+        ],                          # OPTIONAL
+        Enabled => 1,               # OPTIONAL
       },    # OPTIONAL
       DryRun               => 1,             # OPTIONAL
       ServerCertificateArn => 'MyString',    # OPTIONAL
+      SplitTunnel          => 1,             # OPTIONAL
+      VpnPort              => 1,             # OPTIONAL
     );
 
     # Results:
@@ -122,6 +128,28 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The ARN of the server certificate to be used. The server certificate
 must be provisioned in AWS Certificate Manager (ACM).
+
+
+
+=head2 SplitTunnel => Bool
+
+Indicates whether the VPN is split-tunnel.
+
+For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
+Client VPN Endpoint
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
+in the I<AWS Client VPN Administrator Guide>.
+
+
+
+=head2 VpnPort => Int
+
+The port number to assign to the Client VPN endpoint for TCP and UDP
+traffic.
+
+Valid Values: C<443> | C<1194>
+
+Default Value: C<443>
 
 
 

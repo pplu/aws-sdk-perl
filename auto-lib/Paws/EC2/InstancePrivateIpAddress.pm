@@ -41,24 +41,24 @@ This class has no description
 
 =head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
-  The association information for an Elastic IP address for the network
+The association information for an Elastic IP address for the network
 interface.
 
 
 =head2 Primary => Bool
 
-  Indicates whether this IPv4 address is the primary private IP address
+Indicates whether this IPv4 address is the primary private IP address
 of the network interface.
 
 
 =head2 PrivateDnsName => Str
 
-  The private IPv4 DNS name.
+The private IPv4 DNS name.
 
 
 =head2 PrivateIpAddress => Str
 
-  The private IPv4 address of the network interface.
+The private IPv4 address of the network interface.
 
 
 

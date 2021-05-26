@@ -81,9 +81,9 @@ The tags for the webhook.
 
 The detail provided in an input file to create the webhook, such as the
 webhook name, the pipeline name, and the action name. Give the webhook
-a unique name which identifies the webhook being defined. You may
-choose to name the webhook after the pipeline and action it targets so
-that you can easily recognize what it's used for later.
+a unique name that helps you identify it. You might name the webhook
+after the pipeline and action it targets so that you can easily
+recognize what it's used for later.
 
 
 

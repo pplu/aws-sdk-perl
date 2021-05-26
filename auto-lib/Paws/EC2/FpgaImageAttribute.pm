@@ -42,27 +42,27 @@ This class has no description
 
 =head2 Description => Str
 
-  The description of the AFI.
+The description of the AFI.
 
 
 =head2 FpgaImageId => Str
 
-  The ID of the AFI.
+The ID of the AFI.
 
 
 =head2 LoadPermissions => ArrayRef[L<Paws::EC2::LoadPermission>]
 
-  The load permissions.
+The load permissions.
 
 
 =head2 Name => Str
 
-  The name of the AFI.
+The name of the AFI.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  The product codes.
+The product codes.
 
 
 

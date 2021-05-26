@@ -6,6 +6,7 @@ package Paws::SSM::CreateDocument;
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
@@ -39,25 +40,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDocumentName',
       Attachments => [
         {
-          Key    => 'SourceUrl',    # values: SourceUrl; OPTIONAL
+          Key => 'SourceUrl'
+          ,    # values: SourceUrl, S3FileUrl, AttachmentReference; OPTIONAL
+          Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
-            'MyAttachmentsSourceValue', ...    # min: 1, max: 1024
-          ],                                   # min: 1, max: 1; OPTIONAL
+            'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
+          ],                                     # min: 1, max: 1; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
-      DocumentFormat => 'YAML',                # OPTIONAL
-      DocumentType   => 'Command',             # OPTIONAL
-      Tags           => [
+      ],                                         # OPTIONAL
+      DocumentFormat => 'YAML',                  # OPTIONAL
+      DocumentType   => 'Command',               # OPTIONAL
+      Requires       => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # min: 1, max: 256
+          Name    => 'MyDocumentARN',
+          Version => 'MyDocumentVersion',        # OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                   # min: 1, max: 128
+          Value => 'MyTagValue',                 # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
-      TargetType  => 'MyTargetType',           # OPTIONAL
-      VersionName => 'MyDocumentVersionName',  # OPTIONAL
+      ],                                         # OPTIONAL
+      TargetType  => 'MyTargetType',             # OPTIONAL
+      VersionName => 'MyDocumentVersionName',    # OPTIONAL
     );
 
     # Results:
@@ -87,16 +97,15 @@ A valid JSON or YAML string.
 =head2 DocumentFormat => Str
 
 Specify the document format for the request. The document format can be
-either JSON or YAML. JSON is the default format.
+JSON, YAML, or TEXT. JSON is the default format.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentType => Str
 
-The type of document to create. Valid document types include:
-C<Command>, C<Policy>, C<Automation>, C<Session>, and C<Package>.
+The type of document to create.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -121,6 +130,14 @@ C<amzn>
 
 =back
 
+
+
+
+=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
+
+A list of SSM documents required by a document. For example, an
+C<ApplicationConfiguration> document requires an
+C<ApplicationConfigurationSchema> document.
 
 
 

@@ -5,9 +5,10 @@ package Paws::S3::DeleteObjects;
   has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Delete => (is => 'ro', isa => 'Paws::S3::Delete', required => 1);
+  has Delete => (is => 'ro', isa => 'Paws::S3::Delete', traits => ['ParamInBody'], required => 1);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -17,6 +18,7 @@ package Paws::S3::DeleteObjects;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::DeleteObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -70,14 +72,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name containing the objects to delete.
 
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
 =head2 BypassGovernanceRetention => Bool
 
 Specifies whether you want to delete this object even if it has a
-Governance-type object lock in place. You must have sufficient
+Governance-type Object Lock in place. You must have sufficient
 permissions to perform this operation.
 
 
@@ -96,7 +107,7 @@ Size of the body in bytes.
 
 =head2 B<REQUIRED> Delete => L<Paws::S3::Delete>
 
-
+Container for the request.
 
 
 
@@ -104,6 +115,8 @@ Size of the body in bytes.
 
 The concatenation of the authentication device's serial number, a
 space, and the value that is displayed on your authentication device.
+Required to permanently delete a versioned object if versioning is
+configured with MFA delete enabled.
 
 
 

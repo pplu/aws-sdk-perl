@@ -29,6 +29,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteDashboards', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteInsightRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteInsightRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAlarmHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarmHistory', @_);
@@ -49,9 +54,19 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAnomalyDetectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInsightRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeInsightRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableAlarmActions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DisableAlarmActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisableInsightRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DisableInsightRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableAlarmActions {
@@ -59,9 +74,19 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::EnableAlarmActions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub EnableInsightRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::EnableInsightRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDashboard {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetDashboard', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetInsightRuleReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetInsightRuleReport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetMetricData {
@@ -102,6 +127,11 @@ package Paws::CloudWatch;
   sub PutDashboard {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutDashboard', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutInsightRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutInsightRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutMetricAlarm {
@@ -250,7 +280,7 @@ package Paws::CloudWatch;
   }
 
 
-  sub operations { qw/DeleteAlarms DeleteAnomalyDetector DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DescribeAnomalyDetectors DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics ListTagsForResource PutAnomalyDetector PutDashboard PutMetricAlarm PutMetricData SetAlarmState TagResource UntagResource / }
+  sub operations { qw/DeleteAlarms DeleteAnomalyDetector DeleteDashboards DeleteInsightRules DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DescribeAnomalyDetectors DescribeInsightRules DisableAlarmActions DisableInsightRules EnableAlarmActions EnableInsightRules GetDashboard GetInsightRuleReport GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics ListTagsForResource PutAnomalyDetector PutDashboard PutInsightRule PutMetricAlarm PutMetricData SetAlarmState TagResource UntagResource / }
 
 1;
 
@@ -313,8 +343,8 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-Deletes the specified alarms. In the event of an error, no alarms are
-deleted.
+Deletes the specified alarms. You can delete up to 50 alarms in one
+operation. In the event of an error, no alarms are deleted.
 
 
 =head2 DeleteAnomalyDetector
@@ -355,6 +385,26 @@ Returns: a L<Paws::CloudWatch::DeleteDashboardsOutput> instance
 Deletes all dashboards that you specify. You may specify up to 100
 dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
+
+
+=head2 DeleteInsightRules
+
+=over
+
+=item RuleNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DeleteInsightRules>
+
+Returns: a L<Paws::CloudWatch::DeleteInsightRulesOutput> instance
+
+Permanently deletes the specified Contributor Insights rules.
+
+If you create a rule, delete it, and then re-create it with the same
+name, historical data from the first time the rule was created may or
+may not be available.
 
 
 =head2 DescribeAlarmHistory
@@ -472,6 +522,29 @@ to only the models that are related to a certain namespace, metric
 name, or metric dimension.
 
 
+=head2 DescribeInsightRules
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DescribeInsightRules>
+
+Returns: a L<Paws::CloudWatch::DescribeInsightRulesOutput> instance
+
+Returns a list of all the Contributor Insights rules in your account.
+All rules in your account are returned with a single operation.
+
+For more information about Contributor Insights, see Using Contributor
+Insights to Analyze High-Cardinality Data
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html).
+
+
 =head2 DisableAlarmActions
 
 =over
@@ -490,6 +563,23 @@ are disabled, the alarm actions do not execute when the alarm state
 changes.
 
 
+=head2 DisableInsightRules
+
+=over
+
+=item RuleNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DisableInsightRules>
+
+Returns: a L<Paws::CloudWatch::DisableInsightRulesOutput> instance
+
+Disables the specified Contributor Insights rules. When rules are
+disabled, they do not analyze log groups and do not incur costs.
+
+
 =head2 EnableAlarmActions
 
 =over
@@ -504,6 +594,23 @@ Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 Returns: nothing
 
 Enables the actions for the specified alarms.
+
+
+=head2 EnableInsightRules
+
+=over
+
+=item RuleNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::EnableInsightRules>
+
+Returns: a L<Paws::CloudWatch::EnableInsightRulesOutput> instance
+
+Enables the specified Contributor Insights rules. When rules are
+enabled, they immediately begin analyzing log data.
 
 
 =head2 GetDashboard
@@ -524,6 +631,85 @@ Displays the details of the dashboard that you specify.
 To copy an existing dashboard, use C<GetDashboard>, and then use the
 data returned within C<DashboardBody> as the template for the new
 dashboard when you call C<PutDashboard> to create the copy.
+
+
+=head2 GetInsightRuleReport
+
+=over
+
+=item EndTime => Str
+
+=item Period => Int
+
+=item RuleName => Str
+
+=item StartTime => Str
+
+=item [MaxContributorCount => Int]
+
+=item [Metrics => ArrayRef[Str|Undef]]
+
+=item [OrderBy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::GetInsightRuleReport>
+
+Returns: a L<Paws::CloudWatch::GetInsightRuleReportOutput> instance
+
+This operation returns the time series data collected by a Contributor
+Insights rule. The data includes the identity and number of
+contributors to the log group.
+
+You can also optionally return one or more statistics about each data
+point in the time series. These statistics can include the following:
+
+=over
+
+=item *
+
+C<UniqueContributors> -- the number of unique contributors for each
+data point.
+
+=item *
+
+C<MaxContributorValue> -- the value of the top contributor for each
+data point. The identity of the contributor may change for each data
+point in the graph.
+
+If this rule aggregates by COUNT, the top contributor for each data
+point is the contributor with the most occurrences in that period. If
+the rule aggregates by SUM, the top contributor is the contributor with
+the highest sum in the log field specified by the rule's C<Value>,
+during that period.
+
+=item *
+
+C<SampleCount> -- the number of data points matched by the rule.
+
+=item *
+
+C<Sum> -- the sum of the values from all contributors during the time
+period represented by that data point.
+
+=item *
+
+C<Minimum> -- the minimum value from a single observation during the
+time period represented by that data point.
+
+=item *
+
+C<Maximum> -- the maximum value from a single observation during the
+time period represented by that data point.
+
+=item *
+
+C<Average> -- the average value from all contributors during the time
+period represented by that data point.
+
+=back
+
 
 
 =head2 GetMetricData
@@ -551,9 +737,9 @@ Returns: a L<Paws::CloudWatch::GetMetricDataOutput> instance
 
 You can use the C<GetMetricData> API to retrieve as many as 100
 different metrics in a single request, with a total of as many as
-100,800 datapoints. You can also optionally perform math expressions on
-the values of the returned statistics, to create new time series that
-represent new insights into your data. For example, using Lambda
+100,800 data points. You can also optionally perform math expressions
+on the values of the returned statistics, to create new time series
+that represent new insights into your data. For example, using Lambda
 metrics, you could divide the Errors metric by the Invocations metric
 to get an error rate time series. For more information about metric
 math expressions, see Metric Math Syntax and Functions
@@ -600,6 +786,14 @@ with 1-minute resolution. After 15 days, this data is still available,
 but is aggregated and retrievable only with a resolution of 5 minutes.
 After 63 days, the data is further aggregated and is available with a
 resolution of 1 hour.
+
+If you omit C<Unit> in your request, all data that was collected with
+any unit is returned, along with the corresponding units that were
+specified when the data was reported to CloudWatch. If you specify a
+unit, the operation returns only data data that was collected with that
+unit specified. If you specify a unit that does not match the data
+collected, the results of the operation are null. CloudWatch does not
+perform unit conversions.
 
 
 =head2 GetMetricStatistics
@@ -894,6 +1088,34 @@ the C<DashboardBody> script or the CloudFormation template used to
 create the dashboard.
 
 
+=head2 PutInsightRule
+
+=over
+
+=item RuleDefinition => Str
+
+=item RuleName => Str
+
+=item [RuleState => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::PutInsightRule>
+
+Returns: a L<Paws::CloudWatch::PutInsightRuleOutput> instance
+
+Creates a Contributor Insights rule. Rules evaluate log events in a
+CloudWatch Logs log group, enabling you to find contributor data for
+the log events in that log group. For more information, see Using
+Contributor Insights to Analyze High-Cardinality Data
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html).
+
+If you create a rule, delete it, and then re-create it with the same
+name, historical data from the first time the rule was created may or
+may not be available.
+
+
 =head2 PutMetricAlarm
 
 =over
@@ -1048,9 +1270,8 @@ also limited to no more than 20 different metrics.
 
 Although the C<Value> parameter accepts numbers of type C<Double>,
 CloudWatch rejects values that are either too small or too large.
-Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-or 2e-360 to 2e360 (Base 2). In addition, special values (for example,
-NaN, +Infinity, -Infinity) are not supported.
+Values must be in the range of -2^360 to 2^360. In addition, special
+values (for example, NaN, +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data
 the metric collects. Each dimension consists of a Name and Value pair.
@@ -1130,19 +1351,21 @@ Each argument is described in detail in: L<Paws::CloudWatch::TagResource>
 Returns: a L<Paws::CloudWatch::TagResourceOutput> instance
 
 Assigns one or more tags (key-value pairs) to the specified CloudWatch
-resource. Tags can help you organize and categorize your resources. You
-can also use them to scope user permissions, by granting a user
-permission to access or change only resources with certain tag values.
-In CloudWatch, alarms can be tagged.
+resource. Currently, the only CloudWatch resources that can be tagged
+are alarms.
+
+Tags can help you organize and categorize your resources. You can also
+use them to scope user permissions, by granting a user permission to
+access or change only resources with certain tag values.
 
 Tags don't have any semantic meaning to AWS and are interpreted
 strictly as strings of characters.
 
-You can use the C<TagResource> action with a resource that already has
-tags. If you specify a new tag key for the resource, this tag is
-appended to the list of tags associated with the resource. If you
-specify a tag key that is already associated with the resource, the new
-tag value that you specify replaces the previous value for that tag.
+You can use the C<TagResource> action with an alarm that already has
+tags. If you specify a new tag key for the alarm, this tag is appended
+to the list of tags associated with the alarm. If you specify a tag key
+that is already associated with the alarm, the new tag value that you
+specify replaces the previous value for that tag.
 
 You can associate as many as 50 tags with a resource.
 

@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyEbsDefaultKmsKeyIdResult = $ec2->ModifyEbsDefaultKmsKeyId(
-      KmsKeyId => 'MyString',
-      DryRun   => 1,            # OPTIONAL
+      KmsKeyId => 'MyKmsKeyId',
+      DryRun   => 1,              # OPTIONAL
     );
 
     # Results:
@@ -87,6 +87,8 @@ arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 AWS authenticates the CMK asynchronously. Therefore, if you specify an
 ID, alias, or ARN that is not valid, the action can appear to complete,
 but eventually fails.
+
+Amazon EBS does not support asymmetric CMKs.
 
 
 

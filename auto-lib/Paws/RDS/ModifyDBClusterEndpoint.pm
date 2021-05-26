@@ -68,7 +68,7 @@ lowercase string.
 
 =head2 EndpointType => Str
 
-The type of the endpoint. One of: C<READER>, C<ANY>.
+The type of the endpoint. One of: C<READER>, C<WRITER>, C<ANY>.
 
 
 

@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             PortMapping => {
               Port     => 1,         # min: 1, max: 65535
-              Protocol => 'http',    # values: http, tcp
+              Protocol => 'grpc',    # values: grpc, http, http2, tcp
 
             },
 

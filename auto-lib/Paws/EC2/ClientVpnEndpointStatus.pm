@@ -39,7 +39,7 @@ This class has no description
 
 =head2 Code => Str
 
-  The state of the Client VPN endpoint. Possible states include:
+The state of the Client VPN endpoint. Possible states include:
 
 =over
 
@@ -71,7 +71,7 @@ endpoint cannot accept connections.
 
 =head2 Message => Str
 
-  A message about the status of the Client VPN endpoint.
+A message about the status of the Client VPN endpoint.
 
 
 

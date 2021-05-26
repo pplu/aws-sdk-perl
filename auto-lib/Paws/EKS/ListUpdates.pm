@@ -4,6 +4,7 @@ package Paws::EKS::ListUpdates;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nodegroupName');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $eks = Paws->service('EKS');
     my $ListUpdatesResponse = $eks->ListUpdates(
-      Name       => 'MyString',
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      Name          => 'MyString',
+      MaxResults    => 1,             # OPTIONAL
+      NextToken     => 'MyString',    # OPTIONAL
+      NodegroupName => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -73,6 +75,12 @@ The C<nextToken> value returned from a previous paginated
 C<ListUpdates> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the C<nextToken> value.
+
+
+
+=head2 NodegroupName => Str
+
+The name of the Amazon EKS managed node group to list updates for.
 
 
 

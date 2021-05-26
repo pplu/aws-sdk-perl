@@ -56,10 +56,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 ConflictDetailLevel => Str
 
 The level of conflict detail to use. If unspecified, the default
-FILE_LEVEL is used, which will return a not mergeable result if the
-same file has differences in both branches. If LINE_LEVEL is specified,
-a conflict will be considered not mergeable if the same file in both
-branches has differences on the same line.
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
+conflict is considered not mergeable if the same file in both branches
+has differences on the same line.
 
 Valid values are: C<"FILE_LEVEL">, C<"LINE_LEVEL">
 
@@ -68,14 +68,14 @@ Valid values are: C<"FILE_LEVEL">, C<"LINE_LEVEL">
 Specifies which branch to use when resolving conflicts, or whether to
 attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
-merge operation will be successful.
+merge operation is successful.
 
 Valid values are: C<"NONE">, C<"ACCEPT_SOURCE">, C<"ACCEPT_DESTINATION">, C<"AUTOMERGE">
 
 =head2 B<REQUIRED> DestinationCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.
+identify a commit (for example, a branch name or a full commit ID).
 
 
 
@@ -89,7 +89,7 @@ you want to get information.
 =head2 B<REQUIRED> SourceCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, a branch name or a full commit ID.
+identify a commit (for example, a branch name or a full commit ID).
 
 
 

@@ -238,13 +238,13 @@ of one or more checks.
 
 For authentication of requests, AWS Support uses Signature Version 4
 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 See About the AWS Support API
-(http://docs.aws.amazon.com/awssupport/latest/user/Welcome.html) in the
-I<AWS Support User Guide> for information about how to use this service
-to create and manage your support cases, and how to call Trusted
-Advisor for results of checks on your resources.
+(https://docs.aws.amazon.com/awssupport/latest/user/Welcome.html) in
+the I<AWS Support User Guide> for information about how to use this
+service to create and manage your support cases, and how to call
+Trusted Advisor for results of checks on your resources.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/aws-support/>
 
@@ -352,24 +352,34 @@ B<issueType.> The type of issue for the case. You can specify either
 "customer-service" or "technical." If you do not indicate a value, the
 default is "technical."
 
+Service limit increases are not supported by the Support API; you must
+submit service limit increase requests in Support Center
+(https://console.aws.amazon.com/support).
+
+The C<caseId> is not the C<displayId> that appears in Support Center
+(https://console.aws.amazon.com/support). You can use the DescribeCases
+API to get the C<displayId>.
+
 =item *
 
-B<serviceCode.> The code for an AWS service. You obtain the
-C<serviceCode> by calling DescribeServices.
+B<serviceCode.> The code for an AWS service. You can get the possible
+C<serviceCode> values by calling DescribeServices.
 
 =item *
 
 B<categoryCode.> The category for the service defined for the
-C<serviceCode> value. You also obtain the category code for a service
-by calling DescribeServices. Each AWS service defines its own set of
+C<serviceCode> value. You also get the category code for a service by
+calling DescribeServices. Each AWS service defines its own set of
 category codes.
 
 =item *
 
 B<severityCode.> A value that indicates the urgency of the case, which
 in turn determines the response time according to your service level
-agreement with AWS Support. You obtain the SeverityCode by calling
-DescribeSeverityLevels.
+agreement with AWS Support. You can get the possible C<severityCode>
+values by calling DescribeSeverityLevels. For more information about
+the meaning of the codes, see SeverityLevel and Choosing a Severity
+(https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity).
 
 =item *
 
@@ -672,7 +682,8 @@ Returns information about all available Trusted Advisor checks,
 including name, ID, category, description, and metadata. You must
 specify a language code; English ("en") and Japanese ("ja") are
 currently supported. The response contains a
-TrustedAdvisorCheckDescription for each check.
+TrustedAdvisorCheckDescription for each check. The region must be set
+to us-east-1.
 
 
 =head2 DescribeTrustedAdvisorCheckSummaries
@@ -723,8 +734,33 @@ contains these fields:
 
 =item *
 
-B<status.> The refresh status of the check: "none", "enqueued",
-"processing", "success", or "abandoned".
+B<status.> The refresh status of the check:
+
+=over
+
+=item *
+
+C<none:> The check is not refreshed or the non-success status exceeds
+the timeout
+
+=item *
+
+C<enqueued:> The check refresh requests has entered the refresh queue
+
+=item *
+
+C<processing:> The check refresh request is picked up by the rule
+processing engine
+
+=item *
+
+C<success:> The check is successfully refreshed
+
+=item *
+
+C<abandoned:> The check refresh has failed
+
+=back
 
 =item *
 

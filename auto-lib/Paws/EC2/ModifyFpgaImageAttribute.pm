@@ -37,25 +37,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyFpgaImageAttributeResult = $ec2->ModifyFpgaImageAttribute(
-      FpgaImageId    => 'MyString',
-      Attribute      => 'description',    # OPTIONAL
-      Description    => 'MyString',       # OPTIONAL
-      DryRun         => 1,                # OPTIONAL
+      FpgaImageId    => 'MyFpgaImageId',
+      Attribute      => 'description',     # OPTIONAL
+      Description    => 'MyString',        # OPTIONAL
+      DryRun         => 1,                 # OPTIONAL
       LoadPermission => {
         Add => [
           {
-            Group  => 'all',              # values: all; OPTIONAL
+            Group  => 'all',               # values: all; OPTIONAL
             UserId => 'MyString',
           },
           ...
-        ],                                # OPTIONAL
+        ],                                 # OPTIONAL
         Remove => [
           {
-            Group  => 'all',              # values: all; OPTIONAL
+            Group  => 'all',               # values: all; OPTIONAL
             UserId => 'MyString',
           },
           ...
-        ],                                # OPTIONAL
+        ],                                 # OPTIONAL
       },    # OPTIONAL
       Name          => 'MyString',             # OPTIONAL
       OperationType => 'add',                  # OPTIONAL

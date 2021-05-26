@@ -66,19 +66,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to update port settings for.
+A unique identifier for a fleet to update port settings for. You can
+use either the fleet ID or ARN value.
 
 
 
 =head2 InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>]
 
-Collection of port settings to be added to the fleet record.
+A collection of port settings to be added to the fleet record.
 
 
 
 =head2 InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]
 
-Collection of port settings to be removed from the fleet record.
+A collection of port settings to be removed from the fleet record.
 
 
 

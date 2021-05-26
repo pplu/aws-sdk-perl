@@ -56,7 +56,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-A set of key-value pairs that represents additional authenticated data.
+Specifies the encryption context that will be used when encrypting the
+data key.
+
+An I<encryption context> is a collection of non-secret key-value pairs
+that represents additional authenticated data. When you use an
+encryption context to encrypt data, you must specify the same (an exact
+case-sensitive match) encryption context to decrypt the data. An
+encryption context is optional when encrypting with a symmetric CMK,
+but it is highly recommended.
 
 For more information, see Encryption Context
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
@@ -76,7 +84,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-An identifier for the CMK that encrypts the data key.
+Identifies the symmetric CMK that encrypts the data key.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with
@@ -113,17 +121,24 @@ To get the alias name and alias ARN, use ListAliases.
 
 =head2 KeySpec => Str
 
-The length of the data key. Use C<AES_128> to generate a 128-bit
-symmetric key, or C<AES_256> to generate a 256-bit symmetric key.
+Specifies the length of the data key. Use C<AES_128> to generate a
+128-bit symmetric key, or C<AES_256> to generate a 256-bit symmetric
+key.
+
+You must specify either the C<KeySpec> or the C<NumberOfBytes>
+parameter (but not both) in every C<GenerateDataKey> request.
 
 Valid values are: C<"AES_256">, C<"AES_128">
 
 =head2 NumberOfBytes => Int
 
-The length of the data key in bytes. For example, use the value 64 to
-generate a 512-bit data key (64 bytes is 512 bits). For common key
-lengths (128-bit and 256-bit symmetric keys), we recommend that you use
-the C<KeySpec> field instead of this one.
+Specifies the length of the data key in bytes. For example, use the
+value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
+128-bit (16-byte) and 256-bit (32-byte) data keys, use the C<KeySpec>
+parameter.
+
+You must specify either the C<KeySpec> or the C<NumberOfBytes>
+parameter (but not both) in every C<GenerateDataKey> request.
 
 
 

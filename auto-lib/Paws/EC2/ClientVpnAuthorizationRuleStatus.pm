@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The state of the authorization rule.
+The state of the authorization rule.
 
 
 =head2 Message => Str
 
-  A message about the status of the authorization rule, if applicable.
+A message about the status of the authorization rule, if applicable.
 
 
 

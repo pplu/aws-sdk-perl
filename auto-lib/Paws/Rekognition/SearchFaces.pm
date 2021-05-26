@@ -68,7 +68,7 @@ ID of a face to find matches for in the collection.
 
 Optional value specifying the minimum confidence in the face match to
 return. For example, don't return any matches where confidence in
-matches is less than 70%.
+matches is less than 70%. The default value is 80%.
 
 
 

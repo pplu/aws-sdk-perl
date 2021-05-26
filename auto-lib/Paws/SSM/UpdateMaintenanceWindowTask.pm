@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',              # OPTIONAL
       Targets        => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -80,9 +80,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
         },    # OPTIONAL
         RunCommand => {
+          CloudWatchOutputConfig => {
+            CloudWatchLogGroupName =>
+              'MyCloudWatchLogGroupName',    # min: 1, max: 512; OPTIONAL
+            CloudWatchOutputEnabled => 1,    # OPTIONAL
+          },    # OPTIONAL
           Comment          => 'MyComment',      # max: 100; OPTIONAL
           DocumentHash     => 'MyDocumentHash', # max: 256; OPTIONAL
           DocumentHashType => 'Sha256',         # values: Sha256, Sha1; OPTIONAL
+          DocumentVersion    => 'MyDocumentVersion',    # OPTIONAL
           NotificationConfig => {
             NotificationArn    => 'MyNotificationArn',    # OPTIONAL
             NotificationEvents => [

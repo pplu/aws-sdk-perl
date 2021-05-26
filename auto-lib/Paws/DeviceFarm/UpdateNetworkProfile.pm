@@ -115,8 +115,8 @@ information.
 
 =head2 Type => Str
 
-The type of network profile you wish to return information about. Valid
-values are listed below.
+The type of network profile to return information about. Valid values
+are listed here.
 
 Valid values are: C<"CURATED">, C<"PRIVATE">
 

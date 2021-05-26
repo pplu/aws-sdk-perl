@@ -40,7 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to be deleted.
+A unique identifier for a fleet to be deleted. You can use either the
+fleet ID or ARN value.
 
 
 

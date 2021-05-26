@@ -40,18 +40,18 @@ This class has no description
 
 =head2 CurrencyCode => Str
 
-  The currency for transacting the Reserved Instance resale. At this
+The currency for transacting the Reserved Instance resale. At this
 time, the only supported currency is C<USD>.
 
 
 =head2 Price => Num
 
-  The fixed price for the term.
+The fixed price for the term.
 
 
 =head2 Term => Int
 
-  The number of months remaining in the reservation. For example, 2 is
+The number of months remaining in the reservation. For example, 2 is
 the second to the last month before the capacity reservation expires.
 
 

@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $StartMatchmakingOutput = $gamelift->StartMatchmaking(
-      ConfigurationName => 'MyMatchmakingIdStringModel',
+      ConfigurationName => 'MyMatchmakingConfigurationName',
       Players           => [
         {
           LatencyInMs => {
@@ -38,19 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           PlayerAttributes => {
             'MyNonZeroAndMaxString' => {
-              N   => 1,                          # OPTIONAL
-              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+              N   => 1,
+              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
               SDM => {
-                'MyNonZeroAndMaxString' =>
-                  1,    # key: min: 1, max: 1024; OPTIONAL, value: OPTIONAL
+                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
               },    # OPTIONAL
               SL => [
-                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024; OPTIONAL
+                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024
               ],                                # OPTIONAL
-            },    # key: min: 1, max: 1024; OPTIONAL
+            },    # key: min: 1, max: 1024
           },    # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
-          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
         },
         ...
       ],
@@ -71,8 +70,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 =head2 B<REQUIRED> ConfigurationName => Str
 
 Name of the matchmaking configuration to use for this request.
-Matchmaking configurations must exist in the same region as this
-request.
+Matchmaking configurations must exist in the same Region as this
+request. You can use either the configuration name or ARN value.
 
 
 
@@ -87,7 +86,7 @@ objects contain the name of the team the player is assigned to.
 
 =head2 TicketId => Str
 
-Unique identifier for a matchmaking ticket. If no ticket ID is
+A unique identifier for a matchmaking ticket. If no ticket ID is
 specified here, Amazon GameLift will generate one in the form of a
 UUID. Use this identifier to track the matchmaking ticket status and
 retrieve match results.

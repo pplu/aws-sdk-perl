@@ -48,15 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =head2 B<REQUIRED> InitialContactId => Str
 
-The ID for the initial contact in Amazon Connect associated with the
-attributes to update.
+The identifier of the initial contact.
 
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The instance ID for the instance from which to retrieve contact
-attributes.
+The identifier of the Amazon Connect instance.
 
 
 

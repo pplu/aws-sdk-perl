@@ -82,11 +82,11 @@ The name you configured for your gateway.
 
 =head2 B<REQUIRED> GatewayRegion => Str
 
-A value that indicates the region where you want to store your data.
-The gateway region specified must be the same region as the region in
-your C<Host> header in the request. For more information about
-available regions and endpoints for AWS Storage Gateway, see Regions
-and Endpoints
+A value that indicates the AWS Region where you want to store your
+data. The gateway AWS Region specified must be the same AWS Region as
+the AWS Region in your C<Host> header in the request. For more
+information about available AWS Regions and endpoints for AWS Storage
+Gateway, see Regions and Endpoints
 (https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
 the I<Amazon Web Services Glossary>.
 
@@ -127,13 +127,13 @@ Valid Values: "STK-L700", "AWS-Gateway-VTL"
 
 =head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
 
-A list of up to 50 tags that can be assigned to the gateway. Each tag
-is a key-value pair.
+A list of up to 50 tags that you can assign to the gateway. Each tag is
+a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
-representable in UTF-8 format, and the following special characters: +
-- = . _ : / @. The maximum length of a tag's key is 128 characters, and
-the maximum length for a tag's value is 256.
+that can be represented in UTF-8 format, and the following special
+characters: + - = . _ : / @. The maximum length of a tag's key is 128
+characters, and the maximum length for a tag's value is 256 characters.
 
 
 

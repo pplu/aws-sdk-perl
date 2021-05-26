@@ -74,6 +74,11 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListKafkaVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::ListKafkaVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListNodes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListNodes', @_);
@@ -94,6 +99,11 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateBrokerCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateBrokerCount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateBrokerStorage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateBrokerStorage', @_);
@@ -102,6 +112,11 @@ package Paws::Kafka;
   sub UpdateClusterConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateClusterConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMonitoring {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateMonitoring', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -197,6 +212,29 @@ package Paws::Kafka;
 
     return undef
   }
+  sub ListAllKafkaVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKafkaVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListKafkaVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->KafkaVersions }, @{ $next_result->KafkaVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'KafkaVersions') foreach (@{ $result->KafkaVersions });
+        $result = $self->ListKafkaVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'KafkaVersions') foreach (@{ $result->KafkaVersions });
+    }
+
+    return undef
+  }
   sub ListAllNodes {
     my $self = shift;
 
@@ -222,7 +260,7 @@ package Paws::Kafka;
   }
 
 
-  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerStorage UpdateClusterConfiguration / }
+  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListKafkaVersions ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration UpdateMonitoring / }
 
 1;
 
@@ -276,6 +314,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 =item [EncryptionInfo => L<Paws::Kafka::EncryptionInfo>]
 
 =item [EnhancedMonitoring => Str]
+
+=item [OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>]
 
 =item [Tags => L<Paws::Kafka::__mapOf__string>]
 
@@ -492,6 +532,24 @@ Returns: a L<Paws::Kafka::ListConfigurationsResponse> instance
 Returns a list of all the MSK configurations in this Region.
 
 
+=head2 ListKafkaVersions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::ListKafkaVersions>
+
+Returns: a L<Paws::Kafka::ListKafkaVersionsResponse> instance
+
+Returns a list of Kafka versions.
+
+
 =head2 ListNodes
 
 =over
@@ -565,6 +623,26 @@ Removes the tags associated with the keys that are provided in the
 query.
 
 
+=head2 UpdateBrokerCount
+
+=over
+
+=item ClusterArn => Str
+
+=item CurrentVersion => Str
+
+=item TargetNumberOfBrokerNodes => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateBrokerCount>
+
+Returns: a L<Paws::Kafka::UpdateBrokerCountResponse> instance
+
+Updates the number of broker nodes in the cluster.
+
+
 =head2 UpdateBrokerStorage
 
 =over
@@ -604,6 +682,31 @@ Returns: a L<Paws::Kafka::UpdateClusterConfigurationResponse> instance
 
 Updates the cluster with the configuration that is specified in the
 request body.
+
+
+=head2 UpdateMonitoring
+
+=over
+
+=item ClusterArn => Str
+
+=item CurrentVersion => Str
+
+=item [EnhancedMonitoring => Str]
+
+=item [OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateMonitoring>
+
+Returns: a L<Paws::Kafka::UpdateMonitoringResponse> instance
+
+Updates the monitoring settings for the cluster. You can use this
+operation to specify which Apache Kafka metrics you want Amazon MSK to
+send to Amazon CloudWatch. You can also specify settings for open
+monitoring with Prometheus.
 
 
 
@@ -658,6 +761,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Configurations, passing the object as the first parameter, and the string 'Configurations' as the second parameter 
 
 If not, it will return a a L<Paws::Kafka::ListConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKafkaVersions(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllKafkaVersions([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - KafkaVersions, passing the object as the first parameter, and the string 'KafkaVersions' as the second parameter 
+
+If not, it will return a a L<Paws::Kafka::ListKafkaVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllNodes(sub { },ClusterArn => Str, [MaxResults => Int, NextToken => Str])

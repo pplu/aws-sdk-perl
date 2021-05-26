@@ -93,8 +93,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
         DataflowEndpointConfig => {
-          DataflowEndpointName => 'MyString',
-
+          DataflowEndpointName   => 'MyString',
+          DataflowEndpointRegion => 'MyString',
         },    # OPTIONAL
         TrackingConfig => {
           Autotrack => 'PREFERRED',    # values: PREFERRED, REMOVED, REQUIRED
@@ -127,7 +127,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gro
 
 =head2 B<REQUIRED> ConfigData => L<Paws::GroundStation::ConfigTypeData>
 
-Parameters for a C<Config>.
+Parameters of a C<Config>.
 
 
 

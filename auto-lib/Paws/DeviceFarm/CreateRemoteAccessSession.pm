@@ -67,8 +67,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 Unique identifier for the client. If you want access to multiple
 devices on the same client, you should pass the same C<clientId> value
-in each call to C<CreateRemoteAccessSession>. This is required only if
-C<remoteDebugEnabled> is set to C<true>.
+in each call to C<CreateRemoteAccessSession>. This identifier is
+required only if C<remoteDebugEnabled> is set to C<true>.
+
+Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 
 
 
@@ -80,8 +83,8 @@ The configuration information for the remote access session request.
 
 =head2 B<REQUIRED> DeviceArn => Str
 
-The Amazon Resource Name (ARN) of the device for which you want to
-create a remote access session.
+The ARN of the device for which you want to create a remote access
+session.
 
 
 
@@ -101,19 +104,19 @@ The interaction mode of the remote access session. Valid values are:
 =item *
 
 INTERACTIVE: You can interact with the iOS device by viewing, touching,
-and rotating the screen. You B<cannot> run XCUITest framework-based
-tests in this mode.
+and rotating the screen. You cannot run XCUITest framework-based tests
+in this mode.
 
 =item *
 
-NO_VIDEO: You are connected to the device but cannot interact with it
+NO_VIDEO: You are connected to the device, but cannot interact with it
 or view the screen. This mode has the fastest test execution speed. You
-B<can> run XCUITest framework-based tests in this mode.
+can run XCUITest framework-based tests in this mode.
 
 =item *
 
-VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You
-B<can> run XCUITest framework-based tests and watch the screen in this
+VIDEO_ONLY: You can view the screen, but cannot touch or rotate it. You
+can run XCUITest framework-based tests and watch the screen in this
 mode.
 
 =back
@@ -123,7 +126,7 @@ Valid values are: C<"INTERACTIVE">, C<"NO_VIDEO">, C<"VIDEO_ONLY">
 
 =head2 Name => Str
 
-The name of the remote access session that you wish to create.
+The name of the remote access session to create.
 
 
 
@@ -138,6 +141,9 @@ create a remote access session.
 
 Set to C<true> if you want to access devices remotely for debugging in
 your remote access session.
+
+Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 
 
 
@@ -157,21 +163,24 @@ session.
 
 =head2 SkipAppResign => Bool
 
-When set to C<true>, for private devices, Device Farm will not sign
+When set to C<true>, for private devices, Device Farm does not sign
 your app again. For public devices, Device Farm always signs your apps
-again and this parameter has no effect.
+again.
 
-For more information about how Device Farm re-signs your app(s), see Do
-you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
-I<AWS Device Farm FAQs>.
+For more information on how Device Farm modifies your uploads during
+tests, see Do you modify my app?
+(https://aws.amazon.com/device-farm/faq/)
 
 
 
 =head2 SshPublicKey => Str
 
-The public key of the C<ssh> key pair you want to use for connecting to
-remote devices in your remote debugging session. This is only required
-if C<remoteDebugEnabled> is set to C<true>.
+Ignored. The public key of the C<ssh> key pair you want to use for
+connecting to remote devices in your remote debugging session. This key
+is required only if C<remoteDebugEnabled> is set to C<true>.
+
+Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
 
 
 

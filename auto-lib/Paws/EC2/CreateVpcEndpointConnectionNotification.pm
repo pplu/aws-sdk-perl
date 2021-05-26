@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->CreateVpcEndpointConnectionNotification(
       ConnectionEvents          => [ 'MyString', ... ],
       ConnectionNotificationArn => 'MyString',
-      ClientToken               => 'MyString',            # OPTIONAL
-      DryRun                    => 1,                     # OPTIONAL
-      ServiceId                 => 'MyString',            # OPTIONAL
-      VpcEndpointId             => 'MyString',            # OPTIONAL
+      ClientToken               => 'MyString',                  # OPTIONAL
+      DryRun                    => 1,                           # OPTIONAL
+      ServiceId                 => 'MyVpcEndpointServiceId',    # OPTIONAL
+      VpcEndpointId             => 'MyVpcEndpointId',           # OPTIONAL
       );
 
     # Results:
@@ -58,8 +58,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 

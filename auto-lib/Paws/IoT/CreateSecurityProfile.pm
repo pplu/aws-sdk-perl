@@ -95,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
 
 A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile's C<behaviors> but it is
+retained for any metric used in the profile's C<behaviors>, but it is
 also retained for any metric specified here.
 
 
@@ -129,7 +129,7 @@ The name you are giving to the security profile.
 
 =head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
 
-Metadata which can be used to manage the security profile.
+Metadata that can be used to manage the security profile.
 
 
 

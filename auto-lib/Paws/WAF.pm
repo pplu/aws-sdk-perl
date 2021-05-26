@@ -2786,7 +2786,7 @@ using the following steps:
 
 =item 1.
 
-Create an Amazon Kinesis Data Firehose .
+Create an Amazon Kinesis Data Firehose.
 
 Create the data firehose with a PUT source and in the region that you
 are operating. However, if you are capturing logs for Amazon

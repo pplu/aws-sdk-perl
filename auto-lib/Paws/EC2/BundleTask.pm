@@ -45,42 +45,42 @@ This class has no description
 
 =head2 BundleId => Str
 
-  The ID of the bundle task.
+The ID of the bundle task.
 
 
 =head2 BundleTaskError => L<Paws::EC2::BundleTaskError>
 
-  If the task fails, a description of the error.
+If the task fails, a description of the error.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance associated with this bundle task.
+The ID of the instance associated with this bundle task.
 
 
 =head2 Progress => Str
 
-  The level of task completion, as a percent (for example, 20%).
+The level of task completion, as a percent (for example, 20%).
 
 
 =head2 StartTime => Str
 
-  The time this task started.
+The time this task started.
 
 
 =head2 State => Str
 
-  The state of the task.
+The state of the task.
 
 
 =head2 Storage => L<Paws::EC2::Storage>
 
-  The Amazon S3 storage locations.
+The Amazon S3 storage locations.
 
 
 =head2 UpdateTime => Str
 
-  The time of the most recent update for the task.
+The time of the most recent update for the task.
 
 
 

@@ -8,6 +8,7 @@ package Paws::AppSync::UpdateGraphqlApi;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', traits => ['NameInRequest'], request_name => 'openIDConnectConfig');
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', traits => ['NameInRequest'], request_name => 'userPoolConfig');
+  has XrayEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'xrayEnabled');
 
   use MooseX::ClassAttribute;
 
@@ -59,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LogConfig          => {
         CloudWatchLogsRoleArn => 'MyString',
         FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
-
+        ExcludeVerboseContent => 1,            # OPTIONAL
       },    # OPTIONAL
       OpenIDConnectConfig => {
         Issuer   => 'MyString',
@@ -73,6 +74,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         UserPoolId       => 'MyString',
         AppIdClientRegex => 'MyString',
       },    # OPTIONAL
+      XrayEnabled => 1,    # OPTIONAL
     );
 
     # Results:
@@ -127,6 +129,13 @@ The OpenID Connect configuration for the C<GraphqlApi> object.
 
 The new Amazon Cognito user pool configuration for the C<GraphqlApi>
 object.
+
+
+
+=head2 XrayEnabled => Bool
+
+A flag indicating whether to enable X-Ray tracing for the
+C<GraphqlApi>.
 
 
 

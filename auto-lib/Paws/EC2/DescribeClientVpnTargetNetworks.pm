@@ -34,18 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeClientVpnTargetNetworksResult =
       $ec2->DescribeClientVpnTargetNetworks(
-      ClientVpnEndpointId => 'MyString',
-      AssociationIds      => [ 'MyString', ... ],    # OPTIONAL
-      DryRun              => 1,                      # OPTIONAL
+      ClientVpnEndpointId => 'MyClientVpnEndpointId',
+      AssociationIds      => [ 'MyString', ... ],       # OPTIONAL
+      DryRun              => 1,                         # OPTIONAL
       Filters             => [
         {
           Name   => 'MyString',
           Values => [ 'MyString', ... ],
         },
         ...
-      ],                                             # OPTIONAL
-      MaxResults => 1,                               # OPTIONAL
-      NextToken  => 'MyNextToken',                   # OPTIONAL
+      ],                                                # OPTIONAL
+      MaxResults => 1,                                  # OPTIONAL
+      NextToken  => 'MyNextToken',                      # OPTIONAL
       );
 
     # Results:
@@ -85,6 +85,24 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
 One or more filters. Filter names and values are case-sensitive.
+
+=over
+
+=item *
+
+C<association-id> - The ID of the association.
+
+=item *
+
+C<target-network-id> - The ID of the subnet specified as the target
+network.
+
+=item *
+
+C<vpc-id> - The ID of the VPC in which the target network is located.
+
+=back
+
 
 
 

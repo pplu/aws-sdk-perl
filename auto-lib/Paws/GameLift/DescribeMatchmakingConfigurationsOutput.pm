@@ -17,12 +17,12 @@ Paws::GameLift::DescribeMatchmakingConfigurationsOutput
 
 =head2 Configurations => ArrayRef[L<Paws::GameLift::MatchmakingConfiguration>]
 
-Collection of requested matchmaking configuration objects.
+A collection of requested matchmaking configurations.
 
 
 =head2 NextToken => Str
 
-Token that indicates where to resume retrieving results on the next
+A token that indicates where to resume retrieving results on the next
 call to this action. If no token is returned, these results represent
 the end of the list.
 

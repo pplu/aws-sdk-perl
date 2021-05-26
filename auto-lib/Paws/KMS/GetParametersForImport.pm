@@ -54,8 +54,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the CMK into which you will import key material. The
-CMK's C<Origin> must be C<EXTERNAL>.
+The identifier of the symmetric CMK into which you will import key
+material. The C<Origin> of the CMK must be C<EXTERNAL>.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

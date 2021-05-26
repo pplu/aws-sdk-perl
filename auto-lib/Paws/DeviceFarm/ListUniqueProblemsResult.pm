@@ -18,9 +18,8 @@ Paws::DeviceFarm::ListUniqueProblemsResult
 =head2 NextToken => Str
 
 If the number of items that are returned is significantly large, this
-is an identifier that is also returned, which can be used in a
-subsequent call to this operation to return the next set of items in
-the list.
+is an identifier that is also returned. It can be used in a subsequent
+call to this operation to return the next set of items in the list.
 
 
 =head2 UniqueProblems => L<Paws::DeviceFarm::UniqueProblemsByExecutionResultMap>
@@ -33,31 +32,31 @@ Allowed values include:
 
 =item *
 
-PENDING: A pending condition.
+PENDING
 
 =item *
 
-PASSED: A passing condition.
+PASSED
 
 =item *
 
-WARNED: A warning condition.
+WARNED
 
 =item *
 
-FAILED: A failed condition.
+FAILED
 
 =item *
 
-SKIPPED: A skipped condition.
+SKIPPED
 
 =item *
 
-ERRORED: An error condition.
+ERRORED
 
 =item *
 
-STOPPED: A stopped condition.
+STOPPED
 
 =back
 

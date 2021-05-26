@@ -64,8 +64,8 @@ to complete account creation. You can't access the root user of the
 account or remove an account that was created with an invalid email
 address. Like all request parameters for C<CreateGovCloudAccount>, the
 request for the email address for the AWS GovCloud (US) account
-originates from the commercial Region, not from the AWS GovCloud (US)
-Region.
+originates from the commercial Region. It does not come from the AWS
+GovCloud (US) Region.
 
 
 
@@ -104,15 +104,15 @@ For more information about how to use this role to access the member
 account, see Accessing and Administering the Member Accounts in Your
 Organization
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-in the I<AWS Organizations User Guide> and steps 2 and 3 in Tutorial:
-Delegate Access Across AWS Accounts Using IAM Roles
+in the I<AWS Organizations User Guide>. See also steps 2 and 3 in
+Tutorial: Delegate Access Across AWS Accounts Using IAM Roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 in the I<IAM User Guide.>
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
-validate this parameter is a string of characters that can consist of
-uppercase letters, lowercase letters, digits with no spaces, and any of
-the following characters: =,.@-
+validate this parameter. The pattern can include uppercase letters,
+lowercase letters, digits with no spaces, and any of the following
+characters: =,.@-
 
 
 

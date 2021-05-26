@@ -20,6 +20,11 @@ package Paws::Transcribe;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::CreateVocabulary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVocabularyFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::CreateVocabularyFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTranscriptionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteTranscriptionJob', @_);
@@ -28,6 +33,11 @@ package Paws::Transcribe;
   sub DeleteVocabulary {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteVocabulary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVocabularyFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::DeleteVocabularyFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTranscriptionJob {
@@ -40,6 +50,11 @@ package Paws::Transcribe;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::GetVocabulary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVocabularyFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::GetVocabularyFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTranscriptionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::ListTranscriptionJobs', @_);
@@ -48,6 +63,11 @@ package Paws::Transcribe;
   sub ListVocabularies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::ListVocabularies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListVocabularyFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::ListVocabularyFilters', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartTranscriptionJob {
@@ -60,10 +80,15 @@ package Paws::Transcribe;
     my $call_object = $self->new_with_coercions('Paws::Transcribe::UpdateVocabulary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateVocabularyFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Transcribe::UpdateVocabularyFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateVocabulary DeleteTranscriptionJob DeleteVocabulary GetTranscriptionJob GetVocabulary ListTranscriptionJobs ListVocabularies StartTranscriptionJob UpdateVocabulary / }
+  sub operations { qw/CreateVocabulary CreateVocabularyFilter DeleteTranscriptionJob DeleteVocabulary DeleteVocabularyFilter GetTranscriptionJob GetVocabulary GetVocabularyFilter ListTranscriptionJobs ListVocabularies ListVocabularyFilters StartTranscriptionJob UpdateVocabulary UpdateVocabularyFilter / }
 
 1;
 
@@ -121,6 +146,29 @@ Creates a new custom vocabulary that you can use to change the way
 Amazon Transcribe handles transcription of an audio file.
 
 
+=head2 CreateVocabularyFilter
+
+=over
+
+=item LanguageCode => Str
+
+=item VocabularyFilterName => Str
+
+=item [VocabularyFilterFileUri => Str]
+
+=item [Words => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::CreateVocabularyFilter>
+
+Returns: a L<Paws::Transcribe::CreateVocabularyFilterResponse> instance
+
+Creates a new vocabulary filter that you can use to filter words, such
+as profane words, from the output of a transcription job.
+
+
 =head2 DeleteTranscriptionJob
 
 =over
@@ -152,6 +200,22 @@ Each argument is described in detail in: L<Paws::Transcribe::DeleteVocabulary>
 Returns: nothing
 
 Deletes a vocabulary from Amazon Transcribe.
+
+
+=head2 DeleteVocabularyFilter
+
+=over
+
+=item VocabularyFilterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::DeleteVocabularyFilter>
+
+Returns: nothing
+
+Removes a vocabulary filter.
 
 
 =head2 GetTranscriptionJob
@@ -187,6 +251,22 @@ Each argument is described in detail in: L<Paws::Transcribe::GetVocabulary>
 Returns: a L<Paws::Transcribe::GetVocabularyResponse> instance
 
 Gets information about a vocabulary.
+
+
+=head2 GetVocabularyFilter
+
+=over
+
+=item VocabularyFilterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::GetVocabularyFilter>
+
+Returns: a L<Paws::Transcribe::GetVocabularyFilterResponse> instance
+
+Returns information about a vocabulary filter.
 
 
 =head2 ListTranscriptionJobs
@@ -234,6 +314,26 @@ Returns a list of vocabularies that match the specified criteria. If no
 criteria are specified, returns the entire list of vocabularies.
 
 
+=head2 ListVocabularyFilters
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::ListVocabularyFilters>
+
+Returns: a L<Paws::Transcribe::ListVocabularyFiltersResponse> instance
+
+Gets information about vocabulary filters.
+
+
 =head2 StartTranscriptionJob
 
 =over
@@ -242,13 +342,17 @@ criteria are specified, returns the entire list of vocabularies.
 
 =item Media => L<Paws::Transcribe::Media>
 
-=item MediaFormat => Str
-
 =item TranscriptionJobName => Str
+
+=item [JobExecutionSettings => L<Paws::Transcribe::JobExecutionSettings>]
+
+=item [MediaFormat => Str]
 
 =item [MediaSampleRateHertz => Int]
 
 =item [OutputBucketName => Str]
+
+=item [OutputEncryptionKMSKeyId => Str]
 
 =item [Settings => L<Paws::Transcribe::Settings>]
 
@@ -284,6 +388,26 @@ Returns: a L<Paws::Transcribe::UpdateVocabularyResponse> instance
 Updates an existing vocabulary with new values. The C<UpdateVocabulary>
 operation overwrites all of the existing information with the values
 that you provide in the request.
+
+
+=head2 UpdateVocabularyFilter
+
+=over
+
+=item VocabularyFilterName => Str
+
+=item [VocabularyFilterFileUri => Str]
+
+=item [Words => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Transcribe::UpdateVocabularyFilter>
+
+Returns: a L<Paws::Transcribe::UpdateVocabularyFilterResponse> instance
+
+Updates a vocabulary filter with a new list of filtered words.
 
 
 

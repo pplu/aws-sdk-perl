@@ -5,6 +5,7 @@ package Paws::DynamoDB::UpdateTable;
   has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has ReplicaUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicationGroupUpdate]');
   has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
@@ -77,13 +78,16 @@ past 30 minutes.
 
 =item *
 
-C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
-using C<PROVISIONED> for predictable workloads.
+C<PROVISIONED> - We recommend using C<PROVISIONED> for predictable
+workloads. C<PROVISIONED> sets the billing mode to Provisioned Mode
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
 
 =item *
 
-C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
-recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+C<PAY_PER_REQUEST> - We recommend using C<PAY_PER_REQUEST> for
+unpredictable workloads. C<PAY_PER_REQUEST> sets the billing mode to
+On-Demand Mode
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
 
 =back
 
@@ -112,6 +116,9 @@ C<Delete> - remove a global secondary index from the table.
 
 =back
 
+You can create or delete only one global secondary index per
+C<UpdateTable> operation.
+
 For more information, see Managing Global Secondary Indexes
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
 in the I<Amazon DynamoDB Developer Guide>.
@@ -122,6 +129,17 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 The new provisioned throughput settings for the specified table or
 index.
+
+
+
+=head2 ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicationGroupUpdate>]
+
+A list of replica update actions (create, delete, or update) for the
+table.
+
+This property only applies to Version 2019.11.21
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+of global tables.
 
 
 

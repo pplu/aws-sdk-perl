@@ -1,7 +1,8 @@
 
 package Paws::S3::GetBucketTaggingOutput;
   use Moose;
-  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', required => 1);
+  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', traits => ['NameInRequest'], required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -17,7 +18,7 @@ Paws::S3::GetBucketTaggingOutput
 
 =head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
 
-
+Contains the tag set.
 
 
 

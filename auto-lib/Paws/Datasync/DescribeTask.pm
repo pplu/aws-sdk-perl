@@ -38,14 +38,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CurrentTaskExecutionArn =
       $DescribeTaskResponse->CurrentTaskExecutionArn;
     my $DestinationLocationArn = $DescribeTaskResponse->DestinationLocationArn;
-    my $ErrorCode              = $DescribeTaskResponse->ErrorCode;
-    my $ErrorDetail            = $DescribeTaskResponse->ErrorDetail;
-    my $Excludes               = $DescribeTaskResponse->Excludes;
-    my $Name                   = $DescribeTaskResponse->Name;
-    my $Options                = $DescribeTaskResponse->Options;
-    my $SourceLocationArn      = $DescribeTaskResponse->SourceLocationArn;
-    my $Status                 = $DescribeTaskResponse->Status;
-    my $TaskArn                = $DescribeTaskResponse->TaskArn;
+    my $DestinationNetworkInterfaceArns =
+      $DescribeTaskResponse->DestinationNetworkInterfaceArns;
+    my $ErrorCode         = $DescribeTaskResponse->ErrorCode;
+    my $ErrorDetail       = $DescribeTaskResponse->ErrorDetail;
+    my $Excludes          = $DescribeTaskResponse->Excludes;
+    my $Name              = $DescribeTaskResponse->Name;
+    my $Options           = $DescribeTaskResponse->Options;
+    my $Schedule          = $DescribeTaskResponse->Schedule;
+    my $SourceLocationArn = $DescribeTaskResponse->SourceLocationArn;
+    my $SourceNetworkInterfaceArns =
+      $DescribeTaskResponse->SourceNetworkInterfaceArns;
+    my $Status  = $DescribeTaskResponse->Status;
+    my $TaskArn = $DescribeTaskResponse->TaskArn;
 
     # Returns a L<Paws::Datasync::DescribeTaskResponse> object.
 

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'INSTANCE',
       Targets      => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -77,7 +77,7 @@ from a previous call.)
 The type of resource you want to retrieve information about. For
 example, "INSTANCE".
 
-Valid values are: C<"INSTANCE">
+Valid values are: C<"INSTANCE">, C<"RESOURCE_GROUP">
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 

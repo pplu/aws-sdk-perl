@@ -35,17 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId = $GetApplicationResponse->ApplicationId;
-    my $Author        = $GetApplicationResponse->Author;
-    my $CreationTime  = $GetApplicationResponse->CreationTime;
-    my $Description   = $GetApplicationResponse->Description;
-    my $HomePageUrl   = $GetApplicationResponse->HomePageUrl;
-    my $Labels        = $GetApplicationResponse->Labels;
-    my $LicenseUrl    = $GetApplicationResponse->LicenseUrl;
-    my $Name          = $GetApplicationResponse->Name;
-    my $ReadmeUrl     = $GetApplicationResponse->ReadmeUrl;
-    my $SpdxLicenseId = $GetApplicationResponse->SpdxLicenseId;
-    my $Version       = $GetApplicationResponse->Version;
+    my $ApplicationId     = $GetApplicationResponse->ApplicationId;
+    my $Author            = $GetApplicationResponse->Author;
+    my $CreationTime      = $GetApplicationResponse->CreationTime;
+    my $Description       = $GetApplicationResponse->Description;
+    my $HomePageUrl       = $GetApplicationResponse->HomePageUrl;
+    my $IsVerifiedAuthor  = $GetApplicationResponse->IsVerifiedAuthor;
+    my $Labels            = $GetApplicationResponse->Labels;
+    my $LicenseUrl        = $GetApplicationResponse->LicenseUrl;
+    my $Name              = $GetApplicationResponse->Name;
+    my $ReadmeUrl         = $GetApplicationResponse->ReadmeUrl;
+    my $SpdxLicenseId     = $GetApplicationResponse->SpdxLicenseId;
+    my $VerifiedAuthorUrl = $GetApplicationResponse->VerifiedAuthorUrl;
+    my $Version           = $GetApplicationResponse->Version;
 
     # Returns a L<Paws::ServerlessRepo::GetApplicationResponse> object.
 

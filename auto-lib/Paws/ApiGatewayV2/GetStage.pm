@@ -37,16 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AccessLogSettings    = $GetStageResponse->AccessLogSettings;
+    my $ApiGatewayManaged    = $GetStageResponse->ApiGatewayManaged;
+    my $AutoDeploy           = $GetStageResponse->AutoDeploy;
     my $ClientCertificateId  = $GetStageResponse->ClientCertificateId;
     my $CreatedDate          = $GetStageResponse->CreatedDate;
     my $DefaultRouteSettings = $GetStageResponse->DefaultRouteSettings;
     my $DeploymentId         = $GetStageResponse->DeploymentId;
     my $Description          = $GetStageResponse->Description;
-    my $LastUpdatedDate      = $GetStageResponse->LastUpdatedDate;
-    my $RouteSettings        = $GetStageResponse->RouteSettings;
-    my $StageName            = $GetStageResponse->StageName;
-    my $StageVariables       = $GetStageResponse->StageVariables;
-    my $Tags                 = $GetStageResponse->Tags;
+    my $LastDeploymentStatusMessage =
+      $GetStageResponse->LastDeploymentStatusMessage;
+    my $LastUpdatedDate = $GetStageResponse->LastUpdatedDate;
+    my $RouteSettings   = $GetStageResponse->RouteSettings;
+    my $StageName       = $GetStageResponse->StageName;
+    my $StageVariables  = $GetStageResponse->StageVariables;
+    my $Tags            = $GetStageResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::GetStageResponse> object.
 
@@ -64,7 +68,8 @@ The API identifier.
 
 =head2 B<REQUIRED> StageName => Str
 
-The stage name.
+The stage name. Stage names can only contain alphanumeric characters,
+hyphens, and underscores. Maximum length is 128 characters.
 
 
 

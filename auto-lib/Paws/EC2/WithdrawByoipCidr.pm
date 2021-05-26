@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> Cidr => Str
 
-The public IPv4 address range, in CIDR notation.
+The address range, in CIDR notation.
 
 
 

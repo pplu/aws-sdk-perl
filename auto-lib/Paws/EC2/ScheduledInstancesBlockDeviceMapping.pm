@@ -41,24 +41,24 @@ This class has no description
 
 =head2 DeviceName => Str
 
-  The device name (for example, C</dev/sdh> or C<xvdh>).
+The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
 =head2 Ebs => L<Paws::EC2::ScheduledInstancesEbs>
 
-  Parameters used to set up EBS volumes automatically when the instance
+Parameters used to set up EBS volumes automatically when the instance
 is launched.
 
 
 =head2 NoDevice => Str
 
-  Suppresses the specified device included in the block device mapping of
+Suppresses the specified device included in the block device mapping of
 the AMI.
 
 
 =head2 VirtualName => Str
 
-  The virtual device name (C<ephemeral>N). Instance store volumes are
+The virtual device name (C<ephemeral>N). Instance store volumes are
 numbered starting from 0. An instance type with two available instance
 store volumes can specify mappings for C<ephemeral0> and C<ephemeral1>.
 The number of available instance store volumes depends on the instance

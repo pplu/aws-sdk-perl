@@ -110,7 +110,7 @@ Valid values are: C<"IMPORT">, C<"EXPORT">, C<"LOCAL_USE">
 
 The C<KmsKeyARN> value that you want to associate with this cluster.
 C<KmsKeyARN> values are created by using the CreateKey
-(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
 API action in AWS Key Management Service (AWS KMS).
 
 
@@ -134,7 +134,7 @@ Python language.
 
 The C<RoleARN> that you want to associate with this cluster. C<RoleArn>
 values are created by using the CreateRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 API action in AWS Identity and Access Management (IAM).
 
 
@@ -162,7 +162,7 @@ which typically takes less than a week, one way.
 
 =item *
 
-In India, devices are delivered in one to seven days.
+In India, Snowball Edges are delivered in one to seven days.
 
 =item *
 
@@ -175,9 +175,8 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball device to use for this cluster. The only
-supported device types for cluster jobs are C<EDGE>, C<EDGE_C>, and
-C<EDGE_CG>.
+The type of AWS Snowball device to use for this cluster. Currently, the
+only supported device type for cluster jobs is C<EDGE>.
 
 Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 

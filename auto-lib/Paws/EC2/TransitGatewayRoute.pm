@@ -41,22 +41,22 @@ This class has no description
 
 =head2 DestinationCidrBlock => Str
 
-  The CIDR block used for destination matches.
+The CIDR block used for destination matches.
 
 
 =head2 State => Str
 
-  The state of the route.
+The state of the route.
 
 
 =head2 TransitGatewayAttachments => ArrayRef[L<Paws::EC2::TransitGatewayRouteAttachment>]
 
-  The attachments.
+The attachments.
 
 
 =head2 Type => Str
 
-  The route type.
+The route type.
 
 
 

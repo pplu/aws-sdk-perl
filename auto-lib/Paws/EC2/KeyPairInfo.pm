@@ -2,6 +2,8 @@ package Paws::EC2::KeyPairInfo;
   use Moose;
   has KeyFingerprint => (is => 'ro', isa => 'Str', request_name => 'keyFingerprint', traits => ['NameInRequest']);
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
+  has KeyPairId => (is => 'ro', isa => 'Str', request_name => 'keyPairId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::KeyPairInfo object:
 
-  $service_obj->Method(Att1 => { KeyFingerprint => $value, ..., KeyName => $value  });
+  $service_obj->Method(Att1 => { KeyFingerprint => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,7 +41,7 @@ This class has no description
 
 =head2 KeyFingerprint => Str
 
-  If you used CreateKeyPair to create the key pair, this is the SHA-1
+If you used CreateKeyPair to create the key pair, this is the SHA-1
 digest of the DER encoded private key. If you used ImportKeyPair to
 provide AWS the public key, this is the MD5 public key fingerprint as
 specified in section 4 of RFC4716.
@@ -47,7 +49,17 @@ specified in section 4 of RFC4716.
 
 =head2 KeyName => Str
 
-  The name of the key pair.
+The name of the key pair.
+
+
+=head2 KeyPairId => Str
+
+The ID of the key pair.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+Any tags applied to the key pair.
 
 
 

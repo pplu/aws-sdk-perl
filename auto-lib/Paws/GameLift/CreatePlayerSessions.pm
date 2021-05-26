@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> GameSessionId => Str
 
-Unique identifier for the game session to add players to.
+A unique identifier for the game session to add players to.
 
 
 

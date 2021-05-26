@@ -6,6 +6,7 @@ package Paws::MediaLive::DescribeInputResponse;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has InputClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputClass');
+  has InputSourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputSourceType');
   has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlow]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
@@ -60,6 +61,13 @@ ChannelClass is STANDARD, this value is not valid because the channel
 requires two sources in the input.
 
 Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
+=head2 InputSourceType => Str
+
+Certain pull input sources can be dynamic, meaning that they can have
+their URL's dynamically changes during input switch actions. Presently,
+this functionality only works with MP4_FILE inputs.
+
+Valid values are: C<"STATIC">, C<"DYNAMIC">
 =head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlow>]
 
 A list of MediaConnect Flows for this input.

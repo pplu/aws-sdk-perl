@@ -342,9 +342,15 @@ it again.
 
 =item [JobTemplate => Str]
 
+=item [Priority => Int]
+
 =item [Queue => Str]
 
+=item [SimulateReservedQueue => Str]
+
 =item [StatusUpdateInterval => Str]
+
+=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
 
 =item [UserMetadata => L<Paws::MediaConvert::__mapOf__string>]
 
@@ -373,6 +379,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =item [Category => Str]
 
 =item [Description => Str]
+
+=item [Priority => Int]
 
 =item [Queue => Str]
 
@@ -428,6 +436,8 @@ Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =item [PricingPlan => Str]
 
 =item [ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>]
+
+=item [Status => Str]
 
 =item [Tags => L<Paws::MediaConvert::__mapOf__string>]
 
@@ -766,6 +776,8 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 =item [Category => Str]
 
 =item [Description => Str]
+
+=item [Priority => Int]
 
 =item [Queue => Str]
 

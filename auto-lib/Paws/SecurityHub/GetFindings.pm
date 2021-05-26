@@ -689,8 +689,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
 
-The findings attributes used to define a condition to filter the
-findings returned.
+The finding attributes used to define a condition to filter the
+returned findings.
 
 
 
@@ -702,16 +702,18 @@ The maximum number of findings to return.
 
 =head2 NextToken => Str
 
-Paginates results. On your first call to the C<GetFindings> operation,
-set the value of this parameter to C<NULL>. For subsequent calls to the
-operation, fill C<nextToken> in the request with the value of
-C<nextToken> from the previous response to continue listing data.
+The token that is required for pagination. On your first call to the
+C<GetFindings> operation, set the value of this parameter to C<NULL>.
+
+For subsequent calls to the operation, to continue listing data, set
+the value of this parameter to the value returned from the previous
+response.
 
 
 
 =head2 SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]
 
-Findings attributes used to sort the list of findings returned.
+The finding attributes used to sort the list of returned findings.
 
 
 

@@ -30,6 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $AccountQuotas = $DescribeAccountAttributesResponse->AccountQuotas;
+    my $UniqueAccountIdentifier =
+      $DescribeAccountAttributesResponse->UniqueAccountIdentifier;
 
     # Returns a L<Paws::DMS::DescribeAccountAttributesResponse> object.
 

@@ -1,7 +1,10 @@
 
 package Paws::ApplicationInsights::CreateApplication;
   use Moose;
+  has OpsCenterEnabled => (is => 'ro', isa => 'Bool');
+  has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
   has ResourceGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationInsights::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $applicationinsights = Paws->service('ApplicationInsights');
     my $CreateApplicationResponse = $applicationinsights->CreateApplication(
-      ResourceGroupName => 'MyResourceGroupName',
+      ResourceGroupName  => 'MyResourceGroupName',
+      OpsCenterEnabled   => 1,                         # OPTIONAL
+      OpsItemSNSTopicArn => 'MyOpsItemSNSTopicArn',    # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',                         # min: 1, max: 128
+          Value => 'MyTagValue',                       # max: 256
 
+        },
+        ...
+      ],                                               # OPTIONAL
     );
 
     # Results:
@@ -43,9 +55,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
+=head2 OpsCenterEnabled => Bool
+
+When set to C<true>, creates opsItems for any problems detected on an
+application.
+
+
+
+=head2 OpsItemSNSTopicArn => Str
+
+The SNS topic provided to Application Insights that is associated to
+the created opsItem. Allows you to receive notifications for updates to
+the opsItem.
+
+
+
 =head2 B<REQUIRED> ResourceGroupName => Str
 
 The name of the resource group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ApplicationInsights::Tag>]
+
+List of tags to add to the application. tag key (C<Key>) and an
+associated tag value (C<Value>). The maximum length of a tag key is 128
+characters. The maximum length of a tag value is 256 characters.
 
 
 

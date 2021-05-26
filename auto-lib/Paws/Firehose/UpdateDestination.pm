@@ -48,6 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           LogGroupName  => 'MyLogGroupName',     # OPTIONAL
           LogStreamName => 'MyLogStreamName',    # OPTIONAL
         },    # OPTIONAL
+        ClusterEndpoint =>
+          'MyElasticsearchClusterEndpoint',    # min: 1, max: 512; OPTIONAL
         DomainARN => 'MyElasticsearchDomainARN',    # min: 1, max: 512; OPTIONAL
         IndexName => 'MyElasticsearchIndexName',    # min: 1, max: 80; OPTIONAL
         IndexRotationPeriod => 'NoRotation'
@@ -100,7 +102,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Prefix            => 'MyPrefix',               # OPTIONAL
           RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
-        TypeName => 'MyElasticsearchTypeName',    # min: 1, max: 100; OPTIONAL
+        TypeName => 'MyElasticsearchTypeName',    # max: 100; OPTIONAL
       },    # OPTIONAL
       ExtendedS3DestinationUpdate => {
         BucketARN      => 'MyBucketARN',    # min: 1, max: 2048; OPTIONAL

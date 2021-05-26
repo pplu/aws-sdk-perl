@@ -43,13 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector the ipSet is associated with.
+The unique ID of the detector associated with the IPSet.
 
 
 
 =head2 B<REQUIRED> IpSetId => Str
 
-The unique ID of the ipSet you want to delete.
+The unique ID of the IPSet to delete.
 
 
 

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AssignIpv6AddressesResult = $ec2->AssignIpv6Addresses(
-      NetworkInterfaceId => 'MyString',
-      Ipv6AddressCount   => 1,                      # OPTIONAL
-      Ipv6Addresses      => [ 'MyString', ... ],    # OPTIONAL
+      NetworkInterfaceId => 'MyNetworkInterfaceId',
+      Ipv6AddressCount   => 1,                        # OPTIONAL
+      Ipv6Addresses      => [ 'MyString', ... ],      # OPTIONAL
     );
 
     # Results:

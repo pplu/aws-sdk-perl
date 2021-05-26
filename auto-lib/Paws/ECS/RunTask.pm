@@ -1,6 +1,7 @@
 
 package Paws::ECS::RunTask;
   use Moose;
+  has CapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', traits => ['NameInRequest'], request_name => 'capacityProviderStrategy' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
@@ -12,6 +13,7 @@ package Paws::ECS::RunTask;
   has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
+  has ReferenceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'referenceId' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -58,6 +60,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
+=head2 CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+The capacity provider strategy to use for the task.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the C<base> and C<weight> to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an C<ACTIVE> or C<UPDATING> status can be used.
+
+If a C<capacityProviderStrategy> is specified, the C<launchType>
+parameter must be omitted. If no C<capacityProviderStrategy> or
+C<launchType> is specified, the C<defaultCapacityProviderStrategy> for
+the cluster is used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can
+be created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the C<FARGATE>
+or C<FARGATE_SPOT> capacity providers. The AWS Fargate capacity
+providers are available to all accounts and only need to be associated
+with a cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the
+list of available capacity providers for a cluster after the cluster is
+created.
+
+
+
 =head2 Cluster => Str
 
 The short name or full Amazon Resource Name (ARN) of the cluster on
@@ -96,6 +129,9 @@ The launch type on which to run your task. For more information, see
 Amazon ECS Launch Types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+If a C<launchType> is specified, the C<capacityProviderStrategy>
+parameter must be omitted.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
@@ -163,6 +199,12 @@ running a task.
 
 Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
 
+=head2 ReferenceId => Str
+
+The reference ID to use for the task.
+
+
+
 =head2 StartedBy => Str
 
 An optional tag specified when a task is started. For example, if you
@@ -182,9 +224,51 @@ parameter contains the deployment ID of the service that starts it.
 
 The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both
-of which you define. Tag keys can have a maximum character length of
-128 characters, and tag values can have a maximum length of 256
-characters.
+of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case-sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+
+=back
+
 
 
 

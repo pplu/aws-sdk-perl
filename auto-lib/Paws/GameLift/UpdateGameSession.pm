@@ -52,21 +52,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> GameSessionId => Str
 
-Unique identifier for the game session to update.
+A unique identifier for the game session to update.
 
 
 
 =head2 MaximumPlayerSessionCount => Int
 
-Maximum number of players that can be connected simultaneously to the
-game session.
+The maximum number of players that can be connected simultaneously to
+the game session.
 
 
 
 =head2 Name => Str
 
-Descriptive label that is associated with a game session. Session names
-do not need to be unique.
+A descriptive label that is associated with a game session. Session
+names do not need to be unique.
 
 
 

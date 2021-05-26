@@ -33,7 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $FleetId = $ResolveAliasOutput->FleetId;
+    my $FleetArn = $ResolveAliasOutput->FleetArn;
+    my $FleetId  = $ResolveAliasOutput->FleetId;
 
     # Returns a L<Paws::GameLift::ResolveAliasOutput> object.
 
@@ -45,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> AliasId => Str
 
-Unique identifier for the alias you want to resolve.
+The unique identifier of the alias that you want to retrieve a fleet ID
+for. You can use either the alias ID or ARN value.
 
 
 

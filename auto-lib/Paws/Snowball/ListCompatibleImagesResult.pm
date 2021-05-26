@@ -17,7 +17,8 @@ Paws::Snowball::ListCompatibleImagesResult
 
 =head2 CompatibleImages => ArrayRef[L<Paws::Snowball::CompatibleImage>]
 
-A JSON-formatted object that describes a compatible AMI.
+A JSON-formatted object that describes a compatible AMI, including the
+ID and name for a Snowball Edge AMI.
 
 
 =head2 NextToken => Str

@@ -57,15 +57,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 ClientRequestToken => Str
 
-A unique, client-generated idempotency token that when provided in a
+A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed
 parameter. If a request is received with the same parameters and a
-token is included, the request will return information about the
-initial request that used that token.
+token is included, the request returns information about the initial
+request that used that token.
 
-The AWS SDKs prepopulate client request tokens. If using an AWS SDK,
-you do not have to generate an idempotency token, as this will be done
-for you.
+The AWS SDKs prepopulate client request tokens. If you are using an AWS
+SDK, an idempotency token is created for you.
 
 
 
@@ -78,7 +77,7 @@ A description of the pull request.
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::CodeCommit::Target>]
 
 The targets for the pull request, including the source of the code to
-be reviewed (the source branch), and the destination where the creator
+be reviewed (the source branch) and the destination where the creator
 of the pull request intends the code to be merged after the pull
 request is closed (the destination branch).
 
@@ -86,8 +85,8 @@ request is closed (the destination branch).
 
 =head2 B<REQUIRED> Title => Str
 
-The title of the pull request. This title will be used to identify the
-pull request to other users in the repository.
+The title of the pull request. This title is used to identify the pull
+request to other users in the repository.
 
 
 

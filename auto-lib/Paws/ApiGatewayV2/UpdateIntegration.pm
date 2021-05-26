@@ -12,6 +12,7 @@ package Paws::ApiGatewayV2::UpdateIntegration;
   has IntegrationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationType');
   has IntegrationUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationUri');
   has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
+  has PayloadFormatVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payloadFormatVersion');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'requestParameters');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'requestTemplates');
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
@@ -54,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IntegrationType         => 'AWS',                               # OPTIONAL
       IntegrationUri          => 'MyUriWithLengthBetween1And2048',    # OPTIONAL
       PassthroughBehavior     => 'WHEN_NO_MATCH',                     # OPTIONAL
+      PayloadFormatVersion    => 'MyStringWithLengthBetween1And64',   # OPTIONAL
       RequestParameters =>
         { 'My__string' => 'MyStringWithLengthBetween1And512', },      # OPTIONAL
       RequestTemplates =>
@@ -63,8 +65,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ConnectionId   = $UpdateIntegrationResponseShape->ConnectionId;
-    my $ConnectionType = $UpdateIntegrationResponseShape->ConnectionType;
+    my $ApiGatewayManaged = $UpdateIntegrationResponseShape->ApiGatewayManaged;
+    my $ConnectionId      = $UpdateIntegrationResponseShape->ConnectionId;
+    my $ConnectionType    = $UpdateIntegrationResponseShape->ConnectionType;
     my $ContentHandlingStrategy =
       $UpdateIntegrationResponseShape->ContentHandlingStrategy;
     my $CredentialsArn    = $UpdateIntegrationResponseShape->CredentialsArn;
@@ -77,6 +80,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IntegrationUri  = $UpdateIntegrationResponseShape->IntegrationUri;
     my $PassthroughBehavior =
       $UpdateIntegrationResponseShape->PassthroughBehavior;
+    my $PayloadFormatVersion =
+      $UpdateIntegrationResponseShape->PayloadFormatVersion;
     my $RequestParameters = $UpdateIntegrationResponseShape->RequestParameters;
     my $RequestTemplates  = $UpdateIntegrationResponseShape->RequestTemplates;
     my $TemplateSelectionExpression =
@@ -113,9 +118,9 @@ Valid values are: C<"INTERNET">, C<"VPC_LINK">
 
 =head2 ContentHandlingStrategy => Str
 
-Specifies how to handle response payload content type conversions.
-Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the
-following behaviors:
+Supported only for WebSocket APIs. Specifies how to handle response
+payload content type conversions. Supported values are
+CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
 
 CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 string to the corresponding binary blob.
@@ -166,7 +171,7 @@ AWS: for integrating the route or method request with an AWS service
 action, including the Lambda function-invoking action. With the Lambda
 function-invoking action, this is referred to as the Lambda custom
 integration. With any other AWS service action, this is known as AWS
-integration.
+integration. Supported only for WebSocket APIs.
 
 AWS_PROXY: for integrating the route or method request with the Lambda
 function-invoking action with the client request passed through as-is.
@@ -174,14 +179,15 @@ This integration is also referred to as Lambda proxy integration.
 
 HTTP: for integrating the route or method request with an HTTP
 endpoint. This integration is also referred to as the HTTP custom
-integration.
+integration. Supported only for WebSocket APIs.
 
 HTTP_PROXY: for integrating route or method request with an HTTP
 endpoint, with the client request passed through as-is. This is also
 referred to as HTTP proxy integration.
 
 MOCK: for integrating the route or method request with API Gateway as a
-"loopback" endpoint without invoking any backend.
+"loopback" endpoint without invoking any backend. Supported only for
+WebSocket APIs.
 
 Valid values are: C<"AWS">, C<"HTTP">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 
@@ -197,7 +203,7 @@ Specifies the pass-through behavior for incoming requests based on the
 Content-Type header in the request, and the available mapping templates
 specified as the requestTemplates property on the Integration resource.
 There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
-NEVER.
+NEVER. Supported only for WebSocket APIs.
 
 WHEN_NO_MATCH passes the request body for unmapped content types
 through to the integration backend without transformation.
@@ -212,6 +218,13 @@ same HTTP 415 Unsupported Media Type response.
 
 Valid values are: C<"WHEN_NO_MATCH">, C<"NEVER">, C<"WHEN_NO_TEMPLATES">
 
+=head2 PayloadFormatVersion => Str
+
+Specifies the format of the payload sent to an integration. Required
+for HTTP APIs. Currently, the only supported value is 1.0.
+
+
+
 =head2 RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
 
 A key-value map specifying request parameters that are passed from the
@@ -221,7 +234,8 @@ value or static value that must be enclosed within single quotes and
 pre-encoded as required by the backend. The method request parameter
 value must match the pattern of method.request.{location}.{name} ,
 where {location} is querystring, path, or header; and {name} must be a
-valid and unique method request parameter name.
+valid and unique method request parameter name. Supported only for
+WebSocket APIs.
 
 
 
@@ -230,7 +244,7 @@ valid and unique method request parameter name.
 Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the
 client. The content type value is the key in this map, and the template
-(as a String) is the value.
+(as a String) is the value. Supported only for WebSocket APIs.
 
 
 
@@ -243,7 +257,8 @@ The template selection expression for the integration.
 =head2 TimeoutInMillis => Int
 
 Custom timeout between 50 and 29,000 milliseconds. The default value is
-29,000 milliseconds or 29 seconds.
+29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
+is 5,000 milliseconds, or 5 seconds for HTTP APIs.
 
 
 

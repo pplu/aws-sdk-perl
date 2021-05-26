@@ -106,7 +106,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-In some cases, you must explicity acknowledge that your stack template
+In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for AWS CloudFormation to create
 the stack.
 

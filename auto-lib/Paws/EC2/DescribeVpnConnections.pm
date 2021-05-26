@@ -33,16 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      VpnConnectionIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
+      ],                                    # OPTIONAL
+      VpnConnectionIds => [ 'MyVpnConnectionId', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -129,6 +125,11 @@ C<vpn-connection-id> - The ID of the VPN connection.
 
 C<vpn-gateway-id> - The ID of a virtual private gateway associated with
 the VPN connection.
+
+=item *
+
+C<transit-gateway-id> - The ID of a transit gateway associated with the
+VPN connection.
 
 =back
 

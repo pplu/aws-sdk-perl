@@ -47,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Functions => [
         {
+          Id                    => 'My__string',
           FunctionArn           => 'My__string',
           FunctionConfiguration => {
             EncodingType => 'binary',    # values: binary, json; OPTIONAL
@@ -62,8 +63,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               ResourceAccessPolicies => [
                 {
-                  Permission => 'ro',           # values: ro, rw; OPTIONAL
                   ResourceId => 'My__string',
+                  Permission => 'ro',           # values: ro, rw; OPTIONAL
                 },
                 ...
               ],                                # OPTIONAL
@@ -75,7 +76,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Pinned     => 1,              # OPTIONAL
             Timeout    => 1,              # OPTIONAL
           },    # OPTIONAL
-          Id => 'My__string',
         },
         ...
       ],        # OPTIONAL

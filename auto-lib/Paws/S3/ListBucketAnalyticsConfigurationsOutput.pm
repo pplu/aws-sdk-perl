@@ -1,10 +1,11 @@
 
 package Paws::S3::ListBucketAnalyticsConfigurationsOutput;
   use Moose;
-  has AnalyticsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::AnalyticsConfiguration]', traits => ['NameInRequest'], request_name => 'AnalyticsConfiguration');
+  has AnalyticsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::AnalyticsConfiguration]', request_name => 'AnalyticsConfiguration', traits => ['NameInRequest']);
   has ContinuationToken => (is => 'ro', isa => 'Str');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has NextContinuationToken => (is => 'ro', isa => 'Str');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -26,7 +27,9 @@ The list of analytics configurations for a bucket.
 
 =head2 ContinuationToken => Str
 
-The ContinuationToken that represents where this request began.
+The marker that is used as a starting point for this analytics
+configuration list response. This value is present if it was sent in
+the request.
 
 
 
@@ -40,10 +43,10 @@ the NextContinuationToken will be provided for a subsequent request.
 
 =head2 NextContinuationToken => Str
 
-NextContinuationToken is sent when isTruncated is true, which indicates
-that there are more analytics configurations to list. The next request
-must include this NextContinuationToken. The token is obfuscated and is
-not a usable value.
+C<NextContinuationToken> is sent when C<isTruncated> is true, which
+indicates that there are more analytics configurations to list. The
+next request must include this C<NextContinuationToken>. The token is
+obfuscated and is not a usable value.
 
 
 

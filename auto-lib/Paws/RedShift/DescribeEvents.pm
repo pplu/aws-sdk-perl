@@ -172,7 +172,7 @@ snapshot identifier.
 =back
 
 
-Valid values are: C<"cluster">, C<"cluster-parameter-group">, C<"cluster-security-group">, C<"cluster-snapshot">
+Valid values are: C<"cluster">, C<"cluster-parameter-group">, C<"cluster-security-group">, C<"cluster-snapshot">, C<"scheduled-action">
 
 =head2 StartTime => Str
 

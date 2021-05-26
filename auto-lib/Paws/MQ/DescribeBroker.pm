@@ -36,26 +36,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AutoMinorVersionUpgrade =
       $DescribeBrokerResponse->AutoMinorVersionUpgrade;
-    my $BrokerArn        = $DescribeBrokerResponse->BrokerArn;
-    my $BrokerId         = $DescribeBrokerResponse->BrokerId;
-    my $BrokerInstances  = $DescribeBrokerResponse->BrokerInstances;
-    my $BrokerName       = $DescribeBrokerResponse->BrokerName;
-    my $BrokerState      = $DescribeBrokerResponse->BrokerState;
-    my $Configurations   = $DescribeBrokerResponse->Configurations;
-    my $Created          = $DescribeBrokerResponse->Created;
-    my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
-    my $EngineType       = $DescribeBrokerResponse->EngineType;
-    my $EngineVersion    = $DescribeBrokerResponse->EngineVersion;
-    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
-    my $Logs             = $DescribeBrokerResponse->Logs;
+    my $BrokerArn         = $DescribeBrokerResponse->BrokerArn;
+    my $BrokerId          = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances   = $DescribeBrokerResponse->BrokerInstances;
+    my $BrokerName        = $DescribeBrokerResponse->BrokerName;
+    my $BrokerState       = $DescribeBrokerResponse->BrokerState;
+    my $Configurations    = $DescribeBrokerResponse->Configurations;
+    my $Created           = $DescribeBrokerResponse->Created;
+    my $DeploymentMode    = $DescribeBrokerResponse->DeploymentMode;
+    my $EncryptionOptions = $DescribeBrokerResponse->EncryptionOptions;
+    my $EngineType        = $DescribeBrokerResponse->EngineType;
+    my $EngineVersion     = $DescribeBrokerResponse->EngineVersion;
+    my $HostInstanceType  = $DescribeBrokerResponse->HostInstanceType;
+    my $Logs              = $DescribeBrokerResponse->Logs;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
     my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;
-    my $PubliclyAccessible   = $DescribeBrokerResponse->PubliclyAccessible;
-    my $SecurityGroups       = $DescribeBrokerResponse->SecurityGroups;
-    my $SubnetIds            = $DescribeBrokerResponse->SubnetIds;
-    my $Tags                 = $DescribeBrokerResponse->Tags;
-    my $Users                = $DescribeBrokerResponse->Users;
+    my $PendingHostInstanceType =
+      $DescribeBrokerResponse->PendingHostInstanceType;
+    my $PendingSecurityGroups = $DescribeBrokerResponse->PendingSecurityGroups;
+    my $PubliclyAccessible    = $DescribeBrokerResponse->PubliclyAccessible;
+    my $SecurityGroups        = $DescribeBrokerResponse->SecurityGroups;
+    my $StorageType           = $DescribeBrokerResponse->StorageType;
+    my $SubnetIds             = $DescribeBrokerResponse->SubnetIds;
+    my $Tags                  = $DescribeBrokerResponse->Tags;
+    my $Users                 = $DescribeBrokerResponse->Users;
 
     # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 

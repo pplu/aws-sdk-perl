@@ -1,7 +1,8 @@
 
 package Paws::Route53::ListTagsForResourcesResponse;
   use Moose;
-  has ResourceTagSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceTagSet]', required => 1);
+  has ResourceTagSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceTagSet]', request_name => 'ResourceTagSet', traits => ['NameInRequest'], required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

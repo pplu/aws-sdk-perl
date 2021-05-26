@@ -45,44 +45,44 @@ This class has no description
 
 =head2 CurrencyCode => Str
 
-  The currency in which the C<UpfrontPrice> and C<HourlyPrice> amounts
+The currency in which the C<UpfrontPrice> and C<HourlyPrice> amounts
 are specified. At this time, the only supported currency is C<USD>.
 
 
 =head2 Duration => Int
 
-  The duration of the reservation's term in seconds.
+The duration of the reservation's term in seconds.
 
 
 =head2 HostIdSet => ArrayRef[Str|Undef]
 
-  The IDs of the Dedicated Hosts associated with the reservation.
+The IDs of the Dedicated Hosts associated with the reservation.
 
 
 =head2 HostReservationId => Str
 
-  The ID of the reservation.
+The ID of the reservation.
 
 
 =head2 HourlyPrice => Str
 
-  The hourly price of the reservation per hour.
+The hourly price of the reservation per hour.
 
 
 =head2 InstanceFamily => Str
 
-  The instance family on the Dedicated Host that the reservation can be
+The instance family on the Dedicated Host that the reservation can be
 associated with.
 
 
 =head2 PaymentOption => Str
 
-  The payment option for the reservation.
+The payment option for the reservation.
 
 
 =head2 UpfrontPrice => Str
 
-  The upfront price of the reservation.
+The upfront price of the reservation.
 
 
 

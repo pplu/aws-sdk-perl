@@ -1,7 +1,8 @@
 
 package Paws::S3::CreateBucketOutput;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  has Location => (is => 'ro', isa => 'Str', header_name => 'Location', traits => ['ParamInHeader']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -17,7 +18,9 @@ Paws::S3::CreateBucketOutput
 
 =head2 Location => Str
 
-
+Specifies the Region where the bucket will be created. If you are
+creating a bucket on the US East (N. Virginia) Region (us-east-1), you
+do not need to specify the location.
 
 
 

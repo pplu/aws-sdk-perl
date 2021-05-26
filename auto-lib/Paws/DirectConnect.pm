@@ -801,6 +801,8 @@ be private or already whitelisted for the virtual interface.
 
 =item [LagId => Str]
 
+=item [ProviderName => Str]
+
 =item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
 
@@ -918,6 +920,8 @@ or transit gateway have the same AWS Payer ID.
 
 =item [LagId => Str]
 
+=item [ProviderName => Str]
+
 =item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
 
@@ -968,6 +972,8 @@ Intended for use by AWS Direct Connect Partners only.
 =item [ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
 =item [ConnectionId => Str]
+
+=item [ProviderName => Str]
 
 =item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
@@ -1144,8 +1150,8 @@ Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayResult> instance
 
 Deletes the specified Direct Connect gateway. You must first delete all
 virtual interfaces that are attached to the Direct Connect gateway and
-disassociate all virtual private gateways that are associated with the
-Direct Connect gateway.
+disassociate all virtual private gateways associated with the Direct
+Connect gateway.
 
 
 =head2 DeleteDirectConnectGatewayAssociation
@@ -1167,6 +1173,11 @@ Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult> i
 
 Deletes the association between the specified Direct Connect gateway
 and virtual private gateway.
+
+We recommend that you specify the C<associationID> to delete the
+association. Alternatively, if you own virtual gateway and a Direct
+Connect gateway association, you can specify the C<virtualGatewayId>
+and C<directConnectGatewayId> to delete an association.
 
 
 =head2 DeleteDirectConnectGatewayAssociationProposal

@@ -56,7 +56,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-A set of key-value pairs that represents additional authenticated data.
+Specifies the encryption context that will be used when encrypting the
+data key.
+
+An I<encryption context> is a collection of non-secret key-value pairs
+that represents additional authenticated data. When you use an
+encryption context to encrypt data, you must specify the same (an exact
+case-sensitive match) encryption context to decrypt the data. An
+encryption context is optional when encrypting with a symmetric CMK,
+but it is highly recommended.
 
 For more information, see Encryption Context
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
@@ -76,8 +84,8 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the customer master key (CMK) that encrypts the data
-key.
+The identifier of the symmetric customer master key (CMK) that encrypts
+the data key.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with

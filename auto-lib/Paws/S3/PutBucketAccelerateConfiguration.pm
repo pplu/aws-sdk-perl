@@ -1,9 +1,10 @@
 
 package Paws::S3::PutBucketAccelerateConfiguration;
   use Moose;
-  has AccelerateConfiguration => (is => 'ro', isa => 'Paws::S3::AccelerateConfiguration', required => 1);
+  has AccelerateConfiguration => (is => 'ro', isa => 'Paws::S3::AccelerateConfiguration', traits => ['ParamInBody'], required => 1);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -13,6 +14,7 @@ package Paws::S3::PutBucketAccelerateConfiguration;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> AccelerateConfiguration => L<Paws::S3::AccelerateConfiguration>
 
-Specifies the Accelerate Configuration you want to set for the bucket.
+Container for setting the transfer acceleration state.
 
 
 

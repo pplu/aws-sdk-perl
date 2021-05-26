@@ -56,28 +56,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   ...
                 ],                               # OPTIONAL
+                Namespace => 'MyActionNamespace',   # min: 1, max: 100; OPTIONAL
                 OutputArtifacts => [
                   {
-                    Name => 'MyArtifactName',    # min: 1, max: 100
+                    Name => 'MyArtifactName',       # min: 1, max: 100
 
                   },
                   ...
-                ],                               # OPTIONAL
-                Region   => 'MyAWSRegionName',   # min: 4, max: 30; OPTIONAL
-                RoleArn  => 'MyRoleArn',         # max: 1024
-                RunOrder => 1,                   # min: 1, max: 999; OPTIONAL
+                ],                                  # OPTIONAL
+                Region   => 'MyAWSRegionName',      # min: 4, max: 30; OPTIONAL
+                RoleArn  => 'MyRoleArn',            # max: 1024
+                RunOrder => 1,                      # min: 1, max: 999; OPTIONAL
               },
               ...
             ],
-            Name     => 'MyStageName',           # min: 1, max: 100
+            Name     => 'MyStageName',              # min: 1, max: 100
             Blockers => [
               {
-                Name => 'MyBlockerName',         # min: 1, max: 100
-                Type => 'Schedule',              # values: Schedule
+                Name => 'MyBlockerName',            # min: 1, max: 100
+                Type => 'Schedule',                 # values: Schedule
 
               },
               ...
-            ],                                   # OPTIONAL
+            ],                                      # OPTIONAL
           },
           ...
         ],
@@ -89,7 +90,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type => 'KMS',                               # values: KMS
 
           },    # OPTIONAL
-        },    # OPTIONAL
+        },
         ArtifactStores => {
           'MyAWSRegionName' => {
             Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
@@ -99,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Type => 'KMS',                               # values: KMS
 
             },    # OPTIONAL
-          },    # key: min: 4, max: 30; OPTIONAL, value: OPTIONAL
+          },    # key: min: 4, max: 30; OPTIONAL
         },    # OPTIONAL
         Version => 1,    # min: 1; OPTIONAL
       },

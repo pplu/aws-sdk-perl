@@ -30,7 +30,7 @@ next page of jobs.
 
 The requested vocabulary state.
 
-Valid values are: C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
+Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
 =head2 Vocabularies => ArrayRef[L<Paws::Transcribe::VocabularyInfo>]
 
 A list of objects that describe the vocabularies that match the search

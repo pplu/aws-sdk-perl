@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListViolationEventsResponse = $iot->ListViolationEvents(
       EndTime             => '1970-01-01T01:00:00',
       StartTime           => '1970-01-01T01:00:00',
-      MaxResults          => 1,                          # OPTIONAL
-      NextToken           => 'MyNextToken',              # OPTIONAL
-      SecurityProfileName => 'MySecurityProfileName',    # OPTIONAL
-      ThingName           => 'MyThingName',              # OPTIONAL
+      MaxResults          => 1,                              # OPTIONAL
+      NextToken           => 'MyNextToken',                  # OPTIONAL
+      SecurityProfileName => 'MySecurityProfileName',        # OPTIONAL
+      ThingName           => 'MyDeviceDefenderThingName',    # OPTIONAL
     );
 
     # Results:

@@ -51,31 +51,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 
 
 =head2 Name => Str
 
-Descriptive label that is associated with an alias. Alias names do not
-need to be unique.
+A descriptive label that is associated with an alias. Alias names do
+not need to be unique.
 
 
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+action. To start at the beginning of the result set, do not specify a
+value.
 
 
 
 =head2 RoutingStrategyType => Str
 
-Type of routing to filter results on. Use this parameter to retrieve
-only aliases of a certain type. To retrieve all aliases, leave this
-parameter empty.
+The routing type to filter results on. Use this parameter to retrieve
+only aliases with a certain routing type. To retrieve all aliases,
+leave this parameter empty.
 
 Possible routing types include the following:
 

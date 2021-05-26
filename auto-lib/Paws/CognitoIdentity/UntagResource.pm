@@ -2,7 +2,7 @@
 package Paws::CognitoIdentity::UntagResource;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceArn => 'MyARNString',
       TagKeys     => [
         'MyTagKeysType', ...    # min: 1, max: 128
-      ],                        # OPTIONAL
+      ],
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -48,7 +49,7 @@ assigned to.
 
 
 
-=head2 TagKeys => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The keys of the tags to remove from the user pool.
 

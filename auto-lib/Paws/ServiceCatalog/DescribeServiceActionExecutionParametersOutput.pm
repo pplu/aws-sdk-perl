@@ -16,7 +16,7 @@ Paws::ServiceCatalog::DescribeServiceActionExecutionParametersOutput
 
 =head2 ServiceActionParameters => ArrayRef[L<Paws::ServiceCatalog::ExecutionParameter>]
 
-
+The parameters of the self-service action.
 
 
 =head2 _request_id => Str

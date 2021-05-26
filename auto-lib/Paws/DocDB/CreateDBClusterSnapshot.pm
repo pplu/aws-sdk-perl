@@ -54,8 +54,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The identifier of the DB cluster to create a snapshot for. This
-parameter is not case sensitive.
+The identifier of the cluster to create a snapshot for. This parameter
+is not case sensitive.
 
 Constraints:
 
@@ -73,8 +73,8 @@ Example: C<my-cluster>
 
 =head2 B<REQUIRED> DBClusterSnapshotIdentifier => Str
 
-The identifier of the DB cluster snapshot. This parameter is stored as
-a lowercase string.
+The identifier of the cluster snapshot. This parameter is stored as a
+lowercase string.
 
 Constraints:
 
@@ -100,7 +100,7 @@ Example: C<my-cluster-snapshot1>
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the DB cluster snapshot.
+The tags to be assigned to the cluster snapshot.
 
 
 

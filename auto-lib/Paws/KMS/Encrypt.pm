@@ -1,6 +1,7 @@
 
 package Paws::KMS::Encrypt;
   use Moose;
+  has EncryptionAlgorithm => (is => 'ro', isa => 'Str');
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
@@ -50,13 +51,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 =head1 ATTRIBUTES
 
 
+=head2 EncryptionAlgorithm => Str
+
+Specifies the encryption algorithm that AWS KMS will use to encrypt the
+plaintext message. The algorithm must be compatible with the CMK that
+you specify.
+
+This parameter is required only for asymmetric CMKs. The default value,
+C<SYMMETRIC_DEFAULT>, is the algorithm used for symmetric CMKs. If you
+are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.
+
+Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">
+
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-Name-value pair that specifies the encryption context to be used for
-authenticated encryption. If used here, the same value must be supplied
-to the C<Decrypt> API or decryption will fail. For more information,
-see Encryption Context
-(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
+Specifies the encryption context that will be used to encrypt the data.
+An encryption context is valid only for cryptographic operations with a
+symmetric CMK. The standard asymmetric encryption algorithms that AWS
+KMS uses do not support an encryption context.
+
+An I<encryption context> is a collection of non-secret key-value pairs
+that represents additional authenticated data. When you use an
+encryption context to encrypt data, you must specify the same (an exact
+case-sensitive match) encryption context to decrypt the data. An
+encryption context is optional when encrypting with a symmetric CMK,
+but it is highly recommended.
+
+For more information, see Encryption Context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

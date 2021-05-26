@@ -57,7 +57,8 @@ Maximum number of results to be returned per page.
 
 =head2 B<REQUIRED> MigrationTaskName => Str
 
-Unique identifier that references the migration task.
+Unique identifier that references the migration task. I<Do not store
+personal data in this field.>
 
 
 

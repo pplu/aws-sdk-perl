@@ -47,10 +47,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 
 =head2 B<REQUIRED> LanguageCode => Str
 
-The language of the input documents. You can specify English ("en") or
-Spanish ("es"). All documents must be in the same language.
+The language of the input documents. You can specify any of the primary
+languages supported by Amazon Comprehend. All documents must be in the
+same language.
 
-Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 
 =head2 B<REQUIRED> Text => Str
 

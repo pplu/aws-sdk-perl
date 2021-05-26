@@ -42,30 +42,30 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone for the modified Reserved Instances.
+The Availability Zone for the modified Reserved Instances.
 
 
 =head2 InstanceCount => Int
 
-  The number of modified Reserved Instances.
+The number of modified Reserved Instances.
 
 This is a required field for a request.
 
 
 =head2 InstanceType => Str
 
-  The instance type for the modified Reserved Instances.
+The instance type for the modified Reserved Instances.
 
 
 =head2 Platform => Str
 
-  The network platform of the modified Reserved Instances, which is
+The network platform of the modified Reserved Instances, which is
 either EC2-Classic or EC2-VPC.
 
 
 =head2 Scope => Str
 
-  Whether the Reserved Instance is applied to instances in a Region or
+Whether the Reserved Instance is applied to instances in a Region or
 instances in a specific Availability Zone.
 
 

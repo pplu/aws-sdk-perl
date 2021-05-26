@@ -18,7 +18,7 @@ Paws::CodePipeline::ListPipelinesOutput
 =head2 NextToken => Str
 
 If the amount of returned information is significantly large, an
-identifier is also returned which can be used in a subsequent list
+identifier is also returned. It can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
 
 

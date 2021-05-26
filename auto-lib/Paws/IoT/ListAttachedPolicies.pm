@@ -70,7 +70,7 @@ When true, recursively list attached policies.
 
 =head2 B<REQUIRED> Target => Str
 
-The group for which the policies will be listed.
+The group or principal for which the policies will be listed.
 
 
 

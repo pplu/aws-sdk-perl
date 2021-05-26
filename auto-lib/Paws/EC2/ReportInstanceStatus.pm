@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     $ec2->ReportInstanceStatus(
-      Instances   => [ 'MyString', ... ],
+      Instances   => [ 'MyInstanceId', ... ],
       ReasonCodes => [
         'instance-stuck-in-state',
         ... # values: instance-stuck-in-state, unresponsive, not-accepting-credentials, password-not-available, performance-network, performance-instance-store, performance-ebs-volume, performance-other, other

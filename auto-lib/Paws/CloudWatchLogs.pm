@@ -526,6 +526,11 @@ encrypted with the CMK is still within Amazon CloudWatch Logs. This
 enables Amazon CloudWatch Logs to decrypt this data whenever it is
 requested.
 
+B<Important:> CloudWatch Logs supports only symmetric CMKs. Do not use
+an associate an asymmetric CMK with your log group. For more
+information, see Using Symmetric and Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
+
 Note that it can take up to 5 minutes for this operation to take
 effect.
 
@@ -592,6 +597,9 @@ the same S3 bucket. To separate out log data for each export task, you
 can specify a prefix to be used as the Amazon S3 key prefix for all
 exported objects.
 
+Exporting to S3 buckets that are encrypted with AES-256 is supported.
+Exporting to S3 buckets encrypted with SSE-KMS is not supported.
+
 
 =head2 CreateLogGroup
 
@@ -612,7 +620,7 @@ Returns: nothing
 
 Creates a log group with the specified name.
 
-You can create up to 5000 log groups per account.
+You can create up to 20,000 log groups per account.
 
 You must use the following guidelines when naming a log group:
 
@@ -629,7 +637,8 @@ Log group names can be between 1 and 512 characters long.
 =item *
 
 Log group names consist of the following characters: a-z, A-Z, 0-9, '_'
-(underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
+(underscore), '-' (hyphen), '/' (forward slash), '.' (period), and '#'
+(number sign)
 
 =back
 
@@ -642,6 +651,11 @@ Logs to decrypt this data whenever it is requested.
 If you attempt to associate a CMK with the log group but the CMK does
 not exist or the CMK is disabled, you will receive an
 C<InvalidParameterException> error.
+
+B<Important:> CloudWatch Logs supports only symmetric CMKs. Do not
+associate an asymmetric CMK with your log group. For more information,
+see Using Symmetric and Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 
 
 =head2 CreateLogStream
@@ -662,7 +676,8 @@ Returns: nothing
 Creates a log stream for the specified log group.
 
 There is no limit on the number of log streams that you can create for
-a log group.
+a log group. There is a limit of 50 TPS on C<CreateLogStream>
+operations, after which transactions are throttled.
 
 You must use the following guidelines when naming a log stream:
 
@@ -1164,8 +1179,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::GetQueryResults
 
 Returns: a L<Paws::CloudWatchLogs::GetQueryResultsResponse> instance
 
-Returns the results from the specified query. If the query is in
-progress, partial results of that current execution are returned.
+Returns the results from the specified query.
 
 Only the fields requested in the query are returned, along with a
 C<@ptr> field which is the identifier for the log record. You can use
@@ -1173,6 +1187,11 @@ the value of C<@ptr> in a operation to get the full log record.
 
 C<GetQueryResults> does not start a query execution. To run a query,
 use .
+
+If the value of the C<Status> field in the output is C<Running>, this
+operation returns only partial results. If you see a value of
+C<Scheduled> or C<Running> for the status, you can retry the operation
+later to see the final results.
 
 
 =head2 ListTagsLogGroup
@@ -1208,18 +1227,18 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
 Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
 
-Creates or updates a destination. A destination encapsulates a physical
-resource (such as an Amazon Kinesis stream) and enables you to
-subscribe to a real-time stream of log events for a different account,
-ingested using PutLogEvents. Currently, the only supported physical
-resource is a Kinesis stream belonging to the same account as the
-destination.
+Creates or updates a destination. This operation is used only to create
+destinations for cross-account subscriptions.
 
-Through an access policy, a destination controls what is written to its
-Kinesis stream. By default, C<PutDestination> does not set any access
-policy with the destination, which means a cross-account user cannot
-call PutSubscriptionFilter against this destination. To enable this,
-the destination owner must call PutDestinationPolicy after
+A destination encapsulates a physical resource (such as an Amazon
+Kinesis stream) and enables you to subscribe to a real-time stream of
+log events for a different account, ingested using PutLogEvents.
+
+Through an access policy, a destination controls what is written to it.
+By default, C<PutDestination> does not set any access policy with the
+destination, which means a cross-account user cannot call
+PutSubscriptionFilter against this destination. To enable this, the
+destination owner must call PutDestinationPolicy after
 C<PutDestination>.
 
 
@@ -1268,10 +1287,11 @@ Uploads a batch of log events to the specified log stream.
 
 You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
-a sequence token. You can also get the sequence token using
-DescribeLogStreams. If you call C<PutLogEvents> twice within a narrow
-time period using the same value for C<sequenceToken>, both calls may
-be successful, or one may be rejected.
+a sequence token. You can also get the sequence token in the
+C<expectedSequenceToken> field from C<InvalidSequenceTokenException>.
+If you call C<PutLogEvents> twice within a narrow time period using the
+same value for C<sequenceToken>, both calls may be successful, or one
+may be rejected.
 
 The batch of events must satisfy the following constraints:
 
@@ -1304,12 +1324,17 @@ specified in .NET format: yyyy-mm-ddThh:mm:ss. For example,
 
 =item *
 
+A batch of log events in a single request cannot span more than 24
+hours. Otherwise, the operation fails.
+
+=item *
+
 The maximum number of log events in a batch is 10,000.
 
 =item *
 
-A batch of log events in a single request cannot span more than 24
-hours. Otherwise, the operation fails.
+There is a quota of 5 requests per second per log stream. Additional
+requests are throttled. This quota can't be changed.
 
 =back
 
@@ -1449,13 +1474,15 @@ associate a second filter with a log group.
 
 =item EndTime => Int
 
-=item LogGroupName => Str
-
 =item QueryString => Str
 
 =item StartTime => Int
 
 =item [Limit => Int]
+
+=item [LogGroupName => Str]
+
+=item [LogGroupNames => ArrayRef[Str|Undef]]
 
 
 =back

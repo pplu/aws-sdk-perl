@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudhsmv2 = Paws->service('CloudHSMv2');
     my $ListTagsResponse = $cloudhsmv2->ListTags(
-      ResourceId => 'MyClusterId',
+      ResourceId => 'MyResourceId',
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
     );

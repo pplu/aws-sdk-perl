@@ -38,7 +38,7 @@ This class has no description
 
 =head2 GroupName => Str
 
-  The name of the placement group the instance is in.
+The name of the placement group that the instance is in.
 
 
 

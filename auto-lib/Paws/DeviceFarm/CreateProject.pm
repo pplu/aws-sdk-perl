@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 =head2 DefaultJobTimeoutMinutes => Int
 
 Sets the execution timeout value (in minutes) for a project. All test
-runs in this project will use the specified execution timeout value
-unless overridden when scheduling a run.
+runs in this project use the specified execution timeout value unless
+overridden when scheduling a run.
 
 
 

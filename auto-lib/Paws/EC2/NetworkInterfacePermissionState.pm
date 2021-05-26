@@ -39,12 +39,12 @@ This class has no description
 
 =head2 State => Str
 
-  The state of the permission.
+The state of the permission.
 
 
 =head2 StatusMessage => Str
 
-  A status message, if applicable.
+A status message, if applicable.
 
 
 

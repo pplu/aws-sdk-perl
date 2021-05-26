@@ -32,17 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeClientVpnEndpointsResult = $ec2->DescribeClientVpnEndpoints(
-      ClientVpnEndpointIds => [ 'MyString', ... ],    # OPTIONAL
-      DryRun               => 1,                      # OPTIONAL
+      ClientVpnEndpointIds => [ 'MyClientVpnEndpointId', ... ],    # OPTIONAL
+      DryRun               => 1,                                   # OPTIONAL
       Filters              => [
         {
           Name   => 'MyString',
-          Values => [ 'MyString', ... ],
+          Values => [ 'MyString', ... ],                           # OPTIONAL
         },
         ...
-      ],                                              # OPTIONAL
-      MaxResults => 1,                                # OPTIONAL
-      NextToken  => 'MyNextToken',                    # OPTIONAL
+      ],                                                           # OPTIONAL
+      MaxResults => 1,                                             # OPTIONAL
+      NextToken  => 'MyNextToken',                                 # OPTIONAL
     );
 
     # Results:
@@ -76,6 +76,19 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
 One or more filters. Filter names and values are case-sensitive.
+
+=over
+
+=item *
+
+C<endpoint-id> - The ID of the Client VPN endpoint.
+
+=item *
+
+C<transport-protocol> - The transport protocol (C<tcp> | C<udp>).
+
+=back
+
 
 
 

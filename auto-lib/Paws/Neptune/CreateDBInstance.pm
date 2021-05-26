@@ -14,6 +14,7 @@ package Paws::Neptune::CreateDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -83,6 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBParameterGroupName            => 'MyString',             # OPTIONAL
       DBSecurityGroups                => [ 'MyString', ... ],    # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       Domain                          => 'MyString',             # OPTIONAL
       DomainIAMRoleName               => 'MyString',             # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
@@ -194,11 +196,7 @@ Cannot be set to 0 if the DB instance is a source to Read Replicas
 
 =head2 CharacterSetName => Str
 
-Indicates that the DB instance should be associated with the specified
-CharacterSet.
-
-Not applicable. The character set is managed by the DB cluster. For
-more information, see CreateDBCluster.
+I<(Not supported by Neptune)>
 
 
 
@@ -303,6 +301,19 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. See Deleting a DB
+Instance
+(https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html).
+
+DB instances in a DB cluster can be deleted even when deletion
+protection is enabled in their parent DB cluster.
+
+
+
 =head2 Domain => Str
 
 Specify the Active Directory Domain to create the instance in.
@@ -334,8 +345,7 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the DB instance, and otherwise
-false.
+I<(Not supported by Neptune)>
 
 
 
@@ -349,7 +359,8 @@ Valid Values: C<neptune>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine to use.
+The version number of the database engine to use. Currently, setting
+this parameter has no effect.
 
 
 
@@ -438,20 +449,13 @@ the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 
 =head2 OptionGroupName => Str
 
-Indicates that the DB instance should be associated with the specified
-option group.
-
-Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can't be removed from an option group, and that option group can't
-be removed from a DB instance once it is associated with a DB instance
+I<(Not supported by Neptune)>
 
 
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
-or the KMS key alias for the KMS encryption key.
+I<(Not supported by Neptune)>
 
 
 

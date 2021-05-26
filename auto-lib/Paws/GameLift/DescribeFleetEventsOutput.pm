@@ -17,7 +17,7 @@ Paws::GameLift::DescribeFleetEventsOutput
 
 =head2 Events => ArrayRef[L<Paws::GameLift::Event>]
 
-Collection of objects containing event log entries for the specified
+A collection of objects containing event log entries for the specified
 fleet.
 
 

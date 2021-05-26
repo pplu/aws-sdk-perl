@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LicenseConfigurationArn => 'MyString',
       Filters                 => [
         {
-          Name   => 'MyFilterName',              # OPTIONAL
+          Name => 'MyFilterName',                # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
@@ -59,21 +59,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 Filters => ArrayRef[L<Paws::LicenseManager::Filter>]
 
-List of filters to apply.
+Filters to scope the results. The following filters and logical
+operators are supported:
+
+=over
+
+=item *
+
+C<resourceArn> - The ARN of the license configuration resource. Logical
+operators are C<EQUALS> | C<NOT_EQUALS>.
+
+=item *
+
+C<resourceType> - The resource type (EC2_INSTANCE | EC2_HOST | EC2_AMI
+| SYSTEMS_MANAGER_MANAGED_INSTANCE). Logical operators are C<EQUALS> |
+C<NOT_EQUALS>.
+
+=item *
+
+C<resourceAccount> - The ID of the account that owns the resource.
+Logical operators are C<EQUALS> | C<NOT_EQUALS>.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> LicenseConfigurationArn => Str
 
-ARN of the targeted C<LicenseConfiguration> object.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned C<NextToken>
-value.
+Maximum number of results to return in a single call.
 
 
 

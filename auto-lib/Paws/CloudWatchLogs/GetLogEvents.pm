@@ -89,6 +89,9 @@ The name of the log stream.
 The token for the next set of items to return. (You received this token
 from a previous call.)
 
+Using this token works only when you specify C<true> for
+C<startFromHead>.
+
 
 
 =head2 StartFromHead => Bool
@@ -96,6 +99,9 @@ from a previous call.)
 If the value is true, the earliest log events are returned first. If
 the value is false, the latest log events are returned first. The
 default value is false.
+
+If you are using C<nextToken> in this operation, you must specify
+C<true> for C<startFromHead>.
 
 
 

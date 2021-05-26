@@ -54,27 +54,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> AliasId => Str
 
-Unique identifier for a fleet alias. Specify the alias you want to
-update.
+A unique identifier for the alias that you want to update. You can use
+either the alias ID or ARN value.
 
 
 
 =head2 Description => Str
 
-Human-readable description of an alias.
+A human-readable description of the alias.
 
 
 
 =head2 Name => Str
 
-Descriptive label that is associated with an alias. Alias names do not
-need to be unique.
+A descriptive label that is associated with an alias. Alias names do
+not need to be unique.
 
 
 
 =head2 RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
 
-Object that specifies the fleet and routing type to use for the alias.
+The routing configuration, including routing type and fleet target, for
+the alias.
 
 
 

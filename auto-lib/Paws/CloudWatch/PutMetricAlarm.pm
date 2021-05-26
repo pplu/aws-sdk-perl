@@ -91,11 +91,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricName => 'MyMetricName',       # min: 1, max: 255
               Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Period => 1,                          # min: 1
+            Period => 1,                          # min: 1; OPTIONAL
             Stat   => 'MyStat',
             Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
+          Period     => 1,    # min: 1; OPTIONAL
           ReturnData => 1,    # OPTIONAL
         },
         ...
@@ -129,7 +130,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head2 ActionsEnabled => Bool
 
 Indicates whether actions should be executed during any changes to the
-alarm state. The default is TRUE.
+alarm state. The default is C<TRUE>.
 
 
 
@@ -182,7 +183,7 @@ Valid values are: C<"GreaterThanOrEqualToThreshold">, C<"GreaterThanThreshold">,
 
 =head2 DatapointsToAlarm => Int
 
-The number of datapoints that must be breaching to trigger the alarm.
+The number of data points that must be breaching to trigger the alarm.
 This is used only if you are setting an "M out of N" alarm. In that
 case, this value is the M. For more information, see Evaluating an
 Alarm
@@ -259,7 +260,9 @@ C<arn:aws:swf:I<region>:I<account-id>:action/actions/AWS_EC2.InstanceId.Reboot/1
 
 =head2 MetricName => Str
 
-The name for the metric associated with the alarm.
+The name for the metric associated with the alarm. For each
+C<PutMetricAlarm> operation, you must specify either C<MetricName> or a
+C<Metrics> array.
 
 If you are creating an alarm based on a math expression, you cannot
 specify this parameter, or any of the C<Dimensions>, C<Period>,
@@ -271,9 +274,12 @@ Instead, you specify all this information in the C<Metrics> array.
 =head2 Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
 
 An array of C<MetricDataQuery> structures that enable you to create an
-alarm based on the result of a metric math expression. Each item in the
-C<Metrics> array either retrieves a metric or performs a math
-expression.
+alarm based on the result of a metric math expression. For each
+C<PutMetricAlarm> operation, you must specify either C<MetricName> or a
+C<Metrics> array.
+
+Each item in the C<Metrics> array either retrieves a metric or performs
+a math expression.
 
 One item in the C<Metrics> array is the expression that the alarm
 watches. You designate this expression by setting C<ReturnValue> to
@@ -322,6 +328,10 @@ The length, in seconds, used each time the metric specified in
 C<MetricName> is evaluated. Valid values are 10, 30, and any multiple
 of 60.
 
+C<Period> is required for alarms based on static thresholds. If you are
+creating an alarm based on a metric math expression, you specify the
+period for each metric within the objects in the C<Metrics> array.
+
 Be sure to specify 10 or 30 only for metrics that are stored by a
 C<PutMetricData> call with a C<StorageResolution> of 1. If you specify
 a period of 10 or 30 for a metric that does not have sub-minute
@@ -364,6 +374,9 @@ access or change only resources with certain tag values.
 
 The value against which the specified statistic is compared.
 
+This parameter is required for alarms based on static thresholds, but
+should not be used for alarms based on anomaly detection models.
+
 
 
 =head2 ThresholdMetricId => Str
@@ -399,9 +412,18 @@ You can also specify a unit when you create a custom metric. Units help
 provide conceptual meaning to your data. Metric data points that
 specify a unit of measure, such as Percent, are aggregated separately.
 
-If you specify a unit, you must use a unit that is appropriate for the
-metric. Otherwise, the CloudWatch alarm can get stuck in the
-C<INSUFFICIENT DATA> state.
+If you don't specify C<Unit>, CloudWatch retrieves all unit types that
+have been published for the metric and attempts to evaluate the alarm.
+Usually metrics are published with only one unit, so the alarm will
+work as intended.
+
+However, if the metric is published with multiple types of units and
+you don't specify a unit, the alarm's behavior is not defined and will
+behave un-predictably.
+
+We recommend omitting C<Unit> so that you don't inadvertently specify
+an incorrect unit that is not published for this metric. Doing so
+causes the alarm to be stuck in the C<INSUFFICIENT DATA> state.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

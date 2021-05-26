@@ -46,47 +46,47 @@ This class has no description
 
 =head2 CreationTime => Str
 
-  The creation time.
+The creation time.
 
 
 =head2 Options => L<Paws::EC2::TransitGatewayVpcAttachmentOptions>
 
-  The VPC attachment options.
+The VPC attachment options.
 
 
 =head2 State => Str
 
-  The state of the VPC attachment.
+The state of the VPC attachment.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  The IDs of the subnets.
+The IDs of the subnets.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags for the VPC attachment.
+The tags for the VPC attachment.
 
 
 =head2 TransitGatewayAttachmentId => Str
 
-  The ID of the attachment.
+The ID of the attachment.
 
 
 =head2 TransitGatewayId => Str
 
-  The ID of the transit gateway.
+The ID of the transit gateway.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 =head2 VpcOwnerId => Str
 
-  The ID of the AWS account that owns the VPC.
+The ID of the AWS account that owns the VPC.
 
 
 

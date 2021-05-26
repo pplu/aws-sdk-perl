@@ -3,6 +3,7 @@ package Paws::CloudHSMv2::CopyBackupToRegion;
   use Moose;
   has BackupId => (is => 'ro', isa => 'Str', required => 1);
   has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CopyBackupToRegionResponse = $cloudhsmv2->CopyBackupToRegion(
       BackupId          => 'MyBackupId',
       DestinationRegion => 'MyRegion',
+      TagList           => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -54,6 +62,12 @@ The ID of the backup that will be copied to the destination region.
 =head2 B<REQUIRED> DestinationRegion => Str
 
 The AWS region that will contain your copied CloudHSM cluster backup.
+
+
+
+=head2 TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+
+
 
 
 

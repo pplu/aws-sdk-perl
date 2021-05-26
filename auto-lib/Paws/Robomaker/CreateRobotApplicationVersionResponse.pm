@@ -44,7 +44,8 @@ The revision id of the robot application.
 
 =head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
-The robot software suite used by the robot application.
+The robot software suite (ROS distribution) used by the robot
+application.
 
 
 =head2 Sources => ArrayRef[L<Paws::Robomaker::Source>]

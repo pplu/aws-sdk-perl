@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Error => L<Paws::EC2::CancelSpotFleetRequestsError>
 
-  The error.
+The error.
 
 
 =head2 SpotFleetRequestId => Str
 
-  The ID of the Spot Fleet request.
+The ID of the Spot Fleet request.
 
 
 

@@ -114,6 +114,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ClusterArn       = $AddInstanceGroupsOutput->ClusterArn;
     my $InstanceGroupIds = $AddInstanceGroupsOutput->InstanceGroupIds;
     my $JobFlowId        = $AddInstanceGroupsOutput->JobFlowId;
 

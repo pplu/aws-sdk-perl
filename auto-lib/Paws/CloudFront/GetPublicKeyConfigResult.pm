@@ -1,11 +1,10 @@
 
 package Paws::CloudFront::GetPublicKeyConfigResult;
   use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig');
+  has ETag => (is => 'ro', isa => 'Str', header_name => 'ETag', traits => ['ParamInHeader']);
+  has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'PublicKeyConfig');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

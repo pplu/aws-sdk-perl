@@ -1,8 +1,10 @@
 package Paws::EC2::VolumeStatusItem;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusAction]', request_name => 'actionsSet', traits => ['NameInRequest']);
+  has AttachmentStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusAttachmentStatus]', request_name => 'attachmentStatuses', traits => ['NameInRequest']);
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusEvent]', request_name => 'eventsSet', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
   has VolumeStatus => (is => 'ro', isa => 'Paws::EC2::VolumeStatusInfo', request_name => 'volumeStatus', traits => ['NameInRequest']);
 1;
@@ -42,27 +44,37 @@ This class has no description
 
 =head2 Actions => ArrayRef[L<Paws::EC2::VolumeStatusAction>]
 
-  The details of the operation.
+The details of the operation.
+
+
+=head2 AttachmentStatuses => ArrayRef[L<Paws::EC2::VolumeStatusAttachmentStatus>]
+
+Information about the instances to which the volume is attached.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the volume.
+The Availability Zone of the volume.
 
 
 =head2 Events => ArrayRef[L<Paws::EC2::VolumeStatusEvent>]
 
-  A list of events associated with the volume.
+A list of events associated with the volume.
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 VolumeId => Str
 
-  The volume ID.
+The volume ID.
 
 
 =head2 VolumeStatus => L<Paws::EC2::VolumeStatusInfo>
 
-  The volume status.
+The volume status.
 
 
 

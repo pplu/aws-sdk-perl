@@ -45,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) for the given GuardDuty resource
+The Amazon Resource Name (ARN) for the resource to remove tags from.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The tag keys to remove from a resource.
+The tag keys to remove from the resource.
 
 
 

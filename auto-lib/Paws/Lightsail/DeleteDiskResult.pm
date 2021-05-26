@@ -16,7 +16,7 @@ Paws::Lightsail::DeleteDiskResult
 
 =head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
 
-An object describing the API operations.
+An array of objects that describe the result of your request.
 
 
 =head2 _request_id => Str

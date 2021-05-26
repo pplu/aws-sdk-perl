@@ -40,17 +40,17 @@ This class has no description
 
 =head2 CurrentFleetState => Str
 
-  The current state of the EC2 Fleet.
+The current state of the EC2 Fleet.
 
 
 =head2 FleetId => Str
 
-  The ID of the EC2 Fleet.
+The ID of the EC2 Fleet.
 
 
 =head2 PreviousFleetState => Str
 
-  The previous state of the EC2 Fleet.
+The previous state of the EC2 Fleet.
 
 
 

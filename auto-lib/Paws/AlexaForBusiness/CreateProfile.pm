@@ -4,7 +4,9 @@ package Paws::AlexaForBusiness::CreateProfile;
   has Address => (is => 'ro', isa => 'Str', required => 1);
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DistanceUnit => (is => 'ro', isa => 'Str', required => 1);
+  has Locale => (is => 'ro', isa => 'Str');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
+  has MeetingRoomConfiguration => (is => 'ro', isa => 'Paws::AlexaForBusiness::CreateMeetingRoomConfiguration');
   has ProfileName => (is => 'ro', isa => 'Str', required => 1);
   has PSTNEnabled => (is => 'ro', isa => 'Bool');
   has SetupModeDisabled => (is => 'ro', isa => 'Bool');
@@ -37,16 +39,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $a4b = Paws->service('AlexaForBusiness');
     my $CreateProfileResponse = $a4b->CreateProfile(
-      Address            => 'MyAddress',
-      DistanceUnit       => 'METRIC',
-      ProfileName        => 'MyProfileName',
-      TemperatureUnit    => 'FAHRENHEIT',
-      Timezone           => 'MyTimezone',
-      WakeWord           => 'ALEXA',
-      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
-      MaxVolumeLimit     => 1,                         # OPTIONAL
-      PSTNEnabled        => 1,                         # OPTIONAL
-      SetupModeDisabled  => 1,                         # OPTIONAL
+      Address                  => 'MyAddress',
+      DistanceUnit             => 'METRIC',
+      ProfileName              => 'MyProfileName',
+      TemperatureUnit          => 'FAHRENHEIT',
+      Timezone                 => 'MyTimezone',
+      WakeWord                 => 'ALEXA',
+      ClientRequestToken       => 'MyClientRequestToken',    # OPTIONAL
+      Locale                   => 'MyDeviceLocale',          # OPTIONAL
+      MaxVolumeLimit           => 1,                         # OPTIONAL
+      MeetingRoomConfiguration => {
+        EndOfMeetingReminder => {
+          Enabled           => 1,
+          ReminderAtMinutes => [ 1, ... ],                   # min: 1, max: 1
+          ReminderType      => 'ANNOUNCEMENT_TIME_CHECK'
+          , # values: ANNOUNCEMENT_TIME_CHECK, ANNOUNCEMENT_VARIABLE_TIME_LEFT, CHIME, KNOCK
+
+        },    # OPTIONAL
+        InstantBooking => {
+          DurationInMinutes => 1,
+          Enabled           => 1,
+
+        },    # OPTIONAL
+        RequireCheckIn => {
+          Enabled             => 1,
+          ReleaseAfterMinutes => 1,
+
+        },    # OPTIONAL
+        RoomUtilizationMetricsEnabled => 1,
+      },    # OPTIONAL
+      PSTNEnabled       => 1,    # OPTIONAL
+      SetupModeDisabled => 1,    # OPTIONAL
     );
 
     # Results:
@@ -78,9 +101,22 @@ The distance unit to be used by devices in the profile.
 
 Valid values are: C<"METRIC">, C<"IMPERIAL">
 
+=head2 Locale => Str
+
+The locale of the room profile. (This is currently only available to a
+limited preview audience.)
+
+
+
 =head2 MaxVolumeLimit => Int
 
 The maximum volume limit for a room profile.
+
+
+
+=head2 MeetingRoomConfiguration => L<Paws::AlexaForBusiness::CreateMeetingRoomConfiguration>
+
+The meeting room settings of a room profile.
 
 
 

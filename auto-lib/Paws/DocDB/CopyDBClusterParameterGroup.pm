@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> SourceDBClusterParameterGroupIdentifier => Str
 
-The identifier or Amazon Resource Name (ARN) for the source DB cluster
+The identifier or Amazon Resource Name (ARN) for the source cluster
 parameter group.
 
 Constraints:
@@ -66,18 +66,18 @@ Constraints:
 
 =item *
 
-Must specify a valid DB cluster parameter group.
+Must specify a valid cluster parameter group.
 
 =item *
 
-If the source DB cluster parameter group is in the same AWS Region as
-the copy, specify a valid DB parameter group identifier; for example,
+If the source cluster parameter group is in the same AWS Region as the
+copy, specify a valid parameter group identifier; for example,
 C<my-db-cluster-param-group>, or a valid ARN.
 
 =item *
 
-If the source DB parameter group is in a different AWS Region than the
-copy, specify a valid DB cluster parameter group ARN; for example,
+If the source parameter group is in a different AWS Region than the
+copy, specify a valid cluster parameter group ARN; for example,
 C<arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1>.
 
 =back
@@ -93,13 +93,13 @@ The tags that are to be assigned to the parameter group.
 
 =head2 B<REQUIRED> TargetDBClusterParameterGroupDescription => Str
 
-A description for the copied DB cluster parameter group.
+A description for the copied cluster parameter group.
 
 
 
 =head2 B<REQUIRED> TargetDBClusterParameterGroupIdentifier => Str
 
-The identifier for the copied DB cluster parameter group.
+The identifier for the copied cluster parameter group.
 
 Constraints:
 

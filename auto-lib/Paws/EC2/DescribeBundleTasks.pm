@@ -30,15 +30,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DescribeBundleTasksResult = $ec2->DescribeBundleTasks(
-      BundleIds => [ 'MyString', ... ],    # OPTIONAL
-      DryRun    => 1,                      # OPTIONAL
+      BundleIds => [ 'MyBundleId', ... ],    # OPTIONAL
+      DryRun    => 1,                        # OPTIONAL
       Filters   => [
         {
           Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Values => [ 'MyString', ... ],     # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],                                     # OPTIONAL
     );
 
     # Results:

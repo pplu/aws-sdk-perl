@@ -24,7 +24,7 @@ list.
 
 =head2 Offerings => ArrayRef[L<Paws::DeviceFarm::Offering>]
 
-A value representing the list offering results.
+A value that represents the list offering results.
 
 
 =head2 _request_id => Str

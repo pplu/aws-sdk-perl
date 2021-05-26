@@ -75,7 +75,7 @@ Unique identifier created by the notification service for an app on a
 device. The specific name for Token will vary, depending on which
 notification service is being used. For example, when using APNS as the
 notification service, you need the device token. Alternatively, when
-using GCM or ADM, the device token equivalent is called the
+using FCM or ADM, the device token equivalent is called the
 registration ID.
 
 

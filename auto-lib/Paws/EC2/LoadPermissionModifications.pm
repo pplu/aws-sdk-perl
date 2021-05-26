@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Add => ArrayRef[L<Paws::EC2::LoadPermissionRequest>]
 
-  The load permissions to add.
+The load permissions to add.
 
 
 =head2 Remove => ArrayRef[L<Paws::EC2::LoadPermissionRequest>]
 
-  The load permissions to remove.
+The load permissions to remove.
 
 
 

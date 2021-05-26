@@ -1,6 +1,6 @@
 package Paws::AutoScalingPlans;
   use Moose;
-  sub service { 'autoscaling' }
+  sub service { 'autoscaling-plans' }
   sub signing_name { 'autoscaling-plans' }
   sub version { '2018-01-06' }
   sub target_prefix { 'AnyScaleScalingPlannerFrontendService' }
@@ -138,7 +138,7 @@ about granting IAM users required permissions for AWS Auto Scaling
 actions, see the AWS Auto Scaling User Guide
 (https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2018-01-06>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans-2018-01-06>
 
 
 =head1 METHODS

@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NumberOfWorkers       => 1,                 # OPTIONAL
       SecurityConfiguration => 'MyNameString',    # OPTIONAL
       Timeout               => 1,                 # OPTIONAL
-      WorkerType            => 'MyNameString',    # OPTIONAL
+      WorkerType            => 'Standard',        # OPTIONAL
     );
 
     # Results:
@@ -197,7 +197,7 @@ memory and a 128GB disk, and 1 executor per worker.
 =back
 
 
-
+Valid values are: C<"Standard">, C<"G.1X">, C<"G.2X">
 
 
 =head1 SEE ALSO

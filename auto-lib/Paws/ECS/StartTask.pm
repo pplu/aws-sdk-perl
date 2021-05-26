@@ -8,6 +8,7 @@ package Paws::ECS::StartTask;
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
+  has ReferenceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'referenceId' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -66,19 +67,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name                 => 'MyString',
             ResourceRequirements => [
               {
-                Type  => 'GPU',                   # values: GPU
+                Type  => 'GPU',        # values: GPU, InferenceAccelerator
                 Value => 'MyString',
 
               },
               ...
-            ],                                    # OPTIONAL
+            ],                         # OPTIONAL
           },
           ...
-        ],                                        # OPTIONAL
-        ExecutionRoleArn => 'MyString',
-        TaskRoleArn      => 'MyString',
+        ],                             # OPTIONAL
+        Cpu                           => 'MyString',
+        ExecutionRoleArn              => 'MyString',
+        InferenceAcceleratorOverrides => [
+          {
+            DeviceName => 'MyString',
+            DeviceType => 'MyString',
+          },
+          ...
+        ],                             # OPTIONAL
+        Memory      => 'MyString',
+        TaskRoleArn => 'MyString',
       },    # OPTIONAL
       PropagateTags => 'TASK_DEFINITION',    # OPTIONAL
+      ReferenceId   => 'MyString',           # OPTIONAL
       StartedBy     => 'MyString',           # OPTIONAL
       Tags          => [
         {
@@ -165,6 +176,12 @@ propagated.
 
 Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
 
+=head2 ReferenceId => Str
+
+The reference ID to use for the task.
+
+
+
 =head2 StartedBy => Str
 
 An optional tag specified when a task is started. For example, if you
@@ -184,9 +201,51 @@ parameter contains the deployment ID of the service that starts it.
 
 The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both
-of which you define. Tag keys can have a maximum character length of
-128 characters, and tag values can have a maximum length of 256
-characters.
+of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case-sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+
+=back
+
 
 
 

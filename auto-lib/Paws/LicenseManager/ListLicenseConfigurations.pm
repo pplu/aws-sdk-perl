@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $license -manager->ListLicenseConfigurations(
       Filters => [
         {
-          Name   => 'MyFilterName',              # OPTIONAL
+          Name => 'MyFilterName',                # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
@@ -59,22 +59,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 Filters => ArrayRef[L<Paws::LicenseManager::Filter>]
 
-One or more filters.
+Filters to scope the results. The following filters and logical
+operators are supported:
+
+=over
+
+=item *
+
+C<licenseCountingType> - The dimension on which licenses are counted
+(vCPU). Logical operators are C<EQUALS> | C<NOT_EQUALS>.
+
+=item *
+
+C<enforceLicenseCount> - A Boolean value that indicates whether hard
+license enforcement is used. Logical operators are C<EQUALS> |
+C<NOT_EQUALS>.
+
+=item *
+
+C<usagelimitExceeded> - A Boolean value that indicates whether the
+available licenses have been exceeded. Logical operators are C<EQUALS>
+| C<NOT_EQUALS>.
+
+=back
+
 
 
 
 =head2 LicenseConfigurationArns => ArrayRef[Str|Undef]
 
-An array of ARNs for the calling accountE<rsquo>s license
-configurations.
+Amazon Resource Names (ARN) of the license configurations.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned C<NextToken>
-value.
+Maximum number of results to return in a single call.
 
 
 

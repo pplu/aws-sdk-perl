@@ -44,28 +44,28 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in which to launch the instances.
+The Availability Zone in which to launch the instances.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 MaxPrice => Str
 
-  The maximum price per unit hour that you are willing to pay for a Spot
+The maximum price per unit hour that you are willing to pay for a Spot
 Instance.
 
 
 =head2 Placement => L<Paws::EC2::PlacementResponse>
 
-  The location where the instance launched, if applicable.
+The location where the instance launched, if applicable.
 
 
 =head2 Priority => Num
 
-  The priority for the launch template override. If B<AllocationStrategy>
+The priority for the launch template override. If B<AllocationStrategy>
 is set to C<prioritized>, EC2 Fleet uses priority to determine which
 launch template override to use first in fulfilling On-Demand capacity.
 The highest priority is launched first. Valid values are whole numbers
@@ -75,12 +75,12 @@ number is set, the override has the lowest priority.
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which to launch the instances.
+The ID of the subnet in which to launch the instances.
 
 
 =head2 WeightedCapacity => Num
 
-  The number of units provided by the specified instance type.
+The number of units provided by the specified instance type.
 
 
 

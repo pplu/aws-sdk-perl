@@ -50,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MinimumLinks            = $Lag->MinimumLinks;
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
+    my $ProviderName            = $Lag->ProviderName;
     my $Region                  = $Lag->Region;
     my $Tags                    = $Lag->Tags;
 

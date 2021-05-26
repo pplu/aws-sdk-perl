@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxErrors      => 'MyMaxErrors',
       Targets        => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -81,9 +81,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyMaintenanceWindowLambdaQualifier',   # min: 1, max: 128; OPTIONAL
         },    # OPTIONAL
         RunCommand => {
+          CloudWatchOutputConfig => {
+            CloudWatchLogGroupName =>
+              'MyCloudWatchLogGroupName',    # min: 1, max: 512; OPTIONAL
+            CloudWatchOutputEnabled => 1,    # OPTIONAL
+          },    # OPTIONAL
           Comment          => 'MyComment',      # max: 100; OPTIONAL
           DocumentHash     => 'MyDocumentHash', # max: 256; OPTIONAL
           DocumentHashType => 'Sha256',         # values: Sha256, Sha1; OPTIONAL
+          DocumentVersion    => 'MyDocumentVersion',    # OPTIONAL
           NotificationConfig => {
             NotificationArn    => 'MyNotificationArn',    # OPTIONAL
             NotificationEvents => [
@@ -220,7 +226,7 @@ C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
 
 Specify maintenance window targets using the following format:
 
-C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
+C<Key=WindowTargetIds;,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
 
 
 

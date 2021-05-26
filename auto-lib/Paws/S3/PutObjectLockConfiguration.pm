@@ -3,9 +3,10 @@ package Paws::S3::PutObjectLockConfiguration;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has ObjectLockConfiguration => (is => 'ro', isa => 'Paws::S3::ObjectLockConfiguration');
+  has ObjectLockConfiguration => (is => 'ro', isa => 'Paws::S3::ObjectLockConfiguration', traits => ['ParamInBody']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has Token => (is => 'ro', isa => 'Str', header_name => 'x-amz-bucket-object-lock-token', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -15,6 +16,7 @@ package Paws::S3::PutObjectLockConfiguration;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectLockConfigurationOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The bucket whose object lock configuration you want to create or
+The bucket whose Object Lock configuration you want to create or
 replace.
 
 
@@ -77,7 +79,7 @@ The MD5 hash for the request body.
 
 =head2 ObjectLockConfiguration => L<Paws::S3::ObjectLockConfiguration>
 
-The object lock configuration that you want to apply to the specified
+The Object Lock configuration that you want to apply to the specified
 bucket.
 
 
@@ -90,8 +92,7 @@ Valid values are: C<"requester">
 
 =head2 Token => Str
 
-A token to allow Amazon S3 object lock to be enabled for an existing
-bucket.
+A token to allow Object Lock to be enabled for an existing bucket.
 
 
 

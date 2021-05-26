@@ -4,6 +4,8 @@ package Paws::EC2::ModifyHosts;
   has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' );
   has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' , required => 1);
   has HostRecovery => (is => 'ro', isa => 'Str');
+  has InstanceFamily => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyHostsResult = $ec2->ModifyHosts(
-      HostIds       => [ 'MyString', ... ],
-      AutoPlacement => 'on',                  # OPTIONAL
-      HostRecovery  => 'on',                  # OPTIONAL
+      HostIds        => [ 'MyDedicatedHostId', ... ],
+      AutoPlacement  => 'on',                           # OPTIONAL
+      HostRecovery   => 'on',                           # OPTIONAL
+      InstanceFamily => 'MyString',                     # OPTIONAL
+      InstanceType   => 'MyString',                     # OPTIONAL
     );
 
     # Results:
@@ -67,6 +71,32 @@ Host. For more information, see Host Recovery
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Valid values are: C<"on">, C<"off">
+
+=head2 InstanceFamily => Str
+
+Specifies the instance family to be supported by the Dedicated Host.
+Specify this parameter to modify a Dedicated Host to support multiple
+instance types within its current instance family.
+
+If you want to modify a Dedicated Host to support a specific instance
+type only, omit this parameter and specify B<InstanceType> instead. You
+cannot specify B<InstanceFamily> and B<InstanceType> in the same
+request.
+
+
+
+=head2 InstanceType => Str
+
+Specifies the instance type to be supported by the Dedicated Host.
+Specify this parameter to modify a Dedicated Host to support only a
+specific instance type.
+
+If you want to modify a Dedicated Host to support multiple instance
+types in its current instance family, omit this parameter and specify
+B<InstanceFamily> instead. You cannot specify B<InstanceType> and
+B<InstanceFamily> in the same request.
+
+
 
 
 =head1 SEE ALSO

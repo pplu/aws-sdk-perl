@@ -35,13 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateServerResponse = $transfer->UpdateServer(
       ServerId        => 'MyServerId',
       EndpointDetails => {
-        VpcEndpointId => 'MyVpcEndpointId',    # OPTIONAL
+        AddressAllocationIds => [ 'MyAddressAllocationId', ... ],    # OPTIONAL
+        SubnetIds            => [ 'MySubnetId',            ... ],    # OPTIONAL
+        VpcEndpointId => 'MyVpcEndpointId',    # min: 22, max: 22; OPTIONAL
+        VpcId         => 'MyVpcId',            # OPTIONAL
       },    # OPTIONAL
       EndpointType            => 'PUBLIC',       # OPTIONAL
       HostKey                 => 'MyHostKey',    # OPTIONAL
       IdentityProviderDetails => {
-        InvocationRole => 'MyRole',              # OPTIONAL
-        Url            => 'MyUrl',               # OPTIONAL
+        InvocationRole => 'MyRole',              # min: 20, max: 2048; OPTIONAL
+        Url            => 'MyUrl',               # max: 255; OPTIONAL
       },    # OPTIONAL
       LoggingRole => 'MyNullableRole',    # OPTIONAL
     );
@@ -60,8 +63,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
 
 The virtual private cloud (VPC) endpoint settings that are configured
-for your SFTP server. With a VPC endpoint, your SFTP server isn't
-accessible over the public internet.
+for your SFTP server. With a VPC endpoint, you can restrict access to
+your SFTP server to resources only within your VPC. To control incoming
+internet traffic, you will need to associate one or more Elastic IP
+addresses with your server's endpoint.
 
 
 
@@ -72,7 +77,7 @@ can choose to connect to the public internet or a virtual private cloud
 (VPC) endpoint. With a VPC endpoint, your SFTP server isn't accessible
 over the public internet.
 
-Valid values are: C<"PUBLIC">, C<"VPC_ENDPOINT">
+Valid values are: C<"PUBLIC">, C<"VPC">, C<"VPC_ENDPOINT">
 
 =head2 HostKey => Str
 
@@ -81,8 +86,11 @@ my-new-server-key>.
 
 If you aren't planning to migrate existing users from an existing SFTP
 server to a new AWS SFTP server, don't update the host key.
-Accidentally changing a server's host key can be disruptive. For more
-information, see change-host-key in the I<AWS SFTP User Guide.>
+Accidentally changing a server's host key can be disruptive.
+
+For more information, see
+"https://docs.aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key"
+in the I<AWS SFTP User Guide.>
 
 
 

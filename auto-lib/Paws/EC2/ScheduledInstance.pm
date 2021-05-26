@@ -52,77 +52,77 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+The Availability Zone.
 
 
 =head2 CreateDate => Str
 
-  The date when the Scheduled Instance was purchased.
+The date when the Scheduled Instance was purchased.
 
 
 =head2 HourlyPrice => Str
 
-  The hourly price for a single instance.
+The hourly price for a single instance.
 
 
 =head2 InstanceCount => Int
 
-  The number of instances.
+The number of instances.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 NetworkPlatform => Str
 
-  The network platform (C<EC2-Classic> or C<EC2-VPC>).
+The network platform (C<EC2-Classic> or C<EC2-VPC>).
 
 
 =head2 NextSlotStartTime => Str
 
-  The time for the next schedule to start.
+The time for the next schedule to start.
 
 
 =head2 Platform => Str
 
-  The platform (C<Linux/UNIX> or C<Windows>).
+The platform (C<Linux/UNIX> or C<Windows>).
 
 
 =head2 PreviousSlotEndTime => Str
 
-  The time that the previous schedule ended or will end.
+The time that the previous schedule ended or will end.
 
 
 =head2 Recurrence => L<Paws::EC2::ScheduledInstanceRecurrence>
 
-  The schedule recurrence.
+The schedule recurrence.
 
 
 =head2 ScheduledInstanceId => Str
 
-  The Scheduled Instance ID.
+The Scheduled Instance ID.
 
 
 =head2 SlotDurationInHours => Int
 
-  The number of hours in the schedule.
+The number of hours in the schedule.
 
 
 =head2 TermEndDate => Str
 
-  The end date for the Scheduled Instance.
+The end date for the Scheduled Instance.
 
 
 =head2 TermStartDate => Str
 
-  The start date for the Scheduled Instance.
+The start date for the Scheduled Instance.
 
 
 =head2 TotalScheduledInstanceHours => Int
 
-  The total number of hours for a single instance for the entire term.
+The total number of hours for a single instance for the entire term.
 
 
 

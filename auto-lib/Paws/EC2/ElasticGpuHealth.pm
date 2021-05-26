@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Status => Str
 
-  The health status.
+The health status.
 
 
 

@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContainerName => 'MyContainerName',
       Tags          => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
@@ -69,7 +69,7 @@ within that category (such as "test," "development," or "production").
 You can add up to 50 tags to each container. For more information about
 tagging, including naming and usage conventions, see Tagging Resources
 in MediaStore
-(https://aws.amazon.com/documentation/mediastore/tagging).
+(https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 
 
 

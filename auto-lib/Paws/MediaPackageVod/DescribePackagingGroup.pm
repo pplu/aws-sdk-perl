@@ -35,8 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $Arn = $DescribePackagingGroupResponse->Arn;
-    my $Id  = $DescribePackagingGroupResponse->Id;
+    my $Arn        = $DescribePackagingGroupResponse->Arn;
+    my $DomainName = $DescribePackagingGroupResponse->DomainName;
+    my $Id         = $DescribePackagingGroupResponse->Id;
 
     # Returns a L<Paws::MediaPackageVod::DescribePackagingGroupResponse> object.
 

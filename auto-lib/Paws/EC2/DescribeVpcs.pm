@@ -94,6 +94,11 @@ associated with the VPC.
 
 =item *
 
+C<ipv6-cidr-block-association.ipv6-pool> - The ID of the IPv6 address
+pool from which the IPv6 CIDR block is allocated.
+
+=item *
+
 C<ipv6-cidr-block-association.association-id> - The association ID for
 an IPv6 CIDR block associated with the VPC.
 

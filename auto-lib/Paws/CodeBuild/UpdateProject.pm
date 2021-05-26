@@ -7,6 +7,7 @@ package Paws::CodeBuild::UpdateProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' );
+  has FileSystemLocations => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectFileSystemLocation]', traits => ['NameInRequest'], request_name => 'fileSystemLocations' );
   has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfig' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutes' );
@@ -70,33 +71,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
       Environment   => {
         ComputeType => 'BUILD_GENERAL1_SMALL'
-        , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
+        , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE, BUILD_GENERAL1_2XLARGE
         Image => 'MyNonEmptyString',    # min: 1
-        Type =>
-          'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
+        Type  => 'WINDOWS_CONTAINER'
+        , # values: WINDOWS_CONTAINER, LINUX_CONTAINER, LINUX_GPU_CONTAINER, ARM_CONTAINER
         Certificate          => 'MyString',    # OPTIONAL
         EnvironmentVariables => [
           {
             Name  => 'MyNonEmptyString',       # min: 1
             Value => 'MyString',               # OPTIONAL
-            Type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+            Type  => 'PLAINTEXT'
+            ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
           },
           ...
-        ],                        # OPTIONAL
+        ],       # OPTIONAL
         ImagePullCredentialsType =>
-          'CODEBUILD',            # values: CODEBUILD, SERVICE_ROLE; OPTIONAL
-        PrivilegedMode     => 1,  # OPTIONAL
+          'CODEBUILD',    # values: CODEBUILD, SERVICE_ROLE; OPTIONAL
+        PrivilegedMode     => 1,    # OPTIONAL
         RegistryCredential => {
           Credential         => 'MyNonEmptyString',    # min: 1
           CredentialProvider => 'SECRETS_MANAGER',     # values: SECRETS_MANAGER
 
         },    # OPTIONAL
       },    # OPTIONAL
+      FileSystemLocations => [
+        {
+          Identifier   => 'MyString',    # OPTIONAL
+          Location     => 'MyString',    # OPTIONAL
+          MountOptions => 'MyString',    # OPTIONAL
+          MountPoint   => 'MyString',    # OPTIONAL
+          Type         => 'EFS',         # values: EFS; OPTIONAL
+        },
+        ...
+      ],                                 # OPTIONAL
       LogsConfig => {
         CloudWatchLogs => {
-          Status     => 'ENABLED',     # values: ENABLED, DISABLED
-          GroupName  => 'MyString',    # OPTIONAL
-          StreamName => 'MyString',    # OPTIONAL
+          Status     => 'ENABLED',       # values: ENABLED, DISABLED
+          GroupName  => 'MyString',      # OPTIONAL
+          StreamName => 'MyString',      # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
           Status             => 'ENABLED',     # values: ENABLED, DISABLED
@@ -245,6 +257,15 @@ project.
 
 
 
+=head2 FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]
+
+An array of C<ProjectFileSystemLocation> objects for a CodeBuild build
+project. A C<ProjectFileSystemLocation> object specifies the
+C<identifier>, C<location>, C<mountOptions>, C<mountPoint>, and C<type>
+of a file system created using Amazon Elastic File System.
+
+
+
 =head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
 
 Information about logs for the build project. A project can create logs
@@ -311,7 +332,7 @@ specified, the latest version is used. If specified, it must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID to use.
+For AWS CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 

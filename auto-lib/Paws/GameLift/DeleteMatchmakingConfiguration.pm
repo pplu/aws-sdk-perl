@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $gamelift = Paws->service('GameLift');
     my $DeleteMatchmakingConfigurationOutput =
       $gamelift->DeleteMatchmakingConfiguration(
-      Name => 'MyMatchmakingIdStringModel',
+      Name => 'MyMatchmakingConfigurationName',
 
       );
 
@@ -41,7 +41,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-Unique identifier for a matchmaking configuration
+A unique identifier for a matchmaking configuration. You can use either
+the configuration name or ARN value.
 
 
 

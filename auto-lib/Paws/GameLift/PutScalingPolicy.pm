@@ -79,8 +79,9 @@ threshold before a scaling event is triggered.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to apply this policy to. The fleet cannot
-be in any of the following statuses: ERROR or DELETING.
+A unique identifier for a fleet to apply this policy to. You can use
+either the fleet ID or ARN value. The fleet cannot be in any of the
+following statuses: ERROR or DELETING.
 
 
 
@@ -157,7 +158,7 @@ Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"Activ
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with a scaling policy. Policy
+A descriptive label that is associated with a scaling policy. Policy
 names do not need to be unique. A fleet can have only one scaling
 policy with the same name.
 
@@ -165,11 +166,11 @@ policy with the same name.
 
 =head2 PolicyType => Str
 
-Type of scaling policy to create. For a target-based policy, set the
-parameter I<MetricName> to 'PercentAvailableGameSessions' and specify a
-I<TargetConfiguration>. For a rule-based policy set the following
-parameters: I<MetricName>, I<ComparisonOperator>, I<Threshold>,
-I<EvaluationPeriods>, I<ScalingAdjustmentType>, and
+The type of scaling policy to create. For a target-based policy, set
+the parameter I<MetricName> to 'PercentAvailableGameSessions' and
+specify a I<TargetConfiguration>. For a rule-based policy set the
+following parameters: I<MetricName>, I<ComparisonOperator>,
+I<Threshold>, I<EvaluationPeriods>, I<ScalingAdjustmentType>, and
 I<ScalingAdjustment>.
 
 Valid values are: C<"RuleBased">, C<"TargetBased">
@@ -182,7 +183,7 @@ Amount of adjustment to make, based on the scaling adjustment type.
 
 =head2 ScalingAdjustmentType => Str
 
-Type of adjustment to make to a fleet's instance count (see
+The type of adjustment to make to a fleet's instance count (see
 FleetCapacity):
 
 =over
@@ -212,7 +213,7 @@ Valid values are: C<"ChangeInCapacity">, C<"ExactCapacity">, C<"PercentChangeInC
 
 =head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
 
-Object that contains settings for a target-based scaling policy.
+The settings for a target-based scaling policy.
 
 
 

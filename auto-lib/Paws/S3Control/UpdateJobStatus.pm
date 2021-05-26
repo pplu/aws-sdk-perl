@@ -6,6 +6,7 @@ package Paws::S3Control::UpdateJobStatus;
   has RequestedJobStatus => (is => 'ro', isa => 'Str', query_name => 'requestedJobStatus', traits => ['ParamInQuery'], required => 1);
   has StatusUpdateReason => (is => 'ro', isa => 'Str', query_name => 'statusUpdateReason', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJobStatus');
@@ -14,6 +15,7 @@ package Paws::S3Control::UpdateJobStatus;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::UpdateJobStatusResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

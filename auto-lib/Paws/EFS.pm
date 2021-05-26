@@ -14,6 +14,11 @@ package Paws::EFS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub CreateAccessPoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::CreateAccessPoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateFileSystem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::CreateFileSystem', @_);
@@ -29,9 +34,19 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::CreateTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAccessPoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DeleteAccessPoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteFileSystem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::DeleteFileSystem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFileSystemPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DeleteFileSystemPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteMountTarget {
@@ -42,6 +57,16 @@ package Paws::EFS;
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccessPoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeAccessPoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFileSystemPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeFileSystemPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeFileSystems {
@@ -69,14 +94,34 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::DescribeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyMountTargetSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutFileSystemPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::PutFileSystemPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutLifecycleConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::PutLifecycleConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateFileSystem {
@@ -156,7 +201,7 @@ package Paws::EFS;
   }
 
 
-  sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeLifecycleConfiguration DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups PutLifecycleConfiguration UpdateFileSystem / }
+  sub operations { qw/CreateAccessPoint CreateFileSystem CreateMountTarget CreateTags DeleteAccessPoint DeleteFileSystem DeleteFileSystemPolicy DeleteMountTarget DeleteTags DescribeAccessPoints DescribeFileSystemPolicy DescribeFileSystems DescribeLifecycleConfiguration DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ListTagsForResource ModifyMountTargetSecurityGroups PutFileSystemPolicy PutLifecycleConfiguration TagResource UntagResource UpdateFileSystem / }
 
 1;
 
@@ -197,6 +242,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 
 =head1 METHODS
+
+=head2 CreateAccessPoint
+
+=over
+
+=item ClientToken => Str
+
+=item FileSystemId => Str
+
+=item [PosixUser => L<Paws::EFS::PosixUser>]
+
+=item [RootDirectory => L<Paws::EFS::RootDirectory>]
+
+=item [Tags => ArrayRef[L<Paws::EFS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::CreateAccessPoint>
+
+Returns: a L<Paws::EFS::AccessPointDescription> instance
+
+Creates an EFS access point. An access point is an application-specific
+view into an EFS file system that applies an operating system user and
+group, and a file system path, to any file system request made through
+the access point. The operating system user and group override any
+identity information provided by the NFS client. The file system path
+is exposed as the access point's root directory. Applications using the
+access point can only access data in its own directory and below. To
+learn more, see Mounting a File System Using EFS Access Points
+(https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
+
+This operation requires permissions for the
+C<elasticfilesystem:CreateAccessPoint> action.
+
 
 =head2 CreateFileSystem
 
@@ -494,6 +574,28 @@ This operation requires permission for the
 C<elasticfilesystem:CreateTags> action.
 
 
+=head2 DeleteAccessPoint
+
+=over
+
+=item AccessPointId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DeleteAccessPoint>
+
+Returns: nothing
+
+Deletes the specified access point. After deletion is complete, new
+clients can no longer connect to the access points. Clients connected
+to the access point at the time of deletion will continue to function
+until they terminate their connection.
+
+This operation requires permissions for the
+C<elasticfilesystem:DeleteAccessPoint> action.
+
+
 =head2 DeleteFileSystem
 
 =over
@@ -524,6 +626,29 @@ FileSystemNotFound> error.
 
 This operation requires permissions for the
 C<elasticfilesystem:DeleteFileSystem> action.
+
+
+=head2 DeleteFileSystemPolicy
+
+=over
+
+=item FileSystemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DeleteFileSystemPolicy>
+
+Returns: nothing
+
+Deletes the C<FileSystemPolicy> for the specified file system. The
+default C<FileSystemPolicy> goes into effect once the existing policy
+is deleted. For more information about the default file system policy,
+see Using Resource-based Policies with EFS
+(https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html).
+
+This operation requires permissions for the
+C<elasticfilesystem:DeleteFileSystemPolicy> action.
 
 
 =head2 DeleteMountTarget
@@ -606,6 +731,54 @@ This operation requires permissions for the
 C<elasticfilesystem:DeleteTags> action.
 
 
+=head2 DescribeAccessPoints
+
+=over
+
+=item [AccessPointId => Str]
+
+=item [FileSystemId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DescribeAccessPoints>
+
+Returns: a L<Paws::EFS::DescribeAccessPointsResponse> instance
+
+Returns the description of a specific Amazon EFS access point if the
+C<AccessPointId> is provided. If you provide an EFS C<FileSystemId>, it
+returns descriptions of all access points for that file system. You can
+provide either an C<AccessPointId> or a C<FileSystemId> in the request,
+but not both.
+
+This operation requires permissions for the
+C<elasticfilesystem:DescribeAccessPoints> action.
+
+
+=head2 DescribeFileSystemPolicy
+
+=over
+
+=item FileSystemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DescribeFileSystemPolicy>
+
+Returns: a L<Paws::EFS::FileSystemPolicyDescription> instance
+
+Returns the C<FileSystemPolicy> for the specified EFS file system.
+
+This operation requires permissions for the
+C<elasticfilesystem:DescribeFileSystemPolicy> action.
+
+
 =head2 DescribeFileSystems
 
 =over
@@ -680,6 +853,8 @@ C<elasticfilesystem:DescribeLifecycleConfiguration> operation.
 =head2 DescribeMountTargets
 
 =over
+
+=item [AccessPointId => Str]
 
 =item [FileSystemId => Str]
 
@@ -769,6 +944,30 @@ This operation requires permissions for the
 C<elasticfilesystem:DescribeTags> action.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::ListTagsForResource>
+
+Returns: a L<Paws::EFS::ListTagsForResourceResponse> instance
+
+Lists all tags for a top-level EFS resource. You must provide the ID of
+the resource that you want to retrieve the tags for.
+
+This operation requires permissions for the
+C<elasticfilesystem:DescribeAccessPoints> action.
+
+
 =head2 ModifyMountTargetSecurityGroups
 
 =over
@@ -810,6 +1009,36 @@ network interface.
 
 =back
 
+
+
+=head2 PutFileSystemPolicy
+
+=over
+
+=item FileSystemId => Str
+
+=item Policy => Str
+
+=item [BypassPolicyLockoutSafetyCheck => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::PutFileSystemPolicy>
+
+Returns: a L<Paws::EFS::FileSystemPolicyDescription> instance
+
+Applies an Amazon EFS C<FileSystemPolicy> to an Amazon EFS file system.
+A file system policy is an IAM resource-based policy and can contain
+multiple policy statements. A file system always has exactly one file
+system policy, which can be the default policy or an explicit policy
+set or updated using this API operation. When an explicit policy is
+set, it overrides the default policy. For more information about the
+default file system policy, see Using Resource-based Policies with EFS
+(https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html).
+
+This operation requires permissions for the
+C<elasticfilesystem:PutFileSystemPolicy> action.
 
 
 =head2 PutLifecycleConfiguration
@@ -867,6 +1096,50 @@ system, you need the same AWS Key Management Service (AWS KMS)
 permissions as when you created the encrypted file system.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceId => Str
+
+=item Tags => ArrayRef[L<Paws::EFS::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::TagResource>
+
+Returns: nothing
+
+Creates a tag for an EFS resource. You can create tags for EFS file
+systems and access points using this API operation.
+
+This operation requires permissions for the
+C<elasticfilesystem:TagResource> action.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceId => Str
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::UntagResource>
+
+Returns: nothing
+
+Removes tags from an EFS resource. You can remove tags from EFS file
+systems and access points using this API operation.
+
+This operation requires permissions for the
+C<elasticfilesystem:UntagResource> action.
+
+
 =head2 UpdateFileSystem
 
 =over
@@ -906,9 +1179,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EFS::DescribeFileSystemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMountTargets(sub { },[FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
+=head2 DescribeAllMountTargets(sub { },[AccessPointId => Str, FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
 
-=head2 DescribeAllMountTargets([FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
+=head2 DescribeAllMountTargets([AccessPointId => Str, FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

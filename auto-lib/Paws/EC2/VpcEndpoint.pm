@@ -3,6 +3,7 @@ package Paws::EC2::VpcEndpoint;
   has CreationTimestamp => (is => 'ro', isa => 'Str', request_name => 'creationTimestamp', traits => ['NameInRequest']);
   has DnsEntries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DnsEntry]', request_name => 'dnsEntrySet', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
+  has LastError => (is => 'ro', isa => 'Paws::EC2::LastError', request_name => 'lastError', traits => ['NameInRequest']);
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkInterfaceIdSet', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
@@ -53,86 +54,91 @@ This class has no description
 
 =head2 CreationTimestamp => Str
 
-  The date and time the VPC endpoint was created.
+The date and time that the VPC endpoint was created.
 
 
 =head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]
 
-  (Interface endpoint) The DNS entries for the endpoint.
+(Interface endpoint) The DNS entries for the endpoint.
 
 
 =head2 Groups => ArrayRef[L<Paws::EC2::SecurityGroupIdentifier>]
 
-  (Interface endpoint) Information about the security groups associated
-with the network interface.
+(Interface endpoint) Information about the security groups that are
+associated with the network interface.
+
+
+=head2 LastError => L<Paws::EC2::LastError>
+
+The last error that occurred for VPC endpoint.
 
 
 =head2 NetworkInterfaceIds => ArrayRef[Str|Undef]
 
-  (Interface endpoint) One or more network interfaces for the endpoint.
+(Interface endpoint) One or more network interfaces for the endpoint.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the VPC endpoint.
+The ID of the AWS account that owns the VPC endpoint.
 
 
 =head2 PolicyDocument => Str
 
-  The policy document associated with the endpoint, if applicable.
+The policy document associated with the endpoint, if applicable.
 
 
 =head2 PrivateDnsEnabled => Bool
 
-  (Interface endpoint) Indicates whether the VPC is associated with a
+(Interface endpoint) Indicates whether the VPC is associated with a
 private hosted zone.
 
 
 =head2 RequesterManaged => Bool
 
-  Indicates whether the VPC endpoint is being managed by its service.
+Indicates whether the VPC endpoint is being managed by its service.
 
 
 =head2 RouteTableIds => ArrayRef[Str|Undef]
 
-  (Gateway endpoint) One or more route tables associated with the
+(Gateway endpoint) One or more route tables associated with the
 endpoint.
 
 
 =head2 ServiceName => Str
 
-  The name of the service to which the endpoint is associated.
+The name of the service to which the endpoint is associated.
 
 
 =head2 State => Str
 
-  The state of the VPC endpoint.
+The state of the VPC endpoint.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  (Interface endpoint) One or more subnets in which the endpoint is
+(Interface endpoint) One or more subnets in which the endpoint is
 located.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the VPC endpoint.
+Any tags assigned to the VPC endpoint.
 
 
 =head2 VpcEndpointId => Str
 
-  The ID of the VPC endpoint.
+The ID of the VPC endpoint.
 
 
 =head2 VpcEndpointType => Str
 
-  The type of endpoint.
+The type of endpoint.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC to which the endpoint is associated.
+The ID of the VPC to which the endpoint is associated.
 
 
 

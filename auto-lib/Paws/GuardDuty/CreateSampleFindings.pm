@@ -50,7 +50,7 @@ The ID of the detector to create sample findings for.
 
 =head2 FindingTypes => ArrayRef[Str|Undef]
 
-Types of sample findings that you want to generate.
+Types of sample findings to generate.
 
 
 

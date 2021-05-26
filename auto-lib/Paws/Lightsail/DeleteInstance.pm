@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::DeleteInstance;
   use Moose;
+  has ForceDeleteAddOns => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceDeleteAddOns' );
   has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lightsail = Paws->service('Lightsail');
     my $DeleteInstanceResult = $lightsail->DeleteInstance(
-      InstanceName => 'MyResourceName',
-
+      InstanceName      => 'MyResourceName',
+      ForceDeleteAddOns => 1,                  # OPTIONAL
     );
 
     # Results:
@@ -41,6 +42,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/DeleteInstance>
 
 =head1 ATTRIBUTES
+
+
+=head2 ForceDeleteAddOns => Bool
+
+A Boolean value to indicate whether to delete the enabled add-ons for
+the disk.
+
 
 
 =head2 B<REQUIRED> InstanceName => Str

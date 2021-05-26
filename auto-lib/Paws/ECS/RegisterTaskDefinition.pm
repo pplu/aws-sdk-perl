@@ -5,6 +5,7 @@ package Paws::ECS::RegisterTaskDefinition;
   has Cpu => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cpu' );
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionRoleArn' );
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
+  has InferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAccelerator]', traits => ['NameInRequest'], request_name => 'inferenceAccelerators' );
   has IpcMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipcMode' );
   has Memory => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memory' );
   has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
@@ -144,6 +145,13 @@ You must specify a C<family> for a task definition, which allows you to
 track multiple versions of the same task definition. The C<family> is
 used as a name for your task definition. Up to 255 letters (uppercase
 and lowercase), numbers, and hyphens are allowed.
+
+
+
+=head2 InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]
+
+The Elastic Inference accelerators to use for the containers in the
+task.
 
 
 
@@ -294,7 +302,7 @@ Valid values are: C<"bridge">, C<"host">, C<"awsvpc">, C<"none">
 The process namespace to use for the containers in the task. The valid
 values are C<host> or C<task>. If C<host> is specified, then all
 containers within the tasks that specified the C<host> PID mode on the
-same container instance share the same IPC resources with the host
+same container instance share the same process namespace with the host
 Amazon EC2 instance. If C<task> is specified, all containers within the
 specified task share the same process namespace. If no value is
 specified, the default is a private namespace. For more information,
@@ -336,9 +344,51 @@ defaults to C<EC2>.
 
 The metadata that you apply to the task definition to help you
 categorize and organize them. Each tag consists of a key and an
-optional value, both of which you define. Tag keys can have a maximum
-character length of 128 characters, and tag values can have a maximum
-length of 256 characters.
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case-sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+
+=back
+
 
 
 

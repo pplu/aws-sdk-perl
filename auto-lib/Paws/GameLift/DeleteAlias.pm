@@ -40,8 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> AliasId => Str
 
-Unique identifier for a fleet alias. Specify the alias you want to
-delete.
+A unique identifier of the alias that you want to delete. You can use
+either the alias ID or ARN value.
 
 
 

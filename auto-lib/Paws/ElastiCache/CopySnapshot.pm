@@ -1,6 +1,7 @@
 
 package Paws::ElastiCache::CopySnapshot;
   use Moose;
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has SourceSnapshotName => (is => 'ro', isa => 'Str', required => 1);
   has TargetBucket => (is => 'ro', isa => 'Str');
   has TargetSnapshotName => (is => 'ro', isa => 'Str', required => 1);
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CopySnapshotResult = $elasticache->CopySnapshot(
       SourceSnapshotName => 'MyString',
       TargetSnapshotName => 'MyString',
+      KmsKeyId           => 'MyString',    # OPTIONAL
       TargetBucket       => 'MyString',    # OPTIONAL
     );
 
@@ -44,6 +46,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/CopySnapshot>
 
 =head1 ATTRIBUTES
+
+
+=head2 KmsKeyId => Str
+
+The ID of the KMS key used to encrypt the target snapshot.
+
 
 
 =head2 B<REQUIRED> SourceSnapshotName => Str

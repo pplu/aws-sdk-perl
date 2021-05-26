@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 
 The action you want to allow for the specified principal(s).
 
-Valid values: any Amazon SNS action name.
+Valid values: Any Amazon SNS action name, for example C<Publish>.
 
 
 

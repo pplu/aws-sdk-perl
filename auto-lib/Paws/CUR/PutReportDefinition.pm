@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         S3Bucket    => 'MyS3Bucket',      # max: 256
         S3Prefix    => 'MyS3Prefix',      # max: 256
         S3Region    => 'us-east-1'
-        , # values: us-east-1, us-west-1, us-west-2, eu-central-1, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, eu-north-1, ap-northeast-3
+        , # values: us-east-1, us-west-1, us-west-2, eu-central-1, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, eu-north-1, ap-northeast-3, ap-east-1
         TimeUnit            => 'HOURLY',    # values: HOURLY, DAILY
         AdditionalArtifacts => [
           'REDSHIFT', ...    # values: REDSHIFT, QUICKSIGHT, ATHENA

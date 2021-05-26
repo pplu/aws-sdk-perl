@@ -61,7 +61,7 @@ The ID of the offering promotion to be applied to the purchase.
 
 =head2 Quantity => Int
 
-The number of device slots you wish to purchase in an offering request.
+The number of device slots to purchase in an offering request.
 
 
 

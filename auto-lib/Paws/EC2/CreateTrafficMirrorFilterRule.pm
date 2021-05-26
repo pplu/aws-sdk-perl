@@ -45,19 +45,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RuleNumber            => 1,
       SourceCidrBlock       => 'MyString',
       TrafficDirection      => 'ingress',
-      TrafficMirrorFilterId => 'MyString',
-      ClientToken           => 'MyString',    # OPTIONAL
-      Description           => 'MyString',    # OPTIONAL
+      TrafficMirrorFilterId => 'MyTrafficMirrorFilterId',
+      ClientToken           => 'MyString',                  # OPTIONAL
+      Description           => 'MyString',                  # OPTIONAL
       DestinationPortRange  => {
         FromPort => 1,
         ToPort   => 1,
-      },                                      # OPTIONAL
-      DryRun          => 1,                   # OPTIONAL
-      Protocol        => 1,                   # OPTIONAL
+      },                                                    # OPTIONAL
+      DryRun          => 1,                                 # OPTIONAL
+      Protocol        => 1,                                 # OPTIONAL
       SourcePortRange => {
         FromPort => 1,
         ToPort   => 1,
-      },                                      # OPTIONAL
+      },                                                    # OPTIONAL
       );
 
     # Results:

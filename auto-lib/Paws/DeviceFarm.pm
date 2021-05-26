@@ -40,6 +40,16 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateRemoteAccessSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTestGridProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateTestGridProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTestGridUrl {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateTestGridUrl', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateUpload', @_);
@@ -78,6 +88,11 @@ package Paws::DeviceFarm;
   sub DeleteRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTestGridProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteTestGridProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUpload {
@@ -158,6 +173,16 @@ package Paws::DeviceFarm;
   sub GetTest {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetTest', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTestGridProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetTestGridProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTestGridSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetTestGridSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetUpload {
@@ -255,6 +280,26 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTestGridProjects {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTestGridProjects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTestGridSessionActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTestGridSessionActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTestGridSessionArtifacts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTestGridSessionArtifacts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTestGridSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTestGridSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTests', @_);
@@ -338,6 +383,11 @@ package Paws::DeviceFarm;
   sub UpdateProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTestGridProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateTestGridProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateUpload {
@@ -816,7 +866,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTagsForResource ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopJob StopRemoteAccessSession StopRun TagResource UntagResource UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateUpload UpdateVPCEConfiguration / }
+  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateTestGridProject CreateTestGridUrl CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteTestGridProject DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetTestGridProject GetTestGridSession GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTagsForResource ListTestGridProjects ListTestGridSessionActions ListTestGridSessionArtifacts ListTestGridSessions ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopJob StopRemoteAccessSession StopRun TagResource UntagResource UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateTestGridProject UpdateUpload UpdateVPCEConfiguration / }
 
 1;
 
@@ -844,9 +894,32 @@ Paws::DeviceFarm - Perl Interface to AWS AWS Device Farm
 
 =head1 DESCRIPTION
 
-AWS Device Farm is a service that enables mobile app developers to test
-Android, iOS, and Fire OS apps on physical phones, tablets, and other
-devices in the cloud.
+Welcome to the AWS Device Farm API documentation, which contains APIs
+for:
+
+=over
+
+=item *
+
+Testing on desktop browsers
+
+Device Farm makes it possible for you to test your web applications on
+desktop browsers using Selenium. The APIs for desktop browser testing
+contain C<TestGrid> in their names. For more information, see Testing
+Web Applications on Selenium with Device Farm
+(https://docs.aws.amazon.com/devicefarm/latest/testgrid/).
+
+=item *
+
+Testing on real mobile devices
+
+Device Farm makes it possible for you to test apps on physical phones,
+tablets, and other devices in the cloud. For more information, see the
+Device Farm Developer Guide
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/).
+
+=back
+
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23>
 
@@ -955,7 +1028,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::CreateProject>
 
 Returns: a L<Paws::DeviceFarm::CreateProjectResult> instance
 
-Creates a new project.
+Creates a project.
 
 
 =head2 CreateRemoteAccessSession
@@ -994,6 +1067,44 @@ Each argument is described in detail in: L<Paws::DeviceFarm::CreateRemoteAccessS
 Returns: a L<Paws::DeviceFarm::CreateRemoteAccessSessionResult> instance
 
 Specifies and starts a remote access session.
+
+
+=head2 CreateTestGridProject
+
+=over
+
+=item Name => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::CreateTestGridProject>
+
+Returns: a L<Paws::DeviceFarm::CreateTestGridProjectResult> instance
+
+Creates a Selenium testing project. Projects are used to track
+TestGridSession instances.
+
+
+=head2 CreateTestGridUrl
+
+=over
+
+=item ExpiresInSeconds => Int
+
+=item ProjectArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::CreateTestGridUrl>
+
+Returns: a L<Paws::DeviceFarm::CreateTestGridUrlResult> instance
+
+Creates a signed, short-term URL that can be passed to a Selenium
+C<RemoteWebDriver> constructor.
 
 
 =head2 CreateUpload
@@ -1106,7 +1217,7 @@ Returns: a L<Paws::DeviceFarm::DeleteProjectResult> instance
 
 Deletes an AWS Device Farm project, given the project ARN.
 
-B<Note> Deleting this resource does not stop an in-progress run.
+Deleting this resource does not stop an in-progress run.
 
 
 =head2 DeleteRemoteAccessSession
@@ -1140,7 +1251,27 @@ Returns: a L<Paws::DeviceFarm::DeleteRunResult> instance
 
 Deletes the run, given the run ARN.
 
-B<Note> Deleting this resource does not stop an in-progress run.
+Deleting this resource does not stop an in-progress run.
+
+
+=head2 DeleteTestGridProject
+
+=over
+
+=item ProjectArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteTestGridProject>
+
+Returns: a L<Paws::DeviceFarm::DeleteTestGridProjectResult> instance
+
+Deletes a Selenium testing project and all content generated under it.
+
+You cannot undo this operation.
+
+You cannot delete a project if it has active sessions.
 
 
 =head2 DeleteUpload
@@ -1187,8 +1318,8 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetAccountSettings>
 
 Returns: a L<Paws::DeviceFarm::GetAccountSettingsResult> instance
 
-Returns the number of unmetered iOS and/or unmetered Android devices
-that have been purchased by the account.
+Returns the number of unmetered iOS or unmetered Android devices that
+have been purchased by the account.
 
 
 =head2 GetDevice
@@ -1220,7 +1351,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetDeviceInstance>
 
 Returns: a L<Paws::DeviceFarm::GetDeviceInstanceResult> instance
 
-Returns information about a device instance belonging to a private
+Returns information about a device instance that belongs to a private
 device fleet.
 
 
@@ -1329,9 +1460,9 @@ Gets the current status and future status of all offerings purchased by
 an AWS account. The response indicates how many offerings are currently
 available and the offerings that will be available in the next period.
 The API returns a C<NotEligible> error if the user is not permitted to
-invoke the operation. Please contact aws-devicefarm-support@amazon.com
-(mailto:aws-devicefarm-support@amazon.com) if you believe that you
-should be able to invoke this operation.
+invoke the operation. If you must be able to invoke this operation,
+contact aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com).
 
 
 =head2 GetProject
@@ -1412,6 +1543,58 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetTest>
 Returns: a L<Paws::DeviceFarm::GetTestResult> instance
 
 Gets information about a test.
+
+
+=head2 GetTestGridProject
+
+=over
+
+=item ProjectArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetTestGridProject>
+
+Returns: a L<Paws::DeviceFarm::GetTestGridProjectResult> instance
+
+Retrieves information about a Selenium testing project.
+
+
+=head2 GetTestGridSession
+
+=over
+
+=item [ProjectArn => Str]
+
+=item [SessionArn => Str]
+
+=item [SessionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetTestGridSession>
+
+Returns: a L<Paws::DeviceFarm::GetTestGridSessionResult> instance
+
+A session is an instance of a browser created through a
+C<RemoteWebDriver> with the URL from CreateTestGridUrlResult$url. You
+can use the following to look up sessions:
+
+=over
+
+=item *
+
+The session ARN (GetTestGridSessionRequest$sessionArn).
+
+=item *
+
+The project ARN and a session ID (GetTestGridSessionRequest$projectArn
+and GetTestGridSessionRequest$sessionId).
+
+=back
+
 
 
 =head2 GetUpload
@@ -1619,8 +1802,8 @@ Returns a list of offering promotions. Each offering promotion record
 contains the ID and description of the promotion. The API returns a
 C<NotEligible> error if the caller is not permitted to invoke the
 operation. Contact aws-devicefarm-support@amazon.com
-(mailto:aws-devicefarm-support@amazon.com) if you believe that you
-should be able to invoke this operation.
+(mailto:aws-devicefarm-support@amazon.com) if you must be able to
+invoke this operation.
 
 
 =head2 ListOfferings
@@ -1640,9 +1823,9 @@ Returns a list of products or offerings that the user can manage
 through the API. Each offering record indicates the recurring price per
 unit and the frequency for that offering. The API returns a
 C<NotEligible> error if the user is not permitted to invoke the
-operation. Please contact aws-devicefarm-support@amazon.com
-(mailto:aws-devicefarm-support@amazon.com) if you believe that you
-should be able to invoke this operation.
+operation. If you must be able to invoke this operation, contact
+aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com).
 
 
 =head2 ListOfferingTransactions
@@ -1662,9 +1845,9 @@ Returns a list of all historical purchases, renewals, and system
 renewal transactions for an AWS account. The list is paginated and
 ordered by a descending timestamp (most recent transactions are first).
 The API returns a C<NotEligible> error if the user is not permitted to
-invoke the operation. Please contact aws-devicefarm-support@amazon.com
-(mailto:aws-devicefarm-support@amazon.com) if you believe that you
-should be able to invoke this operation.
+invoke the operation. If you must be able to invoke this operation,
+contact aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com).
 
 
 =head2 ListProjects
@@ -1773,6 +1956,96 @@ Returns: a L<Paws::DeviceFarm::ListTagsForResourceResponse> instance
 List the tags for an AWS Device Farm resource.
 
 
+=head2 ListTestGridProjects
+
+=over
+
+=item [MaxResult => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListTestGridProjects>
+
+Returns: a L<Paws::DeviceFarm::ListTestGridProjectsResult> instance
+
+Gets a list of all Selenium testing projects in your account.
+
+
+=head2 ListTestGridSessionActions
+
+=over
+
+=item SessionArn => Str
+
+=item [MaxResult => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListTestGridSessionActions>
+
+Returns: a L<Paws::DeviceFarm::ListTestGridSessionActionsResult> instance
+
+Returns a list of the actions taken in a TestGridSession.
+
+
+=head2 ListTestGridSessionArtifacts
+
+=over
+
+=item SessionArn => Str
+
+=item [MaxResult => Int]
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListTestGridSessionArtifacts>
+
+Returns: a L<Paws::DeviceFarm::ListTestGridSessionArtifactsResult> instance
+
+Retrieves a list of artifacts created during the session.
+
+
+=head2 ListTestGridSessions
+
+=over
+
+=item ProjectArn => Str
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [EndTimeAfter => Str]
+
+=item [EndTimeBefore => Str]
+
+=item [MaxResult => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListTestGridSessions>
+
+Returns: a L<Paws::DeviceFarm::ListTestGridSessionsResult> instance
+
+Retrieves a list of sessions for a TestGridProject.
+
+
 =head2 ListTests
 
 =over
@@ -1806,7 +2079,13 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListUniqueProblems>
 
 Returns: a L<Paws::DeviceFarm::ListUniqueProblemsResult> instance
 
-Gets information about unique problems.
+Gets information about unique problems, such as exceptions or crashes.
+
+Unique problems are defined as a single instance of an error across a
+run, job, or suite. For example, if a call in your application
+consistently raises an exception (C<OutOfBoundsException in
+MyActivity.java:386>), C<ListUniqueProblems> returns a single entry
+instead of many individual entries for that exception.
 
 
 =head2 ListUploads
@@ -1868,10 +2147,9 @@ Returns: a L<Paws::DeviceFarm::PurchaseOfferingResult> instance
 Immediately purchases offerings for an AWS account. Offerings renew
 with the latest total purchased quantity for an offering, unless the
 renewal was overridden. The API returns a C<NotEligible> error if the
-user is not permitted to invoke the operation. Please contact
-aws-devicefarm-support@amazon.com
-(mailto:aws-devicefarm-support@amazon.com) if you believe that you
-should be able to invoke this operation.
+user is not permitted to invoke the operation. If you must be able to
+invoke this operation, contact aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com).
 
 
 =head2 RenewOffering
@@ -1892,9 +2170,9 @@ Returns: a L<Paws::DeviceFarm::RenewOfferingResult> instance
 Explicitly sets the quantity of devices to renew for an offering,
 starting from the C<effectiveDate> of the next period. The API returns
 a C<NotEligible> error if the user is not permitted to invoke the
-operation. Please contact aws-devicefarm-support@amazon.com
-(mailto:aws-devicefarm-support@amazon.com) if you believe that you
-should be able to invoke this operation.
+operation. If you must be able to invoke this operation, contact
+aws-devicefarm-support@amazon.com
+(mailto:aws-devicefarm-support@amazon.com).
 
 
 =head2 ScheduleRun
@@ -1940,12 +2218,11 @@ Each argument is described in detail in: L<Paws::DeviceFarm::StopJob>
 
 Returns: a L<Paws::DeviceFarm::StopJobResult> instance
 
-Initiates a stop request for the current job. AWS Device Farm will
-immediately stop the job on the device where tests have not started
-executing, and you will not be billed for this device. On the device
-where tests have started executing, Setup Suite and Teardown Suite
-tests will run to completion before stopping execution on the device.
-You will be billed for Setup, Teardown, and any tests that were in
+Initiates a stop request for the current job. AWS Device Farm
+immediately stops the job on the device where tests have not started.
+You are not billed for this device. On the device where tests have
+started, setup suite and teardown suite tests run to completion on the
+device. You are billed for setup, teardown, and any tests that were in
 progress or already completed.
 
 
@@ -1978,12 +2255,11 @@ Each argument is described in detail in: L<Paws::DeviceFarm::StopRun>
 
 Returns: a L<Paws::DeviceFarm::StopRunResult> instance
 
-Initiates a stop request for the current test run. AWS Device Farm will
-immediately stop the run on devices where tests have not started
-executing, and you will not be billed for these devices. On devices
-where tests have started executing, Setup Suite and Teardown Suite
-tests will run to completion before stopping execution on those
-devices. You will be billed for Setup, Teardown, and any tests that
+Initiates a stop request for the current test run. AWS Device Farm
+immediately stops the run on devices where tests have not started. You
+are not billed for these devices. On devices where tests have started
+executing, setup suite and teardown suite tests run to completion on
+those devices. You are billed for setup, teardown, and any tests that
 were in progress or already completed.
 
 
@@ -2005,7 +2281,7 @@ Returns: a L<Paws::DeviceFarm::TagResourceResponse> instance
 Associates the specified tags to a resource with the specified
 C<resourceArn>. If existing tags on a resource are not specified in the
 request parameters, they are not changed. When a resource is deleted,
-the tags associated with that resource are deleted as well.
+the tags associated with that resource are also deleted.
 
 
 =head2 UntagResource
@@ -2043,7 +2319,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::UpdateDeviceInstanc
 
 Returns: a L<Paws::DeviceFarm::UpdateDeviceInstanceResult> instance
 
-Updates information about an existing private device instance.
+Updates information about a private device instance.
 
 
 =head2 UpdateDevicePool
@@ -2135,7 +2411,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::UpdateNetworkProfil
 
 Returns: a L<Paws::DeviceFarm::UpdateNetworkProfileResult> instance
 
-Updates the network profile with specific settings.
+Updates the network profile.
 
 
 =head2 UpdateProject
@@ -2159,6 +2435,26 @@ Modifies the specified project name, given the project ARN and a new
 name.
 
 
+=head2 UpdateTestGridProject
+
+=over
+
+=item ProjectArn => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateTestGridProject>
+
+Returns: a L<Paws::DeviceFarm::UpdateTestGridProjectResult> instance
+
+Change details of a project.
+
+
 =head2 UpdateUpload
 
 =over
@@ -2178,7 +2474,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::UpdateUpload>
 
 Returns: a L<Paws::DeviceFarm::UpdateUploadResult> instance
 
-Update an uploaded test specification (test spec).
+Updates an uploaded test spec.
 
 
 =head2 UpdateVPCEConfiguration
@@ -2202,8 +2498,8 @@ Each argument is described in detail in: L<Paws::DeviceFarm::UpdateVPCEConfigura
 
 Returns: a L<Paws::DeviceFarm::UpdateVPCEConfigurationResult> instance
 
-Updates information about an existing Amazon Virtual Private Cloud
-(VPC) endpoint configuration.
+Updates information about an Amazon Virtual Private Cloud (VPC)
+endpoint configuration.
 
 
 

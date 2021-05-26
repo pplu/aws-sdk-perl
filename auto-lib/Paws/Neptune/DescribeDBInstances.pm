@@ -92,12 +92,14 @@ these ARNs.
 
 =item *
 
-C<db-instance-id> - Accepts DB instance identifiers and DB instance
-Amazon Resource Names (ARNs). The results list will only include
-information about the DB instances identified by these ARNs.
+C<engine> - Accepts an engine name (such as C<neptune>), and restricts
+the results list to DB instances created by that engine.
 
 =back
 
+For example, to invoke this API from the AWS CLI and filter so that
+only Neptune DB instances are returned, you could use the following
+command:
 
 
 

@@ -3,7 +3,8 @@ package Paws::CloudWatchLogs::StartQuery;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'endTime' , required => 1);
   has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' );
+  has LogGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'logGroupNames' );
   has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString' , required => 1);
   has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' , required => 1);
 
@@ -32,11 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $logs = Paws->service('CloudWatchLogs');
     my $StartQueryResponse = $logs->StartQuery(
-      EndTime      => 1,
-      LogGroupName => 'MyLogGroupName',
-      QueryString  => 'MyQueryString',
-      StartTime    => 1,
-      Limit        => 1,                  # OPTIONAL
+      EndTime       => 1,
+      QueryString   => 'MyQueryString',
+      StartTime     => 1,
+      Limit         => 1,                   # OPTIONAL
+      LogGroupName  => 'MyLogGroupName',    # OPTIONAL
+      LogGroupNames => [
+        'MyLogGroupName', ...               # min: 1, max: 512
+      ],                                    # OPTIONAL
     );
 
     # Results:
@@ -62,13 +66,26 @@ the number of seconds since January 1, 1970, 00:00:00 UTC.
 
 The maximum number of log events to return in the query. If the query
 string uses the C<fields> command, only the specified fields and their
-values are returned.
+values are returned. The default is 1000.
 
 
 
-=head2 B<REQUIRED> LogGroupName => Str
+=head2 LogGroupName => Str
 
 The log group on which to perform the query.
+
+A C<StartQuery> operation must include a C<logGroupNames> or a
+C<logGroupName> parameter, but not both.
+
+
+
+=head2 LogGroupNames => ArrayRef[Str|Undef]
+
+The list of log groups to be queried. You can include up to 20 log
+groups.
+
+A C<StartQuery> operation must include a C<logGroupNames> or a
+C<logGroupName> parameter, but not both.
 
 
 

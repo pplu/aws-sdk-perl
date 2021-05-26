@@ -163,6 +163,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },                   # OPTIONAL
               Timezone => 'My__string',
             },    # OPTIONAL
+            TemplateConfiguration => {
+              EmailTemplate => {
+                Name    => 'My__string',
+                Version => 'My__string',
+              },    # OPTIONAL
+              PushTemplate => {
+                Name    => 'My__string',
+                Version => 'My__string',
+              },    # OPTIONAL
+              SMSTemplate => {
+                Name    => 'My__string',
+                Version => 'My__string',
+              },    # OPTIONAL
+              VoiceTemplate => {
+                Name    => 'My__string',
+                Version => 'My__string',
+              },    # OPTIONAL
+            },    # OPTIONAL
             TreatmentDescription => 'My__string',
             TreatmentName        => 'My__string',
           },
@@ -304,9 +322,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },                   # OPTIONAL
           Timezone => 'My__string',
         },    # OPTIONAL
-        SegmentId            => 'My__string',
-        SegmentVersion       => 1,                                    # OPTIONAL
-        Tags                 => { 'My__string' => 'My__string', },    # OPTIONAL
+        SegmentId             => 'My__string',
+        SegmentVersion        => 1,                                   # OPTIONAL
+        Tags                  => { 'My__string' => 'My__string', },   # OPTIONAL
+        TemplateConfiguration => {
+          EmailTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+          PushTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+          SMSTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+          VoiceTemplate => {
+            Name    => 'My__string',
+            Version => 'My__string',
+          },                                                          # OPTIONAL
+        },    # OPTIONAL
         TreatmentDescription => 'My__string',
         TreatmentName        => 'My__string',
       },

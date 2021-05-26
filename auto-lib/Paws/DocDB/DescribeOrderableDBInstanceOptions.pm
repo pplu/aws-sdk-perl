@@ -68,14 +68,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBInstanceClass => Str
 
-The DB instance class filter value. Specify this parameter to show only
-the available offerings that match the specified DB instance class.
+The instance class filter value. Specify this parameter to show only
+the available offerings that match the specified instance class.
 
 
 
 =head2 B<REQUIRED> Engine => Str
 
-The name of the engine to retrieve DB instance options for.
+The name of the engine to retrieve instance options for.
 
 
 

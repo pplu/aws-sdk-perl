@@ -43,16 +43,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet. This value must match the fleet ID
-referenced in the VPC peering connection record.
+A unique identifier for a fleet. This fleet specified must match the
+fleet referenced in the VPC peering connection record. You can use
+either the fleet ID or ARN value.
 
 
 
 =head2 B<REQUIRED> VpcPeeringConnectionId => Str
 
-Unique identifier for a VPC peering connection. This value is included
-in the VpcPeeringConnection object, which can be retrieved by calling
-DescribeVpcPeeringConnections.
+A unique identifier for a VPC peering connection. This value is
+included in the VpcPeeringConnection object, which can be retrieved by
+calling DescribeVpcPeeringConnections.
 
 
 

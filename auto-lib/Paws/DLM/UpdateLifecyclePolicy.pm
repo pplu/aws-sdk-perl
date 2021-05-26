@@ -49,42 +49,69 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             CopyTags   => 1,         # OPTIONAL
             CreateRule => {
-              Interval     => 1,                    # min: 1
-              IntervalUnit => 'HOURS',              # values: HOURS
-              Times        => [ 'MyTime', ... ],    # max: 1; OPTIONAL
+              Interval     => 1,          # min: 1; OPTIONAL
+              IntervalUnit => 'HOURS',    # values: HOURS
+              Times        => [
+                'MyTime', ...             # min: 5, max: 5
+              ],                          # max: 1; OPTIONAL
+            },    # OPTIONAL
+            CrossRegionCopyRules => [
+              {
+                Encrypted    => 1,
+                TargetRegion => 'MyTargetRegion',    # max: 16
+                CmkArn       => 'MyCmkArn',          # max: 2048; OPTIONAL
+                CopyTags     => 1,                   # OPTIONAL
+                RetainRule   => {
+                  Interval => 1,                     # min: 1; OPTIONAL
+                  IntervalUnit =>
+                    'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],        # max: 3; OPTIONAL
+            FastRestoreRule => {
+              AvailabilityZones => [
+                'MyAvailabilityZone', ...    # max: 16
+              ],                             # min: 1, max: 10
+              Count    => 1,                 # min: 1, max: 1000; OPTIONAL
+              Interval => 1,                 # min: 1; OPTIONAL
+              IntervalUnit =>
+                'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
             Name       => 'MyScheduleName',    # max: 500; OPTIONAL
             RetainRule => {
-              Count => 1,                      # min: 1, max: 1000
-
+              Count    => 1,                   # min: 1, max: 1000; OPTIONAL
+              Interval => 1,                   # min: 1; OPTIONAL
+              IntervalUnit =>
+                'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
             TagsToAdd => [
               {
-                Key   => 'MyString',
-                Value => 'MyString',
+                Key   => 'MyString',    # max: 500
+                Value => 'MyString',    # max: 500
 
               },
               ...
-            ],    # max: 50; OPTIONAL
+            ],                          # max: 45; OPTIONAL
             VariableTags => [
               {
-                Key   => 'MyString',
-                Value => 'MyString',
+                Key   => 'MyString',    # max: 500
+                Value => 'MyString',    # max: 500
 
               },
               ...
-            ],    # max: 50; OPTIONAL
+            ],                          # max: 45; OPTIONAL
           },
           ...
-        ],        # min: 1, max: 1; OPTIONAL
+        ],                              # min: 1, max: 1; OPTIONAL
         TargetTags => [
           {
-            Key   => 'MyString',
-            Value => 'MyString',
+            Key   => 'MyString',        # max: 500
+            Value => 'MyString',        # max: 500
 
           },
           ...
-        ],        # min: 1, max: 50; OPTIONAL
+        ],                              # min: 1, max: 50; OPTIONAL
       },    # OPTIONAL
       State => 'ENABLED',    # OPTIONAL
     );
@@ -110,9 +137,8 @@ operations specified by the lifecycle policy.
 
 =head2 PolicyDetails => L<Paws::DLM::PolicyDetails>
 
-The configuration of the lifecycle policy.
-
-Target tags cannot be re-used across policies.
+The configuration of the lifecycle policy. You cannot update the policy
+type or the resource type.
 
 
 

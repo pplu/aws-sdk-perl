@@ -2,6 +2,7 @@
 [%- shape = c.input_for_operation(op_name) %]
 package [% c.api %]::[% op_name %];
   use Moose;
+
 [% FOREACH param_name IN shape.members.keys.sort -%]
     [% NEXT IF param_name == 'ContentMD5' %]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
@@ -44,7 +45,9 @@ package [% c.api %]::[% op_name %];
       [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
     [%- ELSE -%]Paws::API::Response[% END -%]');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
+  [% IF (include_vars.stream_param) %]class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(include_vars.stream_param) %]');[% END %]
+  [%- IF shape.locationName -%]class_has _top_level_element => (isa => 'Str', is => 'ro', default => '[% shape.locationName %]');[% END %]
+  [% IF shape.xmlNamespace -%]class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => '[% shape.xmlNamespace.uri %]');[%- END %]  
 1;
 
 [% INCLUDE 'callclass_documentation.tt' %]

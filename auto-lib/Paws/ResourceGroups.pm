@@ -108,14 +108,17 @@ package Paws::ResourceGroups;
     if (not defined $callback) {
       while ($next_result->NextToken) {
         $next_result = $self->ListGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GroupIdentifiers }, @{ $next_result->GroupIdentifiers };
         push @{ $result->Groups }, @{ $next_result->Groups };
       }
       return $result;
     } else {
       while ($result->NextToken) {
+        $callback->($_ => 'GroupIdentifiers') foreach (@{ $result->GroupIdentifiers });
         $callback->($_ => 'Groups') foreach (@{ $result->Groups });
         $result = $self->ListGroups(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'GroupIdentifiers') foreach (@{ $result->GroupIdentifiers });
       $callback->($_ => 'Groups') foreach (@{ $result->Groups });
     }
 
@@ -488,9 +491,11 @@ If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> ins
 
 If passed a sub as first parameter, it will call the sub for each element found in :
 
+ - GroupIdentifiers, passing the object as the first parameter, and the string 'GroupIdentifiers' as the second parameter 
+
  - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
 
-If not, it will return a a L<Paws::ResourceGroups::ListGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+If not, it will return a a L<Paws::ResourceGroups::ListGroupsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 SearchAllResources(sub { },ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [MaxResults => Int, NextToken => Str])

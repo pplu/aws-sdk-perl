@@ -32,10 +32,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateIndexingConfigurationResponse = $iot->UpdateIndexingConfiguration(
       ThingGroupIndexingConfiguration => {
         ThingGroupIndexingMode => 'OFF',    # values: OFF, ON
-
+        CustomFields           => [
+          {
+            Name => 'MyFieldName',   # OPTIONAL
+            Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
+          },
+          ...
+        ],                           # OPTIONAL
+        ManagedFields => [
+          {
+            Name => 'MyFieldName',   # OPTIONAL
+            Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
+          },
+          ...
+        ],                           # OPTIONAL
       },    # OPTIONAL
       ThingIndexingConfiguration => {
         ThingIndexingMode => 'OFF', # values: OFF, REGISTRY, REGISTRY_AND_SHADOW
+        CustomFields      => [
+          {
+            Name => 'MyFieldName',   # OPTIONAL
+            Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
+          },
+          ...
+        ],                           # OPTIONAL
+        ManagedFields => [
+          {
+            Name => 'MyFieldName',   # OPTIONAL
+            Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
+          },
+          ...
+        ],                           # OPTIONAL
         ThingConnectivityIndexingMode => 'OFF',  # values: OFF, STATUS; OPTIONAL
       },    # OPTIONAL
     );

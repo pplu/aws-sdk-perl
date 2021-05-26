@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $StartMatchBackfillOutput = $gamelift->StartMatchBackfill(
-      ConfigurationName => 'MyMatchmakingIdStringModel',
+      ConfigurationName => 'MyMatchmakingConfigurationName',
       GameSessionArn    => 'MyArnStringModel',
       Players           => [
         {
@@ -40,19 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           PlayerAttributes => {
             'MyNonZeroAndMaxString' => {
-              N   => 1,                          # OPTIONAL
-              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+              N   => 1,
+              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
               SDM => {
-                'MyNonZeroAndMaxString' =>
-                  1,    # key: min: 1, max: 1024; OPTIONAL, value: OPTIONAL
+                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
               },    # OPTIONAL
               SL => [
-                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024; OPTIONAL
+                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024
               ],                                # OPTIONAL
-            },    # key: min: 1, max: 1024; OPTIONAL
+            },    # key: min: 1, max: 1024
           },    # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
-          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
         },
         ...
       ],
@@ -72,22 +71,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> ConfigurationName => Str
 
-Name of the matchmaker to use for this request. The name of the
-matchmaker that was used with the original game session is listed in
-the GameSession object, C<MatchmakerData> property. This property
-contains a matchmaking configuration ARN value, which includes the
-matchmaker name. (In the ARN value
-"arn:aws:gamelift:us-west-2:111122223333:matchmakingconfiguration/MM-4v4",
-the matchmaking configuration name is "MM-4v4".) Use only the name for
-this parameter.
+Name of the matchmaker to use for this request. You can use either the
+configuration name or ARN value. The ARN of the matchmaker that was
+used with the original game session is listed in the GameSession
+object, C<MatchmakerData> property.
 
 
 
 =head2 B<REQUIRED> GameSessionArn => Str
 
 Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
-that is assigned to a game session and uniquely identifies it.
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+that is assigned to a game session and uniquely identifies it. This is
+the same as the game session ID.
 
 
 
@@ -110,8 +106,8 @@ JSON syntax, formatted as a string. For more details, see Match Data
 =item *
 
 LatencyInMs -\\- If the matchmaker uses player latency, include a
-latency value, in milliseconds, for the region that the game session is
-currently in. Do not include latency values for any other region.
+latency value, in milliseconds, for the Region that the game session is
+currently in. Do not include latency values for any other Region.
 
 =back
 
@@ -120,7 +116,7 @@ currently in. Do not include latency values for any other region.
 
 =head2 TicketId => Str
 
-Unique identifier for a matchmaking ticket. If no ticket ID is
+A unique identifier for a matchmaking ticket. If no ticket ID is
 specified here, Amazon GameLift will generate one in the form of a
 UUID. Use this identifier to track the match backfill ticket status and
 retrieve match results.

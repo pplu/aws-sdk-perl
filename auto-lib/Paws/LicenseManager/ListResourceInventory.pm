@@ -59,15 +59,46 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 Filters => ArrayRef[L<Paws::LicenseManager::InventoryFilter>]
 
-One or more filters.
+Filters to scope the results. The following filters and logical
+operators are supported:
+
+=over
+
+=item *
+
+C<account_id> - The ID of the AWS account that owns the resource.
+Logical operators are C<EQUALS> | C<NOT_EQUALS>.
+
+=item *
+
+C<application_name> - The name of the application. Logical operators
+are C<EQUALS> | C<BEGINS_WITH>.
+
+=item *
+
+C<license_included> - The type of license included. Logical operators
+are C<EQUALS> | C<NOT_EQUALS>. Possible values are
+C<sql-server-enterprise> | C<sql-server-standard> | C<sql-server-web> |
+C<windows-server-datacenter>.
+
+=item *
+
+C<platform> - The platform of the resource. Logical operators are
+C<EQUALS> | C<BEGINS_WITH>.
+
+=item *
+
+C<resource_id> - The ID of the resource. Logical operators are
+C<EQUALS> | C<NOT_EQUALS>.
+
+=back
+
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned C<NextToken>
-value.
+Maximum number of results to return in a single call.
 
 
 

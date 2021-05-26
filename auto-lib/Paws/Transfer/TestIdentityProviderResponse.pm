@@ -2,6 +2,7 @@
 package Paws::Transfer::TestIdentityProviderResponse;
   use Moose;
   has Message => (is => 'ro', isa => 'Str');
+  has Response => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int', required => 1);
   has Url => (is => 'ro', isa => 'Str', required => 1);
 
@@ -18,7 +19,12 @@ Paws::Transfer::TestIdentityProviderResponse
 
 =head2 Message => Str
 
-The result of the authorization test as a message.
+A message that indicates whether the test was successful or not.
+
+
+=head2 Response => Str
+
+The response that is returned from your API Gateway.
 
 
 =head2 B<REQUIRED> StatusCode => Int

@@ -18,12 +18,12 @@ Paws::SecurityHub::GetEnabledStandardsResponse
 
 =head2 NextToken => Str
 
-The token that is required for pagination.
+The pagination token to use to request the next page of results.
 
 
 =head2 StandardsSubscriptions => ArrayRef[L<Paws::SecurityHub::StandardsSubscription>]
 
-A list of C<StandardsSubscriptions> objects that include information
+The list of C<StandardsSubscriptions> objects that include information
 about the enabled standards.
 
 

@@ -169,7 +169,7 @@ Route 53E<mdash>so nothing changes for your customers and partners, or
 their applications. With your data in S3, you can use it with AWS
 services for processing, analytics, machine learning, and archiving.
 Getting started with AWS Transfer for SFTP (AWS SFTP) is easy; there is
-no infrastructure to buy and setup.
+no infrastructure to buy and set up.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transfer-2018-11-05>
 
@@ -202,13 +202,9 @@ Each argument is described in detail in: L<Paws::Transfer::CreateServer>
 Returns: a L<Paws::Transfer::CreateServerResponse> instance
 
 Instantiates an autoscaling virtual server based on Secure File
-Transfer Protocol (SFTP) in AWS. The call returns the C<ServerId>
-property assigned by the service to the newly created server. Reference
-this C<ServerId> property when you make updates to your server, or work
-with users.
-
-The response returns the C<ServerId> value for the newly created
-server.
+Transfer Protocol (SFTP) in AWS. When you make updates to your server
+or when you work with users, use the service-generated C<ServerId>
+property that is assigned to the newly created server.
 
 
 =head2 CreateUser
@@ -223,6 +219,10 @@ server.
 
 =item [HomeDirectory => Str]
 
+=item [HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]]
+
+=item [HomeDirectoryType => Str]
+
 =item [Policy => Str]
 
 =item [SshPublicKeyBody => Str]
@@ -236,15 +236,14 @@ Each argument is described in detail in: L<Paws::Transfer::CreateUser>
 
 Returns: a L<Paws::Transfer::CreateUserResponse> instance
 
-Adds a user and associate them with an existing Secure File Transfer
-Protocol (SFTP) server. Using parameters for C<CreateUser>, you can
-specify the user name, set the home directory, store the user's public
-key, and assign the user's AWS Identity and Access Management (IAM)
-role. You can also optionally add a scope-down policy, and assign
-metadata with tags that can be used to group and search for users.
-
-The response returns the C<UserName> and C<ServerId> values of the new
-user for that server.
+Creates a user and associates them with an existing Secure File
+Transfer Protocol (SFTP) server. You can only create and associate
+users with SFTP servers that have the C<IdentityProviderType> set to
+C<SERVICE_MANAGED>. Using parameters for C<CreateUser>, you can specify
+the user name, set the home directory, store the user's public key, and
+assign the user's AWS Identity and Access Management (IAM) role. You
+can also optionally add a scope-down policy, and assign metadata with
+tags that can be used to group and search for users.
 
 
 =head2 DeleteServer
@@ -261,11 +260,9 @@ Each argument is described in detail in: L<Paws::Transfer::DeleteServer>
 Returns: nothing
 
 Deletes the Secure File Transfer Protocol (SFTP) server that you
-specify. If you used C<SERVICE_MANAGED> as your
-C<IdentityProviderType>, you need to delete all users associated with
-this server before deleting the server itself
+specify.
 
-No response returns from this call.
+No response returns from this operation.
 
 
 =head2 DeleteSshPublicKey
@@ -287,7 +284,7 @@ Returns: nothing
 
 Deletes a user's Secure Shell (SSH) public key.
 
-No response is returned from this call.
+No response is returned from this operation.
 
 
 =head2 DeleteUser
@@ -307,7 +304,7 @@ Returns: nothing
 
 Deletes the user belonging to the server you specify.
 
-No response returns from this call.
+No response returns from this operation.
 
 When you delete a user from a server, the user's information is lost.
 
@@ -328,7 +325,9 @@ Returns: a L<Paws::Transfer::DescribeServerResponse> instance
 Describes the server that you specify by passing the C<ServerId>
 parameter.
 
-The response contains a description of the server's properties.
+The response contains a description of the server's properties. When
+you set C<EndpointType> to VPC, the response will contain the
+C<EndpointDetails>.
 
 
 =head2 DescribeUser
@@ -483,7 +482,7 @@ Information tied to your server such as server and user properties are
 not affected by stopping your server. Stopping a server will not reduce
 or impact your Secure File Transfer Protocol (SFTP) endpoint billing.
 
-The states of C<STOPPING> indicates that the server is in an
+The state of C<STOPPING> indicates that the server is in an
 intermediate state, either not fully able to respond, or not fully
 offline. The values of C<STOP_FAILED> can indicate an error condition.
 
@@ -531,10 +530,10 @@ Returns: a L<Paws::Transfer::TestIdentityProviderResponse> instance
 
 If the C<IdentityProviderType> of the server is C<API_Gateway>, tests
 whether your API Gateway is set up successfully. We highly recommend
-that you call this method to test your authentication method as soon as
-you create your server. By doing so, you can troubleshoot issues with
-the API Gateway integration to ensure that your users can successfully
-use the service.
+that you call this operation to test your authentication method as soon
+as you create your server. By doing so, you can troubleshoot issues
+with the API Gateway integration to ensure that your users can
+successfully use the service.
 
 
 =head2 UntagResource
@@ -597,6 +596,10 @@ Transfer Protocol (SFTP) server you updated.
 =item UserName => Str
 
 =item [HomeDirectory => Str]
+
+=item [HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]]
+
+=item [HomeDirectoryType => Str]
 
 =item [Policy => Str]
 

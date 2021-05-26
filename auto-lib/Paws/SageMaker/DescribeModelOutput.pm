@@ -36,9 +36,6 @@ A timestamp that shows when the model was created.
 If C<True>, no inbound or outbound network calls can be made to or from
 the model container.
 
-The Semantic Segmentation built-in algorithm does not support network
-isolation.
-
 
 =head2 B<REQUIRED> ExecutionRoleArn => Str
 

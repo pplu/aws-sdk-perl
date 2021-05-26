@@ -54,7 +54,7 @@ ListPullRequests.
 
 =head2 B<REQUIRED> Title => Str
 
-The updated title of the pull request. This will replace the existing
+The updated title of the pull request. This replaces the existing
 title.
 
 

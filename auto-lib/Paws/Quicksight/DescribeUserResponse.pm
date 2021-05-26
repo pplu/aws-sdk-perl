@@ -24,7 +24,7 @@ The AWS request ID for this operation.
 
 =head2 Status => Int
 
-The http status of the request.
+The HTTP status of the request.
 
 
 =head2 User => L<Paws::Quicksight::User>

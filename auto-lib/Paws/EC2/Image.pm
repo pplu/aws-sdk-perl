@@ -14,6 +14,7 @@ package Paws::EC2::Image;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'imageOwnerId', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has PlatformDetails => (is => 'ro', isa => 'Str', request_name => 'platformDetails', traits => ['NameInRequest']);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
   has Public => (is => 'ro', isa => 'Bool', request_name => 'isPublic', traits => ['NameInRequest']);
   has RamdiskId => (is => 'ro', isa => 'Str', request_name => 'ramdiskId', traits => ['NameInRequest']);
@@ -23,6 +24,7 @@ package Paws::EC2::Image;
   has State => (is => 'ro', isa => 'Str', request_name => 'imageState', traits => ['NameInRequest']);
   has StateReason => (is => 'ro', isa => 'Paws::EC2::StateReason', request_name => 'stateReason', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has UsageOperation => (is => 'ro', isa => 'Str', request_name => 'usageOperation', traits => ['NameInRequest']);
   has VirtualizationType => (is => 'ro', isa => 'Str', request_name => 'virtualizationType', traits => ['NameInRequest']);
 1;
 
@@ -61,130 +63,153 @@ This class has no description
 
 =head2 Architecture => Str
 
-  The architecture of the image.
+The architecture of the image.
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  Any block device mapping entries.
+Any block device mapping entries.
 
 
 =head2 CreationDate => Str
 
-  The date and time the image was created.
+The date and time the image was created.
 
 
 =head2 Description => Str
 
-  The description of the AMI that was provided during image creation.
+The description of the AMI that was provided during image creation.
 
 
 =head2 EnaSupport => Bool
 
-  Specifies whether enhanced networking with ENA is enabled.
+Specifies whether enhanced networking with ENA is enabled.
 
 
 =head2 Hypervisor => Str
 
-  The hypervisor type of the image.
+The hypervisor type of the image.
 
 
 =head2 ImageId => Str
 
-  The ID of the AMI.
+The ID of the AMI.
 
 
 =head2 ImageLocation => Str
 
-  The location of the AMI.
+The location of the AMI.
 
 
 =head2 ImageOwnerAlias => Str
 
-  The AWS account alias (for example, C<amazon>, C<self>) or the AWS
+The AWS account alias (for example, C<amazon>, C<self>) or the AWS
 account ID of the AMI owner.
 
 
 =head2 ImageType => Str
 
-  The type of image.
+The type of image.
 
 
 =head2 KernelId => Str
 
-  The kernel associated with the image, if any. Only applicable for
+The kernel associated with the image, if any. Only applicable for
 machine images.
 
 
 =head2 Name => Str
 
-  The name of the AMI that was provided during image creation.
+The name of the AMI that was provided during image creation.
 
 
 =head2 OwnerId => Str
 
-  The AWS account ID of the image owner.
+The AWS account ID of the image owner.
 
 
 =head2 Platform => Str
 
-  This value is set for Windows AMIs; otherwise, it is blank.
+This value is set to C<windows> for Windows AMIs; otherwise, it is
+blank.
+
+
+=head2 PlatformDetails => Str
+
+The platform details associated with the billing code of the AMI. For
+more information, see Obtaining Billing Information
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  Any product codes associated with the AMI.
+Any product codes associated with the AMI.
 
 
 =head2 Public => Bool
 
-  Indicates whether the image has public launch permissions. The value is
+Indicates whether the image has public launch permissions. The value is
 C<true> if this image has public launch permissions or C<false> if it
 has only implicit and explicit launch permissions.
 
 
 =head2 RamdiskId => Str
 
-  The RAM disk associated with the image, if any. Only applicable for
+The RAM disk associated with the image, if any. Only applicable for
 machine images.
 
 
 =head2 RootDeviceName => Str
 
-  The device name of the root device volume (for example, C</dev/sda1>).
+The device name of the root device volume (for example, C</dev/sda1>).
 
 
 =head2 RootDeviceType => Str
 
-  The type of root device used by the AMI. The AMI can use an EBS volume
+The type of root device used by the AMI. The AMI can use an EBS volume
 or an instance store volume.
 
 
 =head2 SriovNetSupport => Str
 
-  Specifies whether enhanced networking with the Intel 82599 Virtual
+Specifies whether enhanced networking with the Intel 82599 Virtual
 Function interface is enabled.
 
 
 =head2 State => Str
 
-  The current state of the AMI. If the state is C<available>, the image
+The current state of the AMI. If the state is C<available>, the image
 is successfully registered and can be used to launch an instance.
 
 
 =head2 StateReason => L<Paws::EC2::StateReason>
 
-  The reason for the state change.
+The reason for the state change.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the image.
+Any tags assigned to the image.
+
+
+=head2 UsageOperation => Str
+
+The operation of the Amazon EC2 instance and the billing code that is
+associated with the AMI. C<usageOperation> corresponds to the
+lineitem/Operation
+(https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation)
+column on your AWS Cost and Usage Report and in the AWS Price List API
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html).
+For the list of C<UsageOperation> codes, see Platform Details and Usage
+Operation Billing Codes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html#billing-info)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 VirtualizationType => Str
 
-  The type of virtualization of the AMI.
+The type of virtualization of the AMI.
 
 
 

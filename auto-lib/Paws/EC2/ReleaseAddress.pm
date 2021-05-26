@@ -3,6 +3,7 @@ package Paws::EC2::ReleaseAddress;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has NetworkBorderGroup => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -58,6 +59,22 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 NetworkBorderGroup => Str
+
+The location that the IP address is released from.
+
+If you provide an incorrect network border group, you will receive an
+C<InvalidAddress.NotFound> error. For more information, see Error Codes
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html).
+
+You cannot use a network border group with EC2 Classic. If you attempt
+this operation on EC2 classic, you will receive an
+C<InvalidParameterCombination> error. For more information, see Error
+Codes
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html).
 
 
 

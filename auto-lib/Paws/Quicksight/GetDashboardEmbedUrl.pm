@@ -36,12 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $quicksight = Paws->service('Quicksight');
     my $GetDashboardEmbedUrlResponse = $quicksight->GetDashboardEmbedUrl(
       AwsAccountId             => 'MyAwsAccountId',
-      DashboardId              => 'MyString',
+      DashboardId              => 'MyRestrictiveResourceId',
       IdentityType             => 'IAM',
-      ResetDisabled            => 1,                  # OPTIONAL
-      SessionLifetimeInMinutes => 1,                  # OPTIONAL
-      UndoRedoDisabled         => 1,                  # OPTIONAL
-      UserArn                  => 'MyArn',            # OPTIONAL
+      ResetDisabled            => 1,                           # OPTIONAL
+      SessionLifetimeInMinutes => 1,                           # OPTIONAL
+      UndoRedoDisabled         => 1,                           # OPTIONAL
+      UserArn                  => 'MyArn',                     # OPTIONAL
     );
 
     # Results:
@@ -59,69 +59,65 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AwsAccountId => Str
 
-AWS account ID that contains the dashboard you are embedding.
+The ID for the AWS account that contains the dashboard that you're
+embedding.
 
 
 
 =head2 B<REQUIRED> DashboardId => Str
 
-The ID for the dashboard, also added to IAM policy
+The ID for the dashboard, also added to the IAM policy.
 
 
 
 =head2 B<REQUIRED> IdentityType => Str
 
-The authentication method the user uses to sign in (IAM only).
+The authentication method that the user uses to sign in.
 
 Valid values are: C<"IAM">, C<"QUICKSIGHT">
 
 =head2 ResetDisabled => Bool
 
-Remove the reset button on embedded dashboard. The default is FALSE,
-which allows the reset button.
+Remove the reset button on the embedded dashboard. The default is
+FALSE, which enables the reset button.
 
 
 
 =head2 SessionLifetimeInMinutes => Int
 
 How many minutes the session is valid. The session lifetime must be
-between 15 and 600 minutes.
+15-600 minutes.
 
 
 
 =head2 UndoRedoDisabled => Bool
 
-Remove the undo/redo button on embedded dashboard. The default is
+Remove the undo/redo button on the embedded dashboard. The default is
 FALSE, which enables the undo/redo button.
 
 
 
 =head2 UserArn => Str
 
-The Amazon QuickSight user's ARN, for use with C<QUICKSIGHT> identity
-type. You can use this for any of the following:
+The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
+C<QUICKSIGHT> identity type. You can use this for any Amazon QuickSight
+users in your account (readers, authors, or admins) authenticated as
+one of the following:
 
 =over
 
 =item *
 
-Amazon QuickSight users in your account (readers, authors, or admins)
+Active Directory (AD) users or group members
 
 =item *
 
-AD users
+Invited nonfederated users
 
 =item *
 
-Invited non-federated users
-
-=item *
-
-Federated IAM users
-
-=item *
-
-Federated IAM role-based sessions
+IAM users and IAM role-based sessions authenticated through Federated
+Single Sign-On using SAML, OpenID Connect, or IAM federation.
 
 =back
 

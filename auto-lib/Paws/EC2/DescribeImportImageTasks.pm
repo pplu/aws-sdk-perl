@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      ImportTaskIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      ImportTaskIds => [ 'MyImportImageTaskId', ... ],    # OPTIONAL
+      MaxResults    => 1,                                 # OPTIONAL
+      NextToken     => 'MyString',                        # OPTIONAL
     );
 
     # Results:
@@ -73,21 +69,19 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
 Filter tasks using the C<task-state> filter and one of the following
-values: active, completed, deleting, deleted.
+values: C<active>, C<completed>, C<deleting>, or C<deleted>.
 
 
 
 =head2 ImportTaskIds => ArrayRef[Str|Undef]
 
-A list of import image task IDs.
+The IDs of the import image tasks.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned C<NextToken>
-value.
+The maximum number of results to return in a single call.
 
 
 

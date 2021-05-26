@@ -39,7 +39,7 @@ This class has no description
 
 =head2 Code => Int
 
-  The state of the instance as a 16-bit unsigned integer.
+The state of the instance as a 16-bit unsigned integer.
 
 The high byte is all of the bits between 2^8 and (2^16)-1, which equals
 decimal values between 256 and 65,535. These numerical values are used
@@ -85,7 +85,7 @@ You can ignore the high byte value by zeroing out all of the bits above
 
 =head2 Name => Str
 
-  The current state of the instance.
+The current state of the instance.
 
 
 

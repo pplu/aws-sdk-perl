@@ -78,9 +78,9 @@ slash (/), listing all groups. This parameter allows (through its regex
 pattern (http://wikipedia.org/wiki/regex)) a string of characters
 consisting of either a forward slash (/) by itself or a string that
 must begin and end with forward slashes. In addition, it can contain
-any ASCII character from the ! (\u0021) through the DEL character
-(\u007F), including most punctuation characters, digits, and upper and
-lowercased letters.
+any ASCII character from the ! (C<\u0021>) through the DEL character
+(C<\u007F>), including most punctuation characters, digits, and upper
+and lowercased letters.
 
 
 

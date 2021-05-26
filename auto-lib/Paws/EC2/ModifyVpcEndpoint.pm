@@ -38,17 +38,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyVpcEndpointResult = $ec2->ModifyVpcEndpoint(
-      VpcEndpointId          => 'MyString',
-      AddRouteTableIds       => [ 'MyString', ... ],    # OPTIONAL
-      AddSecurityGroupIds    => [ 'MyString', ... ],    # OPTIONAL
-      AddSubnetIds           => [ 'MyString', ... ],    # OPTIONAL
-      DryRun                 => 1,                      # OPTIONAL
-      PolicyDocument         => 'MyString',             # OPTIONAL
-      PrivateDnsEnabled      => 1,                      # OPTIONAL
-      RemoveRouteTableIds    => [ 'MyString', ... ],    # OPTIONAL
-      RemoveSecurityGroupIds => [ 'MyString', ... ],    # OPTIONAL
-      RemoveSubnetIds        => [ 'MyString', ... ],    # OPTIONAL
-      ResetPolicy            => 1,                      # OPTIONAL
+      VpcEndpointId          => 'MyVpcEndpointId',
+      AddRouteTableIds       => [ 'MyRouteTableId', ... ],       # OPTIONAL
+      AddSecurityGroupIds    => [ 'MySecurityGroupId', ... ],    # OPTIONAL
+      AddSubnetIds           => [ 'MySubnetId', ... ],           # OPTIONAL
+      DryRun                 => 1,                               # OPTIONAL
+      PolicyDocument         => 'MyString',                      # OPTIONAL
+      PrivateDnsEnabled      => 1,                               # OPTIONAL
+      RemoveRouteTableIds    => [ 'MyRouteTableId', ... ],       # OPTIONAL
+      RemoveSecurityGroupIds => [ 'MySecurityGroupId', ... ],    # OPTIONAL
+      RemoveSubnetIds        => [ 'MySubnetId', ... ],           # OPTIONAL
+      ResetPolicy            => 1,                               # OPTIONAL
     );
 
     # Results:
@@ -95,15 +95,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 PolicyDocument => Str
 
 A policy to attach to the endpoint that controls access to the service.
-The policy must be in valid JSON format. If this parameter is not
-specified, we attach a default policy that allows full access to the
-service.
+The policy must be in valid JSON format.
 
 
 
 =head2 PrivateDnsEnabled => Bool
 
-(Interface endpoint) Indicate whether a private hosted zone is
+(Interface endpoint) Indicates whether a private hosted zone is
 associated with the VPC.
 
 

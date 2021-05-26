@@ -39,9 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Filter => {
         And => [ <Expression>, ... ],    # OPTIONAL
+        CostCategories => {
+          Key => 'MyCostCategoryName',     # min: 1, max: 255; OPTIONAL
+          Values => [ 'MyValue', ... ],    # OPTIONAL
+        },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
@@ -54,11 +58,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
-          Type => 'DIMENSION',               # values: DIMENSION, TAG; OPTIONAL
+          Key => 'MyGroupDefinitionKey',    # OPTIONAL
+          Type => 'DIMENSION', # values: DIMENSION, TAG, COST_CATEGORY; OPTIONAL
         },
         ...
-      ],                                     # OPTIONAL
+      ],                       # OPTIONAL
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
@@ -90,10 +94,6 @@ AZ
 =item *
 
 CACHE_ENGINE
-
-=item *
-
-DATABASE_ENGINE
 
 =item *
 

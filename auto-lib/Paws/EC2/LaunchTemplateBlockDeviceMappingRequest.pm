@@ -41,24 +41,24 @@ This class has no description
 
 =head2 DeviceName => Str
 
-  The device name (for example, /dev/sdh or xvdh).
+The device name (for example, /dev/sdh or xvdh).
 
 
 =head2 Ebs => L<Paws::EC2::LaunchTemplateEbsBlockDeviceRequest>
 
-  Parameters used to automatically set up EBS volumes when the instance
+Parameters used to automatically set up EBS volumes when the instance
 is launched.
 
 
 =head2 NoDevice => Str
 
-  Suppresses the specified device included in the block device mapping of
+Suppresses the specified device included in the block device mapping of
 the AMI.
 
 
 =head2 VirtualName => Str
 
-  The virtual device name (ephemeralN). Instance store volumes are
+The virtual device name (ephemeralN). Instance store volumes are
 numbered starting from 0. An instance type with 2 available instance
 store volumes can specify mappings for ephemeral0 and ephemeral1. The
 number of available instance store volumes depends on the instance

@@ -43,7 +43,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApprovalRules => {
         PatchRules => [
           {
-            ApproveAfterDays => 1,    # max: 100
             PatchFilterGroup => {
               PatchFilters => [
                 {
@@ -58,7 +57,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                 # max: 4
 
             },
-            ComplianceLevel => 'CRITICAL'
+            ApproveAfterDays => 1,                   # max: 100; OPTIONAL
+            ApproveUntilDate => 'MyPatchStringDate', # min: 1, max: 10; OPTIONAL
+            ComplianceLevel  => 'CRITICAL'
             , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
             EnableNonSecurity => 1,    # OPTIONAL
           },
@@ -94,7 +95,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Replace               => 1,                        # OPTIONAL
       Sources               => [
         {
-          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
+          Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 1024
           Name          => 'MyPatchSourceName',
           Products      => [
             'MyPatchSourceProduct', ...                     # min: 1, max: 128

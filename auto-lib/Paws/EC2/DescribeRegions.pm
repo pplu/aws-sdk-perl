@@ -1,6 +1,7 @@
 
 package Paws::EC2::DescribeRegions;
   use Moose;
+  has AllRegions => (is => 'ro', isa => 'Bool');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RegionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RegionName' );
@@ -44,6 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
+=head2 AllRegions => Bool
+
+Indicates whether to display all Regions, including Regions that are
+disabled for your account.
+
+
+
 =head2 DryRun => Bool
 
 Checks whether you have the required permissions for the action,
@@ -66,6 +74,11 @@ C<ec2.us-east-1.amazonaws.com>).
 
 =item *
 
+C<opt-in-status> - The opt-in status of the Region
+(C<opt-in-not-required> | C<opted-in> | C<not-opted-in>).
+
+=item *
+
 C<region-name> - The name of the Region (for example, C<us-east-1>).
 
 =back
@@ -75,7 +88,8 @@ C<region-name> - The name of the Region (for example, C<us-east-1>).
 
 =head2 RegionNames => ArrayRef[Str|Undef]
 
-The names of the Regions.
+The names of the Regions. You can specify any Regions, whether they are
+enabled and disabled for your account.
 
 
 

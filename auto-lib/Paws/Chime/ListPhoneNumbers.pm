@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 The filter to use to limit the number of results.
 
-Valid values are: C<"AccountId">, C<"UserId">, C<"VoiceConnectorId">
+Valid values are: C<"AccountId">, C<"UserId">, C<"VoiceConnectorId">, C<"VoiceConnectorGroupId">
 
 =head2 FilterValue => Str
 

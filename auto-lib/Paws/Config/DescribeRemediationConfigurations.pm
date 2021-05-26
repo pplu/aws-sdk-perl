@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeRemediationConfigurationsResponse =
       $config->DescribeRemediationConfigurations(
       ConfigRuleNames => [
-        'MyStringWithCharLimit64', ...    # min: 1, max: 64
+        'MyConfigRuleName', ...    # min: 1, max: 128
       ],
 
       );

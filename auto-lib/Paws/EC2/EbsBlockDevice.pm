@@ -44,12 +44,16 @@ This class has no description
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the EBS volume is deleted on instance termination.
+Indicates whether the EBS volume is deleted on instance termination.
+For more information, see Preserving Amazon EBS Volumes on Instance
+Termination
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination)
+in the Amazon Elastic Compute Cloud User Guide.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the encryption state of an EBS volume is changed
+Indicates whether the encryption state of an EBS volume is changed
 while being restored from a backing snapshot. The effect of setting the
 encryption state to C<true> depends on the volume origin (new or from a
 snapshot), starting encryption state, ownership, and whether encryption
@@ -63,10 +67,12 @@ Encrypted volumes can only be attached to instances that support Amazon
 EBS encryption. For more information, see Supported Instance Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
 
+This parameter is not returned by .
+
 
 =head2 Iops => Int
 
-  The number of I/O operations per second (IOPS) that the volume
+The number of I/O operations per second (IOPS) that the volume
 supports. For C<io1> volumes, this represents the number of IOPS that
 are provisioned for the volume. For C<gp2> volumes, this represents the
 baseline performance of the volume and the rate at which the volume
@@ -91,7 +97,7 @@ or C<standard> volumes.
 
 =head2 KmsKeyId => Str
 
-  Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer
+Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer
 managed CMK under which the EBS volume is encrypted.
 
 This parameter is only supported on C<BlockDeviceMapping> objects
@@ -105,12 +111,12 @@ and RequestSpotInstances
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+The ID of the snapshot.
 
 
 =head2 VolumeSize => Int
 
-  The size of the volume, in GiB.
+The size of the volume, in GiB.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
@@ -124,10 +130,11 @@ be equal to or larger than the snapshot size.
 
 =head2 VolumeType => Str
 
-  The volume type. If you set the type to C<io1>, you must also set the
-B<Iops> property.
+The volume type. If you set the type to C<io1>, you must also specify
+the B<Iops> parameter. If you set the type to C<gp2>, C<st1>, C<sc1>,
+or C<standard>, you must omit the B<Iops> parameter.
 
-Default: C<standard>
+Default: C<gp2>
 
 
 

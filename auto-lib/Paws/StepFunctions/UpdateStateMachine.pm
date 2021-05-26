@@ -2,6 +2,7 @@
 package Paws::StepFunctions::UpdateStateMachine;
   use Moose;
   has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' );
+  has LoggingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::LoggingConfiguration', traits => ['NameInRequest'], request_name => 'loggingConfiguration' );
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
   has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
 
@@ -30,9 +31,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $states = Paws->service('StepFunctions');
     my $UpdateStateMachineOutput = $states->UpdateStateMachine(
-      StateMachineArn => 'MyArn',
-      Definition      => 'MyDefinition',    # OPTIONAL
-      RoleArn         => 'MyArn',           # OPTIONAL
+      StateMachineArn      => 'MyArn',
+      Definition           => 'MyDefinition',    # OPTIONAL
+      LoggingConfiguration => {
+        Destinations => [
+          {
+            CloudWatchLogsLogGroup => {
+              LogGroupArn => 'MyArn',            # min: 1, max: 256
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
+        IncludeExecutionData => 1,    # OPTIONAL
+        Level => 'ALL',               # values: ALL, ERROR, FATAL, OFF; OPTIONAL
+      },    # OPTIONAL
+      RoleArn => 'MyArn',    # OPTIONAL
     );
 
     # Results:
@@ -51,6 +64,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 The Amazon States Language definition of the state machine. See Amazon
 States Language
 (https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
+
+
+
+=head2 LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>
+
+
 
 
 

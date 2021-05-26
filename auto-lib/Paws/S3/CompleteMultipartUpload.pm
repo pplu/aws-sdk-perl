@@ -3,9 +3,10 @@ package Paws::S3::CompleteMultipartUpload;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has MultipartUpload => (is => 'ro', isa => 'Paws::S3::CompletedMultipartUpload', request_name => 'CompleteMultipartUpload', traits => ['NameInRequest']);
+  has MultipartUpload => (is => 'ro', isa => 'Paws::S3::CompletedMultipartUpload', request_name => 'CompleteMultipartUpload', traits => ['NameInRequest','ParamInBody']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has UploadId => (is => 'ro', isa => 'Str', query_name => 'uploadId', traits => ['ParamInQuery'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -15,6 +16,7 @@ package Paws::S3::CompleteMultipartUpload;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CompleteMultipartUploadOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -72,19 +74,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+Name of the bucket to which the multipart upload was initiated.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the multipart upload was initiated.
 
 
 
 =head2 MultipartUpload => L<Paws::S3::CompletedMultipartUpload>
 
-
+The container for the multipart upload request information.
 
 
 
@@ -96,7 +98,7 @@ Valid values are: C<"requester">
 
 =head2 B<REQUIRED> UploadId => Str
 
-
+ID for the initiated multipart upload.
 
 
 

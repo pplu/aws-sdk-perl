@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Bucket => Str
 
-  The name of the S3 bucket.
+The name of the S3 bucket.
 
 
 =head2 Key => Str
 
-  The key.
+The key.
 
 
 

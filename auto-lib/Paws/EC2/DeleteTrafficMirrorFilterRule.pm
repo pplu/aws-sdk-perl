@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteTrafficMirrorFilterRuleResult =
       $ec2->DeleteTrafficMirrorFilterRule(
-      TrafficMirrorFilterRuleId => 'MyString',
-      DryRun                    => 1,            # OPTIONAL
+      TrafficMirrorFilterRuleId => 'MyTrafficMirrorFilterRuleId',
+      DryRun                    => 1,                               # OPTIONAL
       );
 
     # Results:

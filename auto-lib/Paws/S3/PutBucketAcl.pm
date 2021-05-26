@@ -1,7 +1,7 @@
 
 package Paws::S3::PutBucketAcl;
   use Moose;
-  has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy');
+  has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy', traits => ['ParamInBody']);
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
@@ -12,6 +12,7 @@ package Paws::S3::PutBucketAcl;
   has GrantWrite => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write', traits => ['ParamInHeader']);
   has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketAcl');
@@ -20,6 +21,7 @@ package Paws::S3::PutBucketAcl;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +95,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket to which to apply the ACL.
 
 
 
@@ -105,7 +107,10 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the data. This header must be
+used as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, go to RFC 1864.
+(http://www.ietf.org/rfc/rfc1864.txt)
 
 
 

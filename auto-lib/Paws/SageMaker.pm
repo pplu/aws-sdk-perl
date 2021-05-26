@@ -20,9 +20,24 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::AddTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateTrialComponent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::AssociateTrialComponent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAlgorithm {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateAlgorithm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAutoMLJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateAutoMLJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateCodeRepository {
@@ -35,6 +50,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateCompilationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateEndpoint', @_);
@@ -43,6 +63,21 @@ package Paws::SageMaker;
   sub CreateEndpointConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateEndpointConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateExperiment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateExperiment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFlowDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateFlowDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateHumanTaskUi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateHumanTaskUi', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateHyperParameterTuningJob {
@@ -65,6 +100,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateModelPackage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateMonitoringSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateMonitoringSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateNotebookInstance', @_);
@@ -75,9 +115,19 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateNotebookInstanceLifecycleConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePresignedDomainUrl {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreatePresignedDomainUrl', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePresignedNotebookInstanceUrl {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreatePresignedNotebookInstanceUrl', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateProcessingJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateProcessingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateTrainingJob {
@@ -90,6 +140,21 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTransformJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTrial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTrial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrialComponent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTrialComponent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateUserProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateWorkteam {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateWorkteam', @_);
@@ -100,9 +165,19 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteAlgorithm', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCodeRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteCodeRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEndpoint {
@@ -115,6 +190,16 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteEndpointConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteExperiment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteExperiment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFlowDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteFlowDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteModel', @_);
@@ -123,6 +208,11 @@ package Paws::SageMaker;
   sub DeleteModelPackage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteModelPackage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteMonitoringSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteMonitoringSchedule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNotebookInstance {
@@ -140,6 +230,21 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTrial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteTrial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTrialComponent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteTrialComponent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUserProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteWorkteam {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteWorkteam', @_);
@@ -148,6 +253,16 @@ package Paws::SageMaker;
   sub DescribeAlgorithm {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeAlgorithm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAutoMLJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeAutoMLJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCodeRepository {
@@ -160,6 +275,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeCompilationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeEndpoint', @_);
@@ -168,6 +288,21 @@ package Paws::SageMaker;
   sub DescribeEndpointConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeEndpointConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeExperiment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeExperiment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFlowDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeFlowDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeHumanTaskUi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeHumanTaskUi', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeHyperParameterTuningJob {
@@ -190,6 +325,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeModelPackage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeMonitoringSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeMonitoringSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeNotebookInstance', @_);
@@ -198,6 +338,11 @@ package Paws::SageMaker;
   sub DescribeNotebookInstanceLifecycleConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeNotebookInstanceLifecycleConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeProcessingJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeProcessingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSubscribedWorkteam {
@@ -215,9 +360,34 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTransformJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTrial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTrial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTrialComponent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTrialComponent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUserProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeWorkforce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeWorkforce', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeWorkteam {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeWorkteam', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateTrialComponent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::DisassociateTrialComponent', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSearchSuggestions {
@@ -230,6 +400,21 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListAlgorithms', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListApps {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListApps', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAutoMLJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListAutoMLJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListCandidatesForAutoMLJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListCandidatesForAutoMLJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCodeRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListCodeRepositories', @_);
@@ -240,6 +425,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListCompilationJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDomains {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListDomains', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListEndpointConfigs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListEndpointConfigs', @_);
@@ -248,6 +438,21 @@ package Paws::SageMaker;
   sub ListEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListExperiments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListExperiments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFlowDefinitions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListFlowDefinitions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListHumanTaskUis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListHumanTaskUis', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListHyperParameterTuningJobs {
@@ -275,6 +480,16 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListModels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMonitoringExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListMonitoringExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListMonitoringSchedules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListMonitoringSchedules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListNotebookInstanceLifecycleConfigs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListNotebookInstanceLifecycleConfigs', @_);
@@ -283,6 +498,11 @@ package Paws::SageMaker;
   sub ListNotebookInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListNotebookInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListProcessingJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListProcessingJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSubscribedWorkteams {
@@ -310,6 +530,21 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTransformJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTrialComponents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrialComponents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTrials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListUserProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::ListUserProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListWorkteams {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListWorkteams', @_);
@@ -325,9 +560,19 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::Search', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartMonitoringSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StartMonitoringSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StartNotebookInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopAutoMLJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StopAutoMLJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopCompilationJob {
@@ -345,9 +590,19 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StopLabelingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StopMonitoringSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StopMonitoringSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StopNotebookInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopProcessingJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::StopProcessingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopTrainingJob {
@@ -365,6 +620,11 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateCodeRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateEndpoint', @_);
@@ -375,6 +635,16 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateEndpointWeightsAndCapacities', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateExperiment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateExperiment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMonitoringSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateMonitoringSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateNotebookInstance', @_);
@@ -383,6 +653,26 @@ package Paws::SageMaker;
   sub UpdateNotebookInstanceLifecycleConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateNotebookInstanceLifecycleConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTrial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateTrial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTrialComponent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateTrialComponent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUserProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateWorkforce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateWorkforce', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateWorkteam {
@@ -410,6 +700,75 @@ package Paws::SageMaker;
         $result = $self->ListAlgorithms(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'AlgorithmSummaryList') foreach (@{ $result->AlgorithmSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllApps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApps(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListApps(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Apps }, @{ $next_result->Apps };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Apps') foreach (@{ $result->Apps });
+        $result = $self->ListApps(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Apps') foreach (@{ $result->Apps });
+    }
+
+    return undef
+  }
+  sub ListAllAutoMLJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAutoMLJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAutoMLJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AutoMLJobSummaries }, @{ $next_result->AutoMLJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AutoMLJobSummaries') foreach (@{ $result->AutoMLJobSummaries });
+        $result = $self->ListAutoMLJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AutoMLJobSummaries') foreach (@{ $result->AutoMLJobSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllCandidatesForAutoMLJob {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCandidatesForAutoMLJob(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCandidatesForAutoMLJob(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Candidates }, @{ $next_result->Candidates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Candidates') foreach (@{ $result->Candidates });
+        $result = $self->ListCandidatesForAutoMLJob(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Candidates') foreach (@{ $result->Candidates });
     }
 
     return undef
@@ -460,6 +819,29 @@ package Paws::SageMaker;
 
     return undef
   }
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDomains(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDomains(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Domains }, @{ $next_result->Domains };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+    }
+
+    return undef
+  }
   sub ListAllEndpointConfigs {
     my $self = shift;
 
@@ -502,6 +884,75 @@ package Paws::SageMaker;
         $result = $self->ListEndpoints(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+    }
+
+    return undef
+  }
+  sub ListAllExperiments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListExperiments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListExperiments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ExperimentSummaries }, @{ $next_result->ExperimentSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ExperimentSummaries') foreach (@{ $result->ExperimentSummaries });
+        $result = $self->ListExperiments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ExperimentSummaries') foreach (@{ $result->ExperimentSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllFlowDefinitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFlowDefinitions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFlowDefinitions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->FlowDefinitionSummaries }, @{ $next_result->FlowDefinitionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'FlowDefinitionSummaries') foreach (@{ $result->FlowDefinitionSummaries });
+        $result = $self->ListFlowDefinitions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'FlowDefinitionSummaries') foreach (@{ $result->FlowDefinitionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllHumanTaskUis {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHumanTaskUis(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHumanTaskUis(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HumanTaskUiSummaries }, @{ $next_result->HumanTaskUiSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HumanTaskUiSummaries') foreach (@{ $result->HumanTaskUiSummaries });
+        $result = $self->ListHumanTaskUis(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HumanTaskUiSummaries') foreach (@{ $result->HumanTaskUiSummaries });
     }
 
     return undef
@@ -621,6 +1072,52 @@ package Paws::SageMaker;
 
     return undef
   }
+  sub ListAllMonitoringExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMonitoringExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMonitoringExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MonitoringExecutionSummaries }, @{ $next_result->MonitoringExecutionSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MonitoringExecutionSummaries') foreach (@{ $result->MonitoringExecutionSummaries });
+        $result = $self->ListMonitoringExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MonitoringExecutionSummaries') foreach (@{ $result->MonitoringExecutionSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllMonitoringSchedules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMonitoringSchedules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMonitoringSchedules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MonitoringScheduleSummaries }, @{ $next_result->MonitoringScheduleSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MonitoringScheduleSummaries') foreach (@{ $result->MonitoringScheduleSummaries });
+        $result = $self->ListMonitoringSchedules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MonitoringScheduleSummaries') foreach (@{ $result->MonitoringScheduleSummaries });
+    }
+
+    return undef
+  }
   sub ListAllNotebookInstanceLifecycleConfigs {
     my $self = shift;
 
@@ -663,6 +1160,29 @@ package Paws::SageMaker;
         $result = $self->ListNotebookInstances(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'NotebookInstances') foreach (@{ $result->NotebookInstances });
+    }
+
+    return undef
+  }
+  sub ListAllProcessingJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProcessingJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListProcessingJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ProcessingJobSummaries }, @{ $next_result->ProcessingJobSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ProcessingJobSummaries') foreach (@{ $result->ProcessingJobSummaries });
+        $result = $self->ListProcessingJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ProcessingJobSummaries') foreach (@{ $result->ProcessingJobSummaries });
     }
 
     return undef
@@ -782,6 +1302,75 @@ package Paws::SageMaker;
 
     return undef
   }
+  sub ListAllTrialComponents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTrialComponents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTrialComponents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrialComponentSummaries }, @{ $next_result->TrialComponentSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrialComponentSummaries') foreach (@{ $result->TrialComponentSummaries });
+        $result = $self->ListTrialComponents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrialComponentSummaries') foreach (@{ $result->TrialComponentSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllTrials {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTrials(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTrials(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrialSummaries }, @{ $next_result->TrialSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrialSummaries') foreach (@{ $result->TrialSummaries });
+        $result = $self->ListTrials(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrialSummaries') foreach (@{ $result->TrialSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllUserProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListUserProfiles(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UserProfiles }, @{ $next_result->UserProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UserProfiles') foreach (@{ $result->UserProfiles });
+        $result = $self->ListUserProfiles(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UserProfiles') foreach (@{ $result->UserProfiles });
+    }
+
+    return undef
+  }
   sub ListAllWorkteams {
     my $self = shift;
 
@@ -830,7 +1419,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddTags CreateAlgorithm CreateCodeRepository CreateCompilationJob CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateLabelingJob CreateModel CreateModelPackage CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob CreateTransformJob CreateWorkteam DeleteAlgorithm DeleteCodeRepository DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteModelPackage DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DeleteWorkteam DescribeAlgorithm DescribeCodeRepository DescribeCompilationJob DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeLabelingJob DescribeModel DescribeModelPackage DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeWorkteam GetSearchSuggestions ListAlgorithms ListCodeRepositories ListCompilationJobs ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListLabelingJobs ListLabelingJobsForWorkteam ListModelPackages ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListWorkteams RenderUiTemplate Search StartNotebookInstance StopCompilationJob StopHyperParameterTuningJob StopLabelingJob StopNotebookInstance StopTrainingJob StopTransformJob UpdateCodeRepository UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdateWorkteam / }
+  sub operations { qw/AddTags AssociateTrialComponent CreateAlgorithm CreateApp CreateAutoMLJob CreateCodeRepository CreateCompilationJob CreateDomain CreateEndpoint CreateEndpointConfig CreateExperiment CreateFlowDefinition CreateHumanTaskUi CreateHyperParameterTuningJob CreateLabelingJob CreateModel CreateModelPackage CreateMonitoringSchedule CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedDomainUrl CreatePresignedNotebookInstanceUrl CreateProcessingJob CreateTrainingJob CreateTransformJob CreateTrial CreateTrialComponent CreateUserProfile CreateWorkteam DeleteAlgorithm DeleteApp DeleteCodeRepository DeleteDomain DeleteEndpoint DeleteEndpointConfig DeleteExperiment DeleteFlowDefinition DeleteModel DeleteModelPackage DeleteMonitoringSchedule DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DeleteTrial DeleteTrialComponent DeleteUserProfile DeleteWorkteam DescribeAlgorithm DescribeApp DescribeAutoMLJob DescribeCodeRepository DescribeCompilationJob DescribeDomain DescribeEndpoint DescribeEndpointConfig DescribeExperiment DescribeFlowDefinition DescribeHumanTaskUi DescribeHyperParameterTuningJob DescribeLabelingJob DescribeModel DescribeModelPackage DescribeMonitoringSchedule DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeProcessingJob DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeTrial DescribeTrialComponent DescribeUserProfile DescribeWorkforce DescribeWorkteam DisassociateTrialComponent GetSearchSuggestions ListAlgorithms ListApps ListAutoMLJobs ListCandidatesForAutoMLJob ListCodeRepositories ListCompilationJobs ListDomains ListEndpointConfigs ListEndpoints ListExperiments ListFlowDefinitions ListHumanTaskUis ListHyperParameterTuningJobs ListLabelingJobs ListLabelingJobsForWorkteam ListModelPackages ListModels ListMonitoringExecutions ListMonitoringSchedules ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListProcessingJobs ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListTrialComponents ListTrials ListUserProfiles ListWorkteams RenderUiTemplate Search StartMonitoringSchedule StartNotebookInstance StopAutoMLJob StopCompilationJob StopHyperParameterTuningJob StopLabelingJob StopMonitoringSchedule StopNotebookInstance StopProcessingJob StopTrainingJob StopTransformJob UpdateCodeRepository UpdateDomain UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateExperiment UpdateMonitoringSchedule UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdateTrial UpdateTrialComponent UpdateUserProfile UpdateWorkforce UpdateWorkteam / }
 
 1;
 
@@ -900,6 +1489,26 @@ add the tags when you first create the tuning job by specifying them in
 the C<Tags> parameter of CreateHyperParameterTuningJob
 
 
+=head2 AssociateTrialComponent
+
+=over
+
+=item TrialComponentName => Str
+
+=item TrialName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::AssociateTrialComponent>
+
+Returns: a L<Paws::SageMaker::AssociateTrialComponentResponse> instance
+
+Associates a trial component with a trial. A trial component can be
+associated with multiple trials. To disassociate a trial component from
+a trial, call the DisassociateTrialComponent API.
+
+
 =head2 CreateAlgorithm
 
 =over
@@ -927,6 +1536,72 @@ Create a machine learning algorithm that you can use in Amazon
 SageMaker and list in the AWS Marketplace.
 
 
+=head2 CreateApp
+
+=over
+
+=item AppName => Str
+
+=item AppType => Str
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+=item [ResourceSpec => L<Paws::SageMaker::ResourceSpec>]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateApp>
+
+Returns: a L<Paws::SageMaker::CreateAppResponse> instance
+
+Creates a running App for the specified UserProfile. Supported Apps are
+JupyterServer and KernelGateway. This operation is automatically
+invoked by Amazon SageMaker Amazon SageMaker Studio (Studio) upon
+access to the associated Studio Domain, and when new kernel
+configurations are selected by the user. A user may have multiple Apps
+active simultaneously. Apps will automatically terminate and be deleted
+when stopped from within Studio, or when the DeleteApp API is manually
+called. UserProfiles are limited to 5 concurrently running Apps at a
+time.
+
+
+=head2 CreateAutoMLJob
+
+=over
+
+=item AutoMLJobName => Str
+
+=item InputDataConfig => ArrayRef[L<Paws::SageMaker::AutoMLChannel>]
+
+=item OutputDataConfig => L<Paws::SageMaker::AutoMLOutputDataConfig>
+
+=item RoleArn => Str
+
+=item [AutoMLJobConfig => L<Paws::SageMaker::AutoMLJobConfig>]
+
+=item [AutoMLJobObjective => L<Paws::SageMaker::AutoMLJobObjective>]
+
+=item [GenerateCandidateDefinitionsOnly => Bool]
+
+=item [ProblemType => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateAutoMLJob>
+
+Returns: a L<Paws::SageMaker::CreateAutoMLJobResponse> instance
+
+Creates an AutoPilot job.
+
+
 =head2 CreateCodeRepository
 
 =over
@@ -951,7 +1626,7 @@ independently from the lifecycle of any notebook instances it is
 associated with.
 
 The repository can be hosted either in AWS CodeCommit
-(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+(https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository.
 
 
@@ -1019,6 +1694,43 @@ DescribeCompilationJob. To get information about multiple model
 compilation jobs, use ListCompilationJobs.
 
 
+=head2 CreateDomain
+
+=over
+
+=item AuthMode => Str
+
+=item DefaultUserSettings => L<Paws::SageMaker::UserSettings>
+
+=item DomainName => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item VpcId => Str
+
+=item [HomeEfsFileSystemKmsKeyId => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateDomain>
+
+Returns: a L<Paws::SageMaker::CreateDomainResponse> instance
+
+Creates a Domain for Amazon SageMaker Amazon SageMaker Studio (Studio),
+which can be accessed by end-users in a web browser. A Domain has an
+associated directory, list of authorized users, and a variety of
+security, application, policies, and Amazon Virtual Private Cloud
+configurations. An AWS account is limited to one Domain, per region.
+Users within a domain can share notebook files and other artifacts with
+each other. When a Domain is created, an Amazon Elastic File System
+(EFS) is also created for use by all of the users within the Domain.
+Each user receives a private home directory within the EFS for
+notebooks, Git repositories, and data files.
+
+
 =head2 CreateEndpoint
 
 =over
@@ -1076,8 +1788,8 @@ download model artifacts from the S3 path you provided. AWS STS is
 activated in your IAM user account by default. If you previously
 deactivated AWS STS for a region, you need to reactivate AWS STS for
 that region. For more information, see Activating and Deactivating AWS
-STS i an AWS Region
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+STS in an AWS Region
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 in the I<AWS Identity and Access Management User Guide>.
 
 
@@ -1088,6 +1800,8 @@ in the I<AWS Identity and Access Management User Guide>.
 =item EndpointConfigName => Str
 
 =item ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]
+
+=item [DataCaptureConfig => L<Paws::SageMaker::DataCaptureConfig>]
 
 =item [KmsKeyId => Str]
 
@@ -1124,6 +1838,101 @@ distributes two-thirds of the traffic to Model A, and one-third to
 model B.
 
 
+=head2 CreateExperiment
+
+=over
+
+=item ExperimentName => Str
+
+=item [Description => Str]
+
+=item [DisplayName => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateExperiment>
+
+Returns: a L<Paws::SageMaker::CreateExperimentResponse> instance
+
+Creates an Amazon SageMaker I<experiment>. An experiment is a
+collection of I<trials> that are observed, compared and evaluated as a
+group. A trial is a set of steps, called I<trial components>, that
+produce a machine learning model.
+
+The goal of an experiment is to determine the components that produce
+the best model. Multiple trials are performed, each one isolating and
+measuring the impact of a change to one or more inputs, while keeping
+the remaining inputs constant.
+
+When you use Amazon SageMaker Studio or the Amazon SageMaker Python
+SDK, all experiments, trials, and trial components are automatically
+tracked, logged, and indexed. When you use the AWS SDK for Python
+(Boto), you must use the logging APIs provided by the SDK.
+
+You can add tags to experiments, trials, trial components and then use
+the Search API to search for the tags.
+
+To add a description to an experiment, specify the optional
+C<Description> parameter. To add a description later, or to change the
+description, call the UpdateExperiment API.
+
+To get a list of all your experiments, call the ListExperiments API. To
+view an experiment's properties, call the DescribeExperiment API. To
+get a list of all the trials associated with an experiment, call the
+ListTrials API. To create a trial call the CreateTrial API.
+
+
+=head2 CreateFlowDefinition
+
+=over
+
+=item FlowDefinitionName => Str
+
+=item HumanLoopConfig => L<Paws::SageMaker::HumanLoopConfig>
+
+=item OutputConfig => L<Paws::SageMaker::FlowDefinitionOutputConfig>
+
+=item RoleArn => Str
+
+=item [HumanLoopActivationConfig => L<Paws::SageMaker::HumanLoopActivationConfig>]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateFlowDefinition>
+
+Returns: a L<Paws::SageMaker::CreateFlowDefinitionResponse> instance
+
+Creates a flow definition.
+
+
+=head2 CreateHumanTaskUi
+
+=over
+
+=item HumanTaskUiName => Str
+
+=item UiTemplate => L<Paws::SageMaker::UiTemplate>
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateHumanTaskUi>
+
+Returns: a L<Paws::SageMaker::CreateHumanTaskUiResponse> instance
+
+Defines the settings you will use for the human review workflow user
+interface. Reviewers will see a three-panel interface with an
+instruction area, the item to review, and an input area.
+
+
 =head2 CreateHyperParameterTuningJob
 
 =over
@@ -1135,6 +1944,8 @@ model B.
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
 =item [TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
+
+=item [TrainingJobDefinitions => ArrayRef[L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]]
 
 =item [WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>]
 
@@ -1216,12 +2027,12 @@ data objects that need to be labeled by a human. Automated data
 labeling uses I<active learning> to determine if a data object can be
 labeled by machine or if it needs to be sent to a human worker. For
 more information, see Using Automated Data Labeling
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html).
 
 The data objects to be labeled are contained in an Amazon S3 bucket.
 You create a I<manifest file> that describes the location of each
 object. For more information, see Using Input and Output Data
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html).
 
 The output can be used as the manifest file for another labeling job or
 as training data for your machine learning models.
@@ -1317,6 +2128,27 @@ model from an algorithm resource that you created or subscribed to in
 AWS Marketplace, provide a value for C<SourceAlgorithmSpecification>.
 
 
+=head2 CreateMonitoringSchedule
+
+=over
+
+=item MonitoringScheduleConfig => L<Paws::SageMaker::MonitoringScheduleConfig>
+
+=item MonitoringScheduleName => Str
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateMonitoringSchedule>
+
+Returns: a L<Paws::SageMaker::CreateMonitoringScheduleResponse> instance
+
+Creates a schedule that regularly starts Amazon SageMaker Processing
+Jobs to monitor the data captured for an Amazon SageMaker Endoint.
+
+
 =head2 CreateNotebookInstance
 
 =over
@@ -1396,7 +2228,8 @@ notebook instance, assuming that the security groups allow it.
 =back
 
 After creating the notebook instance, Amazon SageMaker returns its
-Amazon Resource Name (ARN).
+Amazon Resource Name (ARN). You can't change the name of a notebook
+instance after you create it.
 
 After Amazon SageMaker creates the notebook instance, you can connect
 to the Jupyter server and work in Jupyter notebooks. For example, you
@@ -1447,6 +2280,30 @@ Step 2.1: (Optional) Customize a Notebook Instance
 (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
+=head2 CreatePresignedDomainUrl
+
+=over
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+=item [SessionExpirationDurationInSeconds => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreatePresignedDomainUrl>
+
+Returns: a L<Paws::SageMaker::CreatePresignedDomainUrlResponse> instance
+
+Creates a URL for a specified UserProfile in a Domain. When accessed in
+a web browser, the user will be automatically signed in to Amazon
+SageMaker Amazon SageMaker Studio (Studio), and granted access to all
+of the Apps and files associated with that Amazon Elastic File System
+(EFS). This operation can only be called when AuthMode equals IAM.
+
+
 =head2 CreatePresignedNotebookInstanceUrl
 
 =over
@@ -1476,11 +2333,47 @@ Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
 Limit Access to a Notebook Instance by IP Address
-(https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html#nbi-ip-filter).
 
 The URL that you get from a call to is valid only for 5 minutes. If you
 try to use the URL after the 5-minute limit expires, you are directed
 to the AWS console sign-in page.
+
+
+=head2 CreateProcessingJob
+
+=over
+
+=item AppSpecification => L<Paws::SageMaker::AppSpecification>
+
+=item ProcessingJobName => Str
+
+=item ProcessingResources => L<Paws::SageMaker::ProcessingResources>
+
+=item RoleArn => Str
+
+=item [Environment => L<Paws::SageMaker::ProcessingEnvironmentMap>]
+
+=item [ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>]
+
+=item [NetworkConfig => L<Paws::SageMaker::NetworkConfig>]
+
+=item [ProcessingInputs => ArrayRef[L<Paws::SageMaker::ProcessingInput>]]
+
+=item [ProcessingOutputConfig => L<Paws::SageMaker::ProcessingOutputConfig>]
+
+=item [StoppingCondition => L<Paws::SageMaker::ProcessingStoppingCondition>]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateProcessingJob>
+
+Returns: a L<Paws::SageMaker::CreateProcessingJobResponse> instance
+
+Creates a processing job.
 
 
 =head2 CreateTrainingJob
@@ -1499,15 +2392,27 @@ to the AWS console sign-in page.
 
 =item TrainingJobName => Str
 
+=item [CheckpointConfig => L<Paws::SageMaker::CheckpointConfig>]
+
+=item [DebugHookConfig => L<Paws::SageMaker::DebugHookConfig>]
+
+=item [DebugRuleConfigurations => ArrayRef[L<Paws::SageMaker::DebugRuleConfiguration>]]
+
 =item [EnableInterContainerTrafficEncryption => Bool]
 
+=item [EnableManagedSpotTraining => Bool]
+
 =item [EnableNetworkIsolation => Bool]
+
+=item [ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>]
 
 =item [HyperParameters => L<Paws::SageMaker::HyperParameters>]
 
 =item [InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [TensorBoardOutputConfig => L<Paws::SageMaker::TensorBoardOutputConfig>]
 
 =item [VpcConfig => L<Paws::SageMaker::VpcConfig>]
 
@@ -1547,12 +2452,12 @@ SageMaker, see Algorithms
 
 =item *
 
-C<InputDataConfig> - Describes the training dataset and the Amazon S3
-location where it is stored.
+C<InputDataConfig> - Describes the training dataset and the Amazon S3,
+EFS, or FSx location where it is stored.
 
 =item *
 
-C<OutputDataConfig> - Identifies the Amazon S3 location where you want
+C<OutputDataConfig> - Identifies the Amazon S3 bucket where you want
 Amazon SageMaker to save the results of model training.
 
 =item *
@@ -1563,6 +2468,13 @@ training, you specify more than one instance.
 
 =item *
 
+C<EnableManagedSpotTraining> - Optimize the cost of training machine
+learning models by up to 80% by using Amazon EC2 Spot instances. For
+more information, see Managed Spot Training
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
+
+=item *
+
 C<RoleARN> - The Amazon Resource Number (ARN) that Amazon SageMaker
 assumes to perform tasks on your behalf during model training. You must
 grant this role the necessary permissions so that Amazon SageMaker can
@@ -1570,8 +2482,10 @@ successfully complete model training.
 
 =item *
 
-C<StoppingCondition> - Sets a time limit for training. Use this
-parameter to cap model training costs.
+C<StoppingCondition> - To help cap training costs, use
+C<MaxRuntimeInSeconds> to set a time limit for training. Use
+C<MaxWaitTimeInSeconds> to specify how long you are willing to wait for
+a managed spot training job to complete.
 
 =back
 
@@ -1598,6 +2512,8 @@ For more information about Amazon SageMaker, see How It Works
 =item [DataProcessing => L<Paws::SageMaker::DataProcessing>]
 
 =item [Environment => L<Paws::SageMaker::TransformEnvironmentMap>]
+
+=item [ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>]
 
 =item [MaxConcurrentTransforms => Int]
 
@@ -1651,9 +2567,129 @@ transform job.
 
 =back
 
-For more information about how batch transformation works Amazon
-SageMaker, see How It Works
+For more information about how batch transformation works, see Batch
+Transform
 (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
+
+
+=head2 CreateTrial
+
+=over
+
+=item ExperimentName => Str
+
+=item TrialName => Str
+
+=item [DisplayName => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateTrial>
+
+Returns: a L<Paws::SageMaker::CreateTrialResponse> instance
+
+Creates an Amazon SageMaker I<trial>. A trial is a set of steps called
+I<trial components> that produce a machine learning model. A trial is
+part of a single Amazon SageMaker I<experiment>.
+
+When you use Amazon SageMaker Studio or the Amazon SageMaker Python
+SDK, all experiments, trials, and trial components are automatically
+tracked, logged, and indexed. When you use the AWS SDK for Python
+(Boto), you must use the logging APIs provided by the SDK.
+
+You can add tags to a trial and then use the Search API to search for
+the tags.
+
+To get a list of all your trials, call the ListTrials API. To view a
+trial's properties, call the DescribeTrial API. To create a trial
+component, call the CreateTrialComponent API.
+
+
+=head2 CreateTrialComponent
+
+=over
+
+=item TrialComponentName => Str
+
+=item [DisplayName => Str]
+
+=item [EndTime => Str]
+
+=item [InputArtifacts => L<Paws::SageMaker::TrialComponentArtifacts>]
+
+=item [OutputArtifacts => L<Paws::SageMaker::TrialComponentArtifacts>]
+
+=item [Parameters => L<Paws::SageMaker::TrialComponentParameters>]
+
+=item [StartTime => Str]
+
+=item [Status => L<Paws::SageMaker::TrialComponentStatus>]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateTrialComponent>
+
+Returns: a L<Paws::SageMaker::CreateTrialComponentResponse> instance
+
+Creates a I<trial component>, which is a stage of a machine learning
+I<trial>. A trial is composed of one or more trial components. A trial
+component can be used in multiple trials.
+
+Trial components include pre-processing jobs, training jobs, and batch
+transform jobs.
+
+When you use Amazon SageMaker Studio or the Amazon SageMaker Python
+SDK, all experiments, trials, and trial components are automatically
+tracked, logged, and indexed. When you use the AWS SDK for Python
+(Boto), you must use the logging APIs provided by the SDK.
+
+You can add tags to a trial component and then use the Search API to
+search for the tags.
+
+C<CreateTrialComponent> can only be invoked from within an Amazon
+SageMaker managed environment. This includes Amazon SageMaker training
+jobs, processing jobs, transform jobs, and Amazon SageMaker notebooks.
+A call to C<CreateTrialComponent> from outside one of these
+environments results in an error.
+
+
+=head2 CreateUserProfile
+
+=over
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+=item [SingleSignOnUserIdentifier => Str]
+
+=item [SingleSignOnUserValue => Str]
+
+=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [UserSettings => L<Paws::SageMaker::UserSettings>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::CreateUserProfile>
+
+Returns: a L<Paws::SageMaker::CreateUserProfileResponse> instance
+
+Creates a new user profile. A user profile represents a single user
+within a Domain, and is the main way to reference a "person" for the
+purposes of sharing, reporting and other user-oriented features. This
+entity is created during on-boarding. If an administrator invites a
+person by email or imports them from SSO, a new UserProfile is
+automatically created. This entity is the primary holder of settings
+for an individual user and has a reference to the user's private Amazon
+Elastic File System (EFS) home directory.
 
 
 =head2 CreateWorkteam
@@ -1700,6 +2736,28 @@ Returns: nothing
 Removes the specified algorithm from your account.
 
 
+=head2 DeleteApp
+
+=over
+
+=item AppName => Str
+
+=item AppType => Str
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteApp>
+
+Returns: nothing
+
+Used to stop and delete an app.
+
+
 =head2 DeleteCodeRepository
 
 =over
@@ -1714,6 +2772,27 @@ Each argument is described in detail in: L<Paws::SageMaker::DeleteCodeRepository
 Returns: nothing
 
 Deletes the specified Git repository from your account.
+
+
+=head2 DeleteDomain
+
+=over
+
+=item DomainId => Str
+
+=item [RetentionPolicy => L<Paws::SageMaker::RetentionPolicy>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteDomain>
+
+Returns: nothing
+
+Used to delete a domain. If you on-boarded with IAM mode, you will need
+to delete your domain to on-board again using SSO. Use with caution.
+All of the members of the domain will lose access to their EFS volume,
+including data, notebooks, and other artifacts.
 
 
 =head2 DeleteEndpoint
@@ -1756,6 +2835,40 @@ deletes only the specified configuration. It does not delete endpoints
 created using the configuration.
 
 
+=head2 DeleteExperiment
+
+=over
+
+=item ExperimentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteExperiment>
+
+Returns: a L<Paws::SageMaker::DeleteExperimentResponse> instance
+
+Deletes an Amazon SageMaker experiment. All trials associated with the
+experiment must be deleted first. Use the ListTrials API to get a list
+of the trials associated with the experiment.
+
+
+=head2 DeleteFlowDefinition
+
+=over
+
+=item FlowDefinitionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteFlowDefinition>
+
+Returns: a L<Paws::SageMaker::DeleteFlowDefinitionResponse> instance
+
+Deletes the specified flow definition.
+
+
 =head2 DeleteModel
 
 =over
@@ -1794,6 +2907,24 @@ Deletes a model package.
 A model package is used to create Amazon SageMaker models or list on
 AWS Marketplace. Buyers can subscribe to model packages listed on AWS
 Marketplace to create models in Amazon SageMaker.
+
+
+=head2 DeleteMonitoringSchedule
+
+=over
+
+=item MonitoringScheduleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteMonitoringSchedule>
+
+Returns: nothing
+
+Deletes a monitoring schedule. Also stops the schedule had not already
+been stopped. This does not delete the job execution history of the
+monitoring schedule.
 
 
 =head2 DeleteNotebookInstance
@@ -1857,6 +2988,61 @@ the deleted tags are not removed from training jobs that the
 hyperparameter tuning job launched before you called this API.
 
 
+=head2 DeleteTrial
+
+=over
+
+=item TrialName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteTrial>
+
+Returns: a L<Paws::SageMaker::DeleteTrialResponse> instance
+
+Deletes the specified trial. All trial components that make up the
+trial must be deleted first. Use the DescribeTrialComponent API to get
+the list of trial components.
+
+
+=head2 DeleteTrialComponent
+
+=over
+
+=item TrialComponentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteTrialComponent>
+
+Returns: a L<Paws::SageMaker::DeleteTrialComponentResponse> instance
+
+Deletes the specified trial component. A trial component must be
+disassociated from all trials before the trial component can be
+deleted. To disassociate a trial component from a trial, call the
+DisassociateTrialComponent API.
+
+
+=head2 DeleteUserProfile
+
+=over
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DeleteUserProfile>
+
+Returns: nothing
+
+Deletes a user profile.
+
+
 =head2 DeleteWorkteam
 
 =over
@@ -1888,6 +3074,44 @@ Returns: a L<Paws::SageMaker::DescribeAlgorithmOutput> instance
 
 Returns a description of the specified algorithm that is in your
 account.
+
+
+=head2 DescribeApp
+
+=over
+
+=item AppName => Str
+
+=item AppType => Str
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeApp>
+
+Returns: a L<Paws::SageMaker::DescribeAppResponse> instance
+
+Describes the app.
+
+
+=head2 DescribeAutoMLJob
+
+=over
+
+=item AutoMLJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeAutoMLJob>
+
+Returns: a L<Paws::SageMaker::DescribeAutoMLJobResponse> instance
+
+Returns information about an Amazon SageMaker job.
 
 
 =head2 DescribeCodeRepository
@@ -1926,6 +3150,22 @@ information about multiple model compilation jobs, use
 ListCompilationJobs.
 
 
+=head2 DescribeDomain
+
+=over
+
+=item DomainId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeDomain>
+
+Returns: a L<Paws::SageMaker::DescribeDomainResponse> instance
+
+The desciption of the domain.
+
+
 =head2 DescribeEndpoint
 
 =over
@@ -1957,6 +3197,54 @@ Returns: a L<Paws::SageMaker::DescribeEndpointConfigOutput> instance
 
 Returns the description of an endpoint configuration created using the
 C<CreateEndpointConfig> API.
+
+
+=head2 DescribeExperiment
+
+=over
+
+=item ExperimentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeExperiment>
+
+Returns: a L<Paws::SageMaker::DescribeExperimentResponse> instance
+
+Provides a list of an experiment's properties.
+
+
+=head2 DescribeFlowDefinition
+
+=over
+
+=item FlowDefinitionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeFlowDefinition>
+
+Returns: a L<Paws::SageMaker::DescribeFlowDefinitionResponse> instance
+
+Returns information about the specified flow definition.
+
+
+=head2 DescribeHumanTaskUi
+
+=over
+
+=item HumanTaskUiName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeHumanTaskUi>
+
+Returns: a L<Paws::SageMaker::DescribeHumanTaskUiResponse> instance
+
+Returns information about the requested human task user interface.
 
 
 =head2 DescribeHyperParameterTuningJob
@@ -2027,6 +3315,22 @@ To create models in Amazon SageMaker, buyers can subscribe to model
 packages listed on AWS Marketplace.
 
 
+=head2 DescribeMonitoringSchedule
+
+=over
+
+=item MonitoringScheduleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeMonitoringSchedule>
+
+Returns: a L<Paws::SageMaker::DescribeMonitoringScheduleResponse> instance
+
+Describes the schedule for a monitoring job.
+
+
 =head2 DescribeNotebookInstance
 
 =over
@@ -2061,6 +3365,22 @@ Returns a description of a notebook instance lifecycle configuration.
 For information about notebook instance lifestyle configurations, see
 Step 2.1: (Optional) Customize a Notebook Instance
 (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+
+
+=head2 DescribeProcessingJob
+
+=over
+
+=item ProcessingJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeProcessingJob>
+
+Returns: a L<Paws::SageMaker::DescribeProcessingJobResponse> instance
+
+Returns a description of a processing job.
 
 
 =head2 DescribeSubscribedWorkteam
@@ -2112,6 +3432,79 @@ Returns: a L<Paws::SageMaker::DescribeTransformJobResponse> instance
 Returns information about a transform job.
 
 
+=head2 DescribeTrial
+
+=over
+
+=item TrialName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeTrial>
+
+Returns: a L<Paws::SageMaker::DescribeTrialResponse> instance
+
+Provides a list of a trial's properties.
+
+
+=head2 DescribeTrialComponent
+
+=over
+
+=item TrialComponentName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeTrialComponent>
+
+Returns: a L<Paws::SageMaker::DescribeTrialComponentResponse> instance
+
+Provides a list of a trials component's properties.
+
+
+=head2 DescribeUserProfile
+
+=over
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeUserProfile>
+
+Returns: a L<Paws::SageMaker::DescribeUserProfileResponse> instance
+
+Describes the user profile.
+
+
+=head2 DescribeWorkforce
+
+=over
+
+=item WorkforceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DescribeWorkforce>
+
+Returns: a L<Paws::SageMaker::DescribeWorkforceResponse> instance
+
+Lists private workforce information, including workforce name, Amazon
+Resource Name (ARN), and, if applicable, allowed IP address ranges
+(CIDRs
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)).
+Allowable IP address ranges are the IP addresses that workers can use
+to access tasks.
+
+This operation applies only to private workforces.
+
+
 =head2 DescribeWorkteam
 
 =over
@@ -2128,6 +3521,28 @@ Returns: a L<Paws::SageMaker::DescribeWorkteamResponse> instance
 Gets information about a specific work team. You can see information
 such as the create date, the last updated date, membership information,
 and the work team's Amazon Resource Name (ARN).
+
+
+=head2 DisassociateTrialComponent
+
+=over
+
+=item TrialComponentName => Str
+
+=item TrialName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::DisassociateTrialComponent>
+
+Returns: a L<Paws::SageMaker::DisassociateTrialComponentResponse> instance
+
+Disassociates a trial component from a trial. This doesn't effect other
+trials the component is associated with. Before you can delete a
+component, you must disassociate the component from all trials it is
+associated with. To associate a trial component with a trial, call the
+AssociateTrialComponent API.
 
 
 =head2 GetSearchSuggestions
@@ -2177,6 +3592,94 @@ Each argument is described in detail in: L<Paws::SageMaker::ListAlgorithms>
 Returns: a L<Paws::SageMaker::ListAlgorithmsOutput> instance
 
 Lists the machine learning algorithms that have been created.
+
+
+=head2 ListApps
+
+=over
+
+=item [DomainIdEquals => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [UserProfileNameEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListApps>
+
+Returns: a L<Paws::SageMaker::ListAppsResponse> instance
+
+Lists apps.
+
+
+=head2 ListAutoMLJobs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListAutoMLJobs>
+
+Returns: a L<Paws::SageMaker::ListAutoMLJobsResponse> instance
+
+Request a list of jobs.
+
+
+=head2 ListCandidatesForAutoMLJob
+
+=over
+
+=item AutoMLJobName => Str
+
+=item [CandidateNameEquals => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListCandidatesForAutoMLJob>
+
+Returns: a L<Paws::SageMaker::ListCandidatesForAutoMLJobResponse> instance
+
+List the Candidates created for the job.
 
 
 =head2 ListCodeRepositories
@@ -2249,6 +3752,24 @@ information about a particular model compilation job you have created,
 use DescribeCompilationJob.
 
 
+=head2 ListDomains
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListDomains>
+
+Returns: a L<Paws::SageMaker::ListDomainsResponse> instance
+
+Lists the domains.
+
+
 =head2 ListEndpointConfigs
 
 =over
@@ -2309,6 +3830,83 @@ Each argument is described in detail in: L<Paws::SageMaker::ListEndpoints>
 Returns: a L<Paws::SageMaker::ListEndpointsOutput> instance
 
 Lists endpoints.
+
+
+=head2 ListExperiments
+
+=over
+
+=item [CreatedAfter => Str]
+
+=item [CreatedBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListExperiments>
+
+Returns: a L<Paws::SageMaker::ListExperimentsResponse> instance
+
+Lists all the experiments in your account. The list can be filtered to
+show only experiments that were created in a specific time range. The
+list can be sorted by experiment name or creation time.
+
+
+=head2 ListFlowDefinitions
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListFlowDefinitions>
+
+Returns: a L<Paws::SageMaker::ListFlowDefinitionsResponse> instance
+
+Returns information about the flow definitions in your account.
+
+
+=head2 ListHumanTaskUis
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListHumanTaskUis>
+
+Returns: a L<Paws::SageMaker::ListHumanTaskUisResponse> instance
+
+Returns information about the human task user interfaces in your
+account.
 
 
 =head2 ListHyperParameterTuningJobs
@@ -2468,6 +4066,82 @@ Lists models created with the CreateModel
 API.
 
 
+=head2 ListMonitoringExecutions
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [EndpointName => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [MonitoringScheduleName => Str]
+
+=item [NextToken => Str]
+
+=item [ScheduledTimeAfter => Str]
+
+=item [ScheduledTimeBefore => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListMonitoringExecutions>
+
+Returns: a L<Paws::SageMaker::ListMonitoringExecutionsResponse> instance
+
+Returns list of all monitoring job executions.
+
+
+=head2 ListMonitoringSchedules
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [EndpointName => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListMonitoringSchedules>
+
+Returns: a L<Paws::SageMaker::ListMonitoringSchedulesResponse> instance
+
+Returns list of all monitoring schedules.
+
+
 =head2 ListNotebookInstanceLifecycleConfigs
 
 =over
@@ -2540,6 +4214,40 @@ Returns: a L<Paws::SageMaker::ListNotebookInstancesOutput> instance
 
 Returns a list of the Amazon SageMaker notebook instances in the
 requester's account in an AWS Region.
+
+
+=head2 ListProcessingJobs
+
+=over
+
+=item [CreationTimeAfter => Str]
+
+=item [CreationTimeBefore => Str]
+
+=item [LastModifiedTimeAfter => Str]
+
+=item [LastModifiedTimeBefore => Str]
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [StatusEquals => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListProcessingJobs>
+
+Returns: a L<Paws::SageMaker::ListProcessingJobsResponse> instance
+
+Lists processing jobs that satisfy various filters.
 
 
 =head2 ListSubscribedWorkteams
@@ -2679,6 +4387,115 @@ Returns: a L<Paws::SageMaker::ListTransformJobsResponse> instance
 Lists transform jobs.
 
 
+=head2 ListTrialComponents
+
+=over
+
+=item [CreatedAfter => Str]
+
+=item [CreatedBefore => Str]
+
+=item [ExperimentName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [SourceArn => Str]
+
+=item [TrialName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListTrialComponents>
+
+Returns: a L<Paws::SageMaker::ListTrialComponentsResponse> instance
+
+Lists the trial components in your account. You can sort the list by
+trial component name or creation time. You can filter the list to show
+only components that were created in a specific time range. You can
+also filter on one of the following:
+
+=over
+
+=item *
+
+C<ExperimentName>
+
+=item *
+
+C<SourceArn>
+
+=item *
+
+C<TrialName>
+
+=back
+
+
+
+=head2 ListTrials
+
+=over
+
+=item [CreatedAfter => Str]
+
+=item [CreatedBefore => Str]
+
+=item [ExperimentName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListTrials>
+
+Returns: a L<Paws::SageMaker::ListTrialsResponse> instance
+
+Lists the trials in your account. Specify an experiment name to limit
+the list to the trials that are part of that experiment. The list can
+be filtered to show only trials that were created in a specific time
+range. The list can be sorted by trial name or creation time.
+
+
+=head2 ListUserProfiles
+
+=over
+
+=item [DomainIdEquals => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+=item [UserProfileNameContains => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::ListUserProfiles>
+
+Returns: a L<Paws::SageMaker::ListUserProfilesResponse> instance
+
+Lists user profiles.
+
+
 =head2 ListWorkteams
 
 =over
@@ -2754,8 +4571,26 @@ resource objects are returned as a list of C<SearchResult> objects in
 the response. You can sort the search results by any resource property
 in a ascending or descending order.
 
-You can query against the following value types: numerical, text,
-Booleans, and timestamps.
+You can query against the following value types: numeric, text,
+Boolean, and timestamp.
+
+
+=head2 StartMonitoringSchedule
+
+=over
+
+=item MonitoringScheduleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StartMonitoringSchedule>
+
+Returns: nothing
+
+Starts a previously stopped monitoring schedule.
+
+New monitoring schedules are immediately started after creation.
 
 
 =head2 StartNotebookInstance
@@ -2776,6 +4611,22 @@ libraries and attaches your ML storage volume. After configuring the
 notebook instance, Amazon SageMaker sets the notebook instance status
 to C<InService>. A notebook instance's status must be C<InService>
 before you can connect to your Jupyter notebook.
+
+
+=head2 StopAutoMLJob
+
+=over
+
+=item AutoMLJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StopAutoMLJob>
+
+Returns: nothing
+
+A method for forcing the termination of a running job.
 
 
 =head2 StopCompilationJob
@@ -2844,6 +4695,22 @@ restarted. Any results obtained before the job is stopped are placed in
 the Amazon S3 output bucket.
 
 
+=head2 StopMonitoringSchedule
+
+=over
+
+=item MonitoringScheduleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StopMonitoringSchedule>
+
+Returns: nothing
+
+Stops a previously started monitoring schedule.
+
+
 =head2 StopNotebookInstance
 
 =over
@@ -2868,6 +4735,22 @@ has been terminated, call the C<StartNotebookInstance> API.
 C<StartNotebookInstance> launches another ML compute instance,
 configures it, and attaches the preserved ML storage volume so you can
 continue your work.
+
+
+=head2 StopProcessingJob
+
+=over
+
+=item ProcessingJobName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::StopProcessingJob>
+
+Returns: nothing
+
+Stops a processing job.
 
 
 =head2 StopTrainingJob
@@ -2933,6 +4816,24 @@ Returns: a L<Paws::SageMaker::UpdateCodeRepositoryOutput> instance
 Updates the specified Git repository with the specified values.
 
 
+=head2 UpdateDomain
+
+=over
+
+=item DomainId => Str
+
+=item [DefaultUserSettings => L<Paws::SageMaker::UserSettings>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateDomain>
+
+Returns: a L<Paws::SageMaker::UpdateDomainResponse> instance
+
+Updates a domain. Changes will impact all of the people in the domain.
+
+
 =head2 UpdateEndpoint
 
 =over
@@ -2989,6 +4890,45 @@ sets the status to C<InService>. To check the status of an endpoint,
 use the DescribeEndpoint
 (https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
+
+
+=head2 UpdateExperiment
+
+=over
+
+=item ExperimentName => Str
+
+=item [Description => Str]
+
+=item [DisplayName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateExperiment>
+
+Returns: a L<Paws::SageMaker::UpdateExperimentResponse> instance
+
+Adds, updates, or removes the description of an experiment. Updates the
+display name of an experiment.
+
+
+=head2 UpdateMonitoringSchedule
+
+=over
+
+=item MonitoringScheduleConfig => L<Paws::SageMaker::MonitoringScheduleConfig>
+
+=item MonitoringScheduleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateMonitoringSchedule>
+
+Returns: a L<Paws::SageMaker::UpdateMonitoringScheduleResponse> instance
+
+Updates a previously created schedule.
 
 
 =head2 UpdateNotebookInstance
@@ -3054,6 +4994,110 @@ Updates a notebook instance lifecycle configuration created with the
 CreateNotebookInstanceLifecycleConfig API.
 
 
+=head2 UpdateTrial
+
+=over
+
+=item TrialName => Str
+
+=item [DisplayName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateTrial>
+
+Returns: a L<Paws::SageMaker::UpdateTrialResponse> instance
+
+Updates the display name of a trial.
+
+
+=head2 UpdateTrialComponent
+
+=over
+
+=item TrialComponentName => Str
+
+=item [DisplayName => Str]
+
+=item [EndTime => Str]
+
+=item [InputArtifacts => L<Paws::SageMaker::TrialComponentArtifacts>]
+
+=item [InputArtifactsToRemove => ArrayRef[Str|Undef]]
+
+=item [OutputArtifacts => L<Paws::SageMaker::TrialComponentArtifacts>]
+
+=item [OutputArtifactsToRemove => ArrayRef[Str|Undef]]
+
+=item [Parameters => L<Paws::SageMaker::TrialComponentParameters>]
+
+=item [ParametersToRemove => ArrayRef[Str|Undef]]
+
+=item [StartTime => Str]
+
+=item [Status => L<Paws::SageMaker::TrialComponentStatus>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateTrialComponent>
+
+Returns: a L<Paws::SageMaker::UpdateTrialComponentResponse> instance
+
+Updates one or more properties of a trial component.
+
+
+=head2 UpdateUserProfile
+
+=over
+
+=item DomainId => Str
+
+=item UserProfileName => Str
+
+=item [UserSettings => L<Paws::SageMaker::UserSettings>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateUserProfile>
+
+Returns: a L<Paws::SageMaker::UpdateUserProfileResponse> instance
+
+Updates a user profile.
+
+
+=head2 UpdateWorkforce
+
+=over
+
+=item WorkforceName => Str
+
+=item [SourceIpConfig => L<Paws::SageMaker::SourceIpConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::UpdateWorkforce>
+
+Returns: a L<Paws::SageMaker::UpdateWorkforceResponse> instance
+
+Restricts access to tasks assigned to workers in the specified
+workforce to those within specific ranges of IP addresses. You specify
+allowed IP addresses by creating a list of up to four CIDRs
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
+
+By default, a workforce isn't restricted to specific IP addresses. If
+you specify a range of IP addresses, workers who attempt to access
+tasks using any IP address outside the specified range are denied
+access and get a C<Not Found> error message on the worker portal. After
+restricting access with this operation, you can see the allowed IP
+values for a private workforce with the operation.
+
+This operation applies only to private workforces.
+
+
 =head2 UpdateWorkteam
 
 =over
@@ -3095,6 +5139,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListAlgorithmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllApps(sub { },[DomainIdEquals => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, UserProfileNameEquals => Str])
+
+=head2 ListAllApps([DomainIdEquals => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, UserProfileNameEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Apps, passing the object as the first parameter, and the string 'Apps' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListAppsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAutoMLJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllAutoMLJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AutoMLJobSummaries, passing the object as the first parameter, and the string 'AutoMLJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListAutoMLJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCandidatesForAutoMLJob(sub { },AutoMLJobName => Str, [CandidateNameEquals => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllCandidatesForAutoMLJob(AutoMLJobName => Str, [CandidateNameEquals => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Candidates, passing the object as the first parameter, and the string 'Candidates' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListCandidatesForAutoMLJobResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllCodeRepositories(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
 
 =head2 ListAllCodeRepositories([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
@@ -3119,6 +5199,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListCompilationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllDomains(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDomains([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Domains, passing the object as the first parameter, and the string 'Domains' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListDomainsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllEndpointConfigs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
 
 =head2 ListAllEndpointConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
@@ -3141,6 +5233,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
 
 If not, it will return a a L<Paws::SageMaker::ListEndpointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllExperiments(sub { },[CreatedAfter => Str, CreatedBefore => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllExperiments([CreatedAfter => Str, CreatedBefore => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ExperimentSummaries, passing the object as the first parameter, and the string 'ExperimentSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListExperimentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFlowDefinitions(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+=head2 ListAllFlowDefinitions([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FlowDefinitionSummaries, passing the object as the first parameter, and the string 'FlowDefinitionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListFlowDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHumanTaskUis(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+=head2 ListAllHumanTaskUis([CreationTimeAfter => Str, CreationTimeBefore => Str, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HumanTaskUiSummaries, passing the object as the first parameter, and the string 'HumanTaskUiSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListHumanTaskUisResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllHyperParameterTuningJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
@@ -3203,6 +5331,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListModelsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllMonitoringExecutions(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, EndpointName => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, MonitoringScheduleName => Str, NextToken => Str, ScheduledTimeAfter => Str, ScheduledTimeBefore => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllMonitoringExecutions([CreationTimeAfter => Str, CreationTimeBefore => Str, EndpointName => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, MonitoringScheduleName => Str, NextToken => Str, ScheduledTimeAfter => Str, ScheduledTimeBefore => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MonitoringExecutionSummaries, passing the object as the first parameter, and the string 'MonitoringExecutionSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListMonitoringExecutionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMonitoringSchedules(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, EndpointName => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllMonitoringSchedules([CreationTimeAfter => Str, CreationTimeBefore => Str, EndpointName => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MonitoringScheduleSummaries, passing the object as the first parameter, and the string 'MonitoringScheduleSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListMonitoringSchedulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllNotebookInstanceLifecycleConfigs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
 
 =head2 ListAllNotebookInstanceLifecycleConfigs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])
@@ -3225,6 +5377,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - NotebookInstances, passing the object as the first parameter, and the string 'NotebookInstances' as the second parameter 
 
 If not, it will return a a L<Paws::SageMaker::ListNotebookInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProcessingJobs(sub { },[CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+=head2 ListAllProcessingJobs([CreationTimeAfter => Str, CreationTimeBefore => Str, LastModifiedTimeAfter => Str, LastModifiedTimeBefore => Str, MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str, StatusEquals => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProcessingJobSummaries, passing the object as the first parameter, and the string 'ProcessingJobSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListProcessingJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllSubscribedWorkteams(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
@@ -3285,6 +5449,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TransformJobSummaries, passing the object as the first parameter, and the string 'TransformJobSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::SageMaker::ListTransformJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTrialComponents(sub { },[CreatedAfter => Str, CreatedBefore => Str, ExperimentName => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, SourceArn => Str, TrialName => Str])
+
+=head2 ListAllTrialComponents([CreatedAfter => Str, CreatedBefore => Str, ExperimentName => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, SourceArn => Str, TrialName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrialComponentSummaries, passing the object as the first parameter, and the string 'TrialComponentSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListTrialComponentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTrials(sub { },[CreatedAfter => Str, CreatedBefore => Str, ExperimentName => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllTrials([CreatedAfter => Str, CreatedBefore => Str, ExperimentName => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrialSummaries, passing the object as the first parameter, and the string 'TrialSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListTrialsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserProfiles(sub { },[DomainIdEquals => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, UserProfileNameContains => Str])
+
+=head2 ListAllUserProfiles([DomainIdEquals => Str, MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str, UserProfileNameContains => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserProfiles, passing the object as the first parameter, and the string 'UserProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::SageMaker::ListUserProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllWorkteams(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str, SortBy => Str, SortOrder => Str])

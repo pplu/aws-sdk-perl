@@ -32,9 +32,7 @@ The URI of the file that contains the IPSet. For example
 
 =head2 B<REQUIRED> Name => Str
 
-The user friendly name to identify the IPSet. This name is displayed in
-all findings that are triggered by activity that involves IP addresses
-included in this IPSet.
+The user friendly name for the IPSet.
 
 
 =head2 B<REQUIRED> Status => Str

@@ -6,7 +6,9 @@ package Paws::EC2::CreateFlowLogs;
   has DryRun => (is => 'ro', isa => 'Bool');
   has LogDestination => (is => 'ro', isa => 'Str');
   has LogDestinationType => (is => 'ro', isa => 'Str');
+  has LogFormat => (is => 'ro', isa => 'Str');
   has LogGroupName => (is => 'ro', isa => 'Str');
+  has MaxAggregationInterval => (is => 'ro', isa => 'Int');
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has TrafficType => (is => 'ro', isa => 'Str', required => 1);
@@ -36,15 +38,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateFlowLogsResult = $ec2->CreateFlowLogs(
-      ResourceIds              => [ 'MyString', ... ],
+      ResourceIds              => [ 'MyFlowLogResourceId', ... ],
       ResourceType             => 'VPC',
       TrafficType              => 'ACCEPT',
-      ClientToken              => 'MyString',            # OPTIONAL
-      DeliverLogsPermissionArn => 'MyString',            # OPTIONAL
-      DryRun                   => 1,                     # OPTIONAL
-      LogDestination           => 'MyString',            # OPTIONAL
-      LogDestinationType       => 'cloud-watch-logs',    # OPTIONAL
-      LogGroupName             => 'MyString',            # OPTIONAL
+      ClientToken              => 'MyString',                       # OPTIONAL
+      DeliverLogsPermissionArn => 'MyString',                       # OPTIONAL
+      DryRun                   => 1,                                # OPTIONAL
+      LogDestination           => 'MyString',                       # OPTIONAL
+      LogDestinationType       => 'cloud-watch-logs',               # OPTIONAL
+      LogFormat                => 'MyString',                       # OPTIONAL
+      LogGroupName             => 'MyString',                       # OPTIONAL
+      MaxAggregationInterval   => 1,                                # OPTIONAL
     );
 
     # Results:
@@ -95,8 +99,11 @@ published. Flow log data can be published to a CloudWatch Logs log
 group or an Amazon S3 bucket. The value specified for this parameter
 depends on the value specified for C<LogDestinationType>.
 
-If LogDestinationType is not specified or C<cloud-watch-logs>, specify
-the Amazon Resource Name (ARN) of the CloudWatch Logs log group.
+If C<LogDestinationType> is not specified or C<cloud-watch-logs>,
+specify the Amazon Resource Name (ARN) of the CloudWatch Logs log
+group. For example, to publish to a log group called C<my-logs>,
+specify C<arn:aws:logs:us-east-1:123456789012:log-group:my-logs>.
+Alternatively, use C<LogGroupName> instead.
 
 If LogDestinationType is C<s3>, specify the ARN of the Amazon S3
 bucket. You can also specify a subfolder in the bucket. To specify a
@@ -123,6 +130,24 @@ Default: C<cloud-watch-logs>
 
 Valid values are: C<"cloud-watch-logs">, C<"s3">
 
+=head2 LogFormat => Str
+
+The fields to include in the flow log record, in the order in which
+they should appear. For a list of available fields, see Flow Log
+Records
+(https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records).
+If you omit this parameter, the flow log is created using the default
+format. If you specify this parameter, you must specify at least one
+field.
+
+Specify the fields using the C<${field-id}> format, separated by
+spaces. For the AWS CLI, use single quotation marks (' ') to surround
+the parameter value.
+
+Only applicable to flow logs that are published to an Amazon S3 bucket.
+
+
+
 =head2 LogGroupName => Str
 
 The name of a new or existing CloudWatch Logs log group where Amazon
@@ -130,6 +155,21 @@ EC2 publishes your flow logs.
 
 If you specify C<LogDestinationType> as C<s3>, do not specify
 C<DeliverLogsPermissionArn> or C<LogGroupName>.
+
+
+
+=head2 MaxAggregationInterval => Int
+
+The maximum interval of time during which a flow of packets is captured
+and aggregated into a flow log record. You can specify 60 seconds (1
+minute) or 600 seconds (10 minutes).
+
+When a network interface is attached to a Nitro-based instance
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances),
+the aggregation interval is always 60 seconds or less, regardless of
+the value that you specify.
+
+Default: 600
 
 
 

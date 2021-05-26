@@ -43,34 +43,34 @@ This class has no description
 
 =head2 AccepterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
-  Information about the accepter VPC. CIDR block information is only
+Information about the accepter VPC. CIDR block information is only
 returned when describing an active VPC peering connection.
 
 
 =head2 ExpirationTime => Str
 
-  The time that an unaccepted VPC peering connection will expire.
+The time that an unaccepted VPC peering connection will expire.
 
 
 =head2 RequesterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
-  Information about the requester VPC. CIDR block information is only
+Information about the requester VPC. CIDR block information is only
 returned when describing an active VPC peering connection.
 
 
 =head2 Status => L<Paws::EC2::VpcPeeringConnectionStateReason>
 
-  The status of the VPC peering connection.
+The status of the VPC peering connection.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the resource.
+Any tags assigned to the resource.
 
 
 =head2 VpcPeeringConnectionId => Str
 
-  The ID of the VPC peering connection.
+The ID of the VPC peering connection.
 
 
 

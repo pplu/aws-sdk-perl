@@ -48,21 +48,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> BuildId => Str
 
-Unique identifier for a build to update.
+A unique identifier for a build to update. You can use either the build
+ID or ARN value.
 
 
 
 =head2 Name => Str
 
-Descriptive label that is associated with a build. Build names do not
+A descriptive label that is associated with a build. Build names do not
 need to be unique.
 
 
 
 =head2 Version => Str
 
-Version that is associated with a build or script. Version strings do
-not need to be unique.
+Version information that is associated with a build or script. Version
+strings do not need to be unique.
 
 
 

@@ -1,7 +1,8 @@
 
 package Paws::CloudFormation::CreateStackInstances;
   use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
@@ -33,9 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $CreateStackInstancesOutput = $cloudformation->CreateStackInstances(
-      Accounts     => [ 'MyAccount', ... ],
-      Regions      => [ 'MyRegion',  ... ],
-      StackSetName => 'MyStackSetName',
+      Regions           => [ 'MyRegion', ... ],
+      StackSetName      => 'MyStackSetName',
+      Accounts          => [ 'MyAccount', ... ],    # OPTIONAL
+      DeploymentTargets => {
+        Accounts              => [ 'MyAccount',              ... ],
+        OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
+      },    # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
       OperationPreferences => {
         FailureToleranceCount      => 1,    # OPTIONAL
@@ -66,10 +71,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Accounts => ArrayRef[Str|Undef]
+=head2 Accounts => ArrayRef[Str|Undef]
 
-The names of one or more AWS accounts that you want to create stack
-instances in the specified region(s) for.
+[Self-managed permissions] The names of one or more AWS accounts that
+you want to create stack instances in the specified region(s) for.
+
+You can specify C<Accounts> or C<DeploymentTargets>, but not both.
+
+
+
+=head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
+
+[C<Service-managed> permissions] The AWS Organizations accounts for
+which to create stack instances in the specified Regions.
+
+You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
 
 

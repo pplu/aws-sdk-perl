@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Key => Str
 
-  The tag key.
+The tag key.
 
 
 =head2 ResourceId => Str
 
-  The ID of the resource.
+The ID of the resource.
 
 
 =head2 ResourceType => Str
 
-  The resource type.
+The resource type.
 
 
 =head2 Value => Str
 
-  The tag value.
+The tag value.
 
 
 

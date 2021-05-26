@@ -7,6 +7,7 @@ package Paws::ACM::RequestCertificate;
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
   has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACM::Tag]');
   has ValidationMethod => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -52,6 +53,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SubjectAlternativeNames => [
         'MyDomainNameString', ...    # min: 1, max: 253
       ],                             # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',       # min: 1, max: 128
+          Value => 'MyTagValue',     # max: 256; OPTIONAL
+        },
+        ...
+      ],                             # OPTIONAL
       ValidationMethod => 'EMAIL',   # OPTIONAL
     );
 
@@ -89,7 +97,7 @@ wildcard certificate that protects several sites in the same domain.
 For example, *.example.com protects www.example.com, site.example.com,
 and images.example.com.
 
-The first domain name you enter cannot exceed 63 octets, including
+The first domain name you enter cannot exceed 64 octets, including
 periods. Each subsequent Subject Alternative Name (SAN), however, can
 be up to 253 octets in length.
 
@@ -164,6 +172,12 @@ octets.
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ACM::Tag>]
+
+One or more resource tags to associate with the certificate.
 
 
 

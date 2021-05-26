@@ -17,9 +17,8 @@ Paws::CodeCommit::TestRepositoryTriggersOutput
 
 =head2 FailedExecutions => ArrayRef[L<Paws::CodeCommit::RepositoryTriggerExecutionFailure>]
 
-The list of triggers that were not able to be tested. This list
-provides the names of the triggers that could not be tested, separated
-by commas.
+The list of triggers that were not tested. This list provides the names
+of the triggers that could not be tested, separated by commas.
 
 
 =head2 SuccessfulExecutions => ArrayRef[Str|Undef]

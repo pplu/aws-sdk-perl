@@ -17,8 +17,7 @@ Paws::Connect::StartOutboundVoiceContactResponse
 
 =head2 ContactId => Str
 
-The unique identifier of this contact within your Amazon Connect
-instance.
+The identifier of this contact within the Amazon Connect instance.
 
 
 =head2 _request_id => Str

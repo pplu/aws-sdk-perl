@@ -29,11 +29,6 @@ Uniquely identifies a backup plan.
 Specifies the body of a request to assign a set of resources to a
 backup plan.
 
-It includes an array of resources, an optional array of patterns to
-exclude resources, an optional role to provide access to the AWS
-service that the resource belongs to, and an optional array of tags
-used to identify a set of resources.
-
 
 =head2 CreationDate => Str
 

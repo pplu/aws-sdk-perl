@@ -2,9 +2,17 @@
 package Paws::SageMaker::DescribeTrainingJobResponse;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has AutoMLJobArn => (is => 'ro', isa => 'Str');
+  has BillableTimeInSeconds => (is => 'ro', isa => 'Int');
+  has CheckpointConfig => (is => 'ro', isa => 'Paws::SageMaker::CheckpointConfig');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has DebugHookConfig => (is => 'ro', isa => 'Paws::SageMaker::DebugHookConfig');
+  has DebugRuleConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DebugRuleConfiguration]');
+  has DebugRuleEvaluationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DebugRuleEvaluationStatus]');
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
+  has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
@@ -18,11 +26,13 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has SecondaryStatus => (is => 'ro', isa => 'Str', required => 1);
   has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
+  has TensorBoardOutputConfig => (is => 'ro', isa => 'Paws::SageMaker::TensorBoardOutputConfig');
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
+  has TrainingTimeInSeconds => (is => 'ro', isa => 'Int');
   has TuningJobArn => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
@@ -43,9 +53,44 @@ Information about the algorithm used for training, and algorithm
 metadata.
 
 
+=head2 AutoMLJobArn => Str
+
+
+
+
+=head2 BillableTimeInSeconds => Int
+
+The billable time in seconds.
+
+You can calculate the savings from using managed spot training using
+the formula C<(1 - BillableTimeInSeconds / TrainingTimeInSeconds) *
+100>. For example, if C<BillableTimeInSeconds> is 100 and
+C<TrainingTimeInSeconds> is 500, the savings is 80%.
+
+
+=head2 CheckpointConfig => L<Paws::SageMaker::CheckpointConfig>
+
+
+
+
 =head2 B<REQUIRED> CreationTime => Str
 
 A timestamp that indicates when the training job was created.
+
+
+=head2 DebugHookConfig => L<Paws::SageMaker::DebugHookConfig>
+
+
+
+
+=head2 DebugRuleConfigurations => ArrayRef[L<Paws::SageMaker::DebugRuleConfiguration>]
+
+Configuration information for debugging rules.
+
+
+=head2 DebugRuleEvaluationStatuses => ArrayRef[L<Paws::SageMaker::DebugRuleEvaluationStatus>]
+
+Status about the debug rule evaluation.
 
 
 =head2 EnableInterContainerTrafficEncryption => Bool
@@ -58,6 +103,12 @@ instances, especially if you use a deep learning algorithms in
 distributed training.
 
 
+=head2 EnableManagedSpotTraining => Bool
+
+A Boolean indicating whether managed spot training is enabled (C<True>)
+or not (C<False>).
+
+
 =head2 EnableNetworkIsolation => Bool
 
 If you want to allow inbound or outbound network calls, except for
@@ -67,8 +118,10 @@ are configured to use a VPC, Amazon SageMaker downloads and uploads
 customer data and model artifacts through the specified VPC, but the
 training container does not have network access.
 
-The Semantic Segmentation built-in algorithm does not support network
-isolation.
+
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+
 
 
 =head2 FailureReason => Str
@@ -161,6 +214,11 @@ C<Training> - Training is in progress.
 
 =item *
 
+C<Interrupted> - The job stopped because the managed spot training
+instances were interrupted.
+
+=item *
+
 C<Uploading> - Training is complete and the model artifacts are being
 uploaded to the S3 location.
 
@@ -196,6 +254,11 @@ C<DescribeTrainingJobResponse>.
 
 C<MaxRuntimeExceeded> - The job stopped because it exceeded the maximum
 allowed runtime.
+
+=item *
+
+C<MaxWaitTmeExceeded> - The job stopped because it exceeded the maximum
+allowed wait time.
 
 =item *
 
@@ -236,7 +299,7 @@ C<DownloadingTrainingImage>
 =back
 
 
-Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">
+Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">, C<"Interrupted">, C<"MaxWaitTimeExceeded">
 =head2 SecondaryStatusTransitions => ArrayRef[L<Paws::SageMaker::SecondaryStatusTransition>]
 
 A history of all of the secondary statuses that the training job has
@@ -245,14 +308,20 @@ transitioned through.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-Specifies a limit to how long a model training job can run. When the
-job reaches the time limit, Amazon SageMaker ends the training job. Use
+Specifies a limit to how long a model training job can run. It also
+specifies the maximum time to wait for a spot instance. When the job
+reaches the time limit, Amazon SageMaker ends the training job. Use
 this API to cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
 signal, which delays job termination for 120 seconds. Algorithms can
 use this 120-second window to save the model artifacts, so the results
 of training are not lost.
+
+
+=head2 TensorBoardOutputConfig => L<Paws::SageMaker::TensorBoardOutputConfig>
+
+
 
 
 =head2 TrainingEndTime => Str
@@ -316,6 +385,11 @@ You are billed for the time interval between this time and the value of
 C<TrainingEndTime>. The start time in CloudWatch Logs might be later
 than this time. The difference is due to the time it takes to download
 the training data and to the size of the training container.
+
+
+=head2 TrainingTimeInSeconds => Int
+
+The training time in seconds.
 
 
 =head2 TuningJobArn => Str

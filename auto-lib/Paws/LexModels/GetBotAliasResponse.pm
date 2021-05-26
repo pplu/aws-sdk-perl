@@ -4,6 +4,7 @@ package Paws::LexModels::GetBotAliasResponse;
   has BotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botName');
   has BotVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botVersion');
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ConversationLogs => (is => 'ro', isa => 'Paws::LexModels::ConversationLogsResponse', traits => ['NameInRequest'], request_name => 'conversationLogs');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
@@ -34,6 +35,12 @@ The version of the bot that the alias points to.
 =head2 Checksum => Str
 
 Checksum of the bot alias.
+
+
+=head2 ConversationLogs => L<Paws::LexModels::ConversationLogsResponse>
+
+The settings that determine how Amazon Lex uses conversation logs for
+the alias.
 
 
 =head2 CreatedDate => Str

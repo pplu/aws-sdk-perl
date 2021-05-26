@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Source  => 'My__string',
           Subject => 'My__string',
           Target  => 'My__string',
+
         },
         ...
       ],                                           # OPTIONAL

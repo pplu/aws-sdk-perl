@@ -67,15 +67,15 @@ retrieve the next page of results.
 =head2 MasterRegion => Str
 
 For Lambda@Edge functions, the AWS Region of the master function. For
-example, C<us-east-2> or C<ALL>. If specified, you must set
-C<FunctionVersion> to C<ALL>.
+example, C<us-east-1> filters the list of functions to only include
+Lambda@Edge functions replicated from a master function in US East (N.
+Virginia). If specified, you must set C<FunctionVersion> to C<ALL>.
 
 
 
 =head2 MaxItems => Int
 
-Specify a value between 1 and 50 to limit the number of functions in
-the response.
+The maximum number of functions to return.
 
 
 

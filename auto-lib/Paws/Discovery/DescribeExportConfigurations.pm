@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dis
 
 =head2 ExportIds => ArrayRef[Str|Undef]
 
-A list of continuous export ids to search for.
+A list of continuous export IDs to search for.
 
 
 

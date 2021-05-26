@@ -78,13 +78,17 @@ The name of the data store.
 
 =head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>
 
-Where data store data is stored.
+Where data store data is stored. You may choose one of
+"serviceManagedS3" or "customerManagedS3" storage. If not specified,
+the default is "serviceManagedS3". This cannot be changed after the
+data store is created.
 
 
 
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
-How long, in days, message data is kept for the data store.
+How long, in days, message data is kept for the data store. When
+"customerManagedS3" storage is selected, this parameter is ignored.
 
 
 

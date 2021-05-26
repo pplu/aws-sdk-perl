@@ -3,6 +3,7 @@ package Paws::S3::GetBucketWebsite;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBucketWebsite');
@@ -11,6 +12,7 @@ package Paws::S3::GetBucketWebsite;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::GetBucketWebsiteOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name for which to get the website configuration.
 
 
 

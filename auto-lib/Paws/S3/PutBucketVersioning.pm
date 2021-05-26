@@ -5,7 +5,8 @@ package Paws::S3::PutBucketVersioning;
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
-  has VersioningConfiguration => (is => 'ro', isa => 'Paws::S3::VersioningConfiguration', required => 1);
+  has VersioningConfiguration => (is => 'ro', isa => 'Paws::S3::VersioningConfiguration', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -15,6 +16,7 @@ package Paws::S3::PutBucketVersioning;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name.
 
 
 
@@ -65,7 +67,10 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+E<gt>The base64-encoded 128-bit MD5 digest of the data. You must use
+this header as a message integrity check to verify that the request
+body was not corrupted in transit. For more information, see RFC 1864
+(http://www.ietf.org/rfc/rfc1864.txt).
 
 
 
@@ -78,7 +83,7 @@ space, and the value that is displayed on your authentication device.
 
 =head2 B<REQUIRED> VersioningConfiguration => L<Paws::S3::VersioningConfiguration>
 
-
+Container for setting the versioning state.
 
 
 

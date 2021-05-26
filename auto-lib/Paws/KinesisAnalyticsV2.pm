@@ -40,6 +40,11 @@ package Paws::KinesisAnalyticsV2;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::AddApplicationReferenceDataSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddApplicationVpcConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::AddApplicationVpcConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::CreateApplication', @_);
@@ -78,6 +83,11 @@ package Paws::KinesisAnalyticsV2;
   sub DeleteApplicationSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::DeleteApplicationSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApplicationVpcConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::DeleteApplicationVpcConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeApplication {
@@ -184,7 +194,7 @@ package Paws::KinesisAnalyticsV2;
   }
 
 
-  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource CreateApplication CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DescribeApplication DescribeApplicationSnapshot DiscoverInputSchema ListApplications ListApplicationSnapshots ListTagsForResource StartApplication StopApplication TagResource UntagResource UpdateApplication / }
+  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource AddApplicationVpcConfiguration CreateApplication CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DeleteApplicationVpcConfiguration DescribeApplication DescribeApplicationSnapshot DiscoverInputSchema ListApplications ListApplicationSnapshots ListTagsForResource StartApplication StopApplication TagResource UntagResource UpdateApplication / }
 
 1;
 
@@ -367,6 +377,46 @@ mapping information that describes how data in an Amazon S3 object maps
 to columns in the resulting in-application table.
 
 
+=head2 AddApplicationVpcConfiguration
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item VpcConfiguration => L<Paws::KinesisAnalyticsV2::VpcConfiguration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::AddApplicationVpcConfiguration>
+
+Returns: a L<Paws::KinesisAnalyticsV2::AddApplicationVpcConfigurationResponse> instance
+
+Adds a Virtual Private Cloud (VPC) configuration to the application.
+Applications can use VPCs to store and access resources securely.
+
+Note the following about VPC configurations for Kinesis Data Analytics
+applications:
+
+=over
+
+=item *
+
+VPC configurations are not supported for SQL applications.
+
+=item *
+
+When a VPC is added to a Kinesis Data Analytics application, the
+application can no longer be accessed from the Internet directly. To
+enable Internet access to the application, add an Internet gateway to
+your VPC.
+
+=back
+
+
+
 =head2 CreateApplication
 
 =over
@@ -544,6 +594,26 @@ Returns: a L<Paws::KinesisAnalyticsV2::DeleteApplicationSnapshotResponse> instan
 Deletes a snapshot of application state.
 
 
+=head2 DeleteApplicationVpcConfiguration
+
+=over
+
+=item ApplicationName => Str
+
+=item CurrentApplicationVersionId => Int
+
+=item VpcConfigurationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::DeleteApplicationVpcConfiguration>
+
+Returns: a L<Paws::KinesisAnalyticsV2::DeleteApplicationVpcConfigurationResponse> instance
+
+Removes a VPC configuration from a Kinesis Data Analytics application.
+
+
 =head2 DescribeApplication
 
 =over
@@ -674,7 +744,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::ListTagsFor
 
 Returns: a L<Paws::KinesisAnalyticsV2::ListTagsForResourceResponse> instance
 
-Retrieves the list of key-value tags assigned to the application.
+Retrieves the list of key-value tags assigned to the application. For
+more information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 
 =head2 StartApplication
@@ -732,7 +804,9 @@ Returns: a L<Paws::KinesisAnalyticsV2::TagResourceResponse> instance
 
 Adds one or more key-value tags to a Kinesis Analytics application.
 Note that the maximum number of application tags includes system tags.
-The maximum number of user-defined application tags is 50.
+The maximum number of user-defined application tags is 50. For more
+information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 
 =head2 UntagResource
@@ -750,7 +824,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::UntagResour
 
 Returns: a L<Paws::KinesisAnalyticsV2::UntagResourceResponse> instance
 
-Removes one or more tags from a Kinesis Analytics application.
+Removes one or more tags from a Kinesis Analytics application. For more
+information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 
 
 =head2 UpdateApplication

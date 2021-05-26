@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $devicefarm = Paws->service('DeviceFarm');
     my $ListTagsForResourceResponse = $devicefarm->ListTagsForResource(
-      ResourceARN => 'MyAmazonResourceName',
+      ResourceARN => 'MyDeviceFarmArn',
 
     );
 
@@ -45,9 +45,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The Amazon Resource Name (ARN) of the resource(s) for which to list
-tags. You can associate tags with the following Device Farm resources:
-C<PROJECT>, C<RUN>, C<NETWORK_PROFILE>, C<INSTANCE_PROFILE>,
+The Amazon Resource Name (ARN) of the resource or resources for which
+to list tags. You can associate tags with the following Device Farm
+resources: C<PROJECT>, C<RUN>, C<NETWORK_PROFILE>, C<INSTANCE_PROFILE>,
 C<DEVICE_INSTANCE>, C<SESSION>, C<DEVICE_POOL>, C<DEVICE>, and
 C<VPCE_CONFIGURATION>.
 

@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tag
 =head2 B<REQUIRED> Key => Str
 
 The key for which you want to list all existing values in the specified
-region for the AWS account.
+Region for the AWS account.
 
 
 
@@ -56,7 +56,7 @@ region for the AWS account.
 
 A string that indicates that additional data is available. Leave this
 value empty for your initial request. If the response includes a
-PaginationToken, use that string for this value to request an
+C<PaginationToken>, use that string for this value to request an
 additional page of data.
 
 

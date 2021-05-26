@@ -86,7 +86,7 @@ C<READER>: A user who has read-only access to dashboards.
 
 =item *
 
-C<AUTHOR>: A user who can create data sources, data sets, analyses, and
+C<AUTHOR>: A user who can create data sources, datasets, analyses, and
 dashboards.
 
 =item *

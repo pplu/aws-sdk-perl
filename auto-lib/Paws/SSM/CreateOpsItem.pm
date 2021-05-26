@@ -1,11 +1,13 @@
 
 package Paws::SSM::CreateOpsItem;
   use Moose;
+  has Category => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
   has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
   has Priority => (is => 'ro', isa => 'Int');
   has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
+  has Severity => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has Title => (is => 'ro', isa => 'Str', required => 1);
@@ -38,12 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description   => 'MyOpsItemDescription',
       Source        => 'MyOpsItemSource',
       Title         => 'MyOpsItemTitle',
+      Category      => 'MyOpsItemCategory',      # OPTIONAL
       Notifications => [
         {
-          Arn => 'MyString',    # OPTIONAL
+          Arn => 'MyString',                     # OPTIONAL
         },
         ...
-      ],                        # OPTIONAL
+      ],                                         # OPTIONAL
       OperationalData => {
         'MyOpsItemDataKey' => {
           Type =>
@@ -59,14 +62,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                              # OPTIONAL
-      Tags => [
+      Severity => 'MyOpsItemSeverity',    # OPTIONAL
+      Tags     => [
         {
-          Key   => 'MyTagKey',        # min: 1, max: 128
-          Value => 'MyTagValue',      # min: 1, max: 256
+          Key   => 'MyTagKey',            # min: 1, max: 128
+          Value => 'MyTagValue',          # min: 1, max: 256
 
         },
         ...
-      ],                              # OPTIONAL
+      ],                                  # OPTIONAL
     );
 
     # Results:
@@ -78,6 +82,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/CreateOpsItem>
 
 =head1 ATTRIBUTES
+
+
+=head2 Category => Str
+
+Specify a category to assign to an OpsItem.
+
 
 
 =head2 B<REQUIRED> Description => Str
@@ -134,6 +144,12 @@ One or more OpsItems that share something in common with the current
 OpsItems. For example, related OpsItems can include OpsItems with
 similar error messages, impacted resources, or statuses for the
 impacted resource.
+
+
+
+=head2 Severity => Str
+
+Specify a severity to assign to an OpsItem.
 
 
 

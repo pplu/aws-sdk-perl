@@ -34,12 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Arn               = $GetSigningProfileResponse->Arn;
     my $Overrides         = $GetSigningProfileResponse->Overrides;
     my $PlatformId        = $GetSigningProfileResponse->PlatformId;
     my $ProfileName       = $GetSigningProfileResponse->ProfileName;
     my $SigningMaterial   = $GetSigningProfileResponse->SigningMaterial;
     my $SigningParameters = $GetSigningProfileResponse->SigningParameters;
     my $Status            = $GetSigningProfileResponse->Status;
+    my $Tags              = $GetSigningProfileResponse->Tags;
 
     # Returns a L<Paws::Signer::GetSigningProfileResponse> object.
 

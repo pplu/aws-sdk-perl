@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 B<REQUIRED> ResourceName => Str
 
 The Amazon Resource Name (ARN) to which you want to add the tag or
-tags. For example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+tags. For example, C<arn:aws:redshift:us-east-2:123456789:cluster:t1>.
 
 
 

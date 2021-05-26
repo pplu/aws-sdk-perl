@@ -22,6 +22,7 @@ Paws::ApiGatewayV2::CreateRouteResponseResponse
 =head2 ModelSelectionExpression => Str
 
 Represents the model selection expression of a route response.
+Supported only for WebSocket APIs.
 
 
 =head2 ResponseModels => L<Paws::ApiGatewayV2::RouteModels>

@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyCapacityReservationResult = $ec2->ModifyCapacityReservation(
-      CapacityReservationId => 'MyString',
-      DryRun                => 1,                        # OPTIONAL
-      EndDate               => '1970-01-01T01:00:00',    # OPTIONAL
-      EndDateType           => 'unlimited',              # OPTIONAL
-      InstanceCount         => 1,                        # OPTIONAL
+      CapacityReservationId => 'MyCapacityReservationId',
+      DryRun                => 1,                           # OPTIONAL
+      EndDate               => '1970-01-01T01:00:00',       # OPTIONAL
+      EndDateType           => 'unlimited',                 # OPTIONAL
+      InstanceCount         => 1,                           # OPTIONAL
     );
 
     # Results:

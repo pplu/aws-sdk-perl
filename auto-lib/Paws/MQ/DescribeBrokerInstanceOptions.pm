@@ -5,6 +5,7 @@ package Paws::MQ::DescribeBrokerInstanceOptions;
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'hostInstanceType');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has StorageType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'storageType');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HostInstanceType => 'My__string',    # OPTIONAL
       MaxResults       => 1,               # OPTIONAL
       NextToken        => 'My__string',    # OPTIONAL
+      StorageType      => 'My__string',    # OPTIONAL
       );
 
     # Results:
@@ -76,6 +78,12 @@ page (20 by default). This value must be an integer from 5 to 100.
 
 The token that specifies the next page of results Amazon MQ should
 return. To request the first page, leave nextToken empty.
+
+
+
+=head2 StorageType => Str
+
+Filter response by storage type.
 
 
 

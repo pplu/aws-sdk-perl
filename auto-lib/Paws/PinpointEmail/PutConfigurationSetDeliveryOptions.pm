@@ -59,8 +59,11 @@ configuration set.
 
 =head2 TlsPolicy => Str
 
-Whether Amazon Pinpoint should require that incoming email is delivered
-over a connection encrypted with Transport Layer Security (TLS).
+Specifies whether messages that use the configuration set are required
+to use Transport Layer Security (TLS). If the value is C<Require>,
+messages are only delivered if a TLS connection can be established. If
+the value is C<Optional>, messages can be delivered in plain text if a
+TLS connection can't be established.
 
 Valid values are: C<"REQUIRE">, C<"OPTIONAL">
 

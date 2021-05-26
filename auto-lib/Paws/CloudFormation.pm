@@ -64,6 +64,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeleteStackSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeregisterType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAccountLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeAccountLimits', @_);
@@ -119,6 +124,16 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackSetOperation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTypeRegistration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeTypeRegistration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DetectStackDrift {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DetectStackDrift', @_);
@@ -127,6 +142,11 @@ package Paws::CloudFormation;
   sub DetectStackResourceDrift {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DetectStackResourceDrift', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetectStackSetDrift {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DetectStackSetDrift', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EstimateTemplateCost {
@@ -199,9 +219,39 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStackSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTypeRegistrations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListTypeRegistrations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTypeVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListTypeVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RecordHandlerProgress {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::RecordHandlerProgress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::RegisterType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetStackPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::SetStackPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetTypeDefaultVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::SetTypeDefaultVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SignalResource {
@@ -541,7 +591,7 @@ package Paws::CloudFormation;
   }
 
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackDriftDetectionStatus DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResourceDrifts DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation DetectStackDrift DetectStackResourceDrift EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DeregisterType DescribeAccountLimits DescribeChangeSet DescribeStackDriftDetectionStatus DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResourceDrifts DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation DescribeType DescribeTypeRegistration DetectStackDrift DetectStackResourceDrift DetectStackSetDrift EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets ListTypeRegistrations ListTypes ListTypeVersions RecordHandlerProgress RegisterType SetStackPolicy SetTypeDefaultVersion SignalResource StopStackSetOperation UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
 
 1;
 
@@ -676,6 +726,8 @@ back to it, causing the update rollback to fail.
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
 
+=item [ResourcesToImport => ArrayRef[L<Paws::CloudFormation::ResourceToImport>]]
+
 =item [ResourceTypes => ArrayRef[Str|Undef]]
 
 =item [RoleARN => Str]
@@ -712,9 +764,11 @@ stack.
 To create a change set for a stack that doesn't exist, for the
 C<ChangeSetType> parameter, specify C<CREATE>. To create a change set
 for an existing stack, specify C<UPDATE> for the C<ChangeSetType>
-parameter. After the C<CreateChangeSet> call successfully completes,
-AWS CloudFormation starts creating the change set. To check the status
-of the change set or to review it, use the DescribeChangeSet action.
+parameter. To create a change set for an import operation, specify
+C<IMPORT> for the C<ChangeSetType> parameter. After the
+C<CreateChangeSet> call successfully completes, AWS CloudFormation
+starts creating the change set. To check the status of the change set
+or to review it, use the DescribeChangeSet action.
 
 When you are satisfied with the changes the change set will make,
 execute the change set by using the ExecuteChangeSet action. AWS
@@ -775,11 +829,13 @@ the stack via the DescribeStacks API.
 
 =over
 
-=item Accounts => ArrayRef[Str|Undef]
-
 =item Regions => ArrayRef[Str|Undef]
 
 =item StackSetName => Str
+
+=item [Accounts => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
 
@@ -796,8 +852,9 @@ Returns: a L<Paws::CloudFormation::CreateStackInstancesOutput> instance
 
 Creates stack instances for the specified accounts, within the
 specified regions. A stack instance refers to a stack in a specific
-account and region. C<Accounts> and C<Regions> are required
-parametersE<mdash>you must specify at least one account and one region.
+account and region. You must specify at least one value for either
+C<Accounts> or C<DeploymentTargets>, and you must specify at least one
+value for C<Regions>.
 
 
 =head2 CreateStackSet
@@ -808,6 +865,8 @@ parametersE<mdash>you must specify at least one account and one region.
 
 =item [AdministrationRoleARN => Str]
 
+=item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
 =item [Capabilities => ArrayRef[Str|Undef]]
 
 =item [ClientRequestToken => Str]
@@ -817,6 +876,8 @@ parametersE<mdash>you must specify at least one account and one region.
 =item [ExecutionRoleName => Str]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [PermissionModel => Str]
 
 =item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
 
@@ -884,13 +945,15 @@ API if the deletion has been completed successfully.
 
 =over
 
-=item Accounts => ArrayRef[Str|Undef]
-
 =item Regions => ArrayRef[Str|Undef]
 
 =item RetainStacks => Bool
 
 =item StackSetName => Str
+
+=item [Accounts => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
 
@@ -923,6 +986,39 @@ Returns: a L<Paws::CloudFormation::DeleteStackSetOutput> instance
 Deletes a stack set. Before you can delete a stack set, all of its
 member stack instances must be deleted. For more information about how
 to do this, see DeleteStackInstances.
+
+
+=head2 DeregisterType
+
+=over
+
+=item [Arn => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DeregisterType>
+
+Returns: a L<Paws::CloudFormation::DeregisterTypeOutput> instance
+
+Removes a type or type version from active use in the CloudFormation
+registry. If a type or type version is deregistered, it cannot be used
+in CloudFormation operations.
+
+To deregister a type, you must individually deregister all registered
+versions of that type. If a type has only a single registered version,
+deregistering that version results in the type itself being
+deregistered.
+
+You cannot deregister the default version of a type, unless it is the
+only registered version of that type, in which case the type itself is
+deregistered as well.
 
 
 =head2 DescribeAccountLimits
@@ -1203,6 +1299,56 @@ Returns: a L<Paws::CloudFormation::DescribeStackSetOperationOutput> instance
 Returns the description of the specified stack set operation.
 
 
+=head2 DescribeType
+
+=over
+
+=item [Arn => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeType>
+
+Returns: a L<Paws::CloudFormation::DescribeTypeOutput> instance
+
+Returns detailed information about a type that has been registered.
+
+If you specify a C<VersionId>, C<DescribeType> returns information
+about that specific type version. Otherwise, it returns information
+about the default type version.
+
+
+=head2 DescribeTypeRegistration
+
+=over
+
+=item RegistrationToken => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeTypeRegistration>
+
+Returns: a L<Paws::CloudFormation::DescribeTypeRegistrationOutput> instance
+
+Returns information about a type's registration, including its current
+status and type and version identifiers.
+
+When you initiate a registration request using C< RegisterType >, you
+can then use C< DescribeTypeRegistration > to monitor the progress of
+that registration request.
+
+Once the registration request has completed, use C< DescribeType > to
+return detailed informaiton about a type.
+
+
 =head2 DetectStackDrift
 
 =over
@@ -1283,6 +1429,74 @@ Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see
 Resources that Support Drift Detection
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+
+
+=head2 DetectStackSetDrift
+
+=over
+
+=item StackSetName => Str
+
+=item [OperationId => Str]
+
+=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DetectStackSetDrift>
+
+Returns: a L<Paws::CloudFormation::DetectStackSetDriftOutput> instance
+
+Detect drift on a stack set. When CloudFormation performs drift
+detection on a stack set, it performs drift detection on the stack
+associated with each stack instance in the stack set. For more
+information, see How CloudFormation Performs Drift Detection on a Stack
+Set
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
+
+C<DetectStackSetDrift> returns the C<OperationId> of the stack set
+drift detection operation. Use this operation id with C<
+DescribeStackSetOperation > to monitor the progress of the drift
+detection operation. The drift detection operation may take some time,
+depending on the number of stack instances included in the stack set,
+as well as the number of resources included in each stack.
+
+Once the operation has completed, use the following actions to return
+drift information:
+
+=over
+
+=item *
+
+Use C< DescribeStackSet > to return detailed informaiton about the
+stack set, including detailed information about the last I<completed>
+drift operation performed on the stack set. (Information about drift
+operations that are in progress is not included.)
+
+=item *
+
+Use C< ListStackInstances > to return a list of stack instances
+belonging to the stack set, including the drift status and last drift
+time checked of each instance.
+
+=item *
+
+Use C< DescribeStackInstance > to return detailed information about a
+specific stack instance, including its drift status and last drift time
+checked.
+
+=back
+
+For more information on performing a drift detection operation on a
+stack set, see Detecting Unmanaged Changes in Stack Sets
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
+
+You can only run a single drift detection operation on a given stack
+set at one time.
+
+To stop a drift detection stack set operation, use C<
+StopStackSetOperation >.
 
 
 =head2 EstimateTemplateCost
@@ -1616,6 +1830,168 @@ Returns summary information about stack sets that are associated with
 the user.
 
 
+=head2 ListTypeRegistrations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistrationStatusFilter => Str]
+
+=item [Type => Str]
+
+=item [TypeArn => Str]
+
+=item [TypeName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListTypeRegistrations>
+
+Returns: a L<Paws::CloudFormation::ListTypeRegistrationsOutput> instance
+
+Returns a list of registration tokens for the specified type(s).
+
+
+=head2 ListTypes
+
+=over
+
+=item [DeprecatedStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ProvisioningType => Str]
+
+=item [Visibility => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListTypes>
+
+Returns: a L<Paws::CloudFormation::ListTypesOutput> instance
+
+Returns summary information about types that have been registered with
+CloudFormation.
+
+
+=head2 ListTypeVersions
+
+=over
+
+=item [Arn => Str]
+
+=item [DeprecatedStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListTypeVersions>
+
+Returns: a L<Paws::CloudFormation::ListTypeVersionsOutput> instance
+
+Returns summary information about the versions of a type.
+
+
+=head2 RecordHandlerProgress
+
+=over
+
+=item BearerToken => Str
+
+=item OperationStatus => Str
+
+=item [ClientRequestToken => Str]
+
+=item [CurrentOperationStatus => Str]
+
+=item [ErrorCode => Str]
+
+=item [ResourceModel => Str]
+
+=item [StatusMessage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::RecordHandlerProgress>
+
+Returns: a L<Paws::CloudFormation::RecordHandlerProgressOutput> instance
+
+Reports progress of a resource handler to CloudFormation.
+
+Reserved for use by the CloudFormation CLI
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
+Do not use this API in your code.
+
+
+=head2 RegisterType
+
+=over
+
+=item SchemaHandlerPackage => Str
+
+=item TypeName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [ExecutionRoleArn => Str]
+
+=item [LoggingConfig => L<Paws::CloudFormation::LoggingConfig>]
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::RegisterType>
+
+Returns: a L<Paws::CloudFormation::RegisterTypeOutput> instance
+
+Registers a type with the CloudFormation service. Registering a type
+makes it available for use in CloudFormation templates in your AWS
+account, and includes:
+
+=over
+
+=item *
+
+Validating the resource schema
+
+=item *
+
+Determining which handlers have been specified for the resource
+
+=item *
+
+Making the resource type available for use in your account
+
+=back
+
+For more information on how to develop types and ready them for
+registeration, see Creating Resource Providers
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html)
+in the I<CloudFormation CLI User Guide>.
+
+Once you have initiated a registration request using C< RegisterType >,
+you can use C< DescribeTypeRegistration > to monitor the progress of
+the registration request.
+
+
 =head2 SetStackPolicy
 
 =over
@@ -1634,6 +2010,29 @@ Each argument is described in detail in: L<Paws::CloudFormation::SetStackPolicy>
 Returns: nothing
 
 Sets a stack policy for a specified stack.
+
+
+=head2 SetTypeDefaultVersion
+
+=over
+
+=item [Arn => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::SetTypeDefaultVersion>
+
+Returns: a L<Paws::CloudFormation::SetTypeDefaultVersionOutput> instance
+
+Specify the default version of a type. The default version of a type
+will be used in CloudFormation operations.
 
 
 =head2 SignalResource
@@ -1742,11 +2141,13 @@ stack, and monitoring the progress of the update, see Updating a Stack
 
 =over
 
-=item Accounts => ArrayRef[Str|Undef]
-
 =item Regions => ArrayRef[Str|Undef]
 
 =item StackSetName => Str
+
+=item [Accounts => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
 
@@ -1796,7 +2197,11 @@ value using C<UpdateStackInstances>.
 
 =item [AdministrationRoleARN => Str]
 
+=item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
 =item [Capabilities => ArrayRef[Str|Undef]]
+
+=item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [Description => Str]
 
@@ -1807,6 +2212,8 @@ value using C<UpdateStackInstances>.
 =item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+
+=item [PermissionModel => Str]
 
 =item [Regions => ArrayRef[Str|Undef]]
 
@@ -1853,11 +2260,14 @@ Returns: a L<Paws::CloudFormation::UpdateTerminationProtectionOutput> instance
 Updates termination protection for the specified stack. If a user
 attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
-see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
-User Guide>.
+see Protecting a Stack From Being Deleted
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
-For nested stacks, termination protection is set on the root stack and
-cannot be changed directly on the nested stack.
+For nested stacks
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
+termination protection is set on the root stack and cannot be changed
+directly on the nested stack.
 
 
 =head2 ValidateTemplate

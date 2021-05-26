@@ -20,7 +20,7 @@ Paws::Transfer::ListUsersResponse
 
 When you can get additional results from the C<ListUsers> call, a
 C<NextToken> parameter is returned in the output. You can then pass in
-a subsequent command the C<NextToken> parameter to continue listing
+a subsequent command to the C<NextToken> parameter to continue listing
 additional users.
 
 

@@ -5,6 +5,7 @@ package Paws::SSM::ModifyDocumentPermission;
   has AccountIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has PermissionType => (is => 'ro', isa => 'Str', required => 1);
+  has SharedDocumentVersion => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $ModifyDocumentPermissionResponse = $ssm->ModifyDocumentPermission(
-      Name               => 'MyDocumentName',
-      PermissionType     => 'Share',
-      AccountIdsToAdd    => [ 'MyAccountId', ... ],    # OPTIONAL
-      AccountIdsToRemove => [ 'MyAccountId', ... ],    # OPTIONAL
+      Name                  => 'MyDocumentName',
+      PermissionType        => 'Share',
+      AccountIdsToAdd       => [ 'MyAccountId', ... ],       # OPTIONAL
+      AccountIdsToRemove    => [ 'MyAccountId', ... ],       # OPTIONAL
+      SharedDocumentVersion => 'MySharedDocumentVersion',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -72,6 +74,13 @@ The permission type for the document. The permission type can be
 I<Share>.
 
 Valid values are: C<"Share">
+
+=head2 SharedDocumentVersion => Str
+
+(Optional) The version of the document to share. If it's not specified,
+the system choose the C<Default> version to share.
+
+
 
 
 =head1 SEE ALSO

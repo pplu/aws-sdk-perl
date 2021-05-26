@@ -1,6 +1,7 @@
 
 package Paws::Firehose::CreateDeliveryStream;
   use Moose;
+  has DeliveryStreamEncryptionConfigurationInput => (is => 'ro', isa => 'Paws::Firehose::DeliveryStreamEncryptionConfigurationInput');
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamType => (is => 'ro', isa => 'Str');
   has ElasticsearchDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationConfiguration');
@@ -36,10 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $firehose = Paws->service('Firehose');
     my $CreateDeliveryStreamOutput = $firehose->CreateDeliveryStream(
-      DeliveryStreamName                    => 'MyDeliveryStreamName',
-      DeliveryStreamType                    => 'DirectPut',           # OPTIONAL
+      DeliveryStreamName                         => 'MyDeliveryStreamName',
+      DeliveryStreamEncryptionConfigurationInput => {
+        KeyType =>
+          'AWS_OWNED_CMK',    # values: AWS_OWNED_CMK, CUSTOMER_MANAGED_CMK
+        KeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
+      },    # OPTIONAL
+      DeliveryStreamType                    => 'DirectPut',    # OPTIONAL
       ElasticsearchDestinationConfiguration => {
-        DomainARN       => 'MyElasticsearchDomainARN',    # min: 1, max: 512
         IndexName       => 'MyElasticsearchIndexName',    # min: 1, max: 80
         RoleARN         => 'MyRoleARN',                   # min: 1, max: 512
         S3Configuration => {
@@ -58,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -67,7 +72,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
           Prefix            => 'MyPrefix',               # OPTIONAL
         },
-        TypeName       => 'MyElasticsearchTypeName',     # min: 1, max: 100
         BufferingHints => {
           IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
           SizeInMBs         => 1,    # min: 1, max: 100; OPTIONAL
@@ -77,8 +81,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           LogGroupName  => 'MyLogGroupName',     # OPTIONAL
           LogStreamName => 'MyLogStreamName',    # OPTIONAL
         },    # OPTIONAL
+        ClusterEndpoint =>
+          'MyElasticsearchClusterEndpoint',    # min: 1, max: 512; OPTIONAL
+        DomainARN => 'MyElasticsearchDomainARN',    # min: 1, max: 512; OPTIONAL
         IndexRotationPeriod => 'NoRotation'
-        ,     # values: NoRotation, OneHour, OneDay, OneWeek, OneMonth; OPTIONAL
+        ,    # values: NoRotation, OneHour, OneDay, OneWeek, OneMonth; OPTIONAL
         ProcessingConfiguration => {
           Enabled    => 1,    # OPTIONAL
           Processors => [
@@ -103,6 +110,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         S3BackupMode => 'FailedDocumentsOnly'
         ,     # values: FailedDocumentsOnly, AllDocuments; OPTIONAL
+        TypeName => 'MyElasticsearchTypeName',    # max: 100; OPTIONAL
       },    # OPTIONAL
       ExtendedS3DestinationConfiguration => {
         BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
@@ -173,7 +181,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         EncryptionConfiguration => {
           KMSEncryptionConfig => {
-            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
           },    # OPTIONAL
           NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
@@ -215,7 +223,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -256,7 +264,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -309,7 +317,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -336,7 +344,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'UNCOMPRESSED',    # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
         EncryptionConfiguration => {
           KMSEncryptionConfig => {
-            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+            AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
           },    # OPTIONAL
           NoEncryptionConfig => 'NoEncryption', # values: NoEncryption; OPTIONAL
@@ -364,7 +372,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'UNCOMPRESSED',  # values: UNCOMPRESSED, GZIP, ZIP, Snappy; OPTIONAL
           EncryptionConfiguration => {
             KMSEncryptionConfig => {
-              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512
+              AWSKMSKeyARN => 'MyAWSKMSKeyARN',    # min: 1, max: 512; OPTIONAL
 
             },    # OPTIONAL
             NoEncryptionConfig =>
@@ -422,6 +430,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/firehose/CreateDeliveryStream>
 
 =head1 ATTRIBUTES
+
+
+=head2 DeliveryStreamEncryptionConfigurationInput => L<Paws::Firehose::DeliveryStreamEncryptionConfigurationInput>
+
+Used to specify the type and Amazon Resource Name (ARN) of the KMS key
+needed for Server-Side Encryption (SSE).
+
 
 
 =head2 B<REQUIRED> DeliveryStreamName => Str

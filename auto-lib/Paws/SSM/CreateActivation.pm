@@ -63,8 +63,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 DefaultInstanceName => Str
 
 The name of the registered, managed instance as it will appear in the
-Amazon EC2 console or when you use the AWS command line tools to list
-EC2 resources.
+Systems Manager console or when you use the AWS command line tools to
+list Systems Manager resources.
 
 Do not enter personally identifiable information in this field.
 
@@ -73,7 +73,7 @@ Do not enter personally identifiable information in this field.
 =head2 Description => Str
 
 A user-defined description of the resource that you want to register
-with Amazon EC2.
+with Systems Manager.
 
 Do not enter personally identifiable information in this field.
 
@@ -89,7 +89,12 @@ value is 24 hours.
 =head2 B<REQUIRED> IamRole => Str
 
 The Amazon Identity and Access Management (IAM) role that you want to
-assign to the managed instance.
+assign to the managed instance. This IAM role must provide AssumeRole
+permissions for the Systems Manager service principal
+C<ssm.amazonaws.com>. For more information, see Create an IAM Service
+Role for a Hybrid Environment
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 

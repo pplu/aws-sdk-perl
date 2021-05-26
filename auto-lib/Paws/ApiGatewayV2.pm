@@ -84,6 +84,11 @@ package Paws::ApiGatewayV2;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCorsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteCorsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteDeployment', @_);
@@ -117,6 +122,11 @@ package Paws::ApiGatewayV2;
   sub DeleteRouteResponse {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteRouteResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRouteSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::DeleteRouteSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStage {
@@ -242,6 +252,16 @@ package Paws::ApiGatewayV2;
   sub GetTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::GetTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportApi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::ImportApi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ReimportApi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::ReimportApi', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -542,7 +562,7 @@ package Paws::ApiGatewayV2;
   }
 
 
-  sub operations { qw/CreateApi CreateApiMapping CreateAuthorizer CreateDeployment CreateDomainName CreateIntegration CreateIntegrationResponse CreateModel CreateRoute CreateRouteResponse CreateStage DeleteApi DeleteApiMapping DeleteAuthorizer DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteModel DeleteRoute DeleteRouteResponse DeleteStage GetApi GetApiMapping GetApiMappings GetApis GetAuthorizer GetAuthorizers GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetIntegrationResponses GetIntegrations GetModel GetModels GetModelTemplate GetRoute GetRouteResponse GetRouteResponses GetRoutes GetStage GetStages GetTags TagResource UntagResource UpdateApi UpdateApiMapping UpdateAuthorizer UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateModel UpdateRoute UpdateRouteResponse UpdateStage / }
+  sub operations { qw/CreateApi CreateApiMapping CreateAuthorizer CreateDeployment CreateDomainName CreateIntegration CreateIntegrationResponse CreateModel CreateRoute CreateRouteResponse CreateStage DeleteApi DeleteApiMapping DeleteAuthorizer DeleteCorsConfiguration DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteModel DeleteRoute DeleteRouteResponse DeleteRouteSettings DeleteStage GetApi GetApiMapping GetApiMappings GetApis GetAuthorizer GetAuthorizers GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetIntegrationResponses GetIntegrations GetModel GetModels GetModelTemplate GetRoute GetRouteResponse GetRouteResponses GetRoutes GetStage GetStages GetTags ImportApi ReimportApi TagResource UntagResource UpdateApi UpdateApiMapping UpdateAuthorizer UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateModel UpdateRoute UpdateRouteResponse UpdateStage / }
 
 1;
 
@@ -585,15 +605,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 =item ProtocolType => Str
 
-=item RouteSelectionExpression => Str
-
 =item [ApiKeySelectionExpression => Str]
+
+=item [CorsConfiguration => L<Paws::ApiGatewayV2::Cors>]
+
+=item [CredentialsArn => Str]
 
 =item [Description => Str]
 
 =item [DisableSchemaValidation => Bool]
 
+=item [RouteKey => Str]
+
+=item [RouteSelectionExpression => Str]
+
 =item [Tags => L<Paws::ApiGatewayV2::Tags>]
+
+=item [Target => Str]
 
 =item [Version => Str]
 
@@ -637,8 +665,6 @@ Creates an API mapping.
 
 =item AuthorizerType => Str
 
-=item AuthorizerUri => Str
-
 =item IdentitySource => ArrayRef[Str|Undef]
 
 =item Name => Str
@@ -647,9 +673,11 @@ Creates an API mapping.
 
 =item [AuthorizerResultTtlInSeconds => Int]
 
+=item [AuthorizerUri => Str]
+
 =item [IdentityValidationExpression => Str]
 
-=item [ProviderArns => ArrayRef[Str|Undef]]
+=item [JwtConfiguration => L<Paws::ApiGatewayV2::JWTConfiguration>]
 
 
 =back
@@ -725,6 +753,8 @@ Creates a domain name.
 
 =item [PassthroughBehavior => Str]
 
+=item [PayloadFormatVersion => Str]
+
 =item [RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>]
 
 =item [RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
@@ -738,7 +768,7 @@ Creates a domain name.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::CreateIntegration>
 
-Returns: a L<Paws::ApiGatewayV2::CreateIntegrationResponse> instance
+Returns: a L<Paws::ApiGatewayV2::CreateIntegrationResult> instance
 
 Creates an Integration.
 
@@ -869,6 +899,8 @@ Creates a RouteResponse for a Route.
 
 =item [AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>]
 
+=item [AutoDeploy => Bool]
+
 =item [ClientCertificateId => Str]
 
 =item [DefaultRouteSettings => L<Paws::ApiGatewayV2::RouteSettings>]
@@ -943,6 +975,22 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteAuthorizer>
 Returns: nothing
 
 Deletes an Authorizer.
+
+
+=head2 DeleteCorsConfiguration
+
+=over
+
+=item ApiId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteCorsConfiguration>
+
+Returns: nothing
+
+Deletes a CORS configuration.
 
 
 =head2 DeleteDeployment
@@ -1073,6 +1121,26 @@ Returns: nothing
 Deletes a RouteResponse.
 
 
+=head2 DeleteRouteSettings
+
+=over
+
+=item ApiId => Str
+
+=item RouteKey => Str
+
+=item StageName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::DeleteRouteSettings>
+
+Returns: nothing
+
+Deletes the RouteSettings for a stage.
+
+
 =head2 DeleteStage
 
 =over
@@ -1122,7 +1190,7 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::GetApiMapping>
 
 Returns: a L<Paws::ApiGatewayV2::GetApiMappingResponse> instance
 
-The API mapping.
+Gets an API mapping.
 
 
 =head2 GetApiMappings
@@ -1142,7 +1210,7 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::GetApiMappings>
 
 Returns: a L<Paws::ApiGatewayV2::GetApiMappingsResponse> instance
 
-The API mappings.
+Gets API mappings.
 
 
 =head2 GetApis
@@ -1540,7 +1608,49 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::GetTags>
 
 Returns: a L<Paws::ApiGatewayV2::GetTagsResponse> instance
 
-Gets the Tags for an API.
+Gets a collection of Tag resources.
+
+
+=head2 ImportApi
+
+=over
+
+=item Body => Str
+
+=item [Basepath => Str]
+
+=item [FailOnWarnings => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::ImportApi>
+
+Returns: a L<Paws::ApiGatewayV2::ImportApiResponse> instance
+
+Imports an API.
+
+
+=head2 ReimportApi
+
+=over
+
+=item ApiId => Str
+
+=item Body => Str
+
+=item [Basepath => Str]
+
+=item [FailOnWarnings => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::ReimportApi>
+
+Returns: a L<Paws::ApiGatewayV2::ReimportApiResponse> instance
+
+Puts an Api resource.
 
 
 =head2 TagResource
@@ -1558,7 +1668,7 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::TagResource>
 
 Returns: a L<Paws::ApiGatewayV2::TagResourceResponse> instance
 
-Tag an APIGW resource
+Creates a new Tag resource to represent a tag.
 
 
 =head2 UntagResource
@@ -1576,7 +1686,7 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::UntagResource>
 
 Returns: nothing
 
-Untag an APIGW resource
+Deletes a Tag.
 
 
 =head2 UpdateApi
@@ -1587,13 +1697,21 @@ Untag an APIGW resource
 
 =item [ApiKeySelectionExpression => Str]
 
+=item [CorsConfiguration => L<Paws::ApiGatewayV2::Cors>]
+
+=item [CredentialsArn => Str]
+
 =item [Description => Str]
 
 =item [DisableSchemaValidation => Bool]
 
 =item [Name => Str]
 
+=item [RouteKey => Str]
+
 =item [RouteSelectionExpression => Str]
+
+=item [Target => Str]
 
 =item [Version => Str]
 
@@ -1651,9 +1769,9 @@ The API mapping.
 
 =item [IdentityValidationExpression => Str]
 
-=item [Name => Str]
+=item [JwtConfiguration => L<Paws::ApiGatewayV2::JWTConfiguration>]
 
-=item [ProviderArns => ArrayRef[Str|Undef]]
+=item [Name => Str]
 
 
 =back
@@ -1728,6 +1846,8 @@ Updates a domain name.
 =item [IntegrationUri => Str]
 
 =item [PassthroughBehavior => Str]
+
+=item [PayloadFormatVersion => Str]
 
 =item [RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>]
 
@@ -1880,6 +2000,8 @@ Updates a RouteResponse.
 =item StageName => Str
 
 =item [AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>]
+
+=item [AutoDeploy => Bool]
 
 =item [ClientCertificateId => Str]
 

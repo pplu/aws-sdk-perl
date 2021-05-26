@@ -2,6 +2,7 @@
 package Paws::LicenseManager::GetServiceSettingsResponse;
   use Moose;
   has EnableCrossAccountsDiscovery => (is => 'ro', isa => 'Bool');
+  has LicenseManagerResourceShareArn => (is => 'ro', isa => 'Str');
   has OrganizationConfiguration => (is => 'ro', isa => 'Paws::LicenseManager::OrganizationConfiguration');
   has S3BucketArn => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
@@ -22,6 +23,13 @@ Paws::LicenseManager::GetServiceSettingsResponse
 Indicates whether cross-account discovery has been enabled.
 
 
+=head2 LicenseManagerResourceShareArn => Str
+
+Amazon Resource Name (ARN) of the AWS resource share. The License
+Manager master account will provide member accounts with access to this
+share.
+
+
 =head2 OrganizationConfiguration => L<Paws::LicenseManager::OrganizationConfiguration>
 
 Indicates whether AWS Organizations has been integrated with License
@@ -31,7 +39,7 @@ Manager for cross-account discovery.
 =head2 S3BucketArn => Str
 
 Regional S3 bucket path for storing reports, license trail event data,
-discovery data, etc.
+discovery data, and so on.
 
 
 =head2 SnsTopicArn => Str

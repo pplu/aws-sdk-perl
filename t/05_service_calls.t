@@ -15,7 +15,7 @@ sub request_has_params {
   my ($test_params, $request) = @_;
 
   foreach my $param (keys %$test_params) {
-    cmp_ok($request->parameters->{ $param }, 'eq', $test_params->{ $param }, 
+    cmp_ok($request->parameters->{ $param }, 'eq', $test_params->{ $param },
            "request has a parameter called $param with expected value"
     );
   }
@@ -23,7 +23,7 @@ sub request_has_params {
 
 sub request_contentjson {
   my ($test_params, $request) = @_;
-  
+
   my $content = $request->content;
   my $datastructure = decode_json($content);
 
@@ -82,7 +82,7 @@ $test_params = {
 my $sqs = $aws->service('SQS');
 
 $request = $sqs->CreateQueue(
-  QueueName => 'Paws2AttributeTest', 
+  QueueName => 'Paws2AttributeTest',
   Attributes => {
     DelaySeconds => 10,
     MessageRetentionPeriod => 3600,
@@ -153,7 +153,7 @@ my $ses = $aws->service('SES');
 
 $request = $ses->SendEmail(
   Destination => { ToAddresses => [ 'allan@example.com' ] },
-  Message => { Body => { Text => { Data => 'body' } }, 
+  Message => { Body => { Text => { Data => 'body' } },
                Subject => { Data => 'Example' },
              },
   Source => 'user@example.com',
@@ -188,7 +188,7 @@ request_has_params($test_params, $request);
 
 $request = $ses->GetIdentityNotificationAttributes(
   Identities => [ 'user@example.com' ]
-); 
+);
 
 $test_params = {
   'Identities.member.1' => 'user@example.com',
@@ -219,6 +219,23 @@ $test_params = {
 request_has_params($test_params, $request);
 
 
+$request = $cfn->CreateStack(
+  StackName => 'MyStack',
+  TemplateBody => '[Template Document]',
+  Tags => [],
+);
+
+
+$test_params = {
+  'StackName' => 'MyStack',
+  'TemplateBody' => '[Template Document]',
+  'Tags' => '',
+};
+
+request_has_params($test_params, $request);
+
+
+
 my $asg = $aws->service('AutoScaling');
 
 $request = $asg->AttachInstances(
@@ -228,7 +245,7 @@ $request = $asg->AttachInstances(
 
 $test_params = {
   'AutoScalingGroupName' => 'ASGNAME',
-  'InstanceIds.member.1' => 'i-012345678', 
+  'InstanceIds.member.1' => 'i-012345678',
   'InstanceIds.member.2' => 'i-123456789'
 };
 
@@ -429,7 +446,7 @@ request_contentjson($test_params, $request);
 
 $request = $dynamo->BatchWriteItem(
   RequestItems=>{
-    Table => [ 
+    Table => [
       { PutRequest => {
           Item => {
             pagekey => { S => 'ho' },
@@ -505,8 +522,8 @@ $request = $cf->CreateInvalidation(
         '/object2',
         '/object3'
       ]
-    }   
-  }   
+    }
+  }
 );
 
 my $ref = XMLin($request->content);
@@ -601,6 +618,13 @@ is($request->content, '', 'There is no body for a method that doesn\'t have para
 
 my $r53 = $aws->service('Route53');
 
+$request = $r53->ListResourceRecordSets(
+  HostedZoneId => 'SomeId',
+  MaxItems => '1',
+ );
+
+is($request->content, '', 'content defaults to empty string');
+
 $request = $r53->ListHealthChecks(
   Marker => 'X',
   MaxItems => 50,
@@ -643,7 +667,7 @@ $request = $glacier->InitiateMultipartUpload(
   ArchiveDescription => 'Desc',
   VaultName => 'myvault',
   PartSize => 34
-);  
+);
 
 like($request->url, qr|/myvault/|);
 like($request->url, qr|/1234/|);

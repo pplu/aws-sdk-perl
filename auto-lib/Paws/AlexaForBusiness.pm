@@ -1131,7 +1131,11 @@ Creates a network profile with the specified details.
 
 =item [ClientRequestToken => Str]
 
+=item [Locale => Str]
+
 =item [MaxVolumeLimit => Int]
+
+=item [MeetingRoomConfiguration => L<Paws::AlexaForBusiness::CreateMeetingRoomConfiguration>]
 
 =item [PSTNEnabled => Bool]
 
@@ -1319,11 +1323,6 @@ When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of
 voice input data and associated response data. This action can be
 called once every 24 hours for a specific shared device.
-
-When this action is called for a specified shared device, it allows
-authorized users to delete the device's entire previous history of
-voice input data. This action can be called once every 24 hours for a
-specific shared device.
 
 
 =head2 DeleteGatewayGroup
@@ -1794,7 +1793,10 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::ListBusinessR
 
 Returns: a L<Paws::AlexaForBusiness::ListBusinessReportSchedulesResponse> instance
 
-Lists the details of the schedules that a user configured.
+Lists the details of the schedules that a user configured. A download
+URL of the report associated with each schedule is returned every time
+this action is called. A new download URL is returned each time, and is
+valid for 24 hours.
 
 
 =head2 ListConferenceProviders
@@ -2671,7 +2673,11 @@ Updates a network profile by the network profile ARN.
 
 =item [IsDefault => Bool]
 
+=item [Locale => Str]
+
 =item [MaxVolumeLimit => Int]
+
+=item [MeetingRoomConfiguration => L<Paws::AlexaForBusiness::UpdateMeetingRoomConfiguration>]
 
 =item [ProfileArn => Str]
 

@@ -17,8 +17,8 @@ Paws::CodeCommit::ListPullRequestsOutput
 
 =head2 NextToken => Str
 
-An enumeration token that when provided in a request, returns the next
-batch of the results.
+An enumeration token that allows the operation to batch the next
+results of the operation.
 
 
 =head2 B<REQUIRED> PullRequestIds => ArrayRef[Str|Undef]

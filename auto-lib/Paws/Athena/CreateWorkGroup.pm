@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BytesScannedCutoffPerQuery      => 1,    # min: 10000000; OPTIONAL
         EnforceWorkGroupConfiguration   => 1,    # OPTIONAL
         PublishCloudWatchMetricsEnabled => 1,    # OPTIONAL
+        RequesterPaysEnabled            => 1,    # OPTIONAL
         ResultConfiguration             => {
           EncryptionConfiguration => {
             EncryptionOption => 'SSE_S3',     # values: SSE_S3, SSE_KMS, CSE_KMS

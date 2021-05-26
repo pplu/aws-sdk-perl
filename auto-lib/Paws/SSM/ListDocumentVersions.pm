@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $ListDocumentVersionsResult = $ssm->ListDocumentVersions(
-      Name       => 'MyDocumentName',
-      MaxResults => 1,                  # OPTIONAL
-      NextToken  => 'MyNextToken',      # OPTIONAL
+      Name       => 'MyDocumentARN',
+      MaxResults => 1,                 # OPTIONAL
+      NextToken  => 'MyNextToken',     # OPTIONAL
     );
 
     # Results:
@@ -57,7 +57,8 @@ next set of results.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the document about which you want version information.
+The name of the document. You can specify an Amazon Resource Name
+(ARN).
 
 
 

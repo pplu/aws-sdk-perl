@@ -58,7 +58,8 @@ B<Alias> - The name of the key. For example, C<alias/MyKey>.
 =item *
 
 B<Key ID> - The KMS key ID of the key. For example,
-C<ae4aa6d49-a4d8-9df9-a475-4ff6d7898456>.
+C<ae4aa6d49-a4d8-9df9-a475-4ff6d7898456>. AWS X-Ray does not support
+asymmetric CMKs.
 
 =item *
 

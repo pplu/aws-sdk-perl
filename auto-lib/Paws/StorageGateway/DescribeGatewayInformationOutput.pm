@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::DescribeGatewayInformationOutput;
   use Moose;
+  has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
@@ -10,6 +11,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
   has GatewayState => (is => 'ro', isa => 'Str');
   has GatewayTimezone => (is => 'ro', isa => 'Str');
   has GatewayType => (is => 'ro', isa => 'Str');
+  has HostEnvironment => (is => 'ro', isa => 'Str');
   has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
@@ -24,6 +26,12 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
 Paws::StorageGateway::DescribeGatewayInformationOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLogGroupARN => Str
+
+The Amazon Resource Name (ARN) of the Amazon CloudWatch Log Group that
+is used to monitor events in the gateway.
 
 
 =head2 Ec2InstanceId => Str
@@ -74,6 +82,11 @@ A value that indicates the time zone configured for the gateway.
 The type of the gateway.
 
 
+=head2 HostEnvironment => Str
+
+The type of hypervisor environment used by the host.
+
+Valid values are: C<"VMWARE">, C<"HYPER-V">, C<"EC2">, C<"KVM">, C<"OTHER">
 =head2 LastSoftwareUpdate => Str
 
 The date on which the last software update was applied to the gateway.

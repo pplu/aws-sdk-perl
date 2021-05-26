@@ -125,7 +125,7 @@ This will allow the following two commands to function.
 
 To generate the API for a given API call:
 ```
-./gen_classes.pl botocore/botocore/data/SERVICE/DATE/service-2.json
+./gen_classes.pl --classes botocore/botocore/data/SERVICE/DATE/service-2.json
 ```
 
 This will generate file(s) in auto-lib.
@@ -166,11 +166,83 @@ Packaging
 Packaging is managed with Dist::Zilla. To install Dist::Zilla and the necessary plugins, run:
 
 ```
-cpanm -l local -n Dist::Zilla
-dzil authordeps --missing | cpanm -l local -n
+make dist
 ```
 
-After this, running dzil build will make a tar.gz suitable for uploading to CPAN.
+After this, you will have a tar.gz suitable for uploading to CPAN or to your own mini-CPAN
+
+Releasing
+============
+
+The release process is as follows:
+
+X.XX will be the version that you are currently working on (the one you want to release)
+Y.YY will be the next version (which we start). This assumes `origin` as the main SDK source.
+
+```
+git checkout release/X.XX
+git pull origin release/X.XX
+```
+
+Edit README.md to add any relevant contributions.
+
+```
+make gen-paws
+```
+
+Will copy the contents of the Contributions section of README.md into Paws.pm so that the same
+section appears in CPAN also.
+
+Now edit the `Changes` file to add the date of release, adjusting the entry for version X.XX to 
+todays date.
+
+Commit everything up till now and push
+
+```
+git push origin release/X.XX
+```
+
+Take a look at Travis pipelines to see if the branch you're going to release is green: https://travis-ci.org/pplu/aws-sdk-perl/branches
+
+We don't want to ship Paws when it's failing it's tests.
+
+If everything is OK:
+
+```
+git checkout master
+git pull origin master
+git merge release/X.XX
+git push origin master
+git tag release-X.XX
+git push origin release-X.XX
+make dist
+```
+
+this will generate Paws-X.XX.tar.gz, which is the artifact that is uploadable to CPAN
+
+```
+git checkout -b release/Y.YY
+git push --set-upstream origin release/Y.YY
+```
+
+This creates the branch for working on the next release.
+
+We bump the version number in the builder. Edit `builder-lib/Paws/API/Builder/Paws.pm`. Near line 12
+we will find Paws version number. Replace X.XX for Y.YY
+
+```
+
+We add Y.YY to the Changes file. Commit the changes and push:
+
+```
+git push origin release/Y.YY
+```
+
+We're ready for developing Y.YY
+
+After that: upload Paws-X.XX.tar.gz to CPAN an do a walk around issues and MRs that have
+been fixed / merged in the release, notifying that "Paws X.XX has hit CPAN with this issue fixed"
+
 
 Trying it out
 ============
@@ -271,6 +343,12 @@ and giving me time to build and maintain it regularly.
 ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
 from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
+castaway for contributing to fixing documentation problems
+ - taking the reigns of Paws, become part of the core team that pushes it forward
+ - properly providing backlinks between related pages
+ - making TOCs render correctly on search.cpan.org
+ - generating helpful copy-paste ready scenarios in the synopsis of each method call
+
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
@@ -359,11 +437,6 @@ gadgetjunkie for contributing the ECS credential provider
 
 mla for contributing a fix to correct dependencies
 
-castaway for contributing to fixing documentation problems
- - properly providing backlinks between related pages
- - making TOCs render correctly on search.cpan.org
- - generating helpful copy-paste ready scenarios in the synopsis of each method call
-
 autarch for correcting signature generation for a bunch of services
 
 piratefinn for linking calls to documentation AWS URLs
@@ -383,3 +456,8 @@ leonerd for (between others)
 campus-explorer for contributing to test suite
 
 byterock for testing and fixing PinPoint
+
+torrentale for fixing QueryCaller to correctly signal empty arrays
+
+Jess Robinson and shadowcat.co.uk  for setting up ver 0.43
+ 

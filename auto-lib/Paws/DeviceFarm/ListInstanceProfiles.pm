@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 MaxResults => Int
 
-An integer specifying the maximum number of items you want to return in
-the API response.
+An integer that specifies the maximum number of items you want to
+return in the API response.
 
 
 

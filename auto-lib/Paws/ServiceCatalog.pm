@@ -1727,7 +1727,9 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeService
 
 Returns: a L<Paws::ServiceCatalog::DescribeServiceActionExecutionParametersOutput> instance
 
-
+Finds the default parameters for a specific self-service action on a
+specific provisioned product and returns a map of the results to the
+user.
 
 
 =head2 DescribeTagOption
@@ -2071,6 +2073,12 @@ organization.
 =item PortfolioId => Str
 
 =item [AcceptLanguage => Str]
+
+=item [OrganizationParentId => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
 
 
 =back

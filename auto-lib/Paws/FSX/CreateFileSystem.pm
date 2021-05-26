@@ -66,11 +66,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CopyTagsToBackups            => 1,        # OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                          # min: 5, max: 5; OPTIONAL
+        DeploymentType =>
+          'MULTI_AZ_1',    # values: MULTI_AZ_1, SINGLE_AZ_1; OPTIONAL
+        PreferredSubnetId => 'MySubnetId',    # min: 15, max: 24
         SelfManagedActiveDirectoryConfiguration => {
-          DnsIps     => [ 'MyIpAddress', ... ],               # min: 1, max: 2
-          DomainName => 'MyActiveDirectoryFullyQualifiedName',
-          Password   => 'MyDirectoryPassword',                # min: 1, max: 256
-          UserName   => 'MyDirectoryUserName',                # min: 1, max: 256
+          DnsIps => [
+            'MyIpAddress', ...                # min: 7, max: 15
+          ],                                  # min: 1, max: 2
+          DomainName =>
+            'MyActiveDirectoryFullyQualifiedName',    # min: 1, max: 255
+          Password => 'MyDirectoryPassword',          # min: 1, max: 256
+          UserName => 'MyDirectoryUserName',          # min: 1, max: 256
           FileSystemAdministratorsGroup =>
             'MyFileSystemAdministratorsGroupName',  # min: 1, max: 256; OPTIONAL
           OrganizationalUnitDistinguishedName =>
@@ -131,19 +137,25 @@ later requests to describe the file system.
 
 The storage capacity of the file system being created.
 
-For Windows file systems, the storage capacity has a minimum of 300
-GiB, and a maximum of 65,536 GiB.
+For Windows file systems, valid values are 32 GiB - 65,536 GiB.
 
-For Lustre file systems, the storage capacity has a minimum of 3,600
-GiB. Storage capacity is provisioned in increments of 3,600 GiB.
+For Lustre file systems, valid values are 1,200, 2,400, 3,600, then
+continuing in increments of 3600 GiB.
 
 
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
-The IDs of the subnets that the file system will be accessible from.
-File systems support only one subnet. The file server is also launched
-in that subnet's Availability Zone.
+Specifies the IDs of the subnets that the file system will be
+accessible from. For Windows C<MULTI_AZ_1> file system deployment
+types, provide exactly two subnet IDs, one for the preferred file
+server and one for the standy file server. You specify one of these
+subnets as the preferred subnet using the C<WindowsConfiguration E<gt>
+PreferredSubnetID> property.
+
+For Windows C<SINGLE_AZ_1> file system deployment types and Lustre file
+systems, provide exactly one subnet ID. The file server is launched in
+that subnet's Availability Zone.
 
 
 

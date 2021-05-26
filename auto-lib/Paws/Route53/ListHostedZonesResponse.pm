@@ -1,11 +1,12 @@
 
 package Paws::Route53::ListHostedZonesResponse;
   use Moose;
-  has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', required => 1);
+  has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', request_name => 'HostedZone', traits => ['NameInRequest'], required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

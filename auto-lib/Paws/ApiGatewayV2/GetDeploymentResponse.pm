@@ -1,6 +1,7 @@
 
 package Paws::ApiGatewayV2::GetDeploymentResponse;
   use Moose;
+  has AutoDeployed => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoDeployed');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
   has DeploymentStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentStatus');
@@ -17,6 +18,11 @@ package Paws::ApiGatewayV2::GetDeploymentResponse;
 Paws::ApiGatewayV2::GetDeploymentResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoDeployed => Bool
+
+Specifies whether a deployment was automatically released.
 
 
 =head2 CreatedDate => Str

@@ -548,9 +548,9 @@ Paws::AutoScaling - Perl Interface to AWS Auto Scaling
 Amazon EC2 Auto Scaling
 
 Amazon EC2 Auto Scaling is designed to automatically launch or
-terminate EC2 instances based on user-defined policies, schedules, and
-health checks. Use this service with AWS Auto Scaling, Amazon
-CloudWatch, and Elastic Load Balancing.
+terminate EC2 instances based on user-defined scaling policies,
+scheduled actions, and health checks. Use this service with AWS Auto
+Scaling, Amazon CloudWatch, and Elastic Load Balancing.
 
 For more information, including information about granting IAM users
 required permissions for Amazon EC2 Auto Scaling actions, see the
@@ -789,6 +789,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [LoadBalancerNames => ArrayRef[Str|Undef]]
 
+=item [MaxInstanceLifetime => Int]
+
 =item [MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>]
 
 =item [NewInstancesProtectedFromScaleIn => Bool]
@@ -817,7 +819,7 @@ Creates an Auto Scaling group with the specified name and attributes.
 If you exceed your maximum limit of Auto Scaling groups, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
-Amazon EC2 Auto Scaling Limits
+Amazon EC2 Auto Scaling Service Quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -874,7 +876,7 @@ Creates a launch configuration.
 If you exceed your maximum limit of launch configurations, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
-Amazon EC2 Auto Scaling Limits
+Amazon EC2 Auto Scaling Service Quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1018,8 +1020,13 @@ Returns: nothing
 
 Deletes the specified scaling policy.
 
-Deleting a policy deletes the underlying alarm action, but does not
-delete the alarm, even if it no longer has an associated action.
+Deleting either a step scaling policy or a simple scaling policy
+deletes the underlying alarm action, but does not delete the alarm,
+even if it no longer has an associated action.
+
+For more information, see Deleting a Scaling Policy
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DeleteScheduledAction
@@ -1069,11 +1076,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLim
 
 Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 
-Describes the current Amazon EC2 Auto Scaling resource limits for your
+Describes the current Amazon EC2 Auto Scaling resource quotas for your
 AWS account.
 
-For information about requesting an increase in these limits, see
-Amazon EC2 Auto Scaling Limits
+For information about requesting an increase, see Amazon EC2 Auto
+Scaling Service Quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1393,8 +1400,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledA
 Returns: a L<Paws::AutoScaling::ScheduledActionsType> instance
 
 Describes the actions scheduled for your Auto Scaling group that
-haven't run. To describe the actions that have already run, use
-DescribeScalingActivities.
+haven't run or that have not reached their end time. To describe the
+actions that have already run, use DescribeScalingActivities.
 
 
 =head2 DescribeTags
@@ -1592,6 +1599,15 @@ Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
 Moves the specified instances into the standby state.
 
+If you choose to decrement the desired capacity of the Auto Scaling
+group, the instances can enter standby as long as the desired capacity
+of the Auto Scaling group after the instances are placed into standby
+is equal to or greater than the minimum capacity of the group.
+
+If you choose not to decrement the desired capacity of the Auto Scaling
+group, the Auto Scaling group launches new instances to replace the
+instances on standby.
+
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
@@ -1638,6 +1654,9 @@ Each argument is described in detail in: L<Paws::AutoScaling::ExitStandby>
 Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
 Moves the specified instances out of the standby state.
+
+After you put the instances back in service, the desired capacity is
+incremented.
 
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
@@ -1705,8 +1724,7 @@ instances launch or terminate.>
 =item 4.
 
 If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using using
-RecordLifecycleActionHeartbeat.
+the instance in a pending state using RecordLifecycleActionHeartbeat.
 
 =item 5.
 
@@ -1768,6 +1786,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [Cooldown => Int]
 
+=item [Enabled => Bool]
+
 =item [EstimatedInstanceWarmup => Int]
 
 =item [MetricAggregationType => Str]
@@ -1791,10 +1811,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
 Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
-Creates or updates a policy for an Auto Scaling group. To update an
-existing policy, use the existing policy name and set the parameters to
-change. Any existing parameter not changed in an update to an existing
-policy is not changed in this update request.
+Creates or updates a scaling policy for an Auto Scaling group.
+
+For more information about using scaling policies to scale your Auto
+Scaling group automatically, see Dynamic Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 PutScheduledUpdateGroupAction
@@ -2040,10 +2062,23 @@ Each argument is described in detail in: L<Paws::AutoScaling::TerminateInstanceI
 Returns: a L<Paws::AutoScaling::ActivityType> instance
 
 Terminates the specified instance and optionally adjusts the desired
-group size.
+group size. This call simply makes a termination request. The instance
+is not terminated immediately. When an instance is terminated, the
+instance status changes to C<terminated>. You can't connect to or start
+an instance after you've terminated it.
 
-This call simply makes a termination request. The instance is not
-terminated immediately.
+If you do not specify the option to decrement the desired capacity,
+Amazon EC2 Auto Scaling launches instances to replace the ones that are
+terminated.
+
+By default, Amazon EC2 Auto Scaling balances instances across all
+Availability Zones. If you decrement the desired capacity, your Auto
+Scaling group can become unbalanced between Availability Zones. Amazon
+EC2 Auto Scaling tries to rebalance the group, and rebalancing might
+terminate instances in other zones. For more information, see
+Rebalancing Activities
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 UpdateAutoScalingGroup
@@ -2065,6 +2100,8 @@ terminated immediately.
 =item [LaunchConfigurationName => Str]
 
 =item [LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>]
+
+=item [MaxInstanceLifetime => Int]
 
 =item [MaxSize => Int]
 
@@ -2091,40 +2128,57 @@ Returns: nothing
 
 Updates the configuration for the specified Auto Scaling group.
 
-The new settings take effect on any scaling activities after this call
-returns. Scaling activities that are currently in progress aren't
-affected.
+To update an Auto Scaling group, specify the name of the group and the
+parameter that you want to change. Any parameters that you don't
+specify are not changed by this update request. The new settings take
+effect on any scaling activities after this call returns.
 
-To update an Auto Scaling group with a launch configuration with
-C<InstanceMonitoring> set to C<false>, you must first disable the
-collection of group metrics. Otherwise, you get an error. If you have
-previously enabled the collection of group metrics, you can disable it
-using DisableMetricsCollection.
+If you associate a new launch configuration or template with an Auto
+Scaling group, all new instances will get the updated configuration.
+Existing instances continue to run with the configuration that they
+were originally launched with. When you update a group to specify a
+mixed instances policy instead of a launch configuration or template,
+existing instances may be replaced to match the new purchasing options
+that you specified in the policy. For example, if the group currently
+has 100% On-Demand capacity and the policy specifies 50% Spot capacity,
+this means that half of your instances will be gradually terminated and
+relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto
+Scaling launches new instances before terminating the old ones, so that
+updating your group does not compromise the performance or availability
+of your application.
 
-Note the following:
+Note the following about changing C<DesiredCapacity>, C<MaxSize>, or
+C<MinSize>:
 
 =over
 
 =item *
 
+If a scale-in event occurs as a result of a new C<DesiredCapacity>
+value that is lower than the current size of the group, the Auto
+Scaling group uses its termination policy to determine which instances
+to terminate.
+
+=item *
+
 If you specify a new value for C<MinSize> without specifying a value
 for C<DesiredCapacity>, and the new C<MinSize> is larger than the
-current size of the group, we implicitly call SetDesiredCapacity to set
-the size of the group to the new value of C<MinSize>.
+current size of the group, this sets the group's C<DesiredCapacity> to
+the new C<MinSize> value.
 
 =item *
 
 If you specify a new value for C<MaxSize> without specifying a value
 for C<DesiredCapacity>, and the new C<MaxSize> is smaller than the
-current size of the group, we implicitly call SetDesiredCapacity to set
-the size of the group to the new value of C<MaxSize>.
-
-=item *
-
-All other optional parameters are left unchanged if not specified.
+current size of the group, this sets the group's C<DesiredCapacity> to
+the new C<MaxSize> value.
 
 =back
 
+To see which parameters have been set, use DescribeAutoScalingGroups.
+You can also view the scaling policies for an Auto Scaling group using
+DescribePolicies. If the group has scaling policies, you can update
+them using PutScalingPolicy.
 
 
 

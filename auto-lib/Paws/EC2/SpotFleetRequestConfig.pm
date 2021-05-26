@@ -5,6 +5,7 @@ package Paws::EC2::SpotFleetRequestConfig;
   has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', request_name => 'spotFleetRequestConfig', traits => ['NameInRequest']);
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
   has SpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestState', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotFleetRequestConfig object:
 
-  $service_obj->Method(Att1 => { ActivityStatus => $value, ..., SpotFleetRequestState => $value  });
+  $service_obj->Method(Att1 => { ActivityStatus => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,7 +43,7 @@ This class has no description
 
 =head2 ActivityStatus => Str
 
-  The progress of the Spot Fleet request. If there is an error, the
+The progress of the Spot Fleet request. If there is an error, the
 status is C<error>. After all requests are placed, the status is
 C<pending_fulfillment>. If the size of the fleet is equal to or greater
 than its target capacity, the status is C<fulfilled>. If the size of
@@ -52,22 +53,27 @@ Instances are terminating.
 
 =head2 CreateTime => Str
 
-  The creation date and time of the request.
+The creation date and time of the request.
 
 
 =head2 SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
-  The configuration of the Spot Fleet request.
+The configuration of the Spot Fleet request.
 
 
 =head2 SpotFleetRequestId => Str
 
-  The ID of the Spot Fleet request.
+The ID of the Spot Fleet request.
 
 
 =head2 SpotFleetRequestState => Str
 
-  The state of the Spot Fleet request.
+The state of the Spot Fleet request.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+The tags for a Spot Fleet resource.
 
 
 

@@ -15,6 +15,16 @@ package Paws::ResourceTagging;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub DescribeReportCreation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceTagging::DescribeReportCreation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetComplianceSummary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceTagging::GetComplianceSummary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ResourceTagging::GetResources', @_);
@@ -30,6 +40,11 @@ package Paws::ResourceTagging;
     my $call_object = $self->new_with_coercions('Paws::ResourceTagging::GetTagValues', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartReportCreation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceTagging::StartReportCreation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ResourceTagging::TagResources', @_);
@@ -41,6 +56,29 @@ package Paws::ResourceTagging;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllComplianceSummary {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetComplianceSummary(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->PaginationToken) {
+        $next_result = $self->GetComplianceSummary(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->SummaryList }, @{ $next_result->SummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->PaginationToken) {
+        $callback->($_ => 'SummaryList') foreach (@{ $result->SummaryList });
+        $result = $self->GetComplianceSummary(@_, PaginationToken => $result->PaginationToken);
+      }
+      $callback->($_ => 'SummaryList') foreach (@{ $result->SummaryList });
+    }
+
+    return undef
+  }
   sub GetAllResources {
     my $self = shift;
 
@@ -112,7 +150,7 @@ package Paws::ResourceTagging;
   }
 
 
-  sub operations { qw/GetResources GetTagKeys GetTagValues TagResources UntagResources / }
+  sub operations { qw/DescribeReportCreation GetComplianceSummary GetResources GetTagKeys GetTagValues StartReportCreation TagResources UntagResources / }
 
 1;
 
@@ -161,31 +199,58 @@ following tasks:
 
 =item *
 
-Tag and untag supported resources located in the specified region for
-the AWS account
+Tag and untag supported resources located in the specified Region for
+the AWS account.
 
 =item *
 
 Use tag-based filters to search for resources located in the specified
-region for the AWS account
+Region for the AWS account.
 
 =item *
 
-List all existing tag keys in the specified region for the AWS account
+List all existing tag keys in the specified Region for the AWS account.
 
 =item *
 
-List all existing values for the specified key in the specified region
-for the AWS account
+List all existing values for the specified key in the specified Region
+for the AWS account.
 
 =back
 
-To make full use of the resource groups tagging API operations, you
-might need additional IAM permissions, including permission to access
-the resources of individual services as well as permission to view and
-apply tags to those resources. For more information, see Obtaining
-Permissions for Resource Groups and Tag Editor
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html).
+To use resource groups tagging API operations, you must add the
+following permissions to your IAM policy:
+
+=over
+
+=item *
+
+C<tag:GetResources>
+
+=item *
+
+C<tag:TagResources>
+
+=item *
+
+C<tag:UntagResources>
+
+=item *
+
+C<tag:GetTagKeys>
+
+=item *
+
+C<tag:GetTagValues>
+
+=back
+
+You'll also need permissions to access the resources of individual
+services so that you can tag and untag those resources.
+
+For more information on IAM policies, see Managing IAM Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)
+in the I<IAM User Guide>.
 
 You can use the Resource Groups Tagging API to tag resources for the
 following AWS services.
@@ -202,11 +267,15 @@ API Gateway
 
 =item *
 
-AWS AppStream
+Amazon AppStream
 
 =item *
 
 AWS AppSync
+
+=item *
+
+AWS App Mesh
 
 =item *
 
@@ -215,6 +284,10 @@ Amazon Athena
 =item *
 
 Amazon Aurora
+
+=item *
+
+AWS Backup
 
 =item *
 
@@ -262,6 +335,14 @@ AWS CodeBuild
 
 =item *
 
+AWS CodeCommit
+
+=item *
+
+AWS CodePipeline
+
+=item *
+
 AWS CodeStar
 
 =item *
@@ -282,6 +363,10 @@ AWS Config
 
 =item *
 
+AWS Data Exchange
+
+=item *
+
 AWS Data Pipeline
 
 =item *
@@ -290,7 +375,11 @@ AWS Database Migration Service
 
 =item *
 
-AWS Datasync
+AWS DataSync
+
+=item *
+
+AWS Device Farm
 
 =item *
 
@@ -319,6 +408,10 @@ Amazon ECR
 =item *
 
 Amazon ECS
+
+=item *
+
+Amazon EKS
 
 =item *
 
@@ -362,11 +455,15 @@ Amazon FSx
 
 =item *
 
-Amazon Glacier
+Amazon S3 Glacier
 
 =item *
 
 AWS Glue
+
+=item *
+
+Amazon GuardDuty
 
 =item *
 
@@ -390,7 +487,15 @@ AWS IoT Device Management
 
 =item *
 
+AWS IoT Events
+
+=item *
+
 AWS IoT Greengrass
+
+=item *
+
+AWS IoT 1-Click
 
 =item *
 
@@ -438,6 +543,14 @@ AWS OpsWorks
 
 =item *
 
+AWS Organizations
+
+=item *
+
+Amazon Quantum Ledger Database (QLDB)
+
+=item *
+
 Amazon RDS
 
 =item *
@@ -478,6 +591,10 @@ AWS Secrets Manager
 
 =item *
 
+AWS Security Hub
+
+=item *
+
 AWS Service Catalog
 
 =item *
@@ -490,7 +607,7 @@ Amazon Simple Queue Service (SQS)
 
 =item *
 
-AWS Simple System Manager (SSM)
+Amazon Simple Workflow Service
 
 =item *
 
@@ -499,6 +616,10 @@ AWS Step Functions
 =item *
 
 AWS Storage Gateway
+
+=item *
+
+AWS Systems Manager
 
 =item *
 
@@ -520,9 +641,66 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/resourcegroupst
 
 =head1 METHODS
 
+=head2 DescribeReportCreation
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ResourceTagging::DescribeReportCreation>
+
+Returns: a L<Paws::ResourceTagging::DescribeReportCreationOutput> instance
+
+Describes the status of the C<StartReportCreation> operation.
+
+You can call this operation only from the organization's master account
+and from the us-east-1 Region.
+
+
+=head2 GetComplianceSummary
+
+=over
+
+=item [GroupBy => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [PaginationToken => Str]
+
+=item [RegionFilters => ArrayRef[Str|Undef]]
+
+=item [ResourceTypeFilters => ArrayRef[Str|Undef]]
+
+=item [TagKeyFilters => ArrayRef[Str|Undef]]
+
+=item [TargetIdFilters => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ResourceTagging::GetComplianceSummary>
+
+Returns: a L<Paws::ResourceTagging::GetComplianceSummaryOutput> instance
+
+Returns a table that shows counts of resources that are noncompliant
+with their tag policies.
+
+For more information on tag policies, see Tag Policies
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+in the I<AWS Organizations User Guide.>
+
+You can call this operation only from the organization's master account
+and from the us-east-1 Region.
+
+
 =head2 GetResources
 
 =over
+
+=item [ExcludeCompliantResources => Bool]
+
+=item [IncludeComplianceDetails => Bool]
 
 =item [PaginationToken => Str]
 
@@ -542,13 +720,30 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetResources>
 Returns: a L<Paws::ResourceTagging::GetResourcesOutput> instance
 
 Returns all the tagged or previously tagged resources that are located
-in the specified region for the AWS account. You can optionally specify
-I<filters> (tags and resource types) in your request, depending on what
-information you want returned. The response includes all tags that are
-associated with the requested resources.
+in the specified Region for the AWS account.
+
+Depending on what information you want returned, you can also specify
+the following:
+
+=over
+
+=item *
+
+I<Filters> that specify what tags and resource types you want returned.
+The response includes all tags that are associated with the requested
+resources.
+
+=item *
+
+Information about compliance with the account's effective tag policy.
+For more information on tag policies, see Tag Policies
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+in the I<AWS Organizations User Guide.>
+
+=back
 
 You can check the C<PaginationToken> response parameter to determine if
-a query completed. Queries can occasionally return fewer results on a
+a query is complete. Queries occasionally return fewer results on a
 page than allowed. The C<PaginationToken> response parameter value is
 C<null> I<only> when there are no more results to display.
 
@@ -566,7 +761,7 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagKeys>
 
 Returns: a L<Paws::ResourceTagging::GetTagKeysOutput> instance
 
-Returns all tag keys in the specified region for the AWS account.
+Returns all tag keys in the specified Region for the AWS account.
 
 
 =head2 GetTagValues
@@ -584,8 +779,33 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagValues>
 
 Returns: a L<Paws::ResourceTagging::GetTagValuesOutput> instance
 
-Returns all tag values for the specified key in the specified region
+Returns all tag values for the specified key in the specified Region
 for the AWS account.
+
+
+=head2 StartReportCreation
+
+=over
+
+=item S3Bucket => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ResourceTagging::StartReportCreation>
+
+Returns: a L<Paws::ResourceTagging::StartReportCreationOutput> instance
+
+Generates a report that lists all tagged resources in accounts across
+your organization and tells whether each resource is compliant with the
+effective tag policy. Compliance data is refreshed daily.
+
+The generated report is saved to the following location:
+
+C<s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv>
+
+You can call this operation only from the organization's master account
+and from the us-east-1 Region.
 
 
 =head2 TagResources
@@ -610,30 +830,28 @@ following:
 
 =item *
 
-Not all resources can have tags. For a list of resources that support
-tagging, see Supported Resources
-(http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html)
-in the I<AWS Resource Groups User Guide>.
+Not all resources can have tags. For a list of services that support
+tagging, see this list
+(http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 
 =item *
 
-Each resource can have up to 50 tags. For other limits, see Tag
-Restrictions
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+Each resource can have up to 50 tags. For other limits, see Tag Naming
+and Usage Conventions
+(http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions)
+in the I<AWS General Reference.>
 
 =item *
 
-You can only tag resources that are located in the specified region for
+You can only tag resources that are located in the specified Region for
 the AWS account.
 
 =item *
 
 To add tags to a resource, you need the necessary permissions for the
 service that the resource belongs to as well as permissions for adding
-tags. For more information, see Obtaining Permissions for Tagging
-(http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
-in the I<AWS Resource Groups User Guide>.
+tags. For more information, see this list
+(http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 
 =back
 
@@ -665,14 +883,12 @@ resource that were already removed. Note the following:
 
 To remove tags from a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
-removing tags. For more information, see Obtaining Permissions for
-Tagging
-(http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
-in the I<AWS Resource Groups User Guide>.
+removing tags. For more information, see this list
+(http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 
 =item *
 
-You can only tag resources that are located in the specified region for
+You can only tag resources that are located in the specified Region for
 the AWS account.
 
 =back
@@ -685,9 +901,21 @@ the AWS account.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllResources(sub { },[PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetAllComplianceSummary(sub { },[GroupBy => ArrayRef[Str|Undef], MaxResults => Int, PaginationToken => Str, RegionFilters => ArrayRef[Str|Undef], ResourceTypeFilters => ArrayRef[Str|Undef], TagKeyFilters => ArrayRef[Str|Undef], TargetIdFilters => ArrayRef[Str|Undef]])
 
-=head2 GetAllResources([PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetAllComplianceSummary([GroupBy => ArrayRef[Str|Undef], MaxResults => Int, PaginationToken => Str, RegionFilters => ArrayRef[Str|Undef], ResourceTypeFilters => ArrayRef[Str|Undef], TagKeyFilters => ArrayRef[Str|Undef], TargetIdFilters => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SummaryList, passing the object as the first parameter, and the string 'SummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceTagging::GetComplianceSummaryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResources(sub { },[ExcludeCompliantResources => Bool, IncludeComplianceDetails => Bool, PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+
+=head2 GetAllResources([ExcludeCompliantResources => Bool, IncludeComplianceDetails => Bool, PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

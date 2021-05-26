@@ -17,7 +17,7 @@ Paws::Connect::GetContactAttributesResponse
 
 =head2 Attributes => L<Paws::Connect::Attributes>
 
-The attributes to update.
+Information about the attributes.
 
 
 =head2 _request_id => Str

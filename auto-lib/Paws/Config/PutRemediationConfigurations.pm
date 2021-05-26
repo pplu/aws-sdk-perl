@@ -31,23 +31,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->PutRemediationConfigurations(
       RemediationConfigurations => [
         {
-          ConfigRuleName => 'MyStringWithCharLimit64',    # min: 1, max: 64
+          ConfigRuleName => 'MyConfigRuleName',           # min: 1, max: 128
           TargetId       => 'MyStringWithCharLimit256',   # min: 1, max: 256
           TargetType     => 'SSM_DOCUMENT',               # values: SSM_DOCUMENT
-          Parameters     => {
+          Arn => 'MyStringWithCharLimit1024',    # min: 1, max: 1024; OPTIONAL
+          Automatic => 1,                        # OPTIONAL
+          CreatedByService =>
+            'MyStringWithCharLimit1024',         # min: 1, max: 1024; OPTIONAL
+          ExecutionControls => {
+            SsmControls => {
+              ConcurrentExecutionRatePercentage =>
+                1,                               # min: 1, max: 100; OPTIONAL
+              ErrorPercentage => 1,              # min: 1, max: 100; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          MaximumAutomaticAttempts => 1,    # min: 1, max: 25; OPTIONAL
+          Parameters               => {
             'MyStringWithCharLimit256' => {
               ResourceValue => {
-                Value => 'RESOURCE_ID',    # values: RESOURCE_ID; OPTIONAL
+                Value => 'RESOURCE_ID',     # values: RESOURCE_ID
+
               },    # OPTIONAL
               StaticValue => {
                 Values => [
                   'MyStringWithCharLimit256', ...    # min: 1, max: 256
-                ],                                   # max: 25; OPTIONAL
+                ],                                   # max: 25
+
               },    # OPTIONAL
             },    # key: min: 1, max: 256
           },    # max: 25; OPTIONAL
-          ResourceType  => 'MyString',    # OPTIONAL
-          TargetVersion => 'MyString',    # OPTIONAL
+          ResourceType        => 'MyString',    # OPTIONAL
+          RetryAttemptSeconds => 1,             # min: 1, max: 2678000; OPTIONAL
+          TargetVersion       => 'MyString',    # OPTIONAL
         },
         ...
       ],

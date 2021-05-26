@@ -61,7 +61,8 @@ Used to test if the caller has permission to make the call.
 
 =head2 B<REQUIRED> MigrationTaskName => Str
 
-The identifier given to the MigrationTask.
+The identifier given to the MigrationTask. I<Do not store personal data
+in this field.>
 
 
 

@@ -73,7 +73,8 @@ The API identifier.
 
 =head2 ModelSelectionExpression => Str
 
-The model selection expression for the route response.
+The model selection expression for the route response. Supported only
+for WebSocket APIs.
 
 
 

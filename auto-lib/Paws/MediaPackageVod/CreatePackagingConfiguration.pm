@@ -69,10 +69,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DashPackage => {
         DashManifests => [
           {
-            ManifestName         => 'My__string',
-            MinBufferTimeSeconds => 1,              # OPTIONAL
-            Profile         => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
-            StreamSelection => {
+            ManifestLayout => 'FULL',         # values: FULL, COMPACT; OPTIONAL
+            ManifestName   => 'My__string',
+            MinBufferTimeSeconds => 1,       # OPTIONAL
+            Profile              => 'NONE',  # values: NONE, HBBTV_1_5; OPTIONAL
+            StreamSelection      => {
               MaxVideoBitsPerSecond => 1,           # OPTIONAL
               MinVideoBitsPerSecond => 1,           # OPTIONAL
               StreamOrder           => 'ORIGINAL'
@@ -90,7 +91,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        SegmentDurationSeconds => 1,    # OPTIONAL
+        PeriodTriggers => [
+          'ADS', ...    # values: ADS
+        ],              # OPTIONAL
+        SegmentDurationSeconds => 1,                       # OPTIONAL
+        SegmentTemplateFormat  => 'NUMBER_WITH_TIMELINE'
+        , # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE, NUMBER_WITH_DURATION; OPTIONAL
       },    # OPTIONAL
       HlsPackage => {
         HlsManifests => [
@@ -117,6 +123,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url       => 'My__string',
 
           },
+          ConstantInitializationVector => 'My__string',
           EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
         },    # OPTIONAL
         SegmentDurationSeconds => 1,    # OPTIONAL

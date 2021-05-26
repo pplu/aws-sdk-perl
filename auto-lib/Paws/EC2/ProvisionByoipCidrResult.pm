@@ -17,7 +17,7 @@ Paws::EC2::ProvisionByoipCidrResult
 
 =head2 ByoipCidr => L<Paws::EC2::ByoipCidr>
 
-Information about the address pool.
+Information about the address range.
 
 
 =head2 _request_id => Str

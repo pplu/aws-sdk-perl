@@ -66,8 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> InstanceId => Str
 
-One or more instance IDs where you want to add or update inventory
-items.
+An instance ID where you want to add or update inventory items.
 
 
 

@@ -20,7 +20,7 @@ Paws::CloudWatchEvents::TagResource - Arguments for method TagResource on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TagResource on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method TagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagResource.
@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the CloudWatch Events rule that you're adding tags to.
+The ARN of the rule that you're adding tags to.
 
 
 

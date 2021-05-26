@@ -1,9 +1,11 @@
 package Paws::EC2::PlacementGroup;
   use Moose;
+  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has PartitionCount => (is => 'ro', isa => 'Int', request_name => 'partitionCount', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Strategy => (is => 'ro', isa => 'Str', request_name => 'strategy', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::PlacementGroup object:
 
-  $service_obj->Method(Att1 => { GroupName => $value, ..., Strategy => $value  });
+  $service_obj->Method(Att1 => { GroupId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::PlacementGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GroupName
+  $result->Att1->GroupId
 
 =head1 DESCRIPTION
 
@@ -39,25 +41,35 @@ This class has no description
 =head1 ATTRIBUTES
 
 
+=head2 GroupId => Str
+
+The ID of the placement group.
+
+
 =head2 GroupName => Str
 
-  The name of the placement group.
+The name of the placement group.
 
 
 =head2 PartitionCount => Int
 
-  The number of partitions. Valid only if B<strategy> is set to
+The number of partitions. Valid only if B<strategy> is set to
 C<partition>.
 
 
 =head2 State => Str
 
-  The state of the placement group.
+The state of the placement group.
 
 
 =head2 Strategy => Str
 
-  The placement strategy.
+The placement strategy.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+Any tags applied to the placement group.
 
 
 

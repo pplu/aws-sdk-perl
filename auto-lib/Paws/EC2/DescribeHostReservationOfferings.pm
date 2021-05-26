@@ -36,18 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeHostReservationOfferings(
       Filter => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      MaxDuration => 1,            # OPTIONAL
-      MaxResults  => 1,            # OPTIONAL
-      MinDuration => 1,            # OPTIONAL
-      NextToken   => 'MyString',   # OPTIONAL
-      OfferingId  => 'MyString',   # OPTIONAL
+      ],                                    # OPTIONAL
+      MaxDuration => 1,                     # OPTIONAL
+      MaxResults  => 1,                     # OPTIONAL
+      MinDuration => 1,                     # OPTIONAL
+      NextToken   => 'MyString',            # OPTIONAL
+      OfferingId  => 'MyOfferingId',        # OPTIONAL
       );
 
     # Results:

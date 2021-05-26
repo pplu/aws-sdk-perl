@@ -67,23 +67,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/
 
 =head2 Description => Str
 
-A textual description for the directory. This label will appear on the
-AWS console C<Directory Details> page after the directory is created.
+A description for the directory. This label will appear on the AWS
+console C<Directory Details> page after the directory is created.
 
 
 
 =head2 Edition => Str
 
-AWS Managed Microsoft AD is available in two editions: Standard and
-Enterprise. Enterprise is the default.
+AWS Managed Microsoft AD is available in two editions: C<Standard> and
+C<Enterprise>. C<Enterprise> is the default.
 
 Valid values are: C<"Enterprise">, C<"Standard">
 
 =head2 B<REQUIRED> Name => Str
 
-The fully qualified domain name for the directory, such as
-C<corp.example.com>. This name will resolve inside your VPC only. It
-does not need to be publicly resolvable.
+The fully qualified domain name for the AWS Managed Microsoft AD
+directory, such as C<corp.example.com>. This name will resolve inside
+your VPC only. It does not need to be publicly resolvable.
 
 
 
@@ -91,14 +91,16 @@ does not need to be publicly resolvable.
 
 The password for the default administrative user named C<Admin>.
 
+If you need to change the password for the administrator account, you
+can use the ResetUserPassword API call.
+
 
 
 =head2 ShortName => Str
 
-The NetBIOS name for your domain. A short identifier for your domain,
-such as C<CORP>. If you don't specify a NetBIOS name, it will default
-to the first part of your directory DNS. For example, C<CORP> for the
-directory DNS C<corp.example.com>.
+The NetBIOS name for your domain, such as C<CORP>. If you don't specify
+a NetBIOS name, it will default to the first part of your directory
+DNS. For example, C<CORP> for the directory DNS C<corp.example.com>.
 
 
 

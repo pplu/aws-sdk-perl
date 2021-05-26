@@ -2,6 +2,7 @@
 package Paws::Glue::ResetJobBookmark;
   use Moose;
   has JobName => (is => 'ro', isa => 'Str', required => 1);
+  has RunId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $ResetJobBookmarkResponse = $glue->ResetJobBookmark(
       JobName => 'MyJobName',
-
+      RunId   => 'MyRunId',     # OPTIONAL
     );
 
     # Results:
@@ -46,6 +47,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 B<REQUIRED> JobName => Str
 
 The name of the job in question.
+
+
+
+=head2 RunId => Str
+
+The unique run identifier associated with this job run.
 
 
 

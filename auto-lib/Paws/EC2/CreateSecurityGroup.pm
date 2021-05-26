@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateSecurityGroupResult = $ec2->CreateSecurityGroup(
       Description => 'MyString',
       GroupName   => 'MyString',
-      DryRun      => 1,             # OPTIONAL
-      VpcId       => 'MyString',    # OPTIONAL
+      DryRun      => 1,            # OPTIONAL
+      VpcId       => 'MyVpcId',    # OPTIONAL
     );
 
     # Results:

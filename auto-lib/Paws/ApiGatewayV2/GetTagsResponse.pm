@@ -1,7 +1,7 @@
 
 package Paws::ApiGatewayV2::GetTagsResponse;
   use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -15,7 +15,7 @@ Paws::ApiGatewayV2::GetTagsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::__mapOf__string>
+=head2 B<REQUIRED> Tags => L<Paws::ApiGatewayV2::Tags>
 
 
 

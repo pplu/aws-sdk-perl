@@ -6,6 +6,7 @@ package Paws::EC2::TransitGatewayOptions;
   has DefaultRouteTableAssociation => (is => 'ro', isa => 'Str', request_name => 'defaultRouteTableAssociation', traits => ['NameInRequest']);
   has DefaultRouteTablePropagation => (is => 'ro', isa => 'Str', request_name => 'defaultRouteTablePropagation', traits => ['NameInRequest']);
   has DnsSupport => (is => 'ro', isa => 'Str', request_name => 'dnsSupport', traits => ['NameInRequest']);
+  has MulticastSupport => (is => 'ro', isa => 'Str', request_name => 'multicastSupport', traits => ['NameInRequest']);
   has PropagationDefaultRouteTableId => (is => 'ro', isa => 'Str', request_name => 'propagationDefaultRouteTableId', traits => ['NameInRequest']);
   has VpnEcmpSupport => (is => 'ro', isa => 'Str', request_name => 'vpnEcmpSupport', traits => ['NameInRequest']);
 1;
@@ -45,46 +46,51 @@ This class has no description
 
 =head2 AmazonSideAsn => Int
 
-  A private Autonomous System Number (ASN) for the Amazon side of a BGP
+A private Autonomous System Number (ASN) for the Amazon side of a BGP
 session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
 4294967294 for 32-bit ASNs.
 
 
 =head2 AssociationDefaultRouteTableId => Str
 
-  The ID of the default association route table.
+The ID of the default association route table.
 
 
 =head2 AutoAcceptSharedAttachments => Str
 
-  Indicates whether attachment requests are automatically accepted.
+Indicates whether attachment requests are automatically accepted.
 
 
 =head2 DefaultRouteTableAssociation => Str
 
-  Indicates whether resource attachments are automatically associated
+Indicates whether resource attachments are automatically associated
 with the default association route table.
 
 
 =head2 DefaultRouteTablePropagation => Str
 
-  Indicates whether resource attachments automatically propagate routes
+Indicates whether resource attachments automatically propagate routes
 to the default propagation route table.
 
 
 =head2 DnsSupport => Str
 
-  Indicates whether DNS support is enabled.
+Indicates whether DNS support is enabled.
+
+
+=head2 MulticastSupport => Str
+
+Indicates whether multicast is enabled on the transit gateway
 
 
 =head2 PropagationDefaultRouteTableId => Str
 
-  The ID of the default propagation route table.
+The ID of the default propagation route table.
 
 
 =head2 VpnEcmpSupport => Str
 
-  Indicates whether Equal Cost Multipath Protocol support is enabled.
+Indicates whether Equal Cost Multipath Protocol support is enabled.
 
 
 

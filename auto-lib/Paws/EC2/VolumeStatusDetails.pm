@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Name => Str
 
-  The name of the volume status.
+The name of the volume status.
 
 
 =head2 Status => Str
 
-  The intended status of the volume status.
+The intended status of the volume status.
 
 
 

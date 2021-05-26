@@ -50,21 +50,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the project whose name you wish to
-update.
+The Amazon Resource Name (ARN) of the project whose name to update.
 
 
 
 =head2 DefaultJobTimeoutMinutes => Int
 
-The number of minutes a test run in the project will execute before it
+The number of minutes a test run in the project executes before it
 times out.
 
 
 
 =head2 Name => Str
 
-A string representing the new name of the project that you are
+A string that represents the new name of the project that you are
 updating.
 
 

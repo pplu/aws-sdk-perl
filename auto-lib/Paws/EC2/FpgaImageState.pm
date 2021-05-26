@@ -39,7 +39,7 @@ This class has no description
 
 =head2 Code => Str
 
-  The state. The following are the possible values:
+The state. The following are the possible values:
 
 =over
 
@@ -65,7 +65,7 @@ C<unavailable> - The AFI is no longer available for use.
 
 =head2 Message => Str
 
-  If the state is C<failed>, this is the error message.
+If the state is C<failed>, this is the error message.
 
 
 

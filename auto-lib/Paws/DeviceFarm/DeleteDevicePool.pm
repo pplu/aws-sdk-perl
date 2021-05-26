@@ -42,7 +42,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 =head2 B<REQUIRED> Arn => Str
 
 Represents the Amazon Resource Name (ARN) of the Device Farm device
-pool you wish to delete.
+pool to delete.
 
 
 

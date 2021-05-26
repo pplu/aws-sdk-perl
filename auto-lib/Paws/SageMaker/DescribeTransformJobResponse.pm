@@ -1,10 +1,12 @@
 
 package Paws::SageMaker::DescribeTransformJobResponse;
   use Moose;
+  has AutoMLJobArn => (is => 'ro', isa => 'Str');
   has BatchStrategy => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has LabelingJobArn => (is => 'ro', isa => 'Str');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
@@ -28,6 +30,11 @@ package Paws::SageMaker::DescribeTransformJobResponse;
 Paws::SageMaker::DescribeTransformJobResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoMLJobArn => Str
+
+
 
 
 =head2 BatchStrategy => Str
@@ -57,13 +64,18 @@ The environment variables to set in the Docker container. We support up
 to 16 key and values entries in the map.
 
 
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+
+
+
 =head2 FailureReason => Str
 
 If the transform job failed, C<FailureReason> describes why it failed.
 A transform job creates a log file, which includes error messages, and
 stores it as an Amazon S3 object. For more information, see Log Amazon
 SageMaker Events with Amazon CloudWatch
-(http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html).
 
 
 =head2 LabelingJobArn => Str

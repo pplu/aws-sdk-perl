@@ -87,7 +87,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 ReplicationInstanceArn => Str
 
-The ARN of the replication instance.
+The Amazon Resource Name (ARN) of the replication instance.
 
 
 

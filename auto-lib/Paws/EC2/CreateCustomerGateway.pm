@@ -2,8 +2,10 @@
 package Paws::EC2::CreateCustomerGateway;
   use Moose;
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
+  has CertificateArn => (is => 'ro', isa => 'Str');
+  has DeviceName => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' , required => 1);
+  has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' );
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -58,6 +60,20 @@ Default: 65000
 
 
 
+=head2 CertificateArn => Str
+
+The Amazon Resource Name (ARN) for the customer gateway certificate.
+
+
+
+=head2 DeviceName => Str
+
+A name for the customer gateway device.
+
+Length Constraints: Up to 255 characters.
+
+
+
 =head2 DryRun => Bool
 
 Checks whether you have the required permissions for the action,
@@ -67,7 +83,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> PublicIp => Str
+=head2 PublicIp => Str
 
 The Internet-routable IP address for the customer gateway's outside
 interface. The address must be static.

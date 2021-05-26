@@ -1,8 +1,14 @@
 
 package Paws::DynamoDB::RestoreTableToPointInTime;
   use Moose;
+  has BillingModeOverride => (is => 'ro', isa => 'Str');
+  has GlobalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
+  has LocalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
+  has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
   has RestoreDateTime => (is => 'ro', isa => 'Str');
-  has SourceTableName => (is => 'ro', isa => 'Str', required => 1);
+  has SourceTableArn => (is => 'ro', isa => 'Str');
+  has SourceTableName => (is => 'ro', isa => 'Str');
+  has SSESpecificationOverride => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has TargetTableName => (is => 'ro', isa => 'Str', required => 1);
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
 
@@ -31,10 +37,68 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dynamodb = Paws->service('DynamoDB');
     my $RestoreTableToPointInTimeOutput = $dynamodb->RestoreTableToPointInTime(
-      SourceTableName         => 'MyTableName',
-      TargetTableName         => 'MyTableName',
-      RestoreDateTime         => '1970-01-01T01:00:00',    # OPTIONAL
-      UseLatestRestorableTime => 1,                        # OPTIONAL
+      TargetTableName              => 'MyTableName',
+      BillingModeOverride          => 'PROVISIONED',    # OPTIONAL
+      GlobalSecondaryIndexOverride => [
+        {
+          IndexName => 'MyIndexName',                   # min: 3, max: 255
+          KeySchema => [
+            {
+              AttributeName => 'MyKeySchemaAttributeName', # min: 1, max: 255
+              KeyType       => 'HASH',                     # values: HASH, RANGE
+
+            },
+            ...
+          ],                                               # min: 1, max: 2
+          Projection => {
+            NonKeyAttributes => [
+              'MyNonKeyAttributeName', ...                 # min: 1, max: 255
+            ],    # min: 1, max: 20; OPTIONAL
+            ProjectionType => 'ALL', # values: ALL, KEYS_ONLY, INCLUDE; OPTIONAL
+          },
+          ProvisionedThroughput => {
+            ReadCapacityUnits  => 1,    # min: 1
+            WriteCapacityUnits => 1,    # min: 1
+
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      LocalSecondaryIndexOverride => [
+        {
+          IndexName => 'MyIndexName',    # min: 3, max: 255
+          KeySchema => [
+            {
+              AttributeName => 'MyKeySchemaAttributeName', # min: 1, max: 255
+              KeyType       => 'HASH',                     # values: HASH, RANGE
+
+            },
+            ...
+          ],                                               # min: 1, max: 2
+          Projection => {
+            NonKeyAttributes => [
+              'MyNonKeyAttributeName', ...                 # min: 1, max: 255
+            ],    # min: 1, max: 20; OPTIONAL
+            ProjectionType => 'ALL', # values: ALL, KEYS_ONLY, INCLUDE; OPTIONAL
+          },
+
+        },
+        ...
+      ],                             # OPTIONAL
+      ProvisionedThroughputOverride => {
+        ReadCapacityUnits  => 1,     # min: 1
+        WriteCapacityUnits => 1,     # min: 1
+
+      },    # OPTIONAL
+      RestoreDateTime          => '1970-01-01T01:00:00',    # OPTIONAL
+      SSESpecificationOverride => {
+        Enabled        => 1,                     # OPTIONAL
+        KMSMasterKeyId => 'MyKMSMasterKeyId',    # OPTIONAL
+        SSEType        => 'AES256',              # values: AES256, KMS; OPTIONAL
+      },    # OPTIONAL
+      SourceTableArn          => 'MyTableArn',     # OPTIONAL
+      SourceTableName         => 'MyTableName',    # OPTIONAL
+      UseLatestRestorableTime => 1,                # OPTIONAL
     );
 
     # Results:
@@ -48,15 +112,56 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
+=head2 BillingModeOverride => Str
+
+The billing mode of the restored table.
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
+
+=head2 GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
+
+List of global secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.
+
+
+
+=head2 LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
+
+List of local secondary indexes for the restored table. The indexes
+provided should match existing secondary indexes. You can choose to
+exclude some or all of the indexes at the time of restore.
+
+
+
+=head2 ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>
+
+Provisioned throughput settings for the restored table.
+
+
+
 =head2 RestoreDateTime => Str
 
 Time in the past to restore the table to.
 
 
 
-=head2 B<REQUIRED> SourceTableName => Str
+=head2 SourceTableArn => Str
+
+The DynamoDB table that will be restored. This value is an Amazon
+Resource Name (ARN).
+
+
+
+=head2 SourceTableName => Str
 
 Name of the source table that is being restored.
+
+
+
+=head2 SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the restored table.
 
 
 

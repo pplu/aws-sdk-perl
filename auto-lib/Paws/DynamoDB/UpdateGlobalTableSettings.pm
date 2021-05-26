@@ -144,6 +144,24 @@ The billing mode of the global table. If C<GlobalTableBillingMode> is
 not specified, the global table defaults to C<PROVISIONED> capacity
 billing mode.
 
+=over
+
+=item *
+
+C<PROVISIONED> - We recommend using C<PROVISIONED> for predictable
+workloads. C<PROVISIONED> sets the billing mode to Provisioned Mode
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
+
+=item *
+
+C<PAY_PER_REQUEST> - We recommend using C<PAY_PER_REQUEST> for
+unpredictable workloads. C<PAY_PER_REQUEST> sets the billing mode to
+On-Demand Mode
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
+
+=back
+
+
 Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
 =head2 GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>]

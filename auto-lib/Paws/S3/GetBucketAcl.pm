@@ -3,6 +3,7 @@ package Paws::S3::GetBucketAcl;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBucketAcl');
@@ -11,6 +12,7 @@ package Paws::S3::GetBucketAcl;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::GetBucketAclOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+Specifies the S3 bucket whose ACL is being requested.
 
 
 

@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastChangedDate    = $DescribeSecretResponse->LastChangedDate;
     my $LastRotatedDate    = $DescribeSecretResponse->LastRotatedDate;
     my $Name               = $DescribeSecretResponse->Name;
+    my $OwningService      = $DescribeSecretResponse->OwningService;
     my $RotationEnabled    = $DescribeSecretResponse->RotationEnabled;
     my $RotationLambdaARN  = $DescribeSecretResponse->RotationLambdaARN;
     my $RotationRules      = $DescribeSecretResponse->RotationRules;

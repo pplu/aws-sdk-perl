@@ -52,8 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> AppArn => Str
 
-The Amazon Resource Name (ARN) of the app about which you are
-requesting information.
+The ARN of the app about which you are requesting information.
 
 
 

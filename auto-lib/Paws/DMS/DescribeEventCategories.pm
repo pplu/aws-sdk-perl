@@ -62,7 +62,7 @@ Filters applied to the action.
 
 The type of AWS DMS resource that generates events.
 
-Valid values: replication-instance | migration-task
+Valid values: replication-instance | replication-task
 
 
 

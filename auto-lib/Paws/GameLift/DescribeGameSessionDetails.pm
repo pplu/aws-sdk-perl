@@ -57,27 +57,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AliasId => Str
 
-Unique identifier for an alias associated with the fleet to retrieve
-all game sessions for.
+A unique identifier for an alias associated with the fleet to retrieve
+all game sessions for. You can use either the alias ID or ARN value.
 
 
 
 =head2 FleetId => Str
 
-Unique identifier for a fleet to retrieve all game sessions active on
-the fleet.
+A unique identifier for a fleet to retrieve all game sessions active on
+the fleet. You can use either the fleet ID or ARN value.
 
 
 
 =head2 GameSessionId => Str
 
-Unique identifier for the game session to retrieve.
+A unique identifier for the game session to retrieve.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 

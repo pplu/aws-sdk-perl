@@ -18,7 +18,7 @@ Paws::XRay::GetSamplingRulesResult
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 =head2 SamplingRuleRecords => ArrayRef[L<Paws::XRay::SamplingRuleRecord>]

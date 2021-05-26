@@ -34,6 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $AutomatedDiscoveryInformation =
+      $GetLicenseConfigurationResponse->AutomatedDiscoveryInformation;
     my $ConsumedLicenseSummaryList =
       $GetLicenseConfigurationResponse->ConsumedLicenseSummaryList;
     my $ConsumedLicenses = $GetLicenseConfigurationResponse->ConsumedLicenses;
@@ -52,8 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $GetLicenseConfigurationResponse->ManagedResourceSummaryList;
     my $Name           = $GetLicenseConfigurationResponse->Name;
     my $OwnerAccountId = $GetLicenseConfigurationResponse->OwnerAccountId;
-    my $Status         = $GetLicenseConfigurationResponse->Status;
-    my $Tags           = $GetLicenseConfigurationResponse->Tags;
+    my $ProductInformationList =
+      $GetLicenseConfigurationResponse->ProductInformationList;
+    my $Status = $GetLicenseConfigurationResponse->Status;
+    my $Tags   = $GetLicenseConfigurationResponse->Tags;
 
     # Returns a L<Paws::LicenseManager::GetLicenseConfigurationResponse> object.
 
@@ -65,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 B<REQUIRED> LicenseConfigurationArn => Str
 
-ARN of the license configuration being requested.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 

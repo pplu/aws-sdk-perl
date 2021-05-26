@@ -2,9 +2,10 @@
 package Paws::S3::PutBucketLogging;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', required => 1);
+  has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', traits => ['ParamInBody'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -14,6 +15,7 @@ package Paws::S3::PutBucketLogging;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -68,13 +70,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket for which to set the logging parameters.
 
 
 
 =head2 B<REQUIRED> BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
 
-
+Container for logging status information.
 
 
 
@@ -86,7 +88,7 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The MD5 hash of the C<PutBucketLogging> request body.
 
 
 

@@ -50,68 +50,68 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+The Availability Zone.
 
 
 =head2 AvailableInstanceCount => Int
 
-  The number of available instances.
+The number of available instances.
 
 
 =head2 FirstSlotStartTime => Str
 
-  The time period for the first schedule to start.
+The time period for the first schedule to start.
 
 
 =head2 HourlyPrice => Str
 
-  The hourly price for a single instance.
+The hourly price for a single instance.
 
 
 =head2 InstanceType => Str
 
-  The instance type. You can specify one of the C3, C4, M4, or R3
+The instance type. You can specify one of the C3, C4, M4, or R3
 instance types.
 
 
 =head2 MaxTermDurationInDays => Int
 
-  The maximum term. The only possible value is 365 days.
+The maximum term. The only possible value is 365 days.
 
 
 =head2 MinTermDurationInDays => Int
 
-  The minimum term. The only possible value is 365 days.
+The minimum term. The only possible value is 365 days.
 
 
 =head2 NetworkPlatform => Str
 
-  The network platform (C<EC2-Classic> or C<EC2-VPC>).
+The network platform (C<EC2-Classic> or C<EC2-VPC>).
 
 
 =head2 Platform => Str
 
-  The platform (C<Linux/UNIX> or C<Windows>).
+The platform (C<Linux/UNIX> or C<Windows>).
 
 
 =head2 PurchaseToken => Str
 
-  The purchase token. This token expires in two hours.
+The purchase token. This token expires in two hours.
 
 
 =head2 Recurrence => L<Paws::EC2::ScheduledInstanceRecurrence>
 
-  The schedule recurrence.
+The schedule recurrence.
 
 
 =head2 SlotDurationInHours => Int
 
-  The number of hours in the schedule.
+The number of hours in the schedule.
 
 
 =head2 TotalScheduledInstanceHours => Int
 
-  The total number of hours for a single instance for the entire term.
+The total number of hours for a single instance for the entire term.
 
 
 

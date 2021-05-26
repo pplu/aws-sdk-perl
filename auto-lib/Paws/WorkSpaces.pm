@@ -60,6 +60,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeleteWorkspaceImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterWorkspaceDirectory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeregisterWorkspaceDirectory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeAccount', @_);
@@ -110,6 +115,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspacesConnectionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorkspaceSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DisassociateIpGroups', @_);
@@ -125,6 +135,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ListAvailableManagementCidrRanges', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub MigrateWorkspace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::MigrateWorkspace', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyAccount', @_);
@@ -133,6 +148,21 @@ package Paws::WorkSpaces;
   sub ModifyClientProperties {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyClientProperties', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifySelfservicePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifySelfservicePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyWorkspaceAccessProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyWorkspaceAccessProperties', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyWorkspaceCreationProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyWorkspaceCreationProperties', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyWorkspaceProperties {
@@ -153,6 +183,16 @@ package Paws::WorkSpaces;
   sub RebuildWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RebuildWorkspaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterWorkspaceDirectory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RegisterWorkspaceDirectory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreWorkspace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RestoreWorkspace', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RevokeIpRules {
@@ -367,7 +407,7 @@ package Paws::WorkSpaces;
   }
 
 
-  sub operations { qw/AssociateIpGroups AuthorizeIpRules CopyWorkspaceImage CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
+  sub operations { qw/AssociateIpGroups AuthorizeIpRules CopyWorkspaceImage CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DeregisterWorkspaceDirectory DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DescribeWorkspaceSnapshots DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges MigrateWorkspace ModifyAccount ModifyClientProperties ModifySelfservicePermissions ModifyWorkspaceAccessProperties ModifyWorkspaceCreationProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RegisterWorkspaceDirectory RestoreWorkspace RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
 
 1;
 
@@ -597,6 +637,25 @@ must first delete any bundles that are associated with the image and
 un-share the image if it is shared with other accounts.
 
 
+=head2 DeregisterWorkspaceDirectory
+
+=over
+
+=item DirectoryId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DeregisterWorkspaceDirectory>
+
+Returns: a L<Paws::WorkSpaces::DeregisterWorkspaceDirectoryResult> instance
+
+Deregisters the specified directory. This operation is asynchronous and
+returns before the WorkSpace directory is deregistered. If any
+WorkSpaces are registered to this directory, you must remove them
+before you can deregister the directory.
+
+
 =head2 DescribeAccount
 
 
@@ -608,8 +667,8 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeAccount>
 
 Returns: a L<Paws::WorkSpaces::DescribeAccountResult> instance
 
-Retrieves a list that describes the configuration of bring your own
-license (BYOL) for the specified account.
+Retrieves a list that describes the configuration of Bring Your Own
+License (BYOL) for the specified account.
 
 
 =head2 DescribeAccountModifications
@@ -626,7 +685,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeAccountModi
 Returns: a L<Paws::WorkSpaces::DescribeAccountModificationsResult> instance
 
 Retrieves a list that describes modifications to the configuration of
-bring your own license (BYOL) for the specified account.
+Bring Your Own License (BYOL) for the specified account.
 
 
 =head2 DescribeClientProperties
@@ -711,6 +770,8 @@ both.
 
 =item [DirectoryIds => ArrayRef[Str|Undef]]
 
+=item [Limit => Int]
+
 =item [NextToken => Str]
 
 
@@ -720,8 +781,8 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDi
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance
 
-Describes the available AWS Directory Service directories that are
-registered with Amazon WorkSpaces.
+Describes the available directories that are registered with Amazon
+WorkSpaces.
 
 
 =head2 DescribeWorkspaceImages
@@ -793,6 +854,22 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instanc
 Describes the connection status of the specified WorkSpaces.
 
 
+=head2 DescribeWorkspaceSnapshots
+
+=over
+
+=item WorkspaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceSnapshots>
+
+Returns: a L<Paws::WorkSpaces::DescribeWorkspaceSnapshotsResult> instance
+
+Describes the snapshots for the specified WorkSpace.
+
+
 =head2 DisassociateIpGroups
 
 =over
@@ -833,7 +910,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ImportWorkspaceImag
 
 Returns: a L<Paws::WorkSpaces::ImportWorkspaceImageResult> instance
 
-Imports the specified Windows 7 or Windows 10 bring your own license
+Imports the specified Windows 7 or Windows 10 Bring Your Own License
 (BYOL) image into Amazon WorkSpaces. The image must be an already
 licensed EC2 image that is in your AWS account, and you must own the
 image.
@@ -858,12 +935,43 @@ Returns: a L<Paws::WorkSpaces::ListAvailableManagementCidrRangesResult> instance
 
 Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 that you can use for the network management interface when you enable
-bring your own license (BYOL).
+Bring Your Own License (BYOL).
 
 The management network interface is connected to a secure Amazon
 WorkSpaces management network. It is used for interactive streaming of
 the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
 WorkSpaces to manage the WorkSpace.
+
+
+=head2 MigrateWorkspace
+
+=over
+
+=item BundleId => Str
+
+=item SourceWorkspaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::MigrateWorkspace>
+
+Returns: a L<Paws::WorkSpaces::MigrateWorkspaceResult> instance
+
+Migrates a WorkSpace from one operating system or bundle type to
+another, while retaining the data on the user volume.
+
+The migration process recreates the WorkSpace by using a new root
+volume from the target bundle image and the user volume from the last
+available snapshot of the original WorkSpace. During migration, the
+original C<D:\Users\%USERNAME%> user profile folder is renamed to
+C<D:\Users\%USERNAME%MMddyyTHHmmss%.NotMigrated>. A new
+C<D:\Users\%USERNAME%\> folder is generated by the new OS. Certain
+files in the old user profile are moved to the new user profile.
+
+For available migration scenarios, details about what happens during
+migration, and best practices, see Migrate a WorkSpace
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html).
 
 
 =head2 ModifyAccount
@@ -881,7 +989,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyAccount>
 
 Returns: a L<Paws::WorkSpaces::ModifyAccountResult> instance
 
-Modifies the configuration of bring your own license (BYOL) for the
+Modifies the configuration of Bring Your Own License (BYOL) for the
 specified account.
 
 
@@ -901,6 +1009,65 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyClientPropert
 Returns: a L<Paws::WorkSpaces::ModifyClientPropertiesResult> instance
 
 Modifies the properties of the specified Amazon WorkSpaces clients.
+
+
+=head2 ModifySelfservicePermissions
+
+=over
+
+=item ResourceId => Str
+
+=item SelfservicePermissions => L<Paws::WorkSpaces::SelfservicePermissions>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifySelfservicePermissions>
+
+Returns: a L<Paws::WorkSpaces::ModifySelfservicePermissionsResult> instance
+
+Modifies the self-service WorkSpace management capabilities for your
+users. For more information, see Enable Self-Service WorkSpace
+Management Capabilities for Your Users
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html).
+
+
+=head2 ModifyWorkspaceAccessProperties
+
+=over
+
+=item ResourceId => Str
+
+=item WorkspaceAccessProperties => L<Paws::WorkSpaces::WorkspaceAccessProperties>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceAccessProperties>
+
+Returns: a L<Paws::WorkSpaces::ModifyWorkspaceAccessPropertiesResult> instance
+
+Specifies which devices and operating systems users can use to access
+their WorkSpaces. For more information, see Control Device Access
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
+
+
+=head2 ModifyWorkspaceCreationProperties
+
+=over
+
+=item ResourceId => Str
+
+=item WorkspaceCreationProperties => L<Paws::WorkSpaces::WorkspaceCreationProperties>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceCreationProperties>
+
+Returns: a L<Paws::WorkSpaces::ModifyWorkspaceCreationPropertiesResult> instance
+
+Modify the default properties used to create WorkSpaces.
 
 
 =head2 ModifyWorkspaceProperties
@@ -983,7 +1150,7 @@ Returns: a L<Paws::WorkSpaces::RebuildWorkspacesResult> instance
 Rebuilds the specified WorkSpace.
 
 You cannot rebuild a WorkSpace unless its state is C<AVAILABLE>,
-C<ERROR>, or C<UNHEALTHY>.
+C<ERROR>, C<UNHEALTHY>, or C<STOPPED>.
 
 Rebuilding a WorkSpace is a potentially destructive action that can
 result in the loss of data. For more information, see Rebuild a
@@ -992,6 +1159,64 @@ WorkSpace
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
+
+
+=head2 RegisterWorkspaceDirectory
+
+=over
+
+=item DirectoryId => Str
+
+=item EnableWorkDocs => Bool
+
+=item [EnableSelfService => Bool]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
+=item [Tenancy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::RegisterWorkspaceDirectory>
+
+Returns: a L<Paws::WorkSpaces::RegisterWorkspaceDirectoryResult> instance
+
+Registers the specified directory. This operation is asynchronous and
+returns before the WorkSpace directory is registered. If this is the
+first time you are registering a directory, you will need to create the
+workspaces_DefaultRole role before you can register a directory. For
+more information, see Creating the workspaces_DefaultRole Role
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role).
+
+
+=head2 RestoreWorkspace
+
+=over
+
+=item WorkspaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::RestoreWorkspace>
+
+Returns: a L<Paws::WorkSpaces::RestoreWorkspaceResult> instance
+
+Restores the specified WorkSpace to its last known healthy state.
+
+You cannot restore a WorkSpace unless its state is C< AVAILABLE>,
+C<ERROR>, C<UNHEALTHY>, or C<STOPPED>.
+
+Restoring a WorkSpace is a potentially destructive action that can
+result in the loss of data. For more information, see Restore a
+WorkSpace
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html).
+
+This operation is asynchronous and returns before the WorkSpace is
+completely restored.
 
 
 =head2 RevokeIpRules
@@ -1136,9 +1361,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllWorkspaceDirectories(sub { },[DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllWorkspaceDirectories(sub { },[DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
-=head2 DescribeAllWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

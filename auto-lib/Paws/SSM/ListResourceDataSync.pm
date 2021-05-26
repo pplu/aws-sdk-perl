@@ -3,6 +3,7 @@ package Paws::SSM::ListResourceDataSync;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SyncType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $ListResourceDataSyncResult = $ssm->ListResourceDataSync(
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      MaxResults => 1,                           # OPTIONAL
+      NextToken  => 'MyNextToken',               # OPTIONAL
+      SyncType   => 'MyResourceDataSyncType',    # OPTIONAL
     );
 
     # Results:
@@ -58,6 +60,15 @@ next set of results.
 
 A token to start the list. Use this token to get the next set of
 results.
+
+
+
+=head2 SyncType => Str
+
+View a list of resource data syncs according to the sync type. Specify
+C<SyncToDestination> to view resource data syncs that synchronize data
+to an Amazon S3 buckets. Specify C<SyncFromSource> to view resource
+data syncs from AWS Organizations or from multiple AWS Regions.
 
 
 

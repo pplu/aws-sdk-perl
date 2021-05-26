@@ -91,6 +91,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeContributorInsights {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeContributorInsights', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeEndpoints', @_);
@@ -116,6 +121,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTableReplicaAutoScaling {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTableReplicaAutoScaling', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTimeToLive {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTimeToLive', @_);
@@ -129,6 +139,11 @@ package Paws::DynamoDB;
   sub ListBackups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::ListBackups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListContributorInsights {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::ListContributorInsights', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGlobalTables {
@@ -196,6 +211,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContributorInsights {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateContributorInsights', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateGlobalTable', @_);
@@ -214,6 +234,11 @@ package Paws::DynamoDB;
   sub UpdateTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTableReplicaAutoScaling {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTableReplicaAutoScaling', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateTimeToLive {
@@ -351,7 +376,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource TransactGetItems TransactWriteItems UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeContributorInsights DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTableReplicaAutoScaling DescribeTimeToLive GetItem ListBackups ListContributorInsights ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource TransactGetItems TransactWriteItems UntagResource UpdateContinuousBackups UpdateContributorInsights UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTableReplicaAutoScaling UpdateTimeToLive / }
 
 1;
 
@@ -682,6 +707,10 @@ Creates a global table from an existing table. A global table creates a
 replication relationship between two or more DynamoDB tables with the
 same table name in the provided Regions.
 
+This method only applies to Version 2017.11.29
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+of global tables.
+
 If you want to add a new replica table to a global table, each of the
 following conditions must be true:
 
@@ -934,6 +963,25 @@ You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
 
 
+=head2 DescribeContributorInsights
+
+=over
+
+=item TableName => Str
+
+=item [IndexName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeContributorInsights>
+
+Returns: a L<Paws::DynamoDB::DescribeContributorInsightsOutput> instance
+
+Returns information about contributor insights, for a given table or
+global secondary index.
+
+
 =head2 DescribeEndpoints
 
 
@@ -963,6 +1011,10 @@ Returns: a L<Paws::DynamoDB::DescribeGlobalTableOutput> instance
 
 Returns information about the specified global table.
 
+This method only applies to Version 2017.11.29
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+of global tables.
+
 
 =head2 DescribeGlobalTableSettings
 
@@ -978,6 +1030,10 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTableSe
 Returns: a L<Paws::DynamoDB::DescribeGlobalTableSettingsOutput> instance
 
 Describes Region-specific settings for a global table.
+
+This method only applies to Version 2017.11.29
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+of global tables.
 
 
 =head2 DescribeLimits
@@ -1104,6 +1160,27 @@ be available at that moment. Wait for a few seconds, and then try the
 C<DescribeTable> request again.
 
 
+=head2 DescribeTableReplicaAutoScaling
+
+=over
+
+=item TableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeTableReplicaAutoScaling>
+
+Returns: a L<Paws::DynamoDB::DescribeTableReplicaAutoScalingOutput> instance
+
+Describes auto scaling settings across replicas of the global table at
+once.
+
+This method only applies to Version 2019.11.21
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+of global tables.
+
+
 =head2 DescribeTimeToLive
 
 =over
@@ -1194,6 +1271,27 @@ was requested.
 You can call C<ListBackups> a maximum of five times per second.
 
 
+=head2 ListContributorInsights
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TableName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::ListContributorInsights>
+
+Returns: a L<Paws::DynamoDB::ListContributorInsightsOutput> instance
+
+Returns a list of ContributorInsightsSummary for a table and all its
+global secondary indexes.
+
+
 =head2 ListGlobalTables
 
 =over
@@ -1212,6 +1310,10 @@ Each argument is described in detail in: L<Paws::DynamoDB::ListGlobalTables>
 Returns: a L<Paws::DynamoDB::ListGlobalTablesOutput> instance
 
 Lists all global tables that have a replica in the specified Region.
+
+This method only applies to Version 2017.11.29
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+of global tables.
 
 
 =head2 ListTables
@@ -1479,6 +1581,16 @@ querying a global secondary index.
 
 =item TargetTableName => Str
 
+=item [BillingModeOverride => Str]
+
+=item [GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
+
+=item [LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+
+=item [ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>]
+
+=item [SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>]
+
 
 =back
 
@@ -1529,11 +1641,23 @@ Time to Live (TTL) settings
 
 =over
 
-=item SourceTableName => Str
-
 =item TargetTableName => Str
 
+=item [BillingModeOverride => Str]
+
+=item [GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
+
+=item [LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+
+=item [ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>]
+
 =item [RestoreDateTime => Str]
+
+=item [SourceTableArn => Str]
+
+=item [SourceTableName => Str]
+
+=item [SSESpecificationOverride => L<Paws::DynamoDB::SSESpecification>]
 
 =item [UseLatestRestorableTime => Bool]
 
@@ -1740,24 +1864,6 @@ account and Region. A call to C<TransactGetItems> cannot retrieve items
 from tables in more than one AWS account or Region. The aggregate size
 of the items in the transaction cannot exceed 4 MB.
 
-All AWS Regions and AWS GovCloud (US) support up to 25 items per
-transaction with up to 4 MB of data, except the following AWS Regions:
-
-=over
-
-=item *
-
-China (Beijing)
-
-=item *
-
-China (Ningxia)
-
-=back
-
-The China (Beijing) and China (Ningxia) Regions support up to 10 items
-per transaction with up to 4 MB of data.
-
 DynamoDB rejects the entire C<TransactGetItems> request if any of the
 following is true:
 
@@ -1810,24 +1916,6 @@ tables, but not in different AWS accounts or Regions, and no two
 actions can target the same item. For example, you cannot both
 C<ConditionCheck> and C<Update> the same item. The aggregate size of
 the items in the transaction cannot exceed 4 MB.
-
-All AWS Regions and AWS GovCloud (US) support up to 25 items per
-transaction with up to 4 MB of data, except the following AWS Regions:
-
-=over
-
-=item *
-
-China (Beijing)
-
-=item *
-
-China (Ningxia)
-
-=back
-
-The China (Beijing) and China (Ningxia) Regions support up to 10 items
-per transaction with up to 4 MB of data.
 
 The actions are completed atomically so that either all of them
 succeed, or all of them fail. They are defined by the following
@@ -1964,6 +2052,27 @@ time. You can restore your table to any point in time during the last
 35 days.
 
 
+=head2 UpdateContributorInsights
+
+=over
+
+=item ContributorInsightsAction => Str
+
+=item TableName => Str
+
+=item [IndexName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateContributorInsights>
+
+Returns: a L<Paws::DynamoDB::UpdateContributorInsightsOutput> instance
+
+Updates the status for contributor insights for a specific table or
+index.
+
+
 =head2 UpdateGlobalTable
 
 =over
@@ -2098,6 +2207,8 @@ C<UpdateItem> operation using the C<ReturnValues> parameter.
 
 =item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
 
+=item [ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicationGroupUpdate>]]
+
 =item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
 
 =item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
@@ -2141,6 +2252,32 @@ table status changes from C<ACTIVE> to C<UPDATING>. While it is
 C<UPDATING>, you cannot issue another C<UpdateTable> request. When the
 table returns to the C<ACTIVE> state, the C<UpdateTable> operation is
 complete.
+
+
+=head2 UpdateTableReplicaAutoScaling
+
+=over
+
+=item TableName => Str
+
+=item [GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexAutoScalingUpdate>]]
+
+=item [ProvisionedWriteCapacityAutoScalingUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>]
+
+=item [ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaAutoScalingUpdate>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateTableReplicaAutoScaling>
+
+Returns: a L<Paws::DynamoDB::UpdateTableReplicaAutoScalingOutput> instance
+
+Updates auto scaling settings on your global tables at once.
+
+This method only applies to Version 2019.11.21
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+of global tables.
 
 
 =head2 UpdateTimeToLive

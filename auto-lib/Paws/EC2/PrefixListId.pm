@@ -39,7 +39,7 @@ This class has no description
 
 =head2 Description => Str
 
-  A description for the security group rule that references this prefix
+A description for the security group rule that references this prefix
 list ID.
 
 Constraints: Up to 255 characters in length. Allowed characters are
@@ -48,7 +48,7 @@ a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
 
 =head2 PrefixListId => Str
 
-  The ID of the prefix.
+The ID of the prefix.
 
 
 

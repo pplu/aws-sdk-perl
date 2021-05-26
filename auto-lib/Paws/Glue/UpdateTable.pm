@@ -44,30 +44,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         PartitionKeys => [
           {
-            Name    => 'MyNameString',          # min: 1, max: 255
-            Comment => 'MyCommentString',       # max: 255; OPTIONAL
-            Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+            Name       => 'MyNameString',       # min: 1, max: 255
+            Comment    => 'MyCommentString',    # max: 255; OPTIONAL
+            Parameters => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+            Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
-        Retention         => 1,                 # OPTIONAL
+        ],                                   # OPTIONAL
+        Retention         => 1,              # OPTIONAL
         StorageDescriptor => {
           BucketColumns => [
-            'MyNameString', ...                 # min: 1, max: 255
-          ],                                    # OPTIONAL
+            'MyNameString', ...              # min: 1, max: 255
+          ],                                 # OPTIONAL
           Columns => [
             {
-              Name    => 'MyNameString',          # min: 1, max: 255
-              Comment => 'MyCommentString',       # max: 255; OPTIONAL
-              Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+              Name       => 'MyNameString',       # min: 1, max: 255
+              Comment    => 'MyCommentString',    # max: 255; OPTIONAL
+              Parameters => {
+                'MyKeyString' => 'MyParametersMapValue'
+                ,    # key: min: 1, max: 255, value: max: 512000
+              },    # OPTIONAL
+              Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
             },
             ...
-          ],                                      # OPTIONAL
-          Compressed      => 1,                   # OPTIONAL
-          InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
-          Location        => 'MyLocationString',  # max: 2056; OPTIONAL
-          NumberOfBuckets => 1,                   # OPTIONAL
-          OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+          ],                                   # OPTIONAL
+          Compressed      => 1,                     # OPTIONAL
+          InputFormat     => 'MyFormatString',      # max: 128; OPTIONAL
+          Location        => 'MyLocationString',    # max: 2056; OPTIONAL
+          NumberOfBuckets => 1,                     # OPTIONAL
+          OutputFormat    => 'MyFormatString',      # max: 128; OPTIONAL
           Parameters      => {
             'MyKeyString' => 'MyParametersMapValue'
             ,    # key: min: 1, max: 255, value: max: 512000
@@ -115,7 +123,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the table resides. If none is
-supplied, the AWS account ID is used by default.
+provided, the AWS account ID is used by default.
 
 
 
@@ -129,7 +137,7 @@ compatibility, this name is entirely lowercase.
 =head2 SkipArchive => Bool
 
 By default, C<UpdateTable> always creates an archived version of the
-table before updating it. If C<skipArchive> is set to true, however,
+table before updating it. However, if C<skipArchive> is set to true,
 C<UpdateTable> does not create the archived version.
 
 

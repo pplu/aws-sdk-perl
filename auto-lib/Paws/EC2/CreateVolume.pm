@@ -6,6 +6,8 @@ package Paws::EC2::CreateVolume;
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MultiAttachEnabled => (is => 'ro', isa => 'Bool');
+  has OutpostArn => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
@@ -171,9 +173,29 @@ but eventually fails.
 
 
 
+=head2 MultiAttachEnabled => Bool
+
+Specifies whether to enable Amazon EBS Multi-Attach. If you enable
+Multi-Attach, you can attach the volume to up to 16 Nitro-based
+instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances)
+in the same Availability Zone. For more information, see Amazon EBS
+Multi-Attach
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost.
+
+
+
 =head2 Size => Int
 
-The size of the volume, in GiBs.
+The size of the volume, in GiBs. You must specify either a snapshot ID
+or a volume size.
 
 Constraints: 1-16,384 for C<gp2>, 4-16,384 for C<io1>, 500-16,384 for
 C<st1>, 500-16,384 for C<sc1>, and 1-1,024 for C<standard>. If you
@@ -183,15 +205,12 @@ snapshot size.
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
-At least one of Size or SnapshotId is required.
-
 
 
 =head2 SnapshotId => Str
 
-The snapshot from which to create the volume.
-
-At least one of Size or SnapshotId are required.
+The snapshot from which to create the volume. You must specify either a
+snapshot ID or a volume size.
 
 
 
@@ -207,11 +226,7 @@ The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
 Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
 Cold HDD, or C<standard> for Magnetic volumes.
 
-Defaults: If no volume type is specified, the default is C<standard> in
-us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
-ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
-ap-south-1, us-gov-west-1, and cn-north-1. In all other Regions, EBS
-defaults to C<gp2>.
+Default: C<gp2>
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 

@@ -10,6 +10,7 @@ package Paws::EC2::ImportImage;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Hypervisor => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageLicenseConfigurationRequest]');
   has LicenseType => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
@@ -53,38 +54,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Description => 'MyString',
           DeviceName  => 'MyString',
           Format      => 'MyString',
-          SnapshotId  => 'MyString',
+          SnapshotId  => 'MySnapshotId',    # OPTIONAL
           Url         => 'MyString',
           UserBucket  => {
             S3Bucket => 'MyString',
             S3Key    => 'MyString',
-          },                           # OPTIONAL
+          },                                # OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
-      DryRun      => 1,                # OPTIONAL
-      Encrypted   => 1,                # OPTIONAL
-      Hypervisor  => 'MyString',       # OPTIONAL
-      KmsKeyId    => 'MyString',       # OPTIONAL
-      LicenseType => 'MyString',       # OPTIONAL
-      Platform    => 'MyString',       # OPTIONAL
-      RoleName    => 'MyString',       # OPTIONAL
+      ],                                    # OPTIONAL
+      DryRun     => 1,                      # OPTIONAL
+      Encrypted  => 1,                      # OPTIONAL
+      Hypervisor => 'MyString',             # OPTIONAL
+      KmsKeyId   => 'MyKmsKeyId',           # OPTIONAL
+      LicenseSpecifications =>
+        [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
+      LicenseType => 'MyString',                                # OPTIONAL
+      Platform    => 'MyString',                                # OPTIONAL
+      RoleName    => 'MyString',                                # OPTIONAL
     );
 
     # Results:
-    my $Architecture    = $ImportImageResult->Architecture;
-    my $Description     = $ImportImageResult->Description;
-    my $Encrypted       = $ImportImageResult->Encrypted;
-    my $Hypervisor      = $ImportImageResult->Hypervisor;
-    my $ImageId         = $ImportImageResult->ImageId;
-    my $ImportTaskId    = $ImportImageResult->ImportTaskId;
-    my $KmsKeyId        = $ImportImageResult->KmsKeyId;
-    my $LicenseType     = $ImportImageResult->LicenseType;
-    my $Platform        = $ImportImageResult->Platform;
-    my $Progress        = $ImportImageResult->Progress;
-    my $SnapshotDetails = $ImportImageResult->SnapshotDetails;
-    my $Status          = $ImportImageResult->Status;
-    my $StatusMessage   = $ImportImageResult->StatusMessage;
+    my $Architecture          = $ImportImageResult->Architecture;
+    my $Description           = $ImportImageResult->Description;
+    my $Encrypted             = $ImportImageResult->Encrypted;
+    my $Hypervisor            = $ImportImageResult->Hypervisor;
+    my $ImageId               = $ImportImageResult->ImageId;
+    my $ImportTaskId          = $ImportImageResult->ImportTaskId;
+    my $KmsKeyId              = $ImportImageResult->KmsKeyId;
+    my $LicenseSpecifications = $ImportImageResult->LicenseSpecifications;
+    my $LicenseType           = $ImportImageResult->LicenseType;
+    my $Platform              = $ImportImageResult->Platform;
+    my $Progress              = $ImportImageResult->Progress;
+    my $SnapshotDetails       = $ImportImageResult->SnapshotDetails;
+    my $Status                = $ImportImageResult->Status;
+    my $StatusMessage         = $ImportImageResult->StatusMessage;
 
     # Returns a L<Paws::EC2::ImportImageResult> object.
 
@@ -156,10 +160,10 @@ Valid values: C<xen>
 
 =head2 KmsKeyId => Str
 
-An identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use when creating the encrypted AMI. This parameter
-is only required if you want to use a non-default CMK; if this
-parameter is not specified, the default CMK for EBS is used. If a
+An identifier for the symmetric AWS Key Management Service (AWS KMS)
+customer master key (CMK) to use when creating the encrypted AMI. This
+parameter is only required if you want to use a non-default CMK; if
+this parameter is not specified, the default CMK for EBS is used. If a
 C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
 The CMK identifier may be provided in any of the following formats:
@@ -199,6 +203,14 @@ This action will eventually report failure.
 
 The specified CMK must exist in the Region that the AMI is being copied
 to.
+
+Amazon EBS does not support asymmetric CMKs.
+
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationRequest>]
+
+The ARNs of the license configurations.
 
 
 

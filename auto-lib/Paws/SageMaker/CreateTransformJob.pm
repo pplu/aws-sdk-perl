@@ -4,6 +4,7 @@ package Paws::SageMaker::CreateTransformJob;
   has BatchStrategy => (is => 'ro', isa => 'Str');
   has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
+  has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
@@ -76,6 +77,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTransformEnvironmentKey' =>
           'MyTransformEnvironmentValue',    # key: max: 1024, value: max: 10240
       },    # OPTIONAL
+      ExperimentConfig => {
+        ExperimentName => 'MyExperimentConfigName',  # min: 1, max: 64; OPTIONAL
+        TrialComponentDisplayName =>
+          'MyExperimentConfigName',                  # min: 1, max: 64; OPTIONAL
+        TrialName => 'MyExperimentConfigName',       # min: 1, max: 64; OPTIONAL
+      },    # OPTIONAL
       MaxConcurrentTransforms => 1,    # OPTIONAL
       MaxPayloadInMB          => 1,    # OPTIONAL
       Tags                    => [
@@ -106,8 +113,8 @@ inference request. A I<record> I< is a single unit of input data that
 inference can be made on. For example, a single line in a CSV file is a
 record.>
 
-To enable the batch strategy, you must set C<SplitType> to C<Line>,
-C<RecordIO>, or C<TFRecord>.
+To enable the batch strategy, you must set the C<SplitType> property of
+the DataProcessing object to C<Line>, C<RecordIO>, or C<TFRecord>.
 
 To use only one record when making an HTTP invocation request to a
 container, set C<BatchStrategy> to C<SingleRecord> and C<SplitType> to
@@ -121,9 +128,15 @@ Valid values are: C<"MultiRecord">, C<"SingleRecord">
 
 =head2 DataProcessing => L<Paws::SageMaker::DataProcessing>
 
-The data structure used for combining the input data and inference in
-the output file. For more information, see Batch Transform I/O Join
-(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html).
+The data structure used to specify the data to be used for inference in
+a batch transform job and to associate the data that is relevant to the
+prediction results in the output. The input filter provided allows you
+to exclude input data that is not needed for inference in a batch
+transform job. The output filter provided allows you to include input
+data relevant to interpreting the predictions in the output from the
+job. For more information, see Associate Prediction Results with their
+Corresponding Input Records
+(https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html).
 
 
 
@@ -134,16 +147,22 @@ to 16 key and values entries in the map.
 
 
 
+=head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
+
+
+
+
+
 =head2 MaxConcurrentTransforms => Int
 
 The maximum number of parallel requests that can be sent to each
 instance in a transform job. If C<MaxConcurrentTransforms> is set to
 C<0> or left unset, Amazon SageMaker checks the optional
-execution-parameters to determine the optimal settings for your chosen
+execution-parameters to determine the settings for your chosen
 algorithm. If the execution-parameters endpoint is not enabled, the
 default value is C<1>. For more information on execution-parameters,
 see How Containers Serve Requests
-(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests).
 For built-in algorithms, you don't need to set a value for
 C<MaxConcurrentTransforms>.
 

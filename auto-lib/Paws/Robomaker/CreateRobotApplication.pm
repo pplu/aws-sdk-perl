@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateRobotApplicationResponse = $robomaker->CreateRobotApplication(
       Name               => 'MyName',
       RobotSoftwareSuite => {
-        Name    => 'ROS',        # values: ROS; OPTIONAL
-        Version => 'Kinetic',    # values: Kinetic; OPTIONAL
+        Name    => 'ROS',        # values: ROS, ROS2; OPTIONAL
+        Version => 'Kinetic',    # values: Kinetic, Melodic, Dashing; OPTIONAL
       },
       Sources => [
         {
@@ -77,7 +77,8 @@ The name of the robot application.
 
 =head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
-The robot software suite used by the robot application.
+The robot software suite (ROS distribuition) used by the robot
+application.
 
 
 

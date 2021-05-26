@@ -5,6 +5,7 @@ package Paws::Route53::ListTrafficPolicyVersions;
   has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
   has TrafficPolicyVersionMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyversion', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTrafficPolicyVersions');
@@ -13,6 +14,7 @@ package Paws::Route53::ListTrafficPolicyVersions;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTrafficPolicyVersionsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

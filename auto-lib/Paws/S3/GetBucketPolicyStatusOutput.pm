@@ -1,10 +1,9 @@
 
 package Paws::S3::GetBucketPolicyStatusOutput;
   use Moose;
-  has PolicyStatus => (is => 'ro', isa => 'Paws::S3::PolicyStatus');
+  has PolicyStatus => (is => 'ro', isa => 'Paws::S3::PolicyStatus', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'PolicyStatus');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

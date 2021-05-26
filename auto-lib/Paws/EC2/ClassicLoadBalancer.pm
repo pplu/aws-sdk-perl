@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Name => Str
 
-  The name of the load balancer.
+The name of the load balancer.
 
 
 

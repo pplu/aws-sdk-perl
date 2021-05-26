@@ -16,7 +16,7 @@ Paws::GameLift::UpdateMatchmakingConfigurationOutput
 
 =head2 Configuration => L<Paws::GameLift::MatchmakingConfiguration>
 
-Object that describes the updated matchmaking configuration.
+The updated matchmaking configuration.
 
 
 =head2 _request_id => Str

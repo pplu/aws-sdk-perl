@@ -112,7 +112,9 @@ length.
 
 =item *
 
-Cannot contain any of the following characters: '/', '"', or '@'.
+The only permitted printable special characters are !, &, #, $, ^,
+E<lt>, E<gt>, and -. Other printable special characters cannot be used
+in the AUTH token.
 
 =back
 
@@ -151,7 +153,7 @@ B<Constraints:>
 
 =item *
 
-A name must contain from 1 to 20 alphanumeric characters or hyphens.
+A name must contain from 1 to 50 alphanumeric characters or hyphens.
 
 =item *
 

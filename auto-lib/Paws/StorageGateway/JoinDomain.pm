@@ -6,6 +6,7 @@ package Paws::StorageGateway::JoinDomain;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationalUnit => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str', required => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,10 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserName           => 'MyDomainUserName',
       DomainControllers  => [ 'MyHost', ... ],         # OPTIONAL
       OrganizationalUnit => 'MyOrganizationalUnit',    # OPTIONAL
+      TimeoutInSeconds   => 1,                         # OPTIONAL
     );
 
     # Results:
-    my $GatewayARN = $JoinDomainOutput->GatewayARN;
+    my $ActiveDirectoryStatus = $JoinDomainOutput->ActiveDirectoryStatus;
+    my $GatewayARN            = $JoinDomainOutput->GatewayARN;
 
     # Returns a L<Paws::StorageGateway::JoinDomainOutput> object.
 
@@ -69,16 +72,15 @@ The name of the domain that you want the gateway to join.
 =head2 B<REQUIRED> GatewayARN => Str
 
 The Amazon Resource Name (ARN) of the gateway. Use the C<ListGateways>
-operation to return a list of gateways for your account and region.
+operation to return a list of gateways for your account and AWS Region.
 
 
 
 =head2 OrganizationalUnit => Str
 
-The organizational unit (OU) is a container with an Active Directory
-that can hold users, groups, computers, and other OUs and this
-parameter specifies the OU that the gateway will join within the AD
-domain.
+The organizational unit (OU) is a container in an Active Directory that
+can hold users, groups, computers, and other OUs and this parameter
+specifies the OU that the gateway will join within the AD domain.
 
 
 
@@ -89,10 +91,20 @@ the Active Directory domain.
 
 
 
+=head2 TimeoutInSeconds => Int
+
+Specifies the time in seconds, in which the C<JoinDomain> operation
+must complete. The default is 20 seconds.
+
+
+
 =head2 B<REQUIRED> UserName => Str
 
 Sets the user name of user who has permission to add the gateway to the
-Active Directory domain.
+Active Directory domain. The domain user account should be enabled to
+join computers to the domain. For example, you can use the domain
+administrator account or an account with delegated permissions to join
+computers to the domain.
 
 
 

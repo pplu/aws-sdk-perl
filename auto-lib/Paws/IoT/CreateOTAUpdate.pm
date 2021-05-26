@@ -3,9 +3,11 @@ package Paws::IoT::CreateOTAUpdate;
   use Moose;
   has AdditionalParameters => (is => 'ro', isa => 'Paws::IoT::AdditionalParameterMap', traits => ['NameInRequest'], request_name => 'additionalParameters');
   has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'awsJobExecutionsRolloutConfig');
+  has AwsJobPresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobPresignedUrlConfig', traits => ['NameInRequest'], request_name => 'awsJobPresignedUrlConfig');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
   has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
+  has Protocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'protocols');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
@@ -92,8 +94,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AwsJobExecutionsRolloutConfig => {
         MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
       },    # OPTIONAL
+      AwsJobPresignedUrlConfig => {
+        ExpiresInSec => 1,    # OPTIONAL
+      },    # OPTIONAL
       Description => 'MyOTAUpdateDescription',    # OPTIONAL
-      Tags        => [
+      Protocols   => [
+        'MQTT', ...                               # values: MQTT, HTTP
+      ],                                          # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',                    # OPTIONAL
           Value => 'MyTagValue',                  # OPTIONAL
@@ -130,6 +138,12 @@ Configuration for the rollout of OTA updates.
 
 
 
+=head2 AwsJobPresignedUrlConfig => L<Paws::IoT::AwsJobPresignedUrlConfig>
+
+Configuration information for pre-signed URLs.
+
+
+
 =head2 Description => Str
 
 The description of the OTA update.
@@ -145,6 +159,14 @@ The files to be streamed by the OTA update.
 =head2 B<REQUIRED> OtaUpdateId => Str
 
 The ID of the OTA update to be created.
+
+
+
+=head2 Protocols => ArrayRef[Str|Undef]
+
+The protocol used to transfer the OTA update image. Valid values are
+[HTTP], [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified,
+the target device can choose the protocol.
 
 
 

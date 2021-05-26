@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $DateCreated      = $GetSatelliteResponse->DateCreated;
-    my $LastUpdated      = $GetSatelliteResponse->LastUpdated;
+    my $GroundStations   = $GetSatelliteResponse->GroundStations;
     my $NoradSatelliteID = $GetSatelliteResponse->NoradSatelliteID;
     my $SatelliteArn     = $GetSatelliteResponse->SatelliteArn;
     my $SatelliteId      = $GetSatelliteResponse->SatelliteId;
-    my $Tags             = $GetSatelliteResponse->Tags;
 
     # Returns a L<Paws::GroundStation::GetSatelliteResponse> object.
 

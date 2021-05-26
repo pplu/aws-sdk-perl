@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 ResourceShareAssociations => ArrayRef[L<Paws::RAM::ResourceShareAssociation>]
 
-Information about the association.
+Information about the associations.
 
 
 =head2 _request_id => Str

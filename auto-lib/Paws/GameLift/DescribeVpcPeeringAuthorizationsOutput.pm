@@ -16,7 +16,7 @@ Paws::GameLift::DescribeVpcPeeringAuthorizationsOutput
 
 =head2 VpcPeeringAuthorizations => ArrayRef[L<Paws::GameLift::VpcPeeringAuthorization>]
 
-Collection of objects that describe all valid VPC peering operations
+A collection of objects that describe all valid VPC peering operations
 for the current AWS account.
 
 

@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> EndpointName => Str
 
-The name of the DevEndpoint.
+The name of the C<DevEndpoint>.
 
 
 

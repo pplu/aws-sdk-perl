@@ -44,37 +44,37 @@ This class has no description
 
 =head2 Description => Str
 
-  Information about the Traffic Mirror target.
+Information about the Traffic Mirror target.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The network interface ID that is attached to the target.
+The network interface ID that is attached to the target.
 
 
 =head2 NetworkLoadBalancerArn => Str
 
-  The Amazon Resource Name (ARN) of the Network Load Balancer.
+The Amazon Resource Name (ARN) of the Network Load Balancer.
 
 
 =head2 OwnerId => Str
 
-  The ID of the account that owns the Traffic Mirror target.
+The ID of the account that owns the Traffic Mirror target.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  The tags assigned to the Traffic Mirror target.
+The tags assigned to the Traffic Mirror target.
 
 
 =head2 TrafficMirrorTargetId => Str
 
-  The ID of the Traffic Mirror target.
+The ID of the Traffic Mirror target.
 
 
 =head2 Type => Str
 
-  The type of Traffic Mirror target.
+The type of Traffic Mirror target.
 
 
 

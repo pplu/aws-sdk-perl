@@ -39,14 +39,14 @@ This class has no description
 
 =head2 ReservationValue => L<Paws::EC2::ReservationValue>
 
-  The total value of the Convertible Reserved Instances that make up the
+The total value of the Convertible Reserved Instances that make up the
 exchange. This is the sum of the list value, remaining upfront price,
 and additional upfront cost of the exchange.
 
 
 =head2 TargetConfiguration => L<Paws::EC2::TargetConfiguration>
 
-  The configuration of the Convertible Reserved Instances that make up
+The configuration of the Convertible Reserved Instances that make up
 the exchange.
 
 

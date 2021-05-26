@@ -42,27 +42,27 @@ This class has no description
 
 =head2 AssociationId => Str
 
-  The ID of the association.
+The ID of the association.
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
 
-  The IAM instance profile.
+The IAM instance profile.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 State => Str
 
-  The state of the association.
+The state of the association.
 
 
 =head2 Timestamp => Str
 
-  The time the IAM instance profile was associated with the instance.
+The time the IAM instance profile was associated with the instance.
 
 
 

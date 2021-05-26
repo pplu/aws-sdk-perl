@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-The DB instance identifier. This parameter is stored as a lowercase
+The instance identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:

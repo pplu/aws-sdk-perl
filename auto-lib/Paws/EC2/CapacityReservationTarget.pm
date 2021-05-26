@@ -38,7 +38,7 @@ This class has no description
 
 =head2 CapacityReservationId => Str
 
-  The ID of the Capacity Reservation.
+The ID of the Capacity Reservation.
 
 
 

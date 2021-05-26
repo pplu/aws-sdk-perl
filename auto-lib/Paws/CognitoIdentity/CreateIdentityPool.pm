@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdentity::CreateIdentityPool;
   use Moose;
+  has AllowClassicFlow => (is => 'ro', isa => 'Bool');
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
   has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IdentityPool = $cognito -identity->CreateIdentityPool(
       AllowUnauthenticatedIdentities => 1,
       IdentityPoolName               => 'MyIdentityPoolName',
+      AllowClassicFlow               => 1,                      # OPTIONAL
       CognitoIdentityProviders       => [
         {
           ClientId =>
@@ -65,6 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AllowClassicFlow = $IdentityPool->AllowClassicFlow;
     my $AllowUnauthenticatedIdentities =
       $IdentityPool->AllowUnauthenticatedIdentities;
     my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
@@ -82,6 +85,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-identity/CreateIdentityPool>
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowClassicFlow => Bool
+
+Enables or disables the Basic (Classic) authentication flow. For more
+information, see Identity Pools (Federated Identities) Authentication
+Flow
+(https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
+in the I<Amazon Cognito Developer Guide>.
+
 
 
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool

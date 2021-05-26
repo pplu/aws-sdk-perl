@@ -15,6 +15,7 @@ package Paws::EC2::ClientVpnEndpoint;
   has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
+  has VpnPort => (is => 'ro', isa => 'Int', request_name => 'vpnPort', traits => ['NameInRequest']);
   has VpnProtocol => (is => 'ro', isa => 'Str', request_name => 'vpnProtocol', traits => ['NameInRequest']);
 1;
 
@@ -53,87 +54,98 @@ This class has no description
 
 =head2 AssociatedTargetNetworks => ArrayRef[L<Paws::EC2::AssociatedTargetNetwork>]
 
-  Information about the associated target networks. A target network is a
+Information about the associated target networks. A target network is a
 subnet in a VPC.
 
 
 =head2 AuthenticationOptions => ArrayRef[L<Paws::EC2::ClientVpnAuthentication>]
 
-  Information about the authentication method used by the Client VPN
+Information about the authentication method used by the Client VPN
 endpoint.
 
 
 =head2 ClientCidrBlock => Str
 
-  The IPv4 address range, in CIDR notation, from which client IP
+The IPv4 address range, in CIDR notation, from which client IP
 addresses are assigned.
 
 
 =head2 ClientVpnEndpointId => Str
 
-  The ID of the Client VPN endpoint.
+The ID of the Client VPN endpoint.
 
 
 =head2 ConnectionLogOptions => L<Paws::EC2::ConnectionLogResponseOptions>
 
-  Information about the client connection logging options for the Client
+Information about the client connection logging options for the Client
 VPN endpoint.
 
 
 =head2 CreationTime => Str
 
-  The date and time the Client VPN endpoint was created.
+The date and time the Client VPN endpoint was created.
 
 
 =head2 DeletionTime => Str
 
-  The date and time the Client VPN endpoint was deleted, if applicable.
+The date and time the Client VPN endpoint was deleted, if applicable.
 
 
 =head2 Description => Str
 
-  A brief description of the endpoint.
+A brief description of the endpoint.
 
 
 =head2 DnsName => Str
 
-  The DNS name to be used by clients when connecting to the Client VPN
+The DNS name to be used by clients when connecting to the Client VPN
 endpoint.
 
 
 =head2 DnsServers => ArrayRef[Str|Undef]
 
-  Information about the DNS servers to be used for DNS resolution.
+Information about the DNS servers to be used for DNS resolution.
 
 
 =head2 ServerCertificateArn => Str
 
-  The ARN of the server certificate.
+The ARN of the server certificate.
 
 
 =head2 SplitTunnel => Bool
 
-  Indicates whether VPN split tunneling is supported.
+Indicates whether split-tunnel is enabled in the AWS Client VPN
+endpoint.
+
+For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
+Client VPN Endpoint
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
+in the I<AWS Client VPN Administrator Guide>.
 
 
 =head2 Status => L<Paws::EC2::ClientVpnEndpointStatus>
 
-  The current state of the Client VPN endpoint.
+The current state of the Client VPN endpoint.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the Client VPN endpoint.
+Any tags assigned to the Client VPN endpoint.
 
 
 =head2 TransportProtocol => Str
 
-  The transport protocol used by the Client VPN endpoint.
+The transport protocol used by the Client VPN endpoint.
+
+
+=head2 VpnPort => Int
+
+The port number for the Client VPN endpoint.
 
 
 =head2 VpnProtocol => Str
 
-  The protocol used by the VPN session.
+The protocol used by the VPN session.
 
 
 

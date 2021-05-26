@@ -8,6 +8,7 @@ package Paws::CloudFormation::CreateChangeSet;
   has Description => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has ResourcesToImport => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceToImport]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
   has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
@@ -64,9 +65,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceTypes => [
         'MyResourceType', ...                              # min: 1, max: 256
       ],                                                   # OPTIONAL
-      RoleARN               => 'MyRoleARN',                # OPTIONAL
+      ResourcesToImport => [
+        {
+          LogicalResourceId  => 'MyLogicalResourceId',
+          ResourceIdentifier => {
+            'MyResourceIdentifierPropertyKey' =>
+              'MyResourceIdentifierPropertyValue'
+            ,    # key: min: 1, max: 2048, value: min: 1, max: 2048
+          },    # min: 1, max: 256
+          ResourceType => 'MyResourceType',    # min: 1, max: 256
+
+        },
+        ...
+      ],                                       # OPTIONAL
+      RoleARN               => 'MyRoleARN',    # OPTIONAL
       RollbackConfiguration => {
-        MonitoringTimeInMinutes => 1,                      # max: 180; OPTIONAL
+        MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
         RollbackTriggers        => [
           {
             Arn  => 'MyArn',
@@ -74,7 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                                 # max: 5; OPTIONAL
+        ],                                     # max: 5; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -103,7 +117,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-In some cases, you must explicity acknowledge that your stack template
+In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for AWS CloudFormation to create
 the stack.
 
@@ -238,7 +252,8 @@ cannot exceed 128 characters.
 
 The type of change set operation. To create a change set for a new
 stack, specify C<CREATE>. To create a change set for an existing stack,
-specify C<UPDATE>.
+specify C<UPDATE>. To create a change set for an import operation,
+specify C<IMPORT>.
 
 If you create a change set for a new stack, AWS Cloudformation creates
 a stack with a unique stack ID, but no template or resources. The stack
@@ -250,7 +265,7 @@ By default, AWS CloudFormation specifies C<UPDATE>. You can't use the
 C<UPDATE> type to create a change set for a new stack or the C<CREATE>
 type to create a change set for an existing stack.
 
-Valid values are: C<"CREATE">, C<"UPDATE">
+Valid values are: C<"CREATE">, C<"UPDATE">, C<"IMPORT">
 
 =head2 ClientToken => Str
 
@@ -280,6 +295,12 @@ To remove all associated notification topics, specify an empty list.
 
 A list of C<Parameter> structures that specify input parameters for the
 change set. For more information, see the Parameter data type.
+
+
+
+=head2 ResourcesToImport => ArrayRef[L<Paws::CloudFormation::ResourceToImport>]
+
+The resources to import into your stack.
 
 
 

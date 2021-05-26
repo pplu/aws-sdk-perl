@@ -40,19 +40,19 @@ This class has no description
 
 =head2 LaunchTemplateId => Str
 
-  The ID of the launch template. You must specify either a template ID or
+The ID of the launch template. You must specify either a template ID or
 a template name.
 
 
 =head2 LaunchTemplateName => Str
 
-  The name of the launch template. You must specify either a template
+The name of the launch template. You must specify either a template
 name or a template ID.
 
 
 =head2 Version => Str
 
-  The version number of the launch template. You must specify a version
+The version number of the launch template. You must specify a version
 number.
 
 

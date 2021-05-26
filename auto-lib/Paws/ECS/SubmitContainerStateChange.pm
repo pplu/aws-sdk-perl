@@ -6,6 +6,7 @@ package Paws::ECS::SubmitContainerStateChange;
   has ExitCode => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'exitCode' );
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', traits => ['NameInRequest'], request_name => 'networkBindings' );
   has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
+  has RuntimeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runtimeId' );
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
   has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
 
@@ -46,9 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                 # OPTIONAL
-      Reason => 'MyString',              # OPTIONAL
-      Status => 'MyString',              # OPTIONAL
-      Task   => 'MyString',              # OPTIONAL
+      Reason    => 'MyString',           # OPTIONAL
+      RuntimeId => 'MyString',           # OPTIONAL
+      Status    => 'MyString',           # OPTIONAL
+      Task      => 'MyString',           # OPTIONAL
     );
 
     # Results:
@@ -89,6 +91,12 @@ The network bindings of the container.
 =head2 Reason => Str
 
 The reason for the state change request.
+
+
+
+=head2 RuntimeId => Str
+
+The ID of the Docker container.
 
 
 

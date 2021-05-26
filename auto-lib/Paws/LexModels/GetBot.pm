@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
     my $CreatedDate             = $GetBotResponse->CreatedDate;
     my $Description             = $GetBotResponse->Description;
+    my $DetectSentiment         = $GetBotResponse->DetectSentiment;
     my $FailureReason           = $GetBotResponse->FailureReason;
     my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
     my $Intents                 = $GetBotResponse->Intents;

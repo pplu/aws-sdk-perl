@@ -64,13 +64,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group to reset.
+The name of the cluster parameter group to reset.
 
 
 
 =head2 Parameters => ArrayRef[L<Paws::DocDB::Parameter>]
 
-A list of parameter names in the DB cluster parameter group to reset to
+A list of parameter names in the cluster parameter group to reset to
 the default values. You can't use this parameter if the
 C<ResetAllParameters> parameter is set to C<true>.
 
@@ -78,10 +78,10 @@ C<ResetAllParameters> parameter is set to C<true>.
 
 =head2 ResetAllParameters => Bool
 
-A value that is set to C<true> to reset all parameters in the DB
-cluster parameter group to their default values, and C<false>
-otherwise. You can't use this parameter if there is a list of parameter
-names specified for the C<Parameters> parameter.
+A value that is set to C<true> to reset all parameters in the cluster
+parameter group to their default values, and C<false> otherwise. You
+can't use this parameter if there is a list of parameter names
+specified for the C<Parameters> parameter.
 
 
 

@@ -1,10 +1,9 @@
 
 package Paws::S3::GetObjectRetentionOutput;
   use Moose;
-  has Retention => (is => 'ro', isa => 'Paws::S3::ObjectLockRetention');
+  has Retention => (is => 'ro', isa => 'Paws::S3::ObjectLockRetention', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'Retention');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

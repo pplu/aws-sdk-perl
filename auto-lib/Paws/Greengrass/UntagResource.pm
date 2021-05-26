@@ -49,7 +49,7 @@ The Amazon Resource Name (ARN) of the resource.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-A list of the keys to remove from the resource tags.
+An array of tag keys to delete
 
 
 

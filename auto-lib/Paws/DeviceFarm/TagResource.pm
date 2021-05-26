@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $devicefarm = Paws->service('DeviceFarm');
     my $TagResourceResponse = $devicefarm->TagResource(
-      ResourceARN => 'MyAmazonResourceName',
+      ResourceARN => 'MyDeviceFarmArn',
       Tags        => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -49,9 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The Amazon Resource Name (ARN) of the resource(s) to which to add tags.
-You can associate tags with the following Device Farm resources:
-C<PROJECT>, C<RUN>, C<NETWORK_PROFILE>, C<INSTANCE_PROFILE>,
+The Amazon Resource Name (ARN) of the resource or resources to which to
+add tags. You can associate tags with the following Device Farm
+resources: C<PROJECT>, C<RUN>, C<NETWORK_PROFILE>, C<INSTANCE_PROFILE>,
 C<DEVICE_INSTANCE>, C<SESSION>, C<DEVICE_POOL>, C<DEVICE>, and
 C<VPCE_CONFIGURATION>.
 
@@ -60,7 +60,7 @@ C<VPCE_CONFIGURATION>.
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DeviceFarm::Tag>]
 
 The tags to add to the resource. A tag is an array of key-value pairs.
-Tag keys can have a maximum character length of 128 characters, and tag
+Tag keys can have a maximum character length of 128 characters. Tag
 values can have a maximum length of 256 characters.
 
 

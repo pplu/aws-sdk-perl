@@ -49,6 +49,11 @@ package Paws::Signer;
     my $call_object = $self->new_with_coercions('Paws::Signer::ListSigningProfiles', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutSigningProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Signer::PutSigningProfile', @_);
@@ -57,6 +62,16 @@ package Paws::Signer;
   sub StartSigningJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Signer::StartSigningJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -131,7 +146,7 @@ package Paws::Signer;
   }
 
 
-  sub operations { qw/CancelSigningProfile DescribeSigningJob GetSigningPlatform GetSigningProfile ListSigningJobs ListSigningPlatforms ListSigningProfiles PutSigningProfile StartSigningJob / }
+  sub operations { qw/CancelSigningProfile DescribeSigningJob GetSigningPlatform GetSigningProfile ListSigningJobs ListSigningPlatforms ListSigningProfiles ListTagsForResource PutSigningProfile StartSigningJob TagResource UntagResource / }
 
 1;
 
@@ -159,14 +174,18 @@ Paws::Signer - Perl Interface to AWS AWS Signer
 
 =head1 DESCRIPTION
 
-You can use Code Signing for Amazon FreeRTOS (AWS Signer) to sign code
-that you created for any of the IoT devices that Amazon Web Services
-supports. AWS Signer is integrated with Amazon FreeRTOS, AWS
-Certificate Manager, and AWS CloudTrail. Amazon FreeRTOS customers can
-use AWS Signer to sign code images before making them available for
-microcontrollers. You can use ACM to import third-party certificates to
-be used by AWS Signer. For general information about using AWS Signer,
-see the Code Signing for Amazon FreeRTOS Developer Guide
+With code signing for IoT, you can sign code that you create for any
+IoT device that is supported by Amazon Web Services (AWS). Code signing
+is available through Amazon FreeRTOS
+(http://docs.aws.amazon.com/freertos/latest/userguide/) and AWS IoT
+Device Management
+(http://docs.aws.amazon.com/iot/latest/developerguide/), and integrated
+with AWS Certificate Manager (ACM)
+(http://docs.aws.amazon.com/acm/latest/userguide/). In order to sign
+code, you import a third-party code signing certificate with ACM that
+is used to sign updates in Amazon FreeRTOS and AWS IoT Device
+Management. For general information about using code signing, see the
+Code Signing for IoT Developer Guide
 (http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25>
@@ -266,12 +285,12 @@ Returns: a L<Paws::Signer::ListSigningJobsResponse> instance
 
 Lists all your signing jobs. You can use the C<maxResults> parameter to
 limit the number of signing jobs that are returned in the response. If
-additional jobs remain to be listed, AWS Signer returns a C<nextToken>
-value. Use this value in subsequent calls to C<ListSigningJobs> to
-fetch the remaining values. You can continue calling C<ListSigningJobs>
-with your C<maxResults> parameter and with new values that AWS Signer
-returns in the C<nextToken> parameter until all of your signing jobs
-have been returned.
+additional jobs remain to be listed, code signing returns a
+C<nextToken> value. Use this value in subsequent calls to
+C<ListSigningJobs> to fetch the remaining values. You can continue
+calling C<ListSigningJobs> with your C<maxResults> parameter and with
+new values that code signing returns in the C<nextToken> parameter
+until all of your signing jobs have been returned.
 
 
 =head2 ListSigningPlatforms
@@ -295,13 +314,13 @@ Each argument is described in detail in: L<Paws::Signer::ListSigningPlatforms>
 
 Returns: a L<Paws::Signer::ListSigningPlatformsResponse> instance
 
-Lists all signing platforms available in AWS Signer that match the
-request parameters. If additional jobs remain to be listed, AWS Signer
-returns a C<nextToken> value. Use this value in subsequent calls to
-C<ListSigningJobs> to fetch the remaining values. You can continue
-calling C<ListSigningJobs> with your C<maxResults> parameter and with
-new values that AWS Signer returns in the C<nextToken> parameter until
-all of your signing jobs have been returned.
+Lists all signing platforms available in code signing that match the
+request parameters. If additional jobs remain to be listed, code
+signing returns a C<nextToken> value. Use this value in subsequent
+calls to C<ListSigningJobs> to fetch the remaining values. You can
+continue calling C<ListSigningJobs> with your C<maxResults> parameter
+and with new values that code signing returns in the C<nextToken>
+parameter until all of your signing jobs have been returned.
 
 
 =head2 ListSigningProfiles
@@ -323,12 +342,28 @@ Returns: a L<Paws::Signer::ListSigningProfilesResponse> instance
 
 Lists all available signing profiles in your AWS account. Returns only
 profiles with an C<ACTIVE> status unless the C<includeCanceled> request
-field is set to C<true>. If additional jobs remain to be listed, AWS
-Signer returns a C<nextToken> value. Use this value in subsequent calls
-to C<ListSigningJobs> to fetch the remaining values. You can continue
-calling C<ListSigningJobs> with your C<maxResults> parameter and with
-new values that AWS Signer returns in the C<nextToken> parameter until
-all of your signing jobs have been returned.
+field is set to C<true>. If additional jobs remain to be listed, code
+signing returns a C<nextToken> value. Use this value in subsequent
+calls to C<ListSigningJobs> to fetch the remaining values. You can
+continue calling C<ListSigningJobs> with your C<maxResults> parameter
+and with new values that code signing returns in the C<nextToken>
+parameter until all of your signing jobs have been returned.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::ListTagsForResource>
+
+Returns: a L<Paws::Signer::ListTagsForResourceResponse> instance
+
+Returns a list of the tags associated with a signing profile resource.
 
 
 =head2 PutSigningProfile
@@ -345,6 +380,8 @@ all of your signing jobs have been returned.
 
 =item [SigningParameters => L<Paws::Signer::SigningParameters>]
 
+=item [Tags => L<Paws::Signer::TagMap>]
+
 
 =back
 
@@ -352,7 +389,7 @@ Each argument is described in detail in: L<Paws::Signer::PutSigningProfile>
 
 Returns: a L<Paws::Signer::PutSigningProfileResponse> instance
 
-Creates a signing profile. A signing profile is an AWS Signer template
+Creates a signing profile. A signing profile is a code signing template
 that can be used to carry out a pre-defined signing job. For more
 information, see
 http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
@@ -397,7 +434,7 @@ Your S3 source bucket must be version enabled.
 
 =item *
 
-You must create an S3 destination bucket. AWS Signer uses your S3
+You must create an S3 destination bucket. Code signing uses your S3
 destination bucket to write your signed code.
 
 =item *
@@ -408,7 +445,7 @@ the C<StartSigningJob> operation.
 =item *
 
 You must also specify a request token that identifies your request to
-AWS Signer.
+code signing.
 
 =back
 
@@ -418,6 +455,47 @@ after you call C<StartSigningJob>.
 For a Java example that shows how to use this action, see
 http://docs.aws.amazon.com/acm/latest/userguide/
 (http://docs.aws.amazon.com/acm/latest/userguide/)
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Signer::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::TagResource>
+
+Returns: a L<Paws::Signer::TagResourceResponse> instance
+
+Adds one or more tags to a signing profile. Tags are labels that you
+can use to identify and organize your AWS resources. Each tag consists
+of a key and an optional value. You specify the signing profile using
+its Amazon Resource Name (ARN). You specify the tag by using a
+key-value pair.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::UntagResource>
+
+Returns: a L<Paws::Signer::UntagResourceResponse> instance
+
+Remove one or more tags from a signing profile. Specify a list of tag
+keys to remove the tags.
 
 
 

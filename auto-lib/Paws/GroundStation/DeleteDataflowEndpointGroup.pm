@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gro
 
 =head2 B<REQUIRED> DataflowEndpointGroupId => Str
 
-ID of a dataflow endpoint group.
+UUID of a dataflow endpoint group.
 
 
 

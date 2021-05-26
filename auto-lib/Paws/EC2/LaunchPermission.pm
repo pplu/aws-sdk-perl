@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Group => Str
 
-  The name of the group.
+The name of the group.
 
 
 =head2 UserId => Str
 
-  The AWS account ID.
+The AWS account ID.
 
 
 

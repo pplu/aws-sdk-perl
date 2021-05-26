@@ -1824,7 +1824,8 @@ OIDC provider
 
 =item *
 
-A list of thumbprints of the server certificate(s) that the IdP uses
+A list of thumbprints of one or more server certificates that the IdP
+uses
 
 =back
 
@@ -5080,6 +5081,8 @@ GetAccountSummary operation.
 
 =item [MaxItems => Int]
 
+=item [PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef]]
+
 =item [ResourceArns => ArrayRef[Str|Undef]]
 
 =item [ResourceHandlingOption => Str]
@@ -5104,14 +5107,14 @@ The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
 operations.
 
-If you want to simulate existing policies attached to an IAM user,
-group, or role, use SimulatePrincipalPolicy instead.
+If you want to simulate existing policies that are attached to an IAM
+user, group, or role, use SimulatePrincipalPolicy instead.
 
-Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request. You can use
-the C<Condition> element of an IAM policy to evaluate context keys. To
-get the list of context keys that the policies require for correct
-simulation, use GetContextKeysForCustomPolicy.
+Context keys are variables that are maintained by AWS and its services
+and which provide details about the context of an API query request.
+You can use the C<Condition> element of an IAM policy to evaluate
+context keys. To get the list of context keys that the policies require
+for correct simulation, use GetContextKeysForCustomPolicy.
 
 If the output is long, you can use C<MaxItems> and C<Marker> parameters
 to paginate the results.
@@ -5132,6 +5135,8 @@ to paginate the results.
 =item [Marker => Str]
 
 =item [MaxItems => Int]
+
+=item [PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef]]
 
 =item [PolicyInputList => ArrayRef[Str|Undef]]
 
@@ -6213,9 +6218,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListVirtualMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
-=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6225,9 +6230,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
-=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PermissionsBoundaryPolicyInputList => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -94,11 +94,15 @@ Returns only backup jobs for the specified resources:
 
 =item *
 
+C<DynamoDB> for Amazon DynamoDB
+
+=item *
+
 C<EBS> for Amazon Elastic Block Store
 
 =item *
 
-C<SGW> for AWS Storage Gateway
+C<EFS> for Amazon Elastic File System
 
 =item *
 
@@ -106,11 +110,7 @@ C<RDS> for Amazon Relational Database Service
 
 =item *
 
-C<DDB> for Amazon DynamoDB
-
-=item *
-
-C<EFS> for Amazon Elastic File System
+C<Storage Gateway> for AWS Storage Gateway
 
 =back
 

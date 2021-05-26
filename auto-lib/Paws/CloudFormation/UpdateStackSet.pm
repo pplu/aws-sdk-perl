@@ -3,12 +3,15 @@ package Paws::CloudFormation::UpdateStackSet;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
+  has AutoDeployment => (is => 'ro', isa => 'Paws::CloudFormation::AutoDeployment');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has PermissionModel => (is => 'ro', isa => 'Str');
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
@@ -44,10 +47,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StackSetName          => 'MyStackSetName',
       Accounts              => [ 'MyAccount', ... ],    # OPTIONAL
       AdministrationRoleARN => 'MyRoleARN',             # OPTIONAL
-      Capabilities          => [
+      AutoDeployment        => {
+        Enabled                      => 1,              # OPTIONAL
+        RetainStacksOnAccountRemoval => 1,              # OPTIONAL
+      },    # OPTIONAL
+      Capabilities => [
         'CAPABILITY_IAM',
         ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
       ],    # OPTIONAL
+      DeploymentTargets => {
+        Accounts              => [ 'MyAccount',              ... ],
+        OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
+      },    # OPTIONAL
       Description          => 'MyDescription',           # OPTIONAL
       ExecutionRoleName    => 'MyExecutionRoleName',     # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
@@ -67,8 +78,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                             # OPTIONAL
-      Regions => [ 'MyRegion', ... ],                # OPTIONAL
-      Tags => [
+      PermissionModel => 'SERVICE_MANAGED',          # OPTIONAL
+      Regions         => [ 'MyRegion', ... ],        # OPTIONAL
+      Tags            => [
         {
           Key   => 'MyTagKey',                       # min: 1, max: 128
           Value => 'MyTagValue',                     # min: 1, max: 256
@@ -94,9 +106,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Accounts => ArrayRef[Str|Undef]
 
-The accounts in which to update associated stack instances. If you
-specify accounts, you must also specify the regions in which to update
-stack set instances.
+[Self-managed permissions] The accounts in which to update associated
+stack instances. If you specify accounts, you must also specify the
+regions in which to update stack set instances.
 
 To update I<all> the stack instances associated with this stack set, do
 not specify the C<Accounts> or C<Regions> properties.
@@ -132,9 +144,20 @@ previously.
 
 
 
+=head2 AutoDeployment => L<Paws::CloudFormation::AutoDeployment>
+
+[C<Service-managed> permissions] Describes whether StackSets
+automatically deploys to AWS Organizations accounts that are added to a
+target organization or organizational unit (OU).
+
+If you specify C<AutoDeployment>, do not specify C<DeploymentTargets>
+or C<Regions>.
+
+
+
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-In some cases, you must explicity acknowledge that your stack template
+In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for AWS CloudFormation to update
 the stack set and its associated stack instances.
 
@@ -244,6 +267,25 @@ stack set operation will fail.
 
 
 
+=head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
+
+[C<Service-managed> permissions] The AWS Organizations accounts in
+which to update associated stack instances.
+
+To update all the stack instances associated with this stack set, do
+not specify C<DeploymentTargets> or C<Regions>.
+
+If the stack set update includes changes to the template (that is, if
+C<TemplateBody> or C<TemplateURL> is specified), or the C<Parameters>,
+AWS CloudFormation marks all stack instances with a status of
+C<OUTDATED> prior to updating the stack instances in the specified
+accounts and Regions. If the stack set update does not include changes
+to the template or parameters, AWS CloudFormation updates the stack
+instances in the specified accounts and Regions, while leaving all
+other stack instances with their existing stack instance status.
+
+
+
 =head2 Description => Str
 
 A brief description of updates that you are making.
@@ -299,6 +341,34 @@ operation.
 A list of input parameters for the stack set template.
 
 
+
+=head2 PermissionModel => Str
+
+Describes how the IAM roles required for stack set operations are
+created. You cannot modify C<PermissionModel> if there are stack
+instances associated with your stack set.
+
+=over
+
+=item *
+
+With C<self-managed> permissions, you must create the administrator and
+execution roles required to deploy to target accounts. For more
+information, see Grant Self-Managed Stack Set Permissions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+
+=item *
+
+With C<service-managed> permissions, StackSets automatically creates
+the IAM roles required to deploy to accounts managed by AWS
+Organizations. For more information, see Grant Service-Managed Stack
+Set Permissions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
+
+=back
+
+
+Valid values are: C<"SERVICE_MANAGED">, C<"SELF_MANAGED">
 
 =head2 Regions => ArrayRef[Str|Undef]
 

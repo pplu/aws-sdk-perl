@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListDeploymentJobsResponse = $robomaker->ListDeploymentJobs(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
+          Name   => 'MyName',    # min: 1, max: 255
           Values => [
-            'MyName', ...        # min: 1, max: 255; OPTIONAL
+            'MyName', ...        # min: 1, max: 255
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -70,15 +70,13 @@ or the status C<Pending>.
 
 =head2 MaxResults => Int
 
-The maximum number of deployment job results returned by
-C<ListDeploymentJobs> in paginated output. When this parameter is used,
-C<ListDeploymentJobs> only returns C<maxResults> results in a single
-page along with a C<nextToken> response element. The remaining results
-of the initial request can be seen by sending another
-C<ListDeploymentJobs> request with the returned C<nextToken> value.
-This value can be between 1 and 100. If this parameter is not used,
-then C<ListDeploymentJobs> returns up to 100 results and a C<nextToken>
-value if applicable.
+When this parameter is used, C<ListDeploymentJobs> only returns
+C<maxResults> results in a single page along with a C<nextToken>
+response element. The remaining results of the initial request can be
+seen by sending another C<ListDeploymentJobs> request with the returned
+C<nextToken> value. This value can be between 1 and 200. If this
+parameter is not used, then C<ListDeploymentJobs> returns up to 200
+results and a C<nextToken> value if applicable.
 
 
 
@@ -88,10 +86,6 @@ The C<nextToken> value returned from a previous paginated
 C<ListDeploymentJobs> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
-
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
-purposes.
 
 
 

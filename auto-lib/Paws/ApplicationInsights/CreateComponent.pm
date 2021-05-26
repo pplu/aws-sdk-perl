@@ -32,7 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateComponentResponse = $applicationinsights->CreateComponent(
       ComponentName     => 'MyComponentName',
       ResourceGroupName => 'MyResourceGroupName',
-      ResourceList      => [ 'MyResourceARN', ... ],
+      ResourceList      => [
+        'MyResourceARN', ...    # min: 1, max: 1011
+      ],
 
     );
 

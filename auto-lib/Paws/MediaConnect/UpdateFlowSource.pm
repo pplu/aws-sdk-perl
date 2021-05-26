@@ -109,13 +109,14 @@ The port that the flow will be listening on for incoming content.
 
 =head2 MaxBitrate => Int
 
-The smoothing max bitrate for RTP and RTP-FEC streams.
+The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.
 
 
 
 =head2 MaxLatency => Int
 
-The maximum latency in milliseconds for Zixi-based streams.
+The maximum latency in milliseconds. This parameter applies only to
+RIST-based and Zixi-based streams.
 
 
 
@@ -123,7 +124,7 @@ The maximum latency in milliseconds for Zixi-based streams.
 
 The protocol that is used by the source.
 
-Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">
+Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">, C<"zixi-pull">, C<"rist">
 
 =head2 B<REQUIRED> SourceArn => Str
 
@@ -141,7 +142,7 @@ applies only to Zixi-based streams.
 =head2 WhitelistCidr => Str
 
 The range of IP addresses that should be allowed to contribute content
-to your source. These IP addresses should in the form of a Classless
+to your source. These IP addresses should be in the form of a Classless
 Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
 
 

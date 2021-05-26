@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Code => Str
 
-  The state of the client certificate revocation list.
+The state of the client certificate revocation list.
 
 
 =head2 Message => Str
 
-  A message about the status of the client certificate revocation list,
+A message about the status of the client certificate revocation list,
 if applicable.
 
 

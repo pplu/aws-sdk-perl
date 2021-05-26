@@ -3,10 +3,12 @@ package Paws::StepFunctions::DescribeStateMachineOutput;
   use Moose;
   has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate' , required => 1);
   has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
+  has LoggingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::LoggingConfiguration', traits => ['NameInRequest'], request_name => 'loggingConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
   has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -31,6 +33,11 @@ States Language
 (https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
+=head2 LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>
+
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the state machine.
@@ -41,7 +48,7 @@ A name must I<not> contain:
 
 =item *
 
-whitespace
+white space
 
 =item *
 
@@ -80,6 +87,11 @@ The Amazon Resource Name (ARN) that identifies the state machine.
 The current status of the state machine.
 
 Valid values are: C<"ACTIVE">, C<"DELETING">
+=head2 B<REQUIRED> Type => Str
+
+
+
+Valid values are: C<"STANDARD">, C<"EXPRESS">
 =head2 _request_id => Str
 
 

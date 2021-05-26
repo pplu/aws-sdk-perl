@@ -17,7 +17,7 @@ Paws::GameLift::DescribeFleetUtilizationOutput
 
 =head2 FleetUtilization => ArrayRef[L<Paws::GameLift::FleetUtilization>]
 
-Collection of objects containing utilization information for each
+A collection of objects containing utilization information for each
 requested fleet ID.
 
 

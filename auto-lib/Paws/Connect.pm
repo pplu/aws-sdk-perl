@@ -59,6 +59,26 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::GetMetricData', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListContactFlows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListContactFlows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListHoursOfOperations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListHoursOfOperations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPhoneNumbers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListPhoneNumbers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListQueues {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListQueues', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRoutingProfiles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::ListRoutingProfiles', @_);
@@ -67,6 +87,11 @@ package Paws::Connect;
   sub ListSecurityProfiles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::ListSecurityProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListUserHierarchyGroups {
@@ -79,6 +104,11 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::ListUsers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartChatContact {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::StartChatContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartOutboundVoiceContact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::StartOutboundVoiceContact', @_);
@@ -87,6 +117,16 @@ package Paws::Connect;
   sub StopContact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::StopContact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateContactAttributes {
@@ -139,6 +179,98 @@ package Paws::Connect;
         $result = $self->GetMetricData(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'MetricResults') foreach (@{ $result->MetricResults });
+    }
+
+    return undef
+  }
+  sub ListAllContactFlows {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContactFlows(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListContactFlows(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ContactFlowSummaryList }, @{ $next_result->ContactFlowSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ContactFlowSummaryList') foreach (@{ $result->ContactFlowSummaryList });
+        $result = $self->ListContactFlows(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ContactFlowSummaryList') foreach (@{ $result->ContactFlowSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllHoursOfOperations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHoursOfOperations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHoursOfOperations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HoursOfOperationSummaryList }, @{ $next_result->HoursOfOperationSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HoursOfOperationSummaryList') foreach (@{ $result->HoursOfOperationSummaryList });
+        $result = $self->ListHoursOfOperations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HoursOfOperationSummaryList') foreach (@{ $result->HoursOfOperationSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllPhoneNumbers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPhoneNumbers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPhoneNumbers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PhoneNumberSummaryList }, @{ $next_result->PhoneNumberSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PhoneNumberSummaryList') foreach (@{ $result->PhoneNumberSummaryList });
+        $result = $self->ListPhoneNumbers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PhoneNumberSummaryList') foreach (@{ $result->PhoneNumberSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQueues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->QueueSummaryList }, @{ $next_result->QueueSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'QueueSummaryList') foreach (@{ $result->QueueSummaryList });
+        $result = $self->ListQueues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'QueueSummaryList') foreach (@{ $result->QueueSummaryList });
     }
 
     return undef
@@ -237,7 +369,7 @@ package Paws::Connect;
   }
 
 
-  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListRoutingProfiles ListSecurityProfiles ListUserHierarchyGroups ListUsers StartOutboundVoiceContact StopContact UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
+  sub operations { qw/CreateUser DeleteUser DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListContactFlows ListHoursOfOperations ListPhoneNumbers ListQueues ListRoutingProfiles ListSecurityProfiles ListTagsForResource ListUserHierarchyGroups ListUsers StartChatContact StartOutboundVoiceContact StopContact TagResource UntagResource UpdateContactAttributes UpdateUserHierarchy UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
 
 1;
 
@@ -265,24 +397,19 @@ Paws::Connect - Perl Interface to AWS Amazon Connect Service
 
 =head1 DESCRIPTION
 
-The Amazon Connect API Reference provides descriptions, syntax, and
-usage examples for each of the Amazon Connect actions, data types,
-parameters, and errors. Amazon Connect is a cloud-based contact center
-solution that makes it easy to set up and manage a customer contact
-center and provide reliable customer engagement at any scale.
+Amazon Connect is a cloud-based contact center solution that makes it
+easy to set up and manage a customer contact center and provide
+reliable customer engagement at any scale.
 
-Throttling limits for the Amazon Connect API operations:
+Amazon Connect provides rich metrics and real-time reporting that allow
+you to optimize contact routing. You can also resolve customer issues
+more efficiently by putting customers in touch with the right agents.
 
-For the C<GetMetricData> and C<GetCurrentMetricData> operations, a
-RateLimit of 5 per second, and a BurstLimit of 8 per second.
-
-For all other operations, a RateLimit of 2 per second, and a BurstLimit
-of 5 per second.
-
-You can request an increase to the throttling limits by submitting a
-Amazon Connect service limits increase form
-(https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase).
-You must be signed in to your AWS account to access the form.
+There are limits to the number of Amazon Connect resources that you can
+create and limits to the number of requests that you can make per
+second. For more information, see Amazon Connect Service Limits
+(https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html)
+in the I<Amazon Connect Administrator Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08>
 
@@ -311,6 +438,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =item [Password => Str]
 
+=item [Tags => L<Paws::Connect::TagMap>]
+
 
 =back
 
@@ -318,7 +447,7 @@ Each argument is described in detail in: L<Paws::Connect::CreateUser>
 
 Returns: a L<Paws::Connect::CreateUserResponse> instance
 
-Creates a new user account in your Amazon Connect instance.
+Creates a user account for the specified Amazon Connect instance.
 
 
 =head2 DeleteUser
@@ -336,7 +465,7 @@ Each argument is described in detail in: L<Paws::Connect::DeleteUser>
 
 Returns: nothing
 
-Deletes a user account from Amazon Connect.
+Deletes a user account from the specified Amazon Connect instance.
 
 
 =head2 DescribeUser
@@ -354,8 +483,10 @@ Each argument is described in detail in: L<Paws::Connect::DescribeUser>
 
 Returns: a L<Paws::Connect::DescribeUserResponse> instance
 
-Returns a C<User> object that contains information about the user
-account specified by the C<UserId>.
+Describes the specified user account. You can find the instance ID in
+the console (itE<rsquo>s the final part of the ARN). The console does
+not display the user IDs. Instead, list the users and note the IDs
+provided in the output.
 
 
 =head2 DescribeUserHierarchyGroup
@@ -373,8 +504,7 @@ Each argument is described in detail in: L<Paws::Connect::DescribeUserHierarchyG
 
 Returns: a L<Paws::Connect::DescribeUserHierarchyGroupResponse> instance
 
-Returns a C<HierarchyGroup> object that includes information about a
-hierarchy group in your instance.
+Describes the specified hierarchy group.
 
 
 =head2 DescribeUserHierarchyStructure
@@ -390,8 +520,8 @@ Each argument is described in detail in: L<Paws::Connect::DescribeUserHierarchyS
 
 Returns: a L<Paws::Connect::DescribeUserHierarchyStructureResponse> instance
 
-Returns a C<HiearchyGroupStructure> object, which contains data about
-the levels in the agent hierarchy.
+Describes the hierarchy structure of the specified Amazon Connect
+instance.
 
 
 =head2 GetContactAttributes
@@ -409,7 +539,7 @@ Each argument is described in detail in: L<Paws::Connect::GetContactAttributes>
 
 Returns: a L<Paws::Connect::GetContactAttributesResponse> instance
 
-Retrieves the contact attributes associated with a contact.
+Retrieves the contact attributes for the specified contact.
 
 
 =head2 GetCurrentMetricData
@@ -435,11 +565,12 @@ Each argument is described in detail in: L<Paws::Connect::GetCurrentMetricData>
 
 Returns: a L<Paws::Connect::GetCurrentMetricDataResponse> instance
 
-The C<GetCurrentMetricData> operation retrieves current metric data
-from your Amazon Connect instance.
+Gets the real-time metric data from the specified Amazon Connect
+instance.
 
-If you are using an IAM account, it must have permission to the
-C<connect:GetCurrentMetricData> action.
+For more information, see Real-time Metrics Reports
+(https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-reports.html)
+in the I<Amazon Connect Administrator Guide>.
 
 
 =head2 GetFederationToken
@@ -485,11 +616,103 @@ Each argument is described in detail in: L<Paws::Connect::GetMetricData>
 
 Returns: a L<Paws::Connect::GetMetricDataResponse> instance
 
-The C<GetMetricData> operation retrieves historical metrics data from
-your Amazon Connect instance.
+Gets historical metric data from the specified Amazon Connect instance.
 
-If you are using an IAM account, it must have permission to the
-C<connect:GetMetricData> action.
+For more information, see Historical Metrics Reports
+(https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics.html)
+in the I<Amazon Connect Administrator Guide>.
+
+
+=head2 ListContactFlows
+
+=over
+
+=item InstanceId => Str
+
+=item [ContactFlowTypes => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListContactFlows>
+
+Returns: a L<Paws::Connect::ListContactFlowsResponse> instance
+
+Provides information about the contact flows for the specified Amazon
+Connect instance.
+
+
+=head2 ListHoursOfOperations
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListHoursOfOperations>
+
+Returns: a L<Paws::Connect::ListHoursOfOperationsResponse> instance
+
+Provides information about the hours of operation for the specified
+Amazon Connect instance.
+
+
+=head2 ListPhoneNumbers
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PhoneNumberCountryCodes => ArrayRef[Str|Undef]]
+
+=item [PhoneNumberTypes => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListPhoneNumbers>
+
+Returns: a L<Paws::Connect::ListPhoneNumbersResponse> instance
+
+Provides information about the phone numbers for the specified Amazon
+Connect instance.
+
+
+=head2 ListQueues
+
+=over
+
+=item InstanceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [QueueTypes => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListQueues>
+
+Returns: a L<Paws::Connect::ListQueuesResponse> instance
+
+Provides information about the queues for the specified Amazon Connect
+instance.
 
 
 =head2 ListRoutingProfiles
@@ -509,8 +732,8 @@ Each argument is described in detail in: L<Paws::Connect::ListRoutingProfiles>
 
 Returns: a L<Paws::Connect::ListRoutingProfilesResponse> instance
 
-Returns an array of C<RoutingProfileSummary> objects that includes
-information about the routing profiles in your instance.
+Provides summary information about the routing profiles for the
+specified Amazon Connect instance.
 
 
 =head2 ListSecurityProfiles
@@ -530,9 +753,24 @@ Each argument is described in detail in: L<Paws::Connect::ListSecurityProfiles>
 
 Returns: a L<Paws::Connect::ListSecurityProfilesResponse> instance
 
-Returns an array of SecurityProfileSummary objects that contain
-information about the security profiles in your instance, including the
-ARN, Id, and Name of the security profile.
+Provides summary information about the security profiles for the
+specified Amazon Connect instance.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListTagsForResource>
+
+Returns: a L<Paws::Connect::ListTagsForResourceResponse> instance
+
+Lists the tags for the specified resource.
 
 
 =head2 ListUserHierarchyGroups
@@ -552,9 +790,8 @@ Each argument is described in detail in: L<Paws::Connect::ListUserHierarchyGroup
 
 Returns: a L<Paws::Connect::ListUserHierarchyGroupsResponse> instance
 
-Returns a C<UserHierarchyGroupSummaryList>, which is an array of
-C<HierarchyGroupSummary> objects that contain information about the
-hierarchy groups in your instance.
+Provides summary information about the hierarchy groups for the
+specified Amazon Connect instance.
 
 
 =head2 ListUsers
@@ -574,8 +811,45 @@ Each argument is described in detail in: L<Paws::Connect::ListUsers>
 
 Returns: a L<Paws::Connect::ListUsersResponse> instance
 
-Returns a C<UserSummaryList>, which is an array of C<UserSummary>
-objects.
+Provides summary information about the users for the specified Amazon
+Connect instance.
+
+
+=head2 StartChatContact
+
+=over
+
+=item ContactFlowId => Str
+
+=item InstanceId => Str
+
+=item ParticipantDetails => L<Paws::Connect::ParticipantDetails>
+
+=item [Attributes => L<Paws::Connect::Attributes>]
+
+=item [ClientToken => Str]
+
+=item [InitialMessage => L<Paws::Connect::ChatMessage>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::StartChatContact>
+
+Returns: a L<Paws::Connect::StartChatContactResponse> instance
+
+Initiates a contact flow to start a new chat for the customer. Response
+of this API provides a token required to obtain credentials from the
+CreateParticipantConnection
+(https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+API in the Amazon Connect Participant Service.
+
+When a new chat contact is successfully created, clients need to
+subscribe to the participantE<rsquo>s connection for the created chat
+within 5 minutes. This is achieved by invoking
+CreateParticipantConnection
+(https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
+with WEBSOCKET and CONNECTION_CREDENTIALS.
 
 
 =head2 StartOutboundVoiceContact
@@ -603,14 +877,10 @@ Each argument is described in detail in: L<Paws::Connect::StartOutboundVoiceCont
 
 Returns: a L<Paws::Connect::StartOutboundVoiceContactResponse> instance
 
-The C<StartOutboundVoiceContact> operation initiates a contact flow to
-place an outbound call to a customer.
-
-If you are using an IAM account, it must have permission to the
-C<connect:StartOutboundVoiceContact> action.
+Initiates a contact flow to place an outbound call to a customer.
 
 There is a 60 second dialing timeout for this operation. If the call is
-not connected after 60 seconds, the call fails.
+not connected after 60 seconds, it fails.
 
 
 =head2 StopContact
@@ -628,11 +898,45 @@ Each argument is described in detail in: L<Paws::Connect::StopContact>
 
 Returns: a L<Paws::Connect::StopContactResponse> instance
 
-Ends the contact initiated by the C<StartOutboundVoiceContact>
-operation.
+Ends the specified contact.
 
-If you are using an IAM account, it must have permission to the
-C<connect:StopContact> action.
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Connect::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::TagResource>
+
+Returns: nothing
+
+Adds the specified tags to the specified resource.
+
+The supported resource type is users.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::UntagResource>
+
+Returns: nothing
+
+Removes the specified tags from the specified resource.
 
 
 =head2 UpdateContactAttributes
@@ -652,30 +956,28 @@ Each argument is described in detail in: L<Paws::Connect::UpdateContactAttribute
 
 Returns: a L<Paws::Connect::UpdateContactAttributesResponse> instance
 
-The C<UpdateContactAttributes> operation lets you programmatically
-create new, or update existing, contact attributes associated with a
-contact. You can use the operation to add or update attributes for both
-ongoing and completed contacts. For example, you can update the
-customer's name or the reason the customer called while the call is
-active, or add notes about steps that the agent took during the call
-that are displayed to the next agent that takes the call. You can also
-use the C<UpdateContactAttributes> operation to update attributes for a
-contact using data from your CRM application and save the data with the
-contact in Amazon Connect. You could also flag calls for additional
-analysis, such as legal review or identifying abusive callers.
+Creates or updates the contact attributes associated with the specified
+contact.
+
+You can add or update attributes for both ongoing and completed
+contacts. For example, you can update the customer's name or the reason
+the customer called while the call is active, or add notes about steps
+that the agent took during the call that are displayed to the next
+agent that takes the call. You can also update attributes for a contact
+using data from your CRM application and save the data with the contact
+in Amazon Connect. You could also flag calls for additional analysis,
+such as legal review or identifying abusive callers.
 
 Contact attributes are available in Amazon Connect for 24 months, and
 are then deleted.
 
-I<Important:>
-
-You cannot use the operation to update attributes for contacts that
-occurred prior to the release of the API, September 12, 2018. You can
-update attributes only for contacts that started after the release of
-the API. If you attempt to update attributes for a contact that
-occurred prior to the release of the API, a 400 error is returned. This
-applies also to queued callbacks that were initiated prior to the
-release of the API but are still active in your instance.
+B<Important:> You cannot use the operation to update attributes for
+contacts that occurred prior to the release of the API, September 12,
+2018. You can update attributes only for contacts that started after
+the release of the API. If you attempt to update attributes for a
+contact that occurred prior to the release of the API, a 400 error is
+returned. This applies also to queued callbacks that were initiated
+prior to the release of the API but are still active in your instance.
 
 
 =head2 UpdateUserHierarchy
@@ -695,7 +997,7 @@ Each argument is described in detail in: L<Paws::Connect::UpdateUserHierarchy>
 
 Returns: nothing
 
-Assigns the specified hierarchy group to the user.
+Assigns the specified hierarchy group to the specified user.
 
 
 =head2 UpdateUserIdentityInfo
@@ -715,8 +1017,7 @@ Each argument is described in detail in: L<Paws::Connect::UpdateUserIdentityInfo
 
 Returns: nothing
 
-Updates the identity information for the specified user in a
-C<UserIdentityInfo> object, including email, first name, and last name.
+Updates the identity information for the specified user.
 
 
 =head2 UpdateUserPhoneConfig
@@ -736,8 +1037,7 @@ Each argument is described in detail in: L<Paws::Connect::UpdateUserPhoneConfig>
 
 Returns: nothing
 
-Updates the phone configuration settings in the C<UserPhoneConfig>
-object for the specified user.
+Updates the phone configuration settings for the specified user.
 
 
 =head2 UpdateUserRoutingProfile
@@ -757,7 +1057,7 @@ Each argument is described in detail in: L<Paws::Connect::UpdateUserRoutingProfi
 
 Returns: nothing
 
-Assigns the specified routing profile to a user.
+Assigns the specified routing profile to the specified user.
 
 
 =head2 UpdateUserSecurityProfiles
@@ -777,7 +1077,7 @@ Each argument is described in detail in: L<Paws::Connect::UpdateUserSecurityProf
 
 Returns: nothing
 
-Updates the security profiles assigned to the user.
+Assigns the specified security profiles to the specified user.
 
 
 
@@ -796,6 +1096,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - MetricResults, passing the object as the first parameter, and the string 'MetricResults' as the second parameter 
 
 If not, it will return a a L<Paws::Connect::GetMetricDataResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllContactFlows(sub { },InstanceId => Str, [ContactFlowTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContactFlows(InstanceId => Str, [ContactFlowTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ContactFlowSummaryList, passing the object as the first parameter, and the string 'ContactFlowSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListContactFlowsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHoursOfOperations(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHoursOfOperations(InstanceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HoursOfOperationSummaryList, passing the object as the first parameter, and the string 'HoursOfOperationSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListHoursOfOperationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPhoneNumbers(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str, PhoneNumberCountryCodes => ArrayRef[Str|Undef], PhoneNumberTypes => ArrayRef[Str|Undef]])
+
+=head2 ListAllPhoneNumbers(InstanceId => Str, [MaxResults => Int, NextToken => Str, PhoneNumberCountryCodes => ArrayRef[Str|Undef], PhoneNumberTypes => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PhoneNumberSummaryList, passing the object as the first parameter, and the string 'PhoneNumberSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListPhoneNumbersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQueues(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str, QueueTypes => ArrayRef[Str|Undef]])
+
+=head2 ListAllQueues(InstanceId => Str, [MaxResults => Int, NextToken => Str, QueueTypes => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - QueueSummaryList, passing the object as the first parameter, and the string 'QueueSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListQueuesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllRoutingProfiles(sub { },InstanceId => Str, [MaxResults => Int, NextToken => Str])

@@ -76,7 +76,7 @@ for the operation.
 
 =head2 Description => Str
 
-A textual description for the directory.
+A description for the directory.
 
 
 

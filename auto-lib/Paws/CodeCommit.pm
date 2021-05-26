@@ -15,14 +15,39 @@ package Paws::CodeCommit;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub AssociateApprovalRuleTemplateWithRepository {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::AssociateApprovalRuleTemplateWithRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchAssociateApprovalRuleTemplateWithRepositories {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchAssociateApprovalRuleTemplateWithRepositories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchDescribeMergeConflicts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchDescribeMergeConflicts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchDisassociateApprovalRuleTemplateFromRepositories {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchDisassociateApprovalRuleTemplateFromRepositories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetCommits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchGetCommits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchGetRepositories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateApprovalRuleTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateApprovalRuleTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateBranch {
@@ -40,6 +65,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreatePullRequest', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePullRequestApprovalRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreatePullRequestApprovalRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateRepository', @_);
@@ -48,6 +78,11 @@ package Paws::CodeCommit;
   sub CreateUnreferencedMergeCommit {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateUnreferencedMergeCommit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApprovalRuleTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteApprovalRuleTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBranch {
@@ -65,6 +100,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteFile', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePullRequestApprovalRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeletePullRequestApprovalRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteRepository', @_);
@@ -78,6 +118,21 @@ package Paws::CodeCommit;
   sub DescribePullRequestEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DescribePullRequestEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateApprovalRuleTemplateFromRepository {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DisassociateApprovalRuleTemplateFromRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EvaluatePullRequestApprovalRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::EvaluatePullRequestApprovalRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetApprovalRuleTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetApprovalRuleTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBlob {
@@ -145,6 +200,16 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetPullRequest', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPullRequestApprovalStates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetPullRequestApprovalStates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPullRequestOverrideState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetPullRequestOverrideState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetRepository', @_);
@@ -153,6 +218,16 @@ package Paws::CodeCommit;
   sub GetRepositoryTriggers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetRepositoryTriggers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListApprovalRuleTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListApprovalRuleTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAssociatedApprovalRuleTemplatesForRepository {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListAssociatedApprovalRuleTemplatesForRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBranches {
@@ -168,6 +243,11 @@ package Paws::CodeCommit;
   sub ListRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListRepositories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRepositoriesForApprovalRuleTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListRepositoriesForApprovalRuleTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -203,6 +283,11 @@ package Paws::CodeCommit;
   sub MergePullRequestByThreeWay {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergePullRequestByThreeWay', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub OverridePullRequestApprovalRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::OverridePullRequestApprovalRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PostCommentForComparedCommit {
@@ -245,6 +330,21 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApprovalRuleTemplateContent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateApprovalRuleTemplateContent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApprovalRuleTemplateDescription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateApprovalRuleTemplateDescription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApprovalRuleTemplateName {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateApprovalRuleTemplateName', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateComment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateComment', @_);
@@ -253,6 +353,16 @@ package Paws::CodeCommit;
   sub UpdateDefaultBranch {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateDefaultBranch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePullRequestApprovalRuleContent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdatePullRequestApprovalRuleContent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePullRequestApprovalState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdatePullRequestApprovalState', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePullRequestDescription {
@@ -444,7 +554,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchDescribeMergeConflicts BatchGetRepositories CreateBranch CreateCommit CreatePullRequest CreateRepository CreateUnreferencedMergeCommit DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribeMergeConflicts DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/AssociateApprovalRuleTemplateWithRepository BatchAssociateApprovalRuleTemplateWithRepositories BatchDescribeMergeConflicts BatchDisassociateApprovalRuleTemplateFromRepositories BatchGetCommits BatchGetRepositories CreateApprovalRuleTemplate CreateBranch CreateCommit CreatePullRequest CreatePullRequestApprovalRule CreateRepository CreateUnreferencedMergeCommit DeleteApprovalRuleTemplate DeleteBranch DeleteCommentContent DeleteFile DeletePullRequestApprovalRule DeleteRepository DescribeMergeConflicts DescribePullRequestEvents DisassociateApprovalRuleTemplateFromRepository EvaluatePullRequestApprovalRules GetApprovalRuleTemplate GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetPullRequestApprovalStates GetPullRequestOverrideState GetRepository GetRepositoryTriggers ListApprovalRuleTemplates ListAssociatedApprovalRuleTemplatesForRepository ListBranches ListPullRequests ListRepositories ListRepositoriesForApprovalRuleTemplate ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay OverridePullRequestApprovalRules PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateApprovalRuleTemplateContent UpdateApprovalRuleTemplateDescription UpdateApprovalRuleTemplateName UpdateComment UpdateDefaultBranch UpdatePullRequestApprovalRuleContent UpdatePullRequestApprovalState UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -514,9 +624,8 @@ the repository.
 =item *
 
 UpdateRepositoryName, which changes the name of the repository. If you
-change the name of a repository, no other users of that repository will
-be able to access it until you send them the new HTTPS or SSH URL to
-use.
+change the name of a repository, no other users of that repository can
+access it until you send them the new HTTPS or SSH URL to use.
 
 =back
 
@@ -526,7 +635,7 @@ Branches, by calling the following:
 
 =item *
 
-CreateBranch, which creates a new branch in a specified repository.
+CreateBranch, which creates a branch in a specified repository.
 
 =item *
 
@@ -559,7 +668,7 @@ specified branch.
 =item *
 
 GetBlob, which returns the base-64 encoded content of an individual Git
-blob object within a repository.
+blob object in a repository.
 
 =item *
 
@@ -583,6 +692,11 @@ Commits, by calling the following:
 
 =item *
 
+BatchGetCommits, which returns information about one or more commits in
+a repository.
+
+=item *
+
 CreateCommit, which creates a commit for changes to a repository.
 
 =item *
@@ -593,8 +707,8 @@ messages and author and committer information.
 =item *
 
 GetDifferences, which returns information about the differences in a
-valid commit specifier (such as a branch, tag, HEAD, commit ID or other
-fully qualified reference).
+valid commit specifier (such as a branch, tag, HEAD, commit ID, or
+other fully qualified reference).
 
 =back
 
@@ -662,8 +776,24 @@ repository.
 
 =item *
 
+CreatePullRequestApprovalRule, which creates an approval rule for a
+specified pull request.
+
+=item *
+
+DeletePullRequestApprovalRule, which deletes an approval rule for a
+specified pull request.
+
+=item *
+
 DescribePullRequestEvents, which returns information about one or more
 pull request events.
+
+=item *
+
+EvaluatePullRequestApprovalRules, which evaluates whether a pull
+request has met all the conditions specified in its associated approval
+rules.
 
 =item *
 
@@ -674,6 +804,18 @@ a specified pull request.
 
 GetPullRequest, which returns information about a specified pull
 request.
+
+=item *
+
+GetPullRequestApprovalStates, which returns information about the
+approval states for a specified pull request.
+
+=item *
+
+GetPullRequestOverrideState, which returns information about whether
+approval rules have been set aside (overriden) for a pull request, and
+if so, the Amazon Resource Name (ARN) of the user or identity that
+overrode the rules and their requirements for the pull request.
 
 =item *
 
@@ -699,8 +841,23 @@ request using the three-way merge option.
 
 =item *
 
+OverridePullRequestApprovalRules, which sets aside all approval rule
+requirements for a pull request.
+
+=item *
+
 PostCommentForPullRequest, which posts a comment to a pull request at
 the specified line, file, or request.
+
+=item *
+
+UpdatePullRequestApprovalRuleContent, which updates the structure of an
+approval rule for a pull request.
+
+=item *
+
+UpdatePullRequestApprovalState, which updates the state of an approval
+on a pull request.
 
 =item *
 
@@ -714,6 +871,90 @@ UpdatePullRequestStatus, which updates the status of a pull request.
 =item *
 
 UpdatePullRequestTitle, which updates the title of a pull request.
+
+=back
+
+Approval rule templates, by calling the following:
+
+=over
+
+=item *
+
+AssociateApprovalRuleTemplateWithRepository, which associates a
+template with a specified repository. After the template is associated
+with a repository, AWS CodeCommit creates approval rules that match the
+template conditions on every pull request created in the specified
+repository.
+
+=item *
+
+BatchAssociateApprovalRuleTemplateWithRepositories, which associates a
+template with one or more specified repositories. After the template is
+associated with a repository, AWS CodeCommit creates approval rules
+that match the template conditions on every pull request created in the
+specified repositories.
+
+=item *
+
+BatchDisassociateApprovalRuleTemplateFromRepositories, which removes
+the association between a template and specified repositories so that
+approval rules based on the template are not automatically created when
+pull requests are created in those repositories.
+
+=item *
+
+CreateApprovalRuleTemplate, which creates a template for approval rules
+that can then be associated with one or more repositories in your AWS
+account.
+
+=item *
+
+DeleteApprovalRuleTemplate, which deletes the specified template. It
+does not remove approval rules on pull requests already created with
+the template.
+
+=item *
+
+DisassociateApprovalRuleTemplateFromRepository, which removes the
+association between a template and a repository so that approval rules
+based on the template are not automatically created when pull requests
+are created in the specified repository.
+
+=item *
+
+GetApprovalRuleTemplate, which returns information about an approval
+rule template.
+
+=item *
+
+ListApprovalRuleTemplates, which lists all approval rule templates in
+the AWS Region in your AWS account.
+
+=item *
+
+ListAssociatedApprovalRuleTemplatesForRepository, which lists all
+approval rule templates that are associated with a specified
+repository.
+
+=item *
+
+ListRepositoriesForApprovalRuleTemplate, which lists all repositories
+associated with the specified approval rule template.
+
+=item *
+
+UpdateApprovalRuleTemplateDescription, which updates the description of
+an approval rule template.
+
+=item *
+
+UpdateApprovalRuleTemplateName, which updates the name of an approval
+rule template.
+
+=item *
+
+UpdateApprovalRuleTemplateContent, which updates the content of an
+approval rule template.
 
 =back
 
@@ -802,6 +1043,50 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head1 METHODS
 
+=head2 AssociateApprovalRuleTemplateWithRepository
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+=item RepositoryName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::AssociateApprovalRuleTemplateWithRepository>
+
+Returns: nothing
+
+Creates an association between an approval rule template and a
+specified repository. Then, the next time a pull request is created in
+the repository where the destination reference (if specified) matches
+the destination reference (branch) for the pull request, an approval
+rule that matches the template conditions is automatically created for
+that pull request. If no destination references are specified in the
+template, an approval rule that matches the template contents is
+created for all pull requests in that repository.
+
+
+=head2 BatchAssociateApprovalRuleTemplateWithRepositories
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+=item RepositoryNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::BatchAssociateApprovalRuleTemplateWithRepositories>
+
+Returns: a L<Paws::CodeCommit::BatchAssociateApprovalRuleTemplateWithRepositoriesOutput> instance
+
+Creates an association between an approval rule template and one or
+more specified repositories.
+
+
 =head2 BatchDescribeMergeConflicts
 
 =over
@@ -838,6 +1123,44 @@ merge of two commit specifiers using the squash or three-way merge
 strategy.
 
 
+=head2 BatchDisassociateApprovalRuleTemplateFromRepositories
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+=item RepositoryNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::BatchDisassociateApprovalRuleTemplateFromRepositories>
+
+Returns: a L<Paws::CodeCommit::BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput> instance
+
+Removes the association between an approval rule template and one or
+more specified repositories.
+
+
+=head2 BatchGetCommits
+
+=over
+
+=item CommitIds => ArrayRef[Str|Undef]
+
+=item RepositoryName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::BatchGetCommits>
+
+Returns: a L<Paws::CodeCommit::BatchGetCommitsOutput> instance
+
+Returns information about the contents of one or more commits in a
+repository.
+
+
 =head2 BatchGetRepositories
 
 =over
@@ -855,10 +1178,35 @@ Returns information about one or more repositories.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
-description and display it in a web page could expose users to
-potentially malicious code. Make sure that you HTML-encode the
-description field in any application that uses this API to display the
-repository description on a web page.
+description and display it in a webpage can expose users to potentially
+malicious code. Make sure that you HTML-encode the description field in
+any application that uses this API to display the repository
+description on a webpage.
+
+
+=head2 CreateApprovalRuleTemplate
+
+=over
+
+=item ApprovalRuleTemplateContent => Str
+
+=item ApprovalRuleTemplateName => Str
+
+=item [ApprovalRuleTemplateDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::CreateApprovalRuleTemplate>
+
+Returns: a L<Paws::CodeCommit::CreateApprovalRuleTemplateOutput> instance
+
+Creates a template for approval rules that can then be associated with
+one or more repositories in your AWS account. When you associate a
+template with a repository, AWS CodeCommit creates an approval rule
+that matches the conditions of the template for all pull requests that
+meet the conditions of the template. For more information, see
+AssociateApprovalRuleTemplateWithRepository.
 
 
 =head2 CreateBranch
@@ -878,7 +1226,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::CreateBranch>
 
 Returns: nothing
 
-Creates a new branch in a repository and points the branch to a commit.
+Creates a branch in a repository and points the branch to a commit.
 
 Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
@@ -940,6 +1288,26 @@ Returns: a L<Paws::CodeCommit::CreatePullRequestOutput> instance
 Creates a pull request in the specified repository.
 
 
+=head2 CreatePullRequestApprovalRule
+
+=over
+
+=item ApprovalRuleContent => Str
+
+=item ApprovalRuleName => Str
+
+=item PullRequestId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::CreatePullRequestApprovalRule>
+
+Returns: a L<Paws::CodeCommit::CreatePullRequestApprovalRuleOutput> instance
+
+Creates an approval rule for a pull request.
+
+
 =head2 CreateRepository
 
 =over
@@ -996,12 +1364,30 @@ Returns: a L<Paws::CodeCommit::CreateUnreferencedMergeCommitOutput> instance
 Creates an unreferenced commit that represents the result of merging
 two branches using a specified merge strategy. This can help you
 determine the outcome of a potential merge. This API cannot be used
-with the fast-forward merge strategy, as that strategy does not create
-a merge commit.
+with the fast-forward merge strategy because that strategy does not
+create a merge commit.
 
 This unreferenced merge commit can only be accessed using the GetCommit
 API or through git commands such as git fetch. To retrieve this commit,
 you must specify its commit ID or otherwise reference it.
+
+
+=head2 DeleteApprovalRuleTemplate
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::DeleteApprovalRuleTemplate>
+
+Returns: a L<Paws::CodeCommit::DeleteApprovalRuleTemplateOutput> instance
+
+Deletes a specified approval rule template. Deleting a template does
+not remove approval rules on pull requests already created with the
+template.
 
 
 =head2 DeleteBranch
@@ -1068,8 +1454,31 @@ Each argument is described in detail in: L<Paws::CodeCommit::DeleteFile>
 Returns: a L<Paws::CodeCommit::DeleteFileOutput> instance
 
 Deletes a specified file from a specified branch. A commit is created
-on the branch that contains the revision. The file will still exist in
-the commits prior to the commit that contains the deletion.
+on the branch that contains the revision. The file still exists in the
+commits earlier to the commit that contains the deletion.
+
+
+=head2 DeletePullRequestApprovalRule
+
+=over
+
+=item ApprovalRuleName => Str
+
+=item PullRequestId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::DeletePullRequestApprovalRule>
+
+Returns: a L<Paws::CodeCommit::DeletePullRequestApprovalRuleOutput> instance
+
+Deletes an approval rule from a specified pull request. Approval rules
+can be deleted from a pull request only if the pull request is open,
+and if the approval rule was created specifically for a pull request
+and not generated from an approval rule template associated with the
+repository where the pull request was created. You cannot delete an
+approval rule from a merged or closed pull request.
 
 
 =head2 DeleteRepository
@@ -1086,11 +1495,11 @@ Each argument is described in detail in: L<Paws::CodeCommit::DeleteRepository>
 Returns: a L<Paws::CodeCommit::DeleteRepositoryOutput> instance
 
 Deletes a repository. If a specified repository was already deleted, a
-null repository ID will be returned.
+null repository ID is returned.
 
 Deleting a repository also deletes all associated objects and metadata.
 After a repository is deleted, all future push calls to the deleted
-repository will fail.
+repository fail.
 
 
 =head2 DescribeMergeConflicts
@@ -1125,7 +1534,7 @@ Returns: a L<Paws::CodeCommit::DescribeMergeConflictsOutput> instance
 Returns information about one or more merge conflicts in the attempted
 merge of two commit specifiers using the squash or three-way merge
 strategy. If the merge option for the attempted merge is specified as
-FAST_FORWARD_MERGE, an exception will be thrown.
+FAST_FORWARD_MERGE, an exception is thrown.
 
 
 =head2 DescribePullRequestEvents
@@ -1152,6 +1561,63 @@ Returns: a L<Paws::CodeCommit::DescribePullRequestEventsOutput> instance
 Returns information about one or more pull request events.
 
 
+=head2 DisassociateApprovalRuleTemplateFromRepository
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+=item RepositoryName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::DisassociateApprovalRuleTemplateFromRepository>
+
+Returns: nothing
+
+Removes the association between a template and a repository so that
+approval rules based on the template are not automatically created when
+pull requests are created in the specified repository. This does not
+delete any approval rules previously created for pull requests through
+the template association.
+
+
+=head2 EvaluatePullRequestApprovalRules
+
+=over
+
+=item PullRequestId => Str
+
+=item RevisionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::EvaluatePullRequestApprovalRules>
+
+Returns: a L<Paws::CodeCommit::EvaluatePullRequestApprovalRulesOutput> instance
+
+Evaluates whether a pull request has met all the conditions specified
+in its associated approval rules.
+
+
+=head2 GetApprovalRuleTemplate
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetApprovalRuleTemplate>
+
+Returns: a L<Paws::CodeCommit::GetApprovalRuleTemplateOutput> instance
+
+Returns information about a specified approval rule template.
+
+
 =head2 GetBlob
 
 =over
@@ -1167,7 +1633,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetBlob>
 
 Returns: a L<Paws::CodeCommit::GetBlobOutput> instance
 
-Returns the base-64 encoded content of an individual blob within a
+Returns the base-64 encoded content of an individual blob in a
 repository.
 
 
@@ -1303,7 +1769,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetDifferences>
 Returns: a L<Paws::CodeCommit::GetDifferencesOutput> instance
 
 Returns information about the differences in a valid commit specifier
-(such as a branch, tag, HEAD, commit ID or other fully qualified
+(such as a branch, tag, HEAD, commit ID, or other fully qualified
 reference). Results can be limited to a specified path.
 
 
@@ -1425,8 +1891,8 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetMergeOptions>
 Returns: a L<Paws::CodeCommit::GetMergeOptionsOutput> instance
 
 Returns information about the merge options available for merging two
-specified branches. For details about why a particular merge option is
-not available, use GetMergeConflicts or DescribeMergeConflicts.
+specified branches. For details about why a merge option is not
+available, use GetMergeConflicts or DescribeMergeConflicts.
 
 
 =head2 GetPullRequest
@@ -1443,6 +1909,47 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetPullRequest>
 Returns: a L<Paws::CodeCommit::GetPullRequestOutput> instance
 
 Gets information about a pull request in a specified repository.
+
+
+=head2 GetPullRequestApprovalStates
+
+=over
+
+=item PullRequestId => Str
+
+=item RevisionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetPullRequestApprovalStates>
+
+Returns: a L<Paws::CodeCommit::GetPullRequestApprovalStatesOutput> instance
+
+Gets information about the approval states for a specified pull
+request. Approval states only apply to pull requests that have one or
+more approval rules applied to them.
+
+
+=head2 GetPullRequestOverrideState
+
+=over
+
+=item PullRequestId => Str
+
+=item RevisionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetPullRequestOverrideState>
+
+Returns: a L<Paws::CodeCommit::GetPullRequestOverrideStateOutput> instance
+
+Returns information about whether approval rules have been set aside
+(overridden) for a pull request, and if so, the Amazon Resource Name
+(ARN) of the user or identity that overrode the rules and their
+requirements for the pull request.
 
 
 =head2 GetRepository
@@ -1462,10 +1969,10 @@ Returns information about a repository.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
-description and display it in a web page could expose users to
-potentially malicious code. Make sure that you HTML-encode the
-description field in any application that uses this API to display the
-repository description on a web page.
+description and display it in a webpage can expose users to potentially
+malicious code. Make sure that you HTML-encode the description field in
+any application that uses this API to display the repository
+description on a webpage.
 
 
 =head2 GetRepositoryTriggers
@@ -1482,6 +1989,47 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetRepositoryTrigge
 Returns: a L<Paws::CodeCommit::GetRepositoryTriggersOutput> instance
 
 Gets information about triggers configured for a repository.
+
+
+=head2 ListApprovalRuleTemplates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::ListApprovalRuleTemplates>
+
+Returns: a L<Paws::CodeCommit::ListApprovalRuleTemplatesOutput> instance
+
+Lists all approval rule templates in the specified AWS Region in your
+AWS account. If an AWS Region is not specified, the AWS Region where
+you are signed in is used.
+
+
+=head2 ListAssociatedApprovalRuleTemplatesForRepository
+
+=over
+
+=item RepositoryName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::ListAssociatedApprovalRuleTemplatesForRepository>
+
+Returns: a L<Paws::CodeCommit::ListAssociatedApprovalRuleTemplatesForRepositoryOutput> instance
+
+Lists all approval rule templates that are associated with a specified
+repository.
 
 
 =head2 ListBranches
@@ -1547,6 +2095,27 @@ Returns: a L<Paws::CodeCommit::ListRepositoriesOutput> instance
 Gets information about one or more repositories.
 
 
+=head2 ListRepositoriesForApprovalRuleTemplate
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::ListRepositoriesForApprovalRuleTemplate>
+
+Returns: a L<Paws::CodeCommit::ListRepositoriesForApprovalRuleTemplateOutput> instance
+
+Lists all repositories associated with the specified approval rule
+template.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -1566,7 +2135,7 @@ Gets information about AWS tags for a specified Amazon Resource Name
 (ARN) in AWS CodeCommit. For a list of valid resources in AWS
 CodeCommit, see CodeCommit Resources and Operations
 (https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
-in the AWS CodeCommit User Guide.
+in theI< AWS CodeCommit User Guide>.
 
 
 =head2 MergeBranchesByFastForward
@@ -1760,6 +2329,27 @@ commit using the three-way merge strategy. If the merge is successful,
 it closes the pull request.
 
 
+=head2 OverridePullRequestApprovalRules
+
+=over
+
+=item OverrideStatus => Str
+
+=item PullRequestId => Str
+
+=item RevisionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::OverridePullRequestApprovalRules>
+
+Returns: nothing
+
+Sets aside (overrides) all approval rule requirements for a specified
+pull request.
+
+
 =head2 PostCommentForComparedCommit
 
 =over
@@ -1883,8 +2473,8 @@ Each argument is described in detail in: L<Paws::CodeCommit::PutRepositoryTrigge
 
 Returns: a L<Paws::CodeCommit::PutRepositoryTriggersOutput> instance
 
-Replaces all triggers for a repository. This can be used to create or
-delete triggers.
+Replaces all triggers for a repository. Used to create or delete
+triggers.
 
 
 =head2 TagResource
@@ -1906,7 +2496,7 @@ Adds or updates tags for a resource in AWS CodeCommit. For a list of
 valid resources in AWS CodeCommit, see CodeCommit Resources and
 Operations
 (https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
-in the AWS CodeCommit User Guide.
+in the I<AWS CodeCommit User Guide>.
 
 
 =head2 TestRepositoryTriggers
@@ -1926,8 +2516,8 @@ Returns: a L<Paws::CodeCommit::TestRepositoryTriggersOutput> instance
 
 Tests the functionality of repository triggers by sending information
 to the trigger target. If real data is available in the repository, the
-test will send data from the last commit. If no data is available,
-sample data will be generated.
+test sends data from the last commit. If no data is available, sample
+data is generated.
 
 
 =head2 UntagResource
@@ -1948,7 +2538,65 @@ Returns: nothing
 Removes tags for a resource in AWS CodeCommit. For a list of valid
 resources in AWS CodeCommit, see CodeCommit Resources and Operations
 (https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
-in the AWS CodeCommit User Guide.
+in the I<AWS CodeCommit User Guide>.
+
+
+=head2 UpdateApprovalRuleTemplateContent
+
+=over
+
+=item ApprovalRuleTemplateName => Str
+
+=item NewRuleContent => Str
+
+=item [ExistingRuleContentSha256 => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::UpdateApprovalRuleTemplateContent>
+
+Returns: a L<Paws::CodeCommit::UpdateApprovalRuleTemplateContentOutput> instance
+
+Updates the content of an approval rule template. You can change the
+number of required approvals, the membership of the approval rule, and
+whether an approval pool is defined.
+
+
+=head2 UpdateApprovalRuleTemplateDescription
+
+=over
+
+=item ApprovalRuleTemplateDescription => Str
+
+=item ApprovalRuleTemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::UpdateApprovalRuleTemplateDescription>
+
+Returns: a L<Paws::CodeCommit::UpdateApprovalRuleTemplateDescriptionOutput> instance
+
+Updates the description for a specified approval rule template.
+
+
+=head2 UpdateApprovalRuleTemplateName
+
+=over
+
+=item NewApprovalRuleTemplateName => Str
+
+=item OldApprovalRuleTemplateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::UpdateApprovalRuleTemplateName>
+
+Returns: a L<Paws::CodeCommit::UpdateApprovalRuleTemplateNameOutput> instance
+
+Updates the name of a specified approval rule template.
 
 
 =head2 UpdateComment
@@ -1989,6 +2637,51 @@ Sets or changes the default branch name for the specified repository.
 If you use this operation to change the default branch name to the
 current default branch name, a success message is returned even though
 the default branch did not change.
+
+
+=head2 UpdatePullRequestApprovalRuleContent
+
+=over
+
+=item ApprovalRuleName => Str
+
+=item NewRuleContent => Str
+
+=item PullRequestId => Str
+
+=item [ExistingRuleContentSha256 => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::UpdatePullRequestApprovalRuleContent>
+
+Returns: a L<Paws::CodeCommit::UpdatePullRequestApprovalRuleContentOutput> instance
+
+Updates the structure of an approval rule created specifically for a
+pull request. For example, you can change the number of required
+approvers and the approval pool for approvers.
+
+
+=head2 UpdatePullRequestApprovalState
+
+=over
+
+=item ApprovalState => Str
+
+=item PullRequestId => Str
+
+=item RevisionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::UpdatePullRequestApprovalState>
+
+Returns: nothing
+
+Updates the state of a user's approval on a pull request. The user is
+derived from the signed-in account when the request is made.
 
 
 =head2 UpdatePullRequestDescription
@@ -2064,10 +2757,10 @@ Sets or changes the comment or description for a repository.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
-description and display it in a web page could expose users to
-potentially malicious code. Make sure that you HTML-encode the
-description field in any application that uses this API to display the
-repository description on a web page.
+description and display it in a webpage can expose users to potentially
+malicious code. Make sure that you HTML-encode the description field in
+any application that uses this API to display the repository
+description on a webpage.
 
 
 =head2 UpdateRepositoryName
@@ -2086,10 +2779,10 @@ Each argument is described in detail in: L<Paws::CodeCommit::UpdateRepositoryNam
 Returns: nothing
 
 Renames a repository. The repository name must be unique across the
-calling AWS account. In addition, repository names are limited to 100
-alphanumeric, dash, and underscore characters, and cannot include
-certain characters. The suffix ".git" is prohibited. For a full
-description of the limits on repository names, see Limits
+calling AWS account. Repository names are limited to 100 alphanumeric,
+dash, and underscore characters, and cannot include certain characters.
+The suffix .git is prohibited. For more information about the limits on
+repository names, see Limits
 (https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
 in the AWS CodeCommit User Guide.
 

@@ -105,6 +105,7 @@ sub _call_uri {
     $joiner = '&'
       if ( index( $uri_template, '?' ) != -1 );
 
+
     foreach my $attribute ( $call->meta->get_all_attributes ) {
 
         if ( $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') ) {
@@ -199,6 +200,7 @@ sub _to_xml_attributes {
     my ( $self, $value ) = @_;
     return ""
       unless ( ref($value) and $value->can('_xml_attributes') );
+
 
     my $attributes = $value->_xml_attributes();
 
@@ -318,6 +320,7 @@ sub _to_xml_body {
     my ( $self, $call ) = @_;
 
     my $xml = '';
+
 	my $xml_extra = '';
     foreach my $attribute ( sort { $a->name cmp $b->name }
         $call->meta->get_all_attributes )
@@ -420,6 +423,7 @@ sub prepare_request_for_call {
         $request->content($xml_body);
 	    $request->header( 'content-type' => 'application/xml');  #this is an XML interface so it should have this header
     }
+
 
     if ( $call->can('_stream_param') ) {
         my $param_name = $call->_stream_param;

@@ -9,6 +9,7 @@ package Paws::EC2::CopySnapshot;
   has PresignedUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'presignedUrl' );
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
   has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -165,6 +166,12 @@ The ID of the Region that contains the snapshot to be copied.
 =head2 B<REQUIRED> SourceSnapshotId => Str
 
 The ID of the EBS snapshot to copy.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the new snapshot.
 
 
 

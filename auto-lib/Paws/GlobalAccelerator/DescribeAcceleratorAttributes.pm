@@ -1,7 +1,7 @@
 
 package Paws::GlobalAccelerator::DescribeAcceleratorAttributes;
   use Moose;
-  has AcceleratorArn => (is => 'ro', isa => 'Str');
+  has AcceleratorArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $globalaccelerator = Paws->service('GlobalAccelerator');
     my $DescribeAcceleratorAttributesResponse =
       $globalaccelerator->DescribeAcceleratorAttributes(
-      AcceleratorArn => 'MyGenericString',    # OPTIONAL
+      AcceleratorArn => 'MyGenericString',
+
       );
 
     # Results:
@@ -44,10 +45,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glo
 =head1 ATTRIBUTES
 
 
-=head2 AcceleratorArn => Str
+=head2 B<REQUIRED> AcceleratorArn => Str
 
 The Amazon Resource Name (ARN) of the accelerator with the attributes
-that you want to describe. Value is required.
+that you want to describe.
 
 
 

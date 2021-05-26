@@ -1,6 +1,7 @@
 package Paws::EC2::VgwTelemetry;
   use Moose;
   has AcceptedRouteCount => (is => 'ro', isa => 'Int', request_name => 'acceptedRouteCount', traits => ['NameInRequest']);
+  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
   has LastStatusChange => (is => 'ro', isa => 'Str', request_name => 'lastStatusChange', traits => ['NameInRequest']);
   has OutsideIpAddress => (is => 'ro', isa => 'Str', request_name => 'outsideIpAddress', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -42,28 +43,33 @@ This class has no description
 
 =head2 AcceptedRouteCount => Int
 
-  The number of accepted routes.
+The number of accepted routes.
+
+
+=head2 CertificateArn => Str
+
+The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
 
 
 =head2 LastStatusChange => Str
 
-  The date and time of the last change in status.
+The date and time of the last change in status.
 
 
 =head2 OutsideIpAddress => Str
 
-  The Internet-routable IP address of the virtual private gateway's
+The Internet-routable IP address of the virtual private gateway's
 outside interface.
 
 
 =head2 Status => Str
 
-  The status of the VPN tunnel.
+The status of the VPN tunnel.
 
 
 =head2 StatusMessage => Str
 
-  If an error occurs, a description of the error.
+If an error occurs, a description of the error.
 
 
 

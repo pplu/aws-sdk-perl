@@ -57,7 +57,7 @@ activity.
 
 The list of tags to add to a resource.
 
-Tags may only contain unicode letters, digits, whitespace, or these
+Tags may only contain Unicode letters, digits, white space, or these
 symbols: C<_ . : / = + - @>.
 
 

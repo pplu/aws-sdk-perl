@@ -48,13 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-Resource of the ARN to be tagged.
+Amazon Resource Name (ARN) of the license configuration.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::LicenseManager::Tag>]
 
-Names of the tags to attach to the resource.
+One or more tags.
 
 
 

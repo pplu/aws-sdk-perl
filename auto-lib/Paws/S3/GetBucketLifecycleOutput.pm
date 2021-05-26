@@ -1,7 +1,8 @@
 
 package Paws::S3::GetBucketLifecycleOutput;
   use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::Rule]', traits => ['NameInRequest'], request_name => 'Rule');
+  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::Rule]', request_name => 'Rule', traits => ['NameInRequest']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -17,7 +18,7 @@ Paws::S3::GetBucketLifecycleOutput
 
 =head2 Rules => ArrayRef[L<Paws::S3::Rule>]
 
-
+Container for a lifecycle rule.
 
 
 

@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> TicketId => Str
 
-Unique identifier for a matchmaking ticket.
+A unique identifier for a matchmaking ticket.
 
 
 

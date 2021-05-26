@@ -14,6 +14,16 @@ package Paws::LexRuntime;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub DeleteSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexRuntime::DeleteSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexRuntime::GetSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PostContent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexRuntime::PostContent', @_);
@@ -24,10 +34,15 @@ package Paws::LexRuntime;
     my $call_object = $self->new_with_coercions('Paws::LexRuntime::PostText', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexRuntime::PutSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/PostContent PostText / }
+  sub operations { qw/DeleteSession GetSession PostContent PostText PutSession / }
 
 1;
 
@@ -72,6 +87,48 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/run
 
 
 =head1 METHODS
+
+=head2 DeleteSession
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexRuntime::DeleteSession>
+
+Returns: a L<Paws::LexRuntime::DeleteSessionResponse> instance
+
+Removes session information for a specified bot, alias, and user ID.
+
+
+=head2 GetSession
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item UserId => Str
+
+=item [CheckpointLabelFilter => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexRuntime::GetSession>
+
+Returns: a L<Paws::LexRuntime::GetSessionResponse> instance
+
+Returns session information for a specified bot, alias, and user ID.
+
 
 =head2 PostContent
 
@@ -189,7 +246,7 @@ C<x-amz-slot-to-elicit> header is omitted.
 
 In addition, Amazon Lex also returns your application-specific
 C<sessionAttributes>. For more information, see Managing Conversation
-Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+Context (https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
 =head2 PostText
@@ -215,10 +272,9 @@ Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 
 Returns: a L<Paws::LexRuntime::PostTextResponse> instance
 
-Sends user input (text-only) to Amazon Lex. Client applications can use
-this API to send requests to Amazon Lex at runtime. Amazon Lex then
-interprets the user input using the machine learning model it built for
-the bot.
+Sends user input to Amazon Lex. Client applications can use this API to
+send requests to Amazon Lex at runtime. Amazon Lex then interprets the
+user input using the machine learning model it built for the bot.
 
 In response, Amazon Lex returns the next C<message> to convey to the
 user an optional C<responseCard> to display. Consider the following
@@ -299,7 +355,40 @@ is set to ElicitIntent and C<slotToElicit> is set to null.
 
 In addition, Amazon Lex also returns your application-specific
 C<sessionAttributes>. For more information, see Managing Conversation
-Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+Context (https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+
+
+=head2 PutSession
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item UserId => Str
+
+=item [Accept => Str]
+
+=item [DialogAction => L<Paws::LexRuntime::DialogAction>]
+
+=item [RecentIntentSummaryView => ArrayRef[L<Paws::LexRuntime::IntentSummary>]]
+
+=item [SessionAttributes => L<Paws::LexRuntime::StringMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexRuntime::PutSession>
+
+Returns: a L<Paws::LexRuntime::PutSessionResponse> instance
+
+Creates a new session or modifies an existing session with an Amazon
+Lex bot. Use this operation to enable your application to set the state
+of the bot.
+
+For more information, see Managing Sessions
+(https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html).
 
 
 

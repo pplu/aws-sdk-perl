@@ -40,17 +40,17 @@ This class has no description
 
 =head2 ActiveDirectory => L<Paws::EC2::DirectoryServiceAuthentication>
 
-  Information about the Active Directory, if applicable.
+Information about the Active Directory, if applicable.
 
 
 =head2 MutualAuthentication => L<Paws::EC2::CertificateAuthentication>
 
-  Information about the authentication certificates, if applicable.
+Information about the authentication certificates, if applicable.
 
 
 =head2 Type => Str
 
-  The authentication type used.
+The authentication type used.
 
 
 

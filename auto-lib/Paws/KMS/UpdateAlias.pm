@@ -45,16 +45,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> AliasName => Str
 
-Specifies the name of the alias to change. This value must begin with
-C<alias/> followed by the alias name, such as C<alias/ExampleAlias>.
+Identifies the alias that is changing its CMK. This value must begin
+with C<alias/> followed by the alias name, such as
+C<alias/ExampleAlias>. You cannot use UpdateAlias to change the alias
+name.
 
 
 
 =head2 B<REQUIRED> TargetKeyId => Str
 
-Unique identifier of the customer master key (CMK) to be mapped to the
-alias. When the update operation completes, the alias will point to
-this CMK.
+Identifies the CMK to associate with the alias. When the update
+operation completes, the alias will point to this CMK.
+
+The CMK must be in the same AWS account and Region as the alias. Also,
+the new target CMK must be the same type as the current target CMK
+(both symmetric or both asymmetric) and they must have the same key
+usage.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

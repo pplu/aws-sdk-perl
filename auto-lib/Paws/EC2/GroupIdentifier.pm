@@ -39,12 +39,12 @@ This class has no description
 
 =head2 GroupId => Str
 
-  The ID of the security group.
+The ID of the security group.
 
 
 =head2 GroupName => Str
 
-  The name of the security group.
+The name of the security group.
 
 
 

@@ -102,6 +102,8 @@ media types, see Media Types
 choose to specify the C<MediaType>, see Naming Requirements
 (https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
 
+Example valid values include "video/h264" and "video/h264,audio/aac".
+
 This parameter is optional; the default value is C<null> (or empty in
 JSON).
 

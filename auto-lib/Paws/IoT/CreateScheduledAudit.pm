@@ -72,16 +72,17 @@ day of the month.
 =head2 DayOfWeek => Str
 
 The day of the week on which the scheduled audit takes place. Can be
-one of "SUN", "MON", "TUE", "WED", "THU", "FRI" or "SAT". This field is
-required if the "frequency" parameter is set to "WEEKLY" or "BIWEEKLY".
+one of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field
+is required if the "frequency" parameter is set to "WEEKLY" or
+"BIWEEKLY".
 
 Valid values are: C<"SUN">, C<"MON">, C<"TUE">, C<"WED">, C<"THU">, C<"FRI">, C<"SAT">
 
 =head2 B<REQUIRED> Frequency => Str
 
 How often the scheduled audit takes place. Can be one of "DAILY",
-"WEEKLY", "BIWEEKLY" or "MONTHLY". The actual start time of each audit
-is determined by the system.
+"WEEKLY", "BIWEEKLY" or "MONTHLY". The start time of each audit is
+determined by the system.
 
 Valid values are: C<"DAILY">, C<"WEEKLY">, C<"BIWEEKLY">, C<"MONTHLY">
 
@@ -93,7 +94,7 @@ The name you want to give to the scheduled audit. (Max. 128 chars)
 
 =head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
 
-Metadata which can be used to manage the scheduled audit.
+Metadata that can be used to manage the scheduled audit.
 
 
 
@@ -101,7 +102,7 @@ Metadata which can be used to manage the scheduled audit.
 
 Which checks are performed during the scheduled audit. Checks must be
 enabled for your account. (Use C<DescribeAccountAuditConfiguration> to
-see the list of all checks including those that are enabled or
+see the list of all checks, including those that are enabled or use
 C<UpdateAccountAuditConfiguration> to select which checks are enabled.)
 
 

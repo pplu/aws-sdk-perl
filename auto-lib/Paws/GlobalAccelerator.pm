@@ -212,6 +212,9 @@ AWS Global Accelerator is a network layer service in which you create
 accelerators to improve availability and performance for internet
 applications used by a global audience.
 
+You must specify the US-West-2 (Oregon) Region to create or update
+accelerators.
+
 Global Accelerator provides you with static IP addresses that you
 associate with your accelerator. These IP addresses are anycast from
 the AWS edge network and distribute incoming application traffic across
@@ -321,6 +324,9 @@ that process inbound connections and direct traffic to one or more
 endpoint groups, each of which includes endpoints, such as Network Load
 Balancers. To see an AWS CLI example of creating an accelerator, scroll
 down to B<Example>.
+
+You must specify the US-West-2 (Oregon) Region to create or update
+accelerators.
 
 
 =head2 CreateEndpointGroup
@@ -457,7 +463,7 @@ accelerator, scroll down to B<Example>.
 
 =over
 
-=item [AcceleratorArn => Str]
+=item AcceleratorArn => Str
 
 
 =back
@@ -578,14 +584,18 @@ Each argument is described in detail in: L<Paws::GlobalAccelerator::UpdateAccele
 
 Returns: a L<Paws::GlobalAccelerator::UpdateAcceleratorResponse> instance
 
-Update an accelerator.
+Update an accelerator. To see an AWS CLI example of updating an
+accelerator, scroll down to B<Example>.
+
+You must specify the US-West-2 (Oregon) Region to create or update
+accelerators.
 
 
 =head2 UpdateAcceleratorAttributes
 
 =over
 
-=item [AcceleratorArn => Str]
+=item AcceleratorArn => Str
 
 =item [FlowLogsEnabled => Bool]
 

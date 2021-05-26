@@ -40,21 +40,21 @@ This class has no description
 
 =head2 ActiveDirectory => L<Paws::EC2::DirectoryServiceAuthenticationRequest>
 
-  Information about the Active Directory to be used, if applicable. You
+Information about the Active Directory to be used, if applicable. You
 must provide this information if B<Type> is
 C<directory-service-authentication>.
 
 
 =head2 MutualAuthentication => L<Paws::EC2::CertificateAuthenticationRequest>
 
-  Information about the authentication certificates to be used, if
+Information about the authentication certificates to be used, if
 applicable. You must provide this information if B<Type> is
 C<certificate-authentication>.
 
 
 =head2 Type => Str
 
-  The type of client authentication to be used. Specify
+The type of client authentication to be used. Specify
 C<certificate-authentication> to use certificate-based authentication,
 or C<directory-service-authentication> to use Active Directory
 authentication.

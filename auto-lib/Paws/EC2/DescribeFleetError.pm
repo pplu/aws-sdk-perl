@@ -41,28 +41,28 @@ This class has no description
 
 =head2 ErrorCode => Str
 
-  The error code that indicates why the instance could not be launched.
+The error code that indicates why the instance could not be launched.
 For more information about error codes, see Error Codes
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html.html).
 
 
 =head2 ErrorMessage => Str
 
-  The error message that describes why the instance could not be
-launched. For more information about error messages, see ee Error Codes
+The error message that describes why the instance could not be
+launched. For more information about error messages, see Error Codes
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html.html).
 
 
 =head2 LaunchTemplateAndOverrides => L<Paws::EC2::LaunchTemplateAndOverridesResponse>
 
-  The launch templates and overrides that were used for launching the
-instances. Any parameters that you specify in the Overrides override
-the same parameters in the launch template.
+The launch templates and overrides that were used for launching the
+instances. The values that you specify in the Overrides replace the
+values in the launch template.
 
 
 =head2 Lifecycle => Str
 
-  Indicates if the instance that could not be launched was a Spot
+Indicates if the instance that could not be launched was a Spot
 Instance or On-Demand Instance.
 
 

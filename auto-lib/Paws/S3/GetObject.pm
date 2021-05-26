@@ -21,6 +21,7 @@ package Paws::S3::GetObject;
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetObject');
@@ -29,6 +30,7 @@ package Paws::S3::GetObject;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::GetObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +115,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name containing the object.
 
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
@@ -147,7 +158,7 @@ time, otherwise return a 412 (precondition failed).
 
 =head2 B<REQUIRED> Key => Str
 
-
+Key of the object to get.
 
 
 
@@ -162,7 +173,7 @@ the part specified. Useful for downloading just a part of an object.
 =head2 Range => Str
 
 Downloads the specified range bytes of an object. For more information
-about the HTTP Range header, go to
+about the HTTP Range header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
@@ -175,44 +186,44 @@ Valid values are: C<"requester">
 
 =head2 ResponseCacheControl => Str
 
-Sets the Cache-Control header of the response.
+Sets the C<Cache-Control> header of the response.
 
 
 
 =head2 ResponseContentDisposition => Str
 
-Sets the Content-Disposition header of the response
+Sets the C<Content-Disposition> header of the response
 
 
 
 =head2 ResponseContentEncoding => Str
 
-Sets the Content-Encoding header of the response.
+Sets the C<Content-Encoding> header of the response.
 
 
 
 =head2 ResponseContentLanguage => Str
 
-Sets the Content-Language header of the response.
+Sets the C<Content-Language> header of the response.
 
 
 
 =head2 ResponseContentType => Str
 
-Sets the Content-Type header of the response.
+Sets the C<Content-Type> header of the response.
 
 
 
 =head2 ResponseExpires => Str
 
-Sets the Expires header of the response.
+Sets the C<Expires> header of the response.
 
 
 
 =head2 SSECustomerAlgorithm => Str
 
-Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256).
+Specifies the algorithm to use to when encrypting the object (for
+example, AES256).
 
 
 
@@ -220,9 +231,9 @@ AES256).
 
 Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
-discarded; Amazon does not store the encryption key. The key must be
+discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-x-amz-server-side-encryption-customer-algorithm header.
+C<x-amz-server-side-encryption-customer-algorithm> header.
 
 
 
@@ -230,7 +241,7 @@ x-amz-server-side-encryption-customer-algorithm header.
 
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
-ensure the encryption key was transmitted without error.
+ensure that the encryption key was transmitted without error.
 
 
 

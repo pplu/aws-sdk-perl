@@ -39,12 +39,12 @@ This class has no description
 
 =head2 From => Int
 
-  The first port in the range.
+The first port in the range.
 
 
 =head2 To => Int
 
-  The last port in the range.
+The last port in the range.
 
 
 

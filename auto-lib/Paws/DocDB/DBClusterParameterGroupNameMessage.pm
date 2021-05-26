@@ -17,7 +17,7 @@ Paws::DocDB::DBClusterParameterGroupNameMessage
 
 =head2 DBClusterParameterGroupName => Str
 
-The name of a DB cluster parameter group.
+The name of a cluster parameter group.
 
 Constraints:
 

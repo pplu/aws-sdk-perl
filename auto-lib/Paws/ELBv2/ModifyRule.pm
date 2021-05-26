@@ -57,12 +57,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
 The actions. Each rule must include exactly one of the following types
-of actions: C<forward>, C<fixed-response>, or C<redirect>.
+of actions: C<forward>, C<fixed-response>, or C<redirect>, and it must
+be the last action to be performed.
 
-If the action type is C<forward>, you specify a target group. The
-protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
-or TCP_UDP for a Network Load Balancer.
+If the action type is C<forward>, you specify one or more target
+groups. The protocol of the target group must be HTTP or HTTPS for an
+Application Load Balancer. The protocol of the target group must be
+TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is C<authenticate-oidc>, you
 authenticate users through an identity provider that is OpenID Connect

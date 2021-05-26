@@ -61,7 +61,10 @@ accidental repository lock outs.
 
 =head2 B<REQUIRED> PolicyText => Str
 
-The JSON repository policy text to apply to the repository.
+The JSON repository policy text to apply to the repository. For more
+information, see Amazon ECR Repository Policy Examples
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html)
+in the I<Amazon Elastic Container Registry User Guide>.
 
 
 

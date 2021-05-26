@@ -38,7 +38,7 @@ This class has no description
 
 =head2 LicenseConfigurationArn => Str
 
-  The Amazon Resource Name (ARN) of the license configuration.
+The Amazon Resource Name (ARN) of the license configuration.
 
 
 

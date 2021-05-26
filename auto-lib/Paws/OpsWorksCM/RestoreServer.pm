@@ -22,7 +22,7 @@ Paws::OpsWorksCM::RestoreServer - Arguments for method RestoreServer on L<Paws::
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RestoreServer on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method RestoreServer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreServer.
@@ -51,11 +51,11 @@ The ID of the backup that you want to use to restore a server.
 
 =head2 InstanceType => Str
 
-The type of the instance to create. Valid values must be specified in
-the following format: C<^([cm][34]|t2).*> For example, C<m5.large>.
-Valid values are C<m5.large>, C<r5.xlarge>, and C<r5.2xlarge>. If you
-do not specify this parameter, RestoreServer uses the instance type
-from the specified backup.
+The type of instance to restore. Valid values must be specified in the
+following format: C<^([cm][34]|t2).*> For example, C<m5.large>. Valid
+values are C<m5.large>, C<r5.xlarge>, and C<r5.2xlarge>. If you do not
+specify this parameter, RestoreServer uses the instance type from the
+specified backup.
 
 
 

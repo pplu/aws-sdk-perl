@@ -93,7 +93,7 @@ Example: C<5.1.49>
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
 
 
 
@@ -139,8 +139,8 @@ marker, up to the value specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more than
 the C<MaxRecords> value is available, a pagination token called a
-marker is included in the response so that the following results can be
-retrieved.
+marker is included in the response so you can retrieve the remaining
+results.
 
 Default: 100
 

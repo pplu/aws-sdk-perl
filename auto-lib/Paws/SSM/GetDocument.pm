@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DocumentType       = $GetDocumentResult->DocumentType;
     my $DocumentVersion    = $GetDocumentResult->DocumentVersion;
     my $Name               = $GetDocumentResult->Name;
+    my $Requires           = $GetDocumentResult->Requires;
     my $Status             = $GetDocumentResult->Status;
     my $StatusInformation  = $GetDocumentResult->StatusInformation;
     my $VersionName        = $GetDocumentResult->VersionName;
@@ -61,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 Returns the document in the specified format. The document format can
 be either JSON or YAML. JSON is the default format.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentVersion => Str
 

@@ -40,17 +40,17 @@ This class has no description
 
 =head2 GroupId => Str
 
-  The ID of your security group.
+The ID of your security group.
 
 
 =head2 ReferencingVpcId => Str
 
-  The ID of the VPC with the referencing security group.
+The ID of the VPC with the referencing security group.
 
 
 =head2 VpcPeeringConnectionId => Str
 
-  The ID of the VPC peering connection.
+The ID of the VPC peering connection.
 
 
 

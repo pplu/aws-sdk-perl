@@ -22,7 +22,7 @@ Token for the next set of results.
 
 =head2 ResourceInventoryList => ArrayRef[L<Paws::LicenseManager::ResourceInventory>]
 
-The detailed list of resources.
+Information about the resources.
 
 
 =head2 _request_id => Str

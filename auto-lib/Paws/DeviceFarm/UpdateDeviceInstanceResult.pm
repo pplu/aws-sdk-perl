@@ -16,7 +16,7 @@ Paws::DeviceFarm::UpdateDeviceInstanceResult
 
 =head2 DeviceInstance => L<Paws::DeviceFarm::DeviceInstance>
 
-An object containing information about your device instance.
+An object that contains information about your device instance.
 
 
 =head2 _request_id => Str

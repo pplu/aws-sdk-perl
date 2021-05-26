@@ -40,18 +40,18 @@ This class has no description
 
 =head2 CloudwatchLogGroup => Str
 
-  The name of the CloudWatch Logs log group.
+The name of the CloudWatch Logs log group.
 
 
 =head2 CloudwatchLogStream => Str
 
-  The name of the CloudWatch Logs log stream to which the connection data
+The name of the CloudWatch Logs log stream to which the connection data
 is published.
 
 
 =head2 Enabled => Bool
 
-  Indicates whether connection logging is enabled.
+Indicates whether connection logging is enabled.
 
 
 

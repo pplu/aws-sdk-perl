@@ -1,6 +1,7 @@
 
 package Paws::Polly::SynthesizeSpeech;
   use Moose;
+  has Engine => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OutputFormat => (is => 'ro', isa => 'Str', required => 1);
@@ -59,6 +60,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pol
 =head1 ATTRIBUTES
 
 
+=head2 Engine => Str
+
+Specifies the engine (C<standard> or C<neural>) for Amazon Polly to use
+when processing input text for speech synthesis. Using a voice that is
+not supported for the engine selected will result in an error.
+
+Valid values are: C<"standard">, C<"neural">
+
 =head2 LanguageCode => Str
 
 Optional language code for the Synthesize Speech request. This is only
@@ -81,7 +90,7 @@ List of one or more pronunciation lexicon names you want the service to
 apply during synthesis. Lexicons are applied only if the language of
 the lexicon is the same as the language of the voice. For information
 about storing lexicons, see PutLexicon
-(http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html).
+(https://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html).
 
 
 
@@ -100,10 +109,11 @@ Valid values are: C<"json">, C<"mp3">, C<"ogg_vorbis">, C<"pcm">
 
 The audio frequency specified in Hz.
 
-The valid values for C<mp3> and C<ogg_vorbis> are "8000", "16000", and
-"22050". The default value is "22050".
+The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
+and "24000". The default value for standard voices is "22050". The
+default value for neural voices is "24000".
 
-Valid values for C<pcm> are "8000" and "16000" The default value is
+Valid values for pcm are "8000" and "16000" The default value is
 "16000".
 
 
@@ -125,7 +135,7 @@ follow the SSML format for the input text.
 
 Specifies whether the input text is plain text or SSML. The default
 value is plain text. For more information, see Using SSML
-(http://docs.aws.amazon.com/polly/latest/dg/ssml.html).
+(https://docs.aws.amazon.com/polly/latest/dg/ssml.html).
 
 Valid values are: C<"ssml">, C<"text">
 
@@ -133,10 +143,10 @@ Valid values are: C<"ssml">, C<"text">
 
 Voice ID to use for the synthesis. You can get a list of available
 voice IDs by calling the DescribeVoices
-(http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
+(https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
 operation.
 
-Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
+Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Camila">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Lupe">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
 
 
 =head1 SEE ALSO

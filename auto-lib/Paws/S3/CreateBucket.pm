@@ -4,13 +4,14 @@ package Paws::S3::CreateBucket;
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has CreateBucketConfiguration => (is => 'ro', isa => 'Paws::S3::CreateBucketConfiguration');
+  has CreateBucketConfiguration => (is => 'ro', isa => 'Paws::S3::CreateBucketConfiguration', traits => ['ParamInBody']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
   has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
   has GrantWrite => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write', traits => ['ParamInHeader']);
   has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
   has ObjectLockEnabledForBucket => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bucket-object-lock-enabled', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -20,6 +21,7 @@ package Paws::S3::CreateBucket;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CreateBucketOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +76,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket to create.
 
 
 
@@ -86,7 +88,7 @@ Size of the body in bytes.
 
 =head2 CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>
 
-
+The configuration information for the bucket.
 
 
 
@@ -124,8 +126,8 @@ Allows grantee to write the ACL for the applicable bucket.
 
 =head2 ObjectLockEnabledForBucket => Bool
 
-Specifies whether you want Amazon S3 object lock to be enabled for the
-new bucket.
+Specifies whether you want S3 Object Lock to be enabled for the new
+bucket.
 
 
 

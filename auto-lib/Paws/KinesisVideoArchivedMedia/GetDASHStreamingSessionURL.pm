@@ -68,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 DASHFragmentSelector => L<Paws::KinesisVideoArchivedMedia::DASHFragmentSelector>
 
-The time range of the requested fragment, and the source of the
+The time range of the requested fragment and the source of the
 timestamps.
 
 This parameter is required if C<PlaybackMode> is C<ON_DEMAND> or

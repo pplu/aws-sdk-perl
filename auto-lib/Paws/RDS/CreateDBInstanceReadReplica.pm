@@ -6,8 +6,11 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
@@ -127,11 +130,44 @@ lowercase string.
 
 
 
+=head2 DBParameterGroupName => Str
+
+The name of the DB parameter group to associate with this DB instance.
+
+If you do not specify a value for C<DBParameterGroupName>, then Amazon
+RDS uses the C<DBParameterGroup> of source DB instance for a same
+region Read Replica, or the default C<DBParameterGroup> for the
+specified DB engine for a cross region Read Replica.
+
+Currently, specifying a parameter group for this operation is only
+supported for Oracle DB instances.
+
+Constraints:
+
+=over
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens
+
+=back
+
+
+
+
 =head2 DBSubnetGroupName => Str
 
 Specifies a DB subnet group for the DB instance. The new DB instance is
 created in the VPC associated with the DB subnet group. If no DB subnet
-group is specified, then the new DB instance is not created in a VPC.
+group is specified, then the new DB instance isn't created in a VPC.
 
 Constraints:
 
@@ -186,6 +222,26 @@ information, see Deleting a DB Instance
 
 
 
+=head2 Domain => Str
+
+The Active Directory directory ID to create the DB instance in.
+
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see Using Kerberos Authentication with Amazon RDS for
+Oracle
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+in the I<Amazon RDS User Guide>.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the new DB instance is to export to CloudWatch
@@ -201,27 +257,13 @@ in the I<Amazon RDS User Guide>.
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines,
+see CreateDBInstance.
 
-You can enable IAM database authentication for the following database
-engines
-
-=over
-
-=item *
-
-For MySQL 5.6, minor version 5.6.34 or higher
-
-=item *
-
-For MySQL 5.7, minor version 5.7.16 or higher
-
-=item *
-
-Aurora MySQL 5.6 or higher
-
-=back
-
+For more information about IAM database authentication, see IAM
+Database Authentication for MySQL and PostgreSQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -350,10 +392,9 @@ C<CreateDBInstanceReadReplica> API action in the source AWS Region that
 contains the source DB instance.
 
 You must specify this parameter when you create an encrypted Read
-Replica from another AWS Region by using the Amazon RDS API. You can
-specify the C<--source-region> option instead of this parameter when
-you create an encrypted Read Replica from another AWS Region by using
-the AWS CLI.
+Replica from another AWS Region by using the Amazon RDS API. Don't
+specify C<PreSignedUrl> when you are creating an encrypted Read Replica
+in the same AWS Region.
 
 The presigned URL must be a valid request for the
 C<CreateDBInstanceReadReplica> API action that can be executed in the
@@ -404,6 +445,12 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 and Signature Version 4 Signing Process
 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
+
 
 
 =head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
@@ -418,7 +465,7 @@ instance class of the DB instance.
 A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance is not publicly accessible, it
+public IP address. When the DB instance isn't publicly accessible, it
 is an internal instance with a DNS name that resolves to a private IP
 address. For more information, see CreateDBInstance.
 

@@ -2,6 +2,7 @@
 package Paws::PersonalizeRuntime::GetRecommendations;
   use Moose;
   has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn', required => 1);
+  has Context => (is => 'ro', isa => 'Paws::PersonalizeRuntime::Context', traits => ['NameInRequest'], request_name => 'context');
   has ItemId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'itemId');
   has NumResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numResults');
   has UserId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userId');
@@ -33,9 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $personalize-runtime = Paws->service('PersonalizeRuntime');
     my $GetRecommendationsResponse = $personalize -runtime->GetRecommendations(
       CampaignArn => 'MyArn',
-      ItemId      => 'MyItemID',    # OPTIONAL
-      NumResults  => 1,             # OPTIONAL
-      UserId      => 'MyUserID',    # OPTIONAL
+      Context     => {
+        'MyAttributeName' =>
+          'MyAttributeValue',    # key: max: 150, value: max: 1000
+      },    # OPTIONAL
+      ItemId     => 'MyItemID',    # OPTIONAL
+      NumResults => 1,             # OPTIONAL
+      UserId     => 'MyUserID',    # OPTIONAL
     );
 
     # Results:
@@ -56,6 +61,15 @@ recommendations.
 
 
 
+=head2 Context => L<Paws::PersonalizeRuntime::Context>
+
+The contextual metadata to use when getting recommendations. Contextual
+metadata includes any interaction information that might be relevant
+when getting a user's recommendations, such as the user's current
+location or device type. For more information, see Contextual Metadata.
+
+
+
 =head2 ItemId => Str
 
 The item ID to provide recommendations for.
@@ -66,7 +80,7 @@ Required for C<RELATED_ITEMS> recipe type.
 
 =head2 NumResults => Int
 
-The number of results to return. The default is 25. The maximum is 100.
+The number of results to return. The default is 25. The maximum is 500.
 
 
 

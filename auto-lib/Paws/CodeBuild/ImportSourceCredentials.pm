@@ -3,6 +3,7 @@ package Paws::CodeBuild::ImportSourceCredentials;
   use Moose;
   has AuthType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authType' , required => 1);
   has ServerType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverType' , required => 1);
+  has ShouldOverwrite => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'shouldOverwrite' );
   has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token' , required => 1);
   has Username => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'username' );
 
@@ -31,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $codebuild = Paws->service('CodeBuild');
     my $ImportSourceCredentialsOutput = $codebuild->ImportSourceCredentials(
-      AuthType   => 'OAUTH',
-      ServerType => 'GITHUB',
-      Token      => 'MySensitiveNonEmptyString',
-      Username   => 'MyNonEmptyString',            # OPTIONAL
+      AuthType        => 'OAUTH',
+      ServerType      => 'GITHUB',
+      Token           => 'MySensitiveNonEmptyString',
+      ShouldOverwrite => 1,                             # OPTIONAL
+      Username        => 'MyNonEmptyString',            # OPTIONAL
     );
 
     # Results:
@@ -62,6 +64,14 @@ Valid values are: C<"OAUTH">, C<"BASIC_AUTH">, C<"PERSONAL_ACCESS_TOKEN">
 The source provider used for this project.
 
 Valid values are: C<"GITHUB">, C<"BITBUCKET">, C<"GITHUB_ENTERPRISE">
+
+=head2 ShouldOverwrite => Bool
+
+Set to C<false> to prevent overwriting the repository source
+credentials. Set to C<true> to overwrite the repository source
+credentials. The default value is C<true>.
+
+
 
 =head2 B<REQUIRED> Token => Str
 

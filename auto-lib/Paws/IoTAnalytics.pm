@@ -511,10 +511,10 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreatePipeline>
 
 Returns: a L<Paws::IoTAnalytics::CreatePipelineResponse> instance
 
-Creates a pipeline. A pipeline consumes messages from one or more
-channels and allows you to process the messages before storing them in
-a data store. You must specify both a C<channel> and a C<datastore>
-activity and, optionally, as many as 23 additional activities in the
+Creates a pipeline. A pipeline consumes messages from a channel and
+allows you to process the messages before storing them in a data store.
+You must specify both a C<channel> and a C<datastore> activity and,
+optionally, as many as 23 additional activities in the
 C<pipelineActivities> array.
 
 

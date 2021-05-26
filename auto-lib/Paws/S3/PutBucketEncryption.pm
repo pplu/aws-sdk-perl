@@ -4,7 +4,8 @@ package Paws::S3::PutBucketEncryption;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has ServerSideEncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionConfiguration', required => 1);
+  has ServerSideEncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionConfiguration', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -14,6 +15,7 @@ package Paws::S3::PutBucketEncryption;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -60,9 +62,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 Specifies default encryption for a bucket using server-side encryption
-with Amazon S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS).
-For information about the Amazon S3 default encryption feature, see
-Amazon S3 Default Bucket Encryption
+with Amazon S3-managed keys (SSE-S3) or customer master keys stored in
+AWS KMS (SSE-KMS). For information about the Amazon S3 default
+encryption feature, see Amazon S3 Default Bucket Encryption
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 

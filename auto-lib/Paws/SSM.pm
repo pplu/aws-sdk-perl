@@ -300,6 +300,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetAutomationExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCalendarState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetCalendarState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCommandInvocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetCommandInvocation', @_);
@@ -608,6 +613,11 @@ package Paws::SSM;
   sub UpdatePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdatePatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateResourceDataSync {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateResourceDataSync', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateServiceSetting {
@@ -1538,7 +1548,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateServiceSetting / }
+  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCalendarState GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateResourceDataSync UpdateServiceSetting / }
 
 1;
 
@@ -1699,12 +1709,20 @@ Each argument is described in detail in: L<Paws::SSM::CreateActivation>
 
 Returns: a L<Paws::SSM::CreateActivationResult> instance
 
-Registers your on-premises server or virtual machine with Amazon EC2 so
-that you can manage these resources using Run Command. An on-premises
-server or virtual machine that has been registered with EC2 is called a
-managed instance. For more information about activations, see Setting
-Up AWS Systems Manager for Hybrid Environments
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html).
+Generates an activation code and activation ID you can use to register
+your on-premises server or virtual machine (VM) with Systems Manager.
+Registering these machines with Systems Manager makes it possible to
+manage them using Systems Manager capabilities. You use the activation
+code and ID when installing SSM Agent on machines in your hybrid
+environment. For more information about requirements for managing
+on-premises instances and VMs using Systems Manager, see Setting Up AWS
+Systems Manager for Hybrid Environments
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
+in the I<AWS Systems Manager User Guide>.
+
+On-premises servers or VMs that are registered with Systems Manager and
+Amazon EC2 instances that you manage with Systems Manager are all
+called I<managed instances>.
 
 
 =head2 CreateAssociation
@@ -1793,6 +1811,8 @@ exception.
 
 =item [DocumentType => Str]
 
+=item [Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]]
+
 =item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
 =item [TargetType => Str]
@@ -1847,6 +1867,14 @@ Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
 
 Creates a new maintenance window.
 
+The value you specify for C<Duration> determines the specific end time
+for the maintenance window based on the time it begins. No maintenance
+window tasks are permitted to start after the resulting endtime minus
+the number of hours you specify for C<Cutoff>. For example, if the
+maintenance window starts at 3 PM, the duration is three hours, and the
+value you specify for C<Cutoff> is one hour, no maintenance window
+tasks can start after 5 PM.
+
 
 =head2 CreateOpsItem
 
@@ -1858,6 +1886,8 @@ Creates a new maintenance window.
 
 =item Title => Str
 
+=item [Category => Str]
+
 =item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
 
 =item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
@@ -1865,6 +1895,8 @@ Creates a new maintenance window.
 =item [Priority => Int]
 
 =item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+
+=item [Severity => Str]
 
 =item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
@@ -1937,9 +1969,13 @@ each supported operating system type, see PatchFilter
 
 =over
 
-=item S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
-
 =item SyncName => Str
+
+=item [S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>]
+
+=item [SyncSource => L<Paws::SSM::ResourceDataSyncSource>]
+
+=item [SyncType => Str]
 
 
 =back
@@ -1948,19 +1984,36 @@ Each argument is described in detail in: L<Paws::SSM::CreateResourceDataSync>
 
 Returns: a L<Paws::SSM::CreateResourceDataSyncResult> instance
 
-Creates a resource data sync configuration to a single bucket in Amazon
-S3. This is an asynchronous operation that returns immediately. After a
-successful initial sync is completed, the system continuously syncs
-data to the Amazon S3 bucket. To check the status of the sync, use the
+A resource data sync helps you view data from multiple sources in a
+single location. Systems Manager offers two types of resource data
+sync: C<SyncToDestination> and C<SyncFromSource>.
+
+You can configure Systems Manager Inventory to use the
+C<SyncToDestination> type to synchronize Inventory data from multiple
+AWS Regions to a single Amazon S3 bucket. For more information, see
+Configuring Resource Data Sync for Inventory
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
+in the I<AWS Systems Manager User Guide>.
+
+You can configure Systems Manager Explorer to use the C<SyncFromSource>
+type to synchronize operational work items (OpsItems) and operational
+data (OpsData) from multiple AWS Regions to a single Amazon S3 bucket.
+This type can synchronize OpsItems and OpsData from multiple AWS
+accounts and Regions or C<EntireOrganization> by using AWS
+Organizations. For more information, see Setting Up Explorer to Display
+Data from Multiple Accounts and Regions
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html)
+in the I<AWS Systems Manager User Guide>.
+
+A resource data sync is an asynchronous operation that returns
+immediately. After a successful initial sync is completed, the system
+continuously syncs data. To check the status of a sync, use the
 ListResourceDataSync.
 
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy. For more information, see
-Configuring Resource Data Sync for Inventory
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
-in the I<AWS Systems Manager User Guide>.
+creating a restrictive bucket policy.
 
 
 =head2 DeleteActivation
@@ -2017,6 +2070,8 @@ instance.
 =item Name => Str
 
 =item [DocumentVersion => Str]
+
+=item [Force => Bool]
 
 =item [VersionName => Str]
 
@@ -2104,8 +2159,7 @@ Each argument is described in detail in: L<Paws::SSM::DeleteParameters>
 
 Returns: a L<Paws::SSM::DeleteParametersResult> instance
 
-Delete a list of parameters. This API is used to delete parameters by
-using the Amazon EC2 console.
+Delete a list of parameters.
 
 
 =head2 DeletePatchBaseline
@@ -2130,6 +2184,8 @@ Deletes a patch baseline.
 
 =item SyncName => Str
 
+=item [SyncType => Str]
+
 
 =back
 
@@ -2138,9 +2194,8 @@ Each argument is described in detail in: L<Paws::SSM::DeleteResourceDataSync>
 Returns: a L<Paws::SSM::DeleteResourceDataSyncResult> instance
 
 Deletes a Resource Data Sync configuration. After the configuration is
-deleted, changes to inventory data on managed instances are no longer
-synced with the target Amazon S3 bucket. Deleting a sync configuration
-does not delete data in the target Amazon S3 bucket.
+deleted, changes to data on managed instances are no longer synced to
+or from the target. Deleting a sync configuration does not delete data.
 
 
 =head2 DeregisterManagedInstance
@@ -2235,10 +2290,10 @@ Each argument is described in detail in: L<Paws::SSM::DescribeActivations>
 
 Returns: a L<Paws::SSM::DescribeActivationsResult> instance
 
-Details about the activation, including: the date and time the
-activation was created, the expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances activated
-by this registration.
+Describes details about the activation, such as the date and time the
+activation was created, its expiration date, the IAM role assigned to
+the instances in the activation, and the number of instances registered
+by using this activation.
 
 
 =head2 DescribeAssociation
@@ -2378,7 +2433,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAvailablePatches>
 
 Returns: a L<Paws::SSM::DescribeAvailablePatchesResult> instance
 
-Lists all patches that could possibly be included in a patch baseline.
+Lists all patches eligible to be included in a patch baseline.
 
 
 =head2 DescribeDocument
@@ -3011,6 +3066,33 @@ Returns: a L<Paws::SSM::GetAutomationExecutionResult> instance
 Get detailed information about a particular Automation execution.
 
 
+=head2 GetCalendarState
+
+=over
+
+=item CalendarNames => ArrayRef[Str|Undef]
+
+=item [AtTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetCalendarState>
+
+Returns: a L<Paws::SSM::GetCalendarStateResponse> instance
+
+Gets the state of the AWS Systems Manager Change Calendar at an
+optional, specified time. If you specify a time, C<GetCalendarState>
+returns the state of the calendar at a specific time, and returns the
+next time that the Change Calendar state will transition. If you do not
+specify a time, C<GetCalendarState> assumes the current time. Change
+Calendar entries have two possible states: C<OPEN> or C<CLOSED>. For
+more information about Systems Manager Change Calendar, see AWS Systems
+Manager Change Calendar
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
+in the I<AWS Systems Manager User Guide>.
+
+
 =head2 GetCommandInvocation
 
 =over
@@ -3191,8 +3273,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionResult> instance
 
-Retrieves details about a specific task run as part of a maintenance
-window execution.
+Retrieves details about a specific a maintenance window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTask
@@ -3231,9 +3312,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> instance
 
-Retrieves a task invocation. A task invocation is a specific task
-running on a specific target. maintenance windows report status for all
-invocations.
+Retrieves information about a specific task running on a specific
+target.
 
 
 =head2 GetMaintenanceWindowTask
@@ -3286,13 +3366,17 @@ in the I<AWS Systems Manager User Guide>.
 
 =over
 
-=item Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
+=item [Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]]
 
 =item [Filters => ArrayRef[L<Paws::SSM::OpsFilter>]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>]]
+
+=item [SyncName => Str]
 
 
 =back
@@ -3387,10 +3471,8 @@ Each argument is described in detail in: L<Paws::SSM::GetParametersByPath>
 
 Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
-Retrieve parameters in a specific hierarchy. For more information, see
-Working with Systems Manager Parameters
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html)
-in the I<AWS Systems Manager User Guide>.
+Retrieve information about one or more parameters in a specific
+hierarchy.
 
 Request results are returned on a best-effort basis. If you specify
 C<MaxResults> in the request, the response includes information up to
@@ -3400,8 +3482,6 @@ internal limit while processing the results, it stops the operation and
 returns the matching values up to that point and a C<NextToken>. You
 can specify the C<NextToken> in a subsequent call to get the next set
 of results.
-
-This API action doesn't support filtering by tags.
 
 
 =head2 GetPatchBaseline
@@ -3560,8 +3640,9 @@ Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
 Returns: a L<Paws::SSM::ListAssociationsResult> instance
 
-Lists the associations for the specified Systems Manager document or
-instance.
+Returns all State Manager associations in the current AWS account and
+Region. You can limit the results to a specific State Manager
+association document or instance by specifying a filter.
 
 
 =head2 ListAssociationVersions
@@ -3708,7 +3789,9 @@ Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 
 Returns: a L<Paws::SSM::ListDocumentsResult> instance
 
-Describes one or more of your Systems Manager documents.
+Returns all Systems Manager (SSM) documents in the current AWS account
+and Region. You can limit the results of this request by using a
+filter.
 
 
 =head2 ListDocumentVersions
@@ -3786,6 +3869,8 @@ specify.
 
 =item [NextToken => Str]
 
+=item [SyncType => Str]
+
 
 =back
 
@@ -3836,6 +3921,8 @@ Returns a list of the tags assigned to the specified resource.
 =item [AccountIdsToAdd => ArrayRef[Str|Undef]]
 
 =item [AccountIdsToRemove => ArrayRef[Str|Undef]]
+
+=item [SharedDocumentVersion => Str]
 
 
 =back
@@ -4020,7 +4107,13 @@ Each argument is described in detail in: L<Paws::SSM::RegisterDefaultPatchBaseli
 
 Returns: a L<Paws::SSM::RegisterDefaultPatchBaselineResult> instance
 
-Defines the default patch baseline.
+Defines the default patch baseline for the relevant operating system.
+
+To reset the AWS predefined patch baseline as the default, specify the
+full patch baseline ARN as the baseline ID value. For example, for
+CentOS, specify
+C<arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed>
+instead of C<pb-0574b43a65ea646ed>.
 
 
 =head2 RegisterPatchBaselineForPatchGroup
@@ -4128,7 +4221,7 @@ Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 
 Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 
-Removes all tags from the specified resource.
+Removes tag keys from the specified resource.
 
 
 =head2 ResetServiceSetting
@@ -4289,6 +4382,8 @@ time. This action can be helpful when troubleshooting associations.
 
 =item [Parameters => L<Paws::SSM::AutomationParameterMap>]
 
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
 =item [TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]]
 
 =item [TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]]
@@ -4334,6 +4429,9 @@ the call. For information, see Install the Session Manager Plugin for
 the AWS CLI
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
 in the I<AWS Systems Manager User Guide>.
+
+AWS Tools for PowerShell usage: Start-SSMSession is not currently
+supported by AWS Tools for PowerShell on Windows local machines.
 
 
 =head2 StopAutomationExecution
@@ -4413,6 +4511,14 @@ Updates an association. You can update the association name and
 version, the document version, schedule, parameters, and Amazon S3
 output.
 
+In order to call this API action, your IAM user account, group, or role
+must be configured with permission to call the DescribeAssociation API
+action. If you don't have permission to call DescribeAssociation, then
+you receive the following error: C<An error occurred
+(AccessDeniedException) when calling the UpdateAssociation operation:
+User: E<lt>user_arnE<gt> is not authorized to perform:
+ssm:DescribeAssociation on resource: E<lt>resource_arnE<gt>>
+
 When you update an association, the association immediately runs
 against the specified targets.
 
@@ -4463,7 +4569,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateDocument>
 
 Returns: a L<Paws::SSM::UpdateDocumentResult> instance
 
-The document you want to update.
+Updates one or more values for an SSM document.
 
 
 =head2 UpdateDocumentDefaultVersion
@@ -4522,6 +4628,14 @@ Returns: a L<Paws::SSM::UpdateMaintenanceWindowResult> instance
 Updates an existing maintenance window. Only specified parameters are
 modified.
 
+The value you specify for C<Duration> determines the specific end time
+for the maintenance window based on the time it begins. No maintenance
+window tasks are permitted to start after the resulting endtime minus
+the number of hours you specify for C<Cutoff>. For example, if the
+maintenance window starts at 3 PM, the duration is three hours, and the
+value you specify for C<Cutoff> is one hour, no maintenance window
+tasks can start after 5 PM.
+
 
 =head2 UpdateMaintenanceWindowTarget
 
@@ -4548,21 +4662,38 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTar
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> instance
 
-Modifies the target of an existing maintenance window. You can't change
-the target type, but you can change the following:
+Modifies the target of an existing maintenance window. You can change
+the following:
 
-The target from being an ID target to a Tag target, or a Tag target to
-an ID target.
+=over
 
-IDs for an ID target.
+=item *
 
-Tags for a Tag target.
+Name
 
-Owner.
+=item *
 
-Name.
+Description
 
-Description.
+=item *
+
+Owner
+
+=item *
+
+IDs for an ID target
+
+=item *
+
+Tags for a Tag target
+
+=item *
+
+From any supported tag type to another. The three supported tag types
+are ID target, Tag target, and resource group. For more information,
+see Target.
+
+=back
 
 If a parameter is null, then the corresponding field is not modified.
 
@@ -4660,7 +4791,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateManagedInstanceRole>
 Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
 Assigns or changes an Amazon Identity and Access Management (IAM) role
-to the managed instance.
+for the managed instance.
 
 
 =head2 UpdateOpsItem
@@ -4668,6 +4799,8 @@ to the managed instance.
 =over
 
 =item OpsItemId => Str
+
+=item [Category => Str]
 
 =item [Description => Str]
 
@@ -4680,6 +4813,8 @@ to the managed instance.
 =item [Priority => Int]
 
 =item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+
+=item [Severity => Str]
 
 =item [Status => Str]
 
@@ -4747,6 +4882,32 @@ request are left unchanged.
 For information about valid key and value pairs in C<PatchFilters> for
 each supported operating system type, see PatchFilter
 (http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+
+
+=head2 UpdateResourceDataSync
+
+=over
+
+=item SyncName => Str
+
+=item SyncSource => L<Paws::SSM::ResourceDataSyncSource>
+
+=item SyncType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UpdateResourceDataSync>
+
+Returns: a L<Paws::SSM::UpdateResourceDataSyncResult> instance
+
+Update a resource data sync. After you create a resource data sync for
+a Region, you can't change the account options for that sync. For
+example, if you create a sync in the us-east-2 (Ohio) Region and you
+choose the Include only the current account option, you can't edit that
+sync later and choose the Include all accounts from my AWS
+Organizations configuration option. Instead, you must delete the first
+resource data sync, and create a new one.
 
 
 =head2 UpdateServiceSetting
@@ -5257,9 +5418,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListResourceComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllResourceDataSync(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceDataSync(sub { },[MaxResults => Int, NextToken => Str, SyncType => Str])
 
-=head2 ListAllResourceDataSync([MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceDataSync([MaxResults => Int, NextToken => Str, SyncType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

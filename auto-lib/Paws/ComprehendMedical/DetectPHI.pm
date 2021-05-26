@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Entities        = $DetectPHIResponse->Entities;
+    my $ModelVersion    = $DetectPHIResponse->ModelVersion;
     my $PaginationToken = $DetectPHIResponse->PaginationToken;
 
     # Returns a L<Paws::ComprehendMedical::DetectPHIResponse> object.

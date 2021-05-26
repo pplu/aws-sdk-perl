@@ -7,12 +7,14 @@ package Paws::EC2::ImportImageTask;
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
   has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageLicenseConfigurationResponse]', request_name => 'licenseSpecifications', traits => ['NameInRequest']);
   has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
   has SnapshotDetails => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SnapshotDetail]', request_name => 'snapshotDetailSet', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ImportImageTask object:
 
-  $service_obj->Method(Att1 => { Architecture => $value, ..., StatusMessage => $value  });
+  $service_obj->Method(Att1 => { Architecture => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,73 +52,84 @@ This class has no description
 
 =head2 Architecture => Str
 
-  The architecture of the virtual machine.
+The architecture of the virtual machine.
 
 Valid values: C<i386> | C<x86_64> | C<arm64>
 
 
 =head2 Description => Str
 
-  A description of the import task.
+A description of the import task.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the image is encrypted.
+Indicates whether the image is encrypted.
 
 
 =head2 Hypervisor => Str
 
-  The target hypervisor for the import task.
+The target hypervisor for the import task.
 
 Valid values: C<xen>
 
 
 =head2 ImageId => Str
 
-  The ID of the Amazon Machine Image (AMI) of the imported virtual
+The ID of the Amazon Machine Image (AMI) of the imported virtual
 machine.
 
 
 =head2 ImportTaskId => Str
 
-  The ID of the import image task.
+The ID of the import image task.
 
 
 =head2 KmsKeyId => Str
 
-  The identifier for the AWS Key Management Service (AWS KMS) customer
+The identifier for the AWS Key Management Service (AWS KMS) customer
 master key (CMK) that was used to create the encrypted image.
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationResponse>]
+
+The ARNs of the license configurations that are associated with the
+import image task.
 
 
 =head2 LicenseType => Str
 
-  The license type of the virtual machine.
+The license type of the virtual machine.
 
 
 =head2 Platform => Str
 
-  The description string for the import image task.
+The description string for the import image task.
 
 
 =head2 Progress => Str
 
-  The percentage of progress of the import image task.
+The percentage of progress of the import image task.
 
 
 =head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
 
-  Information about the snapshots.
+Information about the snapshots.
 
 
 =head2 Status => Str
 
-  A brief status for the import image task.
+A brief status for the import image task.
 
 
 =head2 StatusMessage => Str
 
-  A descriptive status message for the import image task.
+A descriptive status message for the import image task.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+The tags for the import image task.
 
 
 

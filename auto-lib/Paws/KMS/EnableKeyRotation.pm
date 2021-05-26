@@ -42,7 +42,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Identifies a symmetric customer master key (CMK). You cannot enable
+automatic rotation of asymmetric CMKs, CMKs with imported key material,
+or CMKs in a custom key store
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

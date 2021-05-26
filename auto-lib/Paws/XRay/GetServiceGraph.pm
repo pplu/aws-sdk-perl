@@ -76,7 +76,7 @@ The name of a group to generate a graph based on.
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 

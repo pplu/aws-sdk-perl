@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ActionName => Str
 
-The name of the action that will process the revision.
+The name of the action that processes the revision.
 
 
 
@@ -69,14 +69,14 @@ Represents information about the version (or revision) of an action.
 
 =head2 B<REQUIRED> PipelineName => Str
 
-The name of the pipeline that will start processing the revision to the
+The name of the pipeline that starts processing the revision to the
 source.
 
 
 
 =head2 B<REQUIRED> StageName => Str
 
-The name of the stage that contains the action that will act upon the
+The name of the stage that contains the action that acts on the
 revision.
 
 

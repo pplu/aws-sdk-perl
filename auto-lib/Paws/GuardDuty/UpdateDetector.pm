@@ -44,21 +44,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector that you want to update.
+The unique ID of the detector to update.
 
 
 
 =head2 Enable => Bool
 
-Updated boolean value for the detector that specifies whether the
-detector is enabled.
+Specifies whether the detector is enabled or not enabled.
 
 
 
 =head2 FindingPublishingFrequency => Str
 
-A enum value that specifies how frequently customer got Finding updates
-published.
+A enum value that specifies how frequently findings are exported, such
+as to CloudWatch Events.
 
 Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
 

@@ -4,6 +4,7 @@ package Paws::EC2::DescribeKeyPairs;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has KeyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'KeyName' );
+  has KeyPairIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'KeyPairId' );
 
   use MooseX::ClassAttribute;
 
@@ -78,6 +79,12 @@ C<key-name> - The name of the key pair.
 The key pair names.
 
 Default: Describes all your key pairs.
+
+
+
+=head2 KeyPairIds => ArrayRef[Str|Undef]
+
+The IDs of the key pairs.
 
 
 

@@ -35,11 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AlgorithmSpecification =
       $DescribeTrainingJobResponse->AlgorithmSpecification;
-    my $CreationTime = $DescribeTrainingJobResponse->CreationTime;
+    my $AutoMLJobArn = $DescribeTrainingJobResponse->AutoMLJobArn;
+    my $BillableTimeInSeconds =
+      $DescribeTrainingJobResponse->BillableTimeInSeconds;
+    my $CheckpointConfig = $DescribeTrainingJobResponse->CheckpointConfig;
+    my $CreationTime     = $DescribeTrainingJobResponse->CreationTime;
+    my $DebugHookConfig  = $DescribeTrainingJobResponse->DebugHookConfig;
+    my $DebugRuleConfigurations =
+      $DescribeTrainingJobResponse->DebugRuleConfigurations;
+    my $DebugRuleEvaluationStatuses =
+      $DescribeTrainingJobResponse->DebugRuleEvaluationStatuses;
     my $EnableInterContainerTrafficEncryption =
       $DescribeTrainingJobResponse->EnableInterContainerTrafficEncryption;
+    my $EnableManagedSpotTraining =
+      $DescribeTrainingJobResponse->EnableManagedSpotTraining;
     my $EnableNetworkIsolation =
       $DescribeTrainingJobResponse->EnableNetworkIsolation;
+    my $ExperimentConfig    = $DescribeTrainingJobResponse->ExperimentConfig;
     my $FailureReason       = $DescribeTrainingJobResponse->FailureReason;
     my $FinalMetricDataList = $DescribeTrainingJobResponse->FinalMetricDataList;
     my $HyperParameters     = $DescribeTrainingJobResponse->HyperParameters;
@@ -54,13 +66,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SecondaryStatusTransitions =
       $DescribeTrainingJobResponse->SecondaryStatusTransitions;
     my $StoppingCondition = $DescribeTrainingJobResponse->StoppingCondition;
+    my $TensorBoardOutputConfig =
+      $DescribeTrainingJobResponse->TensorBoardOutputConfig;
     my $TrainingEndTime   = $DescribeTrainingJobResponse->TrainingEndTime;
     my $TrainingJobArn    = $DescribeTrainingJobResponse->TrainingJobArn;
     my $TrainingJobName   = $DescribeTrainingJobResponse->TrainingJobName;
     my $TrainingJobStatus = $DescribeTrainingJobResponse->TrainingJobStatus;
     my $TrainingStartTime = $DescribeTrainingJobResponse->TrainingStartTime;
-    my $TuningJobArn      = $DescribeTrainingJobResponse->TuningJobArn;
-    my $VpcConfig         = $DescribeTrainingJobResponse->VpcConfig;
+    my $TrainingTimeInSeconds =
+      $DescribeTrainingJobResponse->TrainingTimeInSeconds;
+    my $TuningJobArn = $DescribeTrainingJobResponse->TuningJobArn;
+    my $VpcConfig    = $DescribeTrainingJobResponse->VpcConfig;
 
     # Returns a L<Paws::SageMaker::DescribeTrainingJobResponse> object.
 

@@ -6,6 +6,7 @@ package Paws::MQ::CreateBroker;
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
   has CreatorRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creatorRequestId');
   has DeploymentMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentMode');
+  has EncryptionOptions => (is => 'ro', isa => 'Paws::MQ::EncryptionOptions', traits => ['NameInRequest'], request_name => 'encryptionOptions');
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
@@ -13,6 +14,7 @@ package Paws::MQ::CreateBroker;
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
+  has StorageType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'storageType');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
   has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::User]', traits => ['NameInRequest'], request_name => 'users');
@@ -49,15 +51,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Id       => 'My__string',
         Revision => 1,                            # OPTIONAL
       },    # OPTIONAL
-      CreatorRequestId => 'My__string',         # OPTIONAL
-      DeploymentMode   => 'SINGLE_INSTANCE',    # OPTIONAL
-      EngineType       => 'ACTIVEMQ',           # OPTIONAL
-      EngineVersion    => 'My__string',         # OPTIONAL
-      HostInstanceType => 'My__string',         # OPTIONAL
+      CreatorRequestId  => 'My__string',         # OPTIONAL
+      DeploymentMode    => 'SINGLE_INSTANCE',    # OPTIONAL
+      EncryptionOptions => {
+        UseAwsOwnedKey => 1,
+        KmsKeyId       => 'My__string',
+      },                                         # OPTIONAL
+      EngineType       => 'ACTIVEMQ',            # OPTIONAL
+      EngineVersion    => 'My__string',          # OPTIONAL
+      HostInstanceType => 'My__string',          # OPTIONAL
       Logs             => {
         Audit   => 1,
         General => 1,
-      },                                        # OPTIONAL
+      },                                         # OPTIONAL
       MaintenanceWindowStartTime => {
         DayOfWeek => 'MONDAY'
         , # values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY; OPTIONAL
@@ -66,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PubliclyAccessible => 1,                                    # OPTIONAL
       SecurityGroups     => [ 'My__string', ... ],                # OPTIONAL
+      StorageType        => 'EBS',                                # OPTIONAL
       SubnetIds          => [ 'My__string', ... ],                # OPTIONAL
       Tags               => { 'My__string' => 'My__string', },    # OPTIONAL
       Users              => [
@@ -130,6 +137,12 @@ Required. The deployment mode of the broker.
 
 Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
 
+=head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
+
+Encryption options for the broker.
+
+
+
 =head2 EngineType => Str
 
 Required. The type of broker engine. Note: Currently, Amazon MQ
@@ -172,10 +185,16 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-The list of rules (1 minimum, 125 maximum) that authorize connections
-to brokers.
+The list of security groups (1 minimum, 5 maximum) that authorizes
+connections to brokers.
 
 
+
+=head2 StorageType => Str
+
+The broker's storage type.
+
+Valid values are: C<"EBS">, C<"EFS">
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 

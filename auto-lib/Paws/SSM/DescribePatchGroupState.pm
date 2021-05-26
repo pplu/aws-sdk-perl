@@ -40,6 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribePatchGroupStateResult->InstancesWithInstalledOtherPatches;
     my $InstancesWithInstalledPatches =
       $DescribePatchGroupStateResult->InstancesWithInstalledPatches;
+    my $InstancesWithInstalledPendingRebootPatches =
+      $DescribePatchGroupStateResult
+      ->InstancesWithInstalledPendingRebootPatches;
     my $InstancesWithInstalledRejectedPatches =
       $DescribePatchGroupStateResult->InstancesWithInstalledRejectedPatches;
     my $InstancesWithMissingPatches =

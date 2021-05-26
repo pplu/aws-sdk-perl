@@ -90,8 +90,8 @@ in the I<Amazon CloudWatch User Guide>.
 The time stamp that determines the last data point to return.
 
 The value specified is exclusive; results include data points up to the
-specified time stamp. The time stamp must be in ISO 8601 UTC format
-(for example, 2016-10-10T23:00:00Z).
+specified time stamp. In a raw HTTP query, the time stamp must be in
+ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).
 
 
 
@@ -160,8 +160,8 @@ times are evaluated relative to the time that CloudWatch receives the
 request.
 
 The value specified is inclusive; results include data points with the
-specified time stamp. The time stamp must be in ISO 8601 UTC format
-(for example, 2016-10-03T23:00:00Z).
+specified time stamp. In a raw HTTP query, the time stamp must be in
+ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).
 
 CloudWatch rounds the specified time stamp as follows:
 
@@ -207,10 +207,13 @@ C<ExtendedStatistics>, but not both.
 
 =head2 Unit => Str
 
-The unit for a given metric. Metrics may be reported in multiple units.
-Not supplying a unit results in all units being returned. If you
-specify only a unit that the metric does not report, the results of the
-call are null.
+The unit for a given metric. If you omit C<Unit>, all data that was
+collected with any unit is returned, along with the corresponding units
+that were specified when the data was reported to CloudWatch. If you
+specify a unit, the operation returns only data data that was collected
+with that unit specified. If you specify a unit that does not match the
+data collected, the results of the operation are null. CloudWatch does
+not perform unit conversions.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

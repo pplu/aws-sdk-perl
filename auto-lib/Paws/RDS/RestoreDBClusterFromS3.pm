@@ -11,6 +11,8 @@ package Paws::RDS::RestoreDBClusterFromS3;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -73,6 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
       DeletionProtection              => 1,                      # OPTIONAL
+      Domain                          => 'MyString',             # OPTIONAL
+      DomainIAMRoleName               => 'MyString',             # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
@@ -239,6 +243,27 @@ enabled. By default, deletion protection is disabled.
 
 
 
+=head2 Domain => Str
+
+Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster.
+For more information, see Using Kerberos Authentication for Aurora
+MySQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+in the I<Amazon Aurora User Guide>.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to
@@ -256,6 +281,10 @@ A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
+
 
 
 =head2 B<REQUIRED> Engine => Str
@@ -270,13 +299,32 @@ Valid Values: C<aurora>, C<aurora-postgresql>
 
 The version number of the database engine to use.
 
+To list all of the available engine versions for C<aurora> (for MySQL
+5.6-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-mysql> (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-mysql --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-postgresql>,
+use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-postgresql
+--query "DBEngineVersions[].EngineVersion">
+
 B<Aurora MySQL>
 
-Example: C<5.6.10a>
+Example: C<5.6.10a>, C<5.6.mysql_aurora.1.19.2>, C<5.7.12>,
+C<5.7.mysql_aurora.2.04.5>
 
 B<Aurora PostgreSQL>
 
-Example: C<9.6.3>
+Example: C<9.6.3>, C<10.7>
 
 
 

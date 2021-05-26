@@ -5,6 +5,7 @@ package Paws::MediaConvert::CreateQueue;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has PricingPlan => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pricingPlan');
   has ReservationPlanSettings => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlanSettings', traits => ['NameInRequest'], request_name => 'reservationPlanSettings');
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
   has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
@@ -42,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReservedSlots => 1,
 
       },    # OPTIONAL
+      Status => 'ACTIVE',                           # OPTIONAL
       Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
@@ -85,6 +87,13 @@ Details about the pricing plan for your reserved queue. Required for
 reserved queues and not applicable to on-demand queues.
 
 
+
+=head2 Status => Str
+
+Initial state of the queue. If you create a paused queue, then jobs in
+that queue won't begin.
+
+Valid values are: C<"ACTIVE">, C<"PAUSED">
 
 =head2 Tags => L<Paws::MediaConvert::__mapOf__string>
 

@@ -45,42 +45,42 @@ This class has no description
 
 =head2 CreatedBy => Str
 
-  The principal that created the version.
+The principal that created the version.
 
 
 =head2 CreateTime => Str
 
-  The time the version was created.
+The time the version was created.
 
 
 =head2 DefaultVersion => Bool
 
-  Indicates whether the version is the default version.
+Indicates whether the version is the default version.
 
 
 =head2 LaunchTemplateData => L<Paws::EC2::ResponseLaunchTemplateData>
 
-  Information about the launch template.
+Information about the launch template.
 
 
 =head2 LaunchTemplateId => Str
 
-  The ID of the launch template.
+The ID of the launch template.
 
 
 =head2 LaunchTemplateName => Str
 
-  The name of the launch template.
+The name of the launch template.
 
 
 =head2 VersionDescription => Str
 
-  The description for the version.
+The description for the version.
 
 
 =head2 VersionNumber => Int
 
-  The version number.
+The version number.
 
 
 

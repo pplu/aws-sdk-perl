@@ -1,8 +1,9 @@
 
 package Paws::EMR::CancelSteps;
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has StepIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
+  has StepCancellationOption => (is => 'ro', isa => 'Str');
+  has StepIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -29,10 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $elasticmapreduce = Paws->service('EMR');
     my $CancelStepsOutput = $elasticmapreduce->CancelSteps(
-      ClusterId => 'MyXmlStringMaxLen256',    # OPTIONAL
+      ClusterId => 'MyXmlStringMaxLen256',
       StepIds   => [
-        'MyXmlStringMaxLen256', ...           # max: 256
-      ],                                      # OPTIONAL
+        'MyXmlStringMaxLen256', ...    # max: 256
+      ],
+      StepCancellationOption => 'SEND_INTERRUPT',    # OPTIONAL
     );
 
     # Results:
@@ -46,14 +48,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 ClusterId => Str
+=head2 B<REQUIRED> ClusterId => Str
 
 The C<ClusterID> for which specified steps will be canceled. Use
 RunJobFlow and ListClusters to get ClusterIDs.
 
 
 
-=head2 StepIds => ArrayRef[Str|Undef]
+=head2 StepCancellationOption => Str
+
+The option to choose for cancelling C<RUNNING> steps. By default, the
+value is C<SEND_INTERRUPT>.
+
+Valid values are: C<"SEND_INTERRUPT">, C<"TERMINATE_PROCESS">
+
+=head2 B<REQUIRED> StepIds => ArrayRef[Str|Undef]
 
 The list of C<StepIDs> to cancel. Use ListSteps to get steps and their
 states for the specified cluster.

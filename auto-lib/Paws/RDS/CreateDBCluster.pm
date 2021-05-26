@@ -11,7 +11,10 @@ package Paws::RDS::CreateDBCluster;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineMode => (is => 'ro', isa => 'Str');
@@ -144,8 +147,8 @@ snapshots of the DB cluster. The default is not to copy them.
 
 =head2 DatabaseName => Str
 
-The name for your database of up to 64 alpha-numeric characters. If you
-do not provide a name, Amazon RDS will not create a database in the DB
+The name for your database of up to 64 alphanumeric characters. If you
+do not provide a name, Amazon RDS doesn't create a database in the DB
 cluster you are creating.
 
 
@@ -180,7 +183,8 @@ Example: C<my-cluster1>
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, C<default.aurora5.6> is used.
+cluster. If you do not specify a value, then the default DB cluster
+parameter group for the specified DB engine and version is used.
 
 Constraints:
 
@@ -215,6 +219,26 @@ enabled. By default, deletion protection is disabled.
 
 
 
+=head2 Domain => Str
+
+The Active Directory directory ID to create the DB cluster in.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster.
+For more information, see Using Kerberos Authentication for Aurora
+MySQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html)
+in the I<Amazon Aurora User Guide>.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of log types that need to be enabled for exporting to
@@ -226,11 +250,32 @@ in the I<Amazon Aurora User Guide>.
 
 
 
+=head2 EnableHttpEndpoint => Bool
+
+A value that indicates whether to enable the HTTP endpoint for an
+Aurora Serverless DB cluster. By default, the HTTP endpoint is
+disabled.
+
+When enabled, the HTTP endpoint provides a connectionless web service
+API for running SQL queries on the Aurora Serverless DB cluster. You
+can also query your database from inside the RDS console with the query
+editor.
+
+For more information, see Using the Data API for Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+in the I<Amazon Aurora User Guide>.
+
+
+
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
+
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
 
 
 
@@ -247,7 +292,36 @@ C<aurora-postgresql>
 =head2 EngineMode => Str
 
 The DB engine mode of the DB cluster, either C<provisioned>,
-C<serverless>, C<parallelquery>, or C<global>.
+C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
+
+Limitations and requirements apply to some DB engine modes. For more
+information, see the following sections in the I<Amazon Aurora User
+Guide>:
+
+=over
+
+=item *
+
+Limitations of Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations)
+
+=item *
+
+Limitations of Parallel Query
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations)
+
+=item *
+
+Requirements for Aurora Global Databases
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
+
+=item *
+
+Limitations of Multi-Master Clusters
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations)
+
+=back
+
 
 
 
@@ -255,13 +329,32 @@ C<serverless>, C<parallelquery>, or C<global>.
 
 The version number of the database engine to use.
 
+To list all of the available engine versions for C<aurora> (for MySQL
+5.6-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-mysql> (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-mysql --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-postgresql>,
+use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-postgresql
+--query "DBEngineVersions[].EngineVersion">
+
 B<Aurora MySQL>
 
-Example: C<5.6.10a>, C<5.7.12>
+Example: C<5.6.10a>, C<5.6.mysql_aurora.1.19.2>, C<5.7.12>,
+C<5.7.mysql_aurora.2.04.5>
 
 B<Aurora PostgreSQL>
 
-Example: C<9.6.3>
+Example: C<9.6.3>, C<10.7>
 
 
 
@@ -282,7 +375,7 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If an encryption key is not specified in C<KmsKeyId>:
+If an encryption key isn't specified in C<KmsKeyId>:
 
 =over
 
@@ -295,7 +388,7 @@ Otherwise, Amazon RDS will use your default encryption key.
 =item *
 
 If the C<StorageEncrypted> parameter is enabled and
-C<ReplicationSourceIdentifier> is not specified, then Amazon RDS will
+C<ReplicationSourceIdentifier> isn't specified, then Amazon RDS will
 use your default encryption key.
 
 =back
@@ -468,6 +561,12 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 (https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
 
 
 

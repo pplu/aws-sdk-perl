@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       EfsFilesystemArn => 'MyEfsFilesystemArn',
-      Subdirectory     => 'MySubdirectory',       # OPTIONAL
+      Subdirectory     => 'MyEfsSubdirectory',    # OPTIONAL
       Tags             => [
         {
           Key   => 'MyTagKey',                    # min: 1, max: 256
@@ -86,10 +86,9 @@ rule that enables outbound connections to the NFS port on one of the
 file systemE<rsquo>s mount targets. You can enable outbound connections
 either by IP address (CIDR range) or security group.
 
-For information about security groups and mount targets, see
-"https://docs.aws.amazon.com/efs/latest/ug/security-considerations.html#network-access"
-(Security Groups for Amazon EC2 Instances and Mount Targets) in the
-I<Amazon EFS User Guide>.
+For information about security groups and mount targets, see Security
+Groups for Amazon EC2 Instances and Mount Targets in the I<Amazon EFS
+User Guide.>
 
 =back
 
@@ -108,6 +107,9 @@ A subdirectory in the locationE<rsquo>s path. This subdirectory in the
 EFS file system is used to read data from the EFS source location or
 write data to the EFS destination. By default, AWS DataSync uses the
 root directory.
+
+C<Subdirectory> must be specified with forward slashes. For example
+C</path/to/folder>.
 
 
 

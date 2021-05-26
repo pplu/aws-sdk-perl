@@ -51,7 +51,7 @@ values: the name of any action or C<*>.
 
 For more information about these actions, see Overview of Managing
 Access Permissions to Your Amazon Simple Queue Service Resource
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 Specifying C<SendMessage>, C<DeleteMessage>, or
@@ -65,11 +65,11 @@ C<ChangeMessageVisibilityBatch>.
 =head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str|Undef]
 
 The AWS account number of the principal
-(http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P) who is
+(https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P) who is
 given permission. The principal must have an AWS account, but does not
 need to be signed up for Amazon SQS. For information about locating the
 AWS account identification, see Your AWS Identifiers
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 

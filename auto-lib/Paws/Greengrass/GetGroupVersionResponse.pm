@@ -37,12 +37,12 @@ Information about the group version definition.
 
 =head2 Id => Str
 
-The ID of the group version.
+The ID of the group that the version is associated with.
 
 
 =head2 Version => Str
 
-The unique ID for the version of the group.
+The ID of the group version.
 
 
 =head2 _request_id => Str

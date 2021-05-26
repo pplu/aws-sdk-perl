@@ -2,6 +2,7 @@
 package Paws::ComprehendMedical::DetectEntitiesResponse;
   use Moose;
   has Entities => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Entity]', required => 1);
+  has ModelVersion => (is => 'ro', isa => 'Str', required => 1);
   has PaginationToken => (is => 'ro', isa => 'Str');
   has UnmappedAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::UnmappedAttribute]');
 
@@ -21,15 +22,23 @@ Paws::ComprehendMedical::DetectEntitiesResponse
 The collection of medical entities extracted from the input text and
 their associated information. For each entity, the response provides
 the entity text, the entity category, where the entity text begins and
-ends, and the level of confidence that Comprehend Medical has in the
-detection and analysis. Attributes and traits of the entity are also
-returned.
+ends, and the level of confidence that Amazon Comprehend Medical has in
+the detection and analysis. Attributes and traits of the entity are
+also returned.
+
+
+=head2 B<REQUIRED> ModelVersion => Str
+
+The version of the model used to analyze the documents. The version
+number looks like X.X.X. You can use this information to track the
+model used for a particular batch of documents.
 
 
 =head2 PaginationToken => Str
 
-If the result of the previous request to DetectEntities was truncated,
-include the Paginationtoken to fetch the next page of entities.
+If the result of the previous request to C<DetectEntities> was
+truncated, include the C<PaginationToken> to fetch the next page of
+entities.
 
 
 =head2 UnmappedAttributes => ArrayRef[L<Paws::ComprehendMedical::UnmappedAttribute>]

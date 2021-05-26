@@ -54,8 +54,7 @@ ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.
 
 =head2 B<REQUIRED> Content => Str
 
-The updated content with which you want to replace the existing content
-of the comment.
+The updated content to replace the existing content of the comment.
 
 
 

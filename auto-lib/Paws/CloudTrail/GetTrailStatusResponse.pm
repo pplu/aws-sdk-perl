@@ -49,12 +49,12 @@ to CloudWatch Logs.
 
 =head2 LatestDeliveryAttemptSucceeded => Str
 
-This field is deprecated.
+This field is no longer in use.
 
 
 =head2 LatestDeliveryAttemptTime => Str
 
-This field is deprecated.
+This field is no longer in use.
 
 
 =head2 LatestDeliveryError => Str
@@ -62,8 +62,8 @@ This field is deprecated.
 Displays any Amazon S3 error that CloudTrail encountered when
 attempting to deliver log files to the designated bucket. For more
 information see the topic Error Responses
-(http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html) in
-the Amazon S3 API Reference.
+(https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html)
+in the Amazon S3 API Reference.
 
 This error occurs only when there is a problem with the destination S3
 bucket and will not occur for timeouts. To resolve the issue, create a
@@ -82,8 +82,8 @@ an account's Amazon S3 bucket.
 Displays any Amazon S3 error that CloudTrail encountered when
 attempting to deliver a digest file to the designated bucket. For more
 information see the topic Error Responses
-(http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html) in
-the Amazon S3 API Reference.
+(https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html)
+in the Amazon S3 API Reference.
 
 This error occurs only when there is a problem with the destination S3
 bucket and will not occur for timeouts. To resolve the issue, create a
@@ -99,12 +99,12 @@ file to an account's Amazon S3 bucket.
 
 =head2 LatestNotificationAttemptSucceeded => Str
 
-This field is deprecated.
+This field is no longer in use.
 
 
 =head2 LatestNotificationAttemptTime => Str
 
-This field is deprecated.
+This field is no longer in use.
 
 
 =head2 LatestNotificationError => Str
@@ -112,7 +112,7 @@ This field is deprecated.
 Displays any Amazon SNS error that CloudTrail encountered when
 attempting to send a notification. For more information about Amazon
 SNS errors, see the Amazon SNS Developer Guide
-(http://docs.aws.amazon.com/sns/latest/dg/welcome.html).
+(https://docs.aws.amazon.com/sns/latest/dg/welcome.html).
 
 
 =head2 LatestNotificationTime => Str
@@ -136,12 +136,12 @@ recording API calls for an AWS account.
 
 =head2 TimeLoggingStarted => Str
 
-This field is deprecated.
+This field is no longer in use.
 
 
 =head2 TimeLoggingStopped => Str
 
-This field is deprecated.
+This field is no longer in use.
 
 
 =head2 _request_id => Str

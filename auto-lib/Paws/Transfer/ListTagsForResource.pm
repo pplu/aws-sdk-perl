@@ -66,9 +66,9 @@ C<ListTagsForResource> request.
 =head2 NextToken => Str
 
 When you request additional results from the C<ListTagsForResource>
-call, a C<NextToken> parameter is returned in the input. You can then
-pass in a subsequent command the C<NextToken> parameter to continue
-listing additional tags.
+operation, a C<NextToken> parameter is returned in the input. You can
+then pass in a subsequent command to the C<NextToken> parameter to
+continue listing additional tags.
 
 
 

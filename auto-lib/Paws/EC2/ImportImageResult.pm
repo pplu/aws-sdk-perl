@@ -8,6 +8,7 @@ package Paws::EC2::ImportImageResult;
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest',]);
   has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest',]);
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageLicenseConfigurationResponse]', request_name => 'licenseSpecifications', traits => ['NameInRequest',]);
   has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest',]);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest',]);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest',]);
@@ -59,8 +60,13 @@ The task ID of the import image task.
 
 =head2 KmsKeyId => Str
 
-The identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) that was used to create the encrypted AMI.
+The identifier for the symmetric AWS Key Management Service (AWS KMS)
+customer master key (CMK) that was used to create the encrypted AMI.
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::ImportImageLicenseConfigurationResponse>]
+
+The ARNs of the license configurations.
 
 
 =head2 LicenseType => Str

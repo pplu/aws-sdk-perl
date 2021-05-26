@@ -85,7 +85,8 @@ this value to get more backups.
 
 =head2 SortAscending => Bool
 
-
+Designates whether or not to sort the return backups by ascending
+chronological order of generation.
 
 
 

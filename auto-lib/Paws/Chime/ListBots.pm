@@ -56,8 +56,8 @@ The Amazon Chime account ID.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a single call. Default is
-10.
+The maximum number of results to return in a single call. The default
+is 10.
 
 
 

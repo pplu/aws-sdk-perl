@@ -1,9 +1,10 @@
 
 package Paws::CloudFront::UpdateDistribution;
   use Moose;
-  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
+  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', traits => ['ParamInBody'], required => 1);
   has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -13,6 +14,7 @@ package Paws::CloudFront::UpdateDistribution;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

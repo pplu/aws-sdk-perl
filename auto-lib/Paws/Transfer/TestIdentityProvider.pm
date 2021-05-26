@@ -37,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Message    = $TestIdentityProviderResponse->Message;
+    my $Response   = $TestIdentityProviderResponse->Response;
     my $StatusCode = $TestIdentityProviderResponse->StatusCode;
     my $Url        = $TestIdentityProviderResponse->Url;
 
@@ -50,14 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system assigned identifier for a specific server. That server's user
+A system-assigned identifier for a specific server. That server's user
 authentication method is tested with a user name and password.
 
 
 
 =head2 B<REQUIRED> UserName => Str
 
-This request parameter is name of the user account to be tested.
+This request parameter is the name of the user account to be tested.
 
 
 

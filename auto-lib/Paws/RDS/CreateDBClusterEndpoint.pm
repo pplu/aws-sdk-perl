@@ -6,6 +6,7 @@ package Paws::RDS::CreateDBClusterEndpoint;
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
   has ExcludedMembers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StaticMembers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndpointType                => 'MyString',
       ExcludedMembers             => [ 'MyString', ... ],    # OPTIONAL
       StaticMembers               => [ 'MyString', ... ],    # OPTIONAL
+      Tags                        => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                     # OPTIONAL
     );
 
     # Results:
@@ -77,7 +85,7 @@ endpoint. This parameter is stored as a lowercase string.
 
 =head2 B<REQUIRED> EndpointType => Str
 
-The type of the endpoint. One of: C<READER>, C<ANY>.
+The type of the endpoint. One of: C<READER>, C<WRITER>, C<ANY>.
 
 
 
@@ -93,6 +101,12 @@ endpoint. Only relevant if the list of static members is empty.
 
 List of DB instance identifiers that are part of the custom endpoint
 group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+
+The tags to be assigned to the Amazon RDS resource.
 
 
 

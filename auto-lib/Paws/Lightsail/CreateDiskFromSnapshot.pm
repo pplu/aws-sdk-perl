@@ -1,11 +1,15 @@
 
 package Paws::Lightsail::CreateDiskFromSnapshot;
   use Moose;
+  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
-  has DiskSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskSnapshotName' , required => 1);
+  has DiskSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskSnapshotName' );
+  has RestoreDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreDate' );
   has SizeInGb => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'sizeInGb' , required => 1);
+  has SourceDiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceDiskName' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableAutoSnapshot' );
 
   use MooseX::ClassAttribute;
 
@@ -34,15 +38,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDiskFromSnapshotResult = $lightsail->CreateDiskFromSnapshot(
       AvailabilityZone => 'MyNonEmptyString',
       DiskName         => 'MyResourceName',
-      DiskSnapshotName => 'MyResourceName',
       SizeInGb         => 1,
-      Tags             => [
+      AddOns           => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          AddOnType                => 'AutoSnapshot',    # values: AutoSnapshot
+          AutoSnapshotAddOnRequest => {
+            SnapshotTimeOfDay => 'MyTimeOfDay',          # OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],        # OPTIONAL
+      DiskSnapshotName => 'MyResourceName',    # OPTIONAL
+      RestoreDate      => 'Mystring',          # OPTIONAL
+      SourceDiskName   => 'Mystring',          # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyTagKey',                 # OPTIONAL
+          Value => 'MyTagValue',               # OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      UseLatestRestorableAutoSnapshot => 1,    # OPTIONAL
     );
 
     # Results:
@@ -54,6 +70,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/CreateDiskFromSnapshot>
 
 =head1 ATTRIBUTES
+
+
+=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+
+An array of objects that represent the add-ons to enable for the new
+disk.
+
 
 
 =head2 B<REQUIRED> AvailabilityZone => Str
@@ -73,10 +96,54 @@ The unique Lightsail disk name (e.g., C<my-disk>).
 
 
 
-=head2 B<REQUIRED> DiskSnapshotName => Str
+=head2 DiskSnapshotName => Str
 
 The name of the disk snapshot (e.g., C<my-snapshot>) from which to
 create the new storage disk.
+
+Constraint:
+
+=over
+
+=item *
+
+This parameter cannot be defined together with the C<source disk name>
+parameter. The C<disk snapshot name> and C<source disk name> parameters
+are mutually exclusive.
+
+=back
+
+
+
+
+=head2 RestoreDate => Str
+
+The date of the automatic snapshot to use for the new disk. Use the
+C<get auto snapshots> operation to identify the dates of the available
+automatic snapshots.
+
+Constraints:
+
+=over
+
+=item *
+
+Must be specified in C<YYYY-MM-DD> format.
+
+=item *
+
+This parameter cannot be defined together with the C<use latest
+restorable auto snapshot> parameter. The C<restore date> and C<use
+latest restorable auto snapshot> parameters are mutually exclusive.
+
+=item *
+
+Define this parameter only when creating a new disk from an automatic
+snapshot. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 
@@ -86,12 +153,64 @@ The size of the disk in GB (e.g., C<32>).
 
 
 
+=head2 SourceDiskName => Str
+
+The name of the source disk from which the source automatic snapshot
+was created.
+
+Constraints:
+
+=over
+
+=item *
+
+This parameter cannot be defined together with the C<disk snapshot
+name> parameter. The C<source disk name> and C<disk snapshot name>
+parameters are mutually exclusive.
+
+=item *
+
+Define this parameter only when creating a new disk from an automatic
+snapshot. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
+
+
+
 =head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
 
 The tag keys and optional values to add to the resource during create.
 
 To tag a resource after it has been created, see the C<tag resource>
 operation.
+
+
+
+=head2 UseLatestRestorableAutoSnapshot => Bool
+
+A Boolean value to indicate whether to use the latest available
+automatic snapshot.
+
+Constraints:
+
+=over
+
+=item *
+
+This parameter cannot be defined together with the C<restore date>
+parameter. The C<use latest restorable auto snapshot> and C<restore
+date> parameters are mutually exclusive.
+
+=item *
+
+Define this parameter only when creating a new disk from an automatic
+snapshot. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 

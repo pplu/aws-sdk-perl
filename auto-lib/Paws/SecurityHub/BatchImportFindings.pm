@@ -42,6 +42,54 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Id      => 'MyNonEmptyString',
               Type    => 'MyNonEmptyString',
               Details => {
+                AwsCloudFrontDistribution => {
+                  DomainName       => 'MyNonEmptyString',
+                  ETag             => 'MyNonEmptyString',
+                  LastModifiedTime => 'MyNonEmptyString',
+                  Logging          => {
+                    Bucket         => 'MyNonEmptyString',
+                    Enabled        => 1,                    # OPTIONAL
+                    IncludeCookies => 1,                    # OPTIONAL
+                    Prefix         => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  Origins => {
+                    Items => [
+                      {
+                        DomainName => 'MyNonEmptyString',
+                        Id         => 'MyNonEmptyString',
+                        OriginPath => 'MyNonEmptyString',
+                      },
+                      ...
+                    ],    # OPTIONAL
+                  },    # OPTIONAL
+                  Status   => 'MyNonEmptyString',
+                  WebAclId => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsCodeBuildProject => {
+                  EncryptionKey => 'MyNonEmptyString',
+                  Environment   => {
+                    Certificate              => 'MyNonEmptyString',
+                    ImagePullCredentialsType => 'MyNonEmptyString',
+                    RegistryCredential       => {
+                      Credential         => 'MyNonEmptyString',
+                      CredentialProvider => 'MyNonEmptyString',
+                    },    # OPTIONAL
+                    Type => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  Name        => 'MyNonEmptyString',
+                  ServiceRole => 'MyNonEmptyString',
+                  Source      => {
+                    GitCloneDepth => 1,
+                    InsecureSsl   => 1,                    # OPTIONAL
+                    Location      => 'MyNonEmptyString',
+                    Type          => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  VpcConfig => {
+                    SecurityGroupIds => [ 'MyNonEmptyString', ... ],  # OPTIONAL
+                    Subnets          => [ 'MyNonEmptyString', ... ],  # OPTIONAL
+                    VpcId            => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                },    # OPTIONAL
                 AwsEc2Instance => {
                   IamInstanceProfileArn => 'MyNonEmptyString',
                   ImageId               => 'MyNonEmptyString',
@@ -53,14 +101,282 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Type          => 'MyNonEmptyString',
                   VpcId         => 'MyNonEmptyString',
                 },    # OPTIONAL
+                AwsEc2NetworkInterface => {
+                  Attachment => {
+                    AttachTime          => 'MyNonEmptyString',
+                    AttachmentId        => 'MyNonEmptyString',
+                    DeleteOnTermination => 1,                    # OPTIONAL
+                    DeviceIndex         => 1,
+                    InstanceId          => 'MyNonEmptyString',
+                    InstanceOwnerId     => 'MyNonEmptyString',
+                    Status              => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  NetworkInterfaceId => 'MyNonEmptyString',
+                  SecurityGroups     => [
+                    {
+                      GroupId   => 'MyNonEmptyString',
+                      GroupName => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  SourceDestCheck => 1,    # OPTIONAL
+                },    # OPTIONAL
+                AwsEc2SecurityGroup => {
+                  GroupId       => 'MyNonEmptyString',
+                  GroupName     => 'MyNonEmptyString',
+                  IpPermissions => [
+                    {
+                      FromPort   => 1,
+                      IpProtocol => 'MyNonEmptyString',
+                      IpRanges   => [ { CidrIp => 'MyNonEmptyString', }, ... ]
+                      ,    # OPTIONAL
+                      Ipv6Ranges =>
+                        [ { CidrIpv6 => 'MyNonEmptyString', }, ... ], # OPTIONAL
+                      PrefixListIds =>
+                        [ { PrefixListId => 'MyNonEmptyString', }, ... ]
+                      ,                                               # OPTIONAL
+                      ToPort           => 1,
+                      UserIdGroupPairs => [
+                        {
+                          GroupId                => 'MyNonEmptyString',
+                          GroupName              => 'MyNonEmptyString',
+                          PeeringStatus          => 'MyNonEmptyString',
+                          UserId                 => 'MyNonEmptyString',
+                          VpcId                  => 'MyNonEmptyString',
+                          VpcPeeringConnectionId => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                                              # OPTIONAL
+                    },
+                    ...
+                  ],                                                  # OPTIONAL
+                  IpPermissionsEgress => [
+                    {
+                      FromPort   => 1,
+                      IpProtocol => 'MyNonEmptyString',
+                      IpRanges   => [ { CidrIp => 'MyNonEmptyString', }, ... ]
+                      ,                                               # OPTIONAL
+                      Ipv6Ranges =>
+                        [ { CidrIpv6 => 'MyNonEmptyString', }, ... ], # OPTIONAL
+                      PrefixListIds =>
+                        [ { PrefixListId => 'MyNonEmptyString', }, ... ]
+                      ,                                               # OPTIONAL
+                      ToPort           => 1,
+                      UserIdGroupPairs => [
+                        {
+                          GroupId                => 'MyNonEmptyString',
+                          GroupName              => 'MyNonEmptyString',
+                          PeeringStatus          => 'MyNonEmptyString',
+                          UserId                 => 'MyNonEmptyString',
+                          VpcId                  => 'MyNonEmptyString',
+                          VpcPeeringConnectionId => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                                              # OPTIONAL
+                    },
+                    ...
+                  ],                                                  # OPTIONAL
+                  OwnerId => 'MyNonEmptyString',
+                  VpcId   => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsElasticsearchDomain => {
+                  AccessPolicies        => 'MyNonEmptyString',
+                  DomainEndpointOptions => {
+                    EnforceHTTPS      => 1,                    # OPTIONAL
+                    TLSSecurityPolicy => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  DomainId                => 'MyNonEmptyString',
+                  DomainName              => 'MyNonEmptyString',
+                  ElasticsearchVersion    => 'MyNonEmptyString',
+                  EncryptionAtRestOptions => {
+                    Enabled  => 1,                    # OPTIONAL
+                    KmsKeyId => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  Endpoint  => 'MyNonEmptyString',
+                  Endpoints => { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                  ,     # OPTIONAL
+                  NodeToNodeEncryptionOptions => {
+                    Enabled => 1,    # OPTIONAL
+                  },    # OPTIONAL
+                  VPCOptions => {
+                    AvailabilityZones => [ 'MyNonEmptyString', ... ], # OPTIONAL
+                    SecurityGroupIds  => [ 'MyNonEmptyString', ... ], # OPTIONAL
+                    SubnetIds         => [ 'MyNonEmptyString', ... ], # OPTIONAL
+                    VPCId             => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                AwsElbv2LoadBalancer => {
+                  AvailabilityZones => [
+                    {
+                      SubnetId => 'MyNonEmptyString',
+                      ZoneName => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  CanonicalHostedZoneId => 'MyNonEmptyString',
+                  CreatedTime           => 'MyNonEmptyString',
+                  DNSName               => 'MyNonEmptyString',
+                  IpAddressType         => 'MyNonEmptyString',
+                  Scheme                => 'MyNonEmptyString',
+                  SecurityGroups => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+                  State          => {
+                    Code   => 'MyNonEmptyString',
+                    Reason => 'MyNonEmptyString',
+                  },                                                # OPTIONAL
+                  Type  => 'MyNonEmptyString',
+                  VpcId => 'MyNonEmptyString',
+                },    # OPTIONAL
                 AwsIamAccessKey => {
-                  CreatedAt => 'MyNonEmptyString',
+                  CreatedAt     => 'MyNonEmptyString',
+                  PrincipalId   => 'MyNonEmptyString',
+                  PrincipalName => 'MyNonEmptyString',
+                  PrincipalType => 'MyNonEmptyString',
                   Status => 'Active',    # values: Active, Inactive; OPTIONAL
                   UserName => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsIamRole => {
+                  AssumeRolePolicyDocument =>
+                    'MyAwsIamRoleAssumeRolePolicyDocument'
+                  ,    # min: 1, max: 131072; OPTIONAL
+                  CreateDate         => 'MyNonEmptyString',
+                  MaxSessionDuration => 1,
+                  Path               => 'MyNonEmptyString',
+                  RoleId             => 'MyNonEmptyString',
+                  RoleName           => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsKmsKey => {
+                  AWSAccountId => 'MyNonEmptyString',
+                  CreationDate => 1,                    # OPTIONAL
+                  KeyId        => 'MyNonEmptyString',
+                  KeyManager   => 'MyNonEmptyString',
+                  KeyState     => 'MyNonEmptyString',
+                  Origin       => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsLambdaFunction => {
+                  Code => {
+                    S3Bucket        => 'MyNonEmptyString',
+                    S3Key           => 'MyNonEmptyString',
+                    S3ObjectVersion => 'MyNonEmptyString',
+                    ZipFile         => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  CodeSha256       => 'MyNonEmptyString',
+                  DeadLetterConfig => { TargetArn => 'MyNonEmptyString', }
+                  ,     # OPTIONAL
+                  Environment => {
+                    Error => {
+                      ErrorCode => 'MyNonEmptyString',
+                      Message   => 'MyNonEmptyString',
+                    },    # OPTIONAL
+                    Variables => { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                    ,     # OPTIONAL
+                  },    # OPTIONAL
+                  FunctionName => 'MyNonEmptyString',
+                  Handler      => 'MyNonEmptyString',
+                  KmsKeyArn    => 'MyNonEmptyString',
+                  LastModified => 'MyNonEmptyString',
+                  Layers       => [
+                    {
+                      Arn      => 'MyNonEmptyString',
+                      CodeSize => 1,
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  MasterArn     => 'MyNonEmptyString',
+                  MemorySize    => 1,
+                  RevisionId    => 'MyNonEmptyString',
+                  Role          => 'MyNonEmptyString',
+                  Runtime       => 'MyNonEmptyString',
+                  Timeout       => 1,
+                  TracingConfig => { Mode => 'MyNonEmptyString', },   # OPTIONAL
+                  Version       => 'MyNonEmptyString',
+                  VpcConfig     => {
+                    SecurityGroupIds => [ 'MyNonEmptyString', ... ],  # OPTIONAL
+                    SubnetIds        => [ 'MyNonEmptyString', ... ],  # OPTIONAL
+                    VpcId            => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                AwsLambdaLayerVersion => {
+                  CompatibleRuntimes => [ 'MyNonEmptyString', ... ],  # OPTIONAL
+                  CreatedDate        => 'MyNonEmptyString',
+                  Version            => 1,                            # OPTIONAL
+                },    # OPTIONAL
+                AwsRdsDbInstance => {
+                  AssociatedRoles => [
+                    {
+                      FeatureName => 'MyNonEmptyString',
+                      RoleArn     => 'MyNonEmptyString',
+                      Status      => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  CACertificateIdentifier => 'MyNonEmptyString',
+                  DBClusterIdentifier     => 'MyNonEmptyString',
+                  DBInstanceClass         => 'MyNonEmptyString',
+                  DBInstanceIdentifier    => 'MyNonEmptyString',
+                  DBName                  => 'MyNonEmptyString',
+                  DbInstancePort          => 1,
+                  DbiResourceId           => 'MyNonEmptyString',
+                  DeletionProtection      => 1,                    # OPTIONAL
+                  Endpoint                => {
+                    Address      => 'MyNonEmptyString',
+                    HostedZoneId => 'MyNonEmptyString',
+                    Port         => 1,
+                  },                                               # OPTIONAL
+                  Engine        => 'MyNonEmptyString',
+                  EngineVersion => 'MyNonEmptyString',
+                  IAMDatabaseAuthenticationEnabled => 1,           # OPTIONAL
+                  InstanceCreateTime => 'MyNonEmptyString',
+                  KmsKeyId           => 'MyNonEmptyString',
+                  PubliclyAccessible => 1,                         # OPTIONAL
+                  StorageEncrypted   => 1,                         # OPTIONAL
+                  TdeCredentialArn   => 'MyNonEmptyString',
+                  VpcSecurityGroups  => [
+                    {
+                      Status             => 'MyNonEmptyString',
+                      VpcSecurityGroupId => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],                                               # OPTIONAL
                 },    # OPTIONAL
                 AwsS3Bucket => {
                   OwnerId   => 'MyNonEmptyString',
                   OwnerName => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsSnsTopic => {
+                  KmsMasterKeyId => 'MyNonEmptyString',
+                  Owner          => 'MyNonEmptyString',
+                  Subscription   => [
+                    {
+                      Endpoint => 'MyNonEmptyString',
+                      Protocol => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  TopicName => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsSqsQueue => {
+                  DeadLetterTargetArn          => 'MyNonEmptyString',
+                  KmsDataKeyReusePeriodSeconds => 1,
+                  KmsMasterKeyId               => 'MyNonEmptyString',
+                  QueueName                    => 'MyNonEmptyString',
+                },    # OPTIONAL
+                AwsWafWebAcl => {
+                  DefaultAction => 'MyNonEmptyString',
+                  Name          => 'MyNonEmptyString',
+                  Rules         => [
+                    {
+                      Action => { Type => 'MyNonEmptyString', },    # OPTIONAL
+                      ExcludedRules =>
+                        [ { RuleId => 'MyNonEmptyString', }, ... ],   # OPTIONAL
+                      OverrideAction => { Type => 'MyNonEmptyString', }
+                      ,                                               # OPTIONAL
+                      Priority => 1,
+                      RuleId   => 'MyNonEmptyString',
+                      Type     => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],                                                  # OPTIONAL
+                  WebAclId => 'MyNonEmptyString',
                 },    # OPTIONAL
                 Container => {
                   ImageId    => 'MyNonEmptyString',
@@ -86,6 +402,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Types      => [ 'MyNonEmptyString', ... ],
           UpdatedAt  => 'MyNonEmptyString',
           Compliance => {
+            RelatedRequirements => [ 'MyNonEmptyString', ... ],       # OPTIONAL
             Status => 'PASSED'
             ,    # values: PASSED, WARNING, FAILED, NOT_AVAILABLE; OPTIONAL
           },    # OPTIONAL
@@ -192,6 +509,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 A list of findings to import. To successfully import a finding, it must
 follow the AWS Security Finding Format
 (https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html).
+Maximum of 100 findings per request.
 
 
 

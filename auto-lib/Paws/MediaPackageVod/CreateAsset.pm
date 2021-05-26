@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn              = $CreateAssetResponse->Arn;
+    my $CreatedAt        = $CreateAssetResponse->CreatedAt;
     my $EgressEndpoints  = $CreateAssetResponse->EgressEndpoints;
     my $Id               = $CreateAssetResponse->Id;
     my $PackagingGroupId = $CreateAssetResponse->PackagingGroupId;

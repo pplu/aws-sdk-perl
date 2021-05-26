@@ -66,7 +66,23 @@ the list.
 
 =head2 TargetFilters => L<Paws::CodeDeploy::TargetFilters>
 
-A key used to filter the returned targets.
+A key used to filter the returned targets. The two valid values are:
+
+=over
+
+=item *
+
+C<TargetStatus> - A C<TargetStatus> filter string can be C<Failed>,
+C<InProgress>, C<Pending>, C<Ready>, C<Skipped>, C<Succeeded>, or
+C<Unknown>.
+
+=item *
+
+C<ServerInstanceLabel> - A C<ServerInstanceLabel> filter string can be
+C<Blue> or C<Green>.
+
+=back
+
 
 
 

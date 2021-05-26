@@ -33,8 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $autoscaling = Paws->service('ApplicationAutoScaling');
-    my $PutScheduledActionResponse = $autoscaling->PutScheduledAction(
+    my $application-autoscaling = Paws->service('ApplicationAutoScaling');
+    my $PutScheduledActionResponse =
+      $application -autoscaling->PutScheduledAction(
       ResourceId           => 'MyResourceIdMaxLen1600',
       ScalableDimension    => 'ecs:service:DesiredCount',
       ScheduledActionName  => 'MyScheduledActionName',
@@ -46,10 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Schedule  => 'MyResourceIdMaxLen1600',    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',       # OPTIONAL
-    );
+      );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/PutScheduledAction>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/application-autoscaling/PutScheduledAction>
 
 =head1 ATTRIBUTES
 
@@ -75,8 +76,8 @@ C<service/default/sample-webapp>.
 
 =item *
 
-Spot fleet request - The resource type is C<spot-fleet-request> and the
-unique identifier is the Spot fleet request ID. Example:
+Spot Fleet request - The resource type is C<spot-fleet-request> and the
+unique identifier is the Spot Fleet request ID. Example:
 C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
 
 =item *
@@ -93,12 +94,12 @@ identifier is the fleet name. Example: C<fleet/sample-fleet>.
 =item *
 
 DynamoDB table - The resource type is C<table> and the unique
-identifier is the resource ID. Example: C<table/my-table>.
+identifier is the table name. Example: C<table/my-table>.
 
 =item *
 
 DynamoDB global secondary index - The resource type is C<index> and the
-unique identifier is the resource ID. Example:
+unique identifier is the index name. Example:
 C<table/my-table/index/my-table-index>.
 
 =item *
@@ -108,8 +109,8 @@ identifier is the cluster name. Example: C<cluster:my-db-cluster>.
 
 =item *
 
-Amazon SageMaker endpoint variants - The resource type is C<variant>
-and the unique identifier is the resource ID. Example:
+Amazon SageMaker endpoint variant - The resource type is C<variant> and
+the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
 =item *
@@ -119,6 +120,19 @@ must specify the C<OutputValue> from the CloudFormation template stack
 used to access the resources. The unique identifier is defined by the
 service provider. More information is available in our GitHub
 repository (https://github.com/aws/aws-auto-scaling-custom-resource).
+
+=item *
+
+Amazon Comprehend document classification endpoint - The resource type
+and unique identifier are specified using the endpoint ARN. Example:
+C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE>.
+
+=item *
+
+Lambda provisioned concurrency - The resource type is C<function> and
+the unique identifier is the function name with a function version or
+alias name suffix that is not C<$LATEST>. Example:
+C<function:my-function:prod> or C<function:my-function:1>.
 
 =back
 
@@ -139,7 +153,7 @@ C<ecs:service:DesiredCount> - The desired task count of an ECS service.
 =item *
 
 C<ec2:spot-fleet-request:TargetCapacity> - The target capacity of a
-Spot fleet request.
+Spot Fleet request.
 
 =item *
 
@@ -187,10 +201,21 @@ for an Amazon SageMaker model endpoint variant.
 C<custom-resource:ResourceType:Property> - The scalable dimension for a
 custom resource provided by your own application or service.
 
+=item *
+
+C<comprehend:document-classifier-endpoint:DesiredInferenceUnits> - The
+number of inference units for an Amazon Comprehend document
+classification endpoint.
+
+=item *
+
+C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
+for a Lambda function.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">
 
 =head2 ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>
 
@@ -245,10 +270,10 @@ The name of the scheduled action.
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">
 
 =head2 StartTime => Str
 

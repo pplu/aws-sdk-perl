@@ -37,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AutoDeployed     = $UpdateDeploymentResponse->AutoDeployed;
     my $CreatedDate      = $UpdateDeploymentResponse->CreatedDate;
     my $DeploymentId     = $UpdateDeploymentResponse->DeploymentId;
     my $DeploymentStatus = $UpdateDeploymentResponse->DeploymentStatus;

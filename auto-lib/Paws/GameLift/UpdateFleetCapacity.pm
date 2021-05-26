@@ -56,21 +56,22 @@ Number of EC2 instances you want this fleet to host.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to update capacity for.
+A unique identifier for a fleet to update capacity for. You can use
+either the fleet ID or ARN value.
 
 
 
 =head2 MaxSize => Int
 
-Maximum value allowed for the fleet's instance count. Default if not
-set is 1.
+The maximum value allowed for the fleet's instance count. Default if
+not set is 1.
 
 
 
 =head2 MinSize => Int
 
-Minimum value allowed for the fleet's instance count. Default if not
-set is 0.
+The minimum value allowed for the fleet's instance count. Default if
+not set is 0.
 
 
 

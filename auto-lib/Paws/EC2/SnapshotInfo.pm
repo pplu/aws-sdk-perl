@@ -47,54 +47,54 @@ This class has no description
 
 =head2 Description => Str
 
-  Description specified by the CreateSnapshotRequest that has been
+Description specified by the CreateSnapshotRequest that has been
 applied to all snapshots.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the snapshot is encrypted.
+Indicates whether the snapshot is encrypted.
 
 
 =head2 OwnerId => Str
 
-  Account id used when creating this snapshot.
+Account id used when creating this snapshot.
 
 
 =head2 Progress => Str
 
-  Progress this snapshot has made towards completing.
+Progress this snapshot has made towards completing.
 
 
 =head2 SnapshotId => Str
 
-  Snapshot id that can be used to describe this snapshot.
+Snapshot id that can be used to describe this snapshot.
 
 
 =head2 StartTime => Str
 
-  Time this snapshot was started. This is the same for all snapshots
+Time this snapshot was started. This is the same for all snapshots
 initiated by the same request.
 
 
 =head2 State => Str
 
-  Current state of the snapshot.
+Current state of the snapshot.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Tags associated with this snapshot.
+Tags associated with this snapshot.
 
 
 =head2 VolumeId => Str
 
-  Source volume from which this snapshot was created.
+Source volume from which this snapshot was created.
 
 
 =head2 VolumeSize => Int
 
-  Size of the volume from which this snapshot was created.
+Size of the volume from which this snapshot was created.
 
 
 

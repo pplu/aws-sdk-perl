@@ -25,6 +25,11 @@ package Paws::Shield;
     my $call_object = $self->new_with_coercions('Paws::Shield::AssociateDRTRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateHealthCheck {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Shield::AssociateHealthCheck', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateProtection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Shield::CreateProtection', @_);
@@ -78,6 +83,11 @@ package Paws::Shield;
   sub DisassociateDRTRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Shield::DisassociateDRTRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateHealthCheck {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Shield::DisassociateHealthCheck', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSubscriptionState {
@@ -154,7 +164,7 @@ package Paws::Shield;
   }
 
 
-  sub operations { qw/AssociateDRTLogBucket AssociateDRTRole CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeDRTAccess DescribeEmergencyContactSettings DescribeProtection DescribeSubscription DisassociateDRTLogBucket DisassociateDRTRole GetSubscriptionState ListAttacks ListProtections UpdateEmergencyContactSettings UpdateSubscription / }
+  sub operations { qw/AssociateDRTLogBucket AssociateDRTRole AssociateHealthCheck CreateProtection CreateSubscription DeleteProtection DeleteSubscription DescribeAttack DescribeDRTAccess DescribeEmergencyContactSettings DescribeProtection DescribeSubscription DisassociateDRTLogBucket DisassociateDRTRole DisassociateHealthCheck GetSubscriptionState ListAttacks ListProtections UpdateEmergencyContactSettings UpdateSubscription / }
 
 1;
 
@@ -211,8 +221,8 @@ Each argument is described in detail in: L<Paws::Shield::AssociateDRTLogBucket>
 Returns: a L<Paws::Shield::AssociateDRTLogBucketResponse> instance
 
 Authorizes the DDoS Response team (DRT) to access the specified Amazon
-S3 bucket containing your flow logs. You can associate up to 10 Amazon
-S3 buckets with your subscription.
+S3 bucket containing your AWS WAF logs. You can associate up to 10
+Amazon S3 buckets with your subscription.
 
 To use the services of the DRT and make an C<AssociateDRTLogBucket>
 request, you must be subscribed to the Business Support plan
@@ -271,6 +281,34 @@ Enterprise Support plan
 (https://aws.amazon.com/premiumsupport/enterprise-support/).
 
 
+=head2 AssociateHealthCheck
+
+=over
+
+=item HealthCheckArn => Str
+
+=item ProtectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Shield::AssociateHealthCheck>
+
+Returns: a L<Paws::Shield::AssociateHealthCheckResponse> instance
+
+Adds health-based detection to the Shield Advanced protection for a
+resource. Shield Advanced health-based detection uses the health of
+your AWS resource to improve responsiveness and accuracy in attack
+detection and mitigation.
+
+You define the health check in Route 53 and then associate it with your
+Shield Advanced protection. For more information, see Shield Advanced
+Health-Based Detection
+(https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
+in the AWS WAF and AWS Shield Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
+
+
 =head2 CreateProtection
 
 =over
@@ -320,6 +358,11 @@ assist you during a suspected DDoS attack. For more information see
 Authorize the DDoS Response Team to Create Rules and Web ACLs on Your
 Behalf
 (https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html).
+
+To use the services of the DRT, you must be subscribed to the Business
+Support plan (https://aws.amazon.com/premiumsupport/business-support/)
+or the Enterprise Support plan
+(https://aws.amazon.com/premiumsupport/enterprise-support/).
 
 When you initally create a subscription, your subscription is set to be
 automatically renewed at the end of the existing subscription period.
@@ -452,7 +495,7 @@ Each argument is described in detail in: L<Paws::Shield::DisassociateDRTLogBucke
 Returns: a L<Paws::Shield::DisassociateDRTLogBucketResponse> instance
 
 Removes the DDoS Response team's (DRT) access to the specified Amazon
-S3 bucket containing your flow logs.
+S3 bucket containing your AWS WAF logs.
 
 To make a C<DisassociateDRTLogBucket> request, you must be subscribed
 to the Business Support plan
@@ -485,6 +528,34 @@ Enterprise Support plan
 if you are not subscribed to one of these support plans, but had been
 previously and had granted the DRT access to your account, you can
 submit a C<DisassociateDRTRole> request to remove this access.
+
+
+=head2 DisassociateHealthCheck
+
+=over
+
+=item HealthCheckArn => Str
+
+=item ProtectionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Shield::DisassociateHealthCheck>
+
+Returns: a L<Paws::Shield::DisassociateHealthCheckResponse> instance
+
+Removes health-based detection from the Shield Advanced protection for
+a resource. Shield Advanced health-based detection uses the health of
+your AWS resource to improve responsiveness and accuracy in attack
+detection and mitigation.
+
+You define the health check in Route 53 and then associate or
+disassociate it with your Shield Advanced protection. For more
+information, see Shield Advanced Health-Based Detection
+(https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
+in the AWS WAF and AWS Shield Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 GetSubscriptionState

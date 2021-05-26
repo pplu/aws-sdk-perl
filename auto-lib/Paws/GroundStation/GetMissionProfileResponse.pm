@@ -38,8 +38,8 @@ CloudWatch event indicating an upcoming pass.
 
 =head2 DataflowEdges => ArrayRef[ArrayRef[Str|Undef]]
 
-A list of lists of ARNs. Each list of ARNs is an edge, with a from
-C<Config> and a to C<Config>.
+A list of lists of ARNs. Each list of ARNs is an edge, with a I<from>
+C<Config> and a I<to> C<Config>.
 
 
 =head2 MinimumViableContactDurationSeconds => Int
@@ -56,7 +56,7 @@ ARN of a mission profile.
 
 =head2 MissionProfileId => Str
 
-ID of a mission profile.
+UUID of a mission profile.
 
 
 =head2 Name => Str

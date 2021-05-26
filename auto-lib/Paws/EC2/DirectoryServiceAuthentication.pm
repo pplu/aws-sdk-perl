@@ -38,7 +38,7 @@ This class has no description
 
 =head2 DirectoryId => Str
 
-  The ID of the Active Directory used for authentication.
+The ID of the Active Directory used for authentication.
 
 
 

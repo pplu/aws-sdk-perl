@@ -17,8 +17,7 @@ Paws::GuardDuty::DeleteMembersResponse
 
 =head2 B<REQUIRED> UnprocessedAccounts => ArrayRef[L<Paws::GuardDuty::UnprocessedAccount>]
 
-A list of objects containing the unprocessed account and a result
-string explaining why it was unprocessed.
+The accounts that could not be processed.
 
 
 =head2 _request_id => Str

@@ -16,7 +16,8 @@ Paws::CloudWatchEvents::ListTagsForResourceResponse
 
 =head2 Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
 
-The list of tag keys and values associated with the rule you specified
+The list of tag keys and values associated with the rule that you
+specified.
 
 
 =head2 _request_id => Str

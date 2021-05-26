@@ -17,9 +17,9 @@ Paws::CodeCommit::GetDifferencesOutput
 
 =head2 Differences => ArrayRef[L<Paws::CodeCommit::Difference>]
 
-A differences data type object that contains information about the
-differences, including whether the difference is added, modified, or
-deleted (A, D, M).
+A data type object that contains information about the differences,
+including whether the difference is added, modified, or deleted (A, D,
+M).
 
 
 =head2 NextToken => Str

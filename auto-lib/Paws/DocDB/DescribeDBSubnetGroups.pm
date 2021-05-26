@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 DBSubnetGroupName => Str
 
-The name of the DB subnet group to return details for.
+The name of the subnet group to return details for.
 
 
 

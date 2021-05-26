@@ -33,10 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreationTime = $DescribeLocationS3Response->CreationTime;
-    my $LocationArn  = $DescribeLocationS3Response->LocationArn;
-    my $LocationUri  = $DescribeLocationS3Response->LocationUri;
-    my $S3Config     = $DescribeLocationS3Response->S3Config;
+    my $CreationTime   = $DescribeLocationS3Response->CreationTime;
+    my $LocationArn    = $DescribeLocationS3Response->LocationArn;
+    my $LocationUri    = $DescribeLocationS3Response->LocationUri;
+    my $S3Config       = $DescribeLocationS3Response->S3Config;
+    my $S3StorageClass = $DescribeLocationS3Response->S3StorageClass;
 
     # Returns a L<Paws::Datasync::DescribeLocationS3Response> object.
 

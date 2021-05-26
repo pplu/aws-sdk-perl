@@ -41,22 +41,22 @@ This class has no description
 
 =head2 DhcpConfigurations => ArrayRef[L<Paws::EC2::DhcpConfiguration>]
 
-  One or more DHCP options in the set.
+One or more DHCP options in the set.
 
 
 =head2 DhcpOptionsId => Str
 
-  The ID of the set of DHCP options.
+The ID of the set of DHCP options.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the DHCP options set.
+The ID of the AWS account that owns the DHCP options set.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the DHCP options set.
+Any tags assigned to the DHCP options set.
 
 
 

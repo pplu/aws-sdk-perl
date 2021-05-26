@@ -38,13 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDocumentName',
       Attachments => [
         {
-          Key    => 'SourceUrl',    # values: SourceUrl; OPTIONAL
+          Key => 'SourceUrl'
+          ,    # values: SourceUrl, S3FileUrl, AttachmentReference; OPTIONAL
+          Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
-            'MyAttachmentsSourceValue', ...    # min: 1, max: 1024
-          ],                                   # min: 1, max: 1; OPTIONAL
+            'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
+          ],                                     # min: 1, max: 1; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                         # OPTIONAL
       DocumentFormat  => 'YAML',                     # OPTIONAL
       DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
       TargetType      => 'MyTargetType',             # OPTIONAL
@@ -80,11 +82,11 @@ A valid JSON or YAML string.
 Specify the document format for the new document version. Systems
 Manager supports JSON and YAML documents. JSON is the default format.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentVersion => Str
 
-The version of the document that you want to update.
+(Required) The version of the document that you want to update.
 
 
 

@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IdentitySource = $GetAuthorizerResponse->IdentitySource;
     my $IdentityValidationExpression =
       $GetAuthorizerResponse->IdentityValidationExpression;
-    my $Name         = $GetAuthorizerResponse->Name;
-    my $ProviderArns = $GetAuthorizerResponse->ProviderArns;
+    my $JwtConfiguration = $GetAuthorizerResponse->JwtConfiguration;
+    my $Name             = $GetAuthorizerResponse->Name;
 
     # Returns a L<Paws::ApiGatewayV2::GetAuthorizerResponse> object.
 

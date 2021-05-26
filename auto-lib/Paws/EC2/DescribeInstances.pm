@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      InstanceIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      InstanceIds => [ 'MyInstanceId', ... ],    # OPTIONAL
+      MaxResults  => 1,                          # OPTIONAL
+      NextToken   => 'MyString',                 # OPTIONAL
     );
 
     # Results:
@@ -214,6 +210,21 @@ for the instance in the launch group (for example, 0, 1, 2, and so on).
 =item *
 
 C<launch-time> - The time when the instance was launched.
+
+=item *
+
+C<metadata-options.http-tokens> - The metadata request authorization
+state (C<optional> | C<required>)
+
+=item *
+
+C<metadata-options.http-put-response-hop-limit> - The http metadata
+request put response hop limit (integer, possible values C<1> to C<64>)
+
+=item *
+
+C<metadata-options.http-endpoint> - Enable or disable metadata access
+on http endpoint (C<enabled> | C<disabled>)
 
 =item *
 

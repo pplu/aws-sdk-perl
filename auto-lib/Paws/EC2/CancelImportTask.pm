@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CancelImportTaskResult = $ec2->CancelImportTask(
-      CancelReason => 'MyString',    # OPTIONAL
-      DryRun       => 1,             # OPTIONAL
-      ImportTaskId => 'MyString',    # OPTIONAL
+      CancelReason => 'MyString',          # OPTIONAL
+      DryRun       => 1,                   # OPTIONAL
+      ImportTaskId => 'MyImportTaskId',    # OPTIONAL
     );
 
     # Results:

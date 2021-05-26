@@ -67,7 +67,19 @@ The attribute used as the label in the output manifest file.
 =head2 LabelCategoryConfigS3Uri => Str
 
 The S3 location of the JSON file that defines the categories used to
-label data objects.
+label data objects. Please note the following label-category limits:
+
+=over
+
+=item *
+
+Semantic segmentation labeling jobs using automated labeling: 20 labels
+
+=item *
+
+Box bounding labeling jobs (all): 10 lables
+
+=back
 
 The file is a JSON structure in the following format:
 
@@ -161,7 +173,7 @@ conditions are met, the job is automatically stopped.
 
 An array of key/value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

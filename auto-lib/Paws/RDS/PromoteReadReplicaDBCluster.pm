@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The identifier of the DB cluster Read Replica to promote. This
-parameter is not case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 

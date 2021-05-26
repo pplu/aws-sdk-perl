@@ -2,9 +2,11 @@
 package Paws::StepFunctions::CreateStateMachine;
   use Moose;
   has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
+  has LoggingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::LoggingConfiguration', traits => ['NameInRequest'], request_name => 'loggingConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
 
   use MooseX::ClassAttribute;
 
@@ -31,16 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $states = Paws->service('StepFunctions');
     my $CreateStateMachineOutput = $states->CreateStateMachine(
-      Definition => 'MyDefinition',
-      Name       => 'MyName',
-      RoleArn    => 'MyArn',
-      Tags       => [
+      Definition           => 'MyDefinition',
+      Name                 => 'MyName',
+      RoleArn              => 'MyArn',
+      LoggingConfiguration => {
+        Destinations => [
+          {
+            CloudWatchLogsLogGroup => {
+              LogGroupArn => 'MyArn',    # min: 1, max: 256
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
+        IncludeExecutionData => 1,    # OPTIONAL
+        Level => 'ALL',               # values: ALL, ERROR, FATAL, OFF; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
       ],                            # OPTIONAL
+      Type => 'STANDARD',           # OPTIONAL
     );
 
     # Results:
@@ -63,6 +78,13 @@ States Language
 
 
 
+=head2 LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>
+
+Defines what execution history events are logged and where they are
+logged.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the state machine.
@@ -73,7 +95,7 @@ A name must I<not> contain:
 
 =item *
 
-whitespace
+white space
 
 =item *
 
@@ -107,7 +129,24 @@ machine.
 
 Tags to be added when creating a state machine.
 
+An array of key-value pairs. For more information, see Using Cost
+Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>, and Controlling
+Access Using IAM Tags
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: C<_ . : / = + - @>.
+
+
+
+=head2 Type => Str
+
+Determines whether a Standard or Express state machine is created. If
+not set, Standard is created.
+
+Valid values are: C<"STANDARD">, C<"EXPRESS">
 
 
 =head1 SEE ALSO

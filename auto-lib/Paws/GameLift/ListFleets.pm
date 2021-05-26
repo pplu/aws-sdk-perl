@@ -51,15 +51,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 BuildId => Str
 
-Unique identifier for a build to return fleets for. Use this parameter
-to return only fleets using the specified build. To retrieve all
-fleets, leave this parameter empty.
+A unique identifier for a build to return fleets for. Use this
+parameter to return only fleets using the specified build. Use either
+the build ID or ARN value.To retrieve all fleets, leave this parameter
+empty.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages.
 
 
@@ -74,9 +75,10 @@ start at the beginning of the result set, do not specify a value.
 
 =head2 ScriptId => Str
 
-Unique identifier for a Realtime script to return fleets for. Use this
-parameter to return only fleets using the specified script. To retrieve
-all fleets, leave this parameter empty.
+A unique identifier for a Realtime script to return fleets for. Use
+this parameter to return only fleets using the specified script. Use
+either the script ID or ARN value.To retrieve all fleets, leave this
+parameter empty.
 
 
 

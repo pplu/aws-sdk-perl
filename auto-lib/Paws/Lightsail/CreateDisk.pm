@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::CreateDisk;
   use Moose;
+  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
   has SizeInGb => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'sizeInGb' , required => 1);
@@ -34,7 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AvailabilityZone => 'MyNonEmptyString',
       DiskName         => 'MyResourceName',
       SizeInGb         => 1,
-      Tags             => [
+      AddOns           => [
+        {
+          AddOnType                => 'AutoSnapshot',    # values: AutoSnapshot
+          AutoSnapshotAddOnRequest => {
+            SnapshotTimeOfDay => 'MyTimeOfDay',          # OPTIONAL
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # OPTIONAL
           Value => 'MyTagValue',    # OPTIONAL
@@ -54,13 +64,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
+=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+
+An array of objects that represent the add-ons to enable for the new
+disk.
+
+
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
 The Availability Zone where you want to create the disk (e.g.,
-C<us-east-2a>). Choose the same Availability Zone as the Lightsail
-instance where you want to create the disk.
+C<us-east-2a>). Use the same Availability Zone as the Lightsail
+instance to which you want to attach the disk.
 
-Use the GetRegions operation to list the Availability Zones where
+Use the C<get regions> operation to list the Availability Zones where
 Lightsail is currently available.
 
 

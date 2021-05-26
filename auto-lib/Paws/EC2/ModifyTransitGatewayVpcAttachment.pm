@@ -33,14 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyTransitGatewayVpcAttachmentResult =
       $ec2->ModifyTransitGatewayVpcAttachment(
-      TransitGatewayAttachmentId => 'MyString',
-      AddSubnetIds               => [ 'MyString', ... ],    # OPTIONAL
-      DryRun                     => 1,                      # OPTIONAL
+      TransitGatewayAttachmentId => 'MyTransitGatewayAttachmentId',
+      AddSubnetIds               => [ 'MySubnetId', ... ],            # OPTIONAL
+      DryRun                     => 1,                                # OPTIONAL
       Options                    => {
         DnsSupport  => 'enable',    # values: enable, disable; OPTIONAL
         Ipv6Support => 'enable',    # values: enable, disable; OPTIONAL
       },    # OPTIONAL
-      RemoveSubnetIds => [ 'MyString', ... ],    # OPTIONAL
+      RemoveSubnetIds => [ 'MySubnetId', ... ],    # OPTIONAL
       );
 
     # Results:
@@ -74,6 +74,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Options => L<Paws::EC2::ModifyTransitGatewayVpcAttachmentRequestOptions>
 
 The new VPC attachment options.
+
+You cannot modify the IPv6 options.
 
 
 

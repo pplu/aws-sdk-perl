@@ -59,9 +59,19 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunctionConcurrency', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFunctionEventInvokeConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunctionEventInvokeConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteLayerVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteLayerVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteProvisionedConcurrencyConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteProvisionedConcurrencyConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAccountSettings {
@@ -84,9 +94,19 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetFunctionConcurrency {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionConcurrency', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetFunctionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFunctionEventInvokeConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionEventInvokeConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetLayerVersion {
@@ -109,6 +129,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetProvisionedConcurrencyConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetProvisionedConcurrencyConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub Invoke {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::Invoke', @_);
@@ -129,6 +154,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListEventSourceMappings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListFunctionEventInvokeConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctionEventInvokeConfigs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListFunctions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctions', @_);
@@ -142,6 +172,11 @@ package Paws::Lambda;
   sub ListLayerVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListLayerVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListProvisionedConcurrencyConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListProvisionedConcurrencyConfigs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTags {
@@ -167,6 +202,16 @@ package Paws::Lambda;
   sub PutFunctionConcurrency {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::PutFunctionConcurrency', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutFunctionEventInvokeConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::PutFunctionEventInvokeConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutProvisionedConcurrencyConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::PutProvisionedConcurrencyConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveLayerVersionPermission {
@@ -207,6 +252,11 @@ package Paws::Lambda;
   sub UpdateFunctionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateFunctionEventInvokeConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionEventInvokeConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -252,6 +302,29 @@ package Paws::Lambda;
         $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
       }
       $callback->($_ => 'EventSourceMappings') foreach (@{ $result->EventSourceMappings });
+    }
+
+    return undef
+  }
+  sub ListAllFunctionEventInvokeConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFunctionEventInvokeConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListFunctionEventInvokeConfigs(@_, Marker => $next_result->NextMarker);
+        push @{ $result->FunctionEventInvokeConfigs }, @{ $next_result->FunctionEventInvokeConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'FunctionEventInvokeConfigs') foreach (@{ $result->FunctionEventInvokeConfigs });
+        $result = $self->ListFunctionEventInvokeConfigs(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'FunctionEventInvokeConfigs') foreach (@{ $result->FunctionEventInvokeConfigs });
     }
 
     return undef
@@ -325,6 +398,29 @@ package Paws::Lambda;
 
     return undef
   }
+  sub ListAllProvisionedConcurrencyConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisionedConcurrencyConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListProvisionedConcurrencyConfigs(@_, Marker => $next_result->NextMarker);
+        push @{ $result->ProvisionedConcurrencyConfigs }, @{ $next_result->ProvisionedConcurrencyConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'ProvisionedConcurrencyConfigs') foreach (@{ $result->ProvisionedConcurrencyConfigs });
+        $result = $self->ListProvisionedConcurrencyConfigs(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'ProvisionedConcurrencyConfigs') foreach (@{ $result->ProvisionedConcurrencyConfigs });
+    }
+
+    return undef
+  }
   sub ListAllVersionsByFunction {
     my $self = shift;
 
@@ -350,7 +446,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteLayerVersion GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetLayerVersion GetLayerVersionByArn GetLayerVersionPolicy GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListLayers ListLayerVersions ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteFunctionEventInvokeConfig DeleteLayerVersion DeleteProvisionedConcurrencyConfig GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConcurrency GetFunctionConfiguration GetFunctionEventInvokeConfig GetLayerVersion GetLayerVersionByArn GetLayerVersionPolicy GetPolicy GetProvisionedConcurrencyConfig Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctionEventInvokeConfigs ListFunctions ListLayers ListLayerVersions ListProvisionedConcurrencyConfigs ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency PutFunctionEventInvokeConfig PutProvisionedConcurrencyConfig RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration UpdateFunctionEventInvokeConfig / }
 
 1;
 
@@ -475,7 +571,7 @@ C<SourceAccount>. If you grant permission to a service principal
 without specifying the source, other accounts could potentially
 configure resources in their account to invoke your Lambda function.
 
-This action adds a statement to a resource-based permission policy for
+This action adds a statement to a resource-based permissions policy for
 the function. For more information about function policies, see Lambda
 Function Policies
 (https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html).
@@ -522,7 +618,19 @@ version and the percentage of invocation requests that it receives.
 
 =item [BatchSize => Int]
 
+=item [BisectBatchOnFunctionError => Bool]
+
+=item [DestinationConfig => L<Paws::Lambda::DestinationConfig>]
+
 =item [Enabled => Bool]
+
+=item [MaximumBatchingWindowInSeconds => Int]
+
+=item [MaximumRecordAgeInSeconds => Int]
+
+=item [MaximumRetryAttempts => Int]
+
+=item [ParallelizationFactor => Int]
 
 =item [StartingPosition => Str]
 
@@ -544,6 +652,11 @@ For details about each event source type, see the following topics.
 
 =item *
 
+Using AWS Lambda with Amazon DynamoDB
+(https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+
+=item *
+
 Using AWS Lambda with Amazon Kinesis
 (https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
 
@@ -552,10 +665,37 @@ Using AWS Lambda with Amazon Kinesis
 Using AWS Lambda with Amazon SQS
 (https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
 
+=back
+
+The following error handling options are only available for stream
+sources (DynamoDB and Kinesis):
+
+=over
+
 =item *
 
-Using AWS Lambda with Amazon DynamoDB
-(https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+C<BisectBatchOnFunctionError> - If the function returns an error, split
+the batch in two and retry.
+
+=item *
+
+C<DestinationConfig> - Send discarded records to an Amazon SQS queue or
+Amazon SNS topic.
+
+=item *
+
+C<MaximumRecordAgeInSeconds> - Discard records older than the specified
+age.
+
+=item *
+
+C<MaximumRetryAttempts> - Discard records after the specified number of
+retries.
+
+=item *
+
+C<ParallelizationFactor> - Process multiple batches from each shard
+concurrently.
 
 =back
 
@@ -613,6 +753,15 @@ The deployment package contains your function code. The execution role
 grants the function permission to use AWS services, such as Amazon
 CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
 
+When you create a function, Lambda provisions an instance of the
+function and its supporting resources. If your function connects to a
+VPC, this process can take a minute or so. During this time, you can't
+invoke or modify the function. The C<State>, C<StateReason>, and
+C<StateReasonCode> fields in the response from GetFunctionConfiguration
+indicate when the function is ready to invoke. For more information,
+see Function States
+(https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
+
 A function has an unpublished version, and can have published versions
 and aliases. The unpublished version changes when you update your
 function's code and configuration. A published version is a snapshot of
@@ -637,7 +786,7 @@ To invoke your function directly, use Invoke. To invoke your function
 in response to events in other AWS services, create an event source
 mapping (CreateEventSourceMapping), or configure a function trigger in
 the other service. For more information, see Invoking Functions
-(https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html).
 
 
 =head2 DeleteAlias
@@ -676,6 +825,9 @@ Deletes an event source mapping
 (https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html).
 You can get the identifier of a mapping from the output of
 ListEventSourceMappings.
+
+When you delete an event source mapping, it enters a C<Deleting> state
+and might not be completely deleted for several seconds.
 
 
 =head2 DeleteFunction
@@ -719,6 +871,28 @@ Returns: nothing
 Removes a concurrent execution limit from a function.
 
 
+=head2 DeleteFunctionEventInvokeConfig
+
+=over
+
+=item FunctionName => Str
+
+=item [Qualifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::DeleteFunctionEventInvokeConfig>
+
+Returns: nothing
+
+Deletes the configuration for asynchronous invocation for a function,
+version, or alias.
+
+To configure options for asynchronous invocation, use
+PutFunctionEventInvokeConfig.
+
+
 =head2 DeleteLayerVersion
 
 =over
@@ -739,6 +913,24 @@ Deletes a version of an AWS Lambda layer
 Deleted versions can no longer be viewed or added to functions. To
 avoid breaking functions, a copy of the version remains in Lambda until
 no functions refer to it.
+
+
+=head2 DeleteProvisionedConcurrencyConfig
+
+=over
+
+=item FunctionName => Str
+
+=item Qualifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::DeleteProvisionedConcurrencyConfig>
+
+Returns: nothing
+
+Deletes the provisioned concurrency configuration for a function.
 
 
 =head2 GetAccountSettings
@@ -814,6 +1006,24 @@ specify a function version, only details that are specific to that
 version are returned.
 
 
+=head2 GetFunctionConcurrency
+
+=over
+
+=item FunctionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetFunctionConcurrency>
+
+Returns: a L<Paws::Lambda::GetFunctionConcurrencyResponse> instance
+
+Returns details about the reserved concurrency configuration for a
+function. To set a concurrency limit for a function, use
+PutFunctionConcurrency.
+
+
 =head2 GetFunctionConfiguration
 
 =over
@@ -835,6 +1045,28 @@ function. To modify these settings, use UpdateFunctionConfiguration.
 
 To get all of a function's details, including function-level settings,
 use GetFunction.
+
+
+=head2 GetFunctionEventInvokeConfig
+
+=over
+
+=item FunctionName => Str
+
+=item [Qualifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetFunctionEventInvokeConfig>
+
+Returns: a L<Paws::Lambda::FunctionEventInvokeConfig> instance
+
+Retrieves the configuration for asynchronous invocation for a function,
+version, or alias.
+
+To configure options for asynchronous invocation, use
+PutFunctionEventInvokeConfig.
 
 
 =head2 GetLayerVersion
@@ -915,6 +1147,25 @@ Returns the resource-based IAM policy
 for a function, version, or alias.
 
 
+=head2 GetProvisionedConcurrencyConfig
+
+=over
+
+=item FunctionName => Str
+
+=item Qualifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetProvisionedConcurrencyConfig>
+
+Returns: a L<Paws::Lambda::GetProvisionedConcurrencyConfigResponse> instance
+
+Retrieves the provisioned concurrency configuration for a function's
+alias or version.
+
+
 =head2 Invoke
 
 =over
@@ -942,15 +1193,14 @@ Invokes a Lambda function. You can invoke a function synchronously (and
 wait for the response), or asynchronously. To invoke a function
 asynchronously, set C<InvocationType> to C<Event>.
 
-For synchronous invocation, details about the function response,
-including errors, are included in the response body and headers. For
-either invocation type, you can find more information in the execution
-log
+For synchronous invocation
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html),
+details about the function response, including errors, are included in
+the response body and headers. For either invocation type, you can find
+more information in the execution log
 (https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
-and trace (https://docs.aws.amazon.com/lambda/latest/dg/dlq.html). To
-record function errors for asynchronous invocations, configure your
-function with a dead letter queue
-(https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+and trace
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html).
 
 When an error occurs, your function may be invoked multiple times.
 Retry behavior varies by error type, client, event source, and
@@ -958,6 +1208,15 @@ invocation type. For example, if you invoke a function asynchronously
 and it returns an error, Lambda executes the function up to two more
 times. For more information, see Retry Behavior
 (https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html).
+
+For asynchronous invocation
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html),
+Lambda adds events to a queue before sending them to your function. If
+your function does not have enough capacity to keep up with the queue,
+events may be lost. Occasionally, your function may receive the same
+event multiple times, even if no error occurs. To retain events that
+were not processed, configure your function with a dead-letter queue
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 
 The status code in the API response doesn't reflect function errors.
 Error codes are reserved for errors that prevent your function from
@@ -1045,6 +1304,30 @@ Lists event source mappings. Specify an C<EventSourceArn> to only show
 event source mappings for a single event source.
 
 
+=head2 ListFunctionEventInvokeConfigs
+
+=over
+
+=item FunctionName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::ListFunctionEventInvokeConfigs>
+
+Returns: a L<Paws::Lambda::ListFunctionEventInvokeConfigsResponse> instance
+
+Retrieves a list of configurations for asynchronous invocation for a
+function.
+
+To configure options for asynchronous invocation, use
+PutFunctionEventInvokeConfig.
+
+
 =head2 ListFunctions
 
 =over
@@ -1065,7 +1348,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 Returns: a L<Paws::Lambda::ListFunctionsResponse> instance
 
 Returns a list of Lambda functions, with the version-specific
-configuration of each.
+configuration of each. Lambda returns up to 50 functions per call.
 
 Set C<FunctionVersion> to C<ALL> to include all published versions of
 each function in addition to the unpublished version. To get more
@@ -1126,6 +1409,27 @@ list only versions that indicate that they're compatible with that
 runtime.
 
 
+=head2 ListProvisionedConcurrencyConfigs
+
+=over
+
+=item FunctionName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::ListProvisionedConcurrencyConfigs>
+
+Returns: a L<Paws::Lambda::ListProvisionedConcurrencyConfigsResponse> instance
+
+Retrieves a list of provisioned concurrency configurations for a
+function.
+
+
 =head2 ListTags
 
 =over
@@ -1163,7 +1467,8 @@ Returns: a L<Paws::Lambda::ListVersionsByFunctionResponse> instance
 
 Returns a list of versions
 (https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html),
-with the version-specific configuration of each.
+with the version-specific configuration of each. Lambda returns up to
+50 versions per call.
 
 
 =head2 PublishLayerVersion
@@ -1190,7 +1495,7 @@ Returns: a L<Paws::Lambda::PublishLayerVersionResponse> instance
 Creates an AWS Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 from a ZIP archive. Each time you call C<PublishLayerVersion> with the
-same version name, a new version is created.
+same layer name, a new version is created.
 
 Add layers to your function with CreateFunction or
 UpdateFunctionConfiguration.
@@ -1254,12 +1559,78 @@ both ensures that your function has capacity to process the specified
 number of events simultaneously, and prevents it from scaling beyond
 that level. Use GetFunction to see the current setting for a function.
 
-Use GetAccountSettings to see your regional concurrency limit. You can
+Use GetAccountSettings to see your Regional concurrency limit. You can
 reserve concurrency for as many functions as you like, as long as you
 leave at least 100 simultaneous executions unreserved for functions
 that aren't configured with a per-function limit. For more information,
 see Managing Concurrency
 (https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+
+
+=head2 PutFunctionEventInvokeConfig
+
+=over
+
+=item FunctionName => Str
+
+=item [DestinationConfig => L<Paws::Lambda::DestinationConfig>]
+
+=item [MaximumEventAgeInSeconds => Int]
+
+=item [MaximumRetryAttempts => Int]
+
+=item [Qualifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::PutFunctionEventInvokeConfig>
+
+Returns: a L<Paws::Lambda::FunctionEventInvokeConfig> instance
+
+Configures options for asynchronous invocation
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) on
+a function, version, or alias. If a configuration already exists for a
+function, version, or alias, this operation overwrites it. If you
+exclude any settings, they are removed. To set one option without
+affecting existing settings for other options, use
+PutFunctionEventInvokeConfig.
+
+By default, Lambda retries an asynchronous invocation twice if the
+function returns an error. It retains events in a queue for up to six
+hours. When an event fails all processing attempts or stays in the
+asynchronous invocation queue for too long, Lambda discards it. To
+retain discarded events, configure a dead-letter queue with
+UpdateFunctionConfiguration.
+
+To send an invocation record to a queue, topic, function, or event bus,
+specify a destination
+(https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations).
+You can configure separate destinations for successful invocations
+(on-success) and events that fail all processing attempts (on-failure).
+You can configure destinations in addition to or instead of a
+dead-letter queue.
+
+
+=head2 PutProvisionedConcurrencyConfig
+
+=over
+
+=item FunctionName => Str
+
+=item ProvisionedConcurrentExecutions => Int
+
+=item Qualifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::PutProvisionedConcurrencyConfig>
+
+Returns: a L<Paws::Lambda::PutProvisionedConcurrencyConfigResponse> instance
+
+Adds a provisioned concurrency configuration to a function's alias or
+version.
 
 
 =head2 RemoveLayerVersionPermission
@@ -1384,9 +1755,21 @@ Updates the configuration of a Lambda function alias
 
 =item [BatchSize => Int]
 
+=item [BisectBatchOnFunctionError => Bool]
+
+=item [DestinationConfig => L<Paws::Lambda::DestinationConfig>]
+
 =item [Enabled => Bool]
 
 =item [FunctionName => Str]
+
+=item [MaximumBatchingWindowInSeconds => Int]
+
+=item [MaximumRecordAgeInSeconds => Int]
+
+=item [MaximumRetryAttempts => Int]
+
+=item [ParallelizationFactor => Int]
 
 
 =back
@@ -1398,6 +1781,39 @@ Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 Updates an event source mapping. You can change the function that AWS
 Lambda invokes, or pause invocation and resume later from the same
 location.
+
+The following error handling options are only available for stream
+sources (DynamoDB and Kinesis):
+
+=over
+
+=item *
+
+C<BisectBatchOnFunctionError> - If the function returns an error, split
+the batch in two and retry.
+
+=item *
+
+C<DestinationConfig> - Send discarded records to an Amazon SQS queue or
+Amazon SNS topic.
+
+=item *
+
+C<MaximumRecordAgeInSeconds> - Discard records older than the specified
+age.
+
+=item *
+
+C<MaximumRetryAttempts> - Discard records after the specified number of
+retries.
+
+=item *
+
+C<ParallelizationFactor> - Process multiple batches from each shard
+concurrently.
+
+=back
+
 
 
 =head2 UpdateFunctionCode
@@ -1474,12 +1890,50 @@ Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
 Modify the version-specific settings of a Lambda function.
 
+When you update a function, Lambda provisions an instance of the
+function and its supporting resources. If your function connects to a
+VPC, this process can take a minute. During this time, you can't modify
+the function, but you can still invoke it. The C<LastUpdateStatus>,
+C<LastUpdateStatusReason>, and C<LastUpdateStatusReasonCode> fields in
+the response from GetFunctionConfiguration indicate when the update is
+complete and the function is processing events with the new
+configuration. For more information, see Function States
+(https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
+
 These settings can vary between versions of a function and are locked
 when you publish a version. You can't modify the configuration of a
 published version, only the unpublished version.
 
 To configure function concurrency, use PutFunctionConcurrency. To grant
 invoke permissions to an account or AWS service, use AddPermission.
+
+
+=head2 UpdateFunctionEventInvokeConfig
+
+=over
+
+=item FunctionName => Str
+
+=item [DestinationConfig => L<Paws::Lambda::DestinationConfig>]
+
+=item [MaximumEventAgeInSeconds => Int]
+
+=item [MaximumRetryAttempts => Int]
+
+=item [Qualifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionEventInvokeConfig>
+
+Returns: a L<Paws::Lambda::FunctionEventInvokeConfig> instance
+
+Updates the configuration for asynchronous invocation for a function,
+version, or alias.
+
+To configure options for asynchronous invocation, use
+PutFunctionEventInvokeConfig.
 
 
 
@@ -1510,6 +1964,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - EventSourceMappings, passing the object as the first parameter, and the string 'EventSourceMappings' as the second parameter 
 
 If not, it will return a a L<Paws::Lambda::ListEventSourceMappingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFunctionEventInvokeConfigs(sub { },FunctionName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllFunctionEventInvokeConfigs(FunctionName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FunctionEventInvokeConfigs, passing the object as the first parameter, and the string 'FunctionEventInvokeConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListFunctionEventInvokeConfigsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllFunctions(sub { },[FunctionVersion => Str, Marker => Str, MasterRegion => Str, MaxItems => Int])
@@ -1546,6 +2012,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - LayerVersions, passing the object as the first parameter, and the string 'LayerVersions' as the second parameter 
 
 If not, it will return a a L<Paws::Lambda::ListLayerVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProvisionedConcurrencyConfigs(sub { },FunctionName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllProvisionedConcurrencyConfigs(FunctionName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProvisionedConcurrencyConfigs, passing the object as the first parameter, and the string 'ProvisionedConcurrencyConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListProvisionedConcurrencyConfigsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllVersionsByFunction(sub { },FunctionName => Str, [Marker => Str, MaxItems => Int])

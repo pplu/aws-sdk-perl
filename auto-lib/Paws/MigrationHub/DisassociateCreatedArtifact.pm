@@ -60,7 +60,8 @@ Used to test if the caller has permission to make the call.
 =head2 B<REQUIRED> MigrationTaskName => Str
 
 Unique identifier that references the migration task to be
-disassociated with the artifact.
+disassociated with the artifact. I<Do not store personal data in this
+field.>
 
 
 

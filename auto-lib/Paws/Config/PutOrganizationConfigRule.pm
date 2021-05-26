@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $config = Paws->service('Config');
     my $PutOrganizationConfigRuleResponse = $config->PutOrganizationConfigRule(
-      OrganizationConfigRuleName     => 'MyStringWithCharLimit64',
-      ExcludedAccounts               => [ 'MyAccountId', ... ],      # OPTIONAL
+      OrganizationConfigRuleName => 'MyOrganizationConfigRuleName',
+      ExcludedAccounts           => [ 'MyAccountId', ... ],           # OPTIONAL
       OrganizationCustomRuleMetadata => {
         LambdaFunctionArn => 'MyStringWithCharLimit256',    # min: 1, max: 256
         OrganizationConfigRuleTriggerTypes => [
@@ -83,25 +83,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =head2 ExcludedAccounts => ArrayRef[Str|Undef]
 
-
+A comma-separated list of accounts that you want to exclude from an
+organization config rule.
 
 
 
 =head2 B<REQUIRED> OrganizationConfigRuleName => Str
 
-
+The name that you assign to an organization config rule.
 
 
 
 =head2 OrganizationCustomRuleMetadata => L<Paws::Config::OrganizationCustomRuleMetadata>
 
-
+An C<OrganizationCustomRuleMetadata> object.
 
 
 
 =head2 OrganizationManagedRuleMetadata => L<Paws::Config::OrganizationManagedRuleMetadata>
 
-
+An C<OrganizationManagedRuleMetadata> object.
 
 
 

@@ -35,8 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Item      = $GetAppsResponse->Item;
-    my $NextToken = $GetAppsResponse->NextToken;
+    my $ApplicationsResponse = $GetAppsResponse->ApplicationsResponse;
 
     # Returns a L<Paws::Pinpoint::GetAppsResponse> object.
 
@@ -48,8 +47,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 PageSize => Str
 
-The maximum number of items to include on each page in a paginated
-response.
+The maximum number of items to include in each page of a paginated
+response. This parameter is currently not supported for application,
+campaign, and journey metrics.
 
 
 

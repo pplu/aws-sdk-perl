@@ -6,6 +6,7 @@ package Paws::CodeBuild::StartBuild;
   has CacheOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cacheOverride' );
   has CertificateOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateOverride' );
   has ComputeTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeTypeOverride' );
+  has EncryptionKeyOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKeyOverride' );
   has EnvironmentTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentTypeOverride' );
   has EnvironmentVariablesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', traits => ['NameInRequest'], request_name => 'environmentVariablesOverride' );
   has GitCloneDepthOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'gitCloneDepthOverride' );
@@ -78,15 +79,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       CertificateOverride          => 'MyString',                # OPTIONAL
       ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
+      EncryptionKeyOverride        => 'MyNonEmptyString',        # OPTIONAL
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
           Name  => 'MyNonEmptyString',                           # min: 1
           Value => 'MyString',                                   # OPTIONAL
-          Type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          Type  => 'PLAINTEXT'
+          ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
         },
         ...
-      ],                          # OPTIONAL
+      ],       # OPTIONAL
       GitCloneDepthOverride       => 1,    # OPTIONAL
       GitSubmodulesConfigOverride => {
         FetchSubmodules => 1,              # OPTIONAL
@@ -190,8 +193,19 @@ latest ones already defined in the build project.
 
 =head2 BuildspecOverride => Str
 
-A build spec declaration that overrides, for this build only, the
+A buildspec file declaration that overrides, for this build only, the
 latest one already defined in the build project.
+
+If this value is set, it can be either an inline buildspec definition,
+the path to an alternate buildspec file relative to the value of the
+built-in C<CODEBUILD_SRC_DIR> environment variable, or the path to an
+S3 bucket. The bucket must be in the same AWS Region as the build
+project. Specify the buildspec file using its ARN (for example,
+C<arn:aws:s3:::my-codebuild-sample2/buildspec.yml>). If this value is
+not provided or is set to an empty string, the source code must contain
+a buildspec file in its root directory. For more information, see
+Buildspec File Name and Storage Location
+(https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage).
 
 
 
@@ -214,14 +228,28 @@ specified in the build project.
 The name of a compute type for this build that overrides the one
 specified in the build project.
 
-Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUILD_GENERAL1_LARGE">
+Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUILD_GENERAL1_LARGE">, C<"BUILD_GENERAL1_2XLARGE">
+
+=head2 EncryptionKeyOverride => Str
+
+The AWS Key Management Service (AWS KMS) customer master key (CMK) that
+overrides the one specified in the build project. The CMK key encrypts
+the build output artifacts.
+
+You can use a cross-account KMS key to encrypt the build output
+artifacts if your service role has permission to that key.
+
+You can specify either the Amazon Resource Name (ARN) of the CMK or, if
+available, the CMK's alias (using the format C<alias/I<alias-name> >).
+
+
 
 =head2 EnvironmentTypeOverride => Str
 
 A container type for this build that overrides the one specified in the
 build project.
 
-Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">
+Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">, C<"LINUX_GPU_CONTAINER">, C<"ARM_CONTAINER">
 
 =head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
 
@@ -336,6 +364,9 @@ start and completion. If you use this option with a source provider
 other than GitHub, GitHub Enterprise, or Bitbucket, an
 invalidInputException is thrown.
 
+The status of a build triggered by a webhook is always reported to your
+source provider.
+
 
 
 =head2 SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
@@ -396,7 +427,7 @@ specified, the latest version is used. If specified, must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID to use.
+For AWS CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 

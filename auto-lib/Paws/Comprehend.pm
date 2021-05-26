@@ -40,9 +40,19 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::BatchDetectSyntax', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ClassifyDocument {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ClassifyDocument', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDocumentClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::CreateDocumentClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::CreateEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateEntityRecognizer {
@@ -53,6 +63,11 @@ package Paws::Comprehend;
   sub DeleteDocumentClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DeleteDocumentClassifier', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DeleteEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEntityRecognizer {
@@ -73,6 +88,11 @@ package Paws::Comprehend;
   sub DescribeDominantLanguageDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDominantLanguageDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEntitiesDetectionJob {
@@ -138,6 +158,11 @@ package Paws::Comprehend;
   sub ListDominantLanguageDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDominantLanguageDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListEntitiesDetectionJobs {
@@ -238,6 +263,11 @@ package Paws::Comprehend;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::UpdateEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -427,7 +457,7 @@ package Paws::Comprehend;
   }
 
 
-  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTagsForResource ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer TagResource UntagResource / }
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax ClassifyDocument CreateDocumentClassifier CreateEndpoint CreateEntityRecognizer DeleteDocumentClassifier DeleteEndpoint DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEndpoint DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEndpoints ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTagsForResource ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer TagResource UntagResource UpdateEndpoint / }
 
 1;
 
@@ -562,6 +592,26 @@ speech of the words in the document and returns information about them.
 For more information, see how-syntax.
 
 
+=head2 ClassifyDocument
+
+=over
+
+=item EndpointArn => Str
+
+=item Text => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ClassifyDocument>
+
+Returns: a L<Paws::Comprehend::ClassifyDocumentResponse> instance
+
+Creates a new document classification request to analyze a single
+document in real-time, using a previously created and trained custom
+model and an endpoint.
+
+
 =head2 CreateDocumentClassifier
 
 =over
@@ -575,6 +625,8 @@ For more information, see how-syntax.
 =item LanguageCode => Str
 
 =item [ClientRequestToken => Str]
+
+=item [Mode => Str]
 
 =item [OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>]
 
@@ -597,6 +649,31 @@ documents that labeled with the categories that you want to use. After
 the classifier is trained you can use it to categorize a set of labeled
 documents into the categories. For more information, see
 how-document-classification.
+
+
+=head2 CreateEndpoint
+
+=over
+
+=item DesiredInferenceUnits => Int
+
+=item EndpointName => Str
+
+=item ModelArn => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::CreateEndpoint>
+
+Returns: a L<Paws::Comprehend::CreateEndpointResponse> instance
+
+Creates a model-specific endpoint for synchronous inference for a
+previously trained custom model
 
 
 =head2 CreateEntityRecognizer
@@ -654,6 +731,24 @@ This is an asynchronous action that puts the classifier into a DELETING
 state, and it is then removed by a background job. Once removed, the
 classifier disappears from your account and is no longer available for
 use.
+
+
+=head2 DeleteEndpoint
+
+=over
+
+=item EndpointArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DeleteEndpoint>
+
+Returns: a L<Paws::Comprehend::DeleteEndpointResponse> instance
+
+Deletes a model-specific endpoint for a previously-trained custom
+model. All endpoints must be deleted in order for the model to be
+deleted.
 
 
 =head2 DeleteEntityRecognizer
@@ -729,6 +824,23 @@ Returns: a L<Paws::Comprehend::DescribeDominantLanguageDetectionJobResponse> ins
 
 Gets the properties associated with a dominant language detection job.
 Use this operation to get the status of a detection job.
+
+
+=head2 DescribeEndpoint
+
+=over
+
+=item EndpointArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeEndpoint>
+
+Returns: a L<Paws::Comprehend::DescribeEndpointResponse> instance
+
+Gets the properties associated with a specific endpoint. Use this
+operation to get the status of an endpoint.
 
 
 =head2 DescribeEntitiesDetectionJob
@@ -971,6 +1083,26 @@ Returns: a L<Paws::Comprehend::ListDominantLanguageDetectionJobsResponse> instan
 
 Gets a list of the dominant language detection jobs that you have
 submitted.
+
+
+=head2 ListEndpoints
+
+=over
+
+=item [Filter => L<Paws::Comprehend::EndpointFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListEndpoints>
+
+Returns: a L<Paws::Comprehend::ListEndpointsResponse> instance
+
+Gets a list of all existing endpoints that you've created.
 
 
 =head2 ListEntitiesDetectionJobs
@@ -1482,6 +1614,24 @@ Each argument is described in detail in: L<Paws::Comprehend::UntagResource>
 Returns: a L<Paws::Comprehend::UntagResourceResponse> instance
 
 Removes a specific tag associated with an Amazon Comprehend resource.
+
+
+=head2 UpdateEndpoint
+
+=over
+
+=item DesiredInferenceUnits => Int
+
+=item EndpointArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::UpdateEndpoint>
+
+Returns: a L<Paws::Comprehend::UpdateEndpointResponse> instance
+
+Updates information about the specified endpoint.
 
 
 

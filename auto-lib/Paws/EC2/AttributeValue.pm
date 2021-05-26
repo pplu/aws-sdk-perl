@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Value => Str
 
-  The attribute value. The value is case-sensitive.
+The attribute value. The value is case-sensitive.
 
 
 

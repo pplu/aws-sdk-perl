@@ -5,8 +5,9 @@ package Paws::S3::PutObjectTagging;
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging', required => 1);
+  has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging', traits => ['ParamInBody'], required => 1);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+
 
   use MooseX::ClassAttribute;
 
@@ -16,6 +17,7 @@ package Paws::S3::PutObjectTagging;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectTaggingOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +69,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name containing the object.
 
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
@@ -79,25 +90,25 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The MD5 hash for the request body.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Name of the tag.
 
 
 
 =head2 B<REQUIRED> Tagging => L<Paws::S3::Tagging>
 
-
+Container for the C<TagSet> and C<Tag> elements
 
 
 
 =head2 VersionId => Str
 
-
+The versionId of the object that the tag-set will be added to.
 
 
 

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Enabled => Bool
 
-  Indicates whether monitoring is enabled.
+Indicates whether monitoring is enabled.
 
 
 

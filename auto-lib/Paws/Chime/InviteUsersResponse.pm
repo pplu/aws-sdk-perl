@@ -17,7 +17,7 @@ Paws::Chime::InviteUsersResponse
 
 =head2 Invites => ArrayRef[L<Paws::Chime::Invite>]
 
-The invite details.
+The email invitation details.
 
 
 =head2 _request_id => Str

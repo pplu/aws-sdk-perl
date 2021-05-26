@@ -1,7 +1,8 @@
 
 package Paws::Route53::GetHealthCheckLastFailureReasonResponse;
   use Moose;
-  has HealthCheckObservations => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheckObservation]', required => 1);
+  has HealthCheckObservations => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheckObservation]', request_name => 'HealthCheckObservation', traits => ['NameInRequest'], required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -67,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/
 
 =head2 Description => Str
 
-A textual description for the directory.
+A description for the directory.
 
 
 
@@ -84,11 +84,14 @@ The password for the directory administrator. The directory creation
 process creates a directory administrator account with the user name
 C<Administrator> and this password.
 
+If you need to change the password for the administrator account, you
+can use the ResetUserPassword API call.
+
 
 
 =head2 ShortName => Str
 
-The short name of the directory, such as C<CORP>.
+The NetBIOS name of the directory, such as C<CORP>.
 
 
 

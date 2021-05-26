@@ -24,7 +24,7 @@ the end of the list.
 
 =head2 PlayerSessions => ArrayRef[L<Paws::GameLift::PlayerSession>]
 
-Collection of objects containing properties for each player session
+A collection of objects containing properties for each player session
 that matches the request.
 
 

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 PrivateIpAddress => Str
 
-  The private IP address assigned to the network interface.
+The private IP address assigned to the network interface.
 
 
 

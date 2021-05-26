@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudhsmv2 = Paws->service('CloudHSMv2');
     my $TagResourceResponse = $cloudhsmv2->TagResource(
-      ResourceId => 'MyClusterId',
+      ResourceId => 'MyResourceId',
       TagList    => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128

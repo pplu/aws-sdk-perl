@@ -204,6 +204,10 @@ all instances launch, the request expires, or the request is canceled.
 If the request is persistent, the request becomes active at this date
 and time and remains active until it expires or is canceled.
 
+The specified start date and time cannot be equal to the current date
+and time. You must specify a start date and time that occurs after the
+current date and time.
+
 
 
 =head2 ValidUntil => Str

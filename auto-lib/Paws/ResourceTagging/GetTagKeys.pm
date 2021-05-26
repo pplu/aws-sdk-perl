@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tag
 
 A string that indicates that additional data is available. Leave this
 value empty for your initial request. If the response includes a
-PaginationToken, use that string for this value to request an
+C<PaginationToken>, use that string for this value to request an
 additional page of data.
 
 

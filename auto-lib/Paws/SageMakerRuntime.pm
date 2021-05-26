@@ -71,6 +71,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/run
 
 =item [CustomAttributes => Str]
 
+=item [TargetModel => Str]
+
 
 =back
 
@@ -83,18 +85,24 @@ services, your client applications use this API to get inferences from
 the model hosted at the specified endpoint.
 
 For an overview of Amazon SageMaker, see How It Works
-(http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 Amazon SageMaker strips all POST headers except those supported by the
 API. Amazon SageMaker might add additional headers. You should not rely
 on the behavior of headers outside those enumerated in the request
 syntax.
 
-Cals to C<InvokeEndpoint> are authenticated by using AWS Signature
+Calls to C<InvokeEndpoint> are authenticated by using AWS Signature
 Version 4. For information, see Authenticating Requests (AWS Signature
 Version 4)
 (http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 in the I<Amazon S3 API Reference>.
+
+A customer's model containers must respond to requests within 60
+seconds. The model itself can have a maximum processing time of 60
+seconds before responding to the /invocations. If your model is going
+to take 50-60 seconds of processing time, the SDK socket timeout should
+be set to be 70 seconds.
 
 Endpoints are scoped to an individual account, and are not public. The
 URL does not contain the account ID, but Amazon SageMaker determines

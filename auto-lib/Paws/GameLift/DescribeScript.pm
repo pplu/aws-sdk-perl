@@ -45,7 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> ScriptId => Str
 
-Unique identifier for a Realtime script to retrieve properties for.
+A unique identifier for a Realtime script to retrieve properties for.
+You can use either the script ID or ARN value.
 
 
 

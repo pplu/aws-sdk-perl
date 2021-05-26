@@ -48,7 +48,7 @@ The new name for the repository.
 
 =head2 B<REQUIRED> OldName => Str
 
-The existing name of the repository.
+The current name of the repository.
 
 
 

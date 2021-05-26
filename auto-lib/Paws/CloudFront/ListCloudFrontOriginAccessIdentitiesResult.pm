@@ -1,10 +1,9 @@
 
 package Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult;
   use Moose;
-  has CloudFrontOriginAccessIdentityList => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityList');
+  has CloudFrontOriginAccessIdentityList => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityList', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'CloudFrontOriginAccessIdentityList');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

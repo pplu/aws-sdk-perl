@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdp::UpdateUserPool;
   use Moose;
+  has AccountRecoverySetting => (is => 'ro', isa => 'Paws::CognitoIdp::AccountRecoverySettingType');
   has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
@@ -43,7 +44,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cognito-idp = Paws->service('CognitoIdp');
     my $UpdateUserPoolResponse = $cognito -idp->UpdateUserPool(
-      UserPoolId            => 'MyUserPoolIdType',
+      UserPoolId             => 'MyUserPoolIdType',
+      AccountRecoverySetting => {
+        RecoveryMechanisms => [
+          {
+            Name => 'verified_email'
+            ,    # values: verified_email, verified_phone_number, admin_only
+            Priority => 1,    # min: 1, max: 2
+
+          },
+          ...
+        ],                    # min: 1, max: 2; OPTIONAL
+      },    # OPTIONAL
       AdminCreateUserConfig => {
         AllowAdminCreateUserOnly => 1,    # OPTIONAL
         InviteMessageTemplate    => {
@@ -64,8 +76,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
       },    # OPTIONAL
       EmailConfiguration => {
+        ConfigurationSet => 'MySESConfigurationSet', # min: 1, max: 64; OPTIONAL
         EmailSendingAccount =>
           'COGNITO_DEFAULT',    # values: COGNITO_DEFAULT, DEVELOPER; OPTIONAL
+        From                => 'MyStringType',          # OPTIONAL
         ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
         SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
@@ -129,6 +143,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/UpdateUserPool>
 
 =head1 ATTRIBUTES
+
+
+=head2 AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>
+
+Use this setting to define which verified available method a user can
+use to recover their password when they call C<ForgotPassword>. It
+allows you to define a preferred method when a user has more than one
+method available. With this setting, SMS does not qualify for a valid
+password recovery mechanism if the user also has SMS MFA enabled. In
+the absence of this setting, Cognito uses the legacy behavior to
+determine the recovery method where SMS is preferred over email.
+
 
 
 =head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>

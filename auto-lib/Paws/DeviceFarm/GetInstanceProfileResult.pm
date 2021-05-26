@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetInstanceProfileResult
 
 =head2 InstanceProfile => L<Paws::DeviceFarm::InstanceProfile>
 
-An object containing information about your instance profile.
+An object that contains information about an instance profile.
 
 
 =head2 _request_id => Str

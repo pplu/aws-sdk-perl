@@ -70,7 +70,8 @@ Domain name for the Domain Association.
 
 =head2 EnableAutoSubDomain => Bool
 
-Enables automated creation of Subdomains for branches.
+Enables automated creation of Subdomains for branches. (Currently not
+supported)
 
 
 

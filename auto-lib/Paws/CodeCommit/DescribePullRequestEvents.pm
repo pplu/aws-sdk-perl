@@ -55,22 +55,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 ActorArn => Str
 
 The Amazon Resource Name (ARN) of the user whose actions resulted in
-the event. Examples include updating the pull request with additional
-commits or changing the status of a pull request.
+the event. Examples include updating the pull request with more commits
+or changing the status of a pull request.
 
 
 
 =head2 MaxResults => Int
 
-A non-negative integer used to limit the number of returned results.
-The default is 100 events, which is also the maximum number of events
-that can be returned in a result.
+A non-zero, non-negative integer used to limit the number of returned
+results. The default is 100 events, which is also the maximum number of
+events that can be returned in a result.
 
 
 
 =head2 NextToken => Str
 
-An enumeration token that when provided in a request, returns the next
+An enumeration token that, when provided in a request, returns the next
 batch of the results.
 
 
@@ -80,7 +80,7 @@ batch of the results.
 Optional. The pull request event type about which you want to return
 information.
 
-Valid values are: C<"PULL_REQUEST_CREATED">, C<"PULL_REQUEST_STATUS_CHANGED">, C<"PULL_REQUEST_SOURCE_REFERENCE_UPDATED">, C<"PULL_REQUEST_MERGE_STATE_CHANGED">
+Valid values are: C<"PULL_REQUEST_CREATED">, C<"PULL_REQUEST_STATUS_CHANGED">, C<"PULL_REQUEST_SOURCE_REFERENCE_UPDATED">, C<"PULL_REQUEST_MERGE_STATE_CHANGED">, C<"PULL_REQUEST_APPROVAL_RULE_CREATED">, C<"PULL_REQUEST_APPROVAL_RULE_UPDATED">, C<"PULL_REQUEST_APPROVAL_RULE_DELETED">, C<"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN">, C<"PULL_REQUEST_APPROVAL_STATE_CHANGED">
 
 =head2 B<REQUIRED> PullRequestId => Str
 

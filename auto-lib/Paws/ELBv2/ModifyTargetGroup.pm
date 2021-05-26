@@ -70,8 +70,7 @@ individual target. For Application Load Balancers, the range is 5 to
 300 seconds. For Network Load Balancers, the supported values are 10 or
 30 seconds.
 
-If the protocol of the target group is TCP, you can't modify this
-setting.
+With Network Load Balancers, you can't modify this setting.
 
 
 
@@ -96,8 +95,7 @@ targets. The TCP protocol is supported for health checks only if the
 protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The TLS,
 UDP, and TCP_UDP protocols are not supported for health checks.
 
-If the protocol of the target group is TCP, you can't modify this
-setting.
+With Network Load Balancers, you can't modify this setting.
 
 Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
 
@@ -106,8 +104,7 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UD
 [HTTP/HTTPS health checks] The amount of time, in seconds, during which
 no response means a failed health check.
 
-If the protocol of the target group is TCP, you can't modify this
-setting.
+With Network Load Balancers, you can't modify this setting.
 
 
 
@@ -123,8 +120,7 @@ considering an unhealthy target healthy.
 [HTTP/HTTPS health checks] The HTTP codes to use when checking for a
 successful response from a target.
 
-If the protocol of the target group is TCP, you can't modify this
-setting.
+With Network Load Balancers, you can't modify this setting.
 
 
 

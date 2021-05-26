@@ -2,6 +2,7 @@
 package Paws::ElastiCache::CreateSnapshot;
   use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateSnapshotResult = $elasticache->CreateSnapshot(
       SnapshotName       => 'MyString',
       CacheClusterId     => 'MyString',    # OPTIONAL
+      KmsKeyId           => 'MyString',    # OPTIONAL
       ReplicationGroupId => 'MyString',    # OPTIONAL
     );
 
@@ -50,6 +52,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 The identifier of an existing cluster. The snapshot is created from
 this cluster.
+
+
+
+=head2 KmsKeyId => Str
+
+The ID of the KMS key used to encrypt the snapshot.
 
 
 

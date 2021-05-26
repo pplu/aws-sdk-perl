@@ -5,6 +5,7 @@ package Paws::Datasync::UpdateTask;
   has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Name => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
+  has Schedule => (is => 'ro', isa => 'Paws::Datasync::TaskSchedule');
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -46,15 +47,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Options => {
         Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
         BytesPerSecond => 1,           # min: -1; OPTIONAL
-        Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
-        Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
-        PosixPermissions =>
-          'NONE',           # values: NONE, BEST_EFFORT, PRESERVE; OPTIONAL
+        Gid      => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
+        LogLevel => 'OFF',     # values: OFF, BASIC, TRANSFER; OPTIONAL
+        Mtime    => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
+        OverwriteMode        => 'ALWAYS',   # values: ALWAYS, NEVER; OPTIONAL
+        PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
+        TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
         Uid => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         VerifyMode => 'POINT_IN_TIME_CONSISTENT'
-        ,                 # values: POINT_IN_TIME_CONSISTENT, NONE; OPTIONAL
+        , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
+      },    # OPTIONAL
+      Schedule => {
+        ScheduleExpression => 'MyScheduleExpressionCron',    # max: 256
+
       },    # OPTIONAL
     );
 
@@ -73,10 +80,10 @@ LogGroup.
 
 =head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
 
-A filter that determines which files to exclude from a task based on
-the specified pattern in the filter. Transfers all files in the
-taskE<rsquo>s subdirectory, except files that match the filter that is
-set.
+A list of filter rules that determines which files to exclude from a
+task. The list should contain a single filter string that consists of
+the patterns to exclude. The patterns are delimited by "|" (that is, a
+pipe), for example: C<"/folder1|/folder2">
 
 
 
@@ -89,6 +96,16 @@ The name of the task to update.
 =head2 Options => L<Paws::Datasync::Options>
 
 
+
+
+
+=head2 Schedule => L<Paws::Datasync::TaskSchedule>
+
+Specifies a schedule used to periodically transfer files from a source
+to a destination location. You can configure your task to execute
+hourly, daily, weekly or on specific days of the week. You control when
+in the day or hour you want the task to execute. The time you specify
+is UTC time. For more information, see task-scheduling.
 
 
 

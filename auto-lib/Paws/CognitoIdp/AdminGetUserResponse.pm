@@ -29,7 +29,11 @@ Indicates that the status is enabled.
 
 =head2 MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
 
-Specifies the options for MFA (e.g., email or phone number).
+I<This response parameter is no longer supported.> It provides
+information only about SMS MFA configurations. It doesn't provide
+information about TOTP software token MFA configurations. To look up
+information about either type of MFA configuration, use the
+AdminGetUserResponse$UserMFASettingList response instead.
 
 
 =head2 PreferredMfaSetting => Str
@@ -54,7 +58,8 @@ The date the user was last modified.
 
 =head2 UserMFASettingList => ArrayRef[Str|Undef]
 
-The list of the user's MFA settings.
+The MFA options that are enabled for the user. The possible values in
+this list are C<SMS_MFA> and C<SOFTWARE_TOKEN_MFA>.
 
 
 =head2 B<REQUIRED> Username => Str

@@ -48,15 +48,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> Name => Str
 
 The name of the pipeline for which you want to get information.
-Pipeline names must be unique under an Amazon Web Services (AWS) user
-account.
+Pipeline names must be unique under an AWS user account.
 
 
 
 =head2 Version => Int
 
 The version number of the pipeline. If you do not specify a version,
-defaults to the most current version.
+defaults to the current version.
 
 
 

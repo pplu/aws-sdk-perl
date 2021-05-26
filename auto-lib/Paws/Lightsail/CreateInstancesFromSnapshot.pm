@@ -1,13 +1,17 @@
 
 package Paws::Lightsail::CreateInstancesFromSnapshot;
   use Moose;
+  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
   has AttachedDiskMapping => (is => 'ro', isa => 'Paws::Lightsail::AttachedDiskMap', traits => ['NameInRequest'], request_name => 'attachedDiskMapping' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
-  has InstanceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceSnapshotName' , required => 1);
+  has InstanceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceSnapshotName' );
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
+  has RestoreDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreDate' );
+  has SourceInstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceInstanceName' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableAutoSnapshot' );
   has UserData => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userData' );
 
   use MooseX::ClassAttribute;
@@ -36,11 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lightsail = Paws->service('Lightsail');
     my $CreateInstancesFromSnapshotResult =
       $lightsail->CreateInstancesFromSnapshot(
-      AvailabilityZone     => 'Mystring',
-      BundleId             => 'MyNonEmptyString',
-      InstanceNames        => [ 'Mystring', ... ],
-      InstanceSnapshotName => 'MyResourceName',
-      AttachedDiskMapping  => {
+      AvailabilityZone => 'Mystring',
+      BundleId         => 'MyNonEmptyString',
+      InstanceNames    => [ 'Mystring', ... ],
+      AddOns           => [
+        {
+          AddOnType                => 'AutoSnapshot',    # values: AutoSnapshot
+          AutoSnapshotAddOnRequest => {
+            SnapshotTimeOfDay => 'MyTimeOfDay',          # OPTIONAL
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      AttachedDiskMapping => {
         'MyResourceName' => [
           {
             NewDiskName      => 'MyResourceName',
@@ -48,16 +60,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-      },    # OPTIONAL
-      KeyPairName => 'MyResourceName',    # OPTIONAL
-      Tags        => [
+      },        # OPTIONAL
+      InstanceSnapshotName => 'MyResourceName',    # OPTIONAL
+      KeyPairName          => 'MyResourceName',    # OPTIONAL
+      RestoreDate          => 'Mystring',          # OPTIONAL
+      SourceInstanceName   => 'Mystring',          # OPTIONAL
+      Tags                 => [
         {
-          Key   => 'MyTagKey',            # OPTIONAL
-          Value => 'MyTagValue',          # OPTIONAL
+          Key   => 'MyTagKey',                     # OPTIONAL
+          Value => 'MyTagValue',                   # OPTIONAL
         },
         ...
-      ],                                  # OPTIONAL
-      UserData => 'Mystring',             # OPTIONAL
+      ],                                           # OPTIONAL
+      UseLatestRestorableAutoSnapshot => 1,             # OPTIONAL
+      UserData                        => 'Mystring',    # OPTIONAL
       );
 
     # Results:
@@ -69,6 +85,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/CreateInstancesFromSnapshot>
 
 =head1 ATTRIBUTES
+
+
+=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+
+An array of objects representing the add-ons to enable for the new
+instance.
+
 
 
 =head2 AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>
@@ -101,11 +124,24 @@ The names for your new instances.
 
 
 
-=head2 B<REQUIRED> InstanceSnapshotName => Str
+=head2 InstanceSnapshotName => Str
 
 The name of the instance snapshot on which you are basing your new
 instances. Use the get instance snapshots operation to return
 information about your existing snapshots.
+
+Constraint:
+
+=over
+
+=item *
+
+This parameter cannot be defined together with the C<source instance
+name> parameter. The C<instance snapshot name> and C<source instance
+name> parameters are mutually exclusive.
+
+=back
+
 
 
 
@@ -115,12 +151,95 @@ The name for your key pair.
 
 
 
+=head2 RestoreDate => Str
+
+The date of the automatic snapshot to use for the new instance. Use the
+C<get auto snapshots> operation to identify the dates of the available
+automatic snapshots.
+
+Constraints:
+
+=over
+
+=item *
+
+Must be specified in C<YYYY-MM-DD> format.
+
+=item *
+
+This parameter cannot be defined together with the C<use latest
+restorable auto snapshot> parameter. The C<restore date> and C<use
+latest restorable auto snapshot> parameters are mutually exclusive.
+
+=item *
+
+Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
+
+
+
+=head2 SourceInstanceName => Str
+
+The name of the source instance from which the source automatic
+snapshot was created.
+
+Constraints:
+
+=over
+
+=item *
+
+This parameter cannot be defined together with the C<instance snapshot
+name> parameter. The C<source instance name> and C<instance snapshot
+name> parameters are mutually exclusive.
+
+=item *
+
+Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
+
+
+
 =head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
 
 The tag keys and optional values to add to the resource during create.
 
 To tag a resource after it has been created, see the C<tag resource>
 operation.
+
+
+
+=head2 UseLatestRestorableAutoSnapshot => Bool
+
+A Boolean value to indicate whether to use the latest available
+automatic snapshot.
+
+Constraints:
+
+=over
+
+=item *
+
+This parameter cannot be defined together with the C<restore date>
+parameter. The C<use latest restorable auto snapshot> and C<restore
+date> parameters are mutually exclusive.
+
+=item *
+
+Define this parameter only when creating a new instance from an
+automatic snapshot. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+=back
+
 
 
 

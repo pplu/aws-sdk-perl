@@ -15,6 +15,11 @@ package Paws::ECS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateCapacityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::CreateCapacityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateCluster', @_);
@@ -63,6 +68,11 @@ package Paws::ECS;
   sub DeregisterTaskDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeregisterTaskDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCapacityProviders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeCapacityProviders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusters {
@@ -160,6 +170,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::PutAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutClusterCapacityProviders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutClusterCapacityProviders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterContainerInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::RegisterContainerInstance', @_);
@@ -208,6 +223,11 @@ package Paws::ECS;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateClusterSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateClusterSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateContainerAgent {
@@ -422,7 +442,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
+  sub operations { qw/CreateCapacityProvider CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeCapacityProviders DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes PutClusterCapacityProviders RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateClusterSettings UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
 
 1;
 
@@ -478,11 +498,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head1 METHODS
 
+=head2 CreateCapacityProvider
+
+=over
+
+=item AutoScalingGroupProvider => L<Paws::ECS::AutoScalingGroupProvider>
+
+=item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::CreateCapacityProvider>
+
+Returns: a L<Paws::ECS::CreateCapacityProviderResponse> instance
+
+Creates a new capacity provider. Capacity providers are associated with
+an Amazon ECS cluster and are used in capacity provider strategies to
+facilitate cluster auto scaling.
+
+Only capacity providers using an Auto Scaling group can be created.
+Amazon ECS tasks on AWS Fargate use the C<FARGATE> and C<FARGATE_SPOT>
+capacity providers which are already created and available to all
+accounts in Regions supported by AWS Fargate.
+
+
 =head2 CreateCluster
 
 =over
 
+=item [CapacityProviders => ArrayRef[Str|Undef]]
+
 =item [ClusterName => Str]
+
+=item [DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
+
+=item [Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]]
 
 =item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
@@ -499,11 +552,11 @@ However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
 When you call the CreateCluster API operation, Amazon ECS attempts to
-create the service-linked role for your account so that required
-resources in other AWS services can be managed on your behalf. However,
-if the IAM user that makes the call does not have permissions to create
-the service-linked role, it is not created. For more information, see
-Using Service-Linked Roles for Amazon ECS
+create the Amazon ECS service-linked role for your account so that
+required resources in other AWS services can be managed on your behalf.
+However, if the IAM user that makes the call does not have permissions
+to create the service-linked role, it is not created. For more
+information, see Using Service-Linked Roles for Amazon ECS
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -513,6 +566,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =over
 
 =item ServiceName => Str
+
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
 =item [ClientToken => Str]
 
@@ -561,13 +616,14 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
 Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below the
-C<desiredCount>, Amazon ECS spawns another copy of the task in the
+C<desiredCount>, Amazon ECS runs another copy of the task in the
 specified cluster. To update an existing service, see UpdateService.
 
 In addition to maintaining the desired count of tasks in your service,
-you can optionally run your service behind a load balancer. The load
-balancer distributes traffic across the tasks that are associated with
-the service. For more information, see Service Load Balancing
+you can optionally run your service behind one or more load balancers.
+The load balancers distribute traffic across the tasks that are
+associated with the service. For more information, see Service Load
+Balancing
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -707,6 +763,8 @@ instances with the fewest number of running tasks for this service.
 
 =item TaskDefinition => Str
 
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
+
 =item [ClientToken => Str]
 
 =item [ExternalId => Str]
@@ -722,6 +780,8 @@ instances with the fewest number of running tasks for this service.
 =item [Scale => L<Paws::ECS::Scale>]
 
 =item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
 
 =back
@@ -787,10 +847,16 @@ Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
 Returns: a L<Paws::ECS::DeleteClusterResponse> instance
 
-Deletes the specified cluster. You must deregister all container
-instances from this cluster before you may delete it. You can list the
-container instances in a cluster with ListContainerInstances and
-deregister them with DeregisterContainerInstance.
+Deletes the specified cluster. The cluster will transition to the
+C<INACTIVE> state. Clusters with an C<INACTIVE> status may remain
+discoverable in your account for a period of time. However, this
+behavior is subject to change in the future, so you should not rely on
+C<INACTIVE> clusters persisting.
+
+You must deregister all container instances from this cluster before
+you may delete it. You can list the container instances in a cluster
+with ListContainerInstances and deregister them with
+DeregisterContainerInstance.
 
 
 =head2 DeleteService
@@ -819,13 +885,13 @@ information, see UpdateService.
 When you delete a service, if there are still running tasks that
 require cleanup, the service status moves from C<ACTIVE> to
 C<DRAINING>, and the service is no longer visible in the console or in
-the ListServices API operation. After the tasks have stopped, then the
-service status moves from C<DRAINING> to C<INACTIVE>. Services in the
-C<DRAINING> or C<INACTIVE> status can still be viewed with the
-DescribeServices API operation. However, in the future, C<INACTIVE>
-services may be cleaned up and purged from Amazon ECS record keeping,
-and DescribeServices calls on those services return a
-C<ServiceNotFoundException> error.
+the ListServices API operation. After all tasks have transitioned to
+either C<STOPPING> or C<STOPPED> status, the service status moves from
+C<DRAINING> to C<INACTIVE>. Services in the C<DRAINING> or C<INACTIVE>
+status can still be viewed with the DescribeServices API operation.
+However, in the future, C<INACTIVE> services may be cleaned up and
+purged from Amazon ECS record keeping, and DescribeServices calls on
+those services return a C<ServiceNotFoundException> error.
 
 If you attempt to create a new service with the same name as an
 existing service in either C<ACTIVE> or C<DRAINING> status, you receive
@@ -924,6 +990,28 @@ At this time, C<INACTIVE> task definitions remain discoverable in your
 account indefinitely. However, this behavior is subject to change in
 the future, so you should not rely on C<INACTIVE> task definitions
 persisting beyond the lifecycle of any associated tasks and services.
+
+
+=head2 DescribeCapacityProviders
+
+=over
+
+=item [CapacityProviders => ArrayRef[Str|Undef]]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DescribeCapacityProviders>
+
+Returns: a L<Paws::ECS::DescribeCapacityProvidersResponse> instance
+
+Describes one or more of your capacity providers.
 
 
 =head2 DescribeClusters
@@ -1037,6 +1125,8 @@ Describes a specified task or tasks.
 =item Cluster => Str
 
 =item Service => Str
+
+=item [Include => ArrayRef[Str|Undef]]
 
 =item [TaskSets => ArrayRef[Str|Undef]]
 
@@ -1331,21 +1421,25 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
 
 Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
 
-Modifies an account setting. For more information, see Account Settings
+Modifies an account setting. Account settings are set on a per-Region
+basis.
+
+If you change the account setting for the root user, the default
+settings for all of the IAM users and roles for which no individual
+account setting has been specified are reset. For more information, see
+Account Settings
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 When C<serviceLongArnFormat>, C<taskLongArnFormat>, or
-C<containerInstanceLongArnFormat> are specified, the ARN and resource
-ID format of the resource type for a specified IAM user, IAM role, or
-the root user for an account is changed. If you change the account
-setting for the root user, the default settings for all of the IAM
-users and roles for which no individual account setting has been
-specified are reset. The opt-in and opt-out account setting can be
-specified for each Amazon ECS resource separately. The ARN and resource
-ID format of a resource will be defined by the opt-in status of the IAM
-user or role that created the resource. You must enable this setting to
-use Amazon ECS features such as resource tagging.
+C<containerInstanceLongArnFormat> are specified, the Amazon Resource
+Name (ARN) and resource ID format of the resource type for a specified
+IAM user, IAM role, or the root user for an account is affected. The
+opt-in and opt-out account setting must be set for each Amazon ECS
+resource separately. The ARN and resource ID format of a resource will
+be defined by the opt-in status of the IAM user or role that created
+the resource. You must enable this setting to use Amazon ECS features
+such as resource tagging.
 
 When C<awsvpcTrunking> is specified, the elastic network interface
 (ENI) limit for any new container instances that support the feature is
@@ -1354,6 +1448,15 @@ that support the feature are launched have the increased ENI limits
 available to them. For more information, see Elastic Network Interface
 Trunking
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+When C<containerInsights> is specified, the default setting indicating
+whether CloudWatch Container Insights is enabled for your clusters is
+changed. If C<containerInsights> is enabled, any new clusters that are
+created will have Container Insights enabled unless you disable it
+during cluster creation. For more information, see CloudWatch Container
+Insights
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1373,7 +1476,8 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSettingDefault>
 Returns: a L<Paws::ECS::PutAccountSettingDefaultResponse> instance
 
 Modifies an account setting for all IAM users on an account for whom no
-individual account setting has been specified.
+individual account setting has been specified. Account settings are set
+on a per-Region basis.
 
 
 =head2 PutAttributes
@@ -1397,6 +1501,43 @@ value is replaced with the specified value. To delete an attribute, use
 DeleteAttributes. For more information, see Attributes
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 PutClusterCapacityProviders
+
+=over
+
+=item CapacityProviders => ArrayRef[Str|Undef]
+
+=item Cluster => Str
+
+=item DefaultCapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::PutClusterCapacityProviders>
+
+Returns: a L<Paws::ECS::PutClusterCapacityProvidersResponse> instance
+
+Modifies the available capacity providers and the default capacity
+provider strategy for a cluster.
+
+You must specify both the available capacity providers and a default
+capacity provider strategy for the cluster. If the specified cluster
+has existing capacity providers associated with it, you must specify
+all existing capacity providers in addition to any new ones you want to
+add. Any existing capacity providers associated with a cluster that are
+omitted from a PutClusterCapacityProviders API call will be
+disassociated with the cluster. You can only disassociate an existing
+capacity provider from a cluster if it's not being used by any existing
+tasks.
+
+When creating a service or running a task on a cluster, if no capacity
+provider or launch type is specified, then the cluster's default
+capacity provider strategy is used. It is recommended to define a
+default capacity provider strategy for your cluster, however you may
+specify an empty array (C<[]>) to bypass defining a default strategy.
 
 
 =head2 RegisterContainerInstance
@@ -1446,6 +1587,8 @@ becomes available to place containers on.
 =item [Cpu => Str]
 
 =item [ExecutionRoleArn => Str]
+
+=item [InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]]
 
 =item [IpcMode => Str]
 
@@ -1508,6 +1651,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item TaskDefinition => Str
 
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
+
 =item [Cluster => Str]
 
 =item [Count => Int]
@@ -1529,6 +1674,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =item [PlatformVersion => Str]
 
 =item [PropagateTags => Str]
+
+=item [ReferenceId => Str]
 
 =item [StartedBy => Str]
 
@@ -1602,6 +1749,8 @@ gradually up to about five minutes of wait time.
 =item [Overrides => L<Paws::ECS::TaskOverride>]
 
 =item [PropagateTags => Str]
+
+=item [ReferenceId => Str]
 
 =item [StartedBy => Str]
 
@@ -1692,6 +1841,8 @@ Sent to acknowledge that an attachment changed states.
 
 =item [Reason => Str]
 
+=item [RuntimeId => Str]
+
 =item [Status => Str]
 
 =item [Task => Str]
@@ -1781,6 +1932,24 @@ Each argument is described in detail in: L<Paws::ECS::UntagResource>
 Returns: a L<Paws::ECS::UntagResourceResponse> instance
 
 Deletes specified tags from a resource.
+
+
+=head2 UpdateClusterSettings
+
+=over
+
+=item Cluster => Str
+
+=item Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UpdateClusterSettings>
+
+Returns: a L<Paws::ECS::UpdateClusterSettingsResponse> instance
+
+Modifies the settings to use for a cluster.
 
 
 =head2 UpdateContainerAgent
@@ -1898,6 +2067,8 @@ Amazon ECS scheduler can begin scheduling tasks on the instance again.
 =over
 
 =item Service => Str
+
+=item [CapacityProviderStrategy => ArrayRef[L<Paws::ECS::CapacityProviderStrategyItem>]]
 
 =item [Cluster => Str]
 

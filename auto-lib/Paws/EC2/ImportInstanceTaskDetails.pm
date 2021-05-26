@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Description => Str
 
-  A description of the task.
+A description of the task.
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
 
 
 =head2 Platform => Str
 
-  The instance operating system.
+The instance operating system.
 
 
 =head2 Volumes => ArrayRef[L<Paws::EC2::ImportInstanceVolumeDetailItem>]
 
-  The volumes.
+The volumes.
 
 
 

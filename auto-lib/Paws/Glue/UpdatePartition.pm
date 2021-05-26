@@ -46,17 +46,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                       # OPTIONAL
           Columns => [
             {
-              Name    => 'MyNameString',          # min: 1, max: 255
-              Comment => 'MyCommentString',       # max: 255; OPTIONAL
-              Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+              Name       => 'MyNameString',       # min: 1, max: 255
+              Comment    => 'MyCommentString',    # max: 255; OPTIONAL
+              Parameters => {
+                'MyKeyString' => 'MyParametersMapValue'
+                ,    # key: min: 1, max: 255, value: max: 512000
+              },    # OPTIONAL
+              Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
             },
             ...
-          ],                                      # OPTIONAL
-          Compressed      => 1,                   # OPTIONAL
-          InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
-          Location        => 'MyLocationString',  # max: 2056; OPTIONAL
-          NumberOfBuckets => 1,                   # OPTIONAL
-          OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+          ],                                   # OPTIONAL
+          Compressed      => 1,                     # OPTIONAL
+          InputFormat     => 'MyFormatString',      # max: 128; OPTIONAL
+          Location        => 'MyLocationString',    # max: 2056; OPTIONAL
+          NumberOfBuckets => 1,                     # OPTIONAL
+          OutputFormat    => 'MyFormatString',      # max: 128; OPTIONAL
           Parameters      => {
             'MyKeyString' => 'MyParametersMapValue'
             ,    # key: min: 1, max: 255, value: max: 512000
@@ -107,7 +111,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partition to be updated resides.
-If none is supplied, the AWS account ID is used by default.
+If none is provided, the AWS account ID is used by default.
 
 
 
@@ -120,7 +124,7 @@ resides.
 
 =head2 B<REQUIRED> PartitionInput => L<Paws::Glue::PartitionInput>
 
-The new partition object to which to update the partition.
+The new partition object to update the partition to.
 
 
 
@@ -132,7 +136,7 @@ A list of the values defining the partition.
 
 =head2 B<REQUIRED> TableName => Str
 
-The name of the table where the partition to be updated is located.
+The name of the table in which the partition to be updated is located.
 
 
 

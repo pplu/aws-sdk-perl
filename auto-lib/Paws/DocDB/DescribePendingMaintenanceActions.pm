@@ -69,15 +69,15 @@ Supported filters:
 
 =item *
 
-C<db-cluster-id> - Accepts DB cluster identifiers and DB cluster Amazon
+C<db-cluster-id> - Accepts cluster identifiers and cluster Amazon
 Resource Names (ARNs). The results list includes only pending
-maintenance actions for the DB clusters identified by these ARNs.
+maintenance actions for the clusters identified by these ARNs.
 
 =item *
 
-C<db-instance-id> - Accepts DB instance identifiers and DB instance
-ARNs. The results list includes only pending maintenance actions for
-the DB instances identified by these ARNs.
+C<db-instance-id> - Accepts instance identifiers and instance ARNs. The
+results list includes only pending maintenance actions for the DB
+instances identified by these ARNs.
 
 =back
 

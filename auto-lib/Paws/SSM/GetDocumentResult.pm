@@ -7,6 +7,7 @@ package Paws::SSM::GetDocumentResult;
   has DocumentType => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Requires => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentRequires]');
   has Status => (is => 'ro', isa => 'Str');
   has StatusInformation => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
@@ -37,12 +38,12 @@ The contents of the Systems Manager document.
 
 The document format, either JSON or YAML.
 
-Valid values are: C<"YAML">, C<"JSON">
+Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 =head2 DocumentType => Str
 
 The document type.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">
 =head2 DocumentVersion => Str
 
 The document version.
@@ -51,6 +52,13 @@ The document version.
 =head2 Name => Str
 
 The name of the Systems Manager document.
+
+
+=head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
+
+A list of SSM documents required by a document. For example, an
+C<ApplicationConfiguration> document requires an
+C<ApplicationConfigurationSchema> document.
 
 
 =head2 Status => Str

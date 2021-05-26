@@ -39,12 +39,12 @@ This class has no description
 
 =head2 DnsName => Str
 
-  The DNS name.
+The DNS name.
 
 
 =head2 HostedZoneId => Str
 
-  The ID of the private hosted zone.
+The ID of the private hosted zone.
 
 
 

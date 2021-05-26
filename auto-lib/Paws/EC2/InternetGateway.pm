@@ -41,22 +41,22 @@ This class has no description
 
 =head2 Attachments => ArrayRef[L<Paws::EC2::InternetGatewayAttachment>]
 
-  Any VPCs attached to the internet gateway.
+Any VPCs attached to the internet gateway.
 
 
 =head2 InternetGatewayId => Str
 
-  The ID of the internet gateway.
+The ID of the internet gateway.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the internet gateway.
+The ID of the AWS account that owns the internet gateway.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the internet gateway.
+Any tags assigned to the internet gateway.
 
 
 

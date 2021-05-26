@@ -36,8 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ConnectionId   = $GetIntegrationResult->ConnectionId;
-    my $ConnectionType = $GetIntegrationResult->ConnectionType;
+    my $ApiGatewayManaged = $GetIntegrationResult->ApiGatewayManaged;
+    my $ConnectionId      = $GetIntegrationResult->ConnectionId;
+    my $ConnectionType    = $GetIntegrationResult->ConnectionType;
     my $ContentHandlingStrategy =
       $GetIntegrationResult->ContentHandlingStrategy;
     my $CredentialsArn    = $GetIntegrationResult->CredentialsArn;
@@ -46,11 +47,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IntegrationMethod = $GetIntegrationResult->IntegrationMethod;
     my $IntegrationResponseSelectionExpression =
       $GetIntegrationResult->IntegrationResponseSelectionExpression;
-    my $IntegrationType     = $GetIntegrationResult->IntegrationType;
-    my $IntegrationUri      = $GetIntegrationResult->IntegrationUri;
-    my $PassthroughBehavior = $GetIntegrationResult->PassthroughBehavior;
-    my $RequestParameters   = $GetIntegrationResult->RequestParameters;
-    my $RequestTemplates    = $GetIntegrationResult->RequestTemplates;
+    my $IntegrationType      = $GetIntegrationResult->IntegrationType;
+    my $IntegrationUri       = $GetIntegrationResult->IntegrationUri;
+    my $PassthroughBehavior  = $GetIntegrationResult->PassthroughBehavior;
+    my $PayloadFormatVersion = $GetIntegrationResult->PayloadFormatVersion;
+    my $RequestParameters    = $GetIntegrationResult->RequestParameters;
+    my $RequestTemplates     = $GetIntegrationResult->RequestTemplates;
     my $TemplateSelectionExpression =
       $GetIntegrationResult->TemplateSelectionExpression;
     my $TimeoutInMillis = $GetIntegrationResult->TimeoutInMillis;

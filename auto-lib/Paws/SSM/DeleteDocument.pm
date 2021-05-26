@@ -2,6 +2,7 @@
 package Paws::SSM::DeleteDocument;
   use Moose;
   has DocumentVersion => (is => 'ro', isa => 'Str');
+  has Force => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has VersionName => (is => 'ro', isa => 'Str');
 
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteDocumentResult = $ssm->DeleteDocument(
       Name            => 'MyDocumentName',
       DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
+      Force           => 1,                          # OPTIONAL
       VersionName     => 'MyDocumentVersionName',    # OPTIONAL
     );
 
@@ -43,8 +45,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 DocumentVersion => Str
 
-(Optional) The version of the document that you want to delete. If not
-provided, all versions of the document are deleted.
+The version of the document that you want to delete. If not provided,
+all versions of the document are deleted.
+
+
+
+=head2 Force => Bool
+
+Some SSM document types require that you specify a C<Force> flag before
+you can delete the document. For example, you must specify a C<Force>
+flag to delete a document of type C<ApplicationConfigurationSchema>.
+You can restrict access to the C<Force> flag in an AWS Identity and
+Access Management (IAM) policy.
 
 
 
@@ -56,8 +68,8 @@ The name of the document.
 
 =head2 VersionName => Str
 
-(Optional) The version name of the document that you want to delete. If
-not provided, all versions of the document are deleted.
+The version name of the document that you want to delete. If not
+provided, all versions of the document are deleted.
 
 
 

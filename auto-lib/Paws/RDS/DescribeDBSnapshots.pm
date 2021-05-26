@@ -56,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The ID of the DB instance to retrieve the list of DB snapshots for.
 This parameter can't be used in conjunction with
-C<DBSnapshotIdentifier>. This parameter is not case-sensitive.
+C<DBSnapshotIdentifier>. This parameter isn't case-sensitive.
 
 Constraints:
 
@@ -103,7 +103,35 @@ parameter must also be specified.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+A filter that specifies one or more DB snapshots to describe.
+
+Supported filters:
+
+=over
+
+=item *
+
+C<db-instance-id> - Accepts DB instance identifiers and DB instance
+Amazon Resource Names (ARNs).
+
+=item *
+
+C<db-snapshot-id> - Accepts DB snapshot identifiers.
+
+=item *
+
+C<dbi-resource-id> - Accepts identifiers of source DB instances.
+
+=item *
+
+C<snapshot-type> - Accepts types of DB snapshots.
+
+=item *
+
+C<engine> - Accepts names of database engines.
+
+=back
+
 
 
 
@@ -144,8 +172,8 @@ specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that the remaining
-results can be retrieved.
+token called a marker is included in the response so that you can
+retrieve the remaining results.
 
 Default: 100
 

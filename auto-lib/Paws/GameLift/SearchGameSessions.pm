@@ -55,9 +55,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AliasId => Str
 
-Unique identifier for an alias associated with the fleet to search for
-active game sessions. Each request must reference either a fleet ID or
-alias ID, but not both.
+A unique identifier for an alias associated with the fleet to search
+for active game sessions. You can use either the alias ID or ARN value.
+Each request must reference either a fleet ID or alias ID, but not
+both.
 
 
 
@@ -135,14 +136,15 @@ C<"maximumSessionsE<gt>=10 AND hasAvailablePlayerSessions=true">.
 
 =head2 FleetId => Str
 
-Unique identifier for a fleet to search for active game sessions. Each
-request must reference either a fleet ID or alias ID, but not both.
+A unique identifier for a fleet to search for active game sessions. You
+can use either the fleet ID or ARN value. Each request must reference
+either a fleet ID or alias ID, but not both.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. Use this parameter with
+The maximum number of results to return. Use this parameter with
 C<NextToken> to get results as a set of sequential pages. The maximum
 number of results returned is 20, even if this value is not set or is
 set higher than 20.

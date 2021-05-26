@@ -38,9 +38,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RuleName                => 'MyBackupRuleName',
             TargetBackupVaultName   => 'MyBackupVaultName',
             CompletionWindowMinutes => 1,                     # OPTIONAL
-            Lifecycle               => {
-              DeleteAfterDays            => 1,                # OPTIONAL
-              MoveToColdStorageAfterDays => 1,                # OPTIONAL
+            CopyActions             => [
+              {
+                DestinationBackupVaultArn => 'MyARN',
+                Lifecycle                 => {
+                  DeleteAfterDays            => 1,            # OPTIONAL
+                  MoveToColdStorageAfterDays => 1,            # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],        # OPTIONAL
+            Lifecycle => {
+              DeleteAfterDays            => 1,    # OPTIONAL
+              MoveToColdStorageAfterDays => 1,    # OPTIONAL
             },    # OPTIONAL
             RecoveryPointTags  => { 'MyTagKey' => 'MyTagValue', },    # OPTIONAL
             ScheduleExpression => 'MyCronExpression',                 # OPTIONAL

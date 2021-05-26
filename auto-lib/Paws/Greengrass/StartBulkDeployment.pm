@@ -2,8 +2,8 @@
 package Paws::Greengrass::StartBulkDeployment;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
-  has InputFileUri => (is => 'ro', isa => 'Str');
+  has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has InputFileUri => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $greengrass = Paws->service('Greengrass');
     my $StartBulkDeploymentResponse = $greengrass->StartBulkDeployment(
+      ExecutionRoleArn => 'My__string',
+      InputFileUri     => 'My__string',
       AmznClientToken  => 'My__string',                         # OPTIONAL
-      ExecutionRoleArn => 'My__string',                         # OPTIONAL
-      InputFileUri     => 'My__string',                         # OPTIONAL
       Tags             => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
@@ -56,7 +56,7 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 ExecutionRoleArn => Str
+=head2 B<REQUIRED> ExecutionRoleArn => Str
 
 The ARN of the execution role to associate with the bulk deployment
 operation. This IAM role must allow the ''greengrass:CreateDeployment''
@@ -65,7 +65,7 @@ IAM role must have access to the S3 bucket containing the input file.
 
 
 
-=head2 InputFileUri => Str
+=head2 B<REQUIRED> InputFileUri => Str
 
 The URI of the input file contained in the S3 bucket. The execution
 role must have ''getObject'' permissions on this bucket to access the
@@ -78,7 +78,7 @@ IoT Greengrass supports only ''NewDeployment'' deployment types.
 
 =head2 Tags => L<Paws::Greengrass::Tags>
 
-Tag(s) to add to the new resource
+Tag(s) to add to the new resource.
 
 
 

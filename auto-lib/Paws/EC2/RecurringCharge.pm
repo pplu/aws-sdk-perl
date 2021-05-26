@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Amount => Num
 
-  The amount of the recurring charge.
+The amount of the recurring charge.
 
 
 =head2 Frequency => Str
 
-  The frequency of the recurring charge.
+The frequency of the recurring charge.
 
 
 

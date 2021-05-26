@@ -9,6 +9,7 @@ package Paws::EC2::CreateVpcEndpoint;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SubnetId' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has VpcEndpointType => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -38,15 +39,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $CreateVpcEndpointResult = $ec2->CreateVpcEndpoint(
       ServiceName       => 'MyString',
-      VpcId             => 'MyString',
-      ClientToken       => 'MyString',             # OPTIONAL
-      DryRun            => 1,                      # OPTIONAL
-      PolicyDocument    => 'MyString',             # OPTIONAL
-      PrivateDnsEnabled => 1,                      # OPTIONAL
-      RouteTableIds     => [ 'MyString', ... ],    # OPTIONAL
-      SecurityGroupIds  => [ 'MyString', ... ],    # OPTIONAL
-      SubnetIds         => [ 'MyString', ... ],    # OPTIONAL
-      VpcEndpointType   => 'Interface',            # OPTIONAL
+      VpcId             => 'MyVpcId',
+      ClientToken       => 'MyString',                      # OPTIONAL
+      DryRun            => 1,                               # OPTIONAL
+      PolicyDocument    => 'MyString',                      # OPTIONAL
+      PrivateDnsEnabled => 1,                               # OPTIONAL
+      RouteTableIds     => [ 'MyRouteTableId', ... ],       # OPTIONAL
+      SecurityGroupIds  => [ 'MySecurityGroupId', ... ],    # OPTIONAL
+      SubnetIds         => [ 'MySubnetId', ... ],           # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      VpcEndpointType => 'Interface',    # OPTIONAL
     );
 
     # Results:
@@ -63,8 +78,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
@@ -89,10 +105,10 @@ service.
 
 =head2 PrivateDnsEnabled => Bool
 
-(Interface endpoint) Indicate whether to associate a private hosted
+(Interface endpoint) Indicates whether to associate a private hosted
 zone with the specified VPC. The private hosted zone contains a record
 set for the default public DNS name for the service for the Region (for
-example, C<kinesis.us-east-1.amazonaws.com>) which resolves to the
+example, C<kinesis.us-east-1.amazonaws.com>), which resolves to the
 private IP addresses of the endpoint network interfaces in the VPC.
 This enables you to make requests to the default public DNS name for
 the service instead of the public DNS names that are automatically
@@ -131,6 +147,12 @@ provider.
 
 (Interface endpoint) The ID of one or more subnets in which to create
 an endpoint network interface.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to associate with the endpoint.
 
 
 

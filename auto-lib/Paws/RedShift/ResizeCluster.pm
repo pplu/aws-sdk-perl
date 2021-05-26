@@ -72,7 +72,8 @@ The new cluster type for the specified cluster.
 
 =head2 NodeType => Str
 
-The new node type for the nodes you are adding.
+The new node type for the nodes you are adding. If not specified, the
+cluster's current node type is used.
 
 
 

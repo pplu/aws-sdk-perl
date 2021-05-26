@@ -41,6 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EnumerationValues = $CreateSlotTypeVersionResponse->EnumerationValues;
     my $LastUpdatedDate   = $CreateSlotTypeVersionResponse->LastUpdatedDate;
     my $Name              = $CreateSlotTypeVersionResponse->Name;
+    my $ParentSlotTypeSignature =
+      $CreateSlotTypeVersionResponse->ParentSlotTypeSignature;
+    my $SlotTypeConfigurations =
+      $CreateSlotTypeVersionResponse->SlotTypeConfigurations;
     my $ValueSelectionStrategy =
       $CreateSlotTypeVersionResponse->ValueSelectionStrategy;
     my $Version = $CreateSlotTypeVersionResponse->Version;

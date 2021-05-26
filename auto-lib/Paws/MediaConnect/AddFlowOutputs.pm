@@ -33,11 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FlowArn => 'My__string',
       Outputs => [
         {
-          Destination => 'My__string',
-          Port        => 1,
-          Protocol    => 'zixi-push',    # values: zixi-push, rtp-fec, rtp
-          Description => 'My__string',
-          Encryption  => {
+          Protocol =>
+            'zixi-push',    # values: zixi-push, rtp-fec, rtp, zixi-pull, rist
+          CidrAllowList => [ 'My__string', ... ],    # OPTIONAL
+          Description   => 'My__string',
+          Destination   => 'My__string',
+          Encryption    => {
             Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
             ConstantInitializationVector => 'My__string',
@@ -48,9 +49,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SecretArn  => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
-          MaxLatency       => 1,
+          MaxLatency       => 1,              # OPTIONAL
           Name             => 'My__string',
-          SmoothingLatency => 1,
+          Port             => 1,              # OPTIONAL
+          RemoteId         => 'My__string',
+          SmoothingLatency => 1,              # OPTIONAL
           StreamId         => 'My__string',
         },
         ...

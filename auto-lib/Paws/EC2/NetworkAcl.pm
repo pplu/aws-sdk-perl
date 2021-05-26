@@ -44,37 +44,37 @@ This class has no description
 
 =head2 Associations => ArrayRef[L<Paws::EC2::NetworkAclAssociation>]
 
-  Any associations between the network ACL and one or more subnets
+Any associations between the network ACL and one or more subnets
 
 
 =head2 Entries => ArrayRef[L<Paws::EC2::NetworkAclEntry>]
 
-  One or more entries (rules) in the network ACL.
+One or more entries (rules) in the network ACL.
 
 
 =head2 IsDefault => Bool
 
-  Indicates whether this is the default network ACL for the VPC.
+Indicates whether this is the default network ACL for the VPC.
 
 
 =head2 NetworkAclId => Str
 
-  The ID of the network ACL.
+The ID of the network ACL.
 
 
 =head2 OwnerId => Str
 
-  The ID of the AWS account that owns the network ACL.
+The ID of the AWS account that owns the network ACL.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the network ACL.
+Any tags assigned to the network ACL.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC for the network ACL.
+The ID of the VPC for the network ACL.
 
 
 

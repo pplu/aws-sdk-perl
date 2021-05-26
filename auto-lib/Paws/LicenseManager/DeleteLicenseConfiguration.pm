@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 B<REQUIRED> LicenseConfigurationArn => Str
 
-Unique ID of the configuration object to delete.
+ID of the license configuration.
 
 
 

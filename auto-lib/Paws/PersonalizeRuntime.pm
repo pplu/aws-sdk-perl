@@ -72,6 +72,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/per
 
 =item UserId => Str
 
+=item [Context => L<Paws::PersonalizeRuntime::Context>]
+
 
 =back
 
@@ -92,6 +94,8 @@ of type PERSONALIZED_RANKING.
 =over
 
 =item CampaignArn => Str
+
+=item [Context => L<Paws::PersonalizeRuntime::Context>]
 
 =item [ItemId => Str]
 

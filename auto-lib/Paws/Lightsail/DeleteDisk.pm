@@ -2,6 +2,7 @@
 package Paws::Lightsail::DeleteDisk;
   use Moose;
   has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
+  has ForceDeleteAddOns => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceDeleteAddOns' );
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lightsail = Paws->service('Lightsail');
     my $DeleteDiskResult = $lightsail->DeleteDisk(
-      DiskName => 'MyResourceName',
-
+      DiskName          => 'MyResourceName',
+      ForceDeleteAddOns => 1,                  # OPTIONAL
     );
 
     # Results:
@@ -46,6 +47,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head2 B<REQUIRED> DiskName => Str
 
 The unique name of the disk you want to delete (e.g., C<my-disk>).
+
+
+
+=head2 ForceDeleteAddOns => Bool
+
+A Boolean value to indicate whether to delete the enabled add-ons for
+the disk.
 
 
 

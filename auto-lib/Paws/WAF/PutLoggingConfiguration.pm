@@ -63,6 +63,9 @@ The Amazon Kinesis Data Firehose that contains the inspected traffic
 information, the redacted fields details, and the Amazon Resource Name
 (ARN) of the web ACL to monitor.
 
+When specifying C<Type> in C<RedactedFields>, you must use one of the
+following values: C<URI>, C<QUERY_STRING>, C<HEADER>, or C<METHOD>.
+
 
 
 

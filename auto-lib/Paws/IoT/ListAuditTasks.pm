@@ -74,16 +74,16 @@ The token for the next set of results.
 
 =head2 B<REQUIRED> StartTime => Str
 
-The beginning of the time period. Note that audit information is
-retained for a limited time (180 days). Requesting a start time prior
-to what is retained results in an "InvalidRequestException".
+The beginning of the time period. Audit information is retained for a
+limited time (180 days). Requesting a start time prior to what is
+retained results in an "InvalidRequestException".
 
 
 
 =head2 TaskStatus => Str
 
 A filter to limit the output to audits with the specified completion
-status: can be one of "IN_PROGRESS", "COMPLETED", "FAILED" or
+status: can be one of "IN_PROGRESS", "COMPLETED", "FAILED", or
 "CANCELED".
 
 Valid values are: C<"IN_PROGRESS">, C<"COMPLETED">, C<"FAILED">, C<"CANCELED">

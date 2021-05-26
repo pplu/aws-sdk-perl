@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Configured => Bool
 
-  If you set this parameter to C<true>, your instance is enabled for
+If you set this parameter to C<true>, your instance is enabled for
 hibernation.
 
 Default: C<false>

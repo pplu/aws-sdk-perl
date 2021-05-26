@@ -30,9 +30,10 @@ Indicates whether the application component is monitored.
 =head2 Tier => Str
 
 The tier of the application component. Supported tiers include
-C<DOT_NET_WORKER>, C<DOT_NET_WEB_TIER>, C<SQL_SERVER>, and C<DEFAULT>
+C<DOT_NET_CORE>, C<DOT_NET_WORKER>, C<DOT_NET_WEB>, C<SQL_SERVER>, and
+C<DEFAULT>
 
-
+Valid values are: C<"DEFAULT">, C<"DOT_NET_CORE">, C<"DOT_NET_WORKER">, C<"DOT_NET_WEB">, C<"SQL_SERVER">
 =head2 _request_id => Str
 
 

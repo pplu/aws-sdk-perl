@@ -45,6 +45,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigurationRecorder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteConformancePack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteConformancePack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDeliveryChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteDeliveryChannel', @_);
@@ -60,6 +65,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteOrganizationConfigRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteOrganizationConformancePack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteOrganizationConformancePack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePendingAggregationRequest {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeletePendingAggregationRequest', @_);
@@ -68,6 +78,16 @@ package Paws::Config;
   sub DeleteRemediationConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteRemediationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRemediationExceptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteRemediationExceptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteResourceConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRetentionConfiguration {
@@ -130,6 +150,21 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationRecorderStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeConformancePackCompliance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConformancePackCompliance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConformancePacks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConformancePacks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConformancePackStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConformancePackStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDeliveryChannels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannels', @_);
@@ -150,6 +185,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeOrganizationConfigRuleStatuses', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeOrganizationConformancePacks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeOrganizationConformancePacks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeOrganizationConformancePackStatuses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeOrganizationConformancePackStatuses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribePendingAggregationRequests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribePendingAggregationRequests', @_);
@@ -158,6 +203,11 @@ package Paws::Config;
   sub DescribeRemediationConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeRemediationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRemediationExceptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeRemediationExceptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRemediationExecutionStatus {
@@ -210,6 +260,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByResourceType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetConformancePackComplianceDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetConformancePackComplianceDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetConformancePackComplianceSummary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetConformancePackComplianceSummary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDiscoveredResourceCounts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetDiscoveredResourceCounts', @_);
@@ -218,6 +278,11 @@ package Paws::Config;
   sub GetOrganizationConfigRuleDetailedStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetOrganizationConfigRuleDetailedStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOrganizationConformancePackDetailedStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetOrganizationConformancePackDetailedStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetResourceConfigHistory {
@@ -260,6 +325,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::PutConfigurationRecorder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutConformancePack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutConformancePack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutDeliveryChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutDeliveryChannel', @_);
@@ -275,9 +345,24 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::PutOrganizationConfigRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutOrganizationConformancePack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutOrganizationConformancePack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRemediationConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutRemediationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRemediationExceptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutRemediationExceptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutResourceConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutRetentionConfiguration {
@@ -714,7 +799,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutOrganizationConfigRule PutRemediationConfigurations PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteConformancePack DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeleteOrganizationConformancePack DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRemediationExceptions DeleteResourceConfig DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeConformancePackCompliance DescribeConformancePacks DescribeConformancePackStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribeOrganizationConformancePacks DescribeOrganizationConformancePackStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExceptions DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetConformancePackComplianceDetails GetConformancePackComplianceSummary GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetOrganizationConformancePackDetailedStatus GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutConformancePack PutDeliveryChannel PutEvaluations PutOrganizationConfigRule PutOrganizationConformancePack PutRemediationConfigurations PutRemediationExceptions PutResourceConfig PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
 
 1;
 
@@ -930,6 +1015,28 @@ will not be able to access this information in the AWS Config console
 until you create a new configuration recorder.
 
 
+=head2 DeleteConformancePack
+
+=over
+
+=item ConformancePackName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteConformancePack>
+
+Returns: nothing
+
+Deletes the specified conformance pack and all the AWS Config rules,
+remediation actions, and all evaluation results within that conformance
+pack.
+
+AWS Config sets the conformance pack to C<DELETE_IN_PROGRESS> until the
+deletion is complete. You cannot update a conformance pack while it is
+in this state.
+
+
 =head2 DeleteDeliveryChannel
 
 =over
@@ -981,7 +1088,36 @@ Each argument is described in detail in: L<Paws::Config::DeleteOrganizationConfi
 
 Returns: nothing
 
+Deletes the specified organization config rule and all of its
+evaluation results from all member accounts in that organization. Only
+a master account can delete an organization config rule.
 
+AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
+deletion is complete. You cannot update a rule while it is in this
+state.
+
+
+=head2 DeleteOrganizationConformancePack
+
+=over
+
+=item OrganizationConformancePackName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteOrganizationConformancePack>
+
+Returns: nothing
+
+Deletes the specified organization conformance pack and all of the
+config rules and remediation actions from all member accounts in that
+organization. Only a master account can delete an organization
+conformance pack.
+
+AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
+until the deletion is complete. You cannot update a conformance pack
+while it is in this state.
 
 
 =head2 DeletePendingAggregationRequest
@@ -1019,6 +1155,46 @@ Each argument is described in detail in: L<Paws::Config::DeleteRemediationConfig
 Returns: a L<Paws::Config::DeleteRemediationConfigurationResponse> instance
 
 Deletes the remediation configuration.
+
+
+=head2 DeleteRemediationExceptions
+
+=over
+
+=item ConfigRuleName => Str
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteRemediationExceptions>
+
+Returns: a L<Paws::Config::DeleteRemediationExceptionsResponse> instance
+
+Deletes one or more remediation exceptions mentioned in the resource
+keys.
+
+
+=head2 DeleteResourceConfig
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteResourceConfig>
+
+Returns: nothing
+
+Records the configuration state for a custom resource that has been
+deleted. This API records a new ConfigurationItem with a
+ResourceDeleted status. You can retrieve the ConfigurationItems
+recorded for this resource in your AWS Config History.
 
 
 =head2 DeleteRetentionConfiguration
@@ -1097,7 +1273,7 @@ Returns a list of compliant and noncompliant rules with the number of
 resources for compliant and noncompliant rules.
 
 The results can return an empty result page, but if you have a
-nextToken, the results are displayed on the next page.
+C<nextToken>, the results are displayed on the next page.
 
 
 =head2 DescribeAggregationAuthorizations
@@ -1366,6 +1542,72 @@ Currently, you can specify only one configuration recorder per region
 in your account.
 
 
+=head2 DescribeConformancePackCompliance
+
+=over
+
+=item ConformancePackName => Str
+
+=item [Filters => L<Paws::Config::ConformancePackComplianceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeConformancePackCompliance>
+
+Returns: a L<Paws::Config::DescribeConformancePackComplianceResponse> instance
+
+Returns compliance details for each rule in that conformance pack.
+
+You must provide exact rule names.
+
+
+=head2 DescribeConformancePacks
+
+=over
+
+=item [ConformancePackNames => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeConformancePacks>
+
+Returns: a L<Paws::Config::DescribeConformancePacksResponse> instance
+
+Returns a list of one or more conformance packs.
+
+
+=head2 DescribeConformancePackStatus
+
+=over
+
+=item [ConformancePackNames => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeConformancePackStatus>
+
+Returns: a L<Paws::Config::DescribeConformancePackStatusResponse> instance
+
+Provides one or more conformance packs deployment status.
+
+If there are no conformance packs then you will see an empty result.
+
+
 =head2 DescribeDeliveryChannels
 
 =over
@@ -1425,7 +1667,14 @@ Each argument is described in detail in: L<Paws::Config::DescribeOrganizationCon
 
 Returns: a L<Paws::Config::DescribeOrganizationConfigRulesResponse> instance
 
+Returns a list of organization config rules.
 
+When you specify the limit and the next token, you receive a paginated
+response. Limit and next token are not applicable if you specify
+organization config rule names. It is only applicable, when you request
+all the organization config rules.
+
+Only a master account can call this API.
 
 
 =head2 DescribeOrganizationConfigRuleStatuses
@@ -1445,7 +1694,80 @@ Each argument is described in detail in: L<Paws::Config::DescribeOrganizationCon
 
 Returns: a L<Paws::Config::DescribeOrganizationConfigRuleStatusesResponse> instance
 
+Provides organization config rule deployment status for an
+organization.
 
+The status is not considered successful until organization config rule
+is successfully deployed in all the member accounts with an exception
+of excluded accounts.
+
+When you specify the limit and the next token, you receive a paginated
+response. Limit and next token are not applicable if you specify
+organization config rule names. It is only applicable, when you request
+all the organization config rules.
+
+Only a master account can call this API.
+
+
+=head2 DescribeOrganizationConformancePacks
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [OrganizationConformancePackNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeOrganizationConformancePacks>
+
+Returns: a L<Paws::Config::DescribeOrganizationConformancePacksResponse> instance
+
+Returns a list of organization conformance packs.
+
+When you specify the limit and the next token, you receive a paginated
+response.
+
+Limit and next token are not applicable if you specify organization
+conformance packs names. They are only applicable, when you request all
+the organization conformance packs.
+
+Only a master account can call this API.
+
+
+=head2 DescribeOrganizationConformancePackStatuses
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [OrganizationConformancePackNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeOrganizationConformancePackStatuses>
+
+Returns: a L<Paws::Config::DescribeOrganizationConformancePackStatusesResponse> instance
+
+Provides organization conformance pack deployment status for an
+organization.
+
+The status is not considered successful until organization conformance
+pack is successfully deployed in all the member accounts with an
+exception of excluded accounts.
+
+When you specify the limit and the next token, you receive a paginated
+response. Limit and next token are not applicable if you specify
+organization conformance pack names. They are only applicable, when you
+request all the organization conformance packs.
+
+Only a master account can call this API.
 
 
 =head2 DescribePendingAggregationRequests
@@ -1480,6 +1802,38 @@ Each argument is described in detail in: L<Paws::Config::DescribeRemediationConf
 Returns: a L<Paws::Config::DescribeRemediationConfigurationsResponse> instance
 
 Returns the details of one or more remediation configurations.
+
+
+=head2 DescribeRemediationExceptions
+
+=over
+
+=item ConfigRuleName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceKeys => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeRemediationExceptions>
+
+Returns: a L<Paws::Config::DescribeRemediationExceptionsResponse> instance
+
+Returns the details of one or more remediation exceptions. A detailed
+view of a remediation exception for a set of resources that includes an
+explanation of an exception and the time when the exception will be
+deleted. When you specify the limit and the next token, you receive a
+paginated response.
+
+When you specify the limit and the next token, you receive a paginated
+response.
+
+Limit and next token are not applicable if you request resources in
+batch. It is only applicable, when you request all resources.
 
 
 =head2 DescribeRemediationExecutionStatus
@@ -1562,7 +1916,7 @@ were evaluated by the rule, when each resource was last evaluated, and
 whether each resource complies with the rule.
 
 The results can return an empty result page. But if you have a
-nextToken, the results are displayed on the next page.
+C<nextToken>, the results are displayed on the next page.
 
 
 =head2 GetAggregateConfigRuleComplianceSummary
@@ -1730,6 +2084,51 @@ these numbers for each resource type. The maximum number returned is
 100.
 
 
+=head2 GetConformancePackComplianceDetails
+
+=over
+
+=item ConformancePackName => Str
+
+=item [Filters => L<Paws::Config::ConformancePackEvaluationFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetConformancePackComplianceDetails>
+
+Returns: a L<Paws::Config::GetConformancePackComplianceDetailsResponse> instance
+
+Returns compliance details of a conformance pack for all AWS resources
+that are monitered by conformance pack.
+
+
+=head2 GetConformancePackComplianceSummary
+
+=over
+
+=item ConformancePackNames => ArrayRef[Str|Undef]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetConformancePackComplianceSummary>
+
+Returns: a L<Paws::Config::GetConformancePackComplianceSummaryResponse> instance
+
+Returns compliance details for the conformance pack based on the
+cumulative compliance results of all the rules in that conformance
+pack.
+
+
 =head2 GetDiscoveredResourceCounts
 
 =over
@@ -1833,7 +2232,35 @@ Each argument is described in detail in: L<Paws::Config::GetOrganizationConfigRu
 
 Returns: a L<Paws::Config::GetOrganizationConfigRuleDetailedStatusResponse> instance
 
+Returns detailed status for each member account within an organization
+for a given organization config rule.
 
+Only a master account can call this API.
+
+
+=head2 GetOrganizationConformancePackDetailedStatus
+
+=over
+
+=item OrganizationConformancePackName => Str
+
+=item [Filters => L<Paws::Config::OrganizationResourceDetailedStatusFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetOrganizationConformancePackDetailedStatus>
+
+Returns: a L<Paws::Config::GetOrganizationConformancePackDetailedStatusResponse> instance
+
+Returns detailed status for each member account within an organization
+for a given organization conformance pack.
+
+Only a master account can call this API.
 
 
 =head2 GetResourceConfigHistory
@@ -2115,6 +2542,43 @@ parameter specified, the default is to record all supported resource
 types.
 
 
+=head2 PutConformancePack
+
+=over
+
+=item ConformancePackName => Str
+
+=item DeliveryS3Bucket => Str
+
+=item [ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]]
+
+=item [DeliveryS3KeyPrefix => Str]
+
+=item [TemplateBody => Str]
+
+=item [TemplateS3Uri => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutConformancePack>
+
+Returns: a L<Paws::Config::PutConformancePackResponse> instance
+
+Creates or updates a conformance pack. A conformance pack is a
+collection of AWS Config rules that can be easily deployed in an
+account and a region and across AWS Organization.
+
+This API creates a service linked role
+C<AWSServiceRoleForConfigConforms> in your account. The service linked
+role is created only when the role does not exist in your account. AWS
+Config verifies the existence of role with C<GetRole> action.
+
+You must specify either the C<TemplateS3Uri> or the C<TemplateBody>
+parameter, but not both. If you provide both AWS Config uses the
+C<TemplateS3Uri> parameter and ignores the C<TemplateBody> parameter.
+
+
 =head2 PutDeliveryChannel
 
 =over
@@ -2185,7 +2649,80 @@ Each argument is described in detail in: L<Paws::Config::PutOrganizationConfigRu
 
 Returns: a L<Paws::Config::PutOrganizationConfigRuleResponse> instance
 
+Adds or updates organization config rule for your entire organization
+evaluating whether your AWS resources comply with your desired
+configurations. Only a master account can create or update an
+organization config rule.
 
+This API enables organization service access through the
+C<EnableAWSServiceAccess> action and creates a service linked role
+C<AWSServiceRoleForConfigMultiAccountSetup> in the master account of
+your organization. The service linked role is created only when the
+role does not exist in the master account. AWS Config verifies the
+existence of role with C<GetRole> action.
+
+You can use this action to create both custom AWS Config rules and AWS
+managed Config rules. If you are adding a new custom AWS Config rule,
+you must first create AWS Lambda function in the master account that
+the rule invokes to evaluate your resources. When you use the
+C<PutOrganizationConfigRule> action to add the rule to AWS Config, you
+must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
+the function. If you are adding an AWS managed Config rule, specify the
+rule's identifier for the C<RuleIdentifier> key.
+
+The maximum number of organization config rules that AWS Config
+supports is 150.
+
+Specify either C<OrganizationCustomRuleMetadata> or
+C<OrganizationManagedRuleMetadata>.
+
+
+=head2 PutOrganizationConformancePack
+
+=over
+
+=item DeliveryS3Bucket => Str
+
+=item OrganizationConformancePackName => Str
+
+=item [ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]]
+
+=item [DeliveryS3KeyPrefix => Str]
+
+=item [ExcludedAccounts => ArrayRef[Str|Undef]]
+
+=item [TemplateBody => Str]
+
+=item [TemplateS3Uri => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutOrganizationConformancePack>
+
+Returns: a L<Paws::Config::PutOrganizationConformancePackResponse> instance
+
+Deploys conformance packs across member accounts in an AWS
+Organization.
+
+This API enables organization service access for
+C<config-multiaccountsetup.amazonaws.com> through the
+C<EnableAWSServiceAccess> action and creates a service linked role
+C<AWSServiceRoleForConfigMultiAccountSetup> in the master account of
+your organization. The service linked role is created only when the
+role does not exist in the master account. AWS Config verifies the
+existence of role with GetRole action.
+
+You must specify either the C<TemplateS3Uri> or the C<TemplateBody>
+parameter, but not both. If you provide both AWS Config uses the
+C<TemplateS3Uri> parameter and ignores the C<TemplateBody> parameter.
+
+AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
+and UPDATE_IN_PROGRESS until the confomance pack is created or updated.
+You cannot update a conformance pack while it is in this state.
+
+You can create 6 conformance packs with 25 AWS Config rules in each
+pack.
 
 
 =head2 PutRemediationConfigurations
@@ -2207,6 +2744,69 @@ C<RemediationConfiguration> object for the AWS Config rule. The AWS
 Config rule must already exist for you to add a remediation
 configuration. The target (SSM document) must exist and have
 permissions to use the target.
+
+
+=head2 PutRemediationExceptions
+
+=over
+
+=item ConfigRuleName => Str
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]
+
+=item [ExpirationTime => Str]
+
+=item [Message => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutRemediationExceptions>
+
+Returns: a L<Paws::Config::PutRemediationExceptionsResponse> instance
+
+A remediation exception is when a specific resource is no longer
+considered for auto-remediation. This API adds a new exception or
+updates an exisiting exception for a specific resource with a specific
+AWS Config rule.
+
+
+=head2 PutResourceConfig
+
+=over
+
+=item Configuration => Str
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+=item SchemaVersionId => Str
+
+=item [ResourceName => Str]
+
+=item [Tags => L<Paws::Config::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutResourceConfig>
+
+Returns: nothing
+
+Records the configuration state for the resource provided in the
+request. The configuration state of a resource is represented in AWS
+Config as Configuration Items. Once this API records the configuration
+item, you can retrieve the list of configuration items for the custom
+resource type using existing AWS Config APIs.
+
+The custom resource type must be registered with AWS CloudFormation.
+This API accepts the configuration item registered with AWS
+CloudFormation.
+
+When you call this API, AWS Config only stores configuration state of
+the resource provided in the request. This API does not change or
+remediate the configuration of the resource.
 
 
 =head2 PutRetentionConfiguration

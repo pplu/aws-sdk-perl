@@ -1,7 +1,9 @@
 package Paws::EC2::CapacityReservation;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneId', traits => ['NameInRequest']);
   has AvailableInstanceCount => (is => 'ro', isa => 'Int', request_name => 'availableInstanceCount', traits => ['NameInRequest']);
+  has CapacityReservationArn => (is => 'ro', isa => 'Str', request_name => 'capacityReservationArn', traits => ['NameInRequest']);
   has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
   has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
@@ -11,6 +13,7 @@ package Paws::EC2::CapacityReservation;
   has InstanceMatchCriteria => (is => 'ro', isa => 'Str', request_name => 'instanceMatchCriteria', traits => ['NameInRequest']);
   has InstancePlatform => (is => 'ro', isa => 'Str', request_name => 'instancePlatform', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
@@ -52,28 +55,38 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in which the capacity is reserved.
+The Availability Zone in which the capacity is reserved.
+
+
+=head2 AvailabilityZoneId => Str
+
+The Availability Zone ID of the Capacity Reservation.
 
 
 =head2 AvailableInstanceCount => Int
 
-  The remaining capacity. Indicates the number of instances that can be
+The remaining capacity. Indicates the number of instances that can be
 launched in the Capacity Reservation.
+
+
+=head2 CapacityReservationArn => Str
+
+The Amazon Resource Name (ARN) of the Capacity Reservation.
 
 
 =head2 CapacityReservationId => Str
 
-  The ID of the Capacity Reservation.
+The ID of the Capacity Reservation.
 
 
 =head2 CreateDate => Str
 
-  The date and time at which the Capacity Reservation was created.
+The date and time at which the Capacity Reservation was created.
 
 
 =head2 EbsOptimized => Bool
 
-  Indicates whether the Capacity Reservation supports EBS-optimized
+Indicates whether the Capacity Reservation supports EBS-optimized
 instances. This optimization provides dedicated throughput to Amazon
 EBS and an optimized configuration stack to provide optimal I/O
 performance. This optimization isn't available with all instance types.
@@ -82,7 +95,7 @@ Additional usage charges apply when using an EBS- optimized instance.
 
 =head2 EndDate => Str
 
-  The date and time at which the Capacity Reservation expires. When a
+The date and time at which the Capacity Reservation expires. When a
 Capacity Reservation expires, the reserved capacity is released and you
 can no longer launch instances into it. The Capacity Reservation's
 state changes to C<expired> when it reaches its end date and time.
@@ -90,7 +103,7 @@ state changes to C<expired> when it reaches its end date and time.
 
 =head2 EndDateType => Str
 
-  Indicates the way in which the Capacity Reservation ends. A Capacity
+Indicates the way in which the Capacity Reservation ends. A Capacity
 Reservation can have one of the following end types:
 
 =over
@@ -111,13 +124,13 @@ specified date and time.
 
 =head2 EphemeralStorage => Bool
 
-  Indicates whether the Capacity Reservation supports instances with
+Indicates whether the Capacity Reservation supports instances with
 temporary, block-level storage.
 
 
 =head2 InstanceMatchCriteria => Str
 
-  Indicates the type of instance launches that the Capacity Reservation
+Indicates the type of instance launches that the Capacity Reservation
 accepts. The options include:
 
 =over
@@ -142,19 +155,24 @@ permitted instances can use the reserved capacity.
 
 =head2 InstancePlatform => Str
 
-  The type of operating system for which the Capacity Reservation
+The type of operating system for which the Capacity Reservation
 reserves capacity.
 
 
 =head2 InstanceType => Str
 
-  The type of instance for which the Capacity Reservation reserves
+The type of instance for which the Capacity Reservation reserves
 capacity.
+
+
+=head2 OwnerId => Str
+
+The ID of the AWS account that owns the Capacity Reservation.
 
 
 =head2 State => Str
 
-  The current state of the Capacity Reservation. A Capacity Reservation
+The current state of the Capacity Reservation. A Capacity Reservation
 can be in one of the following states:
 
 =over
@@ -166,13 +184,13 @@ available for your use.
 
 =item *
 
-C<cancelled> - The Capacity Reservation expired automatically at the
-date and time specified in your request. The reserved capacity is no
-longer available for your use.
+C<expired> - The Capacity Reservation expired automatically at the date
+and time specified in your request. The reserved capacity is no longer
+available for your use.
 
 =item *
 
-C<expired> - The Capacity Reservation was manually cancelled. The
+C<cancelled> - The Capacity Reservation was manually cancelled. The
 reserved capacity is no longer available for your use.
 
 =item *
@@ -193,12 +211,12 @@ minutes.
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the Capacity Reservation.
+Any tags assigned to the Capacity Reservation.
 
 
 =head2 Tenancy => Str
 
-  Indicates the tenancy of the Capacity Reservation. A Capacity
+Indicates the tenancy of the Capacity Reservation. A Capacity
 Reservation can have one of the following tenancy settings:
 
 =over
@@ -219,8 +237,8 @@ hardware that is dedicated to a single AWS account.
 
 =head2 TotalInstanceCount => Int
 
-  The number of instances for which the Capacity Reservation reserves
-capacity.
+The total number of instances for which the Capacity Reservation
+reserves capacity.
 
 
 

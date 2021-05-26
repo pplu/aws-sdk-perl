@@ -1,10 +1,9 @@
 
 package Paws::CloudFront::ListFieldLevelEncryptionProfilesResult;
   use Moose;
-  has FieldLevelEncryptionProfileList => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileList');
+  has FieldLevelEncryptionProfileList => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileList', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'FieldLevelEncryptionProfileList');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

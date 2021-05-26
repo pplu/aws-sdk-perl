@@ -4,7 +4,8 @@ package Paws::S3::PutBucketInventoryConfiguration;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has Id => (is => 'ro', isa => 'Str', query_name => 'id', traits => ['ParamInQuery'], required => 1);
-  has InventoryConfiguration => (is => 'ro', isa => 'Paws::S3::InventoryConfiguration', required => 1);
+  has InventoryConfiguration => (is => 'ro', isa => 'Paws::S3::InventoryConfiguration', traits => ['ParamInBody'], required => 1);
+
 
   use MooseX::ClassAttribute;
 
@@ -14,6 +15,7 @@ package Paws::S3::PutBucketInventoryConfiguration;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         OptionalFields => [
           'Size',
-          ... # values: Size, LastModifiedDate, StorageClass, ETag, IsMultipartUploaded, ReplicationStatus, EncryptionStatus, ObjectLockRetainUntilDate, ObjectLockMode, ObjectLockLegalHoldStatus
+          ... # values: Size, LastModifiedDate, StorageClass, ETag, IsMultipartUploaded, ReplicationStatus, EncryptionStatus, ObjectLockRetainUntilDate, ObjectLockMode, ObjectLockLegalHoldStatus, IntelligentTieringAccessTier
         ],    # OPTIONAL
       },
       ContentLength => 1,    # OPTIONAL

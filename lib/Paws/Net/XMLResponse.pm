@@ -8,7 +8,7 @@ package Paws::Net::XMLResponse;
     is => 'ro',
     default => sub {
       return XML::Simple->new(
-        ForceArray    => qr/^(?:item|Errors)/i,
+        ForceArray    => qr/^(?:^item$|Errors)/i,
         KeyAttr       => '',
         SuppressEmpty => undef,
       );

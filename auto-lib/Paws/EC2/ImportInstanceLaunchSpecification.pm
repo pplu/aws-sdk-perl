@@ -48,34 +48,34 @@ This class has no description
 
 =head2 AdditionalInfo => Str
 
-  Reserved.
+Reserved.
 
 
 =head2 Architecture => Str
 
-  The architecture of the instance.
+The architecture of the instance.
 
 
 =head2 GroupIds => ArrayRef[Str|Undef]
 
-  The security group IDs.
+The security group IDs.
 
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-  The security group names.
+The security group names.
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str
 
-  Indicates whether an instance stops or terminates when you initiate
+Indicates whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
 system shutdown).
 
 
 =head2 InstanceType => Str
 
-  The instance type. For more information about the instance types that
+The instance type. For more information about the instance types that
 you can import, see Instance Types
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-instance-types)
 in the VM Import/Export User Guide.
@@ -83,28 +83,28 @@ in the VM Import/Export User Guide.
 
 =head2 Monitoring => Bool
 
-  Indicates whether monitoring is enabled.
+Indicates whether monitoring is enabled.
 
 
 =head2 Placement => L<Paws::EC2::Placement>
 
-  The placement information for the instance.
+The placement information for the instance.
 
 
 =head2 PrivateIpAddress => Str
 
-  [EC2-VPC] An available IP address from the IP address range of the
+[EC2-VPC] An available IP address from the IP address range of the
 subnet.
 
 
 =head2 SubnetId => Str
 
-  [EC2-VPC] The ID of the subnet in which to launch the instance.
+[EC2-VPC] The ID of the subnet in which to launch the instance.
 
 
 =head2 UserData => L<Paws::EC2::UserData>
 
-  The Base64-encoded user data to make available to the instance.
+The Base64-encoded user data to make available to the instance.
 
 
 

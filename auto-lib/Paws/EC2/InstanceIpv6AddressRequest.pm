@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Ipv6Address => Str
 
-  The IPv6 address.
+The IPv6 address.
 
 
 

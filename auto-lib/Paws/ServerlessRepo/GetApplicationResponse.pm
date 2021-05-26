@@ -6,11 +6,13 @@ package Paws::ServerlessRepo::GetApplicationResponse;
   has CreationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationTime');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
+  has IsVerifiedAuthor => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isVerifiedAuthor');
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
   has LicenseUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseUrl');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
   has SpdxLicenseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spdxLicenseId');
+  has VerifiedAuthorUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verifiedAuthorUrl');
   has Version => (is => 'ro', isa => 'Paws::ServerlessRepo::Version', traits => ['NameInRequest'], request_name => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -57,6 +59,14 @@ A URL with more information about the application, for example the
 location of your GitHub repository for the application.
 
 
+=head2 IsVerifiedAuthor => Bool
+
+Whether the author of this application has been verified. This means
+means that AWS has made a good faith review, as a reasonable and
+prudent service provider, of the information provided by the requester
+and has confirmed that the requester's identity is as claimed.
+
+
 =head2 Labels => ArrayRef[Str|Undef]
 
 Labels to improve discovery of apps in search results.
@@ -94,6 +104,12 @@ Maximum size 5 MB
 =head2 SpdxLicenseId => Str
 
 A valid identifier from https://spdx.org/licenses/.
+
+
+=head2 VerifiedAuthorUrl => Str
+
+The URL to the public profile of a verified author. This URL is
+submitted by the author.
 
 
 =head2 Version => L<Paws::ServerlessRepo::Version>

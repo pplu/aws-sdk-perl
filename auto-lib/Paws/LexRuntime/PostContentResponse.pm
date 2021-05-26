@@ -8,7 +8,9 @@ package Paws::LexRuntime::PostContentResponse;
   has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-intent-name');
   has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message');
   has MessageFormat => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message-format');
+  has SentimentResponse => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-sentiment');
   has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
+  has SessionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-id');
   has Slots => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slots');
   has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slot-to-elicit');
   use MooseX::ClassAttribute;
@@ -126,7 +128,7 @@ The message to convey to the user. The message can come from the bot's
 configuration or from a Lambda function.
 
 If the intent is not configured with a Lambda function, or if the
-Lambda function returned C<Delegate> as the C<dialogAction.type> its
+Lambda function returned C<Delegate> as the C<dialogAction.type> in its
 response, Amazon Lex decides on the next course of action and selects
 an appropriate message from the bot's configuration based on the
 current interaction context. For example, if Amazon Lex isn't able to
@@ -170,16 +172,30 @@ when the intent was created.
 
 
 Valid values are: C<"PlainText">, C<"CustomPayload">, C<"SSML">, C<"Composite">
+=head2 SentimentResponse => Str
+
+The sentiment expressed in and utterance.
+
+When the bot is configured to send utterances to Amazon Comprehend for
+sentiment analysis, this field contains the result of the analysis.
+
+
 =head2 SessionAttributes => Str
 
 Map of key/value pairs representing the session-specific context
 information.
 
 
+=head2 SessionId => Str
+
+The unique identifier for the session.
+
+
 =head2 Slots => Str
 
 Map of zero or more intent slots (name/value pairs) Amazon Lex detected
-from the user input during the conversation.
+from the user input during the conversation. The field is base-64
+encoded.
 
 Amazon Lex creates a resolution list containing likely values for a
 slot. The value that it returns is determined by the

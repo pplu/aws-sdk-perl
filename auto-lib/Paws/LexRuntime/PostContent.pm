@@ -5,7 +5,7 @@ package Paws::LexRuntime::PostContent;
   has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
   has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type', required => 1);
-  has InputStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputStream', required => 1);
+  has InputStream => (is => 'ro', isa => 'Str', traits => ['ParamInBody'], required => 1);
   has RequestAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-request-attributes');
   has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
   has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
@@ -54,7 +54,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IntentName        = $PostContentResponse->IntentName;
     my $Message           = $PostContentResponse->Message;
     my $MessageFormat     = $PostContentResponse->MessageFormat;
+    my $SentimentResponse = $PostContentResponse->SentimentResponse;
     my $SessionAttributes = $PostContentResponse->SessionAttributes;
+    my $SessionId         = $PostContentResponse->SessionId;
     my $SlotToElicit      = $PostContentResponse->SlotToElicit;
     my $Slots             = $PostContentResponse->Slots;
 
@@ -87,6 +89,13 @@ response. Amazon Lex uses Amazon Polly to generate the speech (using
 the configuration you specified in the C<Accept> header). For example,
 if you specify C<audio/mpeg> as the value, Amazon Lex returns speech in
 the MPEG format.
+
+=item *
+
+If the value is C<audio/pcm>, the speech returned is C<audio/pcm> in
+16-bit, little endian format.
+
+=item *
 
 The following are the accepted values:
 
@@ -216,7 +225,7 @@ The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes with the prefix C<x-amz-lex:>.
 
 For more information, see Setting Request Attributes
-(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+(https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 
 
 
@@ -230,7 +239,7 @@ with string keys and values. The total size of the C<sessionAttributes>
 and C<requestAttributes> headers is limited to 12 KB.
 
 For more information, see Setting Session Attributes
-(http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+(https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
 
 
 

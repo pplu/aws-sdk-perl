@@ -42,8 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-Identifier (ID) of the directory to which you want to subscribe and
-receive real-time logs to your specified CloudWatch log group.
+Identifier of the directory to which you want to subscribe and receive
+real-time logs to your specified CloudWatch log group.
 
 
 

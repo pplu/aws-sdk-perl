@@ -49,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           ContainerName   => 'MyString',
           ExitCode        => 1,            # OPTIONAL
+          ImageDigest     => 'MyString',
           NetworkBindings => [
             {
               BindIP        => 'MyString',
@@ -58,8 +59,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],                                 # OPTIONAL
-          Reason => 'MyString',
-          Status => 'MyString',
+          Reason    => 'MyString',
+          RuntimeId => 'MyString',
+          Status    => 'MyString',
         },
         ...
       ],                                     # OPTIONAL

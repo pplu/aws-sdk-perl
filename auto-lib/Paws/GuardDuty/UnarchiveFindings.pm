@@ -45,14 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The ID of the detector that specifies the GuardDuty service whose
-findings you want to unarchive.
+The ID of the detector associated with the findings to unarchive.
 
 
 
 =head2 B<REQUIRED> FindingIds => ArrayRef[Str|Undef]
 
-IDs of the findings that you want to unarchive.
+IDs of the findings to unarchive.
 
 
 

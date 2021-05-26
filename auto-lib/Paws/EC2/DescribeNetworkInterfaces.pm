@@ -113,7 +113,7 @@ C<attachment.attachment-id> - The ID of the interface attachment.
 
 =item *
 
-C<attachment.attach.time> - The time that the network interface was
+C<attachment.attach-time> - The time that the network interface was
 attached to an instance.
 
 =item *
@@ -249,7 +249,8 @@ C<vpc-id> - The ID of the VPC for the network interface.
 
 The maximum number of items to return for this request. The request
 returns a token that you can specify in a subsequent call to get the
-next set of results.
+next set of results. You cannot specify this parameter and the network
+interface IDs parameter in the same request.
 
 
 

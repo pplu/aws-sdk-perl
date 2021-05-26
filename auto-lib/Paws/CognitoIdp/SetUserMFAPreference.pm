@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 
 =head2 B<REQUIRED> AccessToken => Str
 
-The access token.
+The access token for the user.
 
 
 

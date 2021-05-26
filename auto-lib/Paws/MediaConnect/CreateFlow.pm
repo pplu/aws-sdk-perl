@@ -52,21 +52,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         MaxBitrate     => 1,              # OPTIONAL
         MaxLatency     => 1,              # OPTIONAL
         Name           => 'My__string',
-        Protocol => 'zixi-push',    # values: zixi-push, rtp-fec, rtp; OPTIONAL
-        StreamId => 'My__string',
+        Protocol       => 'zixi-push'
+        ,    # values: zixi-push, rtp-fec, rtp, zixi-pull, rist; OPTIONAL
+        StreamId      => 'My__string',
         WhitelistCidr => 'My__string',
       },
       AvailabilityZone => 'My__string',    # OPTIONAL
       Entitlements     => [
         {
-          Subscribers => [ 'My__string', ... ],
-          Description => 'My__string',
-          Encryption  => {
-            Algorithm => 'aes128',         # values: aes128, aes192, aes256
+          Subscribers                      => [ 'My__string', ... ],
+          DataTransferSubscriberFeePercent => 1,                      # OPTIONAL
+          Description                      => 'My__string',
+          Encryption                       => {
+            Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType    => 'speke',         # values: speke, static-key; OPTIONAL
+            KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
             SecretArn  => 'My__string',
@@ -78,11 +80,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],        # OPTIONAL
       Outputs => [
         {
-          Destination => 'My__string',
-          Port        => 1,              # OPTIONAL
-          Protocol => 'zixi-push',   # values: zixi-push, rtp-fec, rtp; OPTIONAL
-          Description => 'My__string',
-          Encryption  => {
+          Protocol => 'zixi-push'
+          ,     # values: zixi-push, rtp-fec, rtp, zixi-pull, rist; OPTIONAL
+          CidrAllowList => [ 'My__string', ... ],
+          Description   => 'My__string',
+          Destination   => 'My__string',
+          Encryption    => {
             Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
             ConstantInitializationVector => 'My__string',
@@ -95,6 +98,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           MaxLatency       => 1,              # OPTIONAL
           Name             => 'My__string',
+          Port             => 1,              # OPTIONAL
+          RemoteId         => 'My__string',
           SmoothingLatency => 1,              # OPTIONAL
           StreamId         => 'My__string',
         },

@@ -26,7 +26,8 @@ The name of the bot for which utterance information was returned.
 An array of UtteranceList objects, each containing a list of
 UtteranceData objects describing the utterances that were processed by
 your bot. The response contains a maximum of 100 C<UtteranceData>
-objects for each version.
+objects for each version. Amazon Lex returns the most frequent
+utterances received by the bot in the last 15 days.
 
 
 =head2 _request_id => Str

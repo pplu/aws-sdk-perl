@@ -56,21 +56,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> AfterCommitId => Str
 
 To establish the directionality of the comparison, the full commit ID
-of the 'after' commit.
+of the after commit.
 
 
 
 =head2 BeforeCommitId => Str
 
 To establish the directionality of the comparison, the full commit ID
-of the 'before' commit.
+of the before commit.
 
 
 
 =head2 MaxResults => Int
 
-A non-negative integer used to limit the number of returned results.
-The default is 100 comments, and is configurable up to 500.
+A non-zero, non-negative integer used to limit the number of returned
+results. The default is 100 comments, but you can configure up to 500.
 
 
 

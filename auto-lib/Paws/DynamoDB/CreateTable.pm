@@ -97,13 +97,16 @@ manage capacity. This setting can be changed later.
 
 =item *
 
-C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
-using C<PROVISIONED> for predictable workloads.
+C<PROVISIONED> - We recommend using C<PROVISIONED> for predictable
+workloads. C<PROVISIONED> sets the billing mode to Provisioned Mode
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
 
 =item *
 
-C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
-recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+C<PAY_PER_REQUEST> - We recommend using C<PAY_PER_REQUEST> for
+unpredictable workloads. C<PAY_PER_REQUEST> sets the billing mode to
+On-Demand Mode
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand).
 
 =back
 

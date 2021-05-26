@@ -39,12 +39,12 @@ This class has no description
 
 =head2 DnsSupport => Str
 
-  Enable or disable DNS support. The default is C<enable>.
+Enable or disable DNS support. The default is C<enable>.
 
 
 =head2 Ipv6Support => Str
 
-  Enable or disable IPv6 support. The default is C<enable>.
+Enable or disable IPv6 support. The default is C<enable>.
 
 
 

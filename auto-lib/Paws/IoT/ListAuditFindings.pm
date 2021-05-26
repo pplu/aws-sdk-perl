@@ -44,11 +44,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CaCertificateId => 'MyCertificateId',    # min: 64, max: 64; OPTIONAL
         ClientId        => 'MyClientId',         # OPTIONAL
         CognitoIdentityPoolId => 'MyCognitoIdentityPoolId',    # OPTIONAL
-        DeviceCertificateId => 'MyCertificateId',   # min: 64, max: 64; OPTIONAL
+        DeviceCertificateId => 'MyCertificateId', # min: 64, max: 64; OPTIONAL
+        IamRoleArn          => 'MyRoleArn',       # min: 20, max: 2048; OPTIONAL
         PolicyVersionIdentifier => {
           PolicyName      => 'MyPolicyName',        # min: 1, max: 128; OPTIONAL
           PolicyVersionId => 'MyPolicyVersionId',   # OPTIONAL
         },    # OPTIONAL
+        RoleAliasArn => 'MyRoleAliasArn',    # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL
       TaskId    => 'MyAuditTaskId',          # OPTIONAL
@@ -95,7 +97,7 @@ The token for the next set of results.
 
 =head2 ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
 
-Information identifying the non-compliant resource.
+Information identifying the noncompliant resource.
 
 
 

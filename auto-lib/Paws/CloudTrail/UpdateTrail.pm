@@ -124,7 +124,8 @@ current region and this value is set to true, shadow trails
 (replications of the trail) will be created in the other regions. If
 the trail exists in all regions and this value is set to false, the
 trail will remain in the region where it was created, and its shadow
-trails in other regions will be deleted.
+trails in other regions will be deleted. As a best practice, consider
+using trails that log events in all regions.
 
 
 
@@ -215,7 +216,7 @@ C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 Specifies the name of the Amazon S3 bucket designated for publishing
 log files. See Amazon S3 Bucket Naming Requirements
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 
@@ -224,7 +225,7 @@ log files. See Amazon S3 Bucket Naming Requirements
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 The maximum length is 200 characters.
 
 

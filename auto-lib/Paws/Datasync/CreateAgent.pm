@@ -3,7 +3,10 @@ package Paws::Datasync::CreateAgent;
   use Moose;
   has ActivationKey => (is => 'ro', isa => 'Str', required => 1);
   has AgentName => (is => 'ro', isa => 'Str');
+  has SecurityGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SubnetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
+  has VpcEndpointId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,15 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $datasync = Paws->service('Datasync');
     my $CreateAgentResponse = $datasync->CreateAgent(
-      ActivationKey => 'MyActivationKey',
-      AgentName     => 'MyTagValue',        # OPTIONAL
-      Tags          => [
+      ActivationKey     => 'MyActivationKey',
+      AgentName         => 'MyTagValue',        # OPTIONAL
+      SecurityGroupArns => [
+        'MyEc2SecurityGroupArn', ...            # max: 128
+      ],                                        # OPTIONAL
+      SubnetArns => [
+        'MyEc2SubnetArn', ...                   # max: 128
+      ],                                        # OPTIONAL
+      Tags => [
         {
-          Key   => 'MyTagKey',              # min: 1, max: 256
-          Value => 'MyTagValue',            # min: 1, max: 256
+          Key   => 'MyTagKey',                  # min: 1, max: 256
+          Value => 'MyTagValue',                # min: 1, max: 256
         },
         ...
-      ],                                    # OPTIONAL
+      ],                                        # OPTIONAL
+      VpcEndpointId => 'MyVpcEndpointId',       # OPTIONAL
     );
 
     # Results:
@@ -65,9 +75,8 @@ might also include other activation-related parameters; however, these
 are merely defaults. The arguments you pass to this API call determine
 the actual configuration of your agent.
 
-For more information, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html#activating-agent"
-(Activating a Agent) in the I<AWS DataSync User Guide.>
+For more information, see Activating an Agent in the I<AWS DataSync
+User Guide.>
 
 
 
@@ -75,6 +84,26 @@ For more information, see
 
 The name you configured for your agent. This value is a text reference
 that is used to identify the agent in the console.
+
+
+
+=head2 SecurityGroupArns => ArrayRef[Str|Undef]
+
+The ARNs of the security groups used to protect your data transfer task
+subnets. See CreateAgentRequest$SubnetArns.
+
+
+
+=head2 SubnetArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Names (ARNs) of the subnets in which DataSync will
+create elastic network interfaces for each data transfer task. The
+agent that runs a task must be private. When you start a task that is
+associated with an agent created in a VPC, or one that has access to an
+IP address in a VPC, then the task is also private. In this case,
+DataSync creates four network interfaces for each task in your subnet.
+For a data transfer to work, the agent must be able to route to all
+these four network interfaces.
 
 
 
@@ -87,6 +116,19 @@ manage, filter, and search for your agents.
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: +
 - = . _ : / @.
+
+
+
+=head2 VpcEndpointId => Str
+
+The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
+access to. This is the client-side VPC endpoint, also called a
+PrivateLink. If you don't have a PrivateLink VPC endpoint, see Creating
+a VPC Endpoint Service Configuration
+(https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service)
+in the AWS VPC User Guide.
+
+VPC endpoint ID looks like this: C<vpce-01234d5aff67890e1>.
 
 
 

@@ -35,6 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
+    my $ScaleDownModifications =
+      $AllowedNodeTypeModificationsMessage->ScaleDownModifications;
     my $ScaleUpModifications =
       $AllowedNodeTypeModificationsMessage->ScaleUpModifications;
 

@@ -8,6 +8,7 @@ package Paws::SSM::StartAutomationExecution;
   has MaxErrors => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
   has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
@@ -49,6 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyAutomationParameterValue', ...       # min: 1, max: 512
         ],    # key: min: 1, max: 50, value: max: 10
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
       TargetLocations => [
         {
           Accounts => [ 'MyAccount', ... ],    # min: 1, max: 50; OPTIONAL
@@ -71,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TargetParameterName => 'MyAutomationParameterKey',    # OPTIONAL
       Targets             => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -149,6 +158,32 @@ Valid values are: C<"Auto">, C<"Interactive">
 
 A key-value map of execution parameters, which match the declared
 parameters in the Automation document.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. You can specify a
+maximum of five tags for an automation. Tags enable you to categorize a
+resource in different ways, such as by purpose, owner, or environment.
+For example, you might want to tag an automation to identify an
+environment or operating system. In this case, you could specify the
+following key name/value pairs:
+
+=over
+
+=item *
+
+C<Key=environment,Value=test>
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=back
+
+To add tags to an existing patch baseline, use the AddTagsToResource
+action.
 
 
 

@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Arn  => 'MyArn',
       Tags => [
         {
-          Key   => 'MyTagKey',
-          Value => 'MyTagValue',
+          Key   => 'MyTagKey',      # max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...

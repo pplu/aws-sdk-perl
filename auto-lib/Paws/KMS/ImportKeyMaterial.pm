@@ -49,10 +49,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> EncryptedKeyMaterial => Str
 
-The encrypted key material to import. It must be encrypted with the
-public key that you received in the response to a previous
-GetParametersForImport request, using the wrapping algorithm that you
-specified in that request.
+The encrypted key material to import. The key material must be
+encrypted with the public wrapping key that GetParametersForImport
+returned, using the wrapping algorithm that you specified in the same
+C<GetParametersForImport> request.
 
 
 
@@ -76,8 +76,10 @@ contained the public key that you used to encrypt the key material.
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the CMK to import the key material into. The CMK's
-C<Origin> must be C<EXTERNAL>.
+The identifier of the symmetric CMK that receives the imported key
+material. The CMK's C<Origin> must be C<EXTERNAL>. This must be the
+same CMK specified in the C<KeyID> parameter of the corresponding
+GetParametersForImport request.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

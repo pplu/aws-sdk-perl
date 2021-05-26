@@ -33,17 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeVpcEndpointConnectionNotificationsResult =
       $ec2->DescribeVpcEndpointConnectionNotifications(
-      ConnectionNotificationId => 'MyString',    # OPTIONAL
-      DryRun                   => 1,             # OPTIONAL
+      ConnectionNotificationId => 'MyConnectionNotificationId',    # OPTIONAL
+      DryRun                   => 1,                               # OPTIONAL
       Filters                  => [
         {
           Name   => 'MyString',
-          Values => [ 'MyString', ... ],         # OPTIONAL
+          Values => [ 'MyString', ... ],                           # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyString',                  # OPTIONAL
+      ],                                                           # OPTIONAL
+      MaxResults => 1,                                             # OPTIONAL
+      NextToken  => 'MyString',                                    # OPTIONAL
       );
 
     # Results:
@@ -84,7 +84,7 @@ One or more filters.
 
 =item *
 
-C<connection-notification-arn> - The ARN of SNS topic for the
+C<connection-notification-arn> - The ARN of the SNS topic for the
 notification.
 
 =item *

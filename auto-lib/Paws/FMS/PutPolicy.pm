@@ -2,6 +2,7 @@
 package Paws::FMS::PutPolicy;
   use Moose;
   has Policy => (is => 'ro', isa => 'Paws::FMS::Policy', required => 1);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::FMS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RemediationEnabled        => 1,
         ResourceType              => 'MyResourceType',    # min: 1, max: 128
         SecurityServicePolicyData => {
-          Type => 'WAF',    # values: WAF, SHIELD_ADVANCED
+          Type => 'WAF'
+          , # values: WAF, SHIELD_ADVANCED, SECURITY_GROUPS_COMMON, SECURITY_GROUPS_CONTENT_AUDIT, SECURITY_GROUPS_USAGE_AUDIT
           ManagedServiceData =>
             'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
         },
@@ -53,16 +55,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyPolicyUpdateToken',     # min: 1, max: 1024; OPTIONAL
         ResourceTags => [
           {
-            Key   => 'MyTagKey',      # min: 1, max: 128
-            Value => 'MyTagValue',    # max: 256; OPTIONAL
+            Key   => 'MyResourceTagKey',      # min: 1, max: 128
+            Value => 'MyResourceTagValue',    # max: 256; OPTIONAL
           },
           ...
-        ],                            # max: 8; OPTIONAL
+        ],                                    # max: 8; OPTIONAL
         ResourceTypeList => [
-          'MyResourceType', ...       # min: 1, max: 128
-        ],                            # OPTIONAL
+          'MyResourceType', ...               # min: 1, max: 128
+        ],                                    # OPTIONAL
       },
+      TagList => [
+        {
+          Key   => 'MyTagKey',                # min: 1, max: 128
+          Value => 'MyTagValue',              # max: 256
 
+        },
+        ...
+      ],                                      # OPTIONAL
     );
 
     # Results:
@@ -80,6 +89,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms
 =head2 B<REQUIRED> Policy => L<Paws::FMS::Policy>
 
 The details of the AWS Firewall Manager policy to be created.
+
+
+
+=head2 TagList => ArrayRef[L<Paws::FMS::Tag>]
+
+The tags to add to the AWS resource.
 
 
 

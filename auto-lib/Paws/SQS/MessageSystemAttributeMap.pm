@@ -8,6 +8,7 @@ package Paws::SQS::MessageSystemAttributeMap;
 
   has ApproximateFirstReceiveTimestamp => (is => 'ro', isa => 'Str');
   has ApproximateReceiveCount => (is => 'ro', isa => 'Str');
+  has AWSTraceHeader => (is => 'ro', isa => 'Str');
   has MessageDeduplicationId => (is => 'ro', isa => 'Str');
   has MessageGroupId => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
@@ -52,6 +53,9 @@ This class has no description
 
 
 =head2 ApproximateReceiveCount => Str
+
+
+=head2 AWSTraceHeader => Str
 
 
 =head2 MessageDeduplicationId => Str

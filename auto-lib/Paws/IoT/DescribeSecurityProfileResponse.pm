@@ -26,7 +26,7 @@ Paws::IoT::DescribeSecurityProfileResponse
 =head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
 
 A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile's C<behaviors> but it is
+retained for any metric used in the profile's C<behaviors>, but it is
 also retained for any metric specified here.
 
 

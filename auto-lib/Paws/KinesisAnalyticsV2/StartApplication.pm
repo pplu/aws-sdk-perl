@@ -34,7 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ApplicationRestoreConfiguration => {
           ApplicationRestoreType => 'SKIP_RESTORE_FROM_SNAPSHOT'
           , # values: SKIP_RESTORE_FROM_SNAPSHOT, RESTORE_FROM_LATEST_SNAPSHOT, RESTORE_FROM_CUSTOM_SNAPSHOT
-          SnapshotName => 'MySnapshotName',    # min: 1, max: 128; OPTIONAL
+          SnapshotName => 'MySnapshotName',    # min: 1, max: 256; OPTIONAL
+        },    # OPTIONAL
+        FlinkRunConfiguration => {
+          AllowNonRestoredState => 1,    # OPTIONAL
         },    # OPTIONAL
         SqlRunConfigurations => [
           {

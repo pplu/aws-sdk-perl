@@ -56,19 +56,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 AddLicenseSpecifications => ArrayRef[L<Paws::LicenseManager::LicenseSpecification>]
 
-License configuration ARNs to be added to a resource.
+ARNs of the license configurations to add.
 
 
 
 =head2 RemoveLicenseSpecifications => ArrayRef[L<Paws::LicenseManager::LicenseSpecification>]
 
-License configuration ARNs to be removed from a resource.
+ARNs of the license configurations to remove.
 
 
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-ARN for an AWS server resource.
+Amazon Resource Name (ARN) of the AWS resource.
 
 
 

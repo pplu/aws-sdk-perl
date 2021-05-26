@@ -6,8 +6,9 @@ package Paws::S3::PutObjectRetention;
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has Retention => (is => 'ro', isa => 'Paws::S3::ObjectLockRetention');
+  has Retention => (is => 'ro', isa => 'Paws::S3::ObjectLockRetention', traits => ['ParamInBody']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+
 
   use MooseX::ClassAttribute;
 
@@ -17,6 +18,7 @@ package Paws::S3::PutObjectRetention;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectRetentionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###
@@ -62,15 +64,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The bucket that contains the object you want to apply this Object
+The bucket name that contains the object you want to apply this Object
 Retention configuration to.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this operation using an access point through the AWS SDKs,
+you provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using Access Points
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 
 =head2 BypassGovernanceRetention => Bool
 
 Indicates whether this operation should bypass Governance-mode
-restrictions.j
+restrictions.
 
 
 

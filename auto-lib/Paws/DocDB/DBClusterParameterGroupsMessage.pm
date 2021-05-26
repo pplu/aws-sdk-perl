@@ -18,7 +18,7 @@ Paws::DocDB::DBClusterParameterGroupsMessage
 
 =head2 DBClusterParameterGroups => ArrayRef[L<Paws::DocDB::DBClusterParameterGroup>]
 
-A list of DB cluster parameter groups.
+A list of cluster parameter groups.
 
 
 =head2 Marker => Str

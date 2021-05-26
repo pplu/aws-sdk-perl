@@ -2,8 +2,10 @@
 package Paws::EC2::AllocateAddress;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
+  has CustomerOwnedIpv4Pool => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has NetworkBorderGroup => (is => 'ro', isa => 'Str');
   has PublicIpv4Pool => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -65,6 +67,14 @@ address pool.
 
 
 
+=head2 CustomerOwnedIpv4Pool => Str
+
+The ID of a customer-owned address pool. Use this parameter to let
+Amazon EC2 select an address from the address pool. Alternatively,
+specify a specific address from the address pool.
+
+
+
 =head2 Domain => Str
 
 Set to C<vpc> to allocate the address for use with instances in a VPC.
@@ -79,6 +89,23 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 NetworkBorderGroup => Str
+
+The location from which the IP address is advertised. Use this
+parameter to limit the address to this location.
+
+Use DescribeVpcs
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html)
+to view the network border groups.
+
+You cannot use a network border group with EC2 Classic. If you attempt
+this operation on EC2 classic, you will receive an
+C<InvalidParameterCombination> error. For more information, see Error
+Codes
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html).
 
 
 

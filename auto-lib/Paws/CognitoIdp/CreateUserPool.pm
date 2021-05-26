@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdp::CreateUserPool;
   use Moose;
+  has AccountRecoverySetting => (is => 'ro', isa => 'Paws::CognitoIdp::AccountRecoverySettingType');
   has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -17,6 +18,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has UsernameConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::UsernameConfigurationType');
   has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
@@ -46,7 +48,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cognito-idp = Paws->service('CognitoIdp');
     my $CreateUserPoolResponse = $cognito -idp->CreateUserPool(
-      PoolName              => 'MyUserPoolNameType',
+      PoolName               => 'MyUserPoolNameType',
+      AccountRecoverySetting => {
+        RecoveryMechanisms => [
+          {
+            Name => 'verified_email'
+            ,    # values: verified_email, verified_phone_number, admin_only
+            Priority => 1,    # min: 1, max: 2
+
+          },
+          ...
+        ],                    # min: 1, max: 2; OPTIONAL
+      },    # OPTIONAL
       AdminCreateUserConfig => {
         AllowAdminCreateUserOnly => 1,    # OPTIONAL
         InviteMessageTemplate    => {
@@ -70,8 +83,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
       },    # OPTIONAL
       EmailConfiguration => {
+        ConfigurationSet => 'MySESConfigurationSet', # min: 1, max: 64; OPTIONAL
         EmailSendingAccount =>
           'COGNITO_DEFAULT',    # values: COGNITO_DEFAULT, DEVELOPER; OPTIONAL
+        From                => 'MyStringType',          # OPTIONAL
         ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
         SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
@@ -137,6 +152,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UsernameAttributes => [
         'phone_number', ...    # values: phone_number, email
       ],                       # OPTIONAL
+      UsernameConfiguration => {
+        CaseSensitive => 1,
+
+      },                       # OPTIONAL
       VerificationMessageTemplate => {
         DefaultEmailOption => 'CONFIRM_WITH_LINK'
         ,    # values: CONFIRM_WITH_LINK, CONFIRM_WITH_CODE; OPTIONAL
@@ -162,6 +181,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/CreateUserPool>
 
 =head1 ATTRIBUTES
+
+
+=head2 AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>
+
+Use this setting to define which verified available method a user can
+use to recover their password when they call C<ForgotPassword>. It
+allows you to define a preferred method when a user has more than one
+method available. With this setting, SMS does not qualify for a valid
+password recovery mechanism if the user also has SMS MFA enabled. In
+the absence of this setting, Cognito uses the legacy behavior to
+determine the recovery method where SMS is preferred over email.
+
+Starting February 1, 2020, the value of C<AccountRecoverySetting> will
+default to C<verified_email> first and C<verified_phone_number> as the
+second option for newly created user pools if no value is provided.
+
 
 
 =head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
@@ -273,6 +308,16 @@ A string representing the SMS verification message.
 
 Specifies whether email addresses or phone numbers can be specified as
 usernames when a user signs up.
+
+
+
+=head2 UsernameConfiguration => L<Paws::CognitoIdp::UsernameConfigurationType>
+
+You can choose to set case sensitivity on the username input for the
+selected sign-in option. For example, when this is set to C<False>,
+users will be able to sign in using either "username" or "Username".
+This configuration is immutable once it has been set. For more
+information, see .
 
 
 

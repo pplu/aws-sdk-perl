@@ -52,15 +52,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =head2 B<REQUIRED> LicenseConfigurationArn => Str
 
-ARN of a C<LicenseConfiguration> object.
+Amazon Resource Name (ARN) of a license configuration.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of results to return in a single call. To retrieve the
-remaining results, make another call with the returned C<NextToken>
-value.
+Maximum number of results to return in a single call.
 
 
 

@@ -9,6 +9,7 @@ package Paws::EC2::NetworkInterface;
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkInterfaceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
   has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
@@ -57,104 +58,109 @@ This class has no description
 
 =head2 Association => L<Paws::EC2::NetworkInterfaceAssociation>
 
-  The association information for an Elastic IP address (IPv4) associated
+The association information for an Elastic IP address (IPv4) associated
 with the network interface.
 
 
 =head2 Attachment => L<Paws::EC2::NetworkInterfaceAttachment>
 
-  The network interface attachment.
+The network interface attachment.
 
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+The Availability Zone.
 
 
 =head2 Description => Str
 
-  A description.
+A description.
 
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  Any security groups for the network interface.
+Any security groups for the network interface.
 
 
 =head2 InterfaceType => Str
 
-  The type of network interface.
+The type of network interface.
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::NetworkInterfaceIpv6Address>]
 
-  The IPv6 addresses associated with the network interface.
+The IPv6 addresses associated with the network interface.
 
 
 =head2 MacAddress => Str
 
-  The MAC address.
+The MAC address.
 
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost.
 
 
 =head2 OwnerId => Str
 
-  The AWS account ID of the owner of the network interface.
+The AWS account ID of the owner of the network interface.
 
 
 =head2 PrivateDnsName => Str
 
-  The private DNS name.
+The private DNS name.
 
 
 =head2 PrivateIpAddress => Str
 
-  The IPv4 address of the network interface within the subnet.
+The IPv4 address of the network interface within the subnet.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::NetworkInterfacePrivateIpAddress>]
 
-  The private IPv4 addresses associated with the network interface.
+The private IPv4 addresses associated with the network interface.
 
 
 =head2 RequesterId => Str
 
-  The ID of the entity that launched the instance on your behalf (for
+The ID of the entity that launched the instance on your behalf (for
 example, AWS Management Console or Auto Scaling).
 
 
 =head2 RequesterManaged => Bool
 
-  Indicates whether the network interface is being managed by AWS.
+Indicates whether the network interface is being managed by AWS.
 
 
 =head2 SourceDestCheck => Bool
 
-  Indicates whether traffic to or from the instance is validated.
+Indicates whether traffic to or from the instance is validated.
 
 
 =head2 Status => Str
 
-  The status of the network interface.
+The status of the network interface.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+The ID of the subnet.
 
 
 =head2 TagSet => ArrayRef[L<Paws::EC2::Tag>]
 
-  Any tags assigned to the network interface.
+Any tags assigned to the network interface.
 
 
 =head2 VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
 
 
 

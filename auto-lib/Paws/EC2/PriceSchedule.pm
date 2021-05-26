@@ -41,7 +41,7 @@ This class has no description
 
 =head2 Active => Bool
 
-  The current price schedule, as determined by the term remaining for the
+The current price schedule, as determined by the term remaining for the
 Reserved Instance in the listing.
 
 A specific price schedule is always in effect, but only one price
@@ -55,18 +55,18 @@ two months of the term, will be active for months 2 and 1.
 
 =head2 CurrencyCode => Str
 
-  The currency for transacting the Reserved Instance resale. At this
+The currency for transacting the Reserved Instance resale. At this
 time, the only supported currency is C<USD>.
 
 
 =head2 Price => Num
 
-  The fixed price for the term.
+The fixed price for the term.
 
 
 =head2 Term => Int
 
-  The number of months remaining in the reservation. For example, 2 is
+The number of months remaining in the reservation. For example, 2 is
 the second to the last month before the capacity reservation expires.
 
 

@@ -3,6 +3,7 @@ package Paws::Chime::InviteUsers;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
   has UserEmailList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has UserType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $InviteUsersResponse = $chime->InviteUsers(
       AccountId     => 'MyNonEmptyString',
       UserEmailList => [ 'MyEmailAddress', ... ],
-
+      UserType      => 'PrivateUser',               # OPTIONAL
     );
 
     # Results:
@@ -54,9 +55,15 @@ The Amazon Chime account ID.
 
 =head2 B<REQUIRED> UserEmailList => ArrayRef[Str|Undef]
 
-The user email addresses to which to send the invite.
+The user email addresses to which to send the email invitation.
 
 
+
+=head2 UserType => Str
+
+The user type.
+
+Valid values are: C<"PrivateUser">, C<"SharedDevice">
 
 
 =head1 SEE ALSO

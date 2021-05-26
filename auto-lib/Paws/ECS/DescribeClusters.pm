@@ -56,8 +56,17 @@ assumed.
 
 =head2 Include => ArrayRef[Str|Undef]
 
-Additional information about your clusters to be separated by launch
-type, including:
+Whether to include additional information about your clusters in the
+response. If this field is omitted, the attachments, statistics, and
+tags are not included.
+
+If C<ATTACHMENTS> is specified, the attachments for the container
+instances or tasks within the cluster are included.
+
+If C<SETTINGS> is specified, the settings for the cluster are included.
+
+If C<STATISTICS> is specified, the following additional information,
+separated by launch type, is included:
 
 =over
 
@@ -95,6 +104,8 @@ drainingFargateServiceCount
 
 =back
 
+If C<TAGS> is specified, the metadata tags associated with the cluster
+are included.
 
 
 

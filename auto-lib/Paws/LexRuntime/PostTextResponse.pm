@@ -6,7 +6,9 @@ package Paws::LexRuntime::PostTextResponse;
   has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
   has MessageFormat => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'messageFormat');
   has ResponseCard => (is => 'ro', isa => 'Paws::LexRuntime::ResponseCard', traits => ['NameInRequest'], request_name => 'responseCard');
+  has SentimentResponse => (is => 'ro', isa => 'Paws::LexRuntime::SentimentResponse', traits => ['NameInRequest'], request_name => 'sentimentResponse');
   has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
+  has SessionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sessionId');
   has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'slots');
   has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotToElicit');
 
@@ -149,10 +151,23 @@ Amazon Lex console, choose the settings button next to a slot) or from
 a code hook (Lambda function).
 
 
+=head2 SentimentResponse => L<Paws::LexRuntime::SentimentResponse>
+
+The sentiment expressed in and utterance.
+
+When the bot is configured to send utterances to Amazon Comprehend for
+sentiment analysis, this field contains the result of the analysis.
+
+
 =head2 SessionAttributes => L<Paws::LexRuntime::StringMap>
 
 A map of key-value pairs representing the session-specific context
 information.
+
+
+=head2 SessionId => Str
+
+A unique identifier for the session.
 
 
 =head2 Slots => L<Paws::LexRuntime::StringMap>

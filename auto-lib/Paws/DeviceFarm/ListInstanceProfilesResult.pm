@@ -17,7 +17,7 @@ Paws::DeviceFarm::ListInstanceProfilesResult
 
 =head2 InstanceProfiles => ArrayRef[L<Paws::DeviceFarm::InstanceProfile>]
 
-An object containing information about your instance profiles.
+An object that contains information about your instance profiles.
 
 
 =head2 NextToken => Str

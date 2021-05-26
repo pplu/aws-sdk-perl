@@ -17,6 +17,7 @@ package Paws::EC2::ResponseLaunchTemplateData;
   has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
   has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateLicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateInstanceMetadataOptions', request_name => 'metadataOptions', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatesMonitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatePlacement', request_name => 'placement', traits => ['NameInRequest']);
@@ -62,17 +63,17 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::LaunchTemplateBlockDeviceMapping>]
 
-  The block device mappings.
+The block device mappings.
 
 
 =head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationResponse>
 
-  Information about the Capacity Reservation targeting option.
+Information about the Capacity Reservation targeting option.
 
 
 =head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptions>
 
-  The CPU options for the instance. For more information, see Optimizing
+The CPU options for the instance. For more information, see Optimizing
 CPU Options
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -80,33 +81,33 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecification>
 
-  The credit option for CPU usage of the instance.
+The credit option for CPU usage of the instance.
 
 
 =head2 DisableApiTermination => Bool
 
-  If set to C<true>, indicates that the instance cannot be terminated
+If set to C<true>, indicates that the instance cannot be terminated
 using the Amazon EC2 console, command line tool, or API.
 
 
 =head2 EbsOptimized => Bool
 
-  Indicates whether the instance is optimized for Amazon EBS I/O.
+Indicates whether the instance is optimized for Amazon EBS I/O.
 
 
 =head2 ElasticGpuSpecifications => ArrayRef[L<Paws::EC2::ElasticGpuSpecificationResponse>]
 
-  The elastic GPU specification.
+The elastic GPU specification.
 
 
 =head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse>]
 
-  The elastic inference accelerator for the instance.
+The elastic inference accelerator for the instance.
 
 
 =head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptions>
 
-  Indicates whether an instance is configured for hibernation. For more
+Indicates whether an instance is configured for hibernation. For more
 information, see Hibernate Your Instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
@@ -114,84 +115,92 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 IamInstanceProfile => L<Paws::EC2::LaunchTemplateIamInstanceProfileSpecification>
 
-  The IAM instance profile.
+The IAM instance profile.
 
 
 =head2 ImageId => Str
 
-  The ID of the AMI that was used to launch the instance.
+The ID of the AMI that was used to launch the instance.
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str
 
-  Indicates whether an instance stops or terminates when you initiate
+Indicates whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
 system shutdown).
 
 
 =head2 InstanceMarketOptions => L<Paws::EC2::LaunchTemplateInstanceMarketOptions>
 
-  The market (purchasing) option for the instances.
+The market (purchasing) option for the instances.
 
 
 =head2 InstanceType => Str
 
-  The instance type.
+The instance type.
 
 
 =head2 KernelId => Str
 
-  The ID of the kernel, if applicable.
+The ID of the kernel, if applicable.
 
 
 =head2 KeyName => Str
 
-  The name of the key pair.
+The name of the key pair.
 
 
 =head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfiguration>]
 
-  The license configurations.
+The license configurations.
+
+
+=head2 MetadataOptions => L<Paws::EC2::LaunchTemplateInstanceMetadataOptions>
+
+The metadata options for the instance. For more information, see
+Instance Metadata and User Data
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoring>
 
-  The monitoring for the instance.
+The monitoring for the instance.
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification>]
 
-  The network interfaces.
+The network interfaces.
 
 
 =head2 Placement => L<Paws::EC2::LaunchTemplatePlacement>
 
-  The placement of the instance.
+The placement of the instance.
 
 
 =head2 RamDiskId => Str
 
-  The ID of the RAM disk, if applicable.
+The ID of the RAM disk, if applicable.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  The security group IDs.
+The security group IDs.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  The security group names.
+The security group names.
 
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateTagSpecification>]
 
-  The tags.
+The tags.
 
 
 =head2 UserData => Str
 
-  The user data for the instance.
+The user data for the instance.
 
 
 

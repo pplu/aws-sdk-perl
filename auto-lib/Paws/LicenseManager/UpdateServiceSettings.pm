@@ -55,21 +55,21 @@ Activates cross-account discovery.
 
 =head2 OrganizationConfiguration => L<Paws::LicenseManager::OrganizationConfiguration>
 
-Integrates AWS Organizations with License Manager for cross-account
-discovery.
+Enables integration with AWS Organizations for cross-account discovery.
 
 
 
 =head2 S3BucketArn => Str
 
-ARN of the Amazon S3 bucket where License Manager information is
-stored.
+Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
+Manager information is stored.
 
 
 
 =head2 SnsTopicArn => Str
 
-ARN of the Amazon SNS topic used for License Manager alerts.
+Amazon Resource Name (ARN) of the Amazon SNS topic used for License
+Manager alerts.
 
 
 

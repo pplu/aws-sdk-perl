@@ -66,17 +66,17 @@ identify a commit.
 
 The file path in which to check differences. Limits the results to this
 path. Can also be used to specify the changed name of a directory or
-folder, if it has changed. If not specified, differences will be shown
-for all paths.
+folder, if it has changed. If not specified, differences are shown for
+all paths.
 
 
 
 =head2 BeforeCommitSpecifier => Str
 
 The branch, tag, HEAD, or other fully qualified reference used to
-identify a commit. For example, the full commit ID. Optional. If not
-specified, all changes prior to the C<afterCommitSpecifier> value will
-be shown. If you do not use C<beforeCommitSpecifier> in your request,
+identify a commit (for example, the full commit ID). Optional. If not
+specified, all changes before the C<afterCommitSpecifier> value are
+shown. If you do not use C<beforeCommitSpecifier> in your request,
 consider limiting the results with C<maxResults>.
 
 
@@ -86,19 +86,20 @@ consider limiting the results with C<maxResults>.
 The file path in which to check for differences. Limits the results to
 this path. Can also be used to specify the previous name of a directory
 or folder. If C<beforePath> and C<afterPath> are not specified,
-differences will be shown for all paths.
+differences are shown for all paths.
 
 
 
 =head2 MaxResults => Int
 
-A non-negative integer used to limit the number of returned results.
+A non-zero, non-negative integer used to limit the number of returned
+results.
 
 
 
 =head2 NextToken => Str
 
-An enumeration token that when provided in a request, returns the next
+An enumeration token that, when provided in a request, returns the next
 batch of the results.
 
 

@@ -2,9 +2,15 @@
 package Paws::Lambda::CreateEventSourceMapping;
   use Moose;
   has BatchSize => (is => 'ro', isa => 'Int');
+  has BisectBatchOnFunctionError => (is => 'ro', isa => 'Bool');
+  has DestinationConfig => (is => 'ro', isa => 'Paws::Lambda::DestinationConfig');
   has Enabled => (is => 'ro', isa => 'Bool');
   has EventSourceArn => (is => 'ro', isa => 'Str', required => 1);
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
+  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
+  has MaximumRecordAgeInSeconds => (is => 'ro', isa => 'Int');
+  has MaximumRetryAttempts => (is => 'ro', isa => 'Int');
+  has ParallelizationFactor => (is => 'ro', isa => 'Int');
   has StartingPosition => (is => 'ro', isa => 'Str');
   has StartingPositionTimestamp => (is => 'ro', isa => 'Str');
 
@@ -34,21 +40,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lambda = Paws->service('Lambda');
     my $EventSourceMappingConfiguration = $lambda->CreateEventSourceMapping(
-      EventSourceArn            => 'MyArn',
-      FunctionName              => 'MyFunctionName',
-      BatchSize                 => 1,                        # OPTIONAL
-      Enabled                   => 1,                        # OPTIONAL
-      StartingPosition          => 'TRIM_HORIZON',           # OPTIONAL
-      StartingPositionTimestamp => '1970-01-01T01:00:00',    # OPTIONAL
+      EventSourceArn             => 'MyArn',
+      FunctionName               => 'MyFunctionName',
+      BatchSize                  => 1,                  # OPTIONAL
+      BisectBatchOnFunctionError => 1,                  # OPTIONAL
+      DestinationConfig          => {
+        OnFailure => {
+          Destination => 'MyDestinationArn',            # max: 350; OPTIONAL
+        },    # OPTIONAL
+        OnSuccess => {
+          Destination => 'MyDestinationArn',    # max: 350; OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Enabled                        => 1,                        # OPTIONAL
+      MaximumBatchingWindowInSeconds => 1,                        # OPTIONAL
+      MaximumRecordAgeInSeconds      => 1,                        # OPTIONAL
+      MaximumRetryAttempts           => 1,                        # OPTIONAL
+      ParallelizationFactor          => 1,                        # OPTIONAL
+      StartingPosition               => 'TRIM_HORIZON',           # OPTIONAL
+      StartingPositionTimestamp      => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
     # Results:
-    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
-    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
-    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
-    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
+    my $BatchSize = $EventSourceMappingConfiguration->BatchSize;
+    my $BisectBatchOnFunctionError =
+      $EventSourceMappingConfiguration->BisectBatchOnFunctionError;
+    my $DestinationConfig = $EventSourceMappingConfiguration->DestinationConfig;
+    my $EventSourceArn    = $EventSourceMappingConfiguration->EventSourceArn;
+    my $FunctionArn       = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastModified      = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
+    my $MaximumBatchingWindowInSeconds =
+      $EventSourceMappingConfiguration->MaximumBatchingWindowInSeconds;
+    my $MaximumRecordAgeInSeconds =
+      $EventSourceMappingConfiguration->MaximumRecordAgeInSeconds;
+    my $MaximumRetryAttempts =
+      $EventSourceMappingConfiguration->MaximumRetryAttempts;
+    my $ParallelizationFactor =
+      $EventSourceMappingConfiguration->ParallelizationFactor;
     my $State = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
@@ -82,6 +112,20 @@ B<Amazon Simple Queue Service> - Default 10. Max 10.
 
 =back
 
+
+
+
+=head2 BisectBatchOnFunctionError => Bool
+
+(Streams) If the function returns an error, split the batch in two and
+retry.
+
+
+
+=head2 DestinationConfig => L<Paws::Lambda::DestinationConfig>
+
+(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+discarded records.
 
 
 
@@ -144,6 +188,34 @@ B<Partial ARN> - C<123456789012:function:MyFunction>.
 
 The length constraint applies only to the full ARN. If you specify only
 the function name, it's limited to 64 characters in length.
+
+
+
+=head2 MaximumBatchingWindowInSeconds => Int
+
+The maximum amount of time to gather records before invoking the
+function, in seconds.
+
+
+
+=head2 MaximumRecordAgeInSeconds => Int
+
+(Streams) The maximum age of a record that Lambda sends to a function
+for processing.
+
+
+
+=head2 MaximumRetryAttempts => Int
+
+(Streams) The maximum number of times to retry when the function
+returns an error.
+
+
+
+=head2 ParallelizationFactor => Int
+
+(Streams) The number of batches to process from each shard
+concurrently.
 
 
 

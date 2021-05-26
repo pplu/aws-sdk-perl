@@ -50,20 +50,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 
 =head2 B<REQUIRED> MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
 
-Specifies the options for MFA (e.g., email or phone number).
+You can use this parameter only to set an SMS configuration that uses
+SMS for delivery.
 
 
 
 =head2 B<REQUIRED> Username => Str
 
-The user name of the user for whom you wish to set user settings.
+The user name of the user that you are setting options for.
 
 
 
 =head2 B<REQUIRED> UserPoolId => Str
 
-The user pool ID for the user pool where you want to set the user's
-settings, such as MFA options.
+The ID of the user pool that contains the user that you are setting
+options for.
 
 
 

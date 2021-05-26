@@ -18,7 +18,7 @@ Paws::DocDB::DBSubnetGroupMessage
 
 =head2 DBSubnetGroups => ArrayRef[L<Paws::DocDB::DBSubnetGroup>]
 
-Detailed information about one or more DB subnet groups.
+Detailed information about one or more subnet groups.
 
 
 =head2 Marker => Str

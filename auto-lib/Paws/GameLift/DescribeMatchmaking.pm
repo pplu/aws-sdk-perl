@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> TicketIds => ArrayRef[Str|Undef]
 
-Unique identifier for a matchmaking ticket. You can include up to 10 ID
-values.
+A unique identifier for a matchmaking ticket. You can include up to 10
+ID values.
 
 
 

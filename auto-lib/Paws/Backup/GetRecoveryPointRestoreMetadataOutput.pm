@@ -31,8 +31,9 @@ C<arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-1
 
 =head2 RestoreMetadata => L<Paws::Backup::Metadata>
 
-A set of metadata key-value pairs that lists the metadata key-value
-pairs that are required to restore the recovery point.
+The set of metadata key-value pairs that describes the original
+configuration of the backed-up resource. These values vary depending on
+the service that is being restored.
 
 
 =head2 _request_id => Str

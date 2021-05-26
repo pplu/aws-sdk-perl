@@ -5,11 +5,11 @@ package Paws::ApiGatewayV2::CreateAuthorizer;
   has AuthorizerCredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerCredentialsArn');
   has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'authorizerResultTtlInSeconds');
   has AuthorizerType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerType', required => 1);
-  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri', required => 1);
+  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri');
   has IdentitySource => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'identitySource', required => 1);
   has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
+  has JwtConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::JWTConfiguration', traits => ['NameInRequest'], request_name => 'jwtConfiguration');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ProviderArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerArns');
 
   use MooseX::ClassAttribute;
 
@@ -39,14 +39,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAuthorizerResponse = $apigateway->CreateAuthorizer(
       ApiId                    => 'My__string',
       AuthorizerType           => 'REQUEST',
-      AuthorizerUri            => 'MyUriWithLengthBetween1And2048',
       IdentitySource           => [ 'My__string', ... ],
       Name                     => 'MyStringWithLengthBetween1And128',
       AuthorizerCredentialsArn => 'MyArn',                            # OPTIONAL
       AuthorizerResultTtlInSeconds => 1,                              # OPTIONAL
+      AuthorizerUri => 'MyUriWithLengthBetween1And2048',              # OPTIONAL
       IdentityValidationExpression =>
         'MyStringWithLengthBetween0And1024',                          # OPTIONAL
-      ProviderArns => [ 'MyArn', ... ],                               # OPTIONAL
+      JwtConfiguration => {
+        Audience => [ 'My__string', ... ],                            # OPTIONAL
+        Issuer => 'MyUriWithLengthBetween1And2048',
+      },    # OPTIONAL
     );
 
     # Results:
@@ -60,8 +63,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IdentitySource = $CreateAuthorizerResponse->IdentitySource;
     my $IdentityValidationExpression =
       $CreateAuthorizerResponse->IdentityValidationExpression;
-    my $Name         = $CreateAuthorizerResponse->Name;
-    my $ProviderArns = $CreateAuthorizerResponse->ProviderArns;
+    my $JwtConfiguration = $CreateAuthorizerResponse->JwtConfiguration;
+    my $Name             = $CreateAuthorizerResponse->Name;
 
     # Returns a L<Paws::ApiGatewayV2::CreateAuthorizerResponse> object.
 
@@ -83,26 +86,26 @@ Specifies the required credentials as an IAM role for API Gateway to
 invoke the authorizer. To specify an IAM role for API Gateway to
 assume, use the role's Amazon Resource Name (ARN). To use
 resource-based permissions on the Lambda function, specify null.
+Supported only for REQUEST authorizers.
 
 
 
 =head2 AuthorizerResultTtlInSeconds => Int
 
-The time to live (TTL), in seconds, of cached authorizer results. If it
-equals 0, authorization caching is disabled. If it is greater than 0,
-API Gateway will cache authorizer responses. If this field is not set,
-the default value is 300. The maximum value is 3600, or 1 hour.
+Authorizer caching is not currently supported. Don't specify this value
+for authorizers.
 
 
 
 =head2 B<REQUIRED> AuthorizerType => Str
 
-The authorizer type. Currently the only valid value is REQUEST, for a
-Lambda function using incoming request parameters.
+The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
+function using incoming request parameters. For HTTP APIs, specify JWT
+to use JSON Web Tokens.
 
-Valid values are: C<"REQUEST">
+Valid values are: C<"REQUEST">, C<"JWT">
 
-=head2 B<REQUIRED> AuthorizerUri => Str
+=head2 AuthorizerUri => Str
 
 The authorizer's Uniform Resource Identifier (URI). For REQUEST
 authorizers, this must be a well-formed Lambda function URI, for
@@ -114,6 +117,7 @@ is the same as the region hosting the Lambda function, path indicates
 that the remaining substring in the URI should be treated as the path
 to the resource, including the initial /. For Lambda functions, this is
 usually of the form /2015-03-31/functions/[FunctionARN]/invocations.
+Supported only for REQUEST authorizers.
 
 
 
@@ -121,38 +125,42 @@ usually of the form /2015-03-31/functions/[FunctionARN]/invocations.
 
 The identity source for which authorization is requested.
 
-For the REQUEST authorizer, this is required when authorization caching
-is enabled. The value is a comma-separated string of one or more
-mapping expressions of the specified request parameters. For example,
-if an Auth header and a Name query string parameters are defined as
-identity sources, this value is method.request.header.Auth,
-method.request.querystring.Name. These parameters will be used to
-derive the authorization caching key and to perform runtime validation
-of the REQUEST authorizer by verifying all of the identity-related
-request parameters are present, not null, and non-empty. Only when this
-is true does the authorizer invoke the authorizer Lambda function,
-otherwise, it returns a 401 Unauthorized response without calling the
-Lambda function. The valid value is a string of comma-separated mapping
-expressions of the specified request parameters. When the authorization
-caching is not enabled, this property is optional.
+For a REQUEST authorizer, this is optional. The value is a set of one
+or more mapping expressions of the specified request parameters.
+Currently, the identity source can be headers, query string parameters,
+stage variables, and context parameters. For example, if an Auth header
+and a Name query string parameter are defined as identity sources, this
+value is route.request.header.Auth, route.request.querystring.Name.
+These parameters will be used to perform runtime validation for
+Lambda-based authorizers by verifying all of the identity-related
+request parameters are present in the request, not null, and non-empty.
+Only when this is true does the authorizer invoke the authorizer Lambda
+function. Otherwise, it returns a 401 Unauthorized response without
+calling the Lambda function.
+
+For JWT, a single entry that specifies where to extract the JSON Web
+Token (JWT )from inbound requests. Currently only header-based and
+query parameter-based selections are supported, for example
+"$request.header.Authorization".
 
 
 
 =head2 IdentityValidationExpression => Str
 
-The validation expression does not apply to the REQUEST authorizer.
+This parameter is not used.
+
+
+
+=head2 JwtConfiguration => L<Paws::ApiGatewayV2::JWTConfiguration>
+
+Represents the configuration of a JWT authorizer. Required for the JWT
+authorizer type. Supported only for HTTP APIs.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
 The name of the authorizer.
-
-
-
-=head2 ProviderArns => ArrayRef[Str|Undef]
-
-For REQUEST authorizer, this is not defined.
 
 
 

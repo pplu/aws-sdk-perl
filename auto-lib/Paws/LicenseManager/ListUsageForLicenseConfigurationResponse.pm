@@ -17,7 +17,7 @@ Paws::LicenseManager::ListUsageForLicenseConfigurationResponse
 
 =head2 LicenseConfigurationUsageList => ArrayRef[L<Paws::LicenseManager::LicenseConfigurationUsage>]
 
-An array of C<LicenseConfigurationUsage> objects.
+Information about the license configurations.
 
 
 =head2 NextToken => Str

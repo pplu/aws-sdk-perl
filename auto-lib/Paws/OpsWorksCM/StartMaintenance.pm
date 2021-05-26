@@ -20,7 +20,7 @@ Paws::OpsWorksCM::StartMaintenance - Arguments for method StartMaintenance on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method StartMaintenance on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method StartMaintenance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartMaintenance.
@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServerName       => 'MyServerName',
       EngineAttributes => [
         {
-          Name  => 'MyEngineAttributeName',     # OPTIONAL
-          Value => 'MyEngineAttributeValue',    # OPTIONAL
+          Name  => 'MyEngineAttributeName',     # max: 10000; OPTIONAL
+          Value => 'MyEngineAttributeValue',    # max: 10000; OPTIONAL
         },
         ...
       ],                                        # OPTIONAL
@@ -54,6 +54,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks-cm/lat
 
 Engine attributes that are specific to the server on which you want to
 run maintenance.
+
+B<Attributes accepted in a StartMaintenance request for Chef>
+
+=over
+
+=item *
+
+C<CHEF_MAJOR_UPGRADE>: If a Chef Automate server is eligible for
+upgrade to Chef Automate 2, add this engine attribute to a
+C<StartMaintenance> request and set the value to C<true> to upgrade the
+server to Chef Automate 2. For more information, see Upgrade an AWS
+OpsWorks for Chef Automate Server to Chef Automate 2
+(https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
+
+=back
+
 
 
 

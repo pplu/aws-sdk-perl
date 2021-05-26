@@ -102,6 +102,11 @@ package Paws::DocDB;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DeleteDBSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBClusterParameterGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeDBClusterParameterGroups', @_);
@@ -378,7 +383,7 @@ package Paws::DocDB;
   }
 
 
-  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup RebootDBInstance RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
+  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup RebootDBInstance RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
 
 1;
 
@@ -474,7 +479,7 @@ Each argument is described in detail in: L<Paws::DocDB::CopyDBClusterParameterGr
 
 Returns: a L<Paws::DocDB::CopyDBClusterParameterGroupResult> instance
 
-Copies the specified DB cluster parameter group.
+Copies the specified cluster parameter group.
 
 
 =head2 CopyDBClusterSnapshot
@@ -500,14 +505,14 @@ Each argument is described in detail in: L<Paws::DocDB::CopyDBClusterSnapshot>
 
 Returns: a L<Paws::DocDB::CopyDBClusterSnapshotResult> instance
 
-Copies a snapshot of a DB cluster.
+Copies a snapshot of a cluster.
 
-To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
+To copy a cluster snapshot from a shared manual cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
-(ARN) of the shared DB cluster snapshot.
+(ARN) of the shared cluster snapshot.
 
 To cancel the copy operation after it is in progress, delete the target
-DB cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
+cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
 while that DB cluster snapshot is in the I<copying> status.
 
 
@@ -558,7 +563,7 @@ Each argument is described in detail in: L<Paws::DocDB::CreateDBCluster>
 
 Returns: a L<Paws::DocDB::CreateDBClusterResult> instance
 
-Creates a new Amazon DocumentDB DB cluster.
+Creates a new Amazon DocumentDB cluster.
 
 
 =head2 CreateDBClusterParameterGroup
@@ -580,28 +585,27 @@ Each argument is described in detail in: L<Paws::DocDB::CreateDBClusterParameter
 
 Returns: a L<Paws::DocDB::CreateDBClusterParameterGroupResult> instance
 
-Creates a new DB cluster parameter group.
+Creates a new cluster parameter group.
 
-Parameters in a DB cluster parameter group apply to all of the
-instances in a DB cluster.
+Parameters in a cluster parameter group apply to all of the instances
+in a DB cluster.
 
-A DB cluster parameter group is initially created with the default
-parameters for the database engine used by instances in the DB cluster.
-To provide custom values for any of the parameters, you must modify the
+A cluster parameter group is initially created with the default
+parameters for the database engine used by instances in the cluster. To
+provide custom values for any of the parameters, you must modify the
 group after you create it. After you create a DB cluster parameter
-group, you must associate it with your DB cluster. For the new DB
-cluster parameter group and associated settings to take effect, you
-must then reboot the DB instances in the DB cluster without failover.
+group, you must associate it with your cluster. For the new DB cluster
+parameter group and associated settings to take effect, you must then
+reboot the instances in the cluster without failover.
 
-After you create a DB cluster parameter group, you should wait at least
-5 minutes before creating your first DB cluster that uses that DB
-cluster parameter group as the default parameter group. This allows
-Amazon DocumentDB to fully complete the create action before the DB
-cluster parameter group is used as the default for a new DB cluster.
-This step is especially important for parameters that are critical when
-creating the default database for a DB cluster, such as the character
-set for the default database defined by the C<character_set_database>
-parameter.
+After you create a cluster parameter group, you should wait at least 5
+minutes before creating your first cluster that uses that cluster
+parameter group as the default parameter group. This allows Amazon
+DocumentDB to fully complete the create action before the cluster
+parameter group is used as the default for a new cluster. This step is
+especially important for parameters that are critical when creating the
+default database for a cluster, such as the character set for the
+default database defined by the C<character_set_database> parameter.
 
 
 =head2 CreateDBClusterSnapshot
@@ -621,7 +625,7 @@ Each argument is described in detail in: L<Paws::DocDB::CreateDBClusterSnapshot>
 
 Returns: a L<Paws::DocDB::CreateDBClusterSnapshotResult> instance
 
-Creates a snapshot of a DB cluster.
+Creates a snapshot of a cluster.
 
 
 =head2 CreateDBInstance
@@ -653,7 +657,7 @@ Each argument is described in detail in: L<Paws::DocDB::CreateDBInstance>
 
 Returns: a L<Paws::DocDB::CreateDBInstanceResult> instance
 
-Creates a new DB instance.
+Creates a new instance.
 
 
 =head2 CreateDBSubnetGroup
@@ -675,8 +679,8 @@ Each argument is described in detail in: L<Paws::DocDB::CreateDBSubnetGroup>
 
 Returns: a L<Paws::DocDB::CreateDBSubnetGroupResult> instance
 
-Creates a new DB subnet group. DB subnet groups must contain at least
-one subnet in at least two Availability Zones in the AWS Region.
+Creates a new subnet group. subnet groups must contain at least one
+subnet in at least two Availability Zones in the AWS Region.
 
 
 =head2 DeleteDBCluster
@@ -696,10 +700,10 @@ Each argument is described in detail in: L<Paws::DocDB::DeleteDBCluster>
 
 Returns: a L<Paws::DocDB::DeleteDBClusterResult> instance
 
-Deletes a previously provisioned DB cluster. When you delete a DB
-cluster, all automated backups for that DB cluster are deleted and
-can't be recovered. Manual DB cluster snapshots of the specified DB
-cluster are not deleted.
+Deletes a previously provisioned cluster. When you delete a cluster,
+all automated backups for that cluster are deleted and can't be
+recovered. Manual DB cluster snapshots of the specified cluster are not
+deleted.
 
 
 =head2 DeleteDBClusterParameterGroup
@@ -715,8 +719,8 @@ Each argument is described in detail in: L<Paws::DocDB::DeleteDBClusterParameter
 
 Returns: nothing
 
-Deletes a specified DB cluster parameter group. The DB cluster
-parameter group to be deleted can't be associated with any DB clusters.
+Deletes a specified cluster parameter group. The cluster parameter
+group to be deleted can't be associated with any clusters.
 
 
 =head2 DeleteDBClusterSnapshot
@@ -732,11 +736,10 @@ Each argument is described in detail in: L<Paws::DocDB::DeleteDBClusterSnapshot>
 
 Returns: a L<Paws::DocDB::DeleteDBClusterSnapshotResult> instance
 
-Deletes a DB cluster snapshot. If the snapshot is being copied, the
-copy operation is terminated.
+Deletes a cluster snapshot. If the snapshot is being copied, the copy
+operation is terminated.
 
-The DB cluster snapshot must be in the C<available> state to be
-deleted.
+The cluster snapshot must be in the C<available> state to be deleted.
 
 
 =head2 DeleteDBInstance
@@ -752,7 +755,7 @@ Each argument is described in detail in: L<Paws::DocDB::DeleteDBInstance>
 
 Returns: a L<Paws::DocDB::DeleteDBInstanceResult> instance
 
-Deletes a previously provisioned DB instance.
+Deletes a previously provisioned instance.
 
 
 =head2 DeleteDBSubnetGroup
@@ -768,10 +771,37 @@ Each argument is described in detail in: L<Paws::DocDB::DeleteDBSubnetGroup>
 
 Returns: nothing
 
-Deletes a DB subnet group.
+Deletes a subnet group.
 
 The specified database subnet group must not be associated with any DB
 instances.
+
+
+=head2 DescribeCertificates
+
+=over
+
+=item [CertificateIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::DescribeCertificates>
+
+Returns: a L<Paws::DocDB::CertificateMessage> instance
+
+Returns a list of certificate authority (CA) certificates provided by
+Amazon DocumentDB for this AWS account. For certain management features
+such as cluster and instance lifecycle management, Amazon DocumentDB
+leverages operational technology that is shared with Amazon RDS and
+Amazon Neptune. Use the C<filterName=engine,Values=docdb> filter
+parameter to return only Amazon DocumentDB clusters.
 
 
 =head2 DescribeDBClusterParameterGroups
@@ -795,8 +825,7 @@ Returns: a L<Paws::DocDB::DBClusterParameterGroupsMessage> instance
 
 Returns a list of C<DBClusterParameterGroup> descriptions. If a
 C<DBClusterParameterGroupName> parameter is specified, the list
-contains only the description of the specified DB cluster parameter
-group.
+contains only the description of the specified cluster parameter group.
 
 
 =head2 DescribeDBClusterParameters
@@ -820,8 +849,8 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeDBClusterParamet
 
 Returns: a L<Paws::DocDB::DBClusterParameterGroupDetails> instance
 
-Returns the detailed parameter list for a particular DB cluster
-parameter group.
+Returns the detailed parameter list for a particular cluster parameter
+group.
 
 
 =head2 DescribeDBClusters
@@ -843,8 +872,8 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeDBClusters>
 
 Returns: a L<Paws::DocDB::DBClusterMessage> instance
 
-Returns information about provisioned Amazon DocumentDB DB clusters.
-This API operation supports pagination.
+Returns information about provisioned Amazon DocumentDB clusters. This
+API operation supports pagination.
 
 
 =head2 DescribeDBClusterSnapshotAttributes
@@ -860,14 +889,14 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeDBClusterSnapsho
 
 Returns: a L<Paws::DocDB::DescribeDBClusterSnapshotAttributesResult> instance
 
-Returns a list of DB cluster snapshot attribute names and values for a
+Returns a list of cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
 
 When you share snapshots with other AWS accounts,
 C<DescribeDBClusterSnapshotAttributes> returns the C<restore> attribute
 and a list of IDs for the AWS accounts that are authorized to copy or
-restore the manual DB cluster snapshot. If C<all> is included in the
-list of values for the C<restore> attribute, then the manual DB cluster
+restore the manual cluster snapshot. If C<all> is included in the list
+of values for the C<restore> attribute, then the manual cluster
 snapshot is public and can be copied or restored by all AWS accounts.
 
 
@@ -898,7 +927,7 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeDBClusterSnapsho
 
 Returns: a L<Paws::DocDB::DBClusterSnapshotMessage> instance
 
-Returns information about DB cluster snapshots. This API operation
+Returns information about cluster snapshots. This API operation
 supports pagination.
 
 
@@ -931,7 +960,7 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeDBEngineVersions
 
 Returns: a L<Paws::DocDB::DBEngineVersionMessage> instance
 
-Returns a list of the available DB engines.
+Returns a list of the available engines.
 
 
 =head2 DescribeDBInstances
@@ -1052,11 +1081,11 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeEvents>
 
 Returns: a L<Paws::DocDB::EventsMessage> instance
 
-Returns events related to DB instances, DB security groups, DB
-snapshots, and DB parameter groups for the past 14 days. You can obtain
-events specific to a particular DB instance, DB security group, DB
-snapshot, or DB parameter group by providing the name as a parameter.
-By default, the events of the past hour are returned.
+Returns events related to instances, security groups, snapshots, and DB
+parameter groups for the past 14 days. You can obtain events specific
+to a particular DB instance, security group, snapshot, or parameter
+group by providing the name as a parameter. By default, the events of
+the past hour are returned.
 
 
 =head2 DescribeOrderableDBInstanceOptions
@@ -1086,8 +1115,7 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeOrderableDBInsta
 
 Returns: a L<Paws::DocDB::OrderableDBInstanceOptionsMessage> instance
 
-Returns a list of orderable DB instance options for the specified
-engine.
+Returns a list of orderable instance options for the specified engine.
 
 
 =head2 DescribePendingMaintenanceActions
@@ -1109,8 +1137,8 @@ Each argument is described in detail in: L<Paws::DocDB::DescribePendingMaintenan
 
 Returns: a L<Paws::DocDB::PendingMaintenanceActionsMessage> instance
 
-Returns a list of resources (for example, DB instances) that have at
-least one pending maintenance action.
+Returns a list of resources (for example, instances) that have at least
+one pending maintenance action.
 
 
 =head2 FailoverDBCluster
@@ -1128,11 +1156,11 @@ Each argument is described in detail in: L<Paws::DocDB::FailoverDBCluster>
 
 Returns: a L<Paws::DocDB::FailoverDBClusterResult> instance
 
-Forces a failover for a DB cluster.
+Forces a failover for a cluster.
 
-A failover for a DB cluster promotes one of the Amazon DocumentDB
-replicas (read-only instances) in the DB cluster to be the primary
-instance (the cluster writer).
+A failover for a cluster promotes one of the Amazon DocumentDB replicas
+(read-only instances) in the cluster to be the primary instance (the
+cluster writer).
 
 If the primary instance fails, Amazon DocumentDB automatically fails
 over to an Amazon DocumentDB replica, if one exists. You can force a
@@ -1195,8 +1223,8 @@ Each argument is described in detail in: L<Paws::DocDB::ModifyDBCluster>
 
 Returns: a L<Paws::DocDB::ModifyDBClusterResult> instance
 
-Modifies a setting for an Amazon DocumentDB DB cluster. You can change
-one or more database configuration parameters by specifying these
+Modifies a setting for an Amazon DocumentDB cluster. You can change one
+or more database configuration parameters by specifying these
 parameters and the new values in the request.
 
 
@@ -1215,7 +1243,7 @@ Each argument is described in detail in: L<Paws::DocDB::ModifyDBClusterParameter
 
 Returns: a L<Paws::DocDB::DBClusterParameterGroupNameMessage> instance
 
-Modifies the parameters of a DB cluster parameter group. To modify more
+Modifies the parameters of a cluster parameter group. To modify more
 than one parameter, submit a list of the following: C<ParameterName>,
 C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
 be modified in a single request.
@@ -1224,15 +1252,14 @@ Changes to dynamic parameters are applied immediately. Changes to
 static parameters require a reboot or maintenance window before the
 change can take effect.
 
-After you create a DB cluster parameter group, you should wait at least
-5 minutes before creating your first DB cluster that uses that DB
-cluster parameter group as the default parameter group. This allows
-Amazon DocumentDB to fully complete the create action before the
-parameter group is used as the default for a new DB cluster. This step
-is especially important for parameters that are critical when creating
-the default database for a DB cluster, such as the character set for
-the default database defined by the C<character_set_database>
-parameter.
+After you create a cluster parameter group, you should wait at least 5
+minutes before creating your first cluster that uses that cluster
+parameter group as the default parameter group. This allows Amazon
+DocumentDB to fully complete the create action before the parameter
+group is used as the default for a new cluster. This step is especially
+important for parameters that are critical when creating the default
+database for a cluster, such as the character set for the default
+database defined by the C<character_set_database> parameter.
 
 
 =head2 ModifyDBClusterSnapshotAttribute
@@ -1257,17 +1284,17 @@ Returns: a L<Paws::DocDB::ModifyDBClusterSnapshotAttributeResult> instance
 Adds an attribute and values to, or removes an attribute and values
 from, a manual DB cluster snapshot.
 
-To share a manual DB cluster snapshot with other AWS accounts, specify
+To share a manual cluster snapshot with other AWS accounts, specify
 C<restore> as the C<AttributeName>, and use the C<ValuesToAdd>
 parameter to add a list of IDs of the AWS accounts that are authorized
-to restore the manual DB cluster snapshot. Use the value C<all> to make
-the manual DB cluster snapshot public, which means that it can be
-copied or restored by all AWS accounts. Do not add the C<all> value for
-any manual DB cluster snapshots that contain private information that
-you don't want available to all AWS accounts. If a manual DB cluster
-snapshot is encrypted, it can be shared, but only by specifying a list
-of authorized AWS account IDs for the C<ValuesToAdd> parameter. You
-can't use C<all> as a value for that parameter in this case.
+to restore the manual cluster snapshot. Use the value C<all> to make
+the manual cluster snapshot public, which means that it can be copied
+or restored by all AWS accounts. Do not add the C<all> value for any
+manual DB cluster snapshots that contain private information that you
+don't want available to all AWS accounts. If a manual cluster snapshot
+is encrypted, it can be shared, but only by specifying a list of
+authorized AWS account IDs for the C<ValuesToAdd> parameter. You can't
+use C<all> as a value for that parameter in this case.
 
 
 =head2 ModifyDBInstance
@@ -1279,6 +1306,8 @@ can't use C<all> as a value for that parameter in this case.
 =item [ApplyImmediately => Bool]
 
 =item [AutoMinorVersionUpgrade => Bool]
+
+=item [CACertificateIdentifier => Str]
 
 =item [DBInstanceClass => Str]
 
@@ -1295,9 +1324,9 @@ Each argument is described in detail in: L<Paws::DocDB::ModifyDBInstance>
 
 Returns: a L<Paws::DocDB::ModifyDBInstanceResult> instance
 
-Modifies settings for a DB instance. You can change one or more
-database configuration parameters by specifying these parameters and
-the new values in the request.
+Modifies settings for an instance. You can change one or more database
+configuration parameters by specifying these parameters and the new
+values in the request.
 
 
 =head2 ModifyDBSubnetGroup
@@ -1317,8 +1346,8 @@ Each argument is described in detail in: L<Paws::DocDB::ModifyDBSubnetGroup>
 
 Returns: a L<Paws::DocDB::ModifyDBSubnetGroupResult> instance
 
-Modifies an existing DB subnet group. DB subnet groups must contain at
-least one subnet in at least two Availability Zones in the AWS Region.
+Modifies an existing subnet group. subnet groups must contain at least
+one subnet in at least two Availability Zones in the AWS Region.
 
 
 =head2 RebootDBInstance
@@ -1336,14 +1365,14 @@ Each argument is described in detail in: L<Paws::DocDB::RebootDBInstance>
 
 Returns: a L<Paws::DocDB::RebootDBInstanceResult> instance
 
-You might need to reboot your DB instance, usually for maintenance
+You might need to reboot your instance, usually for maintenance
 reasons. For example, if you make certain changes, or if you change the
-DB cluster parameter group that is associated with the DB instance, you
-must reboot the instance for the changes to take effect.
+cluster parameter group that is associated with the instance, you must
+reboot the instance for the changes to take effect.
 
-Rebooting a DB instance restarts the database engine service. Rebooting
-a DB instance results in a momentary outage, during which the DB
-instance status is set to I<rebooting>.
+Rebooting an instance restarts the database engine service. Rebooting
+an instance results in a momentary outage, during which the instance
+status is set to I<rebooting>.
 
 
 =head2 RemoveTagsFromResource
@@ -1381,9 +1410,9 @@ Each argument is described in detail in: L<Paws::DocDB::ResetDBClusterParameterG
 
 Returns: a L<Paws::DocDB::DBClusterParameterGroupNameMessage> instance
 
-Modifies the parameters of a DB cluster parameter group to the default
+Modifies the parameters of a cluster parameter group to the default
 value. To reset specific parameters, submit a list of the following:
-C<ParameterName> and C<ApplyMethod>. To reset the entire DB cluster
+C<ParameterName> and C<ApplyMethod>. To reset the entire cluster
 parameter group, specify the C<DBClusterParameterGroupName> and
 C<ResetAllParameters> parameters.
 
@@ -1427,16 +1456,16 @@ Each argument is described in detail in: L<Paws::DocDB::RestoreDBClusterFromSnap
 
 Returns: a L<Paws::DocDB::RestoreDBClusterFromSnapshotResult> instance
 
-Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+Creates a new cluster from a snapshot or cluster snapshot.
 
-If a DB snapshot is specified, the target DB cluster is created from
-the source DB snapshot with a default configuration and default
-security group.
+If a snapshot is specified, the target cluster is created from the
+source DB snapshot with a default configuration and default security
+group.
 
-If a DB cluster snapshot is specified, the target DB cluster is created
-from the source DB cluster restore point with the same configuration as
-the original source DB cluster, except that the new DB cluster is
-created with the default security group.
+If a cluster snapshot is specified, the target cluster is created from
+the source cluster restore point with the same configuration as the
+original source DB cluster, except that the new cluster is created with
+the default security group.
 
 
 =head2 RestoreDBClusterToPointInTime
@@ -1472,12 +1501,11 @@ Each argument is described in detail in: L<Paws::DocDB::RestoreDBClusterToPointI
 
 Returns: a L<Paws::DocDB::RestoreDBClusterToPointInTimeResult> instance
 
-Restores a DB cluster to an arbitrary point in time. Users can restore
-to any point in time before C<LatestRestorableTime> for up to
-C<BackupRetentionPeriod> days. The target DB cluster is created from
-the source DB cluster with the same configuration as the original DB
-cluster, except that the new DB cluster is created with the default DB
-security group.
+Restores a cluster to an arbitrary point in time. Users can restore to
+any point in time before C<LatestRestorableTime> for up to
+C<BackupRetentionPeriod> days. The target cluster is created from the
+source cluster with the same configuration as the original cluster,
+except that the new cluster is created with the default security group.
 
 
 =head2 StartDBCluster

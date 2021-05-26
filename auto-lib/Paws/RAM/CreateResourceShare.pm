@@ -4,6 +4,7 @@ package Paws::RAM::CreateResourceShare;
   has AllowExternalPrincipals => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowExternalPrincipals');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has PermissionArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'permissionArns');
   has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'principals');
   has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceArns');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RAM::Tag]', traits => ['NameInRequest'], request_name => 'tags');
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                    => 'MyString',
       AllowExternalPrincipals => 1,                      # OPTIONAL
       ClientToken             => 'MyString',             # OPTIONAL
+      PermissionArns          => [ 'MyString', ... ],    # OPTIONAL
       Principals              => [ 'MyString', ... ],    # OPTIONAL
       ResourceArns            => [ 'MyString', ... ],    # OPTIONAL
       Tags                    => [
@@ -62,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ram
 
 =head2 AllowExternalPrincipals => Bool
 
-Indicates whether principals outside your organization can be
+Indicates whether principals outside your AWS organization can be
 associated with a resource share.
 
 
@@ -77,6 +79,14 @@ idempotency of the request.
 =head2 B<REQUIRED> Name => Str
 
 The name of the resource share.
+
+
+
+=head2 PermissionArns => ArrayRef[Str|Undef]
+
+The ARNs of the permissions to associate with the resource share. If
+you do not specify an ARN for the permission, AWS RAM automatically
+attaches the default version of the permission for each resource type.
 
 
 

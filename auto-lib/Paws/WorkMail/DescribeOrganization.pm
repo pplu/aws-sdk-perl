@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ARN               = $DescribeOrganizationResponse->ARN;
     my $Alias             = $DescribeOrganizationResponse->Alias;
     my $CompletedDate     = $DescribeOrganizationResponse->CompletedDate;
     my $DefaultMailDomain = $DescribeOrganizationResponse->DefaultMailDomain;

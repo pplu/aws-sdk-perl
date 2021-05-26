@@ -1,6 +1,7 @@
 
 package Paws::Polly::StartSpeechSynthesisTask;
   use Moose;
+  has Engine => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OutputFormat => (is => 'ro', isa => 'Str', required => 1);
@@ -43,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputS3BucketName => 'MyOutputS3BucketName',
       Text               => 'MyText',
       VoiceId            => 'Aditi',
+      Engine             => 'standard',                  # OPTIONAL
       LanguageCode       => 'arb',                       # OPTIONAL
       LexiconNames       => [ 'MyLexiconName', ... ],    # OPTIONAL
       OutputS3KeyPrefix  => 'MyOutputS3KeyPrefix',       # OPTIONAL
@@ -64,6 +66,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pol
 
 =head1 ATTRIBUTES
 
+
+=head2 Engine => Str
+
+Specifies the engine (C<standard> or C<neural>) for Amazon Polly to use
+when processing input text for speech synthesis. Using a voice that is
+not supported for the engine selected will result in an error.
+
+Valid values are: C<"standard">, C<"neural">
 
 =head2 LanguageCode => Str
 
@@ -113,8 +123,9 @@ The Amazon S3 key prefix for the output speech file.
 
 The audio frequency specified in Hz.
 
-The valid values for mp3 and ogg_vorbis are "8000", "16000", and
-"22050". The default value is "22050".
+The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
+and "24000". The default value for standard voices is "22050". The
+default value for neural voices is "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
 "16000".
@@ -152,7 +163,7 @@ Valid values are: C<"ssml">, C<"text">
 
 Voice ID to use for the synthesis.
 
-Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
+Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Camila">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Lupe">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
 
 
 =head1 SEE ALSO

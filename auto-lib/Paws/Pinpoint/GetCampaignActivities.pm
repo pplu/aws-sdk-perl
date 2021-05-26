@@ -11,7 +11,7 @@ package Paws::Pinpoint::GetCampaignActivities;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCampaignActivities');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/campaigns/{campaign-id}/activities');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ActivitiesResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetCampaignActivitiesResponse');
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $ActivitiesResponse = $pinpoint->GetCampaignActivities(
+    my $GetCampaignActivitiesResponse = $pinpoint->GetCampaignActivities(
       ApplicationId => 'My__string',
       CampaignId    => 'My__string',
       PageSize      => 'My__string',    # OPTIONAL
@@ -39,10 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Item      = $ActivitiesResponse->Item;
-    my $NextToken = $ActivitiesResponse->NextToken;
+    my $ActivitiesResponse = $GetCampaignActivitiesResponse->ActivitiesResponse;
 
-    # Returns a L<Paws::Pinpoint::ActivitiesResponse> object.
+    # Returns a L<Paws::Pinpoint::GetCampaignActivitiesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetCampaignActivities>
@@ -65,8 +64,9 @@ The unique identifier for the campaign.
 
 =head2 PageSize => Str
 
-The maximum number of items to include on each page in a paginated
-response.
+The maximum number of items to include in each page of a paginated
+response. This parameter is currently not supported for application,
+campaign, and journey metrics.
 
 
 

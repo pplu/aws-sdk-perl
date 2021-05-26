@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetJobResult
 
 =head2 Job => L<Paws::DeviceFarm::Job>
 
-An object containing information about the requested job.
+An object that contains information about the requested job.
 
 
 =head2 _request_id => Str

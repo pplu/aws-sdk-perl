@@ -480,6 +480,8 @@ outputs that are are used by the subscribers that are removed.
 
 =item OutputArn => Str
 
+=item [CidrAllowList => ArrayRef[Str|Undef]]
+
 =item [Description => Str]
 
 =item [Destination => Str]
@@ -491,6 +493,8 @@ outputs that are are used by the subscribers that are removed.
 =item [Port => Int]
 
 =item [Protocol => Str]
+
+=item [RemoteId => Str]
 
 =item [SmoothingLatency => Int]
 

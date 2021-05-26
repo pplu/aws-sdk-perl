@@ -4,7 +4,9 @@ package Paws::EC2::ModifyVpcEndpointServiceConfiguration;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool');
   has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddNetworkLoadBalancerArn' );
   has DryRun => (is => 'ro', isa => 'Bool');
+  has PrivateDnsName => (is => 'ro', isa => 'Str');
   has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveNetworkLoadBalancerArn' );
+  has RemovePrivateDnsName => (is => 'ro', isa => 'Bool');
   has ServiceId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,11 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyVpcEndpointServiceConfigurationResult =
       $ec2->ModifyVpcEndpointServiceConfiguration(
-      ServiceId                     => 'MyString',
-      AcceptanceRequired            => 1,                      # OPTIONAL
-      AddNetworkLoadBalancerArns    => [ 'MyString', ... ],    # OPTIONAL
-      DryRun                        => 1,                      # OPTIONAL
-      RemoveNetworkLoadBalancerArns => [ 'MyString', ... ],    # OPTIONAL
+      ServiceId                     => 'MyVpcEndpointServiceId',
+      AcceptanceRequired            => 1,                          # OPTIONAL
+      AddNetworkLoadBalancerArns    => [ 'MyString', ... ],        # OPTIONAL
+      DryRun                        => 1,                          # OPTIONAL
+      PrivateDnsName                => 'MyString',                 # OPTIONAL
+      RemoveNetworkLoadBalancerArns => [ 'MyString', ... ],        # OPTIONAL
+      RemovePrivateDnsName          => 1,                          # OPTIONAL
       );
 
     # Results:
@@ -53,8 +57,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AcceptanceRequired => Bool
 
-Indicate whether requests to create an endpoint to your service must be
-accepted.
+Indicates whether requests to create an endpoint to your service must
+be accepted.
 
 
 
@@ -74,10 +78,22 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 PrivateDnsName => Str
+
+The private DNS name to assign to the endpoint service.
+
+
+
 =head2 RemoveNetworkLoadBalancerArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARNs) of Network Load Balancers to remove
 from your service configuration.
+
+
+
+=head2 RemovePrivateDnsName => Bool
+
+Removes the private DNS name of the endpoint service.
 
 
 

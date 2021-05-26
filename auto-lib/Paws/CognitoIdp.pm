@@ -677,6 +677,29 @@ package Paws::CognitoIdp;
 
     return undef
   }
+  sub ListAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->PaginationToken) {
+        $next_result = $self->ListUsers(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->PaginationToken) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->ListUsers(@_, PaginationToken => $result->PaginationToken);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
   sub ListAllUsersInGroup {
     my $self = shift;
 
@@ -781,7 +804,7 @@ Returns: nothing
 
 Adds the specified user to the specified group.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminConfirmSignUp
@@ -791,6 +814,8 @@ Requires developer credentials.
 =item Username => Str
 
 =item UserPoolId => Str
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 
 =back
@@ -802,7 +827,7 @@ Returns: a L<Paws::CognitoIdp::AdminConfirmSignUpResponse> instance
 Confirms user registration as an admin without using a confirmation
 code. Works on any user.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminCreateUser
@@ -812,6 +837,8 @@ Requires developer credentials.
 =item Username => Str
 
 =item UserPoolId => Str
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 =item [DesiredDeliveryMediums => ArrayRef[Str|Undef]]
 
@@ -868,7 +895,7 @@ Returns: nothing
 
 Deletes a user as an administrator. Works on any user.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminDeleteUserAttributes
@@ -891,7 +918,7 @@ Returns: a L<Paws::CognitoIdp::AdminDeleteUserAttributesResponse> instance
 Deletes the user attributes in a user pool as an administrator. Works
 on any user.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminDisableProviderForUser
@@ -960,9 +987,9 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminDisableUser>
 
 Returns: a L<Paws::CognitoIdp::AdminDisableUserResponse> instance
 
-Disables the specified user as an administrator. Works on any user.
+Disables the specified user.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminEnableUser
@@ -982,7 +1009,7 @@ Returns: a L<Paws::CognitoIdp::AdminEnableUserResponse> instance
 
 Enables the specified user as an administrator. Works on any user.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminForgetDevice
@@ -1004,7 +1031,7 @@ Returns: nothing
 
 Forgets the device, as an administrator.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminGetDevice
@@ -1026,7 +1053,7 @@ Returns: a L<Paws::CognitoIdp::AdminGetDeviceResponse> instance
 
 Gets the device, as an administrator.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminGetUser
@@ -1047,7 +1074,7 @@ Returns: a L<Paws::CognitoIdp::AdminGetUserResponse> instance
 Gets the specified user by user name in a user pool as an
 administrator. Works on any user.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminInitiateAuth
@@ -1077,7 +1104,7 @@ Returns: a L<Paws::CognitoIdp::AdminInitiateAuthResponse> instance
 
 Initiates the authentication flow, as an administrator.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminLinkProviderForUser
@@ -1142,7 +1169,7 @@ Returns: a L<Paws::CognitoIdp::AdminListDevicesResponse> instance
 
 Lists devices, as an administrator.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminListGroupsForUser
@@ -1166,7 +1193,7 @@ Returns: a L<Paws::CognitoIdp::AdminListGroupsForUserResponse> instance
 
 Lists the groups that the user belongs to.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminListUserAuthEvents
@@ -1211,7 +1238,7 @@ Returns: nothing
 
 Removes the specified user from the specified group.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminResetUserPassword
@@ -1221,6 +1248,8 @@ Requires developer credentials.
 =item Username => Str
 
 =item UserPoolId => Str
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 
 =back
@@ -1242,7 +1271,7 @@ for the user, or if email verification is selected and a verified email
 exists for the user, calling this API will also result in sending a
 message to the end user with the code to change their password.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminRespondToAuthChallenge
@@ -1259,6 +1288,8 @@ Requires developer credentials.
 
 =item [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>]
 
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+
 =item [ContextData => L<Paws::CognitoIdp::ContextDataType>]
 
 =item [Session => Str]
@@ -1272,7 +1303,7 @@ Returns: a L<Paws::CognitoIdp::AdminRespondToAuthChallengeResponse> instance
 
 Responds to an authentication challenge, as an administrator.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminSetUserMFAPreference
@@ -1294,7 +1325,12 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserMFAPref
 
 Returns: a L<Paws::CognitoIdp::AdminSetUserMFAPreferenceResponse> instance
 
-Sets the user's multi-factor authentication (MFA) preference.
+Sets the user's multi-factor authentication (MFA) preference, including
+which MFA options are enabled and if any are preferred. Only one factor
+can be set as preferred. The preferred MFA factor will be used to
+authenticate a user if multiple factors are enabled. If multiple
+options are enabled and no preference is set, a challenge to choose an
+MFA option will be returned during sign in.
 
 
 =head2 AdminSetUserPassword
@@ -1316,7 +1352,18 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserPasswor
 
 Returns: a L<Paws::CognitoIdp::AdminSetUserPasswordResponse> instance
 
+Sets the specified user's password in a user pool as an administrator.
+Works on any user.
 
+The password can be temporary or permanent. If it is temporary, the
+user status will be placed into the C<FORCE_CHANGE_PASSWORD> state.
+When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth
+response will contain the C<NEW_PASSWORD_REQUIRED> challenge. If the
+user does not sign in before it expires, the user will not be able to
+sign in and their password will need to be reset by an administrator.
+
+Once the user has set a new password, or the password is permanent, the
+user status will be set to C<Confirmed>.
 
 
 =head2 AdminSetUserSettings
@@ -1336,10 +1383,10 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserSetting
 
 Returns: a L<Paws::CognitoIdp::AdminSetUserSettingsResponse> instance
 
-Sets all the user settings for a specified user name. Works on any
-user.
-
-Requires developer credentials.
+I<This action is no longer supported.> You can use it to configure only
+SMS MFA. You can't use it to configure TOTP software token MFA. To
+configure either type of MFA, use the AdminSetUserMFAPreference action
+instead.
 
 
 =head2 AdminUpdateAuthEventFeedback
@@ -1387,7 +1434,7 @@ Returns: a L<Paws::CognitoIdp::AdminUpdateDeviceStatusResponse> instance
 
 Updates the device status as an administrator.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminUpdateUserAttributes
@@ -1399,6 +1446,8 @@ Requires developer credentials.
 =item Username => Str
 
 =item UserPoolId => Str
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 
 =back
@@ -1416,7 +1465,7 @@ attribute name.
 In addition to updating user attributes, this API can also be used to
 mark phone and email as verified.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AdminUserGlobalSignOut
@@ -1434,9 +1483,12 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminUserGlobalSign
 
 Returns: a L<Paws::CognitoIdp::AdminUserGlobalSignOutResponse> instance
 
-Signs out users from all devices, as an administrator.
+Signs out users from all devices, as an administrator. It also
+invalidates all refresh tokens issued to a user. The user's current
+access and Id tokens remain valid until their expiry. Access and Id
+tokens expire one hour after they are issued.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 AssociateSoftwareToken
@@ -1515,6 +1567,8 @@ device tracking.
 
 =item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
 
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+
 =item [SecretHash => Str]
 
 =item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
@@ -1541,6 +1595,8 @@ password.
 =item Username => Str
 
 =item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 =item [ForceAliasCreation => Bool]
 
@@ -1582,7 +1638,7 @@ Returns: a L<Paws::CognitoIdp::CreateGroupResponse> instance
 
 Creates a new group in the specified user pool.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 CreateIdentityProvider
@@ -1659,6 +1715,8 @@ Creates the user import job.
 
 =item PoolName => Str
 
+=item [AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>]
+
 =item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
 
 =item [AliasAttributes => ArrayRef[Str|Undef]]
@@ -1688,6 +1746,8 @@ Creates the user import job.
 =item [SmsVerificationMessage => Str]
 
 =item [UsernameAttributes => ArrayRef[Str|Undef]]
+
+=item [UsernameConfiguration => L<Paws::CognitoIdp::UsernameConfigurationType>]
 
 =item [UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>]
 
@@ -1731,6 +1791,8 @@ the pool.
 =item [GenerateSecret => Bool]
 
 =item [LogoutURLs => ArrayRef[Str|Undef]]
+
+=item [PreventUserExistenceErrors => Str]
 
 =item [ReadAttributes => ArrayRef[Str|Undef]]
 
@@ -1787,7 +1849,7 @@ Returns: nothing
 
 Deletes a group. Currently only groups with no members can be deleted.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 DeleteIdentityProvider
@@ -2064,6 +2126,8 @@ Forgets the specified device.
 
 =item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
 
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+
 =item [SecretHash => Str]
 
 =item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
@@ -2137,7 +2201,7 @@ Returns: a L<Paws::CognitoIdp::GetGroupResponse> instance
 
 Gets a group.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 GetIdentityProviderByIdentifier
@@ -2220,6 +2284,8 @@ Gets the user attributes and metadata for a user.
 
 =item AttributeName => Str
 
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+
 
 =back
 
@@ -2260,7 +2326,10 @@ Each argument is described in detail in: L<Paws::CognitoIdp::GlobalSignOut>
 
 Returns: a L<Paws::CognitoIdp::GlobalSignOutResponse> instance
 
-Signs out users from all devices.
+Signs out users from all devices. It also invalidates all refresh
+tokens issued to a user. The user's current access and Id tokens remain
+valid until their expiry. Access and Id tokens expire one hour after
+they are issued.
 
 
 =head2 InitiateAuth
@@ -2328,7 +2397,7 @@ Returns: a L<Paws::CognitoIdp::ListGroupsResponse> instance
 
 Lists the groups associated with a user pool.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 ListIdentityProviders
@@ -2496,7 +2565,7 @@ Returns: a L<Paws::CognitoIdp::ListUsersInGroupResponse> instance
 
 Lists the users in the specified group.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
 
 
 =head2 ResendConfirmationCode
@@ -2508,6 +2577,8 @@ Requires developer credentials.
 =item Username => Str
 
 =item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 =item [SecretHash => Str]
 
@@ -2535,6 +2606,8 @@ specific user in the user pool.
 =item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
 
 =item [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 =item [Session => Str]
 
@@ -2632,7 +2705,12 @@ Each argument is described in detail in: L<Paws::CognitoIdp::SetUserMFAPreferenc
 
 Returns: a L<Paws::CognitoIdp::SetUserMFAPreferenceResponse> instance
 
-Set the user's multi-factor authentication (MFA) method preference.
+Set the user's multi-factor authentication (MFA) method preference,
+including which MFA factors are enabled and if any are preferred. Only
+one factor can be set as preferred. The preferred MFA factor will be
+used to authenticate a user if multiple factors are enabled. If
+multiple options are enabled and no preference is set, a challenge to
+choose an MFA option will be returned during sign in.
 
 
 =head2 SetUserPoolMfaConfig
@@ -2654,7 +2732,7 @@ Each argument is described in detail in: L<Paws::CognitoIdp::SetUserPoolMfaConfi
 
 Returns: a L<Paws::CognitoIdp::SetUserPoolMfaConfigResponse> instance
 
-Set the user pool MFA configuration.
+Set the user pool multi-factor authentication (MFA) configuration.
 
 
 =head2 SetUserSettings
@@ -2672,10 +2750,10 @@ Each argument is described in detail in: L<Paws::CognitoIdp::SetUserSettings>
 
 Returns: a L<Paws::CognitoIdp::SetUserSettingsResponse> instance
 
-Sets the user settings like multi-factor authentication (MFA). If MFA
-is to be removed for a particular attribute pass the attribute with
-code delivery as null. If null list is passed, all MFA options are
-removed.
+I<This action is no longer supported.> You can use it to configure only
+SMS MFA. You can't use it to configure TOTP software token MFA. To
+configure either type of MFA, use the SetUserMFAPreference action
+instead.
 
 
 =head2 SignUp
@@ -2689,6 +2767,8 @@ removed.
 =item Username => Str
 
 =item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 =item [SecretHash => Str]
 
@@ -2751,7 +2831,7 @@ Stops the user import job.
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::CognitoIdp::UserPoolTagsType>]
+=item Tags => L<Paws::CognitoIdp::UserPoolTagsType>
 
 
 =back
@@ -2787,7 +2867,7 @@ pool can have as many as 50 tags.
 
 =item ResourceArn => Str
 
-=item [TagKeys => ArrayRef[Str|Undef]]
+=item TagKeys => ArrayRef[Str|Undef]
 
 
 =back
@@ -2870,7 +2950,10 @@ Returns: a L<Paws::CognitoIdp::UpdateGroupResponse> instance
 
 Updates the specified group with the specified attributes.
 
-Requires developer credentials.
+Calling this action requires developer credentials.
+
+If you don't provide a value for an attribute, it will be set to the
+default value.
 
 
 =head2 UpdateIdentityProvider
@@ -2919,6 +3002,9 @@ Returns: a L<Paws::CognitoIdp::UpdateResourceServerResponse> instance
 Updates the name and scopes of resource server. All other fields are
 read-only.
 
+If you don't provide a value for an attribute, it will be set to the
+default value.
+
 
 =head2 UpdateUserAttributes
 
@@ -2927,6 +3013,8 @@ read-only.
 =item AccessToken => Str
 
 =item UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+
+=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
 
 
 =back
@@ -2943,6 +3031,8 @@ Allows a user to update a specific attribute (one at a time).
 =over
 
 =item UserPoolId => Str
+
+=item [AccountRecoverySetting => L<Paws::CognitoIdp::AccountRecoverySettingType>]
 
 =item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
 
@@ -2981,9 +3071,11 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
 
-Updates the specified user pool with the specified attributes. If you
-don't provide a value for an attribute, it will be set to the default
-value. You can get a list of the current user pool settings with .
+Updates the specified user pool with the specified attributes. You can
+get a list of the current user pool settings with .
+
+If you don't provide a value for an attribute, it will be set to the
+default value.
 
 
 =head2 UpdateUserPoolClient
@@ -3012,6 +3104,8 @@ value. You can get a list of the current user pool settings with .
 
 =item [LogoutURLs => ArrayRef[Str|Undef]]
 
+=item [PreventUserExistenceErrors => Str]
+
 =item [ReadAttributes => ArrayRef[Str|Undef]]
 
 =item [RefreshTokenValidity => Int]
@@ -3028,9 +3122,11 @@ Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClien
 Returns: a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> instance
 
 Updates the specified user pool app client with the specified
-attributes. If you don't provide a value for an attribute, it will be
-set to the default value. You can get a list of the current user pool
-app client settings with .
+attributes. You can get a list of the current user pool app client
+settings with .
+
+If you don't provide a value for an attribute, it will be set to the
+default value.
 
 
 =head2 UpdateUserPoolDomain
@@ -3215,6 +3311,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - UserPools, passing the object as the first parameter, and the string 'UserPools' as the second parameter 
 
 If not, it will return a a L<Paws::CognitoIdp::ListUserPoolsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsers(sub { },UserPoolId => Str, [AttributesToGet => ArrayRef[Str|Undef], Filter => Str, Limit => Int, PaginationToken => Str])
+
+=head2 ListAllUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str|Undef], Filter => Str, Limit => Int, PaginationToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::CognitoIdp::ListUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllUsersInGroup(sub { },GroupName => Str, UserPoolId => Str, [Limit => Int, NextToken => Str])

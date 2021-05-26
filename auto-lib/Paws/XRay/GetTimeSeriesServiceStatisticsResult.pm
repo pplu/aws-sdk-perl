@@ -26,7 +26,7 @@ older version of the group's filter expression.
 
 =head2 NextToken => Str
 
-Pagination token. Not used.
+Pagination token.
 
 
 =head2 TimeSeriesServiceStatistics => ArrayRef[L<Paws::XRay::TimeSeriesServiceStatistics>]

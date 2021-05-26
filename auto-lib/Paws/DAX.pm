@@ -569,7 +569,7 @@ Returns events related to DAX clusters and parameter groups. You can
 obtain events specific to a particular DAX cluster or parameter group
 by providing the name as a parameter.
 
-By default, only the events occurring within the last hour are
+By default, only the events occurring within the last 24 hours are
 returned; however, you can retrieve up to 14 days' worth of events if
 necessary.
 
@@ -696,6 +696,9 @@ Returns: a L<Paws::DAX::RebootNodeResponse> instance
 Reboots a single node of a DAX cluster. The reboot action takes place
 as soon as possible. During the reboot, the node status is set to
 REBOOTING.
+
+C<RebootNode> restarts the DAX engine process and does not remove the
+contents of the cache.
 
 
 =head2 TagResource

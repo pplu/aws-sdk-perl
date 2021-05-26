@@ -18,7 +18,7 @@ Paws::DocDB::DBClusterMessage
 
 =head2 DBClusters => ArrayRef[L<Paws::DocDB::DBCluster>]
 
-A list of DB clusters.
+A list of clusters.
 
 
 =head2 Marker => Str

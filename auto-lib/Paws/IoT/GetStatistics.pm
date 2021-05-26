@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 AggregationField => Str
 
-The aggregation field name. Currently not supported.
+The aggregation field name.
 
 
 

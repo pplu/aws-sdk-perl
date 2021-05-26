@@ -1,7 +1,8 @@
 
 package Paws::CloudFormation::DeleteStackInstances;
   use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DeploymentTargets => (is => 'ro', isa => 'Paws::CloudFormation::DeploymentTargets');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
@@ -33,10 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $DeleteStackInstancesOutput = $cloudformation->DeleteStackInstances(
-      Accounts     => [ 'MyAccount', ... ],
-      Regions      => [ 'MyRegion',  ... ],
-      RetainStacks => 1,
-      StackSetName => 'MyStackSetName',
+      Regions           => [ 'MyRegion', ... ],
+      RetainStacks      => 1,
+      StackSetName      => 'MyStackSetName',
+      Accounts          => [ 'MyAccount', ... ],    # OPTIONAL
+      DeploymentTargets => {
+        Accounts              => [ 'MyAccount',              ... ],
+        OrganizationalUnitIds => [ 'MyOrganizationalUnitId', ... ],   # OPTIONAL
+      },    # OPTIONAL
       OperationId          => 'MyClientRequestToken',    # OPTIONAL
       OperationPreferences => {
         FailureToleranceCount      => 1,    # OPTIONAL
@@ -58,10 +63,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Accounts => ArrayRef[Str|Undef]
+=head2 Accounts => ArrayRef[Str|Undef]
 
-The names of the AWS accounts that you want to delete stack instances
-for.
+[Self-managed permissions] The names of the AWS accounts that you want
+to delete stack instances for.
+
+You can specify C<Accounts> or C<DeploymentTargets>, but not both.
+
+
+
+=head2 DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>
+
+[C<Service-managed> permissions] The AWS Organizations accounts from
+which to delete stack instances.
+
+You can specify C<Accounts> or C<DeploymentTargets>, but not both.
 
 
 

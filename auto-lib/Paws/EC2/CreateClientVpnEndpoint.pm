@@ -9,8 +9,10 @@ package Paws::EC2::CreateClientVpnEndpoint;
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DryRun => (is => 'ro', isa => 'Bool');
   has ServerCertificateArn => (is => 'ro', isa => 'Str', required => 1);
+  has SplitTunnel => (is => 'ro', isa => 'Bool');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransportProtocol => (is => 'ro', isa => 'Str');
+  has VpnPort => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -63,10 +65,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyString', ...                       # OPTIONAL
       ],                                      # OPTIONAL
       DryRun            => 1,                 # OPTIONAL
+      SplitTunnel       => 1,                 # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',    # OPTIONAL
@@ -78,6 +81,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                              # OPTIONAL
       TransportProtocol => 'tcp',     # OPTIONAL
+      VpnPort           => 1,         # OPTIONAL
     );
 
     # Results:
@@ -161,8 +165,8 @@ A brief description of the Client VPN endpoint.
 
 Information about the DNS servers to be used for DNS resolution. A
 Client VPN endpoint can have up to two DNS servers. If no DNS server is
-specified, the DNS address of the VPC that is to be associated with
-Client VPN endpoint is used as the DNS server.
+specified, the DNS address configured on the device is used for the DNS
+server.
 
 
 
@@ -183,6 +187,20 @@ Certificate Manager User Guide
 
 
 
+=head2 SplitTunnel => Bool
+
+Indicates whether split-tunnel is enabled on the AWS Client VPN
+endpoint.
+
+By default, split-tunnel on a VPN endpoint is disabled.
+
+For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
+Client VPN Endpoint
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
+in the I<AWS Client VPN Administrator Guide>.
+
+
+
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
 
 The tags to apply to the Client VPN endpoint during creation.
@@ -196,6 +214,17 @@ The transport protocol to be used by the VPN session.
 Default value: C<udp>
 
 Valid values are: C<"tcp">, C<"udp">
+
+=head2 VpnPort => Int
+
+The port number to assign to the Client VPN endpoint for TCP and UDP
+traffic.
+
+Valid Values: C<443> | C<1194>
+
+Default Value: C<443>
+
+
 
 
 =head1 SEE ALSO

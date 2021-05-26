@@ -43,9 +43,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 =head2 B<REQUIRED> KmsKeyId => Str
 
 The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-data. For more information, see Amazon Resource Names - AWS Key
-Management Service (AWS KMS)
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+data. This must be a symmetric CMK. For more information, see Amazon
+Resource Names - AWS Key Management Service (AWS KMS)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
+and Using Symmetric and Asymmetric Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 
 
 

@@ -80,7 +80,7 @@ C<EC2SecurityGroupId> must be provided.
 =head2 EC2SecurityGroupOwnerId => Str
 
 AWS account number of the owner of the EC2 security group specified in
-the C<EC2SecurityGroupName> parameter. The AWS Access Key ID is not an
+the C<EC2SecurityGroupName> parameter. The AWS access key ID isn't an
 acceptable value. For VPC DB security groups, C<EC2SecurityGroupId>
 must be provided. Otherwise, C<EC2SecurityGroupOwnerId> and either
 C<EC2SecurityGroupName> or C<EC2SecurityGroupId> must be provided.

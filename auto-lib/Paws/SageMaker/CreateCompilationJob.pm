@@ -35,20 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CompilationJobName => 'MyEntityName',
       InputConfig        => {
         DataInputConfig => 'MyDataInputConfig',    # min: 1, max: 1024
-        Framework =>
-          'TENSORFLOW',    # values: TENSORFLOW, MXNET, ONNX, PYTORCH, XGBOOST
+        Framework       => 'TENSORFLOW'
+        ,    # values: TENSORFLOW, KERAS, MXNET, ONNX, PYTORCH, XGBOOST
         S3Uri => 'MyS3Uri',    # max: 1024
 
       },
       OutputConfig => {
         S3OutputLocation => 'MyS3Uri',    # max: 1024
         TargetDevice     => 'lambda'
-        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, jetson_nano, rasp3b, deeplens, rk3399, rk3288, sbe_c
+        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, ml_inf1, jetson_tx1, jetson_tx2, jetson_nano, rasp3b, deeplens, rk3399, rk3288, aisage, sbe_c, qcs605, qcs603
 
       },
       RoleArn           => 'MyRoleArn',
       StoppingCondition => {
-        MaxRuntimeInSeconds => 1,    # min: 1; OPTIONAL
+        MaxRuntimeInSeconds  => 1,    # min: 1; OPTIONAL
+        MaxWaitTimeInSeconds => 1,    # min: 1; OPTIONAL
       },
 
     );

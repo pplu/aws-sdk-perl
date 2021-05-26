@@ -55,7 +55,8 @@ The name of the channel whose information is retrieved.
 =head2 IncludeStatistics => Bool
 
 If true, additional statistical information about the channel is
-included in the response.
+included in the response. This feature cannot be used with a channel
+whose S3 storage is customer-managed.
 
 
 

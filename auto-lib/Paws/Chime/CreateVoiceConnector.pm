@@ -1,6 +1,7 @@
 
 package Paws::Chime::CreateVoiceConnector;
   use Moose;
+  has AwsRegion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RequireEncryption => (is => 'ro', isa => 'Bool', required => 1);
 
@@ -32,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateVoiceConnectorResponse = $chime->CreateVoiceConnector(
       Name              => 'MyVoiceConnectorName',
       RequireEncryption => 1,
-
+      AwsRegion         => 'us-east-1',              # OPTIONAL
     );
 
     # Results:
@@ -45,6 +46,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 =head1 ATTRIBUTES
 
+
+=head2 AwsRegion => Str
+
+The AWS Region in which the Amazon Chime Voice Connector is created.
+Default value: C<us-east-1>.
+
+Valid values are: C<"us-east-1">, C<"us-west-2">
 
 =head2 B<REQUIRED> Name => Str
 

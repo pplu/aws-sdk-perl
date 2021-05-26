@@ -3,6 +3,7 @@ package Paws::EC2::DescribePlacementGroups;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'groupName' );
 
   use MooseX::ClassAttribute;
@@ -33,16 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      GroupNames => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
+      ],                                    # OPTIONAL
+      GroupIds   => [ 'MyPlacementGroupId',   ... ],    # OPTIONAL
+      GroupNames => [ 'MyPlacementGroupName', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -87,6 +85,12 @@ C<spread> | C<partition>).
 
 =back
 
+
+
+
+=head2 GroupIds => ArrayRef[Str|Undef]
+
+The IDs of the placement groups.
 
 
 

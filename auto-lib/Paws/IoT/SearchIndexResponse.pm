@@ -19,8 +19,8 @@ Paws::IoT::SearchIndexResponse
 
 =head2 NextToken => Str
 
-The token used to get the next set of results, or null if there are no
-additional results.
+The token used to get the next set of results, or C<null> if there are
+no additional results.
 
 
 =head2 ThingGroups => ArrayRef[L<Paws::IoT::ThingGroupDocument>]

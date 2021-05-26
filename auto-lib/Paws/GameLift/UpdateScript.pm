@@ -57,24 +57,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Name => Str
 
-Descriptive label that is associated with a script. Script names do not
-need to be unique.
+A descriptive label that is associated with a script. Script names do
+not need to be unique.
 
 
 
 =head2 B<REQUIRED> ScriptId => Str
 
-Unique identifier for a Realtime script to update.
+A unique identifier for a Realtime script to update. You can use either
+the script ID or ARN value.
 
 
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
-Location of the Amazon S3 bucket where a zipped file containing your
-Realtime scripts is stored. The storage location must specify the
+The location of the Amazon S3 bucket where a zipped file containing
+your Realtime scripts is stored. The storage location must specify the
 Amazon S3 bucket name, the zip file name (the "key"), and a role ARN
 that allows Amazon GameLift to access the Amazon S3 storage location.
-The S3 bucket must be in the same region where you want to create a new
+The S3 bucket must be in the same Region where you want to create a new
 script. By default, Amazon GameLift uploads the latest version of the
 zip file; if you have S3 object versioning turned on, you can use the
 C<ObjectVersion> parameter to specify an earlier version.
@@ -83,16 +84,16 @@ C<ObjectVersion> parameter to specify an earlier version.
 
 =head2 Version => Str
 
-Version that is associated with a build or script. Version strings do
-not need to be unique.
+The version that is associated with a build or script. Version strings
+do not need to be unique.
 
 
 
 =head2 ZipFile => Str
 
-Data object containing your Realtime scripts and dependencies as a zip
-file. The zip file can have one or multiple files. Maximum size of a
-zip file is 5 MB.
+A data object containing your Realtime scripts and dependencies as a
+zip file. The zip file can have one or multiple files. Maximum size of
+a zip file is 5 MB.
 
 When using the AWS CLI tool to create a script, this parameter is set
 to the zip file name. It must be prepended with the string "fileb://"

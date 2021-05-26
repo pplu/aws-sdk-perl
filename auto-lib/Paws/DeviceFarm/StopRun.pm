@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-Represents the Amazon Resource Name (ARN) of the Device Farm run you
-wish to stop.
+Represents the Amazon Resource Name (ARN) of the Device Farm run to
+stop.
 
 
 

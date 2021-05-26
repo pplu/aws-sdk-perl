@@ -66,7 +66,7 @@ returned. The limit is 5 versions per request.
 
 =head2 B<REQUIRED> StatusType => Str
 
-To return utterances that were recognized and handled, useC<Detected>.
+To return utterances that were recognized and handled, use C<Detected>.
 To return utterances that were not recognized, use C<Missed>.
 
 Valid values are: C<"Detected">, C<"Missed">

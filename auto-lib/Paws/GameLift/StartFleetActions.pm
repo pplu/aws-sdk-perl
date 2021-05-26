@@ -50,7 +50,8 @@ List of actions to restart on the fleet.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet
+A unique identifier for a fleet to start actions on. You can use either
+the fleet ID or ARN value.
 
 
 

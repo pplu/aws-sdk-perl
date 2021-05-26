@@ -45,6 +45,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::CreateUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAccessControlRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteAccessControlRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteAlias', @_);
@@ -105,9 +110,19 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DisassociateMemberFromGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccessControlEffect {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::GetAccessControlEffect', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetMailboxDetails {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::GetMailboxDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAccessControlRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::ListAccessControlRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAliases {
@@ -145,9 +160,19 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListUsers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccessControlRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::PutAccessControlRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutMailboxPermissions {
@@ -163,6 +188,16 @@ package Paws::WorkMail;
   sub ResetPassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ResetPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateMailboxQuota {
@@ -367,7 +402,7 @@ package Paws::WorkMail;
   }
 
 
-  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup GetMailboxDetails ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListUsers PutMailboxPermissions RegisterToWorkMail ResetPassword UpdateMailboxQuota UpdatePrimaryEmailAddress UpdateResource / }
+  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAccessControlRule DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup GetAccessControlEffect GetMailboxDetails ListAccessControlRules ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListTagsForResource ListUsers PutAccessControlRule PutMailboxPermissions RegisterToWorkMail ResetPassword TagResource UntagResource UpdateMailboxQuota UpdatePrimaryEmailAddress UpdateResource / }
 
 1;
 
@@ -575,6 +610,24 @@ Returns: a L<Paws::WorkMail::CreateUserResponse> instance
 
 Creates a user who can be used in Amazon WorkMail by calling the
 RegisterToWorkMail operation.
+
+
+=head2 DeleteAccessControlRule
+
+=over
+
+=item Name => Str
+
+=item [OrganizationId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::DeleteAccessControlRule>
+
+Returns: a L<Paws::WorkMail::DeleteAccessControlRuleResponse> instance
+
+Deletes an access control rule for the specified WorkMail organization.
 
 
 =head2 DeleteAlias
@@ -809,6 +862,29 @@ Returns: a L<Paws::WorkMail::DisassociateMemberFromGroupResponse> instance
 Removes a member from a group.
 
 
+=head2 GetAccessControlEffect
+
+=over
+
+=item Action => Str
+
+=item IpAddress => Str
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::GetAccessControlEffect>
+
+Returns: a L<Paws::WorkMail::GetAccessControlEffectResponse> instance
+
+Gets the effects of an organization's access control rules as they
+apply to a specified IPv4 address, access protocol action, or user ID.
+
+
 =head2 GetMailboxDetails
 
 =over
@@ -826,6 +902,22 @@ Returns: a L<Paws::WorkMail::GetMailboxDetailsResponse> instance
 
 Requests a user's mailbox details for a specified organization and
 user.
+
+
+=head2 ListAccessControlRules
+
+=over
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::ListAccessControlRules>
+
+Returns: a L<Paws::WorkMail::ListAccessControlRulesResponse> instance
+
+Lists the access control rules for the specified organization.
 
 
 =head2 ListAliases
@@ -978,6 +1070,22 @@ Returns: a L<Paws::WorkMail::ListResourcesResponse> instance
 Returns summaries of the organization's resources.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::ListTagsForResource>
+
+Returns: a L<Paws::WorkMail::ListTagsForResourceResponse> instance
+
+Lists the tags applied to an Amazon WorkMail organization resource.
+
+
 =head2 ListUsers
 
 =over
@@ -996,6 +1104,43 @@ Each argument is described in detail in: L<Paws::WorkMail::ListUsers>
 Returns: a L<Paws::WorkMail::ListUsersResponse> instance
 
 Returns summaries of the organization's users.
+
+
+=head2 PutAccessControlRule
+
+=over
+
+=item Description => Str
+
+=item Effect => Str
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+=item [Actions => ArrayRef[Str|Undef]]
+
+=item [IpRanges => ArrayRef[Str|Undef]]
+
+=item [NotActions => ArrayRef[Str|Undef]]
+
+=item [NotIpRanges => ArrayRef[Str|Undef]]
+
+=item [NotUserIds => ArrayRef[Str|Undef]]
+
+=item [UserIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::PutAccessControlRule>
+
+Returns: a L<Paws::WorkMail::PutAccessControlRuleResponse> instance
+
+Adds a new access control rule for the specified organization. The rule
+allows or denies access to the organization for the specified IPv4
+addresses, access protocol actions, and user IDs. Adding a new rule
+with the same name as an existing rule replaces the older rule.
 
 
 =head2 PutMailboxPermissions
@@ -1043,7 +1188,7 @@ WorkMail use by associating a mailbox and calendaring capabilities. It
 performs no change if the user, group, or resource is enabled and fails
 if the user, group, or resource is deleted. This operation results in
 the accumulation of costs. For more information, see Pricing
-(https://aws.amazon.com//workmail/pricing). The equivalent console
+(https://aws.amazon.com/workmail/pricing). The equivalent console
 functionality for this operation is I<Enable>.
 
 Users can either be created by calling the CreateUser API operation or
@@ -1069,6 +1214,44 @@ Each argument is described in detail in: L<Paws::WorkMail::ResetPassword>
 Returns: a L<Paws::WorkMail::ResetPasswordResponse> instance
 
 Allows the administrator to reset the password for a user.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::WorkMail::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::TagResource>
+
+Returns: a L<Paws::WorkMail::TagResourceResponse> instance
+
+Applies the specified tags to the specified Amazon WorkMail
+organization resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::UntagResource>
+
+Returns: a L<Paws::WorkMail::UntagResourceResponse> instance
+
+Untags the specified tags from the specified Amazon WorkMail
+organization resource.
 
 
 =head2 UpdateMailboxQuota

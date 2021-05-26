@@ -4,6 +4,7 @@ package Paws::GameLift::CreateBuild;
   has Name => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Tag]');
   has Version => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -39,6 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ObjectVersion => 'MyNonEmptyString',         # min: 1; OPTIONAL
         RoleArn       => 'MyNonEmptyString',         # min: 1; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
       Version => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
 
@@ -57,38 +66,52 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Name => Str
 
-Descriptive label that is associated with a build. Build names do not
+A descriptive label that is associated with a build. Build names do not
 need to be unique. You can use UpdateBuild to change this value later.
 
 
 
 =head2 OperatingSystem => Str
 
-Operating system that the game server binaries are built to run on.
+The operating system that the game server binaries are built to run on.
 This value determines the type of fleet resources that you can use for
 this build. If your game build contains multiple executables, they all
 must run on the same operating system. If an operating system is not
 specified when creating a build, Amazon GameLift uses the default value
 (WINDOWS_2012). This value cannot be changed later.
 
-Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
+Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
 Information indicating where your game build files are stored. Use this
 parameter only when creating a build with files stored in an Amazon S3
 bucket that you own. The storage location must specify an Amazon S3
-bucket name and key, as well as a the ARN for a role that you set up to
-allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket
-must be in the same region that you want to create a new build in.
+bucket name and key. The location must also specify a role ARN that you
+set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3
+bucket and your new build must be in the same Region.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::GameLift::Tag>]
+
+A list of labels to assign to the new build resource. Tags are
+developer-defined key-value pairs. Tagging AWS resources are useful for
+resource management, access management and cost allocation. For more
+information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>. Once the resource is created, you can use
+TagResource, UntagResource, and ListTagsForResource to add, remove, and
+view tags. The maximum tag limit may be lower than stated. See the AWS
+General Reference for actual tagging limits.
 
 
 
 =head2 Version => Str
 
-Version that is associated with a build or script. Version strings do
-not need to be unique. You can use UpdateBuild to change this value
-later.
+Version information that is associated with a build or script. Version
+strings do not need to be unique. You can use UpdateBuild to change
+this value later.
 
 
 

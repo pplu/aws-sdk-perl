@@ -39,12 +39,12 @@ This class has no description
 
 =head2 ClassicLoadBalancersConfig => L<Paws::EC2::ClassicLoadBalancersConfig>
 
-  The Classic Load Balancers.
+The Classic Load Balancers.
 
 
 =head2 TargetGroupsConfig => L<Paws::EC2::TargetGroupsConfig>
 
-  The target groups.
+The target groups.
 
 
 

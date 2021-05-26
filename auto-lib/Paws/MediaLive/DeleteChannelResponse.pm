@@ -11,6 +11,7 @@ package Paws::MediaLive::DeleteChannelResponse;
   has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
   has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has PipelineDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::PipelineDetail]', traits => ['NameInRequest'], request_name => 'pipelineDetails');
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelinesRunningCount');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
@@ -79,6 +80,11 @@ Valid values are: C<"ERROR">, C<"WARNING">, C<"INFO">, C<"DEBUG">, C<"DISABLED">
 =head2 Name => Str
 
 The name of the channel. (user-mutable)
+
+
+=head2 PipelineDetails => ArrayRef[L<Paws::MediaLive::PipelineDetail>]
+
+Runtime details for the pipelines of a running channel.
 
 
 =head2 PipelinesRunningCount => Int

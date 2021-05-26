@@ -16,7 +16,7 @@ Paws::GameLift::DescribeAliasOutput
 
 =head2 Alias => L<Paws::GameLift::Alias>
 
-Object that contains the requested alias.
+The requested alias resource.
 
 
 =head2 _request_id => Str

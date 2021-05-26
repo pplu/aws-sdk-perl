@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $UnassignIpv6AddressesResult = $ec2->UnassignIpv6Addresses(
       Ipv6Addresses      => [ 'MyString', ... ],
-      NetworkInterfaceId => 'MyString',
+      NetworkInterfaceId => 'MyNetworkInterfaceId',
 
     );
 

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AcceptVpcEndpointConnectionsResult = $ec2->AcceptVpcEndpointConnections(
-      ServiceId      => 'MyString',
-      VpcEndpointIds => [ 'MyString', ... ],
-      DryRun         => 1,                     # OPTIONAL
+      ServiceId      => 'MyVpcEndpointServiceId',
+      VpcEndpointIds => [ 'MyVpcEndpointId', ... ],
+      DryRun         => 1,                            # OPTIONAL
     );
 
     # Results:
@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> ServiceId => Str
 
-The ID of the endpoint service.
+The ID of the VPC endpoint service.
 
 
 

@@ -75,6 +75,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchStopJobRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelMLTaskRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CancelMLTaskRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateClassifier', @_);
@@ -103,6 +108,11 @@ package Paws::Glue;
   sub CreateJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateMLTransform {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CreateMLTransform', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreatePartition {
@@ -168,6 +178,11 @@ package Paws::Glue;
   sub DeleteJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteMLTransform {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteMLTransform', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeletePartition {
@@ -285,6 +300,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetJobBookmark {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetJobBookmark', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetJobRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetJobRun', @_);
@@ -303,6 +323,26 @@ package Paws::Glue;
   sub GetMapping {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetMapping', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMLTaskRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetMLTaskRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMLTaskRuns {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetMLTaskRuns', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMLTransform {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetMLTransform', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMLTransforms {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetMLTransforms', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPartition {
@@ -450,6 +490,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::ResetJobBookmark', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SearchTables {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::SearchTables', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartCrawler {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::StartCrawler', @_);
@@ -460,9 +505,29 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::StartCrawlerSchedule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartExportLabelsTaskRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::StartExportLabelsTaskRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartImportLabelsTaskRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::StartImportLabelsTaskRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartJobRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::StartJobRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartMLEvaluationTaskRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::StartMLEvaluationTaskRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartMLLabelingSetGenerationTaskRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::StartMLLabelingSetGenerationTaskRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartTrigger {
@@ -533,6 +598,11 @@ package Paws::Glue;
   sub UpdateJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::UpdateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMLTransform {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UpdateMLTransform', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePartition {
@@ -885,7 +955,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutWorkflowRunProperties ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun CancelMLTaskRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreateMLTransform CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeleteMLTransform DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobBookmark GetJobRun GetJobRuns GetJobs GetMapping GetMLTaskRun GetMLTaskRuns GetMLTransform GetMLTransforms GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutWorkflowRunProperties ResetJobBookmark SearchTables StartCrawler StartCrawlerSchedule StartExportLabelsTaskRun StartImportLabelsTaskRun StartJobRun StartMLEvaluationTaskRun StartMLLabelingSetGenerationTaskRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdateMLTransform UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
 
 1;
 
@@ -1003,13 +1073,13 @@ Returns: a L<Paws::Glue::BatchDeleteTableResponse> instance
 
 Deletes multiple tables at once.
 
-After completing this operation, you will no longer have access to the
-table versions and partitions that belong to the deleted table. AWS
-Glue deletes these "orphaned" resources asynchronously in a timely
-manner, at the discretion of the service.
+After completing this operation, you no longer have access to the table
+versions and partitions that belong to the deleted table. AWS Glue
+deletes these "orphaned" resources asynchronously in a timely manner,
+at the discretion of the service.
 
-To ensure immediate deletion of all related resources, before calling
-C<BatchDeleteTable>, use C<DeleteTableVersion> or
+To ensure the immediate deletion of all related resources, before
+calling C<BatchDeleteTable>, use C<DeleteTableVersion> or
 C<BatchDeleteTableVersion>, and C<DeletePartition> or
 C<BatchDeletePartition>, to delete any resources that belong to the
 table.
@@ -1070,11 +1140,11 @@ Each argument is described in detail in: L<Paws::Glue::BatchGetDevEndpoints>
 
 Returns: a L<Paws::Glue::BatchGetDevEndpointsResponse> instance
 
-Returns a list of resource metadata for a given list of DevEndpoint
-names. After calling the C<ListDevEndpoints> operation, you can call
-this operation to access the data to which you have been granted
-permissions. This operation supports all IAM permissions, including
-permission conditions that uses tags.
+Returns a list of resource metadata for a given list of development
+endpoint names. After calling the C<ListDevEndpoints> operation, you
+can call this operation to access the data to which you have been
+granted permissions. This operation supports all IAM permissions,
+including permission conditions that uses tags.
 
 
 =head2 BatchGetJobs
@@ -1177,6 +1247,28 @@ Each argument is described in detail in: L<Paws::Glue::BatchStopJobRun>
 Returns: a L<Paws::Glue::BatchStopJobRunResponse> instance
 
 Stops one or more job runs for a specified job definition.
+
+
+=head2 CancelMLTaskRun
+
+=over
+
+=item TaskRunId => Str
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CancelMLTaskRun>
+
+Returns: a L<Paws::Glue::CancelMLTaskRunResponse> instance
+
+Cancels (stops) a task run. Machine learning task runs are asynchronous
+tasks that AWS Glue runs on your behalf as part of various machine
+learning workflows. You can cancel a machine learning task run at any
+time by calling C<CancelMLTaskRun> with a task run's parent transform's
+C<TransformID> and the task run's C<TaskRunId>.
 
 
 =head2 CreateClassifier
@@ -1294,7 +1386,11 @@ Creates a new database in a Data Catalog.
 
 =item [ExtraPythonLibsS3Path => Str]
 
+=item [GlueVersion => Str]
+
 =item [NumberOfNodes => Int]
+
+=item [NumberOfWorkers => Int]
 
 =item [PublicKey => Str]
 
@@ -1308,6 +1404,8 @@ Creates a new database in a Data Catalog.
 
 =item [Tags => L<Paws::Glue::TagsMap>]
 
+=item [WorkerType => Str]
+
 
 =back
 
@@ -1315,7 +1413,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateDevEndpoint>
 
 Returns: a L<Paws::Glue::CreateDevEndpointResponse> instance
 
-Creates a new DevEndpoint.
+Creates a new development endpoint.
 
 
 =head2 CreateJob
@@ -1338,11 +1436,15 @@ Creates a new DevEndpoint.
 
 =item [ExecutionProperty => L<Paws::Glue::ExecutionProperty>]
 
+=item [GlueVersion => Str]
+
 =item [LogUri => Str]
 
 =item [MaxCapacity => Num]
 
 =item [MaxRetries => Int]
+
+=item [NonOverridableArguments => L<Paws::Glue::GenericMap>]
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
 
@@ -1364,6 +1466,55 @@ Each argument is described in detail in: L<Paws::Glue::CreateJob>
 Returns: a L<Paws::Glue::CreateJobResponse> instance
 
 Creates a new job definition.
+
+
+=head2 CreateMLTransform
+
+=over
+
+=item InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
+
+=item Name => Str
+
+=item Parameters => L<Paws::Glue::TransformParameters>
+
+=item Role => Str
+
+=item [Description => Str]
+
+=item [GlueVersion => Str]
+
+=item [MaxCapacity => Num]
+
+=item [MaxRetries => Int]
+
+=item [NumberOfWorkers => Int]
+
+=item [Timeout => Int]
+
+=item [WorkerType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CreateMLTransform>
+
+Returns: a L<Paws::Glue::CreateMLTransformResponse> instance
+
+Creates an AWS Glue machine learning transform. This operation creates
+the transform and all the necessary parameters to train it.
+
+Call this operation as the first step in the process of using a machine
+learning transform (such as the C<FindMatches> transform) for
+deduplicating data. You can provide an optional C<Description>, in
+addition to the parameters that you want to use for your algorithm.
+
+You must also specify certain parameters for the tasks that AWS Glue
+runs on your behalf as part of learning from your data and creating a
+high-quality machine learning transform. These parameters include
+C<Role>, and optionally, C<AllocatedCapacity>, C<Timeout>, and
+C<MaxRetries>. For more information, see Jobs
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html).
 
 
 =head2 CreatePartition
@@ -1423,7 +1574,12 @@ Each argument is described in detail in: L<Paws::Glue::CreateSecurityConfigurati
 
 Returns: a L<Paws::Glue::CreateSecurityConfigurationResponse> instance
 
-Creates a new security configuration.
+Creates a new security configuration. A security configuration is a set
+of security properties that can be used by AWS Glue. You can use a
+security configuration to encrypt data at rest. For information about
+using security configurations in AWS Glue, see Encrypting Data Written
+by Crawlers, Jobs, and Development Endpoints
+(https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html).
 
 
 =head2 CreateTable
@@ -1586,16 +1742,16 @@ Each argument is described in detail in: L<Paws::Glue::DeleteDatabase>
 
 Returns: a L<Paws::Glue::DeleteDatabaseResponse> instance
 
-Removes a specified Database from a Data Catalog.
+Removes a specified database from a Data Catalog.
 
-After completing this operation, you will no longer have access to the
+After completing this operation, you no longer have access to the
 tables (and all table versions and partitions that might belong to the
 tables) and the user-defined functions in the deleted database. AWS
 Glue deletes these "orphaned" resources asynchronously in a timely
 manner, at the discretion of the service.
 
-To ensure immediate deletion of all related resources, before calling
-C<DeleteDatabase>, use C<DeleteTableVersion> or
+To ensure the immediate deletion of all related resources, before
+calling C<DeleteDatabase>, use C<DeleteTableVersion> or
 C<BatchDeleteTableVersion>, C<DeletePartition> or
 C<BatchDeletePartition>, C<DeleteUserDefinedFunction>, and
 C<DeleteTable> or C<BatchDeleteTable>, to delete any resources that
@@ -1615,7 +1771,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteDevEndpoint>
 
 Returns: a L<Paws::Glue::DeleteDevEndpointResponse> instance
 
-Deletes a specified DevEndpoint.
+Deletes a specified development endpoint.
 
 
 =head2 DeleteJob
@@ -1633,6 +1789,28 @@ Returns: a L<Paws::Glue::DeleteJobResponse> instance
 
 Deletes a specified job definition. If the job definition is not found,
 no exception is thrown.
+
+
+=head2 DeleteMLTransform
+
+=over
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteMLTransform>
+
+Returns: a L<Paws::Glue::DeleteMLTransformResponse> instance
+
+Deletes an AWS Glue machine learning transform. Machine learning
+transforms are a special type of transform that use machine learning to
+learn the details of the transformation to be performed by learning
+from examples provided by humans. These transformations are then saved
+by AWS Glue. If you no longer need a transform, you can delete it by
+calling C<DeleteMLTransforms>. However, any AWS Glue jobs that still
+reference the deleted transform will no longer succeed.
 
 
 =head2 DeletePartition
@@ -1708,13 +1886,13 @@ Returns: a L<Paws::Glue::DeleteTableResponse> instance
 
 Removes a table definition from the Data Catalog.
 
-After completing this operation, you will no longer have access to the
-table versions and partitions that belong to the deleted table. AWS
-Glue deletes these "orphaned" resources asynchronously in a timely
-manner, at the discretion of the service.
+After completing this operation, you no longer have access to the table
+versions and partitions that belong to the deleted table. AWS Glue
+deletes these "orphaned" resources asynchronously in a timely manner,
+at the discretion of the service.
 
-To ensure immediate deletion of all related resources, before calling
-C<DeleteTable>, use C<DeleteTableVersion> or
+To ensure the immediate deletion of all related resources, before
+calling C<DeleteTable>, use C<DeleteTableVersion> or
 C<BatchDeleteTableVersion>, and C<DeletePartition> or
 C<BatchDeletePartition>, to delete any resources that belong to the
 table.
@@ -1978,7 +2156,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDatabases>
 
 Returns: a L<Paws::Glue::GetDatabasesResponse> instance
 
-Retrieves all Databases defined in a given Data Catalog.
+Retrieves all databases defined in a given Data Catalog.
 
 
 =head2 GetDataCatalogEncryptionSettings
@@ -2026,7 +2204,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoint>
 
 Returns: a L<Paws::Glue::GetDevEndpointResponse> instance
 
-Retrieves information about a specified DevEndpoint.
+Retrieves information about a specified development endpoint.
 
 When you create a development endpoint in a virtual private cloud
 (VPC), AWS Glue returns only a private IP address, and the public IP
@@ -2049,7 +2227,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoints>
 
 Returns: a L<Paws::Glue::GetDevEndpointsResponse> instance
 
-Retrieves all the DevEndpoints in this AWS account.
+Retrieves all the development endpoints in this AWS account.
 
 When you create a development endpoint in a virtual private cloud
 (VPC), AWS Glue returns only a private IP address and the public IP
@@ -2071,6 +2249,24 @@ Each argument is described in detail in: L<Paws::Glue::GetJob>
 Returns: a L<Paws::Glue::GetJobResponse> instance
 
 Retrieves an existing job definition.
+
+
+=head2 GetJobBookmark
+
+=over
+
+=item JobName => Str
+
+=item [RunId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetJobBookmark>
+
+Returns: a L<Paws::Glue::GetJobBookmarkResponse> instance
+
+Returns information on a job bookmark entry.
 
 
 =head2 GetJobRun
@@ -2149,6 +2345,107 @@ Each argument is described in detail in: L<Paws::Glue::GetMapping>
 Returns: a L<Paws::Glue::GetMappingResponse> instance
 
 Creates mappings.
+
+
+=head2 GetMLTaskRun
+
+=over
+
+=item TaskRunId => Str
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetMLTaskRun>
+
+Returns: a L<Paws::Glue::GetMLTaskRunResponse> instance
+
+Gets details for a specific task run on a machine learning transform.
+Machine learning task runs are asynchronous tasks that AWS Glue runs on
+your behalf as part of various machine learning workflows. You can
+check the stats of any task run by calling C<GetMLTaskRun> with the
+C<TaskRunID> and its parent transform's C<TransformID>.
+
+
+=head2 GetMLTaskRuns
+
+=over
+
+=item TransformId => Str
+
+=item [Filter => L<Paws::Glue::TaskRunFilterCriteria>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Sort => L<Paws::Glue::TaskRunSortCriteria>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetMLTaskRuns>
+
+Returns: a L<Paws::Glue::GetMLTaskRunsResponse> instance
+
+Gets a list of runs for a machine learning transform. Machine learning
+task runs are asynchronous tasks that AWS Glue runs on your behalf as
+part of various machine learning workflows. You can get a sortable,
+filterable list of machine learning task runs by calling
+C<GetMLTaskRuns> with their parent transform's C<TransformID> and other
+optional parameters as documented in this section.
+
+This operation returns a list of historic runs and must be paginated.
+
+
+=head2 GetMLTransform
+
+=over
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetMLTransform>
+
+Returns: a L<Paws::Glue::GetMLTransformResponse> instance
+
+Gets an AWS Glue machine learning transform artifact and all its
+corresponding metadata. Machine learning transforms are a special type
+of transform that use machine learning to learn the details of the
+transformation to be performed by learning from examples provided by
+humans. These transformations are then saved by AWS Glue. You can
+retrieve their metadata by calling C<GetMLTransform>.
+
+
+=head2 GetMLTransforms
+
+=over
+
+=item [Filter => L<Paws::Glue::TransformFilterCriteria>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Sort => L<Paws::Glue::TransformSortCriteria>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetMLTransforms>
+
+Returns: a L<Paws::Glue::GetMLTransformsResponse> instance
+
+Gets a sortable, filterable list of existing AWS Glue machine learning
+transforms. Machine learning transforms are a special type of transform
+that use machine learning to learn the details of the transformation to
+be performed by learning from examples provided by humans. These
+transformations are then saved by AWS Glue, and you can retrieve their
+metadata by calling C<GetMLTransforms>.
 
 
 =head2 GetPartition
@@ -2459,7 +2756,7 @@ Each argument is described in detail in: L<Paws::Glue::GetUserDefinedFunctions>
 
 Returns: a L<Paws::Glue::GetUserDefinedFunctionsResponse> instance
 
-Retrieves a multiple function definitions from the Data Catalog.
+Retrieves multiple function definitions from the Data Catalog.
 
 
 =head2 GetWorkflow
@@ -2553,7 +2850,7 @@ Each argument is described in detail in: L<Paws::Glue::ImportCatalogToGlue>
 
 Returns: a L<Paws::Glue::ImportCatalogToGlueResponse> instance
 
-Imports an existing Athena Data Catalog to AWS Glue
+Imports an existing Amazon Athena Data Catalog to AWS Glue
 
 
 =head2 ListCrawlers
@@ -2753,6 +3050,8 @@ the value otherwise adds the property to existing properties.
 
 =item JobName => Str
 
+=item [RunId => Str]
+
 
 =back
 
@@ -2761,6 +3060,43 @@ Each argument is described in detail in: L<Paws::Glue::ResetJobBookmark>
 Returns: a L<Paws::Glue::ResetJobBookmarkResponse> instance
 
 Resets a bookmark entry.
+
+
+=head2 SearchTables
+
+=over
+
+=item [CatalogId => Str]
+
+=item [Filters => ArrayRef[L<Paws::Glue::PropertyPredicate>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SearchText => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::Glue::SortCriterion>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::SearchTables>
+
+Returns: a L<Paws::Glue::SearchTablesResponse> instance
+
+Searches a set of tables based on properties in the table metadata as
+well as on the parent database. You can search against text or filter
+conditions.
+
+You can only get tables that you have access to based on the security
+policies defined in Lake Formation. You need at least a read-only
+access to the table for it to be returned. If you do not have access to
+all the columns in the table, these columns will not be searched
+against when returning the list of tables back to you. If you have
+access to the columns but not the data in the columns, those columns
+and the associated metadata for those columns will be included in the
+search.
 
 
 =head2 StartCrawler
@@ -2800,6 +3136,81 @@ unless the crawler is already running or the schedule state is already
 C<SCHEDULED>.
 
 
+=head2 StartExportLabelsTaskRun
+
+=over
+
+=item OutputS3Path => Str
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::StartExportLabelsTaskRun>
+
+Returns: a L<Paws::Glue::StartExportLabelsTaskRunResponse> instance
+
+Begins an asynchronous task to export all labeled data for a particular
+transform. This task is the only label-related API call that is not
+part of the typical active learning workflow. You typically use
+C<StartExportLabelsTaskRun> when you want to work with all of your
+existing labels at the same time, such as when you want to remove or
+change labels that were previously submitted as truth. This API
+operation accepts the C<TransformId> whose labels you want to export
+and an Amazon Simple Storage Service (Amazon S3) path to export the
+labels to. The operation returns a C<TaskRunId>. You can check on the
+status of your task run by calling the C<GetMLTaskRun> API.
+
+
+=head2 StartImportLabelsTaskRun
+
+=over
+
+=item InputS3Path => Str
+
+=item TransformId => Str
+
+=item [ReplaceAllLabels => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::StartImportLabelsTaskRun>
+
+Returns: a L<Paws::Glue::StartImportLabelsTaskRunResponse> instance
+
+Enables you to provide additional labels (examples of truth) to be used
+to teach the machine learning transform and improve its quality. This
+API operation is generally used as part of the active learning workflow
+that starts with the C<StartMLLabelingSetGenerationTaskRun> call and
+that ultimately results in improving the quality of your machine
+learning transform.
+
+After the C<StartMLLabelingSetGenerationTaskRun> finishes, AWS Glue
+machine learning will have generated a series of questions for humans
+to answer. (Answering these questions is often called 'labeling' in the
+machine learning workflows). In the case of the C<FindMatches>
+transform, these questions are of the form, E<ldquo>What is the correct
+way to group these rows together into groups composed entirely of
+matching records?E<rdquo> After the labeling process is finished, users
+upload their answers/labels with a call to C<StartImportLabelsTaskRun>.
+After C<StartImportLabelsTaskRun> finishes, all future runs of the
+machine learning transform use the new and improved labels and perform
+a higher-quality transformation.
+
+By default, C<StartMLLabelingSetGenerationTaskRun> continually learns
+from and combines all labels that you upload unless you set C<Replace>
+to true. If you set C<Replace> to true, C<StartImportLabelsTaskRun>
+deletes and forgets all previously uploaded labels and learns only from
+the exact set that you upload. Replacing labels can be helpful if you
+realize that you previously uploaded incorrect labels, and you believe
+that they are having a negative effect on your transform quality.
+
+You can check on the status of your task run by calling the
+C<GetMLTaskRun> operation.
+
+
 =head2 StartJobRun
 
 =over
@@ -2832,6 +3243,63 @@ Each argument is described in detail in: L<Paws::Glue::StartJobRun>
 Returns: a L<Paws::Glue::StartJobRunResponse> instance
 
 Starts a job run using a job definition.
+
+
+=head2 StartMLEvaluationTaskRun
+
+=over
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::StartMLEvaluationTaskRun>
+
+Returns: a L<Paws::Glue::StartMLEvaluationTaskRunResponse> instance
+
+Starts a task to estimate the quality of the transform.
+
+When you provide label sets as examples of truth, AWS Glue machine
+learning uses some of those examples to learn from them. The rest of
+the labels are used as a test to estimate quality.
+
+Returns a unique identifier for the run. You can call C<GetMLTaskRun>
+to get more information about the stats of the C<EvaluationTaskRun>.
+
+
+=head2 StartMLLabelingSetGenerationTaskRun
+
+=over
+
+=item OutputS3Path => Str
+
+=item TransformId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::StartMLLabelingSetGenerationTaskRun>
+
+Returns: a L<Paws::Glue::StartMLLabelingSetGenerationTaskRunResponse> instance
+
+Starts the active learning workflow for your machine learning transform
+to improve the transform's quality by generating label sets and adding
+labels.
+
+When the C<StartMLLabelingSetGenerationTaskRun> finishes, AWS Glue will
+have generated a "labeling set" or a set of questions for humans to
+answer.
+
+In the case of the C<FindMatches> transform, these questions are of the
+form, E<ldquo>What is the correct way to group these rows together into
+groups composed entirely of matching records?E<rdquo>
+
+After the labeling process is finished, you can upload your labels with
+a call to C<StartImportLabelsTaskRun>. After
+C<StartImportLabelsTaskRun> finishes, all future runs of the machine
+learning transform will use the new and improved labels and perform a
+higher-quality transformation.
 
 
 =head2 StartTrigger
@@ -3102,7 +3570,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateDevEndpoint>
 
 Returns: a L<Paws::Glue::UpdateDevEndpointResponse> instance
 
-Updates a specified DevEndpoint.
+Updates a specified development endpoint.
 
 
 =head2 UpdateJob
@@ -3121,6 +3589,48 @@ Each argument is described in detail in: L<Paws::Glue::UpdateJob>
 Returns: a L<Paws::Glue::UpdateJobResponse> instance
 
 Updates an existing job definition.
+
+
+=head2 UpdateMLTransform
+
+=over
+
+=item TransformId => Str
+
+=item [Description => Str]
+
+=item [GlueVersion => Str]
+
+=item [MaxCapacity => Num]
+
+=item [MaxRetries => Int]
+
+=item [Name => Str]
+
+=item [NumberOfWorkers => Int]
+
+=item [Parameters => L<Paws::Glue::TransformParameters>]
+
+=item [Role => Str]
+
+=item [Timeout => Int]
+
+=item [WorkerType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UpdateMLTransform>
+
+Returns: a L<Paws::Glue::UpdateMLTransformResponse> instance
+
+Updates an existing machine learning transform. Call this operation to
+tune the algorithm parameters to achieve better results.
+
+After calling this operation, you can call the
+C<StartMLEvaluationTaskRun> operation to assess how well your new
+parameters achieved your goals (such as improving the quality of your
+machine learning transform, or making it more cost-effective).
 
 
 =head2 UpdatePartition

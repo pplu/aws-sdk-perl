@@ -17,7 +17,7 @@ Paws::GameLift::DescribeGameSessionDetailsOutput
 
 =head2 GameSessionDetails => ArrayRef[L<Paws::GameLift::GameSessionDetail>]
 
-Collection of objects containing game session properties and the
+A collection of objects containing game session properties and the
 protection policy currently in force for each session matching the
 request.
 

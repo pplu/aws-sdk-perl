@@ -51,14 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the table resides. If none is
-supplied, the AWS account ID is used by default.
+provided, the AWS account ID is used by default.
 
 
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The name of the catalog database where the tables to delete reside. For
-Hive compatibility, this name is entirely lowercase.
+The name of the catalog database in which the tables to delete reside.
+For Hive compatibility, this name is entirely lowercase.
 
 
 

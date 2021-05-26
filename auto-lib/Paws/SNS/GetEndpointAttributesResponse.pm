@@ -41,6 +41,8 @@ for an app and mobile device. This is returned from the notification
 service when an app and mobile device are registered with the
 notification service.
 
+The device token for the iOS platform is returned in lowercase.
+
 =back
 
 

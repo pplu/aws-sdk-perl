@@ -26,8 +26,8 @@ Paws::IoT::UpdateSecurityProfileResponse
 =head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
 
 A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the security profile's C<behaviors> but
-it is also retained for any metric specified here.
+retained for any metric used in the security profile's C<behaviors>,
+but it is also retained for any metric specified here.
 
 
 =head2 AlertTargets => L<Paws::IoT::AlertTargets>

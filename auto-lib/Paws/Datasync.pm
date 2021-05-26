@@ -30,6 +30,11 @@ package Paws::Datasync;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationEfs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateLocationFsxWindows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationFsxWindows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateLocationNfs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationNfs', @_);
@@ -38,6 +43,11 @@ package Paws::Datasync;
   sub CreateLocationS3 {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationS3', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateLocationSmb {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationSmb', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateTask {
@@ -70,6 +80,11 @@ package Paws::Datasync;
     my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationEfs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeLocationFsxWindows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationFsxWindows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeLocationNfs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationNfs', @_);
@@ -78,6 +93,11 @@ package Paws::Datasync;
   sub DescribeLocationS3 {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationS3', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocationSmb {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationSmb', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTask {
@@ -258,7 +278,7 @@ package Paws::Datasync;
   }
 
 
-  sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationNfs CreateLocationS3 CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationNfs DescribeLocationS3 DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateTask / }
+  sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationFsxWindows CreateLocationNfs CreateLocationS3 CreateLocationSmb CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationFsxWindows DescribeLocationNfs DescribeLocationS3 DescribeLocationSmb DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateTask / }
 
 1;
 
@@ -335,7 +355,13 @@ execution.
 
 =item [AgentName => Str]
 
+=item [SecurityGroupArns => ArrayRef[Str|Undef]]
+
+=item [SubnetArns => ArrayRef[Str|Undef]]
+
 =item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+
+=item [VpcEndpointId => Str]
 
 
 =back
@@ -351,14 +377,14 @@ you want to activate the agent in. You activate the agent in the AWS
 Region where your target locations (in Amazon S3 or Amazon EFS) reside.
 Your tasks are created in this AWS Region.
 
+You can activate the agent in a VPC (Virtual private Cloud) or provide
+the agent access to a VPC endpoint so you can run tasks without going
+over the public Internet.
+
 You can use an agent for more than one location. If a task uses
 multiple agents, all of them need to have status AVAILABLE for the task
 to run. If you use multiple agents for a source location, the status of
 all the agents must be AVAILABLE for the task to run.
-
-For more information, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html#activating-agent"
-(Activating an Agent) in the I<AWS DataSync User Guide.>
 
 Agents are automatically updated by AWS on a regular basis, using a
 mechanism that ensures minimal interruption to your tasks.
@@ -386,6 +412,34 @@ Returns: a L<Paws::Datasync::CreateLocationEfsResponse> instance
 Creates an endpoint for an Amazon EFS file system.
 
 
+=head2 CreateLocationFsxWindows
+
+=over
+
+=item FsxFilesystemArn => Str
+
+=item Password => Str
+
+=item SecurityGroupArns => ArrayRef[Str|Undef]
+
+=item User => Str
+
+=item [Domain => Str]
+
+=item [Subdirectory => Str]
+
+=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::CreateLocationFsxWindows>
+
+Returns: a L<Paws::Datasync::CreateLocationFsxWindowsResponse> instance
+
+Creates an endpoint for an Amazon FSx for Windows file system.
+
+
 =head2 CreateLocationNfs
 
 =over
@@ -407,7 +461,8 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationNfs>
 
 Returns: a L<Paws::Datasync::CreateLocationNfsResponse> instance
 
-Creates an endpoint for a Network File System (NFS) file system.
+Defines a file system on a Network File System (NFS) server that can be
+read from or written to
 
 
 =head2 CreateLocationS3
@@ -417,6 +472,8 @@ Creates an endpoint for a Network File System (NFS) file system.
 =item S3BucketArn => Str
 
 =item S3Config => L<Paws::Datasync::S3Config>
+
+=item [S3StorageClass => Str]
 
 =item [Subdirectory => Str]
 
@@ -438,9 +495,39 @@ policy that grants the required permissions and attaching the policy to
 the role. An example of such a policy is shown in the examples section.
 
 For more information, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location"
-(Configuring Amazon S3 Location Settings) in the I<AWS DataSync User
-Guide>.
+https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location
+in the I<AWS DataSync User Guide.>
+
+
+=head2 CreateLocationSmb
+
+=over
+
+=item AgentArns => ArrayRef[Str|Undef]
+
+=item Password => Str
+
+=item ServerHostname => Str
+
+=item Subdirectory => Str
+
+=item User => Str
+
+=item [Domain => Str]
+
+=item [MountOptions => L<Paws::Datasync::SmbMountOptions>]
+
+=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::CreateLocationSmb>
+
+Returns: a L<Paws::Datasync::CreateLocationSmbResponse> instance
+
+Defines a file system on an Server Message Block (SMB) server that can
+be read from or written to.
 
 
 =head2 CreateTask
@@ -458,6 +545,8 @@ Guide>.
 =item [Name => Str]
 
 =item [Options => L<Paws::Datasync::Options>]
+
+=item [Schedule => L<Paws::Datasync::TaskSchedule>]
 
 =item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
 
@@ -576,6 +665,23 @@ Returns metadata, such as the path information about an Amazon EFS
 location.
 
 
+=head2 DescribeLocationFsxWindows
+
+=over
+
+=item LocationArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::DescribeLocationFsxWindows>
+
+Returns: a L<Paws::Datasync::DescribeLocationFsxWindowsResponse> instance
+
+Returns metadata, such as the path information about an Amazon FSx for
+Windows location.
+
+
 =head2 DescribeLocationNfs
 
 =over
@@ -606,6 +712,23 @@ Each argument is described in detail in: L<Paws::Datasync::DescribeLocationS3>
 Returns: a L<Paws::Datasync::DescribeLocationS3Response> instance
 
 Returns metadata, such as bucket name, about an Amazon S3 bucket
+location.
+
+
+=head2 DescribeLocationSmb
+
+=over
+
+=item LocationArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::DescribeLocationSmb>
+
+Returns: a L<Paws::Datasync::DescribeLocationSmbResponse> instance
+
+Returns metadata, such as the path and user information about a SMB
 location.
 
 
@@ -775,9 +898,8 @@ C<TaskExecution> at a time.
 C<TaskExecution> has the following transition phases: INITIALIZING |
 PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 
-For detailed information, see I<Task Execution> in
-"https://docs.aws.amazon.com/datasync/latest/userguide/how-datasync-works.html#terminology"
-(Components and Terminology) in the I<AWS DataSync User Guide>.
+For detailed information, see the Task Execution section in the
+Components and Terminology topic in the I<AWS DataSync User Guide>.
 
 
 =head2 TagResource
@@ -847,6 +969,8 @@ Updates the name of an agent.
 =item [Name => Str]
 
 =item [Options => L<Paws::Datasync::Options>]
+
+=item [Schedule => L<Paws::Datasync::TaskSchedule>]
 
 
 =back

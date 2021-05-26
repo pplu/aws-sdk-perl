@@ -46,17 +46,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],                       # OPTIONAL
             Columns => [
               {
-                Name    => 'MyNameString',          # min: 1, max: 255
-                Comment => 'MyCommentString',       # max: 255; OPTIONAL
-                Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+                Name       => 'MyNameString',       # min: 1, max: 255
+                Comment    => 'MyCommentString',    # max: 255; OPTIONAL
+                Parameters => {
+                  'MyKeyString' => 'MyParametersMapValue'
+                  ,    # key: min: 1, max: 255, value: max: 512000
+                },    # OPTIONAL
+                Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
               },
               ...
-            ],                                      # OPTIONAL
-            Compressed      => 1,                   # OPTIONAL
-            InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
-            Location        => 'MyLocationString',  # max: 2056; OPTIONAL
-            NumberOfBuckets => 1,                   # OPTIONAL
-            OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+            ],                                   # OPTIONAL
+            Compressed      => 1,                     # OPTIONAL
+            InputFormat     => 'MyFormatString',      # max: 128; OPTIONAL
+            Location        => 'MyLocationString',    # max: 2056; OPTIONAL
+            NumberOfBuckets => 1,                     # OPTIONAL
+            OutputFormat    => 'MyFormatString',      # max: 128; OPTIONAL
             Parameters      => {
               'MyKeyString' => 'MyParametersMapValue'
               ,    # key: min: 1, max: 255, value: max: 512000
@@ -111,8 +115,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 CatalogId => Str
 
-The ID of the catalog in which the partion is to be created. Currently,
-this should be the AWS account ID.
+The ID of the catalog in which the partition is to be created.
+Currently, this should be the AWS account ID.
 
 
 

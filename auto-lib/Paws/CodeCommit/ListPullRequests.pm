@@ -61,13 +61,14 @@ created by that user.
 
 =head2 MaxResults => Int
 
-A non-negative integer used to limit the number of returned results.
+A non-zero, non-negative integer used to limit the number of returned
+results.
 
 
 
 =head2 NextToken => Str
 
-An enumeration token that when provided in a request, returns the next
+An enumeration token that, when provided in a request, returns the next
 batch of the results.
 
 

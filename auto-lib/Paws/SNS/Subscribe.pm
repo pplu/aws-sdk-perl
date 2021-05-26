@@ -77,6 +77,15 @@ delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
 for the endpoints to process JSON formatting, which is otherwise
 created for Amazon SNS metadata.
 
+=item *
+
+C<RedrivePolicy> E<ndash> When specified, sends undeliverable messages
+to the specified Amazon SQS dead-letter queue. Messages that can't be
+delivered due to client errors (for example, when the subscribed
+endpoint is unreachable) or server errors (for example, when the
+service that powers the subscribed endpoint becomes unavailable) are
+held in the dead-letter queue for further analysis or reprocessing.
+
 =back
 
 
@@ -92,12 +101,12 @@ protocol:
 =item *
 
 For the C<http> protocol, the endpoint is an URL beginning with
-"https://"
+C<http://>
 
 =item *
 
 For the C<https> protocol, the endpoint is a URL beginning with
-"https://"
+C<https://>
 
 =item *
 
@@ -123,7 +132,7 @@ mobile app and device.
 
 =item *
 
-For the C<lambda> protocol, the endpoint is the ARN of an AWS Lambda
+For the C<lambda> protocol, the endpoint is the ARN of an Amazon Lambda
 function.
 
 =back
@@ -168,7 +177,7 @@ EndpointArn for a mobile app and device.
 
 =item *
 
-C<lambda> E<ndash> delivery of JSON-encoded message to an AWS Lambda
+C<lambda> E<ndash> delivery of JSON-encoded message to an Amazon Lambda
 function.
 
 =back
@@ -181,14 +190,24 @@ function.
 Sets whether the response from the C<Subscribe> request includes the
 subscription ARN, even if the subscription is not yet confirmed.
 
-If you set this parameter to C<false>, the response includes the ARN
-for confirmed subscriptions, but it includes an ARN value of "pending
-subscription" for subscriptions that are not yet confirmed. A
+=over
+
+=item *
+
+If you have the subscription ARN returned, the response includes the
+ARN in all cases, even if the subscription is not yet confirmed.
+
+=item *
+
+If you don't have the subscription ARN returned, in addition to the ARN
+for confirmed subscriptions, the response also includes the C<pending
+subscription> ARN value for subscriptions that aren't yet confirmed. A
 subscription becomes confirmed when the subscriber calls the
 C<ConfirmSubscription> action with a confirmation token.
 
-If you set this parameter to C<true>, the response includes the ARN in
-all cases, even if the subscription is not yet confirmed.
+=back
+
+If you set this parameter to C<true>, .
 
 The default value is C<false>.
 
