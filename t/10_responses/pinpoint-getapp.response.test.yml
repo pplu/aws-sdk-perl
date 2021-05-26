@@ -1,0 +1,22 @@
+---
+call: GetApp 
+service: Pinpoint
+tests:
+  - expected: perl_PAWS_test 
+    op: eq
+    path: Name
+  - expected: arn:aws:mobiletargeting:us-east-1:999999999991:apps/fd89d30f64104bfcb4809eacbcc261af
+    op: eq
+    path: Arn
+  - expected: fd89d30f64104bfcb4809eacbcc261af
+    op: eq
+    path: Id
+  - expected: value1
+    op: eq
+    path: Tags.Map.key1
+  - expected: value2
+    op: eq
+    path: Tags.Map.key2
+  - expected: e16d3fa0-a3d7-11e9-b0d7-1923289cbffa
+    op: eq
+    path: _request_id

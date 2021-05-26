@@ -1,0 +1,22 @@
+---
+call: DeleteApp 
+service: Pinpoint
+tests:
+  - expected: 84907e5a-a4a2-11e9-a928-b5c40777813f 
+    op: eq 
+    path: _request_id 
+  - expected: d055d2968e934363b683d02366875914
+    op: eq
+    path: Id
+  - expected: arn:aws:mobiletargeting:us-east-1:985173205561:apps/d055d2968e934363b683d02366875914
+    op: eq
+    path: Arn
+  - expected: perl_PAWS_test
+    op: eq
+    path: Name
+  - expected: value1
+    op: eq
+    path: Tags.Map.key1
+  - expected: value2
+    op: eq
+    path: Tags.Map.key2

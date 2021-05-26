@@ -1,0 +1,16 @@
+---
+content: '{"ChannelType":"SMS","Address":"1-939-555-3226","EndpointStatus":"ACTIVE","OptOut":"NONE","RequestId":"8483fb44-a4a2-11e9-9b4a-eb68e20dc15c","EffectiveDate":"2019-07-12T12:42:31.256Z","ApplicationId":"d055d2968e934363b683d02366875914","Id":"test-473080","CohortId":"40","CreationDate":"2019-07-12T12:42:31.256Z"}'
+headers:
+  'x-amz-apigw-id': 'ctj42EqEoAMFlrA='
+  'x-amz-cf-id': 'i-V1maot-p2VgbT_C4dZ_M57q9ucpYA7qyFyR7edEr1owB-QuidDbw=='
+  'connection': 'keep-alive'
+  'x-amzn-trace-id': 'Root=1-5d288038-7b9d47ea870c1706744dc37c'
+  'content-type': 'application/json'
+  'x-cache': 'Miss from cloudfront'
+  'x-amzn-requestid': '8483fb44-a4a2-11e9-9b4a-eb68e20dc15c'
+  'via': '1.1 a9663235241a881e6187d8d87d15b277.cloudfront.net (CloudFront)'
+  'content-length': '312'
+  'access-control-allow-origin': '*'
+  'date': 'Fri, 12 Jul 2019 12:42:32 GMT'
+  'x-amz-cf-pop': 'ORD51'
+status: 200

@@ -30,14 +30,23 @@ package FileCaller;
 
   with 'Paws::Net::CallerRole';
   use Paws::Net::APIResponse;
-
+  use Paws::Net::APIRequest;
   has response_file => ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
   has debug => ( is => 'rw', default => 0 );
+  has request_only =>( is => 'rw', default => 0 );
 
   sub do_call {
     my ($self, $service, $call_object) = @_;
-
-    my $response = $self->_file_response;
+    my $response;
+	
+	if ($self->request_only){
+		#my $request = $self->_file_response;
+	  return $service->prepare_request_for_call($call_object);
+#          prepare_request_for_call
+	}
+	else {
+		
+		my $response = $self->_file_response;
 
     if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
 
@@ -48,6 +57,7 @@ package FileCaller;
     );
 
     return $service->response_to_object->process($call_object, $res);
+    }   
   }
 
   # Return a fake HTTP-like response cooked in a YAML file
