@@ -5,7 +5,7 @@ tests:
   - expected: <AnalyticsConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Id>test1333</Id><StorageClassAnalysis><DataExport><Destination><S3BucketDestination><Bucket>arn:aws:s3:::cargotel-logs</Bucket><Format>CSV</Format><Prefix>Test</Prefix></S3BucketDestination></Destination><OutputSchemaVersion>V_1</OutputSchemaVersion></DataExport></StorageClassAnalysis></AnalyticsConfiguration> 
     op: eq
     path: content
-  - expected: dev.cargotel.paws 
+  - expected: oneoffpaws 
     op: eq
     path: parameters
     key: Bucket
@@ -40,9 +40,15 @@ tests:
   - expected: PUT 
     op: eq
     path: method
-  - expected: https://s3.fake_region.amazonaws.com/dev.cargotel.paws?id=test1333&analytics=
-    op: eq
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: /dev.cargotel.paws?id=test1333&analytics=
-    op: eq
+  - expected: id=test1333
+    path: url
+  - expected: analytics=
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: id=test1333
+    path: uri
+  - expected: analytics=
     path: uri

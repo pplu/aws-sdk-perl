@@ -1,0 +1,31 @@
+---
+call: ListTagsForResource
+service: CloudFront
+tests:
+  - expected: Tag1
+    op: eq
+    path: Tags.Items.0.Key
+  - expected: Value 1
+    op: eq
+    path: Tags.Items.0.Value
+  - expected: Tag2
+    op: eq
+    path: Tags.Items.1.Key
+  - expected: Value 2
+    op: eq
+    path: Tags.Items.1.Value
+  - expected: Tag3
+    op: eq
+    path: Tags.Items.2.Key
+  - expected: Value 3
+    op: eq
+    path: Tags.Items.2.Value
+  - expected: Tag4
+    op: eq
+    path: Tags.Items.3.Key
+  - expected: Value 4
+    op: eq
+    path: Tags.Items.3.Value
+  - expected: c8f47479-9a26-4d2f-9cb9-298eca142f6d
+    op: eq
+    path: _request_id

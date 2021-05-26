@@ -1,0 +1,7 @@
+---
+call: PutBucketReplication
+service: S3
+tests:
+  - expected: 3B572AEA0C118EBD
+    op: eq
+    path: _request_id

@@ -1,0 +1,7 @@
+---
+call: PutPublicAccessBlock
+service: S3
+tests:
+  - expected: 8184EE4B44B563FA
+    op: eq
+    path: _request_id

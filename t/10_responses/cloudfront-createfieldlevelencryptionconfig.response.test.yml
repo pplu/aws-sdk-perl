@@ -1,0 +1,52 @@
+---
+call: CreateFieldLevelEncryptionConfig
+service: CloudFront
+tests:
+  - expected: E3MYZU38G7JCEI
+    op: eq
+    path: ETag
+  - expected: 01-01-2020:00001
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.CallerReference
+  - expected: No Gerry you can't come!
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.Comment
+  - expected: application/x-www-form-urlencoded
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ContentType
+  - expected: URLEncoded
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.Format
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Items.0.ProfileId
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ContentTypeProfiles.Quantity
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.ContentTypeProfileConfig.ForwardWhenContentTypeIsUnknown
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.ForwardWhenQueryArgProfileIsUnknown
+  - expected: P14TNUMMKLEPXX
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Items.0.ProfileId
+  - expected: no_conig
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Items.0.QueryArg
+  - expected: 1
+    op: eq
+    path: FieldLevelEncryption.FieldLevelEncryptionConfig.QueryArgProfileConfig.QueryArgProfiles.Quantity
+  - expected: C26GE31LXDSQZI
+    op: eq
+    path: FieldLevelEncryption.Id
+  - expected: 2020-01-09T21:16:52.064Z
+    op: eq
+    path: FieldLevelEncryption.LastModifiedTime
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/field-level-encryption/C26GE31LXDSQZI
+    op: eq
+    path: Location
+  - expected: ab3f3f85-631e-4028-b481-15e3e4ab0b17
+    op: eq
+    path: _request_id

@@ -1,0 +1,13 @@
+---
+call: ListBuckets
+service: S3
+tests:
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com
+    path: url
+    op: eq
+  - expected: /
+    path: uri
+    op: eq

@@ -1,0 +1,25 @@
+---
+call: GetObjectAcl
+service: S3
+tests:
+  - expected: mr squanchy
+    op: eq
+    path: Grants.0.Grantee.DisplayName
+  - expected: 61fc60cb3564d2688646074ceaa202e56ee65cf6e56c28b3a034eabd193d54c8
+    op: eq
+    path: Grants.0.Grantee.ID
+  - expected: CanonicalUser
+    op: eq
+    path: Grants.0.Grantee.Type
+  - expected: FULL_CONTROL
+    op: eq
+    path: Grants.0.Permission
+  - expected: mr squanchy
+    op: eq
+    path: Owner.DisplayName
+  - expected: 61fc60cb3564d2688646074ceaa202e56ee65cf6e56c28b3a034eabd193d54c8
+    op: eq
+    path: Owner.ID
+  - expected: 1B2A37336046737E
+    op: eq
+    path: _request_id

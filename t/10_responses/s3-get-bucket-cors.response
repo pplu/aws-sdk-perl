@@ -1,0 +1,6 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><CORSRule><AllowedOrigin>http://www.example.com</AllowedOrigin><AllowedMethod>PUT</AllowedMethod><AllowedMethod>POST</AllowedMethod><AllowedMethod>DELETE</AllowedMethod><AllowedHeader>*</AllowedHeader></CORSRule><CORSRule><AllowedOrigin>http://www.aws.com</AllowedOrigin><AllowedMethod>PUT</AllowedMethod><AllowedMethod>POST</AllowedMethod><AllowedHeader>*</AllowedHeader></CORSRule></CORSConfiguration>
+headers: []
+status: 200

@@ -9,13 +9,10 @@ package [% inner_class %];
   [%- IF (shape.members.${param_name}.xmlAttribute == 1); traits.push('XMLAtribute'); xml_attributes.push(param_name); %], xml_attribute_name => '[% shape.members.$param_name.locationName %]'
   [%- ELSE %]
   [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest','ListNameInRequest') %], request_name => '[% member.member.locationName %]'
-      [%- IF (shape.members.${param_name}.locationName) %], list_request_name => '[% shape.members.${param_name}.locationName %]'
+      [%- IF (shape.members.${param_name}.locationName != member.member.locationName) %], list_request_name => '[%- IF (!shape.members.${param_name}.locationName.defined) %][%param_name%][% ELSE %][% shape.members.${param_name}.locationName %][% END %]'
 	  [%- ELSE %]
-	     , list_request_name => '[% param_name %]'
+	     , list_request_name => '[%member.member.locationName %]'
 	  [% END %]  
-#      JSP  member.member.locationName [%  member.member.locationName %]
-#	  JSP  shape.members.${param_name}.locationName [% shape.members.${param_name}.locationName %]
-#	  JSP  param_name [% param_name %]
  [%- ELSE %]
   [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
@@ -24,10 +21,9 @@ package [% inner_class %];
   [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]'[% END %]
 [%- END %]
 [%- END %]
-
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
-[%- END -%]
+  [% IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+[% END -%]
 
   [%- IF (xml_attributes.size) %] 
 sub _xml_attributes {

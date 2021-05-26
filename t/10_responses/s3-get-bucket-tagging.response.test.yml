@@ -1,0 +1,19 @@
+---
+call: GetBucketTagging
+service: S3
+tests:
+  - expected: AKey
+    op: eq
+    path: TagSet.0.Key
+  - expected: a value
+    op: eq
+    path: TagSet.0.Value
+  - expected: bKey
+    op: eq
+    path: TagSet.1.Key
+  - expected: b value
+    op: eq
+    path: TagSet.1.Value
+  - expected: 6B94E6B432EA5788
+    op: eq
+    path: _request_id

@@ -1,0 +1,19 @@
+---
+call: DeleteObjects
+service: S3
+tests:
+  - expected: SSB1B5552784608B76
+    op: eq
+    path: _request_id
+  - expected: sample2.txt
+    op: eq
+    path: Deleted.0.Key
+  - expected: Access Denied
+    op: eq
+    path: Errors.0.Message
+  - expected: sample3.txt
+    op: eq
+    path: Errors.0.Key
+  - expected: AccessDenied
+    op: eq
+    path: Errors.0.Code

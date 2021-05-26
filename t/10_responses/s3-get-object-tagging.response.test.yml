@@ -1,0 +1,22 @@
+---
+call: GetObjectTagging
+service: S3
+tests:
+  - expected: AKey
+    op: eq
+    path: TagSet.0.Key
+  - expected: a value
+    op: eq
+    path: TagSet.0.Value
+  - expected: bKey
+    op: eq
+    path: TagSet.1.Key
+  - expected: b value
+    op: eq
+    path: TagSet.1.Value
+  - expected: B8fS4HKDLzvoZVCxg6imKZTnzWF.jSer
+    op: eq
+    path: VersionId
+  - expected: B1B5552784608B76
+    op: eq
+    path: _request_id

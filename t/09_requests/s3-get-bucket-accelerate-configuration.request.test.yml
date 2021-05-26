@@ -2,7 +2,7 @@
 call: GetBucketAccelerateConfiguration
 service: S3
 tests:
-  - expected: 
+  - expected: '' 
     op: eq
     path: content
   - expected: oneoffpaws 
@@ -13,8 +13,10 @@ tests:
     op: eq
     path: method
   - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?accelerate
-    op: eq
     path: url
-  - expected: /oneoffpaws?accelerate
+  - expected: /oneoffpaws?
+    op: eq
+    path: uri
+  - expected: accelerate
     op: eq
     path: uri

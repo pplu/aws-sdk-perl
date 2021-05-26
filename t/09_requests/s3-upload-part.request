@@ -1,0 +1,6 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image.jpg
+PartNumber: 1
+UploadId: MyMultipartUploadId
+Body: BlobBody

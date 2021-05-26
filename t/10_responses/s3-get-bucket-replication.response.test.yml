@@ -1,0 +1,28 @@
+---
+call: GetBucketReplication
+service: S3
+tests:
+  - expected: arn:aws:iam::985173205561:role/service-role/s3crr_role_for_oneoffpaws_to_oneoffpaws.config
+    op: eq
+    path: ReplicationConfiguration.Role
+  - expected: Disabled
+    op: eq
+    path: ReplicationConfiguration.Rules.0.DeleteMarkerReplication.Status
+  - expected: arn:aws:s3:::oneoffpaws.config
+    op: eq
+    path: ReplicationConfiguration.Rules.0.Destination.Bucket
+  - expected: Rule1
+    op: eq
+    path: ReplicationConfiguration.Rules.0.ID
+  - expected: 1
+    op: eq
+    path: ReplicationConfiguration.Rules.0.Priority
+  - expected: Enabled
+    op: eq
+    path: ReplicationConfiguration.Rules.0.SourceSelectionCriteria.SseKmsEncryptedObjects.Status
+  - expected: Enabled
+    op: eq
+    path: ReplicationConfiguration.Rules.0.Status
+  - expected: B78D1D3D1B577FB1
+    op: eq
+    path: _request_id

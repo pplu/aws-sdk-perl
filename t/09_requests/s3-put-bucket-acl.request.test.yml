@@ -36,9 +36,11 @@ tests:
   - expected: PUT
     op: eq
     path: method
-  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?acl
-    op: eq
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: /oneoffpaws?acl
-    op: eq
+  - expected: acl
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: acl
     path: uri

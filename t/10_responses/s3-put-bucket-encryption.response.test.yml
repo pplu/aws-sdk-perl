@@ -1,0 +1,7 @@
+---
+call: PutBucketEncryption
+service: S3
+tests:
+  - expected: KKCE45417D610C2DC
+    op: eq
+    path: _request_id
