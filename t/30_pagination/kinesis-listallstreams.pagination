@@ -1,0 +1,44 @@
+---
+requests:
+  - Limit: 2
+  - Limit: 2
+    ExclusiveStartStreamName: Test1
+  - Limit: 2
+    ExclusiveStartStreamName: Test2
+  - Limit: 2
+    ExclusiveStartStreamName: Test3
+  - Limit: 2
+    ExclusiveStartStreamName: Test4
+  - Limit: 2
+    ExclusiveStartStreamName: Test5
+responses:
+  - content: "{\"HasMoreStreams\":true,\"StreamNames\":[\"Test1DataStream\",\"Test1\"]}"
+    headers: 
+      content-length: 65
+      content-type: application/x-amz-json-1.1
+    status: 200
+  - content: "{\"HasMoreStreams\":true,\"StreamNames\":[\"Test2DataStream\",\"Test2\"]}"
+    headers: 
+      content-length: 72
+      content-type: application/x-amz-json-1.1
+    status: 200
+  - content: "{\"HasMoreStreams\":true,\"StreamNames\":[\"Test3DataStream\",\"Test3\"]}"
+    headers: 
+      content-length: 68
+      content-type: application/x-amz-json-1.1
+    status: 200
+  - content: "{\"HasMoreStreams\":true,\"StreamNames\":[\"Test4DataStream\",\"Test4\"]}"
+    headers: 
+      content-length: 67
+      content-type: application/x-amz-json-1.1
+    status: 200
+  - content: "{\"HasMoreStreams\":true,\"StreamNames\":[\"Test5DataStream\",\"Test5\"]}"
+    headers: 
+      content-length: 67
+      content-type: application/x-amz-json-1.1
+    status: 200
+  - content: "{\"HasMoreStreams\":false,\"StreamNames\":[\"Test6DataStream\"]}"
+    headers: 
+      content-length: 53
+      content-type: application/x-amz-json-1.1
+    status: 200

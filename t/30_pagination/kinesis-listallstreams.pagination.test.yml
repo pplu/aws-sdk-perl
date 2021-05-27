@@ -1,0 +1,172 @@
+---
+call: ListAllStreams
+service: Kinesis
+request:
+  calls:
+    - tests:       
+       - path: Limit
+         expected: 2
+         op: eq
+    - tests:
+       - path: Limit
+         expected: 2
+         op: eq
+       - path: ExclusiveStartStreamName
+         expected: Test1
+         op: eq
+    - tests:
+       - path: Limit
+         expected: 2
+         op: eq
+       - path: ExclusiveStartStreamName
+         expected: Test2
+         op: eq
+    - tests:
+       - path: Limit
+         expected: 2
+         op: eq
+       - path: ExclusiveStartStreamName
+         expected: Test3
+         op: eq
+    - tests:
+       - path: Limit
+         expected: 2
+         op: eq 
+       - path: ExclusiveStartStreamName
+         expected: Test4
+         op: eq 
+    - tests:
+       - path: Limit
+         expected: 2
+         op: eq 
+       - path: ExclusiveStartStreamName
+         expected: Test5
+         op: eq  
+  pages:
+    - tests:       
+       - path: content
+         expected: "{\"Limit\":2}"
+         op: eq
+         type: json
+       - path: headers
+         key: content-type
+         expected: "application/x-amz-json-1.1"
+         op: eq         
+       - path: method
+         expected: POST
+         op: eq
+       - path: parameters
+         key: Action
+         expected: ListStreams
+         op: eq  
+    - tests:
+       - path: content
+         expected: "{\"Limit\":2,\"ExclusiveStartStreamName\":\"Test1\"}"
+         op: eq
+         type: json
+       - path: headers
+         key: content-type
+         expected: "application/x-amz-json-1.1"
+         op: eq
+       - path: method
+         expected: POST
+         op: eq
+       - path: parameters
+         key: Action
+         expected: ListStreams
+         op: eq  
+    - tests:
+       - path: content
+         expected: "{\"Limit\":2,\"ExclusiveStartStreamName\":\"Test2\"}"
+         op: eq
+         type: json
+       - path: headers
+         key: content-type
+         expected: 'application/x-amz-json-1.1'
+         op: eq
+       - path: method
+         expected: 'POST'
+         op: eq
+       - path: parameters
+         key: Action
+         expected: 'ListStreams'
+         op: eq  
+    - tests:
+       - path: content
+         expected: "{\"Limit\":2,\"ExclusiveStartStreamName\":\"Test3\"}"
+         op: eq
+         type: json
+       - path: headers
+         key: content-type
+         expected: 'application/x-amz-json-1.1'
+         op: eq
+       - path: method
+         expected: 'POST'
+         op: eq
+       - path: parameters
+         key: Action
+         expected: 'ListStreams'
+         op: eq
+    - tests:
+       - path: content
+         expected: "{\"Limit\":2,\"ExclusiveStartStreamName\":\"Test4\"}"
+         type: json
+         op: eq
+       - path: headers
+         key: content-type
+         expected: 'application/x-amz-json-1.1'
+         op: eq
+       - path: method
+         expected: 'POST'
+         op: eq
+       - path: parameters
+         key: Action
+         expected: 'ListStreams'
+         op: eq  
+    - tests:
+       - path: content
+         expected: "{\"Limit\":2,\"ExclusiveStartStreamName\":\"Test5\"}"
+         type: json
+         op: eq
+       - path: headers
+         key: content-type
+         expected: 'application/x-amz-json-1.1'
+         op: eq
+       - path: method
+         expected: 'POST'
+         op: eq
+       - path: parameters
+         key: Action
+         expected: 'ListStreams'
+         op: eq  
+response:
+  pages:
+    - tests:
+       - type: ARRAY 
+         expected:   
+           - Test1DataStream
+           - Test1
+    - tests:
+       - type: ARRAY 
+         expected: 
+           - Test2DataStream
+           - Test2
+    - tests:
+       - type: ARRAY 
+         expected: 
+           - Test3DataStream
+           - Test3
+    - tests:
+       - type: ARRAY 
+         expected: 
+           - Test4DataStream
+           - Test4
+    - tests:
+       - type: ARRAY 
+         expected: 
+           - Test5DataStream
+           - Test5
+    - tests:
+       - type: ARRAY 
+         expected:
+           - Test6DataStream
