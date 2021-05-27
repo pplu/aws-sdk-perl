@@ -24,11 +24,13 @@ package [% inner_class %];
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
   [% IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END -%]
-
   [%- IF (xml_attributes.size) %] 
 sub _xml_attributes {
             return [[% FOREACH  xml_attribute= xml_attributes %]'[%  xml_attribute %]'[% IF (NOT loop.last) %],[% END %][% END %]];
 }
   [% END %]
+[%- IF (shape.eventstream) %]
+  class_has _event_stream => (is => 'ro', default => 1);
+[%- END %]
 1;
 [% iclass=shape; INCLUDE 'innerclass_documentation.tt' %]

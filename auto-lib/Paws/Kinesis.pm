@@ -228,7 +228,8 @@ package Paws::Kinesis;
   }
   sub ListAllStreams {
     my $self = shift;
-
+my ($A,$B,$C)=caller();
+warn("JPS ListAllStreams $A,$B,$C");
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStreams(@_);
     my $next_result = $result;
