@@ -331,7 +331,7 @@ sub _to_xml_body {
             and
             not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery')
             and not $attribute->does('Paws::API::Attribute::Trait::ParamInURI')
-            and not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
+        #    and not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
             and not $attribute->type_constraint eq 'Paws::S3::Metadata' )
         {
 

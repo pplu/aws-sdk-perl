@@ -3,40 +3,14 @@
 package [% c.api %]::[% op_name %];
   use Moose;
 
-[% FOREACH param_name IN shape.members.keys.sort -%]
-    [% NEXT IF param_name == 'ContentMD5' %]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
-  [%- traits = [] -%]
-  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]' 
-  [%- IF (shape.members.$param_name.location == 'header'); traits.push('ParamInHeader') %], header_name => '[% shape.members.$param_name.locationName %]'
-  [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') %], header_prefix => '[% shape.members.$param_name.locationName %]'
-  [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') %], query_name => '[% shape.members.$param_name.locationName %]'
-  [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') %], uri_name => '[% shape.members.$param_name.locationName %]'
-  [%- ELSIF (shape.members.$param_name.streaming == 1);            traits.push('ParamInBody'); %][% stream_param = param_name %]
-  [%- ELSE %]
-  [% IF (shape.members.$param_name.locationName != '' ||  member.member.locationName != param_name) %] 
-  [%- IF (shape.members.$param_name.locationName == 'x-amz-meta-') %]  
-  [%- ELSIF (shape.members.$param_name.locationName and shape.members.$param_name.locationName != param_name); traits.push('NameInRequest'); %], request_name => '[% shape.members.$param_name.locationName %]'
-  [%- ELSIF ( member.member.locationName != '' and member.member.locationName != param_name);            traits.push('NameInRequest'); %], request_name => '[% member.member.locationName %]'
-  [%- END %]
-  [%- END %]
-[%- END %]
-[%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% ',' IF (NOT loop.last) %][% END %]][% END -%]
-  [%- IF (shape.members.$param_name.xmlNamespace) %] [% namspace_uri = shape.members.$param_name.xmlNamespace.uri %][% END %] 
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[%- END %]);
-[% END %]
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader'] );
+[% SET include_vars.stream_param = '' -%]
+[% SET include_vars.namsepace_uri = '' -%]
 
-[%- IF operation.input.locationName -%]
-  has _location => (is => 'ro', isa => 'Str',  default => '[% operation.input.locationName %]', traits => ['IsLocal']);
-[%- END %]
-[%- IF operation.input.xmlNamespace %]
-  has _xmlNamespace => (is => 'ro', isa => 'Str',  default => '[% operation.input.xmlNamespace.uri %]',traits => ['IsLocal'] );
-[%- END %]
+[% INCLUDE shape_attributes.tt source="callargs" -%]
 
   use MooseX::ClassAttribute;
-  [%- IF namspace_uri %]
-  class_has _namspace_uri => (isa => 'Str', is => 'ro', default => '[% namspace_uri %]');[% END %]
+  [%- IF namespace_uri %]
+  class_has _namespace_uri => (isa => 'Str', is => 'ro', default => '[% namespace_uri %]');[% END %]
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
@@ -46,8 +20,10 @@ package [% c.api %]::[% op_name %];
     [%- ELSE -%]Paws::API::Response[% END -%]');
   class_has _result_key => (isa => 'Str', is => 'ro');
   [% IF (include_vars.stream_param) %]class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(include_vars.stream_param) %]');[% END %]
-  [%- IF shape.locationName -%]class_has _top_level_element => (isa => 'Str', is => 'ro', default => '[% shape.locationName %]');[% END %]
-  [% IF shape.xmlNamespace -%]class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => '[% shape.xmlNamespace.uri %]');[%- END %]  
+  [%- IF shape.locationName -%] class_has _top_level_element     => (isa => 'Str', is => 'ro', default => '[% shape.locationName %]');[% END %]
+  [%  IF shape.xmlNamespace -%] class_has _top_level_namespace   => (isa => 'Str', is => 'ro', default => '[% shape.xmlNamespace.uri %]');[%- END %]  
+  [%  IF (include_vars.namsepace_uri) %] class_has _namspace_uri => (isa => 'Str', is => 'ro', default => '[%include_vars.namsepace_uri %]');[% END %]
+ 
 1;
 
 [% INCLUDE 'callclass_documentation.tt' %]

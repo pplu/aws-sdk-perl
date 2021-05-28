@@ -9,7 +9,7 @@ tests:
   - expected: ImportantBlueDocuments
     op: eq
     path: parameters
-    key: Id
+    key: id
   - expected: DELETE 
     op: eq
     path: method
