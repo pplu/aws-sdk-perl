@@ -1,42 +1,34 @@
 ---
-call: ListAllStreams
-service: Kinesis
+call: GetBucketCors
+service: S3
 tests:
-  pages: 5
-  items: 10
-  pages: 
-    - expected: ARRAY
-      op: eq
-      values: 
-         - Test2DataStream
-         - Test3
-    - expected: ARRAY
-      op: eq
-      values: 
-       - Test2DataStream
-       - Test3
-    - expected: ARRAY
-      op: eq
-      values:  
-       - TestSteam5Shard
-       - TestStream10
-    - expected: ARRAY
-      op: eq
-      values:  
-       - TestStream11
-       - TestStream2
-    - expected: ARRAY
-      op: eq
-      values: 
-       - TestStream5
-       - TestStream6
-    - expected: ARRAY
-      op: eq
-      values: 
-       - TestStream8
-       - TestStream9
-    - expected: ARRAY
-      op: eq
-      values: 
-       - TestStrem4
-    
+  - expected: ''
+    op: eq
+    path: content
+  - expected: GET
+    op: eq
+    path: method
+  - expected: s3.fake_region.amazonaws.com 
+    key: host
+    op: eq
+    path: headers
+  - expected: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: dev.cargotel.paws
+    key: Bucket
+    op: eq
+    path: parameters
+  - expected: https://s3.fake_region.amazonaws.com/dev.cargotel.paws
+    op: eq
+    path: url
+  - expected: /dev.cargotel.paws
+    op: eq
+    path: url
+  - expected: /dev.cargotel.paws
+    op: eq
+    path: uri
+  - expected: cors
+    op: eq
+    path: uri

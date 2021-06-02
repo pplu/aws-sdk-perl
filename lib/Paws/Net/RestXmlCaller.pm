@@ -326,69 +326,87 @@ sub _to_xml_body {
         $call->meta->get_all_attributes )
     {
         if ( $attribute->has_value($call)
-            and
-            not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader')
-            and
-            not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery')
+            and not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader')
+            and not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery')
             and not $attribute->does('Paws::API::Attribute::Trait::ParamInURI')
-        #    and not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
             and not $attribute->type_constraint eq 'Paws::S3::Metadata' )
         {
 
             my $attribute_value = $attribute->get_value($call);
+
             if ( ref $attribute_value ) {
                 my $location =
                     $attribute->does('NameInRequest')
                   ? $attribute->request_name
                   : $attribute->name;
+
                 if ( $attribute->does('Flatten') ) {
                     $xml .= $self->_to_xml($attribute_value);
                 }
                 elsif ( $call->can('_namspace_uri') ) {
-                    $xml .= sprintf '<%s xmlns="%s">%s</%s>', $location,
-                      $call->_namspace_uri(), $self->_to_xml($attribute_value),
-                      $location;
+                    $xml .= sprintf '<%s xmlns="%s">%s</%s>'
+                            ,$location
+                            ,$call->_namspace_uri()
+                            ,$self->_to_xml($attribute_value)
+                            ,$location;
                 }
-				elsif (ref($attribute_value) eq 'ARRAY'){
-				     my $location = $attribute->name;
-					 my $list_name = $attribute->name;
-
-					 $location =  $attribute->request_name
-					   if ( $attribute->can('request_name'));
-					 my $temp_xml  = (
-                     join '',
-                     map {
+	        elsif (ref($attribute_value) eq 'ARRAY'){
+		     my $location = $attribute->name;
+		     my $list_name = $attribute->name;
+   		     $location =  $attribute->request_name
+		       if ( $attribute->can('request_name'));
+		     my $temp_xml  = (
+                        join '',
+                          map {
                         sprintf '<%s>%s</%s>', $location,
                             , ref($_) ? $self->_to_xml($_) : $_,
                           $location
-                      } @{ $attribute_value }
+                        } @{ $attribute_value }
                      );
                      $temp_xml = "<$list_name>$temp_xml</$list_name>"
                         if ( $location ne $list_name );
                      $xml .= $temp_xml;
-				}	 
-				else {
+		}	 
+		else {
                     $xml .= sprintf '<%s>%s</%s>', $location,
-                      $self->_to_xml($attribute_value), $location;
+                    $self->_to_xml($attribute_value), $location;
                 }
             }
-			elsif (!$attribute->does('Paws::API::Attribute::Trait::IsLocal')) {
-			    $xml_extra .= sprintf '<%s>%s</%s>',$attribute->name,$attribute_value,$attribute->name;
-		}
+            else {
+                    
+                   if ($attribute->does('Paws::API::Attribute::Trait::ParamInBody')){
+                       $xml .=$attribute_value; #special case for S3->PutBucketPolicy expects JSON in content vs XML
+                   }
+                   else {
+                     $xml .= sprintf '<%s>%s</%s>'
+                             , $attribute->name
+                             , $attribute_value
+                             , $attribute->name;
+                   }
+	    }
 
-
-        }
+         }
     }
-	if ($call->can('_location')){
-	  my $location = $call->_location();
-      $xml .= $xml_extra; 
-	  if ($call->can('_xmlNamespace')){
-	      $xml = sprintf '<%s xmlns="%s">%s</%s>',$location,$call->_xmlNamespace(),$xml,$location;
-	  }
-	  else {
-	     $xml = sprintf '<%s>%s</%s>',$location,$xml,$location;
-	  }
-	}
+    if ($call->can('_location')){
+       my $location = $call->_location();
+       $xml .= $xml_extra; 
+       if ($call->can('_xmlNamespace')){
+          $xml = sprintf '<%s xmlns="%s">%s</%s>',$location,$call->_xmlNamespace(),$xml,$location;
+       }
+       else {
+          $xml = sprintf '<%s>%s</%s>',$location,$xml,$location;
+       }
+    }
+    
+    if ($call->can('_top_level_element')) {
+       $xml = sprintf('<%s xmlns="%s">%s</%s>',
+                     $call->_top_level_element,
+                     $call->_top_level_namespace,
+                     $xml,
+                     $call->_top_level_element
+                    );
+    }
+
 
     return undef if ( not $xml );
     return $xml;
@@ -440,6 +458,6 @@ sub prepare_request_for_call {
     else {
        $self->sign($request);
     }
-	return $request;
+    return $request;
 }
 1;

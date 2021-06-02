@@ -7,7 +7,8 @@ package [% c.api %]::[% op_name %];
 [% SET include_vars.namsepace_uri = '' -%]
 
 [% INCLUDE shape_attributes.tt source="callargs" -%]
-
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader'] );
+  
   use MooseX::ClassAttribute;
   [%- IF namespace_uri %]
   class_has _namespace_uri => (isa => 'Str', is => 'ro', default => '[% namespace_uri %]');[% END %]

@@ -1,14 +1,12 @@
 [%- FOREACH param_name IN shape.members.keys.sort -%]
+  [% NEXT IF param_name == 'ContentMD5' %]
   [%- traits = [] -%]
   [%- member_shape_name = shape.members.$param_name.shape -%]
   [%- member = c.shape(member_shape_name) -%]
   has [%- param_name -%] => (is => 'ro', isa => '[%- member.perl_type -%]'
   [%- IF (member.type == 'list' and shape.members.$param_name.locationName.defined) -%][%- traits.push('NameInRequest') -%], request_name => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (member.type == 'list' and member.member.locationName.defined) -%][%- traits.push('NameInRequest') -%], request_name => '[%- member.member.locationName -%]'
-  [%- ELSIF (shape.members.$param_name.location == 'header') -%], header_name => '[%- shape.members.$param_name.locationName -%]'
-    [%- IF (param_name == 'ContentMD5'); traits.push('AutoInHeader') -%], auto => 'MD5'
-    [%- ELSE; traits.push('ParamInHeader') -%]
-    [%- END -%]
+  [%- ELSIF (shape.members.$param_name.location == 'header') -%],[%- traits.push('ParamInHeader') -%] header_name => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') -%], header_prefix => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') -%], query_name => '[%- shape.members.$param_name.locationName -%]'
   [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') -%], uri_name => '[%- shape.members.$param_name.locationName -%]'

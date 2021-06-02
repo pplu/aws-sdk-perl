@@ -8,10 +8,6 @@ tests:
   - expected: DELETE
     op: eq
     path: method
-  - expected: 1B2M2Y8AsgTpgAmY7PhCfg==
-    key: content-md5
-    op: eq
-    path: headers
   - expected: s3.fake_region.amazonaws.com
     key: host
     op: eq
