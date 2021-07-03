@@ -712,7 +712,7 @@ package Paws::API::Builder {
       # Required items first:
       my %struct = ( map { my $sub_shape = $shape->{ members }{$_}{ shape };
                            $_ => [ $self->get_example_code($sub_shape, $cache, $depth+1)] } 
-                     (@{ $shape->{ required } }) );
+                     (sort @{ $shape->{ required } }) );
 
       my $req_struct_str = join("\n", map { "$_  => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (sort keys %struct));
 
@@ -720,7 +720,7 @@ package Paws::API::Builder {
       # Followed by optional:
       %struct = ( map { my $sub_shape = $shape->{ members }{$_}{ shape };
                            $_ => [ $self->get_example_code( $sub_shape, $cache, $depth+1, 1 ) ] } 
-                     (@{ $self->optional_params_in_shape( $shape, $cache )} ) );
+                     (sort @{ $self->optional_params_in_shape( $shape, $cache )} ) );
       my $opt_struct_str = join("\n", map { "$_   => $struct{$_}[0], " . ($struct{$_}[1] ? "# $struct{$_}[1]" : "") } (sort keys %struct));
 
 
@@ -779,7 +779,7 @@ package Paws::API::Builder {
     foreach my $ex (@{ $self->example_struct->{ $op_name } }) {
       $example_str .= "# $ex->{title}\n";
       if ($ex->{ description }) {
-        local $Text::Wrap::coloumns = 79;
+        local $Text::Wrap::columns = 79;
         local $Text::Wrap::separator = "\n# ";
         $example_str .= '# ' . Text::Wrap::wrap('','',$ex->{ description }) . "\n";
       }
