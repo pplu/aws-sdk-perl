@@ -10,6 +10,7 @@ use Cwd;
 use JSON::MaybeXS;
 use File::Slurper 'read_binary';
 use Module::Runtime qw/require_module/;
+use Parallel::ForkManager;
 
 use lib 'builder-lib', 't/lib';
 
@@ -44,33 +45,94 @@ if (not @files) {
   }
 }
 
-if ($gen_paws_pm) {
-  my $p = Paws::API::Builder::Paws->new(
-    template_path => [ getcwd() . "/templates" ]
-  );
-  $p->process;
-}
-
-exit 0 if (not $gen_docu_links and not $gen_classes and not $gen_class_mapping);
+my $pm = Parallel::ForkManager->new($ENV{MAX_PROCESSES} || 16);
 
 my @failures;
-foreach my $file (@files) {
-  print "Processing $file\n" if ($gen_docu_links or $gen_classes);
-  if (my ($f, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)){
-    next if ($f eq '_retry' or $f eq '_regions');
-    my $ns = Paws::API::ServiceToClass::service_to_class($f);
+$pm->run_on_finish(
+  sub {
+    my ($pid, $exit_code, $ident, $exit_signal, $core_dump, $data) = @_;
+
+    my $fail;
+    if ($exit_code) {
+      $fail = "$ident: process failed";
+    } elsif (defined $data) {
+      $fail = "$ident: " . $data->[0];
+    }
+    push @failures, $fail if ($fail);
+  }
+);
+
+if ($gen_class_mapping) {
+  foreach my $file (@files) {
     eval {
-      my $builder = get_builder("Paws::$ns", $file);
-      print "$f maps to $ns\n" if ($gen_class_mapping);
-      $builder->write_documentation_file if ($gen_docu_links);
-      $builder->process_api if ($gen_classes);
+      my ($f, $ns, undef) = get_ns_and_builder($file);
+      print "$f maps to $ns\n";
     };
-    if ($@) { warn $@; push @failures, "$file $@\n" }
+    if ($@) {
+      push @failures, "$file: $@";
+    }
   }
 }
 
-print "Summary of fails:\n" if @failures;
-print @failures;
+if ($gen_paws_pm) {
+  $pm->start_child(
+    "Paws.pm",
+    sub {
+      print "Processing Paws.pm\n";
+      eval {
+        my $p = Paws::API::Builder::Paws->new(
+          template_path => [ getcwd() . "/templates" ]
+        );
+        $p->process;
+      };
+      my $ret = $@ ? ["$@"] : undef;
+      return $ret;
+    }
+  );
+}
+
+if ($gen_docu_links || $gen_classes) {
+  foreach my $file (@files) {
+    $pm->start_child(
+      $file,
+      sub {
+        print "Processing $file\n";
+        eval {
+          my (undef, undef, $builder) = get_ns_and_builder($file);
+          if ($builder) {
+            $builder->write_documentation_file if ($gen_docu_links);
+            $builder->process_api if ($gen_classes);
+          }
+        };
+        my $ret = $@ ? ["$@"] : undef;
+        return $ret;
+      }
+    );
+  }
+}
+
+$pm->wait_all_children;
+
+if (@failures) {
+  print "Summary of fails:\n" if @failures;
+  for my $l (@failures) {
+    print $l;
+    print "\n" unless ($l =~ /\n$/);
+  }
+  exit(1) if ($gen_classes);
+}
+
+sub get_ns_and_builder {
+  my ($file) = @_;
+
+  if (my ($f, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)) {
+    return if ($f eq '_retry' or $f eq '_regions');
+    my $ns = Paws::API::ServiceToClass::service_to_class($f);
+    my $builder = get_builder("Paws::$ns", $file);
+    return ($ns, $f, $builder);
+  }
+  return;
+}
 
 sub get_builder {
   my ($api, $file) = @_;
@@ -95,4 +157,3 @@ sub get_builder {
                             ]);
   return $c;
 }
-
